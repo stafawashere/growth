@@ -51,7 +51,7 @@ def merge_file(path, registry_ids):
    return registry_name, merged
 
 
-PHASE_ORDER = ["unit-", "taxonomy-", "scoring-points", "command-verbs", "chief-reader-", "mcq-", "frq-", "difficulty-factors", "representation-map", "archetype-consolidation", "misconception-consolidation", "error-consolidation", "signal-reference-remap", "sync-dependents", "link-evidence-", "cite-sync-", "tag-policy-", "adaptive-", "post-sync-"]
+PHASE_ORDER = ["unit-", "taxonomy-", "scoring-points", "command-verbs", "chief-reader-", "mcq-", "frq-", "difficulty-factors", "representation-map", "archetype-consolidation", "misconception-consolidation", "error-consolidation", "signal-reference-remap", "sync-dependents", "link-evidence-", "cite-sync-", "tag-policy-", "adaptive-", "post-sync-", "assessability-", "errors-enrich-", "signals-"]
 
 
 def phase_rank(path):

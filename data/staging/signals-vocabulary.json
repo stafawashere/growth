@@ -1,0 +1,3420 @@
+{
+ "registry": "diagnostic_signals",
+ "signals": [
+  {
+   "archetype": "BC-QA-06001",
+   "consistent_with": [
+    "BC-SKL-06005"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Re-add the displayed products; if they are right, the gap is arithmetic rather than conceptual.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-06001",
+   "mastery_state": "partial_unspecified",
+   "name": "Correct Riemann sum products with an arithmetic slip in the total",
+   "observation": "All six factors of the sum are correct but the reported total does not match the products.",
+   "scope": "shared",
+   "skill": "BC-SKL-06005",
+   "sources": [
+    "sg-23:2"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-06001",
+   "consistent_with": [
+    "BC-ERR-06002",
+    "BC-MIS-06002"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask for both conventions; producing both correctly indicates a misread rather than a missing distinction.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-06003",
+   "mastery_state": "partial_unspecified",
+   "name": "Correct sum of the opposite endpoint type",
+   "observation": "A fully correct Riemann sum is produced using the endpoint convention that was not requested.",
+   "scope": "shared",
+   "skill": "BC-SKL-06006",
+   "sources": [
+    "sg-23:3",
+    "sg-25:13"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-06002",
+   "consistent_with": [
+    "BC-ERR-06004",
+    "BC-MIS-06004"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask for a single trapezoid area; a correct one indicates a dropped factor rather than a missing formula.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-06005",
+   "mastery_state": "partial_unspecified",
+   "name": "Left and right sums averaged without the halving",
+   "observation": "The trapezoidal answer equals the sum of the left and right sums.",
+   "scope": "shared",
+   "skill": "BC-SKL-06008",
+   "sources": [
+    "sg-25:13"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-06001",
+   "consistent_with": [
+    "BC-ERR-06005",
+    "BC-MIS-06003"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask which property of the rate supports the claim; a correct property indicates omission under time pressure.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-06006",
+   "mastery_state": "partial_unspecified",
+   "name": "Direction of an estimate asserted with no stated reason",
+   "observation": "The words underestimate or overestimate appear with no reference to increase, decrease, or bending.",
+   "scope": "shared",
+   "skill": "BC-SKL-06010",
+   "sources": [
+    "ced:119"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-06003",
+   "consistent_with": [
+    "BC-ERR-06010",
+    "BC-MIS-01010"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask what feature of the figure makes the claim true; a correct answer confirms a communication gap.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-06010",
+   "mastery_state": "partial_unspecified",
+   "name": "Correct feature list with a reason phrased only in terms of the accumulation function",
+   "observation": "The inputs are right and the stated reason names g changing concavity rather than the behaviour of the plotted integrand.",
+   "scope": "shared",
+   "skill": "BC-SKL-06024",
+   "sources": [
+    "sg-25:17"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-06003",
+   "consistent_with": [
+    "BC-ERR-99004",
+    "BC-MIS-06010"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask whether an endpoint could give a smaller value and how that is ruled out.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-06011",
+   "mastery_state": "partial_unspecified",
+   "name": "Correct absolute extremum value with a local justification",
+   "observation": "The reported input is correct and the argument is a first or second derivative test at that input alone.",
+   "scope": "shared",
+   "skill": "BC-SKL-06026",
+   "sources": [
+    "sg-25:19"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-06003",
+   "consistent_with": [
+    "BC-ERR-06012",
+    "BC-MIS-06010"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask for the complete candidate list before any evaluation; a complete list indicates an omission rather than a missing rule.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-06012",
+   "mastery_state": "partial_unspecified",
+   "name": "Candidates table missing an endpoint",
+   "observation": "The comparison lists the interior critical inputs but omits one or both endpoints.",
+   "scope": "shared",
+   "skill": "BC-SKL-06026",
+   "sources": [
+    "sg-25:19"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-06004",
+   "consistent_with": [
+    "BC-ERR-06013",
+    "BC-MIS-08019"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask for the area of that single piece; a correct area indicates a dropped factor.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-06014",
+   "mastery_state": "partial_unspecified",
+   "name": "Semicircular contribution doubled",
+   "observation": "The reported value differs from the correct one by exactly the area of half a circle.",
+   "scope": "shared",
+   "skill": "BC-SKL-06028",
+   "sources": [
+    "sg-25:18"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-06007",
+   "consistent_with": [
+    "BC-ERR-06016",
+    "BC-MIS-06014"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask for the units of the answer; rate times input units confirm the missing division.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-06016",
+   "mastery_state": "partial_unspecified",
+   "name": "Integral reported where an average value was requested",
+   "observation": "The reported value equals the definite integral and no division by the interval length appears.",
+   "scope": "shared",
+   "skill": "BC-SKL-06038",
+   "sources": [
+    "sg-25:3"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-06008",
+   "consistent_with": [
+    "BC-ERR-06019",
+    "BC-MIS-06016"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask the student to differentiate the answer and compare with the integrand.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-06019",
+   "mastery_state": "partial_unspecified",
+   "name": "Answer differs from the correct antiderivative by a constant factor",
+   "observation": "The reported antiderivative is a nonzero constant multiple of the correct one.",
+   "scope": "shared",
+   "skill": "BC-SKL-06048",
+   "sources": [
+    "ced:126"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-06012",
+   "consistent_with": [
+    "BC-ERR-06027",
+    "BC-MIS-06023"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask for the derivative of the upper limit alone; a correct value points to an omission.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-06022",
+   "mastery_state": "partial_unspecified",
+   "name": "Chain rule factor missing from the derivative of an accumulation function",
+   "observation": "The reported derivative is the integrand evaluated at the composite upper limit with no extra factor.",
+   "scope": "shared",
+   "skill": "BC-SKL-06019",
+   "sources": [
+    "sg-24:15"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-03001",
+   "consistent_with": [
+    "BC-ERR-03001",
+    "BC-MIS-03001"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask for the derivative of the inner function alone; a correct answer points to an omission rather than to an absent concept.",
+   "evidence_tag": "single-source",
+   "id": "BC-SIG-03001",
+   "mastery_state": "partial_unspecified",
+   "name": "Outer derivative correct with no inner factor",
+   "observation": "The response shows the derivative of the outer function evaluated at the inner expression and nothing else.",
+   "scope": "shared",
+   "skill": "BC-SKL-03002",
+   "sources": [
+    "ced:72"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-03001",
+   "consistent_with": [
+    "BC-ERR-03002",
+    "BC-MIS-03001"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask the student to list the layers in order; a correct list points to a bookkeeping slip.",
+   "evidence_tag": "single-source",
+   "id": "BC-SIG-03002",
+   "mastery_state": "partial_unspecified",
+   "name": "All layers present with one factor misplaced",
+   "observation": "Every layer has been differentiated but one factor is evaluated at the wrong expression or attached to the wrong term.",
+   "scope": "shared",
+   "skill": "BC-SKL-03003",
+   "sources": [
+    "ced:72"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-03002",
+   "consistent_with": [
+    "BC-ERR-03003",
+    "BC-MIS-03002"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask for the value of the inner function on its own before the derivative is requested.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-03003",
+   "mastery_state": "partial_unspecified",
+   "name": "Chain rule written symbolically then evaluated at one input",
+   "observation": "The symbolic chain rule is correct but both derivatives are read at the same input from the table or the graph.",
+   "scope": "shared",
+   "skill": "BC-SKL-03004",
+   "sources": [
+    "ced:75"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-03004",
+   "consistent_with": [
+    "BC-ERR-03007",
+    "BC-ERR-03008",
+    "BC-MIS-03005"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask the student to differentiate the mixed term alone and to name the rule used.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-03004",
+   "mastery_state": "partial_unspecified",
+   "name": "Some y terms carry dy/dx and others do not",
+   "observation": "The implicit differentiation attaches the factor to isolated y terms but not to the y inside a mixed product.",
+   "scope": "shared",
+   "skill": "BC-SKL-03007",
+   "sources": [
+    "cr-23:23"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-03004",
+   "consistent_with": [
+    "BC-ERR-03011"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Re-substitute the coordinates; if the arithmetic then works out, the gap is arithmetic rather than conceptual.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-03006",
+   "mastery_state": "partial_unspecified",
+   "name": "Correct dy/dx with a substitution slip at the point",
+   "observation": "The expression for dy/dx is correct but the reported slope does not follow from substituting the stated coordinates.",
+   "scope": "shared",
+   "skill": "BC-SKL-03011",
+   "sources": [
+    "crabbc-25:24"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-03005",
+   "consistent_with": [
+    "BC-ERR-03013",
+    "BC-MIS-03007"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask whether the reported value determines a point, and how many points it determines.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-03007",
+   "mastery_state": "partial_unspecified",
+   "name": "Tangent condition solved but the curve equation not used",
+   "observation": "The correct condition on dy/dx is set and solved, and the response stops without substituting into the defining equation.",
+   "scope": "shared",
+   "skill": "BC-SKL-03012",
+   "sources": [
+    "cr-23:23",
+    "cr-24:18"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-03006",
+   "consistent_with": [
+    "BC-ERR-03014",
+    "BC-MIS-03009"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask what happens to the formula when the original derivative is zero at the matching input.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-03008",
+   "mastery_state": "partial_unspecified",
+   "name": "Inverse rule written without the nonzero condition",
+   "observation": "The reciprocal formula is stated correctly and no condition on the original derivative is mentioned.",
+   "scope": "shared",
+   "skill": "BC-SKL-03015",
+   "sources": [
+    "ced:77"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-03007",
+   "consistent_with": [
+    "BC-ERR-03018",
+    "BC-MIS-03010",
+    "BC-MIS-03001"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Replace the inner expression by a single letter and ask for the derivative again.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-03010",
+   "mastery_state": "partial_unspecified",
+   "name": "Correct inverse trigonometric formula with the inner expression missing",
+   "observation": "The standard formula appears with the variable in place of the inner expression, or without the inner derivative factor.",
+   "scope": "shared",
+   "skill": "BC-SKL-03022",
+   "sources": [
+    "ced:78"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-03009",
+   "consistent_with": [
+    "BC-ERR-03006",
+    "BC-ERR-99036",
+    "BC-MIS-03012"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask the student to name the operation applied last when the expression is evaluated at a number.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-03011",
+   "mastery_state": "partial_unspecified",
+   "name": "Correct rules applied in the wrong order",
+   "observation": "Every rule the expression needs appears in the work but the nesting order is wrong, so the factors attach to the wrong pieces.",
+   "scope": "shared",
+   "skill": "BC-SKL-03028",
+   "sources": [
+    "cr-22:21"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-03009",
+   "consistent_with": [
+    "BC-ERR-03020"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Compare the two lines at a single numerical input to locate the algebra slip.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-03012",
+   "mastery_state": "partial_unspecified",
+   "name": "Correct derivative spoiled by a later simplification",
+   "observation": "A correct derivative appears on one line and an incorrect simplified form on the next.",
+   "scope": "shared",
+   "skill": "BC-SKL-03029",
+   "sources": [
+    "cr-24:19",
+    "crabbc-25:26"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-03008",
+   "consistent_with": [
+    "BC-ERR-03021",
+    "BC-MIS-03013"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask the student to restate the order requested before checking the work.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-03013",
+   "mastery_state": "partial_unspecified",
+   "name": "Differentiation stops one order short",
+   "observation": "The work is correct as far as it goes but the reported derivative is one order lower than the order requested.",
+   "scope": "shared",
+   "skill": "BC-SKL-03030",
+   "sources": [
+    "ced:80"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-03008",
+   "consistent_with": [
+    "BC-ERR-03022",
+    "BC-MIS-03014"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask the student to read the line aloud and to name each symbol.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-03014",
+   "mastery_state": "partial_unspecified",
+   "name": "Notation mixed within a single line",
+   "observation": "Prime notation and Leibniz notation appear in the same equation in ways that do not agree.",
+   "scope": "shared",
+   "skill": "BC-SKL-03032",
+   "sources": [
+    "crabbc-25:25"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-03008",
+   "consistent_with": [
+    "BC-ERR-03023",
+    "BC-MIS-03006"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask for the value of the first derivative at the point as a separate question.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-03015",
+   "mastery_state": "partial_unspecified",
+   "name": "Product and chain rules correct with the first derivative value omitted",
+   "observation": "The second derivative expression is fully correct and the numerical evaluation ignores the value of the first derivative at the point.",
+   "scope": "shared",
+   "skill": "BC-SKL-03034",
+   "sources": [
+    "sg-25:20"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-01001",
+   "consistent_with": [
+    "BC-SKL-01010",
+    "BC-SKL-01011"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask for the comparison step alone; a correct comparison indicates a communication slip rather than a gap.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01001",
+   "mastery_state": "partial_unspecified",
+   "name": "One sided values correct with a two sided claim attached",
+   "observation": "Both one sided limits are reported correctly but the response then names one of them as the two sided limit.",
+   "scope": "shared",
+   "skill": "BC-SKL-01011",
+   "sources": [
+    "ced:40"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-01004",
+   "consistent_with": [
+    "BC-SKL-01024"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Re-evaluate the simplified expression; if it is right, the gap is arithmetic rather than conceptual.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01003",
+   "mastery_state": "partial_unspecified",
+   "name": "Correct rewriting with an arithmetic slip in the final evaluation",
+   "observation": "The factorisation and cancellation are correct but the value obtained by substituting into the simplified expression is wrong.",
+   "scope": "shared",
+   "skill": "BC-SKL-01024",
+   "sources": [
+    "ced:43"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-01004",
+   "consistent_with": [
+    "BC-SKL-01028"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask the student to write the limits of numerator and denominator separately; success indicates a notation habit rather than a gap (sg-23:14).",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-01005",
+   "mastery_state": "partial_unspecified",
+   "name": "Limit written as equal to zero over zero with correct subsequent work",
+   "observation": "The response writes the limit equal to the indeterminate symbol but then rewrites correctly and reaches the right value.",
+   "scope": "shared",
+   "skill": "BC-SKL-01028",
+   "sources": [
+    "sg-23:14"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-01006",
+   "consistent_with": [
+    "BC-SKL-01043",
+    "BC-SKL-01044"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask which of the listed conditions has been verified and which has not.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01006",
+   "mastery_state": "partial_unspecified",
+   "name": "Three conditions listed but only one checked",
+   "observation": "The response states the definition of continuity in full and then tests only the function value or only the limit.",
+   "scope": "shared",
+   "skill": "BC-SKL-01044",
+   "sources": [
+    "ced:48"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-01006",
+   "consistent_with": [
+    "BC-SKL-01044",
+    "BC-MIS-01009"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask for the function value at the boundary and then for the conclusion again.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01007",
+   "mastery_state": "partial_unspecified",
+   "name": "Correct branch limits with the wrong conclusion about continuity",
+   "observation": "Both one sided limits at the boundary are correct but the conclusion ignores the defined value.",
+   "scope": "shared",
+   "skill": "BC-SKL-01044",
+   "sources": [
+    "ced:48"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-01008",
+   "consistent_with": [
+    "BC-SKL-01051"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask which branch supplies the function value at the boundary.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01008",
+   "mastery_state": "partial_unspecified",
+   "name": "Parameter solved from the limits with the function value unchecked",
+   "observation": "A value of the constant is produced that matches the one sided limits but the branch that defines the value at the boundary is not considered.",
+   "scope": "shared",
+   "skill": "BC-SKL-01051",
+   "sources": [
+    "ced:50"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-01009",
+   "consistent_with": [
+    "BC-SKL-01055",
+    "BC-MIS-01012"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask for the sign of the quotient on each side separately.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01010",
+   "mastery_state": "partial_unspecified",
+   "name": "Correct asymptote with a single two sided infinite statement",
+   "observation": "The location of the vertical asymptote is right but the behaviour is written as one two sided infinite limit where the sides differ.",
+   "scope": "shared",
+   "skill": "BC-SKL-01055",
+   "sources": [
+    "ced:51"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-01010",
+   "consistent_with": [
+    "BC-SKL-01060"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask for the expression alone; the separate point for the expression is not covered by a correct value (sg-25:4).",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-01011",
+   "mastery_state": "partial_unspecified",
+   "name": "End behaviour value correct with no limit expression presented",
+   "observation": "The response reports the correct end behaviour value but never writes the limit expression that the question asks for.",
+   "scope": "shared",
+   "skill": "BC-SKL-01060",
+   "sources": [
+    "sg-25:4"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-01011",
+   "consistent_with": [
+    "BC-SKL-01066",
+    "BC-SKL-01065"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask what property of the function given in the question makes it continuous; the continuity point requires that reason while the conclusion point does not depend on it (sg-25:12).",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-01013",
+   "mastery_state": "partial_unspecified",
+   "name": "Straddling inequality correct with continuity asserted bare",
+   "observation": "The two attained values on either side of the target are displayed correctly but the continuity statement carries no reason.",
+   "scope": "shared",
+   "skill": "BC-SKL-01065",
+   "sources": [
+    "sg-25:12"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-01011",
+   "consistent_with": [
+    "BC-SKL-01065",
+    "BC-SKL-01066"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask for the two function values that the target lies between.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-01014",
+   "mastery_state": "partial_unspecified",
+   "name": "Continuity justified correctly with no straddling values shown",
+   "observation": "The response says the function is continuous because it is differentiable but never displays the two values that bracket the target.",
+   "scope": "shared",
+   "skill": "BC-SKL-01066",
+   "sources": [
+    "sg-25:12"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-01011",
+   "consistent_with": [
+    "BC-SKL-01067",
+    "BC-MIS-01016"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask whether a second input could give the same value and what would rule it out.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01015",
+   "mastery_state": "partial_unspecified",
+   "name": "Existence argument complete but phrased as a unique solution",
+   "observation": "All hypotheses are verified and the conclusion is stated, but the response claims exactly one input gives the target value.",
+   "scope": "shared",
+   "skill": "BC-SKL-01067",
+   "sources": [
+    "ced:53"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-01012",
+   "consistent_with": [
+    "BC-SKL-01001",
+    "BC-SKL-01004"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask what happens to the computed values as the interval keeps shrinking.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01016",
+   "mastery_state": "partial_unspecified",
+   "name": "Average rates computed correctly with no limiting statement",
+   "observation": "The sequence of average rates is correct but the response never says what those values approach.",
+   "scope": "shared",
+   "skill": "BC-SKL-01004",
+   "sources": [
+    "ced:38"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-01015",
+   "consistent_with": [
+    "BC-SKL-01046",
+    "BC-SKL-01049"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask whether the function has a value at that endpoint.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01017",
+   "mastery_state": "partial_unspecified",
+   "name": "Intervals of continuity correct with a closed bracket at an excluded input",
+   "observation": "The pieces of the domain are identified correctly but one endpoint is written as included.",
+   "scope": "shared",
+   "skill": "BC-SKL-01049",
+   "sources": [
+    "ced:49"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-01005",
+   "consistent_with": [
+    "BC-SKL-01033",
+    "BC-SKL-01034"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask for the limits of the two bounding functions as separate answers.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01018",
+   "mastery_state": "partial_unspecified",
+   "name": "Squeeze bounds correct with the conclusion drawn from evaluation",
+   "observation": "The bounding inequality is established correctly but the conclusion substitutes the target into the bounds rather than taking their limits.",
+   "scope": "shared",
+   "skill": "BC-SKL-01034",
+   "sources": [
+    "ced:45"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-10013",
+   "consistent_with": [
+    "BC-SKL-10031"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "The ratio point is banked while the limit point is not, so the gap is in the limit rather than in the setup (sg-25:25).",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-10002",
+   "mastery_state": "partial_unspecified",
+   "name": "The ratio of consecutive terms is correct but the limit is evaluated incorrectly",
+   "observation": "The ratio of consecutive terms is correct but the limit is evaluated incorrectly.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-10032",
+   "sources": [
+    "sg-25:25"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-10013",
+   "consistent_with": [
+    "BC-SKL-10031",
+    "BC-SKL-10055"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "A reciprocal ratio earns the setup point and keeps the interior and endpoint points in reach but not the final interval point (sg-25:25).",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-10003",
+   "mastery_state": "partial_unspecified",
+   "name": "The reciprocal of the required ratio is presented and carried through consistently",
+   "observation": "The reciprocal of the required ratio is presented and carried through consistently.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-10054",
+   "sources": [
+    "sg-25:25"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-10013",
+   "consistent_with": [
+    "BC-SKL-10055"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask what the series becomes at one endpoint; fluent substitution points to time pressure rather than to the belief that the interior is the interval.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-10004",
+   "mastery_state": "partial_unspecified",
+   "name": "The open interval is reported as the interval of convergence with no endpoint work shown",
+   "observation": "The open interval is reported as the interval of convergence with no endpoint work shown.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-10057",
+   "sources": [
+    "sg-25:24"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-10015",
+   "consistent_with": [
+    "BC-SKL-10057"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask the student to write both endpoint series side by side and compare their forms.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-10005",
+   "mastery_state": "partial_unspecified",
+   "name": "One endpoint is tested correctly and the verdict is transferred to the other without a sec",
+   "observation": "One endpoint is tested correctly and the verdict is transferred to the other without a second test.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-10058",
+   "sources": [
+    "sg-25:24"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-10013",
+   "consistent_with": [
+    "BC-SKL-10055"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask for the two inequalities the absolute value statement stands for (sg-22:21).",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-10007",
+   "mastery_state": "partial_unspecified",
+   "name": "The inequality is solved without absolute value and a one sided interval is reported",
+   "observation": "The inequality is solved without absolute value and a one sided interval is reported.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-10055",
+   "sources": [
+    "sg-22:21"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-10014",
+   "consistent_with": [
+    "BC-SKL-10055"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask how far the interval reaches from its centre; an immediate answer shows the gap is in reading the request (sg-21:24).",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-10008",
+   "mastery_state": "partial_unspecified",
+   "name": "A correct interval is presented where the radius was requested, with no value named as the",
+   "observation": "A correct interval is presented where the radius was requested, with no value named as the radius.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-10056",
+   "sources": [
+    "sg-21:24"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-10005",
+   "consistent_with": [
+    "BC-SKL-10014"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask which three properties the test requires; the conditions point needs all three (sg-21:22).",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-10009",
+   "mastery_state": "partial_unspecified",
+   "name": "Two of the three integral test conditions are listed and the third is omitted",
+   "observation": "Two of the three integral test conditions are listed and the third is omitted.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-10014",
+   "sources": [
+    "sg-21:22"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-10005",
+   "consistent_with": [
+    "BC-SKL-10016"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask the student to rewrite the evaluation with an upper bound b before the limit (sg-21:22).",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-10010",
+   "mastery_state": "partial_unspecified",
+   "name": "The antiderivative is evaluated by substituting the infinity symbol rather than by taking ",
+   "observation": "The antiderivative is evaluated by substituting the infinity symbol rather than by taking a limit.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-10016",
+   "sources": [
+    "sg-21:22"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-10006",
+   "consistent_with": [
+    "BC-SKL-10025"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask what the test concludes when the limit is three; the setup is sound and the criterion is the gap (sg-21:23).",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-10011",
+   "mastery_state": "partial_unspecified",
+   "name": "The limit comparison ratio is evaluated correctly and then compared with one to reach the ",
+   "observation": "The limit comparison ratio is evaluated correctly and then compared with one to reach the conclusion.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-10026",
+   "sources": [
+    "sg-21:23"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-10007",
+   "consistent_with": [
+    "BC-SKL-10035"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask the student to point at the series the sentence is about (sg-21:23).",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-10012",
+   "mastery_state": "partial_unspecified",
+   "name": "The conclusion states that the series converges absolutely without identifying which of th",
+   "observation": "The conclusion states that the series converges absolutely without identifying which of the several series in the part is meant.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-10035",
+   "sources": [
+    "sg-21:23"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-10004",
+   "consistent_with": [
+    "BC-SKL-10022"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask which series has the larger terms and what each direction implies (sg-24:20).",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-10013",
+   "mastery_state": "partial_unspecified",
+   "name": "A correct comparison series is chosen but the inequality is stated in the direction that d",
+   "observation": "A correct comparison series is chosen but the inequality is stated in the direction that does not support the conclusion.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-10023",
+   "sources": [
+    "sg-24:19",
+    "sg-24:20"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-10008",
+   "consistent_with": [
+    "BC-SKL-10040"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask whether the error is known exactly; the bounding term is right and the relation is the gap (sg-22:21).",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-10014",
+   "mastery_state": "partial_unspecified",
+   "name": "The correct bounding term is found and the error is then written as equal to it",
+   "observation": "The correct bounding term is found and the error is then written as equal to it.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-10042",
+   "sources": [
+    "sg-22:21",
+    "sg-24:21"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-10008",
+   "consistent_with": [
+    "BC-SKL-10039"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask what has to be true before the bound may be used (sg-24:21).",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-10015",
+   "mastery_state": "partial_unspecified",
+   "name": "The bound is applied with the correct term and the alternating and decreasing conditions a",
+   "observation": "The bound is applied with the correct term and the alternating and decreasing conditions are never stated.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-10039",
+   "sources": [
+    "sg-24:21"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-10009",
+   "consistent_with": [
+    "BC-SKL-10050"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask which derivative the bound for a fourth degree polynomial uses (sg-23:20).",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-10017",
+   "mastery_state": "partial_unspecified",
+   "name": "The bound is assembled with the derivative of the same order as the polynomial rather than",
+   "observation": "The bound is assembled with the derivative of the same order as the polynomial rather than one order higher.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-10049",
+   "sources": [
+    "sg-23:20"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-10010",
+   "consistent_with": [
+    "BC-SKL-10043"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "The form point is earned and the derivative point is not, and the response may still use its own value consistently (sg-23:19).",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-10019",
+   "mastery_state": "partial_unspecified",
+   "name": "The form of the product rule is displayed correctly but the resulting derivative expressio",
+   "observation": "The form of the product rule is displayed correctly but the resulting derivative expression is incomplete.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-10043",
+   "sources": [
+    "sg-23:19"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-10012",
+   "consistent_with": [
+    "BC-SKL-10046"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask what degree was requested; the coefficients are sound and the presentation is the gap (sg-23:20).",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-10020",
+   "mastery_state": "partial_unspecified",
+   "name": "The requested polynomial is correct through the requested degree and carries an extra term",
+   "observation": "The requested polynomial is correct through the requested degree and carries an extra term or a trailing ellipsis.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-10046",
+   "sources": [
+    "sg-23:20",
+    "sg-23:21"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-10016",
+   "consistent_with": [
+    "BC-SKL-10060"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Substitute the first two index values into the proposed general term and compare (sg-25:26).",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-10021",
+   "mastery_state": "partial_unspecified",
+   "name": "The first nonzero terms are correct and the general term does not reproduce them",
+   "observation": "The first nonzero terms are correct and the general term does not reproduce them.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-10060",
+   "sources": [
+    "sg-25:26",
+    "sg-24:22"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-10018",
+   "consistent_with": [
+    "BC-SKL-10070"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask what the CED guarantees about the radius of a term-by-term derivative (sg-24:22).",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-10022",
+   "mastery_state": "partial_unspecified",
+   "name": "The differentiated series is correct and its radius is recomputed to a value inconsistent ",
+   "observation": "The differentiated series is correct and its radius is recomputed to a value inconsistent with the original.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-10070",
+   "sources": [
+    "sg-24:22"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-10020",
+   "consistent_with": [
+    "BC-SKL-10073"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask where the input sits relative to the interval; a fluent answer points to time pressure (sg-25:27).",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-10023",
+   "mastery_state": "partial_unspecified",
+   "name": "The verdict about convergence at a specific input is correct and no reason is attached",
+   "observation": "The verdict about convergence at a specific input is correct and no reason is attached.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-10073",
+   "sources": [
+    "sg-25:27"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-08001",
+   "consistent_with": [
+    "BC-SKL-08001",
+    "BC-MIS-08002"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask for the same average over an interval of length one; a correct answer there with a wrong answer elsewhere points at the missing division rather than at the integral.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-08001",
+   "mastery_state": "partial_unspecified",
+   "name": "Correct integral with no division by the interval length",
+   "observation": "The response shows the correct definite integral and reports its value, with no quotient anywhere.",
+   "scope": "shared",
+   "skill": "BC-SKL-08001",
+   "sources": [
+    "sg-25:3"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-08003",
+   "consistent_with": [
+    "BC-MIS-08004",
+    "BC-SKL-08006"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask for the displacement in the same part; a correct displacement with an equal answer for distance isolates the integrand choice.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-08003",
+   "mastery_state": "partial_unspecified",
+   "name": "Signed integral reported as total distance",
+   "observation": "The response integrates velocity across a sign change and reports the result as the distance travelled.",
+   "scope": "shared",
+   "skill": "BC-SKL-08007",
+   "sources": [
+    "sg-24:6",
+    "cr-23:8"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-08004",
+   "consistent_with": [
+    "BC-MIS-08006",
+    "BC-SKL-08016"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask the same question with a different starting amount; an unchanged answer confirms that the initial value is not in the model.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-08004",
+   "mastery_state": "partial_unspecified",
+   "name": "Accumulated change reported where an amount was asked",
+   "observation": "The definite integral is evaluated correctly and reported without the known value at the earlier time.",
+   "scope": "shared",
+   "skill": "BC-SKL-08012",
+   "sources": [
+    "sg-24:7"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-08006",
+   "consistent_with": [
+    "BC-MIS-06010",
+    "BC-SKL-08014"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask for the value of the amount at each endpoint; producing them on request separates a reporting gap from a conceptual one.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-08005",
+   "mastery_state": "partial_unspecified",
+   "name": "Critical point found with only a local justification",
+   "observation": "The derivative is set equal to zero and solved correctly, and the justification is a sign chart with no endpoint comparison and no uniqueness statement.",
+   "scope": "shared",
+   "skill": "BC-SKL-08014",
+   "sources": [
+    "sg-25:5"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-08007",
+   "consistent_with": [
+    "BC-MIS-08009",
+    "BC-SKL-08015"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask what the sentence would be for a different pair of limits; a correct second sentence points at a communication habit rather than a concept gap.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-08006",
+   "mastery_state": "partial_unspecified",
+   "name": "Interpretation naming the quantity and units but not the interval",
+   "observation": "The sentence gives the accumulated quantity with correct units and omits the two inputs bounding the accumulation.",
+   "scope": "shared",
+   "skill": "BC-SKL-08015",
+   "sources": [
+    "sg-23:2"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-08008",
+   "consistent_with": [
+    "BC-MIS-08011",
+    "BC-SKL-08018"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask which curve is above the other at one interior input; a correct answer there isolates the sign slip.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-08007",
+   "mastery_state": "partial_unspecified",
+   "name": "Negative value reported as an area or a volume",
+   "observation": "The integral is set up with the difference in the wrong order and the reported value is negative.",
+   "scope": "shared",
+   "skill": "BC-SKL-08018",
+   "sources": [
+    "sg-23:16"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-08008",
+   "consistent_with": [
+    "BC-SKL-08021"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Recompute with the stored values; agreement confirms a rounding habit rather than a set up error.",
+   "evidence_tag": "single-source",
+   "id": "BC-SIG-08008",
+   "mastery_state": "partial_unspecified",
+   "name": "Stored intersection values replaced by rounded decimals",
+   "observation": "The limits appear as two or three place decimals and the reported area differs from the correct value in the third decimal place.",
+   "scope": "shared",
+   "skill": "BC-SKL-08021",
+   "sources": [
+    "crabbc-25:30"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-08011",
+   "consistent_with": [
+    "BC-MIS-08018",
+    "BC-MIS-08019"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask for the area of a semicircle of stated radius; a correct answer isolates the radius error from the halving error.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08012",
+   "mastery_state": "partial_unspecified",
+   "name": "Full circle area used for a semicircular section",
+   "observation": "The integrand is pi times the square of half the distance with no factor of one half, or pi times the square of the whole distance.",
+   "scope": "shared",
+   "skill": "BC-SKL-08038",
+   "sources": [
+    "ced:159"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-08012",
+   "consistent_with": [
+    "BC-MIS-08020",
+    "BC-SKL-08041"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask for the area of one circular slice before the integral is assembled.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08013",
+   "mastery_state": "partial_unspecified",
+   "name": "Solid of revolution volume reported without pi",
+   "observation": "The integrand is the square of the radius with no constant factor.",
+   "scope": "shared",
+   "skill": "BC-SKL-08041",
+   "sources": [
+    "ced:160"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-08013",
+   "consistent_with": [
+    "BC-MIS-08023",
+    "BC-SKL-08048"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask which curve is farther from the axis at one interior input.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08016",
+   "mastery_state": "partial_unspecified",
+   "name": "Negative volume from exchanged radii",
+   "observation": "The washer integral evaluates to a negative number and the response reports it or its absolute value without comment.",
+   "scope": "shared",
+   "skill": "BC-SKL-08048",
+   "sources": [
+    "ced:163"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-08014",
+   "consistent_with": [
+    "BC-MIS-08024",
+    "BC-SKL-08058"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask what the limits of integration describe; naming them on request separates a reporting gap from a concept gap.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-08017",
+   "mastery_state": "partial_unspecified",
+   "name": "Arc length named with no interval",
+   "observation": "The response says the integral gives the length of the curve and stops.",
+   "scope": "shared",
+   "skill": "BC-SKL-08058",
+   "sources": [
+    "sg-24:16"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-05001",
+   "consistent_with": [
+    "BC-SKL-05001",
+    "BC-MIS-99009"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask for the conditions; a student who states them on request has a communication gap, not a conceptual one.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-05001",
+   "mastery_state": "partial_unspecified",
+   "name": "Conclusion correct with no hypothesis sentence",
+   "observation": "The answer and the arithmetic are right but no sentence establishes continuity or differentiability.",
+   "scope": "shared",
+   "skill": "BC-SKL-05002",
+   "sources": [
+    "sg-23:3"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-05002",
+   "consistent_with": [
+    "BC-MIS-01016"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask whether the reported input lies strictly inside the interval.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-05004",
+   "mastery_state": "partial_unspecified",
+   "name": "Correct equation solved with a root outside the interval reported",
+   "observation": "The derivative equation is set up correctly but the reported input is an endpoint or lies outside.",
+   "scope": "shared",
+   "skill": "BC-SKL-05005",
+   "sources": [
+    "ced:99"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-05010",
+   "consistent_with": [
+    "BC-MIS-99009",
+    "BC-MIS-05006"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask where the continuity claim comes from in the given information.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-05005",
+   "mastery_state": "partial_unspecified",
+   "name": "Continuity asserted with no support",
+   "observation": "The response says the function is continuous and offers nothing that establishes it.",
+   "scope": "shared",
+   "skill": "BC-SKL-05008",
+   "sources": [
+    "sg-25:12"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-05006",
+   "consistent_with": [
+    "BC-MIS-05008"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask what equation produced the listed inputs.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-05007",
+   "mastery_state": "partial_unspecified",
+   "name": "Zeros listed with no derivative equation presented",
+   "observation": "Correct critical inputs appear with no equation showing the derivative set equal to zero.",
+   "scope": "shared",
+   "skill": "BC-SKL-05010",
+   "sources": [
+    "sg-23:15",
+    "sg-25:19"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-05006",
+   "consistent_with": [
+    "BC-MIS-05009"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask the student to mark every input where the derivative graph breaks.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-05008",
+   "mastery_state": "partial_unspecified",
+   "name": "Critical point list missing the non-differentiable input",
+   "observation": "Every zero of the derivative is present and the corner or cusp is absent.",
+   "scope": "shared",
+   "skill": "BC-SKL-05011",
+   "sources": [
+    "ced:100"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-05006",
+   "consistent_with": [
+    "BC-MIS-05007",
+    "BC-MIS-05018"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask whether an endpoint could beat the reported value.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-05009",
+   "mastery_state": "partial_unspecified",
+   "name": "Local claim offered for a global question",
+   "observation": "The response identifies a relative extremum correctly and presents it as the answer to an absolute extremum question.",
+   "scope": "shared",
+   "skill": "BC-SKL-05012",
+   "sources": [
+    "sg-25:19"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-05008",
+   "consistent_with": [
+    "BC-MIS-05010"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask for a test value inside the disputed interval.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-05011",
+   "mastery_state": "partial_unspecified",
+   "name": "Sign chart correct except on one interval",
+   "observation": "All partition points are right and one interval carries the wrong sign.",
+   "scope": "shared",
+   "skill": "BC-SKL-05014",
+   "sources": [
+    "ced:101"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-05008",
+   "consistent_with": [
+    "BC-MIS-05013"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask the student to replace every pronoun with a name.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-05014",
+   "mastery_state": "partial_unspecified",
+   "name": "Correct intervals with an unnamed referent in the reason",
+   "observation": "The intervals are right and the sentence says the function or the graph without saying which.",
+   "scope": "shared",
+   "skill": "BC-SKL-05017",
+   "sources": [
+    "sg-25:17"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-05008",
+   "consistent_with": [
+    "BC-MIS-05012"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask whether the function has a value at the input between them.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-05015",
+   "mastery_state": "partial_unspecified",
+   "name": "Interval reported across an input where the function is undefined",
+   "observation": "Two correct stretches are merged into one interval spanning a domain gap.",
+   "scope": "shared",
+   "skill": "BC-SKL-05018",
+   "sources": [
+    "ced:101"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-05003",
+   "consistent_with": [
+    "BC-MIS-05014"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask the student to sketch the curve implied by their own sentence.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-05016",
+   "mastery_state": "partial_unspecified",
+   "name": "Classification reversed with a correct sign statement",
+   "observation": "The sign change is described correctly and the conclusion is the opposite kind of extremum.",
+   "scope": "shared",
+   "skill": "BC-SKL-05020",
+   "sources": [
+    "ced:102"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-05006",
+   "consistent_with": [
+    "BC-MIS-05015"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask for both the input and the value.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-05017",
+   "mastery_state": "partial_unspecified",
+   "name": "Correct extremum with the wrong quantity reported",
+   "observation": "The work locates the extremum correctly and the reported answer is the input where the value was asked for, or the reverse.",
+   "scope": "shared",
+   "skill": "BC-SKL-05023",
+   "sources": [
+    "sg-23:15"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-05006",
+   "consistent_with": [
+    "BC-MIS-05016"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask for the function value at each end of the interval.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-05018",
+   "mastery_state": "partial_unspecified",
+   "name": "Candidate list missing an endpoint",
+   "observation": "The critical points are all present and one or both endpoints are absent from the comparison.",
+   "scope": "shared",
+   "skill": "BC-SKL-05024",
+   "sources": [
+    "sg-23:15"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-05006",
+   "consistent_with": [
+    "BC-MIS-05016"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Recompute the disputed entry; if the rest are right the gap is arithmetic.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-05019",
+   "mastery_state": "partial_unspecified",
+   "name": "Candidate table with one wrong entry",
+   "observation": "The candidate list is complete and one evaluation does not match the given information.",
+   "scope": "shared",
+   "skill": "BC-SKL-05025",
+   "sources": [
+    "sg-23:15"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-05006",
+   "consistent_with": [
+    "BC-MIS-05017"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask which tabulated value is smallest.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-05020",
+   "mastery_state": "partial_unspecified",
+   "name": "Comparison made in the wrong direction",
+   "observation": "A correct candidate table is followed by the wrong selection.",
+   "scope": "shared",
+   "skill": "BC-SKL-05026",
+   "sources": [
+    "ced:103"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-05006",
+   "consistent_with": [
+    "BC-MIS-05018"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask how the candidate compares with the far endpoint.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-05021",
+   "mastery_state": "partial_unspecified",
+   "name": "Justification built from a local test",
+   "observation": "The answer is right and the justification is a first or second derivative test at the candidate.",
+   "scope": "shared",
+   "skill": "BC-SKL-05028",
+   "sources": [
+    "sg-25:19"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-05004",
+   "consistent_with": [
+    "BC-MIS-05019"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask for a test value of the second derivative inside the disputed interval.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-05022",
+   "mastery_state": "partial_unspecified",
+   "name": "Concavity intervals correct with the wrong sign reported once",
+   "observation": "The partition is right and one interval is labelled with the wrong concavity.",
+   "scope": "shared",
+   "skill": "BC-SKL-05030",
+   "sources": [
+    "ced:104"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-05005",
+   "consistent_with": [
+    "BC-MIS-05021"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask whether the function has a value there.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-05024",
+   "mastery_state": "partial_unspecified",
+   "name": "Candidate inflection list includes an input outside the domain",
+   "observation": "An input where the function is undefined appears in the list.",
+   "scope": "shared",
+   "skill": "BC-SKL-05032",
+   "sources": [
+    "ced:104"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-05005",
+   "consistent_with": [
+    "BC-MIS-05021"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask for the sign of the second derivative on both sides of the extra input.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-05026",
+   "mastery_state": "partial_unspecified",
+   "name": "One extra input in an otherwise correct inflection list",
+   "observation": "Two of three listed inputs are correct and a touching zero has been retained.",
+   "scope": "shared",
+   "skill": "BC-SKL-05034",
+   "sources": [
+    "sg-25:17"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-05005",
+   "consistent_with": [
+    "BC-MIS-05013",
+    "BC-MIS-05022"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask which plotted feature makes that sign change happen.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-05027",
+   "mastery_state": "partial_unspecified",
+   "name": "Correct list with the reason phrased in second derivative symbols",
+   "observation": "The inputs are exactly right and the reason cites a sign change of the second derivative rather than the given plotted function.",
+   "scope": "shared",
+   "skill": "BC-SKL-05035",
+   "sources": [
+    "sg-25:17"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-05013",
+   "consistent_with": [
+    "BC-MIS-05023"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask which way the curve bends when the second derivative is negative.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-05028",
+   "mastery_state": "partial_unspecified",
+   "name": "Second derivative evaluated correctly with the classification reversed",
+   "observation": "The numerical second derivative is right and the reported extremum type is the opposite one.",
+   "scope": "shared",
+   "skill": "BC-SKL-05036",
+   "sources": [
+    "ced:105"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-05011",
+   "consistent_with": [
+    "BC-MIS-05018"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask how many critical points lie in the interval.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-05030",
+   "mastery_state": "partial_unspecified",
+   "name": "Global claim made with no uniqueness statement",
+   "observation": "The relative extremum is extended to an absolute one without saying that it is the only critical point.",
+   "scope": "shared",
+   "skill": "BC-SKL-05038",
+   "sources": [
+    "ced:105"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-05009",
+   "consistent_with": [
+    "BC-MIS-05011"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask which derivative must change sign for an extremum and which for a point of inflection.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-05034",
+   "mastery_state": "partial_unspecified",
+   "name": "Feature matched one derivative away",
+   "observation": "Every correspondence the response gives is displaced by one derivative in the same direction.",
+   "scope": "shared",
+   "skill": "BC-SKL-05042",
+   "sources": [
+    "ced:106"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-05009",
+   "consistent_with": [
+    "BC-MIS-05025"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask whether shifting the sketch vertically would still fit the derivative.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-05035",
+   "mastery_state": "partial_unspecified",
+   "name": "Sketch presented as the only possible curve",
+   "observation": "The response asserts a unique graph of the function from derivative information alone.",
+   "scope": "shared",
+   "skill": "BC-SKL-05044",
+   "sources": [
+    "ced:106"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-05009",
+   "consistent_with": [
+    "BC-MIS-05011"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask which curve has zeros at the turning points of which.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-05036",
+   "mastery_state": "partial_unspecified",
+   "name": "Three graphs labelled in the reverse order",
+   "observation": "The assignment is internally consistent and runs in the opposite derivative direction.",
+   "scope": "shared",
+   "skill": "BC-SKL-05045",
+   "sources": [
+    "ced:107"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-05004",
+   "consistent_with": [
+    "BC-MIS-05020"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask for the sign, not the direction, of the second derivative.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-05037",
+   "mastery_state": "partial_unspecified",
+   "name": "Second derivative statement translated into the wrong shape claim",
+   "observation": "A correct statement about the second derivative is turned into the opposite concavity claim.",
+   "scope": "shared",
+   "skill": "BC-SKL-05046",
+   "sources": [
+    "ced:107"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-05009",
+   "consistent_with": [
+    "BC-MIS-05020"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask for the second derivative at one input in the disputed piece.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-05038",
+   "mastery_state": "partial_unspecified",
+   "name": "Combined sign table with one row correct",
+   "observation": "The first derivative row is right throughout and the second derivative row is wrong on at least one piece.",
+   "scope": "shared",
+   "skill": "BC-SKL-05047",
+   "sources": [
+    "ced:107"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-05009",
+   "consistent_with": [
+    "BC-MIS-05026"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask whether another function through the same table could behave differently.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-05039",
+   "mastery_state": "partial_unspecified",
+   "name": "Behaviour claimed between tabulated inputs",
+   "observation": "The response asserts monotonicity or concavity across a whole interval from three tabulated values.",
+   "scope": "shared",
+   "skill": "BC-SKL-05048",
+   "sources": [
+    "ced:107"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-05011",
+   "consistent_with": [
+    "BC-MIS-05027"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask what each letter stands for and in what units.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-05040",
+   "mastery_state": "partial_unspecified",
+   "name": "Objective written with undefined letters",
+   "observation": "An expression to be optimised appears in symbols that are never given meanings.",
+   "scope": "shared",
+   "skill": "BC-SKL-05049",
+   "sources": [
+    "ced:108"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-05011",
+   "consistent_with": [
+    "BC-MIS-05028"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask which values of the variable make sense in the situation.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-05042",
+   "mastery_state": "partial_unspecified",
+   "name": "No contextual domain stated",
+   "observation": "The reduced objective is optimised with no statement of which inputs the situation allows.",
+   "scope": "shared",
+   "skill": "BC-SKL-05051",
+   "sources": [
+    "ced:108"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-05011",
+   "consistent_with": [
+    "BC-MIS-05029"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask how the student knows it is a maximum rather than a minimum.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-05043",
+   "mastery_state": "partial_unspecified",
+   "name": "Critical point reported with no verification",
+   "observation": "The derivative is set to zero, solved, and the value is announced as the extremum.",
+   "scope": "shared",
+   "skill": "BC-SKL-05053",
+   "sources": [
+    "sg-25:19"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-05011",
+   "consistent_with": [
+    "BC-MIS-07023"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask what the number measures.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-05044",
+   "mastery_state": "partial_unspecified",
+   "name": "Optimal value reported without units",
+   "observation": "A correct number appears with no unit attached in an applied context.",
+   "scope": "shared",
+   "skill": "BC-SKL-05054",
+   "sources": [
+    "sg-23:2"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-05011",
+   "consistent_with": [
+    "BC-MIS-07023"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask what would change in the sentence if the interval were different.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-05045",
+   "mastery_state": "partial_unspecified",
+   "name": "Interpretation naming the quantity only",
+   "observation": "The sentence names the modelled quantity and omits the units or the input at which the extremum occurs.",
+   "scope": "shared",
+   "skill": "BC-SKL-05055",
+   "sources": [
+    "sg-23:2"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-05012",
+   "consistent_with": [
+    "BC-MIS-05031"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask for the value of the denominator at the reported point.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-05046",
+   "mastery_state": "partial_unspecified",
+   "name": "Numerator zeros reported with no denominator check",
+   "observation": "Points where both the numerator and the denominator of the derivative vanish appear as horizontal tangents.",
+   "scope": "shared",
+   "skill": "BC-SKL-05058",
+   "sources": [
+    "ced:110"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-05012",
+   "consistent_with": [
+    "BC-MIS-05032"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask whether the reported coordinates satisfy the relation.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-05047",
+   "mastery_state": "partial_unspecified",
+   "name": "Denominator zeros reported without checking the relation",
+   "observation": "Solutions of the denominator equation are listed without testing them in the defining equation.",
+   "scope": "shared",
+   "skill": "BC-SKL-05059",
+   "sources": [
+    "ced:110"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-05012",
+   "consistent_with": [
+    "BC-MIS-05032"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask which outputs the relation pairs with that input.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-05048",
+   "mastery_state": "partial_unspecified",
+   "name": "One coordinate reported for a point on a relation",
+   "observation": "An input value is given as the answer where a point on the curve was asked for.",
+   "scope": "shared",
+   "skill": "BC-SKL-05060",
+   "sources": [
+    "ced:110"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-05012",
+   "consistent_with": [
+    "BC-MIS-05033"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask for the value of the first derivative at the point, then reread the expression.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-05050",
+   "mastery_state": "partial_unspecified",
+   "name": "Derivative symbol left in a numerical answer",
+   "observation": "The reported second derivative value still contains the first derivative symbol.",
+   "scope": "shared",
+   "skill": "BC-SKL-05062",
+   "sources": [
+    "sg-25:21"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-02001",
+   "consistent_with": [
+    "BC-SKL-02014",
+    "BC-MIS-02001"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask for the units of the reported number; a correct unit statement afterwards indicates a communication slip rather than a gap (sg-25:11).",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-02001",
+   "mastery_state": "partial_unspecified",
+   "name": "Correct difference with the division omitted",
+   "observation": "The two tabulated values are subtracted correctly but the result is reported without dividing by the change in the inputs.",
+   "scope": "shared",
+   "skill": "BC-SKL-02014",
+   "sources": [
+    "sg-25:11"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-02001",
+   "consistent_with": [
+    "BC-SKL-02014"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask for the value of the written expression; the expression alone does not earn the answer point (sg-25:11).",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-02002",
+   "mastery_state": "partial_unspecified",
+   "name": "Correct quotient with no value reported",
+   "observation": "The difference quotient is set up correctly from the right rows but is never evaluated.",
+   "scope": "shared",
+   "skill": "BC-SKL-02014",
+   "sources": [
+    "sg-25:11"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-02001",
+   "consistent_with": [
+    "BC-SKL-02014",
+    "BC-MIS-02008"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask what the denominator of the quotient measures.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-02003",
+   "mastery_state": "partial_unspecified",
+   "name": "Correct estimate with the units of the quantity attached",
+   "observation": "The numerical estimate is correct but the units given are those of the modelled quantity rather than of its rate.",
+   "scope": "shared",
+   "skill": "BC-SKL-02015",
+   "sources": [
+    "sg-25:11",
+    "sg-24:2"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-02002",
+   "consistent_with": [
+    "BC-SKL-02006",
+    "BC-SKL-02009",
+    "BC-MIS-02002"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask for the algebraic simplification of the numerator before any substitution.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-02004",
+   "mastery_state": "partial_unspecified",
+   "name": "Difference quotient set up correctly then collapsed",
+   "observation": "The difference quotient is written correctly but the increment is set to zero while it is still in the denominator.",
+   "scope": "shared",
+   "skill": "BC-SKL-02009",
+   "sources": [
+    "ced:61"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-02002",
+   "consistent_with": [
+    "BC-SKL-02008",
+    "BC-MIS-02003"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask the student to read one intermediate line aloud as a claim; a correct correction indicates a notation habit rather than a gap.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-02005",
+   "mastery_state": "partial_unspecified",
+   "name": "Correct derivative with the limit symbol absent from the work",
+   "observation": "The value obtained is correct but the intermediate lines carry no limit symbol.",
+   "scope": "shared",
+   "skill": "BC-SKL-02008",
+   "sources": [
+    "ced:61"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-02003",
+   "consistent_with": [
+    "BC-SKL-02035"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask which value of the function is subtracted in the numerator.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-02006",
+   "mastery_state": "partial_unspecified",
+   "name": "Limit identified as a derivative with the wrong base point",
+   "observation": "The underlying function is named correctly but the derivative is evaluated at the wrong input.",
+   "scope": "shared",
+   "skill": "BC-SKL-02035",
+   "sources": [
+    "ced:66"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-02004",
+   "consistent_with": [
+    "BC-SKL-02019",
+    "BC-SKL-02020"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask what property stated in the question makes the function continuous; the continuity point requires that reason (sg-25:12).",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-02007",
+   "mastery_state": "partial_unspecified",
+   "name": "Continuity used correctly but stated without its reason",
+   "observation": "The argument proceeds correctly from continuity but the response never says that continuity follows from differentiability.",
+   "scope": "shared",
+   "skill": "BC-SKL-02020",
+   "sources": [
+    "sg-25:12"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-02005",
+   "consistent_with": [
+    "BC-SKL-02022",
+    "BC-MIS-02007"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask for the one sided slopes as two numbers.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-02009",
+   "mastery_state": "partial_unspecified",
+   "name": "Correct verdict on differentiability with a visual reason",
+   "observation": "The response correctly says the derivative does not exist but supports it only by the appearance of the graph.",
+   "scope": "shared",
+   "skill": "BC-SKL-02022",
+   "sources": [
+    "ced:63"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-02006",
+   "consistent_with": [
+    "BC-SKL-02026"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask the student to rewrite the untouched term as a power of the variable first.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-02011",
+   "mastery_state": "partial_unspecified",
+   "name": "Polynomial terms differentiated with a radical term copied",
+   "observation": "The polynomial part of the expression is differentiated correctly while a radical or reciprocal term is carried through unchanged.",
+   "scope": "shared",
+   "skill": "BC-SKL-02026",
+   "sources": [
+    "ced:64"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-02007",
+   "consistent_with": [
+    "BC-SKL-02032",
+    "BC-MIS-02010"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask for the slope of the graph just to the right of the origin.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-02012",
+   "mastery_state": "partial_unspecified",
+   "name": "Trigonometric derivative correct except for the sign",
+   "observation": "The derivative of a sine or cosine term is right in form but carries the wrong sign.",
+   "scope": "shared",
+   "skill": "BC-SKL-02032",
+   "sources": [
+    "ced:66"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-02009",
+   "consistent_with": [
+    "BC-SKL-02036",
+    "BC-SKL-02037"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask the student to label each supplied number before substituting.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-02013",
+   "mastery_state": "partial_unspecified",
+   "name": "Product rule written correctly with one derivative value misread",
+   "observation": "The rule is set out with the names in the right positions but one of the four supplied numbers is a function value where a derivative value belongs.",
+   "scope": "shared",
+   "skill": "BC-SKL-02037",
+   "sources": [
+    "ced:67"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-02008",
+   "consistent_with": [
+    "BC-SKL-02039",
+    "BC-SKL-02040",
+    "BC-MIS-02012"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask the student to apply the rule to a reciprocal and compare with the power rule result.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-02014",
+   "mastery_state": "partial_unspecified",
+   "name": "Quotient rule applied with the numerator terms reversed",
+   "observation": "The structure of the quotient rule is right but the subtraction runs the wrong way, so the answer differs only in sign.",
+   "scope": "shared",
+   "skill": "BC-SKL-02040",
+   "sources": [
+    "ced:68"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-02010",
+   "consistent_with": [
+    "BC-SKL-02043",
+    "BC-SKL-02044"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask which rule applies to the rewritten expression.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-02015",
+   "mastery_state": "partial_unspecified",
+   "name": "Trigonometric rewriting correct with the quotient rule misapplied",
+   "observation": "The function is rewritten correctly with sine and cosine but the differentiation that follows is done term by term.",
+   "scope": "shared",
+   "skill": "BC-SKL-02044",
+   "sources": [
+    "ced:69"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-02011",
+   "consistent_with": [
+    "BC-SKL-02012",
+    "BC-SKL-02013"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask at which input the line touches the curve and what the height is there.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-02016",
+   "mastery_state": "partial_unspecified",
+   "name": "Tangent line correct in slope but through the wrong point",
+   "observation": "The derivative is evaluated correctly but the point used in the line equation is not the point of tangency.",
+   "scope": "shared",
+   "skill": "BC-SKL-02013",
+   "sources": [
+    "ced:61"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-02013",
+   "consistent_with": [
+    "BC-SKL-02018"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask the student to write the expression the calculator evaluated; the setup carries its own point (sg-25:4).",
+   "evidence_tag": "single-source",
+   "id": "BC-SIG-02017",
+   "mastery_state": "partial_unspecified",
+   "name": "Calculator value correct with no setup shown",
+   "observation": "A correct numerical derivative is reported with nothing indicating what was computed.",
+   "scope": "shared",
+   "skill": "BC-SKL-02018",
+   "sources": [
+    "sg-25:4"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-04001",
+   "consistent_with": [
+    "BC-ERR-04001",
+    "BC-MIS-04003"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask for the units alone; a correct answer points to an omission under time pressure rather than a gap.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-04001",
+   "mastery_state": "partial_unspecified",
+   "name": "Correct rate reported with no units",
+   "observation": "The numerical rate is right and no units accompany it anywhere in the part.",
+   "scope": "shared",
+   "skill": "BC-SKL-04001",
+   "sources": [
+    "sg-25:11",
+    "sg-24:2"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-04002",
+   "consistent_with": [
+    "BC-ERR-04004",
+    "BC-MIS-04003"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask which two table entries were used; a correct answer points to omitted communication rather than to a gap.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-04003",
+   "mastery_state": "partial_unspecified",
+   "name": "Bare quotient with no difference shown",
+   "observation": "A single number or a quotient appears with no visible subtraction of tabulated values.",
+   "scope": "shared",
+   "skill": "BC-SKL-04004",
+   "sources": [
+    "sg-25:11"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-04003",
+   "consistent_with": [
+    "BC-ERR-04006",
+    "BC-MIS-04004"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask which function the stem supplied and which one the question wants.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-04004",
+   "mastery_state": "partial_unspecified",
+   "name": "Correct differentiation of the wrong order",
+   "observation": "The differentiation performed is correct and produces a quantity other than the one requested.",
+   "scope": "shared",
+   "skill": "BC-SKL-04006",
+   "sources": [
+    "ced:88"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-04003",
+   "consistent_with": [
+    "BC-ERR-04007",
+    "BC-MIS-04005"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask whether a speed can be negative and what the sign records instead.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-04005",
+   "mastery_state": "partial_unspecified",
+   "name": "Negative number reported as a speed",
+   "observation": "The response gives a speed with a minus sign attached.",
+   "scope": "shared",
+   "skill": "BC-SKL-04008",
+   "sources": [
+    "ced:88"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-04003",
+   "consistent_with": [
+    "BC-ERR-99003",
+    "BC-MIS-99001"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask for the sign of the velocity at that instant and whether it changes the conclusion.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-04007",
+   "mastery_state": "partial_unspecified",
+   "name": "Only the acceleration sign cited for a speed conclusion",
+   "observation": "The speed conclusion names the sign of the acceleration and does not name the sign of the velocity.",
+   "scope": "shared",
+   "skill": "BC-SKL-04010",
+   "sources": [
+    "cr-22:21",
+    "crabbc-25:22"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-04004",
+   "consistent_with": [
+    "BC-ERR-04011",
+    "BC-MIS-04017"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask the student to state the conclusion in one sentence; a correct sentence points to a communication gap.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-04008",
+   "mastery_state": "partial_unspecified",
+   "name": "Sign chart with no stated conclusion",
+   "observation": "A correct sign chart appears and no sentence states what it shows about the interval in the prompt.",
+   "scope": "shared",
+   "skill": "BC-SKL-04012",
+   "sources": [
+    "crabbc-25:22",
+    "crabbc-25:23"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-04005",
+   "consistent_with": [
+    "BC-ERR-04012",
+    "BC-ERR-04013",
+    "BC-MIS-04007"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask what the letters in the model stand for.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-04009",
+   "mastery_state": "partial_unspecified",
+   "name": "Computation correct with the context never named",
+   "observation": "The mathematics is right and no sentence identifies the quantity, its units, or its independent variable.",
+   "scope": "shared",
+   "skill": "BC-SKL-04013",
+   "sources": [
+    "ced:84"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-04005",
+   "consistent_with": [
+    "BC-ERR-99007",
+    "BC-MIS-04014"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask the student to write the limit expression that supports the value.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-04010",
+   "mastery_state": "partial_unspecified",
+   "name": "Correct value with infinity written in place of a limit",
+   "observation": "The value of the end behaviour is right and the supporting line substitutes infinity into the expression.",
+   "scope": "shared",
+   "skill": "BC-SKL-04016",
+   "sources": [
+    "sg-25:4"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-04007",
+   "consistent_with": [
+    "BC-ERR-04017",
+    "BC-MIS-04008"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask what must be multiplied by that derivative to reach the rate with respect to time.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-04013",
+   "mastery_state": "partial_unspecified",
+   "name": "Differentiation stops at the derivative with respect to a length",
+   "observation": "The relation is differentiated with respect to a spatial variable and no chain rule step reaches the rate with respect to time.",
+   "scope": "shared",
+   "skill": "BC-SKL-04019",
+   "sources": [
+    "cr-24:18",
+    "cr-22:7"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-04006",
+   "consistent_with": [
+    "BC-ERR-04021",
+    "BC-PRQ-04007"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Present the substituted equation and ask only for the algebra.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-04015",
+   "mastery_state": "partial_unspecified",
+   "name": "Correct differentiated equation with the rate never isolated",
+   "observation": "The substitution is complete and the response stops before solving for the requested rate.",
+   "scope": "shared",
+   "skill": "BC-SKL-04024",
+   "sources": [
+    "cr-24:18"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-04008",
+   "consistent_with": [
+    "BC-ERR-04023",
+    "BC-ERR-04024",
+    "BC-MIS-04012"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask the student to check that the point satisfies the line they wrote.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-04016",
+   "mastery_state": "partial_unspecified",
+   "name": "Correct slope with a tangent line assembly error",
+   "observation": "The slope at the point of tangency is right and the line written does not pass through the point.",
+   "scope": "shared",
+   "skill": "BC-SKL-04028",
+   "sources": [
+    "crabbc-25:25",
+    "cr-24:17"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-04008",
+   "consistent_with": [
+    "BC-ERR-99020",
+    "BC-MIS-07010"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Change the example to an increasing concave down function and ask again; a changed answer points to a guess.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-04017",
+   "mastery_state": "partial_unspecified",
+   "name": "Correct direction of error with an increase or decrease reason",
+   "observation": "The over or under estimate claim is right and the reason given is that the function is increasing or decreasing.",
+   "scope": "shared",
+   "skill": "BC-SKL-04030",
+   "sources": [
+    "cr-22:18",
+    "ced:92"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-04009",
+   "consistent_with": [
+    "BC-ERR-04028",
+    "BC-ERR-04029",
+    "BC-MIS-04015"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask what has to be true for the rule to apply and whether the response showed it.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-04018",
+   "mastery_state": "partial_unspecified",
+   "name": "Rule applied with the form never verified",
+   "observation": "Derivatives of numerator and denominator appear and no separate limits establish the indeterminate form.",
+   "scope": "shared",
+   "skill": "BC-SKL-04033",
+   "sources": [
+    "sg-23:14",
+    "cr-23:15"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-04009",
+   "consistent_with": [
+    "BC-ERR-04030",
+    "BC-ERR-04031",
+    "BC-MIS-04016"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask for the derivative of the numerator alone; the 2023 report records this as the point at which otherwise correct responses failed (cr-23:15).",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-04019",
+   "mastery_state": "partial_unspecified",
+   "name": "Hypothesis verified with an incorrect derivative",
+   "observation": "The two separate limits are correct and one of the two derivatives in the new quotient is wrong.",
+   "scope": "shared",
+   "skill": "BC-SKL-04035",
+   "sources": [
+    "cr-23:15",
+    "sg-23:14"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-09001",
+   "consistent_with": [
+    "BC-SKL-09002",
+    "BC-MIS-09002"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask for the two component derivatives separately; producing them and the quotient on request points at a communication habit rather than a concept gap.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-09001",
+   "mastery_state": "partial_unspecified",
+   "name": "Correct slope value with no quotient shown",
+   "observation": "A correct decimal for the slope appears with no expression showing dy/dt divided by dx/dt.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09002",
+   "sources": [
+    "sg-23:7"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-09007",
+   "consistent_with": [
+    "BC-MIS-08004",
+    "BC-SKL-09020"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask for both quantities on a path that returns to its start; equal answers confirm the confusion.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-09004",
+   "mastery_state": "partial_unspecified",
+   "name": "Magnitude of displacement reported as distance travelled",
+   "observation": "The response integrates the components first and takes a magnitude of the result.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09025",
+   "sources": [
+    "sg-24:6"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-09004",
+   "consistent_with": [
+    "BC-MIS-09008",
+    "BC-SKL-09017"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask for the derivative expressions; producing them on request separates a presentation habit from a gap.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-09005",
+   "mastery_state": "partial_unspecified",
+   "name": "Correct vector with no supporting work",
+   "observation": "Two correct components appear with no differentiation and no evaluation shown.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09017",
+   "sources": [
+    "sg-23:6"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-09005",
+   "consistent_with": [
+    "BC-MIS-09010",
+    "BC-SKL-09020"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask the same question with a different known position; an unchanged answer confirms the missing initial value.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-09006",
+   "mastery_state": "partial_unspecified",
+   "name": "Definite integral reported as a coordinate",
+   "observation": "The value of the integral of a velocity component is given as the coordinate, with the known position unused.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09021",
+   "sources": [
+    "sg-24:7"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-09005",
+   "consistent_with": [
+    "BC-SKL-09022",
+    "BC-MIS-09010"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask which of the two times the position is known at and in which direction time runs between them.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-09007",
+   "mastery_state": "partial_unspecified",
+   "name": "Accumulation added when the known time is later",
+   "observation": "The integral between the two times is added to the known coordinate although the known time is the later one.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09022",
+   "sources": [
+    "sg-24:7"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-09006",
+   "consistent_with": [
+    "BC-MIS-09008",
+    "BC-SKL-09024"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask for the equation that was solved; writing it correctly points at a presentation habit.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-09008",
+   "mastery_state": "partial_unspecified",
+   "name": "Time reported with no equation",
+   "observation": "A correct time at which the speed takes the stated value appears alone on the page.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09024",
+   "sources": [
+    "sg-23:6"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-09008",
+   "consistent_with": [
+    "BC-SKL-09027",
+    "BC-MIS-09012"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask why the particle approaches on that interval; a correct sign argument on request separates communication from concept.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-09009",
+   "mastery_state": "partial_unspecified",
+   "name": "Correct interval of approach with no sign argument",
+   "observation": "The subinterval on which the particle approaches the axis is correct and no statement about the sign of the rate appears.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09027",
+   "sources": [
+    "sg-24:8"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-09009",
+   "consistent_with": [
+    "BC-MIS-09008",
+    "BC-SKL-09030"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask the student to write the derivative of r before evaluating it.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-09010",
+   "mastery_state": "partial_unspecified",
+   "name": "Polar derivative value with no differentiation shown",
+   "observation": "A correct value for dr/dtheta appears with nothing indicating that r was differentiated.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09030",
+   "sources": [
+    "sg-25:7"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-09011",
+   "consistent_with": [
+    "BC-MIS-06010",
+    "BC-SKL-09034"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask for the coordinate at each endpoint of the angle interval.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-09011",
+   "mastery_state": "partial_unspecified",
+   "name": "Critical angle found with only a local justification",
+   "observation": "The derivative of the coordinate is set equal to zero and solved correctly, and the justification is a derivative test with no endpoint comparison and no uniqueness statement.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09034",
+   "sources": [
+    "sg-25:9"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-09012",
+   "consistent_with": [
+    "BC-MIS-09017",
+    "BC-SKL-09035"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask for the area of a circular sector of stated radius and angle.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-09012",
+   "mastery_state": "partial_unspecified",
+   "name": "Polar area integral without the factor of one half",
+   "observation": "The integrand is the square of r with no factor of one half, and the reported value is twice the area.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09035",
+   "sources": [
+    "sg-25:7"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-07006",
+   "consistent_with": [
+    "BC-MIS-07002"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask what each letter stands for and in what units.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-07002",
+   "mastery_state": "partial_unspecified",
+   "name": "Equation written in undefined letters",
+   "observation": "The letters of the model are never given meanings or units.",
+   "scope": "shared",
+   "skill": "BC-SKL-07003",
+   "sources": [
+    "ced:137"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-07007",
+   "consistent_with": [
+    "BC-MIS-07003"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask what the candidate gives at the stated input.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-07006",
+   "mastery_state": "partial_unspecified",
+   "name": "Equation verified and the initial condition ignored",
+   "observation": "The substitution checks out and the stated point is never tested.",
+   "scope": "shared",
+   "skill": "BC-SKL-07007",
+   "sources": [
+    "ced:138"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-07007",
+   "consistent_with": [
+    "BC-MIS-07004"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask for one input at which the two sides differ.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-07007",
+   "mastery_state": "partial_unspecified",
+   "name": "Negative verdict with nothing exhibited",
+   "observation": "The response says the candidate fails and shows no disagreeing input.",
+   "scope": "shared",
+   "skill": "BC-SKL-07008",
+   "sources": [
+    "ced:138"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-07007",
+   "consistent_with": [
+    "BC-MIS-07005"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask the student to name two different functions satisfying the same equation.",
+   "evidence_tag": "single-source",
+   "id": "BC-SIG-07008",
+   "mastery_state": "partial_unspecified",
+   "name": "Family treated as a single function",
+   "observation": "The general solution with its constant is described as the solution.",
+   "scope": "shared",
+   "skill": "BC-SKL-07009",
+   "sources": [
+    "ced:138",
+    "ced-clarifications-2026:2"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-07002",
+   "consistent_with": [
+    "BC-MIS-07006"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask for the coordinates the slope was computed at.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-07009",
+   "mastery_state": "partial_unspecified",
+   "name": "Slope computed at a neighbouring lattice point",
+   "observation": "The arithmetic is right for coordinates one grid step away from the one asked for.",
+   "scope": "shared",
+   "skill": "BC-SKL-07010",
+   "sources": [
+    "ced:139"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-07010",
+   "consistent_with": [
+    "BC-MIS-07007"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask which values of the quantity make the rate zero.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-07011",
+   "mastery_state": "partial_unspecified",
+   "name": "Zero slope locus never identified",
+   "observation": "The response works through the field or the equation without solving the right side equal to zero.",
+   "scope": "shared",
+   "skill": "BC-SKL-07012",
+   "sources": [
+    "sg-24:10"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-07002",
+   "consistent_with": [
+    "BC-MIS-07006"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask which variables appear in the right side.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-07012",
+   "mastery_state": "partial_unspecified",
+   "name": "Dependence pattern misread from the field",
+   "observation": "The response claims the slope varies along a line on which the printed segments are identical.",
+   "scope": "shared",
+   "skill": "BC-SKL-07013",
+   "sources": [
+    "ced:139"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-07001",
+   "consistent_with": [
+    "BC-MIS-07008"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask whether the curve is tangent to the segment at each point it passes.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-07013",
+   "mastery_state": "partial_unspecified",
+   "name": "Curve through the right point conflicting with the segments",
+   "observation": "The drawn curve starts correctly and its slope disagrees with nearby segments, or it stops short of an edge.",
+   "scope": "shared",
+   "skill": "BC-SKL-07014",
+   "sources": [
+    "sg-23:9"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-07001",
+   "consistent_with": [
+    "BC-MIS-07009"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask what the rate of change is exactly at that level.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-07014",
+   "mastery_state": "partial_unspecified",
+   "name": "Curve drawn across the equilibrium level",
+   "observation": "The sketch otherwise follows the field and rises through the row of horizontal segments.",
+   "scope": "shared",
+   "skill": "BC-SKL-07015",
+   "sources": [
+    "sg-23:9"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-07002",
+   "consistent_with": [
+    "BC-MIS-07006"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask for the slope at a point where the candidates disagree.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-07015",
+   "mastery_state": "partial_unspecified",
+   "name": "Equation matched on the look of the field",
+   "observation": "A candidate is chosen with no computed slope and no zero slope locus mentioned.",
+   "scope": "shared",
+   "skill": "BC-SKL-07016",
+   "sources": [
+    "ced:140"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-07001",
+   "consistent_with": [
+    "BC-MIS-07009"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask which feature of the field or the equation makes the claim true.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-07016",
+   "mastery_state": "partial_unspecified",
+   "name": "Long-run claim with no supporting feature named",
+   "observation": "The response states where solutions are heading and cites neither the segments nor the sign of the rate.",
+   "scope": "shared",
+   "skill": "BC-SKL-07017",
+   "sources": [
+    "ced:140"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-07005",
+   "consistent_with": [
+    "BC-MIS-07010"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask what the differential equation says the first derivative equals.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-07017",
+   "mastery_state": "partial_unspecified",
+   "name": "Second derivative left in terms of the first",
+   "observation": "The differentiated right side still contains the derivative symbol instead of the dependent variable.",
+   "scope": "shared",
+   "skill": "BC-SKL-07018",
+   "sources": [
+    "sg-23:11"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-07004",
+   "consistent_with": [
+    "BC-MIS-07011"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask how long each of the stated number of equal steps is.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-07018",
+   "mastery_state": "partial_unspecified",
+   "name": "Whole interval used as one step",
+   "observation": "The arithmetic is right for a single step across the entire interval.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-07019",
+   "sources": [
+    "sg-25:23"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-07004",
+   "consistent_with": [
+    "BC-MIS-07011"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask which point the slope is evaluated at on the first step.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-07019",
+   "mastery_state": "partial_unspecified",
+   "name": "First step taken from the wrong point",
+   "observation": "The step size is right and the derivative is evaluated somewhere other than the initial condition.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-07020",
+   "sources": [
+    "sg-25:23"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-07004",
+   "consistent_with": [
+    "BC-MIS-07012"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask for the input and the output used at the start of the second step.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-07020",
+   "mastery_state": "partial_unspecified",
+   "name": "Second step evaluated at the initial point",
+   "observation": "The first step is correct and the second uses the initial output again.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-07021",
+   "sources": [
+    "sg-24:17"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-07004",
+   "consistent_with": [
+    "BC-MIS-07013"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask the student to label the columns of their own table.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-07021",
+   "mastery_state": "partial_unspecified",
+   "name": "Bare value with no steps or labels",
+   "observation": "A single number, or an unlabelled table, is offered with no visible increments.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-07022",
+   "sources": [
+    "sg-25:23"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-07004",
+   "consistent_with": [
+    "BC-MIS-07010"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask what the second derivative does over the interval.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-07022",
+   "mastery_state": "partial_unspecified",
+   "name": "Direction claimed with no concavity statement",
+   "observation": "The response names an overestimate or an underestimate and cites monotonicity or nothing at all.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-07023",
+   "sources": [
+    "sg-23:11"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-07003",
+   "consistent_with": [
+    "BC-MIS-07015"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask what happened to the differential on the other side.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-07024",
+   "mastery_state": "partial_unspecified",
+   "name": "One side antidifferentiated correctly and the other untouched",
+   "observation": "The separated form is right and only one antiderivative appears.",
+   "scope": "shared",
+   "skill": "BC-SKL-07025",
+   "sources": [
+    "sg-23:12"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-07003",
+   "consistent_with": [
+    "BC-MIS-07016"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask what the answer would be if the starting value were different.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-07025",
+   "mastery_state": "partial_unspecified",
+   "name": "Antiderivative equation with no constant",
+   "observation": "Both antiderivatives are right and no constant of integration appears anywhere.",
+   "scope": "shared",
+   "skill": "BC-SKL-07026",
+   "sources": [
+    "sg-23:12"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-07003",
+   "consistent_with": [
+    "BC-MIS-07017"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask for the value of the dependent variable at a stated input.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-07026",
+   "mastery_state": "partial_unspecified",
+   "name": "Correct antiderivative equation left unsolved",
+   "observation": "The constant is found and the dependent variable is never isolated.",
+   "scope": "shared",
+   "skill": "BC-SKL-07027",
+   "sources": [
+    "sg-23:12"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-07003",
+   "consistent_with": [
+    "BC-MIS-07016"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask which equation the initial values were substituted into.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-07028",
+   "mastery_state": "partial_unspecified",
+   "name": "Initial condition substituted after exponentiating",
+   "observation": "The constant is evaluated in an expression where it has already changed form.",
+   "scope": "shared",
+   "skill": "BC-SKL-07029",
+   "sources": [
+    "sg-23:12"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-07003",
+   "consistent_with": [
+    "BC-MIS-07018"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask whether the enclosed expression is positive or negative at the initial point.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-07029",
+   "mastery_state": "partial_unspecified",
+   "name": "Branch chosen against the initial condition",
+   "observation": "The absolute value is removed with the sign that contradicts the given point.",
+   "scope": "shared",
+   "skill": "BC-SKL-07030",
+   "sources": [
+    "sg-24:11"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-07011",
+   "consistent_with": [
+    "BC-MIS-07019"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask what happens at the input where the expression fails to be defined.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-07030",
+   "mastery_state": "partial_unspecified",
+   "name": "Solution reported with no interval",
+   "observation": "An explicit expression is given and no domain statement accompanies it although one was asked for.",
+   "scope": "shared",
+   "skill": "BC-SKL-07031",
+   "sources": [
+    "ced:143"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-07011",
+   "consistent_with": [
+    "BC-MIS-07020"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask what the expression gives at the initial input.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-07031",
+   "mastery_state": "partial_unspecified",
+   "name": "Accumulation form written without the initial value",
+   "observation": "The particular solution is offered as an integral alone.",
+   "scope": "shared",
+   "skill": "BC-SKL-07032",
+   "sources": [
+    "ced:143"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-07003",
+   "consistent_with": [
+    "BC-MIS-07005"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask whether the answer should still contain a constant.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-07032",
+   "mastery_state": "partial_unspecified",
+   "name": "Answer of the wrong kind for the question",
+   "observation": "A constant remains where a particular solution was asked for, or is fixed where the general solution was.",
+   "scope": "shared",
+   "skill": "BC-SKL-07033",
+   "sources": [
+    "ced:143"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-07008",
+   "consistent_with": [
+    "BC-MIS-07021"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask what the formula gives at the initial input.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-07034",
+   "mastery_state": "partial_unspecified",
+   "name": "Exponential written with the constants misplaced",
+   "observation": "The initial value appears inside the exponent, or the rate constant outside it.",
+   "scope": "shared",
+   "skill": "BC-SKL-07035",
+   "sources": [
+    "ced:144"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-07008",
+   "consistent_with": [
+    "BC-MIS-07022"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask which two pieces of data the constant needs.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-07035",
+   "mastery_state": "partial_unspecified",
+   "name": "Rate constant produced from the initial condition alone",
+   "observation": "A numerical constant is reported with only one data pair used.",
+   "scope": "shared",
+   "skill": "BC-SKL-07036",
+   "sources": [
+    "ced:144"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-07008",
+   "consistent_with": [
+    "BC-MIS-07023"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask what the number measures and whether the quantity is rising.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-07036",
+   "mastery_state": "partial_unspecified",
+   "name": "Constant reported with no direction or units",
+   "observation": "The number is given and the response does not say whether the quantity grows or decays.",
+   "scope": "shared",
+   "skill": "BC-SKL-07037",
+   "sources": [
+    "sg-23:2"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-07011",
+   "consistent_with": [
+    "BC-MIS-07020"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask which quantity the differential equation constrains.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-07037",
+   "mastery_state": "partial_unspecified",
+   "name": "Motion quantity reported one derivative away",
+   "observation": "A velocity is reported where a position was asked for, or the reverse.",
+   "scope": "shared",
+   "skill": "BC-SKL-07038",
+   "sources": [
+    "ced:144"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-07009",
+   "consistent_with": [
+    "BC-MIS-07026"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask which values of the quantity make the rate positive.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-07040",
+   "mastery_state": "partial_unspecified",
+   "name": "Correct limit with no sign argument",
+   "observation": "The limiting value is right and nothing says why solutions move toward it from the given start.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-07041",
+   "sources": [
+    "ced:145"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetype": "BC-QA-07009",
+   "consistent_with": [
+    "BC-MIS-07023"
+   ],
+   "created": "2026-09-19",
+   "distinguish_by": "Ask what each number measures and in what units.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-07042",
+   "mastery_state": "partial_unspecified",
+   "name": "Two correct values with no interpretation",
+   "observation": "The capacity and the fastest change value are right and neither is read back into the situation.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-07043",
+   "sources": [
+    "sg-23:2"
+   ],
+   "updated": "2026-09-19"
+  }
+ ]
+}

@@ -19,7 +19,7 @@ Counters are regenerated from `qa/12_report.py`; narrative status is updated by 
 | 3 | unit fan-out | done 2026-09-19 (10 units, 541 skills, 134 archetypes) |
 | 4 | official FRQ, scoring, sample indexing | done 2026-09-19 (249 FRQ part records over 2012 partial, 2013 to 2015, 2018, 2019, 2021 to 2026; 91 MCQ records; 69 point types; 38 Chief Reader errors) |
 | 5 | archetypes, points, misconceptions, diagnostics synthesis | done 2026-09-19 (129 active archetypes in 72 families, 17 difficulty factors, 945 edges with 0 cycles, 57 duplicate records retired) |
-| 6 | evidence files, skeptic pass, closure | skeptic pass done (fixes applied: inverted BC-ERR-99030 instance, skill tag policy, citation sync, adaptive metadata rewritten for all 541 skills); intra-unit edges for Units 8, 9, 10 authored; 1226 edges, 0 cycles |
+| 6 | evidence files, skeptic pass, closure | skeptic pass done (fixes applied: inverted BC-ERR-99030 instance, skill tag policy, citation sync, adaptive metadata rewritten for all 541 skills); intra-unit edges for Units 8, 9, 10 authored; error causes enriched for all 390 active errors; diagnostic signals cover every active skill; independent-assessability flag added; mastery-state vocabulary unified |
 
 ## Counters (from qa/last_report.json, 2026-09-19)
 
@@ -39,7 +39,7 @@ Counters are regenerated from `qa/12_report.py`; narrative status is updated by 
 | scoring_points.json:point_types | 69 |
 | errors.json:errors | 424 |
 | misconceptions.json:misconceptions | 236 |
-| diagnostic_signals.json:signals | 239 |
+| diagnostic_signals.json:signals | 711 |
 | taxonomies.json:representations | 14 |
 | taxonomies.json:difficulty_factors | 17 |
 | taxonomies.json:command_verbs | 29 |
@@ -49,7 +49,7 @@ Counters are regenerated from `qa/12_report.py`; narrative status is updated by 
 | cache:documents_ok | 97 |
 | cache:documents_missing | 60 |
 
-QA: all 12 checks pass (00 to 10 plus 13_adaptive); 11_freshness is network-only and run on demand.
+QA: all 13 checks pass (00 to 10 plus 13_adaptive and 14_diagnosis); 11_freshness is network-only and run on demand.
 
 ## Sources and years
 

@@ -1,0 +1,2078 @@
+{
+ "registry": "skills",
+ "skills": [
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-02001 (a change in the quantity taken to be the rate)",
+     "BC-SKL-02002 (the two point form, which uses x minus a in place of h)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-02002 (the difference quotient must be written for a given rule before any limit is taken, which isolates the increment form)"
+    ],
+    "mastered_if": "The quotient of f(a plus h) minus f(a) by h is written with the shifted input evaluated as a function value rather than distributed, and the quotient is then evaluated to a number for the given a and h, so both the difference and the division are visible in the work (BC-ERR-02001 absent).",
+    "next_dependent_skills": [
+     "BC-SKL-02006"
+    ],
+    "partially_mastered_if": "The shifted and base values are subtracted correctly but the division by h is omitted, which is BC-ERR-02001 and, in the 2025 guidelines, leaves the answer point unearned because a difference alone is not a rate.",
+    "prerequisite_gap_if": "f(a plus h) cannot be identified as a single function value at a shifted input, which is a gap at BC-PRQ-02005, and inability to reduce the expanded numerator is BC-PRQ-02001 rather than a rate gap.",
+    "remediation_target": "BC-MIS-02001 (the division that turns a change into a rate) for the conceptual failure; BC-PRQ-02005 (reading a function value at a shifted input) for the procedural failure"
+   },
+   "archetypes": [],
+   "assessability_basis": "no archetype requiring at most two skills names this skill; assessable only inside multi-skill parts",
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-02001"
+   ],
+   "concept": "BC-CON-02001",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-02006"
+   ],
+   "description_formal": "Given f, a base point a, and an increment h, compute the quotient of f(a plus h) minus f(a) by h.",
+   "description_plain": "Use the quotient of the change in the function over an increment added to the base point.",
+   "diagnostic_signals": [
+    "BC-SIG-02201",
+    "BC-SIG-02202"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-2A1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-02001",
+   "independently_assessable": false,
+   "learning_objectives": [
+    "BC-LO-CHA-2A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-02001"
+   ],
+   "name": "Compute an average rate of change from the increment difference quotient",
+   "notation": "the quotient of f(a plus h) minus f(a) by h",
+   "official_evidence": [
+    "BC-FRQ-2025-Q1-B"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-02001",
+    "BC-PRQ-02005"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:60"
+   ],
+   "topic": "BC-TOP-0201",
+   "unit": "BC-UNIT-02",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-02001 (the difference reported as the rate)",
+     "BC-SKL-02001 (the increment form, which uses h)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-02001 (a table where the two inputs are named and the difference and the quotient must both appear)"
+    ],
+    "mastered_if": "The quotient of f(x) minus f(a) by x minus a is formed for the two named inputs, evaluated to a number when values are supplied, and the numerator and denominator are taken in matching order so the sign of the result is right, with the division present in the work (BC-ERR-02001 absent).",
+    "next_dependent_skills": [
+     "BC-SKL-02007"
+    ],
+    "partially_mastered_if": "The two function values are subtracted correctly and the denominator is written as x rather than as x minus a, or the difference alone is reported, which is BC-ERR-02001.",
+    "prerequisite_gap_if": "The average rate over an interval cannot be computed from a formula or a table at all, which is a gap at BC-SKL-01001 rather than a difficulty with this notation.",
+    "remediation_target": "BC-MIS-02001 (why the quotient and not the difference answers a rate question) for the conceptual failure; BC-SKL-01001 (forming an average rate over an interval) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-02001"
+   ],
+   "assessability_basis": "no archetype requiring at most two skills names this skill; assessable only inside multi-skill parts",
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-02001"
+   ],
+   "concept": "BC-CON-02001",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-02007"
+   ],
+   "description_formal": "Given f and two inputs x and a, compute the quotient of f(x) minus f(a) by x minus a.",
+   "description_plain": "Use the quotient of the change in the function over the change in the input between two named inputs.",
+   "diagnostic_signals": [
+    "BC-SIG-02203",
+    "BC-SIG-02204"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-2A1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-02002",
+   "independently_assessable": false,
+   "learning_objectives": [
+    "BC-LO-CHA-2A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-02001"
+   ],
+   "name": "Compute an average rate of change from the two point difference quotient",
+   "notation": "the quotient of f(x) minus f(a) by x minus a",
+   "official_evidence": [
+    "BC-FRQ-2014-Q1-A",
+    "BC-FRQ-2014-Q4-A"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-SKL-01001"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-03"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:60",
+    "sg-25:11"
+   ],
+   "topic": "BC-TOP-0201",
+   "unit": "BC-UNIT-02",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-02008 (units treated as decoration)",
+     "BC-SKL-02015 (units of an estimated derivative, the same compound structure at an instant)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-02001 (the value with supporting work and the units are separately scored on a contextual table)"
+    ],
+    "mastered_if": "The sentence names the modelled quantity, says that it changed on average at that many units per unit of the independent variable over the stated interval, and attaches the compound units of the quantity divided by the units of the input rather than the units of the quantity alone (BC-ERR-02003 absent).",
+    "next_dependent_skills": [
+     "BC-SKL-04002"
+    ],
+    "partially_mastered_if": "The value and the interval are reported correctly but the units are copied from the table header, so the compound form is missing, which is BC-ERR-02003 and costs a point that is scored independently of the value.",
+    "prerequisite_gap_if": "The average rate itself is wrong or reported as a difference, which is a BC-SKL-01001 gap rather than an interpretation failure.",
+    "remediation_target": "BC-MIS-02008 (what the denominator of the quotient measures) for the conceptual failure; BC-SKL-01001 (computing the rate being interpreted) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-02001"
+   ],
+   "assessability_basis": "no archetype requiring at most two skills names this skill; assessable only inside multi-skill parts",
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-02003"
+   ],
+   "concept": "BC-CON-02001",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-04002"
+   ],
+   "description_formal": "Given a contextual model, state the meaning of the average rate of change over the interval and give its units as the units of the quantity divided by the units of the independent variable.",
+   "description_plain": "Say what the computed average rate means for the situation and attach its units.",
+   "diagnostic_signals": [
+    "BC-SIG-02205",
+    "BC-SIG-02206"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-2A1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-02003",
+   "independently_assessable": false,
+   "learning_objectives": [
+    "BC-LO-CHA-2A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-02008"
+   ],
+   "name": "Interpret an average rate of change in context with units",
+   "notation": "",
+   "official_evidence": [
+    "BC-FRQ-2014-Q1-A",
+    "BC-FRQ-2014-Q4-A"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-SKL-01001"
+   ],
+   "representations": [
+    "BC-REP-05",
+    "BC-REP-04"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:60",
+    "sg-25:11"
+   ],
+   "topic": "BC-TOP-0201",
+   "unit": "BC-UNIT-02",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01017 (an average over an interval read as the rate at a point in it)",
+     "BC-SKL-02005 (writing the instantaneous rate as a limit, which follows this distinction)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-02012 (a derivative presented in one notation must be said to denote a rate at an instant, which forces the contrast)"
+    ],
+    "mastered_if": "The response states that an average rate is computed over an interval of nonzero length while an instantaneous rate is defined at a single input as a limit of such averages, and applies the distinction to a specific question by saying which of the two the number produced answers.",
+    "next_dependent_skills": [
+     "BC-SKL-02005"
+    ],
+    "partially_mastered_if": "The two are described as different but the description of the instantaneous rate omits the limiting process, so it reads as an average over a very small interval rather than as a limit.",
+    "prerequisite_gap_if": "The rate at a point cannot be described as a limit of averages at all, which is a gap at BC-SKL-01003.",
+    "remediation_target": "BC-MIS-01017 (what changes when the interval closes to a point) for the conceptual failure; BC-SKL-01003 (the limit description of an instantaneous rate) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-02012"
+   ],
+   "assessability_basis": "no archetype requiring at most two skills names this skill; assessable only inside multi-skill parts",
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-02002",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-02005"
+   ],
+   "description_formal": "State that an average rate of change is computed over an interval of nonzero length while an instantaneous rate of change is defined at a single input by a limit of such averages.",
+   "description_plain": "Say which of the two describes an interval and which describes a single moment.",
+   "diagnostic_signals": [
+    "BC-SIG-02207",
+    "BC-SIG-02208"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-2B1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-02004",
+   "independently_assessable": false,
+   "learning_objectives": [
+    "BC-LO-CHA-2A",
+    "BC-LO-CHA-2B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [],
+   "name": "Distinguish an average rate of change from an instantaneous rate of change",
+   "notation": "",
+   "official_evidence": [
+    "BC-FRQ-2025-Q1-B"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-SKL-01003"
+   ],
+   "representations": [
+    "BC-REP-04"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:60"
+   ],
+   "topic": "BC-TOP-0201",
+   "unit": "BC-UNIT-02",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-02003 (the limit symbol treated as decoration on the last line)",
+     "BC-SKL-02004 (the verbal distinction, which this skill writes in symbols)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-02003 (a limit in difference quotient form must be recognised as a derivative, which depends on this form being held)"
+    ],
+    "mastered_if": "The instantaneous rate of f at a is written as a limit of a difference quotient, either as h tends to zero or as x tends to a, with the limit symbol attached to the whole quotient, and the response states that the rate exists only when that limit exists.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The difference quotient is written correctly but the limit symbol is placed on the final value rather than on the quotient, or the existence condition on the limit is not stated.",
+    "prerequisite_gap_if": "Limit notation itself cannot be written with the variable and the arrow, which is a BC-SKL-01005 gap, and being unable to describe a rate at a point as a limit of averages is BC-SKL-01003.",
+    "remediation_target": "BC-MIS-02003 (what the limit symbol governs) for the conceptual failure; BC-SKL-01005 (writing a limit statement) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-02003"
+   ],
+   "assessability_basis": "isolated by BC-QA-02003",
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-02002",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Write the instantaneous rate of change of f at a as the limit of a difference quotient as the increment tends to zero, or as the second input tends to a, and state that the limit must exist.",
+   "description_plain": "Write the rate at a point as the limit of the difference quotient.",
+   "diagnostic_signals": [
+    "BC-SIG-02209",
+    "BC-SIG-02210"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-2B1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-02005",
+   "independently_assessable": true,
+   "learning_objectives": [
+    "BC-LO-CHA-2B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [],
+   "name": "Express an instantaneous rate of change as a limit of average rates",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-SKL-01003",
+    "BC-SKL-01005",
+    "BC-SKL-02004"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:60"
+   ],
+   "topic": "BC-TOP-0201",
+   "unit": "BC-UNIT-02",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-02003 (the limit symbol as an ornament on the answer)",
+     "BC-SKL-02008 (the derivative function, which replaces a by the variable)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-02002 (the difference quotient inside a limit is scored separately from the simplification and the value)"
+    ],
+    "mastered_if": "f prime of a is written as the limit as h tends to zero of the quotient of f(a plus h) minus f(a) by h, with the limit symbol on every line that still contains h (BC-ERR-02006 absent), and the object produced is a number at the fixed input a rather than a function (BC-ERR-02030 absent).",
+    "next_dependent_skills": [
+     "BC-SKL-02008",
+     "BC-SKL-02035"
+    ],
+    "partially_mastered_if": "The quotient is correct and the limit symbol appears only on the final line, which is BC-ERR-02006 and costs a notation point where the definition itself is assessed.",
+    "prerequisite_gap_if": "f(a plus h) is not read as one function value at a shifted input, which is a gap at BC-PRQ-02005, and inability to form the quotient at all is BC-SKL-02001.",
+    "remediation_target": "BC-MIS-02003 (what each intermediate line asserts before the limit is taken) for the conceptual failure; BC-SKL-02001 (forming the increment quotient) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-02002"
+   ],
+   "assessability_basis": "no archetype requiring at most two skills names this skill; assessable only inside multi-skill parts",
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-02006",
+    "BC-ERR-02030"
+   ],
+   "concept": "BC-CON-02002",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-02008",
+    "BC-SKL-02035"
+   ],
+   "description_formal": "Write f prime of a as the limit as h tends to zero of the quotient of f(a plus h) minus f(a) by h.",
+   "description_plain": "Write the limit as the increment tends to zero of the difference quotient at the base point.",
+   "diagnostic_signals": [
+    "BC-SIG-02211",
+    "BC-SIG-02212"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-2B1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-02006",
+   "independently_assessable": false,
+   "learning_objectives": [
+    "BC-LO-CHA-2B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-02003"
+   ],
+   "name": "Write the derivative at a point using the increment form of the limit",
+   "notation": "",
+   "official_evidence": [
+    "BC-MCQ-SAMPLE-006"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-02005",
+    "BC-SKL-02001"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:60",
+    "ced:61"
+   ],
+   "topic": "BC-TOP-0202",
+   "unit": "BC-UNIT-02",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-02003 (the limit symbol attached to the answer only)",
+     "BC-SKL-02006 (the increment form of the same definition)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-02002 (the derivative is produced from the definition, so whichever form is written must carry the limit correctly)"
+    ],
+    "mastered_if": "f prime of a is written as the limit as x tends to a of the quotient of f(x) minus f(a) by x minus a, and the response states that this form and the increment form describe the same number, naming what plays the role of h in each.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The two point form is written correctly but the equivalence with the increment form is asserted without saying that x minus a is the increment, so the two are held as separate formulas.",
+    "prerequisite_gap_if": "The two point difference quotient cannot be formed at all, which is a BC-SKL-02002 gap, and misreading which value is subtracted is BC-PRQ-02005.",
+    "remediation_target": "BC-MIS-02003 (the limit as governing the whole quotient) for the conceptual failure; BC-SKL-02002 (forming the two point quotient) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-02002"
+   ],
+   "assessability_basis": "no archetype requiring at most two skills names this skill; assessable only inside multi-skill parts",
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-02002",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Write f prime of a as the limit as x tends to a of the quotient of f(x) minus f(a) by x minus a, and state that the two forms are equivalent.",
+   "description_plain": "Write the limit as the second input tends to the base point.",
+   "diagnostic_signals": [
+    "BC-SIG-02213",
+    "BC-SIG-02214"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-2B1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-02007",
+   "independently_assessable": false,
+   "learning_objectives": [
+    "BC-LO-CHA-2B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [],
+   "name": "Write the derivative at a point using the two point form of the limit",
+   "notation": "",
+   "official_evidence": [
+    "BC-MCQ-SAMPLE-006"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-02005",
+    "BC-SKL-02002"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:60",
+    "ced:61"
+   ],
+   "topic": "BC-TOP-0202",
+   "unit": "BC-UNIT-02",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-02015 (derivative notations read as interchangeable labels)",
+     "BC-MIS-02014 (the derivative value and the function value at a point treated as the same object)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-02012 (a derivative supplied in one notation must be written in another or said to denote something, which is the conversion itself)"
+    ],
+    "mastered_if": "For y equal to f(x) the same derivative is written as dy by dx, as f prime of x, and as y prime, the variable of differentiation is named, and the response says whether the symbol denotes a function or its value at a point, without splitting the Leibniz form into separate quantities (BC-ERR-02029 absent) or handing back a function where a number was requested (BC-ERR-02030 absent).",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The three forms are produced but the independent variable is not named, so the Leibniz and prime forms are treated as labels for one another rather than as statements about a particular variable.",
+    "prerequisite_gap_if": "Prime and Leibniz conventions are mixed inside one expression, or a derivative is written in a form that names no independent variable, which is a gap at BC-PRQ-02004.",
+    "remediation_target": "BC-MIS-02015 (what the notation names, including the variable and any point of evaluation) for the conceptual failure; BC-PRQ-02004 (prime and Leibniz conventions) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-02012"
+   ],
+   "assessability_basis": "no archetype requiring at most two skills names this skill; assessable only inside multi-skill parts",
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-02029",
+    "BC-ERR-02030"
+   ],
+   "concept": "BC-CON-02004",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "For y equal to f(x), write the same derivative as dy by dx, as f prime of x, and as y prime, and state which variable the differentiation is with respect to.",
+   "description_plain": "Move between the prime form, the Leibniz form, and the y prime form.",
+   "diagnostic_signals": [
+    "BC-SIG-02215",
+    "BC-SIG-02216"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-2B3",
+    "BC-EK-CHA-2B4"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-02010",
+   "independently_assessable": false,
+   "learning_objectives": [
+    "BC-LO-CHA-2B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-02015"
+   ],
+   "name": "Convert among the notations for a derivative",
+   "notation": "dy by dx; f prime of x; y prime",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-02004"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-04"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:61"
+   ],
+   "topic": "BC-TOP-0202",
+   "unit": "BC-UNIT-02",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-02015 (notations treated as interchangeable labels)",
+     "BC-SKL-02017 (estimating the derivative from a graph, which produces rather than converts the value)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-02012 (a derivative in one notation must be presented in another or described in words)"
+    ],
+    "mastered_if": "The same derivative information is produced in the other representations, as a slope drawn or described on the graph, as a value in a table at the named input, and as a sentence naming the rate and its variable, with the three presentations agreeing at the same input and the Leibniz symbol not split into parts (BC-ERR-02029 absent).",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "Two of the three presentations agree while the third describes the function rather than its derivative, so the object is carried across representations inconsistently.",
+    "prerequisite_gap_if": "A limit fact cannot be matched across graph, table, and expression at all, which is a gap at BC-SKL-01036 rather than a difficulty specific to derivatives.",
+    "remediation_target": "BC-MIS-02015 (what object each representation shows) for the conceptual failure; BC-SKL-01036 (matching one fact across representations) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-02012"
+   ],
+   "assessability_basis": "no archetype requiring at most two skills names this skill; assessable only inside multi-skill parts",
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-02029"
+   ],
+   "concept": "BC-CON-02004",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a derivative presented in one representation, produce the corresponding graphical, numerical, or verbal presentation of the same information.",
+   "description_plain": "Show the same derivative information as a slope on a graph, as a value in a table, and as a sentence.",
+   "diagnostic_signals": [
+    "BC-SIG-02217",
+    "BC-SIG-02218"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-2B4"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-02011",
+   "independently_assessable": false,
+   "learning_objectives": [
+    "BC-LO-CHA-2B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-02015"
+   ],
+   "name": "Represent a derivative graphically, numerically, and verbally",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-SKL-01036"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02",
+    "BC-REP-03",
+    "BC-REP-04"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:61"
+   ],
+   "topic": "BC-TOP-0202",
+   "unit": "BC-UNIT-02",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-02014 (the derivative value and the function value treated as playing the same role)",
+     "BC-SKL-02013 (writing the tangent line, which uses this interpretation)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-02011 (the slope from the derivative and the point of tangency are scored separately, which exposes a swap)"
+    ],
+    "mastered_if": "The response states that f prime of a is the slope of the line tangent to the graph of f at the point with input a, and uses that number as a slope while f(a) is used as a height, so the function value is never placed in the slope position (BC-ERR-02027 absent).",
+    "next_dependent_skills": [
+     "BC-SKL-02013"
+    ],
+    "partially_mastered_if": "The sentence identifying the derivative with the tangent slope is correct but the two numbers computed at the point are then used interchangeably, so the statement is held and not applied.",
+    "prerequisite_gap_if": "A correct derivative value is produced and the point slope form cannot be written, which is a gap at BC-PRQ-02003 rather than a misunderstanding of what the derivative means.",
+    "remediation_target": "BC-MIS-02014 (which of the two numbers has the units of a slope) for the conceptual failure; BC-PRQ-02003 (slope and point slope form) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-02011"
+   ],
+   "assessability_basis": "isolated by BC-QA-02011",
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-02027"
+   ],
+   "concept": "BC-CON-02005",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-02013"
+   ],
+   "description_formal": "State that the derivative of a function at a point is the slope of the line tangent to the graph of the function at that point.",
+   "description_plain": "Say that the derivative value is the steepness of the line touching the curve there.",
+   "diagnostic_signals": [
+    "BC-SIG-02219",
+    "BC-SIG-02220"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-2C1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-02012",
+   "independently_assessable": true,
+   "learning_objectives": [
+    "BC-LO-CHA-2C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-02014"
+   ],
+   "name": "Interpret the derivative at a point as the slope of the tangent line",
+   "notation": "",
+   "official_evidence": [
+    "BC-FRQ-2019-Q5-A",
+    "BC-FRQ-2013-Q4-D",
+    "BC-FRQ-2015-Q5-A",
+    "BC-FRQ-2026-Q3-B",
+    "BC-MCQ-PE2012-019"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-02003"
+   ],
+   "representations": [
+    "BC-REP-02",
+    "BC-REP-04"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:61"
+   ],
+   "topic": "BC-TOP-0202",
+   "unit": "BC-UNIT-02",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-02001 (attention on the arithmetic rather than on which values enter it)",
+     "BC-SKL-02014 (computing the estimate once the rows are chosen)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-02001 (the supporting work must use the values the question specifies, so a wider interval loses the point)"
+    ],
+    "mastered_if": "The interval named in the question is used when one is named, and otherwise the pair of tabulated inputs immediately either side of the point of interest, with the chosen rows identified before any arithmetic and wider intervals rejected (BC-ERR-02004 absent).",
+    "next_dependent_skills": [
+     "BC-SKL-02014"
+    ],
+    "partially_mastered_if": "A bracketing pair is chosen where the question named a different interval, or a pair adjacent on one side only is used, so the rule for selection is partly held.",
+    "prerequisite_gap_if": "The rows cannot be sorted relative to the target input, which is a table reading gap at BC-SKL-01016.",
+    "remediation_target": "BC-MIS-02001 (which pair of values a rate at a point is built from) for the conceptual failure; BC-SKL-01016 (reading rows on each side of a target) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-02001"
+   ],
+   "assessability_basis": "no archetype requiring at most two skills names this skill; assessable only inside multi-skill parts",
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-02004"
+   ],
+   "concept": "BC-CON-02007",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-02014"
+   ],
+   "description_formal": "Identify which two tabulated inputs the estimate must use, following the interval named in the question when one is named and otherwise the pair that brackets the point of interest.",
+   "description_plain": "Choose the tabulated inputs the question names, or the pair that brackets the point.",
+   "diagnostic_signals": [
+    "BC-SIG-02221",
+    "BC-SIG-02222"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-2D1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-02016",
+   "independently_assessable": false,
+   "learning_objectives": [
+    "BC-LO-CHA-2D"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-02001"
+   ],
+   "name": "Select the interval of a table that supports the requested estimate",
+   "notation": "",
+   "official_evidence": [
+    "BC-FRQ-2013-Q3-A",
+    "BC-FRQ-2021-Q1-A",
+    "BC-FRQ-2022-Q4-A",
+    "BC-FRQ-2015-Q3-A",
+    "BC-FRQ-2024-Q1-A",
+    "BC-FRQ-2025-Q3-A",
+    "BC-FRQ-2026-Q1-A",
+    "BC-FRQ-2018-Q4-A"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-SKL-01016"
+   ],
+   "representations": [
+    "BC-REP-03"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:62",
+    "sg-25:11"
+   ],
+   "topic": "BC-TOP-0203",
+   "unit": "BC-UNIT-02",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-02014 (the plotted height used where a slope is wanted)",
+     "BC-SKL-02012 (the tangent slope interpretation this reading depends on)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-02009 (values of functions and of their derivatives are read from graphs and then used in a rule, so a height read as a slope propagates visibly)"
+    ],
+    "mastered_if": "A tangent line is placed at the named point on the curve and its slope read from a rise and a run over a nearby interval, with the value reported as a slope and not as the height of the curve, and the sign of the slope matching the direction of the curve there.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The tangent direction is read correctly but the value is taken from a secant over a wide interval without acknowledging it as an approximation, or the rise and run are read from mismatched axis scales.",
+    "prerequisite_gap_if": "The height approached at a named input cannot be read from the graph at all, which is a graph reading gap at BC-SKL-01009.",
+    "remediation_target": "BC-MIS-02014 (the derivative as a slope rather than a height) for the conceptual failure; BC-SKL-01009 (reading the graph at a named input) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-02009"
+   ],
+   "assessability_basis": "no archetype requiring at most two skills names this skill; assessable only inside multi-skill parts",
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-02007",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a graph of a function, estimate the derivative at an input by reading the slope of the tangent line there, for instance from a rise and a run over a nearby interval.",
+   "description_plain": "Read the steepness of the curve at the point from the graph.",
+   "diagnostic_signals": [
+    "BC-SIG-02223",
+    "BC-SIG-02224"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-2D1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-02017",
+   "independently_assessable": false,
+   "learning_objectives": [
+    "BC-LO-CHA-2D"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [],
+   "name": "Estimate a derivative at a point from a graph",
+   "notation": "",
+   "official_evidence": [
+    "BC-FRQ-2026-Q4-A"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-SKL-01009"
+   ],
+   "representations": [
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:62"
+   ],
+   "topic": "BC-TOP-0203",
+   "unit": "BC-UNIT-02",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-02006 (the implication read as running both ways)",
+     "BC-MIS-02007 (differentiability judged from the appearance of the curve)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-02005 (a function continuous at a point where the existence of the derivative must be decided with a reason)"
+    ],
+    "mastered_if": "A specific function is produced that is continuous at a point where it has no derivative, such as an absolute value at its corner or a cube root at its vertical tangent, the continuity at that point is checked, and the response states that continuity does not imply differentiability (BC-ERR-02012 absent).",
+    "next_dependent_skills": [
+     "BC-SKL-08057"
+    ],
+    "partially_mastered_if": "A correct example is named but the failure of the derivative is supported only by how the graph looks, which is BC-ERR-02013, so the example is right and the reason is not tied to the one sided slopes.",
+    "prerequisite_gap_if": "A jump discontinuity cannot be classified, so the example offered is discontinuous and settles nothing about the converse, which is a gap at BC-SKL-01040.",
+    "remediation_target": "BC-MIS-02006 (the direction of the implication) for the conceptual failure; BC-SKL-02022 (producing the one sided slopes that make the example work) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-02005"
+   ],
+   "assessability_basis": "no archetype requiring at most two skills names this skill; assessable only inside multi-skill parts",
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-02012",
+    "BC-ERR-02013"
+   ],
+   "concept": "BC-CON-02009",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-08057"
+   ],
+   "description_formal": "Produce a function continuous at a point at which it has no derivative, such as an absolute value at its corner or a cube root at its vertical tangent, and state that continuity does not imply differentiability.",
+   "description_plain": "Produce an example showing that the converse of the implication fails.",
+   "diagnostic_signals": [
+    "BC-SIG-02225",
+    "BC-SIG-02226"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-2A2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-02021",
+   "independently_assessable": false,
+   "learning_objectives": [
+    "BC-LO-FUN-2A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-02006",
+    "BC-MIS-02007"
+   ],
+   "name": "Give a continuous function that fails to be differentiable at a point",
+   "notation": "",
+   "official_evidence": [
+    "BC-MCQ-PE2012-011"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-SKL-01040"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:63"
+   ],
+   "topic": "BC-TOP-0204",
+   "unit": "BC-UNIT-02",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-02007 (a vertical tangent read as a slope)",
+     "BC-SKL-02022 (a corner, where the one sided slopes are finite and unequal)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-02005 (the existence of the derivative at a continuous point must be decided with a reason, which separates a corner from a vertical tangent)"
+    ],
+    "mastered_if": "The response states that the difference quotient is unbounded where the tangent line is vertical, so no derivative value exists although the function is continuous there, and does not report the derivative as zero at such a point (BC-ERR-02014 absent).",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The point is identified as one where the derivative fails to exist but the reason given is the appearance of the curve rather than the unbounded difference quotient, so the verdict is right and the mechanism is not named.",
+    "prerequisite_gap_if": "Nonexistence of a limit from unbounded values cannot be recognised, which is a gap at BC-SKL-01012 rather than a confusion about tangent orientation.",
+    "remediation_target": "BC-MIS-02007 (what the difference quotient does at a vertical tangent) for the conceptual failure; BC-SKL-01012 (unbounded behaviour and nonexistence) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-02005"
+   ],
+   "assessability_basis": "no archetype requiring at most two skills names this skill; assessable only inside multi-skill parts",
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-02014"
+   ],
+   "concept": "BC-CON-02009",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Recognise that where the tangent line is vertical the difference quotient is unbounded, so the derivative does not exist although the function is continuous there.",
+   "description_plain": "Say that a tangent line with no slope means no derivative.",
+   "diagnostic_signals": [
+    "BC-SIG-02227",
+    "BC-SIG-02228"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-2A2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-02023",
+   "independently_assessable": false,
+   "learning_objectives": [
+    "BC-LO-FUN-2A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-02007"
+   ],
+   "name": "Identify a vertical tangent as a failure of differentiability",
+   "notation": "",
+   "official_evidence": [
+    "BC-MCQ-SAMPLE-003"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-SKL-01012"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:63"
+   ],
+   "topic": "BC-TOP-0204",
+   "unit": "BC-UNIT-02",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-02006 (the two properties treated as equivalent)",
+     "BC-SKL-02021 (the converse direction, where continuity does not deliver a derivative)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-02004 (the implication between the two properties is the object of the argument)"
+    ],
+    "mastered_if": "Given a discontinuity at a point, the response concludes that the function is not differentiable there and names the contrapositive of the implication from differentiability to continuity as the reason, with the discontinuity itself established from the three conditions.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The conclusion is correct but the reason is given as the graph being broken rather than as the contrapositive, so the logical step is not exhibited.",
+    "prerequisite_gap_if": "The discontinuity is not established in the first place because the three conditions were not tested, which is a gap at BC-SKL-01044, and not holding the implication at all is BC-SKL-02019.",
+    "remediation_target": "BC-MIS-02006 (the implication and its contrapositive) for the conceptual failure; BC-SKL-01044 (establishing the discontinuity) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-02004"
+   ],
+   "assessability_basis": "no archetype requiring at most two skills names this skill; assessable only inside multi-skill parts",
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-02008",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given that a function is discontinuous at a point, conclude that it is not differentiable there, as the contrapositive of the implication that differentiability gives continuity.",
+   "description_plain": "Read the implication backwards to rule out a derivative where the function breaks.",
+   "diagnostic_signals": [
+    "BC-SIG-02229",
+    "BC-SIG-02230"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-2A1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-02024",
+   "independently_assessable": false,
+   "learning_objectives": [
+    "BC-LO-FUN-2A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-02006"
+   ],
+   "name": "Conclude non-differentiability from a discontinuity",
+   "notation": "",
+   "official_evidence": [
+    "BC-MCQ-CED-002"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-SKL-01044",
+    "BC-SKL-02019"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:63"
+   ],
+   "topic": "BC-TOP-0204",
+   "unit": "BC-UNIT-02",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-02002 (the definition copied around a rule based answer)",
+     "BC-SKL-02025 (the rule itself, which is the destination rather than the method here)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-02002 (the derivative must come from the difference quotient, so a rule based answer is exposed)"
+    ],
+    "mastered_if": "For a specific power function the difference quotient is written, the numerator expanded, the factor of h divided out before any substitution (BC-ERR-02005 absent), and the limit evaluated to give the power rule result for that exponent, with the derivation carried out rather than the rule applied and the definition written around it (BC-ERR-02008 absent).",
+    "next_dependent_skills": [
+     "BC-SKL-03002",
+     "BC-SKL-05014",
+     "BC-SKL-06040"
+    ],
+    "partially_mastered_if": "The expansion is correct and the limit evaluated, but one binomial term is mishandled so the coefficient obtained differs from the exponent, leaving the structure of the derivation intact.",
+    "prerequisite_gap_if": "The difference quotient cannot be evaluated for any rule, which is a gap at BC-SKL-02009, and inability to reduce the expanded numerator is BC-PRQ-02001.",
+    "remediation_target": "BC-MIS-02002 (what the definition is doing in the derivation) for the conceptual failure; BC-SKL-02009 (evaluating the difference quotient) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-02002"
+   ],
+   "assessability_basis": "no archetype requiring at most two skills names this skill; assessable only inside multi-skill parts",
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-02005",
+    "BC-ERR-02008"
+   ],
+   "concept": "BC-CON-02010",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-03002",
+    "BC-SKL-05014",
+    "BC-SKL-06040"
+   ],
+   "description_formal": "Apply the definition of the derivative to a specific power function, expand and simplify the difference quotient, and obtain the power rule result for that exponent.",
+   "description_plain": "Get the rule for a particular power out of the difference quotient.",
+   "diagnostic_signals": [
+    "BC-SIG-02231",
+    "BC-SIG-02232"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-3A1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-02027",
+   "independently_assessable": false,
+   "learning_objectives": [
+    "BC-LO-FUN-3A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-02002"
+   ],
+   "name": "Derive a power rule case from the limit definition",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-SKL-02009"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:64"
+   ],
+   "topic": "BC-TOP-0205",
+   "unit": "BC-UNIT-02",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-02009 (constants not seen as powers of the variable with exponent zero)",
+     "BC-SKL-02029 (the constant multiple rule, where the constant survives as a factor)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-02006 (a polynomial where the constant term is one of the scored pieces of the derivative)"
+    ],
+    "mastered_if": "The derivative of a constant function is given as zero at every input, and constant terms inside a larger expression are sent to zero rather than copied into the derivative (BC-ERR-02016 absent).",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The isolated constant is differentiated to zero while a constant term inside a polynomial is carried through unchanged, which is BC-ERR-02016.",
+    "prerequisite_gap_if": "The derivative is written in a form that names no independent variable, so it is unclear what is being held constant, which is a gap at BC-PRQ-02004.",
+    "remediation_target": "BC-MIS-02009 (a constant as a power with exponent zero) for the conceptual failure; BC-PRQ-02004 (naming the variable of differentiation) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-02006"
+   ],
+   "assessability_basis": "no archetype requiring at most two skills names this skill; assessable only inside multi-skill parts",
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-02016"
+   ],
+   "concept": "BC-CON-02011",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "State that the derivative of a constant function is zero at every input.",
+   "description_plain": "Give zero as the derivative of a constant.",
+   "diagnostic_signals": [
+    "BC-SIG-02233",
+    "BC-SIG-02234"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-3A2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-02028",
+   "independently_assessable": false,
+   "learning_objectives": [
+    "BC-LO-FUN-3A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-02009"
+   ],
+   "name": "Differentiate a constant function",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-02004"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:65"
+   ],
+   "topic": "BC-TOP-0206",
+   "unit": "BC-UNIT-02",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-02011 (differentiation assumed to distribute across a product, of which a constant factor is the easy case)",
+     "BC-SKL-02036 (the product rule, needed once both factors carry the variable)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-02006 (constants must be carried through a term by term differentiation)"
+    ],
+    "mastered_if": "For a constant times a differentiable function the derivative is written as the constant times the derivative of the function, the constant is carried unchanged rather than differentiated, and negative constants keep their sign through the step.",
+    "next_dependent_skills": [
+     "BC-SKL-02031",
+     "BC-SKL-02042"
+    ],
+    "partially_mastered_if": "The constant is pulled out correctly but is also applied a second time, or a negative constant loses its sign, so the structure holds and the coefficient is wrong.",
+    "prerequisite_gap_if": "Prime and Leibniz forms are mixed so the expression being differentiated is ambiguous, which is a gap at BC-PRQ-02004.",
+    "remediation_target": "BC-MIS-02011 (why a constant factor may be pulled out while a variable factor may not) for the conceptual failure; BC-PRQ-02004 (writing the derivative unambiguously) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-02006"
+   ],
+   "assessability_basis": "no archetype requiring at most two skills names this skill; assessable only inside multi-skill parts",
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-02011",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-02031",
+    "BC-SKL-02042"
+   ],
+   "description_formal": "For a constant times a differentiable function, write the derivative as the constant times the derivative of the function.",
+   "description_plain": "Pull the constant out and differentiate what remains.",
+   "diagnostic_signals": [
+    "BC-SIG-02235",
+    "BC-SIG-02236"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-3A2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-02029",
+   "independently_assessable": false,
+   "learning_objectives": [
+    "BC-LO-FUN-3A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [],
+   "name": "Apply the constant multiple rule",
+   "notation": "",
+   "official_evidence": [
+    "BC-FRQ-2013-Q3-D",
+    "BC-FRQ-2026-Q4-A",
+    "BC-MCQ-CED-003"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-02004"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:65"
+   ],
+   "topic": "BC-TOP-0206",
+   "unit": "BC-UNIT-02",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-02011 (the term by term rule extended to products)",
+     "BC-SKL-02036 (the product rule, which the term by term habit displaces)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-02006 (an expression of several terms, where a term left undifferentiated or a lost sign shows directly)"
+    ],
+    "mastered_if": "For a sum or difference of differentiable functions the derivative is written as the sum or difference of the derivatives, every term is differentiated including constants, and the order of subtraction is preserved so signs survive into the result.",
+    "next_dependent_skills": [
+     "BC-SKL-02031"
+    ],
+    "partially_mastered_if": "Each term is differentiated correctly but a sign is dropped on a subtracted term, so the term by term structure is held and the combination is wrong.",
+    "prerequisite_gap_if": "The sum and difference limit theorems underlying the rule are not available, which is a gap at BC-SKL-01018.",
+    "remediation_target": "BC-MIS-02011 (where term by term differentiation is valid) for the conceptual failure; BC-SKL-01018 (the sum and difference limit theorems) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-02006"
+   ],
+   "assessability_basis": "no archetype requiring at most two skills names this skill; assessable only inside multi-skill parts",
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-02011",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-02031"
+   ],
+   "description_formal": "For a sum or difference of differentiable functions, write the derivative as the sum or difference of the derivatives.",
+   "description_plain": "Differentiate term by term.",
+   "diagnostic_signals": [
+    "BC-SIG-02237",
+    "BC-SIG-02238"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-3A2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-02030",
+   "independently_assessable": false,
+   "learning_objectives": [
+    "BC-LO-FUN-3A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [],
+   "name": "Apply the sum and difference rules",
+   "notation": "",
+   "official_evidence": [
+    "BC-FRQ-2022-Q3-C",
+    "BC-FRQ-2026-Q4-A"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-SKL-01018"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:65"
+   ],
+   "topic": "BC-TOP-0206",
+   "unit": "BC-UNIT-02",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-02009 (the power rule as a move on the exponent alone)",
+     "BC-SKL-02038 (deciding whether to expand a product first, which produces a polynomial to differentiate)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-02006 (a polynomial differentiated by rule, with an evaluation point when a value is demanded)"
+    ],
+    "mastered_if": "Each term of the polynomial is differentiated by the power rule with its coefficient carried through (BC-ERR-02015 absent), the constant term is sent to zero (BC-ERR-02016 absent), and the terms are recombined with their signs, giving a polynomial of degree one lower than the original.",
+    "next_dependent_skills": [
+     "BC-SKL-02036",
+     "BC-SKL-02038"
+    ],
+    "partially_mastered_if": "Most terms are correct while the constant term is copied into the derivative, which is BC-ERR-02016, or one term has its exponent lowered without the coefficient factor, which is BC-ERR-02015.",
+    "prerequisite_gap_if": "The power rule itself is not held on a single term, which is a BC-SKL-02025 gap, and dropping a constant factor is BC-SKL-02029 rather than a polynomial specific failure.",
+    "remediation_target": "BC-MIS-02009 (the coefficient the rule produces) for the conceptual failure; BC-SKL-02025 (the power rule on one term) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-02006"
+   ],
+   "assessability_basis": "no archetype requiring at most two skills names this skill; assessable only inside multi-skill parts",
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-02015",
+    "BC-ERR-02016"
+   ],
+   "concept": "BC-CON-02011",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-02036",
+    "BC-SKL-02038"
+   ],
+   "description_formal": "Differentiate a polynomial by applying the power rule to each term together with the constant multiple, sum, and difference properties.",
+   "description_plain": "Combine the power rule with the term by term and constant multiple rules.",
+   "diagnostic_signals": [
+    "BC-SIG-02239",
+    "BC-SIG-02240"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-3A3"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-02031",
+   "independently_assessable": false,
+   "learning_objectives": [
+    "BC-LO-FUN-3A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-02009"
+   ],
+   "name": "Differentiate a polynomial function",
+   "notation": "",
+   "official_evidence": [
+    "BC-FRQ-2015-Q3-C"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-SKL-02025",
+    "BC-SKL-02029",
+    "BC-SKL-02030"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:65"
+   ],
+   "topic": "BC-TOP-0206",
+   "unit": "BC-UNIT-02",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-02010 (the exponent move applied to transcendental functions)",
+     "BC-SKL-02025 (the power rule, where the variable is the base)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-02007 (an expression containing the natural exponential, where a lowered exponent is immediately visible)"
+    ],
+    "mastered_if": "The derivative of the natural exponential is written as the natural exponential itself, with the exponent left intact rather than reduced by one (BC-ERR-02019 absent), and the response identifies that the variable sits in the exponent rather than in the base.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The rule is stated correctly for the bare exponential but a constant multiple of it is differentiated as though the constant also changed, so the transcendental rule is held and the constant multiple step is not.",
+    "prerequisite_gap_if": "Negative and fractional exponents are not handled as exponents, so the expression is pattern matched to a power, which is a gap at BC-PRQ-06002.",
+    "remediation_target": "BC-MIS-02010 (which of base and exponent carries the variable) for the conceptual failure; BC-PRQ-06002 (exponent conventions) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-02007"
+   ],
+   "assessability_basis": "no archetype requiring at most two skills names this skill; assessable only inside multi-skill parts",
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-02019"
+   ],
+   "concept": "BC-CON-02012",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Write the derivative of the natural exponential function as the natural exponential function itself.",
+   "description_plain": "Recall that the natural exponential is its own derivative.",
+   "diagnostic_signals": [
+    "BC-SIG-02241",
+    "BC-SIG-02242"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-3A4"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-02033",
+   "independently_assessable": false,
+   "learning_objectives": [
+    "BC-LO-FUN-3A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-02010"
+   ],
+   "name": "Differentiate the natural exponential function",
+   "notation": "",
+   "official_evidence": [
+    "BC-FRQ-2013-Q3-D",
+    "BC-MCQ-PE2012-030"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06002"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:66"
+   ],
+   "topic": "BC-TOP-0207",
+   "unit": "BC-UNIT-02",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-02010 (transcendental functions differentiated by the power rule)",
+     "BC-SKL-02026 (the reciprocal as a negative power, which is the derivative and not the function here)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-02007 (an expression containing the natural logarithm, where giving the logarithm as its own derivative is visible)"
+    ],
+    "mastered_if": "The derivative of the natural logarithm is written as the reciprocal of the input, restricted to the domain where the logarithm is defined, and the logarithm is not reproduced as its own derivative or treated as a power.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The reciprocal is produced but the domain restriction is not mentioned, so the derivative is asserted on inputs where the original function has no value.",
+    "prerequisite_gap_if": "Logarithm properties are not available, so a logarithmic expression is not simplified before differentiating or an absolute value is omitted, which is a gap at BC-PRQ-06003.",
+    "remediation_target": "BC-MIS-02010 (the rule that belongs to the logarithm) for the conceptual failure; BC-PRQ-06003 (logarithm rules and domain) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-02007"
+   ],
+   "assessability_basis": "no archetype requiring at most two skills names this skill; assessable only inside multi-skill parts",
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-02012",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Write the derivative of the natural logarithm as the reciprocal of the input, on the domain where the logarithm is defined.",
+   "description_plain": "Recall that the natural logarithm gives one over the input.",
+   "diagnostic_signals": [
+    "BC-SIG-02243",
+    "BC-SIG-02244"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-3A4"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-02034",
+   "independently_assessable": false,
+   "learning_objectives": [
+    "BC-LO-FUN-3A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-02010"
+   ],
+   "name": "Differentiate the natural logarithm",
+   "notation": "",
+   "official_evidence": [
+    "BC-FRQ-2026-Q4-A",
+    "BC-MCQ-PE2012-004",
+    "BC-MCQ-PE2012-007"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06003"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:66"
+   ],
+   "topic": "BC-TOP-0207",
+   "unit": "BC-UNIT-02",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-02011 (differentiation assumed to distribute across a product)",
+     "BC-SKL-02038 (expanding first, which avoids the rule for polynomial factors)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-02008 (the rule with both derivatives present and the simplified result carry separate credit)"
+    ],
+    "mastered_if": "The derivative of a product is written as the first factor times the derivative of the second plus the second times the derivative of the first, with both terms present and both derivatives taken, so the derivatives of the factors are never simply multiplied together (BC-ERR-02020 absent).",
+    "next_dependent_skills": [
+     "BC-SKL-02037",
+     "BC-SKL-02039",
+     "BC-SKL-03006",
+     "BC-SKL-09033"
+    ],
+    "partially_mastered_if": "The rule is set out with both terms but one factor is left undifferentiated in its term, which the 2025 Q5 guidelines treat as earning the product structure and not the derivative factor, so the structure is held and one derivative is missing.",
+    "prerequisite_gap_if": "The polynomial factors themselves cannot be differentiated, which is a gap at BC-SKL-02031 rather than a failure of the product rule.",
+    "remediation_target": "BC-MIS-02011 (expanding a simple product and comparing with the proposed answer) for the conceptual failure; BC-SKL-02031 (differentiating each factor) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-02008"
+   ],
+   "assessability_basis": "no archetype requiring at most two skills names this skill; assessable only inside multi-skill parts",
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-02020"
+   ],
+   "concept": "BC-CON-02013",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-02037",
+    "BC-SKL-02039",
+    "BC-SKL-03006",
+    "BC-SKL-09033",
+    "BC-SKL-10043"
+   ],
+   "description_formal": "For a product of differentiable functions, write the derivative as the first factor times the derivative of the second plus the second factor times the derivative of the first.",
+   "description_plain": "Differentiate one factor at a time and add the two results.",
+   "diagnostic_signals": [
+    "BC-SIG-02245",
+    "BC-SIG-02246"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-3B1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-02036",
+   "independently_assessable": false,
+   "learning_objectives": [
+    "BC-LO-FUN-3B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-02011"
+   ],
+   "name": "Apply the product rule to a product of two differentiable functions",
+   "notation": "",
+   "official_evidence": [
+    "BC-FRQ-2021-Q1-C",
+    "BC-FRQ-2021-Q4-B",
+    "BC-FRQ-2014-Q5-C",
+    "BC-FRQ-2023-Q6-A",
+    "BC-FRQ-2023-Q6-C",
+    "BC-FRQ-2025-Q5-A",
+    "BC-MCQ-CED-003",
+    "BC-MCQ-CED-012"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-SKL-02031"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:67"
+   ],
+   "topic": "BC-TOP-0208",
+   "unit": "BC-UNIT-02",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-02011 (the product assumed to differentiate term by term, which makes the choice look unnecessary)",
+     "BC-SKL-02042 (rewriting a constant denominator, the analogous choice for quotients)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-02008 (a product presented for differentiation where either route can earn the result, so the selection is visible in the work)"
+    ],
+    "mastered_if": "For a product of polynomials the response states which route is shorter, expands and differentiates term by term when the expansion is small, or applies the product rule when it is not, and carries the chosen route to a correct derivative without multiplying the two derivatives together (BC-ERR-02020 absent).",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "A route is chosen and executed correctly but the reason for choosing it is not given, or the full quotient rule is used where the denominator carries no variable, which is BC-ERR-02023 and adds algebra without adding information.",
+    "prerequisite_gap_if": "The expanded polynomial cannot be differentiated term by term, which is a gap at BC-SKL-02031, so the choice is forced rather than made.",
+    "remediation_target": "BC-MIS-02011 (what the product rule does that expanding also does) for the conceptual failure; BC-SKL-02031 (differentiating the expanded polynomial) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-02008"
+   ],
+   "assessability_basis": "no archetype requiring at most two skills names this skill; assessable only inside multi-skill parts",
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-02020",
+    "BC-ERR-02023"
+   ],
+   "concept": "BC-CON-02013",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a product of polynomials, decide whether expanding and differentiating term by term or applying the product rule is the more direct route, and carry out the chosen method.",
+   "description_plain": "Choose the cheaper route when the product can be multiplied out.",
+   "diagnostic_signals": [
+    "BC-SIG-02247",
+    "BC-SIG-02248"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-3B1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-02038",
+   "independently_assessable": false,
+   "learning_objectives": [
+    "BC-LO-FUN-3B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-02011"
+   ],
+   "name": "Decide whether to expand a product or to apply the product rule",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-SKL-02031"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:67"
+   ],
+   "topic": "BC-TOP-0208",
+   "unit": "BC-UNIT-02",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-02012 (the quotient rule treated as symmetric)",
+     "BC-SKL-02042 (a constant denominator, where the rule is not needed)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-02008 (the rule with both derivatives present and the simplified result are separately scored)"
+    ],
+    "mastered_if": "The derivative of a quotient is written with the denominator times the derivative of the numerator minus the numerator times the derivative of the denominator, in that order (BC-ERR-02021 absent), over the square of the denominator (BC-ERR-02022 absent), with both derivatives taken.",
+    "next_dependent_skills": [
+     "BC-SKL-02040",
+     "BC-SKL-02041",
+     "BC-SKL-02044",
+     "BC-SKL-02045",
+     "BC-SKL-03020"
+    ],
+    "partially_mastered_if": "The structure is right and the subtraction runs the wrong way, which is BC-SIG-02014 and BC-ERR-02021, so the answer differs only in sign, or the denominator is written without its square, which is BC-ERR-02022.",
+    "prerequisite_gap_if": "The product rule cannot be stated with both of its terms, which is a gap at BC-SKL-02036 and shows as a quotient rule numerator with one term missing.",
+    "remediation_target": "BC-MIS-02012 (applying the rule to a reciprocal and comparing with the power rule result) for the conceptual failure; BC-SKL-02036 (the product rule structure underneath) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-02008"
+   ],
+   "assessability_basis": "no archetype requiring at most two skills names this skill; assessable only inside multi-skill parts",
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-02021",
+    "BC-ERR-02022"
+   ],
+   "concept": "BC-CON-02014",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-02040",
+    "BC-SKL-02041",
+    "BC-SKL-02044",
+    "BC-SKL-02045",
+    "BC-SKL-03020",
+    "BC-SKL-09007"
+   ],
+   "description_formal": "For a quotient of differentiable functions, write the derivative with the stated numerator and with the square of the denominator below.",
+   "description_plain": "Use the denominator times the derivative of the numerator minus the numerator times the derivative of the denominator, all over the denominator squared.",
+   "diagnostic_signals": [
+    "BC-SIG-02249",
+    "BC-SIG-02250"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-3B2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-02039",
+   "independently_assessable": false,
+   "learning_objectives": [
+    "BC-LO-FUN-3B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-02012"
+   ],
+   "name": "Apply the quotient rule to a quotient of two differentiable functions",
+   "notation": "",
+   "official_evidence": [
+    "BC-FRQ-2019-Q5-A",
+    "BC-FRQ-2014-Q3-C",
+    "BC-FRQ-2018-Q4-D",
+    "BC-MCQ-PE2012-019"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-SKL-02036"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:68"
+   ],
+   "topic": "BC-TOP-0209",
+   "unit": "BC-UNIT-02",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-02012 (the rule treated as symmetric, which makes the substitution order look free)",
+     "BC-SKL-02037 (the product rule from supplied values)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-02009 (values supplied at one input, with the rule and the value scored separately)"
+    ],
+    "mastered_if": "The four supplied values at the named input are labelled, the quotient rule is written with the names in place, the substitution puts derivative values in the derivative positions (BC-ERR-02024 absent), the subtraction runs in the correct order (BC-ERR-02021 absent), and the denominator value is squared (BC-ERR-02022 absent) before the value is reported.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The substitution is correct and the denominator is entered without being squared, which is BC-ERR-02022, or a function value is placed where its derivative belongs, which is BC-ERR-02024.",
+    "prerequisite_gap_if": "The rule itself cannot be written with its numerator order and squared denominator, which is a gap at BC-SKL-02039.",
+    "remediation_target": "BC-MIS-02012 (the asymmetry of the rule) for the conceptual failure; BC-SKL-02039 (writing the rule before substituting) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-02009"
+   ],
+   "assessability_basis": "no archetype requiring at most two skills names this skill; assessable only inside multi-skill parts",
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-02021",
+    "BC-ERR-02022",
+    "BC-ERR-02024"
+   ],
+   "concept": "BC-CON-02014",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given the values of two functions and of their derivatives at an input, evaluate the derivative of their quotient at that input using the quotient rule.",
+   "description_plain": "Substitute the four supplied values into the rule at the named input.",
+   "diagnostic_signals": [
+    "BC-SIG-02251",
+    "BC-SIG-02252"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-3B2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-02041",
+   "independently_assessable": false,
+   "learning_objectives": [
+    "BC-LO-FUN-3B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-02012"
+   ],
+   "name": "Apply the quotient rule with values supplied by a table or a graph",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-SKL-02039"
+   ],
+   "representations": [
+    "BC-REP-03",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:68"
+   ],
+   "topic": "BC-TOP-0209",
+   "unit": "BC-UNIT-02",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-02012 (the quotient rule applied by the shape of the expression rather than by what varies)",
+     "BC-SKL-02039 (the quotient rule, which this case does not need)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-02008 (a quotient presented for differentiation, where the constant denominator case is distinguishable in the work)"
+    ],
+    "mastered_if": "A quotient whose denominator carries no variable is rewritten as a constant multiple of the numerator and differentiated with the constant multiple rule, so the full quotient rule is not deployed where the denominator is constant (BC-ERR-02023 absent).",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The constant denominator is recognised but the rewriting is not carried out, so the quotient rule is applied and the extra algebra introduces a sign or coefficient error in an otherwise correct derivative.",
+    "prerequisite_gap_if": "The constant multiple rule cannot be applied once the expression is rewritten, which is a gap at BC-SKL-02029.",
+    "remediation_target": "BC-MIS-02012 (which part of a quotient actually varies) for the conceptual failure; BC-SKL-02029 (the constant multiple rule) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-02008"
+   ],
+   "assessability_basis": "no archetype requiring at most two skills names this skill; assessable only inside multi-skill parts",
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-02023"
+   ],
+   "concept": "BC-CON-02014",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Recognise a quotient whose denominator is constant, rewrite it as a constant multiple, and differentiate with the constant multiple rule rather than the quotient rule.",
+   "description_plain": "Pull out the constant when the bottom carries no variable.",
+   "diagnostic_signals": [
+    "BC-SIG-02253",
+    "BC-SIG-02254"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-3B2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-02042",
+   "independently_assessable": false,
+   "learning_objectives": [
+    "BC-LO-FUN-3B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-02012"
+   ],
+   "name": "Rewrite a quotient with a constant denominator instead of using the quotient rule",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-SKL-02029"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:68"
+   ],
+   "topic": "BC-TOP-0209",
+   "unit": "BC-UNIT-02",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-02013 (the four derivatives memorised as independent facts with no recovery route)",
+     "BC-SKL-02046 (selecting the identity that makes the expression differentiable, the judgement built on this rewriting)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-02010 (the rewriting and the rule carry credit together, so a wrong identity shows before any differentiation)"
+    ],
+    "mastered_if": "Tangent, cotangent, secant, or cosecant is rewritten as a quotient built from sine and cosine using the reciprocal and quotient identities, with the correct function in the numerator and the correct one in the denominator, and the rewritten expression is equivalent on the domain of the original.",
+    "next_dependent_skills": [
+     "BC-SKL-02044",
+     "BC-SKL-02045",
+     "BC-SKL-02046"
+    ],
+    "partially_mastered_if": "The rewriting is produced but cofunction pairs are exchanged, so secant is written with sine in the denominator, leaving the method intact and the identity wrong.",
+    "prerequisite_gap_if": "The reciprocal and quotient identities are not available at all, so the response attempts to differentiate the reciprocal function directly, which is a gap at BC-PRQ-02002.",
+    "remediation_target": "BC-MIS-02013 (obtaining these derivatives from the sine and cosine form) for the conceptual failure; BC-PRQ-02002 (reciprocal and quotient identities) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-02010"
+   ],
+   "assessability_basis": "no archetype requiring at most two skills names this skill; assessable only inside multi-skill parts",
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-02026"
+   ],
+   "concept": "BC-CON-02015",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-02044",
+    "BC-SKL-02045",
+    "BC-SKL-02046"
+   ],
+   "description_formal": "Apply the reciprocal and quotient identities to write tangent, cotangent, secant, or cosecant as a quotient built from sine and cosine.",
+   "description_plain": "Turn the other trigonometric functions into quotients of sine and cosine.",
+   "diagnostic_signals": [
+    "BC-SIG-02255",
+    "BC-SIG-02256"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-3B3"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-02043",
+   "independently_assessable": false,
+   "learning_objectives": [
+    "BC-LO-FUN-3B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-02013"
+   ],
+   "name": "Rewrite tangent, cotangent, secant, and cosecant using sine and cosine",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-02002"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:69"
+   ],
+   "topic": "BC-TOP-0210",
+   "unit": "BC-UNIT-02",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-02013 (the four derivatives held as independent facts)",
+     "BC-SKL-02044 (tangent and cotangent, which come from the quotient rather than the reciprocal form)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-02010 (the result must be written in the requested trigonometric form, which is the final step here)"
+    ],
+    "mastered_if": "Secant or cosecant is written as a reciprocal of cosine or sine, the quotient rule is applied to that form, and the result is expressed as secant times tangent or as the negative of cosecant times cotangent, with the negative sign on the cofunction retained (BC-ERR-02025 absent).",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The quotient rule is applied correctly and the result is left as a quotient of sine and cosine without being written in the requested product form, or the cofunction result is given without its negative sign.",
+    "prerequisite_gap_if": "The reciprocal form cannot be produced from the identities, which is a BC-SKL-02043 gap, and mishandling the numerator order or the squared denominator is BC-SKL-02039.",
+    "remediation_target": "BC-MIS-02013 (deriving rather than recalling the result) for the conceptual failure; BC-SKL-02043 (writing the reciprocal form) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-02010"
+   ],
+   "assessability_basis": "no archetype requiring at most two skills names this skill; assessable only inside multi-skill parts",
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-02025"
+   ],
+   "concept": "BC-CON-02015",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Differentiate secant or cosecant by applying the quotient rule to its reciprocal form and expressing the result as secant times tangent or as the negative of cosecant times cotangent.",
+   "description_plain": "Apply the quotient rule to the reciprocal form and write the result as a product.",
+   "diagnostic_signals": [
+    "BC-SIG-02257",
+    "BC-SIG-02258"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-3B3"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-02045",
+   "independently_assessable": false,
+   "learning_objectives": [
+    "BC-LO-FUN-3B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-02013"
+   ],
+   "name": "Differentiate secant and cosecant",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-SKL-02043",
+    "BC-SKL-02039"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:69"
+   ],
+   "topic": "BC-TOP-0210",
+   "unit": "BC-UNIT-02",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-02013 (the derivatives memorised without the rewriting that produces them, which removes the need to choose)",
+     "BC-SKL-02043 (carrying out the rewriting, which this skill selects)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-02010 (an expression must be rewritten before it can be differentiated, so the choice of identity is the first scored move)"
+    ],
+    "mastered_if": "An identity is selected whose application leaves a sum, product, or quotient of functions whose derivatives are known, the rewritten expression is displayed, and the response says why that rewriting was chosen, naming the rule it makes available.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "A workable identity is applied but no reason is given, so the choice cannot be distinguished from a remembered move, or the rewriting leaves a form that still has no available rule.",
+    "prerequisite_gap_if": "The reciprocal and quotient identities cannot be produced, which is a gap at BC-PRQ-02002, and inability to write the sine and cosine form once an identity is chosen is BC-SKL-02043.",
+    "remediation_target": "BC-MIS-02013 (why the rewriting route exists) for the conceptual failure; BC-PRQ-02002 (the identities available) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-02010"
+   ],
+   "assessability_basis": "no archetype requiring at most two skills names this skill; assessable only inside multi-skill parts",
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-02015",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a trigonometric expression, select the identity whose application produces a sum, product, or quotient of functions whose derivatives are known, and state why that rewriting was chosen.",
+   "description_plain": "Choose the rewriting that leaves an expression the available rules can handle.",
+   "diagnostic_signals": [
+    "BC-SIG-02259",
+    "BC-SIG-02260"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-3B3"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-02046",
+   "independently_assessable": false,
+   "learning_objectives": [
+    "BC-LO-FUN-3B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-02013"
+   ],
+   "name": "Select the identity that makes a trigonometric expression differentiable by rule",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-02002",
+    "BC-SKL-02043"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-04"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:69"
+   ],
+   "topic": "BC-TOP-0210",
+   "unit": "BC-UNIT-02",
+   "updated": "2026-09-19"
+  }
+ ]
+}

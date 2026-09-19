@@ -1,0 +1,937 @@
+{
+ "errors": [
+  {
+   "archetypes": [
+    "BC-QA-04001",
+    "BC-QA-04002",
+    "BC-QA-04005"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask for the units alone, with no computation: units offered as optional is consistent with BC-MIS-04003, units of the quantity given for its rate is consistent with BC-MIS-04001, and correct units spoken with the written answer bare is consistent with the transfer and timing causes.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-04001",
+   "name": "Units omitted or assembled the wrong way round",
+   "non_conceptual_causes": [
+    "the units are written on scratch work and not transferred to the answer line",
+    "the unit of the independent variable is taken from a different sentence of the stem",
+    "the part is reached at the end of the question and the answer line is filled last"
+   ],
+   "observed_behavior": "A correct numerical rate is reported with no units, or with the units of the quantity alone, or with the numerator and denominator units exchanged.",
+   "official_evidence": [
+    "sg-24:2",
+    "sg-25:11",
+    "cr-24:4",
+    "BC-FRQ-2013-Q1-A",
+    "BC-FRQ-2014-Q1-A",
+    "BC-FRQ-2014-Q1-B",
+    "BC-FRQ-2014-Q4-A"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-04003",
+    "BC-MIS-04001"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The units point is a separate point in the 2024 and 2025 table based questions and is lost outright (sg-24:2, sg-25:11); BC-ERR-99005 records the same behaviour across years.",
+   "skills": [
+    "BC-SKL-04001",
+    "BC-SKL-04002",
+    "BC-SKL-04004",
+    "BC-SKL-04014",
+    "BC-SKL-04025"
+   ],
+   "sources": [
+    "sg-24:2",
+    "sg-25:11",
+    "cr-24:4"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-04001",
+    "BC-QA-04005"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask which of the two quantities the units in the stem describe: treating the function and its derivative as the same information is consistent with BC-MIS-04001, ignoring what the sign of the rate records is consistent with BC-MIS-04002, and a correct match with the wrong number written is consistent with the row and transfer causes.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-04003",
+   "name": "Amount reported where a rate was requested",
+   "non_conceptual_causes": [
+    "the wrong row of the supplied table is read",
+    "the stem's phrase rate at which is skimmed",
+    "both quantities are computed and the wrong one is transferred to the answer line"
+   ],
+   "observed_behavior": "The response supplies a value of the modelled function where the question asked for a value of its derivative, or the reverse.",
+   "official_evidence": [
+    "cr-24:4",
+    "cr-24:3"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-04001",
+    "BC-MIS-04002"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The answer point is lost; BC-ERR-99030 records confusion of the direction of change with the quantity itself.",
+   "skills": [
+    "BC-SKL-04003"
+   ],
+   "sources": [
+    "cr-24:4",
+    "cr-24:3"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-04002"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask which two table entries were used and what was done with them: an answer that the quotient alone is the object is consistent with BC-MIS-04003, an answer that the tabulated amounts are already the rate is consistent with BC-MIS-04001, and naming both entries at once is consistent with the calculator and transfer causes.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-04004",
+   "name": "Difference quotient presented without the difference",
+   "non_conceptual_causes": [
+    "the subtraction and division are done on the calculator and only the result is written",
+    "the two table entries are differenced mentally",
+    "the setup line is written on scratch work and not transferred"
+   ],
+   "observed_behavior": "The approximation is written as a single quotient or as a bare number with no visible difference of tabulated values.",
+   "official_evidence": [
+    "sg-25:11",
+    "sg-24:2",
+    "BC-FRQ-2013-Q3-A"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-04003",
+    "BC-MIS-04001"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The 2025 rubric states that the setup expression by itself is not sufficient for the point, which requires the answer together with a difference and a quotient using values from the table (sg-25:11).",
+   "skills": [
+    "BC-SKL-04004"
+   ],
+   "sources": [
+    "sg-25:11",
+    "sg-24:2"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-04001",
+    "BC-QA-04006"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask whether the quantity was larger or smaller a moment later: an answer that the sign carries no information is consistent with BC-MIS-04002, an answer drawn from the amount rather than its rate is consistent with BC-MIS-04001, and a correct direction beside the unsigned written answer is consistent with the transcription and template causes.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-04005",
+   "name": "Sign of a rate not interpreted",
+   "non_conceptual_causes": [
+    "the minus sign is dropped when the value is copied from the calculator",
+    "the stem's word decreasing is read as an instruction to report a magnitude",
+    "the interpretation sentence is written from the previous part's template"
+   ],
+   "observed_behavior": "A negative rate is reported as a magnitude or is described as an increase.",
+   "official_evidence": [
+    "cr-24:4",
+    "BC-FRQ-2019-Q1-D",
+    "BC-FRQ-2014-Q1-B",
+    "BC-FRQ-2022-Q1-C"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-04002",
+    "BC-MIS-04001"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The interpretation point is lost; BC-ERR-99030 records the same confusion of direction with quantity.",
+   "skills": [
+    "BC-SKL-04005",
+    "BC-SKL-04025"
+   ],
+   "sources": [
+    "cr-24:4"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-04003"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask the student to write which function the stem supplied before differentiating: treating position, velocity, and acceleration as unrelated formulas is consistent with BC-MIS-04004, treating a quantity and its rate as the same information is consistent with BC-MIS-04001, and identifying the supplied function correctly is consistent with the carry-over and habit causes.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-04006",
+   "name": "Differentiation performed the wrong number of times for the quantity requested",
+   "non_conceptual_causes": [
+    "the function the stem supplied is not identified before differentiating",
+    "the previous part's answer is carried forward as the starting function",
+    "the derivative is taken twice out of habit from a practised example"
+   ],
+   "observed_behavior": "Acceleration is reported where velocity was asked for, or position where velocity was asked for.",
+   "official_evidence": [
+    "BC-FRQ-2014-Q4-A",
+    "BC-FRQ-2015-Q3-C"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-04004",
+    "BC-MIS-04001"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The answer point is lost although each differentiation performed is correct.",
+   "skills": [
+    "BC-SKL-04006",
+    "BC-SKL-04007"
+   ],
+   "sources": [
+    "ced:88"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-04003"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask whether a speed can be negative and what the sign of the velocity records instead: an answer that the two are one quantity is consistent with BC-MIS-04005, an answer that acceleration alone governs speed is consistent with BC-MIS-99001, and a correct distinction beside the signed written answer is consistent with the transfer and wording causes.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-04007",
+   "name": "Speed reported as a signed quantity",
+   "non_conceptual_causes": [
+    "the absolute value is applied on scratch work and not transferred",
+    "the velocity value is copied straight from the calculator",
+    "the words speed and velocity are used interchangeably in the answer sentence"
+   ],
+   "observed_behavior": "A negative number is reported as the speed of the particle.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-04005",
+    "BC-MIS-99001"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The answer point is lost.",
+   "skills": [
+    "BC-SKL-04008"
+   ],
+   "sources": [
+    "ced:88"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-04004"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask what quantity has to be negative for the particle to move in the negative direction: an answer naming the position is consistent with BC-MIS-04005, an answer that the position already carries its rate is consistent with BC-MIS-04001, and naming the velocity correctly is consistent with the misread figure and ordering causes.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-04008",
+   "name": "Direction of motion read from the position rather than the velocity",
+   "non_conceptual_causes": [
+    "the supplied graph is of position and is read as velocity",
+    "the sign is read from the table row above the intended one",
+    "the conclusion is written before the velocity is computed"
+   ],
+   "observed_behavior": "The response argues the direction of travel from whether the position is positive or negative.",
+   "official_evidence": [
+    "cr-22:20",
+    "crabbc-25:22"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-04005",
+    "BC-MIS-04001"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The reasoning point is lost; the 2022 Chief Reader report records responses arguing from the wrong function in a related part (cr-22:20).",
+   "skills": [
+    "BC-SKL-04009"
+   ],
+   "sources": [
+    "cr-22:20",
+    "crabbc-25:22"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-04004"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask the student to solve the equation velocity equal to zero explicitly: an answer that the sampled values settle the interval is consistent with BC-MIS-04017, an answer that confuses the sign change with a change of speed is consistent with BC-MIS-04005, and finding the root once the equation is solved is consistent with the window and table step causes.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-04010",
+   "name": "Zeros of velocity found by sampling integer times",
+   "non_conceptual_causes": [
+    "the equation is judged unsolvable by hand so integer inputs are tried instead",
+    "the calculator zero feature is used on a window that hides the root",
+    "the table step is one unit so a non integer root falls between rows"
+   ],
+   "observed_behavior": "Integer times are substituted into the velocity in place of solving the equation velocity equal to zero, so a non-integer zero is missed.",
+   "official_evidence": [
+    "crabbc-25:22",
+    "crabbc-25:20"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-04017",
+    "BC-MIS-04005"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The 2025 Chief Reader report records this behaviour directly and links it to the loss of the two analysis points, whose mean scores were 0.04 and 0.03 (crabbc-25:20, crabbc-25:22).",
+   "skills": [
+    "BC-SKL-04011"
+   ],
+   "sources": [
+    "crabbc-25:22",
+    "crabbc-25:20"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-04004"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask the student to say in one sentence what the chart shows about the interval named in the prompt: an answer that the sampled signs settle it is consistent with BC-MIS-04017, an answer that restates the chart as its own reason is consistent with BC-MIS-05013, and a fluent sentence with none written is consistent with the timing and interval causes.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-04011",
+   "name": "Sign chart presented with no stated reading",
+   "non_conceptual_causes": [
+    "the reading sentence is left to the end of the part and not reached",
+    "the chart is treated as sufficient because an earlier part accepted one",
+    "the chart covers an interval other than the one the prompt names"
+   ],
+   "observed_behavior": "A number line or table of signs appears with no sentence saying what it shows about the direction of motion over the interval.",
+   "official_evidence": [
+    "crabbc-25:22",
+    "crabbc-25:23",
+    "BC-FRQ-2013-Q1-C"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-04017",
+    "BC-MIS-05013"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The 2025 report records that responses failing to communicate what the chart showed over the whole interval did not earn the analysis points (crabbc-25:22, crabbc-25:23); BC-ERR-99001 records vague referents in justification across years.",
+   "skills": [
+    "BC-SKL-04012"
+   ],
+   "sources": [
+    "crabbc-25:22",
+    "crabbc-25:23"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-04005"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask what the letters in the model stand for before any computation: an answer that borrows motion language for a non motion quantity is consistent with BC-MIS-04007, an answer that treats the descriptive units as ornament is consistent with BC-MIS-04003, and correct descriptions given orally is consistent with the copying and transfer causes.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-04012",
+   "name": "Quantity and independent variable not named",
+   "non_conceptual_causes": [
+    "the letters are copied from the stem without their descriptions",
+    "the naming is written on the diagram and not in the response",
+    "the computation is started first because the numbers were already to hand"
+   ],
+   "observed_behavior": "The response computes without saying which quantity is modelled or what the input variable measures.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-04007",
+    "BC-MIS-04003"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "Later interpretation points become unavailable because the answer cannot be tied to the situation; BC-ERR-99033 records variables introduced without being defined.",
+   "skills": [
+    "BC-SKL-04013"
+   ],
+   "sources": [
+    "ced:84"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-04005"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask the student to name the quantity whose rate is being described: an answer that every rate problem is a motion problem is consistent with BC-MIS-04007, an answer that the quantity and its rate are one object is consistent with BC-MIS-04001, and the correct noun supplied at once is consistent with the carry-over and template causes.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-04013",
+   "name": "Motion vocabulary used for a non-motion quantity",
+   "non_conceptual_causes": [
+    "the word velocity is carried over from the preceding motion question",
+    "the answer sentence is adapted from a motion template",
+    "the units of the rate are not consulted before the noun is chosen"
+   ],
+   "observed_behavior": "The response calls the rate of change of a temperature, a population, or an area a velocity.",
+   "official_evidence": [
+    "sg-25:3"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-04007",
+    "BC-MIS-04001"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The 2025 scoring notes show a response calling an average value an average velocity treated as unclear communication and scored as scratch work, so the points survived in that instance (sg-25:3); the CED nonetheless directs that context vocabulary be used (ced:84).",
+   "skills": [
+    "BC-SKL-04015"
+   ],
+   "sources": [
+    "ced:84",
+    "sg-25:3"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-04006"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask the student to write each rate in derivative notation and mark which is unknown: an answer that differentiates against a length rather than time is consistent with BC-MIS-04008, an answer that an instantaneous value holds throughout is consistent with BC-MIS-04011, and a correct marking beside the transposed written work is consistent with the notation and transcription causes.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-04015",
+   "name": "Given and requested rates not distinguished",
+   "non_conceptual_causes": [
+    "the two rates are never written in derivative notation before the algebra begins",
+    "the rate supplied in the stem is the only number available and is reported",
+    "the roles are correct on scratch work and transposed in the copy"
+   ],
+   "observed_behavior": "The rate supplied in the stem is reported as the answer, or the requested rate is treated as known.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-04008",
+    "BC-MIS-04011"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The answer point is lost; BC-ERR-99033 records variables introduced without being defined as a related communication failure.",
+   "skills": [
+    "BC-SKL-04017"
+   ],
+   "sources": [
+    "ced:86",
+    "ced:90"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-04006"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask the student to draw the configuration and label every length before writing a formula: an answer assembled from the rates alone is consistent with BC-MIS-04010, an answer that differentiates against a length is consistent with BC-MIS-04008, and a correct formula once the diagram is drawn is consistent with the recall and shape causes.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-04016",
+   "name": "Relating equation wrong or absent",
+   "non_conceptual_causes": [
+    "the geometric formula is misremembered, for instance a cone's volume without the factor one third",
+    "no diagram is drawn so the configuration is guessed",
+    "the formula is taken from a similar problem with a different shape"
+   ],
+   "observed_behavior": "No equation ties the quantities together, or the formula used does not describe the configuration.",
+   "official_evidence": [
+    "cr-22:7",
+    "BC-FRQ-2019-Q4-A",
+    "BC-FRQ-2014-Q4-D"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-04010",
+    "BC-MIS-04008"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "Nothing downstream can be earned; BC-ERR-99011 records integrands chosen from the wrong area or volume family as the analogous failure in Unit 8.",
+   "skills": [
+    "BC-SKL-04018"
+   ],
+   "sources": [
+    "ced:90",
+    "cr-22:7"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-04006",
+    "BC-QA-04007"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask what variable the requested rate is taken with respect to, before differentiating: an answer naming a length is consistent with BC-MIS-04008, an answer that the two derivative variables give the same object is consistent with BC-MIS-99005, and naming time correctly beside the wrong written derivative is consistent with the ordering and habit causes.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-04017",
+   "name": "Differentiation carried out with respect to the wrong variable",
+   "non_conceptual_causes": [
+    "the differentiation is carried out against the variable that appears first",
+    "the chain rule factor with respect to time is written and not carried to the next line",
+    "the habit of differentiating with respect to x is carried from the implicit differentiation topic"
+   ],
+   "observed_behavior": "The relating equation is differentiated with respect to a length or with respect to x, and the response stops there rather than continuing through the chain rule to a rate with respect to time.",
+   "official_evidence": [
+    "cr-24:18",
+    "cr-22:7",
+    "BC-FRQ-2019-Q4-A",
+    "BC-FRQ-2014-Q2-D",
+    "BC-FRQ-2022-Q4-D"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-04008",
+    "BC-MIS-99005"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The Chief Reader report for 2024 records that responses differentiating with respect to x needed to continue through the chain rule and that many provided no work beyond that step (cr-24:18); BC-ERR-99013 records the same family across years.",
+   "skills": [
+    "BC-SKL-04019",
+    "BC-SKL-04022"
+   ],
+   "sources": [
+    "cr-24:18",
+    "cr-22:7"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-04007"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask the student to name the two factors of the term before differentiating it: an answer naming one symbol is consistent with BC-MIS-04009, an answer that treats one factor as fixed is consistent with BC-MIS-04011, and naming both factors with one term still missing on paper is consistent with the substitution and transcription causes.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-04018",
+   "name": "Product rule omitted inside a differentiation with respect to time",
+   "non_conceptual_causes": [
+    "the short term is read as one symbol",
+    "one factor is replaced by its instantaneous value before the differentiation",
+    "the product rule is applied and one of its two terms is dropped in transcription"
+   ],
+   "observed_behavior": "A term that multiplies two varying quantities is differentiated as though one of them were constant.",
+   "official_evidence": [
+    "cr-23:23",
+    "crabbc-25:24",
+    "BC-FRQ-2014-Q4-D",
+    "BC-FRQ-2022-Q4-D"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-04009",
+    "BC-MIS-04011"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The completely correct differentiation point is lost; BC-ERR-99013 names the missing product rule explicitly.",
+   "skills": [
+    "BC-SKL-04020",
+    "BC-SKL-04022"
+   ],
+   "sources": [
+    "cr-23:23",
+    "crabbc-25:24"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-04006"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask how many unknown rates the differentiated equation contains: an answer assembled from the supplied rates alone is consistent with BC-MIS-04010, an answer that an instantaneous value holds throughout is consistent with BC-MIS-04011, and counting two at once is consistent with the unwritten proportion and timing causes.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-04019",
+   "name": "Extra varying quantity never eliminated",
+   "non_conceptual_causes": [
+    "the similar triangles proportion is seen and never written",
+    "the second dimension is assumed constant with no sentence saying so",
+    "the differentiated equation is left with two unknown rates and the part ends"
+   ],
+   "observed_behavior": "The relating equation keeps two varying dimensions that the supplied rates cannot support, and the differentiation produces an equation with two unknown rates.",
+   "official_evidence": [
+    "BC-FRQ-2022-Q4-D"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-04010",
+    "BC-MIS-04011"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The requested rate cannot be isolated, so the answer point is lost.",
+   "skills": [
+    "BC-SKL-04021"
+   ],
+   "sources": [
+    "ced:90"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-04006",
+    "BC-QA-04007"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask which of the stated numbers would still be true one second later: an answer that all of them would is consistent with BC-MIS-04011, an answer that treats the product of two varying quantities as one symbol is consistent with BC-MIS-04009, and a correct answer with the early substitution still on paper is consistent with the simplification and setup causes.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-04020",
+   "name": "Instantaneous values substituted before differentiating",
+   "non_conceptual_causes": [
+    "the substitution is made to simplify the algebra before differentiating",
+    "the number is read from the stem as a fixed feature of the configuration",
+    "the value and the rate of the same quantity are confused in the setup table"
+   ],
+   "observed_behavior": "A dimension that varies with time is replaced by its value at the instant before the equation is differentiated, so its rate never appears.",
+   "official_evidence": [
+    "BC-FRQ-2014-Q4-D",
+    "BC-FRQ-2022-Q4-D"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-04011",
+    "BC-MIS-04009"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The differentiated equation is wrong and the answer follows it; the CED sample activity asks students to mark which given information always applies and which applies only at an instant, which is the distinction at stake (ced:86).",
+   "skills": [
+    "BC-SKL-04023",
+    "BC-SKL-04027"
+   ],
+   "sources": [
+    "ced:86",
+    "ced:91"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-04006",
+    "BC-QA-04007"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask the student to name the single unknown in the equation and isolate it: an answer that the instantaneous relation is already the result is consistent with BC-MIS-04011, an answer that differentiates against the wrong variable is consistent with BC-MIS-04008, and a prompt isolation is consistent with the timing and transfer causes.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-04021",
+   "name": "Requested rate never isolated",
+   "non_conceptual_causes": [
+    "the algebra is left to the end of the question and not returned to",
+    "the differentiated equation is taken as the answer because it contains the requested symbol",
+    "the isolation is carried out on scratch work and not transferred"
+   ],
+   "observed_behavior": "The differentiated equation is correct and the response stops without solving for the unknown rate.",
+   "official_evidence": [
+    "cr-24:18",
+    "BC-FRQ-2014-Q4-D"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-04011",
+    "BC-MIS-04008"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The final scoring point is lost although the differentiation points may be earned (cr-24:18).",
+   "skills": [
+    "BC-SKL-04024"
+   ],
+   "sources": [
+    "cr-24:18"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-04006"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask which quantities the differentiated equation needs and which of them the stem supplies: an answer that the instant's stated values are all there is is consistent with BC-MIS-04011, an answer built from the rates alone is consistent with BC-MIS-04010, and spotting the gap on request is consistent with the auxiliary computation and one line causes.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-04022",
+   "name": "Missing instantaneous value not computed",
+   "non_conceptual_causes": [
+    "the quantity is assumed given because the stem supplies its rate",
+    "the auxiliary computation from the relating equation is never attempted",
+    "the substitution is done in one line so the omission is not noticed"
+   ],
+   "observed_behavior": "A quantity needed for the substitution is absent from the stem and the response substitutes nothing in its place or invents a value.",
+   "official_evidence": [
+    "BC-FRQ-2014-Q4-D"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-04011",
+    "BC-MIS-04010"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The substitution is incomplete and the answer point is lost.",
+   "skills": [
+    "BC-SKL-04026"
+   ],
+   "sources": [
+    "ced:91"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-04008"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask the student to check that the point satisfies the line they wrote: an answer that the tangent line is the function near the point is consistent with BC-MIS-04012, an answer that treats the equals sign as punctuation between steps is consistent with BC-MIS-99011, and a correction on substitution is consistent with the transposition and recall causes.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-04023",
+   "name": "Tangent line written with the point and the slope exchanged",
+   "non_conceptual_causes": [
+    "the point coordinates are transposed when copied",
+    "the slope from the previous part is substituted into a coordinate slot",
+    "the point slope form is written from memory with the terms in the wrong places"
+   ],
+   "observed_behavior": "The point-slope form is assembled incorrectly, so the coordinates appear where the slope belongs or the line does not pass through the point.",
+   "official_evidence": [
+    "crabbc-25:25",
+    "cr-24:17",
+    "BC-FRQ-2014-Q1-D"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-04012",
+    "BC-MIS-99011"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The approximation point is lost; the 2025 report records multiple sign and parenthesis errors arising while isolating the dependent variable, which was not required (crabbc-25:25).",
+   "skills": [
+    "BC-SKL-04028"
+   ],
+   "sources": [
+    "crabbc-25:25",
+    "cr-24:17"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-04008"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask which input the question asks about and which the tangent line was built at: an answer that the line and the function agree near the point is consistent with BC-MIS-04012, an answer that a value and a rate are the same information is consistent with BC-MIS-04001, and naming the two inputs correctly is consistent with the misreading and skipped step causes.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-04024",
+   "name": "Tangent line evaluated at the point of tangency",
+   "non_conceptual_causes": [
+    "the nearby input in the stem is misread",
+    "the tangent line is written and the substitution step is skipped",
+    "the function value already computed is reported because it is on the page"
+   ],
+   "observed_behavior": "The approximation is produced by substituting the point of tangency rather than the nearby input, so the function value at the known point is returned.",
+   "official_evidence": [
+    "BC-FRQ-2014-Q1-D"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-04012",
+    "BC-MIS-04001"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The approximation point is lost.",
+   "skills": [
+    "BC-SKL-04029"
+   ],
+   "sources": [
+    "ced:92"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-04008"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask what feature of the supplied representation makes the concavity claim true: an answer that concavity has no bearing on the approximation is consistent with BC-MIS-07010, an answer that the symbols alone complete the reason is consistent with BC-MIS-05022, and naming the feature at once is consistent with the transfer and carry-over causes.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-04026",
+   "name": "Concavity asserted without reference to the given representation",
+   "non_conceptual_causes": [
+    "the connection is made on the supplied figure and never written",
+    "the sign of the second derivative is taken from an earlier part and reused",
+    "the justification is written at the end of the part in the shortest form to hand"
+   ],
+   "observed_behavior": "The response states that the second derivative has a sign without connecting that claim to the graph, table, or formula supplied.",
+   "official_evidence": [
+    "cr-23:15",
+    "cr-22:18"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-07010",
+    "BC-MIS-05022"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The justification point is lost; BC-ERR-99001 records vague referents in justifications and the 2023 report records reasons not connected to the given graph (cr-23:15).",
+   "skills": [
+    "BC-SKL-04031"
+   ],
+   "sources": [
+    "cr-23:15",
+    "cr-22:18"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-04008"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask which point the tangent line touches before the substitution is made: an answer that the line stands in for the function anywhere is consistent with BC-MIS-04012, an answer that a single coordinate names the point is consistent with BC-MIS-05032, and naming the correct point at once is consistent with the row and reuse causes.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-04027",
+   "name": "Supplied derivative evaluated at the wrong point",
+   "non_conceptual_causes": [
+    "the coordinates are read from the wrong row of the table",
+    "the point from an earlier part of the question is reused",
+    "only one coordinate is substituted into an expression needing both"
+   ],
+   "observed_behavior": "An expression for the derivative involving both coordinates is evaluated at coordinates other than the point of tangency.",
+   "official_evidence": [
+    "crabbc-25:25",
+    "cr-24:17",
+    "BC-FRQ-2014-Q1-D"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-04012",
+    "BC-MIS-05032"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The slope point is lost, though the approximation point may still be earned on the incorrect slope (crabbc-25:25).",
+   "skills": [
+    "BC-SKL-04032"
+   ],
+   "sources": [
+    "crabbc-25:25",
+    "cr-24:17"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-04009"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask the student to write the numerator limit and the denominator limit as two separate statements: an answer that the form is itself a value is consistent with BC-MIS-04014, an answer that infinity is available for arithmetic is consistent with BC-MIS-99008, and separating the two limits on request is consistent with the shorthand and equals sign causes.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-04028",
+   "name": "Quotient written explicitly equal to an indeterminate form",
+   "non_conceptual_causes": [
+    "the shorthand is carried over from scratch work",
+    "the two limits are evaluated mentally and only the quotient is written",
+    "the equals sign is used to link the steps rather than to assert equality"
+   ],
+   "observed_behavior": "The response writes the limit of the quotient equal to zero over zero rather than presenting the two limits separately.",
+   "official_evidence": [
+    "sg-23:14",
+    "cr-23:15",
+    "BC-FRQ-2013-Q5-A"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-04014",
+    "BC-MIS-99008"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The 2023 rubric states that a response presenting a limit explicitly equal to zero over zero does not earn the first point, and the Chief Reader report names this arithmetic with infinity (sg-23:14, cr-23:15).",
+   "skills": [
+    "BC-SKL-04033",
+    "BC-SKL-04038"
+   ],
+   "sources": [
+    "sg-23:14",
+    "cr-23:15"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-04009"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask what would have to be true for the rule to be usable here: an answer that it serves any awkward limit is consistent with BC-MIS-04015, an answer that the indeterminate form is a number is consistent with BC-MIS-04014, and stating the condition correctly with none written is consistent with the mental check and timing causes.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-04029",
+   "name": "Rule applied with no verification of the form",
+   "non_conceptual_causes": [
+    "the verification is done mentally and never written",
+    "the rule is applied because the expression is a quotient",
+    "the verification sentence is cut when the part is written at speed"
+   ],
+   "observed_behavior": "The derivatives of numerator and denominator are taken with no statement that the limit was indeterminate.",
+   "official_evidence": [
+    "sg-23:14",
+    "BC-FRQ-2013-Q5-A",
+    "BC-FRQ-2021-Q4-C"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-04015",
+    "BC-MIS-04014"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The hypothesis point is lost; the CED unit overview states that students must show that the rule applies, and BC-ERR-99008 records unverified hypotheses across years (ced:84).",
+   "skills": [
+    "BC-SKL-04033",
+    "BC-SKL-04034",
+    "BC-SKL-04037"
+   ],
+   "sources": [
+    "ced:84",
+    "sg-23:14"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-04009"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask the student to write the two derivatives on separate lines before forming the quotient: an answer that the whole quotient is differentiated is consistent with BC-MIS-04016, an answer that the rule applies to any awkward limit is consistent with BC-MIS-04015, and a correct separation on request is consistent with the one line and recency causes.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-04030",
+   "name": "Quotient rule applied in place of separate derivatives",
+   "non_conceptual_causes": [
+    "the two rules are confused because both concern quotients",
+    "the derivative is taken in one line so the two pieces are never separated",
+    "the quotient rule is the rule most recently practised"
+   ],
+   "observed_behavior": "The derivative of the whole quotient is taken rather than the quotient of the two derivatives.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-04016",
+    "BC-MIS-04015"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The application point is lost; the CED unit overview emphasises that the conclusion features the ratio of the derivatives rather than the derivative of the ratio (ced:84).",
+   "skills": [
+    "BC-SKL-04035"
+   ],
+   "sources": [
+    "ced:84"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-04009"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask the student to write the derivative of each piece of the numerator separately: an answer that differentiates the quotient as a whole is consistent with BC-MIS-04016, an answer that applies the rule without checking the form is consistent with BC-MIS-04015, and correct pieces beside the wrong written limit is consistent with the row and chain rule causes.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-04031",
+   "name": "Derivative of an unknown function in the numerator taken incorrectly",
+   "non_conceptual_causes": [
+    "the supplied value of the derivative is read from the wrong row",
+    "the chain rule factor inside the numerator is dropped",
+    "the numerator's two pieces are differentiated as a product"
+   ],
+   "observed_behavior": "The numerator contains a function known only through supplied properties and its derivative is mishandled, so the resulting limit is wrong.",
+   "official_evidence": [
+    "cr-23:15",
+    "sg-23:14"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-04016",
+    "BC-MIS-04015"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The answer point is lost although the hypothesis and application points may be earned; the 2023 report records incorrect derivatives of the numerator or denominator as the common failure after a correct application (cr-23:15).",
+   "skills": [
+    "BC-SKL-04036"
+   ],
+   "sources": [
+    "cr-23:15",
+    "sg-23:14"
+   ],
+   "updated": "2026-09-19"
+  }
+ ],
+ "registry": "errors"
+}

@@ -1,0 +1,740 @@
+{
+ "errors": [
+  {
+   "archetypes": [
+    "BC-QA-03001",
+    "BC-QA-03009"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask for the same derivative with an inner function whose derivative is neither one nor a constant, and ask the student to point at the factor that came from inside.",
+   "evidence_tag": "single-source",
+   "id": "BC-ERR-03001",
+   "name": "Inner derivative omitted from a chain rule application",
+   "non_conceptual_causes": [
+    "the inner function is linear, so the missing factor changes only a coefficient and passes unnoticed",
+    "the inner derivative is computed on scratch work and never carried into the product",
+    "the response stops at the first line after the setup, leaving the second factor unwritten"
+   ],
+   "observed_behavior": "The response differentiates the outer function correctly and stops, leaving the derivative of the inner function out of the product.",
+   "official_evidence": [
+    "BC-FRQ-2019-Q4-B",
+    "BC-FRQ-2019-Q5-A",
+    "BC-FRQ-2013-Q3-D",
+    "BC-FRQ-2013-Q4-D",
+    "BC-FRQ-2014-Q3-D",
+    "BC-FRQ-2014-Q5-C"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-03001",
+    "BC-MIS-03012"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The derivative is wrong, and in a multipart question the error propagates into every later part that uses it.",
+   "skills": [
+    "BC-SKL-03001",
+    "BC-SKL-03002"
+   ],
+   "sources": [
+    "ced:72"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-03001",
+    "BC-QA-03009"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask the student to list the layers in order before differentiating, then compare the number of factors in the answer with the number of layers listed.",
+   "evidence_tag": "single-source",
+   "id": "BC-ERR-03002",
+   "name": "One layer of a multi-layer composite left undifferentiated",
+   "non_conceptual_causes": [
+    "the middle layer is transcribed between lines and the innermost factor is dropped in the copy",
+    "the layers are held mentally rather than written, so the count of layers is lost",
+    "the innermost function is a short expression and is read as a variable"
+   ],
+   "observed_behavior": "A composition of three functions is differentiated through the first two layers and the innermost derivative is omitted.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-03001",
+    "BC-MIS-03012"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The derivative is wrong; no credit is available for a partially applied rule in a single answer item.",
+   "skills": [
+    "BC-SKL-03002",
+    "BC-SKL-03003",
+    "BC-SKL-03006",
+    "BC-SKL-03028"
+   ],
+   "sources": [
+    "ced:72"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-03002",
+    "BC-QA-03003"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask for the value of the inner function as a separate question first, then ask which row of the table the outer derivative should be read from.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-03003",
+   "name": "Outer derivative read at the input rather than at the inner output",
+   "non_conceptual_causes": [
+    "the row of the table at the stated input is read instead of the row at the inner output",
+    "the axis label of the supplied graph is read for the wrong function",
+    "the inner value is computed correctly but the wrong row is then copied"
+   ],
+   "observed_behavior": "In a table or graph based composite, the derivative of the outer function is read at the stated input instead of at the value the inner function produces.",
+   "official_evidence": [
+    "BC-FRQ-2014-Q3-D"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-03002",
+    "BC-MIS-03001"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The numerical answer is wrong even though the chain rule structure was written correctly.",
+   "skills": [
+    "BC-SKL-03004",
+    "BC-SKL-03005"
+   ],
+   "sources": [
+    "ced:75"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-03002"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask the student to write the chain rule symbolically before any number is substituted, and check whether the symbolic line shows a product.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-03004",
+   "name": "Table entries combined by addition rather than by the chain rule",
+   "non_conceptual_causes": [
+    "the two tabulated derivatives sit in adjacent columns and are combined the way a sum rule problem on the same page was combined",
+    "the multiplication sign is omitted in the setup line and the line is then read as a sum"
+   ],
+   "observed_behavior": "The response adds the two tabulated derivatives instead of multiplying them.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-03001",
+    "BC-MIS-03002"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The reported value is wrong.",
+   "skills": [
+    "BC-SKL-03004"
+   ],
+   "sources": [
+    "ced:75"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-03003"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask for the slope on each side of the point separately and then ask whether the two agree.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-03005",
+   "name": "Slope read at a point where a graph is not differentiable",
+   "non_conceptual_causes": [
+    "the corner sits close to a grid line, so a nearby straight segment is read as the tangent",
+    "the one sided slopes are computed but only the right hand one is reported"
+   ],
+   "observed_behavior": "A slope is reported at a corner or a cusp of a supplied graph as though the derivative existed there.",
+   "official_evidence": [
+    "BC-FRQ-2013-Q4-D",
+    "BC-FRQ-2014-Q3-D"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-03002",
+    "BC-MIS-02007"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The reported value is wrong, and the response misses that the correct answer is that the derivative does not exist.",
+   "skills": [
+    "BC-SKL-03005"
+   ],
+   "sources": [
+    "ced:72"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-03001",
+    "BC-QA-03009"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask the student to name the outermost operation in the expression before any rule is applied.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-03006",
+   "name": "Product or quotient rule omitted when a composite is one factor",
+   "non_conceptual_causes": [
+    "the composite factor takes the whole scratch line and the enclosing product is not revisited",
+    "the expression is copied without its second factor when the derivative is written out"
+   ],
+   "observed_behavior": "The composite factor is differentiated correctly but the enclosing product or quotient rule is not applied.",
+   "official_evidence": [
+    "sg-25:20",
+    "cr-22:21"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-03012",
+    "BC-MIS-03001"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The derivative is wrong; in the 2025 implicit differentiation task the product rule carries its own scoring point (sg-25:20).",
+   "skills": [
+    "BC-SKL-03006",
+    "BC-SKL-03025",
+    "BC-SKL-03028"
+   ],
+   "sources": [
+    "sg-25:20",
+    "cr-22:21"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-03004"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask what the derivative of the y term would be if y were replaced by a named function of x, and compare the two answers.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-03007",
+   "name": "A term in y differentiated without the dy/dx factor",
+   "non_conceptual_causes": [
+    "the factor is written on scratch work and is not transferred to the answer line",
+    "the y term is short, so it is copied as a constant when the line is rewritten"
+   ],
+   "observed_behavior": "In an implicit differentiation the y terms are differentiated as though y were the independent variable, so no dy/dx factor appears.",
+   "official_evidence": [
+    "cr-23:23",
+    "crabbc-25:24"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-03004",
+    "BC-MIS-03014"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The differentiation is not eligible for the completely correct differentiation point described in the Chief Reader reports (crabbc-25:24).",
+   "skills": [
+    "BC-SKL-03007",
+    "BC-SKL-03009"
+   ],
+   "sources": [
+    "ced:76",
+    "cr-23:23",
+    "crabbc-25:24"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-03004",
+    "BC-QA-03008"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask the student to count the factors in the term that depend on a variable before differentiating it.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-03008",
+   "name": "Product rule omitted on a term containing both variables",
+   "non_conceptual_causes": [
+    "the mixed term is two adjacent symbols and is copied as one block",
+    "the product rule is applied on scratch work and only one of its two terms is transcribed"
+   ],
+   "observed_behavior": "A term that is a product of an expression in x and an expression in y is differentiated as though one of the two were constant.",
+   "official_evidence": [
+    "cr-23:23",
+    "sg-25:20",
+    "crabbc-25:24"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-03005",
+    "BC-MIS-03004"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The differentiation loses the point for a completely correct implicit derivative, and the 2025 scoring guidelines award the product rule its own point (sg-25:20, crabbc-25:24).",
+   "skills": [
+    "BC-SKL-03008",
+    "BC-SKL-03033"
+   ],
+   "sources": [
+    "cr-23:23",
+    "sg-25:20",
+    "crabbc-25:24"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-03004"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask the student to read the differentiated line aloud as a sentence and say what stands on each side of the equals sign.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-03009",
+   "name": "Right hand side of the equation dropped after differentiating",
+   "non_conceptual_causes": [
+    "the equals sign is used as a separator between steps, so the right hand side is never carried down",
+    "the right hand side is a constant and is dropped as though nothing needed writing"
+   ],
+   "observed_behavior": "The response differentiates the left hand side and omits the equals zero or the derivative of the right hand side, leaving an expression rather than an equation.",
+   "official_evidence": [
+    "crabbc-25:25"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-03004",
+    "BC-MIS-99011"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The Chief Reader report for 2025 records that responses dropping the equals zero were generally unable to recover and earned neither of the first two points (crabbc-25:25).",
+   "skills": [
+    "BC-SKL-03009"
+   ],
+   "sources": [
+    "crabbc-25:25"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-03004"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask the student to circle every occurrence of dy/dx in the differentiated equation before any algebra is done.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-03010",
+   "name": "dy/dx terms divided before they are collected",
+   "non_conceptual_causes": [
+    "the division is carried out on the first line before the like terms are gathered",
+    "a sign is dropped while moving one dy/dx term across the equals sign"
+   ],
+   "observed_behavior": "The response divides by a factor while dy/dx still appears on both sides, so the isolated expression is not dy/dx.",
+   "official_evidence": [
+    "cr-23:22"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-03006",
+    "BC-MIS-03005"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The stated expression for dy/dx does not match the verification requested, and later parts built on it are compromised.",
+   "skills": [
+    "BC-SKL-03010",
+    "BC-SKL-03014"
+   ],
+   "sources": [
+    "cr-23:22"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-03004",
+    "BC-QA-03008"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask what quantity the reported expression still depends on, and whether a slope may contain a variable.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-03011",
+   "name": "Only one coordinate substituted into dy/dx",
+   "non_conceptual_causes": [
+    "only the first coordinate of the point is copied from the stem",
+    "the y value is substituted on scratch work and the unsubstituted expression is copied to the answer line"
+   ],
+   "observed_behavior": "The response substitutes the x coordinate into an expression containing both variables and reports a slope still containing y.",
+   "official_evidence": [
+    "crabbc-25:24"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-03006",
+    "BC-MIS-03004"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "No numerical slope is produced, so the evaluation point is lost.",
+   "skills": [
+    "BC-SKL-03011",
+    "BC-SKL-03034"
+   ],
+   "sources": [
+    "crabbc-25:24"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-03005",
+    "BC-QA-09001",
+    "BC-QA-02005"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask what the slope of a horizontal line is before asking which part of dy/dx must vanish.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-03012",
+   "name": "Horizontal and vertical tangent conditions exchanged",
+   "non_conceptual_causes": [
+    "the words horizontal and vertical are read in the wrong order from the stem",
+    "the numerator and denominator are swapped while copying dy/dx onto a fresh line",
+    "the orientation is decided from a sketch drawn with the axes exchanged"
+   ],
+   "observed_behavior": "The denominator of dy/dx is set to zero when a horizontal tangent is requested, or the numerator when a vertical tangent is requested.",
+   "official_evidence": [
+    "cr-23:22",
+    "ced:63"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-03007",
+    "BC-MIS-09003",
+    "BC-MIS-02007"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The reported point is wrong and the reasoning point is not available.",
+   "skills": [
+    "BC-SKL-03012",
+    "BC-SKL-03013",
+    "BC-SKL-09006",
+    "BC-SKL-02023"
+   ],
+   "sources": [
+    "cr-23:22",
+    "ced:171",
+    "ced:63"
+   ],
+   "status": "active",
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-03005"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask the student to substitute the reported point into the defining equation and state whether the equation holds.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-03013",
+   "name": "Tangent condition satisfied but the point is not checked against the curve",
+   "non_conceptual_causes": [
+    "the substitution into the curve is done mentally and is not written, so an inconsistent point survives",
+    "the candidate coordinates are read off scratch work in the wrong pairing"
+   ],
+   "observed_behavior": "A coordinate satisfying the condition on dy/dx is reported as a point of the curve without substituting it into the defining equation.",
+   "official_evidence": [
+    "cr-23:23",
+    "cr-24:18"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-03007",
+    "BC-MIS-01015"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The Chief Reader reports record responses failing to connect dy/dx with the defining equation, which costs the point for the coordinates (cr-23:23, cr-24:18).",
+   "skills": [
+    "BC-SKL-03012",
+    "BC-SKL-03013"
+   ],
+   "sources": [
+    "cr-23:23",
+    "cr-24:18"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-03006"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask what would go wrong in the formula if the derivative of the original function were zero at the matching input.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-03014",
+   "name": "Inverse derivative rule stated without its nonzero hypothesis",
+   "non_conceptual_causes": [
+    "the hypothesis is written in the margin and not carried into the argument",
+    "the formula is copied from memory as a single line with no conditions attached"
+   ],
+   "observed_behavior": "The formula for the derivative of an inverse is written with no mention that the derivative of the original function at the matching input must not be zero.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-03009",
+    "BC-MIS-99009"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "A justification point that requires the hypothesis is not earned; the Chief Reader reports record unverified hypotheses as a recurring loss (BC-ERR-99008).",
+   "skills": [
+    "BC-SKL-03015",
+    "BC-SKL-03020"
+   ],
+   "sources": [
+    "ced:77"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-03006"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask the student to name the input whose output is the stated value before any derivative is used.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-03015",
+   "name": "Inverse derivative evaluated at the given value rather than at the matching input",
+   "non_conceptual_causes": [
+    "a table row exists at the given value, which invites reading that row instead of searching for the matching input",
+    "the search for the matching input is done on scratch work and the original value is copied back by habit"
+   ],
+   "observed_behavior": "The response computes the reciprocal of the derivative of the original function at the value supplied, instead of at the input whose output is that value.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-03008",
+    "BC-MIS-03009"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The reported value is wrong although the formula is correct.",
+   "skills": [
+    "BC-SKL-03016",
+    "BC-SKL-03017",
+    "BC-SKL-03018",
+    "BC-SKL-03019"
+   ],
+   "sources": [
+    "ced:77"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-03006"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask which column of the table the reciprocal was taken from, and what that column records.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-03016",
+   "name": "Reciprocal of the function value reported instead of the reciprocal of the derivative",
+   "non_conceptual_causes": [
+    "the function column and the derivative column of the table are adjacent and are confused when the row is read",
+    "the column header is not reread after the row is located"
+   ],
+   "observed_behavior": "The response inverts the value of the original function rather than the value of its derivative.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-03008",
+    "BC-MIS-03009"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The reported value is wrong.",
+   "skills": [
+    "BC-SKL-03017"
+   ],
+   "sources": [
+    "ced:77"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-03007"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask the student to derive the formula from the corresponding inverse relation, or to check it at one convenient input.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-03017",
+   "name": "Inverse trigonometric derivative formula recalled incorrectly",
+   "non_conceptual_causes": [
+    "the formula is recalled under time pressure with the radical and the squared term exchanged",
+    "a sign is dropped while the formula is copied from a memory aid onto the answer line"
+   ],
+   "observed_behavior": "The derivative of the inverse sine is used for the inverse tangent, or a sign or a radical is misplaced in the recalled formula.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-03010",
+    "BC-MIS-03011"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The derivative is wrong from the first line.",
+   "skills": [
+    "BC-SKL-03021",
+    "BC-SKL-03023"
+   ],
+   "sources": [
+    "ced:78"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-03007"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask what the argument of the inverse trigonometric function is, and where that argument should appear in the formula.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-03018",
+   "name": "Inner expression not substituted throughout an inverse trigonometric formula",
+   "non_conceptual_causes": [
+    "the inner expression is short, so the variable from the memorised formula is copied instead",
+    "the inner derivative is computed on scratch work and left out of the product"
+   ],
+   "observed_behavior": "The standard formula is written with the variable rather than the inner expression in the denominator, or the inner derivative factor is omitted.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-03010",
+    "BC-MIS-03001"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The derivative is wrong; the missing factor is the chain rule element the formula requires.",
+   "skills": [
+    "BC-SKL-03022",
+    "BC-SKL-03024"
+   ],
+   "sources": [
+    "ced:78"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-03009",
+    "BC-QA-03001"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask the student to evaluate the unsimplified and the simplified forms at one convenient input and compare the two numbers.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-03020",
+   "name": "Unnecessary simplification introduces an algebra error",
+   "non_conceptual_causes": [
+    "a negative sign is dropped while distributing across the numerator",
+    "a common factor is cancelled from one term of a sum rather than from the whole sum"
+   ],
+   "observed_behavior": "A correct derivative is simplified further and the simplification changes the value.",
+   "official_evidence": [
+    "cr-24:19",
+    "crabbc-25:26"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-03012",
+    "BC-MIS-03005"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The Chief Reader reports record unnecessary simplification as a recurring source of lost points (cr-24:19, crabbc-25:26).",
+   "skills": [
+    "BC-SKL-03029"
+   ],
+   "sources": [
+    "cr-24:19",
+    "crabbc-25:26"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-03008"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask the student to count the number of differentiations performed and compare that count with the order named in the prompt.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-03021",
+   "name": "Differentiation stopped one order short of the order requested",
+   "non_conceptual_causes": [
+    "the order requested in the stem is read as the order already reached",
+    "the last differentiation is carried out on scratch work and not copied to the answer line"
+   ],
+   "observed_behavior": "The response reports the first derivative where the second was asked for, or the second where the third was asked for.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-03013",
+    "BC-MIS-03014"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The answer point is lost although every differentiation performed is correct.",
+   "skills": [
+    "BC-SKL-03030",
+    "BC-SKL-03031"
+   ],
+   "sources": [
+    "ced:80"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-03008",
+    "BC-QA-03004"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask the student to say which symbol names an operation and which names a quantity in the written line.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-03022",
+   "name": "Higher-order derivative notation written incorrectly",
+   "non_conceptual_causes": [
+    "handwriting shorthand for the operator and for the derivative collapses the two into one mark",
+    "the notation is copied from a worked line that used a different convention"
+   ],
+   "observed_behavior": "The response writes dy in place of dy/dx, or uses dy/dx where the operator d/dx is meant, or mixes the two notations inside one line.",
+   "official_evidence": [
+    "crabbc-25:25"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-03014",
+    "BC-MIS-03003"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The 2025 Chief Reader report lists this notation as a misconception seen in implicit differentiation responses, and poor notation cost points there (crabbc-25:25).",
+   "skills": [
+    "BC-SKL-03032"
+   ],
+   "sources": [
+    "crabbc-25:25",
+    "ced:80"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-03008",
+    "BC-QA-05012"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask for the numerical value of dy/dx at the point as a separate question before the second derivative is requested.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-03023",
+   "name": "First derivative value not substituted into the second derivative",
+   "non_conceptual_causes": [
+    "the first derivative value is computed on scratch work and never substituted into the second derivative expression",
+    "the point coordinates are substituted into the second derivative before dy/dx is replaced, so the dy/dx symbol is treated as already numeric"
+   ],
+   "observed_behavior": "An expression for the second derivative containing dy/dx is evaluated without first computing the value of dy/dx at the point.",
+   "official_evidence": [
+    "sg-25:20",
+    "sg-25:21",
+    "BC-FRQ-2015-Q4-B"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-03006",
+    "BC-MIS-03013",
+    "BC-MIS-05033"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The numerical second derivative is wrong, although the product and chain rule points described in the 2025 scoring guidelines may still be earned (sg-25:20).",
+   "skills": [
+    "BC-SKL-03033",
+    "BC-SKL-03034",
+    "BC-SKL-05062"
+   ],
+   "sources": [
+    "sg-25:20",
+    "sg-25:21"
+   ],
+   "status": "active",
+   "updated": "2026-09-19"
+  }
+ ],
+ "registry": "errors"
+}

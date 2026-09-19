@@ -1,0 +1,1612 @@
+{
+ "errors": [
+  {
+   "archetypes": [
+    "BC-QA-10001",
+    "BC-QA-10002"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask for the limit of the terms and for the value of the series in the same prompt; a student who gives one number for both holds the conflation, while a student who supplies two answers once the objects are named was reading or copying quickly.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-10001",
+   "name": "Convergence of the sequence of terms reported as convergence of the series",
+   "non_conceptual_causes": [
+    "the word terms in the stem read as the word series",
+    "the limit computed in the previous part copied forward onto this answer line",
+    "the part abandoned after the limit was found, so no statement about the total was written"
+   ],
+   "notes": "",
+   "observed_behavior": "The response evaluates the limit of the general term, finds a number, and reports that number as the value or the behaviour of the series.",
+   "official_evidence": [
+    "ced:186"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-10001",
+    "BC-MIS-10005"
+   ],
+   "related_errors": [],
+   "scope": "BC_only",
+   "scoring_consequence": "The conclusion is about the wrong object, so no point tied to the series is earned.",
+   "skills": [
+    "BC-SKL-10001",
+    "BC-SKL-10003",
+    "BC-SKL-10005"
+   ],
+   "sources": [
+    "ced:186"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10006",
+    "BC-QA-10015",
+    "BC-QA-10005"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask the student to underline the series the conclusion is about; a student who cannot choose between the printed series is conflating them, while one who underlines the right series immediately omitted the referent in writing only.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-10003",
+   "name": "Conclusion states convergence without naming which series it is about",
+   "non_conceptual_causes": [
+    "the pronoun it used because the several series in the part were never labelled",
+    "the verdict written in the margin beside one printed series and not repeated in the sentence",
+    "the closing sentence compressed after a long test computation"
+   ],
+   "notes": "Matches the cross-unit Chief Reader error record BC-ERR-99001.",
+   "observed_behavior": "With several series present in one part, the response concludes that the series converges without identifying which one.",
+   "official_evidence": [
+    "sg-21:23",
+    "cr-23:16",
+    "BC-FRQ-2021-Q6-B"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-10001"
+   ],
+   "related_errors": [
+    "BC-ERR-99001"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "The explanation point is not earned, because the reader cannot tell which series the claim is about (sg-21:23).",
+   "single_cause_note": "Only BC-MIS-10001 is a plausible internal cause; the rest of the behaviour is a failure to name the subject rather than a belief about series.",
+   "skills": [
+    "BC-SKL-10005",
+    "BC-SKL-10017",
+    "BC-SKL-10024",
+    "BC-SKL-10026",
+    "BC-SKL-10035"
+   ],
+   "sources": [
+    "sg-21:23",
+    "cr-23:16"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10003",
+    "BC-QA-10020"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask for the second term divided by the first and the third divided by the second; matching quotients that still differ from the reported r point to a slip, while a student who declines to form the quotients is reading the ratio off the form.",
+   "evidence_tag": "single-source",
+   "id": "BC-ERR-10004",
+   "name": "Common ratio of a geometric series misidentified",
+   "non_conceptual_causes": [
+    "the base of the power read off as the ratio with no quotient formed",
+    "a sign dropped when consecutive terms carrying an alternating factor were divided",
+    "the quotient formed from terms of a series that was written out incorrectly first"
+   ],
+   "notes": "Matches the cross-unit Chief Reader error record BC-ERR-99038.",
+   "observed_behavior": "The response names a ratio that does not equal the quotient of consecutive terms, often taking the coefficient or the exponent as the ratio.",
+   "official_evidence": [
+    "sg-25:26",
+    "cr-22:30",
+    "BC-FRQ-2014-Q6-C",
+    "BC-FRQ-2022-Q6-D",
+    "BC-FRQ-2015-Q6-B"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-10003"
+   ],
+   "related_errors": [
+    "BC-ERR-99038"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "The sum and the convergence condition both follow from the ratio, so the part is lost from that step onward.",
+   "single_cause_note": "Only BC-MIS-10003 is a plausible internal cause; the remaining routes to this behaviour are slips in forming the quotient.",
+   "skills": [
+    "BC-SKL-10006"
+   ],
+   "sources": [
+    "sg-25:26",
+    "cr-22:30"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10003",
+    "BC-QA-10020"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask for the value of r and whether the formula applies before any sum is computed; a student who states the condition and then still sums holds the belief, while one who states the condition and withdraws the sum skipped a step.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-10005",
+   "name": "Geometric sum formula applied with a ratio of size at least one",
+   "non_conceptual_causes": [
+    "the closed form written from memory before the ratio had been named",
+    "the absolute value bars dropped, so a ratio of negative two was read as less than one",
+    "the check skipped because the same formula was applied correctly earlier in the question"
+   ],
+   "notes": "",
+   "observed_behavior": "The response applies the closed form for the sum without checking that the absolute value of the ratio is less than one, and reports a finite value for a divergent series.",
+   "official_evidence": [
+    "ced:187",
+    "sg-25:27",
+    "BC-FRQ-2014-Q6-C",
+    "BC-FRQ-2022-Q6-D",
+    "BC-FRQ-2015-Q6-B"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-10003",
+    "BC-MIS-10007"
+   ],
+   "related_errors": [],
+   "scope": "BC_only",
+   "scoring_consequence": "A finite value reported for a divergent series loses the answer point and any reasoning point attached to it.",
+   "skills": [
+    "BC-SKL-10007",
+    "BC-SKL-10010",
+    "BC-SKL-10063",
+    "BC-SKL-10072"
+   ],
+   "sources": [
+    "ced:187",
+    "sg-25:27"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10003"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask the student to write the first two terms of the series as printed; a student who still uses the index zero term holds the belief, while one who corrects a on sight lost the lower index when reading.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-10006",
+   "name": "First term taken as the index zero term when the series starts elsewhere",
+   "non_conceptual_causes": [
+    "the lower index on the sigma read as zero",
+    "the series re-indexed without the compensating factor of r",
+    "the first two terms never written out before the formula was applied"
+   ],
+   "notes": "",
+   "observed_behavior": "The response applies the geometric sum formula with a first term read from the index zero position although the series as written starts at a different index.",
+   "official_evidence": [
+    "ced:187",
+    "BC-FRQ-2021-Q6-D"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-10004",
+    "BC-MIS-10003"
+   ],
+   "related_errors": [],
+   "scope": "BC_only",
+   "scoring_consequence": "The reported sum is wrong by a factor, so the value point is lost.",
+   "skills": [
+    "BC-SKL-10008",
+    "BC-SKL-10009",
+    "BC-SKL-10072"
+   ],
+   "sources": [
+    "ced:187"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10004",
+    "BC-QA-10001"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask for the limit of the terms alone with no verdict attached; a wrong number with the right object identifies the computation as the gap, while a right number attached to the wrong object identifies the conflation.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-10007",
+   "name": "Limit of the general term evaluated incorrectly",
+   "non_conceptual_causes": [
+    "a ratio of equal degrees in n reported as zero",
+    "the exponent misread from a small superscript in the printed term",
+    "the limit taken of the partial sum rather than of the general term"
+   ],
+   "notes": "",
+   "observed_behavior": "The response reports the limit of a sub n as zero or as a nonzero number that the expression does not support, often mishandling a ratio of like degree polynomials.",
+   "official_evidence": [
+    "ced:188"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-10005"
+   ],
+   "related_errors": [],
+   "scope": "BC_only",
+   "scoring_consequence": "A conclusion built on the wrong limit earns no reasoning point even when the verdict happens to be correct.",
+   "single_cause_note": "Only BC-MIS-10005 is a plausible internal cause here; the other routes are slips inside the limit computation.",
+   "skills": [
+    "BC-SKL-10011"
+   ],
+   "sources": [
+    "ced:188"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10004",
+    "BC-QA-10015",
+    "BC-QA-10001"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Give the harmonic series and ask whether the same argument settles it; a student who maintains convergence holds the converse, while one who withdraws it had left the second half of the argument unwritten.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-10008",
+   "name": "Convergence concluded because the terms approach zero",
+   "non_conceptual_causes": [
+    "the nth term test recalled in its converse form from a worked example",
+    "the zero limit written and the sentence naming a further test never added",
+    "the verdict copied from an earlier part where the terms did settle the question"
+   ],
+   "notes": "",
+   "observed_behavior": "The response states that the series converges on the grounds that the limit of the general term is zero, with no other test applied.",
+   "official_evidence": [
+    "ced:188",
+    "sg-24:19"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-10005",
+    "BC-MIS-10006"
+   ],
+   "related_errors": [],
+   "scope": "BC_only",
+   "scoring_consequence": "No convergence point is earned, because the nth term test supports divergence only (ced:188).",
+   "skills": [
+    "BC-SKL-10013",
+    "BC-SKL-10029"
+   ],
+   "sources": [
+    "ced:188",
+    "sg-24:19"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10004",
+    "BC-QA-10005",
+    "BC-QA-10015"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask the student to list the conditions the named test requires; a student who cannot produce them holds the belief, while one who recites them and points to scratch work omitted them in presentation only.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-10009",
+   "name": "Test named without its hypotheses being checked",
+   "non_conceptual_causes": [
+    "the test named on the last line with the conditions left in scratch work",
+    "the conditions assumed to carry over from the series in the previous part",
+    "the name of the test written in place of the argument because the part ran long"
+   ],
+   "notes": "Matches the cross-unit Chief Reader error record BC-ERR-99008.",
+   "observed_behavior": "The response names a convergence test and states a conclusion without establishing the conditions the test requires.",
+   "official_evidence": [
+    "sg-21:22",
+    "cr-23:4",
+    "BC-FRQ-2012-Q6-A"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-10007",
+    "BC-MIS-99009"
+   ],
+   "related_errors": [
+    "BC-ERR-99008"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "Points tied to the conditions or to the justification are lost even when the verdict is right (sg-21:22).",
+   "skills": [
+    "BC-SKL-10012",
+    "BC-SKL-10014",
+    "BC-SKL-10021",
+    "BC-SKL-10030",
+    "BC-SKL-10033"
+   ],
+   "sources": [
+    "sg-21:22",
+    "cr-23:4"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10005"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask which three properties the integral test requires and where each is checked; a student who names fewer than three holds the belief, while one who names all three but checked them on sample terms has a verification gap.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-10010",
+   "name": "Integral test conditions incomplete or omitted",
+   "non_conceptual_causes": [
+    "one of the three conditions stated and the other two treated as obvious for a familiar function",
+    "positivity and decrease checked on the first few terms rather than on the interval",
+    "the conditions stated about the terms of the series instead of about the continuous function"
+   ],
+   "notes": "Matches the cross-unit Chief Reader error record BC-ERR-99008.",
+   "observed_behavior": "The response applies the integral test without stating that the function is positive, decreasing, and continuous, or states only one or two of the three.",
+   "official_evidence": [
+    "sg-21:21",
+    "sg-21:22",
+    "BC-FRQ-2021-Q6-A"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-10007",
+    "BC-MIS-99009"
+   ],
+   "related_errors": [
+    "BC-ERR-99008"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "The conditions point requires all three properties to be listed (sg-21:22).",
+   "skills": [
+    "BC-SKL-10014"
+   ],
+   "sources": [
+    "sg-21:21",
+    "sg-21:22"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10005"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask what number the infinity symbol stands for in that substitution; a student who supplies a value treats it as a number, while one who rewrites with a bound b and a limit had dropped notation.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-10011",
+   "name": "Improper integral evaluated without limit notation",
+   "non_conceptual_causes": [
+    "the infinity symbol substituted directly into the antiderivative",
+    "limit notation opened on the first line and dropped at the evaluation line",
+    "the letter used as the upper bound changed between the integral and the limit"
+   ],
+   "notes": "Matches the cross-unit Chief Reader error record BC-ERR-99007.",
+   "observed_behavior": "The response substitutes the infinity symbol into the antiderivative, or opens with limit notation and abandons it before the evaluation is finished.",
+   "official_evidence": [
+    "sg-21:22",
+    "cr-22:27",
+    "cr-23:16",
+    "BC-FRQ-2019-Q5-C",
+    "BC-FRQ-2021-Q6-A",
+    "BC-FRQ-2022-Q5-C"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-99008",
+    "BC-MIS-10007"
+   ],
+   "related_errors": [
+    "BC-ERR-99007"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "The evaluation point requires correct limit notation; an evaluation written with the infinity symbol does not earn it (sg-21:22).",
+   "skills": [
+    "BC-SKL-10015",
+    "BC-SKL-10016"
+   ],
+   "sources": [
+    "sg-21:22",
+    "cr-22:27",
+    "cr-23:16"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10005"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask what the first term of the series is and which input produces it; a student who still starts the integral at one holds a fixed starting point, while one who corrects the limit misread the index.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-10012",
+   "name": "Improper integral set up with the wrong lower limit",
+   "non_conceptual_causes": [
+    "the lower index on the sigma read as one out of habit",
+    "the integral copied from a worked example that started at one",
+    "the first term of the series never evaluated to check which input produces it"
+   ],
+   "notes": "",
+   "observed_behavior": "The response writes the matching integral from an index other than the one the series starts at.",
+   "official_evidence": [
+    "sg-21:22",
+    "BC-FRQ-2021-Q6-A"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-10007",
+    "BC-MIS-10004"
+   ],
+   "related_errors": [],
+   "scope": "BC_only",
+   "scoring_consequence": "The improper integral point is not earned, although a correct subsequent limit keeps the evaluation point in reach (sg-21:22).",
+   "skills": [
+    "BC-SKL-10015"
+   ],
+   "sources": [
+    "sg-21:22"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10005"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask whether the first term of the series is larger or smaller than the area over the first subinterval; a student who says they are equal holds the belief, while one who sees the gap and still reports the integral answered the wrong question.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-10013",
+   "name": "Value of the improper integral reported as the sum of the series",
+   "non_conceptual_causes": [
+    "the integral value written on the answer line because it was the last number computed",
+    "the request for a verdict read as a request for a value",
+    "the integral evaluated correctly and the comparison sentence left unwritten"
+   ],
+   "notes": "",
+   "observed_behavior": "The response evaluates the integral, finds a number, and presents that number as the value of the series.",
+   "official_evidence": [
+    "ced:189"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-10008",
+    "BC-MIS-10002"
+   ],
+   "related_errors": [],
+   "scope": "BC_only",
+   "scoring_consequence": "A value claim beyond convergence is unsupported and earns nothing.",
+   "skills": [
+    "BC-SKL-10017"
+   ],
+   "sources": [
+    "ced:189"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10004",
+    "BC-QA-10015"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask for the behaviour of the series with exponent one and with exponent two separately; a student who gives the same verdict for both has misplaced the threshold, while one who separates them mis-converted the exponent.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-10014",
+   "name": "p-series threshold applied incorrectly",
+   "non_conceptual_causes": [
+    "a root converted to an exponent with the reciprocal taken in the wrong direction",
+    "the exponent read from the denominator of a coefficient rather than from the power of n",
+    "the boundary case p equal to one settled by analogy with a nearby convergent case"
+   ],
+   "notes": "",
+   "observed_behavior": "The response reports a p-series with p at most one as convergent, or treats the harmonic series as convergent.",
+   "official_evidence": [
+    "ced:190",
+    "sg-24:19"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-10009",
+    "BC-MIS-10005"
+   ],
+   "related_errors": [],
+   "scope": "BC_only",
+   "scoring_consequence": "The verdict is wrong, so the reasoning point and the answer point are both lost.",
+   "skills": [
+    "BC-SKL-10018",
+    "BC-SKL-10019",
+    "BC-SKL-10020"
+   ],
+   "sources": [
+    "ced:190",
+    "sg-24:19"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10015",
+    "BC-QA-10013"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask the student to write the first three terms at that endpoint before naming a test; a student who then keeps the same test holds the belief, while one who switches tests had not produced the terms.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-10015",
+   "name": "Endpoint series analysed with a test whose conditions it fails",
+   "non_conceptual_causes": [
+    "the endpoint series never written out before a test was named",
+    "the alternating factor lost when a negative endpoint was substituted",
+    "the test reused from the other endpoint with no recheck of its conditions"
+   ],
+   "notes": "Matches the cross-unit Chief Reader error record BC-ERR-99017.",
+   "observed_behavior": "The response applies a comparison test to an alternating series, or applies the alternating series test to a series of positive terms.",
+   "official_evidence": [
+    "sg-25:25",
+    "cr-24:35",
+    "cr-24:36",
+    "BC-FRQ-2012-Q6-A"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-10007",
+    "BC-MIS-10024"
+   ],
+   "related_errors": [
+    "BC-ERR-99017"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "The analysis point at that endpoint is lost, and the interval point with it (sg-25:25).",
+   "skills": [
+    "BC-SKL-10021",
+    "BC-SKL-10022",
+    "BC-SKL-10027",
+    "BC-SKL-10058",
+    "BC-SKL-10071"
+   ],
+   "sources": [
+    "sg-25:25",
+    "cr-24:35",
+    "cr-24:36"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10004",
+    "BC-QA-10015"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask which of the two series has the larger terms and what that licenses in each direction; a student who accepts both directions holds the belief, while one who states the rule correctly transcribed the inequality backwards.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-10016",
+   "name": "Comparison inequality stated in the direction that does not support the conclusion",
+   "non_conceptual_causes": [
+    "the inequality written in the direction the algebra produced and then read in the other direction",
+    "the inequality established for the larger terms while the comparison series is the convergent one",
+    "the conclusion written from the comparison series' behaviour with the inequality never used"
+   ],
+   "notes": "",
+   "observed_behavior": "The response bounds the terms above by a divergent series, or below by a convergent series, and draws a conclusion anyway.",
+   "official_evidence": [
+    "sg-24:19",
+    "sg-24:20"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-10010"
+   ],
+   "related_errors": [],
+   "scope": "BC_only",
+   "scoring_consequence": "The answer with reason point is lost because the inequality does not support the claim (sg-24:20).",
+   "single_cause_note": "Only BC-MIS-10010 is a plausible internal cause; the other routes are slips in writing or reading the inequality.",
+   "skills": [
+    "BC-SKL-10023",
+    "BC-SKL-10024"
+   ],
+   "sources": [
+    "sg-24:19",
+    "sg-24:20"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10006",
+    "BC-QA-10013",
+    "BC-QA-10014"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask the student to write the expression whose limit is being taken with its notation; a student who cannot say which variable is limiting holds a notation belief, while one who supplies it at once abbreviated the presentation.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-10017",
+   "name": "Limit taken without limit notation",
+   "non_conceptual_causes": [
+    "the limit symbol dropped when work moved from scratch paper to the answer space",
+    "the value written beside the ratio as a running annotation rather than as a statement",
+    "the index n left inside the final expression so no limiting variable is identified"
+   ],
+   "notes": "Matches the cross-unit Chief Reader error record BC-ERR-99002.",
+   "observed_behavior": "The response computes the value of a ratio or a quotient as the index grows without writing the limit symbol.",
+   "official_evidence": [
+    "sg-21:23",
+    "sg-25:25",
+    "BC-FRQ-2021-Q4-C",
+    "BC-FRQ-2014-Q6-A",
+    "BC-FRQ-2022-Q6-A",
+    "BC-FRQ-2015-Q6-A"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-10011",
+    "BC-MIS-99011"
+   ],
+   "related_errors": [
+    "BC-ERR-99002"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "Limit notation is required for the setup point in a limit comparison (sg-21:23) and for the limit point in a ratio test (sg-25:25).",
+   "skills": [
+    "BC-SKL-10025",
+    "BC-SKL-10032",
+    "BC-SKL-10054"
+   ],
+   "sources": [
+    "sg-21:23",
+    "sg-25:25"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10006",
+    "BC-QA-10007"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask which series the comparison was actually performed on; a student who says the two are the same series holds the belief, while one who names the signed series and restates the claim dropped the bars in transcription.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-10018",
+   "name": "Absolute values omitted when absolute convergence is the target",
+   "non_conceptual_causes": [
+    "the word absolutely in the prompt read past",
+    "the absolute value bars dropped when the general term was copied into the comparison",
+    "the alternating factor cancelled early in the algebra and never restored"
+   ],
+   "notes": "",
+   "observed_behavior": "The response runs a comparison or limit comparison on the signed terms while claiming absolute convergence.",
+   "official_evidence": [
+    "sg-21:23",
+    "BC-FRQ-2021-Q6-B"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-10015",
+    "BC-MIS-10016"
+   ],
+   "related_errors": [],
+   "scope": "BC_only",
+   "scoring_consequence": "The explanation point requires absolute value symbols, explicitly or implicitly (sg-21:23).",
+   "skills": [
+    "BC-SKL-10025",
+    "BC-SKL-10034"
+   ],
+   "sources": [
+    "sg-21:23"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10006"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask what the limit comparison test licenses when the limit is three; a student who reports divergence from that value holds the criterion confusion, while one who asks for the comparison series' behaviour mixed two adjacent computations.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-10019",
+   "name": "Limit comparison conclusion drawn by comparing the limit with one",
+   "non_conceptual_causes": [
+    "the ratio test and the limit comparison run in adjacent parts and their criteria exchanged",
+    "the limit value compared with one because one is the number the previous part used",
+    "the comparison series' behaviour never stated, so the only available number was the limit"
+   ],
+   "notes": "",
+   "observed_behavior": "The response evaluates the limit of the ratio and then compares that value with one, as in a ratio test, instead of noting that it is positive and finite.",
+   "official_evidence": [
+    "sg-21:23",
+    "BC-FRQ-2021-Q6-B"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-10011",
+    "BC-MIS-10014"
+   ],
+   "related_errors": [],
+   "scope": "BC_only",
+   "scoring_consequence": "Comparing the limit with one does not earn the explanation point (sg-21:23).",
+   "skills": [
+    "BC-SKL-10026"
+   ],
+   "sources": [
+    "sg-21:23"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10004",
+    "BC-QA-10008"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask which two properties of the terms the test requires and where each was checked; a student who offers one property as sufficient holds the collapse, while one who names both and points to scratch work omitted them in presentation.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-10020",
+   "name": "Alternating series test applied without both conditions stated",
+   "non_conceptual_causes": [
+    "one condition written on the page and the other left in scratch work",
+    "the decrease checked on the first three terms rather than for every index",
+    "the argument abbreviated because the same test was stated in full earlier in the question"
+   ],
+   "notes": "Matches the cross-unit Chief Reader error record BC-ERR-99016.",
+   "observed_behavior": "The response invokes the alternating series test or its error bound without stating that the terms alternate and decrease in absolute value to zero.",
+   "official_evidence": [
+    "sg-22:21",
+    "sg-24:21",
+    "crabbc-25:33",
+    "BC-FRQ-2022-Q6-B"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-10012",
+    "BC-MIS-10013",
+    "BC-MIS-10017"
+   ],
+   "related_errors": [
+    "BC-ERR-99016"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "The justification point requires both conditions to be stated (sg-22:21, sg-24:21).",
+   "skills": [
+    "BC-SKL-10028",
+    "BC-SKL-10029",
+    "BC-SKL-10030",
+    "BC-SKL-10039"
+   ],
+   "sources": [
+    "sg-22:21",
+    "sg-24:21",
+    "crabbc-25:33"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10013",
+    "BC-QA-10014"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask the student to write the term of index n plus one on its own before forming the ratio; a correct written term followed by the same faulty ratio points to an algebra slip, while a faulty written term points to the substitution itself.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-10021",
+   "name": "Index substitution incomplete in the ratio of consecutive terms",
+   "non_conceptual_causes": [
+    "an exponent of two n plus two written where two n plus three is required",
+    "the factorial incremented while the power was left unchanged",
+    "the ratio formed in one line with the term of index n plus one never written on its own"
+   ],
+   "notes": "",
+   "observed_behavior": "The response replaces n by n plus one in some places and not others, for example writing an exponent of two n plus two where two n plus three is required.",
+   "official_evidence": [
+    "sg-22:21",
+    "BC-FRQ-2012-Q6-A",
+    "BC-FRQ-2021-Q6-C",
+    "BC-FRQ-2014-Q6-A",
+    "BC-FRQ-2022-Q6-C",
+    "BC-FRQ-2015-Q6-A"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-10014"
+   ],
+   "related_errors": [],
+   "scope": "BC_only",
+   "scoring_consequence": "A substitution error of this kind keeps the early points but blocks the final interval point (sg-22:21).",
+   "single_cause_note": "Only BC-MIS-10014 is a plausible internal cause; the other routes are algebra slips inside the substitution.",
+   "skills": [
+    "BC-SKL-10031",
+    "BC-SKL-10054"
+   ],
+   "sources": [
+    "sg-22:21"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10013"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask what the ratio gives for a negative value of the variable; a student who reports a negative limit and still compares it with one is not distinguishing the two series, while one who restores the bars simplified them away.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-10022",
+   "name": "Ratio test carried out without absolute values",
+   "non_conceptual_causes": [
+    "the bars dropped because every displayed term of the printed series is positive",
+    "the absolute value written on the first line and lost once the algebra was simplified",
+    "the ratio copied from a worked example whose terms were positive"
+   ],
+   "notes": "",
+   "observed_behavior": "The response forms and evaluates the ratio of consecutive terms without absolute value bars.",
+   "official_evidence": [
+    "sg-25:25"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-10014",
+    "BC-MIS-10015"
+   ],
+   "related_errors": [],
+   "scope": "BC_only",
+   "scoring_consequence": "A ratio without absolute values still earns the setup and limit points, but the interior point then requires the inequality to be resolved without error (sg-25:25).",
+   "skills": [
+    "BC-SKL-10031"
+   ],
+   "sources": [
+    "sg-25:25"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10007"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask which series was tested and what its convergence implies about the other; a student who cannot state the implication holds the belief, while one who states it and then rereads the label transposed two words.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-10023",
+   "name": "Absolute and conditional convergence labels interchanged",
+   "non_conceptual_causes": [
+    "the label written from the last test run rather than from the pair of findings",
+    "only one of the two series tested and the label chosen from that single result",
+    "the two labels transposed when the answer was copied to the final line"
+   ],
+   "notes": "",
+   "observed_behavior": "The response labels a series conditionally convergent when the absolute value series converges, or absolutely convergent when only the signed series converges.",
+   "official_evidence": [
+    "ced:194"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-10015",
+    "BC-MIS-10016"
+   ],
+   "related_errors": [],
+   "scope": "BC_only",
+   "scoring_consequence": "The classification point is lost, since the two labels are exclusive.",
+   "skills": [
+    "BC-SKL-10035",
+    "BC-SKL-10036",
+    "BC-SKL-10037",
+    "BC-SKL-10038"
+   ],
+   "sources": [
+    "ced:194"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10008"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask which terms the partial sum contains and which term comes next; a student who names the next term correctly and still bounds with another term has a counting slip, while one who cannot say which term is omitted is applying the bound without its conditions.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-10024",
+   "name": "Bounding term taken from the wrong position in the series",
+   "non_conceptual_causes": [
+    "the last index of the partial sum counted as the first omitted index",
+    "the sum read as ending at n when the sigma runs to n minus one",
+    "the bounding term taken from the term that was easiest to evaluate"
+   ],
+   "notes": "Matches the cross-unit Chief Reader error record BC-ERR-99016.",
+   "observed_behavior": "The response bounds the error with a term already included in the partial sum, or with a term further along than the first omitted one.",
+   "official_evidence": [
+    "sg-22:21",
+    "sg-24:21",
+    "BC-FRQ-2012-Q6-B",
+    "BC-FRQ-2019-Q6-D",
+    "BC-FRQ-2021-Q6-D",
+    "BC-FRQ-2022-Q6-B"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-10017"
+   ],
+   "related_errors": [
+    "BC-ERR-99016"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "The first point is earned only for the correct omitted term, and a term of higher degree does not earn it (sg-22:21).",
+   "single_cause_note": "Only BC-MIS-10017 is a plausible internal cause; the other routes are counting slips in locating the first omitted term.",
+   "skills": [
+    "BC-SKL-10040",
+    "BC-SKL-10041"
+   ],
+   "sources": [
+    "sg-22:21",
+    "sg-24:21"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10008"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask what value of the variable the approximation is being made at; a student who names it and still substitutes the index is not separating index from variable, while one who recomputes on the spot made a substitution slip.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-10025",
+   "name": "Bounding term evaluated at the wrong input",
+   "non_conceptual_causes": [
+    "the index n substituted in place of the stated input",
+    "the centre of the series substituted because the term was read from the general form",
+    "a power of a negative input evaluated without parentheses"
+   ],
+   "notes": "",
+   "observed_behavior": "The response identifies the correct omitted term but substitutes the index, the centre, or another value in place of the stated input.",
+   "official_evidence": [
+    "sg-22:21",
+    "BC-FRQ-2012-Q6-B"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-99007",
+    "BC-MIS-10017"
+   ],
+   "related_errors": [],
+   "scope": "BC_only",
+   "scoring_consequence": "The point attached to using the term correctly is lost (sg-22:21).",
+   "skills": [
+    "BC-SKL-10041"
+   ],
+   "sources": [
+    "sg-22:21"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10008",
+    "BC-QA-10009"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask whether the error is known exactly or only bounded and which symbol says so; a student who claims exact knowledge holds the belief, while one who names the inequality wrote the relation loosely.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-10026",
+   "name": "Error written as equal to the bounding term",
+   "non_conceptual_causes": [
+    "the equals sign used to join the error and the bound as one line of work",
+    "the inequality symbol chosen after the value was computed and pointed the wrong way",
+    "the phrase at most in the prompt not carried into the written relation"
+   ],
+   "notes": "Matches the cross-unit Chief Reader error record BC-ERR-99016, BC-ERR-99002.",
+   "observed_behavior": "The response presents the error as equal to the bounding expression rather than at most that expression.",
+   "official_evidence": [
+    "sg-22:21",
+    "sg-23:20",
+    "sg-24:21",
+    "crabbc-25:34",
+    "BC-FRQ-2012-Q6-B",
+    "BC-FRQ-2019-Q6-D",
+    "BC-FRQ-2021-Q6-D",
+    "BC-FRQ-2022-Q6-B"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-99007",
+    "BC-MIS-99011"
+   ],
+   "related_errors": [
+    "BC-ERR-99016",
+    "BC-ERR-99002"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "A statement of equality does not earn the justification point in either bound (sg-22:21, sg-23:20, sg-24:21).",
+   "skills": [
+    "BC-SKL-10042",
+    "BC-SKL-10051"
+   ],
+   "sources": [
+    "sg-22:21",
+    "sg-23:20",
+    "sg-24:21",
+    "crabbc-25:34"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10008",
+    "BC-QA-10009"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask the student to finish the sentence stating what the error is less than; a student who supplies the tolerance at once omitted a line, while one who offers the bound as the answer is treating bound and error as one object.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-10027",
+   "name": "Comparison with the tolerance left incomplete",
+   "non_conceptual_causes": [
+    "the bounding value computed and the comparison sentence left unwritten",
+    "the tolerance read as the number to compute rather than the number to beat",
+    "the comparison carried out mentally with only the verdict recorded"
+   ],
+   "notes": "",
+   "observed_behavior": "The response computes the bounding value but never states that it is at most the tolerance the prompt named.",
+   "official_evidence": [
+    "sg-23:20",
+    "sg-22:21",
+    "BC-FRQ-2012-Q6-B"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-99007"
+   ],
+   "related_errors": [],
+   "scope": "BC_only",
+   "scoring_consequence": "The communication point requires the inequality against the tolerance to be presented (sg-23:20, sg-22:21).",
+   "single_cause_note": "Only BC-MIS-99007 is a plausible internal cause; the other routes are omissions in presenting the final comparison.",
+   "skills": [
+    "BC-SKL-10042",
+    "BC-SKL-10051"
+   ],
+   "sources": [
+    "sg-23:20",
+    "sg-22:21"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10010"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask the student to name the two factors being differentiated before writing anything; a student who names them and then still omits a factor made a rule omission, while one who does not see two factors misread the relation.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-10028",
+   "name": "Higher derivative computed without the product or chain rule",
+   "non_conceptual_causes": [
+    "the product rule omitted on a product of two functions of x",
+    "the chain rule factor dropped when an inner function was differentiated",
+    "the higher derivative written in one step with no intermediate expression recorded"
+   ],
+   "notes": "Matches the cross-unit Chief Reader error record BC-ERR-99013.",
+   "observed_behavior": "The response differentiates a relation defining a derivative and omits a product rule factor or a chain rule factor.",
+   "official_evidence": [
+    "sg-23:19"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-10019"
+   ],
+   "related_errors": [
+    "BC-ERR-99013"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "The form of the rule is scored separately from the resulting derivative, so an omitted factor loses the second point while the first may survive (sg-23:19).",
+   "single_cause_note": "Only BC-MIS-10019 is a plausible internal cause; the other routes are omissions of a differentiation rule.",
+   "skills": [
+    "BC-SKL-10043",
+    "BC-SKL-10047"
+   ],
+   "sources": [
+    "sg-23:19"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10010",
+    "BC-QA-10011"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask what the coefficient of the second degree term is when the second derivative at the centre is six; an answer of six points to the belief, while an answer of three followed by later omissions points to an inconsistent application.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-10029",
+   "name": "Taylor coefficient written without dividing by the factorial",
+   "non_conceptual_causes": [
+    "the derivative value written straight into the coefficient slot",
+    "the factorial placed in the numerator instead of the denominator",
+    "the factorial included for the second degree term and omitted thereafter"
+   ],
+   "notes": "",
+   "observed_behavior": "The response places the derivative value directly as the coefficient of the power, with no factorial denominator.",
+   "official_evidence": [
+    "ced:196",
+    "sg-23:19",
+    "BC-FRQ-2019-Q6-A",
+    "BC-FRQ-2013-Q6-A",
+    "BC-FRQ-2013-Q6-B",
+    "BC-FRQ-2013-Q6-C",
+    "BC-FRQ-2021-Q5-A",
+    "BC-FRQ-2015-Q6-C"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-10019",
+    "BC-MIS-10020"
+   ],
+   "related_errors": [],
+   "scope": "BC_only",
+   "scoring_consequence": "The polynomial is not the requested one and its term points are lost (sg-23:19).",
+   "skills": [
+    "BC-SKL-10044",
+    "BC-SKL-10045"
+   ],
+   "sources": [
+    "ced:196",
+    "sg-23:19"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10010",
+    "BC-QA-10012"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask what degree the requested polynomial has and which terms belong to it; a student who says the polynomial and the series are the same object holds the belief, while one who names the degree and strikes the extra terms copied from a neighbouring part.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-10030",
+   "name": "Polynomial presented with extra terms or a trailing ellipsis",
+   "non_conceptual_causes": [
+    "the ellipsis carried over from a series written in an earlier part",
+    "the requested degree read as a number of terms",
+    "extra terms retained because the expansion was produced before the degree was checked"
+   ],
+   "notes": "",
+   "observed_behavior": "The response writes a polynomial that includes terms beyond the requested degree, or appends an ellipsis, turning the answer into a series.",
+   "official_evidence": [
+    "sg-23:20",
+    "sg-23:21",
+    "BC-FRQ-2012-Q6-C",
+    "BC-FRQ-2019-Q6-A",
+    "BC-FRQ-2019-Q6-B",
+    "BC-FRQ-2013-Q6-B",
+    "BC-FRQ-2021-Q5-A",
+    "BC-FRQ-2014-Q6-B",
+    "BC-FRQ-2022-Q6-C",
+    "BC-FRQ-2015-Q6-C"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-10020",
+    "BC-MIS-10021"
+   ],
+   "related_errors": [],
+   "scope": "BC_only",
+   "scoring_consequence": "A polynomial with terms of higher degree, or with an ellipsis, does not earn the final polynomial point (sg-23:20, sg-23:21).",
+   "skills": [
+    "BC-SKL-10044",
+    "BC-SKL-10046",
+    "BC-SKL-10047",
+    "BC-SKL-10048",
+    "BC-SKL-10067"
+   ],
+   "sources": [
+    "sg-23:20",
+    "sg-23:21"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10011"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask which derivative belongs in the coefficient of the third degree term and why; a student who names the third derivative and still reads the wrong row made a table slip, while one who names a different order is not tying order to degree.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-10031",
+   "name": "Derivative values taken from the wrong row or order",
+   "non_conceptual_causes": [
+    "a row of the table read one line off",
+    "the order of the derivative paired with the power by position in the table rather than by order",
+    "a value read from a column for a different centre"
+   ],
+   "notes": "",
+   "observed_behavior": "The response reads a table of derivative values and pairs a derivative of one order with the power of another.",
+   "official_evidence": [
+    "ced:196",
+    "BC-FRQ-2019-Q6-A",
+    "BC-FRQ-2013-Q6-A",
+    "BC-FRQ-2013-Q6-B"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-10019"
+   ],
+   "related_errors": [],
+   "scope": "BC_only",
+   "scoring_consequence": "Each misplaced value spoils the term that depends on it.",
+   "single_cause_note": "Only BC-MIS-10019 is a plausible internal cause; the other routes are misreadings of the table layout.",
+   "skills": [
+    "BC-SKL-10045"
+   ],
+   "sources": [
+    "ced:196"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10009"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask which derivative appears in the bound for a fourth degree polynomial; a student who names the fourth is off by one in the order, while one who names the fifth and still omits the maximum is assembling the bound from remembered fragments.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-10032",
+   "name": "Lagrange bound assembled in the wrong form",
+   "non_conceptual_causes": [
+    "the power of x minus a written with n in place of n plus one",
+    "the factorial written as n factorial rather than n plus one factorial",
+    "the maximum of the next derivative replaced by its value at the centre"
+   ],
+   "notes": "Matches the cross-unit Chief Reader error record BC-ERR-99016.",
+   "observed_behavior": "The response writes the bound without the maximum of the next derivative, with the wrong power of the difference, or with the wrong factorial.",
+   "official_evidence": [
+    "sg-23:20",
+    "crabbc-25:33"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-99007",
+    "BC-MIS-10017"
+   ],
+   "related_errors": [
+    "BC-ERR-99016"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "The form point is lost, and with it the comparison point that depends on it (sg-23:20).",
+   "skills": [
+    "BC-SKL-10049",
+    "BC-SKL-10050"
+   ],
+   "sources": [
+    "sg-23:20",
+    "crabbc-25:33"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10009",
+    "BC-QA-10008"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask whether the series alternates and whether a bound on the next derivative is available; a student who answers both and keeps the wrong bound is applying a bound without its conditions, while one who switches had not inspected the series.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-10033",
+   "name": "Error bound chosen whose conditions the situation does not meet",
+   "non_conceptual_causes": [
+    "the bound chosen from the shape of the prompt rather than from the series in hand",
+    "the alternating factor not noticed in the series at the given input",
+    "a derivative bound supplied in the stem read as an instruction to use the Lagrange form"
+   ],
+   "notes": "Matches the cross-unit Chief Reader error record BC-ERR-99016.",
+   "observed_behavior": "The response reaches for the Lagrange bound where the alternating series bound is the available tool, or the reverse, without checking the conditions.",
+   "official_evidence": [
+    "ced:197",
+    "cr-24:36",
+    "crabbc-25:34"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-10017",
+    "BC-MIS-99009"
+   ],
+   "related_errors": [
+    "BC-ERR-99016"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "A bound whose conditions are not met earns no justification point (sg-24:21).",
+   "skills": [
+    "BC-SKL-10052"
+   ],
+   "sources": [
+    "ced:197",
+    "cr-24:36",
+    "crabbc-25:34",
+    "sg-24:21"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10015",
+    "BC-QA-10013"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask the student to write the first two terms of the series at that endpoint; a student who produces terms still containing the variable substituted into the wrong slot, while one who produces numbers and reuses the other endpoint's verdict is treating the two ends alike.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-10034",
+   "name": "Endpoint value substituted into the wrong place in the general term",
+   "non_conceptual_causes": [
+    "the endpoint substituted for the index n rather than for the variable",
+    "the alternating factor produced by a negative endpoint cancelled against an existing sign",
+    "the endpoint substituted into the displayed terms but not into the general term"
+   ],
+   "notes": "Matches the cross-unit Chief Reader error record BC-ERR-99017.",
+   "observed_behavior": "The response substitutes the endpoint for the index rather than for the variable, or drops the alternating factor produced by a negative endpoint.",
+   "official_evidence": [
+    "sg-25:25",
+    "cr-24:35",
+    "crabbc-25:37"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-10024",
+    "BC-MIS-10023"
+   ],
+   "related_errors": [
+    "BC-ERR-99017"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "The endpoint series is wrong, so the analysis and interval points are lost (sg-25:25).",
+   "skills": [
+    "BC-SKL-10053",
+    "BC-SKL-10057",
+    "BC-SKL-10066"
+   ],
+   "sources": [
+    "sg-25:25",
+    "cr-24:35",
+    "crabbc-25:37"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10014"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask how far the interval reaches from its centre; a student who says the interval is the radius holds the conflation, while one who halves the width at once answered the previous part's question.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-10036",
+   "name": "Interval presented where the radius of convergence was requested",
+   "non_conceptual_causes": [
+    "the word radius in the prompt read as interval",
+    "the last expression produced by the algebra copied onto the answer line",
+    "the half-length never computed because the interval was the object of the previous part"
+   ],
+   "notes": "",
+   "observed_behavior": "The response solves the inequality and presents an interval without naming the radius as a value.",
+   "official_evidence": [
+    "sg-21:24",
+    "BC-FRQ-2021-Q6-C",
+    "BC-FRQ-2014-Q6-A",
+    "BC-FRQ-2015-Q6-A"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-99013",
+    "BC-MIS-10023"
+   ],
+   "related_errors": [],
+   "scope": "BC_only",
+   "scoring_consequence": "The radius point cannot be earned by presenting an interval alone (sg-21:24).",
+   "skills": [
+    "BC-SKL-10056"
+   ],
+   "sources": [
+    "sg-21:24"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10013",
+    "BC-QA-10015",
+    "BC-QA-10018"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask what the series becomes at each end of the interval; a student who says the ratio test already settled the ends holds the belief, while one who writes both endpoint series unprompted stopped early.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-10037",
+   "name": "Endpoints of the interval left untested",
+   "non_conceptual_causes": [
+    "the ratio test finished and the part left when time ran short",
+    "the endpoints named and the two series never written out",
+    "the open interval copied from the inequality straight to the answer line"
+   ],
+   "notes": "Matches the cross-unit Chief Reader error record BC-ERR-99017.",
+   "observed_behavior": "The response reports the open interval found from the ratio test as the interval of convergence without examining either endpoint.",
+   "official_evidence": [
+    "sg-25:24",
+    "cr-24:36",
+    "crabbc-25:37",
+    "BC-FRQ-2012-Q6-A",
+    "BC-FRQ-2022-Q6-A"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-10023",
+    "BC-MIS-10024"
+   ],
+   "related_errors": [
+    "BC-ERR-99017"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "Both the endpoint consideration point and the interval point are lost (sg-25:24).",
+   "skills": [
+    "BC-SKL-10057",
+    "BC-SKL-10058",
+    "BC-SKL-10071"
+   ],
+   "sources": [
+    "sg-25:24",
+    "cr-24:36",
+    "crabbc-25:37"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10013"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask which endpoints belong to the interval and how the notation shows that; a student whose spoken answer matches the tests but not the brackets has a notation slip, while one who reports both ends alike is treating the two endpoints as a single case.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-10038",
+   "name": "Interval reported with endpoint inclusion that contradicts the endpoint analysis",
+   "non_conceptual_causes": [
+    "a square bracket written beside the infinity symbol",
+    "the brackets written before the endpoint tests were finished",
+    "the endpoint findings recorded in scratch work and never transferred to the interval"
+   ],
+   "notes": "Matches the cross-unit Chief Reader error record BC-ERR-99037.",
+   "observed_behavior": "The response tests the endpoints correctly and then writes an interval whose brackets do not match the findings, or attaches a closed bracket to an unbounded end.",
+   "official_evidence": [
+    "sg-25:25",
+    "cr-22:30",
+    "BC-FRQ-2022-Q6-A"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-99013",
+    "BC-MIS-10024"
+   ],
+   "related_errors": [
+    "BC-ERR-99037"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "The final interval point requires the interval to match the analysis (sg-25:25).",
+   "skills": [
+    "BC-SKL-10059"
+   ],
+   "sources": [
+    "sg-25:25",
+    "cr-22:30"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10017",
+    "BC-QA-10012"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask for the first three terms of the cosine series and of the exponential series separately; a student who gives the same sign pattern for both has merged two memorised lists, while one who separates them and still drops factorials has a recall gap in the coefficients.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-10040",
+   "name": "Standard Maclaurin series recalled incorrectly",
+   "non_conceptual_causes": [
+    "the alternating factor of the cosine series attached to the exponential series",
+    "even powers written where odd powers belong in the sine series",
+    "the factorial denominators omitted, so the expansion reduces to a geometric form"
+   ],
+   "notes": "",
+   "observed_behavior": "The response writes the series for the exponential, the sine, the cosine, or one over one minus x with wrong signs, wrong parities of the powers, or missing factorials.",
+   "official_evidence": [
+    "ced:199",
+    "sg-23:21",
+    "BC-FRQ-2019-Q6-B",
+    "BC-FRQ-2015-Q6-C"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-10021",
+    "BC-MIS-10020"
+   ],
+   "related_errors": [],
+   "scope": "BC_only",
+   "scoring_consequence": "Every term built on the misremembered series is wrong, so the dependent points are lost (sg-23:21).",
+   "skills": [
+    "BC-SKL-10061",
+    "BC-SKL-10062",
+    "BC-SKL-10063"
+   ],
+   "sources": [
+    "ced:199",
+    "sg-23:21"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10017"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask what the second term becomes when the substitution is written with parentheses; a student who then corrects the whole expansion lost parentheses, while one who also relocates the centre holds a belief about what substitution does.",
+   "evidence_tag": "single-source",
+   "id": "BC-ERR-10041",
+   "name": "Substitution into a known series carried out incorrectly",
+   "non_conceptual_causes": [
+    "the substituted expression not enclosed in parentheses before being raised to the power",
+    "a constant factor applied to the first term only",
+    "the substitution made in the displayed terms and not in the general term"
+   ],
+   "notes": "Matches the cross-unit Chief Reader error record BC-ERR-99009.",
+   "observed_behavior": "The response substitutes an expression for the variable in a known series but does not raise the whole expression to the required power, or loses a constant factor.",
+   "official_evidence": [
+    "ced:200",
+    "cr-24:23",
+    "BC-FRQ-2013-Q6-C",
+    "BC-FRQ-2015-Q6-C"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-10026",
+    "BC-MIS-10021"
+   ],
+   "related_errors": [
+    "BC-ERR-99009"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "The resulting series is wrong from the first affected term onward.",
+   "skills": [
+    "BC-SKL-10064",
+    "BC-SKL-10065"
+   ],
+   "sources": [
+    "ced:200",
+    "cr-24:23"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10018"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask what happens to the radius under term-by-term differentiation before any computation; a student who says it may change holds the belief, while one who states that it is unchanged and still reports a different value made an algebra slip in the rerun.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-10042",
+   "name": "Radius of a differentiated or integrated series recomputed or claimed to change",
+   "non_conceptual_causes": [
+    "the ratio test rerun on the derived series with an algebra slip in the exponent",
+    "the derived series treated as unconnected to the series it came from",
+    "the radius recomputed because the part was read as asking for a fresh interval"
+   ],
+   "notes": "",
+   "observed_behavior": "The response asserts a different radius for the derived series, or redoes the ratio test and reports a value inconsistent with the original radius.",
+   "official_evidence": [
+    "sg-24:22",
+    "ced:198"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-10025",
+    "BC-MIS-99013"
+   ],
+   "related_errors": [],
+   "scope": "BC_only",
+   "scoring_consequence": "The radius point rests on the preservation statement, so an inconsistent value loses it (sg-24:22).",
+   "skills": [
+    "BC-SKL-10070"
+   ],
+   "sources": [
+    "sg-24:22",
+    "ced:198"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10020"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask where the input sits relative to the interval found earlier; a student who says the series represents the function at every input holds the belief, while one who locates the input correctly omitted the reason under time pressure.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-10043",
+   "name": "Convergence at a specified input asserted without a reason",
+   "non_conceptual_causes": [
+    "the input compared with the centre rather than with the ends of the interval",
+    "the verdict written because the input appeared in an earlier part of the stem",
+    "the interval found earlier in the question not carried into the final part"
+   ],
+   "notes": "Matches the cross-unit Chief Reader error record BC-ERR-99001.",
+   "observed_behavior": "The response states that the series does or does not converge at the given input without placing the input relative to the interval of convergence.",
+   "official_evidence": [
+    "sg-25:27"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-10023",
+    "BC-MIS-10021"
+   ],
+   "related_errors": [
+    "BC-ERR-99001"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "The answer with reason point requires the position relative to the interval to be given (sg-25:27).",
+   "skills": [
+    "BC-SKL-10073"
+   ],
+   "sources": [
+    "sg-25:27"
+   ],
+   "updated": "2026-09-19"
+  }
+ ],
+ "registry": "errors"
+}

@@ -1,0 +1,2033 @@
+{
+ "registry": "diagnostic_signals",
+ "signals": [
+  {
+   "archetype": "BC-QA-01012",
+   "consistent_with": [
+    "BC-ERR-01029",
+    "BC-MIS-01017"
+   ],
+   "distinguish_by": "Ask for the units of the reported number; a rate answer without the division carries the units of the quantity.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01201",
+   "mastery_state": "partial_procedural",
+   "name": "Interval change reported without the division",
+   "observation": "The two function values are subtracted correctly and the difference is reported as the average rate.",
+   "scope": "shared",
+   "skill": "BC-SKL-01001",
+   "sources": [
+    "ced:38"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01012",
+   "consistent_with": [
+    "BC-ERR-01030",
+    "BC-MIS-01017"
+   ],
+   "distinguish_by": "Ask over which interval the number was computed; a correct interval with a wrong label separates procedure from interpretation.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01202",
+   "mastery_state": "partial_conceptual",
+   "name": "Average rate computed and then labelled as a rate at a point",
+   "observation": "The quotient is formed correctly over the interval and the answer sentence attaches it to one endpoint.",
+   "scope": "shared",
+   "skill": "BC-SKL-01001",
+   "sources": [
+    "ced:38"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01012",
+   "consistent_with": [
+    "BC-MIS-01017",
+    "BC-ERR-01030"
+   ],
+   "distinguish_by": "Ask what the denominator equals when the endpoints coincide, then ask whether that division is permitted.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01203",
+   "mastery_state": "partial_conceptual",
+   "name": "Zero length interval treated as an admissible case",
+   "observation": "The response computes the quotient with equal endpoints and reports zero rather than saying the quotient is undefined.",
+   "scope": "shared",
+   "skill": "BC-SKL-01002",
+   "sources": [
+    "ced:38"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01012",
+   "consistent_with": [
+    "BC-MIS-01010",
+    "BC-ERR-01016"
+   ],
+   "distinguish_by": "Ask which part of the quotient fails; naming the denominator separates a learned phrase from the reason.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01204",
+   "mastery_state": "notation_only",
+   "name": "Undefined quotient asserted with no reference to the denominator",
+   "observation": "The response says the average rate does not exist at a point but never names the vanishing denominator.",
+   "scope": "shared",
+   "skill": "BC-SKL-01002",
+   "sources": [
+    "ced:38"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01012",
+   "consistent_with": [
+    "BC-MIS-01017",
+    "BC-ERR-01030"
+   ],
+   "distinguish_by": "Ask what happens to the average rates as the interval keeps shrinking, and whether the answer is one of them.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01205",
+   "mastery_state": "partial_conceptual",
+   "name": "Limit language absent from the description of the instantaneous rate",
+   "observation": "The response describes the rate at an instant as the rate over a very small interval, with no limit taken.",
+   "scope": "shared",
+   "skill": "BC-SKL-01003",
+   "sources": [
+    "ced:38"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01012",
+   "consistent_with": [
+    "BC-ERR-01029",
+    "BC-MIS-01017"
+   ],
+   "distinguish_by": "Ask the student to read the expression under the limit symbol aloud and say what it measures.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01206",
+   "mastery_state": "notation_only",
+   "name": "Correct limit statement with the wrong quantity inside",
+   "observation": "The limit notation is written correctly but the expression under it is the change in the function rather than the quotient.",
+   "scope": "shared",
+   "skill": "BC-SKL-01003",
+   "sources": [
+    "ced:38"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01013",
+   "consistent_with": [
+    "BC-MIS-01002",
+    "BC-ERR-01002"
+   ],
+   "distinguish_by": "Ask from which side the description says the inputs come, and where that appears in the written symbols.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01207",
+   "mastery_state": "notation_only",
+   "name": "Approach direction omitted from the written limit",
+   "observation": "The described one sided approach is written as a two sided limit statement.",
+   "scope": "shared",
+   "skill": "BC-SKL-01005",
+   "sources": [
+    "ced:39"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01013",
+   "consistent_with": [
+    "BC-MIS-01018",
+    "BC-ERR-01033"
+   ],
+   "distinguish_by": "Ask which number the inputs approach and which the outputs approach, then ask where each belongs.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01208",
+   "mastery_state": "partial_procedural",
+   "name": "Target value and limit value exchanged in the notation",
+   "observation": "The input the variable approaches is written on the right of the equals sign and the limit value under the arrow.",
+   "scope": "shared",
+   "skill": "BC-SKL-01005",
+   "sources": [
+    "ced:39"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01013",
+   "consistent_with": [
+    "BC-MIS-01001",
+    "BC-ERR-01001"
+   ],
+   "distinguish_by": "Ask whether the statement would still hold if the function were undefined at that input.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01209",
+   "mastery_state": "partial_conceptual",
+   "name": "Limit statement read as a claim about the value at the point",
+   "observation": "The written limit is described in words as saying what the function equals at the input.",
+   "scope": "shared",
+   "skill": "BC-SKL-01006",
+   "sources": [
+    "ced:39"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01013",
+   "consistent_with": [
+    "BC-MIS-01003",
+    "BC-ERR-01005"
+   ],
+   "distinguish_by": "Ask whether the function must ever take the limit value for the statement to be true.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01210",
+   "mastery_state": "partial_conceptual",
+   "name": "Limit statement read as an eventual arrival",
+   "observation": "The description says the function reaches the value once the input is close enough.",
+   "scope": "shared",
+   "skill": "BC-SKL-01006",
+   "sources": [
+    "ced:39"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01013",
+   "consistent_with": [
+    "BC-MIS-01002",
+    "BC-ERR-01002"
+   ],
+   "distinguish_by": "Ask which inputs are smaller than the target, and which superscript records that set.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01211",
+   "mastery_state": "notation_only",
+   "name": "One sided notation written with the sides exchanged",
+   "observation": "The superscript marking the side is attached so that the left hand approach is written as the right hand one.",
+   "scope": "shared",
+   "skill": "BC-SKL-01007",
+   "sources": [
+    "ced:39",
+    "ced:40"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01013",
+   "consistent_with": [
+    "BC-ERR-01002",
+    "BC-MIS-01002"
+   ],
+   "distinguish_by": "Ask what the other side does, and whether the response examined it.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01212",
+   "mastery_state": "partial_conceptual",
+   "name": "Two sided statement written where only one side is supported",
+   "observation": "The response drops the side marker and claims a two sided limit from evidence on one side only.",
+   "scope": "shared",
+   "skill": "BC-SKL-01007",
+   "sources": [
+    "ced:39",
+    "ced:40"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01001",
+   "consistent_with": [
+    "BC-ERR-01001",
+    "BC-MIS-01001"
+   ],
+   "distinguish_by": "Ask for the plotted value and the approached height as two separate questions.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01213",
+   "mastery_state": "partial_conceptual",
+   "name": "Filled point read in place of the approached height",
+   "observation": "The plotted value at the input is reported although the curve approaches a different height from both sides.",
+   "scope": "shared",
+   "skill": "BC-SKL-01009",
+   "sources": [
+    "ced:40"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01001",
+   "consistent_with": [
+    "BC-ERR-01002",
+    "BC-MIS-01002"
+   ],
+   "distinguish_by": "Ask what must hold between the two heights for the two sided limit to exist.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01214",
+   "mastery_state": "partial_procedural",
+   "name": "Both one sided heights read correctly with no comparison made",
+   "observation": "The two approached heights are reported correctly and one of them is then named as the two sided limit.",
+   "scope": "shared",
+   "skill": "BC-SKL-01009",
+   "sources": [
+    "ced:40"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01001",
+   "consistent_with": [
+    "BC-ERR-01002",
+    "BC-MIS-01002"
+   ],
+   "distinguish_by": "Ask for the value approached from the other side and whether the graph was traced on that side.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01215",
+   "mastery_state": "partial_procedural",
+   "name": "Only the visible side of the graph read",
+   "observation": "One one sided value is reported correctly and the other is left blank or copied from the first.",
+   "scope": "shared",
+   "skill": "BC-SKL-01010",
+   "sources": [
+    "ced:40"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01001",
+   "consistent_with": [
+    "BC-ERR-01001",
+    "BC-MIS-01001"
+   ],
+   "distinguish_by": "Ask what the branch does just before the input, with the point at the input covered up.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01216",
+   "mastery_state": "partial_conceptual",
+   "name": "One sided value taken at the plotted point rather than along the approach",
+   "observation": "The one sided value reported is the height of the filled dot rather than the height the branch heads towards.",
+   "scope": "shared",
+   "skill": "BC-SKL-01010",
+   "sources": [
+    "ced:40"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01001",
+   "consistent_with": [
+    "BC-ERR-01020",
+    "BC-MIS-01012"
+   ],
+   "distinguish_by": "Ask whether the symbol written names a real number, and what existence of a limit requires.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01217",
+   "mastery_state": "partial_conceptual",
+   "name": "Unbounded behaviour written as an existing limit",
+   "observation": "The response writes that the limit equals infinity and then calls the limit existing.",
+   "scope": "shared",
+   "skill": "BC-SKL-01012",
+   "sources": [
+    "ced:40"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01001",
+   "consistent_with": [
+    "BC-ERR-01019",
+    "BC-MIS-01012"
+   ],
+   "distinguish_by": "Ask for the behaviour on each side separately before the conclusion is stated.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01218",
+   "mastery_state": "partial_procedural",
+   "name": "Unboundedness recognised on one side only",
+   "observation": "The growth is described correctly on one side and the other side is not examined before the conclusion is written.",
+   "scope": "shared",
+   "skill": "BC-SKL-01012",
+   "sources": [
+    "ced:40"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01001",
+   "consistent_with": [
+    "BC-ERR-01004",
+    "BC-MIS-01004"
+   ],
+   "distinguish_by": "Supply inputs spaced differently and ask whether the sampled outputs still agree.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01219",
+   "mastery_state": "partial_conceptual",
+   "name": "Oscillating values sampled into a single reported limit",
+   "observation": "One of the values the function swings between is reported as the limit.",
+   "scope": "shared",
+   "skill": "BC-SKL-01013",
+   "sources": [
+    "ced:40"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01001",
+   "consistent_with": [
+    "BC-MIS-01010",
+    "BC-ERR-01016"
+   ],
+   "distinguish_by": "Ask what the function values do as the inputs close in, and whether the answer names any pattern.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01220",
+   "mastery_state": "notation_only",
+   "name": "Nonexistence asserted with no description of the swinging",
+   "observation": "The response says the limit does not exist but gives no account of the behaviour near the input.",
+   "scope": "shared",
+   "skill": "BC-SKL-01013",
+   "sources": [
+    "ced:40"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01013",
+   "consistent_with": [
+    "BC-MIS-01004",
+    "BC-ERR-01004"
+   ],
+   "distinguish_by": "Ask what a window ten times narrower would show, and whether the conclusion would survive it.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01221",
+   "mastery_state": "partial_conceptual",
+   "name": "Graph window treated as the whole story",
+   "observation": "The response reports a limit from one displayed window without noting what a narrower window could reveal.",
+   "scope": "shared",
+   "skill": "BC-SKL-01014",
+   "sources": [
+    "ced:40"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01013",
+   "consistent_with": [
+    "BC-MIS-01004",
+    "BC-ERR-01005"
+   ],
+   "distinguish_by": "Ask whether the stated concern changes the confidence in the reported value.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01222",
+   "mastery_state": "notation_only",
+   "name": "Scale concern stated with no consequence drawn",
+   "observation": "The response says the scale could mislead but still reports the reading as settled.",
+   "scope": "shared",
+   "skill": "BC-SKL-01014",
+   "sources": [
+    "ced:40"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01002",
+   "consistent_with": [
+    "BC-ERR-01005",
+    "BC-MIS-01004"
+   ],
+   "distinguish_by": "Ask what the outputs would do in a row closer to the target than any supplied.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01223",
+   "mastery_state": "partial_procedural",
+   "name": "Last table row reported as the limit",
+   "observation": "The output in the final row is copied as the limit rather than the value the outputs crowd towards.",
+   "scope": "shared",
+   "skill": "BC-SKL-01015",
+   "sources": [
+    "ced:41"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01002",
+   "consistent_with": [
+    "BC-ERR-01002",
+    "BC-MIS-01002"
+   ],
+   "distinguish_by": "Ask which rows lie on each side of the target and whether both groups were used.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01224",
+   "mastery_state": "partial_conceptual",
+   "name": "Rows from one side only used for a two sided estimate",
+   "observation": "The estimate is built from the rows above the target while the rows below are ignored.",
+   "scope": "shared",
+   "skill": "BC-SKL-01015",
+   "sources": [
+    "ced:41"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01002",
+   "consistent_with": [
+    "BC-MIS-01002",
+    "BC-ERR-01002"
+   ],
+   "distinguish_by": "Ask which rows satisfy the side condition named in the question.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01225",
+   "mastery_state": "partial_procedural",
+   "name": "Rows from both sides used for a one sided estimate",
+   "observation": "The one sided value is computed from rows lying on both sides of the target input.",
+   "scope": "shared",
+   "skill": "BC-SKL-01016",
+   "sources": [
+    "ced:41"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01002",
+   "consistent_with": [
+    "BC-ERR-01033",
+    "BC-MIS-01018"
+   ],
+   "distinguish_by": "Ask the student to restate the question and check the notation against it.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01226",
+   "mastery_state": "notation_only",
+   "name": "Side marker ignored in the written answer",
+   "observation": "The correct rows are used and the answer is written without the side marker the question asked for.",
+   "scope": "shared",
+   "skill": "BC-SKL-01016",
+   "sources": [
+    "ced:41"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01002",
+   "consistent_with": [
+    "BC-ERR-01005",
+    "BC-MIS-01004"
+   ],
+   "distinguish_by": "Ask what the function could do between the tabulated inputs, and whether the table rules that out.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01227",
+   "mastery_state": "partial_conceptual",
+   "name": "Agreement of decimals treated as settling the limit",
+   "observation": "The response calls the limit established because several tabulated outputs agree to the printed places.",
+   "scope": "shared",
+   "skill": "BC-SKL-01017",
+   "sources": [
+    "ced:41"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01002",
+   "consistent_with": [
+    "BC-ERR-01004",
+    "BC-MIS-01004"
+   ],
+   "distinguish_by": "Ask whether a table can establish nonexistence, and what else would be needed.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01228",
+   "mastery_state": "partial_conceptual",
+   "name": "Inconclusive table read as showing nonexistence",
+   "observation": "The response concludes that no limit exists because the tabulated outputs do not agree.",
+   "scope": "shared",
+   "skill": "BC-SKL-01017",
+   "sources": [
+    "ced:41"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01003",
+   "consistent_with": [
+    "BC-MIS-01005",
+    "BC-ERR-01006"
+   ],
+   "distinguish_by": "Ask for the limit of each part separately and whether both are finite.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01229",
+   "mastery_state": "partial_procedural",
+   "name": "Sum theorem applied where one part has no limit",
+   "observation": "The limits are split across the sum although one of the two parts is unbounded near the input.",
+   "scope": "shared",
+   "skill": "BC-SKL-01018",
+   "sources": [
+    "ced:42"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01003",
+   "consistent_with": [
+    "BC-MIS-01010",
+    "BC-ERR-01016"
+   ],
+   "distinguish_by": "Ask which theorem permits the step just taken.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01230",
+   "mastery_state": "notation_only",
+   "name": "Split written without the theorem being named",
+   "observation": "The splitting step is carried out correctly and no justification is offered when one is requested.",
+   "scope": "shared",
+   "skill": "BC-SKL-01018",
+   "sources": [
+    "ced:42"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01003",
+   "consistent_with": [
+    "BC-MIS-01005",
+    "BC-ERR-01008"
+   ],
+   "distinguish_by": "Ask the student to evaluate the same limit with the constant written outside and compare.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01231",
+   "mastery_state": "partial_procedural",
+   "name": "Constant left inside the limit and then dropped",
+   "observation": "The constant factor is not pulled out and does not appear in the final value.",
+   "scope": "shared",
+   "skill": "BC-SKL-01019",
+   "sources": [
+    "ced:42"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01003",
+   "consistent_with": [
+    "BC-ERR-01004",
+    "BC-MIS-01005"
+   ],
+   "distinguish_by": "Ask whether each factor has a limit before the product is taken.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01232",
+   "mastery_state": "partial_conceptual",
+   "name": "Product theorem applied to a factor with no limit",
+   "observation": "The limits are multiplied although one factor oscillates without settling.",
+   "scope": "shared",
+   "skill": "BC-SKL-01019",
+   "sources": [
+    "ced:42"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01003",
+   "consistent_with": [
+    "BC-ERR-01006",
+    "BC-MIS-01005"
+   ],
+   "distinguish_by": "Ask for the denominator limit on its own and what the theorem requires of it.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01233",
+   "mastery_state": "partial_procedural",
+   "name": "Quotient theorem applied without the denominator check",
+   "observation": "The two limits are divided although the denominator limit is zero.",
+   "scope": "shared",
+   "skill": "BC-SKL-01020",
+   "sources": [
+    "ced:42"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01003",
+   "consistent_with": [
+    "BC-ERR-01009",
+    "BC-MIS-01006"
+   ],
+   "distinguish_by": "Ask what the numerator limit is, and whether the pair of values settles the question.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01234",
+   "mastery_state": "partial_conceptual",
+   "name": "Denominator check made and the zero case left unresolved",
+   "observation": "The response notes that the denominator limit is zero and concludes the limit does not exist.",
+   "scope": "shared",
+   "skill": "BC-SKL-01020",
+   "sources": [
+    "ced:42"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01014",
+   "consistent_with": [
+    "BC-ERR-01006",
+    "BC-MIS-01005"
+   ],
+   "distinguish_by": "Ask whether the function has a value at the input before the substitution is made.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01235",
+   "mastery_state": "partial_conceptual",
+   "name": "Substitution used where the function is not continuous at the input",
+   "observation": "The target input is substituted into an expression that is undefined there and the result is reported.",
+   "scope": "shared",
+   "skill": "BC-SKL-01021",
+   "sources": [
+    "ced:42",
+    "ced:49"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01014",
+   "consistent_with": [
+    "BC-MIS-01006",
+    "BC-ERR-01010"
+   ],
+   "distinguish_by": "Ask what the substitution gave, and whether further work could change a defined value.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01236",
+   "mastery_state": "partial_procedural",
+   "name": "Rewriting continued after substitution already settles the limit",
+   "observation": "A legitimate direct value is obtained and the response keeps manipulating the expression and loses it.",
+   "scope": "shared",
+   "skill": "BC-SKL-01021",
+   "sources": [
+    "ced:42",
+    "ced:49"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01003",
+   "consistent_with": [
+    "BC-ERR-01007",
+    "BC-MIS-01005"
+   ],
+   "distinguish_by": "Ask which function is applied first when the composite is evaluated at an ordinary input.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01237",
+   "mastery_state": "partial_procedural",
+   "name": "Composite evaluated from the outside in",
+   "observation": "The limit of the outer function is taken first and the inner function is applied to that value.",
+   "scope": "shared",
+   "skill": "BC-SKL-01022",
+   "sources": [
+    "ced:42"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01003",
+   "consistent_with": [
+    "BC-MIS-01005",
+    "BC-ERR-01017"
+   ],
+   "distinguish_by": "Ask what the outer function does at the value the inner one approaches.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01238",
+   "mastery_state": "partial_conceptual",
+   "name": "Composite theorem applied with no continuity check on the outer function",
+   "observation": "The inner limit is substituted into the outer function although the outer function breaks at that value.",
+   "scope": "shared",
+   "skill": "BC-SKL-01022",
+   "sources": [
+    "ced:42"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01006",
+   "consistent_with": [
+    "BC-ERR-01017",
+    "BC-MIS-01009"
+   ],
+   "distinguish_by": "Ask which branch governs inputs just below the boundary and which governs those just above.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01239",
+   "mastery_state": "partial_procedural",
+   "name": "Boundary input substituted into the branch that does not apply",
+   "observation": "One of the two one sided values is computed from the wrong branch of the rule.",
+   "scope": "shared",
+   "skill": "BC-SKL-01023",
+   "sources": [
+    "ced:42"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01006",
+   "consistent_with": [
+    "BC-ERR-01002",
+    "BC-MIS-01002"
+   ],
+   "distinguish_by": "Ask what must hold between the two values before a two sided limit may be claimed.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01240",
+   "mastery_state": "partial_conceptual",
+   "name": "One sided values computed correctly with no comparison written",
+   "observation": "Both branch values are correct and the response names one of them as the two sided limit.",
+   "scope": "shared",
+   "skill": "BC-SKL-01023",
+   "sources": [
+    "ced:42"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01004",
+   "consistent_with": [
+    "BC-ERR-01010",
+    "BC-MIS-01007"
+   ],
+   "distinguish_by": "Ask the student to evaluate both forms at an input near the target and compare the two numbers.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01241",
+   "mastery_state": "partial_procedural",
+   "name": "Conjugate applied to one part of the expression only",
+   "observation": "The numerator is multiplied by the conjugate and the denominator is left unchanged.",
+   "scope": "shared",
+   "skill": "BC-SKL-01025",
+   "sources": [
+    "ced:43"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01004",
+   "consistent_with": [
+    "BC-MIS-01006",
+    "BC-ERR-01009"
+   ],
+   "distinguish_by": "Ask what remains to be done once the common factor has been divided out.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01242",
+   "mastery_state": "partial_procedural",
+   "name": "Conjugate step completed and the substitution never made",
+   "observation": "The radical is cleared and the response stops before the target input is substituted.",
+   "scope": "shared",
+   "skill": "BC-SKL-01025",
+   "sources": [
+    "ced:43"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01004",
+   "consistent_with": [
+    "BC-ERR-01010",
+    "BC-MIS-01007"
+   ],
+   "distinguish_by": "Ask the student to check the cancellation numerically at one convenient input.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01243",
+   "mastery_state": "partial_conceptual",
+   "name": "Summand cancelled from a complex fraction",
+   "observation": "A matching term in the numerator and the denominator is divided out although it is not a factor.",
+   "scope": "shared",
+   "skill": "BC-SKL-01026",
+   "sources": [
+    "ced:43"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01004",
+   "consistent_with": [
+    "BC-ERR-01009",
+    "BC-MIS-01006"
+   ],
+   "distinguish_by": "Ask what substitution gives in the cleared expression.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01244",
+   "mastery_state": "partial_procedural",
+   "name": "Nested fraction cleared and the form not reclassified",
+   "observation": "The nesting is cleared correctly and the response still reports the limit as indeterminate.",
+   "scope": "shared",
+   "skill": "BC-SKL-01026",
+   "sources": [
+    "ced:43"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01004",
+   "consistent_with": [
+    "BC-MIS-01006",
+    "BC-ERR-01009"
+   ],
+   "distinguish_by": "Ask which identity would remove the vanishing factor rather than only rewriting the expression.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01245",
+   "mastery_state": "partial_procedural",
+   "name": "Identity applied that leaves the indeterminate form unchanged",
+   "observation": "A correct identity is used and the rewritten expression still gives zero over zero under substitution.",
+   "scope": "shared",
+   "skill": "BC-SKL-01027",
+   "sources": [
+    "ced:43"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01004",
+   "consistent_with": [
+    "BC-MIS-01007",
+    "BC-ERR-01010"
+   ],
+   "distinguish_by": "Ask the student to test the identity at one convenient input.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01246",
+   "mastery_state": "prerequisite_gap",
+   "name": "Identity misremembered so the rewritten expression is not equal",
+   "observation": "The rewriting changes the value of the expression, and the reported limit follows from the changed form.",
+   "scope": "shared",
+   "skill": "BC-SKL-01027",
+   "sources": [
+    "ced:43"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01014",
+   "consistent_with": [
+    "BC-ERR-01008",
+    "BC-MIS-01006"
+   ],
+   "distinguish_by": "Ask what the numerator and the denominator each approach, and whether the pair determines the quotient.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01247",
+   "mastery_state": "partial_conceptual",
+   "name": "Form named as a value rather than as indeterminate",
+   "observation": "Substitution gives zero over zero and the response records zero as the limit.",
+   "scope": "shared",
+   "skill": "BC-SKL-01029",
+   "sources": [
+    "ced:44"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01014",
+   "consistent_with": [
+    "BC-ERR-01009",
+    "BC-MIS-01006"
+   ],
+   "distinguish_by": "Ask for the numerator limit, then ask whether the two cases call for the same conclusion.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01248",
+   "mastery_state": "partial_procedural",
+   "name": "Zero over zero and nonzero over zero not distinguished",
+   "observation": "The response treats every vanishing denominator as the same case and reports nonexistence.",
+   "scope": "shared",
+   "skill": "BC-SKL-01029",
+   "sources": [
+    "ced:44"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01014",
+   "consistent_with": [
+    "BC-ERR-01009",
+    "BC-MIS-01006"
+   ],
+   "distinguish_by": "Ask what feature of the expression decides between the two methods.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01249",
+   "mastery_state": "partial_procedural",
+   "name": "Factoring attempted on a form that calls for a conjugate",
+   "observation": "A radical expression is attacked by factoring, and when that fails the response reports nonexistence.",
+   "scope": "shared",
+   "skill": "BC-SKL-01030",
+   "sources": [
+    "ced:44"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01014",
+   "consistent_with": [
+    "BC-MIS-01005",
+    "BC-ERR-01006"
+   ],
+   "distinguish_by": "Ask what the first step is for any limit expression, before any method is chosen.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01250",
+   "mastery_state": "partial_conceptual",
+   "name": "Method chosen before the form under substitution is named",
+   "observation": "The rewriting begins with no substitution test, and a limit that direct substitution settles is rewritten instead.",
+   "scope": "shared",
+   "skill": "BC-SKL-01030",
+   "sources": [
+    "ced:44"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01014",
+   "consistent_with": [
+    "BC-MIS-01006",
+    "BC-ERR-01010"
+   ],
+   "distinguish_by": "Ask what substitution gave and whether anything about that value needed repair.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01251",
+   "mastery_state": "partial_conceptual",
+   "name": "Legitimate direct value discarded in favour of more rewriting",
+   "observation": "Substitution gives a defined value and the response continues to manipulate the expression.",
+   "scope": "shared",
+   "skill": "BC-SKL-01031",
+   "sources": [
+    "ced:44",
+    "ced:49"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01014",
+   "consistent_with": [
+    "BC-ERR-01006",
+    "BC-MIS-01005"
+   ],
+   "distinguish_by": "Ask whether the expression has a value at the input before the answer is accepted.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01252",
+   "mastery_state": "partial_procedural",
+   "name": "Direct value accepted where the expression is undefined at the input",
+   "observation": "The response stops at substitution although the denominator vanishes there.",
+   "scope": "shared",
+   "skill": "BC-SKL-01031",
+   "sources": [
+    "ced:44",
+    "ced:49"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01005",
+   "consistent_with": [
+    "BC-MIS-01008",
+    "BC-ERR-01013"
+   ],
+   "distinguish_by": "Ask what must be true of the two bounding functions at the target input.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01253",
+   "mastery_state": "partial_conceptual",
+   "name": "Hypotheses stated as a single inequality with no limit condition",
+   "observation": "The bounding inequality is named and the requirement that the two bounds share a limit is left out.",
+   "scope": "shared",
+   "skill": "BC-SKL-01032",
+   "sources": [
+    "ced:45"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01005",
+   "consistent_with": [
+    "BC-MIS-01010",
+    "BC-ERR-01025"
+   ],
+   "distinguish_by": "Ask the student to list the conditions before the conclusion is written.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01254",
+   "mastery_state": "notation_only",
+   "name": "Theorem named with its hypotheses left unstated",
+   "observation": "The response names the theorem and moves to the conclusion without listing what it requires.",
+   "scope": "shared",
+   "skill": "BC-SKL-01032",
+   "sources": [
+    "ced:45"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01005",
+   "consistent_with": [
+    "BC-ERR-01012",
+    "BC-MIS-01008"
+   ],
+   "distinguish_by": "Ask the student to test the inequality at one input on each side of the target.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01255",
+   "mastery_state": "partial_procedural",
+   "name": "Inequality multiplied by a sign changing factor without reversal",
+   "observation": "The bounding inequality is multiplied through by a factor that is negative on one side and the inequality signs are left unchanged.",
+   "scope": "shared",
+   "skill": "BC-SKL-01033",
+   "sources": [
+    "ced:45"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01005",
+   "consistent_with": [
+    "BC-MIS-01008",
+    "BC-ERR-01013"
+   ],
+   "distinguish_by": "Ask on what interval around the point the inequality was checked.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01256",
+   "mastery_state": "partial_conceptual",
+   "name": "Bounding inequality asserted with no interval named",
+   "observation": "The response claims the function sits between the bounds without saying where that holds.",
+   "scope": "shared",
+   "skill": "BC-SKL-01033",
+   "sources": [
+    "ced:45"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01005",
+   "consistent_with": [
+    "BC-ERR-01012",
+    "BC-MIS-01008"
+   ],
+   "distinguish_by": "Ask what the next line of the argument does with the inequality just written.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01257",
+   "mastery_state": "partial_procedural",
+   "name": "Oscillating factor bounded but the product never formed",
+   "observation": "The bounded factor is enclosed between negative one and one and the remaining factor is never multiplied through the inequality.",
+   "scope": "shared",
+   "skill": "BC-SKL-01035",
+   "sources": [
+    "ced:45"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01005",
+   "consistent_with": [
+    "BC-ERR-01012",
+    "BC-MIS-01008"
+   ],
+   "distinguish_by": "Ask for the sign of the multiplying factor on each side of the target input.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01258",
+   "mastery_state": "partial_procedural",
+   "name": "Bounds multiplied without attention to the sign of the factor",
+   "observation": "The inequality is multiplied by a factor that changes sign at the target and the inequality signs are kept as written.",
+   "scope": "shared",
+   "skill": "BC-SKL-01035",
+   "sources": [
+    "ced:45"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01013",
+   "consistent_with": [
+    "BC-ERR-01033",
+    "BC-MIS-01018"
+   ],
+   "distinguish_by": "Ask what each presentation says about the behaviour on each side of the input.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01259",
+   "mastery_state": "partial_conceptual",
+   "name": "Three presentations compared only by the value reported",
+   "observation": "The graph, the table, and the expression are said to agree because each yields the same number, with no side or asymptote behaviour compared.",
+   "scope": "shared",
+   "skill": "BC-SKL-01036",
+   "sources": [
+    "ced:46"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01013",
+   "consistent_with": [
+    "BC-ERR-01033",
+    "BC-MIS-01018"
+   ],
+   "distinguish_by": "Ask where the infinity symbol sits in each statement, under the arrow or after the equals sign.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01260",
+   "mastery_state": "partial_conceptual",
+   "name": "End behaviour statement matched with a statement about a vertical asymptote",
+   "observation": "A limit at infinity in one presentation is matched against an infinite limit at a point in another.",
+   "scope": "shared",
+   "skill": "BC-SKL-01036",
+   "sources": [
+    "ced:46"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01013",
+   "consistent_with": [
+    "BC-ERR-01001",
+    "BC-MIS-01001"
+   ],
+   "distinguish_by": "Ask whether the description would still be right if the function were undefined at that input.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01261",
+   "mastery_state": "partial_conceptual",
+   "name": "Symbolic statement described as an equality at the point",
+   "observation": "The verbal description says the function equals the limit value at the input.",
+   "scope": "shared",
+   "skill": "BC-SKL-01037",
+   "sources": [
+    "ced:46"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01013",
+   "consistent_with": [
+    "BC-ERR-01020",
+    "BC-MIS-01012"
+   ],
+   "distinguish_by": "Ask whether the description names a number the function approaches.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01262",
+   "mastery_state": "partial_conceptual",
+   "name": "Unbounded growth described as reaching a value",
+   "observation": "The description of an infinite limit says the function becomes equal to infinity.",
+   "scope": "shared",
+   "skill": "BC-SKL-01037",
+   "sources": [
+    "ced:46"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01013",
+   "consistent_with": [
+    "BC-ERR-01001",
+    "BC-MIS-01001"
+   ],
+   "distinguish_by": "Ask the student to mark the stated function value on the sketch and check it against the drawn point.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01263",
+   "mastery_state": "partial_procedural",
+   "name": "Sketch satisfies the limit conditions and contradicts the value conditions",
+   "observation": "The curve approaches the stated heights and the plotted point at the input is drawn at the approached height rather than the stated value.",
+   "scope": "shared",
+   "skill": "BC-SKL-01038",
+   "sources": [
+    "ced:46"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01013",
+   "consistent_with": [
+    "BC-ERR-01002",
+    "BC-MIS-01002"
+   ],
+   "distinguish_by": "Ask what height the curve should carry just left and just right of the input.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01264",
+   "mastery_state": "partial_conceptual",
+   "name": "Sketch drawn continuous where a one sided condition demands a break",
+   "observation": "The two stated one sided limits differ and the sketch joins the branches.",
+   "scope": "shared",
+   "skill": "BC-SKL-01038",
+   "sources": [
+    "ced:46"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01007",
+   "consistent_with": [
+    "BC-ERR-01003",
+    "BC-MIS-01001"
+   ],
+   "distinguish_by": "Ask whether the limit exists at the input, and whether definedness alone decides the classification.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01265",
+   "mastery_state": "partial_conceptual",
+   "name": "Break called removable because the function is undefined there",
+   "observation": "The response names the discontinuity removable on the grounds that the input is missing from the domain.",
+   "scope": "shared",
+   "skill": "BC-SKL-01039",
+   "sources": [
+    "ced:47"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01007",
+   "consistent_with": [
+    "BC-MIS-01010",
+    "BC-ERR-01016"
+   ],
+   "distinguish_by": "Ask what value would have to be assigned at the input to close the break.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01266",
+   "mastery_state": "partial_procedural",
+   "name": "Removable break identified with the repairing value not named",
+   "observation": "The classification is correct and the response does not say what value the function would need at the point.",
+   "scope": "shared",
+   "skill": "BC-SKL-01039",
+   "sources": [
+    "ced:47"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01007",
+   "consistent_with": [
+    "BC-ERR-01017",
+    "BC-MIS-01009"
+   ],
+   "distinguish_by": "Ask for the two one sided values and whether they differ.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01267",
+   "mastery_state": "partial_procedural",
+   "name": "Jump named where the two sides agree",
+   "observation": "The two one sided limits are equal and the response still classifies the break as a jump.",
+   "scope": "shared",
+   "skill": "BC-SKL-01040",
+   "sources": [
+    "ced:47"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01007",
+   "consistent_with": [
+    "BC-ERR-01019",
+    "BC-MIS-01012"
+   ],
+   "distinguish_by": "Ask whether each one sided limit is a finite number.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01268",
+   "mastery_state": "partial_conceptual",
+   "name": "Jump and infinite break not separated",
+   "observation": "A break where one side grows without bound is classified as a jump.",
+   "scope": "shared",
+   "skill": "BC-SKL-01040",
+   "sources": [
+    "ced:47"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01007",
+   "consistent_with": [
+    "BC-ERR-01018",
+    "BC-MIS-01011"
+   ],
+   "distinguish_by": "Ask the student to factor both parts and say which denominator zeros survive.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01269",
+   "mastery_state": "partial_procedural",
+   "name": "Cancelling factor reported as an asymptote",
+   "observation": "A zero of the original denominator that divides out is listed as a vertical asymptote.",
+   "scope": "shared",
+   "skill": "BC-SKL-01041",
+   "sources": [
+    "ced:47",
+    "ced:51"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01007",
+   "consistent_with": [
+    "BC-ERR-01019",
+    "BC-MIS-01012"
+   ],
+   "distinguish_by": "Ask for the sign of the expression just left and just right of the input.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01270",
+   "mastery_state": "partial_conceptual",
+   "name": "Asymptote identified with no side behaviour given",
+   "observation": "The input is named correctly and the response does not say what the values do on each side.",
+   "scope": "shared",
+   "skill": "BC-SKL-01041",
+   "sources": [
+    "ced:47",
+    "ced:51"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01006",
+   "consistent_with": [
+    "BC-ERR-01017",
+    "BC-MIS-01019"
+   ],
+   "distinguish_by": "Ask whether each branch expression is defined everywhere on the set where it applies.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01271",
+   "mastery_state": "partial_procedural",
+   "name": "Branch boundaries checked and excluded interior points missed",
+   "observation": "Every boundary is examined and an input excluded from a branch domain is left out of the list.",
+   "scope": "shared",
+   "skill": "BC-SKL-01042",
+   "sources": [
+    "ced:47"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01006",
+   "consistent_with": [
+    "BC-ERR-01017",
+    "BC-MIS-01009"
+   ],
+   "distinguish_by": "Ask which branch the boundary input itself belongs to under the stated conditions.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01272",
+   "mastery_state": "partial_procedural",
+   "name": "Boundary value taken from the branch that does not apply",
+   "observation": "The response substitutes the boundary input into the branch governing the other side.",
+   "scope": "shared",
+   "skill": "BC-SKL-01042",
+   "sources": [
+    "ced:47"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01006",
+   "consistent_with": [
+    "BC-ERR-01014",
+    "BC-MIS-01009"
+   ],
+   "distinguish_by": "Ask the student to list every condition and mark which ones the response checked.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01273",
+   "mastery_state": "partial_conceptual",
+   "name": "Definedness stated as the whole of continuity",
+   "observation": "The response lists only that the function has a value at the point.",
+   "scope": "shared",
+   "skill": "BC-SKL-01043",
+   "sources": [
+    "ced:48"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01006",
+   "consistent_with": [
+    "BC-ERR-01015",
+    "BC-MIS-01009"
+   ],
+   "distinguish_by": "Ask what relation must hold between the value and the limit.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01274",
+   "mastery_state": "partial_procedural",
+   "name": "Limit condition stated and the agreement clause omitted",
+   "observation": "The existence of the limit and the existence of the value are both named and their equality is not.",
+   "scope": "shared",
+   "skill": "BC-SKL-01043",
+   "sources": [
+    "ced:48"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01006",
+   "consistent_with": [
+    "BC-ERR-01016",
+    "BC-MIS-01010"
+   ],
+   "distinguish_by": "Ask which condition fails and at which input.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01275",
+   "mastery_state": "notation_only",
+   "name": "Definition restated in place of the failing condition",
+   "observation": "The response says the function is not continuous because the definition of continuity is not met.",
+   "scope": "shared",
+   "skill": "BC-SKL-01045",
+   "sources": [
+    "ced:48"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01006",
+   "consistent_with": [
+    "BC-ERR-01017",
+    "BC-MIS-01009"
+   ],
+   "distinguish_by": "Ask the student to check the named condition at the input in question.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01276",
+   "mastery_state": "partial_procedural",
+   "name": "Correct failing condition named at the wrong input",
+   "observation": "The response names a genuine failure but attaches it to an input where the function is continuous.",
+   "scope": "shared",
+   "skill": "BC-SKL-01045",
+   "sources": [
+    "ced:48"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01015",
+   "consistent_with": [
+    "BC-ERR-01031",
+    "BC-MIS-01019"
+   ],
+   "distinguish_by": "Ask the student to evaluate the function at that input.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01277",
+   "mastery_state": "partial_procedural",
+   "name": "Excluded input left inside a reported interval",
+   "observation": "An input where the expression is undefined lies inside one of the intervals reported.",
+   "scope": "shared",
+   "skill": "BC-SKL-01046",
+   "sources": [
+    "ced:49"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01015",
+   "consistent_with": [
+    "BC-ERR-01018",
+    "BC-MIS-01011"
+   ],
+   "distinguish_by": "Ask which expression the question is about, the original or the simplified one.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01278",
+   "mastery_state": "partial_conceptual",
+   "name": "Domain read from the simplified form only",
+   "observation": "The cancelled form is used to build the interval list, so an excluded input disappears.",
+   "scope": "shared",
+   "skill": "BC-SKL-01046",
+   "sources": [
+    "ced:49"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01015",
+   "consistent_with": [
+    "BC-ERR-01031",
+    "BC-MIS-01019"
+   ],
+   "distinguish_by": "Ask where a member of that family fails to be defined.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01279",
+   "mastery_state": "partial_conceptual",
+   "name": "Family named as continuous everywhere rather than on its domain",
+   "observation": "The response says the family is continuous for every input, with no domain restriction mentioned.",
+   "scope": "shared",
+   "skill": "BC-SKL-01047",
+   "sources": [
+    "ced:49"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01015",
+   "consistent_with": [
+    "BC-MIS-01019",
+    "BC-ERR-01032"
+   ],
+   "distinguish_by": "Ask which family the given expression belongs to and what its domain is.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01280",
+   "mastery_state": "partial_procedural",
+   "name": "Family membership asserted with no check of the given expression",
+   "observation": "The expression is assigned to a family it does not belong to and continuity is claimed from that.",
+   "scope": "shared",
+   "skill": "BC-SKL-01047",
+   "sources": [
+    "ced:49"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01015",
+   "consistent_with": [
+    "BC-ERR-01031",
+    "BC-MIS-01019"
+   ],
+   "distinguish_by": "Ask what happens at each input where the rule changes.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01281",
+   "mastery_state": "partial_procedural",
+   "name": "Branches checked and the boundaries left unexamined",
+   "observation": "Each branch is declared continuous on its own and the boundary inputs are not tested.",
+   "scope": "shared",
+   "skill": "BC-SKL-01048",
+   "sources": [
+    "ced:49"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01015",
+   "consistent_with": [
+    "BC-ERR-01015",
+    "BC-MIS-01009"
+   ],
+   "distinguish_by": "Ask for the two one sided limits at the boundary and compare them with the value.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01282",
+   "mastery_state": "partial_conceptual",
+   "name": "Boundary matched by value with the one sided limits not compared",
+   "observation": "The two branch expressions agree at the boundary by value and the one sided limits are never named.",
+   "scope": "shared",
+   "skill": "BC-SKL-01048",
+   "sources": [
+    "ced:49"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01008",
+   "consistent_with": [
+    "BC-ERR-01015",
+    "BC-MIS-01009"
+   ],
+   "distinguish_by": "Ask for the limit at the point and compare it with the value assigned.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01283",
+   "mastery_state": "partial_procedural",
+   "name": "Value assigned that is not the limit",
+   "observation": "A value is supplied at the point that does not match the common one sided value.",
+   "scope": "shared",
+   "skill": "BC-SKL-01050",
+   "sources": [
+    "ced:50"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01008",
+   "consistent_with": [
+    "BC-ERR-01002",
+    "BC-MIS-01002"
+   ],
+   "distinguish_by": "Ask whether the limit exists at the input before any value is assigned.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01284",
+   "mastery_state": "partial_conceptual",
+   "name": "Repair attempted where the limit does not exist",
+   "observation": "A value is assigned at an input where the two one sided limits differ.",
+   "scope": "shared",
+   "skill": "BC-SKL-01050",
+   "sources": [
+    "ced:50"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01008",
+   "consistent_with": [
+    "BC-ERR-01031",
+    "BC-MIS-01019"
+   ],
+   "distinguish_by": "Ask how many boundaries the rule has and how many conditions that gives.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01285",
+   "mastery_state": "partial_procedural",
+   "name": "One boundary equation written and the second omitted",
+   "observation": "A single equation is formed and one parameter is left undetermined or chosen arbitrarily.",
+   "scope": "shared",
+   "skill": "BC-SKL-01052",
+   "sources": [
+    "ced:50"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01008",
+   "consistent_with": [
+    "BC-ERR-01015",
+    "BC-MIS-01009"
+   ],
+   "distinguish_by": "Ask what quantity must agree at each boundary for continuity to hold.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01286",
+   "mastery_state": "partial_conceptual",
+   "name": "Equations written from values with the limits not matched",
+   "observation": "The two branch expressions are set equal at the boundaries without reference to the one sided limits.",
+   "scope": "shared",
+   "skill": "BC-SKL-01052",
+   "sources": [
+    "ced:50"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01008",
+   "consistent_with": [
+    "BC-ERR-01003",
+    "BC-MIS-01001"
+   ],
+   "distinguish_by": "Ask whether the limit exists at the input, as a separate question.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01287",
+   "mastery_state": "partial_conceptual",
+   "name": "Removability decided from definedness alone",
+   "observation": "The response says the break can be repaired because the function has no value there.",
+   "scope": "shared",
+   "skill": "BC-SKL-01053",
+   "sources": [
+    "ced:50"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01008",
+   "consistent_with": [
+    "BC-ERR-01018",
+    "BC-MIS-01011"
+   ],
+   "distinguish_by": "Ask what the values do near the input, and whether any single assigned value could close that.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01288",
+   "mastery_state": "partial_procedural",
+   "name": "Infinite break called removable",
+   "observation": "An input where the values grow without bound is reported as repairable.",
+   "scope": "shared",
+   "skill": "BC-SKL-01053",
+   "sources": [
+    "ced:50"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01009",
+   "consistent_with": [
+    "BC-ERR-01019",
+    "BC-MIS-01012"
+   ],
+   "distinguish_by": "Ask for the behaviour on each side separately.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01289",
+   "mastery_state": "partial_procedural",
+   "name": "One statement written where the two sides differ in sign",
+   "observation": "A single infinite limit is written although one side increases and the other decreases without bound.",
+   "scope": "shared",
+   "skill": "BC-SKL-01054",
+   "sources": [
+    "ced:51"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01009",
+   "consistent_with": [
+    "BC-ERR-01020",
+    "BC-MIS-01012"
+   ],
+   "distinguish_by": "Ask whether the symbol on the right of the equals sign names a real number.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01290",
+   "mastery_state": "partial_conceptual",
+   "name": "Infinite limit written as an existence claim",
+   "observation": "The response writes the limit as equal to infinity and then reports that the limit exists.",
+   "scope": "shared",
+   "skill": "BC-SKL-01054",
+   "sources": [
+    "ced:51"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01007",
+   "consistent_with": [
+    "BC-ERR-01018",
+    "BC-MIS-01011"
+   ],
+   "distinguish_by": "Ask the student to factor both parts and identify the common factor.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01291",
+   "mastery_state": "partial_procedural",
+   "name": "Cancellation not performed before the classification",
+   "observation": "The denominator zeros of the unsimplified expression are all classified as asymptotes.",
+   "scope": "shared",
+   "skill": "BC-SKL-01057",
+   "sources": [
+    "ced:47",
+    "ced:51"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01007",
+   "consistent_with": [
+    "BC-ERR-01018",
+    "BC-MIS-01012"
+   ],
+   "distinguish_by": "Ask how many times the factor appears above and below the line.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01292",
+   "mastery_state": "partial_conceptual",
+   "name": "Cancellation performed and the multiplicity ignored",
+   "observation": "A factor that divides out only partly is treated as fully cancelled and the asymptote is missed.",
+   "scope": "shared",
+   "skill": "BC-SKL-01057",
+   "sources": [
+    "ced:47",
+    "ced:51"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01010",
+   "consistent_with": [
+    "BC-ERR-01023",
+    "BC-MIS-99008"
+   ],
+   "distinguish_by": "Ask for the degree of each part, then ask which case of the rule applies.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01293",
+   "mastery_state": "partial_procedural",
+   "name": "Leading coefficients divided although the degrees differ",
+   "observation": "The ratio of the leading coefficients is reported without the degrees being compared.",
+   "scope": "shared",
+   "skill": "BC-SKL-01058",
+   "sources": [
+    "ced:52"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01010",
+   "consistent_with": [
+    "BC-ERR-01021",
+    "BC-MIS-99008"
+   ],
+   "distinguish_by": "Ask the student to describe what each term does as the input grows, with nothing substituted.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01294",
+   "mastery_state": "partial_conceptual",
+   "name": "Infinity substituted into the expression",
+   "observation": "The infinity symbol is placed into the expression and arithmetic is performed with it.",
+   "scope": "shared",
+   "skill": "BC-SKL-01058",
+   "sources": [
+    "ced:52"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01010",
+   "consistent_with": [
+    "BC-ERR-01033",
+    "BC-MIS-01018"
+   ],
+   "distinguish_by": "Ask what line the curve settles towards at that end.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01295",
+   "mastery_state": "partial_procedural",
+   "name": "Finite end behaviour value reported with no asymptote named",
+   "observation": "The limit at infinity is computed correctly and the horizontal asymptote is not stated when it is asked for.",
+   "scope": "shared",
+   "skill": "BC-SKL-01059",
+   "sources": [
+    "ced:52"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01010",
+   "consistent_with": [
+    "BC-ERR-01033",
+    "BC-MIS-01018"
+   ],
+   "distinguish_by": "Ask which variable is growing without bound in the statement just written.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01296",
+   "mastery_state": "partial_conceptual",
+   "name": "Vertical and horizontal asymptotes exchanged",
+   "observation": "A vertical asymptote is reported from an end behaviour limit, or the reverse.",
+   "scope": "shared",
+   "skill": "BC-SKL-01059",
+   "sources": [
+    "ced:52"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01010",
+   "consistent_with": [
+    "BC-ERR-01024",
+    "BC-MIS-99008"
+   ],
+   "distinguish_by": "Ask what the square root of the square of a negative quantity equals.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01297",
+   "mastery_state": "partial_procedural",
+   "name": "Dominant power taken out of the radical without the sign correction",
+   "observation": "The work at the negative end copies the positive end and the sign of the extracted factor is not adjusted.",
+   "scope": "shared",
+   "skill": "BC-SKL-01061",
+   "sources": [
+    "ced:52"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01010",
+   "consistent_with": [
+    "BC-ERR-01021",
+    "BC-MIS-99008"
+   ],
+   "distinguish_by": "Ask the student to write the divisor used on each part of the expression.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01298",
+   "mastery_state": "partial_procedural",
+   "name": "Division by the dominant power applied above the line only",
+   "observation": "The numerator is divided by the dominant power and the expression under the radical is left undivided.",
+   "scope": "shared",
+   "skill": "BC-SKL-01061",
+   "sources": [
+    "ced:52"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01010",
+   "consistent_with": [
+    "BC-ERR-01023",
+    "BC-MIS-01004"
+   ],
+   "distinguish_by": "Ask what the quotient does as the input keeps growing, not what it is at one input.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01299",
+   "mastery_state": "partial_conceptual",
+   "name": "Growth compared by the values at one large input",
+   "observation": "The response names the larger quantity at a single sampled input rather than taking the limit of the quotient.",
+   "scope": "shared",
+   "skill": "BC-SKL-01062",
+   "sources": [
+    "ced:52"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01010",
+   "consistent_with": [
+    "BC-MIS-01010",
+    "BC-ERR-01016"
+   ],
+   "distinguish_by": "Ask what the computed value says about which quantity outgrows the other.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01300",
+   "mastery_state": "partial_procedural",
+   "name": "Quotient limit computed and the comparison not stated",
+   "observation": "The limit of the quotient is found correctly and no conclusion about relative growth is written.",
+   "scope": "shared",
+   "skill": "BC-SKL-01062",
+   "sources": [
+    "ced:52"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01010",
+   "consistent_with": [
+    "BC-ERR-01024",
+    "BC-MIS-01018"
+   ],
+   "distinguish_by": "Ask the student to evaluate the expression at one large negative input and compare with the claim.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01301",
+   "mastery_state": "partial_conceptual",
+   "name": "Negative end assumed to mirror the positive end",
+   "observation": "The value found at positive infinity is reported for negative infinity with no separate work.",
+   "scope": "shared",
+   "skill": "BC-SKL-01063",
+   "sources": [
+    "ced:52"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01010",
+   "consistent_with": [
+    "BC-ERR-01033",
+    "BC-MIS-01018"
+   ],
+   "distinguish_by": "Ask which end each of the two values describes.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01302",
+   "mastery_state": "notation_only",
+   "name": "Both ends computed and one written without its direction",
+   "observation": "Two different end values are found and the answer does not say which end each belongs to.",
+   "scope": "shared",
+   "skill": "BC-SKL-01063",
+   "sources": [
+    "ced:52"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01011",
+   "consistent_with": [
+    "BC-ERR-01025",
+    "BC-MIS-01015"
+   ],
+   "distinguish_by": "Ask what must be true of the function on the interval before the theorem may be used.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01303",
+   "mastery_state": "partial_conceptual",
+   "name": "Continuity hypothesis omitted from the statement",
+   "observation": "The straddling condition is named and continuity on the closed interval is not.",
+   "scope": "shared",
+   "skill": "BC-SKL-01064",
+   "sources": [
+    "ced:53",
+    "sg-25:12"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01011",
+   "consistent_with": [
+    "BC-ERR-01028",
+    "BC-MIS-01016"
+   ],
+   "distinguish_by": "Ask what the named theorem concludes and compare it with the conclusion reached.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01304",
+   "mastery_state": "notation_only",
+   "name": "Theorem named incorrectly while the conditions are right",
+   "observation": "The conditions listed match the Intermediate Value Theorem and a different theorem is named.",
+   "scope": "shared",
+   "skill": "BC-SKL-01064",
+   "sources": [
+    "ced:53",
+    "sg-25:12"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01011",
+   "consistent_with": [
+    "BC-ERR-01026",
+    "BC-MIS-01016"
+   ],
+   "distinguish_by": "Ask the student to write the two attained values and the target in increasing order.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01305",
+   "mastery_state": "partial_procedural",
+   "name": "Table rows chosen that do not straddle the target",
+   "observation": "Two rows are cited whose outputs both lie on the same side of the target value.",
+   "scope": "shared",
+   "skill": "BC-SKL-01068",
+   "sources": [
+    "ced:53",
+    "sg-25:12"
+   ],
+   "status": "active"
+  },
+  {
+   "archetype": "BC-QA-01011",
+   "consistent_with": [
+    "BC-ERR-01025",
+    "BC-MIS-01015"
+   ],
+   "distinguish_by": "Ask on what grounds the function is continuous between the two tabulated inputs.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01306",
+   "mastery_state": "partial_conceptual",
+   "name": "Straddling shown with continuity never established",
+   "observation": "The two bracketing rows are cited correctly and no basis for continuity is given.",
+   "scope": "shared",
+   "skill": "BC-SKL-01068",
+   "sources": [
+    "ced:53",
+    "sg-25:12"
+   ],
+   "status": "active"
+  }
+ ]
+}

@@ -1,0 +1,865 @@
+{
+ "registry": "diagnostic_signals",
+ "signals": [
+  {
+   "archetype": "BC-QA-08001",
+   "consistent_with": [
+    "BC-ERR-08001",
+    "BC-MIS-08002"
+   ],
+   "distinguish_by": "Ask for the same average on an interval of length one; a correct answer there and a wrong answer elsewhere points at the missing division rather than at the area reading.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08201",
+   "mastery_state": "partial_procedural",
+   "name": "Geometric area read correctly with no division by the interval length",
+   "observation": "The response adds the triangle and rectangle areas under the graph correctly and reports that total as the average value.",
+   "scope": "shared",
+   "skill": "BC-SKL-08002",
+   "sources": [
+    "ced:152"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08001",
+   "consistent_with": [
+    "BC-ERR-06014",
+    "BC-MIS-08002",
+    "BC-MIS-08024"
+   ],
+   "distinguish_by": "Ask for the value of the integral on the subinterval below the axis alone; a positive answer there separates the sign reading from a counting slip in the grid.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08202",
+   "mastery_state": "partial_conceptual",
+   "name": "Signed area treated as unsigned when the graph dips below the axis",
+   "observation": "Every region under the graph is added as a positive area, so an interval where the function is negative raises the reported average.",
+   "scope": "shared",
+   "skill": "BC-SKL-08002",
+   "sources": [
+    "ced:152"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08001",
+   "consistent_with": [
+    "BC-ERR-99005",
+    "BC-MIS-99006",
+    "BC-MIS-08009"
+   ],
+   "distinguish_by": "Ask what would change in the sentence if the interval were different; a student who can answer had an omission rather than a missing idea.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08203",
+   "mastery_state": "partial_conceptual",
+   "name": "Average value named without units or without the interval",
+   "observation": "The sentence says what the average value is of but omits the units of the function or the interval it is taken over.",
+   "scope": "shared",
+   "skill": "BC-SKL-08005",
+   "sources": [
+    "ced:152",
+    "sg-24:3"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08001",
+   "consistent_with": [
+    "BC-ERR-99005",
+    "BC-MIS-99006"
+   ],
+   "distinguish_by": "Ask for the units of the divisor and of the integral separately, which separates a cancelling slip from a belief that the integral is already the average.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08204",
+   "mastery_state": "partial_procedural",
+   "name": "Units built from the wrong factors",
+   "observation": "The units quoted are those of the integral, so the units of the independent variable are still carried in the reported average.",
+   "scope": "shared",
+   "skill": "BC-SKL-08005",
+   "sources": [
+    "ced:152",
+    "sg-24:3"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08003",
+   "consistent_with": [
+    "BC-ERR-08010",
+    "BC-MIS-08004"
+   ],
+   "distinguish_by": "Ask for the value of the integral on each side of the zero of velocity; correct signed pieces with a wrong total points at the splitting rather than at the integration.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08205",
+   "mastery_state": "partial_conceptual",
+   "name": "One integral over the whole interval with a single absolute value",
+   "observation": "Velocity is integrated across its sign change and the absolute value is applied once, at the end.",
+   "scope": "shared",
+   "skill": "BC-SKL-08008",
+   "sources": [
+    "ced:153"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08003",
+   "consistent_with": [
+    "BC-ERR-08010",
+    "BC-MIS-08005",
+    "BC-MIS-08004"
+   ],
+   "distinguish_by": "Ask for the times at which the velocity is zero on the interval; failure there places the gap in solving the equation, not in the accumulation idea.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08206",
+   "mastery_state": "prerequisite_gap",
+   "name": "Sign change of velocity not located",
+   "observation": "No zero of velocity appears anywhere in the response, so no split is possible even though total distance is asked for.",
+   "scope": "shared",
+   "skill": "BC-SKL-08008",
+   "sources": [
+    "ced:153"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08003",
+   "consistent_with": [
+    "BC-ERR-08011",
+    "BC-MIS-08006"
+   ],
+   "distinguish_by": "Give the same acceleration with two different initial velocities and ask for the later velocity in each case.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08207",
+   "mastery_state": "partial_procedural",
+   "name": "Accumulated change reported as the velocity",
+   "observation": "The integral of acceleration is evaluated correctly and handed in as the velocity, with the initial velocity never added.",
+   "scope": "shared",
+   "skill": "BC-SKL-08010",
+   "sources": [
+    "ced:153"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08003",
+   "consistent_with": [
+    "BC-ERR-99021",
+    "BC-MIS-08006"
+   ],
+   "distinguish_by": "Ask for the numerical value of the integral alone, which separates a stalled evaluation from an incomplete structure.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08208",
+   "mastery_state": "not_attempted",
+   "name": "Velocity value left as an unevaluated setup",
+   "observation": "The sum of the initial velocity and the integral is written and no value is produced.",
+   "scope": "shared",
+   "skill": "BC-SKL-08010",
+   "sources": [
+    "ced:153"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08005",
+   "consistent_with": [
+    "BC-ERR-08013",
+    "BC-MIS-08007"
+   ],
+   "distinguish_by": "Ask what the net rate should be at a time when the two rates are equal.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08209",
+   "mastery_state": "partial_conceptual",
+   "name": "Net rate written as the sum of the two rates",
+   "observation": "The two given rates are added, so the net rate is largest when inflow and outflow are equal.",
+   "scope": "shared",
+   "skill": "BC-SKL-08013",
+   "sources": [
+    "ced:154"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08005",
+   "consistent_with": [
+    "BC-ERR-08013",
+    "BC-MIS-08007",
+    "BC-MIS-08006"
+   ],
+   "distinguish_by": "Ask which of the two named rates adds to the amount; a correct answer with a reversed expression points at the transcription.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08210",
+   "mastery_state": "partial_procedural",
+   "name": "Difference taken in the wrong order",
+   "observation": "The outflow rate is written first, so the net rate has the wrong sign throughout.",
+   "scope": "shared",
+   "skill": "BC-SKL-08013",
+   "sources": [
+    "ced:154"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08004",
+   "consistent_with": [
+    "BC-ERR-99006",
+    "BC-MIS-08009"
+   ],
+   "distinguish_by": "Ask which variable the integral is taken with respect to; a correct answer makes this a notation omission rather than a variable confusion.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08211",
+   "mastery_state": "notation_only",
+   "name": "Integral expression written without its differential",
+   "observation": "The limits and the integrand are correct and the differential is missing from the expression.",
+   "scope": "shared",
+   "skill": "BC-SKL-08016",
+   "sources": [
+    "ced:154",
+    "sg-25:14"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08004",
+   "consistent_with": [
+    "BC-ERR-08019",
+    "BC-MIS-08009",
+    "BC-MIS-08006"
+   ],
+   "distinguish_by": "Ask what the number the expression produces would mean in the context of the stem.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08212",
+   "mastery_state": "partial_conceptual",
+   "name": "Expression answers a different question than the one asked",
+   "observation": "The integral is set up for the change in the quantity where the amount present was requested, or over an interval the prompt did not name.",
+   "scope": "shared",
+   "skill": "BC-SKL-08016",
+   "sources": [
+    "ced:154",
+    "sg-25:14"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08004",
+   "consistent_with": [
+    "BC-ERR-99019",
+    "BC-MIS-09008"
+   ],
+   "distinguish_by": "Ask for the unrounded intermediate value and for the final answer again; agreement then places the cause in the rounding step.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08213",
+   "mastery_state": "partial_procedural",
+   "name": "Intermediate value rounded before the final computation",
+   "observation": "A rounded value from an earlier step is carried into the accumulation, so the reported amount disagrees in the third decimal place.",
+   "scope": "shared",
+   "skill": "BC-SKL-08017",
+   "sources": [
+    "sg-25:14",
+    "frq-25:6"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08004",
+   "consistent_with": [
+    "BC-ERR-99005",
+    "BC-MIS-08009",
+    "BC-MIS-09008"
+   ],
+   "distinguish_by": "Ask what the number would mean to someone reading the stem, which separates a missing sentence from a missing interpretation.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08214",
+   "mastery_state": "partial_conceptual",
+   "name": "Value reported with no statement of what it counts",
+   "observation": "A correct decimal appears with no sentence naming the quantity or the interval it applies to.",
+   "scope": "shared",
+   "skill": "BC-SKL-08017",
+   "sources": [
+    "sg-25:14",
+    "frq-25:6"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08008",
+   "consistent_with": [
+    "BC-ERR-08020",
+    "BC-MIS-08011",
+    "BC-MIS-08010"
+   ],
+   "distinguish_by": "Ask the student to evaluate both functions at one interior input and say which is larger.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08215",
+   "mastery_state": "partial_procedural",
+   "name": "Difference of the boundary functions taken in the wrong order",
+   "observation": "The integrand is the lower curve minus the upper curve, so the area comes out negative and the sign is corrected only at the end.",
+   "scope": "shared",
+   "skill": "BC-SKL-08019",
+   "sources": [
+    "ced:155",
+    "sg-23:16"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08008",
+   "consistent_with": [
+    "BC-ERR-08020",
+    "BC-MIS-08010"
+   ],
+   "distinguish_by": "Ask what the lower boundary of the region is at one interior input.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08216",
+   "mastery_state": "partial_conceptual",
+   "name": "Only one boundary curve placed in the integrand",
+   "observation": "The area is written as the integral of the upper curve alone, as though the region were bounded below by the horizontal axis.",
+   "scope": "shared",
+   "skill": "BC-SKL-08019",
+   "sources": [
+    "ced:155",
+    "sg-23:16"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08008",
+   "consistent_with": [
+    "BC-ERR-08019",
+    "BC-MIS-08012"
+   ],
+   "distinguish_by": "Ask how many solutions the equation has on the interval; a correct count with a single limit points at the solving step.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08217",
+   "mastery_state": "partial_procedural",
+   "name": "Intersection equation solved with one root lost",
+   "observation": "The equation setting the two curves equal is written correctly and only one of its solutions is carried into the limits.",
+   "scope": "shared",
+   "skill": "BC-SKL-08020",
+   "sources": [
+    "ced:155"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08008",
+   "consistent_with": [
+    "BC-ERR-08019",
+    "BC-MIS-08012",
+    "BC-MIS-08014"
+   ],
+   "distinguish_by": "Ask which two inputs bound the region and why.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08218",
+   "mastery_state": "partial_conceptual",
+   "name": "Limits taken from the graph window rather than from the boundary",
+   "observation": "The endpoints are the edges of the displayed viewing window, not the inputs at which the curves meet.",
+   "scope": "shared",
+   "skill": "BC-SKL-08020",
+   "sources": [
+    "ced:155"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08009",
+   "consistent_with": [
+    "BC-ERR-08023",
+    "BC-MIS-08013"
+   ],
+   "distinguish_by": "Ask which variable the slices of the region run along, which separates the choice from the algebra of rewriting.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08219",
+   "mastery_state": "partial_conceptual",
+   "name": "Integration variable chosen against the shape of the region",
+   "observation": "The region is bounded left and right by curves given as x in terms of y, and the setup integrates in x with the boundaries unrewritten.",
+   "scope": "shared",
+   "skill": "BC-SKL-08026",
+   "sources": [
+    "ced:156"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08009",
+   "consistent_with": [
+    "BC-ERR-08023",
+    "BC-MIS-08013",
+    "BC-MIS-08012"
+   ],
+   "distinguish_by": "Ask the student to solve the boundary equation for the other variable on its own.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08220",
+   "mastery_state": "prerequisite_gap",
+   "name": "Boundary curve not solved for the other variable",
+   "observation": "The correct variable of integration is named and the curve is never rewritten, so the integrand keeps the wrong letter.",
+   "scope": "shared",
+   "skill": "BC-SKL-08026",
+   "sources": [
+    "ced:156"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08010",
+   "consistent_with": [
+    "BC-ERR-08027",
+    "BC-MIS-08014"
+   ],
+   "distinguish_by": "Ask what the integral would give if the two lobes had equal area.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08221",
+   "mastery_state": "notation_only",
+   "name": "Absolute value bars omitted from the single integral form",
+   "observation": "The one integral form of the area is written with the difference exposed, so the two lobes cancel.",
+   "scope": "shared",
+   "skill": "BC-SKL-08030",
+   "sources": [
+    "ced:157"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08010",
+   "consistent_with": [
+    "BC-ERR-08026",
+    "BC-MIS-08014",
+    "BC-MIS-08011"
+   ],
+   "distinguish_by": "Ask for the sign of the integrand on each side of the crossing.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08222",
+   "mastery_state": "partial_conceptual",
+   "name": "Region treated as having one order of subtraction throughout",
+   "observation": "Neither bars nor a split appear, and one fixed order of subtraction runs across the crossing of the curves.",
+   "scope": "shared",
+   "skill": "BC-SKL-08030",
+   "sources": [
+    "ced:157"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08011",
+   "consistent_with": [
+    "BC-ERR-08028",
+    "BC-MIS-08016"
+   ],
+   "distinguish_by": "Ask the student to mark one slice on the figure and label both of its ends.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08223",
+   "mastery_state": "partial_conceptual",
+   "name": "Slice side written as one function value",
+   "observation": "The side of the cross section is the upper curve alone although the region is bounded by two curves.",
+   "scope": "shared",
+   "skill": "BC-SKL-08031",
+   "sources": [
+    "ced:158"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08011",
+   "consistent_with": [
+    "BC-ERR-08028",
+    "BC-MIS-08016",
+    "BC-MIS-08011"
+   ],
+   "distinguish_by": "Ask for the length of the slice at one interior input as a number.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08224",
+   "mastery_state": "partial_procedural",
+   "name": "Distance between the curves written in the wrong order",
+   "observation": "The side is a difference of the two curves taken so that it is negative on the interval.",
+   "scope": "shared",
+   "skill": "BC-SKL-08031",
+   "sources": [
+    "ced:158"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08011",
+   "consistent_with": [
+    "BC-ERR-08031",
+    "BC-MIS-08016"
+   ],
+   "distinguish_by": "Ask for the area of one slice with both dimensions labelled.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08225",
+   "mastery_state": "partial_procedural",
+   "name": "Second dimension of the rectangle omitted",
+   "observation": "The rectangular section is squared as though the stated multiple relating height to base were one.",
+   "scope": "shared",
+   "skill": "BC-SKL-08033",
+   "sources": [
+    "ced:158"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08011",
+   "consistent_with": [
+    "BC-ERR-08031",
+    "BC-MIS-08016",
+    "BC-MIS-08019"
+   ],
+   "distinguish_by": "Ask what quantity the integrand has to carry for the integral to give a volume.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08226",
+   "mastery_state": "partial_conceptual",
+   "name": "Area of the slice replaced by its side",
+   "observation": "The integrand is the distance between the curves rather than the area of the rectangle built on it.",
+   "scope": "shared",
+   "skill": "BC-SKL-08033",
+   "sources": [
+    "ced:158"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08011",
+   "consistent_with": [
+    "BC-ERR-08030",
+    "BC-MIS-08017"
+   ],
+   "distinguish_by": "Ask the student to expand the expression for a specific pair of numbers and compare.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08227",
+   "mastery_state": "partial_procedural",
+   "name": "Squared difference expanded incorrectly",
+   "observation": "The correct integrand is written and the expansion of the squared binomial loses the middle term or a sign.",
+   "scope": "shared",
+   "skill": "BC-SKL-08035",
+   "sources": [
+    "ced:158"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08011",
+   "consistent_with": [
+    "BC-ERR-99019",
+    "BC-MIS-08017",
+    "BC-MIS-09008"
+   ],
+   "distinguish_by": "Ask for the value again from the unrounded setup; agreement places the cause in the rounding.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08228",
+   "mastery_state": "partial_procedural",
+   "name": "Intermediate value rounded before the volume is reported",
+   "observation": "A rounded limit or coefficient is carried into the evaluation, so the reported volume disagrees in the third decimal place.",
+   "scope": "shared",
+   "skill": "BC-SKL-08035",
+   "sources": [
+    "ced:158"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08011",
+   "consistent_with": [
+    "BC-ERR-08032",
+    "BC-MIS-08019"
+   ],
+   "distinguish_by": "Ask for the area of a single equilateral triangle of a stated side length.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08229",
+   "mastery_state": "partial_procedural",
+   "name": "Constant factor of the equilateral area missing",
+   "observation": "The integrand is the square of the side with no fractional constant in front.",
+   "scope": "shared",
+   "skill": "BC-SKL-08036",
+   "sources": [
+    "ced:159"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08011",
+   "consistent_with": [
+    "BC-ERR-08032",
+    "BC-MIS-08019",
+    "BC-MIS-08016"
+   ],
+   "distinguish_by": "Ask for the area formula on its own, away from the integral.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08230",
+   "mastery_state": "prerequisite_gap",
+   "name": "Area of the named shape not available",
+   "observation": "No area formula for the equilateral section appears anywhere, so the integrand is left as the side.",
+   "scope": "shared",
+   "skill": "BC-SKL-08036",
+   "sources": [
+    "ced:159"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08011",
+   "consistent_with": [
+    "BC-ERR-08033",
+    "BC-MIS-08019",
+    "BC-MIS-08018"
+   ],
+   "distinguish_by": "Ask which side of the triangle lies in the base region.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08231",
+   "mastery_state": "partial_conceptual",
+   "name": "Stated distance used as a leg when it is the hypotenuse",
+   "observation": "The right isosceles section is given the leg formula although the distance between the curves lies along the hypotenuse.",
+   "scope": "shared",
+   "skill": "BC-SKL-08037",
+   "sources": [
+    "ced:159"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08011",
+   "consistent_with": [
+    "BC-ERR-08032",
+    "BC-MIS-08019"
+   ],
+   "distinguish_by": "Ask for the area of a right isosceles triangle with a stated leg.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08232",
+   "mastery_state": "partial_procedural",
+   "name": "Halving of the leg product omitted",
+   "observation": "The correct leg is identified and the integrand is the square of the leg with no factor of one half.",
+   "scope": "shared",
+   "skill": "BC-SKL-08037",
+   "sources": [
+    "ced:159"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08011",
+   "consistent_with": [
+    "BC-ERR-08032",
+    "BC-MIS-08019"
+   ],
+   "distinguish_by": "Ask the student to read the integrand aloud and compare it with the formula just written.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08233",
+   "mastery_state": "partial_procedural",
+   "name": "Correct area formula with the constant lost in the integral",
+   "observation": "The area of the named section is written correctly beside the integral and the constant does not appear inside it.",
+   "scope": "shared",
+   "skill": "BC-SKL-08039",
+   "sources": [
+    "ced:159"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08011",
+   "consistent_with": [
+    "BC-ERR-99021",
+    "BC-MIS-08019",
+    "BC-MIS-09008"
+   ],
+   "distinguish_by": "Ask for the value of the integral alone, which separates a stalled evaluation from an incomplete setup.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08234",
+   "mastery_state": "not_attempted",
+   "name": "Setup written with no value produced",
+   "observation": "The volume integral is complete and correct and no number is reported.",
+   "scope": "shared",
+   "skill": "BC-SKL-08039",
+   "sources": [
+    "ced:159"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08012",
+   "consistent_with": [
+    "BC-ERR-08036",
+    "BC-MIS-08020"
+   ],
+   "distinguish_by": "Ask for the area of one disc of a stated radius.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08235",
+   "mastery_state": "partial_conceptual",
+   "name": "Radius left unsquared in the disc integrand",
+   "observation": "The integrand is pi times the function rather than pi times the square of the function.",
+   "scope": "shared",
+   "skill": "BC-SKL-08040",
+   "sources": [
+    "ced:160"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08012",
+   "consistent_with": [
+    "BC-ERR-08037",
+    "BC-MIS-08020",
+    "BC-MIS-08019"
+   ],
+   "distinguish_by": "Ask what the area of a circular slice of that radius is.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08236",
+   "mastery_state": "partial_procedural",
+   "name": "Factor of pi omitted from the disc integrand",
+   "observation": "The square of the radius is integrated correctly and the constant factor never appears.",
+   "scope": "shared",
+   "skill": "BC-SKL-08040",
+   "sources": [
+    "ced:160"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08012",
+   "consistent_with": [
+    "BC-ERR-08038",
+    "BC-MIS-08021"
+   ],
+   "distinguish_by": "Ask for the distance from one point on the curve to the stated line.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08237",
+   "mastery_state": "partial_conceptual",
+   "name": "Radius written as the bare function value about a shifted axis",
+   "observation": "The solid is revolved about a line other than an axis and the radius is the function value with no subtraction.",
+   "scope": "shared",
+   "skill": "BC-SKL-08046",
+   "sources": [
+    "ced:161"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08012",
+   "consistent_with": [
+    "BC-ERR-08038",
+    "BC-MIS-08021",
+    "BC-MIS-08022"
+   ],
+   "distinguish_by": "Ask whether the curve lies above or below the axis of revolution on the interval.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08238",
+   "mastery_state": "partial_procedural",
+   "name": "Subtraction for the shifted radius taken in the wrong order",
+   "observation": "The radius is written as the line minus the function where the curve lies farther from the axis, so the radius is negative.",
+   "scope": "shared",
+   "skill": "BC-SKL-08046",
+   "sources": [
+    "ced:161"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08012",
+   "consistent_with": [
+    "BC-ERR-08039",
+    "BC-MIS-08022"
+   ],
+   "distinguish_by": "Ask which inputs the region occupies, independently of where the axis is.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08239",
+   "mastery_state": "partial_conceptual",
+   "name": "Limits translated along with the axis",
+   "observation": "The endpoints of integration are shifted by the same amount as the line of revolution.",
+   "scope": "shared",
+   "skill": "BC-SKL-08047",
+   "sources": [
+    "ced:161"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08012",
+   "consistent_with": [
+    "BC-ERR-08039",
+    "BC-MIS-08022",
+    "BC-MIS-08021"
+   ],
+   "distinguish_by": "Ask the student to mark the region on the figure and read its endpoints off the axis.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08240",
+   "mastery_state": "partial_procedural",
+   "name": "Shift applied twice to the radius and once to the limits",
+   "observation": "The radius carries the correct subtraction and the endpoints carry it as well, so the interval no longer matches the region.",
+   "scope": "shared",
+   "skill": "BC-SKL-08047",
+   "sources": [
+    "ced:161"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08014",
+   "consistent_with": [
+    "BC-ERR-08041",
+    "BC-MIS-08024"
+   ],
+   "distinguish_by": "Ask what the length of a straight segment of slope one on an interval of length one should be.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08241",
+   "mastery_state": "partial_conceptual",
+   "name": "Length written as the integral of the derivative",
+   "observation": "The arc length integral is stated without the radical, so a segment of slope one on an interval of length one comes out as one.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-08056",
+   "sources": [
+    "ced:164"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08014",
+   "consistent_with": [
+    "BC-ERR-08041",
+    "BC-MIS-08024",
+    "BC-MIS-08019"
+   ],
+   "distinguish_by": "Ask what the formula gives for a horizontal segment, where the derivative is zero.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08242",
+   "mastery_state": "partial_procedural",
+   "name": "Added one missing inside the radical",
+   "observation": "The radical is present and contains only the square of the derivative.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-08056",
+   "sources": [
+    "ced:164"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08014",
+   "consistent_with": [
+    "BC-ERR-08042",
+    "BC-MIS-08024"
+   ],
+   "distinguish_by": "Ask the student to write the integrand for a linear function and compare it with the Pythagorean length.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08243",
+   "mastery_state": "partial_procedural",
+   "name": "Derivative not squared inside the radical",
+   "observation": "The integrand is the square root of one plus the derivative itself.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-08057",
+   "sources": [
+    "ced:164"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08014",
+   "consistent_with": [
+    "BC-ERR-08019",
+    "BC-MIS-08024",
+    "BC-MIS-08012"
+   ],
+   "distinguish_by": "Ask which two inputs the described piece of curve runs between.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08244",
+   "mastery_state": "partial_conceptual",
+   "name": "Limits taken from inputs the described curve does not occupy",
+   "observation": "The radical is correct and the interval of integration is not the one the description bounds.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-08057",
+   "sources": [
+    "ced:164"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08014",
+   "consistent_with": [
+    "BC-ERR-08045",
+    "BC-MIS-09008"
+   ],
+   "distinguish_by": "Ask the student to write the expression that produced the number.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08245",
+   "mastery_state": "notation_only",
+   "name": "Numerical length reported with no integral shown",
+   "observation": "A decimal for the arc length appears with no integral expression anywhere in the response.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-08059",
+   "sources": [
+    "ced:164",
+    "crabbc-25:30"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08014",
+   "consistent_with": [
+    "BC-ERR-99019",
+    "BC-MIS-09008",
+    "BC-MIS-08024"
+   ],
+   "distinguish_by": "Ask for the value again from the written expression; agreement places the cause in the rounding.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08246",
+   "mastery_state": "partial_procedural",
+   "name": "Value rounded early or stored from a truncated expression",
+   "observation": "The expression is correct and the reported value disagrees with it in the third decimal place.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-08059",
+   "sources": [
+    "ced:164",
+    "crabbc-25:30"
+   ]
+  }
+ ]
+}

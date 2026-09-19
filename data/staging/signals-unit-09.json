@@ -1,0 +1,831 @@
+{
+ "registry": "diagnostic_signals",
+ "signals": [
+  {
+   "archetype": "BC-QA-09001",
+   "consistent_with": [
+    "BC-ERR-09001",
+    "BC-MIS-09001"
+   ],
+   "distinguish_by": "Ask for each component derivative on its own before any quotient is formed.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-09201",
+   "mastery_state": "partial_procedural",
+   "name": "One component derivative computed incorrectly",
+   "observation": "One of dx/dt or dy/dt loses a chain rule factor, so every later quantity built from it is wrong.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09001",
+   "sources": [
+    "ced:171"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09001",
+   "consistent_with": [
+    "BC-ERR-09001",
+    "BC-MIS-09001",
+    "BC-MIS-99005"
+   ],
+   "distinguish_by": "Ask which letter the two given equations have in common.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-09202",
+   "mastery_state": "partial_conceptual",
+   "name": "Components differentiated with respect to the wrong variable",
+   "observation": "The derivative of y is taken with respect to x although both coordinates are given in the parameter.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09001",
+   "sources": [
+    "ced:171"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09001",
+   "consistent_with": [
+    "BC-ERR-09005",
+    "BC-MIS-09003"
+   ],
+   "distinguish_by": "Ask what happens to the tangent line at a parameter value where dx/dt is zero.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-09203",
+   "mastery_state": "partial_conceptual",
+   "name": "Slope formula applied where dx/dt vanishes",
+   "observation": "The quotient is evaluated at a parameter value at which the denominator is zero and a value is still reported.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09003",
+   "sources": [
+    "ced:171"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09001",
+   "consistent_with": [
+    "BC-ERR-09005",
+    "BC-MIS-09003",
+    "BC-MIS-99009"
+   ],
+   "distinguish_by": "Ask why the quotient is allowed at that parameter value.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-09204",
+   "mastery_state": "notation_only",
+   "name": "Condition never written although the work respects it",
+   "observation": "The parameter values used all have dx/dt nonzero and the condition is nowhere stated where the question asks for it.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09003",
+   "sources": [
+    "ced:171"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09001",
+   "consistent_with": [
+    "BC-ERR-09007",
+    "BC-MIS-09001"
+   ],
+   "distinguish_by": "Ask for the coordinates of the particle at that time before the line is written.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-09205",
+   "mastery_state": "partial_conceptual",
+   "name": "Tangent line written through the velocity components",
+   "observation": "The point in the line is the pair of derivative values rather than the coordinates of the particle.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09005",
+   "sources": [
+    "ced:171"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09001",
+   "consistent_with": [
+    "BC-ERR-09007",
+    "BC-MIS-09001",
+    "BC-MIS-09009"
+   ],
+   "distinguish_by": "Ask the student to check that the point satisfies the line just written.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-09206",
+   "mastery_state": "partial_procedural",
+   "name": "Correct point and slope assembled into the wrong line form",
+   "observation": "The point and the slope are both right and the line is written with the coordinates exchanged.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09005",
+   "sources": [
+    "ced:171"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09001",
+   "consistent_with": [
+    "BC-ERR-03012",
+    "BC-MIS-09003"
+   ],
+   "distinguish_by": "Ask what the slope is when the numerator of the quotient is zero.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-09207",
+   "mastery_state": "partial_conceptual",
+   "name": "Horizontal and vertical tangent conditions exchanged",
+   "observation": "The parameter values where dx/dt is zero are reported as giving horizontal tangents.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09006",
+   "sources": [
+    "ced:171"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09001",
+   "consistent_with": [
+    "BC-ERR-09005",
+    "BC-MIS-09003",
+    "BC-MIS-09002"
+   ],
+   "distinguish_by": "Ask how many solutions the equation has on the stated parameter interval.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-09208",
+   "mastery_state": "partial_procedural",
+   "name": "One solution of the tangent condition lost",
+   "observation": "The right condition is set to zero and only one of its parameter solutions is reported.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09006",
+   "sources": [
+    "ced:171"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09002",
+   "consistent_with": [
+    "BC-ERR-99019",
+    "BC-MIS-09004"
+   ],
+   "distinguish_by": "Ask for the value again from the unrounded expression; agreement places the cause in the rounding.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-09209",
+   "mastery_state": "partial_procedural",
+   "name": "Second derivative evaluated from a rounded first derivative",
+   "observation": "The structure of the second derivative is right and a rounded intermediate value is substituted, so the value disagrees in the third decimal place.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09009",
+   "sources": [
+    "ced:172"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09002",
+   "consistent_with": [
+    "BC-ERR-99021",
+    "BC-MIS-09004",
+    "BC-MIS-09008"
+   ],
+   "distinguish_by": "Ask the student to write the expression that the calculator evaluated.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-09210",
+   "mastery_state": "notation_only",
+   "name": "Value reported with no expression for the second derivative",
+   "observation": "A correct decimal appears with nothing showing what was differentiated or divided.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09009",
+   "sources": [
+    "ced:172"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09002",
+   "consistent_with": [
+    "BC-ERR-09012",
+    "BC-MIS-09004"
+   ],
+   "distinguish_by": "Ask which quantity has to be positive for the curve in the plane to bend upward.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-09211",
+   "mastery_state": "partial_conceptual",
+   "name": "Concavity read from the sign of a component derivative",
+   "observation": "The curve is called concave up because the second derivative of y with respect to the parameter is positive.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09010",
+   "sources": [
+    "ced:172"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09002",
+   "consistent_with": [
+    "BC-ERR-09012",
+    "BC-MIS-09004",
+    "BC-MIS-09002"
+   ],
+   "distinguish_by": "Ask for the sign of the expression at a parameter value inside the stated interval.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-09212",
+   "mastery_state": "partial_procedural",
+   "name": "Correct second derivative with its sign read at the wrong parameter value",
+   "observation": "The expression for the second derivative of y with respect to x is right and its sign is taken at a parameter value outside the interval asked about.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09010",
+   "sources": [
+    "ced:172"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09003",
+   "consistent_with": [
+    "BC-ERR-99021",
+    "BC-MIS-09008"
+   ],
+   "distinguish_by": "Ask the student to write the expression that produced the number.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-09213",
+   "mastery_state": "notation_only",
+   "name": "Length reported with no integral shown",
+   "observation": "A decimal for the parametric arc length appears with no integral expression anywhere.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09012",
+   "sources": [
+    "sg-24:6"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09003",
+   "consistent_with": [
+    "BC-ERR-99019",
+    "BC-MIS-09008",
+    "BC-MIS-09011"
+   ],
+   "distinguish_by": "Ask for the value again from the written expression; agreement places the cause in the rounding.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-09214",
+   "mastery_state": "partial_procedural",
+   "name": "Value rounded before the length is reported",
+   "observation": "The integral is written correctly and the reported value disagrees with it in the third decimal place.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09012",
+   "sources": [
+    "sg-24:6"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09003",
+   "consistent_with": [
+    "BC-ERR-09016",
+    "BC-MIS-09007"
+   ],
+   "distinguish_by": "Ask at which parameter values the path returns to a point it has already visited.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-09215",
+   "mastery_state": "partial_conceptual",
+   "name": "Interval chosen so that the path is traced more than once",
+   "observation": "The length is computed over a parameter interval that covers part of the path twice.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09014",
+   "sources": [
+    "ced:173"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09003",
+   "consistent_with": [
+    "BC-ERR-09016",
+    "BC-MIS-09007",
+    "BC-MIS-09019"
+   ],
+   "distinguish_by": "Ask the student to underline the parameter interval in the stem before writing the limits.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-09216",
+   "mastery_state": "partial_procedural",
+   "name": "Interval copied from another part of the question",
+   "observation": "The integrand is correct and the limits are those of the previous part rather than those the stem names.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09014",
+   "sources": [
+    "ced:173"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09004",
+   "consistent_with": [
+    "BC-ERR-09017",
+    "BC-MIS-09009"
+   ],
+   "distinguish_by": "Ask which of the two numbers is the rate in the horizontal direction.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-09217",
+   "mastery_state": "notation_only",
+   "name": "Components given with no labels or in the order they were computed",
+   "observation": "Two correct numbers appear with no indication of which is horizontal and which vertical.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09015",
+   "sources": [
+    "ced:174",
+    "sg-23:6"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09004",
+   "consistent_with": [
+    "BC-ERR-09017",
+    "BC-MIS-09009",
+    "BC-MIS-09001"
+   ],
+   "distinguish_by": "Ask for the derivative of the second component on its own.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-09218",
+   "mastery_state": "partial_procedural",
+   "name": "One component differentiated and the other copied",
+   "observation": "The derivative of one component is right and the other component is reproduced undifferentiated.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09015",
+   "sources": [
+    "ced:174",
+    "sg-23:6"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09004",
+   "consistent_with": [
+    "BC-ERR-09017",
+    "BC-MIS-09009"
+   ],
+   "distinguish_by": "Ask the student to underline the time the stem names before substituting.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-09219",
+   "mastery_state": "partial_procedural",
+   "name": "Velocity components evaluated at the wrong time",
+   "observation": "The derivative expressions are correct and the substituted time is one from an earlier part.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09016",
+   "sources": [
+    "ced:174"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09004",
+   "consistent_with": [
+    "BC-ERR-99019",
+    "BC-MIS-09009",
+    "BC-MIS-09011"
+   ],
+   "distinguish_by": "Ask for the later value again from the unrounded components.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-09220",
+   "mastery_state": "partial_procedural",
+   "name": "Rounded components carried into a later part",
+   "observation": "The components are rounded before the speed or the position is built from them, so the later value disagrees in the third decimal place.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09016",
+   "sources": [
+    "ced:174"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09004",
+   "consistent_with": [
+    "BC-ERR-09017",
+    "BC-MIS-09009"
+   ],
+   "distinguish_by": "Ask which component belongs to which coordinate.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-09221",
+   "mastery_state": "notation_only",
+   "name": "Vector notation dropped when the components are listed",
+   "observation": "The two component functions are written as a bare pair with no vector notation and no labels.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09018",
+   "sources": [
+    "ced:174"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09004",
+   "consistent_with": [
+    "BC-ERR-09017",
+    "BC-MIS-09009",
+    "BC-MIS-09001"
+   ],
+   "distinguish_by": "Ask for the horizontal coordinate of the particle at one time from each of the two forms.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-09222",
+   "mastery_state": "partial_conceptual",
+   "name": "Components exchanged in the conversion",
+   "observation": "The parametric pair is rewritten in vector form with the horizontal and vertical components swapped.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09018",
+   "sources": [
+    "ced:174"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09005",
+   "consistent_with": [
+    "BC-ERR-09019",
+    "BC-MIS-09009"
+   ],
+   "distinguish_by": "Ask how many conditions the initial position supplies.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-09223",
+   "mastery_state": "partial_conceptual",
+   "name": "One constant of integration used for both components",
+   "observation": "The vector antiderivative carries a single constant rather than one in each component.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09019",
+   "sources": [
+    "ced:175"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09005",
+   "consistent_with": [
+    "BC-ERR-09019",
+    "BC-MIS-09009",
+    "BC-MIS-09010"
+   ],
+   "distinguish_by": "Ask for the antiderivative of the second component on its own.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-09224",
+   "mastery_state": "partial_procedural",
+   "name": "One component antidifferentiated correctly and the other left as given",
+   "observation": "The first component is integrated and the second is copied unchanged into the position vector.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09019",
+   "sources": [
+    "ced:175"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09009",
+   "consistent_with": [
+    "BC-ERR-09027",
+    "BC-MIS-09013"
+   ],
+   "distinguish_by": "Ask for both Cartesian coordinates of the point at a stated angle.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-09225",
+   "mastery_state": "partial_conceptual",
+   "name": "Polar radius written as a Cartesian coordinate",
+   "observation": "The value of r is placed on the x line or the y line of the answer.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09029",
+   "sources": [
+    "ced:177"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09009",
+   "consistent_with": [
+    "BC-ERR-09027",
+    "BC-MIS-09013",
+    "BC-MIS-09015"
+   ],
+   "distinguish_by": "Ask for the vertical coordinate on its own.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-09226",
+   "mastery_state": "partial_procedural",
+   "name": "One conversion formula applied and the other omitted",
+   "observation": "The horizontal coordinate is converted correctly and the vertical coordinate is left as r or as the angle.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09029",
+   "sources": [
+    "ced:177"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09009",
+   "consistent_with": [
+    "BC-ERR-09029",
+    "BC-MIS-09014"
+   ],
+   "distinguish_by": "Ask what quantity r measures before the derivative is interpreted.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-09227",
+   "mastery_state": "partial_conceptual",
+   "name": "Derivative of r described as the speed along the curve",
+   "observation": "The interpretation sentence names the speed of the particle rather than the rate at which its distance from the origin changes.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09031",
+   "sources": [
+    "ced:177",
+    "sg-25:10"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09009",
+   "consistent_with": [
+    "BC-ERR-09029",
+    "BC-MIS-09014",
+    "BC-MIS-09011"
+   ],
+   "distinguish_by": "Ask which two points the distance in the sentence runs between.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-09228",
+   "mastery_state": "partial_conceptual",
+   "name": "Sentence omits what the distance is measured from",
+   "observation": "The rate is called a rate of change of distance with no mention of the origin or of the angle it is taken with respect to.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09031",
+   "sources": [
+    "ced:177",
+    "sg-25:10"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09010",
+   "consistent_with": [
+    "BC-ERR-09030",
+    "BC-MIS-09014"
+   ],
+   "distinguish_by": "Ask what the units of the requested rate are.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-09229",
+   "mastery_state": "partial_conceptual",
+   "name": "Rate in time reported as dr/dtheta alone",
+   "observation": "The chain rule product is written without the rate at which the angle changes.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09032",
+   "sources": [
+    "sg-25:10",
+    "frq-25:4"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09010",
+   "consistent_with": [
+    "BC-ERR-09030",
+    "BC-MIS-09014",
+    "BC-MIS-99005"
+   ],
+   "distinguish_by": "Ask at which time each factor is evaluated.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-09230",
+   "mastery_state": "partial_procedural",
+   "name": "Product formed with the angle rate at the wrong instant",
+   "observation": "Both factors appear and the rate of the angle is substituted at a time other than the one asked about.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09032",
+   "sources": [
+    "sg-25:10",
+    "frq-25:4"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09009",
+   "consistent_with": [
+    "BC-ERR-09031",
+    "BC-MIS-09015"
+   ],
+   "distinguish_by": "Ask for the slope of the tangent to a circle of constant radius, where dr/dtheta is zero.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-09231",
+   "mastery_state": "partial_conceptual",
+   "name": "Slope of the polar curve reported as dr/dtheta",
+   "observation": "The derivative of r is handed in where the slope of the tangent line in the plane was requested.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09033",
+   "sources": [
+    "ced:177"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09009",
+   "consistent_with": [
+    "BC-ERR-09032",
+    "BC-MIS-09015",
+    "BC-MIS-09014"
+   ],
+   "distinguish_by": "Ask the student to name the two factors in that coordinate before differentiating.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-09232",
+   "mastery_state": "partial_procedural",
+   "name": "Product rule omitted in one of the two coordinates",
+   "observation": "The Cartesian coordinates are formed correctly and one of them is differentiated as a single factor.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09033",
+   "sources": [
+    "ced:177"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09012",
+   "consistent_with": [
+    "BC-ERR-09037",
+    "BC-MIS-09019"
+   ],
+   "distinguish_by": "Ask at which angles the two curves meet.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-09233",
+   "mastery_state": "partial_conceptual",
+   "name": "Bounding angles taken from the figure rather than the intersection",
+   "observation": "The angle interval runs across the whole drawn figure instead of between the angles at which the curves meet.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09036",
+   "sources": [
+    "ced:178"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09012",
+   "consistent_with": [
+    "BC-ERR-09038",
+    "BC-MIS-09019",
+    "BC-MIS-09007"
+   ],
+   "distinguish_by": "Ask how many solutions the equation setting the radii equal has on the interval.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-09234",
+   "mastery_state": "partial_procedural",
+   "name": "One bounding angle found and the other assumed",
+   "observation": "One intersection angle is solved for and the second limit is taken from the stem without being checked.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09036",
+   "sources": [
+    "ced:178"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09012",
+   "consistent_with": [
+    "BC-ERR-09016",
+    "BC-MIS-09007"
+   ],
+   "distinguish_by": "Ask at which angles r returns to zero.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-09235",
+   "mastery_state": "partial_conceptual",
+   "name": "Angle interval covers the loop more than once",
+   "observation": "The interval runs over a full revolution although the loop closes on a shorter interval.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09037",
+   "sources": [
+    "ced:178"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09012",
+   "consistent_with": [
+    "BC-ERR-09016",
+    "BC-MIS-09007",
+    "BC-MIS-09019"
+   ],
+   "distinguish_by": "Ask for the angles at which r is zero on their own, away from the integral.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-09236",
+   "mastery_state": "prerequisite_gap",
+   "name": "Angles where r is zero not located",
+   "observation": "No solution of r equal to zero appears, so the loop is never delimited.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09037",
+   "sources": [
+    "ced:178"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09012",
+   "consistent_with": [
+    "BC-ERR-99021",
+    "BC-MIS-09008"
+   ],
+   "distinguish_by": "Ask the student to write the expression that produced the number.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-09237",
+   "mastery_state": "notation_only",
+   "name": "Area reported with no integral shown",
+   "observation": "A decimal for the polar area appears with no integral expression anywhere.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09038",
+   "sources": [
+    "sg-25:7",
+    "sg-25:8"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09012",
+   "consistent_with": [
+    "BC-ERR-99019",
+    "BC-MIS-09008",
+    "BC-MIS-09017"
+   ],
+   "distinguish_by": "Ask for the value again from the written expression.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-09238",
+   "mastery_state": "partial_procedural",
+   "name": "Value rounded before the area is reported",
+   "observation": "The integral is correct and the reported value disagrees with it in the third decimal place.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09038",
+   "sources": [
+    "sg-25:7",
+    "sg-25:8"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09013",
+   "consistent_with": [
+    "BC-ERR-09039",
+    "BC-MIS-09018"
+   ],
+   "distinguish_by": "Ask which curve is farther from the origin at an angle inside the interval.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-09239",
+   "mastery_state": "partial_procedural",
+   "name": "Outer and inner radii exchanged in the integrand",
+   "observation": "The square of the nearer curve is subtracted from the square of the farther one in the wrong order, giving a negative integrand.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09040",
+   "sources": [
+    "ced:179",
+    "sg-25:7"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09013",
+   "consistent_with": [
+    "BC-ERR-09039",
+    "BC-MIS-09018",
+    "BC-MIS-09019"
+   ],
+   "distinguish_by": "Ask for the two radii at an angle on each side of their intersection.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-09240",
+   "mastery_state": "partial_conceptual",
+   "name": "Outer curve decided once for the whole figure",
+   "observation": "One curve is treated as outer across an interval on which the two curves exchange places.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09040",
+   "sources": [
+    "ced:179",
+    "sg-25:7"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09013",
+   "consistent_with": [
+    "BC-ERR-99002",
+    "BC-MIS-09008"
+   ],
+   "distinguish_by": "Ask the student to read the chain of equalities aloud and check each link.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-09241",
+   "mastery_state": "partial_procedural",
+   "name": "Variable expression equated to the numerical area",
+   "observation": "The integral expression and its value are joined by an equals sign to a third quantity that is not equal to either.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09042",
+   "sources": [
+    "sg-25:7",
+    "sg-25:8"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09013",
+   "consistent_with": [
+    "BC-ERR-99019",
+    "BC-MIS-09008",
+    "BC-MIS-09018"
+   ],
+   "distinguish_by": "Ask for the difference again from the unrounded values.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-09242",
+   "mastery_state": "partial_procedural",
+   "name": "Value rounded before the difference of the two areas is taken",
+   "observation": "Each polar area is rounded and then subtracted, so the reported difference disagrees in the third decimal place.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09042",
+   "sources": [
+    "sg-25:7",
+    "sg-25:8"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09013",
+   "consistent_with": [
+    "BC-ERR-09041",
+    "BC-MIS-09018"
+   ],
+   "distinguish_by": "Ask which part of the region the integral just written covers.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-09243",
+   "mastery_state": "partial_conceptual",
+   "name": "Symmetry used without the compensating factor",
+   "observation": "Half of a symmetric region is integrated and the result is reported without doubling.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09043",
+   "sources": [
+    "sg-25:8"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09013",
+   "consistent_with": [
+    "BC-ERR-09041",
+    "BC-MIS-09018",
+    "BC-MIS-09019"
+   ],
+   "distinguish_by": "Ask over which angles the integral already runs before the factor is applied.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-09244",
+   "mastery_state": "partial_procedural",
+   "name": "Doubling applied to a region that was already whole",
+   "observation": "The integral runs over the full region and the result is doubled as well.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-09043",
+   "sources": [
+    "sg-25:8"
+   ]
+  }
+ ]
+}

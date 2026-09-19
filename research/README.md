@@ -67,6 +67,14 @@ Every registry record and every Markdown H2 section carries one of `[verified]` 
 
 Every BC-SKL record carries `evidence_tag: inferred` because the atomic decomposition is a research decision the CED does not itself state, and `mapping_tag` (verified or single-source) for its topic, LO, and EK mapping, which is read from the CED. Prerequisite edges and archetype variants are likewise inferred unless a rubric instance is cited.
 
+## Mastery-state vocabulary
+
+Diagnostic signals use one controlled `mastery_state` vocabulary, enforced by the schema: mastered, partial_procedural, partial_conceptual, partial_unspecified (older records that did not distinguish the two partial states), prerequisite_gap, notation_only, not_mastered, not_attempted.
+
+## Independent assessability
+
+Each BC-SKL record carries `independently_assessable` (true when an active archetype requires at most two skills including this one) and `assessability_basis` naming those archetypes. Skills flagged false are assessed only inside multi-skill question parts in the indexed material.
+
 ## Scope field
 
 Every record carries `scope`: `AB_only`, `shared` (in both AB and BC), `BC_only`, or `n/a`. Scope for topics is derived from the CED's BC-only markers.

@@ -2278,12 +2278,12 @@
    "scope": "shared",
    "evidence_tag": "verified",
    "sources": [
+    "cr-24:4",
     "frq-24:3",
-    "sg-24:2",
     "samples-24-q1:11",
-    "cr-24:4"
+    "sg-24:2"
    ],
-   "notes": "[single-source] for scoring_behaviors: the sg-24 text layer keeps every scoring point label and the model solution but drops the scoring-note prose, so the earn and not-earn rules below are read from the point labels and the model solution rather than from the notes. The sg-24 text layer preserves the model solution and every scoring point label but drops the scoring-note prose, so scoring_behaviors here are derived from the point labels and the model solution [single-source] where the note wording is missing.",
+   "notes": "Scoring-note wording on this record is read from the OCR of the sg-24 page renders at cache/text/sg-24 rather than from the extracted text layer [single-source].",
    "status": "active",
    "year": 2024,
    "question": 1,
@@ -2352,16 +2352,16 @@
     "BC-PT-99006"
    ],
    "scoring_behaviors": [
-    "Estimate with supporting work is one point: the model solution shows a difference of the two tabulated values over the difference of the two times, evaluated to a number (sg-24:2).",
-    "Units are a separate point, scored independently of the numerical estimate (sg-24:2).",
-    "The model solution draws both values from the tabulated interval that brackets the requested input rather than from an endpoint pair (sg-24:2)."
+    "The first point requires the supporting work to include both a difference and a quotient; the difference over the interval width, or the difference divided by that width, is sufficient (sg-24:2).",
+    "A response presenting only units with no numerical approximation of the derivative does not earn the second point (sg-24:2).",
+    "The second point is also earned for degrees per minute attached to a numerical value (sg-24:2)."
    ],
    "commentary_errors": [
     "BC-ERR-99005",
     "BC-ERR-99021"
    ],
-   "notation_requirements": "A difference quotient written with function values at two tabulated inputs, and compound units of degrees Celsius per minute.",
-   "justification_requirements": "None; the difference quotient itself is the required support.",
+   "notation_requirements": "A difference of two tabulated values over a difference of two times, both visible, with units of degrees Celsius per minute or degrees per minute attached to a value.",
+   "justification_requirements": "None; the difference and the quotient are the required support.",
    "difficulty_factors": [],
    "difficulty_notes": "Unevenly spaced table so the interval must be selected; units scored separately; decreasing data so the answer is negative; single concept with strict presentation.",
    "diagnostic_distinctions": [
@@ -2387,13 +2387,13 @@
    "scope": "shared",
    "evidence_tag": "verified",
    "sources": [
-    "frq-24:3",
-    "sg-24:3",
-    "samples-24-q1:11",
     "cr-24:3",
-    "cr-24:4"
+    "cr-24:4",
+    "frq-24:3",
+    "samples-24-q1:11",
+    "sg-24:3"
    ],
-   "notes": "[single-source] for scoring_behaviors: the sg-24 text layer keeps every scoring point label and the model solution but drops the scoring-note prose, so the earn and not-earn rules below are read from the point labels and the model solution rather than from the notes. The sg-24 text layer preserves the model solution and every scoring point label but drops the scoring-note prose, so scoring_behaviors here are derived from the point labels and the model solution [single-source] where the note wording is missing.",
+   "notes": "Scoring-note wording on this record is read from the OCR of the sg-24 page renders at cache/text/sg-24 rather than from the extracted text layer [single-source].",
    "status": "active",
    "year": 2024,
    "question": 1,
@@ -2461,16 +2461,16 @@
     "BC-PT-99007"
    ],
    "scoring_behaviors": [
-    "Form of the left Riemann sum is one point and the estimate is a second point; the model solution shows three products of a left tabulated value and its subinterval width (sg-24:3).",
-    "The surviving note fragment records that a sum written with function names earns the form point, and that values must be pulled from the table for the estimate point (sg-24:3).",
-    "Interpretation of the integral divided by the interval length is a third point, scored as the average temperature over the stated time interval (sg-24:3)."
+    "Equality is read as approximation for the first point, which requires at least five of the six factors in the sum to be correct; any incorrect factor forfeits the second point (sg-24:3).",
+    "A sum written with function names earns the first point, and values must be pulled from the table to earn the second; a completely correct right Riemann sum earns one of the first two points, and an unsupported value earns neither (sg-24:3).",
+    "The third point requires the interpretation to include both the phrase average temperature and the time interval; units may be omitted, but incorrect units in the interpretation forfeit the point (sg-24:3)."
    ],
    "commentary_errors": [
     "BC-ERR-99027",
     "BC-ERR-99028"
    ],
-   "notation_requirements": "Three products of a tabulated value and a subinterval width, and an interpretation naming degrees Celsius and the time interval.",
-   "justification_requirements": "None; the interpretation must name the quantity, its units, and the interval.",
+   "notation_requirements": "Three products of a left tabulated value and a subinterval width, and an interpretation naming the average temperature and the time interval, with units optional but never wrong.",
+   "justification_requirements": "None; the interpretation must name the averaged quantity and the interval.",
    "difficulty_factors": [],
    "difficulty_notes": "Two concepts combined, a Riemann sum and an average value interpretation; nonuniform widths; average value confused with total accumulation; interpretation carries its own point.",
    "diagnostic_distinctions": [
@@ -2496,10 +2496,10 @@
    "evidence_tag": "verified",
    "sources": [
     "frq-24:3",
-    "sg-24:3",
-    "samples-24-q1:11"
+    "samples-24-q1:11",
+    "sg-24:3"
    ],
-   "notes": "[single-source] for scoring_behaviors: the sg-24 text layer keeps every scoring point label and the model solution but drops the scoring-note prose, so the earn and not-earn rules below are read from the point labels and the model solution rather than from the notes. The sg-24 text layer preserves the model solution and every scoring point label but drops the scoring-note prose, so scoring_behaviors here are derived from the point labels and the model solution [single-source] where the note wording is missing.",
+   "notes": "Scoring-note wording on this record is read from the OCR of the sg-24 page renders at cache/text/sg-24 rather than from the extracted text layer [single-source].",
    "status": "active",
    "year": 2024,
    "question": 1,
@@ -2567,12 +2567,12 @@
     "BC-PT-99004"
    ],
    "scoring_behaviors": [
-    "Integral is one point, use of the initial condition a second, and the value a third (sg-24:3).",
-    "The model solution writes the later value as the tabulated value at the left endpoint plus the definite integral of the modelled rate over the interval (sg-24:3).",
-    "The surviving note fragments list several accepted arrangements of the initial value and the integral, including forms with the initial value moved across the equation (sg-24:4)."
+    "The first point is earned for a definite integral whose integrand is the modelled rate; incorrect limits forfeit the third point (sg-24:4).",
+    "The second point is earned for adding the tabulated initial value, symbolically or numerically, to a definite integral whose lower limit is the left endpoint (sg-24:4).",
+    "A linkage error that equates the integral alone to the final value earns the first two points but not the third, and ambiguous forms with a missing differential forfeit the first point while staying eligible for the third with a correct numeric answer (sg-24:4)."
    ],
    "commentary_errors": [],
-   "notation_requirements": "An accumulation expression with the initial value added to a definite integral carrying numerical limits and the differential.",
+   "notation_requirements": "An initial value added to a definite integral of the modelled rate with correct limits and the differential; the linking equalities must be mathematically true.",
    "justification_requirements": "None beyond showing the setup.",
    "difficulty_factors": [],
    "difficulty_notes": "Initial value must be read from the table of the earlier part; the modelled rate has no elementary antiderivative so the calculator is required; three separate scoring roles inside one computation.",
@@ -2598,12 +2598,12 @@
    "scope": "shared",
    "evidence_tag": "verified",
    "sources": [
+    "cr-24:4",
     "frq-24:3",
-    "sg-24:4",
     "samples-24-q1:11",
-    "cr-24:4"
+    "sg-24:4"
    ],
-   "notes": "[single-source] for scoring_behaviors: the sg-24 text layer keeps every scoring point label and the model solution but drops the scoring-note prose, so the earn and not-earn rules below are read from the point labels and the model solution rather than from the notes. The sg-24 text layer preserves the model solution and every scoring point label but drops the scoring-note prose, so scoring_behaviors here are derived from the point labels and the model solution [single-source] where the note wording is missing.",
+   "notes": "Scoring-note wording on this record is read from the OCR of the sg-24 page renders at cache/text/sg-24 rather than from the extracted text layer [single-source].",
    "status": "active",
    "year": 2024,
    "question": 1,
@@ -2665,16 +2665,16 @@
     "BC-PT-99010"
    ],
    "scoring_behaviors": [
-    "Answer with reason is a single point (sg-24:4).",
-    "The model solution argues that the second derivative is positive on the stated interval, so the rate of change of the temperature is increasing there (sg-24:4).",
-    "The model solution restates the conclusion in the language of the context, that the temperature is changing at an increasing rate (sg-24:4)."
+    "The single point is earned only for a correct answer with a correct reason that references the sign of the second derivative of the modelled temperature (sg-24:4).",
+    "A reason based on evaluating the second derivative at a single point does not earn the point (sg-24:4).",
+    "A response using an ambiguous pronoun, such as it is positive so increasing, does not earn the point, and the interval itself need not be restated (sg-24:4)."
    ],
    "commentary_errors": [
     "BC-ERR-99027",
     "BC-ERR-99030"
    ],
-   "notation_requirements": "Second derivative named explicitly, with a sign statement over the whole interval rather than at a point.",
-   "justification_requirements": "The sign of the supplied second derivative must be established on the stated interval and connected to the monotonicity of the first derivative.",
+   "notation_requirements": "The second derivative named explicitly as the subject of the sign statement, with no pronoun standing in for it.",
+   "justification_requirements": "The sign of the supplied second derivative must be asserted across the interval, not at a point, and the subject of the claim must be named.",
    "difficulty_factors": [],
    "difficulty_notes": "A rate of a rate judgement; the supplied expression must be sign-analysed rather than differentiated; the conclusion is about the derivative, not the function; one point for both analysis and conclusion.",
    "diagnostic_distinctions": [
@@ -2698,13 +2698,13 @@
    "scope": "BC_only",
    "evidence_tag": "verified",
    "sources": [
-    "frq-24:4",
-    "sg-24:5",
-    "samples-24-q2:12",
     "cr-24:26",
-    "cr-24:27"
+    "cr-24:27",
+    "frq-24:4",
+    "samples-24-q2:12",
+    "sg-24:5"
    ],
-   "notes": "[single-source] for scoring_behaviors: the sg-24 text layer keeps every scoring point label and the model solution but drops the scoring-note prose, so the earn and not-earn rules below are read from the point labels and the model solution rather than from the notes. The sg-24 text layer preserves the model solution and every scoring point label but drops the scoring-note prose, so scoring_behaviors here are derived from the point labels and the model solution [single-source] where the note wording is missing.",
+   "notes": "Scoring-note wording on this record is read from the OCR of the sg-24 page renders at cache/text/sg-24 rather than from the extracted text layer [single-source].",
    "status": "active",
    "year": 2024,
    "question": 2,
@@ -2765,16 +2765,16 @@
     "BC-PT-99004"
    ],
    "scoring_behaviors": [
-    "Setup for speed is one point and the value is a second (sg-24:5).",
-    "The model solution presents the square root of the sum of the two squared coordinate derivatives evaluated at the stated time (sg-24:5).",
-    "The surviving note fragments show that both the evaluated form and the general symbolic form are accepted for the setup point (sg-24:5)."
+    "The first point is earned for the square root of the sum of the squared coordinate derivatives, written either evaluated at the stated time or in general form (sg-24:5).",
+    "A response presenting only the exact substituted expression earns both points, and the second point is earned for the correct decimal value whether or not the first point was earned (sg-24:5).",
+    "A linkage error that equates a general expression to a substituted expression, or a mistyped component, earns at most one of the two points; units do not affect scoring here (sg-24:5)."
    ],
    "commentary_errors": [
     "BC-ERR-99002",
     "BC-ERR-99019",
     "BC-ERR-99029"
    ],
-   "notation_requirements": "Square root of the sum of squared coordinate derivatives, with centimetres per second attached to the reported value.",
+   "notation_requirements": "Square root of the sum of squared coordinate derivatives, with each equality in the chain mathematically true; units are not scored.",
    "justification_requirements": "None beyond showing the setup.",
    "difficulty_factors": [],
    "difficulty_notes": "Magnitude assembled from two supplied derivatives; calculator evaluation with a required written setup; single concept.",
@@ -2799,14 +2799,14 @@
    "scope": "BC_only",
    "evidence_tag": "verified",
    "sources": [
-    "frq-24:4",
-    "sg-24:6",
-    "samples-24-q2:12",
     "cr-24:27",
     "cr-24:7",
-    "cr-24:8"
+    "cr-24:8",
+    "frq-24:4",
+    "samples-24-q2:12",
+    "sg-24:6"
    ],
-   "notes": "[single-source] for scoring_behaviors: the sg-24 text layer keeps every scoring point label and the model solution but drops the scoring-note prose, so the earn and not-earn rules below are read from the point labels and the model solution rather than from the notes. The sg-24 text layer preserves the model solution and every scoring point label but drops the scoring-note prose, so scoring_behaviors here are derived from the point labels and the model solution [single-source] where the note wording is missing.",
+   "notes": "Scoring-note wording on this record is read from the OCR of the sg-24 page renders at cache/text/sg-24 rather than from the extracted text layer [single-source].",
    "status": "active",
    "year": 2024,
    "question": 2,
@@ -2873,9 +2873,9 @@
     "BC-PT-99004"
    ],
    "scoring_behaviors": [
-    "Integral is one point and the value is a second (sg-24:6).",
-    "The model solution presents a definite integral of the speed over the stated interval (sg-24:6).",
-    "A surviving note fragment shows the same integral written without the differential as an accepted form (sg-24:6)."
+    "The first point is earned only for a definite integral of the speed over the stated interval, with or without the differential (sg-24:6).",
+    "Omitting the inner parentheses on the squared derivatives is not read as a parenthesis error (sg-24:6).",
+    "The second point is earned only for the correct decimal value, whether or not the first point was earned, and units do not affect scoring (sg-24:6)."
    ],
    "commentary_errors": [
     "BC-ERR-99001",
@@ -2884,7 +2884,7 @@
     "BC-ERR-99006",
     "BC-ERR-99029"
    ],
-   "notation_requirements": "Definite integral of the speed with numerical limits, reported in centimetres.",
+   "notation_requirements": "Definite integral of the speed with numerical limits; the squared components may be written without inner parentheses.",
    "justification_requirements": "None beyond showing the setup.",
    "difficulty_factors": [],
    "difficulty_notes": "Arc length integrand reused from the speed work; one coordinate derivative involves a fractional power; calculator evaluation.",
@@ -2909,12 +2909,12 @@
    "scope": "BC_only",
    "evidence_tag": "verified",
    "sources": [
+    "cr-24:27",
     "frq-24:4",
-    "sg-24:6",
     "samples-24-q2:12",
-    "cr-24:27"
+    "sg-24:6"
    ],
-   "notes": "[single-source] for scoring_behaviors: the sg-24 text layer keeps every scoring point label and the model solution but drops the scoring-note prose, so the earn and not-earn rules below are read from the point labels and the model solution rather than from the notes. The sg-24 text layer preserves the model solution and every scoring point label but drops the scoring-note prose, so scoring_behaviors here are derived from the point labels and the model solution [single-source] where the note wording is missing.",
+   "notes": "Scoring-note wording on this record is read from the OCR of the sg-24 page renders at cache/text/sg-24 rather than from the extracted text layer [single-source].",
    "status": "active",
    "year": 2024,
    "question": 2,
@@ -2983,14 +2983,15 @@
     "BC-PT-99004"
    ],
    "scoring_behaviors": [
-    "Definite integral is one point, use of the initial condition a second, and the value a third (sg-24:6).",
-    "The model solution accumulates backwards, adding to the known coordinate a definite integral whose limits run from the known time down to the earlier time (sg-24:6).",
-    "The surviving note fragments enumerate many accepted arrangements of the known coordinate and the integral, including forms with reversed limits and forms with the known value moved across the equation (sg-24:6, sg-24:7)."
+    "An answer with no supporting work earns no points; the first point is earned for a definite integral of the coordinate derivative with either limit order (sg-24:6).",
+    "The second point is earned for any of six listed arrangements that combine the known coordinate, or its numerical value, with the definite integral or its value (sg-24:6).",
+    "Reversing the limits without a compensating sign earns the second point but forfeits the third, and the third point requires at least one of the first two; any linkage error caps the part at two of three points (sg-24:6, sg-24:7).",
+    "A response that reports only a completely correct horizontal coordinate does not earn the points for the requested coordinate (sg-24:7)."
    ],
    "commentary_errors": [
     "BC-ERR-99006"
    ],
-   "notation_requirements": "A definite integral of the coordinate derivative with limits in the order the accumulation runs, added to the known coordinate value.",
+   "notation_requirements": "A definite integral of the coordinate derivative with the limit order matching the sign used, combined with the known coordinate value, and every equality in the chain mathematically true.",
    "justification_requirements": "None beyond showing the setup.",
    "difficulty_factors": [],
    "difficulty_notes": "Accumulation runs backwards in time so the limit order and sign must be handled; multi-step dependency on the given position; calculator integration; three scoring roles in one computation.",
@@ -3016,15 +3017,15 @@
    "scope": "BC_only",
    "evidence_tag": "verified",
    "sources": [
-    "frq-24:4",
-    "sg-24:8",
-    "samples-24-q2:12",
     "cr-24:26",
     "cr-24:27",
     "cr-24:28",
-    "cr-24:8"
+    "cr-24:8",
+    "frq-24:4",
+    "samples-24-q2:12",
+    "sg-24:8"
    ],
-   "notes": "[single-source] for scoring_behaviors: the sg-24 text layer keeps every scoring point label and the model solution but drops the scoring-note prose, so the earn and not-earn rules below are read from the point labels and the model solution rather than from the notes. The sg-24 text layer preserves the model solution and every scoring point label but drops the scoring-note prose, so scoring_behaviors here are derived from the point labels and the model solution [single-source] where the note wording is missing.",
+   "notes": "Scoring-note wording on this record is read from the OCR of the sg-24 page renders at cache/text/sg-24 rather than from the extracted text layer [single-source].",
    "status": "active",
    "year": 2024,
    "question": 2,
@@ -3091,9 +3092,9 @@
     "BC-PT-99010"
    ],
    "scoring_behaviors": [
-    "Considering the sign of the relevant coordinate derivative is one point, and the answer with reason is a second (sg-24:8).",
-    "The model solution notes that the coordinate is positive on the interval, so motion toward the axis occurs exactly where that coordinate derivative is negative (sg-24:8).",
-    "The surviving note fragments show that the reported interval may be open, closed, or half open (sg-24:8)."
+    "The first point can be earned by stating the coordinate derivative equal to zero, less than zero, or greater than zero, or by presenting the decimal time at which it vanishes; Leibniz notation is accepted (sg-24:8).",
+    "The second point cannot be earned without the first (sg-24:8).",
+    "The second point requires the correct interval and no additional intervals inside the given range, together with an explicit statement that the coordinate derivative must be negative; the interval may be open, closed, or half open (sg-24:8)."
    ],
    "commentary_errors": [
     "BC-ERR-99010",
@@ -3101,8 +3102,8 @@
     "BC-ERR-99029",
     "BC-ERR-99030"
    ],
-   "notation_requirements": "Sign statement on one coordinate derivative, with an interval of times as the answer.",
-   "justification_requirements": "The direction of motion must be tied to the sign of the derivative of the coordinate measured from that axis, using the quadrant information supplied.",
+   "notation_requirements": "An interval of times together with an explicit statement that the coordinate derivative is negative there; prime or Leibniz notation both accepted.",
+   "justification_requirements": "The direction of motion must be tied explicitly to the coordinate derivative being negative, and no extra intervals may be claimed.",
    "difficulty_factors": [],
    "difficulty_notes": "Direction of motion relative to an axis rather than along a line; the quadrant fact in the stem must be combined with a sign analysis; calculator root finding; two concepts combined.",
    "diagnostic_distinctions": [
@@ -3127,12 +3128,12 @@
    "scope": "shared",
    "evidence_tag": "verified",
    "sources": [
+    "cr-24:11",
     "frq-24:7",
-    "sg-24:9",
     "samples-24-q3:11",
-    "cr-24:11"
+    "sg-24:9"
    ],
-   "notes": "[single-source] for scoring_behaviors: the sg-24 text layer keeps every scoring point label and the model solution but drops the scoring-note prose, so the earn and not-earn rules below are read from the point labels and the model solution rather than from the notes. The sg-24 text layer preserves the model solution and every scoring point label but drops the scoring-note prose, so scoring_behaviors here are derived from the point labels and the model solution [single-source] where the note wording is missing.",
+   "notes": "Scoring-note wording on this record is read from the OCR of the sg-24 page renders at cache/text/sg-24 rather than from the extracted text layer [single-source].",
    "status": "active",
    "year": 2024,
    "question": 3,
@@ -3188,14 +3189,14 @@
     "BC-PT-99065"
    ],
    "scoring_behaviors": [
-    "Solution curve is a single point (sg-24:9).",
-    "The surviving note fragment records the initial point and the right edge of the printed window as the features the curve must respect (sg-24:9).",
-    "The model solution draws one curve through the given point that follows the printed segments across the window (sg-24:9)."
+    "The single point requires a curve through the stated initial point that extends at least to a named later time and conflicts with none of the drawn slope lines (sg-24:9).",
+    "Only the portions of the curve inside the printed slope field are considered (sg-24:9).",
+    "No other feature of the sketch is scored (sg-24:9)."
    ],
    "commentary_errors": [
     "BC-ERR-99024"
    ],
-   "notation_requirements": "Graphical only.",
+   "notation_requirements": "Graphical only; the curve must reach the stated horizontal extent.",
    "justification_requirements": "None.",
    "difficulty_factors": [],
    "difficulty_notes": "Single concept, graphical production; the field varies with both variables so the curve changes slope repeatedly; no calculator.",
@@ -3219,13 +3220,13 @@
    "scope": "shared",
    "evidence_tag": "verified",
    "sources": [
-    "frq-24:7",
-    "sg-24:10",
-    "samples-24-q3:11",
     "cr-24:10",
-    "cr-24:11"
+    "cr-24:11",
+    "frq-24:7",
+    "samples-24-q3:11",
+    "sg-24:10"
    ],
-   "notes": "[single-source] for scoring_behaviors: the sg-24 text layer keeps every scoring point label and the model solution but drops the scoring-note prose, so the earn and not-earn rules below are read from the point labels and the model solution rather than from the notes. The sg-24 text layer preserves the model solution and every scoring point label but drops the scoring-note prose, so scoring_behaviors here are derived from the point labels and the model solution [single-source] where the note wording is missing.",
+   "notes": "Scoring-note wording on this record is read from the OCR of the sg-24 page renders at cache/text/sg-24 rather than from the extracted text layer [single-source].",
    "status": "active",
    "year": 2024,
    "question": 3,
@@ -3293,16 +3294,17 @@
     "BC-PT-99012"
    ],
    "scoring_behaviors": [
-    "Considering the sign of the derivative is one point, identifying the critical time a second, and the answer with justification a third (sg-24:10).",
-    "The model solution uses the supplied bound on the depth to reduce the derivative to a single trigonometric factor whose zero gives the critical time (sg-24:10).",
-    "The surviving note fragments show an alternate route through the second derivative evaluated at the critical time, with the same conclusion (sg-24:10)."
+    "The first point is earned by any of several sign or equality statements about the derivative or about the trigonometric factor it reduces to (sg-24:10).",
+    "The second point is earned for identifying the critical time with or without supporting work, and considering the equilibrium level or another spurious candidate carries no penalty (sg-24:10).",
+    "The third point cannot be earned without the first and is earned only for a correct justification with the relative maximum conclusion; a sign check at one value on each side suffices and the response need not argue that the sign is constant there (sg-24:10).",
+    "The third point may also be earned through the Second Derivative Test evaluated at the critical time (sg-24:10)."
    ],
    "commentary_errors": [
     "BC-ERR-99001",
     "BC-ERR-99019"
    ],
-   "notation_requirements": "Derivative set equal to zero, the critical time stated exactly, and a sign chart or an evaluated second derivative.",
-   "justification_requirements": "A first derivative sign change on both sides of the critical time, or a second derivative evaluation there, must be presented.",
+   "notation_requirements": "The derivative set equal to zero, the critical time stated exactly, and either one sample sign on each side or an evaluated second derivative.",
+   "justification_requirements": "A first derivative sign check on each side of the critical time, or a second derivative evaluation there, with the relative maximum conclusion stated.",
    "difficulty_factors": [],
    "difficulty_notes": "The supplied bound removes one factor before the equation can be solved; classification demanded in the same part; two derivative tests available; exact trigonometric solution required with no calculator.",
    "diagnostic_distinctions": [
@@ -3328,12 +3330,12 @@
    "scope": "shared",
    "evidence_tag": "verified",
    "sources": [
+    "cr-24:11",
     "frq-24:7",
-    "sg-24:11",
     "samples-24-q3:11",
-    "cr-24:11"
+    "sg-24:11"
    ],
-   "notes": "[single-source] for scoring_behaviors: the sg-24 text layer keeps every scoring point label and the model solution but drops the scoring-note prose, so the earn and not-earn rules below are read from the point labels and the model solution rather than from the notes. The sg-24 text layer preserves the model solution and every scoring point label but drops the scoring-note prose, so scoring_behaviors here are derived from the point labels and the model solution [single-source] where the note wording is missing.",
+   "notes": "Scoring-note wording on this record is read from the OCR of the sg-24 page renders at cache/text/sg-24 rather than from the extracted text layer [single-source].",
    "status": "active",
    "year": 2024,
    "question": 3,
@@ -3405,15 +3407,16 @@
     "BC-PT-99032"
    ],
    "scoring_behaviors": [
-    "The five labels are separation of variables, one antiderivative, a second antiderivative, the constant of integration used with the initial condition, and solving for the dependent variable (sg-24:11).",
-    "The independent side needs a substitution, so the two antiderivatives are scored separately rather than as a single step (sg-24:11).",
-    "The model solution resolves the absolute value using the stated bound on the depth before exponentiating (sg-24:11)."
+    "A response with no separation of variables earns none of the five points (sg-24:11).",
+    "An antiderivative written without absolute value symbols still earns its antiderivative point, and a response with no constant of integration can earn at most the first three points (sg-24:11).",
+    "The fourth point requires the separation point and at least one antiderivative point, and is earned by placing the constant in an equation and substituting the initial pair; the fifth point requires all four earlier points (sg-24:11).",
+    "The response need not argue that the absolute value equals the shifted quantity to earn the fifth point, and a special case with the shifted quantity separated incorrectly forfeits the first and fifth points while staying eligible for the antiderivative and constant points (sg-24:11)."
    ],
    "commentary_errors": [
     "BC-ERR-99014"
    ],
-   "notation_requirements": "Separated differentials, a logarithm on one side and a sine antiderivative with an inner constant on the other, one constant of integration, and an exponential form solved for the depth.",
-   "justification_requirements": "The absolute value branch must be selected consistently with the stated bound on the depth.",
+   "notation_requirements": "Separated differentials, a logarithm of the shifted depth with or without absolute value bars, a sine antiderivative carrying its inner constant, one constant of integration, and an exponential form solved for the depth.",
+   "justification_requirements": "None is required; the rubric explicitly waives any argument resolving the absolute value.",
    "difficulty_factors": [],
    "difficulty_notes": "Five-point chain; a substitution on the independent side; logarithm and exponential algebra; absolute value branch selection; deepest prerequisite chain of the year; no calculator.",
    "diagnostic_distinctions": [
@@ -3437,12 +3440,12 @@
    "scope": "shared",
    "evidence_tag": "verified",
    "sources": [
+    "cr-24:14",
     "frq-24:8",
-    "sg-24:12",
     "samples-24-q4:11",
-    "cr-24:14"
+    "sg-24:12"
    ],
-   "notes": "[single-source] for scoring_behaviors: the sg-24 text layer keeps every scoring point label and the model solution but drops the scoring-note prose, so the earn and not-earn rules below are read from the point labels and the model solution rather than from the notes. The sg-24 text layer preserves the model solution and every scoring point label but drops the scoring-note prose, so scoring_behaviors here are derived from the point labels and the model solution [single-source] where the note wording is missing.",
+   "notes": "Scoring-note wording on this record is read from the OCR of the sg-24 page renders at cache/text/sg-24 rather than from the extracted text layer [single-source].",
    "status": "active",
    "year": 2024,
    "question": 4,
@@ -3510,14 +3513,14 @@
     "BC-PT-99069"
    ],
    "scoring_behaviors": [
-    "Each of the three requested values carries its own point (sg-24:12).",
-    "The model solution uses the reversal of limits property for the input left of the lower limit and the supplied region area for its magnitude (sg-24:12).",
-    "A surviving note fragment records a special case for a response that explicitly redefines the accumulation function with a different lower limit, which forfeits the first point but stays eligible for the rest (sg-24:13)."
+    "Supporting work is not required for any of the three values, but any work shown must be correct to earn the matching point (sg-24:13).",
+    "A response that explicitly redefines the accumulation function with a different lower limit forfeits the first point it would otherwise have earned and stays eligible for the rest with correct or consistent answers (sg-24:13).",
+    "Labelled values may be presented in any order; unlabelled values are read left to right and top to bottom, and a response giving only one or two values must label them to earn anything (sg-24:13)."
    ],
    "commentary_errors": [
     "BC-ERR-99012"
    ],
-   "notation_requirements": "Definite integral notation with limits in the order given, a sign carried from the reversal of limits, and areas computed from the printed geometry.",
+   "notation_requirements": "Three values, labelled or presented in the requested order, with any displayed area or sign work correct.",
    "justification_requirements": "None; the values themselves are scored.",
    "difficulty_factors": [],
    "difficulty_notes": "Three independent evaluations in one part; one input lies left of the lower limit so the sign must be reversed; a supplied area must be combined with triangular regions; no calculator.",
@@ -3542,12 +3545,12 @@
    "scope": "shared",
    "evidence_tag": "verified",
    "sources": [
+    "cr-24:15",
     "frq-24:8",
-    "sg-24:13",
     "samples-24-q4:11",
-    "cr-24:15"
+    "sg-24:13"
    ],
-   "notes": "[single-source] for scoring_behaviors: the sg-24 text layer keeps every scoring point label and the model solution but drops the scoring-note prose, so the earn and not-earn rules below are read from the point labels and the model solution rather than from the notes. The sg-24 text layer preserves the model solution and every scoring point label but drops the scoring-note prose, so scoring_behaviors here are derived from the point labels and the model solution [single-source] where the note wording is missing.",
+   "notes": "Scoring-note wording on this record is read from the OCR of the sg-24 page renders at cache/text/sg-24 rather than from the extracted text layer [single-source].",
    "status": "active",
    "year": 2024,
    "question": 4,
@@ -3611,15 +3614,15 @@
     "BC-PT-99013"
    ],
    "scoring_behaviors": [
-    "Use of the Fundamental Theorem of Calculus to identify the derivative of the accumulation function is one point, and the answer with reason is a second (sg-24:13).",
-    "The model solution states that the derivative of the accumulation function is the plotted function and sets it equal to zero on the subinterval (sg-24:13).",
-    "The surviving note fragments show that the reason must connect the plotted function to the derivative of the accumulation function rather than describing the plotted function alone (sg-24:13)."
+    "The first point is earned only for explicitly making the connection between the derivative of the accumulation function and the plotted function in this part; writing the second derivative relation instead earns the first point but limits the second to reasoning from the plotted derivative being zero (sg-24:13).",
+    "A response that does not earn the first point may still earn the second through an implied application of the Fundamental Theorem, such as citing that the accumulation derivative vanishes at the input (sg-24:13).",
+    "Reporting any additional critical input inside the stated subinterval forfeits the second point, while a critical input outside that subinterval does not affect scoring (sg-24:13)."
    ],
    "commentary_errors": [
     "BC-ERR-99001"
    ],
-   "notation_requirements": "Derivative of the accumulation function written as the plotted function, with the referent named rather than implied.",
-   "justification_requirements": "The reason must identify the plotted function as the derivative of the accumulation function and cite where it is zero.",
+   "notation_requirements": "An explicit equation identifying the derivative of the accumulation function with the plotted function, then that function set equal to zero.",
+   "justification_requirements": "The reason must rest on the plotted function being zero, identified as the derivative of the accumulation function, with no extra critical inputs claimed inside the subinterval.",
    "difficulty_factors": [],
    "difficulty_notes": "The derivative is available only through the Fundamental Theorem; the reason has a strict referent rule; the linear stretch of the graph makes one zero easy to miss; no calculator.",
    "diagnostic_distinctions": [
@@ -3643,13 +3646,13 @@
    "scope": "shared",
    "evidence_tag": "verified",
    "sources": [
-    "frq-24:8",
-    "sg-24:14",
-    "samples-24-q4:11",
     "cr-24:14",
-    "cr-24:15"
+    "cr-24:15",
+    "frq-24:8",
+    "samples-24-q4:11",
+    "sg-24:14"
    ],
-   "notes": "[single-source] for scoring_behaviors: the sg-24 text layer keeps every scoring point label and the model solution but drops the scoring-note prose, so the earn and not-earn rules below are read from the point labels and the model solution rather than from the notes. The sg-24 text layer preserves the model solution and every scoring point label but drops the scoring-note prose, so scoring_behaviors here are derived from the point labels and the model solution [single-source] where the note wording is missing.",
+   "notes": "Scoring-note wording on this record is read from the OCR of the sg-24 page renders at cache/text/sg-24 rather than from the extracted text layer [single-source].",
    "status": "active",
    "year": 2024,
    "question": 4,
@@ -3717,16 +3720,17 @@
     "BC-PT-99004"
    ],
    "scoring_behaviors": [
-    "Use of the Fundamental Theorem is one point, and each of the three requested values carries its own point (sg-24:14).",
-    "The model solution evaluates the integral of the derivative as a difference of function values read from the graph, then differentiates the accumulation function twice (sg-24:14).",
-    "The surviving note fragments show the accepted intermediate forms for the first and second derivatives written in terms of the plotted function and its derivative (sg-24:14)."
+    "Unlabelled values are read left to right and top to bottom, and a response presenting only one or two values must label them to earn any points (sg-24:14).",
+    "The bare value alone earns neither of the first two points; the difference of the two function values earns the first point only, and that difference written numerically is the minimum work for both (sg-24:14).",
+    "The third point requires stating the derivative relation, in general or at the input, together with the correct value; the fourth point is earned for the zero second derivative with or without supporting work (sg-24:14).",
+    "A linkage error forfeits the point it would otherwise have earned, but leaves later points available even when a second linkage error is present (sg-24:14)."
    ],
    "commentary_errors": [
     "BC-ERR-99002",
     "BC-ERR-99012"
    ],
-   "notation_requirements": "Integral of a derivative evaluated as a difference of function values, and first and second derivative notation on the new accumulation function.",
-   "justification_requirements": "None; the work leading to each value is the required support.",
+   "notation_requirements": "An integral of a derivative evaluated as a difference of function values, and explicit derivative relations for the first and second derivatives, with each value labelled.",
+   "justification_requirements": "None; the work leading to each value is the required support, and every equality in the chain must be mathematically true.",
    "difficulty_factors": [],
    "difficulty_notes": "Integrand is itself a derivative, so two applications of the Fundamental Theorem are stacked; the second derivative requires the slope of the plotted graph on its linear stretch; four points in one part; no calculator.",
    "diagnostic_distinctions": [
@@ -3751,13 +3755,13 @@
    "scope": "BC_only",
    "evidence_tag": "verified",
    "sources": [
-    "frq-24:9",
-    "sg-24:15",
-    "samples-24-q5:12",
     "cr-24:19",
-    "cr-24:31"
+    "cr-24:31",
+    "frq-24:9",
+    "samples-24-q5:12",
+    "sg-24:15"
    ],
-   "notes": "[single-source] for scoring_behaviors: the sg-24 text layer keeps every scoring point label and the model solution but drops the scoring-note prose, so the earn and not-earn rules below are read from the point labels and the model solution rather than from the notes. The sg-24 text layer preserves the model solution and every scoring point label but drops the scoring-note prose, so scoring_behaviors here are derived from the point labels and the model solution [single-source] where the note wording is missing.",
+   "notes": "Scoring-note wording on this record is read from the OCR of the sg-24 page renders at cache/text/sg-24 rather than from the extracted text layer [single-source].",
    "status": "active",
    "year": 2024,
    "question": 5,
@@ -3817,15 +3821,15 @@
     "BC-PT-99004"
    ],
    "scoring_behaviors": [
-    "Use of the Fundamental Theorem is one point and the value is a second (sg-24:15).",
-    "The model solution replaces the accumulation derivative by the integrand evaluated at the input, then substitutes the tabulated derivative value (sg-24:15).",
-    "The surviving note fragments show accepted intermediate forms including the differentiation operator applied to the integral (sg-24:15)."
+    "The first point is earned for the integrand rewritten with the input substituted for the dummy variable (sg-24:15).",
+    "A response of the substituted numerical radical alone earns both points (sg-24:15).",
+    "A response that equates a variable expression to a numerical value earns at most one of the two points, as does one that equates the accumulation derivative to the derivative of a constant (sg-24:15)."
    ],
    "commentary_errors": [
     "BC-ERR-99002",
     "BC-ERR-99022"
    ],
-   "notation_requirements": "Derivative of an accumulation function written as the integrand at the upper limit, with the dummy variable replaced.",
+   "notation_requirements": "The derivative of the accumulation function written as the integrand at the upper limit, with every equality mathematically true.",
    "justification_requirements": "None; the substitution chain is the required work.",
    "difficulty_factors": [],
    "difficulty_notes": "Integrand contains an unknown function supplied only by a table; the Fundamental Theorem must be applied before any arithmetic; no calculator.",
@@ -3850,12 +3854,12 @@
    "scope": "BC_only",
    "evidence_tag": "verified",
    "sources": [
+    "cr-24:32",
     "frq-24:9",
-    "sg-24:16",
     "samples-24-q5:12",
-    "cr-24:32"
+    "sg-24:16"
    ],
-   "notes": "[single-source] for scoring_behaviors: the sg-24 text layer keeps every scoring point label and the model solution but drops the scoring-note prose, so the earn and not-earn rules below are read from the point labels and the model solution rather than from the notes. The sg-24 text layer preserves the model solution and every scoring point label but drops the scoring-note prose, so scoring_behaviors here are derived from the point labels and the model solution [single-source] where the note wording is missing.",
+   "notes": "Scoring-note wording on this record is read from the OCR of the sg-24 page renders at cache/text/sg-24 rather than from the extracted text layer [single-source].",
    "status": "active",
    "year": 2024,
    "question": 5,
@@ -3907,15 +3911,15 @@
     "BC-PT-99009"
    ],
    "scoring_behaviors": [
-    "Naming the quantity as the arc length of the graph is one point and naming the interval is a second (sg-24:16).",
-    "The model solution states that the integral is the arc length of the graph of the function on the stated closed interval (sg-24:16).",
-    "The surviving note fragments show that the interval must accompany the arc length claim to earn the second point (sg-24:16)."
+    "The word arc length, or length alone, earns the first point without needing to name the function; naming a different function forfeits the first point but leaves the second available (sg-24:16).",
+    "Distance explicitly connected to the graph or to the function, such as distance along the curve, earns the first point, while distance or distance travelled with no such connection does not, though either stays eligible for the second point (sg-24:16).",
+    "The second point requires connecting the stated closed interval to the arc length, length, or distance (sg-24:16)."
    ],
    "commentary_errors": [
     "BC-ERR-99027"
    ],
-   "notation_requirements": "A verbal statement naming arc length, the function whose graph is measured, and the closed interval.",
-   "justification_requirements": "None; the interpretation itself is scored.",
+   "notation_requirements": "A verbal statement naming arc length or length, connected to the graph of the function, together with the closed interval.",
+   "justification_requirements": "None; the interpretation itself is scored, and a bare mention of distance must be tied to the graph.",
    "difficulty_factors": [],
    "difficulty_notes": "Pure recognition of a standard integrand; the interval is scored separately; the wording must name the graph rather than the region.",
    "diagnostic_distinctions": [
@@ -3938,12 +3942,12 @@
    "scope": "BC_only",
    "evidence_tag": "verified",
    "sources": [
+    "cr-24:32",
     "frq-24:9",
-    "sg-24:17",
     "samples-24-q5:12",
-    "cr-24:32"
+    "sg-24:17"
    ],
-   "notes": "[single-source] for scoring_behaviors: the sg-24 text layer keeps every scoring point label and the model solution but drops the scoring-note prose, so the earn and not-earn rules below are read from the point labels and the model solution rather than from the notes. The sg-24 text layer preserves the model solution and every scoring point label but drops the scoring-note prose, so scoring_behaviors here are derived from the point labels and the model solution [single-source] where the note wording is missing.",
+   "notes": "Scoring-note wording on this record is read from the OCR of the sg-24 page renders at cache/text/sg-24 rather than from the extracted text layer [single-source].",
    "status": "active",
    "year": 2024,
    "question": 5,
@@ -4005,14 +4009,15 @@
     "BC-PT-99004"
    ],
    "scoring_behaviors": [
-    "Euler's method is one point and the answer is a second (sg-24:17).",
-    "The first point requires two Euler steps with the correct derivative expression and at most one error; if there is an error the answer point is not earned (sg-24:17).",
-    "A response with a single error in the first step must import that incorrect value into the second step to earn the first point, and either a step layout or a labelled table is accepted (sg-24:17)."
+    "The first point requires two Euler steps with the correct derivative expression and at most one error; if there is an error the second point is not earned (sg-24:17).",
+    "A response with a single error in the first step must import that incorrect value into the second step to earn the first point (sg-24:17).",
+    "The steps may be explicit expressions or a table; with a correct answer the table need not be labelled, but with no answer or an incorrect answer it must be labelled to earn the first point (sg-24:17).",
+    "The unsimplified sum of the two increments earns both points, and the answer may be reported as an ordered pair (sg-24:17)."
    ],
    "commentary_errors": [
     "BC-ERR-99026"
    ],
-   "notation_requirements": "Two increments of a step size times a tabulated derivative value, laid out as steps or as a labelled table.",
+   "notation_requirements": "Two increments of a step size times a tabulated derivative value, written as explicit steps or as a labelled table.",
    "justification_requirements": "None; the two steps are the required work.",
    "difficulty_factors": [],
    "difficulty_notes": "Step size must be derived from the interval and the number of steps; the derivative values come from a table at exactly the step inputs; the second step depends on the first; no calculator.",
@@ -4038,13 +4043,13 @@
    "scope": "BC_only",
    "evidence_tag": "verified",
    "sources": [
-    "frq-24:9",
-    "sg-24:18",
-    "samples-24-q5:12",
     "cr-24:20",
-    "cr-24:32"
+    "cr-24:32",
+    "frq-24:9",
+    "samples-24-q5:12",
+    "sg-24:18"
    ],
-   "notes": "[single-source] for scoring_behaviors: the sg-24 text layer keeps every scoring point label and the model solution but drops the scoring-note prose, so the earn and not-earn rules below are read from the point labels and the model solution rather than from the notes. The sg-24 text layer preserves the model solution and every scoring point label but drops the scoring-note prose, so scoring_behaviors here are derived from the point labels and the model solution [single-source] where the note wording is missing.",
+   "notes": "Scoring-note wording on this record is read from the OCR of the sg-24 page renders at cache/text/sg-24 rather than from the extracted text layer [single-source].",
    "status": "active",
    "year": 2024,
    "question": 5,
@@ -4106,15 +4111,16 @@
     "BC-PT-99004"
    ],
    "scoring_behaviors": [
-    "The choice of the two factors is one point, the parts expression a second, and the answer a third (sg-24:18).",
-    "The model solution assigns the linear expression to the differentiated factor and the cosine to the integrated factor, whose antiderivative carries the reciprocal of the inner constant (sg-24:18).",
-    "An alternate route that splits the integrand into two integrals and applies parts only to the product is accepted, with the first two points for that application and the third for the complete answer (sg-24:18)."
+    "The first and second points are earned with the choice of the two factors left implicit, provided the parts expression or a mathematical equivalent appears (sg-24:18).",
+    "The tabular method is accepted, with the first point earned by columns beginning with the linear factor and the cosine, and the second by the parts expression (sg-24:18).",
+    "The third point is earned only for an expression mathematically equivalent to the model answer in the presence of correct supporting work, and the final answer must include a constant of integration (sg-24:18).",
+    "An alternate route splitting the integrand into two integrals earns the first two points for applying parts to the product and the third for the correct answer (sg-24:18)."
    ],
    "commentary_errors": [
     "BC-ERR-99013",
     "BC-ERR-99025"
    ],
-   "notation_requirements": "An explicit or tabular choice of the two factors, a sine antiderivative carrying the reciprocal of the inner constant, and a constant of integration on the final answer.",
+   "notation_requirements": "An explicit or tabular choice of the two factors, sine and cosine antiderivatives carrying the reciprocal of the inner constant, and a constant of integration on the final answer.",
    "justification_requirements": "None; the parts structure is the required support.",
    "difficulty_factors": [],
    "difficulty_notes": "Scaled trigonometric argument so every antiderivative carries a reciprocal constant; two acceptable routes; the constant of integration is part of the answer; no calculator.",
@@ -4140,13 +4146,13 @@
    "scope": "BC_only",
    "evidence_tag": "verified",
    "sources": [
-    "frq-24:10",
-    "sg-24:19",
-    "samples-24-q6:13",
     "cr-24:23",
-    "cr-24:35"
+    "cr-24:35",
+    "frq-24:10",
+    "samples-24-q6:13",
+    "sg-24:19"
    ],
-   "notes": "[single-source] for scoring_behaviors: the sg-24 text layer keeps every scoring point label and the model solution but drops the scoring-note prose, so the earn and not-earn rules below are read from the point labels and the model solution rather than from the notes. The sg-24 text layer preserves the model solution and every scoring point label but drops the scoring-note prose, so scoring_behaviors here are derived from the point labels and the model solution [single-source] where the note wording is missing.",
+   "notes": "Scoring-note wording on this record is read from the OCR of the sg-24 page renders at cache/text/sg-24 rather than from the extracted text layer [single-source].",
    "status": "active",
    "year": 2024,
    "question": 6,
@@ -4209,16 +4215,17 @@
     "BC-PT-99005"
    ],
    "scoring_behaviors": [
-    "Considering the numerical series produced by the endpoint substitution is one point, and the answer with reason is a second (sg-24:19).",
-    "The model solution simplifies the substituted series and compares it term by term with the harmonic series to conclude divergence (sg-24:19).",
-    "The surviving note fragments record a limit comparison with the harmonic series as an accepted alternative (sg-24:20)."
+    "The first point requires considering the simplified general term of the substituted series, shown either on its own or inside a sum, for either the comparison or the limit comparison route (sg-24:20).",
+    "The second point by direct comparison requires demonstrating that the simplified terms are larger than the terms of a divergent series, and the short form naming that comparison and the divergence earns both points (sg-24:20).",
+    "The second point by limit comparison requires the limit of the ratio against a divergent series to be written correctly and shown to be one (sg-24:20).",
+    "The name of the test need not be used, but a response that declares an incorrect test does not earn the point (sg-24:20)."
    ],
    "commentary_errors": [
     "BC-ERR-99009",
     "BC-ERR-99017"
    ],
-   "notation_requirements": "Endpoint substitution written out, a named comparison series, and the inequality or limit that supports the comparison.",
-   "justification_requirements": "A named convergence test must be applied to the substituted series, with its comparison partner identified.",
+   "notation_requirements": "The endpoint substitution simplified to a general term, a named or unnamed comparison partner, and either a term inequality or a correctly written limit of the ratio.",
+   "justification_requirements": "A comparison must be exhibited, either as an inequality against a divergent series or as a limit of the ratio equal to one, and any test that is named must be the correct one.",
    "difficulty_factors": [],
    "difficulty_notes": "The endpoint substitution must be simplified before any test applies; the comparison partner is chosen by the response; no point type in the registry matches a convergence conclusion with a named test, so the two points are recorded against the generic supported-answer type.",
    "diagnostic_distinctions": [
@@ -4243,12 +4250,12 @@
    "scope": "BC_only",
    "evidence_tag": "verified",
    "sources": [
+    "cr-24:36",
     "frq-24:10",
-    "sg-24:21",
     "samples-24-q6:13",
-    "cr-24:36"
+    "sg-24:21"
    ],
-   "notes": "[single-source] for scoring_behaviors: the sg-24 text layer keeps every scoring point label and the model solution but drops the scoring-note prose, so the earn and not-earn rules below are read from the point labels and the model solution rather than from the notes. The sg-24 text layer preserves the model solution and every scoring point label but drops the scoring-note prose, so scoring_behaviors here are derived from the point labels and the model solution [single-source] where the note wording is missing.",
+   "notes": "Scoring-note wording on this record is read from the OCR of the sg-24 page renders at cache/text/sg-24 rather than from the extracted text layer [single-source].",
    "status": "active",
    "year": 2024,
    "question": 6,
@@ -4307,15 +4314,16 @@
     "BC-PT-99041"
    ],
    "scoring_behaviors": [
-    "Using the fourth term is one point and the verification is a second (sg-24:21).",
-    "The model solution states that the series is alternating with terms decreasing in magnitude to zero, then bounds the error by the magnitude of the first omitted term (sg-24:21).",
-    "The surviving note fragments show the numerical value of that fourth term and the comparison with the tolerance as the content of the second point (sg-24:21)."
+    "The first point is earned for correctly using the stated input in the fourth term; listing that term as part of a polynomial is not sufficient, and using the input in a term of degree five or higher does not earn it (sg-24:21).",
+    "The unsimplified fourth term earns the first point while its simplified magnitude alone does not, and a subsequently botched simplification earns the first point but not the second (sg-24:21).",
+    "The second point requires stating that the series at that input is alternating or that the alternating series error bound is being used; the short inequality form earns both points when accompanied by that statement (sg-24:21).",
+    "A response declaring the error equal to the bound does not earn the second point (sg-24:21)."
    ],
    "commentary_errors": [
     "BC-ERR-99016"
    ],
-   "notation_requirements": "The magnitude of the first omitted term, an inequality symbol, and the stated tolerance.",
-   "justification_requirements": "The alternating series conditions must be stated before the bound is used, and the comparison with the tolerance must be explicit.",
+   "notation_requirements": "The fourth term evaluated at the stated input, left unsimplified or simplified correctly, with an inequality symbol and the stated tolerance.",
+   "justification_requirements": "The alternating nature of the series, or explicit use of the alternating series error bound, must be stated, and the error must be bounded rather than equated.",
    "difficulty_factors": [],
    "difficulty_notes": "The first omitted term must be indexed correctly; the conditions of the test are part of the justification; strict inequality demanded; no calculator.",
    "diagnostic_distinctions": [
@@ -4338,13 +4346,13 @@
    "scope": "BC_only",
    "evidence_tag": "verified",
    "sources": [
-    "frq-24:10",
-    "sg-24:22",
-    "samples-24-q6:13",
     "cr-24:23",
-    "cr-24:36"
+    "cr-24:36",
+    "frq-24:10",
+    "samples-24-q6:13",
+    "sg-24:22"
    ],
-   "notes": "[single-source] for scoring_behaviors: the sg-24 text layer keeps every scoring point label and the model solution but drops the scoring-note prose, so the earn and not-earn rules below are read from the point labels and the model solution rather than from the notes. The sg-24 text layer preserves the model solution and every scoring point label but drops the scoring-note prose, so scoring_behaviors here are derived from the point labels and the model solution [single-source] where the note wording is missing.",
+   "notes": "Scoring-note wording on this record is read from the OCR of the sg-24 page renders at cache/text/sg-24 rather than from the extracted text layer [single-source].",
    "status": "active",
    "year": 2024,
    "question": 6,
@@ -4407,9 +4415,9 @@
     "BC-PT-99047"
    ],
    "scoring_behaviors": [
-    "The general term is one point and the radius is a second (sg-24:22).",
-    "The model solution differentiates the given general term with respect to the variable and simplifies the resulting power (sg-24:22).",
-    "The radius point is earned by citing the preservation of the radius under term-by-term differentiation, and the surviving fragments also show two fresh ratio test routes to the same radius (sg-24:22)."
+    "The first point is earned for the differentiated general term or any mathematically equivalent expression; simplification is not required, but any simplification presented must be correct (sg-24:22).",
+    "The second point is earned only for a supported radius and can be earned without the first (sg-24:22).",
+    "The supported answer may rest on the preservation of the radius under term-by-term differentiation, on a fresh ratio test, or on a root test (sg-24:22)."
    ],
    "commentary_errors": [
     "BC-ERR-99009",
@@ -4417,8 +4425,8 @@
     "BC-ERR-99017",
     "BC-ERR-99018"
    ],
-   "notation_requirements": "A general term with the index appearing in the exponent and in the coefficient, and an explicitly stated radius.",
-   "justification_requirements": "The radius must be stated, either from the preservation statement or from a fresh ratio test.",
+   "notation_requirements": "A general term with the index in the exponent and in the coefficient, and an explicitly stated radius with its support.",
+   "justification_requirements": "The radius must be supported, by the preservation statement or by a ratio or root test.",
    "difficulty_factors": [],
    "difficulty_notes": "Term-by-term differentiation with index bookkeeping; the radius may be asserted from a theorem or recomputed; no calculator.",
    "diagnostic_distinctions": [
@@ -4443,10 +4451,10 @@
    "evidence_tag": "verified",
    "sources": [
     "frq-24:10",
-    "sg-24:23",
-    "samples-24-q6:13"
+    "samples-24-q6:13",
+    "sg-24:23"
    ],
-   "notes": "[single-source] for scoring_behaviors: the sg-24 text layer keeps every scoring point label and the model solution but drops the scoring-note prose, so the earn and not-earn rules below are read from the point labels and the model solution rather than from the notes. The sg-24 text layer preserves the model solution and every scoring point label but drops the scoring-note prose, so scoring_behaviors here are derived from the point labels and the model solution [single-source] where the note wording is missing.",
+   "notes": "Scoring-note wording on this record is read from the OCR of the sg-24 page renders at cache/text/sg-24 rather than from the extracted text layer [single-source].",
    "status": "active",
    "year": 2024,
    "question": 6,
@@ -4508,13 +4516,14 @@
     "BC-PT-99047"
    ],
    "scoring_behaviors": [
-    "Setting up the ratio is one point, the limit a second, and the radius a third (sg-24:23).",
-    "The model solution forms the ratio of consecutive terms, cancels the powers and the index factors, and takes the limit (sg-24:23).",
-    "The surviving note fragments list many mathematically equivalent ratios, including reciprocal arrangements, as accepted for the first point (sg-24:23)."
+    "The first point is earned by presenting a correct ratio with or without absolute values and cannot afterwards be lost; errors in simplification or in evaluating the limit forfeit the second point (sg-24:23).",
+    "Several listed equivalent and reciprocal ratios earn the first point; a reciprocal ratio can earn the second point for correctly finding the reciprocal limit, and earns the third only with a valid explanation for reporting the reciprocal (sg-24:23).",
+    "The second point requires using the ratio and evaluating its limit with correct limit notation (sg-24:23).",
+    "The third point is earned only for the correct radius with supporting work (sg-24:23)."
    ],
    "commentary_errors": [],
-   "notation_requirements": "A ratio of consecutive terms with absolute values, a limit as the index grows without bound, and an explicit radius.",
-   "justification_requirements": "The ratio inequality must be solved and the radius stated explicitly.",
+   "notation_requirements": "A ratio of consecutive terms with absolute values, a limit written in correct notation, and an explicit radius obtained by taking the square root of the resolved inequality.",
+   "justification_requirements": "The ratio inequality must be solved for the variable itself and the radius stated with supporting work.",
    "difficulty_factors": [],
    "difficulty_notes": "The variable appears squared so the inequality must be solved for the variable itself; index factors and powers with different bases; three scored steps; no calculator.",
    "diagnostic_distinctions": [

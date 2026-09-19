@@ -11,10 +11,11 @@
     "sg-26:4",
     "sg-24:3",
     "sg-22:17",
-    "sg-23:7"
+    "sg-23:7",
+    "sg-24:4"
    ],
-   "earns": "A definite integral whose limits match the requested interval and whose integrand matches the requested quantity, with or without the differential (sg-26:4, sg-22:2).",
-   "does_not_earn": "An unsupported numerical value, or a definite integral whose bounds are wrong (sg-22:18).",
+   "earns": "A definite integral whose limits match the requested interval and whose integrand matches the requested quantity, with or without the differential (sg-26:4, sg-22:2, sg-24:4).",
+   "does_not_earn": "An unsupported numerical value, or a definite integral whose bounds are wrong (sg-22:18); an ambiguous response where the initial value sits inside the integral rather than beside it (sg-24:4).",
    "requires_previous_work": "no",
    "setup_alone_earns": "yes",
    "simplification_required": "no",
@@ -25,13 +26,14 @@
    "notation_requirements": "Differential may be omitted; sg-22:2 accepts dx written for dt. sg-23:8 treats a missing differential as recoverable for this point but restricts later eligibility.",
    "precision_rules": "Not a reported-value point, so the three-decimal rule does not apply.",
    "dependency_on_other_points": "Independent of other points in the rubrics reviewed.",
-   "eligibility_after_error": "sg-22:18 states a definite integral with incorrect bounds earns neither this point nor the answer point; sg-22:8 states a definite integral with incorrect limits is not eligible for the answer point.",
+   "eligibility_after_error": "sg-22:18 states a definite integral with incorrect bounds earns neither this point nor the answer point; sg-22:8 states a definite integral with incorrect limits is not eligible for the answer point; sg-24:4 states that if the limits of integration are incorrect the response does not earn the answer point, and that a response containing any linkage error can earn at most two of the three points in the part.",
    "rubric_instances": [
     "sg-22:2 Q1(a) P1",
     "sg-26:4 Q1(C) P6",
     "sg-24:3 Q1(c) P1",
     "sg-22:17 Q5(a) P1",
-    "sg-23:7 Q2(c) P2"
+    "sg-23:7 Q2(c) P2",
+    "sg-24:6 Q2(c) P1"
    ],
    "notes": "This family absorbs what would otherwise be a separate limits-of-integration family. Limits are scored inside the integral point or inside the answer point, never as a point of their own."
   },
@@ -184,8 +186,8 @@
     "sg-22:13",
     "sg-24:2"
    ],
-   "earns": "Correct units, whether or not they are attached to a numerical value (sg-25:11, sg-26:2); equivalent compact forms such as birds per day squared are accepted (sg-26:2).",
-   "does_not_earn": "Units with no value present at all where the rubric ties them to a presented value (sg-22:13).",
+   "earns": "Correct units, whether or not they are attached to a numerical value (sg-25:11, sg-26:2); equivalent compact forms such as birds per day squared are accepted (sg-26:2), and sg-24:2 also accepts a shortened unit name attached to a numerical value.",
+   "does_not_earn": "Units with no value present at all; sg-24:2 states a response that presents only units without a numerical approximation does not earn the point, and sg-22:13 says the same.",
    "requires_previous_work": "no",
    "setup_alone_earns": "n/a",
    "simplification_required": "no",
@@ -215,8 +217,8 @@
     "sg-26:3",
     "sg-24:3"
    ],
-   "earns": "A sentence naming the accumulated quantity in context together with the time or spatial interval (sg-26:3, sg-23:2).",
-   "does_not_earn": "An interpretation that omits the interval, or that restates the integral without naming the quantity (sg-26:3).",
+   "earns": "A sentence naming the accumulated or averaged quantity in context together with the time or spatial interval (sg-26:3, sg-23:2, sg-24:3).",
+   "does_not_earn": "An interpretation that omits the interval, or that restates the integral without naming the quantity (sg-26:3); an interpretation carrying incorrect units, which sg-24:3 states forfeits the point even though units are not otherwise required.",
    "requires_previous_work": "no",
    "setup_alone_earns": "n/a",
    "simplification_required": "no",
@@ -233,7 +235,7 @@
     "sg-26:3 Q1(B) P5",
     "sg-24:3 Q1(b) P3"
    ],
-   "notes": "sg-26:3 says the response need not include units of time or the location name, so the unit demand varies by year."
+   "notes": "sg-26:3 says the response need not include units of time or the location name, so the unit demand varies by year. sg-24:3 makes the asymmetry explicit: units need not be referenced, but incorrect units in the interpretation lose the point."
   },
   {
    "id": "BC-PT-99008",
@@ -272,8 +274,8 @@
    "sources": [
     "sg-24:16"
    ],
-   "earns": "Naming the integral as the arc length of the given curve, and naming the interval it is taken over; the rubrics split these as two points (sg-24:16).",
-   "does_not_earn": "Naming the quantity as a distance travelled or an area rather than the length of the graph (sg-24:16).",
+   "earns": "Naming the integral as the arc length or the length of the graph of the given function, and naming the interval it is taken over; the rubrics split these as two points (sg-24:16). sg-24:16 also accepts distance explicitly connected to the graph, such as distance along the curve.",
+   "does_not_earn": "A bare reference to distance or distance travelled with no connection to the graph, which sg-24:16 states does not earn the arc length point although it stays eligible for the interval point; a reference to the length of a different function (sg-24:16).",
    "requires_previous_work": "no",
    "setup_alone_earns": "n/a",
    "simplification_required": "no",
@@ -283,13 +285,13 @@
    "hypotheses_required": "no",
    "notation_requirements": "No special notation requirement stated in the rubrics reviewed.",
    "precision_rules": "Not a reported-value point, so the three-decimal rule does not apply.",
-   "dependency_on_other_points": "Independent of other points in the rubrics reviewed.",
+   "dependency_on_other_points": "sg-24:16 keeps the interval point available after the arc length point is lost, and requires the interval to be connected to arc length, length, or distance.",
    "eligibility_after_error": "No eligibility restriction stated in the rubrics reviewed.",
    "rubric_instances": [
     "sg-24:16 Q5(b) P1",
     "sg-24:16 Q5(b) P2"
    ],
-   "notes": "One document only in the corpus read, so tagged single-source."
+   "notes": "One document in the corpus read, and its wording comes from the OCR layer sg-24 page 16, so tagged single-source."
   },
   {
    "id": "BC-PT-99010",
@@ -366,7 +368,7 @@
     "sg-23:13"
    ],
    "earns": "Correct classification of the critical point as a relative maximum, relative minimum, or neither, with analysis using a first or second derivative test; the test need not be named (sg-26:8).",
-   "does_not_earn": "A candidates test, which sg-26:8 states is not sufficient justification here; an assertion with no supporting sign or second-derivative analysis.",
+   "does_not_earn": "A candidates test, which sg-26:8 states is not sufficient justification here; an assertion with no supporting sign or second-derivative analysis. sg-24:10 states the classification point cannot be earned without the preceding sign point and is earned only for a correct justification with the correct classification.",
    "requires_previous_work": "no",
    "setup_alone_earns": "n/a",
    "simplification_required": "no",
@@ -376,14 +378,14 @@
    "hypotheses_required": "no",
    "notation_requirements": "No special notation requirement stated in the rubrics reviewed.",
    "precision_rules": "Not a reported-value point, so the three-decimal rule does not apply.",
-   "dependency_on_other_points": "sg-26:8 requires the critical-value point first, and does not require the value to be restated here.",
+   "dependency_on_other_points": "sg-26:8 requires the critical-value point first, and does not require the value to be restated here; sg-24:10 requires the sign point first.",
    "eligibility_after_error": "No eligibility restriction stated in the rubrics reviewed.",
    "rubric_instances": [
     "sg-26:8 Q2(C) P7",
     "sg-24:10 Q3(b) P3",
     "sg-23:13 Q4(a) P1"
    ],
-   "notes": "sg-23:13 accepts the shorter form that the derivative does not change sign, so neither extremum occurs."
+   "notes": "sg-23:13 accepts the shorter form that the derivative does not change sign, so neither extremum occurs. sg-24:10 accepts a sign statement at a single value on each side of the critical point and states it is not necessary to say the derivative does not change sign on those intervals, and lists a Second Derivative Test alternative."
   },
   {
    "id": "BC-PT-99013",
@@ -433,7 +435,7 @@
     "sg-26:12",
     "sg-22:4"
    ],
-   "earns": "An explicit statement about whether a first or second derivative is positive, negative, or zero on the relevant interval, symbolically or in words (sg-26:12, sg-24:8).",
+   "earns": "An explicit statement about whether a first or second derivative is positive, negative, or zero on the relevant interval, symbolically or in words (sg-26:12, sg-24:8, sg-24:10).",
    "does_not_earn": "A statement about the sign of the function rather than the derivative, or a reference to the concavity of the derivative itself (sg-26:12).",
    "requires_previous_work": "no",
    "setup_alone_earns": "yes",
@@ -444,7 +446,7 @@
    "hypotheses_required": "no",
    "notation_requirements": "No special notation requirement stated in the rubrics reviewed.",
    "precision_rules": "Not a reported-value point, so the three-decimal rule does not apply.",
-   "dependency_on_other_points": "sg-26:12 and sg-22:4 both make the reason point eligible only after this point is earned.",
+   "dependency_on_other_points": "sg-26:12, sg-24:8 and sg-24:10 all make the following reason or justification point eligible only after this point is earned.",
    "eligibility_after_error": "No eligibility restriction stated in the rubrics reviewed.",
    "rubric_instances": [
     "sg-24:8 Q2(d) P1",
@@ -452,7 +454,7 @@
     "sg-26:11 Q3(C) P3",
     "sg-22:4 Q1(c) P1"
    ],
-   "notes": ""
+   "notes": "sg-24:8 awards this point for the equation, either inequality, or even the solved critical value, which is looser than the parallel consideration points at sg-25:5 and sg-26:17."
   },
   {
    "id": "BC-PT-99015",
@@ -559,7 +561,7 @@
     "sg-24:3"
    ],
    "earns": "A sum whose terms each show a value factor and a width factor, with at least five of the six factors correct for three subintervals (sg-25:13, sg-26:3, sg-23:2) or seven of eight for four subintervals (sg-22:15).",
-   "does_not_earn": "A left or right sum where a midpoint or trapezoidal sum was asked for (sg-26:3, sg-25:13); an unsupported total (sg-26:3, sg-22:15).",
+   "does_not_earn": "A left or right sum where a midpoint or trapezoidal sum was asked for (sg-26:3, sg-25:13); an unsupported total (sg-26:3, sg-22:15, sg-24:3).",
    "requires_previous_work": "no",
    "setup_alone_earns": "yes",
    "simplification_required": "no",
@@ -570,7 +572,7 @@
    "notation_requirements": "sg-25:13 and sg-26:3 instruct readers to read an equals sign as approximately equal for this point.",
    "precision_rules": "Not a reported-value point, so the three-decimal rule does not apply.",
    "dependency_on_other_points": "Independent of other points in the rubrics reviewed.",
-   "eligibility_after_error": "sg-25:13 and sg-26:3 state any single incorrect factor blocks the approximation point while the form point can still stand; sg-25:13 and sg-26:3 both give the form point but not the value point to a completely correct sum of the wrong type.",
+   "eligibility_after_error": "sg-25:13 and sg-26:3 state any single incorrect factor blocks the approximation point while the form point can still stand; sg-25:13 and sg-26:3 both give the form point but not the value point to a completely correct sum of the wrong type, and sg-24:3 gives one of the two points for the same situation.",
    "rubric_instances": [
     "sg-25:13 Q3(c) P5",
     "sg-26:3 Q1(B) P3",
@@ -578,7 +580,7 @@
     "sg-22:15 Q4(c) P1",
     "sg-24:3 Q1(b) P1"
    ],
-   "notes": ""
+   "notes": "sg-24:3 adds that values must be pulled from the table to earn the approximation point, and that units will not affect scoring for it."
   },
   {
    "id": "BC-PT-99019",
@@ -752,8 +754,8 @@
     "sg-24:15",
     "sg-24:14"
    ],
-   "earns": "Writing the derivative of the accumulation function as the integrand evaluated at the variable, in general or at the requested value (sg-25:16, sg-24:13).",
-   "does_not_earn": "Differencing the integrand at the two limits, which sg-25:16 states earns the answer point but not this one.",
+   "earns": "Writing the derivative of the accumulation function as the integrand evaluated at the variable, in general or at the requested value (sg-25:16, sg-24:13, sg-24:15).",
+   "does_not_earn": "Differencing the integrand at the two limits, which sg-25:16 states earns the answer point but not this one; equating a variable expression to a numerical value, which sg-24:15 states earns at most one of the two points in that part.",
    "requires_previous_work": "no",
    "setup_alone_earns": "yes",
    "simplification_required": "no",
@@ -763,7 +765,7 @@
    "hypotheses_required": "no",
    "notation_requirements": "No special notation requirement stated in the rubrics reviewed.",
    "precision_rules": "Not a reported-value point, so the three-decimal rule does not apply.",
-   "dependency_on_other_points": "sg-25:16 allows the answer point on an implied application of the theorem even when this point is not earned.",
+   "dependency_on_other_points": "sg-25:16 allows the answer point on an implied application of the theorem even when this point is not earned, and sg-24:13 states the same in its own wording.",
    "eligibility_after_error": "No eligibility restriction stated in the rubrics reviewed.",
    "rubric_instances": [
     "sg-25:16 Q4(a) P1",
@@ -771,7 +773,7 @@
     "sg-24:15 Q5(a) P1",
     "sg-24:14 Q4(c) P1"
    ],
-   "notes": ""
+   "notes": "sg-24:13 requires the connection to be made explicitly in that part, and states that writing the second derivative relation instead earns this point but restricts how the following reason point can be earned. sg-24:14 states a response with one or more linkage errors does not earn the first point it would otherwise have earned."
   },
   {
    "id": "BC-PT-99025",
@@ -831,7 +833,7 @@
     "sg-26:11 Q3(C) P4",
     "sg-24:4 Q1(d) P1"
    ],
-   "notes": ""
+   "notes": "sg-24:4 carries the same architecture for a rate-of-change question: the point is earned only for a correct answer with a correct reason referencing the sign of the second derivative, a reason from evaluation at a single point does not earn it, an ambiguous pronoun does not earn it, and the interval need not be restated."
   },
   {
    "id": "BC-PT-99027",
@@ -893,7 +895,7 @@
    "notation_requirements": "No special notation requirement stated in the rubrics reviewed.",
    "precision_rules": "Not a reported-value point, so the three-decimal rule does not apply.",
    "dependency_on_other_points": "This point gates every later point in the part (sg-26:13, sg-23:12, sg-21:20).",
-   "eligibility_after_error": "sg-21:20 states that if an error in separation leaves one side correct, only the matching antiderivative point remains available; sg-26:13 gives a special case where a sign error in the denominator keeps the constant point but blocks the solve point.",
+   "eligibility_after_error": "sg-21:20 states that if an error in separation leaves one side correct, only the matching antiderivative point remains available; sg-26:13 gives a special case where a sign error in the denominator keeps the constant point but blocks the solve point; sg-24:11 gives a special case where an incorrect separation earns neither the separation point nor the solve point but stays eligible for both antiderivative points and, through them, the constant point.",
    "rubric_instances": [
     "sg-26:12 Q3(D) P5",
     "sg-23:11 Q3(d) P1",
@@ -923,7 +925,7 @@
    "interpretation_required": "no",
    "justification_required": "no",
    "hypotheses_required": "no",
-   "notation_requirements": "sg-26:13 accepts either parentheses or absolute value on the logarithm; sg-23:12 states an antiderivative written without absolute value symbols stays eligible for all points; sg-21:20 accepts either form.",
+   "notation_requirements": "sg-26:13 accepts either parentheses or absolute value on the logarithm; sg-23:12 states an antiderivative written without absolute value symbols stays eligible for all points; sg-21:20 and sg-24:11 accept either form, and sg-24:11 states explicitly that a logarithm written without absolute value symbols earns that antiderivative point.",
    "precision_rules": "Not a reported-value point, so the three-decimal rule does not apply.",
    "dependency_on_other_points": "Requires the separation point (sg-26:13).",
    "eligibility_after_error": "No eligibility restriction stated in the rubrics reviewed.",
@@ -990,7 +992,7 @@
    "hypotheses_required": "no",
    "notation_requirements": "No special notation requirement stated in the rubrics reviewed.",
    "precision_rules": "Not a reported-value point, so the three-decimal rule does not apply.",
-   "dependency_on_other_points": "sg-26:13 requires the separation point and one antiderivative point; sg-23:12 requires the first two points of the part; sg-21:20 requires separation and at least one of the two antiderivative points.",
+   "dependency_on_other_points": "sg-26:13 requires the separation point and one antiderivative point; sg-23:12 requires the first two points of the part; sg-21:20 and sg-24:11 require the separation point and at least one of the two antiderivative points.",
    "eligibility_after_error": "No eligibility restriction stated in the rubrics reviewed.",
    "rubric_instances": [
     "sg-26:12 Q3(D) P8",
@@ -999,7 +1001,7 @@
     "sg-21:20 Q5(c) P4",
     "sg-19:5 Q4(b) P3"
    ],
-   "notes": ""
+   "notes": "sg-24:11 states an eligible response earns the point by correctly including the constant in an equation and substituting the given values for the two variables."
   },
   {
    "id": "BC-PT-99032",
@@ -1024,8 +1026,8 @@
    "hypotheses_required": "no",
    "notation_requirements": "No special notation requirement stated in the rubrics reviewed.",
    "precision_rules": "Not a reported-value point, so the three-decimal rule does not apply.",
-   "dependency_on_other_points": "sg-26:13 requires separation and both antiderivative points; sg-23:12 and sg-21:20 require all earlier points of the part.",
-   "eligibility_after_error": "sg-26:13 allows this point without explicit constant work when the final function is correct, and states no justification is needed for the sign of the exponential coefficient.",
+   "dependency_on_other_points": "sg-26:13 requires separation and both antiderivative points; sg-23:12, sg-21:20 and sg-24:11 require all earlier points of the part.",
+   "eligibility_after_error": "sg-26:13 allows this point without explicit constant work when the final function is correct, and states no justification is needed for the sign of the exponential coefficient; sg-24:11 states a response does not need to argue that the absolute value resolves to the positive branch in order to earn this point.",
    "rubric_instances": [
     "sg-26:12 Q3(D) P9",
     "sg-23:12 Q3(d) P4",
@@ -1046,7 +1048,7 @@
     "sg-24:7",
     "sg-22:8"
    ],
-   "earns": "Adding the known function value at one endpoint to a definite integral of the rate (sg-24:3, sg-22:8).",
+   "earns": "Adding the known function value at one endpoint to a definite integral of the rate, presented either symbolically or numerically (sg-24:4, sg-22:8).",
    "does_not_earn": "A definite integral alone with the known value never added (sg-22:8).",
    "requires_previous_work": "no",
    "setup_alone_earns": "n/a",
@@ -1057,8 +1059,8 @@
    "hypotheses_required": "no",
    "notation_requirements": "sg-22:8 lists cases where a missing differential shifts which of the three points are available.",
    "precision_rules": "Not a reported-value point, so the three-decimal rule does not apply.",
-   "dependency_on_other_points": "sg-22:8 requires the value to be added to a definite integral, and lets a response that misses the integral point still earn the answer point on a consistent value.",
-   "eligibility_after_error": "No eligibility restriction stated in the rubrics reviewed.",
+   "dependency_on_other_points": "sg-22:8 requires the value to be added to a definite integral, and lets a response that misses the integral point still earn the answer point on a consistent value; sg-24:7 requires at least one of the two earlier points of its part before the answer point, and states that any linkage error caps the part at two of three points.",
+   "eligibility_after_error": "sg-24:7 states a response that reverses the limits of integration earns this point but not the answer point, and sg-24:6 allows this point to be earned by solving for a constant of integration from an antiderivative evaluated at the known input.",
    "rubric_instances": [
     "sg-24:3 Q1(c) P2",
     "sg-24:6 Q2(c) P2",
@@ -1094,7 +1096,7 @@
     "sg-24:17 Q5(c) P1",
     "sg-21:19 Q5(b) P1"
    ],
-   "notes": ""
+   "notes": "sg-24:17 states that in the presence of a correct answer a table need not be labelled, and that a single error in the first step must be imported into the second step for this point to stand."
   },
   {
    "id": "BC-PT-99035",
@@ -1203,8 +1205,8 @@
     "sg-24:22",
     "sg-22:22"
    ],
-   "earns": "The correct general term, presented on its own or as the closing term of a polynomial or series (sg-25:26, sg-22:22).",
-   "does_not_earn": "An ellipsis with no closed form for the nth term (sg-22:22).",
+   "earns": "The correct general term, presented on its own or as the closing term of a polynomial or series; any mathematically equivalent form is accepted (sg-24:22).",
+   "does_not_earn": "An ellipsis with no closed form for the nth term (sg-22:22); a simplification that is presented but incorrect, which sg-24:22 states loses the point although simplification is not required.",
    "requires_previous_work": "no",
    "setup_alone_earns": "n/a",
    "simplification_required": "no",
@@ -1263,7 +1265,7 @@
     "sg-19:7"
    ],
    "earns": "Evaluating the first omitted term of the alternating series at the requested value (sg-26:22, sg-22:21).",
-   "does_not_earn": "Using a term of the wrong degree; sg-22:21 states any term of degree five or higher does not earn the point, and sg-22:21 states listing the term inside a polynomial is insufficient.",
+   "does_not_earn": "Using a term of the wrong degree; sg-22:21 and sg-24:21 both state any term of degree five or higher does not earn the point, and both state that listing the term inside a polynomial is insufficient. sg-24:21 also withholds the point for the simplified value of the term presented without the term itself.",
    "requires_previous_work": "no",
    "setup_alone_earns": "n/a",
    "simplification_required": "no",
@@ -1274,7 +1276,7 @@
    "notation_requirements": "No special notation requirement stated in the rubrics reviewed.",
    "precision_rules": "Not a reported-value point, so the three-decimal rule does not apply.",
    "dependency_on_other_points": "Independent of other points in the rubrics reviewed.",
-   "eligibility_after_error": "sg-26:22 awards this point for correctly evaluating the third-degree term found earlier even when that term is wrong, but then blocks the justification point.",
+   "eligibility_after_error": "sg-26:22 awards this point for correctly evaluating the third-degree term found earlier even when that term is wrong, but then blocks the justification point; sg-24:21 awards it for a correct term subsequently simplified incorrectly while blocking the verification point.",
    "rubric_instances": [
     "sg-26:22 Q6(C) P5",
     "sg-24:21 Q6(b) P1",
@@ -1315,7 +1317,7 @@
     "sg-22:21 Q6(b) P2",
     "sg-24:21 Q6(b) P2"
    ],
-   "notes": "sg-26:22 and sg-22:21 additionally require the response to state that the series is a convergent alternating series whose terms decrease to zero."
+   "notes": "sg-26:22 and sg-22:21 additionally require the response to state that the series is a convergent alternating series whose terms decrease to zero; sg-24:21 requires only that the response state the series is alternating or that the alternating series error bound is being used, and accepts a bare inequality accompanied by that indication."
   },
   {
    "id": "BC-PT-99042",
@@ -1341,7 +1343,7 @@
    "notation_requirements": "No special notation requirement stated in the rubrics reviewed.",
    "precision_rules": "Not a reported-value point, so the three-decimal rule does not apply.",
    "dependency_on_other_points": "Independent of other points in the rubrics reviewed.",
-   "eligibility_after_error": "sg-25:25 and sg-21:24 both bank this point once earned. sg-25:25 accepts several reciprocal ratios, which keep the response eligible for the middle points but not for the final interval point. sg-22:21 keeps a substitution error in the exponent eligible for the first three points only.",
+   "eligibility_after_error": "sg-25:25, sg-21:24 and sg-24:23 all bank this point once earned. sg-25:25 and sg-24:23 accept several reciprocal ratios; sg-25:25 keeps those eligible for the middle points but not the final interval point, while sg-24:23 keeps them eligible for the limit point and awards the radius point only with a valid explanation for reporting the reciprocal. sg-22:21 keeps a substitution error in the exponent eligible for the first three points only.",
    "rubric_instances": [
     "sg-25:24 Q6(a) P1",
     "sg-24:23 Q6(d) P1",
@@ -1370,9 +1372,9 @@
    "interpretation_required": "no",
    "justification_required": "no",
    "hypotheses_required": "no",
-   "notation_requirements": "sg-22:21 requires correct limit notation and either the absolute value of the ratio or a resolution to a squared inequality; sg-25:25 states a response not using absolute value can still earn both the ratio and the limit points.",
+   "notation_requirements": "sg-22:21 requires correct limit notation and either the absolute value of the ratio or a resolution to a squared inequality; sg-25:25 states a response not using absolute value can still earn both the ratio and the limit points; sg-24:23 requires the response to use its ratio and to evaluate the limit correctly using correct limit notation.",
    "precision_rules": "Not a reported-value point, so the three-decimal rule does not apply.",
-   "dependency_on_other_points": "sg-21:24 states this point cannot be earned without the ratio point.",
+   "dependency_on_other_points": "sg-21:24 states this point cannot be earned without the ratio point; sg-24:23 states any error in simplification or evaluation of the limit forfeits this point while the ratio point stands.",
    "eligibility_after_error": "No eligibility restriction stated in the rubrics reviewed.",
    "rubric_instances": [
     "sg-25:24 Q6(a) P2",
@@ -1482,8 +1484,8 @@
     "sg-24:23",
     "sg-21:24"
    ],
-   "earns": "An explicit statement of the radius, obtained either from the ratio test inequality or by citing the radius of a related series (sg-21:24, sg-24:22).",
-   "does_not_earn": "An interval presented with no identification of the radius, which sg-21:24 states does not earn the point.",
+   "earns": "An explicit statement of the radius, obtained either from the ratio test inequality or by citing the radius of a related series, with supporting work (sg-21:24, sg-24:22, sg-24:23).",
+   "does_not_earn": "An interval presented with no identification of the radius, which sg-21:24 states does not earn the point; an unsupported value, which sg-24:22 and sg-24:23 both reject.",
    "requires_previous_work": "no",
    "setup_alone_earns": "n/a",
    "simplification_required": "no",
@@ -1493,14 +1495,14 @@
    "hypotheses_required": "no",
    "notation_requirements": "No special notation requirement stated in the rubrics reviewed.",
    "precision_rules": "Not a reported-value point, so the three-decimal rule does not apply.",
-   "dependency_on_other_points": "sg-21:24 requires a finite nonzero limit for the coefficient before this point is available.",
+   "dependency_on_other_points": "sg-21:24 requires a finite nonzero limit for the coefficient before this point is available; sg-24:22 states this point can be earned without the general term point.",
    "eligibility_after_error": "No eligibility restriction stated in the rubrics reviewed.",
    "rubric_instances": [
     "sg-24:22 Q6(c) P2",
     "sg-24:23 Q6(d) P3",
     "sg-21:24 Q6(c) P3"
    ],
-   "notes": ""
+   "notes": "sg-24:22 lists a ratio test route and a root test route as alternate supports for the same point."
   },
   {
    "id": "BC-PT-99048",
@@ -1576,8 +1578,8 @@
     "sg-22:7",
     "sg-23:6"
    ],
-   "earns": "The square root of the sum of squares of the two component derivatives, with the setup visible (sg-24:5, sg-22:7).",
-   "does_not_earn": "A bare statement that speed equals the target value, which sg-23:6 states does not earn the point.",
+   "earns": "The square root of the sum of squares of the two component derivatives, written either at the requested time or in general (sg-24:5, sg-22:7).",
+   "does_not_earn": "A bare statement that speed equals the target value, which sg-23:6 states does not earn the point; an equality chain between a general expression and a numerical value, which sg-24:5 states caps the part at one of two points.",
    "requires_previous_work": "no",
    "setup_alone_earns": "yes",
    "simplification_required": "no",
@@ -1587,8 +1589,8 @@
    "hypotheses_required": "no",
    "notation_requirements": "No special notation requirement stated in the rubrics reviewed.",
    "precision_rules": "Not a reported-value point, so the three-decimal rule does not apply.",
-   "dependency_on_other_points": "Independent of other points in the rubrics reviewed.",
-   "eligibility_after_error": "sg-23:6 states a parenthesis error in either component blocks this point but leaves the answer point available, and sg-23:8 carries that decision forward so the same error is not penalised twice.",
+   "dependency_on_other_points": "sg-24:5 states the answer point is earned regardless of whether this point is earned.",
+   "eligibility_after_error": "sg-23:6 states a parenthesis error in either component blocks this point but leaves the answer point available, and sg-23:8 carries that decision forward so the same error is not penalised twice. sg-24:5 states missing or incorrect units do not affect scoring in that part.",
    "rubric_instances": [
     "sg-24:5 Q2(a) P1",
     "sg-22:7 Q2(b) P1",
@@ -1616,7 +1618,7 @@
    "interpretation_required": "no",
    "justification_required": "no",
    "hypotheses_required": "no",
-   "notation_requirements": "sg-26:19 requires the limits to be numerical but not correct for this point, and assesses the derivative expression and the straight boundaries in the following point.",
+   "notation_requirements": "sg-26:19 requires the limits to be numerical but not correct for this point, and assesses the derivative expression and the straight boundaries in the following point. sg-24:6 accepts the integral with or without the differential and states that writing the two squared derivative terms without an outer bracket is not read as a parenthesis error.",
    "precision_rules": "Not a reported-value point, so the three-decimal rule does not apply.",
    "dependency_on_other_points": "Independent of other points in the rubrics reviewed.",
    "eligibility_after_error": "No eligibility restriction stated in the rubrics reviewed.",
@@ -1764,7 +1766,7 @@
    "interpretation_required": "no",
    "justification_required": "no",
    "hypotheses_required": "no",
-   "notation_requirements": "sg-23:18 and sg-22:18 accept the tabular method, earning this point for columns, labelled or not, that begin with the two chosen factors.",
+   "notation_requirements": "sg-23:18 and sg-22:18 accept the tabular method, earning this point for columns, labelled or not, that begin with the two chosen factors; sg-24:18 states the same and names the two columns.",
    "precision_rules": "Not a reported-value point, so the three-decimal rule does not apply.",
    "dependency_on_other_points": "Independent of other points in the rubrics reviewed.",
    "eligibility_after_error": "sg-22:18 states an incorrect integral that still requires parts remains eligible for this point and the next.",
@@ -1773,7 +1775,7 @@
     "sg-23:18 Q5(c) P1",
     "sg-22:18 Q5(b) P2"
    ],
-   "notes": ""
+   "notes": "sg-24:18 states the first two points are earned with an implied choice in the presence of the parts expression or any mathematically equivalent expression, and gives an alternate route through splitting the integrand first."
   },
   {
    "id": "BC-PT-99057",
@@ -1803,7 +1805,7 @@
     "sg-23:18 Q5(c) P2",
     "sg-22:18 Q5(b) P3"
    ],
-   "notes": ""
+   "notes": "sg-24:18 accepts any mathematically equivalent form of the parts expression, including one produced by the tabular method."
   },
   {
    "id": "BC-PT-99058",
@@ -2026,8 +2028,8 @@
     "sg-23:9",
     "sg-24:9"
    ],
-   "earns": "A curve through the given point that extends close to both edges of the given field, with no obvious conflict with the drawn segments, and that respects the stated asymptote (sg-23:9).",
-   "does_not_earn": "A curve crossing the horizontal segments that mark the equilibrium value (sg-23:9).",
+   "earns": "A curve through the given point that extends far enough across the given field, with no obvious conflict with the drawn segments, and that respects any stated asymptote (sg-23:9, sg-24:9).",
+   "does_not_earn": "A curve crossing the horizontal segments that mark the equilibrium value (sg-23:9); a curve that stops short of the stated extent, which sg-24:9 fixes at a named value of the independent variable.",
    "requires_previous_work": "no",
    "setup_alone_earns": "n/a",
    "simplification_required": "no",
@@ -2043,7 +2045,7 @@
     "sg-23:9 Q3(a) P1",
     "sg-24:9 Q3(a) P1"
    ],
-   "notes": "Two rubric instances in the corpus read, so tagged single-source. sg-23:9 states only the portion inside the given field is considered."
+   "notes": "Two rubric instances in the corpus read, so tagged single-source. sg-23:9 and sg-24:9 both state only the portion inside the given field is considered."
   },
   {
    "id": "BC-PT-99066",
@@ -2144,7 +2146,7 @@
     "sg-24:12",
     "sg-24:13"
    ],
-   "earns": "The value of the accumulation function at the requested input, computed from areas of the regions under the graph, with the correct sign for reversed limits (sg-25:18, sg-24:12).",
+   "earns": "The value of the accumulation function at the requested input, computed from areas of the regions under the graph, with the correct sign for reversed limits; supporting work is not required, but any work shown must be correct (sg-24:13, sg-25:18).",
    "does_not_earn": "A value from the wrong starting limit; sg-24:13 has a special case where an explicitly wrong lower limit forfeits the first point it would otherwise have earned.",
    "requires_previous_work": "no",
    "setup_alone_earns": "n/a",
@@ -2153,7 +2155,7 @@
    "interpretation_required": "no",
    "justification_required": "no",
    "hypotheses_required": "no",
-   "notation_requirements": "No special notation requirement stated in the rubrics reviewed.",
+   "notation_requirements": "sg-24:13 states labelled values may be presented in any order, unlabelled values are read left to right and top to bottom, and a response presenting only one or two values must label them to earn any points.",
    "precision_rules": "Not a reported-value point, so the three-decimal rule does not apply.",
    "dependency_on_other_points": "Independent of other points in the rubrics reviewed.",
    "eligibility_after_error": "sg-24:13 keeps the response eligible for all later points of the part with consistent answers and supporting work; sg-25:19 allows these values to be imported into a later candidates test.",
@@ -2164,6 +2166,91 @@
     "sg-24:12 Q4(a) P3"
    ],
    "notes": ""
+  },
+  {
+   "id": "BC-PT-99070",
+   "name": "Critical value identified",
+   "scope": "shared",
+   "evidence_tag": "verified",
+   "sources": [
+    "sg-24:10",
+    "sg-26:8",
+    "sg-22:4",
+    "sg-22:5"
+   ],
+   "earns": "The correct location of the critical point, with or without supporting work (sg-24:10, sg-26:8).",
+   "does_not_earn": "A value outside the stated interval offered as the answer; sg-26:8 holds the value to the three-decimal rule and sg-22:5 to the number of decimals presented.",
+   "requires_previous_work": "no",
+   "setup_alone_earns": "n/a",
+   "simplification_required": "no",
+   "units_required": "no",
+   "interpretation_required": "no",
+   "justification_required": "no",
+   "hypotheses_required": "no",
+   "notation_requirements": "No special notation requirement stated in the rubrics reviewed.",
+   "precision_rules": "sg-26:8 requires three decimal places, rounded or truncated, with the usual one-rounding-point exemption; sg-22:5 requires accuracy to the number of decimals presented, at least one and up to three.",
+   "dependency_on_other_points": "sg-26:8 makes the classification point available only after this point; sg-24:10 makes the justification point depend on the sign point rather than on this one.",
+   "eligibility_after_error": "No eligibility restriction stated in the rubrics reviewed.",
+   "rubric_instances": [
+    "sg-24:10 Q3(b) P2",
+    "sg-26:8 Q2(C) P6",
+    "sg-22:4 Q1(d) P2"
+   ],
+   "notes": "sg-24:10 states a response may consider extra potential critical values without penalty, and sg-26:8 states any other identified critical values can be ignored."
+  },
+  {
+   "id": "BC-PT-99071",
+   "name": "Indefinite integral answer including the constant of integration",
+   "scope": "BC_only",
+   "evidence_tag": "single-source",
+   "sources": [
+    "sg-24:18"
+   ],
+   "earns": "An antiderivative mathematically equivalent to the correct one, presented with supporting work and carrying a constant of integration (sg-24:18).",
+   "does_not_earn": "A final answer with no constant of integration, which sg-24:18 states does not earn the point even when the antiderivative is correct.",
+   "requires_previous_work": "yes",
+   "setup_alone_earns": "n/a",
+   "simplification_required": "no",
+   "units_required": "no",
+   "interpretation_required": "no",
+   "justification_required": "no",
+   "hypotheses_required": "no",
+   "notation_requirements": "No special notation requirement stated in the rubrics reviewed.",
+   "precision_rules": "Not a reported-value point, so the three-decimal rule does not apply.",
+   "dependency_on_other_points": "sg-24:18 requires the two integration by parts points before this one.",
+   "eligibility_after_error": "No eligibility restriction stated in the rubrics reviewed.",
+   "rubric_instances": [
+    "sg-24:18 Q5(d) P3"
+   ],
+   "notes": "This is the one place in the corpus read where a constant of integration is load bearing for a point. Elsewhere sg-25:14 awards the antiderivative point with or without it. Wording drawn from the OCR layer of sg-24 page 18, so tagged single-source."
+  },
+  {
+   "id": "BC-PT-99072",
+   "name": "Comparison or limit comparison test with a correct conclusion",
+   "scope": "BC_only",
+   "evidence_tag": "single-source",
+   "sources": [
+    "sg-24:19",
+    "sg-24:20"
+   ],
+   "earns": "Considering the term of the series at the substituted value, then demonstrating that its terms exceed those of a named divergent series, or that the limit of the ratio to a divergent series is one (sg-24:20).",
+   "does_not_earn": "A declaration of an incorrect test; sg-24:20 states the test need not be named but the response cannot declare use of an incorrect one.",
+   "requires_previous_work": "yes",
+   "setup_alone_earns": "n/a",
+   "simplification_required": "no",
+   "units_required": "no",
+   "interpretation_required": "no",
+   "justification_required": "yes",
+   "hypotheses_required": "no",
+   "notation_requirements": "No special notation requirement stated in the rubrics reviewed.",
+   "precision_rules": "Not a reported-value point, so the three-decimal rule does not apply.",
+   "dependency_on_other_points": "sg-24:20 states the term point is what both the comparison and the limit comparison routes rest on, and that a single sentence naming the enlarged term and its divergence earns both points.",
+   "eligibility_after_error": "No eligibility restriction stated in the rubrics reviewed.",
+   "rubric_instances": [
+    "sg-24:19 Q6(a) P1",
+    "sg-24:19 Q6(a) P2"
+   ],
+   "notes": "One document in the corpus read, and its wording comes from the OCR layer of sg-24 pages 19 and 20, so tagged single-source."
   }
  ]
 }

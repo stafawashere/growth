@@ -11,14 +11,16 @@ Derived from the official scoring guidelines cached as sg-19, sg-21, sg-22, sg-2
 
 Citations use the form `sg-25:11`, meaning the cached document sg-25 at page 11. Rubric instances use `sg-25:11 Q3(a) P1`. From sg-25 onward the guidelines number points P1 to P9 across a whole question, so P1 is the document's own label. In sg-19 through sg-24 the guidelines number points inside a part and label them ordinally, so `P1` there means the first point of that part as the model solution orders it.
 
-Three candidate families were rejected during derivation. Limits of integration are never a point of their own: sg-25:7 states the limits and the outer factor are assessed in the answer point rather than in the integrand points, sg-26:19 states the limits need only be numerical for the arc length form point, and sg-22:18 states a definite integral with incorrect bounds earns neither the integral point nor the answer point. A constant of integration is not a point of its own either: sg-25:14 awards the antiderivative point with or without it, and it becomes scoreable only when bundled with the initial condition inside a separable differential equation (sg-26:13). A standalone equation or model setup family also failed to appear; every setup point in the corpus is tied to a named structure such as an average value formula (sg-25:2), a Riemann sum form (sg-26:3) or an average rate of change (sg-26:2).
+The scoring-note prose of sg-24 is absent from that document's embedded text layer and was recovered by optical character recognition of page renders, cached as `cache/text/sg-24/page-NNN.ocr.txt`. Records resting only on that layer are tagged single-source. A machine transcription can misread a symbol, so sg-24 wording should be re-checked against the rendered page before it is relied on alone.
+
+Three candidate families were rejected during derivation. Limits of integration are never a point of their own: sg-25:7 states the limits and the outer factor are assessed in the answer point rather than in the integrand points, sg-26:19 states the limits need only be numerical for the arc length form point, and sg-22:18 states a definite integral with incorrect bounds earns neither the integral point nor the answer point. A constant of integration is not a point of its own either, but it is load bearing in two places: sg-25:14 awards the antiderivative point with or without it, while sg-26:13 bundles it with the initial condition inside a separable differential equation and sg-24:18 requires it in the final answer to an indefinite integral, which is the point BC-PT-99071. A standalone equation or model setup family also failed to appear; every setup point in the corpus is tied to a named structure such as an average value formula (sg-25:2), a Riemann sum form (sg-26:3) or an average rate of change (sg-26:2).
 
 ## BC-PT-99001 Definite integral expression with correct limits [verified]
 
-Scope shared. Sources sg-22:2, sg-26:4, sg-24:3, sg-22:17, sg-23:7.
+Scope shared. Sources sg-22:2, sg-26:4, sg-24:3, sg-22:17, sg-23:7, sg-24:4.
 
-- Earns: A definite integral whose limits match the requested interval and whose integrand matches the requested quantity, with or without the differential (sg-26:4, sg-22:2).
-- Does not earn: An unsupported numerical value, or a definite integral whose bounds are wrong (sg-22:18).
+- Earns: A definite integral whose limits match the requested interval and whose integrand matches the requested quantity, with or without the differential (sg-26:4, sg-22:2, sg-24:4).
+- Does not earn: An unsupported numerical value, or a definite integral whose bounds are wrong (sg-22:18); an ambiguous response where the initial value sits inside the integral rather than beside it (sg-24:4).
 - Requires previous work: no
 - Setup alone earns: yes
 - Simplification required: no
@@ -29,8 +31,8 @@ Scope shared. Sources sg-22:2, sg-26:4, sg-24:3, sg-22:17, sg-23:7.
 - Notation: Differential may be omitted; sg-22:2 accepts dx written for dt. sg-23:8 treats a missing differential as recoverable for this point but restricts later eligibility.
 - Precision: Not a reported-value point, so the three-decimal rule does not apply.
 - Dependency: Independent of other points in the rubrics reviewed.
-- Eligibility after an error: sg-22:18 states a definite integral with incorrect bounds earns neither this point nor the answer point; sg-22:8 states a definite integral with incorrect limits is not eligible for the answer point.
-- Rubric instances: sg-22:2 Q1(a) P1; sg-26:4 Q1(C) P6; sg-24:3 Q1(c) P1; sg-22:17 Q5(a) P1; sg-23:7 Q2(c) P2
+- Eligibility after an error: sg-22:18 states a definite integral with incorrect bounds earns neither this point nor the answer point; sg-22:8 states a definite integral with incorrect limits is not eligible for the answer point; sg-24:4 states that if the limits of integration are incorrect the response does not earn the answer point, and that a response containing any linkage error can earn at most two of the three points in the part.
+- Rubric instances: sg-22:2 Q1(a) P1; sg-26:4 Q1(C) P6; sg-24:3 Q1(c) P1; sg-22:17 Q5(a) P1; sg-23:7 Q2(c) P2; sg-24:6 Q2(c) P1
 - Notes: This family absorbs what would otherwise be a separate limits-of-integration family. Limits are scored inside the integral point or inside the answer point, never as a point of their own.
 
 ## BC-PT-99002 Integrand only, limits assessed elsewhere [verified]
@@ -113,8 +115,8 @@ Scope shared. Sources sg-25:4, sg-25:8, sg-25:23, sg-26:11, sg-26:2, sg-22:6.
 
 Scope shared. Sources sg-25:11, sg-26:2, sg-22:13, sg-24:2.
 
-- Earns: Correct units, whether or not they are attached to a numerical value (sg-25:11, sg-26:2); equivalent compact forms such as birds per day squared are accepted (sg-26:2).
-- Does not earn: Units with no value present at all where the rubric ties them to a presented value (sg-22:13).
+- Earns: Correct units, whether or not they are attached to a numerical value (sg-25:11, sg-26:2); equivalent compact forms such as birds per day squared are accepted (sg-26:2), and sg-24:2 also accepts a shortened unit name attached to a numerical value.
+- Does not earn: Units with no value present at all; sg-24:2 states a response that presents only units without a numerical approximation does not earn the point, and sg-22:13 says the same.
 - Requires previous work: no
 - Setup alone earns: n/a
 - Simplification required: no
@@ -133,8 +135,8 @@ Scope shared. Sources sg-25:11, sg-26:2, sg-22:13, sg-24:2.
 
 Scope shared. Sources sg-23:2, sg-26:3, sg-24:3.
 
-- Earns: A sentence naming the accumulated quantity in context together with the time or spatial interval (sg-26:3, sg-23:2).
-- Does not earn: An interpretation that omits the interval, or that restates the integral without naming the quantity (sg-26:3).
+- Earns: A sentence naming the accumulated or averaged quantity in context together with the time or spatial interval (sg-26:3, sg-23:2, sg-24:3).
+- Does not earn: An interpretation that omits the interval, or that restates the integral without naming the quantity (sg-26:3); an interpretation carrying incorrect units, which sg-24:3 states forfeits the point even though units are not otherwise required.
 - Requires previous work: no
 - Setup alone earns: n/a
 - Simplification required: no
@@ -147,7 +149,7 @@ Scope shared. Sources sg-23:2, sg-26:3, sg-24:3.
 - Dependency: sg-26:3 states this point can be earned whether or not the sum and approximation points were earned.
 - Eligibility after an error: No eligibility restriction stated in the rubrics reviewed.
 - Rubric instances: sg-23:2 Q1(a) P1; sg-26:3 Q1(B) P5; sg-24:3 Q1(b) P3
-- Notes: sg-26:3 says the response need not include units of time or the location name, so the unit demand varies by year.
+- Notes: sg-26:3 says the response need not include units of time or the location name, so the unit demand varies by year. sg-24:3 makes the asymmetry explicit: units need not be referenced, but incorrect units in the interpretation lose the point.
 
 ## BC-PT-99008 Interpretation of a derivative value in context with units [single-source]
 
@@ -173,8 +175,8 @@ Scope shared. Sources sg-23:4, sg-21:2, sg-21:3.
 
 Scope BC_only. Sources sg-24:16.
 
-- Earns: Naming the integral as the arc length of the given curve, and naming the interval it is taken over; the rubrics split these as two points (sg-24:16).
-- Does not earn: Naming the quantity as a distance travelled or an area rather than the length of the graph (sg-24:16).
+- Earns: Naming the integral as the arc length or the length of the graph of the given function, and naming the interval it is taken over; the rubrics split these as two points (sg-24:16). sg-24:16 also accepts distance explicitly connected to the graph, such as distance along the curve.
+- Does not earn: A bare reference to distance or distance travelled with no connection to the graph, which sg-24:16 states does not earn the arc length point although it stays eligible for the interval point; a reference to the length of a different function (sg-24:16).
 - Requires previous work: no
 - Setup alone earns: n/a
 - Simplification required: no
@@ -184,10 +186,10 @@ Scope BC_only. Sources sg-24:16.
 - Hypotheses required: no
 - Notation: No special notation requirement stated in the rubrics reviewed.
 - Precision: Not a reported-value point, so the three-decimal rule does not apply.
-- Dependency: Independent of other points in the rubrics reviewed.
+- Dependency: sg-24:16 keeps the interval point available after the arc length point is lost, and requires the interval to be connected to arc length, length, or distance.
 - Eligibility after an error: No eligibility restriction stated in the rubrics reviewed.
 - Rubric instances: sg-24:16 Q5(b) P1; sg-24:16 Q5(b) P2
-- Notes: One document only in the corpus read, so tagged single-source.
+- Notes: One document in the corpus read, and its wording comes from the OCR layer sg-24 page 16, so tagged single-source.
 
 ## BC-PT-99010 Justification by sign analysis of a derivative [verified]
 
@@ -232,7 +234,7 @@ Scope shared. Sources sg-25:5, sg-25:19, sg-23:15, sg-22:4.
 Scope shared. Sources sg-26:8, sg-24:10, sg-23:13.
 
 - Earns: Correct classification of the critical point as a relative maximum, relative minimum, or neither, with analysis using a first or second derivative test; the test need not be named (sg-26:8).
-- Does not earn: A candidates test, which sg-26:8 states is not sufficient justification here; an assertion with no supporting sign or second-derivative analysis.
+- Does not earn: A candidates test, which sg-26:8 states is not sufficient justification here; an assertion with no supporting sign or second-derivative analysis. sg-24:10 states the classification point cannot be earned without the preceding sign point and is earned only for a correct justification with the correct classification.
 - Requires previous work: no
 - Setup alone earns: n/a
 - Simplification required: no
@@ -242,10 +244,10 @@ Scope shared. Sources sg-26:8, sg-24:10, sg-23:13.
 - Hypotheses required: no
 - Notation: No special notation requirement stated in the rubrics reviewed.
 - Precision: Not a reported-value point, so the three-decimal rule does not apply.
-- Dependency: sg-26:8 requires the critical-value point first, and does not require the value to be restated here.
+- Dependency: sg-26:8 requires the critical-value point first, and does not require the value to be restated here; sg-24:10 requires the sign point first.
 - Eligibility after an error: No eligibility restriction stated in the rubrics reviewed.
 - Rubric instances: sg-26:8 Q2(C) P7; sg-24:10 Q3(b) P3; sg-23:13 Q4(a) P1
-- Notes: sg-23:13 accepts the shorter form that the derivative does not change sign, so neither extremum occurs.
+- Notes: sg-23:13 accepts the shorter form that the derivative does not change sign, so neither extremum occurs. sg-24:10 accepts a sign statement at a single value on each side of the critical point and states it is not necessary to say the derivative does not change sign on those intervals, and lists a Second Derivative Test alternative.
 
 ## BC-PT-99013 Considers the derivative set equal to zero [verified]
 
@@ -270,7 +272,7 @@ Scope shared. Sources sg-25:5, sg-25:8, sg-25:19, sg-26:17, sg-23:15, sg-22:12.
 
 Scope shared. Sources sg-24:8, sg-24:10, sg-26:11, sg-26:12, sg-22:4.
 
-- Earns: An explicit statement about whether a first or second derivative is positive, negative, or zero on the relevant interval, symbolically or in words (sg-26:12, sg-24:8).
+- Earns: An explicit statement about whether a first or second derivative is positive, negative, or zero on the relevant interval, symbolically or in words (sg-26:12, sg-24:8, sg-24:10).
 - Does not earn: A statement about the sign of the function rather than the derivative, or a reference to the concavity of the derivative itself (sg-26:12).
 - Requires previous work: no
 - Setup alone earns: yes
@@ -281,9 +283,10 @@ Scope shared. Sources sg-24:8, sg-24:10, sg-26:11, sg-26:12, sg-22:4.
 - Hypotheses required: no
 - Notation: No special notation requirement stated in the rubrics reviewed.
 - Precision: Not a reported-value point, so the three-decimal rule does not apply.
-- Dependency: sg-26:12 and sg-22:4 both make the reason point eligible only after this point is earned.
+- Dependency: sg-26:12, sg-24:8 and sg-24:10 all make the following reason or justification point eligible only after this point is earned.
 - Eligibility after an error: No eligibility restriction stated in the rubrics reviewed.
 - Rubric instances: sg-24:8 Q2(d) P1; sg-24:10 Q3(b) P1; sg-26:11 Q3(C) P3; sg-22:4 Q1(c) P1
+- Notes: sg-24:8 awards this point for the equation, either inequality, or even the solved critical value, which is looser than the parallel consideration points at sg-25:5 and sg-26:17.
 
 ## BC-PT-99015 Differentiable implies continuous [verified]
 
@@ -348,7 +351,7 @@ Scope shared. Sources sg-23:3, sg-21:17.
 Scope shared. Sources sg-25:13, sg-26:3, sg-23:2, sg-22:15, sg-24:3.
 
 - Earns: A sum whose terms each show a value factor and a width factor, with at least five of the six factors correct for three subintervals (sg-25:13, sg-26:3, sg-23:2) or seven of eight for four subintervals (sg-22:15).
-- Does not earn: A left or right sum where a midpoint or trapezoidal sum was asked for (sg-26:3, sg-25:13); an unsupported total (sg-26:3, sg-22:15).
+- Does not earn: A left or right sum where a midpoint or trapezoidal sum was asked for (sg-26:3, sg-25:13); an unsupported total (sg-26:3, sg-22:15, sg-24:3).
 - Requires previous work: no
 - Setup alone earns: yes
 - Simplification required: no
@@ -359,8 +362,9 @@ Scope shared. Sources sg-25:13, sg-26:3, sg-23:2, sg-22:15, sg-24:3.
 - Notation: sg-25:13 and sg-26:3 instruct readers to read an equals sign as approximately equal for this point.
 - Precision: Not a reported-value point, so the three-decimal rule does not apply.
 - Dependency: Independent of other points in the rubrics reviewed.
-- Eligibility after an error: sg-25:13 and sg-26:3 state any single incorrect factor blocks the approximation point while the form point can still stand; sg-25:13 and sg-26:3 both give the form point but not the value point to a completely correct sum of the wrong type.
+- Eligibility after an error: sg-25:13 and sg-26:3 state any single incorrect factor blocks the approximation point while the form point can still stand; sg-25:13 and sg-26:3 both give the form point but not the value point to a completely correct sum of the wrong type, and sg-24:3 gives one of the two points for the same situation.
 - Rubric instances: sg-25:13 Q3(c) P5; sg-26:3 Q1(B) P3; sg-23:2 Q1(a) P2; sg-22:15 Q4(c) P1; sg-24:3 Q1(b) P1
+- Notes: sg-24:3 adds that values must be pulled from the table to earn the approximation point, and that units will not affect scoring for it.
 
 ## BC-PT-99019 Approximation value supported by the sum [verified]
 
@@ -461,8 +465,8 @@ Scope shared. Sources sg-25:20, sg-25:21, sg-22:16.
 
 Scope shared. Sources sg-25:16, sg-24:13, sg-24:15, sg-24:14.
 
-- Earns: Writing the derivative of the accumulation function as the integrand evaluated at the variable, in general or at the requested value (sg-25:16, sg-24:13).
-- Does not earn: Differencing the integrand at the two limits, which sg-25:16 states earns the answer point but not this one.
+- Earns: Writing the derivative of the accumulation function as the integrand evaluated at the variable, in general or at the requested value (sg-25:16, sg-24:13, sg-24:15).
+- Does not earn: Differencing the integrand at the two limits, which sg-25:16 states earns the answer point but not this one; equating a variable expression to a numerical value, which sg-24:15 states earns at most one of the two points in that part.
 - Requires previous work: no
 - Setup alone earns: yes
 - Simplification required: no
@@ -472,9 +476,10 @@ Scope shared. Sources sg-25:16, sg-24:13, sg-24:15, sg-24:14.
 - Hypotheses required: no
 - Notation: No special notation requirement stated in the rubrics reviewed.
 - Precision: Not a reported-value point, so the three-decimal rule does not apply.
-- Dependency: sg-25:16 allows the answer point on an implied application of the theorem even when this point is not earned.
+- Dependency: sg-25:16 allows the answer point on an implied application of the theorem even when this point is not earned, and sg-24:13 states the same in its own wording.
 - Eligibility after an error: No eligibility restriction stated in the rubrics reviewed.
 - Rubric instances: sg-25:16 Q4(a) P1; sg-24:13 Q4(b) P1; sg-24:15 Q5(a) P1; sg-24:14 Q4(c) P1
+- Notes: sg-24:13 requires the connection to be made explicitly in that part, and states that writing the second derivative relation instead earns this point but restricts how the following reason point can be earned. sg-24:14 states a response with one or more linkage errors does not earn the first point it would otherwise have earned.
 
 ## BC-PT-99025 Tangent line approximation [verified]
 
@@ -513,6 +518,7 @@ Scope shared. Sources sg-23:10, sg-26:11, sg-26:12, sg-24:4.
 - Dependency: sg-26:12 states eligibility for this point requires the sign-of-second-derivative point first; sg-23:11 allows it with an incorrect second derivative provided that expression is a nonconstant linear function negative over the relevant range.
 - Eligibility after an error: No eligibility restriction stated in the rubrics reviewed.
 - Rubric instances: sg-23:10 Q3(c) P2; sg-26:11 Q3(C) P4; sg-24:4 Q1(d) P1
+- Notes: sg-24:4 carries the same architecture for a rate-of-change question: the point is earned only for a correct answer with a correct reason referencing the sign of the second derivative, a reason from evaluation at a single point does not earn it, an ambiguous pronoun does not earn it, and the interval need not be restated.
 
 ## BC-PT-99027 Higher derivative expression evaluated at a point [verified]
 
@@ -549,7 +555,7 @@ Scope BC_only. Sources sg-26:12, sg-26:13, sg-23:11, sg-23:12, sg-24:11, sg-21:2
 - Notation: No special notation requirement stated in the rubrics reviewed.
 - Precision: Not a reported-value point, so the three-decimal rule does not apply.
 - Dependency: This point gates every later point in the part (sg-26:13, sg-23:12, sg-21:20).
-- Eligibility after an error: sg-21:20 states that if an error in separation leaves one side correct, only the matching antiderivative point remains available; sg-26:13 gives a special case where a sign error in the denominator keeps the constant point but blocks the solve point.
+- Eligibility after an error: sg-21:20 states that if an error in separation leaves one side correct, only the matching antiderivative point remains available; sg-26:13 gives a special case where a sign error in the denominator keeps the constant point but blocks the solve point; sg-24:11 gives a special case where an incorrect separation earns neither the separation point nor the solve point but stays eligible for both antiderivative points and, through them, the constant point.
 - Rubric instances: sg-26:12 Q3(D) P5; sg-23:11 Q3(d) P1; sg-24:11 Q3(c) P1; sg-21:20 Q5(c) P1; sg-19:5 Q4(b) P1
 - Notes: Scope marked BC_only because the AP Calculus BC differential equation questions carry the BC-only header in sg-26:12, although separable equations themselves are shared content.
 
@@ -566,7 +572,7 @@ Scope shared. Sources sg-26:12, sg-26:13, sg-24:11, sg-21:20.
 - Interpretation required: no
 - Justification required: no
 - Hypotheses required: no
-- Notation: sg-26:13 accepts either parentheses or absolute value on the logarithm; sg-23:12 states an antiderivative written without absolute value symbols stays eligible for all points; sg-21:20 accepts either form.
+- Notation: sg-26:13 accepts either parentheses or absolute value on the logarithm; sg-23:12 states an antiderivative written without absolute value symbols stays eligible for all points; sg-21:20 and sg-24:11 accept either form, and sg-24:11 states explicitly that a logarithm written without absolute value symbols earns that antiderivative point.
 - Precision: Not a reported-value point, so the three-decimal rule does not apply.
 - Dependency: Requires the separation point (sg-26:13).
 - Eligibility after an error: No eligibility restriction stated in the rubrics reviewed.
@@ -606,9 +612,10 @@ Scope shared. Sources sg-26:12, sg-26:13, sg-23:11, sg-23:12, sg-24:11, sg-21:20
 - Hypotheses required: no
 - Notation: No special notation requirement stated in the rubrics reviewed.
 - Precision: Not a reported-value point, so the three-decimal rule does not apply.
-- Dependency: sg-26:13 requires the separation point and one antiderivative point; sg-23:12 requires the first two points of the part; sg-21:20 requires separation and at least one of the two antiderivative points.
+- Dependency: sg-26:13 requires the separation point and one antiderivative point; sg-23:12 requires the first two points of the part; sg-21:20 and sg-24:11 require the separation point and at least one of the two antiderivative points.
 - Eligibility after an error: No eligibility restriction stated in the rubrics reviewed.
 - Rubric instances: sg-26:12 Q3(D) P8; sg-23:11 Q3(d) P3; sg-24:11 Q3(c) P4; sg-21:20 Q5(c) P4; sg-19:5 Q4(b) P3
+- Notes: sg-24:11 states an eligible response earns the point by correctly including the constant in an equation and substituting the given values for the two variables.
 
 ## BC-PT-99032 Solves for the particular solution [verified]
 
@@ -625,15 +632,15 @@ Scope shared. Sources sg-26:12, sg-26:13, sg-23:12, sg-24:11, sg-21:20.
 - Hypotheses required: no
 - Notation: No special notation requirement stated in the rubrics reviewed.
 - Precision: Not a reported-value point, so the three-decimal rule does not apply.
-- Dependency: sg-26:13 requires separation and both antiderivative points; sg-23:12 and sg-21:20 require all earlier points of the part.
-- Eligibility after an error: sg-26:13 allows this point without explicit constant work when the final function is correct, and states no justification is needed for the sign of the exponential coefficient.
+- Dependency: sg-26:13 requires separation and both antiderivative points; sg-23:12, sg-21:20 and sg-24:11 require all earlier points of the part.
+- Eligibility after an error: sg-26:13 allows this point without explicit constant work when the final function is correct, and states no justification is needed for the sign of the exponential coefficient; sg-24:11 states a response does not need to argue that the absolute value resolves to the positive branch in order to earn this point.
 - Rubric instances: sg-26:12 Q3(D) P9; sg-23:12 Q3(d) P4; sg-24:11 Q3(c) P5; sg-21:20 Q5(c) P5
 
 ## BC-PT-99033 Uses the initial condition in an accumulation expression [verified]
 
 Scope shared. Sources sg-24:3, sg-24:4, sg-24:6, sg-24:7, sg-22:8.
 
-- Earns: Adding the known function value at one endpoint to a definite integral of the rate (sg-24:3, sg-22:8).
+- Earns: Adding the known function value at one endpoint to a definite integral of the rate, presented either symbolically or numerically (sg-24:4, sg-22:8).
 - Does not earn: A definite integral alone with the known value never added (sg-22:8).
 - Requires previous work: no
 - Setup alone earns: n/a
@@ -644,8 +651,8 @@ Scope shared. Sources sg-24:3, sg-24:4, sg-24:6, sg-24:7, sg-22:8.
 - Hypotheses required: no
 - Notation: sg-22:8 lists cases where a missing differential shifts which of the three points are available.
 - Precision: Not a reported-value point, so the three-decimal rule does not apply.
-- Dependency: sg-22:8 requires the value to be added to a definite integral, and lets a response that misses the integral point still earn the answer point on a consistent value.
-- Eligibility after an error: No eligibility restriction stated in the rubrics reviewed.
+- Dependency: sg-22:8 requires the value to be added to a definite integral, and lets a response that misses the integral point still earn the answer point on a consistent value; sg-24:7 requires at least one of the two earlier points of its part before the answer point, and states that any linkage error caps the part at two of three points.
+- Eligibility after an error: sg-24:7 states a response that reverses the limits of integration earns this point but not the answer point, and sg-24:6 allows this point to be earned by solving for a constant of integration from an antiderivative evaluated at the known input.
 - Rubric instances: sg-24:3 Q1(c) P2; sg-24:6 Q2(c) P2; sg-22:8 Q2(c) P2
 
 ## BC-PT-99034 Euler method step [verified]
@@ -666,6 +673,7 @@ Scope BC_only. Sources sg-25:23, sg-24:17, sg-21:19.
 - Dependency: Independent of other points in the rubrics reviewed.
 - Eligibility after an error: sg-25:23 states later simplification or rounding errors do not affect this point; sg-24:17 and sg-21:19 allow at most one error and block the answer point if one occurs; sg-21:19 does not count an imported wrong intermediate value as a second error.
 - Rubric instances: sg-25:23 Q5(D) P8; sg-24:17 Q5(c) P1; sg-21:19 Q5(b) P1
+- Notes: sg-24:17 states that in the presence of a correct answer a table need not be labelled, and that a single error in the first step must be imported into the second step for this point to stand.
 
 ## BC-PT-99035 First terms of a Taylor or Maclaurin polynomial [verified]
 
@@ -728,8 +736,8 @@ Scope BC_only. Sources sg-25:26, sg-26:23, sg-22:22.
 
 Scope BC_only. Sources sg-25:26, sg-24:22, sg-22:22.
 
-- Earns: The correct general term, presented on its own or as the closing term of a polynomial or series (sg-25:26, sg-22:22).
-- Does not earn: An ellipsis with no closed form for the nth term (sg-22:22).
+- Earns: The correct general term, presented on its own or as the closing term of a polynomial or series; any mathematically equivalent form is accepted (sg-24:22).
+- Does not earn: An ellipsis with no closed form for the nth term (sg-22:22); a simplification that is presented but incorrect, which sg-24:22 states loses the point although simplification is not required.
 - Requires previous work: no
 - Setup alone earns: n/a
 - Simplification required: no
@@ -768,7 +776,7 @@ Scope BC_only. Sources sg-25:22, sg-23:20.
 Scope BC_only. Sources sg-26:22, sg-24:21, sg-22:21, sg-19:7.
 
 - Earns: Evaluating the first omitted term of the alternating series at the requested value (sg-26:22, sg-22:21).
-- Does not earn: Using a term of the wrong degree; sg-22:21 states any term of degree five or higher does not earn the point, and sg-22:21 states listing the term inside a polynomial is insufficient.
+- Does not earn: Using a term of the wrong degree; sg-22:21 and sg-24:21 both state any term of degree five or higher does not earn the point, and both state that listing the term inside a polynomial is insufficient. sg-24:21 also withholds the point for the simplified value of the term presented without the term itself.
 - Requires previous work: no
 - Setup alone earns: n/a
 - Simplification required: no
@@ -779,7 +787,7 @@ Scope BC_only. Sources sg-26:22, sg-24:21, sg-22:21, sg-19:7.
 - Notation: No special notation requirement stated in the rubrics reviewed.
 - Precision: Not a reported-value point, so the three-decimal rule does not apply.
 - Dependency: Independent of other points in the rubrics reviewed.
-- Eligibility after an error: sg-26:22 awards this point for correctly evaluating the third-degree term found earlier even when that term is wrong, but then blocks the justification point.
+- Eligibility after an error: sg-26:22 awards this point for correctly evaluating the third-degree term found earlier even when that term is wrong, but then blocks the justification point; sg-24:21 awards it for a correct term subsequently simplified incorrectly while blocking the verification point.
 - Rubric instances: sg-26:22 Q6(C) P5; sg-24:21 Q6(b) P1; sg-22:21 Q6(b) P1; sg-19:7 Q6(d) P2
 
 ## BC-PT-99041 Error bound analysis with an explicit inequality [verified]
@@ -800,7 +808,7 @@ Scope BC_only. Sources sg-25:22, sg-26:22, sg-23:20, sg-22:21, sg-24:21.
 - Dependency: Every instance requires the matching bound point first (sg-25:22, sg-26:22, sg-22:21).
 - Eligibility after an error: No eligibility restriction stated in the rubrics reviewed.
 - Rubric instances: sg-25:22 Q5(c) P7; sg-26:22 Q6(C) P6; sg-23:20 Q6(b) P2; sg-22:21 Q6(b) P2; sg-24:21 Q6(b) P2
-- Notes: sg-26:22 and sg-22:21 additionally require the response to state that the series is a convergent alternating series whose terms decrease to zero.
+- Notes: sg-26:22 and sg-22:21 additionally require the response to state that the series is a convergent alternating series whose terms decrease to zero; sg-24:21 requires only that the response state the series is alternating or that the alternating series error bound is being used, and accepts a bare inequality accompanied by that indication.
 
 ## BC-PT-99042 Ratio setup for the ratio test [verified]
 
@@ -818,7 +826,7 @@ Scope BC_only. Sources sg-25:24, sg-25:25, sg-24:23, sg-22:20, sg-21:24.
 - Notation: No special notation requirement stated in the rubrics reviewed.
 - Precision: Not a reported-value point, so the three-decimal rule does not apply.
 - Dependency: Independent of other points in the rubrics reviewed.
-- Eligibility after an error: sg-25:25 and sg-21:24 both bank this point once earned. sg-25:25 accepts several reciprocal ratios, which keep the response eligible for the middle points but not for the final interval point. sg-22:21 keeps a substitution error in the exponent eligible for the first three points only.
+- Eligibility after an error: sg-25:25, sg-21:24 and sg-24:23 all bank this point once earned. sg-25:25 and sg-24:23 accept several reciprocal ratios; sg-25:25 keeps those eligible for the middle points but not the final interval point, while sg-24:23 keeps them eligible for the limit point and awards the radius point only with a valid explanation for reporting the reciprocal. sg-22:21 keeps a substitution error in the exponent eligible for the first three points only.
 - Rubric instances: sg-25:24 Q6(a) P1; sg-24:23 Q6(d) P1; sg-22:20 Q6(a) P1; sg-21:24 Q6(c) P1
 
 ## BC-PT-99043 Limit of the ratio [verified]
@@ -834,9 +842,9 @@ Scope BC_only. Sources sg-25:24, sg-25:25, sg-24:23, sg-21:24.
 - Interpretation required: no
 - Justification required: no
 - Hypotheses required: no
-- Notation: sg-22:21 requires correct limit notation and either the absolute value of the ratio or a resolution to a squared inequality; sg-25:25 states a response not using absolute value can still earn both the ratio and the limit points.
+- Notation: sg-22:21 requires correct limit notation and either the absolute value of the ratio or a resolution to a squared inequality; sg-25:25 states a response not using absolute value can still earn both the ratio and the limit points; sg-24:23 requires the response to use its ratio and to evaluate the limit correctly using correct limit notation.
 - Precision: Not a reported-value point, so the three-decimal rule does not apply.
-- Dependency: sg-21:24 states this point cannot be earned without the ratio point.
+- Dependency: sg-21:24 states this point cannot be earned without the ratio point; sg-24:23 states any error in simplification or evaluation of the limit forfeits this point while the ratio point stands.
 - Eligibility after an error: No eligibility restriction stated in the rubrics reviewed.
 - Rubric instances: sg-25:24 Q6(a) P2; sg-24:23 Q6(d) P2; sg-21:24 Q6(c) P2
 
@@ -903,8 +911,8 @@ Scope BC_only. Sources sg-25:24, sg-25:25, sg-22:20, sg-24:19.
 
 Scope BC_only. Sources sg-24:22, sg-24:23, sg-21:24.
 
-- Earns: An explicit statement of the radius, obtained either from the ratio test inequality or by citing the radius of a related series (sg-21:24, sg-24:22).
-- Does not earn: An interval presented with no identification of the radius, which sg-21:24 states does not earn the point.
+- Earns: An explicit statement of the radius, obtained either from the ratio test inequality or by citing the radius of a related series, with supporting work (sg-21:24, sg-24:22, sg-24:23).
+- Does not earn: An interval presented with no identification of the radius, which sg-21:24 states does not earn the point; an unsupported value, which sg-24:22 and sg-24:23 both reject.
 - Requires previous work: no
 - Setup alone earns: n/a
 - Simplification required: no
@@ -914,9 +922,10 @@ Scope BC_only. Sources sg-24:22, sg-24:23, sg-21:24.
 - Hypotheses required: no
 - Notation: No special notation requirement stated in the rubrics reviewed.
 - Precision: Not a reported-value point, so the three-decimal rule does not apply.
-- Dependency: sg-21:24 requires a finite nonzero limit for the coefficient before this point is available.
+- Dependency: sg-21:24 requires a finite nonzero limit for the coefficient before this point is available; sg-24:22 states this point can be earned without the general term point.
 - Eligibility after an error: No eligibility restriction stated in the rubrics reviewed.
 - Rubric instances: sg-24:22 Q6(c) P2; sg-24:23 Q6(d) P3; sg-21:24 Q6(c) P3
+- Notes: sg-24:22 lists a ratio test route and a root test route as alternate supports for the same point.
 
 ## BC-PT-99048 Polar area integrand with the square of the radial function [verified]
 
@@ -960,8 +969,8 @@ Scope BC_only. Sources sg-26:7, sg-23:7, sg-22:6, sg-25:6, sg-25:7.
 
 Scope BC_only. Sources sg-24:5, sg-22:7, sg-23:6.
 
-- Earns: The square root of the sum of squares of the two component derivatives, with the setup visible (sg-24:5, sg-22:7).
-- Does not earn: A bare statement that speed equals the target value, which sg-23:6 states does not earn the point.
+- Earns: The square root of the sum of squares of the two component derivatives, written either at the requested time or in general (sg-24:5, sg-22:7).
+- Does not earn: A bare statement that speed equals the target value, which sg-23:6 states does not earn the point; an equality chain between a general expression and a numerical value, which sg-24:5 states caps the part at one of two points.
 - Requires previous work: no
 - Setup alone earns: yes
 - Simplification required: no
@@ -971,8 +980,8 @@ Scope BC_only. Sources sg-24:5, sg-22:7, sg-23:6.
 - Hypotheses required: no
 - Notation: No special notation requirement stated in the rubrics reviewed.
 - Precision: Not a reported-value point, so the three-decimal rule does not apply.
-- Dependency: Independent of other points in the rubrics reviewed.
-- Eligibility after an error: sg-23:6 states a parenthesis error in either component blocks this point but leaves the answer point available, and sg-23:8 carries that decision forward so the same error is not penalised twice.
+- Dependency: sg-24:5 states the answer point is earned regardless of whether this point is earned.
+- Eligibility after an error: sg-23:6 states a parenthesis error in either component blocks this point but leaves the answer point available, and sg-23:8 carries that decision forward so the same error is not penalised twice. sg-24:5 states missing or incorrect units do not affect scoring in that part.
 - Rubric instances: sg-24:5 Q2(a) P1; sg-22:7 Q2(b) P1; sg-23:6 Q2(b) P1
 
 ## BC-PT-99051 Arc length or total distance integrand [verified]
@@ -988,7 +997,7 @@ Scope BC_only. Sources sg-24:6, sg-22:9, sg-23:8, sg-26:19.
 - Interpretation required: no
 - Justification required: no
 - Hypotheses required: no
-- Notation: sg-26:19 requires the limits to be numerical but not correct for this point, and assesses the derivative expression and the straight boundaries in the following point.
+- Notation: sg-26:19 requires the limits to be numerical but not correct for this point, and assesses the derivative expression and the straight boundaries in the following point. sg-24:6 accepts the integral with or without the differential and states that writing the two squared derivative terms without an outer bracket is not read as a parenthesis error.
 - Precision: Not a reported-value point, so the three-decimal rule does not apply.
 - Dependency: Independent of other points in the rubrics reviewed.
 - Eligibility after an error: No eligibility restriction stated in the rubrics reviewed.
@@ -1085,11 +1094,12 @@ Scope BC_only. Sources sg-24:18, sg-23:18, sg-22:18.
 - Interpretation required: no
 - Justification required: no
 - Hypotheses required: no
-- Notation: sg-23:18 and sg-22:18 accept the tabular method, earning this point for columns, labelled or not, that begin with the two chosen factors.
+- Notation: sg-23:18 and sg-22:18 accept the tabular method, earning this point for columns, labelled or not, that begin with the two chosen factors; sg-24:18 states the same and names the two columns.
 - Precision: Not a reported-value point, so the three-decimal rule does not apply.
 - Dependency: Independent of other points in the rubrics reviewed.
 - Eligibility after an error: sg-22:18 states an incorrect integral that still requires parts remains eligible for this point and the next.
 - Rubric instances: sg-24:18 Q5(d) P1; sg-23:18 Q5(c) P1; sg-22:18 Q5(b) P2
+- Notes: sg-24:18 states the first two points are earned with an implied choice in the presence of the parts expression or any mathematically equivalent expression, and gives an alternate route through splitting the integrand first.
 
 ## BC-PT-99057 Integration by parts expression uv minus the integral of v du [verified]
 
@@ -1109,6 +1119,7 @@ Scope BC_only. Sources sg-24:18, sg-23:18, sg-22:18.
 - Dependency: sg-23:18 and sg-22:18 make the answer point available only after both parts points are earned.
 - Eligibility after an error: No eligibility restriction stated in the rubrics reviewed.
 - Rubric instances: sg-24:18 Q5(d) P2; sg-23:18 Q5(c) P2; sg-22:18 Q5(b) P3
+- Notes: sg-24:18 accepts any mathematically equivalent form of the parts expression, including one produced by the tabular method.
 
 ## BC-PT-99058 Volume integrand form [verified]
 
@@ -1247,8 +1258,8 @@ Scope shared. Sources sg-25:18, sg-22:10.
 
 Scope shared. Sources sg-23:9, sg-24:9.
 
-- Earns: A curve through the given point that extends close to both edges of the given field, with no obvious conflict with the drawn segments, and that respects the stated asymptote (sg-23:9).
-- Does not earn: A curve crossing the horizontal segments that mark the equilibrium value (sg-23:9).
+- Earns: A curve through the given point that extends far enough across the given field, with no obvious conflict with the drawn segments, and that respects any stated asymptote (sg-23:9, sg-24:9).
+- Does not earn: A curve crossing the horizontal segments that mark the equilibrium value (sg-23:9); a curve that stops short of the stated extent, which sg-24:9 fixes at a named value of the independent variable.
 - Requires previous work: no
 - Setup alone earns: n/a
 - Simplification required: no
@@ -1261,7 +1272,7 @@ Scope shared. Sources sg-23:9, sg-24:9.
 - Dependency: Independent of other points in the rubrics reviewed.
 - Eligibility after an error: No eligibility restriction stated in the rubrics reviewed.
 - Rubric instances: sg-23:9 Q3(a) P1; sg-24:9 Q3(a) P1
-- Notes: Two rubric instances in the corpus read, so tagged single-source. sg-23:9 states only the portion inside the given field is considered.
+- Notes: Two rubric instances in the corpus read, so tagged single-source. sg-23:9 and sg-24:9 both state only the portion inside the given field is considered.
 
 ## BC-PT-99066 Explanation referencing the sign of the slopes in a slope field [single-source]
 
@@ -1325,7 +1336,7 @@ Scope shared. Sources sg-25:26, sg-26:22, sg-23:20, sg-22:21.
 
 Scope shared. Sources sg-25:18, sg-24:12, sg-24:13.
 
-- Earns: The value of the accumulation function at the requested input, computed from areas of the regions under the graph, with the correct sign for reversed limits (sg-25:18, sg-24:12).
+- Earns: The value of the accumulation function at the requested input, computed from areas of the regions under the graph, with the correct sign for reversed limits; supporting work is not required, but any work shown must be correct (sg-24:13, sg-25:18).
 - Does not earn: A value from the wrong starting limit; sg-24:13 has a special case where an explicitly wrong lower limit forfeits the first point it would otherwise have earned.
 - Requires previous work: no
 - Setup alone earns: n/a
@@ -1334,8 +1345,68 @@ Scope shared. Sources sg-25:18, sg-24:12, sg-24:13.
 - Interpretation required: no
 - Justification required: no
 - Hypotheses required: no
-- Notation: No special notation requirement stated in the rubrics reviewed.
+- Notation: sg-24:13 states labelled values may be presented in any order, unlabelled values are read left to right and top to bottom, and a response presenting only one or two values must label them to earn any points.
 - Precision: Not a reported-value point, so the three-decimal rule does not apply.
 - Dependency: Independent of other points in the rubrics reviewed.
 - Eligibility after an error: sg-24:13 keeps the response eligible for all later points of the part with consistent answers and supporting work; sg-25:19 allows these values to be imported into a later candidates test.
 - Rubric instances: sg-25:18 Q4(c) P5; sg-24:12 Q4(a) P1; sg-24:12 Q4(a) P2; sg-24:12 Q4(a) P3
+
+## BC-PT-99070 Critical value identified [verified]
+
+Scope shared. Sources sg-24:10, sg-26:8, sg-22:4, sg-22:5.
+
+- Earns: The correct location of the critical point, with or without supporting work (sg-24:10, sg-26:8).
+- Does not earn: A value outside the stated interval offered as the answer; sg-26:8 holds the value to the three-decimal rule and sg-22:5 to the number of decimals presented.
+- Requires previous work: no
+- Setup alone earns: n/a
+- Simplification required: no
+- Units required: no
+- Interpretation required: no
+- Justification required: no
+- Hypotheses required: no
+- Notation: No special notation requirement stated in the rubrics reviewed.
+- Precision: sg-26:8 requires three decimal places, rounded or truncated, with the usual one-rounding-point exemption; sg-22:5 requires accuracy to the number of decimals presented, at least one and up to three.
+- Dependency: sg-26:8 makes the classification point available only after this point; sg-24:10 makes the justification point depend on the sign point rather than on this one.
+- Eligibility after an error: No eligibility restriction stated in the rubrics reviewed.
+- Rubric instances: sg-24:10 Q3(b) P2; sg-26:8 Q2(C) P6; sg-22:4 Q1(d) P2
+- Notes: sg-24:10 states a response may consider extra potential critical values without penalty, and sg-26:8 states any other identified critical values can be ignored.
+
+## BC-PT-99071 Indefinite integral answer including the constant of integration [single-source]
+
+Scope BC_only. Sources sg-24:18.
+
+- Earns: An antiderivative mathematically equivalent to the correct one, presented with supporting work and carrying a constant of integration (sg-24:18).
+- Does not earn: A final answer with no constant of integration, which sg-24:18 states does not earn the point even when the antiderivative is correct.
+- Requires previous work: yes
+- Setup alone earns: n/a
+- Simplification required: no
+- Units required: no
+- Interpretation required: no
+- Justification required: no
+- Hypotheses required: no
+- Notation: No special notation requirement stated in the rubrics reviewed.
+- Precision: Not a reported-value point, so the three-decimal rule does not apply.
+- Dependency: sg-24:18 requires the two integration by parts points before this one.
+- Eligibility after an error: No eligibility restriction stated in the rubrics reviewed.
+- Rubric instances: sg-24:18 Q5(d) P3
+- Notes: This is the one place in the corpus read where a constant of integration is load bearing for a point. Elsewhere sg-25:14 awards the antiderivative point with or without it. Wording drawn from the OCR layer of sg-24 page 18, so tagged single-source.
+
+## BC-PT-99072 Comparison or limit comparison test with a correct conclusion [single-source]
+
+Scope BC_only. Sources sg-24:19, sg-24:20.
+
+- Earns: Considering the term of the series at the substituted value, then demonstrating that its terms exceed those of a named divergent series, or that the limit of the ratio to a divergent series is one (sg-24:20).
+- Does not earn: A declaration of an incorrect test; sg-24:20 states the test need not be named but the response cannot declare use of an incorrect one.
+- Requires previous work: yes
+- Setup alone earns: n/a
+- Simplification required: no
+- Units required: no
+- Interpretation required: no
+- Justification required: yes
+- Hypotheses required: no
+- Notation: No special notation requirement stated in the rubrics reviewed.
+- Precision: Not a reported-value point, so the three-decimal rule does not apply.
+- Dependency: sg-24:20 states the term point is what both the comparison and the limit comparison routes rest on, and that a single sentence naming the enlarged term and its divergence earns both points.
+- Eligibility after an error: No eligibility restriction stated in the rubrics reviewed.
+- Rubric instances: sg-24:19 Q6(a) P1; sg-24:19 Q6(a) P2
+- Notes: One document in the corpus read, and its wording comes from the OCR layer of sg-24 pages 19 and 20, so tagged single-source.

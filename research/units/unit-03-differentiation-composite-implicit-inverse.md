@@ -594,7 +594,7 @@ Generated from data/frq_records.json and data/mcq_records.json. Every record cit
 |---|---|---|---|---|---|---|
 | BC-FRQ-2013-Q3-D | secondary | no_calculator | BC-QA-02007 | BC-SKL-02033, BC-SKL-03002, BC-SKL-02029, BC-SKL-04014 | 2 | BC-PT-99023, BC-PT-99004 |
 | BC-FRQ-2013-Q4-D | primary | no_calculator | BC-QA-03001 | BC-SKL-03002, BC-SKL-03005, BC-SKL-03006, BC-SKL-02012 | 3 | BC-PT-99023, BC-PT-99004 |
-| BC-FRQ-2014-Q2-C | secondary | calculator | BC-QA-09009 | BC-SKL-09030, BC-SKL-03002, BC-SKL-03027 | 2 | BC-PT-99005, BC-PT-99004 |
+| BC-FRQ-2014-Q2-C | secondary | calculator | BC-QA-99006 | BC-SKL-09030, BC-SKL-03002, BC-SKL-03027 | 2 | BC-PT-99005, BC-PT-99004 |
 | BC-FRQ-2014-Q3-D | primary | no_calculator | BC-QA-03001 | BC-SKL-03002, BC-SKL-03005, BC-SKL-03006 | 3 | BC-PT-99023, BC-PT-99004 |
 | BC-FRQ-2015-Q4-B | secondary | no_calculator | BC-QA-07010 | BC-SKL-03030, BC-SKL-03033, BC-SKL-05030, BC-SKL-07018 | 2 | BC-PT-99027, BC-PT-99063 |
 | BC-FRQ-2018-Q4-D | secondary | no_calculator | BC-QA-04006 | BC-SKL-04017, BC-SKL-04019, BC-SKL-04024, BC-SKL-04026, BC-SKL-02039, BC-SKL-03002 | 0 |  |
@@ -613,7 +613,7 @@ Generated from data/frq_records.json and data/mcq_records.json. Every record cit
 | BC-FRQ-2025-Q2-A | secondary | calculator | BC-QA-09009 | BC-SKL-09030, BC-SKL-03002, BC-SKL-02018 | 1 | BC-PT-99005 |
 | BC-FRQ-2025-Q2-D | secondary | calculator | BC-QA-09010 | BC-SKL-09031, BC-SKL-09032, BC-SKL-04019, BC-SKL-04024 | 2 | BC-PT-99049, BC-PT-99004 |
 | BC-FRQ-2025-Q5-A | primary | no_calculator | BC-QA-03008 | BC-SKL-02036, BC-SKL-03002, BC-SKL-03033, BC-SKL-03034, BC-SKL-07018 | 3 | BC-PT-99022, BC-PT-99023, BC-PT-99027 |
-| BC-FRQ-2026-Q2-B | secondary | calculator | BC-QA-09001 | BC-SKL-09033, BC-SKL-09002, BC-SKL-09003, BC-SKL-03002 | 3 | BC-PT-99049, BC-PT-99004, BC-PT-99004 |
+| BC-FRQ-2026-Q2-B | secondary | calculator | BC-QA-99001 | BC-SKL-09033, BC-SKL-09002, BC-SKL-09003, BC-SKL-03002 | 3 | BC-PT-99049, BC-PT-99004, BC-PT-99004 |
 
 | MCQ record | Calculator | Archetype | Skills |
 |---|---|---|---|

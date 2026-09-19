@@ -31,7 +31,8 @@ for location, record in all_records():
       failures.append(f"{record['id']} cites {doc_id} page {page} which is not cached")
       continue
 
-   haystack = normalise(page_file.read_text() + " " + (raw_file.read_text() if raw_file.exists() else ""))
+   ocr_file = page_file.with_suffix(".ocr.txt")
+   haystack = normalise(page_file.read_text() + " " + (raw_file.read_text() if raw_file.exists() else "") + " " + (ocr_file.read_text() if ocr_file.exists() else ""))
    needle = normalise(quote)
    is_found = needle in haystack
 

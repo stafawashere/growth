@@ -13779,7 +13779,8 @@
    "name": "Test the series of absolute values",
    "official_evidence": [
     "BC-FRQ-2021-Q6-B",
-    "BC-MCQ-SAMPLE-022"
+    "BC-MCQ-SAMPLE-022",
+    "BC-MCQ-CED-019"
    ],
    "practice_skills": [],
    "prerequisites": [
@@ -25194,75 +25195,74 @@
   {
    "adaptive": {
     "common_confusions": [
-     "BC-MIS-10001 (terms and total not separated)",
-     "BC-MIS-10002 (a partial sum read as the value)",
-     "BC-SKL-10011 (limit of the general term)"
+     "BC-MIS-10015 (the two labels treated as one)",
+     "BC-MIS-10016 (the two classifications ordered on a single scale)",
+     "BC-SKL-10035 (the absolute case)"
     ],
     "diagnostic_archetypes": [
-     "BC-QA-10002 (a value is requested, so the presence or absence of the limit step on S sub n is decisive)"
+     "BC-QA-10007 (the classification requires both verdicts and a named series)",
+     "BC-QA-10015 (a conditionally convergent endpoint series is the usual setting)"
     ],
-    "mastered_if": "The response takes the limit of the closed form for S sub n as n increases without bound and states that the series converges to that limit, or diverges when S sub n has no finite limit; the sentence is about the sum of the series, and the limit is applied to S sub n rather than to a sub n. BC-ERR-10001 is absent.",
-    "next_dependent_skills": [
-     "BC-SKL-10004",
-     "BC-SKL-10005"
-    ],
-    "partially_mastered_if": "A correct closed form for S sub n is produced and the limit step is omitted, so the answer stops at a partial sum, which is BC-ERR-10002 and matches BC-SIG-10024, or the limit of a sub n is taken in place of the limit of S sub n, which is BC-ERR-10001.",
-    "prerequisite_gap_if": "The limit of the closed form cannot be evaluated because the ratio of expressions in n is not handled, which is BC-PRQ-10004 rather than a partial-sum gap.",
-    "remediation_target": "BC-MIS-10002 (the series value defined as the limit of its partial sums) for the conceptual case; BC-PRQ-10004 (limits in the index) for the procedural case"
+    "mastered_if": "The response reports two findings, that the signed series converges and that the series of absolute values diverges, and gives the label conditionally convergent with both findings as the reason. BC-ERR-10023 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "Both tests are run and the label attached reverses them, which is BC-ERR-10023, or only one of the two findings is produced and the label is written as though both had been established.",
+    "prerequisite_gap_if": "One of the two tests cannot be carried out on its series, so only one verdict exists: that points at BC-SKL-10034 or BC-SKL-10030 rather than at the classification.",
+    "remediation_target": "BC-MIS-10016 (conditional and absolute as exclusive, not graded) for the conceptual case; BC-SKL-10034 (testing the absolute value series) for the procedural case"
    },
    "archetypes": [
-    "BC-QA-10002"
+    "BC-QA-10007",
+    "BC-QA-10015"
    ],
    "assessability_basis": "no archetype requiring at most two skills names this skill; assessable only inside multi-skill parts",
    "calculator_relevance": "none",
    "common_errors": [
-    "BC-ERR-10001"
+    "BC-ERR-10023"
    ],
-   "concept": "BC-CON-10002",
+   "concept": "BC-CON-10014",
    "confusable_with": [],
    "created": "2026-09-19",
-   "dependents": [
-    "BC-SKL-10004",
-    "BC-SKL-10005"
-   ],
-   "description_formal": "Given a closed form or a pattern for S sub n, evaluate the limit of S sub n as n increases without bound and state that the series converges to that limit or diverges.",
-   "description_plain": "Take the limit of the running totals and read off convergence or divergence.",
+   "dependents": [],
+   "description_formal": "Given that a series converges and that the series of absolute values diverges, state that the series converges conditionally and give both findings as the reason.",
+   "description_plain": "Say the series converges but its absolute value series does not.",
    "diagnostic_signals": [
-    "BC-SIG-10024"
+    "BC-SIG-10255",
+    "BC-SIG-10256"
    ],
    "essential_knowledge": [
-    "BC-EK-LIM-7A2"
+    "BC-EK-LIM-7A12"
    ],
    "evidence_tag": "inferred",
-   "id": "BC-SKL-10003",
+   "id": "BC-SKL-10036",
    "independently_assessable": false,
    "learning_objectives": [
     "BC-LO-LIM-7A"
    ],
    "mapping_tag": "verified",
    "misconceptions": [
-    "BC-MIS-10001",
-    "BC-MIS-10002"
+    "BC-MIS-10015",
+    "BC-MIS-10016"
    ],
-   "name": "Determine convergence of a series from the limit of its partial sums",
+   "name": "Classify a series as conditionally convergent",
    "official_evidence": [
+    "BC-MCQ-SAMPLE-022",
     "BC-MCQ-CED-019"
    ],
    "practice_skills": [],
    "prerequisites": [
-    "BC-PRQ-10004",
-    "BC-SKL-10001",
-    "BC-SKL-10002"
+    "BC-PRQ-06005",
+    "BC-SKL-10034",
+    "BC-SKL-10030"
    ],
    "representations": [
-    "BC-REP-11",
-    "BC-REP-10"
+    "BC-REP-04",
+    "BC-REP-11"
    ],
    "scope": "BC_only",
    "sources": [
-    "ced:186"
+    "ced:194",
+    "ced:190"
    ],
-   "topic": "BC-TOP-1001",
+   "topic": "BC-TOP-1009",
    "unit": "BC-UNIT-10",
    "updated": "2026-09-19"
   },
@@ -26411,79 +26411,6 @@
    ],
    "topic": "BC-TOP-0901",
    "unit": "BC-UNIT-09",
-   "updated": "2026-09-19"
-  },
-  {
-   "adaptive": {
-    "common_confusions": [
-     "BC-MIS-10015 (the two labels treated as one)",
-     "BC-MIS-10016 (the two classifications ordered on a single scale)",
-     "BC-SKL-10035 (the absolute case)"
-    ],
-    "diagnostic_archetypes": [
-     "BC-QA-10007 (the classification requires both verdicts and a named series)",
-     "BC-QA-10015 (a conditionally convergent endpoint series is the usual setting)"
-    ],
-    "mastered_if": "The response reports two findings, that the signed series converges and that the series of absolute values diverges, and gives the label conditionally convergent with both findings as the reason. BC-ERR-10023 is absent.",
-    "next_dependent_skills": [],
-    "partially_mastered_if": "Both tests are run and the label attached reverses them, which is BC-ERR-10023, or only one of the two findings is produced and the label is written as though both had been established.",
-    "prerequisite_gap_if": "One of the two tests cannot be carried out on its series, so only one verdict exists: that points at BC-SKL-10034 or BC-SKL-10030 rather than at the classification.",
-    "remediation_target": "BC-MIS-10016 (conditional and absolute as exclusive, not graded) for the conceptual case; BC-SKL-10034 (testing the absolute value series) for the procedural case"
-   },
-   "archetypes": [
-    "BC-QA-10007",
-    "BC-QA-10015"
-   ],
-   "assessability_basis": "no archetype requiring at most two skills names this skill; assessable only inside multi-skill parts",
-   "calculator_relevance": "none",
-   "common_errors": [
-    "BC-ERR-10023"
-   ],
-   "concept": "BC-CON-10014",
-   "confusable_with": [],
-   "created": "2026-09-19",
-   "dependents": [],
-   "description_formal": "Given that a series converges and that the series of absolute values diverges, state that the series converges conditionally and give both findings as the reason.",
-   "description_plain": "Say the series converges but its absolute value series does not.",
-   "diagnostic_signals": [
-    "BC-SIG-10255",
-    "BC-SIG-10256"
-   ],
-   "essential_knowledge": [
-    "BC-EK-LIM-7A12"
-   ],
-   "evidence_tag": "inferred",
-   "id": "BC-SKL-10036",
-   "independently_assessable": false,
-   "learning_objectives": [
-    "BC-LO-LIM-7A"
-   ],
-   "mapping_tag": "verified",
-   "misconceptions": [
-    "BC-MIS-10015",
-    "BC-MIS-10016"
-   ],
-   "name": "Classify a series as conditionally convergent",
-   "official_evidence": [
-    "BC-MCQ-SAMPLE-022"
-   ],
-   "practice_skills": [],
-   "prerequisites": [
-    "BC-PRQ-06005",
-    "BC-SKL-10034",
-    "BC-SKL-10030"
-   ],
-   "representations": [
-    "BC-REP-04",
-    "BC-REP-11"
-   ],
-   "scope": "BC_only",
-   "sources": [
-    "ced:194",
-    "ced:190"
-   ],
-   "topic": "BC-TOP-1009",
-   "unit": "BC-UNIT-10",
    "updated": "2026-09-19"
   },
   {

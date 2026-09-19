@@ -1344,7 +1344,7 @@ Generated from data/frq_records.json and data/mcq_records.json. Every record cit
 
 | MCQ record | Calculator | Archetype | Skills |
 |---|---|---|---|
-| BC-MCQ-CED-019 | no_calculator | BC-QA-10004 | BC-SKL-10003, BC-SKL-10027, BC-SKL-10030 |
+| BC-MCQ-CED-019 | no_calculator | BC-QA-10007 | BC-SKL-10034, BC-SKL-10036, BC-SKL-10030 |
 | BC-MCQ-CED-020 | no_calculator | BC-QA-10018 | BC-SKL-10061, BC-SKL-10064, BC-SKL-10068 |
 | BC-MCQ-CED-022 | calculator | BC-QA-10009 | BC-SKL-10049, BC-SKL-10050, BC-SKL-10051 |
 | BC-MCQ-SAMPLE-020 | no_calculator | BC-QA-10008 | BC-SKL-10039, BC-SKL-10040, BC-SKL-10042 |

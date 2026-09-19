@@ -803,11 +803,11 @@ Generated from data/frq_records.json and data/mcq_records.json. Every record cit
 | FRQ record | Role | Calculator | Archetype | Skills (first six) | Points | Point types |
 |---|---|---|---|---|---|---|
 | BC-FRQ-2013-Q2-A | primary | calculator | BC-QA-09013 | BC-SKL-09035, BC-SKL-09036, BC-SKL-09039, BC-SKL-09040, BC-SKL-09041, BC-SKL-09042 | 3 | BC-PT-99048, BC-PT-99001, BC-PT-99004 |
-| BC-FRQ-2013-Q2-B | primary | calculator | BC-QA-09010 | BC-SKL-09029, BC-SKL-09033, BC-SKL-09026 | 3 | BC-PT-99005, BC-PT-99068, BC-PT-99004 |
-| BC-FRQ-2013-Q2-C | primary | calculator | BC-QA-09004 | BC-SKL-09029, BC-SKL-09018, BC-SKL-09015, BC-SKL-09016 | 3 | BC-PT-99064, BC-PT-99052 |
+| BC-FRQ-2013-Q2-B | primary | calculator | BC-QA-99004 | BC-SKL-09029, BC-SKL-09033, BC-SKL-09026 | 3 | BC-PT-99005, BC-PT-99068, BC-PT-99004 |
+| BC-FRQ-2013-Q2-C | primary | calculator | BC-QA-99005 | BC-SKL-09029, BC-SKL-09018, BC-SKL-09015, BC-SKL-09016 | 3 | BC-PT-99064, BC-PT-99052 |
 | BC-FRQ-2014-Q2-A | primary | calculator | BC-QA-09013 | BC-SKL-09035, BC-SKL-09036, BC-SKL-09039, BC-SKL-09040, BC-SKL-09041, BC-SKL-09043 | 3 | BC-PT-99048, BC-PT-99001, BC-PT-99004 |
-| BC-FRQ-2014-Q2-B | primary | calculator | BC-QA-09009 | BC-SKL-09029, BC-SKL-09030, BC-SKL-09033 | 2 | BC-PT-99049, BC-PT-99004 |
-| BC-FRQ-2014-Q2-C | primary | calculator | BC-QA-09009 | BC-SKL-09030, BC-SKL-03002, BC-SKL-03027 | 2 | BC-PT-99005, BC-PT-99004 |
+| BC-FRQ-2014-Q2-B | primary | calculator | BC-QA-99002 | BC-SKL-09029, BC-SKL-09030, BC-SKL-09033 | 2 | BC-PT-99049, BC-PT-99004 |
+| BC-FRQ-2014-Q2-C | primary | calculator | BC-QA-99006 | BC-SKL-09030, BC-SKL-03002, BC-SKL-03027 | 2 | BC-PT-99005, BC-PT-99004 |
 | BC-FRQ-2014-Q2-D | primary | calculator | BC-QA-09010 | BC-SKL-09030, BC-SKL-09032, BC-SKL-04019 | 2 | BC-PT-99049, BC-PT-99004 |
 | BC-FRQ-2015-Q2-A | primary | calculator | BC-QA-09005 | BC-SKL-09019, BC-SKL-09020, BC-SKL-09021, BC-SKL-09026 | 3 | BC-PT-99001, BC-PT-99033, BC-PT-99004 |
 | BC-FRQ-2015-Q2-B | primary | calculator | BC-QA-09001 | BC-SKL-09002, BC-SKL-09003, BC-SKL-09004 | 2 | BC-PT-99049, BC-PT-99004 |
@@ -815,7 +815,7 @@ Generated from data/frq_records.json and data/mcq_records.json. Every record cit
 | BC-FRQ-2015-Q2-D | primary | calculator | BC-QA-09007 | BC-SKL-09011, BC-SKL-09012, BC-SKL-09025, BC-SKL-09013 | 2 | BC-PT-99051, BC-PT-99004 |
 | BC-FRQ-2018-Q2-D | primary | calculator | BC-QA-09007 | BC-SKL-09011, BC-SKL-09012, BC-SKL-09025, BC-SKL-09013 | 0 |  |
 | BC-FRQ-2018-Q5-A | primary | no_calculator | BC-QA-09013 | BC-SKL-09035, BC-SKL-09036, BC-SKL-09039, BC-SKL-09040, BC-SKL-09041 | 0 |  |
-| BC-FRQ-2018-Q5-B | primary | no_calculator | BC-QA-09009 | BC-SKL-09029, BC-SKL-09030, BC-SKL-09033 | 0 |  |
+| BC-FRQ-2018-Q5-B | primary | no_calculator | BC-QA-99003 | BC-SKL-09029, BC-SKL-09030, BC-SKL-09033 | 0 |  |
 | BC-FRQ-2018-Q5-C | primary | no_calculator | BC-QA-09010 | BC-SKL-09030, BC-SKL-09031, BC-SKL-09032, BC-SKL-04024 | 0 |  |
 | BC-FRQ-2019-Q2-A | primary | calculator | BC-QA-09012 | BC-SKL-09035, BC-SKL-09036, BC-SKL-09038 | 2 | BC-PT-99048, BC-PT-99004 |
 | BC-FRQ-2019-Q2-B | secondary | calculator | BC-QA-08001 | BC-SKL-08001, BC-SKL-08003, BC-SKL-09029 | 2 | BC-PT-99020, BC-PT-99004 |
@@ -841,7 +841,7 @@ Generated from data/frq_records.json and data/mcq_records.json. Every record cit
 | BC-FRQ-2025-Q2-C | primary | calculator | BC-QA-09011 | BC-SKL-09034, BC-SKL-09029, BC-SKL-05010, BC-SKL-05024, BC-SKL-05025, BC-SKL-05028 | 3 | BC-PT-99013, BC-PT-99011, BC-PT-99005 |
 | BC-FRQ-2025-Q2-D | primary | calculator | BC-QA-09010 | BC-SKL-09031, BC-SKL-09032, BC-SKL-04019, BC-SKL-04024 | 2 | BC-PT-99049, BC-PT-99004 |
 | BC-FRQ-2026-Q2-A | primary | calculator | BC-QA-09012 | BC-SKL-09035, BC-SKL-09036, BC-SKL-09038 | 2 | BC-PT-99048, BC-PT-99004 |
-| BC-FRQ-2026-Q2-B | primary | calculator | BC-QA-09001 | BC-SKL-09033, BC-SKL-09002, BC-SKL-09003, BC-SKL-03002 | 3 | BC-PT-99049, BC-PT-99004, BC-PT-99004 |
+| BC-FRQ-2026-Q2-B | primary | calculator | BC-QA-99001 | BC-SKL-09033, BC-SKL-09002, BC-SKL-09003, BC-SKL-03002 | 3 | BC-PT-99049, BC-PT-99004, BC-PT-99004 |
 | BC-FRQ-2026-Q2-C | secondary | calculator | BC-QA-05007 | BC-SKL-05010, BC-SKL-05020, BC-SKL-05036, BC-SKL-05039, BC-SKL-09030 | 2 | BC-PT-99004, BC-PT-99012 |
 | BC-FRQ-2026-Q2-D | secondary | calculator | BC-QA-06007 | BC-SKL-08001, BC-SKL-08003, BC-SKL-06038, BC-SKL-09031 | 2 | BC-PT-99020, BC-PT-99004 |
 

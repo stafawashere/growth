@@ -1,0 +1,1173 @@
+{
+ "archetypes": [
+  {
+   "asked_to_produce": [
+    "the chain rule relation",
+    "the substitution of the supplied values",
+    "the value of the derivative of the horizontal coordinate"
+   ],
+   "calculator_status": "calculator",
+   "common_distractors": [
+    "the reciprocal of the correct value",
+    "the value of the derivative of the radial function",
+    "the slope itself reported as the answer",
+    "the correct magnitude with the sign lost"
+   ],
+   "common_givens": [
+    "a polar equation",
+    "the derivative of the radial function",
+    "the slope of the tangent at an unnamed point",
+    "the derivative of the vertical coordinate with respect to the angle at that point"
+   ],
+   "created": "2026-09-19",
+   "description": "A polar curve is given, the slope of the tangent line at an unnamed point is supplied, and the derivative of the vertical coordinate with respect to the angle at that same point is supplied. The response must write the chain rule relation among the three Leibniz derivatives and solve it for the derivative of the horizontal coordinate with respect to the angle.",
+   "difficulty_factors": [
+    "BC-DF-04",
+    "BC-DF-08",
+    "BC-DF-13"
+   ],
+   "difficulty_variables": [
+    "which of the three derivatives is withheld",
+    "whether the supplied slope is negative",
+    "whether the point is named by an angle or left unnamed",
+    "whether the work must be shown"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "write dy/dx as the quotient of dy/dtheta by dx/dtheta",
+    "rearrange the relation so that dx/dtheta stands alone",
+    "substitute the supplied slope and the supplied vertical derivative",
+    "report the value"
+   ],
+   "family": "polar-calculus",
+   "id": "BC-QA-99001",
+   "invariant_structure": "The relation dy/dx equals dy/dtheta divided by dx/dtheta is used in reverse: two of the three derivatives are supplied and the third is the unknown, so the response rearranges the relation algebraically before substituting. No differentiation of the polar equation is required.",
+   "misconceptions": [
+    "BC-MIS-09014",
+    "BC-MIS-09015"
+   ],
+   "multi_skill_extensions": [
+    "the same part may first require the area of the polar region, as in 2026 Q2"
+   ],
+   "multipart_structure": "One part of a multipart polar free response question, worth three points.",
+   "name": "Polar tangent slope relation solved for the derivative of the horizontal coordinate",
+   "notes": "Split from BC-QA-09001 because the relation is solved rather than evaluated; the reasoning direction is reversed. Recorded from the documented archetype gap on BC-FRQ-2026-Q2-B.",
+   "official_examples": [
+    "BC-FRQ-2026-Q2-B"
+   ],
+   "point_types": [
+    "BC-PT-99049",
+    "BC-PT-99005",
+    "BC-PT-99004"
+   ],
+   "prerequisites": [
+    "BC-PRQ-09003",
+    "BC-PRQ-03002"
+   ],
+   "primary_unit": "BC-UNIT-09",
+   "prohibited_shortcuts": [
+    "multiplying the slope by the vertical derivative instead of dividing",
+    "substituting the derivative of the radial function for the derivative of the horizontal coordinate"
+   ],
+   "representations": [
+    "BC-REP-13",
+    "BC-REP-01"
+   ],
+   "safe_variables": [
+    "the polar equation",
+    "the supplied slope",
+    "the supplied vertical derivative",
+    "the names of the coordinates"
+   ],
+   "scope": "BC_only",
+   "scoring_pattern": "Three points. One for any correct arrangement of the chain rule relation among the three Leibniz derivatives, one for stating or substituting the supplied slope into an equation that contains the wanted derivative, and one for the value with or without supporting work. A single equation that combines the relation and the substituted values earns all three when the later simplification is correct (sg-26:7).",
+   "skills": [
+    "BC-SKL-09033",
+    "BC-SKL-09002",
+    "BC-SKL-09003",
+    "BC-SKL-03002"
+   ],
+   "sources": [
+    "frq-26:4",
+    "sg-26:7"
+   ],
+   "status": "active",
+   "typical_wording": [
+    "there is a point on the curve at which the slope of the line tangent to the curve is a given value",
+    "find the derivative of the horizontal coordinate with respect to the angle at this point, showing the work that leads to the answer"
+   ],
+   "units": [
+    "BC-UNIT-09",
+    "BC-UNIT-03"
+   ],
+   "updated": "2026-09-19",
+   "wrong_approaches": [
+    "differentiating the polar equation and reporting dr/dtheta"
+   ]
+  },
+  {
+   "asked_to_produce": [
+    "an expression for the Cartesian coordinate in terms of the angle",
+    "the value of its derivative at the stated angle"
+   ],
+   "calculator_status": "calculator",
+   "common_distractors": [
+    "the derivative of the radial function",
+    "the radial function evaluated at the angle",
+    "the product rule reduced to one term",
+    "the sign of the sine term lost"
+   ],
+   "common_givens": [
+    "a polar equation",
+    "a stated angle"
+   ],
+   "created": "2026-09-19",
+   "description": "A polar equation is given and the response must produce the derivative with respect to the angle of one Cartesian coordinate of the curve, which means writing that coordinate as the radial function times the cosine or sine of the angle and differentiating the product before evaluating at a stated angle.",
+   "difficulty_factors": [
+    "BC-DF-04",
+    "BC-DF-06",
+    "BC-DF-13"
+   ],
+   "difficulty_variables": [
+    "horizontal versus vertical coordinate",
+    "whether the expression for the coordinate must be displayed",
+    "whether the radial function itself needs the chain rule",
+    "whether the angle is a multiple of a familiar value"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "write the requested coordinate as the radial function times the cosine or the sine of the angle",
+    "differentiate the product with respect to the angle",
+    "substitute the stated angle",
+    "report the value"
+   ],
+   "family": "polar-calculus",
+   "id": "BC-QA-99002",
+   "invariant_structure": "The conversion from the polar equation to a Cartesian coordinate happens first and the product rule is applied to that conversion; the derivative of the radial function alone is an intermediate quantity and never the answer.",
+   "misconceptions": [
+    "BC-MIS-09014",
+    "BC-MIS-09015"
+   ],
+   "multi_skill_extensions": [
+    "the same expression is reused when a tangent slope or a position vector is requested later in the question"
+   ],
+   "multipart_structure": "One part of a multipart polar free response question, worth two points.",
+   "name": "Derivative of a Cartesian coordinate with respect to theta on a polar curve",
+   "notes": "Split from BC-QA-09009 because the polar to Cartesian conversion and the product rule are the reasoning, not the differentiation of the radial function. Recorded from the documented archetype gap on BC-FRQ-2014-Q2-B.",
+   "official_examples": [
+    "BC-FRQ-2014-Q2-B"
+   ],
+   "point_types": [
+    "BC-PT-99049",
+    "BC-PT-99005",
+    "BC-PT-99004"
+   ],
+   "prerequisites": [
+    "BC-PRQ-09003",
+    "BC-PRQ-09002"
+   ],
+   "primary_unit": "BC-UNIT-09",
+   "prohibited_shortcuts": [
+    "reporting the derivative of the radial function as the answer"
+   ],
+   "representations": [
+    "BC-REP-13",
+    "BC-REP-01",
+    "BC-REP-09"
+   ],
+   "safe_variables": [
+    "the polar equation",
+    "which Cartesian coordinate is requested",
+    "the stated angle"
+   ],
+   "scope": "BC_only",
+   "scoring_pattern": "Two points. One for a correct expression for the Cartesian coordinate or its derivative in terms of the angle, and one for the value at the stated angle; the expression point is separate from the answer point, so a value with no displayed expression forfeits the first (samples-14-q2:1).",
+   "skills": [
+    "BC-SKL-09030",
+    "BC-SKL-09031",
+    "BC-SKL-09029",
+    "BC-SKL-09033"
+   ],
+   "sources": [
+    "samples-14-q2:1"
+   ],
+   "status": "active",
+   "typical_wording": [
+    "for the given polar curve, find the value of the derivative of the horizontal coordinate with respect to the angle at a stated angle"
+   ],
+   "units": [
+    "BC-UNIT-09",
+    "BC-UNIT-03"
+   ],
+   "updated": "2026-09-19",
+   "wrong_approaches": [
+    "treating the coordinate as the radial function itself"
+   ]
+  },
+  {
+   "asked_to_produce": [
+    "both Cartesian coordinates as functions of the angle",
+    "both derivatives",
+    "the slope as their quotient"
+   ],
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "the derivative of the radial function",
+    "the reciprocal of the slope",
+    "the tangent of the stated angle",
+    "a quotient built from the radial function and its derivative"
+   ],
+   "common_givens": [
+    "a polar equation",
+    "a figure showing the curve",
+    "a stated angle"
+   ],
+   "created": "2026-09-19",
+   "description": "A polar equation is given and the response must produce the slope of the tangent line to the curve in the plane at a stated angle, which requires both Cartesian coordinates to be written in terms of the angle, both differentiated, and the quotient formed.",
+   "difficulty_factors": [
+    "BC-DF-01",
+    "BC-DF-04",
+    "BC-DF-06",
+    "BC-DF-08"
+   ],
+   "difficulty_variables": [
+    "whether the stated angle makes one derivative vanish",
+    "whether the derivative of the radial function is supplied",
+    "whether a calculator is available",
+    "whether the curve is one of two in the figure"
+   ],
+   "evidence_tag": "single-source",
+   "expected_solution_path": [
+    "write the horizontal and vertical coordinates as the radial function times the cosine and the sine of the angle",
+    "differentiate each product with respect to the angle",
+    "evaluate both derivatives at the stated angle",
+    "report the quotient of the vertical derivative by the horizontal derivative"
+   ],
+   "family": "polar-calculus",
+   "id": "BC-QA-99003",
+   "invariant_structure": "Two conversions and two product rule differentiations feed one quotient; the slope is a Cartesian quantity built from a polar description, so neither the radial function nor its derivative can stand in for it.",
+   "misconceptions": [
+    "BC-MIS-09014",
+    "BC-MIS-09015"
+   ],
+   "multi_skill_extensions": [
+    "the same derivatives support a related rates part later in the question"
+   ],
+   "multipart_structure": "One part of a multipart polar free response question.",
+   "name": "Slope of the tangent line to a polar curve at a stated angle",
+   "notes": "Split from BC-QA-09009 because the quantity produced is a Cartesian slope rather than the derivative of the radial function. Recorded from the documented archetype gap on BC-FRQ-2018-Q5-B. Tagged single-source because only the free-response document is cached for 2018.",
+   "official_examples": [
+    "BC-FRQ-2018-Q5-B"
+   ],
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-09003",
+    "BC-PRQ-09002"
+   ],
+   "primary_unit": "BC-UNIT-09",
+   "prohibited_shortcuts": [
+    "reporting the derivative of the radial function as the slope",
+    "reporting the reciprocal quotient"
+   ],
+   "representations": [
+    "BC-REP-13",
+    "BC-REP-02",
+    "BC-REP-01"
+   ],
+   "safe_variables": [
+    "the polar equation",
+    "the stated angle",
+    "whether a figure is supplied"
+   ],
+   "scope": "BC_only",
+   "scoring_pattern": "No scoring guideline for 2018 is in the corpus, so no rubric wording is recorded for this archetype and the record is tagged single-source from the free-response document alone (frq-18:6).",
+   "skills": [
+    "BC-SKL-09030",
+    "BC-SKL-09031",
+    "BC-SKL-09029",
+    "BC-SKL-09033"
+   ],
+   "sources": [
+    "frq-18:6"
+   ],
+   "status": "active",
+   "typical_wording": [
+    "find the slope of the line tangent to the graph of the polar curve at a stated angle"
+   ],
+   "units": [
+    "BC-UNIT-09",
+    "BC-UNIT-03"
+   ],
+   "updated": "2026-09-19",
+   "wrong_approaches": [
+    "using the parametric slope formula with the radial function as one coordinate"
+   ]
+  },
+  {
+   "asked_to_produce": [
+    "the coordinate as a function of the angle or of time",
+    "the equation set equal to the target value",
+    "the time"
+   ],
+   "calculator_status": "calculator",
+   "common_distractors": [
+    "the angle at which the coordinate reaches the value",
+    "a time outside the stated interval",
+    "the radial value rather than the Cartesian coordinate",
+    "the vertical coordinate solved in place of the horizontal"
+   ],
+   "common_givens": [
+    "a polar equation",
+    "the angle as a function of time",
+    "a target coordinate value",
+    "a time interval"
+   ],
+   "created": "2026-09-19",
+   "description": "A particle travels a polar curve with the angle given as a function of time. The response must express one Cartesian coordinate in terms of time and solve the resulting equation for the time at which that coordinate equals a stated value, within a stated time interval.",
+   "difficulty_factors": [
+    "BC-DF-01",
+    "BC-DF-07",
+    "BC-DF-08",
+    "BC-DF-14"
+   ],
+   "difficulty_variables": [
+    "whether the coordinate is written in the angle or directly in time",
+    "whether the interval contains more than one solution to the untruncated equation",
+    "which Cartesian coordinate is named",
+    "whether the target value is attained at an endpoint"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "write the requested Cartesian coordinate as the radial function times the cosine or sine of the angle",
+    "substitute the angle as a function of time",
+    "set the expression equal to the stated value",
+    "solve numerically inside the stated interval and report the time"
+   ],
+   "family": "polar-motion",
+   "id": "BC-QA-99004",
+   "invariant_structure": "Two substitutions and one equation: the radial function is converted to a Cartesian coordinate, the angle is replaced by its expression in time, and the resulting single equation is solved numerically inside the stated interval, which is what makes the solution unique.",
+   "misconceptions": [
+    "BC-MIS-09014"
+   ],
+   "multi_skill_extensions": [
+    "the expression built here is reused for the position vector in the following part"
+   ],
+   "multipart_structure": "One part of a multipart polar motion free response question, worth three points.",
+   "name": "Time at which a Cartesian coordinate of a particle on a polar path reaches a value",
+   "notes": "No existing archetype covers converting a polar path to a Cartesian coordinate function of time and solving an equation against it. Recorded from the documented archetype gap on BC-FRQ-2013-Q2-B.",
+   "official_examples": [
+    "BC-FRQ-2013-Q2-B"
+   ],
+   "point_types": [
+    "BC-PT-99005",
+    "BC-PT-99004"
+   ],
+   "prerequisites": [
+    "BC-PRQ-09003",
+    "BC-PRQ-09002"
+   ],
+   "primary_unit": "BC-UNIT-09",
+   "prohibited_shortcuts": [
+    "solving for the angle and reporting it as the time"
+   ],
+   "representations": [
+    "BC-REP-13",
+    "BC-REP-05",
+    "BC-REP-09"
+   ],
+   "safe_variables": [
+    "the polar equation",
+    "the relation between the angle and time",
+    "the target value",
+    "the interval"
+   ],
+   "scope": "BC_only",
+   "scoring_pattern": "Three points. One for the coordinate written in terms of the angle or of time, one for the equation set equal to the stated value in either variable, and one for the time; the expression and equation points are awarded separately, so an unsupported numerical time earns only the answer point (samples-13-q2:1).",
+   "skills": [
+    "BC-SKL-09030",
+    "BC-SKL-09029",
+    "BC-SKL-09032"
+   ],
+   "sources": [
+    "samples-13-q2:1"
+   ],
+   "status": "active",
+   "typical_wording": [
+    "find the time in the stated interval for which the horizontal coordinate of the particle's position is a given value"
+   ],
+   "units": [
+    "BC-UNIT-09"
+   ],
+   "updated": "2026-09-19",
+   "wrong_approaches": [
+    "equating the radial function to the stated coordinate value"
+   ]
+  },
+  {
+   "asked_to_produce": [
+    "the position vector as an ordered pair in time",
+    "the velocity vector at the stated time"
+   ],
+   "calculator_status": "calculator",
+   "common_distractors": [
+    "the polar pair given as the position vector",
+    "one component differentiated and the other copied",
+    "the velocity reported as a speed",
+    "the vector evaluated at the wrong time"
+   ],
+   "common_givens": [
+    "a polar equation",
+    "the angle as a function of time",
+    "a stated time"
+   ],
+   "created": "2026-09-19",
+   "description": "A particle travels a polar curve with the angle given as a function of time. The response must give the position vector in terms of time, built from both Cartesian conversions, and then the velocity vector at a stated time by differentiating both components.",
+   "difficulty_factors": [
+    "BC-DF-01",
+    "BC-DF-04",
+    "BC-DF-07",
+    "BC-DF-08"
+   ],
+   "difficulty_variables": [
+    "whether the position vector is requested in the angle or in time",
+    "whether the velocity is requested symbolically or numerically",
+    "whether the components must be labelled",
+    "whether the derivative is taken by hand or on the calculator"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "write both Cartesian coordinates as the radial function times the cosine and the sine of the angle",
+    "substitute the angle as a function of time in both components",
+    "present the ordered pair as the position vector",
+    "differentiate both components and evaluate at the stated time for the velocity vector"
+   ],
+   "family": "polar-motion",
+   "id": "BC-QA-99005",
+   "invariant_structure": "One ordered pair is assembled from two polar conversions and then differentiated componentwise; the same conversion supports both the position and the velocity, so an error in either component propagates into both vectors.",
+   "misconceptions": [
+    "BC-MIS-09009",
+    "BC-MIS-09014"
+   ],
+   "multi_skill_extensions": [
+    "a speed or total distance part can be built on the same components"
+   ],
+   "multipart_structure": "One part of a multipart polar motion free response question, worth three points.",
+   "name": "Position and velocity vectors for a particle travelling a polar curve",
+   "notes": "Distinct from BC-QA-09004, which differentiates supplied component velocities; here the components must first be built from a polar description. Recorded from the documented archetype gap on BC-FRQ-2013-Q2-C.",
+   "official_examples": [
+    "BC-FRQ-2013-Q2-C"
+   ],
+   "point_types": [
+    "BC-PT-99064",
+    "BC-PT-99005",
+    "BC-PT-99004"
+   ],
+   "prerequisites": [
+    "BC-PRQ-09003",
+    "BC-PRQ-09001"
+   ],
+   "primary_unit": "BC-UNIT-09",
+   "prohibited_shortcuts": [
+    "reporting the radial function and the angle as the position vector"
+   ],
+   "representations": [
+    "BC-REP-13",
+    "BC-REP-14",
+    "BC-REP-09"
+   ],
+   "safe_variables": [
+    "the polar equation",
+    "the relation between the angle and time",
+    "the stated time"
+   ],
+   "scope": "BC_only",
+   "scoring_pattern": "Three points, two for the position vector and one for the velocity vector, so the two components of the position carry the weight and the velocity is a single point at the stated time (samples-13-q2:1).",
+   "skills": [
+    "BC-SKL-09030",
+    "BC-SKL-09029",
+    "BC-SKL-09015",
+    "BC-SKL-09016"
+   ],
+   "sources": [
+    "samples-13-q2:1"
+   ],
+   "status": "active",
+   "typical_wording": [
+    "find the position vector in terms of time and find the velocity vector at a stated time"
+   ],
+   "units": [
+    "BC-UNIT-09"
+   ],
+   "updated": "2026-09-19",
+   "wrong_approaches": [
+    "differentiating the radial function alone and calling it the velocity"
+   ]
+  },
+  {
+   "asked_to_produce": [
+    "an expression for the distance between the curves",
+    "the value of its derivative at the stated angle"
+   ],
+   "calculator_status": "calculator",
+   "common_distractors": [
+    "the derivative of one curve only",
+    "the difference evaluated instead of its derivative",
+    "the sign of the difference reversed",
+    "an area of the region between the curves"
+   ],
+   "common_givens": [
+    "two polar equations",
+    "a figure showing both curves",
+    "an angle interval on which they do not meet",
+    "a stated angle"
+   ],
+   "created": "2026-09-19",
+   "description": "Two polar curves are given over an angle interval on which they do not meet. The response must write the distance between them along a ray as the difference of the two radial functions, differentiate that difference with respect to the angle, and evaluate at a stated angle.",
+   "difficulty_factors": [
+    "BC-DF-01",
+    "BC-DF-08",
+    "BC-DF-12",
+    "BC-DF-14"
+   ],
+   "difficulty_variables": [
+    "whether one of the curves is a constant radius",
+    "whether the expression for the distance must be displayed",
+    "whether the sign of the difference must be argued from the figure",
+    "whether the stated angle is inside the region shown"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "decide from the figure or the interval which radial function is larger",
+    "write the distance as that difference",
+    "differentiate the difference with respect to the angle",
+    "evaluate at the stated angle and report the value"
+   ],
+   "family": "polar-calculus",
+   "id": "BC-QA-99006",
+   "invariant_structure": "A new function is defined as the difference of the two radial functions before any differentiation occurs; the derivative is taken of that difference, not of either curve separately, and the sign of the difference is fixed by which curve is outside on the interval.",
+   "misconceptions": [
+    "BC-MIS-09014",
+    "BC-MIS-09017"
+   ],
+   "multi_skill_extensions": [
+    "the area of the region between the same two curves is a natural neighbouring part"
+   ],
+   "multipart_structure": "One part of a multipart polar free response question, worth two points.",
+   "name": "Rate of change with respect to theta of the gap between two polar curves",
+   "notes": "Distinct from BC-QA-09009 because a difference function must be defined before any differentiation. Recorded from the documented archetype gap on BC-FRQ-2014-Q2-C.",
+   "official_examples": [
+    "BC-FRQ-2014-Q2-C"
+   ],
+   "point_types": [
+    "BC-PT-99005",
+    "BC-PT-99004"
+   ],
+   "prerequisites": [
+    "BC-PRQ-09003",
+    "BC-PRQ-09002"
+   ],
+   "primary_unit": "BC-UNIT-09",
+   "prohibited_shortcuts": [
+    "differentiating only the non-constant curve without writing the difference"
+   ],
+   "representations": [
+    "BC-REP-13",
+    "BC-REP-02",
+    "BC-REP-09"
+   ],
+   "safe_variables": [
+    "the two polar equations",
+    "which curve is outside",
+    "the stated angle",
+    "the interval"
+   ],
+   "scope": "BC_only",
+   "scoring_pattern": "Two points. One for an expression for the distance between the curves and one for the value of its derivative at the stated angle, so a correct value with no displayed difference forfeits the first point (samples-14-q2:1).",
+   "skills": [
+    "BC-SKL-09029",
+    "BC-SKL-09031",
+    "BC-SKL-09033"
+   ],
+   "sources": [
+    "samples-14-q2:1"
+   ],
+   "status": "active",
+   "typical_wording": [
+    "the distance between the two curves changes over an angle interval; find the rate at which the distance between the two curves is changing with respect to the angle at a stated angle"
+   ],
+   "units": [
+    "BC-UNIT-09"
+   ],
+   "updated": "2026-09-19",
+   "wrong_approaches": [
+    "measuring the gap as a Cartesian distance between two points"
+   ]
+  },
+  {
+   "asked_to_produce": [
+    "the value of the difference quotient with units"
+   ],
+   "calculator_status": "calculator",
+   "common_distractors": [
+    "the derivative at an endpoint",
+    "the average value of the function over the interval",
+    "the difference of the endpoint values with no division",
+    "the value reported without units"
+   ],
+   "common_givens": [
+    "a modelling function",
+    "a closed interval",
+    "the units of the modelled quantity"
+   ],
+   "created": "2026-09-19",
+   "description": "A modelling function is given on a closed interval and the response must report the average rate of change of that function over the interval, with units, and nothing else. No equation is formed and no derivative is used.",
+   "difficulty_factors": [
+    "BC-DF-05",
+    "BC-DF-07",
+    "BC-DF-12",
+    "BC-DF-16"
+   ],
+   "difficulty_variables": [
+    "whether the function is given by a formula, a table, or a graph",
+    "whether units are demanded in the same part",
+    "whether the quantity is decreasing so the answer is negative",
+    "whether the endpoints must be evaluated on a calculator"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "evaluate the function at both endpoints of the interval",
+    "divide the difference of the values by the length of the interval",
+    "report the value with units"
+   ],
+   "family": "average-rate-of-change",
+   "id": "BC-QA-99007",
+   "invariant_structure": "One difference quotient over the stated interval, evaluated and reported; the interval endpoints supply both the numerator differences and the denominator, and the answer carries the units of the modelled quantity per unit of the input.",
+   "misconceptions": [
+    "BC-MIS-08001"
+   ],
+   "multi_skill_extensions": [
+    "a later part of the same question may set an instantaneous rate equal to this value, which is BC-QA-08002"
+   ],
+   "multipart_structure": "The opening part of a multipart contextual free response question, worth one point.",
+   "name": "Average rate of change reported on its own with units",
+   "notes": "Split from BC-QA-08002, whose invariant requires the difference quotient to be set equal to a derivative and solved. Recorded from the documented archetype gap on BC-FRQ-2014-Q1-A.",
+   "official_examples": [
+    "BC-FRQ-2014-Q1-A"
+   ],
+   "point_types": [
+    "BC-PT-99021",
+    "BC-PT-99006",
+    "BC-PT-99004"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08001"
+   ],
+   "primary_unit": "BC-UNIT-08",
+   "prohibited_shortcuts": [
+    "reporting the derivative at an endpoint in place of the average rate"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-05",
+    "BC-REP-09"
+   ],
+   "safe_variables": [
+    "the modelled quantity",
+    "the formula",
+    "the interval endpoints",
+    "the units"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "One point for the answer with units, so the setup earns nothing on its own and a correct value without units earns nothing either (samples-14-q1:1).",
+   "skills": [
+    "BC-SKL-08004",
+    "BC-SKL-08003"
+   ],
+   "sources": [
+    "samples-14-q1:1"
+   ],
+   "status": "active",
+   "typical_wording": [
+    "find the average rate of change of the modelling function over the stated interval, indicating units of measure"
+   ],
+   "units": [
+    "BC-UNIT-08",
+    "BC-UNIT-02"
+   ],
+   "updated": "2026-09-19",
+   "wrong_approaches": [
+    "integrating the function and dividing by the interval length"
+   ]
+  },
+  {
+   "asked_to_produce": [
+    "the definite integral of the rate over the interval",
+    "its value"
+   ],
+   "calculator_status": "calculator",
+   "common_distractors": [
+    "the initial amount added to the integral",
+    "the outflow rate subtracted inside the integral",
+    "the rate evaluated at an endpoint",
+    "the net change of the stored quantity rather than the inflow"
+   ],
+   "common_givens": [
+    "a rate function, possibly piecewise",
+    "a closed interval",
+    "the units of the rate"
+   ],
+   "created": "2026-09-19",
+   "description": "A single contextual rate is given over a closed interval and the response must report the total amount that the rate accounts for over that interval. No starting amount is supplied and no second rate removes anything, so the definite integral of the rate is the whole answer.",
+   "difficulty_factors": [
+    "BC-DF-07",
+    "BC-DF-14",
+    "BC-DF-15",
+    "BC-DF-17"
+   ],
+   "difficulty_variables": [
+    "whether the rate is piecewise so the interval must be split or the correct branch chosen",
+    "whether a second rate is present in the stem but irrelevant to this part",
+    "whether an initial amount is stated in the stem but not used in this part",
+    "whether the answer must be rounded to a whole number"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "read the interval out of the wording of the part",
+    "write the definite integral of the rate over that interval",
+    "evaluate on the calculator",
+    "report the value, rounded as the part demands"
+   ],
+   "family": "accumulation-total-from-rate",
+   "id": "BC-QA-99008",
+   "invariant_structure": "One rate, one interval, one definite integral, and no level term: the question names the quantity that flows in rather than the quantity present, so nothing is added to the integral and nothing is subtracted from it.",
+   "misconceptions": [
+    "BC-MIS-06013",
+    "BC-MIS-08006"
+   ],
+   "multi_skill_extensions": [
+    "the neighbouring parts of the same question are usually BC-QA-06005 or BC-QA-06006, which do use the level term and the second rate"
+   ],
+   "multipart_structure": "Usually the opening part of a multipart contextual free response question, worth two points.",
+   "name": "Total amount from a rate over an interval with no initial condition and no rate out",
+   "notes": "Split from BC-QA-06005, whose invariant requires an initial value added to the integral. Recorded from the documented archetype gap on BC-FRQ-2013-Q1-B, BC-FRQ-2015-Q1-A, and BC-FRQ-2018-Q1-A.",
+   "official_examples": [
+    "BC-FRQ-2013-Q1-B",
+    "BC-FRQ-2015-Q1-A",
+    "BC-FRQ-2018-Q1-A"
+   ],
+   "point_types": [
+    "BC-PT-99001",
+    "BC-PT-99002",
+    "BC-PT-99004"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06002",
+    "BC-PRQ-06005"
+   ],
+   "primary_unit": "BC-UNIT-06",
+   "prohibited_shortcuts": [
+    "adding the stated initial amount, which belongs to a different part",
+    "subtracting the second rate, which belongs to a different part"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-05",
+    "BC-REP-09"
+   ],
+   "safe_variables": [
+    "the quantity accumulating",
+    "the formula for the rate",
+    "the interval endpoints",
+    "the units"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "Two points, one for the integral or the integrand and one for the value; the distractor is the level term and the outflow rate that the stem supplies for later parts, and neither belongs in this integral (samples-13-q1:1, samples-15-q1:1).",
+   "skills": [
+    "BC-SKL-06036",
+    "BC-SKL-06037",
+    "BC-SKL-08012"
+   ],
+   "sources": [
+    "samples-13-q1:1",
+    "samples-15-q1:1",
+    "frq-18:2"
+   ],
+   "status": "active",
+   "typical_wording": [
+    "find the total amount of the quantity that arrives during the hours of operation",
+    "how many units of the quantity flow in during the stated time interval"
+   ],
+   "units": [
+    "BC-UNIT-06",
+    "BC-UNIT-08"
+   ],
+   "updated": "2026-09-19",
+   "wrong_approaches": [
+    "treating the part as a net change question because the stem gives an initial condition"
+   ]
+  },
+  {
+   "asked_to_produce": [
+    "the integral of the density over the depth interval",
+    "the product with the constant area",
+    "the rounded count"
+   ],
+   "calculator_status": "calculator",
+   "common_distractors": [
+    "the integral reported without the constant factor",
+    "the density evaluated at a depth",
+    "the area multiplied by a density value rather than by the integral",
+    "the answer left unrounded against the instruction"
+   ],
+   "common_givens": [
+    "a density function of depth",
+    "a constant cross-sectional area",
+    "a depth interval",
+    "a rounding instruction"
+   ],
+   "created": "2026-09-19",
+   "description": "A density per unit volume is modelled as a function of depth and a column of constant horizontal cross-sectional area is described. The response must integrate the density over the depth interval and multiply by the constant area to report the total amount in the column.",
+   "difficulty_factors": [
+    "BC-DF-03",
+    "BC-DF-05",
+    "BC-DF-07",
+    "BC-DF-11"
+   ],
+   "difficulty_variables": [
+    "whether the constant factor is stated in the same part or earlier in the stem",
+    "whether the density is given piecewise across the depth interval",
+    "whether the answer must be rounded to a named place",
+    "whether the units of the density are per unit volume or per unit length"
+   ],
+   "evidence_tag": "single-source",
+   "expected_solution_path": [
+    "write the definite integral of the density over the stated depth interval",
+    "multiply by the constant cross-sectional area",
+    "evaluate on the calculator",
+    "round as the part instructs and report with the stated unit"
+   ],
+   "family": "accumulation-of-density",
+   "id": "BC-QA-99009",
+   "invariant_structure": "The integral is taken over a length and the constant area converts the result into a count; the accumulating variable is a depth rather than a time, and the constant factor sits outside the integral because the cross-section does not vary.",
+   "misconceptions": [
+    "BC-MIS-06014",
+    "BC-MIS-08015"
+   ],
+   "multi_skill_extensions": [
+    "the following part of the same question bounds the accumulation below the modelled depth, which is BC-QA-99010"
+   ],
+   "multipart_structure": "One part of a multipart contextual free response question.",
+   "name": "Density accumulated over a spatial interval scaled by a constant cross-section",
+   "notes": "Distinct from BC-QA-06005 and from BC-QA-08011 because the accumulating variable is a depth and the geometric factor is a constant outside the integral. Recorded from the documented archetype gap on BC-FRQ-2018-Q2-B. Tagged single-source because only the free-response document is cached for 2018.",
+   "official_examples": [
+    "BC-FRQ-2018-Q2-B"
+   ],
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-PRQ-08006"
+   ],
+   "primary_unit": "BC-UNIT-08",
+   "prohibited_shortcuts": [
+    "reporting the integral of the density without the area factor"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-05",
+    "BC-REP-09"
+   ],
+   "safe_variables": [
+    "the modelled population",
+    "the density formula",
+    "the cross-sectional area",
+    "the depth interval"
+   ],
+   "scope": "BC_only",
+   "scoring_pattern": "No scoring guideline for 2018 is in the corpus, so no rubric wording is recorded for this archetype and the record is tagged single-source from the free-response document alone (frq-18:3).",
+   "skills": [
+    "BC-SKL-06036",
+    "BC-SKL-08012",
+    "BC-SKL-08005"
+   ],
+   "sources": [
+    "frq-18:3"
+   ],
+   "status": "active",
+   "typical_wording": [
+    "consider a vertical column with horizontal cross sections of constant area; to the nearest million, how many units are in this column between the stated depths"
+   ],
+   "units": [
+    "BC-UNIT-08",
+    "BC-UNIT-06"
+   ],
+   "updated": "2026-09-19",
+   "wrong_approaches": [
+    "treating the constant cross-section as a variable cross-section and squaring it"
+   ]
+  },
+  {
+   "asked_to_produce": [
+    "the sum of integrals for the whole interval",
+    "an inequality argument for the stated bound"
+   ],
+   "calculator_status": "calculator",
+   "common_distractors": [
+    "the comparison function used as the model on the second interval",
+    "the improper integral used as the whole answer",
+    "the split point omitted so a single integral is written",
+    "the bound asserted without the inequality"
+   ],
+   "common_givens": [
+    "a function modelled on a first interval",
+    "a comparison function bounding it beyond that interval",
+    "the value of the improper integral of the comparison function",
+    "an unknown finite endpoint"
+   ],
+   "created": "2026-09-19",
+   "description": "A function is modelled explicitly on one interval and only bounded above by a comparison function beyond it, with the improper integral of the comparison function supplied. The response must write the whole accumulation as a sum of integrals and then explain why the total cannot exceed a stated bound.",
+   "difficulty_factors": [
+    "BC-DF-08",
+    "BC-DF-09",
+    "BC-DF-10",
+    "BC-DF-14"
+   ],
+   "difficulty_variables": [
+    "whether the comparison function is given explicitly or only named",
+    "whether the endpoint beyond the split is unknown",
+    "whether the constant factor from an earlier part must be carried in",
+    "whether the explanation must reference the nonnegativity of the function"
+   ],
+   "evidence_tag": "single-source",
+   "expected_solution_path": [
+    "split the accumulation at the depth where the model changes",
+    "write the first piece as a definite integral of the explicit model and the second as a definite integral of the unknown function",
+    "bound the second piece by the integral of the comparison function and then by its supplied improper value",
+    "add the two bounds and state that the total cannot exceed the stated figure"
+   ],
+   "family": "integral-comparison-bound",
+   "id": "BC-QA-99010",
+   "invariant_structure": "Additivity splits the interval at the point where the model changes, and the comparison inequality bounds the second piece; the supplied improper integral is an upper bound for a definite integral over any finite interval beyond the split, so the explanation rests on the inequality rather than on evaluating anything.",
+   "misconceptions": [
+    "BC-MIS-06026"
+   ],
+   "multi_skill_extensions": [
+    "the preceding part of the same question supplies the first integral, which is BC-QA-99009"
+   ],
+   "multipart_structure": "One part of a multipart contextual free response question, combining an expression and an explanation.",
+   "name": "Accumulation bounded above by a comparison function with a supplied improper integral",
+   "notes": "Distinct from BC-QA-06013 because an inequality between two functions carries the argument rather than the algebraic properties of the integral alone. Recorded from the documented archetype gap on BC-FRQ-2018-Q2-C. Tagged single-source because only the free-response document is cached for 2018.",
+   "official_examples": [
+    "BC-FRQ-2018-Q2-C"
+   ],
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "primary_unit": "BC-UNIT-06",
+   "prohibited_shortcuts": [
+    "evaluating the unknown function, which is not given explicitly"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-04",
+    "BC-REP-05"
+   ],
+   "safe_variables": [
+    "the modelled quantity",
+    "the split point",
+    "the bound supplied for the improper integral",
+    "the name of the unknown endpoint"
+   ],
+   "scope": "BC_only",
+   "scoring_pattern": "No scoring guideline for 2018 is in the corpus, so no rubric wording is recorded for this archetype and the record is tagged single-source from the free-response document alone (frq-18:3).",
+   "skills": [
+    "BC-SKL-06029",
+    "BC-SKL-06030",
+    "BC-SKL-06035"
+   ],
+   "sources": [
+    "frq-18:3"
+   ],
+   "status": "active",
+   "typical_wording": [
+    "write an expression involving one or more integrals that gives the total quantity in the entire column",
+    "explain why the total quantity is less than or equal to the stated bound"
+   ],
+   "units": [
+    "BC-UNIT-06",
+    "BC-UNIT-08"
+   ],
+   "updated": "2026-09-19",
+   "wrong_approaches": [
+    "claiming the total converges rather than bounding it"
+   ]
+  },
+  {
+   "asked_to_produce": [
+    "an integral quotient",
+    "a decimal value",
+    "a sentence with units"
+   ],
+   "calculator_status": "calculator",
+   "common_distractors": [
+    "the difference quotient of the function at the endpoints",
+    "the value of the integral without the division",
+    "the average of the endpoint values",
+    "division by the number of data points",
+    "reporting the integral without dividing",
+    "dividing by the number of data points rather than the interval length",
+    "computing the average rate of change of the function instead of the average value",
+    "using a calculator in degree mode"
+   ],
+   "common_givens": [
+    "a model function in a context",
+    "a closed interval of the independent variable"
+   ],
+   "created": "2026-09-19",
+   "description": "A function is given by a model formula or a graph, and the response computes its average value over a stated interval and reports it in context.",
+   "difficulty_factors": [
+    "BC-DF-03",
+    "BC-DF-05",
+    "BC-DF-07",
+    "BC-DF-08",
+    "BC-DF-16"
+   ],
+   "difficulty_variables": [
+    "formula versus graph presentation",
+    "whether the interval starts at zero",
+    "whether an interpretation with units is demanded",
+    "whether the average value is compared with an average rate of change in a later part",
+    "whether the function is a rate or an amount",
+    "whether an interpretation with units is required",
+    "whether the average value of a function is confused with the average rate of change",
+    "calculator versus no calculator"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "write the definite integral of the function over the interval",
+    "divide by the length of the interval",
+    "evaluate with technology",
+    "report to three places after the decimal point with units",
+    "write one over the length of the interval times the definite integral",
+    "evaluate the integral",
+    "divide and report to the required accuracy",
+    "interpret in context when asked"
+   ],
+   "family": "average-value",
+   "id": "BC-QA-08001",
+   "invariant_structure": "One function, one closed interval, one quotient: the definite integral of the function over the interval divided by the length of the interval, with the setup shown before the decimal.",
+   "misconceptions": [
+    "BC-MIS-08001",
+    "BC-MIS-08002",
+    "BC-MIS-06014",
+    "BC-MIS-06015"
+   ],
+   "multipart_structure": "One part of the calculator active free response question, or a single multiple choice item.",
+   "name": "Average value of a function over an interval",
+   "notes": "Consolidated with BC-QA-06007, which covered the same reasoning structure from the other unit. BC-QV-08001-04 records the polar setting of 2019 Q2(b), which preserves this archetype's invariant structure.",
+   "official_examples": [
+    "BC-FRQ-2015-Q3-D",
+    "BC-FRQ-2019-Q1-B",
+    "BC-FRQ-2019-Q2-B",
+    "BC-FRQ-2021-Q1-D",
+    "BC-FRQ-2022-Q1-B",
+    "BC-MCQ-PE2012-035",
+    "BC-MCQ-SAMPLE-009"
+   ],
+   "official_examples_notes": "2025 Q1(A), 2023 Q1(c), 2024 Q1(b); 2023 Q1(c), 2025 Q1(A), 2024 Q1(b)",
+   "point_types": [
+    "BC-PT-99001",
+    "BC-PT-99004",
+    "BC-PT-99020",
+    "BC-PT-99003"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08006",
+    "BC-PRQ-06005"
+   ],
+   "primary_unit": "BC-UNIT-08",
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-05",
+    "BC-REP-09"
+   ],
+   "safe_variables": [
+    "the modelled quantity",
+    "the units of the function",
+    "the length of the interval",
+    "the letters used for the variables",
+    "the context",
+    "the interval",
+    "the algebraic form of the function"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "Two points: one for the correct integral together with evidence of division by the length of the interval, and one for the correct value reported to three decimal places; in 2025 unclear communication between the integral and the answer was treated as scratch work and both points were awarded (sg-25:3), while a 2023 response presenting the same kind of unlinked chain earned one of two points (sg-23:4).",
+   "skills": [
+    "BC-SKL-08001",
+    "BC-SKL-08002",
+    "BC-SKL-08003",
+    "BC-SKL-08005",
+    "BC-SKL-06038",
+    "BC-SKL-06036"
+   ],
+   "sources": [
+    "sg-25:2",
+    "sg-25:3",
+    "sg-23:4",
+    "sg-24:3",
+    "sg-23:3",
+    "frq-23:3",
+    "frq-25:3"
+   ],
+   "status": "active",
+   "typical_wording": [
+    "find the average value of the modelled quantity over the stated time interval and show the setup for the calculations",
+    "using correct units, interpret the meaning of the average you found",
+    "find the average value of the function over the stated interval, showing the setup for your calculations",
+    "interpret the meaning of one over the length of the interval times the definite integral of the rate in the context of the problem"
+   ],
+   "units": [
+    "BC-UNIT-08",
+    "BC-UNIT-06"
+   ],
+   "updated": "2026-09-19",
+   "variants": [
+    "BC-QV-06007-01",
+    "BC-QV-06007-02",
+    "BC-QV-06007-03",
+    "BC-QV-08001-01",
+    "BC-QV-08001-02",
+    "BC-QV-08001-03",
+    "BC-QV-08001-04"
+   ],
+   "wrong_approaches": [
+    "averaging the two endpoint values",
+    "dividing by the upper limit alone"
+   ]
+  }
+ ],
+ "registry": "archetypes",
+ "variants": [
+  {
+   "archetype": "BC-QA-08001",
+   "created": "2026-09-19",
+   "description": "The function averaged is the radial function of a polar curve and the interval is an interval of angles, so the average distance from the origin is the integral of the radial function over the angle span divided by that span. The reasoning structure of the average value archetype is unchanged; only the setting is polar, and the trap is the factor of one half and the squared radius that belong to the polar area formula.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "verified",
+   "id": "BC-QV-08001-04",
+   "name": "Average value of a radial function over an angle interval",
+   "notes": "Recorded as a variant rather than a new archetype because the invariant structure of BC-QA-08001, one function over one interval divided by the length of the interval, is preserved exactly (sg-19:3).",
+   "official_examples": [
+    "BC-FRQ-2019-Q2-B"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "frq-19:3",
+    "sg-19:3"
+   ],
+   "status": "active",
+   "updated": "2026-09-19"
+  }
+ ]
+}

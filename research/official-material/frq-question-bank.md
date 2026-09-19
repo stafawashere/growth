@@ -28,7 +28,7 @@ Year total: 6 questions, 22 part records, 54 rubric points.
 
 Source documents in cache: frq-24, sg-24, samples-24-q1 through samples-24-q6, cr-24. Every record below cites the free-response page and the scoring guideline page it was built from. [verified]
 
-The sg-24 text layer keeps every scoring point label and the model solution but loses the scoring-note prose, so the scoring_behaviors on the 2024 records are derived from labels and model solutions and each record says so. [single-source]
+The sg-24 text layer lost the scoring-note prose, so the scoring_behaviors, notation_requirements, and justification_requirements on the 2024 records are read from the OCR of the page renders at cache/text/sg-24 and each record says so. [single-source]
 
 | Question | Parts | Calculator | Primary unit | Topics | Archetype | Points | Record ids | Sources |
 |---|---|---|---|---|---|---|---|---|

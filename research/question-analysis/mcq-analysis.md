@@ -7,7 +7,7 @@ purpose: What College Board states publicly about how multiple-choice questions 
 
 # AP Calculus BC Multiple-Choice Question Analysis
 
-This file is a view over the 91 records in `../../data/mcq_records.json`. Section and timing facts live in [exam-structure.md](../exam/exam-structure.md) and weighting facts in [exam-blueprint.md](../exam/exam-blueprint.md); neither is restated here. The per-question table is in [official-sample-question-index.md](../official-material/official-sample-question-index.md) and the mechanism catalogue is in [distractor-taxonomy.md](distractor-taxonomy.md).
+This file is a view over the 91 records in `../../data/mcq_records.json`. Where the primary text layer of a cached document dropped or garbled a stem, an option set, or a key letter, the question was read instead from the OCR transcription in the matching `page-NNN.ocr.txt` file. OCR is a machine transcription of the same document rather than a second source, so every record that depends on it is tagged `single-source` and lists a source entry ending in `#ocr`. Forty-nine of the 91 records are `verified` and 42 are `single-source`. Section and timing facts live in [exam-structure.md](../exam/exam-structure.md) and weighting facts in [exam-blueprint.md](../exam/exam-blueprint.md); neither is restated here. The per-question table is in [official-sample-question-index.md](../official-material/official-sample-question-index.md) and the mechanism catalogue is in [distractor-taxonomy.md](distractor-taxonomy.md).
 
 ## What College Board states about multiple-choice construction [verified]
 
@@ -26,6 +26,8 @@ Three cached documents carry official multiple-choice material with answer keys.
 | BC-SRC-ced | Course and exam description, sample questions section, `ced:208` to `ced:221` | 22 | 15 | 7 | 4 | practice skill, learning objective, unit |
 | BC-SRC-sample-questions | Standalone sample questions, originally published in the fall 2014 curriculum framework | 24 | 16 | 8 | 4 | learning objectives, essential knowledge, mathematical practices of the 2014 framework |
 | BC-SRC-practice-exam-2012 | 2012 released BC practice exam, Section I | 45 | 28 | 17 | 5 | none |
+
+Reading each document splits differently between the primary text layer and the OCR transcription. The course and exam description gives 14 records on the primary layer and 8 on OCR. The standalone sample set renders almost all of its mathematics as images, so 22 of its 24 records rest on OCR and only 2 on the primary layer. The 2012 practice exam extracts cleanly, giving 33 records on the primary layer and 12 on OCR, most of them items whose figures or exponents the primary layer garbled.
 
 Across all three, 59 of 91 are on a part where a graphing calculator is not permitted and 32 are on a part where one is required or permitted. The 2012 exam is the only source with five options; both current-framework sources use four. The course and exam description set is split into a part answered by both AB and BC candidates, indexed here as scope `shared`, and a part answered only by BC candidates, indexed as `BC_only`; the standalone set is split the same way into an AB set of 16 and a BC set of 8. Every record in the 2012 set is scoped `BC_only` because the document is the BC exam, although several of its items cover content shared with AB.
 
@@ -89,7 +91,7 @@ The symbolic representation carries about two questions in five. The four repres
 
 ## Recurring archetypes [inferred]
 
-The 91 records use 61 distinct archetypes from `../../data/archetypes.json`. Forty of those appear once. The archetypes carrying two or more of the indexed questions are below.
+The 91 records use 61 distinct archetypes from `../../data/archetypes.json`. Thirty-nine of those appear once. The archetypes carrying two or more of the indexed questions are below.
 
 | Archetype | Name | Count |
 |---|---|---|
@@ -98,7 +100,7 @@ The 91 records use 61 distinct archetypes from `../../data/archetypes.json`. For
 | BC-QA-02005 | Point of non-differentiability identified on a continuous function | 3 |
 | BC-QA-04006 | Related rates in a geometric setting | 3 |
 | BC-QA-06008 | Antiderivative or definite integral by substitution | 3 |
-| BC-QA-10004 | Convergence or divergence established with a named test | 3 |
+| BC-QA-10004 | Convergence or divergence established with a named test | 2 |
 | BC-QA-01004 | Indeterminate limit resolved by algebraic rewriting | 2 |
 | BC-QA-04009 | Limit of an indeterminate form with L'Hospital's rule | 2 |
 | BC-QA-05001 | Mean Value Theorem existence justification on an interval | 2 |
@@ -114,12 +116,15 @@ The 91 records use 61 distinct archetypes from `../../data/archetypes.json`. For
 | BC-QA-08001 | Average value of a function over an interval | 2 |
 | BC-QA-08003 | Rectilinear motion analysed with definite integrals | 2 |
 | BC-QA-09001 | Slope of the tangent to a parametric path at a time | 2 |
+| BC-QA-10007 | Absolute or conditional convergence classified | 2 |
 
 The heaviest recurrence, BC-QA-05009, is the family in which one of a function and its derivatives is supplied and a statement about another is asked for. It occurs in all three sources. The second, BC-QA-06003, always supplies the integrand graphically and asks a question about the accumulation function. Both families are multi-representation by construction, which is consistent with the presence of Practice 2 skills in the tagged subset.
 
 ## What the answer keys reveal [verified]
 
 Every source prints a bare answer letter and nothing else. No rationale for any option appears in any of the three documents, so `official_rationale_available` is false on all 91 records and no distractor mechanism in this library carries the `verified` tag.
+
+The course and exam description key on `ced:221` is printed as a column table that the primary text layer reflows, displacing the answer letters for questions 4 and 6 out of their rows. The OCR transcription of the same page prints one letter per row and resolves the displacement, giving B for question 4 and C for question 6. Working both problems independently reaches the same two letters, so BC-MCQ-CED-004 and BC-MCQ-CED-006 carry those answers and are tagged `single-source` because the key letters rest on the transcription.
 
 The letter distributions are as follows. Course and exam description, 22 questions over four options: A 6, B 5, C 6, D 5. Standalone sample set, 24 questions over four options: A 6, B 7, C 6, D 5. The 2012 practice exam, 45 questions over five options: A 7, B 9, C 13, D 6, E 10. The first two are close to uniform. The 2012 spread is wider, with C the most frequent at 13 of 45 and D the least at 6 of 45, on a sample too small to support any claim about key placement as a design property.
 
@@ -129,9 +134,9 @@ The answer key in the course and exam description is also the only place in thes
 
 Three constraints bound what the records can support.
 
-The first is extraction quality. The standalone sample set renders its mathematics as images that the text layer drops, so for 18 of its 24 questions no option text survives at all and the description in each record is reconstructed from the surviving prose and the official tags. The course and exam description linearises its mathematics into read-aloud text that is usable for most items but that failed for questions 13, 14, 15, 17, 18, and 19. The 2012 practice exam extracts well, and its figures, being images, are the main loss there.
+The first is extraction quality. The standalone sample set renders its mathematics as images that the primary text layer drops entirely, and the course and exam description linearises its mathematics into read-aloud text that failed for six items. OCR recovered the stem and the option set for most of them, but at a lower evidentiary standard, and it introduced its own faults: on `ced:213` the transcription prints one tabulated derivative value that disagrees with the primary layer and drops a minus sign from two options, and on `practice-exam-2012:30` it renders one option upside down. What OCR cannot recover is a figure. Twelve records still depend on a graph or a set of candidate graphs that exist only as images, and those records carry option entries with no mechanism.
 
-The second is the absence of rationales. Because no source explains why an option is wrong, every mechanism in `distractor_analysis` is either an inference from the arithmetic or structure of the printed option, tagged `inferred`, or an admission that the option could not be worked, tagged `uncertain`. Of 318 option entries across the 91 records, 205 are `inferred` and 113 are `uncertain`. None is `verified`.
+The second is the absence of rationales. Because no source explains why an option is wrong, every mechanism in `distractor_analysis` is either an inference from the arithmetic or structure of the printed option, tagged `inferred`, or an admission that the option could not be worked, tagged `uncertain`. Of 318 option entries across the 91 records, 287 are `inferred` and 31 are `uncertain`. None is `verified`.
 
 The third is sample composition. The three documents were published for different purposes across three framework generations, one of them predating the 2019 course framework and one predating the 2014 one. Counting them together, as the unit and representation tables above do, mixes those generations. The counts describe this corpus and nothing beyond it.
 
@@ -139,8 +144,10 @@ The third is sample composition. The three documents were published for differen
 
 Several specific items could not be settled and are logged here and in `../evidence/unresolved-questions.md`.
 
-The option list cached for the 2012 practice exam question 82 does not contain the value that a direct computation of the requested average gives, so the printed options could not be reconciled with the official key letter. Either the extraction lost or altered an option, or the printed option set differs from what the computation suggests. The record carries all four distractors as `not determined`.
+The discrepancy previously recorded for the 2012 practice exam question 82 is resolved. The primary text layer had lost a radical, and the OCR transcription on `practice-exam-2012:44` shows that the integrand is the square root of a cosine rather than the cosine itself. The average value that follows matches the official key letter, and three of the four distractors now carry mechanisms.
 
-For the 2012 practice exam questions 10, 15, 18, 84, and 88, and for course and exam description questions 13, 15, 17, 18, and 19, the stem, the figure, or the option set is not recoverable from the cache, so the correct option is taken from the printed key and no mechanism is asserted.
+What remains open is the material that exists only as a figure. The graph of the integrand behind the 2012 practice exam questions 15, 18, and 78, the candidate graphs behind its question 88 and behind question 11 of the standalone sample set, and the velocity vector behind question 7 of that set are all images that neither the text layer nor OCR recovers. Twenty-eight option entries across 15 records are still tagged `not determined` for that reason.
+
+Two option values resist attribution even with the stem in hand. Options B and C of question 15 of the standalone sample set, and options A and C of its question 16, are numbers that no single plausible route reproduces, so no mechanism is asserted for them.
 
 The standalone sample set uses the 2014 mathematical practices rather than the practice skills of the current framework. Whether a defensible crosswalk exists from those practices to BC-MPS ids has not been established, so none was applied, and the practice skill distribution above therefore rests on 22 questions rather than 46.

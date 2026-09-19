@@ -19,7 +19,7 @@ Counters are regenerated from `qa/12_report.py`; narrative status is updated by 
 | 3 | unit fan-out | done 2026-09-19 (10 units, 541 skills, 134 archetypes) |
 | 4 | official FRQ, scoring, sample indexing | done 2026-09-19 (249 FRQ part records over 2012 partial, 2013 to 2015, 2018, 2019, 2021 to 2026; 91 MCQ records; 69 point types; 38 Chief Reader errors) |
 | 5 | archetypes, points, misconceptions, diagnostics synthesis | done 2026-09-19 (129 active archetypes in 72 families, 17 difficulty factors, 945 edges with 0 cycles, 57 duplicate records retired) |
-| 6 | evidence files, skeptic pass, closure | skeptic pass done (fixes applied: inverted BC-ERR-99030 instance, skill tag policy, citation sync, adaptive metadata rewritten for all 541 skills); intra-unit edges for Units 8, 9, 10 authored; error causes enriched for all 390 active errors; diagnostic signals cover every active skill; independent-assessability flag added; mastery-state vocabulary unified |
+| 6 | evidence files, skeptic pass, closure | skeptic pass done (fixes applied: inverted BC-ERR-99030 instance, skill tag policy, citation sync, adaptive metadata rewritten for all 541 skills); intra-unit edges for Units 8, 9, 10 authored; error causes enriched for all 390 active errors; diagnostic signals cover every active skill; independent-assessability flag added; mastery-state vocabulary unified; sg-24 and sample MCQ documents recovered by OCR (tools/ocr_pages.py) and their records re-derived; 10 gap archetypes, 7 new point types, misconception causal prerequisites filled |
 
 ## Counters (from qa/last_report.json, 2026-09-19)
 
@@ -34,9 +34,9 @@ Counters are regenerated from `qa/12_report.py`; narrative status is updated by 
 | skills.json:concepts | 170 |
 | skills.json:skills | 541 |
 | skills.json:prerequisites | 77 |
-| archetypes.json:archetypes | 134 |
-| archetypes.json:variants | 394 |
-| scoring_points.json:point_types | 69 |
+| archetypes.json:archetypes | 144 |
+| archetypes.json:variants | 395 |
+| scoring_points.json:point_types | 76 |
 | errors.json:errors | 424 |
 | misconceptions.json:misconceptions | 236 |
 | diagnostic_signals.json:signals | 711 |
@@ -57,7 +57,7 @@ Sources discovered: 108 (97 cached College Board documents plus 11 web pages and
 
 ## Resuming
 
-Read CLAUDE.md, then run python3 qa/12_report.py. The staging files under data/staging are the authoritative edit history; a full python3 tools/merge_staging.py replay rebuilds every registry in phase order. Next candidates for work: author archetypes for the gaps listed in evidence/unresolved-questions.md; fill misconception causal_prerequisites; re-fetch 2026 samples, statistics, distributions, and Chief Reader report once College Board publishes them; retry OCR on sg-24 if a tool becomes available.
+Read CLAUDE.md, then run python3 qa/12_report.py. The staging files under data/staging are the authoritative edit history; a full python3 tools/merge_staging.py replay rebuilds every registry in phase order. Next candidates for work: author archetypes for the gaps listed in evidence/unresolved-questions.md; fill misconception causal_prerequisites; re-fetch 2026 samples, statistics, distributions, and Chief Reader report once College Board publishes them; OCR (RapidOCR) is now available through tools/ocr_pages.py for any further image-only pages such as the handwritten sample responses.
 
 ## Unresolved areas
 

@@ -218,8 +218,8 @@ Suggested practice skills: BC-MPS-2C (Practice skill 2.C). Weighting pointer: [.
 - BC-PRQ-06006 -> BC-SKL-06015, supporting, [inferred], Prerequisite for Express a definite integral as the limit of a Riemann sum.
 - BC-SKL-06013 -> BC-SKL-06015, hard_prerequisite, [inferred], Prerequisite for Express a definite integral as the limit of a Riemann sum.
 - BC-PRQ-06006 -> BC-SKL-06016, supporting, [inferred], Prerequisite for State the limit definition of the definite integral.
-- BC-TOP-0102 -> BC-SKL-06016, hard_prerequisite, [inferred], Limit of a sequence of sums; Unit 1 limit skills do not exist yet so the topic id stands in.
-- BC-TOP-0102 -> BC-SKL-06014, hard_prerequisite, [inferred], Evaluating a limit is required before a Riemann sum limit can be read as an integral.
+- BC-TOP-0102 -> BC-SKL-06016, hard_prerequisite, [inferred], Limit of a sequence of sums; Unit 1 limit skills do not exist yet so the topic id stands in; unmapped
+- BC-SKL-01006 -> BC-SKL-06014, hard_prerequisite, [inferred], Evaluating a limit is required before a Riemann sum limit can be read as an integral
 
 ### Required mathematical knowledge
 
@@ -288,8 +288,8 @@ Suggested practice skills: BC-MPS-1D (Practice skill 1.D). Weighting pointer: [.
 - BC-SKL-06018 -> BC-SKL-06019, hard_prerequisite, [inferred], Prerequisite for Differentiate an accumulation function whose upper limit is a function of x.
 - BC-PRQ-06007 -> BC-SKL-06020, supporting, [inferred], Prerequisite for Evaluate an accumulation function at a specified input from the graph of the integrand.
 - BC-SKL-06028 -> BC-SKL-06020, hard_prerequisite, [inferred], Prerequisite for Evaluate an accumulation function at a specified input from the graph of the integrand.
-- BC-TOP-0115 -> BC-SKL-06021, supporting, [inferred], Continuity on an interval is the hypothesis of the Fundamental Theorem of Calculus part one.
-- BC-TOP-0301 -> BC-SKL-06019, hard_prerequisite, [inferred], The chain rule supplies the factor when the upper limit of an accumulation function is a function of x.
+- BC-TOP-0115 -> BC-SKL-06021, supporting, [inferred], Continuity on an interval is the hypothesis of the Fundamental Theorem of Calculus part one; unmapped
+- BC-SKL-03002 -> BC-SKL-06019, hard_prerequisite, [inferred], The chain rule supplies the factor when the upper limit of an accumulation function is a function of x.
 
 ### Required mathematical knowledge
 
@@ -370,9 +370,9 @@ Suggested practice skills: BC-MPS-2D (Practice skill 2.D). Weighting pointer: [.
 - BC-SKL-06022 -> BC-SKL-06027, hard_prerequisite, [inferred], Prerequisite for Describe the graph of an accumulation function from the graph of the integrand.
 - BC-SKL-06024 -> BC-SKL-06027, hard_prerequisite, [inferred], Prerequisite for Describe the graph of an accumulation function from the graph of the integrand.
 - BC-SKL-06025 -> BC-SKL-06027, hard_prerequisite, [inferred], Prerequisite for Describe the graph of an accumulation function from the graph of the integrand.
-- BC-TOP-0504 -> BC-SKL-06023, supporting, [inferred], Relative extremum reasoning from the sign of a derivative is applied to the accumulation function.
-- BC-TOP-0506 -> BC-SKL-06025, supporting, [inferred], Concavity from the monotonicity of a derivative is applied to the accumulation function.
-- BC-TOP-0505 -> BC-SKL-06026, supporting, [inferred], The candidates test for an absolute extremum on a closed interval is a Unit 5 procedure.
+- BC-SKL-05021 -> BC-SKL-06023, supporting, [inferred], Relative extremum reasoning from the sign of a derivative is applied to the accumulation function.
+- BC-TOP-0506 -> BC-SKL-06025, supporting, [inferred], Concavity from the monotonicity of a derivative is applied to the accumulation function; unmapped
+- BC-SKL-05029 -> BC-SKL-06026, supporting, [inferred], The candidates test for an absolute extremum on a closed interval is a Unit 5 procedure.
 
 ### Required mathematical knowledge
 
@@ -451,7 +451,7 @@ Suggested practice skills: BC-MPS-3D (Practice skill 3.D). Weighting pointer: [.
 
 - BC-PRQ-06007 -> BC-SKL-06028, supporting, [inferred], Prerequisite for Evaluate a definite integral from a graph using area formulas.
 - BC-SKL-06031 -> BC-SKL-06033, hard_prerequisite, [inferred], Prerequisite for Evaluate a definite integral of a function with a removable or jump discontinuity.
-- BC-TOP-0115 -> BC-SKL-06033, supporting, [inferred], Classifying removable and jump discontinuities comes from Unit 1.
+- BC-TOP-0115 -> BC-SKL-06033, supporting, [inferred], Classifying removable and jump discontinuities comes from Unit 1; unmapped
 
 ### Required mathematical knowledge
 
@@ -531,7 +531,7 @@ Suggested practice skills: BC-MPS-3D (Practice skill 3.D). Weighting pointer: [.
 - BC-SKL-06036 -> BC-SKL-06037, hard_prerequisite, [inferred], Prerequisite for Compute a final value from an initial condition and an accumulated change.
 - BC-SKL-06034 -> BC-SKL-06038, hard_prerequisite, [inferred], Prerequisite for Compute the average value of a function on an interval.
 - BC-SKL-06036 -> BC-SKL-06039, hard_prerequisite, [inferred], Prerequisite for Set up a single definite integral for a rate in minus rate out situation.
-- BC-TOP-0115 -> BC-SKL-06035, supporting, [inferred], Continuity on the closed interval is a hypothesis of the Fundamental Theorem of Calculus part two.
+- BC-TOP-0115 -> BC-SKL-06035, supporting, [inferred], Continuity on the closed interval is a hypothesis of the Fundamental Theorem of Calculus part two; unmapped
 
 ### Required mathematical knowledge
 
@@ -620,9 +620,9 @@ Granularity note: Topic 6.8 carries seven skills because the CED groups five ind
 - BC-PRQ-06004 -> BC-SKL-06042, supporting, [inferred], Prerequisite for Antidifferentiate basic trigonometric integrands.
 - BC-PRQ-06004 -> BC-SKL-06043, supporting, [inferred], Prerequisite for Antidifferentiate integrands whose antiderivatives are inverse trigonometric.
 - BC-SKL-06040 -> BC-SKL-06044, hard_prerequisite, [inferred], Prerequisite for Include the constant of integration and determine it from an initial condition.
-- BC-TOP-0205 -> BC-SKL-06040, hard_prerequisite, [inferred], Antiderivative recognition reverses the power rule from Unit 2.
-- BC-TOP-0207 -> BC-SKL-06042, hard_prerequisite, [inferred], Trigonometric derivative rules read backwards give the basic trigonometric antiderivatives.
-- BC-TOP-0304 -> BC-SKL-06043, supporting, [inferred], Inverse trigonometric derivatives from Unit 3 give the inverse trigonometric antiderivative forms.
+- BC-SKL-02027 -> BC-SKL-06040, hard_prerequisite, [inferred], Antiderivative recognition reverses the power rule from Unit 2.
+- BC-SKL-02035 -> BC-SKL-06042, hard_prerequisite, [inferred], Trigonometric derivative rules read backwards give the basic trigonometric antiderivatives
+- BC-SKL-03021 -> BC-SKL-06043, supporting, [inferred], Inverse trigonometric derivatives from Unit 3 give the inverse trigonometric antiderivative forms
 
 ### Required mathematical knowledge
 
@@ -697,7 +697,7 @@ Suggested practice skills: BC-MPS-1E (Practice skill 1.E). Weighting pointer: [.
 - BC-PRQ-06003 -> BC-SKL-06052, supporting, [inferred], Prerequisite for Apply substitution to an integrand that antidifferentiates to a logarithm.
 - BC-SKL-06047 -> BC-SKL-06052, hard_prerequisite, [inferred], Prerequisite for Apply substitution to an integrand that antidifferentiates to a logarithm.
 - BC-SKL-06048 -> BC-SKL-06052, hard_prerequisite, [inferred], Prerequisite for Apply substitution to an integrand that antidifferentiates to a logarithm.
-- BC-TOP-0301 -> BC-SKL-06047, hard_prerequisite, [inferred], Substitution reverses the chain rule, so recognising a composite and its inner derivative comes first.
+- BC-SKL-03002 -> BC-SKL-06047, hard_prerequisite, [inferred], Substitution reverses the chain rule, so recognising a composite and its inner derivative comes first.
 
 ### Required mathematical knowledge
 
@@ -844,7 +844,7 @@ Suggested practice skills: BC-MPS-1E (Practice skill 1.E). Weighting pointer: [.
 - BC-SKL-06034 -> BC-SKL-06060, hard_prerequisite, [inferred], Prerequisite for Evaluate a definite integral using integration by parts.
 - BC-PRQ-06005 -> BC-SKL-06061, supporting, [inferred], Prerequisite for Apply integration by parts to an integrand containing an unknown function and its derivative.
 - BC-SKL-06058 -> BC-SKL-06061, hard_prerequisite, [inferred], Prerequisite for Apply integration by parts to an integrand containing an unknown function and its derivative.
-- BC-TOP-0208 -> BC-SKL-06057, hard_prerequisite, [inferred], Integration by parts is the product rule read as an antidifferentiation technique.
+- BC-TOP-0208 -> BC-SKL-06057, hard_prerequisite, [inferred], Integration by parts is the product rule read as an antidifferentiation technique; unmapped
 
 ### Required mathematical knowledge
 
@@ -977,7 +977,7 @@ Suggested practice skills: BC-MPS-1E (Practice skill 1.E). Weighting pointer: [.
 - BC-SKL-06067 -> BC-SKL-06069, hard_prerequisite, [inferred], Prerequisite for Conclude that an improper integral diverges.
 - BC-SKL-06066 -> BC-SKL-06070, hard_prerequisite, [inferred], Prerequisite for Split an improper integral that is improper at more than one place.
 - BC-SKL-06031 -> BC-SKL-06070, hard_prerequisite, [inferred], Prerequisite for Split an improper integral that is improper at more than one place.
-- BC-TOP-0102 -> BC-SKL-06067, hard_prerequisite, [inferred], Improper integrals are defined by limits, including limits at infinity.
+- BC-TOP-0102 -> BC-SKL-06067, hard_prerequisite, [inferred], Improper integrals are defined by limits, including limits at infinity; unmapped
 
 ### Required mathematical knowledge
 
@@ -1183,25 +1183,25 @@ Generated from data/frq_records.json and data/mcq_records.json. Every record cit
 
 | FRQ record | Role | Calculator | Archetype | Skills (first six) | Points | Point types |
 |---|---|---|---|---|---|---|
-| BC-FRQ-2013-Q1-B | primary | calculator | BC-QA-06005 | BC-SKL-06036, BC-SKL-08016, BC-SKL-08017 | 2 | BC-PT-99001, BC-PT-99004 |
+| BC-FRQ-2013-Q1-B | primary | calculator | BC-QA-99008 | BC-SKL-06036, BC-SKL-08016, BC-SKL-08017 | 2 | BC-PT-99001, BC-PT-99004 |
 | BC-FRQ-2013-Q3-C | primary | no_calculator | BC-QA-06007 | BC-SKL-06007, BC-SKL-06009, BC-SKL-08001, BC-SKL-08005, BC-SKL-06038 | 3 | BC-PT-99018, BC-PT-99019, BC-PT-99007 |
 | BC-FRQ-2013-Q4-B | secondary | no_calculator | BC-QA-05006 | BC-SKL-05024, BC-SKL-05025, BC-SKL-05026, BC-SKL-05027, BC-SKL-05028, BC-SKL-06028 | 3 | BC-PT-99013, BC-PT-99004, BC-PT-99011 |
 | BC-FRQ-2014-Q1-C | secondary | calculator | BC-QA-08002 | BC-SKL-08001, BC-SKL-08003, BC-SKL-08021, BC-SKL-08004 | 2 | BC-PT-99020, BC-PT-99004 |
 | BC-FRQ-2014-Q3-A | primary | no_calculator | BC-QA-06003 | BC-SKL-06020, BC-SKL-06028, BC-SKL-06031, BC-SKL-06004 | 1 | BC-PT-99069 |
 | BC-FRQ-2014-Q3-B | primary | no_calculator | BC-QA-05004 | BC-SKL-06022, BC-SKL-06025, BC-SKL-05031, BC-SKL-05035, BC-SKL-05017 | 2 | BC-PT-99062, BC-PT-99063 |
-| BC-FRQ-2014-Q3-C | secondary | no_calculator | BC-QA-02008 | BC-SKL-02039, BC-SKL-02040, BC-SKL-06018, BC-SKL-06020 | 3 | BC-PT-99022, BC-PT-99004 |
+| BC-FRQ-2014-Q3-C | secondary | no_calculator | BC-QA-02008 | BC-SKL-02039, BC-SKL-02040, BC-SKL-06018, BC-SKL-06020 | 3 | BC-PT-99080, BC-PT-99004 |
 | BC-FRQ-2014-Q4-C | primary | no_calculator | BC-QA-06002 | BC-SKL-06008, BC-SKL-08009, BC-SKL-08012, BC-SKL-06036 | 3 | BC-PT-99033, BC-PT-99018, BC-PT-99019 |
 | BC-FRQ-2014-Q5-A | secondary | no_calculator | BC-QA-08008 | BC-SKL-08018, BC-SKL-08019, BC-SKL-08022, BC-SKL-06047, BC-SKL-06048 | 3 | BC-PT-99059, BC-PT-99003, BC-PT-99004 |
 | BC-FRQ-2014-Q6-C | secondary | no_calculator | BC-QA-10019 | BC-SKL-10006, BC-SKL-10008, BC-SKL-10072, BC-SKL-10069, BC-SKL-06052, BC-SKL-07029 | 3 | BC-PT-99067, BC-PT-99003, BC-PT-99004 |
-| BC-FRQ-2015-Q1-A | primary | calculator | BC-QA-06005 | BC-SKL-06036, BC-SKL-08016, BC-SKL-08017 | 2 | BC-PT-99002, BC-PT-99004 |
+| BC-FRQ-2015-Q1-A | primary | calculator | BC-QA-99008 | BC-SKL-06036, BC-SKL-08016, BC-SKL-08017 | 2 | BC-PT-99002, BC-PT-99004 |
 | BC-FRQ-2015-Q1-D | secondary | calculator | BC-QA-06006 | BC-SKL-08012, BC-SKL-08013, BC-SKL-08016, BC-SKL-06039, BC-SKL-06017 | 2 | BC-PT-99001, BC-PT-99068 |
 | BC-FRQ-2015-Q3-B | primary | no_calculator | BC-QA-06001 | BC-SKL-06006, BC-SKL-06009, BC-SKL-08015, BC-SKL-08007, BC-SKL-08006 | 3 | BC-PT-99007, BC-PT-99018, BC-PT-99019 |
 | BC-FRQ-2015-Q3-D | secondary | no_calculator | BC-QA-08001 | BC-SKL-08001, BC-SKL-06034, BC-SKL-06040 | 3 | BC-PT-99020, BC-PT-99003, BC-PT-99004 |
-| BC-FRQ-2015-Q5-D | primary | no_calculator | BC-QA-06010 | BC-SKL-06062, BC-SKL-06063, BC-SKL-06064, BC-SKL-06044, BC-SKL-06052 | 4 | BC-PT-99005, BC-PT-99003 |
-| BC-FRQ-2018-Q1-A | primary | calculator | BC-QA-06005 | BC-SKL-06036, BC-SKL-08016, BC-SKL-08017 | 0 |  |
+| BC-FRQ-2015-Q5-D | primary | no_calculator | BC-QA-06010 | BC-SKL-06062, BC-SKL-06063, BC-SKL-06064, BC-SKL-06044, BC-SKL-06052 | 4 | BC-PT-99081, BC-PT-99003 |
+| BC-FRQ-2018-Q1-A | primary | calculator | BC-QA-99008 | BC-SKL-06036, BC-SKL-08016, BC-SKL-08017 | 0 |  |
 | BC-FRQ-2018-Q1-B | secondary | calculator | BC-QA-06006 | BC-SKL-08012, BC-SKL-08013, BC-SKL-06039, BC-SKL-06037 | 0 |  |
-| BC-FRQ-2018-Q2-B | primary | calculator | BC-QA-06005 | BC-SKL-06036, BC-SKL-08016, BC-SKL-08017 | 0 |  |
-| BC-FRQ-2018-Q2-C | primary | calculator | BC-QA-06013 | BC-SKL-06031, BC-SKL-06029, BC-SKL-06066, BC-SKL-06067, BC-SKL-08016 | 0 |  |
+| BC-FRQ-2018-Q2-B | primary | calculator | BC-QA-99009 | BC-SKL-06036, BC-SKL-08016, BC-SKL-08017 | 0 |  |
+| BC-FRQ-2018-Q2-C | primary | calculator | BC-QA-99010 | BC-SKL-06031, BC-SKL-06029, BC-SKL-06066, BC-SKL-06067, BC-SKL-08016 | 0 |  |
 | BC-FRQ-2018-Q3-A | primary | no_calculator | BC-QA-06003 | BC-SKL-06020, BC-SKL-06028, BC-SKL-06031, BC-SKL-06037 | 0 |  |
 | BC-FRQ-2018-Q3-B | primary | no_calculator | BC-QA-06004 | BC-SKL-06028, BC-SKL-06031, BC-SKL-06034, BC-SKL-06040 | 0 |  |
 | BC-FRQ-2018-Q3-C | primary | no_calculator | BC-QA-05004 | BC-SKL-06022, BC-SKL-06025, BC-SKL-05031, BC-SKL-05035, BC-SKL-05017 | 0 |  |

@@ -1,0 +1,310 @@
+{
+ "registry": "diagnostic_signals",
+ "signals": [
+  {
+   "archetype": "BC-QA-02001",
+   "consistent_with": [
+    "BC-SKL-02014",
+    "BC-MIS-02001"
+   ],
+   "distinguish_by": "Ask for the units of the reported number; a correct unit statement afterwards indicates a communication slip rather than a gap (sg-25:11).",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-02001",
+   "mastery_state": "partially_mastered",
+   "name": "Correct difference with the division omitted",
+   "observation": "The two tabulated values are subtracted correctly but the result is reported without dividing by the change in the inputs.",
+   "scope": "shared",
+   "skill": "BC-SKL-02014",
+   "sources": [
+    "sg-25:11"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02001",
+   "consistent_with": [
+    "BC-SKL-02014"
+   ],
+   "distinguish_by": "Ask for the value of the written expression; the expression alone does not earn the answer point (sg-25:11).",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-02002",
+   "mastery_state": "partially_mastered",
+   "name": "Correct quotient with no value reported",
+   "observation": "The difference quotient is set up correctly from the right rows but is never evaluated.",
+   "scope": "shared",
+   "skill": "BC-SKL-02014",
+   "sources": [
+    "sg-25:11"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02001",
+   "consistent_with": [
+    "BC-SKL-02014",
+    "BC-MIS-02008"
+   ],
+   "distinguish_by": "Ask what the denominator of the quotient measures.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-02003",
+   "mastery_state": "partially_mastered",
+   "name": "Correct estimate with the units of the quantity attached",
+   "observation": "The numerical estimate is correct but the units given are those of the modelled quantity rather than of its rate.",
+   "scope": "shared",
+   "skill": "BC-SKL-02015",
+   "sources": [
+    "sg-25:11",
+    "sg-24:2"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02002",
+   "consistent_with": [
+    "BC-SKL-02006",
+    "BC-SKL-02009",
+    "BC-MIS-02002"
+   ],
+   "distinguish_by": "Ask for the algebraic simplification of the numerator before any substitution.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-02004",
+   "mastery_state": "partially_mastered",
+   "name": "Difference quotient set up correctly then collapsed",
+   "observation": "The difference quotient is written correctly but the increment is set to zero while it is still in the denominator.",
+   "scope": "shared",
+   "skill": "BC-SKL-02009",
+   "sources": [
+    "ced:61"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02002",
+   "consistent_with": [
+    "BC-SKL-02008",
+    "BC-MIS-02003"
+   ],
+   "distinguish_by": "Ask the student to read one intermediate line aloud as a claim; a correct correction indicates a notation habit rather than a gap.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-02005",
+   "mastery_state": "partially_mastered",
+   "name": "Correct derivative with the limit symbol absent from the work",
+   "observation": "The value obtained is correct but the intermediate lines carry no limit symbol.",
+   "scope": "shared",
+   "skill": "BC-SKL-02008",
+   "sources": [
+    "ced:61"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02003",
+   "consistent_with": [
+    "BC-SKL-02035"
+   ],
+   "distinguish_by": "Ask which value of the function is subtracted in the numerator.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-02006",
+   "mastery_state": "partially_mastered",
+   "name": "Limit identified as a derivative with the wrong base point",
+   "observation": "The underlying function is named correctly but the derivative is evaluated at the wrong input.",
+   "scope": "shared",
+   "skill": "BC-SKL-02035",
+   "sources": [
+    "ced:66"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02004",
+   "consistent_with": [
+    "BC-SKL-02019",
+    "BC-SKL-02020"
+   ],
+   "distinguish_by": "Ask what property stated in the question makes the function continuous; the continuity point requires that reason (sg-25:12).",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-02007",
+   "mastery_state": "partially_mastered",
+   "name": "Continuity used correctly but stated without its reason",
+   "observation": "The argument proceeds correctly from continuity but the response never says that continuity follows from differentiability.",
+   "scope": "shared",
+   "skill": "BC-SKL-02020",
+   "sources": [
+    "sg-25:12"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02004",
+   "consistent_with": [
+    "BC-SKL-02019",
+    "BC-MIS-02006"
+   ],
+   "distinguish_by": "Ask for a function continuous at a point at which it has no derivative.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-02008",
+   "mastery_state": "not_mastered",
+   "name": "Implication stated in the wrong direction",
+   "observation": "The response asserts that the function is differentiable because it is continuous.",
+   "scope": "shared",
+   "skill": "BC-SKL-02019",
+   "sources": [
+    "ced:63"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02005",
+   "consistent_with": [
+    "BC-SKL-02022",
+    "BC-MIS-02007"
+   ],
+   "distinguish_by": "Ask for the one sided slopes as two numbers.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-02009",
+   "mastery_state": "partially_mastered",
+   "name": "Correct verdict on differentiability with a visual reason",
+   "observation": "The response correctly says the derivative does not exist but supports it only by the appearance of the graph.",
+   "scope": "shared",
+   "skill": "BC-SKL-02022",
+   "sources": [
+    "ced:63"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02006",
+   "consistent_with": [
+    "BC-SKL-02025",
+    "BC-MIS-02009"
+   ],
+   "distinguish_by": "Ask for the derivative of a single squared term from the definition.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-02010",
+   "mastery_state": "not_mastered",
+   "name": "Exponents reduced correctly with the coefficients dropped",
+   "observation": "Every exponent is lowered by one but no term is multiplied by its original exponent.",
+   "scope": "shared",
+   "skill": "BC-SKL-02025",
+   "sources": [
+    "ced:64"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02006",
+   "consistent_with": [
+    "BC-SKL-02026"
+   ],
+   "distinguish_by": "Ask the student to rewrite the untouched term as a power of the variable first.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-02011",
+   "mastery_state": "partially_mastered",
+   "name": "Polynomial terms differentiated with a radical term copied",
+   "observation": "The polynomial part of the expression is differentiated correctly while a radical or reciprocal term is carried through unchanged.",
+   "scope": "shared",
+   "skill": "BC-SKL-02026",
+   "sources": [
+    "ced:64"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02007",
+   "consistent_with": [
+    "BC-SKL-02032",
+    "BC-MIS-02010"
+   ],
+   "distinguish_by": "Ask for the slope of the graph just to the right of the origin.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-02012",
+   "mastery_state": "partially_mastered",
+   "name": "Trigonometric derivative correct except for the sign",
+   "observation": "The derivative of a sine or cosine term is right in form but carries the wrong sign.",
+   "scope": "shared",
+   "skill": "BC-SKL-02032",
+   "sources": [
+    "ced:66"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02009",
+   "consistent_with": [
+    "BC-SKL-02036",
+    "BC-SKL-02037"
+   ],
+   "distinguish_by": "Ask the student to label each supplied number before substituting.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-02013",
+   "mastery_state": "partially_mastered",
+   "name": "Product rule written correctly with one derivative value misread",
+   "observation": "The rule is set out with the names in the right positions but one of the four supplied numbers is a function value where a derivative value belongs.",
+   "scope": "shared",
+   "skill": "BC-SKL-02037",
+   "sources": [
+    "ced:67"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02008",
+   "consistent_with": [
+    "BC-SKL-02039",
+    "BC-SKL-02040",
+    "BC-MIS-02012"
+   ],
+   "distinguish_by": "Ask the student to apply the rule to a reciprocal and compare with the power rule result.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-02014",
+   "mastery_state": "partially_mastered",
+   "name": "Quotient rule applied with the numerator terms reversed",
+   "observation": "The structure of the quotient rule is right but the subtraction runs the wrong way, so the answer differs only in sign.",
+   "scope": "shared",
+   "skill": "BC-SKL-02040",
+   "sources": [
+    "ced:68"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02010",
+   "consistent_with": [
+    "BC-SKL-02043",
+    "BC-SKL-02044"
+   ],
+   "distinguish_by": "Ask which rule applies to the rewritten expression.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-02015",
+   "mastery_state": "partially_mastered",
+   "name": "Trigonometric rewriting correct with the quotient rule misapplied",
+   "observation": "The function is rewritten correctly with sine and cosine but the differentiation that follows is done term by term.",
+   "scope": "shared",
+   "skill": "BC-SKL-02044",
+   "sources": [
+    "ced:69"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02011",
+   "consistent_with": [
+    "BC-SKL-02012",
+    "BC-SKL-02013"
+   ],
+   "distinguish_by": "Ask at which input the line touches the curve and what the height is there.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-02016",
+   "mastery_state": "partially_mastered",
+   "name": "Tangent line correct in slope but through the wrong point",
+   "observation": "The derivative is evaluated correctly but the point used in the line equation is not the point of tangency.",
+   "scope": "shared",
+   "skill": "BC-SKL-02013",
+   "sources": [
+    "ced:61"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02013",
+   "consistent_with": [
+    "BC-SKL-02018"
+   ],
+   "distinguish_by": "Ask the student to write the expression the calculator evaluated; the setup carries its own point (sg-25:4).",
+   "evidence_tag": "single-source",
+   "id": "BC-SIG-02017",
+   "mastery_state": "partially_mastered",
+   "name": "Calculator value correct with no setup shown",
+   "observation": "A correct numerical derivative is reported with nothing indicating what was computed.",
+   "scope": "shared",
+   "skill": "BC-SKL-02018",
+   "sources": [
+    "sg-25:4"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,97 @@
+{
+ "type": "object",
+ "required": [
+  "signals"
+ ],
+ "properties": {
+  "signals": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string"
+     },
+     "name": {
+      "type": "string",
+      "minLength": 3
+     },
+     "scope": {
+      "enum": [
+       "AB_only",
+       "shared",
+       "BC_only",
+       "n/a"
+      ]
+     },
+     "evidence_tag": {
+      "enum": [
+       "verified",
+       "single-source",
+       "inferred",
+       "uncertain"
+      ]
+     },
+     "sources": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "notes": {
+      "type": "string"
+     },
+     "created": {
+      "type": "string"
+     },
+     "updated": {
+      "type": "string"
+     },
+     "status": {
+      "enum": [
+       "active",
+       "retired"
+      ]
+     },
+     "superseded_by": {
+      "type": "string"
+     },
+     "skill": {
+      "type": "string"
+     },
+     "archetype": {
+      "type": "string"
+     },
+     "observation": {
+      "type": "string"
+     },
+     "mastery_state": {
+      "type": "string"
+     },
+     "consistent_with": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "distinguish_by": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "id",
+     "name",
+     "scope",
+     "evidence_tag",
+     "sources",
+     "skill",
+     "observation",
+     "mastery_state",
+     "consistent_with"
+    ],
+    "additionalProperties": true
+   }
+  }
+ },
+ "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

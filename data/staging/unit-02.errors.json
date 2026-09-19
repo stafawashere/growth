@@ -1,0 +1,937 @@
+{
+ "errors": [
+  {
+   "archetypes": [
+    "BC-QA-02001"
+   ],
+   "discriminating_probe": "Ask for the units of the number just written.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-02001",
+   "name": "Difference reported without the quotient",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "time pressure",
+    "misread of the question"
+   ],
+   "observed_behavior": "The response reports the change in the function values over the interval without dividing by the change in the inputs.",
+   "official_evidence": [
+    "sg-25:11"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-02001"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The answer point requires both a difference and a quotient using values from the table, so a difference alone does not earn it (sg-25:11).",
+   "skills": [
+    "BC-SKL-02014",
+    "BC-SKL-02001",
+    "BC-SKL-02002"
+   ],
+   "sources": [
+    "sg-25:11"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-02001"
+   ],
+   "discriminating_probe": "Ask for the value of the expression just written.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-02002",
+   "name": "Quotient expression presented with no evaluated value",
+   "non_conceptual_causes": [
+    "time pressure",
+    "treating the setup as the answer"
+   ],
+   "observed_behavior": "The response writes the difference quotient correctly but stops before producing a number.",
+   "official_evidence": [
+    "sg-25:11"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-02001"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The quotient presented by itself is not sufficient for the answer point (sg-25:11).",
+   "skills": [
+    "BC-SKL-02014"
+   ],
+   "sources": [
+    "sg-25:11"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-02001"
+   ],
+   "discriminating_probe": "Ask what the denominator of the quotient measures.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-02003",
+   "name": "Units omitted or given as the units of the quantity",
+   "non_conceptual_causes": [
+    "time pressure",
+    "copying units from the table header"
+   ],
+   "observed_behavior": "The response reports an estimated derivative with no units, or with the units of the modelled quantity rather than of its rate.",
+   "official_evidence": [
+    "sg-25:11",
+    "sg-24:2"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-02008"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The units point is lost; it is earned for the correct compound units whether or not they are attached to a value, and an equivalent compound form is accepted (sg-25:11).",
+   "skills": [
+    "BC-SKL-02015",
+    "BC-SKL-02003"
+   ],
+   "sources": [
+    "sg-25:11",
+    "sg-24:2"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-02001"
+   ],
+   "discriminating_probe": "Ask which interval the question names and which rows carry its endpoints.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-02004",
+   "name": "Rows used that do not match the requested interval",
+   "non_conceptual_causes": [
+    "misread of the table",
+    "time pressure"
+   ],
+   "observed_behavior": "The response estimates the derivative from a pair of tabulated inputs other than the pair the question names or the pair that brackets the point.",
+   "official_evidence": [
+    "sg-25:11"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-02001"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The answer point is lost because the supporting work does not use the values the question specifies.",
+   "skills": [
+    "BC-SKL-02016",
+    "BC-SKL-02014"
+   ],
+   "sources": [
+    "sg-25:11"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-02002"
+   ],
+   "discriminating_probe": "Ask what the denominator is at the moment the substitution is made.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-02005",
+   "name": "Increment set to zero before the common factor is divided out",
+   "non_conceptual_causes": [
+    "time pressure",
+    "skipping the simplification line"
+   ],
+   "observed_behavior": "The response substitutes zero for the increment while it is still in the denominator.",
+   "official_evidence": [
+    "ced:61"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-02002"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The simplification point and the value point are both lost.",
+   "skills": [
+    "BC-SKL-02009",
+    "BC-SKL-02027"
+   ],
+   "sources": [
+    "ced:61"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-02002"
+   ],
+   "discriminating_probe": "Ask the student to read aloud what the second line of the work asserts.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-02006",
+   "name": "Limit symbol dropped during the computation",
+   "non_conceptual_causes": [
+    "notational shorthand carried over from class",
+    "time pressure"
+   ],
+   "observed_behavior": "The response manipulates the difference quotient without carrying the limit symbol and attaches it only to the final line.",
+   "official_evidence": [
+    "ced:61"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-02003"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "A notation point is lost where the definition itself is being assessed.",
+   "skills": [
+    "BC-SKL-02006",
+    "BC-SKL-02008",
+    "BC-SKL-02009"
+   ],
+   "sources": [
+    "ced:61"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-02002"
+   ],
+   "discriminating_probe": "Ask the student to evaluate the function at a specific numerical shifted input and compare with the expansion.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-02007",
+   "name": "Shifted term expanded incorrectly",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "time pressure"
+   ],
+   "observed_behavior": "The response expands the function evaluated at the shifted input as though the function distributed over the sum.",
+   "official_evidence": [
+    "ced:61",
+    "ced:64"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-02003"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The simplification point and the value point are both lost.",
+   "skills": [
+    "BC-SKL-02009"
+   ],
+   "sources": [
+    "ced:61",
+    "ced:64"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-02002"
+   ],
+   "discriminating_probe": "Ask the student to point to the limit in the work.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-02008",
+   "name": "Derivative produced by rule where the definition was demanded",
+   "non_conceptual_causes": [
+    "time pressure",
+    "misread of the instruction"
+   ],
+   "observed_behavior": "The response differentiates with the power rule and presents the result as an application of the definition.",
+   "official_evidence": [
+    "ced:64"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-02002"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The points attached to the difference quotient and its simplification are lost although the final value may be right.",
+   "skills": [
+    "BC-SKL-02008",
+    "BC-SKL-02027"
+   ],
+   "sources": [
+    "ced:64"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-02003"
+   ],
+   "discriminating_probe": "Ask the student to name a function whose values appear in the numerator.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-02009",
+   "name": "Limit in derivative form reported as nonexistent",
+   "non_conceptual_causes": [
+    "time pressure",
+    "not testing the difference quotient shape"
+   ],
+   "observed_behavior": "The response treats a limit having the shape of a difference quotient as indeterminate and unresolvable.",
+   "official_evidence": [
+    "ced:66"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-02004"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The value point is lost.",
+   "skills": [
+    "BC-SKL-02035"
+   ],
+   "sources": [
+    "ced:66"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-02003"
+   ],
+   "discriminating_probe": "Ask which value of the function is subtracted in the numerator.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-02010",
+   "name": "Wrong base point identified in a limit read as a derivative",
+   "non_conceptual_causes": [
+    "misread of the expression",
+    "arithmetic slip"
+   ],
+   "observed_behavior": "The response identifies the underlying function correctly but evaluates its derivative at the wrong input.",
+   "official_evidence": [
+    "ced:66"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-02004"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The value point is lost.",
+   "skills": [
+    "BC-SKL-02035"
+   ],
+   "sources": [
+    "ced:66"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-02004"
+   ],
+   "discriminating_probe": "Ask what in the question tells the student that the function is continuous.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-02011",
+   "name": "Continuity asserted with no basis in an argument about a differentiable function",
+   "non_conceptual_causes": [
+    "time pressure",
+    "treating the hypothesis as obvious"
+   ],
+   "observed_behavior": "The response states that the function is continuous without saying that it is continuous because it is differentiable.",
+   "official_evidence": [
+    "sg-25:12"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-02005"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The continuity point requires the reason; a bare statement that the function is continuous does not earn it (sg-25:12).",
+   "skills": [
+    "BC-SKL-02020",
+    "BC-SKL-02019"
+   ],
+   "sources": [
+    "sg-25:12"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-02004",
+    "BC-QA-02005"
+   ],
+   "discriminating_probe": "Ask for a function continuous at a point at which it has no derivative.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-02012",
+   "name": "Implication run backwards from continuity to differentiability",
+   "non_conceptual_causes": [
+    "symmetry assumed between the two properties"
+   ],
+   "observed_behavior": "The response concludes that a function is differentiable at a point because it is continuous there.",
+   "official_evidence": [
+    "ced:63"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-02006"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "A justification point is lost because the claim is not supported by the theorem.",
+   "skills": [
+    "BC-SKL-02019",
+    "BC-SKL-02021"
+   ],
+   "sources": [
+    "ced:63"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-02005"
+   ],
+   "discriminating_probe": "Ask for the slope approached from the left and from the right as two separate values.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-02013",
+   "name": "Non-differentiability claimed from the appearance of the graph alone",
+   "non_conceptual_causes": [
+    "time pressure",
+    "abbreviating a known argument"
+   ],
+   "observed_behavior": "The response says the derivative does not exist because the graph looks sharp, without reference to the one sided slopes.",
+   "official_evidence": [
+    "ced:63"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-02007"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The reason point is lost although the verdict may be correct.",
+   "skills": [
+    "BC-SKL-02022",
+    "BC-SKL-02021"
+   ],
+   "sources": [
+    "ced:63"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-02005"
+   ],
+   "discriminating_probe": "Ask what the slope of a vertical line is.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-02014",
+   "name": "Vertical tangent treated as a horizontal one",
+   "non_conceptual_causes": [
+    "misread of the graph",
+    "confusing the two tangent orientations"
+   ],
+   "observed_behavior": "The response reports the derivative at a vertical tangent as zero.",
+   "official_evidence": [
+    "ced:63"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-02007"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The verdict point is lost because a value is reported where none exists.",
+   "skills": [
+    "BC-SKL-02023"
+   ],
+   "sources": [
+    "ced:63"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-02006"
+   ],
+   "discriminating_probe": "Ask the student to differentiate a squared term from the definition and compare with the rule.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-02015",
+   "name": "Exponent reduced without multiplying by it",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "time pressure"
+   ],
+   "observed_behavior": "The response lowers the exponent by one but omits the factor of the original exponent.",
+   "official_evidence": [
+    "ced:64"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-02009"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The derivative point is lost.",
+   "skills": [
+    "BC-SKL-02025",
+    "BC-SKL-02026",
+    "BC-SKL-02031"
+   ],
+   "sources": [
+    "ced:64"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-02006"
+   ],
+   "discriminating_probe": "Ask what the graph of a constant function looks like and what its slope is.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-02016",
+   "name": "Constant term differentiated to itself",
+   "non_conceptual_causes": [
+    "time pressure",
+    "copying the expression"
+   ],
+   "observed_behavior": "The response carries a constant term unchanged into the derivative.",
+   "official_evidence": [
+    "ced:65"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-02009"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The derivative point is lost.",
+   "skills": [
+    "BC-SKL-02028",
+    "BC-SKL-02031"
+   ],
+   "sources": [
+    "ced:65"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-02006"
+   ],
+   "discriminating_probe": "Ask the student to write the term as a power of the variable first.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-02017",
+   "name": "Radical or reciprocal left undifferentiated",
+   "non_conceptual_causes": [
+    "time pressure",
+    "not rewriting before differentiating"
+   ],
+   "observed_behavior": "The response differentiates the polynomial terms and copies a radical or reciprocal term unchanged.",
+   "official_evidence": [
+    "ced:64"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-02009"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The derivative point is lost.",
+   "skills": [
+    "BC-SKL-02026"
+   ],
+   "sources": [
+    "ced:64"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-02007"
+   ],
+   "discriminating_probe": "Ask for the slope of the cosine graph just to the right of zero.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-02018",
+   "name": "Sign dropped from the derivative of cosine",
+   "non_conceptual_causes": [
+    "recall slip",
+    "time pressure"
+   ],
+   "observed_behavior": "The response gives sine as the derivative of cosine without the negative sign.",
+   "official_evidence": [
+    "ced:66"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-02010"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The derivative point is lost.",
+   "skills": [
+    "BC-SKL-02032"
+   ],
+   "sources": [
+    "ced:66"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-02007"
+   ],
+   "discriminating_probe": "Ask which of the base and the exponent is the variable.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-02019",
+   "name": "Exponential differentiated by the power rule",
+   "non_conceptual_causes": [
+    "pattern matching on the shape of the expression"
+   ],
+   "observed_behavior": "The response treats the natural exponential as a power of the variable and reduces its exponent.",
+   "official_evidence": [
+    "ced:66"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-02010"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The derivative point is lost.",
+   "skills": [
+    "BC-SKL-02033"
+   ],
+   "sources": [
+    "ced:66"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-02008",
+    "BC-QA-02009"
+   ],
+   "discriminating_probe": "Ask the student to expand a simple product, differentiate it term by term, and compare with the proposed answer.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-02020",
+   "name": "Product differentiated as a product of derivatives",
+   "non_conceptual_causes": [
+    "pattern matching on the sum rule",
+    "time pressure"
+   ],
+   "observed_behavior": "The response multiplies the derivatives of the two factors together.",
+   "official_evidence": [
+    "ced:67"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-02011"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The rule point and the result point are both lost.",
+   "skills": [
+    "BC-SKL-02036",
+    "BC-SKL-02037",
+    "BC-SKL-02038"
+   ],
+   "sources": [
+    "ced:67"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-02008",
+    "BC-QA-02009"
+   ],
+   "discriminating_probe": "Ask the student to apply the rule to a quotient whose derivative is already known and compare.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-02021",
+   "name": "Quotient rule numerator terms reversed",
+   "non_conceptual_causes": [
+    "recall slip",
+    "time pressure"
+   ],
+   "observed_behavior": "The response subtracts in the opposite order in the numerator of the quotient rule.",
+   "official_evidence": [
+    "ced:68"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-02012"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The result point is lost because the derivative carries the wrong sign.",
+   "skills": [
+    "BC-SKL-02039",
+    "BC-SKL-02040",
+    "BC-SKL-02041"
+   ],
+   "sources": [
+    "ced:68"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-02008",
+    "BC-QA-02009"
+   ],
+   "discriminating_probe": "Ask for the derivative of a reciprocal by the quotient rule and compare with the power rule result.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-02022",
+   "name": "Denominator square omitted",
+   "non_conceptual_causes": [
+    "recall slip",
+    "time pressure"
+   ],
+   "observed_behavior": "The response writes the quotient rule with the denominator rather than its square below the line.",
+   "official_evidence": [
+    "ced:68"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-02012"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The result point is lost.",
+   "skills": [
+    "BC-SKL-02039",
+    "BC-SKL-02041"
+   ],
+   "sources": [
+    "ced:68"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-02008"
+   ],
+   "discriminating_probe": "Ask whether the denominator changes when the variable changes.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-02023",
+   "name": "Quotient rule applied where the denominator is constant",
+   "non_conceptual_causes": [
+    "pattern matching on the shape of the expression"
+   ],
+   "observed_behavior": "The response applies the full quotient rule to an expression whose denominator carries no variable.",
+   "official_evidence": [
+    "ced:68"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-02012"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "No point is necessarily lost but the additional algebra invites a further error.",
+   "skills": [
+    "BC-SKL-02042",
+    "BC-SKL-02038"
+   ],
+   "sources": [
+    "ced:68"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-02009"
+   ],
+   "discriminating_probe": "Ask the student to label each of the four supplied numbers before substituting.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-02024",
+   "name": "Function value used where a derivative value was required",
+   "non_conceptual_causes": [
+    "misread of the table",
+    "time pressure"
+   ],
+   "observed_behavior": "The response substitutes the value of a function into a position in the product or quotient rule that calls for the value of its derivative.",
+   "official_evidence": [
+    "ced:67",
+    "ced:68"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-02011"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The value point is lost.",
+   "skills": [
+    "BC-SKL-02037",
+    "BC-SKL-02041"
+   ],
+   "sources": [
+    "ced:67",
+    "ced:68"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-02010"
+   ],
+   "discriminating_probe": "Ask the student to derive the cofunction derivative from the quotient rule rather than from memory.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-02025",
+   "name": "Cofunction derivative given without its negative sign",
+   "non_conceptual_causes": [
+    "recall slip",
+    "time pressure"
+   ],
+   "observed_behavior": "The response gives the derivative of cotangent or cosecant without the negative sign.",
+   "official_evidence": [
+    "ced:69"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-02013"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The result point is lost.",
+   "skills": [
+    "BC-SKL-02044",
+    "BC-SKL-02045"
+   ],
+   "sources": [
+    "ced:69"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-02010"
+   ],
+   "discriminating_probe": "Ask which rule applies to a quotient of two functions.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-02026",
+   "name": "Trigonometric quotient differentiated term by term",
+   "non_conceptual_causes": [
+    "time pressure",
+    "pattern matching on the sum rule"
+   ],
+   "observed_behavior": "The response differentiates the numerator and the denominator of a rewritten trigonometric quotient separately.",
+   "official_evidence": [
+    "ced:69"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-02012",
+    "BC-MIS-02013"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The rule point and the result point are both lost.",
+   "skills": [
+    "BC-SKL-02043",
+    "BC-SKL-02044"
+   ],
+   "sources": [
+    "ced:69"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-02011"
+   ],
+   "discriminating_probe": "Ask which of the two computed numbers is a slope and which is a height.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-02027",
+   "name": "Function value used as the slope of the tangent line",
+   "non_conceptual_causes": [
+    "time pressure",
+    "confusing the two evaluations"
+   ],
+   "observed_behavior": "The response writes the tangent line using the value of the function at the point as its slope.",
+   "official_evidence": [
+    "ced:61"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-02014"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The slope point and the equation point are both lost.",
+   "skills": [
+    "BC-SKL-02013",
+    "BC-SKL-02012"
+   ],
+   "sources": [
+    "ced:61"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-02011"
+   ],
+   "discriminating_probe": "Ask at which input the line touches the curve.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-02028",
+   "name": "Derivative evaluated at the wrong input for a tangent line",
+   "non_conceptual_causes": [
+    "misread of the question",
+    "arithmetic slip"
+   ],
+   "observed_behavior": "The response differentiates correctly but substitutes an input other than the point of tangency.",
+   "official_evidence": [
+    "ced:61"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-02014"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The slope point is lost and the equation point with it.",
+   "skills": [
+    "BC-SKL-02013"
+   ],
+   "sources": [
+    "ced:61"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-02012"
+   ],
+   "discriminating_probe": "Ask what the numerator of the Leibniz expression denotes on its own.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-02029",
+   "name": "Leibniz notation read as a quotient of two separate quantities",
+   "non_conceptual_causes": [
+    "notational habit"
+   ],
+   "observed_behavior": "The response treats the Leibniz form as a fraction whose parts can be separated and cancelled.",
+   "official_evidence": [
+    "ced:61"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-02015"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "A notation point is lost where the meaning of the symbol is being assessed.",
+   "skills": [
+    "BC-SKL-02010",
+    "BC-SKL-02011"
+   ],
+   "sources": [
+    "ced:61"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-02012",
+    "BC-QA-02002"
+   ],
+   "discriminating_probe": "Ask whether the requested object depends on the variable.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-02030",
+   "name": "Derivative function confused with its value at a point",
+   "non_conceptual_causes": [
+    "misread of the notation",
+    "time pressure"
+   ],
+   "observed_behavior": "The response reports a function where a number is requested, or a number where the function is requested.",
+   "official_evidence": [
+    "ced:61"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-02015"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The conversion point is lost.",
+   "skills": [
+    "BC-SKL-02010",
+    "BC-SKL-02008",
+    "BC-SKL-02006"
+   ],
+   "sources": [
+    "ced:61"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-02013"
+   ],
+   "discriminating_probe": "Ask the student to write the expression the calculator was asked to evaluate.",
+   "evidence_tag": "single-source",
+   "id": "BC-ERR-02031",
+   "name": "Calculator derivative reported without a setup",
+   "non_conceptual_causes": [
+    "time pressure",
+    "treating the calculator output as the work"
+   ],
+   "observed_behavior": "The response gives a numerical derivative value with no indication of what was computed.",
+   "official_evidence": [
+    "sg-25:4"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-02015"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The setup point is lost although the value may be right.",
+   "skills": [
+    "BC-SKL-02018"
+   ],
+   "sources": [
+    "sg-25:4"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-02013"
+   ],
+   "discriminating_probe": "Ask for the unrounded value the calculator displayed.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-02032",
+   "name": "Calculator value rounded to too few places",
+   "non_conceptual_causes": [
+    "time pressure",
+    "premature rounding during the computation"
+   ],
+   "observed_behavior": "The response reports a decimal approximation to fewer than three places after the decimal point.",
+   "official_evidence": [
+    "sg-25:4"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-02015"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "An inappropriately rounded answer does not earn its point unless an earlier point in the same question was already lost to rounding (sg-25:4).",
+   "skills": [
+    "BC-SKL-02018"
+   ],
+   "sources": [
+    "sg-25:4"
+   ]
+  }
+ ],
+ "registry": "errors"
+}

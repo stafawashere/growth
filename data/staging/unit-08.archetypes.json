@@ -1,0 +1,1728 @@
+{
+ "archetypes": [
+  {
+   "asked_to_produce": [
+    "an integral quotient",
+    "a decimal value",
+    "a sentence with units"
+   ],
+   "calculator_status": "calculator",
+   "common_distractors": [
+    "the difference quotient of the function at the endpoints",
+    "the value of the integral without the division",
+    "the average of the endpoint values",
+    "division by the number of data points"
+   ],
+   "common_givens": [
+    "a model function in a context",
+    "a closed interval of the independent variable"
+   ],
+   "description": "A function is given by a model formula or a graph, and the response computes its average value over a stated interval and reports it in context.",
+   "difficulty_variables": [
+    "formula versus graph presentation",
+    "whether the interval starts at zero",
+    "whether an interpretation with units is demanded",
+    "whether the average value is compared with an average rate of change in a later part"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "write the definite integral of the function over the interval",
+    "divide by the length of the interval",
+    "evaluate with technology",
+    "report to three places after the decimal point with units"
+   ],
+   "id": "BC-QA-08001",
+   "invariant_structure": "One function, one closed interval, one quotient: the definite integral of the function over the interval divided by the length of the interval, with the setup shown before the decimal.",
+   "misconceptions": [
+    "BC-MIS-08001",
+    "BC-MIS-08002"
+   ],
+   "multipart_structure": "One part of the calculator active free response question, or a single multiple choice item.",
+   "name": "Average value of a function over an interval",
+   "official_examples": [],
+   "official_examples_notes": "2025 Q1(A), 2023 Q1(c), 2024 Q1(b)",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-08006"
+   ],
+   "primary_unit": "BC-UNIT-08",
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-05",
+    "BC-REP-09"
+   ],
+   "safe_variables": [
+    "the modelled quantity",
+    "the units of the function",
+    "the length of the interval",
+    "the letters used for the variables"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "Two points: one for the correct integral together with evidence of division by the length of the interval, and one for the correct value reported to three decimal places; in 2025 unclear communication between the integral and the answer was treated as scratch work and both points were awarded (sg-25:3), while a 2023 response presenting the same kind of unlinked chain earned one of two points (sg-23:4).",
+   "skills": [
+    "BC-SKL-08001",
+    "BC-SKL-08002",
+    "BC-SKL-08003",
+    "BC-SKL-08005"
+   ],
+   "sources": [
+    "sg-25:2",
+    "sg-25:3",
+    "sg-23:4",
+    "sg-24:3"
+   ],
+   "typical_wording": [
+    "find the average value of the modelled quantity over the stated time interval and show the setup for the calculations",
+    "using correct units, interpret the meaning of the average you found"
+   ],
+   "units": [
+    "BC-UNIT-08"
+   ],
+   "variants": [
+    "BC-QV-08001-01",
+    "BC-QV-08001-02",
+    "BC-QV-08001-03"
+   ],
+   "wrong_approaches": [
+    "averaging the two endpoint values",
+    "dividing by the upper limit alone"
+   ]
+  },
+  {
+   "asked_to_produce": [
+    "an equation",
+    "a solved input value"
+   ],
+   "calculator_status": "calculator",
+   "common_distractors": [
+    "the value of the average rate of change reported as the answer",
+    "the average value of the function used in place of the average rate of change"
+   ],
+   "common_givens": [
+    "a model function",
+    "its derivative",
+    "a closed interval"
+   ],
+   "description": "The response computes the average rate of change of a modelled quantity over an interval and solves for the time at which the derivative equals that value.",
+   "difficulty_variables": [
+    "whether the interval starts where the function is zero, which makes several equivalent expressions acceptable",
+    "whether the derivative is supplied or must be computed"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "compute the average rate of change over the interval",
+    "set the given derivative equal to that value",
+    "solve numerically on the interval",
+    "report the input to three decimal places"
+   ],
+   "id": "BC-QA-08002",
+   "invariant_structure": "A difference quotient of the modelling function over the interval, set equal to the given derivative, solved numerically for one input in the interval.",
+   "misconceptions": [
+    "BC-MIS-08001"
+   ],
+   "multipart_structure": "One part of the calculator active free response question.",
+   "name": "Instantaneous rate set equal to an average rate of change",
+   "official_examples": [],
+   "official_examples_notes": "2025 Q1(B)",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-08001"
+   ],
+   "primary_unit": "BC-UNIT-08",
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-09",
+    "BC-REP-05"
+   ],
+   "safe_variables": [
+    "the modelled quantity",
+    "the interval",
+    "the form of the model"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "Two points: one for using the average rate of change, which several equivalent expressions earn, and one for the answer with the supporting equation; presenting the value of the average rate of change alone as the answer earns neither (sg-25:4).",
+   "skills": [
+    "BC-SKL-08004",
+    "BC-SKL-08003"
+   ],
+   "sources": [
+    "sg-25:4",
+    "frq-25:3"
+   ],
+   "typical_wording": [
+    "find the time at which the instantaneous rate of change of the modelled quantity equals its average rate of change over the stated interval, and show the setup"
+   ],
+   "units": [
+    "BC-UNIT-08"
+   ],
+   "variants": [
+    "BC-QV-08002-01",
+    "BC-QV-08002-02"
+   ],
+   "wrong_approaches": [
+    "reporting the average rate of change itself as the time"
+   ]
+  },
+  {
+   "asked_to_produce": [
+    "a definite integral",
+    "a numerical value with units"
+   ],
+   "calculator_status": "either",
+   "common_distractors": [
+    "the displacement offered where total distance is asked",
+    "the integral of velocity without the initial position",
+    "the value of velocity at an endpoint"
+   ],
+   "common_givens": [
+    "a velocity function or graph",
+    "an initial position",
+    "a time interval"
+   ],
+   "description": "A velocity function is given for a particle on a line, and the response produces displacement, total distance, or a position value from an initial condition.",
+   "difficulty_variables": [
+    "whether velocity changes sign inside the interval",
+    "whether the question asks for displacement or total distance",
+    "whether an initial condition must be used",
+    "graph versus formula presentation"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "classify the requested quantity",
+    "write the matching definite integral",
+    "use the initial condition when a position value is requested",
+    "evaluate and report with units"
+   ],
+   "id": "BC-QA-08003",
+   "invariant_structure": "One velocity function on a time interval; the requested quantity fixes the integrand as velocity, as the absolute value of velocity, or as velocity added to a known initial position.",
+   "misconceptions": [
+    "BC-MIS-08004",
+    "BC-MIS-08006"
+   ],
+   "multipart_structure": "Usually two or three parts of a multipart question, or a single multiple choice item.",
+   "name": "Rectilinear motion analysed with definite integrals",
+   "official_examples": [],
+   "official_examples_notes": "no rectilinear part in the 2023 to 2025 BC free response questions; the planar analogue appears at 2024 Q2(b) and 2024 Q2(c)",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-08003"
+   ],
+   "primary_unit": "BC-UNIT-08",
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02",
+    "BC-REP-05"
+   ],
+   "safe_variables": [
+    "the moving object",
+    "the units of position and time",
+    "the letters used"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "The integral of speed earns a setup point and the decimal earns the answer point, the pattern the planar analogue uses at sg-24:6; a position value earns a point for the definite integral, a point for using the initial condition, and a point for the answer (sg-24:7).",
+   "skills": [
+    "BC-SKL-08006",
+    "BC-SKL-08007",
+    "BC-SKL-08008",
+    "BC-SKL-08009",
+    "BC-SKL-08010",
+    "BC-SKL-08011"
+   ],
+   "sources": [
+    "ced:153",
+    "sg-24:6",
+    "sg-24:7"
+   ],
+   "typical_wording": [
+    "find the total distance travelled by the particle over the stated time interval and show the setup",
+    "find the position of the particle at the later time"
+   ],
+   "units": [
+    "BC-UNIT-08"
+   ],
+   "variants": [
+    "BC-QV-08003-01",
+    "BC-QV-08003-02",
+    "BC-QV-08003-03"
+   ],
+   "wrong_approaches": [
+    "integrating velocity and taking the absolute value of the result",
+    "adding the absolute values of the endpoint velocities"
+   ]
+  },
+  {
+   "asked_to_produce": [
+    "an integral expression with the initial value",
+    "a numerical value with units"
+   ],
+   "calculator_status": "calculator",
+   "common_distractors": [
+    "the value of the integral reported as the amount",
+    "the initial value subtracted rather than added",
+    "the rate evaluated at the endpoint"
+   ],
+   "common_givens": [
+    "a rate function",
+    "a known value of the quantity at one time"
+   ],
+   "description": "A rate of change is modelled on an interval and a value of the quantity is known at one time, and the response reports the quantity at another time.",
+   "difficulty_variables": [
+    "whether the rate is given by a formula, a table, or a graph",
+    "whether the initial value is given directly or must be read",
+    "whether the integrand is antidifferentiable by hand"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "write the amount as the known value plus the definite integral of the rate",
+    "evaluate the integral",
+    "add the known value",
+    "report with units"
+   ],
+   "id": "BC-QA-08004",
+   "invariant_structure": "A known value at one time plus the definite integral of the rate from that time to the requested time, evaluated numerically and reported in the units of the quantity.",
+   "misconceptions": [
+    "BC-MIS-08006"
+   ],
+   "multipart_structure": "One part of a multipart free response question.",
+   "name": "Amount at a later time from an initial amount and a rate",
+   "official_examples": [],
+   "official_examples_notes": "2024 Q1(c), 2025 Q3(D), 2024 Q2(c)",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-08006"
+   ],
+   "primary_unit": "BC-UNIT-08",
+   "representations": [
+    "BC-REP-05",
+    "BC-REP-01",
+    "BC-REP-09"
+   ],
+   "safe_variables": [
+    "the modelled quantity",
+    "the units",
+    "the two times involved"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "Three points in the calculator active setting: the definite integral, the use of the initial condition, and the answer (sg-24:4, sg-24:7). In the no calculator setting the integrand and the antiderivative are separate points and the answer is a third (sg-25:14).",
+   "skills": [
+    "BC-SKL-08012",
+    "BC-SKL-08016",
+    "BC-SKL-08017",
+    "BC-SKL-08009"
+   ],
+   "sources": [
+    "sg-24:4",
+    "sg-24:7",
+    "sg-25:14"
+   ],
+   "typical_wording": [
+    "find the value of the modelled quantity at the later time and show the setup for the calculations",
+    "based on the model, how much of the quantity has accumulated by the end of the interval"
+   ],
+   "units": [
+    "BC-UNIT-08"
+   ],
+   "variants": [
+    "BC-QV-08004-01",
+    "BC-QV-08004-02",
+    "BC-QV-08004-03"
+   ],
+   "wrong_approaches": [
+    "reporting the net change as the amount",
+    "antidifferentiating and substituting only the upper limit"
+   ]
+  },
+  {
+   "asked_to_produce": [
+    "a net rate expression",
+    "an integral",
+    "a value with units"
+   ],
+   "calculator_status": "calculator",
+   "common_distractors": [
+    "the sum of the two rates in place of the difference",
+    "the integral of the inflow alone",
+    "the difference taken in the wrong order"
+   ],
+   "common_givens": [
+    "an inflow rate",
+    "an outflow rate",
+    "an initial amount"
+   ],
+   "description": "Two rates act on the same quantity at once and the response works with their difference to describe the amount stored.",
+   "difficulty_variables": [
+    "whether the two rates are both formulas or one is tabulated",
+    "whether the question asks for an amount, a net change, or a time of maximum",
+    "whether the interval is split where the net rate changes sign"
+   ],
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "write the net rate as inflow minus outflow",
+    "integrate the net rate over the interval",
+    "add the initial amount when an amount is requested",
+    "report with units"
+   ],
+   "id": "BC-QA-08005",
+   "invariant_structure": "Two rate functions on a common interval; the net rate is their difference and every requested quantity is built from the integral of that difference added to a known amount.",
+   "misconceptions": [
+    "BC-MIS-08007"
+   ],
+   "multipart_structure": "Two or three parts of one multipart free response question.",
+   "name": "Accumulation with a rate in and a rate out",
+   "official_examples": [],
+   "official_examples_notes": "no rate in and rate out part appears in the 2023 to 2025 BC free response questions",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-08006"
+   ],
+   "primary_unit": "BC-UNIT-08",
+   "representations": [
+    "BC-REP-05",
+    "BC-REP-01",
+    "BC-REP-09"
+   ],
+   "safe_variables": [
+    "the stored quantity",
+    "the units",
+    "the names of the two processes"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "The setup point requires the difference of the two rates inside one integral, and the answer point requires the value with the initial amount included; the Chief Reader records parenthesis loss when a given expression is substituted into an integrand as BC-ERR-99009.",
+   "skills": [
+    "BC-SKL-08013",
+    "BC-SKL-08016",
+    "BC-SKL-08012"
+   ],
+   "sources": [
+    "ced:154",
+    "cr-24:23"
+   ],
+   "typical_wording": [
+    "the quantity enters at one modelled rate and leaves at another; find the amount present at the stated time and show the setup"
+   ],
+   "units": [
+    "BC-UNIT-08"
+   ],
+   "variants": [
+    "BC-QV-08005-01",
+    "BC-QV-08005-02",
+    "BC-QV-08005-03"
+   ],
+   "wrong_approaches": [
+    "integrating each rate and subtracting the wrong way round",
+    "dropping the parentheses around the outflow rate"
+   ]
+  },
+  {
+   "asked_to_produce": [
+    "an equation for the critical point",
+    "a global justification",
+    "the time of the maximum"
+   ],
+   "calculator_status": "calculator",
+   "common_distractors": [
+    "a first derivative test offered alone",
+    "the endpoint of the interval",
+    "the critical point of the rate rather than of the amount"
+   ],
+   "common_givens": [
+    "an amount function defined with a definite integral",
+    "a closed interval"
+   ],
+   "description": "An amount function defined with an integral is given on a closed interval, and the response finds where it attains its maximum and justifies the claim globally.",
+   "difficulty_variables": [
+    "whether the derivative must be assembled from a given rate and a subtracted term",
+    "whether the candidates test or a sign change argument is used",
+    "the number of candidates in the interval"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "differentiate the amount function",
+    "set the derivative equal to zero and solve numerically",
+    "evaluate the amount at the candidate and at both endpoints, or argue from a unique sign change",
+    "report the time"
+   ],
+   "id": "BC-QA-08006",
+   "invariant_structure": "One amount function on a closed interval, one critical point found by setting its derivative equal to zero, and a justification that compares the candidate with both endpoints or argues from a unique sign change.",
+   "misconceptions": [
+    "BC-MIS-08008"
+   ],
+   "multipart_structure": "The closing part of the calculator active free response question.",
+   "name": "Time at which an accumulated amount is maximal",
+   "official_examples": [],
+   "official_examples_notes": "2025 Q1(D)",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-08001"
+   ],
+   "primary_unit": "BC-UNIT-08",
+   "representations": [
+    "BC-REP-05",
+    "BC-REP-09",
+    "BC-REP-01"
+   ],
+   "safe_variables": [
+    "the modelled quantity",
+    "the interval",
+    "the form of the two competing terms"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "Three points: considering the derivative equal to zero, a global justification, and the answer; a first or second derivative test presented alone does not earn the justification point but leaves the answer point available (sg-25:5).",
+   "skills": [
+    "BC-SKL-08014",
+    "BC-SKL-08012"
+   ],
+   "sources": [
+    "sg-25:5",
+    "crabbc-25:4",
+    "frq-25:3"
+   ],
+   "typical_wording": [
+    "at what time in the stated interval does the modelled amount attain its maximum value, and justify the answer"
+   ],
+   "units": [
+    "BC-UNIT-08"
+   ],
+   "variants": [
+    "BC-QV-08006-01",
+    "BC-QV-08006-02",
+    "BC-QV-08006-03"
+   ],
+   "wrong_approaches": [
+    "presenting a local argument for a global claim",
+    "omitting one endpoint from the candidates table"
+   ]
+  },
+  {
+   "asked_to_produce": [
+    "a sentence with quantity, interval, and units"
+   ],
+   "calculator_status": "either",
+   "common_distractors": [
+    "the rate at an endpoint",
+    "the average value of the rate",
+    "the amount present rather than the change"
+   ],
+   "common_givens": [
+    "a contextual rate function",
+    "a definite integral expression"
+   ],
+   "description": "A definite integral of a contextual rate is displayed and the response states what it measures, over which interval, in which units.",
+   "difficulty_variables": [
+    "whether the expression carries a factor that makes it an average",
+    "whether the integrand is a rate or a quantity",
+    "whether the interval is stated in the stem or only in the limits"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "identify the integrand as a rate",
+    "name the quantity accumulated",
+    "name the interval from the limits",
+    "attach the units"
+   ],
+   "id": "BC-QA-08007",
+   "invariant_structure": "One integral expression and one sentence that names the accumulated quantity, the interval, and the units built as the rate units times the input units.",
+   "misconceptions": [
+    "BC-MIS-08009",
+    "BC-MIS-08001"
+   ],
+   "multipart_structure": "One part of a multipart question, often attached to a numerical approximation in the same part.",
+   "name": "Interpreting a definite integral of a rate in context",
+   "official_examples": [],
+   "official_examples_notes": "2023 Q1(a), 2024 Q1(b)",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "primary_unit": "BC-UNIT-08",
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-05",
+    "BC-REP-01"
+   ],
+   "safe_variables": [
+    "the quantity",
+    "the units",
+    "the endpoints of the interval"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "One point, earned only when the quantity, the interval, and the units are all present; in 2023 the point required reference to the gallons pumped and to the two times bounding the interval (sg-23:2).",
+   "skills": [
+    "BC-SKL-08015",
+    "BC-SKL-08005"
+   ],
+   "sources": [
+    "sg-23:2",
+    "sg-24:3"
+   ],
+   "typical_wording": [
+    "using correct units, interpret the meaning of the displayed definite integral in the context of the problem"
+   ],
+   "units": [
+    "BC-UNIT-08"
+   ],
+   "variants": [
+    "BC-QV-08007-01",
+    "BC-QV-08007-02"
+   ],
+   "wrong_approaches": [
+    "naming the quantity without the interval",
+    "giving the units of the rate rather than of the accumulation"
+   ]
+  },
+  {
+   "asked_to_produce": [
+    "an integrand",
+    "an antiderivative or a numerical value",
+    "the area"
+   ],
+   "calculator_status": "either",
+   "common_distractors": [
+    "the reversed difference",
+    "the integral of one function alone",
+    "the difference of the two areas taken with the wrong sign"
+   ],
+   "common_givens": [
+    "a figure with a shaded region",
+    "one or both curve equations",
+    "sometimes the value of one definite integral"
+   ],
+   "description": "A shaded region bounded by two graphs is shown and the response sets up and evaluates the area integral in x.",
+   "difficulty_variables": [
+    "whether the limits require a numerical solve",
+    "whether one of the two integrals is supplied as a number",
+    "whether an antiderivative is needed by hand",
+    "whether the region is bounded by a vertical line rather than an intersection"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "decide which curve is upper",
+    "write the integral of the difference with the correct limits",
+    "evaluate, using a supplied integral value where one is given",
+    "report the area"
+   ],
+   "id": "BC-QA-08008",
+   "invariant_structure": "Two boundary curves, one interval, one integrand that is the upper curve minus the lower curve, and a nonnegative reported value.",
+   "misconceptions": [
+    "BC-MIS-08010",
+    "BC-MIS-08011"
+   ],
+   "multipart_structure": "The opening part of a multipart no calculator question, or one part of a calculator active question.",
+   "name": "Area of a region between two curves in x",
+   "official_examples": [],
+   "official_examples_notes": "2023 Q5(a)",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-08001"
+   ],
+   "primary_unit": "BC-UNIT-08",
+   "representations": [
+    "BC-REP-02",
+    "BC-REP-01",
+    "BC-REP-09"
+   ],
+   "safe_variables": [
+    "the two functions",
+    "the letters used",
+    "the position of the region in the plane"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "Three points in 2023: the integrand, an antiderivative of the explicitly given function, and the answer; a response writing the reversed difference and asserting it equals the positive area did not earn the answer point, while the same work stated correctly earned all three (sg-23:16, sg-23:17).",
+   "skills": [
+    "BC-SKL-08018",
+    "BC-SKL-08019",
+    "BC-SKL-08020",
+    "BC-SKL-08021",
+    "BC-SKL-08022"
+   ],
+   "sources": [
+    "sg-23:16",
+    "sg-23:17",
+    "frq-23:9"
+   ],
+   "typical_wording": [
+    "find the area of the shaded region enclosed by the graphs of the two functions"
+   ],
+   "units": [
+    "BC-UNIT-08"
+   ],
+   "variants": [
+    "BC-QV-08008-01",
+    "BC-QV-08008-02",
+    "BC-QV-08008-03"
+   ],
+   "wrong_approaches": [
+    "integrating the difference over an interval that extends past an intersection",
+    "reporting a negative value as an area"
+   ]
+  },
+  {
+   "asked_to_produce": [
+    "an integrand in y",
+    "the area"
+   ],
+   "calculator_status": "either",
+   "common_distractors": [
+    "an integrand in x paired with a dy differential",
+    "limits taken as x values",
+    "the reversed difference"
+   ],
+   "common_givens": [
+    "a figure",
+    "curve equations in x or in y"
+   ],
+   "description": "A region whose left and right boundaries are curves is presented, and the response integrates the difference of the curves with respect to y.",
+   "difficulty_variables": [
+    "whether the curves must be inverted first",
+    "whether the region would need two integrals in x",
+    "whether limits are y values read from the figure"
+   ],
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "write both boundaries as functions of y",
+    "decide which is to the right",
+    "integrate the difference with respect to y over the y interval",
+    "report the area"
+   ],
+   "id": "BC-QA-08009",
+   "invariant_structure": "Two boundary curves written as functions of y, one interval of y values, and an integrand that is the right curve minus the left curve.",
+   "misconceptions": [
+    "BC-MIS-08013"
+   ],
+   "multipart_structure": "One part of a multipart question, or a single multiple choice item.",
+   "name": "Area of a region integrated with respect to y",
+   "official_examples": [],
+   "official_examples_notes": "no area with respect to y appears in the 2023 to 2025 BC free response questions",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-08002"
+   ],
+   "primary_unit": "BC-UNIT-08",
+   "representations": [
+    "BC-REP-02",
+    "BC-REP-01"
+   ],
+   "safe_variables": [
+    "the two curves",
+    "the orientation of the region",
+    "the letters used"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "A setup point for the integrand and limits in y and an answer point for the value, following the area scoring pattern of 2023 (sg-23:16).",
+   "skills": [
+    "BC-SKL-08023",
+    "BC-SKL-08024",
+    "BC-SKL-08025",
+    "BC-SKL-08026"
+   ],
+   "sources": [
+    "ced:156"
+   ],
+   "typical_wording": [
+    "find the area of the region bounded by the two curves by integrating with respect to y"
+   ],
+   "units": [
+    "BC-UNIT-08"
+   ],
+   "variants": [
+    "BC-QV-08009-01",
+    "BC-QV-08009-02"
+   ],
+   "wrong_approaches": [
+    "integrating the original functions of x between y limits"
+   ]
+  },
+  {
+   "asked_to_produce": [
+    "a sum of definite integrals or one absolute value integral",
+    "the total area"
+   ],
+   "calculator_status": "either",
+   "common_distractors": [
+    "one integral of the difference across the whole interval",
+    "the sum of the signed contributions",
+    "only the larger lobe"
+   ],
+   "common_givens": [
+    "two curve equations",
+    "an interval or a figure"
+   ],
+   "description": "Two curves cross inside the interval, so the area is a sum of integrals or a single integral of an absolute value.",
+   "difficulty_variables": [
+    "the number of interior crossings",
+    "whether the crossings are exact or decimal",
+    "whether the absolute value form is allowed by the calculator status"
+   ],
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "solve for every intersection in the interval",
+    "order the crossings",
+    "fix the order of subtraction on each piece",
+    "sum the integrals or integrate the absolute value"
+   ],
+   "id": "BC-QA-08010",
+   "invariant_structure": "Two curves with at least one interior intersection; the area is additive over the subintervals and each contribution is nonnegative.",
+   "misconceptions": [
+    "BC-MIS-08014",
+    "BC-MIS-08011"
+   ],
+   "multipart_structure": "One part of a multipart question, or a single multiple choice item.",
+   "name": "Area of a region whose boundary curves cross",
+   "official_examples": [],
+   "official_examples_notes": "no split region area appears in the 2023 to 2025 BC free response questions",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-08001",
+    "BC-PRQ-08003"
+   ],
+   "primary_unit": "BC-UNIT-08",
+   "representations": [
+    "BC-REP-02",
+    "BC-REP-01",
+    "BC-REP-09"
+   ],
+   "safe_variables": [
+    "the two curves",
+    "the number of lobes",
+    "the letters used"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "The setup point requires every piece of the region, so a single integral across a crossing loses it, and the answer point follows the setup, in the pattern the 2023 area part uses (sg-23:16).",
+   "skills": [
+    "BC-SKL-08027",
+    "BC-SKL-08028",
+    "BC-SKL-08029",
+    "BC-SKL-08030"
+   ],
+   "sources": [
+    "ced:157"
+   ],
+   "typical_wording": [
+    "find the total area of the region bounded by the two graphs over the stated interval"
+   ],
+   "units": [
+    "BC-UNIT-08"
+   ],
+   "variants": [
+    "BC-QV-08010-01",
+    "BC-QV-08010-02",
+    "BC-QV-08010-03"
+   ],
+   "wrong_approaches": [
+    "integrating a fixed difference across a crossing"
+   ]
+  },
+  {
+   "asked_to_produce": [
+    "an integrand",
+    "the volume"
+   ],
+   "calculator_status": "either",
+   "common_distractors": [
+    "an integrand carrying a factor of pi",
+    "the area of the base region",
+    "a semicircle area using the distance as the radius"
+   ],
+   "common_givens": [
+    "a base region",
+    "the shape of the cross sections",
+    "the axis they are perpendicular to"
+   ],
+   "description": "A plane region is the base of a solid whose cross sections perpendicular to an axis are a named shape, and the response integrates the area of those sections.",
+   "difficulty_variables": [
+    "the shape of the cross section",
+    "whether the distance is a side, a leg, a hypotenuse, or a diameter",
+    "whether the slicing axis is x or y",
+    "whether technology may evaluate the integral"
+   ],
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "write the distance between the boundary curves",
+    "substitute it into the area formula of the named shape",
+    "integrate over the spanning interval",
+    "report the volume"
+   ],
+   "id": "BC-QA-08011",
+   "invariant_structure": "One base region, one axis of slicing, one named shape whose area formula is applied to the distance between the boundary curves, and one integral over the spanning interval.",
+   "misconceptions": [
+    "BC-MIS-08015",
+    "BC-MIS-08018",
+    "BC-MIS-08019"
+   ],
+   "multipart_structure": "One part of a multipart question that often opens with an area part on the same region.",
+   "name": "Volume of a solid with known cross sections",
+   "official_examples": [],
+   "official_examples_notes": "no known cross section volume appears in the 2023 to 2025 BC free response questions",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-08005",
+    "BC-PRQ-08004"
+   ],
+   "primary_unit": "BC-UNIT-08",
+   "representations": [
+    "BC-REP-08",
+    "BC-REP-01",
+    "BC-REP-09"
+   ],
+   "safe_variables": [
+    "the base region",
+    "the named shape",
+    "the letters used"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "A setup point for the integrand together with the limits and an answer point for the value; the Chief Reader records integrands taken from the wrong area or volume family as BC-ERR-99011.",
+   "skills": [
+    "BC-SKL-08031",
+    "BC-SKL-08032",
+    "BC-SKL-08033",
+    "BC-SKL-08034",
+    "BC-SKL-08035",
+    "BC-SKL-08036",
+    "BC-SKL-08037",
+    "BC-SKL-08038",
+    "BC-SKL-08039"
+   ],
+   "sources": [
+    "ced:158",
+    "ced:159",
+    "cr-24:23"
+   ],
+   "typical_wording": [
+    "the base of a solid is the given region and its cross sections perpendicular to the stated axis are the named shape; find the volume of the solid"
+   ],
+   "units": [
+    "BC-UNIT-08"
+   ],
+   "variants": [
+    "BC-QV-08011-01",
+    "BC-QV-08011-02",
+    "BC-QV-08011-03",
+    "BC-QV-08011-04"
+   ],
+   "wrong_approaches": [
+    "using the full circle area for a semicircular section",
+    "squaring the boundary functions separately"
+   ]
+  },
+  {
+   "asked_to_produce": [
+    "an integrand with a squared radius",
+    "the volume"
+   ],
+   "calculator_status": "either",
+   "common_distractors": [
+    "the radius left unsquared",
+    "the factor of pi omitted",
+    "the radius written without the shift when the axis is not a coordinate axis"
+   ],
+   "common_givens": [
+    "a region",
+    "an axis of revolution"
+   ],
+   "description": "A region touching its axis of revolution is revolved and the response integrates pi times the square of the radius.",
+   "difficulty_variables": [
+    "whether the axis is a coordinate axis or another line",
+    "whether the slicing variable is x or y",
+    "whether the answer is left as a multiple of pi"
+   ],
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "write the radius as a distance to the axis",
+    "square it and multiply by pi",
+    "integrate over the spanning interval",
+    "report the volume"
+   ],
+   "id": "BC-QA-08012",
+   "invariant_structure": "One curve, one axis of revolution that the region meets, a radius equal to the distance from the curve to that axis, and a volume equal to pi times the integral of the square of that radius.",
+   "misconceptions": [
+    "BC-MIS-08020",
+    "BC-MIS-08021",
+    "BC-MIS-08022"
+   ],
+   "multipart_structure": "One part of a multipart question built on a region introduced earlier.",
+   "name": "Volume of a solid of revolution by the disc method",
+   "official_examples": [],
+   "official_examples_notes": "no solid of revolution appears in the 2023 to 2025 BC free response questions",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-08004",
+    "BC-PRQ-08002"
+   ],
+   "primary_unit": "BC-UNIT-08",
+   "representations": [
+    "BC-REP-08",
+    "BC-REP-01",
+    "BC-REP-09"
+   ],
+   "safe_variables": [
+    "the curve",
+    "the interval",
+    "the letters used"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "A setup point for pi with the squared radius and the limits, and an answer point for the value; the Chief Reader records the wrong volume family as BC-ERR-99011.",
+   "skills": [
+    "BC-SKL-08040",
+    "BC-SKL-08041",
+    "BC-SKL-08042",
+    "BC-SKL-08043",
+    "BC-SKL-08044",
+    "BC-SKL-08045",
+    "BC-SKL-08046",
+    "BC-SKL-08047"
+   ],
+   "sources": [
+    "ced:160",
+    "ced:161"
+   ],
+   "typical_wording": [
+    "the region is revolved about the stated line; find the volume of the solid generated"
+   ],
+   "units": [
+    "BC-UNIT-08"
+   ],
+   "variants": [
+    "BC-QV-08012-01",
+    "BC-QV-08012-02",
+    "BC-QV-08012-03"
+   ],
+   "wrong_approaches": [
+    "shifting the limits of integration along with the axis"
+   ]
+  },
+  {
+   "asked_to_produce": [
+    "an integrand with two squared radii",
+    "the volume"
+   ],
+   "calculator_status": "either",
+   "common_distractors": [
+    "the square of the difference of the radii",
+    "the radii assigned by which curve is higher rather than which is farther",
+    "the shift omitted from both radii"
+   ],
+   "common_givens": [
+    "two boundary curves",
+    "an axis of revolution the region does not meet"
+   ],
+   "description": "A region separated from its axis of revolution is revolved and the response integrates pi times the difference of the squares of the two radii.",
+   "difficulty_variables": [
+    "whether the axis is a coordinate axis or another line",
+    "whether the axis lies above or below the region, which can exchange the radii",
+    "whether the slicing variable is x or y"
+   ],
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "decide which curve is farther from the axis",
+    "write both radii as distances",
+    "square each radius and subtract",
+    "multiply by pi and integrate",
+    "report the volume"
+   ],
+   "id": "BC-QA-08013",
+   "invariant_structure": "Two boundary curves, one axis of revolution the region does not meet, and an integrand equal to the square of the outer radius minus the square of the inner radius, both measured from the axis.",
+   "misconceptions": [
+    "BC-MIS-08017",
+    "BC-MIS-08023",
+    "BC-MIS-08021"
+   ],
+   "multipart_structure": "One part of a multipart question built on a region introduced earlier.",
+   "name": "Volume of a solid of revolution by the washer method",
+   "official_examples": [],
+   "official_examples_notes": "no washer volume appears in the 2023 to 2025 BC free response questions",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-08004",
+    "BC-PRQ-08002"
+   ],
+   "primary_unit": "BC-UNIT-08",
+   "representations": [
+    "BC-REP-08",
+    "BC-REP-01",
+    "BC-REP-09"
+   ],
+   "safe_variables": [
+    "the two curves",
+    "the interval",
+    "the letters used"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "A setup point for the two squared radii with pi and the limits, and an answer point for the value; a swapped pair of radii produces a negative value and loses the answer point.",
+   "skills": [
+    "BC-SKL-08048",
+    "BC-SKL-08049",
+    "BC-SKL-08050",
+    "BC-SKL-08051",
+    "BC-SKL-08052",
+    "BC-SKL-08053",
+    "BC-SKL-08054",
+    "BC-SKL-08055"
+   ],
+   "sources": [
+    "ced:162",
+    "ced:163"
+   ],
+   "typical_wording": [
+    "the region between the two curves is revolved about the stated line; find the volume of the solid generated"
+   ],
+   "units": [
+    "BC-UNIT-08"
+   ],
+   "variants": [
+    "BC-QV-08013-01",
+    "BC-QV-08013-02",
+    "BC-QV-08013-03"
+   ],
+   "wrong_approaches": [
+    "squaring the difference of the two functions",
+    "reporting a negative volume from swapped radii"
+   ]
+  },
+  {
+   "asked_to_produce": [
+    "an integral expression, or a sentence naming arc length and the interval",
+    "a numerical length"
+   ],
+   "calculator_status": "either",
+   "common_distractors": [
+    "the area under the curve",
+    "the total distance travelled by a particle on the x axis",
+    "the average value of the derivative"
+   ],
+   "common_givens": [
+    "a function, sometimes only through a table of its derivative",
+    "a closed interval"
+   ],
+   "description": "A function is given on an interval and the response either writes and evaluates the arc length integral or identifies a displayed integral as an arc length.",
+   "difficulty_variables": [
+    "whether the response must produce the integral or interpret a supplied one",
+    "whether the interval must be named explicitly",
+    "whether the integrand is evaluated numerically"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "differentiate the function",
+    "square the derivative and add one",
+    "take the square root and integrate over the interval",
+    "report the length, or name the length and its interval when interpreting"
+   ],
+   "id": "BC-QA-08014",
+   "invariant_structure": "One differentiable function, one closed interval, and the integral of the square root of one plus the square of the derivative, read in either direction between expression and meaning.",
+   "misconceptions": [
+    "BC-MIS-08024"
+   ],
+   "multipart_structure": "One part of a multipart BC only no calculator question, or a calculator active setup and value part.",
+   "name": "Arc length of a curve given by a function",
+   "official_examples": [],
+   "official_examples_notes": "2024 Q5(b)",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-08007",
+    "BC-PRQ-08006"
+   ],
+   "primary_unit": "BC-UNIT-08",
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-04",
+    "BC-REP-09"
+   ],
+   "safe_variables": [
+    "the function",
+    "the interval",
+    "the letters used"
+   ],
+   "scope": "BC_only",
+   "scoring_pattern": "In 2024 the identification was worth two points, one for naming the arc length of the function and one for naming the interval (sg-24:16); a numerical arc length part is scored as a setup point and an answer point.",
+   "skills": [
+    "BC-SKL-08056",
+    "BC-SKL-08057",
+    "BC-SKL-08058",
+    "BC-SKL-08059"
+   ],
+   "sources": [
+    "sg-24:16",
+    "frq-24:9",
+    "ced:164"
+   ],
+   "typical_wording": [
+    "what information does the displayed integral give about the graph of the function",
+    "find the length of the curve on the stated interval and show the setup"
+   ],
+   "units": [
+    "BC-UNIT-08"
+   ],
+   "variants": [
+    "BC-QV-08014-01",
+    "BC-QV-08014-02",
+    "BC-QV-08014-03"
+   ],
+   "wrong_approaches": [
+    "naming the arc length without naming the interval",
+    "omitting the square on the derivative"
+   ]
+  }
+ ],
+ "registry": "archetypes",
+ "variants": [
+  {
+   "archetype": "BC-QA-08001",
+   "description": "The function is given analytically and the integral is evaluated with technology.",
+   "difficulty_effect": "neutral",
+   "dimension": "representation",
+   "evidence_tag": "verified",
+   "id": "BC-QV-08001-01",
+   "name": "Average value from a model formula",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-25:2"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08001",
+   "description": "The function is given as a piecewise linear or circular graph, so the integral is taken as signed area.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-08001-02",
+   "name": "Average value from a graph by geometry",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:152"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08001",
+   "description": "The numerical part is followed by a sentence naming the quantity and its units.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning direction",
+   "evidence_tag": "verified",
+   "id": "BC-QV-08001-03",
+   "name": "Average value paired with an interpretation in context",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-24:3"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08002",
+   "description": "Several equivalent forms of the difference quotient are acceptable because one term vanishes.",
+   "difficulty_effect": "easier",
+   "dimension": "notation",
+   "evidence_tag": "verified",
+   "id": "BC-QV-08002-01",
+   "name": "Interval starting at an input where the function is zero",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-25:4"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08002",
+   "description": "The derivative is given so no differentiation is required before solving.",
+   "difficulty_effect": "easier",
+   "dimension": "representation",
+   "evidence_tag": "verified",
+   "id": "BC-QV-08002-02",
+   "name": "Derivative supplied in the stem",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "frq-25:3"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08003",
+   "description": "Displacement and total distance differ, so the integrand choice is the discriminating step.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning direction",
+   "evidence_tag": "verified",
+   "id": "BC-QV-08003-01",
+   "name": "Velocity changing sign inside the interval",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:153"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08003",
+   "description": "The integrals are taken as signed and unsigned areas without technology.",
+   "difficulty_effect": "neutral",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-08003-02",
+   "name": "Velocity given as a graph of segments",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:153"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08003",
+   "description": "The accumulated change must be added to a given starting position.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning direction",
+   "evidence_tag": "verified",
+   "id": "BC-QV-08003-03",
+   "name": "Position requested from an initial condition",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-24:7"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08004",
+   "description": "The integral is evaluated numerically and the setup must be shown.",
+   "difficulty_effect": "neutral",
+   "dimension": "calculator",
+   "evidence_tag": "verified",
+   "id": "BC-QV-08004-01",
+   "name": "Rate given by a model formula with technology",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-24:4"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08004",
+   "description": "An antiderivative is required and is scored as its own point.",
+   "difficulty_effect": "neutral",
+   "dimension": "calculator",
+   "evidence_tag": "verified",
+   "id": "BC-QV-08004-02",
+   "name": "Rate antidifferentiable by hand",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-25:14"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08004",
+   "description": "The known value comes from a tabulated row rather than from the stem.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-08004-03",
+   "name": "Initial value read from a table",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:154"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08005",
+   "description": "Technology evaluates the integral of the difference directly.",
+   "difficulty_effect": "neutral",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-08005-01",
+   "name": "Both rates given as model formulas",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:154"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08005",
+   "description": "An approximation is needed for one contribution and an exact integral for the other.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-08005-02",
+   "name": "One rate tabulated and one modelled",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:154"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08005",
+   "description": "The part asks when the stored amount stops increasing.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-08005-03",
+   "name": "Net rate sign change requested",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:154"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08006",
+   "description": "The derivative must be assembled from the supplied derivative and the integrand.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "verified",
+   "id": "BC-QV-08006-01",
+   "name": "Amount built from a model minus an integral term",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-25:5"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08006",
+   "description": "The amount is evaluated at both endpoints and at the critical point.",
+   "difficulty_effect": "neutral",
+   "dimension": "reasoning direction",
+   "evidence_tag": "verified",
+   "id": "BC-QV-08006-02",
+   "name": "Justification by candidates table",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-25:5"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08006",
+   "description": "The sign change of the derivative is paired with a statement that the critical point is the only one.",
+   "difficulty_effect": "neutral",
+   "dimension": "reasoning direction",
+   "evidence_tag": "verified",
+   "id": "BC-QV-08006-03",
+   "name": "Justification by a unique sign change",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-25:5"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08007",
+   "description": "The interpretation is scored separately from the approximation.",
+   "difficulty_effect": "neutral",
+   "dimension": "reasoning direction",
+   "evidence_tag": "verified",
+   "id": "BC-QV-08007-01",
+   "name": "Interpretation attached to a Riemann sum in the same part",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-23:2"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08007",
+   "description": "The response must say average rather than total.",
+   "difficulty_effect": "harder",
+   "dimension": "notation",
+   "evidence_tag": "verified",
+   "id": "BC-QV-08007-02",
+   "name": "Expression carrying an averaging factor",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-24:3"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08008",
+   "description": "The unspecified function contributes a given value, so only the other antiderivative is computed.",
+   "difficulty_effect": "easier",
+   "dimension": "representation",
+   "evidence_tag": "verified",
+   "id": "BC-QV-08008-01",
+   "name": "One of the two integrals supplied as a number",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-23:16"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08008",
+   "description": "The intersection inputs are decimals that must be stored rather than rounded.",
+   "difficulty_effect": "harder",
+   "dimension": "calculator",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-08008-02",
+   "name": "Limits found with a calculator solve",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:155"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08008",
+   "description": "One limit is given by a stated line rather than by an intersection.",
+   "difficulty_effect": "easier",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-08008-03",
+   "name": "Region bounded by a vertical line on one side",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:155"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08009",
+   "description": "No inversion is required before the integral is written.",
+   "difficulty_effect": "easier",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-08009-01",
+   "name": "Curves supplied already as functions of y",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:156"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08009",
+   "description": "The response must produce one integral in y and two in x.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-08009-02",
+   "name": "Same region requested in both variables",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:156"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08010",
+   "description": "The crossings are found by factoring, so no technology is needed.",
+   "difficulty_effect": "neutral",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-08010-01",
+   "name": "Two lobes with exact crossings",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:157"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08010",
+   "description": "One integral of the absolute value replaces the sum.",
+   "difficulty_effect": "easier",
+   "dimension": "calculator",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-08010-02",
+   "name": "Absolute value integrand evaluated numerically",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:157"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08010",
+   "description": "The region has several pieces and the order of subtraction alternates.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-08010-03",
+   "name": "Three or more crossings",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:157"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08011",
+   "description": "The integrand is the square of the distance between the curves.",
+   "difficulty_effect": "easier",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-08011-01",
+   "name": "Square cross sections",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:158"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08011",
+   "description": "The distance is the diameter, so the radius is half of it.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-08011-02",
+   "name": "Semicircular cross sections",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:159"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08011",
+   "description": "The response must decide whether the distance is a leg or the hypotenuse.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-08011-03",
+   "name": "Right isosceles cross sections",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:159"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08011",
+   "description": "The boundary curves must be rewritten in y.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-08011-04",
+   "name": "Cross sections perpendicular to the y axis",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:158"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08012",
+   "description": "The radius is the function value and the integral is in x.",
+   "difficulty_effect": "easier",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-08012-01",
+   "name": "Revolution about the x axis",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:160"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08012",
+   "description": "The curve must be rewritten in y before the integral is written.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-08012-02",
+   "name": "Revolution about the y axis",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:160"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08012",
+   "description": "The radius becomes a difference from the given line.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-08012-03",
+   "name": "Revolution about a horizontal line other than the x axis",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:161"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08013",
+   "description": "Both radii are function values measured from the axis.",
+   "difficulty_effect": "easier",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-08013-01",
+   "name": "Revolution about a coordinate axis",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:162"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08013",
+   "description": "The lower curve is farther from the axis, so the roles of the curves exchange.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-08013-02",
+   "name": "Revolution about a line above the region",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:163"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08013",
+   "description": "Both curves are rewritten in y and the radii are horizontal distances.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-08013-03",
+   "name": "Revolution about a vertical line",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:163"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08014",
+   "description": "The response reads the integral and names what it measures and over which interval.",
+   "difficulty_effect": "neutral",
+   "dimension": "reasoning direction",
+   "evidence_tag": "verified",
+   "id": "BC-QV-08014-01",
+   "name": "Displayed integral interpreted",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-24:16"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08014",
+   "description": "The radical integrand is evaluated numerically and reported to three decimal places.",
+   "difficulty_effect": "neutral",
+   "dimension": "calculator",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-08014-02",
+   "name": "Arc length computed with technology",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "ced:164"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08014",
+   "description": "The integrand cannot be evaluated exactly, so only the identification is available.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "verified",
+   "id": "BC-QV-08014-03",
+   "name": "Derivative supplied only at tabulated inputs",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "frq-24:9"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,389 @@
+{
+ "type": "object",
+ "required": [
+  "concepts",
+  "skills",
+  "prerequisites"
+ ],
+ "properties": {
+  "concepts": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string"
+     },
+     "name": {
+      "type": "string",
+      "minLength": 3
+     },
+     "scope": {
+      "enum": [
+       "AB_only",
+       "shared",
+       "BC_only",
+       "n/a"
+      ]
+     },
+     "evidence_tag": {
+      "enum": [
+       "verified",
+       "single-source",
+       "inferred",
+       "uncertain"
+      ]
+     },
+     "sources": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "notes": {
+      "type": "string"
+     },
+     "created": {
+      "type": "string"
+     },
+     "updated": {
+      "type": "string"
+     },
+     "status": {
+      "enum": [
+       "active",
+       "retired"
+      ]
+     },
+     "superseded_by": {
+      "type": "string"
+     },
+     "unit": {
+      "type": "string"
+     },
+     "topics": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "description_plain": {
+      "type": "string"
+     },
+     "description_formal": {
+      "type": "string"
+     },
+     "notation": {
+      "type": "string"
+     },
+     "skills": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "confusable_with": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "misconceptions": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     }
+    },
+    "required": [
+     "id",
+     "name",
+     "scope",
+     "evidence_tag",
+     "sources",
+     "unit",
+     "topics",
+     "description_plain",
+     "description_formal"
+    ],
+    "additionalProperties": true
+   }
+  },
+  "skills": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string"
+     },
+     "name": {
+      "type": "string",
+      "minLength": 3
+     },
+     "scope": {
+      "enum": [
+       "AB_only",
+       "shared",
+       "BC_only",
+       "n/a"
+      ]
+     },
+     "evidence_tag": {
+      "enum": [
+       "verified",
+       "single-source",
+       "inferred",
+       "uncertain"
+      ]
+     },
+     "sources": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "notes": {
+      "type": "string"
+     },
+     "created": {
+      "type": "string"
+     },
+     "updated": {
+      "type": "string"
+     },
+     "status": {
+      "enum": [
+       "active",
+       "retired"
+      ]
+     },
+     "superseded_by": {
+      "type": "string"
+     },
+     "unit": {
+      "type": "string"
+     },
+     "topic": {
+      "type": "string"
+     },
+     "concept": {
+      "type": "string"
+     },
+     "learning_objectives": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "essential_knowledge": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "practice_skills": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "description_plain": {
+      "type": "string"
+     },
+     "description_formal": {
+      "type": "string"
+     },
+     "notation": {
+      "type": "string"
+     },
+     "prerequisites": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "dependents": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "calculator_relevance": {
+      "enum": [
+       "none",
+       "optional",
+       "typically_required",
+       "prohibited_context"
+      ]
+     },
+     "representations": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "archetypes": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "common_errors": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "misconceptions": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "diagnostic_signals": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "official_evidence": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "confusable_with": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "adaptive": {
+      "type": "object",
+      "required": [
+       "mastered_if",
+       "partially_mastered_if",
+       "prerequisite_gap_if",
+       "common_confusions",
+       "next_dependent_skills",
+       "diagnostic_archetypes",
+       "remediation_target"
+      ]
+     }
+    },
+    "required": [
+     "id",
+     "name",
+     "scope",
+     "evidence_tag",
+     "sources",
+     "unit",
+     "topic",
+     "concept",
+     "learning_objectives",
+     "description_plain",
+     "description_formal",
+     "prerequisites",
+     "calculator_relevance",
+     "representations",
+     "adaptive"
+    ],
+    "additionalProperties": true
+   }
+  },
+  "prerequisites": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string"
+     },
+     "name": {
+      "type": "string",
+      "minLength": 3
+     },
+     "scope": {
+      "enum": [
+       "AB_only",
+       "shared",
+       "BC_only",
+       "n/a"
+      ]
+     },
+     "evidence_tag": {
+      "enum": [
+       "verified",
+       "single-source",
+       "inferred",
+       "uncertain"
+      ]
+     },
+     "sources": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "notes": {
+      "type": "string"
+     },
+     "created": {
+      "type": "string"
+     },
+     "updated": {
+      "type": "string"
+     },
+     "status": {
+      "enum": [
+       "active",
+       "retired"
+      ]
+     },
+     "superseded_by": {
+      "type": "string"
+     },
+     "category": {
+      "enum": [
+       "algebra",
+       "trigonometry",
+       "function",
+       "notation",
+       "geometry",
+       "arithmetic",
+       "conceptual",
+       "precalculus"
+      ]
+     },
+     "description_plain": {
+      "type": "string"
+     },
+     "dependents": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "hidden": {
+      "type": "boolean"
+     },
+     "failure_signature": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "id",
+     "name",
+     "scope",
+     "evidence_tag",
+     "sources",
+     "category",
+     "description_plain"
+    ],
+    "additionalProperties": true
+   }
+  }
+ },
+ "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

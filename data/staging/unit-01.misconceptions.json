@@ -1,0 +1,720 @@
+{
+ "misconceptions": [
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-01002"
+   ],
+   "description": "The learner treats the limit as another name for evaluation, so a missing or displaced function value is read as a missing or displaced limit.",
+   "discriminating_probe": "Give a graph with an open circle at one height and a closed point at another over the same input and ask for the limit and the value separately.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-01001",
+    "BC-QA-01006"
+   ],
+   "id": "BC-MIS-01001",
+   "literature": [],
+   "name": "The limit at a point is the value of the function there",
+   "observable_errors": [
+    "BC-ERR-01001",
+    "BC-ERR-01003"
+   ],
+   "official_evidence": [
+    "ced:39",
+    "ced:48"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-01002"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-01008",
+    "BC-SKL-01009",
+    "BC-SKL-01044"
+   ],
+   "sources": [
+    "ced:39",
+    "ced:48"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-01004",
+    "BC-CON-01005"
+   ],
+   "description": "The learner treats a single one sided approach as sufficient, so a jump is read as a limit equal to the value on whichever side was examined.",
+   "discriminating_probe": "Ask for the left hand limit and the right hand limit as separate answers, then ask whether the two sided limit exists.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-01001"
+   ],
+   "id": "BC-MIS-01002",
+   "literature": [],
+   "name": "A limit exists whenever the function approaches something on one side",
+   "observable_errors": [
+    "BC-ERR-01002"
+   ],
+   "official_evidence": [
+    "ced:40"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-01001"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-01009",
+    "BC-SKL-01010",
+    "BC-SKL-01011"
+   ],
+   "sources": [
+    "ced:40"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-01002"
+   ],
+   "description": "The learner expects the function to attain the limit value, so a function that approaches without attaining is read as having no limit.",
+   "discriminating_probe": "Ask whether a function can have a limit at an input where it is undefined, and ask for an example.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-01001",
+    "BC-QA-01013"
+   ],
+   "id": "BC-MIS-01003",
+   "literature": [],
+   "name": "A limit is a prediction the function must eventually reach",
+   "observable_errors": [
+    "BC-ERR-01003"
+   ],
+   "official_evidence": [
+    "ced:39"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-01001"
+   ],
+   "scope": "shared",
+   "severity": "medium",
+   "skills": [
+    "BC-SKL-01006",
+    "BC-SKL-01008"
+   ],
+   "sources": [
+    "ced:39"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-01006",
+    "BC-CON-01005"
+   ],
+   "description": "The learner treats tabulated agreement as proof, so oscillation or behaviour between the tabulated inputs is not considered.",
+   "discriminating_probe": "Ask what the function does at inputs between two adjacent rows of the table.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-01002"
+   ],
+   "id": "BC-MIS-01004",
+   "literature": [],
+   "name": "A table settles the behaviour of a function",
+   "observable_errors": [
+    "BC-ERR-01004",
+    "BC-ERR-01005"
+   ],
+   "official_evidence": [
+    "ced:40",
+    "ced:41"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-01003"
+   ],
+   "scope": "shared",
+   "severity": "medium",
+   "skills": [
+    "BC-SKL-01015",
+    "BC-SKL-01017",
+    "BC-SKL-01013"
+   ],
+   "sources": [
+    "ced:40",
+    "ced:41"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-01007"
+   ],
+   "description": "The learner applies the quotient and composite theorems as formal rules without the denominator condition or the continuity condition on the outer function.",
+   "discriminating_probe": "Ask the student to state the condition each theorem requires and to point to where it was checked.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-01003",
+    "BC-QA-01014"
+   ],
+   "id": "BC-MIS-01005",
+   "literature": [],
+   "name": "Limit theorems apply unconditionally",
+   "observable_errors": [
+    "BC-ERR-01006",
+    "BC-ERR-01007"
+   ],
+   "official_evidence": [
+    "ced:42"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-01006"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-01020",
+    "BC-SKL-01022"
+   ],
+   "sources": [
+    "ced:42"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-01008",
+    "BC-CON-01009"
+   ],
+   "description": "The learner treats the symbol zero over zero as an answer, reading it as zero, as undefined, or as a nonexistence verdict rather than as a signal to rewrite.",
+   "discriminating_probe": "Give two expressions with the same indeterminate form and different limits and ask for both values.",
+   "downstream_dependencies": [],
+   "evidence_tag": "single-source",
+   "exposing_archetypes": [
+    "BC-QA-01004",
+    "BC-QA-01014"
+   ],
+   "id": "BC-MIS-01006",
+   "literature": [],
+   "name": "An indeterminate form is a value",
+   "observable_errors": [
+    "BC-ERR-01008",
+    "BC-ERR-01009",
+    "BC-ERR-01011"
+   ],
+   "official_evidence": [
+    "ced:43",
+    "sg-23:14"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-01005"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-01028",
+    "BC-SKL-01029",
+    "BC-SKL-01030"
+   ],
+   "sources": [
+    "ced:43",
+    "sg-23:14"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-01008"
+   ],
+   "description": "The learner treats cancellation as a syntactic move on repeated symbols rather than a division of common factors, so terms are cancelled like factors.",
+   "discriminating_probe": "Ask the student to evaluate the original and the rewritten expression at one convenient input and compare.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-01004"
+   ],
+   "id": "BC-MIS-01007",
+   "literature": [],
+   "name": "Rewriting an expression may change any matching symbols",
+   "observable_errors": [
+    "BC-ERR-01010"
+   ],
+   "official_evidence": [
+    "ced:43"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-01006"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-01024",
+    "BC-SKL-01026"
+   ],
+   "sources": [
+    "ced:43"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-01010"
+   ],
+   "description": "The learner treats the bounding functions as things to evaluate at the target rather than as functions whose limits must agree, and handles the inequality as an equation.",
+   "discriminating_probe": "Ask whether the bounding inequality must hold at the target input itself for the theorem to apply.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-01005"
+   ],
+   "id": "BC-MIS-01008",
+   "literature": [],
+   "name": "The squeeze theorem is a substitution rule",
+   "observable_errors": [
+    "BC-ERR-01012",
+    "BC-ERR-01013"
+   ],
+   "official_evidence": [
+    "ced:45"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-01010"
+   ],
+   "scope": "shared",
+   "severity": "medium",
+   "skills": [
+    "BC-SKL-01032",
+    "BC-SKL-01033",
+    "BC-SKL-01034",
+    "BC-SKL-01035"
+   ],
+   "sources": [
+    "ced:45"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-01013",
+    "BC-CON-01015"
+   ],
+   "description": "The learner holds one of the three conditions as the whole definition, most often that the function is defined there or that the one sided limits agree.",
+   "discriminating_probe": "Give one function defined at the point with unequal one sided limits and one whose limit exists but differs from the value, and ask about continuity in both.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-01006",
+    "BC-QA-01008"
+   ],
+   "id": "BC-MIS-01009",
+   "literature": [],
+   "name": "Continuity is a single condition",
+   "observable_errors": [
+    "BC-ERR-01014",
+    "BC-ERR-01015",
+    "BC-ERR-01017"
+   ],
+   "official_evidence": [
+    "ced:48"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-01001"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-01043",
+    "BC-SKL-01044",
+    "BC-SKL-01051"
+   ],
+   "sources": [
+    "ced:48"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-01013",
+    "BC-CON-01019"
+   ],
+   "description": "The learner treats naming the definition or the theorem as the argument, so the values and conditions that make the claim true are never produced.",
+   "discriminating_probe": "Ask which feature of the given function or table makes the stated claim true.",
+   "downstream_dependencies": [],
+   "evidence_tag": "verified",
+   "exposing_archetypes": [
+    "BC-QA-01006",
+    "BC-QA-01011"
+   ],
+   "id": "BC-MIS-01010",
+   "literature": [],
+   "name": "Restating a definition counts as a justification",
+   "observable_errors": [
+    "BC-ERR-01016",
+    "BC-ERR-01025"
+   ],
+   "official_evidence": [
+    "ced:48",
+    "sg-25:12"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-01009"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-01045",
+    "BC-SKL-01065",
+    "BC-SKL-01032"
+   ],
+   "sources": [
+    "ced:48",
+    "sg-25:12"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-01012",
+    "BC-CON-01016"
+   ],
+   "description": "The learner reads any zero of the original denominator as unbounded behaviour without simplifying first.",
+   "discriminating_probe": "Ask for the limit of the expression at that input after factoring numerator and denominator.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-01007",
+    "BC-QA-01009"
+   ],
+   "id": "BC-MIS-01011",
+   "literature": [],
+   "name": "Every input missing from the domain is an asymptote",
+   "observable_errors": [
+    "BC-ERR-01018"
+   ],
+   "official_evidence": [
+    "ced:47",
+    "ced:51"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-01012"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-01041",
+    "BC-SKL-01056",
+    "BC-SKL-01057"
+   ],
+   "sources": [
+    "ced:47",
+    "ced:51"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-01016"
+   ],
+   "description": "The learner treats an infinite limit as a two sided property and writes one statement where the two sides carry opposite signs, or reads the infinity symbol as a real value.",
+   "discriminating_probe": "Ask for the sign of the quotient just to the left and just to the right of the input.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-01009"
+   ],
+   "id": "BC-MIS-01012",
+   "literature": [],
+   "name": "Unbounded behaviour is the same on both sides",
+   "observable_errors": [
+    "BC-ERR-01019",
+    "BC-ERR-01020",
+    "BC-ERR-01018"
+   ],
+   "official_evidence": [
+    "ced:51"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-01011"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-01054",
+    "BC-SKL-01055",
+    "BC-SKL-01012"
+   ],
+   "sources": [
+    "ced:51"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-01017"
+   ],
+   "description": "The learner treats the infinity symbol as an input value, so end behaviour is computed by substitution and the conditions on degree comparison are skipped.",
+   "discriminating_probe": "Ask the student to divide numerator and denominator by the dominant power and to say what each resulting term approaches.",
+   "downstream_dependencies": [],
+   "evidence_tag": "verified",
+   "exposing_archetypes": [
+    "BC-QA-01010"
+   ],
+   "id": "BC-MIS-01013",
+   "literature": [],
+   "name": "Infinity is a number that can be substituted",
+   "observable_errors": [
+    "BC-ERR-01021",
+    "BC-ERR-01023",
+    "BC-ERR-01024"
+   ],
+   "official_evidence": [
+    "sg-25:4",
+    "ced:52"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-01012"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-01058",
+    "BC-SKL-01060",
+    "BC-SKL-01061",
+    "BC-SKL-01063"
+   ],
+   "sources": [
+    "sg-25:4",
+    "ced:52"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-01017",
+    "BC-CON-01018"
+   ],
+   "description": "The learner treats a statement about the long run rate as a statement about the long run amount, so the wrong function is placed inside the limit.",
+   "discriminating_probe": "Ask for the units of the limit just written and compare them with the units the question asks about.",
+   "downstream_dependencies": [],
+   "evidence_tag": "verified",
+   "exposing_archetypes": [
+    "BC-QA-01010"
+   ],
+   "id": "BC-MIS-01014",
+   "literature": [],
+   "name": "The end behaviour of a quantity and of its rate are interchangeable",
+   "observable_errors": [
+    "BC-ERR-01022"
+   ],
+   "official_evidence": [
+    "sg-25:4"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-01013"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-01060",
+    "BC-SKL-01062"
+   ],
+   "sources": [
+    "sg-25:4"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-01019"
+   ],
+   "description": "The learner treats the stated setting as discharging the hypotheses of a theorem, so continuity is asserted rather than derived from a stated property.",
+   "discriminating_probe": "Ask what in the question establishes that the function is continuous on the interval.",
+   "downstream_dependencies": [],
+   "evidence_tag": "verified",
+   "exposing_archetypes": [
+    "BC-QA-01011"
+   ],
+   "id": "BC-MIS-01015",
+   "literature": [],
+   "name": "A hypothesis is satisfied because the question implies it",
+   "observable_errors": [
+    "BC-ERR-01025",
+    "BC-ERR-01016"
+   ],
+   "official_evidence": [
+    "sg-25:12"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-01010"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-01065",
+    "BC-SKL-01068"
+   ],
+   "sources": [
+    "sg-25:12"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-01019"
+   ],
+   "description": "The learner reads the conclusion of the Intermediate Value Theorem as producing a unique input, or applies it without checking that the target lies between the endpoint values.",
+   "discriminating_probe": "Ask whether the theorem rules out a second input with the same output and what it would take to find one.",
+   "downstream_dependencies": [],
+   "evidence_tag": "verified",
+   "exposing_archetypes": [
+    "BC-QA-01011"
+   ],
+   "id": "BC-MIS-01016",
+   "literature": [],
+   "name": "An existence theorem locates or counts solutions",
+   "observable_errors": [
+    "BC-ERR-01026",
+    "BC-ERR-01027",
+    "BC-ERR-01028"
+   ],
+   "official_evidence": [
+    "ced:53",
+    "sg-25:12"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-01015"
+   ],
+   "scope": "shared",
+   "severity": "medium",
+   "skills": [
+    "BC-SKL-01066",
+    "BC-SKL-01067",
+    "BC-SKL-01064"
+   ],
+   "sources": [
+    "ced:53",
+    "sg-25:12"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-01001"
+   ],
+   "description": "The learner treats the difference quotient over an interval as the rate at an instant, so no limiting process is invoked.",
+   "discriminating_probe": "Ask for the average rate over two different intervals containing the same point and ask which one is the rate at that point.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-01012"
+   ],
+   "id": "BC-MIS-01017",
+   "literature": [],
+   "name": "An average rate over an interval is the rate at a point in it",
+   "observable_errors": [
+    "BC-ERR-01029",
+    "BC-ERR-01030"
+   ],
+   "official_evidence": [
+    "ced:38"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-01018"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-01003",
+    "BC-SKL-01004",
+    "BC-SKL-01001"
+   ],
+   "sources": [
+    "ced:38"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-01016",
+    "BC-CON-01017",
+    "BC-CON-01003"
+   ],
+   "description": "The learner does not separate a limit whose value is infinite from a limit taken as the variable grows without bound, so vertical and horizontal asymptote statements are exchanged.",
+   "discriminating_probe": "Ask the student to point to where the infinity symbol sits in each of two statements and to say what each claims.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-01013",
+    "BC-QA-01010"
+   ],
+   "id": "BC-MIS-01018",
+   "literature": [],
+   "name": "All limit notation with an infinity symbol means the same thing",
+   "observable_errors": [
+    "BC-ERR-01033"
+   ],
+   "official_evidence": [
+    "ced:51",
+    "ced:52"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-01013"
+   ],
+   "scope": "shared",
+   "severity": "medium",
+   "skills": [
+    "BC-SKL-01037",
+    "BC-SKL-01036",
+    "BC-SKL-01059",
+    "BC-SKL-01054"
+   ],
+   "sources": [
+    "ced:51",
+    "ced:52"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-01014"
+   ],
+   "description": "The learner reports a function as continuous everywhere because its formula belongs to a family continuous on its domain, without excluding the inputs outside that domain.",
+   "discriminating_probe": "Ask for the inputs at which the expression is undefined before any interval is written.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-01015"
+   ],
+   "id": "BC-MIS-01019",
+   "literature": [],
+   "name": "Continuity is a property of a formula rather than of a domain",
+   "observable_errors": [
+    "BC-ERR-01031",
+    "BC-ERR-01032"
+   ],
+   "official_evidence": [
+    "ced:49"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-01011"
+   ],
+   "scope": "shared",
+   "severity": "medium",
+   "skills": [
+    "BC-SKL-01046",
+    "BC-SKL-01047",
+    "BC-SKL-01048",
+    "BC-SKL-01049"
+   ],
+   "sources": [
+    "ced:49"
+   ]
+  }
+ ],
+ "registry": "misconceptions"
+}

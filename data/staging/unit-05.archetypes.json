@@ -1,0 +1,1706 @@
+{
+ "archetypes": [
+  {
+   "asked_to_produce": [
+    "a yes or no answer",
+    "a statement that continuity follows from differentiability",
+    "the average rate of change",
+    "a named theorem"
+   ],
+   "calculator_status": "either",
+   "common_distractors": [
+    "citing the Intermediate Value Theorem for a claim about the derivative",
+    "asserting the conclusion without the continuity statement",
+    "computing the average of the two endpoint values",
+    "reporting an input outside the open interval"
+   ],
+   "common_givens": [
+    "a differentiable modelled function",
+    "a short table of values",
+    "a closed interval"
+   ],
+   "description": "A function is stated to be differentiable and selected values are supplied; the response must decide whether some interior input has a named instantaneous rate of change and justify the decision.",
+   "difficulty_variables": [
+    "whether the endpoint values are equal or merely produce a computable average",
+    "whether the theorem must be named",
+    "whether the function is given by a table, a graph, or a formula",
+    "whether a value of c is also demanded"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "state that differentiability supplies continuity on the closed interval",
+    "compute the average rate of change over the interval",
+    "invoke the Mean Value Theorem",
+    "answer yes and name the interior interval"
+   ],
+   "id": "BC-QA-05001",
+   "invariant_structure": "The hypotheses are handed over as a differentiability statement, two endpoint values determine the average rate of change, and the demand is an existence claim about the derivative rather than a located value.",
+   "misconceptions": [
+    "BC-MIS-05001",
+    "BC-MIS-05002",
+    "BC-MIS-05003",
+    "BC-MIS-05005"
+   ],
+   "multi_skill_extensions": [],
+   "multipart_structure": "One part of a multipart free response question, worth two points.",
+   "name": "Mean Value Theorem existence justification on an interval",
+   "official_examples": [],
+   "official_examples_notes": "2023 Q1(b), 2025 Q1(B)",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-05008",
+    "BC-PRQ-05004"
+   ],
+   "primary_unit": "BC-UNIT-05",
+   "prohibited_shortcuts": [],
+   "representations": [
+    "BC-REP-03",
+    "BC-REP-04",
+    "BC-REP-05"
+   ],
+   "safe_variables": [
+    "the modelled quantity",
+    "the units",
+    "the letters used for the variables",
+    "the endpoint values"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "One point for the arithmetic fact that fixes the average rate of change, and one point for the answer with justification. The justification point requires the first point, a statement that the function is continuous because it is differentiable, and an affirmative answer; a reference to the Intermediate Value Theorem forfeits it (sg-23:3). In the 2025 instance the first point was earned by any correct presentation of the average rate of change and the second by the correct solved value with the supporting equation (sg-25:4).",
+   "skills": [
+    "BC-SKL-05001",
+    "BC-SKL-05002",
+    "BC-SKL-05003",
+    "BC-SKL-05004",
+    "BC-SKL-05006"
+   ],
+   "sources": [
+    "sg-23:3",
+    "sg-25:4",
+    "frq-23:3",
+    "frq-25:3"
+   ],
+   "typical_wording": [
+    "must there be a value of c in the open interval at which the derivative takes a stated value, and justify the answer",
+    "find the time at which the instantaneous rate of change equals the average rate of change over the stated interval"
+   ],
+   "units": [
+    "BC-UNIT-05"
+   ],
+   "variants": [
+    "BC-QV-05001-01",
+    "BC-QV-05001-02",
+    "BC-QV-05001-03"
+   ],
+   "wrong_approaches": [
+    "treating the table as a complete description of the function",
+    "solving for c when only existence was asked"
+   ]
+  },
+  {
+   "asked_to_produce": [
+    "the average rate of change",
+    "the solved input value"
+   ],
+   "calculator_status": "either",
+   "common_distractors": [
+    "reporting the average rate of change itself as the answer",
+    "solving the derivative equal to zero instead",
+    "accepting a solution outside the open interval"
+   ],
+   "common_givens": [
+    "a function given by a formula",
+    "a closed interval"
+   ],
+   "description": "A function and a closed interval are given and the response must produce the interior input at which the instantaneous rate of change equals the average rate of change.",
+   "difficulty_variables": [
+    "whether the resulting equation is solvable by hand",
+    "whether more than one solution lies inside the interval",
+    "calculator availability"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "compute the average rate of change",
+    "set the derivative equal to that value",
+    "solve",
+    "discard solutions outside the open interval"
+   ],
+   "id": "BC-QA-05002",
+   "invariant_structure": "The average rate of change is computable from the two endpoint values, the derivative is available symbolically, and the answer is the solution of one equation restricted to the open interval.",
+   "misconceptions": [
+    "BC-MIS-05003",
+    "BC-MIS-05004"
+   ],
+   "multi_skill_extensions": [],
+   "multipart_structure": "One part of a multipart free response question, or a single multiple choice item.",
+   "name": "Solving for the value the Mean Value Theorem provides",
+   "official_examples": [],
+   "official_examples_notes": "2025 Q1(B)",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-05008",
+    "BC-PRQ-05001"
+   ],
+   "primary_unit": "BC-UNIT-05",
+   "prohibited_shortcuts": [],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-09"
+   ],
+   "safe_variables": [
+    "the function rule",
+    "the interval endpoints",
+    "the context"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "One point for using the average rate of change and one point for the answer with supporting work; a bare numerical value with no supporting equation earns neither (sg-25:4).",
+   "skills": [
+    "BC-SKL-05003",
+    "BC-SKL-05005"
+   ],
+   "sources": [
+    "sg-25:4",
+    "frq-25:3"
+   ],
+   "typical_wording": [
+    "find the value in the open interval at which the instantaneous rate of change equals the average rate of change over that interval"
+   ],
+   "units": [
+    "BC-UNIT-05"
+   ],
+   "variants": [
+    "BC-QV-05002-01",
+    "BC-QV-05002-02",
+    "BC-QV-05002-03"
+   ],
+   "wrong_approaches": [
+    "differentiating the average rate of change expression"
+   ]
+  },
+  {
+   "asked_to_produce": [
+    "the classification",
+    "a reason naming the sign behaviour of the derivative"
+   ],
+   "calculator_status": "either",
+   "common_distractors": [
+    "reading the plotted derivative as the function and reporting its own turning behaviour",
+    "reversing the direction of the sign change",
+    "classifying from the value of the derivative rather than its change",
+    "declaring an extremum wherever the derivative is zero"
+   ],
+   "common_givens": [
+    "a graph of the derivative made of segments and arcs",
+    "or a derivative formula",
+    "a named input"
+   ],
+   "description": "The response must say whether a named input is the location of a relative minimum, a relative maximum, or neither, and give a reason.",
+   "difficulty_variables": [
+    "whether the answer is neither rather than an extremum",
+    "whether the derivative is zero or undefined at the input",
+    "whether the derivative is given as a graph, a table, or a formula"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "locate the named input on the derivative information",
+    "determine the sign of the derivative on each side",
+    "state the sign change or its absence",
+    "give the classification with that reason"
+   ],
+   "id": "BC-QA-05003",
+   "invariant_structure": "The information supplied is about the derivative, the candidate input is named in the question rather than found, and the single available point covers both the classification and its reason.",
+   "misconceptions": [
+    "BC-MIS-05008",
+    "BC-MIS-05011",
+    "BC-MIS-05014"
+   ],
+   "multi_skill_extensions": [],
+   "multipart_structure": "One part of a multipart free response question, worth one point.",
+   "name": "Relative extremum classified from the behaviour of the first derivative",
+   "official_examples": [],
+   "official_examples_notes": "2023 Q4(a)",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-05006",
+    "BC-PRQ-05002"
+   ],
+   "primary_unit": "BC-UNIT-05",
+   "prohibited_shortcuts": [],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02",
+    "BC-REP-03"
+   ],
+   "safe_variables": [
+    "the letter used for the function",
+    "the shape of the derivative graph",
+    "the named input"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "A single point for the answer together with its reason. A declaration that the derivative does not change sign at the input, so neither, is enough; intervals need not be presented, but any presented interval must be correct; a response stating only that the derivative is positive before and after the input does not earn the point (sg-23:13).",
+   "skills": [
+    "BC-SKL-05019",
+    "BC-SKL-05020",
+    "BC-SKL-05021",
+    "BC-SKL-05022",
+    "BC-SKL-05023"
+   ],
+   "sources": [
+    "sg-23:13",
+    "frq-23:8"
+   ],
+   "typical_wording": [
+    "does the function have a relative minimum, a relative maximum, or neither at the named input, and give a reason for the answer"
+   ],
+   "units": [
+    "BC-UNIT-05"
+   ],
+   "variants": [
+    "BC-QV-05003-01",
+    "BC-QV-05003-02",
+    "BC-QV-05003-03"
+   ],
+   "wrong_approaches": [
+    "applying the second derivative test where only the derivative graph is available and its slope is not discussed"
+   ]
+  },
+  {
+   "asked_to_produce": [
+    "a list of open intervals",
+    "a reason about the behaviour of the derivative"
+   ],
+   "calculator_status": "either",
+   "common_distractors": [
+    "reporting where the derivative is positive instead of where it is increasing",
+    "reporting closed intervals or single points",
+    "giving one interval and omitting the other",
+    "reasoning that the function is concave down because it is concave down"
+   ],
+   "common_givens": [
+    "a graph of the derivative",
+    "or a formula for the function"
+   ],
+   "description": "The response must name the open intervals on which the graph of a function is concave up or concave down and give a reason drawn from the given representation.",
+   "difficulty_variables": [
+    "whether more than one interval is correct",
+    "whether the derivative graph includes a semicircular arc",
+    "whether the question asks for concave up or concave down"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "identify where the derivative is decreasing",
+    "write those stretches as open intervals",
+    "state the reason in terms of the derivative decreasing"
+   ],
+   "id": "BC-QA-05004",
+   "invariant_structure": "Concavity is asked for as open intervals, the given object is the derivative rather than the function, and the reason is scored separately from the intervals.",
+   "misconceptions": [
+    "BC-MIS-05011",
+    "BC-MIS-05013",
+    "BC-MIS-05020"
+   ],
+   "multi_skill_extensions": [],
+   "multipart_structure": "One part of a multipart free response question, worth two points.",
+   "name": "Intervals of concavity from derivative information with a reason",
+   "official_examples": [],
+   "official_examples_notes": "2023 Q4(b)",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-05006",
+    "BC-PRQ-05004"
+   ],
+   "primary_unit": "BC-UNIT-05",
+   "prohibited_shortcuts": [],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "safe_variables": [
+    "the shape of the derivative graph",
+    "the interval of definition",
+    "the letter for the function"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "One point for the intervals and one for the reason, with the reason point available only when the intervals are correct. Endpoints may be included or excluded. A reason must discuss the behaviour of the derivative or the slopes of the derivative. A response giving exactly one of two correct intervals with a correct reason earns one of the two points (sg-23:14).",
+   "skills": [
+    "BC-SKL-05030",
+    "BC-SKL-05031",
+    "BC-SKL-05035"
+   ],
+   "sources": [
+    "sg-23:14",
+    "frq-23:8"
+   ],
+   "typical_wording": [
+    "on what open intervals, if any, is the graph of the function concave down, and give a reason for the answer"
+   ],
+   "units": [
+    "BC-UNIT-05"
+   ],
+   "variants": [
+    "BC-QV-05004-01",
+    "BC-QV-05004-02",
+    "BC-QV-05004-03"
+   ],
+   "wrong_approaches": [
+    "computing a second derivative formula when only a graph of the derivative is supplied"
+   ]
+  },
+  {
+   "asked_to_produce": [
+    "the complete list of inputs",
+    "a reason phrased through the given function"
+   ],
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "listing every zero of the given plotted function",
+    "omitting a value where the given plot turns without crossing the axis",
+    "phrasing the reason as the second derivative changing sign",
+    "phrasing the reason with an unnamed referent"
+   ],
+   "common_givens": [
+    "a graph of the derivative or of an integrand",
+    "an open interval"
+   ],
+   "description": "The response must list every input at which the graph of a function has a point of inflection and justify the list from the representation the question supplied.",
+   "difficulty_variables": [
+    "how many points of inflection there are",
+    "whether a candidate is a touching zero with no sign change",
+    "whether the given object is f, f prime, or an integrand"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "find where the given plot changes from increasing to decreasing or the reverse",
+    "list exactly those inputs",
+    "state the reason through the given plotted function"
+   ],
+   "id": "BC-QA-05005",
+   "invariant_structure": "The list must be exactly right for the answer point, the reason must be phrased in terms of the given object rather than restated in second derivative symbols, and the open interval of consideration excludes the endpoints.",
+   "misconceptions": [
+    "BC-MIS-05013",
+    "BC-MIS-05021",
+    "BC-MIS-05022"
+   ],
+   "multi_skill_extensions": [],
+   "multipart_structure": "One part of a multipart free response question, worth two points.",
+   "name": "Points of inflection identified with a reason tied to the given graph",
+   "official_examples": [],
+   "official_examples_notes": "2025 Q4(B)",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-05006"
+   ],
+   "primary_unit": "BC-UNIT-05",
+   "prohibited_shortcuts": [],
+   "representations": [
+    "BC-REP-02",
+    "BC-REP-04"
+   ],
+   "safe_variables": [
+    "the shape of the given graph",
+    "the letters used",
+    "the interval"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "One point for the answer and one for the reason. The answer point is lost if any extra input inside the interval is declared; consideration of the interval endpoints does not affect scoring. The reason point requires the reason to be tied to the given graph, so a reason phrased as the given function changing from increasing to decreasing earns it while a reason phrased as the second derivative changing sign does not; an ambiguous referent such as the function or the graph forfeits it. Two of three correct values with a correct reason earn the reason point but not the answer point (sg-25:17).",
+   "skills": [
+    "BC-SKL-05032",
+    "BC-SKL-05033",
+    "BC-SKL-05034",
+    "BC-SKL-05035"
+   ],
+   "sources": [
+    "sg-25:17",
+    "frq-25:7"
+   ],
+   "typical_wording": [
+    "find all values in the open interval at which the graph has a point of inflection, and give a reason for the answer"
+   ],
+   "units": [
+    "BC-UNIT-05"
+   ],
+   "variants": [
+    "BC-QV-05005-01",
+    "BC-QV-05005-02",
+    "BC-QV-05005-03"
+   ],
+   "wrong_approaches": [
+    "testing candidates with a second derivative test"
+   ]
+  },
+  {
+   "asked_to_produce": [
+    "the derivative condition considered",
+    "a candidate table",
+    "the extremum"
+   ],
+   "calculator_status": "either",
+   "common_distractors": [
+    "omitting one or both endpoints from the comparison",
+    "reporting the location where the value was asked for",
+    "offering a first derivative test as the justification",
+    "including inputs that are not candidates"
+   ],
+   "common_givens": [
+    "a function or its derivative",
+    "one known function value",
+    "a closed interval"
+   ],
+   "description": "The response must find the absolute maximum or minimum of a function on a closed interval and justify the choice over the whole interval.",
+   "difficulty_variables": [
+    "how many critical points lie inside the interval",
+    "whether candidate values come from a formula or from accumulated area",
+    "whether a critical point can be eliminated by reference to an earlier part",
+    "whether the minimum or the maximum is asked for"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "consider the derivative equal to zero and solve",
+    "form the candidate list with both endpoints",
+    "evaluate the function at every candidate",
+    "compare and report the extreme value"
+   ],
+   "id": "BC-QA-05006",
+   "invariant_structure": "The interval is closed, the candidate list is the critical points together with both endpoints, and the justification is scored as a separate point from the derivative condition and from the value.",
+   "misconceptions": [
+    "BC-MIS-05007",
+    "BC-MIS-05015",
+    "BC-MIS-05016",
+    "BC-MIS-05017",
+    "BC-MIS-05018"
+   ],
+   "multi_skill_extensions": [],
+   "multipart_structure": "One part of a multipart free response question, worth three points.",
+   "name": "Absolute extremum by the candidates test with a global justification",
+   "official_examples": [],
+   "official_examples_notes": "2023 Q4(d), 2025 Q4(D)",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-05001",
+    "BC-PRQ-05004"
+   ],
+   "primary_unit": "BC-UNIT-05",
+   "prohibited_shortcuts": [],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02",
+    "BC-REP-03"
+   ],
+   "safe_variables": [
+    "the letter for the function",
+    "the interval endpoints",
+    "the supplied function value"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "One point for considering the derivative equal to zero, which listing the zeros alone does not earn; one point for the justification, which in 2023 required every candidate and both endpoints to be handled and no evaluation error at any candidate, and in 2025 required evaluations or reasoning for each candidate and for no other inputs; one point for the answer, which in 2023 was given only for the extreme value and not for its location. A local first or second derivative argument does not earn the justification point but leaves the answer point available (sg-23:15, sg-25:19).",
+   "skills": [
+    "BC-SKL-05010",
+    "BC-SKL-05024",
+    "BC-SKL-05025",
+    "BC-SKL-05026",
+    "BC-SKL-05027",
+    "BC-SKL-05028",
+    "BC-SKL-05029"
+   ],
+   "sources": [
+    "sg-23:15",
+    "sg-25:19",
+    "frq-23:8",
+    "frq-25:7"
+   ],
+   "typical_wording": [
+    "find the absolute minimum value of the function on the closed interval and justify the answer",
+    "find the input at which the function attains an absolute minimum on the closed interval and justify the answer"
+   ],
+   "units": [
+    "BC-UNIT-05"
+   ],
+   "variants": [
+    "BC-QV-05006-01",
+    "BC-QV-05006-02",
+    "BC-QV-05006-03"
+   ],
+   "wrong_approaches": [
+    "appealing to the Extreme Value Theorem as though it located the extremum"
+   ]
+  },
+  {
+   "asked_to_produce": [
+    "the sign consideration",
+    "the critical input",
+    "the classification with justification"
+   ],
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "setting the given function rather than its derivative equal to zero",
+    "ignoring the supplied sign fact that removes one factor",
+    "classifying with no sign statement",
+    "reading the plotted integrand as the accumulation function"
+   ],
+   "common_givens": [
+    "a differential equation with a stated sign fact",
+    "or an accumulation function built on a plotted integrand"
+   ],
+   "description": "A function is supplied through a differential equation or an accumulation function rather than by a formula, and the response must find a critical point and say what kind it is.",
+   "difficulty_variables": [
+    "whether a supplied sign fact must be used to isolate the factor",
+    "whether the classification is by sign change or by second derivative",
+    "whether the given object is a differential equation or an accumulation function"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "write the derivative from the given relation",
+    "use the supplied sign fact to reduce the equation",
+    "solve for the critical input inside the range",
+    "argue the sign on each side or evaluate the second derivative"
+   ],
+   "id": "BC-QA-05007",
+   "invariant_structure": "The derivative is available directly from the given relation, the critical point comes from setting that expression to zero within a stated range, and the classification needs a sign argument or a second derivative evaluation.",
+   "misconceptions": [
+    "BC-MIS-05008",
+    "BC-MIS-05011",
+    "BC-MIS-05024"
+   ],
+   "multi_skill_extensions": [],
+   "multipart_structure": "One part of a multipart free response question, worth two or three points.",
+   "name": "Critical point located and classified for a function given indirectly",
+   "official_examples": [],
+   "official_examples_notes": "2024 Q3(b), 2024 Q4(b)",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-05001",
+    "BC-PRQ-05002"
+   ],
+   "primary_unit": "BC-UNIT-05",
+   "prohibited_shortcuts": [],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-06"
+   ],
+   "safe_variables": [
+    "the modelled context",
+    "the letters used",
+    "the stated range"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "In 2024 three points were split as considering the sign of the derivative, identifying the input, and the answer with justification, with a second derivative evaluation accepted as an alternate justification (sg-24:10). In the accumulation form two points were split as the Fundamental Theorem of Calculus step and the answer with reason, and explicitly presenting the accumulation function with the wrong lower limit cost the first point (sg-24:13).",
+   "skills": [
+    "BC-SKL-05010",
+    "BC-SKL-05020",
+    "BC-SKL-05039"
+   ],
+   "sources": [
+    "sg-24:10",
+    "sg-24:13",
+    "frq-24:7",
+    "frq-24:8"
+   ],
+   "typical_wording": [
+    "find the input in the stated range at which the modelled quantity has a critical point, and determine whether it is the location of a relative minimum, a relative maximum, or neither",
+    "find all inputs in the stated interval at which the graph of the accumulation function has a critical point, and give a reason"
+   ],
+   "units": [
+    "BC-UNIT-05"
+   ],
+   "variants": [
+    "BC-QV-05007-01",
+    "BC-QV-05007-02",
+    "BC-QV-05007-03"
+   ],
+   "wrong_approaches": [
+    "solving the differential equation before locating the critical point"
+   ]
+  },
+  {
+   "asked_to_produce": [
+    "a union of open intervals",
+    "a reason naming the sign of the derivative"
+   ],
+   "calculator_status": "either",
+   "common_distractors": [
+    "reporting closed intervals",
+    "merging two intervals across a break in the domain",
+    "reading increase of the derivative as increase of the function",
+    "offering a bare sign chart with no sentence"
+   ],
+   "common_givens": [
+    "a function or its derivative",
+    "an interval of definition"
+   ],
+   "description": "The response must give the intervals on which a function rises or falls and support them with the sign of its derivative.",
+   "difficulty_variables": [
+    "whether the domain has a break",
+    "whether the derivative changes sign at an undefined point",
+    "whether the given object is the function or its derivative"
+   ],
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "find the zeros and undefined points of the derivative",
+    "determine the sign on each piece",
+    "write the intervals",
+    "state the reason naming the derivative"
+   ],
+   "id": "BC-QA-05008",
+   "invariant_structure": "The partition points are the critical points and the domain breaks, the answer is a union of open intervals, and the reason must name the derivative of the given function.",
+   "misconceptions": [
+    "BC-MIS-05010",
+    "BC-MIS-05011",
+    "BC-MIS-05012",
+    "BC-MIS-05013"
+   ],
+   "multi_skill_extensions": [],
+   "multipart_structure": "One part of a multipart free response question, or a single multiple choice item.",
+   "name": "Intervals of increase or decrease justified by the sign of the derivative",
+   "official_examples": [],
+   "official_examples_notes": "none in 2023 to 2025 as a standalone part",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-05002",
+    "BC-PRQ-05003",
+    "BC-PRQ-05004"
+   ],
+   "primary_unit": "BC-UNIT-05",
+   "prohibited_shortcuts": [],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02",
+    "BC-REP-03"
+   ],
+   "safe_variables": [
+    "the function rule",
+    "the letters used",
+    "the interval of definition"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "Intervals and reason score separately, with the reason requiring the sign of the named derivative on the stated interval rather than a restatement of the conclusion; an unnamed referent forfeits the reason (sg-25:17). Scored here by analogy with the concavity part of the same family (sg-23:14).",
+   "skills": [
+    "BC-SKL-05014",
+    "BC-SKL-05015",
+    "BC-SKL-05016",
+    "BC-SKL-05017",
+    "BC-SKL-05018"
+   ],
+   "sources": [
+    "ced:101",
+    "sg-25:17",
+    "sg-23:14"
+   ],
+   "typical_wording": [
+    "on what open intervals is the function increasing, and give a reason for the answer"
+   ],
+   "units": [
+    "BC-UNIT-05"
+   ],
+   "variants": [
+    "BC-QV-05008-01",
+    "BC-QV-05008-02",
+    "BC-QV-05008-03"
+   ],
+   "wrong_approaches": [
+    "testing a single input and generalising"
+   ]
+  },
+  {
+   "asked_to_produce": [
+    "an assignment of roles",
+    "or a sketch with the correct features"
+   ],
+   "calculator_status": "either",
+   "common_distractors": [
+    "ordering the three curves in the reverse derivative direction",
+    "matching turning points with turning points instead of with zeros",
+    "treating the plotted derivative as the function"
+   ],
+   "common_givens": [
+    "two or three plotted curves",
+    "or a table of signs",
+    "sometimes one known function value"
+   ],
+   "description": "Three related objects are in play and the response must identify which is which, or read a feature of one off another.",
+   "difficulty_variables": [
+    "whether three objects are in play rather than two",
+    "whether a known value is supplied to fix the sketch",
+    "whether the presentation is graphical or tabular"
+   ],
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "find the turning points of each curve",
+    "match them with the zeros of another",
+    "apply the rule twice to order all three"
+   ],
+   "id": "BC-QA-05009",
+   "invariant_structure": "Turning points of one object sit at sign changes of the next, and the question tests the correspondence rather than any computation.",
+   "misconceptions": [
+    "BC-MIS-05011",
+    "BC-MIS-05020",
+    "BC-MIS-05025",
+    "BC-MIS-05026"
+   ],
+   "multi_skill_extensions": [],
+   "multipart_structure": "A single multiple choice item, or a part of a free response question phrased as a feature question.",
+   "name": "Relating the graphs of a function and its first two derivatives",
+   "official_examples": [],
+   "official_examples_notes": "none in 2023 to 2025 as a standalone part",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-05006"
+   ],
+   "primary_unit": "BC-UNIT-05",
+   "prohibited_shortcuts": [],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02",
+    "BC-REP-03"
+   ],
+   "safe_variables": [
+    "the shapes of the curves",
+    "the labelling letters",
+    "the plotted window"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "Where the free response questions of 2023 to 2025 use this relationship they score the features rather than the drawing, awarding separate points for the list of inputs and for the reason (sg-23:13, sg-25:17).",
+   "skills": [
+    "BC-SKL-05040",
+    "BC-SKL-05041",
+    "BC-SKL-05042",
+    "BC-SKL-05043",
+    "BC-SKL-05044",
+    "BC-SKL-05045",
+    "BC-SKL-05046",
+    "BC-SKL-05047",
+    "BC-SKL-05048"
+   ],
+   "sources": [
+    "ced:106",
+    "ced:107",
+    "sg-23:13",
+    "sg-25:17"
+   ],
+   "typical_wording": [
+    "which of the graphs shown could be the function, its derivative, and its second derivative",
+    "sketch a possible graph of the function on the given interval"
+   ],
+   "units": [
+    "BC-UNIT-05"
+   ],
+   "variants": [
+    "BC-QV-05009-01",
+    "BC-QV-05009-02",
+    "BC-QV-05009-03"
+   ],
+   "wrong_approaches": [
+    "deciding the order from the vertical scale of the plots"
+   ]
+  },
+  {
+   "asked_to_produce": [
+    "a yes or no answer",
+    "the continuity statement",
+    "the named theorem"
+   ],
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "asserting existence for an open interval",
+    "citing the theorem for a function with a jump inside the interval",
+    "naming the location of the extremum as the answer"
+   ],
+   "common_givens": [
+    "a continuity or differentiability statement",
+    "or a graph with a break",
+    "a closed interval"
+   ],
+   "description": "The response must decide whether a function is assured of attaining a largest and a smallest value on a closed interval, and say why.",
+   "difficulty_variables": [
+    "whether the interval is closed",
+    "whether continuity is stated or must be inferred from differentiability",
+    "whether a discontinuity is planted inside the interval"
+   ],
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "check the interval is closed",
+    "establish continuity from the given information",
+    "state that a minimum value and a maximum value are attained",
+    "name the theorem"
+   ],
+   "id": "BC-QA-05010",
+   "invariant_structure": "The only hypothesis at issue is continuity on the closed interval, and the conclusion is existence rather than location.",
+   "misconceptions": [
+    "BC-MIS-05001",
+    "BC-MIS-05004",
+    "BC-MIS-05006",
+    "BC-MIS-05007"
+   ],
+   "multi_skill_extensions": [],
+   "multipart_structure": "A single multiple choice item, or a short part of a free response question.",
+   "name": "Extreme Value Theorem existence claim on a closed interval",
+   "official_examples": [],
+   "official_examples_notes": "none in 2023 to 2025 as a standalone part",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-05004",
+    "BC-PRQ-05003"
+   ],
+   "primary_unit": "BC-UNIT-05",
+   "prohibited_shortcuts": [],
+   "representations": [
+    "BC-REP-02",
+    "BC-REP-04"
+   ],
+   "safe_variables": [
+    "the letter for the function",
+    "the interval",
+    "the context"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "Scored in the same shape as the Mean Value Theorem existence part: a point for establishing the hypothesis and a point for the conclusion with the theorem named, where a hypothesis merely asserted without support does not count (sg-23:3, sg-25:12).",
+   "skills": [
+    "BC-SKL-05007",
+    "BC-SKL-05008",
+    "BC-SKL-05009",
+    "BC-SKL-05012"
+   ],
+   "sources": [
+    "ced:100",
+    "sg-23:3",
+    "sg-25:12"
+   ],
+   "typical_wording": [
+    "must the function attain a maximum value on the closed interval, and justify the answer"
+   ],
+   "units": [
+    "BC-UNIT-05"
+   ],
+   "variants": [
+    "BC-QV-05010-01",
+    "BC-QV-05010-02",
+    "BC-QV-05010-03"
+   ],
+   "wrong_approaches": [
+    "differentiating to find the extremum when only existence was asked"
+   ]
+  },
+  {
+   "asked_to_produce": [
+    "the objective in one variable",
+    "the domain",
+    "the critical point",
+    "the verification",
+    "the interpreted value"
+   ],
+   "calculator_status": "either",
+   "common_distractors": [
+    "optimising the constraint instead of the objective",
+    "taking the domain as all real numbers",
+    "stopping at the critical point with no verification",
+    "reporting the dimensions when the optimal value was asked for"
+   ],
+   "common_givens": [
+    "a verbal situation or a diagram",
+    "a fixed total or a geometric relation",
+    "a contextual range"
+   ],
+   "description": "A situation is described and the response must build a one variable objective, find the extremum on the contextual domain, verify it, and interpret it.",
+   "difficulty_variables": [
+    "whether the contextual domain is closed",
+    "whether the constraint is linear or geometric",
+    "whether a verification is demanded explicitly",
+    "whether an interpretation sentence is demanded"
+   ],
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "define the variables and write the objective",
+    "substitute the constraint",
+    "state the domain",
+    "differentiate and solve",
+    "verify the extremum on that domain",
+    "report the value with units"
+   ],
+   "id": "BC-QA-05011",
+   "invariant_structure": "A constraint reduces two variables to one, the domain comes from the context, and the verification step is scored separately from the location of the critical point.",
+   "misconceptions": [
+    "BC-MIS-05015",
+    "BC-MIS-05027",
+    "BC-MIS-05028",
+    "BC-MIS-05029",
+    "BC-MIS-05030"
+   ],
+   "multi_skill_extensions": [],
+   "multipart_structure": "A multipart free response question, or a multiple choice item that supplies the reduced objective.",
+   "name": "Applied optimisation with model setup, domain, and verification",
+   "official_examples": [],
+   "official_examples_notes": "none in 2023 to 2025 as a standalone part",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-05005",
+    "BC-PRQ-05003"
+   ],
+   "primary_unit": "BC-UNIT-05",
+   "prohibited_shortcuts": [],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-05",
+    "BC-REP-08"
+   ],
+   "safe_variables": [
+    "the modelled quantity",
+    "the units",
+    "the shape in the diagram",
+    "the fixed total"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "Separate points for the setup, for the derivative condition, for the verification that the critical point gives the extremum, and for the interpreted value with units. A verification that argues only locally does not satisfy a demand for the extremum on a closed contextual domain (sg-25:19), and an interpretation that omits the units or the interval is incomplete (sg-23:2).",
+   "skills": [
+    "BC-SKL-05049",
+    "BC-SKL-05050",
+    "BC-SKL-05051",
+    "BC-SKL-05052",
+    "BC-SKL-05053",
+    "BC-SKL-05054",
+    "BC-SKL-05055",
+    "BC-SKL-05056",
+    "BC-SKL-05057"
+   ],
+   "sources": [
+    "ced:108",
+    "ced:109",
+    "sg-25:19",
+    "sg-23:2"
+   ],
+   "typical_wording": [
+    "find the dimensions that make the described quantity as large as possible, and justify that the value found is the maximum",
+    "using correct units, state the largest value the modelled quantity attains on the stated interval"
+   ],
+   "units": [
+    "BC-UNIT-05"
+   ],
+   "variants": [
+    "BC-QV-05011-01",
+    "BC-QV-05011-02",
+    "BC-QV-05011-03"
+   ],
+   "wrong_approaches": [
+    "substituting a numerical value before differentiating"
+   ]
+  },
+  {
+   "asked_to_produce": [
+    "the differentiated expression",
+    "the substitution of the first derivative",
+    "the numerical value or the coordinates"
+   ],
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "differentiating as though the second variable were constant",
+    "leaving the first derivative symbol unsubstituted in the final value",
+    "reporting an input value with no matching output on the curve",
+    "treating a vanishing denominator as a horizontal tangent"
+   ],
+   "common_givens": [
+    "an implicit equation or a differential equation",
+    "a point on the curve"
+   ],
+   "description": "A curve is given by an equation in two variables or by a differential equation, and the response must find critical points or evaluate a second derivative at a point on it.",
+   "difficulty_variables": [
+    "whether the second derivative is asked for or only the first",
+    "whether the relation is polynomial or transcendental",
+    "whether the critical points need both conditions solved together"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "differentiate the relation implicitly",
+    "differentiate again keeping both variables",
+    "substitute the first derivative and the coordinates",
+    "report the value or the coordinates"
+   ],
+   "id": "BC-QA-05012",
+   "invariant_structure": "The derivative is a relation in both variables, a point on the curve must satisfy the defining equation as well as the derived condition, and the second derivative is an expression in both variables and the first derivative.",
+   "misconceptions": [
+    "BC-MIS-05031",
+    "BC-MIS-05032",
+    "BC-MIS-05033"
+   ],
+   "multi_skill_extensions": [],
+   "multipart_structure": "One part of a multipart free response question, worth two or three points.",
+   "name": "Critical points and second derivative behaviour of an implicit relation",
+   "official_examples": [],
+   "official_examples_notes": "2025 Q5(A)",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-05007",
+    "BC-PRQ-05001"
+   ],
+   "primary_unit": "BC-UNIT-05",
+   "prohibited_shortcuts": [],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02",
+    "BC-REP-06"
+   ],
+   "safe_variables": [
+    "the relation",
+    "the given point",
+    "the letters used"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "Separate points for the differentiation and for the substitution of the derivative expression, with the value point available from either route: a response that differentiates correctly but does not substitute earns the first and not the second, a response that substitutes correctly inside a faulty differentiation earns the second and stays eligible for the value with a consistent answer (sg-25:21).",
+   "skills": [
+    "BC-SKL-05058",
+    "BC-SKL-05059",
+    "BC-SKL-05060",
+    "BC-SKL-05061",
+    "BC-SKL-05062",
+    "BC-SKL-05063"
+   ],
+   "sources": [
+    "sg-25:21",
+    "frq-25:8"
+   ],
+   "typical_wording": [
+    "find the value of the second derivative at the given point on the curve, showing the work that leads to the answer",
+    "find the coordinates of every point on the curve at which the tangent line is horizontal"
+   ],
+   "units": [
+    "BC-UNIT-05"
+   ],
+   "variants": [
+    "BC-QV-05012-01",
+    "BC-QV-05012-02",
+    "BC-QV-05012-03"
+   ],
+   "wrong_approaches": [
+    "solving the relation explicitly when it is not solvable"
+   ]
+  },
+  {
+   "asked_to_produce": [
+    "the second derivative at the point",
+    "the classification"
+   ],
+   "calculator_status": "either",
+   "common_distractors": [
+    "applying the test at an input where the first derivative is not zero",
+    "reversing the sign convention",
+    "treating a zero second derivative as proof of neither"
+   ],
+   "common_givens": [
+    "a function, a differential equation, or an implicit relation",
+    "a critical point"
+   ],
+   "description": "The response must classify a critical point using the sign of the second derivative there, or state that the test is inconclusive.",
+   "difficulty_variables": [
+    "whether the second derivative is zero at the point",
+    "whether the question demands a global claim",
+    "whether the second derivative must itself be derived implicitly"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "confirm the first derivative is zero at the point",
+    "evaluate the second derivative there",
+    "classify by its sign or declare the test inconclusive"
+   ],
+   "id": "BC-QA-05013",
+   "invariant_structure": "The critical point is already known or found in an earlier step, and the classification rests on one evaluation rather than on a sign analysis across an interval.",
+   "misconceptions": [
+    "BC-MIS-05018",
+    "BC-MIS-05023",
+    "BC-MIS-05024"
+   ],
+   "multi_skill_extensions": [],
+   "multipart_structure": "One part of a multipart free response question, or a single multiple choice item.",
+   "name": "Second derivative test applied at a critical point",
+   "official_examples": [],
+   "official_examples_notes": "2024 Q3(b) alternate solution",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-05001"
+   ],
+   "primary_unit": "BC-UNIT-05",
+   "prohibited_shortcuts": [],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-06"
+   ],
+   "safe_variables": [
+    "the function",
+    "the critical point",
+    "the context"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "Accepted in 2024 as an alternate justification for a classification part, earning the same point as the sign argument (sg-24:10). Refused the justification point in 2025 where the demand was a global claim, while the answer point remained available (sg-25:19).",
+   "skills": [
+    "BC-SKL-05036",
+    "BC-SKL-05037",
+    "BC-SKL-05038",
+    "BC-SKL-05039"
+   ],
+   "sources": [
+    "sg-24:10",
+    "sg-25:19"
+   ],
+   "typical_wording": [
+    "determine whether the critical point is the location of a relative minimum, a relative maximum, or neither"
+   ],
+   "units": [
+    "BC-UNIT-05"
+   ],
+   "variants": [
+    "BC-QV-05013-01",
+    "BC-QV-05013-02",
+    "BC-QV-05013-03"
+   ],
+   "wrong_approaches": [
+    "classifying from the sign of the function value"
+   ]
+  }
+ ],
+ "registry": "archetypes",
+ "variants": [
+  {
+   "archetype": "BC-QA-05001",
+   "description": "The two endpoint outputs agree, so the average rate of change is zero and the claim becomes the existence of a zero derivative.",
+   "difficulty_effect": "neutral",
+   "dimension": "reasoning direction",
+   "evidence_tag": "verified",
+   "id": "BC-QV-05001-01",
+   "name": "Endpoint values equal so the conclusion is a zero derivative",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-23:3"
+   ]
+  },
+  {
+   "archetype": "BC-QA-05001",
+   "description": "The endpoint outputs differ, so the target derivative value is a computed nonzero number and a solved input may also be demanded.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning direction",
+   "evidence_tag": "verified",
+   "id": "BC-QV-05001-02",
+   "name": "Instantaneous rate matched to a nonzero average rate",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-25:4"
+   ]
+  },
+  {
+   "archetype": "BC-QA-05001",
+   "description": "Continuity is not stated and must be drawn from the differentiability claim before the theorem is invoked.",
+   "difficulty_effect": "harder",
+   "dimension": "notation",
+   "evidence_tag": "verified",
+   "id": "BC-QV-05001-03",
+   "name": "Hypotheses supplied through a differentiability statement only",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-23:3"
+   ]
+  },
+  {
+   "archetype": "BC-QA-05002",
+   "description": "The equation setting the derivative equal to the average rate factors, so no technology is needed.",
+   "difficulty_effect": "easier",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-05002-01",
+   "name": "Derivative equation solvable in closed form",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:99"
+   ]
+  },
+  {
+   "archetype": "BC-QA-05002",
+   "description": "The equation has no closed form solution and the setup must be shown before the decimal answer.",
+   "difficulty_effect": "harder",
+   "dimension": "calculator",
+   "evidence_tag": "verified",
+   "id": "BC-QV-05002-02",
+   "name": "Derivative equation solved numerically",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-25:4"
+   ]
+  },
+  {
+   "archetype": "BC-QA-05002",
+   "description": "Several inputs satisfy the equation inside the interval and all must be reported.",
+   "difficulty_effect": "harder",
+   "dimension": "difficulty",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-05002-03",
+   "name": "More than one interior solution",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:99"
+   ]
+  },
+  {
+   "archetype": "BC-QA-05003",
+   "description": "The sign behaviour must be read from a plotted derivative rather than computed.",
+   "difficulty_effect": "neutral",
+   "dimension": "representation",
+   "evidence_tag": "verified",
+   "id": "BC-QV-05003-01",
+   "name": "Derivative given as a piecewise graph of segments and arcs",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-23:13"
+   ]
+  },
+  {
+   "archetype": "BC-QA-05003",
+   "description": "The correct classification is neither, which a sign chart alone does not communicate.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning direction",
+   "evidence_tag": "verified",
+   "id": "BC-QV-05003-02",
+   "name": "Candidate where the derivative is zero without a sign change",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-23:13"
+   ]
+  },
+  {
+   "archetype": "BC-QA-05003",
+   "description": "The critical point comes from a corner or a cusp rather than from a zero of the derivative.",
+   "difficulty_effect": "harder",
+   "dimension": "difficulty",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-05003-03",
+   "name": "Candidate where the derivative is undefined",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:100"
+   ]
+  },
+  {
+   "archetype": "BC-QA-05004",
+   "description": "Concavity must be read as the monotonicity of the plotted derivative rather than from a computed second derivative.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "verified",
+   "id": "BC-QV-05004-01",
+   "name": "Concavity from a plotted derivative",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-23:14"
+   ]
+  },
+  {
+   "archetype": "BC-QA-05004",
+   "description": "A formula is available and the sign chart of the second derivative settles the intervals.",
+   "difficulty_effect": "easier",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-05004-02",
+   "name": "Concavity from a symbolic second derivative",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:104"
+   ]
+  },
+  {
+   "archetype": "BC-QA-05004",
+   "description": "The answer is a union of two intervals and a partial list earns partial credit.",
+   "difficulty_effect": "harder",
+   "dimension": "difficulty",
+   "evidence_tag": "verified",
+   "id": "BC-QV-05004-03",
+   "name": "Two separate intervals of one concavity",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-23:14"
+   ]
+  },
+  {
+   "archetype": "BC-QA-05005",
+   "description": "The object plotted is the integrand of an accumulation function, so the second derivative of the accumulation is the plotted curve itself.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "verified",
+   "id": "BC-QV-05005-01",
+   "name": "Inflection points from the graph of an integrand",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-25:17"
+   ]
+  },
+  {
+   "archetype": "BC-QA-05005",
+   "description": "One candidate has a zero second derivative with no sign change and must be excluded.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-05005-02",
+   "name": "Candidate with a touching zero of the second derivative",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:104"
+   ]
+  },
+  {
+   "archetype": "BC-QA-05005",
+   "description": "The reason point turns on whether the sentence names the supplied plotted function rather than the second derivative.",
+   "difficulty_effect": "harder",
+   "dimension": "notation",
+   "evidence_tag": "verified",
+   "id": "BC-QV-05005-03",
+   "name": "Reason demanded in terms of the given function",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-25:17"
+   ]
+  },
+  {
+   "archetype": "BC-QA-05006",
+   "description": "Each candidate is evaluated by substitution into a given rule.",
+   "difficulty_effect": "easier",
+   "dimension": "representation",
+   "evidence_tag": "verified",
+   "id": "BC-QV-05006-01",
+   "name": "Candidate values computed from a formula",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-23:15"
+   ]
+  },
+  {
+   "archetype": "BC-QA-05006",
+   "description": "Each candidate value is built from signed area, so an evaluation error propagates into the justification point.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "verified",
+   "id": "BC-QV-05006-02",
+   "name": "Candidate values accumulated as areas under a plotted derivative",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-25:18",
+    "sg-25:19"
+   ]
+  },
+  {
+   "archetype": "BC-QA-05006",
+   "description": "The justification is carried by the sign of the derivative on each side across the whole interval rather than by a candidate table.",
+   "difficulty_effect": "neutral",
+   "dimension": "reasoning direction",
+   "evidence_tag": "verified",
+   "id": "BC-QV-05006-03",
+   "name": "Global argument from the sign of the derivative instead of a table",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-25:19"
+   ]
+  },
+  {
+   "archetype": "BC-QA-05007",
+   "description": "The derivative is read directly from the given equation and a supplied sign fact isolates the factor that can vanish.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "verified",
+   "id": "BC-QV-05007-01",
+   "name": "Function supplied by a differential equation",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-24:10"
+   ]
+  },
+  {
+   "archetype": "BC-QA-05007",
+   "description": "The derivative of the function is the plotted curve, so the critical points are its zeros.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "verified",
+   "id": "BC-QV-05007-02",
+   "name": "Function supplied as an accumulation of a plotted integrand",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-24:13"
+   ]
+  },
+  {
+   "archetype": "BC-QA-05007",
+   "description": "The part asks for the critical point and its type together, so a located input alone is incomplete.",
+   "difficulty_effect": "harder",
+   "dimension": "difficulty",
+   "evidence_tag": "verified",
+   "id": "BC-QV-05007-03",
+   "name": "Classification demanded in the same part",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-24:10"
+   ]
+  },
+  {
+   "archetype": "BC-QA-05008",
+   "description": "The sign chart is built from a factored derivative.",
+   "difficulty_effect": "easier",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-05008-01",
+   "name": "Derivative given symbolically",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:101"
+   ]
+  },
+  {
+   "archetype": "BC-QA-05008",
+   "description": "The reported intervals must split at the input where the function is undefined.",
+   "difficulty_effect": "harder",
+   "dimension": "difficulty",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-05008-02",
+   "name": "Domain with a break inside the interval",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:101"
+   ]
+  },
+  {
+   "archetype": "BC-QA-05008",
+   "description": "The sentence must name the derivative of the given function and the interval, so a bare sign chart is not enough.",
+   "difficulty_effect": "harder",
+   "dimension": "notation",
+   "evidence_tag": "verified",
+   "id": "BC-QV-05008-03",
+   "name": "Reason scored separately from the intervals",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-25:17"
+   ]
+  },
+  {
+   "archetype": "BC-QA-05009",
+   "description": "The roles must be assigned by matching turning points with zeros twice over.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-05009-01",
+   "name": "Three unlabelled curves on one set of axes",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:107"
+   ]
+  },
+  {
+   "archetype": "BC-QA-05009",
+   "description": "The behaviour of the function is read from a tabulated sign pattern rather than from a plot.",
+   "difficulty_effect": "neutral",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-05009-02",
+   "name": "Table of signs of the two derivatives",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:107"
+   ]
+  },
+  {
+   "archetype": "BC-QA-05009",
+   "description": "A known value removes the vertical ambiguity so a specific curve can be drawn.",
+   "difficulty_effect": "easier",
+   "dimension": "difficulty",
+   "evidence_tag": "verified",
+   "id": "BC-QV-05009-03",
+   "name": "One function value supplied to fix the sketch",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "frq-23:8"
+   ]
+  },
+  {
+   "archetype": "BC-QA-05010",
+   "description": "The question states continuity, so the hypothesis check is a single sentence.",
+   "difficulty_effect": "easier",
+   "dimension": "notation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-05010-01",
+   "name": "Continuity stated outright",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:100"
+   ]
+  },
+  {
+   "archetype": "BC-QA-05010",
+   "description": "Only differentiability is stated and the response must draw continuity from it before invoking the theorem.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning direction",
+   "evidence_tag": "verified",
+   "id": "BC-QV-05010-02",
+   "name": "Continuity inferred from differentiability",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-23:3"
+   ]
+  },
+  {
+   "archetype": "BC-QA-05010",
+   "description": "The hypothesis fails, so the correct answer is that the theorem does not apply.",
+   "difficulty_effect": "harder",
+   "dimension": "difficulty",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-05010-03",
+   "name": "Discontinuity planted inside the interval",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:100"
+   ]
+  },
+  {
+   "archetype": "BC-QA-05011",
+   "description": "The constraint comes from a labelled figure rather than from a sentence.",
+   "difficulty_effect": "neutral",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-05011-01",
+   "name": "Geometric constraint from a diagram",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:108"
+   ]
+  },
+  {
+   "archetype": "BC-QA-05011",
+   "description": "The endpoints of the contextual domain are attainable, so the candidates test is the closing argument.",
+   "difficulty_effect": "neutral",
+   "dimension": "difficulty",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-05011-02",
+   "name": "Closed contextual domain with attainable endpoints",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:108"
+   ]
+  },
+  {
+   "archetype": "BC-QA-05011",
+   "description": "The part asks for the meaning of the optimal value in the situation, scored separately from the computation.",
+   "difficulty_effect": "harder",
+   "dimension": "notation",
+   "evidence_tag": "verified",
+   "id": "BC-QV-05011-03",
+   "name": "Interpretation sentence demanded with units",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:109",
+    "sg-23:2"
+   ]
+  },
+  {
+   "archetype": "BC-QA-05012",
+   "description": "The derivative must be produced by implicit differentiation before anything else.",
+   "difficulty_effect": "neutral",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-05012-01",
+   "name": "Relation given as an equation in two variables",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:110"
+   ]
+  },
+  {
+   "archetype": "BC-QA-05012",
+   "description": "The first derivative is handed over and only the second differentiation is demanded.",
+   "difficulty_effect": "easier",
+   "dimension": "representation",
+   "evidence_tag": "verified",
+   "id": "BC-QV-05012-02",
+   "name": "Relation given as a differential equation",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-25:21"
+   ]
+  },
+  {
+   "archetype": "BC-QA-05012",
+   "description": "The answer is a single number that depends on substituting the first derivative value correctly.",
+   "difficulty_effect": "neutral",
+   "dimension": "difficulty",
+   "evidence_tag": "verified",
+   "id": "BC-QV-05012-03",
+   "name": "Second derivative evaluated at a supplied point",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-25:21"
+   ]
+  },
+  {
+   "archetype": "BC-QA-05013",
+   "description": "The input is named, so only the evaluation and the classification remain.",
+   "difficulty_effect": "easier",
+   "dimension": "difficulty",
+   "evidence_tag": "verified",
+   "id": "BC-QV-05013-01",
+   "name": "Critical point supplied by the question",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-24:10"
+   ]
+  },
+  {
+   "archetype": "BC-QA-05013",
+   "description": "The test is inconclusive and the first derivative test must be used instead.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-05013-02",
+   "name": "Second derivative zero at the critical point",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:105"
+   ]
+  },
+  {
+   "archetype": "BC-QA-05013",
+   "description": "The question asks for an absolute extremum, so the local test does not carry the justification point.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning direction",
+   "evidence_tag": "verified",
+   "id": "BC-QV-05013-03",
+   "name": "Global claim demanded instead of a local one",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-25:19"
+   ]
+  }
+ ]
+}

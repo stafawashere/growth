@@ -1,0 +1,32 @@
+| Units combined in one part | Part records |
+|---|---|
+| BC-UNIT-06 + BC-UNIT-08 | 38 |
+| BC-UNIT-05 + BC-UNIT-06 | 14 |
+| BC-UNIT-02 + BC-UNIT-04 | 11 |
+| BC-UNIT-08 + BC-UNIT-09 | 8 |
+| BC-UNIT-05 + BC-UNIT-08 | 6 |
+| BC-UNIT-06 + BC-UNIT-07 | 5 |
+| BC-UNIT-04 + BC-UNIT-07 | 5 |
+| BC-UNIT-04 + BC-UNIT-09 | 5 |
+| BC-UNIT-06 + BC-UNIT-10 | 4 |
+| BC-UNIT-02 + BC-UNIT-05 | 4 |
+| BC-UNIT-02 + BC-UNIT-03 + BC-UNIT-04 | 4 |
+| BC-UNIT-03 + BC-UNIT-09 | 4 |
+| BC-UNIT-01 + BC-UNIT-02 | 4 |
+| BC-UNIT-02 + BC-UNIT-03 | 3 |
+| BC-UNIT-01 + BC-UNIT-06 | 3 |
+| BC-UNIT-06 + BC-UNIT-08 + BC-UNIT-09 | 3 |
+| BC-UNIT-05 + BC-UNIT-06 + BC-UNIT-08 | 2 |
+| BC-UNIT-06 + BC-UNIT-09 | 2 |
+| BC-UNIT-03 + BC-UNIT-05 + BC-UNIT-07 | 2 |
+| BC-UNIT-02 + BC-UNIT-06 | 2 |
+| BC-UNIT-07 + BC-UNIT-10 | 2 |
+| BC-UNIT-04 + BC-UNIT-05 | 2 |
+| BC-UNIT-03 + BC-UNIT-04 + BC-UNIT-09 | 2 |
+| BC-UNIT-05 + BC-UNIT-07 | 2 |
+| BC-UNIT-04 + BC-UNIT-05 + BC-UNIT-07 | 2 |
+| BC-UNIT-03 + BC-UNIT-06 | 2 |
+| BC-UNIT-05 + BC-UNIT-09 | 2 |
+| BC-UNIT-03 + BC-UNIT-04 + BC-UNIT-05 | 1 |
+| BC-UNIT-01 + BC-UNIT-06 + BC-UNIT-09 | 1 |
+| BC-UNIT-03 + BC-UNIT-04 + BC-UNIT-07 | 1 |

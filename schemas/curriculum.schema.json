@@ -1,0 +1,541 @@
+{
+ "type": "object",
+ "required": [
+  "ced_edition",
+  "units",
+  "topics",
+  "learning_objectives",
+  "essential_knowledge",
+  "practices",
+  "practice_skills"
+ ],
+ "properties": {
+  "ced_edition": {
+   "type": "object",
+   "required": [
+    "cover_year",
+    "clarifications_year",
+    "source_doc_ids"
+   ]
+  },
+  "units": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string"
+     },
+     "name": {
+      "type": "string",
+      "minLength": 3
+     },
+     "scope": {
+      "enum": [
+       "AB_only",
+       "shared",
+       "BC_only",
+       "n/a"
+      ]
+     },
+     "evidence_tag": {
+      "enum": [
+       "verified",
+       "single-source",
+       "inferred",
+       "uncertain"
+      ]
+     },
+     "sources": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "notes": {
+      "type": "string"
+     },
+     "created": {
+      "type": "string"
+     },
+     "updated": {
+      "type": "string"
+     },
+     "status": {
+      "enum": [
+       "active",
+       "retired"
+      ]
+     },
+     "superseded_by": {
+      "type": "string"
+     },
+     "number": {
+      "type": "integer"
+     },
+     "bc_weight_low": {
+      "type": "number"
+     },
+     "bc_weight_high": {
+      "type": "number"
+     },
+     "ab_weight_low": {
+      "type": [
+       "number",
+       "null"
+      ]
+     },
+     "ab_weight_high": {
+      "type": [
+       "number",
+       "null"
+      ]
+     },
+     "topics": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "ced_pages": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     }
+    },
+    "required": [
+     "id",
+     "name",
+     "scope",
+     "evidence_tag",
+     "sources",
+     "number",
+     "bc_weight_low",
+     "bc_weight_high",
+     "topics"
+    ],
+    "additionalProperties": true
+   }
+  },
+  "topics": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string"
+     },
+     "name": {
+      "type": "string",
+      "minLength": 3
+     },
+     "scope": {
+      "enum": [
+       "AB_only",
+       "shared",
+       "BC_only",
+       "n/a"
+      ]
+     },
+     "evidence_tag": {
+      "enum": [
+       "verified",
+       "single-source",
+       "inferred",
+       "uncertain"
+      ]
+     },
+     "sources": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "notes": {
+      "type": "string"
+     },
+     "created": {
+      "type": "string"
+     },
+     "updated": {
+      "type": "string"
+     },
+     "status": {
+      "enum": [
+       "active",
+       "retired"
+      ]
+     },
+     "superseded_by": {
+      "type": "string"
+     },
+     "ced_code": {
+      "type": "string"
+     },
+     "unit": {
+      "type": "string"
+     },
+     "learning_objectives": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "ced_page": {
+      "type": "integer"
+     },
+     "suggested_skills": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     }
+    },
+    "required": [
+     "id",
+     "name",
+     "scope",
+     "evidence_tag",
+     "sources",
+     "ced_code",
+     "unit",
+     "learning_objectives",
+     "ced_page"
+    ],
+    "additionalProperties": true
+   }
+  },
+  "learning_objectives": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string"
+     },
+     "name": {
+      "type": "string",
+      "minLength": 3
+     },
+     "scope": {
+      "enum": [
+       "AB_only",
+       "shared",
+       "BC_only",
+       "n/a"
+      ]
+     },
+     "evidence_tag": {
+      "enum": [
+       "verified",
+       "single-source",
+       "inferred",
+       "uncertain"
+      ]
+     },
+     "sources": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "notes": {
+      "type": "string"
+     },
+     "created": {
+      "type": "string"
+     },
+     "updated": {
+      "type": "string"
+     },
+     "status": {
+      "enum": [
+       "active",
+       "retired"
+      ]
+     },
+     "superseded_by": {
+      "type": "string"
+     },
+     "ced_code": {
+      "type": "string"
+     },
+     "big_idea": {
+      "type": "string"
+     },
+     "text": {
+      "type": "string"
+     },
+     "essential_knowledge": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "topics": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     }
+    },
+    "required": [
+     "id",
+     "name",
+     "scope",
+     "evidence_tag",
+     "sources",
+     "ced_code",
+     "text",
+     "essential_knowledge"
+    ],
+    "additionalProperties": true
+   }
+  },
+  "essential_knowledge": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string"
+     },
+     "name": {
+      "type": "string",
+      "minLength": 3
+     },
+     "scope": {
+      "enum": [
+       "AB_only",
+       "shared",
+       "BC_only",
+       "n/a"
+      ]
+     },
+     "evidence_tag": {
+      "enum": [
+       "verified",
+       "single-source",
+       "inferred",
+       "uncertain"
+      ]
+     },
+     "sources": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "notes": {
+      "type": "string"
+     },
+     "created": {
+      "type": "string"
+     },
+     "updated": {
+      "type": "string"
+     },
+     "status": {
+      "enum": [
+       "active",
+       "retired"
+      ]
+     },
+     "superseded_by": {
+      "type": "string"
+     },
+     "ced_code": {
+      "type": "string"
+     },
+     "text": {
+      "type": "string"
+     },
+     "learning_objective": {
+      "type": "string"
+     },
+     "changed_fall_2026": {
+      "type": "boolean"
+     },
+     "previous_text": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "id",
+     "name",
+     "scope",
+     "evidence_tag",
+     "sources",
+     "ced_code",
+     "text",
+     "learning_objective"
+    ],
+    "additionalProperties": true
+   }
+  },
+  "practices": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string"
+     },
+     "name": {
+      "type": "string",
+      "minLength": 3
+     },
+     "scope": {
+      "enum": [
+       "AB_only",
+       "shared",
+       "BC_only",
+       "n/a"
+      ]
+     },
+     "evidence_tag": {
+      "enum": [
+       "verified",
+       "single-source",
+       "inferred",
+       "uncertain"
+      ]
+     },
+     "sources": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "notes": {
+      "type": "string"
+     },
+     "created": {
+      "type": "string"
+     },
+     "updated": {
+      "type": "string"
+     },
+     "status": {
+      "enum": [
+       "active",
+       "retired"
+      ]
+     },
+     "superseded_by": {
+      "type": "string"
+     },
+     "number": {
+      "type": "integer"
+     },
+     "skills": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "mc_weight": {
+      "type": "string"
+     },
+     "frq_weight": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "id",
+     "name",
+     "scope",
+     "evidence_tag",
+     "sources",
+     "number",
+     "skills"
+    ],
+    "additionalProperties": true
+   }
+  },
+  "practice_skills": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string"
+     },
+     "name": {
+      "type": "string",
+      "minLength": 3
+     },
+     "scope": {
+      "enum": [
+       "AB_only",
+       "shared",
+       "BC_only",
+       "n/a"
+      ]
+     },
+     "evidence_tag": {
+      "enum": [
+       "verified",
+       "single-source",
+       "inferred",
+       "uncertain"
+      ]
+     },
+     "sources": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "notes": {
+      "type": "string"
+     },
+     "created": {
+      "type": "string"
+     },
+     "updated": {
+      "type": "string"
+     },
+     "status": {
+      "enum": [
+       "active",
+       "retired"
+      ]
+     },
+     "superseded_by": {
+      "type": "string"
+     },
+     "ced_code": {
+      "type": "string"
+     },
+     "text": {
+      "type": "string"
+     },
+     "practice": {
+      "type": "string"
+     },
+     "assessed": {
+      "type": "boolean"
+     }
+    },
+    "required": [
+     "id",
+     "name",
+     "scope",
+     "evidence_tag",
+     "sources",
+     "ced_code",
+     "text",
+     "practice",
+     "assessed"
+    ],
+    "additionalProperties": true
+   }
+  },
+  "crosswalk_notes": {
+   "type": "string"
+  }
+ },
+ "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

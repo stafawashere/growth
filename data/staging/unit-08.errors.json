@@ -1,0 +1,1395 @@
+{
+ "errors": [
+  {
+   "archetypes": [
+    "BC-QA-08001"
+   ],
+   "discriminating_probe": "Give the same function on an interval of length one and then on an interval of length four and ask for both averages.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-08001",
+   "name": "Average value reported without dividing by the interval length",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "time pressure",
+    "misread of the prompt"
+   ],
+   "observed_behavior": "The response presents the correct definite integral and reports its value as the average.",
+   "official_evidence": [
+    "sg-25:2",
+    "sg-25:3"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-08002"
+   ],
+   "related_errors": [],
+   "scope": "shared",
+   "scoring_consequence": "The average value point is lost unless the correct answer appears elsewhere as evidence of the division (sg-25:3).",
+   "skills": [
+    "BC-SKL-08001",
+    "BC-SKL-08002",
+    "BC-SKL-08003"
+   ],
+   "sources": [
+    "sg-25:2",
+    "sg-25:3"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-08001"
+   ],
+   "discriminating_probe": "Ask the student to underline the interval in the prompt before writing the quotient.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-08002",
+   "name": "Average taken over an interval the question did not name",
+   "non_conceptual_causes": [
+    "misread of the prompt",
+    "time pressure"
+   ],
+   "observed_behavior": "The limits of the average value integral, or the divisor, come from an interval other than the one the prompt states.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-08002"
+   ],
+   "related_errors": [],
+   "scope": "shared",
+   "scoring_consequence": "Both the setup point and the answer point are lost.",
+   "skills": [
+    "BC-SKL-08001",
+    "BC-SKL-08003"
+   ],
+   "sources": [
+    "ced:152"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-08001"
+   ],
+   "discriminating_probe": "Ask for the integral of a rate that is negative on the whole interval.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-08003",
+   "name": "Region below the axis counted as positive area in an average",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "misread of the prompt"
+   ],
+   "observed_behavior": "A graph dipping below the axis contributes a positive amount to the integral used in the average.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-08002"
+   ],
+   "related_errors": [],
+   "scope": "shared",
+   "scoring_consequence": "The value is wrong, so the answer point is lost while the formula point may stand.",
+   "skills": [
+    "BC-SKL-08002"
+   ],
+   "sources": [
+    "ced:152"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-08001",
+    "BC-QA-08014"
+   ],
+   "discriminating_probe": "Ask what the student entered into the calculator, written as an integral.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-08004",
+   "name": "Calculator answer presented with no setup",
+   "non_conceptual_causes": [
+    "time pressure",
+    "a belief that the work is scratch"
+   ],
+   "observed_behavior": "A decimal appears with no integral and no evidence of the division.",
+   "official_evidence": [
+    "sg-25:3",
+    "crabbc-25:30"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-08003"
+   ],
+   "related_errors": [
+    "BC-ERR-99021"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The setup point is lost; an unsupported value can still earn an answer point only where the guideline says so (sg-25:3).",
+   "skills": [
+    "BC-SKL-08003",
+    "BC-SKL-08059"
+   ],
+   "sources": [
+    "sg-25:3",
+    "crabbc-25:30"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-08001",
+    "BC-QA-08008",
+    "BC-QA-08004",
+    "BC-QA-08014"
+   ],
+   "discriminating_probe": "Ask for the same computation with the unrounded stored value and compare.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-08005",
+   "name": "Intermediate value rounded before the final computation",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "time pressure"
+   ],
+   "observed_behavior": "A stored decimal is truncated to two or three places and then used in a later step, moving the reported answer.",
+   "official_evidence": [
+    "sg-25:2",
+    "crabbc-25:30"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-08003"
+   ],
+   "related_errors": [
+    "BC-ERR-99019"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The answer point is lost for inappropriate rounding, and at most one point per question is withheld on this ground (sg-25:2).",
+   "skills": [
+    "BC-SKL-08003",
+    "BC-SKL-08021",
+    "BC-SKL-08017",
+    "BC-SKL-08035",
+    "BC-SKL-08043",
+    "BC-SKL-08059"
+   ],
+   "sources": [
+    "sg-25:2",
+    "crabbc-25:30"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-08001",
+    "BC-QA-08002"
+   ],
+   "discriminating_probe": "Show both expressions side by side and ask for the units of each.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-08006",
+   "name": "Average value computed where an average rate of change was asked, or the reverse",
+   "non_conceptual_causes": [
+    "misread of the prompt",
+    "a copied template from a similar exercise"
+   ],
+   "observed_behavior": "The response builds a difference quotient when the average of the function values was requested, or an integral quotient when the average rate of change was requested.",
+   "official_evidence": [
+    "sg-25:4",
+    "crabbc-25:3"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-08001"
+   ],
+   "related_errors": [
+    "BC-ERR-99015"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "Neither the setup point nor the answer point is earned, because the quantity is not the one asked for (sg-25:4).",
+   "skills": [
+    "BC-SKL-08004",
+    "BC-SKL-08005"
+   ],
+   "sources": [
+    "sg-25:4",
+    "crabbc-25:3"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-08007",
+    "BC-QA-08001"
+   ],
+   "discriminating_probe": "Ask the student to write the units of the integrand and of the differential separately and then multiply them.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-08007",
+   "name": "Units omitted or built from the wrong factors",
+   "non_conceptual_causes": [
+    "time pressure",
+    "misread of the prompt"
+   ],
+   "observed_behavior": "A reported value carries no units, or units that are the rate units rather than the rate units multiplied by the input units.",
+   "official_evidence": [
+    "sg-25:11",
+    "sg-23:2"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-08009"
+   ],
+   "related_errors": [
+    "BC-ERR-99005"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The units point, where one exists, is lost; in 2025 the units for an average rate of change were scored as their own point (sg-25:11).",
+   "skills": [
+    "BC-SKL-08005",
+    "BC-SKL-08015",
+    "BC-SKL-08017"
+   ],
+   "sources": [
+    "sg-25:11",
+    "sg-23:2"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-08003"
+   ],
+   "discriminating_probe": "Give a velocity that is positive then negative and ask for both quantities in the same part.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-08008",
+   "name": "Displacement reported where total distance was asked",
+   "non_conceptual_causes": [
+    "misread of the prompt",
+    "time pressure"
+   ],
+   "observed_behavior": "The response integrates velocity without the absolute value and reports the result as the distance travelled.",
+   "official_evidence": [
+    "sg-24:6",
+    "cr-23:8",
+    "cr-24:8"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-08004"
+   ],
+   "related_errors": [
+    "BC-ERR-99010"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The setup point is lost because the integrand is wrong, and the answer point falls with it (sg-24:6).",
+   "skills": [
+    "BC-SKL-08006",
+    "BC-SKL-08007",
+    "BC-SKL-08011"
+   ],
+   "sources": [
+    "sg-24:6",
+    "cr-23:8",
+    "cr-24:8"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-08003"
+   ],
+   "discriminating_probe": "Ask for the speed of a particle whose velocity is negative at that instant.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-08009",
+   "name": "Speed written without the absolute value or the magnitude",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "a copied template from a similar exercise"
+   ],
+   "observed_behavior": "The integrand for total distance is the velocity itself rather than its absolute value.",
+   "official_evidence": [
+    "cr-24:7"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-08005"
+   ],
+   "related_errors": [
+    "BC-ERR-99003"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The setup point is lost.",
+   "skills": [
+    "BC-SKL-08007"
+   ],
+   "sources": [
+    "ced:153",
+    "cr-24:7"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-08003"
+   ],
+   "discriminating_probe": "Ask for the value of the integral on each side of the zero of velocity before the total is requested.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-08010",
+   "name": "Interval not split where velocity changes sign",
+   "non_conceptual_causes": [
+    "time pressure",
+    "a copied one integral template"
+   ],
+   "observed_behavior": "The response integrates velocity over the whole interval and takes one absolute value at the end.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-08004"
+   ],
+   "related_errors": [],
+   "scope": "shared",
+   "scoring_consequence": "The value is too small, so the answer point is lost.",
+   "skills": [
+    "BC-SKL-08008",
+    "BC-SKL-08007"
+   ],
+   "sources": [
+    "ced:153"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-08004",
+    "BC-QA-08003"
+   ],
+   "discriminating_probe": "Give the same rate with two different starting amounts and ask for the later value in each case.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-08011",
+   "name": "Initial value not added to the accumulated change",
+   "non_conceptual_causes": [
+    "time pressure",
+    "misread of the prompt"
+   ],
+   "observed_behavior": "The response evaluates the integral of the rate and reports it as the value of the quantity.",
+   "official_evidence": [
+    "sg-24:7",
+    "sg-24:4"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-08006"
+   ],
+   "related_errors": [],
+   "scope": "shared",
+   "scoring_consequence": "The initial condition point is lost and the answer point falls with it (sg-24:7).",
+   "skills": [
+    "BC-SKL-08009",
+    "BC-SKL-08010",
+    "BC-SKL-08012"
+   ],
+   "sources": [
+    "sg-24:7",
+    "sg-24:4"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-08004"
+   ],
+   "discriminating_probe": "Ask what the number would be if the starting amount were doubled.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-08012",
+   "name": "Net change reported as the amount present",
+   "non_conceptual_causes": [
+    "misread of the prompt"
+   ],
+   "observed_behavior": "A question asking how much is present at a time is answered with the net change over the interval.",
+   "official_evidence": [
+    "sg-24:4"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-08006"
+   ],
+   "related_errors": [],
+   "scope": "shared",
+   "scoring_consequence": "The answer point is lost even when the integral is correct.",
+   "skills": [
+    "BC-SKL-08012",
+    "BC-SKL-08017"
+   ],
+   "sources": [
+    "sg-24:4"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-08005"
+   ],
+   "discriminating_probe": "Ask what the net rate should be at a time when the two rates are equal.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-08013",
+   "name": "Inflow and outflow rates added instead of subtracted",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "misread of the prompt"
+   ],
+   "observed_behavior": "The net rate is written as the sum of the two rates, or the difference is taken in the wrong order.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-08007"
+   ],
+   "related_errors": [],
+   "scope": "shared",
+   "scoring_consequence": "The setup point is lost.",
+   "skills": [
+    "BC-SKL-08013"
+   ],
+   "sources": [
+    "ced:154"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-08005",
+    "BC-QA-08008"
+   ],
+   "discriminating_probe": "Ask the student to read the integrand aloud and say which terms the minus sign reaches.",
+   "evidence_tag": "single-source",
+   "id": "BC-ERR-08014",
+   "name": "Parentheses lost when a supplied expression is placed in an integrand",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "time pressure"
+   ],
+   "observed_behavior": "A subtracted rate or a difference is substituted without parentheses, so only its first term is affected by the operation.",
+   "official_evidence": [
+    "cr-24:23"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-08007"
+   ],
+   "related_errors": [
+    "BC-ERR-99009"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The integrand is wrong, so the setup point is lost; the Chief Reader records this behaviour across questions.",
+   "skills": [
+    "BC-SKL-08013",
+    "BC-SKL-08019"
+   ],
+   "sources": [
+    "cr-24:23"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-08006"
+   ],
+   "discriminating_probe": "Ask whether the value at the endpoint has been compared with the value at the critical point.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-08015",
+   "name": "Local argument offered for an absolute extremum",
+   "non_conceptual_causes": [
+    "time pressure",
+    "a copied template from a similar exercise"
+   ],
+   "observed_behavior": "A first or second derivative test is presented as the justification that an accumulated amount is largest.",
+   "official_evidence": [
+    "sg-25:5",
+    "crabbc-25:4"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-08008"
+   ],
+   "related_errors": [
+    "BC-ERR-99004"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The justification point is lost while the answer point remains available (sg-25:5).",
+   "skills": [
+    "BC-SKL-08014"
+   ],
+   "sources": [
+    "sg-25:5",
+    "crabbc-25:4"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-08006"
+   ],
+   "discriminating_probe": "Ask for the value of the amount at both ends of the interval.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-08016",
+   "name": "Endpoints omitted from a candidates table",
+   "non_conceptual_causes": [
+    "time pressure",
+    "arithmetic slip"
+   ],
+   "observed_behavior": "The candidates test evaluates the amount only at the interior critical point.",
+   "official_evidence": [
+    "sg-25:5"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-08008"
+   ],
+   "related_errors": [
+    "BC-ERR-99004"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The justification point is lost because the argument is not global (sg-25:5).",
+   "skills": [
+    "BC-SKL-08014"
+   ],
+   "sources": [
+    "sg-25:5"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-08007"
+   ],
+   "discriminating_probe": "Ask what would change in the sentence if the limits were different.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-08017",
+   "name": "Interpretation names the quantity but not the interval",
+   "non_conceptual_causes": [
+    "time pressure"
+   ],
+   "observed_behavior": "The sentence says what is accumulating without saying between which inputs.",
+   "official_evidence": [
+    "sg-23:2"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-08009"
+   ],
+   "related_errors": [
+    "BC-ERR-99027"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The interpretation point is lost because the guideline requires the interval as well as the quantity (sg-23:2).",
+   "skills": [
+    "BC-SKL-08015"
+   ],
+   "sources": [
+    "sg-23:2"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-08004",
+    "BC-QA-08008"
+   ],
+   "discriminating_probe": "Ask the student to name the variable of integration in the expression as written.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-08018",
+   "name": "Differential omitted from an integral expression",
+   "non_conceptual_causes": [
+    "time pressure",
+    "arithmetic slip"
+   ],
+   "observed_behavior": "An integral is written with limits and an integrand but no dx, dt, or dy.",
+   "official_evidence": [
+    "sg-23:8"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-08009"
+   ],
+   "related_errors": [
+    "BC-ERR-99006"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "Whether the point survives depends on the guideline; in 2023 a missing differential kept the setup point but could block the answer point when the expression was also equated to a value (sg-23:8).",
+   "skills": [
+    "BC-SKL-08016",
+    "BC-SKL-08019",
+    "BC-SKL-08025"
+   ],
+   "sources": [
+    "sg-23:8"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-08008",
+    "BC-QA-08014"
+   ],
+   "discriminating_probe": "Ask which two inputs bound the region and why.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-08019",
+   "name": "Limits of integration taken from the wrong inputs",
+   "non_conceptual_causes": [
+    "misread of the prompt",
+    "arithmetic slip"
+   ],
+   "observed_behavior": "The integral is set up with limits that are not the boundary of the region or the interval requested.",
+   "official_evidence": [
+    "sg-23:16"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-08012"
+   ],
+   "related_errors": [],
+   "scope": "shared",
+   "scoring_consequence": "The answer point is lost, and in 2023 incorrect limits also made a response ineligible for the final area point (sg-23:16).",
+   "skills": [
+    "BC-SKL-08020",
+    "BC-SKL-08021",
+    "BC-SKL-08057"
+   ],
+   "sources": [
+    "sg-23:16"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-08008",
+    "BC-QA-08009",
+    "BC-QA-08010"
+   ],
+   "discriminating_probe": "Ask the student to evaluate both functions at one interior input and say which is larger.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-08020",
+   "name": "Difference of the boundary functions taken in the wrong order",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "a copied template from a similar exercise"
+   ],
+   "observed_behavior": "The integrand is the lower curve minus the upper curve, or the left curve minus the right curve.",
+   "official_evidence": [
+    "sg-23:16",
+    "sg-23:17"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-08011"
+   ],
+   "related_errors": [],
+   "scope": "shared",
+   "scoring_consequence": "The integrand point may survive, since either order earned it in 2023, but a negative value reported as an area loses the answer point (sg-23:16, sg-23:17).",
+   "skills": [
+    "BC-SKL-08018",
+    "BC-SKL-08019",
+    "BC-SKL-08024",
+    "BC-SKL-08028"
+   ],
+   "sources": [
+    "sg-23:16",
+    "sg-23:17"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-08008"
+   ],
+   "discriminating_probe": "Ask the student to check the statement by evaluating both sides.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-08021",
+   "name": "Area asserted to equal an expression that is its negative",
+   "non_conceptual_causes": [
+    "time pressure",
+    "careless transcription"
+   ],
+   "observed_behavior": "The response writes the reversed difference, sets it equal to the positive area, and reports the positive value.",
+   "official_evidence": [
+    "sg-23:17"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-08011"
+   ],
+   "related_errors": [
+    "BC-ERR-99002"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The answer point is lost for the incorrect statement even though the reported number is right (sg-23:17).",
+   "skills": [
+    "BC-SKL-08022"
+   ],
+   "sources": [
+    "sg-23:17"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-08008"
+   ],
+   "discriminating_probe": "Ask what the lower limit becomes after the substitution and why.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-08022",
+   "name": "Limits kept in the old variable after a substitution",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "time pressure"
+   ],
+   "observed_behavior": "An antiderivative found by substitution is evaluated at the original limits without converting them.",
+   "official_evidence": [
+    "sg-23:17"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-08012"
+   ],
+   "related_errors": [],
+   "scope": "shared",
+   "scoring_consequence": "The response is not eligible for the answer point (sg-23:17).",
+   "skills": [
+    "BC-SKL-08022"
+   ],
+   "sources": [
+    "sg-23:17"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-08009",
+    "BC-QA-08011",
+    "BC-QA-08012",
+    "BC-QA-08013"
+   ],
+   "discriminating_probe": "Ask the student to name the variable of integration and to check that the integrand contains only that variable.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-08023",
+   "name": "Integrand written in one variable with the differential of another",
+   "non_conceptual_causes": [
+    "a copied template from a similar exercise",
+    "time pressure"
+   ],
+   "observed_behavior": "A function of x is integrated with respect to y, or the reverse, without being rewritten.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-08013"
+   ],
+   "related_errors": [],
+   "scope": "shared",
+   "scoring_consequence": "The setup point is lost because the expression does not define a number.",
+   "skills": [
+    "BC-SKL-08023",
+    "BC-SKL-08025",
+    "BC-SKL-08034",
+    "BC-SKL-08042",
+    "BC-SKL-08050",
+    "BC-SKL-08053"
+   ],
+   "sources": [
+    "ced:156"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-08009",
+    "BC-QA-08012",
+    "BC-QA-08013"
+   ],
+   "discriminating_probe": "Ask for the smallest and largest y value in the region.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-08024",
+   "name": "Limits given as values of the variable not being integrated",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "a copied template from a similar exercise"
+   ],
+   "observed_behavior": "An integral in y carries x values as its limits.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-08013"
+   ],
+   "related_errors": [],
+   "scope": "shared",
+   "scoring_consequence": "The setup point is lost and the value is wrong.",
+   "skills": [
+    "BC-SKL-08025",
+    "BC-SKL-08042",
+    "BC-SKL-08050"
+   ],
+   "sources": [
+    "ced:156"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-08010"
+   ],
+   "discriminating_probe": "Ask how many solutions the equation of the two curves has on the interval.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-08025",
+   "name": "An interior intersection point not found",
+   "non_conceptual_causes": [
+    "time pressure",
+    "an incomplete calculator window"
+   ],
+   "observed_behavior": "Only the outer two crossings are used, so an interior crossing is integrated across.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-08014"
+   ],
+   "related_errors": [],
+   "scope": "shared",
+   "scoring_consequence": "The setup point is lost because part of the region is subtracted rather than added.",
+   "skills": [
+    "BC-SKL-08027"
+   ],
+   "sources": [
+    "ced:157"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-08010"
+   ],
+   "discriminating_probe": "Ask for the sign of the integrand on each side of the crossing.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-08026",
+   "name": "One integral used across a crossing of the curves",
+   "non_conceptual_causes": [
+    "a copied template from a similar exercise",
+    "time pressure"
+   ],
+   "observed_behavior": "A fixed order of subtraction is integrated over an interval in which the curves exchange places.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-08014"
+   ],
+   "related_errors": [],
+   "scope": "shared",
+   "scoring_consequence": "The reported area is smaller than the true area and the setup point is lost.",
+   "skills": [
+    "BC-SKL-08029",
+    "BC-SKL-08028"
+   ],
+   "sources": [
+    "ced:157"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-08010"
+   ],
+   "discriminating_probe": "Ask what the integral would give if the two lobes had equal area.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-08027",
+   "name": "Absolute value dropped from a split region integrand",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "time pressure"
+   ],
+   "observed_behavior": "The single integral form is written without the absolute value bars around the difference.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-08014"
+   ],
+   "related_errors": [
+    "BC-ERR-99037"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The value returned is the signed difference of the lobes, so the answer point is lost.",
+   "skills": [
+    "BC-SKL-08030"
+   ],
+   "sources": [
+    "ced:157"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-08011"
+   ],
+   "discriminating_probe": "Ask the student to mark the slice on the figure and label both of its ends.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-08028",
+   "name": "Cross sectional side written as one function value",
+   "non_conceptual_causes": [
+    "misread of the prompt",
+    "a copied template from a similar exercise"
+   ],
+   "observed_behavior": "The side of the slice is taken as the upper curve alone although the region is bounded by two curves.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-08016"
+   ],
+   "related_errors": [
+    "BC-ERR-99011"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The integrand is wrong, so the setup point is lost.",
+   "skills": [
+    "BC-SKL-08031"
+   ],
+   "sources": [
+    "ced:158"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-08011"
+   ],
+   "discriminating_probe": "Ask which shape the area formula in the integrand describes.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-08029",
+   "name": "Factor of pi placed in a polygonal cross section integrand",
+   "non_conceptual_causes": [
+    "a copied template from a similar exercise"
+   ],
+   "observed_behavior": "A square or triangular cross section volume carries a factor of pi.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-08015"
+   ],
+   "related_errors": [
+    "BC-ERR-99011"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The setup point is lost because the integrand belongs to the wrong volume family.",
+   "skills": [
+    "BC-SKL-08032"
+   ],
+   "sources": [
+    "ced:158"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-08013",
+    "BC-QA-08011"
+   ],
+   "discriminating_probe": "Ask the student to expand both expressions for a specific pair of numbers and compare.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-08030",
+   "name": "Square of a difference used where a difference of squares is needed",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "a copied template from a similar exercise"
+   ],
+   "observed_behavior": "A washer integrand is written as the square of the difference of the two radii, or a squared difference is expanded term by term.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-08017"
+   ],
+   "related_errors": [
+    "BC-ERR-99011"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The setup point is lost, and the value is wrong by the cross term.",
+   "skills": [
+    "BC-SKL-08049",
+    "BC-SKL-08051",
+    "BC-SKL-08055",
+    "BC-SKL-08035",
+    "BC-SKL-08039"
+   ],
+   "sources": [
+    "ced:162"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-08011"
+   ],
+   "discriminating_probe": "Ask for the area of one slice with both dimensions labelled.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-08031",
+   "name": "Second dimension of a rectangular cross section omitted",
+   "non_conceptual_causes": [
+    "misread of the prompt",
+    "time pressure"
+   ],
+   "observed_behavior": "A rectangular section whose height is a stated multiple of its base is treated as a square.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-08016"
+   ],
+   "related_errors": [],
+   "scope": "shared",
+   "scoring_consequence": "The setup point is lost.",
+   "skills": [
+    "BC-SKL-08033"
+   ],
+   "sources": [
+    "ced:158"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-08011"
+   ],
+   "discriminating_probe": "Ask for the area of a single slice of the named shape with a numerical side.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-08032",
+   "name": "Constant factor of a cross sectional area formula wrong or missing",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "time pressure"
+   ],
+   "observed_behavior": "The area of an equilateral or semicircular section is written without its fractional constant.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-08019"
+   ],
+   "related_errors": [
+    "BC-ERR-99011"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The setup point is lost.",
+   "skills": [
+    "BC-SKL-08036",
+    "BC-SKL-08039"
+   ],
+   "sources": [
+    "ced:159"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-08011"
+   ],
+   "discriminating_probe": "Ask which side of the triangle lies in the base region.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-08033",
+   "name": "Distance between the curves used as a leg when it is the hypotenuse",
+   "non_conceptual_causes": [
+    "misread of the prompt"
+   ],
+   "observed_behavior": "A right isosceles section is given the leg formula although the stated distance is the hypotenuse.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-08019"
+   ],
+   "related_errors": [],
+   "scope": "shared",
+   "scoring_consequence": "The integrand is off by a factor of two, so the setup point is lost.",
+   "skills": [
+    "BC-SKL-08037"
+   ],
+   "sources": [
+    "ced:159"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-08011"
+   ],
+   "discriminating_probe": "Ask for the radius of a semicircle whose diameter is a stated length.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-08034",
+   "name": "Distance between the curves used as the radius of a semicircle",
+   "non_conceptual_causes": [
+    "misread of the prompt",
+    "a copied template from a similar exercise"
+   ],
+   "observed_behavior": "The semicircular section is given a radius equal to the whole distance between the boundary curves.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-08018"
+   ],
+   "related_errors": [
+    "BC-ERR-99011"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The volume is four times too large and the setup point is lost.",
+   "skills": [
+    "BC-SKL-08038"
+   ],
+   "sources": [
+    "ced:159"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-08011"
+   ],
+   "discriminating_probe": "Ask for the area of a semicircle of a stated radius.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-08035",
+   "name": "Full circle area used for a semicircular cross section",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "time pressure"
+   ],
+   "observed_behavior": "The area formula omits the factor of one half that makes the section a semicircle.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-08019"
+   ],
+   "related_errors": [],
+   "scope": "shared",
+   "scoring_consequence": "The volume is twice the correct value and the setup point is lost.",
+   "skills": [
+    "BC-SKL-08038"
+   ],
+   "sources": [
+    "ced:159"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-08012"
+   ],
+   "discriminating_probe": "Ask for the area of one disc of a stated radius.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-08036",
+   "name": "Radius left unsquared in a solid of revolution integrand",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "a copied template from a similar exercise"
+   ],
+   "observed_behavior": "The disc integrand is pi times the function rather than pi times the square of the function.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-08020"
+   ],
+   "related_errors": [
+    "BC-ERR-99011"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The setup point is lost.",
+   "skills": [
+    "BC-SKL-08040",
+    "BC-SKL-08041"
+   ],
+   "sources": [
+    "ced:160"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-08012",
+    "BC-QA-08013"
+   ],
+   "discriminating_probe": "Ask what the area of a circular slice of that radius is.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-08037",
+   "name": "Factor of pi omitted from a solid of revolution integrand",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "time pressure"
+   ],
+   "observed_behavior": "A disc or washer volume is reported without the constant factor pi.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-08020"
+   ],
+   "related_errors": [],
+   "scope": "shared",
+   "scoring_consequence": "The answer point is lost.",
+   "skills": [
+    "BC-SKL-08041",
+    "BC-SKL-08043",
+    "BC-SKL-08049"
+   ],
+   "sources": [
+    "ced:160"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-08012",
+    "BC-QA-08013"
+   ],
+   "discriminating_probe": "Ask for the distance from a point on the curve to the stated line.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-08038",
+   "name": "Radius measured from a coordinate axis when the axis of revolution is elsewhere",
+   "non_conceptual_causes": [
+    "a copied template from a similar exercise",
+    "misread of the prompt"
+   ],
+   "observed_behavior": "The response revolves about a line other than an axis but writes the radius as the bare function value.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-08021"
+   ],
+   "related_errors": [
+    "BC-ERR-99011"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The setup point is lost.",
+   "skills": [
+    "BC-SKL-08044",
+    "BC-SKL-08045",
+    "BC-SKL-08046",
+    "BC-SKL-08052",
+    "BC-SKL-08053",
+    "BC-SKL-08055"
+   ],
+   "sources": [
+    "ced:161",
+    "ced:163"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-08012"
+   ],
+   "discriminating_probe": "Ask which inputs the region occupies, independently of where the axis is.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-08039",
+   "name": "Limits of integration moved along with the axis of revolution",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "a copied template from a similar exercise"
+   ],
+   "observed_behavior": "The interval of integration is translated by the same amount as the axis.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-08022"
+   ],
+   "related_errors": [],
+   "scope": "shared",
+   "scoring_consequence": "The setup point is lost and the value is wrong.",
+   "skills": [
+    "BC-SKL-08046",
+    "BC-SKL-08047"
+   ],
+   "sources": [
+    "ced:161"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-08013"
+   ],
+   "discriminating_probe": "Ask which curve is farther from the axis at one interior input.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-08040",
+   "name": "Outer and inner radii of a washer exchanged",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "misread of the prompt"
+   ],
+   "observed_behavior": "The nearer curve is used as the outer radius, giving a negative integrand.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-08023"
+   ],
+   "related_errors": [],
+   "scope": "shared",
+   "scoring_consequence": "A negative volume is reported and the answer point is lost.",
+   "skills": [
+    "BC-SKL-08048",
+    "BC-SKL-08054",
+    "BC-SKL-08052"
+   ],
+   "sources": [
+    "ced:162",
+    "ced:163"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-08014"
+   ],
+   "discriminating_probe": "Ask what the length of a straight segment of slope one on an interval of length one should be.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-08041",
+   "name": "Arc length integrand written without the radical or without the added one",
+   "non_conceptual_causes": [
+    "a copied template from a similar exercise",
+    "time pressure"
+   ],
+   "observed_behavior": "The length integral is written as the integral of the derivative, or of the square root of the derivative squared alone.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-08024"
+   ],
+   "related_errors": [],
+   "scope": "shared",
+   "scoring_consequence": "The setup point is lost.",
+   "skills": [
+    "BC-SKL-08056"
+   ],
+   "sources": [
+    "ced:164"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-08014"
+   ],
+   "discriminating_probe": "Ask the student to write the integrand for a linear function and compare with the Pythagorean length.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-08042",
+   "name": "Derivative not squared inside the arc length radical",
+   "non_conceptual_causes": [
+    "arithmetic slip"
+   ],
+   "observed_behavior": "The integrand is the square root of one plus the derivative.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-08024"
+   ],
+   "related_errors": [],
+   "scope": "shared",
+   "scoring_consequence": "The setup point is lost.",
+   "skills": [
+    "BC-SKL-08057"
+   ],
+   "sources": [
+    "ced:164"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-08014"
+   ],
+   "discriminating_probe": "Ask what the limits of the integral tell about the piece of curve being measured.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-08043",
+   "name": "Arc length identified without naming the interval",
+   "non_conceptual_causes": [
+    "time pressure"
+   ],
+   "observed_behavior": "The response says the integral gives the length of the curve but does not say on which interval.",
+   "official_evidence": [
+    "sg-24:16"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-08024"
+   ],
+   "related_errors": [
+    "BC-ERR-99027"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The interval point is lost while the arc length point stands (sg-24:16).",
+   "skills": [
+    "BC-SKL-08058"
+   ],
+   "sources": [
+    "sg-24:16"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-08014"
+   ],
+   "discriminating_probe": "Ask what the integrand would be if the area under the graph were wanted.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-08044",
+   "name": "Arc length integral described as an area",
+   "non_conceptual_causes": [
+    "misread of the prompt",
+    "a copied template from a similar exercise"
+   ],
+   "observed_behavior": "The displayed radical integral is interpreted as the area under the graph.",
+   "official_evidence": [
+    "sg-24:16"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-08024"
+   ],
+   "related_errors": [],
+   "scope": "shared",
+   "scoring_consequence": "The identification point is lost (sg-24:16).",
+   "skills": [
+    "BC-SKL-08058"
+   ],
+   "sources": [
+    "sg-24:16"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-08014",
+    "BC-QA-08011"
+   ],
+   "discriminating_probe": "Ask the student to write the expression that produced the number.",
+   "evidence_tag": "single-source",
+   "id": "BC-ERR-08045",
+   "name": "Numerical length or volume reported with no integral shown",
+   "non_conceptual_causes": [
+    "time pressure"
+   ],
+   "observed_behavior": "A decimal appears for an arc length or a volume with no integral expression anywhere in the response.",
+   "official_evidence": [
+    "crabbc-25:30"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-08003"
+   ],
+   "related_errors": [
+    "BC-ERR-99021"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The setup point is lost.",
+   "skills": [
+    "BC-SKL-08059",
+    "BC-SKL-08035"
+   ],
+   "sources": [
+    "crabbc-25:30"
+   ]
+  }
+ ],
+ "registry": "errors"
+}

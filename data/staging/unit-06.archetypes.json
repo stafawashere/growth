@@ -1,0 +1,1895 @@
+{
+ "archetypes": [
+  {
+   "calculator_status": "calculator",
+   "common_distractors": [
+    "using a single uniform width for unevenly spaced data",
+    "using the opposite endpoint from the one requested",
+    "reporting the sum of the rate values without multiplying by widths",
+    "dividing by the number of subintervals as though averaging"
+   ],
+   "description": "A contextual rate is given at selected times in a table; the response approximates the definite integral of the rate with a left or right Riemann sum over the subintervals the data indicate, and may be asked whether the approximation is an under or over estimate.",
+   "difficulty_variables": [
+    "nonuniform versus uniform subinterval widths",
+    "left versus right endpoint selection",
+    "whether an over or under estimate justification is demanded",
+    "whether an interpretation with units is demanded in the same part",
+    "whether the table is monotone"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "identify the subintervals indicated by the table",
+    "select the endpoint value on each subinterval",
+    "multiply each value by the width of its subinterval",
+    "sum the products",
+    "state the approximation, and when asked, compare with the exact integral using monotonicity"
+   ],
+   "id": "BC-QA-06001",
+   "invariant_structure": "A differentiable rate function is tabulated at unevenly spaced inputs; the number of subintervals equals the number of gaps in the table; the sum is built from values read directly out of the table and widths taken as differences of consecutive table inputs.",
+   "misconceptions": [
+    "BC-MIS-06001",
+    "BC-MIS-06002",
+    "BC-MIS-06003",
+    "BC-MIS-06005"
+   ],
+   "multipart_structure": "Typically one part of a multipart free response question, or a single multiple choice item.",
+   "name": "Riemann sum from a table with over or under estimate reasoning",
+   "official_examples": [],
+   "official_examples_notes": "2023 Q1(a), 2024 Q1(b)",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-PRQ-06008",
+    "BC-PRQ-06012"
+   ],
+   "primary_unit": "BC-UNIT-06",
+   "representations": [
+    "BC-REP-03",
+    "BC-REP-05"
+   ],
+   "safe_variables": [
+    "the quantity being accumulated",
+    "the unit of the rate",
+    "the number of table rows",
+    "the names of the variables"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "One point for the form of the Riemann sum and one point for the value, with the form point requiring at least five of the six factors correct, and any error in the sum costing the answer point; a fully correct sum using the wrong endpoint earns one of the two points (sg-23:2, sg-23:3). A bare numerical answer with no supporting products earns neither point (sg-23:3).",
+   "skills": [
+    "BC-SKL-06005",
+    "BC-SKL-06006",
+    "BC-SKL-06010",
+    "BC-SKL-06036"
+   ],
+   "sources": [
+    "sg-23:2",
+    "sg-23:3",
+    "sg-24:3",
+    "frq-23:3",
+    "frq-24:3"
+   ],
+   "typical_wording": [
+    "approximate the value of the definite integral of the rate using a Riemann sum with the subintervals indicated by the data in the table",
+    "using correct units, interpret the meaning of the definite integral of the rate over the stated interval in the context of the problem"
+   ],
+   "units": [
+    "BC-UNIT-06"
+   ],
+   "variants": [
+    "BC-QV-06001-01",
+    "BC-QV-06001-02",
+    "BC-QV-06001-03"
+   ]
+  },
+  {
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "halving only one of the terms",
+    "applying a single common width to unevenly spaced data",
+    "using the average of all table values times the total width",
+    "adding the left and right sums without dividing by two"
+   ],
+   "description": "A contextual rate is tabulated and the response approximates its definite integral with a trapezoidal sum over the subintervals indicated by the data.",
+   "difficulty_variables": [
+    "nonuniform versus uniform widths",
+    "whether the sum must be simplified to a single number",
+    "whether a concavity based over or under estimate justification is required",
+    "calculator versus no calculator"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "form each trapezoid as the average of the two endpoint values times the width",
+    "sum the three contributions",
+    "simplify to a single value"
+   ],
+   "id": "BC-QA-06002",
+   "invariant_structure": "A differentiable rate is tabulated at three or more inputs; each subinterval contributes the average of its two endpoint values multiplied by its width; the number of trapezoids equals the number of gaps in the table.",
+   "misconceptions": [
+    "BC-MIS-06001",
+    "BC-MIS-06002",
+    "BC-MIS-06003",
+    "BC-MIS-06004",
+    "BC-MIS-06005",
+    "BC-MIS-06006"
+   ],
+   "multipart_structure": "Typically one part of a multipart free response question, or a single multiple choice item.",
+   "name": "Trapezoidal approximation of an accumulated amount from a table",
+   "official_examples": [],
+   "official_examples_notes": "2025 Q3(C)",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-PRQ-06007",
+    "BC-PRQ-06008",
+    "BC-PRQ-06012"
+   ],
+   "primary_unit": "BC-UNIT-06",
+   "representations": [
+    "BC-REP-03",
+    "BC-REP-05"
+   ],
+   "safe_variables": [
+    "the context and quantity",
+    "the unit of the rate",
+    "the spacing of the table inputs"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "One point for the form of the trapezoidal sum, defined as three terms each a product of two factors with the one half incorporated, requiring at least five of six factors correct, and one point for the value; a completely correct left or right Riemann sum earns the form point but not the answer point, and the average of a correct left and right sum earns both (sg-25:13).",
+   "skills": [
+    "BC-SKL-06008",
+    "BC-SKL-06011",
+    "BC-SKL-06036"
+   ],
+   "sources": [
+    "sg-25:13",
+    "frq-25:6"
+   ],
+   "typical_wording": [
+    "use a trapezoidal sum with the subintervals indicated by the data in the table to approximate the value of the definite integral of the rate"
+   ],
+   "units": [
+    "BC-UNIT-06"
+   ],
+   "variants": [
+    "BC-QV-06002-01",
+    "BC-QV-06002-02",
+    "BC-QV-06002-03"
+   ]
+  },
+  {
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "treating the graph shown as the graph of g rather than of f",
+    "locating inflection points of g where f crosses the axis",
+    "giving a relative extremum argument where a global argument is demanded",
+    "counting a semicircular region as a full circle",
+    "reporting a signed area as an unsigned area"
+   ],
+   "description": "A function f is given by a graph made of segments and circular arcs, an accumulation function g is defined as the integral of f from a fixed input to x, and the response evaluates g, differentiates g, and locates extrema and points of inflection of g.",
+   "difficulty_variables": [
+    "whether the lower limit lies inside or at an end of the displayed interval",
+    "whether regions below the axis are involved",
+    "whether a global or a local argument is demanded",
+    "whether the question asks about g, g prime, or g double prime",
+    "whether a second function defined by the integral of f prime is also introduced"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "evaluate g at the requested inputs as signed areas",
+    "use the Fundamental Theorem of Calculus to write g prime equal to f",
+    "locate sign changes of f for extrema of g and turning points of f for inflection points of g",
+    "for an absolute extreme value, evaluate g at every critical input and at both endpoints and compare"
+   ],
+   "id": "BC-QA-06003",
+   "invariant_structure": "The integrand is presented only as a graph whose pieces have computable areas; the accumulation function has a fixed lower limit and a variable upper limit; every question about g is answered from a feature of f rather than from a formula.",
+   "misconceptions": [
+    "BC-MIS-06006",
+    "BC-MIS-06007",
+    "BC-MIS-06008",
+    "BC-MIS-06009",
+    "BC-MIS-06010",
+    "BC-MIS-06011",
+    "BC-MIS-06012"
+   ],
+   "multipart_structure": "Typically one part of a multipart free response question, or a single multiple choice item.",
+   "name": "Accumulation function analysed from the graph of the integrand",
+   "official_examples": [],
+   "official_examples_notes": "2025 Q4(A), 2025 Q4(B), 2025 Q4(C), 2025 Q4(D), 2024 Q4(a), 2024 Q4(b)",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-06007",
+    "BC-PRQ-06013"
+   ],
+   "primary_unit": "BC-UNIT-06",
+   "representations": [
+    "BC-REP-02"
+   ],
+   "safe_variables": [
+    "the shapes making up the graph",
+    "the location of the fixed lower limit",
+    "the names of the functions",
+    "the closed interval"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "Separate points for the answer and for the reason, with the reason point requiring the argument to be tied to the given graph of f; a reason phrased only in terms of g double prime or of g changing concavity earns the answer point but not the reason point, and a global candidates argument must evaluate g at every critical input and at both endpoints (sg-25:17, sg-25:19). Any extra declared inflection input costs both points of that part (sg-25:17).",
+   "skills": [
+    "BC-SKL-06020",
+    "BC-SKL-06022",
+    "BC-SKL-06023",
+    "BC-SKL-06024",
+    "BC-SKL-06025",
+    "BC-SKL-06026",
+    "BC-SKL-06027",
+    "BC-SKL-06018"
+   ],
+   "sources": [
+    "sg-25:15",
+    "sg-25:16",
+    "sg-25:17",
+    "sg-25:18",
+    "sg-25:19",
+    "sg-24:12",
+    "sg-24:13",
+    "frq-25:7",
+    "frq-24:8"
+   ],
+   "typical_wording": [
+    "let g be the function defined by the integral of f from a fixed input to x; find the value of g prime at a stated input and give a reason",
+    "find all values of x at which the graph of g has a point of inflection and give a reason",
+    "find the value of x at which g attains an absolute minimum on the closed interval and justify your answer"
+   ],
+   "units": [
+    "BC-UNIT-06"
+   ],
+   "variants": [
+    "BC-QV-06003-01",
+    "BC-QV-06003-02",
+    "BC-QV-06003-03"
+   ]
+  },
+  {
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "adding the areas of regions below the axis as positive",
+    "using the area of a full circle for a semicircular region",
+    "using the wrong radius or base length read off the figure",
+    "reversing the sign of the whole integral"
+   ],
+   "description": "The graph of a function composed of line segments and circular arcs is given and the response evaluates a definite integral over a stated interval as a sum of signed areas.",
+   "difficulty_variables": [
+    "whether any region lies below the axis",
+    "whether a circular region appears",
+    "whether the limits are reversed relative to the graph orientation",
+    "whether a property of integrals must be combined with the geometry"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "partition the region at the points where the graph changes character",
+    "compute each piece with an area formula",
+    "attach a negative sign to pieces below the axis",
+    "add the signed contributions"
+   ],
+   "id": "BC-QA-06004",
+   "invariant_structure": "The region between the graph and the horizontal axis decomposes into shapes with elementary area formulas; regions below the axis contribute negatively; no antiderivative is available or needed.",
+   "misconceptions": [
+    "BC-MIS-06011",
+    "BC-MIS-06012"
+   ],
+   "multipart_structure": "Typically one part of a multipart free response question, or a single multiple choice item.",
+   "name": "Definite integral evaluated from a graph by geometry",
+   "official_examples": [],
+   "official_examples_notes": "2025 Q4(C), 2024 Q4(a)",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-06007"
+   ],
+   "primary_unit": "BC-UNIT-06",
+   "representations": [
+    "BC-REP-02"
+   ],
+   "safe_variables": [
+    "the shapes used",
+    "the interval of integration",
+    "the scale of the axes"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "The value alone earns the point, with or without supporting work, but the value must be attached to the correct label when two integrals are requested in one part; incorrect linkage between the label and the value is treated as scratch work (sg-25:18).",
+   "skills": [
+    "BC-SKL-06028",
+    "BC-SKL-06004",
+    "BC-SKL-06020"
+   ],
+   "sources": [
+    "sg-25:18",
+    "sg-24:12",
+    "ced:123"
+   ],
+   "typical_wording": [
+    "the graph of f consists of line segments and semicircles; evaluate the definite integral of f over the stated interval"
+   ],
+   "units": [
+    "BC-UNIT-06"
+   ],
+   "variants": [
+    "BC-QV-06004-01",
+    "BC-QV-06004-02",
+    "BC-QV-06004-03"
+   ]
+  },
+  {
+   "calculator_status": "either",
+   "common_distractors": [
+    "reporting the integral alone as the final value",
+    "omitting the initial value",
+    "using the rate value at an endpoint in place of the integral",
+    "subtracting rather than adding the accumulated change when the rate is negative"
+   ],
+   "description": "A rate of change is given analytically over an interval together with the value of the quantity at one endpoint, and the response computes the value at the other endpoint or the total amount accumulated.",
+   "difficulty_variables": [
+    "whether an initial condition is supplied or must be located",
+    "whether the rate has an elementary antiderivative",
+    "calculator versus no calculator",
+    "whether the rate changes sign on the interval",
+    "whether the question asks for the value or only for the change"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "write the value at the later input as the value at the earlier input plus the definite integral of the rate",
+    "evaluate the integral analytically or with technology",
+    "combine with the initial value",
+    "report with units"
+   ],
+   "id": "BC-QA-06005",
+   "invariant_structure": "The quantity is recovered as the initial value plus the definite integral of its rate; the integral supplies the change and the initial condition supplies the level.",
+   "misconceptions": [
+    "BC-MIS-06013"
+   ],
+   "multipart_structure": "Typically one part of a multipart free response question, or a single multiple choice item.",
+   "name": "Net change from a rate with an initial condition",
+   "official_examples": [],
+   "official_examples_notes": "2024 Q1(c), 2025 Q3(D)",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-06002",
+    "BC-PRQ-06005"
+   ],
+   "primary_unit": "BC-UNIT-06",
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-05",
+    "BC-REP-09"
+   ],
+   "safe_variables": [
+    "the context and units",
+    "the interval endpoints",
+    "the algebraic form of the rate"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "Separate points for the integral, for the use of the initial condition, and for the answer; a response that presents only the integral value without adding the initial condition does not earn the initial condition point (sg-24:3, sg-24:4). Where no initial condition is present the points fall to the integrand, the antiderivative, and the value, and eligibility for the answer point requires the antiderivative point (sg-25:14).",
+   "skills": [
+    "BC-SKL-06036",
+    "BC-SKL-06037",
+    "BC-SKL-06034"
+   ],
+   "sources": [
+    "sg-24:3",
+    "sg-24:4",
+    "sg-25:14",
+    "frq-24:3",
+    "frq-25:6"
+   ],
+   "typical_wording": [
+    "the rate of change of the quantity is modelled by the given function; find the value of the quantity at the later time, showing the setup for your calculations",
+    "based on the model, how much of the quantity has accumulated by the end of the interval"
+   ],
+   "units": [
+    "BC-UNIT-06"
+   ],
+   "variants": [
+    "BC-QV-06005-01",
+    "BC-QV-06005-02",
+    "BC-QV-06005-03"
+   ]
+  },
+  {
+   "calculator_status": "calculator",
+   "common_distractors": [
+    "integrating each rate over a different interval",
+    "reversing which rate is subtracted",
+    "forgetting the initial amount",
+    "using the net rate at a single input instead of its integral"
+   ],
+   "description": "Two rates act on the same quantity over an interval and the response expresses or computes the net accumulation as the integral of their difference, possibly combined with an initial amount.",
+   "difficulty_variables": [
+    "whether the two rates are given by formulas or partly in words",
+    "whether the question asks for the amount or for the net change",
+    "whether the interval is stated or must be found",
+    "whether the net rate changes sign"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "identify which rate increases and which decreases the quantity",
+    "write the net rate as the difference",
+    "integrate the net rate over the interval",
+    "add the initial amount if one is given"
+   ],
+   "id": "BC-QA-06006",
+   "invariant_structure": "The net rate is the inflow rate minus the outflow rate; the amount present is the initial amount plus the integral of the net rate over the interval.",
+   "misconceptions": [
+    "BC-MIS-06013"
+   ],
+   "multipart_structure": "Typically one part of a multipart free response question, or a single multiple choice item.",
+   "name": "Rate in minus rate out accumulation",
+   "official_examples": [],
+   "official_examples_notes": "2024 Q1(c)",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "primary_unit": "BC-UNIT-06",
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-04",
+    "BC-REP-05"
+   ],
+   "safe_variables": [
+    "the physical quantity",
+    "the names of the two rate functions",
+    "the interval"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "Points attach to the integral of the difference and to the use of the initial amount, in the same pattern as the single rate net change question, where presenting the integral without the initial value forfeits the initial condition point (sg-24:4).",
+   "skills": [
+    "BC-SKL-06039",
+    "BC-SKL-06037",
+    "BC-SKL-06036"
+   ],
+   "sources": [
+    "ced:124",
+    "sg-24:4"
+   ],
+   "typical_wording": [
+    "water enters at one rate and leaves at another; find the amount present at the end of the interval, showing the setup for your calculations"
+   ],
+   "units": [
+    "BC-UNIT-06"
+   ],
+   "variants": [
+    "BC-QV-06006-01",
+    "BC-QV-06006-02",
+    "BC-QV-06006-03"
+   ]
+  },
+  {
+   "calculator_status": "calculator",
+   "common_distractors": [
+    "reporting the integral without dividing",
+    "dividing by the number of data points rather than the interval length",
+    "computing the average rate of change of the function instead of the average value",
+    "using a calculator in degree mode"
+   ],
+   "description": "A function or rate is given over an interval and the response computes its average value as the integral divided by the length of the interval, often interpreting the result in context.",
+   "difficulty_variables": [
+    "whether the function is a rate or an amount",
+    "whether an interpretation with units is required",
+    "whether the average value of a function is confused with the average rate of change",
+    "calculator versus no calculator"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "write one over the length of the interval times the definite integral",
+    "evaluate the integral",
+    "divide and report to the required accuracy",
+    "interpret in context when asked"
+   ],
+   "id": "BC-QA-06007",
+   "invariant_structure": "The average value formula divides a definite integral by the length of the interval of integration; the setup must show both the integral and the division.",
+   "misconceptions": [
+    "BC-MIS-06014",
+    "BC-MIS-06015"
+   ],
+   "multipart_structure": "Typically one part of a multipart free response question, or a single multiple choice item.",
+   "name": "Average value of a function over an interval",
+   "official_examples": [],
+   "official_examples_notes": "2023 Q1(c), 2025 Q1(A), 2024 Q1(b)",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "primary_unit": "BC-UNIT-06",
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-05",
+    "BC-REP-09"
+   ],
+   "safe_variables": [
+    "the context",
+    "the interval",
+    "the algebraic form of the function"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "One point for the average value formula and one for the value; a multi step presentation with incorrect or incomplete linkage between the integral and the quotient earns one of the two points in the 2023 pattern (sg-23:4), while the 2025 pattern treats unclear linkage between a correct integral and a correct answer as scratch work and awards both points (sg-25:3). Degree mode output forfeits the formula point it would otherwise earn (sg-23:4).",
+   "skills": [
+    "BC-SKL-06038",
+    "BC-SKL-06036"
+   ],
+   "sources": [
+    "sg-23:3",
+    "sg-23:4",
+    "sg-25:2",
+    "sg-25:3",
+    "frq-23:3",
+    "frq-25:3"
+   ],
+   "typical_wording": [
+    "find the average value of the function over the stated interval, showing the setup for your calculations",
+    "interpret the meaning of one over the length of the interval times the definite integral of the rate in the context of the problem"
+   ],
+   "units": [
+    "BC-UNIT-06"
+   ],
+   "variants": [
+    "BC-QV-06007-01",
+    "BC-QV-06007-02",
+    "BC-QV-06007-03"
+   ]
+  },
+  {
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "forgetting the constant factor introduced by du",
+    "leaving the original limits attached to an expression written in u",
+    "omitting the constant of integration in an indefinite integral",
+    "omitting the absolute value inside a logarithmic antiderivative"
+   ],
+   "description": "An integrand is a composite multiplied by a constant multiple of the derivative of its inner expression, and the response finds the indefinite integral or evaluates a definite integral by substitution.",
+   "difficulty_variables": [
+    "whether a constant adjustment is needed",
+    "whether the answer is logarithmic, exponential, trigonometric, or a power",
+    "definite versus indefinite",
+    "whether the limits must be converted",
+    "whether the substitution is disguised by a prior rearrangement"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "choose u as the inner expression",
+    "compute du and adjust the constant",
+    "rewrite the integral entirely in u",
+    "antidifferentiate",
+    "back-substitute or convert the limits and evaluate"
+   ],
+   "id": "BC-QA-06008",
+   "invariant_structure": "There is an inner expression whose derivative appears as a factor up to a constant; replacing it by u reduces the integrand to a basic form; a definite integral additionally requires either converted limits or back-substitution.",
+   "misconceptions": [
+    "BC-MIS-06016",
+    "BC-MIS-06017",
+    "BC-MIS-06018"
+   ],
+   "multipart_structure": "Typically one part of a multipart free response question, or a single multiple choice item.",
+   "name": "Antiderivative or definite integral by substitution",
+   "official_examples": [],
+   "official_examples_notes": "2023 Q5(a), 2023 Q5(b)",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-06001",
+    "BC-PRQ-06002",
+    "BC-PRQ-06003"
+   ],
+   "primary_unit": "BC-UNIT-06",
+   "representations": [
+    "BC-REP-01"
+   ],
+   "safe_variables": [
+    "the outer function",
+    "the inner linear or polynomial expression",
+    "whether the integral is definite or indefinite"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "A response that applies the original limits to an expression still written in u is not eligible for the answer point even when the numerical value is correct (sg-23:17, sg-23:16).",
+   "skills": [
+    "BC-SKL-06047",
+    "BC-SKL-06048",
+    "BC-SKL-06049",
+    "BC-SKL-06050",
+    "BC-SKL-06051",
+    "BC-SKL-06052",
+    "BC-SKL-06034"
+   ],
+   "sources": [
+    "ced:126",
+    "sg-23:17",
+    "sg-23:16"
+   ],
+   "typical_wording": [
+    "find the indefinite integral of the given composite expression, showing the work that leads to your answer",
+    "evaluate the definite integral of the given expression over the stated interval"
+   ],
+   "units": [
+    "BC-UNIT-06"
+   ],
+   "variants": [
+    "BC-QV-06008-01",
+    "BC-QV-06008-02",
+    "BC-QV-06008-03"
+   ]
+  },
+  {
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "swapping the roles of u and dv so the remaining integral is harder",
+    "dropping the minus sign before the integral of v du",
+    "antidifferentiating the two factors separately and multiplying",
+    "omitting the boundary term when the integral is definite"
+   ],
+   "description": "An integrand is a product of unlike factors, one of which simplifies on differentiation, and the response applies integration by parts to find an indefinite integral or evaluate a definite one.",
+   "difficulty_variables": [
+    "whether parts must be applied more than once",
+    "definite versus indefinite",
+    "whether the non polynomial factor is trigonometric, exponential, or logarithmic",
+    "whether the integrand contains an unknown function and its derivative",
+    "whether supplied values of the unknown function must be imported"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "declare u and dv and compute du and v",
+    "write u times v minus the integral of v du",
+    "evaluate the remaining integral",
+    "apply the limits or add the constant of integration"
+   ],
+   "id": "BC-QA-06009",
+   "invariant_structure": "The integrand splits into u and dv so that du is simpler and v is obtainable; the answer is u times v minus the integral of v du, with the remaining integral resolvable by a basic rule.",
+   "misconceptions": [
+    "BC-MIS-06019"
+   ],
+   "multipart_structure": "Typically one part of a multipart free response question, or a single multiple choice item.",
+   "name": "Antiderivative by integration by parts",
+   "official_examples": [],
+   "official_examples_notes": "2023 Q5(c), 2024 Q5(d)",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-06002",
+    "BC-PRQ-06005"
+   ],
+   "primary_unit": "BC-UNIT-06",
+   "representations": [
+    "BC-REP-01"
+   ],
+   "safe_variables": [
+    "the polynomial factor",
+    "the transcendental factor",
+    "the interval when the integral is definite"
+   ],
+   "scope": "BC_only",
+   "scoring_pattern": "One point for the choice of u and dv, one for the u times v minus the integral of v du expression, and one for the answer; u and dv may be implied by the presence of the correct expression, the tabular arrangement is accepted, and the answer point is available only if the first two points were earned (sg-23:18, sg-24:18).",
+   "skills": [
+    "BC-SKL-06057",
+    "BC-SKL-06058",
+    "BC-SKL-06059",
+    "BC-SKL-06060",
+    "BC-SKL-06061",
+    "BC-SKL-06034"
+   ],
+   "sources": [
+    "sg-24:18",
+    "sg-23:18",
+    "frq-24:9",
+    "frq-23:9"
+   ],
+   "typical_wording": [
+    "find the indefinite integral of the given product, showing the work that leads to your answer",
+    "let h be defined as x times the derivative of an unknown function; find the value of the definite integral of h over the stated interval"
+   ],
+   "units": [
+    "BC-UNIT-06"
+   ],
+   "variants": [
+    "BC-QV-06009-01",
+    "BC-QV-06009-02",
+    "BC-QV-06009-03"
+   ]
+  },
+  {
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "sign errors when solving for the constants",
+    "omitting the absolute value inside each logarithm",
+    "decomposing without first dividing an improper rational integrand",
+    "antidifferentiating a reciprocal of a linear factor without dividing by its leading coefficient"
+   ],
+   "description": "A rational integrand with a denominator that factors into distinct linear factors is decomposed and antidifferentiated into a combination of natural logarithms.",
+   "difficulty_variables": [
+    "whether the numerator degree forces a division first",
+    "whether the constants must be found by substitution or by equating coefficients",
+    "whether the logarithms must be combined",
+    "whether a definite integral requires the limits"
+   ],
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "factor the denominator",
+    "write the decomposition with unknown constants",
+    "clear denominators and solve for the constants",
+    "antidifferentiate each term as a logarithm",
+    "combine or evaluate at the limits"
+   ],
+   "id": "BC-QA-06010",
+   "invariant_structure": "The denominator factors into distinct linear factors and the numerator degree is lower; the decomposition into constant over linear terms antidifferentiates term by term into logarithms.",
+   "misconceptions": [
+    "BC-MIS-06022"
+   ],
+   "multipart_structure": "Typically one part of a multipart free response question, or a single multiple choice item.",
+   "name": "Antiderivative by linear partial fractions",
+   "official_examples": [],
+   "official_examples_notes": "none in 2023 to 2025",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-06003",
+    "BC-PRQ-06011"
+   ],
+   "primary_unit": "BC-UNIT-06",
+   "representations": [
+    "BC-REP-01"
+   ],
+   "safe_variables": [
+    "the roots of the denominator",
+    "the numerator constant",
+    "definite versus indefinite"
+   ],
+   "scope": "BC_only",
+   "scoring_pattern": "No Unit 6 partial fraction part appears in the 2023 to 2025 scoring guidelines read for this unit, so the point structure is inferred from the technique parts of those years, where the technique setup and the antiderivative carry separate points and the value point depends on the antiderivative point.",
+   "skills": [
+    "BC-SKL-06062",
+    "BC-SKL-06063",
+    "BC-SKL-06064",
+    "BC-SKL-06065"
+   ],
+   "sources": [
+    "ced:129"
+   ],
+   "typical_wording": [
+    "find the indefinite integral of the given rational expression by decomposing it into partial fractions"
+   ],
+   "units": [
+    "BC-UNIT-06"
+   ],
+   "variants": [
+    "BC-QV-06010-01",
+    "BC-QV-06010-02",
+    "BC-QV-06010-03"
+   ]
+  },
+  {
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "writing arithmetic with infinity in place of a limit",
+    "dropping the limit notation once the antiderivative is found",
+    "reporting a value for a divergent integral",
+    "keeping the original limits after a substitution"
+   ],
+   "description": "An integral with an infinite limit of integration or an unbounded integrand is rewritten as a limit of definite integrals and evaluated, or shown to diverge.",
+   "difficulty_variables": [
+    "infinite limit versus unbounded integrand",
+    "convergent versus divergent",
+    "whether the integrand requires substitution first",
+    "whether the integral is improper at more than one place"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "name the impropriety and replace the offending limit by a variable",
+    "write the limit of the definite integral",
+    "antidifferentiate and substitute both limits",
+    "evaluate the limit and state convergence with a value or divergence"
+   ],
+   "id": "BC-QA-06011",
+   "invariant_structure": "The impropriety is isolated by replacing the offending limit with a variable; limit notation must be carried through the whole computation; the conclusion is a finite value or a statement of divergence.",
+   "misconceptions": [
+    "BC-MIS-06016",
+    "BC-MIS-06020",
+    "BC-MIS-06021"
+   ],
+   "multipart_structure": "Typically one part of a multipart free response question, or a single multiple choice item.",
+   "name": "Improper integral convergence or divergence",
+   "official_examples": [],
+   "official_examples_notes": "2023 Q5(b)",
+   "point_types": [],
+   "prerequisites": [],
+   "primary_unit": "BC-UNIT-06",
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "safe_variables": [
+    "the integrand",
+    "the finite limit of integration",
+    "which end is improper"
+   ],
+   "scope": "BC_only",
+   "scoring_pattern": "One point for correct limit notation carried throughout with no arithmetic involving infinity, one for the antiderivative of the required form, and one for the value; substituting into the antiderivative while the expression is still in the substituted variable forfeits eligibility for the value point (sg-23:17).",
+   "skills": [
+    "BC-SKL-06066",
+    "BC-SKL-06067",
+    "BC-SKL-06068",
+    "BC-SKL-06069",
+    "BC-SKL-06070"
+   ],
+   "sources": [
+    "sg-23:17",
+    "frq-23:9"
+   ],
+   "typical_wording": [
+    "evaluate the improper integral of the given expression, or show that the integral diverges"
+   ],
+   "units": [
+    "BC-UNIT-06"
+   ],
+   "variants": [
+    "BC-QV-06011-01",
+    "BC-QV-06011-02",
+    "BC-QV-06011-03"
+   ]
+  },
+  {
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "substituting the variable of integration instead of the upper limit",
+    "forgetting the chain rule factor for a composite upper limit",
+    "differentiating the integrand as well as evaluating it",
+    "treating the accumulation function as the integrand"
+   ],
+   "description": "A function is defined as a definite integral with a variable upper limit and the response differentiates it, possibly with a composite upper limit, and evaluates the derivative at a point.",
+   "difficulty_variables": [
+    "upper limit equal to x versus a function of x",
+    "integrand given by a formula, a graph, or a table",
+    "whether a reason naming the theorem is demanded",
+    "whether values of the integrand must come from a table"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "state that the derivative of the accumulation equals the integrand at the upper limit",
+    "multiply by the derivative of the upper limit when it is composite",
+    "substitute the requested input",
+    "evaluate using the supplied representation of the integrand"
+   ],
+   "id": "BC-QA-06012",
+   "invariant_structure": "The Fundamental Theorem of Calculus part one converts the derivative of the accumulation into the integrand evaluated at the upper limit, multiplied by the derivative of that limit when it is a function of x.",
+   "misconceptions": [
+    "BC-MIS-06023",
+    "BC-MIS-06024"
+   ],
+   "multipart_structure": "Typically one part of a multipart free response question, or a single multiple choice item.",
+   "name": "Differentiating an accumulation function with a variable upper limit",
+   "official_examples": [],
+   "official_examples_notes": "2024 Q5(a), 2025 Q4(A)",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-PRQ-06013"
+   ],
+   "primary_unit": "BC-UNIT-06",
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02",
+    "BC-REP-03"
+   ],
+   "safe_variables": [
+    "the integrand",
+    "the fixed lower limit",
+    "the point of evaluation",
+    "the letter used for the variable of integration"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "One point for using the Fundamental Theorem of Calculus and one for the value; the theorem point may be earned by presenting the derivative in terms of the integrand, while a response that reaches the correct value without exhibiting the theorem can still earn the answer point through an implied application (sg-24:15, sg-25:16).",
+   "skills": [
+    "BC-SKL-06018",
+    "BC-SKL-06019",
+    "BC-SKL-06017",
+    "BC-SKL-06021"
+   ],
+   "sources": [
+    "sg-24:15",
+    "sg-25:16",
+    "frq-24:9",
+    "frq-25:7"
+   ],
+   "typical_wording": [
+    "the function h is defined by the integral from a fixed input to x of the given expression; find the value of h prime at a stated input, showing the work that leads to your answer"
+   ],
+   "units": [
+    "BC-UNIT-06"
+   ],
+   "variants": [
+    "BC-QV-06012-01",
+    "BC-QV-06012-02",
+    "BC-QV-06012-03"
+   ]
+  },
+  {
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "adding integrals over overlapping rather than adjacent intervals",
+    "forgetting the sign change when the limits are reversed",
+    "distributing an integral across a product or a quotient",
+    "treating the integral of a constant as the constant itself"
+   ],
+   "description": "Values of definite integrals over stated intervals are supplied and the response combines them using the constant multiple, sum, reversal, and adjacent interval properties to produce the value of a different integral.",
+   "difficulty_variables": [
+    "whether a reversal of limits is required",
+    "whether an interval must be split or joined",
+    "whether a constant multiple or a sum appears",
+    "whether an integral of a constant must be computed geometrically"
+   ],
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "match each requested integral to the supplied ones",
+    "apply reversal, additivity, and linearity to rewrite",
+    "substitute the supplied values",
+    "simplify"
+   ],
+   "id": "BC-QA-06013",
+   "invariant_structure": "No integrand is evaluated; only the supplied values and the algebraic properties of the integral are used, with the interval endpoints determining which property applies.",
+   "misconceptions": [
+    "BC-MIS-06026"
+   ],
+   "multipart_structure": "Typically one part of a multipart free response question, or a single multiple choice item.",
+   "name": "Manipulating definite integrals with their properties",
+   "official_examples": [],
+   "official_examples_notes": "none in 2023 to 2025",
+   "point_types": [],
+   "prerequisites": [],
+   "primary_unit": "BC-UNIT-06",
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-03",
+    "BC-REP-04"
+   ],
+   "safe_variables": [
+    "the supplied values",
+    "the names of the functions",
+    "the interval endpoints"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "No dedicated properties part appears in the 2023 to 2025 free response questions read for this unit; the scoring behaviour is inferred from parts where a correct value alone earns the point and an incorrect interval forfeits it (sg-25:18).",
+   "skills": [
+    "BC-SKL-06029",
+    "BC-SKL-06030",
+    "BC-SKL-06031",
+    "BC-SKL-06032",
+    "BC-SKL-06033",
+    "BC-SKL-06035"
+   ],
+   "sources": [
+    "ced:123"
+   ],
+   "typical_wording": [
+    "the values of two definite integrals over stated intervals are given; find the value of a third definite integral"
+   ],
+   "units": [
+    "BC-UNIT-06"
+   ],
+   "variants": [
+    "BC-QV-06013-01",
+    "BC-QV-06013-02",
+    "BC-QV-06013-03"
+   ]
+  },
+  {
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "reading the interval as zero to one when the width expression says otherwise",
+    "omitting the width factor from the integrand",
+    "using the number of subintervals as a limit of integration",
+    "treating the index of summation as the variable of integration"
+   ],
+   "description": "A limit of Riemann sums in sigma notation is given and the response writes the equivalent definite integral, or a definite integral is given and the response writes it as a limit of Riemann sums.",
+   "difficulty_variables": [
+    "conversion direction",
+    "uniform versus general partition",
+    "whether the sample point is a left endpoint, right endpoint, or midpoint",
+    "whether the interval must be inferred from the general term"
+   ],
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "separate the general term into a value and a width",
+    "identify the subinterval width and hence the interval length",
+    "identify the sample point expression and hence the lower limit",
+    "write the integrand and the limits of integration"
+   ],
+   "id": "BC-QA-06014",
+   "invariant_structure": "The general term of the sum factors into a function value at a sample point and a subinterval width; matching that factorisation to the limits of integration and the integrand produces the definite integral, and the conversion runs in both directions.",
+   "misconceptions": [],
+   "multipart_structure": "Typically one part of a multipart free response question, or a single multiple choice item.",
+   "name": "Converting between a limit of Riemann sums and a definite integral",
+   "official_examples": [],
+   "official_examples_notes": "none in 2023 to 2025",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-06006"
+   ],
+   "primary_unit": "BC-UNIT-06",
+   "representations": [
+    "BC-REP-01"
+   ],
+   "safe_variables": [
+    "the function",
+    "the interval endpoints",
+    "the sample point convention"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "No conversion part appears in the 2023 to 2025 free response questions read for this unit; the scoring behaviour is inferred from the essential knowledge requirement that the limit of a Riemann sum and the definite integral are interchangeable representations (ced:120).",
+   "skills": [
+    "BC-SKL-06012",
+    "BC-SKL-06013",
+    "BC-SKL-06014",
+    "BC-SKL-06015",
+    "BC-SKL-06016"
+   ],
+   "sources": [
+    "ced:120"
+   ],
+   "typical_wording": [
+    "express the given limit of a Riemann sum as a definite integral",
+    "write the given definite integral as the limit of a Riemann sum"
+   ],
+   "units": [
+    "BC-UNIT-06"
+   ],
+   "variants": [
+    "BC-QV-06014-01",
+    "BC-QV-06014-02",
+    "BC-QV-06014-03"
+   ]
+  },
+  {
+   "calculator_status": "either",
+   "common_distractors": [
+    "describing the integral as a rate rather than as an accumulated amount",
+    "omitting the interval",
+    "reporting the units of the rate rather than of the accumulation",
+    "describing an average value expression as a total"
+   ],
+   "description": "A definite integral of a contextual rate is displayed and the response states in words what it measures, with correct units and the correct time or input interval.",
+   "difficulty_variables": [
+    "whether the displayed expression is a plain integral or an average value",
+    "whether the rate is positive throughout",
+    "whether the response must also produce a numerical value",
+    "whether the quantity accumulates or depletes"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "identify what the integrand measures per unit input",
+    "multiply the units",
+    "state the accumulated quantity over the named interval"
+   ],
+   "id": "BC-QA-06015",
+   "invariant_structure": "The integral of a rate over an interval measures the accumulated change in the associated quantity across that interval; the interpretation must name the quantity, the units, and the interval.",
+   "misconceptions": [
+    "BC-MIS-06014",
+    "BC-MIS-06025"
+   ],
+   "multipart_structure": "Typically one part of a multipart free response question, or a single multiple choice item.",
+   "name": "Interpreting a definite integral in context with units",
+   "official_examples": [],
+   "official_examples_notes": "2023 Q1(a), 2024 Q1(b)",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "primary_unit": "BC-UNIT-06",
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-05"
+   ],
+   "safe_variables": [
+    "the quantity",
+    "the unit of the rate",
+    "the interval endpoints"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "One interpretation point that requires both the accumulated quantity with its units and the interval of accumulation; an interpretation that omits the interval does not earn the point (sg-23:2). Where the displayed expression is an average value, the interpretation must say average over the stated interval (sg-24:3).",
+   "skills": [
+    "BC-SKL-06001",
+    "BC-SKL-06002",
+    "BC-SKL-06003",
+    "BC-SKL-06038"
+   ],
+   "sources": [
+    "sg-23:2",
+    "sg-24:3",
+    "frq-23:3",
+    "frq-24:3"
+   ],
+   "typical_wording": [
+    "using correct units, interpret the meaning of the displayed definite integral in the context of the problem"
+   ],
+   "units": [
+    "BC-UNIT-06"
+   ],
+   "variants": [
+    "BC-QV-06015-01",
+    "BC-QV-06015-02",
+    "BC-QV-06015-03"
+   ]
+  },
+  {
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "attempting substitution when the derivative of the proposed inner expression is not present",
+    "attempting parts on a composite that substitution resolves",
+    "dividing a rational integrand that is already proper",
+    "antidifferentiating an integrand that has no closed-form antiderivative"
+   ],
+   "description": "Several integrands of different structure are presented and the response classifies each and names or applies the technique that its structure calls for.",
+   "difficulty_variables": [
+    "whether more than one technique is needed in sequence",
+    "whether a plausible but inapplicable technique is invited",
+    "whether the integrand has no elementary antiderivative",
+    "whether the response must justify the choice rather than only apply it"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "inspect the integrand for structural markers",
+    "name the technique the markers select",
+    "rule out techniques whose preconditions fail",
+    "apply the chosen technique, chaining a second one if the first leaves a non basic integral"
+   ],
+   "id": "BC-QA-06016",
+   "invariant_structure": "Each integrand carries a structural marker, such as an inner derivative present, a product of unlike factors, a numerator degree at least the denominator degree, a factorable linear denominator, or an unbounded integrand, and the marker selects the technique.",
+   "misconceptions": [
+    "BC-MIS-06017",
+    "BC-MIS-06019",
+    "BC-MIS-06022"
+   ],
+   "multipart_structure": "Typically one part of a multipart free response question, or a single multiple choice item.",
+   "name": "Selecting an antidifferentiation technique from the form of the integrand",
+   "official_examples": [],
+   "official_examples_notes": "2024 Q5(d)",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-06001",
+    "BC-PRQ-06009",
+    "BC-PRQ-06010"
+   ],
+   "primary_unit": "BC-UNIT-06",
+   "representations": [
+    "BC-REP-01"
+   ],
+   "safe_variables": [
+    "the specific functions used",
+    "the order in which the integrands are presented"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "The scoring behaviour of the applied technique governs, since the CED frames this topic as the skill of selecting a procedure rather than as a separate question type (ced:131); the technique setup and the antiderivative carry separate points in the 2023 and 2024 technique parts (sg-23:18, sg-24:18).",
+   "skills": [
+    "BC-SKL-06071",
+    "BC-SKL-06072",
+    "BC-SKL-06073",
+    "BC-SKL-06074",
+    "BC-SKL-06056"
+   ],
+   "sources": [
+    "ced:131"
+   ],
+   "typical_wording": [
+    "find the indefinite integral, showing the work that leads to your answer"
+   ],
+   "units": [
+    "BC-UNIT-06"
+   ],
+   "variants": [
+    "BC-QV-06016-01",
+    "BC-QV-06016-02",
+    "BC-QV-06016-03"
+   ]
+  }
+ ],
+ "registry": "archetypes",
+ "variants": [
+  {
+   "archetype": "BC-QA-06001",
+   "description": "The table inputs are unevenly spaced so each subinterval width must be computed separately.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-06001-01",
+   "name": "Rate tabulated with nonuniform widths",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-23:2",
+    "sg-23:3"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06001",
+   "description": "The response must also decide the direction of the error from the monotonicity of the tabulated rate.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning_direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-06001-02",
+   "name": "Estimate plus over or under estimate justification",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-23:2",
+    "sg-23:3"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06001",
+   "description": "Function values are read from a graph rather than supplied numerically.",
+   "difficulty_effect": "neutral",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-06001-03",
+   "name": "Riemann sum read off a graph instead of a table",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-23:2",
+    "sg-23:3"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06002",
+   "description": "Widths differ across the table so each trapezoid needs its own width factor.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-06002-01",
+   "name": "Trapezoidal sum with unequal subinterval widths",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-25:13",
+    "frq-25:6"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06002",
+   "description": "The arithmetic must be carried out by hand to a single integer or fraction.",
+   "difficulty_effect": "neutral",
+   "dimension": "calculator",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-06002-02",
+   "name": "No calculator trapezoidal arithmetic",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-25:13",
+    "frq-25:6"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06002",
+   "description": "The response must justify the direction of the error from the concavity of the rate.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning_direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-06002-03",
+   "name": "Trapezoidal estimate compared with the exact value",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-25:13",
+    "frq-25:6"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06003",
+   "description": "Areas come from circle formulas as well as from triangles.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-06003-01",
+   "name": "Graph of f consisting of semicircles and a segment",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-25:15",
+    "sg-25:16"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06003",
+   "description": "A candidates comparison over critical inputs and endpoints is required rather than a sign chart at one point.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning_direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-06003-02",
+   "name": "Absolute extremum with a global justification",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-25:15",
+    "sg-25:16"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06003",
+   "description": "A companion function is defined as the integral of f prime, so its values are differences of f.",
+   "difficulty_effect": "harder",
+   "dimension": "notation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-06003-03",
+   "name": "Second accumulation function built from the graph of a derivative",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-25:15",
+    "sg-25:16"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06004",
+   "description": "No sign reasoning is needed and the integral equals the plain area.",
+   "difficulty_effect": "easier",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-06004-01",
+   "name": "Region entirely above the axis",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-25:18",
+    "sg-24:12"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06004",
+   "description": "Signed contributions must be combined and one sign error changes the answer.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-06004-02",
+   "name": "Region straddling the axis",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-25:18",
+    "sg-24:12"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06004",
+   "description": "The area of a region is supplied and the integral value must be deduced with the correct sign.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning_direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-06004-03",
+   "name": "Area given and the integral inferred",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-25:18",
+    "sg-24:12"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06005",
+   "description": "The accumulated change is added to a given starting value.",
+   "difficulty_effect": "neutral",
+   "dimension": "context",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-06005-01",
+   "name": "Initial condition supplied at the left endpoint",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-24:3",
+    "sg-24:4"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06005",
+   "description": "Only the integral of the rate is required, so the answer is the accumulation itself.",
+   "difficulty_effect": "easier",
+   "dimension": "context",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-06005-02",
+   "name": "No initial condition, total amount only",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-24:3",
+    "sg-24:4"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06005",
+   "description": "The integral must be evaluated numerically with technology.",
+   "difficulty_effect": "harder",
+   "dimension": "calculator",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-06005-03",
+   "name": "Rate with no elementary antiderivative",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-24:3",
+    "sg-24:4"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06006",
+   "description": "The difference is formed directly from two formulas.",
+   "difficulty_effect": "neutral",
+   "dimension": "context",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-06006-01",
+   "name": "Both rates given analytically",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:124",
+    "sg-24:4"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06006",
+   "description": "The response must mix a numerical approximation with an exact integral.",
+   "difficulty_effect": "harder",
+   "dimension": "context",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-06006-02",
+   "name": "One rate given in a table and one by a formula",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:124",
+    "sg-24:4"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06006",
+   "description": "The limits of integration must be found before the integral is set up.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning_direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-06006-03",
+   "name": "Interval endpoints determined by when the net rate is zero",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:124",
+    "sg-24:4"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06007",
+   "description": "The result is an average rate and its interpretation carries rate units.",
+   "difficulty_effect": "neutral",
+   "dimension": "context",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-06007-01",
+   "name": "Average value of a rate function",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-23:3",
+    "sg-23:4"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06007",
+   "description": "The result is an average amount over the interval rather than an average rate.",
+   "difficulty_effect": "neutral",
+   "dimension": "context",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-06007-02",
+   "name": "Average value of an amount function",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-23:3",
+    "sg-23:4"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06007",
+   "description": "The response must solve for the input where the function equals its average.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning_direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-06007-03",
+   "name": "Average value set equal to an instantaneous value",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-23:3",
+    "sg-23:4"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06008",
+   "description": "The answer must carry an arbitrary constant.",
+   "difficulty_effect": "neutral",
+   "dimension": "notation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-06008-01",
+   "name": "Indefinite integral requiring the constant of integration",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:126",
+    "sg-23:17"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06008",
+   "description": "The limits must be rewritten in the substituted variable before evaluation.",
+   "difficulty_effect": "harder",
+   "dimension": "notation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-06008-02",
+   "name": "Definite integral with converted limits",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:126",
+    "sg-23:17"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06008",
+   "description": "The pattern is a derivative over a function and the answer is a logarithm of an absolute value.",
+   "difficulty_effect": "neutral",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-06008-03",
+   "name": "Substitution producing a logarithmic antiderivative",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:126",
+    "sg-23:17"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06009",
+   "description": "A single application of parts leaves a basic trigonometric integral.",
+   "difficulty_effect": "neutral",
+   "dimension": "context",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-06009-01",
+   "name": "Polynomial times a trigonometric factor",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-24:18",
+    "sg-23:18"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06009",
+   "description": "Values of the unknown function and an integral of it are supplied and must be imported.",
+   "difficulty_effect": "harder",
+   "dimension": "notation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-06009-02",
+   "name": "Integrand containing an unknown function and its derivative",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-24:18",
+    "sg-23:18"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06009",
+   "description": "The remaining integral is still a product and parts must be applied a second time.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning_direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-06009-03",
+   "name": "Repeated parts",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-24:18",
+    "sg-23:18"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06010",
+   "description": "The decomposition applies directly with no preliminary division.",
+   "difficulty_effect": "neutral",
+   "dimension": "notation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-06010-01",
+   "name": "Proper rational integrand",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "ced:129"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06010",
+   "description": "Long division precedes the decomposition.",
+   "difficulty_effect": "harder",
+   "dimension": "notation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-06010-02",
+   "name": "Improper rational integrand",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "ced:129"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06010",
+   "description": "The decomposition serves a differential equation rather than a bare antiderivative.",
+   "difficulty_effect": "harder",
+   "dimension": "context",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-06010-03",
+   "name": "Decomposition arising inside a logistic separation of variables",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "ced:129"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06011",
+   "description": "The variable limit approaches infinity.",
+   "difficulty_effect": "neutral",
+   "dimension": "notation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-06011-01",
+   "name": "Infinite upper limit of integration",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-23:17",
+    "frq-23:9"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06011",
+   "description": "The variable limit approaches the point where the integrand blows up.",
+   "difficulty_effect": "harder",
+   "dimension": "notation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-06011-02",
+   "name": "Unbounded integrand at an endpoint",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-23:17",
+    "frq-23:9"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06011",
+   "description": "The limit fails to exist and the required answer is a statement of divergence.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning_direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-06011-03",
+   "name": "Divergent case",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-23:17",
+    "frq-23:9"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06012",
+   "description": "The chain rule factor is one and the derivative is the integrand itself.",
+   "difficulty_effect": "easier",
+   "dimension": "notation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-06012-01",
+   "name": "Upper limit equal to x",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-24:15",
+    "sg-25:16"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06012",
+   "description": "A chain rule factor multiplies the integrand.",
+   "difficulty_effect": "harder",
+   "dimension": "notation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-06012-02",
+   "name": "Upper limit a function of x",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-24:15",
+    "sg-25:16"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06012",
+   "description": "The evaluation requires a table lookup at the transformed input.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-06012-03",
+   "name": "Integrand supplied only as a table of values",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-24:15",
+    "sg-25:16"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06013",
+   "description": "The requested integral is a straightforward sum or multiple of the supplied ones.",
+   "difficulty_effect": "easier",
+   "dimension": "reasoning_direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-06013-01",
+   "name": "Direct combination of supplied values",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:123"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06013",
+   "description": "One supplied value and the total are given and an interior piece must be deduced.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning_direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-06013-02",
+   "name": "Reversed reasoning to recover a missing piece",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:123"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06013",
+   "description": "The interval is split at the discontinuity before the properties are applied.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-06013-03",
+   "name": "Integrand with a jump discontinuity",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:123"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06014",
+   "description": "The limit expression is supplied and the integral is produced.",
+   "difficulty_effect": "neutral",
+   "dimension": "reasoning_direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-06014-01",
+   "name": "Sum to integral",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:120"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06014",
+   "description": "The integral is supplied and an explicit limit of sums is produced.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning_direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-06014-02",
+   "name": "Integral to sum",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:120"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06014",
+   "description": "The definition is stated for nonuniform partitions rather than for n equal pieces.",
+   "difficulty_effect": "harder",
+   "dimension": "notation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-06014-03",
+   "name": "General partition with a maximum width approaching zero",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:120"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06015",
+   "description": "The interpretation is a total amount over the interval.",
+   "difficulty_effect": "neutral",
+   "dimension": "context",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-06015-01",
+   "name": "Plain accumulation integral",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-23:2",
+    "sg-24:3"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06015",
+   "description": "The interpretation is an average over the interval rather than a total.",
+   "difficulty_effect": "harder",
+   "dimension": "context",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-06015-02",
+   "name": "Average value expression",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-23:2",
+    "sg-24:3"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06015",
+   "description": "The interpretation must describe net change rather than total amount.",
+   "difficulty_effect": "harder",
+   "dimension": "context",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-06015-03",
+   "name": "Rate that changes sign on the interval",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-23:2",
+    "sg-24:3"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06016",
+   "description": "One classification resolves the integrand.",
+   "difficulty_effect": "easier",
+   "dimension": "reasoning_direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-06016-01",
+   "name": "Single technique sufficient",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:131"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06016",
+   "description": "A rearrangement or substitution precedes a second technique.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning_direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-06016-02",
+   "name": "Two techniques chained",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:131"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06016",
+   "description": "The correct response keeps the integral form or approximates numerically.",
+   "difficulty_effect": "harder",
+   "dimension": "notation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-06016-03",
+   "name": "Integrand with no elementary antiderivative",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:131"
+   ]
+  }
+ ]
+}

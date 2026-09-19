@@ -1,0 +1,409 @@
+{
+ "registry": "misconceptions",
+ "misconceptions": [
+  {
+   "id": "BC-MIS-99001",
+   "name": "Speed is governed by acceleration alone",
+   "scope": "shared",
+   "evidence_tag": "verified",
+   "sources": [
+    "cr-23:7",
+    "cr-24:7",
+    "crabbc-25:22"
+   ],
+   "description": "The student holds that the sign of acceleration by itself decides whether a particle is speeding up or slowing down, so that negative acceleration is read as slowing down regardless of the direction of travel. The reports name this belief directly as a misconception seen in responses.",
+   "concepts": [],
+   "topics": [
+    "BC-TOP-0402"
+   ],
+   "observable_errors": [
+    "BC-ERR-99003"
+   ],
+   "exposing_archetypes": [],
+   "rival_misconceptions": [],
+   "severity": "high",
+   "discriminating_probe": "Ask for a judgement about speed at an instant where velocity and acceleration are both negative, and require the reason to be stated; a student holding this belief answers slowing down.",
+   "official_evidence_notes": "2023 AB Q2(b), cr-23:7; 2024 AB Q2(b), cr-24:7; 2025 AB Q5(C), crabbc-25:22"
+  },
+  {
+   "id": "BC-MIS-99002",
+   "name": "The integral of velocity gives total distance",
+   "scope": "shared",
+   "evidence_tag": "verified",
+   "sources": [
+    "cr-23:7",
+    "cr-23:8",
+    "cr-24:8"
+   ],
+   "description": "The student treats the definite integral of velocity and the definite integral of the absolute value of velocity as the same quantity, so displacement is offered where total distance was asked. The 2023 report describes this as an incomplete understanding of the difference between displacement and total distance travelled.",
+   "concepts": [],
+   "topics": [
+    "BC-TOP-0802"
+   ],
+   "observable_errors": [
+    "BC-ERR-99010"
+   ],
+   "exposing_archetypes": [],
+   "rival_misconceptions": [
+    "BC-MIS-99003"
+   ],
+   "severity": "high",
+   "discriminating_probe": "Ask for both the displacement and the total distance over an interval on which the velocity changes sign; a student holding this belief reports the same number twice.",
+   "official_evidence_notes": "2023 AB Q2(c)(d), cr-23:7 and cr-23:8; 2024 AB Q2(d), cr-24:8"
+  },
+  {
+   "id": "BC-MIS-99003",
+   "name": "Area and volume integrands are interchangeable",
+   "scope": "shared",
+   "evidence_tag": "verified",
+   "sources": [
+    "cr-23:31",
+    "cr-24:23",
+    "crabbc-25:7"
+   ],
+   "description": "The student selects an integrand by the surface shape of the prompt rather than by the geometry described, squaring a difference of functions for an area, inserting pi where nothing is revolved, or treating a described rectangular cross section as a square. The 2025 report says such integrands suggest misconceptions about constructing an appropriate integral to find an area or a volume.",
+   "concepts": [],
+   "topics": [
+    "BC-TOP-0804",
+    "BC-TOP-0807",
+    "BC-TOP-0811"
+   ],
+   "observable_errors": [
+    "BC-ERR-99011"
+   ],
+   "exposing_archetypes": [],
+   "rival_misconceptions": [
+    "BC-MIS-99002"
+   ],
+   "severity": "high",
+   "discriminating_probe": "Give one region and ask in turn for its area, for the volume of a solid with a stated non-square cross section, and for the volume on revolution about a line other than an axis; a student holding this belief writes integrands that differ only by a constant.",
+   "official_evidence_notes": "2023 BC Q5(a), cr-23:31; 2024 AB Q6(c), cr-24:23; 2025 AB Q2(A)(B)(C), crabbc-25:7 and crabbc-25:8"
+  },
+  {
+   "id": "BC-MIS-99004",
+   "name": "An accumulation function equals the integrand's antiderivative outright",
+   "scope": "shared",
+   "evidence_tag": "verified",
+   "sources": [
+    "cr-23:20",
+    "cr-24:14",
+    "crabbc-25:16"
+   ],
+   "description": "The student reads the integral of f prime from a lower limit to x as simply f of x, so the value at the lower limit and the direction of the limits play no role. The 2023 report names this as the most common misconception in applying the Fundamental Theorem of Calculus on that question.",
+   "concepts": [],
+   "topics": [
+    "BC-TOP-0604",
+    "BC-TOP-0607",
+    "BC-TOP-0606"
+   ],
+   "observable_errors": [
+    "BC-ERR-99012"
+   ],
+   "exposing_archetypes": [],
+   "rival_misconceptions": [],
+   "severity": "high",
+   "discriminating_probe": "Ask for the value of an accumulation function at a point to the left of its lower limit; a student holding this belief reports a positive area and never applies the sign change.",
+   "official_evidence_notes": "2023 AB Q5(c)(d), cr-23:20; 2024 AB/BC Q4(a)(c), cr-24:14; 2025 AB/BC Q4(A)(C), crabbc-25:16"
+  },
+  {
+   "id": "BC-MIS-99005",
+   "name": "Derivatives with respect to x and with respect to t are the same object",
+   "scope": "shared",
+   "evidence_tag": "verified",
+   "sources": [
+    "cr-23:24",
+    "cr-24:20",
+    "crabbc-25:26"
+   ],
+   "description": "The student does not distinguish the variable of differentiation, so implicit differentiation with respect to time is carried out with respect to x, and the several notations for derivative and differential are used interchangeably. The reports describe responses that had difficulty understanding differentiation with respect to a variable other than x.",
+   "concepts": [],
+   "topics": [
+    "BC-TOP-0405",
+    "BC-TOP-0302"
+   ],
+   "observable_errors": [
+    "BC-ERR-99013"
+   ],
+   "exposing_archetypes": [],
+   "rival_misconceptions": [],
+   "severity": "high",
+   "discriminating_probe": "Give an implicit relation together with a rate with respect to time and ask for the other rate with respect to time; a student holding this belief produces a derivative with respect to x and stops.",
+   "official_evidence_notes": "2023 AB Q6(d), cr-23:23 and cr-23:24; 2024 AB Q5(d), cr-24:18 and cr-24:20; 2025 AB Q6(D), crabbc-25:26"
+  },
+  {
+   "id": "BC-MIS-99006",
+   "name": "Average value and average rate of change are the same quantity",
+   "scope": "shared",
+   "evidence_tag": "verified",
+   "sources": [
+    "cr-23:4",
+    "crabbc-25:3"
+   ],
+   "description": "The student treats the two phrases as synonyms, so a difference quotient is offered for an average value, or the derivative is integrated in place of the function. The 2025 report lists finding average rate of change instead of average value among the two most common misconceptions on that part.",
+   "concepts": [],
+   "topics": [
+    "BC-TOP-0801",
+    "BC-TOP-0201"
+   ],
+   "observable_errors": [
+    "BC-ERR-99015"
+   ],
+   "exposing_archetypes": [],
+   "rival_misconceptions": [],
+   "severity": "medium",
+   "discriminating_probe": "Ask for both the average value of a function and its average rate of change on the same interval; a student holding this belief gives one number for both.",
+   "official_evidence_notes": "2023 AB/BC Q1(c), cr-23:4; 2025 AB/BC Q1(A), crabbc-25:3 and crabbc-25:4"
+  },
+  {
+   "id": "BC-MIS-99007",
+   "name": "An error bound is the error",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "crabbc-25:33",
+    "crabbc-25:34",
+    "cr-23:36"
+   ],
+   "description": "The student equates the value produced by an error bound formula with the actual error of the approximation, writing the error as equal to the bound or as strictly less than it. The 2025 report states that the error is not equal to the bound and the bound is not strictly less than it, and the 2023 report asks for repeated practice communicating the difference between an error and an error bound.",
+   "concepts": [],
+   "topics": [
+    "BC-TOP-1012",
+    "BC-TOP-1010"
+   ],
+   "observable_errors": [
+    "BC-ERR-99016"
+   ],
+   "exposing_archetypes": [],
+   "rival_misconceptions": [],
+   "severity": "medium",
+   "discriminating_probe": "Ask the student to state what the bound guarantees about the difference between the approximation and the exact value, using an inequality; a student holding this belief writes an equality.",
+   "official_evidence_notes": "2023 BC Q6(b), cr-23:35 and cr-23:36; 2025 BC Q5(C), crabbc-25:33 and crabbc-25:34"
+  },
+  {
+   "id": "BC-MIS-99008",
+   "name": "Infinity is a number available for arithmetic",
+   "scope": "shared",
+   "evidence_tag": "verified",
+   "sources": [
+    "cr-23:31",
+    "cr-23:33"
+   ],
+   "description": "The student substitutes the infinity symbol for the variable and computes with the result, so limit notation becomes a formality that can be introduced and then dropped. The 2023 report names arithmetic performed with infinity among the errors in evaluating an improper integral, and the scoring notes are cited as calling this out.",
+   "concepts": [],
+   "topics": [
+    "BC-TOP-0613",
+    "BC-TOP-0115"
+   ],
+   "observable_errors": [
+    "BC-ERR-99007"
+   ],
+   "exposing_archetypes": [],
+   "rival_misconceptions": [],
+   "severity": "medium",
+   "discriminating_probe": "Ask for a convergent improper integral and require every line of the evaluation; a student holding this belief writes a reciprocal of infinity rather than a limit.",
+   "official_evidence_notes": "2023 BC Q5(b), cr-23:31; 2023 AB/BC Q4(c), cr-23:16"
+  },
+  {
+   "id": "BC-MIS-99009",
+   "name": "A theorem's conclusion may be used without its hypotheses",
+   "scope": "shared",
+   "evidence_tag": "verified",
+   "sources": [
+    "cr-23:4",
+    "crabbc-25:12",
+    "crabbc-25:14"
+   ],
+   "description": "The student recalls a theorem by its conclusion and applies it without establishing the conditions, so continuity is asserted rather than derived from differentiability and the required bracketing values are never shown. The 2025 report states that many students attempted to apply the conclusion of the Intermediate Value Theorem without first explicitly checking the required conditions.",
+   "concepts": [],
+   "topics": [
+    "BC-TOP-0501",
+    "BC-TOP-0116",
+    "BC-TOP-0407"
+   ],
+   "observable_errors": [
+    "BC-ERR-99008"
+   ],
+   "exposing_archetypes": [],
+   "rival_misconceptions": [
+    "BC-MIS-99010"
+   ],
+   "severity": "high",
+   "discriminating_probe": "Present a function that fails one hypothesis and ask whether the theorem's conclusion follows; a student holding this belief asserts the conclusion anyway.",
+   "official_evidence_notes": "2023 AB/BC Q1(b), cr-23:3 and cr-23:4; 2025 AB/BC Q3(B), crabbc-25:12 and crabbc-25:14"
+  },
+  {
+   "id": "BC-MIS-99010",
+   "name": "A local sign change establishes a global extremum",
+   "scope": "shared",
+   "evidence_tag": "inferred",
+   "sources": [
+    "cr-23:16",
+    "crabbc-25:4",
+    "crabbc-25:18"
+   ],
+   "description": "The student appears to treat a sign change of the derivative at one point as sufficient to name an absolute extremum on a closed interval, so endpoints and other critical points are never compared. The reports record the behaviour and describe the arguments as local rather than global; the underlying belief is an inference from that pattern.",
+   "concepts": [],
+   "topics": [
+    "BC-TOP-0505",
+    "BC-TOP-0504"
+   ],
+   "observable_errors": [
+    "BC-ERR-99004"
+   ],
+   "exposing_archetypes": [],
+   "rival_misconceptions": [
+    "BC-MIS-99009"
+   ],
+   "severity": "high",
+   "discriminating_probe": "Ask for an absolute minimum on a closed interval where the only interior sign change gives a local minimum that is not the global one; a student holding this belief names the interior point.",
+   "official_evidence_notes": "2023 AB/BC Q4(d), cr-23:16; 2025 AB/BC Q1(D), crabbc-25:4; 2025 AB/BC Q4(D), crabbc-25:18"
+  },
+  {
+   "id": "BC-MIS-99011",
+   "name": "The equals sign is punctuation between steps",
+   "scope": "shared",
+   "evidence_tag": "inferred",
+   "sources": [
+    "cr-23:19",
+    "cr-24:27",
+    "crabbc-25:25"
+   ],
+   "description": "The student uses the equals sign to join successive lines of work and to attach a calculator value to a symbolic expression, so unequal objects are declared equal. The reports record the behaviour repeatedly and advise teaching the equals sign as a statement of equality rather than punctuation; the belief itself is an inference.",
+   "concepts": [],
+   "topics": [
+    "BC-TOP-0202"
+   ],
+   "observable_errors": [
+    "BC-ERR-99002"
+   ],
+   "exposing_archetypes": [],
+   "rival_misconceptions": [],
+   "severity": "medium",
+   "discriminating_probe": "Ask the student to say which two quantities each equals sign in their own work claims to be equal; a student holding this belief cannot name them for the linking signs.",
+   "official_evidence_notes": "2023 AB Q5(a), cr-23:19; 2024 BC Q2(a), cr-24:27; 2025 AB Q6(A), crabbc-25:25"
+  },
+  {
+   "id": "BC-MIS-99012",
+   "name": "Concavity is unrelated to the accuracy of a tangent line approximation",
+   "scope": "shared",
+   "evidence_tag": "inferred",
+   "sources": [
+    "cr-23:11",
+    "cr-23:12"
+   ],
+   "description": "The student decides whether a linear approximation is an overestimate or an underestimate without consulting the second derivative, treating the two ideas as independent. The 2022 and 2023 reports record responses that did not use given second derivative information; the belief is inferred from that behaviour.",
+   "concepts": [],
+   "topics": [
+    "BC-TOP-0406",
+    "BC-TOP-0506"
+   ],
+   "observable_errors": [
+    "BC-ERR-99020"
+   ],
+   "exposing_archetypes": [],
+   "rival_misconceptions": [],
+   "severity": "medium",
+   "discriminating_probe": "Give the sign of the second derivative on an interval and ask, with reasons, whether a tangent line approximation on that interval overestimates or underestimates; a student holding this belief reasons from the direction of the shift instead.",
+   "official_evidence_notes": "2023 AB/BC Q3(c), cr-23:11 and cr-23:12"
+  },
+  {
+   "id": "BC-MIS-99013",
+   "name": "The radius and the interval of convergence are the same statement",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "crabbc-25:38",
+    "cr-24:36"
+   ],
+   "description": "The student uses radius of convergence and interval of convergence interchangeably and does not see the endpoints as a separate question. The 2025 report records responses using imprecise language about the radius of convergence rather than the interval of convergence, and the 2024 report notes that students must supply whichever of the two was requested.",
+   "concepts": [],
+   "topics": [
+    "BC-TOP-1013"
+   ],
+   "observable_errors": [
+    "BC-ERR-99017"
+   ],
+   "exposing_archetypes": [],
+   "rival_misconceptions": [],
+   "severity": "medium",
+   "discriminating_probe": "Ask for the interval of convergence and then, separately, for the radius; a student holding this belief gives the same object for both and omits the endpoint analysis.",
+   "official_evidence_notes": "2024 BC Q6(c), cr-24:36; 2025 BC Q6(A)(D), crabbc-25:37 and crabbc-25:38"
+  },
+  {
+   "id": "BC-MIS-99014",
+   "name": "A relation holding at one instant holds identically",
+   "scope": "shared",
+   "evidence_tag": "inferred",
+   "sources": [
+    "cr-24:20",
+    "cr-23:24"
+   ],
+   "description": "The student takes numerical values given for one instant as a permanent relationship between the quantities, then uses that relationship to reduce a formula in two changing variables to one variable and avoid the product rule. The reports record the reduction and the assumption that one quantity is constant; the belief is inferred from that behaviour.",
+   "concepts": [],
+   "topics": [
+    "BC-TOP-0405",
+    "BC-TOP-0208"
+   ],
+   "observable_errors": [
+    "BC-ERR-99013"
+   ],
+   "exposing_archetypes": [],
+   "rival_misconceptions": [
+    "BC-MIS-99005"
+   ],
+   "severity": "high",
+   "discriminating_probe": "Give a volume formula in two variables with values supplied at one instant and ask for the rate of change of the volume; a student holding this belief substitutes before differentiating.",
+   "official_evidence_notes": "2023 AB Q6(d), cr-23:24; 2024 AB Q5(d), cr-24:20"
+  },
+  {
+   "id": "BC-MIS-99015",
+   "name": "A slope field is a single tangent line at the point",
+   "scope": "shared",
+   "evidence_tag": "verified",
+   "sources": [
+    "cr-22:18"
+   ],
+   "description": "The student takes the slope field to show one tangent line through the chosen point rather than a field of slopes to be followed, so the sketched solution is drawn straight or is replaced by a family of curves. The 2022 report names this as the most common misconception in that part.",
+   "concepts": [],
+   "topics": [
+    "BC-TOP-0703",
+    "BC-TOP-0704"
+   ],
+   "observable_errors": [
+    "BC-ERR-99024"
+   ],
+   "exposing_archetypes": [],
+   "rival_misconceptions": [],
+   "severity": "medium",
+   "discriminating_probe": "Ask for the solution curve through a point on a field whose segments turn sharply; a student holding this belief draws a line or a curve that is too linear.",
+   "official_evidence_notes": "2022 AB Q5(a), cr-22:18"
+  },
+  {
+   "id": "BC-MIS-99016",
+   "name": "A convergent series is evaluated by adding enough terms",
+   "scope": "BC_only",
+   "evidence_tag": "inferred",
+   "sources": [
+    "cr-22:30",
+    "cr-22:31"
+   ],
+   "description": "The student treats the value of a convergent series as something approached by accumulating terms, so a partial sum is offered where a closed form was asked. The 2022 report records the behaviour and notes that in this course finding the value of a series calls on geometric series content; the belief itself is inferred from that pattern.",
+   "concepts": [],
+   "topics": [
+    "BC-TOP-1002",
+    "BC-TOP-1001"
+   ],
+   "observable_errors": [
+    "BC-ERR-99038",
+    "BC-ERR-99037"
+   ],
+   "exposing_archetypes": [],
+   "rival_misconceptions": [
+    "BC-MIS-99007"
+   ],
+   "severity": "medium",
+   "discriminating_probe": "Ask for the exact value of a geometric series and then for a bound on the error of its third partial sum; a student holding this belief answers both with a decimal from partial sums.",
+   "official_evidence_notes": "2022 BC Q6(d), cr-22:30 and cr-22:31"
+  }
+ ]
+}

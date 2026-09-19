@@ -1,0 +1,305 @@
+{
+ "registry": "diagnostic_signals",
+ "signals": [
+  {
+   "archetype": "BC-QA-08001",
+   "consistent_with": [
+    "BC-SKL-08001",
+    "BC-MIS-08002"
+   ],
+   "distinguish_by": "Ask for the same average over an interval of length one; a correct answer there with a wrong answer elsewhere points at the missing division rather than at the integral.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-08001",
+   "mastery_state": "partially_mastered",
+   "name": "Correct integral with no division by the interval length",
+   "observation": "The response shows the correct definite integral and reports its value, with no quotient anywhere.",
+   "scope": "shared",
+   "skill": "BC-SKL-08001",
+   "sources": [
+    "sg-25:3"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08001",
+   "consistent_with": [
+    "BC-MIS-08001"
+   ],
+   "distinguish_by": "Ask for the units of the reported answer; rate units confirm the confusion with average rate of change.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-08002",
+   "mastery_state": "not_mastered",
+   "name": "Difference quotient produced where an average value was requested",
+   "observation": "The response computes the change in the function divided by the change in the input and calls it the average value.",
+   "scope": "shared",
+   "skill": "BC-SKL-08004",
+   "sources": [
+    "sg-25:4"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08003",
+   "consistent_with": [
+    "BC-MIS-08004",
+    "BC-SKL-08006"
+   ],
+   "distinguish_by": "Ask for the displacement in the same part; a correct displacement with an equal answer for distance isolates the integrand choice.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-08003",
+   "mastery_state": "partially_mastered",
+   "name": "Signed integral reported as total distance",
+   "observation": "The response integrates velocity across a sign change and reports the result as the distance travelled.",
+   "scope": "shared",
+   "skill": "BC-SKL-08007",
+   "sources": [
+    "sg-24:6",
+    "cr-23:8"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08004",
+   "consistent_with": [
+    "BC-MIS-08006",
+    "BC-SKL-08016"
+   ],
+   "distinguish_by": "Ask the same question with a different starting amount; an unchanged answer confirms that the initial value is not in the model.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-08004",
+   "mastery_state": "partially_mastered",
+   "name": "Accumulated change reported where an amount was asked",
+   "observation": "The definite integral is evaluated correctly and reported without the known value at the earlier time.",
+   "scope": "shared",
+   "skill": "BC-SKL-08012",
+   "sources": [
+    "sg-24:7"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08006",
+   "consistent_with": [
+    "BC-MIS-08008",
+    "BC-SKL-08014"
+   ],
+   "distinguish_by": "Ask for the value of the amount at each endpoint; producing them on request separates a reporting gap from a conceptual one.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-08005",
+   "mastery_state": "partially_mastered",
+   "name": "Critical point found with only a local justification",
+   "observation": "The derivative is set equal to zero and solved correctly, and the justification is a sign chart with no endpoint comparison and no uniqueness statement.",
+   "scope": "shared",
+   "skill": "BC-SKL-08014",
+   "sources": [
+    "sg-25:5"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08007",
+   "consistent_with": [
+    "BC-MIS-08009",
+    "BC-SKL-08015"
+   ],
+   "distinguish_by": "Ask what the sentence would be for a different pair of limits; a correct second sentence points at a communication habit rather than a concept gap.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-08006",
+   "mastery_state": "partially_mastered",
+   "name": "Interpretation naming the quantity and units but not the interval",
+   "observation": "The sentence gives the accumulated quantity with correct units and omits the two inputs bounding the accumulation.",
+   "scope": "shared",
+   "skill": "BC-SKL-08015",
+   "sources": [
+    "sg-23:2"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08008",
+   "consistent_with": [
+    "BC-MIS-08011",
+    "BC-SKL-08018"
+   ],
+   "distinguish_by": "Ask which curve is above the other at one interior input; a correct answer there isolates the sign slip.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-08007",
+   "mastery_state": "partially_mastered",
+   "name": "Negative value reported as an area or a volume",
+   "observation": "The integral is set up with the difference in the wrong order and the reported value is negative.",
+   "scope": "shared",
+   "skill": "BC-SKL-08018",
+   "sources": [
+    "sg-23:16"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08008",
+   "consistent_with": [
+    "BC-SKL-08021"
+   ],
+   "distinguish_by": "Recompute with the stored values; agreement confirms a rounding habit rather than a set up error.",
+   "evidence_tag": "single-source",
+   "id": "BC-SIG-08008",
+   "mastery_state": "partially_mastered",
+   "name": "Stored intersection values replaced by rounded decimals",
+   "observation": "The limits appear as two or three place decimals and the reported area differs from the correct value in the third decimal place.",
+   "scope": "shared",
+   "skill": "BC-SKL-08021",
+   "sources": [
+    "crabbc-25:30"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08009",
+   "consistent_with": [
+    "BC-MIS-08013"
+   ],
+   "distinguish_by": "Ask the student to name the variable of integration and to list the variables in the integrand.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08009",
+   "mastery_state": "not_mastered",
+   "name": "Differential dy attached to an integrand written in x",
+   "observation": "The integral carries dy with an integrand that still contains x, and the limits may be x values.",
+   "scope": "shared",
+   "skill": "BC-SKL-08025",
+   "sources": [
+    "ced:156"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08010",
+   "consistent_with": [
+    "BC-MIS-08014"
+   ],
+   "distinguish_by": "Ask for the sign of the integrand just above and just below the crossing.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08010",
+   "mastery_state": "not_mastered",
+   "name": "One integral spanning an interior crossing",
+   "observation": "The response writes one integral of a fixed difference over an interval in which the curves exchange places.",
+   "scope": "shared",
+   "skill": "BC-SKL-08029",
+   "sources": [
+    "ced:157"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08011",
+   "consistent_with": [
+    "BC-MIS-08015"
+   ],
+   "distinguish_by": "Ask which shape the area formula inside the integral belongs to.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08011",
+   "mastery_state": "not_mastered",
+   "name": "Factor of pi in a polygonal cross section integrand",
+   "observation": "The volume integral for square or triangular sections carries pi.",
+   "scope": "shared",
+   "skill": "BC-SKL-08032",
+   "sources": [
+    "ced:158"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08011",
+   "consistent_with": [
+    "BC-MIS-08018",
+    "BC-MIS-08019"
+   ],
+   "distinguish_by": "Ask for the area of a semicircle of stated radius; a correct answer isolates the radius error from the halving error.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08012",
+   "mastery_state": "partially_mastered",
+   "name": "Full circle area used for a semicircular section",
+   "observation": "The integrand is pi times the square of half the distance with no factor of one half, or pi times the square of the whole distance.",
+   "scope": "shared",
+   "skill": "BC-SKL-08038",
+   "sources": [
+    "ced:159"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08012",
+   "consistent_with": [
+    "BC-MIS-08020",
+    "BC-SKL-08041"
+   ],
+   "distinguish_by": "Ask for the area of one circular slice before the integral is assembled.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08013",
+   "mastery_state": "partially_mastered",
+   "name": "Solid of revolution volume reported without pi",
+   "observation": "The integrand is the square of the radius with no constant factor.",
+   "scope": "shared",
+   "skill": "BC-SKL-08041",
+   "sources": [
+    "ced:160"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08013",
+   "consistent_with": [
+    "BC-MIS-08017"
+   ],
+   "distinguish_by": "Ask the student to compute both expressions with the radii five and three.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08014",
+   "mastery_state": "not_mastered",
+   "name": "Washer integrand written as one squared difference",
+   "observation": "The integrand is pi times the square of the difference of the two functions.",
+   "scope": "shared",
+   "skill": "BC-SKL-08051",
+   "sources": [
+    "ced:162"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08012",
+   "consistent_with": [
+    "BC-MIS-08021"
+   ],
+   "distinguish_by": "Ask for the distance from a named point on the curve to the axis of revolution.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08015",
+   "mastery_state": "not_mastered",
+   "name": "Radius written as the bare function value about a shifted axis",
+   "observation": "The axis of revolution is a line other than a coordinate axis and the radius in the integrand contains no reference to it.",
+   "scope": "shared",
+   "skill": "BC-SKL-08044",
+   "sources": [
+    "ced:161"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08013",
+   "consistent_with": [
+    "BC-MIS-08023",
+    "BC-SKL-08048"
+   ],
+   "distinguish_by": "Ask which curve is farther from the axis at one interior input.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-08016",
+   "mastery_state": "partially_mastered",
+   "name": "Negative volume from exchanged radii",
+   "observation": "The washer integral evaluates to a negative number and the response reports it or its absolute value without comment.",
+   "scope": "shared",
+   "skill": "BC-SKL-08048",
+   "sources": [
+    "ced:163"
+   ]
+  },
+  {
+   "archetype": "BC-QA-08014",
+   "consistent_with": [
+    "BC-MIS-08024",
+    "BC-SKL-08058"
+   ],
+   "distinguish_by": "Ask what the limits of integration describe; naming them on request separates a reporting gap from a concept gap.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-08017",
+   "mastery_state": "partially_mastered",
+   "name": "Arc length named with no interval",
+   "observation": "The response says the integral gives the length of the curve and stops.",
+   "scope": "shared",
+   "skill": "BC-SKL-08058",
+   "sources": [
+    "sg-24:16"
+   ]
+  }
+ ]
+}

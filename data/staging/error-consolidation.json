@@ -1,0 +1,4143 @@
+{
+ "errors": [
+  {
+   "archetypes": [
+    "BC-QA-01010"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask the student to divide numerator and denominator by the dominant power before taking any limit.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-01021",
+   "name": "Infinity substituted as a number",
+   "non_conceptual_causes": [
+    "notational shorthand",
+    "time pressure"
+   ],
+   "observed_behavior": "The response substitutes the infinity symbol into the expression and performs arithmetic with it.",
+   "official_evidence": [
+    "sg-25:4"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-99008"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "Arithmetic performed with the infinity symbol is treated as scratch work and does not earn the value point (sg-25:4).",
+   "skills": [
+    "BC-SKL-01058",
+    "BC-SKL-01060",
+    "BC-SKL-01061"
+   ],
+   "sources": [
+    "sg-25:4"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-01010"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask for the degrees of numerator and denominator before the ratio is written.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-01023",
+   "name": "End behaviour decided by the leading coefficients without comparing degrees",
+   "non_conceptual_causes": [
+    "applying a memorised rule without checking its condition"
+   ],
+   "observed_behavior": "The response reports the ratio of the leading coefficients as the limit at infinity although the degrees differ.",
+   "official_evidence": [
+    "ced:52"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-99008"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The value point is lost.",
+   "skills": [
+    "BC-SKL-01058",
+    "BC-SKL-01059"
+   ],
+   "sources": [
+    "ced:52"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-01010"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask for the value of the square root of the square of a negative number.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-01024",
+   "name": "Sign under a radical ignored at negative infinity",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "symmetry assumed between the two ends"
+   ],
+   "observed_behavior": "The response takes the dominant power out of a square root without the sign correction when the variable decreases without bound.",
+   "official_evidence": [
+    "ced:52"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-99008"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The value point at the negative end is lost.",
+   "skills": [
+    "BC-SKL-01061",
+    "BC-SKL-01063"
+   ],
+   "sources": [
+    "ced:52"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-02005"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask what the slope of a vertical line is.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-02014",
+   "name": "Vertical tangent treated as a horizontal one",
+   "non_conceptual_causes": [
+    "misread of the graph",
+    "confusing the two tangent orientations"
+   ],
+   "observed_behavior": "The response reports the derivative at a vertical tangent as zero.",
+   "official_evidence": [
+    "ced:63"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-02007"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The verdict point is lost because a value is reported where none exists.",
+   "skills": [
+    "BC-SKL-02023"
+   ],
+   "sources": [
+    "ced:63"
+   ],
+   "status": "retired",
+   "superseded_by": "BC-ERR-03012",
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-03005",
+    "BC-QA-09001",
+    "BC-QA-02005"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask the student to state what the slope of a vertical line is before the curve is considered.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-03012",
+   "name": "Horizontal and vertical tangent conditions exchanged",
+   "non_conceptual_causes": [
+    "misread of the words horizontal and vertical",
+    "time pressure",
+    "arithmetic slip",
+    "a copied template from a similar exercise",
+    "misread of the graph",
+    "confusing the two tangent orientations"
+   ],
+   "observed_behavior": "The denominator of dy/dx is set to zero when a horizontal tangent is requested, or the numerator when a vertical tangent is requested.",
+   "official_evidence": [
+    "cr-23:22",
+    "ced:63"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-03007",
+    "BC-MIS-09003",
+    "BC-MIS-02007"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The reported point is wrong and the reasoning point is not available.",
+   "skills": [
+    "BC-SKL-03012",
+    "BC-SKL-03013",
+    "BC-SKL-09006",
+    "BC-SKL-02023"
+   ],
+   "sources": [
+    "cr-23:22",
+    "ced:171",
+    "ced:63"
+   ],
+   "status": "active",
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-03009"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask the student to state the outermost operation and the rule it requires before differentiating.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-03019",
+   "name": "Rule chosen from the surface appearance of the expression",
+   "non_conceptual_causes": [
+    "pattern matching under time pressure",
+    "misread of the exponent position"
+   ],
+   "observed_behavior": "A product rule is applied to a composite, or a power rule to an exponential, because the expression resembles that family at a glance.",
+   "official_evidence": [
+    "cr-22:21"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-03012"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The derivative is wrong from the first step; the Chief Reader report for 2022 records rule choice by shape as an observed behaviour (cr-22:21).",
+   "skills": [
+    "BC-SKL-03026",
+    "BC-SKL-03027"
+   ],
+   "sources": [
+    "cr-22:21"
+   ],
+   "status": "retired",
+   "superseded_by": "BC-ERR-99036",
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-03008",
+    "BC-QA-05012"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask the student to list every quantity that must be known before the substitution is made.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-03023",
+   "name": "First derivative value not substituted into the second derivative",
+   "non_conceptual_causes": [
+    "the first derivative is computed on scratch work and not carried over",
+    "time pressure",
+    "arithmetic slip",
+    "misread of the question or the figure"
+   ],
+   "observed_behavior": "An expression for the second derivative containing dy/dx is evaluated without first computing the value of dy/dx at the point.",
+   "official_evidence": [
+    "sg-25:20",
+    "sg-25:21"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-03006",
+    "BC-MIS-03013",
+    "BC-MIS-05033"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The numerical second derivative is wrong, although the product and chain rule points described in the 2025 scoring guidelines may still be earned (sg-25:20).",
+   "skills": [
+    "BC-SKL-03033",
+    "BC-SKL-03034",
+    "BC-SKL-05062"
+   ],
+   "sources": [
+    "sg-25:20",
+    "sg-25:21"
+   ],
+   "status": "active",
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-04001"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask what would change in the sentence if the interval were different.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-04002",
+   "name": "Interpretation left incomplete",
+   "non_conceptual_causes": [
+    "time pressure",
+    "the sentence is abbreviated after a long computation"
+   ],
+   "observed_behavior": "The interpretation names the quantity but omits the instant or interval, the direction of change, or the units.",
+   "official_evidence": [
+    "cr-24:3",
+    "cr-24:32"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-04001",
+    "BC-MIS-04003"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The interpretation point is lost; BC-ERR-99027 records incomplete interpretation in context across the Chief Reader reports.",
+   "skills": [
+    "BC-SKL-04002"
+   ],
+   "sources": [
+    "cr-24:3",
+    "cr-24:32"
+   ],
+   "status": "retired",
+   "superseded_by": "BC-ERR-99027",
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-04003"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Give a case with negative velocity and positive acceleration and ask whether the particle is speeding up.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-04009",
+   "name": "Speed decided from the sign of the acceleration alone",
+   "non_conceptual_causes": [
+    "the rule is recalled in an abbreviated form",
+    "time pressure"
+   ],
+   "observed_behavior": "The response concludes that the speed is increasing because the acceleration is positive, without considering the sign of the velocity.",
+   "official_evidence": [
+    "cr-22:21",
+    "crabbc-25:22"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-04006"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The speed point is lost; the 2022 report names this the most common misconception on that question and the 2025 report records responses addressing only the sign of the derivative of velocity (cr-22:21, crabbc-25:22). BC-ERR-99003 records the same behaviour across years.",
+   "skills": [
+    "BC-SKL-04010"
+   ],
+   "sources": [
+    "cr-22:21",
+    "crabbc-25:22"
+   ],
+   "status": "retired",
+   "superseded_by": "BC-ERR-99003",
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-04005"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask the student to write the limit expression before any evaluation.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-04014",
+   "name": "Arithmetic performed with infinity in place of a limit",
+   "non_conceptual_causes": [
+    "shorthand carried from scratch work",
+    "time pressure"
+   ],
+   "observed_behavior": "An expression with infinity substituted into it is written and set equal to a value, rather than a limit expression being evaluated.",
+   "official_evidence": [
+    "sg-25:4",
+    "cr-22:21"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-04014"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The 2025 scoring notes state that arithmetic with infinity is treated as scratch work and does not earn the value point (sg-25:4); BC-ERR-99007 records the same behaviour across years.",
+   "skills": [
+    "BC-SKL-04016"
+   ],
+   "sources": [
+    "sg-25:4",
+    "cr-22:21"
+   ],
+   "status": "retired",
+   "superseded_by": "BC-ERR-99007",
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-04008"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Give an increasing concave down function and ask for the direction of the tangent line error.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-04025",
+   "name": "Over or under estimate claimed without appealing to concavity",
+   "non_conceptual_causes": [
+    "the claim is guessed when time runs short",
+    "confusion of the two derivative signs under pressure"
+   ],
+   "observed_behavior": "The direction of the approximation error is asserted, or is argued from whether the function is increasing or decreasing rather than from how it bends.",
+   "official_evidence": [
+    "cr-22:18",
+    "cr-23:11"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-04013"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The justification point is lost; BC-ERR-99020 records this behaviour across the Chief Reader reports (cr-22:18, cr-23:11).",
+   "skills": [
+    "BC-SKL-04030",
+    "BC-SKL-04031"
+   ],
+   "sources": [
+    "cr-22:18",
+    "cr-23:11",
+    "ced:92"
+   ],
+   "status": "retired",
+   "superseded_by": "BC-ERR-99020",
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-04008"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask what feature of the supplied representation makes the concavity claim true.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-04026",
+   "name": "Concavity asserted without reference to the given representation",
+   "non_conceptual_causes": [
+    "the connection is made mentally and not written",
+    "time pressure"
+   ],
+   "observed_behavior": "The response states that the second derivative has a sign without connecting that claim to the graph, table, or formula supplied.",
+   "official_evidence": [
+    "cr-23:15",
+    "cr-22:18"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-07010"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The justification point is lost; BC-ERR-99001 records vague referents in justifications and the 2023 report records reasons not connected to the given graph (cr-23:15).",
+   "skills": [
+    "BC-SKL-04031"
+   ],
+   "sources": [
+    "cr-23:15",
+    "cr-22:18"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-05001",
+    "BC-QA-05010"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask which conditions the theorem requires before the conclusion may be drawn.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-05001",
+   "name": "Theorem hypotheses not stated before the conclusion is used",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "misread of the question or the figure",
+    "time pressure"
+   ],
+   "observed_behavior": "The response applies the Mean Value Theorem or the Extreme Value Theorem and never mentions continuity or differentiability on the stated interval.",
+   "official_evidence": [
+    "sg-23:3"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-05001"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The justification point is lost even when the conclusion is correct, because the guideline makes the continuity statement a condition of that point.",
+   "skills": [
+    "BC-SKL-05001",
+    "BC-SKL-05007"
+   ],
+   "sources": [
+    "sg-23:3"
+   ],
+   "status": "retired",
+   "superseded_by": "BC-ERR-99008",
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-05001",
+    "BC-QA-05010"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask why the function is continuous on the closed interval.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-05002",
+   "name": "Continuity not drawn from the given differentiability",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "misread of the question or the figure",
+    "time pressure"
+   ],
+   "observed_behavior": "The response asserts that the function is continuous without saying that differentiability supplies it, or omits continuity altogether.",
+   "official_evidence": [
+    "sg-23:3",
+    "sg-25:12"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-99009",
+    "BC-MIS-05002"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The point tied to the hypothesis is lost; the 2025 guideline refused a bare statement that the function is continuous.",
+   "skills": [
+    "BC-SKL-05002",
+    "BC-SKL-05004"
+   ],
+   "sources": [
+    "sg-23:3",
+    "sg-25:12"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-05001"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask the student to state the conclusion in one sentence.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-05004",
+   "name": "Existence asserted with no affirmative answer or no theorem",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "misread of the question or the figure",
+    "time pressure"
+   ],
+   "observed_behavior": "The response computes the needed arithmetic but never says yes and never names a theorem.",
+   "official_evidence": [
+    "sg-23:3"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-05002",
+    "BC-MIS-01016"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The justification point is lost; the guideline requires an affirmative answer in some form.",
+   "skills": [
+    "BC-SKL-05004",
+    "BC-SKL-05006"
+   ],
+   "sources": [
+    "sg-23:3"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-05002"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask whether the reported input lies strictly between the endpoints.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-05005",
+   "name": "Solved value reported outside the open interval",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "misread of the question or the figure",
+    "time pressure"
+   ],
+   "observed_behavior": "The response solves the derivative equation and reports a solution that is an endpoint or lies outside the interval.",
+   "official_evidence": [
+    "ced:99"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-01016"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The answer point is lost because the theorem places the point strictly inside the interval.",
+   "skills": [
+    "BC-SKL-05005"
+   ],
+   "sources": [
+    "ced:99"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-05010"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask what the theorem tells you and what it does not tell you.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-05008",
+   "name": "Existence theorem used to locate the extremum",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "misread of the question or the figure",
+    "time pressure"
+   ],
+   "observed_behavior": "The response treats the Extreme Value Theorem as though it named the input at which the extremum occurs.",
+   "official_evidence": [
+    "ced:100"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-01016"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The response answers a different question and the location it reports is unsupported.",
+   "skills": [
+    "BC-SKL-05009"
+   ],
+   "sources": [
+    "ced:100"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-05006",
+    "BC-QA-05011",
+    "BC-QA-05013"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask how the candidate compares with the value at the far end of the interval.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-05029",
+   "name": "Local argument offered where a global argument is required",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "misread of the question or the figure",
+    "time pressure"
+   ],
+   "observed_behavior": "The response justifies an absolute extremum with a first derivative test or a second derivative test at the candidate.",
+   "official_evidence": [
+    "sg-25:19"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-05018"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The justification point is lost while the answer point stays available with the correct value.",
+   "skills": [
+    "BC-SKL-05028",
+    "BC-SKL-05029",
+    "BC-SKL-05053"
+   ],
+   "sources": [
+    "sg-25:19"
+   ],
+   "status": "retired",
+   "superseded_by": "BC-ERR-99004",
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-05011"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask what the number counts or measures.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-05055",
+   "name": "Units omitted from the reported optimum",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "misread of the question or the figure",
+    "time pressure"
+   ],
+   "observed_behavior": "The response gives a number for the optimal value and never names its units.",
+   "official_evidence": [
+    "sg-23:2"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-07023"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "An interpretation point that requires units is lost.",
+   "skills": [
+    "BC-SKL-05054"
+   ],
+   "sources": [
+    "sg-23:2"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-05011"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask what would change in the sentence if the interval were different.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-05056",
+   "name": "Interpretation omits the quantity or the input where the extremum occurs",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "misread of the question or the figure",
+    "time pressure"
+   ],
+   "observed_behavior": "The interpretation sentence names a number without saying what it measures or when it is attained.",
+   "official_evidence": [
+    "sg-23:2"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-07023"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The interpretation point is lost because the sentence is incomplete.",
+   "skills": [
+    "BC-SKL-05055"
+   ],
+   "sources": [
+    "sg-23:2"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-05012"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask for the value of the first derivative at the given point, then reread the expression.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-05061",
+   "name": "First derivative left unsubstituted in the second derivative",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "misread of the question or the figure",
+    "time pressure"
+   ],
+   "observed_behavior": "The response reports a second derivative expression that still contains the derivative symbol when a number was asked for.",
+   "official_evidence": [
+    "sg-25:21"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-05033"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The substitution point is lost; the 2025 guideline treats the differentiation and the substitution as separate points.",
+   "skills": [
+    "BC-SKL-05062"
+   ],
+   "sources": [
+    "sg-25:21"
+   ],
+   "status": "retired",
+   "superseded_by": "BC-ERR-03023",
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-06001",
+    "BC-QA-06002"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Supply a rate that decreases on part of the interval and increases on the rest and ask whether the direction can be decided.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-06005",
+   "name": "Over or under estimate claimed without reference to the behaviour of the function",
+   "non_conceptual_causes": [
+    "time pressure at the end of a part",
+    "assumption that the direction is obvious"
+   ],
+   "observed_behavior": "The response asserts that an approximation is an underestimate or an overestimate but cites no monotonicity or concavity evidence.",
+   "official_evidence": [
+    "ced:119"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-07010"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The justification point is not earned even when the direction stated is correct.",
+   "skills": [
+    "BC-SKL-06010",
+    "BC-SKL-06011"
+   ],
+   "sources": [
+    "ced:119"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-06001"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask the student to draw one rectangle over an increasing arc and say whether it sits above or below the curve.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-06006",
+   "name": "Under and over estimate directions interchanged for a monotone integrand",
+   "non_conceptual_causes": [
+    "sign slip",
+    "memorised rule recalled backwards"
+   ],
+   "observed_behavior": "A left sum is called an overestimate for an increasing function, or a right sum an underestimate.",
+   "official_evidence": [
+    "ced:119"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-07010"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The justification point is lost and the answer point with it when the direction is part of the answer.",
+   "skills": [
+    "BC-SKL-06010"
+   ],
+   "sources": [
+    "ced:119"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-06002"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Give an increasing concave down rate and ask for the direction of a trapezoidal estimate.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-06007",
+   "name": "Trapezoidal direction decided from monotonicity instead of concavity",
+   "non_conceptual_causes": [
+    "conflation of two memorised rules",
+    "time pressure"
+   ],
+   "observed_behavior": "The response argues that a trapezoidal sum overestimates because the function is increasing.",
+   "official_evidence": [
+    "ced:119"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-07010",
+    "BC-MIS-05020"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The justification point is not earned because the stated reason does not support the conclusion.",
+   "skills": [
+    "BC-SKL-06011"
+   ],
+   "sources": [
+    "ced:119"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-06003"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask what the plotted curve is called in the stem before any feature is located.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-06008",
+   "name": "Graph of the integrand treated as the graph of the accumulation function",
+   "non_conceptual_causes": [
+    "misread of which function is plotted",
+    "time pressure"
+   ],
+   "observed_behavior": "Extrema or inflection points of g are read directly off the visible extrema and inflection points of the plotted curve.",
+   "official_evidence": [
+    "sg-25:17"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-05011"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "Both the answer and the reason points of the part are lost, and any extra declared input costs both points (sg-25:17).",
+   "skills": [
+    "BC-SKL-06022",
+    "BC-SKL-06023",
+    "BC-SKL-06024",
+    "BC-SKL-06025",
+    "BC-SKL-06027"
+   ],
+   "sources": [
+    "sg-25:17"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-06003"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask separately where g has extrema and where g has inflection points on the same graph.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-06009",
+   "name": "Inflection points of an accumulation function placed where the integrand crosses the axis",
+   "non_conceptual_causes": [
+    "confusion between two rules applied in adjacent parts",
+    "time pressure"
+   ],
+   "observed_behavior": "The response reports inflection points of g at the zeros of f rather than at the turning points of f.",
+   "official_evidence": [
+    "sg-25:17"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-05011",
+    "BC-MIS-06008"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The answer point is not earned, and an extra declared input forfeits the reason point as well (sg-25:17).",
+   "skills": [
+    "BC-SKL-06024"
+   ],
+   "sources": [
+    "sg-25:17"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-06003"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask what feature of the plotted curve makes the claim true.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-06010",
+   "name": "Reason for a feature of the accumulation function phrased only in terms of g",
+   "non_conceptual_causes": [
+    "habit of restating the definition",
+    "time pressure"
+   ],
+   "observed_behavior": "The response says that g has an inflection point because g changes concavity, without tying the claim to the given graph of f.",
+   "official_evidence": [
+    "sg-25:17"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-01010"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The answer point is earned but the reason point is not, because the reason must be tied to the given graph of f (sg-25:17).",
+   "skills": [
+    "BC-SKL-06024",
+    "BC-SKL-06025",
+    "BC-SKL-06027"
+   ],
+   "sources": [
+    "sg-25:17"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-06003"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask the student to list every candidate input before justifying.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-06011",
+   "name": "Local argument offered where a global extremum is requested",
+   "non_conceptual_causes": [
+    "habit carried over from relative extremum questions",
+    "time pressure"
+   ],
+   "observed_behavior": "A first or second derivative test is presented as the justification for an absolute extreme value on a closed interval.",
+   "official_evidence": [
+    "sg-25:19",
+    "sg-25:5"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-06010"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The justification point is not earned, although the answer point remains available with the correct value (sg-25:19, sg-25:5).",
+   "skills": [
+    "BC-SKL-06026"
+   ],
+   "sources": [
+    "sg-25:19",
+    "sg-25:5"
+   ],
+   "status": "retired",
+   "superseded_by": "BC-ERR-99004",
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-06003",
+    "BC-QA-06004",
+    "BC-QA-08011"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask for the area of the single semicircular piece before the integral is assembled.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-06013",
+   "name": "Semicircular region given the area of a full circle",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "dropped factor of one half",
+    "time pressure"
+   ],
+   "observed_behavior": "The area of a semicircular piece of the region is computed as pi times the radius squared.",
+   "official_evidence": [
+    "sg-25:18"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-08019"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The value point for that integral is lost.",
+   "skills": [
+    "BC-SKL-06028",
+    "BC-SKL-06020",
+    "BC-SKL-06004",
+    "BC-SKL-08038"
+   ],
+   "sources": [
+    "sg-25:18",
+    "ced:159"
+   ],
+   "status": "active",
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-06003",
+    "BC-QA-06004",
+    "BC-QA-08001"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask for the sign of the integral before any number is computed.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-06014",
+   "name": "Regions below the axis added as positive area",
+   "non_conceptual_causes": [
+    "sign slip",
+    "habit from area questions",
+    "arithmetic slip",
+    "misread of the prompt"
+   ],
+   "observed_behavior": "Every piece of the region is added with a positive sign, so a signed integral is reported as a plain area.",
+   "official_evidence": [
+    "sg-25:18"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-08024",
+    "BC-MIS-08002"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The value point is lost, and any later part that imports the value inherits the error.",
+   "skills": [
+    "BC-SKL-06028",
+    "BC-SKL-06020",
+    "BC-SKL-06004",
+    "BC-SKL-08002"
+   ],
+   "sources": [
+    "sg-25:18",
+    "ced:152"
+   ],
+   "status": "active",
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-06005",
+    "BC-QA-06006"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask what the integral by itself measures before the final value is requested.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-06015",
+   "name": "Initial condition omitted from a net change computation",
+   "non_conceptual_causes": [
+    "omission under time pressure",
+    "the initial value appearing far from the part being answered"
+   ],
+   "observed_behavior": "The definite integral of the rate is reported as the value of the quantity at the later input.",
+   "official_evidence": [
+    "sg-24:3",
+    "sg-24:4"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-08006"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The initial condition point is not earned; the response that presents only the integral value does not earn it (sg-24:4).",
+   "skills": [
+    "BC-SKL-06037",
+    "BC-SKL-06036"
+   ],
+   "sources": [
+    "sg-24:3",
+    "sg-24:4"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-06007"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Present both phrases in the same prompt and ask which expression matches which.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-06017",
+   "name": "Average rate of change computed where the average value is requested",
+   "non_conceptual_causes": [
+    "misread of the phrase average value",
+    "confusion between adjacent parts of the same question"
+   ],
+   "observed_behavior": "The response computes a difference quotient of the function rather than the integral divided by the interval length.",
+   "official_evidence": [
+    "sg-25:2",
+    "sg-25:4"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-06014",
+    "BC-MIS-06015"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "Neither the average value formula point nor the answer point is earned.",
+   "skills": [
+    "BC-SKL-06038"
+   ],
+   "sources": [
+    "sg-25:2",
+    "sg-25:4"
+   ],
+   "status": "retired",
+   "superseded_by": "BC-ERR-99015",
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-06008",
+    "BC-QA-06011",
+    "BC-QA-08008"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask for the two u limits explicitly before the antiderivative is evaluated.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-06018",
+   "name": "Original limits of integration kept after a substitution",
+   "non_conceptual_causes": [
+    "omission of the conversion step",
+    "time pressure",
+    "arithmetic slip"
+   ],
+   "observed_behavior": "The antiderivative is written in the substituted variable and the original x limits are substituted into it.",
+   "official_evidence": [
+    "sg-23:16",
+    "sg-23:17"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-06016",
+    "BC-MIS-08012"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The response is not eligible for the answer point even when the numerical value is correct (sg-23:17, sg-23:16).",
+   "skills": [
+    "BC-SKL-06050",
+    "BC-SKL-06051",
+    "BC-SKL-06049",
+    "BC-SKL-08022"
+   ],
+   "sources": [
+    "sg-23:16",
+    "sg-23:17"
+   ],
+   "status": "active",
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-06008",
+    "BC-QA-06009"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask whether more than one function has the given derivative.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-06021",
+   "name": "Constant of integration omitted from an indefinite integral",
+   "non_conceptual_causes": [
+    "omission under time pressure",
+    "habit carried over from definite integrals"
+   ],
+   "observed_behavior": "An indefinite integral is reported without an arbitrary constant.",
+   "official_evidence": [
+    "ced:125"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-06018"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The answer point for an indefinite integral is lost when the constant is required by the stem.",
+   "skills": [
+    "BC-SKL-06044",
+    "BC-SKL-06049"
+   ],
+   "sources": [
+    "ced:125"
+   ],
+   "status": "retired",
+   "superseded_by": "BC-ERR-07026",
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-06011"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask the student to write the improper integral as a limit before any antidifferentiation.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-06024",
+   "name": "Arithmetic with infinity written in place of a limit",
+   "non_conceptual_causes": [
+    "shortcut taken under time pressure",
+    "notation habit"
+   ],
+   "observed_behavior": "The response substitutes infinity into the antiderivative rather than taking a limit.",
+   "official_evidence": [
+    "sg-23:17"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-06020"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "The limit notation point is not earned, since limit notation must be used throughout and arithmetic with infinity is disallowed (sg-23:17).",
+   "skills": [
+    "BC-SKL-06067",
+    "BC-SKL-06068"
+   ],
+   "sources": [
+    "sg-23:17"
+   ],
+   "status": "retired",
+   "superseded_by": "BC-ERR-99007",
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-06011"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Give a convergent and a divergent integral of the same family and ask which converges.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-06025",
+   "name": "Value reported for a divergent improper integral",
+   "non_conceptual_causes": [
+    "arithmetic slip in the limit",
+    "assumption that every improper integral converges"
+   ],
+   "observed_behavior": "The response produces a finite number although the limit is infinite or fails to exist.",
+   "official_evidence": [
+    "ced:130"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-99008",
+    "BC-MIS-06021"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "The answer point is not earned because the required conclusion is a statement of divergence.",
+   "skills": [
+    "BC-SKL-06069",
+    "BC-SKL-06068",
+    "BC-SKL-06066"
+   ],
+   "sources": [
+    "ced:130"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-06015"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask the student to name the starting and ending inputs before writing the sentence.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-06029",
+   "name": "Interpretation of a definite integral omits the interval or the units",
+   "non_conceptual_causes": [
+    "omission under time pressure",
+    "abbreviated writing"
+   ],
+   "observed_behavior": "The response names the accumulated quantity but not the interval over which it accumulates, or gives the units of the rate.",
+   "official_evidence": [
+    "sg-23:2"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-08009"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The interpretation point requires both the accumulated quantity with units and the interval, so it is not earned (sg-23:2).",
+   "skills": [
+    "BC-SKL-06001",
+    "BC-SKL-06002"
+   ],
+   "sources": [
+    "sg-23:2"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-06015",
+    "BC-QA-06007"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask what changes in the sentence when the leading fraction is removed.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-06030",
+   "name": "Average value expression interpreted as a total",
+   "non_conceptual_causes": [
+    "misread of the leading fraction",
+    "time pressure"
+   ],
+   "observed_behavior": "A displayed average value expression is described as the total amount accumulated over the interval.",
+   "official_evidence": [
+    "sg-24:3"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-06014",
+    "BC-MIS-08009"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The interpretation point is not earned because the description must say average over the interval (sg-24:3).",
+   "skills": [
+    "BC-SKL-06038",
+    "BC-SKL-06001"
+   ],
+   "sources": [
+    "sg-24:3"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-07003",
+    "BC-QA-06008",
+    "BC-QA-06009"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask what the answer would be if the starting value were different.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-07026",
+   "name": "Constant of integration omitted",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "misread of the question or the figure",
+    "time pressure",
+    "omission under time pressure",
+    "habit carried over from definite integrals"
+   ],
+   "observed_behavior": "The antiderivative equation is written with no constant.",
+   "official_evidence": [
+    "sg-23:12",
+    "ced:125"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-07016",
+    "BC-MIS-06018"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "At most the first two points are available; the guideline caps the response there.",
+   "skills": [
+    "BC-SKL-07026",
+    "BC-SKL-06044",
+    "BC-SKL-06049"
+   ],
+   "sources": [
+    "sg-23:12",
+    "ced:125"
+   ],
+   "status": "active",
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-08001"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask for the integral of a rate that is negative on the whole interval.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-08003",
+   "name": "Region below the axis counted as positive area in an average",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "misread of the prompt"
+   ],
+   "observed_behavior": "A graph dipping below the axis contributes a positive amount to the integral used in the average.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-08002"
+   ],
+   "related_errors": [],
+   "scope": "shared",
+   "scoring_consequence": "The value is wrong, so the answer point is lost while the formula point may stand.",
+   "skills": [
+    "BC-SKL-08002"
+   ],
+   "sources": [
+    "ced:152"
+   ],
+   "status": "retired",
+   "superseded_by": "BC-ERR-06014",
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-08001",
+    "BC-QA-08014"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask what the student entered into the calculator, written as an integral.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-08004",
+   "name": "Calculator answer presented with no setup",
+   "non_conceptual_causes": [
+    "time pressure",
+    "a belief that the work is scratch"
+   ],
+   "observed_behavior": "A decimal appears with no integral and no evidence of the division.",
+   "official_evidence": [
+    "sg-25:3",
+    "crabbc-25:30"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-08003"
+   ],
+   "related_errors": [
+    "BC-ERR-99021"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The setup point is lost; an unsupported value can still earn an answer point only where the guideline says so (sg-25:3).",
+   "skills": [
+    "BC-SKL-08003",
+    "BC-SKL-08059"
+   ],
+   "sources": [
+    "sg-25:3",
+    "crabbc-25:30"
+   ],
+   "status": "retired",
+   "superseded_by": "BC-ERR-99021",
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-08001",
+    "BC-QA-08008",
+    "BC-QA-08004",
+    "BC-QA-08014"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask for the same computation with the unrounded stored value and compare.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-08005",
+   "name": "Intermediate value rounded before the final computation",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "time pressure"
+   ],
+   "observed_behavior": "A stored decimal is truncated to two or three places and then used in a later step, moving the reported answer.",
+   "official_evidence": [
+    "sg-25:2",
+    "crabbc-25:30"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-08003"
+   ],
+   "related_errors": [
+    "BC-ERR-99019"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The answer point is lost for inappropriate rounding, and at most one point per question is withheld on this ground (sg-25:2).",
+   "skills": [
+    "BC-SKL-08003",
+    "BC-SKL-08021",
+    "BC-SKL-08017",
+    "BC-SKL-08035",
+    "BC-SKL-08043",
+    "BC-SKL-08059"
+   ],
+   "sources": [
+    "sg-25:2",
+    "crabbc-25:30"
+   ],
+   "status": "retired",
+   "superseded_by": "BC-ERR-99019",
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-08001",
+    "BC-QA-08002"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Show both expressions side by side and ask for the units of each.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-08006",
+   "name": "Average value computed where an average rate of change was asked, or the reverse",
+   "non_conceptual_causes": [
+    "misread of the prompt",
+    "a copied template from a similar exercise"
+   ],
+   "observed_behavior": "The response builds a difference quotient when the average of the function values was requested, or an integral quotient when the average rate of change was requested.",
+   "official_evidence": [
+    "sg-25:4",
+    "crabbc-25:3"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-08001"
+   ],
+   "related_errors": [
+    "BC-ERR-99015"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "Neither the setup point nor the answer point is earned, because the quantity is not the one asked for (sg-25:4).",
+   "skills": [
+    "BC-SKL-08004",
+    "BC-SKL-08005"
+   ],
+   "sources": [
+    "sg-25:4",
+    "crabbc-25:3"
+   ],
+   "status": "retired",
+   "superseded_by": "BC-ERR-99015",
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-08007",
+    "BC-QA-08001"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask the student to write the units of the integrand and of the differential separately and then multiply them.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-08007",
+   "name": "Units omitted or built from the wrong factors",
+   "non_conceptual_causes": [
+    "time pressure",
+    "misread of the prompt"
+   ],
+   "observed_behavior": "A reported value carries no units, or units that are the rate units rather than the rate units multiplied by the input units.",
+   "official_evidence": [
+    "sg-25:11",
+    "sg-23:2"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-08009"
+   ],
+   "related_errors": [
+    "BC-ERR-99005"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The units point, where one exists, is lost; in 2025 the units for an average rate of change were scored as their own point (sg-25:11).",
+   "skills": [
+    "BC-SKL-08005",
+    "BC-SKL-08015",
+    "BC-SKL-08017"
+   ],
+   "sources": [
+    "sg-25:11",
+    "sg-23:2"
+   ],
+   "status": "retired",
+   "superseded_by": "BC-ERR-99005",
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-08003"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Give a velocity that is positive then negative and ask for both quantities in the same part.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-08008",
+   "name": "Displacement reported where total distance was asked",
+   "non_conceptual_causes": [
+    "misread of the prompt",
+    "time pressure"
+   ],
+   "observed_behavior": "The response integrates velocity without the absolute value and reports the result as the distance travelled.",
+   "official_evidence": [
+    "sg-24:6",
+    "cr-23:8",
+    "cr-24:8"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-08004"
+   ],
+   "related_errors": [
+    "BC-ERR-99010"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The setup point is lost because the integrand is wrong, and the answer point falls with it (sg-24:6).",
+   "skills": [
+    "BC-SKL-08006",
+    "BC-SKL-08007",
+    "BC-SKL-08011"
+   ],
+   "sources": [
+    "sg-24:6",
+    "cr-23:8",
+    "cr-24:8"
+   ],
+   "status": "retired",
+   "superseded_by": "BC-ERR-99010",
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-08004",
+    "BC-QA-08003",
+    "BC-QA-09005"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Give the same rate with two different starting amounts and ask for the later value in each case.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-08011",
+   "name": "Initial value not added to the accumulated change",
+   "non_conceptual_causes": [
+    "time pressure",
+    "misread of the prompt"
+   ],
+   "observed_behavior": "The response evaluates the integral of the rate and reports it as the value of the quantity.",
+   "official_evidence": [
+    "sg-24:7",
+    "sg-24:4"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-08006",
+    "BC-MIS-09010"
+   ],
+   "related_errors": [],
+   "scope": "shared",
+   "scoring_consequence": "The initial condition point is lost and the answer point falls with it (sg-24:7).",
+   "skills": [
+    "BC-SKL-08009",
+    "BC-SKL-08010",
+    "BC-SKL-08012",
+    "BC-SKL-09021",
+    "BC-SKL-09026"
+   ],
+   "sources": [
+    "sg-24:7",
+    "sg-24:4"
+   ],
+   "status": "active",
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-08005",
+    "BC-QA-08008"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask the student to read the integrand aloud and say which terms the minus sign reaches.",
+   "evidence_tag": "single-source",
+   "id": "BC-ERR-08014",
+   "name": "Parentheses lost when a supplied expression is placed in an integrand",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "time pressure"
+   ],
+   "observed_behavior": "A subtracted rate or a difference is substituted without parentheses, so only its first term is affected by the operation.",
+   "official_evidence": [
+    "cr-24:23"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-08007"
+   ],
+   "related_errors": [
+    "BC-ERR-99009"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The integrand is wrong, so the setup point is lost; the Chief Reader records this behaviour across questions.",
+   "skills": [
+    "BC-SKL-08013",
+    "BC-SKL-08019"
+   ],
+   "sources": [
+    "cr-24:23"
+   ],
+   "status": "retired",
+   "superseded_by": "BC-ERR-99009",
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-08006"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask whether the value at the endpoint has been compared with the value at the critical point.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-08015",
+   "name": "Local argument offered for an absolute extremum",
+   "non_conceptual_causes": [
+    "time pressure",
+    "a copied template from a similar exercise"
+   ],
+   "observed_behavior": "A first or second derivative test is presented as the justification that an accumulated amount is largest.",
+   "official_evidence": [
+    "sg-25:5",
+    "crabbc-25:4"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-08008"
+   ],
+   "related_errors": [
+    "BC-ERR-99004"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The justification point is lost while the answer point remains available (sg-25:5).",
+   "skills": [
+    "BC-SKL-08014"
+   ],
+   "sources": [
+    "sg-25:5",
+    "crabbc-25:4"
+   ],
+   "status": "retired",
+   "superseded_by": "BC-ERR-99004",
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-08006"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask for the value of the amount at both ends of the interval.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-08016",
+   "name": "Endpoints omitted from a candidates table",
+   "non_conceptual_causes": [
+    "time pressure",
+    "arithmetic slip"
+   ],
+   "observed_behavior": "The candidates test evaluates the amount only at the interior critical point.",
+   "official_evidence": [
+    "sg-25:5"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-06010"
+   ],
+   "related_errors": [
+    "BC-ERR-99004"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The justification point is lost because the argument is not global (sg-25:5).",
+   "skills": [
+    "BC-SKL-08014"
+   ],
+   "sources": [
+    "sg-25:5"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-08004",
+    "BC-QA-08008"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask the student to name the variable of integration in the expression as written.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-08018",
+   "name": "Differential omitted from an integral expression",
+   "non_conceptual_causes": [
+    "time pressure",
+    "arithmetic slip"
+   ],
+   "observed_behavior": "An integral is written with limits and an integrand but no dx, dt, or dy.",
+   "official_evidence": [
+    "sg-23:8"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-08009"
+   ],
+   "related_errors": [
+    "BC-ERR-99006"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "Whether the point survives depends on the guideline; in 2023 a missing differential kept the setup point but could block the answer point when the expression was also equated to a value (sg-23:8).",
+   "skills": [
+    "BC-SKL-08016",
+    "BC-SKL-08019",
+    "BC-SKL-08025"
+   ],
+   "sources": [
+    "sg-23:8"
+   ],
+   "status": "retired",
+   "superseded_by": "BC-ERR-99006",
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-08008"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask what the lower limit becomes after the substitution and why.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-08022",
+   "name": "Limits kept in the old variable after a substitution",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "time pressure"
+   ],
+   "observed_behavior": "An antiderivative found by substitution is evaluated at the original limits without converting them.",
+   "official_evidence": [
+    "sg-23:17"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-08012"
+   ],
+   "related_errors": [],
+   "scope": "shared",
+   "scoring_consequence": "The response is not eligible for the answer point (sg-23:17).",
+   "skills": [
+    "BC-SKL-08022"
+   ],
+   "sources": [
+    "sg-23:17"
+   ],
+   "status": "retired",
+   "superseded_by": "BC-ERR-06018",
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-08011"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask for the area of a semicircle of a stated radius.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-08035",
+   "name": "Full circle area used for a semicircular cross section",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "time pressure"
+   ],
+   "observed_behavior": "The area formula omits the factor of one half that makes the section a semicircle.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-08019"
+   ],
+   "related_errors": [],
+   "scope": "shared",
+   "scoring_consequence": "The volume is twice the correct value and the setup point is lost.",
+   "skills": [
+    "BC-SKL-08038"
+   ],
+   "sources": [
+    "ced:159"
+   ],
+   "status": "retired",
+   "superseded_by": "BC-ERR-06013",
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-08014",
+    "BC-QA-08011"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask the student to write the expression that produced the number.",
+   "evidence_tag": "single-source",
+   "id": "BC-ERR-08045",
+   "name": "Numerical length or volume reported with no integral shown",
+   "non_conceptual_causes": [
+    "time pressure"
+   ],
+   "observed_behavior": "A decimal appears for an arc length or a volume with no integral expression anywhere in the response.",
+   "official_evidence": [
+    "crabbc-25:30"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-09008"
+   ],
+   "related_errors": [
+    "BC-ERR-99021"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The setup point is lost.",
+   "skills": [
+    "BC-SKL-08059",
+    "BC-SKL-08035"
+   ],
+   "sources": [
+    "crabbc-25:30"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-09001",
+    "BC-QA-09013",
+    "BC-QA-09009"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Recompute with the stored value and compare the third decimal place.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-09006",
+   "name": "Intermediate value rounded before a later step",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "time pressure"
+   ],
+   "observed_behavior": "A stored derivative, angle, or speed is truncated and then reused, moving the final answer.",
+   "official_evidence": [
+    "sg-25:6",
+    "sg-25:7"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-09008"
+   ],
+   "related_errors": [
+    "BC-ERR-99019"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "The answer point is lost for inappropriate rounding, and at most one point per question is withheld on that ground (sg-25:6).",
+   "skills": [
+    "BC-SKL-09004",
+    "BC-SKL-09009",
+    "BC-SKL-09012",
+    "BC-SKL-09030",
+    "BC-SKL-09038",
+    "BC-SKL-09042",
+    "BC-SKL-09016"
+   ],
+   "sources": [
+    "sg-25:6",
+    "sg-25:7"
+   ],
+   "status": "retired",
+   "superseded_by": "BC-ERR-99019",
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-09001"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask what the slope is when dy/dt is zero and dx/dt is not.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-09008",
+   "name": "Horizontal and vertical tangent conditions exchanged",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "a copied template from a similar exercise"
+   ],
+   "observed_behavior": "The response solves dx/dt equal to zero for horizontal tangents.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-09003"
+   ],
+   "related_errors": [],
+   "scope": "BC_only",
+   "scoring_consequence": "The reported parameter values are wrong.",
+   "skills": [
+    "BC-SKL-09006"
+   ],
+   "sources": [
+    "ced:171"
+   ],
+   "status": "retired",
+   "superseded_by": "BC-ERR-03012",
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-09004",
+    "BC-QA-09003",
+    "BC-QA-09012"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask the student to write the expression that produced the number.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-09011",
+   "name": "Numerical answer presented with no setup",
+   "non_conceptual_causes": [
+    "time pressure"
+   ],
+   "observed_behavior": "A decimal appears for a vector component, a length, an area, or a derivative with no supporting expression.",
+   "official_evidence": [
+    "sg-23:6",
+    "sg-23:8"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-09008"
+   ],
+   "related_errors": [
+    "BC-ERR-99021"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "An unsupported correct acceleration vector earned one of two points in 2023, and an unsupported distance earned neither of two (sg-23:6, sg-23:8).",
+   "skills": [
+    "BC-SKL-09009",
+    "BC-SKL-09012",
+    "BC-SKL-09017",
+    "BC-SKL-09038",
+    "BC-SKL-09028"
+   ],
+   "sources": [
+    "sg-23:6",
+    "sg-23:8"
+   ],
+   "status": "retired",
+   "superseded_by": "BC-ERR-99021",
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-09007",
+    "BC-QA-09003"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask for both quantities on a path that returns to its starting point.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-09015",
+   "name": "Magnitude of the displacement reported as the distance travelled",
+   "non_conceptual_causes": [
+    "misread of the prompt",
+    "a copied template from a similar exercise"
+   ],
+   "observed_behavior": "The response integrates the velocity components, then takes the magnitude, and calls the result the distance travelled.",
+   "official_evidence": [
+    "sg-24:6",
+    "cr-24:27"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-09006"
+   ],
+   "related_errors": [
+    "BC-ERR-99010",
+    "BC-ERR-99029"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "The setup point is lost because the integrand is not the speed (sg-24:6).",
+   "skills": [
+    "BC-SKL-09025",
+    "BC-SKL-09013",
+    "BC-SKL-09020"
+   ],
+   "sources": [
+    "sg-24:6",
+    "cr-24:27"
+   ],
+   "status": "retired",
+   "superseded_by": "BC-ERR-99010",
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-09004",
+    "BC-QA-09005"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask the student to check the equality by substituting the value of the parameter.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-09018",
+   "name": "Variable expression equated to a numerical value",
+   "non_conceptual_causes": [
+    "time pressure",
+    "careless transcription"
+   ],
+   "observed_behavior": "A chain such as an expression in t set equal to its value at one time is written as a single equality.",
+   "official_evidence": [
+    "sg-23:6",
+    "sg-25:8"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-09008"
+   ],
+   "related_errors": [
+    "BC-ERR-99002"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "In 2023 such a response earned one of the two available points (sg-23:6); in 2025 an unclear linkage between a correct integral and a correct value was treated as scratch work and cost nothing (sg-25:8).",
+   "skills": [
+    "BC-SKL-09017",
+    "BC-SKL-09026",
+    "BC-SKL-09042",
+    "BC-SKL-09028"
+   ],
+   "sources": [
+    "sg-23:6",
+    "sg-25:8"
+   ],
+   "status": "retired",
+   "superseded_by": "BC-ERR-99002",
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-09005"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask for the same coordinate with a different starting position.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-09020",
+   "name": "Initial position not added to the accumulated change",
+   "non_conceptual_causes": [
+    "time pressure",
+    "misread of the prompt"
+   ],
+   "observed_behavior": "The definite integral of a velocity component is reported as the coordinate.",
+   "official_evidence": [
+    "sg-24:7"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-09010"
+   ],
+   "related_errors": [],
+   "scope": "BC_only",
+   "scoring_consequence": "The initial condition point is lost and the answer point falls with it (sg-24:7).",
+   "skills": [
+    "BC-SKL-09021",
+    "BC-SKL-09026"
+   ],
+   "sources": [
+    "sg-24:7"
+   ],
+   "status": "retired",
+   "superseded_by": "BC-ERR-08011",
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-09011"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask whether the coordinate at each endpoint has been compared with the value at the candidate.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-09033",
+   "name": "Local argument offered for a farthest point",
+   "non_conceptual_causes": [
+    "time pressure",
+    "a copied template from a similar exercise"
+   ],
+   "observed_behavior": "A first or second derivative test is presented as the justification that a point on the curve is farthest from an axis.",
+   "official_evidence": [
+    "sg-25:9"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-09016"
+   ],
+   "related_errors": [
+    "BC-ERR-99004"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "The justification point is lost while the answer point remains available (sg-25:9).",
+   "skills": [
+    "BC-SKL-09034"
+   ],
+   "sources": [
+    "sg-25:9"
+   ],
+   "status": "retired",
+   "superseded_by": "BC-ERR-99004",
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10002",
+    "BC-QA-10003"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask what the next partial sum is and whether the two answers can both be the value of the series.",
+   "evidence_tag": "single-source",
+   "id": "BC-ERR-10002",
+   "name": "Value of a convergent series reported as a partial sum",
+   "non_conceptual_causes": [
+    "time pressure",
+    "arithmetic shortcut taken before the pattern is recognised"
+   ],
+   "notes": "Matches the cross-unit Chief Reader error record BC-ERR-99038.",
+   "observed_behavior": "The response adds the first few terms of the series and presents that total as the value of the infinite series.",
+   "official_evidence": [
+    "ced:186",
+    "cr-22:30"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-10002"
+   ],
+   "related_errors": [
+    "BC-ERR-99038"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "The value point is lost because the reported number is a partial sum rather than the limit.",
+   "skills": [
+    "BC-SKL-10002",
+    "BC-SKL-10004",
+    "BC-SKL-10008"
+   ],
+   "sources": [
+    "ced:186",
+    "cr-22:30"
+   ],
+   "status": "retired",
+   "superseded_by": "BC-ERR-99038",
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10008"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask what value of the variable the approximation is being made at.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-10025",
+   "name": "Bounding term evaluated at the wrong input",
+   "non_conceptual_causes": [
+    "misread of the input",
+    "arithmetic slip in a power"
+   ],
+   "notes": "",
+   "observed_behavior": "The response identifies the correct omitted term but substitutes the index, the centre, or another value in place of the stated input.",
+   "official_evidence": [
+    "sg-22:21"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-99007"
+   ],
+   "related_errors": [],
+   "scope": "BC_only",
+   "scoring_consequence": "The point attached to using the term correctly is lost (sg-22:21).",
+   "skills": [
+    "BC-SKL-10041"
+   ],
+   "sources": [
+    "sg-22:21"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10008",
+    "BC-QA-10009"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask whether the error is known exactly or only bounded, and what symbol says so.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-10026",
+   "name": "Error written as equal to the bounding term",
+   "non_conceptual_causes": [
+    "shorthand with the equals sign",
+    "time pressure"
+   ],
+   "notes": "Matches the cross-unit Chief Reader error record BC-ERR-99016, BC-ERR-99002.",
+   "observed_behavior": "The response presents the error as equal to the bounding expression rather than at most that expression.",
+   "official_evidence": [
+    "sg-22:21",
+    "sg-23:20",
+    "sg-24:21",
+    "crabbc-25:34"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-99007"
+   ],
+   "related_errors": [
+    "BC-ERR-99016",
+    "BC-ERR-99002"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "A statement of equality does not earn the justification point in either bound (sg-22:21, sg-23:20, sg-24:21).",
+   "skills": [
+    "BC-SKL-10042",
+    "BC-SKL-10051"
+   ],
+   "sources": [
+    "sg-22:21",
+    "sg-23:20",
+    "sg-24:21",
+    "crabbc-25:34"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10008",
+    "BC-QA-10009"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask the student to finish the sentence stating what the error is less than.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-10027",
+   "name": "Comparison with the tolerance left incomplete",
+   "non_conceptual_causes": [
+    "time pressure",
+    "assumption that the comparison is obvious"
+   ],
+   "notes": "",
+   "observed_behavior": "The response computes the bounding value but never states that it is at most the tolerance the prompt named.",
+   "official_evidence": [
+    "sg-23:20",
+    "sg-22:21"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-99007"
+   ],
+   "related_errors": [],
+   "scope": "BC_only",
+   "scoring_consequence": "The communication point requires the inequality against the tolerance to be presented (sg-23:20, sg-22:21).",
+   "skills": [
+    "BC-SKL-10042",
+    "BC-SKL-10051"
+   ],
+   "sources": [
+    "sg-23:20",
+    "sg-22:21"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10009"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask which derivative appears in the bound for a fourth degree polynomial.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-10032",
+   "name": "Lagrange bound assembled in the wrong form",
+   "non_conceptual_causes": [
+    "misremembered formula",
+    "off by one slip in the order"
+   ],
+   "notes": "Matches the cross-unit Chief Reader error record BC-ERR-99016.",
+   "observed_behavior": "The response writes the bound without the maximum of the next derivative, with the wrong power of the difference, or with the wrong factorial.",
+   "official_evidence": [
+    "sg-23:20",
+    "crabbc-25:33"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-99007",
+    "BC-MIS-10017"
+   ],
+   "related_errors": [
+    "BC-ERR-99016"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "The form point is lost, and with it the comparison point that depends on it (sg-23:20).",
+   "skills": [
+    "BC-SKL-10049",
+    "BC-SKL-10050"
+   ],
+   "sources": [
+    "sg-23:20",
+    "crabbc-25:33"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10013"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask for the two inequalities that the absolute value statement stands for.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-10035",
+   "name": "Absolute value dropped when the ratio inequality is solved",
+   "non_conceptual_causes": [
+    "algebra slip",
+    "time pressure"
+   ],
+   "notes": "Matches the cross-unit Chief Reader error record BC-ERR-99037.",
+   "observed_behavior": "The response converts the inequality on the ratio into a one sided inequality, producing a half interval.",
+   "official_evidence": [
+    "sg-22:21",
+    "sg-25:25",
+    "cr-22:30"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-10023"
+   ],
+   "related_errors": [
+    "BC-ERR-99037"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "An inequality in absolute value alone is not sufficient for the interior point; the compound inequality is required (sg-22:21, sg-25:25).",
+   "skills": [
+    "BC-SKL-10055"
+   ],
+   "sources": [
+    "sg-22:21",
+    "sg-25:25",
+    "cr-22:30"
+   ],
+   "status": "retired",
+   "superseded_by": "BC-ERR-99037",
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10014"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask how far the interval reaches from its centre.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-10036",
+   "name": "Interval presented where the radius of convergence was requested",
+   "non_conceptual_causes": [
+    "misread of the prompt",
+    "time pressure"
+   ],
+   "notes": "",
+   "observed_behavior": "The response solves the inequality and presents an interval without naming the radius as a value.",
+   "official_evidence": [
+    "sg-21:24"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-99013"
+   ],
+   "related_errors": [],
+   "scope": "BC_only",
+   "scoring_consequence": "The radius point cannot be earned by presenting an interval alone (sg-21:24).",
+   "skills": [
+    "BC-SKL-10056"
+   ],
+   "sources": [
+    "sg-21:24"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10013"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask which endpoints belong to the interval and how the notation shows that.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-10038",
+   "name": "Interval reported with endpoint inclusion that contradicts the endpoint analysis",
+   "non_conceptual_causes": [
+    "notation slip",
+    "time pressure"
+   ],
+   "notes": "Matches the cross-unit Chief Reader error record BC-ERR-99037.",
+   "observed_behavior": "The response tests the endpoints correctly and then writes an interval whose brackets do not match the findings, or attaches a closed bracket to an unbounded end.",
+   "official_evidence": [
+    "sg-25:25",
+    "cr-22:30"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-99013",
+    "BC-MIS-10024"
+   ],
+   "related_errors": [
+    "BC-ERR-99037"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "The final interval point requires the interval to match the analysis (sg-25:25).",
+   "skills": [
+    "BC-SKL-10059"
+   ],
+   "sources": [
+    "sg-25:25",
+    "cr-22:30"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10016",
+    "BC-QA-10018",
+    "BC-QA-10019"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask the student to substitute n equal to one and two into the proposed general term.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-10039",
+   "name": "General term of a series mis-differentiated or mis-assembled",
+   "non_conceptual_causes": [
+    "algebra slip in the exponent",
+    "off by one slip in the index",
+    "time pressure"
+   ],
+   "notes": "Matches the cross-unit Chief Reader error record BC-ERR-99018.",
+   "observed_behavior": "The response writes several correct terms but produces a general term that does not reproduce them, often after differentiating with respect to the index or mishandling the alternating factor.",
+   "official_evidence": [
+    "sg-25:26",
+    "sg-24:22",
+    "cr-23:35",
+    "crabbc-25:38"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-10020"
+   ],
+   "related_errors": [
+    "BC-ERR-99018"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "The general term is a separate scored point from the first terms (sg-25:26, sg-24:22).",
+   "skills": [
+    "BC-SKL-10060",
+    "BC-SKL-10068",
+    "BC-SKL-10069"
+   ],
+   "sources": [
+    "sg-25:26",
+    "sg-24:22",
+    "cr-23:35",
+    "crabbc-25:38"
+   ],
+   "status": "retired",
+   "superseded_by": "BC-ERR-99018",
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10018"
+   ],
+   "created": "2026-09-19",
+   "discriminating_probe": "Ask what the CED says about the radius of a term-by-term derivative.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-10042",
+   "name": "Radius of a differentiated or integrated series recomputed or claimed to change",
+   "non_conceptual_causes": [
+    "algebra slip in the repeated ratio test",
+    "time pressure"
+   ],
+   "notes": "",
+   "observed_behavior": "The response asserts a different radius for the derived series, or redoes the ratio test and reports a value inconsistent with the original radius.",
+   "official_evidence": [
+    "sg-24:22",
+    "ced:198"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-10025",
+    "BC-MIS-99013"
+   ],
+   "related_errors": [],
+   "scope": "BC_only",
+   "scoring_consequence": "The radius point rests on the preservation statement, so an inconsistent value loses it (sg-24:22).",
+   "skills": [
+    "BC-SKL-10070"
+   ],
+   "sources": [
+    "sg-24:22",
+    "ced:198"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-09004",
+    "BC-QA-09005"
+   ],
+   "created": "2026-09-19",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-99002",
+   "instances": [
+    {
+     "doc": "cr-22",
+     "level": "AB",
+     "page": 21,
+     "part": "a",
+     "question": "Q6",
+     "summary": "Strings of equal signs linked expressions that are not equal in the velocity computation.",
+     "year": 2022
+    },
+    {
+     "doc": "cr-22",
+     "level": "BC",
+     "page": 24,
+     "part": "a,b",
+     "question": "Q2",
+     "summary": "Responses equated a function with the function evaluated at t equals 4, and equated symbolic second derivatives with numerical values.",
+     "year": 2022
+    },
+    {
+     "doc": "cr-23",
+     "level": "AB",
+     "page": 19,
+     "part": "a,c,d",
+     "question": "Q5",
+     "summary": "h prime of x set equal to a chain rule expression evaluated at 7, and m of x set equal to 37.",
+     "year": 2023
+    },
+    {
+     "doc": "cr-23",
+     "level": "BC",
+     "page": 27,
+     "part": "b,c",
+     "question": "Q2",
+     "summary": "Linkage errors in the speed equation and in the setup for x of 1.",
+     "year": 2023
+    },
+    {
+     "doc": "cr-23",
+     "level": "BC",
+     "page": 35,
+     "part": "a,c",
+     "question": "Q6",
+     "summary": "Fourth derivative of f at a general x equated to its value at 0, and g double prime of x equated to g double prime of 0.",
+     "year": 2023
+    },
+    {
+     "doc": "cr-24",
+     "level": "AB",
+     "page": 8,
+     "part": "b",
+     "question": "Q2",
+     "summary": "a of t written equal to v prime of t equal to negative 1, mixing a function with a single value.",
+     "year": 2024
+    },
+    {
+     "doc": "cr-24",
+     "level": "AB/BC",
+     "page": 15,
+     "part": "c",
+     "question": "Q4",
+     "summary": "h double prime of 6 equated to h double prime of x and to f double prime of x.",
+     "year": 2024
+    },
+    {
+     "doc": "cr-24",
+     "level": "BC",
+     "page": 27,
+     "part": "a",
+     "question": "Q2",
+     "summary": "The general speed expression in t equated to the speed at t equals 2.",
+     "year": 2024
+    },
+    {
+     "doc": "cr-24",
+     "level": "BC",
+     "page": 31,
+     "part": "a",
+     "question": "Q5",
+     "summary": "h prime of pi equated to an expression still written in x, and two distinct variables used in one equation.",
+     "year": 2024
+    },
+    {
+     "doc": "crabbc-25",
+     "level": "AB",
+     "page": 25,
+     "part": "A",
+     "question": "Q6",
+     "summary": "Responses wrote dy in place of dy/dx and dropped the equals zero on the right side after implicit differentiation.",
+     "year": 2025
+    }
+   ],
+   "name": "Linkage error equating a variable expression with a numerical value",
+   "non_conceptual_causes": [
+    "equals sign used as punctuation between steps",
+    "no distinction drawn in written work between a function and its value at a point",
+    "copying a calculator result onto the end of a symbolic line",
+    "time pressure",
+    "careless transcription"
+   ],
+   "observed_behavior": "Responses join unequal objects with an equals sign, for example writing a general expression in t equal to the value of that expression at one instant, or stringing several lines of work together with equals signs.",
+   "official_evidence": [
+    "sg-23:6",
+    "sg-25:8"
+   ],
+   "official_evidence_notes": "2023 AB Q5(a), cr-23:19; 2024 BC Q2(a), cr-24:27; 2025 AB Q6(A), crabbc-25:25",
+   "possible_misconceptions": [
+    "BC-MIS-99011",
+    "BC-MIS-09008"
+   ],
+   "related_errors": [],
+   "scope": "shared",
+   "scoring_consequence": "The presentation point or the setup point is lost, and in some parts the response becomes ineligible for later points in that part.",
+   "skills": [
+    "BC-SKL-09017",
+    "BC-SKL-09026",
+    "BC-SKL-09042",
+    "BC-SKL-09028"
+   ],
+   "sources": [
+    "cr-22:24",
+    "cr-22:21",
+    "cr-23:19",
+    "cr-23:28",
+    "cr-24:8",
+    "cr-24:27",
+    "crabbc-25:25",
+    "sg-23:6",
+    "sg-25:8"
+   ],
+   "status": "active",
+   "teacher_advice": "The reports advise modelling the equals sign as a statement of equality rather than punctuation, never equating a variable expression with a constant, and writing notation such as the derivative evaluated at a point with an explicit subscript or argument.",
+   "topics": [
+    "BC-TOP-0202",
+    "BC-TOP-0401"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-04003"
+   ],
+   "created": "2026-09-19",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-99003",
+   "instances": [
+    {
+     "doc": "cr-22",
+     "level": "AB",
+     "page": 21,
+     "part": "b",
+     "question": "Q6",
+     "summary": "Chief Reader names as the most common misconception the belief that the sign of acceleration alone determines whether speed is increasing or decreasing.",
+     "year": 2022
+    },
+    {
+     "doc": "cr-23",
+     "level": "AB",
+     "page": 7,
+     "part": "b",
+     "question": "Q2",
+     "summary": "A large proportion of responses reasoned that Stephen was slowing down because a of 60 is negative.",
+     "year": 2023
+    },
+    {
+     "doc": "cr-24",
+     "level": "AB",
+     "page": 7,
+     "part": "b",
+     "question": "Q2",
+     "summary": "Quite a few responses considered only the sign of a of 1.5, and some gave global sign claims with no reference to t equals 1.5.",
+     "year": 2024
+    },
+    {
+     "doc": "crabbc-25",
+     "level": "AB",
+     "page": 22,
+     "part": "C",
+     "question": "Q5",
+     "summary": "Some responses addressed only the sign of the derivative of velocity and did not show that the determination depends on the signs of both acceleration and velocity.",
+     "year": 2025
+    }
+   ],
+   "name": "Speed decided from the sign of acceleration alone",
+   "non_conceptual_causes": [
+    "rule memorised as negative acceleration means slowing down",
+    "velocity value available but not evaluated",
+    "conclusion stated before both signs are compared",
+    "the rule is recalled in an abbreviated form",
+    "time pressure"
+   ],
+   "observed_behavior": "Responses conclude that a particle is speeding up or slowing down from the sign of acceleration by itself, without also considering the sign of velocity at that instant.",
+   "official_evidence": [
+    "cr-22:21",
+    "crabbc-25:22"
+   ],
+   "official_evidence_notes": "2023 AB Q2(b), cr-23:7; 2024 AB Q2(b), cr-24:7; 2025 AB Q5(C), crabbc-25:22",
+   "possible_misconceptions": [
+    "BC-MIS-99001"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The reasoning point for speeding up or slowing down is not earned, even when the reported acceleration value is correct.",
+   "skills": [
+    "BC-SKL-04010"
+   ],
+   "sources": [
+    "cr-22:21",
+    "cr-23:7",
+    "cr-24:7",
+    "crabbc-25:22"
+   ],
+   "status": "active",
+   "teacher_advice": "The reports advise connecting position, velocity, acceleration and speed explicitly, and requiring students to apply the same-sign idea to the particular problem rather than reciting it as a formula.",
+   "topics": [
+    "BC-TOP-0402"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-05006",
+    "BC-QA-05011",
+    "BC-QA-05013",
+    "BC-QA-06003",
+    "BC-QA-08006",
+    "BC-QA-09011"
+   ],
+   "created": "2026-09-19",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-99004",
+   "instances": [
+    {
+     "doc": "cr-22",
+     "level": "AB/BC",
+     "page": 4,
+     "part": "d",
+     "question": "Q1",
+     "summary": "Many responses did not evaluate N at both endpoints and the interior critical point, justifying only a local maximum.",
+     "year": 2022
+    },
+    {
+     "doc": "cr-22",
+     "level": "AB/BC",
+     "page": 11,
+     "part": "d",
+     "question": "Q3",
+     "summary": "Responses gave only a sign change of g prime at x equals 5 without stating it is the only critical point on the interval.",
+     "year": 2022
+    },
+    {
+     "doc": "cr-23",
+     "level": "AB/BC",
+     "page": 16,
+     "part": "d",
+     "question": "Q4",
+     "summary": "Very rarely did responses consider all three critical points, and some reported only a local minimum without the endpoints.",
+     "year": 2023
+    },
+    {
+     "doc": "crabbc-25",
+     "level": "AB/BC",
+     "page": 4,
+     "part": "D",
+     "question": "Q1",
+     "summary": "Justifications other than the candidates test presented local arguments that did not explain the behaviour of A over the whole interval.",
+     "year": 2025
+    },
+    {
+     "doc": "crabbc-25",
+     "level": "AB/BC",
+     "page": 18,
+     "part": "D",
+     "question": "Q4",
+     "summary": "Incomplete candidates tests left out x equals 6 or x equals 12 without arguing why those cannot be the minimum.",
+     "year": 2025
+    },
+    {
+     "doc": "crabbc-25",
+     "level": "BC",
+     "page": 30,
+     "part": "C",
+     "question": "Q2",
+     "summary": "Local arguments and candidates tests containing errors were the common reasons the justification point was not earned.",
+     "year": 2025
+    }
+   ],
+   "name": "Local argument offered where a global argument is required",
+   "non_conceptual_causes": [
+    "candidates test known but not carried through every candidate",
+    "endpoint values hard to compute from the given representation",
+    "sign chart drawn but not interpreted in words",
+    "arithmetic slip",
+    "misread of the question or the figure",
+    "time pressure",
+    "habit carried over from relative extremum questions",
+    "a copied template from a similar exercise"
+   ],
+   "observed_behavior": "Responses justify an absolute maximum or minimum on a closed interval by a sign change at one point, or run an incomplete candidates test that omits an endpoint or an interior critical point.",
+   "official_evidence": [
+    "sg-25:19",
+    "sg-25:5",
+    "crabbc-25:4",
+    "sg-25:9"
+   ],
+   "official_evidence_notes": "2023 AB/BC Q4(d), cr-23:16; 2025 AB/BC Q1(D), crabbc-25:4; 2025 AB/BC Q4(D), crabbc-25:18",
+   "possible_misconceptions": [
+    "BC-MIS-99010",
+    "BC-MIS-05018",
+    "BC-MIS-06010"
+   ],
+   "related_errors": [],
+   "scope": "shared",
+   "scoring_consequence": "The justification point for the absolute extremum is not earned; the answer point may still be available.",
+   "skills": [
+    "BC-SKL-05028",
+    "BC-SKL-05029",
+    "BC-SKL-05053",
+    "BC-SKL-06026",
+    "BC-SKL-08014",
+    "BC-SKL-09034"
+   ],
+   "sources": [
+    "cr-22:11",
+    "cr-22:4",
+    "cr-23:16",
+    "crabbc-25:4",
+    "crabbc-25:18",
+    "crabbc-25:30",
+    "sg-25:19",
+    "sg-25:5",
+    "sg-25:9"
+   ],
+   "status": "active",
+   "teacher_advice": "The reports advise practising both forms of argument, the candidates test and a full interval sign argument, and having students identify which situations call for each.",
+   "topics": [
+    "BC-TOP-0505",
+    "BC-TOP-0504"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-08007",
+    "BC-QA-08001"
+   ],
+   "created": "2026-09-19",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-99005",
+   "instances": [
+    {
+     "doc": "cr-22",
+     "level": "AB/BC",
+     "page": 14,
+     "part": "a",
+     "question": "Q4",
+     "summary": "Responses reported centimetres squared per day or centimetres per day, or no units, for a second derivative approximation.",
+     "year": 2022
+    },
+    {
+     "doc": "cr-23",
+     "level": "AB",
+     "page": 7,
+     "part": "b",
+     "question": "Q2",
+     "summary": "Several responses gave no acceleration units or gave meters per second.",
+     "year": 2023
+    },
+    {
+     "doc": "cr-24",
+     "level": "AB/BC",
+     "page": 4,
+     "part": "a",
+     "question": "Q1",
+     "summary": "Most recognised the units would be a ratio but made errors in the numerator, the denominator or both.",
+     "year": 2024
+    },
+    {
+     "doc": "crabbc-25",
+     "level": "AB/BC",
+     "page": 12,
+     "part": "A",
+     "question": "Q3",
+     "summary": "Many responses gave units for the rate rather than for its derivative, or gave none at all.",
+     "year": 2025
+    }
+   ],
+   "name": "Units omitted or built incorrectly",
+   "non_conceptual_causes": [
+    "units treated as decoration after the numerical work",
+    "numerator or denominator of the ratio misidentified",
+    "question read without noticing the explicit request for units",
+    "time pressure",
+    "misread of the prompt"
+   ],
+   "observed_behavior": "Responses give no units where units are requested, or report units of the original quantity instead of the derived one, for example words per minute for a second difference quotient.",
+   "official_evidence": [
+    "sg-25:11",
+    "sg-23:2"
+   ],
+   "official_evidence_notes": "2023 AB Q2(b), cr-23:7; 2024 AB/BC Q1(a), cr-24:4; 2025 AB/BC Q3(A), crabbc-25:12",
+   "possible_misconceptions": [
+    "BC-MIS-08009"
+   ],
+   "related_errors": [],
+   "scope": "shared",
+   "scoring_consequence": "The units point is not earned; it is scored separately from the value.",
+   "skills": [
+    "BC-SKL-08005",
+    "BC-SKL-08015",
+    "BC-SKL-08017"
+   ],
+   "sources": [
+    "cr-22:14",
+    "cr-23:7",
+    "cr-24:4",
+    "crabbc-25:12",
+    "sg-25:11",
+    "sg-23:2"
+   ],
+   "status": "active",
+   "teacher_advice": "The reports advise dimensional analysis practice, and a habit of circling the units given in a table or on the axes and then dividing or multiplying them according to whether a derivative or an antiderivative is being taken.",
+   "topics": [
+    "BC-TOP-0401",
+    "BC-TOP-0203"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-08004",
+    "BC-QA-08008"
+   ],
+   "created": "2026-09-19",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-99006",
+   "instances": [
+    {
+     "doc": "cr-22",
+     "level": "AB/BC",
+     "page": 2,
+     "part": "a",
+     "question": "Q1",
+     "summary": "Occasionally responses failed to include the differential dt in the integral for total vehicles.",
+     "year": 2022
+    },
+    {
+     "doc": "cr-22",
+     "level": "BC",
+     "page": 24,
+     "part": "c",
+     "question": "Q2",
+     "summary": "Setups omitted the differential or used the wrong one, dy instead of dt.",
+     "year": 2022
+    },
+    {
+     "doc": "cr-23",
+     "level": "BC",
+     "page": 28,
+     "part": "c",
+     "question": "Q2",
+     "summary": "Many responses left dt out of the setup for x of 1, giving an ambiguous expression that could not be credited.",
+     "year": 2023
+    },
+    {
+     "doc": "cr-24",
+     "level": "AB",
+     "page": 8,
+     "part": "c",
+     "question": "Q2",
+     "summary": "Setups such as negative 3 plus an integral of v of t with no differential, or with dx.",
+     "year": 2024
+    },
+    {
+     "doc": "cr-24",
+     "level": "BC",
+     "page": 27,
+     "part": "b,c",
+     "question": "Q2",
+     "summary": "Definite integrals presented without a differential, producing ambiguous setups for y of 0.",
+     "year": 2024
+    },
+    {
+     "doc": "crabbc-25",
+     "level": "AB",
+     "page": 23,
+     "part": "D",
+     "question": "Q5",
+     "summary": "Omitting a differential could lead to mishandling the constant and to losing the integrand or antiderivative point.",
+     "year": 2025
+    }
+   ],
+   "name": "Differential omitted from an integral expression",
+   "non_conceptual_causes": [
+    "differential treated as decoration",
+    "integrand copied from the stem without closing the expression",
+    "variable of integration shares a name with a limit of integration",
+    "time pressure",
+    "arithmetic slip"
+   ],
+   "observed_behavior": "Responses present a definite integral with no differential, or with a differential in the wrong variable, producing a setup the reader cannot interpret.",
+   "official_evidence": [
+    "sg-23:8"
+   ],
+   "official_evidence_notes": "2023 BC Q2(c), cr-23:28; 2024 BC Q2(c), cr-24:27; 2025 AB Q5(D), crabbc-25:23",
+   "possible_misconceptions": [
+    "BC-MIS-08009"
+   ],
+   "related_errors": [],
+   "scope": "shared",
+   "scoring_consequence": "The setup point is not earned when the resulting expression is ambiguous; in some parts later points in that part are also lost.",
+   "skills": [
+    "BC-SKL-08016",
+    "BC-SKL-08019",
+    "BC-SKL-08025"
+   ],
+   "sources": [
+    "cr-22:24",
+    "cr-22:2",
+    "cr-23:28",
+    "cr-24:27",
+    "crabbc-25:23",
+    "sg-23:8"
+   ],
+   "status": "active",
+   "teacher_advice": "The reports advise insisting on the differential in every integral expression and on parentheses that separate the integrand from the differential.",
+   "topics": [
+    "BC-TOP-0603",
+    "BC-TOP-0608"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-06011",
+    "BC-QA-04005"
+   ],
+   "created": "2026-09-19",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-99007",
+   "instances": [
+    {
+     "doc": "cr-22",
+     "level": "AB",
+     "page": 21,
+     "part": "d",
+     "question": "Q6",
+     "summary": "Responses treated infinity as a number, writing expressions with infinity substituted for t.",
+     "year": 2022
+    },
+    {
+     "doc": "cr-22",
+     "level": "BC",
+     "page": 27,
+     "part": "c",
+     "question": "Q5",
+     "summary": "The most frequent error was failure to use clear and consistent limit notation; many omitted it entirely and did arithmetic with infinity.",
+     "year": 2022
+    },
+    {
+     "doc": "cr-23",
+     "level": "AB/BC",
+     "page": 16,
+     "part": "c",
+     "question": "Q4",
+     "summary": "Responses wrote the limit of the ratio equal to zero over zero, setting a defined limit equal to an undefined symbol.",
+     "year": 2023
+    },
+    {
+     "doc": "cr-23",
+     "level": "BC",
+     "page": 31,
+     "part": "b",
+     "question": "Q5",
+     "summary": "Limit notation was introduced then dropped, used too late, or mismatched with the upper bound, and arithmetic was performed with infinity.",
+     "year": 2023
+    }
+   ],
+   "name": "Arithmetic performed with infinity and limit notation dropped",
+   "non_conceptual_causes": [
+    "infinity written as a shorthand for a large number",
+    "limit notation seen as an optional formality",
+    "mismatch between the limiting variable and the variable used as the upper bound",
+    "shortcut taken under time pressure",
+    "notation habit",
+    "shorthand carried from scratch work",
+    "time pressure"
+   ],
+   "observed_behavior": "Responses substitute the infinity symbol for the variable and compute with it, or open an improper integral with limit notation and then abandon it before the evaluation is complete.",
+   "official_evidence": [
+    "sg-23:17",
+    "sg-25:4",
+    "cr-22:21"
+   ],
+   "official_evidence_notes": "2023 AB/BC Q4(c), cr-23:16; 2023 BC Q5(b), cr-23:31",
+   "possible_misconceptions": [
+    "BC-MIS-99008",
+    "BC-MIS-04014"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The response becomes ineligible for the final point of the part; in improper integral parts the evaluation points are lost.",
+   "skills": [
+    "BC-SKL-06067",
+    "BC-SKL-06068",
+    "BC-SKL-04016"
+   ],
+   "sources": [
+    "cr-22:27",
+    "cr-22:21",
+    "cr-23:16",
+    "cr-23:31",
+    "cr-23:33",
+    "sg-23:17",
+    "sg-25:4"
+   ],
+   "status": "active",
+   "teacher_advice": "The reports advise never performing arithmetic with the infinity symbol, carrying limit notation through the whole evaluation, and keeping the limiting variable matched to the bound of integration.",
+   "topics": [
+    "BC-TOP-0115",
+    "BC-TOP-0613",
+    "BC-TOP-0407"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-05001",
+    "BC-QA-05010"
+   ],
+   "created": "2026-09-19",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-99008",
+   "instances": [
+    {
+     "doc": "cr-22",
+     "level": "AB/BC",
+     "page": 14,
+     "part": "b",
+     "question": "Q4",
+     "summary": "Many responses failed to explain why r prime was continuous, or discussed the continuity of r rather than r prime, and failed to bound negative 6.",
+     "year": 2022
+    },
+    {
+     "doc": "cr-23",
+     "level": "AB/BC",
+     "page": 4,
+     "part": "b",
+     "question": "Q1",
+     "summary": "Many responses claimed f is continuous with no justification, and some invoked the Intermediate Value Theorem or the Extreme Value Theorem instead.",
+     "year": 2023
+    },
+    {
+     "doc": "cr-23",
+     "level": "AB/BC",
+     "page": 16,
+     "part": "c",
+     "question": "Q4",
+     "summary": "The most common mistake was applying L'Hospital's Rule without first checking that both limits were zero.",
+     "year": 2023
+    },
+    {
+     "doc": "crabbc-25",
+     "level": "AB/BC",
+     "page": 12,
+     "part": "B",
+     "question": "Q3",
+     "summary": "Responses stated R is continuous without justification, did not show 155 lies between listed values, or applied the Mean Value Theorem instead.",
+     "year": 2025
+    }
+   ],
+   "name": "Hypotheses of a theorem not verified before its conclusion is used",
+   "non_conceptual_causes": [
+    "theorem recalled as a conclusion only",
+    "continuity assumed as obvious",
+    "the required table or graph values not quoted",
+    "arithmetic slip",
+    "misread of the question or the figure",
+    "time pressure"
+   ],
+   "observed_behavior": "Responses apply the Mean Value Theorem, the Intermediate Value Theorem or L'Hospital's Rule without establishing continuity from differentiability, without bounding the target value between two function values, or without confirming the indeterminate form.",
+   "official_evidence": [
+    "sg-23:3"
+   ],
+   "official_evidence_notes": "2023 AB/BC Q1(b), cr-23:4; 2023 AB/BC Q4(c), cr-23:16; 2025 AB/BC Q3(B), crabbc-25:12",
+   "possible_misconceptions": [
+    "BC-MIS-99009"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The condition point is not earned; in several years this was the point earned by the smallest proportion of responses on the question.",
+   "skills": [
+    "BC-SKL-05001",
+    "BC-SKL-05007"
+   ],
+   "sources": [
+    "cr-22:14",
+    "cr-23:4",
+    "cr-23:16",
+    "crabbc-25:12",
+    "crabbc-25:14",
+    "sg-23:3"
+   ],
+   "status": "active",
+   "teacher_advice": "The reports advise focusing on stating and checking the hypotheses of each existence theorem, and distinguishing the Mean Value Theorem, the Intermediate Value Theorem and the Extreme Value Theorem by their conditions.",
+   "topics": [
+    "BC-TOP-0501",
+    "BC-TOP-0116",
+    "BC-TOP-0407"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-08005",
+    "BC-QA-08008"
+   ],
+   "created": "2026-09-19",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-99009",
+   "instances": [
+    {
+     "doc": "cr-22",
+     "level": "AB",
+     "page": 7,
+     "part": "a,c",
+     "question": "Q2",
+     "summary": "Responses failed to distribute the negative one across the parentheses when writing f of x minus g of x, and repeated the error in the squared integrand.",
+     "year": 2022
+    },
+    {
+     "doc": "cr-23",
+     "level": "BC",
+     "page": 30,
+     "part": "a",
+     "question": "Q5",
+     "summary": "Responses had difficulty distributing a negative across parentheses when evaluating the antiderivative.",
+     "year": 2023
+    },
+    {
+     "doc": "cr-24",
+     "level": "AB",
+     "page": 23,
+     "part": "a,c",
+     "question": "Q6",
+     "summary": "Correct expressions in f and g were spoiled when the given expressions were substituted without parentheses.",
+     "year": 2024
+    },
+    {
+     "doc": "crabbc-25",
+     "level": "AB",
+     "page": 7,
+     "part": "A",
+     "question": "Q2",
+     "summary": "Missing parentheses in the integrand occurred when a response substituted the given functions rather than leaving the integrand in f and g notation.",
+     "year": 2025
+    },
+    {
+     "doc": "crabbc-25",
+     "level": "AB",
+     "page": 21,
+     "part": "A",
+     "question": "Q5",
+     "summary": "Parentheses omitted around the product of a binomial and an exponential expression.",
+     "year": 2025
+    }
+   ],
+   "name": "Parentheses lost when a given expression is substituted into an integrand",
+   "non_conceptual_causes": [
+    "copying a long expression by hand",
+    "subtraction sign carried across only the first term",
+    "an unnecessary rewrite undertaken when the function names would have sufficed",
+    "arithmetic slip",
+    "time pressure"
+   ],
+   "observed_behavior": "Responses that replace named functions by their given analytic expressions fail to distribute a subtraction or omit the grouping parentheses, changing the integrand.",
+   "official_evidence": [
+    "cr-24:23"
+   ],
+   "official_evidence_notes": "2023 BC Q5(a), cr-23:30; 2024 AB Q6(a), cr-24:23; 2025 AB Q2(A), crabbc-25:7",
+   "possible_misconceptions": [
+    "BC-MIS-08007"
+   ],
+   "related_errors": [],
+   "scope": "shared",
+   "scoring_consequence": "The integrand point is lost; the answer point may survive if a correct calculator value is also reported.",
+   "skills": [
+    "BC-SKL-08013",
+    "BC-SKL-08019"
+   ],
+   "sources": [
+    "cr-22:7",
+    "cr-23:30",
+    "cr-24:23",
+    "crabbc-25:7"
+   ],
+   "status": "active",
+   "teacher_advice": "The reports advise using the function names given in the stem rather than copying analytic expressions, and using parentheses to group an integrand and to separate it from the differential.",
+   "topics": [
+    "BC-TOP-0804",
+    "BC-TOP-0614"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-08003",
+    "BC-QA-09007",
+    "BC-QA-09003"
+   ],
+   "created": "2026-09-19",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-99010",
+   "instances": [
+    {
+     "doc": "cr-23",
+     "level": "AB",
+     "page": 8,
+     "part": "c,d",
+     "question": "Q2",
+     "summary": "Responses confused displacement with total distance in both parts, and about half of part (d) setups omitted the absolute value.",
+     "year": 2023
+    },
+    {
+     "doc": "cr-24",
+     "level": "AB",
+     "page": 8,
+     "part": "d",
+     "question": "Q2",
+     "summary": "Some responses provided the net change setup, and some mishandled absolute values, reporting the displacement value 0.197.",
+     "year": 2024
+    }
+   ],
+   "name": "Displacement reported where total distance was asked",
+   "non_conceptual_causes": [
+    "absolute value bars dropped when transcribing the setup",
+    "interval not split at the times when velocity changes sign",
+    "calculator entered without the absolute value function",
+    "misread of the prompt",
+    "time pressure",
+    "a copied template from a similar exercise"
+   ],
+   "observed_behavior": "Responses integrate velocity without an absolute value, or split the interval incorrectly, and report the net change as the total distance travelled.",
+   "official_evidence": [
+    "sg-24:6",
+    "cr-23:8",
+    "cr-24:8",
+    "cr-24:27"
+   ],
+   "official_evidence_notes": "2023 AB Q2(c)(d), cr-23:8; 2024 AB Q2(d), cr-24:8",
+   "possible_misconceptions": [
+    "BC-MIS-99002",
+    "BC-MIS-08004"
+   ],
+   "related_errors": [
+    "BC-ERR-99029"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The setup point for total distance is not earned; the numerical answer point follows the setup.",
+   "skills": [
+    "BC-SKL-08006",
+    "BC-SKL-08007",
+    "BC-SKL-08011",
+    "BC-SKL-09025",
+    "BC-SKL-09013",
+    "BC-SKL-09020"
+   ],
+   "sources": [
+    "cr-23:8",
+    "cr-24:8",
+    "sg-24:6",
+    "cr-24:27"
+   ],
+   "status": "active",
+   "teacher_advice": "The reports advise connecting displacement, total distance and position explicitly, and linking a definite integral of net change without context to displacement and one of total accumulation to total distance.",
+   "topics": [
+    "BC-TOP-0802"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-08001",
+    "BC-QA-08002",
+    "BC-QA-06007"
+   ],
+   "created": "2026-09-19",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-99015",
+   "instances": [
+    {
+     "doc": "cr-22",
+     "level": "AB/BC",
+     "page": 3,
+     "part": "b",
+     "question": "Q1",
+     "summary": "Responses reported the average rate of change of A, or integrated A prime, in place of the average value.",
+     "year": 2022
+    },
+    {
+     "doc": "cr-23",
+     "level": "AB/BC",
+     "page": 4,
+     "part": "c",
+     "question": "Q1",
+     "summary": "Responses summed values of g and divided by 150, or omitted the division by 150 altogether.",
+     "year": 2023
+    },
+    {
+     "doc": "crabbc-25",
+     "level": "AB/BC",
+     "page": 3,
+     "part": "A",
+     "question": "Q1",
+     "summary": "The two most common misconceptions were using C prime instead of C as the integrand and finding average rate of change instead of average value.",
+     "year": 2025
+    }
+   ],
+   "name": "Average value confused with average rate of change",
+   "non_conceptual_causes": [
+    "the two phrases treated as synonyms",
+    "integrand chosen from whichever function is given analytically",
+    "division by the interval length omitted",
+    "misread of the prompt",
+    "a copied template from a similar exercise",
+    "misread of the phrase average value",
+    "confusion between adjacent parts of the same question"
+   ],
+   "observed_behavior": "Responses compute a difference quotient where the average value of a function was asked, or integrate the derivative instead of the function, or divide by the wrong quantity.",
+   "official_evidence": [
+    "sg-25:4",
+    "crabbc-25:3",
+    "sg-25:2"
+   ],
+   "official_evidence_notes": "2023 AB/BC Q1(c), cr-23:4; 2025 AB/BC Q1(A), crabbc-25:3",
+   "possible_misconceptions": [
+    "BC-MIS-99006",
+    "BC-MIS-06014"
+   ],
+   "related_errors": [],
+   "scope": "shared",
+   "scoring_consequence": "The setup point is not earned and the numerical answer point follows it.",
+   "skills": [
+    "BC-SKL-08004",
+    "BC-SKL-08005",
+    "BC-SKL-06038"
+   ],
+   "sources": [
+    "cr-22:3",
+    "cr-23:4",
+    "crabbc-25:3",
+    "crabbc-25:4",
+    "sg-25:4",
+    "sg-25:2"
+   ],
+   "status": "active",
+   "teacher_advice": "The reports advise practice distinguishing the average rate of change of a function from the average value of a function, and showing that the average value of the derivative is the average rate of change of the function.",
+   "topics": [
+    "BC-TOP-0801",
+    "BC-TOP-0201"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10016",
+    "BC-QA-10018",
+    "BC-QA-10019"
+   ],
+   "created": "2026-09-19",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-99018",
+   "instances": [
+    {
+     "doc": "cr-22",
+     "level": "BC",
+     "page": 30,
+     "part": "c",
+     "question": "Q6",
+     "summary": "Many responses could not compute the derivative with respect to x of the given general term.",
+     "year": 2022
+    },
+    {
+     "doc": "cr-23",
+     "level": "BC",
+     "page": 35,
+     "part": "a",
+     "question": "Q6",
+     "summary": "Responses omitted the chain rule or made product rule errors when finding the fourth derivative used to build the Taylor polynomial.",
+     "year": 2023
+    },
+    {
+     "doc": "cr-24",
+     "level": "BC",
+     "page": 36,
+     "part": "c",
+     "question": "Q6",
+     "summary": "Some differentiated with respect to n, some used the quotient rule, and some integrated the series instead.",
+     "year": 2024
+    },
+    {
+     "doc": "crabbc-25",
+     "level": "BC",
+     "page": 38,
+     "part": "B",
+     "question": "Q6",
+     "summary": "Simplification errors in the coefficient of the third term were the most common reason the first terms point was not earned, and parentheses were omitted in the general term.",
+     "year": 2025
+    }
+   ],
+   "name": "General term of a power series mis-differentiated or mis-assembled",
+   "non_conceptual_causes": [
+    "index and variable not distinguished in the general term",
+    "coefficient arithmetic done in one step",
+    "pattern inferred from terms that were themselves wrong",
+    "algebra slip in the exponent",
+    "off by one slip in the index",
+    "time pressure"
+   ],
+   "observed_behavior": "Responses can write the first several terms of a series but cannot differentiate the general term, apply the quotient rule to it, differentiate with respect to the index, or simplify the resulting coefficient correctly.",
+   "official_evidence": [
+    "sg-25:26",
+    "sg-24:22",
+    "cr-23:35",
+    "crabbc-25:38"
+   ],
+   "official_evidence_notes": "2023 BC Q6(a), cr-23:35; 2024 BC Q6(c), cr-24:36; 2025 BC Q6(B), crabbc-25:38",
+   "possible_misconceptions": [
+    "BC-MIS-10020"
+   ],
+   "related_errors": [],
+   "scope": "BC_only",
+   "scoring_consequence": "The general term point is not earned; the first terms point may be earned separately.",
+   "skills": [
+    "BC-SKL-10060",
+    "BC-SKL-10068",
+    "BC-SKL-10069"
+   ],
+   "sources": [
+    "cr-22:30",
+    "cr-23:35",
+    "cr-24:36",
+    "crabbc-25:38",
+    "sg-25:26",
+    "sg-24:22"
+   ],
+   "status": "active",
+   "teacher_advice": "The reports advise practising Taylor polynomials for composite and product functions, and building the general term of a differentiated series from a correctly written general term rather than from a guessed pattern.",
+   "topics": [
+    "BC-TOP-1015",
+    "BC-TOP-1014",
+    "BC-TOP-1011"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-08001",
+    "BC-QA-08008",
+    "BC-QA-08004",
+    "BC-QA-08014",
+    "BC-QA-09001",
+    "BC-QA-09013",
+    "BC-QA-09009"
+   ],
+   "created": "2026-09-19",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-99019",
+   "instances": [
+    {
+     "doc": "cr-22",
+     "level": "AB/BC",
+     "page": 3,
+     "part": "b",
+     "question": "Q1",
+     "summary": "Some responses rounded the average value to a whole number.",
+     "year": 2022
+    },
+    {
+     "doc": "cr-23",
+     "level": "BC",
+     "page": 27,
+     "part": "b",
+     "question": "Q2",
+     "summary": "Some responses used the trace function and found a solution not correct to three digits after the decimal.",
+     "year": 2023
+    },
+    {
+     "doc": "cr-24",
+     "level": "AB/BC",
+     "page": 10,
+     "part": "b",
+     "question": "Q3",
+     "summary": "Responses reporting t equals 3.14 or 3 did not earn the point because these are not correct to three digits after the decimal.",
+     "year": 2024
+    },
+    {
+     "doc": "cr-24",
+     "level": "BC",
+     "page": 26,
+     "part": "a,d",
+     "question": "Q2",
+     "summary": "Some responses presented fewer than three correct digits, and those that did tended to do so throughout the question.",
+     "year": 2024
+    },
+    {
+     "doc": "crabbc-25",
+     "level": "AB",
+     "page": 8,
+     "part": "A",
+     "question": "Q2",
+     "summary": "A presented answer of 5.1 or 5.13 did not earn the answer point because of the decimal presentation error.",
+     "year": 2025
+    },
+    {
+     "doc": "crabbc-25",
+     "level": "BC",
+     "page": 30,
+     "part": "D",
+     "question": "Q2",
+     "summary": "Responses that earned the product point usually lost the answer point only through decimal presentation errors.",
+     "year": 2025
+    }
+   ],
+   "name": "Decimal presentation error or premature rounding",
+   "non_conceptual_causes": [
+    "intermediate value not stored in the calculator",
+    "trace used in place of a solver",
+    "answer copied at the precision shown on screen",
+    "arithmetic slip",
+    "time pressure"
+   ],
+   "observed_behavior": "Responses report fewer than three digits after the decimal point, round an intermediate value before it is used again, or read a value off a trace rather than solving for it.",
+   "official_evidence": [
+    "sg-25:2",
+    "crabbc-25:30",
+    "sg-25:6",
+    "sg-25:7"
+   ],
+   "official_evidence_notes": "2023 BC Q2(b), cr-23:27; 2024 AB/BC Q3(b), cr-24:10; 2025 AB Q2(A), crabbc-25:8",
+   "possible_misconceptions": [
+    "BC-MIS-09008"
+   ],
+   "related_errors": [],
+   "scope": "shared",
+   "scoring_consequence": "The answer point is not earned; the report notes this recurs across several parts of the same response.",
+   "skills": [
+    "BC-SKL-08003",
+    "BC-SKL-08021",
+    "BC-SKL-08017",
+    "BC-SKL-08035",
+    "BC-SKL-08043",
+    "BC-SKL-08059",
+    "BC-SKL-09004",
+    "BC-SKL-09009",
+    "BC-SKL-09012",
+    "BC-SKL-09030",
+    "BC-SKL-09038",
+    "BC-SKL-09042",
+    "BC-SKL-09016"
+   ],
+   "sources": [
+    "cr-22:3",
+    "cr-23:27",
+    "cr-24:10",
+    "cr-24:26",
+    "crabbc-25:8",
+    "crabbc-25:30",
+    "sg-25:2",
+    "sg-25:6",
+    "sg-25:7"
+   ],
+   "status": "active",
+   "teacher_advice": "The reports advise storing intermediate values in the calculator, presenting answers correct to three places after the decimal throughout the year, and solving equations with a solver rather than a trace.",
+   "topics": [
+    "BC-TOP-0803"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-04008"
+   ],
+   "created": "2026-09-19",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-99020",
+   "instances": [
+    {
+     "doc": "cr-22",
+     "level": "AB",
+     "page": 18,
+     "part": "c",
+     "question": "Q5",
+     "summary": "Many responses failed to connect the second derivative to whether a tangent line approximation is an over or underestimate, and many presented the wrong conclusion.",
+     "year": 2022
+    },
+    {
+     "doc": "cr-23",
+     "level": "AB/BC",
+     "page": 12,
+     "part": "c",
+     "question": "Q3",
+     "summary": "Most responses had more difficulty explaining their reasoning than computing the second derivative, and some left it unexpressed in terms of M.",
+     "year": 2023
+    }
+   ],
+   "name": "Over or underestimate claimed without appealing to concavity",
+   "non_conceptual_causes": [
+    "conclusion guessed from the direction of the approximation",
+    "given second derivative information not used",
+    "concavity language used without connecting it to the tangent line",
+    "the claim is guessed when time runs short",
+    "confusion of the two derivative signs under pressure"
+   ],
+   "observed_behavior": "Responses decide whether a tangent line approximation is an overestimate or an underestimate without using the sign of the second derivative, or state the correct conclusion with reasoning that does not mention concavity.",
+   "official_evidence": [
+    "cr-22:18",
+    "cr-23:11"
+   ],
+   "official_evidence_notes": "2023 AB/BC Q3(c), cr-23:12",
+   "possible_misconceptions": [
+    "BC-MIS-99012",
+    "BC-MIS-07010"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The reasoning point is not earned; in 2022 this part was the most challenging of its question.",
+   "skills": [
+    "BC-SKL-04030",
+    "BC-SKL-04031"
+   ],
+   "sources": [
+    "cr-22:18",
+    "cr-23:11",
+    "cr-23:12",
+    "ced:92"
+   ],
+   "status": "active",
+   "teacher_advice": "The reports advise connecting the sign of the second derivative to the position of the tangent line relative to the curve, and naming the function whose concavity is being described.",
+   "topics": [
+    "BC-TOP-0406",
+    "BC-TOP-0506"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-09004",
+    "BC-QA-09003",
+    "BC-QA-09012",
+    "BC-QA-08001",
+    "BC-QA-08014"
+   ],
+   "created": "2026-09-19",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-99021",
+   "instances": [
+    {
+     "doc": "cr-22",
+     "level": "AB",
+     "page": 8,
+     "part": "a",
+     "question": "Q2",
+     "summary": "The report notes that in a calculator active question a response must include the setup along with the answer, and that an unsupported answer in a three point part is costly.",
+     "year": 2022
+    },
+    {
+     "doc": "cr-23",
+     "level": "AB",
+     "page": 7,
+     "part": "b",
+     "question": "Q2",
+     "summary": "Many responses did not provide the setup showing that the acceleration at 60 is the derivative of velocity at 60.",
+     "year": 2023
+    },
+    {
+     "doc": "cr-24",
+     "level": "AB/BC",
+     "page": 4,
+     "part": "a",
+     "question": "Q1",
+     "summary": "A few responses failed to provide a definite integral with the correct integrand as part of a calculation setup.",
+     "year": 2024
+    },
+    {
+     "doc": "cr-24",
+     "level": "BC",
+     "page": 28,
+     "part": "",
+     "question": "Q2",
+     "summary": "Some students seem unaware they are expected to show the setup before a numerical answer, and responses lacking notation are rarely eligible for all points.",
+     "year": 2024
+    },
+    {
+     "doc": "crabbc-25",
+     "level": "BC",
+     "page": 30,
+     "part": "A",
+     "question": "Q2",
+     "summary": "The most common reason the first point was not earned was the lack of a setup; some responses showed only an answer.",
+     "year": 2025
+    },
+    {
+     "doc": "crabbc-25",
+     "level": "AB/BC",
+     "page": 3,
+     "part": "D",
+     "question": "Q1",
+     "summary": "The answer point required supporting work in addition to the correct time.",
+     "year": 2025
+    }
+   ],
+   "name": "Calculator setup not shown before a numerical answer",
+   "non_conceptual_causes": [
+    "setup treated as scratch work",
+    "instructions on the exam booklet not internalised",
+    "calculator syntax written in place of standard notation",
+    "time pressure",
+    "a belief that the work is scratch"
+   ],
+   "observed_behavior": "Responses report a value obtained from a graphing calculator without presenting the equation, function or definite integral that was entered, or leave incorrect preliminary work uncrossed alongside it.",
+   "official_evidence": [
+    "sg-23:6",
+    "sg-23:8",
+    "sg-25:3",
+    "crabbc-25:30"
+   ],
+   "official_evidence_notes": "2023 AB Q2(b), cr-23:7; 2024 BC Q2, cr-24:28; 2025 BC Q2(A), crabbc-25:30",
+   "possible_misconceptions": [
+    "BC-MIS-09008"
+   ],
+   "related_errors": [],
+   "scope": "shared",
+   "scoring_consequence": "The setup point is not earned, and an unsupported answer generally receives no credit in a multi point part.",
+   "skills": [
+    "BC-SKL-09009",
+    "BC-SKL-09012",
+    "BC-SKL-09017",
+    "BC-SKL-09038",
+    "BC-SKL-09028",
+    "BC-SKL-08003",
+    "BC-SKL-08059"
+   ],
+   "sources": [
+    "cr-22:8",
+    "cr-23:7",
+    "cr-23:29",
+    "cr-24:28",
+    "crabbc-25:30",
+    "crabbc-25:31",
+    "sg-23:6",
+    "sg-23:8",
+    "sg-25:3"
+   ],
+   "status": "active",
+   "teacher_advice": "The reports advise requiring a written setup for every calculator computation in class work, and crossing out abandoned work so that only the setup actually used remains.",
+   "topics": [
+    "BC-TOP-0803",
+    "BC-TOP-0203"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-04001"
+   ],
+   "created": "2026-09-19",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-99027",
+   "instances": [
+    {
+     "doc": "cr-23",
+     "level": "AB/BC",
+     "page": 4,
+     "part": "d",
+     "question": "Q1",
+     "summary": "Many interpretations of the derivative failed to describe the value as a rate of a rate or to say that the rate was decreasing.",
+     "year": 2023
+    },
+    {
+     "doc": "cr-24",
+     "level": "AB/BC",
+     "page": 3,
+     "part": "b",
+     "question": "Q1",
+     "summary": "Responses had difficulty giving a correct interpretation containing the phrases average temperature and the interval from t equals 0 to t equals 12.",
+     "year": 2024
+    },
+    {
+     "doc": "cr-24",
+     "level": "AB/BC",
+     "page": 4,
+     "part": "d",
+     "question": "Q1",
+     "summary": "Some responses reported that the temperature was decreasing, which was true but did not answer what was asked.",
+     "year": 2024
+    },
+    {
+     "doc": "cr-24",
+     "level": "BC",
+     "page": 32,
+     "part": "b",
+     "question": "Q5",
+     "summary": "Many responses identified the integral as an arc length but made no mention of the interval, and some called it a distance.",
+     "year": 2024
+    }
+   ],
+   "name": "Interpretation of a value in context left incomplete",
+   "non_conceptual_causes": [
+    "interpretation written before the units are settled",
+    "interval named in the stem not repeated in the answer",
+    "the word rate used once where a rate of a rate is meant",
+    "time pressure",
+    "the sentence is abbreviated after a long computation"
+   ],
+   "observed_behavior": "Responses interpret a derivative or an integral without naming the quantity, the interval, or the fact that a rate is itself changing, or they answer a different question than the one asked.",
+   "official_evidence": [
+    "cr-24:3",
+    "cr-24:32"
+   ],
+   "official_evidence_notes": "2023 AB/BC Q1(d), cr-23:4; 2024 AB/BC Q1(b), cr-24:3; 2024 BC Q5(b), cr-24:32",
+   "possible_misconceptions": [
+    "BC-MIS-04001",
+    "BC-MIS-04003"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The interpretation point requires the key phrases, so an answer missing the interval or the rate of a rate is not earned.",
+   "skills": [
+    "BC-SKL-04002"
+   ],
+   "sources": [
+    "cr-23:4",
+    "cr-24:3",
+    "cr-24:32"
+   ],
+   "status": "active",
+   "teacher_advice": "The reports advise using the language of the course framework as a template for interpretations, and drawing on published scoring guidelines to see the terminology that earns interpretation points.",
+   "topics": [
+    "BC-TOP-0401",
+    "BC-TOP-0803"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-03009"
+   ],
+   "created": "2026-09-19",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-99036",
+   "instances": [
+    {
+     "doc": "cr-22",
+     "level": "AB",
+     "page": 21,
+     "part": "a",
+     "question": "Q6",
+     "summary": "Some responses used the power rule on a position function containing a negative exponential and produced a derivative with the exponent reduced by one.",
+     "year": 2022
+    },
+    {
+     "doc": "cr-22",
+     "level": "AB",
+     "page": 21,
+     "part": "a",
+     "question": "Q6",
+     "summary": "The report records this alongside communication errors as the only misconceptions observed in that part, which was otherwise done well.",
+     "year": 2022
+    }
+   ],
+   "name": "Differentiation rule chosen by the shape of the expression",
+   "non_conceptual_causes": [
+    "rule selected from the visual form of the expression",
+    "exponential and power functions not distinguished in the moment",
+    "derivative written in one step with no intermediate form",
+    "pattern matching under time pressure",
+    "misread of the exponent position"
+   ],
+   "observed_behavior": "Responses apply the power rule to an exponential term, decrementing the exponent as though the variable were the base, rather than selecting the rule that matches the type of function.",
+   "official_evidence": [
+    "cr-22:21"
+   ],
+   "official_evidence_notes": "2022 AB Q6(a), cr-22:21",
+   "possible_misconceptions": [
+    "BC-MIS-03012"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The derivative point is not earned, and every later part that uses the derivative inherits the error.",
+   "skills": [
+    "BC-SKL-03026",
+    "BC-SKL-03027"
+   ],
+   "sources": [
+    "cr-22:21"
+   ],
+   "status": "active",
+   "teacher_advice": "The report advises additional practice applying differentiation rules and categorising functions by the rule they require (cr-22:19).",
+   "topics": [
+    "BC-TOP-0205",
+    "BC-TOP-0207",
+    "BC-TOP-0305"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10013"
+   ],
+   "created": "2026-09-19",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-99037",
+   "instances": [
+    {
+     "doc": "cr-22",
+     "level": "BC",
+     "page": 30,
+     "part": "a",
+     "question": "Q6",
+     "summary": "Some responses concluded from the squared variable being less than one that the variable lies between zero and one, losing the negative half of the interval.",
+     "year": 2022
+    },
+    {
+     "doc": "cr-22",
+     "level": "AB",
+     "page": 21,
+     "part": "d",
+     "question": "Q6",
+     "summary": "The report states that the infinity symbol is never correctly placed next to a square bracket and asks for a review of open, closed and half open interval notation.",
+     "year": 2022
+    }
+   ],
+   "name": "Absolute value dropped when an inequality is solved for an interval",
+   "non_conceptual_causes": [
+    "square root of a squared quantity taken as the quantity itself",
+    "absolute value bars dropped in transcription",
+    "interval notation conventions for open, closed and unbounded ends not settled",
+    "algebra slip",
+    "time pressure"
+   ],
+   "observed_behavior": "Responses convert the ratio test inequality into an interval without the absolute value, producing a one sided interval, and related presentations attach the infinity symbol to a square bracket or otherwise misuse interval notation.",
+   "official_evidence": [
+    "sg-22:21",
+    "sg-25:25",
+    "cr-22:30"
+   ],
+   "official_evidence_notes": "2022 BC Q6(a), cr-22:30; 2022 AB Q6, cr-22:21",
+   "possible_misconceptions": [
+    "BC-MIS-99016",
+    "BC-MIS-10023"
+   ],
+   "related_errors": [],
+   "scope": "BC_only",
+   "scoring_consequence": "The interval point is not earned even where the limit of the ratio was found correctly.",
+   "skills": [
+    "BC-SKL-10055"
+   ],
+   "sources": [
+    "cr-22:30",
+    "cr-22:21",
+    "sg-22:21",
+    "sg-25:25"
+   ],
+   "status": "active",
+   "teacher_advice": "The report advises using absolute values wherever they are appropriate and never omitting them without explanation, and reviewing interval notation (cr-22:31 and cr-22:21).",
+   "topics": [
+    "BC-TOP-1013",
+    "BC-TOP-1009"
+   ],
+   "updated": "2026-09-19"
+  },
+  {
+   "archetypes": [
+    "BC-QA-10002",
+    "BC-QA-10003"
+   ],
+   "created": "2026-09-19",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-99038",
+   "instances": [
+    {
+     "doc": "cr-22",
+     "level": "BC",
+     "page": 30,
+     "part": "d",
+     "question": "Q6",
+     "summary": "A very frequent error was failing to recognise the geometric series and offering the sum of the first few terms as the value.",
+     "year": 2022
+    },
+    {
+     "doc": "cr-22",
+     "level": "BC",
+     "page": 31,
+     "part": "d",
+     "question": "Q6",
+     "summary": "Some responses recognised the series as geometric but were unable to determine its common ratio.",
+     "year": 2022
+    }
+   ],
+   "name": "Value of a convergent series reported as a partial sum",
+   "non_conceptual_causes": [
+    "the geometric form not recognised in the given series",
+    "common ratio read from the wrong pair of consecutive terms",
+    "approximation habits carried over from error bound questions",
+    "time pressure",
+    "arithmetic shortcut taken before the pattern is recognised"
+   ],
+   "observed_behavior": "Responses asked for the value of a convergent series add the first few terms and present that total, or recognise the series as geometric but cannot identify the common ratio, instead of summing it in closed form.",
+   "official_evidence": [
+    "ced:186",
+    "cr-22:30"
+   ],
+   "official_evidence_notes": "2022 BC Q6(d), cr-22:30",
+   "possible_misconceptions": [
+    "BC-MIS-99016",
+    "BC-MIS-10002"
+   ],
+   "related_errors": [],
+   "scope": "BC_only",
+   "scoring_consequence": "The value point is not earned, since a decimal approximation is not the requested exact value.",
+   "skills": [
+    "BC-SKL-10002",
+    "BC-SKL-10004",
+    "BC-SKL-10008"
+   ],
+   "sources": [
+    "cr-22:30",
+    "cr-22:31",
+    "ced:186"
+   ],
+   "status": "active",
+   "teacher_advice": "The report advises presenting series in multiple representations so that special series such as geometric and harmonic are recognised, and notes that in this course finding the value of a convergent series calls on geometric series content (cr-22:31).",
+   "topics": [
+    "BC-TOP-1002",
+    "BC-TOP-1001"
+   ],
+   "updated": "2026-09-19"
+  }
+ ],
+ "registry": "errors"
+}

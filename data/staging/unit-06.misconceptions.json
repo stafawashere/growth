@@ -1,0 +1,954 @@
+{
+ "misconceptions": [
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-06003",
+    "BC-CON-06005"
+   ],
+   "description": "The learner treats a Riemann sum as an operation on the list of function values alone, so the partition widths play no role and every subinterval is implicitly treated alike.",
+   "discriminating_probe": "Present a table whose inputs are unevenly spaced and ask for the value of one term of the sum together with its units.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-06001",
+    "BC-QA-06002"
+   ],
+   "id": "BC-MIS-06001",
+   "literature": [],
+   "name": "A Riemann sum is a sum of the listed values",
+   "observable_errors": [
+    "BC-ERR-06001",
+    "BC-ERR-06003"
+   ],
+   "official_evidence": [
+    "ced:119",
+    "ced:120"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-06002",
+    "BC-MIS-06003"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-06005",
+    "BC-SKL-06006",
+    "BC-SKL-06008"
+   ],
+   "sources": [
+    "ced:119",
+    "ced:120"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-06003"
+   ],
+   "description": "The learner treats the left, right, and midpoint choices as interchangeable labels rather than as different sample points that give different sums.",
+   "discriminating_probe": "Ask for the left and the right sum on the same monotone table and ask whether the two values must agree.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-06001",
+    "BC-QA-06002"
+   ],
+   "id": "BC-MIS-06002",
+   "literature": [],
+   "name": "The endpoint convention is cosmetic",
+   "observable_errors": [
+    "BC-ERR-06002"
+   ],
+   "official_evidence": [
+    "sg-23:3"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-06001"
+   ],
+   "scope": "shared",
+   "severity": "medium",
+   "skills": [
+    "BC-SKL-06005",
+    "BC-SKL-06006",
+    "BC-SKL-06007"
+   ],
+   "sources": [
+    "sg-23:3"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-06003",
+    "BC-CON-06004",
+    "BC-CON-06006"
+   ],
+   "description": "The learner treats a Riemann sum as the value of the definite integral rather than as an approximation whose error has a direction.",
+   "discriminating_probe": "Ask whether the reported sum is larger or smaller than the integral and how the student knows.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-06001",
+    "BC-QA-06002"
+   ],
+   "id": "BC-MIS-06003",
+   "literature": [],
+   "name": "Riemann sums are exact",
+   "observable_errors": [
+    "BC-ERR-06005"
+   ],
+   "official_evidence": [
+    "ced:119"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-06005"
+   ],
+   "scope": "shared",
+   "severity": "medium",
+   "skills": [
+    "BC-SKL-06010",
+    "BC-SKL-06011",
+    "BC-SKL-06005"
+   ],
+   "sources": [
+    "ced:119"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-06003"
+   ],
+   "description": "The learner averages across the entire interval rather than forming a separate trapezoid on each subinterval.",
+   "discriminating_probe": "Ask for the area of the single trapezoid on the first subinterval.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-06002"
+   ],
+   "id": "BC-MIS-06004",
+   "literature": [],
+   "name": "A trapezoid is a rectangle at the average height of the whole interval",
+   "observable_errors": [
+    "BC-ERR-06004"
+   ],
+   "official_evidence": [
+    "sg-25:13"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-06001"
+   ],
+   "scope": "shared",
+   "severity": "medium",
+   "skills": [
+    "BC-SKL-06008"
+   ],
+   "sources": [
+    "sg-25:13"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-06004"
+   ],
+   "description": "The learner applies one monotonicity rule to every approximation method, so concavity never enters the reasoning.",
+   "discriminating_probe": "Give an increasing concave down rate and ask for the direction of a trapezoidal estimate and of a left sum separately.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-06001",
+    "BC-QA-06002"
+   ],
+   "id": "BC-MIS-06005",
+   "literature": [],
+   "name": "Approximation direction follows from increase or decrease alone",
+   "observable_errors": [
+    "BC-ERR-06005",
+    "BC-ERR-06006",
+    "BC-ERR-06007"
+   ],
+   "official_evidence": [
+    "ced:119"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-06006"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-06010",
+    "BC-SKL-06011"
+   ],
+   "sources": [
+    "ced:119"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-06004",
+    "BC-CON-06009"
+   ],
+   "description": "The learner does not separate whether a function rises from whether it bends upward, so the two justifications are exchanged freely.",
+   "discriminating_probe": "Ask the student to sketch a decreasing concave up curve.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-06002",
+    "BC-QA-06003"
+   ],
+   "id": "BC-MIS-06006",
+   "literature": [],
+   "name": "Concavity and monotonicity are the same property",
+   "observable_errors": [
+    "BC-ERR-06007"
+   ],
+   "official_evidence": [
+    "ced:119",
+    "ced:122"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-06005"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-06011",
+    "BC-SKL-06025"
+   ],
+   "sources": [
+    "ced:119",
+    "ced:122"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-06007",
+    "BC-CON-06009"
+   ],
+   "description": "The learner attaches every question about the accumulation function to the visible features of the plotted integrand, so extrema and inflection points are read off the wrong curve.",
+   "discriminating_probe": "Ask the student to label the plotted curve and the accumulation function separately before answering.",
+   "downstream_dependencies": [],
+   "evidence_tag": "verified",
+   "exposing_archetypes": [
+    "BC-QA-06003"
+   ],
+   "id": "BC-MIS-06007",
+   "literature": [],
+   "name": "The plotted curve is the function under discussion",
+   "observable_errors": [
+    "BC-ERR-06008",
+    "BC-ERR-06009"
+   ],
+   "official_evidence": [
+    "sg-25:17"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-06008"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-06022",
+    "BC-SKL-06023",
+    "BC-SKL-06024",
+    "BC-SKL-06027"
+   ],
+   "sources": [
+    "sg-25:17"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-06009"
+   ],
+   "description": "The learner uses the zeros of f for every feature of g, so both extrema and inflection points are placed at the same inputs.",
+   "discriminating_probe": "Ask where g has extrema and where g has inflection points on the same graph and compare the two lists.",
+   "downstream_dependencies": [],
+   "evidence_tag": "verified",
+   "exposing_archetypes": [
+    "BC-QA-06003"
+   ],
+   "id": "BC-MIS-06008",
+   "literature": [],
+   "name": "A zero of the integrand is a general turning feature of the accumulation function",
+   "observable_errors": [
+    "BC-ERR-06009"
+   ],
+   "official_evidence": [
+    "sg-25:17"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-06007"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-06023",
+    "BC-SKL-06024"
+   ],
+   "sources": [
+    "sg-25:17"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-06009"
+   ],
+   "description": "The learner believes that naming the defining property, such as g changing concavity, answers a request for a reason, without connecting the claim to the supplied representation.",
+   "discriminating_probe": "Ask what feature of the given graph makes the stated claim true.",
+   "downstream_dependencies": [],
+   "evidence_tag": "verified",
+   "exposing_archetypes": [
+    "BC-QA-06003"
+   ],
+   "id": "BC-MIS-06009",
+   "literature": [],
+   "name": "Restating a definition counts as a reason",
+   "observable_errors": [
+    "BC-ERR-06010"
+   ],
+   "official_evidence": [
+    "sg-25:17"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-06010"
+   ],
+   "scope": "shared",
+   "severity": "medium",
+   "skills": [
+    "BC-SKL-06024",
+    "BC-SKL-06025",
+    "BC-SKL-06027"
+   ],
+   "sources": [
+    "sg-25:17"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-06009"
+   ],
+   "description": "The learner treats a first or second derivative test at one input as sufficient for an absolute extremum on a closed interval.",
+   "discriminating_probe": "Ask whether the endpoints can beat the interior candidate and how that is checked.",
+   "downstream_dependencies": [],
+   "evidence_tag": "verified",
+   "exposing_archetypes": [
+    "BC-QA-06003"
+   ],
+   "id": "BC-MIS-06010",
+   "literature": [],
+   "name": "A relative extremum test settles an absolute extremum",
+   "observable_errors": [
+    "BC-ERR-06011",
+    "BC-ERR-06012"
+   ],
+   "official_evidence": [
+    "sg-25:19",
+    "sg-25:5"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-06009"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-06026"
+   ],
+   "sources": [
+    "sg-25:19",
+    "sg-25:5"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-06010"
+   ],
+   "description": "The learner reproduces area formulas for triangles, trapezoids, and semicircles without the halving factor.",
+   "discriminating_probe": "Ask for the area of a single semicircle of a stated radius.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-06003",
+    "BC-QA-06004"
+   ],
+   "id": "BC-MIS-06011",
+   "literature": [],
+   "name": "Area formulas are recalled without their fractional factors",
+   "observable_errors": [
+    "BC-ERR-06013"
+   ],
+   "official_evidence": [
+    "ced:123"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-06012"
+   ],
+   "scope": "shared",
+   "severity": "medium",
+   "skills": [
+    "BC-SKL-06028",
+    "BC-SKL-06020",
+    "BC-SKL-06004"
+   ],
+   "sources": [
+    "ced:123"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-06001",
+    "BC-CON-06010"
+   ],
+   "description": "The learner treats the definite integral as the total area of the region between the graph and the axis, with no sign attached to regions below the axis.",
+   "discriminating_probe": "Ask for the integral of a rate that is negative on the whole interval.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-06003",
+    "BC-QA-06004"
+   ],
+   "id": "BC-MIS-06012",
+   "literature": [],
+   "name": "The definite integral measures unsigned area",
+   "observable_errors": [
+    "BC-ERR-06014"
+   ],
+   "official_evidence": [
+    "ced:118",
+    "ced:123"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-06011"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-06028",
+    "BC-SKL-06003",
+    "BC-SKL-06020"
+   ],
+   "sources": [
+    "ced:118",
+    "ced:123"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-06001",
+    "BC-CON-06012"
+   ],
+   "description": "The learner treats the accumulated change as the value of the quantity itself, so the initial condition has no role.",
+   "discriminating_probe": "Give a rate and two different initial values and ask for the value at the later input in each case.",
+   "downstream_dependencies": [],
+   "evidence_tag": "verified",
+   "exposing_archetypes": [
+    "BC-QA-06005",
+    "BC-QA-06006"
+   ],
+   "id": "BC-MIS-06013",
+   "literature": [],
+   "name": "The integral of a rate is the amount of the quantity",
+   "observable_errors": [
+    "BC-ERR-06015"
+   ],
+   "official_evidence": [
+    "sg-24:4"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-06014"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-06037",
+    "BC-SKL-06036"
+   ],
+   "sources": [
+    "sg-24:4"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-06012",
+    "BC-CON-06013"
+   ],
+   "description": "The learner does not separate the integral from the integral divided by the interval length, so the two expressions are described and computed interchangeably.",
+   "discriminating_probe": "Show both expressions side by side and ask for the units of each.",
+   "downstream_dependencies": [],
+   "evidence_tag": "verified",
+   "exposing_archetypes": [
+    "BC-QA-06007",
+    "BC-QA-06015"
+   ],
+   "id": "BC-MIS-06014",
+   "literature": [],
+   "name": "Average value and accumulated amount are the same quantity",
+   "observable_errors": [
+    "BC-ERR-06016",
+    "BC-ERR-06017",
+    "BC-ERR-06030"
+   ],
+   "official_evidence": [
+    "sg-24:3",
+    "sg-25:3"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-06015"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-06038",
+    "BC-SKL-06001"
+   ],
+   "sources": [
+    "sg-24:3",
+    "sg-25:3"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-06013"
+   ],
+   "description": "The learner applies a difference quotient wherever the word average appears, so an average value request is answered with a slope.",
+   "discriminating_probe": "Ask which of the two answers has the units of the function and which has the units of a rate.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-06007"
+   ],
+   "id": "BC-MIS-06015",
+   "literature": [],
+   "name": "Average of a function and average rate of change are the same quantity",
+   "observable_errors": [
+    "BC-ERR-06017"
+   ],
+   "official_evidence": [
+    "sg-25:2",
+    "sg-25:4"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-06014"
+   ],
+   "scope": "shared",
+   "severity": "medium",
+   "skills": [
+    "BC-SKL-06038"
+   ],
+   "sources": [
+    "sg-25:2",
+    "sg-25:4"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-06015"
+   ],
+   "description": "The learner treats u as a shorthand label rather than a change of variable, so limits of integration and differentials carry over unchanged.",
+   "discriminating_probe": "Ask what the lower limit becomes after the substitution and why.",
+   "downstream_dependencies": [],
+   "evidence_tag": "verified",
+   "exposing_archetypes": [
+    "BC-QA-06008",
+    "BC-QA-06011"
+   ],
+   "id": "BC-MIS-06016",
+   "literature": [],
+   "name": "Substitution renames a variable without changing the problem",
+   "observable_errors": [
+    "BC-ERR-06018",
+    "BC-ERR-06019"
+   ],
+   "official_evidence": [
+    "sg-23:16",
+    "sg-23:17"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-06017"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-06050",
+    "BC-SKL-06051",
+    "BC-SKL-06048"
+   ],
+   "sources": [
+    "sg-23:16",
+    "sg-23:17"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-06015",
+    "BC-CON-06020"
+   ],
+   "description": "The learner selects substitution from the presence of an inner function alone, without checking that its derivative is present.",
+   "discriminating_probe": "Ask the student to write du and point to it inside the integrand.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-06008",
+    "BC-QA-06016"
+   ],
+   "id": "BC-MIS-06017",
+   "literature": [],
+   "name": "A composite integrand guarantees that substitution applies",
+   "observable_errors": [
+    "BC-ERR-06020",
+    "BC-ERR-06019"
+   ],
+   "official_evidence": [
+    "ced:126",
+    "ced:131"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-06016"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-06047",
+    "BC-SKL-06071",
+    "BC-SKL-06072"
+   ],
+   "sources": [
+    "ced:126",
+    "ced:131"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-06014"
+   ],
+   "description": "The learner treats the antiderivative as unique, so the arbitrary constant is decoration rather than part of the answer.",
+   "discriminating_probe": "Ask the student to name two different functions with the same given derivative.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-06008"
+   ],
+   "id": "BC-MIS-06018",
+   "literature": [],
+   "name": "An antiderivative is a single function",
+   "observable_errors": [
+    "BC-ERR-06021"
+   ],
+   "official_evidence": [
+    "ced:125"
+   ],
+   "rival_misconceptions": [],
+   "scope": "shared",
+   "severity": "medium",
+   "skills": [
+    "BC-SKL-06044",
+    "BC-SKL-06045"
+   ],
+   "sources": [
+    "ced:125"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-06014",
+    "BC-CON-06017"
+   ],
+   "description": "The learner extends the sum rule to products, so each factor is antidifferentiated on its own.",
+   "discriminating_probe": "Ask the student to differentiate the proposed product and compare with the integrand.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-06009",
+    "BC-QA-06016"
+   ],
+   "id": "BC-MIS-06019",
+   "literature": [],
+   "name": "Antidifferentiation distributes across a product",
+   "observable_errors": [
+    "BC-ERR-06022",
+    "BC-ERR-06023"
+   ],
+   "official_evidence": [
+    "ced:125",
+    "ced:128"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-06017"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-06057",
+    "BC-SKL-06058"
+   ],
+   "sources": [
+    "ced:125",
+    "ced:128"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-06019"
+   ],
+   "description": "The learner treats infinity as an endpoint value rather than as a limiting process, so improper integrals are evaluated by substitution.",
+   "discriminating_probe": "Ask the student to write the improper integral as a limit before antidifferentiating.",
+   "downstream_dependencies": [],
+   "evidence_tag": "verified",
+   "exposing_archetypes": [
+    "BC-QA-06011"
+   ],
+   "id": "BC-MIS-06020",
+   "literature": [],
+   "name": "Infinity is a number that can be substituted",
+   "observable_errors": [
+    "BC-ERR-06024",
+    "BC-ERR-06025"
+   ],
+   "official_evidence": [
+    "sg-23:17"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-06021"
+   ],
+   "scope": "BC_only",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-06067",
+    "BC-SKL-06068",
+    "BC-SKL-06069"
+   ],
+   "sources": [
+    "sg-23:17"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-06019"
+   ],
+   "description": "The learner concludes convergence from the integrand approaching zero, so the limit is never examined.",
+   "discriminating_probe": "Compare the integrals of one over x and one over x squared on the same infinite interval.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-06011"
+   ],
+   "id": "BC-MIS-06021",
+   "literature": [],
+   "name": "Every improper integral of a decaying integrand converges",
+   "observable_errors": [
+    "BC-ERR-06025"
+   ],
+   "official_evidence": [
+    "ced:130"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-06020"
+   ],
+   "scope": "BC_only",
+   "severity": "medium",
+   "skills": [
+    "BC-SKL-06068",
+    "BC-SKL-06069"
+   ],
+   "sources": [
+    "ced:130"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-06016",
+    "BC-CON-06020"
+   ],
+   "description": "The learner selects a technique from a visual resemblance to a worked example rather than from the structural precondition the technique requires.",
+   "discriminating_probe": "Ask the student to state the condition the chosen technique requires and to point to it in the integrand.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-06016",
+    "BC-QA-06010"
+   ],
+   "id": "BC-MIS-06022",
+   "literature": [],
+   "name": "Technique choice follows the surface look of the integrand",
+   "observable_errors": [
+    "BC-ERR-06026",
+    "BC-ERR-06020"
+   ],
+   "official_evidence": [
+    "ced:131"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-06017"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-06071",
+    "BC-SKL-06072",
+    "BC-SKL-06056"
+   ],
+   "sources": [
+    "ced:131"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-06008"
+   ],
+   "description": "The learner applies the theorem as a fixed template regardless of what the upper limit is.",
+   "discriminating_probe": "Ask for the derivative of the upper limit on its own before the theorem is applied.",
+   "downstream_dependencies": [],
+   "evidence_tag": "verified",
+   "exposing_archetypes": [
+    "BC-QA-06012"
+   ],
+   "id": "BC-MIS-06023",
+   "literature": [],
+   "name": "The Fundamental Theorem of Calculus part one has no chain rule",
+   "observable_errors": [
+    "BC-ERR-06027"
+   ],
+   "official_evidence": [
+    "sg-24:15"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-06024"
+   ],
+   "scope": "shared",
+   "severity": "medium",
+   "skills": [
+    "BC-SKL-06019",
+    "BC-SKL-06018"
+   ],
+   "sources": [
+    "sg-24:15"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-06007"
+   ],
+   "description": "The learner does not distinguish the bound variable inside the integral from the variable in the upper limit.",
+   "discriminating_probe": "Ask whether changing the letter of the variable of integration changes the function.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-06012"
+   ],
+   "id": "BC-MIS-06024",
+   "literature": [],
+   "name": "The variable of integration is the independent variable",
+   "observable_errors": [
+    "BC-ERR-06028"
+   ],
+   "official_evidence": [
+    "ced:121"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-06023"
+   ],
+   "scope": "shared",
+   "severity": "medium",
+   "skills": [
+    "BC-SKL-06017",
+    "BC-SKL-06018"
+   ],
+   "sources": [
+    "ced:121"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-06001",
+    "BC-CON-06002"
+   ],
+   "description": "The learner omits the interval or the units because the quantity has been identified.",
+   "discriminating_probe": "Ask what would change in the sentence if the interval were different.",
+   "downstream_dependencies": [],
+   "evidence_tag": "verified",
+   "exposing_archetypes": [
+    "BC-QA-06015"
+   ],
+   "id": "BC-MIS-06025",
+   "literature": [],
+   "name": "An interpretation is complete once the quantity is named",
+   "observable_errors": [
+    "BC-ERR-06029",
+    "BC-ERR-06030"
+   ],
+   "official_evidence": [
+    "sg-23:2"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-06014"
+   ],
+   "scope": "shared",
+   "severity": "medium",
+   "skills": [
+    "BC-SKL-06001",
+    "BC-SKL-06002"
+   ],
+   "sources": [
+    "sg-23:2"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-06011",
+    "BC-CON-06012"
+   ],
+   "description": "The learner applies F(b) minus F(a) without checking that the integrand is continuous on the interval.",
+   "discriminating_probe": "Give an integrand with a jump inside the interval and ask whether the theorem applies directly.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-06013"
+   ],
+   "id": "BC-MIS-06026",
+   "literature": [],
+   "name": "The Fundamental Theorem of Calculus part two needs no hypotheses",
+   "observable_errors": [
+    "BC-ERR-06031"
+   ],
+   "official_evidence": [
+    "ced:123",
+    "ced:124"
+   ],
+   "rival_misconceptions": [],
+   "scope": "shared",
+   "severity": "medium",
+   "skills": [
+    "BC-SKL-06033",
+    "BC-SKL-06035"
+   ],
+   "sources": [
+    "ced:123",
+    "ced:124"
+   ]
+  }
+ ],
+ "registry": "misconceptions"
+}

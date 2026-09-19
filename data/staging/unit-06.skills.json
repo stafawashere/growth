@@ -1,0 +1,4801 @@
+{
+ "concepts": [
+  {
+   "description_formal": "For a rate function f on [a,b], the signed area between the graph of f and the x axis over [a,b] equals the accumulated change in the antiderivative quantity over [a,b].",
+   "description_plain": "The area between a rate of change graph and the horizontal axis measures how much the quantity changed.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-06001",
+   "misconceptions": [
+    "BC-MIS-06012",
+    "BC-MIS-06013",
+    "BC-MIS-06025"
+   ],
+   "name": "Accumulation of change as area under a rate graph",
+   "notation": "signed area; accumulated change",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-06001",
+    "BC-SKL-06002",
+    "BC-SKL-06003",
+    "BC-SKL-06004"
+   ],
+   "sources": [
+    "ced:118"
+   ],
+   "topics": [
+    "BC-TOP-0601"
+   ],
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "description_formal": "If f is positive (negative) on an interval the accumulated change is positive (negative); the unit of the accumulation is the unit of f multiplied by the unit of the independent variable.",
+   "description_plain": "The sign of the rate fixes the sign of the accumulated change, and the units multiply.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-06002",
+   "misconceptions": [
+    "BC-MIS-06025"
+   ],
+   "name": "Sign and units of accumulated change",
+   "notation": "units of f times units of t",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-06002",
+    "BC-SKL-06003"
+   ],
+   "sources": [
+    "ced:118"
+   ],
+   "topics": [
+    "BC-TOP-0601"
+   ],
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "description_formal": "For a partition of [a,b] into subintervals of widths delta x sub i, a Riemann sum is the sum of f(x sub i star) times delta x sub i, where x sub i star is chosen as a left endpoint, right endpoint, or midpoint; a trapezoidal sum averages the two endpoint values on each subinterval.",
+   "description_plain": "A definite integral can be estimated by adding function value times subinterval width over a partition.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-06003",
+   "misconceptions": [
+    "BC-MIS-06001",
+    "BC-MIS-06002",
+    "BC-MIS-06003",
+    "BC-MIS-06004"
+   ],
+   "name": "Riemann sum approximation of a definite integral",
+   "notation": "L sub n, R sub n, M sub n, T sub n",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-06005",
+    "BC-SKL-06006",
+    "BC-SKL-06007",
+    "BC-SKL-06008",
+    "BC-SKL-06009"
+   ],
+   "sources": [
+    "ced:119"
+   ],
+   "topics": [
+    "BC-TOP-0602"
+   ],
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "description_formal": "For a monotone integrand, a left Riemann sum underestimates when f is increasing and overestimates when f is decreasing, with the reverse for a right sum; for a concave up integrand a trapezoidal sum overestimates and a midpoint sum underestimates.",
+   "description_plain": "Whether an approximation is too big or too small follows from how the function rises, falls, or bends.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-06004",
+   "misconceptions": [
+    "BC-MIS-06003",
+    "BC-MIS-06005",
+    "BC-MIS-06006"
+   ],
+   "name": "Over and under estimate reasoning for approximations",
+   "notation": "underestimate, overestimate",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-06010",
+    "BC-SKL-06011"
+   ],
+   "sources": [
+    "ced:119"
+   ],
+   "topics": [
+    "BC-TOP-0602"
+   ],
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "description_formal": "A Riemann sum over a partition of an interval I is the sum from i = 1 to n of f(x sub i star) times delta x sub i, where each term is a function value at a point of a subinterval multiplied by the length of that subinterval.",
+   "description_plain": "Sigma notation writes a Riemann sum compactly as a sum of products.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-06005",
+   "misconceptions": [
+    "BC-MIS-06001"
+   ],
+   "name": "Summation notation and the Riemann sum as a sum of products",
+   "notation": "sigma from i = 1 to n",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-06012",
+    "BC-SKL-06013"
+   ],
+   "sources": [
+    "ced:120"
+   ],
+   "topics": [
+    "BC-TOP-0603"
+   ],
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "description_formal": "The definite integral of a continuous f over [a,b] is the limit of Riemann sums as the maximum subinterval width approaches 0, written as the integral from a to b of f(x) dx.",
+   "description_plain": "Letting every subinterval width go to zero turns the Riemann sum into the definite integral.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-06006",
+   "misconceptions": [
+    "BC-MIS-06003"
+   ],
+   "name": "Definite integral as the limit of Riemann sums",
+   "notation": "integral from a to b of f(x) dx",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-06014",
+    "BC-SKL-06015",
+    "BC-SKL-06016"
+   ],
+   "sources": [
+    "ced:120"
+   ],
+   "topics": [
+    "BC-TOP-0603"
+   ],
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "description_formal": "For f continuous on an interval containing a, g(x) = the integral from a to x of f(t) dt defines a function g on that interval; t is a bound variable and x is the independent variable.",
+   "description_plain": "A definite integral with a variable upper limit defines a new function of that limit.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-06007",
+   "misconceptions": [
+    "BC-MIS-06007",
+    "BC-MIS-06024"
+   ],
+   "name": "Accumulation function defined by a definite integral",
+   "notation": "g(x) = integral from a to x of f(t) dt",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-06017",
+    "BC-SKL-06020",
+    "BC-SKL-06021"
+   ],
+   "sources": [
+    "ced:121"
+   ],
+   "topics": [
+    "BC-TOP-0604"
+   ],
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "description_formal": "If f is continuous on an interval containing a, then the derivative with respect to x of the integral from a to x of f(t) dt equals f(x) for x in that interval; when the upper limit is u(x) the chain rule gives f(u(x)) times u'(x).",
+   "description_plain": "Differentiating an accumulation function returns the integrand evaluated at the upper limit.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-06008",
+   "misconceptions": [
+    "BC-MIS-06023"
+   ],
+   "name": "Fundamental Theorem of Calculus part one",
+   "notation": "d/dx of integral from a to x of f(t) dt = f(x)",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-06018",
+    "BC-SKL-06019",
+    "BC-SKL-06021"
+   ],
+   "sources": [
+    "ced:121"
+   ],
+   "topics": [
+    "BC-TOP-0604"
+   ],
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "description_formal": "For g(x) = the integral from a to x of f(t) dt, the sign of f gives the monotonicity of g, sign changes of f give relative extrema of g, and the monotonicity of f gives the concavity and points of inflection of g.",
+   "description_plain": "The graph of the integrand controls where the accumulation function rises, falls, and bends.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-06009",
+   "misconceptions": [
+    "BC-MIS-06006",
+    "BC-MIS-06007",
+    "BC-MIS-06008",
+    "BC-MIS-06009",
+    "BC-MIS-06010"
+   ],
+   "name": "Behaviour of an accumulation function read from the integrand",
+   "notation": "g', g'' in terms of f, f'",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-06022",
+    "BC-SKL-06023",
+    "BC-SKL-06024",
+    "BC-SKL-06025",
+    "BC-SKL-06026",
+    "BC-SKL-06027"
+   ],
+   "sources": [
+    "ced:122"
+   ],
+   "topics": [
+    "BC-TOP-0605"
+   ],
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "description_formal": "If the graph of f over [a,b] consists of segments and circular arcs, the integral from a to b of f(x) dx is the sum of the areas of the regions above the axis minus the areas of the regions below the axis.",
+   "description_plain": "When the graph is made of lines and circular arcs the integral is a sum of signed areas.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-06010",
+   "misconceptions": [
+    "BC-MIS-06011",
+    "BC-MIS-06012"
+   ],
+   "name": "Definite integral evaluated by geometry",
+   "notation": "signed area",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-06028"
+   ],
+   "sources": [
+    "ced:123"
+   ],
+   "topics": [
+    "BC-TOP-0606"
+   ],
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "description_formal": "Properties of definite integrals include the integral of a constant times a function, the integral of a sum, reversal of the limits of integration, the integral over adjacent intervals, and the vanishing integral over a degenerate interval; the definition extends to integrands with removable or jump discontinuities.",
+   "description_plain": "Constants factor out, sums split, reversing the limits flips the sign, and adjacent intervals add.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-06011",
+   "misconceptions": [
+    "BC-MIS-06026"
+   ],
+   "name": "Algebraic properties of the definite integral",
+   "notation": "integral from a to b = minus integral from b to a",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-06029",
+    "BC-SKL-06030",
+    "BC-SKL-06031",
+    "BC-SKL-06032",
+    "BC-SKL-06033"
+   ],
+   "sources": [
+    "ced:123"
+   ],
+   "topics": [
+    "BC-TOP-0606"
+   ],
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "description_formal": "If f is continuous on [a,b] and F is an antiderivative of f, then the integral from a to b of f(x) dx equals F(b) minus F(a); equivalently the net change in F over [a,b] is the integral of its rate.",
+   "description_plain": "An antiderivative evaluated at the endpoints gives the exact integral and the net change.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-06012",
+   "misconceptions": [
+    "BC-MIS-06013",
+    "BC-MIS-06014",
+    "BC-MIS-06026"
+   ],
+   "name": "Fundamental Theorem of Calculus part two and net change",
+   "notation": "F(b) - F(a)",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-06034",
+    "BC-SKL-06035",
+    "BC-SKL-06036",
+    "BC-SKL-06037",
+    "BC-SKL-06039"
+   ],
+   "sources": [
+    "ced:124"
+   ],
+   "topics": [
+    "BC-TOP-0607"
+   ],
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "description_formal": "The average value of f over [a,b] is one over (b minus a) times the integral from a to b of f(x) dx.",
+   "description_plain": "The average value divides the accumulated amount by the length of the interval.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-06013",
+   "misconceptions": [
+    "BC-MIS-06014",
+    "BC-MIS-06015"
+   ],
+   "name": "Average value of a function",
+   "notation": "1/(b-a) times integral from a to b",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-06038"
+   ],
+   "sources": [
+    "ced:124"
+   ],
+   "topics": [
+    "BC-TOP-0607"
+   ],
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "description_formal": "The integral of f(x) dx equals F(x) plus C where F'(x) = f(x) and C is any constant; differentiation rules read backwards give the basic antiderivative forms, and many functions have no closed-form antiderivative.",
+   "description_plain": "An indefinite integral names the whole family of functions whose derivative is the integrand.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-06014",
+   "misconceptions": [
+    "BC-MIS-06018",
+    "BC-MIS-06019"
+   ],
+   "name": "Antiderivative and indefinite integral",
+   "notation": "integral of f(x) dx = F(x) + C",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-06040",
+    "BC-SKL-06041",
+    "BC-SKL-06042",
+    "BC-SKL-06043",
+    "BC-SKL-06044",
+    "BC-SKL-06045",
+    "BC-SKL-06046"
+   ],
+   "sources": [
+    "ced:125"
+   ],
+   "topics": [
+    "BC-TOP-0608"
+   ],
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "description_formal": "If u = g(x) and du = g'(x) dx, then the integral of f(g(x)) g'(x) dx equals the integral of f(u) du; for a definite integral the limits of integration must be converted to u values or the antiderivative back-substituted before evaluation.",
+   "description_plain": "Naming an inner expression u converts a composite integrand into a basic form.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-06015",
+   "misconceptions": [
+    "BC-MIS-06016",
+    "BC-MIS-06017"
+   ],
+   "name": "Substitution of variables",
+   "notation": "u = g(x), du = g'(x) dx",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-06047",
+    "BC-SKL-06048",
+    "BC-SKL-06049",
+    "BC-SKL-06050",
+    "BC-SKL-06051",
+    "BC-SKL-06052"
+   ],
+   "sources": [
+    "ced:126"
+   ],
+   "topics": [
+    "BC-TOP-0609"
+   ],
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "description_formal": "Techniques for finding antiderivatives include rearrangements into equivalent forms, such as long division of an improper rational function and completing the square in a quadratic denominator to reach a logarithmic or inverse trigonometric form.",
+   "description_plain": "Long division and completing the square turn an unworkable integrand into a standard one.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-06016",
+   "misconceptions": [
+    "BC-MIS-06022"
+   ],
+   "name": "Rearrangement into an equivalent integrable form",
+   "notation": "quotient plus remainder over divisor",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-06053",
+    "BC-SKL-06054",
+    "BC-SKL-06055",
+    "BC-SKL-06056"
+   ],
+   "sources": [
+    "ced:127"
+   ],
+   "topics": [
+    "BC-TOP-0610"
+   ],
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "description_formal": "Integration by parts states that the integral of u dv equals u v minus the integral of v du, and is the product rule for derivatives read as an antidifferentiation technique.",
+   "description_plain": "Parts trades one integral for a simpler one using the product rule in reverse.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-06017",
+   "misconceptions": [
+    "BC-MIS-06019"
+   ],
+   "name": "Integration by parts",
+   "notation": "integral u dv = uv - integral v du",
+   "scope": "BC_only",
+   "skills": [
+    "BC-SKL-06057",
+    "BC-SKL-06058",
+    "BC-SKL-06059",
+    "BC-SKL-06060",
+    "BC-SKL-06061"
+   ],
+   "sources": [
+    "ced:128"
+   ],
+   "topics": [
+    "BC-TOP-0611"
+   ],
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "description_formal": "Some rational functions can be decomposed into sums of ratios with linear, nonrepeating denominators, each of which antidifferentiates to a constant times a natural logarithm of the linear factor.",
+   "description_plain": "A rational function with distinct linear factors splits into simple fractions that integrate to logarithms.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-06018",
+   "misconceptions": [],
+   "name": "Linear partial fraction decomposition",
+   "notation": "A/(x-r) + B/(x-s)",
+   "scope": "BC_only",
+   "skills": [
+    "BC-SKL-06062",
+    "BC-SKL-06063",
+    "BC-SKL-06064",
+    "BC-SKL-06065"
+   ],
+   "sources": [
+    "ced:129"
+   ],
+   "topics": [
+    "BC-TOP-0612"
+   ],
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "description_formal": "An improper integral has one or both limits infinite or an integrand unbounded on the interval of integration; it is evaluated as a limit of definite integrals, converging when that limit exists and diverging otherwise.",
+   "description_plain": "An integral with an infinite limit or an unbounded integrand is defined as a limit of ordinary integrals.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-06019",
+   "misconceptions": [
+    "BC-MIS-06020",
+    "BC-MIS-06021"
+   ],
+   "name": "Improper integral and convergence",
+   "notation": "limit as b approaches infinity of integral from a to b",
+   "scope": "BC_only",
+   "skills": [
+    "BC-SKL-06066",
+    "BC-SKL-06067",
+    "BC-SKL-06068",
+    "BC-SKL-06069",
+    "BC-SKL-06070"
+   ],
+   "sources": [
+    "ced:130"
+   ],
+   "topics": [
+    "BC-TOP-0613"
+   ],
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "description_formal": "Classification of an integrand by its structure, such as a composite with an available inner derivative, a product of unlike factors, an improper rational form, or a factorable linear denominator, determines which antidifferentiation procedure applies.",
+   "description_plain": "The structure of the integrand decides which technique applies.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-06020",
+   "misconceptions": [
+    "BC-MIS-06017",
+    "BC-MIS-06022"
+   ],
+   "name": "Selecting an antidifferentiation technique",
+   "notation": "technique classification",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-06071",
+    "BC-SKL-06072",
+    "BC-SKL-06073",
+    "BC-SKL-06074"
+   ],
+   "sources": [
+    "ced:131"
+   ],
+   "topics": [
+    "BC-TOP-0614"
+   ],
+   "unit": "BC-UNIT-06"
+  }
+ ],
+ "prerequisites": [
+  {
+   "category": "algebra",
+   "description_plain": "Factoring constants out, splitting a fraction into terms, and rewriting a product so that one factor is a constant multiple of the derivative of another expression.",
+   "evidence_tag": "inferred",
+   "failure_signature": "Student cannot see that the integrand is a composite times the derivative of the inner expression and attempts term-by-term antidifferentiation.",
+   "hidden": true,
+   "id": "BC-PRQ-06001",
+   "name": "Rewriting expressions to expose an inner function and its derivative",
+   "notes": "Non-calculus prerequisite inferred from the demands of the Unit 6 essential knowledge statements.",
+   "scope": "shared",
+   "sources": [
+    "ced:112"
+   ]
+  },
+  {
+   "category": "algebra",
+   "description_plain": "Converting radicals and reciprocals to powers, adding exponents on products, and applying the power rule in reverse to any real exponent other than negative one.",
+   "evidence_tag": "inferred",
+   "failure_signature": "Radical or reciprocal integrands are left unrewritten, or the power rule is applied to an exponent of negative one.",
+   "hidden": true,
+   "id": "BC-PRQ-06002",
+   "name": "Exponent rules including negative and fractional exponents",
+   "notes": "Non-calculus prerequisite inferred from the demands of the Unit 6 essential knowledge statements.",
+   "scope": "shared",
+   "sources": [
+    "ced:112"
+   ]
+  },
+  {
+   "category": "algebra",
+   "description_plain": "Product, quotient, and power rules for logarithms, the domain of ln, and the use of absolute value inside the logarithm of a linear expression.",
+   "evidence_tag": "inferred",
+   "failure_signature": "Logarithmic answers are not combined or simplified, or ln of a negative quantity is written without absolute value.",
+   "hidden": true,
+   "id": "BC-PRQ-06003",
+   "name": "Logarithm rules and properties of the natural logarithm",
+   "notes": "Non-calculus prerequisite inferred from the demands of the Unit 6 essential knowledge statements.",
+   "scope": "shared",
+   "sources": [
+    "ced:112"
+   ]
+  },
+  {
+   "category": "trigonometry",
+   "description_plain": "Pythagorean identities, double angle identities, and the reciprocal and quotient identities used to rewrite an integrand into a form whose antiderivative is a basic trigonometric function.",
+   "evidence_tag": "inferred",
+   "failure_signature": "A squared trigonometric integrand is antidifferentiated as if it were a basic form instead of being rewritten first.",
+   "hidden": true,
+   "id": "BC-PRQ-06004",
+   "name": "Trigonometric identities used in antidifferentiation",
+   "notes": "Non-calculus prerequisite inferred from the demands of the Unit 6 essential knowledge statements.",
+   "scope": "shared",
+   "sources": [
+    "ced:112"
+   ]
+  },
+  {
+   "category": "notation",
+   "description_plain": "Interpreting f(t), f'(x), f(g(x)), and evaluation at a stated input, and distinguishing a function from its value at a point.",
+   "evidence_tag": "inferred",
+   "failure_signature": "Values are pulled from a table or a graph for the wrong input, or f' and f are interchanged.",
+   "hidden": true,
+   "id": "BC-PRQ-06005",
+   "name": "Reading function notation, composition, and evaluation",
+   "notes": "Non-calculus prerequisite inferred from the demands of the Unit 6 essential knowledge statements.",
+   "scope": "shared",
+   "sources": [
+    "ced:112"
+   ]
+  },
+  {
+   "category": "notation",
+   "description_plain": "Expanding and writing sigma notation with an index, lower and upper limits, and a general term.",
+   "evidence_tag": "inferred",
+   "failure_signature": "The index is not substituted correctly, or the number of terms is off by one.",
+   "hidden": true,
+   "id": "BC-PRQ-06006",
+   "name": "Summation notation",
+   "notes": "Non-calculus prerequisite inferred from the demands of the Unit 6 essential knowledge statements.",
+   "scope": "shared",
+   "sources": [
+    "ced:112"
+   ]
+  },
+  {
+   "category": "geometry",
+   "description_plain": "Computing the areas of rectangles, triangles, trapezoids, and circular or semicircular regions from lengths read off a figure.",
+   "evidence_tag": "inferred",
+   "failure_signature": "A trapezoidal region is treated as a rectangle, or a semicircular region is given the area of a full circle.",
+   "hidden": true,
+   "id": "BC-PRQ-06007",
+   "name": "Area formulas for rectangles, triangles, trapezoids, circles, and semicircles",
+   "notes": "Non-calculus prerequisite inferred from the demands of the Unit 6 essential knowledge statements.",
+   "scope": "shared",
+   "sources": [
+    "ced:112"
+   ]
+  },
+  {
+   "category": "conceptual",
+   "description_plain": "Comparing an approximation with an exact quantity and stating which is larger, given the direction in which a function rises, falls, or bends.",
+   "evidence_tag": "inferred",
+   "failure_signature": "An over or under estimate claim is asserted without reference to monotonicity or concavity.",
+   "hidden": true,
+   "id": "BC-PRQ-06008",
+   "name": "Inequality reasoning about approximations",
+   "notes": "Non-calculus prerequisite inferred from the demands of the Unit 6 essential knowledge statements.",
+   "scope": "shared",
+   "sources": [
+    "ced:112"
+   ]
+  },
+  {
+   "category": "algebra",
+   "description_plain": "Dividing one polynomial by another to write an improper rational expression as a polynomial plus a proper remainder term.",
+   "evidence_tag": "inferred",
+   "failure_signature": "An improper rational integrand is antidifferentiated directly without division.",
+   "hidden": true,
+   "id": "BC-PRQ-06009",
+   "name": "Polynomial long division",
+   "notes": "Non-calculus prerequisite inferred from the demands of the Unit 6 essential knowledge statements.",
+   "scope": "shared",
+   "sources": [
+    "ced:112"
+   ]
+  },
+  {
+   "category": "algebra",
+   "description_plain": "Rewriting a quadratic as a perfect square plus or minus a constant in order to expose a standard form.",
+   "evidence_tag": "inferred",
+   "failure_signature": "A quadratic denominator is left in general form and no standard antiderivative form is recognised.",
+   "hidden": true,
+   "id": "BC-PRQ-06010",
+   "name": "Completing the square",
+   "notes": "Non-calculus prerequisite inferred from the demands of the Unit 6 essential knowledge statements.",
+   "scope": "shared",
+   "sources": [
+    "ced:112"
+   ]
+  },
+  {
+   "category": "algebra",
+   "description_plain": "Clearing denominators and either substituting convenient values or equating coefficients to solve a small linear system for the numerators of a decomposition.",
+   "evidence_tag": "inferred",
+   "failure_signature": "The decomposition constants are guessed or left unsolved.",
+   "hidden": true,
+   "id": "BC-PRQ-06011",
+   "name": "Solving for undetermined coefficients in a rational identity",
+   "notes": "Non-calculus prerequisite inferred from the demands of the Unit 6 essential knowledge statements.",
+   "scope": "shared",
+   "sources": [
+    "ced:112"
+   ]
+  },
+  {
+   "category": "arithmetic",
+   "description_plain": "Computing each subinterval width as a difference of consecutive partition points rather than assuming a single common width.",
+   "evidence_tag": "inferred",
+   "failure_signature": "One common width is used across subintervals of different lengths.",
+   "hidden": true,
+   "id": "BC-PRQ-06012",
+   "name": "Arithmetic with nonuniform subinterval widths",
+   "notes": "Non-calculus prerequisite inferred from the demands of the Unit 6 essential knowledge statements.",
+   "scope": "shared",
+   "sources": [
+    "ced:112"
+   ]
+  },
+  {
+   "category": "notation",
+   "description_plain": "Recognising that the variable of integration is internal to the integral and that only the limits carry the outside variable.",
+   "evidence_tag": "inferred",
+   "failure_signature": "The variable of integration is treated as the independent variable of the accumulation function.",
+   "hidden": true,
+   "id": "BC-PRQ-06013",
+   "name": "Bound variables and the dummy variable convention",
+   "notes": "Non-calculus prerequisite inferred from the demands of the Unit 6 essential knowledge statements.",
+   "scope": "shared",
+   "sources": [
+    "ced:112"
+   ]
+  }
+ ],
+ "registry": "skills",
+ "skills": [
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-06014",
+     "BC-MIS-06025"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-06015"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06015 across at least two representations, with no error from BC-ERR-06029, BC-ERR-06030.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-06029, BC-ERR-06030 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-06015"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-06029",
+    "BC-ERR-06030"
+   ],
+   "concept": "BC-CON-06001",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given a graph of a rate function f in context, state that the area of the region between the graph and the x axis over an interval is the accumulated change in the quantity whose rate is f over that interval.",
+   "description_plain": "Say what the area between a rate graph and the axis measures in the situation described.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-4A1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06001",
+   "learning_objectives": [
+    "BC-LO-CHA-4A"
+   ],
+   "misconceptions": [
+    "BC-MIS-06014",
+    "BC-MIS-06025"
+   ],
+   "name": "Interpret the area under a rate of change graph as accumulated change",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-02",
+    "BC-REP-05",
+    "BC-REP-04"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:118"
+   ],
+   "topic": "BC-TOP-0601",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-06025"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-06015"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06015 across at least two representations, with no error from BC-ERR-06029.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-06029 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-06015"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-06029"
+   ],
+   "concept": "BC-CON-06002",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given the unit of a rate of change function and the unit of its independent variable, state the unit of the area of the region defined by the rate, which is the product of the two units.",
+   "description_plain": "Give the units of an accumulation as rate units times independent variable units.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-4A4"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06002",
+   "learning_objectives": [
+    "BC-LO-CHA-4A"
+   ],
+   "misconceptions": [
+    "BC-MIS-06025"
+   ],
+   "name": "State the units of an accumulated change",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-05"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:118"
+   ],
+   "topic": "BC-TOP-0601",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-06012"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-06004"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06004 across at least two representations, with no error from the unit error list.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of the unit error list without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with no non-calculus prerequisite specific to this skill.",
+    "remediation_target": "BC-CON-06002"
+   },
+   "archetypes": [
+    "BC-QA-06004"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-06002",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given the sign of a rate of change function on an interval, conclude that the accumulated change over that interval is positive when the rate is positive and negative when the rate is negative.",
+   "description_plain": "Decide whether the quantity rose or fell over an interval from whether the rate was positive or negative.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-4A3"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06003",
+   "learning_objectives": [
+    "BC-LO-CHA-4A"
+   ],
+   "misconceptions": [
+    "BC-MIS-06012"
+   ],
+   "name": "Determine the sign of accumulated change from the sign of the rate",
+   "practice_skills": [],
+   "prerequisites": [],
+   "representations": [
+    "BC-REP-02",
+    "BC-REP-04"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:118"
+   ],
+   "topic": "BC-TOP-0601",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-06011"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-06004"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06004 across at least two representations, with no error from BC-ERR-06013, BC-ERR-06014.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-06013, BC-ERR-06014 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06007.",
+    "remediation_target": "BC-PRQ-06007"
+   },
+   "archetypes": [
+    "BC-QA-06004"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-06013",
+    "BC-ERR-06014"
+   ],
+   "concept": "BC-CON-06001",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given a rate of change function whose graph consists of line segments, compute the accumulated change over an interval as the sum of the signed areas of the resulting triangles, rectangles, and trapezoids.",
+   "description_plain": "Add up triangle and rectangle areas under a rate graph to get the total change.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-4A2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06004",
+   "learning_objectives": [
+    "BC-LO-CHA-4A"
+   ],
+   "misconceptions": [
+    "BC-MIS-06011"
+   ],
+   "name": "Compute accumulated change from a piecewise linear rate graph using geometry",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06007"
+   ],
+   "representations": [
+    "BC-REP-02",
+    "BC-REP-05"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:118"
+   ],
+   "topic": "BC-TOP-0601",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-06001",
+     "BC-MIS-06002",
+     "BC-MIS-06003"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-06001"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06001 across at least two representations, with no error from BC-ERR-06001, BC-ERR-06002, BC-ERR-06003.",
+    "next_dependent_skills": [
+     "BC-SKL-06010"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-06001, BC-ERR-06002, BC-ERR-06003 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06005, BC-PRQ-06012.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-06001"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-06001",
+    "BC-ERR-06002",
+    "BC-ERR-06003"
+   ],
+   "concept": "BC-CON-06003",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-06010"
+   ],
+   "description_formal": "Given selected values of f at partition points, approximate the integral of f over the interval as the sum over subintervals of f at the left endpoint multiplied by the width of that subinterval, with widths taken as differences of consecutive partition points.",
+   "description_plain": "Use the value at the left end of each subinterval times its width and add.",
+   "diagnostic_signals": [
+    "BC-SIG-06001",
+    "BC-SIG-06002",
+    "BC-SIG-06004"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-5A1",
+    "BC-EK-LIM-5A2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06005",
+   "learning_objectives": [
+    "BC-LO-LIM-5A"
+   ],
+   "misconceptions": [
+    "BC-MIS-06001",
+    "BC-MIS-06002",
+    "BC-MIS-06003"
+   ],
+   "name": "Compute a left Riemann sum from a table of values",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-PRQ-06012"
+   ],
+   "representations": [
+    "BC-REP-03",
+    "BC-REP-05"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:119"
+   ],
+   "topic": "BC-TOP-0602",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-06001",
+     "BC-MIS-06002"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-06001"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06001 across at least two representations, with no error from BC-ERR-06001, BC-ERR-06002, BC-ERR-06003.",
+    "next_dependent_skills": [
+     "BC-SKL-06010"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-06001, BC-ERR-06002, BC-ERR-06003 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06005, BC-PRQ-06012.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-06001"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-06001",
+    "BC-ERR-06002",
+    "BC-ERR-06003"
+   ],
+   "concept": "BC-CON-06003",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-06010"
+   ],
+   "description_formal": "Given selected values of f at partition points, approximate the integral of f over the interval as the sum over subintervals of f at the right endpoint multiplied by the width of that subinterval.",
+   "description_plain": "Use the value at the right end of each subinterval times its width and add.",
+   "diagnostic_signals": [
+    "BC-SIG-06003"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-5A1",
+    "BC-EK-LIM-5A2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06006",
+   "learning_objectives": [
+    "BC-LO-LIM-5A"
+   ],
+   "misconceptions": [
+    "BC-MIS-06001",
+    "BC-MIS-06002"
+   ],
+   "name": "Compute a right Riemann sum from a table of values",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-PRQ-06012"
+   ],
+   "representations": [
+    "BC-REP-03",
+    "BC-REP-05"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:119"
+   ],
+   "topic": "BC-TOP-0602",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-06002"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-06001"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06001 across at least two representations, with no error from the unit error list.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of the unit error list without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06012.",
+    "remediation_target": "BC-PRQ-06012"
+   },
+   "archetypes": [
+    "BC-QA-06001"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [],
+   "concept": "BC-CON-06003",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given a function represented graphically, numerically, or analytically and a partition, approximate the integral as the sum over subintervals of f at the midpoint of the subinterval multiplied by its width.",
+   "description_plain": "Use the value at the centre of each subinterval times its width and add.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-5A2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06007",
+   "learning_objectives": [
+    "BC-LO-LIM-5A"
+   ],
+   "misconceptions": [
+    "BC-MIS-06002"
+   ],
+   "name": "Compute a midpoint Riemann sum",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06012"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02",
+    "BC-REP-03"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:119"
+   ],
+   "topic": "BC-TOP-0602",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-06001",
+     "BC-MIS-06004"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-06002"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06002 across at least two representations, with no error from BC-ERR-06001, BC-ERR-06004.",
+    "next_dependent_skills": [
+     "BC-SKL-06011"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-06001, BC-ERR-06004 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06007, BC-PRQ-06012.",
+    "remediation_target": "BC-PRQ-06007"
+   },
+   "archetypes": [
+    "BC-QA-06002"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-06001",
+    "BC-ERR-06004"
+   ],
+   "concept": "BC-CON-06003",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-06011"
+   ],
+   "description_formal": "Given selected values of f at partition points, approximate the integral as the sum over subintervals of the average of the two endpoint values of f multiplied by the width of that subinterval.",
+   "description_plain": "Average the two endpoint values on each subinterval, multiply by the width, and add.",
+   "diagnostic_signals": [
+    "BC-SIG-06005"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-5A2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06008",
+   "learning_objectives": [
+    "BC-LO-LIM-5A"
+   ],
+   "misconceptions": [
+    "BC-MIS-06001",
+    "BC-MIS-06004"
+   ],
+   "name": "Compute a trapezoidal sum from a table of values",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06007",
+    "BC-PRQ-06012"
+   ],
+   "representations": [
+    "BC-REP-03",
+    "BC-REP-05"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:119"
+   ],
+   "topic": "BC-TOP-0602",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-06001"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06001 across at least two representations, with no error from the unit error list.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of the unit error list without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-06001"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [],
+   "concept": "BC-CON-06003",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given a function presented graphically or analytically together with a number of equal subintervals, determine the subinterval width, obtain the required function values, and assemble the Riemann or trapezoidal sum.",
+   "description_plain": "Read or evaluate the needed function values yourself, then build the sum.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-5A1",
+    "BC-EK-LIM-5A3"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06009",
+   "learning_objectives": [
+    "BC-LO-LIM-5A"
+   ],
+   "misconceptions": [],
+   "name": "Compute a Riemann sum for a function given by a graph or a formula",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:119"
+   ],
+   "topic": "BC-TOP-0602",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-06003",
+     "BC-MIS-06005"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-06001"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06001 across at least two representations, with no error from BC-ERR-06005, BC-ERR-06006.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-06005, BC-ERR-06006 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06008.",
+    "remediation_target": "BC-SKL-06005"
+   },
+   "archetypes": [
+    "BC-QA-06001"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-06005",
+    "BC-ERR-06006"
+   ],
+   "concept": "BC-CON-06004",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given that f is increasing or decreasing on the interval of integration, determine and justify whether a left or right Riemann sum is an underestimate or an overestimate of the definite integral.",
+   "description_plain": "Argue from the function increasing or decreasing which way the estimate is off.",
+   "diagnostic_signals": [
+    "BC-SIG-06006"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-5A4"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06010",
+   "learning_objectives": [
+    "BC-LO-LIM-5A"
+   ],
+   "misconceptions": [
+    "BC-MIS-06003",
+    "BC-MIS-06005"
+   ],
+   "name": "Justify whether a Riemann sum under or over estimates using monotonicity",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06008",
+    "BC-SKL-06005",
+    "BC-SKL-06006"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02",
+    "BC-REP-03"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:119"
+   ],
+   "topic": "BC-TOP-0602",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-06003",
+     "BC-MIS-06005",
+     "BC-MIS-06006"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-06002"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06002 across at least two representations, with no error from BC-ERR-06005, BC-ERR-06007.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-06005, BC-ERR-06007 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06008.",
+    "remediation_target": "BC-SKL-06008"
+   },
+   "archetypes": [
+    "BC-QA-06002"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-06005",
+    "BC-ERR-06007"
+   ],
+   "concept": "BC-CON-06004",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given that f is concave up or concave down on the interval of integration, determine and justify whether a trapezoidal sum or a midpoint sum is an underestimate or an overestimate of the definite integral.",
+   "description_plain": "Argue from the bending of the graph which way the estimate is off.",
+   "diagnostic_signals": [
+    "BC-SIG-06007"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-5A4"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06011",
+   "learning_objectives": [
+    "BC-LO-LIM-5A"
+   ],
+   "misconceptions": [
+    "BC-MIS-06003",
+    "BC-MIS-06005",
+    "BC-MIS-06006"
+   ],
+   "name": "Justify whether a trapezoidal or midpoint sum under or over estimates using concavity",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06008",
+    "BC-SKL-06008"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:119"
+   ],
+   "topic": "BC-TOP-0602",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-06014"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06014 across at least two representations, with no error from BC-ERR-06003.",
+    "next_dependent_skills": [
+     "BC-SKL-06014"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-06003 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06006.",
+    "remediation_target": "BC-PRQ-06006"
+   },
+   "archetypes": [
+    "BC-QA-06014"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-06003"
+   ],
+   "concept": "BC-CON-06005",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-06014"
+   ],
+   "description_formal": "Given a Riemann sum written in sigma notation, expand it into the sum of products, each of which is a value of the function at a point in a subinterval multiplied by the length of that subinterval.",
+   "description_plain": "Write out the terms of a sigma expression as products of a value and a width.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-5B2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06012",
+   "learning_objectives": [
+    "BC-LO-LIM-5B"
+   ],
+   "misconceptions": [],
+   "name": "Expand summation notation into an explicit Riemann sum",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06006"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:120"
+   ],
+   "topic": "BC-TOP-0603",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-06014"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06014 across at least two representations, with no error from the unit error list.",
+    "next_dependent_skills": [
+     "BC-SKL-06015"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of the unit error list without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06006.",
+    "remediation_target": "BC-PRQ-06006"
+   },
+   "archetypes": [
+    "BC-QA-06014"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-06005",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-06015"
+   ],
+   "description_formal": "Given f, an interval [a,b], and n equal subintervals, express the corresponding Riemann sum in sigma notation with subinterval width (b minus a) over n and the appropriate sample points.",
+   "description_plain": "Build the sigma expression from the function, the endpoints, and the number of subintervals.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-5B2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06013",
+   "learning_objectives": [
+    "BC-LO-LIM-5C"
+   ],
+   "misconceptions": [],
+   "name": "Write a Riemann sum in sigma notation for a given function, interval, and partition",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06006"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:120"
+   ],
+   "topic": "BC-TOP-0603",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-06014"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06014 across at least two representations, with no error from the unit error list.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of the unit error list without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06006.",
+    "remediation_target": "BC-SKL-06012"
+   },
+   "archetypes": [
+    "BC-QA-06014"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-06006",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given a limit of Riemann sums as n approaches infinity or as the maximum subinterval width approaches 0, identify the integrand, the lower limit, and the upper limit, and write the equivalent definite integral.",
+   "description_plain": "Read the integrand and the limits of integration out of a limit of sums.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-5B1",
+    "BC-EK-LIM-5C2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06014",
+   "learning_objectives": [
+    "BC-LO-LIM-5C"
+   ],
+   "misconceptions": [],
+   "name": "Convert the limit of a Riemann sum into a definite integral",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06006",
+    "BC-SKL-06012"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:120"
+   ],
+   "topic": "BC-TOP-0603",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-06014"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06014 across at least two representations, with no error from the unit error list.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of the unit error list without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06006.",
+    "remediation_target": "BC-SKL-06013"
+   },
+   "archetypes": [
+    "BC-QA-06014"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-06006",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given a definite integral of a continuous function over [a,b], write an equivalent limit of Riemann sums with an explicit subinterval width and sample point.",
+   "description_plain": "Go the other way and write the integral as a limit of sums.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-5C2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06015",
+   "learning_objectives": [
+    "BC-LO-LIM-5C"
+   ],
+   "misconceptions": [],
+   "name": "Express a definite integral as the limit of a Riemann sum",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06006",
+    "BC-SKL-06013"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:120"
+   ],
+   "topic": "BC-TOP-0603",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-06014"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06014 across at least two representations, with no error from the unit error list.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of the unit error list without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06006.",
+    "remediation_target": "BC-PRQ-06006"
+   },
+   "archetypes": [
+    "BC-QA-06014"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-06006",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "State that for f continuous on [a,b] the definite integral from a to b of f(x) dx is the limit of Riemann sums as the maximum subinterval width approaches 0, naming n, delta x sub i, and the sample point x sub i star.",
+   "description_plain": "Recite the definition, including that the subinterval widths go to zero.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-5C1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06016",
+   "learning_objectives": [
+    "BC-LO-LIM-5C"
+   ],
+   "misconceptions": [],
+   "name": "State the limit definition of the definite integral",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06006"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-04"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:120"
+   ],
+   "topic": "BC-TOP-0603",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-06024"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-06012"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06012 across at least two representations, with no error from BC-ERR-06028.",
+    "next_dependent_skills": [
+     "BC-SKL-06018"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-06028 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06013, BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06013"
+   },
+   "archetypes": [
+    "BC-QA-06012"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-06028"
+   ],
+   "concept": "BC-CON-06007",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-06018"
+   ],
+   "description_formal": "Given a rate or a function f and a starting input a, represent the accumulation as g(x) = the integral from a to x of f(t) dt, using a bound variable of integration distinct from the independent variable.",
+   "description_plain": "Set up g(x) as the integral from a fixed start to x.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-5A1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06017",
+   "learning_objectives": [
+    "BC-LO-FUN-5A"
+   ],
+   "misconceptions": [
+    "BC-MIS-06024"
+   ],
+   "name": "Write an accumulation function as a definite integral with a variable upper limit",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06013",
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-04",
+    "BC-REP-05"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:121"
+   ],
+   "topic": "BC-TOP-0604",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-06023",
+     "BC-MIS-06024"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-06012"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06012 across at least two representations, with no error from BC-ERR-06027, BC-ERR-06028.",
+    "next_dependent_skills": [
+     "BC-SKL-06019",
+     "BC-SKL-06022",
+     "BC-SKL-06023",
+     "BC-SKL-06024",
+     "BC-SKL-06025"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-06027, BC-ERR-06028 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06013.",
+    "remediation_target": "BC-SKL-06017"
+   },
+   "archetypes": [
+    "BC-QA-06012"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-06027",
+    "BC-ERR-06028"
+   ],
+   "concept": "BC-CON-06008",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-06019",
+    "BC-SKL-06022",
+    "BC-SKL-06023",
+    "BC-SKL-06024",
+    "BC-SKL-06025"
+   ],
+   "description_formal": "Given g(x) = the integral from a to x of f(t) dt with f continuous on an interval containing a, conclude that g'(x) = f(x) for x in that interval.",
+   "description_plain": "Apply the Fundamental Theorem of Calculus part one to get g'(x) = f(x).",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-5A2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06018",
+   "learning_objectives": [
+    "BC-LO-FUN-5A"
+   ],
+   "misconceptions": [
+    "BC-MIS-06023",
+    "BC-MIS-06024"
+   ],
+   "name": "Differentiate an accumulation function with a variable upper limit",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06013",
+    "BC-SKL-06017"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:121"
+   ],
+   "topic": "BC-TOP-0604",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-06023"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-06012"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06012 across at least two representations, with no error from BC-ERR-06027.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-06027 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-SKL-06018"
+   },
+   "archetypes": [
+    "BC-QA-06012"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-06027"
+   ],
+   "concept": "BC-CON-06008",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given h(x) = the integral from a to u(x) of f(t) dt, conclude that h'(x) = f(u(x)) times u'(x).",
+   "description_plain": "Combine the Fundamental Theorem of Calculus part one with the chain rule.",
+   "diagnostic_signals": [
+    "BC-SIG-06022"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-5A2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06019",
+   "learning_objectives": [
+    "BC-LO-FUN-5A"
+   ],
+   "misconceptions": [
+    "BC-MIS-06023"
+   ],
+   "name": "Differentiate an accumulation function whose upper limit is a function of x",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-SKL-06018"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:121"
+   ],
+   "topic": "BC-TOP-0604",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-06011",
+     "BC-MIS-06012"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-06003"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06003 across at least two representations, with no error from BC-ERR-06013, BC-ERR-06014.",
+    "next_dependent_skills": [
+     "BC-SKL-06026"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-06013, BC-ERR-06014 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06007.",
+    "remediation_target": "BC-SKL-06028"
+   },
+   "archetypes": [
+    "BC-QA-06003"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-06013",
+    "BC-ERR-06014"
+   ],
+   "concept": "BC-CON-06007",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-06026"
+   ],
+   "description_formal": "Given the graph of f and g(x) = the integral from a to x of f(t) dt, evaluate g at a stated input by computing the signed area of the region between the graph of f and the x axis from a to that input.",
+   "description_plain": "Find g at a point by measuring signed area from the start value to that point.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-5A1",
+    "BC-EK-FUN-5A3"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06020",
+   "learning_objectives": [
+    "BC-LO-FUN-5A"
+   ],
+   "misconceptions": [
+    "BC-MIS-06011",
+    "BC-MIS-06012"
+   ],
+   "name": "Evaluate an accumulation function at a specified input from the graph of the integrand",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06007",
+    "BC-SKL-06028"
+   ],
+   "representations": [
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:121"
+   ],
+   "topic": "BC-TOP-0604",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-06012"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06012 across at least two representations, with no error from the unit error list.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of the unit error list without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with no non-calculus prerequisite specific to this skill.",
+    "remediation_target": "BC-CON-06008"
+   },
+   "archetypes": [
+    "BC-QA-06012"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-06008",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "State that the conclusion that the derivative of the integral from a to x of f(t) dt equals f(x) requires f to be continuous on an interval containing a and x.",
+   "description_plain": "Name what must be true of f before the theorem may be used.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-5A2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06021",
+   "learning_objectives": [
+    "BC-LO-FUN-5A"
+   ],
+   "misconceptions": [],
+   "name": "State the continuity hypothesis of the Fundamental Theorem of Calculus part one",
+   "practice_skills": [],
+   "prerequisites": [],
+   "representations": [
+    "BC-REP-04"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:121"
+   ],
+   "topic": "BC-TOP-0604",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-06007"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-06003"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06003 across at least two representations, with no error from BC-ERR-06008.",
+    "next_dependent_skills": [
+     "BC-SKL-06023",
+     "BC-SKL-06027"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-06008 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with no non-calculus prerequisite specific to this skill.",
+    "remediation_target": "BC-SKL-06018"
+   },
+   "archetypes": [
+    "BC-QA-06003"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-06008"
+   ],
+   "concept": "BC-CON-06009",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-06023",
+    "BC-SKL-06027"
+   ],
+   "description_formal": "Given the graph of f and g(x) = the integral from a to x of f(t) dt, determine the intervals on which g increases or decreases by identifying where f is positive or negative.",
+   "description_plain": "Read intervals of increase and decrease of g off where f is above or below the axis.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-5A3"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06022",
+   "learning_objectives": [
+    "BC-LO-FUN-5A"
+   ],
+   "misconceptions": [
+    "BC-MIS-06007"
+   ],
+   "name": "Determine where an accumulation function increases or decreases from the sign of the integrand",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-SKL-06018"
+   ],
+   "representations": [
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:122"
+   ],
+   "topic": "BC-TOP-0605",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-06007",
+     "BC-MIS-06008"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-06003"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06003 across at least two representations, with no error from BC-ERR-06008.",
+    "next_dependent_skills": [
+     "BC-SKL-06026"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-06008 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with no non-calculus prerequisite specific to this skill.",
+    "remediation_target": "BC-SKL-06018"
+   },
+   "archetypes": [
+    "BC-QA-06003"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-06008"
+   ],
+   "concept": "BC-CON-06009",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-06026"
+   ],
+   "description_formal": "Given the graph of f and g(x) = the integral from a to x of f(t) dt, locate the relative maxima and minima of g at the inputs where f changes sign, stating the direction of the sign change.",
+   "description_plain": "Find where f crosses the axis and say which way it crosses.",
+   "diagnostic_signals": [
+    "BC-SIG-06008"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-5A3"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06023",
+   "learning_objectives": [
+    "BC-LO-FUN-5A"
+   ],
+   "misconceptions": [
+    "BC-MIS-06007",
+    "BC-MIS-06008"
+   ],
+   "name": "Locate relative extrema of an accumulation function from sign changes of the integrand",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-SKL-06018",
+    "BC-SKL-06022"
+   ],
+   "representations": [
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:122"
+   ],
+   "topic": "BC-TOP-0605",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-06007",
+     "BC-MIS-06008",
+     "BC-MIS-06009"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-06003"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06003 across at least two representations, with no error from BC-ERR-06008, BC-ERR-06009, BC-ERR-06010.",
+    "next_dependent_skills": [
+     "BC-SKL-06027"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-06008, BC-ERR-06009, BC-ERR-06010 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with no non-calculus prerequisite specific to this skill.",
+    "remediation_target": "BC-SKL-06018"
+   },
+   "archetypes": [
+    "BC-QA-06003"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-06008",
+    "BC-ERR-06009",
+    "BC-ERR-06010"
+   ],
+   "concept": "BC-CON-06009",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-06027"
+   ],
+   "description_formal": "Given the graph of f and g(x) = the integral from a to x of f(t) dt, locate the points of inflection of g at the inputs where f changes from increasing to decreasing or from decreasing to increasing, since g'' = f'.",
+   "description_plain": "Find where f changes from increasing to decreasing or the reverse.",
+   "diagnostic_signals": [
+    "BC-SIG-06009",
+    "BC-SIG-06010"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-5A3"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06024",
+   "learning_objectives": [
+    "BC-LO-FUN-5A"
+   ],
+   "misconceptions": [
+    "BC-MIS-06007",
+    "BC-MIS-06008",
+    "BC-MIS-06009"
+   ],
+   "name": "Locate points of inflection of an accumulation function from turning points of the integrand",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-SKL-06018"
+   ],
+   "representations": [
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:122"
+   ],
+   "topic": "BC-TOP-0605",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-06006",
+     "BC-MIS-06009"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-06003"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06003 across at least two representations, with no error from BC-ERR-06008, BC-ERR-06010.",
+    "next_dependent_skills": [
+     "BC-SKL-06027"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-06008, BC-ERR-06010 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with no non-calculus prerequisite specific to this skill.",
+    "remediation_target": "BC-SKL-06018"
+   },
+   "archetypes": [
+    "BC-QA-06003"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-06008",
+    "BC-ERR-06010"
+   ],
+   "concept": "BC-CON-06009",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-06027"
+   ],
+   "description_formal": "Given the graph of f and g(x) = the integral from a to x of f(t) dt, determine the intervals on which g is concave up or concave down according to whether f is increasing or decreasing.",
+   "description_plain": "Say where g bends up or down based on whether f rises or falls.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-5A3"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06025",
+   "learning_objectives": [
+    "BC-LO-FUN-5A"
+   ],
+   "misconceptions": [
+    "BC-MIS-06006",
+    "BC-MIS-06009"
+   ],
+   "name": "Determine the concavity of an accumulation function from the monotonicity of the integrand",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-SKL-06018"
+   ],
+   "representations": [
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:122"
+   ],
+   "topic": "BC-TOP-0605",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-06010"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-06003"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06003 across at least two representations, with no error from BC-ERR-06011, BC-ERR-06012.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-06011, BC-ERR-06012 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06007.",
+    "remediation_target": "BC-SKL-06020"
+   },
+   "archetypes": [
+    "BC-QA-06003"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-06011",
+    "BC-ERR-06012"
+   ],
+   "concept": "BC-CON-06009",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given the graph of f and g(x) = the integral from a to x of f(t) dt on a closed interval, identify the inputs where f is zero and the endpoints, evaluate g at each candidate, and conclude which gives the absolute maximum or minimum, or argue globally from the sign of f on each side.",
+   "description_plain": "Compare candidate values at the critical points and both endpoints.",
+   "diagnostic_signals": [
+    "BC-SIG-06011",
+    "BC-SIG-06012",
+    "BC-SIG-06024"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-5A3"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06026",
+   "learning_objectives": [
+    "BC-LO-FUN-5A"
+   ],
+   "misconceptions": [
+    "BC-MIS-06010"
+   ],
+   "name": "Determine an absolute extreme value of an accumulation function with a global argument",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06007",
+    "BC-SKL-06020",
+    "BC-SKL-06023"
+   ],
+   "representations": [
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:122"
+   ],
+   "topic": "BC-TOP-0605",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-06007",
+     "BC-MIS-06009"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-06003"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06003 across at least two representations, with no error from BC-ERR-06008, BC-ERR-06010.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-06008, BC-ERR-06010 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with no non-calculus prerequisite specific to this skill.",
+    "remediation_target": "BC-SKL-06022"
+   },
+   "archetypes": [
+    "BC-QA-06003"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-06008",
+    "BC-ERR-06010"
+   ],
+   "concept": "BC-CON-06009",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given the graph of f, describe or sketch g(x) = the integral from a to x of f(t) dt, including its value at the starting input, its intervals of increase and decrease, its extrema, and its concavity.",
+   "description_plain": "Assemble monotonicity, extrema, and concavity into a description of g.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-5A3"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06027",
+   "learning_objectives": [
+    "BC-LO-FUN-5A"
+   ],
+   "misconceptions": [
+    "BC-MIS-06007",
+    "BC-MIS-06009"
+   ],
+   "name": "Describe the graph of an accumulation function from the graph of the integrand",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-SKL-06022",
+    "BC-SKL-06024",
+    "BC-SKL-06025"
+   ],
+   "representations": [
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:122"
+   ],
+   "topic": "BC-TOP-0605",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-06011",
+     "BC-MIS-06012"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-06004"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06004 across at least two representations, with no error from BC-ERR-06013, BC-ERR-06014.",
+    "next_dependent_skills": [
+     "BC-SKL-06020"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-06013, BC-ERR-06014 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06007.",
+    "remediation_target": "BC-PRQ-06007"
+   },
+   "archetypes": [
+    "BC-QA-06004"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-06013",
+    "BC-ERR-06014"
+   ],
+   "concept": "BC-CON-06010",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-06020"
+   ],
+   "description_formal": "Given the graph of f consisting of line segments and circular arcs, evaluate the definite integral over a stated interval as the sum of the areas of the regions above the x axis minus the areas of the regions below.",
+   "description_plain": "Break the region into triangles, rectangles, and circular pieces and add with signs.",
+   "diagnostic_signals": [
+    "BC-SIG-06013",
+    "BC-SIG-06014"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-6A1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06028",
+   "learning_objectives": [
+    "BC-LO-FUN-6A"
+   ],
+   "misconceptions": [
+    "BC-MIS-06011",
+    "BC-MIS-06012"
+   ],
+   "name": "Evaluate a definite integral from a graph using area formulas",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06007"
+   ],
+   "representations": [
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:123"
+   ],
+   "topic": "BC-TOP-0606",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-06013"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06013 across at least two representations, with no error from the unit error list.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of the unit error list without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with no non-calculus prerequisite specific to this skill.",
+    "remediation_target": "BC-CON-06011"
+   },
+   "archetypes": [
+    "BC-QA-06013"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-06011",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given definite integrals of f and of g over the same interval, evaluate the integral of a constant times f or of a sum or difference of f and g using the corresponding properties.",
+   "description_plain": "Pull constants out front and split an integral of a sum.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-6A2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06029",
+   "learning_objectives": [
+    "BC-LO-FUN-6A"
+   ],
+   "misconceptions": [],
+   "name": "Apply the constant multiple and sum properties of definite integrals",
+   "practice_skills": [],
+   "prerequisites": [],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:123"
+   ],
+   "topic": "BC-TOP-0606",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-06013"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06013 across at least two representations, with no error from the unit error list.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of the unit error list without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with no non-calculus prerequisite specific to this skill.",
+    "remediation_target": "BC-CON-06011"
+   },
+   "archetypes": [
+    "BC-QA-06013"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-06011",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given the value of the integral of f from a to b, state that the integral of f from b to a equals the negative of that value.",
+   "description_plain": "Swapping the limits changes the sign of the integral.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-6A2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06030",
+   "learning_objectives": [
+    "BC-LO-FUN-6A"
+   ],
+   "misconceptions": [],
+   "name": "Apply the reversal of limits property",
+   "practice_skills": [],
+   "prerequisites": [],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:123"
+   ],
+   "topic": "BC-TOP-0606",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-06013"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06013 across at least two representations, with no error from the unit error list.",
+    "next_dependent_skills": [
+     "BC-SKL-06033",
+     "BC-SKL-06070"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of the unit error list without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with no non-calculus prerequisite specific to this skill.",
+    "remediation_target": "BC-CON-06011"
+   },
+   "archetypes": [
+    "BC-QA-06013"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-06011",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-06033",
+    "BC-SKL-06070"
+   ],
+   "description_formal": "Given the integrals of f over [a,b] and over [b,c], evaluate the integral over [a,c] as their sum, or recover a missing piece by subtraction.",
+   "description_plain": "Integrals over touching intervals add to the integral over the union.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-6A2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06031",
+   "learning_objectives": [
+    "BC-LO-FUN-6A"
+   ],
+   "misconceptions": [],
+   "name": "Apply the adjacent interval property of definite integrals",
+   "practice_skills": [],
+   "prerequisites": [],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-03"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:123"
+   ],
+   "topic": "BC-TOP-0606",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-06013"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06013 across at least two representations, with no error from the unit error list.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of the unit error list without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with no non-calculus prerequisite specific to this skill.",
+    "remediation_target": "BC-CON-06011"
+   },
+   "archetypes": [
+    "BC-QA-06013"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-06011",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "State and use the fact that the integral of f from a to a equals 0, including when identifying the starting value of an accumulation function.",
+   "description_plain": "An integral from a point to itself is zero.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-6A2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06032",
+   "learning_objectives": [
+    "BC-LO-FUN-6A"
+   ],
+   "misconceptions": [],
+   "name": "Evaluate a definite integral over a degenerate interval",
+   "practice_skills": [],
+   "prerequisites": [],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:123"
+   ],
+   "topic": "BC-TOP-0606",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-06026"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-06013"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06013 across at least two representations, with no error from BC-ERR-06031.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-06031 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with no non-calculus prerequisite specific to this skill.",
+    "remediation_target": "BC-SKL-06031"
+   },
+   "archetypes": [
+    "BC-QA-06013"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-06031"
+   ],
+   "concept": "BC-CON-06011",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given a function with a removable or jump discontinuity on the interval of integration, evaluate the definite integral by splitting at the discontinuity and adding the integrals of the continuous pieces.",
+   "description_plain": "Integrate piece by piece and ignore the value at a single point.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-6A3"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06033",
+   "learning_objectives": [
+    "BC-LO-FUN-6A"
+   ],
+   "misconceptions": [
+    "BC-MIS-06026"
+   ],
+   "name": "Evaluate a definite integral of a function with a removable or jump discontinuity",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-SKL-06031"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:123"
+   ],
+   "topic": "BC-TOP-0606",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-06008"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06008 across at least two representations, with no error from BC-ERR-06032.",
+    "next_dependent_skills": [
+     "BC-SKL-06036",
+     "BC-SKL-06038",
+     "BC-SKL-06060",
+     "BC-SKL-06065",
+     "BC-SKL-06068"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-06032 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06002.",
+    "remediation_target": "BC-SKL-06040"
+   },
+   "archetypes": [
+    "BC-QA-06008"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-06032"
+   ],
+   "concept": "BC-CON-06012",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-06036",
+    "BC-SKL-06038",
+    "BC-SKL-06060",
+    "BC-SKL-06065",
+    "BC-SKL-06068"
+   ],
+   "description_formal": "Given a continuous f on [a,b] and an antiderivative F, evaluate the integral from a to b of f(x) dx as F(b) minus F(a).",
+   "description_plain": "Find an antiderivative and subtract its value at the lower limit from its value at the upper limit.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-6B1",
+    "BC-EK-FUN-6B3"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06034",
+   "learning_objectives": [
+    "BC-LO-FUN-6B"
+   ],
+   "misconceptions": [],
+   "name": "Evaluate a definite integral by antidifferentiation and endpoint substitution",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06002",
+    "BC-SKL-06040"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:124"
+   ],
+   "topic": "BC-TOP-0607",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-06026"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-06013"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06013 across at least two representations, with no error from the unit error list.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of the unit error list without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with no non-calculus prerequisite specific to this skill.",
+    "remediation_target": "BC-CON-06012"
+   },
+   "archetypes": [
+    "BC-QA-06013"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-06012",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "State that if f is continuous on [a,b] and F is an antiderivative of f on [a,b], then the integral from a to b of f(x) dx equals F(b) minus F(a).",
+   "description_plain": "Name the continuity and antiderivative conditions before using F(b) minus F(a).",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-6B2",
+    "BC-EK-FUN-6B3"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06035",
+   "learning_objectives": [
+    "BC-LO-FUN-6B"
+   ],
+   "misconceptions": [
+    "BC-MIS-06026"
+   ],
+   "name": "State the hypotheses and conclusion of the Fundamental Theorem of Calculus part two",
+   "practice_skills": [],
+   "prerequisites": [],
+   "representations": [
+    "BC-REP-04"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:124"
+   ],
+   "topic": "BC-TOP-0607",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-06013"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-06005"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06005 across at least two representations, with no error from BC-ERR-06015, BC-ERR-06032.",
+    "next_dependent_skills": [
+     "BC-SKL-06037",
+     "BC-SKL-06039"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-06015, BC-ERR-06032 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-SKL-06034"
+   },
+   "archetypes": [
+    "BC-QA-06005"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-06015",
+    "BC-ERR-06032"
+   ],
+   "concept": "BC-CON-06012",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-06037",
+    "BC-SKL-06039"
+   ],
+   "description_formal": "Given a rate of change function over an interval, compute the net change in the quantity as the definite integral of the rate over that interval.",
+   "description_plain": "Integrate the rate to get how much the quantity changed.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-6B3"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06036",
+   "learning_objectives": [
+    "BC-LO-FUN-6B"
+   ],
+   "misconceptions": [
+    "BC-MIS-06013"
+   ],
+   "name": "Compute net change in a quantity from its rate over an interval",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-SKL-06034"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-05"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:124"
+   ],
+   "topic": "BC-TOP-0607",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-06013"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-06005"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06005 across at least two representations, with no error from BC-ERR-06015.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-06015 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-SKL-06036"
+   },
+   "archetypes": [
+    "BC-QA-06005"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-06015"
+   ],
+   "concept": "BC-CON-06012",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given the value of a quantity at time a and its rate of change on [a,b], compute the value at time b as the initial value plus the integral from a to b of the rate.",
+   "description_plain": "Add the integral of the rate to the value you were given at the start.",
+   "diagnostic_signals": [
+    "BC-SIG-06015",
+    "BC-SIG-06023"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-6B3"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06037",
+   "learning_objectives": [
+    "BC-LO-FUN-6B"
+   ],
+   "misconceptions": [
+    "BC-MIS-06013"
+   ],
+   "name": "Compute a final value from an initial condition and an accumulated change",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-SKL-06036"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-03",
+    "BC-REP-05"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:124"
+   ],
+   "topic": "BC-TOP-0607",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-06014",
+     "BC-MIS-06015"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-06007"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06007 across at least two representations, with no error from BC-ERR-06016, BC-ERR-06017, BC-ERR-06030.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-06016, BC-ERR-06017, BC-ERR-06030 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with no non-calculus prerequisite specific to this skill.",
+    "remediation_target": "BC-SKL-06034"
+   },
+   "archetypes": [
+    "BC-QA-06007"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-06016",
+    "BC-ERR-06017",
+    "BC-ERR-06030",
+    "BC-ERR-06032"
+   ],
+   "concept": "BC-CON-06013",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given f on [a,b], compute the average value of f as one over (b minus a) times the integral from a to b of f(x) dx.",
+   "description_plain": "Divide the integral by the length of the interval.",
+   "diagnostic_signals": [
+    "BC-SIG-06016",
+    "BC-SIG-06017"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-6B3"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06038",
+   "learning_objectives": [
+    "BC-LO-FUN-6B"
+   ],
+   "misconceptions": [
+    "BC-MIS-06014",
+    "BC-MIS-06015"
+   ],
+   "name": "Compute the average value of a function on an interval",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-SKL-06034"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-05",
+    "BC-REP-09"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:124"
+   ],
+   "topic": "BC-TOP-0607",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-06006"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06006 across at least two representations, with no error from the unit error list.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of the unit error list without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with no non-calculus prerequisite specific to this skill.",
+    "remediation_target": "BC-SKL-06036"
+   },
+   "archetypes": [
+    "BC-QA-06006"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [],
+   "concept": "BC-CON-06012",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given an inflow rate and an outflow rate over the same interval, express the net accumulated amount as the definite integral of the difference of the two rates over that interval.",
+   "description_plain": "Subtract the outflow rate from the inflow rate inside one integral.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-6B3"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06039",
+   "learning_objectives": [
+    "BC-LO-FUN-6B"
+   ],
+   "misconceptions": [],
+   "name": "Set up a single definite integral for a rate in minus rate out situation",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-SKL-06036"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-05"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:124"
+   ],
+   "topic": "BC-TOP-0607",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-06016"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06016 across at least two representations, with no error from the unit error list.",
+    "next_dependent_skills": [
+     "BC-SKL-06034",
+     "BC-SKL-06044",
+     "BC-SKL-06055",
+     "BC-SKL-06057"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of the unit error list without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06002.",
+    "remediation_target": "BC-PRQ-06002"
+   },
+   "archetypes": [
+    "BC-QA-06016"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-06014",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-06034",
+    "BC-SKL-06044",
+    "BC-SKL-06055",
+    "BC-SKL-06057"
+   ],
+   "description_formal": "Given an integrand that is a power of x with any real exponent other than negative one, determine the antiderivative as x to the next power divided by that power, plus a constant.",
+   "description_plain": "Raise the exponent by one and divide, after rewriting radicals and reciprocals as powers.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-6C1",
+    "BC-EK-FUN-6C2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06040",
+   "learning_objectives": [
+    "BC-LO-FUN-6C"
+   ],
+   "misconceptions": [],
+   "name": "Antidifferentiate power functions including negative and fractional exponents",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06002"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:125"
+   ],
+   "topic": "BC-TOP-0608",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-06016"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06016 across at least two representations, with no error from the unit error list.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of the unit error list without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06003.",
+    "remediation_target": "BC-PRQ-06003"
+   },
+   "archetypes": [
+    "BC-QA-06016"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-06014",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given an integrand of the form e to the x, a constant base raised to x, or one over x, determine the corresponding antiderivative, using the natural logarithm of the absolute value for the reciprocal form.",
+   "description_plain": "Recognise the forms whose antiderivatives are exponentials and natural logarithms.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-6C2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06041",
+   "learning_objectives": [
+    "BC-LO-FUN-6C"
+   ],
+   "misconceptions": [],
+   "name": "Antidifferentiate exponential and reciprocal integrands",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06003"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:125"
+   ],
+   "topic": "BC-TOP-0608",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-06016"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06016 across at least two representations, with no error from the unit error list.",
+    "next_dependent_skills": [
+     "BC-SKL-06057"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of the unit error list without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06004.",
+    "remediation_target": "BC-PRQ-06004"
+   },
+   "archetypes": [
+    "BC-QA-06016"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-06014",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-06057"
+   ],
+   "description_formal": "Given an integrand that is a basic trigonometric function or a product recognisable as a trigonometric derivative, determine the antiderivative from the corresponding differentiation rule.",
+   "description_plain": "Read the trigonometric derivative rules backwards.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-6C2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06042",
+   "learning_objectives": [
+    "BC-LO-FUN-6C"
+   ],
+   "misconceptions": [],
+   "name": "Antidifferentiate basic trigonometric integrands",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06004"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:125"
+   ],
+   "topic": "BC-TOP-0608",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-06016"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06016 across at least two representations, with no error from the unit error list.",
+    "next_dependent_skills": [
+     "BC-SKL-06054"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of the unit error list without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06004.",
+    "remediation_target": "BC-PRQ-06004"
+   },
+   "archetypes": [
+    "BC-QA-06016"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-06014",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-06054"
+   ],
+   "description_formal": "Given an integrand matching the derivative of an inverse trigonometric function, determine the antiderivative as that inverse trigonometric function.",
+   "description_plain": "Recognise the one over one plus x squared and one over the root of one minus x squared forms.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-6C2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06043",
+   "learning_objectives": [
+    "BC-LO-FUN-6C"
+   ],
+   "misconceptions": [],
+   "name": "Antidifferentiate integrands whose antiderivatives are inverse trigonometric",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06004"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:125"
+   ],
+   "topic": "BC-TOP-0608",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-06018"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-06016"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06016 across at least two representations, with no error from BC-ERR-06021.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-06021 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with no non-calculus prerequisite specific to this skill.",
+    "remediation_target": "BC-SKL-06040"
+   },
+   "archetypes": [
+    "BC-QA-06016"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-06021"
+   ],
+   "concept": "BC-CON-06014",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given an indefinite integral, include an arbitrary constant C in the answer, and when a value of the antiderivative at a point is supplied, solve for the particular value of C.",
+   "description_plain": "Write plus C, then solve for it when a value of the antiderivative is given.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-6C1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06044",
+   "learning_objectives": [
+    "BC-LO-FUN-6C"
+   ],
+   "misconceptions": [
+    "BC-MIS-06018"
+   ],
+   "name": "Include the constant of integration and determine it from an initial condition",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-SKL-06040"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:125"
+   ],
+   "topic": "BC-TOP-0608",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-06018"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-06016"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06016 across at least two representations, with no error from the unit error list.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of the unit error list without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with no non-calculus prerequisite specific to this skill.",
+    "remediation_target": "BC-CON-06014"
+   },
+   "archetypes": [
+    "BC-QA-06016"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-06014",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given a candidate antiderivative F and an integrand f, differentiate F and compare the result with f to confirm or reject that F is an antiderivative of f.",
+   "description_plain": "Differentiate the candidate and check it returns the integrand.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-6C1",
+    "BC-EK-FUN-6C2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06045",
+   "learning_objectives": [
+    "BC-LO-FUN-6C"
+   ],
+   "misconceptions": [
+    "BC-MIS-06018"
+   ],
+   "name": "Verify a proposed antiderivative by differentiating it",
+   "practice_skills": [],
+   "prerequisites": [],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:125"
+   ],
+   "topic": "BC-TOP-0608",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-06016"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06016 across at least two representations, with no error from the unit error list.",
+    "next_dependent_skills": [
+     "BC-SKL-06074"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of the unit error list without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with no non-calculus prerequisite specific to this skill.",
+    "remediation_target": "BC-CON-06014"
+   },
+   "archetypes": [
+    "BC-QA-06016"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-06014",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-06074"
+   ],
+   "description_formal": "Given an integrand such as e to the negative t squared, recognise that it has no closed-form antiderivative and that the accumulation must be represented by a definite integral or approximated numerically.",
+   "description_plain": "Notice when no elementary antiderivative exists and keep the integral form.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-6C3"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06046",
+   "learning_objectives": [
+    "BC-LO-FUN-6C"
+   ],
+   "misconceptions": [],
+   "name": "Recognise an integrand with no closed-form antiderivative",
+   "practice_skills": [],
+   "prerequisites": [],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:125"
+   ],
+   "topic": "BC-TOP-0608",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-06017"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-06008"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06008 across at least two representations, with no error from BC-ERR-06019, BC-ERR-06020.",
+    "next_dependent_skills": [
+     "BC-SKL-06048",
+     "BC-SKL-06052",
+     "BC-SKL-06054",
+     "BC-SKL-06056",
+     "BC-SKL-06071"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-06019, BC-ERR-06020 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06001.",
+    "remediation_target": "BC-PRQ-06001"
+   },
+   "archetypes": [
+    "BC-QA-06008"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-06019",
+    "BC-ERR-06020"
+   ],
+   "concept": "BC-CON-06015",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-06048",
+    "BC-SKL-06052",
+    "BC-SKL-06054",
+    "BC-SKL-06056",
+    "BC-SKL-06071"
+   ],
+   "description_formal": "Given a composite integrand, choose u equal to the inner expression such that the remaining factor is a constant multiple of du, and state the choice explicitly.",
+   "description_plain": "Pick u as the inside expression whose derivative is a factor of the integrand.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-6D1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06047",
+   "learning_objectives": [
+    "BC-LO-FUN-6D"
+   ],
+   "misconceptions": [
+    "BC-MIS-06017"
+   ],
+   "name": "Select a substitution by identifying an inner function whose derivative appears",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06001"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:126"
+   ],
+   "topic": "BC-TOP-0609",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-06016"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-06008"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06008 across at least two representations, with no error from BC-ERR-06019.",
+    "next_dependent_skills": [
+     "BC-SKL-06049",
+     "BC-SKL-06050",
+     "BC-SKL-06052"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-06019 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06001.",
+    "remediation_target": "BC-SKL-06047"
+   },
+   "archetypes": [
+    "BC-QA-06008"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-06019"
+   ],
+   "concept": "BC-CON-06015",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-06049",
+    "BC-SKL-06050",
+    "BC-SKL-06052"
+   ],
+   "description_formal": "Given a substitution u = g(x), compute du = g'(x) dx and multiply by the constant needed so that the integrand is rewritten entirely in u.",
+   "description_plain": "Write du = g'(x) dx and balance any constant factor.",
+   "diagnostic_signals": [
+    "BC-SIG-06019"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-6D1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06048",
+   "learning_objectives": [
+    "BC-LO-FUN-6D"
+   ],
+   "misconceptions": [
+    "BC-MIS-06016"
+   ],
+   "name": "Convert the differential and adjust the constant when substituting",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06001",
+    "BC-SKL-06047"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:126"
+   ],
+   "topic": "BC-TOP-0609",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-06008"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06008 across at least two representations, with no error from BC-ERR-06018, BC-ERR-06021.",
+    "next_dependent_skills": [
+     "BC-SKL-06051"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-06018, BC-ERR-06021 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with no non-calculus prerequisite specific to this skill.",
+    "remediation_target": "BC-SKL-06048"
+   },
+   "archetypes": [
+    "BC-QA-06008"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-06018",
+    "BC-ERR-06021"
+   ],
+   "concept": "BC-CON-06015",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-06051"
+   ],
+   "description_formal": "After antidifferentiating in u, replace u by g(x) so that the indefinite integral is expressed in the original variable, plus a constant.",
+   "description_plain": "Replace u by the original expression at the end.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-6D1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06049",
+   "learning_objectives": [
+    "BC-LO-FUN-6D"
+   ],
+   "misconceptions": [],
+   "name": "Back-substitute to express an indefinite integral in the original variable",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-SKL-06048"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:126"
+   ],
+   "topic": "BC-TOP-0609",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-06016"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-06008"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06008 across at least two representations, with no error from BC-ERR-06018.",
+    "next_dependent_skills": [
+     "BC-SKL-06051"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-06018 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with no non-calculus prerequisite specific to this skill.",
+    "remediation_target": "BC-SKL-06048"
+   },
+   "archetypes": [
+    "BC-QA-06008"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-06018"
+   ],
+   "concept": "BC-CON-06015",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-06051"
+   ],
+   "description_formal": "Given a definite integral evaluated by substitution u = g(x), replace the lower and upper limits a and b by g(a) and g(b) before evaluating in u.",
+   "description_plain": "Replace the x limits by the matching u limits.",
+   "diagnostic_signals": [
+    "BC-SIG-06018"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-6D2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06050",
+   "learning_objectives": [
+    "BC-LO-FUN-6D"
+   ],
+   "misconceptions": [
+    "BC-MIS-06016"
+   ],
+   "name": "Change the limits of integration when substituting in a definite integral",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-SKL-06048"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:126"
+   ],
+   "topic": "BC-TOP-0609",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-06016"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-06008"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06008 across at least two representations, with no error from BC-ERR-06018.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-06018 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with no non-calculus prerequisite specific to this skill.",
+    "remediation_target": "BC-SKL-06049"
+   },
+   "archetypes": [
+    "BC-QA-06008"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-06018"
+   ],
+   "concept": "BC-CON-06015",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given a definite integral evaluated by substitution, either convert the limits to u values or back-substitute to the original variable before applying the original limits, and do not mix the two.",
+   "description_plain": "Keep the original limits only if you convert back to x first.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-6D2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06051",
+   "learning_objectives": [
+    "BC-LO-FUN-6D"
+   ],
+   "misconceptions": [
+    "BC-MIS-06016"
+   ],
+   "name": "Evaluate a definite integral by substitution with back-substitution before the limits are used",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-SKL-06049",
+    "BC-SKL-06050"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:126"
+   ],
+   "topic": "BC-TOP-0609",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-06008"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06008 across at least two representations, with no error from the unit error list.",
+    "next_dependent_skills": [
+     "BC-SKL-06064"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of the unit error list without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06003.",
+    "remediation_target": "BC-SKL-06047"
+   },
+   "archetypes": [
+    "BC-QA-06008"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-06015",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-06064"
+   ],
+   "description_formal": "Given an integrand that is a constant multiple of the derivative of an expression divided by that expression, apply substitution to obtain a constant times the natural logarithm of the absolute value of that expression.",
+   "description_plain": "Recognise the derivative over the function pattern.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-6D1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06052",
+   "learning_objectives": [
+    "BC-LO-FUN-6D"
+   ],
+   "misconceptions": [],
+   "name": "Apply substitution to an integrand that antidifferentiates to a logarithm",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06003",
+    "BC-SKL-06047",
+    "BC-SKL-06048"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:126"
+   ],
+   "topic": "BC-TOP-0609",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-06016"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06016 across at least two representations, with no error from BC-ERR-06026.",
+    "next_dependent_skills": [
+     "BC-SKL-06056",
+     "BC-SKL-06071"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-06026 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06009.",
+    "remediation_target": "BC-PRQ-06009"
+   },
+   "archetypes": [
+    "BC-QA-06016"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-06026"
+   ],
+   "concept": "BC-CON-06016",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-06056",
+    "BC-SKL-06071"
+   ],
+   "description_formal": "Given a rational integrand whose numerator degree is at least the denominator degree, perform polynomial long division to write it as a polynomial plus a proper rational remainder before antidifferentiating.",
+   "description_plain": "Divide first so the remainder term is proper.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-6D3"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06053",
+   "learning_objectives": [
+    "BC-LO-FUN-6D"
+   ],
+   "misconceptions": [],
+   "name": "Rewrite an improper rational integrand by polynomial long division",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06009"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:127"
+   ],
+   "topic": "BC-TOP-0610",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-06016"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06016 across at least two representations, with no error from the unit error list.",
+    "next_dependent_skills": [
+     "BC-SKL-06056"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of the unit error list without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06010.",
+    "remediation_target": "BC-SKL-06043"
+   },
+   "archetypes": [
+    "BC-QA-06016"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-06016",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-06056"
+   ],
+   "description_formal": "Given an integrand with an irreducible quadratic denominator, complete the square and substitute so that the integral matches a standard inverse trigonometric or logarithmic antiderivative form.",
+   "description_plain": "Rewrite the quadratic as a square plus a constant to expose an inverse trigonometric or logarithmic form.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-6D3"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06054",
+   "learning_objectives": [
+    "BC-LO-FUN-6D"
+   ],
+   "misconceptions": [],
+   "name": "Complete the square in a quadratic denominator to reach a standard form",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06010",
+    "BC-SKL-06043",
+    "BC-SKL-06047"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:127"
+   ],
+   "topic": "BC-TOP-0610",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-06016"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06016 across at least two representations, with no error from the unit error list.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of the unit error list without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06001, BC-PRQ-06002.",
+    "remediation_target": "BC-SKL-06040"
+   },
+   "archetypes": [
+    "BC-QA-06016"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-06016",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given an integrand that is a sum over a single denominator or a product of polynomials, rewrite it as a sum of terms each of which antidifferentiates by a basic rule.",
+   "description_plain": "Break a single fraction into separate terms or multiply out a product first.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-6D3"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06055",
+   "learning_objectives": [
+    "BC-LO-FUN-6D"
+   ],
+   "misconceptions": [],
+   "name": "Rewrite an integrand by splitting or expanding before antidifferentiating",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06001",
+    "BC-PRQ-06002",
+    "BC-SKL-06040"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:127"
+   ],
+   "topic": "BC-TOP-0610",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-06022"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-06016"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06016 across at least two representations, with no error from BC-ERR-06026.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-06026 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06009, BC-PRQ-06010.",
+    "remediation_target": "BC-SKL-06047"
+   },
+   "archetypes": [
+    "BC-QA-06016"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-06026"
+   ],
+   "concept": "BC-CON-06016",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given a rational integrand, compare the degrees of numerator and denominator and inspect the denominator for a factor whose derivative appears, and on that basis choose long division, completing the square, or substitution.",
+   "description_plain": "Check the degrees and the denominator structure before choosing.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-6D3"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06056",
+   "learning_objectives": [
+    "BC-LO-FUN-6D"
+   ],
+   "misconceptions": [
+    "BC-MIS-06022"
+   ],
+   "name": "Decide between rearrangement and substitution for a rational integrand",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06009",
+    "BC-PRQ-06010",
+    "BC-SKL-06047",
+    "BC-SKL-06053",
+    "BC-SKL-06054"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:127"
+   ],
+   "topic": "BC-TOP-0610",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-06019"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-06009"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06009 across at least two representations, with no error from BC-ERR-06022.",
+    "next_dependent_skills": [
+     "BC-SKL-06058",
+     "BC-SKL-06071"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-06022 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with no non-calculus prerequisite specific to this skill.",
+    "remediation_target": "BC-SKL-06040"
+   },
+   "archetypes": [
+    "BC-QA-06009"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-06022"
+   ],
+   "concept": "BC-CON-06017",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-06058",
+    "BC-SKL-06071"
+   ],
+   "description_formal": "Given a product integrand, select u and dv so that du is simpler than u and v is obtainable by a basic antiderivative, and record both u, dv, du, and v.",
+   "description_plain": "Assign one factor to differentiate and the other to antidifferentiate.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-6E1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06057",
+   "learning_objectives": [
+    "BC-LO-FUN-6E"
+   ],
+   "misconceptions": [
+    "BC-MIS-06019"
+   ],
+   "name": "Choose u and dv for an integration by parts",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-SKL-06040",
+    "BC-SKL-06042"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:128"
+   ],
+   "topic": "BC-TOP-0611",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-06019"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-06009"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06009 across at least two representations, with no error from BC-ERR-06022, BC-ERR-06023.",
+    "next_dependent_skills": [
+     "BC-SKL-06059",
+     "BC-SKL-06060",
+     "BC-SKL-06061",
+     "BC-SKL-06073"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-06022, BC-ERR-06023 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with no non-calculus prerequisite specific to this skill.",
+    "remediation_target": "BC-SKL-06057"
+   },
+   "archetypes": [
+    "BC-QA-06009"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-06022",
+    "BC-ERR-06023"
+   ],
+   "concept": "BC-CON-06017",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-06059",
+    "BC-SKL-06060",
+    "BC-SKL-06061",
+    "BC-SKL-06073"
+   ],
+   "description_formal": "Given u, dv, du, and v, write the integral of u dv as u times v minus the integral of v du, and evaluate the remaining integral.",
+   "description_plain": "Write uv minus the integral of v du and finish the remaining integral.",
+   "diagnostic_signals": [
+    "BC-SIG-06020"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-6E1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06058",
+   "learning_objectives": [
+    "BC-LO-FUN-6E"
+   ],
+   "misconceptions": [
+    "BC-MIS-06019"
+   ],
+   "name": "Apply the integration by parts formula",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-SKL-06057"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:128"
+   ],
+   "topic": "BC-TOP-0611",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-06009"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06009 across at least two representations, with no error from BC-ERR-06023.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-06023 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with no non-calculus prerequisite specific to this skill.",
+    "remediation_target": "BC-SKL-06058"
+   },
+   "archetypes": [
+    "BC-QA-06009"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-06023"
+   ],
+   "concept": "BC-CON-06017",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given an integrand requiring repeated parts, apply the formula again to the remaining integral, keeping the signs consistent, or organise the work in a tabular arrangement.",
+   "description_plain": "Repeat the process when the new integral is still a product.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-6E1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06059",
+   "learning_objectives": [
+    "BC-LO-FUN-6E"
+   ],
+   "misconceptions": [],
+   "name": "Apply integration by parts more than once",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-SKL-06058"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:128"
+   ],
+   "topic": "BC-TOP-0611",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-06009"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06009 across at least two representations, with no error from the unit error list.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of the unit error list without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with no non-calculus prerequisite specific to this skill.",
+    "remediation_target": "BC-SKL-06058"
+   },
+   "archetypes": [
+    "BC-QA-06009"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-06017",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given a definite integral requiring parts, evaluate u times v at the upper and lower limits and subtract the definite integral of v du over the same interval.",
+   "description_plain": "Evaluate the uv boundary term at both limits and subtract the remaining integral.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-6E1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06060",
+   "learning_objectives": [
+    "BC-LO-FUN-6E"
+   ],
+   "misconceptions": [],
+   "name": "Evaluate a definite integral using integration by parts",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-SKL-06058",
+    "BC-SKL-06034"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:128"
+   ],
+   "topic": "BC-TOP-0611",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-06009"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06009 across at least two representations, with no error from the unit error list.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of the unit error list without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-SKL-06058"
+   },
+   "archetypes": [
+    "BC-QA-06009"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-06017",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given an integrand of the form x times f prime of x with selected values or integrals of f supplied, apply parts with u = x and dv = f prime of x dx to express the result in terms of the supplied values.",
+   "description_plain": "Use parts when the integrand is x times f'(x) and only values of f are supplied.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-6E1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06061",
+   "learning_objectives": [
+    "BC-LO-FUN-6E"
+   ],
+   "misconceptions": [],
+   "name": "Apply integration by parts to an integrand containing an unknown function and its derivative",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-SKL-06058"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-04"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:128"
+   ],
+   "topic": "BC-TOP-0611",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-06010"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06010 across at least two representations, with no error from BC-ERR-06026.",
+    "next_dependent_skills": [
+     "BC-SKL-06063",
+     "BC-SKL-06071"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-06026 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with no non-calculus prerequisite specific to this skill.",
+    "remediation_target": "BC-CON-06018"
+   },
+   "archetypes": [
+    "BC-QA-06010"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-06026"
+   ],
+   "concept": "BC-CON-06018",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-06063",
+    "BC-SKL-06071"
+   ],
+   "description_formal": "Given a rational integrand, factor the denominator into linear, nonrepeating factors so that a partial fraction decomposition is available.",
+   "description_plain": "Factor the quadratic or higher denominator before decomposing.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-6F1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06062",
+   "learning_objectives": [
+    "BC-LO-FUN-6F"
+   ],
+   "misconceptions": [],
+   "name": "Factor a denominator into distinct linear factors",
+   "practice_skills": [],
+   "prerequisites": [],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:129"
+   ],
+   "topic": "BC-TOP-0612",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-06010"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06010 across at least two representations, with no error from the unit error list.",
+    "next_dependent_skills": [
+     "BC-SKL-06064"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of the unit error list without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06011.",
+    "remediation_target": "BC-SKL-06062"
+   },
+   "archetypes": [
+    "BC-QA-06010"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-06018",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-06064"
+   ],
+   "description_formal": "Given a proper rational function with distinct linear factors, write the decomposition with unknown constant numerators, clear denominators, and solve for the constants by substitution or by equating coefficients.",
+   "description_plain": "Clear denominators and solve for the numerators.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-6F1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06063",
+   "learning_objectives": [
+    "BC-LO-FUN-6F"
+   ],
+   "misconceptions": [],
+   "name": "Solve for the constants in a linear partial fraction decomposition",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06011",
+    "BC-SKL-06062"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:129"
+   ],
+   "topic": "BC-TOP-0612",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-06010"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06010 across at least two representations, with no error from the unit error list.",
+    "next_dependent_skills": [
+     "BC-SKL-06065",
+     "BC-SKL-06073"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of the unit error list without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06003.",
+    "remediation_target": "BC-SKL-06063"
+   },
+   "archetypes": [
+    "BC-QA-06010"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-06018",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-06065",
+    "BC-SKL-06073"
+   ],
+   "description_formal": "Given a decomposition into ratios with linear denominators, antidifferentiate each term as the constant numerator times the natural logarithm of the absolute value of the linear factor divided by its leading coefficient.",
+   "description_plain": "Each simple fraction becomes a constant times a natural logarithm.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-6F1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06064",
+   "learning_objectives": [
+    "BC-LO-FUN-6F"
+   ],
+   "misconceptions": [],
+   "name": "Antidifferentiate a linear partial fraction decomposition",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06003",
+    "BC-SKL-06063",
+    "BC-SKL-06052"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:129"
+   ],
+   "topic": "BC-TOP-0612",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-06010"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06010 across at least two representations, with no error from the unit error list.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of the unit error list without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06003.",
+    "remediation_target": "BC-SKL-06064"
+   },
+   "archetypes": [
+    "BC-QA-06010"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-06018",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given a definite integral of a proper rational function with distinct linear factors, decompose, antidifferentiate, and apply the Fundamental Theorem of Calculus, combining the logarithms where useful.",
+   "description_plain": "Decompose, antidifferentiate, then substitute the limits.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-6F1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06065",
+   "learning_objectives": [
+    "BC-LO-FUN-6F"
+   ],
+   "misconceptions": [],
+   "name": "Evaluate a definite integral of a rational function by partial fractions",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06003",
+    "BC-SKL-06064",
+    "BC-SKL-06034"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:129"
+   ],
+   "topic": "BC-TOP-0612",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-06011"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06011 across at least two representations, with no error from BC-ERR-06025.",
+    "next_dependent_skills": [
+     "BC-SKL-06067",
+     "BC-SKL-06070",
+     "BC-SKL-06071"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-06025 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with no non-calculus prerequisite specific to this skill.",
+    "remediation_target": "BC-CON-06019"
+   },
+   "archetypes": [
+    "BC-QA-06011"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-06025"
+   ],
+   "concept": "BC-CON-06019",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-06067",
+    "BC-SKL-06070",
+    "BC-SKL-06071"
+   ],
+   "description_formal": "Given a definite integral, determine whether it is improper because one or both limits of integration are infinite or because the integrand is unbounded somewhere on the interval of integration, and name which.",
+   "description_plain": "Say whether the limit is infinite or the integrand is unbounded.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-6A1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06066",
+   "learning_objectives": [
+    "BC-LO-LIM-6A"
+   ],
+   "misconceptions": [],
+   "name": "Classify an integral as improper and name the cause",
+   "practice_skills": [],
+   "prerequisites": [],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:130"
+   ],
+   "topic": "BC-TOP-0613",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-06020"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-06011"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06011 across at least two representations, with no error from BC-ERR-06024.",
+    "next_dependent_skills": [
+     "BC-SKL-06068",
+     "BC-SKL-06069"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-06024 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with no non-calculus prerequisite specific to this skill.",
+    "remediation_target": "BC-SKL-06066"
+   },
+   "archetypes": [
+    "BC-QA-06011"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-06024"
+   ],
+   "concept": "BC-CON-06019",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-06068",
+    "BC-SKL-06069"
+   ],
+   "description_formal": "Given an improper integral, rewrite it using correct limit notation as the limit of a definite integral whose limit of integration is a variable approaching infinity or approaching the point of unboundedness.",
+   "description_plain": "Replace the offending limit by a variable and take a limit.",
+   "diagnostic_signals": [
+    "BC-SIG-06021"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-6A2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06067",
+   "learning_objectives": [
+    "BC-LO-LIM-6A"
+   ],
+   "misconceptions": [
+    "BC-MIS-06020"
+   ],
+   "name": "Rewrite an improper integral as a limit of definite integrals",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-SKL-06066"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:130"
+   ],
+   "topic": "BC-TOP-0613",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-06020",
+     "BC-MIS-06021"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-06011"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06011 across at least two representations, with no error from BC-ERR-06024, BC-ERR-06025.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-06024, BC-ERR-06025 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with no non-calculus prerequisite specific to this skill.",
+    "remediation_target": "BC-SKL-06067"
+   },
+   "archetypes": [
+    "BC-QA-06011"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-06024",
+    "BC-ERR-06025"
+   ],
+   "concept": "BC-CON-06019",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given an improper integral written as a limit, find an antiderivative, evaluate at the variable and fixed limits, and evaluate the resulting limit to obtain the value of the convergent integral.",
+   "description_plain": "Antidifferentiate, substitute, then take the limit.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-6A2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06068",
+   "learning_objectives": [
+    "BC-LO-LIM-6A"
+   ],
+   "misconceptions": [
+    "BC-MIS-06020",
+    "BC-MIS-06021"
+   ],
+   "name": "Evaluate the limit to determine the value of a convergent improper integral",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-SKL-06067",
+    "BC-SKL-06034"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:130"
+   ],
+   "topic": "BC-TOP-0613",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-06020",
+     "BC-MIS-06021"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-06011"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06011 across at least two representations, with no error from BC-ERR-06025.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-06025 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with no non-calculus prerequisite specific to this skill.",
+    "remediation_target": "BC-SKL-06067"
+   },
+   "archetypes": [
+    "BC-QA-06011"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-06025"
+   ],
+   "concept": "BC-CON-06019",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given an improper integral written as a limit, conclude that the integral diverges when the limit is infinite or does not exist, and state that conclusion rather than reporting a numerical value.",
+   "description_plain": "Say the integral diverges when the limit is infinite or fails to exist.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-6A2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06069",
+   "learning_objectives": [
+    "BC-LO-LIM-6A"
+   ],
+   "misconceptions": [
+    "BC-MIS-06020",
+    "BC-MIS-06021"
+   ],
+   "name": "Conclude that an improper integral diverges",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-SKL-06067"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:130"
+   ],
+   "topic": "BC-TOP-0613",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-06011"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06011 across at least two representations, with no error from the unit error list.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of the unit error list without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with no non-calculus prerequisite specific to this skill.",
+    "remediation_target": "BC-SKL-06066"
+   },
+   "archetypes": [
+    "BC-QA-06011"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-06019",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given an integral improper at both ends or at an interior point where the integrand is unbounded, split the interval at a convenient point so that each piece has one improper endpoint, and require every piece to converge.",
+   "description_plain": "Break the interval so each piece has a single source of impropriety.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-6A1",
+    "BC-EK-LIM-6A2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06070",
+   "learning_objectives": [
+    "BC-LO-LIM-6A"
+   ],
+   "misconceptions": [],
+   "name": "Split an improper integral that is improper at more than one place",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-SKL-06066",
+    "BC-SKL-06031"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:130"
+   ],
+   "topic": "BC-TOP-0613",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-06017",
+     "BC-MIS-06022"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-06016"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06016 across at least two representations, with no error from BC-ERR-06020, BC-ERR-06022.",
+    "next_dependent_skills": [
+     "BC-SKL-06072",
+     "BC-SKL-06073",
+     "BC-SKL-06074"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-06020, BC-ERR-06022 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06001.",
+    "remediation_target": "BC-SKL-06047"
+   },
+   "archetypes": [
+    "BC-QA-06016"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-06020",
+    "BC-ERR-06022"
+   ],
+   "concept": "BC-CON-06020",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-06072",
+    "BC-SKL-06073",
+    "BC-SKL-06074"
+   ],
+   "description_formal": "Given an integrand, classify it as a basic form, a composite with an available inner derivative, a product of unlike factors, an improper or factorable rational form, or an unbounded or infinite-limit integral, and name the corresponding technique.",
+   "description_plain": "Look at the structure and name the procedure it calls for.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-6C2",
+    "BC-EK-FUN-6D3"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06071",
+   "learning_objectives": [],
+   "misconceptions": [
+    "BC-MIS-06017",
+    "BC-MIS-06022"
+   ],
+   "name": "Classify an integrand to select an antidifferentiation technique",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06001",
+    "BC-SKL-06047",
+    "BC-SKL-06053",
+    "BC-SKL-06057",
+    "BC-SKL-06062",
+    "BC-SKL-06066"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:131"
+   ],
+   "topic": "BC-TOP-0614",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-06017",
+     "BC-MIS-06022"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-06016"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06016 across at least two representations, with no error from BC-ERR-06020.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-06020 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with no non-calculus prerequisite specific to this skill.",
+    "remediation_target": "BC-SKL-06071"
+   },
+   "archetypes": [
+    "BC-QA-06016"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-06020"
+   ],
+   "concept": "BC-CON-06020",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given an integrand and a candidate technique, state the structural condition the technique requires and explain why the integrand does or does not satisfy it.",
+   "description_plain": "Explain why a technique does not apply to a given integrand.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-6C2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06072",
+   "learning_objectives": [],
+   "misconceptions": [
+    "BC-MIS-06017",
+    "BC-MIS-06022"
+   ],
+   "name": "Rule out a technique whose structural precondition is absent",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-SKL-06071"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:131"
+   ],
+   "topic": "BC-TOP-0614",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-06016"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06016 across at least two representations, with no error from the unit error list.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of the unit error list without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with no non-calculus prerequisite specific to this skill.",
+    "remediation_target": "BC-SKL-06071"
+   },
+   "archetypes": [
+    "BC-QA-06016"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-06020",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given an integrand that is not resolved by a single technique, apply an initial rearrangement or substitution and then a second technique such as parts or partial fractions to the resulting integral.",
+   "description_plain": "Apply one technique, then a second to what remains.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-6D3"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06073",
+   "learning_objectives": [],
+   "misconceptions": [],
+   "name": "Chain two antidifferentiation techniques in one problem",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-SKL-06071",
+    "BC-SKL-06058",
+    "BC-SKL-06064"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:131"
+   ],
+   "topic": "BC-TOP-0614",
+   "unit": "BC-UNIT-06"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-06016"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-06016 across at least two representations, with no error from the unit error list.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of the unit error list without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with no non-calculus prerequisite specific to this skill.",
+    "remediation_target": "BC-SKL-06046"
+   },
+   "archetypes": [
+    "BC-QA-06016"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [],
+   "concept": "BC-CON-06020",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given an integrand with no closed-form antiderivative, represent the required quantity as a definite integral or approximate it numerically rather than attempting an elementary antiderivative.",
+   "description_plain": "Leave the answer as a definite integral or approximate it when no antiderivative is available.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-6C3"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-06074",
+   "learning_objectives": [],
+   "misconceptions": [],
+   "name": "Recognise when no elementary technique applies and use an integral or numerical representation",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-SKL-06046",
+    "BC-SKL-06071"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-09"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:131"
+   ],
+   "topic": "BC-TOP-0614",
+   "unit": "BC-UNIT-06"
+  }
+ ]
+}

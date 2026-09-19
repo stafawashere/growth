@@ -1,0 +1,1493 @@
+{
+ "archetypes": [
+  {
+   "asked_to_produce": [
+    "a quotient of parametric derivatives",
+    "a numerical slope"
+   ],
+   "calculator_status": "calculator",
+   "common_distractors": [
+    "dy/dt alone",
+    "dx/dt divided by dy/dt",
+    "the second derivative"
+   ],
+   "common_givens": [
+    "a parametric or vector description of a path",
+    "a time"
+   ],
+   "description": "A particle moves on a parametric path and the response reports the slope of the tangent line at a given time as a quotient of parametric derivatives.",
+   "difficulty_variables": [
+    "whether one component is given only through its derivative",
+    "whether the slope is followed by a tangent line",
+    "whether a component derivative must be imported from an earlier part"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "compute dy/dt and dx/dt",
+    "form the quotient",
+    "evaluate at the given time",
+    "report the slope"
+   ],
+   "id": "BC-QA-09001",
+   "invariant_structure": "Two component rates at one parameter value and one quotient, with the quotient structure visible in the response rather than only its value.",
+   "misconceptions": [
+    "BC-MIS-09002",
+    "BC-MIS-09003"
+   ],
+   "multipart_structure": "One part of the calculator active BC free response question, often sharing a part with a position coordinate.",
+   "name": "Slope of the tangent to a parametric path at a time",
+   "official_examples": [],
+   "official_examples_notes": "2023 Q2(c)",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-09003"
+   ],
+   "primary_unit": "BC-UNIT-09",
+   "representations": [
+    "BC-REP-12",
+    "BC-REP-01",
+    "BC-REP-09"
+   ],
+   "safe_variables": [
+    "the moving object",
+    "the letters for the components",
+    "the time at which the slope is requested"
+   ],
+   "scope": "BC_only",
+   "scoring_pattern": "One point, earned only when the response communicates that dy/dx is dy/dt divided by dx/dt; several presentations earn it, including labelled values of the two derivatives followed by the slope, and an incorrect component imported from an earlier part is accepted when it was declared there (sg-23:7).",
+   "skills": [
+    "BC-SKL-09001",
+    "BC-SKL-09002",
+    "BC-SKL-09004",
+    "BC-SKL-09005",
+    "BC-SKL-09003",
+    "BC-SKL-09006"
+   ],
+   "sources": [
+    "sg-23:7",
+    "frq-23:4"
+   ],
+   "typical_wording": [
+    "find the slope of the line tangent to the path of the particle at the given time and show the work that leads to the answer"
+   ],
+   "units": [
+    "BC-UNIT-09"
+   ],
+   "variants": [
+    "BC-QV-09001-01",
+    "BC-QV-09001-02",
+    "BC-QV-09001-03"
+   ],
+   "wrong_approaches": [
+    "reporting a value with no quotient shown",
+    "using a component derivative that was never declared"
+   ]
+  },
+  {
+   "asked_to_produce": [
+    "a second derivative expression",
+    "a value or a statement of concavity"
+   ],
+   "calculator_status": "either",
+   "common_distractors": [
+    "the quotient of the two second parametric derivatives",
+    "the derivative of the slope with respect to the parameter without the second division",
+    "the sign of dy/dt"
+   ],
+   "common_givens": [
+    "a parametric pair",
+    "a parameter value"
+   ],
+   "description": "The response assembles the second derivative of y with respect to x for a parametric curve and evaluates it or reads its sign.",
+   "difficulty_variables": [
+    "whether the slope simplifies before the second differentiation",
+    "whether a sign or a value is requested",
+    "whether technology may be used"
+   ],
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "form dy/dx",
+    "differentiate it with respect to the parameter",
+    "divide by dx/dt",
+    "evaluate or read the sign"
+   ],
+   "id": "BC-QA-09002",
+   "invariant_structure": "The slope is assembled first, differentiated with respect to the parameter, and divided once more by dx/dt.",
+   "misconceptions": [
+    "BC-MIS-09004"
+   ],
+   "multipart_structure": "One part of a multipart question, or a single multiple choice item.",
+   "name": "Second derivative of a parametric curve",
+   "official_examples": [],
+   "official_examples_notes": "no parametric second derivative appears in the 2023 to 2025 BC free response questions",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "primary_unit": "BC-UNIT-09",
+   "representations": [
+    "BC-REP-12",
+    "BC-REP-01"
+   ],
+   "safe_variables": [
+    "the components",
+    "the parameter value",
+    "the letters used"
+   ],
+   "scope": "BC_only",
+   "scoring_pattern": "A setup point for the assembled expression and an answer point for the value, following the parametric derivative scoring pattern of 2023 (sg-23:7).",
+   "skills": [
+    "BC-SKL-09007",
+    "BC-SKL-09008",
+    "BC-SKL-09009",
+    "BC-SKL-09010"
+   ],
+   "sources": [
+    "ced:172"
+   ],
+   "typical_wording": [
+    "find the second derivative of y with respect to x at the given parameter value, or state the concavity of the curve there"
+   ],
+   "units": [
+    "BC-UNIT-09"
+   ],
+   "variants": [
+    "BC-QV-09002-01",
+    "BC-QV-09002-02"
+   ],
+   "wrong_approaches": [
+    "dividing the second derivative of y by the second derivative of x"
+   ]
+  },
+  {
+   "asked_to_produce": [
+    "a definite integral of a radical integrand",
+    "a numerical length"
+   ],
+   "calculator_status": "calculator",
+   "common_distractors": [
+    "the sum of the two component integrals",
+    "the magnitude of the displacement vector",
+    "the integral of one component alone"
+   ],
+   "common_givens": [
+    "a parametric pair or a velocity vector",
+    "a parameter or time interval"
+   ],
+   "description": "The response writes and evaluates the integral of the magnitude of the pair of component rates over a parameter interval.",
+   "difficulty_variables": [
+    "whether the curve is described as a path of a particle",
+    "whether the interval traces the curve once",
+    "whether an integrand is imported from an earlier speed part"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "compute both component rates",
+    "square each and add",
+    "take the square root and integrate over the interval",
+    "report the value"
+   ],
+   "id": "BC-QA-09003",
+   "invariant_structure": "One radical integrand built from the two component rates, one parameter interval that traces the piece once, one numerical value.",
+   "misconceptions": [
+    "BC-MIS-09005",
+    "BC-MIS-09006"
+   ],
+   "multipart_structure": "One part of the calculator active BC free response question.",
+   "name": "Length of a parametric curve",
+   "official_examples": [],
+   "official_examples_notes": "2023 Q2(d), 2024 Q2(b)",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-08007",
+    "BC-PRQ-08006"
+   ],
+   "primary_unit": "BC-UNIT-09",
+   "representations": [
+    "BC-REP-12",
+    "BC-REP-01",
+    "BC-REP-09"
+   ],
+   "safe_variables": [
+    "the components",
+    "the interval",
+    "the letters used"
+   ],
+   "scope": "BC_only",
+   "scoring_pattern": "Two points: the integral and the value; an incorrect speed integrand imported from an earlier part earns the integral point but not the answer point, and parenthesis errors already assessed in an earlier part are not assessed again (sg-23:8, sg-24:6).",
+   "skills": [
+    "BC-SKL-09011",
+    "BC-SKL-09012",
+    "BC-SKL-09013",
+    "BC-SKL-09014"
+   ],
+   "sources": [
+    "sg-23:8",
+    "sg-24:6"
+   ],
+   "typical_wording": [
+    "find the length of the curve on the stated parameter interval, or the total distance travelled by the particle over the stated time interval, and show the setup"
+   ],
+   "units": [
+    "BC-UNIT-09"
+   ],
+   "variants": [
+    "BC-QV-09003-01",
+    "BC-QV-09003-02",
+    "BC-QV-09003-03"
+   ],
+   "wrong_approaches": [
+    "adding the component rates before squaring",
+    "integrating over an interval that repeats part of the curve"
+   ]
+  },
+  {
+   "asked_to_produce": [
+    "two derivative expressions",
+    "a labelled vector of two values"
+   ],
+   "calculator_status": "calculator",
+   "common_distractors": [
+    "the velocity vector",
+    "the magnitude of the acceleration",
+    "the components in the wrong order"
+   ],
+   "common_givens": [
+    "a velocity vector or a pair of component rates",
+    "a time"
+   ],
+   "description": "The response differentiates each velocity component and reports the acceleration vector at a time with the setup shown.",
+   "difficulty_variables": [
+    "whether one component is given only through its derivative",
+    "whether the notation must be a vector or may be two labelled numbers",
+    "whether the calculator is in radian mode"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "differentiate each velocity component",
+    "evaluate both at the time",
+    "present the pair as a vector"
+   ],
+   "id": "BC-QA-09004",
+   "invariant_structure": "Two component derivatives evaluated at one time and presented as one vector, each with visible supporting work.",
+   "misconceptions": [
+    "BC-MIS-09009"
+   ],
+   "multipart_structure": "The opening part of the calculator active BC free response question.",
+   "name": "Acceleration vector of a particle in planar motion",
+   "official_examples": [],
+   "official_examples_notes": "2023 Q2(a)",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-09001",
+    "BC-PRQ-09003"
+   ],
+   "primary_unit": "BC-UNIT-09",
+   "representations": [
+    "BC-REP-14",
+    "BC-REP-12",
+    "BC-REP-09"
+   ],
+   "safe_variables": [
+    "the particle",
+    "the units of the components",
+    "the time"
+   ],
+   "scope": "BC_only",
+   "scoring_pattern": "One point for each component with its setup; an unsupported correct acceleration vector earns one of the two points, a response that equates a variable expression to a numerical value earns one of the two, and degree mode work does not earn the first point it would otherwise have earned (sg-23:5, sg-23:6).",
+   "skills": [
+    "BC-SKL-09015",
+    "BC-SKL-09016",
+    "BC-SKL-09017",
+    "BC-SKL-09018",
+    "BC-SKL-09028"
+   ],
+   "sources": [
+    "sg-23:5",
+    "sg-23:6",
+    "frq-23:4"
+   ],
+   "typical_wording": [
+    "find the acceleration vector of the particle at the given time and show the setup for the calculations"
+   ],
+   "units": [
+    "BC-UNIT-09"
+   ],
+   "variants": [
+    "BC-QV-09004-01",
+    "BC-QV-09004-02"
+   ],
+   "wrong_approaches": [
+    "equating a variable expression to a numerical value",
+    "reporting an unsupported vector"
+   ]
+  },
+  {
+   "asked_to_produce": [
+    "an expression with an integral and the initial value",
+    "a numerical coordinate"
+   ],
+   "calculator_status": "calculator",
+   "common_distractors": [
+    "the value of the integral alone",
+    "the initial value with the integral subtracted in the wrong direction",
+    "the other coordinate"
+   ],
+   "common_givens": [
+    "a velocity component",
+    "the position at one time",
+    "a second time"
+   ],
+   "description": "A velocity component and a known position at one time are given, and the response reports a coordinate at another time.",
+   "difficulty_variables": [
+    "whether the requested time is before or after the known time",
+    "whether the integrand antidifferentiates in closed form",
+    "whether the initial condition is stated as a point"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "write the coordinate as the known value plus the definite integral of the velocity component",
+    "evaluate the integral",
+    "add the known value",
+    "report with units"
+   ],
+   "id": "BC-QA-09005",
+   "invariant_structure": "A known coordinate at one time plus the definite integral of the matching velocity component between the two times, with the direction of accumulation matching the order of the times.",
+   "misconceptions": [
+    "BC-MIS-09010"
+   ],
+   "multipart_structure": "One part of the calculator active BC free response question.",
+   "name": "Coordinate of a particle recovered from an initial position",
+   "official_examples": [],
+   "official_examples_notes": "2024 Q2(c), 2023 Q2(c)",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "primary_unit": "BC-UNIT-09",
+   "representations": [
+    "BC-REP-14",
+    "BC-REP-01",
+    "BC-REP-09"
+   ],
+   "safe_variables": [
+    "the particle",
+    "which coordinate is requested",
+    "the units"
+   ],
+   "scope": "BC_only",
+   "scoring_pattern": "Three points: the definite integral, the use of the initial condition, and the answer; several equivalent arrangements of the subtraction and of the limits earn the first two points (sg-24:7). A missing differential can keep the integral point while blocking the answer point when the expression is also equated to a value (sg-23:8).",
+   "skills": [
+    "BC-SKL-09019",
+    "BC-SKL-09020",
+    "BC-SKL-09021",
+    "BC-SKL-09022",
+    "BC-SKL-09026",
+    "BC-SKL-09018"
+   ],
+   "sources": [
+    "sg-24:7",
+    "sg-23:7",
+    "sg-23:8"
+   ],
+   "typical_wording": [
+    "find the coordinate of the position of the particle at the stated time and show the setup for the calculations"
+   ],
+   "units": [
+    "BC-UNIT-09"
+   ],
+   "variants": [
+    "BC-QV-09005-01",
+    "BC-QV-09005-02",
+    "BC-QV-09005-03"
+   ],
+   "wrong_approaches": [
+    "omitting the initial condition",
+    "integrating forwards when the known position is later"
+   ]
+  },
+  {
+   "asked_to_produce": [
+    "a magnitude expression",
+    "a numerical speed or time"
+   ],
+   "calculator_status": "calculator",
+   "common_distractors": [
+    "the sum of the two components",
+    "one component alone",
+    "the magnitude of the acceleration"
+   ],
+   "common_givens": [
+    "two velocity components",
+    "a time or a target speed"
+   ],
+   "description": "The response computes the speed at a time as the magnitude of the velocity vector, or solves for a time at which the speed takes a given value.",
+   "difficulty_variables": [
+    "whether a value or a time is requested",
+    "whether the first such time is demanded",
+    "whether a component must be imported from an earlier part"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "square both velocity components",
+    "add and take the square root",
+    "evaluate at the time, or set equal to the target and solve",
+    "report the value"
+   ],
+   "id": "BC-QA-09006",
+   "invariant_structure": "One magnitude of a two component velocity, either evaluated at a time or set equal to a stated value and solved on the interval.",
+   "misconceptions": [
+    "BC-MIS-09011"
+   ],
+   "multipart_structure": "One part of the calculator active BC free response question.",
+   "name": "Speed of a particle in planar motion",
+   "official_examples": [],
+   "official_examples_notes": "2023 Q2(b), 2024 Q2(a)",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-08007",
+    "BC-PRQ-09003"
+   ],
+   "primary_unit": "BC-UNIT-09",
+   "representations": [
+    "BC-REP-14",
+    "BC-REP-09"
+   ],
+   "safe_variables": [
+    "the particle",
+    "the units",
+    "the time or the target speed"
+   ],
+   "scope": "BC_only",
+   "scoring_pattern": "Two points: the setup for the speed and the answer. An equation with an implied speed earns both, the words speed equals the value alone do not earn the setup point, a bare time value earns neither, and a parenthesis error in a squared component costs the setup point but not the answer point (sg-23:6, sg-24:5).",
+   "skills": [
+    "BC-SKL-09023",
+    "BC-SKL-09024"
+   ],
+   "sources": [
+    "sg-23:6",
+    "sg-23:7",
+    "sg-24:5"
+   ],
+   "typical_wording": [
+    "find the speed of the particle at the given time and show the setup",
+    "find the first time at which the speed of the particle equals the stated value and show the work"
+   ],
+   "units": [
+    "BC-UNIT-09"
+   ],
+   "variants": [
+    "BC-QV-09006-01",
+    "BC-QV-09006-02"
+   ],
+   "wrong_approaches": [
+    "reporting a time with no equation shown",
+    "working in degree mode"
+   ]
+  },
+  {
+   "asked_to_produce": [
+    "a definite integral of the speed",
+    "a numerical distance"
+   ],
+   "calculator_status": "calculator",
+   "common_distractors": [
+    "the magnitude of the displacement",
+    "the integral of one component",
+    "the difference of the endpoint positions"
+   ],
+   "common_givens": [
+    "two velocity components",
+    "a time interval"
+   ],
+   "description": "The response integrates the speed over a time interval and reports the distance travelled.",
+   "difficulty_variables": [
+    "whether the speed expression is imported from an earlier part",
+    "whether units are demanded",
+    "whether the interval starts at the time of the initial condition"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "write the speed as the magnitude of velocity",
+    "integrate over the time interval",
+    "evaluate numerically",
+    "report with units"
+   ],
+   "id": "BC-QA-09007",
+   "invariant_structure": "The definite integral of the magnitude of the velocity over the time interval, reported as a length in the units of position.",
+   "misconceptions": [
+    "BC-MIS-09006"
+   ],
+   "multipart_structure": "One part of the calculator active BC free response question.",
+   "name": "Total distance travelled by a particle in the plane",
+   "official_examples": [],
+   "official_examples_notes": "2023 Q2(d), 2024 Q2(b)",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-08007"
+   ],
+   "primary_unit": "BC-UNIT-09",
+   "representations": [
+    "BC-REP-14",
+    "BC-REP-09"
+   ],
+   "safe_variables": [
+    "the particle",
+    "the units",
+    "the interval"
+   ],
+   "scope": "BC_only",
+   "scoring_pattern": "Two points: the correct integrand inside a definite integral and the value; an incorrect speed imported from an earlier part earns the integral point and loses the answer point, and an unsupported correct value earns neither (sg-23:8, sg-24:6).",
+   "skills": [
+    "BC-SKL-09025",
+    "BC-SKL-09013"
+   ],
+   "sources": [
+    "sg-23:8",
+    "sg-24:6"
+   ],
+   "typical_wording": [
+    "find the total distance travelled by the particle over the stated time interval and show the setup for the calculations"
+   ],
+   "units": [
+    "BC-UNIT-09"
+   ],
+   "variants": [
+    "BC-QV-09007-01",
+    "BC-QV-09007-02"
+   ],
+   "wrong_approaches": [
+    "integrating the velocity components and then taking a magnitude"
+   ]
+  },
+  {
+   "asked_to_produce": [
+    "a sign argument",
+    "a subinterval of times"
+   ],
+   "calculator_status": "calculator",
+   "common_distractors": [
+    "the times at which the coordinate itself is negative",
+    "the times at which the other component is negative",
+    "the whole interval"
+   ],
+   "common_givens": [
+    "a velocity component",
+    "a statement about the quadrant the particle stays in",
+    "an interval"
+   ],
+   "description": "The response uses the sign of a velocity component, together with the sign of the corresponding coordinate, to say when the particle approaches an axis.",
+   "difficulty_variables": [
+    "whether the sign of the coordinate is given or must be argued",
+    "whether the endpoint of the subinterval is a decimal",
+    "whether the answer must be justified"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "state the sign of the coordinate on the interval",
+    "solve for where the corresponding velocity component is zero",
+    "determine the subinterval on which it is negative",
+    "state the answer with the reason"
+   ],
+   "id": "BC-QA-09008",
+   "invariant_structure": "One coordinate of known sign on the interval and one velocity component whose sign decides the direction, with the answer stated as a subinterval and a reason.",
+   "misconceptions": [
+    "BC-MIS-09012"
+   ],
+   "multipart_structure": "The closing part of the calculator active BC free response question.",
+   "name": "Times at which a particle moves toward a coordinate axis",
+   "official_examples": [],
+   "official_examples_notes": "2024 Q2(d)",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-08001"
+   ],
+   "primary_unit": "BC-UNIT-09",
+   "representations": [
+    "BC-REP-14",
+    "BC-REP-09",
+    "BC-REP-04"
+   ],
+   "safe_variables": [
+    "the particle",
+    "which axis is named",
+    "the interval"
+   ],
+   "scope": "BC_only",
+   "scoring_pattern": "Two points: one for considering the sign of the relevant velocity component and one for the answer with the reason; the reported interval may be open, closed, or half open (sg-24:8).",
+   "skills": [
+    "BC-SKL-09027"
+   ],
+   "sources": [
+    "sg-24:8",
+    "frq-24:4"
+   ],
+   "typical_wording": [
+    "find all times in the stated interval at which the particle is moving toward the named axis and give a reason for the answer"
+   ],
+   "units": [
+    "BC-UNIT-09"
+   ],
+   "variants": [
+    "BC-QV-09008-01",
+    "BC-QV-09008-02"
+   ],
+   "wrong_approaches": [
+    "reading the direction from the sign of the position rather than of its rate"
+   ]
+  },
+  {
+   "asked_to_produce": [
+    "a derivative expression",
+    "a numerical value"
+   ],
+   "calculator_status": "calculator",
+   "common_distractors": [
+    "the value of r itself",
+    "dy/dx at the same angle",
+    "the derivative evaluated in degree mode"
+   ],
+   "common_givens": [
+    "a polar equation",
+    "an angle"
+   ],
+   "description": "The response differentiates a polar equation and reports the rate of change of r with respect to theta at a stated angle.",
+   "difficulty_variables": [
+    "whether an exact or a decimal answer is presented",
+    "whether the interpretation as a rate of distance from the origin is demanded",
+    "whether dy/dx is requested instead of dr/dtheta"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "differentiate r with respect to theta",
+    "evaluate at the given angle",
+    "report the value with the differentiation shown"
+   ],
+   "id": "BC-QA-09009",
+   "invariant_structure": "One polar equation, one angle, one derivative with respect to theta whose differentiation is visible in the response.",
+   "misconceptions": [
+    "BC-MIS-09014",
+    "BC-MIS-09015"
+   ],
+   "multipart_structure": "The opening part of the calculator active BC free response question.",
+   "name": "Derivative of r with respect to theta on a polar curve",
+   "official_examples": [],
+   "official_examples_notes": "2025 Q2(A)",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-09003",
+    "BC-PRQ-09002"
+   ],
+   "primary_unit": "BC-UNIT-09",
+   "representations": [
+    "BC-REP-13",
+    "BC-REP-09",
+    "BC-REP-01"
+   ],
+   "safe_variables": [
+    "the polar curve",
+    "the angle",
+    "the letters used"
+   ],
+   "scope": "BC_only",
+   "scoring_pattern": "One point, earned when the response indicates differentiation of r and gives the correct value; exact and decimal forms both earn it, and several loose notations were accepted in 2025 provided the derivative was identifiable (sg-25:6, sg-25:7).",
+   "skills": [
+    "BC-SKL-09030",
+    "BC-SKL-09031",
+    "BC-SKL-09029",
+    "BC-SKL-09033"
+   ],
+   "sources": [
+    "sg-25:6",
+    "sg-25:7",
+    "frq-25:4"
+   ],
+   "typical_wording": [
+    "find the rate of change of r with respect to theta at the point on the curve where theta has the stated value, and show the setup"
+   ],
+   "units": [
+    "BC-UNIT-09"
+   ],
+   "variants": [
+    "BC-QV-09009-01",
+    "BC-QV-09009-02"
+   ],
+   "wrong_approaches": [
+    "reporting a value with no indication that r was differentiated"
+   ]
+  },
+  {
+   "asked_to_produce": [
+    "a chain rule product",
+    "a numerical rate"
+   ],
+   "calculator_status": "calculator",
+   "common_distractors": [
+    "dr/dtheta alone",
+    "the speed of the particle along the curve",
+    "r multiplied by the rate of the angle"
+   ],
+   "common_givens": [
+    "a polar equation",
+    "a constant rate of change of the angle",
+    "an angle"
+   ],
+   "description": "A particle travels along a polar curve with a given rate of change of the angle, and the response reports how fast its distance from the origin changes.",
+   "difficulty_variables": [
+    "whether the derivative may be imported from an earlier part",
+    "whether the chain rule product must be shown symbolically"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "identify dr/dtheta at the angle",
+    "multiply by the given rate of change of the angle",
+    "report the value"
+   ],
+   "id": "BC-QA-09010",
+   "invariant_structure": "The product of dr/dtheta at the stated angle with the given dtheta/dt, presented either symbolically or numerically.",
+   "misconceptions": [
+    "BC-MIS-09014"
+   ],
+   "multipart_structure": "The closing part of the calculator active BC free response question.",
+   "name": "Rate at which a particle's distance from the origin changes",
+   "official_examples": [],
+   "official_examples_notes": "2025 Q2(D)",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-09003"
+   ],
+   "primary_unit": "BC-UNIT-09",
+   "representations": [
+    "BC-REP-13",
+    "BC-REP-09"
+   ],
+   "safe_variables": [
+    "the particle",
+    "the constant rate of the angle",
+    "the angle"
+   ],
+   "scope": "BC_only",
+   "scoring_pattern": "Two points: one for the chain rule product, presented symbolically or numerically and possibly in several steps, and one for the value; the answer from the earlier derivative part multiplied by the given rate earns both (sg-25:10).",
+   "skills": [
+    "BC-SKL-09032",
+    "BC-SKL-09030",
+    "BC-SKL-09031"
+   ],
+   "sources": [
+    "sg-25:10",
+    "frq-25:4"
+   ],
+   "typical_wording": [
+    "find the rate at which the distance of the particle from the origin changes with respect to time at the stated angle, and show the setup"
+   ],
+   "units": [
+    "BC-UNIT-09"
+   ],
+   "variants": [
+    "BC-QV-09010-01",
+    "BC-QV-09010-02"
+   ],
+   "wrong_approaches": [
+    "omitting the factor giving the rate of the angle"
+   ]
+  },
+  {
+   "asked_to_produce": [
+    "an equation for the critical angle",
+    "a global justification",
+    "the angle"
+   ],
+   "calculator_status": "calculator",
+   "common_distractors": [
+    "the angle at which r is largest",
+    "an endpoint of the interval",
+    "a local argument offered as the justification"
+   ],
+   "common_givens": [
+    "a polar equation",
+    "the derivative of the relevant coordinate",
+    "an angle interval"
+   ],
+   "description": "The response maximises a Cartesian coordinate along a polar curve by setting its derivative with respect to theta equal to zero and justifying globally.",
+   "difficulty_variables": [
+    "whether the derivative of the coordinate is supplied",
+    "whether the justification is a candidates table or a sign change with uniqueness",
+    "the number of critical angles in the interval"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "express the coordinate in theta",
+    "set its derivative equal to zero and solve",
+    "compare the coordinate at the candidate and at both endpoints",
+    "report the angle"
+   ],
+   "id": "BC-QA-09011",
+   "invariant_structure": "One coordinate expressed in theta, one critical angle from setting its derivative equal to zero, and a comparison of the coordinate at that angle with its values at the endpoints.",
+   "misconceptions": [
+    "BC-MIS-09016",
+    "BC-MIS-09013"
+   ],
+   "multipart_structure": "One part of the calculator active BC free response question.",
+   "name": "Point on a polar curve farthest from a coordinate axis",
+   "official_examples": [],
+   "official_examples_notes": "2025 Q2(C)",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-08001"
+   ],
+   "primary_unit": "BC-UNIT-09",
+   "representations": [
+    "BC-REP-13",
+    "BC-REP-09",
+    "BC-REP-02"
+   ],
+   "safe_variables": [
+    "the polar curve",
+    "which axis the distance is measured from",
+    "the angle interval"
+   ],
+   "scope": "BC_only",
+   "scoring_pattern": "Three points: considering the derivative of the coordinate equal to zero, a global justification, and the answer with supporting work; a local argument does not earn the justification point but leaves the answer point available, and presenting the solution angle alone earns neither of the first two (sg-25:8, sg-25:9).",
+   "skills": [
+    "BC-SKL-09034",
+    "BC-SKL-09029"
+   ],
+   "sources": [
+    "sg-25:8",
+    "sg-25:9",
+    "frq-25:4"
+   ],
+   "typical_wording": [
+    "find the value of the angle that corresponds to the point on the curve farthest from the named axis, and justify the answer"
+   ],
+   "units": [
+    "BC-UNIT-09"
+   ],
+   "variants": [
+    "BC-QV-09011-01",
+    "BC-QV-09011-02",
+    "BC-QV-09011-03"
+   ],
+   "wrong_approaches": [
+    "presenting a first or second derivative test as the whole justification"
+   ]
+  },
+  {
+   "asked_to_produce": [
+    "a polar area integral",
+    "a numerical area"
+   ],
+   "calculator_status": "either",
+   "common_distractors": [
+    "the integral of r without the square",
+    "the integral without the factor of one half",
+    "limits covering a full turn when one loop was wanted"
+   ],
+   "common_givens": [
+    "a polar equation",
+    "a figure or an angle interval"
+   ],
+   "description": "The response writes one half the integral of the square of r over the angles that sweep the region and evaluates it.",
+   "difficulty_variables": [
+    "whether the limits are given or must be found from zeros of r",
+    "whether the region is one loop of several",
+    "whether technology evaluates the integral"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "identify the bounding angles",
+    "write one half the integral of the square of r",
+    "evaluate",
+    "report the area"
+   ],
+   "id": "BC-QA-09012",
+   "invariant_structure": "One polar curve, one angle interval that sweeps the region exactly once, one integrand equal to one half the square of r.",
+   "misconceptions": [
+    "BC-MIS-09017",
+    "BC-MIS-09007"
+   ],
+   "multipart_structure": "One part of the calculator active BC free response question.",
+   "name": "Area of a region bounded by a single polar curve",
+   "official_examples": [],
+   "official_examples_notes": "2025 Q2(B)",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-09004",
+    "BC-PRQ-08006"
+   ],
+   "primary_unit": "BC-UNIT-09",
+   "representations": [
+    "BC-REP-13",
+    "BC-REP-02",
+    "BC-REP-09"
+   ],
+   "safe_variables": [
+    "the polar curve",
+    "the region described",
+    "the letters used"
+   ],
+   "scope": "BC_only",
+   "scoring_pattern": "The first point is earned by a definite integral containing the square of r, the second by the full correct integrand, and the limits together with the factor of one half are assessed in the answer point (sg-25:7).",
+   "skills": [
+    "BC-SKL-09035",
+    "BC-SKL-09036",
+    "BC-SKL-09037",
+    "BC-SKL-09038"
+   ],
+   "sources": [
+    "sg-25:7",
+    "sg-25:8"
+   ],
+   "typical_wording": [
+    "find the area of the region bounded by the polar curve on the stated interval and show the setup for the calculations"
+   ],
+   "units": [
+    "BC-UNIT-09"
+   ],
+   "variants": [
+    "BC-QV-09012-01",
+    "BC-QV-09012-02",
+    "BC-QV-09012-03"
+   ],
+   "wrong_approaches": [
+    "integrating over an interval that traces the loop twice"
+   ]
+  },
+  {
+   "asked_to_produce": [
+    "intersection angles",
+    "an area integral",
+    "a numerical area"
+   ],
+   "calculator_status": "calculator",
+   "common_distractors": [
+    "the square of the difference of the radii",
+    "limits spanning the whole interval of the figure",
+    "the difference of two separately computed areas taken with the wrong sign"
+   ],
+   "common_givens": [
+    "two polar equations",
+    "a figure"
+   ],
+   "description": "Two polar curves bound a region and the response integrates one half the difference of the squares of their radii between the intersection angles.",
+   "difficulty_variables": [
+    "whether one curve is a circle of constant radius",
+    "whether the intersection angles are exact or decimal",
+    "whether the outer curve changes inside the interval"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "set the two radii equal and solve for the bounding angles",
+    "decide which curve is outer",
+    "write one half the integral of the difference of the squares",
+    "evaluate and report"
+   ],
+   "id": "BC-QA-09013",
+   "invariant_structure": "Two radius functions, two intersection angles as limits, and an integrand equal to one half the square of the outer radius minus the square of the inner radius.",
+   "misconceptions": [
+    "BC-MIS-09018",
+    "BC-MIS-09019"
+   ],
+   "multipart_structure": "One part of the calculator active BC free response question.",
+   "name": "Area inside one polar curve and outside another",
+   "official_examples": [],
+   "official_examples_notes": "2025 Q2(B)",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-09002",
+    "BC-PRQ-08006"
+   ],
+   "primary_unit": "BC-UNIT-09",
+   "representations": [
+    "BC-REP-13",
+    "BC-REP-02",
+    "BC-REP-09"
+   ],
+   "safe_variables": [
+    "the two curves",
+    "which is inside and which is outside",
+    "the letters used"
+   ],
+   "scope": "BC_only",
+   "scoring_pattern": "Three points: a definite integral containing the square of the outer radius, the full correct integrand, and the answer, which carries the limits and the factor of one half; unclear communication between the correct integral and the correct value was treated as scratch work, and a symmetry presentation earned all three points (sg-25:7, sg-25:8).",
+   "skills": [
+    "BC-SKL-09039",
+    "BC-SKL-09040",
+    "BC-SKL-09041",
+    "BC-SKL-09042",
+    "BC-SKL-09043"
+   ],
+   "sources": [
+    "sg-25:7",
+    "sg-25:8",
+    "frq-25:4"
+   ],
+   "typical_wording": [
+    "find the area of the region that lies inside one curve and outside the other, and show the setup for the calculations"
+   ],
+   "units": [
+    "BC-UNIT-09"
+   ],
+   "variants": [
+    "BC-QV-09013-01",
+    "BC-QV-09013-02",
+    "BC-QV-09013-03"
+   ],
+   "wrong_approaches": [
+    "squaring the difference of the two radii",
+    "using the full angle interval instead of the intersection angles"
+   ]
+  }
+ ],
+ "registry": "archetypes",
+ "variants": [
+  {
+   "archetype": "BC-QA-09001",
+   "description": "The component itself is never supplied, so the slope uses the given rate directly.",
+   "difficulty_effect": "neutral",
+   "dimension": "representation",
+   "evidence_tag": "verified",
+   "id": "BC-QV-09001-01",
+   "name": "One component given only by its derivative",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "frq-23:4"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09001",
+   "description": "The point on the curve must also be produced before the line can be written.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-09001-02",
+   "name": "Slope followed by the tangent line",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "ced:171"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09001",
+   "description": "An earlier declared expression is reused, and the guideline allows it even when it was wrong.",
+   "difficulty_effect": "easier",
+   "dimension": "notation",
+   "evidence_tag": "verified",
+   "id": "BC-QV-09001-03",
+   "name": "Component derivative imported from an earlier part",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-23:7"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09002",
+   "description": "The assembled expression is evaluated at one input.",
+   "difficulty_effect": "neutral",
+   "dimension": "reasoning direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-09002-01",
+   "name": "Value requested at a parameter value",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "ced:172"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09002",
+   "description": "Only the sign of the assembled expression is needed.",
+   "difficulty_effect": "easier",
+   "dimension": "reasoning direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-09002-02",
+   "name": "Concavity requested from the sign",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "ced:172"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09003",
+   "description": "The same integral is requested as a total distance with units.",
+   "difficulty_effect": "neutral",
+   "dimension": "context",
+   "evidence_tag": "verified",
+   "id": "BC-QV-09003-01",
+   "name": "Distance travelled by a particle",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-24:6"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09003",
+   "description": "The speed expression written earlier is reused as the integrand.",
+   "difficulty_effect": "easier",
+   "dimension": "reasoning direction",
+   "evidence_tag": "verified",
+   "id": "BC-QV-09003-02",
+   "name": "Integrand imported from a speed part",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-23:8"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09003",
+   "description": "The response must restrict the interval before integrating.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-09003-03",
+   "name": "Interval that traces the curve more than once",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "ced:173"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09004",
+   "description": "That component is differentiated once while the other is differentiated twice.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "verified",
+   "id": "BC-QV-09004-01",
+   "name": "One component supplied only as a derivative",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "frq-23:4"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09004",
+   "description": "The guideline accepts labelled components in place of vector notation.",
+   "difficulty_effect": "easier",
+   "dimension": "notation",
+   "evidence_tag": "verified",
+   "id": "BC-QV-09004-02",
+   "name": "Components listed separately with labels",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-23:6"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09005",
+   "description": "The accumulation runs backwards, so the integral is subtracted or its limits reversed.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning direction",
+   "evidence_tag": "verified",
+   "id": "BC-QV-09005-01",
+   "name": "Requested time earlier than the known time",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-24:7"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09005",
+   "description": "One part asks for both the slope of the path and a coordinate.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning direction",
+   "evidence_tag": "verified",
+   "id": "BC-QV-09005-02",
+   "name": "Coordinate requested alongside a slope",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-23:7"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09005",
+   "description": "An exact value is available without technology.",
+   "difficulty_effect": "easier",
+   "dimension": "calculator",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-09005-03",
+   "name": "Integrand antidifferentiable in closed form",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "ced:175"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09006",
+   "description": "The magnitude is computed directly.",
+   "difficulty_effect": "easier",
+   "dimension": "reasoning direction",
+   "evidence_tag": "verified",
+   "id": "BC-QV-09006-01",
+   "name": "Speed evaluated at a stated time",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-24:5"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09006",
+   "description": "An equation must be solved and the earliest solution selected.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning direction",
+   "evidence_tag": "verified",
+   "id": "BC-QV-09006-02",
+   "name": "First time at which a speed is attained",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-23:6"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09007",
+   "description": "The interval begins where the position is known.",
+   "difficulty_effect": "neutral",
+   "dimension": "context",
+   "evidence_tag": "verified",
+   "id": "BC-QV-09007-01",
+   "name": "Distance over an interval starting at the initial condition",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-24:6"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09007",
+   "description": "The reported value must carry the units of position.",
+   "difficulty_effect": "neutral",
+   "dimension": "notation",
+   "evidence_tag": "verified",
+   "id": "BC-QV-09007-02",
+   "name": "Distance with units demanded",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-24:6"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09008",
+   "description": "The sign of the coordinate is given, so only the rate has to be analysed.",
+   "difficulty_effect": "easier",
+   "dimension": "representation",
+   "evidence_tag": "verified",
+   "id": "BC-QV-09008-01",
+   "name": "Quadrant supplied in the stem",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "frq-24:4"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09008",
+   "description": "The zero of the velocity component is found numerically and reported to three decimals.",
+   "difficulty_effect": "neutral",
+   "dimension": "calculator",
+   "evidence_tag": "verified",
+   "id": "BC-QV-09008-02",
+   "name": "Decimal endpoint for the subinterval",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-24:8"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09009",
+   "description": "A trigonometric expression evaluated at the angle earns the point without a decimal.",
+   "difficulty_effect": "neutral",
+   "dimension": "notation",
+   "evidence_tag": "verified",
+   "id": "BC-QV-09009-01",
+   "name": "Exact derivative presented",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-25:7"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09009",
+   "description": "The derivative is written without the evaluation bar and still earns the point.",
+   "difficulty_effect": "easier",
+   "dimension": "notation",
+   "evidence_tag": "verified",
+   "id": "BC-QV-09009-02",
+   "name": "Loose derivative notation",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-25:7"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09010",
+   "description": "The value found earlier is multiplied by the given rate.",
+   "difficulty_effect": "easier",
+   "dimension": "reasoning direction",
+   "evidence_tag": "verified",
+   "id": "BC-QV-09010-01",
+   "name": "Derivative imported from the opening part",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-25:10"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09010",
+   "description": "The chain rule is written before any number appears.",
+   "difficulty_effect": "neutral",
+   "dimension": "notation",
+   "evidence_tag": "verified",
+   "id": "BC-QV-09010-02",
+   "name": "Product presented symbolically",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-25:10"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09011",
+   "description": "No product rule differentiation is required before solving.",
+   "difficulty_effect": "easier",
+   "dimension": "representation",
+   "evidence_tag": "verified",
+   "id": "BC-QV-09011-01",
+   "name": "Derivative of the coordinate supplied in the stem",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "frq-25:4"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09011",
+   "description": "The coordinate is evaluated at the candidate and at both endpoints.",
+   "difficulty_effect": "neutral",
+   "dimension": "reasoning direction",
+   "evidence_tag": "verified",
+   "id": "BC-QV-09011-02",
+   "name": "Justification by candidates table",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-25:9"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09011",
+   "description": "The sign change is paired with a statement that the critical angle is the only one.",
+   "difficulty_effect": "neutral",
+   "dimension": "reasoning direction",
+   "evidence_tag": "verified",
+   "id": "BC-QV-09011-03",
+   "name": "Justification by a sign change with uniqueness",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-25:9"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09012",
+   "description": "The bounding angles are stated or visible rather than solved for.",
+   "difficulty_effect": "easier",
+   "dimension": "representation",
+   "evidence_tag": "verified",
+   "id": "BC-QV-09012-01",
+   "name": "Limits read from a figure",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "frq-25:4"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09012",
+   "description": "Consecutive zeros of r must be found to bound a single loop.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-09012-02",
+   "name": "One loop of a curve with several",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "ced:178"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09012",
+   "description": "Twice an integral over half the region earns the same points.",
+   "difficulty_effect": "neutral",
+   "dimension": "notation",
+   "evidence_tag": "verified",
+   "id": "BC-QV-09012-03",
+   "name": "Area computed by symmetry",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-25:8"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09013",
+   "description": "One of the two squared radii is a constant.",
+   "difficulty_effect": "easier",
+   "dimension": "representation",
+   "evidence_tag": "verified",
+   "id": "BC-QV-09013-01",
+   "name": "Inner curve a circle of constant radius",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "frq-25:4"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09013",
+   "description": "The bounding angles are exact multiples of pi found by solving a trigonometric equation.",
+   "difficulty_effect": "neutral",
+   "dimension": "notation",
+   "evidence_tag": "verified",
+   "id": "BC-QV-09013-02",
+   "name": "Intersection angles exact",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-25:7"
+   ]
+  },
+  {
+   "archetype": "BC-QA-09013",
+   "description": "The outer curve changes inside the interval, so the area is additive over subintervals.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-09013-03",
+   "name": "Region computed as a sum of integrals",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "ced:179"
+   ]
+  }
+ ]
+}

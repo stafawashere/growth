@@ -1,0 +1,841 @@
+{
+ "misconceptions": [
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-08002"
+   ],
+   "description": "The learner treats any request for an average as a single procedure and does not separate averaging the function values from averaging its rate of change.",
+   "discriminating_probe": "Ask which of the two answers carries the units of the function and which carries the units of a rate.",
+   "downstream_dependencies": [],
+   "evidence_tag": "verified",
+   "exposing_archetypes": [
+    "BC-QA-08001",
+    "BC-QA-08002"
+   ],
+   "id": "BC-MIS-08001",
+   "literature": [],
+   "name": "Average value and average rate of change are the same quantity",
+   "observable_errors": [
+    "BC-ERR-08006"
+   ],
+   "official_evidence": [
+    "sg-25:4",
+    "crabbc-25:3"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-08002"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-08004",
+    "BC-SKL-08005"
+   ],
+   "sources": [
+    "sg-25:4",
+    "crabbc-25:3"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-08001"
+   ],
+   "description": "The learner sees the integral as the averaging operation itself, so the division by the length of the interval looks like an optional simplification.",
+   "discriminating_probe": "Ask for the average value of the constant function two over an interval of length five.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-08001"
+   ],
+   "id": "BC-MIS-08002",
+   "literature": [],
+   "name": "The integral of a function is its average",
+   "observable_errors": [
+    "BC-ERR-08001",
+    "BC-ERR-08002",
+    "BC-ERR-08003"
+   ],
+   "official_evidence": [
+    "sg-25:3"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-08001"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-08001",
+    "BC-SKL-08002"
+   ],
+   "sources": [
+    "ced:152",
+    "sg-25:3"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-08001"
+   ],
+   "description": "The learner treats the integral expression as scratch work that supports the calculator rather than as the object being scored.",
+   "discriminating_probe": "Ask the student to write, without the calculator, the expression whose value the calculator reported.",
+   "downstream_dependencies": [],
+   "evidence_tag": "verified",
+   "exposing_archetypes": [
+    "BC-QA-08001",
+    "BC-QA-08014"
+   ],
+   "id": "BC-MIS-08003",
+   "literature": [],
+   "name": "A calculator answer stands on its own",
+   "observable_errors": [
+    "BC-ERR-08004",
+    "BC-ERR-08005",
+    "BC-ERR-08045"
+   ],
+   "official_evidence": [
+    "sg-25:3",
+    "crabbc-25:30"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-08009"
+   ],
+   "scope": "shared",
+   "severity": "medium",
+   "skills": [
+    "BC-SKL-08003",
+    "BC-SKL-08059"
+   ],
+   "sources": [
+    "sg-25:3",
+    "crabbc-25:30"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-08003",
+    "BC-CON-08004"
+   ],
+   "description": "The learner treats the integral of velocity as the length of the trip, so the sign of the velocity plays no role.",
+   "discriminating_probe": "Give a velocity that is positive on the first half of an interval and the negative of that on the second half, and ask for both quantities.",
+   "downstream_dependencies": [],
+   "evidence_tag": "verified",
+   "exposing_archetypes": [
+    "BC-QA-08003"
+   ],
+   "id": "BC-MIS-08004",
+   "literature": [],
+   "name": "Distance travelled and net change in position are the same",
+   "observable_errors": [
+    "BC-ERR-08008",
+    "BC-ERR-08010"
+   ],
+   "official_evidence": [
+    "cr-23:8"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-08005"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-08011",
+    "BC-SKL-08007",
+    "BC-SKL-08008"
+   ],
+   "sources": [
+    "ced:153",
+    "cr-23:8"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-08004"
+   ],
+   "description": "The learner does not attach the absolute value to speed, so a negative speed is acceptable and the integrand for distance keeps its sign.",
+   "discriminating_probe": "Ask for the speed of a particle whose velocity is a stated negative number.",
+   "downstream_dependencies": [],
+   "evidence_tag": "single-source",
+   "exposing_archetypes": [
+    "BC-QA-08003"
+   ],
+   "id": "BC-MIS-08005",
+   "literature": [],
+   "name": "Speed is another name for velocity",
+   "observable_errors": [
+    "BC-ERR-08009"
+   ],
+   "official_evidence": [
+    "cr-24:7"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-08004"
+   ],
+   "scope": "shared",
+   "severity": "medium",
+   "skills": [
+    "BC-SKL-08007",
+    "BC-SKL-08011"
+   ],
+   "sources": [
+    "cr-24:7"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-08005",
+    "BC-CON-08006"
+   ],
+   "description": "The learner reads an accumulation integral as the quantity itself rather than as the change in it, so the initial value has no role.",
+   "discriminating_probe": "Give one rate and two different starting amounts and ask for the value at the later time in each case.",
+   "downstream_dependencies": [],
+   "evidence_tag": "verified",
+   "exposing_archetypes": [
+    "BC-QA-08004",
+    "BC-QA-08003"
+   ],
+   "id": "BC-MIS-08006",
+   "literature": [],
+   "name": "The integral of a rate is the amount of the quantity",
+   "observable_errors": [
+    "BC-ERR-08011",
+    "BC-ERR-08012"
+   ],
+   "official_evidence": [
+    "sg-24:4",
+    "sg-24:7"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-08009"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-08012",
+    "BC-SKL-08009",
+    "BC-SKL-08010"
+   ],
+   "sources": [
+    "sg-24:4",
+    "sg-24:7"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-08007"
+   ],
+   "description": "The learner attaches accumulation to every rate in the problem without attending to the direction in which each one moves the quantity.",
+   "discriminating_probe": "Ask what the stored amount does at a time when the two rates are equal.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-08005"
+   ],
+   "id": "BC-MIS-08007",
+   "literature": [],
+   "name": "Two rates acting at once combine by addition",
+   "observable_errors": [
+    "BC-ERR-08013",
+    "BC-ERR-08014"
+   ],
+   "official_evidence": [],
+   "rival_misconceptions": [
+    "BC-MIS-08006"
+   ],
+   "scope": "shared",
+   "severity": "medium",
+   "skills": [
+    "BC-SKL-08013"
+   ],
+   "sources": [
+    "ced:154"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-08008"
+   ],
+   "description": "The learner treats the first or second derivative test as a complete justification, so the endpoints of the interval are never considered.",
+   "discriminating_probe": "Give a function whose only interior critical point is a relative maximum but whose largest value on the interval is at an endpoint.",
+   "downstream_dependencies": [],
+   "evidence_tag": "verified",
+   "exposing_archetypes": [
+    "BC-QA-08006"
+   ],
+   "id": "BC-MIS-08008",
+   "literature": [],
+   "name": "A local extremum argument settles an absolute extremum",
+   "observable_errors": [
+    "BC-ERR-08015",
+    "BC-ERR-08016"
+   ],
+   "official_evidence": [
+    "sg-25:5",
+    "crabbc-25:4"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-08006"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-08014"
+   ],
+   "sources": [
+    "sg-25:5",
+    "crabbc-25:4"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-08009"
+   ],
+   "description": "The learner treats the sentence as a label for the integral rather than as a statement that must fix the quantity, the interval, and the units.",
+   "discriminating_probe": "Ask what would change in the sentence if the limits of the integral were different.",
+   "downstream_dependencies": [],
+   "evidence_tag": "verified",
+   "exposing_archetypes": [
+    "BC-QA-08007"
+   ],
+   "id": "BC-MIS-08009",
+   "literature": [],
+   "name": "An interpretation is complete once the quantity is named",
+   "observable_errors": [
+    "BC-ERR-08017",
+    "BC-ERR-08007",
+    "BC-ERR-08018"
+   ],
+   "official_evidence": [
+    "sg-23:2",
+    "sg-24:3"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-08006"
+   ],
+   "scope": "shared",
+   "severity": "medium",
+   "skills": [
+    "BC-SKL-08015",
+    "BC-SKL-08005"
+   ],
+   "sources": [
+    "sg-23:2",
+    "sg-24:3"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-08010"
+   ],
+   "description": "The learner treats area as always measured from the horizontal axis, so the second boundary curve is not subtracted.",
+   "discriminating_probe": "Ask for the area between two horizontal lines and compare it with the integral of the upper line alone.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-08008"
+   ],
+   "id": "BC-MIS-08010",
+   "literature": [],
+   "name": "The area between curves is the integral of the curve that bounds it",
+   "observable_errors": [
+    "BC-ERR-08020"
+   ],
+   "official_evidence": [],
+   "rival_misconceptions": [
+    "BC-MIS-08011"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-08019",
+    "BC-SKL-08022"
+   ],
+   "sources": [
+    "ced:155"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-08010"
+   ],
+   "description": "The learner knows the area is positive and assumes any sign problem can be repaired at the end by taking the absolute value of the result.",
+   "discriminating_probe": "Ask the student to write the statement that links the integral to the area and then to check it numerically.",
+   "downstream_dependencies": [],
+   "evidence_tag": "verified",
+   "exposing_archetypes": [
+    "BC-QA-08008",
+    "BC-QA-08010"
+   ],
+   "id": "BC-MIS-08011",
+   "literature": [],
+   "name": "The order of subtraction in an area integrand does not matter",
+   "observable_errors": [
+    "BC-ERR-08020",
+    "BC-ERR-08021"
+   ],
+   "official_evidence": [
+    "sg-23:17"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-08010"
+   ],
+   "scope": "shared",
+   "severity": "medium",
+   "skills": [
+    "BC-SKL-08018",
+    "BC-SKL-08028",
+    "BC-SKL-08024"
+   ],
+   "sources": [
+    "sg-23:17"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-08011"
+   ],
+   "description": "The learner chooses limits from the axes of the picture or from the stated domain instead of from where the region actually begins and ends.",
+   "discriminating_probe": "Ask which inputs bound the shaded region and why those and not the ends of the axes.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-08008"
+   ],
+   "id": "BC-MIS-08012",
+   "literature": [],
+   "name": "Limits of integration are a viewing window rather than a boundary",
+   "observable_errors": [
+    "BC-ERR-08019",
+    "BC-ERR-08022"
+   ],
+   "official_evidence": [],
+   "rival_misconceptions": [
+    "BC-MIS-08014"
+   ],
+   "scope": "shared",
+   "severity": "medium",
+   "skills": [
+    "BC-SKL-08020",
+    "BC-SKL-08021"
+   ],
+   "sources": [
+    "ced:155"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-08012"
+   ],
+   "description": "The learner treats dx and dy as labels for the direction of slicing rather than as the variable the integrand must be written in.",
+   "discriminating_probe": "Ask the student to name every variable that appears in the integrand and compare it with the differential.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-08009",
+    "BC-QA-08012"
+   ],
+   "id": "BC-MIS-08013",
+   "literature": [],
+   "name": "The differential can be changed without changing the integrand",
+   "observable_errors": [
+    "BC-ERR-08023",
+    "BC-ERR-08024"
+   ],
+   "official_evidence": [],
+   "rival_misconceptions": [
+    "BC-MIS-08012"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-08023",
+    "BC-SKL-08025",
+    "BC-SKL-08034"
+   ],
+   "sources": [
+    "ced:156"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-08013"
+   ],
+   "description": "The learner treats the area formula as a template applied once, so a crossing inside the interval does not signal that the region has pieces.",
+   "discriminating_probe": "Ask for the sign of the integrand on each side of the interior crossing.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-08010"
+   ],
+   "id": "BC-MIS-08014",
+   "literature": [],
+   "name": "One integral covers any region between two curves",
+   "observable_errors": [
+    "BC-ERR-08026",
+    "BC-ERR-08025",
+    "BC-ERR-08027"
+   ],
+   "official_evidence": [],
+   "rival_misconceptions": [
+    "BC-MIS-08011"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-08029",
+    "BC-SKL-08027",
+    "BC-SKL-08030"
+   ],
+   "sources": [
+    "ced:157"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-08014"
+   ],
+   "description": "The learner associates pi with volume rather than with circular cross sections, so polygonal slices inherit it.",
+   "discriminating_probe": "Ask which shape the area formula inside the integral describes.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-08011"
+   ],
+   "id": "BC-MIS-08015",
+   "literature": [],
+   "name": "Every volume integral carries a factor of pi",
+   "observable_errors": [
+    "BC-ERR-08029"
+   ],
+   "official_evidence": [],
+   "rival_misconceptions": [
+    "BC-MIS-08020"
+   ],
+   "scope": "shared",
+   "severity": "medium",
+   "skills": [
+    "BC-SKL-08032"
+   ],
+   "sources": [
+    "ced:158"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-08015"
+   ],
+   "description": "The learner reads the slice as reaching from the axis to the curve even when the region is bounded by two curves.",
+   "discriminating_probe": "Ask the student to draw the slice on the figure and label both of its endpoints.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-08011"
+   ],
+   "id": "BC-MIS-08016",
+   "literature": [],
+   "name": "The cross sectional dimension is a function value",
+   "observable_errors": [
+    "BC-ERR-08028",
+    "BC-ERR-08031"
+   ],
+   "official_evidence": [],
+   "rival_misconceptions": [
+    "BC-MIS-08015"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-08031",
+    "BC-SKL-08033"
+   ],
+   "sources": [
+    "ced:158"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-08019"
+   ],
+   "description": "The learner treats squaring as distributing over subtraction, so a washer integrand is written with one squared difference.",
+   "discriminating_probe": "Ask the student to evaluate both expressions with the radii five and three.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-08013"
+   ],
+   "id": "BC-MIS-08017",
+   "literature": [],
+   "name": "The difference of squares equals the square of the difference",
+   "observable_errors": [
+    "BC-ERR-08030"
+   ],
+   "official_evidence": [],
+   "rival_misconceptions": [
+    "BC-MIS-08023"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-08051",
+    "BC-SKL-08049"
+   ],
+   "sources": [
+    "ced:162"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-08016"
+   ],
+   "description": "The learner substitutes the distance between the boundary curves into every circular formula without asking whether it is a radius or a diameter.",
+   "discriminating_probe": "Ask for the radius of a semicircle whose diameter is a stated length.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-08011"
+   ],
+   "id": "BC-MIS-08018",
+   "literature": [],
+   "name": "The distance between the curves is always the radius",
+   "observable_errors": [
+    "BC-ERR-08034"
+   ],
+   "official_evidence": [],
+   "rival_misconceptions": [
+    "BC-MIS-08019"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-08038"
+   ],
+   "sources": [
+    "ced:159"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-08016"
+   ],
+   "description": "The learner remembers the squared dimension but not the fraction in front of it, so equilateral, triangular, and semicircular sections lose their constants.",
+   "discriminating_probe": "Ask for the area of one slice of the named shape with a numerical dimension.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-08011"
+   ],
+   "id": "BC-MIS-08019",
+   "literature": [],
+   "name": "Area formulas are recalled without their constant factors",
+   "observable_errors": [
+    "BC-ERR-08032",
+    "BC-ERR-08035",
+    "BC-ERR-08033"
+   ],
+   "official_evidence": [],
+   "rival_misconceptions": [
+    "BC-MIS-08018"
+   ],
+   "scope": "shared",
+   "severity": "medium",
+   "skills": [
+    "BC-SKL-08036",
+    "BC-SKL-08037",
+    "BC-SKL-08038"
+   ],
+   "sources": [
+    "ced:159"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-08017"
+   ],
+   "description": "The learner carries the circle formula only as far as the factor pi, so the radius is not squared inside the integral.",
+   "discriminating_probe": "Ask for the area of a single disc of a stated radius before the integral is written.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-08012"
+   ],
+   "id": "BC-MIS-08020",
+   "literature": [],
+   "name": "A volume of revolution integrates the radius rather than its square",
+   "observable_errors": [
+    "BC-ERR-08036",
+    "BC-ERR-08037"
+   ],
+   "official_evidence": [],
+   "rival_misconceptions": [
+    "BC-MIS-08015"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-08040",
+    "BC-SKL-08041",
+    "BC-SKL-08043"
+   ],
+   "sources": [
+    "ced:160"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-08018",
+    "BC-CON-08020"
+   ],
+   "description": "The learner treats the disc and washer formulas as fixed in the function rather than as built from a distance to the axis.",
+   "discriminating_probe": "Ask for the distance from a named point on the curve to the stated axis of revolution.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-08012",
+    "BC-QA-08013"
+   ],
+   "id": "BC-MIS-08021",
+   "literature": [],
+   "name": "The radius is the function value whatever the axis of revolution is",
+   "observable_errors": [
+    "BC-ERR-08038"
+   ],
+   "official_evidence": [],
+   "rival_misconceptions": [
+    "BC-MIS-08022"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-08044",
+    "BC-SKL-08045",
+    "BC-SKL-08052"
+   ],
+   "sources": [
+    "ced:161"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-08018"
+   ],
+   "description": "The learner treats the translation as applying to the whole integral rather than to the radius alone.",
+   "discriminating_probe": "Ask which inputs the region occupies before the axis of revolution is named.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-08012"
+   ],
+   "id": "BC-MIS-08022",
+   "literature": [],
+   "name": "Moving the axis of revolution moves the limits of integration",
+   "observable_errors": [
+    "BC-ERR-08039"
+   ],
+   "official_evidence": [],
+   "rival_misconceptions": [
+    "BC-MIS-08021"
+   ],
+   "scope": "shared",
+   "severity": "medium",
+   "skills": [
+    "BC-SKL-08047",
+    "BC-SKL-08046"
+   ],
+   "sources": [
+    "ced:161"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-08020"
+   ],
+   "description": "The learner assigns the radii by position in the plane rather than by distance from the axis, which fails when the axis lies above the region.",
+   "discriminating_probe": "Revolve the same region about a line above it and ask which curve is farther from that line.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-08013"
+   ],
+   "id": "BC-MIS-08023",
+   "literature": [],
+   "name": "The upper curve always gives the outer radius",
+   "observable_errors": [
+    "BC-ERR-08040"
+   ],
+   "official_evidence": [],
+   "rival_misconceptions": [
+    "BC-MIS-08017"
+   ],
+   "scope": "shared",
+   "severity": "medium",
+   "skills": [
+    "BC-SKL-08054",
+    "BC-SKL-08048"
+   ],
+   "sources": [
+    "ced:163"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-08021"
+   ],
+   "description": "The learner reads every definite integral as area under a graph, so a radical integrand is still described as an area and its own form is not examined.",
+   "discriminating_probe": "Ask what integrand would give the area under the same graph and compare it with the one displayed.",
+   "downstream_dependencies": [],
+   "evidence_tag": "verified",
+   "exposing_archetypes": [
+    "BC-QA-08014"
+   ],
+   "id": "BC-MIS-08024",
+   "literature": [],
+   "name": "An integral over an interval measures an area",
+   "observable_errors": [
+    "BC-ERR-08044",
+    "BC-ERR-08041",
+    "BC-ERR-08042",
+    "BC-ERR-08043"
+   ],
+   "official_evidence": [
+    "sg-24:16"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-08009"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-08058",
+    "BC-SKL-08056",
+    "BC-SKL-08057"
+   ],
+   "sources": [
+    "sg-24:16"
+   ]
+  }
+ ],
+ "registry": "misconceptions"
+}

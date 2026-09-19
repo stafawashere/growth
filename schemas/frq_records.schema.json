@@ -1,0 +1,245 @@
+{
+ "type": "object",
+ "required": [
+  "records"
+ ],
+ "properties": {
+  "records": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string"
+     },
+     "name": {
+      "type": "string",
+      "minLength": 3
+     },
+     "scope": {
+      "enum": [
+       "AB_only",
+       "shared",
+       "BC_only",
+       "n/a"
+      ]
+     },
+     "evidence_tag": {
+      "enum": [
+       "verified",
+       "single-source",
+       "inferred",
+       "uncertain"
+      ]
+     },
+     "sources": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "notes": {
+      "type": "string"
+     },
+     "created": {
+      "type": "string"
+     },
+     "updated": {
+      "type": "string"
+     },
+     "status": {
+      "enum": [
+       "active",
+       "retired"
+      ]
+     },
+     "superseded_by": {
+      "type": "string"
+     },
+     "year": {
+      "type": "integer"
+     },
+     "question": {
+      "type": "integer"
+     },
+     "part": {
+      "type": "string"
+     },
+     "form": {
+      "type": "string"
+     },
+     "administration_anomaly": {
+      "type": "string"
+     },
+     "calculator": {
+      "enum": [
+       "calculator",
+       "no_calculator"
+      ]
+     },
+     "doc_id": {
+      "type": "string"
+     },
+     "doc_page": {
+      "type": "integer"
+     },
+     "sg_doc_id": {
+      "type": "string"
+     },
+     "sg_page": {
+      "type": "integer"
+     },
+     "samples_doc_id": {
+      "type": "string"
+     },
+     "cr_doc_id": {
+      "type": "string"
+     },
+     "source_url": {
+      "type": "string"
+     },
+     "sg_url": {
+      "type": "string"
+     },
+     "samples_url": {
+      "type": "string"
+     },
+     "cr_url": {
+      "type": "string"
+     },
+     "description": {
+      "type": "string"
+     },
+     "anchor_quote": {
+      "type": "string"
+     },
+     "primary_unit": {
+      "type": "string"
+     },
+     "secondary_units": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "topics": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "learning_objectives": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "skills": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "practice_skills": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "archetype": {
+      "type": "string"
+     },
+     "variants": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "representations": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "concepts_combined": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "prerequisite_chain": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "points": {
+      "type": "integer"
+     },
+     "point_types": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "scoring_behaviors": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "commentary_errors": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "notation_requirements": {
+      "type": "string"
+     },
+     "justification_requirements": {
+      "type": "string"
+     },
+     "difficulty_factors": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "diagnostic_distinctions": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "shared_with_ab": {
+      "type": "boolean"
+     }
+    },
+    "required": [
+     "id",
+     "name",
+     "scope",
+     "evidence_tag",
+     "sources",
+     "year",
+     "question",
+     "part",
+     "calculator",
+     "doc_id",
+     "doc_page",
+     "description",
+     "primary_unit",
+     "topics",
+     "skills",
+     "archetype",
+     "representations",
+     "points",
+     "point_types"
+    ],
+    "additionalProperties": true
+   }
+  }
+ },
+ "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

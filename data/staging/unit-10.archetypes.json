@@ -1,0 +1,2214 @@
+{
+ "archetypes": [
+  {
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "concluding convergence because the terms approach zero",
+    "applying the alternating series test to a series of positive terms",
+    "using the geometric formula on a series without a constant ratio"
+   ],
+   "description": "A numerical series is presented and the response must name a test whose conditions it satisfies and apply it to a verdict.",
+   "difficulty_variables": [
+    "whether more than one test applies",
+    "whether the terms alternate",
+    "whether a factorial or an nth power is present",
+    "whether the nth term test screens the series first"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "read the general term",
+    "match its form to a test whose conditions it meets",
+    "verify the conditions",
+    "apply the test",
+    "state the verdict naming the series"
+   ],
+   "id": "BC-QA-10001",
+   "invariant_structure": "A series of numbers is given in sigma or expanded form; the form of the general term determines which of the six assessed tests applies; the response names the test, checks its conditions, and states the verdict.",
+   "misconceptions": [
+    "BC-MIS-10001",
+    "BC-MIS-10005",
+    "BC-MIS-10006"
+   ],
+   "multipart_structure": "Typically one part of the multipart free response question that closes Section II Part B, or a single multiple choice item.",
+   "name": "Selecting a convergence test for a given series",
+   "official_examples": [],
+   "official_examples_notes": "2024 Q6(a), 2025 Q6(A)",
+   "point_types": [],
+   "prerequisites": [],
+   "primary_unit": "BC-UNIT-10",
+   "representations": [
+    "BC-REP-11",
+    "BC-REP-01"
+   ],
+   "safe_variables": [
+    "the letters used for the index",
+    "the starting index",
+    "the constants inside the general term"
+   ],
+   "scope": "BC_only",
+   "scoring_pattern": "Where a test is named by the prompt, only that test earns credit (sg-21:23). Where the choice is free, the verdict earns nothing unless the conditions of the chosen test are established (sg-25:25).",
+   "skills": [
+    "BC-SKL-10001",
+    "BC-SKL-10005",
+    "BC-SKL-10006",
+    "BC-SKL-10011",
+    "BC-SKL-10013",
+    "BC-SKL-10018",
+    "BC-SKL-10021",
+    "BC-SKL-10033"
+   ],
+   "sources": [
+    "ced:190",
+    "sg-24:19",
+    "sg-25:25"
+   ],
+   "typical_wording": [
+    "determine whether the series converges or diverges, and justify your answer"
+   ],
+   "units": [
+    "BC-UNIT-10"
+   ],
+   "variants": [
+    "BC-QV-10001-01",
+    "BC-QV-10001-02",
+    "BC-QV-10001-03"
+   ]
+  },
+  {
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "adding the first few terms and reporting the total",
+    "using the index zero term as the first term",
+    "reporting the limit of the general term"
+   ],
+   "description": "A convergent series is given and the response must produce its value rather than a partial sum.",
+   "difficulty_variables": [
+    "geometric versus telescoping structure",
+    "whether the starting index is zero",
+    "whether the series arrives from a Taylor series evaluated at a point"
+   ],
+   "evidence_tag": "single-source",
+   "expected_solution_path": [
+    "identify the structure of the series",
+    "write the partial sum or the pair of first term and ratio",
+    "take the limit or apply the closed form",
+    "report the value"
+   ],
+   "id": "BC-QA-10002",
+   "invariant_structure": "A series with a recognisable closed form, geometric or telescoping, is given; the response identifies the structure and takes the limit of the partial sums or applies the closed form.",
+   "misconceptions": [
+    "BC-MIS-10001",
+    "BC-MIS-10002",
+    "BC-MIS-10005"
+   ],
+   "multipart_structure": "Typically one part of the multipart free response question that closes Section II Part B, or a single multiple choice item.",
+   "name": "Value of a convergent series requested",
+   "official_examples": [],
+   "official_examples_notes": "none in 2021 to 2025 as a standalone part",
+   "point_types": [],
+   "prerequisites": [],
+   "primary_unit": "BC-UNIT-10",
+   "representations": [
+    "BC-REP-11",
+    "BC-REP-01"
+   ],
+   "safe_variables": [
+    "the constants in the general term",
+    "the starting index",
+    "the variable name"
+   ],
+   "scope": "BC_only",
+   "scoring_pattern": "A partial sum presented as the value earns no value point, and the chief reader reports describe responses that add the first several terms instead of summing the series (cr-22:30).",
+   "skills": [
+    "BC-SKL-10002",
+    "BC-SKL-10003",
+    "BC-SKL-10004",
+    "BC-SKL-10008",
+    "BC-SKL-10066"
+   ],
+   "sources": [
+    "ced:186",
+    "ced:187",
+    "cr-22:30"
+   ],
+   "typical_wording": [
+    "find the value of the series, or state that it diverges"
+   ],
+   "units": [
+    "BC-UNIT-10"
+   ],
+   "variants": [
+    "BC-QV-10002-01",
+    "BC-QV-10002-02"
+   ]
+  },
+  {
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "taking the coefficient as the ratio",
+    "applying the formula without checking the size of the ratio",
+    "using the index zero term when the series starts elsewhere"
+   ],
+   "description": "A series, numerical or in a variable, is recognised as geometric and summed with the closed form, with the convergence condition recorded.",
+   "difficulty_variables": [
+    "numerical ratio versus a ratio containing the variable",
+    "whether the series starts at index zero",
+    "whether a given closed form must be verified rather than produced"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "divide consecutive terms to find the ratio",
+    "identify the first term as written",
+    "state the condition on the size of the ratio",
+    "form the quotient and simplify to the requested closed form"
+   ],
+   "id": "BC-QA-10003",
+   "invariant_structure": "Consecutive terms of the given series have a constant quotient; the response identifies the first term and the ratio and presents the quotient of the first term by one minus the ratio.",
+   "misconceptions": [
+    "BC-MIS-10002",
+    "BC-MIS-10003",
+    "BC-MIS-10004"
+   ],
+   "multipart_structure": "Typically one part of the multipart free response question that closes Section II Part B, or a single multiple choice item.",
+   "name": "Geometric series summed in closed form",
+   "official_examples": [],
+   "official_examples_notes": "2025 Q6(C)",
+   "point_types": [],
+   "prerequisites": [],
+   "primary_unit": "BC-UNIT-10",
+   "representations": [
+    "BC-REP-11",
+    "BC-REP-01"
+   ],
+   "safe_variables": [
+    "the centre of the powers",
+    "the constants in the first term",
+    "the direction of the algebra in the final simplification"
+   ],
+   "scope": "BC_only",
+   "scoring_pattern": "A single verification point is available where the closed form is supplied by the prompt, and presenting the unsimplified quotient of first term by one minus ratio is sufficient (sg-25:26).",
+   "skills": [
+    "BC-SKL-10006",
+    "BC-SKL-10007",
+    "BC-SKL-10008",
+    "BC-SKL-10009",
+    "BC-SKL-10010",
+    "BC-SKL-10063",
+    "BC-SKL-10072"
+   ],
+   "sources": [
+    "sg-25:26",
+    "ced:187"
+   ],
+   "typical_wording": [
+    "show that the sum of the series equals the given expression on the interval of convergence"
+   ],
+   "units": [
+    "BC-UNIT-10"
+   ],
+   "variants": [
+    "BC-QV-10003-01",
+    "BC-QV-10003-02",
+    "BC-QV-10003-03"
+   ]
+  },
+  {
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "stating the conclusion with no conditions",
+    "reversing the comparison inequality",
+    "concluding convergence from terms approaching zero"
+   ],
+   "description": "A numerical series is given together with, or in need of, a specific test, and the response applies it with its conditions.",
+   "difficulty_variables": [
+    "whether the test is named by the prompt",
+    "whether the comparison partner must be supplied by the response",
+    "whether the terms alternate"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "name the test",
+    "state its conditions and verify them for this series",
+    "carry out the computation the test requires",
+    "state the conclusion naming the series"
+   ],
+   "id": "BC-QA-10004",
+   "invariant_structure": "The series has nonnegative terms or an alternating factor; the response establishes the conditions of the named test and states the conclusion with the series identified.",
+   "misconceptions": [
+    "BC-MIS-10005",
+    "BC-MIS-10006",
+    "BC-MIS-10007",
+    "BC-MIS-10009",
+    "BC-MIS-10010",
+    "BC-MIS-10012",
+    "BC-MIS-10013",
+    "BC-MIS-10017"
+   ],
+   "multipart_structure": "Typically one part of the multipart free response question that closes Section II Part B, or a single multiple choice item.",
+   "name": "Convergence or divergence established with a named test",
+   "official_examples": [],
+   "official_examples_notes": "2024 Q6(a)",
+   "point_types": [],
+   "prerequisites": [],
+   "primary_unit": "BC-UNIT-10",
+   "representations": [
+    "BC-REP-11",
+    "BC-REP-04"
+   ],
+   "safe_variables": [
+    "the comparison partner chosen",
+    "the letters in the general term",
+    "the starting index"
+   ],
+   "scope": "BC_only",
+   "scoring_pattern": "Two points are typical, one for considering the right object and one for the answer with a reason (sg-24:19). A conclusion with no supporting condition earns the first point only.",
+   "skills": [
+    "BC-SKL-10011",
+    "BC-SKL-10012",
+    "BC-SKL-10013",
+    "BC-SKL-10018",
+    "BC-SKL-10019",
+    "BC-SKL-10020",
+    "BC-SKL-10022",
+    "BC-SKL-10023",
+    "BC-SKL-10024",
+    "BC-SKL-10027",
+    "BC-SKL-10028",
+    "BC-SKL-10029",
+    "BC-SKL-10030",
+    "BC-SKL-10033"
+   ],
+   "sources": [
+    "sg-24:19",
+    "sg-24:20",
+    "ced:191"
+   ],
+   "typical_wording": [
+    "determine whether the series converges or diverges, and give a reason for your answer"
+   ],
+   "units": [
+    "BC-UNIT-10"
+   ],
+   "variants": [
+    "BC-QV-10004-01",
+    "BC-QV-10004-02",
+    "BC-QV-10004-03"
+   ]
+  },
+  {
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "listing fewer than three conditions",
+    "starting the integral at an index the series does not use",
+    "substituting the infinity symbol into the antiderivative",
+    "reporting the integral's value as the sum"
+   ],
+   "description": "The response states the three conditions the integral test requires, sets up the matching improper integral, evaluates it with limit notation, and transfers the conclusion.",
+   "difficulty_variables": [
+    "whether the conditions are requested explicitly",
+    "whether the antiderivative needs substitution",
+    "whether the integral diverges"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "state that the function is positive, decreasing, and continuous on the interval",
+    "write the improper integral with the correct lower limit",
+    "evaluate with limit notation",
+    "conclude about the series"
+   ],
+   "id": "BC-QA-10005",
+   "invariant_structure": "The general term is the value at n of a function that is positive, decreasing, and continuous on the interval from the starting index onward; the series and the improper integral share a verdict.",
+   "misconceptions": [
+    "BC-MIS-10001",
+    "BC-MIS-10007",
+    "BC-MIS-10008"
+   ],
+   "multipart_structure": "Typically one part of the multipart free response question that closes Section II Part B, or a single multiple choice item.",
+   "name": "Integral test with its conditions stated",
+   "official_examples": [],
+   "official_examples_notes": "2021 Q6(a)",
+   "point_types": [],
+   "prerequisites": [],
+   "primary_unit": "BC-UNIT-10",
+   "representations": [
+    "BC-REP-11",
+    "BC-REP-01"
+   ],
+   "safe_variables": [
+    "the function chosen to match the terms",
+    "the letter used for the variable bound",
+    "the starting index"
+   ],
+   "scope": "BC_only",
+   "scoring_pattern": "Three points are typical, for the conditions, the improper integral, and the evaluation; all three conditions are required for the first, an incorrect lower limit costs the second while leaving the third reachable, and an evaluation written with the infinity symbol does not earn the third (sg-21:21, sg-21:22).",
+   "skills": [
+    "BC-SKL-10014",
+    "BC-SKL-10015",
+    "BC-SKL-10016",
+    "BC-SKL-10017"
+   ],
+   "sources": [
+    "sg-21:21",
+    "sg-21:22"
+   ],
+   "typical_wording": [
+    "state the conditions necessary to use the integral test, then use the test to show that the series converges"
+   ],
+   "units": [
+    "BC-UNIT-10"
+   ],
+   "variants": [
+    "BC-QV-10005-01",
+    "BC-QV-10005-02",
+    "BC-QV-10005-03"
+   ]
+  },
+  {
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "comparing the limit with one",
+    "omitting limit notation",
+    "omitting absolute values when absolute convergence is the claim",
+    "concluding about an unnamed series"
+   ],
+   "description": "A comparison series is named or chosen, the limit of the ratio of general terms is computed with limit notation, and the conclusion is transferred to a specified series.",
+   "difficulty_variables": [
+    "whether absolute values are needed for an absolute convergence claim",
+    "whether the comparison series is supplied",
+    "whether several series are present so the conclusion must name one"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "form the quotient of the general terms",
+    "write the limit with limit notation",
+    "evaluate and state that the limit is positive and finite",
+    "transfer the behaviour of the comparison series, naming the series concluded about"
+   ],
+   "id": "BC-QA-10006",
+   "invariant_structure": "Two series of positive terms are placed in a quotient whose limit is a positive finite number, and the known behaviour of the comparison series decides the other.",
+   "misconceptions": [
+    "BC-MIS-10001",
+    "BC-MIS-10011",
+    "BC-MIS-10014",
+    "BC-MIS-10015"
+   ],
+   "multipart_structure": "Typically one part of the multipart free response question that closes Section II Part B, or a single multiple choice item.",
+   "name": "Limit comparison used to classify a series",
+   "official_examples": [],
+   "official_examples_notes": "2021 Q6(b)",
+   "point_types": [],
+   "prerequisites": [],
+   "primary_unit": "BC-UNIT-10",
+   "representations": [
+    "BC-REP-11",
+    "BC-REP-01"
+   ],
+   "safe_variables": [
+    "which of the two quotients is formed",
+    "the letters in the general terms"
+   ],
+   "scope": "BC_only",
+   "scoring_pattern": "Two points are typical, one for the setup with limit notation and one for the explanation; the reciprocal quotient is accepted, the explanation requires the limit to be positive, and the conclusion must name the series in question (sg-21:23).",
+   "skills": [
+    "BC-SKL-10025",
+    "BC-SKL-10026",
+    "BC-SKL-10034",
+    "BC-SKL-10035"
+   ],
+   "sources": [
+    "sg-21:23"
+   ],
+   "typical_wording": [
+    "use the limit comparison test with the given series to show that the series converges absolutely"
+   ],
+   "units": [
+    "BC-UNIT-10"
+   ],
+   "variants": [
+    "BC-QV-10006-01",
+    "BC-QV-10006-02",
+    "BC-QV-10006-03"
+   ]
+  },
+  {
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "swapping the two labels",
+    "testing only one of the two series",
+    "treating conditional convergence as a weaker absolute convergence"
+   ],
+   "description": "A series with mixed signs is classified as absolutely convergent, conditionally convergent, or divergent, with both tests reported.",
+   "difficulty_variables": [
+    "whether the absolute value series needs a separate test",
+    "whether the series is the alternating harmonic series or a variant",
+    "whether the prompt names the target classification"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "test the series of absolute values",
+    "test the signed series if needed",
+    "combine the two findings into one of the three classifications",
+    "name the series in the conclusion"
+   ],
+   "id": "BC-QA-10007",
+   "invariant_structure": "Two questions are in play, the behaviour of the signed series and the behaviour of the absolute value series; the classification follows from the pair of answers.",
+   "misconceptions": [
+    "BC-MIS-10015",
+    "BC-MIS-10016"
+   ],
+   "multipart_structure": "Typically one part of the multipart free response question that closes Section II Part B, or a single multiple choice item.",
+   "name": "Absolute or conditional convergence classified",
+   "official_examples": [],
+   "official_examples_notes": "2021 Q6(b)",
+   "point_types": [],
+   "prerequisites": [],
+   "primary_unit": "BC-UNIT-10",
+   "representations": [
+    "BC-REP-11",
+    "BC-REP-04"
+   ],
+   "safe_variables": [
+    "the general term",
+    "the starting index",
+    "which test settles each of the two series"
+   ],
+   "scope": "BC_only",
+   "scoring_pattern": "The explanation point requires absolute value symbols to appear, explicitly or implicitly, and requires the conclusion to specify which series is meant (sg-21:23).",
+   "skills": [
+    "BC-SKL-10034",
+    "BC-SKL-10035",
+    "BC-SKL-10036",
+    "BC-SKL-10037",
+    "BC-SKL-10038"
+   ],
+   "sources": [
+    "ced:194",
+    "sg-21:23"
+   ],
+   "typical_wording": [
+    "determine whether the series converges absolutely, converges conditionally, or diverges"
+   ],
+   "units": [
+    "BC-UNIT-10"
+   ],
+   "variants": [
+    "BC-QV-10007-01",
+    "BC-QV-10007-02"
+   ]
+  },
+  {
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "using a term already inside the partial sum",
+    "using a term further along than the first omitted one",
+    "writing the error as equal to the bound",
+    "omitting the statement of the conditions"
+   ],
+   "description": "A partial sum approximates the value of an alternating series and the response bounds the error by the first omitted term and compares it with a stated number.",
+   "difficulty_variables": [
+    "whether the tolerance is supplied or an upper bound alone is requested",
+    "whether the series arrives from a Taylor series evaluated at a point",
+    "the index of the first omitted term"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "state that the series alternates and its terms decrease in absolute value to zero",
+    "identify the first omitted term",
+    "evaluate that term at the given input",
+    "present the inequality that the error is at most that value and that value is at most the tolerance"
+   ],
+   "id": "BC-QA-10008",
+   "invariant_structure": "The series alternates with terms decreasing in absolute value to zero; the error of the stated partial sum is at most the absolute value of the next term, which is evaluated and compared with a tolerance.",
+   "misconceptions": [
+    "BC-MIS-10012",
+    "BC-MIS-10013",
+    "BC-MIS-10017",
+    "BC-MIS-10018"
+   ],
+   "multipart_structure": "Typically one part of the multipart free response question that closes Section II Part B, or a single multiple choice item.",
+   "name": "Alternating series error bound compared with a tolerance",
+   "official_examples": [],
+   "official_examples_notes": "2022 Q6(b), 2024 Q6(b), 2021 Q6(d)",
+   "point_types": [],
+   "prerequisites": [],
+   "primary_unit": "BC-UNIT-10",
+   "representations": [
+    "BC-REP-11",
+    "BC-REP-01"
+   ],
+   "safe_variables": [
+    "the number of terms in the partial sum",
+    "the input at which the series is evaluated",
+    "the tolerance"
+   ],
+   "scope": "BC_only",
+   "scoring_pattern": "Two points are typical, one for using the correct omitted term and one for the justification; the justification requires the conditions and the inequality, and an equality statement does not earn it (sg-22:21, sg-24:21). A single point form asks only for an upper bound on the error (sg-21:25).",
+   "skills": [
+    "BC-SKL-10028",
+    "BC-SKL-10029",
+    "BC-SKL-10039",
+    "BC-SKL-10040",
+    "BC-SKL-10041",
+    "BC-SKL-10042",
+    "BC-SKL-10052",
+    "BC-SKL-10066"
+   ],
+   "sources": [
+    "sg-22:21",
+    "sg-24:21",
+    "sg-21:25"
+   ],
+   "typical_wording": [
+    "show that the partial sum differs from the value of the series by less than the given amount"
+   ],
+   "units": [
+    "BC-UNIT-10"
+   ],
+   "variants": [
+    "BC-QV-10008-01",
+    "BC-QV-10008-02",
+    "BC-QV-10008-03"
+   ]
+  },
+  {
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "using the derivative of the same order as the polynomial",
+    "omitting the factorial",
+    "writing the error as equal to the bound",
+    "stopping before the comparison with the tolerance"
+   ],
+   "description": "A bound on the next derivative is supplied on an interval and the response shows that a Taylor polynomial approximation lies within a stated tolerance.",
+   "difficulty_variables": [
+    "whether the derivative bound is supplied or must be found",
+    "the displacement from the centre",
+    "whether the comparison with the tolerance must be shown"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "identify the order of the derivative the bound needs",
+    "write the bound in the correct form",
+    "evaluate it",
+    "present the inequality against the tolerance"
+   ],
+   "id": "BC-QA-10009",
+   "invariant_structure": "A polynomial of stated degree approximates a function value near the centre; the bound is the supplied maximum of the next derivative times the power of the displacement divided by the factorial of the next order.",
+   "misconceptions": [
+    "BC-MIS-10017",
+    "BC-MIS-10018"
+   ],
+   "multipart_structure": "Typically one part of the multipart free response question that closes Section II Part B, or a single multiple choice item.",
+   "name": "Lagrange error bound with a supplied derivative bound",
+   "official_examples": [],
+   "official_examples_notes": "2023 Q6(b)",
+   "point_types": [],
+   "prerequisites": [],
+   "primary_unit": "BC-UNIT-10",
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-04"
+   ],
+   "safe_variables": [
+    "the degree of the polynomial",
+    "the centre",
+    "the supplied derivative bound",
+    "the tolerance"
+   ],
+   "scope": "BC_only",
+   "scoring_pattern": "Two points are typical, one for the form of the bound and one for showing the error is at most the tolerance; subsequent simplification errors cost the second point only, and an equality statement earns neither the second point (sg-23:20).",
+   "skills": [
+    "BC-SKL-10048",
+    "BC-SKL-10049",
+    "BC-SKL-10050",
+    "BC-SKL-10051",
+    "BC-SKL-10052"
+   ],
+   "sources": [
+    "sg-23:20"
+   ],
+   "typical_wording": [
+    "use the Lagrange error bound to show that the approximation is within the stated amount of the exact value"
+   ],
+   "units": [
+    "BC-UNIT-10"
+   ],
+   "variants": [
+    "BC-QV-10009-01",
+    "BC-QV-10009-02"
+   ]
+  },
+  {
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "omitting a product rule factor",
+    "placing derivative values directly as coefficients",
+    "including a term of higher degree than requested"
+   ],
+   "description": "Derivatives are defined by a relation, the response differentiates to the required order, evaluates at the centre, and assembles the polynomial.",
+   "difficulty_variables": [
+    "the order of differentiation required",
+    "whether a product rule is needed",
+    "whether some coefficients vanish"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "differentiate the given relation",
+    "evaluate each derivative at the centre in order",
+    "divide each value by the matching factorial",
+    "write the polynomial to the requested degree and no further"
+   ],
+   "id": "BC-QA-10010",
+   "invariant_structure": "Values of the function and its first derivatives at the centre are given, with later derivatives defined by an expression in the earlier ones; each new derivative requires a product or chain rule step.",
+   "misconceptions": [
+    "BC-MIS-10019",
+    "BC-MIS-10020"
+   ],
+   "multipart_structure": "Typically one part of the multipart free response question that closes Section II Part B, or a single multiple choice item.",
+   "name": "Taylor polynomial built from repeated differentiation of a relation",
+   "official_examples": [],
+   "official_examples_notes": "2023 Q6(a)",
+   "point_types": [],
+   "prerequisites": [],
+   "primary_unit": "BC-UNIT-10",
+   "representations": [
+    "BC-REP-01"
+   ],
+   "safe_variables": [
+    "the centre",
+    "the initial values",
+    "the order requested"
+   ],
+   "scope": "BC_only",
+   "scoring_pattern": "Four points are typical, for the form of the product rule, the derivative itself, two terms of the polynomial, and the remaining terms; a response that earns the form point but not the derivative point may still use its own value consistently, and a polynomial with a nonzero term of the wrong degree or a trailing ellipsis loses the final point (sg-23:19).",
+   "skills": [
+    "BC-SKL-10043",
+    "BC-SKL-10044",
+    "BC-SKL-10046"
+   ],
+   "sources": [
+    "sg-23:19"
+   ],
+   "typical_wording": [
+    "find the next derivative and write the Taylor polynomial of the stated degree about the centre, showing the work that leads to the answer"
+   ],
+   "units": [
+    "BC-UNIT-10"
+   ],
+   "variants": [
+    "BC-QV-10010-01",
+    "BC-QV-10010-02",
+    "BC-QV-10010-03"
+   ]
+  },
+  {
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "omitting the factorials",
+    "pairing a derivative with the wrong power",
+    "extending the polynomial beyond the requested degree"
+   ],
+   "description": "A table lists the function and several derivatives at a point and the response assembles the requested Taylor polynomial.",
+   "difficulty_variables": [
+    "the degree requested",
+    "whether the centre is zero",
+    "whether an approximation of a function value follows"
+   ],
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "read the derivative values of the needed orders",
+    "divide each by the matching factorial",
+    "attach the power of the displacement from the centre",
+    "present the polynomial of the requested degree"
+   ],
+   "id": "BC-QA-10011",
+   "invariant_structure": "The derivative values at the centre are supplied rather than computed; the work lies in matching each value to its factorial and power.",
+   "misconceptions": [
+    "BC-MIS-10019"
+   ],
+   "multipart_structure": "Typically one part of the multipart free response question that closes Section II Part B, or a single multiple choice item.",
+   "name": "Taylor polynomial built from a table of derivative values",
+   "official_examples": [],
+   "official_examples_notes": "none in 2021 to 2025",
+   "point_types": [],
+   "prerequisites": [],
+   "primary_unit": "BC-UNIT-10",
+   "representations": [
+    "BC-REP-03",
+    "BC-REP-01"
+   ],
+   "safe_variables": [
+    "the centre",
+    "the values in the table",
+    "the letters naming the function"
+   ],
+   "scope": "BC_only",
+   "scoring_pattern": "Scored as a polynomial construction, with the coefficients carrying the credit; no rubric for this exact task appears in the 2021 to 2025 free response material read for this unit, so the pattern is inferred from the closely related construction parts (sg-23:19).",
+   "skills": [
+    "BC-SKL-10044",
+    "BC-SKL-10045"
+   ],
+   "sources": [
+    "ced:196",
+    "sg-23:19"
+   ],
+   "typical_wording": [
+    "use the values in the table to write the Taylor polynomial of the stated degree for the function about the given centre"
+   ],
+   "units": [
+    "BC-UNIT-10"
+   ],
+   "variants": [
+    "BC-QV-10011-01",
+    "BC-QV-10011-02"
+   ]
+  },
+  {
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "misremembering a standard series",
+    "omitting a product rule factor",
+    "presenting a polynomial with terms of higher degree"
+   ],
+   "description": "A second function is defined from the first by a product, a derivative, or an antiderivative, and its Taylor polynomial is requested.",
+   "difficulty_variables": [
+    "whether a product rule is needed",
+    "whether an initial value fixes a constant",
+    "whether the known series route is shorter"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "differentiate or expand the defining relation",
+    "evaluate the needed derivatives at the centre, or multiply the known series",
+    "divide by the factorials",
+    "present the polynomial of the requested degree"
+   ],
+   "id": "BC-QA-10012",
+   "invariant_structure": "The polynomial for the related function can be reached either by differentiating the defining relation and evaluating at the centre, or by operating on known Maclaurin series and truncating.",
+   "misconceptions": [
+    "BC-MIS-10020",
+    "BC-MIS-10021"
+   ],
+   "multipart_structure": "Typically one part of the multipart free response question that closes Section II Part B, or a single multiple choice item.",
+   "name": "Taylor polynomial for a related function built from a known series",
+   "official_examples": [],
+   "official_examples_notes": "2023 Q6(c)",
+   "point_types": [],
+   "prerequisites": [],
+   "primary_unit": "BC-UNIT-10",
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-11"
+   ],
+   "safe_variables": [
+    "the defining relation",
+    "the centre",
+    "the degree requested"
+   ],
+   "scope": "BC_only",
+   "scoring_pattern": "Three points are typical, for the derivative relation, for the first two terms, and for the complete polynomial; a polynomial of the right shape earns the terms point without supporting work, while a coefficient with no support does not earn the final point, and an alternate solution through known Maclaurin series earns the same three points (sg-23:20, sg-23:21).",
+   "skills": [
+    "BC-SKL-10046",
+    "BC-SKL-10047",
+    "BC-SKL-10048",
+    "BC-SKL-10061",
+    "BC-SKL-10065"
+   ],
+   "sources": [
+    "sg-23:20",
+    "sg-23:21"
+   ],
+   "typical_wording": [
+    "write the Taylor polynomial of the stated degree for the second function about the given centre"
+   ],
+   "units": [
+    "BC-UNIT-10"
+   ],
+   "variants": [
+    "BC-QV-10012-01",
+    "BC-QV-10012-02",
+    "BC-QV-10012-03"
+   ]
+  },
+  {
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "stopping at the open interval",
+    "dropping the absolute value when solving",
+    "using one endpoint verdict at both ends",
+    "naming a test whose conditions the endpoint series fails"
+   ],
+   "description": "A power series is given and the response finds the interval of convergence, justifying the interior with the ratio test and each endpoint with a suitable test.",
+   "difficulty_variables": [
+    "whether the endpoints behave alike",
+    "whether the coefficients involve factorials",
+    "whether the interior is symmetric about a nonzero centre",
+    "the tests required at the two endpoints"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "form the ratio of consecutive terms",
+    "evaluate its limit",
+    "set the limit less than one and solve for the interior",
+    "substitute each endpoint and identify the resulting series",
+    "test each endpoint",
+    "state the interval with the matching brackets"
+   ],
+   "id": "BC-QA-10013",
+   "invariant_structure": "The ratio of consecutive terms produces a limit that is a multiple of the absolute value of the displacement from the centre; the inequality gives the interior, and the two endpoint series are examined separately.",
+   "misconceptions": [
+    "BC-MIS-10007",
+    "BC-MIS-10011",
+    "BC-MIS-10014",
+    "BC-MIS-10022",
+    "BC-MIS-10023",
+    "BC-MIS-10024"
+   ],
+   "multipart_structure": "Typically one part of the multipart free response question that closes Section II Part B, or a single multiple choice item.",
+   "name": "Interval of convergence by the ratio test with endpoint analysis",
+   "official_examples": [],
+   "official_examples_notes": "2025 Q6(A), 2022 Q6(a)",
+   "point_types": [],
+   "prerequisites": [],
+   "primary_unit": "BC-UNIT-10",
+   "representations": [
+    "BC-REP-11",
+    "BC-REP-01"
+   ],
+   "safe_variables": [
+    "the centre",
+    "the coefficients",
+    "the letters in the general term"
+   ],
+   "scope": "BC_only",
+   "scoring_pattern": "Five points are typical, for the ratio, the limit, the interior, considering both endpoints, and the analysis with the final interval; the ratio point is banked once earned, a reciprocal ratio blocks only the final point, an incorrect interior that earned its point still supports the endpoint point, and naming an appropriate test at each endpoint suffices for the analysis (sg-25:24, sg-25:25). A four point form appears where both endpoints take the same test (sg-22:20).",
+   "skills": [
+    "BC-SKL-10031",
+    "BC-SKL-10032",
+    "BC-SKL-10053",
+    "BC-SKL-10054",
+    "BC-SKL-10055",
+    "BC-SKL-10057",
+    "BC-SKL-10059"
+   ],
+   "sources": [
+    "sg-25:24",
+    "sg-25:25",
+    "sg-22:20",
+    "sg-22:21"
+   ],
+   "typical_wording": [
+    "using the ratio test, find the interval of convergence of the series and justify the answer"
+   ],
+   "units": [
+    "BC-UNIT-10"
+   ],
+   "variants": [
+    "BC-QV-10013-01",
+    "BC-QV-10013-02",
+    "BC-QV-10013-03",
+    "BC-QV-10013-04"
+   ]
+  },
+  {
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "presenting an interval instead of a radius",
+    "inverting the coefficient quotient",
+    "reporting the limit of the coefficients as the radius"
+   ],
+   "description": "A Maclaurin or Taylor series is supplied and only the radius of convergence is requested.",
+   "difficulty_variables": [
+    "whether the coefficients are exponential in the index",
+    "whether the radius is irrational",
+    "whether the series is centred away from zero"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "form the ratio of consecutive terms",
+    "evaluate its limit",
+    "set the limit less than one and solve for the displacement",
+    "state the radius explicitly"
+   ],
+   "id": "BC-QA-10014",
+   "invariant_structure": "The ratio test yields an inequality in the absolute value of the variable whose bound is the radius, which must be named as a value.",
+   "misconceptions": [
+    "BC-MIS-10011",
+    "BC-MIS-10014",
+    "BC-MIS-10022"
+   ],
+   "multipart_structure": "Typically one part of the multipart free response question that closes Section II Part B, or a single multiple choice item.",
+   "name": "Radius of convergence from a given series",
+   "official_examples": [],
+   "official_examples_notes": "2021 Q6(c)",
+   "point_types": [],
+   "prerequisites": [],
+   "primary_unit": "BC-UNIT-10",
+   "representations": [
+    "BC-REP-11",
+    "BC-REP-01"
+   ],
+   "safe_variables": [
+    "the coefficients",
+    "the centre",
+    "the letters in the general term"
+   ],
+   "scope": "BC_only",
+   "scoring_pattern": "Three points are typical, for the ratio, for the limit, and for the explicit radius; the limit point requires the ratio point first, and an interval presented without naming the radius does not earn the third point (sg-21:24).",
+   "skills": [
+    "BC-SKL-10031",
+    "BC-SKL-10032",
+    "BC-SKL-10053",
+    "BC-SKL-10054",
+    "BC-SKL-10056"
+   ],
+   "sources": [
+    "sg-21:24"
+   ],
+   "typical_wording": [
+    "determine the radius of convergence of the series"
+   ],
+   "units": [
+    "BC-UNIT-10"
+   ],
+   "variants": [
+    "BC-QV-10014-01",
+    "BC-QV-10014-02"
+   ]
+  },
+  {
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "substituting into the index",
+    "losing the alternating factor",
+    "applying a comparison test to an alternating series",
+    "assuming the other endpoint behaves the same way"
+   ],
+   "description": "The value at one end of an interval is substituted into a power series and the resulting numerical series is tested by a named test.",
+   "difficulty_variables": [
+    "whether the endpoint produces an alternating series",
+    "whether the comparison partner must be chosen",
+    "whether the prompt supplies the endpoint"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "substitute the endpoint value for the variable",
+    "simplify to a numerical series",
+    "name a test whose conditions it meets",
+    "apply the test and state the verdict"
+   ],
+   "id": "BC-QA-10015",
+   "invariant_structure": "The substitution collapses the power series into a numerical series whose form, alternating or positive, dictates the test; the verdict decides whether that endpoint belongs to the interval.",
+   "misconceptions": [
+    "BC-MIS-10001",
+    "BC-MIS-10005",
+    "BC-MIS-10006",
+    "BC-MIS-10007",
+    "BC-MIS-10009",
+    "BC-MIS-10010",
+    "BC-MIS-10023",
+    "BC-MIS-10024"
+   ],
+   "multipart_structure": "Typically one part of the multipart free response question that closes Section II Part B, or a single multiple choice item.",
+   "name": "Endpoint series identified and tested",
+   "official_examples": [],
+   "official_examples_notes": "2024 Q6(a), 2025 Q6(A), 2022 Q6(a)",
+   "point_types": [],
+   "prerequisites": [],
+   "primary_unit": "BC-UNIT-10",
+   "representations": [
+    "BC-REP-11",
+    "BC-REP-04"
+   ],
+   "safe_variables": [
+    "which endpoint is used",
+    "the coefficients",
+    "the comparison partner"
+   ],
+   "scope": "BC_only",
+   "scoring_pattern": "Two points are typical, one for considering the endpoint series and one for the answer with a reason; the comparison to the harmonic series carries the 2024 part, and the reason point is lost when the test named does not fit the series (sg-24:19, sg-24:20).",
+   "skills": [
+    "BC-SKL-10020",
+    "BC-SKL-10021",
+    "BC-SKL-10022",
+    "BC-SKL-10024",
+    "BC-SKL-10025",
+    "BC-SKL-10027",
+    "BC-SKL-10030",
+    "BC-SKL-10036",
+    "BC-SKL-10057",
+    "BC-SKL-10058",
+    "BC-SKL-10071"
+   ],
+   "sources": [
+    "sg-24:19",
+    "sg-24:20",
+    "sg-25:24"
+   ],
+   "typical_wording": [
+    "determine whether the series converges or diverges at the stated endpoint, and give a reason"
+   ],
+   "units": [
+    "BC-UNIT-10"
+   ],
+   "variants": [
+    "BC-QV-10015-01",
+    "BC-QV-10015-02",
+    "BC-QV-10015-03"
+   ]
+  },
+  {
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "a general term that does not reproduce the displayed terms",
+    "an index offset by one",
+    "a missing alternating factor"
+   ],
+   "description": "The response presents a stated number of nonzero terms of a Taylor series together with its general term.",
+   "difficulty_variables": [
+    "whether an alternating factor is present",
+    "whether the series is the derivative or the antiderivative of a given series",
+    "whether factorials appear"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "produce the required terms from derivatives or from a known series",
+    "detect the pattern in the coefficients and the powers",
+    "write a general term in the index",
+    "check the general term against the displayed terms"
+   ],
+   "id": "BC-QA-10016",
+   "invariant_structure": "The terms and the general term are scored separately; the general term must reproduce the displayed terms when the index takes its first values.",
+   "misconceptions": [
+    "BC-MIS-10020"
+   ],
+   "multipart_structure": "Typically one part of the multipart free response question that closes Section II Part B, or a single multiple choice item.",
+   "name": "First nonzero terms and the general term of a series",
+   "official_examples": [],
+   "official_examples_notes": "2025 Q6(B)",
+   "point_types": [],
+   "prerequisites": [],
+   "primary_unit": "BC-UNIT-10",
+   "representations": [
+    "BC-REP-11",
+    "BC-REP-01"
+   ],
+   "safe_variables": [
+    "the centre",
+    "the function",
+    "the number of terms requested"
+   ],
+   "scope": "BC_only",
+   "scoring_pattern": "Two points are typical, one for the first terms presented in a list or as part of a series, and one for the general term identified individually or inside the series (sg-25:26).",
+   "skills": [
+    "BC-SKL-10060",
+    "BC-SKL-10067"
+   ],
+   "sources": [
+    "sg-25:26",
+    "sg-24:22"
+   ],
+   "typical_wording": [
+    "find the first three nonzero terms and the general term of the Taylor series for the function about the given centre"
+   ],
+   "units": [
+    "BC-UNIT-10"
+   ],
+   "variants": [
+    "BC-QV-10016-01",
+    "BC-QV-10016-02",
+    "BC-QV-10016-03"
+   ]
+  },
+  {
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "substituting without raising the whole expression to the power",
+    "misremembering the parity or the signs of a standard series",
+    "shifting the centre"
+   ],
+   "description": "A function is written as a substitution into, or a multiple of, one of the standard Maclaurin series and the resulting series is requested.",
+   "difficulty_variables": [
+    "whether the substitution raises the powers",
+    "whether a constant multiple is also involved",
+    "whether the interval of convergence must be adjusted"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "recall the standard series",
+    "substitute the expression for the variable, raising every power",
+    "multiply through by any factor",
+    "collect the first terms and the general term"
+   ],
+   "id": "BC-QA-10017",
+   "invariant_structure": "The standard series for the exponential, the sine, the cosine, or one over one minus x is recalled and transformed term by term; the centre stays where it was.",
+   "misconceptions": [
+    "BC-MIS-10021",
+    "BC-MIS-10026"
+   ],
+   "multipart_structure": "Typically one part of the multipart free response question that closes Section II Part B, or a single multiple choice item.",
+   "name": "Maclaurin series built from a known series by substitution or multiplication",
+   "official_examples": [],
+   "official_examples_notes": "2023 Q6(c) alternate solution",
+   "point_types": [],
+   "prerequisites": [],
+   "primary_unit": "BC-UNIT-10",
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-11"
+   ],
+   "safe_variables": [
+    "which standard series is used",
+    "the substituted expression",
+    "the multiplying factor"
+   ],
+   "scope": "BC_only",
+   "scoring_pattern": "Scored through the terms produced, as in the 2023 alternate solution where the series identifications carry the points for a related polynomial (sg-23:21).",
+   "skills": [
+    "BC-SKL-10061",
+    "BC-SKL-10062",
+    "BC-SKL-10063",
+    "BC-SKL-10064",
+    "BC-SKL-10065"
+   ],
+   "sources": [
+    "ced:199",
+    "ced:200",
+    "sg-23:21"
+   ],
+   "typical_wording": [
+    "use a known Maclaurin series to find the series for the given function"
+   ],
+   "units": [
+    "BC-UNIT-10"
+   ],
+   "variants": [
+    "BC-QV-10017-01",
+    "BC-QV-10017-02",
+    "BC-QV-10017-03"
+   ]
+  },
+  {
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "differentiating with respect to the index",
+    "recomputing and misreporting the radius",
+    "carrying the original interval including its endpoints"
+   ],
+   "description": "A power series is differentiated term by term and the response reports the new series and its radius of convergence.",
+   "difficulty_variables": [
+    "whether the general term carries a factorial",
+    "whether the radius must be justified by the preservation statement",
+    "whether the endpoints must be rechecked"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "differentiate the displayed terms",
+    "differentiate the general term with respect to the variable",
+    "state that the radius is unchanged",
+    "recheck the endpoints if the interval is requested"
+   ],
+   "id": "BC-QA-10018",
+   "invariant_structure": "Each displayed term and the general term are differentiated; the radius is inherited from the original series rather than recomputed, while endpoint behaviour is a separate question.",
+   "misconceptions": [
+    "BC-MIS-10020",
+    "BC-MIS-10022",
+    "BC-MIS-10023",
+    "BC-MIS-10024",
+    "BC-MIS-10025"
+   ],
+   "multipart_structure": "Typically one part of the multipart free response question that closes Section II Part B, or a single multiple choice item.",
+   "name": "Series differentiated term by term with its radius carried over",
+   "official_examples": [],
+   "official_examples_notes": "2024 Q6(c), 2025 Q6(B)",
+   "point_types": [],
+   "prerequisites": [],
+   "primary_unit": "BC-UNIT-10",
+   "representations": [
+    "BC-REP-11",
+    "BC-REP-01"
+   ],
+   "safe_variables": [
+    "the original series",
+    "the centre",
+    "the number of terms requested"
+   ],
+   "scope": "BC_only",
+   "scoring_pattern": "Two points are typical, one for the general term and one for the radius, with the radius point resting on the statement that term-by-term differentiation preserves it (sg-24:22). The 2025 form scores the first terms and the general term separately (sg-25:26).",
+   "skills": [
+    "BC-SKL-10060",
+    "BC-SKL-10068",
+    "BC-SKL-10070",
+    "BC-SKL-10071"
+   ],
+   "sources": [
+    "sg-24:22",
+    "sg-25:26",
+    "ced:198"
+   ],
+   "typical_wording": [
+    "find the general term of the series for the derivative and state its radius of convergence"
+   ],
+   "units": [
+    "BC-UNIT-10"
+   ],
+   "variants": [
+    "BC-QV-10018-01",
+    "BC-QV-10018-02",
+    "BC-QV-10018-03"
+   ]
+  },
+  {
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "omitting the constant of integration",
+    "integrating with respect to the index",
+    "changing the radius"
+   ],
+   "description": "A known series is integrated term by term to represent an antiderivative, with the constant fixed by a given value.",
+   "difficulty_variables": [
+    "whether the constant is zero",
+    "whether the integrand arrives from a substitution",
+    "whether the radius or the interval is requested afterwards"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "write the series for the integrand",
+    "antidifferentiate term by term including the general term",
+    "determine the constant from the supplied value",
+    "state the radius as unchanged if it is requested"
+   ],
+   "id": "BC-QA-10019",
+   "invariant_structure": "Each term of the known series is antidifferentiated, the general term follows the same pattern, and a supplied value at one input determines the constant.",
+   "misconceptions": [
+    "BC-MIS-10020"
+   ],
+   "multipart_structure": "Typically one part of the multipart free response question that closes Section II Part B, or a single multiple choice item.",
+   "name": "Function represented by term-by-term integration of a known series",
+   "official_examples": [],
+   "official_examples_notes": "2023 Q6(c) alternate solution",
+   "point_types": [],
+   "prerequisites": [],
+   "primary_unit": "BC-UNIT-10",
+   "representations": [
+    "BC-REP-11",
+    "BC-REP-01"
+   ],
+   "safe_variables": [
+    "the known series used",
+    "the input where the value is supplied",
+    "the centre"
+   ],
+   "scope": "BC_only",
+   "scoring_pattern": "Scored through the terms and the constant; the 2023 alternate solution treats the antidifferentiated series and the constant determined from the initial value as the supporting work for the requested polynomial (sg-23:21).",
+   "skills": [
+    "BC-SKL-10069"
+   ],
+   "sources": [
+    "ced:200",
+    "sg-23:21"
+   ],
+   "typical_wording": [
+    "use a known series to find a power series representation of the function"
+   ],
+   "units": [
+    "BC-UNIT-10"
+   ],
+   "variants": [
+    "BC-QV-10019-01",
+    "BC-QV-10019-02"
+   ]
+  },
+  {
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "answering with no reason",
+    "treating the series as valid for all inputs",
+    "using the interior of the interval as though it were closed"
+   ],
+   "description": "The response decides whether a series converges to the function at a stated input and gives the position of that input relative to the interval as the reason.",
+   "difficulty_variables": [
+    "whether the input lies just outside an endpoint",
+    "whether the interval must be imported from an earlier part",
+    "whether a geometric argument is available as an alternative"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "state the interval of convergence in play",
+    "locate the input relative to it",
+    "state whether the series converges to the function there",
+    "give the position as the reason"
+   ],
+   "id": "BC-QA-10020",
+   "invariant_structure": "An interval of convergence, found earlier or supplied, is compared with a specific input, and the verdict follows from whether the input lies inside it.",
+   "misconceptions": [
+    "BC-MIS-10003",
+    "BC-MIS-10023"
+   ],
+   "multipart_structure": "Typically one part of the multipart free response question that closes Section II Part B, or a single multiple choice item.",
+   "name": "Convergence to the function at a specified input decided with a reason",
+   "official_examples": [],
+   "official_examples_notes": "2025 Q6(D)",
+   "point_types": [],
+   "prerequisites": [],
+   "primary_unit": "BC-UNIT-10",
+   "representations": [
+    "BC-REP-11",
+    "BC-REP-04"
+   ],
+   "safe_variables": [
+    "the input chosen",
+    "the closed form supplied",
+    "the interval imported from an earlier part"
+   ],
+   "scope": "BC_only",
+   "scoring_pattern": "One point for the answer with a reason; a short response naming the input as outside the interval suffices, the point is available with an interval imported from an earlier part even when that interval is wrong, and a geometric ratio argument is an accepted alternative (sg-25:27).",
+   "skills": [
+    "BC-SKL-10007",
+    "BC-SKL-10010",
+    "BC-SKL-10073"
+   ],
+   "sources": [
+    "sg-25:27"
+   ],
+   "typical_wording": [
+    "does the series converge to the function at the stated input, and give a reason for the answer"
+   ],
+   "units": [
+    "BC-UNIT-10"
+   ],
+   "variants": [
+    "BC-QV-10020-01",
+    "BC-QV-10020-02"
+   ]
+  }
+ ],
+ "registry": "archetypes",
+ "variants": [
+  {
+   "archetype": "BC-QA-10001",
+   "description": "Series presented in expanded form rather than sigma form",
+   "difficulty_effect": "neutral",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10001-01",
+   "name": "Series presented in expanded form rather than sigma form",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "ced:190",
+    "sg-24:19",
+    "sg-25:25"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10001",
+   "description": "Two tests apply and either is accepted",
+   "difficulty_effect": "easier",
+   "dimension": "structure",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10001-02",
+   "name": "Two tests apply and either is accepted",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "ced:190",
+    "sg-24:19",
+    "sg-25:25"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10001",
+   "description": "The nth term test screens the series before another test is needed",
+   "difficulty_effect": "harder",
+   "dimension": "structure",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10001-03",
+   "name": "The nth term test screens the series before another test is needed",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "ced:190",
+    "sg-24:19",
+    "sg-25:25"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10002",
+   "description": "Telescoping series whose partial sum collapses",
+   "difficulty_effect": "harder",
+   "dimension": "structure",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10002-01",
+   "name": "Telescoping series whose partial sum collapses",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "ced:186",
+    "ced:187",
+    "cr-22:30"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10002",
+   "description": "Geometric series arriving from a Taylor series evaluated at a point",
+   "difficulty_effect": "neutral",
+   "dimension": "structure",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10002-02",
+   "name": "Geometric series arriving from a Taylor series evaluated at a point",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "ced:186",
+    "ced:187",
+    "cr-22:30"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10003",
+   "description": "Closed form supplied and to be verified",
+   "difficulty_effect": "easier",
+   "dimension": "structure",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10003-01",
+   "name": "Closed form supplied and to be verified",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-25:26",
+    "ced:187"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10003",
+   "description": "Ratio contains the variable so the condition bounds an interval",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10003-02",
+   "name": "Ratio contains the variable so the condition bounds an interval",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-25:26",
+    "ced:187"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10003",
+   "description": "Series starts at an index other than zero",
+   "difficulty_effect": "harder",
+   "dimension": "structure",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10003-03",
+   "name": "Series starts at an index other than zero",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-25:26",
+    "ced:187"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10004",
+   "description": "Comparison partner named by the prompt",
+   "difficulty_effect": "easier",
+   "dimension": "structure",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10004-01",
+   "name": "Comparison partner named by the prompt",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-24:19",
+    "sg-24:20",
+    "ced:191"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10004",
+   "description": "Comparison partner chosen by the response",
+   "difficulty_effect": "harder",
+   "dimension": "structure",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10004-02",
+   "name": "Comparison partner chosen by the response",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-24:19",
+    "sg-24:20",
+    "ced:191"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10004",
+   "description": "Series arrives from an endpoint substitution",
+   "difficulty_effect": "neutral",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10004-03",
+   "name": "Series arrives from an endpoint substitution",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-24:19",
+    "sg-24:20",
+    "ced:191"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10005",
+   "description": "Conditions requested explicitly by the prompt",
+   "difficulty_effect": "easier",
+   "dimension": "structure",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10005-01",
+   "name": "Conditions requested explicitly by the prompt",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-21:21",
+    "sg-21:22"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10005",
+   "description": "Integral diverges so the series does too",
+   "difficulty_effect": "neutral",
+   "dimension": "structure",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10005-02",
+   "name": "Integral diverges so the series does too",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-21:21",
+    "sg-21:22"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10005",
+   "description": "Antiderivative requires a substitution",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10005-03",
+   "name": "Antiderivative requires a substitution",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-21:21",
+    "sg-21:22"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10006",
+   "description": "Comparison series supplied by the prompt",
+   "difficulty_effect": "easier",
+   "dimension": "structure",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10006-01",
+   "name": "Comparison series supplied by the prompt",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-21:23"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10006",
+   "description": "Absolute convergence is the target so absolute values are required",
+   "difficulty_effect": "harder",
+   "dimension": "structure",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10006-02",
+   "name": "Absolute convergence is the target so absolute values are required",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-21:23"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10006",
+   "description": "Reciprocal quotient formed",
+   "difficulty_effect": "neutral",
+   "dimension": "structure",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10006-03",
+   "name": "Reciprocal quotient formed",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-21:23"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10007",
+   "description": "Absolute value series is a p-series",
+   "difficulty_effect": "easier",
+   "dimension": "structure",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10007-01",
+   "name": "Absolute value series is a p-series",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "ced:194",
+    "sg-21:23"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10007",
+   "description": "Conditional convergence is the answer",
+   "difficulty_effect": "harder",
+   "dimension": "structure",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10007-02",
+   "name": "Conditional convergence is the answer",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "ced:194",
+    "sg-21:23"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10008",
+   "description": "Only an upper bound on the error is requested",
+   "difficulty_effect": "easier",
+   "dimension": "structure",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10008-01",
+   "name": "Only an upper bound on the error is requested",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-22:21",
+    "sg-24:21",
+    "sg-21:25"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10008",
+   "description": "Tolerance supplied and the comparison must be shown",
+   "difficulty_effect": "harder",
+   "dimension": "structure",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10008-02",
+   "name": "Tolerance supplied and the comparison must be shown",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-22:21",
+    "sg-24:21",
+    "sg-21:25"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10008",
+   "description": "Series arrives from a Taylor series evaluated at a specific input",
+   "difficulty_effect": "neutral",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10008-03",
+   "name": "Series arrives from a Taylor series evaluated at a specific input",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-22:21",
+    "sg-24:21",
+    "sg-21:25"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10009",
+   "description": "Derivative bound supplied by the prompt",
+   "difficulty_effect": "easier",
+   "dimension": "structure",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10009-01",
+   "name": "Derivative bound supplied by the prompt",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-23:20"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10009",
+   "description": "Choice between the Lagrange and alternating series bound left open",
+   "difficulty_effect": "harder",
+   "dimension": "structure",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10009-02",
+   "name": "Choice between the Lagrange and alternating series bound left open",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-23:20"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10010",
+   "description": "Relation defines the second derivative in terms of the function",
+   "difficulty_effect": "neutral",
+   "dimension": "structure",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10010-01",
+   "name": "Relation defines the second derivative in terms of the function",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-23:19"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10010",
+   "description": "One coefficient vanishes",
+   "difficulty_effect": "easier",
+   "dimension": "structure",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10010-02",
+   "name": "One coefficient vanishes",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-23:19"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10010",
+   "description": "Fourth order derivative required",
+   "difficulty_effect": "harder",
+   "dimension": "structure",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10010-03",
+   "name": "Fourth order derivative required",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-23:19"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10011",
+   "description": "Centre is not zero so powers are in the displacement",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10011-01",
+   "name": "Centre is not zero so powers are in the displacement",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "ced:196",
+    "sg-23:19"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10011",
+   "description": "An approximation of a function value is requested from the polynomial",
+   "difficulty_effect": "neutral",
+   "dimension": "structure",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10011-02",
+   "name": "An approximation of a function value is requested from the polynomial",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "ced:196",
+    "sg-23:19"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10012",
+   "description": "Related function defined by a product with an exponential",
+   "difficulty_effect": "neutral",
+   "dimension": "structure",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10012-01",
+   "name": "Related function defined by a product with an exponential",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-23:20",
+    "sg-23:21"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10012",
+   "description": "Related function defined as an antiderivative with a given initial value",
+   "difficulty_effect": "harder",
+   "dimension": "structure",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10012-02",
+   "name": "Related function defined as an antiderivative with a given initial value",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-23:20",
+    "sg-23:21"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10012",
+   "description": "Known series route accepted as an alternate solution",
+   "difficulty_effect": "easier",
+   "dimension": "structure",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10012-03",
+   "name": "Known series route accepted as an alternate solution",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-23:20",
+    "sg-23:21"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10013",
+   "description": "Both endpoints settled by the same test",
+   "difficulty_effect": "easier",
+   "dimension": "structure",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10013-01",
+   "name": "Both endpoints settled by the same test",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-25:24",
+    "sg-25:25",
+    "sg-22:20",
+    "sg-22:21"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10013",
+   "description": "Endpoints require different tests",
+   "difficulty_effect": "harder",
+   "dimension": "structure",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10013-02",
+   "name": "Endpoints require different tests",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-25:24",
+    "sg-25:25",
+    "sg-22:20",
+    "sg-22:21"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10013",
+   "description": "Centre is not zero",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10013-03",
+   "name": "Centre is not zero",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-25:24",
+    "sg-25:25",
+    "sg-22:20",
+    "sg-22:21"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10013",
+   "description": "Coefficients contain factorials so the interior is the whole line",
+   "difficulty_effect": "neutral",
+   "dimension": "structure",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10013-04",
+   "name": "Coefficients contain factorials so the interior is the whole line",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-25:24",
+    "sg-25:25",
+    "sg-22:20",
+    "sg-22:21"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10014",
+   "description": "Coefficients grow exponentially in the index",
+   "difficulty_effect": "harder",
+   "dimension": "structure",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10014-01",
+   "name": "Coefficients grow exponentially in the index",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-21:24"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10014",
+   "description": "Radius is an irrational value",
+   "difficulty_effect": "neutral",
+   "dimension": "structure",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10014-02",
+   "name": "Radius is an irrational value",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-21:24"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10015",
+   "description": "Endpoint yields an alternating series",
+   "difficulty_effect": "easier",
+   "dimension": "structure",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10015-01",
+   "name": "Endpoint yields an alternating series",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-24:19",
+    "sg-24:20",
+    "sg-25:24"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10015",
+   "description": "Endpoint yields a series requiring a comparison",
+   "difficulty_effect": "harder",
+   "dimension": "structure",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10015-02",
+   "name": "Endpoint yields a series requiring a comparison",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-24:19",
+    "sg-24:20",
+    "sg-25:24"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10015",
+   "description": "Both endpoints requested in the same part",
+   "difficulty_effect": "harder",
+   "dimension": "structure",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10015-03",
+   "name": "Both endpoints requested in the same part",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-24:19",
+    "sg-24:20",
+    "sg-25:24"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10016",
+   "description": "Series requested for a derivative of the given function",
+   "difficulty_effect": "neutral",
+   "dimension": "structure",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10016-01",
+   "name": "Series requested for a derivative of the given function",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-25:26",
+    "sg-24:22"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10016",
+   "description": "Alternating factor present",
+   "difficulty_effect": "harder",
+   "dimension": "structure",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10016-02",
+   "name": "Alternating factor present",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-25:26",
+    "sg-24:22"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10016",
+   "description": "Centre away from zero",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10016-03",
+   "name": "Centre away from zero",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-25:26",
+    "sg-24:22"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10017",
+   "description": "Substitution raises the powers",
+   "difficulty_effect": "harder",
+   "dimension": "structure",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10017-01",
+   "name": "Substitution raises the powers",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "ced:199",
+    "ced:200",
+    "sg-23:21"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10017",
+   "description": "Constant or power multiplies the whole series",
+   "difficulty_effect": "neutral",
+   "dimension": "structure",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10017-02",
+   "name": "Constant or power multiplies the whole series",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "ced:199",
+    "ced:200",
+    "sg-23:21"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10017",
+   "description": "Standard geometric series used with a ratio in the variable",
+   "difficulty_effect": "easier",
+   "dimension": "structure",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10017-03",
+   "name": "Standard geometric series used with a ratio in the variable",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "ced:199",
+    "ced:200",
+    "sg-23:21"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10018",
+   "description": "Radius justified by the preservation statement",
+   "difficulty_effect": "easier",
+   "dimension": "structure",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10018-01",
+   "name": "Radius justified by the preservation statement",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-24:22",
+    "sg-25:26",
+    "ced:198"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10018",
+   "description": "Radius reworked through a fresh ratio test",
+   "difficulty_effect": "neutral",
+   "dimension": "structure",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10018-02",
+   "name": "Radius reworked through a fresh ratio test",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-24:22",
+    "sg-25:26",
+    "ced:198"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10018",
+   "description": "Interval requested so endpoints must be rechecked",
+   "difficulty_effect": "harder",
+   "dimension": "structure",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10018-03",
+   "name": "Interval requested so endpoints must be rechecked",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-24:22",
+    "sg-25:26",
+    "ced:198"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10019",
+   "description": "Constant determined by a supplied value",
+   "difficulty_effect": "neutral",
+   "dimension": "structure",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10019-01",
+   "name": "Constant determined by a supplied value",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "ced:200",
+    "sg-23:21"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10019",
+   "description": "Integrand reached by substitution into a known series",
+   "difficulty_effect": "harder",
+   "dimension": "structure",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10019-02",
+   "name": "Integrand reached by substitution into a known series",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "ced:200",
+    "sg-23:21"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10020",
+   "description": "Input lies just outside an endpoint",
+   "difficulty_effect": "harder",
+   "dimension": "structure",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10020-01",
+   "name": "Input lies just outside an endpoint",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-25:27"
+   ]
+  },
+  {
+   "archetype": "BC-QA-10020",
+   "description": "Geometric ratio argument available",
+   "difficulty_effect": "easier",
+   "dimension": "structure",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-10020-02",
+   "name": "Geometric ratio argument available",
+   "official_examples": [],
+   "scope": "BC_only",
+   "sources": [
+    "sg-25:27"
+   ]
+  }
+ ]
+}

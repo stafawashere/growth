@@ -1,0 +1,981 @@
+{
+ "errors": [
+  {
+   "archetypes": [
+    "BC-QA-01001",
+    "BC-QA-01006"
+   ],
+   "discriminating_probe": "Ask for the limit and the function value at the same input as two separate answers.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-01001",
+   "name": "Function value reported as the limit",
+   "non_conceptual_causes": [
+    "misread of an open circle",
+    "time pressure",
+    "copying the wrong row of a table"
+   ],
+   "observed_behavior": "The response gives the plotted or defined value of the function at the input in place of the value the function approaches there.",
+   "official_evidence": [
+    "ced:39",
+    "ced:48"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-01001"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The reading point is lost, and in a continuity part the comparison of limit with value collapses.",
+   "skills": [
+    "BC-SKL-01008",
+    "BC-SKL-01009",
+    "BC-SKL-01044"
+   ],
+   "sources": [
+    "ced:39",
+    "ced:48"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-01001"
+   ],
+   "discriminating_probe": "Ask for the left hand and the right hand limit separately before asking for the two sided limit.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-01002",
+   "name": "One sided value reported as the two sided limit",
+   "non_conceptual_causes": [
+    "reading only one side of the graph",
+    "time pressure"
+   ],
+   "observed_behavior": "The response reports the value approached from one side as the limit although the two sides differ.",
+   "official_evidence": [
+    "ced:40"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-01002"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The value point is lost because the correct response is that the limit does not exist.",
+   "skills": [
+    "BC-SKL-01009",
+    "BC-SKL-01010",
+    "BC-SKL-01011"
+   ],
+   "sources": [
+    "ced:40"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-01001",
+    "BC-QA-01007"
+   ],
+   "discriminating_probe": "Ask whether a function must be defined at an input for the limit there to exist.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-01003",
+   "name": "Nonexistence claimed because the function is undefined at the point",
+   "non_conceptual_causes": [
+    "confusing the two questions under time pressure"
+   ],
+   "observed_behavior": "The response states that the limit does not exist on the grounds that the function has no value at the input.",
+   "official_evidence": [
+    "ced:39"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-01001"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "Both the value point and any justification point are lost.",
+   "skills": [
+    "BC-SKL-01008",
+    "BC-SKL-01039",
+    "BC-SKL-01053"
+   ],
+   "sources": [
+    "ced:39"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-01002"
+   ],
+   "discriminating_probe": "Ask for the values of the function at inputs between the tabulated ones.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-01004",
+   "name": "Oscillation reported as a limit value",
+   "non_conceptual_causes": [
+    "reading a table whose spacing hides the oscillation"
+   ],
+   "observed_behavior": "The response reports one of the values the function oscillates between as the limit near the input.",
+   "official_evidence": [
+    "ced:40"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-01004"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The value point is lost because no limit exists.",
+   "skills": [
+    "BC-SKL-01013",
+    "BC-SKL-01017"
+   ],
+   "sources": [
+    "ced:40"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-01002"
+   ],
+   "discriminating_probe": "Ask whether a different function could produce the same table.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-01005",
+   "name": "Table treated as proof of a limit",
+   "non_conceptual_causes": [
+    "reading the word estimate as the word find"
+   ],
+   "observed_behavior": "The response asserts a limit value as established because the tabulated outputs agree to several places.",
+   "official_evidence": [
+    "ced:41"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-01004"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "An explanation point is lost where the response is asked what the table does and does not establish.",
+   "skills": [
+    "BC-SKL-01015",
+    "BC-SKL-01017"
+   ],
+   "sources": [
+    "ced:41"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-01003",
+    "BC-QA-01014"
+   ],
+   "discriminating_probe": "Ask the student to state the condition the quotient theorem requires before using it.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-01006",
+   "name": "Quotient limit theorem applied with a zero denominator limit",
+   "non_conceptual_causes": [
+    "omitting the check under time pressure"
+   ],
+   "observed_behavior": "The response divides the limit of the numerator by the limit of the denominator although the denominator limit is zero.",
+   "official_evidence": [
+    "ced:42"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-01005"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The value point is lost and any justification naming the theorem is incorrect.",
+   "skills": [
+    "BC-SKL-01020",
+    "BC-SKL-01029"
+   ],
+   "sources": [
+    "ced:42"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-01003"
+   ],
+   "discriminating_probe": "Ask the student to name the inner function and the outer function before evaluating.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-01007",
+   "name": "Composition evaluated in the wrong order",
+   "non_conceptual_causes": [
+    "misreading the composite notation"
+   ],
+   "observed_behavior": "The response applies the inner function to the limit of the outer function rather than the outer function to the limit of the inner.",
+   "official_evidence": [
+    "ced:42"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-01005"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The value point is lost.",
+   "skills": [
+    "BC-SKL-01022"
+   ],
+   "sources": [
+    "ced:42"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-01004",
+    "BC-QA-01014"
+   ],
+   "discriminating_probe": "Ask what the denominator does at the same input.",
+   "evidence_tag": "single-source",
+   "id": "BC-ERR-01008",
+   "name": "Indeterminate form read as the answer zero",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "time pressure"
+   ],
+   "observed_behavior": "The response reports zero because the numerator tends to zero, without attending to the denominator.",
+   "official_evidence": [
+    "ced:43",
+    "sg-23:14"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-01006"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The value point is lost and the rewriting step is absent.",
+   "skills": [
+    "BC-SKL-01024",
+    "BC-SKL-01028",
+    "BC-SKL-01029"
+   ],
+   "sources": [
+    "ced:43",
+    "sg-23:14"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-01004",
+    "BC-QA-01014"
+   ],
+   "discriminating_probe": "Ask the student to factor the numerator and the denominator before deciding.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-01009",
+   "name": "Indeterminate form read as nonexistence",
+   "non_conceptual_causes": [
+    "time pressure",
+    "confusing zero over zero with a nonzero over zero form"
+   ],
+   "observed_behavior": "The response states that the limit does not exist because substitution gives zero over zero.",
+   "official_evidence": [
+    "ced:43"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-01006"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The value point and the rewriting point are lost.",
+   "skills": [
+    "BC-SKL-01028",
+    "BC-SKL-01029",
+    "BC-SKL-01030"
+   ],
+   "sources": [
+    "ced:43"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-01004"
+   ],
+   "discriminating_probe": "Ask the student to substitute a convenient input into the original and the rewritten expression and compare.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-01010",
+   "name": "A term cancelled instead of a factor",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "misreading the grouping"
+   ],
+   "observed_behavior": "The response divides out a summand common to numerator and denominator rather than a factor.",
+   "official_evidence": [
+    "ced:43"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-01007"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The rewriting point and the value point are both lost because the expressions are not equivalent.",
+   "skills": [
+    "BC-SKL-01024",
+    "BC-SKL-01026"
+   ],
+   "sources": [
+    "ced:43"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-01004"
+   ],
+   "discriminating_probe": "Ask the student to write what the numerator tends to and what the denominator tends to as two statements.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-01011",
+   "name": "Limit written as equal to zero over zero",
+   "non_conceptual_causes": [
+    "notational shorthand carried over from class"
+   ],
+   "observed_behavior": "The response presents the limit explicitly set equal to the symbol zero over zero rather than presenting the limits of numerator and denominator separately.",
+   "official_evidence": [
+    "sg-23:14"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-01006"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The point for establishing the form is not earned by a limit presented as equal to zero over zero; two separate limits are required (sg-23:14).",
+   "skills": [
+    "BC-SKL-01028"
+   ],
+   "sources": [
+    "sg-23:14"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-01005"
+   ],
+   "discriminating_probe": "Ask for the inequality on the left of the target and on the right of the target separately.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-01012",
+   "name": "Inequality multiplied by a sign changing factor without reversal",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "treating the vanishing factor as positive by habit"
+   ],
+   "observed_behavior": "The response multiplies the bounding inequality by a factor that is negative on one side of the target without reversing the inequality there.",
+   "official_evidence": [
+    "ced:45"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-01008"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The point for establishing the bounding inequality is lost.",
+   "skills": [
+    "BC-SKL-01033",
+    "BC-SKL-01035"
+   ],
+   "sources": [
+    "ced:45"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-01005"
+   ],
+   "discriminating_probe": "Ask whether the bounding inequality is required to hold at the target input itself.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-01013",
+   "name": "Bounds evaluated at the point instead of taken as limits",
+   "non_conceptual_causes": [
+    "time pressure"
+   ],
+   "observed_behavior": "The response substitutes the target input into the bounding functions rather than evaluating their limits.",
+   "official_evidence": [
+    "ced:45"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-01008"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The conclusion point is lost because the theorem has not been applied.",
+   "skills": [
+    "BC-SKL-01034"
+   ],
+   "sources": [
+    "ced:45"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-01006"
+   ],
+   "discriminating_probe": "Ask the student to write the three conditions and mark which have been checked.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-01014",
+   "name": "Continuity claimed from the function value alone",
+   "non_conceptual_causes": [
+    "time pressure",
+    "abbreviating a known argument"
+   ],
+   "observed_behavior": "The response concludes continuity at a point because the function is defined there.",
+   "official_evidence": [
+    "ced:48"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-01009"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The justification point is lost because the limit condition is never addressed.",
+   "skills": [
+    "BC-SKL-01043",
+    "BC-SKL-01044"
+   ],
+   "sources": [
+    "ced:48"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-01006",
+    "BC-QA-01008"
+   ],
+   "discriminating_probe": "Give a function whose limit exists at the boundary but whose defined value differs, and ask whether it is continuous there.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-01015",
+   "name": "Continuity claimed from matching one sided limits alone",
+   "non_conceptual_causes": [
+    "time pressure"
+   ],
+   "observed_behavior": "The response concludes continuity because the two one sided limits agree, without comparing them with the function value.",
+   "official_evidence": [
+    "ced:48",
+    "ced:50"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-01009"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The justification point is lost, and a parameter solved this way can be wrong when the defined value differs.",
+   "skills": [
+    "BC-SKL-01044",
+    "BC-SKL-01051"
+   ],
+   "sources": [
+    "ced:48",
+    "ced:50"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-01006",
+    "BC-QA-01011"
+   ],
+   "discriminating_probe": "Ask which of the three conditions fails and at which value.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-01016",
+   "name": "Definition restated in place of a reason",
+   "non_conceptual_causes": [
+    "time pressure",
+    "copying a template argument"
+   ],
+   "observed_behavior": "The response asserts that the function is or is not continuous because of the definition of continuity, without naming the condition that fails or the values that show it.",
+   "official_evidence": [
+    "ced:48",
+    "sg-25:12"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-01010"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The justification point is lost; a scoring guideline requires the reason rather than the assertion (sg-25:12).",
+   "skills": [
+    "BC-SKL-01045",
+    "BC-SKL-01065"
+   ],
+   "sources": [
+    "ced:48",
+    "sg-25:12"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-01006",
+    "BC-QA-01008"
+   ],
+   "discriminating_probe": "Ask which branch applies just to the left and just to the right of the boundary.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-01017",
+   "name": "Wrong branch evaluated at a boundary",
+   "non_conceptual_causes": [
+    "misread of the branch condition",
+    "time pressure"
+   ],
+   "observed_behavior": "The response substitutes the boundary input into the branch that does not apply on that side.",
+   "official_evidence": [
+    "ced:50"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-01009"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The one sided limit is wrong and every point depending on it is lost.",
+   "skills": [
+    "BC-SKL-01023",
+    "BC-SKL-01042",
+    "BC-SKL-01044",
+    "BC-SKL-01051"
+   ],
+   "sources": [
+    "ced:50"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-01007",
+    "BC-QA-01009"
+   ],
+   "discriminating_probe": "Ask for the limit of the expression at that input after factoring.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-01018",
+   "name": "Cancelling factor reported as a vertical asymptote",
+   "non_conceptual_causes": [
+    "omitting the simplification step",
+    "time pressure"
+   ],
+   "observed_behavior": "The response names a vertical asymptote at an input where the factor divides out of the rational expression.",
+   "official_evidence": [
+    "ced:47",
+    "ced:51"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-01011",
+    "BC-MIS-01012"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The location point is lost and the classification is wrong.",
+   "skills": [
+    "BC-SKL-01041",
+    "BC-SKL-01056",
+    "BC-SKL-01057"
+   ],
+   "sources": [
+    "ced:47",
+    "ced:51"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-01009"
+   ],
+   "discriminating_probe": "Ask for the sign of the quotient just to the left and just to the right of the input.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-01019",
+   "name": "Two sided infinite limit written where the sides differ in sign",
+   "non_conceptual_causes": [
+    "omitting the sign analysis",
+    "time pressure"
+   ],
+   "observed_behavior": "The response writes a single infinite limit at an input where one side increases without bound and the other decreases without bound.",
+   "official_evidence": [
+    "ced:51"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-01012"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The behaviour point is lost because the notation asserts behaviour the function does not have.",
+   "skills": [
+    "BC-SKL-01054",
+    "BC-SKL-01055"
+   ],
+   "sources": [
+    "ced:51"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-01009",
+    "BC-QA-01001"
+   ],
+   "discriminating_probe": "Ask whether the stated limit is a real number.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-01020",
+   "name": "Infinite limit reported as an existing real limit",
+   "non_conceptual_causes": [
+    "notational habit"
+   ],
+   "observed_behavior": "The response writes that the limit equals infinity and then treats that statement as an existence claim for a real limit.",
+   "official_evidence": [
+    "ced:40",
+    "ced:51"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-01012"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "A point requiring a statement about existence is lost.",
+   "skills": [
+    "BC-SKL-01012",
+    "BC-SKL-01054"
+   ],
+   "sources": [
+    "ced:40",
+    "ced:51"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-01010"
+   ],
+   "discriminating_probe": "Ask the student to divide numerator and denominator by the dominant power before taking any limit.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-01021",
+   "name": "Infinity substituted as a number",
+   "non_conceptual_causes": [
+    "notational shorthand",
+    "time pressure"
+   ],
+   "observed_behavior": "The response substitutes the infinity symbol into the expression and performs arithmetic with it.",
+   "official_evidence": [
+    "sg-25:4"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-01013"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "Arithmetic performed with the infinity symbol is treated as scratch work and does not earn the value point (sg-25:4).",
+   "skills": [
+    "BC-SKL-01058",
+    "BC-SKL-01060",
+    "BC-SKL-01061"
+   ],
+   "sources": [
+    "sg-25:4"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-01010"
+   ],
+   "discriminating_probe": "Ask which function the question names and what its units are.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-01022",
+   "name": "Limit of the amount presented where the limit of the rate was requested",
+   "non_conceptual_causes": [
+    "misread of the question",
+    "time pressure"
+   ],
+   "observed_behavior": "The response writes the end behaviour limit of the modelled quantity rather than of its rate of change.",
+   "official_evidence": [
+    "sg-25:4"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-01014"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The expression point may still be earned, but a response presenting the limit of the amount is not eligible for the value point (sg-25:4).",
+   "skills": [
+    "BC-SKL-01060"
+   ],
+   "sources": [
+    "sg-25:4"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-01010"
+   ],
+   "discriminating_probe": "Ask for the degrees of numerator and denominator before the ratio is written.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-01023",
+   "name": "End behaviour decided by the leading coefficients without comparing degrees",
+   "non_conceptual_causes": [
+    "applying a memorised rule without checking its condition"
+   ],
+   "observed_behavior": "The response reports the ratio of the leading coefficients as the limit at infinity although the degrees differ.",
+   "official_evidence": [
+    "ced:52"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-01013"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The value point is lost.",
+   "skills": [
+    "BC-SKL-01058",
+    "BC-SKL-01059"
+   ],
+   "sources": [
+    "ced:52"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-01010"
+   ],
+   "discriminating_probe": "Ask for the value of the square root of the square of a negative number.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-01024",
+   "name": "Sign under a radical ignored at negative infinity",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "symmetry assumed between the two ends"
+   ],
+   "observed_behavior": "The response takes the dominant power out of a square root without the sign correction when the variable decreases without bound.",
+   "official_evidence": [
+    "ced:52"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-01013"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The value point at the negative end is lost.",
+   "skills": [
+    "BC-SKL-01061",
+    "BC-SKL-01063"
+   ],
+   "sources": [
+    "ced:52"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-01011"
+   ],
+   "discriminating_probe": "Ask what in the question tells the student that the function is continuous.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-01025",
+   "name": "Continuity asserted without a reason in an existence argument",
+   "non_conceptual_causes": [
+    "time pressure",
+    "treating the hypothesis as obvious"
+   ],
+   "observed_behavior": "The response states that the function is continuous but gives no basis for the statement.",
+   "official_evidence": [
+    "sg-25:12"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-01015"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The point for the continuity hypothesis is not earned by a bare statement that the function is continuous; the response must say that it is continuous because it is differentiable or give an equivalent reason (sg-25:12).",
+   "skills": [
+    "BC-SKL-01065",
+    "BC-SKL-01068"
+   ],
+   "sources": [
+    "sg-25:12"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-01011"
+   ],
+   "discriminating_probe": "Ask the student to write the inequality with the target value in the middle.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-01026",
+   "name": "Straddling inequality omitted or reversed",
+   "non_conceptual_causes": [
+    "misread of the table",
+    "arithmetic slip in comparing values"
+   ],
+   "observed_behavior": "The response applies the theorem without displaying the two attained values that lie on either side of the target, or places the target outside them.",
+   "official_evidence": [
+    "sg-25:12"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-01016"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The conclusion point is lost because the hypothesis on the target value is not established (sg-25:12).",
+   "skills": [
+    "BC-SKL-01066",
+    "BC-SKL-01068"
+   ],
+   "sources": [
+    "sg-25:12"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-01011"
+   ],
+   "discriminating_probe": "Ask whether the theorem rules out a second input with the same output.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-01027",
+   "name": "Uniqueness claimed from an existence theorem",
+   "non_conceptual_causes": [
+    "overreading the phrase must there be"
+   ],
+   "observed_behavior": "The response concludes that there is exactly one input with the required output.",
+   "official_evidence": [
+    "ced:53"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-01016"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The conclusion point is lost because the claim exceeds the theorem.",
+   "skills": [
+    "BC-SKL-01067"
+   ],
+   "sources": [
+    "ced:53"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-01011"
+   ],
+   "discriminating_probe": "Ask which theorem uses a value between the endpoint values and which uses a slope.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-01028",
+   "name": "Wrong existence theorem named",
+   "non_conceptual_causes": [
+    "recall slip under time pressure"
+   ],
+   "observed_behavior": "The response names a theorem other than the Intermediate Value Theorem while giving an argument about attained values.",
+   "official_evidence": [
+    "sg-25:12"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-01016"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "A named theorem must be the correct one, so naming the wrong theorem costs the conclusion point although naming no theorem at all does not (sg-25:12).",
+   "skills": [
+    "BC-SKL-01064",
+    "BC-SKL-01067"
+   ],
+   "sources": [
+    "sg-25:12"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-01012"
+   ],
+   "discriminating_probe": "Ask for the units of the answer just written.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-01029",
+   "name": "Average rate of change reported as a difference",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "time pressure"
+   ],
+   "observed_behavior": "The response reports the change in the function over the interval without dividing by the change in the input.",
+   "official_evidence": [
+    "ced:38"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-01017"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The point for the average rate with supporting work is lost because the quotient is absent.",
+   "skills": [
+    "BC-SKL-01001",
+    "BC-SKL-01004"
+   ],
+   "sources": [
+    "ced:38"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-01012"
+   ],
+   "discriminating_probe": "Ask whether the reported value is exact or an estimate and what would make it exact.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-01030",
+   "name": "Average rate over an interval reported as the rate at an instant",
+   "non_conceptual_causes": [
+    "time pressure",
+    "abbreviating the argument"
+   ],
+   "observed_behavior": "The response gives an average rate as the exact instantaneous rate at a point.",
+   "official_evidence": [
+    "ced:38"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-01017"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "A point requiring the limiting description is lost, although an approximation phrased as an estimate can still earn credit.",
+   "skills": [
+    "BC-SKL-01003",
+    "BC-SKL-01004"
+   ],
+   "sources": [
+    "ced:38"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-01015"
+   ],
+   "discriminating_probe": "Ask the student to list the inputs where the expression is undefined before writing intervals.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-01031",
+   "name": "Excluded input included inside a stated interval of continuity",
+   "non_conceptual_causes": [
+    "arithmetic slip in solving for the zeros",
+    "time pressure"
+   ],
+   "observed_behavior": "The response reports an interval of continuity whose interior or endpoint contains a point where the function is undefined.",
+   "official_evidence": [
+    "ced:49"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-01019"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The interval point is lost.",
+   "skills": [
+    "BC-SKL-01046",
+    "BC-SKL-01048",
+    "BC-SKL-01049"
+   ],
+   "sources": [
+    "ced:49"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-01015"
+   ],
+   "discriminating_probe": "Ask whether the function has a value at the bracketed endpoint.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-01032",
+   "name": "Closed bracket written at an excluded input",
+   "non_conceptual_causes": [
+    "notation slip"
+   ],
+   "observed_behavior": "The response writes a closed interval endpoint at an input that is not in the domain of the function.",
+   "official_evidence": [
+    "ced:49"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-01019"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The interval point is lost on notation.",
+   "skills": [
+    "BC-SKL-01049",
+    "BC-SKL-01046"
+   ],
+   "sources": [
+    "ced:49"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-01013",
+    "BC-QA-01010"
+   ],
+   "discriminating_probe": "Ask which symbol sits under the limit and which sits after the equals sign.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-01033",
+   "name": "Limit at infinity confused with an infinite limit",
+   "non_conceptual_causes": [
+    "misread of the notation"
+   ],
+   "observed_behavior": "The response treats a vertical asymptote statement as an end behaviour statement or the reverse.",
+   "official_evidence": [
+    "ced:51",
+    "ced:52"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-01018"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The conversion point is lost.",
+   "skills": [
+    "BC-SKL-01037",
+    "BC-SKL-01036",
+    "BC-SKL-01059"
+   ],
+   "sources": [
+    "ced:51",
+    "ced:52"
+   ]
+  }
+ ],
+ "registry": "errors"
+}

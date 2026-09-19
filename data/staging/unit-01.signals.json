@@ -1,0 +1,326 @@
+{
+ "registry": "diagnostic_signals",
+ "signals": [
+  {
+   "archetype": "BC-QA-01001",
+   "consistent_with": [
+    "BC-SKL-01010",
+    "BC-SKL-01011"
+   ],
+   "distinguish_by": "Ask for the comparison step alone; a correct comparison indicates a communication slip rather than a gap.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01001",
+   "mastery_state": "partially_mastered",
+   "name": "One sided values correct with a two sided claim attached",
+   "observation": "Both one sided limits are reported correctly but the response then names one of them as the two sided limit.",
+   "scope": "shared",
+   "skill": "BC-SKL-01011",
+   "sources": [
+    "ced:40"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01001",
+   "consistent_with": [
+    "BC-SKL-01008",
+    "BC-MIS-01001"
+   ],
+   "distinguish_by": "Ask for the two quantities separately and in the opposite order.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01002",
+   "mastery_state": "not_mastered",
+   "name": "Limit and value swapped at a marked break",
+   "observation": "The response reports the plotted value as the limit and the limit as the value.",
+   "scope": "shared",
+   "skill": "BC-SKL-01008",
+   "sources": [
+    "ced:39"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01004",
+   "consistent_with": [
+    "BC-SKL-01024"
+   ],
+   "distinguish_by": "Re-evaluate the simplified expression; if it is right, the gap is arithmetic rather than conceptual.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01003",
+   "mastery_state": "partially_mastered",
+   "name": "Correct rewriting with an arithmetic slip in the final evaluation",
+   "observation": "The factorisation and cancellation are correct but the value obtained by substituting into the simplified expression is wrong.",
+   "scope": "shared",
+   "skill": "BC-SKL-01024",
+   "sources": [
+    "ced:43"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01004",
+   "consistent_with": [
+    "BC-SKL-01028",
+    "BC-MIS-01006"
+   ],
+   "distinguish_by": "Ask for the factorisation of numerator and denominator; success indicates the gap is in knowing what the form signals.",
+   "evidence_tag": "single-source",
+   "id": "BC-SIG-01004",
+   "mastery_state": "not_mastered",
+   "name": "Indeterminate form named and then abandoned",
+   "observation": "The response identifies the form as zero over zero and reports that the limit does not exist without attempting a rewriting.",
+   "scope": "shared",
+   "skill": "BC-SKL-01028",
+   "sources": [
+    "ced:43",
+    "sg-23:14"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01004",
+   "consistent_with": [
+    "BC-SKL-01028"
+   ],
+   "distinguish_by": "Ask the student to write the limits of numerator and denominator separately; success indicates a notation habit rather than a gap (sg-23:14).",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-01005",
+   "mastery_state": "partially_mastered",
+   "name": "Limit written as equal to zero over zero with correct subsequent work",
+   "observation": "The response writes the limit equal to the indeterminate symbol but then rewrites correctly and reaches the right value.",
+   "scope": "shared",
+   "skill": "BC-SKL-01028",
+   "sources": [
+    "sg-23:14"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01006",
+   "consistent_with": [
+    "BC-SKL-01043",
+    "BC-SKL-01044"
+   ],
+   "distinguish_by": "Ask which of the listed conditions has been verified and which has not.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01006",
+   "mastery_state": "partially_mastered",
+   "name": "Three conditions listed but only one checked",
+   "observation": "The response states the definition of continuity in full and then tests only the function value or only the limit.",
+   "scope": "shared",
+   "skill": "BC-SKL-01044",
+   "sources": [
+    "ced:48"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01006",
+   "consistent_with": [
+    "BC-SKL-01044",
+    "BC-MIS-01009"
+   ],
+   "distinguish_by": "Ask for the function value at the boundary and then for the conclusion again.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01007",
+   "mastery_state": "partially_mastered",
+   "name": "Correct branch limits with the wrong conclusion about continuity",
+   "observation": "Both one sided limits at the boundary are correct but the conclusion ignores the defined value.",
+   "scope": "shared",
+   "skill": "BC-SKL-01044",
+   "sources": [
+    "ced:48"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01008",
+   "consistent_with": [
+    "BC-SKL-01051"
+   ],
+   "distinguish_by": "Ask which branch supplies the function value at the boundary.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01008",
+   "mastery_state": "partially_mastered",
+   "name": "Parameter solved from the limits with the function value unchecked",
+   "observation": "A value of the constant is produced that matches the one sided limits but the branch that defines the value at the boundary is not considered.",
+   "scope": "shared",
+   "skill": "BC-SKL-01051",
+   "sources": [
+    "ced:50"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01009",
+   "consistent_with": [
+    "BC-SKL-01056",
+    "BC-MIS-01011"
+   ],
+   "distinguish_by": "Ask for the factorisation first; success afterwards indicates a missing step rather than a missing idea.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01009",
+   "mastery_state": "not_mastered",
+   "name": "Asymptote located without simplification",
+   "observation": "Every zero of the original denominator is reported as an asymptote although one factor divides out.",
+   "scope": "shared",
+   "skill": "BC-SKL-01056",
+   "sources": [
+    "ced:51"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01009",
+   "consistent_with": [
+    "BC-SKL-01055",
+    "BC-MIS-01012"
+   ],
+   "distinguish_by": "Ask for the sign of the quotient on each side separately.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01010",
+   "mastery_state": "partially_mastered",
+   "name": "Correct asymptote with a single two sided infinite statement",
+   "observation": "The location of the vertical asymptote is right but the behaviour is written as one two sided infinite limit where the sides differ.",
+   "scope": "shared",
+   "skill": "BC-SKL-01055",
+   "sources": [
+    "ced:51"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01010",
+   "consistent_with": [
+    "BC-SKL-01060"
+   ],
+   "distinguish_by": "Ask for the expression alone; the separate point for the expression is not covered by a correct value (sg-25:4).",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-01011",
+   "mastery_state": "partially_mastered",
+   "name": "End behaviour value correct with no limit expression presented",
+   "observation": "The response reports the correct end behaviour value but never writes the limit expression that the question asks for.",
+   "scope": "shared",
+   "skill": "BC-SKL-01060",
+   "sources": [
+    "sg-25:4"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01010",
+   "consistent_with": [
+    "BC-SKL-01060",
+    "BC-MIS-01014"
+   ],
+   "distinguish_by": "Ask for the units of the quantity inside the limit; a response presenting the limit of the amount is not eligible for the value point (sg-25:4).",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-01012",
+   "mastery_state": "not_mastered",
+   "name": "Limit expression written for the amount rather than the rate",
+   "observation": "The limit expression names the modelled quantity although the question asks about its rate of change.",
+   "scope": "shared",
+   "skill": "BC-SKL-01060",
+   "sources": [
+    "sg-25:4"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01011",
+   "consistent_with": [
+    "BC-SKL-01066",
+    "BC-SKL-01065"
+   ],
+   "distinguish_by": "Ask what property of the function given in the question makes it continuous; the continuity point requires that reason while the conclusion point does not depend on it (sg-25:12).",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-01013",
+   "mastery_state": "partially_mastered",
+   "name": "Straddling inequality correct with continuity asserted bare",
+   "observation": "The two attained values on either side of the target are displayed correctly but the continuity statement carries no reason.",
+   "scope": "shared",
+   "skill": "BC-SKL-01065",
+   "sources": [
+    "sg-25:12"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01011",
+   "consistent_with": [
+    "BC-SKL-01065",
+    "BC-SKL-01066"
+   ],
+   "distinguish_by": "Ask for the two function values that the target lies between.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-01014",
+   "mastery_state": "partially_mastered",
+   "name": "Continuity justified correctly with no straddling values shown",
+   "observation": "The response says the function is continuous because it is differentiable but never displays the two values that bracket the target.",
+   "scope": "shared",
+   "skill": "BC-SKL-01066",
+   "sources": [
+    "sg-25:12"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01011",
+   "consistent_with": [
+    "BC-SKL-01067",
+    "BC-MIS-01016"
+   ],
+   "distinguish_by": "Ask whether a second input could give the same value and what would rule it out.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01015",
+   "mastery_state": "partially_mastered",
+   "name": "Existence argument complete but phrased as a unique solution",
+   "observation": "All hypotheses are verified and the conclusion is stated, but the response claims exactly one input gives the target value.",
+   "scope": "shared",
+   "skill": "BC-SKL-01067",
+   "sources": [
+    "ced:53"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01012",
+   "consistent_with": [
+    "BC-SKL-01001",
+    "BC-SKL-01004"
+   ],
+   "distinguish_by": "Ask what happens to the computed values as the interval keeps shrinking.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01016",
+   "mastery_state": "partially_mastered",
+   "name": "Average rates computed correctly with no limiting statement",
+   "observation": "The sequence of average rates is correct but the response never says what those values approach.",
+   "scope": "shared",
+   "skill": "BC-SKL-01004",
+   "sources": [
+    "ced:38"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01015",
+   "consistent_with": [
+    "BC-SKL-01046",
+    "BC-SKL-01049"
+   ],
+   "distinguish_by": "Ask whether the function has a value at that endpoint.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01017",
+   "mastery_state": "partially_mastered",
+   "name": "Intervals of continuity correct with a closed bracket at an excluded input",
+   "observation": "The pieces of the domain are identified correctly but one endpoint is written as included.",
+   "scope": "shared",
+   "skill": "BC-SKL-01049",
+   "sources": [
+    "ced:49"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01005",
+   "consistent_with": [
+    "BC-SKL-01033",
+    "BC-SKL-01034"
+   ],
+   "distinguish_by": "Ask for the limits of the two bounding functions as separate answers.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-01018",
+   "mastery_state": "partially_mastered",
+   "name": "Squeeze bounds correct with the conclusion drawn from evaluation",
+   "observation": "The bounding inequality is established correctly but the conclusion substitutes the target into the bounds rather than taking their limits.",
+   "scope": "shared",
+   "skill": "BC-SKL-01034",
+   "sources": [
+    "ced:45"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,115 @@
+{
+ "type": "object",
+ "required": [
+  "errors"
+ ],
+ "properties": {
+  "errors": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string"
+     },
+     "name": {
+      "type": "string",
+      "minLength": 3
+     },
+     "scope": {
+      "enum": [
+       "AB_only",
+       "shared",
+       "BC_only",
+       "n/a"
+      ]
+     },
+     "evidence_tag": {
+      "enum": [
+       "verified",
+       "single-source",
+       "inferred",
+       "uncertain"
+      ]
+     },
+     "sources": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "notes": {
+      "type": "string"
+     },
+     "created": {
+      "type": "string"
+     },
+     "updated": {
+      "type": "string"
+     },
+     "status": {
+      "enum": [
+       "active",
+       "retired"
+      ]
+     },
+     "superseded_by": {
+      "type": "string"
+     },
+     "observed_behavior": {
+      "type": "string"
+     },
+     "skills": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "archetypes": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "possible_misconceptions": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "non_conceptual_causes": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "scoring_consequence": {
+      "type": "string"
+     },
+     "official_evidence": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "discriminating_probe": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "id",
+     "name",
+     "scope",
+     "evidence_tag",
+     "sources",
+     "observed_behavior",
+     "skills",
+     "possible_misconceptions",
+     "non_conceptual_causes"
+    ],
+    "additionalProperties": true
+   }
+  }
+ },
+ "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

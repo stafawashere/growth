@@ -1,0 +1,302 @@
+{
+ "type": "object",
+ "required": [
+  "archetypes",
+  "variants"
+ ],
+ "properties": {
+  "archetypes": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string"
+     },
+     "name": {
+      "type": "string",
+      "minLength": 3
+     },
+     "scope": {
+      "enum": [
+       "AB_only",
+       "shared",
+       "BC_only",
+       "n/a"
+      ]
+     },
+     "evidence_tag": {
+      "enum": [
+       "verified",
+       "single-source",
+       "inferred",
+       "uncertain"
+      ]
+     },
+     "sources": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "notes": {
+      "type": "string"
+     },
+     "created": {
+      "type": "string"
+     },
+     "updated": {
+      "type": "string"
+     },
+     "status": {
+      "enum": [
+       "active",
+       "retired"
+      ]
+     },
+     "superseded_by": {
+      "type": "string"
+     },
+     "description": {
+      "type": "string"
+     },
+     "primary_unit": {
+      "type": "string"
+     },
+     "units": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "skills": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "prerequisites": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "typical_wording": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "common_givens": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "asked_to_produce": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "representations": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "calculator_status": {
+      "enum": [
+       "calculator",
+       "no_calculator",
+       "either"
+      ]
+     },
+     "multipart_structure": {
+      "type": "string"
+     },
+     "scoring_pattern": {
+      "type": "string"
+     },
+     "point_types": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "common_distractors": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "wrong_approaches": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "misconceptions": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "variants": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "official_examples": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "invariant_structure": {
+      "type": "string"
+     },
+     "safe_variables": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "difficulty_variables": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "expected_solution_path": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "prohibited_shortcuts": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "multi_skill_extensions": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "frequency": {
+      "type": "object"
+     }
+    },
+    "required": [
+     "id",
+     "name",
+     "scope",
+     "evidence_tag",
+     "sources",
+     "description",
+     "primary_unit",
+     "skills",
+     "representations",
+     "calculator_status",
+     "invariant_structure"
+    ],
+    "additionalProperties": true
+   }
+  },
+  "variants": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string"
+     },
+     "name": {
+      "type": "string",
+      "minLength": 3
+     },
+     "scope": {
+      "enum": [
+       "AB_only",
+       "shared",
+       "BC_only",
+       "n/a"
+      ]
+     },
+     "evidence_tag": {
+      "enum": [
+       "verified",
+       "single-source",
+       "inferred",
+       "uncertain"
+      ]
+     },
+     "sources": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "notes": {
+      "type": "string"
+     },
+     "created": {
+      "type": "string"
+     },
+     "updated": {
+      "type": "string"
+     },
+     "status": {
+      "enum": [
+       "active",
+       "retired"
+      ]
+     },
+     "superseded_by": {
+      "type": "string"
+     },
+     "archetype": {
+      "type": "string"
+     },
+     "dimension": {
+      "type": "string"
+     },
+     "description": {
+      "type": "string"
+     },
+     "difficulty_effect": {
+      "enum": [
+       "easier",
+       "harder",
+       "neutral",
+       "depends"
+      ]
+     },
+     "official_examples": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     }
+    },
+    "required": [
+     "id",
+     "name",
+     "scope",
+     "evidence_tag",
+     "sources",
+     "archetype",
+     "dimension",
+     "description",
+     "difficulty_effect"
+    ],
+    "additionalProperties": true
+   }
+  }
+ },
+ "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

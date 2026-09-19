@@ -1,0 +1,561 @@
+{
+ "misconceptions": [
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-02001",
+    "BC-CON-02007"
+   ],
+   "description": "The learner treats the change in the quantity as the rate itself, so the division by the change in the input is omitted or applied to the wrong pair of values.",
+   "discriminating_probe": "Ask for the units of the reported number and compare them with the units the question asks for.",
+   "downstream_dependencies": [],
+   "evidence_tag": "verified",
+   "exposing_archetypes": [
+    "BC-QA-02001"
+   ],
+   "id": "BC-MIS-02001",
+   "literature": [],
+   "name": "A rate is a difference",
+   "observable_errors": [
+    "BC-ERR-02001",
+    "BC-ERR-02002",
+    "BC-ERR-02004"
+   ],
+   "official_evidence": [
+    "sg-25:11"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-02008"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-02014",
+    "BC-SKL-02001",
+    "BC-SKL-02002",
+    "BC-SKL-02016"
+   ],
+   "sources": [
+    "sg-25:11"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-02003"
+   ],
+   "description": "The learner regards the limit definition as a ritual line, so the increment is set to zero immediately or the answer is produced by a rule and the definition is copied around it.",
+   "discriminating_probe": "Ask the student to point to the step in the work where the increment stops appearing in the denominator, and why it may be removed there.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-02002"
+   ],
+   "id": "BC-MIS-02002",
+   "literature": [],
+   "name": "The definition of the derivative is a formality to be written and then abandoned",
+   "observable_errors": [
+    "BC-ERR-02005",
+    "BC-ERR-02008"
+   ],
+   "official_evidence": [
+    "ced:61"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-02003"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-02008",
+    "BC-SKL-02009",
+    "BC-SKL-02027"
+   ],
+   "sources": [
+    "ced:61"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-02003",
+    "BC-CON-02004"
+   ],
+   "description": "The learner treats the limit as attaching to the answer rather than to every expression in the chain, so intermediate lines assert equalities that are false before the limit is taken.",
+   "discriminating_probe": "Ask the student to read the second line of the work as a sentence and say whether it is true for every increment.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-02002"
+   ],
+   "id": "BC-MIS-02003",
+   "literature": [],
+   "name": "The limit symbol is decoration on the final line",
+   "observable_errors": [
+    "BC-ERR-02006",
+    "BC-ERR-02007"
+   ],
+   "official_evidence": [
+    "ced:61"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-02002"
+   ],
+   "scope": "shared",
+   "severity": "medium",
+   "skills": [
+    "BC-SKL-02006",
+    "BC-SKL-02008",
+    "BC-SKL-02009"
+   ],
+   "sources": [
+    "ced:61"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-02006"
+   ],
+   "description": "The learner treats every indeterminate limit as an algebra problem, so a difference quotient whose underlying derivative is known is not recognised as such.",
+   "discriminating_probe": "Ask the student to name a function whose values appear in the numerator and what input it is evaluated at.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-02003"
+   ],
+   "id": "BC-MIS-02004",
+   "literature": [],
+   "name": "A limit is resolved only by algebra",
+   "observable_errors": [
+    "BC-ERR-02009",
+    "BC-ERR-02010"
+   ],
+   "official_evidence": [
+    "ced:66"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-02002"
+   ],
+   "scope": "shared",
+   "severity": "medium",
+   "skills": [
+    "BC-SKL-02035"
+   ],
+   "sources": [
+    "ced:66"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-02008"
+   ],
+   "description": "The learner treats the stated context as discharging a hypothesis, so continuity is asserted rather than derived from the differentiability stated in the stem.",
+   "discriminating_probe": "Ask what in the question establishes that the function is continuous.",
+   "downstream_dependencies": [],
+   "evidence_tag": "verified",
+   "exposing_archetypes": [
+    "BC-QA-02004"
+   ],
+   "id": "BC-MIS-02005",
+   "literature": [],
+   "name": "A hypothesis holds because the setting supplies it",
+   "observable_errors": [
+    "BC-ERR-02011"
+   ],
+   "official_evidence": [
+    "sg-25:12"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-02006"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-02019",
+    "BC-SKL-02020"
+   ],
+   "sources": [
+    "sg-25:12"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-02008",
+    "BC-CON-02009"
+   ],
+   "description": "The learner treats the implication as running in both directions, so continuity at a point is taken to supply a derivative there.",
+   "discriminating_probe": "Ask for a function continuous at a point at which it has no derivative, and then for one differentiable but not continuous there.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-02004",
+    "BC-QA-02005"
+   ],
+   "id": "BC-MIS-02006",
+   "literature": [],
+   "name": "Differentiability and continuity are the same property",
+   "observable_errors": [
+    "BC-ERR-02012"
+   ],
+   "official_evidence": [
+    "ced:63"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-02005"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-02019",
+    "BC-SKL-02021",
+    "BC-SKL-02024"
+   ],
+   "sources": [
+    "ced:63"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-02009"
+   ],
+   "description": "The learner decides whether a derivative exists from how the curve looks rather than from the one sided behaviour of the difference quotient, so a vertical tangent is read as a slope and a smooth looking point is assumed differentiable.",
+   "discriminating_probe": "Ask for the slope approached from each side as two separate numbers before the verdict is given.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-02005"
+   ],
+   "id": "BC-MIS-02007",
+   "literature": [],
+   "name": "Differentiability is a visual property of the graph",
+   "observable_errors": [
+    "BC-ERR-02013",
+    "BC-ERR-02014"
+   ],
+   "official_evidence": [
+    "ced:63"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-02006"
+   ],
+   "scope": "shared",
+   "severity": "medium",
+   "skills": [
+    "BC-SKL-02021",
+    "BC-SKL-02022",
+    "BC-SKL-02023"
+   ],
+   "sources": [
+    "ced:63"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-02007",
+    "BC-CON-02001"
+   ],
+   "description": "The learner treats units as optional, or copies them from the table header, so the compound units of a rate are not produced.",
+   "discriminating_probe": "Ask what the denominator of the quotient measures and what the resulting compound unit is.",
+   "downstream_dependencies": [],
+   "evidence_tag": "verified",
+   "exposing_archetypes": [
+    "BC-QA-02001"
+   ],
+   "id": "BC-MIS-02008",
+   "literature": [],
+   "name": "Units are decoration rather than part of the answer",
+   "observable_errors": [
+    "BC-ERR-02003"
+   ],
+   "official_evidence": [
+    "sg-25:11",
+    "sg-24:2"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-02001"
+   ],
+   "scope": "shared",
+   "severity": "medium",
+   "skills": [
+    "BC-SKL-02015",
+    "BC-SKL-02003"
+   ],
+   "sources": [
+    "sg-25:11",
+    "sg-24:2"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-02010",
+    "BC-CON-02011"
+   ],
+   "description": "The learner remembers the exponent decreasing but not the multiplication by the original exponent, and does not see constants and radicals as powers.",
+   "discriminating_probe": "Ask the student to differentiate a squared term from the definition and compare the result with the rule.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-02006"
+   ],
+   "id": "BC-MIS-02009",
+   "literature": [],
+   "name": "The power rule is a move on the exponent alone",
+   "observable_errors": [
+    "BC-ERR-02015",
+    "BC-ERR-02016",
+    "BC-ERR-02017"
+   ],
+   "official_evidence": [
+    "ced:64",
+    "ced:65"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-02010"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-02025",
+    "BC-SKL-02026",
+    "BC-SKL-02028",
+    "BC-SKL-02031"
+   ],
+   "sources": [
+    "ced:64",
+    "ced:65"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-02012"
+   ],
+   "description": "The learner applies the exponent move to transcendental functions, so the natural exponential is treated as a power and the trigonometric signs are not carried.",
+   "discriminating_probe": "Ask which of the base and the exponent contains the variable in the expression being differentiated.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-02007"
+   ],
+   "id": "BC-MIS-02010",
+   "literature": [],
+   "name": "Every function is differentiated by the power rule",
+   "observable_errors": [
+    "BC-ERR-02018",
+    "BC-ERR-02019"
+   ],
+   "official_evidence": [
+    "ced:66"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-02009"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-02032",
+    "BC-SKL-02033",
+    "BC-SKL-02034"
+   ],
+   "sources": [
+    "ced:66"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-02013"
+   ],
+   "description": "The learner extends the term by term rule to products, so the derivative of a product is taken as the product of the derivatives and supplied values are placed in the wrong positions.",
+   "discriminating_probe": "Ask the student to expand a simple product, differentiate term by term, and compare with the proposed answer.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-02008",
+    "BC-QA-02009"
+   ],
+   "id": "BC-MIS-02011",
+   "literature": [],
+   "name": "Differentiation distributes across a product",
+   "observable_errors": [
+    "BC-ERR-02020",
+    "BC-ERR-02024"
+   ],
+   "official_evidence": [
+    "ced:67"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-02012"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-02036",
+    "BC-SKL-02037",
+    "BC-SKL-02038"
+   ],
+   "sources": [
+    "ced:67"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-02014",
+    "BC-CON-02015"
+   ],
+   "description": "The learner treats the two numerator terms as interchangeable and the denominator as carrying no square, so sign and structure errors follow.",
+   "discriminating_probe": "Ask the student to apply the rule to a reciprocal whose derivative the power rule already gives and compare the two results.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-02008",
+    "BC-QA-02009",
+    "BC-QA-02010"
+   ],
+   "id": "BC-MIS-02012",
+   "literature": [],
+   "name": "The quotient rule is symmetric",
+   "observable_errors": [
+    "BC-ERR-02021",
+    "BC-ERR-02022",
+    "BC-ERR-02023",
+    "BC-ERR-02026"
+   ],
+   "official_evidence": [
+    "ced:68"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-02011"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-02039",
+    "BC-SKL-02040",
+    "BC-SKL-02041",
+    "BC-SKL-02042"
+   ],
+   "sources": [
+    "ced:68"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-02015"
+   ],
+   "description": "The learner memorises the four derivatives without the rewriting that produces them, so signs and cofunction pairings are exchanged and no recovery route is available.",
+   "discriminating_probe": "Ask the student to obtain the derivative from the sine and cosine form rather than from memory.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-02010"
+   ],
+   "id": "BC-MIS-02013",
+   "literature": [],
+   "name": "The remaining trigonometric derivatives are independent facts",
+   "observable_errors": [
+    "BC-ERR-02025",
+    "BC-ERR-02026"
+   ],
+   "official_evidence": [
+    "ced:69"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-02012"
+   ],
+   "scope": "shared",
+   "severity": "medium",
+   "skills": [
+    "BC-SKL-02043",
+    "BC-SKL-02044",
+    "BC-SKL-02045",
+    "BC-SKL-02046"
+   ],
+   "sources": [
+    "ced:69"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-02005"
+   ],
+   "description": "The learner treats the two numbers computed at the point of tangency as playing the same role, so the height is used as a slope or the slope as a height.",
+   "discriminating_probe": "Ask which of the two computed numbers has the units of a slope.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-02011"
+   ],
+   "id": "BC-MIS-02014",
+   "literature": [],
+   "name": "The derivative and the function value are interchangeable at a point",
+   "observable_errors": [
+    "BC-ERR-02027",
+    "BC-ERR-02028"
+   ],
+   "official_evidence": [
+    "ced:61"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-02015"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-02012",
+    "BC-SKL-02013"
+   ],
+   "sources": [
+    "ced:61"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-02004"
+   ],
+   "description": "The learner does not read the notation as naming a function, an independent variable, and possibly a point of evaluation, so the Leibniz form is treated as a fraction and the derivative function is confused with its value.",
+   "discriminating_probe": "Ask what the symbol denotes and whether the object it names depends on the variable.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-02012",
+    "BC-QA-02013"
+   ],
+   "id": "BC-MIS-02015",
+   "literature": [],
+   "name": "Derivative notation is a set of interchangeable labels",
+   "observable_errors": [
+    "BC-ERR-02029",
+    "BC-ERR-02030",
+    "BC-ERR-02031"
+   ],
+   "official_evidence": [
+    "ced:61"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-02014"
+   ],
+   "scope": "shared",
+   "severity": "medium",
+   "skills": [
+    "BC-SKL-02010",
+    "BC-SKL-02011",
+    "BC-SKL-02018"
+   ],
+   "sources": [
+    "ced:61"
+   ]
+  }
+ ],
+ "registry": "misconceptions"
+}

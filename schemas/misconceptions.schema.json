@@ -1,0 +1,146 @@
+{
+ "type": "object",
+ "required": [
+  "misconceptions"
+ ],
+ "properties": {
+  "misconceptions": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string"
+     },
+     "name": {
+      "type": "string",
+      "minLength": 3
+     },
+     "scope": {
+      "enum": [
+       "AB_only",
+       "shared",
+       "BC_only",
+       "n/a"
+      ]
+     },
+     "evidence_tag": {
+      "enum": [
+       "verified",
+       "single-source",
+       "inferred",
+       "uncertain"
+      ]
+     },
+     "sources": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "notes": {
+      "type": "string"
+     },
+     "created": {
+      "type": "string"
+     },
+     "updated": {
+      "type": "string"
+     },
+     "status": {
+      "enum": [
+       "active",
+       "retired"
+      ]
+     },
+     "superseded_by": {
+      "type": "string"
+     },
+     "description": {
+      "type": "string"
+     },
+     "concepts": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "skills": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "observable_errors": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "exposing_archetypes": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "causal_prerequisites": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "rival_misconceptions": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "official_evidence": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "literature": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "severity": {
+      "enum": [
+       "low",
+       "medium",
+       "high",
+       "unknown"
+      ]
+     },
+     "downstream_dependencies": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "discriminating_probe": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "id",
+     "name",
+     "scope",
+     "evidence_tag",
+     "sources",
+     "description",
+     "concepts",
+     "observable_errors",
+     "exposing_archetypes",
+     "rival_misconceptions",
+     "severity"
+    ],
+    "additionalProperties": true
+   }
+  }
+ },
+ "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

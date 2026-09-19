@@ -1,0 +1,279 @@
+{
+ "registry": "diagnostic_signals",
+ "signals": [
+  {
+   "archetype": "BC-QA-03001",
+   "consistent_with": [
+    "BC-ERR-03001",
+    "BC-MIS-03001"
+   ],
+   "distinguish_by": "Ask for the derivative of the inner function alone; a correct answer points to an omission rather than to an absent concept.",
+   "evidence_tag": "single-source",
+   "id": "BC-SIG-03001",
+   "mastery_state": "partially_mastered",
+   "name": "Outer derivative correct with no inner factor",
+   "observation": "The response shows the derivative of the outer function evaluated at the inner expression and nothing else.",
+   "scope": "shared",
+   "skill": "BC-SKL-03002",
+   "sources": [
+    "ced:72"
+   ]
+  },
+  {
+   "archetype": "BC-QA-03001",
+   "consistent_with": [
+    "BC-ERR-03002",
+    "BC-MIS-03001"
+   ],
+   "distinguish_by": "Ask the student to list the layers in order; a correct list points to a bookkeeping slip.",
+   "evidence_tag": "single-source",
+   "id": "BC-SIG-03002",
+   "mastery_state": "partially_mastered",
+   "name": "All layers present with one factor misplaced",
+   "observation": "Every layer has been differentiated but one factor is evaluated at the wrong expression or attached to the wrong term.",
+   "scope": "shared",
+   "skill": "BC-SKL-03003",
+   "sources": [
+    "ced:72"
+   ]
+  },
+  {
+   "archetype": "BC-QA-03002",
+   "consistent_with": [
+    "BC-ERR-03003",
+    "BC-MIS-03002"
+   ],
+   "distinguish_by": "Ask for the value of the inner function on its own before the derivative is requested.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-03003",
+   "mastery_state": "partially_mastered",
+   "name": "Chain rule written symbolically then evaluated at one input",
+   "observation": "The symbolic chain rule is correct but both derivatives are read at the same input from the table or the graph.",
+   "scope": "shared",
+   "skill": "BC-SKL-03004",
+   "sources": [
+    "ced:75"
+   ]
+  },
+  {
+   "archetype": "BC-QA-03004",
+   "consistent_with": [
+    "BC-ERR-03007",
+    "BC-ERR-03008",
+    "BC-MIS-03005"
+   ],
+   "distinguish_by": "Ask the student to differentiate the mixed term alone and to name the rule used.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-03004",
+   "mastery_state": "partially_mastered",
+   "name": "Some y terms carry dy/dx and others do not",
+   "observation": "The implicit differentiation attaches the factor to isolated y terms but not to the y inside a mixed product.",
+   "scope": "shared",
+   "skill": "BC-SKL-03007",
+   "sources": [
+    "cr-23:23"
+   ]
+  },
+  {
+   "archetype": "BC-QA-03004",
+   "consistent_with": [
+    "BC-ERR-03010",
+    "BC-PRQ-03002"
+   ],
+   "distinguish_by": "Present a differentiated equation already written and ask only for the algebra; success points to a procedural gap rather than a calculus one.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-03005",
+   "mastery_state": "prerequisite_gap",
+   "name": "Differentiated equation correct but never solved for dy/dx",
+   "observation": "The response stops at a correct differentiated equation without collecting or factoring the dy/dx terms.",
+   "scope": "shared",
+   "skill": "BC-SKL-03010",
+   "sources": [
+    "cr-23:22"
+   ]
+  },
+  {
+   "archetype": "BC-QA-03004",
+   "consistent_with": [
+    "BC-ERR-03011"
+   ],
+   "distinguish_by": "Re-substitute the coordinates; if the arithmetic then works out, the gap is arithmetic rather than conceptual.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-03006",
+   "mastery_state": "partially_mastered",
+   "name": "Correct dy/dx with a substitution slip at the point",
+   "observation": "The expression for dy/dx is correct but the reported slope does not follow from substituting the stated coordinates.",
+   "scope": "shared",
+   "skill": "BC-SKL-03011",
+   "sources": [
+    "crabbc-25:24"
+   ]
+  },
+  {
+   "archetype": "BC-QA-03005",
+   "consistent_with": [
+    "BC-ERR-03013",
+    "BC-MIS-03007"
+   ],
+   "distinguish_by": "Ask whether the reported value determines a point, and how many points it determines.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-03007",
+   "mastery_state": "partially_mastered",
+   "name": "Tangent condition solved but the curve equation not used",
+   "observation": "The correct condition on dy/dx is set and solved, and the response stops without substituting into the defining equation.",
+   "scope": "shared",
+   "skill": "BC-SKL-03012",
+   "sources": [
+    "cr-23:23",
+    "cr-24:18"
+   ]
+  },
+  {
+   "archetype": "BC-QA-03006",
+   "consistent_with": [
+    "BC-ERR-03014",
+    "BC-MIS-03009"
+   ],
+   "distinguish_by": "Ask what happens to the formula when the original derivative is zero at the matching input.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-03008",
+   "mastery_state": "partially_mastered",
+   "name": "Inverse rule written without the nonzero condition",
+   "observation": "The reciprocal formula is stated correctly and no condition on the original derivative is mentioned.",
+   "scope": "shared",
+   "skill": "BC-SKL-03015",
+   "sources": [
+    "ced:77"
+   ]
+  },
+  {
+   "archetype": "BC-QA-03006",
+   "consistent_with": [
+    "BC-ERR-03015",
+    "BC-MIS-03008",
+    "BC-PRQ-03003"
+   ],
+   "distinguish_by": "Ask for the matching input alone; a correct answer points to a slip rather than to a gap in the inverse function idea.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-03009",
+   "mastery_state": "prerequisite_gap",
+   "name": "Reciprocal taken at the wrong input",
+   "observation": "The response reports the reciprocal of the derivative of the original function at the value supplied in the prompt.",
+   "scope": "shared",
+   "skill": "BC-SKL-03017",
+   "sources": [
+    "ced:77"
+   ]
+  },
+  {
+   "archetype": "BC-QA-03007",
+   "consistent_with": [
+    "BC-ERR-03018",
+    "BC-MIS-03010",
+    "BC-MIS-03001"
+   ],
+   "distinguish_by": "Replace the inner expression by a single letter and ask for the derivative again.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-03010",
+   "mastery_state": "partially_mastered",
+   "name": "Correct inverse trigonometric formula with the inner expression missing",
+   "observation": "The standard formula appears with the variable in place of the inner expression, or without the inner derivative factor.",
+   "scope": "shared",
+   "skill": "BC-SKL-03022",
+   "sources": [
+    "ced:78"
+   ]
+  },
+  {
+   "archetype": "BC-QA-03009",
+   "consistent_with": [
+    "BC-ERR-03006",
+    "BC-ERR-03019",
+    "BC-MIS-03012"
+   ],
+   "distinguish_by": "Ask the student to name the operation applied last when the expression is evaluated at a number.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-03011",
+   "mastery_state": "partially_mastered",
+   "name": "Correct rules applied in the wrong order",
+   "observation": "Every rule the expression needs appears in the work but the nesting order is wrong, so the factors attach to the wrong pieces.",
+   "scope": "shared",
+   "skill": "BC-SKL-03028",
+   "sources": [
+    "cr-22:21"
+   ]
+  },
+  {
+   "archetype": "BC-QA-03009",
+   "consistent_with": [
+    "BC-ERR-03020"
+   ],
+   "distinguish_by": "Compare the two lines at a single numerical input to locate the algebra slip.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-03012",
+   "mastery_state": "partially_mastered",
+   "name": "Correct derivative spoiled by a later simplification",
+   "observation": "A correct derivative appears on one line and an incorrect simplified form on the next.",
+   "scope": "shared",
+   "skill": "BC-SKL-03029",
+   "sources": [
+    "cr-24:19",
+    "crabbc-25:26"
+   ]
+  },
+  {
+   "archetype": "BC-QA-03008",
+   "consistent_with": [
+    "BC-ERR-03021",
+    "BC-MIS-03013"
+   ],
+   "distinguish_by": "Ask the student to restate the order requested before checking the work.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-03013",
+   "mastery_state": "partially_mastered",
+   "name": "Differentiation stops one order short",
+   "observation": "The work is correct as far as it goes but the reported derivative is one order lower than the order requested.",
+   "scope": "shared",
+   "skill": "BC-SKL-03030",
+   "sources": [
+    "ced:80"
+   ]
+  },
+  {
+   "archetype": "BC-QA-03008",
+   "consistent_with": [
+    "BC-ERR-03022",
+    "BC-MIS-03014"
+   ],
+   "distinguish_by": "Ask the student to read the line aloud and to name each symbol.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-03014",
+   "mastery_state": "partially_mastered",
+   "name": "Notation mixed within a single line",
+   "observation": "Prime notation and Leibniz notation appear in the same equation in ways that do not agree.",
+   "scope": "shared",
+   "skill": "BC-SKL-03032",
+   "sources": [
+    "crabbc-25:25"
+   ]
+  },
+  {
+   "archetype": "BC-QA-03008",
+   "consistent_with": [
+    "BC-ERR-03023",
+    "BC-MIS-03006"
+   ],
+   "distinguish_by": "Ask for the value of the first derivative at the point as a separate question.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-03015",
+   "mastery_state": "partially_mastered",
+   "name": "Product and chain rules correct with the first derivative value omitted",
+   "observation": "The second derivative expression is fully correct and the numerical evaluation ignores the value of the first derivative at the point.",
+   "scope": "shared",
+   "skill": "BC-SKL-03034",
+   "sources": [
+    "sg-25:20"
+   ]
+  }
+ ]
+}

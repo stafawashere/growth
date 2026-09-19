@@ -1,0 +1,3071 @@
+{
+ "registry": "skills",
+ "skills": [
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08003 (a calculator value treated as standing on its own)",
+     "BC-MIS-08009 (a reported result treated as complete once the number is named)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08001 (the integrand has no elementary antiderivative, so the written setup is the only evidence of method)"
+    ],
+    "mastered_if": "The page carries the integral expression with its limits and its differential, visible evidence of the division by the interval length, and a value reported to three places after the decimal point; stored values rather than truncated decimals feed the final computation, so neither BC-ERR-08004 nor BC-ERR-08005 is present.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "A correct decimal appears alone with no integral and no quotient written down, which is BC-ERR-08004; or the setup is complete and an intermediate decimal is truncated to two or three places before the last step, moving the reported value, which is BC-ERR-08005.",
+    "prerequisite_gap_if": "The answer is correct but given to one place, or rounded rather than truncated against the convention, which is a reporting gap at BC-PRQ-08006 rather than a failure of the average value setup itself.",
+    "remediation_target": "BC-MIS-08003 (that the written expression, not the calculator display, is the mathematical claim) for the conceptual case; BC-PRQ-08006 (three place reporting and storing unrounded intermediates) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-08001"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-08004",
+    "BC-ERR-08005"
+   ],
+   "concept": "BC-CON-08001",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Show the definite integral together with evidence of division by the length of the interval, then report the value accurate to three places after the decimal point.",
+   "description_plain": "Write the integral and the division before reporting the decimal the calculator gives.",
+   "diagnostic_signals": [
+    "BC-SIG-08001"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-4B1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-08003",
+   "learning_objectives": [
+    "BC-LO-CHA-4B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-08003"
+   ],
+   "name": "Present the calculator setup for an average value and report it",
+   "official_evidence": [
+    "sg-25:2",
+    "sg-25:3",
+    "sg-23:4",
+    "BC-FRQ-2019-Q1-A",
+    "BC-FRQ-2019-Q1-B",
+    "BC-FRQ-2019-Q2-B",
+    "BC-FRQ-2021-Q1-D",
+    "BC-FRQ-2014-Q1-C",
+    "BC-FRQ-2022-Q1-B",
+    "BC-FRQ-2023-Q1-C",
+    "BC-FRQ-2025-Q1-A",
+    "BC-FRQ-2026-Q2-D",
+    "BC-MCQ-PE2012-035",
+    "BC-MCQ-PE2012-042"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08006",
+    "BC-SKL-08001"
+   ],
+   "representations": [
+    "BC-REP-09",
+    "BC-REP-05"
+   ],
+   "scope": "shared",
+   "sources": [
+    "sg-25:2",
+    "sg-25:3",
+    "sg-23:4"
+   ],
+   "topic": "BC-TOP-0801",
+   "unit": "BC-UNIT-08",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08001 (average value and average rate of change treated as one quantity)",
+     "BC-MIS-08002 (the integral itself read as the average)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08001 (asks for the mean of the values)",
+     "BC-QA-08002 (asks for an average rate of change and then for the instant matching it, so the two quantities appear in one question)"
+    ],
+    "mastered_if": "Given a prompt, the response selects the integral quotient when the mean of the function values is wanted and the difference quotient of the endpoint values when the average rate of change is wanted, and the units attached to the answer are the units of f in the first case and units of f per unit of the input in the second; BC-ERR-08006 does not appear in either direction.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "One of the two quantities is built correctly and the other is answered with the first, which is BC-ERR-08006; the specific pattern in BC-SIG-08002 is the change in the function over the change in the input reported under the name average value.",
+    "prerequisite_gap_if": "Net change over the interval cannot be formed at all, so neither quotient can be assembled, which is BC-SKL-06036 rather than a discrimination gap; misreading which symbol in the prompt names the function is BC-PRQ-06005.",
+    "remediation_target": "BC-MIS-08001 (that one averages function values and the other averages a rate) for the conceptual case; BC-SKL-06036 (forming net change over an interval) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-08001",
+    "BC-QA-08002"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-08006"
+   ],
+   "concept": "BC-CON-08002",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a prompt, select the integral quotient when the average of the function values is wanted and the difference quotient when the average rate of change is wanted.",
+   "description_plain": "Decide which of the two averages a question is asking for before computing.",
+   "diagnostic_signals": [
+    "BC-SIG-08002"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-4B1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-08004",
+   "learning_objectives": [
+    "BC-LO-CHA-4B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-08001"
+   ],
+   "name": "Distinguish average value from average rate of change",
+   "official_evidence": [
+    "sg-25:4",
+    "crabbc-25:3",
+    "BC-FRQ-2019-Q1-B",
+    "BC-FRQ-2021-Q1-D",
+    "BC-FRQ-2014-Q1-C",
+    "BC-FRQ-2023-Q1-C",
+    "BC-FRQ-2024-Q1-B",
+    "BC-FRQ-2025-Q1-A",
+    "BC-FRQ-2025-Q1-B",
+    "BC-FRQ-2026-Q5-C",
+    "BC-MCQ-PE2012-035"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-SKL-06036",
+    "BC-SKL-08001"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:152",
+    "sg-25:4",
+    "crabbc-25:3"
+   ],
+   "topic": "BC-TOP-0801",
+   "unit": "BC-UNIT-08",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08004 (distance travelled and net change in position treated as one quantity)",
+     "BC-MIS-08005 (speed treated as another name for velocity)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08003 (both displacement and total distance are asked in the same question, isolating the integrand choice)"
+    ],
+    "mastered_if": "The integrand is the absolute value of the velocity function, the limits are the time interval stated, and the value returned is nonnegative and named as total distance travelled; the absolute value bars are written in the expression rather than applied to the answer, and neither BC-ERR-08008 nor BC-ERR-08009 appears.",
+    "next_dependent_skills": [
+     "BC-SKL-09025"
+    ],
+    "partially_mastered_if": "The integral is written over the right interval with velocity itself as the integrand and the result called distance, which is BC-ERR-08008 with BC-SIG-08003 as its observed form; or the word speed is used while the expression keeps the signed velocity, which is BC-ERR-08009.",
+    "prerequisite_gap_if": "The absolute value of a sign changing expression cannot be unpacked piecewise, so the integrand is never formed, which is BC-PRQ-08003 rather than a distance gap.",
+    "remediation_target": "BC-MIS-08005 (speed as the magnitude of velocity) for the conceptual case; BC-PRQ-08003 (absolute value as a piecewise definition inside an integrand) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-08003"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-08008",
+    "BC-ERR-08009"
+   ],
+   "concept": "BC-CON-08004",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-09025"
+   ],
+   "description_formal": "Given a velocity function and a time interval, write and evaluate the definite integral of the absolute value of velocity over that interval and report it as total distance travelled.",
+   "description_plain": "Integrate the absolute value of velocity over the interval.",
+   "diagnostic_signals": [
+    "BC-SIG-08003"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-4C1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-08007",
+   "learning_objectives": [
+    "BC-LO-CHA-4C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-08004"
+   ],
+   "name": "Compute total distance as the definite integral of speed",
+   "official_evidence": [
+    "BC-FRQ-2015-Q3-B",
+    "BC-FRQ-2023-Q2-D",
+    "BC-FRQ-2024-Q2-B"
+   ],
+   "practice_skills": [
+    "BC-MPS-1D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08003",
+    "BC-SKL-08006"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-09"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:153"
+   ],
+   "topic": "BC-TOP-0802",
+   "unit": "BC-UNIT-08",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08004 (distance travelled and net change in position treated as one quantity)",
+     "BC-SKL-08006 (displacement, which needs no splitting)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08003 (velocity has an interior zero with a sign change, so the split is what separates the two totals)"
+    ],
+    "mastered_if": "The equation velocity equal to zero is solved on the interval, the resulting times are used to cut the interval into subintervals, velocity is integrated on each piece, and the absolute values of those pieces are summed; the answer exceeds the absolute displacement whenever a sign change occurs, and BC-ERR-08010 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The sign change is acknowledged in words while one integral is taken over the whole interval with a single absolute value at the end, which is BC-ERR-08010 and returns a total that is too small by twice the negative lobe.",
+    "prerequisite_gap_if": "The equation velocity equal to zero is not solved correctly, so the cut points are wrong before any integration, which is BC-PRQ-08001; not rewriting the absolute value piecewise on each subinterval is BC-PRQ-08003.",
+    "remediation_target": "BC-MIS-08004 (why the negative lobe adds to distance) for the conceptual case; BC-PRQ-08001 (solving for the times where velocity vanishes) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-08003"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-08010"
+   ],
+   "concept": "BC-CON-08004",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Solve velocity equal to zero on the interval, integrate velocity on each subinterval, and sum the absolute values of the results to obtain total distance.",
+   "description_plain": "Break the interval where the velocity crosses zero, then add the pieces without their signs.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-4C1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-08008",
+   "learning_objectives": [
+    "BC-LO-CHA-4C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-08004"
+   ],
+   "name": "Split a time interval at the sign changes of velocity",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-1D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08001",
+    "BC-PRQ-08003",
+    "BC-SKL-08007",
+    "BC-SKL-06031"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:153"
+   ],
+   "topic": "BC-TOP-0802",
+   "unit": "BC-UNIT-08",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08006 (the integral of a rate read as the amount of the quantity)",
+     "BC-SKL-08006 (displacement, which is the integral alone)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08003 (a position value is requested from an initial condition)",
+     "BC-QA-08004 (the same structure with a contextual rate rather than a velocity)"
+    ],
+    "mastered_if": "Position at time b is written as the given position at time a plus the definite integral of velocity from a to b, the initial value appearing as an explicit term in the expression rather than only in words, and the reported coordinate changes when the initial position changes; BC-ERR-08011 is absent.",
+    "next_dependent_skills": [
+     "BC-SKL-09026"
+    ],
+    "partially_mastered_if": "The definite integral of velocity between the two times is evaluated correctly and reported as the position, the known value at the earlier time never entering the expression, which is BC-ERR-08011 and the state observed in BC-SIG-08004.",
+    "prerequisite_gap_if": "The pattern initial value plus accumulated change is not available in the simpler unit 6 setting either, which is BC-SKL-06037 rather than a motion gap; reading which symbol carries the initial position is BC-PRQ-06005.",
+    "remediation_target": "BC-MIS-08006 (that the integral gives change and not the amount) for the conceptual case; BC-SKL-06037 (assembling final value from initial value and accumulation) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-08003",
+    "BC-QA-08004"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-08011"
+   ],
+   "concept": "BC-CON-08005",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-09026"
+   ],
+   "description_formal": "Given an initial position at time a and a velocity function, evaluate the position at time b as the initial position plus the definite integral of velocity from a to b.",
+   "description_plain": "Add the accumulated change to the starting position.",
+   "diagnostic_signals": [
+    "BC-SIG-08004"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-4C1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-08009",
+   "learning_objectives": [
+    "BC-LO-CHA-4C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-08006"
+   ],
+   "name": "Determine a position value from an initial position and velocity",
+   "official_evidence": [
+    "sg-24:7",
+    "BC-FRQ-2014-Q4-C",
+    "BC-FRQ-2018-Q1-C"
+   ],
+   "practice_skills": [
+    "BC-MPS-1D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-SKL-06037",
+    "BC-SKL-08006"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-05"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:153",
+    "sg-24:7"
+   ],
+   "topic": "BC-TOP-0802",
+   "unit": "BC-UNIT-08",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08004 (distance travelled and net change in position treated as one quantity)",
+     "BC-MIS-08005 (speed treated as another name for velocity)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08003 (the wording alone decides the integrand, with no computation to hide behind)"
+    ],
+    "mastered_if": "The response classifies the requested quantity from the wording, saying that displacement or net change in position calls for the integral of velocity and that total distance travelled calls for the integral of the absolute value of velocity, and it names the integrand each choice requires before any computation; BC-ERR-08008 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The two quantities are described in words but the same integrand is named for both, which is BC-ERR-08008 in its classification form and matches BC-SIG-08003, where one value is offered for both questions in the same part.",
+    "prerequisite_gap_if": "The phrase net change cannot be tied to the function notation in the stem at all, which is BC-PRQ-06005 rather than a discrimination gap.",
+    "remediation_target": "BC-MIS-08004 (the distinction the two words carry) for the conceptual case; BC-SKL-08007 (writing the absolute value integrand once the classification is made) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-08003"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-08008"
+   ],
+   "concept": "BC-CON-08004",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a motion prompt, classify the requested quantity as displacement or as total distance travelled and name the integrand each one requires.",
+   "description_plain": "Read whether the question wants net change in position or the length of the trip.",
+   "diagnostic_signals": [
+    "BC-SIG-08003"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-4C1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-08011",
+   "learning_objectives": [
+    "BC-LO-CHA-4C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-08004",
+    "BC-MIS-08005"
+   ],
+   "name": "Select displacement or total distance from the wording of a prompt",
+   "official_evidence": [
+    "cr-23:8",
+    "cr-24:8"
+   ],
+   "practice_skills": [
+    "BC-MPS-1D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-SKL-08006",
+    "BC-SKL-08007"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-05"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:153",
+    "cr-23:8",
+    "cr-24:8"
+   ],
+   "topic": "BC-TOP-0802",
+   "unit": "BC-UNIT-08",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08008 (a local extremum argument taken to settle an absolute extremum)",
+     "BC-SKL-05020 (classifying an interior critical point, which is the local question)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08006 (the amount is defined by an integral on a closed interval, so an endpoint can carry the maximum)"
+    ],
+    "mastered_if": "The net rate is set equal to zero and solved on the interval, the interior candidates are listed together with both endpoints, and the maximum is settled either by a table of the amount at every candidate or by a stated sign change of the net rate from positive to negative with the uniqueness of that change asserted; BC-ERR-08015 and BC-ERR-08016 are both absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The critical time is found correctly and the justification is a first or second derivative test presented as settling an absolute maximum, which is BC-ERR-08015; or a candidates table is built that contains only the interior critical time, which is BC-ERR-08016, the sign chart without endpoint comparison recorded in BC-SIG-08005.",
+    "prerequisite_gap_if": "The equation net rate equal to zero is solved incorrectly, so the candidate list is wrong before any justification, which is BC-PRQ-08001; classifying a critical point from a sign change at all is BC-SKL-05020, and writing a justification that covers every candidate is BC-SKL-05028.",
+    "remediation_target": "BC-MIS-08008 (why an interval maximum needs the endpoints) for the conceptual case; BC-SKL-05028 (writing the global justification) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-08006"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-08015",
+    "BC-ERR-08016"
+   ],
+   "concept": "BC-CON-08008",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Set the net rate equal to zero, identify the candidate times together with the endpoints, and justify the absolute maximum either by a sign change of the net rate with uniqueness or by evaluating the amount at every candidate.",
+   "description_plain": "Find where the net rate changes from positive to negative, then compare the candidates.",
+   "diagnostic_signals": [
+    "BC-SIG-08005"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-4D1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-08014",
+   "learning_objectives": [
+    "BC-LO-CHA-4D",
+    "BC-LO-CHA-4E"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-08008"
+   ],
+   "name": "Determine when an accumulated amount is maximal and justify globally",
+   "official_evidence": [
+    "sg-25:5",
+    "crabbc-25:4",
+    "BC-FRQ-2019-Q1-C",
+    "BC-FRQ-2013-Q1-C",
+    "BC-FRQ-2013-Q1-D",
+    "BC-FRQ-2022-Q1-D",
+    "BC-FRQ-2015-Q1-B",
+    "BC-FRQ-2015-Q1-C",
+    "BC-FRQ-2018-Q1-D"
+   ],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08001",
+    "BC-SKL-05020",
+    "BC-SKL-05028",
+    "BC-SKL-08013",
+    "BC-SKL-08012",
+    "BC-SKL-05026"
+   ],
+   "representations": [
+    "BC-REP-05",
+    "BC-REP-09"
+   ],
+   "scope": "shared",
+   "sources": [
+    "sg-25:5",
+    "crabbc-25:4"
+   ],
+   "topic": "BC-TOP-0803",
+   "unit": "BC-UNIT-08",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08003 (a calculator value treated as standing on its own)",
+     "BC-MIS-08009 (a result treated as complete once the number is named)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08004 (an applied amount must be both evaluated and reported in context)"
+    ],
+    "mastered_if": "The integral is evaluated by an antiderivative or with technology and the number is reported in the context with the units of the accumulated quantity, to three places after the decimal point when technology is used; unrounded intermediates feed the final step, so neither BC-ERR-08005 nor BC-ERR-08007 appears.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The evaluation is correct and the number is reported bare, without the units of the accumulated quantity, which is BC-ERR-08007; or an intermediate decimal is truncated before the last computation and the reported value moves in the third place, which is BC-ERR-08005.",
+    "prerequisite_gap_if": "The reported value carries the wrong number of decimal places or is rounded against the stated convention, which is BC-PRQ-08006 rather than an evaluation gap.",
+    "remediation_target": "BC-MIS-08009 (what a reported accumulation must state) for the conceptual case; BC-PRQ-08006 (storing intermediates and reporting to three places) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-08004"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-08005",
+    "BC-ERR-08007"
+   ],
+   "concept": "BC-CON-08006",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Evaluate the definite integral, by antidifferentiation or with technology, and report the result as the quantity the context asks for, at the required decimal accuracy.",
+   "description_plain": "Compute the integral, then answer the question in a sentence with units.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-4E1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-08017",
+   "learning_objectives": [
+    "BC-LO-CHA-4D",
+    "BC-LO-CHA-4E"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-08003"
+   ],
+   "name": "Evaluate an applied accumulation integral and report it in context",
+   "official_evidence": [
+    "sg-25:14",
+    "frq-25:6",
+    "BC-FRQ-2019-Q1-A",
+    "BC-FRQ-2013-Q1-B",
+    "BC-FRQ-2015-Q1-A",
+    "BC-FRQ-2024-Q1-C",
+    "BC-FRQ-2025-Q3-D",
+    "BC-FRQ-2026-Q1-C",
+    "BC-FRQ-2018-Q1-A",
+    "BC-FRQ-2018-Q1-C",
+    "BC-FRQ-2018-Q2-B",
+    "BC-MCQ-CED-015"
+   ],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08006",
+    "BC-SKL-08016",
+    "BC-SKL-06034"
+   ],
+   "representations": [
+    "BC-REP-09",
+    "BC-REP-05"
+   ],
+   "scope": "shared",
+   "sources": [
+    "sg-25:14",
+    "frq-25:6"
+   ],
+   "topic": "BC-TOP-0803",
+   "unit": "BC-UNIT-08",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08010 (the area between curves read as the integral of one bounding curve)",
+     "BC-MIS-08011 (the order of subtraction treated as immaterial)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08008 (the region is bounded above and below by curves rather than by the axis)"
+    ],
+    "mastered_if": "The area integral is written with integrand the upper function minus the lower function, dx as the differential, and limits that are the x values bounding the region, the difference parenthesised so that the subtraction applies to the whole lower expression; neither BC-ERR-08020 nor BC-ERR-08018 appears.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The limits and the pair of functions are right while the difference is reversed, which is BC-ERR-08020; or the integrand and the limits are complete and no dx is written, which is BC-ERR-08018.",
+    "prerequisite_gap_if": "Area read from a graph as a definite integral is not available, so the difference of two curves has nothing to attach to, which is BC-SKL-06028; misreading which expression is f and which is g in the stem is BC-PRQ-06005.",
+    "remediation_target": "BC-MIS-08010 (that the second boundary is subtracted rather than ignored) for the conceptual case; BC-ERR-08018 (differential and limits on the written expression) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-08008"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-08020",
+    "BC-ERR-08018"
+   ],
+   "concept": "BC-CON-08010",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Write a definite integral with integrand the difference of the two functions in the order upper minus lower, with the differential dx and the limits taken from the boundary.",
+   "description_plain": "Write the integral of the top curve minus the bottom curve, dx.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-5A1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-08019",
+   "learning_objectives": [
+    "BC-LO-CHA-5A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-08010"
+   ],
+   "name": "Set up the area integral of upper minus lower with respect to x",
+   "official_evidence": [
+    "sg-23:16",
+    "BC-FRQ-2021-Q3-A",
+    "BC-FRQ-2014-Q5-A",
+    "BC-FRQ-2022-Q5-A",
+    "BC-FRQ-2023-Q5-A"
+   ],
+   "practice_skills": [
+    "BC-MPS-4C"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-SKL-06028",
+    "BC-SKL-08018",
+    "BC-SKL-08020"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:155",
+    "sg-23:16"
+   ],
+   "topic": "BC-TOP-0804",
+   "unit": "BC-UNIT-08",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08011 (the order of subtraction treated as immaterial)",
+     "BC-MIS-08010 (the area between curves read as the integral of one bounding curve)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08008 (a numerical area must be produced from the written integral)"
+    ],
+    "mastered_if": "The area integral is evaluated either by an antiderivative with the limits substituted in the correct variable or with technology, and a nonnegative number is reported as the area; when a substitution is used the limits are converted to the new variable or the antiderivative is returned to the original one, and neither BC-ERR-08021 nor BC-ERR-08022 appears.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The reversed difference is written and then set equal to the positive area, so a correct number sits under an incorrect equality, which is BC-ERR-08021; or an antiderivative found by substitution is evaluated at the original limits, which is BC-ERR-08022; the negative value reported without comment is BC-SIG-08007.",
+    "prerequisite_gap_if": "The antiderivative itself is wrong because a fractional or negative exponent is mishandled, which is BC-PRQ-06002; evaluating a definite integral by antidifferentiation and endpoint substitution at all is BC-SKL-06034.",
+    "remediation_target": "BC-MIS-08011 (why a negative value cannot be relabelled as the area) for the conceptual case; BC-SKL-06034 (evaluating with correctly converted limits) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-08008"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-08021",
+    "BC-ERR-08022"
+   ],
+   "concept": "BC-CON-08010",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Evaluate the area integral by an antiderivative or with technology and report a nonnegative value as the area of the region.",
+   "description_plain": "Antidifferentiate or use technology, then state the area.",
+   "diagnostic_signals": [
+    "BC-SIG-08007"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5A1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-08022",
+   "learning_objectives": [
+    "BC-LO-CHA-5A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-08010"
+   ],
+   "name": "Evaluate an area integral and report the area",
+   "official_evidence": [
+    "sg-23:16",
+    "sg-23:17",
+    "BC-FRQ-2014-Q5-A",
+    "BC-FRQ-2022-Q5-A"
+   ],
+   "practice_skills": [
+    "BC-MPS-4C"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06002",
+    "BC-SKL-06034",
+    "BC-SKL-08019"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-09"
+   ],
+   "scope": "shared",
+   "sources": [
+    "sg-23:16",
+    "sg-23:17"
+   ],
+   "topic": "BC-TOP-0804",
+   "unit": "BC-UNIT-08",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08013 (the differential treated as changeable without changing the integrand)",
+     "BC-SKL-08018 (the same comparison for upper and lower in x)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08009 (horizontal slices, where right and left replace upper and lower)"
+    ],
+    "mastered_if": "Both curves are expressed in y, a y value interior to the interval is substituted into each, and the curve returning the larger x is named as the right boundary; that decision then places the right expression first in the difference, and BC-ERR-08020 does not appear in the integrand that follows.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The comparison at the interior y is carried out correctly and the integrand is still written left minus right, giving a negative value that is reported or silently made positive, which is BC-ERR-08020 with the pattern recorded in BC-SIG-08007.",
+    "prerequisite_gap_if": "Substituting a y value into an expression written in y is itself mishandled, which is BC-PRQ-06005 rather than an ordering gap.",
+    "remediation_target": "BC-MIS-08013 (which variable the comparison is made in) for the conceptual case; BC-SKL-08025 (placing the chosen order into the dy integral) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-08009"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-08020"
+   ],
+   "concept": "BC-CON-08012",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given two curves written in y and an interval of y values, determine which one gives the larger x value there.",
+   "description_plain": "Decide which graph is farther right before writing the difference.",
+   "diagnostic_signals": [
+    "BC-SIG-08007"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5A2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-08024",
+   "learning_objectives": [
+    "BC-LO-CHA-5A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-08013"
+   ],
+   "name": "Identify which curve is to the right on an interval of y",
+   "official_evidence": [
+    "BC-MCQ-CED-010"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-SKL-08023"
+   ],
+   "representations": [
+    "BC-REP-02",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:156"
+   ],
+   "topic": "BC-TOP-0805",
+   "unit": "BC-UNIT-08",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08013 (the differential treated as changeable without changing the integrand)",
+     "BC-MIS-08012 (limits treated as a viewing window rather than a boundary)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08009 (the region is bounded left and right, so both the limits and the integrand live in y)"
+    ],
+    "mastered_if": "A definite integral in y is written with integrand the right curve minus the left curve, both expressions in y, dy as the differential, and limits that are the y values bounding the region, and it is then evaluated to a nonnegative number; neither BC-ERR-08024 nor BC-ERR-08018 appears.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The integrand is correct in y while the limits are the x values of the region, which is BC-ERR-08024; or the whole expression is right except the missing dy, which is BC-ERR-08018; an integrand still containing x under dy is the not mastered state in BC-SIG-08009.",
+    "prerequisite_gap_if": "The boundary curves were never solved for x in terms of y, so nothing can be integrated with respect to y, which is BC-PRQ-08002 rather than a setup gap.",
+    "remediation_target": "BC-MIS-08013 (matching integrand, limits, and differential to one variable) for the conceptual case; BC-PRQ-08002 (rewriting each boundary as a function of y) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-08009"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-08024",
+    "BC-ERR-08018"
+   ],
+   "concept": "BC-CON-08012",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Write a definite integral in y with integrand the difference of the two curves in the order right minus left, with limits the y values bounding the region, and evaluate it.",
+   "description_plain": "Write the integral of right minus left, dy, and evaluate it.",
+   "diagnostic_signals": [
+    "BC-SIG-08009"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5A2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-08025",
+   "learning_objectives": [
+    "BC-LO-CHA-5A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-08013"
+   ],
+   "name": "Set up and evaluate an area integral with respect to y",
+   "official_evidence": [
+    "BC-MCQ-CED-010"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08002",
+    "BC-SKL-08023",
+    "BC-SKL-08024",
+    "BC-SKL-08019"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:156"
+   ],
+   "topic": "BC-TOP-0805",
+   "unit": "BC-UNIT-08",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08013 (the differential treated as a label for slicing direction)",
+     "BC-SKL-08023 (the rewrite itself, which the choice depends on)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08009 (horizontal slices keep one boundary throughout)",
+     "BC-QA-08008 (vertical slices do, so the two archetypes together isolate the choice)"
+    ],
+    "mastered_if": "The region is examined for whether one function stays the upper boundary across the whole span of x or one stays the right boundary across the whole span of y, and the variable of integration is chosen so that a single difference serves throughout; the choice is stated along with the boundary that would change if the other variable were used, and BC-ERR-08023 does not follow.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The slicing direction is chosen correctly and the integrand is left in the other variable, so a function of x is paired with dy or the reverse, which is BC-ERR-08023 with the mismatch observed in BC-SIG-08009.",
+    "prerequisite_gap_if": "The boundary equations cannot be rewritten in the other variable, so the choice is forced rather than made, which is BC-PRQ-08002 rather than a decision gap.",
+    "remediation_target": "BC-MIS-08013 (what fixes the variable of integration) for the conceptual case; BC-SKL-08023 (carrying out the rewrite the choice requires) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-08009",
+    "BC-QA-08008"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-08023"
+   ],
+   "concept": "BC-CON-08012",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a region, decide whether vertical or horizontal slices keep one function as the upper or right boundary throughout, and select the variable of integration accordingly.",
+   "description_plain": "Pick the slicing direction that needs the fewest integrals.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-5A2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-08026",
+   "learning_objectives": [
+    "BC-LO-CHA-5A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-08013"
+   ],
+   "name": "Choose whether to integrate in x or in y for a given region",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08002",
+    "BC-SKL-08019",
+    "BC-SKL-08025"
+   ],
+   "representations": [
+    "BC-REP-02",
+    "BC-REP-08"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:156"
+   ],
+   "topic": "BC-TOP-0805",
+   "unit": "BC-UNIT-08",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08014 (one integral treated as covering any region between two curves)",
+     "BC-MIS-08012 (limits treated as a viewing window)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08010 (the curves exchange places inside the interval, so a missed crossing changes the answer)"
+    ],
+    "mastered_if": "The equation setting the two curves equal is solved across the whole interval, the count of solutions is checked against the figure or the sign of the difference, and the solutions are listed in increasing order to define the subintervals; an interior crossing between the outer two is found and used, so BC-ERR-08025 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The outer two crossings are found and used as a single pair of limits while an interior crossing goes unnoticed, which is BC-ERR-08025 and the single integral of a fixed difference recorded in BC-SIG-08010.",
+    "prerequisite_gap_if": "The equation has solutions the algebra does not produce, for example a root lost by dividing through by a common factor, which is BC-PRQ-08001 rather than a region decomposition gap.",
+    "remediation_target": "BC-MIS-08014 (that a crossing splits the region into pieces) for the conceptual case; BC-PRQ-08001 (finding every solution of the equation) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-08010"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-08025"
+   ],
+   "concept": "BC-CON-08013",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Solve the equation of the two curves on the interval, verify that every solution has been found, and order the solutions to define the subintervals.",
+   "description_plain": "Find all the crossings in the interval and list them in order.",
+   "diagnostic_signals": [
+    "BC-SIG-08010"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5A3"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-08027",
+   "learning_objectives": [
+    "BC-LO-CHA-5A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-08014"
+   ],
+   "name": "Locate every intersection point and order them",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-2B"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08001",
+    "BC-SKL-08020"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:157"
+   ],
+   "topic": "BC-TOP-0806",
+   "unit": "BC-UNIT-08",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08011 (the order of subtraction treated as immaterial)",
+     "BC-MIS-08014 (one integral treated as covering the whole region)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08010 (the correct order differs between the two pieces of the same region)"
+    ],
+    "mastered_if": "On each subinterval between consecutive crossings both functions are evaluated at an interior input, the greater one is named, and the order of subtraction is set separately for each piece so that every contribution is nonnegative; the order changes across a crossing, and BC-ERR-08020 is absent on every piece.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The subintervals are correct and one fixed order of subtraction is carried across all of them, so one piece integrates to a negative value, which is BC-ERR-08020 in its per piece form with BC-SIG-08007 as the observed negative result.",
+    "prerequisite_gap_if": "Evaluating the two expressions at the interior input is itself unreliable, so the comparison is wrong, which is BC-PRQ-06005 rather than a sign management gap.",
+    "remediation_target": "BC-MIS-08011 (why each piece needs its own order) for the conceptual case; BC-SKL-08029 (writing the pieces as a sum once the orders are fixed) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-08010"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-08020"
+   ],
+   "concept": "BC-CON-08013",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "On each subinterval between consecutive intersection points, evaluate both functions at an interior input to fix the order of subtraction.",
+   "description_plain": "Test each piece separately to see which curve is on top there.",
+   "diagnostic_signals": [
+    "BC-SIG-08007"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5A3"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-08028",
+   "learning_objectives": [
+    "BC-LO-CHA-5A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-08011"
+   ],
+   "name": "Determine which curve is greater on each subinterval",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-2B"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-SKL-08027",
+    "BC-SKL-08018"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:157"
+   ],
+   "topic": "BC-TOP-0806",
+   "unit": "BC-UNIT-08",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08014 (one integral treated as covering any region between two curves)",
+     "BC-SKL-08030 (the single absolute value integral, an alternative to the sum)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08010 (the region has two lobes, so a single signed integral undercounts it)"
+    ],
+    "mastered_if": "The total area is written as a sum of definite integrals, one per subinterval, each with its own limits and with its integrand ordered so that the contribution is nonnegative; the limits of consecutive integrals meet at the crossings, and BC-ERR-08026 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The crossings are identified and a single integral of a fixed difference is written across them, so the lobes cancel and the reported area is too small, which is BC-ERR-08026 and the observation in BC-SIG-08010.",
+    "prerequisite_gap_if": "The crossing values that would serve as the shared limits were never produced, which is BC-SKL-08027; reading which expression belongs where in the sum is BC-PRQ-06005.",
+    "remediation_target": "BC-MIS-08014 (that the region has pieces) for the conceptual case; BC-SKL-08028 (fixing the order on each piece before summing) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-08010"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-08026"
+   ],
+   "concept": "BC-CON-08013",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Express the total area as the sum of definite integrals, one over each subinterval, with the integrand written so that each contribution is nonnegative.",
+   "description_plain": "Add one integral per piece, each with its own order of subtraction.",
+   "diagnostic_signals": [
+    "BC-SIG-08010"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5A3"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-08029",
+   "learning_objectives": [
+    "BC-LO-CHA-5A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-08014"
+   ],
+   "name": "Write the area as a sum of definite integrals over the subintervals",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-2B"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-SKL-08028",
+    "BC-SKL-08019"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:157"
+   ],
+   "topic": "BC-TOP-0806",
+   "unit": "BC-UNIT-08",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08014 (one integral treated as covering any region between two curves)",
+     "BC-SKL-08029 (the sum of integrals, the other correct form)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08010 (technology is available, so the absolute value integrand is a complete answer)"
+    ],
+    "mastered_if": "The area is written as one definite integral whose integrand is the absolute value of the difference of the two functions, over the interval from the first crossing to the last, and it is evaluated numerically; the bars enclose the whole difference, the returned value matches the sum over the pieces, and BC-ERR-08027 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The single integral form is chosen and the absolute value bars are left off the difference, so the value returned is the signed difference of the lobes, which is BC-ERR-08027; the same underlying state appears as BC-SIG-08010 when the fixed difference is integrated across the crossing.",
+    "prerequisite_gap_if": "The absolute value cannot be read as a piecewise definition, so the integrand is not recognised as equal to the piecewise ordered differences, which is BC-PRQ-08003 rather than a formulation gap.",
+    "remediation_target": "BC-MIS-08014 (why the absolute value is what keeps both lobes positive) for the conceptual case; BC-PRQ-08003 (writing the absolute value inside the integrand) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-08010"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-08027"
+   ],
+   "concept": "BC-CON-08013",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Express the area of a region whose boundary curves cross as a single definite integral of the absolute value of the difference of the two functions, and evaluate it with technology.",
+   "description_plain": "Use one integral with absolute value bars instead of splitting.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-5A3"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-08030",
+   "learning_objectives": [
+    "BC-LO-CHA-5A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-08014"
+   ],
+   "name": "Write the area as the integral of the absolute value of the difference",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-2B"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08003",
+    "BC-SKL-08019"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-09"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:157"
+   ],
+   "topic": "BC-TOP-0806",
+   "unit": "BC-UNIT-08",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08016 (the cross sectional dimension read as a function value)",
+     "BC-MIS-08015 (a factor of pi attached to every volume)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08011 (the base is bounded by two curves, so the side is a difference rather than a single value)"
+    ],
+    "mastered_if": "The side of the cross section at an input is written as the distance between the two boundary curves there, upper minus lower for vertical slices or right minus left for horizontal ones, so both endpoints of the slice appear in the expression; the axis contributes nothing unless it is itself a boundary, and BC-ERR-08028 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The slicing direction is right and the side is taken as the upper function alone, the lower boundary dropped, which is BC-ERR-08028; the volume that follows is then too large by the strip between the lower curve and the axis.",
+    "prerequisite_gap_if": "Distance along an axis between two values is not formed as a subtraction, so the side is never a difference, which is BC-PRQ-08004 rather than a cross section gap.",
+    "remediation_target": "BC-MIS-08016 (that the slice reaches from one boundary curve to the other) for the conceptual case; BC-PRQ-08004 (writing the distance as a difference) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-08011"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-08028"
+   ],
+   "concept": "BC-CON-08015",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a region and an axis of slicing, write the side of the cross section at an input as the difference of the two boundary functions there.",
+   "description_plain": "Write the side as the top curve minus the bottom curve at that input.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-5B1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-08031",
+   "learning_objectives": [
+    "BC-LO-CHA-5B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-08016"
+   ],
+   "name": "Express the side of a cross section as the distance between the curves",
+   "official_evidence": [
+    "BC-MCQ-PE2012-040"
+   ],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08004",
+    "BC-SKL-08018"
+   ],
+   "representations": [
+    "BC-REP-08",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:158"
+   ],
+   "topic": "BC-TOP-0807",
+   "unit": "BC-UNIT-08",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08015 (every volume integral treated as carrying a factor of pi)",
+     "BC-MIS-08017 (the difference of squares equated to the square of the difference)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08011 (the named shape is a square, so any pi in the integrand is diagnostic)"
+    ],
+    "mastered_if": "The volume is written as the definite integral of the square of the difference of the boundary functions over the spanning interval, with no factor of pi, and the squared difference is kept as a single squared quantity rather than distributed term by term; neither BC-ERR-08029 nor BC-ERR-08030 appears.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The squared difference integrand is correct and a factor of pi is carried in front of it, which is BC-ERR-08029 and the state in BC-SIG-08011; or the square of the difference is expanded as the difference of the squares, which is BC-ERR-08030 and drops the cross term.",
+    "prerequisite_gap_if": "The side of the square was never written as the distance between the curves, so the wrong quantity is squared, which is BC-PRQ-08004 rather than a volume setup gap.",
+    "remediation_target": "BC-MIS-08015 (which shape the area formula inside the integral describes) for the conceptual case; BC-SKL-08031 (writing the side as the difference of the curves) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-08011"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-08029",
+    "BC-ERR-08030"
+   ],
+   "concept": "BC-CON-08014",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Write the volume of a solid with square cross sections as the definite integral of the square of the difference of the boundary functions over the spanning interval.",
+   "description_plain": "Square the side and integrate it over the interval.",
+   "diagnostic_signals": [
+    "BC-SIG-08011"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5B1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-08032",
+   "learning_objectives": [
+    "BC-LO-CHA-5B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-08015"
+   ],
+   "name": "Set up the volume integral for square cross sections",
+   "official_evidence": [
+    "BC-MCQ-PE2012-040"
+   ],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08004",
+    "BC-SKL-08031"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-08"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:158"
+   ],
+   "topic": "BC-TOP-0807",
+   "unit": "BC-UNIT-08",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08016 (the cross sectional dimension read as a function value)",
+     "BC-SKL-08032 (square sections, where one dimension does determine the area)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08011 (the section is a rectangle whose height is stated separately from its base)"
+    ],
+    "mastered_if": "The volume is written as the definite integral of the product of the base and the height of the rectangular section, the base being the distance between the boundary curves and the height being the stated multiple or stated function of that distance, so both dimensions appear as factors; BC-ERR-08031 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The base of the rectangle is written correctly as the difference of the curves and the stated height relation is dropped, so the section is treated as a square, which is BC-ERR-08031.",
+    "prerequisite_gap_if": "The base itself is taken as a single function value rather than as a distance between two curves, which is BC-PRQ-08004 and shows before the height relation is reached.",
+    "remediation_target": "BC-MIS-08016 (that a rectangle needs two stated dimensions) for the conceptual case; BC-SKL-08031 (forming the base as a difference) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-08011"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-08031"
+   ],
+   "concept": "BC-CON-08014",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Write the volume of a solid whose rectangular cross sections have a stated height relation as the definite integral of the product of the two dimensions over the spanning interval.",
+   "description_plain": "Multiply the side by the stated second dimension, then integrate.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-5B1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-08033",
+   "learning_objectives": [
+    "BC-LO-CHA-5B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-08016"
+   ],
+   "name": "Set up the volume integral for rectangular cross sections",
+   "official_evidence": [
+    "BC-FRQ-2022-Q5-B"
+   ],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08004",
+    "BC-SKL-08031"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-08"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:158"
+   ],
+   "topic": "BC-TOP-0807",
+   "unit": "BC-UNIT-08",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08013 (the differential treated as a label for slicing direction)",
+     "BC-SKL-08026 (choosing the variable for an area, the same decision in a plane region)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08011 (the stem names the axis of perpendicularity, so the variable is dictated rather than chosen)"
+    ],
+    "mastered_if": "From the phrase naming the axis the cross sections are perpendicular to, the variable of integration is selected, the boundary functions are rewritten in that variable, and the limits are the extent of the base in it; integrand, limits, and differential agree on one variable, and BC-ERR-08023 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The correct variable is named from the phrase and the integrand is left in the other variable, so an expression in x sits under dy or the reverse, which is BC-ERR-08023 and the state in BC-SIG-08009.",
+    "prerequisite_gap_if": "The boundary equation cannot be solved for the other variable, so the rewrite is impossible rather than omitted, which is BC-PRQ-08002.",
+    "remediation_target": "BC-MIS-08013 (that the differential fixes the variable the integrand must be written in) for the conceptual case; BC-PRQ-08002 (rewriting the boundaries in that variable) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-08011"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-08023"
+   ],
+   "concept": "BC-CON-08014",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a description of cross sections perpendicular to an axis, select the variable of integration and express the boundary functions in that variable.",
+   "description_plain": "Read whether the slices stand on the x axis or the y axis and integrate in that variable.",
+   "diagnostic_signals": [
+    "BC-SIG-08009"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5B1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-08034",
+   "learning_objectives": [
+    "BC-LO-CHA-5B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-08013"
+   ],
+   "name": "Determine the axis the cross sections are perpendicular to",
+   "official_evidence": [
+    "BC-FRQ-2026-Q5-B"
+   ],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08002",
+    "BC-SKL-08026"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-08"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:158"
+   ],
+   "topic": "BC-TOP-0807",
+   "unit": "BC-UNIT-08",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08017 (the difference of squares equated to the square of the difference)",
+     "BC-MIS-08023 (the upper curve assumed to give the outer radius)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08011 (the integrand is a squared difference, so the cross term is the scored detail)"
+    ],
+    "mastered_if": "The volume integral is evaluated by expanding the squared difference into three terms and antidifferentiating each, or numerically with the unexpanded integrand stored, and the value is reported to the required accuracy; the cross term survives the expansion and no intermediate is truncated, so neither BC-ERR-08030 nor BC-ERR-08005 appears.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The setup is correct and the expansion drops the cross term, squaring each part of the difference separately, which is BC-ERR-08030; or the integration is right and a stored decimal is truncated before the last step, which is BC-ERR-08005.",
+    "prerequisite_gap_if": "The antidifferentiation fails on a term with a negative or fractional exponent produced by the expansion, which is BC-PRQ-06002 rather than a volume gap.",
+    "remediation_target": "BC-MIS-08017 (that squaring does not distribute over subtraction) for the conceptual case; BC-PRQ-06002 (antidifferentiating the expanded terms) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-08011"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-08030",
+    "BC-ERR-08005"
+   ],
+   "concept": "BC-CON-08014",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Evaluate the volume integral by expanding the squared difference and antidifferentiating, or with technology, and report the value.",
+   "description_plain": "Expand or use technology, then report the volume.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-5B1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-08035",
+   "learning_objectives": [
+    "BC-LO-CHA-5B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-08017"
+   ],
+   "name": "Evaluate a cross section volume integral",
+   "official_evidence": [
+    "BC-FRQ-2022-Q5-B",
+    "BC-MCQ-PE2012-040"
+   ],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06002",
+    "BC-SKL-08032",
+    "BC-SKL-08033",
+    "BC-SKL-06034"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-09"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:158"
+   ],
+   "topic": "BC-TOP-0807",
+   "unit": "BC-UNIT-08",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08019 (area formulas recalled without their constant factors)",
+     "BC-MIS-08015 (a factor of pi attached to every volume)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08011 (the named shape is equilateral, so the constant is the whole difference between setups)"
+    ],
+    "mastered_if": "The area of the equilateral section is written as the square of the distance between the boundary curves multiplied by the square root of three over four, the constant appearing before the integral is assembled, and the distance is a difference of the two curves rather than a single function value; BC-ERR-08032 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The squared distance is correct and the constant is missing or given as one half, so the integrand is the bare square or the general triangle formula, which is BC-ERR-08032.",
+    "prerequisite_gap_if": "The area of an equilateral triangle in terms of its side cannot be stated for a numerical side, which is BC-PRQ-08005 rather than a volume setup gap.",
+    "remediation_target": "BC-MIS-08019 (that each named section carries its own constant) for the conceptual case; BC-PRQ-08005 (the equilateral area formula for a numerical side) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-08011"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-08032"
+   ],
+   "concept": "BC-CON-08016",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Express the area of an equilateral cross section as the square of the distance between the boundary curves multiplied by the square root of three over four.",
+   "description_plain": "Use the equilateral triangle formula with the distance as the side.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-5B2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-08036",
+   "learning_objectives": [
+    "BC-LO-CHA-5B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-08019"
+   ],
+   "name": "Write the area of an equilateral triangular cross section",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08005",
+    "BC-SKL-08031"
+   ],
+   "representations": [
+    "BC-REP-08",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:159"
+   ],
+   "topic": "BC-TOP-0808",
+   "unit": "BC-UNIT-08",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08019 (area formulas recalled without their constant factors)",
+     "BC-MIS-08018 (the distance between the curves assumed to be the radius or the leg in every formula)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08011 (the stem says which side of the triangle the distance is, so the factor of two is the scored detail)"
+    ],
+    "mastered_if": "The response reads whether the distance between the curves is a leg or the hypotenuse of the right isosceles section and writes the area as one half the square of that distance in the first case and one quarter of its square in the second, the choice stated rather than assumed; BC-ERR-08033 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The area of a right isosceles triangle is available and the leg formula is applied where the stem makes the distance the hypotenuse, so the integrand is twice the correct one, which is BC-ERR-08033.",
+    "prerequisite_gap_if": "The relation between the legs and the hypotenuse of a right isosceles triangle is not available for a numerical case, which is BC-PRQ-08005.",
+    "remediation_target": "BC-MIS-08018 (which side of the section the distance between the curves is) for the conceptual case; BC-PRQ-08005 (the two right isosceles area formulas) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-08011"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-08033"
+   ],
+   "concept": "BC-CON-08016",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Express the area of a right isosceles cross section as half the square of the leg when the distance is a leg, and as one quarter of the square of the hypotenuse when the distance is the hypotenuse.",
+   "description_plain": "Decide whether the distance is a leg or the hypotenuse, then use the matching formula.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-5B2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-08037",
+   "learning_objectives": [
+    "BC-LO-CHA-5B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-08019"
+   ],
+   "name": "Write the area of a right isosceles triangular cross section",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08005",
+    "BC-SKL-08031"
+   ],
+   "representations": [
+    "BC-REP-08",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:159"
+   ],
+   "topic": "BC-TOP-0808",
+   "unit": "BC-UNIT-08",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08018 (the distance between the curves treated as the radius)",
+     "BC-MIS-08019 (area formulas recalled without their constant factors)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08011 (the stem names the distance as the diameter, so the halving appears twice in the correct integrand)"
+    ],
+    "mastered_if": "With the distance between the boundary curves taken as the diameter, the radius is written as half that distance and the section area as one half of pi times the square of the radius, giving pi over eight times the square of the distance; neither BC-ERR-08034 nor BC-ERR-08035 appears.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The factor of one half for the semicircle is present while the whole distance is used as the radius, which is BC-ERR-08034 and makes the volume four times too large; or the radius is halved correctly and the full circle area is used, which is BC-ERR-08035; BC-SIG-08012 records both integrand forms.",
+    "prerequisite_gap_if": "The area of a circle or semicircle of a stated radius cannot be produced, which is BC-PRQ-06007 rather than a diameter gap.",
+    "remediation_target": "BC-MIS-08018 (diameter against radius) for the conceptual case; BC-PRQ-06007 (the semicircular area formula) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-08011"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-08034",
+    "BC-ERR-08035"
+   ],
+   "concept": "BC-CON-08016",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Express the area of a semicircular cross section whose diameter is the distance between the boundary curves as pi over eight times the square of that distance.",
+   "description_plain": "Halve the distance to get the radius before squaring.",
+   "diagnostic_signals": [
+    "BC-SIG-08012"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5B3"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-08038",
+   "learning_objectives": [
+    "BC-LO-CHA-5B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-08018",
+    "BC-MIS-08019"
+   ],
+   "name": "Write the area of a semicircular cross section from the diameter",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06007",
+    "BC-SKL-08031"
+   ],
+   "representations": [
+    "BC-REP-08",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:159"
+   ],
+   "topic": "BC-TOP-0808",
+   "unit": "BC-UNIT-08",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08019 (area formulas recalled without their constant factors)",
+     "BC-MIS-08015 (a factor of pi attached to every volume)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08011 (the section shape is named and the volume must be produced end to end)"
+    ],
+    "mastered_if": "The chosen area formula, complete with its constant, is placed inside a definite integral over the interval the base spans in the slicing variable and evaluated by antidifferentiation or with technology, the value reported as a volume; neither BC-ERR-08032 nor BC-ERR-08030 appears in the assembled integrand.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The integral is assembled over the right interval with the constant of the named section missing, which is BC-ERR-08032; or the squared difference inside it is expanded as a difference of squares, which is BC-ERR-08030.",
+    "prerequisite_gap_if": "The antiderivative of the expanded polynomial integrand is wrong because of exponent handling, which is BC-PRQ-06002 rather than an assembly gap.",
+    "remediation_target": "BC-MIS-08019 (carrying the constant of the named section into the integral) for the conceptual case; BC-PRQ-06002 (evaluating the assembled integral) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-08011"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-08032",
+    "BC-ERR-08030"
+   ],
+   "concept": "BC-CON-08016",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Write the definite integral of the chosen area formula over the spanning interval and evaluate it by antidifferentiation or with technology.",
+   "description_plain": "Put the shape formula in the integral and evaluate it.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-5B2",
+    "BC-EK-CHA-5B3"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-08039",
+   "learning_objectives": [
+    "BC-LO-CHA-5B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-08019"
+   ],
+   "name": "Set up and evaluate the volume integral for a named cross section",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06002",
+    "BC-SKL-08036",
+    "BC-SKL-08037",
+    "BC-SKL-08038",
+    "BC-SKL-06034"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-09"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:159"
+   ],
+   "topic": "BC-TOP-0808",
+   "unit": "BC-UNIT-08",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08020 (a volume of revolution integrating the radius rather than its square)",
+     "BC-MIS-08015 (a factor of pi attached to every volume)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08012 (the region touches the axis, so a single radius carries the whole integrand)"
+    ],
+    "mastered_if": "For a region touching its axis of revolution, the radius of the disc at an input is written as the distance from the curve to that axis, and it is then squared inside the integrand so that pi multiplies the square rather than the function; BC-ERR-08036 is absent, and the radius reduces to the function value only because the axis is the coordinate axis.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The radius is identified correctly as the distance to the axis and the integrand is pi times the function rather than pi times its square, which is BC-ERR-08036.",
+    "prerequisite_gap_if": "Distance from a curve to a line is not formed as a subtraction along the axis, so the radius is never a difference, which is BC-PRQ-08004.",
+    "remediation_target": "BC-MIS-08020 (the area of one disc before the integral is written) for the conceptual case; BC-PRQ-08004 (measuring the radius to the axis) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-08012"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-08036"
+   ],
+   "concept": "BC-CON-08017",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "For a region between a curve and the axis of revolution, write the radius of the disc at an input as the distance from the curve to that axis.",
+   "description_plain": "The radius is the function value when the axis is the x axis.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-5C1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-08040",
+   "learning_objectives": [
+    "BC-LO-CHA-5C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-08020"
+   ],
+   "name": "Identify the radius of a disc as the distance to the axis",
+   "official_evidence": [
+    "BC-FRQ-2021-Q3-B",
+    "BC-FRQ-2021-Q3-C",
+    "BC-FRQ-2026-Q5-B"
+   ],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08004",
+    "BC-SKL-08031"
+   ],
+   "representations": [
+    "BC-REP-08",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:160"
+   ],
+   "topic": "BC-TOP-0809",
+   "unit": "BC-UNIT-08",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08020 (a volume of revolution integrating the radius rather than its square)",
+     "BC-MIS-08015 (a factor of pi attached to every volume)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08012 (revolution about the x axis, where the radius is the function itself)"
+    ],
+    "mastered_if": "The volume is written as pi times the definite integral with respect to x of the square of the function over the interval the region spans, the constant pi carried through to the reported value; neither BC-ERR-08037 nor BC-ERR-08036 appears, and the squared function is kept as a square rather than distributed.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The integral of the square of the function is correct and the factor pi is dropped from the reported volume, which is BC-ERR-08037 and the state in BC-SIG-08013; or pi is present and the function is not squared, which is BC-ERR-08036.",
+    "prerequisite_gap_if": "The radius was never written as the distance from the curve to the axis of revolution, so the wrong quantity is squared, which is BC-PRQ-08004.",
+    "remediation_target": "BC-MIS-08020 (the area of a circular slice) for the conceptual case; BC-SKL-08043 (carrying pi through the evaluation) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-08012"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-08037",
+    "BC-ERR-08036"
+   ],
+   "concept": "BC-CON-08017",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Write the volume of the solid obtained by revolving the region between a curve and the x axis about the x axis as pi times the definite integral of the square of the function with respect to x.",
+   "description_plain": "Integrate pi times the square of the function with respect to x.",
+   "diagnostic_signals": [
+    "BC-SIG-08013"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5C1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-08041",
+   "learning_objectives": [
+    "BC-LO-CHA-5C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-08020"
+   ],
+   "name": "Set up the disc integral about the x axis",
+   "official_evidence": [
+    "BC-FRQ-2021-Q3-C",
+    "BC-FRQ-2022-Q5-C",
+    "BC-FRQ-2026-Q5-B"
+   ],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08004",
+    "BC-SKL-08040"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-08"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:160"
+   ],
+   "topic": "BC-TOP-0809",
+   "unit": "BC-UNIT-08",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08013 (the differential treated as changeable without changing the integrand)",
+     "BC-SKL-08041 (the same disc setup about the x axis)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08012 (revolution about the y axis, so every part of the integral moves to y)"
+    ],
+    "mastered_if": "The curve is rewritten as a function of y, the volume is written as pi times the definite integral with respect to y of the square of that expression, and the limits are the y values the region spans; integrand, limits, and differential are all in y, so neither BC-ERR-08023 nor BC-ERR-08024 appears.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The structure pi times an integral of a square is correct and the integrand is still a function of x under dy, which is BC-ERR-08023 and the state in BC-SIG-08009; or the expression is rewritten in y and the limits are left as x values, which is BC-ERR-08024.",
+    "prerequisite_gap_if": "The equation of the curve cannot be solved for x in terms of y, so the integrand cannot be produced, which is BC-PRQ-08002 rather than a disc method gap.",
+    "remediation_target": "BC-MIS-08013 (one variable for integrand, limits, and differential) for the conceptual case; BC-PRQ-08002 (solving the curve for x in terms of y) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-08012"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-08023",
+    "BC-ERR-08024"
+   ],
+   "concept": "BC-CON-08017",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Write the volume of the solid obtained by revolving a region about the y axis as pi times the definite integral, with respect to y, of the square of the curve expressed as a function of y.",
+   "description_plain": "Rewrite the curve in y, then integrate pi times the square with respect to y.",
+   "diagnostic_signals": [
+    "BC-SIG-08009"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5C1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-08042",
+   "learning_objectives": [
+    "BC-LO-CHA-5C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-08013"
+   ],
+   "name": "Set up the disc integral about the y axis",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08002",
+    "BC-SKL-08040",
+    "BC-SKL-08023"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-08"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:160"
+   ],
+   "topic": "BC-TOP-0809",
+   "unit": "BC-UNIT-08",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08020 (a volume of revolution integrating the radius rather than its square)",
+     "BC-MIS-08003 (a calculator value treated as standing on its own)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08012 (a numerical volume is requested, so the constant factor shows in the reported value)"
+    ],
+    "mastered_if": "The disc integral is evaluated by antidifferentiating the squared radius or with technology, and the reported volume retains the factor pi, either as an exact multiple of pi or as a decimal that includes it; unrounded intermediates feed the final step, so neither BC-ERR-08037 nor BC-ERR-08005 appears.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The integral of the square of the radius is evaluated correctly and the answer is reported without pi, which is BC-ERR-08037, the integrand without its constant factor being BC-SIG-08013; or pi is retained and a truncated intermediate moves the value, which is BC-ERR-08005.",
+    "prerequisite_gap_if": "The antiderivative of the squared radius is wrong because of exponent handling, which is BC-PRQ-06002 rather than a reporting gap.",
+    "remediation_target": "BC-MIS-08020 (where pi and the square come from) for the conceptual case; BC-PRQ-06002 (antidifferentiating the squared radius) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-08012"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-08037",
+    "BC-ERR-08005"
+   ],
+   "concept": "BC-CON-08017",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Evaluate the disc integral by antidifferentiation or with technology and report the volume, retaining the constant factor of pi.",
+   "description_plain": "Do the integral and keep pi in the answer.",
+   "diagnostic_signals": [
+    "BC-SIG-08013"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5C1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-08043",
+   "learning_objectives": [
+    "BC-LO-CHA-5C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-08020"
+   ],
+   "name": "Evaluate a disc volume and report it with the factor of pi",
+   "official_evidence": [
+    "BC-FRQ-2021-Q3-C",
+    "BC-FRQ-2022-Q5-C"
+   ],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06002",
+    "BC-SKL-08041",
+    "BC-SKL-06034"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-09"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:160"
+   ],
+   "topic": "BC-TOP-0809",
+   "unit": "BC-UNIT-08",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08021 (the radius taken as the function value whatever the axis is)",
+     "BC-MIS-08022 (the limits of integration moved along with the axis)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08012 (the axis of revolution is a horizontal line away from the region, so the shift is visible in the radius)"
+    ],
+    "mastered_if": "For revolution about the horizontal line y equal to k, the radius is written as the function value minus k where the region lies above the line and as k minus the function value where it lies below, so the expression is nonnegative on the interval; the line appears explicitly in the radius, and BC-ERR-08038 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The axis of revolution is correctly identified as a line other than the x axis and the radius in the integrand is the bare function value, which is BC-ERR-08038 and the state observed in BC-SIG-08015.",
+    "prerequisite_gap_if": "Distance between two values measured along the vertical axis is not formed as a subtraction, so the shift is never written, which is BC-PRQ-08004.",
+    "remediation_target": "BC-MIS-08021 (the radius as a distance to the stated axis) for the conceptual case; BC-PRQ-08004 (writing that distance as a difference) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-08012"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-08038"
+   ],
+   "concept": "BC-CON-08018",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "For revolution about the line y equal k, write the radius at an input as the function value minus k when the region lies above the line, and as k minus the function value when it lies below.",
+   "description_plain": "Subtract the line from the curve, or the curve from the line, whichever is positive.",
+   "diagnostic_signals": [
+    "BC-SIG-08015"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5C2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-08044",
+   "learning_objectives": [
+    "BC-LO-CHA-5C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-08021"
+   ],
+   "name": "Write the radius as the distance from a curve to a horizontal line",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-2D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08004",
+    "BC-SKL-08040"
+   ],
+   "representations": [
+    "BC-REP-08",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:161"
+   ],
+   "topic": "BC-TOP-0810",
+   "unit": "BC-UNIT-08",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08021 (the radius taken as the function value whatever the axis is)",
+     "BC-MIS-08013 (the differential treated as changeable without changing the integrand)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08012 (the axis is a vertical line, so the rewrite in y and the shift are both needed)"
+    ],
+    "mastered_if": "For revolution about the vertical line x equal to h, each boundary is expressed as a function of y and the radius is written as that expression minus h, or h minus it, whichever is nonnegative over the y interval; the line appears in the radius and the differential is dy, so BC-ERR-08038 and BC-ERR-08023 are both absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The curve is rewritten in y and the radius is left as the bare expression with no reference to the line h, which is BC-ERR-08038 and matches BC-SIG-08015; or the shifted radius is correct while the integrand still contains x, which is BC-ERR-08023.",
+    "prerequisite_gap_if": "The boundary cannot be solved for x in terms of y, so no expression exists to measure from h, which is BC-PRQ-08002.",
+    "remediation_target": "BC-MIS-08021 (the radius as a distance to the stated line) for the conceptual case; BC-PRQ-08002 (expressing the curve in y first) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-08012"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-08038",
+    "BC-ERR-08023"
+   ],
+   "concept": "BC-CON-08018",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "For revolution about the line x equal h, write the radius at a y value as the curve expressed in y minus h, or h minus that expression, so that the radius is nonnegative.",
+   "description_plain": "Use the horizontal distance to the vertical line as the radius.",
+   "diagnostic_signals": [
+    "BC-SIG-08015"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5C2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-08045",
+   "learning_objectives": [
+    "BC-LO-CHA-5C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-08021"
+   ],
+   "name": "Write the radius as the distance from a curve to a vertical line",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-2D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08002",
+    "BC-SKL-08040",
+    "BC-SKL-08023"
+   ],
+   "representations": [
+    "BC-REP-08",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:161"
+   ],
+   "topic": "BC-TOP-0810",
+   "unit": "BC-UNIT-08",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08022 (the limits moved along with the axis of revolution)",
+     "BC-MIS-08021 (the radius taken as the function value whatever the axis is)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08012 (the axis is shifted, so the limits and the radius can fail independently)"
+    ],
+    "mastered_if": "The volume is written as pi times the definite integral of the square of the shifted radius over the interval the region spans in the slicing variable, the shift appearing only inside the radius while the limits stay at the extent of the region; neither BC-ERR-08038 nor BC-ERR-08039 appears.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The shifted radius is written correctly and the limits are translated by the same amount as the axis, which is BC-ERR-08039; or the limits are kept and the radius is the unshifted function value, which is BC-ERR-08038 with BC-SIG-08015 as its observed form.",
+    "prerequisite_gap_if": "The distance from the curve to the line is not formed as a difference, so the squared radius is wrong from the start, which is BC-PRQ-08004.",
+    "remediation_target": "BC-MIS-08022 (that the translation applies to the radius alone) for the conceptual case; BC-SKL-08044 (writing the shifted radius) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-08012"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-08038",
+    "BC-ERR-08039"
+   ],
+   "concept": "BC-CON-08018",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Write the volume as pi times the definite integral of the square of the shifted radius over the spanning interval, keeping the limits in the variable of slicing.",
+   "description_plain": "Integrate pi times the square of the shifted radius.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-5C2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-08046",
+   "learning_objectives": [
+    "BC-LO-CHA-5C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-08021",
+    "BC-MIS-08022"
+   ],
+   "name": "Set up the disc integral about a line other than an axis",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-2D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08004",
+    "BC-SKL-08044",
+    "BC-SKL-08041"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-08"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:161"
+   ],
+   "topic": "BC-TOP-0810",
+   "unit": "BC-UNIT-08",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08022 (the limits moved along with the axis of revolution)",
+     "BC-MIS-08012 (limits treated as a viewing window)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08012 (the same region is revolved about a shifted line, so the unchanged limits are the point at issue)"
+    ],
+    "mastered_if": "The response states that the limits of integration are the extent of the region in the variable of slicing and that moving the axis of revolution changes only the radius, and the same limits are used for revolution about two different lines over the same region; BC-ERR-08039 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The radius is shifted correctly and the interval of integration is translated by the same amount, which is BC-ERR-08039 and leaves a setup that is internally consistent and numerically wrong.",
+    "prerequisite_gap_if": "The extent of the region in the slicing variable was never determined, so there is no interval to keep fixed, which is BC-PRQ-08004.",
+    "remediation_target": "BC-MIS-08022 (what the limits describe) for the conceptual case; BC-SKL-08046 (assembling the integral with fixed limits and a shifted radius) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-08012"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-08039"
+   ],
+   "concept": "BC-CON-08018",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "State that the limits of integration are determined by the extent of the region in the variable of slicing and are unaffected by the position of the axis of revolution.",
+   "description_plain": "Moving the axis changes the radius, not the interval.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-5C2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-08047",
+   "learning_objectives": [
+    "BC-LO-CHA-5C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-08022"
+   ],
+   "name": "Keep the limits of integration unchanged when the axis shifts",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-2D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08004",
+    "BC-SKL-08046"
+   ],
+   "representations": [
+    "BC-REP-08",
+    "BC-REP-04"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:161"
+   ],
+   "topic": "BC-TOP-0810",
+   "unit": "BC-UNIT-08",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08023 (the upper curve assumed to give the outer radius)",
+     "BC-MIS-08017 (the difference of squares equated to the square of the difference)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08013 (the region is separated from its axis, so both radii exist and can be exchanged)"
+    ],
+    "mastered_if": "The two boundary curves are compared by their distance from the axis of revolution on the interval, the farther one is assigned the outer radius and the nearer one the inner radius, and the assignment is supported by a value at an interior input; the resulting integrand is nonnegative, and BC-ERR-08040 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "Both radii are written as distances to the axis and the roles are exchanged, so the integral returns a negative number that is reported or silently made positive, which is BC-ERR-08040 and the observation in BC-SIG-08016.",
+    "prerequisite_gap_if": "Neither radius is written as a distance to the axis in the first place, which is BC-PRQ-08004 rather than an assignment gap.",
+    "remediation_target": "BC-MIS-08023 (that distance from the axis, not height in the plane, assigns the roles) for the conceptual case; BC-PRQ-08004 (measuring each radius to the axis) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-08013"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-08040"
+   ],
+   "concept": "BC-CON-08019",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a region between two curves and an axis of revolution, determine which curve is farther from the axis on the interval and assign the outer and inner radii accordingly.",
+   "description_plain": "The curve farther from the axis gives the outer radius.",
+   "diagnostic_signals": [
+    "BC-SIG-08016"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5C3"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-08048",
+   "learning_objectives": [
+    "BC-LO-CHA-5C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-08017"
+   ],
+   "name": "Identify the outer and inner radii of a washer",
+   "official_evidence": [
+    "BC-FRQ-2014-Q5-B"
+   ],
+   "practice_skills": [
+    "BC-MPS-4E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08004",
+    "BC-SKL-08040",
+    "BC-SKL-08019"
+   ],
+   "representations": [
+    "BC-REP-08",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:162"
+   ],
+   "topic": "BC-TOP-0811",
+   "unit": "BC-UNIT-08",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08017 (the difference of squares equated to the square of the difference)",
+     "BC-MIS-08023 (the upper curve assumed to give the outer radius)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08013 (two radii about the x axis, where squaring order is the scored distinction)"
+    ],
+    "mastered_if": "The volume is written as pi times the definite integral with respect to x of the square of the outer function minus the square of the inner function, each function squared separately before the subtraction, over the interval the region spans; neither BC-ERR-08030 nor BC-ERR-08037 appears.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The outer and inner curves are assigned correctly and the integrand is pi times the square of their difference, which is BC-ERR-08030 and the not mastered form in BC-SIG-08014; or the difference of squares is right and the factor pi is dropped, which is BC-ERR-08037.",
+    "prerequisite_gap_if": "The two radii were never written as distances to the axis, so the squares are of the wrong quantities, which is BC-PRQ-08004.",
+    "remediation_target": "BC-MIS-08017 (the ring area as a difference of two disc areas) for the conceptual case; BC-SKL-08048 (assigning outer and inner before squaring) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-08013"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-08030",
+    "BC-ERR-08037"
+   ],
+   "concept": "BC-CON-08019",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Write the volume as pi times the definite integral, with respect to x, of the square of the outer function minus the square of the inner function over the spanning interval.",
+   "description_plain": "Integrate pi times outer squared minus inner squared with respect to x.",
+   "diagnostic_signals": [
+    "BC-SIG-08014"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5C3"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-08049",
+   "learning_objectives": [
+    "BC-LO-CHA-5C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-08017"
+   ],
+   "name": "Set up the washer integral about the x axis",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-4E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08004",
+    "BC-SKL-08048",
+    "BC-SKL-08041",
+    "BC-SKL-08019"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-08"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:162"
+   ],
+   "topic": "BC-TOP-0811",
+   "unit": "BC-UNIT-08",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08013 (the differential treated as changeable without changing the integrand)",
+     "BC-SKL-08049 (the same washer setup about the x axis)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08013 (revolution about the y axis, so both radii and the limits move to y)"
+    ],
+    "mastered_if": "Both boundaries are expressed as functions of y, the volume is written as pi times the definite integral with respect to y of the square of the right boundary minus the square of the left boundary, and the limits are the y values the region spans; neither BC-ERR-08023 nor BC-ERR-08024 appears.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The washer structure is right and one or both expressions in the integrand remain in x under dy, which is BC-ERR-08023 and the state in BC-SIG-08009; or the integrand is fully in y with x values as limits, which is BC-ERR-08024.",
+    "prerequisite_gap_if": "Solving either boundary equation for x in terms of y does not go through, which is BC-PRQ-08002 rather than a washer gap.",
+    "remediation_target": "BC-MIS-08013 (matching integrand, limits, and differential) for the conceptual case; BC-PRQ-08002 (rewriting both boundaries in y) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-08013"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-08023",
+    "BC-ERR-08024"
+   ],
+   "concept": "BC-CON-08019",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Write the volume as pi times the definite integral, with respect to y, of the square of the right boundary minus the square of the left boundary over the interval of y values.",
+   "description_plain": "Rewrite both curves in y, then integrate the difference of squares.",
+   "diagnostic_signals": [
+    "BC-SIG-08009"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5C3"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-08050",
+   "learning_objectives": [
+    "BC-LO-CHA-5C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-08013"
+   ],
+   "name": "Set up the washer integral about the y axis",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-4E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08002",
+    "BC-SKL-08048",
+    "BC-SKL-08042",
+    "BC-SKL-08023"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-08"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:162"
+   ],
+   "topic": "BC-TOP-0811",
+   "unit": "BC-UNIT-08",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08017 (the difference of squares equated to the square of the difference)",
+     "BC-MIS-08023 (the upper curve assumed to give the outer radius)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08013 (the ring area is the entire content of the integrand, so the two forms are directly comparable)"
+    ],
+    "mastered_if": "The response states that the ring area is pi times the outer radius squared minus pi times the inner radius squared and uses that form, and it can show with two numerical radii that this differs from pi times the square of their difference by the cross term; BC-ERR-08030 is absent wherever a washer integrand is written.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The washer is described correctly in words as a disc with a hole and the integrand written is still the square of the difference of the radii, which is BC-ERR-08030 and the not mastered observation in BC-SIG-08014.",
+    "prerequisite_gap_if": "Expanding the square of a binomial loses the cross term, so the two expressions look identical algebraically, which is BC-PRQ-06002 rather than a washer gap.",
+    "remediation_target": "BC-MIS-08017 (the ring as the difference of two disc areas) for the conceptual case; BC-PRQ-06002 (expanding a squared binomial correctly) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-08013"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-08030"
+   ],
+   "concept": "BC-CON-08019",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "State and use the fact that the ring area is pi times the outer radius squared minus pi times the inner radius squared, which is not pi times the square of the difference of the radii.",
+   "description_plain": "Square each radius first, then subtract.",
+   "diagnostic_signals": [
+    "BC-SIG-08014"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5C3"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-08051",
+   "learning_objectives": [
+    "BC-LO-CHA-5C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-08017"
+   ],
+   "name": "Subtract the squares of the radii rather than squaring their difference",
+   "official_evidence": [
+    "BC-FRQ-2014-Q5-B"
+   ],
+   "practice_skills": [
+    "BC-MPS-4E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06002",
+    "BC-SKL-08049"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-08"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:162"
+   ],
+   "topic": "BC-TOP-0811",
+   "unit": "BC-UNIT-08",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08021 (the radius taken as the function value whatever the axis is)",
+     "BC-MIS-08023 (the upper curve assumed to give the outer radius)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08013 (two radii and a shifted horizontal axis, so shift and assignment can fail separately)"
+    ],
+    "mastered_if": "For revolution about y equal to k, the outer radius is written as the distance from the farther curve to the line and the inner radius as the distance from the nearer curve to the line, each as a difference containing k and each nonnegative on the interval; neither BC-ERR-08038 nor BC-ERR-08040 appears.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "Both radii are shifted by k and the roles are exchanged, which is BC-ERR-08040 with the negative value recorded in BC-SIG-08016; or the roles are right and the radii are written as bare function values with no k, which is BC-ERR-08038 and BC-SIG-08015.",
+    "prerequisite_gap_if": "The distance from a curve to a horizontal line is not formed as a subtraction, which is BC-PRQ-08004 rather than a washer gap.",
+    "remediation_target": "BC-MIS-08021 (radii as distances to the stated line) for the conceptual case; BC-PRQ-08004 (writing each distance as a difference) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-08013"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-08038",
+    "BC-ERR-08040"
+   ],
+   "concept": "BC-CON-08020",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "For revolution about y equal k, write the outer radius as the distance from the farther curve to the line and the inner radius as the distance from the nearer curve to the line.",
+   "description_plain": "Subtract the line value from each curve before squaring.",
+   "diagnostic_signals": [
+    "BC-SIG-08015"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5C4"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-08052",
+   "learning_objectives": [
+    "BC-LO-CHA-5C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-08021"
+   ],
+   "name": "Write both washer radii as distances from a horizontal line",
+   "official_evidence": [
+    "BC-FRQ-2014-Q5-B"
+   ],
+   "practice_skills": [
+    "BC-MPS-2D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08004",
+    "BC-SKL-08048",
+    "BC-SKL-08044"
+   ],
+   "representations": [
+    "BC-REP-08",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:163"
+   ],
+   "topic": "BC-TOP-0812",
+   "unit": "BC-UNIT-08",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08021 (the radius taken as the function value whatever the axis is)",
+     "BC-MIS-08013 (the differential treated as changeable without changing the integrand)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08013 (a vertical axis away from the region, so the rewrite in y and the shift are both required)"
+    ],
+    "mastered_if": "For revolution about x equal to h, both boundary curves are written as functions of y and each radius is the distance from that curve to h, so the integrand contains h and no x and the differential is dy; neither BC-ERR-08023 nor BC-ERR-08038 appears.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The curves are rewritten in y and the radii carry no reference to h, which is BC-ERR-08038 and the state in BC-SIG-08015; or the shift to h is applied while one expression is still in x, which is BC-ERR-08023.",
+    "prerequisite_gap_if": "Solving the boundary equations for x in terms of y fails, so there is nothing to measure from the line, which is BC-PRQ-08002.",
+    "remediation_target": "BC-MIS-08021 (radii measured to the stated vertical line) for the conceptual case; BC-PRQ-08002 (expressing both curves in y) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-08013"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-08023",
+    "BC-ERR-08038"
+   ],
+   "concept": "BC-CON-08020",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "For revolution about x equal h, express both boundary curves as functions of y and write each radius as the distance from that curve to the line h.",
+   "description_plain": "Use horizontal distances from the vertical line for both curves.",
+   "diagnostic_signals": [
+    "BC-SIG-08015"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5C4"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-08053",
+   "learning_objectives": [
+    "BC-LO-CHA-5C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-08021",
+    "BC-MIS-08013"
+   ],
+   "name": "Write both washer radii as distances from a vertical line",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-2D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08002",
+    "BC-SKL-08048",
+    "BC-SKL-08045"
+   ],
+   "representations": [
+    "BC-REP-08",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:163"
+   ],
+   "topic": "BC-TOP-0812",
+   "unit": "BC-UNIT-08",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08023 (the upper curve assumed to give the outer radius)",
+     "BC-MIS-08021 (the radius taken as the function value whatever the axis is)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08013 (the axis lies above the region, so position and distance disagree)"
+    ],
+    "mastered_if": "The distances from both boundary curves to the axis of revolution are compared on the interval, and the farther curve is named the outer radius even when the axis lies above the region and the upper curve is the nearer one; the comparison is supported at an interior input, and BC-ERR-08040 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "Both distances are written correctly and the outer role is given to the upper curve by position in the plane rather than by distance, which is BC-ERR-08040 and produces the negative integrand observed in BC-SIG-08016.",
+    "prerequisite_gap_if": "The distance from each curve to the axis is not expressed as a difference, so no comparison is possible, which is BC-PRQ-08004.",
+    "remediation_target": "BC-MIS-08023 (that the axis, not the plane, decides outer and inner) for the conceptual case; BC-SKL-08052 (writing both radii as distances before comparing) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-08013"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-08040"
+   ],
+   "concept": "BC-CON-08020",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Compare the distances from each boundary curve to the axis of revolution on the interval to assign the outer and inner radii, noting that revolving about a line above the region reverses the roles.",
+   "description_plain": "Check which curve is farther from the line, which can differ from which is higher.",
+   "diagnostic_signals": [
+    "BC-SIG-08016"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5C4"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-08054",
+   "learning_objectives": [
+    "BC-LO-CHA-5C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-08023"
+   ],
+   "name": "Determine which boundary curve is farther from the shifted axis",
+   "official_evidence": [
+    "BC-FRQ-2014-Q5-B"
+   ],
+   "practice_skills": [
+    "BC-MPS-2D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08004",
+    "BC-SKL-08052"
+   ],
+   "representations": [
+    "BC-REP-08",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:163"
+   ],
+   "topic": "BC-TOP-0812",
+   "unit": "BC-UNIT-08",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08017 (the difference of squares equated to the square of the difference)",
+     "BC-MIS-08021 (the radius taken as the function value whatever the axis is)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08013 (a shifted axis with two radii, where the shift and the squaring order are independent)"
+    ],
+    "mastered_if": "The volume is written as pi times the definite integral of the square of the shifted outer radius minus the square of the shifted inner radius, each radius containing the line of revolution and each squared before the subtraction, over the unshifted interval; neither BC-ERR-08030 nor BC-ERR-08038 appears.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "Both radii carry the shift and the integrand is the square of their difference, which is BC-ERR-08030 and BC-SIG-08014; or the difference of squares is correct and the radii are the bare function values, which is BC-ERR-08038 with BC-SIG-08015 as its form.",
+    "prerequisite_gap_if": "The distances to the axis are not formed as differences, so both squares are of the wrong quantities, which is BC-PRQ-08004.",
+    "remediation_target": "BC-MIS-08017 (the ring area as a difference of two disc areas) for the conceptual case; BC-SKL-08052 (writing both shifted radii) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-08013"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-08030",
+    "BC-ERR-08038"
+   ],
+   "concept": "BC-CON-08020",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Write the volume as pi times the definite integral of the square of the shifted outer radius minus the square of the shifted inner radius over the spanning interval.",
+   "description_plain": "Integrate pi times the difference of the squares of the two shifted radii.",
+   "diagnostic_signals": [
+    "BC-SIG-08014"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5C4"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-08055",
+   "learning_objectives": [
+    "BC-LO-CHA-5C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-08017",
+    "BC-MIS-08021"
+   ],
+   "name": "Set up the washer integral about a line other than an axis",
+   "official_evidence": [
+    "BC-FRQ-2014-Q5-B"
+   ],
+   "practice_skills": [
+    "BC-MPS-2D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08004",
+    "BC-SKL-08054",
+    "BC-SKL-08049",
+    "BC-SKL-08046",
+    "BC-SKL-08051"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-08"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:163"
+   ],
+   "topic": "BC-TOP-0812",
+   "unit": "BC-UNIT-08",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08024 (every definite integral read as an area)",
+     "BC-SKL-08056 (stating the general formula rather than instantiating it)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08014 (a specific function on a specific interval, so the substitution and the limits are both visible)"
+    ],
+    "mastered_if": "The given function is differentiated, the derivative is squared and placed under the radical with the added one, and the limits are the endpoints of the interval described in the stem; the derivative is squared as a whole, and neither BC-ERR-08042 nor BC-ERR-08019 appears.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The derivative is computed correctly and substituted under the radical without being squared, which is BC-ERR-08042; or the integrand is assembled correctly while the limits come from inputs other than the described interval, which is BC-ERR-08019.",
+    "prerequisite_gap_if": "The derivative itself is wrong, or the function is not differentiable at a point inside the interval and that is not noticed, which is BC-SKL-02021 and evaluation by antidifferentiation is BC-SKL-06034; misreading the interval from the stem is BC-PRQ-06005.",
+    "remediation_target": "BC-MIS-08024 (what the assembled integral measures) for the conceptual case; BC-SKL-08056 (the integrand the substitution feeds) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-08014"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-08042",
+    "BC-ERR-08019"
+   ],
+   "concept": "BC-CON-08021",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Differentiate the given function, substitute the derivative into the arc length integrand, and attach the limits taken from the described interval.",
+   "description_plain": "Differentiate the given function and place it inside the radical.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-6A1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-08057",
+   "learning_objectives": [
+    "BC-LO-CHA-6A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-08024"
+   ],
+   "name": "Set up an arc length integral from a described curve",
+   "official_evidence": [
+    "BC-FRQ-2014-Q5-C",
+    "BC-FRQ-2026-Q5-C",
+    "BC-MCQ-PE2012-004"
+   ],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-SKL-02021",
+    "BC-SKL-06034",
+    "BC-SKL-08056"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-05"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:164"
+   ],
+   "topic": "BC-TOP-0813",
+   "unit": "BC-UNIT-08",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08024 (every definite integral read as an area)",
+     "BC-MIS-08009 (an interpretation treated as complete once the quantity is named)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08014 (the integral is displayed and only its identification is scored, so interval and object separate cleanly)"
+    ],
+    "mastered_if": "A displayed integral of the square root of one plus a squared derivative is named as the length of the graph of that function, and the interval is stated as running between the two limits of integration; both the object and the interval appear in the sentence, and neither BC-ERR-08043 nor BC-ERR-08044 is present.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The integral is named as the length of the curve with no interval given, which is BC-ERR-08043 and the observation in BC-SIG-08017; or the radical integral is described as the area under the graph, which is BC-ERR-08044.",
+    "prerequisite_gap_if": "The function whose derivative sits inside the radical cannot be identified from the notation, so the sentence has no subject, which is BC-PRQ-06005.",
+    "remediation_target": "BC-MIS-08024 (a radical integrand against an area integrand) for the conceptual case; BC-ERR-08043 (naming the interval alongside the object) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-08014"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-08043",
+    "BC-ERR-08044"
+   ],
+   "concept": "BC-CON-08021",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a definite integral of the square root of one plus a squared derivative, state that it is the length of the graph of the function on the interval given by the limits.",
+   "description_plain": "Recognise the radical form and say which curve and interval it measures.",
+   "diagnostic_signals": [
+    "BC-SIG-08017"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-6A1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-08058",
+   "learning_objectives": [
+    "BC-LO-CHA-6A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-08024"
+   ],
+   "name": "Identify a given integral as an arc length and name the interval",
+   "official_evidence": [
+    "sg-24:16",
+    "frq-24:9",
+    "BC-FRQ-2024-Q5-B"
+   ],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-SKL-08056"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-04"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-24:16",
+    "frq-24:9"
+   ],
+   "topic": "BC-TOP-0813",
+   "unit": "BC-UNIT-08",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08003 (a calculator value treated as standing on its own)",
+     "BC-MIS-08024 (every definite integral read as an area)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08014 (the integrand has no elementary antiderivative, so the written expression is the only record of method)"
+    ],
+    "mastered_if": "The arc length integral is written on the page with its radical integrand and limits, evaluated numerically, and reported to three places after the decimal point from unrounded stored values; neither BC-ERR-08045 nor BC-ERR-08005 appears.",
+    "next_dependent_skills": [
+     "BC-SKL-09012"
+    ],
+    "partially_mastered_if": "A correct decimal length appears with no integral expression anywhere, which is BC-ERR-08045; or the setup is shown and a truncated intermediate derivative or bound is reused, moving the third decimal place, which is BC-ERR-08005.",
+    "prerequisite_gap_if": "The value is right but rounded to the wrong number of places or rounded against the stated convention, which is BC-PRQ-08006 rather than an evaluation gap.",
+    "remediation_target": "BC-MIS-08003 (the written integral as the scored object) for the conceptual case; BC-PRQ-08006 (three place reporting from stored values) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-08014"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-08005",
+    "BC-ERR-08045"
+   ],
+   "concept": "BC-CON-08021",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-09012"
+   ],
+   "description_formal": "Evaluate an arc length integral numerically and report the value accurate to three places after the decimal point.",
+   "description_plain": "Enter the radical integrand and report the decimal.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-6A1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-08059",
+   "learning_objectives": [
+    "BC-LO-CHA-6A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-08003"
+   ],
+   "name": "Evaluate an arc length integral with technology",
+   "official_evidence": [
+    "crabbc-25:30"
+   ],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08006",
+    "BC-SKL-08057"
+   ],
+   "representations": [
+    "BC-REP-09"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:164",
+    "crabbc-25:30"
+   ],
+   "topic": "BC-TOP-0813",
+   "unit": "BC-UNIT-08",
+   "updated": "2026-09-19"
+  }
+ ]
+}

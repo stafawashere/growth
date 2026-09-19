@@ -1,0 +1,284 @@
+---
+title: AP Calculus BC Representation Types
+research_date: 2026-09-19
+status: draft
+purpose: The BC-REP representation taxonomy, the skills attached to each representation, the conversions between representations, and where conversion is itself the assessed step.
+---
+
+# AP Calculus BC Representation Types
+
+Representations are the forms in which the information of a question arrives and in which the response must be written. The registry is `../../data/taxonomies.json`, the representation field on each skill in `../../data/skills.json` is the link to the skill taxonomy, and every archetype in [question-archetypes.md](question-archetypes.md) lists the representations it uses.
+
+## The BC-REP taxonomy [verified]
+
+| ID | Name | Scope | Evidence | Skills | Description |
+|---|---|---|---|---|---|
+| BC-REP-01 | Symbolic (analytical) expression | shared | verified | 377 | Information given as an algebraic formula, equation, or closed-form function rule; the CED calls this the analytical representation in Practice 2 skills 2.B, 2.C, 2.E. |
+| BC-REP-02 | Graphical | shared | verified | 103 | Information given as the graph of a function, its derivative, or a related curve, read for values, slopes, signs, areas, and behaviour; named in Practice 2 skills 2.B and 2.E. |
+| BC-REP-03 | Numerical table | shared | verified | 46 | Information given as selected values of a function or rate in a table; named as the numerical representation in Practice 2. |
+| BC-REP-04 | Verbal description | shared | verified | 132 | Information stated in words about a function, rate, or quantity without a formula, graph, or table; named as the verbal representation in Practice 2. |
+| BC-REP-05 | Contextual model | shared | inferred | 59 | A real-world scenario with units in which a function or rate models a quantity; overlaps verbal but adds units and interpretation demands assessed under skills 1.D, 3.F, 4.B. |
+| BC-REP-06 | Differential equation | shared | inferred | 32 | A relation between a function and its derivatives given as an equation, with or without an initial condition. |
+| BC-REP-07 | Slope field | shared | inferred | 9 | A grid of short line segments showing the slope prescribed by a differential equation at sample points. |
+| BC-REP-08 | Geometric diagram | shared | inferred | 31 | A figure (solid, region, triangle, cone, ladder) from which relationships among lengths, areas, and volumes must be read for related rates, optimisation, or volume problems. |
+| BC-REP-09 | Calculator-generated numerical result | shared | verified | 43 | A value produced by graphing-calculator capability (zero, numerical derivative, numerical integral, graph in a window); the CED requires the setup and the result to be written. |
+| BC-REP-10 | Sequence | BC_only | inferred | 5 | An ordered list of terms given by formula, recursion, or listed values. |
+| BC-REP-11 | Series (finite partial sums or infinite) | BC_only | inferred | 51 | A sum of sequence terms given in sigma notation, expanded form, or as a power series with a centre. |
+| BC-REP-12 | Parametric equations | BC_only | inferred | 15 | A curve given by x(t), y(t), including motion interpretations. |
+| BC-REP-13 | Polar equation | BC_only | inferred | 15 | A curve given by r as a function of theta, usually with a graph. |
+| BC-REP-14 | Vector-valued function | BC_only | inferred | 14 | Position, velocity, or acceleration given as a vector of component functions. |
+
+## Representation to skill [verified]
+
+Every BC-SKL record whose `representations` list contains the representation. A skill appears under each representation it names, so the counts sum to more than the number of skills.
+
+### BC-REP-01 Symbolic (analytical) expression
+
+377 skills. Conversion is itself assessed for 25 of them under Practice 2 skills 2.B to 2.E.
+
+BC-SKL-01001, BC-SKL-01003, BC-SKL-01005, BC-SKL-01006, BC-SKL-01007, BC-SKL-01011, BC-SKL-01012, BC-SKL-01013, BC-SKL-01018, BC-SKL-01019, BC-SKL-01020, BC-SKL-01021, BC-SKL-01022, BC-SKL-01023, BC-SKL-01024, BC-SKL-01025, BC-SKL-01026, BC-SKL-01027, BC-SKL-01028, BC-SKL-01029, BC-SKL-01030, BC-SKL-01031, BC-SKL-01032, BC-SKL-01033, BC-SKL-01034, BC-SKL-01035, BC-SKL-01036, BC-SKL-01037, BC-SKL-01039, BC-SKL-01040, BC-SKL-01041, BC-SKL-01042, BC-SKL-01043, BC-SKL-01044, BC-SKL-01046, BC-SKL-01047, BC-SKL-01048, BC-SKL-01049, BC-SKL-01050, BC-SKL-01051, BC-SKL-01052, BC-SKL-01053, BC-SKL-01054, BC-SKL-01055, BC-SKL-01056, BC-SKL-01057, BC-SKL-01058, BC-SKL-01059, BC-SKL-01060, BC-SKL-01061, BC-SKL-01062, BC-SKL-01063, BC-SKL-01064, BC-SKL-01066, BC-SKL-02001, BC-SKL-02002, BC-SKL-02005, BC-SKL-02006, BC-SKL-02007, BC-SKL-02008, BC-SKL-02009, BC-SKL-02010, BC-SKL-02011, BC-SKL-02013, BC-SKL-02018, BC-SKL-02021, BC-SKL-02022, BC-SKL-02023, BC-SKL-02024, BC-SKL-02025, BC-SKL-02026, BC-SKL-02027, BC-SKL-02028, BC-SKL-02029, BC-SKL-02030, BC-SKL-02031, BC-SKL-02032, BC-SKL-02033, BC-SKL-02034, BC-SKL-02035, BC-SKL-02036, BC-SKL-02038, BC-SKL-02039, BC-SKL-02040, BC-SKL-02042, BC-SKL-02043, BC-SKL-02044, BC-SKL-02045, BC-SKL-02046, BC-SKL-03001, BC-SKL-03002, BC-SKL-03003, BC-SKL-03004, BC-SKL-03005, BC-SKL-03006, BC-SKL-03007, BC-SKL-03008, BC-SKL-03009, BC-SKL-03010, BC-SKL-03011, BC-SKL-03012, BC-SKL-03013, BC-SKL-03014, BC-SKL-03015, BC-SKL-03016, BC-SKL-03017, BC-SKL-03020, BC-SKL-03021, BC-SKL-03022, BC-SKL-03023, BC-SKL-03024, BC-SKL-03025, BC-SKL-03026, BC-SKL-03027, BC-SKL-03028, BC-SKL-03029, BC-SKL-03030, BC-SKL-03031, BC-SKL-03032, BC-SKL-03033, BC-SKL-03034, BC-SKL-04006, BC-SKL-04007, BC-SKL-04008, BC-SKL-04009, BC-SKL-04010, BC-SKL-04011, BC-SKL-04012, BC-SKL-04014, BC-SKL-04016, BC-SKL-04018, BC-SKL-04019, BC-SKL-04020, BC-SKL-04021, BC-SKL-04022, BC-SKL-04023, BC-SKL-04024, BC-SKL-04026, BC-SKL-04028, BC-SKL-04029, BC-SKL-04030, BC-SKL-04031, BC-SKL-04032, BC-SKL-04033, BC-SKL-04034, BC-SKL-04035, BC-SKL-04036, BC-SKL-04037, BC-SKL-04038, BC-SKL-05003, BC-SKL-05005, BC-SKL-05010, BC-SKL-05011, BC-SKL-05013, BC-SKL-05014, BC-SKL-05016, BC-SKL-05018, BC-SKL-05019, BC-SKL-05020, BC-SKL-05021, BC-SKL-05023, BC-SKL-05024, BC-SKL-05025, BC-SKL-05029, BC-SKL-05030, BC-SKL-05032, BC-SKL-05033, BC-SKL-05034, BC-SKL-05036, BC-SKL-05037, BC-SKL-05038, BC-SKL-05039, BC-SKL-05042, BC-SKL-05046, BC-SKL-05047, BC-SKL-05050, BC-SKL-05051, BC-SKL-05052, BC-SKL-05053, BC-SKL-05056, BC-SKL-05058, BC-SKL-05059, BC-SKL-05060, BC-SKL-05061, BC-SKL-05062, BC-SKL-05063, BC-SKL-06007, BC-SKL-06009, BC-SKL-06010, BC-SKL-06011, BC-SKL-06012, BC-SKL-06013, BC-SKL-06014, BC-SKL-06015, BC-SKL-06016, BC-SKL-06017, BC-SKL-06018, BC-SKL-06019, BC-SKL-06029, BC-SKL-06030, BC-SKL-06031, BC-SKL-06032, BC-SKL-06033, BC-SKL-06034, BC-SKL-06036, BC-SKL-06037, BC-SKL-06038, BC-SKL-06039, BC-SKL-06040, BC-SKL-06041, BC-SKL-06042, BC-SKL-06043, BC-SKL-06044, BC-SKL-06045, BC-SKL-06046, BC-SKL-06047, BC-SKL-06048, BC-SKL-06049, BC-SKL-06050, BC-SKL-06051, BC-SKL-06052, BC-SKL-06053, BC-SKL-06054, BC-SKL-06055, BC-SKL-06056, BC-SKL-06057, BC-SKL-06058, BC-SKL-06059, BC-SKL-06060, BC-SKL-06061, BC-SKL-06062, BC-SKL-06063, BC-SKL-06064, BC-SKL-06065, BC-SKL-06066, BC-SKL-06067, BC-SKL-06068, BC-SKL-06069, BC-SKL-06070, BC-SKL-06071, BC-SKL-06072, BC-SKL-06073, BC-SKL-06074, BC-SKL-07006, BC-SKL-07007, BC-SKL-07008, BC-SKL-07009, BC-SKL-07019, BC-SKL-07020, BC-SKL-07021, BC-SKL-07023, BC-SKL-07024, BC-SKL-07025, BC-SKL-07026, BC-SKL-07027, BC-SKL-07029, BC-SKL-07030, BC-SKL-07031, BC-SKL-07032, BC-SKL-07033, BC-SKL-07035, BC-SKL-07036, BC-SKL-07038, BC-SKL-07042, BC-SKL-08001, BC-SKL-08004, BC-SKL-08006, BC-SKL-08007, BC-SKL-08008, BC-SKL-08009, BC-SKL-08010, BC-SKL-08012, BC-SKL-08013, BC-SKL-08016, BC-SKL-08018, BC-SKL-08019, BC-SKL-08020, BC-SKL-08022, BC-SKL-08023, BC-SKL-08024, BC-SKL-08025, BC-SKL-08027, BC-SKL-08028, BC-SKL-08029, BC-SKL-08030, BC-SKL-08031, BC-SKL-08032, BC-SKL-08033, BC-SKL-08035, BC-SKL-08036, BC-SKL-08037, BC-SKL-08038, BC-SKL-08039, BC-SKL-08040, BC-SKL-08041, BC-SKL-08042, BC-SKL-08043, BC-SKL-08044, BC-SKL-08045, BC-SKL-08046, BC-SKL-08049, BC-SKL-08050, BC-SKL-08051, BC-SKL-08052, BC-SKL-08053, BC-SKL-08055, BC-SKL-08056, BC-SKL-08057, BC-SKL-08058, BC-SKL-09001, BC-SKL-09002, BC-SKL-09005, BC-SKL-09006, BC-SKL-09007, BC-SKL-09008, BC-SKL-09011, BC-SKL-09015, BC-SKL-09019, BC-SKL-09020, BC-SKL-09022, BC-SKL-09033, BC-SKL-09035, BC-SKL-09041, BC-SKL-09043, BC-SKL-10001, BC-SKL-10002, BC-SKL-10004, BC-SKL-10006, BC-SKL-10008, BC-SKL-10009, BC-SKL-10010, BC-SKL-10011, BC-SKL-10014, BC-SKL-10015, BC-SKL-10016, BC-SKL-10018, BC-SKL-10022, BC-SKL-10023, BC-SKL-10025, BC-SKL-10026, BC-SKL-10027, BC-SKL-10028, BC-SKL-10029, BC-SKL-10031, BC-SKL-10032, BC-SKL-10033, BC-SKL-10034, BC-SKL-10040, BC-SKL-10041, BC-SKL-10042, BC-SKL-10043, BC-SKL-10044, BC-SKL-10045, BC-SKL-10046, BC-SKL-10047, BC-SKL-10048, BC-SKL-10049, BC-SKL-10050, BC-SKL-10051, BC-SKL-10053, BC-SKL-10054, BC-SKL-10055, BC-SKL-10056, BC-SKL-10057, BC-SKL-10059, BC-SKL-10060, BC-SKL-10061, BC-SKL-10062, BC-SKL-10063, BC-SKL-10064, BC-SKL-10065, BC-SKL-10066, BC-SKL-10067, BC-SKL-10068, BC-SKL-10069, BC-SKL-10071, BC-SKL-10072
+
+### BC-REP-02 Graphical
+
+103 skills. Conversion is itself assessed for 15 of them under Practice 2 skills 2.B to 2.E.
+
+BC-SKL-01008, BC-SKL-01009, BC-SKL-01010, BC-SKL-01011, BC-SKL-01012, BC-SKL-01013, BC-SKL-01014, BC-SKL-01023, BC-SKL-01033, BC-SKL-01035, BC-SKL-01036, BC-SKL-01038, BC-SKL-01039, BC-SKL-01040, BC-SKL-01041, BC-SKL-01044, BC-SKL-01050, BC-SKL-01053, BC-SKL-01056, BC-SKL-01057, BC-SKL-01059, BC-SKL-01063, BC-SKL-02011, BC-SKL-02012, BC-SKL-02013, BC-SKL-02017, BC-SKL-02021, BC-SKL-02022, BC-SKL-02023, BC-SKL-02024, BC-SKL-02037, BC-SKL-02041, BC-SKL-03005, BC-SKL-03012, BC-SKL-03013, BC-SKL-03016, BC-SKL-03019, BC-SKL-04009, BC-SKL-04022, BC-SKL-04028, BC-SKL-04029, BC-SKL-04030, BC-SKL-04038, BC-SKL-05008, BC-SKL-05010, BC-SKL-05011, BC-SKL-05012, BC-SKL-05013, BC-SKL-05015, BC-SKL-05019, BC-SKL-05020, BC-SKL-05021, BC-SKL-05024, BC-SKL-05025, BC-SKL-05029, BC-SKL-05031, BC-SKL-05032, BC-SKL-05033, BC-SKL-05034, BC-SKL-05035, BC-SKL-05039, BC-SKL-05040, BC-SKL-05041, BC-SKL-05042, BC-SKL-05043, BC-SKL-05044, BC-SKL-05045, BC-SKL-05060, BC-SKL-05063, BC-SKL-06001, BC-SKL-06003, BC-SKL-06004, BC-SKL-06007, BC-SKL-06009, BC-SKL-06010, BC-SKL-06011, BC-SKL-06018, BC-SKL-06020, BC-SKL-06022, BC-SKL-06023, BC-SKL-06024, BC-SKL-06025, BC-SKL-06026, BC-SKL-06027, BC-SKL-06028, BC-SKL-06033, BC-SKL-07014, BC-SKL-07015, BC-SKL-08002, BC-SKL-08008, BC-SKL-08018, BC-SKL-08019, BC-SKL-08021, BC-SKL-08024, BC-SKL-08025, BC-SKL-08026, BC-SKL-08027, BC-SKL-08028, BC-SKL-08048, BC-SKL-08054, BC-SKL-09036, BC-SKL-09037, BC-SKL-09040
+
+### BC-REP-03 Numerical table
+
+46 skills. Conversion is itself assessed for 3 of them under Practice 2 skills 2.B to 2.E.
+
+BC-SKL-01001, BC-SKL-01004, BC-SKL-01015, BC-SKL-01016, BC-SKL-01017, BC-SKL-01018, BC-SKL-01019, BC-SKL-01020, BC-SKL-01036, BC-SKL-01065, BC-SKL-01066, BC-SKL-01068, BC-SKL-02002, BC-SKL-02011, BC-SKL-02014, BC-SKL-02016, BC-SKL-02020, BC-SKL-02037, BC-SKL-02041, BC-SKL-03004, BC-SKL-03016, BC-SKL-03018, BC-SKL-04004, BC-SKL-05002, BC-SKL-05003, BC-SKL-05006, BC-SKL-05020, BC-SKL-05025, BC-SKL-05026, BC-SKL-05028, BC-SKL-05042, BC-SKL-05047, BC-SKL-05048, BC-SKL-06005, BC-SKL-06006, BC-SKL-06007, BC-SKL-06008, BC-SKL-06010, BC-SKL-06031, BC-SKL-06037, BC-SKL-07019, BC-SKL-07020, BC-SKL-07021, BC-SKL-07022, BC-SKL-07036, BC-SKL-10045
+
+### BC-REP-04 Verbal description
+
+132 skills. Conversion is itself assessed for 14 of them under Practice 2 skills 2.B to 2.E.
+
+BC-SKL-01002, BC-SKL-01003, BC-SKL-01005, BC-SKL-01006, BC-SKL-01008, BC-SKL-01017, BC-SKL-01028, BC-SKL-01030, BC-SKL-01032, BC-SKL-01037, BC-SKL-01038, BC-SKL-01043, BC-SKL-01045, BC-SKL-01047, BC-SKL-01049, BC-SKL-01064, BC-SKL-01065, BC-SKL-01067, BC-SKL-02003, BC-SKL-02004, BC-SKL-02010, BC-SKL-02011, BC-SKL-02012, BC-SKL-02015, BC-SKL-02019, BC-SKL-02020, BC-SKL-02046, BC-SKL-03001, BC-SKL-03015, BC-SKL-03020, BC-SKL-03026, BC-SKL-03027, BC-SKL-03032, BC-SKL-04001, BC-SKL-04002, BC-SKL-04003, BC-SKL-04005, BC-SKL-04012, BC-SKL-04013, BC-SKL-04015, BC-SKL-04017, BC-SKL-04025, BC-SKL-04027, BC-SKL-04031, BC-SKL-04034, BC-SKL-05001, BC-SKL-05002, BC-SKL-05004, BC-SKL-05007, BC-SKL-05008, BC-SKL-05009, BC-SKL-05012, BC-SKL-05016, BC-SKL-05017, BC-SKL-05018, BC-SKL-05022, BC-SKL-05023, BC-SKL-05026, BC-SKL-05027, BC-SKL-05028, BC-SKL-05035, BC-SKL-05037, BC-SKL-05038, BC-SKL-05044, BC-SKL-05046, BC-SKL-05049, BC-SKL-05053, BC-SKL-05054, BC-SKL-05055, BC-SKL-05057, BC-SKL-06001, BC-SKL-06002, BC-SKL-06003, BC-SKL-06016, BC-SKL-06017, BC-SKL-06021, BC-SKL-06035, BC-SKL-06061, BC-SKL-07001, BC-SKL-07002, BC-SKL-07003, BC-SKL-07004, BC-SKL-07005, BC-SKL-07009, BC-SKL-07017, BC-SKL-07031, BC-SKL-07033, BC-SKL-07034, BC-SKL-07037, BC-SKL-07039, BC-SKL-07041, BC-SKL-07043, BC-SKL-08004, BC-SKL-08005, BC-SKL-08011, BC-SKL-08015, BC-SKL-08034, BC-SKL-08047, BC-SKL-08058, BC-SKL-09003, BC-SKL-09010, BC-SKL-09013, BC-SKL-09014, BC-SKL-09031, BC-SKL-10005, BC-SKL-10007, BC-SKL-10012, BC-SKL-10013, BC-SKL-10014, BC-SKL-10017, BC-SKL-10019, BC-SKL-10020, BC-SKL-10021, BC-SKL-10024, BC-SKL-10026, BC-SKL-10030, BC-SKL-10033, BC-SKL-10035, BC-SKL-10036, BC-SKL-10037, BC-SKL-10038, BC-SKL-10039, BC-SKL-10042, BC-SKL-10049, BC-SKL-10051, BC-SKL-10052, BC-SKL-10056, BC-SKL-10058, BC-SKL-10059, BC-SKL-10067, BC-SKL-10070, BC-SKL-10073
+
+### BC-REP-05 Contextual model
+
+59 skills. Conversion is itself assessed for 2 of them under Practice 2 skills 2.B to 2.E.
+
+BC-SKL-01004, BC-SKL-01060, BC-SKL-01068, BC-SKL-02003, BC-SKL-02014, BC-SKL-02015, BC-SKL-04001, BC-SKL-04002, BC-SKL-04003, BC-SKL-04004, BC-SKL-04005, BC-SKL-04006, BC-SKL-04007, BC-SKL-04008, BC-SKL-04010, BC-SKL-04013, BC-SKL-04014, BC-SKL-04015, BC-SKL-04016, BC-SKL-04017, BC-SKL-04025, BC-SKL-05002, BC-SKL-05006, BC-SKL-05008, BC-SKL-05038, BC-SKL-05049, BC-SKL-05051, BC-SKL-05054, BC-SKL-05055, BC-SKL-05056, BC-SKL-05057, BC-SKL-06001, BC-SKL-06002, BC-SKL-06004, BC-SKL-06005, BC-SKL-06006, BC-SKL-06008, BC-SKL-06017, BC-SKL-06036, BC-SKL-06037, BC-SKL-06038, BC-SKL-06039, BC-SKL-07003, BC-SKL-07004, BC-SKL-07037, BC-SKL-07038, BC-SKL-07043, BC-SKL-08003, BC-SKL-08005, BC-SKL-08006, BC-SKL-08009, BC-SKL-08011, BC-SKL-08012, BC-SKL-08013, BC-SKL-08014, BC-SKL-08015, BC-SKL-08016, BC-SKL-08017, BC-SKL-08057
+
+### BC-REP-06 Differential equation
+
+32 skills. Conversion is itself assessed for 7 of them under Practice 2 skills 2.B to 2.E.
+
+BC-SKL-05036, BC-SKL-05039, BC-SKL-05061, BC-SKL-05062, BC-SKL-07001, BC-SKL-07002, BC-SKL-07005, BC-SKL-07006, BC-SKL-07007, BC-SKL-07008, BC-SKL-07009, BC-SKL-07010, BC-SKL-07011, BC-SKL-07012, BC-SKL-07013, BC-SKL-07016, BC-SKL-07018, BC-SKL-07020, BC-SKL-07021, BC-SKL-07023, BC-SKL-07024, BC-SKL-07028, BC-SKL-07029, BC-SKL-07030, BC-SKL-07032, BC-SKL-07034, BC-SKL-07035, BC-SKL-07038, BC-SKL-07039, BC-SKL-07040, BC-SKL-07041, BC-SKL-07042
+
+### BC-REP-07 Slope field
+
+9 skills. Conversion is itself assessed for 4 of them under Practice 2 skills 2.B to 2.E.
+
+BC-SKL-07010, BC-SKL-07011, BC-SKL-07012, BC-SKL-07013, BC-SKL-07014, BC-SKL-07015, BC-SKL-07016, BC-SKL-07017, BC-SKL-07018
+
+### BC-REP-08 Geometric diagram
+
+31 skills. Conversion is itself assessed for 8 of them under Practice 2 skills 2.B to 2.E.
+
+BC-SKL-04017, BC-SKL-04018, BC-SKL-04021, BC-SKL-04026, BC-SKL-04027, BC-SKL-05049, BC-SKL-05050, BC-SKL-08002, BC-SKL-08026, BC-SKL-08031, BC-SKL-08032, BC-SKL-08033, BC-SKL-08034, BC-SKL-08036, BC-SKL-08037, BC-SKL-08038, BC-SKL-08040, BC-SKL-08041, BC-SKL-08042, BC-SKL-08044, BC-SKL-08045, BC-SKL-08046, BC-SKL-08047, BC-SKL-08048, BC-SKL-08049, BC-SKL-08050, BC-SKL-08051, BC-SKL-08052, BC-SKL-08053, BC-SKL-08054, BC-SKL-08055
+
+### BC-REP-09 Calculator-generated numerical result
+
+43 skills. Conversion is itself assessed for 6 of them under Practice 2 skills 2.B to 2.E.
+
+BC-SKL-01014, BC-SKL-02018, BC-SKL-03024, BC-SKL-04011, BC-SKL-04014, BC-SKL-04024, BC-SKL-05005, BC-SKL-05052, BC-SKL-06038, BC-SKL-06074, BC-SKL-08001, BC-SKL-08003, BC-SKL-08007, BC-SKL-08012, BC-SKL-08014, BC-SKL-08017, BC-SKL-08021, BC-SKL-08022, BC-SKL-08030, BC-SKL-08035, BC-SKL-08039, BC-SKL-08043, BC-SKL-08059, BC-SKL-09004, BC-SKL-09009, BC-SKL-09012, BC-SKL-09016, BC-SKL-09017, BC-SKL-09021, BC-SKL-09023, BC-SKL-09024, BC-SKL-09025, BC-SKL-09026, BC-SKL-09027, BC-SKL-09028, BC-SKL-09029, BC-SKL-09030, BC-SKL-09032, BC-SKL-09034, BC-SKL-09038, BC-SKL-09039, BC-SKL-09042, BC-SKL-10048
+
+### BC-REP-10 Sequence
+
+5 skills. Conversion is itself assessed for 0 of them under Practice 2 skills 2.B to 2.E.
+
+BC-SKL-10001, BC-SKL-10003, BC-SKL-10005, BC-SKL-10028, BC-SKL-10029
+
+### BC-REP-11 Series (finite partial sums or infinite)
+
+51 skills. Conversion is itself assessed for 0 of them under Practice 2 skills 2.B to 2.E.
+
+BC-SKL-10002, BC-SKL-10003, BC-SKL-10004, BC-SKL-10005, BC-SKL-10006, BC-SKL-10007, BC-SKL-10008, BC-SKL-10009, BC-SKL-10010, BC-SKL-10011, BC-SKL-10012, BC-SKL-10013, BC-SKL-10015, BC-SKL-10017, BC-SKL-10018, BC-SKL-10019, BC-SKL-10020, BC-SKL-10021, BC-SKL-10022, BC-SKL-10023, BC-SKL-10024, BC-SKL-10027, BC-SKL-10030, BC-SKL-10031, BC-SKL-10034, BC-SKL-10035, BC-SKL-10036, BC-SKL-10038, BC-SKL-10039, BC-SKL-10040, BC-SKL-10044, BC-SKL-10047, BC-SKL-10052, BC-SKL-10053, BC-SKL-10054, BC-SKL-10057, BC-SKL-10058, BC-SKL-10060, BC-SKL-10061, BC-SKL-10062, BC-SKL-10063, BC-SKL-10064, BC-SKL-10065, BC-SKL-10066, BC-SKL-10067, BC-SKL-10068, BC-SKL-10069, BC-SKL-10070, BC-SKL-10071, BC-SKL-10072, BC-SKL-10073
+
+### BC-REP-12 Parametric equations
+
+15 skills. Conversion is itself assessed for 6 of them under Practice 2 skills 2.B to 2.E.
+
+BC-SKL-09001, BC-SKL-09002, BC-SKL-09003, BC-SKL-09004, BC-SKL-09005, BC-SKL-09006, BC-SKL-09007, BC-SKL-09008, BC-SKL-09009, BC-SKL-09010, BC-SKL-09011, BC-SKL-09012, BC-SKL-09013, BC-SKL-09014, BC-SKL-09018
+
+### BC-REP-13 Polar equation
+
+15 skills. Conversion is itself assessed for 6 of them under Practice 2 skills 2.B to 2.E.
+
+BC-SKL-09029, BC-SKL-09030, BC-SKL-09031, BC-SKL-09032, BC-SKL-09033, BC-SKL-09034, BC-SKL-09035, BC-SKL-09036, BC-SKL-09037, BC-SKL-09038, BC-SKL-09039, BC-SKL-09040, BC-SKL-09041, BC-SKL-09042, BC-SKL-09043
+
+### BC-REP-14 Vector-valued function
+
+14 skills. Conversion is itself assessed for 0 of them under Practice 2 skills 2.B to 2.E.
+
+BC-SKL-09015, BC-SKL-09016, BC-SKL-09017, BC-SKL-09018, BC-SKL-09019, BC-SKL-09020, BC-SKL-09021, BC-SKL-09022, BC-SKL-09023, BC-SKL-09024, BC-SKL-09025, BC-SKL-09026, BC-SKL-09027, BC-SKL-09028
+
+## Skill to representation [verified]
+
+541 skills carry at least one representation. Skills by number of representations: 1 representation(s) 177 skills, 2 representation(s) 338 skills, 3 representation(s) 25 skills, 4 representation(s) 1 skills.
+
+The combinations that occur, with the skills that carry them. The inverse listing above is complete, so a skill carrying three or more representations is spelled out here and the single and paired combinations are given by count with their skills listed.
+
+| Combination | Skills | IDs |
+|---|---|---|
+| BC-REP-01 | 135 | BC-SKL-01007, BC-SKL-01021, BC-SKL-01022, BC-SKL-01024, BC-SKL-01025, BC-SKL-01026, BC-SKL-01027, BC-SKL-01029, BC-SKL-01031, BC-SKL-01034, BC-SKL-01042, BC-SKL-01046, BC-SKL-01048, BC-SKL-01051, BC-SKL-01052, BC-SKL-01054, BC-SKL-01055, BC-SKL-01058, BC-SKL-01061, BC-SKL-01062, BC-SKL-02001, BC-SKL-02005, BC-SKL-02006, BC-SKL-02007, BC-SKL-02008, BC-SKL-02009, BC-SKL-02025, BC-SKL-02026, BC-SKL-02027, BC-SKL-02028, BC-SKL-02029, BC-SKL-02030, BC-SKL-02031, BC-SKL-02032, BC-SKL-02033, BC-SKL-02034, BC-SKL-02035, BC-SKL-02036, BC-SKL-02038, BC-SKL-02039, BC-SKL-02040, BC-SKL-02042, BC-SKL-02043, BC-SKL-02044, BC-SKL-02045, BC-SKL-03002, BC-SKL-03003, BC-SKL-03006, BC-SKL-03007, BC-SKL-03008, BC-SKL-03009, BC-SKL-03010, BC-SKL-03011, BC-SKL-03014, BC-SKL-03017, BC-SKL-03021, BC-SKL-03022, BC-SKL-03023, BC-SKL-03025, BC-SKL-03028, BC-SKL-03029, BC-SKL-03030, BC-SKL-03031, BC-SKL-03033, BC-SKL-03034, BC-SKL-04019, BC-SKL-04020, BC-SKL-04023, BC-SKL-04032, BC-SKL-04033, BC-SKL-04035, BC-SKL-04036, BC-SKL-04037, BC-SKL-05014, BC-SKL-05030, BC-SKL-05058, BC-SKL-05059, BC-SKL-06012, BC-SKL-06013, BC-SKL-06014, BC-SKL-06015, BC-SKL-06019, BC-SKL-06029, BC-SKL-06030, BC-SKL-06032, BC-SKL-06034, BC-SKL-06040, BC-SKL-06041, BC-SKL-06042, BC-SKL-06043, BC-SKL-06044, BC-SKL-06045, BC-SKL-06046, BC-SKL-06047, BC-SKL-06048, BC-SKL-06049, BC-SKL-06050, BC-SKL-06051, BC-SKL-06052, BC-SKL-06053, BC-SKL-06054, BC-SKL-06055, BC-SKL-06056, BC-SKL-06057, BC-SKL-06058, BC-SKL-06059, BC-SKL-06060, BC-SKL-06062, BC-SKL-06063, BC-SKL-06064, BC-SKL-06065, BC-SKL-06066, BC-SKL-06067, BC-SKL-06068, BC-SKL-06069, BC-SKL-06070, BC-SKL-06071, BC-SKL-06072, BC-SKL-06073, BC-SKL-07025, BC-SKL-07026, BC-SKL-07027, BC-SKL-08010, BC-SKL-08020, BC-SKL-08023, BC-SKL-08029, BC-SKL-08056, BC-SKL-10016, BC-SKL-10025, BC-SKL-10032, BC-SKL-10041, BC-SKL-10043, BC-SKL-10046, BC-SKL-10050, BC-SKL-10055 |
+| BC-REP-01 + BC-REP-02 | 53 | BC-SKL-01011, BC-SKL-01012, BC-SKL-01013, BC-SKL-01023, BC-SKL-01033, BC-SKL-01035, BC-SKL-01039, BC-SKL-01040, BC-SKL-01041, BC-SKL-01044, BC-SKL-01050, BC-SKL-01053, BC-SKL-01056, BC-SKL-01057, BC-SKL-01059, BC-SKL-01063, BC-SKL-02013, BC-SKL-02021, BC-SKL-02022, BC-SKL-02023, BC-SKL-02024, BC-SKL-03005, BC-SKL-03012, BC-SKL-03013, BC-SKL-04009, BC-SKL-04022, BC-SKL-04028, BC-SKL-04029, BC-SKL-04030, BC-SKL-04038, BC-SKL-05010, BC-SKL-05011, BC-SKL-05013, BC-SKL-05019, BC-SKL-05021, BC-SKL-05024, BC-SKL-05029, BC-SKL-05032, BC-SKL-05033, BC-SKL-05034, BC-SKL-05060, BC-SKL-05063, BC-SKL-06009, BC-SKL-06011, BC-SKL-06018, BC-SKL-06033, BC-SKL-08008, BC-SKL-08018, BC-SKL-08019, BC-SKL-08024, BC-SKL-08025, BC-SKL-08027, BC-SKL-08028 |
+| BC-REP-01 + BC-REP-04 | 42 | BC-SKL-01003, BC-SKL-01005, BC-SKL-01006, BC-SKL-01028, BC-SKL-01030, BC-SKL-01032, BC-SKL-01037, BC-SKL-01043, BC-SKL-01047, BC-SKL-01049, BC-SKL-01064, BC-SKL-02010, BC-SKL-02046, BC-SKL-03001, BC-SKL-03015, BC-SKL-03020, BC-SKL-03026, BC-SKL-03027, BC-SKL-03032, BC-SKL-04012, BC-SKL-04031, BC-SKL-04034, BC-SKL-05016, BC-SKL-05018, BC-SKL-05023, BC-SKL-05037, BC-SKL-05046, BC-SKL-05053, BC-SKL-06016, BC-SKL-06061, BC-SKL-07031, BC-SKL-07033, BC-SKL-08004, BC-SKL-08058, BC-SKL-10014, BC-SKL-10026, BC-SKL-10033, BC-SKL-10042, BC-SKL-10049, BC-SKL-10051, BC-SKL-10056, BC-SKL-10059 |
+| BC-REP-01 + BC-REP-11 | 31 | BC-SKL-10002, BC-SKL-10004, BC-SKL-10006, BC-SKL-10008, BC-SKL-10009, BC-SKL-10010, BC-SKL-10011, BC-SKL-10015, BC-SKL-10018, BC-SKL-10022, BC-SKL-10023, BC-SKL-10027, BC-SKL-10031, BC-SKL-10034, BC-SKL-10040, BC-SKL-10044, BC-SKL-10047, BC-SKL-10053, BC-SKL-10054, BC-SKL-10057, BC-SKL-10060, BC-SKL-10061, BC-SKL-10062, BC-SKL-10063, BC-SKL-10064, BC-SKL-10065, BC-SKL-10066, BC-SKL-10068, BC-SKL-10069, BC-SKL-10071, BC-SKL-10072 |
+| BC-REP-01 + BC-REP-08 | 22 | BC-SKL-04018, BC-SKL-04021, BC-SKL-04026, BC-SKL-05050, BC-SKL-08031, BC-SKL-08032, BC-SKL-08033, BC-SKL-08036, BC-SKL-08037, BC-SKL-08038, BC-SKL-08040, BC-SKL-08041, BC-SKL-08042, BC-SKL-08044, BC-SKL-08045, BC-SKL-08046, BC-SKL-08049, BC-SKL-08050, BC-SKL-08051, BC-SKL-08052, BC-SKL-08053, BC-SKL-08055 |
+| BC-REP-04 + BC-REP-05 | 20 | BC-SKL-02003, BC-SKL-02015, BC-SKL-04001, BC-SKL-04002, BC-SKL-04003, BC-SKL-04005, BC-SKL-04013, BC-SKL-04015, BC-SKL-04025, BC-SKL-05054, BC-SKL-05055, BC-SKL-05057, BC-SKL-06002, BC-SKL-07003, BC-SKL-07004, BC-SKL-07037, BC-SKL-07043, BC-SKL-08005, BC-SKL-08011, BC-SKL-08015 |
+| BC-REP-02 | 18 | BC-SKL-01009, BC-SKL-01010, BC-SKL-02017, BC-SKL-03019, BC-SKL-05015, BC-SKL-05031, BC-SKL-05040, BC-SKL-05041, BC-SKL-05043, BC-SKL-05045, BC-SKL-06020, BC-SKL-06022, BC-SKL-06023, BC-SKL-06024, BC-SKL-06025, BC-SKL-06026, BC-SKL-06027, BC-SKL-06028 |
+| BC-REP-04 + BC-REP-11 | 17 | BC-SKL-10007, BC-SKL-10012, BC-SKL-10013, BC-SKL-10017, BC-SKL-10019, BC-SKL-10020, BC-SKL-10021, BC-SKL-10024, BC-SKL-10030, BC-SKL-10035, BC-SKL-10036, BC-SKL-10038, BC-SKL-10039, BC-SKL-10052, BC-SKL-10058, BC-SKL-10070, BC-SKL-10073 |
+| BC-REP-01 + BC-REP-05 | 15 | BC-SKL-01060, BC-SKL-04006, BC-SKL-04007, BC-SKL-04008, BC-SKL-04010, BC-SKL-04016, BC-SKL-05051, BC-SKL-05056, BC-SKL-06036, BC-SKL-06039, BC-SKL-08006, BC-SKL-08009, BC-SKL-08013, BC-SKL-08016, BC-SKL-08057 |
+| BC-REP-01 + BC-REP-09 | 15 | BC-SKL-02018, BC-SKL-03024, BC-SKL-04011, BC-SKL-04024, BC-SKL-05005, BC-SKL-05052, BC-SKL-06074, BC-SKL-08001, BC-SKL-08007, BC-SKL-08022, BC-SKL-08030, BC-SKL-08035, BC-SKL-08039, BC-SKL-08043, BC-SKL-10048 |
+| BC-REP-04 | 15 | BC-SKL-01002, BC-SKL-01045, BC-SKL-01067, BC-SKL-02004, BC-SKL-02019, BC-SKL-05001, BC-SKL-05004, BC-SKL-05007, BC-SKL-05009, BC-SKL-05017, BC-SKL-05022, BC-SKL-05027, BC-SKL-06021, BC-SKL-06035, BC-SKL-10037 |
+| BC-REP-01 + BC-REP-03 | 13 | BC-SKL-01001, BC-SKL-01018, BC-SKL-01019, BC-SKL-01020, BC-SKL-01066, BC-SKL-02002, BC-SKL-03004, BC-SKL-05003, BC-SKL-05047, BC-SKL-06031, BC-SKL-07019, BC-SKL-07036, BC-SKL-10045 |
+| BC-REP-01 + BC-REP-06 | 13 | BC-SKL-05036, BC-SKL-05061, BC-SKL-05062, BC-SKL-07006, BC-SKL-07007, BC-SKL-07008, BC-SKL-07023, BC-SKL-07024, BC-SKL-07029, BC-SKL-07030, BC-SKL-07032, BC-SKL-07035, BC-SKL-07042 |
+| BC-REP-09 + BC-REP-14 | 9 | BC-SKL-09016, BC-SKL-09017, BC-SKL-09021, BC-SKL-09023, BC-SKL-09024, BC-SKL-09025, BC-SKL-09026, BC-SKL-09027, BC-SKL-09028 |
+| BC-REP-03 + BC-REP-05 | 8 | BC-SKL-01004, BC-SKL-01068, BC-SKL-02014, BC-SKL-04004, BC-SKL-05006, BC-SKL-06005, BC-SKL-06006, BC-SKL-06008 |
+| BC-REP-01 + BC-REP-02 + BC-REP-03 | 7 | BC-SKL-01036, BC-SKL-03016, BC-SKL-05020, BC-SKL-05025, BC-SKL-05042, BC-SKL-06007, BC-SKL-06010 |
+| BC-REP-01 + BC-REP-12 | 7 | BC-SKL-09001, BC-SKL-09002, BC-SKL-09005, BC-SKL-09006, BC-SKL-09007, BC-SKL-09008, BC-SKL-09011 |
+| BC-REP-02 + BC-REP-04 | 7 | BC-SKL-01008, BC-SKL-01038, BC-SKL-02012, BC-SKL-05012, BC-SKL-05035, BC-SKL-05044, BC-SKL-06003 |
+| BC-REP-09 + BC-REP-13 | 7 | BC-SKL-09029, BC-SKL-09030, BC-SKL-09032, BC-SKL-09034, BC-SKL-09038, BC-SKL-09039, BC-SKL-09042 |
+| BC-REP-03 | 6 | BC-SKL-01015, BC-SKL-01016, BC-SKL-02016, BC-SKL-03018, BC-SKL-05048, BC-SKL-07022 |
+| BC-REP-04 + BC-REP-06 | 6 | BC-SKL-07001, BC-SKL-07002, BC-SKL-07005, BC-SKL-07034, BC-SKL-07039, BC-SKL-07041 |
+| BC-REP-06 + BC-REP-07 | 6 | BC-SKL-07010, BC-SKL-07011, BC-SKL-07012, BC-SKL-07013, BC-SKL-07016, BC-SKL-07018 |
+| BC-REP-03 + BC-REP-04 | 5 | BC-SKL-01017, BC-SKL-01065, BC-SKL-02020, BC-SKL-05026, BC-SKL-05028 |
+| BC-REP-01 + BC-REP-13 | 4 | BC-SKL-09033, BC-SKL-09035, BC-SKL-09041, BC-SKL-09043 |
+| BC-REP-01 + BC-REP-14 | 4 | BC-SKL-09015, BC-SKL-09019, BC-SKL-09020, BC-SKL-09022 |
+| BC-REP-02 + BC-REP-08 | 4 | BC-SKL-08002, BC-SKL-08026, BC-SKL-08048, BC-SKL-08054 |
+| BC-REP-04 + BC-REP-12 | 4 | BC-SKL-09003, BC-SKL-09010, BC-SKL-09013, BC-SKL-09014 |
+| BC-REP-01 + BC-REP-05 + BC-REP-09 | 3 | BC-SKL-04014, BC-SKL-06038, BC-SKL-08012 |
+| BC-REP-01 + BC-REP-10 | 3 | BC-SKL-10001, BC-SKL-10028, BC-SKL-10029 |
+| BC-REP-02 + BC-REP-13 | 3 | BC-SKL-09036, BC-SKL-09037, BC-SKL-09040 |
+| BC-REP-04 + BC-REP-08 | 3 | BC-SKL-04027, BC-SKL-08034, BC-SKL-08047 |
+| BC-REP-05 + BC-REP-09 | 3 | BC-SKL-08003, BC-SKL-08014, BC-SKL-08017 |
+| BC-REP-09 + BC-REP-12 | 3 | BC-SKL-09004, BC-SKL-09009, BC-SKL-09012 |
+| BC-REP-01 + BC-REP-03 + BC-REP-06 | 2 | BC-SKL-07020, BC-SKL-07021 |
+| BC-REP-01 + BC-REP-04 + BC-REP-05 | 2 | BC-SKL-05038, BC-SKL-06017 |
+| BC-REP-02 + BC-REP-03 | 2 | BC-SKL-02037, BC-SKL-02041 |
+| BC-REP-02 + BC-REP-04 + BC-REP-05 | 2 | BC-SKL-05008, BC-SKL-06001 |
+| BC-REP-02 + BC-REP-07 | 2 | BC-SKL-07014, BC-SKL-07015 |
+| BC-REP-02 + BC-REP-09 | 2 | BC-SKL-01014, BC-SKL-08021 |
+| BC-REP-04 + BC-REP-05 + BC-REP-08 | 2 | BC-SKL-04017, BC-SKL-05049 |
+| BC-REP-06 | 2 | BC-SKL-07028, BC-SKL-07040 |
+| BC-REP-01 + BC-REP-02 + BC-REP-03 + BC-REP-04 | 1 | BC-SKL-02011 |
+| BC-REP-01 + BC-REP-02 + BC-REP-06 | 1 | BC-SKL-05039 |
+| BC-REP-01 + BC-REP-03 + BC-REP-05 | 1 | BC-SKL-06037 |
+| BC-REP-01 + BC-REP-04 + BC-REP-06 | 1 | BC-SKL-07009 |
+| BC-REP-01 + BC-REP-04 + BC-REP-11 | 1 | BC-SKL-10067 |
+| BC-REP-01 + BC-REP-05 + BC-REP-06 | 1 | BC-SKL-07038 |
+| BC-REP-02 + BC-REP-05 | 1 | BC-SKL-06004 |
+| BC-REP-03 + BC-REP-04 + BC-REP-05 | 1 | BC-SKL-05002 |
+| BC-REP-04 + BC-REP-07 | 1 | BC-SKL-07017 |
+| BC-REP-04 + BC-REP-10 + BC-REP-11 | 1 | BC-SKL-10005 |
+| BC-REP-04 + BC-REP-13 | 1 | BC-SKL-09031 |
+| BC-REP-09 | 1 | BC-SKL-08059 |
+| BC-REP-10 + BC-REP-11 | 1 | BC-SKL-10003 |
+| BC-REP-12 + BC-REP-14 | 1 | BC-SKL-09018 |
+
+## Transitions between representations [inferred]
+
+Each representation record carries the conversions that start from it. A conversion is a step inside a response, not a separate question type: the table below is the set of moves the archetypes ask for.
+
+**BC-REP-01 Symbolic (analytical) expression**
+
+- BC-REP-01 -> BC-REP-02: sketch or identify the graph that a formula describes
+- BC-REP-01 -> BC-REP-03: evaluate a formula at selected inputs to build a table
+- BC-REP-01 -> BC-REP-04: state in words what a symbolic derivative or integral measures
+- BC-REP-01 -> BC-REP-09: enter an equation, derivative, or integral for a numerical result
+
+**BC-REP-02 Graphical**
+
+- BC-REP-02 -> BC-REP-01: write the symbolic statement a graphed slope or area supports
+- BC-REP-02 -> BC-REP-03: read ordered pairs off a graph into a table of values
+- BC-REP-02 -> BC-REP-04: describe increase, concavity, or extremum behaviour in words
+- BC-REP-02 -> BC-REP-02: pass from the graph of a function to the graph of its derivative
+
+**BC-REP-03 Numerical table**
+
+- BC-REP-03 -> BC-REP-01: write the difference quotient or Riemann sum the table supports
+- BC-REP-03 -> BC-REP-02: estimate a derivative from a table then sketch the behaviour it implies
+- BC-REP-03 -> BC-REP-04: state what a tabulated rate means in the situation with units
+- BC-REP-03 -> BC-REP-11: build a Taylor polynomial from tabulated derivative values
+
+**BC-REP-04 Verbal description**
+
+- BC-REP-04 -> BC-REP-01: turn a verbal rate statement into an equation or a differential equation
+- BC-REP-04 -> BC-REP-06: write the differential equation a described proportionality gives
+- BC-REP-04 -> BC-REP-08: draw the figure a described geometric situation implies
+
+**BC-REP-05 Contextual model**
+
+- BC-REP-05 -> BC-REP-01: write the model equation for a described quantity
+- BC-REP-05 -> BC-REP-04: report a computed value as a sentence with units and interval
+- BC-REP-05 -> BC-REP-09: compute a modelled quantity numerically and report the setup with it
+
+**BC-REP-06 Differential equation**
+
+- BC-REP-06 -> BC-REP-07: build a slope field from a differential equation at sample points
+- BC-REP-06 -> BC-REP-01: separate and antidifferentiate to a particular solution
+- BC-REP-06 -> BC-REP-03: run Euler steps into a table of approximate values
+- BC-REP-06 -> BC-REP-04: describe the behaviour of a solution without solving
+
+**BC-REP-07 Slope field**
+
+- BC-REP-07 -> BC-REP-06: identify which differential equation a slope field displays
+- BC-REP-07 -> BC-REP-02: sketch the solution curve through a marked point
+
+**BC-REP-08 Geometric diagram**
+
+- BC-REP-08 -> BC-REP-01: write the relation among the lengths, areas, or volumes a figure shows
+- BC-REP-08 -> BC-REP-05: attach units and a rate to a labelled figure
+
+**BC-REP-09 Calculator-generated numerical result**
+
+- BC-REP-09 -> BC-REP-01: write the setup beside the value the calculator produced
+- BC-REP-09 -> BC-REP-04: interpret a numerical result in the situation with units
+
+**BC-REP-10 Sequence**
+
+- BC-REP-10 -> BC-REP-11: form the partial sums or the series of a sequence
+- BC-REP-10 -> BC-REP-01: write a closed form or a general term for listed values
+
+**BC-REP-11 Series (finite partial sums or infinite)**
+
+- BC-REP-11 -> BC-REP-01: write the function a power series represents
+- BC-REP-11 -> BC-REP-11: differentiate or integrate a series term by term into another series
+- BC-REP-11 -> BC-REP-03: evaluate partial sums numerically against an error bound
+
+**BC-REP-12 Parametric equations**
+
+- BC-REP-12 -> BC-REP-02: plot the path a pair of component functions traces
+- BC-REP-12 -> BC-REP-14: collect component functions into a vector of position or velocity
+- BC-REP-12 -> BC-REP-01: eliminate the parameter or form dy/dx from the components
+
+**BC-REP-13 Polar equation**
+
+- BC-REP-13 -> BC-REP-02: plot the polar curve over a stated interval of theta
+- BC-REP-13 -> BC-REP-01: convert between r as a function of theta and x and y components
+- BC-REP-13 -> BC-REP-09: evaluate a polar area integral numerically
+
+**BC-REP-14 Vector-valued function**
+
+- BC-REP-14 -> BC-REP-12: read a vector-valued function as a pair of parametric components
+- BC-REP-14 -> BC-REP-01: write speed or acceleration from the component functions
+- BC-REP-14 -> BC-REP-05: report a motion quantity in context with units
+
+## Where conversion is itself assessed [verified]
+
+Practice 2 in `../../data/curriculum.json` makes re-expression the assessed step rather than a means to an answer. BC-MPS-2B identifies mathematical information from graphical, numerical, analytical, and verbal representations. BC-MPS-2C identifies a re-expression of information presented in a given representation. BC-MPS-2D identifies how properties of functions are related in different representations. BC-MPS-2E describes relationships among representations of functions and their derivatives. The practices themselves are described in [../exam/mathematical-practices.md](../exam/mathematical-practices.md) and weighted in [../exam/exam-blueprint.md](../exam/exam-blueprint.md).
+
+**BC-MPS-2B**, 4 skills: BC-SKL-08027, BC-SKL-08028, BC-SKL-08029, BC-SKL-08030
+
+**BC-MPS-2C**, 9 skills: BC-SKL-07001, BC-SKL-07002, BC-SKL-07003, BC-SKL-07004, BC-SKL-07005, BC-SKL-07010, BC-SKL-07011, BC-SKL-07012, BC-SKL-07013
+
+**BC-MPS-2D**, 29 skills: BC-SKL-05040, BC-SKL-05041, BC-SKL-05042, BC-SKL-05043, BC-SKL-05044, BC-SKL-05045, BC-SKL-05046, BC-SKL-05047, BC-SKL-05048, BC-SKL-08044, BC-SKL-08045, BC-SKL-08046, BC-SKL-08047, BC-SKL-08052, BC-SKL-08053, BC-SKL-08054, BC-SKL-08055, BC-SKL-09001, BC-SKL-09002, BC-SKL-09003, BC-SKL-09004, BC-SKL-09005, BC-SKL-09006, BC-SKL-09029, BC-SKL-09030, BC-SKL-09031, BC-SKL-09032, BC-SKL-09033, BC-SKL-09034
+
+**BC-MPS-2E**, 11 skills: BC-SKL-05014, BC-SKL-05015, BC-SKL-05016, BC-SKL-05017, BC-SKL-05018, BC-SKL-05030, BC-SKL-05031, BC-SKL-05032, BC-SKL-05033, BC-SKL-05034, BC-SKL-05035
+
+The archetypes built on those skills are the ones where a wrong reading of the given form, rather than a wrong procedure, is what costs the point: BC-QA-01013 matches a limit claim across three representations, BC-QA-05009 relates the graphs of a function and its first two derivatives, BC-QA-03003 reads a composite derivative off the graphs of its components, and BC-QA-02012 converts derivative notation with no calculus step at all.
+

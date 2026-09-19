@@ -1,0 +1,119 @@
+{
+ "type": "object",
+ "required": [
+  "sources"
+ ],
+ "properties": {
+  "sources": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string"
+     },
+     "name": {
+      "type": "string",
+      "minLength": 3
+     },
+     "scope": {
+      "enum": [
+       "AB_only",
+       "shared",
+       "BC_only",
+       "n/a"
+      ]
+     },
+     "evidence_tag": {
+      "enum": [
+       "verified",
+       "single-source",
+       "inferred",
+       "uncertain"
+      ]
+     },
+     "sources": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "notes": {
+      "type": "string"
+     },
+     "created": {
+      "type": "string"
+     },
+     "updated": {
+      "type": "string"
+     },
+     "status": {
+      "enum": [
+       "active",
+       "retired"
+      ]
+     },
+     "superseded_by": {
+      "type": "string"
+     },
+     "title": {
+      "type": "string"
+     },
+     "organization": {
+      "type": "string"
+     },
+     "url": {
+      "type": "string"
+     },
+     "resolved_url": {
+      "type": "string"
+     },
+     "doc_id": {
+      "type": "string"
+     },
+     "sha256": {
+      "type": "string"
+     },
+     "fetch_date": {
+      "type": "string"
+     },
+     "publication_date": {
+      "type": "string"
+     },
+     "exam_years": {
+      "type": "array",
+      "items": {
+       "type": "integer"
+      }
+     },
+     "source_type": {
+      "type": "string"
+     },
+     "primary": {
+      "type": "boolean"
+     },
+     "used_by": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     }
+    },
+    "required": [
+     "id",
+     "name",
+     "scope",
+     "evidence_tag",
+     "sources",
+     "title",
+     "organization",
+     "url",
+     "source_type",
+     "primary"
+    ],
+    "additionalProperties": true
+   }
+  }
+ },
+ "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

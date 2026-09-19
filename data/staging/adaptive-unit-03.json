@@ -1,0 +1,2426 @@
+{
+ "registry": "skills",
+ "skills": [
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-03001 (differentiation treated as acting on the outermost shell only)",
+     "BC-MIS-03002 (both chain rule factors read at the same input)",
+     "BC-SKL-03026 (classifying by outermost operation across all rules, not only composition)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-03001 (a symbolic composite with a product or a second layer inside forces the decomposition to be explicit)",
+     "BC-QA-03009 (rule choice is scored before any derivative is written)"
+    ],
+    "mastered_if": "The response names the outer function and the inner function of a composite formula before any differentiation happens, so that a nested power, radical, or exponential is labelled by the operation applied last rather than by its appearance, and the labelling holds when the inside is itself a product or a quotient; BC-ERR-03001 is absent because the inner function is identified as a separate object.",
+    "next_dependent_skills": [
+     "BC-SKL-03002"
+    ],
+    "partially_mastered_if": "The outer shell is named correctly and the inner function is described only as what is left over, so a second layer inside the inner function goes unnamed; or the decomposition is right and the response still proceeds to differentiate the outer shell alone, which is BC-ERR-03001, the inner derivative left out of the product.",
+    "prerequisite_gap_if": "The response cannot say which operation is applied last when the formula is evaluated at a number, a function notation and composition gap at BC-PRQ-03001 rather than a chain rule gap.",
+    "remediation_target": "Conceptual failure: BC-PRQ-03001 (composition as one function fed into another, evaluated from the inside out). Procedural failure: BC-SKL-03026 (reading the last operation performed off the written form)."
+   },
+   "archetypes": [
+    "BC-QA-03001",
+    "BC-QA-03009"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-03001"
+   ],
+   "concept": "BC-CON-03001",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-03002"
+   ],
+   "description_formal": "Given a formula built by composition, identify the outer function and the inner function so that the chain rule can be applied.",
+   "description_plain": "Name which operation is applied last and which is applied first in a formula.",
+   "diagnostic_signals": [
+    "BC-SIG-03001"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-3C1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-03001",
+   "learning_objectives": [
+    "BC-LO-FUN-3C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-03001",
+    "BC-MIS-03002"
+   ],
+   "name": "Decompose a composite function into outer and inner functions",
+   "notation": "f of g of x",
+   "official_evidence": [
+    "BC-MCQ-PE2012-001"
+   ],
+   "practice_skills": [
+    "BC-MPS-1C"
+   ],
+   "prerequisites": [
+    "BC-PRQ-03001"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-04"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:75",
+    "ced:72"
+   ],
+   "topic": "BC-TOP-0301",
+   "unit": "BC-UNIT-03",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-03001 (the inside is copied across unchanged)",
+     "BC-SKL-03006 (a composite inside a product needs the enclosing rule as well)",
+     "BC-MIS-03012 (rule picked from the look of the expression)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-03001 (the chain rule factor is the discriminating element of the scored answer)"
+    ],
+    "mastered_if": "The response writes f prime of g of x multiplied by g prime of x, with the outer derivative evaluated at the inner expression rather than at x, and the same structure appears whether the composite is given symbolically, in Leibniz form as dy/du times du/dx, or inside an exponential model as in the 2013 Q3 part D derivative; neither BC-ERR-03001 nor BC-ERR-03002 appears, and the inner factor survives even when the inner function is linear.",
+    "next_dependent_skills": [
+     "BC-SKL-03003",
+     "BC-SKL-03004",
+     "BC-SKL-03006",
+     "BC-SKL-03007",
+     "BC-SKL-03020",
+     "BC-SKL-03022",
+     "BC-SKL-06019",
+     "BC-SKL-06047"
+    ],
+    "partially_mastered_if": "The outer derivative is correct at the inner expression and the multiplication by g prime of x is missing, which is BC-ERR-03001 and signal BC-SIG-03001; or every factor is present but one is evaluated at the wrong expression or attached to the wrong term, signal BC-SIG-03002. The 2019 Q5 part A distinctions separate a missing inner derivative from a quotient rule that was misremembered.",
+    "prerequisite_gap_if": "The outer function is differentiated wrongly on its own, an elementary derivative rule gap at BC-SKL-02027 rather than a chain rule gap; or the composite is never separated into layers, which is BC-SKL-03001.",
+    "remediation_target": "Conceptual failure: BC-MIS-03001 (the inner function is an input that varies, so its rate enters the product). Procedural failure: BC-SKL-03001 (naming the layers before differentiating)."
+   },
+   "archetypes": [
+    "BC-QA-03001"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-03001",
+    "BC-ERR-03002"
+   ],
+   "concept": "BC-CON-03002",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-03003",
+    "BC-SKL-03004",
+    "BC-SKL-03006",
+    "BC-SKL-03007",
+    "BC-SKL-03020",
+    "BC-SKL-03022",
+    "BC-SKL-06019",
+    "BC-SKL-06047"
+   ],
+   "description_formal": "Given y equal to f of g of x with f and g differentiable, produce f prime of g of x multiplied by g prime of x.",
+   "description_plain": "Differentiate the outside, keep the inside, then multiply by the derivative of the inside.",
+   "diagnostic_signals": [
+    "BC-SIG-03001",
+    "BC-SIG-03002"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-3C1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-03002",
+   "learning_objectives": [
+    "BC-LO-FUN-3C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-03001"
+   ],
+   "name": "Differentiate a two layer composite function with the chain rule",
+   "notation": "dy/dx equals dy/du times du/dx",
+   "official_evidence": [
+    "BC-FRQ-2019-Q5-A",
+    "BC-FRQ-2013-Q3-D",
+    "BC-FRQ-2013-Q4-D",
+    "BC-FRQ-2014-Q2-C",
+    "BC-FRQ-2014-Q3-D",
+    "BC-FRQ-2014-Q5-C",
+    "BC-FRQ-2023-Q2-A",
+    "BC-FRQ-2023-Q6-A",
+    "BC-FRQ-2024-Q5-A",
+    "BC-FRQ-2025-Q2-A",
+    "BC-FRQ-2025-Q5-A",
+    "BC-FRQ-2026-Q2-B",
+    "BC-FRQ-2018-Q4-D",
+    "BC-MCQ-SAMPLE-007",
+    "BC-MCQ-PE2012-001",
+    "BC-MCQ-PE2012-038"
+   ],
+   "practice_skills": [
+    "BC-MPS-1C"
+   ],
+   "prerequisites": [
+    "BC-PRQ-03001",
+    "BC-SKL-02027",
+    "BC-SKL-03001"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:75",
+    "ced:72"
+   ],
+   "topic": "BC-TOP-0301",
+   "unit": "BC-UNIT-03",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-03001 (only the visible shell is differentiated)",
+     "BC-SKL-03028 (ordering several different rules, not only repeated chain rule layers)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-03001 (a second layer inside the inner function makes the omission of one factor visible in a single answer)"
+    ],
+    "mastered_if": "A composition of three or more layers is differentiated all the way inward, producing a product with one derivative factor per layer, each evaluated at the expression that sits inside it, and the response can state how many factors the product contains before it is written; BC-ERR-03002 is absent because the innermost derivative appears.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The first two layers are differentiated and the innermost derivative is omitted, which is BC-ERR-03002; or all factors are present and one sits at the wrong expression, signal BC-SIG-03002, where a correct spoken list of the layers separates bookkeeping from concept.",
+    "prerequisite_gap_if": "The two layer case itself is incomplete, a gap at BC-SKL-03002 rather than a depth problem, visible when a single composite loses its inner factor as well.",
+    "remediation_target": "Conceptual failure: BC-MIS-03001 (every layer is a function of what is inside it). Procedural failure: BC-SKL-03002 (the two layer product, applied repeatedly inward)."
+   },
+   "archetypes": [
+    "BC-QA-03001"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-03002"
+   ],
+   "concept": "BC-CON-03001",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a composition of three or more differentiable functions, produce the product of the derivatives of each layer evaluated at the appropriate inner expression.",
+   "description_plain": "Keep applying the chain rule inward until nothing is left undifferentiated.",
+   "diagnostic_signals": [
+    "BC-SIG-03002"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-3C1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-03003",
+   "learning_objectives": [
+    "BC-LO-FUN-3C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-03001"
+   ],
+   "name": "Differentiate a composite with three or more layers",
+   "notation": "repeated application of the chain rule",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-1C"
+   ],
+   "prerequisites": [
+    "BC-PRQ-03001",
+    "BC-SKL-03002"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:75",
+    "ced:72"
+   ],
+   "topic": "BC-TOP-0301",
+   "unit": "BC-UNIT-03",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-03002 (both factors evaluated at the same input)",
+     "BC-SKL-03018 (a table lookup for the inverse derivative rather than the composite)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-03002 (the inner output is itself a listed input, so reading at the wrong row is distinguishable from a structural error)"
+    ],
+    "mastered_if": "From a table of f, f prime, g, and g prime the response first writes the value of g at the stated input, then reads f prime at that output, multiplies by g prime at the stated input, and reports the product; the assembly of the three lookups is visible rather than a bare number, and neither BC-ERR-03003 nor BC-ERR-03004 appears.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The symbolic form f prime of g of a times g prime of a is written correctly and both derivatives are read in the same table row, which is BC-ERR-03003 and signal BC-SIG-03003; or the two tabulated derivatives are added rather than multiplied, BC-ERR-03004. A bare correct value with no visible lookups does not communicate the method in a free response setting.",
+    "prerequisite_gap_if": "The response cannot state the value of g at the input before any derivative is requested, a table reading gap at BC-PRQ-03005 rather than a chain rule gap.",
+    "remediation_target": "Conceptual failure: BC-MIS-03002 (the outer derivative belongs at the inner output, not at the original input). Procedural failure: BC-PRQ-03005 (locating the right row and column of a value table)."
+   },
+   "archetypes": [
+    "BC-QA-03002"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-03003",
+    "BC-ERR-03004"
+   ],
+   "concept": "BC-CON-03002",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a table of values of f, f prime, g, and g prime, compute the derivative of the composite at a stated input by evaluating g at the input, then f prime at that output, then multiplying by g prime at the input.",
+   "description_plain": "Look up the inner value first, then look up the outer derivative at that value.",
+   "diagnostic_signals": [
+    "BC-SIG-03003"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-3C1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-03004",
+   "learning_objectives": [
+    "BC-LO-FUN-3C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-03002"
+   ],
+   "name": "Evaluate the derivative of a composite at a point from a table of values",
+   "notation": "f prime of g of a times g prime of a",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-1C"
+   ],
+   "prerequisites": [
+    "BC-PRQ-03001",
+    "BC-PRQ-03005",
+    "BC-SKL-03002"
+   ],
+   "representations": [
+    "BC-REP-03",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:75",
+    "ced:72"
+   ],
+   "topic": "BC-TOP-0301",
+   "unit": "BC-UNIT-03",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-03002 (one input serves both factors)",
+     "BC-ERR-03005 (a slope claimed at a corner where the derivative does not exist)",
+     "BC-SKL-03019 (reading a graph for an inverse derivative instead)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-03003 (no formula is available, so every factor has to come off the figure)"
+    ],
+    "mastered_if": "Working from two graphs, the response reads the height of the inner graph at the stated input, reads the slope of the outer graph at that height, reads the slope of the inner graph at the stated input, and multiplies the two slopes; where a graph has a corner the response says the derivative does not exist there rather than reporting a slope, so BC-ERR-03003 and BC-ERR-03005 are both absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The chain rule product is assembled correctly and both slopes are read at the same abscissa, BC-ERR-03003 with signal BC-SIG-03003; or a function value is used where a slope was needed, the distinction the 2013 Q4 part D commentary draws between a correct rule and a misread graph.",
+    "prerequisite_gap_if": "Slopes cannot be read off a single graph at all, a graph reading gap at BC-PRQ-03005 and BC-SKL-02021 rather than a composite gap.",
+    "remediation_target": "Conceptual failure: BC-MIS-03002 (the outer slope is read at the inner output). Procedural failure: BC-SKL-02021 (reading a slope from a graph, including where it fails to exist)."
+   },
+   "archetypes": [
+    "BC-QA-03003"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-03003",
+    "BC-ERR-03005"
+   ],
+   "concept": "BC-CON-03002",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given graphs of two functions, read the value of the inner function and the slopes of both graphs at the required inputs and assemble the chain rule product.",
+   "description_plain": "Read the inner output and the two slopes off the graphs, then multiply.",
+   "diagnostic_signals": [
+    "BC-SIG-03003"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-3C1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-03005",
+   "learning_objectives": [
+    "BC-LO-FUN-3C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-03002"
+   ],
+   "name": "Evaluate the derivative of a composite at a point from graphs",
+   "notation": "slope read from a graph",
+   "official_evidence": [
+    "BC-FRQ-2013-Q4-D",
+    "BC-FRQ-2014-Q3-D"
+   ],
+   "practice_skills": [
+    "BC-MPS-1C"
+   ],
+   "prerequisites": [
+    "BC-PRQ-03001",
+    "BC-PRQ-03005"
+   ],
+   "representations": [
+    "BC-REP-02",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:75",
+    "ced:72"
+   ],
+   "topic": "BC-TOP-0301",
+   "unit": "BC-UNIT-03",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-03012 (rule chosen by the look of the expression rather than the last operation)",
+     "BC-SKL-03028 (ordering three or more rules in one problem)",
+     "BC-SKL-03025 (the same nesting with an inverse trigonometric factor)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-03009 (the structure has to be classified before the first derivative line)",
+     "BC-QA-03001 (a composite sitting inside a product or quotient)"
+    ],
+    "mastered_if": "The enclosing product or quotient rule is written first and the composite factor is then differentiated with its inner derivative inside that structure, so a quotient keeps its squared denominator and a product keeps both terms; BC-ERR-03006 and BC-ERR-03002 are absent, matching the 2019 Q5 part A distinction between a denominator that was not squared and an inner derivative that was dropped.",
+    "next_dependent_skills": [
+     "BC-SKL-03028",
+     "BC-SKL-09032"
+    ],
+    "partially_mastered_if": "The composite factor is differentiated correctly and the enclosing product or quotient rule never appears, BC-ERR-03006; or every rule appears and the nesting order is wrong so factors attach to the wrong pieces, signal BC-SIG-03002 and BC-SIG-03011.",
+    "prerequisite_gap_if": "The product or quotient rule is wrong on an expression with no composite in it, an elementary rule gap at BC-SKL-02036 rather than a nesting gap.",
+    "remediation_target": "Conceptual failure: BC-MIS-03012 (the operation applied last fixes which rule opens the work). Procedural failure: BC-SKL-02036 (the product and quotient rules on their own)."
+   },
+   "archetypes": [
+    "BC-QA-03001",
+    "BC-QA-03009"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-03002",
+    "BC-ERR-03006"
+   ],
+   "concept": "BC-CON-03002",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-03028",
+    "BC-SKL-09032"
+   ],
+   "description_formal": "Given an expression that is a product or a quotient in which at least one factor is a composite, apply the product or quotient rule and the chain rule in the order the structure dictates.",
+   "description_plain": "Use the outer structure first, then apply the chain rule to whichever factor is itself composite.",
+   "diagnostic_signals": [
+    "BC-SIG-03002"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-3C1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-03006",
+   "learning_objectives": [
+    "BC-LO-FUN-3C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-03012"
+   ],
+   "name": "Combine the chain rule with the product or quotient rule",
+   "notation": "product rule with a composite factor",
+   "official_evidence": [
+    "BC-FRQ-2013-Q4-D",
+    "BC-FRQ-2014-Q3-D"
+   ],
+   "practice_skills": [
+    "BC-MPS-1C"
+   ],
+   "prerequisites": [
+    "BC-PRQ-03001",
+    "BC-PRQ-03006",
+    "BC-SKL-02036",
+    "BC-SKL-03002"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:75",
+    "ced:79"
+   ],
+   "topic": "BC-TOP-0301",
+   "unit": "BC-UNIT-03",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-03004 (y treated as a second independent symbol)",
+     "BC-MIS-03005 (a short mixed term read as one symbol)",
+     "BC-SKL-03008 (a mixed term needs the product rule on top of this factor)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-03004 (an eligible attempt at implicit differentiation is scored separately from a completely correct one)"
+    ],
+    "mastered_if": "Each term in y alone is differentiated with respect to x as a composite, so d/dx of y cubed is written as three y squared times dy/dx, and the dy/dx factor appears on every such term including those inside a sum; BC-ERR-03007 is absent, which is what makes the differentiation eligible for the completely correct differentiation point the Chief Reader reports describe.",
+    "next_dependent_skills": [
+     "BC-SKL-03008",
+     "BC-SKL-03009"
+    ],
+    "partially_mastered_if": "The dy/dx factor is attached to isolated y terms and omitted from the y inside a mixed product, signal BC-SIG-03004; or the factor is carried on scratch work and not transferred to the answer, the non conceptual route into BC-ERR-03007.",
+    "prerequisite_gap_if": "The response cannot differentiate a power composite such as the cube of an unnamed function, a chain rule gap at BC-SKL-03002 rather than an implicit differentiation gap.",
+    "remediation_target": "Conceptual failure: BC-MIS-03004 (y is a function of x, so differentiating it leaves a rate behind). Procedural failure: BC-SKL-03002 (the chain rule factor on a power)."
+   },
+   "archetypes": [
+    "BC-QA-03004"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-03007"
+   ],
+   "concept": "BC-CON-03003",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-03008",
+    "BC-SKL-03009"
+   ],
+   "description_formal": "Given a term in y alone inside an equation in x and y, differentiate with respect to x by applying the chain rule, producing the derivative with respect to y multiplied by dy/dx.",
+   "description_plain": "Treat y as a function of x, so every y term picks up a dy/dx.",
+   "diagnostic_signals": [
+    "BC-SIG-03004"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-3D1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-03007",
+   "learning_objectives": [
+    "BC-LO-FUN-3D"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-03004"
+   ],
+   "name": "Differentiate a term in y with respect to x producing a dy/dx factor",
+   "notation": "d/dx of y cubed equals three y squared dy/dx",
+   "official_evidence": [
+    "cr-23:23"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-03005",
+    "BC-SKL-03002"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:76",
+    "cr-23:23"
+   ],
+   "topic": "BC-TOP-0302",
+   "unit": "BC-UNIT-03",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-03005 (a short mixed term treated as a single symbol)",
+     "BC-MIS-03004 (y treated as independent, so no factor appears)",
+     "BC-SKL-03007 (a y term alone needs the factor but no product rule)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-03004 (the mixed term is where the product rule point is won or lost)"
+    ],
+    "mastered_if": "A term containing both variables is differentiated as a product, so six x y becomes six y plus six x dy/dx, with the product rule visible and the dy/dx factor carried on the y factor; BC-ERR-03008 is absent, and the two pieces are separable in the way the 2025 Q5 part A rubric separates the product rule point from the chain rule point.",
+    "next_dependent_skills": [
+     "BC-SKL-03009",
+     "BC-SKL-03033"
+    ],
+    "partially_mastered_if": "One of the two product terms is present and the other is dropped, which under the 2025 scoring guidelines earns the chain rule point and not the product rule point; or the product rule is applied and the dy/dx factor is missing from the y factor, BC-ERR-03007 with signal BC-SIG-03004.",
+    "prerequisite_gap_if": "The product rule is not applied to a term in x alone either, an elementary rule gap upstream at BC-PRQ-03005 and BC-SKL-02036 rather than an implicit differentiation gap.",
+    "remediation_target": "Conceptual failure: BC-MIS-03005 (a mixed term is two factors, each varying). Procedural failure: BC-SKL-03007 (the dy/dx factor on the y factor of the product)."
+   },
+   "archetypes": [
+    "BC-QA-03004"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-03008"
+   ],
+   "concept": "BC-CON-03003",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-03009",
+    "BC-SKL-03033"
+   ],
+   "description_formal": "Given a term that is a product of an expression in x and an expression in y, differentiate with respect to x using the product rule, applying the chain rule to the factor in y.",
+   "description_plain": "A term like x times y needs the product rule, and the y factor still carries dy/dx.",
+   "diagnostic_signals": [
+    "BC-SIG-03004"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-3D1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-03008",
+   "learning_objectives": [
+    "BC-LO-FUN-3D"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-03005"
+   ],
+   "name": "Apply the product rule to a term containing both x and y",
+   "notation": "d/dx of six x y equals six y plus six x dy/dx",
+   "official_evidence": [
+    "cr-23:23",
+    "sg-25:20",
+    "BC-MCQ-CED-004"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-03005",
+    "BC-SKL-03007"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:76",
+    "cr-23:23",
+    "sg-25:20"
+   ],
+   "topic": "BC-TOP-0302",
+   "unit": "BC-UNIT-03",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-03004 (y as an independent symbol)",
+     "BC-SKL-03010 (isolating dy/dx is the algebra that follows this step)",
+     "BC-MIS-03014 (derivative notation treated as decoration, so the operator is dropped)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-03004 (the eligible attempt point turns on whether an equation survives the differentiation)"
+    ],
+    "mastered_if": "Every term of both sides is differentiated with respect to x and the result is still an equation, with the derivative of a constant right hand side written as zero rather than dropped; y terms carry dy/dx and mixed terms carry the product rule, so BC-ERR-03009 and BC-ERR-03007 are both absent.",
+    "next_dependent_skills": [
+     "BC-SKL-03010",
+     "BC-SKL-03023"
+    ],
+    "partially_mastered_if": "The left hand side is differentiated correctly and the equals zero is dropped, leaving an expression, which is BC-ERR-03009; the 2025 Chief Reader report records that responses in this state were generally unable to recover the first two points.",
+    "prerequisite_gap_if": "Individual terms are differentiated wrongly, so the gap is at BC-SKL-03007 for the y terms or BC-SKL-03008 for the mixed terms rather than in the term by term sweep itself.",
+    "remediation_target": "Conceptual failure: BC-MIS-03014 (d/dx is an operator applied to both sides, not a label). Procedural failure: BC-SKL-03007 (term by term differentiation with the dy/dx factor)."
+   },
+   "archetypes": [
+    "BC-QA-03004"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-03009"
+   ],
+   "concept": "BC-CON-03003",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-03010",
+    "BC-SKL-03023"
+   ],
+   "description_formal": "Given an equation in x and y, differentiate each term of both sides with respect to x, retaining the right hand side including a zero when the right hand side is constant.",
+   "description_plain": "Differentiate every term on both sides, and keep the equation an equation.",
+   "diagnostic_signals": [
+    "BC-SIG-03005"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-3D1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-03009",
+   "learning_objectives": [
+    "BC-LO-FUN-3D"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-03004"
+   ],
+   "name": "Differentiate both sides of an implicit equation term by term",
+   "notation": "d/dx applied to both sides",
+   "official_evidence": [
+    "crabbc-25:25",
+    "BC-MCQ-CED-004",
+    "BC-MCQ-PE2012-007"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-03005",
+    "BC-SKL-03007",
+    "BC-SKL-03008"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:76",
+    "crabbc-25:25"
+   ],
+   "topic": "BC-TOP-0302",
+   "unit": "BC-UNIT-03",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-03006 (dy/dx expected to come out in x alone)",
+     "BC-SKL-03014 (verifying a supplied form rather than producing one)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-03004 (the isolated expression has to match a stated form, so premature division shows)"
+    ],
+    "mastered_if": "All dy/dx terms are moved to one side, dy/dx is factored out, and the equation is divided once to give dy/dx as a single quotient in x and y; the y remaining in the answer is accepted as the finished form rather than manipulated away, and BC-ERR-03010 is absent because no division happens while dy/dx still stands on both sides.",
+    "next_dependent_skills": [
+     "BC-SKL-03011",
+     "BC-SKL-03012",
+     "BC-SKL-03013",
+     "BC-SKL-03014"
+    ],
+    "partially_mastered_if": "The differentiated equation is correct and the response divides before collecting, so the isolated expression is not dy/dx, which is BC-ERR-03010; or the work halts at a correct differentiated equation with no collection at all, signal BC-SIG-03005.",
+    "prerequisite_gap_if": "Given a differentiated equation already written, the response still cannot factor and isolate a common linear factor, an algebra gap at BC-PRQ-03002 rather than a calculus gap, which is exactly the separation signal BC-SIG-03005 prescribes.",
+    "remediation_target": "Conceptual failure: BC-MIS-03006 (the slope of an implicit curve depends on both coordinates). Procedural failure: BC-PRQ-03002 (collecting like terms and factoring a common factor)."
+   },
+   "archetypes": [
+    "BC-QA-03004"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-03010"
+   ],
+   "concept": "BC-CON-03004",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-03011",
+    "BC-SKL-03012",
+    "BC-SKL-03013",
+    "BC-SKL-03014"
+   ],
+   "description_formal": "Given an equation containing dy/dx linearly, collect the dy/dx terms on one side, factor dy/dx, and divide to produce an expression for dy/dx in x and y.",
+   "description_plain": "Gather the dy/dx terms, factor dy/dx out, and divide.",
+   "diagnostic_signals": [
+    "BC-SIG-03005"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-3D1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-03010",
+   "learning_objectives": [
+    "BC-LO-FUN-3D"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-03006"
+   ],
+   "name": "Solve the differentiated equation for dy/dx",
+   "notation": "dy/dx equals a quotient in x and y",
+   "official_evidence": [
+    "cr-23:22",
+    "BC-MCQ-CED-004"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-03002",
+    "BC-SKL-03009"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:76",
+    "cr-23:22"
+   ],
+   "topic": "BC-TOP-0302",
+   "unit": "BC-UNIT-03",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-03006 (a y in the answer read as unfinished work)",
+     "BC-SKL-03034 (the second derivative at a point needs this value first)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-03004 (a numerical slope at a stated point on the curve)"
+    ],
+    "mastered_if": "Both coordinates of the stated point are substituted into the expression for dy/dx and a single number is reported as the slope of the tangent there, with no variable left in the answer; BC-ERR-03011 is absent, and two points sharing an x coordinate are given different slopes.",
+    "next_dependent_skills": [
+     "BC-SKL-03034"
+    ],
+    "partially_mastered_if": "The expression for dy/dx is correct, the x coordinate alone is substituted, and the reported slope still contains y, which is BC-ERR-03011; or the substitution is complete and the arithmetic does not follow from it, signal BC-SIG-03006, where re-substituting settles whether the gap is arithmetic.",
+    "prerequisite_gap_if": "The expression for dy/dx itself is not isolated, a gap at BC-SKL-03010 rather than in the evaluation.",
+    "remediation_target": "Conceptual failure: BC-MIS-03006 (dy/dx is an expression in both variables, so a point means two substitutions). Procedural failure: BC-PRQ-03006 (substitution and arithmetic in a quotient)."
+   },
+   "archetypes": [
+    "BC-QA-03004",
+    "BC-QA-03005"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-03011"
+   ],
+   "concept": "BC-CON-03004",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-03034"
+   ],
+   "description_formal": "Given an expression for dy/dx in x and y and a point on the curve, substitute both coordinates to produce the numerical slope of the tangent line at that point.",
+   "description_plain": "Substitute both coordinates into the expression for dy/dx.",
+   "diagnostic_signals": [
+    "BC-SIG-03006"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-3D1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-03011",
+   "learning_objectives": [
+    "BC-LO-FUN-3D"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-03006"
+   ],
+   "name": "Evaluate dy/dx at a stated point on the curve",
+   "notation": "dy/dx evaluated at a point",
+   "official_evidence": [
+    "crabbc-25:24",
+    "sg-25:20"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-03006",
+    "BC-SKL-03010"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:76",
+    "crabbc-25:24",
+    "sg-25:20"
+   ],
+   "topic": "BC-TOP-0302",
+   "unit": "BC-UNIT-03",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-03007 (a tangent condition read as a condition on dy/dx alone)",
+     "BC-ERR-03012 (numerator and denominator conditions exchanged)",
+     "BC-SKL-03013 (the vertical case sets the denominator instead)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-03005 (the point must satisfy both the tangent condition and the defining equation)"
+    ],
+    "mastered_if": "The numerator of dy/dx is set equal to zero for a horizontal tangent, the resulting condition is solved, and the candidate is substituted into the defining equation of the curve to produce coordinates that lie on it; candidates failing that substitution are discarded, so BC-ERR-03012 and BC-ERR-03013 are both absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The correct condition on dy/dx is set and solved and the work stops without substituting into the defining equation, BC-ERR-03013 with signal BC-SIG-03007; the Chief Reader reports record this state as the common one, where the condition is right and the connection to the curve is missing.",
+    "prerequisite_gap_if": "The expression for dy/dx is wrong or unisolated, a gap at BC-SKL-03010; or the condition equation cannot be solved at all, an algebra gap at BC-PRQ-03007.",
+    "remediation_target": "Conceptual failure: BC-MIS-03007 (a point needs both coordinates and membership of the curve). Procedural failure: BC-PRQ-03007 (solving the equation the condition produces)."
+   },
+   "archetypes": [
+    "BC-QA-03005"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-03012",
+    "BC-ERR-03013"
+   ],
+   "concept": "BC-CON-03005",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given dy/dx for an implicitly defined curve, set the numerator equal to zero, solve, and substitute into the defining equation to decide whether a point on the curve meets the condition.",
+   "description_plain": "Set the numerator of dy/dx to zero, then check the candidate against the curve equation.",
+   "diagnostic_signals": [
+    "BC-SIG-03007"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-3D1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-03012",
+   "learning_objectives": [
+    "BC-LO-FUN-3D"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-03007"
+   ],
+   "name": "Locate a point where the tangent to an implicit curve is horizontal",
+   "notation": "dy/dx equals zero",
+   "official_evidence": [
+    "cr-23:22",
+    "cr-24:17"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-03007",
+    "BC-SKL-03010"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "cr-23:22",
+    "cr-24:17"
+   ],
+   "topic": "BC-TOP-0302",
+   "unit": "BC-UNIT-03",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-ERR-03012 (horizontal and vertical conditions exchanged)",
+     "BC-MIS-03007 (the condition treated as the whole problem)",
+     "BC-SKL-03012 (the horizontal case uses the numerator)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-03005 (asks which of numerator and denominator vanishes, and where on the curve)"
+    ],
+    "mastered_if": "The denominator of dy/dx is set equal to zero for a vertical tangent, the condition is solved, and the defining equation supplies the other coordinate, with candidates that do not lie on the curve discarded and the direction of the tangent tied to the denominator rather than the numerator; BC-ERR-03012 and BC-ERR-03013 are absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The denominator is correctly set to zero and no substitution into the curve follows, BC-ERR-03013 with signal BC-SIG-03007; or the numerator is set to zero instead, BC-ERR-03012, which the wording of the prompt alone distinguishes from a curve connection failure.",
+    "prerequisite_gap_if": "dy/dx is not available as a quotient, so numerator and denominator cannot be addressed separately, a gap at BC-SKL-03010 rather than a tangent direction gap.",
+    "remediation_target": "Conceptual failure: BC-MIS-03007 (a candidate value is not yet a point of the curve). Procedural failure: BC-SKL-03010 (producing dy/dx as a quotient so the denominator is identifiable)."
+   },
+   "archetypes": [
+    "BC-QA-03005"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-03013"
+   ],
+   "concept": "BC-CON-03005",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given dy/dx for an implicitly defined curve, set the denominator equal to zero, solve, and use the defining equation to identify the coordinates of the point, discarding candidates that do not lie on the curve.",
+   "description_plain": "Set the denominator of dy/dx to zero, then check the candidate against the curve equation.",
+   "diagnostic_signals": [
+    "BC-SIG-03007"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-3D1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-03013",
+   "learning_objectives": [
+    "BC-LO-FUN-3D"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-03007"
+   ],
+   "name": "Locate a point where the tangent to an implicit curve is vertical",
+   "notation": "denominator of dy/dx equals zero",
+   "official_evidence": [
+    "cr-23:22",
+    "cr-24:17",
+    "crabbc-25:24"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-03007",
+    "BC-SKL-03010"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "cr-23:22",
+    "cr-24:17",
+    "crabbc-25:24"
+   ],
+   "topic": "BC-TOP-0302",
+   "unit": "BC-UNIT-03",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-03006 (a y in the verified expression read as unfinished)",
+     "BC-SKL-03010 (producing dy/dx rather than confirming a given form)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-03004 (a show that direction, where the target expression is supplied and the steps carry the credit)"
+    ],
+    "mastered_if": "The implicit differentiation is carried out independently and the algebra that turns the result into the stated expression is written line by line, so the collection, the factoring, and the single division are all visible and the final line matches the supplied form exactly; BC-ERR-03010 is absent because no step divides while dy/dx remains on both sides.",
+    "next_dependent_skills": [
+     "BC-SKL-05058",
+     "BC-SKL-05061"
+    ],
+    "partially_mastered_if": "The differentiation is correct and the response asserts agreement with the supplied expression without the intermediate algebra, so the verification is not communicated; or a premature division produces a form that does not match, BC-ERR-03010.",
+    "prerequisite_gap_if": "The algebra alone fails when the differentiated equation is handed over ready made, a manipulation gap at BC-PRQ-03002, which signal BC-SIG-03005 separates from a calculus gap.",
+    "remediation_target": "Conceptual failure: BC-MIS-03006 (the implicit derivative legitimately contains y). Procedural failure: BC-PRQ-03002 (the factor and divide sequence written out)."
+   },
+   "archetypes": [
+    "BC-QA-03004"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-03010"
+   ],
+   "concept": "BC-CON-03004",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-05058",
+    "BC-SKL-05061"
+   ],
+   "description_formal": "Given an equation and a stated expression for dy/dx, differentiate implicitly and present the algebraic steps that transform the result into the stated expression.",
+   "description_plain": "Do the differentiation yourself and show the algebra that turns it into the given form.",
+   "diagnostic_signals": [
+    "BC-SIG-03005"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-3D1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-03014",
+   "learning_objectives": [
+    "BC-LO-FUN-3D"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-03006"
+   ],
+   "name": "Verify a supplied expression for dy/dx by implicit differentiation",
+   "notation": "show that dy/dx equals the given expression",
+   "official_evidence": [
+    "cr-23:22",
+    "crabbc-25:24"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-03002",
+    "BC-PRQ-03006",
+    "BC-SKL-03010"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "cr-23:22",
+    "crabbc-25:24"
+   ],
+   "topic": "BC-TOP-0302",
+   "unit": "BC-UNIT-03",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-03009 (the reciprocal formula treated as unconditional)",
+     "BC-MIS-03008 (inverse and original evaluated at the same input)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-03006 (the matching input and the nonzero check both have to be visible)"
+    ],
+    "mastered_if": "The rule is stated as g prime of a equals one over f prime of g of a together with its hypotheses, that f is invertible and differentiable and that f prime at the matching input is not zero; the nonzero condition is named rather than assumed, so BC-ERR-03014 is absent and the response can say what goes wrong where the original curve has a horizontal tangent.",
+    "next_dependent_skills": [
+     "BC-SKL-03017"
+    ],
+    "partially_mastered_if": "The reciprocal formula is written correctly and no condition on f prime is mentioned, BC-ERR-03014 with signal BC-SIG-03008, which is the state where a justification point requiring the hypothesis is not available.",
+    "prerequisite_gap_if": "The response cannot say what an inverse function is or which pairs it reverses, an inverse function gap at BC-PRQ-03003 rather than a rule statement gap.",
+    "remediation_target": "Conceptual failure: BC-MIS-03009 (a zero derivative on the original curve makes the inverse slope undefined). Procedural failure: BC-PRQ-03003 (the defining relation between a function and its inverse)."
+   },
+   "archetypes": [
+    "BC-QA-03006"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-03014"
+   ],
+   "concept": "BC-CON-03006",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-03017"
+   ],
+   "description_formal": "State that for f invertible and differentiable with inverse g, g prime of a equals one over f prime of g of a, provided f prime of g of a is not zero.",
+   "description_plain": "Say the rule and say what has to be true for it to apply.",
+   "diagnostic_signals": [
+    "BC-SIG-03008"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-3E1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-03015",
+   "learning_objectives": [
+    "BC-LO-FUN-3E"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-03009"
+   ],
+   "name": "State the inverse function derivative rule with its hypotheses",
+   "notation": "g prime of a equals one over f prime of g of a",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-3G"
+   ],
+   "prerequisites": [
+    "BC-PRQ-03003"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-04"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:77"
+   ],
+   "topic": "BC-TOP-0303",
+   "unit": "BC-UNIT-03",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-03008 (the inverse evaluated wherever the original is)",
+     "BC-SKL-03004 (finding an inner output for a composite, a different matching step)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-03006 (a table row exists at the given value, so the wrong row is an available answer)"
+    ],
+    "mastered_if": "Given the value a at which the inverse derivative is wanted, the response finds the input c with f of c equal to a and states that c is g of a, writing the ordered pair on the original function that corresponds to the point on the inverse; the search is for the output equal to a rather than the input equal to a, so BC-ERR-03015 is absent.",
+    "next_dependent_skills": [
+     "BC-SKL-03017",
+     "BC-SKL-03018",
+     "BC-SKL-03019"
+    ],
+    "partially_mastered_if": "The matching input is located from a table or a graph but not carried into the later evaluation, so the reciprocal is taken at the supplied value instead, BC-ERR-03015 with signal BC-SIG-03009.",
+    "prerequisite_gap_if": "The response cannot state which coordinate of an ordered pair swaps under inversion, an inverse function gap at BC-PRQ-03003 rather than a lookup gap.",
+    "remediation_target": "Conceptual failure: BC-MIS-03008 (inverse inputs are original outputs). Procedural failure: BC-PRQ-03003 (reading a function value backwards from a table or graph)."
+   },
+   "archetypes": [
+    "BC-QA-03006"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-03015"
+   ],
+   "concept": "BC-CON-03006",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-03017",
+    "BC-SKL-03018",
+    "BC-SKL-03019"
+   ],
+   "description_formal": "Given a value a at which the derivative of the inverse is wanted, find the input c with f of c equal to a, which is the value g of a.",
+   "description_plain": "Find the input whose output is the number you were given.",
+   "diagnostic_signals": [
+    "BC-SIG-03009"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-3E1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-03016",
+   "learning_objectives": [
+    "BC-LO-FUN-3E"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-03008"
+   ],
+   "name": "Locate the matching input on the original function",
+   "notation": "f of c equals a",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-3G"
+   ],
+   "prerequisites": [
+    "BC-PRQ-03003"
+   ],
+   "representations": [
+    "BC-REP-03",
+    "BC-REP-02",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:77"
+   ],
+   "topic": "BC-TOP-0303",
+   "unit": "BC-UNIT-03",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-03008 (one input serves both the function and its inverse)",
+     "BC-MIS-03009 (the nonzero hypothesis never checked)",
+     "BC-SKL-03018 (the same computation with the derivative supplied by table)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-03006 (a formula case, where differentiating and matching are separable failures)"
+    ],
+    "mastered_if": "From a formula the response differentiates f, evaluates f prime at the matching input c where f of c equals the stated value, confirms that this derivative is not zero, and reports its reciprocal; the derivative rather than the function value is inverted, so BC-ERR-03015 and BC-ERR-03016 are both absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "f prime is computed correctly and evaluated at the supplied value rather than at the matching input, BC-ERR-03015 with signal BC-SIG-03009; or the value of f is inverted in place of the value of f prime, BC-ERR-03016.",
+    "prerequisite_gap_if": "The matching input is never found, a gap at BC-SKL-03016; or the rule with its hypotheses cannot be stated, a gap at BC-SKL-03015.",
+    "remediation_target": "Conceptual failure: BC-MIS-03008 (the reciprocal belongs to the slope at the matching point). Procedural failure: BC-SKL-03016 (locating the input whose output is the stated value)."
+   },
+   "archetypes": [
+    "BC-QA-03006"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-03015",
+    "BC-ERR-03016"
+   ],
+   "concept": "BC-CON-03006",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a formula for an invertible differentiable f, compute f prime, evaluate it at the matching input, and report the reciprocal as the derivative of the inverse at the stated value.",
+   "description_plain": "Differentiate the original function, evaluate at the matching input, and take the reciprocal.",
+   "diagnostic_signals": [
+    "BC-SIG-03009"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-3E1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-03017",
+   "learning_objectives": [
+    "BC-LO-FUN-3E"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-03008",
+    "BC-MIS-03009"
+   ],
+   "name": "Compute the derivative of an inverse at a point from a formula",
+   "notation": "one over f prime of g of a",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-3G"
+   ],
+   "prerequisites": [
+    "BC-PRQ-03003",
+    "BC-PRQ-03006",
+    "BC-SKL-03015",
+    "BC-SKL-03016"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:77"
+   ],
+   "topic": "BC-TOP-0303",
+   "unit": "BC-UNIT-03",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-03008 (inverse and original read at the same input)",
+     "BC-SKL-03004 (a table lookup for a composite derivative, which multiplies rather than inverts)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-03006 (the table supplies a decoy row at the given value)"
+    ],
+    "mastered_if": "The response scans the table for the row where f takes the stated value, names that input as g of the stated value, and reports the reciprocal of the f prime entry in that same row, keeping the f and f prime columns distinct; BC-ERR-03015 is absent even when a row happens to exist at the stated value itself.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The reciprocal is taken from the row indexed by the stated value rather than the row where f equals it, BC-ERR-03015 with signal BC-SIG-03009, a state that resolves when the matching input is requested on its own.",
+    "prerequisite_gap_if": "The matching row cannot be identified at all, a gap at BC-SKL-03016 and BC-PRQ-03003 rather than a reciprocal gap.",
+    "remediation_target": "Conceptual failure: BC-MIS-03008 (which column the stated value lives in). Procedural failure: BC-SKL-03016 (matching the row by output rather than by input)."
+   },
+   "archetypes": [
+    "BC-QA-03006"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-03015"
+   ],
+   "concept": "BC-CON-03006",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a table of values of f and f prime, identify the row where f takes the stated value and report the reciprocal of f prime in that row as the derivative of the inverse.",
+   "description_plain": "Read the matching row of the table, then take the reciprocal of the listed derivative.",
+   "diagnostic_signals": [
+    "BC-SIG-03009"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-3E1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-03018",
+   "learning_objectives": [
+    "BC-LO-FUN-3E"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-03008"
+   ],
+   "name": "Compute the derivative of an inverse at a point from a table",
+   "notation": "table of f and f prime",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-3G"
+   ],
+   "prerequisites": [
+    "BC-PRQ-03003",
+    "BC-SKL-03016"
+   ],
+   "representations": [
+    "BC-REP-03"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:77",
+    "ced:72"
+   ],
+   "topic": "BC-TOP-0303",
+   "unit": "BC-UNIT-03",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-03008 (the same abscissa used for both curves)",
+     "BC-SKL-03005 (reading two graphs for a composite derivative instead)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-03006 (only a figure is available, so the matching point has to be found by height)"
+    ],
+    "mastered_if": "The response locates the point on the graph whose height is the stated value, reads the slope of the curve there, and reports its reciprocal, using the vertical axis to find the point and the tangent direction to find the slope; BC-ERR-03015 is absent, and a point where the graph has a horizontal tangent is reported as one where the inverse derivative does not exist.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The slope is read at the abscissa equal to the stated value rather than at the point of that height, BC-ERR-03015 with signal BC-SIG-03009; or the height itself is inverted in place of the slope.",
+    "prerequisite_gap_if": "Slopes cannot be read from the figure, a graph reading gap upstream; or the matching point is never located, a gap at BC-SKL-03016 and BC-PRQ-03003.",
+    "remediation_target": "Conceptual failure: BC-MIS-03008 (the inverse reflects the graph, so inputs and outputs trade places). Procedural failure: BC-SKL-03016 (finding the point of the given height)."
+   },
+   "archetypes": [
+    "BC-QA-03006"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-03015"
+   ],
+   "concept": "BC-CON-03006",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given the graph of an invertible differentiable function, locate the point whose output is the stated value, read the slope of the graph there, and report its reciprocal.",
+   "description_plain": "Find the point on the graph with the given height, read the slope there, and invert it.",
+   "diagnostic_signals": [
+    "BC-SIG-03009"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-3E1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-03019",
+   "learning_objectives": [
+    "BC-LO-FUN-3E"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-03008"
+   ],
+   "name": "Compute the derivative of an inverse at a point from a graph",
+   "notation": "slope read from a graph",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-3G"
+   ],
+   "prerequisites": [
+    "BC-PRQ-03003",
+    "BC-SKL-03016"
+   ],
+   "representations": [
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:77",
+    "ced:72"
+   ],
+   "topic": "BC-TOP-0303",
+   "unit": "BC-UNIT-03",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-03009 (the formula treated as having no hypotheses)",
+     "BC-MIS-03011 (formulas held as items with no route back to a definition)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-03006 (the reciprocal structure is what the derivation has to produce)"
+    ],
+    "mastered_if": "Starting from f of g of x equal to x, the response differentiates both sides with the chain rule to reach f prime of g of x times g prime of x equal to one, then divides to obtain g prime of x, and names the requirement that f prime of g of x is not zero as the reason the division is legitimate; BC-ERR-03014 is absent because the hypothesis emerges from the derivation.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The identity is differentiated correctly and the division is performed with no comment on the nonzero factor, BC-ERR-03014 with signal BC-SIG-03008; or the right hand side derivative of x is dropped so the equation loses its one.",
+    "prerequisite_gap_if": "The composite f of g of x is not differentiated with both factors, a chain rule gap at BC-SKL-03002 rather than a derivation gap.",
+    "remediation_target": "Conceptual failure: BC-MIS-03009 (dividing by f prime of g of x requires it to be nonzero). Procedural failure: BC-SKL-03002 (differentiating the composite side of the identity)."
+   },
+   "archetypes": [
+    "BC-QA-03006"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-03014"
+   ],
+   "concept": "BC-CON-03006",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Starting from the defining identity f of g of x equal to x, differentiate both sides with the chain rule and solve the resulting equation for g prime of x.",
+   "description_plain": "Differentiate f of g of x equals x and solve for g prime.",
+   "diagnostic_signals": [
+    "BC-SIG-03008"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-3E1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-03020",
+   "learning_objectives": [
+    "BC-LO-FUN-3E"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-03009"
+   ],
+   "name": "Derive the inverse derivative rule from the chain rule",
+   "notation": "f prime of g of x times g prime of x equals one",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-3G"
+   ],
+   "prerequisites": [
+    "BC-PRQ-03003",
+    "BC-SKL-02039",
+    "BC-SKL-03002"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-04"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:77"
+   ],
+   "topic": "BC-TOP-0303",
+   "unit": "BC-UNIT-03",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-03010 (the three formulas treated as interchangeable members of one family)",
+     "BC-MIS-03011 (no route back from the definition when recall fails)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-03007 (the correct member of the family has to be selected before any chain rule work)"
+    ],
+    "mastered_if": "The three formulas are stated distinctly, with one over the square root of one minus x squared for the inverse sine, its negative for the inverse cosine, and one over one plus x squared for the inverse tangent, and the response can say which form carries a radical and which a rational denominator; BC-ERR-03017 is absent, with no sign or radical displaced.",
+    "next_dependent_skills": [
+     "BC-SKL-03022",
+     "BC-SKL-03024"
+    ],
+    "partially_mastered_if": "Two of the three are stated correctly and the third is filled in by resemblance, exchanging the radical and rational forms or dropping the negative sign on the inverse cosine, BC-ERR-03017.",
+    "prerequisite_gap_if": "The domain or the meaning of an inverse trigonometric function cannot be stated, a gap at BC-PRQ-03004 rather than a recall gap.",
+    "remediation_target": "Conceptual failure: BC-MIS-03010 (the radical and the rational forms come from different identities). Procedural failure: BC-SKL-03023 (recovering a formula by implicit differentiation when recall fails)."
+   },
+   "archetypes": [
+    "BC-QA-03007"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-03017"
+   ],
+   "concept": "BC-CON-03007",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-03022",
+    "BC-SKL-03024"
+   ],
+   "description_formal": "State the derivative of the inverse sine as one over the square root of one minus x squared, the derivative of the inverse cosine as its negative, and the derivative of the inverse tangent as one over one plus x squared.",
+   "description_plain": "Recall the three standard inverse trigonometric derivative formulas.",
+   "diagnostic_signals": [
+    "BC-SIG-03010"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-3E2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-03021",
+   "learning_objectives": [
+    "BC-LO-FUN-3E"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-03010"
+   ],
+   "name": "State the derivatives of the inverse sine, cosine, and tangent functions",
+   "notation": "derivative of arcsin x, arccos x, arctan x",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-03004"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:78"
+   ],
+   "topic": "BC-TOP-0304",
+   "unit": "BC-UNIT-03",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-03010 (radical and rational forms exchanged)",
+     "BC-MIS-03001 (only the outer shell differentiated)",
+     "BC-SKL-03025 (an inverse trigonometric factor inside a product needs the enclosing rule)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-03007 (an inner expression that is not a single variable separates substitution from recall)"
+    ],
+    "mastered_if": "The inner expression replaces the variable everywhere in the standard formula, so an inverse tangent of u yields u prime over one plus u squared with the inner derivative multiplied on, and the same substitution reaches inside a radical for the inverse sine form; BC-ERR-03018 is absent because neither the substitution nor the inner factor is partial.",
+    "next_dependent_skills": [
+     "BC-SKL-03025"
+    ],
+    "partially_mastered_if": "The correct standard formula is written with the variable left in the denominator instead of the inner expression, or with the inner expression substituted and the inner derivative factor missing, BC-ERR-03018 with signal BC-SIG-03010.",
+    "prerequisite_gap_if": "The wrong member of the inverse trigonometric family is recalled before any substitution happens, BC-ERR-03017 and a gap at BC-SKL-03021; or the chain rule factor is missing on ordinary composites too, a gap at BC-SKL-03002.",
+    "remediation_target": "Conceptual failure: BC-MIS-03001 (the inner expression is a varying input, so its rate multiplies). Procedural failure: BC-SKL-03021 (the standard formula itself)."
+   },
+   "archetypes": [
+    "BC-QA-03007"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-03018"
+   ],
+   "concept": "BC-CON-03007",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-03025"
+   ],
+   "description_formal": "Given an inverse trigonometric function composed with a differentiable inner function, substitute the inner function into the standard formula and multiply by the derivative of the inner function.",
+   "description_plain": "Use the formula with the inner expression in place of x, then multiply by the derivative of the inner expression.",
+   "diagnostic_signals": [
+    "BC-SIG-03010"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-3E2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-03022",
+   "learning_objectives": [
+    "BC-LO-FUN-3E"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-03010",
+    "BC-MIS-03001"
+   ],
+   "name": "Differentiate an inverse trigonometric function of an inner expression",
+   "notation": "derivative of arctan u equals u prime over one plus u squared",
+   "official_evidence": [
+    "sg-25:2",
+    "BC-MCQ-PE2012-007"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-03004",
+    "BC-SKL-03002",
+    "BC-SKL-03021"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:78",
+    "sg-25:2"
+   ],
+   "topic": "BC-TOP-0304",
+   "unit": "BC-UNIT-03",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-03011 (the formulas held as unrecoverable memorised items)",
+     "BC-MIS-03010 (family members exchanged when recall substitutes for derivation)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-03007 (the derived form has to agree with the standard one, so the identity step is visible)"
+    ],
+    "mastered_if": "The response rewrites y equal to an inverse trigonometric function as the corresponding trigonometric equation such as sin y equal to x, differentiates implicitly to get cos y times dy/dx equal to one, solves for dy/dx, and uses the Pythagorean identity to express cos y in x, arriving at the standard formula without recalling it; BC-ERR-03017 is absent because the formula is produced rather than remembered.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The trigonometric equation is set up and differentiated correctly and the result is left in terms of y, with the Pythagorean identity never applied, so the answer is not expressed in x; or the dy/dx factor is omitted in the implicit step, BC-ERR-03007.",
+    "prerequisite_gap_if": "The implicit differentiation of a trigonometric term in y fails on its own, a gap at BC-SKL-03009; or the Pythagorean identity is unavailable, a gap at BC-PRQ-03004.",
+    "remediation_target": "Conceptual failure: BC-MIS-03011 (each formula follows from the defining trigonometric equation). Procedural failure: BC-SKL-03009 (implicit differentiation of both sides)."
+   },
+   "archetypes": [
+    "BC-QA-03007"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-03017"
+   ],
+   "concept": "BC-CON-03007",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given y equal to an inverse trigonometric function of x, rewrite as the corresponding trigonometric equation, differentiate implicitly, solve for dy/dx, and use a Pythagorean identity to express the result in x.",
+   "description_plain": "Start from the equivalent trigonometric equation, differentiate implicitly, and rewrite using an identity.",
+   "diagnostic_signals": [
+    "BC-SIG-03010"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-3E2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-03023",
+   "learning_objectives": [
+    "BC-LO-FUN-3E"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-03011"
+   ],
+   "name": "Derive an inverse trigonometric derivative by implicit differentiation",
+   "notation": "sin y equals x",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-03004",
+    "BC-SKL-03009"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:78"
+   ],
+   "topic": "BC-TOP-0304",
+   "unit": "BC-UNIT-03",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-03010 (the radical form used where the rational form belongs)",
+     "BC-SKL-03022 (producing the derivative expression rather than evaluating one)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-03007 (the expression is differentiated and then evaluated at a point in the same item)"
+    ],
+    "mastered_if": "The input is substituted into the inverse trigonometric derivative expression and the radical or the rational denominator is simplified to a single numerical slope, with the inner expression evaluated before the denominator is formed; BC-ERR-03018 is absent and the reported number is consistent with the sign of the formula used.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The substitution is made into a formula written with the bare variable rather than the inner expression, or the inner derivative factor is left out of the numerical value, BC-ERR-03018 with signal BC-SIG-03010.",
+    "prerequisite_gap_if": "The formula selected before substitution is the wrong member of the family, a recall gap at BC-SKL-03021; or the radical arithmetic fails, a gap at BC-PRQ-03006.",
+    "remediation_target": "Conceptual failure: BC-MIS-03010 (which formula the given function requires). Procedural failure: BC-PRQ-03006 (simplifying a radical or rational value after substitution)."
+   },
+   "archetypes": [
+    "BC-QA-03007"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-03018"
+   ],
+   "concept": "BC-CON-03007",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given an inverse trigonometric derivative expression and an input, substitute and simplify to a numerical slope.",
+   "description_plain": "Substitute the input into the derivative formula and simplify the radical or fraction.",
+   "diagnostic_signals": [
+    "BC-SIG-03010"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-3E2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-03024",
+   "learning_objectives": [
+    "BC-LO-FUN-3E"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-03010"
+   ],
+   "name": "Evaluate an inverse trigonometric derivative at a point",
+   "notation": "numerical value of an inverse trigonometric derivative",
+   "official_evidence": [
+    "sg-25:2"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-03004",
+    "BC-PRQ-03006",
+    "BC-SKL-03021"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-09"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:78",
+    "sg-25:2"
+   ],
+   "topic": "BC-TOP-0304",
+   "unit": "BC-UNIT-03",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-03012 (rule chosen from the look of the expression)",
+     "BC-SKL-03006 (the same nesting with an ordinary composite factor)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-03009 (the outermost operation has to be named first)",
+     "BC-QA-03007 (an inverse trigonometric function appearing as one factor)"
+    ],
+    "mastered_if": "The product or quotient rule opens the work and the inverse trigonometric derivative is inserted for the factor that needs it, with its own inner derivative attached, so both the enclosing structure and the inverse trigonometric formula appear in the same line; BC-ERR-03006 is absent because the enclosing rule is not lost behind the special formula.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The inverse trigonometric factor is differentiated correctly and the enclosing product or quotient rule is not applied, BC-ERR-03006; or all rules appear with the nesting order wrong, so factors attach to the wrong pieces, signal BC-SIG-03011.",
+    "prerequisite_gap_if": "The inverse trigonometric derivative with an inner expression is itself incomplete, a gap at BC-SKL-03022 rather than a nesting gap.",
+    "remediation_target": "Conceptual failure: BC-MIS-03012 (structure, not appearance, selects the opening rule). Procedural failure: BC-SKL-03022 (the inverse trigonometric derivative with its inner factor)."
+   },
+   "archetypes": [
+    "BC-QA-03007",
+    "BC-QA-03009"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-03006"
+   ],
+   "concept": "BC-CON-03007",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given an expression in which an inverse trigonometric function is one factor of a product or quotient, apply the product or quotient rule and insert the inverse trigonometric derivative for that factor.",
+   "description_plain": "Apply the outer structural rule first, then substitute the inverse trigonometric derivative where it belongs.",
+   "diagnostic_signals": [
+    "BC-SIG-03011"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-3E2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-03025",
+   "learning_objectives": [
+    "BC-LO-FUN-3E"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-03012"
+   ],
+   "name": "Combine an inverse trigonometric derivative with the product or quotient rule",
+   "notation": "product rule with an inverse trigonometric factor",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-03004",
+    "BC-PRQ-03006",
+    "BC-SKL-03022"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:78",
+    "ced:79"
+   ],
+   "topic": "BC-TOP-0304",
+   "unit": "BC-UNIT-03",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-03012 (the rule read off the look of the expression)",
+     "BC-SKL-03001 (naming outer and inner functions of a composition specifically)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-03009 (the structure must be classified before differentiating, which is where the Chief Reader reports record lost credit)"
+    ],
+    "mastered_if": "The response states which operation is applied last when the expression is evaluated at a number, classifying it as a sum, a product, a quotient, or a composition, and the classification is stable when an exponential is written with a variable exponent or a power with a variable base; BC-ERR-03019 and BC-ERR-99036 are absent because the classification is not driven by visual resemblance.",
+    "next_dependent_skills": [
+     "BC-SKL-03027"
+    ],
+    "partially_mastered_if": "Simple expressions are classified correctly and a nested one is labelled by its most conspicuous feature, so a composite inside a product is called a product only, or an exponential is called a power, BC-ERR-03019 and BC-ERR-99036.",
+    "prerequisite_gap_if": "The order of operations in the expression itself cannot be traced, a gap at BC-PRQ-03001 rather than a rule classification gap.",
+    "remediation_target": "Conceptual failure: BC-MIS-03012 (the last operation performed defines the structure). Procedural failure: BC-PRQ-03001 (order of operations in a written expression)."
+   },
+   "archetypes": [
+    "BC-QA-03009"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-03019"
+   ],
+   "concept": "BC-CON-03008",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-03027"
+   ],
+   "description_formal": "Given an expression to differentiate, identify the operation applied last, which fixes the rule that opens the differentiation.",
+   "description_plain": "Decide whether the expression is at heart a sum, a product, a quotient, or a composition.",
+   "diagnostic_signals": [
+    "BC-SIG-03011"
+   ],
+   "essential_knowledge": [],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-03026",
+   "learning_objectives": [],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-03012"
+   ],
+   "name": "Classify an expression by its outermost operation",
+   "notation": "outermost operation",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-1C"
+   ],
+   "prerequisites": [
+    "BC-PRQ-03001"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-04"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:79"
+   ],
+   "topic": "BC-TOP-0305",
+   "unit": "BC-UNIT-03",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-03012 (rule selected by visual pattern)",
+     "BC-SKL-03028 (ordering several rules once each has been named)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-03009 (rule choice is the scored decision, separate from executing the rule)"
+    ],
+    "mastered_if": "Given a classified expression the response names the rule that structure requires, choosing among the power, product, quotient, chain, inverse function, and inverse trigonometric rules, and the choice follows the classification rather than the surface pattern, so an exponential term is not given the power rule; BC-ERR-03019 and BC-ERR-99036 are absent.",
+    "next_dependent_skills": [
+     "BC-SKL-03028"
+    ],
+    "partially_mastered_if": "The structure is classified correctly and the rule named for it is the neighbouring one, such as the power rule for an exponential term with the exponent decremented, BC-ERR-99036, which then propagates into every later part that uses the derivative.",
+    "prerequisite_gap_if": "The classification itself is wrong, a gap at BC-SKL-03026 rather than in the mapping from structure to rule.",
+    "remediation_target": "Conceptual failure: BC-MIS-03012 (a rule belongs to a type of function, not to a shape). Procedural failure: BC-SKL-03026 (naming the outermost operation first)."
+   },
+   "archetypes": [
+    "BC-QA-03009"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-03019"
+   ],
+   "concept": "BC-CON-03008",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-03028"
+   ],
+   "description_formal": "Given a classified expression, name the differentiation rule that applies to that structure, including the power, product, quotient, chain, inverse, and inverse trigonometric rules.",
+   "description_plain": "Match the structure you found to the rule that handles it.",
+   "diagnostic_signals": [
+    "BC-SIG-03011"
+   ],
+   "essential_knowledge": [],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-03027",
+   "learning_objectives": [],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-03012"
+   ],
+   "name": "Select the differentiation rule that the classification indicates",
+   "notation": "rule selection",
+   "official_evidence": [
+    "BC-FRQ-2014-Q2-C"
+   ],
+   "practice_skills": [
+    "BC-MPS-1C"
+   ],
+   "prerequisites": [
+    "BC-PRQ-03001",
+    "BC-SKL-03026"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-04"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:79"
+   ],
+   "topic": "BC-TOP-0305",
+   "unit": "BC-UNIT-03",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-03012 (the look of the expression driving the order)",
+     "BC-SKL-03006 (the two rule case of chain with product or quotient)",
+     "BC-SKL-03003 (repeated chain rule layers rather than different rules)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-03009 (an expression needing more than one rule, where order decides the outcome)"
+    ],
+    "mastered_if": "In one expression the rules are applied from the outermost structure inward, so the product or quotient rule frames the work, the chain rule handles each composite factor, and each derivative factor is attached to the piece it came from; BC-ERR-03002 and BC-ERR-03006 are both absent, and the number of factors matches the number of layers.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "Every rule the expression needs appears in the work and the nesting order is wrong so factors attach to the wrong pieces, signal BC-SIG-03011; or the enclosing rule is dropped once the inner composite is handled, BC-ERR-03006.",
+    "prerequisite_gap_if": "The rule for one of the pieces cannot be named, a gap at BC-SKL-03027, which is visible when a single unnested piece is also differentiated with the wrong rule.",
+    "remediation_target": "Conceptual failure: BC-MIS-03012 (nesting dictates the sequence of rules). Procedural failure: BC-SKL-03027 (naming each rule the structure indicates)."
+   },
+   "archetypes": [
+    "BC-QA-03009"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-03002",
+    "BC-ERR-03006"
+   ],
+   "concept": "BC-CON-03008",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given an expression whose differentiation needs more than one rule, apply the rules in the order the nesting dictates, from the outermost structure inward.",
+   "description_plain": "Work from the outside in so each rule is applied to the right piece.",
+   "diagnostic_signals": [
+    "BC-SIG-03011"
+   ],
+   "essential_knowledge": [],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-03028",
+   "learning_objectives": [],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-03012"
+   ],
+   "name": "Order several differentiation rules within one problem",
+   "notation": "nested rule application",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-1C"
+   ],
+   "prerequisites": [
+    "BC-PRQ-03001",
+    "BC-SKL-03027"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:79",
+    "ced:72"
+   ],
+   "topic": "BC-TOP-0305",
+   "unit": "BC-UNIT-03",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-03012 (rewriting chosen by appearance rather than by which rule it avoids)",
+     "BC-SKL-03027 (selecting a rule instead of changing the expression)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-03009 (a safe and shorter rewrite is one of the recognised opening moves)"
+    ],
+    "mastered_if": "An expression is rewritten with exponent, logarithm, or trigonometric identities so that a simpler rule applies, the rewrite leaves the function unchanged, and the response stops rewriting once the derivative is correct rather than simplifying further; BC-ERR-03020 is absent, which the Chief Reader reports connect to unnecessary simplification as a recurring loss.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "A correct derivative appears on one line and an incorrect simplified form on the next, BC-ERR-03020 with signal BC-SIG-03012, where evaluating both lines at one input locates the algebra slip; or the rewrite is legitimate and a negative sign is mishandled while distributing.",
+    "prerequisite_gap_if": "The identity used to rewrite is itself wrong, so the rewritten function differs from the original, an algebra gap at BC-PRQ-03006 rather than a differentiation gap.",
+    "remediation_target": "Conceptual failure: BC-PRQ-03006 (an identity preserves the function, so the derivative is unchanged). Procedural failure: BC-ERR-03020 (stopping once the derivative is correct rather than simplifying on)."
+   },
+   "archetypes": [
+    "BC-QA-03009"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-03020"
+   ],
+   "concept": "BC-CON-03008",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given an expression whose form makes a rule unnecessarily involved, rewrite it using exponent, logarithm, or trigonometric identities so that a simpler rule applies, without changing the function.",
+   "description_plain": "Simplify or rewrite first when that turns a hard rule into an easy one.",
+   "diagnostic_signals": [
+    "BC-SIG-03012"
+   ],
+   "essential_knowledge": [],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-03029",
+   "learning_objectives": [],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-03012"
+   ],
+   "name": "Rewrite an expression algebraically before differentiating",
+   "notation": "rewriting before differentiating",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-1C"
+   ],
+   "prerequisites": [
+    "BC-PRQ-03006"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:79"
+   ],
+   "topic": "BC-TOP-0305",
+   "unit": "BC-UNIT-03",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-03013 (a higher derivative read as a different kind of object)",
+     "BC-MIS-03014 (notation treated as decoration, so the order is not tracked)",
+     "BC-SKL-03033 (differentiating a derivative expression that still contains y)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-03008 (the second derivative and its value carry separate points)"
+    ],
+    "mastered_if": "f prime is differentiated again with the same rules to produce f double prime, treating the first derivative as an ordinary function, and the order reported matches the order requested; BC-ERR-03021 is absent, and the response can say that the operation turning the first derivative into the second is the same differentiation.",
+    "next_dependent_skills": [
+     "BC-SKL-03031"
+    ],
+    "partially_mastered_if": "The differentiation performed is correct and stops one order short of the order requested, BC-ERR-03021 with signal BC-SIG-03013; or, as the 2015 Q4 part B distinctions record, the second derivative is written but still contains the derivative symbol where a substitution back was required.",
+    "prerequisite_gap_if": "The first derivative is itself wrong, so the gap sits in the elementary rules at BC-PRQ-03005 rather than in iterating them.",
+    "remediation_target": "Conceptual failure: BC-MIS-03013 (the second derivative is the derivative of the first). Procedural failure: BC-PRQ-03005 (reapplying the same differentiation rules)."
+   },
+   "archetypes": [
+    "BC-QA-03008"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-03021"
+   ],
+   "concept": "BC-CON-03009",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-03031"
+   ],
+   "description_formal": "Given f prime, differentiate it to produce f double prime, provided the derivative of f prime exists.",
+   "description_plain": "Differentiate what you already differentiated once.",
+   "diagnostic_signals": [
+    "BC-SIG-03013"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-3F1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-03030",
+   "learning_objectives": [
+    "BC-LO-FUN-3F"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-03013"
+   ],
+   "name": "Differentiate a first derivative to obtain the second derivative",
+   "notation": "f double prime of x",
+   "official_evidence": [
+    "BC-FRQ-2019-Q1-D",
+    "BC-FRQ-2019-Q4-B",
+    "BC-FRQ-2022-Q4-A",
+    "BC-FRQ-2015-Q4-B",
+    "BC-FRQ-2023-Q6-C",
+    "BC-FRQ-2024-Q4-C"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-03005"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:80"
+   ],
+   "topic": "BC-TOP-0306",
+   "unit": "BC-UNIT-03",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-03013 (each order treated as a new construction)",
+     "BC-SKL-03032 (writing the order correctly rather than computing it)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-03008 (a third or higher order derivative, often of a supplied derivative expression)"
+    ],
+    "mastered_if": "Differentiation is repeated one order at a time to the order requested, each intermediate derivative written out, so a fourth derivative is reached through the third rather than guessed; BC-ERR-03021 is absent, and where a product structure is supplied the product rule is reapplied at each stage as the 2023 Q6 part A scoring requires.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The iteration is correct as far as it goes and stops one order short, BC-ERR-03021 with signal BC-SIG-03013; or, following the 2023 Q6 part A distinctions, the derivative values are right and the factorial coefficients are omitted when the result is assembled.",
+    "prerequisite_gap_if": "The second derivative cannot be produced, a gap at BC-SKL-03030 rather than at higher orders.",
+    "remediation_target": "Conceptual failure: BC-MIS-03013 (order n is the derivative of order n minus one). Procedural failure: BC-SKL-03030 (one clean step from first to second derivative)."
+   },
+   "archetypes": [
+    "BC-QA-03008"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-03021"
+   ],
+   "concept": "BC-CON-03009",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a function or one of its derivatives, repeat differentiation to produce the derivative of the order requested, provided each intermediate derivative exists.",
+   "description_plain": "Keep differentiating, one order at a time.",
+   "diagnostic_signals": [
+    "BC-SIG-03013"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-3F1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-03031",
+   "learning_objectives": [
+    "BC-LO-FUN-3F"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-03013"
+   ],
+   "name": "Produce a third or higher order derivative by repeating differentiation",
+   "notation": "f superscript n of x",
+   "official_evidence": [
+    "BC-FRQ-2023-Q6-A"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-03005",
+    "BC-SKL-03030"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:80"
+   ],
+   "topic": "BC-TOP-0306",
+   "unit": "BC-UNIT-03",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-03014 (derivative notation treated as a label on an answer)",
+     "BC-MIS-03013 (higher orders seen as separate objects with their own symbols)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-03008 (orders of differentiation are named in the prompt and must be matched in the work)"
+    ],
+    "mastered_if": "The same derivative is written in both notations without change of meaning, so f double prime of x and d squared y over d x squared are used interchangeably and the operator d/dx is distinguished from the quantity dy/dx within a single line; BC-ERR-03022 is absent, and the response can read the line aloud naming each symbol.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The computed derivative is correct and prime and Leibniz notations are mixed inside one equation in ways that do not agree, or dy is written where dy/dx is meant, BC-ERR-03022 with signal BC-SIG-03014; the 2025 Chief Reader report records this notation costing points in implicit differentiation responses.",
+    "prerequisite_gap_if": "The meaning of the first derivative symbol is itself unclear, a gap at BC-PRQ-03005 rather than a notation translation gap.",
+    "remediation_target": "Conceptual failure: BC-MIS-03014 (d/dx is an operator and dy/dx is its result). Procedural failure: BC-PRQ-03005 (writing each order consistently in one notation)."
+   },
+   "archetypes": [
+    "BC-QA-03008"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-03022"
+   ],
+   "concept": "BC-CON-03010",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a derivative in one notation, write the same derivative in the other, using d squared y over d x squared, f double prime of x, y double prime, or the nth order forms.",
+   "description_plain": "Move between prime notation and Leibniz notation without changing the meaning.",
+   "diagnostic_signals": [
+    "BC-SIG-03014"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-3F2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-03032",
+   "learning_objectives": [
+    "BC-LO-FUN-3F"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-03014"
+   ],
+   "name": "Read and write higher-order derivative notation",
+   "notation": "d squared y over d x squared; f superscript n of x",
+   "official_evidence": [
+    "BC-FRQ-2024-Q4-C"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-03005"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-04"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:80"
+   ],
+   "topic": "BC-TOP-0306",
+   "unit": "BC-UNIT-03",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-03005 (a mixed term read as one symbol)",
+     "BC-MIS-03013 (the second derivative treated as a new construction)",
+     "BC-SKL-03030 (a second derivative with no implicit variable present)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-03008 (product rule, chain rule, and value are scored as three separate points)"
+    ],
+    "mastered_if": "The expression for dy/dx in x and y is differentiated again with respect to x, with the product rule on mixed terms and the chain rule on y terms, so dy/dx reappears in the result and can then be replaced by its own expression; BC-ERR-03008 is absent and the two structural elements are separable in the way the 2025 Q5 part A rubric awards the product rule and the chain rule separate points.",
+    "next_dependent_skills": [
+     "BC-SKL-03034"
+    ],
+    "partially_mastered_if": "The derivative factor is carried and a product term is dropped, or the product structure survives and the derivative factor on the y term is missing, which the 2025 Q5 part A distinctions isolate as a product rule failure and a chain rule failure respectively; or the second derivative is left containing the first derivative symbol with no substitution back, the state the 2015 Q4 part B commentary records.",
+    "prerequisite_gap_if": "The mixed term is not treated as a product even in the first differentiation, a gap at BC-SKL-03008; or the algebra of substituting one expression into another fails, BC-PRQ-03002.",
+    "remediation_target": "Conceptual failure: BC-MIS-03013 (differentiating dy/dx uses the same rules again, including on y). Procedural failure: BC-SKL-03008 (the product rule on a term holding both variables)."
+   },
+   "archetypes": [
+    "BC-QA-03008"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-03008",
+    "BC-ERR-03023"
+   ],
+   "concept": "BC-CON-03009",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-03034"
+   ],
+   "description_formal": "Given dy/dx expressed in x and y, differentiate again with respect to x, applying the product rule to mixed terms and the chain rule to y terms so that dy/dx reappears in the result.",
+   "description_plain": "Differentiate the expression for dy/dx, using the product and chain rules on the y parts.",
+   "diagnostic_signals": [
+    "BC-SIG-03015"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-3F1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-03033",
+   "learning_objectives": [
+    "BC-LO-FUN-3F"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-03005",
+    "BC-MIS-03013"
+   ],
+   "name": "Differentiate a derivative expression that still contains y",
+   "notation": "second derivative found implicitly",
+   "official_evidence": [
+    "sg-25:20",
+    "BC-FRQ-2015-Q4-B",
+    "BC-FRQ-2023-Q3-C",
+    "BC-FRQ-2025-Q5-A"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-03002",
+    "BC-PRQ-03005",
+    "BC-SKL-03008"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:80",
+    "sg-25:20"
+   ],
+   "topic": "BC-TOP-0306",
+   "unit": "BC-UNIT-03",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-03006 (dy/dx expected to be a number independent of y)",
+     "BC-SKL-03011 (the first derivative value alone)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-03008 (the value of the second derivative at a point is its own scoring point)"
+    ],
+    "mastered_if": "The value of dy/dx at the stated point is computed first from both coordinates, then the coordinates and that slope are substituted into the second derivative expression to give one number; BC-ERR-03011 and BC-ERR-03023 are both absent, so no dy/dx symbol survives into the reported value.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The second derivative expression is fully correct and is evaluated without first computing dy/dx at the point, BC-ERR-03023 with signal BC-SIG-03015, a state in which the product rule and chain rule points remain available while the value point is lost; or only the x coordinate is substituted into dy/dx, BC-ERR-03011.",
+    "prerequisite_gap_if": "The slope at the point cannot be produced on its own, a gap at BC-SKL-03011; or the second derivative expression is not obtained, a gap at BC-SKL-03033.",
+    "remediation_target": "Conceptual failure: BC-MIS-03006 (the second derivative at a point depends on the slope there). Procedural failure: BC-SKL-03011 (evaluating dy/dx at both coordinates first)."
+   },
+   "archetypes": [
+    "BC-QA-03008"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-03011",
+    "BC-ERR-03023"
+   ],
+   "concept": "BC-CON-03009",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given an expression for the second derivative containing x, y, and dy/dx, compute dy/dx at the stated point and substitute all three values to produce the numerical second derivative.",
+   "description_plain": "Work out dy/dx at the point first, then substitute both coordinates and that slope.",
+   "diagnostic_signals": [
+    "BC-SIG-03015"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-3F1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-03034",
+   "learning_objectives": [
+    "BC-LO-FUN-3F"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-03006"
+   ],
+   "name": "Evaluate a second derivative at a point using dy/dx there",
+   "notation": "second derivative evaluated at a point",
+   "official_evidence": [
+    "sg-25:20",
+    "BC-FRQ-2019-Q4-B",
+    "BC-FRQ-2025-Q5-A"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-03006",
+    "BC-SKL-03011",
+    "BC-SKL-03033"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:80",
+    "sg-25:20"
+   ],
+   "topic": "BC-TOP-0306",
+   "unit": "BC-UNIT-03",
+   "updated": "2026-09-19"
+  }
+ ]
+}

@@ -1,0 +1,974 @@
+{
+ "errors": [
+  {
+   "archetypes": [
+    "BC-QA-06001",
+    "BC-QA-06002"
+   ],
+   "discriminating_probe": "Give the same table with two equal gaps and one unequal gap and ask only for the widths.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-06001",
+   "name": "Uniform width applied to a nonuniform partition",
+   "non_conceptual_causes": [
+    "misread of the table inputs",
+    "time pressure leading to a copied template",
+    "arithmetic slip in subtracting consecutive inputs"
+   ],
+   "observed_behavior": "The response multiplies every tabulated value by one common width although the table inputs are unevenly spaced.",
+   "official_evidence": [
+    "sg-23:2",
+    "sg-25:13"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-06001"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The form point is lost because more than one of the six factors is incorrect, and the answer point is lost with it.",
+   "skills": [
+    "BC-SKL-06005",
+    "BC-SKL-06006",
+    "BC-SKL-06008"
+   ],
+   "sources": [
+    "sg-23:2",
+    "sg-25:13"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-06001"
+   ],
+   "discriminating_probe": "Ask for both the left and the right sum on the same table and compare which the student produces first.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-06002",
+   "name": "Endpoint opposite the one requested used in the Riemann sum",
+   "non_conceptual_causes": [
+    "misread of the word left or right in the stem",
+    "time pressure"
+   ],
+   "observed_behavior": "A completely correct Riemann sum is built with left endpoints when right endpoints were requested, or the reverse.",
+   "official_evidence": [
+    "sg-23:3",
+    "sg-25:13"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-06002"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "A completely correct sum of the wrong type earns one of the two remaining points in 2023 and the form point only in 2025 (sg-23:3, sg-25:13).",
+   "skills": [
+    "BC-SKL-06005",
+    "BC-SKL-06006"
+   ],
+   "sources": [
+    "sg-23:3",
+    "sg-25:13"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-06001",
+    "BC-QA-06002"
+   ],
+   "discriminating_probe": "Ask for the units of a single term of the sum before any arithmetic is done.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-06003",
+   "name": "Riemann sum reported as a sum of function values",
+   "non_conceptual_causes": [
+    "omission under time pressure",
+    "copying the table row directly"
+   ],
+   "observed_behavior": "The response adds the tabulated rate values without multiplying each by a subinterval width.",
+   "official_evidence": [
+    "sg-23:2"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-06003"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "Neither the form point nor the answer point is earned because no products appear.",
+   "skills": [
+    "BC-SKL-06005",
+    "BC-SKL-06006",
+    "BC-SKL-06012"
+   ],
+   "sources": [
+    "sg-23:2"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-06002"
+   ],
+   "discriminating_probe": "Ask the student to state the area formula for a single trapezoid before summing.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-06004",
+   "name": "Trapezoidal sum with the factor of one half applied to only one term",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "dropped factor when copying between lines"
+   ],
+   "observed_behavior": "One or two trapezoid terms are halved and the remaining term is not.",
+   "official_evidence": [
+    "sg-25:13"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-06004"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "At least one of the six factors is incorrect, so the form point may survive but the answer point is lost (sg-25:13).",
+   "skills": [
+    "BC-SKL-06008"
+   ],
+   "sources": [
+    "sg-25:13"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-06001",
+    "BC-QA-06002"
+   ],
+   "discriminating_probe": "Supply a rate that decreases on part of the interval and increases on the rest and ask whether the direction can be decided.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-06005",
+   "name": "Over or under estimate claimed without reference to the behaviour of the function",
+   "non_conceptual_causes": [
+    "time pressure at the end of a part",
+    "assumption that the direction is obvious"
+   ],
+   "observed_behavior": "The response asserts that an approximation is an underestimate or an overestimate but cites no monotonicity or concavity evidence.",
+   "official_evidence": [
+    "ced:119"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-06005"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The justification point is not earned even when the direction stated is correct.",
+   "skills": [
+    "BC-SKL-06010",
+    "BC-SKL-06011"
+   ],
+   "sources": [
+    "ced:119"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-06001"
+   ],
+   "discriminating_probe": "Ask the student to draw one rectangle over an increasing arc and say whether it sits above or below the curve.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-06006",
+   "name": "Under and over estimate directions interchanged for a monotone integrand",
+   "non_conceptual_causes": [
+    "sign slip",
+    "memorised rule recalled backwards"
+   ],
+   "observed_behavior": "A left sum is called an overestimate for an increasing function, or a right sum an underestimate.",
+   "official_evidence": [
+    "ced:119"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-06005"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The justification point is lost and the answer point with it when the direction is part of the answer.",
+   "skills": [
+    "BC-SKL-06010"
+   ],
+   "sources": [
+    "ced:119"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-06002"
+   ],
+   "discriminating_probe": "Give an increasing concave down rate and ask for the direction of a trapezoidal estimate.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-06007",
+   "name": "Trapezoidal direction decided from monotonicity instead of concavity",
+   "non_conceptual_causes": [
+    "conflation of two memorised rules",
+    "time pressure"
+   ],
+   "observed_behavior": "The response argues that a trapezoidal sum overestimates because the function is increasing.",
+   "official_evidence": [
+    "ced:119"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-06005",
+    "BC-MIS-06006"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The justification point is not earned because the stated reason does not support the conclusion.",
+   "skills": [
+    "BC-SKL-06011"
+   ],
+   "sources": [
+    "ced:119"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-06003"
+   ],
+   "discriminating_probe": "Ask what the plotted curve is called in the stem before any feature is located.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-06008",
+   "name": "Graph of the integrand treated as the graph of the accumulation function",
+   "non_conceptual_causes": [
+    "misread of which function is plotted",
+    "time pressure"
+   ],
+   "observed_behavior": "Extrema or inflection points of g are read directly off the visible extrema and inflection points of the plotted curve.",
+   "official_evidence": [
+    "sg-25:17"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-06007"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "Both the answer and the reason points of the part are lost, and any extra declared input costs both points (sg-25:17).",
+   "skills": [
+    "BC-SKL-06022",
+    "BC-SKL-06023",
+    "BC-SKL-06024",
+    "BC-SKL-06025",
+    "BC-SKL-06027"
+   ],
+   "sources": [
+    "sg-25:17"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-06003"
+   ],
+   "discriminating_probe": "Ask separately where g has extrema and where g has inflection points on the same graph.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-06009",
+   "name": "Inflection points of an accumulation function placed where the integrand crosses the axis",
+   "non_conceptual_causes": [
+    "confusion between two rules applied in adjacent parts",
+    "time pressure"
+   ],
+   "observed_behavior": "The response reports inflection points of g at the zeros of f rather than at the turning points of f.",
+   "official_evidence": [
+    "sg-25:17"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-06007",
+    "BC-MIS-06008"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The answer point is not earned, and an extra declared input forfeits the reason point as well (sg-25:17).",
+   "skills": [
+    "BC-SKL-06024"
+   ],
+   "sources": [
+    "sg-25:17"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-06003"
+   ],
+   "discriminating_probe": "Ask what feature of the plotted curve makes the claim true.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-06010",
+   "name": "Reason for a feature of the accumulation function phrased only in terms of g",
+   "non_conceptual_causes": [
+    "habit of restating the definition",
+    "time pressure"
+   ],
+   "observed_behavior": "The response says that g has an inflection point because g changes concavity, without tying the claim to the given graph of f.",
+   "official_evidence": [
+    "sg-25:17"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-06009"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The answer point is earned but the reason point is not, because the reason must be tied to the given graph of f (sg-25:17).",
+   "skills": [
+    "BC-SKL-06024",
+    "BC-SKL-06025",
+    "BC-SKL-06027"
+   ],
+   "sources": [
+    "sg-25:17"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-06003"
+   ],
+   "discriminating_probe": "Ask the student to list every candidate input before justifying.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-06011",
+   "name": "Local argument offered where a global extremum is requested",
+   "non_conceptual_causes": [
+    "habit carried over from relative extremum questions",
+    "time pressure"
+   ],
+   "observed_behavior": "A first or second derivative test is presented as the justification for an absolute extreme value on a closed interval.",
+   "official_evidence": [
+    "sg-25:19",
+    "sg-25:5"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-06010"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The justification point is not earned, although the answer point remains available with the correct value (sg-25:19, sg-25:5).",
+   "skills": [
+    "BC-SKL-06026"
+   ],
+   "sources": [
+    "sg-25:19",
+    "sg-25:5"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-06003"
+   ],
+   "discriminating_probe": "Ask for the complete candidate list separately from the comparison.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-06012",
+   "name": "Candidates comparison left incomplete",
+   "non_conceptual_causes": [
+    "omission under time pressure",
+    "miscount of critical inputs"
+   ],
+   "observed_behavior": "A candidates table omits an endpoint or a critical input, or includes an input that is neither.",
+   "official_evidence": [
+    "sg-25:19"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-06010"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The justification point requires evaluations or reasoning at every critical input and both endpoints and no others (sg-25:19).",
+   "skills": [
+    "BC-SKL-06026"
+   ],
+   "sources": [
+    "sg-25:19"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-06003",
+    "BC-QA-06004"
+   ],
+   "discriminating_probe": "Ask for the area of the single semicircular piece before the integral is assembled.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-06013",
+   "name": "Semicircular region given the area of a full circle",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "dropped factor of one half"
+   ],
+   "observed_behavior": "The area of a semicircular piece of the region is computed as pi times the radius squared.",
+   "official_evidence": [
+    "sg-25:18"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-06011"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The value point for that integral is lost.",
+   "skills": [
+    "BC-SKL-06028",
+    "BC-SKL-06020",
+    "BC-SKL-06004"
+   ],
+   "sources": [
+    "sg-25:18"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-06003",
+    "BC-QA-06004"
+   ],
+   "discriminating_probe": "Ask for the sign of the integral before any number is computed.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-06014",
+   "name": "Regions below the axis added as positive area",
+   "non_conceptual_causes": [
+    "sign slip",
+    "habit from area questions"
+   ],
+   "observed_behavior": "Every piece of the region is added with a positive sign, so a signed integral is reported as a plain area.",
+   "official_evidence": [
+    "sg-25:18"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-06012"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The value point is lost, and any later part that imports the value inherits the error.",
+   "skills": [
+    "BC-SKL-06028",
+    "BC-SKL-06020",
+    "BC-SKL-06004"
+   ],
+   "sources": [
+    "sg-25:18"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-06005",
+    "BC-QA-06006"
+   ],
+   "discriminating_probe": "Ask what the integral by itself measures before the final value is requested.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-06015",
+   "name": "Initial condition omitted from a net change computation",
+   "non_conceptual_causes": [
+    "omission under time pressure",
+    "the initial value appearing far from the part being answered"
+   ],
+   "observed_behavior": "The definite integral of the rate is reported as the value of the quantity at the later input.",
+   "official_evidence": [
+    "sg-24:3",
+    "sg-24:4"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-06013"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The initial condition point is not earned; the response that presents only the integral value does not earn it (sg-24:4).",
+   "skills": [
+    "BC-SKL-06037",
+    "BC-SKL-06036"
+   ],
+   "sources": [
+    "sg-24:3",
+    "sg-24:4"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-06007"
+   ],
+   "discriminating_probe": "Ask what the units of the reported answer are.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-06016",
+   "name": "Integral reported without the division in an average value",
+   "non_conceptual_causes": [
+    "omission under time pressure",
+    "interval length of one assumed"
+   ],
+   "observed_behavior": "The definite integral is presented as the average value with no division by the length of the interval.",
+   "official_evidence": [
+    "sg-25:3",
+    "sg-23:4"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-06014"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The average value formula point is lost; a correct integral together with the correct quotient value earns both points even when the linkage is unclear (sg-25:3).",
+   "skills": [
+    "BC-SKL-06038"
+   ],
+   "sources": [
+    "sg-25:3",
+    "sg-23:4"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-06007"
+   ],
+   "discriminating_probe": "Present both phrases in the same prompt and ask which expression matches which.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-06017",
+   "name": "Average rate of change computed where the average value is requested",
+   "non_conceptual_causes": [
+    "misread of the phrase average value",
+    "confusion between adjacent parts of the same question"
+   ],
+   "observed_behavior": "The response computes a difference quotient of the function rather than the integral divided by the interval length.",
+   "official_evidence": [
+    "sg-25:2",
+    "sg-25:4"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-06014",
+    "BC-MIS-06015"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "Neither the average value formula point nor the answer point is earned.",
+   "skills": [
+    "BC-SKL-06038"
+   ],
+   "sources": [
+    "sg-25:2",
+    "sg-25:4"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-06008",
+    "BC-QA-06011"
+   ],
+   "discriminating_probe": "Ask for the two u limits explicitly before the antiderivative is evaluated.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-06018",
+   "name": "Original limits of integration kept after a substitution",
+   "non_conceptual_causes": [
+    "omission of the conversion step",
+    "time pressure"
+   ],
+   "observed_behavior": "The antiderivative is written in the substituted variable and the original x limits are substituted into it.",
+   "official_evidence": [
+    "sg-23:16",
+    "sg-23:17"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-06016"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The response is not eligible for the answer point even when the numerical value is correct (sg-23:17, sg-23:16).",
+   "skills": [
+    "BC-SKL-06050",
+    "BC-SKL-06051",
+    "BC-SKL-06049"
+   ],
+   "sources": [
+    "sg-23:16",
+    "sg-23:17"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-06008"
+   ],
+   "discriminating_probe": "Ask the student to differentiate the reported antiderivative and compare with the integrand.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-06019",
+   "name": "Constant factor from the differential dropped",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "dropped factor when copying between lines"
+   ],
+   "observed_behavior": "The substitution is carried out without the reciprocal constant that du introduces.",
+   "official_evidence": [
+    "ced:126"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-06016",
+    "BC-MIS-06017"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The antiderivative point is lost and the value point with it.",
+   "skills": [
+    "BC-SKL-06048",
+    "BC-SKL-06047"
+   ],
+   "sources": [
+    "ced:126"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-06008",
+    "BC-QA-06016"
+   ],
+   "discriminating_probe": "Ask the student to write du and check whether it is present in the integrand.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-06020",
+   "name": "Substitution attempted when the inner derivative is absent",
+   "non_conceptual_causes": [
+    "pattern matching on the composite alone",
+    "time pressure"
+   ],
+   "observed_behavior": "A composite is substituted although no constant multiple of the derivative of the inner expression appears in the integrand.",
+   "official_evidence": [
+    "ced:126",
+    "ced:131"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-06017"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The setup point for the technique is not earned and the work does not lead to the antiderivative.",
+   "skills": [
+    "BC-SKL-06047",
+    "BC-SKL-06071",
+    "BC-SKL-06072"
+   ],
+   "sources": [
+    "ced:126",
+    "ced:131"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-06008",
+    "BC-QA-06009"
+   ],
+   "discriminating_probe": "Ask whether more than one function has the given derivative.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-06021",
+   "name": "Constant of integration omitted from an indefinite integral",
+   "non_conceptual_causes": [
+    "omission under time pressure",
+    "habit carried over from definite integrals"
+   ],
+   "observed_behavior": "An indefinite integral is reported without an arbitrary constant.",
+   "official_evidence": [
+    "ced:125"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-06018"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The answer point for an indefinite integral is lost when the constant is required by the stem.",
+   "skills": [
+    "BC-SKL-06044",
+    "BC-SKL-06049"
+   ],
+   "sources": [
+    "ced:125"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-06009",
+    "BC-QA-06016"
+   ],
+   "discriminating_probe": "Ask the student to differentiate the proposed answer and compare with the integrand.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-06022",
+   "name": "Factors of a product antidifferentiated separately",
+   "non_conceptual_causes": [
+    "habit carried over from the sum rule",
+    "time pressure"
+   ],
+   "observed_behavior": "The response antidifferentiates each factor of a product and multiplies the results.",
+   "official_evidence": [
+    "sg-23:18"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-06019"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "Neither the u and dv point nor the expression point is earned (sg-23:18, sg-24:18).",
+   "skills": [
+    "BC-SKL-06057",
+    "BC-SKL-06058",
+    "BC-SKL-06071"
+   ],
+   "sources": [
+    "sg-23:18"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-06009"
+   ],
+   "discriminating_probe": "Ask the student to derive the formula from the product rule.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-06023",
+   "name": "Minus sign dropped in the integration by parts expression",
+   "non_conceptual_causes": [
+    "sign slip",
+    "memorised formula recalled incorrectly"
+   ],
+   "observed_behavior": "The response writes u times v plus the integral of v du.",
+   "official_evidence": [
+    "sg-23:18"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-06019"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "The expression point is not earned, and the answer point depends on it (sg-23:18).",
+   "skills": [
+    "BC-SKL-06058",
+    "BC-SKL-06059"
+   ],
+   "sources": [
+    "sg-23:18"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-06011"
+   ],
+   "discriminating_probe": "Ask the student to write the improper integral as a limit before any antidifferentiation.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-06024",
+   "name": "Arithmetic with infinity written in place of a limit",
+   "non_conceptual_causes": [
+    "shortcut taken under time pressure",
+    "notation habit"
+   ],
+   "observed_behavior": "The response substitutes infinity into the antiderivative rather than taking a limit.",
+   "official_evidence": [
+    "sg-23:17"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-06020"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "The limit notation point is not earned, since limit notation must be used throughout and arithmetic with infinity is disallowed (sg-23:17).",
+   "skills": [
+    "BC-SKL-06067",
+    "BC-SKL-06068"
+   ],
+   "sources": [
+    "sg-23:17"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-06011"
+   ],
+   "discriminating_probe": "Give a convergent and a divergent integral of the same family and ask which converges.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-06025",
+   "name": "Value reported for a divergent improper integral",
+   "non_conceptual_causes": [
+    "arithmetic slip in the limit",
+    "assumption that every improper integral converges"
+   ],
+   "observed_behavior": "The response produces a finite number although the limit is infinite or fails to exist.",
+   "official_evidence": [
+    "ced:130"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-06020",
+    "BC-MIS-06021"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "The answer point is not earned because the required conclusion is a statement of divergence.",
+   "skills": [
+    "BC-SKL-06069",
+    "BC-SKL-06068",
+    "BC-SKL-06066"
+   ],
+   "sources": [
+    "ced:130"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-06010",
+    "BC-QA-06016"
+   ],
+   "discriminating_probe": "Ask the student to compare the degrees before any decomposition is written.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-06026",
+   "name": "Improper rational integrand decomposed without a preliminary division",
+   "non_conceptual_causes": [
+    "structural check skipped",
+    "time pressure"
+   ],
+   "observed_behavior": "A rational integrand whose numerator degree is at least the denominator degree is split into partial fractions directly.",
+   "official_evidence": [
+    "ced:127",
+    "ced:129"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-06022"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "The decomposition cannot be solved consistently and the antiderivative point is not earned.",
+   "skills": [
+    "BC-SKL-06053",
+    "BC-SKL-06056",
+    "BC-SKL-06062"
+   ],
+   "sources": [
+    "ced:127",
+    "ced:129"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-06012"
+   ],
+   "discriminating_probe": "Ask for the derivative of the upper limit on its own first.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-06027",
+   "name": "Chain rule factor omitted when the upper limit is a function of x",
+   "non_conceptual_causes": [
+    "omission under time pressure",
+    "pattern carried over from the simple case"
+   ],
+   "observed_behavior": "The derivative of an accumulation function with a composite upper limit is reported as the integrand at that limit with no extra factor.",
+   "official_evidence": [
+    "sg-24:15"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-06023"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The answer point is not earned even though the theorem point may be (sg-24:15).",
+   "skills": [
+    "BC-SKL-06019",
+    "BC-SKL-06018"
+   ],
+   "sources": [
+    "sg-24:15"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-06012"
+   ],
+   "discriminating_probe": "Ask which letter is the independent variable of the accumulation function.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-06028",
+   "name": "Variable of integration substituted in place of the upper limit",
+   "non_conceptual_causes": [
+    "notation slip",
+    "time pressure"
+   ],
+   "observed_behavior": "The response evaluates the integrand at the dummy variable or leaves the answer in terms of t.",
+   "official_evidence": [
+    "ced:121"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-06024"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The answer point is not earned because the derivative is not expressed in the independent variable.",
+   "skills": [
+    "BC-SKL-06018",
+    "BC-SKL-06017"
+   ],
+   "sources": [
+    "ced:121"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-06015"
+   ],
+   "discriminating_probe": "Ask the student to name the starting and ending inputs before writing the sentence.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-06029",
+   "name": "Interpretation of a definite integral omits the interval or the units",
+   "non_conceptual_causes": [
+    "omission under time pressure",
+    "abbreviated writing"
+   ],
+   "observed_behavior": "The response names the accumulated quantity but not the interval over which it accumulates, or gives the units of the rate.",
+   "official_evidence": [
+    "sg-23:2"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-06025"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The interpretation point requires both the accumulated quantity with units and the interval, so it is not earned (sg-23:2).",
+   "skills": [
+    "BC-SKL-06001",
+    "BC-SKL-06002"
+   ],
+   "sources": [
+    "sg-23:2"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-06015",
+    "BC-QA-06007"
+   ],
+   "discriminating_probe": "Ask what changes in the sentence when the leading fraction is removed.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-06030",
+   "name": "Average value expression interpreted as a total",
+   "non_conceptual_causes": [
+    "misread of the leading fraction",
+    "time pressure"
+   ],
+   "observed_behavior": "A displayed average value expression is described as the total amount accumulated over the interval.",
+   "official_evidence": [
+    "sg-24:3"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-06014",
+    "BC-MIS-06025"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The interpretation point is not earned because the description must say average over the interval (sg-24:3).",
+   "skills": [
+    "BC-SKL-06038",
+    "BC-SKL-06001"
+   ],
+   "sources": [
+    "sg-24:3"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-06013"
+   ],
+   "discriminating_probe": "Ask where the integrand is continuous before the integral is set up.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-06031",
+   "name": "Integral split at a discontinuity omitted",
+   "non_conceptual_causes": [
+    "discontinuity overlooked in the given definition",
+    "time pressure"
+   ],
+   "observed_behavior": "A function with a jump on the interval of integration is antidifferentiated as a single expression across the jump.",
+   "official_evidence": [
+    "ced:123"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-06026"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The value point is lost because the antiderivative used is not valid across the whole interval.",
+   "skills": [
+    "BC-SKL-06033"
+   ],
+   "sources": [
+    "ced:123"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-06005",
+    "BC-QA-06007"
+   ],
+   "discriminating_probe": "Ask for the value of the integrand at one input and compare with a hand estimate.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-06032",
+   "name": "Calculator left in degree mode for a trigonometric integrand",
+   "non_conceptual_causes": [
+    "mode setting not checked",
+    "carried over from a previous session"
+   ],
+   "observed_behavior": "Numerical values of an integral or of a rate involving a trigonometric function are computed in degree mode.",
+   "official_evidence": [
+    "sg-23:4"
+   ],
+   "possible_misconceptions": [],
+   "scope": "shared",
+   "scoring_consequence": "The first point that the value would otherwise earn is not earned, and the response remains eligible for subsequent points (sg-23:4).",
+   "skills": [
+    "BC-SKL-06036",
+    "BC-SKL-06038",
+    "BC-SKL-06034"
+   ],
+   "sources": [
+    "sg-23:4"
+   ]
+  }
+ ],
+ "registry": "errors"
+}

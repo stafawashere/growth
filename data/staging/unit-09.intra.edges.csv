@@ -1,0 +1,60 @@
+from,to,type,evidence_tag,note
+BC-SKL-09001,BC-SKL-09002,hard_prerequisite,inferred,The quotient is formed from the two component derivatives.
+BC-SKL-09002,BC-SKL-09003,hard_prerequisite,inferred,The condition is about the denominator of that quotient.
+BC-SKL-09002,BC-SKL-09004,hard_prerequisite,inferred,Evaluating the slope is evaluating that quotient.
+BC-SKL-09004,BC-SKL-09005,hard_prerequisite,inferred,The tangent line needs the slope at the parameter value.
+BC-SKL-09001,BC-SKL-09006,hard_prerequisite,inferred,Horizontal and vertical tangents are located from the component derivatives.
+BC-SKL-09003,BC-SKL-09006,hard_prerequisite,inferred,Each case pairs a zero of one derivative with a nonzero other derivative.
+BC-SKL-09002,BC-SKL-09007,hard_prerequisite,inferred,What is differentiated is dy/dx expressed in the parameter.
+BC-SKL-09007,BC-SKL-09008,hard_prerequisite,inferred,The numerator of the second derivative is that parameter derivative.
+BC-SKL-09001,BC-SKL-09008,hard_prerequisite,inferred,The second derivative divides again by dx/dt.
+BC-SKL-09008,BC-SKL-09009,hard_prerequisite,inferred,The expression must be assembled before it is evaluated.
+BC-SKL-09008,BC-SKL-09010,hard_prerequisite,inferred,Concavity is read from the sign of that second derivative.
+BC-SKL-09009,BC-SKL-09010,supporting,inferred,The sign usually comes from the evaluated value.
+BC-SKL-09001,BC-SKL-09011,hard_prerequisite,inferred,The integrand is built from the two component derivatives.
+BC-SKL-09011,BC-SKL-09012,hard_prerequisite,inferred,The integral must be set up before it is evaluated numerically.
+BC-SKL-09011,BC-SKL-09013,hard_prerequisite,inferred,Calling the value a distance travelled presupposes the arc length integral.
+BC-SKL-09011,BC-SKL-09014,hard_prerequisite,inferred,Naming the interval requires recognising the arc length integral it bounds.
+BC-SKL-09001,BC-SKL-09015,hard_prerequisite,inferred,The vector derivative is the component derivatives collected.
+BC-SKL-09015,BC-SKL-09016,hard_prerequisite,inferred,The velocity vector is the derivative of the position vector evaluated.
+BC-SKL-09016,BC-SKL-09017,hard_prerequisite,inferred,Acceleration differentiates the velocity vector.
+BC-SKL-09001,BC-SKL-09018,hard_prerequisite,inferred,The translation preserves the components and their derivatives.
+BC-SKL-09015,BC-SKL-09018,supporting,inferred,The vector notation is the one differentiation already uses.
+BC-SKL-09015,BC-SKL-09019,hard_prerequisite,inferred,Component antidifferentiation reverses component differentiation.
+BC-SKL-09016,BC-SKL-09020,hard_prerequisite,inferred,The integrand is the velocity vector.
+BC-SKL-09019,BC-SKL-09020,supporting,inferred,The displacement vector is a component antiderivative evaluated at both ends.
+BC-SKL-09020,BC-SKL-09021,hard_prerequisite,inferred,A coordinate is one component of the displacement added to its initial value.
+BC-SKL-09021,BC-SKL-09022,hard_prerequisite,inferred,Accumulating backwards reverses that same accumulation.
+BC-SKL-09016,BC-SKL-09023,hard_prerequisite,inferred,Speed is the magnitude of the velocity vector.
+BC-SKL-09023,BC-SKL-09024,hard_prerequisite,inferred,The equation solved sets the speed expression equal to a value.
+BC-SKL-09023,BC-SKL-09025,hard_prerequisite,inferred,"Total distance integrates the speed, so the speed must be written first."
+BC-SKL-09011,BC-SKL-09025,hard_prerequisite,inferred,The distance integral is the parametric arc length integral in time.
+BC-SKL-09021,BC-SKL-09026,hard_prerequisite,inferred,The coordinate is the initial coordinate plus the integral of its velocity component.
+BC-SKL-09001,BC-SKL-09027,hard_prerequisite,inferred,Moving toward an axis is read from the sign of a component derivative.
+BC-SKL-09016,BC-SKL-09027,supporting,inferred,The component signs come from the velocity vector.
+BC-SKL-09017,BC-SKL-09028,hard_prerequisite,inferred,The presentation shows the acceleration vector the differentiation produced.
+BC-SKL-09029,BC-SKL-09033,hard_prerequisite,inferred,The Cartesian conversion supplies x and y in terms of theta.
+BC-SKL-09030,BC-SKL-09031,hard_prerequisite,inferred,The interpretation is of the derivative that was computed.
+BC-SKL-09030,BC-SKL-09032,hard_prerequisite,inferred,The chain rule product needs dr/dtheta.
+BC-SKL-09031,BC-SKL-09032,hard_prerequisite,inferred,Reading the result as a rate of distance from the origin rests on that interpretation.
+BC-SKL-09030,BC-SKL-09033,hard_prerequisite,inferred,Differentiating x and y in theta requires dr/dtheta.
+BC-SKL-09002,BC-SKL-09033,hard_prerequisite,inferred,The slope is again a quotient of parameter derivatives.
+BC-SKL-09029,BC-SKL-09034,hard_prerequisite,inferred,The Cartesian coordinate to extremise comes from the conversion.
+BC-SKL-09033,BC-SKL-09034,supporting,inferred,The differentiation in theta is the one the slope computation sets up.
+BC-SKL-09036,BC-SKL-09035,hard_prerequisite,inferred,The limits of the polar area integral are the bounding angles.
+BC-SKL-09037,BC-SKL-09036,supporting,inferred,Consecutive zeros of r are one way the bounding angles are found.
+BC-SKL-09035,BC-SKL-09038,hard_prerequisite,inferred,The integral must be set up before it is evaluated.
+BC-SKL-09035,BC-SKL-09041,hard_prerequisite,inferred,The two curve integral is the single curve integral with the squares subtracted.
+BC-SKL-09039,BC-SKL-09041,hard_prerequisite,inferred,The intersection angles are the limits.
+BC-SKL-09040,BC-SKL-09041,hard_prerequisite,inferred,The order of subtraction is fixed by which radius is outer.
+BC-SKL-09037,BC-SKL-09039,supporting,inferred,Zeros of r help select the angles that bound the region.
+BC-SKL-09041,BC-SKL-09042,hard_prerequisite,inferred,The integral must be set up before it is evaluated.
+BC-SKL-09038,BC-SKL-09042,supporting,inferred,Reporting to three decimal places repeats the single curve case.
+BC-SKL-09035,BC-SKL-09043,hard_prerequisite,inferred,Each piece of the region is a polar area integral.
+BC-SKL-09041,BC-SKL-09043,hard_prerequisite,inferred,A piece where the outer curve changes is a two curve polar area integral.
+BC-SKL-02039,BC-SKL-09007,hard_prerequisite,inferred,Differentiating dy/dx as a quotient in the parameter uses the quotient rule.
+BC-SKL-02036,BC-SKL-09007,supporting,inferred,The same derivative is often taken as a product instead.
+BC-SKL-05030,BC-SKL-09010,hard_prerequisite,inferred,Concavity is read from the sign of a second derivative.
+BC-SKL-06047,BC-SKL-09011,supporting,inferred,Parametric arc length integrands sometimes reduce under a substitution.
+BC-SKL-06034,BC-SKL-09038,hard_prerequisite,inferred,A polar area integral done by hand is antidifferentiated and evaluated at the endpoints.
+BC-SKL-06047,BC-SKL-09038,supporting,inferred,Polar area integrands are often rewritten by substitution before antidifferentiation.

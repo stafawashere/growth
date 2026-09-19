@@ -1,0 +1,1260 @@
+{
+ "errors": [
+  {
+   "archetypes": [
+    "BC-QA-09001"
+   ],
+   "discriminating_probe": "Ask for each component derivative on its own before any quotient is formed.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-09001",
+   "name": "Component derivative computed incorrectly",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "time pressure"
+   ],
+   "observed_behavior": "One of dx/dt or dy/dt is wrong, so every later quantity built from it is wrong.",
+   "official_evidence": [
+    "sg-23:7"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-09001"
+   ],
+   "related_errors": [],
+   "scope": "BC_only",
+   "scoring_consequence": "The point that depends on that component is lost, though a declared incorrect component may be imported into later parts without further loss (sg-23:7).",
+   "skills": [
+    "BC-SKL-09001"
+   ],
+   "sources": [
+    "sg-23:7"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-09001"
+   ],
+   "discriminating_probe": "Ask what the slope should be when the path is a straight line of slope two.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-09002",
+   "name": "Slope written as dx/dt divided by dy/dt",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "a copied template from a similar exercise"
+   ],
+   "observed_behavior": "The quotient of parametric derivatives is taken in the reciprocal order.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-09003"
+   ],
+   "related_errors": [],
+   "scope": "BC_only",
+   "scoring_consequence": "The slope point is lost.",
+   "skills": [
+    "BC-SKL-09002",
+    "BC-SKL-09003"
+   ],
+   "sources": [
+    "ced:171"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-09001"
+   ],
+   "discriminating_probe": "Ask for the units, or for the value of dx/dt, and see whether the division follows.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-09003",
+   "name": "Rate of the vertical component reported as the slope",
+   "non_conceptual_causes": [
+    "misread of the prompt",
+    "a copied template from a similar exercise"
+   ],
+   "observed_behavior": "The response gives dy/dt where the slope of the tangent line was requested.",
+   "official_evidence": [
+    "sg-23:7"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-09002"
+   ],
+   "related_errors": [],
+   "scope": "BC_only",
+   "scoring_consequence": "The slope point is lost because the quotient structure is absent (sg-23:7).",
+   "skills": [
+    "BC-SKL-09002",
+    "BC-SKL-09004"
+   ],
+   "sources": [
+    "sg-23:7"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-09001"
+   ],
+   "discriminating_probe": "Ask the student to write the expression that the calculator evaluated.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-09004",
+   "name": "Slope value presented without the quotient",
+   "non_conceptual_causes": [
+    "time pressure"
+   ],
+   "observed_behavior": "A correct decimal appears for the slope with no expression showing dy/dt divided by dx/dt.",
+   "official_evidence": [
+    "sg-23:7"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-09002"
+   ],
+   "related_errors": [
+    "BC-ERR-99021"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "The point is not earned, because the guideline requires the communication of the quotient (sg-23:7).",
+   "skills": [
+    "BC-SKL-09002",
+    "BC-SKL-09004"
+   ],
+   "sources": [
+    "sg-23:7"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-09001"
+   ],
+   "discriminating_probe": "Ask what happens to the tangent line at a parameter value where dx/dt is zero.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-09005",
+   "name": "Condition that dx/dt is not zero omitted",
+   "non_conceptual_causes": [
+    "time pressure",
+    "a copied template from a similar exercise"
+   ],
+   "observed_behavior": "The slope formula is applied at a parameter value where dx/dt vanishes, or the condition is never mentioned where the question asks for it.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-09003"
+   ],
+   "related_errors": [
+    "BC-ERR-99008"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "A justification point that requires the hypothesis is lost.",
+   "skills": [
+    "BC-SKL-09003"
+   ],
+   "sources": [
+    "ced:171"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-09001",
+    "BC-QA-09013",
+    "BC-QA-09009"
+   ],
+   "discriminating_probe": "Recompute with the stored value and compare the third decimal place.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-09006",
+   "name": "Intermediate value rounded before a later step",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "time pressure"
+   ],
+   "observed_behavior": "A stored derivative, angle, or speed is truncated and then reused, moving the final answer.",
+   "official_evidence": [
+    "sg-25:6",
+    "sg-25:7"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-09008"
+   ],
+   "related_errors": [
+    "BC-ERR-99019"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "The answer point is lost for inappropriate rounding, and at most one point per question is withheld on that ground (sg-25:6).",
+   "skills": [
+    "BC-SKL-09004",
+    "BC-SKL-09009",
+    "BC-SKL-09012",
+    "BC-SKL-09030",
+    "BC-SKL-09038",
+    "BC-SKL-09042",
+    "BC-SKL-09016"
+   ],
+   "sources": [
+    "sg-25:6",
+    "sg-25:7"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-09001"
+   ],
+   "discriminating_probe": "Ask for the coordinates of the particle at that time before the line is written.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-09007",
+   "name": "Tangent line written through the velocity components rather than the position",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "a copied template from a similar exercise"
+   ],
+   "observed_behavior": "The point used in the tangent line is the pair of derivative values instead of the coordinates of the particle.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-09001"
+   ],
+   "related_errors": [],
+   "scope": "BC_only",
+   "scoring_consequence": "The tangent line is wrong even when the slope is right.",
+   "skills": [
+    "BC-SKL-09005"
+   ],
+   "sources": [
+    "ced:171"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-09001"
+   ],
+   "discriminating_probe": "Ask what the slope is when dy/dt is zero and dx/dt is not.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-09008",
+   "name": "Horizontal and vertical tangent conditions exchanged",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "a copied template from a similar exercise"
+   ],
+   "observed_behavior": "The response solves dx/dt equal to zero for horizontal tangents.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-09003"
+   ],
+   "related_errors": [],
+   "scope": "BC_only",
+   "scoring_consequence": "The reported parameter values are wrong.",
+   "skills": [
+    "BC-SKL-09006"
+   ],
+   "sources": [
+    "ced:171"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-09002"
+   ],
+   "discriminating_probe": "Ask the student to compute both expressions for a curve whose second derivative can be checked directly.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-09009",
+   "name": "Second derivative taken as a quotient of second derivatives",
+   "non_conceptual_causes": [
+    "a copied template from a similar exercise"
+   ],
+   "observed_behavior": "The second derivative of y with respect to x is written as the second derivative of y with respect to t divided by the second derivative of x with respect to t.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-09004"
+   ],
+   "related_errors": [],
+   "scope": "BC_only",
+   "scoring_consequence": "The setup point is lost.",
+   "skills": [
+    "BC-SKL-09007",
+    "BC-SKL-09008"
+   ],
+   "sources": [
+    "ced:172"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-09002"
+   ],
+   "discriminating_probe": "Ask which variable the second derivative is taken with respect to.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-09010",
+   "name": "Second division by dx/dt omitted",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "time pressure"
+   ],
+   "observed_behavior": "The derivative of dy/dx with respect to the parameter is reported as the second derivative of y with respect to x.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-09004"
+   ],
+   "related_errors": [],
+   "scope": "BC_only",
+   "scoring_consequence": "The setup point is lost.",
+   "skills": [
+    "BC-SKL-09008"
+   ],
+   "sources": [
+    "ced:172"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-09004",
+    "BC-QA-09003",
+    "BC-QA-09012"
+   ],
+   "discriminating_probe": "Ask the student to write the expression that produced the number.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-09011",
+   "name": "Numerical answer presented with no setup",
+   "non_conceptual_causes": [
+    "time pressure"
+   ],
+   "observed_behavior": "A decimal appears for a vector component, a length, an area, or a derivative with no supporting expression.",
+   "official_evidence": [
+    "sg-23:6",
+    "sg-23:8"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-09008"
+   ],
+   "related_errors": [
+    "BC-ERR-99021"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "An unsupported correct acceleration vector earned one of two points in 2023, and an unsupported distance earned neither of two (sg-23:6, sg-23:8).",
+   "skills": [
+    "BC-SKL-09009",
+    "BC-SKL-09012",
+    "BC-SKL-09017",
+    "BC-SKL-09038",
+    "BC-SKL-09028"
+   ],
+   "sources": [
+    "sg-23:6",
+    "sg-23:8"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-09002"
+   ],
+   "discriminating_probe": "Ask which quantity has to be positive for the curve in the plane to bend upward.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-09012",
+   "name": "Concavity read from the sign of a component derivative",
+   "non_conceptual_causes": [
+    "a copied template from a similar exercise",
+    "misread of the prompt"
+   ],
+   "observed_behavior": "The response decides whether the curve is concave up from the sign of the second derivative of y with respect to the parameter.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-09004"
+   ],
+   "related_errors": [],
+   "scope": "BC_only",
+   "scoring_consequence": "The conclusion is unsupported and the justification point is lost.",
+   "skills": [
+    "BC-SKL-09010"
+   ],
+   "sources": [
+    "ced:172"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-09003",
+    "BC-QA-09006"
+   ],
+   "discriminating_probe": "Ask for the speed of a particle whose two component rates are three and four.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-09013",
+   "name": "Component rates added instead of combined as a magnitude",
+   "non_conceptual_causes": [
+    "a copied template from a similar exercise",
+    "arithmetic slip"
+   ],
+   "observed_behavior": "The speed or the arc length integrand is the sum of the two rates rather than the square root of the sum of their squares.",
+   "official_evidence": [
+    "sg-24:5"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-09005",
+    "BC-MIS-09011"
+   ],
+   "related_errors": [
+    "BC-ERR-99029"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "The setup point is lost.",
+   "skills": [
+    "BC-SKL-09011",
+    "BC-SKL-09023"
+   ],
+   "sources": [
+    "sg-24:5",
+    "ced:173"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-09006",
+    "BC-QA-09003"
+   ],
+   "discriminating_probe": "Ask the student to read the integrand aloud and say what the exponent reaches.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-09014",
+   "name": "Parentheses lost inside a squared component",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "time pressure"
+   ],
+   "observed_behavior": "A squared component is written so that only part of it is squared.",
+   "official_evidence": [
+    "sg-23:6",
+    "sg-23:8"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-09011"
+   ],
+   "related_errors": [
+    "BC-ERR-99009"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "The setup point is lost while the answer point remains available, and the same error is not assessed again in a later part (sg-23:6, sg-23:8).",
+   "skills": [
+    "BC-SKL-09011",
+    "BC-SKL-09023"
+   ],
+   "sources": [
+    "sg-23:6",
+    "sg-23:8"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-09007",
+    "BC-QA-09003"
+   ],
+   "discriminating_probe": "Ask for both quantities on a path that returns to its starting point.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-09015",
+   "name": "Magnitude of the displacement reported as the distance travelled",
+   "non_conceptual_causes": [
+    "misread of the prompt",
+    "a copied template from a similar exercise"
+   ],
+   "observed_behavior": "The response integrates the velocity components, then takes the magnitude, and calls the result the distance travelled.",
+   "official_evidence": [
+    "sg-24:6",
+    "cr-24:27"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-09006"
+   ],
+   "related_errors": [
+    "BC-ERR-99010",
+    "BC-ERR-99029"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "The setup point is lost because the integrand is not the speed (sg-24:6).",
+   "skills": [
+    "BC-SKL-09025",
+    "BC-SKL-09013",
+    "BC-SKL-09020"
+   ],
+   "sources": [
+    "sg-24:6",
+    "cr-24:27"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-09003",
+    "BC-QA-09012"
+   ],
+   "discriminating_probe": "Ask at which parameter values the curve returns to a point it has already visited.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-09016",
+   "name": "Integration over an interval that traces the curve more than once",
+   "non_conceptual_causes": [
+    "misread of the prompt",
+    "a copied template from a similar exercise"
+   ],
+   "observed_behavior": "A length or an area is computed over an angle or parameter interval that covers the same piece of curve twice.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-09007"
+   ],
+   "related_errors": [],
+   "scope": "BC_only",
+   "scoring_consequence": "The reported value is a multiple of the correct one and the answer point is lost.",
+   "skills": [
+    "BC-SKL-09014",
+    "BC-SKL-09036",
+    "BC-SKL-09037"
+   ],
+   "sources": [
+    "ced:178"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-09004"
+   ],
+   "discriminating_probe": "Ask which of the two numbers is the rate in the horizontal direction.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-09017",
+   "name": "Vector components presented without labels or in the wrong order",
+   "non_conceptual_causes": [
+    "time pressure",
+    "arithmetic slip"
+   ],
+   "observed_behavior": "Two correct numbers appear with no indication of which is the horizontal and which the vertical component.",
+   "official_evidence": [
+    "sg-23:6"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-09009"
+   ],
+   "related_errors": [
+    "BC-ERR-99033"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "The guideline accepts separate components only when they are labelled, so an unlabelled pair can lose a point (sg-23:6).",
+   "skills": [
+    "BC-SKL-09015",
+    "BC-SKL-09016",
+    "BC-SKL-09018"
+   ],
+   "sources": [
+    "sg-23:6"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-09004",
+    "BC-QA-09005"
+   ],
+   "discriminating_probe": "Ask the student to check the equality by substituting the value of the parameter.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-09018",
+   "name": "Variable expression equated to a numerical value",
+   "non_conceptual_causes": [
+    "time pressure",
+    "careless transcription"
+   ],
+   "observed_behavior": "A chain such as an expression in t set equal to its value at one time is written as a single equality.",
+   "official_evidence": [
+    "sg-23:6",
+    "sg-25:8"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-09008"
+   ],
+   "related_errors": [
+    "BC-ERR-99002"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "In 2023 such a response earned one of the two available points (sg-23:6); in 2025 an unclear linkage between a correct integral and a correct value was treated as scratch work and cost nothing (sg-25:8).",
+   "skills": [
+    "BC-SKL-09017",
+    "BC-SKL-09026",
+    "BC-SKL-09042",
+    "BC-SKL-09028"
+   ],
+   "sources": [
+    "sg-23:6",
+    "sg-25:8"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-09005"
+   ],
+   "discriminating_probe": "Ask how many conditions the initial position supplies.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-09019",
+   "name": "One constant of integration used for both components",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "a copied template from a similar exercise"
+   ],
+   "observed_behavior": "A vector antiderivative carries a single constant rather than one in each component.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-09009"
+   ],
+   "related_errors": [],
+   "scope": "BC_only",
+   "scoring_consequence": "The particular solution cannot satisfy both initial conditions, so the answer is wrong.",
+   "skills": [
+    "BC-SKL-09019"
+   ],
+   "sources": [
+    "ced:175"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-09005"
+   ],
+   "discriminating_probe": "Ask for the same coordinate with a different starting position.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-09020",
+   "name": "Initial position not added to the accumulated change",
+   "non_conceptual_causes": [
+    "time pressure",
+    "misread of the prompt"
+   ],
+   "observed_behavior": "The definite integral of a velocity component is reported as the coordinate.",
+   "official_evidence": [
+    "sg-24:7"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-09010"
+   ],
+   "related_errors": [],
+   "scope": "BC_only",
+   "scoring_consequence": "The initial condition point is lost and the answer point falls with it (sg-24:7).",
+   "skills": [
+    "BC-SKL-09021",
+    "BC-SKL-09026"
+   ],
+   "sources": [
+    "sg-24:7"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-09005"
+   ],
+   "discriminating_probe": "Ask which of the two times the position is known at.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-09021",
+   "name": "Accumulation run in the wrong direction in time",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "time pressure"
+   ],
+   "observed_behavior": "The integral between the known time and the requested time is added when it should be subtracted, or its limits are in the wrong order.",
+   "official_evidence": [
+    "sg-24:7"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-09010"
+   ],
+   "related_errors": [],
+   "scope": "BC_only",
+   "scoring_consequence": "The answer point is lost; the guideline lists several correct arrangements of the subtraction and the limits (sg-24:7).",
+   "skills": [
+    "BC-SKL-09021",
+    "BC-SKL-09022"
+   ],
+   "sources": [
+    "sg-24:7"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-09006"
+   ],
+   "discriminating_probe": "Ask the student to write the equation that the solver was given.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-09022",
+   "name": "Time reported with no speed equation",
+   "non_conceptual_causes": [
+    "time pressure"
+   ],
+   "observed_behavior": "A time at which the speed takes a value is given with no equation and no speed expression.",
+   "official_evidence": [
+    "sg-23:6"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-09008"
+   ],
+   "related_errors": [
+    "BC-ERR-99021"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "Neither the setup point nor the answer point is earned; the words speed equals the value alone also fail to earn the setup point (sg-23:6).",
+   "skills": [
+    "BC-SKL-09024"
+   ],
+   "sources": [
+    "sg-23:6"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-09006",
+    "BC-QA-09009"
+   ],
+   "discriminating_probe": "Ask for the sine of one and compare with the value the response used.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-09023",
+   "name": "Calculator work performed in degree mode",
+   "non_conceptual_causes": [
+    "calculator left in the wrong mode",
+    "time pressure"
+   ],
+   "observed_behavior": "Trigonometric values throughout a question are computed in degree measure, producing internally consistent but wrong numbers.",
+   "official_evidence": [
+    "sg-23:6",
+    "sg-23:7"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-09008"
+   ],
+   "related_errors": [],
+   "scope": "BC_only",
+   "scoring_consequence": "The response does not earn the first point it would otherwise have earned and is generally eligible for the rest (sg-23:6, sg-23:7).",
+   "skills": [
+    "BC-SKL-09024",
+    "BC-SKL-09030"
+   ],
+   "sources": [
+    "sg-23:6",
+    "sg-23:7"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-09007"
+   ],
+   "discriminating_probe": "Ask the student to recompute the speed at one time directly from the components.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-09024",
+   "name": "Incorrect speed expression carried into the distance integral",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "time pressure"
+   ],
+   "observed_behavior": "The integrand for total distance is an incorrect speed declared in an earlier part.",
+   "official_evidence": [
+    "sg-23:8"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-09011"
+   ],
+   "related_errors": [],
+   "scope": "BC_only",
+   "scoring_consequence": "The integral point is earned and the answer point is not (sg-23:8).",
+   "skills": [
+    "BC-SKL-09025"
+   ],
+   "sources": [
+    "sg-23:8"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-09008"
+   ],
+   "discriminating_probe": "Ask what the sign of the rate is at a time when the coordinate is positive and decreasing.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-09025",
+   "name": "Direction of motion read from the sign of the coordinate",
+   "non_conceptual_causes": [
+    "misread of the prompt",
+    "a copied template from a similar exercise"
+   ],
+   "observed_behavior": "The response says the particle approaches an axis on the interval where the coordinate itself is negative.",
+   "official_evidence": [
+    "sg-24:8"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-09012"
+   ],
+   "related_errors": [
+    "BC-ERR-99030"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "The point for considering the sign of the rate is lost (sg-24:8).",
+   "skills": [
+    "BC-SKL-09027"
+   ],
+   "sources": [
+    "sg-24:8"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-09008"
+   ],
+   "discriminating_probe": "Ask why the particle is approaching the axis on that interval and not on the rest.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-09026",
+   "name": "Interval reported with no reason",
+   "non_conceptual_causes": [
+    "time pressure"
+   ],
+   "observed_behavior": "A correct subinterval of times is given with no statement about the sign of the relevant rate.",
+   "official_evidence": [
+    "sg-24:8"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-09012"
+   ],
+   "related_errors": [
+    "BC-ERR-99001"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "The answer with reason point is lost (sg-24:8).",
+   "skills": [
+    "BC-SKL-09027"
+   ],
+   "sources": [
+    "sg-24:8"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-09009",
+    "BC-QA-09011"
+   ],
+   "discriminating_probe": "Ask for both Cartesian coordinates of the point at a stated angle.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-09027",
+   "name": "Polar radius used as a Cartesian coordinate",
+   "non_conceptual_causes": [
+    "a copied template from a similar exercise",
+    "misread of the prompt"
+   ],
+   "observed_behavior": "The value of r is treated as the x coordinate or the y coordinate of the point.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-09013"
+   ],
+   "related_errors": [],
+   "scope": "BC_only",
+   "scoring_consequence": "The coordinate is wrong, so any extremum or conversion built on it fails.",
+   "skills": [
+    "BC-SKL-09029"
+   ],
+   "sources": [
+    "ced:177"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-09009"
+   ],
+   "discriminating_probe": "Ask the student to write the derivative expression before the value.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-09028",
+   "name": "Polar derivative value given with no sign of differentiation",
+   "non_conceptual_causes": [
+    "time pressure"
+   ],
+   "observed_behavior": "A correct decimal for dr/dtheta appears with nothing showing that r was differentiated.",
+   "official_evidence": [
+    "sg-25:7"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-09014"
+   ],
+   "related_errors": [
+    "BC-ERR-99021"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "The point is not earned, because the guideline requires the response to indicate differentiation of r (sg-25:7).",
+   "skills": [
+    "BC-SKL-09030"
+   ],
+   "sources": [
+    "sg-25:7"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-09009",
+    "BC-QA-09010"
+   ],
+   "discriminating_probe": "Ask what quantity r measures before the derivative is interpreted.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-09029",
+   "name": "Rate of change of r described as the speed of the particle",
+   "non_conceptual_causes": [
+    "misread of the prompt",
+    "a copied template from a similar exercise"
+   ],
+   "observed_behavior": "The interpretation of dr/dtheta names the speed along the curve rather than the rate at which the distance from the origin changes.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-09014"
+   ],
+   "related_errors": [
+    "BC-ERR-99031"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "The interpretation is wrong, and the chain rule part built on it reports the wrong quantity.",
+   "skills": [
+    "BC-SKL-09031"
+   ],
+   "sources": [
+    "ced:177"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-09010"
+   ],
+   "discriminating_probe": "Ask what the units of the requested rate are.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-09030",
+   "name": "Rate of the angle omitted from a chain rule product",
+   "non_conceptual_causes": [
+    "misread of the prompt",
+    "time pressure"
+   ],
+   "observed_behavior": "The rate at which the distance from the origin changes with time is reported as dr/dtheta alone.",
+   "official_evidence": [
+    "sg-25:10"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-09014"
+   ],
+   "related_errors": [
+    "BC-ERR-99031"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "The chain rule point is lost (sg-25:10).",
+   "skills": [
+    "BC-SKL-09032"
+   ],
+   "sources": [
+    "sg-25:10"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-09009"
+   ],
+   "discriminating_probe": "Ask for the slope of the tangent to a circle of constant radius, where dr/dtheta is zero.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-09031",
+   "name": "Slope of a polar curve given as dr/dtheta",
+   "non_conceptual_causes": [
+    "a copied template from a similar exercise",
+    "misread of the prompt"
+   ],
+   "observed_behavior": "The response reports the derivative of r where the slope of the tangent line in the plane was requested.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-09015"
+   ],
+   "related_errors": [],
+   "scope": "BC_only",
+   "scoring_consequence": "The slope point is lost.",
+   "skills": [
+    "BC-SKL-09033"
+   ],
+   "sources": [
+    "ced:177"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-09009"
+   ],
+   "discriminating_probe": "Ask the student to name the two factors in the coordinate before differentiating.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-09032",
+   "name": "Product rule omitted when differentiating r times a trigonometric factor",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "time pressure"
+   ],
+   "observed_behavior": "The derivative of a Cartesian coordinate in polar form is taken as the product of the two derivatives or of one derivative alone.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-09015"
+   ],
+   "related_errors": [
+    "BC-ERR-99013"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "The derivative and everything built from it are wrong.",
+   "skills": [
+    "BC-SKL-09033"
+   ],
+   "sources": [
+    "ced:177"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-09011"
+   ],
+   "discriminating_probe": "Ask whether the coordinate at each endpoint has been compared with the value at the candidate.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-09033",
+   "name": "Local argument offered for a farthest point",
+   "non_conceptual_causes": [
+    "time pressure",
+    "a copied template from a similar exercise"
+   ],
+   "observed_behavior": "A first or second derivative test is presented as the justification that a point on the curve is farthest from an axis.",
+   "official_evidence": [
+    "sg-25:9"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-09016"
+   ],
+   "related_errors": [
+    "BC-ERR-99004"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "The justification point is lost while the answer point remains available (sg-25:9).",
+   "skills": [
+    "BC-SKL-09034"
+   ],
+   "sources": [
+    "sg-25:9"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-09011"
+   ],
+   "discriminating_probe": "Ask the student to write the equation that the solver was given.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-09034",
+   "name": "Critical angle presented with no equation",
+   "non_conceptual_causes": [
+    "time pressure"
+   ],
+   "observed_behavior": "The angle solving the derivative equation is written down with nothing showing what was set equal to zero.",
+   "official_evidence": [
+    "sg-25:9"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-09008"
+   ],
+   "related_errors": [
+    "BC-ERR-99021"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "The point for considering the derivative equal to zero is not earned (sg-25:9).",
+   "skills": [
+    "BC-SKL-09034"
+   ],
+   "sources": [
+    "sg-25:9"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-09012",
+    "BC-QA-09013"
+   ],
+   "discriminating_probe": "Ask for the area of a circular sector of stated radius and angle.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-09035",
+   "name": "Factor of one half omitted from a polar area integral",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "a copied template from a similar exercise"
+   ],
+   "observed_behavior": "The area integrand is the square of r with no factor of one half.",
+   "official_evidence": [
+    "sg-25:7"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-09017"
+   ],
+   "related_errors": [
+    "BC-ERR-99031"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "The value is twice the area, so the answer point is lost; the factor is assessed with the limits (sg-25:7).",
+   "skills": [
+    "BC-SKL-09035",
+    "BC-SKL-09041"
+   ],
+   "sources": [
+    "sg-25:7"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-09012"
+   ],
+   "discriminating_probe": "Ask for the area of a full circle from the polar formula and compare.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-09036",
+   "name": "Polar area integrand written without squaring r",
+   "non_conceptual_causes": [
+    "a copied template from a similar exercise",
+    "arithmetic slip"
+   ],
+   "observed_behavior": "The integral is of r with respect to theta rather than of the square of r.",
+   "official_evidence": [
+    "sg-25:7"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-09017"
+   ],
+   "related_errors": [
+    "BC-ERR-99031"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "The first point, which requires an integral containing the square of r, is lost (sg-25:7).",
+   "skills": [
+    "BC-SKL-09035"
+   ],
+   "sources": [
+    "sg-25:7"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-09013",
+    "BC-QA-09012"
+   ],
+   "discriminating_probe": "Ask at which angles the two curves meet.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-09037",
+   "name": "Polar limits taken from the wrong angles",
+   "non_conceptual_causes": [
+    "misread of the prompt",
+    "time pressure"
+   ],
+   "observed_behavior": "The area integral runs over the angle interval of the figure rather than between the intersection angles of the two curves.",
+   "official_evidence": [
+    "sg-25:7"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-09019"
+   ],
+   "related_errors": [
+    "BC-ERR-99031"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "The answer point is lost, since the limits are assessed there (sg-25:7).",
+   "skills": [
+    "BC-SKL-09039",
+    "BC-SKL-09036"
+   ],
+   "sources": [
+    "sg-25:7"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-09013"
+   ],
+   "discriminating_probe": "Ask how many solutions the equation has on the stated interval.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-09038",
+   "name": "One intersection angle not found",
+   "non_conceptual_causes": [
+    "time pressure",
+    "an incomplete calculator window"
+   ],
+   "observed_behavior": "Only one solution of the equation setting the radii equal is found, so the region is bounded incorrectly.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-09019"
+   ],
+   "related_errors": [],
+   "scope": "BC_only",
+   "scoring_consequence": "The limits are wrong and the answer point is lost.",
+   "skills": [
+    "BC-SKL-09039"
+   ],
+   "sources": [
+    "ced:179"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-09013"
+   ],
+   "discriminating_probe": "Ask which curve is farther from the origin at an angle inside the interval.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-09039",
+   "name": "Inner and outer polar radii exchanged",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "misread of the prompt"
+   ],
+   "observed_behavior": "The integrand subtracts the square of the outer radius from the square of the inner radius.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-09018"
+   ],
+   "related_errors": [],
+   "scope": "BC_only",
+   "scoring_consequence": "A negative area is produced and the integrand point is lost.",
+   "skills": [
+    "BC-SKL-09040"
+   ],
+   "sources": [
+    "ced:179"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-09013"
+   ],
+   "discriminating_probe": "Ask the student to evaluate both expressions with the radii two and one.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-09040",
+   "name": "Square of the difference of the radii used in a polar area",
+   "non_conceptual_causes": [
+    "a copied template from a similar exercise",
+    "arithmetic slip"
+   ],
+   "observed_behavior": "The integrand is the square of the difference of the two radius functions rather than the difference of their squares.",
+   "official_evidence": [
+    "sg-25:7"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-09018"
+   ],
+   "related_errors": [
+    "BC-ERR-99031"
+   ],
+   "scope": "BC_only",
+   "scoring_consequence": "The integrand point is lost (sg-25:7).",
+   "skills": [
+    "BC-SKL-09041"
+   ],
+   "sources": [
+    "sg-25:7"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-09013"
+   ],
+   "discriminating_probe": "Ask which part of the region the integral just written covers.",
+   "evidence_tag": "verified",
+   "id": "BC-ERR-09041",
+   "name": "Symmetry used without the compensating factor",
+   "non_conceptual_causes": [
+    "arithmetic slip",
+    "time pressure"
+   ],
+   "observed_behavior": "Half of a symmetric region is integrated and the result is reported without doubling, or a full region is doubled as well.",
+   "official_evidence": [
+    "sg-25:8"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-09018"
+   ],
+   "related_errors": [],
+   "scope": "BC_only",
+   "scoring_consequence": "The reported area is half or twice the correct value and the answer point is lost; the correctly doubled form earned all points in 2025 (sg-25:8).",
+   "skills": [
+    "BC-SKL-09043"
+   ],
+   "sources": [
+    "sg-25:8"
+   ]
+  }
+ ],
+ "registry": "errors"
+}

@@ -1,0 +1,3105 @@
+{
+ "concepts": [
+  {
+   "confusable_with": [],
+   "description_formal": "A parametric curve in the plane is given by two functions x and y of a parameter t, whose values at each t are the coordinates of a point on the curve.",
+   "description_plain": "Two functions of a parameter give the two coordinates of a moving point.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-09001",
+   "misconceptions": [
+    "BC-MIS-09001"
+   ],
+   "name": "Curve defined by parametric equations",
+   "notation": "x(t), y(t); the parameter t",
+   "scope": "BC_only",
+   "skills": [
+    "BC-SKL-09001"
+   ],
+   "sources": [
+    "ced:171"
+   ],
+   "topics": [
+    "BC-TOP-0901"
+   ],
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "For a parametric curve, dy/dx at a point equals dy/dt divided by dx/dt at the corresponding parameter value, provided dx/dt is not zero.",
+   "description_plain": "The slope of the tangent is the rate of y divided by the rate of x.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-09002",
+   "misconceptions": [
+    "BC-MIS-09002",
+    "BC-MIS-09003"
+   ],
+   "name": "Slope of a parametric curve as a quotient of derivatives",
+   "notation": "dy/dx as dy/dt over dx/dt",
+   "scope": "BC_only",
+   "skills": [
+    "BC-SKL-09002",
+    "BC-SKL-09003",
+    "BC-SKL-09004",
+    "BC-SKL-09005",
+    "BC-SKL-09006"
+   ],
+   "sources": [
+    "ced:171"
+   ],
+   "topics": [
+    "BC-TOP-0901"
+   ],
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "The second derivative of y with respect to x for a parametric curve equals the derivative with respect to the parameter of dy/dx, divided by dx/dt.",
+   "description_plain": "Differentiate the slope with respect to the parameter, then divide by dx/dt again.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-09003",
+   "misconceptions": [
+    "BC-MIS-09004"
+   ],
+   "name": "Second derivative of a parametric curve",
+   "notation": "second derivative of y with respect to x",
+   "scope": "BC_only",
+   "skills": [
+    "BC-SKL-09007",
+    "BC-SKL-09008",
+    "BC-SKL-09009",
+    "BC-SKL-09010"
+   ],
+   "sources": [
+    "ced:172"
+   ],
+   "topics": [
+    "BC-TOP-0902"
+   ],
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "For a parametric curve on a parameter interval, the length of the curve is the definite integral of the square root of the sum of the squares of dx/dt and dy/dt over that interval.",
+   "description_plain": "The length is the integral of the magnitude of the pair of rates.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-09004",
+   "misconceptions": [
+    "BC-MIS-09005"
+   ],
+   "name": "Arc length of a parametric curve",
+   "notation": "parametric arc length integral",
+   "scope": "BC_only",
+   "skills": [
+    "BC-SKL-09011",
+    "BC-SKL-09012",
+    "BC-SKL-09013",
+    "BC-SKL-09014"
+   ],
+   "sources": [
+    "ced:173"
+   ],
+   "topics": [
+    "BC-TOP-0903"
+   ],
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "A vector-valued function of one variable is an ordered pair of real valued functions, and its value at each input is a vector in the plane.",
+   "description_plain": "A vector function is just two ordinary functions written together.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-09005",
+   "misconceptions": [
+    "BC-MIS-09009"
+   ],
+   "name": "Vector-valued function as a pair of component functions",
+   "notation": "ordered pair or angle bracket notation",
+   "scope": "BC_only",
+   "skills": [
+    "BC-SKL-09018"
+   ],
+   "sources": [
+    "ced:174"
+   ],
+   "topics": [
+    "BC-TOP-0904"
+   ],
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "The derivative of a vector-valued function is the vector of the derivatives of its components, and the derivative of position is velocity while the derivative of velocity is acceleration.",
+   "description_plain": "Differentiate each component separately.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-09006",
+   "misconceptions": [
+    "BC-MIS-09009"
+   ],
+   "name": "Derivative of a vector-valued function taken component by component",
+   "notation": "velocity vector; acceleration vector",
+   "scope": "BC_only",
+   "skills": [
+    "BC-SKL-09015",
+    "BC-SKL-09016",
+    "BC-SKL-09017"
+   ],
+   "sources": [
+    "ced:174"
+   ],
+   "topics": [
+    "BC-TOP-0904"
+   ],
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "The definite integral of a vector-valued function over an interval is the vector whose components are the definite integrals of the component functions.",
+   "description_plain": "Integrate each component separately to get a vector.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-09007",
+   "misconceptions": [
+    "BC-MIS-09009"
+   ],
+   "name": "Integral of a vector-valued function taken component by component",
+   "notation": "component wise integration",
+   "scope": "BC_only",
+   "skills": [
+    "BC-SKL-09019",
+    "BC-SKL-09020"
+   ],
+   "sources": [
+    "ced:175"
+   ],
+   "topics": [
+    "BC-TOP-0905"
+   ],
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "Given a velocity vector and the position at one time, the position at another time is the initial position added componentwise to the definite integral of the velocity over the interval.",
+   "description_plain": "Each coordinate is its starting value plus the accumulated change.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-09008",
+   "misconceptions": [
+    "BC-MIS-09010"
+   ],
+   "name": "Particular position from a rate vector and an initial position",
+   "notation": "position from velocity plus initial position",
+   "scope": "BC_only",
+   "skills": [
+    "BC-SKL-09021",
+    "BC-SKL-09022"
+   ],
+   "sources": [
+    "ced:175"
+   ],
+   "topics": [
+    "BC-TOP-0905"
+   ],
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "For a particle in planar motion, speed at a time is the square root of the sum of the squares of the two velocity components.",
+   "description_plain": "Speed is the length of the velocity vector, not either component.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-09009",
+   "misconceptions": [
+    "BC-MIS-09011"
+   ],
+   "name": "Speed as the magnitude of the velocity vector",
+   "notation": "speed as the magnitude of velocity",
+   "scope": "BC_only",
+   "skills": [
+    "BC-SKL-09023",
+    "BC-SKL-09024",
+    "BC-SKL-09028"
+   ],
+   "sources": [
+    "ced:176"
+   ],
+   "topics": [
+    "BC-TOP-0906"
+   ],
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "For a particle in planar motion over a time interval, the definite integral of its speed over that interval is the total distance it travels.",
+   "description_plain": "Integrating speed over the interval gives the length of the path travelled.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-09010",
+   "misconceptions": [
+    "BC-MIS-09006"
+   ],
+   "name": "Total distance travelled as the integral of speed",
+   "notation": "integral of speed",
+   "scope": "BC_only",
+   "skills": [
+    "BC-SKL-09025",
+    "BC-SKL-09026"
+   ],
+   "sources": [
+    "ced:176"
+   ],
+   "topics": [
+    "BC-TOP-0906"
+   ],
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "A particle moves toward a coordinate axis when the coordinate measured from that axis is positive and its derivative is negative, or negative with derivative positive.",
+   "description_plain": "Each component sign says which way the particle is moving along that axis.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-09011",
+   "misconceptions": [
+    "BC-MIS-09012"
+   ],
+   "name": "Direction of motion read from the signs of the velocity components",
+   "notation": "sign of a velocity component",
+   "scope": "BC_only",
+   "skills": [
+    "BC-SKL-09027"
+   ],
+   "sources": [
+    "ced:176"
+   ],
+   "topics": [
+    "BC-TOP-0906"
+   ],
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "For a curve given by r as a function of theta, the Cartesian coordinates of the point at angle theta are x equal r times the cosine of theta and y equal r times the sine of theta.",
+   "description_plain": "The coordinates of a polar point are r times cosine and r times sine of the angle.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-09012",
+   "misconceptions": [
+    "BC-MIS-09013"
+   ],
+   "name": "Polar to Cartesian relations",
+   "notation": "x = r cos theta; y = r sin theta",
+   "scope": "BC_only",
+   "skills": [
+    "BC-SKL-09029"
+   ],
+   "sources": [
+    "ced:177"
+   ],
+   "topics": [
+    "BC-TOP-0907"
+   ],
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "For r as a function of theta, dr/dtheta is the rate of change of the distance from the origin with respect to the polar angle, and its sign says whether the curve is moving away from or toward the origin.",
+   "description_plain": "The derivative of r says how fast the distance from the origin changes with the angle.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-09013",
+   "misconceptions": [
+    "BC-MIS-09014"
+   ],
+   "name": "Rate of change of r with respect to theta",
+   "notation": "dr/dtheta",
+   "scope": "BC_only",
+   "skills": [
+    "BC-SKL-09030",
+    "BC-SKL-09031",
+    "BC-SKL-09032"
+   ],
+   "sources": [
+    "ced:177"
+   ],
+   "topics": [
+    "BC-TOP-0907"
+   ],
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "For a polar curve, dy/dx equals the derivative with respect to theta of r times the sine of theta divided by the derivative with respect to theta of r times the cosine of theta.",
+   "description_plain": "Write x and y in theta, then take the quotient of their rates.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-09014",
+   "misconceptions": [
+    "BC-MIS-09015"
+   ],
+   "name": "Slope of a polar curve in the plane",
+   "notation": "dy/dx for a polar curve",
+   "scope": "BC_only",
+   "skills": [
+    "BC-SKL-09033",
+    "BC-SKL-09034"
+   ],
+   "sources": [
+    "ced:177"
+   ],
+   "topics": [
+    "BC-TOP-0907"
+   ],
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "For a polar curve r as a function of theta, the area of the region swept between two angles is one half the definite integral of the square of r with respect to theta over that interval.",
+   "description_plain": "Sum the areas of thin circular sectors across the angle interval.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-09015",
+   "misconceptions": [
+    "BC-MIS-09017"
+   ],
+   "name": "Area of a polar region as an integral of one half r squared",
+   "notation": "one half the integral of r squared d theta",
+   "scope": "BC_only",
+   "skills": [
+    "BC-SKL-09035",
+    "BC-SKL-09036",
+    "BC-SKL-09037",
+    "BC-SKL-09038"
+   ],
+   "sources": [
+    "ced:178"
+   ],
+   "topics": [
+    "BC-TOP-0908"
+   ],
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "For two polar curves with the outer one farther from the origin on an angle interval, the area between them is one half the definite integral of the square of the outer radius minus the square of the inner radius.",
+   "description_plain": "Subtract the squares of the two radii inside one half the integral.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-09016",
+   "misconceptions": [
+    "BC-MIS-09018"
+   ],
+   "name": "Area between two polar curves",
+   "notation": "one half the integral of the difference of squares",
+   "scope": "BC_only",
+   "skills": [
+    "BC-SKL-09040",
+    "BC-SKL-09041",
+    "BC-SKL-09042",
+    "BC-SKL-09043"
+   ],
+   "sources": [
+    "ced:179"
+   ],
+   "topics": [
+    "BC-TOP-0909"
+   ],
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "The angles bounding a region between two polar curves are the solutions of the equation setting the two radius functions equal on the interval of interest.",
+   "description_plain": "The curves meet where their radii agree at the same angle.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-09017",
+   "misconceptions": [
+    "BC-MIS-09019"
+   ],
+   "name": "Intersection angles of two polar curves",
+   "notation": "intersection angles",
+   "scope": "BC_only",
+   "skills": [
+    "BC-SKL-09039"
+   ],
+   "sources": [
+    "ced:179"
+   ],
+   "topics": [
+    "BC-TOP-0909"
+   ],
+   "unit": "BC-UNIT-09"
+  }
+ ],
+ "prerequisites": [
+  {
+   "category": "notation",
+   "description_plain": "Reading a position, velocity, or acceleration written as an ordered pair or with angle brackets, and labelling the two components when they are listed separately.",
+   "evidence_tag": "inferred",
+   "failure_signature": "Student reports two correct components without saying which is which, or mixes the two orders within one response.",
+   "hidden": true,
+   "id": "BC-PRQ-09001",
+   "name": "Reading vector and ordered pair notation for a position in the plane",
+   "notes": "Non-calculus prerequisite inferred from the demands of the BC-UNIT-09 essential knowledge statements.",
+   "scope": "shared",
+   "sources": [
+    "ced:174"
+   ]
+  },
+  {
+   "category": "trigonometry",
+   "description_plain": "Reading cosine and sine of an angle as the horizontal and vertical coordinates on a circle of given radius, and solving a trigonometric equation for every solution in a stated interval.",
+   "evidence_tag": "inferred",
+   "failure_signature": "Student cannot find the angles at which two polar curves meet, or finds only one of them.",
+   "hidden": true,
+   "id": "BC-PRQ-09002",
+   "name": "Sine and cosine as coordinates and solving trigonometric equations on an interval",
+   "notes": "Non-calculus prerequisite inferred from the demands of the BC-UNIT-09 essential knowledge statements.",
+   "scope": "shared",
+   "sources": [
+    "ced:177"
+   ]
+  },
+  {
+   "category": "notation",
+   "description_plain": "Treating the argument of a trigonometric function as a radian measure, and keeping the calculator in radian mode when a model uses one.",
+   "evidence_tag": "inferred",
+   "failure_signature": "Student produces values that are internally consistent but wrong throughout a question, with no algebraic error visible.",
+   "hidden": true,
+   "id": "BC-PRQ-09003",
+   "name": "Radian measure as the calculator convention for trigonometric arguments",
+   "notes": "Non-calculus prerequisite inferred from the demands of the BC-UNIT-09 essential knowledge statements.",
+   "scope": "shared",
+   "sources": [
+    "sg-23:6",
+    "frq-25:4"
+   ]
+  },
+  {
+   "category": "conceptual",
+   "description_plain": "Determining the interval of the parameter or the polar angle over which a curve or one loop of it is traced exactly once, and noticing when an interval repeats part of the curve.",
+   "evidence_tag": "inferred",
+   "failure_signature": "Student integrates over an interval that covers a loop twice and reports double the area.",
+   "hidden": true,
+   "id": "BC-PRQ-09004",
+   "name": "Deciding which parameter interval traces a curve exactly once",
+   "notes": "Non-calculus prerequisite inferred from the demands of the BC-UNIT-09 essential knowledge statements.",
+   "scope": "shared",
+   "sources": [
+    "ced:178"
+   ]
+  }
+ ],
+ "registry": "skills",
+ "skills": [
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09001"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09001"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-09001 across at least two presentations of the task, with no error from BC-ERR-09001.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-09001 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-09001"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-09001"
+   ],
+   "concept": "BC-CON-09001",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given x and y as functions of the parameter, compute the derivative of each with respect to the parameter.",
+   "description_plain": "Find dx/dt and dy/dt separately.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-3G1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-09001",
+   "learning_objectives": [
+    "BC-LO-CHA-3G"
+   ],
+   "misconceptions": [
+    "BC-MIS-09001"
+   ],
+   "name": "Differentiate each component of a parametric curve with respect to the parameter",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-2D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-12",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:171"
+   ],
+   "topic": "BC-TOP-0901",
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09002",
+     "BC-MIS-09003"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09001"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-09001 across at least two presentations of the task, with no error from BC-ERR-09002, BC-ERR-09003, BC-ERR-09004.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-09002, BC-ERR-09003, BC-ERR-09004 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-09001"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-09002",
+    "BC-ERR-09003",
+    "BC-ERR-09004"
+   ],
+   "concept": "BC-CON-09002",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Compute dy/dx at a parameter value as the quotient of dy/dt by dx/dt, communicating the quotient rather than only its value.",
+   "description_plain": "Divide dy/dt by dx/dt to get the slope.",
+   "diagnostic_signals": [
+    "BC-SIG-09001"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-3G2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-09002",
+   "learning_objectives": [
+    "BC-LO-CHA-3G"
+   ],
+   "misconceptions": [
+    "BC-MIS-09002",
+    "BC-MIS-09003"
+   ],
+   "name": "Compute dy/dx for a parametric curve as a quotient of derivatives",
+   "official_evidence": [
+    "sg-23:7"
+   ],
+   "practice_skills": [
+    "BC-MPS-2D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-12",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-23:7",
+    "ced:171"
+   ],
+   "topic": "BC-TOP-0901",
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09003"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09001"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-09001 across at least two presentations of the task, with no error from BC-ERR-09005.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-09005 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-09001"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-09005"
+   ],
+   "concept": "BC-CON-09002",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "State that dy/dx as a quotient of parametric derivatives is defined only where dx/dt is not zero, and identify parameter values where it fails.",
+   "description_plain": "Say that the slope formula needs a nonzero rate in x.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-3G2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-09003",
+   "learning_objectives": [
+    "BC-LO-CHA-3G"
+   ],
+   "misconceptions": [
+    "BC-MIS-09003"
+   ],
+   "name": "State the condition that dx/dt is not zero",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-2D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-12",
+    "BC-REP-04"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:171"
+   ],
+   "topic": "BC-TOP-0901",
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09002"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09001"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-09001 across at least two presentations of the task, with no error from BC-ERR-09004, BC-ERR-09006.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-09004, BC-ERR-09006 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-08006.",
+    "remediation_target": "BC-PRQ-08006"
+   },
+   "archetypes": [
+    "BC-QA-09001"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-09004",
+    "BC-ERR-09006"
+   ],
+   "concept": "BC-CON-09002",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Evaluate dy/dt and dx/dt at a given parameter value and report their quotient as the slope of the line tangent to the path there.",
+   "description_plain": "Put the parameter value into the slope quotient.",
+   "diagnostic_signals": [
+    "BC-SIG-09001"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-3G2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-09004",
+   "learning_objectives": [
+    "BC-LO-CHA-3G"
+   ],
+   "misconceptions": [
+    "BC-MIS-09002"
+   ],
+   "name": "Evaluate the slope of the tangent at a parameter value",
+   "official_evidence": [
+    "sg-23:7"
+   ],
+   "practice_skills": [
+    "BC-MPS-2D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08006"
+   ],
+   "representations": [
+    "BC-REP-12",
+    "BC-REP-09"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-23:7"
+   ],
+   "topic": "BC-TOP-0901",
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09001"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09001"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-09001 across at least two presentations of the task, with no error from BC-ERR-09007.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-09007 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-09001"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-09007"
+   ],
+   "concept": "BC-CON-09002",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given a parameter value, compute the point on the curve and the slope there and write the equation of the tangent line in point slope form.",
+   "description_plain": "Use the point and the slope to write the line.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-3G2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-09005",
+   "learning_objectives": [
+    "BC-LO-CHA-3G"
+   ],
+   "misconceptions": [
+    "BC-MIS-09001"
+   ],
+   "name": "Write the equation of the tangent line at a point on a parametric curve",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-2D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-12",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:171"
+   ],
+   "topic": "BC-TOP-0901",
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09003"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09001"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-09001 across at least two presentations of the task, with no error from BC-ERR-09008.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-09008 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-08001.",
+    "remediation_target": "BC-PRQ-08001"
+   },
+   "archetypes": [
+    "BC-QA-09001"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-09008"
+   ],
+   "concept": "BC-CON-09002",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Solve dy/dt equal to zero with dx/dt nonzero for horizontal tangents, and dx/dt equal to zero with dy/dt nonzero for vertical tangents.",
+   "description_plain": "Horizontal where dy/dt is zero, vertical where dx/dt is zero.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-3G2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-09006",
+   "learning_objectives": [
+    "BC-LO-CHA-3G"
+   ],
+   "misconceptions": [
+    "BC-MIS-09003"
+   ],
+   "name": "Locate parameter values where the tangent is horizontal or vertical",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-2D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08001"
+   ],
+   "representations": [
+    "BC-REP-12",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:171"
+   ],
+   "topic": "BC-TOP-0901",
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09004"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09002"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-09002 across at least two presentations of the task, with no error from BC-ERR-09009.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-09009 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-09002"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-09009"
+   ],
+   "concept": "BC-CON-09003",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given dy/dx expressed in the parameter, compute its derivative with respect to the parameter using the quotient or product rule.",
+   "description_plain": "Treat the slope as a function of the parameter and differentiate it.",
+   "diagnostic_signals": [
+    "BC-SIG-09002"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-3G3"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-09007",
+   "learning_objectives": [
+    "BC-LO-CHA-3G"
+   ],
+   "misconceptions": [
+    "BC-MIS-09004"
+   ],
+   "name": "Differentiate dy/dx with respect to the parameter",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-12",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:172"
+   ],
+   "topic": "BC-TOP-0902",
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09004"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09002"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-09002 across at least two presentations of the task, with no error from BC-ERR-09010, BC-ERR-09009.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-09010, BC-ERR-09009 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-09002"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-09010",
+    "BC-ERR-09009"
+   ],
+   "concept": "BC-CON-09003",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Compute the second derivative of y with respect to x as the derivative with respect to the parameter of dy/dx divided by dx/dt.",
+   "description_plain": "Divide the derivative of the slope by dx/dt.",
+   "diagnostic_signals": [
+    "BC-SIG-09002"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-3G3"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-09008",
+   "learning_objectives": [
+    "BC-LO-CHA-3G"
+   ],
+   "misconceptions": [
+    "BC-MIS-09004"
+   ],
+   "name": "Assemble the second derivative by dividing again by dx/dt",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-12",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:172"
+   ],
+   "topic": "BC-TOP-0902",
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09004"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09002"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-09002 across at least two presentations of the task, with no error from BC-ERR-09006, BC-ERR-09011.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-09006, BC-ERR-09011 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-08006.",
+    "remediation_target": "BC-PRQ-08006"
+   },
+   "archetypes": [
+    "BC-QA-09002"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-09006",
+    "BC-ERR-09011"
+   ],
+   "concept": "BC-CON-09003",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Evaluate the second derivative of y with respect to x at a given parameter value and report it with the setup shown.",
+   "description_plain": "Substitute the parameter value into the assembled expression.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-3G3"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-09009",
+   "learning_objectives": [
+    "BC-LO-CHA-3G"
+   ],
+   "misconceptions": [
+    "BC-MIS-09004"
+   ],
+   "name": "Evaluate the second derivative at a parameter value",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08006"
+   ],
+   "representations": [
+    "BC-REP-12",
+    "BC-REP-09"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:172"
+   ],
+   "topic": "BC-TOP-0902",
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09004"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09002"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-09002 across at least two presentations of the task, with no error from BC-ERR-09012.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-09012 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-09002"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-09012"
+   ],
+   "concept": "BC-CON-09003",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Use the sign of the second derivative of y with respect to x to state whether the curve is concave up or concave down at a point.",
+   "description_plain": "Positive means concave up as a curve in the plane.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-3G3"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-09010",
+   "learning_objectives": [
+    "BC-LO-CHA-3G"
+   ],
+   "misconceptions": [
+    "BC-MIS-09004"
+   ],
+   "name": "Determine the concavity of a parametric curve from the sign of the second derivative",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-12",
+    "BC-REP-04"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:172"
+   ],
+   "topic": "BC-TOP-0902",
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09005"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09003"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-09003 across at least two presentations of the task, with no error from BC-ERR-09013, BC-ERR-09014.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-09013, BC-ERR-09014 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-08007.",
+    "remediation_target": "BC-PRQ-08007"
+   },
+   "archetypes": [
+    "BC-QA-09003"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-09013",
+    "BC-ERR-09014"
+   ],
+   "concept": "BC-CON-09004",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Write the definite integral of the square root of the sum of the squares of dx/dt and dy/dt over the stated parameter interval.",
+   "description_plain": "Integrate the square root of the sum of the squares of the two rates.",
+   "diagnostic_signals": [
+    "BC-SIG-09003"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-6B1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-09011",
+   "learning_objectives": [
+    "BC-LO-CHA-6B"
+   ],
+   "misconceptions": [
+    "BC-MIS-09005"
+   ],
+   "name": "Set up the arc length integral for a parametric curve",
+   "official_evidence": [
+    "sg-24:6"
+   ],
+   "practice_skills": [
+    "BC-MPS-1D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08007"
+   ],
+   "representations": [
+    "BC-REP-12",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:173",
+    "sg-24:6"
+   ],
+   "topic": "BC-TOP-0903",
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09008"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09003"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-09003 across at least two presentations of the task, with no error from BC-ERR-09006, BC-ERR-09011.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-09006, BC-ERR-09011 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-08006.",
+    "remediation_target": "BC-PRQ-08006"
+   },
+   "archetypes": [
+    "BC-QA-09003"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-09006",
+    "BC-ERR-09011"
+   ],
+   "concept": "BC-CON-09004",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Evaluate the parametric arc length integral numerically and report the value accurate to three places after the decimal point.",
+   "description_plain": "Enter the radical integrand and report the decimal.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-6B1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-09012",
+   "learning_objectives": [
+    "BC-LO-CHA-6B"
+   ],
+   "misconceptions": [
+    "BC-MIS-09008"
+   ],
+   "name": "Evaluate a parametric arc length integral with technology",
+   "official_evidence": [
+    "sg-24:6"
+   ],
+   "practice_skills": [
+    "BC-MPS-1D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08006"
+   ],
+   "representations": [
+    "BC-REP-09",
+    "BC-REP-12"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-24:6"
+   ],
+   "topic": "BC-TOP-0903",
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09006"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09003",
+     "BC-QA-09007"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-09003, BC-QA-09007 across at least two presentations of the task, with no error from BC-ERR-09015.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-09015 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-09003",
+    "BC-QA-09007"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-09015"
+   ],
+   "concept": "BC-CON-09004",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "State that for a particle in planar motion the arc length integral of its path over a time interval is the total distance it travels over that interval.",
+   "description_plain": "The same integral measures the length of the path a particle traces.",
+   "diagnostic_signals": [
+    "BC-SIG-09004"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-6B1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-09013",
+   "learning_objectives": [
+    "BC-LO-CHA-6B"
+   ],
+   "misconceptions": [
+    "BC-MIS-09006"
+   ],
+   "name": "Identify the parametric arc length integral as the distance travelled",
+   "official_evidence": [
+    "sg-24:6"
+   ],
+   "practice_skills": [
+    "BC-MPS-1D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-12",
+    "BC-REP-04"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:173",
+    "ced:176",
+    "sg-24:6"
+   ],
+   "topic": "BC-TOP-0903",
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09007"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09003"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-09003 across at least two presentations of the task, with no error from BC-ERR-09016.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-09016 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-09004.",
+    "remediation_target": "BC-PRQ-09004"
+   },
+   "archetypes": [
+    "BC-QA-09003"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-09016"
+   ],
+   "concept": "BC-CON-09004",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given an arc length integral or a described curve, name the parameter interval that bounds the piece of curve whose length is being computed, and check that the interval traces it once.",
+   "description_plain": "Say which parameter values bound the piece being measured.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-6B1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-09014",
+   "learning_objectives": [
+    "BC-LO-CHA-6B"
+   ],
+   "misconceptions": [
+    "BC-MIS-09007"
+   ],
+   "name": "Identify the parameter interval over which a length is measured",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-1D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-09004"
+   ],
+   "representations": [
+    "BC-REP-12",
+    "BC-REP-04"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:173"
+   ],
+   "topic": "BC-TOP-0903",
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09009"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09004"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-09004 across at least two presentations of the task, with no error from BC-ERR-09017.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-09017 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-09001.",
+    "remediation_target": "BC-PRQ-09001"
+   },
+   "archetypes": [
+    "BC-QA-09004"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-09017"
+   ],
+   "concept": "BC-CON-09006",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given a vector-valued function, compute the derivative of each component with respect to the variable and present the result as a vector.",
+   "description_plain": "Differentiate each coordinate on its own.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-3H1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-09015",
+   "learning_objectives": [
+    "BC-LO-CHA-3H"
+   ],
+   "misconceptions": [
+    "BC-MIS-09009"
+   ],
+   "name": "Differentiate a vector-valued function component by component",
+   "official_evidence": [
+    "sg-23:6"
+   ],
+   "practice_skills": [
+    "BC-MPS-1D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-09001"
+   ],
+   "representations": [
+    "BC-REP-14",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:174",
+    "sg-23:6"
+   ],
+   "topic": "BC-TOP-0904",
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09009"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09004"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-09004 across at least two presentations of the task, with no error from BC-ERR-09017, BC-ERR-09006.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-09017, BC-ERR-09006 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-09001.",
+    "remediation_target": "BC-PRQ-09001"
+   },
+   "archetypes": [
+    "BC-QA-09004"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-09017",
+    "BC-ERR-09006"
+   ],
+   "concept": "BC-CON-09006",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Evaluate the derivative of the position vector at a time and present both components, labelled or ordered.",
+   "description_plain": "Report both components of the derivative of position at that time.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-3H1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-09016",
+   "learning_objectives": [
+    "BC-LO-CHA-3H"
+   ],
+   "misconceptions": [
+    "BC-MIS-09009"
+   ],
+   "name": "Evaluate the velocity vector at a given time",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-1D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-09001"
+   ],
+   "representations": [
+    "BC-REP-14",
+    "BC-REP-09"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:174"
+   ],
+   "topic": "BC-TOP-0904",
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09009"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09004"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-09004 across at least two presentations of the task, with no error from BC-ERR-09011, BC-ERR-09018.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-09011, BC-ERR-09018 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-09001.",
+    "remediation_target": "BC-PRQ-09001"
+   },
+   "archetypes": [
+    "BC-QA-09004"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-09011",
+    "BC-ERR-09018"
+   ],
+   "concept": "BC-CON-09006",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Differentiate each component of the velocity vector and evaluate at the requested time, presenting the acceleration vector with the setup shown.",
+   "description_plain": "Differentiate each velocity component again and evaluate.",
+   "diagnostic_signals": [
+    "BC-SIG-09005"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-3H1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-09017",
+   "learning_objectives": [
+    "BC-LO-CHA-3H"
+   ],
+   "misconceptions": [
+    "BC-MIS-09009"
+   ],
+   "name": "Evaluate the acceleration vector as the derivative of velocity",
+   "official_evidence": [
+    "sg-23:5",
+    "sg-23:6"
+   ],
+   "practice_skills": [
+    "BC-MPS-1D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-09001"
+   ],
+   "representations": [
+    "BC-REP-14",
+    "BC-REP-09"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-23:5",
+    "sg-23:6"
+   ],
+   "topic": "BC-TOP-0904",
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09009"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09004",
+     "BC-QA-09005"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-09004, BC-QA-09005 across at least two presentations of the task, with no error from BC-ERR-09017.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-09017 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-09001.",
+    "remediation_target": "BC-PRQ-09001"
+   },
+   "archetypes": [
+    "BC-QA-09004",
+    "BC-QA-09005"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-09017"
+   ],
+   "concept": "BC-CON-09005",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Rewrite a parametric description of a path as a vector-valued function and back, preserving the order of the components.",
+   "description_plain": "The same motion can be written as a pair of equations or as one vector.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-3H1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-09018",
+   "learning_objectives": [
+    "BC-LO-CHA-3H"
+   ],
+   "misconceptions": [
+    "BC-MIS-09009"
+   ],
+   "name": "Convert between parametric equations and vector-valued notation",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-1D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-09001"
+   ],
+   "representations": [
+    "BC-REP-12",
+    "BC-REP-14"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:174"
+   ],
+   "topic": "BC-TOP-0904",
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09009"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09005"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-09005 across at least two presentations of the task, with no error from BC-ERR-09019.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-09019 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-09001.",
+    "remediation_target": "BC-PRQ-09001"
+   },
+   "archetypes": [
+    "BC-QA-09005"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-09019"
+   ],
+   "concept": "BC-CON-09007",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given a vector-valued rate, produce a vector-valued antiderivative by antidifferentiating each component and carrying a constant in each.",
+   "description_plain": "Find an antiderivative of each component.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-8A1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-09019",
+   "learning_objectives": [
+    "BC-LO-FUN-8A"
+   ],
+   "misconceptions": [
+    "BC-MIS-09009"
+   ],
+   "name": "Antidifferentiate a vector-valued function component by component",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-09001"
+   ],
+   "representations": [
+    "BC-REP-14",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:175"
+   ],
+   "topic": "BC-TOP-0905",
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09006"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09005"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-09005 across at least two presentations of the task, with no error from BC-ERR-09015.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-09015 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-09005"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-09015"
+   ],
+   "concept": "BC-CON-09007",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Express the net change in position over a time interval as the vector of definite integrals of the velocity components over that interval.",
+   "description_plain": "Integrate each velocity component over the interval.",
+   "diagnostic_signals": [
+    "BC-SIG-09004"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-8A1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-09020",
+   "learning_objectives": [
+    "BC-LO-FUN-8A"
+   ],
+   "misconceptions": [
+    "BC-MIS-09006"
+   ],
+   "name": "Write the displacement as a definite integral of the velocity vector",
+   "official_evidence": [
+    "sg-24:7"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-14",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:176",
+    "sg-24:7"
+   ],
+   "topic": "BC-TOP-0905",
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09010"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09005"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-09005 across at least two presentations of the task, with no error from BC-ERR-09020, BC-ERR-09021.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-09020, BC-ERR-09021 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-09005"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-09020",
+    "BC-ERR-09021"
+   ],
+   "concept": "BC-CON-09008",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given the position at one time and a velocity component, evaluate the corresponding coordinate at another time as the initial coordinate plus the definite integral of that component.",
+   "description_plain": "Add the integral of that velocity component to the starting coordinate.",
+   "diagnostic_signals": [
+    "BC-SIG-09006"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-8A1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-09021",
+   "learning_objectives": [
+    "BC-LO-FUN-8A"
+   ],
+   "misconceptions": [
+    "BC-MIS-09010"
+   ],
+   "name": "Determine a coordinate of position from an initial position and a velocity component",
+   "official_evidence": [
+    "sg-24:7",
+    "sg-23:7"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-14",
+    "BC-REP-09"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-24:7",
+    "sg-23:7"
+   ],
+   "topic": "BC-TOP-0905",
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09010"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09005"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-09005 across at least two presentations of the task, with no error from BC-ERR-09021.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-09021 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-09005"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-09021"
+   ],
+   "concept": "BC-CON-09008",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "When the known position is at a later time than the requested one, write the earlier coordinate as the known value minus the definite integral over the intervening interval, or equivalently reverse the limits.",
+   "description_plain": "Going back in time reverses the order of the limits.",
+   "diagnostic_signals": [
+    "BC-SIG-09007"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-8A1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-09022",
+   "learning_objectives": [
+    "BC-LO-FUN-8A"
+   ],
+   "misconceptions": [
+    "BC-MIS-09010"
+   ],
+   "name": "Accumulate backwards in time from a known later position",
+   "official_evidence": [
+    "sg-24:7"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-14",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-24:7"
+   ],
+   "topic": "BC-TOP-0905",
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09011"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09006"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-09006 across at least two presentations of the task, with no error from BC-ERR-09013, BC-ERR-09014.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-09013, BC-ERR-09014 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-08007.",
+    "remediation_target": "BC-PRQ-08007"
+   },
+   "archetypes": [
+    "BC-QA-09006"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-09013",
+    "BC-ERR-09014"
+   ],
+   "concept": "BC-CON-09009",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given the two velocity components at a time, compute the speed as the square root of the sum of their squares, with the setup shown.",
+   "description_plain": "Square both components, add, take the square root.",
+   "diagnostic_signals": [
+    "BC-SIG-09003"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-8B1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-09023",
+   "learning_objectives": [
+    "BC-LO-FUN-8B"
+   ],
+   "misconceptions": [
+    "BC-MIS-09011"
+   ],
+   "name": "Compute the speed of a particle as the magnitude of its velocity",
+   "official_evidence": [
+    "sg-24:5",
+    "sg-23:6"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08007"
+   ],
+   "representations": [
+    "BC-REP-14",
+    "BC-REP-09"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-24:5",
+    "sg-23:6"
+   ],
+   "topic": "BC-TOP-0906",
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09011"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09006"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-09006 across at least two presentations of the task, with no error from BC-ERR-09022, BC-ERR-09023.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-09022, BC-ERR-09023 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-08001, BC-PRQ-09003.",
+    "remediation_target": "BC-PRQ-08001"
+   },
+   "archetypes": [
+    "BC-QA-09006"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-09022",
+    "BC-ERR-09023"
+   ],
+   "concept": "BC-CON-09009",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Write the speed as a function of time, set it equal to the stated value, solve numerically on the interval, and report the first such time when asked.",
+   "description_plain": "Set the speed expression equal to the number and solve on the interval.",
+   "diagnostic_signals": [
+    "BC-SIG-09008"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-8B1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-09024",
+   "learning_objectives": [
+    "BC-LO-FUN-8B"
+   ],
+   "misconceptions": [
+    "BC-MIS-09011"
+   ],
+   "name": "Solve for a time at which the speed has a stated value",
+   "official_evidence": [
+    "sg-23:6",
+    "sg-23:7"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08001",
+    "BC-PRQ-09003"
+   ],
+   "representations": [
+    "BC-REP-09",
+    "BC-REP-14"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-23:6",
+    "sg-23:7"
+   ],
+   "topic": "BC-TOP-0906",
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09006"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09007"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-09007 across at least two presentations of the task, with no error from BC-ERR-09015, BC-ERR-09024.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-09015, BC-ERR-09024 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-08007.",
+    "remediation_target": "BC-PRQ-08007"
+   },
+   "archetypes": [
+    "BC-QA-09007"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-09015",
+    "BC-ERR-09024"
+   ],
+   "concept": "BC-CON-09010",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Write and evaluate the definite integral of the speed over the time interval and report the result as the total distance travelled, with units.",
+   "description_plain": "Integrate the speed expression over the time interval.",
+   "diagnostic_signals": [
+    "BC-SIG-09004"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-8B2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-09025",
+   "learning_objectives": [
+    "BC-LO-FUN-8B"
+   ],
+   "misconceptions": [
+    "BC-MIS-09006"
+   ],
+   "name": "Compute the total distance travelled as the integral of speed",
+   "official_evidence": [
+    "sg-23:8",
+    "sg-24:6"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08007"
+   ],
+   "representations": [
+    "BC-REP-14",
+    "BC-REP-09"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-23:8",
+    "sg-24:6"
+   ],
+   "topic": "BC-TOP-0906",
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09010"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09005"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-09005 across at least two presentations of the task, with no error from BC-ERR-09020, BC-ERR-09018.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-09020, BC-ERR-09018 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-09005"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-09020",
+    "BC-ERR-09018"
+   ],
+   "concept": "BC-CON-09010",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Evaluate a coordinate of the position at a time as the known coordinate at another time plus the definite integral of the corresponding velocity component between the two times.",
+   "description_plain": "Add the integral of the matching velocity component to the known coordinate.",
+   "diagnostic_signals": [
+    "BC-SIG-09006"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-8B2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-09026",
+   "learning_objectives": [
+    "BC-LO-FUN-8B"
+   ],
+   "misconceptions": [
+    "BC-MIS-09010"
+   ],
+   "name": "Determine a coordinate of the particle at a time from an initial condition",
+   "official_evidence": [
+    "sg-23:7",
+    "sg-23:8",
+    "sg-24:7"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-14",
+    "BC-REP-09"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-23:7",
+    "sg-23:8",
+    "sg-24:7"
+   ],
+   "topic": "BC-TOP-0906",
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09012"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09008"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-09008 across at least two presentations of the task, with no error from BC-ERR-09025, BC-ERR-09026.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-09025, BC-ERR-09026 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-08001.",
+    "remediation_target": "BC-PRQ-08001"
+   },
+   "archetypes": [
+    "BC-QA-09008"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-09025",
+    "BC-ERR-09026"
+   ],
+   "concept": "BC-CON-09011",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given the sign of a coordinate on an interval, determine the times at which the particle moves toward the corresponding axis by finding where the derivative of that coordinate has the opposite sign.",
+   "description_plain": "Compare the sign of the coordinate with the sign of its rate.",
+   "diagnostic_signals": [
+    "BC-SIG-09009"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-8B1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-09027",
+   "learning_objectives": [
+    "BC-LO-FUN-8B"
+   ],
+   "misconceptions": [
+    "BC-MIS-09012"
+   ],
+   "name": "Determine when a particle moves toward or away from a coordinate axis",
+   "official_evidence": [
+    "sg-24:8",
+    "frq-24:4"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08001"
+   ],
+   "representations": [
+    "BC-REP-14",
+    "BC-REP-09"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-24:8",
+    "frq-24:4"
+   ],
+   "topic": "BC-TOP-0906",
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09009"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09004"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-09004 across at least two presentations of the task, with no error from BC-ERR-09018, BC-ERR-09011.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-09018, BC-ERR-09011 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-09001.",
+    "remediation_target": "BC-PRQ-09001"
+   },
+   "archetypes": [
+    "BC-QA-09004"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-09018",
+    "BC-ERR-09011"
+   ],
+   "concept": "BC-CON-09009",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Differentiate each velocity component, evaluate both at the requested time, and present the acceleration vector with the supporting expressions shown.",
+   "description_plain": "Show the derivative of each velocity component before the two numbers.",
+   "diagnostic_signals": [
+    "BC-SIG-09005"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-8B1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-09028",
+   "learning_objectives": [
+    "BC-LO-FUN-8B"
+   ],
+   "misconceptions": [
+    "BC-MIS-09009"
+   ],
+   "name": "Present the acceleration vector at a time with its setup",
+   "official_evidence": [
+    "sg-23:5",
+    "sg-23:6"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-09001"
+   ],
+   "representations": [
+    "BC-REP-14",
+    "BC-REP-09"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-23:5",
+    "sg-23:6"
+   ],
+   "topic": "BC-TOP-0906",
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09013"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09009",
+     "BC-QA-09011"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-09009, BC-QA-09011 across at least two presentations of the task, with no error from BC-ERR-09027.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-09027 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-09002.",
+    "remediation_target": "BC-PRQ-09002"
+   },
+   "archetypes": [
+    "BC-QA-09009",
+    "BC-QA-09011"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-09027"
+   ],
+   "concept": "BC-CON-09012",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given r as a function of theta and an angle, compute the Cartesian coordinates of the corresponding point.",
+   "description_plain": "Multiply r by cosine and by sine of the angle.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-3G2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-09029",
+   "learning_objectives": [
+    "BC-LO-FUN-3G"
+   ],
+   "misconceptions": [
+    "BC-MIS-09013"
+   ],
+   "name": "Convert a point on a polar curve to Cartesian coordinates",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-2D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-09002"
+   ],
+   "representations": [
+    "BC-REP-13",
+    "BC-REP-09"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:177"
+   ],
+   "topic": "BC-TOP-0907",
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09014"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09009"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-09009 across at least two presentations of the task, with no error from BC-ERR-09028, BC-ERR-09006.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-09028, BC-ERR-09006 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-09003.",
+    "remediation_target": "BC-PRQ-09003"
+   },
+   "archetypes": [
+    "BC-QA-09009"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-09028",
+    "BC-ERR-09006"
+   ],
+   "concept": "BC-CON-09013",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Differentiate r as a function of theta, evaluate the derivative at a given angle, and present the differentiation together with the value.",
+   "description_plain": "Differentiate r with respect to the angle and substitute.",
+   "diagnostic_signals": [
+    "BC-SIG-09010"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-3G1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-09030",
+   "learning_objectives": [
+    "BC-LO-FUN-3G"
+   ],
+   "misconceptions": [
+    "BC-MIS-09014"
+   ],
+   "name": "Compute dr/dtheta for a polar curve and evaluate it",
+   "official_evidence": [
+    "sg-25:6",
+    "sg-25:7"
+   ],
+   "practice_skills": [
+    "BC-MPS-2D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-09003"
+   ],
+   "representations": [
+    "BC-REP-13",
+    "BC-REP-09"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-25:6",
+    "sg-25:7"
+   ],
+   "topic": "BC-TOP-0907",
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09014"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09009"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-09009 across at least two presentations of the task, with no error from BC-ERR-09029.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-09029 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-09009"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-09029"
+   ],
+   "concept": "BC-CON-09013",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "State that dr/dtheta is the rate of change of the distance from the origin with respect to the polar angle, and read its sign as moving away from or toward the origin.",
+   "description_plain": "Say that it measures how the distance from the origin changes with the angle.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-3G2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-09031",
+   "learning_objectives": [
+    "BC-LO-FUN-3G"
+   ],
+   "misconceptions": [
+    "BC-MIS-09014"
+   ],
+   "name": "Interpret dr/dtheta as the rate at which the distance from the origin changes",
+   "official_evidence": [
+    "sg-25:10"
+   ],
+   "practice_skills": [
+    "BC-MPS-2D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-13",
+    "BC-REP-04"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:177",
+    "sg-25:10"
+   ],
+   "topic": "BC-TOP-0907",
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09014"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09010"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-09010 across at least two presentations of the task, with no error from BC-ERR-09030.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-09030 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-09010"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-09030"
+   ],
+   "concept": "BC-CON-09013",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "For a particle travelling along a polar curve with a given rate of change of theta with respect to time, compute the rate of change of its distance from the origin as the product of dr/dtheta and dtheta/dt.",
+   "description_plain": "Multiply dr/dtheta by the rate at which the angle changes.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-3G2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-09032",
+   "learning_objectives": [
+    "BC-LO-FUN-3G"
+   ],
+   "misconceptions": [
+    "BC-MIS-09014"
+   ],
+   "name": "Relate the rate of the distance from the origin in time to dr/dtheta",
+   "official_evidence": [
+    "sg-25:10",
+    "frq-25:4"
+   ],
+   "practice_skills": [
+    "BC-MPS-2D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-13",
+    "BC-REP-09"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-25:10",
+    "frq-25:4"
+   ],
+   "topic": "BC-TOP-0907",
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09015"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09009"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-09009 across at least two presentations of the task, with no error from BC-ERR-09031, BC-ERR-09032.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-09031, BC-ERR-09032 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-09002.",
+    "remediation_target": "BC-PRQ-09002"
+   },
+   "archetypes": [
+    "BC-QA-09009"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-09031",
+    "BC-ERR-09032"
+   ],
+   "concept": "BC-CON-09014",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Write x and y in terms of theta, differentiate each with the product rule, and form the quotient of dy/dtheta by dx/dtheta as the slope of the tangent line.",
+   "description_plain": "Differentiate r cosine and r sine with respect to theta and divide.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-3G2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-09033",
+   "learning_objectives": [
+    "BC-LO-FUN-3G"
+   ],
+   "misconceptions": [
+    "BC-MIS-09015"
+   ],
+   "name": "Compute dy/dx for a polar curve",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-2D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-09002"
+   ],
+   "representations": [
+    "BC-REP-13",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:177"
+   ],
+   "topic": "BC-TOP-0907",
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09016"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09011"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-09011 across at least two presentations of the task, with no error from BC-ERR-09033, BC-ERR-09034.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-09033, BC-ERR-09034 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-08001.",
+    "remediation_target": "BC-PRQ-08001"
+   },
+   "archetypes": [
+    "BC-QA-09011"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-09033",
+    "BC-ERR-09034"
+   ],
+   "concept": "BC-CON-09014",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Set the derivative with respect to theta of the relevant Cartesian coordinate equal to zero, solve on the interval, and justify the extreme value by comparing the coordinate at the candidate with its values at the endpoints.",
+   "description_plain": "Set the derivative of that coordinate equal to zero and compare candidates.",
+   "diagnostic_signals": [
+    "BC-SIG-09011"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-3G2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-09034",
+   "learning_objectives": [
+    "BC-LO-FUN-3G"
+   ],
+   "misconceptions": [
+    "BC-MIS-09016"
+   ],
+   "name": "Locate the point on a polar curve farthest from a coordinate axis",
+   "official_evidence": [
+    "sg-25:8",
+    "sg-25:9"
+   ],
+   "practice_skills": [
+    "BC-MPS-2D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08001"
+   ],
+   "representations": [
+    "BC-REP-13",
+    "BC-REP-09"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-25:8",
+    "sg-25:9"
+   ],
+   "topic": "BC-TOP-0907",
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09017"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09012"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-09012 across at least two presentations of the task, with no error from BC-ERR-09035, BC-ERR-09036.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-09035, BC-ERR-09036 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-09012"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-09035",
+    "BC-ERR-09036"
+   ],
+   "concept": "BC-CON-09015",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Write the area of a region bounded by a single polar curve as one half the definite integral of the square of r with respect to theta over the bounding angles.",
+   "description_plain": "Write one half the integral of r squared with respect to the angle.",
+   "diagnostic_signals": [
+    "BC-SIG-09012"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5D1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-09035",
+   "learning_objectives": [
+    "BC-LO-CHA-5D"
+   ],
+   "misconceptions": [
+    "BC-MIS-09017"
+   ],
+   "name": "State the polar area integral for a single curve",
+   "official_evidence": [
+    "sg-25:7"
+   ],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-13",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:178",
+    "sg-25:7"
+   ],
+   "topic": "BC-TOP-0908",
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09007"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09012"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-09012 across at least two presentations of the task, with no error from BC-ERR-09016, BC-ERR-09037.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-09016, BC-ERR-09037 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-09004.",
+    "remediation_target": "BC-PRQ-09004"
+   },
+   "archetypes": [
+    "BC-QA-09012"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-09016",
+    "BC-ERR-09037"
+   ],
+   "concept": "BC-CON-09015",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Determine the interval of theta over which the polar curve sweeps the region exactly once, from the stem, the figure, or the zeros of r.",
+   "description_plain": "Find the angles where the region starts and stops being swept.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-5D1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-09036",
+   "learning_objectives": [
+    "BC-LO-CHA-5D"
+   ],
+   "misconceptions": [
+    "BC-MIS-09007"
+   ],
+   "name": "Determine the angles that bound a polar region",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-09004"
+   ],
+   "representations": [
+    "BC-REP-13",
+    "BC-REP-02"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:178"
+   ],
+   "topic": "BC-TOP-0908",
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09007"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09012"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-09012 across at least two presentations of the task, with no error from BC-ERR-09016.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-09016 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-09002.",
+    "remediation_target": "BC-PRQ-09002"
+   },
+   "archetypes": [
+    "BC-QA-09012"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-09016"
+   ],
+   "concept": "BC-CON-09015",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Find consecutive angles at which r is zero and use them as the limits that trace a single loop of the curve exactly once.",
+   "description_plain": "Use consecutive zeros of r to bound one petal.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-5D1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-09037",
+   "learning_objectives": [
+    "BC-LO-CHA-5D"
+   ],
+   "misconceptions": [
+    "BC-MIS-09007"
+   ],
+   "name": "Identify the angle interval that traces one loop of a polar curve",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-09002"
+   ],
+   "representations": [
+    "BC-REP-13",
+    "BC-REP-02"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:178"
+   ],
+   "topic": "BC-TOP-0908",
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09008"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09012"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-09012 across at least two presentations of the task, with no error from BC-ERR-09006, BC-ERR-09011.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-09006, BC-ERR-09011 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-08006.",
+    "remediation_target": "BC-PRQ-08006"
+   },
+   "archetypes": [
+    "BC-QA-09012"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-09006",
+    "BC-ERR-09011"
+   ],
+   "concept": "BC-CON-09015",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Evaluate the polar area integral, numerically or by antidifferentiation, and report the value accurate to three places after the decimal point when technology is used.",
+   "description_plain": "Compute the integral with technology and state the area.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-5D1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-09038",
+   "learning_objectives": [
+    "BC-LO-CHA-5D"
+   ],
+   "misconceptions": [
+    "BC-MIS-09008"
+   ],
+   "name": "Evaluate a polar area integral and report the area",
+   "official_evidence": [
+    "sg-25:7",
+    "sg-25:8"
+   ],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08006"
+   ],
+   "representations": [
+    "BC-REP-09",
+    "BC-REP-13"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-25:7",
+    "sg-25:8"
+   ],
+   "topic": "BC-TOP-0908",
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09019"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09013"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-09013 across at least two presentations of the task, with no error from BC-ERR-09037, BC-ERR-09038.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-09037, BC-ERR-09038 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-09002, BC-PRQ-08001.",
+    "remediation_target": "BC-PRQ-09002"
+   },
+   "archetypes": [
+    "BC-QA-09013"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-09037",
+    "BC-ERR-09038"
+   ],
+   "concept": "BC-CON-09017",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Set the two radius functions equal on the stated interval, solve for every angle at which they agree, and select the pair that bounds the region.",
+   "description_plain": "Set the two radius expressions equal and solve for the angles.",
+   "diagnostic_signals": [
+    "BC-SIG-09013"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5D2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-09039",
+   "learning_objectives": [
+    "BC-LO-CHA-5D"
+   ],
+   "misconceptions": [
+    "BC-MIS-09019"
+   ],
+   "name": "Find the intersection angles of two polar curves",
+   "official_evidence": [
+    "sg-25:7"
+   ],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-09002",
+    "BC-PRQ-08001"
+   ],
+   "representations": [
+    "BC-REP-13",
+    "BC-REP-09"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-25:7"
+   ],
+   "topic": "BC-TOP-0909",
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09018"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09013"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-09013 across at least two presentations of the task, with no error from BC-ERR-09039.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-09039 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-09002.",
+    "remediation_target": "BC-PRQ-09002"
+   },
+   "archetypes": [
+    "BC-QA-09013"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-09039"
+   ],
+   "concept": "BC-CON-09016",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Evaluate both radius functions at an interior angle of the interval and assign the outer and inner roles accordingly.",
+   "description_plain": "Test one angle in the interval to see which radius is larger.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-5D2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-09040",
+   "learning_objectives": [
+    "BC-LO-CHA-5D"
+   ],
+   "misconceptions": [
+    "BC-MIS-09018"
+   ],
+   "name": "Determine which polar curve is outer on an angle interval",
+   "official_evidence": [
+    "sg-25:7"
+   ],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-09002"
+   ],
+   "representations": [
+    "BC-REP-13",
+    "BC-REP-02"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:179",
+    "sg-25:7"
+   ],
+   "topic": "BC-TOP-0909",
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09018"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09013"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-09013 across at least two presentations of the task, with no error from BC-ERR-09040, BC-ERR-09035.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-09040, BC-ERR-09035 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-09013"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-09040",
+    "BC-ERR-09035"
+   ],
+   "concept": "BC-CON-09016",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Write the area between two polar curves as one half the definite integral of the square of the outer radius minus the square of the inner radius, with the intersection angles as limits.",
+   "description_plain": "Write one half the integral of outer squared minus inner squared.",
+   "diagnostic_signals": [
+    "BC-SIG-09012"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5D2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-09041",
+   "learning_objectives": [
+    "BC-LO-CHA-5D"
+   ],
+   "misconceptions": [
+    "BC-MIS-09018"
+   ],
+   "name": "Set up the area integral between two polar curves",
+   "official_evidence": [
+    "sg-25:7",
+    "sg-25:8"
+   ],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-13",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-25:7",
+    "sg-25:8"
+   ],
+   "topic": "BC-TOP-0909",
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09008"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09013"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-09013 across at least two presentations of the task, with no error from BC-ERR-09006, BC-ERR-09018.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-09006, BC-ERR-09018 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-08006.",
+    "remediation_target": "BC-PRQ-08006"
+   },
+   "archetypes": [
+    "BC-QA-09013"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-09006",
+    "BC-ERR-09018"
+   ],
+   "concept": "BC-CON-09016",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Evaluate the integral with technology, using stored intersection angles, and report the area accurate to three places after the decimal point.",
+   "description_plain": "Compute the integral and state the area.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-5D2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-09042",
+   "learning_objectives": [
+    "BC-LO-CHA-5D"
+   ],
+   "misconceptions": [
+    "BC-MIS-09008"
+   ],
+   "name": "Evaluate the area between two polar curves and report it",
+   "official_evidence": [
+    "sg-25:7",
+    "sg-25:8"
+   ],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08006"
+   ],
+   "representations": [
+    "BC-REP-09",
+    "BC-REP-13"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-25:7",
+    "sg-25:8"
+   ],
+   "topic": "BC-TOP-0909",
+   "unit": "BC-UNIT-09"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09018"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09013"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-09013 across at least two presentations of the task, with no error from BC-ERR-09041.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-09041 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-09004.",
+    "remediation_target": "BC-PRQ-09004"
+   },
+   "archetypes": [
+    "BC-QA-09013"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-09041"
+   ],
+   "concept": "BC-CON-09016",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Express the area of a symmetric polar region as twice an integral over half the interval, or as a sum of integrals when the outer curve changes at an intersection angle.",
+   "description_plain": "Double half the region, or add one integral per piece.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-5D2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-09043",
+   "learning_objectives": [
+    "BC-LO-CHA-5D"
+   ],
+   "misconceptions": [
+    "BC-MIS-09018"
+   ],
+   "name": "Use symmetry or a sum of integrals for a polar region with several pieces",
+   "official_evidence": [
+    "sg-25:8"
+   ],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-09004"
+   ],
+   "representations": [
+    "BC-REP-13",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-25:8"
+   ],
+   "topic": "BC-TOP-0909",
+   "unit": "BC-UNIT-09"
+  }
+ ]
+}

@@ -1,0 +1,504 @@
+{
+ "misconceptions": [
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-03001",
+    "BC-CON-03002"
+   ],
+   "description": "The learner treats differentiation as an operation on the visible outer function, so whatever sits inside is copied across unchanged.",
+   "discriminating_probe": "Ask the student to differentiate the same outer function with a linear inside and with a quadratic inside and to compare the two answers.",
+   "downstream_dependencies": [],
+   "evidence_tag": "single-source",
+   "exposing_archetypes": [
+    "BC-QA-03001",
+    "BC-QA-03009"
+   ],
+   "id": "BC-MIS-03001",
+   "literature": [],
+   "name": "Differentiation acts only on the outermost shell",
+   "observable_errors": [
+    "BC-ERR-03001",
+    "BC-ERR-03002",
+    "BC-ERR-03004",
+    "BC-ERR-03018"
+   ],
+   "official_evidence": [],
+   "rival_misconceptions": [
+    "BC-MIS-03002",
+    "BC-MIS-03012"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-03001",
+    "BC-SKL-03002",
+    "BC-SKL-03003"
+   ],
+   "sources": [
+    "ced:72"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-03001",
+    "BC-CON-03002"
+   ],
+   "description": "The learner reads the chain rule as a product of two derivatives at one point, so the inner output plays no part in where the outer derivative is read.",
+   "discriminating_probe": "Give a table in which the inner output is itself a listed input and ask where the outer derivative should be read.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-03002",
+    "BC-QA-03003"
+   ],
+   "id": "BC-MIS-03002",
+   "literature": [],
+   "name": "The chain rule factors are evaluated at the same input",
+   "observable_errors": [
+    "BC-ERR-03003",
+    "BC-ERR-03004",
+    "BC-ERR-03005"
+   ],
+   "official_evidence": [],
+   "rival_misconceptions": [
+    "BC-MIS-03001"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-03004",
+    "BC-SKL-03005"
+   ],
+   "sources": [
+    "ced:75"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-03002"
+   ],
+   "description": "The learner treats dy/du times du/dx as a cancellation of symbols rather than as a statement about rates, so the notation carries the reasoning and the underlying composition is not seen.",
+   "discriminating_probe": "Ask the student to say what du/dx measures in the situation before any cancellation is written.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-03001"
+   ],
+   "id": "BC-MIS-03003",
+   "literature": [],
+   "name": "Leibniz notation is a fraction that cancels",
+   "observable_errors": [
+    "BC-ERR-03022"
+   ],
+   "official_evidence": [],
+   "rival_misconceptions": [
+    "BC-MIS-03014"
+   ],
+   "scope": "shared",
+   "severity": "medium",
+   "skills": [
+    "BC-SKL-03002"
+   ],
+   "sources": [
+    "ced:72"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-03003"
+   ],
+   "description": "The learner treats y as a second free variable rather than as a function of x, so differentiating a y term with respect to x produces no extra factor.",
+   "discriminating_probe": "Ask the student what dy/dx would mean if y did not depend on x.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-03004"
+   ],
+   "id": "BC-MIS-03004",
+   "literature": [],
+   "name": "In an equation, y is an independent symbol",
+   "observable_errors": [
+    "BC-ERR-03007",
+    "BC-ERR-03009"
+   ],
+   "official_evidence": [
+    "cr-23:23"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-03005"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-03007",
+    "BC-SKL-03009"
+   ],
+   "sources": [
+    "ced:76",
+    "cr-23:23"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-03003"
+   ],
+   "description": "The learner reads a term containing both variables as one object rather than as a product, so the product rule never comes into view.",
+   "discriminating_probe": "Ask the student to name the two factors of the mixed term before differentiating it.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-03004",
+    "BC-QA-03008"
+   ],
+   "id": "BC-MIS-03005",
+   "literature": [],
+   "name": "A short mixed term is a single symbol",
+   "observable_errors": [
+    "BC-ERR-03008"
+   ],
+   "official_evidence": [
+    "cr-23:23",
+    "sg-25:20"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-03004",
+    "BC-MIS-03012"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-03008",
+    "BC-SKL-03033"
+   ],
+   "sources": [
+    "cr-23:23",
+    "sg-25:20"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-03004"
+   ],
+   "description": "The learner expects the implicit derivative to come out in x alone, so an expression containing y is read as unfinished and is manipulated until the y disappears.",
+   "discriminating_probe": "Ask the student for the slope at two different points of the same curve with the same x coordinate.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-03004",
+    "BC-QA-03008"
+   ],
+   "id": "BC-MIS-03006",
+   "literature": [],
+   "name": "dy/dx is a number rather than an expression in both variables",
+   "observable_errors": [
+    "BC-ERR-03010",
+    "BC-ERR-03011",
+    "BC-ERR-03023"
+   ],
+   "official_evidence": [
+    "cr-23:22"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-03004"
+   ],
+   "scope": "shared",
+   "severity": "medium",
+   "skills": [
+    "BC-SKL-03010",
+    "BC-SKL-03011",
+    "BC-SKL-03034"
+   ],
+   "sources": [
+    "cr-23:22"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-03005"
+   ],
+   "description": "The learner treats the equation on dy/dx as the whole problem, so a value satisfying it is reported without checking that a point with that value lies on the curve.",
+   "discriminating_probe": "Ask the student to verify that the candidate point satisfies the original equation, as a separate step.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-03005"
+   ],
+   "id": "BC-MIS-03007",
+   "literature": [],
+   "name": "A tangent condition is a condition on dy/dx alone",
+   "observable_errors": [
+    "BC-ERR-03012",
+    "BC-ERR-03013"
+   ],
+   "official_evidence": [
+    "cr-23:23",
+    "cr-24:18"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-03006"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-03012",
+    "BC-SKL-03013"
+   ],
+   "sources": [
+    "cr-23:23",
+    "cr-24:18"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-03006"
+   ],
+   "description": "The learner treats the input of the inverse and the input of the original function as the same number, so the matching pair is never located.",
+   "discriminating_probe": "Ask the student to write the ordered pair on the original function that corresponds to the point on the inverse.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-03006"
+   ],
+   "id": "BC-MIS-03008",
+   "literature": [],
+   "name": "The inverse is evaluated wherever the original is",
+   "observable_errors": [
+    "BC-ERR-03015",
+    "BC-ERR-03016"
+   ],
+   "official_evidence": [],
+   "rival_misconceptions": [
+    "BC-MIS-03009"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-03016",
+    "BC-SKL-03017",
+    "BC-SKL-03018",
+    "BC-SKL-03019"
+   ],
+   "sources": [
+    "ced:77"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-03006"
+   ],
+   "description": "The learner treats the reciprocal formula as unconditional, so the requirement that the original derivative be nonzero is never checked or stated.",
+   "discriminating_probe": "Ask what the tangent line to the inverse looks like at a point where the original curve has a horizontal tangent.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-03006"
+   ],
+   "id": "BC-MIS-03009",
+   "literature": [],
+   "name": "The inverse derivative rule has no hypotheses",
+   "observable_errors": [
+    "BC-ERR-03014",
+    "BC-ERR-03016"
+   ],
+   "official_evidence": [],
+   "rival_misconceptions": [
+    "BC-MIS-03008"
+   ],
+   "scope": "shared",
+   "severity": "medium",
+   "skills": [
+    "BC-SKL-03015",
+    "BC-SKL-03020"
+   ],
+   "sources": [
+    "ced:77"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-03007"
+   ],
+   "description": "The learner stores the three formulas as one family and selects among them by resemblance, so the radical and the rational forms are exchanged.",
+   "discriminating_probe": "Ask the student to say which of the three derivatives has a square root and why.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-03007"
+   ],
+   "id": "BC-MIS-03010",
+   "literature": [],
+   "name": "The inverse trigonometric formulas are interchangeable",
+   "observable_errors": [
+    "BC-ERR-03017",
+    "BC-ERR-03018"
+   ],
+   "official_evidence": [],
+   "rival_misconceptions": [
+    "BC-MIS-03011"
+   ],
+   "scope": "shared",
+   "severity": "medium",
+   "skills": [
+    "BC-SKL-03021",
+    "BC-SKL-03022",
+    "BC-SKL-03024"
+   ],
+   "sources": [
+    "ced:78"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-03007"
+   ],
+   "description": "The learner treats the three formulas as items to be memorised with no route back to the definition, so a forgotten formula leaves no recovery.",
+   "discriminating_probe": "Ask the student to start from the equation relating the sine of an angle to the variable and to recover the derivative.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-03007"
+   ],
+   "id": "BC-MIS-03011",
+   "literature": [],
+   "name": "An inverse trigonometric derivative cannot be derived",
+   "observable_errors": [
+    "BC-ERR-03017"
+   ],
+   "official_evidence": [],
+   "rival_misconceptions": [
+    "BC-MIS-03010"
+   ],
+   "scope": "shared",
+   "severity": "low",
+   "skills": [
+    "BC-SKL-03023"
+   ],
+   "sources": [
+    "ced:78"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-03008"
+   ],
+   "description": "The learner selects a rule by the visual pattern of the expression rather than by the operation applied last, so nested structures are handled in the wrong order.",
+   "discriminating_probe": "Ask the student to state the last operation performed when the expression is evaluated at a number.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-03009",
+    "BC-QA-03001"
+   ],
+   "id": "BC-MIS-03012",
+   "literature": [],
+   "name": "The differentiation rule follows from the look of the expression",
+   "observable_errors": [
+    "BC-ERR-03006",
+    "BC-ERR-03019",
+    "BC-ERR-03020"
+   ],
+   "official_evidence": [
+    "cr-22:21"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-03001",
+    "BC-MIS-03005"
+   ],
+   "scope": "shared",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-03026",
+    "BC-SKL-03027",
+    "BC-SKL-03028"
+   ],
+   "sources": [
+    "cr-22:21",
+    "ced:79"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-03009"
+   ],
+   "description": "The learner treats the second derivative as a separate construction rather than as the derivative of the first derivative, so the same rules are not reapplied.",
+   "discriminating_probe": "Ask the student to say what operation turns the first derivative into the second.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-03008"
+   ],
+   "id": "BC-MIS-03013",
+   "literature": [],
+   "name": "A higher derivative is a different kind of object",
+   "observable_errors": [
+    "BC-ERR-03021",
+    "BC-ERR-03023"
+   ],
+   "official_evidence": [],
+   "rival_misconceptions": [
+    "BC-MIS-03014"
+   ],
+   "scope": "shared",
+   "severity": "medium",
+   "skills": [
+    "BC-SKL-03030",
+    "BC-SKL-03031",
+    "BC-SKL-03033"
+   ],
+   "sources": [
+    "ced:80",
+    "ced:72"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-03010"
+   ],
+   "description": "The learner treats the symbols for derivatives as labels attached to an answer rather than as operators with a meaning, so notation is mixed within a line without loss of sense to the writer.",
+   "discriminating_probe": "Ask the student to say aloud what the expression d/dx of y means and how it differs from dy/dx.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-03008",
+    "BC-QA-03004"
+   ],
+   "id": "BC-MIS-03014",
+   "literature": [],
+   "name": "Derivative notation is decorative",
+   "observable_errors": [
+    "BC-ERR-03022"
+   ],
+   "official_evidence": [
+    "crabbc-25:25"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-03003",
+    "BC-MIS-03013"
+   ],
+   "scope": "shared",
+   "severity": "medium",
+   "skills": [
+    "BC-SKL-03032"
+   ],
+   "sources": [
+    "crabbc-25:25",
+    "ced:80"
+   ]
+  }
+ ],
+ "registry": "misconceptions"
+}

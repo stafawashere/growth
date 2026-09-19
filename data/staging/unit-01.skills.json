@@ -1,0 +1,4326 @@
+{
+ "concepts": [
+  {
+   "confusable_with": [],
+   "description_formal": "For a function f and a point a, the instantaneous rate of change at a is the limit of the average rates of change of f over intervals containing a as the length of those intervals tends to zero.",
+   "description_plain": "An instantaneous rate is what average rates settle towards as the interval shrinks to nothing.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-01001",
+   "misconceptions": [
+    "BC-MIS-01017"
+   ],
+   "name": "Instantaneous rate of change as a limit of average rates",
+   "notation": "average rate of change; instantaneous rate of change",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-01001",
+    "BC-SKL-01002",
+    "BC-SKL-01003",
+    "BC-SKL-01004"
+   ],
+   "sources": [
+    "ced:38"
+   ],
+   "topics": [
+    "BC-TOP-0101"
+   ],
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "The limit of f(x) as x approaches c is the real number R if f(x) can be made arbitrarily close to R by taking x sufficiently close to c and not equal to c.",
+   "description_plain": "A limit is the single value the outputs crowd around as the inputs approach a target, whether or not the function is defined there.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-01002",
+   "misconceptions": [
+    "BC-MIS-01001",
+    "BC-MIS-01003"
+   ],
+   "name": "The limit of a function at a point",
+   "notation": "lim as x approaches c of f(x) equals R",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-01006",
+    "BC-SKL-01008"
+   ],
+   "sources": [
+    "ced:39"
+   ],
+   "topics": [
+    "BC-TOP-0102",
+    "BC-TOP-0103",
+    "BC-TOP-0104"
+   ],
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "Analytic limit notation names the independent variable, the target value, the direction of approach when one sided, and the value claimed for the limit.",
+   "description_plain": "The symbols for a limit, including the one sided arrows, say precisely which approach is meant.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-01003",
+   "misconceptions": [
+    "BC-MIS-01018"
+   ],
+   "name": "Limit notation and its reading",
+   "notation": "lim as x approaches c from the left; lim as x approaches c from the right",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-01005",
+    "BC-SKL-01007"
+   ],
+   "sources": [
+    "ced:39"
+   ],
+   "topics": [
+    "BC-TOP-0102",
+    "BC-TOP-0109"
+   ],
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "The two sided limit of f at c exists and equals R if and only if both one sided limits at c exist and equal R.",
+   "description_plain": "A two sided limit exists only when the approach from the left and the approach from the right give the same value.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-01004",
+   "misconceptions": [
+    "BC-MIS-01002"
+   ],
+   "name": "One sided limits and two sided existence",
+   "notation": "left hand limit; right hand limit",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-01010",
+    "BC-SKL-01016",
+    "BC-SKL-01023"
+   ],
+   "sources": [
+    "ced:40",
+    "ced:42"
+   ],
+   "topics": [
+    "BC-TOP-0103",
+    "BC-TOP-0104",
+    "BC-TOP-0105"
+   ],
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "The limit of f at c fails to exist if the one sided limits differ, if f is unbounded near c, or if f oscillates without settling near c.",
+   "description_plain": "A limit can fail because the sides disagree, because the values grow without bound, or because the values keep oscillating.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-01005",
+   "misconceptions": [
+    "BC-MIS-01002",
+    "BC-MIS-01004"
+   ],
+   "name": "Ways a limit can fail to exist",
+   "notation": "does not exist",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-01011",
+    "BC-SKL-01012",
+    "BC-SKL-01013"
+   ],
+   "sources": [
+    "ced:40"
+   ],
+   "topics": [
+    "BC-TOP-0103",
+    "BC-TOP-0104"
+   ],
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "Graphical and numerical information supports an estimate of a limit; the scale of a graph and the spacing of a table can conceal behaviour that changes the estimate.",
+   "description_plain": "A graph or a short table can suggest a limit value but cannot prove one.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-01006",
+   "misconceptions": [
+    "BC-MIS-01004"
+   ],
+   "name": "Estimation of a limit from a graph or a table",
+   "notation": "estimate",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-01009",
+    "BC-SKL-01014",
+    "BC-SKL-01015",
+    "BC-SKL-01017"
+   ],
+   "sources": [
+    "ced:40",
+    "ced:41"
+   ],
+   "topics": [
+    "BC-TOP-0103",
+    "BC-TOP-0104"
+   ],
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "If the limits of f and g at c exist, the limit of a sum, difference, product, or constant multiple is the corresponding combination of the limits, and the same holds for a quotient when the limit of the denominator is not zero.",
+   "description_plain": "Limits pass through sums, differences, products, quotients, and compositions when the pieces have limits.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-01007",
+   "misconceptions": [
+    "BC-MIS-01005"
+   ],
+   "name": "Limit theorems for combinations of functions",
+   "notation": "limit theorems",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-01018",
+    "BC-SKL-01019",
+    "BC-SKL-01020",
+    "BC-SKL-01021",
+    "BC-SKL-01022"
+   ],
+   "sources": [
+    "ced:42"
+   ],
+   "topics": [
+    "BC-TOP-0105"
+   ],
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "An expression whose numerator and denominator both tend to zero carries no value by substitution; an equivalent expression valid near but not at the point determines the limit.",
+   "description_plain": "When substitution gives zero over zero the expression must be rewritten before the limit can be read off.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-01008",
+   "misconceptions": [
+    "BC-MIS-01006",
+    "BC-MIS-01007"
+   ],
+   "name": "Indeterminate form handled by rewriting",
+   "notation": "indeterminate form zero over zero",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-01024",
+    "BC-SKL-01025",
+    "BC-SKL-01026",
+    "BC-SKL-01027",
+    "BC-SKL-01028"
+   ],
+   "sources": [
+    "ced:43"
+   ],
+   "topics": [
+    "BC-TOP-0106",
+    "BC-TOP-0107"
+   ],
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "Classifying a limit expression by its behaviour under substitution, as a determinate value, an indeterminate form, or an unbounded quotient, selects the procedure that resolves it.",
+   "description_plain": "The form the expression takes under substitution decides which method to use.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-01009",
+   "misconceptions": [
+    "BC-MIS-01006"
+   ],
+   "name": "Selection of a procedure for a limit",
+   "notation": "",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-01029",
+    "BC-SKL-01030",
+    "BC-SKL-01031"
+   ],
+   "sources": [
+    "ced:44"
+   ],
+   "topics": [
+    "BC-TOP-0107"
+   ],
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "If g(x) is less than or equal to f(x) and f(x) is less than or equal to h(x) for all x near c except possibly at c, and the limits of g and h at c are both L, then the limit of f at c is L.",
+   "description_plain": "If a function is trapped between two functions that meet at a value, it meets them there too.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-01010",
+   "misconceptions": [
+    "BC-MIS-01008"
+   ],
+   "name": "The squeeze theorem",
+   "notation": "squeeze theorem",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-01032",
+    "BC-SKL-01033",
+    "BC-SKL-01034",
+    "BC-SKL-01035"
+   ],
+   "sources": [
+    "ced:45"
+   ],
+   "topics": [
+    "BC-TOP-0108"
+   ],
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "A limit claim expressed in one representation has an equivalent expression in each other representation, and conversion between them preserves the claim.",
+   "description_plain": "The same limit fact can be shown by a graph, a table, a formula, or a sentence, and these must agree.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-01011",
+   "misconceptions": [],
+   "name": "Connecting graphical, numerical, analytical, and verbal limit statements",
+   "notation": "",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-01036",
+    "BC-SKL-01037",
+    "BC-SKL-01038"
+   ],
+   "sources": [
+    "ced:46"
+   ],
+   "topics": [
+    "BC-TOP-0109"
+   ],
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "A discontinuity at c is removable when the limit at c exists but does not equal f(c) or f(c) is undefined, a jump when the one sided limits exist and differ, and an infinite discontinuity when a one sided limit is infinite.",
+   "description_plain": "A break in a graph is removable, a jump, or an infinite break at a vertical asymptote.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-01012",
+   "misconceptions": [
+    "BC-MIS-01011"
+   ],
+   "name": "Classification of discontinuities",
+   "notation": "removable discontinuity; jump discontinuity",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-01039",
+    "BC-SKL-01040",
+    "BC-SKL-01041",
+    "BC-SKL-01042"
+   ],
+   "sources": [
+    "ced:47"
+   ],
+   "topics": [
+    "BC-TOP-0110"
+   ],
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "A function f is continuous at x equals c provided that f(c) exists, the limit of f(x) as x approaches c exists, and that limit equals f(c).",
+   "description_plain": "Continuity at a point needs the function value, the limit, and their agreement.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-01013",
+   "misconceptions": [
+    "BC-MIS-01009",
+    "BC-MIS-01010"
+   ],
+   "name": "Continuity at a point as three conditions",
+   "notation": "continuous at a point",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-01043",
+    "BC-SKL-01044",
+    "BC-SKL-01045"
+   ],
+   "sources": [
+    "ced:48"
+   ],
+   "topics": [
+    "BC-TOP-0111"
+   ],
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "Continuity on an interval is continuity at each point of the interval; polynomial, rational, power, exponential, logarithmic, and trigonometric functions are continuous at every point of their domains.",
+   "description_plain": "A function is continuous on an interval when it is continuous at every point of that interval.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-01014",
+   "misconceptions": [
+    "BC-MIS-01019"
+   ],
+   "name": "Continuity on an interval",
+   "notation": "continuous on an interval",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-01046",
+    "BC-SKL-01047",
+    "BC-SKL-01048",
+    "BC-SKL-01049"
+   ],
+   "sources": [
+    "ced:49"
+   ],
+   "topics": [
+    "BC-TOP-0112"
+   ],
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "If the limit exists at a discontinuity it can be removed by defining or redefining f at that point as the limit; for a piecewise function continuity at a boundary requires the two branch expressions and the function value to agree there.",
+   "description_plain": "A removable break can be repaired by defining the value to equal the limit, and a piecewise rule is made continuous by matching the two branch values at a boundary.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-01015",
+   "misconceptions": [
+    "BC-MIS-01009"
+   ],
+   "name": "Removing a discontinuity and matching a piecewise function",
+   "notation": "",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-01050",
+    "BC-SKL-01051",
+    "BC-SKL-01052",
+    "BC-SKL-01053"
+   ],
+   "sources": [
+    "ced:50"
+   ],
+   "topics": [
+    "BC-TOP-0113"
+   ],
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "The limit of f at c is infinite when f(x) increases or decreases without bound as x approaches c; such behaviour on either side gives a vertical asymptote at x equals c.",
+   "description_plain": "Values that grow without bound near an input mark a vertical asymptote there.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-01016",
+   "misconceptions": [
+    "BC-MIS-01011",
+    "BC-MIS-01012",
+    "BC-MIS-01018"
+   ],
+   "name": "Infinite limits and vertical asymptotes",
+   "notation": "vertical asymptote",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-01054",
+    "BC-SKL-01055",
+    "BC-SKL-01056",
+    "BC-SKL-01057"
+   ],
+   "sources": [
+    "ced:51"
+   ],
+   "topics": [
+    "BC-TOP-0114"
+   ],
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "The limit of f(x) as x increases or decreases without bound describes the end behaviour of f, and a finite such limit L gives the horizontal asymptote y equals L.",
+   "description_plain": "The value a function settles towards for inputs of large magnitude is its end behaviour, and a finite value there is a horizontal asymptote.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-01017",
+   "misconceptions": [
+    "BC-MIS-01013",
+    "BC-MIS-01014",
+    "BC-MIS-01018"
+   ],
+   "name": "Limits at infinity and horizontal asymptotes",
+   "notation": "horizontal asymptote; end behaviour",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-01058",
+    "BC-SKL-01059",
+    "BC-SKL-01060",
+    "BC-SKL-01061",
+    "BC-SKL-01063"
+   ],
+   "sources": [
+    "ced:52"
+   ],
+   "topics": [
+    "BC-TOP-0115"
+   ],
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "The limit of a quotient of two functions at infinity compares their relative magnitudes and the relative magnitudes of their rates of change.",
+   "description_plain": "A quotient of two growing quantities tells which one grows faster.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-01018",
+   "misconceptions": [
+    "BC-MIS-01014"
+   ],
+   "name": "Relative magnitude of growth compared by limits",
+   "notation": "",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-01062"
+   ],
+   "sources": [
+    "ced:52"
+   ],
+   "topics": [
+    "BC-TOP-0115"
+   ],
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "If f is continuous on the closed interval from a to b and d lies between f(a) and f(b), then there is at least one number c between a and b with f(c) equal to d.",
+   "description_plain": "A continuous function on a closed interval takes every value between its endpoint values at least once.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-01019",
+   "misconceptions": [
+    "BC-MIS-01010",
+    "BC-MIS-01015",
+    "BC-MIS-01016"
+   ],
+   "name": "The Intermediate Value Theorem",
+   "notation": "Intermediate Value Theorem",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-01064",
+    "BC-SKL-01065",
+    "BC-SKL-01066",
+    "BC-SKL-01067",
+    "BC-SKL-01068"
+   ],
+   "sources": [
+    "ced:53"
+   ],
+   "topics": [
+    "BC-TOP-0116"
+   ],
+   "unit": "BC-UNIT-01"
+  }
+ ],
+ "prerequisites": [
+  {
+   "category": "algebra",
+   "description_plain": "Factor quadratics, differences of squares, and simple cubics, and cancel a factor common to numerator and denominator.",
+   "evidence_tag": "inferred",
+   "failure_signature": "The student substitutes, reaches zero over zero, and stops because no factorisation is attempted.",
+   "hidden": true,
+   "id": "BC-PRQ-01001",
+   "name": "Factoring polynomials and dividing out a common factor",
+   "notes": "Non-calculus prerequisite inferred from the demands of the Unit 1 essential knowledge statements.",
+   "scope": "shared",
+   "sources": [
+    "ced:43"
+   ]
+  },
+  {
+   "category": "algebra",
+   "description_plain": "Multiply an expression containing a square root by the conjugate of the sum or difference in order to clear the radical.",
+   "evidence_tag": "inferred",
+   "failure_signature": "The student leaves a radical difference in the numerator and reports that the limit does not exist.",
+   "hidden": true,
+   "id": "BC-PRQ-01002",
+   "name": "Rationalising a numerator or denominator with a conjugate",
+   "notes": "Non-calculus prerequisite inferred from the demands of the Unit 1 essential knowledge statements.",
+   "scope": "shared",
+   "sources": [
+    "ced:43"
+   ]
+  },
+  {
+   "category": "function",
+   "description_plain": "Select the correct branch of a piecewise rule for a given input and identify the boundaries of the partition.",
+   "evidence_tag": "inferred",
+   "failure_signature": "The student evaluates the wrong branch at a boundary input or ignores the branch condition.",
+   "hidden": true,
+   "id": "BC-PRQ-01003",
+   "name": "Reading a piecewise defined function rule",
+   "notes": "Non-calculus prerequisite inferred from the demands of the Unit 1 essential knowledge statements.",
+   "scope": "shared",
+   "sources": [
+    "ced:50"
+   ]
+  },
+  {
+   "category": "function",
+   "description_plain": "Compare the degree of the numerator with the degree of the denominator to describe behaviour for inputs of large magnitude.",
+   "evidence_tag": "inferred",
+   "failure_signature": "The student cannot say what happens to a quotient of polynomials for large inputs without computing values.",
+   "hidden": true,
+   "id": "BC-PRQ-01004",
+   "name": "End behaviour of a rational function from degree comparison",
+   "notes": "Non-calculus prerequisite inferred from the demands of the Unit 1 essential knowledge statements.",
+   "scope": "shared",
+   "sources": [
+    "ced:52"
+   ]
+  },
+  {
+   "category": "trigonometry",
+   "description_plain": "Recall exact values at the standard angles and that sine and cosine stay between negative one and one.",
+   "evidence_tag": "inferred",
+   "failure_signature": "The student cannot bound an oscillating trigonometric factor and treats the oscillation as unbounded.",
+   "hidden": true,
+   "id": "BC-PRQ-01005",
+   "name": "Exact trigonometric values and the bounds on sine and cosine",
+   "notes": "Non-calculus prerequisite inferred from the demands of the Unit 1 essential knowledge statements.",
+   "scope": "shared",
+   "sources": [
+    "ced:45"
+   ]
+  },
+  {
+   "category": "algebra",
+   "description_plain": "Replace an absolute value by its two branches in order to compute one sided behaviour.",
+   "evidence_tag": "inferred",
+   "failure_signature": "The student treats the two one sided limits of an absolute value quotient as equal.",
+   "hidden": true,
+   "id": "BC-PRQ-01006",
+   "name": "Absolute value rewritten as a piecewise expression",
+   "notes": "Non-calculus prerequisite inferred from the demands of the Unit 1 essential knowledge statements.",
+   "scope": "shared",
+   "sources": [
+    "ced:47"
+   ]
+  },
+  {
+   "category": "algebra",
+   "description_plain": "Clear nested fractions by multiplying by a common denominator before evaluating.",
+   "evidence_tag": "inferred",
+   "failure_signature": "The student cannot simplify a quotient whose numerator is itself a difference of fractions.",
+   "hidden": true,
+   "id": "BC-PRQ-01007",
+   "name": "Simplifying a complex fraction",
+   "notes": "Non-calculus prerequisite inferred from the demands of the Unit 1 essential knowledge statements.",
+   "scope": "shared",
+   "sources": [
+    "ced:43"
+   ]
+  },
+  {
+   "category": "function",
+   "description_plain": "State where an expression is defined, including zeros of a denominator and the domain of a logarithm.",
+   "evidence_tag": "inferred",
+   "failure_signature": "The student names intervals of continuity that include points outside the domain.",
+   "hidden": true,
+   "id": "BC-PRQ-01008",
+   "name": "Domain of rational, radical, logarithmic, and trigonometric expressions",
+   "notes": "Non-calculus prerequisite inferred from the demands of the Unit 1 essential knowledge statements.",
+   "scope": "shared",
+   "sources": [
+    "ced:49"
+   ]
+  },
+  {
+   "category": "arithmetic",
+   "description_plain": "Determine the sign of a quotient on each side of an input where the denominator vanishes.",
+   "evidence_tag": "inferred",
+   "failure_signature": "The student writes a single two sided infinite limit where the two sides carry opposite signs.",
+   "hidden": true,
+   "id": "BC-PRQ-01009",
+   "name": "Sign analysis of a quotient near a zero of the denominator",
+   "notes": "Non-calculus prerequisite inferred from the demands of the Unit 1 essential knowledge statements.",
+   "scope": "shared",
+   "sources": [
+    "ced:51"
+   ]
+  },
+  {
+   "category": "notation",
+   "description_plain": "Read and write open, closed, and half open intervals and translate them into inequalities.",
+   "evidence_tag": "inferred",
+   "failure_signature": "The student states a conclusion on a closed interval when the theorem gives an interior point.",
+   "hidden": true,
+   "id": "BC-PRQ-01010",
+   "name": "Interval and inequality notation for open and closed intervals",
+   "notes": "Non-calculus prerequisite inferred from the demands of the Unit 1 essential knowledge statements.",
+   "scope": "shared",
+   "sources": [
+    "ced:53"
+   ]
+  }
+ ],
+ "registry": "skills",
+ "skills": [
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01017"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01012"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01012 on at least two presentations of the task, with no error from BC-ERR-01029.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of BC-ERR-01029 once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-01012"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01029"
+   ],
+   "concept": "BC-CON-01001",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given f and an interval from a to b, compute the quotient of f(b) minus f(a) by b minus a.",
+   "description_plain": "Divide the change in the function by the change in the input over an interval.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-1A2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01001",
+   "learning_objectives": [
+    "BC-LO-CHA-1A"
+   ],
+   "misconceptions": [
+    "BC-MIS-01017"
+   ],
+   "name": "Compute an average rate of change over an interval",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-03"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:38"
+   ],
+   "topic": "BC-TOP-0101",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-01012"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01012 on at least two presentations of the task, with no error from the errors recorded for this topic.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of the errors recorded for this topic once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-01012"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-01001",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "State that the difference quotient divides by the change in the independent variable, so a single point gives a zero denominator and no average rate.",
+   "description_plain": "Say why the quotient breaks down when the interval has zero length.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-1A2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01002",
+   "learning_objectives": [
+    "BC-LO-CHA-1A"
+   ],
+   "misconceptions": [],
+   "name": "Explain why an average rate of change is undefined at a single point",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-04"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:38"
+   ],
+   "topic": "BC-TOP-0101",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01017"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01012"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01012 on at least two presentations of the task, with no error from BC-ERR-01030.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of BC-ERR-01030 once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-01012"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01030"
+   ],
+   "concept": "BC-CON-01001",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Express the instantaneous rate of change of f at a as the limit of average rates of change of f over intervals containing a as the interval length tends to zero.",
+   "description_plain": "Say that the rate at an instant is what the average rates approach as the interval closes in.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-1A1",
+    "BC-EK-CHA-1A3"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01003",
+   "learning_objectives": [
+    "BC-LO-CHA-1A"
+   ],
+   "misconceptions": [
+    "BC-MIS-01017"
+   ],
+   "name": "Describe an instantaneous rate as a limit of average rates",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:38"
+   ],
+   "topic": "BC-TOP-0101",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01017"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01012"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01012 on at least two presentations of the task, with no error from BC-ERR-01029, BC-ERR-01030.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of BC-ERR-01029, BC-ERR-01030 once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-01012"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-01029",
+    "BC-ERR-01030"
+   ],
+   "concept": "BC-CON-01001",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given values of f, compute average rates over a nested sequence of intervals containing a and report the value the sequence approaches as the estimate of the instantaneous rate at a.",
+   "description_plain": "Compute average rates over smaller and smaller intervals and read off the value they approach.",
+   "diagnostic_signals": [
+    "BC-SIG-01016"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-1A3"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01004",
+   "learning_objectives": [
+    "BC-LO-CHA-1A"
+   ],
+   "misconceptions": [
+    "BC-MIS-01017"
+   ],
+   "name": "Estimate an instantaneous rate from average rates over shrinking intervals",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-03",
+    "BC-REP-05"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:38"
+   ],
+   "topic": "BC-TOP-0101",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-01013"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01013 on at least two presentations of the task, with no error from the errors recorded for this topic.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of the errors recorded for this topic once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-01013"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-01003",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given a function, a target input, and a claimed value, write the statement using the limit symbol, the independent variable, the arrow to the target, and the claimed value.",
+   "description_plain": "Turn a described approach into the limit symbols.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-1A1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01005",
+   "learning_objectives": [
+    "BC-LO-LIM-1A"
+   ],
+   "misconceptions": [],
+   "name": "Write a limit statement in correct analytic notation",
+   "notation": "lim as x approaches c of f(x) equals R",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-04"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:39"
+   ],
+   "topic": "BC-TOP-0102",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01003"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01013"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01013 on at least two presentations of the task, with no error from the errors recorded for this topic.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of the errors recorded for this topic once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-01013"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-01002",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Read a limit statement as the claim that f(x) can be made arbitrarily close to the stated value by taking x sufficiently close to the target and not equal to it.",
+   "description_plain": "Say in words what a written limit statement claims about the function values.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-1A1",
+    "BC-EK-LIM-1B1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01006",
+   "learning_objectives": [
+    "BC-LO-LIM-1B"
+   ],
+   "misconceptions": [
+    "BC-MIS-01003"
+   ],
+   "name": "Interpret a limit statement given in analytic notation",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:39"
+   ],
+   "topic": "BC-TOP-0102",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-01013"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01013 on at least two presentations of the task, with no error from the errors recorded for this topic.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of the errors recorded for this topic once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-01013"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-01003",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Write the left hand and right hand limit statements at a target input using the correct one sided arrow notation.",
+   "description_plain": "Use the left and right arrows to say which side the approach comes from.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-1A1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01007",
+   "learning_objectives": [
+    "BC-LO-LIM-1A"
+   ],
+   "misconceptions": [],
+   "name": "Write one sided limit notation",
+   "notation": "lim as x approaches c from the left; lim as x approaches c from the right",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:39",
+    "ced:40"
+   ],
+   "topic": "BC-TOP-0102",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01001",
+     "BC-MIS-01003"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01001"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01001 on at least two presentations of the task, with no error from BC-ERR-01001, BC-ERR-01003.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of BC-ERR-01001, BC-ERR-01003 once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-01001"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01001",
+    "BC-ERR-01003"
+   ],
+   "concept": "BC-CON-01002",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "State that the limit of f at c is determined by values of f at inputs near c and not equal to c, so it may exist where f(c) is undefined and may differ from f(c).",
+   "description_plain": "Say that the limit describes nearby outputs and not the output at the point itself.",
+   "diagnostic_signals": [
+    "BC-SIG-01002"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-1A1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01008",
+   "learning_objectives": [
+    "BC-LO-LIM-1B"
+   ],
+   "misconceptions": [
+    "BC-MIS-01001",
+    "BC-MIS-01003"
+   ],
+   "name": "Distinguish the limit at a point from the function value at that point",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-02",
+    "BC-REP-04"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:39"
+   ],
+   "topic": "BC-TOP-0102",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01001",
+     "BC-MIS-01002"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01001"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01001 on at least two presentations of the task, with no error from BC-ERR-01001, BC-ERR-01002.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of BC-ERR-01001, BC-ERR-01002 once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-01001"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01001",
+    "BC-ERR-01002"
+   ],
+   "concept": "BC-CON-01006",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given a graph of f, estimate the limit at a target input by reading the output the graph approaches from the left and from the right.",
+   "description_plain": "Read the height the graph heads towards from both sides.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-1C2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01009",
+   "learning_objectives": [
+    "BC-LO-LIM-1C"
+   ],
+   "misconceptions": [
+    "BC-MIS-01001",
+    "BC-MIS-01002"
+   ],
+   "name": "Estimate a two sided limit from a graph",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:40"
+   ],
+   "topic": "BC-TOP-0103",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01002"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01001"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01001 on at least two presentations of the task, with no error from BC-ERR-01002.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of BC-ERR-01002 once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-01001"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01002"
+   ],
+   "concept": "BC-CON-01004",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given a graph of f, report the left hand and right hand limits at a target input as separate values.",
+   "description_plain": "Read separately the height approached from the left and from the right.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-1C1",
+    "BC-EK-LIM-1C2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01010",
+   "learning_objectives": [
+    "BC-LO-LIM-1C"
+   ],
+   "misconceptions": [
+    "BC-MIS-01002"
+   ],
+   "name": "Estimate one sided limits from a graph",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:40"
+   ],
+   "topic": "BC-TOP-0103",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01002"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01001"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01001 on at least two presentations of the task, with no error from BC-ERR-01002.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of BC-ERR-01002 once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-01003.",
+    "remediation_target": "BC-PRQ-01003"
+   },
+   "archetypes": [
+    "BC-QA-01001"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01002"
+   ],
+   "concept": "BC-CON-01005",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given a graph or rule whose left hand and right hand limits at c exist and differ, conclude that the two sided limit at c does not exist and name the two values.",
+   "description_plain": "Say the limit does not exist when the two sides head to different heights.",
+   "diagnostic_signals": [
+    "BC-SIG-01001"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-1C4"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01011",
+   "learning_objectives": [
+    "BC-LO-LIM-1C"
+   ],
+   "misconceptions": [
+    "BC-MIS-01002"
+   ],
+   "name": "Determine that a limit fails to exist because the one sided limits differ",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01003",
+    "BC-PRQ-01006"
+   ],
+   "representations": [
+    "BC-REP-02",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:40"
+   ],
+   "topic": "BC-TOP-0103",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01012"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01001"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01001 on at least two presentations of the task, with no error from BC-ERR-01020.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of BC-ERR-01020 once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-01009.",
+    "remediation_target": "BC-PRQ-01009"
+   },
+   "archetypes": [
+    "BC-QA-01001"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01020"
+   ],
+   "concept": "BC-CON-01005",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given a function whose values increase or decrease without bound near c, conclude that the limit at c does not exist as a real number.",
+   "description_plain": "Say the limit does not exist when the values grow without bound.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-1C4"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01012",
+   "learning_objectives": [
+    "BC-LO-LIM-1C"
+   ],
+   "misconceptions": [
+    "BC-MIS-01012"
+   ],
+   "name": "Determine that a limit fails to exist because the function is unbounded",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01009"
+   ],
+   "representations": [
+    "BC-REP-02",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:40"
+   ],
+   "topic": "BC-TOP-0103",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01004"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01001"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01001 on at least two presentations of the task, with no error from BC-ERR-01004.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of BC-ERR-01004 once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-01005.",
+    "remediation_target": "BC-PRQ-01005"
+   },
+   "archetypes": [
+    "BC-QA-01001"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01004"
+   ],
+   "concept": "BC-CON-01005",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given a function that oscillates between fixed values arbitrarily close to c without approaching a single value, conclude that the limit at c does not exist.",
+   "description_plain": "Say the limit does not exist when the values keep swinging without settling.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-1C4"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01013",
+   "learning_objectives": [
+    "BC-LO-LIM-1C"
+   ],
+   "misconceptions": [
+    "BC-MIS-01004"
+   ],
+   "name": "Determine that a limit fails to exist because the function oscillates",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01005"
+   ],
+   "representations": [
+    "BC-REP-02",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:40"
+   ],
+   "topic": "BC-TOP-0103",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-01013"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01013 on at least two presentations of the task, with no error from the errors recorded for this topic.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of the errors recorded for this topic once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-01013"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [],
+   "concept": "BC-CON-01006",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "State that a graphical representation at a given scale may omit behaviour near the target input, so a graphical estimate of a limit is provisional.",
+   "description_plain": "Say why a graph on one window can mislead about a limit.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-1C3"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01014",
+   "learning_objectives": [
+    "BC-LO-LIM-1C"
+   ],
+   "misconceptions": [],
+   "name": "Explain how the scale of a graph can hide function behaviour",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-02",
+    "BC-REP-09"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:40"
+   ],
+   "topic": "BC-TOP-0103",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01004"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01002"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01002 on at least two presentations of the task, with no error from BC-ERR-01005.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of BC-ERR-01005 once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-01002"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01005"
+   ],
+   "concept": "BC-CON-01006",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given a table of values of f at inputs approaching c from both sides, report the value the outputs approach as the estimate of the limit at c.",
+   "description_plain": "Read the value the outputs crowd towards as the inputs close in from both sides.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-1C5"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01015",
+   "learning_objectives": [
+    "BC-LO-LIM-1C"
+   ],
+   "misconceptions": [
+    "BC-MIS-01004"
+   ],
+   "name": "Estimate a two sided limit from a table of values",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-03"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:41"
+   ],
+   "topic": "BC-TOP-0104",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-01002"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01002 on at least two presentations of the task, with no error from the errors recorded for this topic.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of the errors recorded for this topic once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-01002"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-01004",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given a table of values of f, estimate the left hand or right hand limit at c using only the tabulated inputs on the requested side of c.",
+   "description_plain": "Use only the rows on one side of the target input.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-1C1",
+    "BC-EK-LIM-1C5"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01016",
+   "learning_objectives": [
+    "BC-LO-LIM-1C"
+   ],
+   "misconceptions": [],
+   "name": "Estimate a one sided limit from a table of values",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-03"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:41"
+   ],
+   "topic": "BC-TOP-0104",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01004"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01002"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01002 on at least two presentations of the task, with no error from BC-ERR-01004, BC-ERR-01005.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of BC-ERR-01004, BC-ERR-01005 once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-01002"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01004",
+    "BC-ERR-01005"
+   ],
+   "concept": "BC-CON-01006",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "State that a finite table of values supports an estimate but does not establish a limit, and identify tables whose spacing leaves the behaviour near c undetermined.",
+   "description_plain": "Decide whether the tabulated values really settle or only appear to.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-1C3",
+    "BC-EK-LIM-1C5"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01017",
+   "learning_objectives": [
+    "BC-LO-LIM-1C"
+   ],
+   "misconceptions": [
+    "BC-MIS-01004"
+   ],
+   "name": "Judge whether a table supports a limit value or is inconclusive",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-03",
+    "BC-REP-04"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:41"
+   ],
+   "topic": "BC-TOP-0104",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-01003"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01003 on at least two presentations of the task, with no error from the errors recorded for this topic.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of the errors recorded for this topic once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-01003"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-01007",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given that the limits of f and g at c exist, evaluate the limit of f plus g or f minus g as the corresponding sum or difference of those limits.",
+   "description_plain": "Split the limit of a sum into the sum of the limits.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-1D2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01018",
+   "learning_objectives": [
+    "BC-LO-LIM-1D"
+   ],
+   "misconceptions": [],
+   "name": "Apply the sum and difference limit theorems",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-03"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:42"
+   ],
+   "topic": "BC-TOP-0105",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-01003"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01003 on at least two presentations of the task, with no error from the errors recorded for this topic.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of the errors recorded for this topic once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-01003"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-01007",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given that the limits of f and g at c exist, evaluate the limit of a product as the product of the limits and the limit of a constant multiple as the constant times the limit.",
+   "description_plain": "Take the limit of each factor and multiply, and pull constants out.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-1D2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01019",
+   "learning_objectives": [
+    "BC-LO-LIM-1D"
+   ],
+   "misconceptions": [],
+   "name": "Apply the product and constant multiple limit theorems",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-03"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:42"
+   ],
+   "topic": "BC-TOP-0105",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01005"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01003"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01003 on at least two presentations of the task, with no error from BC-ERR-01006.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of BC-ERR-01006 once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-01003"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01006"
+   ],
+   "concept": "BC-CON-01007",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Evaluate the limit of a quotient as the quotient of the limits, stating first that the limit of the denominator is not zero, and identify when the theorem does not apply.",
+   "description_plain": "Divide the limits, after checking that the bottom limit is not zero.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-1D2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01020",
+   "learning_objectives": [
+    "BC-LO-LIM-1D"
+   ],
+   "misconceptions": [
+    "BC-MIS-01005"
+   ],
+   "name": "Apply the quotient limit theorem and check the denominator condition",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-03"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:42"
+   ],
+   "topic": "BC-TOP-0105",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-01014"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01014 on at least two presentations of the task, with no error from the errors recorded for this topic.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of the errors recorded for this topic once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-01008.",
+    "remediation_target": "BC-PRQ-01008"
+   },
+   "archetypes": [
+    "BC-QA-01014"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-01007",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "For a polynomial, rational, power, exponential, logarithmic, or trigonometric expression defined at c, evaluate the limit at c by substituting c.",
+   "description_plain": "Put the target value into the expression when that is legitimate.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-1D2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01021",
+   "learning_objectives": [
+    "BC-LO-LIM-1D"
+   ],
+   "misconceptions": [],
+   "name": "Evaluate a limit by direct substitution where the function is continuous",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01008"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:42",
+    "ced:49"
+   ],
+   "topic": "BC-TOP-0105",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01005"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01003"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01003 on at least two presentations of the task, with no error from BC-ERR-01007.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of BC-ERR-01007 once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-01003"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01007"
+   ],
+   "concept": "BC-CON-01007",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given the limit of the inner function at c and continuity of the outer function at that value, evaluate the limit of the composite as the outer function of the inner limit.",
+   "description_plain": "Take the limit of the inside first, then apply the outside function.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-1D2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01022",
+   "learning_objectives": [
+    "BC-LO-LIM-1D"
+   ],
+   "misconceptions": [
+    "BC-MIS-01005"
+   ],
+   "name": "Apply the limit theorem for composite functions",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:42"
+   ],
+   "topic": "BC-TOP-0105",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-01006"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01006 on at least two presentations of the task, with no error from BC-ERR-01017.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of BC-ERR-01017 once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-01003.",
+    "remediation_target": "BC-PRQ-01003"
+   },
+   "archetypes": [
+    "BC-QA-01006"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01017"
+   ],
+   "concept": "BC-CON-01004",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "For a piecewise defined function, evaluate the left hand and right hand limits at a boundary from the relevant branch expressions and report the two sided limit when they agree.",
+   "description_plain": "Evaluate each branch at the boundary and compare.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-1D1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01023",
+   "learning_objectives": [
+    "BC-LO-LIM-1D"
+   ],
+   "misconceptions": [],
+   "name": "Determine a two sided limit by matching one sided limits of a piecewise rule",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01003"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:42"
+   ],
+   "topic": "BC-TOP-0105",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01007"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01004"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01004 on at least two presentations of the task, with no error from BC-ERR-01008, BC-ERR-01010.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of BC-ERR-01008, BC-ERR-01010 once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-01001.",
+    "remediation_target": "BC-PRQ-01001"
+   },
+   "archetypes": [
+    "BC-QA-01004"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01008",
+    "BC-ERR-01010"
+   ],
+   "concept": "BC-CON-01008",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given a quotient whose numerator and denominator both tend to zero at c, factor both, divide out the common factor valid for inputs other than c, and evaluate the resulting expression at c.",
+   "description_plain": "Factor top and bottom, cancel the shared factor, then substitute.",
+   "diagnostic_signals": [
+    "BC-SIG-01003"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-1E1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01024",
+   "learning_objectives": [
+    "BC-LO-LIM-1E"
+   ],
+   "misconceptions": [
+    "BC-MIS-01007"
+   ],
+   "name": "Evaluate an indeterminate limit by factoring and dividing out a common factor",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01001"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:43"
+   ],
+   "topic": "BC-TOP-0106",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-01004"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01004 on at least two presentations of the task, with no error from the errors recorded for this topic.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of the errors recorded for this topic once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-01002.",
+    "remediation_target": "BC-PRQ-01002"
+   },
+   "archetypes": [
+    "BC-QA-01004"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-01008",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given a quotient involving a sum or difference with a radical that is indeterminate at c, multiply numerator and denominator by the conjugate, simplify, and evaluate.",
+   "description_plain": "Clear the radical with the conjugate, then cancel and substitute.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-1E1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01025",
+   "learning_objectives": [
+    "BC-LO-LIM-1E"
+   ],
+   "misconceptions": [],
+   "name": "Evaluate an indeterminate limit by multiplying by a conjugate",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01002"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:43"
+   ],
+   "topic": "BC-TOP-0106",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01007"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01004"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01004 on at least two presentations of the task, with no error from BC-ERR-01010.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of BC-ERR-01010 once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-01007.",
+    "remediation_target": "BC-PRQ-01007"
+   },
+   "archetypes": [
+    "BC-QA-01004"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01010"
+   ],
+   "concept": "BC-CON-01008",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given a quotient whose numerator or denominator contains fractions, multiply through by a common denominator, simplify, and evaluate the limit.",
+   "description_plain": "Clear the nested fractions first, then cancel and substitute.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-1E1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01026",
+   "learning_objectives": [
+    "BC-LO-LIM-1E"
+   ],
+   "misconceptions": [
+    "BC-MIS-01007"
+   ],
+   "name": "Evaluate an indeterminate limit by simplifying a complex fraction",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01007"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:43"
+   ],
+   "topic": "BC-TOP-0106",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-01004"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01004 on at least two presentations of the task, with no error from the errors recorded for this topic.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of the errors recorded for this topic once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-01005.",
+    "remediation_target": "BC-PRQ-01005"
+   },
+   "archetypes": [
+    "BC-QA-01004"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-01008",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given a trigonometric quotient that is indeterminate at c, apply an identity or an alternate form to produce an equivalent expression whose limit can be read off.",
+   "description_plain": "Use an identity to turn the expression into one that can be evaluated.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-1E1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01027",
+   "learning_objectives": [
+    "BC-LO-LIM-1E"
+   ],
+   "misconceptions": [],
+   "name": "Evaluate an indeterminate limit by rewriting with trigonometric identities",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01005"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:43"
+   ],
+   "topic": "BC-TOP-0106",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01006"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01004"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01004 on at least two presentations of the task, with no error from BC-ERR-01008, BC-ERR-01009, BC-ERR-01011.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of BC-ERR-01008, BC-ERR-01009, BC-ERR-01011 once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-01001.",
+    "remediation_target": "BC-PRQ-01001"
+   },
+   "archetypes": [
+    "BC-QA-01004"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01008",
+    "BC-ERR-01009",
+    "BC-ERR-01011"
+   ],
+   "concept": "BC-CON-01008",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "State that a quotient whose numerator and denominator both tend to zero has no value assigned by substitution and that an equivalent expression is required before the limit can be determined.",
+   "description_plain": "See that zero over zero carries no value and that the expression must be changed.",
+   "diagnostic_signals": [
+    "BC-SIG-01004",
+    "BC-SIG-01005"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-1E1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01028",
+   "learning_objectives": [
+    "BC-LO-LIM-1E"
+   ],
+   "misconceptions": [
+    "BC-MIS-01006"
+   ],
+   "name": "Recognise an indeterminate form as a signal that rewriting is needed",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01001"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-04"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:43",
+    "sg-23:14"
+   ],
+   "topic": "BC-TOP-0106",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01006"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01014"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01014 on at least two presentations of the task, with no error from BC-ERR-01006, BC-ERR-01008, BC-ERR-01009.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of BC-ERR-01006, BC-ERR-01008, BC-ERR-01009 once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-01001.",
+    "remediation_target": "BC-PRQ-01001"
+   },
+   "archetypes": [
+    "BC-QA-01014"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01006",
+    "BC-ERR-01008",
+    "BC-ERR-01009"
+   ],
+   "concept": "BC-CON-01009",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Substitute the target input into the expression and classify the result as a determinate value, the indeterminate form zero over zero, or a nonzero number over zero.",
+   "description_plain": "Substitute first and name what comes out: a value, zero over zero, or an unbounded quotient.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01029",
+   "learning_objectives": [],
+   "misconceptions": [
+    "BC-MIS-01006"
+   ],
+   "name": "Classify a limit expression by its form under substitution",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01001"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:44"
+   ],
+   "topic": "BC-TOP-0107",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01006"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01014"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01014 on at least two presentations of the task, with no error from BC-ERR-01009.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of BC-ERR-01009 once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-01001.",
+    "remediation_target": "BC-PRQ-01001"
+   },
+   "archetypes": [
+    "BC-QA-01014"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01009"
+   ],
+   "concept": "BC-CON-01009",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given a limit expression, select substitution, algebraic rewriting, one sided analysis, the squeeze theorem, or end behaviour comparison as the procedure that resolves it, and name the reason.",
+   "description_plain": "Pick the method that suits the form the expression takes.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01030",
+   "learning_objectives": [],
+   "misconceptions": [
+    "BC-MIS-01006"
+   ],
+   "name": "Select an appropriate procedure for a given limit expression",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01001"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-04"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:44"
+   ],
+   "topic": "BC-TOP-0107",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-01014"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01014 on at least two presentations of the task, with no error from the errors recorded for this topic.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of the errors recorded for this topic once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-01008.",
+    "remediation_target": "BC-PRQ-01008"
+   },
+   "archetypes": [
+    "BC-QA-01014"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-01009",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Identify expressions defined and continuous at the target input, for which substitution gives the limit and no further manipulation is warranted.",
+   "description_plain": "Stop rewriting when the direct value is legitimate.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01031",
+   "learning_objectives": [],
+   "misconceptions": [],
+   "name": "Recognise when substitution already settles the limit",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01008"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:44",
+    "ced:49"
+   ],
+   "topic": "BC-TOP-0107",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01008",
+     "BC-MIS-01010"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01005"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01005 on at least two presentations of the task, with no error from the errors recorded for this topic.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of the errors recorded for this topic once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-01010.",
+    "remediation_target": "BC-PRQ-01010"
+   },
+   "archetypes": [
+    "BC-QA-01005"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-01010",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "State that the bounding inequality must hold for all inputs near the target except possibly at the target, and that the two bounding functions must have the same limit there.",
+   "description_plain": "Name what must hold before the theorem may be used.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-1E2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01032",
+   "learning_objectives": [
+    "BC-LO-LIM-1E"
+   ],
+   "misconceptions": [
+    "BC-MIS-01008",
+    "BC-MIS-01010"
+   ],
+   "name": "State the hypotheses of the squeeze theorem",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01010"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:45"
+   ],
+   "topic": "BC-TOP-0108",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01008"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01005"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01005 on at least two presentations of the task, with no error from BC-ERR-01012.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of BC-ERR-01012 once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-01005.",
+    "remediation_target": "BC-PRQ-01005"
+   },
+   "archetypes": [
+    "BC-QA-01005"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01012"
+   ],
+   "concept": "BC-CON-01010",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given a candidate pair of bounding functions, establish the inequality for inputs near the target, typically from the bounds on a trigonometric factor.",
+   "description_plain": "Show the function really sits between the two bounds near the point.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-1E2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01033",
+   "learning_objectives": [
+    "BC-LO-LIM-1E"
+   ],
+   "misconceptions": [
+    "BC-MIS-01008"
+   ],
+   "name": "Verify the bounding inequality on an interval around the point",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01005"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:45"
+   ],
+   "topic": "BC-TOP-0108",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01008"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01005"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01005 on at least two presentations of the task, with no error from BC-ERR-01013.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of BC-ERR-01013 once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-01010.",
+    "remediation_target": "BC-PRQ-01010"
+   },
+   "archetypes": [
+    "BC-QA-01005"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01013"
+   ],
+   "concept": "BC-CON-01010",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Evaluate the limits of the bounding functions at the target, observe that they agree, and conclude that the trapped function has that limit.",
+   "description_plain": "Once both bounds have the same limit, state that the trapped function has it too.",
+   "diagnostic_signals": [
+    "BC-SIG-01018"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-1E2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01034",
+   "learning_objectives": [
+    "BC-LO-LIM-1E"
+   ],
+   "misconceptions": [
+    "BC-MIS-01008"
+   ],
+   "name": "Conclude a limit value from matching bounds",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01010"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:45"
+   ],
+   "topic": "BC-TOP-0108",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01008"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01005"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01005 on at least two presentations of the task, with no error from BC-ERR-01012.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of BC-ERR-01012 once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-01005.",
+    "remediation_target": "BC-PRQ-01005"
+   },
+   "archetypes": [
+    "BC-QA-01005"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01012"
+   ],
+   "concept": "BC-CON-01010",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "For a product of a factor tending to zero and a bounded oscillating factor, bound the oscillating factor, multiply the inequality by the vanishing factor, and conclude the limit is zero.",
+   "description_plain": "Bound the oscillating part between negative one and one and multiply through.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-1E2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01035",
+   "learning_objectives": [
+    "BC-LO-LIM-1E"
+   ],
+   "misconceptions": [
+    "BC-MIS-01008"
+   ],
+   "name": "Apply the squeeze theorem to a bounded oscillating factor",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01005"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:45"
+   ],
+   "topic": "BC-TOP-0108",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01018"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01013"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01013 on at least two presentations of the task, with no error from BC-ERR-01033.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of BC-ERR-01033 once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-01013"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01033"
+   ],
+   "concept": "BC-CON-01011",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given a limit claim in one representation, identify the graph, table, or expression among alternatives that carries the same limit behaviour at the target input.",
+   "description_plain": "Check that the three presentations of one limit agree.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01036",
+   "learning_objectives": [],
+   "misconceptions": [
+    "BC-MIS-01018"
+   ],
+   "name": "Match a graph, a table, and an analytic expression of the same limit",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02",
+    "BC-REP-03"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:46"
+   ],
+   "topic": "BC-TOP-0109",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01018"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01013"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01013 on at least two presentations of the task, with no error from BC-ERR-01033.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of BC-ERR-01033 once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-01013"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01033"
+   ],
+   "concept": "BC-CON-01011",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Convert an analytic limit statement, including a one sided or infinite statement, into a sentence describing the behaviour of the function near the target input.",
+   "description_plain": "Say in ordinary words what the symbols claim about the function near the point.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01037",
+   "learning_objectives": [],
+   "misconceptions": [
+    "BC-MIS-01018"
+   ],
+   "name": "Translate a limit statement into a verbal description of behaviour",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-04"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:46"
+   ],
+   "topic": "BC-TOP-0109",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-01013"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01013 on at least two presentations of the task, with no error from the errors recorded for this topic.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of the errors recorded for this topic once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-01003.",
+    "remediation_target": "BC-PRQ-01003"
+   },
+   "archetypes": [
+    "BC-QA-01013"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-01011",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given conditions on one sided limits, the two sided limit, and the function value at one or more inputs, produce a graph satisfying all of them simultaneously.",
+   "description_plain": "Draw a curve that meets every limit and value condition given.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01038",
+   "learning_objectives": [],
+   "misconceptions": [],
+   "name": "Sketch a graph consistent with stated limit and value conditions",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01003"
+   ],
+   "representations": [
+    "BC-REP-02",
+    "BC-REP-04"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:46"
+   ],
+   "topic": "BC-TOP-0109",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-01007"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01007 on at least two presentations of the task, with no error from BC-ERR-01003.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of BC-ERR-01003 once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-01001.",
+    "remediation_target": "BC-PRQ-01001"
+   },
+   "archetypes": [
+    "BC-QA-01007"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01003"
+   ],
+   "concept": "BC-CON-01012",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Identify a discontinuity at c as removable when the two sided limit at c exists while f(c) is undefined or differs from that limit.",
+   "description_plain": "Name a break removable when the limit exists but the value does not match it.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-2A1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01039",
+   "learning_objectives": [
+    "BC-LO-LIM-2A"
+   ],
+   "misconceptions": [],
+   "name": "Classify a removable discontinuity",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01001"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:47"
+   ],
+   "topic": "BC-TOP-0110",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-01007"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01007 on at least two presentations of the task, with no error from the errors recorded for this topic.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of the errors recorded for this topic once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-01003.",
+    "remediation_target": "BC-PRQ-01003"
+   },
+   "archetypes": [
+    "BC-QA-01007"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-01012",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Identify a discontinuity at c as a jump when both one sided limits at c exist as real numbers and are unequal.",
+   "description_plain": "Name a break a jump when both sides settle but at different heights.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-2A1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01040",
+   "learning_objectives": [
+    "BC-LO-LIM-2A"
+   ],
+   "misconceptions": [],
+   "name": "Classify a jump discontinuity",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01003",
+    "BC-PRQ-01006"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:47"
+   ],
+   "topic": "BC-TOP-0110",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01011"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01007",
+     "BC-QA-01009"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01007 on at least two presentations of the task, with no error from BC-ERR-01018.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of BC-ERR-01018 once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-01009.",
+    "remediation_target": "BC-PRQ-01009"
+   },
+   "archetypes": [
+    "BC-QA-01007",
+    "BC-QA-01009"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01018"
+   ],
+   "concept": "BC-CON-01012",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Identify a discontinuity at c as due to a vertical asymptote when at least one one sided limit at c is infinite.",
+   "description_plain": "Name a break infinite when the values grow without bound on at least one side.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-2A1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01041",
+   "learning_objectives": [
+    "BC-LO-LIM-2A"
+   ],
+   "misconceptions": [
+    "BC-MIS-01011"
+   ],
+   "name": "Classify a discontinuity due to a vertical asymptote",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01009"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:47",
+    "ced:51"
+   ],
+   "topic": "BC-TOP-0110",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-01006"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01006 on at least two presentations of the task, with no error from BC-ERR-01017.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of BC-ERR-01017 once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-01003.",
+    "remediation_target": "BC-PRQ-01003"
+   },
+   "archetypes": [
+    "BC-QA-01006"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01017"
+   ],
+   "concept": "BC-CON-01012",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given a piecewise rule, locate every input at which the function may fail to be continuous, including boundaries of the partition and points excluded from a branch expression.",
+   "description_plain": "Check each branch boundary and each point excluded from a branch domain.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-2A1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01042",
+   "learning_objectives": [
+    "BC-LO-LIM-2A"
+   ],
+   "misconceptions": [],
+   "name": "Identify the discontinuities of a piecewise defined function from its rule",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01003",
+    "BC-PRQ-01008"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:47"
+   ],
+   "topic": "BC-TOP-0110",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01009"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01006"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01006 on at least two presentations of the task, with no error from BC-ERR-01014.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of BC-ERR-01014 once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-01006"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01014"
+   ],
+   "concept": "BC-CON-01013",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "State that f is continuous at c provided f(c) exists, the limit of f at c exists, and the limit equals f(c).",
+   "description_plain": "Name the value, the limit, and their agreement.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-2A2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01043",
+   "learning_objectives": [
+    "BC-LO-LIM-2A"
+   ],
+   "misconceptions": [
+    "BC-MIS-01009"
+   ],
+   "name": "State the three conditions of continuity at a point",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:48"
+   ],
+   "topic": "BC-TOP-0111",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01001",
+     "BC-MIS-01009"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01006"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01006 on at least two presentations of the task, with no error from BC-ERR-01001, BC-ERR-01014, BC-ERR-01015, BC-ERR-01017.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of BC-ERR-01001, BC-ERR-01014, BC-ERR-01015, BC-ERR-01017 once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-01003.",
+    "remediation_target": "BC-PRQ-01003"
+   },
+   "archetypes": [
+    "BC-QA-01006"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01001",
+    "BC-ERR-01014",
+    "BC-ERR-01015",
+    "BC-ERR-01017"
+   ],
+   "concept": "BC-CON-01013",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "For a given function and input, evaluate f(c), determine the limit at c, compare them, and conclude whether f is continuous at c.",
+   "description_plain": "Work through the three conditions in order and report the outcome.",
+   "diagnostic_signals": [
+    "BC-SIG-01006",
+    "BC-SIG-01007"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-2A2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01044",
+   "learning_objectives": [
+    "BC-LO-LIM-2A"
+   ],
+   "misconceptions": [
+    "BC-MIS-01001",
+    "BC-MIS-01009"
+   ],
+   "name": "Test continuity at a point by checking the three conditions",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01003"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:48"
+   ],
+   "topic": "BC-TOP-0111",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01010"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01006"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01006 on at least two presentations of the task, with no error from BC-ERR-01016.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of BC-ERR-01016 once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-01006"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01016"
+   ],
+   "concept": "BC-CON-01013",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Support a claim that f is not continuous at c by naming which of the three conditions fails and giving the values that show the failure.",
+   "description_plain": "Point to the exact condition that breaks rather than restating the definition.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-2A2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01045",
+   "learning_objectives": [
+    "BC-LO-LIM-2A"
+   ],
+   "misconceptions": [
+    "BC-MIS-01010"
+   ],
+   "name": "Justify a continuity conclusion by naming the failed condition",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-04"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:48"
+   ],
+   "topic": "BC-TOP-0111",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01019"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01015"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01015 on at least two presentations of the task, with no error from BC-ERR-01031, BC-ERR-01032.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of BC-ERR-01031, BC-ERR-01032 once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-01008.",
+    "remediation_target": "BC-PRQ-01008"
+   },
+   "archetypes": [
+    "BC-QA-01015"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01031",
+    "BC-ERR-01032"
+   ],
+   "concept": "BC-CON-01014",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given a rational, radical, logarithmic, or trigonometric expression, determine the inputs at which it is undefined and state the maximal intervals on which the function is continuous.",
+   "description_plain": "Exclude the inputs where the expression is undefined and report the rest as intervals.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-2B1",
+    "BC-EK-LIM-2B2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01046",
+   "learning_objectives": [
+    "BC-LO-LIM-2B"
+   ],
+   "misconceptions": [
+    "BC-MIS-01019"
+   ],
+   "name": "Determine intervals of continuity from the domain of an expression",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01008"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:49"
+   ],
+   "topic": "BC-TOP-0112",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01019"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01015"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01015 on at least two presentations of the task, with no error from the errors recorded for this topic.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of the errors recorded for this topic once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-01008.",
+    "remediation_target": "BC-PRQ-01008"
+   },
+   "archetypes": [
+    "BC-QA-01015"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-01014",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "State that polynomial, rational, power, exponential, logarithmic, and trigonometric functions are continuous at every point of their domains, and use that to support a continuity claim.",
+   "description_plain": "Recall which standard families are continuous wherever they are defined.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-2B2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01047",
+   "learning_objectives": [
+    "BC-LO-LIM-2B"
+   ],
+   "misconceptions": [
+    "BC-MIS-01019"
+   ],
+   "name": "Name the function families continuous on their domains",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01008"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:49"
+   ],
+   "topic": "BC-TOP-0112",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01019"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01015"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01015 on at least two presentations of the task, with no error from BC-ERR-01031.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of BC-ERR-01031 once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-01003.",
+    "remediation_target": "BC-PRQ-01003"
+   },
+   "archetypes": [
+    "BC-QA-01015"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01031"
+   ],
+   "concept": "BC-CON-01014",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "For a piecewise defined function, confirm continuity on each branch from its expression and test each boundary separately, then state the intervals of continuity.",
+   "description_plain": "Check each branch on its own and then each boundary.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-2B1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01048",
+   "learning_objectives": [
+    "BC-LO-LIM-2B"
+   ],
+   "misconceptions": [
+    "BC-MIS-01019"
+   ],
+   "name": "Determine continuity of a piecewise function on an interval",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01003"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:49"
+   ],
+   "topic": "BC-TOP-0112",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01019"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01015"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01015 on at least two presentations of the task, with no error from BC-ERR-01031, BC-ERR-01032.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of BC-ERR-01031, BC-ERR-01032 once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-01010.",
+    "remediation_target": "BC-PRQ-01010"
+   },
+   "archetypes": [
+    "BC-QA-01015"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01031",
+    "BC-ERR-01032"
+   ],
+   "concept": "BC-CON-01014",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "State that continuity on a closed interval requires the appropriate one sided limit to equal the function value at each endpoint, and apply that distinction when naming intervals.",
+   "description_plain": "Treat the endpoints of a closed interval with one sided limits.",
+   "diagnostic_signals": [
+    "BC-SIG-01017"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-2B1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01049",
+   "learning_objectives": [
+    "BC-LO-LIM-2B"
+   ],
+   "misconceptions": [
+    "BC-MIS-01019"
+   ],
+   "name": "Distinguish continuity on an open interval from continuity on a closed interval",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01010"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-04"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:49"
+   ],
+   "topic": "BC-TOP-0112",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-01008"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01008 on at least two presentations of the task, with no error from the errors recorded for this topic.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of the errors recorded for this topic once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-01001.",
+    "remediation_target": "BC-PRQ-01001"
+   },
+   "archetypes": [
+    "BC-QA-01008"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-01015",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given a function with a removable discontinuity at c, define or redefine f(c) as the limit of f at c and state that the resulting function is continuous at c.",
+   "description_plain": "Set the value at the point equal to the limit there.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-2C1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01050",
+   "learning_objectives": [
+    "BC-LO-LIM-2C"
+   ],
+   "misconceptions": [],
+   "name": "Redefine a function value to remove a removable discontinuity",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01001"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:50"
+   ],
+   "topic": "BC-TOP-0113",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01009"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01008"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01008 on at least two presentations of the task, with no error from BC-ERR-01015, BC-ERR-01017.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of BC-ERR-01015, BC-ERR-01017 once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-01003.",
+    "remediation_target": "BC-PRQ-01003"
+   },
+   "archetypes": [
+    "BC-QA-01008"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01015",
+    "BC-ERR-01017"
+   ],
+   "concept": "BC-CON-01015",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given a piecewise rule containing an unknown constant, set the one sided limits at the boundary equal to each other and to the function value, and solve for the constant.",
+   "description_plain": "Set the two branch values equal at the boundary and solve.",
+   "diagnostic_signals": [
+    "BC-SIG-01008"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-2C2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01051",
+   "learning_objectives": [
+    "BC-LO-LIM-2C"
+   ],
+   "misconceptions": [
+    "BC-MIS-01009"
+   ],
+   "name": "Solve for a parameter making a piecewise function continuous at a boundary",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01003"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:50"
+   ],
+   "topic": "BC-TOP-0113",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-01008"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01008 on at least two presentations of the task, with no error from the errors recorded for this topic.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of the errors recorded for this topic once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-01003.",
+    "remediation_target": "BC-PRQ-01003"
+   },
+   "archetypes": [
+    "BC-QA-01008"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-01015",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given a piecewise rule with two unknown constants and two boundaries, form the matching equation at each boundary and solve the resulting system.",
+   "description_plain": "Write one equation per boundary and solve the pair together.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-2C2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01052",
+   "learning_objectives": [
+    "BC-LO-LIM-2C"
+   ],
+   "misconceptions": [],
+   "name": "Solve for two parameters using continuity conditions at two boundaries",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01003"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:50"
+   ],
+   "topic": "BC-TOP-0113",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [],
+    "diagnostic_archetypes": [
+     "BC-QA-01008"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01008 on at least two presentations of the task, with no error from BC-ERR-01003.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of BC-ERR-01003 once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-01003.",
+    "remediation_target": "BC-PRQ-01003"
+   },
+   "archetypes": [
+    "BC-QA-01008"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01003"
+   ],
+   "concept": "BC-CON-01015",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Determine whether the two sided limit exists at a discontinuity, and conclude that the discontinuity is removable only in that case.",
+   "description_plain": "Check whether the limit exists before claiming the break can be repaired.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-2C1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01053",
+   "learning_objectives": [
+    "BC-LO-LIM-2C"
+   ],
+   "misconceptions": [],
+   "name": "Decide whether a discontinuity can be removed",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01003"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:50"
+   ],
+   "topic": "BC-TOP-0113",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01012",
+     "BC-MIS-01018"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01009"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01009 on at least two presentations of the task, with no error from BC-ERR-01019, BC-ERR-01020.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of BC-ERR-01019, BC-ERR-01020 once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-01009.",
+    "remediation_target": "BC-PRQ-01009"
+   },
+   "archetypes": [
+    "BC-QA-01009"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01019",
+    "BC-ERR-01020"
+   ],
+   "concept": "BC-CON-01016",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Write the statement that f increases or decreases without bound as x approaches c, including the one sided form when the two sides behave differently.",
+   "description_plain": "Use the infinity symbol to record unbounded growth, with the side when it matters.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-2D1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01054",
+   "learning_objectives": [
+    "BC-LO-LIM-2D"
+   ],
+   "misconceptions": [
+    "BC-MIS-01012",
+    "BC-MIS-01018"
+   ],
+   "name": "Write an infinite limit using correct notation",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01009"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:51"
+   ],
+   "topic": "BC-TOP-0114",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01012"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01009"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01009 on at least two presentations of the task, with no error from BC-ERR-01019.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of BC-ERR-01019 once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-01009.",
+    "remediation_target": "BC-PRQ-01009"
+   },
+   "archetypes": [
+    "BC-QA-01009"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01019"
+   ],
+   "concept": "BC-CON-01016",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "For a quotient with a nonzero numerator and a denominator vanishing at c, determine the sign of the quotient on each side of c and state the corresponding one sided infinite limits.",
+   "description_plain": "Work out the sign of the quotient on each side of the bad input.",
+   "diagnostic_signals": [
+    "BC-SIG-01010"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-2D1",
+    "BC-EK-LIM-2D2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01055",
+   "learning_objectives": [
+    "BC-LO-LIM-2D"
+   ],
+   "misconceptions": [
+    "BC-MIS-01012"
+   ],
+   "name": "Determine one sided infinite limits by sign analysis near a zero of the denominator",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01009"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:51"
+   ],
+   "topic": "BC-TOP-0114",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01011"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01009"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01009 on at least two presentations of the task, with no error from BC-ERR-01018.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of BC-ERR-01018 once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-01001.",
+    "remediation_target": "BC-PRQ-01001"
+   },
+   "archetypes": [
+    "BC-QA-01009"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01018"
+   ],
+   "concept": "BC-CON-01016",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Simplify a rational expression by dividing out common factors and identify the inputs where the reduced denominator is zero as the locations of vertical asymptotes.",
+   "description_plain": "Simplify first, then read off where the remaining denominator vanishes.",
+   "diagnostic_signals": [
+    "BC-SIG-01009"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-2D2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01056",
+   "learning_objectives": [
+    "BC-LO-LIM-2D"
+   ],
+   "misconceptions": [
+    "BC-MIS-01011"
+   ],
+   "name": "Identify vertical asymptotes from an expression after simplification",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01001"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:51"
+   ],
+   "topic": "BC-TOP-0114",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01011"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01007"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01007 on at least two presentations of the task, with no error from BC-ERR-01018.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of BC-ERR-01018 once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-01001.",
+    "remediation_target": "BC-PRQ-01001"
+   },
+   "archetypes": [
+    "BC-QA-01007"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01018"
+   ],
+   "concept": "BC-CON-01016",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given a rational expression, determine whether a zero of the original denominator produces a removable discontinuity, because the factor divides out, or a vertical asymptote, because it does not.",
+   "description_plain": "Decide whether the factor cancels or survives.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-2D2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01057",
+   "learning_objectives": [
+    "BC-LO-LIM-2D"
+   ],
+   "misconceptions": [
+    "BC-MIS-01011"
+   ],
+   "name": "Distinguish a vertical asymptote from a removable discontinuity at the same input",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01001"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:47",
+    "ced:51"
+   ],
+   "topic": "BC-TOP-0114",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01013"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01010"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01010 on at least two presentations of the task, with no error from BC-ERR-01021, BC-ERR-01023.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of BC-ERR-01021, BC-ERR-01023 once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-01004.",
+    "remediation_target": "BC-PRQ-01004"
+   },
+   "archetypes": [
+    "BC-QA-01010"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01021",
+    "BC-ERR-01023"
+   ],
+   "concept": "BC-CON-01017",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "For a quotient of polynomials, compare the degrees of numerator and denominator, or divide by the highest power of the variable, to evaluate the limit as the variable increases or decreases without bound.",
+   "description_plain": "Compare the top and bottom degrees to get the end value.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-2D3",
+    "BC-EK-LIM-2D4"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01058",
+   "learning_objectives": [
+    "BC-LO-LIM-2D"
+   ],
+   "misconceptions": [
+    "BC-MIS-01013"
+   ],
+   "name": "Evaluate the limit of a rational function at infinity by comparing degrees",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01004"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:52"
+   ],
+   "topic": "BC-TOP-0115",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01018"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01010"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01010 on at least two presentations of the task, with no error from BC-ERR-01023, BC-ERR-01033.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of BC-ERR-01023, BC-ERR-01033 once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-01004.",
+    "remediation_target": "BC-PRQ-01004"
+   },
+   "archetypes": [
+    "BC-QA-01010"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01023",
+    "BC-ERR-01033"
+   ],
+   "concept": "BC-CON-01017",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given that the limit of f as the variable increases or decreases without bound is a real number L, state that the line y equals L is a horizontal asymptote of the graph of f.",
+   "description_plain": "Turn a finite end behaviour value into a horizontal asymptote.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-2D3",
+    "BC-EK-LIM-2D4"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01059",
+   "learning_objectives": [
+    "BC-LO-LIM-2D"
+   ],
+   "misconceptions": [
+    "BC-MIS-01018"
+   ],
+   "name": "Identify horizontal asymptotes from limits at infinity",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01004"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:52"
+   ],
+   "topic": "BC-TOP-0115",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01013",
+     "BC-MIS-01014"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01010"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01010 on at least two presentations of the task, with no error from BC-ERR-01021, BC-ERR-01022.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of BC-ERR-01021, BC-ERR-01022 once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-01010"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-01021",
+    "BC-ERR-01022"
+   ],
+   "concept": "BC-CON-01017",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given a contextual model, write the limit expression as the independent variable increases without bound that describes the long run behaviour of the modelled quantity or of its rate of change.",
+   "description_plain": "Write the limit statement that answers a question about long run behaviour.",
+   "diagnostic_signals": [
+    "BC-SIG-01011",
+    "BC-SIG-01012"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-2D4"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01060",
+   "learning_objectives": [
+    "BC-LO-LIM-2D"
+   ],
+   "misconceptions": [
+    "BC-MIS-01013",
+    "BC-MIS-01014"
+   ],
+   "name": "Write a limit expression describing end behaviour in context",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-05",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:52",
+    "sg-25:4"
+   ],
+   "topic": "BC-TOP-0115",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01013"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01010"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01010 on at least two presentations of the task, with no error from BC-ERR-01021, BC-ERR-01024.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of BC-ERR-01021, BC-ERR-01024 once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-01004.",
+    "remediation_target": "BC-PRQ-01004"
+   },
+   "archetypes": [
+    "BC-QA-01010"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01021",
+    "BC-ERR-01024"
+   ],
+   "concept": "BC-CON-01017",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "For an expression containing a square root of a polynomial, divide numerator and denominator by the dominant power, attending to the sign of the variable when it is taken inside or outside the radical, and evaluate the limit at infinity.",
+   "description_plain": "Divide by the dominant power and treat the sign of the variable carefully under the radical.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-2D3"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01061",
+   "learning_objectives": [
+    "BC-LO-LIM-2D"
+   ],
+   "misconceptions": [
+    "BC-MIS-01013"
+   ],
+   "name": "Evaluate limits at infinity for expressions containing radicals",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01004"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:52"
+   ],
+   "topic": "BC-TOP-0115",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01014"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01010"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01010 on at least two presentations of the task, with no error from the errors recorded for this topic.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of the errors recorded for this topic once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-01004.",
+    "remediation_target": "BC-PRQ-01004"
+   },
+   "archetypes": [
+    "BC-QA-01010"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-01018",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Evaluate the limit of a quotient of two increasing functions to determine whether one grows faster than, slower than, or comparably to the other, and state the comparison.",
+   "description_plain": "Use the limit of a quotient to say which quantity outgrows the other.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-2D5"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01062",
+   "learning_objectives": [
+    "BC-LO-LIM-2D"
+   ],
+   "misconceptions": [
+    "BC-MIS-01014"
+   ],
+   "name": "Compare relative magnitudes of growth using limits",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01004"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:52"
+   ],
+   "topic": "BC-TOP-0115",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01013"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01010"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01010 on at least two presentations of the task, with no error from BC-ERR-01024.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of BC-ERR-01024 once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-01004.",
+    "remediation_target": "BC-PRQ-01004"
+   },
+   "archetypes": [
+    "BC-QA-01010"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01024"
+   ],
+   "concept": "BC-CON-01017",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Evaluate the limits of f as the variable increases without bound and as it decreases without bound separately, and report both horizontal asymptotes when the two values differ.",
+   "description_plain": "Check both ends separately because they can differ.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-2D3",
+    "BC-EK-LIM-2D4"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01063",
+   "learning_objectives": [
+    "BC-LO-LIM-2D"
+   ],
+   "misconceptions": [
+    "BC-MIS-01013"
+   ],
+   "name": "Distinguish the limit at positive infinity from the limit at negative infinity",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01004"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:52"
+   ],
+   "topic": "BC-TOP-0115",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01016"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01011"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01011 on at least two presentations of the task, with no error from BC-ERR-01028.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of BC-ERR-01028 once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-01010.",
+    "remediation_target": "BC-PRQ-01010"
+   },
+   "archetypes": [
+    "BC-QA-01011"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01028"
+   ],
+   "concept": "BC-CON-01019",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "State that the theorem requires f continuous on the closed interval from a to b and a target value d between f(a) and f(b).",
+   "description_plain": "Name continuity on a closed interval and the target value lying between the endpoint values.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-1A1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01064",
+   "learning_objectives": [
+    "BC-LO-FUN-1A"
+   ],
+   "misconceptions": [
+    "BC-MIS-01016"
+   ],
+   "name": "State the hypotheses of the Intermediate Value Theorem",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01010"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:53",
+    "sg-25:12"
+   ],
+   "topic": "BC-TOP-0116",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01010",
+     "BC-MIS-01015"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01011"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01011 on at least two presentations of the task, with no error from BC-ERR-01016, BC-ERR-01025.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of BC-ERR-01016, BC-ERR-01025 once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-01008.",
+    "remediation_target": "BC-PRQ-01008"
+   },
+   "archetypes": [
+    "BC-QA-01011"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01016",
+    "BC-ERR-01025"
+   ],
+   "concept": "BC-CON-01019",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Establish continuity of the function on the closed interval from the stated properties of the function, such as differentiability or membership of a family continuous on its domain, and record the reason in the response.",
+   "description_plain": "Say why the function is continuous on the interval, with a reason.",
+   "diagnostic_signals": [
+    "BC-SIG-01013"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-1A1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01065",
+   "learning_objectives": [
+    "BC-LO-FUN-1A"
+   ],
+   "misconceptions": [
+    "BC-MIS-01010",
+    "BC-MIS-01015"
+   ],
+   "name": "Verify the continuity hypothesis before applying the theorem",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01008"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-03"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:53",
+    "sg-25:12"
+   ],
+   "topic": "BC-TOP-0116",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01016"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01011"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01011 on at least two presentations of the task, with no error from BC-ERR-01026.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of BC-ERR-01026 once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-01010.",
+    "remediation_target": "BC-PRQ-01010"
+   },
+   "archetypes": [
+    "BC-QA-01011"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01026"
+   ],
+   "concept": "BC-CON-01019",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Display the inequality placing the target value strictly between the values of the function at the two endpoints of the interval.",
+   "description_plain": "Show the wanted output sits between the two endpoint outputs.",
+   "diagnostic_signals": [
+    "BC-SIG-01014"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-1A1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01066",
+   "learning_objectives": [
+    "BC-LO-FUN-1A"
+   ],
+   "misconceptions": [
+    "BC-MIS-01016"
+   ],
+   "name": "Verify that the target value lies between the endpoint values",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01010"
+   ],
+   "representations": [
+    "BC-REP-03",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:53",
+    "sg-25:12"
+   ],
+   "topic": "BC-TOP-0116",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01016"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01011"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01011 on at least two presentations of the task, with no error from BC-ERR-01027, BC-ERR-01028.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of BC-ERR-01027, BC-ERR-01028 once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-01010.",
+    "remediation_target": "BC-PRQ-01010"
+   },
+   "archetypes": [
+    "BC-QA-01011"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01027",
+    "BC-ERR-01028"
+   ],
+   "concept": "BC-CON-01019",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Conclude that there is at least one number c strictly between a and b with f(c) equal to the target value, and state the conclusion using the interval named in the question.",
+   "description_plain": "Say that at least one input in the open interval gives the wanted output.",
+   "diagnostic_signals": [
+    "BC-SIG-01015"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-1A1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01067",
+   "learning_objectives": [
+    "BC-LO-FUN-1A"
+   ],
+   "misconceptions": [
+    "BC-MIS-01016"
+   ],
+   "name": "State the conclusion of the theorem with the correct interval",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01010"
+   ],
+   "representations": [
+    "BC-REP-04"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:53",
+    "sg-25:12"
+   ],
+   "topic": "BC-TOP-0116",
+   "unit": "BC-UNIT-01"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01015"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01011"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-01011 on at least two presentations of the task, with no error from BC-ERR-01025, BC-ERR-01026.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The method is started correctly but the response loses a notation, justification, or communication point, or shows one of BC-ERR-01025, BC-ERR-01026 once without repeating it.",
+    "prerequisite_gap_if": "The response fails before any step specific to this skill, consistent with BC-PRQ-01010.",
+    "remediation_target": "BC-PRQ-01010"
+   },
+   "archetypes": [
+    "BC-QA-01011"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01025",
+    "BC-ERR-01026"
+   ],
+   "concept": "BC-CON-01019",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given selected values of a function stated to be differentiable or continuous, select two tabulated inputs whose outputs straddle the target value, state continuity with its reason, and conclude existence of an input with that output.",
+   "description_plain": "Use two table rows that straddle the target value, having first established continuity.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-1A1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-01068",
+   "learning_objectives": [
+    "BC-LO-FUN-1A"
+   ],
+   "misconceptions": [
+    "BC-MIS-01015"
+   ],
+   "name": "Apply the Intermediate Value Theorem to a function given by a table",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01010"
+   ],
+   "representations": [
+    "BC-REP-03",
+    "BC-REP-05"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:53",
+    "sg-25:12"
+   ],
+   "topic": "BC-TOP-0116",
+   "unit": "BC-UNIT-01"
+  }
+ ]
+}

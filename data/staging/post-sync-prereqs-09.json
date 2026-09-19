@@ -1,0 +1,2529 @@
+{
+ "registry": "skills",
+ "skills": [
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09002 (the slope read as the rate of the vertical component)",
+     "BC-MIS-09003 (the order of the parametric quotient treated as immaterial)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09001 (the slope at a stated time, where the inverted quotient gives a different number)"
+    ],
+    "mastered_if": "The slope is written as dy/dt divided by dx/dt, the quotient appearing on the page as an expression with the vertical rate above the horizontal one, before any value is reported; the two rates are not interchanged and the vertical rate alone is never offered as the slope, so BC-ERR-09002, BC-ERR-09003, and BC-ERR-09004 are all absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "Both component derivatives are correct and the quotient is inverted, which is BC-ERR-09002; or dy/dt alone is handed in as the slope, which is BC-ERR-09003; or the correct slope value appears with no quotient written anywhere, which is BC-ERR-09004 and the observation in BC-SIG-09001.",
+    "prerequisite_gap_if": "One of dx/dt or dy/dt is itself wrong, so the quotient cannot be right whatever its order, which is BC-SKL-09001; reading which component the prompt calls x is BC-PRQ-06005.",
+    "remediation_target": "BC-MIS-09002 (that a slope compares vertical change to horizontal change) for the conceptual case; BC-SKL-09001 (producing both rates before dividing) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-09001"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-09002",
+    "BC-ERR-09003",
+    "BC-ERR-09004"
+   ],
+   "concept": "BC-CON-09002",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Compute dy/dx at a parameter value as the quotient of dy/dt by dx/dt, communicating the quotient rather than only its value.",
+   "description_plain": "Divide dy/dt by dx/dt to get the slope.",
+   "diagnostic_signals": [
+    "BC-SIG-09001"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-3G2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-09002",
+   "learning_objectives": [
+    "BC-LO-CHA-3G"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-09002",
+    "BC-MIS-09003"
+   ],
+   "name": "Compute dy/dx for a parametric curve as a quotient of derivatives",
+   "official_evidence": [
+    "sg-23:7",
+    "BC-FRQ-2022-Q2-A",
+    "BC-FRQ-2015-Q2-B",
+    "BC-FRQ-2023-Q2-C",
+    "BC-FRQ-2026-Q2-B",
+    "BC-MCQ-CED-018",
+    "BC-MCQ-SAMPLE-017"
+   ],
+   "practice_skills": [
+    "BC-MPS-2D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-SKL-09001"
+   ],
+   "representations": [
+    "BC-REP-12",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-23:7",
+    "ced:171"
+   ],
+   "topic": "BC-TOP-0901",
+   "unit": "BC-UNIT-09",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09003 (the order of the parametric quotient treated as immaterial)",
+     "BC-SKL-09006 (locating vertical tangents, which uses the same condition)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09001 (dx/dt has a zero on the stated interval, so the condition has something to exclude)"
+    ],
+    "mastered_if": "The response states that dy/dx as a quotient of parametric derivatives exists only where dx/dt is not zero, and identifies the parameter values on the interval where dx/dt vanishes as points where the slope is undefined or the tangent is vertical; BC-ERR-09005 is absent, and the condition is written rather than implied.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The quotient is formed in the right order and applied at a parameter value where dx/dt is zero without comment, or the condition is omitted where the question asks for it, which is BC-ERR-09005.",
+    "prerequisite_gap_if": "The equation dx/dt equal to zero is not solved on the interval, so the excluded parameter values are never located, which is BC-PRQ-08001; misreading which component function is x is BC-PRQ-06005.",
+    "remediation_target": "BC-MIS-09003 (which rate sits in the denominator and what its vanishing means) for the conceptual case; BC-PRQ-08001 (solving for the parameter values where dx/dt is zero) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-09001"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-09005"
+   ],
+   "concept": "BC-CON-09002",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "State that dy/dx as a quotient of parametric derivatives is defined only where dx/dt is not zero, and identify parameter values where it fails.",
+   "description_plain": "Say that the slope formula needs a nonzero rate in x.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-3G2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-09003",
+   "learning_objectives": [
+    "BC-LO-CHA-3G"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-09003"
+   ],
+   "name": "State the condition that dx/dt is not zero",
+   "official_evidence": [
+    "BC-FRQ-2022-Q2-A",
+    "BC-FRQ-2015-Q2-B",
+    "BC-FRQ-2026-Q2-B"
+   ],
+   "practice_skills": [
+    "BC-MPS-2D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-SKL-09002"
+   ],
+   "representations": [
+    "BC-REP-12",
+    "BC-REP-04"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:171"
+   ],
+   "topic": "BC-TOP-0901",
+   "unit": "BC-UNIT-09",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09002 (the slope read as the rate of the vertical component)",
+     "BC-MIS-09008 (a calculator result treated as standing without its expression)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09001 (a numerical slope at a stated time, so both the quotient and the reporting are scored)"
+    ],
+    "mastered_if": "Both component derivatives are evaluated at the given parameter value, the quotient dy/dt over dx/dt is shown with those two numbers in place, and the slope is reported to three places from unrounded stored values; neither BC-ERR-09004 nor BC-ERR-09006 appears.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "A correct slope value stands alone with no quotient and no component values shown, which is BC-ERR-09004 and the state in BC-SIG-09001; or the setup is complete and a stored derivative is truncated before the division, moving the reported slope, which is BC-ERR-09006.",
+    "prerequisite_gap_if": "The reported number is right but given to the wrong number of decimal places or rounded against the convention, which is BC-PRQ-08006 rather than a parametric gap.",
+    "remediation_target": "BC-MIS-09002 (what the quotient of rates means) for the conceptual case; BC-PRQ-08006 (storing the component values before dividing) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-09001"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-09004",
+    "BC-ERR-09006"
+   ],
+   "concept": "BC-CON-09002",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Evaluate dy/dt and dx/dt at a given parameter value and report their quotient as the slope of the line tangent to the path there.",
+   "description_plain": "Put the parameter value into the slope quotient.",
+   "diagnostic_signals": [
+    "BC-SIG-09001"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-3G2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-09004",
+   "learning_objectives": [
+    "BC-LO-CHA-3G"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-09002"
+   ],
+   "name": "Evaluate the slope of the tangent at a parameter value",
+   "official_evidence": [
+    "sg-23:7",
+    "BC-FRQ-2022-Q2-A",
+    "BC-FRQ-2015-Q2-B",
+    "BC-FRQ-2023-Q2-C",
+    "BC-MCQ-SAMPLE-017"
+   ],
+   "practice_skills": [
+    "BC-MPS-2D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08006",
+    "BC-SKL-09002"
+   ],
+   "representations": [
+    "BC-REP-12",
+    "BC-REP-09"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-23:7"
+   ],
+   "topic": "BC-TOP-0901",
+   "unit": "BC-UNIT-09",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09001 (the parameter treated as the horizontal coordinate)",
+     "BC-SKL-09002 (the slope itself, which this skill consumes)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09001 (position and velocity components are both in hand, so the wrong anchor is visible in the line)"
+    ],
+    "mastered_if": "The point on the curve is obtained by evaluating x and y at the parameter value, the slope by the quotient of the component derivatives there, and the tangent line is written in point slope form with those coordinates and that slope; the point is a position and not a pair of rates, so BC-ERR-09007 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The slope is correct and the line is written through the pair of derivative values rather than through the coordinates of the particle, which is BC-ERR-09007; the line has the right direction and the wrong anchor.",
+    "prerequisite_gap_if": "The parameter value is substituted into the derivative where the position was wanted because t is being read as the horizontal coordinate, which is BC-PRQ-06005 with BC-MIS-09001 behind it.",
+    "remediation_target": "BC-MIS-09001 (position values against rate values) for the conceptual case; BC-SKL-09002 (producing the slope the line needs) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-09001"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-09007"
+   ],
+   "concept": "BC-CON-09002",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a parameter value, compute the point on the curve and the slope there and write the equation of the tangent line in point slope form.",
+   "description_plain": "Use the point and the slope to write the line.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-3G2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-09005",
+   "learning_objectives": [
+    "BC-LO-CHA-3G"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-09001"
+   ],
+   "name": "Write the equation of the tangent line at a point on a parametric curve",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-2D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-SKL-09004"
+   ],
+   "representations": [
+    "BC-REP-12",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:171"
+   ],
+   "topic": "BC-TOP-0901",
+   "unit": "BC-UNIT-09",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09003 (the order of the parametric quotient treated as immaterial)",
+     "BC-SKL-09003 (the condition that dx/dt is not zero)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09001 (both rates have zeros on the interval, so exchanging the conditions changes the answer)"
+    ],
+    "mastered_if": "Horizontal tangents are located by solving dy/dt equal to zero and checking that dx/dt is not zero there, vertical tangents by solving dx/dt equal to zero and checking dy/dt is not zero, and the two conditions are kept apart in the written work; BC-ERR-09008 is absent, and any parameter value where both rates vanish is set aside.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "Both equations are solved correctly and the results are labelled the wrong way round, dx/dt equal to zero being reported as the horizontal tangent condition, which is BC-ERR-09008.",
+    "prerequisite_gap_if": "The trigonometric or polynomial equation for the vanishing rate is not solved on the stated interval, so no candidate parameter values appear, which is BC-PRQ-08001.",
+    "remediation_target": "BC-MIS-09003 (which rate vanishing flattens the tangent) for the conceptual case; BC-PRQ-08001 (solving each rate equation on the interval) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-09001"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-09008"
+   ],
+   "concept": "BC-CON-09002",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Solve dy/dt equal to zero with dx/dt nonzero for horizontal tangents, and dx/dt equal to zero with dy/dt nonzero for vertical tangents.",
+   "description_plain": "Horizontal where dy/dt is zero, vertical where dx/dt is zero.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-3G2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-09006",
+   "learning_objectives": [
+    "BC-LO-CHA-3G"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-09003"
+   ],
+   "name": "Locate parameter values where the tangent is horizontal or vertical",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-2D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08001",
+    "BC-SKL-09001",
+    "BC-SKL-09003"
+   ],
+   "representations": [
+    "BC-REP-12",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:171"
+   ],
+   "topic": "BC-TOP-0901",
+   "unit": "BC-UNIT-09",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09004 (the second derivative assumed to follow the pattern of the first)",
+     "BC-SKL-09008 (the division by dx/dt that completes the second derivative)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09002 (the second derivative must be assembled, so the intermediate differentiation is visible)"
+    ],
+    "mastered_if": "The expression already found for dy/dx in the parameter is differentiated with respect to t by the quotient or product rule, the whole quotient being treated as the function to differentiate; the result is the derivative of the slope and not a ratio of second derivatives, so BC-ERR-09009 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The first derivative dy/dx is correct and the next step replaces each component derivative by its second derivative, which is BC-ERR-09009 and exactly the observation in BC-SIG-09002.",
+    "prerequisite_gap_if": "The quotient rule applied to the expression for dy/dx goes wrong in its own terms, which is a differentiation gap rather than a parametric one; misreading which expression is to be differentiated is BC-PRQ-06005.",
+    "remediation_target": "BC-MIS-09004 (what is being differentiated at the second step) for the conceptual case; BC-SKL-09007 as a quotient rule application for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-09002"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-09009"
+   ],
+   "concept": "BC-CON-09003",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given dy/dx expressed in the parameter, compute its derivative with respect to the parameter using the quotient or product rule.",
+   "description_plain": "Treat the slope as a function of the parameter and differentiate it.",
+   "diagnostic_signals": [
+    "BC-SIG-09002"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-3G3"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-09007",
+   "learning_objectives": [
+    "BC-LO-CHA-3G"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-09004"
+   ],
+   "name": "Differentiate dy/dx with respect to the parameter",
+   "official_evidence": [
+    "BC-MCQ-CED-018"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-SKL-09002",
+    "BC-SKL-02039"
+   ],
+   "representations": [
+    "BC-REP-12",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:172"
+   ],
+   "topic": "BC-TOP-0902",
+   "unit": "BC-UNIT-09",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09004 (the second derivative assumed to follow the pattern of the first)",
+     "BC-SKL-09002 (the first derivative, whose structure invites the analogy)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09002 (the assembled second derivative is scored, so the missing division shows directly)"
+    ],
+    "mastered_if": "The second derivative of y with respect to x is written as the derivative with respect to t of dy/dx, divided by dx/dt, both operations appearing in the work in that order; the second division is present and the expression is not a ratio of second component derivatives, so neither BC-ERR-09010 nor BC-ERR-09009 appears.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The derivative of dy/dx with respect to the parameter is computed correctly and handed in as the second derivative, the second division by dx/dt omitted, which is BC-ERR-09010; or the whole step is replaced by a quotient of second derivatives, which is BC-ERR-09009 and BC-SIG-09002.",
+    "prerequisite_gap_if": "The derivative of dy/dx with respect to t was not obtained, so there is nothing to divide, which is BC-SKL-09007; reading dy/dx as a function of t at all is BC-PRQ-06005.",
+    "remediation_target": "BC-MIS-09004 (why the chain rule supplies a second division by dx/dt) for the conceptual case; BC-SKL-09007 (differentiating the slope with respect to the parameter) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-09002"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-09010",
+    "BC-ERR-09009"
+   ],
+   "concept": "BC-CON-09003",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Compute the second derivative of y with respect to x as the derivative with respect to the parameter of dy/dx divided by dx/dt.",
+   "description_plain": "Divide the derivative of the slope by dx/dt.",
+   "diagnostic_signals": [
+    "BC-SIG-09002"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-3G3"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-09008",
+   "learning_objectives": [
+    "BC-LO-CHA-3G"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-09004"
+   ],
+   "name": "Assemble the second derivative by dividing again by dx/dt",
+   "official_evidence": [
+    "BC-MCQ-CED-018"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-SKL-09007",
+    "BC-SKL-09001"
+   ],
+   "representations": [
+    "BC-REP-12",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:172"
+   ],
+   "topic": "BC-TOP-0902",
+   "unit": "BC-UNIT-09",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09004 (the second derivative assumed to follow the pattern of the first)",
+     "BC-MIS-09008 (a calculator result treated as standing without its expression)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09002 (a numerical second derivative, so setup and reporting are scored together)"
+    ],
+    "mastered_if": "The assembled second derivative is evaluated at the requested parameter value with the substitution shown, the supporting expressions for dy/dx and its derivative present, and the number reported to the stated accuracy from stored values; neither BC-ERR-09006 nor BC-ERR-09011 appears.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "A correct decimal for the second derivative appears with no supporting expression on the page, which is BC-ERR-09011; or the setup is complete and an intermediate derivative is truncated before the evaluation, which is BC-ERR-09006.",
+    "prerequisite_gap_if": "The reported value carries the wrong number of decimal places or is rounded against the convention, which is BC-PRQ-08006 rather than an assembly gap.",
+    "remediation_target": "BC-MIS-09008 (the written expression as the scored object) for the conceptual case; BC-PRQ-08006 (evaluating from stored values) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-09002"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-09006",
+    "BC-ERR-09011"
+   ],
+   "concept": "BC-CON-09003",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Evaluate the second derivative of y with respect to x at a given parameter value and report it with the setup shown.",
+   "description_plain": "Substitute the parameter value into the assembled expression.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-3G3"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-09009",
+   "learning_objectives": [
+    "BC-LO-CHA-3G"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-09004"
+   ],
+   "name": "Evaluate the second derivative at a parameter value",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08006",
+    "BC-SKL-09008"
+   ],
+   "representations": [
+    "BC-REP-12",
+    "BC-REP-09"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:172"
+   ],
+   "topic": "BC-TOP-0902",
+   "unit": "BC-UNIT-09",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09004 (the second derivative assumed to follow the pattern of the first)",
+     "BC-SKL-09008 (the assembly step this reads the sign of)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09002 (the sign of the second derivative is what is asked, so a component derivative of the opposite sign is diagnostic)"
+    ],
+    "mastered_if": "Concavity is stated from the sign of the second derivative of y with respect to x at the point, the value or its sign being quoted from the assembled expression rather than from a component derivative; the claim names the curve in the plane, and BC-ERR-09012 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The second derivative of y with respect to x is available and the concavity claim is read off the sign of the second derivative of y with respect to the parameter instead, which is BC-ERR-09012.",
+    "prerequisite_gap_if": "The second derivative of y with respect to x was never assembled, so no sign is available to read, which is BC-SKL-09008; mistaking which quantity the notation names is BC-PRQ-06005.",
+    "remediation_target": "BC-MIS-09004 (which second derivative governs concavity in the plane) for the conceptual case; BC-SKL-09008 (assembling that second derivative) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-09002"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-09012"
+   ],
+   "concept": "BC-CON-09003",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Use the sign of the second derivative of y with respect to x to state whether the curve is concave up or concave down at a point.",
+   "description_plain": "Positive means concave up as a curve in the plane.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-3G3"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-09010",
+   "learning_objectives": [
+    "BC-LO-CHA-3G"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-09004"
+   ],
+   "name": "Determine the concavity of a parametric curve from the sign of the second derivative",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-SKL-09008",
+    "BC-SKL-05030"
+   ],
+   "representations": [
+    "BC-REP-12",
+    "BC-REP-04"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:172"
+   ],
+   "topic": "BC-TOP-0902",
+   "unit": "BC-UNIT-09",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09005 (a length in the plane taken as the sum of the component contributions)",
+     "BC-SKL-08056 (the single variable arc length integrand)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09003 (the integrand is the speed, so an additive integrand is visible in the expression)"
+    ],
+    "mastered_if": "The length is written as the definite integral of the square root of the sum of the squares of dx/dt and dy/dt over the stated parameter interval, each component squared as a whole inside parentheses and the two squares added under one radical; neither BC-ERR-09013 nor BC-ERR-09014 appears.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "Both component rates are correct and they are added rather than combined as a magnitude, which is BC-ERR-09013 and the not mastered observation in BC-SIG-09003; or the radical is right and a squared component loses its parentheses so only part of it is squared, which is BC-ERR-09014.",
+    "prerequisite_gap_if": "The magnitude of a two component quantity is not formed by the Pythagorean relation, which is BC-PRQ-08007; the single variable length integral from which this generalises is BC-SKL-08056, and evaluating any definite integral by antidifferentiation is BC-SKL-06034.",
+    "remediation_target": "BC-MIS-09005 (why the two rates combine by the Pythagorean relation) for the conceptual case; BC-PRQ-08007 (forming the magnitude with parentheses intact) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-09003"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-09013",
+    "BC-ERR-09014"
+   ],
+   "concept": "BC-CON-09004",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Write the definite integral of the square root of the sum of the squares of dx/dt and dy/dt over the stated parameter interval.",
+   "description_plain": "Integrate the square root of the sum of the squares of the two rates.",
+   "diagnostic_signals": [
+    "BC-SIG-09003"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-6B1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-09011",
+   "learning_objectives": [
+    "BC-LO-CHA-6B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-09005"
+   ],
+   "name": "Set up the arc length integral for a parametric curve",
+   "official_evidence": [
+    "sg-24:6",
+    "BC-FRQ-2021-Q2-B",
+    "BC-FRQ-2022-Q2-D",
+    "BC-FRQ-2015-Q2-D",
+    "BC-FRQ-2023-Q2-D",
+    "BC-FRQ-2024-Q2-B",
+    "BC-FRQ-2018-Q2-D",
+    "BC-MCQ-SAMPLE-023"
+   ],
+   "practice_skills": [
+    "BC-MPS-1D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08007",
+    "BC-SKL-06034",
+    "BC-SKL-08056",
+    "BC-SKL-09001"
+   ],
+   "representations": [
+    "BC-REP-12",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:173",
+    "sg-24:6"
+   ],
+   "topic": "BC-TOP-0903",
+   "unit": "BC-UNIT-09",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09008 (a calculator result treated as standing without its expression)",
+     "BC-MIS-09006 (distance in the plane read as the size of the net change in position)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09003 (the radical integrand has no elementary antiderivative, so the written expression is the only record of method)"
+    ],
+    "mastered_if": "The parametric length integral is written on the page with its radical integrand and parameter limits, evaluated numerically, and reported to three places after the decimal point from unrounded stored values; neither BC-ERR-09011 nor BC-ERR-09006 appears.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "A correct decimal length appears with no integral expression supporting it, which is BC-ERR-09011; or the integral is shown and a truncated component rate or bound is reused, moving the third decimal place, which is BC-ERR-09006.",
+    "prerequisite_gap_if": "The number is right and reported to the wrong number of places or rounded against the convention, which is BC-PRQ-08006; the single variable version of the same numerical step is BC-SKL-08059.",
+    "remediation_target": "BC-MIS-09008 (the written integral as the scored object) for the conceptual case; BC-PRQ-08006 (three place reporting from stored values) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-09003"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-09006",
+    "BC-ERR-09011"
+   ],
+   "concept": "BC-CON-09004",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Evaluate the parametric arc length integral numerically and report the value accurate to three places after the decimal point.",
+   "description_plain": "Enter the radical integrand and report the decimal.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-6B1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-09012",
+   "learning_objectives": [
+    "BC-LO-CHA-6B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-09008"
+   ],
+   "name": "Evaluate a parametric arc length integral with technology",
+   "official_evidence": [
+    "sg-24:6",
+    "BC-FRQ-2021-Q2-B",
+    "BC-FRQ-2022-Q2-D",
+    "BC-FRQ-2015-Q2-D",
+    "BC-FRQ-2018-Q2-D"
+   ],
+   "practice_skills": [
+    "BC-MPS-1D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08006",
+    "BC-SKL-08059",
+    "BC-SKL-09011"
+   ],
+   "representations": [
+    "BC-REP-09",
+    "BC-REP-12"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-24:6"
+   ],
+   "topic": "BC-TOP-0903",
+   "unit": "BC-UNIT-09",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09006 (distance in the plane read as the size of the net change in position)",
+     "BC-SKL-09020 (displacement, the quantity this must be kept apart from)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09003 (a length along the path)",
+     "BC-QA-09007 (total distance from the speed, so the two quantities can be asked side by side)"
+    ],
+    "mastered_if": "The response states that the integral of the speed over a time interval is the total distance the particle travels along its path, and separates that from the magnitude of the vector of component integrals; the distinction is made for a path that doubles back, and BC-ERR-09015 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The speed integral is recognised as a length and the distance travelled is then computed by integrating the components first and taking a magnitude at the end, which is BC-ERR-09015 and the state in BC-SIG-09004.",
+    "prerequisite_gap_if": "The notation for the velocity components and for the position vector is not distinguished in the stem, so the two candidate quantities are not even separated, which is BC-PRQ-06005.",
+    "remediation_target": "BC-MIS-09006 (why integrating first and taking a magnitude last measures something else) for the conceptual case; BC-SKL-09023 (forming the speed that goes inside the integral) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-09003",
+    "BC-QA-09007"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-09015"
+   ],
+   "concept": "BC-CON-09004",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "State that for a particle in planar motion the arc length integral of its path over a time interval is the total distance it travels over that interval.",
+   "description_plain": "The same integral measures the length of the path a particle traces.",
+   "diagnostic_signals": [
+    "BC-SIG-09004"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-6B1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-09013",
+   "learning_objectives": [
+    "BC-LO-CHA-6B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-09006"
+   ],
+   "name": "Identify the parametric arc length integral as the distance travelled",
+   "official_evidence": [
+    "sg-24:6",
+    "BC-FRQ-2021-Q2-B",
+    "BC-FRQ-2022-Q2-D",
+    "BC-FRQ-2015-Q2-D",
+    "BC-FRQ-2023-Q2-D",
+    "BC-FRQ-2024-Q2-B",
+    "BC-FRQ-2018-Q2-D"
+   ],
+   "practice_skills": [
+    "BC-MPS-1D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-SKL-09011"
+   ],
+   "representations": [
+    "BC-REP-12",
+    "BC-REP-04"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:173",
+    "ced:176",
+    "sg-24:6"
+   ],
+   "topic": "BC-TOP-0903",
+   "unit": "BC-UNIT-09",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09007 (any interval containing the curve assumed to give its length or area)",
+     "BC-SKL-09037 (identifying one loop of a polar curve, the same question in polar form)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09003 (the curve retraces on a longer interval, so the limits alone change the answer)"
+    ],
+    "mastered_if": "The parameter interval is named as the values that carry the curve from one end of the described piece to the other, and it is checked that the interval traces that piece exactly once, by the zeros of the components or by the period of the trigonometric parts; BC-ERR-09016 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The integrand is correct and the limits span an interval that covers part of the curve twice, so the reported length exceeds the length of the piece, which is BC-ERR-09016.",
+    "prerequisite_gap_if": "Which parameter interval traces a curve exactly once cannot be decided for a standard curve, which is BC-PRQ-09004 rather than a length gap.",
+    "remediation_target": "BC-MIS-09007 (what the limits have to do beyond containing the curve) for the conceptual case; BC-PRQ-09004 (testing that an interval traces the curve once) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-09003"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-09016"
+   ],
+   "concept": "BC-CON-09004",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given an arc length integral or a described curve, name the parameter interval that bounds the piece of curve whose length is being computed, and check that the interval traces it once.",
+   "description_plain": "Say which parameter values bound the piece being measured.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-6B1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-09014",
+   "learning_objectives": [
+    "BC-LO-CHA-6B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-09007"
+   ],
+   "name": "Identify the parameter interval over which a length is measured",
+   "official_evidence": [
+    "BC-FRQ-2024-Q5-B"
+   ],
+   "practice_skills": [
+    "BC-MPS-1D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-09004",
+    "BC-SKL-09011"
+   ],
+   "representations": [
+    "BC-REP-12",
+    "BC-REP-04"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:173"
+   ],
+   "topic": "BC-TOP-0903",
+   "unit": "BC-UNIT-09",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09009 (a vector answer treated as a pair of numbers with no structure)",
+     "BC-SKL-09001 (component differentiation in parametric notation, the same operation)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09004 (a vector must be reported, so labelling and order are part of the answer)"
+    ],
+    "mastered_if": "Each component of the vector valued function is differentiated with respect to the variable and the result is presented as one vector, with the horizontal component first and the vertical second or both labelled; the pair is not left as two loose numbers, so BC-ERR-09017 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "Both component derivatives are computed correctly and presented as two unlabelled numbers with no order made clear, or in the reverse order, which is BC-ERR-09017.",
+    "prerequisite_gap_if": "The vector or ordered pair notation in the stem is not read, so which expression is the horizontal component is unknown, which is BC-PRQ-09001.",
+    "remediation_target": "BC-MIS-09009 (a vector as one object with ordered components) for the conceptual case; BC-PRQ-09001 (reading and writing the vector notation) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-09004"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-09017"
+   ],
+   "concept": "BC-CON-09006",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a vector-valued function, compute the derivative of each component with respect to the variable and present the result as a vector.",
+   "description_plain": "Differentiate each coordinate on its own.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-3H1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-09015",
+   "learning_objectives": [
+    "BC-LO-CHA-3H"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-09009"
+   ],
+   "name": "Differentiate a vector-valued function component by component",
+   "official_evidence": [
+    "sg-23:6",
+    "BC-FRQ-2013-Q2-C",
+    "BC-FRQ-2021-Q2-A",
+    "BC-FRQ-2022-Q2-B",
+    "BC-FRQ-2023-Q2-A"
+   ],
+   "practice_skills": [
+    "BC-MPS-1D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-09001",
+    "BC-SKL-09001"
+   ],
+   "representations": [
+    "BC-REP-14",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:174",
+    "sg-23:6"
+   ],
+   "topic": "BC-TOP-0904",
+   "unit": "BC-UNIT-09",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09009 (a vector answer treated as a pair of numbers with no structure)",
+     "BC-SKL-09017 (the acceleration vector, one derivative further)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09004 (a vector at a stated time, so order and evaluation are both scored)"
+    ],
+    "mastered_if": "The position vector is differentiated component by component and both derivatives are evaluated at the stated time, the velocity reported as an ordered or labelled pair to the required accuracy; stored values feed the evaluation, so neither BC-ERR-09017 nor BC-ERR-09006 appears.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "Both velocity components are correct and appear as two numbers with no labels or in reversed order, which is BC-ERR-09017; or the components are correctly labelled and one is truncated before a later use, which is BC-ERR-09006.",
+    "prerequisite_gap_if": "The ordered pair notation for position in the plane is not read, so the components are not separated before differentiating, which is BC-PRQ-09001.",
+    "remediation_target": "BC-MIS-09009 (the velocity as one vector) for the conceptual case; BC-PRQ-09001 (the notation the answer is written in) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-09004"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-09017",
+    "BC-ERR-09006"
+   ],
+   "concept": "BC-CON-09006",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Evaluate the derivative of the position vector at a time and present both components, labelled or ordered.",
+   "description_plain": "Report both components of the derivative of position at that time.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-3H1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-09016",
+   "learning_objectives": [
+    "BC-LO-CHA-3H"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-09009"
+   ],
+   "name": "Evaluate the velocity vector at a given time",
+   "official_evidence": [
+    "BC-FRQ-2013-Q2-C",
+    "BC-FRQ-2024-Q2-A",
+    "BC-MCQ-PE2012-002"
+   ],
+   "practice_skills": [
+    "BC-MPS-1D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-09001",
+    "BC-SKL-09015"
+   ],
+   "representations": [
+    "BC-REP-14",
+    "BC-REP-09"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:174"
+   ],
+   "topic": "BC-TOP-0904",
+   "unit": "BC-UNIT-09",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09009 (a vector answer treated as a pair of numbers with no structure)",
+     "BC-SKL-09016 (the velocity vector, one derivative earlier)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09004 (the acceleration vector with its setup, so presentation and differentiation separate)"
+    ],
+    "mastered_if": "Each velocity component is differentiated, both derivatives are evaluated at the requested time, and the acceleration vector is presented with the derivative expressions shown alongside the two values; a variable expression is not set equal to its value at one time in a single chain, so neither BC-ERR-09011 nor BC-ERR-09018 appears.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "Two correct acceleration components appear with no differentiation and no evaluation shown, which is BC-ERR-09011 and the state in BC-SIG-09005; or the work is complete and written as one equality running from an expression in t to a number, which is BC-ERR-09018.",
+    "prerequisite_gap_if": "The vector notation is not parsed, so which component is being differentiated is unclear, which is BC-PRQ-09001.",
+    "remediation_target": "BC-MIS-09009 (the acceleration as one vector object) for the conceptual case; BC-ERR-09018 (writing the substitution as its own step) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-09004"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-09011",
+    "BC-ERR-09018"
+   ],
+   "concept": "BC-CON-09006",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Differentiate each component of the velocity vector and evaluate at the requested time, presenting the acceleration vector with the setup shown.",
+   "description_plain": "Differentiate each velocity component again and evaluate.",
+   "diagnostic_signals": [
+    "BC-SIG-09005"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-3H1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-09017",
+   "learning_objectives": [
+    "BC-LO-CHA-3H"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-09009"
+   ],
+   "name": "Evaluate the acceleration vector as the derivative of velocity",
+   "official_evidence": [
+    "sg-23:5",
+    "sg-23:6",
+    "BC-FRQ-2021-Q2-A",
+    "BC-FRQ-2022-Q2-B",
+    "BC-FRQ-2023-Q2-A"
+   ],
+   "practice_skills": [
+    "BC-MPS-1D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-09001",
+    "BC-SKL-09016"
+   ],
+   "representations": [
+    "BC-REP-14",
+    "BC-REP-09"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-23:5",
+    "sg-23:6"
+   ],
+   "topic": "BC-TOP-0904",
+   "unit": "BC-UNIT-09",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09009 (a vector answer treated as a pair of numbers with no structure)",
+     "BC-MIS-09001 (the parameter treated as the horizontal coordinate)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09004 (vector notation is required in the answer)",
+     "BC-QA-09005 (the stem gives components separately, so the two notations meet in one question)"
+    ],
+    "mastered_if": "A parametric description is rewritten as a vector valued function and back again with the horizontal component staying first in both forms, and quantities named in one notation are matched to their counterparts in the other; BC-ERR-09017 is absent across the conversion.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The conversion is carried out and the components are transposed, or the vector form is written with no labels so the order cannot be checked, which is BC-ERR-09017.",
+    "prerequisite_gap_if": "The vector and ordered pair notation is not read in the first place, so there is nothing to convert, which is BC-PRQ-09001.",
+    "remediation_target": "BC-MIS-09009 (what the two notations describe) for the conceptual case; BC-PRQ-09001 (writing the vector form correctly) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-09004",
+    "BC-QA-09005"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-09017"
+   ],
+   "concept": "BC-CON-09005",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Rewrite a parametric description of a path as a vector-valued function and back, preserving the order of the components.",
+   "description_plain": "The same motion can be written as a pair of equations or as one vector.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-3H1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-09018",
+   "learning_objectives": [
+    "BC-LO-CHA-3H"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-09009"
+   ],
+   "name": "Convert between parametric equations and vector-valued notation",
+   "official_evidence": [
+    "BC-FRQ-2013-Q2-C"
+   ],
+   "practice_skills": [
+    "BC-MPS-1D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-09001",
+    "BC-SKL-09001"
+   ],
+   "representations": [
+    "BC-REP-12",
+    "BC-REP-14"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:174"
+   ],
+   "topic": "BC-TOP-0904",
+   "unit": "BC-UNIT-09",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09009 (a vector answer treated as a pair of numbers with no structure)",
+     "BC-SKL-09021 (recovering a coordinate with a definite integral instead)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09005 (a coordinate is recovered from an initial position, so the per component constant is what the answer rests on)"
+    ],
+    "mastered_if": "Each component of the vector valued rate is antidifferentiated on its own and each carries its own constant, the result presented as a vector of two expressions; the constants are then fixed separately from the two given initial conditions, and BC-ERR-09019 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "Both component antiderivatives are correct and a single constant is attached to the vector as a whole, which is BC-ERR-09019, so only one of the two initial conditions can be satisfied.",
+    "prerequisite_gap_if": "The vector notation is not read as two independent component functions, which is BC-PRQ-09001 rather than an antidifferentiation gap.",
+    "remediation_target": "BC-MIS-09009 (two components, two constants) for the conceptual case; BC-PRQ-09001 (writing the vector antiderivative) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-09005"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-09019"
+   ],
+   "concept": "BC-CON-09007",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a vector-valued rate, produce a vector-valued antiderivative by antidifferentiating each component and carrying a constant in each.",
+   "description_plain": "Find an antiderivative of each component.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-8A1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-09019",
+   "learning_objectives": [
+    "BC-LO-FUN-8A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-09009"
+   ],
+   "name": "Antidifferentiate a vector-valued function component by component",
+   "official_evidence": [
+    "BC-FRQ-2021-Q2-C",
+    "BC-FRQ-2015-Q2-A"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-09001",
+    "BC-SKL-09015"
+   ],
+   "representations": [
+    "BC-REP-14",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:175"
+   ],
+   "topic": "BC-TOP-0905",
+   "unit": "BC-UNIT-09",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09006 (distance in the plane read as the size of the net change in position)",
+     "BC-SKL-09025 (total distance, which integrates the speed)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09005 (position is recovered from displacement, so the vector structure is used rather than a length)"
+    ],
+    "mastered_if": "The displacement over the time interval is written as a vector whose entries are the definite integrals of the two velocity components over that interval, and it is described as the net change in position rather than as a length; the magnitude, if taken, is named the distance between the endpoints, and BC-ERR-09015 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The vector of component integrals is formed correctly and its magnitude is then reported as the total distance travelled, which is BC-ERR-09015 and the observation in BC-SIG-09004.",
+    "prerequisite_gap_if": "Net change from a rate over an interval is not available in the single variable setting either, which is BC-SKL-08006; reading which function is the velocity component is BC-PRQ-06005.",
+    "remediation_target": "BC-MIS-09006 (net change against path length) for the conceptual case; BC-SKL-08006 (the one dimensional displacement integral) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-09005"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-09015"
+   ],
+   "concept": "BC-CON-09007",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Express the net change in position over a time interval as the vector of definite integrals of the velocity components over that interval.",
+   "description_plain": "Integrate each velocity component over the interval.",
+   "diagnostic_signals": [
+    "BC-SIG-09004"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-8A1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-09020",
+   "learning_objectives": [
+    "BC-LO-FUN-8A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-09006"
+   ],
+   "name": "Write the displacement as a definite integral of the velocity vector",
+   "official_evidence": [
+    "sg-24:7",
+    "BC-FRQ-2015-Q2-A"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-SKL-08006",
+    "BC-SKL-09016"
+   ],
+   "representations": [
+    "BC-REP-14",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:176",
+    "sg-24:7"
+   ],
+   "topic": "BC-TOP-0905",
+   "unit": "BC-UNIT-09",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09010 (the integral of a velocity component read as the coordinate)",
+     "BC-SKL-09020 (displacement, which is the integral without the initial value)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09005 (a known position at one time and a component rate, so the initial term is the scored difference)"
+    ],
+    "mastered_if": "The requested coordinate is written as the known coordinate at the given time plus the definite integral of the matching velocity component between the two times, the limits running from the time of the known value to the time asked for; the reported coordinate changes when the known position changes, and neither BC-ERR-09020 nor BC-ERR-09021 appears.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The definite integral of the velocity component is evaluated correctly and reported as the coordinate with the known position unused, which is BC-ERR-09020 and the state in BC-SIG-09006; or the initial value is present and the accumulation is added when the known time is the later one, which is BC-ERR-09021.",
+    "prerequisite_gap_if": "The pattern initial value plus accumulated change is not assembled even for a scalar rate, which is BC-SKL-06037; misreading which coordinate the given velocity component belongs to is BC-PRQ-06005.",
+    "remediation_target": "BC-MIS-09010 (the integral as change in the coordinate) for the conceptual case; BC-SKL-06037 (adding the known value to the accumulation) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-09005"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-09020",
+    "BC-ERR-09021"
+   ],
+   "concept": "BC-CON-09008",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given the position at one time and a velocity component, evaluate the corresponding coordinate at another time as the initial coordinate plus the definite integral of that component.",
+   "description_plain": "Add the integral of that velocity component to the starting coordinate.",
+   "diagnostic_signals": [
+    "BC-SIG-09006"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-8A1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-09021",
+   "learning_objectives": [
+    "BC-LO-FUN-8A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-09010"
+   ],
+   "name": "Determine a coordinate of position from an initial position and a velocity component",
+   "official_evidence": [
+    "sg-24:7",
+    "sg-23:7",
+    "BC-FRQ-2021-Q2-C",
+    "BC-FRQ-2022-Q2-C",
+    "BC-FRQ-2015-Q2-A",
+    "BC-FRQ-2023-Q2-C",
+    "BC-FRQ-2024-Q2-C"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-SKL-06037",
+    "BC-SKL-09020"
+   ],
+   "representations": [
+    "BC-REP-14",
+    "BC-REP-09"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-24:7",
+    "sg-23:7"
+   ],
+   "topic": "BC-TOP-0905",
+   "unit": "BC-UNIT-09",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09010 (the integral of a velocity component read as the coordinate)",
+     "BC-SKL-09021 (the forward case of the same accumulation)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09005 (the known position is at the later time, so sign and limit order are the scored detail)"
+    ],
+    "mastered_if": "When the known position is at the later time, the earlier coordinate is written as the known value minus the definite integral over the intervening interval, or equivalently with the limits running backwards, and the direction of time is stated in the work; the answer lies on the correct side of the known value, and BC-ERR-09021 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The initial value plus accumulation structure is present and the integral between the two times is added although the known time is the later one, which is BC-ERR-09021 and the observation in BC-SIG-09007.",
+    "prerequisite_gap_if": "Which of the two times the position is known at cannot be extracted from the stem, so the direction is guessed, which is BC-PRQ-06005.",
+    "remediation_target": "BC-MIS-09010 (what the accumulation adds to and from where) for the conceptual case; BC-SKL-09021 (writing the accumulation with the limits in the right order) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-09005"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-09021"
+   ],
+   "concept": "BC-CON-09008",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "When the known position is at a later time than the requested one, write the earlier coordinate as the known value minus the definite integral over the intervening interval, or equivalently reverse the limits.",
+   "description_plain": "Going back in time reverses the order of the limits.",
+   "diagnostic_signals": [
+    "BC-SIG-09007"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-8A1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-09022",
+   "learning_objectives": [
+    "BC-LO-FUN-8A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-09010"
+   ],
+   "name": "Accumulate backwards in time from a known later position",
+   "official_evidence": [
+    "sg-24:7",
+    "BC-FRQ-2024-Q2-C"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-SKL-09021"
+   ],
+   "representations": [
+    "BC-REP-14",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-24:7"
+   ],
+   "topic": "BC-TOP-0905",
+   "unit": "BC-UNIT-09",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09011 (speed taken to be one of the two velocity components)",
+     "BC-MIS-09005 (a length in the plane taken as the sum of the component contributions)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09006 (the speed at a time, where an additive answer is directly visible)"
+    ],
+    "mastered_if": "The speed at a time is written as the square root of the sum of the squares of the two velocity components, each component squared inside parentheses, and evaluated to the required accuracy; the value is nonnegative and larger than either component in absolute value, so neither BC-ERR-09013 nor BC-ERR-09014 appears.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "Both components are correct and combined by addition rather than by the Pythagorean relation, which is BC-ERR-09013 and the observation in BC-SIG-09003; or the radical form is right and parentheses are lost inside a squared component, which is BC-ERR-09014.",
+    "prerequisite_gap_if": "The magnitude of a two component quantity is not formed by the Pythagorean relation at all, which is BC-PRQ-08007 rather than a speed gap.",
+    "remediation_target": "BC-MIS-09011 (speed as the magnitude of the velocity vector) for the conceptual case; BC-PRQ-08007 (writing the magnitude with parentheses intact) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-09006"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-09013",
+    "BC-ERR-09014"
+   ],
+   "concept": "BC-CON-09009",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given the two velocity components at a time, compute the speed as the square root of the sum of their squares, with the setup shown.",
+   "description_plain": "Square both components, add, take the square root.",
+   "diagnostic_signals": [
+    "BC-SIG-09003"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-8B1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-09023",
+   "learning_objectives": [
+    "BC-LO-FUN-8B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-09011"
+   ],
+   "name": "Compute the speed of a particle as the magnitude of its velocity",
+   "official_evidence": [
+    "sg-24:5",
+    "sg-23:6",
+    "BC-FRQ-2021-Q2-A",
+    "BC-FRQ-2022-Q2-B",
+    "BC-FRQ-2015-Q2-C",
+    "BC-FRQ-2023-Q2-B",
+    "BC-FRQ-2024-Q2-A",
+    "BC-MCQ-SAMPLE-023"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08007",
+    "BC-SKL-09016"
+   ],
+   "representations": [
+    "BC-REP-14",
+    "BC-REP-09"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-24:5",
+    "sg-23:6"
+   ],
+   "topic": "BC-TOP-0906",
+   "unit": "BC-UNIT-09",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09011 (speed taken to be one of the two velocity components)",
+     "BC-MIS-09008 (a calculator result treated as standing without its expression)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09006 (a time is solved for from a speed value, so the written equation is what carries the method)"
+    ],
+    "mastered_if": "The speed is written as a function of time, set equal to the stated value as an equation on the page, solved numerically over the interval with the calculator in radian mode, and the first such time reported when the question asks for the first; neither BC-ERR-09022 nor BC-ERR-09023 appears.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "A correct time appears alone with no speed expression and no equation shown, which is BC-ERR-09022 and the observation in BC-SIG-09008; or the equation is written and solved with trigonometric values taken in degree measure, giving an internally consistent wrong time, which is BC-ERR-09023.",
+    "prerequisite_gap_if": "The equation is set up correctly and the numerical solve over the stated interval does not return the solutions, which is BC-PRQ-08001; the radian convention for trigonometric arguments is BC-PRQ-09003.",
+    "remediation_target": "BC-MIS-09011 (what quantity is being set equal to the given value) for the conceptual case; BC-PRQ-09003 (radian mode on the solve) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-09006"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-09022",
+    "BC-ERR-09023"
+   ],
+   "concept": "BC-CON-09009",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Write the speed as a function of time, set it equal to the stated value, solve numerically on the interval, and report the first such time when asked.",
+   "description_plain": "Set the speed expression equal to the number and solve on the interval.",
+   "diagnostic_signals": [
+    "BC-SIG-09008"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-8B1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-09024",
+   "learning_objectives": [
+    "BC-LO-FUN-8B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-09011"
+   ],
+   "name": "Solve for a time at which the speed has a stated value",
+   "official_evidence": [
+    "sg-23:6",
+    "sg-23:7",
+    "BC-FRQ-2015-Q2-C",
+    "BC-FRQ-2023-Q2-B"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08001",
+    "BC-PRQ-09003",
+    "BC-SKL-09023"
+   ],
+   "representations": [
+    "BC-REP-09",
+    "BC-REP-14"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-23:6",
+    "sg-23:7"
+   ],
+   "topic": "BC-TOP-0906",
+   "unit": "BC-UNIT-09",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09006 (distance in the plane read as the size of the net change in position)",
+     "BC-SKL-09020 (displacement, which integrates the components)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09007 (the path doubles back, so distance and the magnitude of displacement differ)"
+    ],
+    "mastered_if": "The total distance is written as the definite integral of the speed, the radical of the sum of the squared components, over the time interval, evaluated numerically and reported with units; the components are not integrated before the magnitude is taken, so BC-ERR-09015 is absent, and the speed carried into the integral is the one derived in this part rather than an earlier incorrect one.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The components are integrated first and the magnitude of that vector is reported as the distance travelled, which is BC-ERR-09015 and the state in BC-SIG-09004; or the structure is correct and an incorrect speed declared in an earlier part is carried into the integrand, which is BC-ERR-09024.",
+    "prerequisite_gap_if": "The speed itself cannot be formed as a magnitude, so there is no integrand, which is BC-PRQ-08007; the one dimensional total distance integral is BC-SKL-08007.",
+    "remediation_target": "BC-MIS-09006 (why the magnitude is taken before integrating) for the conceptual case; BC-SKL-09023 (forming the speed expression) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-09007"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-09015",
+    "BC-ERR-09024"
+   ],
+   "concept": "BC-CON-09010",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Write and evaluate the definite integral of the speed over the time interval and report the result as the total distance travelled, with units.",
+   "description_plain": "Integrate the speed expression over the time interval.",
+   "diagnostic_signals": [
+    "BC-SIG-09004"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-8B2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-09025",
+   "learning_objectives": [
+    "BC-LO-FUN-8B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-09006"
+   ],
+   "name": "Compute the total distance travelled as the integral of speed",
+   "official_evidence": [
+    "sg-23:8",
+    "sg-24:6",
+    "BC-FRQ-2021-Q2-B",
+    "BC-FRQ-2022-Q2-D",
+    "BC-FRQ-2015-Q2-D",
+    "BC-FRQ-2023-Q2-D",
+    "BC-FRQ-2024-Q2-B",
+    "BC-FRQ-2018-Q2-D",
+    "BC-MCQ-SAMPLE-023"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08007",
+    "BC-SKL-08007",
+    "BC-SKL-09023",
+    "BC-SKL-09011"
+   ],
+   "representations": [
+    "BC-REP-14",
+    "BC-REP-09"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-23:8",
+    "sg-24:6"
+   ],
+   "topic": "BC-TOP-0906",
+   "unit": "BC-UNIT-09",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09010 (the integral of a velocity component read as the coordinate)",
+     "BC-SKL-09022 (the backwards in time case of the same accumulation)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09005 (a coordinate at a second time from one known position, so the initial term and the notation are both scored)"
+    ],
+    "mastered_if": "The coordinate at the requested time is written as the known coordinate at the other time plus the definite integral of the matching velocity component between the two times, with the substitution shown as its own step and the value reported to the stated accuracy; neither BC-ERR-09020 nor BC-ERR-09018 appears.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The accumulation integral is correct and reported as the coordinate with the known value omitted, which is BC-ERR-09020 and the state in BC-SIG-09006; or the answer is complete and written as one equality running from an expression in t to a number, which is BC-ERR-09018.",
+    "prerequisite_gap_if": "The one dimensional version, position from an initial position and velocity, is not available, which is BC-SKL-08009; reading which component of the position is known is BC-PRQ-06005.",
+    "remediation_target": "BC-MIS-09010 (the integral as change in the coordinate) for the conceptual case; BC-SKL-08009 (the same accumulation on a line) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-09005"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-09020",
+    "BC-ERR-09018"
+   ],
+   "concept": "BC-CON-09010",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Evaluate a coordinate of the position at a time as the known coordinate at another time plus the definite integral of the corresponding velocity component between the two times.",
+   "description_plain": "Add the integral of the matching velocity component to the known coordinate.",
+   "diagnostic_signals": [
+    "BC-SIG-09006"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-8B2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-09026",
+   "learning_objectives": [
+    "BC-LO-FUN-8B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-09010"
+   ],
+   "name": "Determine a coordinate of the particle at a time from an initial condition",
+   "official_evidence": [
+    "sg-23:7",
+    "sg-23:8",
+    "sg-24:7",
+    "BC-FRQ-2013-Q2-B",
+    "BC-FRQ-2021-Q2-C",
+    "BC-FRQ-2022-Q2-C",
+    "BC-FRQ-2015-Q2-A",
+    "BC-FRQ-2023-Q2-C",
+    "BC-FRQ-2024-Q2-C"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-SKL-08009",
+    "BC-SKL-09021"
+   ],
+   "representations": [
+    "BC-REP-14",
+    "BC-REP-09"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-23:7",
+    "sg-23:8",
+    "sg-24:7"
+   ],
+   "topic": "BC-TOP-0906",
+   "unit": "BC-UNIT-09",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09012 (the direction of motion read from the sign of the position)",
+     "BC-SKL-09016 (the velocity components whose signs the argument uses)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09008 (the coordinate and its rate have different sign patterns, so the two readings give different intervals)"
+    ],
+    "mastered_if": "The times at which the particle moves toward the axis are found by requiring the relevant velocity component to have the sign opposite to that of the corresponding coordinate on the interval, and the answer states that sign relation as the reason; the interval reported is supported by the sign of the rate, and neither BC-ERR-09025 nor BC-ERR-09026 appears.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The correct subinterval is reported with no statement about the sign of the rate, which is BC-ERR-09026 and the observation in BC-SIG-09009; or an interval is chosen from where the coordinate itself is negative rather than from the sign of its derivative, which is BC-ERR-09025.",
+    "prerequisite_gap_if": "The equation locating where the velocity component changes sign is not solved on the interval, so the subinterval boundaries are wrong, which is BC-PRQ-08001.",
+    "remediation_target": "BC-MIS-09012 (that approach to an axis is governed by the sign of the rate against the sign of the coordinate) for the conceptual case; BC-PRQ-08001 (locating the sign change of the component) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-09008"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-09025",
+    "BC-ERR-09026"
+   ],
+   "concept": "BC-CON-09011",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given the sign of a coordinate on an interval, determine the times at which the particle moves toward the corresponding axis by finding where the derivative of that coordinate has the opposite sign.",
+   "description_plain": "Compare the sign of the coordinate with the sign of its rate.",
+   "diagnostic_signals": [
+    "BC-SIG-09009"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-8B1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-09027",
+   "learning_objectives": [
+    "BC-LO-FUN-8B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-09012"
+   ],
+   "name": "Determine when a particle moves toward or away from a coordinate axis",
+   "official_evidence": [
+    "sg-24:8",
+    "frq-24:4",
+    "BC-FRQ-2024-Q2-D"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08001",
+    "BC-SKL-09001"
+   ],
+   "representations": [
+    "BC-REP-14",
+    "BC-REP-09"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-24:8",
+    "frq-24:4"
+   ],
+   "topic": "BC-TOP-0906",
+   "unit": "BC-UNIT-09",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09009 (a vector answer treated as a pair of numbers with no structure)",
+     "BC-SKL-09017 (computing the acceleration vector, which this presents)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09004 (the setup is explicitly part of what is scored)"
+    ],
+    "mastered_if": "The acceleration vector at the requested time is presented together with the differentiation of each velocity component and the substitution of the time, the supporting expressions appearing before the pair of numbers; the chain from expression to value is written in separate steps, so neither BC-ERR-09018 nor BC-ERR-09011 appears.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "Two correct components appear with no derivative expressions and no evaluation shown, which is BC-ERR-09011 and the state in BC-SIG-09005; or the derivatives are shown and the expression in t is set equal to its value at one time in a single chain of equalities, which is BC-ERR-09018.",
+    "prerequisite_gap_if": "The vector notation is not read, so it is unclear which expression each reported number came from, which is BC-PRQ-09001.",
+    "remediation_target": "BC-MIS-09009 (the vector and its supporting expressions as one answer) for the conceptual case; BC-ERR-09018 (separating the expression from its value) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-09004"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-09018",
+    "BC-ERR-09011"
+   ],
+   "concept": "BC-CON-09009",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Differentiate each velocity component, evaluate both at the requested time, and present the acceleration vector with the supporting expressions shown.",
+   "description_plain": "Show the derivative of each velocity component before the two numbers.",
+   "diagnostic_signals": [
+    "BC-SIG-09005"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-8B1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-09028",
+   "learning_objectives": [
+    "BC-LO-FUN-8B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-09009"
+   ],
+   "name": "Present the acceleration vector at a time with its setup",
+   "official_evidence": [
+    "sg-23:5",
+    "sg-23:6",
+    "BC-FRQ-2021-Q2-A",
+    "BC-FRQ-2022-Q2-B",
+    "BC-FRQ-2023-Q2-A"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-09001",
+    "BC-SKL-09017"
+   ],
+   "representations": [
+    "BC-REP-14",
+    "BC-REP-09"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-23:5",
+    "sg-23:6"
+   ],
+   "topic": "BC-TOP-0906",
+   "unit": "BC-UNIT-09",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09014 (the derivative of r read as the speed along the curve)",
+     "BC-SKL-09032 (the time rate of the distance, which does involve the angular rate)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09009 (the interpretation of dr/dtheta is asked directly)"
+    ],
+    "mastered_if": "The response states that dr/dtheta is the rate at which the distance from the origin changes with respect to the polar angle, and reads a positive value as moving away from the origin and a negative value as moving toward it; the sentence does not name a speed along the curve, so BC-ERR-09029 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The sign of dr/dtheta is read correctly for approach or recession and the quantity is described as the speed of the particle along the curve, which is BC-ERR-09029.",
+    "prerequisite_gap_if": "The symbol r is not tied to the distance from the origin in the polar description, so the sentence has no referent, which is BC-PRQ-06005.",
+    "remediation_target": "BC-MIS-09014 (distance from the origin against distance along the path) for the conceptual case; BC-SKL-09030 (producing the derivative the sentence describes) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-09009"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-09029"
+   ],
+   "concept": "BC-CON-09013",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "State that dr/dtheta is the rate of change of the distance from the origin with respect to the polar angle, and read its sign as moving away from or toward the origin.",
+   "description_plain": "Say that it measures how the distance from the origin changes with the angle.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-3G2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-09031",
+   "learning_objectives": [
+    "BC-LO-FUN-3G"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-09014"
+   ],
+   "name": "Interpret dr/dtheta as the rate at which the distance from the origin changes",
+   "official_evidence": [
+    "sg-25:10",
+    "BC-FRQ-2025-Q2-D",
+    "BC-FRQ-2026-Q2-D",
+    "BC-FRQ-2018-Q5-C"
+   ],
+   "practice_skills": [
+    "BC-MPS-2D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-SKL-09030"
+   ],
+   "representations": [
+    "BC-REP-13",
+    "BC-REP-04"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:177",
+    "sg-25:10"
+   ],
+   "topic": "BC-TOP-0907",
+   "unit": "BC-UNIT-09",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09014 (the derivative of r read as the speed along the curve)",
+     "BC-SKL-09031 (the interpretation of dr/dtheta alone)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09010 (an angular rate is supplied, so the missing factor changes both the number and the units)"
+    ],
+    "mastered_if": "The rate at which the distance from the origin changes with time is written as dr/dtheta multiplied by dtheta/dt, both factors present and evaluated at the stated angle, and the reported rate carries units of distance per unit time; BC-ERR-09030 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The derivative dr/dtheta is computed correctly and reported as the time rate, the angular rate never entering the product, which is BC-ERR-09030.",
+    "prerequisite_gap_if": "The chain rule combined with a product or quotient is not available, so the composite rate cannot be assembled, which is BC-SKL-03006; reading which given number is dtheta/dt is BC-PRQ-06005.",
+    "remediation_target": "BC-MIS-09014 (why the angular rate enters the time derivative) for the conceptual case; BC-SKL-03006 (the chain rule product) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-09010"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-09030"
+   ],
+   "concept": "BC-CON-09013",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "For a particle travelling along a polar curve with a given rate of change of theta with respect to time, compute the rate of change of its distance from the origin as the product of dr/dtheta and dtheta/dt.",
+   "description_plain": "Multiply dr/dtheta by the rate at which the angle changes.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-3G2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-09032",
+   "learning_objectives": [
+    "BC-LO-FUN-3G"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-09014"
+   ],
+   "name": "Relate the rate of the distance from the origin in time to dr/dtheta",
+   "official_evidence": [
+    "sg-25:10",
+    "frq-25:4",
+    "BC-FRQ-2014-Q2-D",
+    "BC-FRQ-2025-Q2-D",
+    "BC-FRQ-2018-Q5-C"
+   ],
+   "practice_skills": [
+    "BC-MPS-2D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-SKL-03006",
+    "BC-SKL-09030",
+    "BC-SKL-09031"
+   ],
+   "representations": [
+    "BC-REP-13",
+    "BC-REP-09"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-25:10",
+    "frq-25:4"
+   ],
+   "topic": "BC-TOP-0907",
+   "unit": "BC-UNIT-09",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09015 (the slope of a polar curve taken to be the derivative of r)",
+     "BC-MIS-09013 (the polar radius treated as a Cartesian coordinate)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09009 (dr/dtheta is available in the same question, so offering it as the slope is visible)"
+    ],
+    "mastered_if": "The Cartesian coordinates are written as r times cosine theta and r times sine theta, each differentiated with the product rule so both the derivative of r and the derivative of the trigonometric factor appear, and the slope is the quotient of dy/dtheta by dx/dtheta; neither BC-ERR-09031 nor BC-ERR-09032 appears.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The conversion to Cartesian form is made and the product rule is applied to only one factor, or the two derivatives are multiplied together, which is BC-ERR-09032; or the derivative of r is reported as the slope of the tangent line, which is BC-ERR-09031.",
+    "prerequisite_gap_if": "The product rule on a product of two differentiable factors is not available, which is BC-SKL-02036; the cosine and sine conversion itself is BC-PRQ-09002.",
+    "remediation_target": "BC-MIS-09015 (why the slope requires the Cartesian components) for the conceptual case; BC-SKL-02036 (the product rule on each component) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-09009"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-09031",
+    "BC-ERR-09032"
+   ],
+   "concept": "BC-CON-09014",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Write x and y in terms of theta, differentiate each with the product rule, and form the quotient of dy/dtheta by dx/dtheta as the slope of the tangent line.",
+   "description_plain": "Differentiate r cosine and r sine with respect to theta and divide.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-3G2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-09033",
+   "learning_objectives": [
+    "BC-LO-FUN-3G"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-09015"
+   ],
+   "name": "Compute dy/dx for a polar curve",
+   "official_evidence": [
+    "BC-FRQ-2013-Q2-B",
+    "BC-FRQ-2014-Q2-B",
+    "BC-FRQ-2026-Q2-B",
+    "BC-FRQ-2018-Q5-B",
+    "BC-MCQ-PE2012-026"
+   ],
+   "practice_skills": [
+    "BC-MPS-2D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-09002",
+    "BC-SKL-02036",
+    "BC-SKL-09029",
+    "BC-SKL-09030",
+    "BC-SKL-09002"
+   ],
+   "representations": [
+    "BC-REP-13",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:177"
+   ],
+   "topic": "BC-TOP-0907",
+   "unit": "BC-UNIT-09",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09016 (a local extremum argument taken to settle a farthest point)",
+     "BC-MIS-09013 (the polar radius treated as a Cartesian coordinate)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09011 (a Cartesian coordinate is maximised along a polar curve on a closed angle interval, so an endpoint can carry the extreme)"
+    ],
+    "mastered_if": "The relevant Cartesian coordinate is written in theta, differentiated, set equal to zero and solved on the angle interval, and the farthest point is settled by comparing the coordinate at the candidate with its values at both ends of the interval; the equation that was solved is on the page, so neither BC-ERR-09033 nor BC-ERR-09034 appears.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The critical angle is found correctly and the justification is a first or second derivative test offered as settling the farthest point, which is BC-ERR-09033 and the state in BC-SIG-09011; or the angle is written down with nothing showing what was set equal to zero, which is BC-ERR-09034.",
+    "prerequisite_gap_if": "The trigonometric equation from setting the derivative to zero is not solved on the interval, which is BC-PRQ-08001; writing a justification that covers every candidate is BC-SKL-05028.",
+    "remediation_target": "BC-MIS-09016 (why the endpoints of the angle interval enter the argument) for the conceptual case; BC-SKL-05028 (writing the global justification) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-09011"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-09033",
+    "BC-ERR-09034"
+   ],
+   "concept": "BC-CON-09014",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Set the derivative with respect to theta of the relevant Cartesian coordinate equal to zero, solve on the interval, and justify the extreme value by comparing the coordinate at the candidate with its values at the endpoints.",
+   "description_plain": "Set the derivative of that coordinate equal to zero and compare candidates.",
+   "diagnostic_signals": [
+    "BC-SIG-09011"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-3G2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-09034",
+   "learning_objectives": [
+    "BC-LO-FUN-3G"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-09016"
+   ],
+   "name": "Locate the point on a polar curve farthest from a coordinate axis",
+   "official_evidence": [
+    "sg-25:8",
+    "sg-25:9",
+    "BC-FRQ-2025-Q2-C"
+   ],
+   "practice_skills": [
+    "BC-MPS-2D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08001",
+    "BC-SKL-05028",
+    "BC-SKL-09029"
+   ],
+   "representations": [
+    "BC-REP-13",
+    "BC-REP-09"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-25:8",
+    "sg-25:9"
+   ],
+   "topic": "BC-TOP-0907",
+   "unit": "BC-UNIT-09",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09017 (a polar area read as an integral of the curve itself)",
+     "BC-MIS-09018 (the area between polar curves built from the difference of the radii)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09012 (a region swept by one polar curve, so the sector formula is the whole setup)"
+    ],
+    "mastered_if": "The area bounded by a single polar curve is written as one half the definite integral of the square of r with respect to theta between the bounding angles, both the factor of one half and the squaring present in the expression; the integrand is not r itself, so neither BC-ERR-09035 nor BC-ERR-09036 appears.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The square of r is integrated over the correct angles with the factor of one half missing, which is BC-ERR-09035 and doubles the reported area, the state in BC-SIG-09012; or the factor is present and r is not squared, which is BC-ERR-09036.",
+    "prerequisite_gap_if": "The Cartesian idea that a definite integral of a function gives area is applied unchanged to r, which is BC-SKL-06028 misapplied rather than a polar gap; reading r as a function of theta in the stem is BC-PRQ-06005.",
+    "remediation_target": "BC-MIS-09017 (the sector area that the one half and the square come from) for the conceptual case; BC-SKL-09038 (evaluating the assembled integral) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-09012"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-09035",
+    "BC-ERR-09036"
+   ],
+   "concept": "BC-CON-09015",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Write the area of a region bounded by a single polar curve as one half the definite integral of the square of r with respect to theta over the bounding angles.",
+   "description_plain": "Write one half the integral of r squared with respect to the angle.",
+   "diagnostic_signals": [
+    "BC-SIG-09012"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5D1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-09035",
+   "learning_objectives": [
+    "BC-LO-CHA-5D"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-09017"
+   ],
+   "name": "State the polar area integral for a single curve",
+   "official_evidence": [
+    "sg-25:7",
+    "BC-FRQ-2019-Q2-A",
+    "BC-FRQ-2019-Q2-C",
+    "BC-FRQ-2019-Q2-D",
+    "BC-FRQ-2013-Q2-A",
+    "BC-FRQ-2014-Q2-A",
+    "BC-FRQ-2026-Q2-A",
+    "BC-FRQ-2018-Q5-A"
+   ],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-SKL-06028",
+    "BC-SKL-09036"
+   ],
+   "representations": [
+    "BC-REP-13",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:178",
+    "sg-25:7"
+   ],
+   "topic": "BC-TOP-0908",
+   "unit": "BC-UNIT-09",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09008 (a calculator result treated as standing without its expression)",
+     "BC-MIS-09017 (a polar area read as an integral of the curve itself)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09012 (a numerical polar area, so the written sector integral is the record of method)"
+    ],
+    "mastered_if": "The polar area integral is evaluated, numerically with the expression written out or by antidifferentiation, and the value reported to three places after the decimal point when technology is used, with the one half and the squared r visible in the expression that produced it; neither BC-ERR-09011 nor BC-ERR-09006 appears.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "A correct decimal area appears with no integral expression on the page, which is BC-ERR-09011; or the setup is written and a stored bounding angle is truncated before the evaluation, moving the third decimal place, which is BC-ERR-09006.",
+    "prerequisite_gap_if": "The number is right and reported to the wrong number of places or rounded against the convention, which is BC-PRQ-08006; evaluating a definite integral by antidifferentiation is BC-SKL-06034.",
+    "remediation_target": "BC-MIS-09008 (the written integral as the scored object) for the conceptual case; BC-PRQ-08006 (three place reporting from stored angles) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-09012"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-09006",
+    "BC-ERR-09011"
+   ],
+   "concept": "BC-CON-09015",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Evaluate the polar area integral, numerically or by antidifferentiation, and report the value accurate to three places after the decimal point when technology is used.",
+   "description_plain": "Compute the integral with technology and state the area.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-5D1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-09038",
+   "learning_objectives": [
+    "BC-LO-CHA-5D"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-09008"
+   ],
+   "name": "Evaluate a polar area integral and report the area",
+   "official_evidence": [
+    "sg-25:7",
+    "sg-25:8",
+    "BC-FRQ-2019-Q2-A",
+    "BC-FRQ-2019-Q2-D",
+    "BC-FRQ-2026-Q2-A",
+    "BC-MCQ-CED-021"
+   ],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08006",
+    "BC-SKL-06034",
+    "BC-SKL-09035"
+   ],
+   "representations": [
+    "BC-REP-09",
+    "BC-REP-13"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-25:7",
+    "sg-25:8"
+   ],
+   "topic": "BC-TOP-0908",
+   "unit": "BC-UNIT-09",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09018 (the area between polar curves built from the difference of the radii)",
+     "BC-MIS-09017 (a polar area read as an integral of the curve itself)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09013 (two radii between crossing angles, where the squaring order and the one half are both scored)"
+    ],
+    "mastered_if": "The area between the curves is written as one half the definite integral of the square of the outer radius minus the square of the inner radius, each radius squared before the subtraction, with the intersection angles as limits; neither BC-ERR-09040 nor BC-ERR-09035 appears.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The limits and the roles are right and the integrand is the square of the difference of the radii, which is BC-ERR-09040; or the difference of squares is correct and the factor of one half is missing, which is BC-ERR-09035 and the doubled value in BC-SIG-09012.",
+    "prerequisite_gap_if": "The outer and inner radii were never assigned by comparison at an interior angle, so the order in the integrand is arbitrary, which is BC-SKL-09040; reading which function is which in the stem is BC-PRQ-06005.",
+    "remediation_target": "BC-MIS-09018 (the difference of sector areas against a sector of the difference) for the conceptual case; BC-SKL-09040 (fixing outer and inner before squaring) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-09013"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-09040",
+    "BC-ERR-09035"
+   ],
+   "concept": "BC-CON-09016",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Write the area between two polar curves as one half the definite integral of the square of the outer radius minus the square of the inner radius, with the intersection angles as limits.",
+   "description_plain": "Write one half the integral of outer squared minus inner squared.",
+   "diagnostic_signals": [
+    "BC-SIG-09012"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5D2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-09041",
+   "learning_objectives": [
+    "BC-LO-CHA-5D"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-09018"
+   ],
+   "name": "Set up the area integral between two polar curves",
+   "official_evidence": [
+    "sg-25:7",
+    "sg-25:8",
+    "BC-FRQ-2013-Q2-A",
+    "BC-FRQ-2014-Q2-A",
+    "BC-FRQ-2025-Q2-B",
+    "BC-FRQ-2018-Q5-A"
+   ],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-SKL-09035",
+    "BC-SKL-09039",
+    "BC-SKL-09040"
+   ],
+   "representations": [
+    "BC-REP-13",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-25:7",
+    "sg-25:8"
+   ],
+   "topic": "BC-TOP-0909",
+   "unit": "BC-UNIT-09",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09008 (a calculator result treated as standing without its expression)",
+     "BC-MIS-09019 (the limits taken as the whole interval of the figure)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09013 (the crossing angles are not exact values, so storing them protects the third decimal place)"
+    ],
+    "mastered_if": "The area integral between the two curves is evaluated with technology using the stored intersection angles, the expression appears on the page as its own line, and the value is reported to three places after the decimal point; neither BC-ERR-09006 nor BC-ERR-09018 appears.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The integral is correct and the intersection angles are reused as short decimals, so the reported area moves in the third place, which is BC-ERR-09006; or the work runs an expression in the variable into its numerical value in one chain of equalities, which is BC-ERR-09018.",
+    "prerequisite_gap_if": "The value is right and reported to the wrong number of places or rounded against the convention, which is BC-PRQ-08006 rather than an evaluation gap.",
+    "remediation_target": "BC-MIS-09008 (the written integral as the scored object) for the conceptual case; BC-PRQ-08006 (evaluating from stored angles) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-09013"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-09006",
+    "BC-ERR-09018"
+   ],
+   "concept": "BC-CON-09016",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Evaluate the integral with technology, using stored intersection angles, and report the area accurate to three places after the decimal point.",
+   "description_plain": "Compute the integral and state the area.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-5D2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-09042",
+   "learning_objectives": [
+    "BC-LO-CHA-5D"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-09008"
+   ],
+   "name": "Evaluate the area between two polar curves and report it",
+   "official_evidence": [
+    "sg-25:7",
+    "sg-25:8",
+    "BC-FRQ-2013-Q2-A",
+    "BC-FRQ-2025-Q2-B",
+    "BC-MCQ-PE2012-044"
+   ],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08006",
+    "BC-SKL-09041"
+   ],
+   "representations": [
+    "BC-REP-09",
+    "BC-REP-13"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-25:7",
+    "sg-25:8"
+   ],
+   "topic": "BC-TOP-0909",
+   "unit": "BC-UNIT-09",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-09018 (the area between polar curves built from the difference of the radii)",
+     "BC-MIS-09007 (any interval containing the curve assumed to give its area)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-09013 (the outer curve changes at a crossing, so one integral over the full range misses a piece)"
+    ],
+    "mastered_if": "A symmetric polar region is handled as twice the integral over half the angle interval, with the doubling written explicitly, or a region whose outer curve changes at a crossing is written as a sum of integrals with the limits meeting at that angle; the compensating factor matches the interval used, and BC-ERR-09041 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The symmetry is spotted and half the region is integrated with no doubling, or the whole region is integrated and the result is doubled as well, which is BC-ERR-09041 in its two recorded forms.",
+    "prerequisite_gap_if": "Which angle interval traces the region once cannot be decided, so neither the half interval nor the split point is trustworthy, which is BC-PRQ-09004.",
+    "remediation_target": "BC-MIS-09007 (what the chosen interval covers and how often) for the conceptual case; BC-SKL-09039 (locating the crossing angle where the pieces meet) for the procedural case."
+   },
+   "archetypes": [
+    "BC-QA-09013"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-09041"
+   ],
+   "concept": "BC-CON-09016",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Express the area of a symmetric polar region as twice an integral over half the interval, or as a sum of integrals when the outer curve changes at an intersection angle.",
+   "description_plain": "Double half the region, or add one integral per piece.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-5D2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-09043",
+   "learning_objectives": [
+    "BC-LO-CHA-5D"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-09018"
+   ],
+   "name": "Use symmetry or a sum of integrals for a polar region with several pieces",
+   "official_evidence": [
+    "sg-25:8",
+    "BC-FRQ-2019-Q2-C",
+    "BC-FRQ-2013-Q2-A",
+    "BC-FRQ-2014-Q2-A"
+   ],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-09004",
+    "BC-SKL-09035",
+    "BC-SKL-09041"
+   ],
+   "representations": [
+    "BC-REP-13",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-25:8"
+   ],
+   "topic": "BC-TOP-0909",
+   "unit": "BC-UNIT-09",
+   "updated": "2026-09-19"
+  }
+ ]
+}

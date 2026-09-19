@@ -1,0 +1,1045 @@
+{
+ "archetypes": [
+  {
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "the derivative of the outer function with the inner derivative omitted",
+    "the derivative of the inner function alone",
+    "the product of the two derivatives evaluated at the same input",
+    "the outer derivative with the inner function differentiated in the wrong place"
+   ],
+   "description": "A formula built by composition is supplied and the response produces its derivative, often with a product, quotient, or second layer inside.",
+   "difficulty_variables": [
+    "number of layers",
+    "whether a product or quotient encloses the composite",
+    "whether the inner function is trigonometric, exponential, or logarithmic",
+    "whether the answer must be simplified"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "identify the outer and inner functions",
+    "differentiate the outer function at the inner expression",
+    "multiply by the derivative of the inner expression",
+    "repeat inward for further layers",
+    "simplify only as far as is safe"
+   ],
+   "id": "BC-QA-03001",
+   "invariant_structure": "The expression is a composition of differentiable functions; the derivative is the product of the derivative of each layer evaluated at the layer inside it, and no layer may be left undifferentiated.",
+   "misconceptions": [
+    "BC-MIS-03001",
+    "BC-MIS-03002",
+    "BC-MIS-03012"
+   ],
+   "multipart_structure": "Usually a single multiple choice item, or an opening step inside a multipart free response question.",
+   "name": "Chain rule derivative of a composite given symbolically",
+   "official_examples": [],
+   "official_examples_notes": "2025 Q5(A) awards a chain rule point inside a larger differentiation task",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-03001",
+    "BC-PRQ-03006"
+   ],
+   "primary_unit": "BC-UNIT-03",
+   "representations": [
+    "BC-REP-01"
+   ],
+   "safe_variables": [
+    "the named outer function",
+    "the inner expression",
+    "the letters used for the variables",
+    "the constants inside the inner function"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "Derivative questions of this form are scored as a single answer point in multiple choice, and inside a free response part the chain rule factor is the discriminating element; the 2025 BC scoring guidelines award a separate chain rule point where a composite is differentiated inside a larger task (sg-25:20).",
+   "skills": [
+    "BC-SKL-03002",
+    "BC-SKL-03003",
+    "BC-SKL-03006"
+   ],
+   "sources": [
+    "ced:75",
+    "ced:72",
+    "sg-25:20"
+   ],
+   "typical_wording": [
+    "find the derivative of the given function",
+    "find dy/dx for the given expression"
+   ],
+   "units": [
+    "BC-UNIT-03"
+   ],
+   "variants": [
+    "BC-QV-03001-01",
+    "BC-QV-03001-02",
+    "BC-QV-03001-03"
+   ]
+  },
+  {
+   "calculator_status": "either",
+   "common_distractors": [
+    "f prime and g prime evaluated at the same input and multiplied",
+    "the outer derivative read at the input rather than at the inner output",
+    "the sum of the two derivatives",
+    "the value of the composite rather than of its derivative"
+   ],
+   "description": "A table gives values of two functions and their derivatives at selected inputs, and the response evaluates the derivative of a composite or of a combination at one input.",
+   "difficulty_variables": [
+    "whether the composite is nested inside a product or quotient",
+    "whether the needed inner output is itself in the table",
+    "whether a distractor row matches the input rather than the output",
+    "how many table rows are supplied"
+   ],
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "evaluate the inner function at the given input",
+    "locate the outer derivative at that output",
+    "evaluate the inner derivative at the given input",
+    "multiply the two",
+    "report the numerical value"
+   ],
+   "id": "BC-QA-03002",
+   "invariant_structure": "Values of f, f prime, g, and g prime appear at a small set of inputs; the requested derivative is assembled from exactly the entries the chain rule names, and the inner output must be looked up before the outer derivative.",
+   "misconceptions": [
+    "BC-MIS-03002"
+   ],
+   "multipart_structure": "A single multiple choice item, or one part of a table based free response question.",
+   "name": "Composite derivative evaluated from a table of values",
+   "official_examples": [],
+   "official_examples_notes": "none in the 2023 to 2025 BC free response questions read for this unit",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-03001",
+    "BC-PRQ-03005"
+   ],
+   "primary_unit": "BC-UNIT-03",
+   "representations": [
+    "BC-REP-03",
+    "BC-REP-01"
+   ],
+   "safe_variables": [
+    "the function names",
+    "the inputs listed",
+    "the numerical entries",
+    "the context, if any"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "In a free response setting the value alone without a visible assembly of the chain rule factors does not communicate the method; the analogous table based parts in 2024 and 2025 award a point for supporting work of a difference and a quotient and a separate point for the value (sg-24:2, sg-25:11).",
+   "skills": [
+    "BC-SKL-03004",
+    "BC-SKL-03006"
+   ],
+   "sources": [
+    "ced:75",
+    "ced:72",
+    "sg-24:2",
+    "sg-25:11"
+   ],
+   "typical_wording": [
+    "use the table of values to find the derivative of the composite function at the stated input"
+   ],
+   "units": [
+    "BC-UNIT-03"
+   ],
+   "variants": [
+    "BC-QV-03002-01",
+    "BC-QV-03002-02",
+    "BC-QV-03002-03"
+   ]
+  },
+  {
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "the slope of the outer graph read at the input rather than at the inner output",
+    "the product of the two function values",
+    "a slope read at a point where the graph has a corner"
+   ],
+   "description": "Graphs of two functions are supplied and the response evaluates the derivative of their composite at a stated input by reading values and slopes off the figures.",
+   "difficulty_variables": [
+    "whether a slope must be read at a corner",
+    "whether the inner output lands between labelled grid values",
+    "whether the composite is combined with a product"
+   ],
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "read the inner function value at the given input",
+    "read the slope of the outer graph at that value",
+    "read the slope of the inner graph at the given input",
+    "multiply the two slopes"
+   ],
+   "id": "BC-QA-03003",
+   "invariant_structure": "The graphs are piecewise linear or otherwise readable; the chain rule product is built from one function value and two slopes, each read at the input the rule names.",
+   "misconceptions": [
+    "BC-MIS-03002"
+   ],
+   "multipart_structure": "A single multiple choice item.",
+   "name": "Composite derivative read from graphs of the component functions",
+   "official_examples": [],
+   "official_examples_notes": "none in the 2023 to 2025 BC free response questions read for this unit",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-03001",
+    "BC-PRQ-03005"
+   ],
+   "primary_unit": "BC-UNIT-03",
+   "representations": [
+    "BC-REP-02",
+    "BC-REP-01"
+   ],
+   "safe_variables": [
+    "the shapes of the graphs",
+    "the labelled grid values",
+    "the function names"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "Scored as an answer point; a response that reads a slope where the graph is not differentiable does not earn it.",
+   "skills": [
+    "BC-SKL-03005"
+   ],
+   "sources": [
+    "ced:75",
+    "ced:72"
+   ],
+   "typical_wording": [
+    "use the graphs shown to find the derivative of the composite function at the stated input"
+   ],
+   "units": [
+    "BC-UNIT-03"
+   ],
+   "variants": [
+    "BC-QV-03003-01",
+    "BC-QV-03003-02"
+   ]
+  },
+  {
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "y terms differentiated without the dy/dx factor",
+    "a mixed term differentiated as though one variable were constant",
+    "the right hand side of the equation dropped",
+    "dy/dx solved for before the terms are collected"
+   ],
+   "description": "An equation in x and y is supplied and the response differentiates implicitly, solves for dy/dx, and in many cases verifies a stated expression or evaluates the slope at a point.",
+   "difficulty_variables": [
+    "whether a mixed product term is present",
+    "whether the expression for dy/dx is supplied to be verified or must be derived",
+    "whether the result must be evaluated at a point",
+    "whether the same curve is reused for later parts"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "differentiate every term of both sides with respect to x",
+    "attach a dy/dx factor to each y term",
+    "apply the product rule to mixed terms",
+    "collect and factor the dy/dx terms",
+    "divide to isolate dy/dx",
+    "substitute the point when a numerical slope is requested"
+   ],
+   "id": "BC-QA-03004",
+   "invariant_structure": "The equation mixes x and y in at least one term that needs the product rule; every y term contributes a dy/dx factor; the differentiated equation is linear in dy/dx and the answer generally involves both variables.",
+   "misconceptions": [
+    "BC-MIS-03004",
+    "BC-MIS-03005",
+    "BC-MIS-03006"
+   ],
+   "multipart_structure": "Ordinarily the opening part of a multipart free response question whose later parts reuse the same curve.",
+   "name": "Implicit differentiation producing or verifying dy/dx",
+   "official_examples": [],
+   "official_examples_notes": "2023 AB Q6(a), 2024 AB Q5, 2025 AB Q6 part A as described in the Chief Reader reports",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-03002",
+    "BC-PRQ-03005"
+   ],
+   "primary_unit": "BC-UNIT-03",
+   "representations": [
+    "BC-REP-01"
+   ],
+   "safe_variables": [
+    "the specific equation",
+    "the letters naming the variables",
+    "the point at which the slope is requested"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "The Chief Reader reports describe this task scored as one point for an eligible attempt at implicit differentiation and a second point for a completely correct differentiation, with a further point for the algebraic verification or evaluation; 2025 awards separate product rule and chain rule points when the differentiation is of a derivative expression (crabbc-25:24, sg-25:20).",
+   "skills": [
+    "BC-SKL-03007",
+    "BC-SKL-03008",
+    "BC-SKL-03009",
+    "BC-SKL-03010",
+    "BC-SKL-03011",
+    "BC-SKL-03014"
+   ],
+   "sources": [
+    "ced:76",
+    "cr-23:22",
+    "cr-24:17",
+    "crabbc-25:24",
+    "crabbc-25:25"
+   ],
+   "typical_wording": [
+    "show that dy/dx is equal to the stated expression for the given curve",
+    "find dy/dx for the curve defined by the given equation"
+   ],
+   "units": [
+    "BC-UNIT-03"
+   ],
+   "variants": [
+    "BC-QV-03004-01",
+    "BC-QV-03004-02",
+    "BC-QV-03004-03",
+    "BC-QV-03004-04"
+   ]
+  },
+  {
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "a coordinate that satisfies the condition on dy/dx but not the curve equation",
+    "the two conditions swapped, so a zero denominator is read as a horizontal tangent",
+    "only one of two candidate values reported",
+    "a conclusion stated without connecting dy/dx to the curve"
+   ],
+   "description": "Given a curve and its dy/dx, the response decides where the tangent line is horizontal or vertical, or whether a stated line can be tangent to the curve.",
+   "difficulty_variables": [
+    "whether the answer is that no such point exists",
+    "whether more than one candidate value of the variable arises",
+    "whether the numerator must also be checked to be nonzero",
+    "whether the question is posed as testing a stated line"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "set the numerator or the denominator of dy/dx equal to zero as the direction requires",
+    "solve for the coordinate that condition fixes",
+    "substitute into the defining equation to find the other coordinate",
+    "discard candidates that do not lie on the curve",
+    "state the conclusion in words"
+   ],
+   "id": "BC-QA-03005",
+   "invariant_structure": "The condition on dy/dx and the defining equation must both hold; a candidate that satisfies only one of the two is not a point of the required kind.",
+   "misconceptions": [
+    "BC-MIS-03007",
+    "BC-MIS-03006"
+   ],
+   "multipart_structure": "One or two parts inside the implicit differentiation question, reusing the curve from the opening part.",
+   "name": "Horizontal or vertical tangent on an implicitly defined curve",
+   "official_examples": [],
+   "official_examples_notes": "2023 AB Q6(b) and (c), 2024 AB Q5(b) and (c), 2025 AB Q6 part C as described in the Chief Reader reports",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-03007",
+    "BC-PRQ-03002"
+   ],
+   "primary_unit": "BC-UNIT-03",
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "safe_variables": [
+    "the curve",
+    "which of the two tangent directions is asked for",
+    "the letters naming the variables"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "The Chief Reader reports record that responses commonly determined the correct condition on dy/dx but failed to connect it to the defining equation, and that a response could earn the points without showing the numerator is nonzero in the 2025 version (cr-23:23, cr-24:17, crabbc-25:25).",
+   "skills": [
+    "BC-SKL-03012",
+    "BC-SKL-03013",
+    "BC-SKL-03011"
+   ],
+   "sources": [
+    "cr-23:22",
+    "cr-23:23",
+    "cr-24:17",
+    "crabbc-25:24",
+    "crabbc-25:25"
+   ],
+   "typical_wording": [
+    "find the coordinates of a point on the curve at which the tangent line is vertical, or explain why no such point exists",
+    "determine whether the stated horizontal line is tangent to the curve"
+   ],
+   "units": [
+    "BC-UNIT-03"
+   ],
+   "variants": [
+    "BC-QV-03005-01",
+    "BC-QV-03005-02",
+    "BC-QV-03005-03"
+   ]
+  },
+  {
+   "calculator_status": "either",
+   "common_distractors": [
+    "the reciprocal of the derivative taken at the stated value rather than at the matching input",
+    "the derivative of the original function reported unchanged",
+    "the negative of the derivative",
+    "the reciprocal of the function value"
+   ],
+   "description": "A function is supplied by formula, table, or graph and the response computes the derivative of its inverse at a stated value.",
+   "difficulty_variables": [
+    "whether the matching input must be solved for rather than read",
+    "whether a distractor input equal to the requested value exists",
+    "whether the hypotheses must be stated",
+    "whether the original function is given only graphically"
+   ],
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "identify the input whose output is the stated value",
+    "differentiate the original function or read its derivative there",
+    "check that this derivative is not zero",
+    "report the reciprocal"
+   ],
+   "id": "BC-QA-03006",
+   "invariant_structure": "The value at which the derivative of the inverse is requested is an output of the original function; the answer is the reciprocal of the original derivative at the matching input, and the rule needs that derivative to be nonzero.",
+   "misconceptions": [
+    "BC-MIS-03008",
+    "BC-MIS-03009"
+   ],
+   "multipart_structure": "A single multiple choice item, or one part of a multi-representation free response question.",
+   "name": "Derivative of an inverse function at a point",
+   "official_examples": [],
+   "official_examples_notes": "none in the 2023 to 2025 BC free response questions read for this unit",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-03003"
+   ],
+   "primary_unit": "BC-UNIT-03",
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02",
+    "BC-REP-03"
+   ],
+   "safe_variables": [
+    "the representation of the original function",
+    "the letters naming the function and its inverse",
+    "the value requested"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "Scored as an answer point in multiple choice; in free response the matching input has to be visible for the method to be communicated.",
+   "skills": [
+    "BC-SKL-03015",
+    "BC-SKL-03016",
+    "BC-SKL-03017",
+    "BC-SKL-03018",
+    "BC-SKL-03019"
+   ],
+   "sources": [
+    "ced:77",
+    "ced:72"
+   ],
+   "typical_wording": [
+    "the function g is the inverse of f; find the derivative of g at the stated value"
+   ],
+   "units": [
+    "BC-UNIT-03"
+   ],
+   "variants": [
+    "BC-QV-03006-01",
+    "BC-QV-03006-02",
+    "BC-QV-03006-03"
+   ]
+  },
+  {
+   "calculator_status": "either",
+   "common_distractors": [
+    "the standard formula used without the inner derivative",
+    "the inner expression left unsquared inside the radical or denominator",
+    "the inverse sine formula used for the inverse tangent",
+    "the derivative of the ordinary trigonometric function reported"
+   ],
+   "description": "An expression containing an inverse trigonometric function is supplied and the response differentiates it, often evaluating the result at a point.",
+   "difficulty_variables": [
+    "whether the inner function is nonlinear",
+    "whether a product or quotient encloses the inverse trigonometric factor",
+    "whether the derivative must be evaluated numerically",
+    "whether the derivative is supplied in the stem instead"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "write the standard derivative with the inner expression substituted",
+    "multiply by the derivative of the inner expression",
+    "simplify the radical or rational expression",
+    "evaluate at the stated input when asked"
+   ],
+   "id": "BC-QA-03007",
+   "invariant_structure": "The standard formula is applied with the inner expression in place of the variable and is multiplied by the derivative of that inner expression; the radical or the quadratic denominator carries the inner expression squared.",
+   "misconceptions": [
+    "BC-MIS-03010",
+    "BC-MIS-03011",
+    "BC-MIS-03001"
+   ],
+   "multipart_structure": "A single multiple choice item, or a differentiation step inside a contextual free response question.",
+   "name": "Inverse trigonometric derivative with an inner function",
+   "official_examples": [],
+   "official_examples_notes": "2025 Q1 supplies the derivative of an inverse tangent model in the stem",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-03004",
+    "BC-PRQ-03006"
+   ],
+   "primary_unit": "BC-UNIT-03",
+   "representations": [
+    "BC-REP-01"
+   ],
+   "safe_variables": [
+    "which inverse trigonometric function appears",
+    "the inner expression",
+    "the constants in the inner expression",
+    "the context, when the function models a quantity"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "In the 2025 contextual question the derivative of an inverse tangent model is supplied in the stem and later parts are scored on the use of that expression rather than on producing it (sg-25:2, sg-25:4).",
+   "skills": [
+    "BC-SKL-03021",
+    "BC-SKL-03022",
+    "BC-SKL-03024",
+    "BC-SKL-03025"
+   ],
+   "sources": [
+    "ced:78",
+    "sg-25:2",
+    "sg-25:4"
+   ],
+   "typical_wording": [
+    "find the derivative of the given inverse trigonometric expression",
+    "find the rate of change of the modelled quantity at the stated time"
+   ],
+   "units": [
+    "BC-UNIT-03"
+   ],
+   "variants": [
+    "BC-QV-03007-01",
+    "BC-QV-03007-02",
+    "BC-QV-03007-03"
+   ]
+  },
+  {
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "the dependent variable treated as a constant when differentiating",
+    "the product rule omitted on a mixed term",
+    "the first derivative value not substituted",
+    "the second derivative reported in the wrong notation"
+   ],
+   "description": "A function, a derivative, or a differential equation is supplied and the response produces the second or a higher derivative, often evaluating it at a point.",
+   "difficulty_variables": [
+    "whether the expression contains the dependent variable",
+    "whether a product term forces the product rule",
+    "whether the order requested is above two",
+    "whether the answer must be expressed in the notation of the prompt"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "differentiate the supplied expression with respect to the independent variable",
+    "apply the product rule to mixed terms and the chain rule to terms in the dependent variable",
+    "substitute the coordinates of the point",
+    "substitute the value of the first derivative at that point",
+    "report the numerical value"
+   ],
+   "id": "BC-QA-03008",
+   "invariant_structure": "Each order of differentiation is a separate application of the rules; when the expression being differentiated contains the dependent variable, the product rule and the chain rule both appear, and the first derivative value must be substituted before a numerical second derivative can be reported.",
+   "misconceptions": [
+    "BC-MIS-03013",
+    "BC-MIS-03014",
+    "BC-MIS-03005"
+   ],
+   "multipart_structure": "Ordinarily the opening part of a Taylor polynomial question or of a differential equation question.",
+   "name": "Higher-order derivative of a function or of a derivative expression",
+   "official_examples": [],
+   "official_examples_notes": "2025 Q5(A)",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-03005",
+    "BC-PRQ-03006"
+   ],
+   "primary_unit": "BC-UNIT-03",
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-06"
+   ],
+   "safe_variables": [
+    "the function or derivative supplied",
+    "the point of evaluation",
+    "the order requested",
+    "the notation used in the prompt"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "The 2025 BC scoring guidelines award one point for the product rule, one point for the chain rule, and one point for the value of the second derivative at the point, so a response can earn the two rule points with an arithmetic slip in the final value (sg-25:20).",
+   "skills": [
+    "BC-SKL-03030",
+    "BC-SKL-03031",
+    "BC-SKL-03032",
+    "BC-SKL-03033",
+    "BC-SKL-03034"
+   ],
+   "sources": [
+    "ced:80",
+    "sg-25:20"
+   ],
+   "typical_wording": [
+    "find the value of the second derivative at the given point, showing the work that leads to the answer"
+   ],
+   "units": [
+    "BC-UNIT-03"
+   ],
+   "variants": [
+    "BC-QV-03008-01",
+    "BC-QV-03008-02",
+    "BC-QV-03008-03"
+   ]
+  },
+  {
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "the product rule applied to a composite",
+    "the chain rule applied to a product",
+    "the power rule applied to an exponential",
+    "a rule applied in the wrong order"
+   ],
+   "description": "An expression is supplied whose differentiation needs the right rule chosen first, and the response must classify the structure before differentiating.",
+   "difficulty_variables": [
+    "whether an algebraic rewrite removes the need for a rule",
+    "how many rules the expression needs",
+    "whether the expression resembles a different family on the surface",
+    "whether the response must name the rule as well as apply it"
+   ],
+   "evidence_tag": "single-source",
+   "expected_solution_path": [
+    "classify the outermost operation",
+    "name the rule that structure requires",
+    "apply the rules from the outside inward",
+    "rewrite first when the rewrite is safe and shorter"
+   ],
+   "id": "BC-QA-03009",
+   "invariant_structure": "The expression is built so that a rule chosen from its surface appearance gives a wrong answer; the outermost operation decides the opening rule and the nesting decides the order of the rest.",
+   "misconceptions": [
+    "BC-MIS-03012",
+    "BC-MIS-03001"
+   ],
+   "multipart_structure": "A single multiple choice item, or a differentiation step inside a longer question.",
+   "name": "Selecting the differentiation procedure for a given expression",
+   "official_examples": [],
+   "official_examples_notes": "none in the 2023 to 2025 BC free response questions read for this unit",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-03001",
+    "BC-PRQ-03006"
+   ],
+   "primary_unit": "BC-UNIT-03",
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-04"
+   ],
+   "safe_variables": [
+    "the family of the functions involved",
+    "the constants",
+    "the letters naming the variables"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "Scored as an answer point; the Chief Reader reports record rule choice driven by the shape of an expression as a recurring source of lost credit (cr-22:21).",
+   "skills": [
+    "BC-SKL-03026",
+    "BC-SKL-03027",
+    "BC-SKL-03028",
+    "BC-SKL-03029",
+    "BC-SKL-03006"
+   ],
+   "sources": [
+    "ced:79",
+    "ced:72",
+    "cr-22:21"
+   ],
+   "typical_wording": [
+    "find the derivative of the given expression",
+    "identify the rule needed to differentiate the given expression"
+   ],
+   "units": [
+    "BC-UNIT-03"
+   ],
+   "variants": [
+    "BC-QV-03009-01",
+    "BC-QV-03009-02",
+    "BC-QV-03009-03"
+   ]
+  }
+ ],
+ "registry": "archetypes",
+ "variants": [
+  {
+   "archetype": "BC-QA-03001",
+   "description": "The composition has a third layer, so the chain rule is applied more than once in the same expression.",
+   "difficulty_effect": "harder",
+   "dimension": "notation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-03001-01",
+   "name": "Three or more nested layers",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:75"
+   ]
+  },
+  {
+   "archetype": "BC-QA-03001",
+   "description": "The composite sits inside a product or quotient, so a structural rule opens the work before the chain rule is reached.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-03001-02",
+   "name": "Composite enclosed by a product or quotient",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:79"
+   ]
+  },
+  {
+   "archetype": "BC-QA-03001",
+   "description": "The inner function is linear, so the chain rule factor is a constant and the composite structure is easy to miss.",
+   "difficulty_effect": "easier",
+   "dimension": "notation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-03001-03",
+   "name": "Inner function linear",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:72"
+   ]
+  },
+  {
+   "archetype": "BC-QA-03002",
+   "description": "The table contains a row whose input equals the inner output, which rewards reading the outer derivative at the correct place.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-03002-01",
+   "name": "Distractor row matching the input rather than the output",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:75"
+   ]
+  },
+  {
+   "archetype": "BC-QA-03002",
+   "description": "The requested derivative needs the product rule as well as the chain rule, assembled from the same table.",
+   "difficulty_effect": "harder",
+   "dimension": "notation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-03002-02",
+   "name": "Composite inside a product of two named functions",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:79"
+   ]
+  },
+  {
+   "archetype": "BC-QA-03002",
+   "description": "The tabulated functions model quantities, so the answer is reported with units as well as a value.",
+   "difficulty_effect": "neutral",
+   "dimension": "context",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-03002-03",
+   "name": "Table carries a context and units",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-24:2"
+   ]
+  },
+  {
+   "archetype": "BC-QA-03003",
+   "description": "One of the needed slopes sits at a point where the graph is not differentiable, so the correct response is that the derivative does not exist.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-03003-01",
+   "name": "Slope requested where the graph has a corner",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:72"
+   ]
+  },
+  {
+   "archetype": "BC-QA-03003",
+   "description": "One component is given by a graph and the other by a formula, so two representations must be combined.",
+   "difficulty_effect": "neutral",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-03003-02",
+   "name": "One function graphical and one symbolic",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:72"
+   ]
+  },
+  {
+   "archetype": "BC-QA-03004",
+   "description": "The stem states dy/dx and the response must show the implicit differentiation that produces it.",
+   "difficulty_effect": "neutral",
+   "dimension": "reasoning_direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-03004-01",
+   "name": "Expression for dy/dx supplied to be verified",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "crabbc-25:24"
+   ]
+  },
+  {
+   "archetype": "BC-QA-03004",
+   "description": "A term containing both variables forces the product rule inside the implicit differentiation.",
+   "difficulty_effect": "harder",
+   "dimension": "notation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-03004-02",
+   "name": "Mixed product term present",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "cr-23:23"
+   ]
+  },
+  {
+   "archetype": "BC-QA-03004",
+   "description": "The general expression must be evaluated at a point on the curve to produce a numerical slope.",
+   "difficulty_effect": "neutral",
+   "dimension": "reasoning_direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-03004-03",
+   "name": "Slope requested at a stated point",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "crabbc-25:24"
+   ]
+  },
+  {
+   "archetype": "BC-QA-03004",
+   "description": "The same equation is differentiated with respect to a third variable, so every variable carries its own rate factor.",
+   "difficulty_effect": "harder",
+   "dimension": "notation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-03004-04",
+   "name": "Differentiation with respect to time rather than x",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "cr-24:18"
+   ]
+  },
+  {
+   "archetype": "BC-QA-03005",
+   "description": "The condition on dy/dx leads to a contradiction with the defining equation, and the response must say so.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning_direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-03005-01",
+   "name": "Correct answer is that no such point exists",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "cr-23:22"
+   ]
+  },
+  {
+   "archetype": "BC-QA-03005",
+   "description": "Substituting the condition into the curve equation produces two solutions, and a response that reports one of them is incomplete.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning_direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-03005-02",
+   "name": "Two candidate points arise and both must be considered",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "cr-24:18"
+   ]
+  },
+  {
+   "archetype": "BC-QA-03005",
+   "description": "The prompt names a specific horizontal or vertical line and asks whether it is tangent to the curve.",
+   "difficulty_effect": "neutral",
+   "dimension": "context",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-03005-03",
+   "name": "Posed as a test of a stated line",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "cr-24:17"
+   ]
+  },
+  {
+   "archetype": "BC-QA-03006",
+   "description": "Both the matching input and the slope must be read from a figure.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-03006-01",
+   "name": "Original function supplied only as a graph",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:72"
+   ]
+  },
+  {
+   "archetype": "BC-QA-03006",
+   "description": "The equation f of c equal to the stated value has to be solved before the rule can be applied.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning_direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-03006-02",
+   "name": "Matching input must be solved for",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:77"
+   ]
+  },
+  {
+   "archetype": "BC-QA-03006",
+   "description": "The response must say that the derivative of the original function at the matching input is not zero.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning_direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-03006-03",
+   "name": "Hypotheses must be stated",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:77"
+   ]
+  },
+  {
+   "archetype": "BC-QA-03007",
+   "description": "The inner expression is not linear, so the squared inner expression appears in the denominator and the inner derivative is not constant.",
+   "difficulty_effect": "harder",
+   "dimension": "notation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-03007-01",
+   "name": "Nonlinear inner function",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:78"
+   ]
+  },
+  {
+   "archetype": "BC-QA-03007",
+   "description": "The stem states the derivative of the inverse trigonometric model, and the scoring falls on how the expression is used.",
+   "difficulty_effect": "easier",
+   "dimension": "reasoning_direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-03007-02",
+   "name": "Derivative supplied in the stem",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-25:2"
+   ]
+  },
+  {
+   "archetype": "BC-QA-03007",
+   "description": "The derivative is evaluated numerically in a calculator active setting and reported to three decimal places.",
+   "difficulty_effect": "neutral",
+   "dimension": "calculator",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-03007-03",
+   "name": "Numerical evaluation with a calculator",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-25:4"
+   ]
+  },
+  {
+   "archetype": "BC-QA-03008",
+   "description": "The first derivative is given in terms of both variables, so the chain rule reintroduces dy/dx in the second derivative.",
+   "difficulty_effect": "harder",
+   "dimension": "notation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-03008-01",
+   "name": "Expression differentiated still contains the dependent variable",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-25:20"
+   ]
+  },
+  {
+   "archetype": "BC-QA-03008",
+   "description": "A third or fourth derivative is requested, so the differentiation is repeated and intermediate results must be kept correct.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning_direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-03008-02",
+   "name": "Order above two requested",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:80"
+   ]
+  },
+  {
+   "archetype": "BC-QA-03008",
+   "description": "The prompt uses d squared y over d x squared, and the response is expected to answer in the same notation.",
+   "difficulty_effect": "neutral",
+   "dimension": "notation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-03008-03",
+   "name": "Answer demanded in Leibniz notation",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:80"
+   ]
+  },
+  {
+   "archetype": "BC-QA-03009",
+   "description": "Rewriting the expression first replaces a quotient rule with a power rule.",
+   "difficulty_effect": "easier",
+   "dimension": "reasoning_direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-03009-01",
+   "name": "Algebraic rewrite removes a rule",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:79"
+   ]
+  },
+  {
+   "archetype": "BC-QA-03009",
+   "description": "The expression looks like a power but is an exponential, or looks like a product but is a composition.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-03009-02",
+   "name": "Surface form suggests the wrong family",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "cr-22:21"
+   ]
+  },
+  {
+   "archetype": "BC-QA-03009",
+   "description": "The response must state which rule applies before carrying out the differentiation.",
+   "difficulty_effect": "neutral",
+   "dimension": "reasoning_direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-03009-03",
+   "name": "Rule must be named as well as applied",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:79"
+   ]
+  }
+ ]
+}

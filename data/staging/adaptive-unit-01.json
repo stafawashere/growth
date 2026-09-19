@@ -1,0 +1,4231 @@
+{
+ "registry": "skills",
+ "skills": [
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01017 (an average over an interval read as the rate at a point inside it)",
+     "BC-SKL-01003 (instantaneous rate, which requires the limiting step this skill does not take)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01012 (average rates over shrinking intervals, where the quotient must be formed repeatedly and its structure is visible)"
+    ],
+    "mastered_if": "The quotient of f(b) minus f(a) by b minus a is formed and evaluated for the interval the question names, from a formula and from a table of values, and the reported number carries the units of the quantity divided by the units of the input; the difference is never handed in as the rate (BC-ERR-01029 absent) and the interval endpoints match the rows the question specifies.",
+    "next_dependent_skills": [
+     "BC-SKL-01003"
+    ],
+    "partially_mastered_if": "The correct pair of values is selected and subtracted but the division by b minus a is missing, which is BC-ERR-01029, or the quotient is set up correctly and the arithmetic in the division is wrong, which the 2014 Q4 commentary records as a computation loss inside a correct setup.",
+    "prerequisite_gap_if": "The values placed in the numerator come from the wrong input, or f and f prime are interchanged when reading the table, which is a function notation gap at BC-PRQ-06005 rather than a difficulty with the average rate.",
+    "remediation_target": "BC-MIS-01017 (an average rate describes a whole interval, not one instant) for the conceptual failure; BC-PRQ-06005 (pulling f(b) and f(a) from the correct rows) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01012"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01029"
+   ],
+   "concept": "BC-CON-01001",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-01003"
+   ],
+   "description_formal": "Given f and an interval from a to b, compute the quotient of f(b) minus f(a) by b minus a.",
+   "description_plain": "Divide the change in the function by the change in the input over an interval.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-1A2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01001",
+   "learning_objectives": [
+    "BC-LO-CHA-1A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-01017"
+   ],
+   "name": "Compute an average rate of change over an interval",
+   "notation": "",
+   "official_evidence": [
+    "BC-FRQ-2014-Q1-A",
+    "BC-FRQ-2014-Q4-A"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-03"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:38"
+   ],
+   "topic": "BC-TOP-0101",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01017 (an average over an interval treated as a rate at a point, which hides why the zero length case fails)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01012 (intervals are shrunk towards a point, so the zero length case is the endpoint of the sequence and must be described rather than computed)"
+    ],
+    "mastered_if": "The response states that the difference quotient divides by b minus a, that a single point gives b equal to a and therefore a zero denominator, and that no average rate is defined there, with the zero denominator named as the reason rather than a claim that the function stops existing.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The response says an average rate needs an interval but never names the zero denominator as the mechanism, so the explanation restates the conclusion instead of exhibiting the quotient that breaks down.",
+    "prerequisite_gap_if": "The response cannot write the quotient of f(b) minus f(a) by b minus a at all before discussing degeneracy, which is a function notation gap at BC-PRQ-06005.",
+    "remediation_target": "BC-MIS-01017 (an average rate is an interval quantity) for the conceptual failure; BC-PRQ-06005 (writing the difference quotient in function notation) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01012"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-01001",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "State that the difference quotient divides by the change in the independent variable, so a single point gives a zero denominator and no average rate.",
+   "description_plain": "Say why the quotient breaks down when the interval has zero length.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-1A2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01002",
+   "learning_objectives": [
+    "BC-LO-CHA-1A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [],
+   "name": "Explain why an average rate of change is undefined at a single point",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-04"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:38"
+   ],
+   "topic": "BC-TOP-0101",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01017 (an average rate over an interval taken to be the rate at a point in it)",
+     "BC-SKL-01001 (the average rate, which needs no limit)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01012 (the task separates computing the averages from stating what they approach, so the limiting description is scored on its own)"
+    ],
+    "mastered_if": "The instantaneous rate at a is written as the limit of average rates of f over intervals containing a as the interval length tends to zero, with the limit symbol present and the interval length named as the quantity tending to zero, and an average over a fixed interval is reported as an approximation rather than as the exact rate (BC-ERR-01030 absent).",
+    "next_dependent_skills": [
+     "BC-SKL-01004",
+     "BC-SKL-02005"
+    ],
+    "partially_mastered_if": "A sequence of average rates is described correctly but the response names the last computed average as the rate at the point, which is BC-ERR-01030, or the word limit appears with no quantity tending to zero attached to it.",
+    "prerequisite_gap_if": "The average rates themselves are wrong or reported as differences, which is a gap at BC-SKL-01001 rather than in the limiting description, and pulling values for the wrong input is a BC-PRQ-06005 gap.",
+    "remediation_target": "BC-MIS-01017 (why shrinking the interval changes the object being measured) for the conceptual failure; BC-SKL-01001 (forming each average rate correctly) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01012"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01030"
+   ],
+   "concept": "BC-CON-01001",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-01004",
+    "BC-SKL-02005"
+   ],
+   "description_formal": "Express the instantaneous rate of change of f at a as the limit of average rates of change of f over intervals containing a as the interval length tends to zero.",
+   "description_plain": "Say that the rate at an instant is what the average rates approach as the interval closes in.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-1A1",
+    "BC-EK-CHA-1A3"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01003",
+   "learning_objectives": [
+    "BC-LO-CHA-1A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-01017"
+   ],
+   "name": "Describe an instantaneous rate as a limit of average rates",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-SKL-01001"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:38"
+   ],
+   "topic": "BC-TOP-0101",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01017 (the shrinking averages read as already being the rate at the point)",
+     "BC-SKL-01001 (a single average rate over one fixed interval)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01012 (supplies a table or formula and asks for both the sequence of averages and the value they approach, which separates the two scored behaviours)"
+    ],
+    "mastered_if": "Average rates are computed over a nested sequence of intervals closing on a, the values are recorded, and the response states the value those averages approach and names it as the estimate of the instantaneous rate at a; each entry is a quotient rather than a difference (BC-ERR-01029 absent) and the estimate is labelled an estimate rather than the exact rate (BC-ERR-01030 absent).",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The sequence of averages is correct but the response stops without saying what the values approach, which BC-SIG-01016 records as partial mastery, or the last average in the sequence is presented as the exact instantaneous rate, which is BC-ERR-01030.",
+    "prerequisite_gap_if": "The individual averages are wrong, or the change in the function is reported without the division, which places the failure at BC-SKL-01001 and BC-ERR-01029; an inability to say that the rate at a point is a limit of averages is a BC-SKL-01003 gap rather than a computation gap.",
+    "remediation_target": "BC-SKL-01003 (the rate at a point as the limit of averages) for the conceptual failure; BC-SKL-01001 (computing each average rate) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01012"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-01029",
+    "BC-ERR-01030"
+   ],
+   "concept": "BC-CON-01001",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given values of f, compute average rates over a nested sequence of intervals containing a and report the value the sequence approaches as the estimate of the instantaneous rate at a.",
+   "description_plain": "Compute average rates over smaller and smaller intervals and read off the value they approach.",
+   "diagnostic_signals": [
+    "BC-SIG-01016"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-1A3"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01004",
+   "learning_objectives": [
+    "BC-LO-CHA-1A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-01017"
+   ],
+   "name": "Estimate an instantaneous rate from average rates over shrinking intervals",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-SKL-01003"
+   ],
+   "representations": [
+    "BC-REP-03",
+    "BC-REP-05"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:38"
+   ],
+   "topic": "BC-TOP-0101",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01001 (the limit at c written as the value of f at c)",
+     "BC-SKL-01007 (one sided notation, where a side must be carried on the arrow)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01013 (a limit fact given in one representation must be produced in analytic form, so only the notation is at stake)"
+    ],
+    "mastered_if": "The statement is written with the limit symbol, the independent variable, the arrow to the target input, and the claimed value, in the order lim as x approaches c of f(x) equals R, with the variable of approach named and no value substituted in place of the arrow, and the same statement is produced from a verbal description and from a graph.",
+    "next_dependent_skills": [
+     "BC-SKL-01007"
+    ],
+    "partially_mastered_if": "The claimed value and the target input are both correct but the notation omits the variable under the arrow or writes f(c) where the limit symbol belongs, so the statement asserts evaluation rather than approach.",
+    "prerequisite_gap_if": "The response cannot say which symbol is the input and which is the output of f, or evaluates f at the wrong argument, which is a function notation gap at BC-PRQ-06005.",
+    "remediation_target": "BC-MIS-01001 (what the limit symbol claims, as distinct from evaluation) for the conceptual failure; BC-PRQ-06005 (reading and writing function notation) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01013"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-01003",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-01007"
+   ],
+   "description_formal": "Given a function, a target input, and a claimed value, write the statement using the limit symbol, the independent variable, the arrow to the target, and the claimed value.",
+   "description_plain": "Turn a described approach into the limit symbols.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-1A1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01005",
+   "learning_objectives": [
+    "BC-LO-LIM-1A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [],
+   "name": "Write a limit statement in correct analytic notation",
+   "notation": "lim as x approaches c of f(x) equals R",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-04"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:39"
+   ],
+   "topic": "BC-TOP-0102",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01003 (a limit taken as a value the function must eventually attain)",
+     "BC-MIS-01001 (the limit read as the function value at c)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01013 (an analytic statement must be matched to a graph or a table, so a wrong reading shows up as the wrong match)"
+    ],
+    "mastered_if": "A written limit statement is read back as the claim that f(x) can be made arbitrarily close to the stated value by taking x sufficiently close to c and not equal to c, with the exclusion of x equal to c stated, and the reading does not assert that f attains the value at c or anywhere else.",
+    "next_dependent_skills": [
+     "BC-SKL-06014"
+    ],
+    "partially_mastered_if": "The sentence describes the function approaching the value but adds that it reaches it, or omits the clause excluding x equal to c, so the reading is consistent with BC-MIS-01003 while the direction of approach is right.",
+    "prerequisite_gap_if": "The response cannot identify f, the input variable, and the target input inside the statement, which is a notation reading gap at BC-PRQ-06005 rather than a difficulty with the meaning of a limit.",
+    "remediation_target": "BC-MIS-01003 (approach without attainment, including at inputs where f is undefined) for the conceptual failure; BC-PRQ-06005 (identifying the parts of the statement) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01013"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-01002",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-06014"
+   ],
+   "description_formal": "Read a limit statement as the claim that f(x) can be made arbitrarily close to the stated value by taking x sufficiently close to the target and not equal to it.",
+   "description_plain": "Say in words what a written limit statement claims about the function values.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-1A1",
+    "BC-EK-LIM-1B1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01006",
+   "learning_objectives": [
+    "BC-LO-LIM-1B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-01003"
+   ],
+   "name": "Interpret a limit statement given in analytic notation",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:39"
+   ],
+   "topic": "BC-TOP-0102",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01002 (one side treated as settling the two sided limit)",
+     "BC-SKL-01005 (the two sided statement, which carries no side marker)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01013 (a one sided behaviour shown graphically must be produced in analytic form, which isolates the side marker)"
+    ],
+    "mastered_if": "The left hand and right hand statements at c are written with the side carried on the arrow as c from the left and c from the right, each with its own claimed value, and the two statements are kept separate rather than combined into one two sided claim.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The two one sided values are correct but the side marker is attached to the function or to the value instead of to the target input, or only one of the two statements is written where both are requested.",
+    "prerequisite_gap_if": "The two sided statement itself cannot be written with the limit symbol and the arrow, which places the failure at BC-SKL-01005, and misreading which argument f is evaluated at is a BC-PRQ-06005 gap.",
+    "remediation_target": "BC-MIS-01002 (why each side is a separate claim) for the conceptual failure; BC-SKL-01005 (limit notation before a side is added) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01013"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-01003",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Write the left hand and right hand limit statements at a target input using the correct one sided arrow notation.",
+   "description_plain": "Use the left and right arrows to say which side the approach comes from.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-1A1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01007",
+   "learning_objectives": [
+    "BC-LO-LIM-1A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [],
+   "name": "Write one sided limit notation",
+   "notation": "lim as x approaches c from the left; lim as x approaches c from the right",
+   "official_evidence": [
+    "BC-MCQ-SAMPLE-002",
+    "BC-MCQ-SAMPLE-006"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-SKL-01005"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:39",
+    "ced:40"
+   ],
+   "topic": "BC-TOP-0102",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01001 (the limit treated as another name for evaluation)",
+     "BC-MIS-01003 (a limit expected to be attained)",
+     "BC-SKL-01043 (continuity, which is where the two quantities are compared rather than distinguished)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01001 (asks for the limit and the function value at the same input as separate answers, which is exactly the separation BC-SIG-01002 tests)"
+    ],
+    "mastered_if": "The response states that the limit at c is determined by values of f at inputs near c and not equal to c, and exhibits the separation concretely, for example a graph with an open circle at one height and a closed point at another where the limit and the value are reported as two different numbers, with the limit still reported where f(c) is undefined (BC-ERR-01001 and BC-ERR-01003 absent).",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The two quantities are named as different in principle but the plotted value is handed in when the limit is requested, which is BC-ERR-01001, or nonexistence is claimed at an input where f is undefined although both sides approach the same height, which is BC-ERR-01003.",
+    "prerequisite_gap_if": "The height read from the graph belongs to the wrong input altogether, or f and f prime are interchanged, which is a reading gap at BC-PRQ-06005 rather than a confusion between limit and value.",
+    "remediation_target": "BC-MIS-01001 (the limit as a statement about nearby inputs) for the conceptual failure; BC-PRQ-06005 (reading an open and a closed point at one input) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01001"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01001",
+    "BC-ERR-01003"
+   ],
+   "concept": "BC-CON-01002",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "State that the limit of f at c is determined by values of f at inputs near c and not equal to c, so it may exist where f(c) is undefined and may differ from f(c).",
+   "description_plain": "Say that the limit describes nearby outputs and not the output at the point itself.",
+   "diagnostic_signals": [
+    "BC-SIG-01002"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-1A1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01008",
+   "learning_objectives": [
+    "BC-LO-LIM-1B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-01001",
+    "BC-MIS-01003"
+   ],
+   "name": "Distinguish the limit at a point from the function value at that point",
+   "notation": "",
+   "official_evidence": [
+    "BC-MCQ-CED-011"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-02",
+    "BC-REP-04"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:39"
+   ],
+   "topic": "BC-TOP-0102",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01002 (one sided approach taken as sufficient for the two sided limit)",
+     "BC-MIS-01001 (the plotted value read as the limit)",
+     "BC-SKL-01010 (one sided limits, which are reported separately and are not compared)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01001 (a graph with breaks, where two sided and one sided values and the function value are requested at named inputs)"
+    ],
+    "mastered_if": "The target input is located on the horizontal axis, the heights approached from the left and from the right are read, and the two are compared before a value is reported, so a jump yields the verdict that the limit does not exist rather than the height on one side (BC-ERR-01002 absent) and a plotted point that sits away from the approached height is not reported as the limit (BC-ERR-01001 absent).",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "One side is read correctly and reported as the limit while the other side is never examined, which is BC-ERR-01002, or the closed point rather than the approached height is handed in, which is BC-ERR-01001.",
+    "prerequisite_gap_if": "The heights are read at an input other than the one named, which is a graph reading gap at BC-PRQ-06005 rather than a limit gap.",
+    "remediation_target": "BC-MIS-01002 (both sides required before a two sided verdict) for the conceptual failure; BC-PRQ-06005 (locating the named input and reading the approached height) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01001"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01001",
+    "BC-ERR-01002"
+   ],
+   "concept": "BC-CON-01006",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a graph of f, estimate the limit at a target input by reading the output the graph approaches from the left and from the right.",
+   "description_plain": "Read the height the graph heads towards from both sides.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-1C2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01009",
+   "learning_objectives": [
+    "BC-LO-LIM-1C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-01001",
+    "BC-MIS-01002"
+   ],
+   "name": "Estimate a two sided limit from a graph",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:40"
+   ],
+   "topic": "BC-TOP-0103",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01002 (one side treated as settling the limit)",
+     "BC-SKL-01009 (the two sided estimate, which requires comparing the two readings)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01001 (requests one sided values at a break as separate answers, so each side is scored on its own)"
+    ],
+    "mastered_if": "The height approached from the left and the height approached from the right are reported as two separate answers with the side attached to each, including at an input where the two differ and at an input where the graph has a closed point at neither height, and neither one is promoted to a two sided claim (BC-ERR-01002 absent).",
+    "next_dependent_skills": [
+     "BC-SKL-01011"
+    ],
+    "partially_mastered_if": "Both one sided heights are read correctly but the response labels them with the wrong sides, or answers the one sided question with a single two sided statement, which is BC-ERR-01002.",
+    "prerequisite_gap_if": "The reading is taken at the wrong input or the vertical and horizontal axes are interchanged, which is a graph reading gap at BC-PRQ-06005.",
+    "remediation_target": "BC-MIS-01002 (each side is a claim in its own right) for the conceptual failure; BC-PRQ-06005 (reading a graph at a named input) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01001"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01002"
+   ],
+   "concept": "BC-CON-01004",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-01011"
+   ],
+   "description_formal": "Given a graph of f, report the left hand and right hand limits at a target input as separate values.",
+   "description_plain": "Read separately the height approached from the left and from the right.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-1C1",
+    "BC-EK-LIM-1C2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01010",
+   "learning_objectives": [
+    "BC-LO-LIM-1C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-01002"
+   ],
+   "name": "Estimate one sided limits from a graph",
+   "notation": "",
+   "official_evidence": [
+    "BC-MCQ-CED-011"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:40"
+   ],
+   "topic": "BC-TOP-0103",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01002 (a limit claimed from whichever side was examined)",
+     "BC-SKL-01012 (nonexistence from unbounded values, a different mechanism)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01001 (a graph with a jump, where the two one sided readings and the nonexistence verdict are scored separately)"
+    ],
+    "mastered_if": "Both one sided limits at c are named as values, the response states that they differ, and the conclusion is that the two sided limit does not exist, with the two values kept in the answer rather than replaced by one of them (BC-ERR-01002 absent); the conclusion holds whether the rule is piecewise or the evidence is a graph with a jump.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The two one sided limits are reported correctly and then one of them is named as the two sided limit, which is BC-SIG-01001 and BC-ERR-01002, so the comparison step is the only thing missing.",
+    "prerequisite_gap_if": "The one sided values themselves are wrong because the boundary input was substituted into the branch that does not apply on that side, which is a piecewise reading gap at BC-PRQ-01003, or because an absolute value was not split into branches, which is BC-PRQ-01006, rather than a failure of the comparison.",
+    "remediation_target": "BC-MIS-01002 (why agreement of the two sides is what existence means) for the conceptual failure; BC-SKL-01010 (reading each one sided limit) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01001"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01002"
+   ],
+   "concept": "BC-CON-01005",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a graph or rule whose left hand and right hand limits at c exist and differ, conclude that the two sided limit at c does not exist and name the two values.",
+   "description_plain": "Say the limit does not exist when the two sides head to different heights.",
+   "diagnostic_signals": [
+    "BC-SIG-01001"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-1C4"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01011",
+   "learning_objectives": [
+    "BC-LO-LIM-1C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-01002"
+   ],
+   "name": "Determine that a limit fails to exist because the one sided limits differ",
+   "notation": "",
+   "official_evidence": [
+    "BC-MCQ-CED-011"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01003",
+    "BC-PRQ-01006",
+    "BC-SKL-01010"
+   ],
+   "representations": [
+    "BC-REP-02",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:40"
+   ],
+   "topic": "BC-TOP-0103",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01012 (unbounded behaviour assumed identical on both sides, or infinity read as a real value)",
+     "BC-SKL-01011 (nonexistence from differing finite one sided limits)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01001 (asks for the limit or a statement of nonexistence at an input where the graph is unbounded, with a reason required)"
+    ],
+    "mastered_if": "The response states that the values of f increase or decrease without bound near c and concludes that the limit at c does not exist as a real number, keeping the distinction between writing an infinite limit as a description of behaviour and asserting that a real limit exists (BC-ERR-01020 absent).",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The unbounded behaviour is described correctly but the statement that the limit equals infinity is then treated as an existence claim, which is BC-ERR-01020, so the behaviour is right and the existence verdict is not.",
+    "prerequisite_gap_if": "The sign of the quotient on each side of the zero of the denominator cannot be determined, so one two sided infinite statement is written where the sides carry opposite signs, which is a sign analysis gap at BC-PRQ-01009.",
+    "remediation_target": "BC-MIS-01012 (the infinity symbol as a description of behaviour rather than a value) for the conceptual failure; BC-PRQ-01009 (sign of the quotient on each side) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01001"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01020"
+   ],
+   "concept": "BC-CON-01005",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a function whose values increase or decrease without bound near c, conclude that the limit at c does not exist as a real number.",
+   "description_plain": "Say the limit does not exist when the values grow without bound.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-1C4"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01012",
+   "learning_objectives": [
+    "BC-LO-LIM-1C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-01012"
+   ],
+   "name": "Determine that a limit fails to exist because the function is unbounded",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01009"
+   ],
+   "representations": [
+    "BC-REP-02",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:40"
+   ],
+   "topic": "BC-TOP-0103",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01004 (a table taken to settle the behaviour of the function)",
+     "BC-SKL-01012 (nonexistence from unbounded values, which is a different mechanism)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01001 (nonexistence must be stated with a reason, which separates oscillation from a jump or unbounded growth)"
+    ],
+    "mastered_if": "The response identifies that the values swing between fixed bounds arbitrarily close to c without settling, and concludes that the limit does not exist, rather than naming one of the values in the oscillation as the limit (BC-ERR-01004 absent); the verdict survives a table whose spacing happens to show agreeing values.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The oscillation is described correctly but one of the visited values is then reported as the limit, which is BC-ERR-01004, or the verdict rests only on the tabulated rows rather than on the behaviour between them.",
+    "prerequisite_gap_if": "The trigonometric factor cannot be bounded between negative one and one, so the oscillation is treated as unbounded growth, which is a gap at BC-PRQ-01005 rather than a misreading of nonexistence.",
+    "remediation_target": "BC-MIS-01004 (what happens between tabulated inputs) for the conceptual failure; BC-PRQ-01005 (bounds on sine and cosine) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01001"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01004"
+   ],
+   "concept": "BC-CON-01005",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a function that oscillates between fixed values arbitrarily close to c without approaching a single value, conclude that the limit at c does not exist.",
+   "description_plain": "Say the limit does not exist when the values keep swinging without settling.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-1C4"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01013",
+   "learning_objectives": [
+    "BC-LO-LIM-1C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-01004"
+   ],
+   "name": "Determine that a limit fails to exist because the function oscillates",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01005"
+   ],
+   "representations": [
+    "BC-REP-02",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:40"
+   ],
+   "topic": "BC-TOP-0103",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01004 (a finite sample, whether tabulated or plotted, treated as settling the behaviour)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01013 (the same limit claim is presented graphically and analytically, so a graph that disagrees with the expression exposes the scale argument)"
+    ],
+    "mastered_if": "The response states that a graph drawn at a given window may omit behaviour near the target input, for instance oscillation compressed below the pixel scale, and concludes that a limit read from a graph is provisional rather than established, naming the window or scale as the reason.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The response says the graph could be misleading but gives no mechanism, so the claim restates caution without naming what a wider or narrower window would reveal.",
+    "prerequisite_gap_if": "The limit cannot be read from the graph at the named input in the first place, which is a reading gap at BC-PRQ-06005 rather than a claim about scale.",
+    "remediation_target": "BC-MIS-01004 (what a finite representation does and does not establish) for the conceptual failure; BC-PRQ-06005 (reading a graph at a named input) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01013"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [],
+   "concept": "BC-CON-01006",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "State that a graphical representation at a given scale may omit behaviour near the target input, so a graphical estimate of a limit is provisional.",
+   "description_plain": "Say why a graph on one window can mislead about a limit.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-1C3"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01014",
+   "learning_objectives": [
+    "BC-LO-LIM-1C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [],
+   "name": "Explain how the scale of a graph can hide function behaviour",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-02",
+    "BC-REP-09"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:40"
+   ],
+   "topic": "BC-TOP-0103",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01004 (tabulated agreement treated as proof)",
+     "BC-SKL-01017 (judging what the table settles, which is the separate explanation task)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01002 (a table approaching a target from both sides, with a separate point when the limitation of the table must be explained)"
+    ],
+    "mastered_if": "The rows approaching c from the left and from the right are identified separately, the value the outputs crowd towards is stated from both sides, and the number is reported as an estimate supported by the table rather than as an established limit (BC-ERR-01005 absent).",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The correct value is read from the table but the response asserts it as established because the tabulated outputs agree to several places, which is BC-ERR-01005, or only the rows on one side are used for a two sided estimate.",
+    "prerequisite_gap_if": "The outputs are taken from rows for the wrong input, or the input and output columns are interchanged, which is a notation and reading gap at BC-PRQ-06005.",
+    "remediation_target": "BC-MIS-01004 (behaviour between tabulated inputs) for the conceptual failure; BC-PRQ-06005 (identifying which rows lie on each side of c) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01002"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01005"
+   ],
+   "concept": "BC-CON-01006",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a table of values of f at inputs approaching c from both sides, report the value the outputs approach as the estimate of the limit at c.",
+   "description_plain": "Read the value the outputs crowd towards as the inputs close in from both sides.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-1C5"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01015",
+   "learning_objectives": [
+    "BC-LO-LIM-1C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-01004"
+   ],
+   "name": "Estimate a two sided limit from a table of values",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-03"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:41"
+   ],
+   "topic": "BC-TOP-0104",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01002 (a one sided estimate promoted to a two sided claim)",
+     "BC-SKL-01015 (the two sided estimate, which uses rows from both sides)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01002 (asks for a one sided estimate from a table whose rows straddle the target, so row selection is the scored behaviour)"
+    ],
+    "mastered_if": "Only the rows on the requested side of c are used, the side is named in the answer, and the value the outputs approach on that side is reported, with rows from the other side visibly excluded from the estimate.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The value is right but rows from both sides are averaged or listed together, so the one sided character of the estimate is not carried into the work.",
+    "prerequisite_gap_if": "The rows cannot be sorted into those above and below c, which is a notation and table reading gap at BC-PRQ-06005.",
+    "remediation_target": "BC-MIS-01002 (what a one sided claim asserts) for the conceptual failure; BC-PRQ-06005 (reading rows against the target input) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01002"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-01004",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a table of values of f, estimate the left hand or right hand limit at c using only the tabulated inputs on the requested side of c.",
+   "description_plain": "Use only the rows on one side of the target input.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-1C1",
+    "BC-EK-LIM-1C5"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01016",
+   "learning_objectives": [
+    "BC-LO-LIM-1C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [],
+   "name": "Estimate a one sided limit from a table of values",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-03"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:41"
+   ],
+   "topic": "BC-TOP-0104",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01004 (tabulated agreement read as proof)",
+     "BC-SKL-01015 (producing the estimate, which this skill judges rather than computes)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01002 (carries a separate point for explaining what the table does and does not establish)"
+    ],
+    "mastered_if": "The response states that a finite table supports an estimate and does not establish a limit, and identifies a table whose spacing leaves the behaviour between rows undetermined, for instance rows sampled where an oscillating function repeats, so neither the agreeing values are taken as proof (BC-ERR-01005 absent) nor a visited value of an oscillation reported as the limit (BC-ERR-01004 absent).",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The response reports the estimate correctly and adds that the table is only evidence, but cannot say what behaviour the spacing could hide, so the limitation is asserted rather than located.",
+    "prerequisite_gap_if": "The rows cannot be matched to inputs on either side of c, which is a reading gap at BC-PRQ-06005 rather than a judgement about evidence.",
+    "remediation_target": "BC-MIS-01004 (what a finite sample of inputs can support) for the conceptual failure; BC-PRQ-06005 (reading the table against the target input) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01002"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01004",
+    "BC-ERR-01005"
+   ],
+   "concept": "BC-CON-01006",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "State that a finite table of values supports an estimate but does not establish a limit, and identify tables whose spacing leaves the behaviour near c undetermined.",
+   "description_plain": "Decide whether the tabulated values really settle or only appear to.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-1C3",
+    "BC-EK-LIM-1C5"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01017",
+   "learning_objectives": [
+    "BC-LO-LIM-1C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-01004"
+   ],
+   "name": "Judge whether a table supports a limit value or is inconclusive",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-03",
+    "BC-REP-04"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:41"
+   ],
+   "topic": "BC-TOP-0104",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01005 (limit theorems applied without their conditions, which matters once quotients and composites appear)",
+     "BC-SKL-01020 (the quotient theorem, which carries a denominator condition this one does not)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01003 (supplies two limits and asks for a combination, so the theorem rather than any algebra is at stake)"
+    ],
+    "mastered_if": "With the limits of f and g at c supplied, the limit of f plus g or f minus g is reported as the corresponding sum or difference of those limits, the two supplied values are recorded before combining, and the order of subtraction matches the order in the expression.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The theorem is applied to the right pair of limits but the subtraction runs the wrong way, so only the sign of the result is wrong, or the supplied limits are combined before being recorded, leaving no work to support the value.",
+    "prerequisite_gap_if": "The supplied limits are read against the wrong function or the wrong target input, which is a function notation gap at BC-PRQ-06005.",
+    "remediation_target": "BC-MIS-01005 (which theorem carries which condition) for the conceptual failure; BC-PRQ-06005 (matching each supplied limit to its function) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01003"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-01007",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given that the limits of f and g at c exist, evaluate the limit of f plus g or f minus g as the corresponding sum or difference of those limits.",
+   "description_plain": "Split the limit of a sum into the sum of the limits.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-1D2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01018",
+   "learning_objectives": [
+    "BC-LO-LIM-1D"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [],
+   "name": "Apply the sum and difference limit theorems",
+   "notation": "",
+   "official_evidence": [
+    "BC-FRQ-2019-Q3-D"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-03"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:42"
+   ],
+   "topic": "BC-TOP-0105",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01005 (theorems applied as unconditional formal rules)",
+     "BC-SKL-01018 (the sum and difference case)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01003 (a product or constant multiple built from two supplied limits, which isolates this theorem from any rewriting)"
+    ],
+    "mastered_if": "The limit of a product is reported as the product of the supplied limits and a constant factor is carried outside the limit unchanged, with both supplied values recorded and the constant multiple case handled without re-deriving the product rule for it.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The product of the two limits is formed correctly but a constant multiple is also multiplied into itself or dropped, so the structure of the theorem is right and one factor is mishandled.",
+    "prerequisite_gap_if": "The supplied limits are matched to the wrong functions or the wrong target, which is a notation gap at BC-PRQ-06005.",
+    "remediation_target": "BC-MIS-01005 (the hypotheses each limit theorem needs) for the conceptual failure; BC-PRQ-06005 (reading the supplied limits) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01003"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-01007",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given that the limits of f and g at c exist, evaluate the limit of a product as the product of the limits and the limit of a constant multiple as the constant times the limit.",
+   "description_plain": "Take the limit of each factor and multiply, and pull constants out.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-1D2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01019",
+   "learning_objectives": [
+    "BC-LO-LIM-1D"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [],
+   "name": "Apply the product and constant multiple limit theorems",
+   "notation": "",
+   "official_evidence": [
+    "BC-FRQ-2019-Q3-D"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-03"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:42"
+   ],
+   "topic": "BC-TOP-0105",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01005 (limit theorems treated as unconditional)",
+     "BC-SKL-01029 (classifying the form under substitution, which is what a zero denominator limit calls for next)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01003 (a quotient built from supplied limits, where the denominator condition is expected in a justified response)"
+    ],
+    "mastered_if": "Before dividing, the response states that the limit of the denominator is not zero and then reports the quotient of the two limits, and where the denominator limit is zero it states that the theorem does not apply rather than dividing anyway (BC-ERR-01006 absent).",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The quotient of the two supplied limits is formed correctly and the denominator condition is never written down, so the value stands but the justification naming the theorem is incomplete.",
+    "prerequisite_gap_if": "The supplied limits are attached to the wrong functions, which is a notation gap at BC-PRQ-06005, rather than an omission of the condition.",
+    "remediation_target": "BC-MIS-01005 (why the quotient theorem carries a denominator condition) for the conceptual failure; BC-SKL-01029 (classifying the form when the denominator limit is zero) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01003"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01006"
+   ],
+   "concept": "BC-CON-01007",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Evaluate the limit of a quotient as the quotient of the limits, stating first that the limit of the denominator is not zero, and identify when the theorem does not apply.",
+   "description_plain": "Divide the limits, after checking that the bottom limit is not zero.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-1D2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01020",
+   "learning_objectives": [
+    "BC-LO-LIM-1D"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-01005"
+   ],
+   "name": "Apply the quotient limit theorem and check the denominator condition",
+   "notation": "",
+   "official_evidence": [
+    "BC-FRQ-2019-Q3-D"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-03"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:42"
+   ],
+   "topic": "BC-TOP-0105",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01019 (continuity read off the shape of the formula rather than from its domain)",
+     "BC-SKL-01029 (classifying the form, which is what substitution at an excluded input calls for)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01014 (several expressions are presented and the procedure must be selected, so substituting where it does not apply is visible)"
+    ],
+    "mastered_if": "For a polynomial, rational, power, exponential, logarithmic, or trigonometric expression defined at c, the response substitutes c and reports the resulting number as the limit, and states or implies that substitution is legitimate because the expression is defined and continuous there rather than as a default move.",
+    "next_dependent_skills": [
+     "BC-SKL-01029"
+    ],
+    "partially_mastered_if": "Substitution is carried out correctly where it is legitimate but is also attempted at an input outside the domain, so the value is produced without the check that licenses it.",
+    "prerequisite_gap_if": "The inputs at which a radical, logarithm, or rational expression is undefined cannot be named, which is a domain gap at BC-PRQ-01008 and shows up as substitution at an excluded input.",
+    "remediation_target": "BC-MIS-01019 (continuity as a property on a domain) for the conceptual failure; BC-PRQ-01008 (domains of rational, radical, logarithmic, and trigonometric expressions) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01014"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-01007",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-01029"
+   ],
+   "description_formal": "For a polynomial, rational, power, exponential, logarithmic, or trigonometric expression defined at c, evaluate the limit at c by substituting c.",
+   "description_plain": "Put the target value into the expression when that is legitimate.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-1D2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01021",
+   "learning_objectives": [
+    "BC-LO-LIM-1D"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [],
+   "name": "Evaluate a limit by direct substitution where the function is continuous",
+   "notation": "",
+   "official_evidence": [
+    "BC-FRQ-2019-Q3-D"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01008"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:42",
+    "ced:49"
+   ],
+   "topic": "BC-TOP-0105",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01005 (composite and quotient theorems applied without their conditions)",
+     "BC-SKL-01021 (direct substitution, which handles the composite only when both parts are defined at c)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01003 (a composite built from supplied limits, which isolates the order of application)"
+    ],
+    "mastered_if": "The limit of the inner function at c is taken first, the outer function is then applied to that value, and the response records that the outer function is continuous at the inner limit, so the composite is evaluated in the order outer of inner rather than the reverse (BC-ERR-01007 absent).",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The inner limit is found correctly and the outer function applied, but the continuity condition on the outer function is never mentioned, so the theorem is used without its hypothesis.",
+    "prerequisite_gap_if": "The composite notation is misread, so the response cannot say which function is inner and which is outer, which is a gap at BC-PRQ-06005 rather than an error in the theorem.",
+    "remediation_target": "BC-MIS-01005 (the continuity condition on the outer function) for the conceptual failure; BC-PRQ-06005 (reading composite notation) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01003"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01007"
+   ],
+   "concept": "BC-CON-01007",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given the limit of the inner function at c and continuity of the outer function at that value, evaluate the limit of the composite as the outer function of the inner limit.",
+   "description_plain": "Take the limit of the inside first, then apply the outside function.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-1D2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01022",
+   "learning_objectives": [
+    "BC-LO-LIM-1D"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-01005"
+   ],
+   "name": "Apply the limit theorem for composite functions",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:42"
+   ],
+   "topic": "BC-TOP-0105",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01002 (one side taken as sufficient)",
+     "BC-SKL-01044 (the continuity test, which adds the comparison with the defined value)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01006 (a piecewise rule at a named input, where the two branch evaluations are separately visible)"
+    ],
+    "mastered_if": "At a branch boundary the left hand limit is evaluated from the branch that applies to the left and the right hand limit from the branch that applies to the right, the two are compared, and the two sided limit is reported only when they agree, with each substitution visibly taken into the branch whose condition covers that side (BC-ERR-01017 absent).",
+    "next_dependent_skills": [
+     "BC-SKL-01044"
+    ],
+    "partially_mastered_if": "One of the two one sided limits is computed from the branch that does not apply on that side, which is BC-ERR-01017, so the comparison is carried out on a wrong value, or the two values agree and the response never states the two sided conclusion.",
+    "prerequisite_gap_if": "The branch conditions cannot be matched to inputs at all, so the boundary input is substituted into whichever expression is written first, which is a piecewise reading gap at BC-PRQ-01003.",
+    "remediation_target": "BC-MIS-01002 (why both branches must be evaluated) for the conceptual failure; BC-PRQ-01003 (matching a branch condition to a side of the boundary) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01006"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01017"
+   ],
+   "concept": "BC-CON-01004",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-01044"
+   ],
+   "description_formal": "For a piecewise defined function, evaluate the left hand and right hand limits at a boundary from the relevant branch expressions and report the two sided limit when they agree.",
+   "description_plain": "Evaluate each branch at the boundary and compare.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-1D1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01023",
+   "learning_objectives": [
+    "BC-LO-LIM-1D"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [],
+   "name": "Determine a two sided limit by matching one sided limits of a piecewise rule",
+   "notation": "",
+   "official_evidence": [
+    "BC-MCQ-CED-002"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01003"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:42"
+   ],
+   "topic": "BC-TOP-0105",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01007 (cancellation treated as a move on repeated symbols)",
+     "BC-MIS-01006 (the indeterminate form read as an answer)",
+     "BC-SKL-01025 (the conjugate route, used when a radical blocks factoring)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01004 (an indeterminate quotient that must be rewritten, with separate credit for establishing the form and for the value)"
+    ],
+    "mastered_if": "Substitution is shown to give zero over zero with the limits of numerator and denominator presented separately, the numerator and denominator are factored, the common factor is divided out with the restriction to inputs other than c respected, and the simplified expression is evaluated at c; a summand is never cancelled in place of a factor (BC-ERR-01010 absent) and zero is not reported from the numerator alone (BC-ERR-01008 absent).",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The factorisation and cancellation are correct but the substitution into the simplified expression gives a wrong number, which BC-SIG-01003 records as an arithmetic rather than conceptual loss, or the form is written as a limit set equal to zero over zero instead of as two separate limits.",
+    "prerequisite_gap_if": "The quadratic or cubic cannot be factored, so the response substitutes, reaches zero over zero, and stops, which is a factoring gap at BC-PRQ-01001; not knowing that the form calls for a rewriting at all is a BC-SKL-01028 gap.",
+    "remediation_target": "BC-MIS-01007 (factors divide out, terms do not) for the conceptual failure; BC-PRQ-01001 (factoring and dividing out a common factor) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01004"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01008",
+    "BC-ERR-01010"
+   ],
+   "concept": "BC-CON-01008",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a quotient whose numerator and denominator both tend to zero at c, factor both, divide out the common factor valid for inputs other than c, and evaluate the resulting expression at c.",
+   "description_plain": "Factor top and bottom, cancel the shared factor, then substitute.",
+   "diagnostic_signals": [
+    "BC-SIG-01003"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-1E1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01024",
+   "learning_objectives": [
+    "BC-LO-LIM-1E"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-01007"
+   ],
+   "name": "Evaluate an indeterminate limit by factoring and dividing out a common factor",
+   "notation": "",
+   "official_evidence": [
+    "BC-MCQ-CED-001",
+    "BC-MCQ-SAMPLE-002"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01001",
+    "BC-SKL-01028"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:43"
+   ],
+   "topic": "BC-TOP-0106",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01006 (zero over zero read as a verdict)",
+     "BC-SKL-01024 (the factoring route, which applies when no radical is present)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01004 (an indeterminate quotient whose rewriting step is scored separately from the value)"
+    ],
+    "mastered_if": "A quotient containing a radical difference that is indeterminate at c is multiplied above and below by the conjugate, the difference of squares is formed and simplified, the common factor is divided out, and the remaining expression is evaluated at c, with the form established by the two separate limits before the rewriting begins.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The conjugate is chosen correctly but the product in the numerator is expanded wrongly, or the conjugate is multiplied into only one of numerator and denominator, so the rewritten expression is no longer equivalent to the original.",
+    "prerequisite_gap_if": "The radical difference is left in place and the limit reported as nonexistent, which is a rationalising gap at BC-PRQ-01002; failing to see that the form demands a rewriting at all is a BC-SKL-01028 gap.",
+    "remediation_target": "BC-MIS-01006 (an indeterminate form as a signal, not a value) for the conceptual failure; BC-PRQ-01002 (rationalising with a conjugate) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01004"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-01008",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a quotient involving a sum or difference with a radical that is indeterminate at c, multiply numerator and denominator by the conjugate, simplify, and evaluate.",
+   "description_plain": "Clear the radical with the conjugate, then cancel and substitute.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-1E1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01025",
+   "learning_objectives": [
+    "BC-LO-LIM-1E"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [],
+   "name": "Evaluate an indeterminate limit by multiplying by a conjugate",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01002",
+    "BC-SKL-01028"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:43"
+   ],
+   "topic": "BC-TOP-0106",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01007 (cancellation as a syntactic move on matching symbols)",
+     "BC-SKL-01024 (the factoring route, which applies once the fraction is cleared)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01004 (the rewriting step carries its own credit, so clearing the inner fractions is visible)"
+    ],
+    "mastered_if": "A quotient whose numerator or denominator contains fractions is multiplied through by the common denominator of the inner fractions, the compound expression is reduced to a single quotient, the common factor is divided out, and the limit is evaluated, with no summand cancelled in place of a factor (BC-ERR-01010 absent).",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The complex fraction is cleared correctly but a term common to numerator and denominator is then cancelled as though it were a factor, which is BC-ERR-01010, so the rewriting is undone by the final move.",
+    "prerequisite_gap_if": "The difference of two fractions in the numerator cannot be combined over a common denominator, which is a gap at BC-PRQ-01007; not recognising that the zero over zero form calls for a rewriting is a BC-SKL-01028 gap.",
+    "remediation_target": "BC-MIS-01007 (equivalence of the rewritten expression) for the conceptual failure; BC-PRQ-01007 (simplifying a complex fraction) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01004"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01010"
+   ],
+   "concept": "BC-CON-01008",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a quotient whose numerator or denominator contains fractions, multiply through by a common denominator, simplify, and evaluate the limit.",
+   "description_plain": "Clear the nested fractions first, then cancel and substitute.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-1E1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01026",
+   "learning_objectives": [
+    "BC-LO-LIM-1E"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-01007"
+   ],
+   "name": "Evaluate an indeterminate limit by simplifying a complex fraction",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01007",
+    "BC-SKL-01028"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:43"
+   ],
+   "topic": "BC-TOP-0106",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01006 (the indeterminate form treated as an answer)",
+     "BC-SKL-01024 (the factoring route, which does not resolve a trigonometric indeterminacy)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01004 (a quotient that gives zero over zero and must be rewritten into an equivalent form before evaluation)"
+    ],
+    "mastered_if": "A trigonometric quotient that is indeterminate at c is rewritten with a Pythagorean, double angle, or reciprocal identity into an expression whose limit can be read off, the identity used is visible in the work, and the value follows from the rewritten form rather than from substitution into the original.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "An identity is applied correctly but the resulting expression is not simplified far enough to remove the indeterminacy, so the response stops at a second zero over zero form.",
+    "prerequisite_gap_if": "Exact values of sine and cosine at the target angle are unavailable, or the oscillating factor cannot be bounded, which is a gap at BC-PRQ-01005; not seeing that the form requires rewriting is a BC-SKL-01028 gap.",
+    "remediation_target": "BC-MIS-01006 (an indeterminate form as a signal to rewrite) for the conceptual failure; BC-PRQ-01005 (exact trigonometric values and bounds) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01004"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-01008",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a trigonometric quotient that is indeterminate at c, apply an identity or an alternate form to produce an equivalent expression whose limit can be read off.",
+   "description_plain": "Use an identity to turn the expression into one that can be evaluated.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-1E1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01027",
+   "learning_objectives": [
+    "BC-LO-LIM-1E"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [],
+   "name": "Evaluate an indeterminate limit by rewriting with trigonometric identities",
+   "notation": "",
+   "official_evidence": [
+    "BC-MCQ-CED-001",
+    "BC-MCQ-SAMPLE-002"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01005",
+    "BC-SKL-01028"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:43"
+   ],
+   "topic": "BC-TOP-0106",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01006 (the symbol zero over zero treated as a value, whether zero, undefined, or nonexistent)",
+     "BC-SKL-01029 (classifying the form, which includes the nonzero over zero case this skill excludes)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01004 (credit for establishing the form requires the two limits presented separately, which is the behaviour at issue)"
+    ],
+    "mastered_if": "The response presents the limit of the numerator and the limit of the denominator separately, both zero, states that substitution assigns no value, and announces that an equivalent expression is needed; the form is not written as a limit set equal to zero over zero (BC-ERR-01011 absent), not read as the answer zero (BC-ERR-01008 absent), and not read as nonexistence (BC-ERR-01009 absent).",
+    "next_dependent_skills": [
+     "BC-SKL-01024",
+     "BC-SKL-01025",
+     "BC-SKL-01026",
+     "BC-SKL-01027",
+     "BC-SKL-04037"
+    ],
+    "partially_mastered_if": "The limit is written equal to the indeterminate symbol and the response then rewrites correctly and reaches the right value, which BC-SIG-01005 records as a notation habit rather than a gap.",
+    "prerequisite_gap_if": "The response identifies the form and stops because no factorisation is attempted, which BC-SIG-01004 and BC-PRQ-01001 place in the algebra of factoring rather than in reading the form.",
+    "remediation_target": "BC-MIS-01006 (two expressions with the same form and different limits) for the conceptual failure; BC-PRQ-01001 (producing the factorisation the form calls for) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01004"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01008",
+    "BC-ERR-01009",
+    "BC-ERR-01011"
+   ],
+   "concept": "BC-CON-01008",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-01024",
+    "BC-SKL-01025",
+    "BC-SKL-01026",
+    "BC-SKL-01027",
+    "BC-SKL-04037"
+   ],
+   "description_formal": "State that a quotient whose numerator and denominator both tend to zero has no value assigned by substitution and that an equivalent expression is required before the limit can be determined.",
+   "description_plain": "See that zero over zero carries no value and that the expression must be changed.",
+   "diagnostic_signals": [
+    "BC-SIG-01004",
+    "BC-SIG-01005"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-1E1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01028",
+   "learning_objectives": [
+    "BC-LO-LIM-1E"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-01006"
+   ],
+   "name": "Recognise an indeterminate form as a signal that rewriting is needed",
+   "notation": "",
+   "official_evidence": [
+    "BC-MCQ-CED-001"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01001"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-04"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:43",
+    "sg-23:14"
+   ],
+   "topic": "BC-TOP-0106",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01006 (an indeterminate form read as a value)",
+     "BC-SKL-01030 (choosing the procedure, which follows the classification)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01014 (the classification and the resulting value carry separate credit, so a correct value from a wrong label is visible)"
+    ],
+    "mastered_if": "The target input is substituted and the result named as one of a determinate value, the indeterminate form zero over zero, or a nonzero number over zero, with the nonzero over zero case distinguished from the indeterminate case and neither reported as an answer (BC-ERR-01008 and BC-ERR-01009 absent) and no quotient theorem applied over a zero denominator limit (BC-ERR-01006 absent).",
+    "next_dependent_skills": [
+     "BC-SKL-01030"
+    ],
+    "partially_mastered_if": "Substitution is carried out and the resulting form written down, but zero over zero and nonzero over zero are given the same label, so the classification does not distinguish a rewriting case from an unbounded case.",
+    "prerequisite_gap_if": "Substitution into a defined expression is itself mishandled, which is a BC-SKL-01021 gap, and inability to factor once the form is named is a BC-PRQ-01001 gap rather than a classification failure.",
+    "remediation_target": "BC-MIS-01006 (what each form does and does not determine) for the conceptual failure; BC-SKL-01021 (substituting correctly before classifying) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01014"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01006",
+    "BC-ERR-01008",
+    "BC-ERR-01009"
+   ],
+   "concept": "BC-CON-01009",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-01030"
+   ],
+   "description_formal": "Substitute the target input into the expression and classify the result as a determinate value, the indeterminate form zero over zero, or a nonzero number over zero.",
+   "description_plain": "Substitute first and name what comes out: a value, zero over zero, or an unbounded quotient.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01029",
+   "learning_objectives": [],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-01006"
+   ],
+   "name": "Classify a limit expression by its form under substitution",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01001",
+    "BC-SKL-01021"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:44"
+   ],
+   "topic": "BC-TOP-0107",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01006 (an indeterminate form read as a verdict rather than as a routing signal)",
+     "BC-SKL-01031 (recognising that substitution already settles the limit)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01014 (several expressions are presented and the procedure for each must be identified, which is exactly this selection)"
+    ],
+    "mastered_if": "The response names substitution, algebraic rewriting, one sided analysis, the squeeze theorem, or end behaviour comparison as the procedure the expression calls for and gives the reason from the form obtained under substitution, so a zero over zero quotient is routed to rewriting rather than declared nonexistent (BC-ERR-01009 absent).",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "A workable procedure is named but the reason is the surface appearance of the expression rather than the form under substitution, so the selection happens to fit this expression without a rule behind it.",
+    "prerequisite_gap_if": "The form under substitution is labelled wrongly in the first place, which is a BC-SKL-01029 gap, or the chosen rewriting cannot be carried out because the factorisation is unavailable, which is BC-PRQ-01001.",
+    "remediation_target": "BC-MIS-01006 (what the form signals) for the conceptual failure; BC-SKL-01029 (classifying the form before selecting) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01014"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01009"
+   ],
+   "concept": "BC-CON-01009",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a limit expression, select substitution, algebraic rewriting, one sided analysis, the squeeze theorem, or end behaviour comparison as the procedure that resolves it, and name the reason.",
+   "description_plain": "Pick the method that suits the form the expression takes.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01030",
+   "learning_objectives": [],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-01006"
+   ],
+   "name": "Select an appropriate procedure for a given limit expression",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01001",
+    "BC-SKL-01029"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-04"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:44"
+   ],
+   "topic": "BC-TOP-0107",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01019 (continuity attributed to the formula rather than to its domain)",
+     "BC-SKL-01030 (selecting a procedure, where substitution is one of the options)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01014 (a mixed set where some expressions need no rewriting, so unnecessary machinery is visible)"
+    ],
+    "mastered_if": "The response identifies that the expression is defined and continuous at c, reports the substituted value as the limit, and stops, with no factoring, conjugate, or identity applied to an expression that needs none.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The substituted value is correct but the response then rewrites the expression anyway, so the stopping rule is absent while the value survives.",
+    "prerequisite_gap_if": "An input outside the domain of a radical, logarithm, or rational expression is treated as a point of continuity, which is a domain gap at BC-PRQ-01008.",
+    "remediation_target": "BC-MIS-01019 (continuity on a domain) for the conceptual failure; BC-PRQ-01008 (locating the excluded inputs) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01014"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-01009",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Identify expressions defined and continuous at the target input, for which substitution gives the limit and no further manipulation is warranted.",
+   "description_plain": "Stop rewriting when the direct value is legitimate.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01031",
+   "learning_objectives": [],
+   "mapping_tag": "verified",
+   "misconceptions": [],
+   "name": "Recognise when substitution already settles the limit",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01008"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:44",
+    "ced:49"
+   ],
+   "topic": "BC-TOP-0107",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01008 (the theorem read as a rule for evaluating the bounds at c)",
+     "BC-MIS-01010 (naming the theorem treated as the argument)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01005 (the bounding inequality, the limits of the bounds, and the conclusion each carry credit, so a missing hypothesis is visible)"
+    ],
+    "mastered_if": "The response states both hypotheses, that the bounding inequality holds for all inputs near c except possibly at c itself, and that the two bounding functions have the same limit at c, and says that the inequality need not hold at c.",
+    "next_dependent_skills": [
+     "BC-SKL-01034"
+    ],
+    "partially_mastered_if": "The bounding inequality is stated but the requirement that the two bounds share a limit is left out, or the inequality is required to hold at c as well, so the hypotheses are over or under stated.",
+    "prerequisite_gap_if": "The neighbourhood is written as a closed interval containing c where an open interval excluding c is meant, which is an interval notation gap at BC-PRQ-01010.",
+    "remediation_target": "BC-MIS-01008 (the bounds as functions whose limits must agree) for the conceptual failure; BC-PRQ-01010 (interval and inequality notation) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01005"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-01010",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-01034"
+   ],
+   "description_formal": "State that the bounding inequality must hold for all inputs near the target except possibly at the target, and that the two bounding functions must have the same limit there.",
+   "description_plain": "Name what must hold before the theorem may be used.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-1E2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01032",
+   "learning_objectives": [
+    "BC-LO-LIM-1E"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-01008",
+    "BC-MIS-01010"
+   ],
+   "name": "State the hypotheses of the squeeze theorem",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01010"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:45"
+   ],
+   "topic": "BC-TOP-0108",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01008 (the inequality handled as an equation)",
+     "BC-SKL-01035 (the full application, which uses this inequality)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01005 (establishing the bounding inequality carries its own credit, separate from the conclusion)"
+    ],
+    "mastered_if": "The oscillating factor is bounded between fixed values, the inequality is multiplied by the vanishing factor with the direction reversed wherever that factor is negative, and the resulting inequality is stated for inputs near c, so no sign changing multiplication passes without reversal (BC-ERR-01012 absent).",
+    "next_dependent_skills": [
+     "BC-SKL-01035"
+    ],
+    "partially_mastered_if": "The bound on the oscillating factor is correct and the multiplication is carried out, but the inequality direction is kept on the side where the vanishing factor is negative, which is BC-ERR-01012.",
+    "prerequisite_gap_if": "The trigonometric factor cannot be bounded between negative one and one and is treated as unbounded, which is a gap at BC-PRQ-01005 rather than an inequality handling error.",
+    "remediation_target": "BC-MIS-01008 (what the bounding inequality asserts and where) for the conceptual failure; BC-PRQ-01005 (bounds on sine and cosine) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01005"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01012"
+   ],
+   "concept": "BC-CON-01010",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-01035"
+   ],
+   "description_formal": "Given a candidate pair of bounding functions, establish the inequality for inputs near the target, typically from the bounds on a trigonometric factor.",
+   "description_plain": "Show the function really sits between the two bounds near the point.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-1E2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01033",
+   "learning_objectives": [
+    "BC-LO-LIM-1E"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-01008"
+   ],
+   "name": "Verify the bounding inequality on an interval around the point",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01005"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:45"
+   ],
+   "topic": "BC-TOP-0108",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01008 (the squeeze theorem read as a substitution rule)",
+     "BC-SKL-01033 (verifying the inequality, which precedes this step)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01005 (the limits of the two bounds and the conclusion are scored separately, which isolates this step)"
+    ],
+    "mastered_if": "The limits of the two bounding functions at c are evaluated as limits, shown to agree, and the trapped function is then stated to have that same limit, with the theorem named and the bounds not merely substituted at c (BC-ERR-01013 absent).",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The bounding inequality is established correctly but the conclusion substitutes c into the bounds rather than taking their limits, which is BC-SIG-01018 and BC-ERR-01013, so the agreement is asserted from values rather than from limits.",
+    "prerequisite_gap_if": "The hypotheses of the theorem cannot be stated, in particular that the two bounds must share a limit, which is a BC-SKL-01032 gap, and writing the conclusion on a closed interval where an interior point is meant is BC-PRQ-01010.",
+    "remediation_target": "BC-MIS-01008 (limits of the bounds rather than values at c) for the conceptual failure; BC-SKL-01032 (the hypotheses being discharged) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01005"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01013"
+   ],
+   "concept": "BC-CON-01010",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Evaluate the limits of the bounding functions at the target, observe that they agree, and conclude that the trapped function has that limit.",
+   "description_plain": "Once both bounds have the same limit, state that the trapped function has it too.",
+   "diagnostic_signals": [
+    "BC-SIG-01018"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-1E2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01034",
+   "learning_objectives": [
+    "BC-LO-LIM-1E"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-01008"
+   ],
+   "name": "Conclude a limit value from matching bounds",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01010",
+    "BC-SKL-01032"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:45"
+   ],
+   "topic": "BC-TOP-0108",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01008 (the bounds evaluated at the target rather than taken as limits)",
+     "BC-SKL-01013 (oscillation as a reason for nonexistence, which is the case where no vanishing factor traps it)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01005 (a function trapped between two bounds, with the inequality, the bound limits, and the conclusion each carrying credit)"
+    ],
+    "mastered_if": "For a product of a vanishing factor and a bounded oscillating factor, the oscillating factor is bounded between negative one and one, the inequality is multiplied by the vanishing factor with the direction handled on each side (BC-ERR-01012 absent), both bounds are shown to tend to zero, and the limit of the product is concluded to be zero.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The bounding and the multiplication are correct but the conclusion is stated for the bounds only, without transferring the limit to the trapped product, so the last step of the theorem is missing.",
+    "prerequisite_gap_if": "The oscillating trigonometric factor cannot be bounded and is treated as growing without bound, which is a BC-PRQ-01005 gap, and a failure to reverse the inequality under a negative factor sits at BC-SKL-01033.",
+    "remediation_target": "BC-MIS-01008 (what the theorem concludes and from what) for the conceptual failure; BC-SKL-01033 (multiplying the inequality correctly) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01005"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01012"
+   ],
+   "concept": "BC-CON-01010",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "For a product of a factor tending to zero and a bounded oscillating factor, bound the oscillating factor, multiply the inequality by the vanishing factor, and conclude the limit is zero.",
+   "description_plain": "Bound the oscillating part between negative one and one and multiply through.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-1E2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01035",
+   "learning_objectives": [
+    "BC-LO-LIM-1E"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-01008"
+   ],
+   "name": "Apply the squeeze theorem to a bounded oscillating factor",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01005",
+    "BC-SKL-01033"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:45"
+   ],
+   "topic": "BC-TOP-0108",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01018 (every statement containing an infinity symbol read as the same claim)",
+     "BC-SKL-01059 (horizontal asymptotes, one of the two statements being distinguished)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01013 (one limit fact presented in one representation with the equivalent required in another, which is the conversion itself)"
+    ],
+    "mastered_if": "A limit fact given as a graph, a table, or an expression is restated in neutral terms and each candidate presentation is tested against it, so a vertical asymptote statement is matched to unbounded behaviour near a finite input and an end behaviour statement to a horizontal asymptote, with the two never exchanged (BC-ERR-01033 absent).",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The behaviour is read correctly from the supplied representation but the candidate chosen carries the infinity symbol in the other position, so a statement about large inputs is matched to one about unbounded outputs.",
+    "prerequisite_gap_if": "The supplied representation is read at the wrong input, or the roles of f and its argument are interchanged, which is a notation gap at BC-PRQ-06005.",
+    "remediation_target": "BC-MIS-01018 (where the infinity symbol sits and what each position claims) for the conceptual failure; BC-PRQ-06005 (reading the supplied representation) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01013"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01033"
+   ],
+   "concept": "BC-CON-01011",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a limit claim in one representation, identify the graph, table, or expression among alternatives that carries the same limit behaviour at the target input.",
+   "description_plain": "Check that the three presentations of one limit agree.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01036",
+   "learning_objectives": [],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-01018"
+   ],
+   "name": "Match a graph, a table, and an analytic expression of the same limit",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02",
+    "BC-REP-03"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:46"
+   ],
+   "topic": "BC-TOP-0109",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01018 (all infinity notation read as one claim)",
+     "BC-SKL-01006 (interpreting a finite two sided statement, which carries no infinity symbol)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01013 (requires the verbal presentation of a limit supplied analytically, so the wording is the scored object)"
+    ],
+    "mastered_if": "An analytic statement, including a one sided or infinite one, is converted into a sentence naming the input being approached, the side where one is specified, and what the outputs do, so unbounded growth near a finite input and settling towards a value for large inputs are described differently (BC-ERR-01033 absent).",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The sentence describes the correct behaviour but omits the side on a one sided statement, or describes outputs growing without bound as the input growing without bound, so the two roles of the infinity symbol are blurred in the wording.",
+    "prerequisite_gap_if": "The function, the variable, and the target cannot be identified inside the statement, which is a notation gap at BC-PRQ-06005.",
+    "remediation_target": "BC-MIS-01018 (the two positions of the infinity symbol) for the conceptual failure; BC-PRQ-06005 (parsing the statement) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01013"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01033"
+   ],
+   "concept": "BC-CON-01011",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Convert an analytic limit statement, including a one sided or infinite statement, into a sentence describing the behaviour of the function near the target input.",
+   "description_plain": "Say in ordinary words what the symbols claim about the function near the point.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01037",
+   "learning_objectives": [],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-01018"
+   ],
+   "name": "Translate a limit statement into a verbal description of behaviour",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-04"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:46"
+   ],
+   "topic": "BC-TOP-0109",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01001 (the limit drawn as the function value at the same input)",
+     "BC-SKL-01008 (distinguishing the limit from the value, which the sketch must embody)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01013 (a limit claim must be produced in graphical form, so every stated condition is checkable against the drawing)"
+    ],
+    "mastered_if": "A single curve is drawn satisfying every stated condition at once, with an open circle where the limit exists and the value differs or is undefined, a filled point at the stated value of f, and distinct one sided heights where a one sided condition demands them, and each condition can be pointed to on the sketch.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "Most conditions are met but the sketch places the filled point at the limit height where the conditions require it elsewhere, so the graph satisfies the limit conditions and contradicts the value condition.",
+    "prerequisite_gap_if": "A piecewise description cannot be turned into branches with their conditions, so the sketch ignores which rule applies on which side, which is a gap at BC-PRQ-01003.",
+    "remediation_target": "BC-MIS-01001 (the limit and the value as separate conditions) for the conceptual failure; BC-PRQ-01003 (reading a piecewise description) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01013"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-01011",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given conditions on one sided limits, the two sided limit, and the function value at one or more inputs, produce a graph satisfying all of them simultaneously.",
+   "description_plain": "Draw a curve that meets every limit and value condition given.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01038",
+   "learning_objectives": [],
+   "mapping_tag": "verified",
+   "misconceptions": [],
+   "name": "Sketch a graph consistent with stated limit and value conditions",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01003"
+   ],
+   "representations": [
+    "BC-REP-02",
+    "BC-REP-04"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:46"
+   ],
+   "topic": "BC-TOP-0109",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01011 (every input missing from the domain read as an asymptote)",
+     "BC-SKL-01041 (an infinite discontinuity, where the factor does not divide out)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01007 (each break must be classified as removable, jump, or asymptotic, with a reason when justification is demanded)"
+    ],
+    "mastered_if": "A break at c is named removable when the two sided limit at c exists while f(c) is undefined or differs from that limit, with both the limit and the status of f(c) stated, and the limit is not declared nonexistent merely because f has no value at c (BC-ERR-01003 absent).",
+    "next_dependent_skills": [
+     "BC-SKL-01050"
+    ],
+    "partially_mastered_if": "The limit is computed correctly and the break is called removable, but the response never compares the limit with f(c), so the classification rests on the existence of the limit alone.",
+    "prerequisite_gap_if": "The common factor that makes the limit exist is never divided out because the numerator and denominator are not factored, which is a gap at BC-PRQ-01001.",
+    "remediation_target": "BC-MIS-01011 (what distinguishes a repaired point from an asymptote) for the conceptual failure; BC-PRQ-01001 (factoring and dividing out) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01007"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01003"
+   ],
+   "concept": "BC-CON-01012",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-01050"
+   ],
+   "description_formal": "Identify a discontinuity at c as removable when the two sided limit at c exists while f(c) is undefined or differs from that limit.",
+   "description_plain": "Name a break removable when the limit exists but the value does not match it.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-2A1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01039",
+   "learning_objectives": [
+    "BC-LO-LIM-2A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [],
+   "name": "Classify a removable discontinuity",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01001"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:47"
+   ],
+   "topic": "BC-TOP-0110",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01002 (one side taken as settling the limit, which hides the jump)",
+     "BC-SKL-01039 (a removable break, where the two sides agree)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01007 (several breaks of different kinds are presented, so a jump must be separated from a removable and an infinite break)"
+    ],
+    "mastered_if": "A break at c is named a jump when both one sided limits exist as real numbers and differ, with the two values displayed, and the classification is not applied where one of the sides is unbounded or where the two sides agree.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "Both one sided limits are found and the verdict is a jump, but only one value is recorded, so the inequality that defines the classification is not exhibited.",
+    "prerequisite_gap_if": "A boundary input is evaluated in the branch that does not apply on that side, which is BC-PRQ-01003, or an absolute value quotient is treated as having equal one sided limits, which is BC-PRQ-01006.",
+    "remediation_target": "BC-MIS-01002 (both sides as separate claims) for the conceptual failure; BC-PRQ-01003 (evaluating the correct branch on each side) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01007"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-01012",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Identify a discontinuity at c as a jump when both one sided limits at c exist as real numbers and are unequal.",
+   "description_plain": "Name a break a jump when both sides settle but at different heights.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-2A1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01040",
+   "learning_objectives": [
+    "BC-LO-LIM-2A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [],
+   "name": "Classify a jump discontinuity",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01003",
+    "BC-PRQ-01006"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:47"
+   ],
+   "topic": "BC-TOP-0110",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01011 (every zero of the original denominator read as an asymptote)",
+     "BC-SKL-01039 (a removable break at a factor that divides out)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01007 (classification of each break with a reason)",
+     "BC-QA-01009 (asymptote locations and the one sided behaviour stated in notation, which forces the sign work)"
+    ],
+    "mastered_if": "A break at c is named as due to a vertical asymptote when at least one one sided limit there is infinite, with the unbounded side identified, and the classification is applied only after common factors have been divided out so that a cancelling factor is not reported as an asymptote (BC-ERR-01018 absent).",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The unbounded behaviour is identified correctly but the response reports the same infinite behaviour on both sides without checking the sign of the quotient on each, so the classification is right and the description of the sides is not.",
+    "prerequisite_gap_if": "The sign of the quotient just to the left and just to the right of the zero of the denominator cannot be determined, which is a gap at BC-PRQ-01009.",
+    "remediation_target": "BC-MIS-01011 (simplify before reading unbounded behaviour) for the conceptual failure; BC-PRQ-01009 (sign analysis near a zero of the denominator) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01007",
+    "BC-QA-01009"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01018"
+   ],
+   "concept": "BC-CON-01012",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Identify a discontinuity at c as due to a vertical asymptote when at least one one sided limit at c is infinite.",
+   "description_plain": "Name a break infinite when the values grow without bound on at least one side.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-2A1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01041",
+   "learning_objectives": [
+    "BC-LO-LIM-2A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-01011"
+   ],
+   "name": "Classify a discontinuity due to a vertical asymptote",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01009"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:47",
+    "ced:51"
+   ],
+   "topic": "BC-TOP-0110",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01019 (continuity read from the family of the formula rather than from its domain)",
+     "BC-SKL-01048 (determining continuity on intervals, which uses this list)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01006 (a piecewise rule tested at a named input, where the candidate inputs must first be located)"
+    ],
+    "mastered_if": "Every candidate input is listed, meaning each boundary of the partition and each input excluded from the branch expression that covers it, and the list is produced from the rule rather than from a graph, with branch conditions matched to sides correctly (BC-ERR-01017 absent).",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The partition boundaries are all listed but inputs where a branch expression is itself undefined, such as a zero of a denominator inside a branch, are omitted, so the search is limited to the seams of the rule.",
+    "prerequisite_gap_if": "Branch conditions cannot be read, so an input is assigned to the wrong branch, which is BC-PRQ-01003, or the excluded inputs of a rational or radical branch cannot be found, which is BC-PRQ-01008.",
+    "remediation_target": "BC-MIS-01019 (a break can sit inside a branch, not only at a seam) for the conceptual failure; BC-PRQ-01008 (domains of branch expressions) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01006"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01017"
+   ],
+   "concept": "BC-CON-01012",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a piecewise rule, locate every input at which the function may fail to be continuous, including boundaries of the partition and points excluded from a branch expression.",
+   "description_plain": "Check each branch boundary and each point excluded from a branch domain.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-2A1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01042",
+   "learning_objectives": [
+    "BC-LO-LIM-2A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [],
+   "name": "Identify the discontinuities of a piecewise defined function from its rule",
+   "notation": "",
+   "official_evidence": [
+    "BC-MCQ-SAMPLE-003"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01003",
+    "BC-PRQ-01008"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:47"
+   ],
+   "topic": "BC-TOP-0110",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01009 (one of the three conditions held as the whole definition)",
+     "BC-MIS-01001 (the limit read as the value, which collapses the third condition)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01006 (the failing condition must be named, which requires the three to be held apart)"
+    ],
+    "mastered_if": "All three conditions are stated, that f(c) exists, that the limit of f at c exists, and that the limit equals f(c), as separate requirements, and the response does not offer the existence of f(c) alone or agreement of the one sided limits alone as the definition (BC-ERR-01014 absent).",
+    "next_dependent_skills": [
+     "BC-SKL-01044",
+     "BC-SKL-01065",
+     "BC-SKL-02019"
+    ],
+    "partially_mastered_if": "Two of the three conditions are stated and the third, usually the equality of the limit with the value, is folded into one of the others, so the definition is close but not separable into what can be checked.",
+    "prerequisite_gap_if": "The symbols f(c) and the limit of f at c cannot be told apart in writing, which is a function notation gap at BC-PRQ-06005.",
+    "remediation_target": "BC-MIS-01009 (the three conditions as independent requirements) for the conceptual failure; BC-PRQ-06005 (writing f(c) and the limit distinctly) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01006"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01014"
+   ],
+   "concept": "BC-CON-01013",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-01044",
+    "BC-SKL-01065",
+    "BC-SKL-02019"
+   ],
+   "description_formal": "State that f is continuous at c provided f(c) exists, the limit of f at c exists, and the limit equals f(c).",
+   "description_plain": "Name the value, the limit, and their agreement.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-2A2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01043",
+   "learning_objectives": [
+    "BC-LO-LIM-2A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-01009"
+   ],
+   "name": "State the three conditions of continuity at a point",
+   "notation": "",
+   "official_evidence": [
+    "BC-MCQ-PE2012-036"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:48"
+   ],
+   "topic": "BC-TOP-0111",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01009 (continuity taken to be a single condition)",
+     "BC-MIS-01001 (the limit reported as the value, which makes the comparison vacuous)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01006 (a piecewise function at a named input, with the value and limit scored separately from the justification)"
+    ],
+    "mastered_if": "f(c) is evaluated from the branch that defines the value at c, the left and right limits are evaluated from the branches applying on those sides, the limit is compared with f(c), and the verdict follows from that comparison, with no conclusion drawn from the defined value alone (BC-ERR-01014 absent), from matching one sided limits alone (BC-ERR-01015 absent), or from a value substituted into the wrong branch (BC-ERR-01017 absent).",
+    "next_dependent_skills": [
+     "BC-SKL-01045",
+     "BC-SKL-01051"
+    ],
+    "partially_mastered_if": "Both one sided limits at the boundary are correct and the conclusion ignores the defined value, which is BC-SIG-01007 and BC-ERR-01015, or the definition is stated in full and then only one of the conditions is actually tested, which is BC-SIG-01006.",
+    "prerequisite_gap_if": "The boundary input is substituted into the branch that does not apply on that side, which is BC-PRQ-01003 and BC-ERR-01017, or the three conditions cannot be listed at all, which is a BC-SKL-01043 gap rather than a failure to execute the test.",
+    "remediation_target": "BC-MIS-01009 (why all three conditions are checked) for the conceptual failure; BC-SKL-01023 (evaluating the one sided limits from the correct branches) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01006"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01001",
+    "BC-ERR-01014",
+    "BC-ERR-01015",
+    "BC-ERR-01017"
+   ],
+   "concept": "BC-CON-01013",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-01045",
+    "BC-SKL-01051"
+   ],
+   "description_formal": "For a given function and input, evaluate f(c), determine the limit at c, compare them, and conclude whether f is continuous at c.",
+   "description_plain": "Work through the three conditions in order and report the outcome.",
+   "diagnostic_signals": [
+    "BC-SIG-01006",
+    "BC-SIG-01007"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-2A2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01044",
+   "learning_objectives": [
+    "BC-LO-LIM-2A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-01001",
+    "BC-MIS-01009"
+   ],
+   "name": "Test continuity at a point by checking the three conditions",
+   "notation": "",
+   "official_evidence": [
+    "BC-MCQ-PE2012-011",
+    "BC-MCQ-PE2012-036"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01003",
+    "BC-SKL-01023",
+    "BC-SKL-01043"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:48"
+   ],
+   "topic": "BC-TOP-0111",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01010 (restating the definition treated as justification)",
+     "BC-MIS-01009 (one condition held as the whole definition, so the wrong one is named)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01006 (carries a justification point that requires naming the failed condition rather than restating the definition)"
+    ],
+    "mastered_if": "The response names which of the three conditions fails and displays the values that show the failure, for instance the two unequal one sided limits or the limit alongside a different f(c), rather than citing the definition of continuity as the reason (BC-ERR-01016 absent).",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The verdict is correct and a condition is named, but no values are supplied to show the failure, so the reason remains a label rather than an argument.",
+    "prerequisite_gap_if": "The values themselves are wrong because the test was executed incorrectly, which is a BC-SKL-01044 gap, and reading f and its limit off the wrong input is BC-PRQ-06005.",
+    "remediation_target": "BC-MIS-01010 (what makes a claim justified rather than asserted) for the conceptual failure; BC-SKL-01044 (producing the values the reason cites) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01006"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01016"
+   ],
+   "concept": "BC-CON-01013",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Support a claim that f is not continuous at c by naming which of the three conditions fails and giving the values that show the failure.",
+   "description_plain": "Point to the exact condition that breaks rather than restating the definition.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-2A2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01045",
+   "learning_objectives": [
+    "BC-LO-LIM-2A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-01010"
+   ],
+   "name": "Justify a continuity conclusion by naming the failed condition",
+   "notation": "",
+   "official_evidence": [
+    "BC-MCQ-PE2012-036"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-SKL-01044"
+   ],
+   "representations": [
+    "BC-REP-04"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:48"
+   ],
+   "topic": "BC-TOP-0111",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01019 (continuity read off the formula rather than the domain)",
+     "BC-SKL-01049 (open against closed interval continuity, which governs the endpoints)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01015 (intervals and the reason naming the family and its domain carry separate credit)"
+    ],
+    "mastered_if": "Every input at which the expression is undefined is located, the family of the expression is named as continuous on its domain, and the maximal intervals are written with the excluded inputs outside them and open brackets at those inputs (BC-ERR-01031 and BC-ERR-01032 absent).",
+    "next_dependent_skills": [
+     "BC-SKL-01048"
+    ],
+    "partially_mastered_if": "The excluded inputs are found correctly but an interval is written with a closed bracket at one of them, which is BC-ERR-01032, or one excluded input is swallowed inside a stated interval, which is BC-ERR-01031.",
+    "prerequisite_gap_if": "The zeros of a denominator, the sign condition of a radicand, or the domain of a logarithm cannot be produced, which is a gap at BC-PRQ-01008, and not knowing which families are continuous on their domains is a BC-SKL-01047 gap.",
+    "remediation_target": "BC-MIS-01019 (continuity as a property on a domain) for the conceptual failure; BC-PRQ-01008 (finding the excluded inputs) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01015"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01031",
+    "BC-ERR-01032"
+   ],
+   "concept": "BC-CON-01014",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-01048"
+   ],
+   "description_formal": "Given a rational, radical, logarithmic, or trigonometric expression, determine the inputs at which it is undefined and state the maximal intervals on which the function is continuous.",
+   "description_plain": "Exclude the inputs where the expression is undefined and report the rest as intervals.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-2B1",
+    "BC-EK-LIM-2B2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01046",
+   "learning_objectives": [
+    "BC-LO-LIM-2B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-01019"
+   ],
+   "name": "Determine intervals of continuity from the domain of an expression",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01008",
+    "BC-SKL-01047"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:49"
+   ],
+   "topic": "BC-TOP-0112",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01019 (a formula in a continuous family read as continuous everywhere)",
+     "BC-SKL-01046 (writing the intervals, which this reason supports)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01015 (a reason point requires naming the family and its domain, which is this statement)"
+    ],
+    "mastered_if": "The response states that polynomial, rational, power, exponential, logarithmic, and trigonometric functions are continuous at every point of their domains, and uses that statement as the reason inside a continuity claim, with the qualification on the domain carried rather than dropped.",
+    "next_dependent_skills": [
+     "BC-SKL-01046"
+    ],
+    "partially_mastered_if": "The families are named correctly but the reason is given as continuity everywhere, so the domain qualification is lost and the statement over claims for a rational or logarithmic expression.",
+    "prerequisite_gap_if": "The domain of the expression cannot be produced, so the qualification cannot be applied even when it is stated, which is a gap at BC-PRQ-01008.",
+    "remediation_target": "BC-MIS-01019 (family membership together with the domain) for the conceptual failure; BC-PRQ-01008 (producing the domain) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01015"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-01014",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-01046"
+   ],
+   "description_formal": "State that polynomial, rational, power, exponential, logarithmic, and trigonometric functions are continuous at every point of their domains, and use that to support a continuity claim.",
+   "description_plain": "Recall which standard families are continuous wherever they are defined.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-2B2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01047",
+   "learning_objectives": [
+    "BC-LO-LIM-2B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-01019"
+   ],
+   "name": "Name the function families continuous on their domains",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01008"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:49"
+   ],
+   "topic": "BC-TOP-0112",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01019 (continuity inferred from the formulas without their domains)",
+     "BC-SKL-01044 (the point test, which this skill applies at each boundary)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01015 (the intervals and the reason are scored separately on a function given by a rule)"
+    ],
+    "mastered_if": "Each branch is confirmed continuous on the interior of its own piece from the family of its expression, each boundary is tested separately by comparing the one sided limits with the defined value, and the intervals of continuity are then assembled with no excluded input inside them (BC-ERR-01031 absent).",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The branches are handled correctly and the boundaries are not tested, so the answer reports continuity on the union of the pieces without settling whether the seams hold.",
+    "prerequisite_gap_if": "An input is assigned to the wrong branch, which is BC-PRQ-01003, or the excluded inputs of a branch expression cannot be found, which is a BC-SKL-01046 gap.",
+    "remediation_target": "BC-MIS-01019 (the domain governs the interval) for the conceptual failure; BC-SKL-01046 (assembling maximal intervals) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01015"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01031"
+   ],
+   "concept": "BC-CON-01014",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "For a piecewise defined function, confirm continuity on each branch from its expression and test each boundary separately, then state the intervals of continuity.",
+   "description_plain": "Check each branch on its own and then each boundary.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-2B1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01048",
+   "learning_objectives": [
+    "BC-LO-LIM-2B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-01019"
+   ],
+   "name": "Determine continuity of a piecewise function on an interval",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01003",
+    "BC-SKL-01046"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:49"
+   ],
+   "topic": "BC-TOP-0112",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01019 (continuity attributed to the formula, so endpoints go unchecked)",
+     "BC-SKL-01046 (writing the intervals themselves)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01015 (endpoints must be treated with the appropriate one sided limit, which is where this distinction shows)"
+    ],
+    "mastered_if": "The response states that continuity on a closed interval requires the right hand limit at the left endpoint and the left hand limit at the right endpoint to equal the function values there, and writes brackets accordingly, closing an endpoint only where the function has a value and the one sided limit matches it (BC-ERR-01032 absent).",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The pieces of the domain are identified correctly but one endpoint is written as included where the function has no value there, which is BC-SIG-01017 and BC-ERR-01031.",
+    "prerequisite_gap_if": "Open and closed interval notation is not used consistently, so a conclusion about an interior point is stated on a closed interval, which is a gap at BC-PRQ-01010.",
+    "remediation_target": "BC-MIS-01019 (endpoint behaviour as part of the domain question) for the conceptual failure; BC-PRQ-01010 (interval and inequality notation) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01015"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01031",
+    "BC-ERR-01032"
+   ],
+   "concept": "BC-CON-01014",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "State that continuity on a closed interval requires the appropriate one sided limit to equal the function value at each endpoint, and apply that distinction when naming intervals.",
+   "description_plain": "Treat the endpoints of a closed interval with one sided limits.",
+   "diagnostic_signals": [
+    "BC-SIG-01017"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-2B1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01049",
+   "learning_objectives": [
+    "BC-LO-LIM-2B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-01019"
+   ],
+   "name": "Distinguish continuity on an open interval from continuity on a closed interval",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01010"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-04"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:49"
+   ],
+   "topic": "BC-TOP-0112",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01011 (an input missing from the domain assumed to be an asymptote and so unrepairable)",
+     "BC-SKL-01053 (deciding whether the break can be removed, which precedes the repair)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01008 (a piecewise rule whose unknown value at a boundary must be chosen so the function is continuous)"
+    ],
+    "mastered_if": "The two sided limit at c is computed, f(c) is defined or redefined to equal that limit, and the response states that the extended function now satisfies the three conditions at c, with the repair applied only where the limit exists.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The limit is computed correctly but the new value is stated without saying that the redefined function is now continuous at c, so the repair is made and its effect is not claimed.",
+    "prerequisite_gap_if": "The common factor is never divided out so the limit is not available, which is a factoring gap at BC-PRQ-01001, and misclassifying the break as removable in the first place is a BC-SKL-01039 gap.",
+    "remediation_target": "BC-MIS-01011 (which breaks can be repaired and why) for the conceptual failure; BC-PRQ-01001 (dividing out the common factor to get the limit) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01008"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-01015",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a function with a removable discontinuity at c, define or redefine f(c) as the limit of f at c and state that the resulting function is continuous at c.",
+   "description_plain": "Set the value at the point equal to the limit there.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-2C1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01050",
+   "learning_objectives": [
+    "BC-LO-LIM-2C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [],
+   "name": "Redefine a function value to remove a removable discontinuity",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01001",
+    "BC-SKL-01039"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:50"
+   ],
+   "topic": "BC-TOP-0113",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01009 (matching one sided limits taken as the whole of continuity)",
+     "BC-SKL-01044 (the continuity test, which this skill inverts to solve for a constant)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01008 (the matching equation at the boundary and the solution carry separate credit)"
+    ],
+    "mastered_if": "The one sided limits at the boundary are written from the two branch expressions, set equal to each other and to the value the rule assigns at the boundary, and the resulting equation is solved for the constant, with the branch supplying f at the boundary identified (BC-ERR-01015 and BC-ERR-01017 absent).",
+    "next_dependent_skills": [
+     "BC-SKL-01052"
+    ],
+    "partially_mastered_if": "A value of the constant is produced that makes the two one sided limits agree while the branch defining the value at the boundary is never considered, which is BC-SIG-01008 and BC-ERR-01015.",
+    "prerequisite_gap_if": "The boundary input is substituted into the branch that does not apply on that side, which is BC-PRQ-01003 and BC-ERR-01017, or the three conditions cannot be tested at all, which is a BC-SKL-01044 gap.",
+    "remediation_target": "BC-MIS-01009 (the value condition alongside the limit condition) for the conceptual failure; BC-PRQ-01003 (reading which branch applies where) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01008"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01015",
+    "BC-ERR-01017"
+   ],
+   "concept": "BC-CON-01015",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-01052"
+   ],
+   "description_formal": "Given a piecewise rule containing an unknown constant, set the one sided limits at the boundary equal to each other and to the function value, and solve for the constant.",
+   "description_plain": "Set the two branch values equal at the boundary and solve.",
+   "diagnostic_signals": [
+    "BC-SIG-01008"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-2C2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01051",
+   "learning_objectives": [
+    "BC-LO-LIM-2C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-01009"
+   ],
+   "name": "Solve for a parameter making a piecewise function continuous at a boundary",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01003",
+    "BC-SKL-01044"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:50"
+   ],
+   "topic": "BC-TOP-0113",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01009 (continuity handled as one condition, so a boundary equation omits the value)",
+     "BC-SKL-01051 (the single parameter case)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01008 (explicitly covers a rule with two unknown constants and two boundaries)"
+    ],
+    "mastered_if": "One matching equation is formed at each of the two boundaries, each from the branch expressions that meet there, and the two equations are solved together as a system for the two constants, with both equations displayed and the solution checked against both boundaries.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "Both equations are formed correctly but only one is used, so one constant is determined and the other is left or guessed, or the system is set up and the algebra of solving it fails.",
+    "prerequisite_gap_if": "A single boundary condition cannot be written with the defined value included, which is a BC-SKL-01051 gap, and assigning an input to the wrong branch is BC-PRQ-01003.",
+    "remediation_target": "BC-MIS-01009 (each boundary imposes its own full condition) for the conceptual failure; BC-SKL-01051 (forming one matching equation) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01008"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-01015",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a piecewise rule with two unknown constants and two boundaries, form the matching equation at each boundary and solve the resulting system.",
+   "description_plain": "Write one equation per boundary and solve the pair together.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-2C2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01052",
+   "learning_objectives": [
+    "BC-LO-LIM-2C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [],
+   "name": "Solve for two parameters using continuity conditions at two boundaries",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01003",
+    "BC-SKL-01051"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:50"
+   ],
+   "topic": "BC-TOP-0113",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01011 (any input outside the domain assumed to be an asymptote)",
+     "BC-SKL-01050 (carrying out the repair once it is known to be possible)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01008 (a rule whose continuity must be arranged, where an irreparable break shows as an unsolvable matching equation)"
+    ],
+    "mastered_if": "The two sided limit at the discontinuity is examined first, and the break is called removable only when that limit exists, so an input where f is undefined but both sides agree is reported as repairable and one where the sides differ or are unbounded is not (BC-ERR-01003 absent).",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The limit is examined and found to exist but the verdict rests on f being undefined at c rather than on the limit, so the right answer follows from the wrong test.",
+    "prerequisite_gap_if": "The one sided limits at a branch boundary are taken from the wrong branches, which is a gap at BC-PRQ-01003 rather than a failure of the criterion.",
+    "remediation_target": "BC-MIS-01011 (existence of the limit as the criterion) for the conceptual failure; BC-PRQ-01003 (evaluating each branch on its own side) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01008"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01003"
+   ],
+   "concept": "BC-CON-01015",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Determine whether the two sided limit exists at a discontinuity, and conclude that the discontinuity is removable only in that case.",
+   "description_plain": "Check whether the limit exists before claiming the break can be repaired.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-2C1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01053",
+   "learning_objectives": [
+    "BC-LO-LIM-2C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [],
+   "name": "Decide whether a discontinuity can be removed",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01003"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:50"
+   ],
+   "topic": "BC-TOP-0113",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01012 (unbounded behaviour assumed the same on both sides)",
+     "BC-MIS-01018 (infinite limit notation exchanged with limit at infinity notation)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01009 (asymptote locations and one sided behaviour in correct notation carry separate credit)"
+    ],
+    "mastered_if": "The statement records that f increases or decreases without bound as x approaches c, with the side carried on the arrow whenever the two sides behave differently, and the response does not write a single two sided infinite statement where the signs differ (BC-ERR-01019 absent) nor treat the statement as an existence claim for a real limit (BC-ERR-01020 absent).",
+    "next_dependent_skills": [
+     "BC-SKL-06066"
+    ],
+    "partially_mastered_if": "The unbounded behaviour is described correctly and the notation carries the wrong direction on one side, or the one sided markers are omitted although the two sides carry opposite signs, which is BC-ERR-01019.",
+    "prerequisite_gap_if": "The sign of the quotient on each side of the zero of the denominator cannot be determined, which is a gap at BC-PRQ-01009 and produces the same notation failure for a different reason.",
+    "remediation_target": "BC-MIS-01012 (the infinity symbol as a description of behaviour, and its sign per side) for the conceptual failure; BC-SKL-01055 (the sign analysis that fixes each side) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01009"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01019",
+    "BC-ERR-01020"
+   ],
+   "concept": "BC-CON-01016",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-06066"
+   ],
+   "description_formal": "Write the statement that f increases or decreases without bound as x approaches c, including the one sided form when the two sides behave differently.",
+   "description_plain": "Use the infinity symbol to record unbounded growth, with the side when it matters.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-2D1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01054",
+   "learning_objectives": [
+    "BC-LO-LIM-2D"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-01012",
+    "BC-MIS-01018"
+   ],
+   "name": "Write an infinite limit using correct notation",
+   "notation": "",
+   "official_evidence": [
+    "BC-FRQ-2025-Q1-C"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01009"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:51"
+   ],
+   "topic": "BC-TOP-0114",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01012 (unbounded behaviour taken to be symmetric about c)",
+     "BC-SKL-01056 (locating the asymptote, which precedes the sign work)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01009 (requires the sign of the quotient on each side before the notation is written)"
+    ],
+    "mastered_if": "For a quotient whose numerator is nonzero and whose denominator vanishes at c, the sign of the quotient is determined just to the left and just to the right of c from the signs of the factors, and the corresponding one sided infinite statements are written, with the two sides allowed to differ (BC-ERR-01019 absent).",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The location of the unbounded behaviour is right but the behaviour is written as one two sided infinite statement although the sides carry opposite signs, which is BC-SIG-01010 and BC-ERR-01019.",
+    "prerequisite_gap_if": "The sign of each factor near c cannot be worked out at all, which is the sign analysis gap at BC-PRQ-01009 rather than a notation slip.",
+    "remediation_target": "BC-MIS-01012 (the two sides as separate statements) for the conceptual failure; BC-PRQ-01009 (sign of a quotient near a zero of the denominator) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01009"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01019"
+   ],
+   "concept": "BC-CON-01016",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "For a quotient with a nonzero numerator and a denominator vanishing at c, determine the sign of the quotient on each side of c and state the corresponding one sided infinite limits.",
+   "description_plain": "Work out the sign of the quotient on each side of the bad input.",
+   "diagnostic_signals": [
+    "BC-SIG-01010"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-2D1",
+    "BC-EK-LIM-2D2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01055",
+   "learning_objectives": [
+    "BC-LO-LIM-2D"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-01012"
+   ],
+   "name": "Determine one sided infinite limits by sign analysis near a zero of the denominator",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01009"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:51"
+   ],
+   "topic": "BC-TOP-0114",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01011 (every input missing from the domain read as an asymptote)",
+     "BC-SKL-01039 (a removable break, which is what the cancelling factor produces)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01009 (the factoring and the record of where a factor divided out are part of the expected path)"
+    ],
+    "mastered_if": "Numerator and denominator are factored, common factors are divided out and the cancellation is recorded, and the zeros of the reduced denominator are reported as the asymptote locations, so an input where the factor divides out is not named as an asymptote (BC-ERR-01018 absent).",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The factorisation is produced and the cancellation carried out, but the input where the factor divided out is still listed alongside the genuine asymptote, so both kinds of break are reported under one label.",
+    "prerequisite_gap_if": "The polynomial cannot be factored so no cancellation is attempted and every zero of the original denominator is reported, which BC-SIG-01009 and BC-PRQ-01001 place in the algebra rather than in the idea of an asymptote.",
+    "remediation_target": "BC-MIS-01011 (simplify before locating unbounded behaviour) for the conceptual failure; BC-PRQ-01001 (factoring and dividing out) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01009"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01018"
+   ],
+   "concept": "BC-CON-01016",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Simplify a rational expression by dividing out common factors and identify the inputs where the reduced denominator is zero as the locations of vertical asymptotes.",
+   "description_plain": "Simplify first, then read off where the remaining denominator vanishes.",
+   "diagnostic_signals": [
+    "BC-SIG-01009"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-2D2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01056",
+   "learning_objectives": [
+    "BC-LO-LIM-2D"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-01011"
+   ],
+   "name": "Identify vertical asymptotes from an expression after simplification",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01001"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:51"
+   ],
+   "topic": "BC-TOP-0114",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01011 (any zero of the original denominator read as unbounded behaviour)",
+     "BC-SKL-01041 (classifying the asymptotic case alone)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01007 (both kinds of break appear in one function and must be classified separately with reasons)"
+    ],
+    "mastered_if": "At a zero of the original denominator the response determines whether the factor divides out, and reports a removable discontinuity when it does and a vertical asymptote when it does not, with the factored form shown as the basis of the verdict (BC-ERR-01018 absent).",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The two cases are described correctly in general but the verdict for the given expression is taken from the unfactored denominator, so the distinction is stated and not applied.",
+    "prerequisite_gap_if": "Neither numerator nor denominator can be factored, so the comparison that settles the case is unavailable, which is a gap at BC-PRQ-01001.",
+    "remediation_target": "BC-MIS-01011 (what the surviving factor does that the cancelling one does not) for the conceptual failure; BC-PRQ-01001 (factoring both parts of the quotient) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01007"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01018"
+   ],
+   "concept": "BC-CON-01016",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a rational expression, determine whether a zero of the original denominator produces a removable discontinuity, because the factor divides out, or a vertical asymptote, because it does not.",
+   "description_plain": "Decide whether the factor cancels or survives.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-2D2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01057",
+   "learning_objectives": [
+    "BC-LO-LIM-2D"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-01011"
+   ],
+   "name": "Distinguish a vertical asymptote from a removable discontinuity at the same input",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01001"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:47",
+    "ced:51"
+   ],
+   "topic": "BC-TOP-0114",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01013 (infinity treated as an input that can be substituted)",
+     "BC-SKL-01055 (one sided infinite limits at a finite input, a different question)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01010 (the limit expression and its value are scored separately, so substituted arithmetic with the infinity symbol is exposed)"
+    ],
+    "mastered_if": "The degrees of numerator and denominator are compared, or both are divided by the dominant power, and the value is reported as zero, as the ratio of leading coefficients, or as unbounded according to which degree is larger, with the comparison shown and the infinity symbol never substituted into the expression as a number (BC-ERR-01021 absent) and the leading coefficient ratio used only when the degrees match (BC-ERR-01023 absent).",
+    "next_dependent_skills": [
+     "BC-SKL-01059",
+     "BC-SKL-01061",
+     "BC-SKL-04034"
+    ],
+    "partially_mastered_if": "The division by the dominant power is set out correctly but one term is not sent to zero, so the reported value keeps a vanishing term, or the correct verdict is reached with no comparison or division displayed.",
+    "prerequisite_gap_if": "The behaviour of a quotient of polynomials for large inputs cannot be described without computing sample values, which is a gap at BC-PRQ-01004 rather than an error in the procedure.",
+    "remediation_target": "BC-MIS-01013 (dividing by the dominant power and asking what each term approaches) for the conceptual failure; BC-PRQ-01004 (degree comparison) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01010"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01021",
+    "BC-ERR-01023"
+   ],
+   "concept": "BC-CON-01017",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-01059",
+    "BC-SKL-01061",
+    "BC-SKL-04034"
+   ],
+   "description_formal": "For a quotient of polynomials, compare the degrees of numerator and denominator, or divide by the highest power of the variable, to evaluate the limit as the variable increases or decreases without bound.",
+   "description_plain": "Compare the top and bottom degrees to get the end value.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-2D3",
+    "BC-EK-LIM-2D4"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01058",
+   "learning_objectives": [
+    "BC-LO-LIM-2D"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-01013"
+   ],
+   "name": "Evaluate the limit of a rational function at infinity by comparing degrees",
+   "notation": "",
+   "official_evidence": [
+    "BC-FRQ-2023-Q5-B",
+    "BC-FRQ-2025-Q1-C",
+    "BC-FRQ-2026-Q5-D",
+    "BC-MCQ-PE2012-021"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01004"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:52"
+   ],
+   "topic": "BC-TOP-0115",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01018 (vertical and horizontal asymptote statements exchanged)",
+     "BC-SKL-01041 (vertical asymptotes, which come from infinite limits at a finite input)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01010 (end behaviour written as a limit and evaluated, which is what the asymptote claim rests on)"
+    ],
+    "mastered_if": "Once the limit of f at an infinite end is a real number L, the response states that the line y equals L is a horizontal asymptote, and keeps that statement distinct from a vertical asymptote claim about unbounded outputs at a finite input (BC-ERR-01033 absent), with the leading coefficient ratio used only where the degrees agree (BC-ERR-01023 absent).",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The end behaviour value is correct but the asymptote is written as x equals L, or the statement is attached to one end without checking the other, so the conversion from limit to line is incomplete.",
+    "prerequisite_gap_if": "The limit at infinity itself is wrong because the degrees were not compared, which is a BC-SKL-01058 and BC-PRQ-01004 gap rather than a failure to name the asymptote.",
+    "remediation_target": "BC-MIS-01018 (where the infinity symbol sits in each statement) for the conceptual failure; BC-SKL-01058 (evaluating the limit at infinity) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01010"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01023",
+    "BC-ERR-01033"
+   ],
+   "concept": "BC-CON-01017",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given that the limit of f as the variable increases or decreases without bound is a real number L, state that the line y equals L is a horizontal asymptote of the graph of f.",
+   "description_plain": "Turn a finite end behaviour value into a horizontal asymptote.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-2D3",
+    "BC-EK-LIM-2D4"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01059",
+   "learning_objectives": [
+    "BC-LO-LIM-2D"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-01018"
+   ],
+   "name": "Identify horizontal asymptotes from limits at infinity",
+   "notation": "",
+   "official_evidence": [
+    "BC-MCQ-PE2012-021"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01004",
+    "BC-SKL-01058"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:52"
+   ],
+   "topic": "BC-TOP-0115",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01014 (end behaviour of a quantity and of its rate taken as interchangeable)",
+     "BC-MIS-01013 (infinity substituted as a number)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01010 (a contextual model where the expression and the value carry separate credit and the subject of the limit matters)"
+    ],
+    "mastered_if": "The limit expression is written with the modelled quantity or its rate placed inside according to what the question asks, with the independent variable increasing without bound under the arrow, and the value is produced by notation rather than by substituting the infinity symbol (BC-ERR-01021 absent); the subject inside the limit matches the requested quantity (BC-ERR-01022 absent).",
+    "next_dependent_skills": [
+     "BC-SKL-04016"
+    ],
+    "partially_mastered_if": "The end behaviour value is correct but the limit expression the question asks for is never written, which is BC-SIG-01011 and carries its own credit in the 2025 guidelines, or the expression is written and then arithmetic is performed on the infinity symbol.",
+    "prerequisite_gap_if": "The amount and its rate cannot be told apart in the given notation, so the wrong function is placed inside the limit, which BC-SIG-01012 ties to the notation gap at BC-PRQ-06005.",
+    "remediation_target": "BC-MIS-01014 (checking the units of the quantity inside the limit against the question) for the conceptual failure; BC-MIS-01013 (limit notation in place of arithmetic with the infinity symbol) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01010"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-01021",
+    "BC-ERR-01022"
+   ],
+   "concept": "BC-CON-01017",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-04016"
+   ],
+   "description_formal": "Given a contextual model, write the limit expression as the independent variable increases without bound that describes the long run behaviour of the modelled quantity or of its rate of change.",
+   "description_plain": "Write the limit statement that answers a question about long run behaviour.",
+   "diagnostic_signals": [
+    "BC-SIG-01011",
+    "BC-SIG-01012"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-2D4"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01060",
+   "learning_objectives": [
+    "BC-LO-LIM-2D"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-01013",
+    "BC-MIS-01014"
+   ],
+   "name": "Write a limit expression describing end behaviour in context",
+   "notation": "",
+   "official_evidence": [
+    "BC-FRQ-2019-Q2-D",
+    "BC-FRQ-2025-Q1-C"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-05",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:52",
+    "sg-25:4"
+   ],
+   "topic": "BC-TOP-0115",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01013 (infinity treated as a substitutable input)",
+     "BC-SKL-01063 (the two ends as separate questions, which this skill makes concrete)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01010 (end behaviour evaluated by dividing by the dominant power, where the radical forces the sign question)"
+    ],
+    "mastered_if": "Numerator and denominator are divided by the dominant power, the dominant power taken out of a square root is written with the absolute value or with the sign correction appropriate to the end being examined, and the two ends give values that may differ (BC-ERR-01024 absent), with no arithmetic performed on the infinity symbol (BC-ERR-01021 absent).",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The division by the dominant power is correct and the positive end is evaluated correctly, while the negative end copies that answer without the sign correction under the radical, which is BC-ERR-01024.",
+    "prerequisite_gap_if": "The degree comparison itself cannot be carried out, so the dominant power is misidentified before any radical question arises, which is BC-SKL-01058 and BC-PRQ-01004.",
+    "remediation_target": "BC-MIS-01013 (what each term approaches after division) for the conceptual failure; BC-SKL-01058 (identifying the dominant power) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01010"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01021",
+    "BC-ERR-01024"
+   ],
+   "concept": "BC-CON-01017",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "For an expression containing a square root of a polynomial, divide numerator and denominator by the dominant power, attending to the sign of the variable when it is taken inside or outside the radical, and evaluate the limit at infinity.",
+   "description_plain": "Divide by the dominant power and treat the sign of the variable carefully under the radical.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-2D3"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01061",
+   "learning_objectives": [
+    "BC-LO-LIM-2D"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-01013"
+   ],
+   "name": "Evaluate limits at infinity for expressions containing radicals",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01004",
+    "BC-SKL-01058"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:52"
+   ],
+   "topic": "BC-TOP-0115",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01014 (a statement about rates read as a statement about amounts)",
+     "BC-SKL-01058 (the degree comparison, which handles only the polynomial case)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01010 (end behaviour written as a limit and evaluated, which is the vehicle for the comparison)"
+    ],
+    "mastered_if": "The quotient of the two increasing functions is formed and its limit at infinity evaluated, and the verdict is stated as one growing faster, slower, or comparably according to whether that limit is infinite, zero, or a positive number, with the comparison expressed as a statement about the two quantities rather than as a bare value.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The quotient limit is computed correctly but the verdict is not attached, so a value of zero is reported without saying which function is outgrown.",
+    "prerequisite_gap_if": "The end behaviour of the quotient cannot be determined without computing sample values, which is a gap at BC-PRQ-01004.",
+    "remediation_target": "BC-MIS-01014 (which quantity the limit describes) for the conceptual failure; BC-PRQ-01004 (end behaviour from the dominant term) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01010"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [],
+   "concept": "BC-CON-01018",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Evaluate the limit of a quotient of two increasing functions to determine whether one grows faster than, slower than, or comparably to the other, and state the comparison.",
+   "description_plain": "Use the limit of a quotient to say which quantity outgrows the other.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-2D5"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01062",
+   "learning_objectives": [
+    "BC-LO-LIM-2D"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-01014"
+   ],
+   "name": "Compare relative magnitudes of growth using limits",
+   "notation": "",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01004"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:52"
+   ],
+   "topic": "BC-TOP-0115",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01013 (infinity read as one substitutable value for both ends)",
+     "BC-SKL-01059 (naming the asymptote once a value is known)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01010 (behaviour for inputs of large magnitude, which admits both ends and exposes an assumed symmetry)"
+    ],
+    "mastered_if": "The limits as the variable increases without bound and as it decreases without bound are evaluated as two separate calculations, and two horizontal asymptotes are reported when the values differ, with the sign of the variable handled where a radical or an absolute value makes the ends behave differently (BC-ERR-01024 absent).",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The positive end is evaluated correctly and the negative end is asserted by symmetry, so the second value is copied rather than computed, which is BC-ERR-01024 where a radical is present.",
+    "prerequisite_gap_if": "Neither end can be evaluated because the degree comparison is unavailable, which is a gap at BC-PRQ-01004 rather than a failure to separate the two ends.",
+    "remediation_target": "BC-MIS-01013 (the two ends as distinct limits) for the conceptual failure; BC-PRQ-01004 (evaluating end behaviour at each end) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01010"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01024"
+   ],
+   "concept": "BC-CON-01017",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Evaluate the limits of f as the variable increases without bound and as it decreases without bound separately, and report both horizontal asymptotes when the two values differ.",
+   "description_plain": "Check both ends separately because they can differ.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-2D3",
+    "BC-EK-LIM-2D4"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01063",
+   "learning_objectives": [
+    "BC-LO-LIM-2D"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-01013"
+   ],
+   "name": "Distinguish the limit at positive infinity from the limit at negative infinity",
+   "notation": "",
+   "official_evidence": [
+    "BC-MCQ-PE2012-021"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01004"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:52"
+   ],
+   "topic": "BC-TOP-0115",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01016 (an existence theorem read as locating or counting solutions)",
+     "BC-SKL-05001 (the Mean Value Theorem, the theorem about rates rather than values)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01011 (continuity with its reason, the straddling values, and the conclusion are separately scored)"
+    ],
+    "mastered_if": "Both hypotheses are stated, that f is continuous on the closed interval from a to b and that the target value d lies between f(a) and f(b), and the theorem is named as the Intermediate Value Theorem rather than as another existence theorem (BC-ERR-01028 absent).",
+    "next_dependent_skills": [
+     "BC-SKL-01065",
+     "BC-SKL-01066"
+    ],
+    "partially_mastered_if": "The straddling condition on the target is stated while the continuity hypothesis is omitted, or the conclusion of the theorem is described in place of its hypotheses, so what must hold before use is incomplete.",
+    "prerequisite_gap_if": "The closed interval of the hypothesis and the open interval of the conclusion are not distinguished in notation, which is a gap at BC-PRQ-01010.",
+    "remediation_target": "BC-MIS-01016 (what the theorem asserts and what it does not) for the conceptual failure; BC-PRQ-01010 (closed against open interval notation) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01011"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01028"
+   ],
+   "concept": "BC-CON-01019",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-01065",
+    "BC-SKL-01066"
+   ],
+   "description_formal": "State that the theorem requires f continuous on the closed interval from a to b and a target value d between f(a) and f(b).",
+   "description_plain": "Name continuity on a closed interval and the target value lying between the endpoint values.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-1A1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01064",
+   "learning_objectives": [
+    "BC-LO-FUN-1A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-01016"
+   ],
+   "name": "State the hypotheses of the Intermediate Value Theorem",
+   "notation": "",
+   "official_evidence": [
+    "BC-FRQ-2014-Q4-B",
+    "BC-FRQ-2022-Q4-B",
+    "BC-FRQ-2025-Q3-B",
+    "BC-FRQ-2026-Q1-D"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01010"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:53",
+    "sg-25:12"
+   ],
+   "topic": "BC-TOP-0116",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01015 (a hypothesis treated as supplied by the setting of the question)",
+     "BC-MIS-01010 (the definition restated in place of a reason)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01011 (a bare statement of continuity does not earn the point, so the reason is the scored behaviour)"
+    ],
+    "mastered_if": "Continuity on the closed interval is derived from a stated property, most often that the function is differentiable and therefore continuous, and that reason is written in the response, so continuity is never asserted bare (BC-ERR-01025 absent) nor supported by restating the definition of continuity (BC-ERR-01016 absent).",
+    "next_dependent_skills": [
+     "BC-SKL-01067"
+    ],
+    "partially_mastered_if": "The two attained values that straddle the target are displayed correctly while the continuity statement carries no reason, which is BC-SIG-01013 and, in the 2025 guidelines, loses the continuity point while leaving the conclusion point available.",
+    "prerequisite_gap_if": "The function cannot be placed in a family continuous on its domain, or the excluded inputs are not known, which is a domain gap at BC-PRQ-01008, and being unable to state the three conditions at all is a BC-SKL-01043 gap.",
+    "remediation_target": "BC-MIS-01015 (what in the question establishes continuity) for the conceptual failure; BC-SKL-01043 (the conditions the reason is discharging) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01011"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01016",
+    "BC-ERR-01025"
+   ],
+   "concept": "BC-CON-01019",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-01067"
+   ],
+   "description_formal": "Establish continuity of the function on the closed interval from the stated properties of the function, such as differentiability or membership of a family continuous on its domain, and record the reason in the response.",
+   "description_plain": "Say why the function is continuous on the interval, with a reason.",
+   "diagnostic_signals": [
+    "BC-SIG-01013"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-1A1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01065",
+   "learning_objectives": [
+    "BC-LO-FUN-1A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-01010",
+    "BC-MIS-01015"
+   ],
+   "name": "Verify the continuity hypothesis before applying the theorem",
+   "notation": "",
+   "official_evidence": [
+    "BC-FRQ-2014-Q4-B",
+    "BC-FRQ-2022-Q4-B",
+    "BC-FRQ-2025-Q3-B",
+    "BC-FRQ-2026-Q1-D"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01008",
+    "BC-SKL-01043",
+    "BC-SKL-01064"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-03"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:53",
+    "sg-25:12"
+   ],
+   "topic": "BC-TOP-0116",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01016 (the theorem applied without checking where the target lies)",
+     "BC-SKL-01065 (the continuity hypothesis, the other condition of the same theorem)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01011 (displaying the two straddling values is a separately scored step in the expected path)"
+    ],
+    "mastered_if": "The two attained values are displayed and the inequality placing the target strictly between them is written out, drawn from the tabulated or computed values the question supplies, so the straddling is exhibited rather than implied (BC-ERR-01026 absent).",
+    "next_dependent_skills": [
+     "BC-SKL-01067"
+    ],
+    "partially_mastered_if": "Continuity is established with its reason but the two bracketing values are never displayed, which is BC-SIG-01014, or the values are quoted without the inequality that places the target between them.",
+    "prerequisite_gap_if": "Strict and non strict inequalities on an interval are not distinguished, so the target is placed at an endpoint value, which is a gap at BC-PRQ-01010, and being unable to state the hypotheses at all is a BC-SKL-01064 gap.",
+    "remediation_target": "BC-MIS-01016 (the condition on the target value) for the conceptual failure; BC-PRQ-01010 (writing the strict inequality) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01011"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01026"
+   ],
+   "concept": "BC-CON-01019",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-01067"
+   ],
+   "description_formal": "Display the inequality placing the target value strictly between the values of the function at the two endpoints of the interval.",
+   "description_plain": "Show the wanted output sits between the two endpoint outputs.",
+   "diagnostic_signals": [
+    "BC-SIG-01014"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-1A1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01066",
+   "learning_objectives": [
+    "BC-LO-FUN-1A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-01016"
+   ],
+   "name": "Verify that the target value lies between the endpoint values",
+   "notation": "",
+   "official_evidence": [
+    "BC-FRQ-2014-Q4-B",
+    "BC-FRQ-2022-Q4-B",
+    "BC-FRQ-2025-Q3-B",
+    "BC-FRQ-2026-Q1-D"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01010",
+    "BC-SKL-01064"
+   ],
+   "representations": [
+    "BC-REP-03",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:53",
+    "sg-25:12"
+   ],
+   "topic": "BC-TOP-0116",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01016 (an existence theorem read as locating or counting solutions)",
+     "BC-SKL-05001 (the Mean Value Theorem, which is about a derivative value)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01011 (the conclusion with the theorem named is scored apart from the hypotheses)"
+    ],
+    "mastered_if": "The conclusion states that there is at least one input strictly between a and b at which f takes the target value, uses the open interval named in the question, and names the Intermediate Value Theorem correctly, with no claim that the input is unique (BC-ERR-01027 absent) and no other existence theorem named (BC-ERR-01028 absent).",
+    "next_dependent_skills": [
+     "BC-SKL-01068"
+    ],
+    "partially_mastered_if": "All hypotheses are verified and the conclusion is stated, but the response claims exactly one input gives the target value, which is BC-SIG-01015 and BC-ERR-01027, so the argument is sound and the claim exceeds it.",
+    "prerequisite_gap_if": "The conclusion is stated on the closed interval where the theorem gives an interior point, which is an interval notation gap at BC-PRQ-01010, and a missing continuity reason sits at BC-SKL-01065 rather than in the conclusion.",
+    "remediation_target": "BC-MIS-01016 (existence without uniqueness) for the conceptual failure; BC-PRQ-01010 (stating the conclusion on the open interval) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01011"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01027",
+    "BC-ERR-01028"
+   ],
+   "concept": "BC-CON-01019",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-01068"
+   ],
+   "description_formal": "Conclude that there is at least one number c strictly between a and b with f(c) equal to the target value, and state the conclusion using the interval named in the question.",
+   "description_plain": "Say that at least one input in the open interval gives the wanted output.",
+   "diagnostic_signals": [
+    "BC-SIG-01015"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-1A1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01067",
+   "learning_objectives": [
+    "BC-LO-FUN-1A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-01016"
+   ],
+   "name": "State the conclusion of the theorem with the correct interval",
+   "notation": "",
+   "official_evidence": [
+    "BC-FRQ-2014-Q4-B",
+    "BC-FRQ-2022-Q4-B",
+    "BC-FRQ-2025-Q3-B",
+    "BC-FRQ-2026-Q1-D"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01010",
+    "BC-SKL-01065",
+    "BC-SKL-01066"
+   ],
+   "representations": [
+    "BC-REP-04"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:53",
+    "sg-25:12"
+   ],
+   "topic": "BC-TOP-0116",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-01015 (hypotheses assumed to be supplied by the stem)",
+     "BC-MIS-01016 (uniqueness read into the conclusion)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-01011 (a function given by a table, where row selection, the continuity reason, and the conclusion are all visible)"
+    ],
+    "mastered_if": "Two tabulated inputs whose outputs straddle the target are selected, continuity is stated with the reason that the function is differentiable, the straddling inequality is displayed from the table, and the conclusion names the theorem and an input in the open interval between those two rows (BC-ERR-01025 and BC-ERR-01026 absent).",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The correct pair of rows is chosen and the inequality shown while continuity is asserted with no basis, which is BC-ERR-01025, or continuity is justified and the bracketing rows are never displayed, which is BC-ERR-01026.",
+    "prerequisite_gap_if": "The conclusion cannot be stated on the correct open interval, which is BC-SKL-01067 and BC-PRQ-01010, rather than a failure to read the table.",
+    "remediation_target": "BC-MIS-01015 (deriving continuity from the stated differentiability) for the conceptual failure; BC-SKL-01066 (displaying the straddling values from the table) for the procedural failure"
+   },
+   "archetypes": [
+    "BC-QA-01011"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-01025",
+    "BC-ERR-01026"
+   ],
+   "concept": "BC-CON-01019",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given selected values of a function stated to be differentiable or continuous, select two tabulated inputs whose outputs straddle the target value, state continuity with its reason, and conclude existence of an input with that output.",
+   "description_plain": "Use two table rows that straddle the target value, having first established continuity.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-FUN-1A1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-01068",
+   "learning_objectives": [
+    "BC-LO-FUN-1A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-01015"
+   ],
+   "name": "Apply the Intermediate Value Theorem to a function given by a table",
+   "notation": "",
+   "official_evidence": [
+    "BC-FRQ-2014-Q4-B",
+    "BC-FRQ-2025-Q3-B"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-01010",
+    "BC-SKL-01067"
+   ],
+   "representations": [
+    "BC-REP-03",
+    "BC-REP-05"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:53",
+    "sg-25:12"
+   ],
+   "topic": "BC-TOP-0116",
+   "unit": "BC-UNIT-01",
+   "updated": "2026-09-19"
+  }
+ ]
+}

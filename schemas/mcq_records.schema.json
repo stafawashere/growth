@@ -1,0 +1,145 @@
+{
+ "type": "object",
+ "required": [
+  "records"
+ ],
+ "properties": {
+  "records": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string"
+     },
+     "name": {
+      "type": "string",
+      "minLength": 3
+     },
+     "scope": {
+      "enum": [
+       "AB_only",
+       "shared",
+       "BC_only",
+       "n/a"
+      ]
+     },
+     "evidence_tag": {
+      "enum": [
+       "verified",
+       "single-source",
+       "inferred",
+       "uncertain"
+      ]
+     },
+     "sources": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "notes": {
+      "type": "string"
+     },
+     "created": {
+      "type": "string"
+     },
+     "updated": {
+      "type": "string"
+     },
+     "status": {
+      "enum": [
+       "active",
+       "retired"
+      ]
+     },
+     "superseded_by": {
+      "type": "string"
+     },
+     "doc_id": {
+      "type": "string"
+     },
+     "doc_page": {
+      "type": "integer"
+     },
+     "source_url": {
+      "type": "string"
+     },
+     "number": {
+      "type": "integer"
+     },
+     "calculator": {
+      "enum": [
+       "calculator",
+       "no_calculator"
+      ]
+     },
+     "description": {
+      "type": "string"
+     },
+     "topics": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "skills": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "practice_skills": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "archetype": {
+      "type": "string"
+     },
+     "representations": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "correct_option": {
+      "type": "string"
+     },
+     "distractor_analysis": {
+      "type": "array",
+      "items": {
+       "type": "object",
+       "required": [
+        "option",
+        "mechanism",
+        "evidence_tag"
+       ]
+      }
+     },
+     "official_rationale_available": {
+      "type": "boolean"
+     }
+    },
+    "required": [
+     "id",
+     "name",
+     "scope",
+     "evidence_tag",
+     "sources",
+     "doc_id",
+     "doc_page",
+     "number",
+     "calculator",
+     "description",
+     "topics",
+     "skills",
+     "archetype"
+    ],
+    "additionalProperties": true
+   }
+  }
+ },
+ "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

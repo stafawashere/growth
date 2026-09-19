@@ -1,0 +1,1697 @@
+{
+ "archetypes": [
+  {
+   "asked_to_produce": [],
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "reporting the plotted function value as the limit",
+    "reporting one of the two one sided values as the two sided limit",
+    "answering that the limit is the open circle height when a closed point sits elsewhere",
+    "answering that the limit does not exist merely because the function is undefined there"
+   ],
+   "common_givens": [],
+   "description": "A graph of a function with one or more breaks is given and the response reports two sided and one sided limits and function values at named inputs, or states that a limit does not exist.",
+   "difficulty_variables": [
+    "whether a removable and a jump break appear on the same graph",
+    "whether the function value at a break is marked",
+    "whether a nonexistence answer must be justified",
+    "whether an infinite branch is included"
+   ],
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "locate the named input on the horizontal axis",
+    "read the output approached from the left",
+    "read the output approached from the right",
+    "compare the two and report the limit or its nonexistence",
+    "read the plotted function value separately when it is asked for"
+   ],
+   "id": "BC-QA-01001",
+   "invariant_structure": "The graph carries at least one input where the limit and the function value differ and at least one input where the one sided limits differ; every requested value is read from the picture without computation.",
+   "misconceptions": [
+    "BC-MIS-01001",
+    "BC-MIS-01002",
+    "BC-MIS-01003"
+   ],
+   "multipart_structure": "Typically a single multiple choice item or one part of a larger question.",
+   "name": "Limit estimated from a graph including one sided values",
+   "official_examples": [],
+   "official_examples_notes": "none in 2023 to 2025 [inferred]",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-PRQ-01003"
+   ],
+   "primary_unit": "BC-UNIT-01",
+   "representations": [
+    "BC-REP-02",
+    "BC-REP-01"
+   ],
+   "safe_variables": [
+    "the shape of the curve",
+    "the names of the inputs",
+    "the number of breaks",
+    "the labelling of the axes"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "Reading points are awarded per requested value, with a separate point for a stated reason when nonexistence must be justified. No official free response part in 2023 to 2025 assesses this task in isolation, so the pattern is drawn from the CED description of the topic.",
+   "skills": [
+    "BC-SKL-01009",
+    "BC-SKL-01010",
+    "BC-SKL-01011",
+    "BC-SKL-01012",
+    "BC-SKL-01013",
+    "BC-SKL-01008"
+   ],
+   "sources": [
+    "ced:40",
+    "ced:47"
+   ],
+   "typical_wording": [
+    "Using the graph of f shown, find the stated limits or explain why a limit does not exist."
+   ],
+   "units": [
+    "BC-UNIT-01"
+   ]
+  },
+  {
+   "asked_to_produce": [],
+   "calculator_status": "either",
+   "common_distractors": [
+    "reading the output at the row nearest the target as the limit",
+    "averaging the two nearest outputs",
+    "reporting a value the table only approaches on one side",
+    "treating an estimate as an exact value"
+   ],
+   "common_givens": [],
+   "description": "Selected values of a function at inputs approaching a target from both sides are tabulated and the response reports the estimated limit, or a one sided estimate, from the table.",
+   "difficulty_variables": [
+    "whether the two sides agree",
+    "whether only one side is tabulated",
+    "whether the table is deliberately inconclusive",
+    "whether units are demanded"
+   ],
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "identify the rows approaching from the left",
+    "identify the rows approaching from the right",
+    "state the value the outputs approach on each side",
+    "report the estimate or state that the table does not settle the question"
+   ],
+   "id": "BC-QA-01002",
+   "invariant_structure": "The tabulated inputs approach the target from both sides without reaching it, and the outputs are given to a fixed number of decimal places so that the estimate is read rather than computed exactly.",
+   "misconceptions": [
+    "BC-MIS-01004"
+   ],
+   "multipart_structure": "Typically a single multiple choice item.",
+   "name": "Limit estimated from a table of values",
+   "official_examples": [],
+   "official_examples_notes": "none in 2023 to 2025 [inferred]",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "primary_unit": "BC-UNIT-01",
+   "representations": [
+    "BC-REP-03"
+   ],
+   "safe_variables": [
+    "the function being tabulated",
+    "the target input",
+    "the number of rows",
+    "the precision of the outputs"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "One point for the estimate, with a separate point when an explanation of the limitation of a table is demanded. No official free response part in 2023 to 2025 assesses this task in isolation.",
+   "skills": [
+    "BC-SKL-01015",
+    "BC-SKL-01016",
+    "BC-SKL-01017"
+   ],
+   "sources": [
+    "ced:41"
+   ],
+   "typical_wording": [
+    "Selected values of f are given in the table. Estimate the stated limit or explain why the table does not determine it."
+   ],
+   "units": [
+    "BC-UNIT-01"
+   ]
+  },
+  {
+   "asked_to_produce": [],
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "applying the quotient theorem when the denominator limit is zero",
+    "composing in the wrong order",
+    "adding when a product is requested",
+    "asserting that a limit of a quotient is the quotient of the function values"
+   ],
+   "common_givens": [],
+   "description": "The limits of two functions at a point are supplied and the response evaluates the limit of a sum, difference, product, quotient, or composite built from them.",
+   "difficulty_variables": [
+    "whether the denominator limit is zero",
+    "whether a composite is involved",
+    "whether one of the supplied limits is one sided",
+    "whether the answer must be justified by naming the theorem"
+   ],
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "record the supplied limits",
+    "identify the combination requested",
+    "check the denominator condition when a quotient is requested",
+    "apply the theorem and report the value"
+   ],
+   "id": "BC-QA-01003",
+   "invariant_structure": "The individual limits are given rather than computed, and the task is the correct selection and application of the limit theorem, including the denominator condition for a quotient.",
+   "misconceptions": [
+    "BC-MIS-01005"
+   ],
+   "multipart_structure": "Typically a single multiple choice item.",
+   "name": "Limit evaluated by limit theorems from given limits or tabulated values",
+   "official_examples": [],
+   "official_examples_notes": "none in 2023 to 2025 [inferred]",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "primary_unit": "BC-UNIT-01",
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-03"
+   ],
+   "safe_variables": [
+    "the names of the functions",
+    "the target input",
+    "which combination is requested"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "One point for the value, with the denominator condition expected in a justified response. No official free response part in 2023 to 2025 assesses this task in isolation.",
+   "skills": [
+    "BC-SKL-01018",
+    "BC-SKL-01019",
+    "BC-SKL-01020",
+    "BC-SKL-01022"
+   ],
+   "sources": [
+    "ced:42"
+   ],
+   "typical_wording": [
+    "Given the stated limits of f and g at the named input, find the limit of the indicated combination."
+   ],
+   "units": [
+    "BC-UNIT-01"
+   ]
+  },
+  {
+   "asked_to_produce": [],
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "reporting zero because the numerator tends to zero",
+    "reporting that the limit does not exist on seeing zero over zero",
+    "cancelling a term rather than a factor",
+    "dropping the sign introduced by the conjugate"
+   ],
+   "common_givens": [],
+   "description": "A quotient that gives zero over zero under substitution is presented and the response rewrites it into an equivalent form and evaluates the limit.",
+   "difficulty_variables": [
+    "factoring against conjugate against complex fraction against identity",
+    "whether the factor to be divided out is repeated",
+    "whether the target is a boundary of a piecewise rule",
+    "whether the response must state the indeterminate form explicitly"
+   ],
+   "evidence_tag": "single-source",
+   "expected_solution_path": [
+    "substitute and observe the indeterminate form",
+    "rewrite the expression into an equivalent form",
+    "divide out the common factor or simplify",
+    "evaluate the simplified expression at the target"
+   ],
+   "id": "BC-QA-01004",
+   "invariant_structure": "Substitution produces zero over zero, the rewriting step is available without calculus, and the rewritten expression agrees with the original for all inputs near the target other than the target itself.",
+   "misconceptions": [
+    "BC-MIS-01006",
+    "BC-MIS-01007"
+   ],
+   "multipart_structure": "Typically a single multiple choice item or one part of a larger question.",
+   "name": "Indeterminate limit resolved by algebraic rewriting",
+   "official_examples": [],
+   "official_examples_notes": "2023 Q4(c) treats the same indeterminate form through L'Hospital's rule rather than algebraic rewriting",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-01001",
+    "BC-PRQ-01002",
+    "BC-PRQ-01007"
+   ],
+   "primary_unit": "BC-UNIT-01",
+   "representations": [
+    "BC-REP-01"
+   ],
+   "safe_variables": [
+    "the specific polynomial, radical, or trigonometric expression",
+    "the target input",
+    "the variable name"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "A response that presents a limit explicitly set equal to zero over zero does not earn the point for identifying the form; the form is established by presenting the two limits separately (sg-23:14). Remaining points are for the rewriting and for the value.",
+   "skills": [
+    "BC-SKL-01024",
+    "BC-SKL-01025",
+    "BC-SKL-01026",
+    "BC-SKL-01027",
+    "BC-SKL-01028"
+   ],
+   "sources": [
+    "ced:43",
+    "sg-23:14"
+   ],
+   "typical_wording": [
+    "Find the value of the given limit, or show that it does not exist."
+   ],
+   "units": [
+    "BC-UNIT-01"
+   ]
+  },
+  {
+   "asked_to_produce": [],
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "multiplying the inequality by a factor that changes sign without reversing it",
+    "evaluating the bounds at the target rather than taking their limits",
+    "concluding from a bound on one side only",
+    "omitting the statement that the bounds share a limit"
+   ],
+   "common_givens": [],
+   "description": "A function trapped between two bounding functions is presented and the response verifies the bounding inequality, evaluates the bounds, and concludes the limit.",
+   "difficulty_variables": [
+    "whether the bounding functions are supplied or must be produced",
+    "whether the inequality must be verified in the response",
+    "whether the target is zero or another input",
+    "whether the theorem must be named"
+   ],
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "bound the oscillating factor between fixed values",
+    "multiply the inequality by the vanishing factor and record the direction of the inequality",
+    "evaluate the limits of the two bounds",
+    "observe that they agree and state the conclusion"
+   ],
+   "id": "BC-QA-01005",
+   "invariant_structure": "The bounding inequality holds near the target but not necessarily at it, and the two bounds share a limit there, so the conclusion rests on the theorem rather than on direct evaluation.",
+   "misconceptions": [
+    "BC-MIS-01008"
+   ],
+   "multipart_structure": "Typically one part of a multipart free response question or a single multiple choice item.",
+   "name": "Limit determined by the squeeze theorem with its hypotheses stated",
+   "official_examples": [],
+   "official_examples_notes": "none in 2023 to 2025 [inferred]",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-01005",
+    "BC-PRQ-01010"
+   ],
+   "primary_unit": "BC-UNIT-01",
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "safe_variables": [
+    "the bounded oscillating factor",
+    "the vanishing factor",
+    "the target input"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "One point for establishing the bounding inequality, one for the limits of the two bounds, and one for the conclusion. No official free response part in 2023 to 2025 assesses the squeeze theorem.",
+   "skills": [
+    "BC-SKL-01032",
+    "BC-SKL-01033",
+    "BC-SKL-01034",
+    "BC-SKL-01035"
+   ],
+   "sources": [
+    "ced:45"
+   ],
+   "typical_wording": [
+    "The stated inequality holds near the given input. Use it to determine the limit of the trapped function and justify your answer."
+   ],
+   "units": [
+    "BC-UNIT-01"
+   ]
+  },
+  {
+   "asked_to_produce": [],
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "checking only that the function is defined at the input",
+    "checking only that the one sided limits agree and stopping there",
+    "evaluating the wrong branch at the boundary",
+    "restating the definition in place of a reason"
+   ],
+   "common_givens": [],
+   "description": "A piecewise defined function is given and the response determines whether it is continuous at a named input, naming the condition that fails when it is not.",
+   "difficulty_variables": [
+    "whether the function value is defined at the boundary",
+    "whether the one sided limits agree",
+    "whether the justification must name the failed condition",
+    "whether the function is given by a rule or by a graph"
+   ],
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "evaluate the function at the named input",
+    "evaluate the left hand limit from the branch on that side",
+    "evaluate the right hand limit from the branch on that side",
+    "compare the limit with the function value",
+    "state the conclusion and name the condition that fails when it does"
+   ],
+   "id": "BC-QA-01006",
+   "invariant_structure": "The named input is a boundary of the partition or a point excluded from a branch expression, so the test requires separate evaluation of the function value and of the one sided limits.",
+   "misconceptions": [
+    "BC-MIS-01009",
+    "BC-MIS-01010"
+   ],
+   "multipart_structure": "Typically one part of a multipart free response question or a single multiple choice item.",
+   "name": "Continuity at a point tested against the three conditions",
+   "official_examples": [],
+   "official_examples_notes": "none in 2023 to 2025 as a standalone part [inferred]",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-01003"
+   ],
+   "primary_unit": "BC-UNIT-01",
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "safe_variables": [
+    "the branch expressions",
+    "the boundary input",
+    "the variable name"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "One point for the value and the limit, and a separate justification point that requires naming which condition fails rather than restating the definition.",
+   "skills": [
+    "BC-SKL-01043",
+    "BC-SKL-01044",
+    "BC-SKL-01045",
+    "BC-SKL-01042",
+    "BC-SKL-01023"
+   ],
+   "sources": [
+    "ced:48",
+    "ced:47"
+   ],
+   "typical_wording": [
+    "Determine whether the given function is continuous at the named input. Justify your answer."
+   ],
+   "units": [
+    "BC-UNIT-01"
+   ]
+  },
+  {
+   "asked_to_produce": [],
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "classifying a cancelling factor as a vertical asymptote",
+    "calling a removable break a jump because the value is missing",
+    "treating any undefined point as an asymptote",
+    "classifying from the function value rather than the limits"
+   ],
+   "common_givens": [],
+   "description": "A function with one or more breaks is presented and the response classifies each break as removable, a jump, or due to a vertical asymptote.",
+   "difficulty_variables": [
+    "whether a cancelling factor is present",
+    "whether an absolute value produces the jump",
+    "whether the graph or the rule is given",
+    "whether the classification must be justified"
+   ],
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "locate the inputs where the function is undefined or the rule changes",
+    "evaluate the one sided limits at each such input",
+    "classify from whether the one sided limits exist, agree, and are finite"
+   ],
+   "id": "BC-QA-01007",
+   "invariant_structure": "Every break admits exactly one classification determined by the existence and finiteness of the one sided limits, and the classification does not depend on the function value.",
+   "misconceptions": [
+    "BC-MIS-01011"
+   ],
+   "multipart_structure": "Typically a single multiple choice item.",
+   "name": "Discontinuity classified from a rule or a graph",
+   "official_examples": [],
+   "official_examples_notes": "none in 2023 to 2025 [inferred]",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-01001",
+    "BC-PRQ-01006"
+   ],
+   "primary_unit": "BC-UNIT-01",
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "safe_variables": [
+    "the expression or the shape of the graph",
+    "the inputs where breaks occur",
+    "the number of breaks"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "One point per classification with a reason point when justification is demanded.",
+   "skills": [
+    "BC-SKL-01039",
+    "BC-SKL-01040",
+    "BC-SKL-01041",
+    "BC-SKL-01057"
+   ],
+   "sources": [
+    "ced:47"
+   ],
+   "typical_wording": [
+    "Classify each discontinuity of the given function and give a reason for each classification."
+   ],
+   "units": [
+    "BC-UNIT-01"
+   ]
+  },
+  {
+   "asked_to_produce": [],
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "matching only the two limits and ignoring the defined value",
+    "substituting the boundary into the wrong branch",
+    "solving one equation for two unknowns",
+    "reporting a value that makes the branches equal at the wrong input"
+   ],
+   "common_givens": [],
+   "description": "A piecewise rule containing one or two unknown constants is given and the response determines the constants that make the function continuous.",
+   "difficulty_variables": [
+    "one unknown against two unknowns",
+    "one boundary against two boundaries",
+    "whether the branch expressions are linear",
+    "whether the response must also confirm the function value at the boundary"
+   ],
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "evaluate the one sided limit from each branch at the boundary",
+    "set the two expressions equal at the boundary",
+    "include the function value in the equality",
+    "solve for the unknown or solve the system for two unknowns"
+   ],
+   "id": "BC-QA-01008",
+   "invariant_structure": "Continuity at each boundary yields exactly one equation, so the number of boundaries at which matching is demanded equals the number of equations available for the unknowns.",
+   "misconceptions": [
+    "BC-MIS-01009"
+   ],
+   "multipart_structure": "Typically a single multiple choice item or one part of a larger question.",
+   "name": "Parameter solved so that a piecewise function is continuous",
+   "official_examples": [],
+   "official_examples_notes": "none in 2023 to 2025 [inferred]",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-01003"
+   ],
+   "primary_unit": "BC-UNIT-01",
+   "representations": [
+    "BC-REP-01"
+   ],
+   "safe_variables": [
+    "the branch expressions",
+    "the names of the constants",
+    "the boundary inputs"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "One point for the matching equation at each boundary and one for the solution.",
+   "skills": [
+    "BC-SKL-01051",
+    "BC-SKL-01052",
+    "BC-SKL-01050",
+    "BC-SKL-01053"
+   ],
+   "sources": [
+    "ced:50"
+   ],
+   "typical_wording": [
+    "Find the value or values of the constants for which the given piecewise function is continuous."
+   ],
+   "units": [
+    "BC-UNIT-01"
+   ]
+  },
+  {
+   "asked_to_produce": [],
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "naming an asymptote at a cancelled factor",
+    "writing a single two sided infinite limit when the signs differ",
+    "reporting the limit as a real number",
+    "omitting the side in the notation"
+   ],
+   "common_givens": [],
+   "description": "A rational or logarithmic expression is presented and the response locates the vertical asymptotes and states the behaviour on each side.",
+   "difficulty_variables": [
+    "whether a factor cancels",
+    "whether the two sides have the same sign",
+    "whether the response must state the limits in notation",
+    "whether a logarithmic asymptote is included"
+   ],
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "factor numerator and denominator",
+    "divide out common factors and record where this was done",
+    "identify the remaining zeros of the denominator",
+    "determine the sign of the quotient on each side",
+    "write the one sided infinite limit statements"
+   ],
+   "id": "BC-QA-01009",
+   "invariant_structure": "At least one zero of the original denominator cancels, so locating the asymptotes requires simplification before the sign analysis, and the two sides can carry opposite signs.",
+   "misconceptions": [
+    "BC-MIS-01012"
+   ],
+   "multipart_structure": "Typically a single multiple choice item.",
+   "name": "Vertical asymptote located and the one sided infinite limits stated",
+   "official_examples": [],
+   "official_examples_notes": "none in 2023 to 2025 [inferred]",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-01009",
+    "BC-PRQ-01001"
+   ],
+   "primary_unit": "BC-UNIT-01",
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "safe_variables": [
+    "the rational expression",
+    "the variable name",
+    "the number of zeros of the denominator"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "One point for the locations and one for the one sided behaviour stated in correct notation.",
+   "skills": [
+    "BC-SKL-01054",
+    "BC-SKL-01055",
+    "BC-SKL-01056",
+    "BC-SKL-01041"
+   ],
+   "sources": [
+    "ced:51"
+   ],
+   "typical_wording": [
+    "Find the vertical asymptotes of the graph of the given function and describe the behaviour of the function near each one."
+   ],
+   "units": [
+    "BC-UNIT-01"
+   ]
+  },
+  {
+   "asked_to_produce": [],
+   "calculator_status": "either",
+   "common_distractors": [
+    "writing the limit of the amount when the rate was requested",
+    "substituting infinity into the expression as though it were a number",
+    "reporting the limit of the rate as the limit of the amount",
+    "omitting the limit expression and giving only a value"
+   ],
+   "common_givens": [],
+   "description": "A function or a contextual model is given and the response writes the limit expression describing behaviour for inputs of large magnitude and evaluates it.",
+   "difficulty_variables": [
+    "whether the expression as well as the value is demanded",
+    "whether the rate or the amount is the subject",
+    "whether the two ends differ",
+    "whether a radical is present",
+    "whether the setting is contextual"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "identify the function whose end behaviour is requested",
+    "write the limit expression as the variable increases without bound",
+    "divide by the dominant power or compare degrees",
+    "report the value"
+   ],
+   "id": "BC-QA-01010",
+   "invariant_structure": "The response must produce the limit expression itself as well as its value, and the expression must name the correct function, which in a contextual setting may be the rate rather than the amount.",
+   "misconceptions": [
+    "BC-MIS-01013",
+    "BC-MIS-01014"
+   ],
+   "multipart_structure": "Typically one part of a multipart free response question.",
+   "name": "End behaviour described by a limit at infinity",
+   "official_examples": [],
+   "official_examples_notes": "2025 Q2(C)",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-01004",
+    "BC-PRQ-06005"
+   ],
+   "primary_unit": "BC-UNIT-01",
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-05",
+    "BC-REP-02"
+   ],
+   "safe_variables": [
+    "the modelled quantity",
+    "the variable name",
+    "the algebraic form of the model"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "A separate point is awarded for the limit expression and another for its value; the expression point may be earned by the limit of either the amount or its rate, while a response presenting the limit of the amount is not eligible for the value point, and arithmetic performed with the infinity symbol is treated as scratch work (sg-25:4).",
+   "skills": [
+    "BC-SKL-01058",
+    "BC-SKL-01059",
+    "BC-SKL-01060",
+    "BC-SKL-01061",
+    "BC-SKL-01063",
+    "BC-SKL-01062"
+   ],
+   "sources": [
+    "ced:52",
+    "sg-25:4"
+   ],
+   "typical_wording": [
+    "Write a limit expression that describes the long run behaviour of the given quantity and evaluate it."
+   ],
+   "units": [
+    "BC-UNIT-01"
+   ]
+  },
+  {
+   "asked_to_produce": [],
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "asserting continuity without a reason",
+    "using the endpoints in the wrong order so the target is not between them",
+    "claiming a unique solution",
+    "naming a different theorem",
+    "locating a value rather than arguing existence"
+   ],
+   "common_givens": [],
+   "description": "A function known to be continuous or differentiable is given by a table, a graph, or a rule, and the response argues that the function attains a stated value somewhere in an interval.",
+   "difficulty_variables": [
+    "whether continuity must be deduced from differentiability",
+    "whether the straddling pair must be chosen from a table",
+    "whether the theorem must be named",
+    "whether the answer must be phrased as a yes or no decision"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "state that the function is continuous and give the reason",
+    "display the two attained values that straddle the target",
+    "state that the target lies between them",
+    "conclude that at least one input in the open interval gives the target value"
+   ],
+   "id": "BC-QA-01011",
+   "invariant_structure": "The continuity hypothesis must be established from a stated property rather than assumed, the target value must be shown to lie between two attained values, and the conclusion asserts existence without locating the input.",
+   "misconceptions": [
+    "BC-MIS-01015",
+    "BC-MIS-01016"
+   ],
+   "multipart_structure": "Typically one part of a multipart free response question.",
+   "name": "Existence of a solution argued from the Intermediate Value Theorem",
+   "official_examples": [],
+   "official_examples_notes": "2025 Q3(B)",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-01010",
+    "BC-PRQ-01008"
+   ],
+   "primary_unit": "BC-UNIT-01",
+   "representations": [
+    "BC-REP-03",
+    "BC-REP-05",
+    "BC-REP-02"
+   ],
+   "safe_variables": [
+    "the modelled quantity",
+    "the target value",
+    "the endpoints of the interval",
+    "the units"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "One point is earned for stating that the function is continuous because it is differentiable or equivalent, and a bare statement that the function is continuous without that justification does not earn it; a second point requires the straddling inequality, a statement of continuity, and an affirmative answer, and the theorem need not be named although a named theorem must be the correct one (sg-25:12). The second point is available whether or not the first was earned.",
+   "skills": [
+    "BC-SKL-01064",
+    "BC-SKL-01065",
+    "BC-SKL-01066",
+    "BC-SKL-01067",
+    "BC-SKL-01068"
+   ],
+   "sources": [
+    "ced:53",
+    "sg-25:12"
+   ],
+   "typical_wording": [
+    "Must there be a value in the stated open interval at which the function equals the given number? Justify your answer."
+   ],
+   "units": [
+    "BC-UNIT-01"
+   ]
+  },
+  {
+   "asked_to_produce": [],
+   "calculator_status": "either",
+   "common_distractors": [
+    "reporting the difference in outputs without dividing",
+    "using the wrong interval endpoints",
+    "calling the last average the exact instantaneous rate",
+    "omitting the units"
+   ],
+   "common_givens": [],
+   "description": "A quantity is given by a formula or a table and the response computes average rates of change over intervals closing on a point and describes what those averages approach.",
+   "difficulty_variables": [
+    "whether a table or a formula is supplied",
+    "whether units are demanded",
+    "whether the response must state the limit form",
+    "whether the intervals are one sided"
+   ],
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "compute the average rate over each interval",
+    "record the sequence of values",
+    "state the value the averages approach",
+    "name that value as the instantaneous rate at the point"
+   ],
+   "id": "BC-QA-01012",
+   "invariant_structure": "The averages are computed over a nested family of intervals containing the point of interest, and the response must separate the average rate over an interval from the rate at the instant.",
+   "misconceptions": [
+    "BC-MIS-01017"
+   ],
+   "multipart_structure": "Typically one part of a multipart free response question.",
+   "name": "Instantaneous rate approached through average rates over shrinking intervals",
+   "official_examples": [],
+   "official_examples_notes": "none in 2023 to 2025 as a standalone part [inferred]",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "primary_unit": "BC-UNIT-01",
+   "representations": [
+    "BC-REP-03",
+    "BC-REP-05",
+    "BC-REP-01"
+   ],
+   "safe_variables": [
+    "the modelled quantity",
+    "the units",
+    "the point of interest",
+    "the widths of the intervals"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "One point for the average rates with supporting work and one for the description of what they approach.",
+   "skills": [
+    "BC-SKL-01001",
+    "BC-SKL-01002",
+    "BC-SKL-01003",
+    "BC-SKL-01004"
+   ],
+   "sources": [
+    "ced:38"
+   ],
+   "typical_wording": [
+    "Compute the average rate of change over each of the given intervals and describe what these values indicate about the rate at the named instant."
+   ],
+   "units": [
+    "BC-UNIT-01"
+   ]
+  },
+  {
+   "asked_to_produce": [],
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "matching on the function value rather than the limit",
+    "matching a one sided statement with a two sided graph",
+    "choosing a representation that agrees away from the target input only",
+    "confusing an infinite limit with a limit at infinity"
+   ],
+   "common_givens": [],
+   "description": "A limit fact is presented in one representation and the response selects or produces the equivalent presentation in another.",
+   "difficulty_variables": [
+    "graph to table against table to expression against expression to verbal",
+    "whether a one sided statement is involved",
+    "whether an infinite limit is involved",
+    "whether a graph must be produced rather than selected"
+   ],
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "read the limit behaviour from the supplied representation",
+    "state the behaviour in neutral terms",
+    "test each candidate representation against that behaviour",
+    "select or produce the one that matches"
+   ],
+   "id": "BC-QA-01013",
+   "invariant_structure": "The same limit behaviour at one input is carried by all the offered representations except the distractors, so the task is conversion rather than evaluation.",
+   "misconceptions": [
+    "BC-MIS-01018"
+   ],
+   "multipart_structure": "Typically a single multiple choice item.",
+   "name": "Limit claim matched across graphical, numerical, and analytic representations",
+   "official_examples": [],
+   "official_examples_notes": "none in 2023 to 2025 [inferred]",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "primary_unit": "BC-UNIT-01",
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02",
+    "BC-REP-03",
+    "BC-REP-04"
+   ],
+   "safe_variables": [
+    "the function",
+    "the target input",
+    "which representation is supplied"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "One point for the correct conversion.",
+   "skills": [
+    "BC-SKL-01036",
+    "BC-SKL-01037",
+    "BC-SKL-01038",
+    "BC-SKL-01005",
+    "BC-SKL-01006",
+    "BC-SKL-01007",
+    "BC-SKL-01014"
+   ],
+   "sources": [
+    "ced:46",
+    "ced:39"
+   ],
+   "typical_wording": [
+    "Which of the given representations is consistent with the stated limit behaviour of f at the named input?"
+   ],
+   "units": [
+    "BC-UNIT-01"
+   ]
+  },
+  {
+   "asked_to_produce": [],
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "rewriting an expression that substitution already settles",
+    "applying a rewriting technique that does not fit the form",
+    "treating a nonzero number over zero as an indeterminate form",
+    "reporting that a limit does not exist without considering one sided behaviour"
+   ],
+   "common_givens": [],
+   "description": "Several limit expressions are presented and the response identifies which procedure resolves each, or resolves one after classifying it.",
+   "difficulty_variables": [
+    "whether the classification must be stated",
+    "whether an indeterminate form is present",
+    "whether a one sided analysis is required",
+    "whether a limit at infinity is included"
+   ],
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "substitute the target input into each expression",
+    "classify the resulting form",
+    "name the procedure that the form calls for",
+    "carry out that procedure when a value is demanded"
+   ],
+   "id": "BC-QA-01014",
+   "invariant_structure": "The expressions are chosen so that substitution settles some of them, rewriting is required for others, and at least one is an unbounded quotient, so classification precedes computation.",
+   "misconceptions": [
+    "BC-MIS-01006"
+   ],
+   "multipart_structure": "Typically a single multiple choice item.",
+   "name": "Procedure selected for a limit from the form of the expression",
+   "official_examples": [],
+   "official_examples_notes": "none in 2023 to 2025 [inferred]",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-01001",
+    "BC-PRQ-01008"
+   ],
+   "primary_unit": "BC-UNIT-01",
+   "representations": [
+    "BC-REP-01"
+   ],
+   "safe_variables": [
+    "the specific expressions",
+    "the target inputs",
+    "the number of expressions offered"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "One point for the classification and one for the resulting value.",
+   "skills": [
+    "BC-SKL-01029",
+    "BC-SKL-01030",
+    "BC-SKL-01031",
+    "BC-SKL-01021"
+   ],
+   "sources": [
+    "ced:44"
+   ],
+   "typical_wording": [
+    "For each of the given limits, identify an appropriate method and use it to determine the limit."
+   ],
+   "units": [
+    "BC-UNIT-01"
+   ]
+  },
+  {
+   "asked_to_produce": [],
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "including an excluded input inside a stated interval",
+    "writing the domain as a single interval when it has several pieces",
+    "using closed brackets at an excluded input",
+    "omitting the reason when one is demanded"
+   ],
+   "common_givens": [],
+   "description": "A function given by a rule is presented and the response states the intervals on which it is continuous.",
+   "difficulty_variables": [
+    "rational against radical against logarithmic against piecewise",
+    "whether an endpoint requires a one sided argument",
+    "whether the answer must be justified by naming the family",
+    "whether the domain restriction is stated in the question"
+   ],
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "identify every input at which the expression is undefined",
+    "state the family to which the expression belongs and that it is continuous on its domain",
+    "write the maximal intervals of continuity",
+    "treat any endpoint with the appropriate one sided limit"
+   ],
+   "id": "BC-QA-01015",
+   "invariant_structure": "The function belongs to families continuous on their domains, so the intervals of continuity are the maximal intervals of the domain, and every excluded input must be found from the rule.",
+   "misconceptions": [
+    "BC-MIS-01019"
+   ],
+   "multipart_structure": "Typically a single multiple choice item.",
+   "name": "Intervals of continuity determined from the domain of an expression",
+   "official_examples": [],
+   "official_examples_notes": "none in 2023 to 2025 [inferred]",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-01008",
+    "BC-PRQ-01010"
+   ],
+   "primary_unit": "BC-UNIT-01",
+   "representations": [
+    "BC-REP-01"
+   ],
+   "safe_variables": [
+    "the expression",
+    "the variable name",
+    "the number of excluded inputs"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "One point for the intervals and one for the reason naming the family and its domain.",
+   "skills": [
+    "BC-SKL-01046",
+    "BC-SKL-01047",
+    "BC-SKL-01048",
+    "BC-SKL-01049"
+   ],
+   "sources": [
+    "ced:49"
+   ],
+   "typical_wording": [
+    "State the intervals on which the given function is continuous and give a reason for your answer."
+   ],
+   "units": [
+    "BC-UNIT-01"
+   ]
+  }
+ ],
+ "registry": "archetypes",
+ "variants": [
+  {
+   "archetype": "BC-QA-01001",
+   "description": "The graph shows an open circle at the limit height and a closed point elsewhere at the same input.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-01001-01",
+   "name": "Graph carrying a removable break with a marked value",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:47"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01001",
+   "description": "The one sided limits differ and the function value coincides with one of them.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-01001-02",
+   "name": "Graph carrying a jump at the same input as a defined value",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:47"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01001",
+   "description": "One side of the input is unbounded so the answer is a nonexistence statement rather than a value.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-01001-03",
+   "name": "Graph with an unbounded branch",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:40"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01002",
+   "description": "Only inputs on one side of the target are tabulated, so only a one sided estimate is available.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-01002-01",
+   "name": "Table approaching from one side only",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:41"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01002",
+   "description": "The tabulated inputs are chosen so that the outputs agree while the function oscillates between them.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-01002-02",
+   "name": "Table whose spacing conceals oscillation",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:40",
+    "ced:41"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01002",
+   "description": "The tabulated quantity carries units and the estimate must be reported with them.",
+   "difficulty_effect": "neutral",
+   "dimension": "context",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-01002-03",
+   "name": "Table in a contextual setting with units",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:41"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01003",
+   "description": "The quotient theorem does not apply and the response must say so.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-01003-01",
+   "name": "Quotient whose denominator limit is zero",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:42"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01003",
+   "description": "The outer function must be applied to the inner limit and the order matters.",
+   "difficulty_effect": "harder",
+   "dimension": "notation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-01003-02",
+   "name": "Composite of the two functions",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:42"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01003",
+   "description": "The supplied limits are one sided so the conclusion is one sided.",
+   "difficulty_effect": "harder",
+   "dimension": "notation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-01003-03",
+   "name": "One sided supplied limits",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:42"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01004",
+   "description": "The rewriting is a factorisation of numerator and denominator.",
+   "difficulty_effect": "neutral",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-01004-01",
+   "name": "Factoring a quadratic and dividing out",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:43"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01004",
+   "description": "The rewriting clears a radical using the conjugate.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-01004-02",
+   "name": "Conjugate multiplication with a radical",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:43"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01004",
+   "description": "The rewriting clears nested fractions before cancelling.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-01004-03",
+   "name": "Complex fraction cleared by a common denominator",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:43"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01004",
+   "description": "The rewriting replaces a trigonometric expression by an equivalent form.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-01004-04",
+   "name": "Trigonometric identity applied before evaluation",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:43"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01005",
+   "description": "The inequality is given and only the evaluation and conclusion are required.",
+   "difficulty_effect": "easier",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-01005-01",
+   "name": "Bounding functions supplied in the stem",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:45"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01005",
+   "description": "The response must construct the bounding inequality from the bound on an oscillating factor.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-01005-02",
+   "name": "Bounding functions produced by the student",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:45"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01005",
+   "description": "The response must state that the inequality holds near but not necessarily at the target.",
+   "difficulty_effect": "harder",
+   "dimension": "notation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-01005-03",
+   "name": "Hypotheses demanded explicitly",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:45"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01006",
+   "description": "The one sided limits differ so the failed condition is the existence of the limit.",
+   "difficulty_effect": "neutral",
+   "dimension": "reasoning direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-01006-01",
+   "name": "Boundary where the value is defined but the limit is not",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:48"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01006",
+   "description": "The failed condition is the agreement of the limit with the value.",
+   "difficulty_effect": "neutral",
+   "dimension": "reasoning direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-01006-02",
+   "name": "Boundary where the limit exists but the value differs",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:48"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01006",
+   "description": "The three conditions must be checked by reading the picture.",
+   "difficulty_effect": "easier",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-01006-03",
+   "name": "Function presented by a graph rather than a rule",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:47",
+    "ced:48"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01007",
+   "description": "One zero of the denominator divides out and gives a removable break.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-01007-01",
+   "name": "Rational expression with a cancelling factor",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:47"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01007",
+   "description": "The break is a jump produced by the sign change of the absolute value.",
+   "difficulty_effect": "neutral",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-01007-02",
+   "name": "Absolute value quotient",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:47"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01007",
+   "description": "All three classifications appear on one picture.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-01007-03",
+   "name": "Graph with three breaks of different kinds",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:47"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01008",
+   "description": "A single matching equation determines the constant.",
+   "difficulty_effect": "easier",
+   "dimension": "reasoning direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-01008-01",
+   "name": "One unknown at one boundary",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:50"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01008",
+   "description": "Two matching equations must be solved together.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-01008-02",
+   "name": "Two unknowns at two boundaries",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:50"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01008",
+   "description": "The task is to supply the value at a single point rather than a parameter in a branch.",
+   "difficulty_effect": "neutral",
+   "dimension": "notation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-01008-03",
+   "name": "Removable break repaired by defining the value",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:50"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01009",
+   "description": "One zero gives a removable break and the other an asymptote.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-01009-01",
+   "name": "Denominator with a cancelling and a surviving factor",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:51"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01009",
+   "description": "The two one sided limits are infinite with opposite signs.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-01009-02",
+   "name": "Sides carrying opposite signs",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:51"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01009",
+   "description": "The unbounded behaviour arises at the edge of the domain of a logarithm.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-01009-03",
+   "name": "Asymptote of a logarithmic expression",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:51"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01010",
+   "description": "The limit requested is of the rate of change rather than of the amount.",
+   "difficulty_effect": "harder",
+   "dimension": "context",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-01010-01",
+   "name": "Rate function in a contextual model",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-25:4"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01010",
+   "description": "The dominant power must be taken through the radical with attention to sign.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-01010-02",
+   "name": "Expression containing a square root",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:52"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01010",
+   "description": "The limits at positive and at negative infinity differ so two asymptotes are reported.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-01010-03",
+   "name": "Two different ends",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:52"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01010",
+   "description": "The limit of a quotient is used to compare growth rather than to locate an asymptote.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-01010-04",
+   "name": "Relative magnitude comparison",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:52"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01011",
+   "description": "Continuity must be deduced from the stated differentiability before the theorem is used.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-01011-01",
+   "name": "Function given by a table with a differentiability statement",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-25:12"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01011",
+   "description": "Continuity follows from membership of a family continuous on its domain.",
+   "difficulty_effect": "easier",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-01011-02",
+   "name": "Function given by a rule",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:49",
+    "ced:53"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01011",
+   "description": "The strict inequality fails at one end so the straddling condition must be checked carefully.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-01011-03",
+   "name": "Target value equal to an endpoint value",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:53"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01011",
+   "description": "The response must answer the decision as well as supply the argument.",
+   "difficulty_effect": "neutral",
+   "dimension": "notation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-01011-04",
+   "name": "Answer demanded as a yes or no decision with justification",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-25:12"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01012",
+   "description": "The average rates are computed from tabulated values.",
+   "difficulty_effect": "neutral",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-01012-01",
+   "name": "Quantity given by a table",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:38"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01012",
+   "description": "The average rates are computed by evaluating the formula.",
+   "difficulty_effect": "neutral",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-01012-02",
+   "name": "Quantity given by a formula",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:38"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01012",
+   "description": "The response must attach the units of the rate.",
+   "difficulty_effect": "neutral",
+   "dimension": "context",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-01012-03",
+   "name": "Units demanded with the answer",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:38"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01013",
+   "description": "The conversion runs from the picture to tabulated values.",
+   "difficulty_effect": "neutral",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-01013-01",
+   "name": "Graph supplied and table requested",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:46"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01013",
+   "description": "The conversion runs from notation to a sentence.",
+   "difficulty_effect": "neutral",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-01013-02",
+   "name": "Analytic statement supplied and verbal description requested",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:46"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01013",
+   "description": "The response must construct a curve satisfying several limit and value conditions at once.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-01013-03",
+   "name": "Graph to be produced from stated conditions",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:46"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01014",
+   "description": "At least one expression needs no rewriting.",
+   "difficulty_effect": "easier",
+   "dimension": "reasoning direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-01014-01",
+   "name": "Mixed list including a determinate substitution",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:44"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01014",
+   "description": "One expression calls for one sided analysis rather than rewriting.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-01014-02",
+   "name": "Mixed list including a nonzero over zero form",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:44"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01014",
+   "description": "One expression calls for an end behaviour comparison.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-01014-03",
+   "name": "Mixed list including a limit at infinity",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:44",
+    "ced:52"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01015",
+   "description": "The excluded inputs are the zeros of the denominator.",
+   "difficulty_effect": "neutral",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-01015-01",
+   "name": "Rational expression",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:49"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01015",
+   "description": "The excluded inputs come from a domain restriction rather than a zero denominator.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-01015-02",
+   "name": "Radical or logarithmic expression",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:49"
+   ]
+  },
+  {
+   "archetype": "BC-QA-01015",
+   "description": "Each branch and each boundary must be treated separately.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-01015-03",
+   "name": "Piecewise rule",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:49"
+   ]
+  }
+ ]
+}

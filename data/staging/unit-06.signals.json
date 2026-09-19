@@ -1,0 +1,444 @@
+{
+ "registry": "diagnostic_signals",
+ "signals": [
+  {
+   "archetype": "BC-QA-06001",
+   "consistent_with": [
+    "BC-SKL-06005"
+   ],
+   "distinguish_by": "Re-add the displayed products; if they are right, the gap is arithmetic rather than conceptual.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-06001",
+   "mastery_state": "partially_mastered",
+   "name": "Correct Riemann sum products with an arithmetic slip in the total",
+   "observation": "All six factors of the sum are correct but the reported total does not match the products.",
+   "scope": "shared",
+   "skill": "BC-SKL-06005",
+   "sources": [
+    "sg-23:2"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06001",
+   "consistent_with": [
+    "BC-ERR-06001",
+    "BC-MIS-06001",
+    "BC-PRQ-06012"
+   ],
+   "distinguish_by": "Ask for the widths alone; a correct width list points to a copying slip rather than a prerequisite gap.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-06002",
+   "mastery_state": "prerequisite_gap",
+   "name": "Single width applied across unequal subintervals",
+   "observation": "Every tabulated value is multiplied by the same number although the table inputs are unevenly spaced.",
+   "scope": "shared",
+   "skill": "BC-SKL-06005",
+   "sources": [
+    "sg-23:2",
+    "sg-25:13"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06001",
+   "consistent_with": [
+    "BC-ERR-06002",
+    "BC-MIS-06002"
+   ],
+   "distinguish_by": "Ask for both conventions; producing both correctly indicates a misread rather than a missing distinction.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-06003",
+   "mastery_state": "partially_mastered",
+   "name": "Correct sum of the opposite endpoint type",
+   "observation": "A fully correct Riemann sum is produced using the endpoint convention that was not requested.",
+   "scope": "shared",
+   "skill": "BC-SKL-06006",
+   "sources": [
+    "sg-23:3",
+    "sg-25:13"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06001",
+   "consistent_with": [
+    "BC-ERR-06003",
+    "BC-MIS-06001"
+   ],
+   "distinguish_by": "Ask for the units of one term; rate units confirm the missing width factor.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-06004",
+   "mastery_state": "not_mastered",
+   "name": "Sum of table values with no widths",
+   "observation": "The response adds the rate values and reports the total with the units of the rate.",
+   "scope": "shared",
+   "skill": "BC-SKL-06005",
+   "sources": [
+    "sg-23:2"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06002",
+   "consistent_with": [
+    "BC-ERR-06004",
+    "BC-MIS-06004"
+   ],
+   "distinguish_by": "Ask for a single trapezoid area; a correct one indicates a dropped factor rather than a missing formula.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-06005",
+   "mastery_state": "partially_mastered",
+   "name": "Left and right sums averaged without the halving",
+   "observation": "The trapezoidal answer equals the sum of the left and right sums.",
+   "scope": "shared",
+   "skill": "BC-SKL-06008",
+   "sources": [
+    "sg-25:13"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06001",
+   "consistent_with": [
+    "BC-ERR-06005",
+    "BC-MIS-06003"
+   ],
+   "distinguish_by": "Ask which property of the rate supports the claim; a correct property indicates omission under time pressure.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-06006",
+   "mastery_state": "partially_mastered",
+   "name": "Direction of an estimate asserted with no stated reason",
+   "observation": "The words underestimate or overestimate appear with no reference to increase, decrease, or bending.",
+   "scope": "shared",
+   "skill": "BC-SKL-06010",
+   "sources": [
+    "ced:119"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06002",
+   "consistent_with": [
+    "BC-ERR-06007",
+    "BC-MIS-06005",
+    "BC-MIS-06006"
+   ],
+   "distinguish_by": "Ask for the direction on an increasing concave down rate; a correct answer there separates a slip from the conflation.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-06007",
+   "mastery_state": "not_mastered",
+   "name": "Monotonicity cited for a trapezoidal estimate",
+   "observation": "The justification for a trapezoidal direction names increase or decrease rather than concavity.",
+   "scope": "shared",
+   "skill": "BC-SKL-06011",
+   "sources": [
+    "ced:119"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06003",
+   "consistent_with": [
+    "BC-ERR-06008",
+    "BC-MIS-06007"
+   ],
+   "distinguish_by": "Ask which curve the figure shows; a correct naming with the same answers points to the rule confusion instead.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-06008",
+   "mastery_state": "not_mastered",
+   "name": "Features of the accumulation function read off the plotted curve",
+   "observation": "Reported extrema of g coincide with the visible extrema of the plotted integrand.",
+   "scope": "shared",
+   "skill": "BC-SKL-06023",
+   "sources": [
+    "sg-25:17"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06003",
+   "consistent_with": [
+    "BC-ERR-06009",
+    "BC-MIS-06008"
+   ],
+   "distinguish_by": "Ask for the extrema of g in the same breath; identical lists confirm the single rule applied twice.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-06009",
+   "mastery_state": "not_mastered",
+   "name": "Inflection points of the accumulation function placed at zeros of the integrand",
+   "observation": "The reported inflection inputs are exactly the inputs where the plotted curve crosses the axis.",
+   "scope": "shared",
+   "skill": "BC-SKL-06024",
+   "sources": [
+    "sg-25:17"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06003",
+   "consistent_with": [
+    "BC-ERR-06010",
+    "BC-MIS-06009"
+   ],
+   "distinguish_by": "Ask what feature of the figure makes the claim true; a correct answer confirms a communication gap.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-06010",
+   "mastery_state": "partially_mastered",
+   "name": "Correct feature list with a reason phrased only in terms of the accumulation function",
+   "observation": "The inputs are right and the stated reason names g changing concavity rather than the behaviour of the plotted integrand.",
+   "scope": "shared",
+   "skill": "BC-SKL-06024",
+   "sources": [
+    "sg-25:17"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06003",
+   "consistent_with": [
+    "BC-ERR-06011",
+    "BC-MIS-06010"
+   ],
+   "distinguish_by": "Ask whether an endpoint could give a smaller value and how that is ruled out.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-06011",
+   "mastery_state": "partially_mastered",
+   "name": "Correct absolute extremum value with a local justification",
+   "observation": "The reported input is correct and the argument is a first or second derivative test at that input alone.",
+   "scope": "shared",
+   "skill": "BC-SKL-06026",
+   "sources": [
+    "sg-25:19"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06003",
+   "consistent_with": [
+    "BC-ERR-06012",
+    "BC-MIS-06010"
+   ],
+   "distinguish_by": "Ask for the complete candidate list before any evaluation; a complete list indicates an omission rather than a missing rule.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-06012",
+   "mastery_state": "partially_mastered",
+   "name": "Candidates table missing an endpoint",
+   "observation": "The comparison lists the interior critical inputs but omits one or both endpoints.",
+   "scope": "shared",
+   "skill": "BC-SKL-06026",
+   "sources": [
+    "sg-25:19"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06004",
+   "consistent_with": [
+    "BC-ERR-06014",
+    "BC-MIS-06012"
+   ],
+   "distinguish_by": "Ask for the sign of the integral before any arithmetic; a correct sign points to an arithmetic slip.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-06013",
+   "mastery_state": "not_mastered",
+   "name": "Signed integral reported as a plain area",
+   "observation": "The reported value equals the sum of the unsigned areas although part of the region lies below the axis.",
+   "scope": "shared",
+   "skill": "BC-SKL-06028",
+   "sources": [
+    "sg-25:18"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06004",
+   "consistent_with": [
+    "BC-ERR-06013",
+    "BC-MIS-06011"
+   ],
+   "distinguish_by": "Ask for the area of that single piece; a correct area indicates a dropped factor.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-06014",
+   "mastery_state": "partially_mastered",
+   "name": "Semicircular contribution doubled",
+   "observation": "The reported value differs from the correct one by exactly the area of half a circle.",
+   "scope": "shared",
+   "skill": "BC-SKL-06028",
+   "sources": [
+    "sg-25:18"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06005",
+   "consistent_with": [
+    "BC-ERR-06015",
+    "BC-MIS-06013"
+   ],
+   "distinguish_by": "Ask what the integral alone measures; a correct answer indicates the initial value was forgotten rather than misunderstood.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-06015",
+   "mastery_state": "not_mastered",
+   "name": "Accumulated change reported as the final value",
+   "observation": "The reported value equals the definite integral of the rate and the supplied initial value does not appear anywhere.",
+   "scope": "shared",
+   "skill": "BC-SKL-06037",
+   "sources": [
+    "sg-24:4"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06007",
+   "consistent_with": [
+    "BC-ERR-06016",
+    "BC-MIS-06014"
+   ],
+   "distinguish_by": "Ask for the units of the answer; rate times input units confirm the missing division.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-06016",
+   "mastery_state": "partially_mastered",
+   "name": "Integral reported where an average value was requested",
+   "observation": "The reported value equals the definite integral and no division by the interval length appears.",
+   "scope": "shared",
+   "skill": "BC-SKL-06038",
+   "sources": [
+    "sg-25:3"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06007",
+   "consistent_with": [
+    "BC-ERR-06017",
+    "BC-MIS-06015"
+   ],
+   "distinguish_by": "Present both phrases and ask which expression matches which.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-06017",
+   "mastery_state": "not_mastered",
+   "name": "Difference quotient reported where an average value was requested",
+   "observation": "The reported value is a difference of function values divided by the interval length, with no integral present.",
+   "scope": "shared",
+   "skill": "BC-SKL-06038",
+   "sources": [
+    "sg-25:2",
+    "sg-25:4"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06008",
+   "consistent_with": [
+    "BC-ERR-06018",
+    "BC-MIS-06016"
+   ],
+   "distinguish_by": "Ask for the two converted limits; producing them correctly points to an omitted step.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-06018",
+   "mastery_state": "not_mastered",
+   "name": "Original limits substituted into an expression written in the substituted variable",
+   "observation": "The work shows the antiderivative in u with the original x limits attached.",
+   "scope": "shared",
+   "skill": "BC-SKL-06050",
+   "sources": [
+    "sg-23:16",
+    "sg-23:17"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06008",
+   "consistent_with": [
+    "BC-ERR-06019",
+    "BC-MIS-06016"
+   ],
+   "distinguish_by": "Ask the student to differentiate the answer and compare with the integrand.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-06019",
+   "mastery_state": "partially_mastered",
+   "name": "Answer differs from the correct antiderivative by a constant factor",
+   "observation": "The reported antiderivative is a nonzero constant multiple of the correct one.",
+   "scope": "shared",
+   "skill": "BC-SKL-06048",
+   "sources": [
+    "ced:126"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06009",
+   "consistent_with": [
+    "BC-ERR-06022",
+    "BC-MIS-06019"
+   ],
+   "distinguish_by": "Ask the student to differentiate the answer; recognising the mismatch indicates a procedural rather than conceptual gap.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-06020",
+   "mastery_state": "not_mastered",
+   "name": "Product antidifferentiated factor by factor",
+   "observation": "The reported antiderivative is the product of the antiderivatives of the two factors.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-06058",
+   "sources": [
+    "sg-23:18"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06011",
+   "consistent_with": [
+    "BC-ERR-06024",
+    "BC-MIS-06020"
+   ],
+   "distinguish_by": "Ask the student to rewrite the integral as a limit; a correct rewrite indicates a notation habit.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-06021",
+   "mastery_state": "not_mastered",
+   "name": "Improper integral evaluated by substituting infinity",
+   "observation": "The work shows the antiderivative evaluated at infinity with no limit notation anywhere.",
+   "scope": "BC_only",
+   "skill": "BC-SKL-06067",
+   "sources": [
+    "sg-23:17"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06012",
+   "consistent_with": [
+    "BC-ERR-06027",
+    "BC-MIS-06023"
+   ],
+   "distinguish_by": "Ask for the derivative of the upper limit alone; a correct value points to an omission.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-06022",
+   "mastery_state": "partially_mastered",
+   "name": "Chain rule factor missing from the derivative of an accumulation function",
+   "observation": "The reported derivative is the integrand evaluated at the composite upper limit with no extra factor.",
+   "scope": "shared",
+   "skill": "BC-SKL-06019",
+   "sources": [
+    "sg-24:15"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06005",
+   "consistent_with": [
+    "BC-SKL-06037",
+    "BC-SKL-06036"
+   ],
+   "distinguish_by": "Vary the representation of the rate to confirm the skill transfers across a table, a graph, and a formula.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-06023",
+   "mastery_state": "mastered",
+   "name": "Complete and correct multi step accumulation response",
+   "observation": "The integral, the initial condition, and the final value are all present with correct units.",
+   "scope": "shared",
+   "skill": "BC-SKL-06037",
+   "sources": [
+    "sg-24:3"
+   ]
+  },
+  {
+   "archetype": "BC-QA-06003",
+   "consistent_with": [
+    "BC-SKL-06026",
+    "BC-SKL-06023",
+    "BC-SKL-06024"
+   ],
+   "distinguish_by": "Move the fixed lower limit away from an endpoint to confirm the reasoning is not anchored to one configuration.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-06024",
+   "mastery_state": "mastered",
+   "name": "Complete accumulation function analysis with graph tied reasons",
+   "observation": "Every part names the feature of the plotted integrand that supports the claim about the accumulation function.",
+   "scope": "shared",
+   "skill": "BC-SKL-06026",
+   "sources": [
+    "sg-25:17",
+    "sg-25:19"
+   ]
+  }
+ ]
+}

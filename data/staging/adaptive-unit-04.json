@@ -1,0 +1,2861 @@
+{
+ "registry": "skills",
+ "skills": [
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-04003 (units treated as an ornament added at the end)",
+     "BC-MIS-04001 (the quantity and its rate carrying the same units)",
+     "BC-SKL-04014 (reporting a computed rate rather than naming the units)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-04001 (units carry their own point whether or not a value is attached)",
+     "BC-QA-04002 (a table estimate where units are scored separately from the quotient)"
+    ],
+    "mastered_if": "The units of the derivative are assembled as the units of the modelled quantity divided by the units of the independent variable, so a quantity in millimetres against a time in days gives millimetres per day, and a rate of a rate carries the independent variable unit twice; the units can be stated from the stem before any computation, and BC-ERR-04001 is absent.",
+    "next_dependent_skills": [
+     "BC-SKL-04002",
+     "BC-SKL-04004",
+     "BC-SKL-04014"
+    ],
+    "partially_mastered_if": "The numerical rate is correct and the units are missing from the part entirely, signal BC-SIG-04001 and BC-ERR-04001, which costs a point of its own in the 2024 and 2025 table based questions; or the numerator and denominator units are exchanged.",
+    "prerequisite_gap_if": "The unit of the modelled quantity or of the independent variable cannot be read out of the stem, a units and context gap at BC-PRQ-04004 rather than a derivative gap.",
+    "remediation_target": "Conceptual failure: BC-MIS-04003 (the unit is part of what a derivative is). Procedural failure: BC-PRQ-04004 (dividing one named unit by another)."
+   },
+   "archetypes": [
+    "BC-QA-04001",
+    "BC-QA-04002"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-04001"
+   ],
+   "concept": "BC-CON-04002",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-04002",
+    "BC-SKL-04004",
+    "BC-SKL-04014"
+   ],
+   "description_formal": "Given the unit of a modelled quantity and the unit of its independent variable, state the unit of the derivative as the first divided by the second.",
+   "description_plain": "Give the units of a rate as function units divided by independent variable units.",
+   "diagnostic_signals": [
+    "BC-SIG-04001"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-3A3"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-04001",
+   "learning_objectives": [
+    "BC-LO-CHA-3A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-04003"
+   ],
+   "name": "State the units of a derivative in context",
+   "notation": "units of f per unit of x",
+   "official_evidence": [
+    "sg-25:11",
+    "sg-24:2",
+    "BC-FRQ-2013-Q1-A",
+    "BC-FRQ-2013-Q3-A",
+    "BC-FRQ-2021-Q1-A",
+    "BC-FRQ-2014-Q1-A",
+    "BC-FRQ-2014-Q1-B",
+    "BC-FRQ-2024-Q1-A",
+    "BC-FRQ-2025-Q3-A",
+    "BC-FRQ-2026-Q1-A",
+    "BC-MCQ-SAMPLE-013"
+   ],
+   "practice_skills": [
+    "BC-MPS-1D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-04004"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-05"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:87",
+    "sg-25:11",
+    "sg-24:2"
+   ],
+   "topic": "BC-TOP-0401",
+   "unit": "BC-UNIT-04",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-04001 (the derivative and the quantity treated as the same information)",
+     "BC-MIS-04003 (units added only if time allows)",
+     "BC-SKL-04015 (using the vocabulary of the context rather than of motion)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-04001 (the interpretation and the units are separately scored elements of one sentence)"
+    ],
+    "mastered_if": "The sentence names the modelled quantity, the instant at which the rate holds, whether the quantity is increasing or decreasing, and the units, so all four elements appear in one statement about the rate rather than about the amount; BC-ERR-04001 and BC-ERR-04002 are absent, and where the value is a rate of a rate the phrasing says so.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The quantity is named and the instant, the direction, or the units is missing, BC-ERR-04002 and BC-ERR-99027; the 2013 Q1 part A distinctions separate a correct value with an interpretation lacking the instant, which is a communication gap, from an interpretation describing the amount, which misreads the order of differentiation.",
+    "prerequisite_gap_if": "The value being interpreted is a function value rather than a derivative value, a gap at BC-SKL-04003 and BC-PRQ-04008 rather than a wording gap.",
+    "remediation_target": "Conceptual failure: BC-MIS-04001 (a rate sentence is about how fast, not how much). Procedural failure: BC-SKL-04001 (assembling the units to close the sentence)."
+   },
+   "archetypes": [
+    "BC-QA-04001"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-04001",
+    "BC-ERR-04002"
+   ],
+   "concept": "BC-CON-04001",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a numerical value of a derivative in a modelled situation, write a statement naming the quantity, the instant at which the rate holds, whether the quantity is increasing or decreasing, and the units.",
+   "description_plain": "Say what the number means, naming the quantity, the instant, the direction, and the units.",
+   "diagnostic_signals": [
+    "BC-SIG-04001"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-3A1",
+    "BC-EK-CHA-3A2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-04002",
+   "learning_objectives": [
+    "BC-LO-CHA-3A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-04001",
+    "BC-MIS-04003"
+   ],
+   "name": "Write a sentence interpreting a derivative value in context",
+   "notation": "interpretation with units",
+   "official_evidence": [
+    "cr-24:3",
+    "BC-FRQ-2013-Q1-A",
+    "BC-FRQ-2021-Q1-A",
+    "BC-FRQ-2014-Q1-B",
+    "BC-FRQ-2023-Q1-D",
+    "BC-FRQ-2018-Q2-A",
+    "BC-FRQ-2018-Q4-A",
+    "BC-MCQ-SAMPLE-013"
+   ],
+   "practice_skills": [
+    "BC-MPS-1D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-04004",
+    "BC-PRQ-04008",
+    "BC-SKL-02003",
+    "BC-SKL-04001"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-05"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:87",
+    "cr-24:3"
+   ],
+   "topic": "BC-TOP-0401",
+   "unit": "BC-UNIT-04",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-04001 (amount and rate read as the same information)",
+     "BC-MIS-04002 (the sign of a rate treated as decoration)",
+     "BC-SKL-04005 (interpreting a rate once it is correctly identified)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-04001 (both a function value and a derivative value are available in the stem)"
+    ],
+    "mastered_if": "The response says whether the question asks for a value of the modelled function or a value of its derivative, and says which of the two the stem supplies, using the units in the stem as the test; BC-ERR-04003 is absent, so an amount is not returned where a rate was requested or the reverse.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The computation is carried out correctly on the quantity the stem happens to emphasise and answers the other question, BC-ERR-04003 with signal BC-SIG-04002, a state that resolves when the units of the requested answer are asked for first.",
+    "prerequisite_gap_if": "The stem cannot be parsed into a quantity and its rate at all, a contextual reading gap at BC-PRQ-04008 rather than a derivative gap.",
+    "remediation_target": "Conceptual failure: BC-MIS-04001 (amount and rate are different quantities with different units). Procedural failure: BC-PRQ-04008 (reading the question for which of the two it names)."
+   },
+   "archetypes": [
+    "BC-QA-04001"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-04003"
+   ],
+   "concept": "BC-CON-04001",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a contextual question, decide whether the quantity requested is a value of the modelled function or a value of its derivative, and say which of the two the given information supplies.",
+   "description_plain": "Say whether the question is asking how much there is or how fast it is changing.",
+   "diagnostic_signals": [
+    "BC-SIG-04002"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-3A1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-04003",
+   "learning_objectives": [
+    "BC-LO-CHA-3A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-04001"
+   ],
+   "name": "Distinguish the value of a function from the value of its derivative in context",
+   "notation": "amount against rate",
+   "official_evidence": [
+    "cr-24:4",
+    "BC-MCQ-SAMPLE-013"
+   ],
+   "practice_skills": [
+    "BC-MPS-1D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-04008"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-05"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:87",
+    "cr-24:4"
+   ],
+   "topic": "BC-TOP-0401",
+   "unit": "BC-UNIT-04",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-04003 (units as an afterthought)",
+     "BC-SKL-04014 (differentiating a model rather than estimating from a table)",
+     "BC-MIS-04017 (sampled values taken to settle behaviour across an interval)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-04002 (the answer with supporting difference and quotient and the units are scored as two points)"
+    ],
+    "mastered_if": "The two tabulated values the named interval determines are selected, a difference of function values over a difference of inputs is written out, the quotient is evaluated, and the units are attached; both the difference and the quotient are visible, which is what the 2025 rubric requires beyond the setup expression, and BC-ERR-04004 and BC-ERR-04001 are absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "A single quotient or a bare number appears with no visible subtraction of tabulated values, BC-ERR-04004 with signal BC-SIG-04003; or the quotient is correct and unaccompanied by units, BC-ERR-04001, which the 2013 Q3 part A commentary records as a whole point lost to communication.",
+    "prerequisite_gap_if": "Rows outside the named interval are used, so the bracketing requirement is not held, a table reading gap at BC-PRQ-04004; or the units cannot be assembled, a gap at BC-SKL-04001.",
+    "remediation_target": "Conceptual failure: BC-PRQ-04004 (the average rate over an interval approximates the instantaneous rate inside it). Procedural failure: BC-ERR-04004 (writing the difference as well as the quotient)."
+   },
+   "archetypes": [
+    "BC-QA-04002"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-04004",
+    "BC-ERR-04001"
+   ],
+   "concept": "BC-CON-04002",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given tabulated values of a quantity, approximate the derivative at an interior input by the average rate of change over an interval the prompt names, presenting a difference and a quotient and attaching the units.",
+   "description_plain": "Use the difference quotient over the surrounding interval and report it with units.",
+   "diagnostic_signals": [
+    "BC-SIG-04003"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-3A1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-04004",
+   "learning_objectives": [
+    "BC-LO-CHA-3A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-04003"
+   ],
+   "name": "Approximate a derivative from an average rate of change with units",
+   "notation": "difference quotient from a table",
+   "official_evidence": [
+    "sg-24:2",
+    "sg-25:11",
+    "BC-FRQ-2013-Q3-A",
+    "BC-FRQ-2022-Q4-A",
+    "BC-FRQ-2024-Q1-A",
+    "BC-FRQ-2025-Q3-A",
+    "BC-FRQ-2026-Q1-A",
+    "BC-FRQ-2018-Q4-A"
+   ],
+   "practice_skills": [
+    "BC-MPS-1D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-04004",
+    "BC-SKL-04001"
+   ],
+   "representations": [
+    "BC-REP-03",
+    "BC-REP-05"
+   ],
+   "scope": "shared",
+   "sources": [
+    "sg-24:2",
+    "sg-25:11"
+   ],
+   "topic": "BC-TOP-0401",
+   "unit": "BC-UNIT-04",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-04002 (the sign of a rate treated as formatting)",
+     "BC-MIS-04001 (the rate confused with the quantity)",
+     "BC-SKL-04010 (a sign comparison between velocity and acceleration, a different judgement)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-04001 (the direction of change is one of the required elements of the interpretation)"
+    ],
+    "mastered_if": "A negative rate is stated as the quantity decreasing at that instant and a large magnitude as a rapid change, with the sign converted into direction in words rather than restated as a minus sign; BC-ERR-04005 is absent, and the response can say whether the quantity is larger or smaller a moment later.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The magnitude is reported correctly and the sign is left uninterpreted or is described as an increase, BC-ERR-04005; the 2014 Q1 part B commentary records a response that restated a negative rate as decomposition at a negative rate rather than converting the sign into direction.",
+    "prerequisite_gap_if": "The value whose sign is being read belongs to the function rather than to its derivative, a gap at BC-SKL-04003 with signal BC-SIG-04002.",
+    "remediation_target": "Conceptual failure: BC-MIS-04002 (the sign is the statement that the quantity is falling). Procedural failure: BC-SKL-04002 (writing the direction into the interpretation sentence)."
+   },
+   "archetypes": [
+    "BC-QA-04001"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-04005"
+   ],
+   "concept": "BC-CON-04001",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given the sign and magnitude of a derivative in a modelled situation, state whether the quantity is increasing or decreasing at that instant and how rapidly.",
+   "description_plain": "Read a negative rate as a decrease and a large rate as a fast change.",
+   "diagnostic_signals": [
+    "BC-SIG-04002"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-3A2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-04005",
+   "learning_objectives": [
+    "BC-LO-CHA-3A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-04002"
+   ],
+   "name": "Interpret the sign and size of a derivative in context",
+   "notation": "sign of a rate in context",
+   "official_evidence": [
+    "cr-24:4",
+    "BC-FRQ-2019-Q1-D",
+    "BC-FRQ-2013-Q1-A",
+    "BC-FRQ-2014-Q1-B",
+    "BC-FRQ-2022-Q1-C",
+    "BC-FRQ-2023-Q1-D",
+    "BC-FRQ-2024-Q1-D",
+    "BC-FRQ-2018-Q2-A"
+   ],
+   "practice_skills": [
+    "BC-MPS-1D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-04008"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-05"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:87",
+    "cr-24:4"
+   ],
+   "topic": "BC-TOP-0401",
+   "unit": "BC-UNIT-04",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-04004 (position, velocity, and acceleration held as three unrelated formulas)",
+     "BC-MIS-04005 (speed and velocity used interchangeably)",
+     "BC-SKL-04007 (one further differentiation reaches acceleration)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-04003 (the stem supplies one of the three functions and the question names another)"
+    ],
+    "mastered_if": "The supplied position function is differentiated exactly once to give velocity, and the response can say which of position, velocity, and acceleration the stem supplied and what operation reaches the others; the velocity is then evaluated at the stated time when asked, and BC-ERR-04006 is absent.",
+    "next_dependent_skills": [
+     "BC-SKL-04007",
+     "BC-SKL-04009"
+    ],
+    "partially_mastered_if": "Every differentiation performed is correct and the quantity reported is not the one requested, BC-ERR-04006 with signal BC-SIG-04004, so acceleration is offered where velocity was asked for.",
+    "prerequisite_gap_if": "The differentiation of the given formula fails on its own, an elementary rule gap rather than a motion gap; or the roles of the three motion functions cannot be stated, BC-PRQ-04008.",
+    "remediation_target": "Conceptual failure: BC-MIS-04004 (the three motion functions form one differentiation chain). Procedural failure: BC-ERR-04006 (matching the number of differentiations to the quantity named)."
+   },
+   "archetypes": [
+    "BC-QA-04003"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-04006"
+   ],
+   "concept": "BC-CON-04003",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-04007",
+    "BC-SKL-04009"
+   ],
+   "description_formal": "Given the position of a particle on a line as a function of time, differentiate to produce the velocity function, and evaluate it at a stated time when asked.",
+   "description_plain": "Differentiate the position function once.",
+   "diagnostic_signals": [
+    "BC-SIG-04004"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-3B1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-04006",
+   "learning_objectives": [
+    "BC-LO-CHA-3B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-04004"
+   ],
+   "name": "Differentiate a position function to obtain velocity",
+   "notation": "v of t equals the derivative of x of t",
+   "official_evidence": [
+    "crabbc-25:20"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-04008"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-05"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:88",
+    "crabbc-25:20"
+   ],
+   "topic": "BC-TOP-0402",
+   "unit": "BC-UNIT-04",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-04004 (the three motion functions stored separately)",
+     "BC-SKL-04010 (comparing the signs of velocity and acceleration rather than producing acceleration)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-04003 (acceleration at an instant, from a velocity supplied by formula or by table)"
+    ],
+    "mastered_if": "The velocity function is differentiated once to give acceleration, and where velocity is supplied by table rather than formula an average rate over the bracketing rows is used instead, with the result evaluated at the stated time; BC-ERR-04006 is absent, so the reported quantity matches the order of differentiation requested.",
+    "next_dependent_skills": [
+     "BC-SKL-04010"
+    ],
+    "partially_mastered_if": "The differentiation is correct and one order off, so the velocity value is reported where its rate was wanted, the state the 2015 Q3 part C distinctions call a skipped differentiation; or a second differentiation is performed where one was asked for, BC-ERR-04006 with signal BC-SIG-04004.",
+    "prerequisite_gap_if": "Velocity itself is not available because the position function was not differentiated, a gap at BC-SKL-04006.",
+    "remediation_target": "Conceptual failure: BC-MIS-04004 (acceleration is the derivative of velocity). Procedural failure: BC-SKL-04006 (tracking how many differentiations have been performed)."
+   },
+   "archetypes": [
+    "BC-QA-04003"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-04006"
+   ],
+   "concept": "BC-CON-04003",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-04010"
+   ],
+   "description_formal": "Given the velocity of a particle as a function of time, differentiate to produce the acceleration function, and evaluate it at a stated time when asked.",
+   "description_plain": "Differentiate the velocity function once.",
+   "diagnostic_signals": [
+    "BC-SIG-04004"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-3B1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-04007",
+   "learning_objectives": [
+    "BC-LO-CHA-3B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-04004"
+   ],
+   "name": "Differentiate a velocity function to obtain acceleration",
+   "notation": "a of t equals the derivative of v of t",
+   "official_evidence": [
+    "cr-22:20",
+    "BC-FRQ-2014-Q4-A",
+    "BC-FRQ-2015-Q3-A",
+    "BC-FRQ-2015-Q3-C",
+    "BC-MCQ-CED-012"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-04008",
+    "BC-SKL-04006"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-05"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:88",
+    "cr-22:20"
+   ],
+   "topic": "BC-TOP-0402",
+   "unit": "BC-UNIT-04",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-04005 (speed and velocity used as one word)",
+     "BC-SKL-04009 (the sign carries direction, which speed discards)",
+     "BC-SKL-04010 (whether speed is increasing, a separate judgement)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-04003 (speed at an instant, where the sign of the velocity is still needed for a later part)"
+    ],
+    "mastered_if": "The speed is reported as the absolute value of the velocity, so a negative velocity yields a positive speed and the sign is described separately as the direction of travel; in the planar case the speed is the square root of the sum of the squares of the coordinate derivatives rather than their sum, and BC-ERR-04007 is absent.",
+    "next_dependent_skills": [
+     "BC-SKL-04010"
+    ],
+    "partially_mastered_if": "The velocity is correct and is reported as a speed with a minus sign attached, BC-ERR-04007 with signal BC-SIG-04005; or, as the 2024 Q2 part A distinctions record, the components are added instead of combined as a magnitude.",
+    "prerequisite_gap_if": "The velocity value itself is wrong, a gap at BC-SKL-04006; or absolute value is not available as an operation, BC-PRQ-04005.",
+    "remediation_target": "Conceptual failure: BC-MIS-04005 (speed is a magnitude and velocity carries direction). Procedural failure: BC-PRQ-04005 (taking an absolute value or a magnitude of components)."
+   },
+   "archetypes": [
+    "BC-QA-04003"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-04007"
+   ],
+   "concept": "BC-CON-04004",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-04010"
+   ],
+   "description_formal": "Given the velocity of a particle at an instant, report the speed as the absolute value of that velocity.",
+   "description_plain": "Take the size of the velocity and drop the sign.",
+   "diagnostic_signals": [
+    "BC-SIG-04005"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-3B1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-04008",
+   "learning_objectives": [
+    "BC-LO-CHA-3B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-04005"
+   ],
+   "name": "Compute the speed of a particle from its velocity",
+   "notation": "speed equals the absolute value of v of t",
+   "official_evidence": [
+    "BC-FRQ-2023-Q2-B",
+    "BC-FRQ-2024-Q2-A"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-04005"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-05"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:88"
+   ],
+   "topic": "BC-TOP-0402",
+   "unit": "BC-UNIT-04",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-04005 (speed and velocity conflated, so the sign is discarded)",
+     "BC-SKL-04012 (communicating the sign across the whole interval)",
+     "BC-SKL-04008 (the magnitude, which carries no direction)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-04004 (direction over a whole interval, where considering the sign of the velocity is a scored step)"
+    ],
+    "mastered_if": "The direction of travel is argued from the sign of the velocity on the interval, with positive velocity named as motion in one direction along the line and negative as the other, and the position function is not used for the claim; BC-ERR-04008 is absent, so the quantity that must be negative for motion in the negative direction is correctly identified.",
+    "next_dependent_skills": [
+     "BC-SKL-04012"
+    ],
+    "partially_mastered_if": "The direction is asserted from whether the position is positive or negative, BC-ERR-04008 with signal BC-SIG-04006; or, as the 2024 Q2 part D distinctions record, the correct derivative is analysed and the interval reported is the one where its sign is the opposite of what the direction requires.",
+    "prerequisite_gap_if": "Velocity is not obtained from the supplied position function, a gap at BC-SKL-04006; or the sign of an expression cannot be determined on an interval, BC-PRQ-04009.",
+    "remediation_target": "Conceptual failure: BC-MIS-04005 (the sign of the velocity, not the position, records direction). Procedural failure: BC-PRQ-04009 (determining the sign of a function on an interval)."
+   },
+   "archetypes": [
+    "BC-QA-04004"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-04008"
+   ],
+   "concept": "BC-CON-04004",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-04012"
+   ],
+   "description_formal": "Given the velocity of a particle on a line over an interval, state the direction of motion from the sign of the velocity on that interval.",
+   "description_plain": "Positive velocity means one direction along the line and negative velocity the other.",
+   "diagnostic_signals": [
+    "BC-SIG-04006"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-3B1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-04009",
+   "learning_objectives": [
+    "BC-LO-CHA-3B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-04005"
+   ],
+   "name": "Determine the direction of motion from the sign of velocity",
+   "notation": "sign of v of t",
+   "official_evidence": [
+    "crabbc-25:22",
+    "crabbc-25:23",
+    "BC-FRQ-2024-Q2-D"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-04009",
+    "BC-SKL-04006"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:88",
+    "crabbc-25:22",
+    "crabbc-25:23"
+   ],
+   "topic": "BC-TOP-0402",
+   "unit": "BC-UNIT-04",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-04006 (acceleration alone taken to settle whether speed increases)",
+     "BC-MIS-04005 (speed and velocity conflated)",
+     "BC-SKL-04005 (interpreting a single rate, not a pair of signs)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-04003 (velocity negative with acceleration positive makes the one sign shortcut give the wrong answer)"
+    ],
+    "mastered_if": "Both the sign of the velocity and the sign of the acceleration at the instant are stated, and the conclusion that the speed is increasing or decreasing follows from whether those signs agree; the rule is applied to the particular particle at the particular instant rather than quoted, which is what the 2025 rubric requires for the speed point, and BC-ERR-04009 and BC-ERR-99003 are absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The acceleration is evaluated correctly and the conclusion is drawn from its sign alone with no mention of the velocity, BC-ERR-04009 with signal BC-SIG-04007; the 2022 report names this the most common misconception on that question.",
+    "prerequisite_gap_if": "One of the two signs is unavailable because acceleration was never produced, a gap at BC-SKL-04007, or because speed is being confused with velocity, BC-SKL-04008.",
+    "remediation_target": "Conceptual failure: BC-MIS-04006 (speed grows when the acceleration pushes in the direction of travel). Procedural failure: BC-SKL-04007 (evaluating the acceleration so both signs are in hand)."
+   },
+   "archetypes": [
+    "BC-QA-04003"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-04009"
+   ],
+   "concept": "BC-CON-04005",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given the velocity and the acceleration of a particle at an instant, conclude that the speed is increasing when the two share a sign and decreasing when their signs differ, citing both signs.",
+   "description_plain": "Same signs mean speeding up and opposite signs mean slowing down.",
+   "diagnostic_signals": [
+    "BC-SIG-04007"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-3B1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-04010",
+   "learning_objectives": [
+    "BC-LO-CHA-3B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-04006"
+   ],
+   "name": "Determine whether speed is increasing from the signs of velocity and acceleration",
+   "notation": "signs of v of t and a of t",
+   "official_evidence": [
+    "cr-22:21",
+    "crabbc-25:20",
+    "crabbc-25:22"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-04005",
+    "BC-SKL-04007",
+    "BC-SKL-04008"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-05"
+   ],
+   "scope": "shared",
+   "sources": [
+    "cr-22:21",
+    "crabbc-25:20",
+    "crabbc-25:22"
+   ],
+   "topic": "BC-TOP-0402",
+   "unit": "BC-UNIT-04",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-04017 (sampled values taken to establish behaviour on an interval)",
+     "BC-MIS-04005 (a zero of speed confused with a zero of velocity)",
+     "BC-SKL-04012 (reporting the sign analysis rather than finding the zeros)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-04004 (the zeros of the velocity partition the interval the analysis must cover)"
+    ],
+    "mastered_if": "The equation velocity equal to zero is solved on the stated interval rather than probed at integer times, so a non integer zero is found, and the sign of the velocity on either side of each zero is checked to decide where the particle changes direction; BC-ERR-04010 is absent.",
+    "next_dependent_skills": [
+     "BC-SKL-04012"
+    ],
+    "partially_mastered_if": "Integer times are substituted into the velocity in place of solving, so some zeros are located and a non integer one is missed, BC-ERR-04010, which the 2025 Chief Reader report ties to the loss of the analysis points; or the zeros are all found and no sign change is tested, so being at rest and changing direction are not distinguished.",
+    "prerequisite_gap_if": "The equation cannot be solved on the interval even with technology available, an equation solving gap at BC-PRQ-04009 rather than a motion gap.",
+    "remediation_target": "Conceptual failure: BC-MIS-04017 (a zero can sit between any two sampled inputs). Procedural failure: BC-PRQ-04009 (solving the velocity equation on the stated interval)."
+   },
+   "archetypes": [
+    "BC-QA-04004"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-04010"
+   ],
+   "concept": "BC-CON-04004",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-04012"
+   ],
+   "description_formal": "Given a velocity function, solve the equation velocity equal to zero on the stated interval and determine at which of those times the sign of the velocity changes.",
+   "description_plain": "Solve for the times when the velocity is zero, then check whether the sign changes there.",
+   "diagnostic_signals": [
+    "BC-SIG-04006"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-3B1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-04011",
+   "learning_objectives": [
+    "BC-LO-CHA-3B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-04005"
+   ],
+   "name": "Find when a particle is at rest or changes direction",
+   "notation": "v of t equals zero",
+   "official_evidence": [
+    "crabbc-25:22",
+    "BC-MCQ-PE2012-002"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-04009"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-09"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:88",
+    "crabbc-25:22"
+   ],
+   "topic": "BC-TOP-0402",
+   "unit": "BC-UNIT-04",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-04017 (behaviour claimed from sampled inputs)",
+     "BC-MIS-04005 (direction language dropped in favour of speed language)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-04004 (the analysis points attach to the communicated conclusion over the interval, not to the chart)"
+    ],
+    "mastered_if": "The sign of the velocity is given on each subinterval determined by its zeros, and a sentence says what those signs mean for the direction of motion across the whole interval named in the prompt, so a sign chart is accompanied by its reading; BC-ERR-04011 is absent, and where two particles are compared both analyses are combined into one interval.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "A correct sign chart or number line appears with no sentence stating what it shows, BC-ERR-04011 with signal BC-SIG-04008; the 2025 report records that responses in this state did not earn the analysis points even with correct signs.",
+    "prerequisite_gap_if": "The zeros that partition the interval were never found, a gap at BC-SKL-04011; or direction is being read from the wrong function, BC-SKL-04009.",
+    "remediation_target": "Conceptual failure: BC-MIS-04017 (the conclusion has to hold on every subinterval). Procedural failure: BC-ERR-04011 (writing the sentence that reads the chart)."
+   },
+   "archetypes": [
+    "BC-QA-04004"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-04011"
+   ],
+   "concept": "BC-CON-04005",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a velocity function on a stated interval, present the sign of the velocity on each subinterval determined by its zeros, in words or in a chart whose reading is stated, so that the conclusion covers the whole interval.",
+   "description_plain": "Report the sign on every part of the interval, not just at sampled times.",
+   "diagnostic_signals": [
+    "BC-SIG-04008"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-3B1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-04012",
+   "learning_objectives": [
+    "BC-LO-CHA-3B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-04017"
+   ],
+   "name": "Communicate a sign analysis of velocity across a whole interval",
+   "notation": "sign chart with a stated conclusion",
+   "official_evidence": [
+    "crabbc-25:22",
+    "crabbc-25:23",
+    "BC-FRQ-2013-Q1-C",
+    "BC-FRQ-2015-Q1-B",
+    "BC-FRQ-2024-Q2-D"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-04009",
+    "BC-SKL-04009",
+    "BC-SKL-04011"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-04"
+   ],
+   "scope": "shared",
+   "sources": [
+    "crabbc-25:22",
+    "crabbc-25:23"
+   ],
+   "topic": "BC-TOP-0402",
+   "unit": "BC-UNIT-04",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-04007 (every rate context mapped onto moving particle vocabulary)",
+     "BC-MIS-04001 (quantity and rate treated as the same information)",
+     "BC-SKL-04017 (naming quantities and rates in a related rates setting)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-04005 (a non motion quantity whose interpretation depends on being named)"
+    ],
+    "mastered_if": "The modelled quantity and its independent variable are both named with their units, so the letters in the model are tied to a temperature, a population, an affected area, or a reading rate and to the variable it depends on; BC-ERR-04012 is absent, which keeps the later interpretation points reachable.",
+    "next_dependent_skills": [
+     "BC-SKL-04014",
+     "BC-SKL-04015"
+    ],
+    "partially_mastered_if": "The mathematics is correct and no sentence identifies the quantity, its units, or its independent variable, signal BC-SIG-04009 and BC-ERR-04012, so the answer cannot be tied back to the situation.",
+    "prerequisite_gap_if": "The contextual description cannot be parsed into a quantity and a variable at all, a gap at BC-PRQ-04008 rather than a naming gap.",
+    "remediation_target": "Conceptual failure: BC-MIS-04007 (the context supplies its own quantity and units). Procedural failure: BC-ERR-04012 (writing what each letter in the model stands for)."
+   },
+   "archetypes": [
+    "BC-QA-04005"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-04012"
+   ],
+   "concept": "BC-CON-04006",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-04014",
+    "BC-SKL-04015"
+   ],
+   "description_formal": "Given a contextual description, name the modelled quantity, name its independent variable, and state the units of each.",
+   "description_plain": "Name what is changing and what it is changing with respect to.",
+   "diagnostic_signals": [
+    "BC-SIG-04009"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-3C1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-04013",
+   "learning_objectives": [
+    "BC-LO-CHA-3C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-04007"
+   ],
+   "name": "Identify the quantity and its independent variable in a non-motion context",
+   "notation": "quantity and independent variable named",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-2A"
+   ],
+   "prerequisites": [
+    "BC-PRQ-04008"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-05"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:89",
+    "ced:84"
+   ],
+   "topic": "BC-TOP-0403",
+   "unit": "BC-UNIT-04",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-04003 (units as an ornament)",
+     "BC-MIS-04001 (the amount reported where the rate was wanted)",
+     "BC-SKL-04004 (estimating the rate from a table rather than differentiating a model)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-04005 (a modelled non motion quantity whose rate is computed and reported with units)"
+    ],
+    "mastered_if": "The model is differentiated or the derivative supplied in the stem is used, the derivative is evaluated at the requested input, and the value is reported with the units of the quantity over the units of the independent variable and in the vocabulary of the context; BC-ERR-04001 is absent, and a model value is not offered in place of its rate.",
+    "next_dependent_skills": [
+     "BC-SKL-04016"
+    ],
+    "partially_mastered_if": "The derivative value is correct and no units accompany it, BC-ERR-04001 with signal BC-SIG-04001; or the derivative is correct and the evaluation mishandles an exponent, the arithmetic rather than rule failure the 2013 Q3 part D distinctions isolate.",
+    "prerequisite_gap_if": "The quantity and its independent variable were never identified, a gap at BC-SKL-04013; or the units cannot be assembled, a gap at BC-SKL-04001.",
+    "remediation_target": "Conceptual failure: BC-MIS-04001 (the derivative of the model, not the model, answers a rate question). Procedural failure: BC-SKL-04001 (attaching the assembled units to the value)."
+   },
+   "archetypes": [
+    "BC-QA-04005"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-04001"
+   ],
+   "concept": "BC-CON-04002",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-04016"
+   ],
+   "description_formal": "Given a model of a contextual quantity, compute the derivative at a stated input and report the value with the units of the quantity divided by the units of the independent variable.",
+   "description_plain": "Differentiate the model, evaluate it, and attach the right units.",
+   "diagnostic_signals": [
+    "BC-SIG-04001"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-3C1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-04014",
+   "learning_objectives": [
+    "BC-LO-CHA-3C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-04003"
+   ],
+   "name": "Compute and report a rate of change with context-appropriate units",
+   "notation": "rate reported with units",
+   "official_evidence": [
+    "sg-25:2",
+    "BC-FRQ-2019-Q1-D",
+    "BC-FRQ-2013-Q1-A",
+    "BC-FRQ-2013-Q3-D",
+    "BC-FRQ-2022-Q1-C",
+    "BC-FRQ-2023-Q1-D",
+    "BC-FRQ-2018-Q2-A"
+   ],
+   "practice_skills": [
+    "BC-MPS-2A"
+   ],
+   "prerequisites": [
+    "BC-PRQ-04004",
+    "BC-SKL-04001",
+    "BC-SKL-04013"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-05",
+    "BC-REP-09"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:89",
+    "sg-25:2"
+   ],
+   "topic": "BC-TOP-0403",
+   "unit": "BC-UNIT-04",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-04007 (rate problems read as motion problems)",
+     "BC-MIS-04001 (amount and rate language interchanged)",
+     "BC-SKL-04002 (the full interpretation sentence, of which vocabulary is one element)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-04005 (a setting other than motion, where borrowed vocabulary is visible)"
+    ],
+    "mastered_if": "The derivative is described in the language of the situation, as the rate of change of the named temperature, population, or area, while the shared structure with motion is recognised without importing its words; BC-ERR-04013 is absent, so no average value is called an average velocity.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The computation is right and the sentence calls the rate a velocity or the quantity a position, BC-ERR-04013, which the 2025 scoring notes treat as unclear communication scored as scratch work; or the quantity is never named at all, signal BC-SIG-04009.",
+    "prerequisite_gap_if": "The quantity and its independent variable have not been identified, a gap at BC-SKL-04013 rather than a vocabulary gap.",
+    "remediation_target": "Conceptual failure: BC-MIS-04007 (the structure transfers and the vocabulary does not). Procedural failure: BC-SKL-04013 (naming the quantity before describing its rate)."
+   },
+   "archetypes": [
+    "BC-QA-04005"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-04013"
+   ],
+   "concept": "BC-CON-04006",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a non-motion context, describe the derivative using the language of that context rather than the language of rectilinear motion, while recognising the shared structure.",
+   "description_plain": "Call it the rate of change of the named quantity, not the velocity.",
+   "diagnostic_signals": [
+    "BC-SIG-04009"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-3C1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-04015",
+   "learning_objectives": [
+    "BC-LO-CHA-3C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-04007"
+   ],
+   "name": "Use context vocabulary rather than motion vocabulary",
+   "notation": "rate of change of the named quantity",
+   "official_evidence": [
+    "BC-FRQ-2023-Q1-D",
+    "BC-FRQ-2024-Q1-D"
+   ],
+   "practice_skills": [
+    "BC-MPS-2A"
+   ],
+   "prerequisites": [
+    "BC-PRQ-04008",
+    "BC-SKL-04013"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-05"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:84",
+    "ced:89"
+   ],
+   "topic": "BC-TOP-0403",
+   "unit": "BC-UNIT-04",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-04014 (indeterminate forms and infinity treated as numbers)",
+     "BC-SKL-04014 (the rate at a finite input rather than its end behaviour)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-04005 (the limit expression and its value are scored as two separate points)"
+    ],
+    "mastered_if": "A limit expression is written for the rate as the independent variable increases without bound and is then evaluated, with the limit taken on the derivative rather than on the quantity and with limit notation carried through to the value; BC-ERR-04014 and BC-ERR-99007 are absent, so infinity is never substituted into the expression.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The end behaviour value is right and the supporting line substitutes infinity into the expression, signal BC-SIG-04010 and BC-ERR-04014, which the 2025 scoring notes treat as scratch work; or, as the 2025 Q1 part C rubric records, the limit is written on the function rather than on its derivative, which earns the notation point and not the value point.",
+    "prerequisite_gap_if": "The limit at infinity of the expression cannot be evaluated once written, an end behaviour gap at BC-SKL-01060 rather than a notation gap.",
+    "remediation_target": "Conceptual failure: BC-MIS-04014 (infinity names a behaviour, not a value to compute with). Procedural failure: BC-SKL-01060 (evaluating an end behaviour limit once it is written)."
+   },
+   "archetypes": [
+    "BC-QA-04005"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-04014"
+   ],
+   "concept": "BC-CON-04006",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a rate expression modelling a quantity, write a limit expression describing its end behaviour and evaluate that limit, using limit notation rather than arithmetic with infinity.",
+   "description_plain": "Write the limit of the rate as the independent variable grows without bound, then evaluate it.",
+   "diagnostic_signals": [
+    "BC-SIG-04010"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-3C1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-04016",
+   "learning_objectives": [
+    "BC-LO-CHA-3C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-04014"
+   ],
+   "name": "Interpret an end behaviour limit of a rate in context",
+   "notation": "limit of the rate as the variable increases without bound",
+   "official_evidence": [
+    "sg-25:4",
+    "cr-22:21",
+    "BC-FRQ-2025-Q1-C"
+   ],
+   "practice_skills": [
+    "BC-MPS-2A"
+   ],
+   "prerequisites": [
+    "BC-PRQ-04008",
+    "BC-SKL-01060",
+    "BC-SKL-04014"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-05"
+   ],
+   "scope": "shared",
+   "sources": [
+    "sg-25:4",
+    "cr-22:21"
+   ],
+   "topic": "BC-TOP-0403",
+   "unit": "BC-UNIT-04",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-04008 (differentiation assumed to be with respect to a length)",
+     "BC-MIS-04010 (the rates expected to settle the answer without a relation)",
+     "BC-SKL-04013 (naming a quantity in a single variable context)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-04006 (several dimensions change at once, so which rate is given and which is wanted must be recorded)"
+    ],
+    "mastered_if": "Each varying quantity is named as a function of time, the supplied rates are written in derivative notation such as dV/dt, and the requested rate is written in the same notation, so given and wanted are separated on the page before any equation appears; BC-ERR-04015 is absent.",
+    "next_dependent_skills": [
+     "BC-SKL-04018"
+    ],
+    "partially_mastered_if": "The scenario is restated in words with no quantity appearing as a derivative with respect to time, signal BC-SIG-04011; or the rate supplied in the stem is offered as the answer, BC-ERR-04015.",
+    "prerequisite_gap_if": "The scenario cannot be read into quantities and rates at all, a contextual translation gap at BC-PRQ-04008 rather than a related rates gap.",
+    "remediation_target": "Conceptual failure: BC-MIS-04008 (every varying quantity is a function of time). Procedural failure: BC-ERR-04015 (writing each supplied rate in derivative notation)."
+   },
+   "archetypes": [
+    "BC-QA-04006"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-04015"
+   ],
+   "concept": "BC-CON-04007",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-04018"
+   ],
+   "description_formal": "Given a related rates scenario, name each varying quantity as a function of time, record the rates supplied in derivative notation, and record the rate requested in the same notation.",
+   "description_plain": "List the changing quantities, the rates you are told, and the rate you are asked for.",
+   "diagnostic_signals": [
+    "BC-SIG-04011"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-3D1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-04017",
+   "learning_objectives": [
+    "BC-LO-CHA-3D"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-04008"
+   ],
+   "name": "Identify the variables and which rates are given and wanted",
+   "notation": "dV/dt given, dr/dt wanted",
+   "official_evidence": [
+    "BC-FRQ-2014-Q4-D",
+    "BC-FRQ-2018-Q4-D"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-04008"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-05",
+    "BC-REP-08"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:90",
+    "ced:86"
+   ],
+   "topic": "BC-TOP-0404",
+   "unit": "BC-UNIT-04",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-04010 (the relating equation assembled from the rates alone)",
+     "BC-MIS-04011 (an instantaneous measurement treated as a fixed feature)",
+     "BC-SKL-04021 (eliminating a variable from the relation once it is written)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-04006 (nothing downstream is reachable without the correct relation)"
+    ],
+    "mastered_if": "An equation tying the named quantities together is written from the geometry of the configuration, a volume or area formula, the Pythagorean theorem, or the description itself, and it describes the figure as drawn rather than a similar one; BC-ERR-04016 is absent, so a fixed diameter is used where the barrel does not widen.",
+    "next_dependent_skills": [
+     "BC-SKL-04019",
+     "BC-SKL-04021",
+     "BC-SKL-04026"
+    ],
+    "partially_mastered_if": "The rates are recorded correctly and the relating equation is skipped or chosen by resemblance to a familiar formula, BC-ERR-04016 with signal BC-SIG-04012, so the differentiation acts on something that does not describe the configuration.",
+    "prerequisite_gap_if": "The geometric formula for the named quantity cannot be produced with no calculus involved, a gap at BC-PRQ-04001 or BC-PRQ-04002.",
+    "remediation_target": "Conceptual failure: BC-MIS-04010 (rates alone do not determine a geometric relationship). Procedural failure: BC-PRQ-04002 (the volume, area, or distance formula for the configuration)."
+   },
+   "archetypes": [
+    "BC-QA-04006"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-04016"
+   ],
+   "concept": "BC-CON-04008",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-04019",
+    "BC-SKL-04021",
+    "BC-SKL-04026"
+   ],
+   "description_formal": "Given the named quantities of a related rates scenario, write an equation relating them, drawn from a volume or area formula, the Pythagorean theorem, or the description itself.",
+   "description_plain": "Find the geometric or contextual formula that ties the quantities together.",
+   "diagnostic_signals": [
+    "BC-SIG-04012"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-3D1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-04018",
+   "learning_objectives": [
+    "BC-LO-CHA-3D"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-04010"
+   ],
+   "name": "Write an equation relating the varying quantities",
+   "notation": "relating equation",
+   "official_evidence": [
+    "cr-22:7",
+    "BC-FRQ-2019-Q4-A",
+    "BC-FRQ-2014-Q4-D",
+    "BC-FRQ-2022-Q4-D"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-04001",
+    "BC-PRQ-04002",
+    "BC-SKL-04017"
+   ],
+   "representations": [
+    "BC-REP-08",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:90",
+    "cr-22:7"
+   ],
+   "topic": "BC-TOP-0404",
+   "unit": "BC-UNIT-04",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-04008 (differentiating a relation read as differentiating with respect to a length)",
+     "BC-MIS-04009 (a short product read as one varying symbol)",
+     "BC-SKL-04022 (the same operation on a curve given implicitly)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-04006 (the chain rule to time is the step the Chief Reader reports record as rare)",
+     "BC-QA-04007 (both coordinates vary with time in one equation)"
+    ],
+    "mastered_if": "Both sides of the relating equation are differentiated with respect to time, so each varying quantity contributes its own derivative with respect to time through the chain rule and a term in a spatial variable is never left as a bare derivative with respect to that variable; BC-ERR-04017 is absent, and the chain factor that converts a spatial derivative into a time rate is written.",
+    "next_dependent_skills": [
+     "BC-SKL-04020",
+     "BC-SKL-04022",
+     "BC-SKL-04023"
+    ],
+    "partially_mastered_if": "The relation is differentiated with respect to a length or with respect to x and the work stops there, signal BC-SIG-04013 and BC-ERR-04017, the state the 2024 Chief Reader report describes as needing to continue through the chain rule; or the differentiation is with respect to time and one supplied rate is never substituted.",
+    "prerequisite_gap_if": "There is no relating equation to differentiate, a gap at BC-SKL-04018 rather than in the differentiation.",
+    "remediation_target": "Conceptual failure: BC-MIS-04008 (time is the variable of differentiation and the dimensions depend on it). Procedural failure: BC-SKL-04018 (having a correct relation before differentiating)."
+   },
+   "archetypes": [
+    "BC-QA-04006",
+    "BC-QA-04007"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-04017"
+   ],
+   "concept": "BC-CON-04007",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-04020",
+    "BC-SKL-04022",
+    "BC-SKL-04023"
+   ],
+   "description_formal": "Given an equation relating quantities that are functions of time, differentiate both sides with respect to time so that each term in a varying quantity carries the derivative of that quantity with respect to time.",
+   "description_plain": "Differentiate both sides with respect to t, attaching a rate factor to every varying quantity.",
+   "diagnostic_signals": [
+    "BC-SIG-04013"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-3D1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-04019",
+   "learning_objectives": [
+    "BC-LO-CHA-3D"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-04008",
+    "BC-MIS-04009"
+   ],
+   "name": "Differentiate a relation with respect to time using the chain rule",
+   "notation": "d/dt applied to both sides",
+   "official_evidence": [
+    "cr-23:23",
+    "cr-24:18",
+    "BC-FRQ-2019-Q4-A",
+    "BC-FRQ-2014-Q2-D",
+    "BC-FRQ-2014-Q4-D",
+    "BC-FRQ-2022-Q4-D",
+    "BC-FRQ-2025-Q2-D",
+    "BC-FRQ-2018-Q4-D",
+    "BC-MCQ-CED-005",
+    "BC-MCQ-SAMPLE-004",
+    "BC-MCQ-PE2012-038"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-04008",
+    "BC-SKL-04018"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:90",
+    "cr-23:23",
+    "cr-24:18"
+   ],
+   "topic": "BC-TOP-0404",
+   "unit": "BC-UNIT-04",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-04009 (a product of two changing quantities read as one object)",
+     "BC-MIS-04011 (one factor assumed fixed because its value is given)",
+     "BC-SKL-04022 (product terms inside an implicit curve equation)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-04007 (a mixed term where the product rule decides the completely correct differentiation point)"
+    ],
+    "mastered_if": "A term multiplying two time varying quantities is differentiated with the product rule, so both terms appear and each carries its own derivative with respect to time; BC-ERR-04018 is absent, matching the 2022 Q4 part D requirement of a complete product rule across the two factors with the time derivatives attached.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "One quantity is held constant so only one rate factor appears, BC-ERR-04018; or the product rule is written and the time derivatives are missing from its terms, which the 2022 Q4 part D distinctions identify as the chain rule layer rather than the product structure.",
+    "prerequisite_gap_if": "The differentiation is not with respect to time at all, a gap at BC-SKL-04019 with signal BC-SIG-04013.",
+    "remediation_target": "Conceptual failure: BC-MIS-04009 (both factors vary, so both contribute rates). Procedural failure: BC-SKL-04019 (attaching a time derivative to each factor)."
+   },
+   "archetypes": [
+    "BC-QA-04007"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-04018"
+   ],
+   "concept": "BC-CON-04008",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a term in the relating equation that is a product of two quantities both varying with time, differentiate it with the product rule so that each factor contributes its own rate.",
+   "description_plain": "A term that multiplies two varying quantities needs the product rule.",
+   "diagnostic_signals": [
+    "BC-SIG-04013"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-3D2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-04020",
+   "learning_objectives": [
+    "BC-LO-CHA-3D"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-04009"
+   ],
+   "name": "Apply the product rule inside a related rates differentiation",
+   "notation": "product rule with respect to t",
+   "official_evidence": [
+    "cr-23:23",
+    "crabbc-25:24",
+    "BC-FRQ-2022-Q4-D",
+    "BC-MCQ-CED-005"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-04008",
+    "BC-SKL-04019"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:90",
+    "cr-23:23",
+    "crabbc-25:24"
+   ],
+   "topic": "BC-TOP-0404",
+   "unit": "BC-UNIT-04",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-04010 (the rates expected to carry the problem without geometry)",
+     "BC-MIS-04011 (an instantaneous value substituted as though it were the eliminating relation)",
+     "BC-SKL-04026 (recovering a missing value rather than removing a variable)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-04006 (a cone or a similar figure where one dimension must be expressed through another)"
+    ],
+    "mastered_if": "Where the relation holds more varying dimensions than the supplied rates can support, a similar triangles proportion or a dimension constant in time is used to write one variable in terms of another before the differentiation, leaving an equation whose differentiated form contains only one unknown rate; BC-ERR-04019 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The proportion is noticed and not used, so the differentiated equation contains two unknown rates and the requested one cannot be isolated, BC-ERR-04019; or a proportional relation between two dimensions is assumed where the configuration fixes one of them, the failure the 2022 Q4 part D distinctions record.",
+    "prerequisite_gap_if": "The similar triangles proportion itself cannot be written, a geometry gap at BC-PRQ-04003; or there is no relating equation to reduce, BC-SKL-04018.",
+    "remediation_target": "Conceptual failure: BC-MIS-04010 (the geometry supplies the missing relation between dimensions). Procedural failure: BC-PRQ-04003 (setting up and using the proportion)."
+   },
+   "archetypes": [
+    "BC-QA-04006"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-04019"
+   ],
+   "concept": "BC-CON-04008",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a relating equation containing more varying quantities than the supplied rates can support, use a proportion from similar triangles or a dimension constant in time to eliminate one variable before differentiating.",
+   "description_plain": "Use a similar triangles proportion or a fixed dimension to write one variable in terms of another.",
+   "diagnostic_signals": [
+    "BC-SIG-04012"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-3D1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-04021",
+   "learning_objectives": [
+    "BC-LO-CHA-3D"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-04010",
+    "BC-MIS-04011"
+   ],
+   "name": "Reduce the number of variables before differentiating",
+   "notation": "substitution before differentiating",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-04003",
+    "BC-SKL-04018"
+   ],
+   "representations": [
+    "BC-REP-08",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:90"
+   ],
+   "topic": "BC-TOP-0404",
+   "unit": "BC-UNIT-04",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-04008 (the habit of differentiating with respect to x carried in)",
+     "BC-MIS-04009 (a mixed term read as one symbol)",
+     "BC-SKL-03009 (implicit differentiation with respect to x rather than t)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-04007 (an eligible attempt and a completely correct differentiation are scored separately)"
+    ],
+    "mastered_if": "The defining equation of the curve is differentiated with respect to time so that every term in x contributes dx/dt and every term in y contributes dy/dt, with the product rule on any mixed term, giving an equation in both rates; BC-ERR-04017 and BC-ERR-04018 are absent, which is what makes the differentiation completely correct rather than merely eligible.",
+    "next_dependent_skills": [
+     "BC-SKL-04024"
+    ],
+    "partially_mastered_if": "The curve is differentiated with respect to x instead of time, so dy/dx appears where dy/dt was needed, BC-ERR-04017 with signal BC-SIG-04013; or the differentiation is with respect to time and a mixed term loses one of its two rate factors, BC-ERR-04018.",
+    "prerequisite_gap_if": "Differentiating any relation with respect to time is not established, a gap at BC-SKL-04019; or the implicit differentiation of the curve fails independently of time.",
+    "remediation_target": "Conceptual failure: BC-MIS-04008 (both coordinates are functions of time along the path). Procedural failure: BC-SKL-04019 (the d/dt sweep across every term)."
+   },
+   "archetypes": [
+    "BC-QA-04007"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-04017",
+    "BC-ERR-04018"
+   ],
+   "concept": "BC-CON-04007",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-04024"
+   ],
+   "description_formal": "Given a curve defined implicitly and a particle moving along it, differentiate the defining equation with respect to time so that every term in x contributes dx/dt and every term in y contributes dy/dt.",
+   "description_plain": "Treat both coordinates as functions of time and differentiate the curve equation with respect to t.",
+   "diagnostic_signals": [
+    "BC-SIG-04013"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-3D1",
+    "BC-EK-CHA-3D2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-04022",
+   "learning_objectives": [
+    "BC-LO-CHA-3D"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-04008",
+    "BC-MIS-04009"
+   ],
+   "name": "Differentiate an implicitly defined curve with respect to time",
+   "notation": "dx/dt and dy/dt in the same equation",
+   "official_evidence": [
+    "cr-23:22",
+    "cr-24:17",
+    "crabbc-25:24",
+    "BC-FRQ-2014-Q4-D"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-04008",
+    "BC-SKL-04019"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "cr-23:22",
+    "cr-24:17",
+    "crabbc-25:24"
+   ],
+   "topic": "BC-TOP-0404",
+   "unit": "BC-UNIT-04",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-04011 (a value true at an instant treated as true throughout)",
+     "BC-MIS-04008 (the variable of differentiation misidentified)",
+     "BC-SKL-04024 (substituting after the differentiation, the step this one protects)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-04006 (a measurement given for one instant sits beside a dimension fixed for all time)",
+     "BC-QA-04007 (the coordinates of the point are substituted only after differentiating)"
+    ],
+    "mastered_if": "Quantities that vary are carried as letters through the differentiation and their instantaneous values are substituted only afterwards, so a dimension measured at the instant still contributes its rate; BC-ERR-04020 is absent, and the response can say which of the stated numbers would still hold one second later.",
+    "next_dependent_skills": [
+     "BC-SKL-04024"
+    ],
+    "partially_mastered_if": "A varying dimension appears as a number in the equation that is then differentiated, so its rate never appears, BC-ERR-04020 with signal BC-SIG-04014, the failure the 2014 Q4 part D distinctions name as substituting before differentiating.",
+    "prerequisite_gap_if": "Constants in time and instantaneous values are not separated in the first place, a gap at BC-SKL-04027; or the differentiation with respect to time is itself absent, BC-SKL-04019.",
+    "remediation_target": "Conceptual failure: BC-MIS-04011 (only quantities constant in time may be substituted early). Procedural failure: BC-SKL-04027 (classifying each stated number before writing the equation)."
+   },
+   "archetypes": [
+    "BC-QA-04006",
+    "BC-QA-04007"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-04020"
+   ],
+   "concept": "BC-CON-04009",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-04024"
+   ],
+   "description_formal": "Given a related rates problem with values that hold only at the instant in question, carry those quantities as variables through the differentiation and replace them by their values afterwards.",
+   "description_plain": "Keep the varying quantities as variables until the differentiation is finished.",
+   "diagnostic_signals": [
+    "BC-SIG-04014"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-3E1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-04023",
+   "learning_objectives": [
+    "BC-LO-CHA-3E"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-04011"
+   ],
+   "name": "Substitute instantaneous values only after differentiating",
+   "notation": "values substituted after differentiation",
+   "official_evidence": [
+    "BC-FRQ-2019-Q4-A",
+    "BC-FRQ-2022-Q4-D",
+    "BC-MCQ-SAMPLE-004",
+    "BC-MCQ-PE2012-038"
+   ],
+   "practice_skills": [
+    "BC-MPS-3F"
+   ],
+   "prerequisites": [
+    "BC-PRQ-04008",
+    "BC-SKL-04019",
+    "BC-SKL-04027"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:91",
+    "ced:86"
+   ],
+   "topic": "BC-TOP-0405",
+   "unit": "BC-UNIT-04",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-04011 (instantaneous values treated as permanent)",
+     "BC-SKL-04025 (reporting the rate with units and direction once it is found)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-04006 (the isolated rate is the final scoring point of the part)",
+     "BC-QA-04007 (the second coordinate rate is solved for at the stated point)"
+    ],
+    "mastered_if": "The instantaneous values and the supplied rates are substituted into the differentiated equation and the requested derivative is isolated, so a number rather than an equation is reported; BC-ERR-04021 is absent, and where a chain of two rates is needed the product of the intermediate derivative and the supplied rate is formed as the 2025 Q2 part D scoring describes.",
+    "next_dependent_skills": [
+     "BC-SKL-04025"
+    ],
+    "partially_mastered_if": "The substitution is complete and the response stops before solving for the requested rate, BC-ERR-04021 with signal BC-SIG-04015, leaving the differentiation points earned and the final point lost; or the supplied rate is reported in place of the answer.",
+    "prerequisite_gap_if": "The equation to substitute into is wrong because values were substituted too early, a gap at BC-SKL-04023; or a value needed for the substitution was never recovered, BC-SKL-04026.",
+    "remediation_target": "Conceptual failure: BC-MIS-04011 (the substituted numbers describe one instant only). Procedural failure: BC-PRQ-04007 (isolating a single unknown in a linear equation)."
+   },
+   "archetypes": [
+    "BC-QA-04006",
+    "BC-QA-04007"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-04021"
+   ],
+   "concept": "BC-CON-04010",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-04025"
+   ],
+   "description_formal": "Given the differentiated relating equation with the instantaneous values supplied, substitute and solve for the requested derivative.",
+   "description_plain": "Put the known numbers in and isolate the rate you were asked for.",
+   "diagnostic_signals": [
+    "BC-SIG-04015"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-3E1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-04024",
+   "learning_objectives": [
+    "BC-LO-CHA-3E"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-04011"
+   ],
+   "name": "Solve the differentiated equation for the unknown rate",
+   "notation": "solving for the requested rate",
+   "official_evidence": [
+    "cr-24:18",
+    "BC-FRQ-2014-Q4-D",
+    "BC-FRQ-2022-Q4-D",
+    "BC-FRQ-2025-Q2-D",
+    "BC-FRQ-2018-Q4-D",
+    "BC-FRQ-2018-Q5-C",
+    "BC-MCQ-CED-005",
+    "BC-MCQ-SAMPLE-004"
+   ],
+   "practice_skills": [
+    "BC-MPS-3F"
+   ],
+   "prerequisites": [
+    "BC-PRQ-04007",
+    "BC-SKL-04023"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-09"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:91",
+    "cr-24:18"
+   ],
+   "topic": "BC-TOP-0405",
+   "unit": "BC-UNIT-04",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-04003 (units added only if time allows)",
+     "BC-MIS-04002 (the sign of a rate treated as formatting)",
+     "BC-SKL-04002 (the interpretation sentence in a non related rates setting)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-04006 (the units instruction is part of the prompt and is scored)"
+    ],
+    "mastered_if": "The computed rate is reported with the units of the quantity divided by the units of time and with a statement of whether the quantity is increasing or decreasing at that instant, so the sign is converted into direction and the units follow the quantity in the stem; BC-ERR-04001 and BC-ERR-04005 are both absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The value is correct and is given without units, BC-ERR-04001 with signal BC-SIG-04001, which the 2019 Q4 part A distinctions record as ignoring the units instruction; or the magnitude is reported and the negative sign is left uninterpreted, BC-ERR-04005.",
+    "prerequisite_gap_if": "The rate itself was never isolated, a gap at BC-SKL-04024 rather than a reporting gap.",
+    "remediation_target": "Conceptual failure: BC-MIS-04002 (a negative rate states that the quantity is falling). Procedural failure: BC-PRQ-04004 (assembling quantity units over time units)."
+   },
+   "archetypes": [
+    "BC-QA-04006"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-04001",
+    "BC-ERR-04005"
+   ],
+   "concept": "BC-CON-04010",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a computed rate, report it with the units of the quantity divided by the units of time and state whether the quantity is increasing or decreasing at that instant.",
+   "description_plain": "Say what the number means for the situation and attach the units.",
+   "diagnostic_signals": [
+    "BC-SIG-04001"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-3E1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-04025",
+   "learning_objectives": [
+    "BC-LO-CHA-3E"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-04003"
+   ],
+   "name": "Report a related rate with units and interpret its sign",
+   "notation": "rate with units and direction",
+   "official_evidence": [
+    "cr-24:4",
+    "BC-FRQ-2019-Q4-A"
+   ],
+   "practice_skills": [
+    "BC-MPS-3F"
+   ],
+   "prerequisites": [
+    "BC-PRQ-04004",
+    "BC-SKL-04024"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-05"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:91",
+    "cr-24:4"
+   ],
+   "topic": "BC-TOP-0405",
+   "unit": "BC-UNIT-04",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-04011 (instantaneous values treated as permanent features)",
+     "BC-SKL-04021 (eliminating a variable before differentiating rather than recovering its value after)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-04006 (one substitution value is deliberately withheld from the stem)"
+    ],
+    "mastered_if": "A quantity needed for the substitution but absent from the stem is computed from the relating equation using the values that are supplied, such as recovering a diameter from a height, before the numerical work proceeds; BC-ERR-04022 is absent, so no value is invented and none is silently omitted.",
+    "next_dependent_skills": [
+     "BC-SKL-04024"
+    ],
+    "partially_mastered_if": "The differentiated equation is correct and the missing quantity is left out of the substitution or replaced by a guessed number, BC-ERR-04022, the failure the 2018 Q4 part D distinctions name as never recovering the diameter from the height.",
+    "prerequisite_gap_if": "The relating equation from which the value would come is wrong or absent, a gap at BC-SKL-04018; or the equation cannot be solved for the missing quantity, BC-PRQ-04007.",
+    "remediation_target": "Conceptual failure: BC-MIS-04010 (the relating equation also supplies missing values). Procedural failure: BC-PRQ-04007 (solving the relation for the absent quantity)."
+   },
+   "archetypes": [
+    "BC-QA-04006"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-04022"
+   ],
+   "concept": "BC-CON-04009",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-04024"
+   ],
+   "description_formal": "Given a related rates problem in which one quantity needed for the substitution is not supplied, compute it from the relating equation using the values that are supplied.",
+   "description_plain": "When a needed value is not given, get it from the relating equation at that instant.",
+   "diagnostic_signals": [
+    "BC-SIG-04014"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-3E1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-04026",
+   "learning_objectives": [
+    "BC-LO-CHA-3E"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-04011"
+   ],
+   "name": "Compute a missing instantaneous value from the relating equation",
+   "notation": "value recovered from the relating equation",
+   "official_evidence": [
+    "BC-FRQ-2014-Q4-D",
+    "BC-FRQ-2018-Q4-D"
+   ],
+   "practice_skills": [
+    "BC-MPS-3F"
+   ],
+   "prerequisites": [
+    "BC-PRQ-04007",
+    "BC-SKL-04018"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-08"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:91"
+   ],
+   "topic": "BC-TOP-0405",
+   "unit": "BC-UNIT-04",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-04011 (a value true at an instant read as true throughout)",
+     "BC-MIS-04008 (time not recognised as the variable everything depends on)",
+     "BC-SKL-04023 (acting on the classification by delaying substitution)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-04006 (the configuration mixes a permanent dimension with a momentary measurement)"
+    ],
+    "mastered_if": "Each stated number is classified as constant over time or as an instantaneous value, so a fixed diameter is marked as always applying and a measured height as applying only now, and only the constants are substituted before the differentiation; BC-ERR-04020 is absent.",
+    "next_dependent_skills": [
+     "BC-SKL-04023"
+    ],
+    "partially_mastered_if": "The scenario is set up correctly and an instantaneous measurement is treated as a fixed feature of the configuration, BC-ERR-04020 with signal BC-SIG-04014, which the 2019 Q4 part A distinctions record in both directions, treating a fixed radius as varying and a varying one as fixed.",
+    "prerequisite_gap_if": "The quantities and their rates were never named, a gap at BC-SKL-04017 and BC-PRQ-04008.",
+    "remediation_target": "Conceptual failure: BC-MIS-04011 (asking which numbers still hold one second later). Procedural failure: BC-SKL-04017 (recording each quantity and rate before classifying it)."
+   },
+   "archetypes": [
+    "BC-QA-04006"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-04020"
+   ],
+   "concept": "BC-CON-04009",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-04023"
+   ],
+   "description_formal": "Given a related rates scenario, classify each stated quantity as constant over time or as an instantaneous value, since only the constants may be substituted before differentiating.",
+   "description_plain": "Decide which numbers in the scenario always hold and which hold only at this instant.",
+   "diagnostic_signals": [
+    "BC-SIG-04014"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-3E1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-04027",
+   "learning_objectives": [
+    "BC-LO-CHA-3E"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-04011"
+   ],
+   "name": "Distinguish quantities constant in time from quantities varying in time",
+   "notation": "always true against true at an instant",
+   "official_evidence": [
+    "BC-FRQ-2019-Q4-A"
+   ],
+   "practice_skills": [
+    "BC-MPS-3F"
+   ],
+   "prerequisites": [
+    "BC-PRQ-04008"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-08"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:86",
+    "ced:91"
+   ],
+   "topic": "BC-TOP-0405",
+   "unit": "BC-UNIT-04",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-04012 (the tangent line treated as the function near the point)",
+     "BC-SKL-04029 (evaluating the line rather than writing it)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-04008 (the line is the vehicle for the approximation, so an unchecked line propagates)"
+    ],
+    "mastered_if": "The tangent line is written in point slope form using the coordinates of the point of tangency and the derivative value there, so the line passes through the point and its slope is the derivative rather than a coordinate; BC-ERR-04023 is absent, and the line is left in point slope form rather than rearranged into an error prone simplified form.",
+    "next_dependent_skills": [
+     "BC-SKL-04029"
+    ],
+    "partially_mastered_if": "The slope at the point of tangency is right and the line written does not pass through the point, signal BC-SIG-04016 and BC-ERR-04023; the 2025 report records sign and parenthesis errors arising while isolating the dependent variable, which the question did not require.",
+    "prerequisite_gap_if": "The slope was never obtained from the supplied derivative, a gap at BC-SKL-04032; or point slope form itself is unavailable, BC-PRQ-04006.",
+    "remediation_target": "Conceptual failure: BC-MIS-04012 (the line touches the curve at the point and departs from it elsewhere). Procedural failure: BC-PRQ-04006 (assembling point slope form correctly)."
+   },
+   "archetypes": [
+    "BC-QA-04008"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-04023"
+   ],
+   "concept": "BC-CON-04011",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-04029"
+   ],
+   "description_formal": "Given a point on a curve and the value of the derivative there, write the equation of the tangent line in point-slope form.",
+   "description_plain": "Use the point and the derivative there in point-slope form.",
+   "diagnostic_signals": [
+    "BC-SIG-04016"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-3F1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-04028",
+   "learning_objectives": [
+    "BC-LO-CHA-3F"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-04012"
+   ],
+   "name": "Write the equation of the tangent line at a point",
+   "notation": "point-slope form of the tangent line",
+   "official_evidence": [
+    "cr-24:17",
+    "crabbc-25:25",
+    "BC-FRQ-2014-Q1-D",
+    "BC-FRQ-2023-Q3-B"
+   ],
+   "practice_skills": [
+    "BC-MPS-1F"
+   ],
+   "prerequisites": [
+    "BC-PRQ-04006",
+    "BC-SKL-04032"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:92",
+    "cr-24:17",
+    "crabbc-25:25"
+   ],
+   "topic": "BC-TOP-0406",
+   "unit": "BC-UNIT-04",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-04012 (the tangent value read as the function value)",
+     "BC-SKL-04030 (judging the direction of the error rather than producing the estimate)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-04008 (a nearby input distinct from the point of tangency is named in the prompt)"
+    ],
+    "mastered_if": "The tangent line is evaluated at the nearby input, not at the point of tangency, and the result is reported as an approximation of the function value there; BC-ERR-04024 is absent, so the known function value is not returned as the answer, and the anchor of the line is the point whose data the stem supplies.",
+    "next_dependent_skills": [
+     "BC-SKL-04030"
+    ],
+    "partially_mastered_if": "The line is correct and is evaluated at the point of tangency, BC-ERR-04024; or, as the 2023 Q3 part B distinctions record, the slope and the initial value are exchanged so the approximation is built on the wrong number.",
+    "prerequisite_gap_if": "The tangent line itself does not pass through the point, a gap at BC-SKL-04028 with signal BC-SIG-04016.",
+    "remediation_target": "Conceptual failure: BC-MIS-04012 (the line approximates the function away from the point). Procedural failure: BC-SKL-04028 (a line anchored at the correct point of tangency)."
+   },
+   "archetypes": [
+    "BC-QA-04008"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-04024"
+   ],
+   "concept": "BC-CON-04011",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-04030"
+   ],
+   "description_formal": "Given the tangent line at a point and a nearby input, evaluate the line at that input and report the result as an approximation of the function value there.",
+   "description_plain": "Put the nearby input into the tangent line equation.",
+   "diagnostic_signals": [
+    "BC-SIG-04016"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-3F1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-04029",
+   "learning_objectives": [
+    "BC-LO-CHA-3F"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-04012"
+   ],
+   "name": "Approximate a function value with the tangent line",
+   "notation": "tangent line value as an approximation",
+   "official_evidence": [
+    "cr-24:17",
+    "BC-FRQ-2014-Q1-D",
+    "BC-FRQ-2023-Q3-B",
+    "BC-FRQ-2024-Q5-C",
+    "BC-FRQ-2025-Q5-D"
+   ],
+   "practice_skills": [
+    "BC-MPS-1F"
+   ],
+   "prerequisites": [
+    "BC-PRQ-04006",
+    "BC-SKL-04028"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:92",
+    "cr-24:17"
+   ],
+   "topic": "BC-TOP-0406",
+   "unit": "BC-UNIT-04",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-04013 (the error direction taken from increase or decrease)",
+     "BC-MIS-04012 (the line treated as the function, so no error arises)",
+     "BC-SKL-04031 (supplying the second derivative sign as the written reason)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-04008 (an increasing concave down case separates the two possible reasons)"
+    ],
+    "mastered_if": "The concavity near the point of tangency is determined and the conclusion follows from it, with concave up giving an underestimate and concave down an overestimate, stated for the function rather than for its derivative; BC-ERR-04025 and BC-ERR-99020 are absent, so the direction of the error is never argued from whether the function is increasing.",
+    "next_dependent_skills": [
+     "BC-SKL-04031"
+    ],
+    "partially_mastered_if": "The direction of the error is correct and the reason given is that the function is increasing or decreasing, signal BC-SIG-04017 and BC-ERR-04025; or, as the 2026 Q3 part C distinctions record, concavity is attributed to the derivative rather than to the function.",
+    "prerequisite_gap_if": "Concavity cannot be read from the sign of the second derivative, a gap at BC-SKL-02013; or no approximation exists to judge, BC-SKL-04029.",
+    "remediation_target": "Conceptual failure: BC-MIS-04013 (bending, not direction, places the line above or below the curve). Procedural failure: BC-SKL-02013 (reading concavity from the second derivative)."
+   },
+   "archetypes": [
+    "BC-QA-04008"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-04025"
+   ],
+   "concept": "BC-CON-04012",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-04031"
+   ],
+   "description_formal": "Given the concavity of a function near the point of tangency, conclude that the tangent line value underestimates the function value when the graph is concave up there and overestimates it when the graph is concave down.",
+   "description_plain": "Concave up near the point puts the line below the curve, concave down puts it above.",
+   "diagnostic_signals": [
+    "BC-SIG-04017"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-3F2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-04030",
+   "learning_objectives": [
+    "BC-LO-CHA-3F"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-04013"
+   ],
+   "name": "Decide whether a tangent line approximation over or under estimates",
+   "notation": "under or over estimate from concavity",
+   "official_evidence": [
+    "BC-FRQ-2023-Q3-C",
+    "BC-FRQ-2026-Q3-C"
+   ],
+   "practice_skills": [
+    "BC-MPS-1F"
+   ],
+   "prerequisites": [
+    "BC-PRQ-04008",
+    "BC-SKL-02013",
+    "BC-SKL-04029"
+   ],
+   "representations": [
+    "BC-REP-02",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:92"
+   ],
+   "topic": "BC-TOP-0406",
+   "unit": "BC-UNIT-04",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-04013 (the first derivative sign offered as the reason)",
+     "BC-ERR-04026 (concavity claimed with no referent in the given figure or formula)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-04008 (the justification point is separate from the conclusion and requires the sign statement)"
+    ],
+    "mastered_if": "The sign of the second derivative is stated on an interval containing both the point of tangency and the nearby input, and that sign is tied to the supplied graph, table, or formula and then to the position of the line relative to the curve; BC-ERR-04025 and BC-ERR-04026 are absent, so the reason is neither asserted nor checked at a single time only.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The conclusion is correct and the second derivative sign is asserted without reference to the supplied representation, BC-ERR-04026; or the sign is checked at the initial time alone where the interval was required, the gap the 2023 Q3 part C and 2026 Q3 part C distinctions record.",
+    "prerequisite_gap_if": "The relationship between concavity and the position of the tangent line is not held, a gap at BC-SKL-04030 rather than a justification gap.",
+    "remediation_target": "Conceptual failure: BC-MIS-04013 (the second derivative is what licenses the claim). Procedural failure: BC-ERR-04026 (naming where in the given representation the sign is read)."
+   },
+   "archetypes": [
+    "BC-QA-04008"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-04025",
+    "BC-ERR-04026"
+   ],
+   "concept": "BC-CON-04012",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a claim that a tangent line approximation is an under or an over estimate, support it by stating the sign of the second derivative on an interval containing the point of tangency and the nearby input.",
+   "description_plain": "Name the sign of the second derivative on the interval and connect it to the position of the line.",
+   "diagnostic_signals": [
+    "BC-SIG-04017"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-3F2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-04031",
+   "learning_objectives": [
+    "BC-LO-CHA-3F"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-04013"
+   ],
+   "name": "Justify the estimate direction with the sign of the second derivative",
+   "notation": "second derivative sign as the reason",
+   "official_evidence": [
+    "cr-22:18",
+    "BC-FRQ-2023-Q3-C",
+    "BC-FRQ-2026-Q3-C"
+   ],
+   "practice_skills": [
+    "BC-MPS-1F"
+   ],
+   "prerequisites": [
+    "BC-PRQ-04008",
+    "BC-SKL-04030"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-04"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:92",
+    "cr-22:18"
+   ],
+   "topic": "BC-TOP-0406",
+   "unit": "BC-UNIT-04",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-04012 (the roles of the point and the nearby input blurred)",
+     "BC-SKL-03011 (evaluating dy/dx at a point on an implicit curve, the same substitution in Unit 3)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-04008 (the derivative expression is supplied and the point of tangency must be chosen correctly)"
+    ],
+    "mastered_if": "The coordinates of the point of tangency are substituted into the supplied derivative expression, including both coordinates when the expression comes from an implicitly defined curve, giving the slope at that point and no other; BC-ERR-04027 is absent, so the derivative is not evaluated at the target input.",
+    "next_dependent_skills": [
+     "BC-SKL-04028"
+    ],
+    "partially_mastered_if": "The supplied derivative is used correctly and evaluated at coordinates other than the point of tangency, BC-ERR-04027, a state in which the approximation point may still follow on the wrong slope; or only one coordinate of an implicit expression is substituted.",
+    "prerequisite_gap_if": "Substitution into an expression in two variables fails, an algebra gap at BC-PRQ-04006 rather than a tangency gap.",
+    "remediation_target": "Conceptual failure: BC-MIS-04012 (the slope belongs to the point of tangency). Procedural failure: BC-PRQ-04006 (substituting both coordinates into the expression)."
+   },
+   "archetypes": [
+    "BC-QA-04008"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-04027"
+   ],
+   "concept": "BC-CON-04011",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-04028"
+   ],
+   "description_formal": "Given an expression for the derivative, which may involve both coordinates of an implicitly defined curve, substitute the coordinates of the point of tangency to obtain the slope of the tangent line there.",
+   "description_plain": "Substitute the point into the given derivative to get the slope.",
+   "diagnostic_signals": [
+    "BC-SIG-04016"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-3F1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-04032",
+   "learning_objectives": [
+    "BC-LO-CHA-3F"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-04012"
+   ],
+   "name": "Use a supplied derivative expression to obtain the slope at the point of tangency",
+   "notation": "slope from a supplied derivative",
+   "official_evidence": [
+    "cr-24:17",
+    "crabbc-25:24",
+    "BC-FRQ-2014-Q1-D",
+    "BC-FRQ-2023-Q3-B",
+    "BC-FRQ-2026-Q3-B"
+   ],
+   "practice_skills": [
+    "BC-MPS-1F"
+   ],
+   "prerequisites": [
+    "BC-PRQ-04006"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "cr-24:17",
+    "crabbc-25:24"
+   ],
+   "topic": "BC-TOP-0406",
+   "unit": "BC-UNIT-04",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-04014 (indeterminate forms treated as numbers)",
+     "BC-MIS-04015 (the rule treated as applying to any awkward limit)",
+     "BC-SKL-04034 (stating the rule rather than verifying its hypothesis on this limit)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-04009 (the two separate limits carry a point of their own, before the rule is applied)"
+    ],
+    "mastered_if": "The limit of the numerator and the limit of the denominator are presented as two separate statements, each evaluated by continuity where the function is known to be differentiable, and the form is then named as zero over zero or infinity over infinity in words; the quotient is never written equal to that form, so BC-ERR-04028 and BC-ERR-04029 are absent.",
+    "next_dependent_skills": [
+     "BC-SKL-04035",
+     "BC-SKL-04037"
+    ],
+    "partially_mastered_if": "Both limits are known and the work writes the limit of the quotient explicitly equal to zero over zero, BC-ERR-04028, which the 2023 rubric states does not earn the first point although the rest of the part remains available; or the derivatives are taken with no separate limits shown at all, BC-ERR-04029 with signal BC-SIG-04018.",
+    "prerequisite_gap_if": "The limit of the numerator cannot be evaluated because differentiability is not being used to give continuity, a gap at BC-SKL-04038 and BC-PRQ-04008.",
+    "remediation_target": "Conceptual failure: BC-MIS-04014 (zero over zero names a form, not a value). Procedural failure: BC-ERR-04028 (writing the two limits on separate lines)."
+   },
+   "archetypes": [
+    "BC-QA-04009"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-04028",
+    "BC-ERR-04029"
+   ],
+   "concept": "BC-CON-04013",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-04035",
+    "BC-SKL-04037"
+   ],
+   "description_formal": "Given a limit of a quotient, present the limit of the numerator and the limit of the denominator as two separate statements and conclude that the form is zero over zero or infinity over infinity, without writing the quotient equal to that form.",
+   "description_plain": "Show the limit of the top and the limit of the bottom separately, and say the form is indeterminate.",
+   "diagnostic_signals": [
+    "BC-SIG-04018"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-4A1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-04033",
+   "learning_objectives": [
+    "BC-LO-LIM-4A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-04014",
+    "BC-MIS-04015"
+   ],
+   "name": "Verify that a limit has an indeterminate form",
+   "notation": "two separate limits",
+   "official_evidence": [
+    "sg-23:14",
+    "cr-23:15",
+    "BC-FRQ-2013-Q5-A",
+    "BC-FRQ-2021-Q4-C",
+    "BC-FRQ-2023-Q4-C",
+    "BC-MCQ-SAMPLE-001",
+    "BC-MCQ-PE2012-028"
+   ],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-04008"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:93",
+    "ced:84",
+    "sg-23:14",
+    "cr-23:15"
+   ],
+   "topic": "BC-TOP-0407",
+   "unit": "BC-UNIT-04",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-04015 (the rule as a general device for stubborn limits)",
+     "BC-MIS-04016 (the conclusion read as the derivative of the quotient)",
+     "BC-SKL-04033 (verifying the form on a particular limit)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-04009 (the hypothesis step is scored separately from the application)"
+    ],
+    "mastered_if": "The rule is stated with both hypotheses and its conclusion, that when the limits of numerator and denominator are both zero or both infinite and the derivatives exist, the limit of the quotient equals the limit of the quotient of the derivatives; the response can say that a quotient which is not indeterminate is outside the rule, so BC-ERR-04029 is absent.",
+    "next_dependent_skills": [
+     "BC-SKL-04035"
+    ],
+    "partially_mastered_if": "The conclusion is stated correctly and the hypotheses are omitted or treated as understood, BC-ERR-04029 with signal BC-SIG-04018, which the CED unit overview and the 2023 rubric both tie to the requirement to show that the rule applies.",
+    "prerequisite_gap_if": "The limit laws the statement depends on are not held, a gap at BC-SKL-01058 rather than a statement gap.",
+    "remediation_target": "Conceptual failure: BC-MIS-04015 (the rule is conditional on the form). Procedural failure: BC-SKL-04033 (showing the two limits that establish the hypothesis)."
+   },
+   "archetypes": [
+    "BC-QA-04009"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-04029"
+   ],
+   "concept": "BC-CON-04014",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-04035"
+   ],
+   "description_formal": "State that when the limits of the numerator and the denominator are both zero or both infinite, and the relevant derivatives exist, the limit of the quotient equals the limit of the quotient of the derivatives.",
+   "description_plain": "Say when the rule may be used and what it concludes.",
+   "diagnostic_signals": [
+    "BC-SIG-04018"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-4A2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-04034",
+   "learning_objectives": [
+    "BC-LO-LIM-4A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-04015"
+   ],
+   "name": "State L'Hospital's rule with its hypotheses",
+   "notation": "hypotheses and conclusion of the rule",
+   "official_evidence": [
+    "BC-FRQ-2013-Q5-A",
+    "BC-FRQ-2021-Q4-C",
+    "BC-FRQ-2023-Q4-C"
+   ],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-04008",
+    "BC-SKL-01058"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-04"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:93",
+    "ced:84"
+   ],
+   "topic": "BC-TOP-0407",
+   "unit": "BC-UNIT-04",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-04016 (the rule read as differentiating the quotient)",
+     "BC-MIS-04015 (no form checked before application)",
+     "BC-SKL-03028 (choosing and ordering differentiation rules for each piece)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-04009 (a numerator known only through supplied properties makes the separate derivative visible)"
+    ],
+    "mastered_if": "The numerator and the denominator are differentiated separately and the new limit is written as the limit of one derivative over the other, with limit notation retained; the quotient rule is not used on the whole expression, so BC-ERR-04030 is absent and at least one correct derivative appears inside a limit as the 2023 rubric requires for the application point.",
+    "next_dependent_skills": [
+     "BC-SKL-04036"
+    ],
+    "partially_mastered_if": "The two separate limits are correct and one of the two derivatives in the new quotient is wrong, signal BC-SIG-04019, which the 2023 report records as the step at which otherwise correct responses failed; or the derivative of the whole quotient is taken, BC-ERR-04030.",
+    "prerequisite_gap_if": "The rule is applied before the indeterminate form is established, a gap at BC-SKL-04033 and BC-SKL-04034 rather than in the differentiation.",
+    "remediation_target": "Conceptual failure: BC-MIS-04016 (the conclusion features a ratio of derivatives). Procedural failure: BC-SKL-04034 (the statement that says which derivatives to take)."
+   },
+   "archetypes": [
+    "BC-QA-04009"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-04030"
+   ],
+   "concept": "BC-CON-04015",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-04036"
+   ],
+   "description_formal": "Given a limit established to be indeterminate, form the limit of the quotient of the derivative of the numerator and the derivative of the denominator.",
+   "description_plain": "Differentiate the top and the bottom on their own, not as a quotient.",
+   "diagnostic_signals": [
+    "BC-SIG-04019"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-4A2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-04035",
+   "learning_objectives": [
+    "BC-LO-LIM-4A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-04016"
+   ],
+   "name": "Apply the rule by differentiating numerator and denominator separately",
+   "notation": "limit of f prime over g prime",
+   "official_evidence": [
+    "sg-23:14",
+    "cr-23:15",
+    "BC-FRQ-2013-Q5-A",
+    "BC-FRQ-2021-Q4-C",
+    "BC-FRQ-2023-Q4-C",
+    "BC-MCQ-SAMPLE-001",
+    "BC-MCQ-PE2012-028"
+   ],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-04008",
+    "BC-SKL-04034"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:84",
+    "sg-23:14",
+    "cr-23:15"
+   ],
+   "topic": "BC-TOP-0407",
+   "unit": "BC-UNIT-04",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-04016 (the derivative of the quotient in place of the quotient of derivatives)",
+     "BC-MIS-04014 (an indeterminate form written as a value)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-04009 (the value is the last of the three scored steps and can fail alone)"
+    ],
+    "mastered_if": "The limit of the quotient of derivatives is evaluated, by substitution where the pieces are continuous or by further analysis where they are not, and the value is reported as the value of the original limit with limit notation carried to the last line; BC-ERR-04031 is absent, so a numerator known only through supplied properties is differentiated using those properties.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The hypothesis and application points are secured and the numerator derivative is mishandled, so the reported value is wrong, BC-ERR-04031 with signal BC-SIG-04019; or the ratio is evaluated with limit notation dropped, the communication failure the 2021 Q4 part C distinctions record.",
+    "prerequisite_gap_if": "The quotient of derivatives was never correctly formed, a gap at BC-SKL-04035; or the new form is still indeterminate and is treated as final, a gap at BC-SKL-04037.",
+    "remediation_target": "Conceptual failure: BC-MIS-04014 (the value comes from the new limit, not from arithmetic on a form). Procedural failure: BC-SKL-04035 (a correct derivative in each position)."
+   },
+   "archetypes": [
+    "BC-QA-04009"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-04031"
+   ],
+   "concept": "BC-CON-04015",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given the limit of the quotient of derivatives, evaluate it by substitution or by further analysis and report the value of the original limit.",
+   "description_plain": "Work out the new limit and report the value.",
+   "diagnostic_signals": [
+    "BC-SIG-04019"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-4A2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-04036",
+   "learning_objectives": [
+    "BC-LO-LIM-4A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-04016"
+   ],
+   "name": "Evaluate the limit that the rule produces",
+   "notation": "value of the limit",
+   "official_evidence": [
+    "sg-23:14",
+    "BC-FRQ-2013-Q5-A",
+    "BC-FRQ-2021-Q4-C",
+    "BC-FRQ-2023-Q4-C",
+    "BC-MCQ-SAMPLE-001"
+   ],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-04008",
+    "BC-SKL-04035"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "sg-23:14"
+   ],
+   "topic": "BC-TOP-0407",
+   "unit": "BC-UNIT-04",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-04015 (the rule applied to any awkward limit, so no recheck occurs)",
+     "BC-MIS-04014 (the new form read as a number)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-04009 (a limit whose first application leaves the form indeterminate)"
+    ],
+    "mastered_if": "When the quotient of derivatives is itself indeterminate the form is verified again with two separate limits before the rule is applied a second time, and the cycle continues until a determinate form is reached; BC-ERR-04029 is absent at every application rather than only at the first.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The first application is fully justified and the second is performed with no fresh check of the form, BC-ERR-04029 with signal BC-SIG-04018; or the repetition stops while the form is still indeterminate and the remaining expression is evaluated as if determinate.",
+    "prerequisite_gap_if": "The indeterminate form cannot be recognised on the new quotient, a gap at BC-SKL-04033 and BC-SKL-01028 rather than in the repetition.",
+    "remediation_target": "Conceptual failure: BC-MIS-04015 (each application needs its own hypothesis). Procedural failure: BC-SKL-04033 (running the two limit check again)."
+   },
+   "archetypes": [
+    "BC-QA-04009"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-04029"
+   ],
+   "concept": "BC-CON-04015",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given that the quotient of derivatives is itself of indeterminate form, verify that form and apply the rule a second time, continuing until a determinate form is reached.",
+   "description_plain": "If the new quotient is still indeterminate, check the form again and repeat.",
+   "diagnostic_signals": [
+    "BC-SIG-04018"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-4A2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-04037",
+   "learning_objectives": [
+    "BC-LO-LIM-4A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-04015"
+   ],
+   "name": "Apply the rule again when the form is still indeterminate",
+   "notation": "repeated application",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-04008",
+    "BC-SKL-01028",
+    "BC-SKL-04033"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:93"
+   ],
+   "topic": "BC-TOP-0407",
+   "unit": "BC-UNIT-04",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-04015 (no attention to hypotheses before using a rule)",
+     "BC-MIS-04014 (a form written where a value belongs)",
+     "BC-SKL-04033 (assembling both limits into the indeterminate form statement)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-04009 (the numerator function is given only by properties, so continuity is the only route to its limit)"
+    ],
+    "mastered_if": "Differentiability at the point is used to conclude continuity there and hence that the limit of the function equals its value, and this is what supplies the numerator limit when the function is known only through given properties; BC-ERR-04028 is absent because the two limits are exhibited rather than the quotient being set equal to a form.",
+    "next_dependent_skills": [
+     "BC-SKL-04033"
+    ],
+    "partially_mastered_if": "The implication from differentiability to continuity is used silently, so the numerator limit appears with no stated reason; or the numerator limit is taken to be an integrand value rather than the accumulated value, the confusion the 2021 Q4 part C distinctions record.",
+    "prerequisite_gap_if": "The relation between differentiability and continuity is not held at all, a gap at BC-PRQ-04008 and the Unit 1 continuity material rather than a limit evaluation gap.",
+    "remediation_target": "Conceptual failure: BC-MIS-04015 (differentiability is a hypothesis that buys continuity). Procedural failure: BC-SKL-04033 (using the value as one of the two separate limits)."
+   },
+   "archetypes": [
+    "BC-QA-04009"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-04028"
+   ],
+   "concept": "BC-CON-04014",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-04033"
+   ],
+   "description_formal": "Given that a function is differentiable at a point, conclude that it is continuous there and that its limit at the point equals its value, in order to establish the limit of a numerator containing that function.",
+   "description_plain": "A function differentiable at a point is continuous there, so its limit is its value.",
+   "diagnostic_signals": [
+    "BC-SIG-04018"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-4A1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-04038",
+   "learning_objectives": [
+    "BC-LO-LIM-4A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-04015"
+   ],
+   "name": "Use differentiability to evaluate a limit of a given function",
+   "notation": "differentiable implies continuous",
+   "official_evidence": [
+    "sg-23:14",
+    "BC-FRQ-2013-Q5-A",
+    "BC-FRQ-2023-Q4-C"
+   ],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-04008"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "sg-23:14"
+   ],
+   "topic": "BC-TOP-0407",
+   "unit": "BC-UNIT-04",
+   "updated": "2026-09-19"
+  }
+ ]
+}

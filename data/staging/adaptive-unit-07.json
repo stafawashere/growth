@@ -1,0 +1,3166 @@
+{
+ "registry": "skills",
+ "skills": [
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07001 (proportional to read as equal to)",
+     "BC-MIS-07021 (proportional growth read as linear growth)",
+     "BC-SKL-07039 (a joint proportionality that also needs the limiting factor)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07006 (the equation is built from words alone, so the constant is either written or lost)"
+    ],
+    "mastered_if": "The sentence that a rate of change is proportional to the amount is written as the derivative of the quantity equal to a constant multiplied by that quantity, with the constant of proportionality present and named; BC-ERR-07001 is absent, so the derivative is not set equal to the quantity itself, and the response can say what changes in the model when the quantity grows twice as fast.",
+    "next_dependent_skills": [
+     "BC-SKL-07034",
+     "BC-SKL-07039"
+    ],
+    "partially_mastered_if": "The derivative is on the left and the quantity on the right with no constant between them, BC-ERR-07001 with signal BC-SIG-07001; or the equation is written for the amount rather than for its rate, the failure BC-ERR-07005 describes.",
+    "prerequisite_gap_if": "The phrase proportional to cannot be turned into a constant multiple in any setting, an algebra of models gap at BC-PRQ-07003 rather than a differential equation gap.",
+    "remediation_target": "Conceptual failure: BC-MIS-07001 (proportionality introduces an unknown constant). Procedural failure: BC-PRQ-07003 (writing a proportionality as a constant multiple)."
+   },
+   "archetypes": [
+    "BC-QA-07006"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07001"
+   ],
+   "concept": "BC-CON-07001",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-07034",
+    "BC-SKL-07039"
+   ],
+   "description_formal": "Write the statement that the rate of change of a quantity is proportional to the size of the quantity as the derivative of the quantity equal to a constant multiplied by the quantity.",
+   "description_plain": "Turn the rate of change is proportional to the amount into an equation.",
+   "diagnostic_signals": [
+    "BC-SIG-07001"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7A1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-07001",
+   "learning_objectives": [
+    "BC-LO-FUN-7A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-07001"
+   ],
+   "name": "Translate a proportionality statement into a differential equation",
+   "notation": "",
+   "official_evidence": [
+    "BC-MCQ-PE2012-023"
+   ],
+   "practice_skills": [
+    "BC-MPS-2C"
+   ],
+   "prerequisites": [
+    "BC-PRQ-07003"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-06"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:137"
+   ],
+   "topic": "BC-TOP-0701",
+   "unit": "BC-UNIT-07",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07001 (the constant dropped from the difference)",
+     "BC-SKL-07001 (proportional to the amount rather than to a gap)",
+     "BC-MIS-07007 (a zero rate at the fixed level read as a maximum)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07006 (the orientation of the difference decides whether the model converges)"
+    ],
+    "mastered_if": "A rate proportional to the gap between the quantity and a fixed level is written as a constant multiplied by that difference, with the difference oriented so the quantity moves toward the level rather than away from it; BC-ERR-07002 is absent and the constant of proportionality appears.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The constant and the difference are both present and the subtraction is the other way round, BC-ERR-07002, so the sign of the approach and every slope field or particular solution built on it is reversed; or the constant is dropped, BC-ERR-07001 with signal BC-SIG-07001.",
+    "prerequisite_gap_if": "The verbal gap cannot be written as a difference of two named quantities, a translation gap at BC-PRQ-07003.",
+    "remediation_target": "Conceptual failure: BC-MIS-07001 (the gap carries its own constant). Procedural failure: BC-ERR-07002 (ordering the subtraction so the quantity approaches the level)."
+   },
+   "archetypes": [
+    "BC-QA-07006"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07002"
+   ],
+   "concept": "BC-CON-07001",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Write a statement that the rate of change is proportional to the difference between the quantity and a fixed level as the derivative equal to a constant multiplied by that difference.",
+   "description_plain": "Turn a rate proportional to a gap into an equation with that gap in it.",
+   "diagnostic_signals": [
+    "BC-SIG-07001"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7A1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-07002",
+   "learning_objectives": [
+    "BC-LO-FUN-7A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-07001"
+   ],
+   "name": "Translate a rate statement involving a difference into a differential equation",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-2C"
+   ],
+   "prerequisites": [
+    "BC-PRQ-07003"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-06"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:137",
+    "frq-23:7"
+   ],
+   "topic": "BC-TOP-0701",
+   "unit": "BC-UNIT-07",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07002 (a differential equation read as an equation for the amount)",
+     "BC-MIS-07023 (a number treated as a complete interpretation)",
+     "BC-SKL-07037 (interpreting the rate constant once the variables are named)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07006 (the setup stage where variables and units are established before any calculus)"
+    ],
+    "mastered_if": "The dependent and independent variables are named with their units and the units of the derivative are given as the quotient of the two, so every letter in the model stands for a stated quantity; BC-ERR-07003, BC-ERR-99005, and BC-ERR-99033 are absent because no symbol is introduced undefined.",
+    "next_dependent_skills": [
+     "BC-SKL-07037",
+     "BC-SKL-07043"
+    ],
+    "partially_mastered_if": "The model is written correctly in letters that are never given meanings or units, signal BC-SIG-07002 and BC-ERR-07003, which removes the later interpretation points; or the units reported are those of the quantity rather than of its rate, BC-ERR-99005.",
+    "prerequisite_gap_if": "The verbal description cannot be read into a quantity and an independent variable at all, a context gap at BC-PRQ-06005.",
+    "remediation_target": "Conceptual failure: BC-MIS-07002 (the left side measures a rate, which fixes its units). Procedural failure: BC-ERR-99033 (defining each symbol where it is introduced)."
+   },
+   "archetypes": [
+    "BC-QA-07006"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07003",
+    "BC-ERR-99005",
+    "BC-ERR-99033"
+   ],
+   "concept": "BC-CON-07001",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-07037",
+    "BC-SKL-07043"
+   ],
+   "description_formal": "Name the dependent and independent variables of the model, state their units, and give the units of the derivative as a quotient of the two.",
+   "description_plain": "Say which quantity is which and in what units.",
+   "diagnostic_signals": [
+    "BC-SIG-07002"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7A1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-07003",
+   "learning_objectives": [
+    "BC-LO-FUN-7A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-07002"
+   ],
+   "name": "Assign the variables and their units from a verbal description",
+   "notation": "",
+   "official_evidence": [
+    "BC-MCQ-PE2012-023"
+   ],
+   "practice_skills": [
+    "BC-MPS-2C"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-05"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:137"
+   ],
+   "topic": "BC-TOP-0701",
+   "unit": "BC-UNIT-07",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07003 (an initial condition treated as part of the equation)",
+     "BC-MIS-07016 (the constant of integration treated as optional, so the condition has no role)",
+     "BC-SKL-07029 (using the condition to evaluate the constant)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07006 (the equation and the initial condition are recorded as two separate objects)",
+     "BC-QA-07003 (the condition selects one member of the solution family)"
+    ],
+    "mastered_if": "The stated value at a particular input is written separately as an ordered pair the solution must pass through, kept out of the differential equation itself, so the constant of integration has something to be fixed by later; BC-ERR-07004 is absent, and the response can say which sentence of the problem would change if the starting value were different.",
+    "next_dependent_skills": [
+     "BC-SKL-07029",
+     "BC-SKL-07032"
+    ],
+    "partially_mastered_if": "The differential equation is correct and the stated value is folded into it as an extra term, BC-ERR-07004 with signal BC-SIG-07003, so the equation is no longer the model asked for.",
+    "prerequisite_gap_if": "The sentence carrying the value at an input cannot be located in the description, a reading gap at BC-PRQ-06005 rather than an initial condition gap.",
+    "remediation_target": "Conceptual failure: BC-MIS-07003 (the condition selects a solution rather than constraining the rate). Procedural failure: BC-SKL-07029 (holding the pair until the constant appears)."
+   },
+   "archetypes": [
+    "BC-QA-07006",
+    "BC-QA-07003"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07004"
+   ],
+   "concept": "BC-CON-07001",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-07029",
+    "BC-SKL-07032"
+   ],
+   "description_formal": "Extract from the description the ordered pair that the solution must pass through and write it as a value of the function at a stated input.",
+   "description_plain": "Pick out the sentence that gives the value at a particular input.",
+   "diagnostic_signals": [
+    "BC-SIG-07003"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7A1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-07004",
+   "learning_objectives": [
+    "BC-LO-FUN-7A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-07003"
+   ],
+   "name": "Identify the initial condition stated in a context",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-2C"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-05"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:137",
+    "frq-23:7"
+   ],
+   "topic": "BC-TOP-0701",
+   "unit": "BC-UNIT-07",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07002 (a differential equation read as an equation for the quantity)",
+     "BC-MIS-07001 (the constant dropped, which also changes what the equation says)",
+     "BC-SKL-07033 (the general family against one particular solution)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07006 (the required answer is an equation in the derivative)",
+     "BC-QA-07007 (a candidate function is offered against the equation it must satisfy)"
+    ],
+    "mastered_if": "The response says whether a written statement constrains the derivative of the quantity or the quantity itself, using what the left side measures as the test, and produces a relation involving the derivative when a differential equation is requested; BC-ERR-07005 is absent, so a formula for the amount is not offered in its place.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The situation is modelled correctly in substance and the answer is an expression for the quantity where a relation on its rate was asked for, BC-ERR-07005 with signal BC-SIG-07004, which leaves no separation step to follow.",
+    "prerequisite_gap_if": "The derivative notation in the statement cannot be read as a rate, a notation gap at BC-PRQ-07002.",
+    "remediation_target": "Conceptual failure: BC-MIS-07002 (a constraint on the rate is not a formula for the amount). Procedural failure: BC-PRQ-07002 (reading what each side of a written equation measures)."
+   },
+   "archetypes": [
+    "BC-QA-07006",
+    "BC-QA-07007"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07005"
+   ],
+   "concept": "BC-CON-07001",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a modelled statement or a written equation, decide whether it constrains the derivative of the quantity or the quantity itself.",
+   "description_plain": "Tell an equation about the rate apart from an equation about the amount.",
+   "diagnostic_signals": [
+    "BC-SIG-07004"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7A1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-07005",
+   "learning_objectives": [
+    "BC-LO-FUN-7A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-07002"
+   ],
+   "name": "Distinguish a differential equation from an equation for the quantity",
+   "notation": "",
+   "official_evidence": [
+    "BC-FRQ-2015-Q4-D",
+    "BC-MCQ-PE2012-023"
+   ],
+   "practice_skills": [
+    "BC-MPS-2C"
+   ],
+   "prerequisites": [
+    "BC-PRQ-07002"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-06"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:137"
+   ],
+   "topic": "BC-TOP-0701",
+   "unit": "BC-UNIT-07",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07004 (a plausible looking function accepted as a solution)",
+     "BC-MIS-07005 (a differential equation read as having one solution)",
+     "BC-SKL-07024 (separating and solving where verification was asked for)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07007 (both the derivative and the substitution must be visible for the demonstration)"
+    ],
+    "mastered_if": "The candidate is differentiated, then the candidate and its derivative are both substituted into the two sides of the equation and the sides are compared, so the derivative is visible on the page rather than assumed; BC-ERR-07006 is absent, and where the candidate is linear its slope is equated with the right side as the 2015 Q4 part D rubric requires.",
+    "next_dependent_skills": [
+     "BC-SKL-07007",
+     "BC-SKL-07008",
+     "BC-SKL-07009"
+    ],
+    "partially_mastered_if": "The candidate is substituted into both sides and no derivative of it appears, BC-ERR-07006 with signal BC-SIG-07005, so the check never tests the equation; or the substitution is correct and the identity is checked at a single input rather than by matching coefficients.",
+    "prerequisite_gap_if": "The candidate cannot be differentiated, an elementary rule gap rather than a verification gap; or what the left side of the equation requires is unclear, BC-PRQ-07002.",
+    "remediation_target": "Conceptual failure: BC-MIS-07004 (resemblance is not verification). Procedural failure: BC-PRQ-07002 (substituting a function and its derivative into both sides)."
+   },
+   "archetypes": [
+    "BC-QA-07007"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07006"
+   ],
+   "concept": "BC-CON-07002",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-07007",
+    "BC-SKL-07008",
+    "BC-SKL-07009"
+   ],
+   "description_formal": "Differentiate the candidate function, substitute the function and its derivative into both sides of the differential equation, and compare the two sides.",
+   "description_plain": "Take the derivative of the candidate and put both into the equation.",
+   "diagnostic_signals": [
+    "BC-SIG-07005"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7B1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-07006",
+   "learning_objectives": [
+    "BC-LO-FUN-7B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-07004"
+   ],
+   "name": "Differentiate a proposed solution and substitute it into the equation",
+   "notation": "",
+   "official_evidence": [
+    "BC-FRQ-2015-Q4-D",
+    "BC-MCQ-PE2012-012"
+   ],
+   "practice_skills": [
+    "BC-MPS-3G"
+   ],
+   "prerequisites": [
+    "BC-PRQ-07002"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-06"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:138"
+   ],
+   "topic": "BC-TOP-0702",
+   "unit": "BC-UNIT-07",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07003 (the initial condition treated as part of the equation)",
+     "BC-MIS-07005 (one solution expected, so no selection is needed)",
+     "BC-SKL-07033 (naming which answer carries a constant)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07007 (the candidate must satisfy the equation and the initial condition, scored as two demands)"
+    ],
+    "mastered_if": "After the equation has been verified, the candidate is evaluated at the stated input and compared with the stated value, and only then is it called the particular solution; BC-ERR-07007 is absent, so a member of the family is not reported where a specific curve was asked for.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The substitution into the differential equation checks out and the stated point is never tested, BC-ERR-07007 with signal BC-SIG-07006, which is the state where the verdict outruns the evidence.",
+    "prerequisite_gap_if": "The equation itself was never verified because the candidate was not differentiated, a gap at BC-SKL-07006; or the ordered pair was folded into the equation, BC-PRQ-06005 and BC-SKL-07004.",
+    "remediation_target": "Conceptual failure: BC-MIS-07005 (a family satisfies the equation and one member satisfies the point). Procedural failure: BC-SKL-07006 (finishing the equation check before the point check)."
+   },
+   "archetypes": [
+    "BC-QA-07007"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07007"
+   ],
+   "concept": "BC-CON-07002",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Evaluate the candidate at the stated input and compare with the stated value before declaring it the particular solution.",
+   "description_plain": "Check the candidate passes through the given point.",
+   "diagnostic_signals": [
+    "BC-SIG-07006"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7B1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-07007",
+   "learning_objectives": [
+    "BC-LO-FUN-7B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-07003"
+   ],
+   "name": "Confirm that a proposed solution satisfies the initial condition",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-3G"
+   ],
+   "prerequisites": [
+    "BC-SKL-07006",
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-06"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:138"
+   ],
+   "topic": "BC-TOP-0702",
+   "unit": "BC-UNIT-07",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07004 (acceptance or rejection by the look of the function)",
+     "BC-SKL-07007 (checking the initial condition rather than the equation)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07007 (a candidate that fails, where the disagreeing input is the evidence)"
+    ],
+    "mastered_if": "The candidate is substituted and one specific input is exhibited at which the two sides differ, so the negative verdict rests on a displayed disagreement rather than on an assertion; BC-ERR-07008 is absent, and the comparison uses the derivative of the candidate as well as the candidate.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The verdict that the candidate fails is correct and nothing that fails is shown, BC-ERR-07008 with signal BC-SIG-07007, leaving the conclusion unsupported; or the sides are compared symbolically with no input named.",
+    "prerequisite_gap_if": "The substitution itself was never carried out with the derivative, a gap at BC-SKL-07006.",
+    "remediation_target": "Conceptual failure: BC-MIS-07004 (a counterexample is what refutes a candidate). Procedural failure: BC-SKL-07006 (substituting both the candidate and its derivative)."
+   },
+   "archetypes": [
+    "BC-QA-07007"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07008"
+   ],
+   "concept": "BC-CON-07002",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Substitute the candidate and exhibit one input at which the two sides of the differential equation differ.",
+   "description_plain": "Point to the place where the two sides disagree.",
+   "diagnostic_signals": [
+    "BC-SIG-07007"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7B1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-07008",
+   "learning_objectives": [
+    "BC-LO-FUN-7B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-07004"
+   ],
+   "name": "Show that a proposed function is not a solution",
+   "notation": "",
+   "official_evidence": [
+    "BC-FRQ-2015-Q4-D"
+   ],
+   "practice_skills": [
+    "BC-MPS-3G"
+   ],
+   "prerequisites": [
+    "BC-SKL-07006"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-06"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:138"
+   ],
+   "topic": "BC-TOP-0702",
+   "unit": "BC-UNIT-07",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07005 (one solution expected from one equation)",
+     "BC-MIS-07016 (the constant treated as optional, which collapses the family)",
+     "BC-SKL-07033 (identifying which of the two a question asks for)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07007 (several functions can be tested against the same equation)"
+    ],
+    "mastered_if": "The response explains that a general solution carries an undetermined constant and so describes infinitely many curves, and can name two different functions satisfying the same equation; BC-ERR-07009 is absent, so the family with its constant is not spoken of as a single function.",
+    "next_dependent_skills": [
+     "BC-SKL-07033"
+    ],
+    "partially_mastered_if": "The general solution is produced correctly and is described as the solution, signal BC-SIG-07008 and BC-ERR-07009, which loses the distinction between a family and a particular member.",
+    "prerequisite_gap_if": "No candidate has been verified against the equation, so the idea of a solution is not yet in place, a gap at BC-SKL-07006.",
+    "remediation_target": "Conceptual failure: BC-MIS-07005 (the constant indexes a family of curves). Procedural failure: BC-SKL-07006 (verifying two different members of the same family)."
+   },
+   "archetypes": [
+    "BC-QA-07007"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07009"
+   ],
+   "concept": "BC-CON-07003",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-07033"
+   ],
+   "description_formal": "Explain that a general solution describes a family indexed by a constant, so there may be infinitely many solutions to a differential equation (BC-EK-FUN-7B2).",
+   "description_plain": "Say that a whole family of functions can satisfy the same equation.",
+   "diagnostic_signals": [
+    "BC-SIG-07008"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7B2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-07009",
+   "learning_objectives": [
+    "BC-LO-FUN-7B"
+   ],
+   "mapping_tag": "single-source",
+   "misconceptions": [
+    "BC-MIS-07005"
+   ],
+   "name": "State that a differential equation may have infinitely many solutions",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-3G"
+   ],
+   "prerequisites": [
+    "BC-SKL-07006"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-04",
+    "BC-REP-06"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:138",
+    "ced-clarifications-2026:2"
+   ],
+   "topic": "BC-TOP-0702",
+   "unit": "BC-UNIT-07",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07006 (segments read as points of a curve rather than directions)",
+     "BC-SKL-07020 (the same evaluation used as the first Euler step)",
+     "BC-ERR-99035 (solving the equation where it already supplies the slope)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07002 (slopes at two or three distinguishing points decide the match or the drawing)"
+    ],
+    "mastered_if": "The coordinates of the named lattice point are substituted into the right side of the differential equation and the resulting number is reported as the slope of the segment there, with the evaluation done at the point asked for rather than a neighbour; BC-ERR-07010 is absent, and the equation is used directly rather than solved first.",
+    "next_dependent_skills": [
+     "BC-SKL-07011",
+     "BC-SKL-07012",
+     "BC-SKL-07013",
+     "BC-SKL-07016",
+     "BC-SKL-07018",
+     "BC-SKL-07020"
+    ],
+    "partially_mastered_if": "The arithmetic is correct for coordinates one grid step away from the one requested, BC-ERR-07010 with signal BC-SIG-07009; or, as the 2023 Q3 part B and 2015 Q4 part C distinctions record, the equation is evaluated at the target input rather than the initial one, or the initial value is used in place of the slope.",
+    "prerequisite_gap_if": "The coordinates cannot be read off the printed lattice, a figure reading gap at BC-PRQ-07006; or substitution into an expression in two variables fails, BC-PRQ-06005.",
+    "remediation_target": "Conceptual failure: BC-MIS-07006 (the right side assigns a direction at each point). Procedural failure: BC-PRQ-07006 (locating the requested lattice point before substituting)."
+   },
+   "archetypes": [
+    "BC-QA-07002"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07010"
+   ],
+   "concept": "BC-CON-07004",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-07011",
+    "BC-SKL-07012",
+    "BC-SKL-07013",
+    "BC-SKL-07016",
+    "BC-SKL-07018",
+    "BC-SKL-07020"
+   ],
+   "description_formal": "Substitute the coordinates of a lattice point into the right side of the differential equation to obtain the slope of the segment at that point.",
+   "description_plain": "Put the coordinates into the right side and get a number.",
+   "diagnostic_signals": [
+    "BC-SIG-07009"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7C1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-07010",
+   "learning_objectives": [
+    "BC-LO-FUN-7C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-07006"
+   ],
+   "name": "Compute the slope the equation assigns to a given point",
+   "notation": "",
+   "official_evidence": [
+    "BC-FRQ-2015-Q4-A",
+    "BC-FRQ-2015-Q4-C",
+    "BC-FRQ-2023-Q3-B",
+    "BC-FRQ-2024-Q3-B",
+    "BC-FRQ-2026-Q3-A",
+    "BC-FRQ-2026-Q3-B"
+   ],
+   "practice_skills": [
+    "BC-MPS-2C"
+   ],
+   "prerequisites": [
+    "BC-PRQ-07006",
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-06",
+    "BC-REP-07"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:139"
+   ],
+   "topic": "BC-TOP-0703",
+   "unit": "BC-UNIT-07",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07006 (the field treated as a plot of the solution)",
+     "BC-SKL-07014 (drawing a curve rather than the segments)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07002 (the drawing is accepted when the segments agree with the computed slopes)"
+    ],
+    "mastered_if": "A short segment of the computed slope is drawn centred at each indicated lattice point, with the relative steepness of the segments consistent from point to point and horizontal ones drawn flat; BC-ERR-07011 is absent, and segments at points sharing one coordinate agree with the computed values rather than with each other by default.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The slopes are computed correctly and every drawn segment carries the same tilt, BC-ERR-07011 with signal BC-SIG-07010; or the signs of the drawn slopes are reversed, the arithmetic failure the 2015 Q4 part A distinctions separate from a point by point evaluation failure.",
+    "prerequisite_gap_if": "The slope values themselves are wrong, a gap at BC-SKL-07010; or the lattice cannot be read, BC-PRQ-07006.",
+    "remediation_target": "Conceptual failure: BC-MIS-07006 (each segment shows a direction, not a value). Procedural failure: BC-SKL-07010 (computing the slope point by point before drawing)."
+   },
+   "archetypes": [
+    "BC-QA-07002"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07011"
+   ],
+   "concept": "BC-CON-07004",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Draw a short segment of the computed slope centred at each indicated lattice point, keeping the relative steepness of the segments consistent.",
+   "description_plain": "Sketch short lines of the right steepness at the marked points.",
+   "diagnostic_signals": [
+    "BC-SIG-07010"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7C1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-07011",
+   "learning_objectives": [
+    "BC-LO-FUN-7C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-07006"
+   ],
+   "name": "Draw the segments of a slope field at given lattice points",
+   "notation": "",
+   "official_evidence": [
+    "BC-FRQ-2015-Q4-A"
+   ],
+   "practice_skills": [
+    "BC-MPS-2C"
+   ],
+   "prerequisites": [
+    "BC-SKL-07010",
+    "BC-PRQ-07006"
+   ],
+   "representations": [
+    "BC-REP-06",
+    "BC-REP-07"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:139"
+   ],
+   "topic": "BC-TOP-0703",
+   "unit": "BC-UNIT-07",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07007 (a horizontal segment read as a maximum of every solution)",
+     "BC-MIS-07009 (an equilibrium level treated as crossable)",
+     "BC-SKL-07040 (the nonzero zero of a logistic right side as the carrying capacity)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07002 (the horizontal segments are part of what the drawing is checked against)",
+     "BC-QA-07010 (a critical point of a solution is located from the zeros of the right side)"
+    ],
+    "mastered_if": "The right side is set equal to zero and solved, and the set of points where the segments are horizontal is described, with the constant function at that level recognised as itself a solution rather than as a maximum of every curve; BC-ERR-07012 is absent, so the equilibrium level is available for the sketch and for the critical point work.",
+    "next_dependent_skills": [
+     "BC-SKL-07015",
+     "BC-SKL-07017"
+    ],
+    "partially_mastered_if": "The field or the equation is worked through and the right side is never set equal to zero, signal BC-SIG-07011 and BC-ERR-07012; or both factors of a product right side are set to zero where a supplied bound rules one out, the failure the 2024 Q3 part B distinctions record.",
+    "prerequisite_gap_if": "The slope at a point cannot be computed from the right side, a gap at BC-SKL-07010 rather than in solving for the zeros.",
+    "remediation_target": "Conceptual failure: BC-MIS-07007 (a zero rate marks an equilibrium the constant solution occupies). Procedural failure: BC-SKL-07010 (evaluating the right side, then setting it to zero)."
+   },
+   "archetypes": [
+    "BC-QA-07002",
+    "BC-QA-07010"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07012"
+   ],
+   "concept": "BC-CON-07004",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-07015",
+    "BC-SKL-07017"
+   ],
+   "description_formal": "Solve the right side of the differential equation equal to zero and describe the set of points where the segments are horizontal.",
+   "description_plain": "Find the points where the equation gives slope zero.",
+   "diagnostic_signals": [
+    "BC-SIG-07011"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7C2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-07012",
+   "learning_objectives": [
+    "BC-LO-FUN-7C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-07007"
+   ],
+   "name": "Identify where the slope field is horizontal",
+   "notation": "",
+   "official_evidence": [
+    "BC-FRQ-2015-Q4-A",
+    "BC-FRQ-2026-Q3-A",
+    "BC-MCQ-CED-009",
+    "BC-MCQ-SAMPLE-005"
+   ],
+   "practice_skills": [
+    "BC-MPS-2C"
+   ],
+   "prerequisites": [
+    "BC-SKL-07010"
+   ],
+   "representations": [
+    "BC-REP-06",
+    "BC-REP-07"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:139",
+    "sg-24:10"
+   ],
+   "topic": "BC-TOP-0703",
+   "unit": "BC-UNIT-07",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07006 (segments read as points of a curve)",
+     "BC-SKL-07016 (choosing among candidate equations using this pattern)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07002 (the pattern along rows and columns is one of the distinguishing features)"
+    ],
+    "mastered_if": "The form of the right side is used to say whether the slope depends on the independent variable, the dependent variable, or both, and the corresponding pattern is named, so a field constant along rows is matched to a right side free of one variable; BC-ERR-07013 is absent, and the claim is checked against segments that are actually identical.",
+    "next_dependent_skills": [
+     "BC-SKL-07016"
+    ],
+    "partially_mastered_if": "The right side is read correctly and the field is described as varying along a line on which the printed segments are identical, or the reverse, BC-ERR-07013 with signal BC-SIG-07012, which then supports a match on a false feature.",
+    "prerequisite_gap_if": "Individual slopes cannot be computed to test the claim, a gap at BC-SKL-07010.",
+    "remediation_target": "Conceptual failure: BC-MIS-07006 (which variables appear in the right side governs the pattern). Procedural failure: BC-SKL-07010 (computing two slopes on the same line to test the claim)."
+   },
+   "archetypes": [
+    "BC-QA-07002"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07013"
+   ],
+   "concept": "BC-CON-07004",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-07016"
+   ],
+   "description_formal": "Decide from the form of the right side whether the slope depends on the independent variable, the dependent variable, or both, and describe the resulting pattern in the field.",
+   "description_plain": "Notice when the field repeats along rows or along columns.",
+   "diagnostic_signals": [
+    "BC-SIG-07012"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7C2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-07013",
+   "learning_objectives": [
+    "BC-LO-FUN-7C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-07006"
+   ],
+   "name": "Describe how a field depends on only one of the variables",
+   "notation": "",
+   "official_evidence": [
+    "BC-MCQ-CED-009",
+    "BC-MCQ-SAMPLE-005"
+   ],
+   "practice_skills": [
+    "BC-MPS-2C"
+   ],
+   "prerequisites": [
+    "BC-SKL-07010"
+   ],
+   "representations": [
+    "BC-REP-06",
+    "BC-REP-07"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:139"
+   ],
+   "topic": "BC-TOP-0703",
+   "unit": "BC-UNIT-07",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07008 (a curve drawn freely through the field)",
+     "BC-MIS-07006 (segments read as a plot of the solution)",
+     "BC-SKL-07015 (keeping the curve off the equilibrium level)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07001 (the point is scored against four features of the drawn curve at once)"
+    ],
+    "mastered_if": "The curve passes through the stated point, is tangent to the nearby segments along its whole length, and extends reasonably close to the left and right edges of the printed rectangle, with no cusp and no second curve drawn; BC-ERR-07014 and BC-ERR-99024 are absent, which is what the single sketch point requires.",
+    "next_dependent_skills": [
+     "BC-SKL-07015",
+     "BC-SKL-07017"
+    ],
+    "partially_mastered_if": "The curve starts at the correct point and its slope disagrees with nearby segments, or it stops short of an edge, BC-ERR-07014 with signal BC-SIG-07013; the 2024 Q3 part A distinctions separate a curve through a neighbouring lattice point from one that conflicts with the segments.",
+    "prerequisite_gap_if": "The printed point cannot be located in the field, a figure reading gap at BC-PRQ-07006 rather than a sketching gap.",
+    "remediation_target": "Conceptual failure: BC-MIS-07008 (the curve must be tangent to the segment at every point it passes). Procedural failure: BC-ERR-07014 (extending the sketch to both edges of the rectangle)."
+   },
+   "archetypes": [
+    "BC-QA-07001"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07014",
+    "BC-ERR-99024"
+   ],
+   "concept": "BC-CON-07005",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-07015",
+    "BC-SKL-07017"
+   ],
+   "description_formal": "Draw a curve through the stated point that is tangent to the segments of the field and extends across the given rectangle.",
+   "description_plain": "Draw a curve from the marked point that follows the segments.",
+   "diagnostic_signals": [
+    "BC-SIG-07013"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7C3"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-07014",
+   "learning_objectives": [
+    "BC-LO-FUN-7C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-07008"
+   ],
+   "name": "Sketch a solution curve through a given point on a slope field",
+   "notation": "",
+   "official_evidence": [
+    "BC-FRQ-2023-Q3-A",
+    "BC-FRQ-2024-Q3-A"
+   ],
+   "practice_skills": [
+    "BC-MPS-4D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-07006"
+   ],
+   "representations": [
+    "BC-REP-07",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:140",
+    "sg-23:9"
+   ],
+   "topic": "BC-TOP-0704",
+   "unit": "BC-UNIT-07",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07009 (a solution taken to be able to cross an equilibrium level)",
+     "BC-MIS-07008 (the curve drawn freely)",
+     "BC-MIS-07007 (the horizontal level read as a maximum)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07001 (the curve must lie entirely on one side of the horizontal segments)"
+    ],
+    "mastered_if": "The level at which the field is horizontal is recognised as a constant solution, and the sketch stays on the side of it where the initial point lies, approaching it without touching or crossing; BC-ERR-07015 and BC-ERR-99024 are absent, and the response can say that the rate is exactly zero at that level.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The sketch follows the segments correctly elsewhere and rises through the row of horizontal segments, BC-ERR-07015 with signal BC-SIG-07014, which the 2023 Q3 part A distinctions attribute to not using the bound on the solution given in the stem.",
+    "prerequisite_gap_if": "The equilibrium level was never identified because the right side was not set to zero, a gap at BC-SKL-07012; or the curve does not follow the segments at all, BC-SKL-07014.",
+    "remediation_target": "Conceptual failure: BC-MIS-07009 (the constant function at that level is itself a solution). Procedural failure: BC-SKL-07012 (locating the zero slope level before drawing)."
+   },
+   "archetypes": [
+    "BC-QA-07001"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07015",
+    "BC-ERR-99024"
+   ],
+   "concept": "BC-CON-07005",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Recognise the level at which the field is horizontal as a solution the sketched curve cannot cross, and keep the sketch on the side the initial point lies.",
+   "description_plain": "Do not let the curve cross the line of horizontal segments.",
+   "diagnostic_signals": [
+    "BC-SIG-07014"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7C3"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-07015",
+   "learning_objectives": [
+    "BC-LO-FUN-7C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-07008",
+    "BC-MIS-07009"
+   ],
+   "name": "Keep a sketched curve on the correct side of an equilibrium level",
+   "notation": "",
+   "official_evidence": [
+    "BC-FRQ-2023-Q3-A",
+    "BC-FRQ-2024-Q3-A"
+   ],
+   "practice_skills": [
+    "BC-MPS-4D"
+   ],
+   "prerequisites": [
+    "BC-SKL-07014",
+    "BC-SKL-07012"
+   ],
+   "representations": [
+    "BC-REP-07",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:140",
+    "sg-23:9"
+   ],
+   "topic": "BC-TOP-0704",
+   "unit": "BC-UNIT-07",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07006 (the field read as a plot rather than as directions)",
+     "BC-SKL-07013 (describing the pattern, which is the evidence this decision uses)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07002 (two or three distinguishing points separate the candidates)"
+    ],
+    "mastered_if": "Candidate equations are tested against computed slopes at points where they disagree and against the locus where the segments are horizontal, so the match rests on numbers and on the zero slope set rather than on the general look of the figure; BC-ERR-07016 and BC-ERR-07013 are absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "A candidate is chosen with no computed slope and no zero slope locus mentioned, BC-ERR-07016 with signal BC-SIG-07015, which often fails when two candidates share a visible feature; or the dependence on one variable is misread from the field, BC-ERR-07013.",
+    "prerequisite_gap_if": "The slope a candidate assigns to a point cannot be computed, a gap at BC-SKL-07010; or the variable dependence cannot be read from the right side, BC-SKL-07013.",
+    "remediation_target": "Conceptual failure: BC-MIS-07006 (the equation generates the segments point by point). Procedural failure: BC-SKL-07010 (evaluating each candidate where they differ)."
+   },
+   "archetypes": [
+    "BC-QA-07002"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07016"
+   ],
+   "concept": "BC-CON-07005",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Test candidate equations against the observed pattern of the field, using where the segments are horizontal and how the slope varies with each variable.",
+   "description_plain": "Say which equation could have drawn the field.",
+   "diagnostic_signals": [
+    "BC-SIG-07015"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7C3"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-07016",
+   "learning_objectives": [
+    "BC-LO-FUN-7C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-07006"
+   ],
+   "name": "Match a slope field to a differential equation",
+   "notation": "",
+   "official_evidence": [
+    "BC-FRQ-2026-Q3-A",
+    "BC-MCQ-CED-009",
+    "BC-MCQ-SAMPLE-005"
+   ],
+   "practice_skills": [
+    "BC-MPS-4D"
+   ],
+   "prerequisites": [
+    "BC-SKL-07010",
+    "BC-SKL-07013"
+   ],
+   "representations": [
+    "BC-REP-06",
+    "BC-REP-07"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:140"
+   ],
+   "topic": "BC-TOP-0704",
+   "unit": "BC-UNIT-07",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07009 (a solution taken to cross the equilibrium level)",
+     "BC-MIS-07026 (long run behaviour thought to need the solution formula)",
+     "BC-SKL-07041 (the limiting value of a logistic model argued from the equation)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07001 (the sketch has to respect the level it approaches)",
+     "BC-QA-07009 (the limit is argued from the equation rather than from a solved formula)"
+    ],
+    "mastered_if": "The long run behaviour is stated as approaching a horizontal level, growing without bound, or decreasing without bound, and the claim cites the segments of the field or the sign of the right side; BC-ERR-07017 is absent, so the reason accompanies the destination, and an equilibrium level is named as the limit where the field flattens toward it.",
+    "next_dependent_skills": [
+     "BC-SKL-07041"
+    ],
+    "partially_mastered_if": "The destination is correct and neither the segments nor the sign of the rate is cited, BC-ERR-07017 with signal BC-SIG-07016; or, as the 2026 Q3 part A scoring records, the sign of the derivative is discussed without being connected to the printed field.",
+    "prerequisite_gap_if": "The equilibrium level was not identified, a gap at BC-SKL-07012; or the curve through the point was never traced, BC-SKL-07014.",
+    "remediation_target": "Conceptual failure: BC-MIS-07026 (the sign of the rate settles where solutions go). Procedural failure: BC-ERR-07017 (citing the field or the sign as the reason)."
+   },
+   "archetypes": [
+    "BC-QA-07001",
+    "BC-QA-07009"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07017"
+   ],
+   "concept": "BC-CON-07005",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-07041"
+   ],
+   "description_formal": "From the pattern of the segments, state whether solutions approach a horizontal level, grow without bound, or decrease without bound as the independent variable increases.",
+   "description_plain": "Say where the curve is heading as the input grows.",
+   "diagnostic_signals": [
+    "BC-SIG-07016"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7C3"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-07017",
+   "learning_objectives": [
+    "BC-LO-FUN-7C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-07009"
+   ],
+   "name": "Describe the long-run behaviour of a solution from the field",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-4D"
+   ],
+   "prerequisites": [
+    "BC-SKL-07014",
+    "BC-SKL-07012"
+   ],
+   "representations": [
+    "BC-REP-07",
+    "BC-REP-04"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:140"
+   ],
+   "topic": "BC-TOP-0704",
+   "unit": "BC-UNIT-07",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07010 (the direction of an approximation taken from increase or decrease)",
+     "BC-MIS-07009 (an equilibrium level treated as crossable)",
+     "BC-SKL-07023 (using this sign to fix the direction of an Euler error)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07005 (the second derivative in terms of the dependent variable carries its own point)",
+     "BC-QA-07010 (rise and fall are described without solving)"
+    ],
+    "mastered_if": "Increase and decrease are read from the sign of the right side and concavity from the sign of the differentiated right side, with the differential equation substituted back so the second derivative is expressed in the dependent variable rather than in the first derivative; BC-ERR-07018 and BC-ERR-99020 are absent, and the sign is argued across the interval rather than at one input.",
+    "next_dependent_skills": [
+     "BC-SKL-07023"
+    ],
+    "partially_mastered_if": "The right side is differentiated correctly and the result still contains the derivative symbol, signal BC-SIG-07017, which the 2023 Q3 part C scoring records as not earning the first point although the part stays live; or monotonicity is offered where concavity was required, BC-ERR-07018.",
+    "prerequisite_gap_if": "The slope the equation assigns at a point cannot be computed, a gap at BC-SKL-07010; or the chain rule factor is dropped when the right side is differentiated, the failure the 2019 Q4 part B distinctions record.",
+    "remediation_target": "Conceptual failure: BC-MIS-07010 (concavity comes from the second derivative, not from direction). Procedural failure: BC-SKL-07010 (substituting the equation back to remove the first derivative)."
+   },
+   "archetypes": [
+    "BC-QA-07005",
+    "BC-QA-07010"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07018",
+    "BC-ERR-99020"
+   ],
+   "concept": "BC-CON-07005",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-07023"
+   ],
+   "description_formal": "Determine where a solution increases or decreases from the sign of the right side, and its concavity from the sign of the differentiated right side, without solving.",
+   "description_plain": "Use the sign of the derivative and its rate of change to describe the curve.",
+   "diagnostic_signals": [
+    "BC-SIG-07017"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7C3"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-07018",
+   "learning_objectives": [
+    "BC-LO-FUN-7C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-07010"
+   ],
+   "name": "Read monotonicity and concavity of a solution from the equation or the field",
+   "notation": "",
+   "official_evidence": [
+    "BC-FRQ-2019-Q4-B",
+    "BC-FRQ-2015-Q4-B",
+    "BC-FRQ-2023-Q3-A",
+    "BC-FRQ-2023-Q3-C",
+    "BC-FRQ-2024-Q3-A",
+    "BC-FRQ-2024-Q3-B",
+    "BC-FRQ-2025-Q5-A",
+    "BC-FRQ-2026-Q3-A",
+    "BC-FRQ-2026-Q3-C"
+   ],
+   "practice_skills": [
+    "BC-MPS-4D"
+   ],
+   "prerequisites": [
+    "BC-SKL-07010"
+   ],
+   "representations": [
+    "BC-REP-06",
+    "BC-REP-07"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:140",
+    "sg-23:11"
+   ],
+   "topic": "BC-TOP-0704",
+   "unit": "BC-UNIT-07",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07011 (the method read as one tangent line over the whole interval)",
+     "BC-MIS-07012 (each step restarted from the initial value)",
+     "BC-SKL-04029 (a single tangent line approximation, which is the one step case)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07004 (a named number of equal steps, where one full width step is the visible failure)"
+    ],
+    "mastered_if": "The step size is computed as the distance from the initial input to the target input divided by the stated number of equal steps, and that size is used for every step rather than the whole interval being traversed at once; BC-ERR-07019 and BC-ERR-99026 are absent.",
+    "next_dependent_skills": [
+     "BC-SKL-07020"
+    ],
+    "partially_mastered_if": "The arithmetic is correct for a single step across the entire interval, BC-ERR-07019 with signal BC-SIG-07018, so the number of steps named in the prompt was not acted on; or the size is right and the wrong starting input is used.",
+    "prerequisite_gap_if": "The interval endpoints cannot be identified from the prompt, a reading gap at BC-PRQ-07005 rather than an Euler gap.",
+    "remediation_target": "Conceptual failure: BC-MIS-07011 (the derivative is re-evaluated once per step). Procedural failure: BC-PRQ-07005 (dividing the interval length by the step count)."
+   },
+   "archetypes": [
+    "BC-QA-07004"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07019",
+    "BC-ERR-99026"
+   ],
+   "concept": "BC-CON-07006",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-07020"
+   ],
+   "description_formal": "Compute the step size as the difference between the target input and the initial input divided by the stated number of equal steps.",
+   "description_plain": "Divide the length of the interval by how many steps are asked for.",
+   "diagnostic_signals": [
+    "BC-SIG-07018"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7C4"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-07019",
+   "learning_objectives": [
+    "BC-LO-FUN-7C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-07011"
+   ],
+   "name": "Determine the step size from the interval and the number of steps",
+   "notation": "",
+   "official_evidence": [
+    "BC-FRQ-2013-Q5-B",
+    "BC-FRQ-2021-Q5-B",
+    "BC-FRQ-2024-Q5-C",
+    "BC-FRQ-2025-Q5-D",
+    "BC-MCQ-SAMPLE-018",
+    "BC-MCQ-PE2012-016"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-07005"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-03"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:141",
+    "sg-25:23"
+   ],
+   "topic": "BC-TOP-0705",
+   "unit": "BC-UNIT-07",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07011 (one evaluation of the derivative for the whole interval)",
+     "BC-MIS-07012 (the output not advanced between steps)",
+     "BC-SKL-04028 (writing the tangent line rather than stepping along it)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07004 (the demonstration point turns on the first step being correctly anchored)"
+    ],
+    "mastered_if": "The right side is evaluated at the given initial point, multiplied by the step size, and added to the initial output, so the first step starts from the stated initial condition with the derivative expression taken from the equation; BC-ERR-07020 and BC-ERR-99026 are absent, which is what the 2025 scoring calls the three conditions of the first step.",
+    "next_dependent_skills": [
+     "BC-SKL-07021",
+     "BC-SKL-07023"
+    ],
+    "partially_mastered_if": "The step size is right and the derivative is evaluated somewhere other than the initial condition, such as at the target input, BC-ERR-07020 with signal BC-SIG-07019; later rounding or simplification slips do not affect this point under the 2025 guideline.",
+    "prerequisite_gap_if": "The step size is wrong, a gap at BC-SKL-07019; or the right side cannot be evaluated at a point, BC-SKL-07010.",
+    "remediation_target": "Conceptual failure: BC-MIS-07011 (the step advances along the tangent at the current point). Procedural failure: BC-SKL-07010 (evaluating the right side at the initial point)."
+   },
+   "archetypes": [
+    "BC-QA-07004"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07020",
+    "BC-ERR-99026"
+   ],
+   "concept": "BC-CON-07006",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-07021",
+    "BC-SKL-07023"
+   ],
+   "description_formal": "Evaluate the right side at the initial point, multiply by the step size, and add the product to the initial output value.",
+   "description_plain": "Add the step size times the slope at the starting point.",
+   "diagnostic_signals": [
+    "BC-SIG-07019"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7C4"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-07020",
+   "learning_objectives": [
+    "BC-LO-FUN-7C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-07011"
+   ],
+   "name": "Execute the first Euler step from the initial condition",
+   "notation": "",
+   "official_evidence": [
+    "BC-FRQ-2013-Q5-B",
+    "BC-FRQ-2021-Q5-B",
+    "BC-FRQ-2024-Q5-C",
+    "BC-FRQ-2025-Q5-D",
+    "BC-MCQ-SAMPLE-018",
+    "BC-MCQ-PE2012-016"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-SKL-07019",
+    "BC-SKL-07010"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-03",
+    "BC-REP-06"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:141",
+    "sg-25:23"
+   ],
+   "topic": "BC-TOP-0705",
+   "unit": "BC-UNIT-07",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07012 (every step restarted from the initial value)",
+     "BC-MIS-07011 (the derivative evaluated once)",
+     "BC-SKL-07022 (displaying the steps rather than performing them)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07004 (two steps of equal size, where the running point must be updated)"
+    ],
+    "mastered_if": "The second step evaluates the right side at the point the first step produced, using both the advanced input and the advanced output, and advances again by the same step size; BC-ERR-07021 and BC-ERR-99026 are absent, so the same derivative value is not reused and no third step is added.",
+    "next_dependent_skills": [
+     "BC-SKL-07022"
+    ],
+    "partially_mastered_if": "The first step is correct and the second re-evaluates the derivative at the initial point or reuses the initial output, BC-ERR-07021 with signal BC-SIG-07020, which under the 2024 shape costs the demonstration point that requires two correct steps.",
+    "prerequisite_gap_if": "The first step is itself misanchored, a gap at BC-SKL-07020; or the step size is wrong, BC-PRQ-07005 and BC-SKL-07019.",
+    "remediation_target": "Conceptual failure: BC-MIS-07012 (the output advances with the input). Procedural failure: BC-SKL-07020 (carrying the produced point into the next evaluation)."
+   },
+   "archetypes": [
+    "BC-QA-07004"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07021",
+    "BC-ERR-99026"
+   ],
+   "concept": "BC-CON-07006",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-07022"
+   ],
+   "description_formal": "Evaluate the right side at the point produced by the previous step, not at the initial point, and advance again by the step size.",
+   "description_plain": "Start the second step from the value the first step produced.",
+   "diagnostic_signals": [
+    "BC-SIG-07020"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7C4"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-07021",
+   "learning_objectives": [
+    "BC-LO-FUN-7C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-07012"
+   ],
+   "name": "Use the previous approximation as the input for the next step",
+   "notation": "",
+   "official_evidence": [
+    "BC-FRQ-2013-Q5-B",
+    "BC-FRQ-2021-Q5-B",
+    "BC-FRQ-2024-Q5-C",
+    "BC-FRQ-2025-Q5-D",
+    "BC-MCQ-SAMPLE-018",
+    "BC-MCQ-PE2012-016"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-SKL-07020",
+    "BC-PRQ-07005"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-03",
+    "BC-REP-06"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:141",
+    "sg-24:17",
+    "sg-25:23"
+   ],
+   "topic": "BC-TOP-0705",
+   "unit": "BC-UNIT-07",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07013 (the numerical result regarded as the whole response)",
+     "BC-MIS-07011 (a single tangent line, so there is nothing to tabulate)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07004 (the demonstration point and the answer point are separate, so visible steps matter on their own)"
+    ],
+    "mastered_if": "The input, the running output, and the increment are presented for each step with the columns labelled, so the work stands as a demonstration without relying on the final number; BC-ERR-07022 and BC-ERR-99021 are absent, and the derivative expression entered at each step is visible.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The steps were performed correctly and a single number or an unlabelled table is offered with no visible increments, BC-ERR-07022 with signal BC-SIG-07021; an unlabelled table with a wrong answer earns nothing, as the 2025 Q5 part D distinctions record.",
+    "prerequisite_gap_if": "The second step itself restarts from the initial value, a gap at BC-SKL-07021 rather than a presentation gap.",
+    "remediation_target": "Conceptual failure: BC-MIS-07013 (the procedure is the evidence, not the number). Procedural failure: BC-ERR-99021 (labelling the columns and showing each increment)."
+   },
+   "archetypes": [
+    "BC-QA-07004"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07022",
+    "BC-ERR-99021"
+   ],
+   "concept": "BC-CON-07006",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Present the input, the running output, and the increment for each step, labelling the columns so the work stands without an answer.",
+   "description_plain": "Show the steps in a table with the columns named.",
+   "diagnostic_signals": [
+    "BC-SIG-07021"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7C4"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-07022",
+   "learning_objectives": [
+    "BC-LO-FUN-7C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-07013"
+   ],
+   "name": "Lay out the computation as a labelled step table",
+   "notation": "",
+   "official_evidence": [
+    "BC-FRQ-2013-Q5-B",
+    "BC-FRQ-2021-Q5-B",
+    "BC-FRQ-2024-Q5-C",
+    "BC-FRQ-2025-Q5-D"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-SKL-07021"
+   ],
+   "representations": [
+    "BC-REP-03"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:141",
+    "sg-25:23"
+   ],
+   "topic": "BC-TOP-0705",
+   "unit": "BC-UNIT-07",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07010 (the estimate direction taken from monotonicity)",
+     "BC-MIS-07011 (the stepping structure misunderstood, so the error has no source)",
+     "BC-SKL-04030 (the same judgement for a single tangent line approximation)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07005 (the second derivative in the dependent variable and the direction with reason are two separate points)",
+     "BC-QA-07004 (an Euler estimate whose direction is then questioned)"
+    ],
+    "mastered_if": "The sign of the second derivative of the solution is determined over the interval, expressed in the dependent variable, and the conclusion follows that tangent line steps underestimate a concave up solution and overestimate a concave down one; BC-ERR-07023, BC-ERR-07018, and BC-ERR-99020 are absent, so concavity rather than monotonicity carries the reason.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The direction of the error is named correctly and the reason cited is that the solution is increasing or decreasing, or no reason is given at all, signal BC-SIG-07022 with BC-ERR-07018 and BC-ERR-07023; or the second derivative is left in terms of the first derivative, which does not earn the first point of the 2023 Q3 part C shape.",
+    "prerequisite_gap_if": "The second derivative of the solution cannot be produced from the equation, a gap at BC-SKL-07018; or there is no approximation to judge, BC-SKL-07020.",
+    "remediation_target": "Conceptual failure: BC-MIS-07010 (concavity places the tangent steps below or above the curve). Procedural failure: BC-SKL-07018 (substituting the equation back so the sign can be read)."
+   },
+   "archetypes": [
+    "BC-QA-07004",
+    "BC-QA-07005"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07023",
+    "BC-ERR-99020"
+   ],
+   "concept": "BC-CON-07006",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Determine the sign of the second derivative of the solution over the interval and conclude that the tangent line steps underestimate a concave up solution and overestimate a concave down one.",
+   "description_plain": "Say whether the estimate is too high or too low from the bending of the solution.",
+   "diagnostic_signals": [
+    "BC-SIG-07022"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7C4"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-07023",
+   "learning_objectives": [
+    "BC-LO-FUN-7C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-07010"
+   ],
+   "name": "Decide the direction of the Euler error from concavity",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-SKL-07020",
+    "BC-SKL-07018"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-06"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:141",
+    "sg-23:11"
+   ],
+   "topic": "BC-TOP-0705",
+   "unit": "BC-UNIT-07",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07014 (any equation assumed separable)",
+     "BC-MIS-07015 (one side antidifferentiated as though the rearrangement were the method)",
+     "BC-SKL-06047 (substitution in an antiderivative, which the separated side often needs)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07003 (separation is the gateway point, and its absence forfeits the part)"
+    ],
+    "mastered_if": "The equation is rewritten with the dependent variable and its differential on one side and the independent variable and its differential on the other, with constant factors placed on the side they belong to and a differential present on each side; BC-ERR-07024, BC-ERR-99014, and BC-ERR-99006 are absent, and without this step the 2023 shape awards none of the four points.",
+    "next_dependent_skills": [
+     "BC-SKL-07025",
+     "BC-SKL-07028"
+    ],
+    "partially_mastered_if": "The equation is antidifferentiated as written with both variables on the same side, BC-ERR-07024 with signal BC-SIG-07023; or the separation is attempted and a constant factor is left with the wrong differential, or the shifted quantity is placed on the wrong side, the failures BC-ERR-99014 and the 2026 Q3 part D distinctions record.",
+    "prerequisite_gap_if": "The right side does not factor into a function of each variable, so separation is not available, a gap at BC-SKL-07028; or the algebraic rearrangement itself fails, BC-PRQ-07002.",
+    "remediation_target": "Conceptual failure: BC-MIS-07014 (separation requires the right side to factor). Procedural failure: BC-ERR-99006 (keeping a differential on each side of the separated equation)."
+   },
+   "archetypes": [
+    "BC-QA-07003"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07024",
+    "BC-ERR-99014",
+    "BC-ERR-99006"
+   ],
+   "concept": "BC-CON-07007",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-07025",
+    "BC-SKL-07028"
+   ],
+   "description_formal": "Rewrite the differential equation so that one side contains only the dependent variable together with its differential and the other only the independent variable with its differential.",
+   "description_plain": "Move all the terms in one variable to one side with its differential.",
+   "diagnostic_signals": [
+    "BC-SIG-07023"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7D1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-07024",
+   "learning_objectives": [
+    "BC-LO-FUN-7D"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-07014"
+   ],
+   "name": "Separate the variables onto opposite sides of the equation",
+   "notation": "",
+   "official_evidence": [
+    "BC-FRQ-2019-Q4-C",
+    "BC-FRQ-2013-Q5-C",
+    "BC-FRQ-2021-Q5-C",
+    "BC-FRQ-2023-Q3-D",
+    "BC-FRQ-2024-Q3-C",
+    "BC-FRQ-2026-Q3-D"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-07002",
+    "BC-SKL-06047"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-06"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:142",
+    "sg-23:12"
+   ],
+   "topic": "BC-TOP-0706",
+   "unit": "BC-UNIT-07",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07015 (antidifferentiating one side treated as sufficient)",
+     "BC-MIS-07014 (separation applied where it does not hold)",
+     "BC-SKL-06047 (the substitution the independent side often requires)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07003 (the antiderivative points are scored separately from the separation)"
+    ],
+    "mastered_if": "Both sides of the separated equation are antidifferentiated with respect to their own variables, producing a logarithm from a reciprocal side and a power from a power side, with any inner constant handled by substitution; BC-ERR-07025 and BC-ERR-99014 are absent, and a product on the independent side is recognised as needing parts rather than factor by factor treatment.",
+    "next_dependent_skills": [
+     "BC-SKL-07026"
+    ],
+    "partially_mastered_if": "The separated form is right and only one side is antidifferentiated, BC-ERR-07025 with signal BC-SIG-07024; or both sides are antidifferentiated and one antiderivative is wrong, such as a logarithm used for a reciprocal square, the misfire the 2013 Q5 part C distinctions separate from a separation failure.",
+    "prerequisite_gap_if": "The variables were never separated, a gap at BC-SKL-07024; or the antiderivative of the shape involved is unavailable, BC-PRQ-06003 and BC-SKL-06034.",
+    "remediation_target": "Conceptual failure: BC-MIS-07015 (both differentials must be integrated). Procedural failure: BC-SKL-06034 (the antiderivative of the reciprocal and power shapes that arise)."
+   },
+   "archetypes": [
+    "BC-QA-07003"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07025",
+    "BC-ERR-99014"
+   ],
+   "concept": "BC-CON-07007",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-07026"
+   ],
+   "description_formal": "Antidifferentiate the two sides of the separated equation, producing a logarithm where the dependent side is a reciprocal and a power where it is a power.",
+   "description_plain": "Integrate each side with respect to its own variable.",
+   "diagnostic_signals": [
+    "BC-SIG-07024"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7D2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-07025",
+   "learning_objectives": [
+    "BC-LO-FUN-7D"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-07015"
+   ],
+   "name": "Antidifferentiate both sides of the separated equation",
+   "notation": "",
+   "official_evidence": [
+    "BC-FRQ-2019-Q4-C",
+    "BC-FRQ-2013-Q5-C",
+    "BC-FRQ-2021-Q5-C",
+    "BC-FRQ-2023-Q3-D",
+    "BC-FRQ-2024-Q3-C",
+    "BC-FRQ-2026-Q3-D"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06003",
+    "BC-SKL-06034",
+    "BC-SKL-07024"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:142",
+    "sg-23:12",
+    "sg-24:11"
+   ],
+   "topic": "BC-TOP-0706",
+   "unit": "BC-UNIT-07",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07016 (the constant of integration treated as optional)",
+     "BC-MIS-07005 (one solution expected, so no constant is needed)",
+     "BC-SKL-07029 (using the constant once it is in place)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07003 (the constant carries a point and gates the two that follow)"
+    ],
+    "mastered_if": "One constant of integration is written on a single side of the antiderivative equation, at the antidifferentiation stage rather than after any exponentiation, so the family it indexes is intact when the initial condition arrives; BC-ERR-07026 is absent, and without the constant the 2023 shape caps the part at two points.",
+    "next_dependent_skills": [
+     "BC-SKL-07027",
+     "BC-SKL-07029"
+    ],
+    "partially_mastered_if": "Both antiderivatives are correct and no constant appears anywhere, BC-ERR-07026 with signal BC-SIG-07025, so a general solution is produced where a particular one was asked for; or the constant is attached after exponentiating, the stage error the 2023 Q3 part D and 2024 Q3 part C distinctions record.",
+    "prerequisite_gap_if": "Only one side was antidifferentiated, a gap at BC-SKL-07025, so there is no equation for a constant to sit in.",
+    "remediation_target": "Conceptual failure: BC-MIS-07016 (the constant is what the initial condition acts on). Procedural failure: BC-ERR-07029 (placing the constant before any exponentiation)."
+   },
+   "archetypes": [
+    "BC-QA-07003"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07026"
+   ],
+   "concept": "BC-CON-07007",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-07027",
+    "BC-SKL-07029"
+   ],
+   "description_formal": "Collect the two constants of antidifferentiation into one constant placed on a single side of the resulting equation.",
+   "description_plain": "Add one constant, on one side only.",
+   "diagnostic_signals": [
+    "BC-SIG-07025"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7D2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-07026",
+   "learning_objectives": [
+    "BC-LO-FUN-7D"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-07016"
+   ],
+   "name": "Include a single constant of integration",
+   "notation": "",
+   "official_evidence": [
+    "BC-FRQ-2019-Q4-C",
+    "BC-FRQ-2013-Q5-C",
+    "BC-FRQ-2021-Q5-C",
+    "BC-FRQ-2023-Q3-D",
+    "BC-FRQ-2024-Q3-C",
+    "BC-FRQ-2026-Q3-D"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-SKL-07025"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:142",
+    "sg-23:12"
+   ],
+   "topic": "BC-TOP-0706",
+   "unit": "BC-UNIT-07",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07017 (an implicit relation treated as a finished solution)",
+     "BC-MIS-07016 (the constant omitted, so the inversion has no parameter)",
+     "BC-SKL-07030 (resolving the absolute value that the inversion exposes)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07003 (solving for the dependent variable is the last of the four points)"
+    ],
+    "mastered_if": "The antiderivative equation is inverted, by exponentiating or otherwise, to give the dependent variable explicitly in terms of the independent variable and the constant, so a value can be read off at any stated input; BC-ERR-07027 is absent and the answer is not left as an implicit relation when an expression was requested.",
+    "next_dependent_skills": [
+     "BC-SKL-07031",
+     "BC-SKL-07035"
+    ],
+    "partially_mastered_if": "The constant is found and the dependent variable is never isolated, BC-ERR-07027 with signal BC-SIG-07026, which the 2013 Q5 part C and 2021 Q5 part C distinctions record as the final solving point lost with the rest of the part correct.",
+    "prerequisite_gap_if": "The constant is absent or misplaced so there is nothing coherent to invert, a gap at BC-SKL-07026; or the logarithm and exponential inversion itself fails, BC-PRQ-07001.",
+    "remediation_target": "Conceptual failure: BC-MIS-07017 (an explicit expression is what the question asks for). Procedural failure: BC-PRQ-07001 (exponentiating to undo a logarithm)."
+   },
+   "archetypes": [
+    "BC-QA-07003"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07027"
+   ],
+   "concept": "BC-CON-07007",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-07031",
+    "BC-SKL-07035"
+   ],
+   "description_formal": "Exponentiate or otherwise invert the antiderivative equation to write the dependent variable explicitly in terms of the independent variable and the constant.",
+   "description_plain": "Rearrange to get the dependent variable by itself.",
+   "diagnostic_signals": [
+    "BC-SIG-07026"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7D2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-07027",
+   "learning_objectives": [
+    "BC-LO-FUN-7D"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-07017"
+   ],
+   "name": "Solve the resulting equation for the dependent variable",
+   "notation": "",
+   "official_evidence": [
+    "BC-FRQ-2019-Q4-C",
+    "BC-FRQ-2013-Q5-C",
+    "BC-FRQ-2021-Q5-C",
+    "BC-FRQ-2023-Q3-D",
+    "BC-FRQ-2024-Q3-C",
+    "BC-FRQ-2026-Q3-D"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-SKL-07026",
+    "BC-PRQ-07001"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:142",
+    "sg-23:12"
+   ],
+   "topic": "BC-TOP-0706",
+   "unit": "BC-UNIT-07",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07014 (any differential equation assumed separable)",
+     "BC-MIS-07015 (one side integrated regardless of structure)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07003 (a right side that does not factor exposes the habit of separating anyway)"
+    ],
+    "mastered_if": "The right side is tested for whether it factors as a function of the independent variable multiplied by a function of the dependent variable, and a sum in both variables is named as not separable rather than forced apart; BC-ERR-07028 is absent, so no invalid separated form is produced.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The separation procedure is executed competently and is applied to a right side that does not factor, so terms are moved across as though it did, BC-ERR-07028 with signal BC-SIG-07027, leaving an equation not equivalent to the original.",
+    "prerequisite_gap_if": "The separation move itself is not understood, a gap at BC-SKL-07024 rather than in the recognition test.",
+    "remediation_target": "Conceptual failure: BC-MIS-07014 (a sum in both variables cannot be separated). Procedural failure: BC-SKL-07024 (writing the right side as a product of two single variable factors before moving anything)."
+   },
+   "archetypes": [
+    "BC-QA-07003"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07028"
+   ],
+   "concept": "BC-CON-07007",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Test whether the right side factors as a function of the independent variable multiplied by a function of the dependent variable, and say so when it does not.",
+   "description_plain": "Notice when the right side will not factor into the two pieces.",
+   "diagnostic_signals": [
+    "BC-SIG-07027"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7D1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-07028",
+   "learning_objectives": [
+    "BC-LO-FUN-7D"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-07014"
+   ],
+   "name": "Recognise when a differential equation is not separable",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-SKL-07024"
+   ],
+   "representations": [
+    "BC-REP-06"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:142"
+   ],
+   "topic": "BC-TOP-0706",
+   "unit": "BC-UNIT-07",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07016 (the constant treated as optional)",
+     "BC-MIS-07003 (the initial condition treated as part of the equation)",
+     "BC-SKL-07030 (using the same point to settle a sign rather than the constant)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07003 (the constant point is earned for including it and substituting the initial values into that equation)"
+    ],
+    "mastered_if": "The stated input and output are substituted into the antiderivative equation that still contains the constant, before any exponentiation, and the constant is solved for there; BC-ERR-07029 and BC-ERR-99014 are absent, so the constant is not evaluated in an expression where it has already changed form.",
+    "next_dependent_skills": [
+     "BC-SKL-07030",
+     "BC-SKL-07033",
+     "BC-SKL-07035",
+     "BC-SKL-07038"
+    ],
+    "partially_mastered_if": "The general solution is correct and the response exponentiates first and then substitutes, so the constant is fixed in its transformed form, BC-ERR-07029 with signal BC-SIG-07028; the 2019 Q4 part C distinctions call this an order of operations failure inside the method.",
+    "prerequisite_gap_if": "No constant was written at the antidifferentiation stage, a gap at BC-SKL-07026; or the initial condition was folded into the equation, BC-SKL-07004.",
+    "remediation_target": "Conceptual failure: BC-MIS-07016 (the initial condition selects one member by fixing the constant). Procedural failure: BC-ERR-07029 (substituting before the equation is transformed)."
+   },
+   "archetypes": [
+    "BC-QA-07003"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07029",
+    "BC-ERR-99014"
+   ],
+   "concept": "BC-CON-07008",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-07030",
+    "BC-SKL-07033",
+    "BC-SKL-07035",
+    "BC-SKL-07038"
+   ],
+   "description_formal": "Substitute the stated input and output into the antiderivative equation that contains the constant, and solve for the constant.",
+   "description_plain": "Put the given point in and solve for the constant.",
+   "diagnostic_signals": [
+    "BC-SIG-07028"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7E1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-07029",
+   "learning_objectives": [
+    "BC-LO-FUN-7E"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-07016"
+   ],
+   "name": "Substitute the initial condition to evaluate the constant of integration",
+   "notation": "",
+   "official_evidence": [
+    "BC-FRQ-2019-Q4-C",
+    "BC-FRQ-2013-Q5-C",
+    "BC-FRQ-2021-Q5-C",
+    "BC-FRQ-2014-Q6-C",
+    "BC-FRQ-2023-Q3-D",
+    "BC-FRQ-2024-Q3-C",
+    "BC-FRQ-2026-Q3-D"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-SKL-06044",
+    "BC-SKL-07004",
+    "BC-SKL-07026"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-06"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:143",
+    "sg-23:12"
+   ],
+   "topic": "BC-TOP-0707",
+   "unit": "BC-UNIT-07",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07018 (an absolute value dropped without checking)",
+     "BC-MIS-07019 (a solution formula assumed valid everywhere)",
+     "BC-SKL-07031 (the domain the chosen branch implies)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07003 (the branch choice is folded into the constant point)",
+     "BC-QA-07011 (the branch and the interval are both demanded)"
+    ],
+    "mastered_if": "The sign of the expression inside the absolute value is settled from the initial value or from a bound stated in the stem, and the absolute value is dropped with the branch that is consistent with the given point; BC-ERR-07030 and BC-ERR-99037 are absent, so the resulting solution does not contradict the initial condition.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The antidifferentiation and the constant are correct and the absolute value is removed by habit with the sign that contradicts the given point, BC-ERR-07030 with signal BC-SIG-07029; the 2023 Q3 part D and 2024 Q3 part C distinctions attribute this to not using the stated bound on the quantity.",
+    "prerequisite_gap_if": "The constant was never fixed from the initial condition, a gap at BC-SKL-07029; or the meaning of the absolute value bars is unclear, BC-PRQ-07004.",
+    "remediation_target": "Conceptual failure: BC-MIS-07018 (the initial point decides which branch holds). Procedural failure: BC-PRQ-07004 (evaluating the enclosed expression at the initial input)."
+   },
+   "archetypes": [
+    "BC-QA-07003",
+    "BC-QA-07011"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07030",
+    "BC-ERR-99037"
+   ],
+   "concept": "BC-CON-07008",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Determine from the initial value or a stated bound whether the expression inside an absolute value is positive or negative on the interval, and drop the absolute value accordingly.",
+   "description_plain": "Use the given point to decide which sign applies.",
+   "diagnostic_signals": [
+    "BC-SIG-07029"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7E1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-07030",
+   "learning_objectives": [
+    "BC-LO-FUN-7E"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-07018"
+   ],
+   "name": "Resolve an absolute value or a sign ambiguity from the initial condition",
+   "notation": "",
+   "official_evidence": [
+    "BC-FRQ-2023-Q3-D",
+    "BC-FRQ-2024-Q3-C",
+    "BC-FRQ-2026-Q3-D"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-SKL-07029",
+    "BC-PRQ-07004"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-06"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:143",
+    "sg-23:11",
+    "sg-24:11"
+   ],
+   "topic": "BC-TOP-0707",
+   "unit": "BC-UNIT-07",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07019 (a solution formula taken to hold on every input)",
+     "BC-MIS-07018 (branch and domain conflated)",
+     "BC-SKL-07030 (choosing the branch, which precedes stating the interval)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07011 (the domain statement is scored as part of the final answer where it is demanded)"
+    ],
+    "mastered_if": "The largest interval containing the initial input on which the solution expression is defined and continuous is reported, with the input where the expression fails named as the boundary; BC-ERR-07031 is absent, so the formula is not claimed for every input and the reported interval contains the initial point.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "An explicit expression is produced and no domain statement accompanies it although one was demanded, signal BC-SIG-07030; or an interval is reported that excludes the initial input, BC-ERR-07031.",
+    "prerequisite_gap_if": "The dependent variable was never isolated, so there is no expression whose domain could be discussed, a gap at BC-SKL-07027; or where the expression fails to be defined cannot be located, BC-PRQ-05003.",
+    "remediation_target": "Conceptual failure: BC-MIS-07019 (a particular solution lives on one interval around its initial point). Procedural failure: BC-PRQ-05003 (finding where the expression is undefined)."
+   },
+   "archetypes": [
+    "BC-QA-07011"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07031"
+   ],
+   "concept": "BC-CON-07009",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Report the largest interval containing the initial input on which the solution expression is defined and continuous, and note why the rest is excluded.",
+   "description_plain": "Say on which interval the particular solution is valid.",
+   "diagnostic_signals": [
+    "BC-SIG-07030"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7E3"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-07031",
+   "learning_objectives": [
+    "BC-LO-FUN-7E"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-07019"
+   ],
+   "name": "State the domain restriction the initial condition selects",
+   "notation": "",
+   "official_evidence": [
+    "BC-FRQ-2013-Q5-C"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-SKL-07027",
+    "BC-PRQ-05003"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-04"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:143"
+   ],
+   "topic": "BC-TOP-0707",
+   "unit": "BC-UNIT-07",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07020 (a particular solution assumed to need closed form)",
+     "BC-MIS-07017 (an unresolved form read as unfinished)",
+     "BC-SKL-07027 (producing an explicit closed form instead)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07011 (the accumulation form is an accepted way to present the particular solution)"
+    ],
+    "mastered_if": "Where the right side depends only on the independent variable, the particular solution is written as the initial value plus the definite integral of the right side from the initial input to the variable input, with the differential present and the variable of integration distinct from the upper limit; BC-ERR-07032 and BC-ERR-99006 are absent, and the expression returns the initial value at the initial input.",
+    "next_dependent_skills": [
+     "BC-SKL-07038"
+    ],
+    "partially_mastered_if": "The accumulation structure is chosen correctly and the initial value is omitted so an integral alone is offered, signal BC-SIG-07031 and BC-ERR-07032; or the differential is left off the integral, BC-ERR-99006, which leaves the setup ambiguous.",
+    "prerequisite_gap_if": "The initial condition was not extracted as an ordered pair, a gap at BC-SKL-07004; or the accumulation function form itself is unavailable, BC-SKL-06044.",
+    "remediation_target": "Conceptual failure: BC-MIS-07020 (the initial value plus an integral satisfies both the equation and the condition). Procedural failure: BC-ERR-99006 (closing the integral with its differential)."
+   },
+   "archetypes": [
+    "BC-QA-07011"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07032",
+    "BC-ERR-99006"
+   ],
+   "concept": "BC-CON-07008",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-07038"
+   ],
+   "description_formal": "For a differential equation whose right side depends only on the independent variable, write the particular solution as the initial value plus the definite integral of the right side from the initial input to the variable input.",
+   "description_plain": "Express the solution as the starting value plus an integral.",
+   "diagnostic_signals": [
+    "BC-SIG-07031"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7E2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-07032",
+   "learning_objectives": [
+    "BC-LO-FUN-7E"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-07020"
+   ],
+   "name": "Write a particular solution as an accumulation function",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-SKL-07004",
+    "BC-SKL-06044"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-06"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:143"
+   ],
+   "topic": "BC-TOP-0707",
+   "unit": "BC-UNIT-07",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07005 (one solution expected per equation)",
+     "BC-MIS-07016 (the constant treated as optional)",
+     "BC-SKL-07007 (checking a candidate against the initial condition)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07003 (a particular solution is demanded explicitly)",
+     "BC-QA-07007 (a candidate is tested against the equation and then the point)"
+    ],
+    "mastered_if": "The response says which of the two the question asks for, describing the general solution as a family indexed by an undetermined constant and the particular solution as the single member a stated point selects, and the answer given carries a constant only when the general solution was requested; BC-ERR-07033 and BC-ERR-07009 are absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The mathematics is complete and a constant remains where a particular solution was asked for, or the constant is fixed where the general solution was, BC-ERR-07033 with signal BC-SIG-07032, so the answer is of the wrong kind for the question posed.",
+    "prerequisite_gap_if": "The constant was never introduced, a gap at BC-SKL-07026 and BC-SKL-07029; or the idea that infinitely many functions satisfy one equation is absent, BC-SKL-07009.",
+    "remediation_target": "Conceptual failure: BC-MIS-07005 (the constant is what distinguishes the family from the member). Procedural failure: BC-SKL-07029 (fixing or keeping the constant according to the question)."
+   },
+   "archetypes": [
+    "BC-QA-07003",
+    "BC-QA-07007"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07033"
+   ],
+   "concept": "BC-CON-07008",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Explain that the general solution carries an undetermined constant describing infinitely many curves, while a stated point selects exactly one of them.",
+   "description_plain": "Say which answer carries a constant and which does not.",
+   "diagnostic_signals": [
+    "BC-SIG-07032"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7E1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-07033",
+   "learning_objectives": [
+    "BC-LO-FUN-7E"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-07005",
+    "BC-MIS-07016"
+   ],
+   "name": "Distinguish the general solution family from the particular solution",
+   "notation": "",
+   "official_evidence": [
+    "BC-FRQ-2015-Q4-D"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-SKL-07029",
+    "BC-SKL-07009"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-04"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:143"
+   ],
+   "topic": "BC-TOP-0707",
+   "unit": "BC-UNIT-07",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07021 (proportional growth read as linear growth)",
+     "BC-MIS-07001 (proportional to read as equal to)",
+     "BC-SKL-07039 (the logistic model, which adds the limiting factor)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07008 (the proportional model is the target form the rest of the part is built on)"
+    ],
+    "mastered_if": "The proportional statement is written as the derivative of the quantity equal to a named constant multiplied by the quantity, so the model belongs to the exponential family and the rate doubles when the amount doubles; BC-ERR-07034 and BC-ERR-07001 are absent, so the quantity is not written as an initial value plus a constant multiple of the independent variable.",
+    "next_dependent_skills": [
+     "BC-SKL-07035"
+    ],
+    "partially_mastered_if": "A model is written with the right variables and a constant, and it is linear in form, so the quantity grows by equal amounts rather than at a rate proportional to itself, BC-ERR-07034 with signal BC-SIG-07033; or the constant of proportionality is dropped, BC-ERR-07001.",
+    "prerequisite_gap_if": "The proportionality cannot be turned into a constant multiple at all, a gap at BC-SKL-07001 and BC-PRQ-07003.",
+    "remediation_target": "Conceptual failure: BC-MIS-07021 (a constant rate constant is not a constant rate). Procedural failure: BC-SKL-07001 (writing the derivative equal to a constant times the quantity)."
+   },
+   "archetypes": [
+    "BC-QA-07008"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07034"
+   ],
+   "concept": "BC-CON-07010",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-07035"
+   ],
+   "description_formal": "Write the differential equation with the derivative of the quantity equal to a constant multiplied by the quantity, naming the constant of proportionality.",
+   "description_plain": "Turn rate proportional to amount into the standard equation.",
+   "diagnostic_signals": [
+    "BC-SIG-07033"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7F2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-07034",
+   "learning_objectives": [
+    "BC-LO-FUN-7F",
+    "BC-LO-FUN-7G"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-07001",
+    "BC-MIS-07021"
+   ],
+   "name": "Write the exponential model from a proportionality statement",
+   "notation": "",
+   "official_evidence": [
+    "BC-MCQ-SAMPLE-010",
+    "BC-MCQ-PE2012-014"
+   ],
+   "practice_skills": [
+    "BC-MPS-3G"
+   ],
+   "prerequisites": [
+    "BC-SKL-07001",
+    "BC-PRQ-07003"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-06"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:144"
+   ],
+   "topic": "BC-TOP-0708",
+   "unit": "BC-UNIT-07",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07021 (linear growth expected from proportional growth)",
+     "BC-MIS-07016 (the constant omitted, so the initial value has no place to go)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07008 (the explicit exponential solution is the scored target of the separable work)"
+    ],
+    "mastered_if": "The proportional model is solved with the stated initial value to give the initial value multiplied by the exponential of the constant times the independent variable, so the initial amount is the leading coefficient and the rate constant sits in the exponent; BC-ERR-07035 is absent, and the formula returns the initial value at the initial input.",
+    "next_dependent_skills": [
+     "BC-SKL-07036"
+    ],
+    "partially_mastered_if": "The exponential family is chosen correctly and the initial value appears inside the exponent, or the rate constant multiplies outside it, BC-ERR-07035 with signal BC-SIG-07034, so the formula fails either the initial condition or the equation.",
+    "prerequisite_gap_if": "The separation and constant work that produces the exponential form is incomplete, a gap at BC-SKL-07027 and BC-SKL-07029; or the proportional model was never written, BC-SKL-07034.",
+    "remediation_target": "Conceptual failure: BC-MIS-07021 (the exponential is what proportional growth produces). Procedural failure: BC-SKL-07029 (fixing the leading coefficient from the initial value)."
+   },
+   "archetypes": [
+    "BC-QA-07008"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07035"
+   ],
+   "concept": "BC-CON-07010",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-07036"
+   ],
+   "description_formal": "Solve the proportional growth equation with the stated initial value, obtaining the initial value multiplied by the exponential of the constant times the independent variable.",
+   "description_plain": "Write the solution as the starting amount times an exponential.",
+   "diagnostic_signals": [
+    "BC-SIG-07034"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7G1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-07035",
+   "learning_objectives": [
+    "BC-LO-FUN-7F",
+    "BC-LO-FUN-7G"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-07021"
+   ],
+   "name": "Produce the exponential solution from the model and the initial value",
+   "notation": "",
+   "official_evidence": [
+    "BC-MCQ-SAMPLE-010"
+   ],
+   "practice_skills": [
+    "BC-MPS-3G"
+   ],
+   "prerequisites": [
+    "BC-SKL-07034",
+    "BC-SKL-07027",
+    "BC-SKL-07029"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-06"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:144"
+   ],
+   "topic": "BC-TOP-0708",
+   "unit": "BC-UNIT-07",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07022 (the constant assumed readable from one data pair)",
+     "BC-MIS-07021 (a linear reading of the growth)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07008 (a second pair is supplied precisely so the exponent can be pinned)"
+    ],
+    "mastered_if": "A second input and output pair is substituted into the exponential solution and the rate constant is extracted with a logarithm, the initial value having already fixed the leading coefficient; BC-ERR-07036 is absent, so two pieces of data are used rather than one.",
+    "next_dependent_skills": [
+     "BC-SKL-07037"
+    ],
+    "partially_mastered_if": "The exponential form is correct and the constant is computed from the initial condition alone, so it remains undetermined and the reported number is arbitrary, BC-ERR-07036 with signal BC-SIG-07035.",
+    "prerequisite_gap_if": "The exponential solution is misassembled, a gap at BC-SKL-07035; or the logarithm needed to isolate the exponent is unavailable, BC-PRQ-07001 and BC-PRQ-06003.",
+    "remediation_target": "Conceptual failure: BC-MIS-07022 (the initial value and a second pair play different roles). Procedural failure: BC-PRQ-07001 (taking a logarithm to isolate the exponent)."
+   },
+   "archetypes": [
+    "BC-QA-07008"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-07036"
+   ],
+   "concept": "BC-CON-07010",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-07037"
+   ],
+   "description_formal": "Substitute a second input and output into the exponential solution and solve for the constant using a logarithm.",
+   "description_plain": "Use another known value to pin down the constant.",
+   "diagnostic_signals": [
+    "BC-SIG-07035"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7G1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-07036",
+   "learning_objectives": [
+    "BC-LO-FUN-7F",
+    "BC-LO-FUN-7G"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-07022"
+   ],
+   "name": "Determine the constant of proportionality from a second data pair",
+   "notation": "",
+   "official_evidence": [
+    "BC-MCQ-SAMPLE-010"
+   ],
+   "practice_skills": [
+    "BC-MPS-3G"
+   ],
+   "prerequisites": [
+    "BC-SKL-07035",
+    "BC-PRQ-07001",
+    "BC-PRQ-06003"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-03"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:144"
+   ],
+   "topic": "BC-TOP-0708",
+   "unit": "BC-UNIT-07",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07023 (a number treated as a complete interpretation)",
+     "BC-MIS-07021 (the constant misread as a constant rate)",
+     "BC-SKL-07043 (interpreting a logistic model rather than an exponential one)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07008 (the model is read back into the situation with units)"
+    ],
+    "mastered_if": "The sign of the rate constant is read as growth or decay and its size is described as how quickly the modelled quantity changes, with the quantity named and the units given as the reciprocal of the independent variable unit; BC-ERR-07037, BC-ERR-99005, and BC-ERR-99027 are absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The numerical constant is reported and the sentence does not say whether the quantity grows or decays, or gives no units, BC-ERR-07037 with signal BC-SIG-07036, so the interpretation point that requires quantity, units, and direction is not complete.",
+    "prerequisite_gap_if": "The constant was never determined from a second data pair, a gap at BC-SKL-07036; or the variables and their units were never named, BC-SKL-07003.",
+    "remediation_target": "Conceptual failure: BC-MIS-07023 (an interpretation names the quantity, the direction, and the units). Procedural failure: BC-SKL-07003 (units of the constant derived from the two named variables)."
+   },
+   "archetypes": [
+    "BC-QA-07008"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07037",
+    "BC-ERR-99005",
+    "BC-ERR-99027"
+   ],
+   "concept": "BC-CON-07010",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "State that a positive constant gives growth and a negative one decay, and describe what its size says about how quickly the modelled quantity changes, with units.",
+   "description_plain": "Say what the constant means for the situation.",
+   "diagnostic_signals": [
+    "BC-SIG-07036"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7F2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-07037",
+   "learning_objectives": [
+    "BC-LO-FUN-7F",
+    "BC-LO-FUN-7G"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-07023"
+   ],
+   "name": "Interpret the sign and size of the constant in context",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-3G"
+   ],
+   "prerequisites": [
+    "BC-SKL-07036",
+    "BC-SKL-07003"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-05"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:144"
+   ],
+   "topic": "BC-TOP-0708",
+   "unit": "BC-UNIT-07",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07020 (a closed form thought necessary where an integral form suffices)",
+     "BC-MIS-04004 (position, velocity, and acceleration held as unrelated formulas)",
+     "BC-SKL-07032 (writing the same answer as an accumulation)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07011 (the particular solution may be presented as the initial value plus an integral)",
+     "BC-QA-07008 (the model is solved and read back into the motion context)"
+    ],
+    "mastered_if": "A differential equation whose quantity is a position or a velocity is treated as a particular solution problem, with the stated value at an input fixing the constant, and the direction of integration matches which quantity the equation constrains; BC-ERR-07038 is absent, so velocity is not reported where position was requested.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The particular solution machinery is applied correctly and the reported quantity is one derivative away from the one asked for, BC-ERR-07038 with signal BC-SIG-07037, a state resolved by asking which quantity the equation constrains.",
+    "prerequisite_gap_if": "The constant cannot be fixed from the stated value, a gap at BC-SKL-07029; or the accumulation form is not recognised as a solution, BC-SKL-07032.",
+    "remediation_target": "Conceptual failure: BC-MIS-07020 (the initial value plus an integral is a complete particular solution). Procedural failure: BC-SKL-07029 (using the stated value at an input to fix the constant)."
+   },
+   "archetypes": [
+    "BC-QA-07008",
+    "BC-QA-07011"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07038"
+   ],
+   "concept": "BC-CON-07010",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Treat a differential equation for velocity or position as a particular solution problem, using the stated value at an input to fix the constant (BC-EK-FUN-7F1).",
+   "description_plain": "Use the same machinery when the quantity is a position or a velocity.",
+   "diagnostic_signals": [
+    "BC-SIG-07037"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7F1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-07038",
+   "learning_objectives": [
+    "BC-LO-FUN-7F",
+    "BC-LO-FUN-7G"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-07020"
+   ],
+   "name": "Apply a differential equation model to motion along a line",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-3G"
+   ],
+   "prerequisites": [
+    "BC-SKL-07029",
+    "BC-SKL-07032"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-05",
+    "BC-REP-06"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:144"
+   ],
+   "topic": "BC-TOP-0708",
+   "unit": "BC-UNIT-07",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07024 (the logistic model read as exponential with a harmless extra factor)",
+     "BC-MIS-07021 (proportional growth read as linear)",
+     "BC-SKL-07034 (the plain exponential model)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07009 (the capacity and the limit are read off the factored right side)"
+    ],
+    "mastered_if": "A joint proportionality to the amount and to the room remaining is written as a constant multiplied by the quantity multiplied by the difference between the carrying capacity and the quantity, so the rate vanishes both at zero and at the capacity; BC-ERR-07039 is absent, so the limiting factor that supplies the ceiling is present.",
+    "next_dependent_skills": [
+     "BC-SKL-07040"
+    ],
+    "partially_mastered_if": "The constant and the quantity are written correctly and the factor encoding the capacity is missing, so the model is exponential with no ceiling, BC-ERR-07039 with signal BC-SIG-07038.",
+    "prerequisite_gap_if": "A single proportionality cannot be written as a constant multiple, a gap at BC-SKL-07001 and BC-PRQ-07003.",
+    "remediation_target": "Conceptual failure: BC-MIS-07024 (the second factor makes the rate vanish at the capacity). Procedural failure: BC-SKL-07001 (translating each proportionality factor into the product)."
+   },
+   "archetypes": [
+    "BC-QA-07009"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07039"
+   ],
+   "concept": "BC-CON-07011",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-07040"
+   ],
+   "description_formal": "Write the derivative as a constant multiplied by the quantity multiplied by the difference between the carrying capacity and the quantity.",
+   "description_plain": "Turn jointly proportional to the amount and the room left into an equation.",
+   "diagnostic_signals": [
+    "BC-SIG-07038"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7H1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-07039",
+   "learning_objectives": [
+    "BC-LO-FUN-7H"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-07024"
+   ],
+   "name": "Write the logistic equation from a joint proportionality statement",
+   "notation": "",
+   "official_evidence": [
+    "BC-MCQ-PE2012-014"
+   ],
+   "practice_skills": [
+    "BC-MPS-3F"
+   ],
+   "prerequisites": [
+    "BC-PRQ-07003",
+    "BC-SKL-07001"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-06"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:145"
+   ],
+   "topic": "BC-TOP-0709",
+   "unit": "BC-UNIT-07",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07025 (the capacity assumed to need the solved equation)",
+     "BC-MIS-07024 (the limiting factor treated as incidental)",
+     "BC-SKL-07012 (the zero slope locus of a general slope field)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07009 (the value and the reason are scored from the equation rather than from a formula)"
+    ],
+    "mastered_if": "The nonzero value of the quantity at which the right side vanishes is reported as the carrying capacity, read off the factored form rather than obtained by solving the equation; BC-ERR-07040 is absent, so neither zero nor the constant of proportionality is offered in its place.",
+    "next_dependent_skills": [
+     "BC-SKL-07041",
+     "BC-SKL-07042"
+    ],
+    "partially_mastered_if": "The logistic equation is written correctly and the constant of proportionality, or zero, is reported as the capacity, BC-ERR-07040 with signal BC-SIG-07039; or partial fractions are used to solve for a value the factored right side already shows.",
+    "prerequisite_gap_if": "The limiting factor is missing from the equation, a gap at BC-SKL-07039; or the zeros of a product cannot be found, BC-PRQ-05001.",
+    "remediation_target": "Conceptual failure: BC-MIS-07025 (the capacity is a zero of the right side). Procedural failure: BC-PRQ-05001 (setting each factor of the product to zero)."
+   },
+   "archetypes": [
+    "BC-QA-07009"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07040"
+   ],
+   "concept": "BC-CON-07012",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-07041",
+    "BC-SKL-07042"
+   ],
+   "description_formal": "Find the nonzero value of the quantity at which the right side vanishes and report it as the carrying capacity.",
+   "description_plain": "Read the ceiling straight off the equation.",
+   "diagnostic_signals": [
+    "BC-SIG-07039"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7H3"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-07040",
+   "learning_objectives": [
+    "BC-LO-FUN-7H"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-07025"
+   ],
+   "name": "Identify the carrying capacity from the form of the equation",
+   "notation": "",
+   "official_evidence": [
+    "BC-MCQ-CED-017",
+    "BC-MCQ-PE2012-014"
+   ],
+   "practice_skills": [
+    "BC-MPS-3F"
+   ],
+   "prerequisites": [
+    "BC-SKL-07039",
+    "BC-PRQ-05001"
+   ],
+   "representations": [
+    "BC-REP-06"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:145"
+   ],
+   "topic": "BC-TOP-0709",
+   "unit": "BC-UNIT-07",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07026 (the limit thought to need the solution formula)",
+     "BC-MIS-07025 (the capacity thought to need solving)",
+     "BC-MIS-07009 (an equilibrium level treated as crossable)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07009 (the value and the reason drawn from the equation are the two points)"
+    ],
+    "mastered_if": "The sign of the right side between the equilibrium levels is combined with the initial value to state the limit of the quantity as the independent variable grows without bound, and the reason names which values make the rate positive; BC-ERR-07041, BC-ERR-07044, and BC-ERR-99035 are absent, so no partial fractions solution is produced for a value the equation gives directly.",
+    "next_dependent_skills": [
+     "BC-SKL-07043"
+    ],
+    "partially_mastered_if": "The limiting value is correct and nothing says why solutions move toward it from the given start, BC-ERR-07041 with signal BC-SIG-07040; or the equation is separated and solved to reach the same number, BC-ERR-07044, which spends the part on work the question did not ask for.",
+    "prerequisite_gap_if": "The carrying capacity was misread from the equation, a gap at BC-SKL-07040; or long run behaviour cannot be argued from a field or a sign, BC-SKL-07017.",
+    "remediation_target": "Conceptual failure: BC-MIS-07026 (the sign of the rate on each side of the capacity settles the limit). Procedural failure: BC-SKL-07040 (reading the equilibrium levels off the right side)."
+   },
+   "archetypes": [
+    "BC-QA-07009"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07041",
+    "BC-ERR-07044",
+    "BC-ERR-99035"
+   ],
+   "concept": "BC-CON-07012",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-07043"
+   ],
+   "description_formal": "Use the sign of the right side between the equilibrium levels together with the initial condition to state the limit of the quantity as the independent variable grows without bound.",
+   "description_plain": "Say where the quantity is heading, using the equation and the starting value.",
+   "diagnostic_signals": [
+    "BC-SIG-07040"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7H2",
+    "BC-EK-FUN-7H3"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-07041",
+   "learning_objectives": [
+    "BC-LO-FUN-7H"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-07025",
+    "BC-MIS-07026"
+   ],
+   "name": "Determine the limiting value without solving the equation",
+   "notation": "",
+   "official_evidence": [
+    "BC-MCQ-CED-017"
+   ],
+   "practice_skills": [
+    "BC-MPS-3F"
+   ],
+   "prerequisites": [
+    "BC-SKL-07040",
+    "BC-SKL-07017"
+   ],
+   "representations": [
+    "BC-REP-06",
+    "BC-REP-04"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:145"
+   ],
+   "topic": "BC-TOP-0709",
+   "unit": "BC-UNIT-07",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07027 (the largest quantity confused with the largest rate)",
+     "BC-MIS-07025 (the capacity thought to require solving the equation)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07009 (half the carrying capacity is obtained by maximising the quadratic right side)"
+    ],
+    "mastered_if": "The right side is treated as a quadratic in the quantity and maximised, giving half the carrying capacity as the value at which the quantity changes fastest, a value strictly inside the interval where the rate is positive; BC-ERR-07042 is absent, so the ceiling is not reported as the fastest change point.",
+    "next_dependent_skills": [
+     "BC-SKL-07043"
+    ],
+    "partially_mastered_if": "The carrying capacity is identified correctly and is then named as the value at which the quantity changes fastest, BC-ERR-07042 with signal BC-SIG-07041, which contradicts the equation the response itself wrote since the rate is zero there.",
+    "prerequisite_gap_if": "The carrying capacity is wrong, a gap at BC-SKL-07040; or the maximum of a quadratic cannot be located, BC-SKL-05052.",
+    "remediation_target": "Conceptual failure: BC-MIS-07027 (the rate is zero exactly at the capacity). Procedural failure: BC-SKL-05052 (maximising the quadratic in the quantity)."
+   },
+   "archetypes": [
+    "BC-QA-07009"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07042"
+   ],
+   "concept": "BC-CON-07012",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [
+    "BC-SKL-07043"
+   ],
+   "description_formal": "Maximise the right side as a quadratic in the quantity, obtaining half the carrying capacity as the value at which the quantity changes fastest.",
+   "description_plain": "Find where the rate is largest, which is half of the ceiling.",
+   "diagnostic_signals": [
+    "BC-SIG-07041"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7H4"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-07042",
+   "learning_objectives": [
+    "BC-LO-FUN-7H"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-07027"
+   ],
+   "name": "Determine the value at which the quantity changes fastest",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-3F"
+   ],
+   "prerequisites": [
+    "BC-SKL-07040",
+    "BC-SKL-05052"
+   ],
+   "representations": [
+    "BC-REP-06",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:145"
+   ],
+   "topic": "BC-TOP-0709",
+   "unit": "BC-UNIT-07",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07023 (a number treated as a complete interpretation)",
+     "BC-MIS-07026 (the solution formula thought necessary before anything can be said)",
+     "BC-SKL-07037 (interpreting the rate constant of an exponential model)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07009 (each value is paired with a reason drawn from the equation and stated in context)"
+    ],
+    "mastered_if": "The carrying capacity, the sign of the rate on each side of it, and the fastest change value are each read back into the situation, naming the modelled population or quantity and its units, so the numbers are stated as facts about that population; BC-ERR-07043, BC-ERR-99027, BC-ERR-99005, and BC-ERR-07044 are absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The capacity and the fastest change value are correct and neither is read back into the situation, signal BC-SIG-07042 and BC-ERR-07043, so the sentence lacks the quantity or the units; or the equation is solved to support an interpretation the equation already gives, BC-ERR-07044.",
+    "prerequisite_gap_if": "The limiting value or the fastest change value is wrong, a gap at BC-SKL-07041 or BC-SKL-07042; or the variables and units were never named, BC-SKL-07003.",
+    "remediation_target": "Conceptual failure: BC-MIS-07023 (an interpretation states what the number measures for the population). Procedural failure: BC-SKL-07003 (naming the quantity and its units before interpreting)."
+   },
+   "archetypes": [
+    "BC-QA-07009"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07043",
+    "BC-ERR-99027",
+    "BC-ERR-99005"
+   ],
+   "concept": "BC-CON-07011",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Describe what the carrying capacity, the sign of the rate on each side of it, and the fastest change value say about the modelled quantity, with units.",
+   "description_plain": "Say what the equation means for the population being modelled.",
+   "diagnostic_signals": [
+    "BC-SIG-07042"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7H2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-07043",
+   "learning_objectives": [
+    "BC-LO-FUN-7H"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-07023",
+    "BC-MIS-07026"
+   ],
+   "name": "Interpret a logistic model in context",
+   "notation": "",
+   "official_evidence": [
+    "BC-MCQ-CED-017"
+   ],
+   "practice_skills": [
+    "BC-MPS-3F"
+   ],
+   "prerequisites": [
+    "BC-SKL-06064",
+    "BC-SKL-07003",
+    "BC-SKL-07041",
+    "BC-SKL-07042"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-05"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:145"
+   ],
+   "topic": "BC-TOP-0709",
+   "unit": "BC-UNIT-07",
+   "updated": "2026-09-19"
+  }
+ ]
+}

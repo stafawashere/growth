@@ -1,0 +1,1456 @@
+{
+ "archetypes": [
+  {
+   "asked_to_produce": [],
+   "calculator_status": "either",
+   "common_distractors": [
+    "reporting the difference of the values without dividing",
+    "using rows that do not bracket the point",
+    "inverting the quotient",
+    "omitting the units",
+    "giving the units of the quantity rather than of its rate"
+   ],
+   "common_givens": [],
+   "description": "Selected values of a contextual function are tabulated and the response approximates the derivative at an input by an average rate of change over a stated interval, with units.",
+   "difficulty_variables": [
+    "whether the interval is named or must be chosen",
+    "whether the point lies inside the interval or at an end",
+    "whether the table is evenly spaced",
+    "whether the units carry their own point"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "identify the two tabulated inputs the estimate uses",
+    "compute the difference of the function values",
+    "divide by the difference of the inputs",
+    "report the value and attach the units"
+   ],
+   "id": "BC-QA-02001",
+   "invariant_structure": "The estimate is built from two values read directly out of the table, the interval is either named in the question or determined by the rows that bracket the point, and the units of the answer are those of the quantity per unit of the independent variable.",
+   "misconceptions": [
+    "BC-MIS-02001",
+    "BC-MIS-02008"
+   ],
+   "multipart_structure": "Typically the opening part of a multipart free response question.",
+   "name": "Derivative estimated from a table with units",
+   "official_examples": [],
+   "official_examples_notes": "2025 Q3(A), 2024 Q1(a)",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-PRQ-02003"
+   ],
+   "primary_unit": "BC-UNIT-02",
+   "representations": [
+    "BC-REP-03",
+    "BC-REP-05"
+   ],
+   "safe_variables": [
+    "the modelled quantity",
+    "the units",
+    "the tabulated inputs",
+    "the point of interest"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "One point is earned for the answer presented with the supporting work of a difference and a quotient using values from the table, and a bare quotient expression without an evaluated answer is not sufficient; a second point is earned for correct units whether or not they are attached to a numerical value, and an equivalent compound unit is accepted (sg-25:11, sg-24:2).",
+   "skills": [
+    "BC-SKL-02014",
+    "BC-SKL-02015",
+    "BC-SKL-02016",
+    "BC-SKL-02002",
+    "BC-SKL-02003"
+   ],
+   "sources": [
+    "ced:62",
+    "sg-25:11",
+    "sg-24:2"
+   ],
+   "typical_wording": [
+    "Approximate the derivative at the named input using the average rate of change over the given interval. Show the work that leads to your answer and indicate units of measure."
+   ],
+   "units": [
+    "BC-UNIT-02"
+   ]
+  },
+  {
+   "asked_to_produce": [],
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "setting the increment to zero before cancelling",
+    "omitting the limit symbol until the final line",
+    "expanding the shifted term incorrectly",
+    "differentiating by rule and presenting the result as the definition"
+   ],
+   "common_givens": [],
+   "description": "A rule is given and the response produces the derivative by setting up and evaluating the limit of a difference quotient rather than by a rule.",
+   "difficulty_variables": [
+    "polynomial against radical against rational rule",
+    "derivative at a point against derivative function",
+    "increment form against two point form",
+    "whether the setup alone or the value is demanded"
+   ],
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "write the difference quotient for the given rule",
+    "expand and simplify the numerator",
+    "divide out the increment",
+    "evaluate the limit by substitution"
+   ],
+   "id": "BC-QA-02002",
+   "invariant_structure": "The difference quotient is indeterminate at zero increment, so the increment must be divided out of the numerator before the limit can be taken, and the final step is a substitution into the simplified quotient.",
+   "misconceptions": [
+    "BC-MIS-02002",
+    "BC-MIS-02003"
+   ],
+   "multipart_structure": "Typically a single multiple choice item or one part of a larger question.",
+   "name": "Derivative computed from the limit definition",
+   "official_examples": [],
+   "official_examples_notes": "none in 2023 to 2025 [inferred]",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-02001",
+    "BC-PRQ-02005"
+   ],
+   "primary_unit": "BC-UNIT-02",
+   "representations": [
+    "BC-REP-01"
+   ],
+   "safe_variables": [
+    "the rule",
+    "the base point or the general input",
+    "the variable name",
+    "which of the two forms is demanded"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "One point for a correct difference quotient inside a limit, one for the simplification, and one for the value. No free response part in 2023 to 2025 asks for a derivative from the definition, so the pattern is drawn from the CED description of the topic.",
+   "skills": [
+    "BC-SKL-02006",
+    "BC-SKL-02007",
+    "BC-SKL-02008",
+    "BC-SKL-02009",
+    "BC-SKL-02027"
+   ],
+   "sources": [
+    "ced:61",
+    "ced:64"
+   ],
+   "typical_wording": [
+    "Use the definition of the derivative to find the derivative of the given function, or its value at the named input."
+   ],
+   "units": [
+    "BC-UNIT-02"
+   ]
+  },
+  {
+   "asked_to_produce": [],
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "applying a rewriting technique that does not resolve the form",
+    "identifying the wrong base point",
+    "reporting the value of the function rather than of its derivative",
+    "concluding that the limit does not exist"
+   ],
+   "common_givens": [],
+   "description": "A limit in difference quotient form is presented and the response evaluates it by identifying the underlying function and base point.",
+   "difficulty_variables": [
+    "whether the base point is a standard angle or value",
+    "whether the two point form is used",
+    "whether the underlying function is transcendental",
+    "whether the response must name the function"
+   ],
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "compare the numerator with a difference of function values",
+    "identify the function and the base point",
+    "state the limit as the derivative of that function at that point",
+    "evaluate using the derivative rule"
+   ],
+   "id": "BC-QA-02003",
+   "invariant_structure": "The limit cannot be evaluated by substitution, and the numerator is the difference of the values of a known function at a shifted and a base input, so the answer is a derivative value already available from a rule.",
+   "misconceptions": [
+    "BC-MIS-02004"
+   ],
+   "multipart_structure": "Typically a single multiple choice item.",
+   "name": "Limit recognised as a derivative of a known function",
+   "official_examples": [],
+   "official_examples_notes": "none in 2023 to 2025 [inferred]",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-02005"
+   ],
+   "primary_unit": "BC-UNIT-02",
+   "representations": [
+    "BC-REP-01"
+   ],
+   "safe_variables": [
+    "the underlying function",
+    "the base point",
+    "the variable used for the increment"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "One point for the value, with the identification expected in a justified response. No free response part in 2023 to 2025 assesses this task in isolation.",
+   "skills": [
+    "BC-SKL-02035",
+    "BC-SKL-02005"
+   ],
+   "sources": [
+    "ced:66"
+   ],
+   "typical_wording": [
+    "Evaluate the given limit."
+   ],
+   "units": [
+    "BC-UNIT-02"
+   ]
+  },
+  {
+   "asked_to_produce": [],
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "asserting continuity with no reason",
+    "reversing the implication and claiming differentiability from continuity",
+    "citing differentiability of the wrong function",
+    "omitting the step entirely"
+   ],
+   "common_givens": [],
+   "description": "A function is stated to be differentiable and the response establishes that it is continuous in order to use a theorem that requires continuity.",
+   "difficulty_variables": [
+    "whether the continuity claim carries its own point",
+    "whether the function is given by a table or a rule",
+    "whether the argument continues to an existence conclusion or to a limit evaluation",
+    "whether the implication must be stated in general terms"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "read the differentiability statement from the stem",
+    "state that the function is therefore continuous",
+    "use the continuity as the hypothesis of the theorem or the limit step",
+    "complete the argument"
+   ],
+   "id": "BC-QA-02004",
+   "invariant_structure": "The differentiability statement appears in the stem rather than in the part, and the continuity conclusion is a step towards an existence or evaluation argument rather than the answer itself.",
+   "misconceptions": [
+    "BC-MIS-02005",
+    "BC-MIS-02006"
+   ],
+   "multipart_structure": "Typically one part of a multipart free response question.",
+   "name": "Continuity deduced from differentiability inside a larger argument",
+   "official_examples": [],
+   "official_examples_notes": "2025 Q3(B), 2023 Q4(c)",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "primary_unit": "BC-UNIT-02",
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-03",
+    "BC-REP-05"
+   ],
+   "safe_variables": [
+    "the modelled quantity",
+    "the interval",
+    "the theorem the continuity feeds"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "A point is earned for stating that the function is continuous because it is differentiable or the equivalent, and a response that states only that the function is continuous does not earn it; the following point does not depend on earning it (sg-25:12). A 2023 part uses the same implication at a point before evaluating a limit (sg-23:14).",
+   "skills": [
+    "BC-SKL-02019",
+    "BC-SKL-02020",
+    "BC-SKL-02024"
+   ],
+   "sources": [
+    "ced:63",
+    "sg-25:12",
+    "sg-23:14"
+   ],
+   "typical_wording": [
+    "Justify the conclusion, stating any property of the function that your argument relies on."
+   ],
+   "units": [
+    "BC-UNIT-02"
+   ]
+  },
+  {
+   "asked_to_produce": [],
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "concluding differentiability from continuity",
+    "concluding non-differentiability from the shape without the slopes",
+    "reporting one of the two one sided slopes as the derivative",
+    "treating a vertical tangent as a slope of zero"
+   ],
+   "common_givens": [],
+   "description": "A function continuous at a point is presented and the response determines whether the derivative exists there and gives a reason.",
+   "difficulty_variables": [
+    "corner against cusp against vertical tangent",
+    "rule against graph",
+    "whether a reason is demanded",
+    "whether the point is also a boundary of a piecewise rule"
+   ],
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "confirm that the function is continuous at the input",
+    "evaluate the one sided limits of the difference quotient, or read the one sided slopes from the graph",
+    "compare them",
+    "state whether the derivative exists and name the reason"
+   ],
+   "id": "BC-QA-02005",
+   "invariant_structure": "The function is continuous at the point in question, so the verdict turns on the behaviour of the difference quotient rather than on the existence of the function value or the limit.",
+   "misconceptions": [
+    "BC-MIS-02006",
+    "BC-MIS-02007"
+   ],
+   "multipart_structure": "Typically a single multiple choice item or one part of a larger question.",
+   "name": "Point of non-differentiability identified on a continuous function",
+   "official_examples": [],
+   "official_examples_notes": "none in 2023 to 2025 as a standalone part [inferred]",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-02001",
+    "BC-PRQ-01006"
+   ],
+   "primary_unit": "BC-UNIT-02",
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "safe_variables": [
+    "the rule or the shape of the graph",
+    "the input in question",
+    "the variable name"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "One point for the verdict and one for the reason, where the reason must refer to the one sided behaviour of the difference quotient or to the tangent line rather than to the appearance of the graph alone.",
+   "skills": [
+    "BC-SKL-02021",
+    "BC-SKL-02022",
+    "BC-SKL-02023"
+   ],
+   "sources": [
+    "ced:63"
+   ],
+   "typical_wording": [
+    "Is the given function differentiable at the named input? Give a reason for your answer."
+   ],
+   "units": [
+    "BC-UNIT-02"
+   ]
+  },
+  {
+   "asked_to_produce": [],
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "reducing the exponent without multiplying by it",
+    "differentiating a constant to itself",
+    "leaving a radical undifferentiated",
+    "dropping the negative sign produced by a negative exponent"
+   ],
+   "common_givens": [],
+   "description": "An expression built from powers, radicals, and reciprocals is presented and the response differentiates it using the power, constant multiple, sum, and difference rules.",
+   "difficulty_variables": [
+    "integer against negative against fractional exponents",
+    "whether a rewriting step is needed first",
+    "whether the derivative is then evaluated at a point",
+    "whether a second derivative is demanded"
+   ],
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "rewrite radicals and reciprocals as powers",
+    "differentiate each term by the power rule",
+    "carry the constants through",
+    "combine and return to the requested form"
+   ],
+   "id": "BC-QA-02006",
+   "invariant_structure": "Every term can be written as a constant times a power of the variable, so the derivative is obtained term by term without any product, quotient, or chain structure.",
+   "misconceptions": [
+    "BC-MIS-02009"
+   ],
+   "multipart_structure": "Typically a single multiple choice item.",
+   "name": "Derivative of a polynomial or power expression by rule",
+   "official_examples": [],
+   "official_examples_notes": "none in 2023 to 2025 as a standalone part [inferred]",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-06002"
+   ],
+   "primary_unit": "BC-UNIT-02",
+   "representations": [
+    "BC-REP-01"
+   ],
+   "safe_variables": [
+    "the coefficients",
+    "the exponents",
+    "the variable name",
+    "the number of terms"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "One point for the derivative, with an evaluation point when a value at an input is demanded.",
+   "skills": [
+    "BC-SKL-02025",
+    "BC-SKL-02026",
+    "BC-SKL-02028",
+    "BC-SKL-02029",
+    "BC-SKL-02030",
+    "BC-SKL-02031"
+   ],
+   "sources": [
+    "ced:64",
+    "ced:65"
+   ],
+   "typical_wording": [
+    "Find the derivative of the given function."
+   ],
+   "units": [
+    "BC-UNIT-02"
+   ]
+  },
+  {
+   "asked_to_produce": [],
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "giving sine as the derivative of cosine without the negative sign",
+    "differentiating the natural exponential to a power one lower",
+    "giving the logarithm rule with the wrong reciprocal",
+    "treating the exponential base as a variable"
+   ],
+   "common_givens": [],
+   "description": "An expression containing sine, cosine, the natural exponential, or the natural logarithm is presented and the response differentiates it.",
+   "difficulty_variables": [
+    "whether a sign must be carried from the cosine rule",
+    "whether a logarithm domain restriction is relevant",
+    "whether the derivative is then evaluated at a point",
+    "whether the expression mixes powers with transcendental terms"
+   ],
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "identify the rule for each term",
+    "differentiate term by term",
+    "carry the constants and the signs",
+    "combine the terms"
+   ],
+   "id": "BC-QA-02007",
+   "invariant_structure": "Each transcendental term has a rule of its own, and the surrounding structure is a sum or a constant multiple, so no chain rule is required.",
+   "misconceptions": [
+    "BC-MIS-02010"
+   ],
+   "multipart_structure": "Typically a single multiple choice item.",
+   "name": "Derivative of an expression built from the basic transcendental functions",
+   "official_examples": [],
+   "official_examples_notes": "none in 2023 to 2025 as a standalone part [inferred]",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-01005",
+    "BC-PRQ-06003"
+   ],
+   "primary_unit": "BC-UNIT-02",
+   "representations": [
+    "BC-REP-01"
+   ],
+   "safe_variables": [
+    "which transcendental functions appear",
+    "the coefficients",
+    "the variable name"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "One point for the derivative.",
+   "skills": [
+    "BC-SKL-02032",
+    "BC-SKL-02033",
+    "BC-SKL-02034"
+   ],
+   "sources": [
+    "ced:66"
+   ],
+   "typical_wording": [
+    "Find the derivative of the given function."
+   ],
+   "units": [
+    "BC-UNIT-02"
+   ]
+  },
+  {
+   "asked_to_produce": [],
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "multiplying the two derivatives together",
+    "reversing the two terms in the quotient numerator",
+    "omitting the square on the denominator",
+    "applying the quotient rule where the denominator is a constant"
+   ],
+   "common_givens": [],
+   "description": "A product or a quotient of two differentiable expressions is presented and the response differentiates it.",
+   "difficulty_variables": [
+    "polynomial factors against transcendental factors",
+    "whether the denominator is constant",
+    "whether the result must be simplified",
+    "whether the derivative is then evaluated at a point"
+   ],
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "identify the two factors and their derivatives",
+    "substitute into the product or quotient rule",
+    "keep the order of the terms in the quotient numerator",
+    "simplify as requested"
+   ],
+   "id": "BC-QA-02008",
+   "invariant_structure": "Neither factor is constant and the expression does not simplify to a sum of powers, so the product or quotient rule is required, and in the quotient case the order of the two numerator terms carries a sign.",
+   "misconceptions": [
+    "BC-MIS-02011",
+    "BC-MIS-02012"
+   ],
+   "multipart_structure": "Typically a single multiple choice item or one part of a larger question.",
+   "name": "Derivative of a product or a quotient by rule",
+   "official_examples": [],
+   "official_examples_notes": "none in 2023 to 2025 as a standalone part [inferred]",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-06002"
+   ],
+   "primary_unit": "BC-UNIT-02",
+   "representations": [
+    "BC-REP-01"
+   ],
+   "safe_variables": [
+    "the two factors",
+    "the variable name",
+    "whether the expression is a product or a quotient"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "One point for the correct rule applied with both derivatives present and one for the simplified result.",
+   "skills": [
+    "BC-SKL-02036",
+    "BC-SKL-02038",
+    "BC-SKL-02039",
+    "BC-SKL-02040",
+    "BC-SKL-02042"
+   ],
+   "sources": [
+    "ced:67",
+    "ced:68"
+   ],
+   "typical_wording": [
+    "Find the derivative of the given function."
+   ],
+   "units": [
+    "BC-UNIT-02"
+   ]
+  },
+  {
+   "asked_to_produce": [],
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "reading a value of the function where a value of the derivative is needed",
+    "swapping the two functions in the rule",
+    "using the wrong row of the table",
+    "omitting the denominator square"
+   ],
+   "common_givens": [],
+   "description": "The values of two functions and of their derivatives at an input are supplied in a table or read from graphs and the response evaluates the derivative of their product or quotient there.",
+   "difficulty_variables": [
+    "table against graphs",
+    "product against quotient",
+    "whether one of the supplied values must itself be read as a slope",
+    "whether the answer must be interpreted in context"
+   ],
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "record the four supplied values at the named input",
+    "write the product or quotient rule with the names in place",
+    "substitute the values",
+    "evaluate and report"
+   ],
+   "id": "BC-QA-02009",
+   "invariant_structure": "No formula for either function is given, so the response must place four supplied numbers into the correct positions of the rule and evaluate.",
+   "misconceptions": [
+    "BC-MIS-02011"
+   ],
+   "multipart_structure": "Typically a single multiple choice item.",
+   "name": "Derivative of a product or quotient evaluated from supplied values",
+   "official_examples": [],
+   "official_examples_notes": "none in 2023 to 2025 as a standalone part [inferred]",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "primary_unit": "BC-UNIT-02",
+   "representations": [
+    "BC-REP-03",
+    "BC-REP-02"
+   ],
+   "safe_variables": [
+    "the function names",
+    "the supplied values",
+    "the input at which the derivative is requested"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "One point for the rule with the supplied values correctly placed and one for the value.",
+   "skills": [
+    "BC-SKL-02037",
+    "BC-SKL-02041",
+    "BC-SKL-02017"
+   ],
+   "sources": [
+    "ced:67",
+    "ced:68"
+   ],
+   "typical_wording": [
+    "The table gives values of f, g, and their derivatives at selected inputs. Find the derivative of the indicated product or quotient at the named input."
+   ],
+   "units": [
+    "BC-UNIT-02"
+   ]
+  },
+  {
+   "asked_to_produce": [],
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "giving secant squared as the derivative of cotangent",
+    "dropping the negative sign on a cofunction derivative",
+    "differentiating numerator and denominator separately",
+    "leaving the result in a form the question does not accept"
+   ],
+   "common_givens": [],
+   "description": "An expression containing one of the remaining trigonometric functions is presented and the response differentiates it after rewriting.",
+   "difficulty_variables": [
+    "tangent against secant against the cofunctions",
+    "whether the simplified form is demanded",
+    "whether the expression also contains a product",
+    "whether the derivative is then evaluated at a standard angle"
+   ],
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "rewrite the function using sine and cosine",
+    "apply the quotient rule",
+    "simplify the numerator with a Pythagorean identity",
+    "write the result in the requested trigonometric form"
+   ],
+   "id": "BC-QA-02010",
+   "invariant_structure": "No rule for the function is assumed, so the response rewrites it with sine and cosine, applies the quotient rule, and simplifies with a Pythagorean identity.",
+   "misconceptions": [
+    "BC-MIS-02013"
+   ],
+   "multipart_structure": "Typically a single multiple choice item.",
+   "name": "Derivative of a tangent, cotangent, secant, or cosecant expression",
+   "official_examples": [],
+   "official_examples_notes": "none in 2023 to 2025 as a standalone part [inferred]",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-02002"
+   ],
+   "primary_unit": "BC-UNIT-02",
+   "representations": [
+    "BC-REP-01"
+   ],
+   "safe_variables": [
+    "which trigonometric function appears",
+    "the coefficients",
+    "the variable name"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "One point for the rewriting and the rule and one for the simplified result.",
+   "skills": [
+    "BC-SKL-02043",
+    "BC-SKL-02044",
+    "BC-SKL-02045",
+    "BC-SKL-02046"
+   ],
+   "sources": [
+    "ced:69"
+   ],
+   "typical_wording": [
+    "Find the derivative of the given function."
+   ],
+   "units": [
+    "BC-UNIT-02"
+   ]
+  },
+  {
+   "asked_to_produce": [],
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "using the function value as the slope",
+    "using the derivative value as the point",
+    "writing the line through the origin",
+    "evaluating the derivative at the wrong input"
+   ],
+   "common_givens": [],
+   "description": "A function is given and the response produces the equation of the line tangent to its graph at a named point.",
+   "difficulty_variables": [
+    "whether the point of tangency must be computed",
+    "whether the derivative needs a product or quotient rule",
+    "whether the line is then used to approximate a value",
+    "whether the answer must be in a stated form"
+   ],
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "differentiate the function",
+    "evaluate the derivative at the input to get the slope",
+    "evaluate the function at the input to get the point",
+    "write the line in point slope form"
+   ],
+   "id": "BC-QA-02011",
+   "invariant_structure": "The slope comes from the derivative evaluated at the input and the point of tangency comes from the function evaluated there, so two separate evaluations feed one line equation.",
+   "misconceptions": [
+    "BC-MIS-02014"
+   ],
+   "multipart_structure": "Typically one part of a multipart free response question.",
+   "name": "Tangent line written at a point on a curve",
+   "official_examples": [],
+   "official_examples_notes": "none in 2023 to 2025 as a standalone part [inferred]",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-02003"
+   ],
+   "primary_unit": "BC-UNIT-02",
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "safe_variables": [
+    "the function",
+    "the point of tangency",
+    "the variable names"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "One point for the slope from the derivative, one for the point of tangency, and one for the equation.",
+   "skills": [
+    "BC-SKL-02012",
+    "BC-SKL-02013"
+   ],
+   "sources": [
+    "ced:61"
+   ],
+   "typical_wording": [
+    "Write an equation for the line tangent to the graph of the given function at the named point."
+   ],
+   "units": [
+    "BC-UNIT-02"
+   ]
+  },
+  {
+   "asked_to_produce": [],
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "reading the Leibniz form as a quotient of two quantities",
+    "losing the point of evaluation when converting",
+    "changing the independent variable",
+    "confusing the derivative function with its value at a point"
+   ],
+   "common_givens": [],
+   "description": "A derivative is presented in one notation and the response writes it in another or states what it denotes.",
+   "difficulty_variables": [
+    "prime against Leibniz against y prime",
+    "whether a value at a point is involved",
+    "whether the notation carries a context with units",
+    "whether a second derivative is involved"
+   ],
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "identify the function and the independent variable from the supplied notation",
+    "state what the expression denotes",
+    "write the equivalent expression in the requested notation"
+   ],
+   "id": "BC-QA-02012",
+   "invariant_structure": "The task is the notation itself, so the underlying function may be left unspecified, and the independent variable must be identified from the notation rather than assumed.",
+   "misconceptions": [
+    "BC-MIS-02015"
+   ],
+   "multipart_structure": "Typically a single multiple choice item.",
+   "name": "Derivative notation read or converted",
+   "official_examples": [],
+   "official_examples_notes": "none in 2023 to 2025 as a standalone part [inferred]",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-02004"
+   ],
+   "primary_unit": "BC-UNIT-02",
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-04",
+    "BC-REP-02",
+    "BC-REP-03"
+   ],
+   "safe_variables": [
+    "the function name",
+    "the variable names",
+    "which notation is supplied"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "One point for the conversion.",
+   "skills": [
+    "BC-SKL-02010",
+    "BC-SKL-02011",
+    "BC-SKL-02004"
+   ],
+   "sources": [
+    "ced:61"
+   ],
+   "typical_wording": [
+    "Which of the given expressions denotes the same quantity as the expression shown?"
+   ],
+   "units": [
+    "BC-UNIT-02"
+   ]
+  },
+  {
+   "asked_to_produce": [],
+   "calculator_status": "calculator",
+   "common_distractors": [
+    "reporting the function value instead of the derivative value",
+    "evaluating at the wrong input",
+    "rounding to fewer places than required",
+    "presenting a bare value with no setup"
+   ],
+   "common_givens": [],
+   "description": "A function is supplied in a calculator active setting and the response reports the value of its derivative at a named input.",
+   "difficulty_variables": [
+    "whether the setup must be shown",
+    "whether the answer must be interpreted in context",
+    "whether an equation must be solved before the derivative is evaluated",
+    "whether the precision requirement is the deciding factor"
+   ],
+   "evidence_tag": "single-source",
+   "expected_solution_path": [
+    "enter the function",
+    "request the numerical derivative at the named input",
+    "report the value to three places after the decimal point",
+    "interpret the value with units when asked"
+   ],
+   "id": "BC-QA-02013",
+   "invariant_structure": "The value is produced by calculator capability rather than by hand, and the response must present the setup that identifies the quantity being computed as well as the value to the required precision.",
+   "misconceptions": [
+    "BC-MIS-02015"
+   ],
+   "multipart_structure": "Typically one part of a multipart free response question.",
+   "name": "Derivative at a point produced with technology",
+   "official_examples": [],
+   "official_examples_notes": "2023 Q1(d) evaluates a derivative from a supplied model in a calculator active part",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-02004"
+   ],
+   "primary_unit": "BC-UNIT-02",
+   "representations": [
+    "BC-REP-09",
+    "BC-REP-05"
+   ],
+   "safe_variables": [
+    "the modelled quantity",
+    "the formula",
+    "the input at which the derivative is requested",
+    "the units"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "One point for the setup that names the quantity computed and one for the value, where an answer is expected to three places after the decimal point and an inappropriately rounded answer does not earn the point unless an earlier point was already lost to rounding (sg-25:4).",
+   "skills": [
+    "BC-SKL-02018"
+   ],
+   "sources": [
+    "ced:62",
+    "sg-25:4"
+   ],
+   "typical_wording": [
+    "Find the value of the derivative at the named input. Show the setup for your calculations."
+   ],
+   "units": [
+    "BC-UNIT-02"
+   ]
+  }
+ ],
+ "registry": "archetypes",
+ "variants": [
+  {
+   "archetype": "BC-QA-02001",
+   "description": "The question names the interval, so the row selection is given rather than chosen.",
+   "difficulty_effect": "easier",
+   "dimension": "reasoning direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-02001-01",
+   "name": "Interval named in the question",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-25:11"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02001",
+   "description": "The estimate uses an interval that brackets the point rather than starting at it.",
+   "difficulty_effect": "neutral",
+   "dimension": "reasoning direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-02001-02",
+   "name": "Point of interest inside the interval",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-24:2"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02001",
+   "description": "A separate point attaches to the units of the estimate, independent of the numerical answer.",
+   "difficulty_effect": "neutral",
+   "dimension": "notation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-02001-03",
+   "name": "Units carrying their own point",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-25:11"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02001",
+   "description": "The tabulated inputs are unevenly spaced so the denominator must be computed from the rows.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-02001-04",
+   "name": "Unevenly spaced table",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-25:11"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02002",
+   "description": "The difference quotient is cleared by expanding and cancelling.",
+   "difficulty_effect": "neutral",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-02002-01",
+   "name": "Polynomial rule",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:64"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02002",
+   "description": "The difference quotient is cleared by multiplying by the conjugate.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-02002-02",
+   "name": "Radical rule requiring a conjugate",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:61"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02002",
+   "description": "The general input is kept so the result is a function.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-02002-03",
+   "name": "Derivative function rather than a value",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:61"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02002",
+   "description": "The limit is taken as the second input approaches the base point.",
+   "difficulty_effect": "neutral",
+   "dimension": "notation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-02002-04",
+   "name": "Two point form demanded",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:60"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02003",
+   "description": "The underlying function is trigonometric and the base point is a standard angle.",
+   "difficulty_effect": "neutral",
+   "dimension": "context",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-02003-01",
+   "name": "Base point at a standard angle",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:66"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02003",
+   "description": "The limit is the derivative of a transcendental function at a convenient input.",
+   "difficulty_effect": "neutral",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-02003-02",
+   "name": "Underlying function exponential or logarithmic",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:66"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02003",
+   "description": "The limit is written with the second input approaching the base point rather than with an increment.",
+   "difficulty_effect": "harder",
+   "dimension": "notation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-02003-03",
+   "name": "Two point form presentation",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:60",
+    "ced:66"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02004",
+   "description": "Differentiability is stated in the stem and the values come from a table.",
+   "difficulty_effect": "neutral",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-02004-01",
+   "name": "Function given by a table",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-25:12"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02004",
+   "description": "The continuity conclusion is the hypothesis of the Intermediate Value Theorem.",
+   "difficulty_effect": "neutral",
+   "dimension": "reasoning direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-02004-02",
+   "name": "Continuity feeding an existence theorem",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-25:12"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02004",
+   "description": "The continuity conclusion licenses replacing a limit by a function value inside a larger limit computation.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-02004-03",
+   "name": "Continuity feeding a limit evaluation",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-23:14"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02005",
+   "description": "The one sided difference quotients differ in sign.",
+   "difficulty_effect": "neutral",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-02005-01",
+   "name": "Corner of an absolute value expression",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:63"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02005",
+   "description": "The difference quotient is unbounded although the function is continuous.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-02005-02",
+   "name": "Vertical tangent of a cube root",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:63"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02005",
+   "description": "The point is a branch boundary where continuity holds but the slopes disagree.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-02005-03",
+   "name": "Boundary of a piecewise rule",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:63"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02006",
+   "description": "Terms must be rewritten as powers before the rule applies.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-02006-01",
+   "name": "Negative and fractional exponents",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:64"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02006",
+   "description": "The derivative is then evaluated at a named input.",
+   "difficulty_effect": "neutral",
+   "dimension": "reasoning direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-02006-02",
+   "name": "Derivative evaluated at a point",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:65"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02006",
+   "description": "The rule is applied twice.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-02006-03",
+   "name": "Second derivative demanded",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:65"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02007",
+   "description": "The expression combines a polynomial part with a transcendental part.",
+   "difficulty_effect": "neutral",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-02007-01",
+   "name": "Mixed powers and transcendental terms",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:66"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02007",
+   "description": "The negative sign on the derivative of cosine must survive the simplification.",
+   "difficulty_effect": "neutral",
+   "dimension": "reasoning direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-02007-02",
+   "name": "Sign carried from the cosine rule",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:66"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02007",
+   "description": "The derivative is then evaluated where exact trigonometric values are needed.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-02007-03",
+   "name": "Derivative evaluated at a standard angle",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:66"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02008",
+   "description": "Expanding first is an available alternative to the product rule.",
+   "difficulty_effect": "easier",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-02008-01",
+   "name": "Product of polynomial factors",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:67"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02008",
+   "description": "Expanding is unavailable so the product rule is required.",
+   "difficulty_effect": "neutral",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-02008-02",
+   "name": "Product with a transcendental factor",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:67"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02008",
+   "description": "The constant multiple rule replaces the quotient rule.",
+   "difficulty_effect": "easier",
+   "dimension": "reasoning direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-02008-03",
+   "name": "Quotient with a constant denominator",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:68"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02008",
+   "description": "The numerator must be expanded and collected after the rule is applied.",
+   "difficulty_effect": "harder",
+   "dimension": "notation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-02008-04",
+   "name": "Quotient requiring a simplified result",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:68"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02009",
+   "description": "The four values are read from rows of a table.",
+   "difficulty_effect": "neutral",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-02009-01",
+   "name": "Values supplied by a table",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:67"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02009",
+   "description": "At least one derivative value must be read as a slope from a graph.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-02009-02",
+   "name": "Values read from graphs",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:62",
+    "ced:67"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02009",
+   "description": "The order of the numerator terms and the denominator square both matter.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-02009-03",
+   "name": "Quotient rather than product",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:68"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02010",
+   "description": "The simplification ends in a squared secant or cosecant.",
+   "difficulty_effect": "neutral",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-02010-01",
+   "name": "Tangent or cotangent",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:69"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02010",
+   "description": "The simplification ends in a product of two trigonometric functions.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-02010-02",
+   "name": "Secant or cosecant",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:69"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02010",
+   "description": "Both the product rule and the rewriting are needed.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-02010-03",
+   "name": "Expression combining the rewriting with a product",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:67",
+    "ced:69"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02011",
+   "description": "Only the slope must be computed.",
+   "difficulty_effect": "easier",
+   "dimension": "reasoning direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-02011-01",
+   "name": "Point of tangency supplied",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:61"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02011",
+   "description": "Both the function and its derivative must be evaluated.",
+   "difficulty_effect": "neutral",
+   "dimension": "reasoning direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-02011-02",
+   "name": "Point of tangency computed from the rule",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:61"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02011",
+   "description": "The slope computation itself needs one of the later rules.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-02011-03",
+   "name": "Derivative requiring a product or quotient rule",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:67",
+    "ced:68"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02012",
+   "description": "The conversion runs from the Leibniz form to the prime form.",
+   "difficulty_effect": "neutral",
+   "dimension": "notation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-02012-01",
+   "name": "Leibniz form supplied",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:61"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02012",
+   "description": "The notation names a derivative evaluated at a specific input.",
+   "difficulty_effect": "harder",
+   "dimension": "notation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-02012-02",
+   "name": "Value at a point rather than the function",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:61"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02012",
+   "description": "The notation must be read as a rate in a modelling setting.",
+   "difficulty_effect": "neutral",
+   "dimension": "context",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-02012-03",
+   "name": "Contextual reading with units",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:61"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02013",
+   "description": "The response must display what quantity is being computed as well as the number.",
+   "difficulty_effect": "neutral",
+   "dimension": "notation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-02013-01",
+   "name": "Setup demanded with the value",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-25:4"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02013",
+   "description": "The value must be explained in the terms of the model.",
+   "difficulty_effect": "harder",
+   "dimension": "context",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-02013-02",
+   "name": "Interpretation with units demanded",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:62"
+   ]
+  },
+  {
+   "archetype": "BC-QA-02013",
+   "description": "The input at which the derivative is evaluated is itself produced by a calculator solve.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-02013-03",
+   "name": "Equation solved before the derivative is evaluated",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-25:4"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,1202 @@
+{
+ "archetypes": [
+  {
+   "calculator_status": "either",
+   "common_distractors": [
+    "an interpretation of the amount rather than of the rate",
+    "units inverted",
+    "the interval or instant omitted",
+    "a restatement of the notation with no reference to the situation"
+   ],
+   "description": "A modelled quantity and a numerical rate are supplied and the response writes what that rate means in the situation, with units.",
+   "difficulty_variables": [
+    "whether the interpretation shares a part with a computation",
+    "whether the rate is negative",
+    "whether a second derivative is the subject",
+    "whether the units are compound"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "name the quantity and the instant",
+    "state whether the quantity is increasing or decreasing",
+    "attach the units as quantity units per independent variable unit",
+    "keep the sentence about the rate rather than about the amount"
+   ],
+   "id": "BC-QA-04001",
+   "invariant_structure": "The interpretation must name the quantity, the instant or the interval, the direction of change, and the units; the units are the units of the quantity divided by the units of the independent variable.",
+   "misconceptions": [
+    "BC-MIS-04001",
+    "BC-MIS-04002",
+    "BC-MIS-04003"
+   ],
+   "multipart_structure": "One part of a multipart contextual free response question, often sharing the part with a numerical computation.",
+   "name": "Interpreting the value of a derivative in context with units",
+   "official_examples": [],
+   "official_examples_notes": "2024 Q1(a), 2025 Q3(A)",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-04004",
+    "BC-PRQ-04008"
+   ],
+   "primary_unit": "BC-UNIT-04",
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-05"
+   ],
+   "safe_variables": [
+    "the quantity modelled",
+    "the units of the quantity",
+    "the letters naming the function and the variable",
+    "the instant chosen"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "The units carry their own scoring point in the 2024 and 2025 table based questions, awarded whether or not they are attached to a numerical value (sg-24:2, sg-25:11); the Chief Reader reports record incomplete interpretations and missing or malformed units as recurring losses (BC-ERR-99005, BC-ERR-99027).",
+   "skills": [
+    "BC-SKL-04001",
+    "BC-SKL-04002",
+    "BC-SKL-04003",
+    "BC-SKL-04005"
+   ],
+   "sources": [
+    "ced:87",
+    "sg-24:2",
+    "sg-25:11",
+    "cr-24:3",
+    "cr-24:4"
+   ],
+   "typical_wording": [
+    "using correct units, interpret the meaning of the stated value in the context of the problem"
+   ],
+   "units": [
+    "BC-UNIT-04"
+   ],
+   "variants": [
+    "BC-QV-04001-01",
+    "BC-QV-04001-02",
+    "BC-QV-04001-03"
+   ]
+  },
+  {
+   "calculator_status": "either",
+   "common_distractors": [
+    "the quotient written without the difference",
+    "the two values subtracted in the wrong order",
+    "the interval taken from the wrong pair of rows",
+    "the units given as those of the quantity alone"
+   ],
+   "description": "A quantity is tabulated at selected inputs and the response approximates the derivative at an interior input using an average rate of change over an interval the prompt names.",
+   "difficulty_variables": [
+    "whether the interval is centred on the point",
+    "whether the units are compound as in a rate of a rate",
+    "whether the table is decreasing",
+    "calculator or no calculator"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "select the two tabulated values the named interval determines",
+    "form the difference of the values and the difference of the inputs",
+    "divide",
+    "attach the units"
+   ],
+   "id": "BC-QA-04002",
+   "invariant_structure": "The approximation is a difference of two tabulated values divided by the difference of the corresponding inputs; both the difference and the quotient must be visible, and the units are those of the quantity divided by those of the input.",
+   "misconceptions": [
+    "BC-MIS-04003"
+   ],
+   "multipart_structure": "The opening part of a table based contextual free response question.",
+   "name": "Approximating a derivative from a table with units",
+   "official_examples": [],
+   "official_examples_notes": "2024 Q1(a), 2025 Q3(A)",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-04004"
+   ],
+   "primary_unit": "BC-UNIT-04",
+   "representations": [
+    "BC-REP-03",
+    "BC-REP-05"
+   ],
+   "safe_variables": [
+    "the quantity",
+    "its units",
+    "the tabulated values",
+    "the interval named in the prompt"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "Scored as one point for the answer with supporting work of a difference and a quotient using values from the table, and a separate point for the units; the setup expression alone without a value does not earn the first point, and the units point is earned whether or not the units are attached to a number (sg-25:11, sg-24:2).",
+   "skills": [
+    "BC-SKL-04004",
+    "BC-SKL-04001"
+   ],
+   "sources": [
+    "sg-24:2",
+    "sg-25:11"
+   ],
+   "typical_wording": [
+    "approximate the derivative at the stated input using the average rate of change over the named interval; show the work and indicate units of measure"
+   ],
+   "units": [
+    "BC-UNIT-04"
+   ],
+   "variants": [
+    "BC-QV-04002-01",
+    "BC-QV-04002-02",
+    "BC-QV-04002-03"
+   ]
+  },
+  {
+   "calculator_status": "either",
+   "common_distractors": [
+    "the speed decided from the sign of the acceleration alone",
+    "speed reported as a negative number",
+    "the position value reported where a velocity was asked for",
+    "a general rule quoted without being applied to the given particle"
+   ],
+   "description": "A particle moves on a line with position or velocity supplied as a function of time, and the response produces velocity, acceleration, or speed at an instant and decides whether the speed is increasing.",
+   "difficulty_variables": [
+    "whether the given function is position or velocity",
+    "whether one of the two signs is supplied rather than computed",
+    "whether the differentiation needs the product or chain rule",
+    "whether the conclusion must be applied to the particular problem rather than stated as a general rule"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "differentiate the supplied function as many times as the question needs",
+    "evaluate the velocity and the acceleration at the instant",
+    "compare their signs",
+    "state the conclusion about the speed for that particle at that instant"
+   ],
+   "id": "BC-QA-04003",
+   "invariant_structure": "Velocity is the derivative of position and acceleration is the derivative of velocity; the speed question is settled by comparing the signs of velocity and acceleration at the instant, and never by the sign of the acceleration alone.",
+   "misconceptions": [
+    "BC-MIS-04004",
+    "BC-MIS-04005",
+    "BC-MIS-04006"
+   ],
+   "multipart_structure": "Two or three parts of a particle motion free response question.",
+   "name": "Straight-line motion with velocity, acceleration, and speed",
+   "official_examples": [],
+   "official_examples_notes": "2022 AB Q6(a) and (b), 2025 AB Q5 parts A and C, as described in the Chief Reader reports",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-04005",
+    "BC-PRQ-04008"
+   ],
+   "primary_unit": "BC-UNIT-04",
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-05"
+   ],
+   "safe_variables": [
+    "the particle's name",
+    "the formula supplied",
+    "the instant chosen",
+    "whether position or velocity is the given function"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "The 2025 rubric awards the speed point only when the response states the sign of the velocity and draws the conclusion, and the Chief Reader report records that quoting the rule without applying it to the particular problem does not suffice (crabbc-25:20, crabbc-25:22, crabbc-25:23); the 2022 report records deciding speed from the acceleration alone as the most common misconception on that question (cr-22:21).",
+   "skills": [
+    "BC-SKL-04006",
+    "BC-SKL-04007",
+    "BC-SKL-04008",
+    "BC-SKL-04010"
+   ],
+   "sources": [
+    "ced:88",
+    "cr-22:20",
+    "cr-22:21",
+    "crabbc-25:20",
+    "crabbc-25:22"
+   ],
+   "typical_wording": [
+    "find the velocity of the particle at the stated time",
+    "is the speed of the particle increasing, decreasing, or neither at the stated time, and give a reason"
+   ],
+   "units": [
+    "BC-UNIT-04"
+   ],
+   "variants": [
+    "BC-QV-04003-01",
+    "BC-QV-04003-02",
+    "BC-QV-04003-03",
+    "BC-QV-04003-04"
+   ]
+  },
+  {
+   "calculator_status": "either",
+   "common_distractors": [
+    "integer inputs sampled instead of the equation being solved",
+    "a sign chart presented with no stated reading",
+    "an interval reported that covers only part of the prompt's interval",
+    "direction reported from the sign of the position"
+   ],
+   "description": "The response determines when a particle moves in a stated direction, when it is at rest, or when two particles move in opposite directions, from the sign of velocity across a whole interval.",
+   "difficulty_variables": [
+    "whether a zero of the velocity is not an integer",
+    "whether two particles must be compared",
+    "whether the analysis must be communicated in words as well as in a chart",
+    "whether the velocity changes sign more than once"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "solve the equation velocity equal to zero on the interval",
+    "determine the sign of the velocity on each resulting subinterval",
+    "state in words what each sign means for the direction of motion",
+    "combine the two analyses when two particles are compared"
+   ],
+   "id": "BC-QA-04004",
+   "invariant_structure": "The zeros of the velocity split the interval, the sign of the velocity is constant between consecutive zeros, and the conclusion must cover the entire interval named in the prompt rather than sampled instants.",
+   "misconceptions": [
+    "BC-MIS-04005",
+    "BC-MIS-04017"
+   ],
+   "multipart_structure": "One part of a particle motion free response question, ordinarily the hardest.",
+   "name": "Direction of motion and sign analysis over an interval",
+   "official_examples": [],
+   "official_examples_notes": "2025 AB Q5 part B as described in the Chief Reader report",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-04009"
+   ],
+   "primary_unit": "BC-UNIT-04",
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02",
+    "BC-REP-04"
+   ],
+   "safe_variables": [
+    "the velocity formula",
+    "the interval",
+    "the number of particles",
+    "the names of the particles"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "The 2025 rubric attaches one point to considering the sign of a velocity, one to the analysis for one particle, and one to the analysis for both and the resulting interval; the Chief Reader report records that responses failing to address the entire stated interval did not earn the last two points, whose mean scores were 0.04 and 0.03 (crabbc-25:20, crabbc-25:22).",
+   "skills": [
+    "BC-SKL-04009",
+    "BC-SKL-04011",
+    "BC-SKL-04012"
+   ],
+   "sources": [
+    "ced:88",
+    "crabbc-25:20",
+    "crabbc-25:22",
+    "crabbc-25:23"
+   ],
+   "typical_wording": [
+    "find the intervals of time during which the particles are moving in opposite directions"
+   ],
+   "units": [
+    "BC-UNIT-04"
+   ],
+   "variants": [
+    "BC-QV-04004-01",
+    "BC-QV-04004-02",
+    "BC-QV-04004-03"
+   ]
+  },
+  {
+   "calculator_status": "calculator",
+   "common_distractors": [
+    "a value of the model reported where a rate was requested",
+    "motion vocabulary used for a non-motion quantity",
+    "arithmetic performed with infinity in place of a limit expression",
+    "an inappropriately rounded decimal answer"
+   ],
+   "description": "A quantity such as a temperature, a population, an affected area, or a reading rate is modelled, and the response computes or interprets its rate of change, sometimes including the end behaviour of that rate.",
+   "difficulty_variables": [
+    "whether the rate expression is supplied in the stem",
+    "whether an end behaviour limit is requested",
+    "whether an average value or average rate of change must be compared with an instantaneous rate",
+    "whether the answer must be reported to three decimal places"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "identify the quantity and its independent variable",
+    "differentiate the model or use the derivative supplied in the stem",
+    "evaluate at the requested input",
+    "report the value with units and in the vocabulary of the context",
+    "write and evaluate a limit expression when end behaviour is requested"
+   ],
+   "id": "BC-QA-04005",
+   "invariant_structure": "The context supplies the quantity and the independent variable; the mathematics is the same as for motion but the language must be the language of the context, and every reported rate carries its own units.",
+   "misconceptions": [
+    "BC-MIS-04007",
+    "BC-MIS-04001",
+    "BC-MIS-04014"
+   ],
+   "multipart_structure": "A multipart calculator active free response question built on one contextual model.",
+   "name": "Contextual rate in a setting other than motion",
+   "official_examples": [],
+   "official_examples_notes": "2025 Q1 parts B and C, 2024 Q1(a)",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-04004",
+    "BC-PRQ-04008"
+   ],
+   "primary_unit": "BC-UNIT-04",
+   "representations": [
+    "BC-REP-05",
+    "BC-REP-01",
+    "BC-REP-09"
+   ],
+   "safe_variables": [
+    "the modelled quantity",
+    "the units",
+    "the letters naming the model",
+    "the instant or interval"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "The 2025 rubric awards a point for using the average rate of change and a point for the answer supported by the appropriate equation, and separately a point for the limit expression and a point for its value, with arithmetic involving infinity treated as scratch work that cannot earn the value point (sg-25:4).",
+   "skills": [
+    "BC-SKL-04013",
+    "BC-SKL-04014",
+    "BC-SKL-04015",
+    "BC-SKL-04016"
+   ],
+   "sources": [
+    "ced:89",
+    "ced:84",
+    "sg-25:2",
+    "sg-25:4",
+    "sg-24:2"
+   ],
+   "typical_wording": [
+    "find the time at which the instantaneous rate of change equals the average rate of change over the stated interval",
+    "write a limit expression that describes the end behaviour of the rate of change and evaluate it"
+   ],
+   "units": [
+    "BC-UNIT-04"
+   ],
+   "variants": [
+    "BC-QV-04005-01",
+    "BC-QV-04005-02",
+    "BC-QV-04005-03"
+   ]
+  },
+  {
+   "calculator_status": "either",
+   "common_distractors": [
+    "values substituted before the differentiation",
+    "a varying dimension treated as a constant",
+    "the chain rule factor omitted so that the derivative is taken with respect to a length rather than time",
+    "the requested rate confused with the supplied one"
+   ],
+   "description": "A geometric configuration changes with time, one or more rates are supplied, and the response finds the rate of change of another quantity at a stated instant.",
+   "difficulty_variables": [
+    "whether a second variable must be eliminated by similar triangles",
+    "whether a needed value must be recovered from the relating equation",
+    "whether a product term forces the product rule",
+    "whether the answer must be interpreted in words",
+    "whether the geometry is supplied as a figure or only in words"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "name each varying quantity and record the rates in derivative notation",
+    "write the relating equation",
+    "eliminate any variable the supplied rates cannot support",
+    "differentiate with respect to time",
+    "substitute the instantaneous values",
+    "solve for the requested rate and report it with units"
+   ],
+   "id": "BC-QA-04006",
+   "invariant_structure": "A relating equation is differentiated with respect to time so that each varying quantity contributes its own rate; instantaneous values enter only after the differentiation, and the answer is a rate with units.",
+   "misconceptions": [
+    "BC-MIS-04008",
+    "BC-MIS-04010",
+    "BC-MIS-04011"
+   ],
+   "multipart_structure": "One part of a multipart free response question, or a standalone multiple choice item.",
+   "name": "Related rates in a geometric setting",
+   "official_examples": [],
+   "official_examples_notes": "2022 AB Q2(d) as described in the Chief Reader report",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-04001",
+    "BC-PRQ-04002",
+    "BC-PRQ-04003",
+    "BC-PRQ-04007",
+    "BC-PRQ-04008"
+   ],
+   "primary_unit": "BC-UNIT-04",
+   "representations": [
+    "BC-REP-08",
+    "BC-REP-05",
+    "BC-REP-01"
+   ],
+   "safe_variables": [
+    "the solid or figure",
+    "the units of length and time",
+    "the instant chosen",
+    "which rate is supplied and which is requested"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "The 2022 Chief Reader report records that few responses expressed the changing quantity as a correct function of the varying dimension or recognised that the chain rule was needed to reach the rate with respect to time (cr-22:7); the Chief Reader entry BC-ERR-99013 records differentiating with respect to the wrong variable and omitting the product rule as a standing error family.",
+   "skills": [
+    "BC-SKL-04017",
+    "BC-SKL-04018",
+    "BC-SKL-04019",
+    "BC-SKL-04021",
+    "BC-SKL-04023",
+    "BC-SKL-04024",
+    "BC-SKL-04025",
+    "BC-SKL-04026",
+    "BC-SKL-04027"
+   ],
+   "sources": [
+    "ced:90",
+    "ced:91",
+    "cr-22:6",
+    "cr-22:7"
+   ],
+   "typical_wording": [
+    "find the rate at which the stated quantity is changing at the instant described"
+   ],
+   "units": [
+    "BC-UNIT-04"
+   ],
+   "variants": [
+    "BC-QV-04006-01",
+    "BC-QV-04006-02",
+    "BC-QV-04006-03",
+    "BC-QV-04006-04"
+   ]
+  },
+  {
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "differentiation with respect to x with no further work",
+    "dy/dx and dy/dt confused",
+    "the product rule omitted on the mixed term",
+    "a sign error in the substituted rate"
+   ],
+   "description": "A particle moves along a curve given by an equation in two variables, one coordinate rate is supplied, and the response finds the other coordinate rate at a stated point.",
+   "difficulty_variables": [
+    "whether a mixed term is present",
+    "whether the response must instead route through dy/dx and the chain rule",
+    "whether the sign of the supplied rate is negative",
+    "whether the same curve appeared in earlier parts"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "differentiate the defining equation with respect to time",
+    "apply the product rule to any mixed term",
+    "substitute the coordinates of the point and the supplied rate",
+    "solve for the requested rate"
+   ],
+   "id": "BC-QA-04007",
+   "invariant_structure": "The defining equation is differentiated with respect to time, so every term in x carries dx/dt and every term in y carries dy/dt; a mixed term needs the product rule, and the point and the supplied rate are substituted only afterwards.",
+   "misconceptions": [
+    "BC-MIS-04008",
+    "BC-MIS-04009",
+    "BC-MIS-04011"
+   ],
+   "multipart_structure": "The closing part of the implicit differentiation free response question.",
+   "name": "Related rates on an implicitly defined curve",
+   "official_examples": [],
+   "official_examples_notes": "2023 AB Q6(d), 2024 AB Q5(d), 2025 AB Q6 part D, as described in the Chief Reader reports",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-04007",
+    "BC-PRQ-04008"
+   ],
+   "primary_unit": "BC-UNIT-04",
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "safe_variables": [
+    "the curve",
+    "the point",
+    "which coordinate rate is supplied",
+    "the units"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "The Chief Reader reports describe four scoring points on this task: an eligible attempt at implicit differentiation with respect to time, a completely correct differentiation, and the correct numerical value, with responses that differentiate with respect to x needing to continue through the chain rule to earn beyond the first point; the most common reason for losing the final point in 2025 was a sign error (cr-24:18, crabbc-25:24, crabbc-25:25).",
+   "skills": [
+    "BC-SKL-04022",
+    "BC-SKL-04019",
+    "BC-SKL-04020",
+    "BC-SKL-04023",
+    "BC-SKL-04024"
+   ],
+   "sources": [
+    "ced:90",
+    "cr-23:22",
+    "cr-23:23",
+    "cr-24:17",
+    "cr-24:18",
+    "crabbc-25:24"
+   ],
+   "typical_wording": [
+    "at the instant when the particle is at the stated point, the coordinate is changing at the stated rate; find the rate of change of the other coordinate at that instant"
+   ],
+   "units": [
+    "BC-UNIT-04"
+   ],
+   "variants": [
+    "BC-QV-04007-01",
+    "BC-QV-04007-02",
+    "BC-QV-04007-03"
+   ]
+  },
+  {
+   "calculator_status": "either",
+   "common_distractors": [
+    "the point and the slope exchanged in the point-slope form",
+    "the direction of the error argued from whether the function is increasing",
+    "the approximation evaluated at the point of tangency rather than at the nearby input",
+    "an arithmetic error introduced while isolating the dependent variable unnecessarily"
+   ],
+   "description": "A point on a curve and the derivative there are supplied, and the response approximates a nearby function value with the tangent line and may be asked whether the approximation is too large or too small.",
+   "difficulty_variables": [
+    "whether the slope must be computed by implicit differentiation",
+    "whether an over or under estimate judgement is demanded",
+    "whether the second derivative must be produced to support the judgement",
+    "whether the answer must be simplified"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "find the slope at the point of tangency",
+    "write the tangent line in point-slope form",
+    "evaluate at the nearby input",
+    "determine the concavity near the point",
+    "state the direction of the error with the concavity as the reason"
+   ],
+   "id": "BC-QA-04008",
+   "invariant_structure": "The tangent line at the point of tangency is evaluated at the nearby input; the direction of the error follows from the concavity of the graph on an interval containing both inputs, not from the sign of the first derivative.",
+   "misconceptions": [
+    "BC-MIS-04012",
+    "BC-MIS-04013"
+   ],
+   "multipart_structure": "One part of a multipart free response question, ordinarily following a part that produced the derivative.",
+   "name": "Tangent line approximation with an over or under estimate judgement",
+   "official_examples": [],
+   "official_examples_notes": "2024 AB Q5(a), 2025 AB Q6 part B, as described in the Chief Reader reports",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-04006",
+    "BC-PRQ-04008"
+   ],
+   "primary_unit": "BC-UNIT-04",
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "safe_variables": [
+    "the curve",
+    "the point of tangency",
+    "the nearby input",
+    "whether the curve is given explicitly or implicitly"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "The Chief Reader reports record that most responses that found the slope also wrote the tangent line and produced an approximation, with arithmetic errors arising from unnecessary simplification, and that a response could earn the approximation point on an incorrect slope (cr-24:17, crabbc-25:25); a claim about the direction of the error that does not appeal to concavity is recorded as a standing error (BC-ERR-99020).",
+   "skills": [
+    "BC-SKL-04028",
+    "BC-SKL-04029",
+    "BC-SKL-04030",
+    "BC-SKL-04031",
+    "BC-SKL-04032"
+   ],
+   "sources": [
+    "ced:92",
+    "cr-24:17",
+    "crabbc-25:24",
+    "crabbc-25:25"
+   ],
+   "typical_wording": [
+    "use the line tangent to the curve at the stated point to approximate the value of the function at a nearby input"
+   ],
+   "units": [
+    "BC-UNIT-04"
+   ],
+   "variants": [
+    "BC-QV-04008-01",
+    "BC-QV-04008-02",
+    "BC-QV-04008-03"
+   ]
+  },
+  {
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "the quotient written explicitly equal to zero over zero",
+    "the quotient rule applied instead of separate derivatives",
+    "the rule applied with no check of the form",
+    "an incorrect derivative of the numerator when it contains an unknown function"
+   ],
+   "description": "A limit of a quotient is supplied, often with one function known only through given properties, and the response establishes the indeterminate form and applies the rule.",
+   "difficulty_variables": [
+    "whether one function is supplied only as a graph or through stated values",
+    "whether differentiability must be used to evaluate a limit in the numerator",
+    "whether the rule must be applied more than once",
+    "whether the answer must be justified as well as produced"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "evaluate the limit of the numerator, using continuity where the function is known to be differentiable",
+    "evaluate the limit of the denominator",
+    "state that the form is indeterminate",
+    "differentiate numerator and denominator separately",
+    "evaluate the resulting limit"
+   ],
+   "id": "BC-QA-04009",
+   "invariant_structure": "The hypothesis has to be established before the rule is used, and it is established by presenting the limit of the numerator and the limit of the denominator as two separate statements; the conclusion is the limit of the quotient of the two derivatives, which is not the derivative of the quotient.",
+   "misconceptions": [
+    "BC-MIS-04014",
+    "BC-MIS-04015",
+    "BC-MIS-04016"
+   ],
+   "multipart_structure": "One part of a graphical analysis free response question.",
+   "name": "Limit of an indeterminate form with L'Hospital's rule",
+   "official_examples": [],
+   "official_examples_notes": "2023 Q4(c)",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-04008"
+   ],
+   "primary_unit": "BC-UNIT-04",
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "safe_variables": [
+    "the functions in the quotient",
+    "the point approached",
+    "whether the form is zero over zero or infinity over infinity",
+    "the way the unknown function is supplied"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "The 2023 rubric awards one point for presenting two separate limits for the numerator and the denominator, one for applying the rule by presenting at least one correct derivative in the limit of a ratio of derivatives, and one for the correct answer with supporting work; a response that presents a limit explicitly equal to zero over zero does not earn the first point (sg-23:14).",
+   "skills": [
+    "BC-SKL-04033",
+    "BC-SKL-04034",
+    "BC-SKL-04035",
+    "BC-SKL-04036",
+    "BC-SKL-04037",
+    "BC-SKL-04038"
+   ],
+   "sources": [
+    "ced:93",
+    "ced:84",
+    "sg-23:14",
+    "cr-23:14",
+    "cr-23:15"
+   ],
+   "typical_wording": [
+    "find the value of the stated limit, or show that it does not exist, and justify the answer"
+   ],
+   "units": [
+    "BC-UNIT-04"
+   ],
+   "variants": [
+    "BC-QV-04009-01",
+    "BC-QV-04009-02",
+    "BC-QV-04009-03"
+   ]
+  },
+  {
+   "calculator_status": "either",
+   "common_distractors": [
+    "the displacement reported where the position was requested",
+    "the initial condition omitted",
+    "the speed integrated in place of the velocity",
+    "the limits of integration left unchanged after a substitution"
+   ],
+   "description": "A velocity function and a position at one time are supplied, and the response finds the position at another time.",
+   "difficulty_variables": [
+    "whether the antiderivative needs a substitution",
+    "whether the initial condition is given at a time other than zero",
+    "whether the displacement or the position is requested"
+   ],
+   "evidence_tag": "verified",
+   "expected_solution_path": [
+    "write the position as the initial position plus the accumulated change in position",
+    "evaluate the definite integral of the velocity",
+    "add the initial position",
+    "report the position"
+   ],
+   "id": "BC-QA-04010",
+   "invariant_structure": "Position is recovered from velocity by accumulation over the interval and the initial position is added; the antidifferentiation itself belongs to Unit 6 while the motion reading of the quantities belongs here.",
+   "misconceptions": [
+    "BC-MIS-04004",
+    "BC-MIS-04005"
+   ],
+   "multipart_structure": "The closing part of a particle motion free response question.",
+   "name": "Position recovered from velocity with an initial condition",
+   "official_examples": [],
+   "official_examples_notes": "2025 AB Q5 part D as described in the Chief Reader report",
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-04008"
+   ],
+   "primary_unit": "BC-UNIT-04",
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-05"
+   ],
+   "safe_variables": [
+    "the velocity formula",
+    "the initial time and position",
+    "the target time"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "The 2025 rubric awards one point for a correct integrand, one for the correct antiderivative, and one for incorporating the initial condition and reporting the value; the Chief Reader report records missing differentials and unchanged substitution limits as the common losses (crabbc-25:20, crabbc-25:22).",
+   "skills": [
+    "BC-SKL-04006",
+    "BC-SKL-04011"
+   ],
+   "sources": [
+    "ced:88",
+    "crabbc-25:20",
+    "crabbc-25:22"
+   ],
+   "typical_wording": [
+    "find the position of the particle at the stated time, showing the work that leads to the answer"
+   ],
+   "units": [
+    "BC-UNIT-04"
+   ],
+   "variants": [
+    "BC-QV-04010-01",
+    "BC-QV-04010-02"
+   ]
+  }
+ ],
+ "registry": "archetypes",
+ "variants": [
+  {
+   "archetype": "BC-QA-04001",
+   "description": "The same part asks for a numerical value and for its meaning, and the two are scored separately.",
+   "difficulty_effect": "neutral",
+   "dimension": "reasoning_direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-04001-01",
+   "name": "Interpretation shares a part with a computation",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-24:2"
+   ]
+  },
+  {
+   "archetype": "BC-QA-04001",
+   "description": "The modelled quantity is decreasing, so the interpretation must say so rather than reporting a magnitude.",
+   "difficulty_effect": "harder",
+   "dimension": "context",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-04001-02",
+   "name": "Rate is negative",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "cr-24:4"
+   ]
+  },
+  {
+   "archetype": "BC-QA-04001",
+   "description": "The value to be interpreted is a rate of a rate, so the units are compound.",
+   "difficulty_effect": "harder",
+   "dimension": "notation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-04001-03",
+   "name": "Second derivative is the subject",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:87"
+   ]
+  },
+  {
+   "archetype": "BC-QA-04002",
+   "description": "The named interval has the point at one end, so the approximation is one sided.",
+   "difficulty_effect": "neutral",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-04002-01",
+   "name": "Interval not centred on the point",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-25:11"
+   ]
+  },
+  {
+   "archetype": "BC-QA-04002",
+   "description": "The tabulated quantity is itself a rate, so the units of the approximation are compound.",
+   "difficulty_effect": "harder",
+   "dimension": "notation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-04002-02",
+   "name": "Units of a rate of a rate",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-25:11"
+   ]
+  },
+  {
+   "archetype": "BC-QA-04002",
+   "description": "The tabulated values decrease, so the difference is negative and the sign must survive into the answer.",
+   "difficulty_effect": "neutral",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-04002-03",
+   "name": "Decreasing table",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-24:2"
+   ]
+  },
+  {
+   "archetype": "BC-QA-04003",
+   "description": "The stem gives velocity, so one differentiation reaches acceleration and no differentiation reaches velocity.",
+   "difficulty_effect": "easier",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-04003-01",
+   "name": "Velocity supplied rather than position",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "crabbc-25:20"
+   ]
+  },
+  {
+   "archetype": "BC-QA-04003",
+   "description": "The prompt states that the derivative of velocity is positive, so only the sign of the velocity remains to be established.",
+   "difficulty_effect": "easier",
+   "dimension": "reasoning_direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-04003-02",
+   "name": "Sign of the acceleration supplied in the stem",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "crabbc-25:20"
+   ]
+  },
+  {
+   "archetype": "BC-QA-04003",
+   "description": "The position or velocity formula is a product or a composite, so a Unit 2 or Unit 3 rule is needed first.",
+   "difficulty_effect": "harder",
+   "dimension": "notation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-04003-03",
+   "name": "Differentiation needs the product or chain rule",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "crabbc-25:22"
+   ]
+  },
+  {
+   "archetype": "BC-QA-04003",
+   "description": "A general statement of the speeding up rule is not sufficient and the signs for this particle at this instant must be named.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning_direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-04003-04",
+   "name": "Conclusion must be applied to the particular particle",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "crabbc-25:23"
+   ]
+  },
+  {
+   "archetype": "BC-QA-04004",
+   "description": "Sampling integer times misses the sign change, so the equation must be solved.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-04004-01",
+   "name": "Zero of the velocity is not an integer",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "crabbc-25:22"
+   ]
+  },
+  {
+   "archetype": "BC-QA-04004",
+   "description": "Two sign analyses must be produced and then intersected to find when the directions are opposite.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning_direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-04004-02",
+   "name": "Two particles compared",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "crabbc-25:20"
+   ]
+  },
+  {
+   "archetype": "BC-QA-04004",
+   "description": "The sign analysis is read off a figure rather than computed from a formula.",
+   "difficulty_effect": "easier",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-04004-03",
+   "name": "Velocity supplied as a graph",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:88"
+   ]
+  },
+  {
+   "archetype": "BC-QA-04005",
+   "description": "The derivative of the model is stated, so the scored work is its use rather than its production.",
+   "difficulty_effect": "easier",
+   "dimension": "reasoning_direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-04005-01",
+   "name": "Rate expression supplied in the stem",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-25:2"
+   ]
+  },
+  {
+   "archetype": "BC-QA-04005",
+   "description": "A limit expression for the long run behaviour of the rate must be written and evaluated in limit notation.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning_direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-04005-02",
+   "name": "End behaviour limit requested",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-25:4"
+   ]
+  },
+  {
+   "archetype": "BC-QA-04005",
+   "description": "An equation setting the derivative equal to an average rate of change must be formed and solved.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning_direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-04005-03",
+   "name": "Instantaneous rate compared with an average rate of change",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-25:4"
+   ]
+  },
+  {
+   "archetype": "BC-QA-04006",
+   "description": "A proportion from the geometry removes one varying dimension before the differentiation.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-04006-01",
+   "name": "Second variable eliminated by similar triangles",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:90"
+   ]
+  },
+  {
+   "archetype": "BC-QA-04006",
+   "description": "One quantity required for the substitution is not supplied and must be computed at the instant.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning_direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-04006-02",
+   "name": "A needed value must be recovered from the relating equation",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:91"
+   ]
+  },
+  {
+   "archetype": "BC-QA-04006",
+   "description": "The quantity is an area built from two functions, so the chain rule connects its derivative with respect to a length to its derivative with respect to time.",
+   "difficulty_effect": "harder",
+   "dimension": "context",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-04006-03",
+   "name": "Rate of change of an area defined by two curves",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "cr-22:7"
+   ]
+  },
+  {
+   "archetype": "BC-QA-04006",
+   "description": "The reported rate must be described in words with units and with its direction of change.",
+   "difficulty_effect": "neutral",
+   "dimension": "reasoning_direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-04006-04",
+   "name": "Interpretation of the answer demanded",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:91"
+   ]
+  },
+  {
+   "archetype": "BC-QA-04007",
+   "description": "A term containing both coordinates forces the product rule inside the differentiation with respect to time.",
+   "difficulty_effect": "harder",
+   "dimension": "notation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-04007-01",
+   "name": "Mixed product term present",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "cr-23:23"
+   ]
+  },
+  {
+   "archetype": "BC-QA-04007",
+   "description": "The response differentiates with respect to x and then multiplies by dx/dt, which reaches the answer only if the chain rule step is completed.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning_direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-04007-02",
+   "name": "Routed through dy/dx and the chain rule",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "cr-24:18"
+   ]
+  },
+  {
+   "archetype": "BC-QA-04007",
+   "description": "The given coordinate is decreasing, so a sign error in the substitution changes the answer.",
+   "difficulty_effect": "harder",
+   "dimension": "context",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-04007-03",
+   "name": "Supplied rate is negative",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "crabbc-25:25"
+   ]
+  },
+  {
+   "archetype": "BC-QA-04008",
+   "description": "The curve is defined implicitly, so the slope at the point of tangency comes from an expression in both coordinates.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-04008-01",
+   "name": "Slope obtained by implicit differentiation",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "cr-24:17"
+   ]
+  },
+  {
+   "archetype": "BC-QA-04008",
+   "description": "The direction of the approximation error must be stated and supported by concavity.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning_direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-04008-02",
+   "name": "Over or under estimate judgement demanded",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:92"
+   ]
+  },
+  {
+   "archetype": "BC-QA-04008",
+   "description": "The concavity argument requires the second derivative to be computed before the judgement can be justified.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning_direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-04008-03",
+   "name": "Second derivative must be produced first",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:92"
+   ]
+  },
+  {
+   "archetype": "BC-QA-04009",
+   "description": "The numerator contains a function known through a graph or through given values, so continuity at the point must be argued from differentiability.",
+   "difficulty_effect": "harder",
+   "dimension": "representation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-04009-01",
+   "name": "One function supplied only through stated properties",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "sg-23:14"
+   ]
+  },
+  {
+   "archetype": "BC-QA-04009",
+   "description": "The quotient of derivatives is again indeterminate, so the hypothesis must be checked a second time.",
+   "difficulty_effect": "harder",
+   "dimension": "reasoning_direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-04009-02",
+   "name": "Rule applied more than once",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:93"
+   ]
+  },
+  {
+   "archetype": "BC-QA-04009",
+   "description": "Both parts grow without bound, so the verification is a pair of infinite limits rather than a pair of zeros.",
+   "difficulty_effect": "neutral",
+   "dimension": "notation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-04009-03",
+   "name": "Form is infinity over infinity",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "ced:93"
+   ]
+  },
+  {
+   "archetype": "BC-QA-04010",
+   "description": "The velocity is a composite whose antiderivative needs a substitution, and the limits must be handled accordingly.",
+   "difficulty_effect": "harder",
+   "dimension": "notation",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-04010-01",
+   "name": "Antiderivative needs a substitution",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "crabbc-25:22"
+   ]
+  },
+  {
+   "archetype": "BC-QA-04010",
+   "description": "The accumulation runs from the time of the initial condition rather than from the start of the interval.",
+   "difficulty_effect": "neutral",
+   "dimension": "reasoning_direction",
+   "evidence_tag": "inferred",
+   "id": "BC-QV-04010-02",
+   "name": "Initial condition given at a time other than zero",
+   "official_examples": [],
+   "scope": "shared",
+   "sources": [
+    "crabbc-25:20"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,4178 @@
+{
+ "concepts": [
+  {
+   "confusable_with": [],
+   "description_formal": "For f continuous on [a,b], the average value of f over [a,b] is the definite integral of f over [a,b] divided by b minus a.",
+   "description_plain": "The average value of a function is its accumulated amount divided by the length of the interval.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-08001",
+   "misconceptions": [
+    "BC-MIS-08001",
+    "BC-MIS-08002"
+   ],
+   "name": "Average value of a function over an interval",
+   "notation": "average value of f on [a,b]",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-08001",
+    "BC-SKL-08002",
+    "BC-SKL-08003"
+   ],
+   "sources": [
+    "ced:152"
+   ],
+   "topics": [
+    "BC-TOP-0801"
+   ],
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "The average value of f on [a,b] has the units of f; the average rate of change of f on [a,b] is the difference quotient of f and has the units of f divided by the units of the input.",
+   "description_plain": "Averaging a function is not the same as averaging its rate of change.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-08002",
+   "misconceptions": [
+    "BC-MIS-08001"
+   ],
+   "name": "Average value contrasted with average rate of change",
+   "notation": "average value; average rate of change",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-08004",
+    "BC-SKL-08005"
+   ],
+   "sources": [
+    "ced:152"
+   ],
+   "topics": [
+    "BC-TOP-0801"
+   ],
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "For a particle in rectilinear motion, the definite integral of the velocity function over a time interval equals the displacement of the particle over that interval.",
+   "description_plain": "Integrating velocity gives the net change in position, not the length of the trip.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-08003",
+   "misconceptions": [
+    "BC-MIS-08004"
+   ],
+   "name": "Displacement as the definite integral of velocity",
+   "notation": "displacement; net change in position",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-08006"
+   ],
+   "sources": [
+    "ced:153"
+   ],
+   "topics": [
+    "BC-TOP-0802"
+   ],
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "For a particle in rectilinear motion, the definite integral of the absolute value of the velocity function over a time interval equals the total distance travelled over that interval.",
+   "description_plain": "Integrating the absolute value of velocity gives how far the particle actually travelled.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-08004",
+   "misconceptions": [
+    "BC-MIS-08004",
+    "BC-MIS-08005"
+   ],
+   "name": "Total distance as the definite integral of speed",
+   "notation": "speed as the absolute value of velocity; total distance",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-08007",
+    "BC-SKL-08008",
+    "BC-SKL-08011"
+   ],
+   "sources": [
+    "ced:153"
+   ],
+   "topics": [
+    "BC-TOP-0802"
+   ],
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "If s is an antiderivative of v then s(b) equals s(a) plus the definite integral of v over [a,b], and the same relation holds between v and a.",
+   "description_plain": "A later value equals the starting value plus the accumulated change.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-08005",
+   "misconceptions": [
+    "BC-MIS-08006"
+   ],
+   "name": "Position and velocity recovered from an initial value",
+   "notation": "s(b) = s(a) + integral of v",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-08009",
+    "BC-SKL-08010"
+   ],
+   "sources": [
+    "ced:153"
+   ],
+   "topics": [
+    "BC-TOP-0802"
+   ],
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "If Q has rate of change q on [a,t] then Q(t) equals Q(a) plus the definite integral of q from a to t.",
+   "description_plain": "The amount now is the amount at the start plus everything accumulated since.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-08006",
+   "misconceptions": [
+    "BC-MIS-08006"
+   ],
+   "name": "Amount at a time from an initial amount and a rate",
+   "notation": "Q(t) = Q(a) + integral of q",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-08012",
+    "BC-SKL-08016",
+    "BC-SKL-08017"
+   ],
+   "sources": [
+    "ced:154"
+   ],
+   "topics": [
+    "BC-TOP-0803"
+   ],
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "For a quantity with inflow rate f and outflow rate g, the net rate of change is f minus g and the net change over an interval is the definite integral of that difference.",
+   "description_plain": "When something enters and leaves at once, the net rate is the difference of the two rates.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-08007",
+   "misconceptions": [
+    "BC-MIS-08007"
+   ],
+   "name": "Net rate as rate in minus rate out",
+   "notation": "rate in minus rate out",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-08013"
+   ],
+   "sources": [
+    "ced:154"
+   ],
+   "topics": [
+    "BC-TOP-0803"
+   ],
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "The amount function attains its absolute maximum on a closed interval at a critical point where the net rate changes sign from positive to negative or at an endpoint, and a global argument is required to decide between the candidates.",
+   "description_plain": "The stored amount is largest where the net rate changes from positive to negative, endpoints checked.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-08008",
+   "misconceptions": [
+    "BC-MIS-08008"
+   ],
+   "name": "Extreme value of an accumulated amount from the sign of the net rate",
+   "notation": "candidates test on an accumulation function",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-08014"
+   ],
+   "sources": [
+    "ced:154"
+   ],
+   "topics": [
+    "BC-TOP-0803"
+   ],
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "A complete interpretation of a definite integral of a rate names the accumulated quantity, the interval of accumulation, and the units formed as the rate units times the input units.",
+   "description_plain": "An integral of a rate names a quantity, over a stated interval, in stated units.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-08009",
+   "misconceptions": [
+    "BC-MIS-08009"
+   ],
+   "name": "Meaning of a definite integral in context",
+   "notation": "interpretation with units",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-08015"
+   ],
+   "sources": [
+    "ced:154"
+   ],
+   "topics": [
+    "BC-TOP-0803"
+   ],
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "For f greater than or equal to g on [a,b], the area of the region bounded by the two graphs and the vertical lines x equal a and x equal b is the definite integral of f minus g over [a,b].",
+   "description_plain": "The area is the integral of the upper curve minus the lower curve across the interval.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-08010",
+   "misconceptions": [
+    "BC-MIS-08010",
+    "BC-MIS-08011"
+   ],
+   "name": "Area between two curves integrated in x",
+   "notation": "upper minus lower; dx",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-08018",
+    "BC-SKL-08019",
+    "BC-SKL-08022"
+   ],
+   "sources": [
+    "ced:155"
+   ],
+   "topics": [
+    "BC-TOP-0804"
+   ],
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "The limits of an area integral are the inputs at which the boundary of the region changes, found by solving the equation of the two curves or read from the stated bounding lines.",
+   "description_plain": "The limits come from where the curves meet or from the lines the region is bounded by.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-08011",
+   "misconceptions": [
+    "BC-MIS-08012"
+   ],
+   "name": "Limits of integration from the boundary of the region",
+   "notation": "intersection points as limits",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-08020",
+    "BC-SKL-08021"
+   ],
+   "sources": [
+    "ced:155"
+   ],
+   "topics": [
+    "BC-TOP-0804"
+   ],
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "For curves written as functions of y with p greater than or equal to q on [c,d], the area of the region between them is the definite integral of p minus q with respect to y over [c,d].",
+   "description_plain": "Slicing horizontally, the area is the integral of the right curve minus the left curve.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-08012",
+   "misconceptions": [
+    "BC-MIS-08013"
+   ],
+   "name": "Area between two curves integrated in y",
+   "notation": "right minus left; dy",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-08023",
+    "BC-SKL-08024",
+    "BC-SKL-08025",
+    "BC-SKL-08026"
+   ],
+   "sources": [
+    "ced:156"
+   ],
+   "topics": [
+    "BC-TOP-0805"
+   ],
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "When two curves intersect at an interior point of the interval, the area is the sum of definite integrals over the subintervals, on each of which the order of subtraction is fixed.",
+   "description_plain": "Where the curves swap places the region has to be cut and the pieces added.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-08013",
+   "misconceptions": [
+    "BC-MIS-08014"
+   ],
+   "name": "Region split where the boundary curves cross",
+   "notation": "sum of definite integrals; absolute value of a difference",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-08027",
+    "BC-SKL-08028",
+    "BC-SKL-08029",
+    "BC-SKL-08030"
+   ],
+   "sources": [
+    "ced:157"
+   ],
+   "topics": [
+    "BC-TOP-0806"
+   ],
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "If a solid has cross sections perpendicular to an axis with area A at each input, its volume is the definite integral of A over the interval the solid spans.",
+   "description_plain": "Add up the areas of the slices across the interval.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-08014",
+   "misconceptions": [
+    "BC-MIS-08015"
+   ],
+   "name": "Volume as the integral of a cross sectional area",
+   "notation": "volume as the integral of A",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-08032",
+    "BC-SKL-08033",
+    "BC-SKL-08034",
+    "BC-SKL-08035"
+   ],
+   "sources": [
+    "ced:158"
+   ],
+   "topics": [
+    "BC-TOP-0807"
+   ],
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "For a solid built on a plane region, the side of a cross section at an input is the difference of the boundary functions at that input, measured in the direction perpendicular to the axis of slicing.",
+   "description_plain": "The side of each slice is the distance between the two boundary curves.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-08015",
+   "misconceptions": [
+    "BC-MIS-08016"
+   ],
+   "name": "Cross sectional dimension read from the region",
+   "notation": "side length as a difference of functions",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-08031"
+   ],
+   "sources": [
+    "ced:158"
+   ],
+   "topics": [
+    "BC-TOP-0807"
+   ],
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "The integrand for a solid with known cross sections is the area formula of the named shape evaluated at the distance between the boundary curves.",
+   "description_plain": "Each named shape has its own area formula, applied to the same distance.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-08016",
+   "misconceptions": [
+    "BC-MIS-08018"
+   ],
+   "name": "Cross sectional area from the shape of the slice",
+   "notation": "area formulas for triangles and semicircles",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-08036",
+    "BC-SKL-08037",
+    "BC-SKL-08038",
+    "BC-SKL-08039"
+   ],
+   "sources": [
+    "ced:159"
+   ],
+   "topics": [
+    "BC-TOP-0808"
+   ],
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "When a region bounded by a curve and the axis of revolution is revolved about that axis, the cross sections are discs of radius equal to the distance from the curve to the axis, and the volume is pi times the definite integral of the square of that radius.",
+   "description_plain": "Revolving a region against the axis makes discs whose radius is the curve.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-08017",
+   "misconceptions": [
+    "BC-MIS-08020"
+   ],
+   "name": "Disc method for a solid of revolution",
+   "notation": "pi times the integral of the radius squared",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-08040",
+    "BC-SKL-08041",
+    "BC-SKL-08042",
+    "BC-SKL-08043"
+   ],
+   "sources": [
+    "ced:160"
+   ],
+   "topics": [
+    "BC-TOP-0809"
+   ],
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "For revolution about the horizontal line y equal k, the radius at an input is the absolute difference between the function value and k, and correspondingly for a vertical line x equal h.",
+   "description_plain": "When the axis moves, the radius becomes a difference from that line.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-08018",
+   "misconceptions": [
+    "BC-MIS-08021"
+   ],
+   "name": "Radius measured from a line other than an axis",
+   "notation": "radius as f minus k or k minus f",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-08044",
+    "BC-SKL-08045",
+    "BC-SKL-08046",
+    "BC-SKL-08047"
+   ],
+   "sources": [
+    "ced:161"
+   ],
+   "topics": [
+    "BC-TOP-0810"
+   ],
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "For a region between two curves revolved about an axis it does not meet, the volume is pi times the definite integral of the square of the outer radius minus the square of the inner radius.",
+   "description_plain": "When the region does not touch the axis the slices are rings with two radii.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-08019",
+   "misconceptions": [
+    "BC-MIS-08017"
+   ],
+   "name": "Washer method for a region held away from the axis",
+   "notation": "pi times the integral of outer squared minus inner squared",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-08048",
+    "BC-SKL-08049",
+    "BC-SKL-08050",
+    "BC-SKL-08051"
+   ],
+   "sources": [
+    "ced:162"
+   ],
+   "topics": [
+    "BC-TOP-0811"
+   ],
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "For revolution about a horizontal or vertical line, the outer and inner radii are the distances from the far and near boundary curves to that line, and the volume is pi times the integral of the difference of their squares.",
+   "description_plain": "Both radii become distances from the shifted line.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-08020",
+   "misconceptions": [
+    "BC-MIS-08021"
+   ],
+   "name": "Washer radii measured from a line other than an axis",
+   "notation": "outer and inner radii as shifted differences",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-08052",
+    "BC-SKL-08053",
+    "BC-SKL-08054",
+    "BC-SKL-08055"
+   ],
+   "sources": [
+    "ced:163"
+   ],
+   "topics": [
+    "BC-TOP-0812"
+   ],
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "For f with continuous derivative on [a,b], the length of the graph of f over [a,b] is the definite integral of the square root of one plus the square of f prime with respect to x.",
+   "description_plain": "The length of a graph is the integral of the square root of one plus the square of the slope.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-08021",
+   "misconceptions": [
+    "BC-MIS-08024"
+   ],
+   "name": "Arc length of a curve given by a function",
+   "notation": "arc length integral",
+   "scope": "BC_only",
+   "skills": [
+    "BC-SKL-08056",
+    "BC-SKL-08057",
+    "BC-SKL-08058",
+    "BC-SKL-08059"
+   ],
+   "sources": [
+    "ced:164"
+   ],
+   "topics": [
+    "BC-TOP-0813"
+   ],
+   "unit": "BC-UNIT-08"
+  }
+ ],
+ "prerequisites": [
+  {
+   "category": "algebra",
+   "description_plain": "Setting two expressions equal and solving for every solution in the interval of interest, including the use of a calculator solver.",
+   "evidence_tag": "inferred",
+   "failure_signature": "Student writes the correct area or volume integrand but cannot produce the limits of integration.",
+   "hidden": true,
+   "id": "BC-PRQ-08001",
+   "name": "Solving an equation to locate where two graphs meet",
+   "notes": "Non-calculus prerequisite inferred from the demands of the BC-UNIT-08 essential knowledge statements.",
+   "scope": "shared",
+   "sources": []
+  },
+  {
+   "category": "algebra",
+   "description_plain": "Inverting a relation so that x is written as a function of y, including the domain restriction the inversion needs.",
+   "evidence_tag": "inferred",
+   "failure_signature": "Student integrates with respect to y while still using a function of x as the integrand.",
+   "hidden": true,
+   "id": "BC-PRQ-08002",
+   "name": "Rewriting an equation to express one variable in terms of the other",
+   "notes": "Non-calculus prerequisite inferred from the demands of the BC-UNIT-08 essential knowledge statements.",
+   "scope": "shared",
+   "sources": []
+  },
+  {
+   "category": "algebra",
+   "description_plain": "Rewriting the absolute value of an expression as a piecewise expression split at the zeros of that expression.",
+   "evidence_tag": "inferred",
+   "failure_signature": "Student reports a signed total where an unsigned total was required.",
+   "hidden": true,
+   "id": "BC-PRQ-08003",
+   "name": "Absolute value read as a piecewise definition",
+   "notes": "Non-calculus prerequisite inferred from the demands of the BC-UNIT-08 essential knowledge statements.",
+   "scope": "shared",
+   "sources": []
+  },
+  {
+   "category": "geometry",
+   "description_plain": "Writing the distance from a curve to a horizontal or vertical line as the larger value minus the smaller value.",
+   "evidence_tag": "inferred",
+   "failure_signature": "Student writes a radius as a bare function value when the axis of revolution is not a coordinate axis.",
+   "hidden": true,
+   "id": "BC-PRQ-08004",
+   "name": "Distance between two values measured along a coordinate axis",
+   "notes": "Non-calculus prerequisite inferred from the demands of the BC-UNIT-08 essential knowledge statements.",
+   "scope": "shared",
+   "sources": []
+  },
+  {
+   "category": "geometry",
+   "description_plain": "Area of an equilateral triangle from its side, and area of a right isosceles triangle from its leg or from its hypotenuse.",
+   "evidence_tag": "inferred",
+   "failure_signature": "Student uses one half base times height with the base substituted for the height.",
+   "hidden": true,
+   "id": "BC-PRQ-08005",
+   "name": "Area formulas for equilateral and right isosceles triangles",
+   "notes": "Non-calculus prerequisite inferred from the demands of the BC-UNIT-08 essential knowledge statements.",
+   "scope": "shared",
+   "sources": []
+  },
+  {
+   "category": "notation",
+   "description_plain": "Reporting a value accurate to three places after the decimal point, rounded or truncated, and avoiding premature rounding inside a computation.",
+   "evidence_tag": "inferred",
+   "failure_signature": "Student presents a correct setup and loses the answer point to a rounded intermediate value.",
+   "hidden": true,
+   "id": "BC-PRQ-08006",
+   "name": "Decimal reporting and rounding conventions on calculator answers",
+   "notes": "Non-calculus prerequisite inferred from the demands of the BC-UNIT-08 essential knowledge statements.",
+   "scope": "shared",
+   "sources": []
+  },
+  {
+   "category": "geometry",
+   "description_plain": "Computing the square root of the sum of squares of two components and reading it as a length.",
+   "evidence_tag": "inferred",
+   "failure_signature": "Student adds the two components instead of combining their squares.",
+   "hidden": true,
+   "id": "BC-PRQ-08007",
+   "name": "Magnitude of a two component quantity by the Pythagorean relation",
+   "notes": "Non-calculus prerequisite inferred from the demands of the BC-UNIT-08 essential knowledge statements.",
+   "scope": "shared",
+   "sources": []
+  }
+ ],
+ "registry": "skills",
+ "skills": [
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08002"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08001"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08001 across at least two presentations of the task, with no error from BC-ERR-08001, BC-ERR-08002.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08001, BC-ERR-08002 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-08001"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-08001",
+    "BC-ERR-08002"
+   ],
+   "concept": "BC-CON-08001",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given f by an analytic expression and an interval [a,b], compute the definite integral of f over [a,b] and divide by b minus a.",
+   "description_plain": "Integrate the function over the interval and divide by the length of the interval.",
+   "diagnostic_signals": [
+    "BC-SIG-08001"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-4B1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08001",
+   "learning_objectives": [
+    "BC-LO-CHA-4B"
+   ],
+   "misconceptions": [
+    "BC-MIS-08002"
+   ],
+   "name": "Apply the average value formula to a function given by a formula",
+   "official_evidence": [
+    "sg-25:2",
+    "sg-25:3"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-09"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:152",
+    "sg-25:2",
+    "sg-25:3"
+   ],
+   "topic": "BC-TOP-0801",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08002"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08001"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08001 across at least two presentations of the task, with no error from BC-ERR-08001, BC-ERR-08003.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08001, BC-ERR-08003 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06007.",
+    "remediation_target": "BC-PRQ-06007"
+   },
+   "archetypes": [
+    "BC-QA-08001"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-08001",
+    "BC-ERR-08003"
+   ],
+   "concept": "BC-CON-08001",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given the graph of f made of segments and circular arcs, evaluate the definite integral of f as signed area and divide by the length of the interval.",
+   "description_plain": "Get the area under the graph by geometry, then divide by the width of the interval.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-4B1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08002",
+   "learning_objectives": [
+    "BC-LO-CHA-4B"
+   ],
+   "misconceptions": [
+    "BC-MIS-08002"
+   ],
+   "name": "Compute an average value from a graph using geometry",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06007"
+   ],
+   "representations": [
+    "BC-REP-02",
+    "BC-REP-08"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:152"
+   ],
+   "topic": "BC-TOP-0801",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08003"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08001"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08001 across at least two presentations of the task, with no error from BC-ERR-08004, BC-ERR-08005.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08004, BC-ERR-08005 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-08006.",
+    "remediation_target": "BC-PRQ-08006"
+   },
+   "archetypes": [
+    "BC-QA-08001"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-08004",
+    "BC-ERR-08005"
+   ],
+   "concept": "BC-CON-08001",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Show the definite integral together with evidence of division by the length of the interval, then report the value accurate to three places after the decimal point.",
+   "description_plain": "Write the integral and the division before reporting the decimal the calculator gives.",
+   "diagnostic_signals": [
+    "BC-SIG-08001"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-4B1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08003",
+   "learning_objectives": [
+    "BC-LO-CHA-4B"
+   ],
+   "misconceptions": [
+    "BC-MIS-08003"
+   ],
+   "name": "Present the calculator setup for an average value and report it",
+   "official_evidence": [
+    "sg-25:2",
+    "sg-25:3",
+    "sg-23:4"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08006"
+   ],
+   "representations": [
+    "BC-REP-09",
+    "BC-REP-05"
+   ],
+   "scope": "shared",
+   "sources": [
+    "sg-25:2",
+    "sg-25:3",
+    "sg-23:4"
+   ],
+   "topic": "BC-TOP-0801",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08001"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08001",
+     "BC-QA-08002"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08001, BC-QA-08002 across at least two presentations of the task, with no error from BC-ERR-08006.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08006 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-08001",
+    "BC-QA-08002"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-08006"
+   ],
+   "concept": "BC-CON-08002",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given a prompt, select the integral quotient when the average of the function values is wanted and the difference quotient when the average rate of change is wanted.",
+   "description_plain": "Decide which of the two averages a question is asking for before computing.",
+   "diagnostic_signals": [
+    "BC-SIG-08002"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-4B1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08004",
+   "learning_objectives": [
+    "BC-LO-CHA-4B"
+   ],
+   "misconceptions": [
+    "BC-MIS-08001"
+   ],
+   "name": "Distinguish average value from average rate of change",
+   "official_evidence": [
+    "sg-25:4",
+    "crabbc-25:3"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:152",
+    "sg-25:4",
+    "crabbc-25:3"
+   ],
+   "topic": "BC-TOP-0801",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08001"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08001",
+     "BC-QA-08007"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08001, BC-QA-08007 across at least two presentations of the task, with no error from BC-ERR-08007, BC-ERR-08006.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08007, BC-ERR-08006 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-08001",
+    "BC-QA-08007"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-08007",
+    "BC-ERR-08006"
+   ],
+   "concept": "BC-CON-08002",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Report an average value as a quantity in the units of the integrand, naming the quantity and the interval over which the average is taken.",
+   "description_plain": "Say what the average stands for in the situation and attach its units.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-4B1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08005",
+   "learning_objectives": [
+    "BC-LO-CHA-4B"
+   ],
+   "misconceptions": [
+    "BC-MIS-08001"
+   ],
+   "name": "State the meaning and units of an average value in context",
+   "official_evidence": [
+    "sg-24:3"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-05"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:152",
+    "sg-24:3"
+   ],
+   "topic": "BC-TOP-0801",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08004"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08003"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08003 across at least two presentations of the task, with no error from BC-ERR-08008.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08008 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-08003"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-08008"
+   ],
+   "concept": "BC-CON-08003",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given a velocity function and a time interval, write and evaluate the definite integral of velocity over that interval and report it as displacement.",
+   "description_plain": "Integrate velocity over the interval to get the net change in position.",
+   "diagnostic_signals": [
+    "BC-SIG-08003"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-4C1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08006",
+   "learning_objectives": [
+    "BC-LO-CHA-4C"
+   ],
+   "misconceptions": [
+    "BC-MIS-08004"
+   ],
+   "name": "Compute displacement as the definite integral of velocity",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-1D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-05"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:153"
+   ],
+   "topic": "BC-TOP-0802",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08004"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08003"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08003 across at least two presentations of the task, with no error from BC-ERR-08008, BC-ERR-08009.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08008, BC-ERR-08009 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-08003.",
+    "remediation_target": "BC-PRQ-08003"
+   },
+   "archetypes": [
+    "BC-QA-08003"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-08008",
+    "BC-ERR-08009"
+   ],
+   "concept": "BC-CON-08004",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given a velocity function and a time interval, write and evaluate the definite integral of the absolute value of velocity over that interval and report it as total distance travelled.",
+   "description_plain": "Integrate the absolute value of velocity over the interval.",
+   "diagnostic_signals": [
+    "BC-SIG-08003"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-4C1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08007",
+   "learning_objectives": [
+    "BC-LO-CHA-4C"
+   ],
+   "misconceptions": [
+    "BC-MIS-08004"
+   ],
+   "name": "Compute total distance as the definite integral of speed",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-1D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08003"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-09"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:153"
+   ],
+   "topic": "BC-TOP-0802",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08004"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08003"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08003 across at least two presentations of the task, with no error from BC-ERR-08010.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08010 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-08001, BC-PRQ-08003.",
+    "remediation_target": "BC-PRQ-08001"
+   },
+   "archetypes": [
+    "BC-QA-08003"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-08010"
+   ],
+   "concept": "BC-CON-08004",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Solve velocity equal to zero on the interval, integrate velocity on each subinterval, and sum the absolute values of the results to obtain total distance.",
+   "description_plain": "Break the interval where the velocity crosses zero, then add the pieces without their signs.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-4C1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08008",
+   "learning_objectives": [
+    "BC-LO-CHA-4C"
+   ],
+   "misconceptions": [
+    "BC-MIS-08004"
+   ],
+   "name": "Split a time interval at the sign changes of velocity",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-1D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08001",
+    "BC-PRQ-08003"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:153"
+   ],
+   "topic": "BC-TOP-0802",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08006"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08003",
+     "BC-QA-08004"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08003, BC-QA-08004 across at least two presentations of the task, with no error from BC-ERR-08011.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08011 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-08003",
+    "BC-QA-08004"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-08011"
+   ],
+   "concept": "BC-CON-08005",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given an initial position at time a and a velocity function, evaluate the position at time b as the initial position plus the definite integral of velocity from a to b.",
+   "description_plain": "Add the accumulated change to the starting position.",
+   "diagnostic_signals": [
+    "BC-SIG-08004"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-4C1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08009",
+   "learning_objectives": [
+    "BC-LO-CHA-4C"
+   ],
+   "misconceptions": [
+    "BC-MIS-08006"
+   ],
+   "name": "Determine a position value from an initial position and velocity",
+   "official_evidence": [
+    "sg-24:7"
+   ],
+   "practice_skills": [
+    "BC-MPS-1D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-05"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:153",
+    "sg-24:7"
+   ],
+   "topic": "BC-TOP-0802",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08006"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08003"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08003 across at least two presentations of the task, with no error from BC-ERR-08011.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08011 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-08003"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-08011"
+   ],
+   "concept": "BC-CON-08005",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given an initial velocity at time a and an acceleration function, evaluate the velocity at time b as the initial velocity plus the definite integral of acceleration from a to b.",
+   "description_plain": "Add the accumulated change in velocity to the starting velocity.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-4C1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08010",
+   "learning_objectives": [
+    "BC-LO-CHA-4C"
+   ],
+   "misconceptions": [
+    "BC-MIS-08006"
+   ],
+   "name": "Determine a velocity value from an initial velocity and acceleration",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-1D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:153"
+   ],
+   "topic": "BC-TOP-0802",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08004",
+     "BC-MIS-08005"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08003"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08003 across at least two presentations of the task, with no error from BC-ERR-08008.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08008 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-08003"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-08008"
+   ],
+   "concept": "BC-CON-08004",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given a motion prompt, classify the requested quantity as displacement or as total distance travelled and name the integrand each one requires.",
+   "description_plain": "Read whether the question wants net change in position or the length of the trip.",
+   "diagnostic_signals": [
+    "BC-SIG-08003"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-4C1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08011",
+   "learning_objectives": [
+    "BC-LO-CHA-4C"
+   ],
+   "misconceptions": [
+    "BC-MIS-08004",
+    "BC-MIS-08005"
+   ],
+   "name": "Select displacement or total distance from the wording of a prompt",
+   "official_evidence": [
+    "cr-23:8",
+    "cr-24:8"
+   ],
+   "practice_skills": [
+    "BC-MPS-1D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-05"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:153",
+    "cr-23:8",
+    "cr-24:8"
+   ],
+   "topic": "BC-TOP-0802",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08006"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08004"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08004 across at least two presentations of the task, with no error from BC-ERR-08011, BC-ERR-08012.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08011, BC-ERR-08012 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-08004"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-08011",
+    "BC-ERR-08012"
+   ],
+   "concept": "BC-CON-08006",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given an initial amount at time a and a rate function, write and evaluate the amount at time b as the initial amount plus the definite integral of the rate from a to b.",
+   "description_plain": "Write the later amount as the starting amount plus the integral of the rate.",
+   "diagnostic_signals": [
+    "BC-SIG-08004"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-4D1",
+    "BC-EK-CHA-4E1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08012",
+   "learning_objectives": [
+    "BC-LO-CHA-4D",
+    "BC-LO-CHA-4E"
+   ],
+   "misconceptions": [
+    "BC-MIS-08006"
+   ],
+   "name": "Express the amount at a time as an initial amount plus an integral",
+   "official_evidence": [
+    "frq-24:3",
+    "sg-24:4"
+   ],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-05",
+    "BC-REP-01",
+    "BC-REP-09"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:154",
+    "frq-24:3",
+    "sg-24:4"
+   ],
+   "topic": "BC-TOP-0803",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08007"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08005"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08005 across at least two presentations of the task, with no error from BC-ERR-08013, BC-ERR-08014.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08013, BC-ERR-08014 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-08005"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-08013",
+    "BC-ERR-08014"
+   ],
+   "concept": "BC-CON-08007",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given separate inflow and outflow rate functions, write the net rate as their difference and express the net change over an interval as the definite integral of that difference.",
+   "description_plain": "Subtract the outflow rate from the inflow rate before integrating.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-4D2",
+    "BC-EK-CHA-4E1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08013",
+   "learning_objectives": [
+    "BC-LO-CHA-4D",
+    "BC-LO-CHA-4E"
+   ],
+   "misconceptions": [
+    "BC-MIS-08007"
+   ],
+   "name": "Set up a net rate as rate in minus rate out",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-05",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:154"
+   ],
+   "topic": "BC-TOP-0803",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08008"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08006"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08006 across at least two presentations of the task, with no error from BC-ERR-08015, BC-ERR-08016.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08015, BC-ERR-08016 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-08001.",
+    "remediation_target": "BC-PRQ-08001"
+   },
+   "archetypes": [
+    "BC-QA-08006"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-08015",
+    "BC-ERR-08016"
+   ],
+   "concept": "BC-CON-08008",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Set the net rate equal to zero, identify the candidate times together with the endpoints, and justify the absolute maximum either by a sign change of the net rate with uniqueness or by evaluating the amount at every candidate.",
+   "description_plain": "Find where the net rate changes from positive to negative, then compare the candidates.",
+   "diagnostic_signals": [
+    "BC-SIG-08005"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-4D1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08014",
+   "learning_objectives": [
+    "BC-LO-CHA-4D",
+    "BC-LO-CHA-4E"
+   ],
+   "misconceptions": [
+    "BC-MIS-08008"
+   ],
+   "name": "Determine when an accumulated amount is maximal and justify globally",
+   "official_evidence": [
+    "sg-25:5",
+    "crabbc-25:4"
+   ],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08001"
+   ],
+   "representations": [
+    "BC-REP-05",
+    "BC-REP-09"
+   ],
+   "scope": "shared",
+   "sources": [
+    "sg-25:5",
+    "crabbc-25:4"
+   ],
+   "topic": "BC-TOP-0803",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08009"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08007"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08007 across at least two presentations of the task, with no error from BC-ERR-08007, BC-ERR-08017.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08007, BC-ERR-08017 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-08007"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-08007",
+    "BC-ERR-08017"
+   ],
+   "concept": "BC-CON-08009",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given a definite integral of a contextual rate, state the accumulated quantity, the interval of accumulation, and the units of the result.",
+   "description_plain": "Say what the integral measures, over which interval, in which units.",
+   "diagnostic_signals": [
+    "BC-SIG-08006"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-4D1",
+    "BC-EK-CHA-4D2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08015",
+   "learning_objectives": [
+    "BC-LO-CHA-4D",
+    "BC-LO-CHA-4E"
+   ],
+   "misconceptions": [
+    "BC-MIS-08009"
+   ],
+   "name": "Interpret a definite integral of a rate in context with units",
+   "official_evidence": [
+    "sg-23:2",
+    "sg-24:3"
+   ],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-05"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:154",
+    "sg-23:2",
+    "sg-24:3"
+   ],
+   "topic": "BC-TOP-0803",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08009"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08004",
+     "BC-QA-08005"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08004, BC-QA-08005 across at least two presentations of the task, with no error from BC-ERR-08018, BC-ERR-08019.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08018, BC-ERR-08019 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-08004",
+    "BC-QA-08005"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-08018",
+    "BC-ERR-08019"
+   ],
+   "concept": "BC-CON-08006",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given an applied description of a rate, produce a definite integral, with differential and limits, whose value is the requested net change.",
+   "description_plain": "Turn the sentence into an integral with the right integrand and limits.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-4E1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08016",
+   "learning_objectives": [
+    "BC-LO-CHA-4D",
+    "BC-LO-CHA-4E"
+   ],
+   "misconceptions": [
+    "BC-MIS-08009"
+   ],
+   "name": "Write a definite integral expression that answers an applied question",
+   "official_evidence": [
+    "sg-25:14"
+   ],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-05",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:154",
+    "sg-25:14"
+   ],
+   "topic": "BC-TOP-0803",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08003"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08004"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08004 across at least two presentations of the task, with no error from BC-ERR-08005, BC-ERR-08007.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08005, BC-ERR-08007 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-08006.",
+    "remediation_target": "BC-PRQ-08006"
+   },
+   "archetypes": [
+    "BC-QA-08004"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-08005",
+    "BC-ERR-08007"
+   ],
+   "concept": "BC-CON-08006",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Evaluate the definite integral, by antidifferentiation or with technology, and report the result as the quantity the context asks for, at the required decimal accuracy.",
+   "description_plain": "Compute the integral, then answer the question in a sentence with units.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-4E1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08017",
+   "learning_objectives": [
+    "BC-LO-CHA-4D",
+    "BC-LO-CHA-4E"
+   ],
+   "misconceptions": [
+    "BC-MIS-08003"
+   ],
+   "name": "Evaluate an applied accumulation integral and report it in context",
+   "official_evidence": [
+    "sg-25:14",
+    "frq-25:6"
+   ],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08006"
+   ],
+   "representations": [
+    "BC-REP-09",
+    "BC-REP-05"
+   ],
+   "scope": "shared",
+   "sources": [
+    "sg-25:14",
+    "frq-25:6"
+   ],
+   "topic": "BC-TOP-0803",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08011"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08008"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08008 across at least two presentations of the task, with no error from BC-ERR-08020.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08020 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-08008"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-08020"
+   ],
+   "concept": "BC-CON-08010",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given two functions and an interval, determine which function is greater on that interval by evaluating a test input or by reading the given figure.",
+   "description_plain": "Decide which graph is on top before writing the difference.",
+   "diagnostic_signals": [
+    "BC-SIG-08007"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5A1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08018",
+   "learning_objectives": [
+    "BC-LO-CHA-5A"
+   ],
+   "misconceptions": [
+    "BC-MIS-08011"
+   ],
+   "name": "Identify which curve is upper on an interval",
+   "official_evidence": [
+    "sg-23:16"
+   ],
+   "practice_skills": [
+    "BC-MPS-4C"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-02",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:155",
+    "sg-23:16"
+   ],
+   "topic": "BC-TOP-0804",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08010"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08008"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08008 across at least two presentations of the task, with no error from BC-ERR-08020, BC-ERR-08018.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08020, BC-ERR-08018 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-08008"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-08020",
+    "BC-ERR-08018"
+   ],
+   "concept": "BC-CON-08010",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Write a definite integral with integrand the difference of the two functions in the order upper minus lower, with the differential dx and the limits taken from the boundary.",
+   "description_plain": "Write the integral of the top curve minus the bottom curve, dx.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-5A1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08019",
+   "learning_objectives": [
+    "BC-LO-CHA-5A"
+   ],
+   "misconceptions": [
+    "BC-MIS-08010"
+   ],
+   "name": "Set up the area integral of upper minus lower with respect to x",
+   "official_evidence": [
+    "sg-23:16"
+   ],
+   "practice_skills": [
+    "BC-MPS-4C"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:155",
+    "sg-23:16"
+   ],
+   "topic": "BC-TOP-0804",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08012"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08008"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08008 across at least two presentations of the task, with no error from BC-ERR-08019.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08019 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-08001.",
+    "remediation_target": "BC-PRQ-08001"
+   },
+   "archetypes": [
+    "BC-QA-08008"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-08019"
+   ],
+   "concept": "BC-CON-08011",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Set the two functions equal, solve exactly for the inputs at which the graphs meet, and select the solutions that bound the region.",
+   "description_plain": "Solve the two expressions equal to each other by hand.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-5A1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08020",
+   "learning_objectives": [
+    "BC-LO-CHA-5A"
+   ],
+   "misconceptions": [
+    "BC-MIS-08012"
+   ],
+   "name": "Find intersection points algebraically to set the limits",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-4C"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08001"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:155"
+   ],
+   "topic": "BC-TOP-0804",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08012"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08008"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08008 across at least two presentations of the task, with no error from BC-ERR-08005, BC-ERR-08019.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08005, BC-ERR-08019 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-08006.",
+    "remediation_target": "BC-PRQ-08006"
+   },
+   "archetypes": [
+    "BC-QA-08008"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-08005",
+    "BC-ERR-08019"
+   ],
+   "concept": "BC-CON-08011",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Use technology to solve the equation of the two functions on the stated domain, store the solutions, and use the stored values as limits of integration.",
+   "description_plain": "Use the solver or a graph to get the crossing inputs as decimals.",
+   "diagnostic_signals": [
+    "BC-SIG-08008"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5A1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08021",
+   "learning_objectives": [
+    "BC-LO-CHA-5A"
+   ],
+   "misconceptions": [
+    "BC-MIS-08012"
+   ],
+   "name": "Find intersection points with a calculator to set the limits",
+   "official_evidence": [
+    "crabbc-25:30"
+   ],
+   "practice_skills": [
+    "BC-MPS-4C"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08006"
+   ],
+   "representations": [
+    "BC-REP-09",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:155",
+    "crabbc-25:30"
+   ],
+   "topic": "BC-TOP-0804",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08010"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08008"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08008 across at least two presentations of the task, with no error from BC-ERR-08021, BC-ERR-08022.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08021, BC-ERR-08022 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06002.",
+    "remediation_target": "BC-PRQ-06002"
+   },
+   "archetypes": [
+    "BC-QA-08008"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-08021",
+    "BC-ERR-08022"
+   ],
+   "concept": "BC-CON-08010",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Evaluate the area integral by an antiderivative or with technology and report a nonnegative value as the area of the region.",
+   "description_plain": "Antidifferentiate or use technology, then state the area.",
+   "diagnostic_signals": [
+    "BC-SIG-08007"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5A1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08022",
+   "learning_objectives": [
+    "BC-LO-CHA-5A"
+   ],
+   "misconceptions": [
+    "BC-MIS-08010"
+   ],
+   "name": "Evaluate an area integral and report the area",
+   "official_evidence": [
+    "sg-23:16",
+    "sg-23:17"
+   ],
+   "practice_skills": [
+    "BC-MPS-4C"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06002"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-09"
+   ],
+   "scope": "shared",
+   "sources": [
+    "sg-23:16",
+    "sg-23:17"
+   ],
+   "topic": "BC-TOP-0804",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08013"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08009"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08009 across at least two presentations of the task, with no error from BC-ERR-08023.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08023 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-08002.",
+    "remediation_target": "BC-PRQ-08002"
+   },
+   "archetypes": [
+    "BC-QA-08009"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-08023"
+   ],
+   "concept": "BC-CON-08012",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given a curve described by an equation in x and y, solve for x as a function of y on the branch that bounds the region.",
+   "description_plain": "Solve the equation so that x is written in terms of y.",
+   "diagnostic_signals": [
+    "BC-SIG-08009"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5A2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08023",
+   "learning_objectives": [
+    "BC-LO-CHA-5A"
+   ],
+   "misconceptions": [
+    "BC-MIS-08013"
+   ],
+   "name": "Rewrite a curve as a function of y",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08002"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:156"
+   ],
+   "topic": "BC-TOP-0805",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08013"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08009"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08009 across at least two presentations of the task, with no error from BC-ERR-08020.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08020 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-08009"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-08020"
+   ],
+   "concept": "BC-CON-08012",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given two curves written in y and an interval of y values, determine which one gives the larger x value there.",
+   "description_plain": "Decide which graph is farther right before writing the difference.",
+   "diagnostic_signals": [
+    "BC-SIG-08007"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5A2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08024",
+   "learning_objectives": [
+    "BC-LO-CHA-5A"
+   ],
+   "misconceptions": [
+    "BC-MIS-08013"
+   ],
+   "name": "Identify which curve is to the right on an interval of y",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-02",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:156"
+   ],
+   "topic": "BC-TOP-0805",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08013"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08009"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08009 across at least two presentations of the task, with no error from BC-ERR-08024, BC-ERR-08018.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08024, BC-ERR-08018 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-08002.",
+    "remediation_target": "BC-PRQ-08002"
+   },
+   "archetypes": [
+    "BC-QA-08009"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-08024",
+    "BC-ERR-08018"
+   ],
+   "concept": "BC-CON-08012",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Write a definite integral in y with integrand the difference of the two curves in the order right minus left, with limits the y values bounding the region, and evaluate it.",
+   "description_plain": "Write the integral of right minus left, dy, and evaluate it.",
+   "diagnostic_signals": [
+    "BC-SIG-08009"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5A2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08025",
+   "learning_objectives": [
+    "BC-LO-CHA-5A"
+   ],
+   "misconceptions": [
+    "BC-MIS-08013"
+   ],
+   "name": "Set up and evaluate an area integral with respect to y",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08002"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:156"
+   ],
+   "topic": "BC-TOP-0805",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08013"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08009",
+     "BC-QA-08008"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08009, BC-QA-08008 across at least two presentations of the task, with no error from BC-ERR-08023.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08023 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-08002.",
+    "remediation_target": "BC-PRQ-08002"
+   },
+   "archetypes": [
+    "BC-QA-08009",
+    "BC-QA-08008"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-08023"
+   ],
+   "concept": "BC-CON-08012",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given a region, decide whether vertical or horizontal slices keep one function as the upper or right boundary throughout, and select the variable of integration accordingly.",
+   "description_plain": "Pick the slicing direction that needs the fewest integrals.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-5A2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08026",
+   "learning_objectives": [
+    "BC-LO-CHA-5A"
+   ],
+   "misconceptions": [
+    "BC-MIS-08013"
+   ],
+   "name": "Choose whether to integrate in x or in y for a given region",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08002"
+   ],
+   "representations": [
+    "BC-REP-02",
+    "BC-REP-08"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:156"
+   ],
+   "topic": "BC-TOP-0805",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08014"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08010"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08010 across at least two presentations of the task, with no error from BC-ERR-08025.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08025 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-08001.",
+    "remediation_target": "BC-PRQ-08001"
+   },
+   "archetypes": [
+    "BC-QA-08010"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-08025"
+   ],
+   "concept": "BC-CON-08013",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Solve the equation of the two curves on the interval, verify that every solution has been found, and order the solutions to define the subintervals.",
+   "description_plain": "Find all the crossings in the interval and list them in order.",
+   "diagnostic_signals": [
+    "BC-SIG-08010"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5A3"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08027",
+   "learning_objectives": [
+    "BC-LO-CHA-5A"
+   ],
+   "misconceptions": [
+    "BC-MIS-08014"
+   ],
+   "name": "Locate every intersection point and order them",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-2B"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08001"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:157"
+   ],
+   "topic": "BC-TOP-0806",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08011"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08010"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08010 across at least two presentations of the task, with no error from BC-ERR-08020.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08020 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-08010"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-08020"
+   ],
+   "concept": "BC-CON-08013",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "On each subinterval between consecutive intersection points, evaluate both functions at an interior input to fix the order of subtraction.",
+   "description_plain": "Test each piece separately to see which curve is on top there.",
+   "diagnostic_signals": [
+    "BC-SIG-08007"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5A3"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08028",
+   "learning_objectives": [
+    "BC-LO-CHA-5A"
+   ],
+   "misconceptions": [
+    "BC-MIS-08011"
+   ],
+   "name": "Determine which curve is greater on each subinterval",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-2B"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:157"
+   ],
+   "topic": "BC-TOP-0806",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08014"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08010"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08010 across at least two presentations of the task, with no error from BC-ERR-08026.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08026 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-08010"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-08026"
+   ],
+   "concept": "BC-CON-08013",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Express the total area as the sum of definite integrals, one over each subinterval, with the integrand written so that each contribution is nonnegative.",
+   "description_plain": "Add one integral per piece, each with its own order of subtraction.",
+   "diagnostic_signals": [
+    "BC-SIG-08010"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5A3"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08029",
+   "learning_objectives": [
+    "BC-LO-CHA-5A"
+   ],
+   "misconceptions": [
+    "BC-MIS-08014"
+   ],
+   "name": "Write the area as a sum of definite integrals over the subintervals",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-2B"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:157"
+   ],
+   "topic": "BC-TOP-0806",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08014"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08010"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08010 across at least two presentations of the task, with no error from BC-ERR-08027.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08027 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-08003.",
+    "remediation_target": "BC-PRQ-08003"
+   },
+   "archetypes": [
+    "BC-QA-08010"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-08027"
+   ],
+   "concept": "BC-CON-08013",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Express the area of a region whose boundary curves cross as a single definite integral of the absolute value of the difference of the two functions, and evaluate it with technology.",
+   "description_plain": "Use one integral with absolute value bars instead of splitting.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-5A3"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08030",
+   "learning_objectives": [
+    "BC-LO-CHA-5A"
+   ],
+   "misconceptions": [
+    "BC-MIS-08014"
+   ],
+   "name": "Write the area as the integral of the absolute value of the difference",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-2B"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08003"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-09"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:157"
+   ],
+   "topic": "BC-TOP-0806",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08016"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08011"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08011 across at least two presentations of the task, with no error from BC-ERR-08028.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08028 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-08004.",
+    "remediation_target": "BC-PRQ-08004"
+   },
+   "archetypes": [
+    "BC-QA-08011"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-08028"
+   ],
+   "concept": "BC-CON-08015",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given a region and an axis of slicing, write the side of the cross section at an input as the difference of the two boundary functions there.",
+   "description_plain": "Write the side as the top curve minus the bottom curve at that input.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-5B1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08031",
+   "learning_objectives": [
+    "BC-LO-CHA-5B"
+   ],
+   "misconceptions": [
+    "BC-MIS-08016"
+   ],
+   "name": "Express the side of a cross section as the distance between the curves",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08004"
+   ],
+   "representations": [
+    "BC-REP-08",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:158"
+   ],
+   "topic": "BC-TOP-0807",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08015"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08011"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08011 across at least two presentations of the task, with no error from BC-ERR-08029, BC-ERR-08030.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08029, BC-ERR-08030 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-08004.",
+    "remediation_target": "BC-PRQ-08004"
+   },
+   "archetypes": [
+    "BC-QA-08011"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-08029",
+    "BC-ERR-08030"
+   ],
+   "concept": "BC-CON-08014",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Write the volume of a solid with square cross sections as the definite integral of the square of the difference of the boundary functions over the spanning interval.",
+   "description_plain": "Square the side and integrate it over the interval.",
+   "diagnostic_signals": [
+    "BC-SIG-08011"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5B1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08032",
+   "learning_objectives": [
+    "BC-LO-CHA-5B"
+   ],
+   "misconceptions": [
+    "BC-MIS-08015"
+   ],
+   "name": "Set up the volume integral for square cross sections",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08004"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-08"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:158"
+   ],
+   "topic": "BC-TOP-0807",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08016"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08011"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08011 across at least two presentations of the task, with no error from BC-ERR-08031.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08031 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-08004.",
+    "remediation_target": "BC-PRQ-08004"
+   },
+   "archetypes": [
+    "BC-QA-08011"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-08031"
+   ],
+   "concept": "BC-CON-08014",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Write the volume of a solid whose rectangular cross sections have a stated height relation as the definite integral of the product of the two dimensions over the spanning interval.",
+   "description_plain": "Multiply the side by the stated second dimension, then integrate.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-5B1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08033",
+   "learning_objectives": [
+    "BC-LO-CHA-5B"
+   ],
+   "misconceptions": [
+    "BC-MIS-08016"
+   ],
+   "name": "Set up the volume integral for rectangular cross sections",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08004"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-08"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:158"
+   ],
+   "topic": "BC-TOP-0807",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08013"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08011"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08011 across at least two presentations of the task, with no error from BC-ERR-08023.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08023 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-08002.",
+    "remediation_target": "BC-PRQ-08002"
+   },
+   "archetypes": [
+    "BC-QA-08011"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-08023"
+   ],
+   "concept": "BC-CON-08014",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given a description of cross sections perpendicular to an axis, select the variable of integration and express the boundary functions in that variable.",
+   "description_plain": "Read whether the slices stand on the x axis or the y axis and integrate in that variable.",
+   "diagnostic_signals": [
+    "BC-SIG-08009"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5B1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08034",
+   "learning_objectives": [
+    "BC-LO-CHA-5B"
+   ],
+   "misconceptions": [
+    "BC-MIS-08013"
+   ],
+   "name": "Determine the axis the cross sections are perpendicular to",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08002"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-08"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:158"
+   ],
+   "topic": "BC-TOP-0807",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08017"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08011"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08011 across at least two presentations of the task, with no error from BC-ERR-08030, BC-ERR-08005.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08030, BC-ERR-08005 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06002.",
+    "remediation_target": "BC-PRQ-06002"
+   },
+   "archetypes": [
+    "BC-QA-08011"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-08030",
+    "BC-ERR-08005"
+   ],
+   "concept": "BC-CON-08014",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Evaluate the volume integral by expanding the squared difference and antidifferentiating, or with technology, and report the value.",
+   "description_plain": "Expand or use technology, then report the volume.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-5B1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08035",
+   "learning_objectives": [
+    "BC-LO-CHA-5B"
+   ],
+   "misconceptions": [
+    "BC-MIS-08017"
+   ],
+   "name": "Evaluate a cross section volume integral",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06002"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-09"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:158"
+   ],
+   "topic": "BC-TOP-0807",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08019"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08011"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08011 across at least two presentations of the task, with no error from BC-ERR-08032.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08032 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-08005.",
+    "remediation_target": "BC-PRQ-08005"
+   },
+   "archetypes": [
+    "BC-QA-08011"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-08032"
+   ],
+   "concept": "BC-CON-08016",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Express the area of an equilateral cross section as the square of the distance between the boundary curves multiplied by the square root of three over four.",
+   "description_plain": "Use the equilateral triangle formula with the distance as the side.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-5B2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08036",
+   "learning_objectives": [
+    "BC-LO-CHA-5B"
+   ],
+   "misconceptions": [
+    "BC-MIS-08019"
+   ],
+   "name": "Write the area of an equilateral triangular cross section",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08005"
+   ],
+   "representations": [
+    "BC-REP-08",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:159"
+   ],
+   "topic": "BC-TOP-0808",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08019"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08011"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08011 across at least two presentations of the task, with no error from BC-ERR-08033.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08033 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-08005.",
+    "remediation_target": "BC-PRQ-08005"
+   },
+   "archetypes": [
+    "BC-QA-08011"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-08033"
+   ],
+   "concept": "BC-CON-08016",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Express the area of a right isosceles cross section as half the square of the leg when the distance is a leg, and as one quarter of the square of the hypotenuse when the distance is the hypotenuse.",
+   "description_plain": "Decide whether the distance is a leg or the hypotenuse, then use the matching formula.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-5B2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08037",
+   "learning_objectives": [
+    "BC-LO-CHA-5B"
+   ],
+   "misconceptions": [
+    "BC-MIS-08019"
+   ],
+   "name": "Write the area of a right isosceles triangular cross section",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08005"
+   ],
+   "representations": [
+    "BC-REP-08",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:159"
+   ],
+   "topic": "BC-TOP-0808",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08018",
+     "BC-MIS-08019"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08011"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08011 across at least two presentations of the task, with no error from BC-ERR-08034, BC-ERR-08035.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08034, BC-ERR-08035 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06007.",
+    "remediation_target": "BC-PRQ-06007"
+   },
+   "archetypes": [
+    "BC-QA-08011"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-08034",
+    "BC-ERR-08035"
+   ],
+   "concept": "BC-CON-08016",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Express the area of a semicircular cross section whose diameter is the distance between the boundary curves as pi over eight times the square of that distance.",
+   "description_plain": "Halve the distance to get the radius before squaring.",
+   "diagnostic_signals": [
+    "BC-SIG-08012"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5B3"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08038",
+   "learning_objectives": [
+    "BC-LO-CHA-5B"
+   ],
+   "misconceptions": [
+    "BC-MIS-08018",
+    "BC-MIS-08019"
+   ],
+   "name": "Write the area of a semicircular cross section from the diameter",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06007"
+   ],
+   "representations": [
+    "BC-REP-08",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:159"
+   ],
+   "topic": "BC-TOP-0808",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08019"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08011"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08011 across at least two presentations of the task, with no error from BC-ERR-08032, BC-ERR-08030.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08032, BC-ERR-08030 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06002.",
+    "remediation_target": "BC-PRQ-06002"
+   },
+   "archetypes": [
+    "BC-QA-08011"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-08032",
+    "BC-ERR-08030"
+   ],
+   "concept": "BC-CON-08016",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Write the definite integral of the chosen area formula over the spanning interval and evaluate it by antidifferentiation or with technology.",
+   "description_plain": "Put the shape formula in the integral and evaluate it.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-5B2",
+    "BC-EK-CHA-5B3"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08039",
+   "learning_objectives": [
+    "BC-LO-CHA-5B"
+   ],
+   "misconceptions": [
+    "BC-MIS-08019"
+   ],
+   "name": "Set up and evaluate the volume integral for a named cross section",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06002"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-09"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:159"
+   ],
+   "topic": "BC-TOP-0808",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08020"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08012"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08012 across at least two presentations of the task, with no error from BC-ERR-08036.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08036 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-08004.",
+    "remediation_target": "BC-PRQ-08004"
+   },
+   "archetypes": [
+    "BC-QA-08012"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-08036"
+   ],
+   "concept": "BC-CON-08017",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "For a region between a curve and the axis of revolution, write the radius of the disc at an input as the distance from the curve to that axis.",
+   "description_plain": "The radius is the function value when the axis is the x axis.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-5C1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08040",
+   "learning_objectives": [
+    "BC-LO-CHA-5C"
+   ],
+   "misconceptions": [
+    "BC-MIS-08020"
+   ],
+   "name": "Identify the radius of a disc as the distance to the axis",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08004"
+   ],
+   "representations": [
+    "BC-REP-08",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:160"
+   ],
+   "topic": "BC-TOP-0809",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08020"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08012"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08012 across at least two presentations of the task, with no error from BC-ERR-08037, BC-ERR-08036.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08037, BC-ERR-08036 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-08004.",
+    "remediation_target": "BC-PRQ-08004"
+   },
+   "archetypes": [
+    "BC-QA-08012"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-08037",
+    "BC-ERR-08036"
+   ],
+   "concept": "BC-CON-08017",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Write the volume of the solid obtained by revolving the region between a curve and the x axis about the x axis as pi times the definite integral of the square of the function with respect to x.",
+   "description_plain": "Integrate pi times the square of the function with respect to x.",
+   "diagnostic_signals": [
+    "BC-SIG-08013"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5C1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08041",
+   "learning_objectives": [
+    "BC-LO-CHA-5C"
+   ],
+   "misconceptions": [
+    "BC-MIS-08020"
+   ],
+   "name": "Set up the disc integral about the x axis",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08004"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-08"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:160"
+   ],
+   "topic": "BC-TOP-0809",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08013"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08012"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08012 across at least two presentations of the task, with no error from BC-ERR-08023, BC-ERR-08024.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08023, BC-ERR-08024 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-08002.",
+    "remediation_target": "BC-PRQ-08002"
+   },
+   "archetypes": [
+    "BC-QA-08012"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-08023",
+    "BC-ERR-08024"
+   ],
+   "concept": "BC-CON-08017",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Write the volume of the solid obtained by revolving a region about the y axis as pi times the definite integral, with respect to y, of the square of the curve expressed as a function of y.",
+   "description_plain": "Rewrite the curve in y, then integrate pi times the square with respect to y.",
+   "diagnostic_signals": [
+    "BC-SIG-08009"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5C1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08042",
+   "learning_objectives": [
+    "BC-LO-CHA-5C"
+   ],
+   "misconceptions": [
+    "BC-MIS-08013"
+   ],
+   "name": "Set up the disc integral about the y axis",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08002"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-08"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:160"
+   ],
+   "topic": "BC-TOP-0809",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08020"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08012"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08012 across at least two presentations of the task, with no error from BC-ERR-08037, BC-ERR-08005.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08037, BC-ERR-08005 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06002.",
+    "remediation_target": "BC-PRQ-06002"
+   },
+   "archetypes": [
+    "BC-QA-08012"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-08037",
+    "BC-ERR-08005"
+   ],
+   "concept": "BC-CON-08017",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Evaluate the disc integral by antidifferentiation or with technology and report the volume, retaining the constant factor of pi.",
+   "description_plain": "Do the integral and keep pi in the answer.",
+   "diagnostic_signals": [
+    "BC-SIG-08013"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5C1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08043",
+   "learning_objectives": [
+    "BC-LO-CHA-5C"
+   ],
+   "misconceptions": [
+    "BC-MIS-08020"
+   ],
+   "name": "Evaluate a disc volume and report it with the factor of pi",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06002"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-09"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:160"
+   ],
+   "topic": "BC-TOP-0809",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08021"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08012"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08012 across at least two presentations of the task, with no error from BC-ERR-08038.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08038 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-08004.",
+    "remediation_target": "BC-PRQ-08004"
+   },
+   "archetypes": [
+    "BC-QA-08012"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-08038"
+   ],
+   "concept": "BC-CON-08018",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "For revolution about the line y equal k, write the radius at an input as the function value minus k when the region lies above the line, and as k minus the function value when it lies below.",
+   "description_plain": "Subtract the line from the curve, or the curve from the line, whichever is positive.",
+   "diagnostic_signals": [
+    "BC-SIG-08015"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5C2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08044",
+   "learning_objectives": [
+    "BC-LO-CHA-5C"
+   ],
+   "misconceptions": [
+    "BC-MIS-08021"
+   ],
+   "name": "Write the radius as the distance from a curve to a horizontal line",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-2D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08004"
+   ],
+   "representations": [
+    "BC-REP-08",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:161"
+   ],
+   "topic": "BC-TOP-0810",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08021"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08012"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08012 across at least two presentations of the task, with no error from BC-ERR-08038, BC-ERR-08023.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08038, BC-ERR-08023 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-08002.",
+    "remediation_target": "BC-PRQ-08002"
+   },
+   "archetypes": [
+    "BC-QA-08012"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-08038",
+    "BC-ERR-08023"
+   ],
+   "concept": "BC-CON-08018",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "For revolution about the line x equal h, write the radius at a y value as the curve expressed in y minus h, or h minus that expression, so that the radius is nonnegative.",
+   "description_plain": "Use the horizontal distance to the vertical line as the radius.",
+   "diagnostic_signals": [
+    "BC-SIG-08015"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5C2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08045",
+   "learning_objectives": [
+    "BC-LO-CHA-5C"
+   ],
+   "misconceptions": [
+    "BC-MIS-08021"
+   ],
+   "name": "Write the radius as the distance from a curve to a vertical line",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-2D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08002"
+   ],
+   "representations": [
+    "BC-REP-08",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:161"
+   ],
+   "topic": "BC-TOP-0810",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08021",
+     "BC-MIS-08022"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08012"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08012 across at least two presentations of the task, with no error from BC-ERR-08038, BC-ERR-08039.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08038, BC-ERR-08039 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-08004.",
+    "remediation_target": "BC-PRQ-08004"
+   },
+   "archetypes": [
+    "BC-QA-08012"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-08038",
+    "BC-ERR-08039"
+   ],
+   "concept": "BC-CON-08018",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Write the volume as pi times the definite integral of the square of the shifted radius over the spanning interval, keeping the limits in the variable of slicing.",
+   "description_plain": "Integrate pi times the square of the shifted radius.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-5C2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08046",
+   "learning_objectives": [
+    "BC-LO-CHA-5C"
+   ],
+   "misconceptions": [
+    "BC-MIS-08021",
+    "BC-MIS-08022"
+   ],
+   "name": "Set up the disc integral about a line other than an axis",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-2D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08004"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-08"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:161"
+   ],
+   "topic": "BC-TOP-0810",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08022"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08012"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08012 across at least two presentations of the task, with no error from BC-ERR-08039.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08039 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-08004.",
+    "remediation_target": "BC-PRQ-08004"
+   },
+   "archetypes": [
+    "BC-QA-08012"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-08039"
+   ],
+   "concept": "BC-CON-08018",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "State that the limits of integration are determined by the extent of the region in the variable of slicing and are unaffected by the position of the axis of revolution.",
+   "description_plain": "Moving the axis changes the radius, not the interval.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-5C2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08047",
+   "learning_objectives": [
+    "BC-LO-CHA-5C"
+   ],
+   "misconceptions": [
+    "BC-MIS-08022"
+   ],
+   "name": "Keep the limits of integration unchanged when the axis shifts",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-2D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08004"
+   ],
+   "representations": [
+    "BC-REP-08",
+    "BC-REP-04"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:161"
+   ],
+   "topic": "BC-TOP-0810",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08017"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08013"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08013 across at least two presentations of the task, with no error from BC-ERR-08040.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08040 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-08004.",
+    "remediation_target": "BC-PRQ-08004"
+   },
+   "archetypes": [
+    "BC-QA-08013"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-08040"
+   ],
+   "concept": "BC-CON-08019",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given a region between two curves and an axis of revolution, determine which curve is farther from the axis on the interval and assign the outer and inner radii accordingly.",
+   "description_plain": "The curve farther from the axis gives the outer radius.",
+   "diagnostic_signals": [
+    "BC-SIG-08016"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5C3"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08048",
+   "learning_objectives": [
+    "BC-LO-CHA-5C"
+   ],
+   "misconceptions": [
+    "BC-MIS-08017"
+   ],
+   "name": "Identify the outer and inner radii of a washer",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-4E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08004"
+   ],
+   "representations": [
+    "BC-REP-08",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:162"
+   ],
+   "topic": "BC-TOP-0811",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08017"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08013"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08013 across at least two presentations of the task, with no error from BC-ERR-08030, BC-ERR-08037.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08030, BC-ERR-08037 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-08004.",
+    "remediation_target": "BC-PRQ-08004"
+   },
+   "archetypes": [
+    "BC-QA-08013"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-08030",
+    "BC-ERR-08037"
+   ],
+   "concept": "BC-CON-08019",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Write the volume as pi times the definite integral, with respect to x, of the square of the outer function minus the square of the inner function over the spanning interval.",
+   "description_plain": "Integrate pi times outer squared minus inner squared with respect to x.",
+   "diagnostic_signals": [
+    "BC-SIG-08014"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5C3"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08049",
+   "learning_objectives": [
+    "BC-LO-CHA-5C"
+   ],
+   "misconceptions": [
+    "BC-MIS-08017"
+   ],
+   "name": "Set up the washer integral about the x axis",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-4E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08004"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-08"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:162"
+   ],
+   "topic": "BC-TOP-0811",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08013"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08013"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08013 across at least two presentations of the task, with no error from BC-ERR-08023, BC-ERR-08024.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08023, BC-ERR-08024 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-08002.",
+    "remediation_target": "BC-PRQ-08002"
+   },
+   "archetypes": [
+    "BC-QA-08013"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-08023",
+    "BC-ERR-08024"
+   ],
+   "concept": "BC-CON-08019",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Write the volume as pi times the definite integral, with respect to y, of the square of the right boundary minus the square of the left boundary over the interval of y values.",
+   "description_plain": "Rewrite both curves in y, then integrate the difference of squares.",
+   "diagnostic_signals": [
+    "BC-SIG-08009"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5C3"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08050",
+   "learning_objectives": [
+    "BC-LO-CHA-5C"
+   ],
+   "misconceptions": [
+    "BC-MIS-08013"
+   ],
+   "name": "Set up the washer integral about the y axis",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-4E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08002"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-08"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:162"
+   ],
+   "topic": "BC-TOP-0811",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08017"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08013"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08013 across at least two presentations of the task, with no error from BC-ERR-08030.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08030 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06002.",
+    "remediation_target": "BC-PRQ-06002"
+   },
+   "archetypes": [
+    "BC-QA-08013"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-08030"
+   ],
+   "concept": "BC-CON-08019",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "State and use the fact that the ring area is pi times the outer radius squared minus pi times the inner radius squared, which is not pi times the square of the difference of the radii.",
+   "description_plain": "Square each radius first, then subtract.",
+   "diagnostic_signals": [
+    "BC-SIG-08014"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5C3"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08051",
+   "learning_objectives": [
+    "BC-LO-CHA-5C"
+   ],
+   "misconceptions": [
+    "BC-MIS-08017"
+   ],
+   "name": "Subtract the squares of the radii rather than squaring their difference",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-4E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06002"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-08"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:162"
+   ],
+   "topic": "BC-TOP-0811",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08021"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08013"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08013 across at least two presentations of the task, with no error from BC-ERR-08038, BC-ERR-08040.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08038, BC-ERR-08040 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-08004.",
+    "remediation_target": "BC-PRQ-08004"
+   },
+   "archetypes": [
+    "BC-QA-08013"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-08038",
+    "BC-ERR-08040"
+   ],
+   "concept": "BC-CON-08020",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "For revolution about y equal k, write the outer radius as the distance from the farther curve to the line and the inner radius as the distance from the nearer curve to the line.",
+   "description_plain": "Subtract the line value from each curve before squaring.",
+   "diagnostic_signals": [
+    "BC-SIG-08015"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5C4"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08052",
+   "learning_objectives": [
+    "BC-LO-CHA-5C"
+   ],
+   "misconceptions": [
+    "BC-MIS-08021"
+   ],
+   "name": "Write both washer radii as distances from a horizontal line",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-2D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08004"
+   ],
+   "representations": [
+    "BC-REP-08",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:163"
+   ],
+   "topic": "BC-TOP-0812",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08021",
+     "BC-MIS-08013"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08013"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08013 across at least two presentations of the task, with no error from BC-ERR-08023, BC-ERR-08038.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08023, BC-ERR-08038 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-08002.",
+    "remediation_target": "BC-PRQ-08002"
+   },
+   "archetypes": [
+    "BC-QA-08013"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-08023",
+    "BC-ERR-08038"
+   ],
+   "concept": "BC-CON-08020",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "For revolution about x equal h, express both boundary curves as functions of y and write each radius as the distance from that curve to the line h.",
+   "description_plain": "Use horizontal distances from the vertical line for both curves.",
+   "diagnostic_signals": [
+    "BC-SIG-08015"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5C4"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08053",
+   "learning_objectives": [
+    "BC-LO-CHA-5C"
+   ],
+   "misconceptions": [
+    "BC-MIS-08021",
+    "BC-MIS-08013"
+   ],
+   "name": "Write both washer radii as distances from a vertical line",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-2D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08002"
+   ],
+   "representations": [
+    "BC-REP-08",
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:163"
+   ],
+   "topic": "BC-TOP-0812",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08023"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08013"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08013 across at least two presentations of the task, with no error from BC-ERR-08040.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08040 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-08004.",
+    "remediation_target": "BC-PRQ-08004"
+   },
+   "archetypes": [
+    "BC-QA-08013"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-08040"
+   ],
+   "concept": "BC-CON-08020",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Compare the distances from each boundary curve to the axis of revolution on the interval to assign the outer and inner radii, noting that revolving about a line above the region reverses the roles.",
+   "description_plain": "Check which curve is farther from the line, which can differ from which is higher.",
+   "diagnostic_signals": [
+    "BC-SIG-08016"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5C4"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08054",
+   "learning_objectives": [
+    "BC-LO-CHA-5C"
+   ],
+   "misconceptions": [
+    "BC-MIS-08023"
+   ],
+   "name": "Determine which boundary curve is farther from the shifted axis",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-2D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08004"
+   ],
+   "representations": [
+    "BC-REP-08",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:163"
+   ],
+   "topic": "BC-TOP-0812",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08017",
+     "BC-MIS-08021"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08013"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08013 across at least two presentations of the task, with no error from BC-ERR-08030, BC-ERR-08038.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08030, BC-ERR-08038 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-08004.",
+    "remediation_target": "BC-PRQ-08004"
+   },
+   "archetypes": [
+    "BC-QA-08013"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-08030",
+    "BC-ERR-08038"
+   ],
+   "concept": "BC-CON-08020",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Write the volume as pi times the definite integral of the square of the shifted outer radius minus the square of the shifted inner radius over the spanning interval.",
+   "description_plain": "Integrate pi times the difference of the squares of the two shifted radii.",
+   "diagnostic_signals": [
+    "BC-SIG-08014"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-5C4"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08055",
+   "learning_objectives": [
+    "BC-LO-CHA-5C"
+   ],
+   "misconceptions": [
+    "BC-MIS-08017",
+    "BC-MIS-08021"
+   ],
+   "name": "Set up the washer integral about a line other than an axis",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-2D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08004"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-08"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:163"
+   ],
+   "topic": "BC-TOP-0812",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08024"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08014"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08014 across at least two presentations of the task, with no error from BC-ERR-08041.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08041 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-08007.",
+    "remediation_target": "BC-PRQ-08007"
+   },
+   "archetypes": [
+    "BC-QA-08014"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-08041"
+   ],
+   "concept": "BC-CON-08021",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given a differentiable function and an interval, write the definite integral of the square root of one plus the square of the derivative over that interval as the length of the curve.",
+   "description_plain": "Write the integral of the square root of one plus the derivative squared.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-6A1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08056",
+   "learning_objectives": [
+    "BC-LO-CHA-6A"
+   ],
+   "misconceptions": [
+    "BC-MIS-08024"
+   ],
+   "name": "State the arc length integral for a function on an interval",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08007"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:164"
+   ],
+   "topic": "BC-TOP-0813",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08024"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08014"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08014 across at least two presentations of the task, with no error from BC-ERR-08042, BC-ERR-08019.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08042, BC-ERR-08019 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-08014"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-08042",
+    "BC-ERR-08019"
+   ],
+   "concept": "BC-CON-08021",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Differentiate the given function, substitute the derivative into the arc length integrand, and attach the limits taken from the described interval.",
+   "description_plain": "Differentiate the given function and place it inside the radical.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-6A1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08057",
+   "learning_objectives": [
+    "BC-LO-CHA-6A"
+   ],
+   "misconceptions": [
+    "BC-MIS-08024"
+   ],
+   "name": "Set up an arc length integral from a described curve",
+   "official_evidence": [],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-05"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:164"
+   ],
+   "topic": "BC-TOP-0813",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08024"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08014"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08014 across at least two presentations of the task, with no error from BC-ERR-08043, BC-ERR-08044.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08043, BC-ERR-08044 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-08014"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-08043",
+    "BC-ERR-08044"
+   ],
+   "concept": "BC-CON-08021",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given a definite integral of the square root of one plus a squared derivative, state that it is the length of the graph of the function on the interval given by the limits.",
+   "description_plain": "Recognise the radical form and say which curve and interval it measures.",
+   "diagnostic_signals": [
+    "BC-SIG-08017"
+   ],
+   "essential_knowledge": [
+    "BC-EK-CHA-6A1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08058",
+   "learning_objectives": [
+    "BC-LO-CHA-6A"
+   ],
+   "misconceptions": [
+    "BC-MIS-08024"
+   ],
+   "name": "Identify a given integral as an arc length and name the interval",
+   "official_evidence": [
+    "sg-24:16",
+    "frq-24:9"
+   ],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-04"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-24:16",
+    "frq-24:9"
+   ],
+   "topic": "BC-TOP-0813",
+   "unit": "BC-UNIT-08"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-08003"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-08014"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-08014 across at least two presentations of the task, with no error from BC-ERR-08005, BC-ERR-08045.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a setup, notation, or justification point, or shows one of BC-ERR-08005, BC-ERR-08045 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-08006.",
+    "remediation_target": "BC-PRQ-08006"
+   },
+   "archetypes": [
+    "BC-QA-08014"
+   ],
+   "calculator_relevance": "typically_required",
+   "common_errors": [
+    "BC-ERR-08005",
+    "BC-ERR-08045"
+   ],
+   "concept": "BC-CON-08021",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Evaluate an arc length integral numerically and report the value accurate to three places after the decimal point.",
+   "description_plain": "Enter the radical integrand and report the decimal.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-CHA-6A1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-08059",
+   "learning_objectives": [
+    "BC-LO-CHA-6A"
+   ],
+   "misconceptions": [
+    "BC-MIS-08003"
+   ],
+   "name": "Evaluate an arc length integral with technology",
+   "official_evidence": [
+    "crabbc-25:30"
+   ],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-08006"
+   ],
+   "representations": [
+    "BC-REP-09"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:164",
+    "crabbc-25:30"
+   ],
+   "topic": "BC-TOP-0813",
+   "unit": "BC-UNIT-08"
+  }
+ ]
+}

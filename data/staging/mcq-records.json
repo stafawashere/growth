@@ -1,0 +1,4794 @@
+{
+ "registry": "mcq_records",
+ "records": [
+  {
+   "id": "BC-MCQ-CED-001",
+   "name": "Limit of a trigonometric quotient at zero",
+   "scope": "shared",
+   "evidence_tag": "verified",
+   "sources": [
+    "ced:208",
+    "ced:221"
+   ],
+   "doc_id": "ced",
+   "doc_page": 208,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-ab-and-bc-course-and-exam-description.pdf",
+   "number": 1,
+   "calculator": "no_calculator",
+   "description": "Asks for the value of a limit as the input approaches zero of a quotient whose numerator is a Pythagorean trigonometric expression in a doubled angle and whose denominator is the square of that doubled argument. Purely symbolic; the work is a trigonometric rewrite followed by a standard small-angle limit.",
+   "topics": [
+    "BC-TOP-0106",
+    "BC-TOP-0107"
+   ],
+   "skills": [
+    "BC-SKL-01027",
+    "BC-SKL-01024",
+    "BC-SKL-01028"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "archetype": "BC-QA-01004",
+   "representations": [
+    "BC-REP-01"
+   ],
+   "correct_option": "D",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "conceptual confusion: numerator judged to vanish faster than the denominator",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "B",
+     "mechanism": "chain rule omitted: the doubled inner argument dropped from the numerator, leaving a factor of four",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "C",
+     "mechanism": "algebra slip in the trigonometric identity applied to the numerator",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false
+  },
+  {
+   "id": "BC-MCQ-CED-002",
+   "name": "Points of non-differentiability of a three-piece function",
+   "scope": "shared",
+   "evidence_tag": "verified",
+   "sources": [
+    "ced:208",
+    "ced:221"
+   ],
+   "doc_id": "ced",
+   "doc_page": 208,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-ab-and-bc-course-and-exam-description.pdf",
+   "number": 2,
+   "calculator": "no_calculator",
+   "description": "A function is given by a three-branch piecewise rule and the question asks at which inputs, if any, it fails to be differentiable. The reasoning requires checking both matching of values and matching of one-sided derivatives at each branch boundary.",
+   "topics": [
+    "BC-TOP-0204"
+   ],
+   "skills": [
+    "BC-SKL-02024",
+    "BC-SKL-02022",
+    "BC-SKL-01023"
+   ],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "archetype": "BC-QA-02005",
+   "representations": [
+    "BC-REP-01"
+   ],
+   "correct_option": "B",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "theorem condition ignored: a boundary assumed to break differentiability although both value and one-sided derivative match there",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "C",
+     "mechanism": "algebra slip: a boundary invented that the rule does not contain",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "D",
+     "mechanism": "conceptual confusion: the jump in value at the second boundary not checked before concluding differentiability",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false
+  },
+  {
+   "id": "BC-MCQ-CED-003",
+   "name": "Derivative of a product-plus-multiple combination from a table",
+   "scope": "shared",
+   "evidence_tag": "verified",
+   "sources": [
+    "ced:209",
+    "ced:221"
+   ],
+   "doc_id": "ced",
+   "doc_page": 209,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-ab-and-bc-course-and-exam-description.pdf",
+   "number": 3,
+   "calculator": "no_calculator",
+   "description": "A table supplies values of two differentiable functions and their derivatives at two inputs. A new function is built as the product of the two plus a constant multiple of one of them, and the question asks for its derivative at one tabulated input.",
+   "topics": [
+    "BC-TOP-0208",
+    "BC-TOP-0206"
+   ],
+   "skills": [
+    "BC-SKL-02037",
+    "BC-SKL-02036",
+    "BC-SKL-02029"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "archetype": "BC-QA-02009",
+   "representations": [
+    "BC-REP-03"
+   ],
+   "correct_option": "A",
+   "distractor_analysis": [
+    {
+     "option": "B",
+     "mechanism": "algebra slip in combining the three tabulated contributions",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "C",
+     "mechanism": "product rule omitted: the derivatives of the two factors multiplied together instead",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "D",
+     "mechanism": "sign error carried through the product rule terms",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false
+  },
+  {
+   "id": "BC-MCQ-CED-004",
+   "name": "Implicit derivative of a cubic-quadratic relation",
+   "scope": "shared",
+   "evidence_tag": "uncertain",
+   "sources": [
+    "ced:209",
+    "ced:221"
+   ],
+   "doc_id": "ced",
+   "doc_page": 209,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-ab-and-bc-course-and-exam-description.pdf",
+   "number": 4,
+   "calculator": "no_calculator",
+   "description": "An equation mixing a cube of one variable, a mixed product term, and a square of the other variable is set equal to a constant, and the question asks for the derivative of the dependent variable with respect to the independent one.",
+   "topics": [
+    "BC-TOP-0302"
+   ],
+   "skills": [
+    "BC-SKL-03009",
+    "BC-SKL-03008",
+    "BC-SKL-03010"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "archetype": "BC-QA-03004",
+   "representations": [
+    "BC-REP-01"
+   ],
+   "correct_option": "B",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "sign error: the mixed term differentiated with the wrong sign and left on the wrong side",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "C",
+     "mechanism": "product rule omitted on the mixed term, dropping its contribution to the numerator",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "D",
+     "mechanism": "algebra slip: a variable factor lost from the denominator",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "Correct option resolved by working the problem because the printed key on ced:221 is displaced across columns in both text layers; treat as uncertain."
+  },
+  {
+   "id": "BC-MCQ-CED-005",
+   "name": "Related rate of cylinder volume from radius and height rates",
+   "scope": "shared",
+   "evidence_tag": "verified",
+   "sources": [
+    "ced:209",
+    "ced:221"
+   ],
+   "doc_id": "ced",
+   "doc_page": 209,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-ab-and-bc-course-and-exam-description.pdf",
+   "number": 5,
+   "calculator": "no_calculator",
+   "description": "A cylinder has a radius growing at a stated constant rate and a height shrinking at another stated constant rate. The question asks for the expression, in terms of the radius and the height, that gives the rate of change of the volume with respect to time.",
+   "topics": [
+    "BC-TOP-0405",
+    "BC-TOP-0404"
+   ],
+   "skills": [
+    "BC-SKL-04019",
+    "BC-SKL-04020",
+    "BC-SKL-04024"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "archetype": "BC-QA-04006",
+   "representations": [
+    "BC-REP-05",
+    "BC-REP-01"
+   ],
+   "correct_option": "C",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "conceptual confusion: the two given rates multiplied together rather than differentiating the volume relation",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "B",
+     "mechanism": "product rule omitted inside the differentiation with respect to time, leaving one term",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "D",
+     "mechanism": "sign error: the decreasing height entered with a positive rate",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false
+  },
+  {
+   "id": "BC-MCQ-CED-006",
+   "name": "Definite integral rewritten as a limit of Riemann sums",
+   "scope": "shared",
+   "evidence_tag": "uncertain",
+   "sources": [
+    "ced:210",
+    "ced:221"
+   ],
+   "doc_id": "ced",
+   "doc_page": 210,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-ab-and-bc-course-and-exam-description.pdf",
+   "number": 6,
+   "calculator": "no_calculator",
+   "description": "A definite integral of a square root over an interval that does not start at zero is to be matched with the equivalent limit of a right Riemann sum in sigma notation.",
+   "topics": [
+    "BC-TOP-0603"
+   ],
+   "skills": [
+    "BC-SKL-06015",
+    "BC-SKL-06013",
+    "BC-SKL-06014"
+   ],
+   "practice_skills": [
+    "BC-MPS-2C"
+   ],
+   "archetype": "BC-QA-06014",
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-11"
+   ],
+   "correct_option": "C",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "wrong limits: the left endpoint offset omitted from the sample points",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "B",
+     "mechanism": "wrong limits: the upper limit used as the interval width and the offset omitted",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "D",
+     "mechanism": "wrong limits: the interval width taken as the upper limit rather than the difference of the endpoints",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "Correct option resolved by working the problem because the printed key on ced:221 is displaced across columns in both text layers; treat as uncertain."
+  },
+  {
+   "id": "BC-MCQ-CED-007",
+   "name": "Intervals of increase of an accumulation function from the integrand graph",
+   "scope": "shared",
+   "evidence_tag": "verified",
+   "sources": [
+    "ced:210",
+    "ced:221"
+   ],
+   "doc_id": "ced",
+   "doc_page": 210,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-ab-and-bc-course-and-exam-description.pdf",
+   "number": 7,
+   "calculator": "no_calculator",
+   "description": "The graph of a continuous function on a closed interval is shown, and an accumulation function is defined as the integral of that function from an interior point. The question asks on which intervals the accumulation function increases.",
+   "topics": [
+    "BC-TOP-0605"
+   ],
+   "skills": [
+    "BC-SKL-06022",
+    "BC-SKL-06027",
+    "BC-SKL-06020"
+   ],
+   "practice_skills": [
+    "BC-MPS-2D"
+   ],
+   "archetype": "BC-QA-06003",
+   "representations": [
+    "BC-REP-02"
+   ],
+   "correct_option": "C",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "conceptual confusion: intervals where the integrand increases reported instead of where it is positive",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "B",
+     "mechanism": "conceptual confusion: the graph of the integrand read as the graph of the accumulation function",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "D",
+     "mechanism": "sign error: the intervals where the integrand is negative reported",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false
+  },
+  {
+   "id": "BC-MCQ-CED-008",
+   "name": "Antiderivative of a linear variable over a square root of a quadratic",
+   "scope": "shared",
+   "evidence_tag": "verified",
+   "sources": [
+    "ced:210",
+    "ced:221"
+   ],
+   "doc_id": "ced",
+   "doc_page": 210,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-ab-and-bc-course-and-exam-description.pdf",
+   "number": 8,
+   "calculator": "no_calculator",
+   "description": "An indefinite integral has a bare linear factor in the numerator and the square root of a constant minus a multiple of the square of the variable in the denominator. The question asks which antiderivative family is correct.",
+   "topics": [
+    "BC-TOP-0609",
+    "BC-TOP-0608"
+   ],
+   "skills": [
+    "BC-SKL-06047",
+    "BC-SKL-06048",
+    "BC-SKL-06043"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "archetype": "BC-QA-06008",
+   "representations": [
+    "BC-REP-01"
+   ],
+   "correct_option": "A",
+   "distractor_analysis": [
+    {
+     "option": "B",
+     "mechanism": "algebra slip: the reciprocal square root treated as a reciprocal, producing a logarithm",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "C",
+     "mechanism": "conceptual confusion: the inverse sine pattern matched while ignoring the linear factor in the numerator",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "D",
+     "mechanism": "conceptual confusion as in the previous option, with the substitution constant also mishandled",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false
+  },
+  {
+   "id": "BC-MCQ-CED-009",
+   "name": "Differential equation matched to a printed slope field",
+   "scope": "shared",
+   "evidence_tag": "verified",
+   "sources": [
+    "ced:211",
+    "ced:221"
+   ],
+   "doc_id": "ced",
+   "doc_page": 211,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-ab-and-bc-course-and-exam-description.pdf",
+   "number": 9,
+   "calculator": "no_calculator",
+   "description": "A slope field is printed and the question asks which of four differential equations it belongs to. Two candidates depend on the dependent variable and two on the independent variable, and two are linear while two are quadratic.",
+   "topics": [
+    "BC-TOP-0704",
+    "BC-TOP-0703"
+   ],
+   "skills": [
+    "BC-SKL-07016",
+    "BC-SKL-07012",
+    "BC-SKL-07013"
+   ],
+   "practice_skills": [
+    "BC-MPS-2C"
+   ],
+   "archetype": "BC-QA-07002",
+   "representations": [
+    "BC-REP-07",
+    "BC-REP-06"
+   ],
+   "correct_option": "B",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "conceptual confusion: a single row of zero slopes assumed where the field shows two",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "C",
+     "mechanism": "conceptual confusion: the field read as depending on the independent variable instead of the dependent one",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "D",
+     "mechanism": "conceptual confusion as in the previous option, with the quadratic form kept",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false
+  },
+  {
+   "id": "BC-MCQ-CED-010",
+   "name": "Area of a region bounded by an exponential curve and a vertical line",
+   "scope": "shared",
+   "evidence_tag": "verified",
+   "sources": [
+    "ced:211",
+    "ced:221"
+   ],
+   "doc_id": "ced",
+   "doc_page": 211,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-ab-and-bc-course-and-exam-description.pdf",
+   "number": 10,
+   "calculator": "no_calculator",
+   "description": "A region is described by an exponential curve written with the independent variable on the left, a vertical line, and two horizontal lines. The question asks which integral gives its area, so the setup should be taken with respect to the vertical variable.",
+   "topics": [
+    "BC-TOP-0805"
+   ],
+   "skills": [
+    "BC-SKL-08023",
+    "BC-SKL-08024",
+    "BC-SKL-08025"
+   ],
+   "practice_skills": [
+    "BC-MPS-1D"
+   ],
+   "archetype": "BC-QA-08009",
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-08"
+   ],
+   "correct_option": "C",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "reversed quantities: the curve integrated instead of the horizontal width between the boundaries",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "B",
+     "mechanism": "conceptual confusion: the region recast in the other variable with a boundary dropped",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "D",
+     "mechanism": "wrong limits: the integral in the other variable taken over endpoints that do not bound the region",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false
+  },
+  {
+   "id": "BC-MCQ-CED-011",
+   "name": "One-sided limit read from a printed graph",
+   "scope": "shared",
+   "evidence_tag": "verified",
+   "sources": [
+    "ced:212",
+    "ced:221"
+   ],
+   "doc_id": "ced",
+   "doc_page": 212,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-ab-and-bc-course-and-exam-description.pdf",
+   "number": 11,
+   "calculator": "calculator",
+   "description": "A graph of a function is printed and the question asks for the value of the limit as the input approaches a stated number from the right.",
+   "topics": [
+    "BC-TOP-0103"
+   ],
+   "skills": [
+    "BC-SKL-01010",
+    "BC-SKL-01008",
+    "BC-SKL-01011"
+   ],
+   "practice_skills": [
+    "BC-MPS-2B"
+   ],
+   "archetype": "BC-QA-01001",
+   "representations": [
+    "BC-REP-02"
+   ],
+   "correct_option": "C",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "conceptual confusion: the left-hand limit read instead of the right-hand limit",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "B",
+     "mechanism": "conceptual confusion: the function value at the point read instead of the one-sided limit",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "D",
+     "mechanism": "conceptual confusion: failure of the two-sided limit reported although a one-sided limit was requested",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false
+  },
+  {
+   "id": "BC-MCQ-CED-012",
+   "name": "Acceleration of a particle from a velocity formula with technology",
+   "scope": "shared",
+   "evidence_tag": "verified",
+   "sources": [
+    "ced:212",
+    "ced:221"
+   ],
+   "doc_id": "ced",
+   "doc_page": 212,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-ab-and-bc-course-and-exam-description.pdf",
+   "number": 12,
+   "calculator": "calculator",
+   "description": "A velocity function for straight-line motion is given as a product of a linear factor and a logarithm of a linear expression. The question asks for the acceleration at a stated time, which a calculator can produce once the derivative is set up.",
+   "topics": [
+    "BC-TOP-0402"
+   ],
+   "skills": [
+    "BC-SKL-04007",
+    "BC-SKL-02036",
+    "BC-SKL-02018"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "archetype": "BC-QA-04003",
+   "representations": [
+    "BC-REP-09",
+    "BC-REP-01"
+   ],
+   "correct_option": "C",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "product rule omitted: only the term from differentiating the logarithm factor kept",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "B",
+     "mechanism": "calculator window or mode issue producing a value close to but not equal to the correct one",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "D",
+     "mechanism": "sign error in assembling the two product rule terms",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false
+  },
+  {
+   "id": "BC-MCQ-CED-013",
+   "name": "Statement that must be true about a twice-differentiable function from tabulated derivative values",
+   "scope": "shared",
+   "evidence_tag": "verified",
+   "sources": [
+    "ced:213",
+    "ced:221"
+   ],
+   "doc_id": "ced",
+   "doc_page": 213,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-ab-and-bc-course-and-exam-description.pdf",
+   "number": 13,
+   "calculator": "calculator",
+   "description": "A table gives values of the first derivative of a twice-differentiable function at five inputs, and the question asks which of four statements must be true. The option text did not survive extraction from the cached page, so the statements themselves could not be reconstructed.",
+   "topics": [
+    "BC-TOP-0501"
+   ],
+   "skills": [
+    "BC-SKL-05001",
+    "BC-SKL-05004",
+    "BC-SKL-05048"
+   ],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "archetype": "BC-QA-05001",
+   "representations": [
+    "BC-REP-03"
+   ],
+   "correct_option": "D",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "B",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "C",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "Option text for all four choices was lost in extraction; only the answer key letter and the official tags are recoverable."
+  },
+  {
+   "id": "BC-MCQ-CED-014",
+   "name": "Count of points of inflection from a given derivative formula",
+   "scope": "shared",
+   "evidence_tag": "verified",
+   "sources": [
+    "ced:213",
+    "ced:221"
+   ],
+   "doc_id": "ced",
+   "doc_page": 213,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-ab-and-bc-course-and-exam-description.pdf",
+   "number": 14,
+   "calculator": "calculator",
+   "description": "A derivative is given as a sum of a squared linear expression, a constant, and a sine term, and the question asks how many points of inflection the function has on an open interval. Counting them requires locating sign changes of the derivative of that expression, which the technology permitted in this part supports.",
+   "topics": [
+    "BC-TOP-0506"
+   ],
+   "skills": [
+    "BC-SKL-05032",
+    "BC-SKL-05033",
+    "BC-SKL-05031"
+   ],
+   "practice_skills": [
+    "BC-MPS-2D"
+   ],
+   "archetype": "BC-QA-05005",
+   "representations": [
+    "BC-REP-09",
+    "BC-REP-01"
+   ],
+   "correct_option": "D",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "conceptual confusion: only one sign change of the slope of the derivative counted",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "B",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "C",
+     "mechanism": "conceptual confusion: one sign change of the slope of the derivative missed",
+     "evidence_tag": "uncertain"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "The printed derivative formula is partially garbled in the cached text, so the count could not be independently reproduced."
+  },
+  {
+   "id": "BC-MCQ-CED-015",
+   "name": "Amount accumulated from an exponential rate over a time interval",
+   "scope": "shared",
+   "evidence_tag": "verified",
+   "sources": [
+    "ced:213",
+    "ced:221"
+   ],
+   "doc_id": "ced",
+   "doc_page": 213,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-ab-and-bc-course-and-exam-description.pdf",
+   "number": 15,
+   "calculator": "calculator",
+   "description": "A substance is poured at a rate given by a decaying exponential in time, and the question asks how much is poured over a stated interval. The work is a definite integral of the rate, which the calculator evaluates.",
+   "topics": [
+    "BC-TOP-0803"
+   ],
+   "skills": [
+    "BC-SKL-08016",
+    "BC-SKL-08017",
+    "BC-SKL-06034"
+   ],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "archetype": "BC-QA-08004",
+   "representations": [
+    "BC-REP-05",
+    "BC-REP-09"
+   ],
+   "correct_option": "D",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "B",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "C",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "Only the correct option's numeric value survived extraction; the other three values were lost."
+  },
+  {
+   "id": "BC-MCQ-CED-016",
+   "name": "Definite integral of the variable times an unknown derivative, by parts",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "ced:214",
+    "ced:221"
+   ],
+   "doc_id": "ced",
+   "doc_page": 214,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-ab-and-bc-course-and-exam-description.pdf",
+   "number": 16,
+   "calculator": "no_calculator",
+   "description": "A table gives a differentiable function and its derivative at the two endpoints of an interval, and the integral of the function over that interval is stated. The question asks for the integral of the variable times the derivative, which integration by parts converts into a boundary term minus the given integral.",
+   "topics": [
+    "BC-TOP-0611"
+   ],
+   "skills": [
+    "BC-SKL-06061",
+    "BC-SKL-06060",
+    "BC-SKL-06058"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "archetype": "BC-QA-06009",
+   "representations": [
+    "BC-REP-03"
+   ],
+   "correct_option": "A",
+   "distractor_analysis": [
+    {
+     "option": "B",
+     "mechanism": "forgot to subtract the given integral from the boundary term",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "C",
+     "mechanism": "algebra slip in evaluating the boundary term",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "D",
+     "mechanism": "sign error: the given integral added to the boundary term instead of subtracted",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false
+  },
+  {
+   "id": "BC-MCQ-CED-017",
+   "name": "Long-run value of a logistic population model",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "ced:214",
+    "ced:221"
+   ],
+   "doc_id": "ced",
+   "doc_page": 214,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-ab-and-bc-course-and-exam-description.pdf",
+   "number": 17,
+   "calculator": "no_calculator",
+   "description": "A population is modelled by a logistic differential equation with a printed carrying capacity and a stated initial value below it, and the question asks for the limit of the population. The reasoning reads the carrying capacity from the form of the equation without solving.",
+   "topics": [
+    "BC-TOP-0709"
+   ],
+   "skills": [
+    "BC-SKL-07040",
+    "BC-SKL-07041",
+    "BC-SKL-07043"
+   ],
+   "practice_skills": [
+    "BC-MPS-3F"
+   ],
+   "archetype": "BC-QA-07009",
+   "representations": [
+    "BC-REP-06",
+    "BC-REP-05"
+   ],
+   "correct_option": "B",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "C",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "D",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "The four numerical options were lost in extraction; only the answer key letter survived."
+  },
+  {
+   "id": "BC-MCQ-CED-018",
+   "name": "Second derivative of a parametric curve in terms of the parameter",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "ced:214",
+    "ced:221"
+   ],
+   "doc_id": "ced",
+   "doc_page": 214,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-ab-and-bc-course-and-exam-description.pdf",
+   "number": 18,
+   "calculator": "no_calculator",
+   "description": "A curve is given parametrically with both coordinates built from the square of the parameter. The question asks for an expression for the second derivative of the dependent with respect to the independent coordinate, which requires differentiating the first derivative with respect to the parameter and dividing again by the derivative of the independent coordinate.",
+   "topics": [
+    "BC-TOP-0902"
+   ],
+   "skills": [
+    "BC-SKL-09007",
+    "BC-SKL-09008",
+    "BC-SKL-09002"
+   ],
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "archetype": "BC-QA-09002",
+   "representations": [
+    "BC-REP-12",
+    "BC-REP-01"
+   ],
+   "correct_option": "A",
+   "distractor_analysis": [
+    {
+     "option": "B",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "C",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "D",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "Only the correct option's expression survived extraction."
+  },
+  {
+   "id": "BC-MCQ-CED-019",
+   "name": "Alternating series selected among four sigma-notation candidates",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "ced:214",
+    "ced:221"
+   ],
+   "doc_id": "ced",
+   "doc_page": 214,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-ab-and-bc-course-and-exam-description.pdf",
+   "number": 19,
+   "calculator": "no_calculator",
+   "description": "Four alternating series in sigma notation differ in the power and placement of the index in the general term. The stem itself was lost in extraction, so what the series is required to satisfy could not be recovered.",
+   "topics": [
+    "BC-TOP-1001",
+    "BC-TOP-1007"
+   ],
+   "skills": [
+    "BC-SKL-10003",
+    "BC-SKL-10027",
+    "BC-SKL-10030"
+   ],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "archetype": "BC-QA-10004",
+   "representations": [
+    "BC-REP-11"
+   ],
+   "correct_option": "B",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "C",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "D",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "The stem did not survive extraction; only the four option expressions, the key letter, and the official tags are recoverable."
+  },
+  {
+   "id": "BC-MCQ-CED-020",
+   "name": "Maclaurin series for the derivative of an exponential with a scaled argument",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "ced:215",
+    "ced:221"
+   ],
+   "doc_id": "ced",
+   "doc_page": 215,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-ab-and-bc-course-and-exam-description.pdf",
+   "number": 20,
+   "calculator": "no_calculator",
+   "description": "An exponential function with a scaled argument is given, and the question asks for the Maclaurin series of its derivative, written term by term with a general term.",
+   "topics": [
+    "BC-TOP-1014",
+    "BC-TOP-1015"
+   ],
+   "skills": [
+    "BC-SKL-10061",
+    "BC-SKL-10064",
+    "BC-SKL-10068"
+   ],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "archetype": "BC-QA-10018",
+   "representations": [
+    "BC-REP-11",
+    "BC-REP-01"
+   ],
+   "correct_option": "D",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "chain rule omitted twice: the series for the unscaled exponential given, with neither the scaling nor the differentiation factor",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "B",
+     "mechanism": "chain rule omitted inside the powers: the leading differentiation factor kept but the scaled argument not carried into each term",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "C",
+     "mechanism": "conceptual confusion: the series for the function itself given rather than for its derivative",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false
+  },
+  {
+   "id": "BC-MCQ-CED-021",
+   "name": "Area of a shaded region of a limacon in polar form",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "ced:216",
+    "ced:221"
+   ],
+   "doc_id": "ced",
+   "doc_page": 216,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-ab-and-bc-course-and-exam-description.pdf",
+   "number": 21,
+   "calculator": "calculator",
+   "description": "A polar curve of limacon type is printed with one region shaded, and the question asks for that region's area. The work is choosing the angle interval that traces the shaded part and evaluating the polar area integral with technology.",
+   "topics": [
+    "BC-TOP-0908"
+   ],
+   "skills": [
+    "BC-SKL-09036",
+    "BC-SKL-09037",
+    "BC-SKL-09038"
+   ],
+   "practice_skills": [
+    "BC-MPS-3D"
+   ],
+   "archetype": "BC-QA-09012",
+   "representations": [
+    "BC-REP-13",
+    "BC-REP-09"
+   ],
+   "correct_option": "A",
+   "distractor_analysis": [
+    {
+     "option": "B",
+     "mechanism": "wrong limits: the angle interval bounding the shaded region slightly misidentified",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "C",
+     "mechanism": "wrong limits: an angle interval tracing a different part of the curve used",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "D",
+     "mechanism": "wrong limits: the integral taken over a full revolution of the parameter rather than over the shaded region",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false
+  },
+  {
+   "id": "BC-MCQ-CED-022",
+   "name": "Smallest Lagrange error bound for a fourth-degree Taylor polynomial",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "ced:216",
+    "ced:221"
+   ],
+   "doc_id": "ced",
+   "doc_page": 216,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-ab-and-bc-course-and-exam-description.pdf",
+   "number": 22,
+   "calculator": "calculator",
+   "description": "Bounds on the fourth and fifth derivatives of a function are given on an interval, and the question asks for the smallest value that the Lagrange error bound guarantees for the difference between the function and its fourth-degree Taylor polynomial at an endpoint of that interval.",
+   "topics": [
+    "BC-TOP-1012"
+   ],
+   "skills": [
+    "BC-SKL-10049",
+    "BC-SKL-10050",
+    "BC-SKL-10051"
+   ],
+   "practice_skills": [
+    "BC-MPS-1F"
+   ],
+   "archetype": "BC-QA-10009",
+   "representations": [
+    "BC-REP-11"
+   ],
+   "correct_option": "A",
+   "distractor_analysis": [
+    {
+     "option": "B",
+     "mechanism": "conceptual confusion: the bound on the fourth derivative used where the bound on the next derivative is required",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "C",
+     "mechanism": "algebra slip: the polynomial degree used in the factorial and the power instead of one more than the degree",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "D",
+     "mechanism": "both the wrong derivative bound and the wrong factorial and power used",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false
+  },
+  {
+   "id": "BC-MCQ-SAMPLE-001",
+   "name": "Limit of an indeterminate form evaluated with L'Hospital's rule",
+   "scope": "shared",
+   "evidence_tag": "verified",
+   "sources": [
+    "sample-questions:5",
+    "sample-questions:26"
+   ],
+   "doc_id": "sample-questions",
+   "doc_page": 5,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/sample-questions-ap-calculus-ab-and-bc-exams.pdf",
+   "number": 1,
+   "calculator": "no_calculator",
+   "description": "A symbolic limit is to be determined; the official tags name determining limits of functions and calculating derivatives, with the essential knowledge statement covering indeterminate forms resolved by L'Hospital's rule. One option is the claim that the limit does not exist.",
+   "topics": [
+    "BC-TOP-0407"
+   ],
+   "skills": [
+    "BC-SKL-04033",
+    "BC-SKL-04035",
+    "BC-SKL-04036"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-04009",
+   "representations": [
+    "BC-REP-01"
+   ],
+   "correct_option": "B",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "C",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "D",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "Mathematical stems and option expressions in this document are dropped by text extraction, so the options could not be reconstructed. This document tags each question with 2014 framework learning objectives, essential knowledge statements and mathematical practices rather than the 2019 practice skills, so practice_skills is left empty. Question numbering restarts for the BC set, so the record id sequence and the printed number differ for the BC questions."
+  },
+  {
+   "id": "BC-MCQ-SAMPLE-002",
+   "name": "Symbolic limit evaluated by algebraic or trigonometric rewriting",
+   "scope": "shared",
+   "evidence_tag": "verified",
+   "sources": [
+    "sample-questions:6",
+    "sample-questions:26"
+   ],
+   "doc_id": "sample-questions",
+   "doc_page": 6,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/sample-questions-ap-calculus-ab-and-bc-exams.pdf",
+   "number": 2,
+   "calculator": "no_calculator",
+   "description": "A symbolic limit is to be determined; the official tags name algebraic manipulation, alternate trigonometric forms or the squeeze theorem, together with interpreting limits expressed symbolically including one-sided and infinite limits. One option is the claim that the limit does not exist.",
+   "topics": [
+    "BC-TOP-0106",
+    "BC-TOP-0102"
+   ],
+   "skills": [
+    "BC-SKL-01027",
+    "BC-SKL-01024",
+    "BC-SKL-01007"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-01004",
+   "representations": [
+    "BC-REP-01"
+   ],
+   "correct_option": "B",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "C",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "D",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "Mathematical stems and option expressions in this document are dropped by text extraction, so the options could not be reconstructed. This document tags each question with 2014 framework learning objectives, essential knowledge statements and mathematical practices rather than the 2019 practice skills, so practice_skills is left empty. Question numbering restarts for the BC set, so the record id sequence and the printed number differ for the BC questions."
+  },
+  {
+   "id": "BC-MCQ-SAMPLE-003",
+   "name": "Inputs where a piecewise graph is continuous but not differentiable",
+   "scope": "shared",
+   "evidence_tag": "verified",
+   "sources": [
+    "sample-questions:7",
+    "sample-questions:26"
+   ],
+   "doc_id": "sample-questions",
+   "doc_page": 7,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/sample-questions-ap-calculus-ab-and-bc-exams.pdf",
+   "number": 3,
+   "calculator": "no_calculator",
+   "description": "A piecewise-defined function is shown graphically with a stated vertical tangent line and two stated horizontal tangent lines. The question asks for all inputs at which the function is continuous but not differentiable, so a vertical tangent must be separated from points where the derivative merely vanishes and from genuine discontinuities.",
+   "topics": [
+    "BC-TOP-0204",
+    "BC-TOP-0110"
+   ],
+   "skills": [
+    "BC-SKL-02022",
+    "BC-SKL-02023",
+    "BC-SKL-01042"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-02005",
+   "representations": [
+    "BC-REP-02"
+   ],
+   "correct_option": "C",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "B",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "D",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "Mathematical stems and option expressions in this document are dropped by text extraction, so the options could not be reconstructed. This document tags each question with 2014 framework learning objectives, essential knowledge statements and mathematical practices rather than the 2019 practice skills, so practice_skills is left empty. Question numbering restarts for the BC set, so the record id sequence and the printed number differ for the BC questions."
+  },
+  {
+   "id": "BC-MCQ-SAMPLE-004",
+   "name": "Related rate of sphere surface area from a constant volume rate",
+   "scope": "shared",
+   "evidence_tag": "verified",
+   "sources": [
+    "sample-questions:8",
+    "sample-questions:26"
+   ],
+   "doc_id": "sample-questions",
+   "doc_page": 8,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/sample-questions-ap-calculus-ab-and-bc-exams.pdf",
+   "number": 4,
+   "calculator": "no_calculator",
+   "description": "A melting sphere keeps its shape while its volume decreases at a constant rate, and the question asks for the rate at which the surface area decreases at a stated radius. The formulas for surface area and volume are supplied in the stem.",
+   "topics": [
+    "BC-TOP-0405",
+    "BC-TOP-0404"
+   ],
+   "skills": [
+    "BC-SKL-04019",
+    "BC-SKL-04023",
+    "BC-SKL-04024"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-04006",
+   "representations": [
+    "BC-REP-05"
+   ],
+   "correct_option": "A",
+   "distractor_analysis": [
+    {
+     "option": "B",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "C",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "D",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "Mathematical stems and option expressions in this document are dropped by text extraction, so the options could not be reconstructed. This document tags each question with 2014 framework learning objectives, essential knowledge statements and mathematical practices rather than the 2019 practice skills, so practice_skills is left empty. Question numbering restarts for the BC set, so the record id sequence and the printed number differ for the BC questions."
+  },
+  {
+   "id": "BC-MCQ-SAMPLE-005",
+   "name": "Differential equation matched to a printed slope field",
+   "scope": "shared",
+   "evidence_tag": "verified",
+   "sources": [
+    "sample-questions:9",
+    "sample-questions:26"
+   ],
+   "doc_id": "sample-questions",
+   "doc_page": 9,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/sample-questions-ap-calculus-ab-and-bc-exams.pdf",
+   "number": 5,
+   "calculator": "no_calculator",
+   "description": "A slope field is printed and the question asks which of four differential equations produced it. The official tags name estimating solutions to differential equations and the visual clues slope fields give.",
+   "topics": [
+    "BC-TOP-0704",
+    "BC-TOP-0703"
+   ],
+   "skills": [
+    "BC-SKL-07016",
+    "BC-SKL-07012",
+    "BC-SKL-07013"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-07002",
+   "representations": [
+    "BC-REP-07",
+    "BC-REP-06"
+   ],
+   "correct_option": "A",
+   "distractor_analysis": [
+    {
+     "option": "B",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "C",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "D",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "Mathematical stems and option expressions in this document are dropped by text extraction, so the options could not be reconstructed. This document tags each question with 2014 framework learning objectives, essential knowledge statements and mathematical practices rather than the 2019 practice skills, so practice_skills is left empty. Question numbering restarts for the BC set, so the record id sequence and the printed number differ for the BC questions."
+  },
+  {
+   "id": "BC-MCQ-SAMPLE-006",
+   "name": "Which of three difference-quotient statements about a piecewise-linear function hold",
+   "scope": "shared",
+   "evidence_tag": "verified",
+   "sources": [
+    "sample-questions:10",
+    "sample-questions:26"
+   ],
+   "doc_id": "sample-questions",
+   "doc_page": 10,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/sample-questions-ap-calculus-ab-and-bc-exams.pdf",
+   "number": 6,
+   "calculator": "no_calculator",
+   "description": "A piecewise-linear function is defined and three numbered statements about difference-quotient limits are offered; the options are combinations of those statements. Deciding each one requires matching a written limit against the definition of the derivative at a point and against one-sided behaviour at a corner.",
+   "topics": [
+    "BC-TOP-0202",
+    "BC-TOP-0102"
+   ],
+   "skills": [
+    "BC-SKL-02006",
+    "BC-SKL-02007",
+    "BC-SKL-01007"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-02002",
+   "representations": [
+    "BC-REP-02",
+    "BC-REP-01"
+   ],
+   "correct_option": "B",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "conceptual confusion: a statement that does hold rejected, treating a one-sided difference quotient as undefined",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "C",
+     "mechanism": "conceptual confusion: the first statement accepted although the two one-sided difference quotients differ",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "D",
+     "mechanism": "conceptual confusion: all three statements accepted without testing the corner",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "This document tags each question with 2014 framework learning objectives, essential knowledge statements and mathematical practices rather than the 2019 practice skills, so practice_skills is left empty. Question numbering restarts for the BC set, so the record id sequence and the printed number differ for the BC questions."
+  },
+  {
+   "id": "BC-MCQ-SAMPLE-007",
+   "name": "Derivative of a function defined by an integral with a composite upper limit",
+   "scope": "shared",
+   "evidence_tag": "verified",
+   "sources": [
+    "sample-questions:11",
+    "sample-questions:26"
+   ],
+   "doc_id": "sample-questions",
+   "doc_page": 11,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/sample-questions-ap-calculus-ab-and-bc-exams.pdf",
+   "number": 7,
+   "calculator": "no_calculator",
+   "description": "A function is defined by an integral with a variable upper limit and the question asks for a derived quantity. The official tags pair analysing functions defined by an integral with the chain rule for composite functions.",
+   "topics": [
+    "BC-TOP-0604",
+    "BC-TOP-0301"
+   ],
+   "skills": [
+    "BC-SKL-06019",
+    "BC-SKL-06018",
+    "BC-SKL-03002"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-06012",
+   "representations": [
+    "BC-REP-01"
+   ],
+   "correct_option": "D",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "B",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "C",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "Mathematical stems and option expressions in this document are dropped by text extraction, so the options could not be reconstructed. This document tags each question with 2014 framework learning objectives, essential knowledge statements and mathematical practices rather than the 2019 practice skills, so practice_skills is left empty. Question numbering restarts for the BC set, so the record id sequence and the printed number differ for the BC questions."
+  },
+  {
+   "id": "BC-MCQ-SAMPLE-008",
+   "name": "Limit of a Riemann sum equal to a given definite integral",
+   "scope": "shared",
+   "evidence_tag": "verified",
+   "sources": [
+    "sample-questions:12",
+    "sample-questions:26"
+   ],
+   "doc_id": "sample-questions",
+   "doc_page": 12,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/sample-questions-ap-calculus-ab-and-bc-exams.pdf",
+   "number": 8,
+   "calculator": "no_calculator",
+   "description": "Four limits of Riemann sums are offered and the question asks which equals a given definite integral. The official tags name interpreting the definite integral as the limit of a Riemann sum and translating between the two forms.",
+   "topics": [
+    "BC-TOP-0603"
+   ],
+   "skills": [
+    "BC-SKL-06015",
+    "BC-SKL-06014",
+    "BC-SKL-06013"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-06014",
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-11"
+   ],
+   "correct_option": "D",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "B",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "C",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "Mathematical stems and option expressions in this document are dropped by text extraction, so the options could not be reconstructed. This document tags each question with 2014 framework learning objectives, essential knowledge statements and mathematical practices rather than the 2019 practice skills, so practice_skills is left empty. Question numbering restarts for the BC set, so the record id sequence and the printed number differ for the BC questions."
+  },
+  {
+   "id": "BC-MCQ-SAMPLE-009",
+   "name": "Average value of a piecewise-linear function read from its graph",
+   "scope": "shared",
+   "evidence_tag": "verified",
+   "sources": [
+    "sample-questions:13",
+    "sample-questions:26"
+   ],
+   "doc_id": "sample-questions",
+   "doc_page": 13,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/sample-questions-ap-calculus-ab-and-bc-exams.pdf",
+   "number": 9,
+   "calculator": "no_calculator",
+   "description": "The graph of a continuous function consisting of five line segments is shown and the question asks for the average value of the function on an interval. The integral is obtained from signed areas of the triangles and trapezoids and then divided by the interval length.",
+   "topics": [
+    "BC-TOP-0801",
+    "BC-TOP-0606"
+   ],
+   "skills": [
+    "BC-SKL-08002",
+    "BC-SKL-06028",
+    "BC-SKL-08001"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-08001",
+   "representations": [
+    "BC-REP-02"
+   ],
+   "correct_option": "B",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "C",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "D",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "Mathematical stems and option expressions in this document are dropped by text extraction, so the options could not be reconstructed. This document tags each question with 2014 framework learning objectives, essential knowledge statements and mathematical practices rather than the 2019 practice skills, so practice_skills is left empty. Question numbering restarts for the BC set, so the record id sequence and the printed number differ for the BC questions."
+  },
+  {
+   "id": "BC-MCQ-SAMPLE-010",
+   "name": "Exponential model recovered from a table of values",
+   "scope": "shared",
+   "evidence_tag": "verified",
+   "sources": [
+    "sample-questions:14",
+    "sample-questions:26"
+   ],
+   "doc_id": "sample-questions",
+   "doc_page": 14,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/sample-questions-ap-calculus-ab-and-bc-exams.pdf",
+   "number": 10,
+   "calculator": "no_calculator",
+   "description": "A function solves a differential equation stating that its rate of change is proportional to its size, values are tabulated at selected times, and the question asks for an expression for the function. The official tags name interpreting, creating and solving differential equations from context.",
+   "topics": [
+    "BC-TOP-0708"
+   ],
+   "skills": [
+    "BC-SKL-07034",
+    "BC-SKL-07035",
+    "BC-SKL-07036"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-07008",
+   "representations": [
+    "BC-REP-03",
+    "BC-REP-06"
+   ],
+   "correct_option": "A",
+   "distractor_analysis": [
+    {
+     "option": "B",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "C",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "D",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "Mathematical stems and option expressions in this document are dropped by text extraction, so the options could not be reconstructed. This document tags each question with 2014 framework learning objectives, essential knowledge statements and mathematical practices rather than the 2019 practice skills, so practice_skills is left empty. Question numbering restarts for the BC set, so the record id sequence and the printed number differ for the BC questions."
+  },
+  {
+   "id": "BC-MCQ-SAMPLE-011",
+   "name": "Which graph could be the function whose derivative is shown",
+   "scope": "shared",
+   "evidence_tag": "verified",
+   "sources": [
+    "sample-questions:15",
+    "sample-questions:26"
+   ],
+   "doc_id": "sample-questions",
+   "doc_page": 15,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/sample-questions-ap-calculus-ab-and-bc-exams.pdf",
+   "number": 11,
+   "calculator": "calculator",
+   "description": "The graph of the derivative of a function is printed and four candidate graphs of the function are offered. The reasoning matches the sign of the derivative to intervals of increase and decrease and its turning points to changes of concavity.",
+   "topics": [
+    "BC-TOP-0508",
+    "BC-TOP-0509"
+   ],
+   "skills": [
+    "BC-SKL-05041",
+    "BC-SKL-05042",
+    "BC-SKL-02019"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-05009",
+   "representations": [
+    "BC-REP-02"
+   ],
+   "correct_option": "A",
+   "distractor_analysis": [
+    {
+     "option": "B",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "C",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "D",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "The four candidate graphs are images and are not recoverable from the cached text. This document tags each question with 2014 framework learning objectives, essential knowledge statements and mathematical practices rather than the 2019 practice skills, so practice_skills is left empty. Question numbering restarts for the BC set, so the record id sequence and the printed number differ for the BC questions."
+  },
+  {
+   "id": "BC-MCQ-SAMPLE-012",
+   "name": "Intervals on which a function decreases from a formula for its derivative",
+   "scope": "shared",
+   "evidence_tag": "verified",
+   "sources": [
+    "sample-questions:17",
+    "sample-questions:26"
+   ],
+   "doc_id": "sample-questions",
+   "doc_page": 17,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/sample-questions-ap-calculus-ab-and-bc-exams.pdf",
+   "number": 12,
+   "calculator": "calculator",
+   "description": "A formula for the derivative of a function is given on a stated domain and the question asks on which intervals the function decreases. Each option names two intervals, so the work is a sign analysis of the given derivative.",
+   "topics": [
+    "BC-TOP-0503"
+   ],
+   "skills": [
+    "BC-SKL-05014",
+    "BC-SKL-05016",
+    "BC-SKL-05017"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-05008",
+   "representations": [
+    "BC-REP-01"
+   ],
+   "correct_option": "A",
+   "distractor_analysis": [
+    {
+     "option": "B",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "C",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "D",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "Mathematical stems and option expressions in this document are dropped by text extraction, so the options could not be reconstructed. This document tags each question with 2014 framework learning objectives, essential knowledge statements and mathematical practices rather than the 2019 practice skills, so practice_skills is left empty. Question numbering restarts for the BC set, so the record id sequence and the printed number differ for the BC questions."
+  },
+  {
+   "id": "BC-MCQ-SAMPLE-013",
+   "name": "Best interpretation of a derivative value for a room temperature model",
+   "scope": "shared",
+   "evidence_tag": "verified",
+   "sources": [
+    "sample-questions:18",
+    "sample-questions:26"
+   ],
+   "doc_id": "sample-questions",
+   "doc_page": 18,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/sample-questions-ap-calculus-ab-and-bc-exams.pdf",
+   "number": 13,
+   "calculator": "calculator",
+   "description": "A room temperature in degrees is modelled by a differentiable function of minutes after a thermostat adjustment, and the question asks which of four sentences best interprets a stated derivative value. The correct sentence names a rate in degrees per minute at that instant.",
+   "topics": [
+    "BC-TOP-0401"
+   ],
+   "skills": [
+    "BC-SKL-04001",
+    "BC-SKL-04002",
+    "BC-SKL-04003"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-04001",
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-05"
+   ],
+   "correct_option": "D",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "conceptual confusion: the derivative read as the function, so the number is reported as a temperature",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "B",
+     "mechanism": "conceptual confusion: the derivative read as a total change accumulated over the whole elapsed interval",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "C",
+     "mechanism": "conceptual confusion: an instantaneous rate treated as a constant rate over the interval, with the numeral misread",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "This document tags each question with 2014 framework learning objectives, essential knowledge statements and mathematical practices rather than the 2019 practice skills, so practice_skills is left empty. Question numbering restarts for the BC set, so the record id sequence and the printed number differ for the BC questions."
+  },
+  {
+   "id": "BC-MCQ-SAMPLE-014",
+   "name": "Extra condition that guarantees the Mean Value Theorem conclusion",
+   "scope": "shared",
+   "evidence_tag": "verified",
+   "sources": [
+    "sample-questions:19",
+    "sample-questions:26"
+   ],
+   "doc_id": "sample-questions",
+   "doc_page": 19,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/sample-questions-ap-calculus-ab-and-bc-exams.pdf",
+   "number": 14,
+   "calculator": "calculator",
+   "description": "A function is continuous on a closed interval with stated endpoint values, and the question asks which additional condition guarantees a point of the open interval where the derivative takes a particular value. The correct condition is differentiability on the open interval.",
+   "topics": [
+    "BC-TOP-0501"
+   ],
+   "skills": [
+    "BC-SKL-05001",
+    "BC-SKL-05002",
+    "BC-SKL-05004"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-05001",
+   "representations": [
+    "BC-REP-04"
+   ],
+   "correct_option": "C",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "theorem condition ignored: differentiability treated as unnecessary once continuity holds",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "B",
+     "mechanism": "conceptual confusion: an extremum hypothesis substituted for the differentiability hypothesis",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "D",
+     "mechanism": "theorem condition ignored: existence of the derivative at one point offered in place of differentiability across the interval",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "This document tags each question with 2014 framework learning objectives, essential knowledge statements and mathematical practices rather than the 2019 practice skills, so practice_skills is left empty. Question numbering restarts for the BC set, so the record id sequence and the printed number differ for the BC questions."
+  },
+  {
+   "id": "BC-MCQ-SAMPLE-015",
+   "name": "Height of water in a barrel from a rate and a value at an interior time",
+   "scope": "shared",
+   "evidence_tag": "verified",
+   "sources": [
+    "sample-questions:20",
+    "sample-questions:26"
+   ],
+   "doc_id": "sample-questions",
+   "doc_page": 20,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/sample-questions-ap-calculus-ab-and-bc-exams.pdf",
+   "number": 15,
+   "calculator": "calculator",
+   "description": "Water height rises at a stated rate in feet per hour and the height is given at one hour. The question asks for the height at a later time, so the work is an initial value plus the definite integral of the rate.",
+   "topics": [
+    "BC-TOP-0803",
+    "BC-TOP-0607"
+   ],
+   "skills": [
+    "BC-SKL-08012",
+    "BC-SKL-06037",
+    "BC-SKL-06034"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-08004",
+   "representations": [
+    "BC-REP-05"
+   ],
+   "correct_option": "D",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "B",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "C",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "Mathematical stems and option expressions in this document are dropped by text extraction, so the options could not be reconstructed. This document tags each question with 2014 framework learning objectives, essential knowledge statements and mathematical practices rather than the 2019 practice skills, so practice_skills is left empty. Question numbering restarts for the BC set, so the record id sequence and the printed number differ for the BC questions."
+  },
+  {
+   "id": "BC-MCQ-SAMPLE-016",
+   "name": "Distance a braking car travels from its acceleration and initial velocity",
+   "scope": "shared",
+   "evidence_tag": "verified",
+   "sources": [
+    "sample-questions:21",
+    "sample-questions:26"
+   ],
+   "doc_id": "sample-questions",
+   "doc_page": 21,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/sample-questions-ap-calculus-ab-and-bc-exams.pdf",
+   "number": 16,
+   "calculator": "calculator",
+   "description": "A car travels at a stated velocity when braking begins and the acceleration is given as a function of time. The question asks how far the car travels until it stops, so velocity is recovered from acceleration, the stopping time is found, and the distance is the integral of velocity to that time.",
+   "topics": [
+    "BC-TOP-0802",
+    "BC-TOP-0608"
+   ],
+   "skills": [
+    "BC-SKL-08010",
+    "BC-SKL-08006",
+    "BC-SKL-06040"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-08003",
+   "representations": [
+    "BC-REP-05"
+   ],
+   "correct_option": "B",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "C",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "D",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "Mathematical stems and option expressions in this document are dropped by text extraction, so the options could not be reconstructed. This document tags each question with 2014 framework learning objectives, essential knowledge statements and mathematical practices rather than the 2019 practice skills, so practice_skills is left empty. Question numbering restarts for the BC set, so the record id sequence and the printed number differ for the BC questions."
+  },
+  {
+   "id": "BC-MCQ-SAMPLE-017",
+   "name": "Slope of the tangent to a parametric path at a stated point",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "sample-questions:29",
+    "sample-questions:42"
+   ],
+   "doc_id": "sample-questions",
+   "doc_page": 29,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/sample-questions-ap-calculus-ab-and-bc-exams.pdf",
+   "number": 1,
+   "calculator": "no_calculator",
+   "description": "The position of a particle in the plane is given by parametric equations and the question asks for the slope of the tangent to its path where a stated condition holds. The slope is the quotient of the two component derivatives.",
+   "topics": [
+    "BC-TOP-0901"
+   ],
+   "skills": [
+    "BC-SKL-09001",
+    "BC-SKL-09002",
+    "BC-SKL-09004"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-09001",
+   "representations": [
+    "BC-REP-12"
+   ],
+   "correct_option": "C",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "B",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "D",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "Mathematical stems and option expressions in this document are dropped by text extraction, so the options could not be reconstructed. This document tags each question with 2014 framework learning objectives, essential knowledge statements and mathematical practices rather than the 2019 practice skills, so practice_skills is left empty. Question numbering restarts for the BC set, so the record id sequence and the printed number differ for the BC questions."
+  },
+  {
+   "id": "BC-MCQ-SAMPLE-018",
+   "name": "Euler's method approximation with a stated step size",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "sample-questions:30",
+    "sample-questions:42"
+   ],
+   "doc_id": "sample-questions",
+   "doc_page": 30,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/sample-questions-ap-calculus-ab-and-bc-exams.pdf",
+   "number": 2,
+   "calculator": "no_calculator",
+   "description": "A solution of a differential equation with a given initial condition is approximated by Euler's method with a stated step size, and the question asks for the approximation at a later input. The four options are numbers.",
+   "topics": [
+    "BC-TOP-0705"
+   ],
+   "skills": [
+    "BC-SKL-07019",
+    "BC-SKL-07020",
+    "BC-SKL-07021"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-07004",
+   "representations": [
+    "BC-REP-06"
+   ],
+   "correct_option": "D",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "algebra slip: the increment subtracted rather than added at one step",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "B",
+     "mechanism": "conceptual confusion: a single step taken instead of the number the step size requires",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "C",
+     "mechanism": "algebra slip in the arithmetic of the second step",
+     "evidence_tag": "uncertain"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "The differential equation and the initial condition were lost in extraction, so the options were classified from their structure rather than reproduced. This document tags each question with 2014 framework learning objectives, essential knowledge statements and mathematical practices rather than the 2019 practice skills, so practice_skills is left empty. Question numbering restarts for the BC set, so the record id sequence and the printed number differ for the BC questions."
+  },
+  {
+   "id": "BC-MCQ-SAMPLE-019",
+   "name": "Parameter making an improper integral take a stated value",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "sample-questions:31",
+    "sample-questions:42"
+   ],
+   "doc_id": "sample-questions",
+   "doc_page": 31,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/sample-questions-ap-calculus-ab-and-bc-exams.pdf",
+   "number": 3,
+   "calculator": "no_calculator",
+   "description": "An improper integral containing a parameter is set equal to a value, and the question asks for the parameter. One option asserts that no such value exists.",
+   "topics": [
+    "BC-TOP-0613",
+    "BC-TOP-0610"
+   ],
+   "skills": [
+    "BC-SKL-06066",
+    "BC-SKL-06067",
+    "BC-SKL-06068"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-06011",
+   "representations": [
+    "BC-REP-01"
+   ],
+   "correct_option": "C",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "B",
+     "mechanism": "algebra slip in evaluating the limit that defines the improper integral",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "D",
+     "mechanism": "conceptual confusion: the integral judged divergent without rewriting it as a limit of definite integrals",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "Only two of the four option values survived extraction. This document tags each question with 2014 framework learning objectives, essential knowledge statements and mathematical practices rather than the 2019 practice skills, so practice_skills is left empty. Question numbering restarts for the BC set, so the record id sequence and the printed number differ for the BC questions."
+  },
+  {
+   "id": "BC-MCQ-SAMPLE-020",
+   "name": "Smallest bound the alternating series error bound guarantees",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "sample-questions:32",
+    "sample-questions:42"
+   ],
+   "doc_id": "sample-questions",
+   "doc_page": 32,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/sample-questions-ap-calculus-ab-and-bc-exams.pdf",
+   "number": 4,
+   "calculator": "no_calculator",
+   "description": "A Taylor series about a point converges to the function on a stated interval and a formula for the nth-degree Taylor polynomial is given. The question asks for the smallest number the alternating series error bound guarantees for the approximation error.",
+   "topics": [
+    "BC-TOP-1010",
+    "BC-TOP-1011"
+   ],
+   "skills": [
+    "BC-SKL-10039",
+    "BC-SKL-10040",
+    "BC-SKL-10042"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-10008",
+   "representations": [
+    "BC-REP-11"
+   ],
+   "correct_option": "C",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "B",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "D",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "Mathematical stems and option expressions in this document are dropped by text extraction, so the options could not be reconstructed. This document tags each question with 2014 framework learning objectives, essential knowledge statements and mathematical practices rather than the 2019 practice skills, so practice_skills is left empty. Question numbering restarts for the BC set, so the record id sequence and the printed number differ for the BC questions."
+  },
+  {
+   "id": "BC-MCQ-SAMPLE-021",
+   "name": "Third-degree Taylor polynomial built from a table of derivative values",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "sample-questions:33",
+    "sample-questions:42"
+   ],
+   "doc_id": "sample-questions",
+   "doc_page": 33,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/sample-questions-ap-calculus-ab-and-bc-exams.pdf",
+   "number": 5,
+   "calculator": "no_calculator",
+   "description": "A table lists a function and its first three derivatives at selected inputs, and the question asks for the third-degree Taylor polynomial about a stated centre. The coefficients are the derivative values divided by the matching factorials.",
+   "topics": [
+    "BC-TOP-1011"
+   ],
+   "skills": [
+    "BC-SKL-10045",
+    "BC-SKL-10044",
+    "BC-SKL-10046"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-10011",
+   "representations": [
+    "BC-REP-03",
+    "BC-REP-11"
+   ],
+   "correct_option": "B",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "C",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "D",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "Mathematical stems and option expressions in this document are dropped by text extraction, so the options could not be reconstructed. This document tags each question with 2014 framework learning objectives, essential knowledge statements and mathematical practices rather than the 2019 practice skills, so practice_skills is left empty. Question numbering restarts for the BC set, so the record id sequence and the printed number differ for the BC questions."
+  },
+  {
+   "id": "BC-MCQ-SAMPLE-022",
+   "name": "Absolute against conditional convergence of a given series",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "sample-questions:34",
+    "sample-questions:42"
+   ],
+   "doc_id": "sample-questions",
+   "doc_page": 34,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/sample-questions-ap-calculus-ab-and-bc-exams.pdf",
+   "number": 6,
+   "calculator": "no_calculator",
+   "description": "A series is printed and the question asks which statement about it is true. The four options are converging absolutely, converging conditionally, converging in neither sense, and diverging.",
+   "topics": [
+    "BC-TOP-1009"
+   ],
+   "skills": [
+    "BC-SKL-10034",
+    "BC-SKL-10035",
+    "BC-SKL-10036"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-10007",
+   "representations": [
+    "BC-REP-11"
+   ],
+   "correct_option": "B",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "conceptual confusion: the series of absolute values assumed to converge because the original series does",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "C",
+     "mechanism": "conceptual confusion: a convergent series treated as able to be neither absolutely nor conditionally convergent",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "D",
+     "mechanism": "theorem condition ignored: the alternating series test conditions not checked before declaring divergence",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "The printed series expression was lost in extraction; the options themselves are fully readable. This document tags each question with 2014 framework learning objectives, essential knowledge statements and mathematical practices rather than the 2019 practice skills, so practice_skills is left empty. Question numbering restarts for the BC set, so the record id sequence and the printed number differ for the BC questions."
+  },
+  {
+   "id": "BC-MCQ-SAMPLE-023",
+   "name": "Total distance travelled in the plane from a velocity vector",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "sample-questions:35",
+    "sample-questions:42"
+   ],
+   "doc_id": "sample-questions",
+   "doc_page": 35,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/sample-questions-ap-calculus-ab-and-bc-exams.pdf",
+   "number": 7,
+   "calculator": "calculator",
+   "description": "A particle moving in the plane has a given velocity vector and the question asks for the total distance travelled between two times, which is the integral of the speed over that interval.",
+   "topics": [
+    "BC-TOP-0906",
+    "BC-TOP-0903"
+   ],
+   "skills": [
+    "BC-SKL-09025",
+    "BC-SKL-09023",
+    "BC-SKL-09011"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-09007",
+   "representations": [
+    "BC-REP-14",
+    "BC-REP-09"
+   ],
+   "correct_option": "A",
+   "distractor_analysis": [
+    {
+     "option": "B",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "C",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "D",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "Mathematical stems and option expressions in this document are dropped by text extraction, so the options could not be reconstructed. This document tags each question with 2014 framework learning objectives, essential knowledge statements and mathematical practices rather than the 2019 practice skills, so practice_skills is left empty. Question numbering restarts for the BC set, so the record id sequence and the printed number differ for the BC questions."
+  },
+  {
+   "id": "BC-MCQ-SAMPLE-024",
+   "name": "Series statement consistent with a decreasing positive function and a stated integral value",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "sample-questions:36",
+    "sample-questions:42"
+   ],
+   "doc_id": "sample-questions",
+   "doc_page": 36,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/sample-questions-ap-calculus-ab-and-bc-exams.pdf",
+   "number": 8,
+   "calculator": "calculator",
+   "description": "A continuous function is decreasing and positive on a ray, part of its graph is shown, and the terms of a series are defined from it. Given that an associated improper integral converges to a stated value, the question asks which statement about the series could be true. One option is that the series diverges.",
+   "topics": [
+    "BC-TOP-1004",
+    "BC-TOP-1006"
+   ],
+   "skills": [
+    "BC-SKL-10014",
+    "BC-SKL-10015",
+    "BC-SKL-10017"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-10005",
+   "representations": [
+    "BC-REP-02",
+    "BC-REP-11"
+   ],
+   "correct_option": "C",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "B",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "D",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "Mathematical stems and option expressions in this document are dropped by text extraction, so the options could not be reconstructed. This document tags each question with 2014 framework learning objectives, essential knowledge statements and mathematical practices rather than the 2019 practice skills, so practice_skills is left empty. Question numbering restarts for the BC set, so the record id sequence and the printed number differ for the BC questions."
+  },
+  {
+   "id": "BC-MCQ-PE2012-001",
+   "name": "Derivative of a cubed sine function",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "practice-exam-2012:22",
+    "practice-exam-2012:72"
+   ],
+   "doc_id": "practice-exam-2012",
+   "doc_page": 22,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-bc-practice-exam-2012.pdf",
+   "number": 1,
+   "calculator": "no_calculator",
+   "description": "A function is the cube of a sine, and the question asks for its derivative. The work is one chain rule application with the power as the outer layer.",
+   "topics": [
+    "BC-TOP-0301"
+   ],
+   "skills": [
+    "BC-SKL-03001",
+    "BC-SKL-03002",
+    "BC-SKL-02032"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-03001",
+   "representations": [
+    "BC-REP-01"
+   ],
+   "correct_option": "E",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "chain rule omitted and the wrong layer differentiated, leaving a cubed cosine",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "B",
+     "mechanism": "chain rule applied to the wrong layer, producing a squared cosine",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "C",
+     "mechanism": "chain rule omitted: the inner derivative factor dropped",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "D",
+     "mechanism": "sign error introduced with the inner derivative",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "This document prints no official skill or learning objective tags and no rationales, so practice_skills is empty and every mechanism below is a research inference. Scope is recorded as BC_only because the document is the BC exam, although several items cover content shared with AB."
+  },
+  {
+   "id": "BC-MCQ-PE2012-002",
+   "name": "Point at which a parametrically defined particle is at rest",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "practice-exam-2012:22",
+    "practice-exam-2012:72"
+   ],
+   "doc_id": "practice-exam-2012",
+   "doc_page": 22,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-bc-practice-exam-2012.pdf",
+   "number": 2,
+   "calculator": "no_calculator",
+   "description": "A particle in the plane has position given by a cubic and a quadratic in time, and the question asks at which of five listed points it is at rest. Both component derivatives must vanish at the same time before the position is evaluated.",
+   "topics": [
+    "BC-TOP-0906",
+    "BC-TOP-0901"
+   ],
+   "skills": [
+    "BC-SKL-09001",
+    "BC-SKL-09016",
+    "BC-SKL-04011"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-09001",
+   "representations": [
+    "BC-REP-12"
+   ],
+   "correct_option": "A",
+   "distractor_analysis": [
+    {
+     "option": "B",
+     "mechanism": "algebra slip in evaluating the position at the time found",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "C",
+     "mechanism": "algebra slip: the position evaluated at a parameter value that is not a common zero",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "D",
+     "mechanism": "conceptual confusion: only the first component derivative set to zero",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "E",
+     "mechanism": "reversed quantities: the parameter value reported in place of the position, or the coordinates exchanged",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "This document prints no official skill or learning objective tags and no rationales, so practice_skills is empty and every mechanism below is a research inference. Scope is recorded as BC_only because the document is the BC exam, although several items cover content shared with AB."
+  },
+  {
+   "id": "BC-MCQ-PE2012-003",
+   "name": "Definite integral of a graphed function over a closed interval",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "practice-exam-2012:23",
+    "practice-exam-2012:72"
+   ],
+   "doc_id": "practice-exam-2012",
+   "doc_page": 23,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-bc-practice-exam-2012.pdf",
+   "number": 3,
+   "calculator": "no_calculator",
+   "description": "The graph of a function is shown on a closed interval and the question asks for the value of its definite integral there. The regions above and below the horizontal axis cancel.",
+   "topics": [
+    "BC-TOP-0606"
+   ],
+   "skills": [
+    "BC-SKL-06028",
+    "BC-SKL-06004",
+    "BC-SKL-06031"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-06004",
+   "representations": [
+    "BC-REP-02"
+   ],
+   "correct_option": "B",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "algebra slip in adding the signed areas",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "C",
+     "mechanism": "wrong limits: only part of the interval accumulated",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "D",
+     "mechanism": "conceptual confusion: the definite integral treated as unsigned area",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "E",
+     "mechanism": "conceptual confusion: unsigned area taken and the graph scale misread",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "This document prints no official skill or learning objective tags and no rationales, so practice_skills is empty and every mechanism below is a research inference. Scope is recorded as BC_only because the document is the BC exam, although several items cover content shared with AB."
+  },
+  {
+   "id": "BC-MCQ-PE2012-004",
+   "name": "Arc length integral for a logarithmic curve on an interval",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "practice-exam-2012:24",
+    "practice-exam-2012:72"
+   ],
+   "doc_id": "practice-exam-2012",
+   "doc_page": 24,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-bc-practice-exam-2012.pdf",
+   "number": 4,
+   "calculator": "no_calculator",
+   "description": "A logarithmic curve is given on a closed interval and the question asks which integral gives its length. The setup squares the derivative of the curve and adds one under a square root.",
+   "topics": [
+    "BC-TOP-0813"
+   ],
+   "skills": [
+    "BC-SKL-08056",
+    "BC-SKL-08057",
+    "BC-SKL-02034"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-08014",
+   "representations": [
+    "BC-REP-01"
+   ],
+   "correct_option": "A",
+   "distractor_analysis": [
+    {
+     "option": "B",
+     "mechanism": "algebra slip: the derivative added to one and the sum squared rather than the derivative being squared first",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "C",
+     "mechanism": "conceptual confusion: the inverse function differentiated in place of the given one",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "D",
+     "mechanism": "conceptual confusion: the function itself squared inside the radical instead of its derivative",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "E",
+     "mechanism": "conceptual confusion as in the previous option, with a further slip in the radical",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "This document prints no official skill or learning objective tags and no rationales, so practice_skills is empty and every mechanism below is a research inference. Scope is recorded as BC_only because the document is the BC exam, although several items cover content shared with AB."
+  },
+  {
+   "id": "BC-MCQ-PE2012-005",
+   "name": "Value of a geometric Maclaurin series at a point",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "practice-exam-2012:24",
+    "practice-exam-2012:72"
+   ],
+   "doc_id": "practice-exam-2012",
+   "doc_page": 24,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-bc-practice-exam-2012.pdf",
+   "number": 5,
+   "calculator": "no_calculator",
+   "description": "A function is given by a geometric Maclaurin series whose ratio is the variable over a constant with a leading sign, and the question asks for its value at a stated input. The ratio must be checked and the closed-form sum applied.",
+   "topics": [
+    "BC-TOP-1002"
+   ],
+   "skills": [
+    "BC-SKL-10006",
+    "BC-SKL-10007",
+    "BC-SKL-10008"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-10003",
+   "representations": [
+    "BC-REP-11"
+   ],
+   "correct_option": "C",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "conceptual confusion: the input substituted without summing the series",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "B",
+     "mechanism": "sign error: the ratio entered with the wrong sign in the closed form",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "D",
+     "mechanism": "algebra slip: a partial sum of the first terms reported instead of the whole sum",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "E",
+     "mechanism": "algebra slip: the first term reported as the sum, as though the ratio were zero",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "This document prints no official skill or learning objective tags and no rationales, so practice_skills is empty and every mechanism below is a research inference. Scope is recorded as BC_only because the document is the BC exam, although several items cover content shared with AB."
+  },
+  {
+   "id": "BC-MCQ-PE2012-006",
+   "name": "Definite integral rewritten under a stated substitution",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "practice-exam-2012:25",
+    "practice-exam-2012:72"
+   ],
+   "doc_id": "practice-exam-2012",
+   "doc_page": 25,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-bc-practice-exam-2012.pdf",
+   "number": 6,
+   "calculator": "no_calculator",
+   "description": "A definite integral of a linear factor times a power of a quadratic is to be rewritten under a stated substitution, and the five options differ in the constant multiplier and in the limits of integration.",
+   "topics": [
+    "BC-TOP-0609"
+   ],
+   "skills": [
+    "BC-SKL-06050",
+    "BC-SKL-06048",
+    "BC-SKL-06047"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-06008",
+   "representations": [
+    "BC-REP-01"
+   ],
+   "correct_option": "C",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "algebra slip: the differential constant inverted, doubling instead of halving",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "B",
+     "mechanism": "forgot constant: the differential factor from the substitution omitted",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "D",
+     "mechanism": "wrong limits: the original limits kept after substituting, and the constant also omitted",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "E",
+     "mechanism": "wrong limits: the original limits kept after substituting",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "This document prints no official skill or learning objective tags and no rationales, so practice_skills is empty and every mechanism below is a research inference. Scope is recorded as BC_only because the document is the BC exam, although several items cover content shared with AB."
+  },
+  {
+   "id": "BC-MCQ-PE2012-007",
+   "name": "Derivative from an equation relating an inverse sine and a logarithm",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "practice-exam-2012:25",
+    "practice-exam-2012:72"
+   ],
+   "doc_id": "practice-exam-2012",
+   "doc_page": 25,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-bc-practice-exam-2012.pdf",
+   "number": 7,
+   "calculator": "no_calculator",
+   "description": "An inverse sine of one variable is set equal to the natural logarithm of the other, and the question asks for the derivative of the dependent with respect to the independent variable.",
+   "topics": [
+    "BC-TOP-0304",
+    "BC-TOP-0302"
+   ],
+   "skills": [
+    "BC-SKL-03022",
+    "BC-SKL-03009",
+    "BC-SKL-02034"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-03007",
+   "representations": [
+    "BC-REP-01"
+   ],
+   "correct_option": "A",
+   "distractor_analysis": [
+    {
+     "option": "B",
+     "mechanism": "algebra slip: a spurious factor of the independent variable introduced in the numerator",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "C",
+     "mechanism": "conceptual confusion: the inverse tangent derivative used in place of the inverse sine derivative",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "D",
+     "mechanism": "chain rule omitted: the derivative of the logarithm side not carried through",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "E",
+     "mechanism": "both the inverse tangent derivative used and the dependent variable not substituted",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "This document prints no official skill or learning objective tags and no rationales, so practice_skills is empty and every mechanism below is a research inference. Scope is recorded as BC_only because the document is the BC exam, although several items cover content shared with AB."
+  },
+  {
+   "id": "BC-MCQ-PE2012-008",
+   "name": "Right Riemann sum from a table added to an initial amount",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "practice-exam-2012:26",
+    "practice-exam-2012:72"
+   ],
+   "doc_id": "practice-exam-2012",
+   "doc_page": 26,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-bc-practice-exam-2012.pdf",
+   "number": 8,
+   "calculator": "no_calculator",
+   "description": "A tank holds a stated amount at the first tabulated time and a rate of inflow is tabulated at four unequally spaced times. The question asks for the approximate amount at the last time using a right Riemann sum with three subintervals.",
+   "topics": [
+    "BC-TOP-0602",
+    "BC-TOP-0803"
+   ],
+   "skills": [
+    "BC-SKL-06006",
+    "BC-SKL-08012",
+    "BC-SKL-06005"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-06001",
+   "representations": [
+    "BC-REP-03",
+    "BC-REP-05"
+   ],
+   "correct_option": "C",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "conceptual confusion: the accumulated change reported without adding the initial amount",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "B",
+     "mechanism": "wrong limits: the left endpoints used for the sample values, and the initial amount omitted",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "D",
+     "mechanism": "conceptual confusion: a trapezoidal approximation used where a right sum was requested",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "E",
+     "mechanism": "wrong limits: the left endpoints used for the sample values, with the initial amount added",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "This document prints no official skill or learning objective tags and no rationales, so practice_skills is empty and every mechanism below is a research inference. Scope is recorded as BC_only because the document is the BC exam, although several items cover content shared with AB."
+  },
+  {
+   "id": "BC-MCQ-PE2012-009",
+   "name": "Which of three series converge",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "practice-exam-2012:26",
+    "practice-exam-2012:72"
+   ],
+   "doc_id": "practice-exam-2012",
+   "doc_page": 26,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-bc-practice-exam-2012.pdf",
+   "number": 9,
+   "calculator": "no_calculator",
+   "description": "Three series are listed, one with a factorial in the denominator, one with a factorial in the numerator against a power, and one whose terms behave like a convergent p-series. The options are combinations of the three.",
+   "topics": [
+    "BC-TOP-1008",
+    "BC-TOP-1006"
+   ],
+   "skills": [
+    "BC-SKL-10021",
+    "BC-SKL-10031",
+    "BC-SKL-10022"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-10001",
+   "representations": [
+    "BC-REP-11"
+   ],
+   "correct_option": "D",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "conceptual confusion: the third series not compared with a convergent p-series",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "B",
+     "mechanism": "conceptual confusion: the ratio test misapplied to the factorial-over-power series",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "C",
+     "mechanism": "conceptual confusion: the ratio test misapplied to the power-over-factorial series",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "E",
+     "mechanism": "conceptual confusion: a factorial in the numerator assumed to be dominated by the power in the denominator",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "This document prints no official skill or learning objective tags and no rationales, so practice_skills is empty and every mechanism below is a research inference. Scope is recorded as BC_only because the document is the BC exam, although several items cover content shared with AB."
+  },
+  {
+   "id": "BC-MCQ-PE2012-010",
+   "name": "Definite integral of a power of the variable",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "practice-exam-2012:27",
+    "practice-exam-2012:72"
+   ],
+   "doc_id": "practice-exam-2012",
+   "doc_page": 27,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-bc-practice-exam-2012.pdf",
+   "number": 10,
+   "calculator": "no_calculator",
+   "description": "A definite integral of a power expression is to be evaluated. The integrand and its limits were garbled in extraction, so the computation could not be reproduced from the cached page.",
+   "topics": [
+    "BC-TOP-0607",
+    "BC-TOP-0608"
+   ],
+   "skills": [
+    "BC-SKL-06034",
+    "BC-SKL-06040",
+    "BC-SKL-06035"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-06008",
+   "representations": [
+    "BC-REP-01"
+   ],
+   "correct_option": "E",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "B",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "C",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "D",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "The integrand and the limits of integration did not survive extraction; only the five option values and the official key are recoverable. This document prints no official skill or learning objective tags and no rationales, so practice_skills is empty and every mechanism below is a research inference. Scope is recorded as BC_only because the document is the BC exam, although several items cover content shared with AB."
+  },
+  {
+   "id": "BC-MCQ-PE2012-011",
+   "name": "True statement about an absolute value function at its corner",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "practice-exam-2012:27",
+    "practice-exam-2012:72"
+   ],
+   "doc_id": "practice-exam-2012",
+   "doc_page": 27,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-bc-practice-exam-2012.pdf",
+   "number": 11,
+   "calculator": "no_calculator",
+   "description": "A function is the absolute value of a linear expression and the question asks which of five statements about its behaviour at the corner is true. The correct statement pairs continuity with failure of differentiability.",
+   "topics": [
+    "BC-TOP-0204",
+    "BC-TOP-0111"
+   ],
+   "skills": [
+    "BC-SKL-02022",
+    "BC-SKL-02021",
+    "BC-SKL-01044"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-02005",
+   "representations": [
+    "BC-REP-01"
+   ],
+   "correct_option": "A",
+   "distractor_analysis": [
+    {
+     "option": "B",
+     "mechanism": "conceptual confusion: the corner overlooked and the function judged differentiable",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "C",
+     "mechanism": "conceptual confusion: a corner treated as a discontinuity",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "D",
+     "mechanism": "conceptual confusion: the limit at the corner misread as nonzero",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "E",
+     "mechanism": "conceptual confusion: a corner treated as a vertical asymptote",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "This document prints no official skill or learning objective tags and no rationales, so practice_skills is empty and every mechanism below is a research inference. Scope is recorded as BC_only because the document is the BC exam, although several items cover content shared with AB."
+  },
+  {
+   "id": "BC-MCQ-PE2012-012",
+   "name": "Classifying two points on a solution curve from the differential equation",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "practice-exam-2012:28",
+    "practice-exam-2012:72"
+   ],
+   "doc_id": "practice-exam-2012",
+   "doc_page": 28,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-bc-practice-exam-2012.pdf",
+   "number": 12,
+   "calculator": "no_calculator",
+   "description": "Two points lie on the graph of a solution of a given differential equation and the question asks which statement about them must be true. Each point is tested by substituting into the equation and then into its derivative with respect to the independent variable.",
+   "topics": [
+    "BC-TOP-0702",
+    "BC-TOP-0507"
+   ],
+   "skills": [
+    "BC-SKL-07006",
+    "BC-SKL-05036",
+    "BC-SKL-05033"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-07010",
+   "representations": [
+    "BC-REP-06"
+   ],
+   "correct_option": "C",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "conceptual confusion: a point declared an extremum without checking that the first derivative vanishes there",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "B",
+     "mechanism": "conceptual confusion: a point declared a point of inflection without checking the derivative there",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "D",
+     "mechanism": "sign error: the sign convention of the second derivative test reversed",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "E",
+     "mechanism": "conceptual confusion: the second derivative not evaluated before naming a point of inflection",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "This document prints no official skill or learning objective tags and no rationales, so practice_skills is empty and every mechanism below is a research inference. Scope is recorded as BC_only because the document is the BC exam, although several items cover content shared with AB."
+  },
+  {
+   "id": "BC-MCQ-PE2012-013",
+   "name": "Radius of convergence of a power series whose terms carry an even power",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "practice-exam-2012:28",
+    "practice-exam-2012:72"
+   ],
+   "doc_id": "practice-exam-2012",
+   "doc_page": 28,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-bc-practice-exam-2012.pdf",
+   "number": 13,
+   "calculator": "no_calculator",
+   "description": "A power series centred away from zero has an even power of the shifted variable over a power of a constant, and the question asks for its radius of convergence. The ratio inequality must be solved for the shifted variable rather than for its square.",
+   "topics": [
+    "BC-TOP-1013"
+   ],
+   "skills": [
+    "BC-SKL-10054",
+    "BC-SKL-10055",
+    "BC-SKL-10056"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-10014",
+   "representations": [
+    "BC-REP-11"
+   ],
+   "correct_option": "C",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "algebra slip: an extra factor kept when solving the ratio inequality",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "B",
+     "mechanism": "algebra slip: the square root of the constant reported without solving the squared inequality for the shifted variable",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "D",
+     "mechanism": "algebra slip: the radius halved",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "E",
+     "mechanism": "conceptual confusion: the ratio limit read as forcing convergence at the centre only",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "This document prints no official skill or learning objective tags and no rationales, so practice_skills is empty and every mechanism below is a research inference. Scope is recorded as BC_only because the document is the BC exam, although several items cover content shared with AB."
+  },
+  {
+   "id": "BC-MCQ-PE2012-014",
+   "name": "Which differential equation is logistic",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "practice-exam-2012:29",
+    "practice-exam-2012:72"
+   ],
+   "doc_id": "practice-exam-2012",
+   "doc_page": 29,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-bc-practice-exam-2012.pdf",
+   "number": 14,
+   "calculator": "no_calculator",
+   "description": "Five differential equations are offered and the question asks which is logistic. The logistic form is a constant times the dependent variable times a factor that decreases as that variable grows.",
+   "topics": [
+    "BC-TOP-0709",
+    "BC-TOP-0708"
+   ],
+   "skills": [
+    "BC-SKL-07039",
+    "BC-SKL-07040",
+    "BC-SKL-07034"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-07009",
+   "representations": [
+    "BC-REP-06"
+   ],
+   "correct_option": "E",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "conceptual confusion: a rate depending only on the independent variable taken as logistic",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "B",
+     "mechanism": "conceptual confusion: the exponential model mistaken for the logistic model",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "C",
+     "mechanism": "conceptual confusion: the limiting factor written in the independent variable and the dependent variable absent",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "D",
+     "mechanism": "conceptual confusion: the limiting factor written in the independent variable instead of the dependent one",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "This document prints no official skill or learning objective tags and no rationales, so practice_skills is empty and every mechanism below is a research inference. Scope is recorded as BC_only because the document is the BC exam, although several items cover content shared with AB."
+  },
+  {
+   "id": "BC-MCQ-PE2012-015",
+   "name": "Ordering an accumulation function against its first two derivatives at a point",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "practice-exam-2012:30",
+    "practice-exam-2012:72"
+   ],
+   "doc_id": "practice-exam-2012",
+   "doc_page": 30,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-bc-practice-exam-2012.pdf",
+   "number": 15,
+   "calculator": "no_calculator",
+   "description": "A differentiable function is graphed and an accumulation function is defined as its integral from zero. The question asks which of five orderings of the accumulation function and its first two derivatives at one input is true.",
+   "topics": [
+    "BC-TOP-0604",
+    "BC-TOP-0605"
+   ],
+   "skills": [
+    "BC-SKL-06020",
+    "BC-SKL-06022",
+    "BC-SKL-06025"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-06003",
+   "representations": [
+    "BC-REP-02"
+   ],
+   "correct_option": "A",
+   "distractor_analysis": [
+    {
+     "option": "B",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "C",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "D",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "E",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "Prime marks were lost in extraction, so the five orderings render identically in the cached text and could not be distinguished. This document prints no official skill or learning objective tags and no rationales, so practice_skills is empty and every mechanism below is a research inference. Scope is recorded as BC_only because the document is the BC exam, although several items cover content shared with AB."
+  },
+  {
+   "id": "BC-MCQ-PE2012-016",
+   "name": "Euler's method over two equal steps",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "practice-exam-2012:31",
+    "practice-exam-2012:72"
+   ],
+   "doc_id": "practice-exam-2012",
+   "doc_page": 31,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-bc-practice-exam-2012.pdf",
+   "number": 16,
+   "calculator": "no_calculator",
+   "description": "A solution of a first-order differential equation has a stated initial value and the question asks for the Euler approximation at a later input using two steps of equal length.",
+   "topics": [
+    "BC-TOP-0705"
+   ],
+   "skills": [
+    "BC-SKL-07019",
+    "BC-SKL-07020",
+    "BC-SKL-07021"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-07004",
+   "representations": [
+    "BC-REP-06"
+   ],
+   "correct_option": "C",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "sign error: the increments subtracted with the wrong sign",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "B",
+     "mechanism": "conceptual confusion: a single step of the full interval width taken",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "D",
+     "mechanism": "conceptual confusion: the approximation after the first step reported",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "E",
+     "mechanism": "sign error: the derivative used with its sign reversed at each step",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "This document prints no official skill or learning objective tags and no rationales, so practice_skills is empty and every mechanism below is a research inference. Scope is recorded as BC_only because the document is the BC exam, although several items cover content shared with AB."
+  },
+  {
+   "id": "BC-MCQ-PE2012-017",
+   "name": "Function represented by an alternating power series with odd factorials",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "practice-exam-2012:31",
+    "practice-exam-2012:72"
+   ],
+   "doc_id": "practice-exam-2012",
+   "doc_page": 31,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-bc-practice-exam-2012.pdf",
+   "number": 17,
+   "calculator": "no_calculator",
+   "description": "A power series with alternating signs, even powers and odd factorials is printed and the question asks which function it converges to on a ray.",
+   "topics": [
+    "BC-TOP-1014"
+   ],
+   "skills": [
+    "BC-SKL-10062",
+    "BC-SKL-10065",
+    "BC-SKL-10064"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-10017",
+   "representations": [
+    "BC-REP-11"
+   ],
+   "correct_option": "C",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "conceptual confusion: the cosine series pattern matched, which uses even factorials",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "B",
+     "mechanism": "conceptual confusion: the division by the variable overlooked, leaving the sine series",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "D",
+     "mechanism": "conceptual confusion: the alternating signs dropped, matching a hyperbolic sine instead",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "E",
+     "mechanism": "algebra slip in assembling the exponential combination",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "This document prints no official skill or learning objective tags and no rationales, so practice_skills is empty and every mechanism below is a research inference. Scope is recorded as BC_only because the document is the BC exam, although several items cover content shared with AB."
+  },
+  {
+   "id": "BC-MCQ-PE2012-018",
+   "name": "Function value recovered backwards from a graphed derivative",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "practice-exam-2012:32",
+    "practice-exam-2012:72"
+   ],
+   "doc_id": "practice-exam-2012",
+   "doc_page": 32,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-bc-practice-exam-2012.pdf",
+   "number": 18,
+   "calculator": "no_calculator",
+   "description": "The graph of a derivative consists of two line segments and a semicircle, and one value of the function is given. The question asks for the function at an input to the left of that point, so the accumulated signed area must be applied in the reverse direction.",
+   "topics": [
+    "BC-TOP-0607",
+    "BC-TOP-0606"
+   ],
+   "skills": [
+    "BC-SKL-06031",
+    "BC-SKL-06030",
+    "BC-SKL-06028"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-06003",
+   "representations": [
+    "BC-REP-02"
+   ],
+   "correct_option": "A",
+   "distractor_analysis": [
+    {
+     "option": "B",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "C",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "D",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "E",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "The figure is an image and is not recoverable from the cached text, so the geometry behind each option value could not be checked. This document prints no official skill or learning objective tags and no rationales, so practice_skills is empty and every mechanism below is a research inference. Scope is recorded as BC_only because the document is the BC exam, although several items cover content shared with AB."
+  },
+  {
+   "id": "BC-MCQ-PE2012-019",
+   "name": "Points on a rational curve where the tangent has a stated slope",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "practice-exam-2012:33",
+    "practice-exam-2012:72"
+   ],
+   "doc_id": "practice-exam-2012",
+   "doc_page": 33,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-bc-practice-exam-2012.pdf",
+   "number": 19,
+   "calculator": "no_calculator",
+   "description": "A rational function is given and the question asks which listed points have a tangent of a stated slope. The quotient rule produces a derivative that is set equal to that slope and solved, then each solution is substituted back for its coordinate.",
+   "topics": [
+    "BC-TOP-0209",
+    "BC-TOP-0202"
+   ],
+   "skills": [
+    "BC-SKL-02039",
+    "BC-SKL-02012",
+    "BC-SKL-02013"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-02011",
+   "representations": [
+    "BC-REP-01"
+   ],
+   "correct_option": "C",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "algebra slip: only one root of the resulting quadratic kept",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "B",
+     "mechanism": "conceptual confusion: an input substituted into the function rather than solving the derivative equation",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "D",
+     "mechanism": "algebra slip in substituting the second root back into the function",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "E",
+     "mechanism": "algebra slip: the equation for the slope judged to have no solution",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "This document prints no official skill or learning objective tags and no rationales, so practice_skills is empty and every mechanism below is a research inference. Scope is recorded as BC_only because the document is the BC exam, although several items cover content shared with AB."
+  },
+  {
+   "id": "BC-MCQ-PE2012-020",
+   "name": "Definite integral of a rational function by linear partial fractions",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "practice-exam-2012:33",
+    "practice-exam-2012:72"
+   ],
+   "doc_id": "practice-exam-2012",
+   "doc_page": 33,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-bc-practice-exam-2012.pdf",
+   "number": 20,
+   "calculator": "no_calculator",
+   "description": "A linear numerator over a factorable quadratic denominator is integrated over a closed interval, and the options are logarithms of different numbers together with a claim of divergence.",
+   "topics": [
+    "BC-TOP-0612",
+    "BC-TOP-0609"
+   ],
+   "skills": [
+    "BC-SKL-06062",
+    "BC-SKL-06063",
+    "BC-SKL-06064"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-06010",
+   "representations": [
+    "BC-REP-01"
+   ],
+   "correct_option": "C",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "algebra slip: one of the two partial fractions dropped",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "B",
+     "mechanism": "algebra slip: the two partial fraction constants exchanged",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "D",
+     "mechanism": "algebra slip: the logarithm arguments combined without reducing the constants",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "E",
+     "mechanism": "theorem condition ignored: the integral judged improper although both roots of the denominator lie outside the interval",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "This document prints no official skill or learning objective tags and no rationales, so practice_skills is empty and every mechanism below is a research inference. Scope is recorded as BC_only because the document is the BC exam, although several items cover content shared with AB."
+  },
+  {
+   "id": "BC-MCQ-PE2012-021",
+   "name": "Which function has a stated horizontal asymptote",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "practice-exam-2012:34",
+    "practice-exam-2012:72"
+   ],
+   "doc_id": "practice-exam-2012",
+   "doc_page": 34,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-bc-practice-exam-2012.pdf",
+   "number": 21,
+   "calculator": "no_calculator",
+   "description": "Five functions are offered and the question asks which has a stated horizontal line as a horizontal asymptote. The test is the limit at infinity, which for a rational function compares the degrees and leading coefficients.",
+   "topics": [
+    "BC-TOP-0115"
+   ],
+   "skills": [
+    "BC-SKL-01058",
+    "BC-SKL-01059",
+    "BC-SKL-01063"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-01010",
+   "representations": [
+    "BC-REP-01"
+   ],
+   "correct_option": "E",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "conceptual confusion: a limit at a point mistaken for end behaviour",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "B",
+     "mechanism": "conceptual confusion: a slope mistaken for a horizontal asymptote",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "C",
+     "mechanism": "conceptual confusion: the constant read from a vertical asymptote rather than from a limit at infinity",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "D",
+     "mechanism": "algebra slip: the leading coefficients compared without accounting for the squared terms",
+     "evidence_tag": "uncertain"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "Option D as extracted appears also to have the stated limit, which suggests the cached text lost part of that expression. This document prints no official skill or learning objective tags and no rationales, so practice_skills is empty and every mechanism below is a research inference. Scope is recorded as BC_only because the document is the BC exam, although several items cover content shared with AB."
+  },
+  {
+   "id": "BC-MCQ-PE2012-022",
+   "name": "What convergence at one point forces for a power series",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "practice-exam-2012:34",
+    "practice-exam-2012:72"
+   ],
+   "doc_id": "practice-exam-2012",
+   "doc_page": 34,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-bc-practice-exam-2012.pdf",
+   "number": 22,
+   "calculator": "no_calculator",
+   "description": "A power series centred at a stated point is known to converge at one input, and the question asks which statement must then be true. Convergence at that input forces a radius at least as large as its distance from the centre, which settles interior points but not endpoints.",
+   "topics": [
+    "BC-TOP-1013"
+   ],
+   "skills": [
+    "BC-SKL-10053",
+    "BC-SKL-10055",
+    "BC-SKL-10059"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-10013",
+   "representations": [
+    "BC-REP-11"
+   ],
+   "correct_option": "D",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "conceptual confusion: divergence claimed at an interior point of the guaranteed interval",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "B",
+     "mechanism": "conceptual confusion: divergence claimed at an endpoint whose behaviour is not determined",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "C",
+     "mechanism": "conceptual confusion: endpoint inclusion assumed from the radius alone",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "E",
+     "mechanism": "conceptual confusion: the guaranteed interval extended past the distance from the centre",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "This document prints no official skill or learning objective tags and no rationales, so practice_skills is empty and every mechanism below is a research inference. Scope is recorded as BC_only because the document is the BC exam, although several items cover content shared with AB."
+  },
+  {
+   "id": "BC-MCQ-PE2012-023",
+   "name": "Differential equation describing linear growth of a population",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "practice-exam-2012:35",
+    "practice-exam-2012:72"
+   ],
+   "doc_id": "practice-exam-2012",
+   "doc_page": 35,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-bc-practice-exam-2012.pdf",
+   "number": 23,
+   "calculator": "no_calculator",
+   "description": "Five differential equations are offered and the question asks which describes linear growth in a population size. Linear growth means a constant rate of change.",
+   "topics": [
+    "BC-TOP-0701"
+   ],
+   "skills": [
+    "BC-SKL-07001",
+    "BC-SKL-07005",
+    "BC-SKL-07003"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-07006",
+   "representations": [
+    "BC-REP-06",
+    "BC-REP-04"
+   ],
+   "correct_option": "A",
+   "distractor_analysis": [
+    {
+     "option": "B",
+     "mechanism": "conceptual confusion: linearity applied to the rate of change instead of to the quantity",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "C",
+     "mechanism": "conceptual confusion: a quadratic rate in the independent variable taken as linear growth",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "D",
+     "mechanism": "conceptual confusion: exponential growth mistaken for linear growth",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "E",
+     "mechanism": "conceptual confusion: a rate proportional to the square of the quantity taken as linear growth",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "This document prints no official skill or learning objective tags and no rationales, so practice_skills is empty and every mechanism below is a research inference. Scope is recorded as BC_only because the document is the BC exam, although several items cover content shared with AB."
+  },
+  {
+   "id": "BC-MCQ-PE2012-024",
+   "name": "Identifying a function from an integration by parts identity",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "practice-exam-2012:35",
+    "practice-exam-2012:72"
+   ],
+   "doc_id": "practice-exam-2012",
+   "doc_page": 35,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-bc-practice-exam-2012.pdf",
+   "number": 24,
+   "calculator": "no_calculator",
+   "description": "An identity states the integral of an unknown function times a sine in terms of a boundary expression plus an integral involving a cubic and a cosine. The question asks which function the unknown could be, which the integration by parts formula settles by matching the derivative.",
+   "topics": [
+    "BC-TOP-0611"
+   ],
+   "skills": [
+    "BC-SKL-06057",
+    "BC-SKL-06058",
+    "BC-SKL-06061"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-06009",
+   "representations": [
+    "BC-REP-01"
+   ],
+   "correct_option": "E",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "conceptual confusion: a trigonometric factor from the identity offered as the unknown function",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "B",
+     "mechanism": "conceptual confusion: a trigonometric factor from the identity offered as the unknown function",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "C",
+     "mechanism": "reversed quantities: the derivative reported in place of the function",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "D",
+     "mechanism": "sign error carried from the boundary term of the integration by parts formula",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "This document prints no official skill or learning objective tags and no rationales, so practice_skills is empty and every mechanism below is a research inference. Scope is recorded as BC_only because the document is the BC exam, although several items cover content shared with AB."
+  },
+  {
+   "id": "BC-MCQ-PE2012-025",
+   "name": "Improper integral of a variable times a decaying exponential of its square",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "practice-exam-2012:36",
+    "practice-exam-2012:72"
+   ],
+   "doc_id": "practice-exam-2012",
+   "doc_page": 36,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-bc-practice-exam-2012.pdf",
+   "number": 25,
+   "calculator": "no_calculator",
+   "description": "An integral runs from a finite lower limit to infinity with a bare linear factor times an exponential of the negative square of the variable. The question asks for its value or whether it diverges.",
+   "topics": [
+    "BC-TOP-0613",
+    "BC-TOP-0609"
+   ],
+   "skills": [
+    "BC-SKL-06067",
+    "BC-SKL-06068",
+    "BC-SKL-06047"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-06011",
+   "representations": [
+    "BC-REP-01"
+   ],
+   "correct_option": "B",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "sign error together with the substitution constant omitted",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "C",
+     "mechanism": "forgot constant: the factor from the substitution differential omitted",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "D",
+     "mechanism": "algebra slip: the substitution constant inverted",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "E",
+     "mechanism": "conceptual confusion: divergence claimed without evaluating the limit that defines the improper integral",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "This document prints no official skill or learning objective tags and no rationales, so practice_skills is empty and every mechanism below is a research inference. Scope is recorded as BC_only because the document is the BC exam, although several items cover content shared with AB."
+  },
+  {
+   "id": "BC-MCQ-PE2012-026",
+   "name": "Slope of the tangent to a polar curve at a stated angle",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "practice-exam-2012:37",
+    "practice-exam-2012:72"
+   ],
+   "doc_id": "practice-exam-2012",
+   "doc_page": 37,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-bc-practice-exam-2012.pdf",
+   "number": 26,
+   "calculator": "no_calculator",
+   "description": "A polar curve is a constant plus a multiple of a sine, and the question asks for the slope of the tangent line at a stated angle. The slope requires converting to rectangular components and differentiating both with respect to the angle.",
+   "topics": [
+    "BC-TOP-0907"
+   ],
+   "skills": [
+    "BC-SKL-09033",
+    "BC-SKL-09030",
+    "BC-SKL-09029"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-09009",
+   "representations": [
+    "BC-REP-13"
+   ],
+   "correct_option": "B",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "reversed quantities: the derivative of the radius with respect to the angle reported as the slope",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "C",
+     "mechanism": "product rule omitted when differentiating the radius times a trigonometric factor",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "D",
+     "mechanism": "sign error in one of the two component derivatives",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "E",
+     "mechanism": "both the reversed quantity and a sign error",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "This document prints no official skill or learning objective tags and no rationales, so practice_skills is empty and every mechanism below is a research inference. Scope is recorded as BC_only because the document is the BC exam, although several items cover content shared with AB."
+  },
+  {
+   "id": "BC-MCQ-PE2012-027",
+   "name": "Parameter values making both a p-series and a geometric series converge",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "practice-exam-2012:38",
+    "practice-exam-2012:72"
+   ],
+   "doc_id": "practice-exam-2012",
+   "doc_page": 38,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-bc-practice-exam-2012.pdf",
+   "number": 27,
+   "calculator": "no_calculator",
+   "description": "A p-series whose exponent is twice a parameter and a geometric series whose ratio is half that parameter are given, and the question asks for the parameter values that make both converge. The answer is the intersection of the two conditions.",
+   "topics": [
+    "BC-TOP-1005",
+    "BC-TOP-1002"
+   ],
+   "skills": [
+    "BC-SKL-10019",
+    "BC-SKL-10007",
+    "BC-SKL-10018"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-10004",
+   "representations": [
+    "BC-REP-11"
+   ],
+   "correct_option": "C",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "conceptual confusion: only the geometric ratio condition applied",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "B",
+     "mechanism": "algebra slip: the p-series threshold applied to the parameter rather than to twice it, and the ratio condition mishandled",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "D",
+     "mechanism": "conceptual confusion: the union of the two conditions reported instead of their intersection",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "E",
+     "mechanism": "conceptual confusion: the two conditions judged incompatible",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "This document prints no official skill or learning objective tags and no rationales, so practice_skills is empty and every mechanism below is a research inference. Scope is recorded as BC_only because the document is the BC exam, although several items cover content shared with AB."
+  },
+  {
+   "id": "BC-MCQ-PE2012-028",
+   "name": "Limit of an accumulation function over a difference of function values",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "practice-exam-2012:39",
+    "practice-exam-2012:72"
+   ],
+   "doc_id": "practice-exam-2012",
+   "doc_page": 39,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-bc-practice-exam-2012.pdf",
+   "number": 28,
+   "calculator": "no_calculator",
+   "description": "A continuously differentiable function has stated values of itself and its derivative at a point. The question asks for the limit at that point of an integral with a variable upper limit divided by the function minus its value there, an indeterminate form resolved by L'Hospital's rule.",
+   "topics": [
+    "BC-TOP-0407",
+    "BC-TOP-0604"
+   ],
+   "skills": [
+    "BC-SKL-04033",
+    "BC-SKL-04035",
+    "BC-SKL-06018"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-04009",
+   "representations": [
+    "BC-REP-01"
+   ],
+   "correct_option": "D",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "conceptual confusion: the numerator alone judged to force the limit to zero",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "B",
+     "mechanism": "reversed quantities: the ratio taken the other way round",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "C",
+     "mechanism": "algebra slip in evaluating the ratio of the two stated values",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "E",
+     "mechanism": "theorem condition ignored: the indeterminate form not recognised, so the limit declared nonexistent",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "This document prints no official skill or learning objective tags and no rationales, so practice_skills is empty and every mechanism below is a research inference. Scope is recorded as BC_only because the document is the BC exam, although several items cover content shared with AB."
+  },
+  {
+   "id": "BC-MCQ-PE2012-029",
+   "name": "Which statement about a graphed function is false",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "practice-exam-2012:41",
+    "practice-exam-2012:72"
+   ],
+   "doc_id": "practice-exam-2012",
+   "doc_page": 41,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-bc-practice-exam-2012.pdf",
+   "number": 76,
+   "calculator": "calculator",
+   "description": "A function is graphed on a closed interval and five statements about its behaviour at an interior point are offered. The question asks which is false; the graph shows a corner there, so continuity, a critical point and an extremum all hold while differentiability fails.",
+   "topics": [
+    "BC-TOP-0204",
+    "BC-TOP-0502"
+   ],
+   "skills": [
+    "BC-SKL-02022",
+    "BC-SKL-05011",
+    "BC-SKL-05031"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-05009",
+   "representations": [
+    "BC-REP-02"
+   ],
+   "correct_option": "B",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "conceptual confusion: a corner read as a discontinuity",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "C",
+     "mechanism": "conceptual confusion: a critical point assumed to require the derivative to exist and vanish",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "D",
+     "mechanism": "conceptual confusion: the extremum at the corner misread from the graph",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "E",
+     "mechanism": "conceptual confusion: the change of concavity at the corner misread from the graph",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "This document prints no official skill or learning objective tags and no rationales, so practice_skills is empty and every mechanism below is a research inference. Scope is recorded as BC_only because the document is the BC exam, although several items cover content shared with AB."
+  },
+  {
+   "id": "BC-MCQ-PE2012-030",
+   "name": "Intervals where one function changes faster than another",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "practice-exam-2012:41",
+    "practice-exam-2012:72"
+   ],
+   "doc_id": "practice-exam-2012",
+   "doc_page": 41,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-bc-practice-exam-2012.pdf",
+   "number": 77,
+   "calculator": "calculator",
+   "description": "An exponential and a power function are given, and the question asks on which intervals the rate of change of the first exceeds that of the second. The comparison is between the two derivatives, whose crossing points the calculator supplies.",
+   "topics": [
+    "BC-TOP-0503",
+    "BC-TOP-0207"
+   ],
+   "skills": [
+    "BC-SKL-05014",
+    "BC-SKL-02033",
+    "BC-SKL-08021"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-05008",
+   "representations": [
+    "BC-REP-09",
+    "BC-REP-01"
+   ],
+   "correct_option": "B",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "reversed quantities: the inequality between the two derivatives reversed",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "C",
+     "mechanism": "conceptual confusion: the functions themselves compared instead of their rates of change, with the inequality reversed",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "D",
+     "mechanism": "conceptual confusion: the functions themselves compared instead of their rates of change",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "E",
+     "mechanism": "conceptual confusion: the inequality assumed to hold everywhere",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "This document prints no official skill or learning objective tags and no rationales, so practice_skills is empty and every mechanism below is a research inference. Scope is recorded as BC_only because the document is the BC exam, although several items cover content shared with AB."
+  },
+  {
+   "id": "BC-MCQ-PE2012-031",
+   "name": "Definite integral of a linear combination built on a graphed piecewise-linear function",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "practice-exam-2012:42",
+    "practice-exam-2012:72"
+   ],
+   "doc_id": "practice-exam-2012",
+   "doc_page": 42,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-bc-practice-exam-2012.pdf",
+   "number": 78,
+   "calculator": "calculator",
+   "description": "A piecewise-linear function is graphed and the question asks for the definite integral of a constant multiple of it plus a constant over a closed interval. The constant multiple and sum properties split the work into a signed area and a rectangle.",
+   "topics": [
+    "BC-TOP-0606",
+    "BC-TOP-0607"
+   ],
+   "skills": [
+    "BC-SKL-06029",
+    "BC-SKL-06028",
+    "BC-SKL-06031"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-06013",
+   "representations": [
+    "BC-REP-02"
+   ],
+   "correct_option": "C",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "conceptual confusion: the constant term omitted from the integrand",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "B",
+     "mechanism": "algebra slip: the constant term integrated over the wrong interval width",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "D",
+     "mechanism": "conceptual confusion: the signed area replaced by unsigned area",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "E",
+     "mechanism": "conceptual confusion: unsigned area used and the constant term mishandled",
+     "evidence_tag": "uncertain"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "The figure is an image and is not recoverable from the cached text, so the two larger option values could not be reproduced. This document prints no official skill or learning objective tags and no rationales, so practice_skills is empty and every mechanism below is a research inference. Scope is recorded as BC_only because the document is the BC exam, although several items cover content shared with AB."
+  },
+  {
+   "id": "BC-MCQ-PE2012-032",
+   "name": "Third-degree Taylor polynomial from derivative values at a centre",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "practice-exam-2012:42",
+    "practice-exam-2012:72"
+   ],
+   "doc_id": "practice-exam-2012",
+   "doc_page": 42,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-bc-practice-exam-2012.pdf",
+   "number": 79,
+   "calculator": "calculator",
+   "description": "Values of a function and its first three derivatives at a point are stated, and the question asks for the third-degree Taylor polynomial about that point. Each coefficient is a derivative value divided by the matching factorial.",
+   "topics": [
+    "BC-TOP-1011"
+   ],
+   "skills": [
+    "BC-SKL-10044",
+    "BC-SKL-10043",
+    "BC-SKL-10046"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-10010",
+   "representations": [
+    "BC-REP-11"
+   ],
+   "correct_option": "E",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "conceptual confusion: the polynomial written in powers of the variable rather than of the shifted variable, so the centre is ignored",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "B",
+     "mechanism": "conceptual confusion: the centre ignored as in the previous option, with the factorial divisors applied",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "C",
+     "mechanism": "forgot constant: the derivative values used as coefficients without dividing by the factorials",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "D",
+     "mechanism": "algebra slip: the third derivative divided by the degree instead of by its factorial",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "This document prints no official skill or learning objective tags and no rationales, so practice_skills is empty and every mechanism below is a research inference. Scope is recorded as BC_only because the document is the BC exam, although several items cover content shared with AB."
+  },
+  {
+   "id": "BC-MCQ-PE2012-033",
+   "name": "Which statements about a function follow from the graph of its derivative",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "practice-exam-2012:43",
+    "practice-exam-2012:72"
+   ],
+   "doc_id": "practice-exam-2012",
+   "doc_page": 43,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-bc-practice-exam-2012.pdf",
+   "number": 80,
+   "calculator": "calculator",
+   "description": "The graph of a derivative is shown and three statements about the function are offered, concerning a relative minimum, a point of inflection and an interval of concavity. The options are combinations of the three.",
+   "topics": [
+    "BC-TOP-0509",
+    "BC-TOP-0506"
+   ],
+   "skills": [
+    "BC-SKL-05015",
+    "BC-SKL-05031",
+    "BC-SKL-05020"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-05009",
+   "representations": [
+    "BC-REP-02"
+   ],
+   "correct_option": "E",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "conceptual confusion: the concavity statement rejected, reading the sign of the derivative rather than its direction",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "B",
+     "mechanism": "conceptual confusion: the sign change of the derivative not used to classify the relative extremum",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "C",
+     "mechanism": "conceptual confusion: the sign change of the derivative not used to classify the relative extremum, and the inflection statement accepted",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "D",
+     "mechanism": "conceptual confusion: concavity read from the sign of the derivative rather than from whether it rises or falls",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "This document prints no official skill or learning objective tags and no rationales, so practice_skills is empty and every mechanism below is a research inference. Scope is recorded as BC_only because the document is the BC exam, although several items cover content shared with AB."
+  },
+  {
+   "id": "BC-MCQ-PE2012-034",
+   "name": "Points of inflection of an even function from a sign table on half its domain",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "practice-exam-2012:44",
+    "practice-exam-2012:72"
+   ],
+   "doc_id": "practice-exam-2012",
+   "doc_page": 44,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-bc-practice-exam-2012.pdf",
+   "number": 81,
+   "calculator": "calculator",
+   "description": "A table gives the signs of a twice-differentiable function and its first two derivatives on two subintervals of the positive half of a symmetric domain, and the function is stated to be even. The question asks for the inputs of the points of inflection across the whole domain.",
+   "topics": [
+    "BC-TOP-0506",
+    "BC-TOP-0509"
+   ],
+   "skills": [
+    "BC-SKL-05033",
+    "BC-SKL-05032",
+    "BC-SKL-05047"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-05005",
+   "representations": [
+    "BC-REP-03"
+   ],
+   "correct_option": "D",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "conceptual confusion: a sign change of the second derivative assumed at the centre of symmetry",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "B",
+     "mechanism": "conceptual confusion: the symmetry not used, so the mirrored point is omitted",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "C",
+     "mechanism": "conceptual confusion: the symmetry not used and a sign change assumed at the centre",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "E",
+     "mechanism": "conceptual confusion: the recorded sign change of the second derivative overlooked",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "This document prints no official skill or learning objective tags and no rationales, so practice_skills is empty and every mechanism below is a research inference. Scope is recorded as BC_only because the document is the BC exam, although several items cover content shared with AB."
+  },
+  {
+   "id": "BC-MCQ-PE2012-035",
+   "name": "Average value of a cosine on a quarter period",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "practice-exam-2012:44",
+    "practice-exam-2012:72"
+   ],
+   "doc_id": "practice-exam-2012",
+   "doc_page": 44,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-bc-practice-exam-2012.pdf",
+   "number": 82,
+   "calculator": "calculator",
+   "description": "The question asks for the average value of a cosine over an interval from zero to a quarter period. The work is the definite integral divided by the interval length, both available from the calculator.",
+   "topics": [
+    "BC-TOP-0801"
+   ],
+   "skills": [
+    "BC-SKL-08001",
+    "BC-SKL-08003",
+    "BC-SKL-08004"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-08001",
+   "representations": [
+    "BC-REP-09",
+    "BC-REP-01"
+   ],
+   "correct_option": "C",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "B",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "D",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "E",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "The cached option list does not contain the value that a direct computation of this average gives, so the printed options could not be reconciled with the official key and no mechanism was assigned. This document prints no official skill or learning objective tags and no rationales, so practice_skills is empty and every mechanism below is a research inference. Scope is recorded as BC_only because the document is the BC exam, although several items cover content shared with AB."
+  },
+  {
+   "id": "BC-MCQ-PE2012-036",
+   "name": "What continuity at a point must imply",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "practice-exam-2012:45",
+    "practice-exam-2012:72"
+   ],
+   "doc_id": "practice-exam-2012",
+   "doc_page": 45,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-bc-practice-exam-2012.pdf",
+   "number": 83,
+   "calculator": "calculator",
+   "description": "A function is continuous at a stated input and the question asks which of five statements must then be true. The correct statement is the three-part definition, with both one-sided limits equal to the function value.",
+   "topics": [
+    "BC-TOP-0111"
+   ],
+   "skills": [
+    "BC-SKL-01043",
+    "BC-SKL-01044",
+    "BC-SKL-01045"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-01006",
+   "representations": [
+    "BC-REP-01"
+   ],
+   "correct_option": "C",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "conceptual confusion: an inequality between the value and the limit asserted although continuity makes them equal",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "B",
+     "mechanism": "conceptual confusion: unequal one-sided limits asserted, which would contradict continuity",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "D",
+     "mechanism": "conceptual confusion: continuity taken to imply differentiability",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "E",
+     "mechanism": "conceptual confusion: continuity taken to constrain the sign of the derivative",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "This document prints no official skill or learning objective tags and no rationales, so practice_skills is empty and every mechanism below is a research inference. Scope is recorded as BC_only because the document is the BC exam, although several items cover content shared with AB."
+  },
+  {
+   "id": "BC-MCQ-PE2012-037",
+   "name": "Intervals of downward concavity from a formula for the first derivative",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "practice-exam-2012:45",
+    "practice-exam-2012:72"
+   ],
+   "doc_id": "practice-exam-2012",
+   "doc_page": 45,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-bc-practice-exam-2012.pdf",
+   "number": 84,
+   "calculator": "calculator",
+   "description": "A formula for the first derivative is given on an open interval and the question asks on which intervals the graph is concave down, which is where that derivative decreases.",
+   "topics": [
+    "BC-TOP-0506"
+   ],
+   "skills": [
+    "BC-SKL-05030",
+    "BC-SKL-05031",
+    "BC-SKL-05032"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-05004",
+   "representations": [
+    "BC-REP-09",
+    "BC-REP-01"
+   ],
+   "correct_option": "D",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "B",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "C",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "E",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "The exponent in the printed derivative formula is garbled in the cached text, so the sign analysis behind each option could not be reproduced. This document prints no official skill or learning objective tags and no rationales, so practice_skills is empty and every mechanism below is a research inference. Scope is recorded as BC_only because the document is the BC exam, although several items cover content shared with AB."
+  },
+  {
+   "id": "BC-MCQ-PE2012-038",
+   "name": "Rate of change of modelled fuel consumption from a rate of change of speed",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "practice-exam-2012:46",
+    "practice-exam-2012:72"
+   ],
+   "doc_id": "practice-exam-2012",
+   "doc_page": 46,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-bc-practice-exam-2012.pdf",
+   "number": 85,
+   "calculator": "calculator",
+   "description": "Fuel consumption is modelled as an exponential function of speed, the speed is stated together with its rate of change, and the question asks for the rate at which the consumption is changing. The chain rule multiplies the derivative with respect to speed by the given rate.",
+   "topics": [
+    "BC-TOP-0405",
+    "BC-TOP-0301"
+   ],
+   "skills": [
+    "BC-SKL-04019",
+    "BC-SKL-04023",
+    "BC-SKL-03002"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-04006",
+   "representations": [
+    "BC-REP-05",
+    "BC-REP-09"
+   ],
+   "correct_option": "B",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "chain rule omitted: the derivative with respect to speed reported without multiplying by the rate at which the speed changes",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "C",
+     "mechanism": "algebra slip in differentiating the exponent",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "D",
+     "mechanism": "algebra slip in differentiating the exponent, with the leading constant mishandled",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "E",
+     "mechanism": "algebra slip: the leading constant multiplied through the chain rule factor a second time",
+     "evidence_tag": "uncertain"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "The exponent of the printed model is garbled in the cached text; the mechanism for the option that is the correct value divided by the given rate is reproducible, the others are not. This document prints no official skill or learning objective tags and no rationales, so practice_skills is empty and every mechanism below is a research inference. Scope is recorded as BC_only because the document is the BC exam, although several items cover content shared with AB."
+  },
+  {
+   "id": "BC-MCQ-PE2012-039",
+   "name": "Which table of values is consistent with a positive derivative and a vanishing integral",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "practice-exam-2012:47",
+    "practice-exam-2012:72"
+   ],
+   "doc_id": "practice-exam-2012",
+   "doc_page": 47,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-bc-practice-exam-2012.pdf",
+   "number": 86,
+   "calculator": "calculator",
+   "description": "A function has a strictly positive derivative everywhere and its integral over a stated interval is zero. Five small tables are offered and the question asks which could belong to that function, so the table must be strictly increasing and must change sign inside the interval.",
+   "topics": [
+    "BC-TOP-0607",
+    "BC-TOP-0503"
+   ],
+   "skills": [
+    "BC-SKL-06036",
+    "BC-SKL-05014",
+    "BC-SKL-06028"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-06003",
+   "representations": [
+    "BC-REP-03"
+   ],
+   "correct_option": "B",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "conceptual confusion: the sign change required for a vanishing integral overlooked, with all values nonpositive",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "C",
+     "mechanism": "conceptual confusion: the requirement that the values increase overlooked",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "D",
+     "mechanism": "conceptual confusion: a vanishing integral read as a vanishing function, which also contradicts the positive derivative",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "E",
+     "mechanism": "conceptual confusion: the sign change required for a vanishing integral overlooked, with all values nonnegative",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "This document prints no official skill or learning objective tags and no rationales, so practice_skills is empty and every mechanism below is a research inference. Scope is recorded as BC_only because the document is the BC exam, although several items cover content shared with AB."
+  },
+  {
+   "id": "BC-MCQ-PE2012-040",
+   "name": "Volume of a solid with square cross sections over a logarithmic region",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "practice-exam-2012:48",
+    "practice-exam-2012:72"
+   ],
+   "doc_id": "practice-exam-2012",
+   "doc_page": 48,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-bc-practice-exam-2012.pdf",
+   "number": 87,
+   "calculator": "calculator",
+   "description": "A region in the first quadrant is bounded above by a logarithm of a linear expression on a closed interval and is the base of a solid whose cross sections perpendicular to the horizontal axis are squares. The question asks for the volume.",
+   "topics": [
+    "BC-TOP-0807"
+   ],
+   "skills": [
+    "BC-SKL-08032",
+    "BC-SKL-08031",
+    "BC-SKL-08035"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-08011",
+   "representations": [
+    "BC-REP-09",
+    "BC-REP-01"
+   ],
+   "correct_option": "B",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "C",
+     "mechanism": "conceptual confusion: the area of the region reported, with the cross-sectional side not squared",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "D",
+     "mechanism": "conceptual confusion: the disc method used, introducing a factor of pi where square cross sections were stated",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "E",
+     "mechanism": "both the missing square and the spurious factor of pi from the disc method",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "This document prints no official skill or learning objective tags and no rationales, so practice_skills is empty and every mechanism below is a research inference. Scope is recorded as BC_only because the document is the BC exam, although several items cover content shared with AB."
+  },
+  {
+   "id": "BC-MCQ-PE2012-041",
+   "name": "Which graph could be a function whose derivative rises then falls",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "practice-exam-2012:49",
+    "practice-exam-2012:72"
+   ],
+   "doc_id": "practice-exam-2012",
+   "doc_page": 49,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-bc-practice-exam-2012.pdf",
+   "number": 88,
+   "calculator": "calculator",
+   "description": "A derivative is stated to increase on one side of a point and decrease on the other, and five candidate graphs of the function are offered. The stated behaviour fixes the concavity on each side and puts a point of inflection at that point.",
+   "topics": [
+    "BC-TOP-0508",
+    "BC-TOP-0506"
+   ],
+   "skills": [
+    "BC-SKL-05041",
+    "BC-SKL-05031",
+    "BC-SKL-05043"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-05009",
+   "representations": [
+    "BC-REP-02"
+   ],
+   "correct_option": "E",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "B",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "C",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "D",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "The five candidate graphs are images and are not recoverable from the cached text. This document prints no official skill or learning objective tags and no rationales, so practice_skills is empty and every mechanism below is a research inference. Scope is recorded as BC_only because the document is the BC exam, although several items cover content shared with AB."
+  },
+  {
+   "id": "BC-MCQ-PE2012-042",
+   "name": "Velocity at a later time from an acceleration formula and an initial velocity",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "practice-exam-2012:50",
+    "practice-exam-2012:72"
+   ],
+   "doc_id": "practice-exam-2012",
+   "doc_page": 50,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-bc-practice-exam-2012.pdf",
+   "number": 89,
+   "calculator": "calculator",
+   "description": "Acceleration is given as a rational function of time and the velocity at the initial time is stated. The question asks for the velocity at a later time, which is the initial velocity plus the definite integral of the acceleration.",
+   "topics": [
+    "BC-TOP-0802"
+   ],
+   "skills": [
+    "BC-SKL-08010",
+    "BC-SKL-06037",
+    "BC-SKL-08003"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-08003",
+   "representations": [
+    "BC-REP-09",
+    "BC-REP-05"
+   ],
+   "correct_option": "E",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "B",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "C",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "D",
+     "mechanism": "conceptual confusion: the accumulated change reported without adding the initial velocity",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "The printed acceleration formula is partly garbled in the cached text, so only the option that differs from the key by exactly the stated initial velocity could be attributed. This document prints no official skill or learning objective tags and no rationales, so practice_skills is empty and every mechanism below is a research inference. Scope is recorded as BC_only because the document is the BC exam, although several items cover content shared with AB."
+  },
+  {
+   "id": "BC-MCQ-PE2012-043",
+   "name": "What convergence of a positive-term series must imply",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "practice-exam-2012:50",
+    "practice-exam-2012:72"
+   ],
+   "doc_id": "practice-exam-2012",
+   "doc_page": 50,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-bc-practice-exam-2012.pdf",
+   "number": 90,
+   "calculator": "calculator",
+   "description": "A series of strictly positive terms converges and the question asks which of five statements must then be true. The correct statement follows from comparing the given terms with the terms divided by the index.",
+   "topics": [
+    "BC-TOP-1006",
+    "BC-TOP-1003"
+   ],
+   "skills": [
+    "BC-SKL-10023",
+    "BC-SKL-10024",
+    "BC-SKL-10011"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-10004",
+   "representations": [
+    "BC-REP-11"
+   ],
+   "correct_option": "E",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "conceptual confusion: the converse of the ratio test assumed, so a convergent series is taken to force a zero ratio limit",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "B",
+     "mechanism": "conceptual confusion: terms tending to zero confused with every term lying below one",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "C",
+     "mechanism": "conceptual confusion: the limit of the terms confused with the sum of the series",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "D",
+     "mechanism": "conceptual confusion: a comparison applied in the direction that does not follow, so a larger series is declared divergent",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "This document prints no official skill or learning objective tags and no rationales, so practice_skills is empty and every mechanism below is a research inference. Scope is recorded as BC_only because the document is the BC exam, although several items cover content shared with AB."
+  },
+  {
+   "id": "BC-MCQ-PE2012-044",
+   "name": "Sum of shaded areas between a rose curve and a circle",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "practice-exam-2012:51",
+    "practice-exam-2012:72"
+   ],
+   "doc_id": "practice-exam-2012",
+   "doc_page": 51,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-bc-practice-exam-2012.pdf",
+   "number": 91,
+   "calculator": "calculator",
+   "description": "A rose curve and a circle are graphed together with several shaded regions, and the question asks for the total shaded area. The work is the area of the circle less the area of the petals, each from the polar area integral.",
+   "topics": [
+    "BC-TOP-0909",
+    "BC-TOP-0908"
+   ],
+   "skills": [
+    "BC-SKL-09039",
+    "BC-SKL-09040",
+    "BC-SKL-09042"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-09013",
+   "representations": [
+    "BC-REP-13",
+    "BC-REP-09"
+   ],
+   "correct_option": "D",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "B",
+     "mechanism": "reversed quantities: the area of the petals reported instead of the region outside them",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "C",
+     "mechanism": "not determined",
+     "evidence_tag": "uncertain"
+    },
+    {
+     "option": "E",
+     "mechanism": "reversed quantities: the petal area added to the circle rather than subtracted from it",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "This document prints no official skill or learning objective tags and no rationales, so practice_skills is empty and every mechanism below is a research inference. Scope is recorded as BC_only because the document is the BC exam, although several items cover content shared with AB."
+  },
+  {
+   "id": "BC-MCQ-PE2012-045",
+   "name": "Which statements follow from a symmetry condition on a differentiable function",
+   "scope": "BC_only",
+   "evidence_tag": "verified",
+   "sources": [
+    "practice-exam-2012:52",
+    "practice-exam-2012:72"
+   ],
+   "doc_id": "practice-exam-2012",
+   "doc_page": 52,
+   "source_url": "https://apcentral.collegeboard.org/media/pdf/ap-calculus-bc-practice-exam-2012.pdf",
+   "number": 92,
+   "calculator": "calculator",
+   "description": "A differentiable function satisfies a reflection condition that makes it symmetric about an interior line, and three statements are offered about a definite integral, the derivative at the line of symmetry and the derivatives at the two endpoints. The options are combinations of the three.",
+   "topics": [
+    "BC-TOP-0509",
+    "BC-TOP-0606"
+   ],
+   "skills": [
+    "BC-SKL-05042",
+    "BC-SKL-06031",
+    "BC-SKL-05020"
+   ],
+   "practice_skills": [],
+   "archetype": "BC-QA-05009",
+   "representations": [
+    "BC-REP-01"
+   ],
+   "correct_option": "B",
+   "distractor_analysis": [
+    {
+     "option": "A",
+     "mechanism": "conceptual confusion: symmetry read as forcing the function to be positive, so the integral statement is accepted",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "C",
+     "mechanism": "sign error: the symmetry taken to make the endpoint derivatives equal rather than opposite",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "D",
+     "mechanism": "sign error: the symmetry taken to make the endpoint derivatives equal rather than opposite",
+     "evidence_tag": "inferred"
+    },
+    {
+     "option": "E",
+     "mechanism": "conceptual confusion: symmetry read as forcing positivity, together with the endpoint sign error",
+     "evidence_tag": "inferred"
+    }
+   ],
+   "official_rationale_available": false,
+   "notes": "This document prints no official skill or learning objective tags and no rationales, so practice_skills is empty and every mechanism below is a research inference. Scope is recorded as BC_only because the document is the BC exam, although several items cover content shared with AB."
+  }
+ ]
+}

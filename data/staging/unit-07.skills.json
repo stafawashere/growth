@@ -1,0 +1,3237 @@
+{
+ "concepts": [
+  {
+   "confusable_with": [],
+   "description_formal": "A differential equation relates a function of an independent variable to that function's derivatives; a first order equation involves the function and its first derivative only.",
+   "description_plain": "A differential equation says how fast a quantity changes in terms of the quantity itself, the independent variable, or both.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-07001",
+   "misconceptions": [
+    "BC-MIS-07001",
+    "BC-MIS-07002",
+    "BC-MIS-07003"
+   ],
+   "name": "Differential equation as a relation between a function and its derivatives",
+   "notation": "dy/dx; dy/dt; a differential equation",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-07001",
+    "BC-SKL-07002",
+    "BC-SKL-07003",
+    "BC-SKL-07004",
+    "BC-SKL-07005"
+   ],
+   "sources": [
+    "ced:137"
+   ],
+   "topics": [
+    "BC-TOP-0701"
+   ],
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "A function is a solution to a differential equation on an interval when substituting the function and its derivative into the equation yields a true statement for every input in that interval.",
+   "description_plain": "A candidate function is a solution exactly when differentiating it and substituting reproduces the equation.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-07002",
+   "misconceptions": [
+    "BC-MIS-07004"
+   ],
+   "name": "Verification of a proposed solution",
+   "notation": "substitution; satisfies the differential equation",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-07006",
+    "BC-SKL-07007",
+    "BC-SKL-07008"
+   ],
+   "sources": [
+    "ced:138"
+   ],
+   "topics": [
+    "BC-TOP-0702"
+   ],
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "The general solution of a first order differential equation is a family indexed by a constant; a differential equation may have infinitely many solutions (BC-EK-FUN-7B2).",
+   "description_plain": "One differential equation is satisfied by infinitely many functions, one through each point of the plane it covers.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-07003",
+   "misconceptions": [
+    "BC-MIS-07005"
+   ],
+   "name": "Families of solutions",
+   "notation": "general solution; family of solutions; the constant C",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-07009"
+   ],
+   "sources": [
+    "ced:138"
+   ],
+   "topics": [
+    "BC-TOP-0702"
+   ],
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "A slope field is a graphical representation of a first order differential equation on a finite set of points in the plane, each segment carrying the slope the equation gives at that point.",
+   "description_plain": "A slope field draws a short segment at each of finitely many points, with the slope the equation assigns to that point.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-07004",
+   "misconceptions": [
+    "BC-MIS-07006",
+    "BC-MIS-07007"
+   ],
+   "name": "Slope field as a plot of derivative values",
+   "notation": "slope field; lattice point; segment slope",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-07010",
+    "BC-SKL-07011",
+    "BC-SKL-07012",
+    "BC-SKL-07013"
+   ],
+   "sources": [
+    "ced:139"
+   ],
+   "topics": [
+    "BC-TOP-0703"
+   ],
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "Solutions to a differential equation are functions or families of functions whose graphs are everywhere tangent to the segments of the slope field.",
+   "description_plain": "A solution is a curve that follows the segments, and the field shows how solutions behave without any solving.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-07005",
+   "misconceptions": [
+    "BC-MIS-07008",
+    "BC-MIS-07009",
+    "BC-MIS-07010"
+   ],
+   "name": "Solution curves read off a slope field",
+   "notation": "solution curve; horizontal asymptote",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-07014",
+    "BC-SKL-07015",
+    "BC-SKL-07016",
+    "BC-SKL-07017",
+    "BC-SKL-07018"
+   ],
+   "sources": [
+    "ced:140"
+   ],
+   "topics": [
+    "BC-TOP-0704"
+   ],
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "Euler's method approximates a solution by advancing from a point with the increment equal to the step size multiplied by the derivative evaluated at the current approximation, repeating from the new point.",
+   "description_plain": "Euler's method steps along tangent lines, using each new approximation as the starting point for the next step.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-07006",
+   "misconceptions": [
+    "BC-MIS-07010",
+    "BC-MIS-07011",
+    "BC-MIS-07012",
+    "BC-MIS-07013"
+   ],
+   "name": "Euler's method as repeated local linearisation",
+   "notation": "step size; y sub n plus one",
+   "scope": "BC_only",
+   "skills": [
+    "BC-SKL-07019",
+    "BC-SKL-07020",
+    "BC-SKL-07021",
+    "BC-SKL-07022",
+    "BC-SKL-07023"
+   ],
+   "sources": [
+    "ced:141"
+   ],
+   "topics": [
+    "BC-TOP-0705"
+   ],
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "A differential equation whose right side factors as a function of the independent variable multiplied by a function of the dependent variable can be rearranged so each side involves one variable, then antidifferentiated.",
+   "description_plain": "When the equation factors into a part in one variable and a part in the other, both sides can be antidifferentiated separately.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-07007",
+   "misconceptions": [
+    "BC-MIS-07014",
+    "BC-MIS-07015",
+    "BC-MIS-07016",
+    "BC-MIS-07017"
+   ],
+   "name": "Separation of variables",
+   "notation": "separated form; one constant of integration",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-07024",
+    "BC-SKL-07025",
+    "BC-SKL-07026",
+    "BC-SKL-07027",
+    "BC-SKL-07028"
+   ],
+   "sources": [
+    "ced:142"
+   ],
+   "topics": [
+    "BC-TOP-0706"
+   ],
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "A general solution describes infinitely many solutions; exactly one particular solution passes through a given point, and substituting that point determines the constant of integration.",
+   "description_plain": "The initial condition picks one curve out of the family and settles the constant and the sign.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-07008",
+   "misconceptions": [
+    "BC-MIS-07003",
+    "BC-MIS-07016",
+    "BC-MIS-07018",
+    "BC-MIS-07020"
+   ],
+   "name": "Particular solution selected by an initial condition",
+   "notation": "particular solution; initial condition",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-07029",
+    "BC-SKL-07030",
+    "BC-SKL-07032",
+    "BC-SKL-07033"
+   ],
+   "sources": [
+    "ced:143"
+   ],
+   "topics": [
+    "BC-TOP-0707"
+   ],
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "Solutions to differential equations may be subject to domain restrictions, taken as the largest interval containing the initial input on which the solution expression is defined and continuous.",
+   "description_plain": "A particular solution is valid only on the interval around the initial point where the expression stays defined.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-07009",
+   "misconceptions": [
+    "BC-MIS-07019"
+   ],
+   "name": "Domain restrictions on a particular solution",
+   "notation": "domain restriction; interval containing the initial input",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-07031"
+   ],
+   "sources": [
+    "ced:143"
+   ],
+   "topics": [
+    "BC-TOP-0707"
+   ],
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "The statement that the rate of change of a quantity is proportional to the size of the quantity is the differential equation dy/dt equal to k y, whose solution with y equal to y sub 0 at t equal to zero is y equal to y sub 0 times e to the k t.",
+   "description_plain": "When the rate of change is proportional to the amount present, the amount is an exponential function of the independent variable.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-07010",
+   "misconceptions": [
+    "BC-MIS-07001",
+    "BC-MIS-07021",
+    "BC-MIS-07022",
+    "BC-MIS-07023"
+   ],
+   "name": "Exponential growth and decay model",
+   "notation": "dy/dt = ky; y = y sub 0 e^(kt)",
+   "scope": "shared",
+   "skills": [
+    "BC-SKL-07034",
+    "BC-SKL-07035",
+    "BC-SKL-07036",
+    "BC-SKL-07037",
+    "BC-SKL-07038"
+   ],
+   "sources": [
+    "ced:144"
+   ],
+   "topics": [
+    "BC-TOP-0708"
+   ],
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "The statement that the rate of change of a quantity is jointly proportional to the size of the quantity and the difference between the quantity and the carrying capacity is the differential equation dy/dt equal to k y times the quantity a minus y.",
+   "description_plain": "When growth is limited, the rate depends on both the amount present and how much room is left.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-07011",
+   "misconceptions": [
+    "BC-MIS-07023",
+    "BC-MIS-07024"
+   ],
+   "name": "Logistic differential equation",
+   "notation": "dy/dt = ky(a - y)",
+   "scope": "BC_only",
+   "skills": [
+    "BC-SKL-07039",
+    "BC-SKL-07043"
+   ],
+   "sources": [
+    "ced:145"
+   ],
+   "topics": [
+    "BC-TOP-0709"
+   ],
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "confusable_with": [],
+   "description_formal": "The limiting value of a logistic model as the independent variable grows without bound is the carrying capacity, and the dependent variable changes fastest at half the carrying capacity; both follow from the equation and the initial condition without solving it.",
+   "description_plain": "A logistic model has a ceiling, and the quantity grows fastest when it is halfway there.",
+   "evidence_tag": "verified",
+   "id": "BC-CON-07012",
+   "misconceptions": [
+    "BC-MIS-07009",
+    "BC-MIS-07025",
+    "BC-MIS-07026",
+    "BC-MIS-07027"
+   ],
+   "name": "Carrying capacity and the point of fastest change",
+   "notation": "carrying capacity; half of the carrying capacity",
+   "scope": "BC_only",
+   "skills": [
+    "BC-SKL-07040",
+    "BC-SKL-07041",
+    "BC-SKL-07042"
+   ],
+   "sources": [
+    "ced:145"
+   ],
+   "topics": [
+    "BC-TOP-0709"
+   ],
+   "unit": "BC-UNIT-07"
+  }
+ ],
+ "prerequisites": [
+  {
+   "category": "algebra",
+   "dependents": [
+    "BC-SKL-07027",
+    "BC-SKL-07036"
+   ],
+   "description_plain": "Exponentiating both sides of a logarithmic equation, taking a logarithm of both sides of an exponential equation, and isolating the variable afterwards.",
+   "evidence_tag": "inferred",
+   "failure_signature": "Student reaches a correct antiderivative equation and cannot reach an explicit expression for the dependent variable.",
+   "hidden": true,
+   "id": "BC-PRQ-07001",
+   "name": "Solving an equation that contains a logarithm or an exponential",
+   "notes": "Non-calculus prerequisite inferred from the demands of the essential knowledge statements of this unit.",
+   "scope": "shared",
+   "sources": [
+    "ced:137"
+   ]
+  },
+  {
+   "category": "notation",
+   "dependents": [
+    "BC-SKL-07005",
+    "BC-SKL-07006",
+    "BC-SKL-07024"
+   ],
+   "description_plain": "Reading dy/dx as an object that can be split into dy and dx for the purpose of separating a differential equation, and writing the differential on every integral.",
+   "evidence_tag": "inferred",
+   "failure_signature": "Student writes an integral with no differential, or separates the equation without moving the differential across.",
+   "hidden": true,
+   "id": "BC-PRQ-07002",
+   "name": "Leibniz notation and the differentials of a derivative expression",
+   "notes": "Non-calculus prerequisite inferred from the demands of the essential knowledge statements of this unit.",
+   "scope": "shared",
+   "sources": [
+    "ced:137"
+   ]
+  },
+  {
+   "category": "conceptual",
+   "dependents": [
+    "BC-SKL-07001",
+    "BC-SKL-07002",
+    "BC-SKL-07034",
+    "BC-SKL-07039"
+   ],
+   "description_plain": "Translating the phrase proportional to into a constant multiple, and jointly proportional to into a constant times a product of two quantities.",
+   "evidence_tag": "inferred",
+   "failure_signature": "Student writes an equality instead of a constant multiple, or omits the constant of proportionality.",
+   "hidden": true,
+   "id": "BC-PRQ-07003",
+   "name": "Proportionality and joint proportionality statements",
+   "notes": "Non-calculus prerequisite inferred from the demands of the essential knowledge statements of this unit.",
+   "scope": "shared",
+   "sources": [
+    "ced:137"
+   ]
+  },
+  {
+   "category": "algebra",
+   "dependents": [
+    "BC-SKL-07030"
+   ],
+   "description_plain": "Removing an absolute value from a logarithm by deciding the sign of the enclosed expression from a supplied initial condition or a stated bound.",
+   "evidence_tag": "inferred",
+   "failure_signature": "Student keeps both signs or picks the branch that contradicts the initial condition.",
+   "hidden": true,
+   "id": "BC-PRQ-07004",
+   "name": "Absolute value equations and selecting the branch consistent with a given point",
+   "notes": "Non-calculus prerequisite inferred from the demands of the essential knowledge statements of this unit.",
+   "scope": "shared",
+   "sources": [
+    "ced:137"
+   ]
+  },
+  {
+   "category": "arithmetic",
+   "dependents": [
+    "BC-SKL-07019",
+    "BC-SKL-07021"
+   ],
+   "description_plain": "Adding the same increment to an input repeatedly and carrying the running output value forward from one row to the next.",
+   "evidence_tag": "inferred",
+   "failure_signature": "Student restarts each row from the initial value instead of the previous approximation.",
+   "hidden": true,
+   "id": "BC-PRQ-07005",
+   "name": "Repeated arithmetic with a fixed step size in a table computation",
+   "notes": "Non-calculus prerequisite inferred from the demands of the essential knowledge statements of this unit.",
+   "scope": "shared",
+   "sources": [
+    "ced:137"
+   ]
+  },
+  {
+   "category": "function",
+   "dependents": [
+    "BC-SKL-07010",
+    "BC-SKL-07011",
+    "BC-SKL-07014"
+   ],
+   "description_plain": "Locating a point from its coordinates, and reading the coordinates of a marked point on a grid of short segments.",
+   "evidence_tag": "inferred",
+   "failure_signature": "Student evaluates the slope expression at the wrong lattice point when drawing or reading a slope field.",
+   "hidden": true,
+   "id": "BC-PRQ-07006",
+   "name": "Plotting and reading lattice points in the coordinate plane",
+   "notes": "Non-calculus prerequisite inferred from the demands of the essential knowledge statements of this unit.",
+   "scope": "shared",
+   "sources": [
+    "ced:137"
+   ]
+  }
+ ],
+ "registry": "skills",
+ "skills": [
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07001"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07006"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-07006 across at least two representations, with no error from BC-ERR-07001.",
+    "next_dependent_skills": [
+     "BC-SKL-07034",
+     "BC-SKL-07039"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-07001 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-07003.",
+    "remediation_target": "BC-PRQ-07003"
+   },
+   "archetypes": [
+    "BC-QA-07006"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07001"
+   ],
+   "concept": "BC-CON-07001",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-07034",
+    "BC-SKL-07039"
+   ],
+   "description_formal": "Write the statement that the rate of change of a quantity is proportional to the size of the quantity as the derivative of the quantity equal to a constant multiplied by the quantity.",
+   "description_plain": "Turn the rate of change is proportional to the amount into an equation.",
+   "diagnostic_signals": [
+    "BC-SIG-07001"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7A1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-07001",
+   "learning_objectives": [
+    "BC-LO-FUN-7A"
+   ],
+   "misconceptions": [
+    "BC-MIS-07001"
+   ],
+   "name": "Translate a proportionality statement into a differential equation",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-2C"
+   ],
+   "prerequisites": [
+    "BC-PRQ-07003"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-06"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:137"
+   ],
+   "topic": "BC-TOP-0701",
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07001"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07006"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-07006 across at least two representations, with no error from BC-ERR-07002.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-07002 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-07003.",
+    "remediation_target": "BC-PRQ-07003"
+   },
+   "archetypes": [
+    "BC-QA-07006"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07002"
+   ],
+   "concept": "BC-CON-07001",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Write a statement that the rate of change is proportional to the difference between the quantity and a fixed level as the derivative equal to a constant multiplied by that difference.",
+   "description_plain": "Turn a rate proportional to a gap into an equation with that gap in it.",
+   "diagnostic_signals": [
+    "BC-SIG-07001"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7A1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-07002",
+   "learning_objectives": [
+    "BC-LO-FUN-7A"
+   ],
+   "misconceptions": [
+    "BC-MIS-07001"
+   ],
+   "name": "Translate a rate statement involving a difference into a differential equation",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-2C"
+   ],
+   "prerequisites": [
+    "BC-PRQ-07003"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-06"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:137",
+    "frq-23:7"
+   ],
+   "topic": "BC-TOP-0701",
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07002"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07006"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-07006 across at least two representations, with no error from BC-ERR-07003, BC-ERR-99005, BC-ERR-99033.",
+    "next_dependent_skills": [
+     "BC-SKL-07037",
+     "BC-SKL-07043"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-07003, BC-ERR-99005, BC-ERR-99033 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-07006"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07003",
+    "BC-ERR-99005",
+    "BC-ERR-99033"
+   ],
+   "concept": "BC-CON-07001",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-07037",
+    "BC-SKL-07043"
+   ],
+   "description_formal": "Name the dependent and independent variables of the model, state their units, and give the units of the derivative as a quotient of the two.",
+   "description_plain": "Say which quantity is which and in what units.",
+   "diagnostic_signals": [
+    "BC-SIG-07002"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7A1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-07003",
+   "learning_objectives": [
+    "BC-LO-FUN-7A"
+   ],
+   "misconceptions": [
+    "BC-MIS-07002"
+   ],
+   "name": "Assign the variables and their units from a verbal description",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-2C"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-05"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:137"
+   ],
+   "topic": "BC-TOP-0701",
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07003"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07006",
+     "BC-QA-07003"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-07006 across at least two representations, with no error from BC-ERR-07004.",
+    "next_dependent_skills": [
+     "BC-SKL-07029",
+     "BC-SKL-07032"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-07004 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-07006",
+    "BC-QA-07003"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07004"
+   ],
+   "concept": "BC-CON-07001",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-07029",
+    "BC-SKL-07032"
+   ],
+   "description_formal": "Extract from the description the ordered pair that the solution must pass through and write it as a value of the function at a stated input.",
+   "description_plain": "Pick out the sentence that gives the value at a particular input.",
+   "diagnostic_signals": [
+    "BC-SIG-07003"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7A1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-07004",
+   "learning_objectives": [
+    "BC-LO-FUN-7A"
+   ],
+   "misconceptions": [
+    "BC-MIS-07003"
+   ],
+   "name": "Identify the initial condition stated in a context",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-2C"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-05"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:137",
+    "frq-23:7"
+   ],
+   "topic": "BC-TOP-0701",
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07002"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07006",
+     "BC-QA-07007"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-07006 across at least two representations, with no error from BC-ERR-07005.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-07005 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-07002.",
+    "remediation_target": "BC-PRQ-07002"
+   },
+   "archetypes": [
+    "BC-QA-07006",
+    "BC-QA-07007"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07005"
+   ],
+   "concept": "BC-CON-07001",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Given a modelled statement or a written equation, decide whether it constrains the derivative of the quantity or the quantity itself.",
+   "description_plain": "Tell an equation about the rate apart from an equation about the amount.",
+   "diagnostic_signals": [
+    "BC-SIG-07004"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7A1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-07005",
+   "learning_objectives": [
+    "BC-LO-FUN-7A"
+   ],
+   "misconceptions": [
+    "BC-MIS-07002"
+   ],
+   "name": "Distinguish a differential equation from an equation for the quantity",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-2C"
+   ],
+   "prerequisites": [
+    "BC-PRQ-07002"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-06"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:137"
+   ],
+   "topic": "BC-TOP-0701",
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07004"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07007"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-07007 across at least two representations, with no error from BC-ERR-07006.",
+    "next_dependent_skills": [
+     "BC-SKL-07007",
+     "BC-SKL-07008",
+     "BC-SKL-07009"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-07006 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-07002.",
+    "remediation_target": "BC-PRQ-07002"
+   },
+   "archetypes": [
+    "BC-QA-07007"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07006"
+   ],
+   "concept": "BC-CON-07002",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-07007",
+    "BC-SKL-07008",
+    "BC-SKL-07009"
+   ],
+   "description_formal": "Differentiate the candidate function, substitute the function and its derivative into both sides of the differential equation, and compare the two sides.",
+   "description_plain": "Take the derivative of the candidate and put both into the equation.",
+   "diagnostic_signals": [
+    "BC-SIG-07005"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7B1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-07006",
+   "learning_objectives": [
+    "BC-LO-FUN-7B"
+   ],
+   "misconceptions": [
+    "BC-MIS-07004"
+   ],
+   "name": "Differentiate a proposed solution and substitute it into the equation",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-3G"
+   ],
+   "prerequisites": [
+    "BC-PRQ-07002"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-06"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:138"
+   ],
+   "topic": "BC-TOP-0702",
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07003"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07007"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-07007 across at least two representations, with no error from BC-ERR-07007.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-07007 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-06005"
+   },
+   "archetypes": [
+    "BC-QA-07007"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07007"
+   ],
+   "concept": "BC-CON-07002",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Evaluate the candidate at the stated input and compare with the stated value before declaring it the particular solution.",
+   "description_plain": "Check the candidate passes through the given point.",
+   "diagnostic_signals": [
+    "BC-SIG-07006"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7B1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-07007",
+   "learning_objectives": [
+    "BC-LO-FUN-7B"
+   ],
+   "misconceptions": [
+    "BC-MIS-07003"
+   ],
+   "name": "Confirm that a proposed solution satisfies the initial condition",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-3G"
+   ],
+   "prerequisites": [
+    "BC-SKL-07006",
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-06"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:138"
+   ],
+   "topic": "BC-TOP-0702",
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07004"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07007"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-07007 across at least two representations, with no error from BC-ERR-07008.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-07008 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with the prerequisites recorded for this skill.",
+    "remediation_target": "BC-SKL-07006"
+   },
+   "archetypes": [
+    "BC-QA-07007"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07008"
+   ],
+   "concept": "BC-CON-07002",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Substitute the candidate and exhibit one input at which the two sides of the differential equation differ.",
+   "description_plain": "Point to the place where the two sides disagree.",
+   "diagnostic_signals": [
+    "BC-SIG-07007"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7B1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-07008",
+   "learning_objectives": [
+    "BC-LO-FUN-7B"
+   ],
+   "misconceptions": [
+    "BC-MIS-07004"
+   ],
+   "name": "Show that a proposed function is not a solution",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-3G"
+   ],
+   "prerequisites": [
+    "BC-SKL-07006"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-06"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:138"
+   ],
+   "topic": "BC-TOP-0702",
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07005"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07007"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-07007 across at least two representations, with no error from BC-ERR-07009.",
+    "next_dependent_skills": [
+     "BC-SKL-07033"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-07009 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with the prerequisites recorded for this skill.",
+    "remediation_target": "BC-SKL-07006"
+   },
+   "archetypes": [
+    "BC-QA-07007"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07009"
+   ],
+   "concept": "BC-CON-07003",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-07033"
+   ],
+   "description_formal": "Explain that a general solution describes a family indexed by a constant, so there may be infinitely many solutions to a differential equation (BC-EK-FUN-7B2).",
+   "description_plain": "Say that a whole family of functions can satisfy the same equation.",
+   "diagnostic_signals": [
+    "BC-SIG-07008"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7B2"
+   ],
+   "evidence_tag": "single-source",
+   "id": "BC-SKL-07009",
+   "learning_objectives": [
+    "BC-LO-FUN-7B"
+   ],
+   "misconceptions": [
+    "BC-MIS-07005"
+   ],
+   "name": "State that a differential equation may have infinitely many solutions",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-3G"
+   ],
+   "prerequisites": [
+    "BC-SKL-07006"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-04",
+    "BC-REP-06"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:138",
+    "ced-clarifications-2026:2"
+   ],
+   "topic": "BC-TOP-0702",
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07006"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07002"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-07002 across at least two representations, with no error from BC-ERR-07010.",
+    "next_dependent_skills": [
+     "BC-SKL-07011",
+     "BC-SKL-07012",
+     "BC-SKL-07013",
+     "BC-SKL-07016",
+     "BC-SKL-07018",
+     "BC-SKL-07020"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-07010 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-07006, BC-PRQ-06005.",
+    "remediation_target": "BC-PRQ-07006"
+   },
+   "archetypes": [
+    "BC-QA-07002"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07010"
+   ],
+   "concept": "BC-CON-07004",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-07011",
+    "BC-SKL-07012",
+    "BC-SKL-07013",
+    "BC-SKL-07016",
+    "BC-SKL-07018",
+    "BC-SKL-07020"
+   ],
+   "description_formal": "Substitute the coordinates of a lattice point into the right side of the differential equation to obtain the slope of the segment at that point.",
+   "description_plain": "Put the coordinates into the right side and get a number.",
+   "diagnostic_signals": [
+    "BC-SIG-07009"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7C1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-07010",
+   "learning_objectives": [
+    "BC-LO-FUN-7C"
+   ],
+   "misconceptions": [
+    "BC-MIS-07006"
+   ],
+   "name": "Compute the slope the equation assigns to a given point",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-2C"
+   ],
+   "prerequisites": [
+    "BC-PRQ-07006",
+    "BC-PRQ-06005"
+   ],
+   "representations": [
+    "BC-REP-06",
+    "BC-REP-07"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:139"
+   ],
+   "topic": "BC-TOP-0703",
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07006"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07002"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-07002 across at least two representations, with no error from BC-ERR-07011.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-07011 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-07006.",
+    "remediation_target": "BC-PRQ-07006"
+   },
+   "archetypes": [
+    "BC-QA-07002"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07011"
+   ],
+   "concept": "BC-CON-07004",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Draw a short segment of the computed slope centred at each indicated lattice point, keeping the relative steepness of the segments consistent.",
+   "description_plain": "Sketch short lines of the right steepness at the marked points.",
+   "diagnostic_signals": [
+    "BC-SIG-07010"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7C1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-07011",
+   "learning_objectives": [
+    "BC-LO-FUN-7C"
+   ],
+   "misconceptions": [
+    "BC-MIS-07006"
+   ],
+   "name": "Draw the segments of a slope field at given lattice points",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-2C"
+   ],
+   "prerequisites": [
+    "BC-SKL-07010",
+    "BC-PRQ-07006"
+   ],
+   "representations": [
+    "BC-REP-06",
+    "BC-REP-07"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:139"
+   ],
+   "topic": "BC-TOP-0703",
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07007"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07002",
+     "BC-QA-07010"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-07002 across at least two representations, with no error from BC-ERR-07012.",
+    "next_dependent_skills": [
+     "BC-SKL-07015",
+     "BC-SKL-07017"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-07012 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with the prerequisites recorded for this skill.",
+    "remediation_target": "BC-SKL-07010"
+   },
+   "archetypes": [
+    "BC-QA-07002",
+    "BC-QA-07010"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07012"
+   ],
+   "concept": "BC-CON-07004",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-07015",
+    "BC-SKL-07017"
+   ],
+   "description_formal": "Solve the right side of the differential equation equal to zero and describe the set of points where the segments are horizontal.",
+   "description_plain": "Find the points where the equation gives slope zero.",
+   "diagnostic_signals": [
+    "BC-SIG-07011"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7C2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-07012",
+   "learning_objectives": [
+    "BC-LO-FUN-7C"
+   ],
+   "misconceptions": [
+    "BC-MIS-07007"
+   ],
+   "name": "Identify where the slope field is horizontal",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-2C"
+   ],
+   "prerequisites": [
+    "BC-SKL-07010"
+   ],
+   "representations": [
+    "BC-REP-06",
+    "BC-REP-07"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:139",
+    "sg-24:10"
+   ],
+   "topic": "BC-TOP-0703",
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07006"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07002"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-07002 across at least two representations, with no error from BC-ERR-07013.",
+    "next_dependent_skills": [
+     "BC-SKL-07016"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-07013 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with the prerequisites recorded for this skill.",
+    "remediation_target": "BC-SKL-07010"
+   },
+   "archetypes": [
+    "BC-QA-07002"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07013"
+   ],
+   "concept": "BC-CON-07004",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-07016"
+   ],
+   "description_formal": "Decide from the form of the right side whether the slope depends on the independent variable, the dependent variable, or both, and describe the resulting pattern in the field.",
+   "description_plain": "Notice when the field repeats along rows or along columns.",
+   "diagnostic_signals": [
+    "BC-SIG-07012"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7C2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-07013",
+   "learning_objectives": [
+    "BC-LO-FUN-7C"
+   ],
+   "misconceptions": [
+    "BC-MIS-07006"
+   ],
+   "name": "Describe how a field depends on only one of the variables",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-2C"
+   ],
+   "prerequisites": [
+    "BC-SKL-07010"
+   ],
+   "representations": [
+    "BC-REP-06",
+    "BC-REP-07"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:139"
+   ],
+   "topic": "BC-TOP-0703",
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07008"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07001"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-07001 across at least two representations, with no error from BC-ERR-07014, BC-ERR-99024.",
+    "next_dependent_skills": [
+     "BC-SKL-07015",
+     "BC-SKL-07017"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-07014, BC-ERR-99024 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-07006.",
+    "remediation_target": "BC-PRQ-07006"
+   },
+   "archetypes": [
+    "BC-QA-07001"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07014",
+    "BC-ERR-99024"
+   ],
+   "concept": "BC-CON-07005",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-07015",
+    "BC-SKL-07017"
+   ],
+   "description_formal": "Draw a curve through the stated point that is tangent to the segments of the field and extends across the given rectangle.",
+   "description_plain": "Draw a curve from the marked point that follows the segments.",
+   "diagnostic_signals": [
+    "BC-SIG-07013"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7C3"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-07014",
+   "learning_objectives": [
+    "BC-LO-FUN-7C"
+   ],
+   "misconceptions": [
+    "BC-MIS-07008"
+   ],
+   "name": "Sketch a solution curve through a given point on a slope field",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-4D"
+   ],
+   "prerequisites": [
+    "BC-PRQ-07006"
+   ],
+   "representations": [
+    "BC-REP-07",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:140",
+    "sg-23:9"
+   ],
+   "topic": "BC-TOP-0704",
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07008",
+     "BC-MIS-07009"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07001"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-07001 across at least two representations, with no error from BC-ERR-07015, BC-ERR-99024.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-07015, BC-ERR-99024 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with the prerequisites recorded for this skill.",
+    "remediation_target": "BC-SKL-07014"
+   },
+   "archetypes": [
+    "BC-QA-07001"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07015",
+    "BC-ERR-99024"
+   ],
+   "concept": "BC-CON-07005",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Recognise the level at which the field is horizontal as a solution the sketched curve cannot cross, and keep the sketch on the side the initial point lies.",
+   "description_plain": "Do not let the curve cross the line of horizontal segments.",
+   "diagnostic_signals": [
+    "BC-SIG-07014"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7C3"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-07015",
+   "learning_objectives": [
+    "BC-LO-FUN-7C"
+   ],
+   "misconceptions": [
+    "BC-MIS-07008",
+    "BC-MIS-07009"
+   ],
+   "name": "Keep a sketched curve on the correct side of an equilibrium level",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-4D"
+   ],
+   "prerequisites": [
+    "BC-SKL-07014",
+    "BC-SKL-07012"
+   ],
+   "representations": [
+    "BC-REP-07",
+    "BC-REP-02"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:140",
+    "sg-23:9"
+   ],
+   "topic": "BC-TOP-0704",
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07006"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07002"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-07002 across at least two representations, with no error from BC-ERR-07016.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-07016 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with the prerequisites recorded for this skill.",
+    "remediation_target": "BC-SKL-07010"
+   },
+   "archetypes": [
+    "BC-QA-07002"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07016"
+   ],
+   "concept": "BC-CON-07005",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Test candidate equations against the observed pattern of the field, using where the segments are horizontal and how the slope varies with each variable.",
+   "description_plain": "Say which equation could have drawn the field.",
+   "diagnostic_signals": [
+    "BC-SIG-07015"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7C3"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-07016",
+   "learning_objectives": [
+    "BC-LO-FUN-7C"
+   ],
+   "misconceptions": [
+    "BC-MIS-07006"
+   ],
+   "name": "Match a slope field to a differential equation",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-4D"
+   ],
+   "prerequisites": [
+    "BC-SKL-07010",
+    "BC-SKL-07013"
+   ],
+   "representations": [
+    "BC-REP-06",
+    "BC-REP-07"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:140"
+   ],
+   "topic": "BC-TOP-0704",
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07009"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07001",
+     "BC-QA-07009"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-07001 across at least two representations, with no error from BC-ERR-07017.",
+    "next_dependent_skills": [
+     "BC-SKL-07041"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-07017 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with the prerequisites recorded for this skill.",
+    "remediation_target": "BC-SKL-07014"
+   },
+   "archetypes": [
+    "BC-QA-07001",
+    "BC-QA-07009"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07017"
+   ],
+   "concept": "BC-CON-07005",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-07041"
+   ],
+   "description_formal": "From the pattern of the segments, state whether solutions approach a horizontal level, grow without bound, or decrease without bound as the independent variable increases.",
+   "description_plain": "Say where the curve is heading as the input grows.",
+   "diagnostic_signals": [
+    "BC-SIG-07016"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7C3"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-07017",
+   "learning_objectives": [
+    "BC-LO-FUN-7C"
+   ],
+   "misconceptions": [
+    "BC-MIS-07009"
+   ],
+   "name": "Describe the long-run behaviour of a solution from the field",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-4D"
+   ],
+   "prerequisites": [
+    "BC-SKL-07014",
+    "BC-SKL-07012"
+   ],
+   "representations": [
+    "BC-REP-07",
+    "BC-REP-04"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:140"
+   ],
+   "topic": "BC-TOP-0704",
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07010"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07005",
+     "BC-QA-07010"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-07005 across at least two representations, with no error from BC-ERR-07018, BC-ERR-99020.",
+    "next_dependent_skills": [
+     "BC-SKL-07023"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-07018, BC-ERR-99020 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with the prerequisites recorded for this skill.",
+    "remediation_target": "BC-SKL-07010"
+   },
+   "archetypes": [
+    "BC-QA-07005",
+    "BC-QA-07010"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07018",
+    "BC-ERR-99020"
+   ],
+   "concept": "BC-CON-07005",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-07023"
+   ],
+   "description_formal": "Determine where a solution increases or decreases from the sign of the right side, and its concavity from the sign of the differentiated right side, without solving.",
+   "description_plain": "Use the sign of the derivative and its rate of change to describe the curve.",
+   "diagnostic_signals": [
+    "BC-SIG-07017"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7C3"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-07018",
+   "learning_objectives": [
+    "BC-LO-FUN-7C"
+   ],
+   "misconceptions": [
+    "BC-MIS-07010"
+   ],
+   "name": "Read monotonicity and concavity of a solution from the equation or the field",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-4D"
+   ],
+   "prerequisites": [
+    "BC-SKL-07010"
+   ],
+   "representations": [
+    "BC-REP-06",
+    "BC-REP-07"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:140",
+    "sg-23:11"
+   ],
+   "topic": "BC-TOP-0704",
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07011"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07004"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-07004 across at least two representations, with no error from BC-ERR-07019, BC-ERR-99026.",
+    "next_dependent_skills": [
+     "BC-SKL-07020"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-07019, BC-ERR-99026 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-07005.",
+    "remediation_target": "BC-PRQ-07005"
+   },
+   "archetypes": [
+    "BC-QA-07004"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07019",
+    "BC-ERR-99026"
+   ],
+   "concept": "BC-CON-07006",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-07020"
+   ],
+   "description_formal": "Compute the step size as the difference between the target input and the initial input divided by the stated number of equal steps.",
+   "description_plain": "Divide the length of the interval by how many steps are asked for.",
+   "diagnostic_signals": [
+    "BC-SIG-07018"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7C4"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-07019",
+   "learning_objectives": [
+    "BC-LO-FUN-7C"
+   ],
+   "misconceptions": [
+    "BC-MIS-07011"
+   ],
+   "name": "Determine the step size from the interval and the number of steps",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-07005"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-03"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:141",
+    "sg-25:23"
+   ],
+   "topic": "BC-TOP-0705",
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07011"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07004"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-07004 across at least two representations, with no error from BC-ERR-07020, BC-ERR-99026.",
+    "next_dependent_skills": [
+     "BC-SKL-07021",
+     "BC-SKL-07023"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-07020, BC-ERR-99026 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with the prerequisites recorded for this skill.",
+    "remediation_target": "BC-SKL-07019"
+   },
+   "archetypes": [
+    "BC-QA-07004"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07020",
+    "BC-ERR-99026"
+   ],
+   "concept": "BC-CON-07006",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-07021",
+    "BC-SKL-07023"
+   ],
+   "description_formal": "Evaluate the right side at the initial point, multiply by the step size, and add the product to the initial output value.",
+   "description_plain": "Add the step size times the slope at the starting point.",
+   "diagnostic_signals": [
+    "BC-SIG-07019"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7C4"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-07020",
+   "learning_objectives": [
+    "BC-LO-FUN-7C"
+   ],
+   "misconceptions": [
+    "BC-MIS-07011"
+   ],
+   "name": "Execute the first Euler step from the initial condition",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-SKL-07019",
+    "BC-SKL-07010"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-03",
+    "BC-REP-06"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:141",
+    "sg-25:23"
+   ],
+   "topic": "BC-TOP-0705",
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07012"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07004"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-07004 across at least two representations, with no error from BC-ERR-07021, BC-ERR-99026.",
+    "next_dependent_skills": [
+     "BC-SKL-07022"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-07021, BC-ERR-99026 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-07005.",
+    "remediation_target": "BC-PRQ-07005"
+   },
+   "archetypes": [
+    "BC-QA-07004"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07021",
+    "BC-ERR-99026"
+   ],
+   "concept": "BC-CON-07006",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-07022"
+   ],
+   "description_formal": "Evaluate the right side at the point produced by the previous step, not at the initial point, and advance again by the step size.",
+   "description_plain": "Start the second step from the value the first step produced.",
+   "diagnostic_signals": [
+    "BC-SIG-07020"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7C4"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-07021",
+   "learning_objectives": [
+    "BC-LO-FUN-7C"
+   ],
+   "misconceptions": [
+    "BC-MIS-07012"
+   ],
+   "name": "Use the previous approximation as the input for the next step",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-SKL-07020",
+    "BC-PRQ-07005"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-03",
+    "BC-REP-06"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:141",
+    "sg-24:17",
+    "sg-25:23"
+   ],
+   "topic": "BC-TOP-0705",
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07013"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07004"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-07004 across at least two representations, with no error from BC-ERR-07022, BC-ERR-99021.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-07022, BC-ERR-99021 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with the prerequisites recorded for this skill.",
+    "remediation_target": "BC-SKL-07021"
+   },
+   "archetypes": [
+    "BC-QA-07004"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07022",
+    "BC-ERR-99021"
+   ],
+   "concept": "BC-CON-07006",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Present the input, the running output, and the increment for each step, labelling the columns so the work stands without an answer.",
+   "description_plain": "Show the steps in a table with the columns named.",
+   "diagnostic_signals": [
+    "BC-SIG-07021"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7C4"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-07022",
+   "learning_objectives": [
+    "BC-LO-FUN-7C"
+   ],
+   "misconceptions": [
+    "BC-MIS-07013"
+   ],
+   "name": "Lay out the computation as a labelled step table",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-SKL-07021"
+   ],
+   "representations": [
+    "BC-REP-03"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:141",
+    "sg-25:23"
+   ],
+   "topic": "BC-TOP-0705",
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07010"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07004",
+     "BC-QA-07005"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-07004 across at least two representations, with no error from BC-ERR-07023, BC-ERR-99020.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-07023, BC-ERR-99020 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with the prerequisites recorded for this skill.",
+    "remediation_target": "BC-SKL-07020"
+   },
+   "archetypes": [
+    "BC-QA-07004",
+    "BC-QA-07005"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07023",
+    "BC-ERR-99020"
+   ],
+   "concept": "BC-CON-07006",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Determine the sign of the second derivative of the solution over the interval and conclude that the tangent line steps underestimate a concave up solution and overestimate a concave down one.",
+   "description_plain": "Say whether the estimate is too high or too low from the bending of the solution.",
+   "diagnostic_signals": [
+    "BC-SIG-07022"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7C4"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-07023",
+   "learning_objectives": [
+    "BC-LO-FUN-7C"
+   ],
+   "misconceptions": [
+    "BC-MIS-07010"
+   ],
+   "name": "Decide the direction of the Euler error from concavity",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-SKL-07020",
+    "BC-SKL-07018"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-06"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:141",
+    "sg-23:11"
+   ],
+   "topic": "BC-TOP-0705",
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07014"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07003"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-07003 across at least two representations, with no error from BC-ERR-07024, BC-ERR-99014, BC-ERR-99006.",
+    "next_dependent_skills": [
+     "BC-SKL-07025",
+     "BC-SKL-07028"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-07024, BC-ERR-99014, BC-ERR-99006 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-07002.",
+    "remediation_target": "BC-PRQ-07002"
+   },
+   "archetypes": [
+    "BC-QA-07003"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07024",
+    "BC-ERR-99014",
+    "BC-ERR-99006"
+   ],
+   "concept": "BC-CON-07007",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-07025",
+    "BC-SKL-07028"
+   ],
+   "description_formal": "Rewrite the differential equation so that one side contains only the dependent variable together with its differential and the other only the independent variable with its differential.",
+   "description_plain": "Move all the terms in one variable to one side with its differential.",
+   "diagnostic_signals": [
+    "BC-SIG-07023"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7D1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-07024",
+   "learning_objectives": [
+    "BC-LO-FUN-7D"
+   ],
+   "misconceptions": [
+    "BC-MIS-07014"
+   ],
+   "name": "Separate the variables onto opposite sides of the equation",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-PRQ-07002"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-06"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:142",
+    "sg-23:12"
+   ],
+   "topic": "BC-TOP-0706",
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07015"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07003"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-07003 across at least two representations, with no error from BC-ERR-07025, BC-ERR-99014.",
+    "next_dependent_skills": [
+     "BC-SKL-07026"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-07025, BC-ERR-99014 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-06003.",
+    "remediation_target": "BC-PRQ-06003"
+   },
+   "archetypes": [
+    "BC-QA-07003"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07025",
+    "BC-ERR-99014"
+   ],
+   "concept": "BC-CON-07007",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-07026"
+   ],
+   "description_formal": "Antidifferentiate the two sides of the separated equation, producing a logarithm where the dependent side is a reciprocal and a power where it is a power.",
+   "description_plain": "Integrate each side with respect to its own variable.",
+   "diagnostic_signals": [
+    "BC-SIG-07024"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7D2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-07025",
+   "learning_objectives": [
+    "BC-LO-FUN-7D"
+   ],
+   "misconceptions": [
+    "BC-MIS-07015"
+   ],
+   "name": "Antidifferentiate both sides of the separated equation",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-SKL-07024",
+    "BC-PRQ-06003"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:142",
+    "sg-23:12",
+    "sg-24:11"
+   ],
+   "topic": "BC-TOP-0706",
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07016"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07003"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-07003 across at least two representations, with no error from BC-ERR-07026.",
+    "next_dependent_skills": [
+     "BC-SKL-07027",
+     "BC-SKL-07029"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-07026 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with the prerequisites recorded for this skill.",
+    "remediation_target": "BC-SKL-07025"
+   },
+   "archetypes": [
+    "BC-QA-07003"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07026"
+   ],
+   "concept": "BC-CON-07007",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-07027",
+    "BC-SKL-07029"
+   ],
+   "description_formal": "Collect the two constants of antidifferentiation into one constant placed on a single side of the resulting equation.",
+   "description_plain": "Add one constant, on one side only.",
+   "diagnostic_signals": [
+    "BC-SIG-07025"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7D2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-07026",
+   "learning_objectives": [
+    "BC-LO-FUN-7D"
+   ],
+   "misconceptions": [
+    "BC-MIS-07016"
+   ],
+   "name": "Include a single constant of integration",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-SKL-07025"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:142",
+    "sg-23:12"
+   ],
+   "topic": "BC-TOP-0706",
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07017"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07003"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-07003 across at least two representations, with no error from BC-ERR-07027.",
+    "next_dependent_skills": [
+     "BC-SKL-07031",
+     "BC-SKL-07035"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-07027 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-07001.",
+    "remediation_target": "BC-PRQ-07001"
+   },
+   "archetypes": [
+    "BC-QA-07003"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07027"
+   ],
+   "concept": "BC-CON-07007",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-07031",
+    "BC-SKL-07035"
+   ],
+   "description_formal": "Exponentiate or otherwise invert the antiderivative equation to write the dependent variable explicitly in terms of the independent variable and the constant.",
+   "description_plain": "Rearrange to get the dependent variable by itself.",
+   "diagnostic_signals": [
+    "BC-SIG-07026"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7D2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-07027",
+   "learning_objectives": [
+    "BC-LO-FUN-7D"
+   ],
+   "misconceptions": [
+    "BC-MIS-07017"
+   ],
+   "name": "Solve the resulting equation for the dependent variable",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-SKL-07026",
+    "BC-PRQ-07001"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:142",
+    "sg-23:12"
+   ],
+   "topic": "BC-TOP-0706",
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07014"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07003"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-07003 across at least two representations, with no error from BC-ERR-07028.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-07028 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with the prerequisites recorded for this skill.",
+    "remediation_target": "BC-SKL-07024"
+   },
+   "archetypes": [
+    "BC-QA-07003"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07028"
+   ],
+   "concept": "BC-CON-07007",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Test whether the right side factors as a function of the independent variable multiplied by a function of the dependent variable, and say so when it does not.",
+   "description_plain": "Notice when the right side will not factor into the two pieces.",
+   "diagnostic_signals": [
+    "BC-SIG-07027"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7D1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-07028",
+   "learning_objectives": [
+    "BC-LO-FUN-7D"
+   ],
+   "misconceptions": [
+    "BC-MIS-07014"
+   ],
+   "name": "Recognise when a differential equation is not separable",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-SKL-07024"
+   ],
+   "representations": [
+    "BC-REP-06"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:142"
+   ],
+   "topic": "BC-TOP-0706",
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07016"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07003"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-07003 across at least two representations, with no error from BC-ERR-07029, BC-ERR-99014.",
+    "next_dependent_skills": [
+     "BC-SKL-07030",
+     "BC-SKL-07033",
+     "BC-SKL-07035",
+     "BC-SKL-07038"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-07029, BC-ERR-99014 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with the prerequisites recorded for this skill.",
+    "remediation_target": "BC-SKL-07026"
+   },
+   "archetypes": [
+    "BC-QA-07003"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07029",
+    "BC-ERR-99014"
+   ],
+   "concept": "BC-CON-07008",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-07030",
+    "BC-SKL-07033",
+    "BC-SKL-07035",
+    "BC-SKL-07038"
+   ],
+   "description_formal": "Substitute the stated input and output into the antiderivative equation that contains the constant, and solve for the constant.",
+   "description_plain": "Put the given point in and solve for the constant.",
+   "diagnostic_signals": [
+    "BC-SIG-07028"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7E1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-07029",
+   "learning_objectives": [
+    "BC-LO-FUN-7E"
+   ],
+   "misconceptions": [
+    "BC-MIS-07016"
+   ],
+   "name": "Substitute the initial condition to evaluate the constant of integration",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-SKL-07026",
+    "BC-SKL-07004"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-06"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:143",
+    "sg-23:12"
+   ],
+   "topic": "BC-TOP-0707",
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07018"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07003",
+     "BC-QA-07011"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-07003 across at least two representations, with no error from BC-ERR-07030, BC-ERR-99037.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-07030, BC-ERR-99037 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-07004.",
+    "remediation_target": "BC-PRQ-07004"
+   },
+   "archetypes": [
+    "BC-QA-07003",
+    "BC-QA-07011"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07030",
+    "BC-ERR-99037"
+   ],
+   "concept": "BC-CON-07008",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Determine from the initial value or a stated bound whether the expression inside an absolute value is positive or negative on the interval, and drop the absolute value accordingly.",
+   "description_plain": "Use the given point to decide which sign applies.",
+   "diagnostic_signals": [
+    "BC-SIG-07029"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7E1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-07030",
+   "learning_objectives": [
+    "BC-LO-FUN-7E"
+   ],
+   "misconceptions": [
+    "BC-MIS-07018"
+   ],
+   "name": "Resolve an absolute value or a sign ambiguity from the initial condition",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-SKL-07029",
+    "BC-PRQ-07004"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-06"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:143",
+    "sg-23:11",
+    "sg-24:11"
+   ],
+   "topic": "BC-TOP-0707",
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07019"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07011"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-07011 across at least two representations, with no error from BC-ERR-07031.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-07031 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-05003.",
+    "remediation_target": "BC-PRQ-05003"
+   },
+   "archetypes": [
+    "BC-QA-07011"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07031"
+   ],
+   "concept": "BC-CON-07009",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Report the largest interval containing the initial input on which the solution expression is defined and continuous, and note why the rest is excluded.",
+   "description_plain": "Say on which interval the particular solution is valid.",
+   "diagnostic_signals": [
+    "BC-SIG-07030"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7E3"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-07031",
+   "learning_objectives": [
+    "BC-LO-FUN-7E"
+   ],
+   "misconceptions": [
+    "BC-MIS-07019"
+   ],
+   "name": "State the domain restriction the initial condition selects",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-SKL-07027",
+    "BC-PRQ-05003"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-04"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:143"
+   ],
+   "topic": "BC-TOP-0707",
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07020"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07011"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-07011 across at least two representations, with no error from BC-ERR-07032, BC-ERR-99006.",
+    "next_dependent_skills": [
+     "BC-SKL-07038"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-07032, BC-ERR-99006 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with the prerequisites recorded for this skill.",
+    "remediation_target": "BC-SKL-07004"
+   },
+   "archetypes": [
+    "BC-QA-07011"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07032",
+    "BC-ERR-99006"
+   ],
+   "concept": "BC-CON-07008",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-07038"
+   ],
+   "description_formal": "For a differential equation whose right side depends only on the independent variable, write the particular solution as the initial value plus the definite integral of the right side from the initial input to the variable input.",
+   "description_plain": "Express the solution as the starting value plus an integral.",
+   "diagnostic_signals": [
+    "BC-SIG-07031"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7E2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-07032",
+   "learning_objectives": [
+    "BC-LO-FUN-7E"
+   ],
+   "misconceptions": [
+    "BC-MIS-07020"
+   ],
+   "name": "Write a particular solution as an accumulation function",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-SKL-07004",
+    "BC-SKL-06044"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-06"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:143"
+   ],
+   "topic": "BC-TOP-0707",
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07005",
+     "BC-MIS-07016"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07003",
+     "BC-QA-07007"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-07003 across at least two representations, with no error from BC-ERR-07033.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-07033 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with the prerequisites recorded for this skill.",
+    "remediation_target": "BC-SKL-07029"
+   },
+   "archetypes": [
+    "BC-QA-07003",
+    "BC-QA-07007"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07033"
+   ],
+   "concept": "BC-CON-07008",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Explain that the general solution carries an undetermined constant describing infinitely many curves, while a stated point selects exactly one of them.",
+   "description_plain": "Say which answer carries a constant and which does not.",
+   "diagnostic_signals": [
+    "BC-SIG-07032"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7E1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-07033",
+   "learning_objectives": [
+    "BC-LO-FUN-7E"
+   ],
+   "misconceptions": [
+    "BC-MIS-07005",
+    "BC-MIS-07016"
+   ],
+   "name": "Distinguish the general solution family from the particular solution",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-1E"
+   ],
+   "prerequisites": [
+    "BC-SKL-07029",
+    "BC-SKL-07009"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-04"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:143"
+   ],
+   "topic": "BC-TOP-0707",
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07001",
+     "BC-MIS-07021"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07008"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-07008 across at least two representations, with no error from BC-ERR-07034.",
+    "next_dependent_skills": [
+     "BC-SKL-07035"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-07034 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-07003.",
+    "remediation_target": "BC-PRQ-07003"
+   },
+   "archetypes": [
+    "BC-QA-07008"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07034"
+   ],
+   "concept": "BC-CON-07010",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-07035"
+   ],
+   "description_formal": "Write the differential equation with the derivative of the quantity equal to a constant multiplied by the quantity, naming the constant of proportionality.",
+   "description_plain": "Turn rate proportional to amount into the standard equation.",
+   "diagnostic_signals": [
+    "BC-SIG-07033"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7F2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-07034",
+   "learning_objectives": [
+    "BC-LO-FUN-7F",
+    "BC-LO-FUN-7G"
+   ],
+   "misconceptions": [
+    "BC-MIS-07001",
+    "BC-MIS-07021"
+   ],
+   "name": "Write the exponential model from a proportionality statement",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-3G"
+   ],
+   "prerequisites": [
+    "BC-SKL-07001",
+    "BC-PRQ-07003"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-06"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:144"
+   ],
+   "topic": "BC-TOP-0708",
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07021"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07008"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-07008 across at least two representations, with no error from BC-ERR-07035.",
+    "next_dependent_skills": [
+     "BC-SKL-07036"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-07035 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with the prerequisites recorded for this skill.",
+    "remediation_target": "BC-SKL-07034"
+   },
+   "archetypes": [
+    "BC-QA-07008"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07035"
+   ],
+   "concept": "BC-CON-07010",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-07036"
+   ],
+   "description_formal": "Solve the proportional growth equation with the stated initial value, obtaining the initial value multiplied by the exponential of the constant times the independent variable.",
+   "description_plain": "Write the solution as the starting amount times an exponential.",
+   "diagnostic_signals": [
+    "BC-SIG-07034"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7G1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-07035",
+   "learning_objectives": [
+    "BC-LO-FUN-7F",
+    "BC-LO-FUN-7G"
+   ],
+   "misconceptions": [
+    "BC-MIS-07021"
+   ],
+   "name": "Produce the exponential solution from the model and the initial value",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-3G"
+   ],
+   "prerequisites": [
+    "BC-SKL-07034",
+    "BC-SKL-07027",
+    "BC-SKL-07029"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-06"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:144"
+   ],
+   "topic": "BC-TOP-0708",
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07022"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07008"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-07008 across at least two representations, with no error from BC-ERR-07036.",
+    "next_dependent_skills": [
+     "BC-SKL-07037"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-07036 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-07001, BC-PRQ-06003.",
+    "remediation_target": "BC-PRQ-07001"
+   },
+   "archetypes": [
+    "BC-QA-07008"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-07036"
+   ],
+   "concept": "BC-CON-07010",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-07037"
+   ],
+   "description_formal": "Substitute a second input and output into the exponential solution and solve for the constant using a logarithm.",
+   "description_plain": "Use another known value to pin down the constant.",
+   "diagnostic_signals": [
+    "BC-SIG-07035"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7G1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-07036",
+   "learning_objectives": [
+    "BC-LO-FUN-7F",
+    "BC-LO-FUN-7G"
+   ],
+   "misconceptions": [
+    "BC-MIS-07022"
+   ],
+   "name": "Determine the constant of proportionality from a second data pair",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-3G"
+   ],
+   "prerequisites": [
+    "BC-SKL-07035",
+    "BC-PRQ-07001",
+    "BC-PRQ-06003"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-03"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:144"
+   ],
+   "topic": "BC-TOP-0708",
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07023"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07008"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-07008 across at least two representations, with no error from BC-ERR-07037, BC-ERR-99005, BC-ERR-99027.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-07037, BC-ERR-99005, BC-ERR-99027 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with the prerequisites recorded for this skill.",
+    "remediation_target": "BC-SKL-07036"
+   },
+   "archetypes": [
+    "BC-QA-07008"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07037",
+    "BC-ERR-99005",
+    "BC-ERR-99027"
+   ],
+   "concept": "BC-CON-07010",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "State that a positive constant gives growth and a negative one decay, and describe what its size says about how quickly the modelled quantity changes, with units.",
+   "description_plain": "Say what the constant means for the situation.",
+   "diagnostic_signals": [
+    "BC-SIG-07036"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7F2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-07037",
+   "learning_objectives": [
+    "BC-LO-FUN-7F",
+    "BC-LO-FUN-7G"
+   ],
+   "misconceptions": [
+    "BC-MIS-07023"
+   ],
+   "name": "Interpret the sign and size of the constant in context",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-3G"
+   ],
+   "prerequisites": [
+    "BC-SKL-07036",
+    "BC-SKL-07003"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-05"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:144"
+   ],
+   "topic": "BC-TOP-0708",
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07020"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07008",
+     "BC-QA-07011"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-07008 across at least two representations, with no error from BC-ERR-07038.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-07038 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with the prerequisites recorded for this skill.",
+    "remediation_target": "BC-SKL-07029"
+   },
+   "archetypes": [
+    "BC-QA-07008",
+    "BC-QA-07011"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07038"
+   ],
+   "concept": "BC-CON-07010",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Treat a differential equation for velocity or position as a particular solution problem, using the stated value at an input to fix the constant (BC-EK-FUN-7F1).",
+   "description_plain": "Use the same machinery when the quantity is a position or a velocity.",
+   "diagnostic_signals": [
+    "BC-SIG-07037"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7F1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-07038",
+   "learning_objectives": [
+    "BC-LO-FUN-7F",
+    "BC-LO-FUN-7G"
+   ],
+   "misconceptions": [
+    "BC-MIS-07020"
+   ],
+   "name": "Apply a differential equation model to motion along a line",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-3G"
+   ],
+   "prerequisites": [
+    "BC-SKL-07029",
+    "BC-SKL-07032"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-05",
+    "BC-REP-06"
+   ],
+   "scope": "shared",
+   "sources": [
+    "ced:144"
+   ],
+   "topic": "BC-TOP-0708",
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07024"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07009"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-07009 across at least two representations, with no error from BC-ERR-07039.",
+    "next_dependent_skills": [
+     "BC-SKL-07040"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-07039 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-07003.",
+    "remediation_target": "BC-PRQ-07003"
+   },
+   "archetypes": [
+    "BC-QA-07009"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07039"
+   ],
+   "concept": "BC-CON-07011",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-07040"
+   ],
+   "description_formal": "Write the derivative as a constant multiplied by the quantity multiplied by the difference between the carrying capacity and the quantity.",
+   "description_plain": "Turn jointly proportional to the amount and the room left into an equation.",
+   "diagnostic_signals": [
+    "BC-SIG-07038"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7H1"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-07039",
+   "learning_objectives": [
+    "BC-LO-FUN-7H"
+   ],
+   "misconceptions": [
+    "BC-MIS-07024"
+   ],
+   "name": "Write the logistic equation from a joint proportionality statement",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-3F"
+   ],
+   "prerequisites": [
+    "BC-PRQ-07003",
+    "BC-SKL-07001"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-06"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:145"
+   ],
+   "topic": "BC-TOP-0709",
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07025"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07009"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-07009 across at least two representations, with no error from BC-ERR-07040.",
+    "next_dependent_skills": [
+     "BC-SKL-07041",
+     "BC-SKL-07042"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-07040 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with BC-PRQ-05001.",
+    "remediation_target": "BC-PRQ-05001"
+   },
+   "archetypes": [
+    "BC-QA-07009"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07040"
+   ],
+   "concept": "BC-CON-07012",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-07041",
+    "BC-SKL-07042"
+   ],
+   "description_formal": "Find the nonzero value of the quantity at which the right side vanishes and report it as the carrying capacity.",
+   "description_plain": "Read the ceiling straight off the equation.",
+   "diagnostic_signals": [
+    "BC-SIG-07039"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7H3"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-07040",
+   "learning_objectives": [
+    "BC-LO-FUN-7H"
+   ],
+   "misconceptions": [
+    "BC-MIS-07025"
+   ],
+   "name": "Identify the carrying capacity from the form of the equation",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-3F"
+   ],
+   "prerequisites": [
+    "BC-SKL-07039",
+    "BC-PRQ-05001"
+   ],
+   "representations": [
+    "BC-REP-06"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:145"
+   ],
+   "topic": "BC-TOP-0709",
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07025",
+     "BC-MIS-07026"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07009"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-07009 across at least two representations, with no error from BC-ERR-07041, BC-ERR-07044, BC-ERR-99035.",
+    "next_dependent_skills": [
+     "BC-SKL-07043"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-07041, BC-ERR-07044, BC-ERR-99035 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with the prerequisites recorded for this skill.",
+    "remediation_target": "BC-SKL-07040"
+   },
+   "archetypes": [
+    "BC-QA-07009"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07041",
+    "BC-ERR-07044",
+    "BC-ERR-99035"
+   ],
+   "concept": "BC-CON-07012",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-07043"
+   ],
+   "description_formal": "Use the sign of the right side between the equilibrium levels together with the initial condition to state the limit of the quantity as the independent variable grows without bound.",
+   "description_plain": "Say where the quantity is heading, using the equation and the starting value.",
+   "diagnostic_signals": [
+    "BC-SIG-07040"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7H2",
+    "BC-EK-FUN-7H3"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-07041",
+   "learning_objectives": [
+    "BC-LO-FUN-7H"
+   ],
+   "misconceptions": [
+    "BC-MIS-07025",
+    "BC-MIS-07026"
+   ],
+   "name": "Determine the limiting value without solving the equation",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-3F"
+   ],
+   "prerequisites": [
+    "BC-SKL-07040",
+    "BC-SKL-07017"
+   ],
+   "representations": [
+    "BC-REP-06",
+    "BC-REP-04"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:145"
+   ],
+   "topic": "BC-TOP-0709",
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07027"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07009"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-07009 across at least two representations, with no error from BC-ERR-07042.",
+    "next_dependent_skills": [
+     "BC-SKL-07043"
+    ],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-07042 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with the prerequisites recorded for this skill.",
+    "remediation_target": "BC-SKL-07040"
+   },
+   "archetypes": [
+    "BC-QA-07009"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07042"
+   ],
+   "concept": "BC-CON-07012",
+   "confusable_with": [],
+   "dependents": [
+    "BC-SKL-07043"
+   ],
+   "description_formal": "Maximise the right side as a quadratic in the quantity, obtaining half the carrying capacity as the value at which the quantity changes fastest.",
+   "description_plain": "Find where the rate is largest, which is half of the ceiling.",
+   "diagnostic_signals": [
+    "BC-SIG-07041"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7H4"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-07042",
+   "learning_objectives": [
+    "BC-LO-FUN-7H"
+   ],
+   "misconceptions": [
+    "BC-MIS-07027"
+   ],
+   "name": "Determine the value at which the quantity changes fastest",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-3F"
+   ],
+   "prerequisites": [
+    "BC-SKL-07040",
+    "BC-SKL-05052"
+   ],
+   "representations": [
+    "BC-REP-06",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:145"
+   ],
+   "topic": "BC-TOP-0709",
+   "unit": "BC-UNIT-07"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-07023",
+     "BC-MIS-07026"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-07009"
+    ],
+    "mastered_if": "The student produces a correct and completely communicated response to BC-QA-07009 across at least two representations, with no error from BC-ERR-07043, BC-ERR-99027, BC-ERR-99005.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The procedure is started correctly but the response loses a communication, notation, or justification point, or shows one of BC-ERR-07043, BC-ERR-99027, BC-ERR-99005 without repeating it.",
+    "prerequisite_gap_if": "The response fails before any calculus step, consistent with the prerequisites recorded for this skill.",
+    "remediation_target": "BC-SKL-07041"
+   },
+   "archetypes": [
+    "BC-QA-07009"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-07043",
+    "BC-ERR-99027",
+    "BC-ERR-99005"
+   ],
+   "concept": "BC-CON-07011",
+   "confusable_with": [],
+   "dependents": [],
+   "description_formal": "Describe what the carrying capacity, the sign of the rate on each side of it, and the fastest change value say about the modelled quantity, with units.",
+   "description_plain": "Say what the equation means for the population being modelled.",
+   "diagnostic_signals": [
+    "BC-SIG-07042"
+   ],
+   "essential_knowledge": [
+    "BC-EK-FUN-7H2"
+   ],
+   "evidence_tag": "verified",
+   "id": "BC-SKL-07043",
+   "learning_objectives": [
+    "BC-LO-FUN-7H"
+   ],
+   "misconceptions": [
+    "BC-MIS-07023",
+    "BC-MIS-07026"
+   ],
+   "name": "Interpret a logistic model in context",
+   "notation": "",
+   "practice_skills": [
+    "BC-MPS-3F"
+   ],
+   "prerequisites": [
+    "BC-SKL-07041",
+    "BC-SKL-07042",
+    "BC-SKL-07003"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-05"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:145"
+   ],
+   "topic": "BC-TOP-0709",
+   "unit": "BC-UNIT-07"
+  }
+ ]
+}

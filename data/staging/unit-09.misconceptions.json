@@ -1,0 +1,683 @@
+{
+ "misconceptions": [
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-09001"
+   ],
+   "description": "The learner treats t as if it were x, so derivatives with respect to the parameter are read as slopes and points on the curve are confused with parameter values.",
+   "discriminating_probe": "Ask for the coordinates of the point at a stated parameter value and then for the slope there.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-09001"
+   ],
+   "id": "BC-MIS-09001",
+   "literature": [],
+   "name": "The parameter is the horizontal coordinate",
+   "observable_errors": [
+    "BC-ERR-09001",
+    "BC-ERR-09007"
+   ],
+   "official_evidence": [],
+   "rival_misconceptions": [
+    "BC-MIS-09002"
+   ],
+   "scope": "BC_only",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-09001",
+    "BC-SKL-09005"
+   ],
+   "sources": [
+    "ced:171"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-09002"
+   ],
+   "description": "The learner carries the single variable habit that the derivative of the vertical quantity is the slope, so the horizontal rate never enters.",
+   "discriminating_probe": "Give a path whose horizontal rate is two and ask for both dy/dt and the slope.",
+   "downstream_dependencies": [],
+   "evidence_tag": "verified",
+   "exposing_archetypes": [
+    "BC-QA-09001"
+   ],
+   "id": "BC-MIS-09002",
+   "literature": [],
+   "name": "The slope of a parametric path is the rate of the vertical component",
+   "observable_errors": [
+    "BC-ERR-09003",
+    "BC-ERR-09004"
+   ],
+   "official_evidence": [
+    "sg-23:7"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-09003"
+   ],
+   "scope": "BC_only",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-09002",
+    "BC-SKL-09004"
+   ],
+   "sources": [
+    "sg-23:7"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-09002"
+   ],
+   "description": "The learner remembers that a quotient of the two component rates gives the slope but not which is the numerator, so the reciprocal looks equally acceptable.",
+   "discriminating_probe": "Ask what the slope should be on a path where the horizontal rate is large and the vertical rate is small.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-09001"
+   ],
+   "id": "BC-MIS-09003",
+   "literature": [],
+   "name": "The order of the parametric quotient does not matter",
+   "observable_errors": [
+    "BC-ERR-09002",
+    "BC-ERR-09008",
+    "BC-ERR-09005"
+   ],
+   "official_evidence": [],
+   "rival_misconceptions": [
+    "BC-MIS-09002"
+   ],
+   "scope": "BC_only",
+   "severity": "medium",
+   "skills": [
+    "BC-SKL-09002",
+    "BC-SKL-09006",
+    "BC-SKL-09003"
+   ],
+   "sources": [
+    "ced:171"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-09003"
+   ],
+   "description": "The learner generalises the quotient rule for dy/dx by replacing each first derivative with a second derivative, so the intermediate differentiation of the slope disappears.",
+   "discriminating_probe": "Ask which function is being differentiated at the second step and with respect to which variable.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-09002"
+   ],
+   "id": "BC-MIS-09004",
+   "literature": [],
+   "name": "The second derivative follows the same pattern as the first",
+   "observable_errors": [
+    "BC-ERR-09009",
+    "BC-ERR-09010",
+    "BC-ERR-09012"
+   ],
+   "official_evidence": [],
+   "rival_misconceptions": [
+    "BC-MIS-09003"
+   ],
+   "scope": "BC_only",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-09007",
+    "BC-SKL-09008",
+    "BC-SKL-09010"
+   ],
+   "sources": [
+    "ced:172"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-09004",
+    "BC-CON-09009"
+   ],
+   "description": "The learner adds the horizontal and vertical rates rather than combining them by the Pythagorean relation.",
+   "discriminating_probe": "Ask for the speed of a particle with component rates three and four.",
+   "downstream_dependencies": [],
+   "evidence_tag": "verified",
+   "exposing_archetypes": [
+    "BC-QA-09003",
+    "BC-QA-09006"
+   ],
+   "id": "BC-MIS-09005",
+   "literature": [],
+   "name": "A length in the plane is the sum of the two component contributions",
+   "observable_errors": [
+    "BC-ERR-09013",
+    "BC-ERR-09014"
+   ],
+   "official_evidence": [
+    "sg-24:5"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-09011"
+   ],
+   "scope": "BC_only",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-09011",
+    "BC-SKL-09023"
+   ],
+   "sources": [
+    "sg-24:5"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-09010"
+   ],
+   "description": "The learner integrates the velocity components and takes a magnitude at the end, so a path that doubles back is measured as if it were straight.",
+   "discriminating_probe": "Ask for both quantities for a particle that returns to its starting point.",
+   "downstream_dependencies": [],
+   "evidence_tag": "verified",
+   "exposing_archetypes": [
+    "BC-QA-09007",
+    "BC-QA-09003"
+   ],
+   "id": "BC-MIS-09006",
+   "literature": [],
+   "name": "Distance travelled in the plane is the size of the net change in position",
+   "observable_errors": [
+    "BC-ERR-09015"
+   ],
+   "official_evidence": [
+    "sg-24:6",
+    "cr-24:27"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-09005"
+   ],
+   "scope": "BC_only",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-09025",
+    "BC-SKL-09013",
+    "BC-SKL-09020"
+   ],
+   "sources": [
+    "sg-24:6",
+    "cr-24:27"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-09004",
+    "BC-CON-09015"
+   ],
+   "description": "The learner treats the limits as a window that merely has to include the object, so an interval that retraces part of the curve looks harmless.",
+   "discriminating_probe": "Ask at which parameter values the curve revisits a point it has already passed.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-09012",
+    "BC-QA-09003"
+   ],
+   "id": "BC-MIS-09007",
+   "literature": [],
+   "name": "Any interval containing the curve gives its length or area",
+   "observable_errors": [
+    "BC-ERR-09016"
+   ],
+   "official_evidence": [],
+   "rival_misconceptions": [
+    "BC-MIS-09019"
+   ],
+   "scope": "BC_only",
+   "severity": "medium",
+   "skills": [
+    "BC-SKL-09014",
+    "BC-SKL-09036",
+    "BC-SKL-09037"
+   ],
+   "sources": [
+    "ced:178"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-09009"
+   ],
+   "description": "The learner treats the written expression as scratch work supporting the calculator rather than as the object being scored.",
+   "discriminating_probe": "Ask the student to write the expression the calculator evaluated, without using the calculator.",
+   "downstream_dependencies": [],
+   "evidence_tag": "verified",
+   "exposing_archetypes": [
+    "BC-QA-09006",
+    "BC-QA-09012"
+   ],
+   "id": "BC-MIS-09008",
+   "literature": [],
+   "name": "A calculator result stands without its expression",
+   "observable_errors": [
+    "BC-ERR-09011",
+    "BC-ERR-09022",
+    "BC-ERR-09034",
+    "BC-ERR-09028",
+    "BC-ERR-09006",
+    "BC-ERR-09023",
+    "BC-ERR-09018"
+   ],
+   "official_evidence": [
+    "sg-23:6",
+    "sg-25:9"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-09009"
+   ],
+   "scope": "BC_only",
+   "severity": "medium",
+   "skills": [
+    "BC-SKL-09012",
+    "BC-SKL-09038",
+    "BC-SKL-09024"
+   ],
+   "sources": [
+    "sg-23:6",
+    "sg-25:9"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-09005",
+    "BC-CON-09006"
+   ],
+   "description": "The learner reports two values without treating them as components of one object, so labels, order, and a single constant of integration all look immaterial.",
+   "discriminating_probe": "Ask which of the two reported numbers is the horizontal component and why.",
+   "downstream_dependencies": [],
+   "evidence_tag": "verified",
+   "exposing_archetypes": [
+    "BC-QA-09004",
+    "BC-QA-09005"
+   ],
+   "id": "BC-MIS-09009",
+   "literature": [],
+   "name": "A vector answer is a pair of numbers with no structure",
+   "observable_errors": [
+    "BC-ERR-09017",
+    "BC-ERR-09019"
+   ],
+   "official_evidence": [
+    "sg-23:6"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-09008"
+   ],
+   "scope": "BC_only",
+   "severity": "medium",
+   "skills": [
+    "BC-SKL-09015",
+    "BC-SKL-09017",
+    "BC-SKL-09019"
+   ],
+   "sources": [
+    "sg-23:6"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-09008"
+   ],
+   "description": "The learner reads the accumulation as the position itself rather than as the change in it, so the known position plays no role.",
+   "discriminating_probe": "Ask for the same coordinate with the known position moved to a different point.",
+   "downstream_dependencies": [],
+   "evidence_tag": "verified",
+   "exposing_archetypes": [
+    "BC-QA-09005"
+   ],
+   "id": "BC-MIS-09010",
+   "literature": [],
+   "name": "The integral of a velocity component is the coordinate",
+   "observable_errors": [
+    "BC-ERR-09020",
+    "BC-ERR-09021"
+   ],
+   "official_evidence": [
+    "sg-24:7"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-09006"
+   ],
+   "scope": "BC_only",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-09021",
+    "BC-SKL-09022",
+    "BC-SKL-09026"
+   ],
+   "sources": [
+    "sg-24:7"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-09009"
+   ],
+   "description": "The learner reports the larger component, or one chosen component, as the speed, so the magnitude never appears.",
+   "discriminating_probe": "Ask for the speed at a time when one component is zero and the other is not.",
+   "downstream_dependencies": [],
+   "evidence_tag": "verified",
+   "exposing_archetypes": [
+    "BC-QA-09006"
+   ],
+   "id": "BC-MIS-09011",
+   "literature": [],
+   "name": "Speed is one of the two velocity components",
+   "observable_errors": [
+    "BC-ERR-09013",
+    "BC-ERR-09014",
+    "BC-ERR-09024"
+   ],
+   "official_evidence": [
+    "sg-24:5"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-09005"
+   ],
+   "scope": "BC_only",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-09023",
+    "BC-SKL-09024"
+   ],
+   "sources": [
+    "sg-24:5"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-09011"
+   ],
+   "description": "The learner reads approach to an axis from where the coordinate is small or negative rather than from the sign of its rate.",
+   "discriminating_probe": "Ask what the rate is doing at a time when the coordinate is positive and the particle is approaching the axis.",
+   "downstream_dependencies": [],
+   "evidence_tag": "verified",
+   "exposing_archetypes": [
+    "BC-QA-09008"
+   ],
+   "id": "BC-MIS-09012",
+   "literature": [],
+   "name": "The direction of motion is given by the sign of the position",
+   "observable_errors": [
+    "BC-ERR-09025",
+    "BC-ERR-09026"
+   ],
+   "official_evidence": [
+    "sg-24:8"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-09010"
+   ],
+   "scope": "BC_only",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-09027"
+   ],
+   "sources": [
+    "sg-24:8"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-09012"
+   ],
+   "description": "The learner treats r as a coordinate of the point, so the conversion by cosine and sine is skipped.",
+   "discriminating_probe": "Ask for both Cartesian coordinates of the point at a stated angle on the curve.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-09009",
+    "BC-QA-09011"
+   ],
+   "id": "BC-MIS-09013",
+   "literature": [],
+   "name": "The polar radius is a Cartesian coordinate",
+   "observable_errors": [
+    "BC-ERR-09027"
+   ],
+   "official_evidence": [],
+   "rival_misconceptions": [
+    "BC-MIS-09015"
+   ],
+   "scope": "BC_only",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-09029",
+    "BC-SKL-09034"
+   ],
+   "sources": [
+    "ced:177"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-09013"
+   ],
+   "description": "The learner attaches every derivative to motion along the path, so the rate at which the distance from the origin changes is read as a speed and the rate of the angle is left out.",
+   "discriminating_probe": "Ask what quantity r measures, and then what the units of the requested rate are.",
+   "downstream_dependencies": [],
+   "evidence_tag": "verified",
+   "exposing_archetypes": [
+    "BC-QA-09009",
+    "BC-QA-09010"
+   ],
+   "id": "BC-MIS-09014",
+   "literature": [],
+   "name": "The derivative of r is the speed along the curve",
+   "observable_errors": [
+    "BC-ERR-09029",
+    "BC-ERR-09030"
+   ],
+   "official_evidence": [
+    "sg-25:10"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-09015"
+   ],
+   "scope": "BC_only",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-09031",
+    "BC-SKL-09032",
+    "BC-SKL-09030"
+   ],
+   "sources": [
+    "sg-25:10"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-09014"
+   ],
+   "description": "The learner transfers the single variable pattern that the derivative of the given function is the slope, so the conversion to Cartesian coordinates never happens.",
+   "discriminating_probe": "Ask for the slope of the tangent to a circle of constant radius, where dr/dtheta is zero everywhere.",
+   "downstream_dependencies": [],
+   "evidence_tag": "inferred",
+   "exposing_archetypes": [
+    "BC-QA-09009"
+   ],
+   "id": "BC-MIS-09015",
+   "literature": [],
+   "name": "The slope of a polar curve is the derivative of r",
+   "observable_errors": [
+    "BC-ERR-09031",
+    "BC-ERR-09032"
+   ],
+   "official_evidence": [],
+   "rival_misconceptions": [
+    "BC-MIS-09014"
+   ],
+   "scope": "BC_only",
+   "severity": "medium",
+   "skills": [
+    "BC-SKL-09033"
+   ],
+   "sources": [
+    "ced:177"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-09014"
+   ],
+   "description": "The learner treats a derivative test as a complete justification, so the endpoints of the angle interval are never compared.",
+   "discriminating_probe": "Ask for the value of the coordinate at both ends of the angle interval.",
+   "downstream_dependencies": [],
+   "evidence_tag": "verified",
+   "exposing_archetypes": [
+    "BC-QA-09011"
+   ],
+   "id": "BC-MIS-09016",
+   "literature": [],
+   "name": "A local extremum argument settles a farthest point",
+   "observable_errors": [
+    "BC-ERR-09033",
+    "BC-ERR-09034"
+   ],
+   "official_evidence": [
+    "sg-25:9"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-09008"
+   ],
+   "scope": "BC_only",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-09034"
+   ],
+   "sources": [
+    "sg-25:9"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-09015"
+   ],
+   "description": "The learner transports the Cartesian area formula unchanged, so neither the square of r nor the factor of one half appears.",
+   "discriminating_probe": "Ask for the area of a circular sector of stated radius and angle, then compare with the integral written.",
+   "downstream_dependencies": [],
+   "evidence_tag": "verified",
+   "exposing_archetypes": [
+    "BC-QA-09012"
+   ],
+   "id": "BC-MIS-09017",
+   "literature": [],
+   "name": "A polar area is an integral of the curve itself",
+   "observable_errors": [
+    "BC-ERR-09035",
+    "BC-ERR-09036"
+   ],
+   "official_evidence": [
+    "sg-25:7"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-09018"
+   ],
+   "scope": "BC_only",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-09035"
+   ],
+   "sources": [
+    "sg-25:7"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-09016"
+   ],
+   "description": "The learner subtracts the radii before squaring, treating the ring as a single sector of the difference.",
+   "discriminating_probe": "Ask the student to evaluate both expressions with the radii two and one.",
+   "downstream_dependencies": [],
+   "evidence_tag": "verified",
+   "exposing_archetypes": [
+    "BC-QA-09013"
+   ],
+   "id": "BC-MIS-09018",
+   "literature": [],
+   "name": "The area between polar curves uses the difference of the radii",
+   "observable_errors": [
+    "BC-ERR-09040",
+    "BC-ERR-09039",
+    "BC-ERR-09041"
+   ],
+   "official_evidence": [
+    "sg-25:7"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-09017"
+   ],
+   "scope": "BC_only",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-09041",
+    "BC-SKL-09040",
+    "BC-SKL-09043"
+   ],
+   "sources": [
+    "sg-25:7"
+   ]
+  },
+  {
+   "causal_prerequisites": [],
+   "concepts": [
+    "BC-CON-09017"
+   ],
+   "description": "The learner takes the angle range in which the picture is drawn as the limits instead of the angles where the curves meet.",
+   "discriminating_probe": "Ask at which angles the two curves meet before any integral is written.",
+   "downstream_dependencies": [],
+   "evidence_tag": "verified",
+   "exposing_archetypes": [
+    "BC-QA-09013"
+   ],
+   "id": "BC-MIS-09019",
+   "literature": [],
+   "name": "The limits of a polar area are the whole interval of the figure",
+   "observable_errors": [
+    "BC-ERR-09037",
+    "BC-ERR-09038"
+   ],
+   "official_evidence": [
+    "sg-25:7"
+   ],
+   "rival_misconceptions": [
+    "BC-MIS-09007"
+   ],
+   "scope": "BC_only",
+   "severity": "high",
+   "skills": [
+    "BC-SKL-09039",
+    "BC-SKL-09036"
+   ],
+   "sources": [
+    "sg-25:7"
+   ]
+  }
+ ],
+ "registry": "misconceptions"
+}

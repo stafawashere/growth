@@ -1,0 +1,363 @@
+{
+ "registry": "diagnostic_signals",
+ "signals": [
+  {
+   "archetype": "BC-QA-04001",
+   "consistent_with": [
+    "BC-ERR-04001",
+    "BC-MIS-04003"
+   ],
+   "distinguish_by": "Ask for the units alone; a correct answer points to an omission under time pressure rather than a gap.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-04001",
+   "mastery_state": "partially_mastered",
+   "name": "Correct rate reported with no units",
+   "observation": "The numerical rate is right and no units accompany it anywhere in the part.",
+   "scope": "shared",
+   "skill": "BC-SKL-04001",
+   "sources": [
+    "sg-25:11",
+    "sg-24:2"
+   ]
+  },
+  {
+   "archetype": "BC-QA-04001",
+   "consistent_with": [
+    "BC-ERR-04003",
+    "BC-MIS-04001",
+    "BC-PRQ-04008"
+   ],
+   "distinguish_by": "Ask which of the two the units in the stem describe; a correct answer points to a misread.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-04002",
+   "mastery_state": "prerequisite_gap",
+   "name": "Function value supplied where a rate was requested",
+   "observation": "The answer is a value of the model and the question asked for its rate of change.",
+   "scope": "shared",
+   "skill": "BC-SKL-04003",
+   "sources": [
+    "cr-24:4"
+   ]
+  },
+  {
+   "archetype": "BC-QA-04002",
+   "consistent_with": [
+    "BC-ERR-04004",
+    "BC-MIS-04003"
+   ],
+   "distinguish_by": "Ask which two table entries were used; a correct answer points to omitted communication rather than to a gap.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-04003",
+   "mastery_state": "partially_mastered",
+   "name": "Bare quotient with no difference shown",
+   "observation": "A single number or a quotient appears with no visible subtraction of tabulated values.",
+   "scope": "shared",
+   "skill": "BC-SKL-04004",
+   "sources": [
+    "sg-25:11"
+   ]
+  },
+  {
+   "archetype": "BC-QA-04003",
+   "consistent_with": [
+    "BC-ERR-04006",
+    "BC-MIS-04004"
+   ],
+   "distinguish_by": "Ask which function the stem supplied and which one the question wants.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-04004",
+   "mastery_state": "partially_mastered",
+   "name": "Correct differentiation of the wrong order",
+   "observation": "The differentiation performed is correct and produces a quantity other than the one requested.",
+   "scope": "shared",
+   "skill": "BC-SKL-04006",
+   "sources": [
+    "ced:88"
+   ]
+  },
+  {
+   "archetype": "BC-QA-04003",
+   "consistent_with": [
+    "BC-ERR-04007",
+    "BC-MIS-04005"
+   ],
+   "distinguish_by": "Ask whether a speed can be negative and what the sign records instead.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-04005",
+   "mastery_state": "partially_mastered",
+   "name": "Negative number reported as a speed",
+   "observation": "The response gives a speed with a minus sign attached.",
+   "scope": "shared",
+   "skill": "BC-SKL-04008",
+   "sources": [
+    "ced:88"
+   ]
+  },
+  {
+   "archetype": "BC-QA-04004",
+   "consistent_with": [
+    "BC-ERR-04008",
+    "BC-MIS-04005"
+   ],
+   "distinguish_by": "Ask which quantity must be negative for motion in the negative direction.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-04006",
+   "mastery_state": "prerequisite_gap",
+   "name": "Direction argued from the wrong function",
+   "observation": "The conclusion about direction of travel rests on the sign of the position rather than of the velocity.",
+   "scope": "shared",
+   "skill": "BC-SKL-04009",
+   "sources": [
+    "cr-22:20",
+    "crabbc-25:22"
+   ]
+  },
+  {
+   "archetype": "BC-QA-04003",
+   "consistent_with": [
+    "BC-ERR-04009",
+    "BC-MIS-04006"
+   ],
+   "distinguish_by": "Ask for the sign of the velocity at that instant and whether it changes the conclusion.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-04007",
+   "mastery_state": "partially_mastered",
+   "name": "Only the acceleration sign cited for a speed conclusion",
+   "observation": "The speed conclusion names the sign of the acceleration and does not name the sign of the velocity.",
+   "scope": "shared",
+   "skill": "BC-SKL-04010",
+   "sources": [
+    "cr-22:21",
+    "crabbc-25:22"
+   ]
+  },
+  {
+   "archetype": "BC-QA-04004",
+   "consistent_with": [
+    "BC-ERR-04011",
+    "BC-MIS-04017"
+   ],
+   "distinguish_by": "Ask the student to state the conclusion in one sentence; a correct sentence points to a communication gap.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-04008",
+   "mastery_state": "partially_mastered",
+   "name": "Sign chart with no stated conclusion",
+   "observation": "A correct sign chart appears and no sentence states what it shows about the interval in the prompt.",
+   "scope": "shared",
+   "skill": "BC-SKL-04012",
+   "sources": [
+    "crabbc-25:22",
+    "crabbc-25:23"
+   ]
+  },
+  {
+   "archetype": "BC-QA-04005",
+   "consistent_with": [
+    "BC-ERR-04012",
+    "BC-ERR-04013",
+    "BC-MIS-04007"
+   ],
+   "distinguish_by": "Ask what the letters in the model stand for.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-04009",
+   "mastery_state": "partially_mastered",
+   "name": "Computation correct with the context never named",
+   "observation": "The mathematics is right and no sentence identifies the quantity, its units, or its independent variable.",
+   "scope": "shared",
+   "skill": "BC-SKL-04013",
+   "sources": [
+    "ced:84"
+   ]
+  },
+  {
+   "archetype": "BC-QA-04005",
+   "consistent_with": [
+    "BC-ERR-04014",
+    "BC-MIS-04014"
+   ],
+   "distinguish_by": "Ask the student to write the limit expression that supports the value.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-04010",
+   "mastery_state": "partially_mastered",
+   "name": "Correct value with infinity written in place of a limit",
+   "observation": "The value of the end behaviour is right and the supporting line substitutes infinity into the expression.",
+   "scope": "shared",
+   "skill": "BC-SKL-04016",
+   "sources": [
+    "sg-25:4"
+   ]
+  },
+  {
+   "archetype": "BC-QA-04006",
+   "consistent_with": [
+    "BC-ERR-04015",
+    "BC-MIS-04008",
+    "BC-PRQ-04008"
+   ],
+   "distinguish_by": "Ask the student to write each supplied rate in derivative notation; success points to a translation gap rather than a calculus one.",
+   "evidence_tag": "inferred",
+   "id": "BC-SIG-04011",
+   "mastery_state": "prerequisite_gap",
+   "name": "Rates not written in derivative notation",
+   "observation": "The scenario is restated in words and no quantity appears as a derivative with respect to time.",
+   "scope": "shared",
+   "skill": "BC-SKL-04017",
+   "sources": [
+    "ced:86"
+   ]
+  },
+  {
+   "archetype": "BC-QA-04006",
+   "consistent_with": [
+    "BC-ERR-04016",
+    "BC-MIS-04010",
+    "BC-PRQ-04001"
+   ],
+   "distinguish_by": "Ask for the formula for the named quantity with no calculus involved.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-04012",
+   "mastery_state": "prerequisite_gap",
+   "name": "Relating equation absent or mismatched to the figure",
+   "observation": "The response differentiates something that does not describe the configuration, or differentiates nothing.",
+   "scope": "shared",
+   "skill": "BC-SKL-04018",
+   "sources": [
+    "cr-22:7"
+   ]
+  },
+  {
+   "archetype": "BC-QA-04007",
+   "consistent_with": [
+    "BC-ERR-04017",
+    "BC-MIS-04008"
+   ],
+   "distinguish_by": "Ask what must be multiplied by that derivative to reach the rate with respect to time.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-04013",
+   "mastery_state": "partially_mastered",
+   "name": "Differentiation stops at the derivative with respect to a length",
+   "observation": "The relation is differentiated with respect to a spatial variable and no chain rule step reaches the rate with respect to time.",
+   "scope": "shared",
+   "skill": "BC-SKL-04019",
+   "sources": [
+    "cr-24:18",
+    "cr-22:7"
+   ]
+  },
+  {
+   "archetype": "BC-QA-04006",
+   "consistent_with": [
+    "BC-ERR-04020",
+    "BC-MIS-04011"
+   ],
+   "distinguish_by": "Ask which of the stated numbers would still hold one second later.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-04014",
+   "mastery_state": "prerequisite_gap",
+   "name": "Instantaneous values present before the differentiation",
+   "observation": "A varying dimension appears as a number in the equation that is then differentiated.",
+   "scope": "shared",
+   "skill": "BC-SKL-04023",
+   "sources": [
+    "ced:86"
+   ]
+  },
+  {
+   "archetype": "BC-QA-04006",
+   "consistent_with": [
+    "BC-ERR-04021",
+    "BC-PRQ-04007"
+   ],
+   "distinguish_by": "Present the substituted equation and ask only for the algebra.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-04015",
+   "mastery_state": "partially_mastered",
+   "name": "Correct differentiated equation with the rate never isolated",
+   "observation": "The substitution is complete and the response stops before solving for the requested rate.",
+   "scope": "shared",
+   "skill": "BC-SKL-04024",
+   "sources": [
+    "cr-24:18"
+   ]
+  },
+  {
+   "archetype": "BC-QA-04008",
+   "consistent_with": [
+    "BC-ERR-04023",
+    "BC-ERR-04024",
+    "BC-MIS-04012"
+   ],
+   "distinguish_by": "Ask the student to check that the point satisfies the line they wrote.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-04016",
+   "mastery_state": "partially_mastered",
+   "name": "Correct slope with a tangent line assembly error",
+   "observation": "The slope at the point of tangency is right and the line written does not pass through the point.",
+   "scope": "shared",
+   "skill": "BC-SKL-04028",
+   "sources": [
+    "crabbc-25:25",
+    "cr-24:17"
+   ]
+  },
+  {
+   "archetype": "BC-QA-04008",
+   "consistent_with": [
+    "BC-ERR-04025",
+    "BC-MIS-04013"
+   ],
+   "distinguish_by": "Change the example to an increasing concave down function and ask again; a changed answer points to a guess.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-04017",
+   "mastery_state": "partially_mastered",
+   "name": "Correct direction of error with an increase or decrease reason",
+   "observation": "The over or under estimate claim is right and the reason given is that the function is increasing or decreasing.",
+   "scope": "shared",
+   "skill": "BC-SKL-04030",
+   "sources": [
+    "cr-22:18",
+    "ced:92"
+   ]
+  },
+  {
+   "archetype": "BC-QA-04009",
+   "consistent_with": [
+    "BC-ERR-04028",
+    "BC-ERR-04029",
+    "BC-MIS-04015"
+   ],
+   "distinguish_by": "Ask what has to be true for the rule to apply and whether the response showed it.",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-04018",
+   "mastery_state": "partially_mastered",
+   "name": "Rule applied with the form never verified",
+   "observation": "Derivatives of numerator and denominator appear and no separate limits establish the indeterminate form.",
+   "scope": "shared",
+   "skill": "BC-SKL-04033",
+   "sources": [
+    "sg-23:14",
+    "cr-23:15"
+   ]
+  },
+  {
+   "archetype": "BC-QA-04009",
+   "consistent_with": [
+    "BC-ERR-04030",
+    "BC-ERR-04031",
+    "BC-MIS-04016"
+   ],
+   "distinguish_by": "Ask for the derivative of the numerator alone; the 2023 report records this as the point at which otherwise correct responses failed (cr-23:15).",
+   "evidence_tag": "verified",
+   "id": "BC-SIG-04019",
+   "mastery_state": "partially_mastered",
+   "name": "Hypothesis verified with an incorrect derivative",
+   "observation": "The two separate limits are correct and one of the two derivatives in the new quotient is wrong.",
+   "scope": "shared",
+   "skill": "BC-SKL-04035",
+   "sources": [
+    "cr-23:15",
+    "sg-23:14"
+   ]
+  }
+ ]
+}

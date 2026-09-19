@@ -1,0 +1,154 @@
+{
+ "type": "object",
+ "required": [
+  "point_types"
+ ],
+ "properties": {
+  "point_types": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string"
+     },
+     "name": {
+      "type": "string",
+      "minLength": 3
+     },
+     "scope": {
+      "enum": [
+       "AB_only",
+       "shared",
+       "BC_only",
+       "n/a"
+      ]
+     },
+     "evidence_tag": {
+      "enum": [
+       "verified",
+       "single-source",
+       "inferred",
+       "uncertain"
+      ]
+     },
+     "sources": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "notes": {
+      "type": "string"
+     },
+     "created": {
+      "type": "string"
+     },
+     "updated": {
+      "type": "string"
+     },
+     "status": {
+      "enum": [
+       "active",
+       "retired"
+      ]
+     },
+     "superseded_by": {
+      "type": "string"
+     },
+     "earns": {
+      "type": "string"
+     },
+     "does_not_earn": {
+      "type": "string"
+     },
+     "requires_previous_work": {
+      "enum": [
+       "yes",
+       "no",
+       "varies"
+      ]
+     },
+     "setup_alone_earns": {
+      "enum": [
+       "yes",
+       "no",
+       "varies",
+       "n/a"
+      ]
+     },
+     "simplification_required": {
+      "enum": [
+       "yes",
+       "no",
+       "varies",
+       "n/a"
+      ]
+     },
+     "units_required": {
+      "enum": [
+       "yes",
+       "no",
+       "varies",
+       "n/a"
+      ]
+     },
+     "interpretation_required": {
+      "enum": [
+       "yes",
+       "no",
+       "varies",
+       "n/a"
+      ]
+     },
+     "justification_required": {
+      "enum": [
+       "yes",
+       "no",
+       "varies",
+       "n/a"
+      ]
+     },
+     "hypotheses_required": {
+      "enum": [
+       "yes",
+       "no",
+       "varies",
+       "n/a"
+      ]
+     },
+     "notation_requirements": {
+      "type": "string"
+     },
+     "precision_rules": {
+      "type": "string"
+     },
+     "dependency_on_other_points": {
+      "type": "string"
+     },
+     "eligibility_after_error": {
+      "type": "string"
+     },
+     "rubric_instances": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     }
+    },
+    "required": [
+     "id",
+     "name",
+     "scope",
+     "evidence_tag",
+     "sources",
+     "earns",
+     "does_not_earn",
+     "rubric_instances"
+    ],
+    "additionalProperties": true
+   }
+  }
+ },
+ "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

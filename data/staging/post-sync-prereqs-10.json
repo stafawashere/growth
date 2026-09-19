@@ -1,0 +1,4537 @@
+{
+ "registry": "skills",
+ "skills": [
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10001 (a statement about the terms taken to settle the total)",
+     "BC-SKL-10011 (limit of the general term, computed for the series rather than the sequence)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10001 (a series is presented and the prompt asks what the terms do, so the answer has to name which object it describes)"
+    ],
+    "mastered_if": "The response evaluates the limit of a sub n as n increases without bound, reports that single number as the limit of the sequence, and says the sequence converges to it, or reports divergence when no finite limit exists; the sentence names the sequence rather than the series, and the ratio of leading behaviours in n is handled correctly in both the sigma form and the listed-terms form. BC-ERR-10001 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The limit of a sub n is computed correctly but the closing sentence attaches the number to the series rather than to the sequence, which is BC-ERR-10001, the object being described is left unnamed, or convergence is asserted with no limit value supplied.",
+    "prerequisite_gap_if": "The response cannot evaluate a limit of a ratio of polynomial or exponential expressions in n at all, so nothing about the sequence is produced: that is BC-PRQ-10004, and the limit technique of BC-SKL-01015 rather than sequence language.",
+    "remediation_target": "BC-CON-10001 (the sequence as a list of terms with its own limit) for the conceptual case; BC-PRQ-10004 (limits of ratios in the index) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10001"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10001"
+   ],
+   "concept": "BC-CON-10001",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a sequence defined by a formula in n, evaluate the limit of the terms as n increases without bound and report convergence to that value or divergence.",
+   "description_plain": "Decide whether the terms of a sequence approach a single number and say which number.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-7A2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10001",
+   "learning_objectives": [
+    "BC-LO-LIM-7A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10001"
+   ],
+   "name": "Determine whether a sequence converges and find its limit",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-10004",
+    "BC-SKL-01058"
+   ],
+   "representations": [
+    "BC-REP-10",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:186"
+   ],
+   "topic": "BC-TOP-1001",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10001 (terms and total not separated)",
+     "BC-MIS-10002 (a partial sum read as the value)",
+     "BC-SKL-10011 (limit of the general term)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10002 (a value is requested, so the presence or absence of the limit step on S sub n is decisive)"
+    ],
+    "mastered_if": "The response takes the limit of the closed form for S sub n as n increases without bound and states that the series converges to that limit, or diverges when S sub n has no finite limit; the sentence is about the sum of the series, and the limit is applied to S sub n rather than to a sub n. BC-ERR-10001 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "A correct closed form for S sub n is produced and the limit step is omitted, so the answer stops at a partial sum, which is BC-ERR-10002 and matches BC-SIG-10024, or the limit of a sub n is taken in place of the limit of S sub n, which is BC-ERR-10001.",
+    "prerequisite_gap_if": "The limit of the closed form cannot be evaluated because the ratio of expressions in n is not handled, which is BC-PRQ-10004 rather than a partial-sum gap.",
+    "remediation_target": "BC-MIS-10002 (the series value defined as the limit of its partial sums) for the conceptual case; BC-PRQ-10004 (limits in the index) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10002"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10001"
+   ],
+   "concept": "BC-CON-10002",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a closed form or a pattern for S sub n, evaluate the limit of S sub n as n increases without bound and state that the series converges to that limit or diverges.",
+   "description_plain": "Take the limit of the running totals and read off convergence or divergence.",
+   "diagnostic_signals": [
+    "BC-SIG-10024"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-7A2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10003",
+   "learning_objectives": [
+    "BC-LO-LIM-7A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10001",
+    "BC-MIS-10002"
+   ],
+   "name": "Determine convergence of a series from the limit of its partial sums",
+   "official_evidence": [
+    "BC-MCQ-CED-019"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-10004",
+    "BC-SKL-10001",
+    "BC-SKL-10002"
+   ],
+   "representations": [
+    "BC-REP-11",
+    "BC-REP-10"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:186"
+   ],
+   "topic": "BC-TOP-1001",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10002 (a partial sum read as the value of the series)",
+     "BC-SKL-10002 (computing S sub n without the cancellation structure)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10002 (a value is requested and the cancellation plus limit is the only route to it)"
+    ],
+    "mastered_if": "The response splits the general term into a difference of consecutive expressions, writes S sub n with the interior terms cancelled so that only the surviving first and last pieces remain, and takes the limit of that remainder to report the sum; the surviving boundary terms match the lower index of the sigma.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The split into a difference is correct and the cancellation leaves the wrong boundary terms, or the cancelled form is produced and the limit is never taken so a partial sum is reported as the value, which is BC-ERR-10002.",
+    "prerequisite_gap_if": "The difference of consecutive expressions cannot be lined up because the index cannot be shifted, which is BC-PRQ-10003, or the general term is misread from the sigma, which is BC-PRQ-10008.",
+    "remediation_target": "BC-MIS-10002 (the value as a limit of partial sums) for the conceptual case; BC-PRQ-10003 (index shifting) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10002"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10002"
+   ],
+   "concept": "BC-CON-10002",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a series whose terms split into a difference of consecutive expressions, write S sub n with the interior cancellation carried out and evaluate its limit.",
+   "description_plain": "Cancel the interior terms of the running total and take the limit of what is left.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-7A1",
+    "BC-EK-LIM-7A2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10004",
+   "learning_objectives": [
+    "BC-LO-LIM-7A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10002"
+   ],
+   "name": "Evaluate a telescoping series through its partial sums",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-10003",
+    "BC-PRQ-10008",
+    "BC-SKL-10002",
+    "BC-SKL-10003"
+   ],
+   "representations": [
+    "BC-REP-11",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:186"
+   ],
+   "topic": "BC-TOP-1001",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10001 (a claim about one object taken to settle the other)",
+     "BC-SKL-10001 (the sequence limit)",
+     "BC-SKL-10011 (the general term limit inside a series question)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10001 (several series can appear in one part, so the verdict has to name its subject)"
+    ],
+    "mastered_if": "The response states which of the two objects the prompt names, the list of terms a sub n or the sum of those terms, attaches the convergence question to that object, and names it explicitly in the verdict sentence when more than one series is on the page. BC-ERR-10001 and BC-ERR-10003 are both absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The right object is identified in the work and the closing sentence still says the series when the sequence was meant, which is BC-ERR-10001, or a verdict is stated with no referent where several series appear in the part, which is BC-ERR-10003.",
+    "prerequisite_gap_if": "Function notation itself is not read, so a sub n and the sigma expression are not distinguished as written: that is BC-PRQ-06005 rather than a sequence and series distinction.",
+    "remediation_target": "BC-MIS-10001 (terms against accumulated total) for the conceptual case; BC-PRQ-06005 (function and index notation) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10001"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10001",
+    "BC-ERR-10003"
+   ],
+   "concept": "BC-CON-10002",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a prompt naming a sequence of terms and a series built from them, identify which convergence question is being asked and which limit answers it.",
+   "description_plain": "Say which object is being asked about, the list of terms or their total.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-7A1",
+    "BC-EK-LIM-7A2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10005",
+   "learning_objectives": [
+    "BC-LO-LIM-7A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10001"
+   ],
+   "name": "Distinguish a sequence from its associated series",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-SKL-10001",
+    "BC-SKL-10003"
+   ],
+   "representations": [
+    "BC-REP-10",
+    "BC-REP-11",
+    "BC-REP-04"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:186",
+    "sg-21:23"
+   ],
+   "topic": "BC-TOP-1001",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10003 (decreasing terms taken as licence for the closed form)",
+     "BC-SKL-10019 (the p-series threshold on the exponent applied to a ratio)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10003 (the sum is asked for, so the condition on r is the step that licenses it)",
+     "BC-QA-10020 (a geometric ratio argument is an accepted reason for convergence at a stated input)"
+    ],
+    "mastered_if": "The response states the criterion that a geometric series converges when the absolute value of r is less than one and diverges otherwise, applies it to the r found, and gives the verdict before any sum is written. BC-ERR-10005 is absent, so no finite value is attached to a series with absolute value of r at least one.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The criterion is stated and the absolute value bars are dropped when r is negative, so the comparison is made on the signed ratio, or the closed form is written first and the size of r is checked afterwards, leaving BC-ERR-10005 in reach.",
+    "prerequisite_gap_if": "The inequality on the absolute value of r cannot be resolved into a condition on the variable, which is BC-PRQ-10001 rather than a geometric criterion gap.",
+    "remediation_target": "BC-MIS-10003 (what the size of the ratio controls) for the conceptual case; BC-PRQ-10001 (absolute value inequalities) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10003",
+    "BC-QA-10020"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10005"
+   ],
+   "concept": "BC-CON-10004",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a geometric series, state that it converges when the absolute value of the common ratio is less than one and diverges otherwise, and apply that condition to the ratio found.",
+   "description_plain": "Decide convergence by comparing the size of the ratio with one.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-7A4"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10007",
+   "learning_objectives": [
+    "BC-LO-LIM-7A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10003"
+   ],
+   "name": "Apply the convergence condition for a geometric series",
+   "official_evidence": [
+    "BC-FRQ-2022-Q6-D",
+    "BC-FRQ-2025-Q6-D",
+    "BC-FRQ-2026-Q6-A",
+    "BC-MCQ-PE2012-005",
+    "BC-MCQ-PE2012-027"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-10001",
+    "BC-SKL-10006"
+   ],
+   "representations": [
+    "BC-REP-11",
+    "BC-REP-04"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:187",
+    "sg-25:27"
+   ],
+   "topic": "BC-TOP-1002",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10004 (the sum formula read as requiring the index zero term)",
+     "BC-MIS-10002 (a partial sum offered as the value)",
+     "BC-SKL-10009 (the shifted-index case)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10003 (the closed form is the scored object)",
+     "BC-QA-10002 (a value is requested and a partial sum earns nothing)"
+    ],
+    "mastered_if": "The response forms the quotient of the first term as written over one minus r and reports the value, leaving it unsimplified where the prompt supplies the closed form; the numerator is the term the series actually begins with and the denominator carries one minus the ratio rather than one plus it.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The pair a and r is correct and the sum is built from the index zero term although the sigma begins elsewhere, which is BC-ERR-10006, or the first several terms are added instead of the closed form being applied, which is BC-ERR-10002.",
+    "prerequisite_gap_if": "The common ratio cannot be extracted from the terms, which is BC-PRQ-10005; the sum formula is then applied to numbers that were never a and r.",
+    "remediation_target": "BC-MIS-10004 (which term the formula calls a) for the conceptual case; BC-PRQ-10005 (ratio extraction) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10003",
+    "BC-QA-10002"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10006",
+    "BC-ERR-10002"
+   ],
+   "concept": "BC-CON-10004",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a convergent geometric series with first term a and ratio r, report the sum as a divided by one minus r.",
+   "description_plain": "Divide the first term by one minus the ratio.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-7A4"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10008",
+   "learning_objectives": [
+    "BC-LO-LIM-7A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10004",
+    "BC-MIS-10002"
+   ],
+   "name": "Compute the sum of a convergent geometric series",
+   "official_evidence": [
+    "BC-FRQ-2014-Q6-C",
+    "BC-FRQ-2022-Q6-D",
+    "BC-FRQ-2015-Q6-B",
+    "BC-FRQ-2025-Q6-C",
+    "BC-FRQ-2026-Q6-A",
+    "BC-MCQ-PE2012-005"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-10005",
+    "BC-SKL-10006",
+    "BC-SKL-10007"
+   ],
+   "representations": [
+    "BC-REP-11",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:187",
+    "sg-25:26"
+   ],
+   "topic": "BC-TOP-1002",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10004 (the first term assumed to be the index zero term)",
+     "BC-SKL-10008 (the standard-form sum)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10003 (the closed form is requested from a sigma whose lower index is not zero)"
+    ],
+    "mastered_if": "The response reads the lower index on the sigma, writes out the term produced by that index, and uses it as a in the quotient a over one minus r, or re-indexes the sum to start at zero and carries the resulting factor; the reported value matches the series as printed. BC-ERR-10006 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The ratio is right and a is taken from the index zero position, which is BC-ERR-10006, or the re-indexing route is chosen and the compensating power of r is dropped, so the value is off by exactly one factor of r.",
+    "prerequisite_gap_if": "The index cannot be shifted or the general term cannot be evaluated at the printed lower index, which is BC-PRQ-10003 with BC-PRQ-10008 rather than a geometric sum gap.",
+    "remediation_target": "BC-MIS-10004 (the first term as the one the series begins with) for the conceptual case; BC-PRQ-10003 (re-indexing a sum) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10003"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10006"
+   ],
+   "concept": "BC-CON-10004",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a geometric series whose sigma notation starts at an index other than zero, identify the first term as written and apply the sum formula, or re-index the series before summing.",
+   "description_plain": "Take the first term as the one the series actually starts with, not the n equals zero term.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-7A4"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10009",
+   "learning_objectives": [
+    "BC-LO-LIM-7A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10004"
+   ],
+   "name": "Sum a geometric series whose index does not start at zero",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-10003",
+    "BC-PRQ-10008",
+    "BC-SKL-10006",
+    "BC-SKL-10008"
+   ],
+   "representations": [
+    "BC-REP-11",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:187"
+   ],
+   "topic": "BC-TOP-1002",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10003 (closed form used without checking the size of the ratio)",
+     "BC-MIS-10023 (the interior taken as the complete convergence answer)",
+     "BC-SKL-10072 (closed form recognition for a numerical power series)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10003 (the closed form is scored with the condition on the ratio attached)",
+     "BC-QA-10020 (the ratio argument decides convergence at a stated input)"
+    ],
+    "mastered_if": "The response treats an expression in x as the common ratio, writes the closed form with that expression in the denominator, and records the inequality on the absolute value of the ratio that makes the closed form valid, converting it into a condition on x. BC-ERR-10005 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The closed form in x is written and the validity inequality is omitted, so the representation is claimed for every x, which is BC-ERR-10005, or the inequality is written in the ratio and never solved for x.",
+    "prerequisite_gap_if": "The absolute value inequality in the ratio cannot be turned into an interval in x, which is BC-PRQ-10001, or the constant quotient is not identified, which is BC-PRQ-10005.",
+    "remediation_target": "BC-MIS-10003 (validity of a geometric closed form) for the conceptual case; BC-PRQ-10001 (absolute value inequalities in x) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10003",
+    "BC-QA-10020"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10005"
+   ],
+   "concept": "BC-CON-10004",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a power series that is geometric in x, identify the first term and the ratio as expressions in x, write the closed form, and state the inequality on the ratio that makes it valid.",
+   "description_plain": "Treat the expression in x as the ratio, sum it, and record where the sum is valid.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-7A4",
+    "BC-EK-LIM-8F1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10010",
+   "learning_objectives": [
+    "BC-LO-LIM-7A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10003",
+    "BC-MIS-10023"
+   ],
+   "name": "Sum a geometric series whose ratio contains the variable",
+   "official_evidence": [
+    "BC-FRQ-2025-Q6-C"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-10001",
+    "BC-PRQ-10005",
+    "BC-SKL-10007",
+    "BC-SKL-10008"
+   ],
+   "representations": [
+    "BC-REP-11",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-25:26",
+    "sg-25:27",
+    "ced:187"
+   ],
+   "topic": "BC-TOP-1002",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10005 (the nth term test read as working in both directions)",
+     "BC-SKL-10001 (the same limit computed as a statement about a sequence)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10004 (the test computation is scored separately from the verdict)",
+     "BC-QA-10001 (the form of a sub n drives the choice of test)"
+    ],
+    "mastered_if": "The response extracts a sub n from the sigma, including any alternating factor, and evaluates the limit of a sub n as n increases without bound, with the limit symbol present and the ratio of like degrees in n resolved to the quotient of leading coefficients rather than to zero. BC-ERR-10007 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The general term is extracted correctly and the limit value is wrong, typically a ratio of equal degrees reported as zero, which is BC-ERR-10007, so any verdict resting on it carries no reasoning credit.",
+    "prerequisite_gap_if": "The general term cannot be read out of the sigma at all, which is BC-PRQ-10008, or the limit of the ratio in n is the blocker, which is BC-PRQ-10004.",
+    "remediation_target": "BC-CON-10001 (the general term as the object of the limit) for the conceptual case; BC-PRQ-10004 (limits of ratios in n) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10004",
+    "BC-QA-10001"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10007"
+   ],
+   "concept": "BC-CON-10005",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a series in sigma form, extract the general term and evaluate its limit as n increases without bound.",
+   "description_plain": "Take the limit of a sub n as the index grows.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-7A5"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10011",
+   "learning_objectives": [
+    "BC-LO-LIM-7A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10005"
+   ],
+   "name": "Evaluate the limit of the general term of a series",
+   "official_evidence": [
+    "BC-MCQ-PE2012-043"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-10004",
+    "BC-PRQ-10008",
+    "BC-SKL-10001"
+   ],
+   "representations": [
+    "BC-REP-11",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:188"
+   ],
+   "topic": "BC-TOP-1003",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10006 (a one way test read as reversible)",
+     "BC-SKL-10013 (the inconclusive branch of the same test)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10004 (one point for the right object and one for the verdict with a reason)"
+    ],
+    "mastered_if": "The response shows the limit of a sub n is nonzero or fails to exist, names the nth term test, and concludes that the series diverges, with the series named in the conclusion; the divergence claim is tied to the computed limit rather than asserted. BC-ERR-10009 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The nonzero limit is computed and the test is not named, or the test is named and the limit that licenses it is never displayed, which is BC-ERR-10009, so the justification point is not supported.",
+    "prerequisite_gap_if": "The limit of a sub n cannot be evaluated, so no divergence claim can be grounded: that is BC-PRQ-10004 rather than a gap in the nth term test.",
+    "remediation_target": "BC-MIS-10006 (the one way direction of the nth term test) for the conceptual case; BC-PRQ-10004 (evaluating the limit of a sub n) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10004"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10009"
+   ],
+   "concept": "BC-CON-10005",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a general term whose limit is nonzero or does not exist, name the nth term test and conclude that the series diverges.",
+   "description_plain": "State divergence because the terms do not shrink to zero.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-7A5"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10012",
+   "learning_objectives": [
+    "BC-LO-LIM-7A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10006"
+   ],
+   "name": "Conclude divergence when the general term does not approach zero",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-10004",
+    "BC-SKL-10011"
+   ],
+   "representations": [
+    "BC-REP-11",
+    "BC-REP-04"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:188"
+   ],
+   "topic": "BC-TOP-1003",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10005 (a limit of zero taken as proof of convergence)",
+     "BC-MIS-10006 (the direction of a one way test reversed)",
+     "BC-SKL-10020 (the harmonic series as the standing counterexample)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10004 (the verdict has to rest on a test whose conditions hold)",
+     "BC-QA-10001 (free choice of test, where stopping at the nth term test earns nothing)"
+    ],
+    "mastered_if": "The response states that a limit of zero for a sub n leaves the nth term test with no conclusion and that convergence has to be settled by a different test, and it names a test that fits the form of a sub n instead of stopping. BC-ERR-10008 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The limit of zero is computed and the response stops there without saying the test is silent, or a second test is named and its conditions are never brought to bear on this series.",
+    "prerequisite_gap_if": "The response never reaches the limit because a sub n cannot be read as a function of the index, which is BC-PRQ-06005 rather than a misreading of the test.",
+    "remediation_target": "BC-MIS-10005 (what a limit of zero does and does not settle) for the conceptual case; BC-PRQ-06005 (reading a sub n as a function of n) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10004",
+    "BC-QA-10001"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10008"
+   ],
+   "concept": "BC-CON-10005",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a general term whose limit is zero, state that the nth term test yields no conclusion and that convergence must be decided by another test.",
+   "description_plain": "Say that terms going to zero settles nothing and another test is needed.",
+   "diagnostic_signals": [
+    "BC-SIG-10001"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-7A5"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10013",
+   "learning_objectives": [
+    "BC-LO-LIM-7A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10005",
+    "BC-MIS-10006"
+   ],
+   "name": "State that the nth term test is inconclusive when the limit is zero",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-SKL-10011"
+   ],
+   "representations": [
+    "BC-REP-11",
+    "BC-REP-04"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:188",
+    "sg-24:19"
+   ],
+   "topic": "BC-TOP-1003",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10007 (hypotheses and setup treated as ceremony around a named test)",
+     "BC-SKL-06067 (improper integral setup in the integration unit)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10005 (the improper integral is a separate scored step from the conditions and the evaluation)"
+    ],
+    "mastered_if": "The response writes the integral of f of x with the lower limit equal to the index the series starts at and an upper limit carried as a variable inside limit notation; the integrand matches a sub n with the index replaced by the continuous variable. BC-ERR-10012 and BC-ERR-10011 are both absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The integrand is correct and the lower limit is one when the sigma starts elsewhere, which is BC-ERR-10012, or the integral is opened with the infinity symbol in place of limit notation, which is BC-ERR-10011; a correct subsequent limit keeps the evaluation point in reach.",
+    "prerequisite_gap_if": "The switch from the index n to a bound continuous variable is not made, which is BC-PRQ-06013, or f of x cannot be written from a sub n at all, which is BC-PRQ-06005.",
+    "remediation_target": "BC-CON-10001 (the correspondence between the series and the integral) for the conceptual case; BC-PRQ-06013 (bound variables) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10005"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10011",
+    "BC-ERR-10012"
+   ],
+   "concept": "BC-CON-10006",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a series of terms f of n, write the corresponding improper integral with the correct lower limit and with limit notation for the upper limit.",
+   "description_plain": "Write the integral of f from the starting index to infinity as a limit.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-7A6"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10015",
+   "learning_objectives": [
+    "BC-LO-LIM-7A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10007"
+   ],
+   "name": "Set up the improper integral that matches the series",
+   "official_evidence": [
+    "BC-FRQ-2021-Q6-A",
+    "BC-MCQ-SAMPLE-024"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-PRQ-06013",
+    "BC-SKL-10014",
+    "BC-SKL-06067"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-11"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-21:21",
+    "sg-21:22"
+   ],
+   "topic": "BC-TOP-1004",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10007 (test machinery run without its supporting form)",
+     "BC-SKL-10015 (the setup step, where the lower limit rather than the notation is the issue)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10005 (the evaluation is scored on the limit notation, not only on the number)"
+    ],
+    "mastered_if": "The response antidifferentiates the integrand, evaluates between the lower limit and a variable upper bound b, then writes the limit as b increases without bound and reports a finite value or divergence; limit notation is present through the evaluation rather than dropped partway. BC-ERR-10011 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The antiderivative is correct and the infinity symbol is substituted into it, which is BC-ERR-10011 and matches BC-SIG-10010, or limit notation opens the line and is abandoned before the value is produced.",
+    "prerequisite_gap_if": "The antiderivative itself is wrong because a negative or fractional exponent is mishandled, which is BC-PRQ-06002, or a logarithm rule is misapplied, which is BC-PRQ-06003.",
+    "remediation_target": "BC-CON-10001 (an improper integral as a limit of proper integrals) for the conceptual case; BC-PRQ-06002 (exponent rules in the antiderivative) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10005"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10011"
+   ],
+   "concept": "BC-CON-10006",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given the improper integral that matches a series, antidifferentiate, evaluate between the lower limit and a variable upper bound, and take the limit of that expression, reporting a finite value or divergence.",
+   "description_plain": "Antidifferentiate, evaluate at the variable bound, and take the limit.",
+   "diagnostic_signals": [
+    "BC-SIG-10010"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-7A6"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10016",
+   "learning_objectives": [
+    "BC-LO-LIM-7A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10007"
+   ],
+   "name": "Evaluate the improper integral using limit notation",
+   "official_evidence": [
+    "BC-FRQ-2021-Q6-A"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06002",
+    "BC-PRQ-06003",
+    "BC-SKL-10015",
+    "BC-SKL-06034",
+    "BC-SKL-06068"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-21:21",
+    "sg-21:22"
+   ],
+   "topic": "BC-TOP-1004",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10008 (the integral test read as an evaluation rather than a comparison)",
+     "BC-MIS-10002 (a number reported as the series value)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10005 (the conclusion is the step the conditions and the integral were built for)"
+    ],
+    "mastered_if": "The response states that the series converges because the matching improper integral converges, or diverges because the integral diverges, names which series the verdict is about, and makes no claim that the integral's value is the sum. BC-ERR-10013 and BC-ERR-10003 are both absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The integral is evaluated to a finite number and that number is reported as the sum of the series, which is BC-ERR-10013, or the verdict is correct and no series is named where several appear in the part, which is BC-ERR-10003.",
+    "prerequisite_gap_if": "The correspondence between f of n and a sub n is not held, so the conclusion is drawn about the wrong object, which is BC-PRQ-06005.",
+    "remediation_target": "BC-MIS-10008 (what the integral test transfers and what it does not) for the conceptual case; BC-PRQ-06005 (matching f of n to a sub n) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10005"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10013",
+    "BC-ERR-10003"
+   ],
+   "concept": "BC-CON-10006",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a convergent or divergent improper integral and the verified conditions, conclude that the series converges or diverges by the integral test, naming the series.",
+   "description_plain": "Report that the series behaves as the integral does, without claiming the two have the same value.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-7A6"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10017",
+   "learning_objectives": [
+    "BC-LO-LIM-7A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10008"
+   ],
+   "name": "Conclude convergence or divergence of the series from the integral",
+   "official_evidence": [
+    "BC-FRQ-2021-Q6-A",
+    "BC-MCQ-SAMPLE-024"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-SKL-10014",
+    "BC-SKL-10016"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-11"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-21:21",
+    "sg-21:22"
+   ],
+   "topic": "BC-TOP-1004",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10009 (the threshold placed elsewhere than at one)",
+     "BC-MIS-10005 (terms tending to zero taken as sufficient)",
+     "BC-SKL-10007 (the geometric condition on the ratio)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10004 (the verdict and its reason are scored together)"
+    ],
+    "mastered_if": "The response compares the exponent p with one, states that the p-series converges when p is greater than one and diverges when p is at most one, and applies that to the exponent actually present, including the case p equal to one. BC-ERR-10014 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The criterion is stated with the boundary at one and the strict case is mishandled, so p equal to one is called convergent, or the criterion is applied to a series that is not a p-series.",
+    "prerequisite_gap_if": "The exponent is misread because a radical or a reciprocal was not converted, which is BC-PRQ-06002 rather than a gap in the criterion itself.",
+    "remediation_target": "BC-MIS-10009 (the p-series threshold) for the conceptual case; BC-PRQ-06002 (reading the exponent) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10004"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10014"
+   ],
+   "concept": "BC-CON-10007",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a p-series, state that it converges when p is greater than one and diverges when p is at most one, and apply that to the exponent present.",
+   "description_plain": "Compare the exponent with one and state convergence or divergence.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-7A7"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10019",
+   "learning_objectives": [
+    "BC-LO-LIM-7A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10009",
+    "BC-MIS-10005"
+   ],
+   "name": "Apply the p-series criterion",
+   "official_evidence": [
+    "BC-MCQ-PE2012-027"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06002",
+    "BC-SKL-10018"
+   ],
+   "representations": [
+    "BC-REP-11",
+    "BC-REP-04"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:190"
+   ],
+   "topic": "BC-TOP-1005",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10005 (terms going to zero read as convergence, with the harmonic series as the refutation)",
+     "BC-SKL-10018 (family classification)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10015 (the comparison to the harmonic series carries the endpoint part)",
+     "BC-QA-10004 (a named reference series supplies the reason)"
+    ],
+    "mastered_if": "The response states without rederivation that the harmonic series diverges and that the alternating harmonic series converges, and uses one of them as a named reference series in a comparison or as the counterexample to a limit of zero implying convergence. BC-ERR-10014 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The two behaviours are recalled and swapped, or the harmonic series is cited correctly and the sign factor is ignored when the alternating one is the series in hand.",
+    "prerequisite_gap_if": "The general term one over n is not recognised from the printed form, which is BC-PRQ-06005, so no standard series can be named.",
+    "remediation_target": "BC-MIS-10005 (the harmonic series as the standing counterexample) for the conceptual case; BC-PRQ-06005 (recognising one over n) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10004",
+    "BC-QA-10015"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10014"
+   ],
+   "concept": "BC-CON-10007",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Reproduce, without rederivation, that the harmonic series diverges and that the alternating harmonic series converges, and use either as a reference series in a comparison.",
+   "description_plain": "State that the harmonic series diverges and the alternating harmonic series converges.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-7A7"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10020",
+   "learning_objectives": [
+    "BC-LO-LIM-7A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10005"
+   ],
+   "name": "Recall the behaviour of the harmonic and alternating harmonic series",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-SKL-10018"
+   ],
+   "representations": [
+    "BC-REP-11",
+    "BC-REP-04"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:190",
+    "sg-24:19",
+    "sg-25:24"
+   ],
+   "topic": "BC-TOP-1005",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10007 (the name of the test taken as the argument)",
+     "BC-MIS-10014 (a ratio limit of one read as a result)",
+     "BC-SKL-10022 (choosing the comparison series once comparison is chosen)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10001 (the choice is free, so the verdict rests on the conditions of whatever test is chosen)",
+     "BC-QA-10015 (the two endpoint series often need different tests)"
+    ],
+    "mastered_if": "The response names a test whose hypotheses this series meets and ties the choice to a visible feature of a sub n, a constant quotient for the geometric test, a factorial or a power of n for the ratio test, a rational expression for comparison or limit comparison against a p-series, a sign changing factor for the alternating series test, or a positive decreasing continuous f for the integral test, and the conditions are verified rather than asserted. BC-ERR-10009 and BC-ERR-10015 are both absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "A test that does fit is named and its conditions are never established, which is BC-ERR-10009, or a comparison is aimed at an alternating series or the alternating series test at a series of positive terms, which is BC-ERR-10015.",
+    "prerequisite_gap_if": "The general term cannot be read out of the sigma, so no form cue is available, which is BC-PRQ-10008, or a constant quotient is not recognised, which is BC-PRQ-10005.",
+    "remediation_target": "BC-MIS-10007 (matching hypotheses to the series) for the conceptual case; BC-PRQ-10008 (reading the general term) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10001",
+    "BC-QA-10015"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10009",
+    "BC-ERR-10015"
+   ],
+   "concept": "BC-CON-10008",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a series, name a test whose hypotheses the series meets, using cues such as a constant ratio for the geometric test, a factorial or a power of n for the ratio test, a rational expression for comparison or limit comparison to a p-series, an alternating factor for the alternating series test, and a positive decreasing continuous function for the integral test.",
+   "description_plain": "Choose the test that matches the shape of the terms before computing anything.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-7A7",
+    "BC-EK-LIM-7A11"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10021",
+   "learning_objectives": [
+    "BC-LO-LIM-7A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10007",
+    "BC-MIS-10014"
+   ],
+   "name": "Select an appropriate convergence test from the form of the general term",
+   "official_evidence": [
+    "BC-MCQ-PE2012-009"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-10008",
+    "BC-PRQ-10005",
+    "BC-SKL-10007",
+    "BC-SKL-10019"
+   ],
+   "representations": [
+    "BC-REP-11",
+    "BC-REP-04"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:190",
+    "ced:193",
+    "sg-25:25"
+   ],
+   "topic": "BC-TOP-1005",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10009 (the p-series criterion applied to series that are not p-series)",
+     "BC-SKL-10025 (limit comparison, which tolerates a mismatch in constant factors)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10004 (the comparison series is the object the test is run on)",
+     "BC-QA-10015 (the endpoint series is matched against a standard reference)"
+    ],
+    "mastered_if": "The response names an explicit comparison series b sub n, a geometric series or a p-series, whose terms match the dominant behaviour of a sub n for large n, states it in sigma or general term form, and restricts the comparison to nonnegative terms. BC-ERR-10015 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "A comparison series is named and its exponent or ratio does not match the dominant behaviour, so the inequality that follows cannot be established, or a comparison is attempted on a series whose terms change sign, which is BC-ERR-10015.",
+    "prerequisite_gap_if": "The dominant behaviour cannot be identified because the ratio of powers in n is not simplified, which is BC-PRQ-10004, or the exponent after a root conversion is wrong, which is BC-PRQ-06002.",
+    "remediation_target": "BC-CON-10001 (dominant behaviour of terms for large n) for the conceptual case; BC-PRQ-10004 (ratios of powers in n) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10004",
+    "BC-QA-10015"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10015"
+   ],
+   "concept": "BC-CON-10009",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a series with nonnegative terms, select a geometric series or p-series whose terms agree with the dominant behaviour of a sub n for large n, and state the comparison series explicitly.",
+   "description_plain": "Pick a standard series whose terms match the dominant behaviour.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-7A8",
+    "BC-EK-LIM-7A9"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10022",
+   "learning_objectives": [
+    "BC-LO-LIM-7A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10009"
+   ],
+   "name": "Choose a comparison series for a given series",
+   "official_evidence": [
+    "BC-FRQ-2024-Q6-A",
+    "BC-MCQ-PE2012-009"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-10004",
+    "BC-PRQ-06002",
+    "BC-SKL-10018"
+   ],
+   "representations": [
+    "BC-REP-11",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:191",
+    "sg-24:19"
+   ],
+   "topic": "BC-TOP-1006",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10010 (comparison treated as association between similar series)",
+     "BC-SKL-10026 (limit comparison, where no inequality direction is needed)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10004 (the reason point depends on the inequality supporting the claim)"
+    ],
+    "mastered_if": "The response writes the inequality between a sub n and b sub n in the direction the intended conclusion needs, valid for every n from the starting index onward, and supports it by a visible feature such as a larger denominator or a bounded numerator. BC-ERR-10016 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "A serviceable comparison series is chosen and the inequality is written in the direction that does not support the verdict, bounding above by a divergent series or below by a convergent one, which is BC-SIG-10013 and BC-ERR-10016.",
+    "prerequisite_gap_if": "The relative size of the two general terms cannot be established for large n, which is BC-PRQ-10004 rather than a comparison gap.",
+    "remediation_target": "BC-MIS-10010 (which direction of inequality licenses which conclusion) for the conceptual case; BC-PRQ-10004 (comparing sizes of terms) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10004"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10016"
+   ],
+   "concept": "BC-CON-10009",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a series and a chosen comparison series with nonnegative terms, state and support the inequality between a sub n and b sub n valid for all n from the starting index onward.",
+   "description_plain": "Show which series has the larger terms, for every index in range.",
+   "diagnostic_signals": [
+    "BC-SIG-10013"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-7A8"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10023",
+   "learning_objectives": [
+    "BC-LO-LIM-7A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10010"
+   ],
+   "name": "Establish the term-by-term inequality for a direct comparison",
+   "official_evidence": [
+    "BC-FRQ-2024-Q6-A",
+    "BC-MCQ-PE2012-043"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-10004",
+    "BC-SKL-10022"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-11"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-24:19",
+    "sg-24:20"
+   ],
+   "topic": "BC-TOP-1006",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10010 (the direction of the inequality untied from the conclusion)",
+     "BC-SKL-10023 (establishing the inequality, the step before this one)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10004 (the verdict with a reason is the scored object)",
+     "BC-QA-10015 (the endpoint verdict rests on the comparison)"
+    ],
+    "mastered_if": "The response combines the stated inequality with the known behaviour of b sub n into the verdict the direct comparison test supports, convergence when the larger series converges and divergence when the smaller one diverges, and names which series the verdict is about. BC-ERR-10016 and BC-ERR-10003 are both absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The inequality and the reference behaviour are both correct and the conclusion drawn is the one the direction does not support, which is BC-ERR-10016, or the verdict is right and no series is identified where several appear, which is BC-ERR-10003.",
+    "prerequisite_gap_if": "The behaviour of the comparison series is not known, so nothing can be transferred: that is a p-series or geometric recall gap, BC-SKL-10019 or BC-SKL-10007, rather than a comparison gap.",
+    "remediation_target": "BC-MIS-10010 (what each direction of comparison implies) for the conceptual case; BC-SKL-10019 (behaviour of the reference p-series) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10004",
+    "BC-QA-10015"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10016",
+    "BC-ERR-10003"
+   ],
+   "concept": "BC-CON-10009",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a term-by-term inequality and the known behaviour of the comparison series, state the conclusion that the direct comparison test supports, and name the series concluded about.",
+   "description_plain": "Combine the inequality with the known behaviour of the comparison series.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-7A8"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10024",
+   "learning_objectives": [
+    "BC-LO-LIM-7A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10010"
+   ],
+   "name": "Conclude convergence or divergence by direct comparison",
+   "official_evidence": [
+    "BC-FRQ-2024-Q6-A",
+    "BC-MCQ-PE2012-043"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-SKL-10023",
+    "BC-SKL-10019"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-11"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-24:19",
+    "sg-24:20"
+   ],
+   "topic": "BC-TOP-1006",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10011 (the ratio test threshold of one carried into the limit comparison)",
+     "BC-SKL-10031 (the ratio of consecutive terms, a different quotient)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10006 (the setup point turns on limit notation and the reciprocal is accepted)",
+     "BC-QA-10015 (limit comparison applied at an endpoint)"
+    ],
+    "mastered_if": "The response forms the quotient of a sub n by b sub n, or its reciprocal, and writes it inside limit notation as n increases without bound, with absolute value bars present when the claim concerns absolute convergence. BC-ERR-10017 and BC-ERR-10018 are both absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The quotient is formed correctly and the limit symbol is omitted, so a value is asserted as the index grows, which is BC-ERR-10017, or the quotient is run on signed terms while absolute convergence is the claim, which is BC-ERR-10018.",
+    "prerequisite_gap_if": "The quotient of powers with the same base cannot be simplified, which is BC-PRQ-10007, or the limit of the resulting ratio cannot be evaluated, which is BC-PRQ-10004.",
+    "remediation_target": "BC-MIS-10011 (which quotient the limit comparison takes) for the conceptual case; BC-PRQ-10007 (simplifying ratios of powers) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10006",
+    "BC-QA-10015"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10017",
+    "BC-ERR-10018"
+   ],
+   "concept": "BC-CON-10010",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a series and a chosen comparison series, write the limit as n increases without bound of a sub n divided by b sub n, or its reciprocal, with limit notation present.",
+   "description_plain": "Write the limit of the quotient of the two general terms.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-7A9"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10025",
+   "learning_objectives": [
+    "BC-LO-LIM-7A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10011"
+   ],
+   "name": "Set up the limit comparison ratio with limit notation",
+   "official_evidence": [
+    "BC-FRQ-2021-Q6-B"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-10004",
+    "BC-PRQ-10007",
+    "BC-SKL-10022"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-21:23",
+    "sg-25:24"
+   ],
+   "topic": "BC-TOP-1006",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10011 (one treated as the deciding threshold in a limit comparison)",
+     "BC-SKL-10033 (the ratio test conclusion, where one is the threshold)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10006 (the explanation point requires the limit to be positive and the series named)"
+    ],
+    "mastered_if": "The response evaluates the limit comparison ratio, states in words that it is positive and finite, and transfers the behaviour of b sub n to the series in question, naming that series in the conclusion. BC-ERR-10019 and BC-ERR-10003 are both absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The ratio limit is evaluated correctly and then compared with one as though the ratio test were running, which is BC-SIG-10011 and BC-ERR-10019, or the transfer is made and the series concluded about is left unnamed, which is BC-ERR-10003.",
+    "prerequisite_gap_if": "The limit of the quotient cannot be evaluated, which is BC-PRQ-10004, so the criterion never gets a value to judge.",
+    "remediation_target": "BC-MIS-10011 (positive and finite against a comparison with one) for the conceptual case; BC-PRQ-10004 (evaluating the quotient limit) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10006"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10019",
+    "BC-ERR-10003"
+   ],
+   "concept": "BC-CON-10010",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given the value of the limit comparison ratio, state that it is positive and finite, and conclude that the series behaves as the comparison series does, naming the series concluded about.",
+   "description_plain": "Say that the limit is positive and finite, then transfer the behaviour of the comparison series.",
+   "diagnostic_signals": [
+    "BC-SIG-10011"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-7A9"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10026",
+   "learning_objectives": [
+    "BC-LO-LIM-7A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10011"
+   ],
+   "name": "Conclude from a positive finite limit in a limit comparison",
+   "official_evidence": [
+    "BC-FRQ-2021-Q6-B"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-10004",
+    "BC-SKL-10025"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-21:23"
+   ],
+   "topic": "BC-TOP-1006",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10013 (the two conditions collapsed into one)",
+     "BC-SKL-10029 (the limit condition, the other half of the test)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10004 (the conditions carry the reason point)",
+     "BC-QA-10008 (the bound is licensed only once both conditions are stated)"
+    ],
+    "mastered_if": "The response shows that the absolute values of the terms form a decreasing sequence from the starting index onward, by an explicit inequality between consecutive absolute values or by the sign of the derivative of the matching function, and states the decrease as one of the two alternating series conditions. BC-ERR-10020 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The decrease is asserted from the first few terms with no argument that it continues for every index, or the decrease is shown and the limit condition is never stated, which is BC-ERR-10020 and the collapse described in BC-MIS-10013.",
+    "prerequisite_gap_if": "The comparison between consecutive absolute values cannot be resolved because the ratio in n is not handled, which is BC-PRQ-10004.",
+    "remediation_target": "BC-MIS-10013 (the two separate requirements of the alternating series test) for the conceptual case; BC-PRQ-10004 (comparing consecutive terms) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10004",
+    "BC-QA-10008"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10020"
+   ],
+   "concept": "BC-CON-10011",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given an alternating series, show that the absolute values of the terms form a decreasing sequence from the starting index onward.",
+   "description_plain": "Check that each term is smaller in size than the one before it.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-7A10"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10028",
+   "learning_objectives": [
+    "BC-LO-LIM-7A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10013"
+   ],
+   "name": "Verify that the terms decrease in absolute value",
+   "official_evidence": [
+    "BC-FRQ-2022-Q6-B"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-10004",
+    "BC-SKL-10027"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-10"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:192",
+    "sg-22:21"
+   ],
+   "topic": "BC-TOP-1007",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10013 (one condition stated for two)",
+     "BC-MIS-10005 (a limit of zero read as sufficient for convergence)",
+     "BC-SKL-10013 (the inconclusive nth term test case)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10004 (the reason point requires both conditions)",
+     "BC-QA-10008 (the error bound rests on the same two conditions)"
+    ],
+    "mastered_if": "The response evaluates the limit of the absolute values of the terms and states that it is zero, presenting it as the second alternating series condition alongside the decrease rather than as a convergence argument in itself. BC-ERR-10020 and BC-ERR-10008 are both absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The limit of zero is produced and the decrease condition is omitted, which is BC-ERR-10020, or the zero limit alone is offered as the reason the series converges, which is BC-ERR-10008.",
+    "prerequisite_gap_if": "The limit of the absolute value expression in n cannot be evaluated, which is BC-PRQ-10004.",
+    "remediation_target": "BC-MIS-10005 (what a zero limit settles on its own) for the conceptual case; BC-PRQ-10004 (limits of the absolute terms) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10004",
+    "BC-QA-10008"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10020",
+    "BC-ERR-10008"
+   ],
+   "concept": "BC-CON-10011",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given an alternating series, evaluate the limit of the absolute values of the terms and confirm it is zero.",
+   "description_plain": "Check that the size of the terms has limit zero.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-7A10"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10029",
+   "learning_objectives": [
+    "BC-LO-LIM-7A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10013",
+    "BC-MIS-10005"
+   ],
+   "name": "Verify that the terms tend to zero",
+   "official_evidence": [
+    "BC-FRQ-2022-Q6-B"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-10004",
+    "BC-SKL-10027",
+    "BC-SKL-10001"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-10"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:192",
+    "sg-22:21"
+   ],
+   "topic": "BC-TOP-1007",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10012 (the alternating factor taken as the whole test)",
+     "BC-MIS-10007 (the test name treated as the argument)",
+     "BC-SKL-10058 (the same test applied at an endpoint)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10004 (a conclusion with no supporting condition earns the first point only)",
+     "BC-QA-10015 (an alternating endpoint series needs both conditions stated)"
+    ],
+    "mastered_if": "The response names the alternating series test, states both that the terms alternate in sign with absolute values decreasing and that those absolute values have limit zero, and concludes convergence for the named series. BC-ERR-10020 and BC-ERR-10009 are both absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "One of the two conditions is stated and the other is left out while the verdict is given, which is BC-ERR-10020, or the test is named with no condition attached at all, which is BC-ERR-10009.",
+    "prerequisite_gap_if": "The terms cannot be read as a signed sequence in n, which is BC-PRQ-06005, so neither condition can be stated.",
+    "remediation_target": "BC-MIS-10012 (the full hypothesis set of the alternating series test) for the conceptual case; BC-PRQ-06005 (reading the signed general term) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10004",
+    "BC-QA-10015"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10020",
+    "BC-ERR-10009"
+   ],
+   "concept": "BC-CON-10011",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given an alternating series whose terms decrease in absolute value to zero, state both conditions and conclude convergence by the alternating series test.",
+   "description_plain": "Name the test and state that the terms decrease in magnitude to zero.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-7A10"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10030",
+   "learning_objectives": [
+    "BC-LO-LIM-7A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10012",
+    "BC-MIS-10007"
+   ],
+   "name": "Conclude convergence by the alternating series test with both conditions stated",
+   "official_evidence": [
+    "BC-FRQ-2012-Q6-A",
+    "BC-FRQ-2022-Q6-A",
+    "BC-FRQ-2018-Q6-B",
+    "BC-MCQ-CED-019"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-SKL-10028",
+    "BC-SKL-10029"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-11"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:192",
+    "sg-22:20",
+    "sg-25:24"
+   ],
+   "topic": "BC-TOP-1007",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10014 (a ratio limit of one taken as a conclusion)",
+     "BC-SKL-10011 (the limit of a sub n rather than of the ratio)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10013 (the limit is scored separately from the ratio)",
+     "BC-QA-10014 (the radius rests on this limit)"
+    ],
+    "mastered_if": "The response cancels the factorials and the common powers in the ratio, then evaluates the limit as n increases without bound with the limit symbol present, producing either a number or an expression in the absolute value of x minus the centre. BC-ERR-10017 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The ratio is formed correctly and the limit is evaluated to the wrong value, which is BC-SIG-10002 and banks the ratio point while losing the limit point, or the limit symbol is omitted, which is BC-ERR-10017.",
+    "prerequisite_gap_if": "The factorial ratio does not reduce, which is BC-PRQ-10002, or the powers with a common base are mishandled, which is BC-PRQ-10007.",
+    "remediation_target": "BC-CON-10001 (the ratio limit as the deciding quantity) for the conceptual case; BC-PRQ-10002 (simplifying factorial ratios) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10013",
+    "BC-QA-10014"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10017"
+   ],
+   "concept": "BC-CON-10012",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given the ratio of consecutive terms, simplify factorials and powers, and evaluate the limit as n increases without bound with limit notation present.",
+   "description_plain": "Simplify the quotient and take its limit as the index grows.",
+   "diagnostic_signals": [
+    "BC-SIG-10002"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-7A11"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10032",
+   "learning_objectives": [
+    "BC-LO-LIM-7A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10014"
+   ],
+   "name": "Evaluate the limit of the ratio of consecutive terms",
+   "official_evidence": [
+    "BC-FRQ-2012-Q6-A",
+    "BC-FRQ-2021-Q6-C",
+    "BC-FRQ-2014-Q6-A",
+    "BC-FRQ-2015-Q6-A",
+    "BC-FRQ-2024-Q6-D",
+    "BC-FRQ-2025-Q6-A"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-10002",
+    "BC-PRQ-10004",
+    "BC-PRQ-10007",
+    "BC-SKL-10031"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-25:24",
+    "sg-21:24"
+   ],
+   "topic": "BC-TOP-1008",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10014 (a limit of one read as a result rather than as a failure of the test)",
+     "BC-SKL-10026 (the limit comparison criterion, where one is not a threshold)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10004 (the verdict must rest on the computed limit)",
+     "BC-QA-10001 (the ratio test may be chosen where its limit decides nothing)"
+    ],
+    "mastered_if": "The response reads the ratio limit against one and states absolute convergence when it is below one, divergence when it is above one, and that the test yields nothing when it equals one, naming the inconclusive case explicitly rather than defaulting to a verdict. BC-ERR-10009 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The two decisive cases are handled and a limit of exactly one is converted into a verdict, or the correct verdict is stated with the ratio limit never displayed, which is BC-ERR-10009.",
+    "prerequisite_gap_if": "The inequality involving the absolute value of the limit cannot be resolved, which is BC-PRQ-10001 rather than a gap in the criterion.",
+    "remediation_target": "BC-MIS-10014 (the inconclusive case of the ratio test) for the conceptual case; BC-PRQ-10001 (absolute value inequalities) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10004",
+    "BC-QA-10001"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10009"
+   ],
+   "concept": "BC-CON-10012",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given the value of the ratio limit, state that the series converges absolutely when the limit is less than one, diverges when it is greater than one, and that the test is inconclusive when it equals one.",
+   "description_plain": "Compare the limit with one and state convergence, divergence, or no conclusion.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-7A11"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10033",
+   "learning_objectives": [
+    "BC-LO-LIM-7A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10014"
+   ],
+   "name": "Conclude from the value of the ratio limit, including the inconclusive case",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-10001",
+    "BC-SKL-10032"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:193"
+   ],
+   "topic": "BC-TOP-1008",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10015 (absolute and conditional used as interchangeable labels)",
+     "BC-SKL-10027 (recognising the alternating factor, the step before)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10007 (the explanation point requires the absolute value bars to be visible)",
+     "BC-QA-10006 (limit comparison is the usual vehicle on the absolute value series)"
+    ],
+    "mastered_if": "The response writes the series of absolute values of the terms with the sign factor removed, applies a named test to that series, and reports convergence or divergence of the absolute value series as a claim separate from any claim about the signed series; absolute value bars appear in the work. BC-ERR-10018 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "A test is run and it is run on the signed terms while the claim made is about absolute convergence, which is BC-ERR-10018, or the absolute value series is written and the verdict never states which of the two series it concerns.",
+    "prerequisite_gap_if": "The alternating factor cannot be identified and removed from the general term, which is BC-PRQ-10008.",
+    "remediation_target": "BC-MIS-10015 (two distinct series, two distinct tests) for the conceptual case; BC-PRQ-10008 (stripping the alternating factor) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10006",
+    "BC-QA-10007"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10018"
+   ],
+   "concept": "BC-CON-10013",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a series with mixed signs, write the series of absolute values and apply an appropriate test to it, reporting convergence or divergence of that series.",
+   "description_plain": "Strip the signs and decide whether that series converges.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-7A12"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10034",
+   "learning_objectives": [
+    "BC-LO-LIM-7A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10015"
+   ],
+   "name": "Test the series of absolute values",
+   "official_evidence": [
+    "BC-FRQ-2021-Q6-B",
+    "BC-MCQ-SAMPLE-022"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-10008",
+    "BC-SKL-10027",
+    "BC-SKL-10021"
+   ],
+   "representations": [
+    "BC-REP-11",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:194",
+    "sg-21:23"
+   ],
+   "topic": "BC-TOP-1009",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10015 (the two labels used interchangeably)",
+     "BC-SKL-10036 (the conditional case)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10007 (the classification and its referent are scored together)",
+     "BC-QA-10006 (the limit comparison that establishes the absolute value verdict)"
+    ],
+    "mastered_if": "The response cites convergence of the series of absolute values and concludes that the original series converges absolutely, naming the series the label attaches to when several are in play. BC-ERR-10023 and BC-ERR-10003 are both absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The absolute value series is shown to converge and the label written is conditional, which is BC-ERR-10023, or the label is right and the sentence does not say which series it describes, which is BC-SIG-10012 and BC-ERR-10003.",
+    "prerequisite_gap_if": "The absolute value series was never formed, so the label rests on a test of the signed series: that is BC-SKL-10034 rather than a classification gap.",
+    "remediation_target": "BC-MIS-10015 (what absolute convergence asserts) for the conceptual case; BC-SKL-10034 (testing the absolute value series) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10007",
+    "BC-QA-10006"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10023",
+    "BC-ERR-10003"
+   ],
+   "concept": "BC-CON-10013",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given that the series of absolute values converges, state that the original series converges absolutely, naming the series in question.",
+   "description_plain": "Say the series converges absolutely because the absolute value series converges.",
+   "diagnostic_signals": [
+    "BC-SIG-10012"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-7A12",
+    "BC-EK-LIM-7A13"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10035",
+   "learning_objectives": [
+    "BC-LO-LIM-7A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10015"
+   ],
+   "name": "Classify a series as absolutely convergent",
+   "official_evidence": [
+    "BC-FRQ-2021-Q6-B",
+    "BC-MCQ-SAMPLE-022"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-SKL-10034"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-11"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:194",
+    "sg-21:23"
+   ],
+   "topic": "BC-TOP-1009",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10015 (the two labels treated as one)",
+     "BC-MIS-10016 (the two classifications ordered on a single scale)",
+     "BC-SKL-10035 (the absolute case)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10007 (the classification requires both verdicts and a named series)",
+     "BC-QA-10015 (a conditionally convergent endpoint series is the usual setting)"
+    ],
+    "mastered_if": "The response reports two findings, that the signed series converges and that the series of absolute values diverges, and gives the label conditionally convergent with both findings as the reason. BC-ERR-10023 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "Both tests are run and the label attached reverses them, which is BC-ERR-10023, or only one of the two findings is produced and the label is written as though both had been established.",
+    "prerequisite_gap_if": "One of the two tests cannot be carried out on its series, so only one verdict exists: that points at BC-SKL-10034 or BC-SKL-10030 rather than at the classification.",
+    "remediation_target": "BC-MIS-10016 (conditional and absolute as exclusive, not graded) for the conceptual case; BC-SKL-10034 (testing the absolute value series) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10007",
+    "BC-QA-10015"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10023"
+   ],
+   "concept": "BC-CON-10014",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given that a series converges and that the series of absolute values diverges, state that the series converges conditionally and give both findings as the reason.",
+   "description_plain": "Say the series converges but its absolute value series does not.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-7A12"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10036",
+   "learning_objectives": [
+    "BC-LO-LIM-7A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10015",
+    "BC-MIS-10016"
+   ],
+   "name": "Classify a series as conditionally convergent",
+   "official_evidence": [
+    "BC-MCQ-SAMPLE-022"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-SKL-10034",
+    "BC-SKL-10030"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-11"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:194",
+    "ced:190"
+   ],
+   "topic": "BC-TOP-1009",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10016 (the two classifications placed on one scale)",
+     "BC-SKL-10035 (labelling, as against drawing the implication)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10007 (the implication is what links the two series in the classification)"
+    ],
+    "mastered_if": "The response moves from convergence of the series of absolute values to convergence of the signed series and cites that absolute convergence implies convergence as the warrant, without rerunning a test on the signed series. BC-ERR-10023 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The implication is used and the resulting series is then labelled conditionally convergent, which is BC-ERR-10023, or the implication is asserted in the reverse direction, from convergence of the signed series to absolute convergence.",
+    "prerequisite_gap_if": "Convergence of the absolute value series was never established, so the implication has no antecedent: that is BC-SKL-10034.",
+    "remediation_target": "BC-MIS-10016 (the one way implication between the two series) for the conceptual case; BC-SKL-10034 (establishing the antecedent) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10007"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10023"
+   ],
+   "concept": "BC-CON-10013",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given that the series of absolute values converges, conclude that the original series converges, citing that absolute convergence implies convergence.",
+   "description_plain": "Move from convergence of the absolute value series to convergence of the series itself.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-7A13"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10037",
+   "learning_objectives": [
+    "BC-LO-LIM-7A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10016"
+   ],
+   "name": "Use absolute convergence to conclude convergence",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-SKL-10035"
+   ],
+   "representations": [
+    "BC-REP-04"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:194"
+   ],
+   "topic": "BC-TOP-1009",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10016 (rearrangement assumed safe for any convergent series)",
+     "BC-SKL-10036 (the conditional case, where the property fails)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10007 (the classification determines whether the property may be invoked)"
+    ],
+    "mastered_if": "The response states that regrouping or rearranging the terms of an absolutely convergent series leaves its value unchanged, and confines that claim to the absolutely convergent case rather than extending it to a conditionally convergent series such as the alternating harmonic series. BC-ERR-10023 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The invariance is stated correctly and then applied to a series only shown to converge, without the absolute value series having been tested, so the hypothesis of the statement is not in hand.",
+    "prerequisite_gap_if": "The series has not been classified at all, so there is no basis on which to invoke the property: that is BC-SKL-10035 rather than a rearrangement gap.",
+    "remediation_target": "BC-MIS-10016 (what absolute convergence buys beyond convergence) for the conceptual case; BC-SKL-10035 (classifying before invoking) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10007"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10023"
+   ],
+   "concept": "BC-CON-10013",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given an absolutely convergent series, state that any series obtained from it by regrouping or rearranging its terms has the same value.",
+   "description_plain": "Say that reordering the terms of an absolutely convergent series leaves its value alone.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-7A14"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10038",
+   "learning_objectives": [
+    "BC-LO-LIM-7A"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10016"
+   ],
+   "name": "State the effect of rearrangement on an absolutely convergent series",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-SKL-10035"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-11"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:194"
+   ],
+   "topic": "BC-TOP-1009",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10017 (an error bound treated as a formula with no hypotheses)",
+     "BC-SKL-10030 (the same two conditions used for convergence rather than for the bound)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10008 (the justification point requires the conditions and the inequality together)"
+    ],
+    "mastered_if": "The response states, before any bound is written, that the series alternates in sign and that the absolute values of its terms decrease to zero, and presents those two statements as what licenses the alternating series error bound. BC-ERR-10020 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The correct bounding term is used and the two conditions are never stated, which is BC-SIG-10015 and BC-ERR-10020, so the justification point is lost while the term point stands.",
+    "prerequisite_gap_if": "The signed general term cannot be read, so neither condition can be asserted about it, which is BC-PRQ-06005.",
+    "remediation_target": "BC-MIS-10017 (what licenses the alternating series bound) for the conceptual case; BC-SKL-10028 (verifying the decrease) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10008"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10020"
+   ],
+   "concept": "BC-CON-10015",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a request to bound the error of a partial sum, state that the series is alternating with terms decreasing in absolute value to zero, which is the condition that licenses the bound.",
+   "description_plain": "State that the series alternates and its terms decrease to zero before using the bound.",
+   "diagnostic_signals": [
+    "BC-SIG-10015"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-7B1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10039",
+   "learning_objectives": [
+    "BC-LO-LIM-7B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10017"
+   ],
+   "name": "Confirm the alternating series test conditions before bounding the error",
+   "official_evidence": [
+    "BC-FRQ-2012-Q6-B",
+    "BC-FRQ-2019-Q6-D",
+    "BC-FRQ-2021-Q6-D",
+    "BC-FRQ-2022-Q6-B",
+    "BC-FRQ-2024-Q6-B",
+    "BC-FRQ-2026-Q6-C",
+    "BC-FRQ-2018-Q6-C",
+    "BC-MCQ-SAMPLE-020"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-SKL-10030"
+   ],
+   "representations": [
+    "BC-REP-11",
+    "BC-REP-04"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-22:21",
+    "sg-24:21",
+    "ced:195"
+   ],
+   "topic": "BC-TOP-1010",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10017 (the bound treated as a formula attached to the partial sum)",
+     "BC-SKL-10049 (the next derivative, the analogous step in the Lagrange bound)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10008 (the first point is earned only for the correct omitted term)"
+    ],
+    "mastered_if": "The response counts the terms already contained in the partial sum and writes the very next term of the series explicitly, in its symbolic form, as the quantity that bounds the error. BC-ERR-10024 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The bounding term is identified one place too far along or is taken from inside the partial sum, which is BC-SIG-10016 and BC-ERR-10024, so the term point is not earned even when the subsequent arithmetic is clean.",
+    "prerequisite_gap_if": "The general term cannot be evaluated at the required index, which is BC-PRQ-10008, or the index cannot be shifted to locate the next one, which is BC-PRQ-10003.",
+    "remediation_target": "BC-CON-10001 (the omitted tail as what the bound measures) for the conceptual case; BC-PRQ-10003 (index counting) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10008"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10024"
+   ],
+   "concept": "BC-CON-10015",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a partial sum of a stated number of terms, identify the next term of the series as the one that bounds the error and write it explicitly.",
+   "description_plain": "Find the term just past the last one used.",
+   "diagnostic_signals": [
+    "BC-SIG-10016"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-7B1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10040",
+   "learning_objectives": [
+    "BC-LO-LIM-7B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10017"
+   ],
+   "name": "Identify the first omitted term of the partial sum",
+   "official_evidence": [
+    "BC-FRQ-2012-Q6-B",
+    "BC-FRQ-2019-Q6-D",
+    "BC-FRQ-2021-Q6-D",
+    "BC-FRQ-2022-Q6-B",
+    "BC-FRQ-2024-Q6-B",
+    "BC-FRQ-2026-Q6-C",
+    "BC-FRQ-2018-Q6-C",
+    "BC-MCQ-SAMPLE-020"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-10008",
+    "BC-PRQ-10003",
+    "BC-SKL-10002",
+    "BC-SKL-10027"
+   ],
+   "representations": [
+    "BC-REP-11",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-22:21",
+    "sg-24:21",
+    "sg-21:25"
+   ],
+   "topic": "BC-TOP-1010",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10018 (the bounding expression treated as the exact error)",
+     "BC-SKL-10040 (identifying the term, the step before the substitution)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10008 (the point attached to using the term correctly turns on the value substituted)"
+    ],
+    "mastered_if": "The response substitutes the input the prompt names into the first omitted term, evaluates its absolute value, and reports a number; the value substituted is the stated input rather than the centre or the index. BC-ERR-10025 and BC-ERR-10024 are both absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The correct omitted term is identified and the index or the centre is substituted in place of the input, which is BC-ERR-10025, or the power in the term is evaluated with an arithmetic slip while the setup stands.",
+    "prerequisite_gap_if": "The power or factorial in the term cannot be evaluated, which is BC-PRQ-06002, or the term cannot be read from the sigma, which is BC-PRQ-10008.",
+    "remediation_target": "BC-MIS-10018 (bound against exact error) for the conceptual case; BC-PRQ-06002 (evaluating the power) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10008"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10024",
+    "BC-ERR-10025"
+   ],
+   "concept": "BC-CON-10015",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given the first omitted term and a numerical input, substitute and evaluate the absolute value of that term.",
+   "description_plain": "Substitute the stated value into the first omitted term and compute its size.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-7B1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10041",
+   "learning_objectives": [
+    "BC-LO-LIM-7B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10018"
+   ],
+   "name": "Evaluate the bounding term at the given input",
+   "official_evidence": [
+    "BC-FRQ-2012-Q6-B",
+    "BC-FRQ-2019-Q6-D",
+    "BC-FRQ-2021-Q6-D",
+    "BC-FRQ-2022-Q6-B",
+    "BC-FRQ-2024-Q6-B",
+    "BC-FRQ-2026-Q6-C",
+    "BC-FRQ-2018-Q6-C"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06002",
+    "BC-PRQ-10008",
+    "BC-SKL-10040"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-22:21",
+    "sg-24:21"
+   ],
+   "topic": "BC-TOP-1010",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10018 (the bound read as the exact error)",
+     "BC-SKL-10051 (the same comparison for the Lagrange bound)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10008 (an equality statement does not earn the justification point)"
+    ],
+    "mastered_if": "The response presents a chain of inequalities, the absolute error is at most the evaluated bounding term and that term is at most the stated tolerance, with inequality symbols rather than an equals sign and with the tolerance named. BC-ERR-10026 and BC-ERR-10027 are both absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The bounding value is correct and the relation is written as an equality, which is BC-SIG-10014 and BC-ERR-10026, or the value is computed and never set against the tolerance the prompt named, which is BC-ERR-10027.",
+    "prerequisite_gap_if": "The inequality against the tolerance cannot be resolved once absolute value bars are present, which is BC-PRQ-10001.",
+    "remediation_target": "BC-MIS-10018 (at most against exactly) for the conceptual case; BC-PRQ-10001 (inequalities with absolute value) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10008"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10026",
+    "BC-ERR-10027"
+   ],
+   "concept": "BC-CON-10015",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given an evaluated bounding term and a tolerance, present the inequality stating that the error is at most the bounding term and that the bounding term is at most the tolerance.",
+   "description_plain": "Write the chain of inequalities that puts the error under the required number.",
+   "diagnostic_signals": [
+    "BC-SIG-10014"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-7B1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10042",
+   "learning_objectives": [
+    "BC-LO-LIM-7B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10018"
+   ],
+   "name": "Compare the error bound with a stated tolerance",
+   "official_evidence": [
+    "BC-FRQ-2012-Q6-B",
+    "BC-FRQ-2019-Q6-D",
+    "BC-FRQ-2022-Q6-B",
+    "BC-FRQ-2024-Q6-B",
+    "BC-FRQ-2026-Q6-C",
+    "BC-MCQ-SAMPLE-020"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-10001",
+    "BC-SKL-10041"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-04"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-22:21",
+    "sg-24:21"
+   ],
+   "topic": "BC-TOP-1010",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10019 (derivative values attached to powers with no factorial denominators)",
+     "BC-SKL-10044 (assembling the polynomial from the values)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10010 (the form of the rule and the derivative itself are scored separately)"
+    ],
+    "mastered_if": "The response differentiates the given function or the relation defining its derivative to the required order, displaying the product rule or chain rule form with every factor present, and evaluates each successive derivative at the centre in order, carrying earlier values into the next differentiation. BC-ERR-10028 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The form of the product rule is displayed correctly and the resulting derivative drops a factor, which is BC-SIG-10019 and BC-ERR-10028, so the form point may stand while the derivative point is lost, and the response may carry its own value consistently afterwards.",
+    "prerequisite_gap_if": "The relation cannot be read as defining a derivative of a named function, so nothing is differentiated, which is BC-PRQ-06005.",
+    "remediation_target": "BC-CON-10001 (successive derivatives evaluated at the centre) for the conceptual case; BC-SKL-10044 (placing the values into coefficients) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10010"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10028"
+   ],
+   "concept": "BC-CON-10016",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a function or a relation defining its derivatives, compute derivatives up to the required order and evaluate each at the centre, carrying product or chain rule steps correctly.",
+   "description_plain": "Differentiate repeatedly and evaluate each derivative at the centre.",
+   "diagnostic_signals": [
+    "BC-SIG-10019"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-8A1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10043",
+   "learning_objectives": [
+    "BC-LO-LIM-8A",
+    "BC-LO-LIM-8B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10019"
+   ],
+   "name": "Compute successive derivatives of a function at the centre",
+   "official_evidence": [
+    "BC-FRQ-2013-Q6-B",
+    "BC-FRQ-2021-Q5-A",
+    "BC-FRQ-2023-Q6-A",
+    "BC-FRQ-2025-Q5-B",
+    "BC-MCQ-PE2012-032"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-SKL-02036",
+    "BC-SKL-03002",
+    "BC-SKL-03030"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-23:19",
+    "ced:196"
+   ],
+   "topic": "BC-TOP-1011",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10019 (factorial denominators absent or misassigned)",
+     "BC-MIS-10020 (the requested degree not treated as binding)",
+     "BC-SKL-10067 (the polynomial as a partial sum of the series)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10010 (two points sit on the terms of the polynomial and one on stopping at the requested degree)",
+     "BC-QA-10011 (the coefficients carry the credit)"
+    ],
+    "mastered_if": "The response divides each derivative value at a by the matching factorial, attaches the power of x minus a of the same order, and writes the polynomial to the requested degree and no further, with no trailing ellipsis. BC-ERR-10029 and BC-ERR-10030 are both absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The derivative values are correct and are placed straight onto the powers with no factorial denominators, which is BC-SIG-10018 and BC-ERR-10029, or the coefficients are right and the answer runs past the requested degree or ends in an ellipsis, which is BC-ERR-10030.",
+    "prerequisite_gap_if": "The factorials in the denominators cannot be evaluated or simplified, which is BC-PRQ-10002, so the coefficients are never formed.",
+    "remediation_target": "BC-MIS-10019 (why each coefficient carries a factorial) for the conceptual case; BC-PRQ-10002 (factorial arithmetic) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10010",
+    "BC-QA-10011"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10029",
+    "BC-ERR-10030"
+   ],
+   "concept": "BC-CON-10016",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given values of f and its derivatives at a, write the Taylor polynomial of stated degree with each coefficient equal to the derivative value divided by the corresponding factorial.",
+   "description_plain": "Divide each derivative value by the matching factorial and attach the power.",
+   "diagnostic_signals": [
+    "BC-SIG-10018"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-8A1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10044",
+   "learning_objectives": [
+    "BC-LO-LIM-8A",
+    "BC-LO-LIM-8B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10019"
+   ],
+   "name": "Build a Taylor polynomial from derivative values at the centre",
+   "official_evidence": [
+    "BC-FRQ-2019-Q6-A",
+    "BC-FRQ-2013-Q6-A",
+    "BC-FRQ-2013-Q6-B",
+    "BC-FRQ-2013-Q6-C",
+    "BC-FRQ-2021-Q5-A",
+    "BC-FRQ-2023-Q6-A",
+    "BC-FRQ-2023-Q6-C",
+    "BC-FRQ-2025-Q5-B",
+    "BC-MCQ-SAMPLE-021",
+    "BC-MCQ-PE2012-032"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-10002",
+    "BC-SKL-10043"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-11"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-23:19",
+    "ced:196"
+   ],
+   "topic": "BC-TOP-1011",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10019 (values attached directly to the powers)",
+     "BC-SKL-10044 (the same assembly from values obtained by differentiating)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10011 (the table form isolates the pairing of order to power)"
+    ],
+    "mastered_if": "The response reads from the table the entries for exactly the orders the requested degree needs, pairs each derivative value with the power of the same order, divides by the matching factorial, and presents the polynomial about the point the table is built at. BC-ERR-10031 and BC-ERR-10029 are both absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The values are located in the table and one is paired with the power of a different order, which is BC-ERR-10031, or every value is placed correctly with the factorial denominators missing, which is BC-ERR-10029.",
+    "prerequisite_gap_if": "The table rows cannot be read as orders of derivative at a point, which is BC-PRQ-06005, or the factorials cannot be evaluated, which is BC-PRQ-10002.",
+    "remediation_target": "BC-MIS-10019 (coefficient as value over factorial) for the conceptual case; BC-SKL-02008 (reading values from a table) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10011"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10031",
+    "BC-ERR-10029"
+   ],
+   "concept": "BC-CON-10016",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a table listing f and its derivatives at a point, select the entries for the required orders and assemble the Taylor polynomial of the stated degree about that point.",
+   "description_plain": "Read the derivative values out of the table and place them in the coefficients.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-8A1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10045",
+   "learning_objectives": [
+    "BC-LO-LIM-8A",
+    "BC-LO-LIM-8B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10019"
+   ],
+   "name": "Build a Taylor polynomial from a table of derivative values",
+   "official_evidence": [
+    "BC-FRQ-2019-Q6-A",
+    "BC-MCQ-SAMPLE-021"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-10002",
+    "BC-PRQ-06005",
+    "BC-SKL-10044"
+   ],
+   "representations": [
+    "BC-REP-03",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:196"
+   ],
+   "topic": "BC-TOP-1011",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10020 (the requested degree not treated as binding)",
+     "BC-SKL-10044 (the general centre case, where powers of x minus a appear)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10010 (a nonzero term of the wrong degree or an ellipsis loses the final point)",
+     "BC-QA-10012 (the same polynomial reached through a known series)"
+    ],
+    "mastered_if": "The response builds the polynomial about x equals zero so each term carries a plain power of x, uses the derivative values at zero divided by the matching factorial, names it a Maclaurin polynomial, and stops at the requested degree. BC-ERR-10030 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The coefficients through the requested degree are correct and an extra term or a trailing ellipsis is appended, which is BC-SIG-10020 and BC-ERR-10030, so the presentation rather than the mathematics is the gap.",
+    "prerequisite_gap_if": "The factorial denominators cannot be formed, which is BC-PRQ-10002, so the Maclaurin coefficients are never produced.",
+    "remediation_target": "BC-MIS-10020 (a polynomial of stated degree as a finite object) for the conceptual case; BC-PRQ-10002 (factorial denominators) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10010",
+    "BC-QA-10012"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10030"
+   ],
+   "concept": "BC-CON-10016",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a function with derivatives at zero, write its Maclaurin polynomial of stated degree, recognising it as the Taylor polynomial about x equals zero.",
+   "description_plain": "Use the centre zero so the powers are plain powers of x.",
+   "diagnostic_signals": [
+    "BC-SIG-10020"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-8A1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10046",
+   "learning_objectives": [
+    "BC-LO-LIM-8A",
+    "BC-LO-LIM-8B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10020"
+   ],
+   "name": "Write a Maclaurin polynomial as the Taylor polynomial about zero",
+   "official_evidence": [
+    "BC-FRQ-2019-Q6-A",
+    "BC-FRQ-2013-Q6-A",
+    "BC-FRQ-2013-Q6-B",
+    "BC-FRQ-2023-Q6-A",
+    "BC-MCQ-SAMPLE-021",
+    "BC-MCQ-PE2012-032"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-10002",
+    "BC-SKL-10044"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-23:19"
+   ],
+   "topic": "BC-TOP-1011",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10020 (the requested degree not binding)",
+     "BC-MIS-10021 (the series treated as valid at every input)",
+     "BC-SKL-10065 (multiplying a known series by an expression)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10012 (the derivative relation, the first terms, and the complete polynomial are three separate points)"
+    ],
+    "mastered_if": "The response produces the requested polynomial for the related function either by differentiating the defining relation with every product or chain factor present or by multiplying, differentiating, or antidifferentiating a known Maclaurin series term by term, and presents terms through the requested degree only, with supporting work for each coefficient. BC-ERR-10028 and BC-ERR-10030 are both absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The route through the known series is taken and terms beyond the requested degree or an ellipsis are carried along, which is BC-ERR-10030, or the defining relation is differentiated with a factor dropped, which is BC-ERR-10028, or a coefficient of the right shape appears with no supporting work.",
+    "prerequisite_gap_if": "The defining relation cannot be read as connecting the two functions, which is BC-PRQ-06005, or the factorials cannot be handled, which is BC-PRQ-10002.",
+    "remediation_target": "BC-CON-10001 (operations that carry one series into another) for the conceptual case; BC-SKL-10044 (assembling the polynomial) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10012"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10028",
+    "BC-ERR-10030"
+   ],
+   "concept": "BC-CON-10016",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a function defined from another by a product, a derivative, or an antiderivative, produce the requested Taylor polynomial by operating on a known series or by differentiating the defining relation.",
+   "description_plain": "Combine known series by multiplying, differentiating, or antidifferentiating, then keep the needed degrees.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-8A1",
+    "BC-EK-LIM-8E1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10047",
+   "learning_objectives": [
+    "BC-LO-LIM-8A",
+    "BC-LO-LIM-8B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10020",
+    "BC-MIS-10021"
+   ],
+   "name": "Build a Taylor polynomial for a related function from a known series",
+   "official_evidence": [
+    "BC-FRQ-2019-Q6-B",
+    "BC-FRQ-2013-Q6-C",
+    "BC-FRQ-2015-Q6-C",
+    "BC-FRQ-2023-Q6-C"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-10002",
+    "BC-PRQ-06005",
+    "BC-SKL-10044"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-11"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-23:20",
+    "sg-23:21"
+   ],
+   "topic": "BC-TOP-1011",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10021 (the representation assumed valid at every input)",
+     "BC-SKL-10066 (evaluating the full series at a point)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10012 (the polynomial is the object being evaluated)",
+     "BC-QA-10009 (the approximation is what the error bound is written about)"
+    ],
+    "mastered_if": "The response substitutes the given input into the Taylor polynomial, evaluates each term, reports the sum as an approximation of f at that input, and keeps the object a polynomial of the stated degree rather than a series. BC-ERR-10030 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The substitution is carried out and the result is presented as the exact value of the function, or extra terms past the requested degree are included before evaluating, which is BC-ERR-10030.",
+    "prerequisite_gap_if": "The polynomial cannot be evaluated at the input because function notation and substitution are the blocker, which is BC-PRQ-06005.",
+    "remediation_target": "BC-MIS-10021 (approximation against exact value) for the conceptual case; BC-PRQ-06005 (evaluating the polynomial) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10012",
+    "BC-QA-10009"
+   ],
+   "calculator_relevance": "optional",
+   "common_errors": [
+    "BC-ERR-10030"
+   ],
+   "concept": "BC-CON-10017",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a Taylor polynomial for f about a and an input near a, evaluate the polynomial at that input and present the result as an approximation of the function value.",
+   "description_plain": "Substitute the input into the polynomial and report the value.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-8B1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10048",
+   "learning_objectives": [
+    "BC-LO-LIM-8A",
+    "BC-LO-LIM-8B"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10021"
+   ],
+   "name": "Approximate a function value with a Taylor polynomial",
+   "official_evidence": [
+    "BC-FRQ-2019-Q6-C",
+    "BC-FRQ-2013-Q6-A",
+    "BC-FRQ-2021-Q5-A",
+    "BC-FRQ-2023-Q6-B",
+    "BC-FRQ-2025-Q5-C"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-SKL-10044"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-09"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:196"
+   ],
+   "topic": "BC-TOP-1011",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10017 (a bound invoked with no condition established first)",
+     "BC-SKL-10040 (the first omitted term, the alternating analogue)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10009 (the form point depends on the order of the derivative in the bound)"
+    ],
+    "mastered_if": "The response identifies the derivative one order past the degree of the polynomial, so a polynomial of degree n calls for a bound on the absolute value of the n plus first derivative, and uses the bound supplied by the prompt on the closed interval between the centre and the input. BC-ERR-10032 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "A bound is used and it is on the derivative of the same order as the polynomial rather than one higher, which is BC-SIG-10017, or the supplied bound is used on an interval other than the one between the centre and the input.",
+    "prerequisite_gap_if": "The order of the derivative cannot be tracked through the notation, which is BC-PRQ-06005, so the wrong row of the supplied information is used.",
+    "remediation_target": "BC-CON-10001 (the order of the derivative the remainder uses) for the conceptual case; BC-PRQ-06005 (derivative order notation) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10009"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10032"
+   ],
+   "concept": "BC-CON-10018",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a Taylor polynomial of degree n and an interval between the centre and the input, identify a bound for the absolute value of the n plus first derivative on that interval, using a supplied bound when one is given.",
+   "description_plain": "Find or use the supplied bound on the derivative one order past the polynomial.",
+   "diagnostic_signals": [
+    "BC-SIG-10017"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-8C1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10049",
+   "learning_objectives": [
+    "BC-LO-LIM-8C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10017"
+   ],
+   "name": "Identify the maximum of the next derivative on the interval",
+   "official_evidence": [
+    "BC-FRQ-2023-Q6-B",
+    "BC-FRQ-2025-Q5-C",
+    "BC-MCQ-CED-022"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-SKL-10043",
+    "BC-SKL-10044"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-04"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-23:20",
+    "ced:197"
+   ],
+   "topic": "BC-TOP-1012",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10018 (the bound written as the exact error)",
+     "BC-SKL-10042 (the alternating series bound, which uses a term rather than a derivative)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10009 (the form of the bound is a point of its own)"
+    ],
+    "mastered_if": "The response writes the bound as the maximum of the absolute value of the n plus first derivative times the absolute value of x minus a raised to the n plus first power, divided by n plus one factorial, with all three parts present and their orders agreeing. BC-ERR-10032 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The bound is assembled with two of the three parts correct, most often the power of x minus a carrying n instead of n plus one, or the factorial being n factorial, which is BC-ERR-10032 and takes the comparison point with it.",
+    "prerequisite_gap_if": "The factorial cannot be evaluated, which is BC-PRQ-10002, or the power of the displacement cannot be formed, which is BC-PRQ-06002.",
+    "remediation_target": "BC-CON-10001 (the structure of the Lagrange remainder) for the conceptual case; BC-PRQ-10002 (the factorial denominator) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10009"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10032"
+   ],
+   "concept": "BC-CON-10018",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given the degree, the centre, the input, and a bound on the next derivative, write the error bound as that bound multiplied by the absolute value of the difference raised to the n plus first power divided by n plus one factorial.",
+   "description_plain": "Assemble the bound from the derivative bound, the power, and the factorial.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-8C1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10050",
+   "learning_objectives": [
+    "BC-LO-LIM-8C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10018"
+   ],
+   "name": "Write the Lagrange error bound in the correct form",
+   "official_evidence": [
+    "BC-FRQ-2023-Q6-B",
+    "BC-FRQ-2025-Q5-C",
+    "BC-MCQ-CED-022"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-10002",
+    "BC-PRQ-06002",
+    "BC-SKL-10044",
+    "BC-SKL-10049"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-23:20"
+   ],
+   "topic": "BC-TOP-1012",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10018 (bound treated as exact error)",
+     "BC-SKL-10042 (the alternating series comparison against a tolerance)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10009 (the second point is showing the error is at most the tolerance)"
+    ],
+    "mastered_if": "The response evaluates the assembled Lagrange bound to a number and presents the inequality that the absolute error is at most that number and that the number is at most the stated tolerance, using inequality symbols throughout. BC-ERR-10026 and BC-ERR-10027 are both absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The bound is assembled correctly and the relation to the error is written with an equals sign, which is BC-ERR-10026, or the number is produced and never compared with the tolerance, which is BC-ERR-10027; a later simplification slip costs this comparison alone.",
+    "prerequisite_gap_if": "The factorial or the power in the bound cannot be evaluated, which is BC-PRQ-10002, or the inequality cannot be resolved, which is BC-PRQ-10001.",
+    "remediation_target": "BC-MIS-10018 (at most against equals) for the conceptual case; BC-PRQ-10002 (evaluating the bound) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10009"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10026",
+    "BC-ERR-10027"
+   ],
+   "concept": "BC-CON-10018",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given the assembled bound and a tolerance, evaluate the bound and present the inequality stating that the error is at most the bound and that the bound is at most the tolerance.",
+   "description_plain": "Evaluate the bound and show it is at most the number required.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-8C1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10051",
+   "learning_objectives": [
+    "BC-LO-LIM-8C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10018"
+   ],
+   "name": "Compare the Lagrange bound with a stated tolerance",
+   "official_evidence": [
+    "BC-FRQ-2023-Q6-B",
+    "BC-FRQ-2025-Q5-C",
+    "BC-MCQ-CED-022"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-10001",
+    "BC-PRQ-10002",
+    "BC-SKL-10050"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-04"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-23:20"
+   ],
+   "topic": "BC-TOP-1012",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10017 (an error bound applied as a formula with no hypotheses)",
+     "BC-MIS-10018 (the bound written as the exact error)",
+     "BC-SKL-10039 (confirming the alternating conditions)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10009 (the Lagrange route, where a derivative bound is supplied)",
+     "BC-QA-10008 (the alternating route, where the omitted term is the bound)"
+    ],
+    "mastered_if": "The response checks whether the series at the input alternates with absolute values decreasing to zero and, when it does, uses the first omitted term as the bound; where those conditions are not met it writes the Lagrange bound instead, and it states which conditions drove the choice. BC-ERR-10033 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "A bound is chosen and used cleanly while the reason for choosing it is not stated, or the Lagrange bound is reached for where the series alternates and no derivative bound is available, which is BC-ERR-10033.",
+    "prerequisite_gap_if": "The form of the series at the input cannot be read, so neither set of conditions can be checked, which is BC-PRQ-06005.",
+    "remediation_target": "BC-MIS-10017 (the hypotheses each bound requires) for the conceptual case; BC-SKL-10039 (checking the alternating conditions) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10009",
+    "BC-QA-10008"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10033"
+   ],
+   "concept": "BC-CON-10019",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a Taylor approximation, decide whether the series alternates with terms decreasing to zero, in which case the alternating series bound applies, or whether the Lagrange bound is the available tool, and state the reason for the choice.",
+   "description_plain": "Pick the bound whose conditions the situation satisfies.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-8C1",
+    "BC-EK-LIM-8C2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10052",
+   "learning_objectives": [
+    "BC-LO-LIM-8C"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10017",
+    "BC-MIS-10018"
+   ],
+   "name": "Choose between the Lagrange and alternating series error bounds",
+   "official_evidence": [
+    "BC-FRQ-2026-Q6-C"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-SKL-10050",
+    "BC-SKL-10039"
+   ],
+   "representations": [
+    "BC-REP-04",
+    "BC-REP-11"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:197",
+    "sg-24:21"
+   ],
+   "topic": "BC-TOP-1012",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10014 (a ratio limit of one taken as a result)",
+     "BC-SKL-10031 (the same ratio for a numerical series)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10013 (the ratio and the limit are the first two of five points)",
+     "BC-QA-10014 (the radius rests on this limit)"
+    ],
+    "mastered_if": "The response forms the ratio of the term with index n plus one to the term with index n for the series in x, cancels the common powers and factorials, and evaluates the limit as an expression in the absolute value of x minus the centre with limit notation present. BC-ERR-10021 and BC-ERR-10017 are both absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The ratio is formed with n plus one substituted in some positions and not others, which is BC-ERR-10021, or the reciprocal ratio is presented and carried through consistently, which is BC-SIG-10003 and blocks only the final interval point, or the limit symbol is dropped, which is BC-ERR-10017.",
+    "prerequisite_gap_if": "The factorial ratio does not simplify, which is BC-PRQ-10002, the powers with a common base do not reduce, which is BC-PRQ-10007, or the limit in n cannot be taken, which is BC-PRQ-10004.",
+    "remediation_target": "BC-CON-10001 (the ratio test applied in the variable x) for the conceptual case; BC-PRQ-10007 (ratios of powers) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10013",
+    "BC-QA-10014"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10021",
+    "BC-ERR-10017"
+   ],
+   "concept": "BC-CON-10021",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a power series, write the ratio of the term with index n plus one to the term with index n, simplify, and evaluate the limit as an expression in the absolute value of x minus the centre.",
+   "description_plain": "Form the ratio of consecutive terms of the series in x and take its limit.",
+   "diagnostic_signals": [
+    "BC-SIG-10003"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-8D3"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10054",
+   "learning_objectives": [
+    "BC-LO-LIM-8D"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10014"
+   ],
+   "name": "Apply the ratio test to a power series",
+   "official_evidence": [
+    "BC-FRQ-2012-Q6-A",
+    "BC-FRQ-2021-Q6-C",
+    "BC-FRQ-2014-Q6-A",
+    "BC-FRQ-2022-Q6-A",
+    "BC-FRQ-2015-Q6-A",
+    "BC-FRQ-2024-Q6-D",
+    "BC-FRQ-2025-Q6-A",
+    "BC-FRQ-2018-Q6-B",
+    "BC-MCQ-PE2012-013"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-10002",
+    "BC-PRQ-10007",
+    "BC-PRQ-10004",
+    "BC-SKL-10053",
+    "BC-SKL-10031",
+    "BC-SKL-10032"
+   ],
+   "representations": [
+    "BC-REP-11",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-25:24",
+    "sg-22:20",
+    "sg-21:24"
+   ],
+   "topic": "BC-TOP-1013",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10023 (the interior taken as the finished interval of convergence)",
+     "BC-SKL-10059 (the final interval with endpoint inclusion)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10013 (the interior is a point of its own and an incorrect interior that earned it still supports the endpoint point)"
+    ],
+    "mastered_if": "The response sets the ratio limit less than one and solves the absolute value inequality into a compound inequality in x or an open interval, showing both bounds around the centre. BC-ERR-10035 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The inequality is solved as a one sided statement, producing a half interval, which is BC-SIG-10007 and BC-ERR-10035, so the interior point is not earned although the ratio and limit points stand.",
+    "prerequisite_gap_if": "The absolute value inequality cannot be split into two inequalities, which is BC-PRQ-10001, or the result cannot be written in interval form, which is BC-PRQ-10006.",
+    "remediation_target": "BC-CON-10001 (the interior as the set where the ratio limit is below one) for the conceptual case; BC-PRQ-10001 (solving absolute value inequalities) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10013"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10035"
+   ],
+   "concept": "BC-CON-10021",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a ratio limit set to be less than one, solve the resulting absolute value inequality and present the interior of the interval as a compound inequality or an open interval.",
+   "description_plain": "Turn the inequality in absolute value into a two sided inequality in x.",
+   "diagnostic_signals": [
+    "BC-SIG-10007"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-8D2",
+    "BC-EK-LIM-8D4"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10055",
+   "learning_objectives": [
+    "BC-LO-LIM-8D"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10023"
+   ],
+   "name": "Solve the ratio inequality for the interior of the interval",
+   "official_evidence": [
+    "BC-FRQ-2012-Q6-A",
+    "BC-FRQ-2021-Q6-C",
+    "BC-FRQ-2014-Q6-A",
+    "BC-FRQ-2022-Q6-A",
+    "BC-FRQ-2015-Q6-A",
+    "BC-FRQ-2024-Q6-D",
+    "BC-FRQ-2025-Q6-A",
+    "BC-FRQ-2018-Q6-B",
+    "BC-MCQ-PE2012-013",
+    "BC-MCQ-PE2012-022"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-10001",
+    "BC-PRQ-10006",
+    "BC-SKL-10054"
+   ],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-25:25",
+    "sg-22:21"
+   ],
+   "topic": "BC-TOP-1013",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10022 (an interval offered as a radius)",
+     "BC-SKL-10059 (the interval, which is the other request)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10014 (an interval presented without naming the radius does not earn the third point)"
+    ],
+    "mastered_if": "The response names the radius as a single value, the distance from the centre to either end of the interior, and writes it as R equals that number rather than presenting an interval and stopping. BC-ERR-10036 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "A correct interval is presented where the radius was requested and no value is named, which is BC-SIG-10008 and BC-ERR-10036, so the radius point is not earned although the underlying work is sound.",
+    "prerequisite_gap_if": "The solved inequality cannot be converted into a distance from the centre, which is BC-PRQ-10001.",
+    "remediation_target": "BC-MIS-10022 (radius as a distance, interval as a set) for the conceptual case; BC-PRQ-10001 (reading the distance from the inequality) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10014"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10036"
+   ],
+   "concept": "BC-CON-10021",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given the solved inequality, report the radius of convergence as the distance from the centre to an endpoint, presented explicitly as a value.",
+   "description_plain": "Name the radius as a number, not as an interval.",
+   "diagnostic_signals": [
+    "BC-SIG-10008"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-8D3",
+    "BC-EK-LIM-8D4"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10056",
+   "learning_objectives": [
+    "BC-LO-LIM-8D"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10022"
+   ],
+   "name": "State the radius of convergence explicitly",
+   "official_evidence": [
+    "BC-FRQ-2021-Q6-C",
+    "BC-FRQ-2014-Q6-A",
+    "BC-FRQ-2015-Q6-A",
+    "BC-FRQ-2024-Q6-C",
+    "BC-FRQ-2024-Q6-D",
+    "BC-MCQ-PE2012-013"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-10001",
+    "BC-SKL-10055"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-04"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-21:24"
+   ],
+   "topic": "BC-TOP-1013",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10023 (the ratio test result taken as final)",
+     "BC-MIS-10024 (one endpoint's verdict transferred to the other)",
+     "BC-SKL-10066 (evaluating a series at a point inside the interval)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10015 (the endpoint series has to be produced before it can be tested)",
+     "BC-QA-10013 (considering both endpoints is a scored step)"
+    ],
+    "mastered_if": "The response substitutes each endpoint value for the variable x in the general term, not for the index, and simplifies each result to a numerical series, keeping the alternating factor that a negative endpoint produces; both endpoint series are written out. BC-ERR-10034 and BC-ERR-10037 are both absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "One endpoint is substituted and the other is left untouched, or the substitution drops the sign factor that a negative endpoint creates, which is BC-ERR-10034, or the open interior is reported with no endpoint work at all, which is BC-SIG-10004 and BC-ERR-10037.",
+    "prerequisite_gap_if": "The general term cannot be read from the sigma so the variable cannot be located in it, which is BC-PRQ-10008, or the resulting power cannot be simplified, which is BC-PRQ-06002.",
+    "remediation_target": "BC-MIS-10023 (why the endpoints need separate treatment) for the conceptual case; BC-PRQ-10008 (substituting into the general term) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10015",
+    "BC-QA-10013"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10037",
+    "BC-ERR-10034"
+   ],
+   "concept": "BC-CON-10022",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given the interior of the interval, substitute each endpoint value for the variable in the general term and simplify the resulting numerical series, including any alternating factor that appears.",
+   "description_plain": "Put each endpoint value into the general term and simplify to a series of numbers.",
+   "diagnostic_signals": [
+    "BC-SIG-10004"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-8D4"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10057",
+   "learning_objectives": [
+    "BC-LO-LIM-8D"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10023",
+    "BC-MIS-10024"
+   ],
+   "name": "Substitute each endpoint to produce the two numerical series",
+   "official_evidence": [
+    "BC-FRQ-2012-Q6-A",
+    "BC-FRQ-2022-Q6-A",
+    "BC-FRQ-2024-Q6-A",
+    "BC-FRQ-2025-Q6-A",
+    "BC-FRQ-2018-Q6-B"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-10008",
+    "BC-PRQ-06002",
+    "BC-SKL-10055",
+    "BC-SKL-10056"
+   ],
+   "representations": [
+    "BC-REP-11",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-25:24",
+    "sg-22:20",
+    "sg-24:19"
+   ],
+   "topic": "BC-TOP-1013",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10024 (one verdict transferred to both ends)",
+     "BC-MIS-10007 (a test named without its hypotheses)",
+     "BC-SKL-10021 (test selection in general)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10015 (the reason point is lost when the test named does not fit the series)",
+     "BC-QA-10013 (the analysis at both endpoints carries the final interval)"
+    ],
+    "mastered_if": "The response names a test at each endpoint whose conditions that particular series meets, so an alternating endpoint series takes the alternating series test and a positive term endpoint series takes a comparison, a p-series criterion, or the integral test, and it runs the two endpoints independently with a verdict at each. BC-ERR-10015 and BC-ERR-10037 are both absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "One endpoint is tested correctly and its verdict is carried to the other, which is BC-SIG-10005, or a test is named whose conditions the endpoint series does not meet, which is BC-SIG-10006 and BC-ERR-10015.",
+    "prerequisite_gap_if": "The endpoint series were never produced, so no test has an object: that is BC-SKL-10057 rather than a test selection gap; reading the signed general term is BC-PRQ-06005.",
+    "remediation_target": "BC-MIS-10024 (the two endpoint series as separate problems) for the conceptual case; BC-SKL-10021 (matching a test to a form) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10015"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10015",
+    "BC-ERR-10037"
+   ],
+   "concept": "BC-CON-10022",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given the two endpoint series, name and apply a suitable convergence test at each endpoint separately, and report convergence or divergence at each.",
+   "description_plain": "Apply a test that fits each endpoint series, which may differ between the two ends.",
+   "diagnostic_signals": [
+    "BC-SIG-10005",
+    "BC-SIG-10006"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-8D4"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10058",
+   "learning_objectives": [
+    "BC-LO-LIM-8D"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10024",
+    "BC-MIS-10007"
+   ],
+   "name": "Test each endpoint series with an appropriate test",
+   "official_evidence": [
+    "BC-FRQ-2012-Q6-A",
+    "BC-FRQ-2022-Q6-A",
+    "BC-FRQ-2025-Q6-A",
+    "BC-FRQ-2018-Q6-B"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-SKL-10057",
+    "BC-SKL-10021"
+   ],
+   "representations": [
+    "BC-REP-11",
+    "BC-REP-04"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-25:24",
+    "sg-25:25",
+    "sg-24:19"
+   ],
+   "topic": "BC-TOP-1013",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10023 (endpoints never examined and the interval reported open)",
+     "BC-MIS-10022 (an interval given where a radius was requested)",
+     "BC-SKL-10056 (the radius)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10013 (the final interval point requires the interval to match the endpoint analysis)"
+    ],
+    "mastered_if": "The response writes the interval with a bracket at each end matching that endpoint's verdict, closed where the endpoint series converges and open where it diverges, and leaves an unbounded end open. BC-ERR-10038 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "Both endpoints are tested correctly and the brackets written do not match those findings, which is BC-ERR-10038, or the interior is reported as the interval with both ends open although one endpoint converges.",
+    "prerequisite_gap_if": "Interval notation itself is not controlled, so open and closed ends cannot be written, which is BC-PRQ-10006.",
+    "remediation_target": "BC-MIS-10023 (what the endpoint verdicts decide) for the conceptual case; BC-PRQ-10006 (interval notation) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10013"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10038"
+   ],
+   "concept": "BC-CON-10022",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given the interior and the endpoint results, present the interval of convergence with brackets or inequality symbols that match the endpoint findings.",
+   "description_plain": "Report the interval with each end open or closed as its test showed.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-8D2",
+    "BC-EK-LIM-8D4"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10059",
+   "learning_objectives": [
+    "BC-LO-LIM-8D"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10023",
+    "BC-MIS-10022"
+   ],
+   "name": "State the interval of convergence with the correct endpoint inclusion",
+   "official_evidence": [
+    "BC-FRQ-2012-Q6-A",
+    "BC-FRQ-2022-Q6-A",
+    "BC-FRQ-2025-Q6-A",
+    "BC-FRQ-2025-Q6-D",
+    "BC-FRQ-2018-Q6-B",
+    "BC-MCQ-PE2012-022"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-10006",
+    "BC-SKL-10055",
+    "BC-SKL-10058"
+   ],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-04"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-25:24",
+    "sg-22:20"
+   ],
+   "topic": "BC-TOP-1013",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10020 (the requested object confused with a truncated polynomial)",
+     "BC-SKL-10067 (the polynomial as a partial sum)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10016 (the first terms and the general term are two separate points)",
+     "BC-QA-10018 (the general term of the differentiated series is scored on its own)"
+    ],
+    "mastered_if": "The response writes a general term in n that reproduces the displayed terms when the first index values are substituted, with the alternating factor, the factorial or coefficient pattern, and the power of x minus the centre all in agreement, and the starting index stated. BC-ERR-10039 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The first nonzero terms are correct and the proposed general term does not regenerate them, which is BC-SIG-10021 and BC-ERR-10039, usually through an off by one index or a mishandled sign factor; the terms point stands while the general term point is lost.",
+    "prerequisite_gap_if": "The index cannot be shifted to align the pattern with the displayed terms, which is BC-PRQ-10003, or the alternating factor cannot be written in sigma form, which is BC-PRQ-10008.",
+    "remediation_target": "BC-CON-10001 (a general term as a rule producing every term) for the conceptual case; BC-PRQ-10003 (index alignment) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10016",
+    "BC-QA-10018"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10039"
+   ],
+   "concept": "BC-CON-10023",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given the first several terms or the derivative pattern of a Taylor series, write a general term in n that reproduces them, including any alternating factor and the correct power of x minus the centre.",
+   "description_plain": "Give the pattern that produces every term, with the index in it.",
+   "diagnostic_signals": [
+    "BC-SIG-10021"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-8E1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10060",
+   "learning_objectives": [
+    "BC-LO-LIM-8E",
+    "BC-LO-LIM-8F"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10020"
+   ],
+   "name": "Write the general term of a Taylor series",
+   "official_evidence": [
+    "BC-FRQ-2012-Q6-C",
+    "BC-FRQ-2014-Q6-B",
+    "BC-FRQ-2022-Q6-C",
+    "BC-FRQ-2024-Q6-C",
+    "BC-FRQ-2025-Q6-B",
+    "BC-FRQ-2026-Q6-B",
+    "BC-FRQ-2018-Q6-A"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-10008",
+    "BC-PRQ-10003",
+    "BC-SKL-10044"
+   ],
+   "representations": [
+    "BC-REP-11",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-25:26",
+    "sg-24:22"
+   ],
+   "topic": "BC-TOP-1014",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10021 (the representation assumed valid at every input)",
+     "BC-SKL-10062 (the sine and cosine series, which do alternate)",
+     "BC-SKL-10063 (the geometric series, which has no factorials)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10017 (the recalled series is the base for substitution or multiplication)",
+     "BC-QA-10012 (the related polynomial is built on the recalled series)"
+    ],
+    "mastered_if": "The response writes the Maclaurin series for e to the x as the sum over n of x to the n over n factorial, displays the first terms one, x, x squared over two factorial, x cubed over three factorial, and gives the general term with no alternating factor present. BC-ERR-10040 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The general term is right and the displayed terms carry a sign pattern that belongs to sine or cosine, or the factorial denominators are omitted so the series reduces to a geometric form.",
+    "prerequisite_gap_if": "The factorial notation cannot be written or simplified, which is BC-PRQ-10002.",
+    "remediation_target": "BC-CON-10001 (the standard Maclaurin series as recalled objects) for the conceptual case; BC-PRQ-10002 (factorial notation) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10017",
+    "BC-QA-10012"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10040"
+   ],
+   "concept": "BC-CON-10024",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Reproduce the Maclaurin series for e to the x as the sum of x to the n over n factorial, with its first several terms and its general term.",
+   "description_plain": "Write the series for e to the x from memory.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-8F2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10061",
+   "learning_objectives": [
+    "BC-LO-LIM-8E",
+    "BC-LO-LIM-8F"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10021"
+   ],
+   "name": "Recall the Maclaurin series for the exponential function",
+   "official_evidence": [
+    "BC-FRQ-2019-Q6-B",
+    "BC-FRQ-2015-Q6-C",
+    "BC-FRQ-2026-Q6-D",
+    "BC-MCQ-CED-020"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-10002",
+    "BC-SKL-10046",
+    "BC-SKL-10060"
+   ],
+   "representations": [
+    "BC-REP-11",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:199",
+    "sg-23:21"
+   ],
+   "topic": "BC-TOP-1014",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10021 (validity assumed at every input)",
+     "BC-SKL-10061 (the exponential series, which does not alternate)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10017 (substitution into these series is the standard route to a related series)"
+    ],
+    "mastered_if": "The response writes sine as the alternating sum of odd powers over odd factorials and cosine as the alternating sum of even powers over even factorials, with the sign factor, the parity of the exponents, and the factorials all correct and consistent between the displayed terms and the general term. BC-ERR-10040 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "One of the two series is correct and the other carries the wrong parity, so cosine appears with odd powers, or the alternating factor is dropped from an otherwise correct expansion.",
+    "prerequisite_gap_if": "The alternating factor cannot be expressed in the index, which is BC-PRQ-10008, or the factorials cannot be handled, which is BC-PRQ-10002.",
+    "remediation_target": "BC-CON-10001 (the parity structure of the trigonometric series) for the conceptual case; BC-PRQ-10008 (writing the alternating factor) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10017"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10040"
+   ],
+   "concept": "BC-CON-10024",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Reproduce the Maclaurin series for sin x and cos x, including the alternating factor, the odd or even powers, and the factorials.",
+   "description_plain": "Write the sine and cosine series from memory, with the correct parities.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-8F2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10062",
+   "learning_objectives": [
+    "BC-LO-LIM-8E",
+    "BC-LO-LIM-8F"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10021"
+   ],
+   "name": "Recall the Maclaurin series for sine and cosine",
+   "official_evidence": [
+    "BC-MCQ-PE2012-017"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-10002",
+    "BC-PRQ-10008",
+    "BC-SKL-10046",
+    "BC-SKL-10060"
+   ],
+   "representations": [
+    "BC-REP-11",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:199"
+   ],
+   "topic": "BC-TOP-1014",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10021 (the series taken as valid at every input)",
+     "BC-MIS-10003 (the closed form used without a size check on the ratio)",
+     "BC-SKL-10072 (recognising a geometric power series in closed form)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10017 (substitution into this series produces most related expansions)",
+     "BC-QA-10003 (the geometric closed form and its condition)"
+    ],
+    "mastered_if": "The response writes one over one minus x as the sum of x to the n starting at n equal to zero and states that the representation holds for the absolute value of x less than one, giving the condition alongside the series rather than after it is used. BC-ERR-10040 and BC-ERR-10005 are both absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The series is written correctly and the restriction on x is omitted, so the closed form is claimed everywhere, which is BC-ERR-10005, or a sign pattern belonging to one over one plus x is attached.",
+    "prerequisite_gap_if": "The constant ratio x is not recognised as what makes this series geometric, which is BC-PRQ-10005.",
+    "remediation_target": "BC-MIS-10021 (the interval attached to a representation) for the conceptual case; BC-PRQ-10005 (the constant ratio) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10017",
+    "BC-QA-10003"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10040",
+    "BC-ERR-10005"
+   ],
+   "concept": "BC-CON-10024",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Reproduce the Maclaurin series for one over one minus x as the sum of x to the n, and state that it converges for absolute value of x less than one.",
+   "description_plain": "Write the geometric series for one over one minus x and its interval.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-8F1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10063",
+   "learning_objectives": [
+    "BC-LO-LIM-8E",
+    "BC-LO-LIM-8F"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10021",
+    "BC-MIS-10003"
+   ],
+   "name": "Recall the Maclaurin series for one over one minus x",
+   "official_evidence": [
+    "BC-FRQ-2018-Q6-A"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-10005",
+    "BC-SKL-10008",
+    "BC-SKL-10010"
+   ],
+   "representations": [
+    "BC-REP-11",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:199"
+   ],
+   "topic": "BC-TOP-1014",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10026 (substitution read as moving the centre)",
+     "BC-MIS-10021 (the new interval not adjusted with the substitution)",
+     "BC-SKL-10065 (multiplication rather than substitution)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10017 (the terms produced by the substitution carry the credit)"
+    ],
+    "mastered_if": "The response replaces the variable in a standard Maclaurin series by the whole given expression, raises that entire expression to each power with parentheses kept, simplifies the resulting powers, and leaves the centre where it was rather than relocating it. BC-ERR-10041 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The substitution is made and the expression is not raised as a whole, so a constant factor or an exponent is lost, which is BC-ERR-10041, or every term is correct and the series is described as centred at a new point.",
+    "prerequisite_gap_if": "The powers of a product or of a negative exponent cannot be simplified, which is BC-PRQ-06002, or the resulting ratio of powers does not reduce, which is BC-PRQ-10007.",
+    "remediation_target": "BC-MIS-10026 (what a substitution changes and what it leaves fixed) for the conceptual case; BC-PRQ-06002 (raising the whole expression) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10017"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10041"
+   ],
+   "concept": "BC-CON-10024",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a function formed by substituting an expression for x in a known Maclaurin series, carry out the substitution term by term, simplify the powers, and report the resulting series.",
+   "description_plain": "Replace x in a known series by the expression given and simplify.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-8G1",
+    "BC-EK-LIM-8F2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10064",
+   "learning_objectives": [
+    "BC-LO-LIM-8E",
+    "BC-LO-LIM-8F"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10026"
+   ],
+   "name": "Construct a Maclaurin series by substitution into a known series",
+   "official_evidence": [
+    "BC-FRQ-2013-Q6-C",
+    "BC-FRQ-2026-Q6-D",
+    "BC-FRQ-2018-Q6-A",
+    "BC-MCQ-CED-020",
+    "BC-MCQ-PE2012-017"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06002",
+    "BC-PRQ-10007",
+    "BC-SKL-10061",
+    "BC-SKL-10062"
+   ],
+   "representations": [
+    "BC-REP-11",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:199",
+    "ced:200"
+   ],
+   "topic": "BC-TOP-1014",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10026 (the centre assumed to move under the operation)",
+     "BC-SKL-10064 (substitution rather than multiplication)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10017 (the multiplied terms are the scored object)",
+     "BC-QA-10012 (a related polynomial is reached this way)"
+    ],
+    "mastered_if": "The response multiplies every term of the known series, including the general term, by the given constant or power of x, raises the index on each power correctly, and reports the first several terms together with the general term. BC-ERR-10041 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The displayed terms are multiplied through and the general term is left unmultiplied, or a constant factor is applied to the first term only, which is BC-ERR-10041.",
+    "prerequisite_gap_if": "The powers of x do not combine correctly when multiplied, which is BC-PRQ-06002.",
+    "remediation_target": "BC-CON-10001 (term by term operations on a series) for the conceptual case; BC-PRQ-06002 (combining powers) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10017",
+    "BC-QA-10012"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10041"
+   ],
+   "concept": "BC-CON-10024",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a function that is a constant or a power of x times a known series, multiply term by term and report the first several terms and the general term.",
+   "description_plain": "Multiply every term of a known series by the given factor.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-8G1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10065",
+   "learning_objectives": [
+    "BC-LO-LIM-8E",
+    "BC-LO-LIM-8F"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10026"
+   ],
+   "name": "Construct a series by multiplying a known series by an expression",
+   "official_evidence": [
+    "BC-FRQ-2019-Q6-B",
+    "BC-FRQ-2015-Q6-C",
+    "BC-FRQ-2023-Q6-C",
+    "BC-FRQ-2026-Q6-D",
+    "BC-FRQ-2018-Q6-A",
+    "BC-MCQ-PE2012-017"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06002",
+    "BC-SKL-10061"
+   ],
+   "representations": [
+    "BC-REP-11",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:200",
+    "sg-23:21"
+   ],
+   "topic": "BC-TOP-1014",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10021 (substitution made at an input outside the interval)",
+     "BC-SKL-10057 (endpoint substitution, the same operation at the ends of the interval)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10002 (the numerical series is then summed or classified)",
+     "BC-QA-10008 (the numerical series is what the error bound is written about)"
+    ],
+    "mastered_if": "The response substitutes the given input for the variable x in the Taylor series, not for the index, simplifies each term to a number, and presents the numerical series in sigma or expanded form, keeping any alternating factor the input produces. BC-ERR-10034 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The substitution is made and the sign factor produced by a negative input is dropped, which is BC-ERR-10034, or the input is placed where the index sits so the terms do not reduce to numbers.",
+    "prerequisite_gap_if": "The general term cannot be read from the sigma, which is BC-PRQ-10008, or the resulting powers cannot be evaluated, which is BC-PRQ-06002.",
+    "remediation_target": "BC-MIS-10021 (where a series represents its function) for the conceptual case; BC-PRQ-10008 (substituting into the general term) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10008",
+    "BC-QA-10002"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10034"
+   ],
+   "concept": "BC-CON-10023",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a Taylor series and an input in its interval of convergence, substitute the value and present the resulting numerical series in sigma or expanded form.",
+   "description_plain": "Substitute the input into the series and read the numbers that result.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-8F2",
+    "BC-EK-LIM-8E1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10066",
+   "learning_objectives": [
+    "BC-LO-LIM-8E",
+    "BC-LO-LIM-8F"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10021"
+   ],
+   "name": "Evaluate a Taylor series at a point to obtain a numerical series",
+   "official_evidence": [
+    "BC-FRQ-2026-Q6-A"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-10008",
+    "BC-PRQ-06002",
+    "BC-SKL-10060",
+    "BC-SKL-10059"
+   ],
+   "representations": [
+    "BC-REP-11",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-24:21",
+    "sg-21:25"
+   ],
+   "topic": "BC-TOP-1014",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10020 (the requested degree not treated as binding)",
+     "BC-SKL-10044 (building the polynomial)",
+     "BC-SKL-10060 (writing the series general term)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10016 (the first terms and the general term make the partial sum relationship visible)"
+    ],
+    "mastered_if": "The response states that the Taylor polynomial of degree n is the partial sum of the Taylor series through the degree n term, about the same centre, and keeps the polynomial finite with no ellipsis while describing the series as the full sum. BC-ERR-10030 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The relationship is stated and the polynomial written alongside it carries an ellipsis or terms past the stated degree, which is BC-ERR-10030, so the two objects are not kept apart in the presentation.",
+    "prerequisite_gap_if": "Neither object can be written from the given information, which points at BC-SKL-10044 or BC-SKL-10060 rather than at the relationship; reading the notation is BC-PRQ-06005.",
+    "remediation_target": "BC-MIS-10020 (polynomial as a finite partial sum) for the conceptual case; BC-SKL-10044 (writing the polynomial to a stated degree) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10016"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10030"
+   ],
+   "concept": "BC-CON-10023",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a Taylor series and a Taylor polynomial for the same function about the same centre, state that the polynomial is the partial sum of the series through that degree.",
+   "description_plain": "Say that cutting the series off at a degree gives the polynomial.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-8E1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10067",
+   "learning_objectives": [
+    "BC-LO-LIM-8E",
+    "BC-LO-LIM-8F"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10020"
+   ],
+   "name": "Identify a Taylor polynomial as a partial sum of the Taylor series",
+   "official_evidence": [
+    "BC-FRQ-2013-Q6-A",
+    "BC-FRQ-2015-Q6-C",
+    "BC-FRQ-2025-Q5-B",
+    "BC-FRQ-2026-Q6-D",
+    "BC-FRQ-2018-Q6-C"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-SKL-10044",
+    "BC-SKL-10060"
+   ],
+   "representations": [
+    "BC-REP-11",
+    "BC-REP-01",
+    "BC-REP-04"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:199"
+   ],
+   "topic": "BC-TOP-1014",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10020 (the requested number of terms not treated as binding)",
+     "BC-SKL-10069 (term by term integration, the inverse operation)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10018 (the general term of the differentiated series carries its own point)",
+     "BC-QA-10016 (the first terms are scored separately)"
+    ],
+    "mastered_if": "The response differentiates each displayed term with respect to x, differentiates the general term with the index kept as a parameter rather than differentiated, lowers each exponent by one with the coefficient multiplied by the old exponent, and reports the first nonzero terms and the general term of the derivative series. BC-ERR-10039 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The displayed terms are differentiated correctly and the general term is not, often because the index was treated as the variable, which is BC-ERR-10039, so the terms point stands and the general term point is lost.",
+    "prerequisite_gap_if": "The exponent arithmetic in the power rule on a general power fails, which is BC-PRQ-06002, or the general term cannot be read from the sigma, which is BC-PRQ-10008.",
+    "remediation_target": "BC-CON-10001 (term by term differentiation of a power series) for the conceptual case; BC-PRQ-06002 (the power rule on a general exponent) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10018"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10039"
+   ],
+   "concept": "BC-CON-10025",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a power series, differentiate each displayed term and the general term with respect to the variable, and present the first several nonzero terms and the general term of the derivative series.",
+   "description_plain": "Differentiate each term, including the general term.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-8G1",
+    "BC-EK-LIM-8D6"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10068",
+   "learning_objectives": [
+    "BC-LO-LIM-8G"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10020"
+   ],
+   "name": "Differentiate a power series term by term",
+   "official_evidence": [
+    "BC-FRQ-2012-Q6-C",
+    "BC-FRQ-2014-Q6-B",
+    "BC-FRQ-2022-Q6-C",
+    "BC-FRQ-2015-Q6-B",
+    "BC-FRQ-2024-Q6-C",
+    "BC-FRQ-2025-Q6-B",
+    "BC-FRQ-2026-Q6-B",
+    "BC-MCQ-CED-020"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06002",
+    "BC-PRQ-10008",
+    "BC-SKL-10060"
+   ],
+   "representations": [
+    "BC-REP-11",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-25:26",
+    "sg-24:22"
+   ],
+   "topic": "BC-TOP-1015",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10020 (the requested terms not treated as binding)",
+     "BC-SKL-10068 (term by term differentiation)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10019 (the antidifferentiated series and the constant from the initial value are the scored work)"
+    ],
+    "mastered_if": "The response antidifferentiates each displayed term and the general term, raising each exponent by one and dividing by the new exponent, writes a single constant of integration, and determines that constant by substituting the supplied value of the antiderivative at a point. BC-ERR-10039 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The antidifferentiated terms are right and the constant is omitted or left undetermined although a value was supplied, or the general term does not reproduce the displayed antiderivative terms, which is BC-ERR-10039.",
+    "prerequisite_gap_if": "The substitution needed inside the integrand is not selected, which is the hard prerequisite BC-SKL-06047, or the exponent arithmetic fails, which is BC-PRQ-06002, or the variable of integration is not kept distinct from the limit, which is BC-PRQ-06013.",
+    "remediation_target": "BC-CON-10001 (term by term antidifferentiation with one constant) for the conceptual case; BC-SKL-06047 (choosing the substitution) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10019"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10039"
+   ],
+   "concept": "BC-CON-10025",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a power series and a known value of the antiderivative at a point, integrate each term and the general term, then determine the constant of integration from that value.",
+   "description_plain": "Antidifferentiate each term and fix the constant from a known value.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-8G1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10069",
+   "learning_objectives": [
+    "BC-LO-LIM-8G"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10020"
+   ],
+   "name": "Integrate a power series term by term and determine the constant",
+   "official_evidence": [
+    "BC-FRQ-2019-Q6-C",
+    "BC-FRQ-2019-Q6-D",
+    "BC-FRQ-2013-Q6-C",
+    "BC-FRQ-2014-Q6-C"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06002",
+    "BC-PRQ-06013",
+    "BC-SKL-06047",
+    "BC-SKL-10060"
+   ],
+   "representations": [
+    "BC-REP-11",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:200",
+    "sg-23:21"
+   ],
+   "topic": "BC-TOP-1015",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10025 (preservation extended from the radius to the endpoints)",
+     "BC-MIS-10022 (radius and interval reported for one another)",
+     "BC-SKL-10071 (rechecking the endpoints)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10018 (the radius point rests on the preservation statement)"
+    ],
+    "mastered_if": "The response states that term by term differentiation or integration leaves the radius unchanged and reports the original radius as the radius of the new series, without a second ratio test and without extending the claim to the endpoints. BC-ERR-10042 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The derived series is correct and its radius is recomputed to a value inconsistent with the original, which is BC-SIG-10022 and BC-ERR-10042, or the preservation is stated and then stretched to cover the interval including its ends.",
+    "prerequisite_gap_if": "The radius of the original series was never established, so there is nothing to preserve: that is BC-SKL-10056 rather than a preservation gap; reading the notation is BC-PRQ-06005.",
+    "remediation_target": "BC-MIS-10025 (what term by term operations preserve) for the conceptual case; BC-SKL-10056 (stating the original radius) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10018"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10042"
+   ],
+   "concept": "BC-CON-10026",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given the radius of convergence of a power series, state that the series obtained by term-by-term differentiation or integration has the same radius, and report that value.",
+   "description_plain": "Carry the radius across to the new series without recomputing it.",
+   "diagnostic_signals": [
+    "BC-SIG-10022"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-8D6"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10070",
+   "learning_objectives": [
+    "BC-LO-LIM-8G"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10025",
+    "BC-MIS-10022"
+   ],
+   "name": "Apply the preserved radius to a differentiated or integrated series",
+   "official_evidence": [
+    "BC-FRQ-2012-Q6-C",
+    "BC-FRQ-2014-Q6-B",
+    "BC-FRQ-2022-Q6-C",
+    "BC-FRQ-2024-Q6-C",
+    "BC-FRQ-2025-Q6-B",
+    "BC-FRQ-2025-Q6-D",
+    "BC-FRQ-2026-Q6-B"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-SKL-10068",
+    "BC-SKL-10069",
+    "BC-SKL-10056"
+   ],
+   "representations": [
+    "BC-REP-11",
+    "BC-REP-04"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-24:22",
+    "sg-25:27"
+   ],
+   "topic": "BC-TOP-1015",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10025 (the original interval carried over unchanged)",
+     "BC-MIS-10024 (one endpoint's verdict transferred to the other)",
+     "BC-SKL-10057 (endpoint substitution for the original series)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10018 (the endpoints are rechecked when the interval rather than the radius is requested)",
+     "BC-QA-10015 (each endpoint series is tested on its own terms)"
+    ],
+    "mastered_if": "The response substitutes each endpoint into the general term of the new series obtained by differentiation or integration, produces the two numerical series afresh, and tests each one separately rather than copying the interval of the original series. BC-ERR-10037 and BC-ERR-10015 are both absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The radius is carried over correctly and the endpoints of the original interval are reused with no new test, which is BC-ERR-10037, or one endpoint of the new series is tested and the other is assumed to match, or a test is applied whose conditions the new endpoint series fails, which is BC-ERR-10015.",
+    "prerequisite_gap_if": "The new general term cannot be evaluated at the endpoint, which is BC-PRQ-10008, or the resulting interval cannot be written with matching brackets, which is BC-PRQ-10006.",
+    "remediation_target": "BC-MIS-10025 (radius preserved, endpoints not) for the conceptual case; BC-PRQ-10008 (substituting into the new general term) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10018",
+    "BC-QA-10015"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10037",
+    "BC-ERR-10015"
+   ],
+   "concept": "BC-CON-10026",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a series obtained by term-by-term differentiation or integration, substitute each endpoint into the new general term and test the resulting numerical series separately.",
+   "description_plain": "Test the ends again for the new series rather than copying the old interval.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-8D6",
+    "BC-EK-LIM-8D4"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10071",
+   "learning_objectives": [
+    "BC-LO-LIM-8G"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10025",
+    "BC-MIS-10024"
+   ],
+   "name": "Recheck the endpoints for a derived power series",
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-10008",
+    "BC-PRQ-10006",
+    "BC-SKL-10070",
+    "BC-SKL-10057"
+   ],
+   "representations": [
+    "BC-REP-11",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "ced:198",
+    "ced:200"
+   ],
+   "topic": "BC-TOP-1015",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10003 (closed form used with no constant ratio identified)",
+     "BC-SKL-10063 (the standard series for one over one minus x)",
+     "BC-SKL-10010 (summing a series whose ratio contains the variable)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10003 (the closed form together with the condition on the ratio is the scored object)"
+    ],
+    "mastered_if": "The response identifies the constant ratio in x and the first term of the power series as written, presents the closed form as that first term over one minus the ratio, and states the values of x for which the identity holds. BC-ERR-10005 and BC-ERR-10006 are both absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The closed form is written and the set of x where it holds is omitted, which is BC-ERR-10005, or the first term is taken from the index zero position although the sigma begins elsewhere, which is BC-ERR-10006.",
+    "prerequisite_gap_if": "The constant ratio cannot be extracted from consecutive terms, which is BC-PRQ-10005, or the resulting condition cannot be solved into an interval in x, which is BC-PRQ-10001.",
+    "remediation_target": "BC-MIS-10003 (what makes a power series geometric) for the conceptual case; BC-PRQ-10005 (extracting the ratio in x) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10003"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10005",
+    "BC-ERR-10006"
+   ],
+   "concept": "BC-CON-10025",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a power series with a constant ratio in x, identify the first term and ratio and present the closed form function, together with the values of x for which it holds.",
+   "description_plain": "Match the series to the geometric pattern and write the function it sums to.",
+   "diagnostic_signals": [],
+   "essential_knowledge": [
+    "BC-EK-LIM-8G1",
+    "BC-EK-LIM-8F1"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10072",
+   "learning_objectives": [
+    "BC-LO-LIM-8G"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10003"
+   ],
+   "name": "Represent a power series in closed form by recognising a geometric series",
+   "official_evidence": [
+    "BC-FRQ-2014-Q6-C",
+    "BC-FRQ-2022-Q6-D",
+    "BC-FRQ-2015-Q6-B",
+    "BC-FRQ-2025-Q6-C"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-10005",
+    "BC-PRQ-10001",
+    "BC-SKL-10008",
+    "BC-SKL-10010",
+    "BC-SKL-10063"
+   ],
+   "representations": [
+    "BC-REP-11",
+    "BC-REP-01"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-25:26"
+   ],
+   "topic": "BC-TOP-1015",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  },
+  {
+   "adaptive": {
+    "common_confusions": [
+     "BC-MIS-10021 (the representation assumed valid at every input)",
+     "BC-MIS-10023 (endpoints never examined so the interval is incomplete)",
+     "BC-SKL-10059 (stating the interval with correct endpoint inclusion)"
+    ],
+    "diagnostic_archetypes": [
+     "BC-QA-10020 (one point for the answer with the position of the input as the reason)"
+    ],
+    "mastered_if": "The response names the interval of convergence in play, places the given input inside it, at an endpoint, or outside it, and states whether the series converges to the function at that input with that position as the reason; an interval carried in from an earlier part is used consistently. BC-ERR-10043 is absent.",
+    "next_dependent_skills": [],
+    "partially_mastered_if": "The verdict is correct and no reason is attached, which is BC-SIG-10023 and BC-ERR-10043, or the position is described against the radius rather than against the interval so an endpoint case is left unresolved.",
+    "prerequisite_gap_if": "The interval cannot be read or compared with the input because interval notation is the blocker, which is BC-PRQ-10006.",
+    "remediation_target": "BC-MIS-10021 (where a series equals its function) for the conceptual case; BC-PRQ-10006 (locating an input in an interval) for the procedural case"
+   },
+   "archetypes": [
+    "BC-QA-10020"
+   ],
+   "calculator_relevance": "none",
+   "common_errors": [
+    "BC-ERR-10043"
+   ],
+   "concept": "BC-CON-10026",
+   "confusable_with": [],
+   "created": "2026-09-19",
+   "dependents": [],
+   "description_formal": "Given a series, its interval of convergence, and a specific input, state whether the series converges to the function at that input and give the position of the input relative to the interval as the reason.",
+   "description_plain": "Check whether the input lies inside the interval and say what follows.",
+   "diagnostic_signals": [
+    "BC-SIG-10023"
+   ],
+   "essential_knowledge": [
+    "BC-EK-LIM-8D5",
+    "BC-EK-LIM-8D2"
+   ],
+   "evidence_tag": "inferred",
+   "id": "BC-SKL-10073",
+   "learning_objectives": [
+    "BC-LO-LIM-8G"
+   ],
+   "mapping_tag": "verified",
+   "misconceptions": [
+    "BC-MIS-10021",
+    "BC-MIS-10023"
+   ],
+   "name": "Decide whether a series converges to the function at a stated input",
+   "official_evidence": [
+    "BC-FRQ-2025-Q6-D"
+   ],
+   "practice_skills": [],
+   "prerequisites": [
+    "BC-PRQ-10006",
+    "BC-SKL-10059"
+   ],
+   "representations": [
+    "BC-REP-11",
+    "BC-REP-04"
+   ],
+   "scope": "BC_only",
+   "sources": [
+    "sg-25:27"
+   ],
+   "topic": "BC-TOP-1015",
+   "unit": "BC-UNIT-10",
+   "updated": "2026-09-19"
+  }
+ ]
+}

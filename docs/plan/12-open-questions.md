@@ -100,7 +100,7 @@ Every parameter below is [inferred] unless noted. The authoritative per-engine l
 
 | Parameter | Current | Owner | What would settle it |
 |---|---|---|---|
-| gamma, rho | 0.4, -0.2 | 02 | per-skill fit after 20 observations |
+| gamma, rho | 1.0, -0.5 (were 0.4, -0.2 until 2026-09-19) | 02 | per-skill fit after 20 observations |
 | lambda | 0 (was 2.0) | 02 | arm 6 ablation in 10 |
 | beta coefficient on centred BC-DF count | -0.35 per factor above the median of 2 | 02, 04 | first-attempt accuracy regressed on factor count |
 | Credit weights per mastery_state | mastered 1.0 to c; partial 0 to c and 0.5 to f; notation_only 0.25 to c; not_mastered 1.0 to f | 02, 03 | sensitivity sweep in simulation |

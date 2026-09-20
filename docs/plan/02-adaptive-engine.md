@@ -127,8 +127,8 @@ Parameter values:
 
 | Parameter | Value | Source | Tag |
 |---|---|---|---|
-| `gamma` | 0.4 | magnitude set by hand; sign and asymmetry follow PFA's construction, https://files.eric.ed.gov/fulltext/ED506305.pdf | [inferred] |
-| `rho` | -0.2 | same | [inferred] |
+| `gamma` | 1.0 | PFA's own construction carries `phi(c)` at unit weight; corrected 2026-09-19 from 0.4, under which `sigmoid(gamma * phi(c))` from `beta = 0` needed 242 credited successes to reach 0.9 and no skill was ever declared in simulation; at 1.0 it takes 9. Sign and asymmetry follow https://files.eric.ed.gov/fulltext/ED506305.pdf | [inferred] |
+| `rho` | -0.5 | same, keeping the 2 to 1 asymmetry against `gamma`; corrected 2026-09-19 from -0.2 | [inferred] |
 | `lambda` | 0 (R3) | off until the arm 6 ablation in 10 reports. The value it would take if turned on is 2.0 logits, chosen so that full decay to `R = 0` costs about what two failed attempts cost | [inferred] |
 | `beta_k` | declared, see Calibration | Pelanek's at-least-100-students floor forbids learning it, https://www.fi.muni.cz/~xpelanek/publications/CAE-elo.pdf | [verified, the floor, inferred for the prior formula] |
 
@@ -221,7 +221,7 @@ Skill `k` is declared mastered when all of the following hold [inferred; combine
 
 1. `sigmoid(m_k) >= 0.9` at the current retrievability.
 2. At least 3 credited unaided successes, meaning successes recorded at `fading_stage` equal to `unsupported`.
-3. Those successes span at least 2 distinct archetypes.
+3. Those successes span at least 2 distinct archetypes, or every archetype that lists the skill when the active snapshot lists fewer than 2. Corrected 2026-09-19: 440 of the 522 skills that any active archetype lists sit in exactly one archetype, so the unconditional form made 84 percent of skills unmasterable, and gate 31 in [11-phased-delivery.md](11-phased-delivery.md) read 0 in both arms [verified, `data/archetypes.json`].
 4. Those successes span at least 3 distinct calendar days.
 5. The span between the first and last of those days is at least 7 days.
 6. `R_k >= desired_retention(today)` at the moment of declaration, so a skill is never declared mastered while it is already due for review.

@@ -637,3 +637,21 @@ def test_hypercorrection_spans_loaded_skills(states, graph, archetypes):
    assert states[notated].hypercorrection_due == expected_due
    assert states[idle].hypercorrection_due is None
 
+
+
+def test_mastery_single_archetype_skill_needs_one_archetype():
+   """Condition 3 asks for min(2, archetypes listing the skill), per 02 as corrected 2026-09-19."""
+   state = satisfying_state("BC-SKL-01024", TODAY)
+   state.distinct_archetypes_succeeded = {"BC-QA-01004"}
+
+   assert evaluate_mastery(state, TODAY, archetypes_available=1) is True
+   assert evaluate_mastery(state, TODAY, archetypes_available=2) is False
+   assert evaluate_mastery(state, TODAY) is False
+
+
+def test_mastery_reachable_in_a_dozen_credited_successes():
+   """gamma = 1.0 puts sigmoid(gamma * log1p(c)) past 0.9 by c = 9, so a skill can be declared in one term."""
+   state = satisfying_state("BC-SKL-01024", TODAY)
+   state.c = 9.0
+
+   assert evaluate_mastery(state, TODAY) is True

@@ -51,10 +51,17 @@ def graph(graph_p1):
       else:
          supporting_parents.setdefault(child, set()).add(parent)
 
+   archetype_counts = {}
+
+   for record in graph_p1["archetypes"]:
+      for skill_id in record["skills"]:
+         archetype_counts[skill_id] = archetype_counts.get(skill_id, 0) + 1
+
    return EngineGraph(
       hard_parents=hard_parents,
       supporting_parents=supporting_parents,
       hard_children=hard_children,
+      archetype_counts=archetype_counts,
    )
 
 

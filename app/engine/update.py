@@ -42,6 +42,7 @@ class EngineGraph:
    hard_parents: dict
    supporting_parents: dict
    hard_children: dict
+   archetype_counts: dict = field(default_factory=dict)
 
 
 @dataclass
@@ -189,7 +190,17 @@ def update_memory(state, grade, today, weight=1.0):
    state.difficulty += weight * (candidate_difficulty - state.difficulty)
 
 
-def evaluate_mastery(state, today):
+def required_distinct_archetypes(archetypes_available):
+   """Condition 3 cannot ask for more archetypes than the active snapshot lists for the skill."""
+   is_unknown = archetypes_available is None
+
+   if is_unknown:
+      return constants.MASTERY_MIN_DISTINCT_ARCHETYPES
+
+   return max(1, min(constants.MASTERY_MIN_DISTINCT_ARCHETYPES, archetypes_available))
+
+
+def evaluate_mastery(state, today, archetypes_available=None):
    """The six conditions of docs/plan/02, Q6 in docs/plan/11."""
    retention = fsrs.retrievability(
       state.stability,
@@ -202,9 +213,8 @@ def evaluate_mastery(state, today):
 
    meets_strength = probability(state) >= constants.MASTERY_THRESHOLD
    meets_successes = state.unaided_success_count >= constants.MASTERY_MIN_UNAIDED_SUCCESSES
-   meets_archetypes = (
-      len(state.distinct_archetypes_succeeded) >= constants.MASTERY_MIN_DISTINCT_ARCHETYPES
-   )
+   required_archetypes = required_distinct_archetypes(archetypes_available)
+   meets_archetypes = len(state.distinct_archetypes_succeeded) >= required_archetypes
    meets_days = len(days) >= constants.MASTERY_MIN_DISTINCT_DAYS
    meets_span = span_days >= constants.MASTERY_MIN_DAY_SPAN
    meets_retention = retention >= constants.desired_retention(today)
@@ -436,7 +446,8 @@ def apply_observation(states, graph, observation, today):
 
          continue
 
-      is_mastered = evaluate_mastery(state, today)
+      archetypes_available = graph.archetype_counts.get(skill_id)
+      is_mastered = evaluate_mastery(state, today, archetypes_available)
 
       if is_mastered:
          state.mastered = True

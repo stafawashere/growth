@@ -5,8 +5,8 @@ docs/plan/12-open-questions.md. Change them there first.
 """
 from datetime import date
 
-GAMMA = 0.4
-RHO = -0.2
+GAMMA = 1.0
+RHO = -0.5
 LAMBDA = 0.0
 
 BETA_PER_FACTOR = -0.35

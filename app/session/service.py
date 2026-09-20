@@ -1,0 +1,363 @@
+"""The persisted session service: open, serve, record, close.
+
+One plain function per operation in the API surface rows of docs/plan/06-architecture.md, so the
+FastAPI routes that arrive later are thin wrappers over these. The four assembled blocks and the
+minute forecast go into the sessions queue column (R5), every attempt row carries both the split
+and the compensatory prediction (invariant 23), and a rehearsal session writes no mastery state
+(invariant 17).
+
+Confidence is collected after the student commits and before feedback, at stages completion and
+unsupported, and not at all at stage example (docs/plan/11-phased-delivery.md, convention 3).
+apply_observation already reads the rating and sets hypercorrection_due itself, so the rating is
+an input to the single update rather than a second pass over the state: an attempt served at a
+stage that collects a rating defers its update until record_confidence supplies one, and an
+attempt served at stage example updates immediately.
+"""
+import json
+import uuid
+from datetime import datetime, timezone
+
+from app.db import models
+from app.engine import constants
+from app.engine.prior import p_compensatory, p_knowledge
+from app.engine.select import retrievability_map
+from app.engine.state import Confidence, FadingStage, MasteryState, ResponseFormat
+from app.engine.update import Observation, apply_observation, rule_based_mastery_states
+from app.session import repository
+from app.session.build import assemble_session
+
+SERVING_BLOCKS = ("block1", "block2", "block3")
+
+
+def new_id(prefix):
+   return f"{prefix}-{uuid.uuid4().hex}"
+
+
+def as_datetime(moment):
+   """Every timestamp this service writes is timezone-aware UTC, as app/content/persist.py writes."""
+   is_datetime = isinstance(moment, datetime)
+
+   if is_datetime:
+      is_naive = moment.tzinfo is None
+
+      if is_naive:
+         return moment.replace(tzinfo=timezone.utc)
+
+      return moment.astimezone(timezone.utc)
+
+   return datetime(moment.year, moment.month, moment.day, tzinfo=timezone.utc)
+
+
+def utc_now():
+   return datetime.now(timezone.utc)
+
+
+def interleaving_satisfied(served, graph):
+   """The queue records the max-2-consecutive-same-primary-skill rule as met (06, sessions.queue)."""
+   primaries = [graph.primary_skill(item["archetype_id"]) for item in served]
+   limit = constants.MAX_CONSECUTIVE_SAME_SKILL
+
+   for index in range(len(primaries) - limit):
+      window = primaries[index:index + limit + 1]
+      is_run = len(set(window)) == 1
+
+      if is_run:
+         return False
+
+   return True
+
+
+def queue_payload(session, graph):
+   return {
+      "block1": session.block1,
+      "block2": session.block2,
+      "block3": session.block3,
+      "block4": session.block4,
+      "forecasts": session.forecasts,
+      "coverage_gaps": list(session.coverage_gaps),
+      "interleaving_satisfied": interleaving_satisfied(session.served, graph),
+   }
+
+
+def open_session(
+   db,
+   user_id,
+   mode,
+   graph,
+   engine_graph,
+   archetypes,
+   bank,
+   snapshot_id,
+   today,
+   rng,
+   probes=None,
+   now=None,
+   sub_mode=None,
+):
+   started_at = as_datetime(now or today)
+   states = repository.load_states(db, user_id)
+   history = repository.load_attempts_history(db, user_id)
+   assembled = assemble_session(states, graph, bank, probes, history, rng, today, now=now)
+   is_rehearsal = mode == "rehearsal"
+   row = models.Session(
+      id=new_id("SES"),
+      user_id=user_id,
+      mode=mode,
+      sub_mode=sub_mode,
+      started_at=started_at.isoformat(),
+      ended_at=None,
+      queue=json.dumps(queue_payload(assembled, graph)),
+      updates_mastery=0 if is_rehearsal else 1,
+      snapshot_id=snapshot_id,
+      created_at=started_at.isoformat(),
+      updated_at=started_at.isoformat(),
+   )
+   db.add(row)
+   db.flush()
+
+   return row
+
+
+def served_positions(session_row):
+   """Every servable queue slot as (block, position, item). Block 4 serves no items."""
+   queue = json.loads(session_row.queue)
+
+   return [
+      (block, position, item)
+      for block in SERVING_BLOCKS
+      for position, item in enumerate(queue[block])
+   ]
+
+
+def attempt_rows(db, session_id):
+   return (
+      db.query(models.Attempt)
+      .filter(models.Attempt.session_id == session_id)
+      .order_by(models.Attempt.started_at, models.Attempt.id)
+      .all()
+   )
+
+
+def consumed_positions(db, session_row):
+   """A queue slot is consumed by the earliest attempt on its item id that no earlier slot took.
+
+   The queue can list one item twice, because the corrected-item requeue puts a named item back
+   into block 1, so the served set is keyed on the slot rather than on the item id.
+   """
+   remaining = {}
+
+   for row in attempt_rows(db, session_row.id):
+      remaining[row.item_id] = remaining.get(row.item_id, 0) + 1
+
+   consumed = set()
+
+   for block, position, item in served_positions(session_row):
+      item_id = item["id"]
+      has_attempt_left = remaining.get(item_id, 0) > 0
+
+      if has_attempt_left:
+         remaining[item_id] -= 1
+         consumed.add((block, position))
+
+   return consumed
+
+
+def next_item(db, session_id):
+   """The next unconsumed queue slot, in block order.
+
+   An item id that already carries an attempt in this session is skipped even in a later slot,
+   because record_attempt refuses a second attempt on the same item in the same session.
+   """
+   session_row = db.get(models.Session, session_id)
+   consumed = consumed_positions(db, session_row)
+   attempted = {row.item_id for row in attempt_rows(db, session_row.id)}
+
+   for block, position, item in served_positions(session_row):
+      is_consumed = (block, position) in consumed
+      is_attempted = item["id"] in attempted
+
+      if not is_consumed and not is_attempted:
+         return item
+
+   return None
+
+
+def queue_item(session_row, item_id):
+   for _, _, item in served_positions(session_row):
+      if item["id"] == item_id:
+         return item
+
+   raise ValueError(f"{item_id} is not in the queue of session {session_row.id}")
+
+
+def collects_confidence(stage):
+   """Convention 3: a rating is collected at completion and unsupported, never at example."""
+   return FadingStage(stage) != FadingStage.EXAMPLE
+
+
+def observation_for(attempt, archetype, confidence):
+   return Observation(
+      archetype_id=archetype["id"],
+      skills=list(archetype["skills"]),
+      per_skill_states=json.loads(attempt.per_skill_states),
+      response_format=ResponseFormat(attempt.format),
+      confidence=Confidence(confidence),
+      elapsed_ms=attempt.elapsed_ms,
+      served_stage=FadingStage(attempt.served_stage),
+   )
+
+
+def apply_attempt(db, session_row, attempt, archetype, confidence, today, engine_graph, now):
+   """The single update per attempt. Rehearsal stops here, per invariant 17."""
+   writes_mastery = session_row.updates_mastery == 1
+
+   if not writes_mastery:
+      return
+
+   states = repository.load_states(db, session_row.user_id)
+   apply_observation(states, engine_graph, observation_for(attempt, archetype, confidence), today)
+   repository.save_states(db, session_row.user_id, states, session_row.snapshot_id, now)
+
+
+def record_attempt(
+   db,
+   session_id,
+   item_id,
+   answer,
+   elapsed_ms,
+   today,
+   archetypes=None,
+   engine_graph=None,
+   confidence=None,
+   started_at=None,
+   now=None,
+):
+   session_row = db.get(models.Session, session_id)
+   item = queue_item(session_row, item_id)
+   already_attempted = any(row.item_id == item_id for row in attempt_rows(db, session_id))
+
+   if already_attempted:
+      raise ValueError(f"item {item_id} already has an attempt in session {session_id}")
+
+   archetype = archetypes[item["archetype_id"]]
+   submitted_at = as_datetime(now or today)
+   states = repository.load_states(db, session_row.user_id)
+   retrievability = retrievability_map(states, today)
+   split = p_knowledge(archetype, states, engine_graph.hard_parents, retrievability)
+   compensatory = p_compensatory(archetype, states, retrievability)
+   is_graded = answer.get("correct") is not None
+
+   if is_graded:
+      per_skill_states = rule_based_mastery_states(archetype, answer)
+   else:
+      per_skill_states = {
+         skill: MasteryState.NOT_ATTEMPTED for skill in archetype["skills"]
+      }
+
+   is_correct = bool(answer.get("correct")) if is_graded else None
+   stored_confidence = Confidence(confidence).value if confidence is not None else None
+   attempt = models.Attempt(
+      id=new_id("ATT"),
+      session_id=session_id,
+      item_id=item_id,
+      started_at=(started_at or submitted_at).isoformat(),
+      submitted_at=submitted_at.isoformat(),
+      response=json.dumps(answer),
+      confidence=stored_confidence,
+      elapsed_ms=elapsed_ms,
+      correct=int(is_correct) if is_graded else None,
+      p_split=split,
+      p_compensatory=compensatory,
+      served_stage=FadingStage(item["stage"]).value,
+      format=ResponseFormat(item["format"]).value,
+      per_skill_states=json.dumps(
+         {skill: state.value for skill, state in per_skill_states.items()}
+      ),
+      snapshot_id=session_row.snapshot_id,
+      created_at=submitted_at.isoformat(),
+      updated_at=submitted_at.isoformat(),
+   )
+   db.add(attempt)
+   db.flush()
+
+   has_rating = confidence is not None
+   awaits_rating = collects_confidence(item["stage"]) and not has_rating
+   is_held = awaits_rating or not is_graded
+
+   if is_held:
+      return attempt
+
+   rating = confidence if has_rating else Confidence.UNSURE
+   apply_attempt(
+      db, session_row, attempt, archetype, rating, today, engine_graph, submitted_at
+   )
+
+   return attempt
+
+
+def record_confidence(
+   db,
+   attempt_id,
+   confidence,
+   archetypes=None,
+   engine_graph=None,
+   today=None,
+   now=None,
+):
+   """The P1 path that supplies the rating to the update, before feedback is shown."""
+   attempt = db.get(models.Attempt, attempt_id)
+   at_example = not collects_confidence(attempt.served_stage)
+
+   if at_example:
+      raise ValueError("stage example collects no confidence rating")
+
+   already_rated = attempt.confidence is not None
+
+   if already_rated:
+      raise ValueError(f"attempt {attempt_id} already carries a confidence rating")
+
+   is_graded = attempt.correct is not None
+
+   if not is_graded:
+      raise ValueError(f"attempt {attempt_id} was never graded, so there is nothing to apply")
+
+   session_row = db.get(models.Session, attempt.session_id)
+   item = queue_item(session_row, attempt.item_id)
+   has_context = archetypes is not None and engine_graph is not None and today is not None
+
+   if not has_context:
+      raise ValueError("record_confidence applies the observation and needs the engine context")
+
+   attempt.confidence = Confidence(confidence).value
+   applied_at = as_datetime(now or today)
+   attempt.updated_at = applied_at.isoformat()
+   db.flush()
+   apply_attempt(
+      db,
+      session_row,
+      attempt,
+      archetypes[item["archetype_id"]],
+      confidence,
+      today,
+      engine_graph,
+      applied_at,
+   )
+
+   return attempt
+
+
+def record_error_note(db, attempt_id, note):
+   attempt = db.get(models.Attempt, attempt_id)
+   attempt.error_note = note
+   db.flush()
+
+   return attempt
+
+
+def close_session(db, session_id, now=None):
+   session_row = db.get(models.Session, session_id)
+   session_row.ended_at = as_datetime(now or utc_now()).isoformat()
+   session_row.updated_at = session_row.ended_at
+   db.flush()
+
+   return session_row

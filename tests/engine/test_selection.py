@@ -304,6 +304,7 @@ def test_session_assembly_blocks():
          "item_id": "BC-QA-01004-V00",
          "minutes": 2.0,
          "corrected": True,
+         "stage": FadingStage.UNSUPPORTED,
          "attempted_on": TODAY,
       }
    ]
@@ -445,6 +446,7 @@ def test_requeue_gap():
          "archetype_id": "BC-QA-01004",
          "item_id": corrected_id,
          "corrected": True,
+         "stage": FadingStage.UNSUPPORTED,
          "attempted_on": TODAY,
       }
    ]
@@ -480,6 +482,7 @@ def test_requeue_gap():
          "archetype_id": "BC-QA-01004",
          "item_id": corrected_id,
          "corrected": False,
+         "stage": FadingStage.UNSUPPORTED,
          "attempted_on": TODAY + timedelta(days=constants.REQUEUE_GAP_DAYS_MIN),
       }
    ]
@@ -583,7 +586,7 @@ def test_interleave_max_two():
 
    requeue_archetype = "BC-QA-02006"
    minute_rows = [
-      {"archetype_id": record["id"], "minutes": 0.5}
+      {"archetype_id": record["id"], "minutes": 0.5, "stage": FadingStage.UNSUPPORTED}
       for record in fixture["archetypes"]
       for _ in range(constants.FORECAST_MIN_ATTEMPTS)
    ]
@@ -594,6 +597,7 @@ def test_interleave_max_two():
          "item_id": item_id,
          "minutes": 0.5,
          "corrected": True,
+         "stage": FadingStage.UNSUPPORTED,
          "attempted_on": TODAY - timedelta(days=constants.REQUEUE_GAP_DAYS_MIN),
       }
       for item_id in corrected_ids

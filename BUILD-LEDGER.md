@@ -32,138 +32,91 @@ Session 2026-09-19 (third session), suite line at open `72 passed in 14.53s`, at
 - Agent B, services: `app/session/seed.py` (618 rows, 77 BC-PRQ plus 6 external BC-SKL parents mastered, beta from `beta_for_skill` elsewhere), `app/session/purge.py` (audit entry first, every user table, audit_log last), `record_judgment` and the close-session sweep in `app/session/service.py`: test_seed_writes_618_rows_with_83_mastered, test_seed_beta_matches_prior, test_seed_refuses_second_run, test_close_session_applies_unrated_attempts_as_unsure, test_judgment_never_enters_credit, test_purge_empties_user_tables_and_writes_final_audit, test_purge_audit_entry_precedes_deletion.
 - Integrator, after the fresh review: `POST /sessions/{id}/close` now passes the engine context so the sweep runs over HTTP (test_close_route_applies_unrated_attempts, red `ValueError: close_session needs archetypes, engine_graph and today`); the judgments route calls `service.record_judgment` and refuses an unknown scope_id or a retention outside 0 to 1 (test_judgment_route_validates_scope_id_and_retention, red `assert 400 == 200`); registration seeds from `settings.resolve_snapshot()` (test_register_finish_seeds_from_the_resolved_snapshot, red `AttributeError: 'World' object has no attribute 'settings'`); purge deletes `passkey_credentials` and `auth_sessions` through the models (test_purge_deletes_credentials_and_auth_sessions, green on write, red `1 failed` under a mutation that skipped the credential delete); one `random.Random(rng_seed)` per process on `Settings.rng` instead of a fresh one per `POST /sessions`; `tests/db/test_models.py` table set extended by the two new tables; `test_session_routes_open_next_attempt_confidence_close` corrected to send its archetype id under scope `archetype`, since it had been storing an archetype id under scope `skill`.
 
-## In progress [inferred]
+Session 2026-09-20 (sixth session), suite line at open `161 passed in 19.56s`, at close
+`191 passed in 23.40s`, both taken with `--ignore-glob="* 2.py"`. Style gate exit 0 on all 15
+changed files, fed the hook its JSON payload on stdin and confirmed to bite with a positive control
+(`style_gate: gatecheck.py: em dash present`, exit 2). `qa/12_report.py` exit 0; `data/`,
+`research/`, `docs/` and `qa/` untouched, checked with `git status --porcelain` on those four
+paths. Slice: everything the fifth session named as blocking gate 23 that needs no hand-authored
+item, no design token and no provider key. Gate 23 is not claimed and no new gate name from 11 is
+claimed.
 
-Nothing at the time of writing. The next session starts from Next candidates.
-
-Session 2026-09-19 (fourth session), suite line at open `93 passed, 1 warning in 19.90s`, at close
-`122 passed, 1 warning in 19.04s`. Style gate exit 0 on every touched file, checked by feeding the
-hook its JSON payload on stdin and confirmed to bite with a positive control (`style_gate:
-gatecheck.py: em dash present`, exit 2); an argv-only invocation reads no file and exits 0 on
-anything, so it is not evidence. `qa/12_report.py` exit 0; `data/`, `research/`, `docs/` and `qa/`
-untouched. Slice: the four P1 deliverables that need no hand-authored content, no design tokens and
-no provider key, 11 P1 scope items 7, 10, 12 (composition root only), 14 and 15. None of the 31
-gates is named by these modules; they unblock gates 17, 29 and 30, which stay blocked on the 130
-items and the operator audit.
-
-- Agent A, deterministic elaborated feedback selection (11 P1 scope 10 and 13, R35):
+- Agent A, serve-time format resolution (R16, R29, gate 12): `app/session/service.py`,
+  `tests/session/test_serve_format.py`: test_first_unsupported_serve_is_short_answer,
+  test_second_unsupported_serve_on_the_same_archetype_is_mcq,
+  test_example_and_completion_slots_are_always_short_answer,
+  test_serving_twice_without_submitting_returns_the_same_format,
+  test_the_served_format_is_persisted_on_the_queue_slot. `resolve_served_format` re-reads R29
+  against the attempts as they stand and writes the answer back onto the queue slot; the stage
+  stays frozen at assembly.
+- Agent B, elaborated feedback without a BC-ERR record (03 Content, R12 rule 3):
   `app/feedback/render.py`, `tests/feedback/test_render.py`:
-  test_step_verification_at_example_and_completion,
-  test_nothing_returned_before_submission_at_unsupported,
-  test_elaborated_payload_names_violated_step_and_error_path,
-  test_scoring_consequence_comes_from_the_error_record,
-  test_self_explanation_only_on_examples_and_corrected_errors,
-  test_tutor_receives_no_answer_before_submission. The payload the tutor template receives is
-  exactly four fields: violated_step, observed_behavior, scoring_consequence, worked_solution.
-- Agent B, composition root and live item bank: `app/runtime/{context,bank}.py`, `app/main.py`,
-  `tests/runtime/test_context.py`: test_context_builds_from_the_live_registries,
-  test_bank_publishes_only_verified_rows,
-  test_bank_has_no_published_item_for_a_draft_only_archetype,
-  test_main_builds_an_application_without_touching_the_network.
-- Agent C, recovery code at registration (09 Recovery): `app/auth/recovery.py`,
-  `tests/auth/test_recovery.py`, `recovery_code_hash` on `users`:
-  test_recovery_code_is_shown_once_and_stored_hashed,
-  test_recovery_code_authenticates_a_new_registration_once, test_consumed_code_is_refused,
-  test_recovery_writes_an_audit_entry. PBKDF2-SHA256 at 200,000 iterations, salted, compared with
-  hmac.compare_digest; plaintext is returned once and never persisted or logged. Audit action
-  `passkey_recovery_used`.
-- Agent D, item ingestion and the review-queue audit writer: `app/items/ingest.py`,
-  `app/review/audit.py`, `tests/items/test_ingest.py`, `tests/review/test_audit.py`:
-  test_ingest_publishes_an_item_whose_key_passes_every_check, test_ingest_refuses_a_seeded_bad_key,
-  test_indeterminate_check_routes_to_review_queue, test_verification_rows_written_per_check,
-  test_item_audit_verdict_recorded, test_key_error_rate_published_over_the_recorded_verdicts.
-- Integrator: the feedback route `GET /sessions/{id}/attempts/{aid}/feedback` from 06's API
-  surface, wired to `app/feedback/render.py` (test_feedback_route_returns_the_elaborated_payload,
-  test_feedback_route_refuses_an_unknown_attempt, red `KeyError: 'recovery_code'` and a 404 route
-  miss before the wiring); registration now issues a recovery code and returns it once
-  (test_register_finish_returns_a_recovery_code_once); recovery re-registration at
-  `POST /auth/recovery/register/begin` and `/finish`
-  (test_registration_with_a_valid_recovery_code_adds_a_credential). `SessionContext` gained an
-  `errors` field so the feedback route can resolve a BC-ERR record from the chosen option.
-- Integrator, after the fresh review: the served item is redacted (see Plan corrections), with
-  test_bank_hides_the_answer_key_and_the_error_paths and
-  test_next_item_never_carries_the_answer_key, the second shown red by re-adding `answer_key` to
-  `_as_item_dict` (`1 failed`) and green after restoring; option classification now reads `is_key`
-  (test_a_distractor_without_an_error_path_is_refused,
-  test_the_key_is_read_from_is_key_not_from_a_null_error_path, both red first); a failed check now
-  sets status `rejected` rather than `draft`; the ingestion-routed review row carries kind
-  `item_verification_disagreement`
-  (test_an_indeterminate_verification_row_stays_out_of_the_audit_sample); a duplicate `sole_user`
-  the integrator had added was folded into `require_sole_user` over the existing one.
-- Operator instruction, same session: the application is named Growth. `pyproject.toml` name
-  `calc-bc-tutor` to `growth`, FastAPI title and the WebAuthn relying-party name to `Growth`, the
-  session cookie `calcbc_session` to `growth_session`, the environment prefix `TUTOR_` to
-  `GROWTH_` in `app/main.py`, the default database `var/tutor.db` to `var/growth.db`, and the
-  tmp_path database name in nine test modules. The word tutor is kept where it names the provider
-  role of 07 and the `prompts/tutor/` template path, because renaming those would contradict the
-  plan. The third session's entry above still records the old cookie name, as history.
-
-Session 2026-09-19 (fifth session), suite line at open `122 passed in 19.73s`, at close
-`161 passed in 20.43s`. Style gate exit 0 on every changed file, fed the hook its JSON payload on
-stdin and confirmed to bite with a positive control (`style_gate: gatecheck.py: em dash present`,
-exit 2). `qa/12_report.py` exit 0; `data/`, `research/`, `docs/` and `qa/` untouched, which the
-fresh reviewer checked independently. Slice: the deterministic grader of P1 scope 5 and R12, the
-two operator review-queue rows of 06's API surface, and the one wired provider role of scope 12
-with the two prompt templates of scope 13. No new gate name from 11 is claimed: gate 22 needs a
-live key and gate 23 is blocked for the reasons under Known defects.
-
-- Agent A, deterministic grader: `app/items/grade.py`, `tests/items/test_grade.py`:
-  test_mcq_selection_compared_to_the_key, test_mcq_distractor_yields_its_error_path_skills,
-  test_mcq_option_set_without_exactly_one_key_is_refused,
-  test_mcq_unknown_option_id_is_refused_not_wrong, test_short_answer_equivalence_decides_correct,
-  test_short_answer_unequal_blames_the_primary_skill_only,
-  test_numeric_key_is_compared_to_three_decimal_places,
-  test_units_declared_but_absent_is_notation_only,
-  test_units_absent_from_the_key_never_reports_misnotation, test_unparseable_submission_is_ungraded,
-  test_indeterminate_comparison_is_ungraded, test_served_format_decides_the_grading_path,
-  test_submission_shape_that_contradicts_the_served_format_is_refused. The signature is
-  `grade(item, submission, errors, served_format=None)` returning correct,
-  equivalent_but_misnotated, error_path, error_path_skills and reason, the first, second and fourth
-  of which are exactly the keys `rule_based_mastery_states` reads. The served format is passed
-  explicitly because every published item carries options, so shape alone would grade every item as
-  MCQ and the short answer path would be unreachable at the HTTP boundary.
-- Agent B, operator review-queue API: `app/api/routes/review.py`, `tests/api/test_review_routes.py`:
-  test_review_queue_lists_open_rows, test_review_queue_requires_the_cookie,
-  test_resolve_records_the_operator_verdict, test_resolve_refuses_an_unknown_row,
-  test_resolve_refuses_a_row_already_resolved. An `item_audit` row resolves through
-  `record_item_audit_verdict` so gate 29's published key error rate keeps counting the same rows.
-- Agent C, provider layer and prompt templates: `app/providers/{base,anthropic,replay}.py`,
-  `prompts/tutor/guardrailed_practice_v1.md`, `prompts/feedback/elaborated_v1.md`,
-  `tests/providers/`: test_call_maps_to_the_messages_wire_shape,
-  test_usage_reports_all_four_token_fields, test_no_tool_definitions_are_ever_sent,
-  test_adaptive_thinking_is_never_requested, test_replay_provider_makes_no_network_call,
-  test_tutor_template_never_receives_the_answer_key,
-  test_prompt_templates_are_versioned_and_golden. The transport is an injected callable and the
-  only real one uses `urllib.request`, because 06 names no HTTP client dependency and the
-  anthropic SDK is named nowhere in the plan. No test opens a socket and none needs a key.
-- Integrator: `equivalence` lost its timeout guard off the main thread, which is where FastAPI runs
-  a sync route (test_equivalence_runs_off_the_main_thread, red with
-  `ValueError('signal only works in main thread of the main interpreter')`); `Usage` gained
-  `reasoning_tokens`, the fifth field of 07's usage block that the builder's brief wrongly omitted
-  (test_usage_carries_the_reasoning_token_field); `record_attempt` gained a `grader` callable whose
-  verdict overrides anything the submission claims about itself, and
-  `POST /sessions/{id}/attempts` always passes one built over the unredacted `items` row
-  (test_attempt_is_graded_by_the_server_not_the_body, red `assert 200 == 409` and
-  `assert 0 is False`; test_attempt_refuses_an_item_with_no_items_row); the attempts route now
-  reports `correct` as a JSON boolean rather than the stored integer; `tests/api/conftest.py`
-  publishes a real `items` row for every item the fixture bank serves, so every HTTP attempt test
-  grades a real key, and the duplicate `publish_item` helper in `tests/api/test_routes.py` was
-  deleted; the tutor role is wired into the feedback route per R35 through `app/feedback/tutor.py`
-  (test_feedback_sentence_is_written_by_the_tutor,
-  test_the_tutor_receives_only_the_four_selected_fields,
-  test_feedback_without_a_tutor_still_returns_the_selected_payload,
-  test_the_stored_attempt_is_untouched_by_the_tutor).
-- Integrator, after the fresh review: an ungraded attempt no longer earns elaborated feedback and
-  its worked solution, which was a live hole the reviewer reproduced, since a submission whose
-  shape contradicts the served format was graded as nothing and fed back as everything
-  (test_feedback_is_refused_on_an_ungraded_attempt, red on a 200 carrying `worked_solution`); the
-  tutor request carries `CacheSettings(prefix_breakpoints=1, ttl="1h")` per scope 12
-  (test_the_tutor_call_caches_its_static_prefix); a provider failure costs the sentence and not the
-  deterministically selected payload (test_the_selected_payload_survives_a_provider_failure); an
-  unknown review-queue verdict is a 400 rather than a `ValueError` out of the audit writer
-  (test_resolve_refuses_an_unknown_verdict).
+  test_wrong_short_answer_without_an_error_record_still_elaborates,
+  test_absent_error_fields_are_empty_and_never_invented,
+  test_the_violated_step_falls_back_to_the_last_path_step,
+  test_the_tutor_payload_is_still_exactly_the_four_fields,
+  test_no_scoring_consequence_when_the_archetype_supplies_none. Of the 13 P1 archetypes 8 carry
+  `point_types: []` and 5 carry BC-PT id lists; no archetype record carries `does_not_earn` text.
+- Agent C, the error-note route (06's API surface has no row): `app/api/routes/sessions.py`,
+  `tests/api/test_error_note.py`: test_error_note_route_stores_the_note_on_the_attempt,
+  test_error_note_route_requires_the_cookie, test_error_note_route_refuses_an_unknown_attempt,
+  test_error_note_route_refuses_an_empty_note.
+- Agent D, wiring and audit gaps: `app/main.py`, `app/api/routes/auth.py`, `app/session/build.py`,
+  `tests/api/test_wiring.py`, `tests/session/test_coverage_audit.py`:
+  test_main_wires_a_tutor_when_a_key_is_configured,
+  test_main_builds_without_a_tutor_when_no_key_is_configured,
+  test_main_respects_an_explicit_none_provider_even_with_a_key,
+  test_building_the_application_opens_no_socket, test_reauth_finish_writes_an_audit_entry,
+  test_a_fail_closed_coverage_gap_writes_an_audit_entry,
+  test_the_audit_entry_names_the_skill_and_the_reason. Audit actions `reauth_established` and
+  `coverage_gap_fail_closed`.
+- Integrator: `open_session` passes `db` and `user_id` into `assemble_session`, so the coverage-gap
+  audit fires on the production path and not only in a direct call
+  (test_open_session_writes_the_coverage_gap_audit_entry, red `assert 0 >= 1`); the wrong short
+  answer reaches elaborated feedback over HTTP
+  (test_a_wrong_short_answer_gets_elaborated_feedback, test_the_absent_error_fields_are_empty_over_http,
+  both shown red by a positive control that restored the old refusal inside `elaborated_payload`,
+  `KeyError: 'elaborated'`, then restored).
+- Integrator, after the fresh review, which found two blocking defects and reproduced both:
+  `record_attempt` now resolves the format on the write path too, because gate 12 states the
+  property over `attempts.format` and a client that never calls `GET /next` recorded the
+  assembly-frozen format, which would have granted full credit on an attempt R29 says was MCQ
+  (test_an_attempt_that_skipped_the_serve_still_records_the_resolved_format, red
+  `At index 1 diff: 'short_answer' != 'mcq'`); `tests/api/test_routes.serve_as_mcq` no longer
+  writes `mcq` onto the queue row, which the write-path resolution now overwrites, and instead
+  consumes a real prior stage-unsupported attempt so the MCQ case is earned through R29 (seven
+  HTTP tests went red on the old helper and pass on the new one); the tutor is opt-in through
+  `GROWTH_TUTOR_PROVIDER`, default none, because 07 puts the budget guard, the usage accounting
+  and the audit trail at the provider seam and P1 has built none of the three, so a key sitting in
+  the environment no longer wires a billed role (test_a_stray_key_alone_wires_no_tutor); the
+  coverage-gap audit row is stamped by `write_audit` with the wall clock rather than with the
+  engine's session clock, which is local midnight of `today` and wrote `2026-03-01T05:00:00+00:00`
+  for a row written in September (test_the_audit_entry_is_stamped_with_the_real_moment); the gap
+  guard now checks `user_id` as well as `db`, since `audit_log.actor` is NOT NULL; the error-note
+  route refuses a note on an attempt that was not corrected, per 02's block 4
+  (test_error_note_route_refuses_a_correct_attempt, red `200 != 409`), and the test that stored a
+  note on a correct attempt was rewritten to submit a wrong answer; a distractor whose
+  `error_path` does not resolve in the snapshot is refused again rather than composing an empty
+  payload, which restores the negative case the agent's deletion had dropped
+  (test_a_distractor_whose_error_path_does_not_resolve_is_refused, red `DID NOT RAISE ValueError`).
 
 ## Known defects [verified]
+
+- From the sixth session's review, not fixed. The tutor is still called from the feedback route on
+  every GET with no budget guard, no usage accounting and no `audit_log` write, which is the seam
+  07 describes; the sixth session only made the role opt-in so an unconfigured deployment cannot
+  spend. Until that seam exists, `GROWTH_TUTOR_PROVIDER=anthropic` is a deliberate operator choice
+  to spend without a cap.
+- `write_coverage_gap_audit` writes one row per gap per `open_session` with no dedupe, so a
+  permanent coverage gap produces a row every session for the life of the deployment. 06 asks for
+  the gap to be written to `audit_log`, not for a per-session heartbeat.
+- The error note takes any length and a repeat POST silently overwrites the previous one, although
+  02's block 4 says one note per corrected item. 06 sets no cap, so none was invented.
+- `reauth_established` and `coverage_gap_fail_closed` are free strings at their call sites. 09 asks
+  for an action drawn from a controlled vocabulary and nothing in the code enumerates one. The
+  reauth entry carries `detail=None`, so it records that a re-tap happened but not what it gated.
+- `scoring_consequence` is empty on every wrong short answer, so feedback carries two of 03's three
+  required parts on that path. See Plan corrections for why the BC-PT branch was not implemented.
 
 - From the fifth session's review, not fixed. Session assembly freezes `format` on every queue slot
   at assembly time, so the R16 alternation never happens inside one session: every item of a fresh
@@ -256,6 +209,25 @@ live key and gate 23 is blocked for the reasons under Known defects.
 
 ## Plan corrections applied [verified]
 
+- 03 Content part 2 gives the scoring consequence as the BC-PT `does_not_earn` text when no error
+  matched. `app/content/loader.py` does read `data/scoring_points.json` and the archetypes carry
+  BC-PT ids, but that text answers which point the response failed to earn, and naming one of an
+  archetype's several point types needs the per-point decision 03 puts behind mechanic 6, which P1
+  has no component to make. The field stays empty rather than naming a guessed exam consequence.
+- 06's API surface has no row for the error note although the `attempts` table carries the column.
+  The build adds `POST /sessions/{id}/attempts/{aid}/error-note`, refused unless the attempt was
+  corrected, per 02's Session assembly block 4.
+- 09's audit vocabulary has no entry for re-authentication or for a fail-closed coverage gap. The
+  build writes `reauth_established` and `coverage_gap_fail_closed`, which the operator should carry
+  into 09's list or rename there.
+- 11 gate 12 states the alternation over `attempts.format`, so R29 is resolved both when a slot is
+  served and when the attempt is written. A format frozen at assembly was the only thing any test
+  had ever checked, and the serve path alone left a client that skips `GET /next` recording the
+  frozen value.
+- 07 puts the budget guard, the usage accounting and the audit trail at the provider seam. P1 has
+  none of the three, so the composition root wires the tutor only when `GROWTH_TUTOR_PROVIDER`
+  names a provider; an `ANTHROPIC_API_KEY` alone wires nothing.
+
 - 03's rule-based assignment names a mis-notated answer as one of P1's four answer shapes but gives
   no mechanical notation check. Check 4 of 03's deterministic pre-checks, units present, is the
   only one a P1 item record can carry, so it is the only one implemented, and an item whose key
@@ -312,6 +284,46 @@ live key and gate 23 is blocked for the reasons under Known defects.
 - 02 block 1 ("5 items or 5 minutes of forecast, whichever comes first") with the 3-minute default forecast admits exactly one item until an archetype has 5 timed attempts, so the 5-item cap is unreachable early on. Implemented as written; the exit-criterion-5 walkthrough must not be read as evidence the item cap works.
 - 02 invariant 23 (both the split and the compensatory prediction logged on every observation): `attempts` carries `p_split` and `p_compensatory` columns from this session, schema only; the writer arrives with the session loop in the slice that builds `POST /sessions/{id}/attempts`.
 
+## Decisions taken on the operator's instruction, 2026-09-20 [inferred]
+
+Sixth session, on the instruction "answer all decisions for me". Every open question the ledger
+held for the operator is answered here. None of these is implemented yet except the last; they are
+the standing answers the next slice builds against.
+
+- A wrong short answer does get elaborated feedback in P1, as built this session. R12 rule 3 gives
+  it no error path, so it carries the violated step and the worked solution and leaves the two
+  BC-ERR fields empty. Feedback that names the step beats no feedback at all on the whole short
+  answer path, and 03's Content section already contemplates an archetype with no matched error.
+- `tests/fixtures/items_p1/` may be filled with synthetic items for gate 23. Gate 23's property is
+  the flow, login to feedback to a persisted `skills_state` change, not item quality, so a fixture
+  item exercises it honestly. Gates 17, 29 and 30 are item-quality gates and still wait for the 130
+  hand-authored items; no synthetic item may be counted toward them, and the fixture directory
+  carries a README saying so.
+- Cassettes under `tests/fixtures/provider_cassettes/` may be hand-written fixtures rather than
+  recordings, until a key exists. A cassette is a fixture response for `ReplayProvider`, so writing
+  one by hand proves the replay path and the no-network rule. Every hand-written cassette is marked
+  synthetic in the file, and gate 22's token count still waits for a real key.
+- Purge truncates the tables that carry no `user_id`: `review_queue`, `jobs`, `items` and
+  `item_verifications`. The installation is single-user, so every row in them is that user's work.
+  `content_snapshots` is kept, because it is derived from the read-only library and holds nothing
+  the student wrote. The purge audit entry survives the purge instead of being deleted with the
+  rest of `audit_log`.
+- py_webauthn (`webauthn` on PyPI) is approved for `pyproject.toml` and is to be named in 06 when
+  the dependency lands.
+- The error note is capped at 500 characters and a second POST replaces the first. One note per
+  corrected item is 02's rule; replacing a note is editing it, not adding a second one.
+- `reauth_established` and `coverage_gap_fail_closed` join 09's audit vocabulary, and the code gets
+  one module-level enumeration of action names so the vocabulary is controlled in fact and not only
+  in the plan.
+- The coverage-gap audit writes one row per user per archetype and skips a gap already recorded,
+  rather than one row per session opened.
+- The tutor stays opt-in through `GROWTH_TUTOR_PROVIDER` until 07's budget, usage and audit seam is
+  built. That seam is the next slice.
+- The 24 stray `* 2.py` files were deleted. Twenty-two were byte-identical to their counterparts,
+  and `tests/api/conftest 2.py` and `tests/items/test_verify 2.py` were strictly older versions of
+  files that still hold everything they held. The suite now reports `191 passed` without
+  `--ignore-glob`.
+
 ## Decisions taken on the operator's instruction, 2026-09-19 [inferred]
 
 Second session, on the instruction "decide anything that needs my input yourself":
@@ -329,6 +341,14 @@ Second session, on the instruction "decide anything that needs my input yourself
 - The build is committed on the branch `build/p1-backend-core`; main is untouched.
 
 ## Next candidates [inferred]
+
+- Most likely next slice without human input: the provider seam of 07, meaning the budget row, the
+  usage accounting and the `audit_log` write on every provider call, plus caching the tutor
+  sentence on the attempt so re-reading the feedback screen does not re-spend and does not return a
+  different sentence. That is the last piece of P1 scope 12 that needs no key, and it is what makes
+  `GROWTH_TUTOR_PROVIDER=anthropic` safe to turn on.
+- Still open and not human-only: deduping the coverage-gap audit rows, a controlled vocabulary for
+  audit actions, and the `audit_log` entry 09 asks for on ordinary registration.
 
 - Human-only, blocks P1 exit: 130 hand-authored items (10 per P1 archetype) in the record shape
   `app/items/ingest.py` reads, each with `is_key` on every option, a BC-ERR `error_path` on every

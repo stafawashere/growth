@@ -7,12 +7,19 @@ actions. It is an assertion ceremony against an already-registered credential, s
 06 has no row for the recovery code either, and the ordinary registration ceremony stays closed
 once the installation has a user, so recovery runs at /auth/recovery/register/begin and
 /auth/recovery/register/finish. Both additions are recorded in BUILD-LEDGER.md.
+
+09's audit-log vocabulary lists "a session established from a new authenticator" among what
+audit_log records. login_finish already writes that as action "session_established", and reauth is
+its own ceremony, an authenticator asserted again against a session already open, so reauth_finish
+writes "reauth_established" rather than reusing the login action name, through the same write_audit
+helper login_finish and logout already call.
 """
 from fastapi import APIRouter, Body, Depends, Request, Response
 
 from app.api.deps import current_session, get_challenges, get_db, get_settings
 from app.auth import service
 from app.auth.cookies import clear_session_cookie, set_session_cookie
+from app.auth.service import write_audit
 
 router = APIRouter(prefix="/auth", tags=["auth"])
 
@@ -170,8 +177,7 @@ def reauth_finish(
    auth_session=Depends(current_session),
 ):
    fields = body_of(payload)
-
-   return service.reauth_finish(
+   finished = service.reauth_finish(
       db,
       settings,
       challenges,
@@ -179,3 +185,12 @@ def reauth_finish(
       fields.get("challenge_id"),
       fields.get("credential") or {},
    )
+   write_audit(
+      db,
+      auth_session.user_id,
+      "reauth_established",
+      f"auth_sessions:{auth_session.id}",
+      None,
+   )
+
+   return finished

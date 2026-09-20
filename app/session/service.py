@@ -20,7 +20,7 @@ from datetime import datetime, timezone
 from app.db import models
 from app.engine import constants
 from app.engine.prior import p_compensatory, p_knowledge
-from app.engine.select import retrievability_map
+from app.engine.select import format_for_attempt, retrievability_map
 from app.engine.state import Confidence, FadingStage, MasteryState, ResponseFormat
 from app.engine.update import Observation, apply_observation, rule_based_mastery_states
 from app.session import repository
@@ -97,7 +97,9 @@ def open_session(
    started_at = as_datetime(now or today)
    states = repository.load_states(db, user_id)
    history = repository.load_attempts_history(db, user_id)
-   assembled = assemble_session(states, graph, bank, probes, history, rng, today, now=now)
+   assembled = assemble_session(
+      states, graph, bank, probes, history, rng, today, now=now, db=db, user_id=user_id
+   )
    is_rehearsal = mode == "rehearsal"
    row = models.Session(
       id=new_id("SES"),
@@ -162,8 +164,31 @@ def consumed_positions(db, session_row):
    return consumed
 
 
+def resolve_served_format(db, session_row, block, position, item):
+   """R29 is answered when the slot is served, not when the queue is assembled.
+
+   The alternation is per user per archetype per stage-unsupported attempt, so a format frozen at
+   assembly gives every slot of a fresh session the same answer. The stage stays frozen; only the
+   format is re-read, against the attempts as they stand now, and it is written back onto the slot
+   so record_attempt and a second read of the same slot see the format that was served.
+   """
+   history = repository.load_attempts_history(db, session_row.user_id)
+   resolved = format_for_attempt(history, item["archetype_id"], FadingStage(item["stage"]))
+   is_unchanged = item.get("format") == resolved.value
+
+   if is_unchanged:
+      return item
+
+   queue = json.loads(session_row.queue)
+   queue[block][position]["format"] = resolved.value
+   session_row.queue = json.dumps(queue)
+   db.flush()
+
+   return queue[block][position]
+
+
 def next_item(db, session_id):
-   """The next unconsumed queue slot, in block order.
+   """The next unconsumed queue slot, in block order, with its format resolved at serve time.
 
    An item id that already carries an attempt in this session is skipped even in a later slot,
    because record_attempt refuses a second attempt on the same item in the same session.
@@ -177,17 +202,21 @@ def next_item(db, session_id):
       is_attempted = item["id"] in attempted
 
       if not is_consumed and not is_attempted:
-         return item
+         return resolve_served_format(db, session_row, block, position, item)
 
    return None
 
 
-def queue_item(session_row, item_id):
-   for _, _, item in served_positions(session_row):
+def queue_slot(session_row, item_id):
+   for block, position, item in served_positions(session_row):
       if item["id"] == item_id:
-         return item
+         return block, position, item
 
    raise ValueError(f"{item_id} is not in the queue of session {session_row.id}")
+
+
+def queue_item(session_row, item_id):
+   return queue_slot(session_row, item_id)[2]
 
 
 def collects_confidence(stage):
@@ -241,7 +270,8 @@ def record_attempt(
    passes one.
    """
    session_row = db.get(models.Session, session_id)
-   item = queue_item(session_row, item_id)
+   block, position, slot = queue_slot(session_row, item_id)
+   item = resolve_served_format(db, session_row, block, position, slot)
    already_attempted = any(row.item_id == item_id for row in attempt_rows(db, session_id))
 
    if already_attempted:

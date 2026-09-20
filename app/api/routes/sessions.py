@@ -278,6 +278,41 @@ def submit_confidence(
    return {"id": attempt.id, "confidence": attempt.confidence}
 
 
+@router.post("/{session_id}/attempts/{attempt_id}/error-note")
+def submit_error_note(
+   session_id: str,
+   attempt_id: str,
+   payload: dict = Body(default=None),
+   db=Depends(get_db),
+   user=Depends(current_user),
+):
+   """One note per item corrected in this session, per 02's Session assembly block 4.
+
+   An attempt that was right, or that never graded, carries no note, so 06's API surface gains
+   this row rather than the attempts route gaining a field.
+   """
+   fields = body_of(payload)
+   row = owned_session(db, session_id, user)
+   attempted = owned_attempt(db, row, attempt_id)
+   was_corrected = attempted.correct == 0
+
+   if not was_corrected:
+      raise HTTPException(
+         status_code=409,
+         detail="an error note belongs to an item corrected in this session",
+      )
+
+   note = fields.get("note")
+   is_blank = not isinstance(note, str) or note.strip() == ""
+
+   if is_blank:
+      raise HTTPException(status_code=400, detail="the error note cannot be empty")
+
+   attempt = service.record_error_note(db, attempt_id, note.strip())
+
+   return {"id": attempt.id, "error_note": attempt.error_note}
+
+
 @router.post("/{session_id}/judgments")
 def record_judgment(
    session_id: str,

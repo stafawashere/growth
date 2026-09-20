@@ -135,18 +135,6 @@ def test_scoring_consequence_comes_from_the_error_record():
    assert feedback.elaborated.scoring_consequence == other_record["scoring_consequence"]
    assert feedback.elaborated.as_prompt_fields()["scoring_consequence"] == other_record["scoring_consequence"]
 
-   with pytest.raises(ValueError):
-      render.render_feedback(
-         stage=FadingStage.UNSUPPORTED,
-         archetype=ARCHETYPE,
-         item=ITEM,
-         submitted=True,
-         correct=False,
-         chosen_option=WRONG_OPTION,
-         error_record=None,
-         confidence=Confidence.UNSURE,
-      )
-
 
 def test_self_explanation_only_on_examples_and_corrected_errors():
    worked_example = render.render_feedback(
@@ -231,3 +219,98 @@ def test_tutor_receives_no_answer_before_submission():
 
    assert ITEM["answer_key"] not in json.dumps(after.elaborated.as_prompt_fields())
    assert after.elaborated.as_prompt_fields()["worked_solution"] == ITEM["worked_solution"]
+
+
+SHORT_ANSWER_ITEM = {
+   "id": "BC-ITM-0002",
+   "archetype_id": "BC-QA-01007",
+   "answer_key": "seven halves",
+   "worked_solution": "factor the numerator, divide out the common factor, then evaluate at the target",
+   "options": [],
+}
+
+ARCHETYPE_WITH_POINT_TYPES = {
+   "id": "BC-QA-02007",
+   "point_types": ["BC-PT-99023", "BC-PT-99004", "BC-PT-99005"],
+   "expected_solution_path": list(ARCHETYPE["expected_solution_path"]),
+}
+
+
+def _wrong_short_answer(archetype=ARCHETYPE):
+   return render.render_feedback(
+      stage=FadingStage.UNSUPPORTED,
+      archetype=archetype,
+      item=SHORT_ANSWER_ITEM,
+      submitted=True,
+      correct=False,
+      chosen_option=None,
+      error_record=None,
+      confidence=Confidence.UNSURE,
+   )
+
+
+def test_wrong_short_answer_without_an_error_record_still_elaborates():
+   feedback = _wrong_short_answer()
+
+   assert feedback.kind is render.FeedbackKind.ELABORATED
+
+   payload = feedback.elaborated
+
+   assert payload is not None
+   assert payload.error_id is None
+   assert payload.worked_solution == SHORT_ANSWER_ITEM["worked_solution"]
+   assert payload.template == render.ELABORATED_TEMPLATE
+   assert feedback.self_explanation_prompt == render.self_explanation_prompt(4)
+
+
+def test_absent_error_fields_are_empty_and_never_invented():
+   payload = _wrong_short_answer().elaborated
+   fields = payload.as_prompt_fields()
+
+   assert payload.observed_behavior == ""
+   assert payload.scoring_consequence == ""
+   assert fields["observed_behavior"] == ""
+   assert fields["scoring_consequence"] == ""
+   assert fields["violated_step"] != ""
+   assert ERROR_RECORD["observed_behavior"] not in json.dumps(fields)
+   assert ERROR_RECORD["scoring_consequence"] not in json.dumps(fields)
+
+
+def test_the_violated_step_falls_back_to_the_last_path_step():
+   path = ARCHETYPE["expected_solution_path"]
+   payload = _wrong_short_answer().elaborated
+
+   assert payload.violated_step_index == len(path) - 1
+   assert payload.violated_step == path[-1]
+   assert render.violated_step_index(ARCHETYPE, None, None) == len(path) - 1
+
+
+def test_the_tutor_payload_is_still_exactly_the_four_fields():
+   fields = _wrong_short_answer().elaborated.as_prompt_fields()
+   serialised = json.dumps(fields)
+
+   assert tuple(fields) == render.PROMPT_FIELDS
+   assert set(fields) == set(render.PROMPT_FIELDS)
+   assert SHORT_ANSWER_ITEM["answer_key"] not in serialised
+   assert SHORT_ANSWER_ITEM["id"] not in serialised
+   assert ARCHETYPE["id"] not in serialised
+
+
+def test_no_scoring_consequence_when_the_archetype_supplies_none():
+   payload = _wrong_short_answer(ARCHETYPE_WITH_POINT_TYPES).elaborated
+
+   assert payload.scoring_consequence == ""
+
+   for point_type_id in ARCHETYPE_WITH_POINT_TYPES["point_types"]:
+      assert point_type_id not in json.dumps(payload.as_prompt_fields())
+
+
+def test_a_distractor_whose_error_path_does_not_resolve_is_refused():
+   """A named BC-ERR id that the snapshot does not hold is a content fault, not a missing path.
+
+   R12 rule 3 covers an answer with no error path at all, which composes without a record. An
+   option that names one and cannot resolve it is the case the loader is supposed to make
+   impossible, so feedback refuses rather than quietly dropping the two fields.
+   """
+   with pytest.raises(ValueError):
+      render.elaborated_payload(ARCHETYPE, ITEM, WRONG_OPTION, None)

@@ -8,6 +8,19 @@ scoring_consequence of the chosen option's BC-ERR record, and the item's stored 
 Those four fields are the whole of what the tutor role sees, so the final answer never reaches it
 before the student has committed.
 
+A wrong answer often carries no BC-ERR record at all. R12 in docs/plan/11-phased-delivery.md gives
+an incorrect answer with no error path its own rule, and app/items/grade.py returns error_path None
+for every wrong short answer, so demanding a record would leave the whole short answer path without
+feedback. The payload is composed without one: the violated step falls back to the last step of
+expected_solution_path, the worked solution is the item's own, and observed_behavior and
+scoring_consequence stay empty rather than being guessed. 03 part 2 allows a scoring consequence to
+come from the BC-PT does_not_earn text instead. app/content/loader.py does read
+data/scoring_points.json and the archetype records carry BC-PT ids, but that text answers which
+point the response failed to earn, and naming one of an archetype's several point types needs the
+per-point decision that P1 has no component to make (03's own table puts per-point grading behind
+mechanic 6). Guessing a point would put an exam consequence in front of the student that nothing
+decided, so the field stays empty until a per-point grader exists.
+
 The confidence rating and the hypercorrection flag belong to app/session/service.py and
 app/engine/update.py; this module only refuses to render feedback for a stage whose rating has not
 been recorded yet.
@@ -41,7 +54,7 @@ class StepMark:
 
 @dataclass(frozen=True)
 class ElaboratedPayload:
-   error_id: str
+   error_id: str | None
    violated_step_index: int
    violated_step: str
    observed_behavior: str
@@ -108,19 +121,29 @@ def violated_step_index(archetype, chosen_option, error_record):
 
 
 def elaborated_payload(archetype, item, chosen_option, error_record):
-   has_record = error_record is not None
+   """Without a BC-ERR record the two fields it supplies are carried empty, never invented.
 
-   if not has_record:
-      raise ValueError("elaborated feedback needs the BC-ERR record of the chosen option")
+   An option that names an error path the snapshot cannot resolve is a different case: the id is
+   there and the record is not, which the loader is meant to make impossible, so it is refused.
+   """
+   names_a_path = (chosen_option or {}).get("error_path") is not None
+   is_unresolved = names_a_path and error_record is None
 
+   if is_unresolved:
+      raise ValueError(
+         f"option {chosen_option.get('id')} names {chosen_option['error_path']}, "
+         "which this snapshot does not hold"
+      )
+
+   record = error_record or {}
    index = violated_step_index(archetype, chosen_option, error_record)
 
    return ElaboratedPayload(
-      error_id=error_record["id"],
+      error_id=record.get("id"),
       violated_step_index=index,
       violated_step=archetype["expected_solution_path"][index],
-      observed_behavior=error_record["observed_behavior"],
-      scoring_consequence=error_record["scoring_consequence"],
+      observed_behavior=record.get("observed_behavior") or "",
+      scoring_consequence=record.get("scoring_consequence") or "",
       worked_solution=item["worked_solution"],
    )
 

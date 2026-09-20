@@ -6,11 +6,19 @@ The productive-failure opener is out of P1 scope (R35), so block 2 opens with an
 
 The pending-probe queue is handed to block 2 alone, which is where 11-phased-delivery.md test 15
 puts the served probe. The drain path inside next_item_review stays wired for review-mode sessions.
+
+Block 2's fail-closed coverage gaps (R18, docs/plan/06-architecture.md traceability row for the
+job worker) are recorded twice: in the session's queue payload, which sessions.service already
+writes, and in audit_log, naming the skill left unserved and the reason, which the queue payload
+alone does not give an operator a durable, queryable record of. The write reuses app.auth.service's
+write_audit rather than a second audit writer, and is a no-op when no db is supplied, so a caller
+that only wants the in-memory Session, such as the engine unit tests, is unaffected.
 """
 import statistics
 from dataclasses import dataclass, field
 from datetime import timedelta
 
+from app.auth.service import write_audit
 from app.engine import constants
 from app.engine.fringe import retrieval_eligible
 from app.engine.select import (
@@ -23,6 +31,8 @@ from app.engine.select import (
    retrievability_map,
    session_now,
 )
+
+COVERAGE_GAP_ACTION = "coverage_gap_fail_closed"
 
 
 @dataclass
@@ -133,6 +143,24 @@ def requeue_ready(attempts_history, today):
    return [(item_id, archetype_id) for _, item_id, archetype_id in sorted(ready)]
 
 
+def write_coverage_gap_audit(db, user_id, archetype_ids, graph):
+   """R18: an archetype excluded from block 2 for want of a published item is named by its
+   skill, not just its archetype id, because the skill is what an operator needs to go fill.
+
+   The row is stamped by write_audit with the wall clock rather than with the engine's session
+   clock, which is local midnight of `today` whenever the caller supplies no time.
+   """
+   for archetype_id in archetype_ids:
+      record = graph.archetypes.get(archetype_id)
+      skill_id = graph.primary_skill(archetype_id) if record is not None else None
+      detail = {
+         "archetype_id": archetype_id,
+         "skill": skill_id,
+         "reason": "no published item for this fringe archetype",
+      }
+      write_audit(db, user_id, COVERAGE_GAP_ACTION, f"archetypes:{archetype_id}", detail)
+
+
 def corrected_today(attempts_history, today):
    return [
       attempt["item_id"]
@@ -177,6 +205,8 @@ def assemble_session(
    retrievability=None,
    unsupported_successes=None,
    rules=DEFAULT_RULES,
+   db=None,
+   user_id=None,
 ):
    retrievability = retrievability_map(states, today, retrievability)
    now = session_now(today, now)
@@ -281,6 +311,12 @@ def assemble_session(
       assembled += serve(session.block2, selection.item)
 
    session.coverage_gaps = gaps
+   has_gaps = len(gaps) > 0
+   has_audit_target = db is not None and user_id is not None
+
+   if has_gaps and has_audit_target:
+      write_coverage_gap_audit(db, user_id, gaps, graph)
+
    pool = eligible_records(states, graph, bank, unsupported_successes)
    assembled = 0.0
 

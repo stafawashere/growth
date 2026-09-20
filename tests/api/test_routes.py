@@ -18,6 +18,9 @@ def correct_answer_for(item):
    return {"mathjson": KEY_MATHJSON}
 
 
+PRIOR_ATTEMPT_AT = "2026-02-28T09:00:00+00:00"
+
+
 def open_session(client):
    return client.post(
       "/sessions",
@@ -246,12 +249,18 @@ def test_register_finish_seeds_from_the_resolved_snapshot(world, monkeypatch):
 
 
 def serve_as_mcq(world, session_id, item_id):
-   """Session assembly fixes the format per queue slot, so an MCQ case is set up on the row."""
+   """Consume one stage-unsupported attempt on the archetype, so R29 serves the next one as MCQ.
+
+   The format is resolved against the user's attempt history when the slot is served and again
+   when the attempt is written, so an MCQ case cannot be forced onto the queue row: it has to be
+   earned by a prior attempt the alternation counts.
+   """
    with OrmSession(world.engine) as db:
       row = db.get(models.Session, session_id)
       queue = json.loads(row.queue)
+      slot = None
 
-      for block, slots in queue.items():
+      for slots in queue.values():
          holds_slots = isinstance(slots, list)
 
          if not holds_slots:
@@ -262,9 +271,34 @@ def serve_as_mcq(world, session_id, item_id):
             is_target = is_a_slot and item.get("id") == item_id
 
             if is_target:
-               item["format"] = "mcq"
+               slot = item
 
-      row.queue = json.dumps(queue)
+      if slot is None:
+         raise AssertionError(f"{item_id} is not in the queue of session {session_id}")
+
+      sibling_id = f"{slot['archetype_id']}-V02"
+
+      db.add(
+         models.Attempt(
+            id=f"ATT-PRIOR-{item_id}",
+            session_id=session_id,
+            item_id=sibling_id,
+            started_at=PRIOR_ATTEMPT_AT,
+            submitted_at=PRIOR_ATTEMPT_AT,
+            response=json.dumps({"form": "symbolic", "mathjson": ["Add", 1, 1]}),
+            confidence="confident",
+            elapsed_ms=90000,
+            correct=1,
+            p_split=0.5,
+            p_compensatory=0.5,
+            served_stage="unsupported",
+            format="short_answer",
+            per_skill_states=json.dumps({}),
+            snapshot_id=row.snapshot_id,
+            created_at=PRIOR_ATTEMPT_AT,
+            updated_at=PRIOR_ATTEMPT_AT,
+         )
+      )
       db.commit()
 
 

@@ -15,7 +15,7 @@ def main():
       return
 
    file_path = payload.get("tool_input", {}).get("file_path", "")
-   is_library_file = "/research/" in file_path or "/data/" in file_path or file_path.endswith(".py")
+   is_library_file = "/research/" in file_path or "/data/" in file_path or "/docs/" in file_path or file_path.endswith(".py")
 
    if not is_library_file:
       return
@@ -28,8 +28,8 @@ def main():
 
    text = path.read_text(errors="ignore")
    problems = []
-   has_em_dash = "—" in text
-   has_spaced_en_dash = " – " in text
+   has_em_dash = "\u2014" in text
+   has_spaced_en_dash = " \u2013 " in text
    is_markdown = path.suffix == ".md"
    lacks_front_matter = is_markdown and not text.startswith("---\n")
    has_predictive = is_markdown and path.name != "historical-frequency.md" and re.search(r"likely to appear|will (definitely |certainly )?(appear|be tested)|expect(ed)? to see", text, re.I) is not None

@@ -1,0 +1,1645 @@
+{
+  "built_from": "data/archetypes.json, data/skills.json, data/prereq_edges.csv",
+  "archetypes": [
+    {
+      "id": "BC-QA-01004",
+      "family": "limit-algebraic-rewrite",
+      "primary_unit": "BC-UNIT-01",
+      "skills": [
+        "BC-SKL-01024",
+        "BC-SKL-01025",
+        "BC-SKL-01026",
+        "BC-SKL-01027",
+        "BC-SKL-01028"
+      ],
+      "prerequisites": [
+        "BC-PRQ-01001",
+        "BC-PRQ-01002",
+        "BC-PRQ-01007"
+      ],
+      "difficulty_factors": [
+        "BC-DF-02",
+        "BC-DF-10",
+        "BC-DF-17"
+      ],
+      "representations": [
+        "BC-REP-01"
+      ],
+      "calculator_status": "no_calculator",
+      "point_types": [],
+      "expected_solution_path": [
+        "substitute and observe the indeterminate form",
+        "rewrite the expression into an equivalent form",
+        "divide out the common factor or simplify",
+        "evaluate the simplified expression at the target"
+      ],
+      "common_distractors": [
+        "reporting zero because the numerator tends to zero",
+        "reporting that the limit does not exist on seeing zero over zero",
+        "cancelling a term rather than a factor",
+        "dropping the sign introduced by the conjugate"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "BC-QA-01008",
+      "family": "parameter-for-continuity",
+      "primary_unit": "BC-UNIT-01",
+      "skills": [
+        "BC-SKL-01051",
+        "BC-SKL-01052",
+        "BC-SKL-01050",
+        "BC-SKL-01053"
+      ],
+      "prerequisites": [
+        "BC-PRQ-01003"
+      ],
+      "difficulty_factors": [
+        "BC-DF-17"
+      ],
+      "representations": [
+        "BC-REP-01"
+      ],
+      "calculator_status": "no_calculator",
+      "point_types": [],
+      "expected_solution_path": [
+        "evaluate the one sided limit from each branch at the boundary",
+        "set the two expressions equal at the boundary",
+        "include the function value in the equality",
+        "solve for the unknown or solve the system for two unknowns"
+      ],
+      "common_distractors": [
+        "matching only the two limits and ignoring the defined value",
+        "substituting the boundary into the wrong branch",
+        "solving one equation for two unknowns",
+        "reporting a value that makes the branches equal at the wrong input"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "BC-QA-01015",
+      "family": "continuity-interval",
+      "primary_unit": "BC-UNIT-01",
+      "skills": [
+        "BC-SKL-01046",
+        "BC-SKL-01047",
+        "BC-SKL-01048",
+        "BC-SKL-01049"
+      ],
+      "prerequisites": [
+        "BC-PRQ-01008",
+        "BC-PRQ-01010"
+      ],
+      "difficulty_factors": [
+        "BC-DF-02",
+        "BC-DF-10",
+        "BC-DF-14",
+        "BC-DF-17"
+      ],
+      "representations": [
+        "BC-REP-01"
+      ],
+      "calculator_status": "no_calculator",
+      "point_types": [],
+      "expected_solution_path": [
+        "identify every input at which the expression is undefined",
+        "state the family to which the expression belongs and that it is continuous on its domain",
+        "write the maximal intervals of continuity",
+        "treat any endpoint with the appropriate one sided limit"
+      ],
+      "common_distractors": [
+        "including an excluded input inside a stated interval",
+        "writing the domain as a single interval when it has several pieces",
+        "using closed brackets at an excluded input",
+        "omitting the reason when one is demanded"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "BC-QA-02002",
+      "family": "derivative-definition-limit",
+      "primary_unit": "BC-UNIT-02",
+      "skills": [
+        "BC-SKL-02006",
+        "BC-SKL-02007",
+        "BC-SKL-02008",
+        "BC-SKL-02009",
+        "BC-SKL-02027"
+      ],
+      "prerequisites": [
+        "BC-PRQ-02001",
+        "BC-PRQ-02005"
+      ],
+      "difficulty_factors": [
+        "BC-DF-02"
+      ],
+      "representations": [
+        "BC-REP-01"
+      ],
+      "calculator_status": "no_calculator",
+      "point_types": [],
+      "expected_solution_path": [
+        "write the difference quotient for the given rule",
+        "expand and simplify the numerator",
+        "divide out the increment",
+        "evaluate the limit by substitution"
+      ],
+      "common_distractors": [
+        "setting the increment to zero before cancelling",
+        "omitting the limit symbol until the final line",
+        "expanding the shifted term incorrectly",
+        "differentiating by rule and presenting the result as the definition"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "BC-QA-02006",
+      "family": "rule-manipulation",
+      "primary_unit": "BC-UNIT-02",
+      "skills": [
+        "BC-SKL-02025",
+        "BC-SKL-02026",
+        "BC-SKL-02028",
+        "BC-SKL-02029",
+        "BC-SKL-02030",
+        "BC-SKL-02031"
+      ],
+      "prerequisites": [
+        "BC-PRQ-06002"
+      ],
+      "difficulty_factors": [
+        "BC-DF-08",
+        "BC-DF-12"
+      ],
+      "representations": [
+        "BC-REP-01"
+      ],
+      "calculator_status": "no_calculator",
+      "point_types": [],
+      "expected_solution_path": [
+        "rewrite radicals and reciprocals as powers",
+        "differentiate each term by the power rule",
+        "carry the constants through",
+        "combine and return to the requested form"
+      ],
+      "common_distractors": [
+        "reducing the exponent without multiplying by it",
+        "differentiating a constant to itself",
+        "leaving a radical undifferentiated",
+        "dropping the negative sign produced by a negative exponent"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "BC-QA-02007",
+      "family": "rule-manipulation",
+      "primary_unit": "BC-UNIT-02",
+      "skills": [
+        "BC-SKL-02032",
+        "BC-SKL-02033",
+        "BC-SKL-02034"
+      ],
+      "prerequisites": [
+        "BC-PRQ-01005",
+        "BC-PRQ-06003"
+      ],
+      "difficulty_factors": [
+        "BC-DF-02",
+        "BC-DF-08",
+        "BC-DF-12"
+      ],
+      "representations": [
+        "BC-REP-01"
+      ],
+      "calculator_status": "no_calculator",
+      "point_types": [
+        "BC-PT-99023",
+        "BC-PT-99004",
+        "BC-PT-99005"
+      ],
+      "expected_solution_path": [
+        "identify the rule for each term",
+        "differentiate term by term",
+        "carry the constants and the signs",
+        "combine the terms"
+      ],
+      "common_distractors": [
+        "giving sine as the derivative of cosine without the negative sign",
+        "differentiating the natural exponential to a power one lower",
+        "giving the logarithm rule with the wrong reciprocal",
+        "treating the exponential base as a variable"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "BC-QA-02008",
+      "family": "rule-manipulation",
+      "primary_unit": "BC-UNIT-02",
+      "skills": [
+        "BC-SKL-02036",
+        "BC-SKL-02038",
+        "BC-SKL-02039",
+        "BC-SKL-02040",
+        "BC-SKL-02042"
+      ],
+      "prerequisites": [
+        "BC-PRQ-06002"
+      ],
+      "difficulty_factors": [
+        "BC-DF-02",
+        "BC-DF-06",
+        "BC-DF-08"
+      ],
+      "representations": [
+        "BC-REP-01"
+      ],
+      "calculator_status": "no_calculator",
+      "point_types": [
+        "BC-PT-99005",
+        "BC-PT-99004",
+        "BC-PT-99022",
+        "BC-PT-99080"
+      ],
+      "expected_solution_path": [
+        "identify the two factors and their derivatives",
+        "substitute into the product or quotient rule",
+        "keep the order of the terms in the quotient numerator",
+        "simplify as requested"
+      ],
+      "common_distractors": [
+        "multiplying the two derivatives together",
+        "reversing the two terms in the quotient numerator",
+        "omitting the square on the denominator",
+        "applying the quotient rule where the denominator is a constant"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "BC-QA-02010",
+      "family": "rule-manipulation",
+      "primary_unit": "BC-UNIT-02",
+      "skills": [
+        "BC-SKL-02043",
+        "BC-SKL-02044",
+        "BC-SKL-02045",
+        "BC-SKL-02046"
+      ],
+      "prerequisites": [
+        "BC-PRQ-02002"
+      ],
+      "difficulty_factors": [
+        "BC-DF-06",
+        "BC-DF-08"
+      ],
+      "representations": [
+        "BC-REP-01"
+      ],
+      "calculator_status": "no_calculator",
+      "point_types": [],
+      "expected_solution_path": [
+        "rewrite the function using sine and cosine",
+        "apply the quotient rule",
+        "simplify the numerator with a Pythagorean identity",
+        "write the result in the requested trigonometric form"
+      ],
+      "common_distractors": [
+        "giving secant squared as the derivative of cotangent",
+        "dropping the negative sign on a cofunction derivative",
+        "differentiating numerator and denominator separately",
+        "leaving the result in a form the question does not accept"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "BC-QA-02011",
+      "family": "tangent-line-approximation",
+      "primary_unit": "BC-UNIT-02",
+      "skills": [
+        "BC-SKL-02012",
+        "BC-SKL-02013"
+      ],
+      "prerequisites": [
+        "BC-PRQ-02003"
+      ],
+      "difficulty_factors": [
+        "BC-DF-08"
+      ],
+      "representations": [
+        "BC-REP-01",
+        "BC-REP-02"
+      ],
+      "calculator_status": "no_calculator",
+      "point_types": [
+        "BC-PT-99005",
+        "BC-PT-99004",
+        "BC-PT-99082"
+      ],
+      "expected_solution_path": [
+        "differentiate the function",
+        "evaluate the derivative at the input to get the slope",
+        "evaluate the function at the input to get the point",
+        "write the line in point slope form"
+      ],
+      "common_distractors": [
+        "using the function value as the slope",
+        "using the derivative value as the point",
+        "writing the line through the origin",
+        "evaluating the derivative at the wrong input"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "BC-QA-03001",
+      "family": "rule-manipulation",
+      "primary_unit": "BC-UNIT-03",
+      "skills": [
+        "BC-SKL-03002",
+        "BC-SKL-03003",
+        "BC-SKL-03006"
+      ],
+      "prerequisites": [
+        "BC-PRQ-03001",
+        "BC-PRQ-03006"
+      ],
+      "difficulty_factors": [
+        "BC-DF-02",
+        "BC-DF-06"
+      ],
+      "representations": [
+        "BC-REP-01"
+      ],
+      "calculator_status": "no_calculator",
+      "point_types": [
+        "BC-PT-99023",
+        "BC-PT-99004"
+      ],
+      "expected_solution_path": [
+        "identify the outer and inner functions",
+        "differentiate the outer function at the inner expression",
+        "multiply by the derivative of the inner expression",
+        "repeat inward for further layers",
+        "simplify only as far as is safe"
+      ],
+      "common_distractors": [
+        "the derivative of the outer function with the inner derivative omitted",
+        "the derivative of the inner function alone",
+        "the product of the two derivatives evaluated at the same input",
+        "the outer derivative with the inner function differentiated in the wrong place"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "BC-QA-03004",
+      "family": "implicit-differentiation",
+      "primary_unit": "BC-UNIT-03",
+      "skills": [
+        "BC-SKL-03007",
+        "BC-SKL-03008",
+        "BC-SKL-03009",
+        "BC-SKL-03010",
+        "BC-SKL-03011",
+        "BC-SKL-03014"
+      ],
+      "prerequisites": [
+        "BC-PRQ-03002",
+        "BC-PRQ-03005"
+      ],
+      "difficulty_factors": [
+        "BC-DF-06",
+        "BC-DF-08",
+        "BC-DF-13",
+        "BC-DF-14"
+      ],
+      "representations": [
+        "BC-REP-01"
+      ],
+      "calculator_status": "no_calculator",
+      "point_types": [],
+      "expected_solution_path": [
+        "differentiate every term of both sides with respect to x",
+        "attach a dy/dx factor to each y term",
+        "apply the product rule to mixed terms",
+        "collect and factor the dy/dx terms",
+        "divide to isolate dy/dx",
+        "substitute the point when a numerical slope is requested"
+      ],
+      "common_distractors": [
+        "y terms differentiated without the dy/dx factor",
+        "a mixed term differentiated as though one variable were constant",
+        "the right hand side of the equation dropped",
+        "dy/dx solved for before the terms are collected"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "BC-QA-03005",
+      "family": "implicit-differentiation",
+      "primary_unit": "BC-UNIT-03",
+      "skills": [
+        "BC-SKL-03012",
+        "BC-SKL-03013",
+        "BC-SKL-03011"
+      ],
+      "prerequisites": [
+        "BC-PRQ-03007",
+        "BC-PRQ-03002"
+      ],
+      "difficulty_factors": [
+        "BC-DF-09"
+      ],
+      "representations": [
+        "BC-REP-01",
+        "BC-REP-02"
+      ],
+      "calculator_status": "no_calculator",
+      "point_types": [],
+      "expected_solution_path": [
+        "set the numerator or the denominator of dy/dx equal to zero as the direction requires",
+        "solve for the coordinate that condition fixes",
+        "substitute into the defining equation to find the other coordinate",
+        "discard candidates that do not lie on the curve",
+        "state the conclusion in words"
+      ],
+      "common_distractors": [
+        "a coordinate that satisfies the condition on dy/dx but not the curve equation",
+        "the two conditions swapped, so a zero denominator is read as a horizontal tangent",
+        "only one of two candidate values reported",
+        "a conclusion stated without connecting dy/dx to the curve"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "BC-QA-03008",
+      "family": "higher-order-derivative",
+      "primary_unit": "BC-UNIT-03",
+      "skills": [
+        "BC-SKL-03030",
+        "BC-SKL-03031",
+        "BC-SKL-03032",
+        "BC-SKL-03033",
+        "BC-SKL-03034"
+      ],
+      "prerequisites": [
+        "BC-PRQ-03005",
+        "BC-PRQ-03006"
+      ],
+      "difficulty_factors": [
+        "BC-DF-04"
+      ],
+      "representations": [
+        "BC-REP-01",
+        "BC-REP-06"
+      ],
+      "calculator_status": "no_calculator",
+      "point_types": [
+        "BC-PT-99022",
+        "BC-PT-99023",
+        "BC-PT-99027"
+      ],
+      "expected_solution_path": [
+        "differentiate the supplied expression with respect to the independent variable",
+        "apply the product rule to mixed terms and the chain rule to terms in the dependent variable",
+        "substitute the coordinates of the point",
+        "substitute the value of the first derivative at that point",
+        "report the numerical value"
+      ],
+      "common_distractors": [
+        "the dependent variable treated as a constant when differentiating",
+        "the product rule omitted on a mixed term",
+        "the first derivative value not substituted",
+        "the second derivative reported in the wrong notation"
+      ],
+      "status": "active"
+    }
+  ],
+  "skills": [
+    {
+      "id": "BC-SKL-01024",
+      "unit": "BC-UNIT-01",
+      "concept": "BC-CON-01008",
+      "independently_assessable": false,
+      "p1_archetypes": [
+        "BC-QA-01004"
+      ]
+    },
+    {
+      "id": "BC-SKL-01025",
+      "unit": "BC-UNIT-01",
+      "concept": "BC-CON-01008",
+      "independently_assessable": false,
+      "p1_archetypes": [
+        "BC-QA-01004"
+      ]
+    },
+    {
+      "id": "BC-SKL-01026",
+      "unit": "BC-UNIT-01",
+      "concept": "BC-CON-01008",
+      "independently_assessable": false,
+      "p1_archetypes": [
+        "BC-QA-01004"
+      ]
+    },
+    {
+      "id": "BC-SKL-01027",
+      "unit": "BC-UNIT-01",
+      "concept": "BC-CON-01008",
+      "independently_assessable": false,
+      "p1_archetypes": [
+        "BC-QA-01004"
+      ]
+    },
+    {
+      "id": "BC-SKL-01028",
+      "unit": "BC-UNIT-01",
+      "concept": "BC-CON-01008",
+      "independently_assessable": false,
+      "p1_archetypes": [
+        "BC-QA-01004"
+      ]
+    },
+    {
+      "id": "BC-SKL-01046",
+      "unit": "BC-UNIT-01",
+      "concept": "BC-CON-01014",
+      "independently_assessable": false,
+      "p1_archetypes": [
+        "BC-QA-01015"
+      ]
+    },
+    {
+      "id": "BC-SKL-01047",
+      "unit": "BC-UNIT-01",
+      "concept": "BC-CON-01014",
+      "independently_assessable": false,
+      "p1_archetypes": [
+        "BC-QA-01015"
+      ]
+    },
+    {
+      "id": "BC-SKL-01048",
+      "unit": "BC-UNIT-01",
+      "concept": "BC-CON-01014",
+      "independently_assessable": false,
+      "p1_archetypes": [
+        "BC-QA-01015"
+      ]
+    },
+    {
+      "id": "BC-SKL-01049",
+      "unit": "BC-UNIT-01",
+      "concept": "BC-CON-01014",
+      "independently_assessable": false,
+      "p1_archetypes": [
+        "BC-QA-01015"
+      ]
+    },
+    {
+      "id": "BC-SKL-01050",
+      "unit": "BC-UNIT-01",
+      "concept": "BC-CON-01015",
+      "independently_assessable": false,
+      "p1_archetypes": [
+        "BC-QA-01008"
+      ]
+    },
+    {
+      "id": "BC-SKL-01051",
+      "unit": "BC-UNIT-01",
+      "concept": "BC-CON-01015",
+      "independently_assessable": false,
+      "p1_archetypes": [
+        "BC-QA-01008"
+      ]
+    },
+    {
+      "id": "BC-SKL-01052",
+      "unit": "BC-UNIT-01",
+      "concept": "BC-CON-01015",
+      "independently_assessable": false,
+      "p1_archetypes": [
+        "BC-QA-01008"
+      ]
+    },
+    {
+      "id": "BC-SKL-01053",
+      "unit": "BC-UNIT-01",
+      "concept": "BC-CON-01015",
+      "independently_assessable": false,
+      "p1_archetypes": [
+        "BC-QA-01008"
+      ]
+    },
+    {
+      "id": "BC-SKL-02006",
+      "unit": "BC-UNIT-02",
+      "concept": "BC-CON-02002",
+      "independently_assessable": false,
+      "p1_archetypes": [
+        "BC-QA-02002"
+      ]
+    },
+    {
+      "id": "BC-SKL-02007",
+      "unit": "BC-UNIT-02",
+      "concept": "BC-CON-02002",
+      "independently_assessable": false,
+      "p1_archetypes": [
+        "BC-QA-02002"
+      ]
+    },
+    {
+      "id": "BC-SKL-02008",
+      "unit": "BC-UNIT-02",
+      "concept": "BC-CON-02003",
+      "independently_assessable": false,
+      "p1_archetypes": [
+        "BC-QA-02002"
+      ]
+    },
+    {
+      "id": "BC-SKL-02009",
+      "unit": "BC-UNIT-02",
+      "concept": "BC-CON-02003",
+      "independently_assessable": false,
+      "p1_archetypes": [
+        "BC-QA-02002"
+      ]
+    },
+    {
+      "id": "BC-SKL-02012",
+      "unit": "BC-UNIT-02",
+      "concept": "BC-CON-02005",
+      "independently_assessable": true,
+      "p1_archetypes": [
+        "BC-QA-02011"
+      ]
+    },
+    {
+      "id": "BC-SKL-02013",
+      "unit": "BC-UNIT-02",
+      "concept": "BC-CON-02005",
+      "independently_assessable": true,
+      "p1_archetypes": [
+        "BC-QA-02011"
+      ]
+    },
+    {
+      "id": "BC-SKL-02025",
+      "unit": "BC-UNIT-02",
+      "concept": "BC-CON-02010",
+      "independently_assessable": false,
+      "p1_archetypes": [
+        "BC-QA-02006"
+      ]
+    },
+    {
+      "id": "BC-SKL-02026",
+      "unit": "BC-UNIT-02",
+      "concept": "BC-CON-02010",
+      "independently_assessable": false,
+      "p1_archetypes": [
+        "BC-QA-02006"
+      ]
+    },
+    {
+      "id": "BC-SKL-02027",
+      "unit": "BC-UNIT-02",
+      "concept": "BC-CON-02010",
+      "independently_assessable": false,
+      "p1_archetypes": [
+        "BC-QA-02002"
+      ]
+    },
+    {
+      "id": "BC-SKL-02028",
+      "unit": "BC-UNIT-02",
+      "concept": "BC-CON-02011",
+      "independently_assessable": false,
+      "p1_archetypes": [
+        "BC-QA-02006"
+      ]
+    },
+    {
+      "id": "BC-SKL-02029",
+      "unit": "BC-UNIT-02",
+      "concept": "BC-CON-02011",
+      "independently_assessable": false,
+      "p1_archetypes": [
+        "BC-QA-02006"
+      ]
+    },
+    {
+      "id": "BC-SKL-02030",
+      "unit": "BC-UNIT-02",
+      "concept": "BC-CON-02011",
+      "independently_assessable": false,
+      "p1_archetypes": [
+        "BC-QA-02006"
+      ]
+    },
+    {
+      "id": "BC-SKL-02031",
+      "unit": "BC-UNIT-02",
+      "concept": "BC-CON-02011",
+      "independently_assessable": false,
+      "p1_archetypes": [
+        "BC-QA-02006"
+      ]
+    },
+    {
+      "id": "BC-SKL-02032",
+      "unit": "BC-UNIT-02",
+      "concept": "BC-CON-02012",
+      "independently_assessable": false,
+      "p1_archetypes": [
+        "BC-QA-02007"
+      ]
+    },
+    {
+      "id": "BC-SKL-02033",
+      "unit": "BC-UNIT-02",
+      "concept": "BC-CON-02012",
+      "independently_assessable": false,
+      "p1_archetypes": [
+        "BC-QA-02007"
+      ]
+    },
+    {
+      "id": "BC-SKL-02034",
+      "unit": "BC-UNIT-02",
+      "concept": "BC-CON-02012",
+      "independently_assessable": false,
+      "p1_archetypes": [
+        "BC-QA-02007"
+      ]
+    },
+    {
+      "id": "BC-SKL-02036",
+      "unit": "BC-UNIT-02",
+      "concept": "BC-CON-02013",
+      "independently_assessable": false,
+      "p1_archetypes": [
+        "BC-QA-02008"
+      ]
+    },
+    {
+      "id": "BC-SKL-02038",
+      "unit": "BC-UNIT-02",
+      "concept": "BC-CON-02013",
+      "independently_assessable": false,
+      "p1_archetypes": [
+        "BC-QA-02008"
+      ]
+    },
+    {
+      "id": "BC-SKL-02039",
+      "unit": "BC-UNIT-02",
+      "concept": "BC-CON-02014",
+      "independently_assessable": false,
+      "p1_archetypes": [
+        "BC-QA-02008"
+      ]
+    },
+    {
+      "id": "BC-SKL-02040",
+      "unit": "BC-UNIT-02",
+      "concept": "BC-CON-02014",
+      "independently_assessable": false,
+      "p1_archetypes": [
+        "BC-QA-02008"
+      ]
+    },
+    {
+      "id": "BC-SKL-02042",
+      "unit": "BC-UNIT-02",
+      "concept": "BC-CON-02014",
+      "independently_assessable": false,
+      "p1_archetypes": [
+        "BC-QA-02008"
+      ]
+    },
+    {
+      "id": "BC-SKL-02043",
+      "unit": "BC-UNIT-02",
+      "concept": "BC-CON-02015",
+      "independently_assessable": false,
+      "p1_archetypes": [
+        "BC-QA-02010"
+      ]
+    },
+    {
+      "id": "BC-SKL-02044",
+      "unit": "BC-UNIT-02",
+      "concept": "BC-CON-02015",
+      "independently_assessable": false,
+      "p1_archetypes": [
+        "BC-QA-02010"
+      ]
+    },
+    {
+      "id": "BC-SKL-02045",
+      "unit": "BC-UNIT-02",
+      "concept": "BC-CON-02015",
+      "independently_assessable": false,
+      "p1_archetypes": [
+        "BC-QA-02010"
+      ]
+    },
+    {
+      "id": "BC-SKL-02046",
+      "unit": "BC-UNIT-02",
+      "concept": "BC-CON-02015",
+      "independently_assessable": false,
+      "p1_archetypes": [
+        "BC-QA-02010"
+      ]
+    },
+    {
+      "id": "BC-SKL-03002",
+      "unit": "BC-UNIT-03",
+      "concept": "BC-CON-03002",
+      "independently_assessable": false,
+      "p1_archetypes": [
+        "BC-QA-03001"
+      ]
+    },
+    {
+      "id": "BC-SKL-03003",
+      "unit": "BC-UNIT-03",
+      "concept": "BC-CON-03001",
+      "independently_assessable": false,
+      "p1_archetypes": [
+        "BC-QA-03001"
+      ]
+    },
+    {
+      "id": "BC-SKL-03006",
+      "unit": "BC-UNIT-03",
+      "concept": "BC-CON-03002",
+      "independently_assessable": true,
+      "p1_archetypes": [
+        "BC-QA-03001"
+      ]
+    },
+    {
+      "id": "BC-SKL-03007",
+      "unit": "BC-UNIT-03",
+      "concept": "BC-CON-03003",
+      "independently_assessable": false,
+      "p1_archetypes": [
+        "BC-QA-03004"
+      ]
+    },
+    {
+      "id": "BC-SKL-03008",
+      "unit": "BC-UNIT-03",
+      "concept": "BC-CON-03003",
+      "independently_assessable": false,
+      "p1_archetypes": [
+        "BC-QA-03004"
+      ]
+    },
+    {
+      "id": "BC-SKL-03009",
+      "unit": "BC-UNIT-03",
+      "concept": "BC-CON-03003",
+      "independently_assessable": false,
+      "p1_archetypes": [
+        "BC-QA-03004"
+      ]
+    },
+    {
+      "id": "BC-SKL-03010",
+      "unit": "BC-UNIT-03",
+      "concept": "BC-CON-03004",
+      "independently_assessable": false,
+      "p1_archetypes": [
+        "BC-QA-03004"
+      ]
+    },
+    {
+      "id": "BC-SKL-03011",
+      "unit": "BC-UNIT-03",
+      "concept": "BC-CON-03004",
+      "independently_assessable": false,
+      "p1_archetypes": [
+        "BC-QA-03004",
+        "BC-QA-03005"
+      ]
+    },
+    {
+      "id": "BC-SKL-03012",
+      "unit": "BC-UNIT-03",
+      "concept": "BC-CON-03005",
+      "independently_assessable": false,
+      "p1_archetypes": [
+        "BC-QA-03005"
+      ]
+    },
+    {
+      "id": "BC-SKL-03013",
+      "unit": "BC-UNIT-03",
+      "concept": "BC-CON-03005",
+      "independently_assessable": false,
+      "p1_archetypes": [
+        "BC-QA-03005"
+      ]
+    },
+    {
+      "id": "BC-SKL-03014",
+      "unit": "BC-UNIT-03",
+      "concept": "BC-CON-03004",
+      "independently_assessable": false,
+      "p1_archetypes": [
+        "BC-QA-03004"
+      ]
+    },
+    {
+      "id": "BC-SKL-03030",
+      "unit": "BC-UNIT-03",
+      "concept": "BC-CON-03009",
+      "independently_assessable": false,
+      "p1_archetypes": [
+        "BC-QA-03008"
+      ]
+    },
+    {
+      "id": "BC-SKL-03031",
+      "unit": "BC-UNIT-03",
+      "concept": "BC-CON-03009",
+      "independently_assessable": false,
+      "p1_archetypes": [
+        "BC-QA-03008"
+      ]
+    },
+    {
+      "id": "BC-SKL-03032",
+      "unit": "BC-UNIT-03",
+      "concept": "BC-CON-03010",
+      "independently_assessable": false,
+      "p1_archetypes": [
+        "BC-QA-03008"
+      ]
+    },
+    {
+      "id": "BC-SKL-03033",
+      "unit": "BC-UNIT-03",
+      "concept": "BC-CON-03009",
+      "independently_assessable": false,
+      "p1_archetypes": [
+        "BC-QA-03008"
+      ]
+    },
+    {
+      "id": "BC-SKL-03034",
+      "unit": "BC-UNIT-03",
+      "concept": "BC-CON-03009",
+      "independently_assessable": false,
+      "p1_archetypes": [
+        "BC-QA-03008"
+      ]
+    }
+  ],
+  "seeded_parents": [
+    {
+      "id": "BC-PRQ-01001",
+      "kind": "BC-PRQ",
+      "in_registry": true
+    },
+    {
+      "id": "BC-PRQ-01002",
+      "kind": "BC-PRQ",
+      "in_registry": true
+    },
+    {
+      "id": "BC-PRQ-01003",
+      "kind": "BC-PRQ",
+      "in_registry": true
+    },
+    {
+      "id": "BC-PRQ-01005",
+      "kind": "BC-PRQ",
+      "in_registry": true
+    },
+    {
+      "id": "BC-PRQ-01007",
+      "kind": "BC-PRQ",
+      "in_registry": true
+    },
+    {
+      "id": "BC-PRQ-01008",
+      "kind": "BC-PRQ",
+      "in_registry": true
+    },
+    {
+      "id": "BC-PRQ-01010",
+      "kind": "BC-PRQ",
+      "in_registry": true
+    },
+    {
+      "id": "BC-PRQ-02001",
+      "kind": "BC-PRQ",
+      "in_registry": true
+    },
+    {
+      "id": "BC-PRQ-02002",
+      "kind": "BC-PRQ",
+      "in_registry": true
+    },
+    {
+      "id": "BC-PRQ-02003",
+      "kind": "BC-PRQ",
+      "in_registry": true
+    },
+    {
+      "id": "BC-PRQ-02004",
+      "kind": "BC-PRQ",
+      "in_registry": true
+    },
+    {
+      "id": "BC-PRQ-02005",
+      "kind": "BC-PRQ",
+      "in_registry": true
+    },
+    {
+      "id": "BC-PRQ-03001",
+      "kind": "BC-PRQ",
+      "in_registry": true
+    },
+    {
+      "id": "BC-PRQ-03002",
+      "kind": "BC-PRQ",
+      "in_registry": true
+    },
+    {
+      "id": "BC-PRQ-03005",
+      "kind": "BC-PRQ",
+      "in_registry": true
+    },
+    {
+      "id": "BC-PRQ-03006",
+      "kind": "BC-PRQ",
+      "in_registry": true
+    },
+    {
+      "id": "BC-PRQ-03007",
+      "kind": "BC-PRQ",
+      "in_registry": true
+    },
+    {
+      "id": "BC-PRQ-06002",
+      "kind": "BC-PRQ",
+      "in_registry": true
+    },
+    {
+      "id": "BC-PRQ-06003",
+      "kind": "BC-PRQ",
+      "in_registry": true
+    },
+    {
+      "id": "BC-SKL-01018",
+      "kind": "BC-SKL",
+      "in_registry": true
+    },
+    {
+      "id": "BC-SKL-01039",
+      "kind": "BC-SKL",
+      "in_registry": true
+    },
+    {
+      "id": "BC-SKL-01044",
+      "kind": "BC-SKL",
+      "in_registry": true
+    },
+    {
+      "id": "BC-SKL-02001",
+      "kind": "BC-SKL",
+      "in_registry": true
+    },
+    {
+      "id": "BC-SKL-02002",
+      "kind": "BC-SKL",
+      "in_registry": true
+    },
+    {
+      "id": "BC-SKL-03001",
+      "kind": "BC-SKL",
+      "in_registry": true
+    }
+  ],
+  "inert_top": [
+    "BC-TOP-0202",
+    "BC-TOP-0207",
+    "BC-TOP-0208",
+    "BC-TOP-0209"
+  ],
+  "edges": [
+    {
+      "from": "BC-PRQ-01001",
+      "to": "BC-SKL-01024",
+      "type": "supporting"
+    },
+    {
+      "from": "BC-PRQ-01001",
+      "to": "BC-SKL-01028",
+      "type": "supporting"
+    },
+    {
+      "from": "BC-PRQ-01001",
+      "to": "BC-SKL-01050",
+      "type": "supporting"
+    },
+    {
+      "from": "BC-PRQ-01002",
+      "to": "BC-SKL-01025",
+      "type": "supporting"
+    },
+    {
+      "from": "BC-PRQ-01003",
+      "to": "BC-SKL-01048",
+      "type": "supporting"
+    },
+    {
+      "from": "BC-PRQ-01003",
+      "to": "BC-SKL-01051",
+      "type": "supporting"
+    },
+    {
+      "from": "BC-PRQ-01003",
+      "to": "BC-SKL-01052",
+      "type": "supporting"
+    },
+    {
+      "from": "BC-PRQ-01003",
+      "to": "BC-SKL-01053",
+      "type": "supporting"
+    },
+    {
+      "from": "BC-PRQ-01005",
+      "to": "BC-SKL-01027",
+      "type": "supporting"
+    },
+    {
+      "from": "BC-PRQ-01005",
+      "to": "BC-SKL-02032",
+      "type": "supporting"
+    },
+    {
+      "from": "BC-PRQ-01007",
+      "to": "BC-SKL-01026",
+      "type": "supporting"
+    },
+    {
+      "from": "BC-PRQ-01008",
+      "to": "BC-SKL-01046",
+      "type": "supporting"
+    },
+    {
+      "from": "BC-PRQ-01008",
+      "to": "BC-SKL-01047",
+      "type": "supporting"
+    },
+    {
+      "from": "BC-PRQ-01010",
+      "to": "BC-SKL-01049",
+      "type": "supporting"
+    },
+    {
+      "from": "BC-PRQ-02001",
+      "to": "BC-SKL-02009",
+      "type": "supporting"
+    },
+    {
+      "from": "BC-PRQ-02002",
+      "to": "BC-SKL-02043",
+      "type": "supporting"
+    },
+    {
+      "from": "BC-PRQ-02002",
+      "to": "BC-SKL-02046",
+      "type": "supporting"
+    },
+    {
+      "from": "BC-PRQ-02003",
+      "to": "BC-SKL-02012",
+      "type": "supporting"
+    },
+    {
+      "from": "BC-PRQ-02003",
+      "to": "BC-SKL-02013",
+      "type": "supporting"
+    },
+    {
+      "from": "BC-PRQ-02004",
+      "to": "BC-SKL-02028",
+      "type": "supporting"
+    },
+    {
+      "from": "BC-PRQ-02004",
+      "to": "BC-SKL-02029",
+      "type": "supporting"
+    },
+    {
+      "from": "BC-PRQ-02005",
+      "to": "BC-SKL-02006",
+      "type": "supporting"
+    },
+    {
+      "from": "BC-PRQ-02005",
+      "to": "BC-SKL-02007",
+      "type": "supporting"
+    },
+    {
+      "from": "BC-PRQ-02005",
+      "to": "BC-SKL-02008",
+      "type": "supporting"
+    },
+    {
+      "from": "BC-PRQ-03001",
+      "to": "BC-SKL-03002",
+      "type": "supporting"
+    },
+    {
+      "from": "BC-PRQ-03001",
+      "to": "BC-SKL-03003",
+      "type": "supporting"
+    },
+    {
+      "from": "BC-PRQ-03001",
+      "to": "BC-SKL-03006",
+      "type": "supporting"
+    },
+    {
+      "from": "BC-PRQ-03002",
+      "to": "BC-SKL-03010",
+      "type": "supporting"
+    },
+    {
+      "from": "BC-PRQ-03002",
+      "to": "BC-SKL-03014",
+      "type": "supporting"
+    },
+    {
+      "from": "BC-PRQ-03002",
+      "to": "BC-SKL-03033",
+      "type": "supporting"
+    },
+    {
+      "from": "BC-PRQ-03005",
+      "to": "BC-SKL-03007",
+      "type": "supporting"
+    },
+    {
+      "from": "BC-PRQ-03005",
+      "to": "BC-SKL-03008",
+      "type": "supporting"
+    },
+    {
+      "from": "BC-PRQ-03005",
+      "to": "BC-SKL-03009",
+      "type": "supporting"
+    },
+    {
+      "from": "BC-PRQ-03005",
+      "to": "BC-SKL-03030",
+      "type": "supporting"
+    },
+    {
+      "from": "BC-PRQ-03005",
+      "to": "BC-SKL-03031",
+      "type": "supporting"
+    },
+    {
+      "from": "BC-PRQ-03005",
+      "to": "BC-SKL-03032",
+      "type": "supporting"
+    },
+    {
+      "from": "BC-PRQ-03005",
+      "to": "BC-SKL-03033",
+      "type": "supporting"
+    },
+    {
+      "from": "BC-PRQ-03006",
+      "to": "BC-SKL-03006",
+      "type": "supporting"
+    },
+    {
+      "from": "BC-PRQ-03006",
+      "to": "BC-SKL-03011",
+      "type": "supporting"
+    },
+    {
+      "from": "BC-PRQ-03006",
+      "to": "BC-SKL-03014",
+      "type": "supporting"
+    },
+    {
+      "from": "BC-PRQ-03006",
+      "to": "BC-SKL-03034",
+      "type": "supporting"
+    },
+    {
+      "from": "BC-PRQ-03007",
+      "to": "BC-SKL-03012",
+      "type": "supporting"
+    },
+    {
+      "from": "BC-PRQ-03007",
+      "to": "BC-SKL-03013",
+      "type": "supporting"
+    },
+    {
+      "from": "BC-PRQ-06002",
+      "to": "BC-SKL-02025",
+      "type": "supporting"
+    },
+    {
+      "from": "BC-PRQ-06002",
+      "to": "BC-SKL-02026",
+      "type": "supporting"
+    },
+    {
+      "from": "BC-PRQ-06002",
+      "to": "BC-SKL-02033",
+      "type": "supporting"
+    },
+    {
+      "from": "BC-PRQ-06003",
+      "to": "BC-SKL-02034",
+      "type": "supporting"
+    },
+    {
+      "from": "BC-SKL-01018",
+      "to": "BC-SKL-02030",
+      "type": "supporting"
+    },
+    {
+      "from": "BC-SKL-01024",
+      "to": "BC-SKL-02009",
+      "type": "supporting"
+    },
+    {
+      "from": "BC-SKL-01028",
+      "to": "BC-SKL-01024",
+      "type": "hard_prerequisite"
+    },
+    {
+      "from": "BC-SKL-01028",
+      "to": "BC-SKL-01025",
+      "type": "hard_prerequisite"
+    },
+    {
+      "from": "BC-SKL-01028",
+      "to": "BC-SKL-01026",
+      "type": "hard_prerequisite"
+    },
+    {
+      "from": "BC-SKL-01028",
+      "to": "BC-SKL-01027",
+      "type": "hard_prerequisite"
+    },
+    {
+      "from": "BC-SKL-01039",
+      "to": "BC-SKL-01050",
+      "type": "hard_prerequisite"
+    },
+    {
+      "from": "BC-SKL-01044",
+      "to": "BC-SKL-01051",
+      "type": "hard_prerequisite"
+    },
+    {
+      "from": "BC-SKL-01046",
+      "to": "BC-SKL-01048",
+      "type": "hard_prerequisite"
+    },
+    {
+      "from": "BC-SKL-01047",
+      "to": "BC-SKL-01046",
+      "type": "hard_prerequisite"
+    },
+    {
+      "from": "BC-SKL-01051",
+      "to": "BC-SKL-01052",
+      "type": "hard_prerequisite"
+    },
+    {
+      "from": "BC-SKL-02001",
+      "to": "BC-SKL-02006",
+      "type": "hard_prerequisite"
+    },
+    {
+      "from": "BC-SKL-02002",
+      "to": "BC-SKL-02007",
+      "type": "hard_prerequisite"
+    },
+    {
+      "from": "BC-SKL-02006",
+      "to": "BC-SKL-02007",
+      "type": "co_requisite"
+    },
+    {
+      "from": "BC-SKL-02006",
+      "to": "BC-SKL-02008",
+      "type": "hard_prerequisite"
+    },
+    {
+      "from": "BC-SKL-02009",
+      "to": "BC-SKL-02027",
+      "type": "hard_prerequisite"
+    },
+    {
+      "from": "BC-SKL-02012",
+      "to": "BC-SKL-02013",
+      "type": "hard_prerequisite"
+    },
+    {
+      "from": "BC-SKL-02025",
+      "to": "BC-SKL-02026",
+      "type": "hard_prerequisite"
+    },
+    {
+      "from": "BC-SKL-02025",
+      "to": "BC-SKL-02031",
+      "type": "hard_prerequisite"
+    },
+    {
+      "from": "BC-SKL-02027",
+      "to": "BC-SKL-03002",
+      "type": "hard_prerequisite"
+    },
+    {
+      "from": "BC-SKL-02029",
+      "to": "BC-SKL-02031",
+      "type": "hard_prerequisite"
+    },
+    {
+      "from": "BC-SKL-02029",
+      "to": "BC-SKL-02042",
+      "type": "hard_prerequisite"
+    },
+    {
+      "from": "BC-SKL-02030",
+      "to": "BC-SKL-02031",
+      "type": "hard_prerequisite"
+    },
+    {
+      "from": "BC-SKL-02031",
+      "to": "BC-SKL-02036",
+      "type": "hard_prerequisite"
+    },
+    {
+      "from": "BC-SKL-02031",
+      "to": "BC-SKL-02038",
+      "type": "hard_prerequisite"
+    },
+    {
+      "from": "BC-SKL-02032",
+      "to": "BC-SKL-02044",
+      "type": "supporting"
+    },
+    {
+      "from": "BC-SKL-02036",
+      "to": "BC-SKL-02039",
+      "type": "hard_prerequisite"
+    },
+    {
+      "from": "BC-SKL-02036",
+      "to": "BC-SKL-03006",
+      "type": "hard_prerequisite"
+    },
+    {
+      "from": "BC-SKL-02039",
+      "to": "BC-SKL-02040",
+      "type": "hard_prerequisite"
+    },
+    {
+      "from": "BC-SKL-02039",
+      "to": "BC-SKL-02044",
+      "type": "hard_prerequisite"
+    },
+    {
+      "from": "BC-SKL-02039",
+      "to": "BC-SKL-02045",
+      "type": "hard_prerequisite"
+    },
+    {
+      "from": "BC-SKL-02043",
+      "to": "BC-SKL-02044",
+      "type": "hard_prerequisite"
+    },
+    {
+      "from": "BC-SKL-02043",
+      "to": "BC-SKL-02045",
+      "type": "hard_prerequisite"
+    },
+    {
+      "from": "BC-SKL-02043",
+      "to": "BC-SKL-02046",
+      "type": "hard_prerequisite"
+    },
+    {
+      "from": "BC-SKL-03001",
+      "to": "BC-SKL-03002",
+      "type": "hard_prerequisite"
+    },
+    {
+      "from": "BC-SKL-03002",
+      "to": "BC-SKL-03003",
+      "type": "hard_prerequisite"
+    },
+    {
+      "from": "BC-SKL-03002",
+      "to": "BC-SKL-03006",
+      "type": "hard_prerequisite"
+    },
+    {
+      "from": "BC-SKL-03002",
+      "to": "BC-SKL-03007",
+      "type": "hard_prerequisite"
+    },
+    {
+      "from": "BC-SKL-03007",
+      "to": "BC-SKL-03008",
+      "type": "hard_prerequisite"
+    },
+    {
+      "from": "BC-SKL-03007",
+      "to": "BC-SKL-03009",
+      "type": "hard_prerequisite"
+    },
+    {
+      "from": "BC-SKL-03008",
+      "to": "BC-SKL-03009",
+      "type": "hard_prerequisite"
+    },
+    {
+      "from": "BC-SKL-03008",
+      "to": "BC-SKL-03033",
+      "type": "hard_prerequisite"
+    },
+    {
+      "from": "BC-SKL-03009",
+      "to": "BC-SKL-03010",
+      "type": "hard_prerequisite"
+    },
+    {
+      "from": "BC-SKL-03010",
+      "to": "BC-SKL-03011",
+      "type": "hard_prerequisite"
+    },
+    {
+      "from": "BC-SKL-03010",
+      "to": "BC-SKL-03012",
+      "type": "hard_prerequisite"
+    },
+    {
+      "from": "BC-SKL-03010",
+      "to": "BC-SKL-03013",
+      "type": "hard_prerequisite"
+    },
+    {
+      "from": "BC-SKL-03010",
+      "to": "BC-SKL-03014",
+      "type": "hard_prerequisite"
+    },
+    {
+      "from": "BC-SKL-03011",
+      "to": "BC-SKL-03034",
+      "type": "hard_prerequisite"
+    },
+    {
+      "from": "BC-SKL-03030",
+      "to": "BC-SKL-03031",
+      "type": "hard_prerequisite"
+    },
+    {
+      "from": "BC-SKL-03033",
+      "to": "BC-SKL-03034",
+      "type": "hard_prerequisite"
+    },
+    {
+      "from": "BC-TOP-0202",
+      "to": "BC-SKL-03030",
+      "type": "hard_prerequisite"
+    },
+    {
+      "from": "BC-TOP-0207",
+      "to": "BC-SKL-03002",
+      "type": "hard_prerequisite"
+    },
+    {
+      "from": "BC-TOP-0208",
+      "to": "BC-SKL-03008",
+      "type": "hard_prerequisite"
+    },
+    {
+      "from": "BC-TOP-0209",
+      "to": "BC-SKL-03006",
+      "type": "hard_prerequisite"
+    }
+  ],
+  "completion_stage_unavailable": []
+}

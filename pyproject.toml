@@ -1,0 +1,25 @@
+[project]
+name = "calc-bc-tutor"
+version = "0.0.1"
+description = "Adaptive AP Calculus BC tutor, built from docs/plan"
+requires-python = ">=3.12"
+dependencies = [
+   "fastapi",
+   "sqlalchemy",
+   "sympy",
+   "jsonschema",
+]
+
+[project.optional-dependencies]
+test = [
+   "pytest",
+   "hypothesis",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+python_functions = ["test_*", "eval_*"]
+
+[tool.setuptools.packages.find]
+include = ["app*"]

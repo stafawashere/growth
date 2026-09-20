@@ -231,7 +231,15 @@ def record_attempt(
    confidence=None,
    started_at=None,
    now=None,
+   grader=None,
 ):
+   """Write one attempt row and, once it is graded and rated, apply its single observation.
+
+   A grader is a callable over the queue item and the submitted answer that returns the R12
+   verdict, which overrides anything the submission claims about itself. Callers that pass no
+   grader are trusted to have graded the answer already, which is why the HTTP layer always
+   passes one.
+   """
    session_row = db.get(models.Session, session_id)
    item = queue_item(session_row, item_id)
    already_attempted = any(row.item_id == item_id for row in attempt_rows(db, session_id))
@@ -245,16 +253,19 @@ def record_attempt(
    retrievability = retrievability_map(states, today)
    split = p_knowledge(archetype, states, engine_graph.hard_parents, retrievability)
    compensatory = p_compensatory(archetype, states, retrievability)
-   is_graded = answer.get("correct") is not None
+   grades_here = grader is not None
+   verdict = grader(item, answer) if grades_here else {}
+   graded_answer = {**answer, **verdict}
+   is_graded = graded_answer.get("correct") is not None
 
    if is_graded:
-      per_skill_states = rule_based_mastery_states(archetype, answer)
+      per_skill_states = rule_based_mastery_states(archetype, graded_answer)
    else:
       per_skill_states = {
          skill: MasteryState.NOT_ATTEMPTED for skill in archetype["skills"]
       }
 
-   is_correct = bool(answer.get("correct")) if is_graded else None
+   is_correct = bool(graded_answer.get("correct")) if is_graded else None
    stored_confidence = Confidence(confidence).value if confidence is not None else None
    attempt = models.Attempt(
       id=new_id("ATT"),

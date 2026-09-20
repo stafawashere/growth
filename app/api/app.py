@@ -36,6 +36,7 @@ class Settings:
    content_root: Any = None
    session_context: SessionContext | None = None
    verifier: Any = None
+   tutor: Any = None
    rp_id: str = "localhost"
    origin: str = "http://127.0.0.1:8000"
    bind_host: str = "127.0.0.1"
@@ -104,7 +105,7 @@ class Settings:
 
 
 def create_app(settings):
-   from app.api.routes import auth, content, health, me, purge, sessions
+   from app.api.routes import auth, content, health, me, purge, review, sessions
 
    application = FastAPI(title="Growth", version="0.0.1")
    application.state.settings = settings
@@ -117,7 +118,7 @@ def create_app(settings):
    async def auth_error_handler(request, exception):
       return JSONResponse(status_code=exception.status_code, content={"detail": exception.detail})
 
-   for module in (auth, me, sessions, purge, content, health):
+   for module in (auth, me, sessions, purge, content, review, health):
       application.include_router(module.router)
 
    return application

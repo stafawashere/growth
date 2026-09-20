@@ -5,6 +5,7 @@ the option set" and "Independent key verification"; docs/plan/11 R26, R30).
 import math
 import random
 import signal
+import threading
 
 import sympy
 
@@ -25,8 +26,10 @@ def _raise_timeout(signum, frame):
 
 def equivalence(left, right, timeout_s=5):
    supports_alarm = hasattr(signal, "SIGALRM")
+   on_main_thread = threading.current_thread() is threading.main_thread()
+   can_set_alarm = supports_alarm and on_main_thread
 
-   if not supports_alarm:
+   if not can_set_alarm:
       return _equivalence_impl(left, right)
 
    previous_handler = signal.signal(signal.SIGALRM, _raise_timeout)

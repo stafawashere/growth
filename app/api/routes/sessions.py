@@ -10,7 +10,8 @@ from fastapi import APIRouter, Body, Depends, HTTPException
 
 from app.api.deps import current_user, get_db, get_settings
 from app.db import models
-from app.feedback import render
+from app.feedback import render, tutor
+from app.items.grade import grade
 from app.session import service
 
 router = APIRouter(prefix="/sessions", tags=["sessions"])
@@ -148,6 +149,21 @@ def submit_attempt(
    row = owned_session(db, session_id, user)
    context = settings.session_context
 
+   def grade_against_the_stored_key(queue_item, answer):
+      stored = db.get(models.Item, queue_item["id"])
+      has_no_row = stored is None
+
+      if has_no_row:
+         raise ValueError(f"item {queue_item['id']} has no items row, so it cannot be graded")
+
+      submission = {
+         "selected_option_id": answer.get("option_id"),
+         "mathjson": answer.get("mathjson"),
+         "units": answer.get("units"),
+      }
+
+      return grade(stored, submission, context.errors, served_format=queue_item["format"])
+
    try:
       attempt = service.record_attempt(
          db,
@@ -159,6 +175,7 @@ def submit_attempt(
          archetypes=context.archetypes,
          engine_graph=context.engine_graph,
          confidence=fields.get("confidence"),
+         grader=grade_against_the_stored_key,
       )
    except ValueError as refused:
       raise HTTPException(status_code=409, detail=str(refused)) from refused
@@ -166,7 +183,7 @@ def submit_attempt(
    return {
       "id": attempt.id,
       "item_id": attempt.item_id,
-      "correct": attempt.correct,
+      "correct": None if attempt.correct is None else bool(attempt.correct),
       "confidence": attempt.confidence,
       "served_stage": attempt.served_stage,
       "format": attempt.format,
@@ -198,6 +215,15 @@ def read_feedback(
    if is_unknown_archetype:
       raise HTTPException(status_code=404, detail="the item names no archetype in this snapshot")
 
+   is_ungraded = attempt.correct is None
+   awaits_grading = is_ungraded and attempt.submitted_at is not None
+
+   if awaits_grading:
+      raise HTTPException(
+         status_code=409,
+         detail="this attempt is ungraded, so no point was lost and no feedback is composed",
+      )
+
    answer = json.loads(attempt.response) if attempt.response else {}
    chosen = chosen_option(item, answer)
    error_path = (chosen or {}).get("error_path")
@@ -218,7 +244,9 @@ def read_feedback(
    except ValueError as refused:
       raise HTTPException(status_code=409, detail=str(refused)) from refused
 
-   return render.as_dict(feedback)
+   sentence = tutor.compose_sentence(settings.tutor, feedback)
+
+   return dict(render.as_dict(feedback), sentence=sentence)
 
 
 @router.post("/{session_id}/attempts/{attempt_id}/confidence")

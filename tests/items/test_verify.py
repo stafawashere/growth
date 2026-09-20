@@ -93,3 +93,26 @@ def eval_sympy_settle_rate(capsys):
 
    with capsys.disabled():
       print(f"\neval_sympy_settle_rate: {settled}/{denominator} settled")
+
+
+def test_equivalence_runs_off_the_main_thread():
+   """FastAPI runs a sync route in a worker thread, where signal.signal raises ValueError."""
+   import threading
+
+   from sympy import Symbol
+
+   x = Symbol("x")
+   outcome = {}
+
+   def compare():
+      try:
+         outcome["result"] = equivalence(x + x, 2 * x)
+      except Exception as failure:
+         outcome["failure"] = failure
+
+   worker = threading.Thread(target=compare)
+   worker.start()
+   worker.join()
+
+   assert "failure" not in outcome, outcome.get("failure")
+   assert outcome["result"] == "equivalent"

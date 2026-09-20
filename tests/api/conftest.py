@@ -6,6 +6,7 @@ The passkey verifier and the two hooks the other P1 modules own (skills_state se
 purge) are supplied as test doubles through settings, which is what keeps the HTTP tests off the
 live library loader.
 """
+import json
 from datetime import date, datetime, timezone
 
 import pytest
@@ -30,6 +31,50 @@ ERROR_RECORDS = {
    },
 }
 PUBLIC_KEY = b"public-key-1"
+KEY_MATHJSON = ["Add", ["Multiply", 2, "x"], 1]
+WRONG_MATHJSON = ["Add", ["Multiply", 2, "x"], 2]
+ITEM_OPTIONS = [
+   {"id": "A", "is_key": True, "error_path": None},
+   {"id": "B", "is_key": False, "error_path": "BC-ERR-02001", "violated_step": 1},
+   {"id": "C", "is_key": False, "error_path": "BC-ERR-02001", "violated_step": 2},
+   {"id": "D", "is_key": False, "error_path": "BC-ERR-02001", "violated_step": 3},
+]
+
+
+def item_row(item_id, archetype_id, skills):
+   """A published row for every item the fixture bank serves, so the route grades a real key."""
+   return models.Item(
+      id=item_id,
+      archetype_id=archetype_id,
+      variant_id=None,
+      snapshot_id=SNAPSHOT_ID,
+      parameter_draw="{}",
+      stem="stem",
+      figure_spec=None,
+      options=[dict(option) for option in ITEM_OPTIONS],
+      answer_key=json.dumps({"form": "symbolic", "mathjson": KEY_MATHJSON}),
+      worked_solution="divide out the factor, then evaluate",
+      calculator_status="no_calculator",
+      representation="BC-REP-01",
+      difficulty_settings="{}",
+      skills=json.dumps(list(skills)),
+      provenance="{}",
+      status="verified",
+      dedupe_minhash="[]",
+      created_at=TODAY.isoformat(),
+      updated_at=TODAY.isoformat(),
+   )
+
+
+def publish_bank_items(engine, fixture, items_per_archetype=3):
+   with OrmSession(engine) as db:
+      for record in fixture["archetypes"]:
+         archetype_id = record["id"]
+
+         for index in range(items_per_archetype):
+            db.add(item_row(f"{archetype_id}-V{index:02d}", archetype_id, record["skills"]))
+
+      db.commit()
 
 
 class FakeVerifier:
@@ -134,6 +179,8 @@ def world(tmp_path):
          )
       )
       db.commit()
+
+   publish_bank_items(engine, fixture)
 
    return World(create_app(settings), engine, seeds, purges)
 

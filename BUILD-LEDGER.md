@@ -98,7 +98,127 @@ items and the operator audit.
   role of 07 and the `prompts/tutor/` template path, because renaming those would contradict the
   plan. The third session's entry above still records the old cookie name, as history.
 
+Session 2026-09-19 (fifth session), suite line at open `122 passed in 19.73s`, at close
+`161 passed in 20.43s`. Style gate exit 0 on every changed file, fed the hook its JSON payload on
+stdin and confirmed to bite with a positive control (`style_gate: gatecheck.py: em dash present`,
+exit 2). `qa/12_report.py` exit 0; `data/`, `research/`, `docs/` and `qa/` untouched, which the
+fresh reviewer checked independently. Slice: the deterministic grader of P1 scope 5 and R12, the
+two operator review-queue rows of 06's API surface, and the one wired provider role of scope 12
+with the two prompt templates of scope 13. No new gate name from 11 is claimed: gate 22 needs a
+live key and gate 23 is blocked for the reasons under Known defects.
+
+- Agent A, deterministic grader: `app/items/grade.py`, `tests/items/test_grade.py`:
+  test_mcq_selection_compared_to_the_key, test_mcq_distractor_yields_its_error_path_skills,
+  test_mcq_option_set_without_exactly_one_key_is_refused,
+  test_mcq_unknown_option_id_is_refused_not_wrong, test_short_answer_equivalence_decides_correct,
+  test_short_answer_unequal_blames_the_primary_skill_only,
+  test_numeric_key_is_compared_to_three_decimal_places,
+  test_units_declared_but_absent_is_notation_only,
+  test_units_absent_from_the_key_never_reports_misnotation, test_unparseable_submission_is_ungraded,
+  test_indeterminate_comparison_is_ungraded, test_served_format_decides_the_grading_path,
+  test_submission_shape_that_contradicts_the_served_format_is_refused. The signature is
+  `grade(item, submission, errors, served_format=None)` returning correct,
+  equivalent_but_misnotated, error_path, error_path_skills and reason, the first, second and fourth
+  of which are exactly the keys `rule_based_mastery_states` reads. The served format is passed
+  explicitly because every published item carries options, so shape alone would grade every item as
+  MCQ and the short answer path would be unreachable at the HTTP boundary.
+- Agent B, operator review-queue API: `app/api/routes/review.py`, `tests/api/test_review_routes.py`:
+  test_review_queue_lists_open_rows, test_review_queue_requires_the_cookie,
+  test_resolve_records_the_operator_verdict, test_resolve_refuses_an_unknown_row,
+  test_resolve_refuses_a_row_already_resolved. An `item_audit` row resolves through
+  `record_item_audit_verdict` so gate 29's published key error rate keeps counting the same rows.
+- Agent C, provider layer and prompt templates: `app/providers/{base,anthropic,replay}.py`,
+  `prompts/tutor/guardrailed_practice_v1.md`, `prompts/feedback/elaborated_v1.md`,
+  `tests/providers/`: test_call_maps_to_the_messages_wire_shape,
+  test_usage_reports_all_four_token_fields, test_no_tool_definitions_are_ever_sent,
+  test_adaptive_thinking_is_never_requested, test_replay_provider_makes_no_network_call,
+  test_tutor_template_never_receives_the_answer_key,
+  test_prompt_templates_are_versioned_and_golden. The transport is an injected callable and the
+  only real one uses `urllib.request`, because 06 names no HTTP client dependency and the
+  anthropic SDK is named nowhere in the plan. No test opens a socket and none needs a key.
+- Integrator: `equivalence` lost its timeout guard off the main thread, which is where FastAPI runs
+  a sync route (test_equivalence_runs_off_the_main_thread, red with
+  `ValueError('signal only works in main thread of the main interpreter')`); `Usage` gained
+  `reasoning_tokens`, the fifth field of 07's usage block that the builder's brief wrongly omitted
+  (test_usage_carries_the_reasoning_token_field); `record_attempt` gained a `grader` callable whose
+  verdict overrides anything the submission claims about itself, and
+  `POST /sessions/{id}/attempts` always passes one built over the unredacted `items` row
+  (test_attempt_is_graded_by_the_server_not_the_body, red `assert 200 == 409` and
+  `assert 0 is False`; test_attempt_refuses_an_item_with_no_items_row); the attempts route now
+  reports `correct` as a JSON boolean rather than the stored integer; `tests/api/conftest.py`
+  publishes a real `items` row for every item the fixture bank serves, so every HTTP attempt test
+  grades a real key, and the duplicate `publish_item` helper in `tests/api/test_routes.py` was
+  deleted; the tutor role is wired into the feedback route per R35 through `app/feedback/tutor.py`
+  (test_feedback_sentence_is_written_by_the_tutor,
+  test_the_tutor_receives_only_the_four_selected_fields,
+  test_feedback_without_a_tutor_still_returns_the_selected_payload,
+  test_the_stored_attempt_is_untouched_by_the_tutor).
+- Integrator, after the fresh review: an ungraded attempt no longer earns elaborated feedback and
+  its worked solution, which was a live hole the reviewer reproduced, since a submission whose
+  shape contradicts the served format was graded as nothing and fed back as everything
+  (test_feedback_is_refused_on_an_ungraded_attempt, red on a 200 carrying `worked_solution`); the
+  tutor request carries `CacheSettings(prefix_breakpoints=1, ttl="1h")` per scope 12
+  (test_the_tutor_call_caches_its_static_prefix); a provider failure costs the sentence and not the
+  deterministically selected payload (test_the_selected_payload_survives_a_provider_failure); an
+  unknown review-queue verdict is a 400 rather than a `ValueError` out of the audit writer
+  (test_resolve_refuses_an_unknown_verdict).
+
 ## Known defects [verified]
+
+- From the fifth session's review, not fixed. Session assembly freezes `format` on every queue slot
+  at assembly time, so the R16 alternation never happens inside one session: every item of a fresh
+  session is served as short answer, and an MCQ case exists over HTTP only when a test rewrites the
+  queue row. Because R12 rule 3 gives a wrong short answer no error path, and
+  `elaborated_payload` refuses to compose without a BC-ERR record, elaborated feedback is
+  unreachable through the natural P1 flow. These two together are what block gate 23
+  `test_session_login_to_feedback`, along with two smaller gaps: no HTTP route writes the error
+  note that gate 23 names, although `service.record_error_note` exists, and
+  `tests/fixtures/provider_cassettes/` does not exist, so "no network calls outside the recorded
+  cassettes" has no cassettes to replay. `app/main.py` also sets no `settings.tutor`, so the one
+  wired role is wired only in tests.
+- The static prefixes of both prompt templates are far short of the 1,024-token minimum that binds
+  on claude-sonnet-5: `guardrailed_practice_v1.md` is 2,473 characters and `elaborated_v1.md` is
+  1,641, which is roughly 620 and 410 tokens. Gate 22 would fail on length, not merely be
+  unmeasurable, and the plan's own trap is that a short prefix is processed uncached with no error.
+- `AnthropicProvider.stream` sets `"stream": true` and then parses the body as JSON, so the first
+  real streaming call raises a decode error on the `text/event-stream` response. No test covers it
+  because every test feeds a dict back. 07 gives no concrete SSE to normalised event mapping that
+  could be validated without a key.
+- `app/providers/anthropic.py` refuses `thinking` in `provider_options` outright, including the
+  adaptive form 07 names as the correct one for Claude 4.7 and later, and drops `provider_options`
+  rather than passing it through. Defensible for a tutor that needs none, a deviation for the P4
+  generator. The result field is `stop_reason` where 07's shape names `finish_reason`.
+- The tutor is called from the feedback route on every GET, so re-reading the screen re-spends and
+  returns a different sentence, and the `usage` block is discarded, so nothing feeds a budgets row,
+  the cache hit rate or `audit_log`. 07 puts the budget guard, the usage accounting and the audit
+  trail at the provider seam.
+- A BC-ERR record whose skills are all outside the archetype leaves `error_path_skills` empty, and
+  `rule_based_mastery_states` then falls back to blaming the primary skill, which is R12 rule 3's
+  behaviour for an answer with no error path. The fallback predates this session; the grader is
+  what starts feeding it real error paths.
+- `equivalence` now returns without a bound when it runs off the main thread, which is where a sync
+  FastAPI route runs. The `signal` crash is fixed and the timeout is not replaced, so a
+  pathological submission can pin a worker thread. The exposure is one authenticated user on their
+  own installation.
+- `record_attempt` persists the submitted body verbatim in `attempts.response`, so a claimed
+  `"correct": true` is stored beside the server verdict that overrode it.
+- `audit.write_resolution_audit_entry` hard-codes the `item_audit` kind, so resolving a row of any
+  other kind is logged as an item audit. `resolve_item_audit` passes `row.ref_id` rather than the
+  row, so `record_item_audit_verdict` re-looks-up the open row by item id and would resolve the
+  wrong one if two were open for the same item.
+- `_misnotated` treats any units mismatch as `notation_only` with correct true, which credits 0.25
+  for an answer whose units are dimensionally wrong. 03's check 4 asks for units present and
+  dimensionally correct; R12 rule 4 is loose enough to permit the reading.
+- Three tests assert less than their names claim, and none of them is a gate from 11:
+  `test_next_item_never_carries_the_answer_key` checks only that the literal string `answer_key` is
+  absent and never checks `is_key` or `error_path`, which are what identify the key;
+  `test_the_tutor_receives_only_the_four_selected_fields` proves no "only" and never inspects
+  `request.system`; `test_prompt_templates_are_versioned_and_golden` holds no snapshot or digest,
+  so any rewrite of either template passes it.
+- The working tree carries 24 untracked files whose names end in `" 2.py"`, copies made by a file
+  sync. pytest collects them and reports `200 passed` instead of `161 passed`, so every count in
+  this ledger is taken with `--ignore-glob="* 2.py"`. They are the operator's to delete.
+
 
 - From the fourth session's review, not fixed: `close_session` sweeps graded, unrated attempts and
   applies them with `Confidence.UNSURE`, which is an observation the student never rated entering
@@ -135,6 +255,15 @@ items and the operator audit.
 - `qa/last_report.json` is regenerated whenever `qa/12_report.py` runs and is restored with `git checkout -- qa/last_report.json` at session close, so the library's committed report does not drift because of build sessions.
 
 ## Plan corrections applied [verified]
+
+- 03's rule-based assignment names a mis-notated answer as one of P1's four answer shapes but gives
+  no mechanical notation check. Check 4 of 03's deterministic pre-checks, units present, is the
+  only one a P1 item record can carry, so it is the only one implemented, and an item whose key
+  declares no units can never report `notation_only`.
+- `grade` takes the served format explicitly, because 04's Output schema lets an item carry options
+  and be served either way, and R16 and R29 put the MCQ and short answer alternation on the attempt
+  history rather than on the item.
+
 
 - 06 API surface has no row for the recovery ceremony, and 09's registration rule keeps
   `/auth/passkey/register/begin` closed once the installation has a user, so recovery runs at
@@ -209,11 +338,20 @@ Second session, on the instruction "decide anything that needs my input yourself
   checker; confirmation that py_webauthn (`webauthn` on PyPI) may be added to `pyproject.toml` and
   named in 06; a decision on whether purge truncates the tables without `user_id`.
 - Needs a screen: `app/web/` session, home and settings screens; tests 23, 25, 26.
-- Needs a provider key: Anthropic tutor role, the two prompt templates, cassettes, test 22.
+- Needs a provider key: the recorded tutor cassettes under `tests/fixtures/provider_cassettes/`,
+  the token count that gate 22 asserts, and the first real call through
+  `app/providers/anthropic.py`, whose wire mapping has never executed. The adapter, the two
+  templates and the replay player exist and are exercised without a key.
 - Needs items: test 17, eval 29, eval 30; `app/sim/runner.py` should read `tests/fixtures/items_p1/`
   through `app/items/ingest.py` once it exists.
-- Most likely next slice without human input: the deterministic grader that decides `correct` and
-  the mastery_state from a submitted MathJSON answer, which `record_attempt` currently takes from
-  the request body; the `audit_log` write for the fail-closed coverage gap; `reauth_finish`'s
-  missing audit entry; and `GET /review-queue` with `POST /review-queue/{id}/resolve` over
-  `app/review/audit.py`, the two operator rows of 06's API surface.
+- Most likely next slice without human input: whatever unblocks gate 23. That means resolving the
+  served format at serve time rather than freezing it at assembly, so the R16 alternation happens
+  inside a session and an MCQ item is reachable; deciding what elaborated feedback says for a wrong
+  short answer, which today has no BC-ERR record and so composes nothing; an HTTP route for the
+  error note; and `settings.tutor` wired in `app/main.py`. Also still open from the fourth session:
+  the `audit_log` write for the fail-closed coverage gap and `reauth_finish`'s missing audit entry.
+- Two questions only the operator answers. Whether a wrong short answer at stage unsupported should
+  get elaborated feedback at all in P1, given that R12 produces no error path for it and 03 builds
+  the elaborated payload out of one. Whether the deliberately empty `tests/fixtures/items_p1/` may
+  be filled with a handful of synthetic items for gate 23's sake, or whether gate 23 waits for the
+  130 hand-authored ones.

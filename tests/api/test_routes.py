@@ -5,7 +5,17 @@ from sqlalchemy.orm import Session as OrmSession
 
 from app.api.routes.purge import PURGE_CONFIRMATION
 from app.db import models
-from tests.api.conftest import SNAPSHOT_ID, TODAY
+from tests.api.conftest import KEY_MATHJSON, SNAPSHOT_ID, TODAY, WRONG_MATHJSON
+
+
+def correct_answer_for(item):
+   """The submission shape the served format demands, carrying the stored key either way."""
+   is_mcq = item["format"] == "mcq"
+
+   if is_mcq:
+      return {"option_id": "A"}
+
+   return {"mathjson": KEY_MATHJSON}
 
 
 def open_session(client):
@@ -46,7 +56,7 @@ def test_session_routes_open_next_attempt_confidence_close(world):
       f"/sessions/{session_id}/attempts",
       json={
          "item_id": item["id"],
-         "answer": {"correct": True},
+         "answer": correct_answer_for(item),
          "elapsed_ms": 90000,
          "today": TODAY.isoformat(),
       },
@@ -169,7 +179,7 @@ def test_close_route_applies_unrated_attempts(world):
       f"/sessions/{session_id}/attempts",
       json={
          "item_id": item["id"],
-         "answer": {"correct": True},
+         "answer": correct_answer_for(item),
          "elapsed_ms": 90000,
          "today": TODAY.isoformat(),
       },
@@ -235,37 +245,26 @@ def test_register_finish_seeds_from_the_resolved_snapshot(world, monkeypatch):
    assert world.seeds.snapshots == [sentinel]
 
 
-def publish_item(world, item_id, archetype_id):
-   """The feedback route reads the items row, which the fixture bank does not carry."""
-   options = [
-      {"id": "A", "error_path": None},
-      {"id": "B", "error_path": "BC-ERR-02001", "violated_step": 1},
-   ]
-
+def serve_as_mcq(world, session_id, item_id):
+   """Session assembly fixes the format per queue slot, so an MCQ case is set up on the row."""
    with OrmSession(world.engine) as db:
-      db.add(
-         models.Item(
-            id=item_id,
-            archetype_id=archetype_id,
-            variant_id=None,
-            snapshot_id=SNAPSHOT_ID,
-            parameter_draw="{}",
-            stem="stem",
-            figure_spec=None,
-            options=options,
-            answer_key="key",
-            worked_solution="divide out the factor, then evaluate",
-            calculator_status="no_calculator",
-            representation="BC-REP-01",
-            difficulty_settings="{}",
-            skills="[]",
-            provenance="{}",
-            status="verified",
-            dedupe_minhash="[]",
-            created_at=TODAY.isoformat(),
-            updated_at=TODAY.isoformat(),
-         )
-      )
+      row = db.get(models.Session, session_id)
+      queue = json.loads(row.queue)
+
+      for block, slots in queue.items():
+         holds_slots = isinstance(slots, list)
+
+         if not holds_slots:
+            continue
+
+         for item in slots:
+            is_a_slot = isinstance(item, dict)
+            is_target = is_a_slot and item.get("id") == item_id
+
+            if is_target:
+               item["format"] = "mcq"
+
+      row.queue = json.dumps(queue)
       db.commit()
 
 
@@ -274,12 +273,12 @@ def test_feedback_route_returns_the_elaborated_payload(world):
    world.register(client)
    session_id = open_session(client).json()["id"]
    item = client.get(f"/sessions/{session_id}/next").json()["item"]
-   publish_item(world, item["id"], item["archetype_id"])
+   serve_as_mcq(world, session_id, item["id"])
    attempted = client.post(
       f"/sessions/{session_id}/attempts",
       json={
          "item_id": item["id"],
-         "answer": {"correct": False, "option_id": "B"},
+         "answer": {"correct": True, "option_id": "B"},
          "elapsed_ms": 90000,
          "today": TODAY.isoformat(),
          "confidence": "confident",
@@ -287,6 +286,7 @@ def test_feedback_route_returns_the_elaborated_payload(world):
    )
 
    assert attempted.status_code == 200
+   assert attempted.json()["correct"] is False
 
    attempt_id = attempted.json()["id"]
    feedback = client.get(f"/sessions/{session_id}/attempts/{attempt_id}/feedback")
@@ -356,14 +356,9 @@ def test_registration_with_a_valid_recovery_code_adds_a_credential(world):
 def test_next_item_never_carries_the_answer_key(world):
    """The served item travels through sessions.queue to the student, so it must not hold the key."""
    from app.runtime.bank import ItemBank
-   from tests.engine.conftest_selection import load_fixture
 
    client = world.client()
    world.register(client)
-
-   for record in load_fixture()["archetypes"]:
-      publish_item(world, f"{record['id']}-PUB", record["id"])
-
    world.settings.session_context.bank = ItemBank(world.engine)
    opened = open_session(client)
 
@@ -380,3 +375,90 @@ def test_next_item_never_carries_the_answer_key(world):
    queued = opened.json()["queue"]
 
    assert "answer_key" not in json.dumps(queued)
+
+
+def wrong_answer_for(item):
+   """The submission shape the served format demands, carrying a wrong value either way."""
+   is_mcq = item["format"] == "mcq"
+
+   if is_mcq:
+      return {"option_id": "B"}
+
+   return {"mathjson": WRONG_MATHJSON}
+
+
+def test_attempt_is_graded_by_the_server_not_the_body(world):
+   """R12 decides correctness from the stored key, so a body that claims a success is ignored."""
+   client = world.client()
+   world.register(client)
+   session_id = open_session(client).json()["id"]
+   item = client.get(f"/sessions/{session_id}/next").json()["item"]
+   claimed = wrong_answer_for(item)
+   claimed["correct"] = True
+   attempted = client.post(
+      f"/sessions/{session_id}/attempts",
+      json={
+         "item_id": item["id"],
+         "answer": claimed,
+         "elapsed_ms": 90000,
+         "today": TODAY.isoformat(),
+      },
+   )
+
+   assert attempted.status_code == 200
+   assert attempted.json()["correct"] is False
+
+   with OrmSession(world.engine) as db:
+      stored = db.get(models.Attempt, attempted.json()["id"])
+
+      assert stored.correct == 0
+
+
+def test_attempt_refuses_an_item_with_no_items_row(world):
+   """Fail closed: nothing grades an item the bank cannot produce a key for."""
+   client = world.client()
+   world.register(client)
+   session_id = open_session(client).json()["id"]
+   item = client.get(f"/sessions/{session_id}/next").json()["item"]
+
+   with OrmSession(world.engine) as db:
+      db.delete(db.get(models.Item, item["id"]))
+      db.commit()
+
+   attempted = client.post(
+      f"/sessions/{session_id}/attempts",
+      json={
+         "item_id": item["id"],
+         "answer": {"mathjson": WRONG_MATHJSON},
+         "elapsed_ms": 90000,
+         "today": TODAY.isoformat(),
+      },
+   )
+
+   assert attempted.status_code == 409
+
+
+def test_feedback_is_refused_on_an_ungraded_attempt(world):
+   """An ungraded attempt lost no point, so it earns no elaborated feedback and no worked solution."""
+   client = world.client()
+   world.register(client)
+   session_id = open_session(client).json()["id"]
+   item = client.get(f"/sessions/{session_id}/next").json()["item"]
+   attempted = client.post(
+      f"/sessions/{session_id}/attempts",
+      json={
+         "item_id": item["id"],
+         "answer": {"option_id": "B"},
+         "elapsed_ms": 90000,
+         "today": TODAY.isoformat(),
+         "confidence": "confident",
+      },
+   )
+
+   assert attempted.status_code == 200
+   assert attempted.json()["correct"] is None
+
+   feedback = client.get(f"/sessions/{session_id}/attempts/{attempted.json()['id']}/feedback")
+
+   assert feedback.status_code == 409
+   assert "worked_solution" not in feedback.text

@@ -11,6 +11,67 @@ Application code lives at the repository root under `app/` and `tests/`, at the 
 
 ## Done [verified]
 
+Session 2026-09-20 (seventh), suite line at open `191 passed in 23.36s`, at close `230 passed in 46.12s`.
+Style gate exit 0 on every touched file; `qa/12_report.py` exit 0; `data/`, `research/`, `schemas/`
+and `cache/` untouched, confirmed by `git status --porcelain` over all four. The slice was the
+provider seam of 07 plus gate 23, which were the last two pieces of P1 scope needing no key, no
+screen and no hand-authored item. A fresh reviewer found ten defects over the first integration;
+eight were fixed in session by two repair agents and the integrator, and the two that remain are
+under Known defects.
+
+- Agent A, the provider seam: `app/providers/guard.py`, `tests/providers/test_guard.py`.
+  `GuardedProvider` estimates the worst case before the call, refuses on the dollar or token cap,
+  reconciles against `raw_usage` after, keeps one `budgets` row per user per role per day, and
+  writes `audit_log` only on the hard stop and the refusal, never per call. Tests:
+  test_guard_estimates_the_worst_case_before_the_call,
+  test_guard_refuses_when_the_estimate_crosses_the_dollar_cap,
+  test_guard_refuses_when_the_estimate_crosses_the_token_cap,
+  test_guard_reconciles_the_estimate_against_raw_usage,
+  test_guard_keeps_one_budget_row_per_user_role_and_day,
+  test_guard_writes_an_audit_entry_when_the_cap_stops_the_role,
+  test_guard_writes_no_key_material_into_the_audit_detail,
+  test_a_stopped_role_refuses_every_later_call_that_day,
+  test_guard_prices_cached_reads_at_the_multiplier,
+  test_an_abandoned_stream_releases_the_reservation,
+  test_a_completed_stream_reconciles_against_raw_usage,
+  test_a_stopped_role_records_the_refusal_once_and_still_refuses,
+  test_a_lowered_cap_binds_on_the_existing_row,
+  test_an_unpriced_result_model_is_charged_at_the_requested_model_price,
+  test_a_result_without_usage_keeps_the_worst_case_reservation,
+  test_a_role_with_no_configured_cap_is_refused.
+- Agent B, the tutor sentence cache: `app/feedback/tutor.py`, `app/db/models.py` (one nullable
+  `attempts.tutor_sentence` column), `tests/feedback/test_tutor_cache.py`. Tests:
+  test_the_first_call_stores_the_sentence_on_the_attempt,
+  test_a_cached_sentence_is_returned_without_a_second_provider_call,
+  test_no_provider_stores_nothing_and_returns_no_sentence,
+  test_a_provider_failure_stores_nothing_and_returns_no_sentence,
+  test_an_empty_sentence_is_not_cached_and_is_composed_again,
+  test_the_cached_sentence_is_read_back_through_a_fresh_session,
+  test_without_a_session_and_attempt_the_function_behaves_as_before.
+- Agent C, gate 23: `tests/e2e/`, `tests/fixtures/items_p1/` (36 synthetic records over
+  BC-QA-01008, 02002, 02006, 02007, 02011 and 03008, all `no_calculator` and `BC-REP-01`, skills
+  copied from `data/archetypes.json`), `tests/fixtures/provider_cassettes/`.
+  test_session_login_to_feedback (gate 23) and test_the_socket_ban_itself_fails_a_network_call.
+  The gate asserts every link 11 names: register with 618 seeded rows, logout, login, `/me`, a
+  session drained and closed, a 409 on feedback before the confidence rating, the elaborated screen
+  in both served formats, the named BC-ERR path, the tutor sentence through the cassette, the error
+  note read back out of SQLite, a `skills_state` change read back out of SQLite, the socket ban
+  firing on AF_INET, and membership of every served archetype in 11's 13.
+- Integrator: the coverage-gap audit deduped per user per archetype
+  (test_a_repeated_coverage_gap_writes_no_second_audit_entry, red `assert 3 == 1`;
+  test_a_gap_recorded_for_another_user_still_writes_a_row); the guard and the cache wired into the
+  feedback route behind `tutor_sentence_for`, with `tutor_unavailable` carrying 07's hard-stop line
+  to the screen (tests/api/test_tutor_budget.py, four tests, red `KeyError: 'tutor_unavailable'`);
+  `compose_sentence` re-raises `BudgetStopped` rather than swallowing it, because a cap is not a
+  provider failure; `GROWTH_TUTOR_CAP_USD` and `GROWTH_TUTOR_CAP_TOKENS` on the composition root
+  (test_main_gives_the_tutor_role_a_daily_cap, test_the_tutor_cap_is_read_from_the_environment);
+  the controlled audit vocabulary at `app/audit/vocabulary.py`, enforced in all three writers, with
+  a scanner test that walks `app/` and resolves module constants rather than checking one hand-
+  copied list against another (tests/audit/test_vocabulary.py, six tests); the guard refuses a role
+  with no configured cap (test_a_role_with_no_configured_cap_is_refused, red
+  `Failed: DID NOT RAISE BudgetStopped`); the guard's price table pruned to claude-sonnet-5 alone,
+  because the Opus 5 and Haiku 4.5 output prices the builder wrote appear in no plan document.
+
 Session 2026-09-19, suite line at close: `42 passed in 12.58s`.
 
 - Integrator: `pyproject.toml`, `app/engine/{constants,state,strength,fsrs_constants,prior}.py`, `tools/build_p1_fixture.py`, `tests/fixtures/graph_p1.json` (54 skills, 101 edges, 25 seeded parents, 4 inert BC-TOP), `tests/fixtures/fsrs_rs_inference_v7_c137ee6.rs`, `tests/engine/test_cold_start.py`: eval_cold_start_pA_distribution passes and prints split p10/p50/p90 0.250/0.450/0.587, compensatory 0.328/0.465/0.587, reproducing the plan's recorded gate.
@@ -100,7 +161,79 @@ claimed.
   payload, which restores the negative case the agent's deletion had dropped
   (test_a_distractor_whose_error_path_does_not_resolve_is_refused, red `DID NOT RAISE ValueError`).
 
+## In progress [inferred]
+
+Session 2026-09-20 (eighth). Suite line at open `230 passed in 34.85s`. Phase stays P1: 11's P2
+entry criterion is "P1 merged with all gates green" and P1 has five gates open, so P2 may not
+start. The five open P1 gates are 17, 22, 25, 26, 29 and 30, and every one of them is human-only
+at its core. What this session builds is the whole of Buildable now plus the operator unblock kit
+for the human-only list, so that each remaining gate is one operator artefact away from green.
+
+Declared interfaces, written before any module starts, so wave 2 builds against these rather than
+against wave 1's code.
+
+- `app/design/contrast.py`: `relative_luminance(hex_color) -> float` and
+  `contrast_ratio(hex_a, hex_b) -> float`, taking `#rgb` or `#rrggbb`, case insensitive, raising
+  `ValueError` on anything else.
+- `app/db/migrate.py`: `missing_columns(engine) -> dict` mapping table name to a tuple of column
+  names declared on `Base.metadata` and absent from the live database; `apply_additive_migrations
+  (engine) -> tuple` returning the `table.column` strings added; `SchemaDriftError(RuntimeError)`
+  raised when the drift is not additive or the missing column is NOT NULL with no server default.
+- `app/audit/vocabulary.py`: one new action `provider_result_unreadable`.
+- `app/items/distractor_paths.py`: `error_ids_for_skills(snapshot, skill_ids) -> frozenset` and
+  `distractor_path_violations(record, error_ids) -> list` of human-readable violation strings,
+  empty when gate 30's property holds of the record.
+- `app/review/verdicts.py`: `verdict_violations(record) -> list` and
+  `audit_completeness(records, sample_ids) -> dict` carrying the audited count, the missing ids and
+  the published key error rate.
+- `app/design/tokens.py`: `TYPE_TOKENS` and `COLOUR_TOKENS` scanned from 08's own tables and role
+  list, `load_tokens(path) -> dict`, `token_violations(tokens) -> list`.
+
+Wave 1, seven modules, disjoint files and disjoint test names.
+
+- M1, integrator: `tools/gate_status.py`, `tests/tools/test_gate_status.py`. Reads the gate list
+  out of `docs/plan/11-phased-delivery.md` for every phase, greps `tests/` for each gate's test
+  name and prints phase, gate number, test name, present or missing.
+- M2: `app/db/migrate.py`, `tests/db/test_migrate.py`. Closes the `attempts.tutor_sentence` defect.
+- M3: `app/providers/guard.py`, `app/audit/vocabulary.py`, `tests/providers/test_guard_settle.py`.
+  Closes the silent `_settle` defect with an audit action, deduped per user per role per day.
+- M4: `app/design/contrast.py`, `tests/design/test_contrast.py`. Gate 26's arithmetic.
+- M5: `app/items/distractor_paths.py`, `tests/items/test_distractor_paths.py`. Gate 30's property
+  as a checker the operator can run before an item is published.
+- M6: `app/api/routes/sessions.py`, `tests/api/test_error_note.py`. One note per corrected item,
+  per 03's "the student writes one line", closing the silent-overwrite defect.
+- M7: `app/review/verdicts.py`, `tests/review/test_verdicts.py`. Gate 29's completeness and rate.
+
+Wave 2, the operator unblock kit.
+
+- M8: `app/design/tokens.py`, `tools/check_tokens.py`, `tests/design/test_tokens.py`,
+  `docs/operator/design-tokens.template.json`.
+- M9: `tools/check_items.py`, `tools/check_audit_verdicts.py`, `tests/tools/test_operator_clis.py`.
+- M10: `docs/operator/README.md`, `docs/operator/items.md`, `docs/operator/key-audit.md`,
+  `docs/operator/design-tokens.md`, `docs/operator/provider-key.md`.
+- Integrator: wires `apply_additive_migrations` into `app/main.py`, and strengthens gate 23's
+  archetype assertion.
+
 ## Known defects [verified]
+
+- From the seventh session's review, not fixed. `attempts.tutor_sentence` has no migration. The
+  column reaches an existing `var/growth.db` only through `Base.metadata.create_all`, which does
+  not alter a table that already exists, so a database created before this session will raise on
+  the first feedback read. No migration tool is in `06-architecture.md` and adding one was out of
+  the slice. Until then, an existing development database is deleted and re-created.
+- From the seventh session's review, not fixed. `GuardedProvider._settle` swallows a pricing or
+  usage failure with no audit row, so an unreadable provider result is visible only as a budget row
+  left at the worst-case estimate. The audit vocabulary is closed and no action name covers it.
+- From the seventh session's review, accepted rather than fixed. Gate 23's subset assertion checks
+  membership in the 13, so a regression that serves only one of them still passes. Six of the 13
+  are unreachable at cold start because each one's primary skill has a hard prerequisite that is an
+  ordinary BC-SKL rather than one of the 25 seeded assumed-mastered parents, and BC-QA-01004's
+  gating parent BC-SKL-01028 is one of BC-QA-01004's own skills, so it can never open. That last
+  one looks like a library shape worth a question rather than a test defect.
+- From the seventh session, a behaviour change to note. `compose_sentence` now returns `None` where
+  it used to return `""` when a provider returns an empty string, on the uncached path as well.
+  Nothing in the suite depended on the old reading and the route treats a missing sentence as the
+  degradation case.
 
 - From the sixth session's review, not fixed. The tutor is still called from the feedback route on
   every GET with no budget guard, no usage accounting and no `audit_log` write, which is the seam
@@ -208,6 +341,31 @@ claimed.
 - `qa/last_report.json` is regenerated whenever `qa/12_report.py` runs and is restored with `git checkout -- qa/last_report.json` at session close, so the library's committed report does not drift because of build sessions.
 
 ## Plan corrections applied [verified]
+
+Session 2026-09-20 (seventh).
+
+- `docs/plan/06-architecture.md`, the `attempts` table: a `tutor_sentence` nullable column was
+  added to the field list. The sentence is one-to-one with the attempt, dies with it under purge
+  and carries the same retention as `error_note` and `self_explanation`, so a separate table would
+  buy nothing and would need its own purge join. Without the column a re-read of the feedback
+  screen spends a second tutor call against the daily cap 07 sets.
+- `docs/plan/06-architecture.md`, the API surface row for
+  `GET /sessions/{id}/attempts/{aid}/feedback`: the model role read `diagnostician`, which
+  contradicts R35 and 11's P1 scope, where the tutor writes the P1 sentence and no diagnostician is
+  wired until P3. It now reads tutor in P1, diagnostician from P3, and names the `tutor_unavailable`
+  field the route returns when the cap has stopped the role.
+- `docs/plan/09-security-and-privacy.md`, the Audit log Recorded sentence: extended with the role
+  stopped by its budget cap, the call refused by it and the fringe archetype excluded for want of a
+  published item, and with the statement that an ordinary provider call is not recorded because its
+  accounting lives in `budgets`. The vocabulary is now enumerated in code at
+  `app/audit/vocabulary.py` and a write outside it is refused, so the word controlled is true of the
+  code and not only of the prose.
+- `docs/plan/12-open-questions.md`, the tunables table: two rows added. The tutor daily cap at $1.00
+  with the token cap unset, and the client token estimate divisor at 4 characters per token. 07 sets
+  no number for either and the guard cannot run without both, so each is inferred here with what
+  settles it. The divisor in particular is the unsafe direction: 07 records the Claude 4.7 tokenizer
+  producing about 30 percent more tokens for the same text, so 4 likely under-estimates.
+
 
 - 03 Content part 2 gives the scoring consequence as the BC-PT `does_not_earn` text when no error
   matched. `app/content/loader.py` does read `data/scoring_points.json` and the archetypes carry
@@ -341,6 +499,28 @@ Second session, on the instruction "decide anything that needs my input yourself
 - The build is committed on the branch `build/p1-backend-core`; main is untouched.
 
 ## Next candidates [inferred]
+
+Session 2026-09-20 (seventh) leaves P1 with no deliverable buildable without the operator. Every
+remaining gate is one of the three human-only classes below.
+
+- Human-only, blocks P1 exit, gates 17, 29 and 30: the 130 hand-authored items, 10 per P1
+  archetype, in the record shape `app/items/ingest.py` reads. `tests/fixtures/items_p1/` now holds
+  36 synthetic records in exactly that shape, which are a template for the authoring and are marked
+  in their README as not countable toward any item-quality gate. Each needs `is_key` on every
+  option, a BC-ERR `error_path` on every distractor resolving to an error the archetype's skills
+  hold, and MathJSON on the last worked-solution step. Then the 100-item key audit, whose verdicts
+  `app/review/audit.py` records and whose rate it publishes.
+- Human-only, gates 25 and 26: the design tokens with a named contrast checker, and the screens.
+  `app/web/` does not exist.
+- Human-only, gate 22: a provider key. The token count of the tutor template's static prefix cannot
+  be measured without one, and the recorded cassettes under `tests/fixtures/provider_cassettes/`
+  are hand-written until then. `app/providers/anthropic.py`'s wire mapping has still never executed.
+- Buildable, small, if a session wants P1 work before the items arrive: a migration path for
+  `attempts.tutor_sentence`, and an audit action for a provider result the guard cannot read. Both
+  are under Known defects.
+- Buildable, the next real slice: P2's entry criteria in 11 decide whether the FSRS scheduling work
+  can start while P1 waits on the operator. That is the first thing the next session should read.
+
 
 - Most likely next slice without human input: the provider seam of 07, meaning the budget row, the
   usage accounting and the `audit_log` write on every provider call, plus caching the tutor

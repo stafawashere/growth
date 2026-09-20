@@ -18,7 +18,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session as OrmSession
 
 from app.db import models
-from app.main import build_application
+from app.main import DEFAULT_TUTOR_CAP_USD, build_application
 from app.providers.anthropic import AnthropicProvider
 
 
@@ -107,3 +107,19 @@ def test_reauth_finish_writes_an_audit_entry(world):
 
    assert len(rows) == 1
    assert rows[0].actor == registered.json()["user"]["id"]
+
+
+def test_main_gives_the_tutor_role_a_daily_cap(tmp_path):
+   """07's budget guard is only a guard if a cap exists, so the default is a real number and not
+   None, and the operator raises or lowers it through the environment."""
+   application = build_application(env_for(tmp_path))
+   caps = application.state.settings.tutor_caps
+
+   assert "tutor" in caps
+   assert caps["tutor"].cap_usd == DEFAULT_TUTOR_CAP_USD
+
+
+def test_the_tutor_cap_is_read_from_the_environment(tmp_path):
+   application = build_application(env_for(tmp_path, GROWTH_TUTOR_CAP_USD="0.25"))
+
+   assert application.state.settings.tutor_caps["tutor"].cap_usd == 0.25

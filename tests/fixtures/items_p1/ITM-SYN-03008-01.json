@@ -1,0 +1,154 @@
+{
+   "id": "ITM-SYN-03008-01",
+   "archetype_id": "BC-QA-03008",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Synthetic fixture item, written for gate 23 only. The function f is given by f(x) = 3x^4 - 3x^2. Find f''(x)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Subtract",
+         [
+            "Multiply",
+            36,
+            [
+               "Power",
+               "x",
+               2
+            ]
+         ],
+         6
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Differentiate once.",
+         "mathjson": [
+            "Subtract",
+            [
+               "Multiply",
+               12,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               6,
+               "x"
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Differentiate the result a second time.",
+         "mathjson": [
+            "Subtract",
+            [
+               "Multiply",
+               36,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            6
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Subtract",
+            [
+               "Multiply",
+               36,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            6
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": [
+            "Subtract",
+            [
+               "Multiply",
+               12,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               6,
+               "x"
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03021",
+         "violated_step": 0
+      },
+      {
+         "id": "C",
+         "value": [
+            "Power",
+            [
+               "Subtract",
+               [
+                  "Multiply",
+                  12,
+                  [
+                     "Power",
+                     "x",
+                     3
+                  ]
+               ],
+               [
+                  "Multiply",
+                  6,
+                  "x"
+               ]
+            ],
+            2
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03022",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-04",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-03030",
+      "BC-SKL-03031",
+      "BC-SKL-03032",
+      "BC-SKL-03033",
+      "BC-SKL-03034"
+   ],
+   "parameter_draw": {
+      "coefficient": 3
+   },
+   "authored_on": "2026-09-20"
+}

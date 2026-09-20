@@ -130,3 +130,5 @@ Every parameter below is [inferred] unless noted. The authoritative per-engine l
 | Golden set size | 5 responses on each of at least 30 BC-PT ids | 10 | operator capacity |
 | Diagnostician exit floor | two ranked hypotheses on at least 80 percent of diagnosed errors | 11 | P3 trial |
 | Retention and purge | 30 days after exam date, export first | 09 | operator policy |
+| Tutor daily cap | $1.00 per day, token cap unset | 07 | a week of real sessions against the measured cost per feedback screen |
+| Client token estimate divisor | 4 characters per token | 07 | the first `raw_usage` block from a real key, since 07 records the Claude 4.7 tokenizer producing about 30 percent more tokens for the same text, and an under-estimate is the unsafe direction for a cap |

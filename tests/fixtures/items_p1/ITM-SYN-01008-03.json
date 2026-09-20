@@ -1,0 +1,65 @@
+{
+   "id": "ITM-SYN-01008-03",
+   "archetype_id": "BC-QA-01008",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Synthetic fixture item, written for gate 23 only. The function f is given by f(x) = x + 1 for x < 1, f(x) = a x + c for 1 <= x <= 3, and f(x) = x + 11 for x > 3. Find the value of c for which f is continuous."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": -4
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Match the branches at each boundary, which gives a + c = 2 at x = 1 and 3a + c = 14 at x = 3.",
+         "mathjson": 14
+      },
+      {
+         "step": 2,
+         "text": "Subtracting the equations gives a = 6, and c = 2 - a follows.",
+         "mathjson": -4
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": -4,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": 11,
+         "is_key": false,
+         "error_path": "BC-ERR-01017",
+         "violated_step": 0
+      },
+      {
+         "id": "C",
+         "value": 1,
+         "is_key": false,
+         "error_path": "BC-ERR-01017",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-17",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-01051",
+      "BC-SKL-01052",
+      "BC-SKL-01050",
+      "BC-SKL-01053"
+   ],
+   "parameter_draw": {
+      "upper_offset": 11
+   },
+   "authored_on": "2026-09-20"
+}

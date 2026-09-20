@@ -1,0 +1,149 @@
+{
+   "id": "ITM-SYN-02007-05",
+   "archetype_id": "BC-QA-02007",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Synthetic fixture item, written for gate 23 only. The function f is given by f(x) = 7cos(x) + e^x. Find f'(x)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Multiply",
+            -7,
+            [
+               "Sin",
+               "x"
+            ]
+         ],
+         [
+            "Exp",
+            "x"
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The cosine term differentiates to a negative sine and the natural exponential is its own derivative.",
+         "mathjson": [
+            "Multiply",
+            -7,
+            [
+               "Sin",
+               "x"
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Combine the two terms.",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               -7,
+               [
+                  "Sin",
+                  "x"
+               ]
+            ],
+            [
+               "Exp",
+               "x"
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               -7,
+               [
+                  "Sin",
+                  "x"
+               ]
+            ],
+            [
+               "Exp",
+               "x"
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               7,
+               [
+                  "Sin",
+                  "x"
+               ]
+            ],
+            [
+               "Exp",
+               "x"
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02018",
+         "violated_step": 2
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               -7,
+               [
+                  "Sin",
+                  "x"
+               ]
+            ],
+            [
+               "Multiply",
+               "x",
+               [
+                  "Exp",
+                  [
+                     "Subtract",
+                     "x",
+                     1
+                  ]
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02019",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02032",
+      "BC-SKL-02033",
+      "BC-SKL-02034"
+   ],
+   "parameter_draw": {
+      "coefficient": 7
+   },
+   "authored_on": "2026-09-20"
+}

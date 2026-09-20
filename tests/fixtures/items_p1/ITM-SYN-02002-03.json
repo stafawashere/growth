@@ -1,0 +1,102 @@
+{
+   "id": "ITM-SYN-02002-03",
+   "archetype_id": "BC-QA-02002",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Synthetic fixture item, written for gate 23 only. The function f is given by f(x) = 5x^2. Use the limit definition of the derivative to find f'(x)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Multiply",
+         10,
+         "x"
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Expand the numerator of the difference quotient, which leaves 5(2xh + h^2).",
+         "mathjson": [
+            "Multiply",
+            5,
+            [
+               "Add",
+               [
+                  "Multiply",
+                  2,
+                  "x",
+                  "h"
+               ],
+               [
+                  "Power",
+                  "h",
+                  2
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Divide by h and let h approach zero.",
+         "mathjson": [
+            "Multiply",
+            10,
+            "x"
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Multiply",
+            10,
+            "x"
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": 0,
+         "is_key": false,
+         "error_path": "BC-ERR-02005",
+         "violated_step": 2
+      },
+      {
+         "id": "C",
+         "value": 5,
+         "is_key": false,
+         "error_path": "BC-ERR-02007",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": 10,
+         "is_key": false,
+         "error_path": "BC-ERR-02030",
+         "violated_step": 3
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02006",
+      "BC-SKL-02007",
+      "BC-SKL-02008",
+      "BC-SKL-02009",
+      "BC-SKL-02027"
+   ],
+   "parameter_draw": {
+      "coefficient": 5
+   },
+   "authored_on": "2026-09-20"
+}

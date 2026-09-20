@@ -37,6 +37,7 @@ class Settings:
    session_context: SessionContext | None = None
    verifier: Any = None
    tutor: Any = None
+   tutor_caps: dict = field(default_factory=dict)
    rp_id: str = "localhost"
    origin: str = "http://127.0.0.1:8000"
    bind_host: str = "127.0.0.1"

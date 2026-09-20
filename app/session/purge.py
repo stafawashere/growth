@@ -8,14 +8,20 @@ import uuid
 
 from sqlalchemy import select
 
+from app.audit.vocabulary import is_known_action
 from app.db import models
 
+PURGE_ACTION = "purge"
+
 def write_purge_audit_entry(db, user_id, now):
+   if not is_known_action(PURGE_ACTION):
+      raise ValueError(f"{PURGE_ACTION!r} is not in the audit_log vocabulary")
+
    entry = models.AuditLog(
       id=f"AUD-{uuid.uuid4().hex}",
       at=now.isoformat(),
       actor=user_id,
-      action="purge",
+      action=PURGE_ACTION,
       subject=f"users:{user_id}",
       created_at=now.isoformat(),
       updated_at=now.isoformat(),

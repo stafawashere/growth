@@ -301,6 +301,7 @@ Semantics owned by `01-learning-model.md` for the mechanic and `02-adaptive-engi
 | per_skill_states | TEXT (JSON) | the `mastery_state` assigned to each skill the item loaded, as an object keyed by BC-SKL string (R27) |
 | error_note | TEXT nullable | the student's one-line error note (03) |
 | self_explanation | TEXT nullable | the answer to the structured self-explanation prompt |
+| tutor_sentence | TEXT nullable | the tutor's composed paragraph, written once on the first read of the feedback screen so a re-read spends no second call against the role's daily cap (R35, `07-ai-provider-layer.md` Budget caps) |
 | snapshot_id | TEXT | the content snapshot the item was served under, so an attempt can be reinterpreted after a library update (P1 convention 2 in 11) |
 
 Semantics owned by `03-diagnosis-and-feedback.md` for the confidence and feedback fields, `05-assessment-modes.md` for capture. The `transcription_confirmed` gate is a hard precondition on grading: no point is graded until it is 1, because the 2026 AIED study found roughly 87 percent of residual grading errors were transcription failures rather than rubric misapplication (https://arxiv.org/abs/2605.19043 [single-source]).
@@ -414,7 +415,7 @@ REST for everything with a request and a response. SSE for the two things that a
 | GET | /sessions/{id} | session state and remaining queue | session | none |
 | GET | /sessions/{id}/next | the next item, fully rendered | session | engine selection; may enqueue a generate job if the bank is short |
 | POST | /sessions/{id}/attempts | submit a response | session | grader (deterministic path first) |
-| GET | /sessions/{id}/attempts/{aid}/feedback | elaborated feedback after submission | session | diagnostician |
+| GET | /sessions/{id}/attempts/{aid}/feedback | elaborated feedback after submission; carries `tutor_unavailable` when the tutor role is stopped by its daily cap, per `07-ai-provider-layer.md` Budget caps | session | tutor in P1 (R35), diagnostician from P3 |
 | POST | /sessions/{id}/attempts/{aid}/confidence | record the 3-point rating before feedback | session | engine (sets `hypercorrection_due`) |
 | POST | /sessions/{id}/judgments | record a block 4 judgment of learning | session | `judgments` insert; never enters credit assignment (R5, B3) |
 | POST | /sessions/{id}/close | end the session, write the summary | session | engine: FSRS scheduling for the next due dates |

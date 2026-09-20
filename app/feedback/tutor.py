@@ -15,6 +15,7 @@ from app.providers.base import (
    render_template,
    split_template,
 )
+from app.providers.guard import BudgetStopped
 
 TEMPLATE_PATH = Path(__file__).resolve().parents[2] / "prompts" / "feedback" / "elaborated_v1.md"
 TUTOR_MODEL = "claude-sonnet-5"
@@ -41,8 +42,28 @@ def request_for(fields):
    )
 
 
-def compose_sentence(provider, feedback):
-   """The selected payload becomes one paragraph. No provider means no sentence, not an error."""
+def compose_sentence(provider, feedback, db=None, attempt=None):
+   """The selected payload becomes one paragraph. No provider means no sentence, not an error.
+
+   With a session and an attempt row the sentence is cached on the attempt, so re-reading the
+   feedback screen returns the wording the student already saw and spends no second tutor call
+   against the role's daily cap. The write is flushed and not committed: the caller owns the
+   transaction. An empty or blank sentence is a provider that said nothing, so it is not stored
+   and the next read composes again.
+
+   A budget stop is not a provider failure and is not swallowed. 07's hard-stop table says the
+   student is told the tutor is unavailable for the rest of today, so the caller has to be able
+   to tell a cap from a model that merely returned nothing.
+   """
+   caches = db is not None and attempt is not None
+
+   if caches:
+      stored = attempt.tutor_sentence
+      has_stored_sentence = stored is not None and stored.strip() != ""
+
+      if has_stored_sentence:
+         return stored
+
    has_provider = provider is not None
    payload = feedback.elaborated
    has_payload = payload is not None
@@ -53,7 +74,20 @@ def compose_sentence(provider, feedback):
 
    try:
       result = provider.generate(request_for(payload.as_prompt_fields()))
+   except BudgetStopped:
+      raise
    except Exception:
       return None
 
-   return result.text
+   sentence = result.text
+   has_sentence = sentence is not None and sentence.strip() != ""
+
+   if not has_sentence:
+      return None
+
+   if caches:
+      attempt.tutor_sentence = sentence
+      db.add(attempt)
+      db.flush()
+
+   return sentence

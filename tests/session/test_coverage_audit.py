@@ -101,3 +101,46 @@ def test_no_coverage_gap_writes_no_audit_entry(tmp_path):
       gap_rows = [row for row in audit_rows(db) if row.action == COVERAGE_GAP_ACTION]
 
       assert gap_rows == []
+
+
+def test_a_repeated_coverage_gap_writes_no_second_audit_entry(tmp_path):
+   """One row per user per archetype. A gap persists until the operator authors the item, so a
+   row per session opened would grow without bound and say nothing the first row did not."""
+   fixture = load_fixture()
+   graph = build_graph(fixture)
+   states = build_states(fixture)
+   bank = build_bank(fixture, draft_only={DRAFT_ARCHETYPE})
+   engine = models.make_engine(tmp_path / "growth.db")
+
+   with OrmSession(engine) as db:
+      for _opening in range(3):
+         assemble_session(
+            states, graph, bank, [], [], random.Random(1), TODAY,
+            now=NOW, db=db, user_id=USER_ID,
+         )
+         db.commit()
+
+      gap_rows = [row for row in audit_rows(db) if row.action == COVERAGE_GAP_ACTION]
+
+      assert len(gap_rows) == 1
+
+
+def test_a_gap_recorded_for_another_user_still_writes_a_row(tmp_path):
+   fixture = load_fixture()
+   graph = build_graph(fixture)
+   states = build_states(fixture)
+   bank = build_bank(fixture, draft_only={DRAFT_ARCHETYPE})
+   engine = models.make_engine(tmp_path / "growth.db")
+
+   with OrmSession(engine) as db:
+      for actor in (USER_ID, "USER-0002"):
+         assemble_session(
+            states, graph, bank, [], [], random.Random(1), TODAY,
+            now=NOW, db=db, user_id=actor,
+         )
+         db.commit()
+
+      gap_rows = [row for row in audit_rows(db) if row.action == COVERAGE_GAP_ACTION]
+      actors = sorted(row.actor for row in gap_rows)
+
+      assert actors == ["USER-0001", "USER-0002"]

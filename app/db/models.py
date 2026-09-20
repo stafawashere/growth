@@ -175,6 +175,7 @@ class Attempt(Base):
    per_skill_states: Mapped[str] = mapped_column(Text, nullable=False)
    error_note: Mapped[str | None] = mapped_column(Text, nullable=True)
    self_explanation: Mapped[str | None] = mapped_column(Text, nullable=True)
+   tutor_sentence: Mapped[str | None] = mapped_column(Text, nullable=True)
    snapshot_id: Mapped[str] = mapped_column(Text, nullable=False)
    created_at: Mapped[str] = mapped_column(Text, nullable=False)
    updated_at: Mapped[str] = mapped_column(Text, nullable=False)

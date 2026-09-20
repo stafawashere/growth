@@ -1,0 +1,99 @@
+{
+   "id": "ITM-SYN-02011-04",
+   "archetype_id": "BC-QA-02011",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Synthetic fixture item, written for gate 23 only. The function f is given by f(x) = 6x^2. The line tangent to the graph of f at x = 1 is written as y = mx + b. Find mx + b."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Subtract",
+         [
+            "Multiply",
+            12,
+            "x"
+         ],
+         6
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The slope is f'(1) = 12 and the point of tangency is (1, 6).",
+         "mathjson": 12
+      },
+      {
+         "step": 2,
+         "text": "Write the line in point slope form and expand it.",
+         "mathjson": [
+            "Subtract",
+            [
+               "Multiply",
+               12,
+               "x"
+            ],
+            6
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Subtract",
+            [
+               "Multiply",
+               12,
+               "x"
+            ],
+            6
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": [
+            "Multiply",
+            6,
+            "x"
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02027",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Subtract",
+            [
+               "Multiply",
+               24,
+               "x"
+            ],
+            18
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02028",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02012",
+      "BC-SKL-02013"
+   ],
+   "parameter_draw": {
+      "coefficient": 6
+   },
+   "authored_on": "2026-09-20"
+}

@@ -12,6 +12,7 @@ from app.api.deps import current_user, get_db, get_settings
 from app.db import models
 from app.feedback import render, tutor
 from app.items.grade import grade
+from app.providers.guard import BudgetStopped, GuardedProvider
 from app.session import service
 
 router = APIRouter(prefix="/sessions", tags=["sessions"])
@@ -244,9 +245,33 @@ def read_feedback(
    except ValueError as refused:
       raise HTTPException(status_code=409, detail=str(refused)) from refused
 
-   sentence = tutor.compose_sentence(settings.tutor, feedback)
+   sentence, tutor_unavailable = tutor_sentence_for(settings, db, user, attempt, feedback)
 
-   return dict(render.as_dict(feedback), sentence=sentence)
+   return dict(render.as_dict(feedback), sentence=sentence, tutor_unavailable=tutor_unavailable)
+
+
+def tutor_sentence_for(settings, db, user, attempt, feedback):
+   """Every tutor call goes through the guard, which is where 07 puts the cap, the accounting
+   and the audit trail, and a call that would cross the cap never reaches the provider.
+
+   07's hard-stop table gives the tutor role Stop at the cap, with the practice queue unaffected
+   and a line saying the tutor is unavailable for the rest of today. That line is what the second
+   return value carries, so the session screen can say it where it happened rather than only in
+   settings.
+   """
+   has_tutor = settings.tutor is not None
+
+   if not has_tutor:
+      return None, False
+
+   guarded = GuardedProvider(settings.tutor, db, user.id, caps=settings.tutor_caps)
+
+   try:
+      sentence = tutor.compose_sentence(guarded, feedback, db=db, attempt=attempt)
+   except BudgetStopped:
+      return None, True
+
+   return sentence, False
 
 
 @router.post("/{session_id}/attempts/{attempt_id}/confidence")

@@ -6,6 +6,7 @@ import uuid
 from dataclasses import dataclass, field
 from datetime import date, datetime, timezone
 
+from app.audit.vocabulary import is_known_action
 from app.db.models import AuditLog, SkillState as SkillStateRow
 from app.engine.state import FadingStage, SkillState as EngineSkillState
 from app.engine.update import evaluate_mastery
@@ -62,6 +63,9 @@ def _row_to_engine_state(row):
 
 
 def _write_audit_entry(db_session, actor, action, old_id, new_id):
+   if not is_known_action(action):
+      raise ValueError(f"{action!r} is not in the audit_log vocabulary")
+
    timestamp = _now_iso()
    entry = AuditLog(
       id=uuid.uuid4().hex,

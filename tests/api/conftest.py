@@ -15,11 +15,13 @@ from sqlalchemy.orm import Session as OrmSession
 from app.api.app import SessionContext, Settings, create_app
 from app.db import models
 from app.engine.state import FadingStage
+from app.providers.guard import BudgetCaps
 from app.session import repository
 from tests.engine.conftest_selection import build_bank, build_graph, build_states, load_fixture
 from tests.session.test_service import engine_graph_from
 
 SNAPSHOT_ID = "SNAP-0001"
+TUTOR_CAP_USD = 1.00
 TODAY = date(2026, 3, 1)
 ACCOUNT_CREATED_AT = datetime(2026, 1, 1, 9, 0, 0, tzinfo=timezone.utc)
 CREDENTIAL_ID = b"cred-1"
@@ -162,6 +164,7 @@ def world(tmp_path):
       verifier=FakeVerifier(),
       seed_hook=seed_hook,
       purge_hook=purge_hook,
+      tutor_caps={"tutor": BudgetCaps(cap_usd=TUTOR_CAP_USD)},
    )
 
    with OrmSession(engine) as db:

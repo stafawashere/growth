@@ -13,6 +13,7 @@ import secrets
 import uuid
 from datetime import date, datetime, timedelta, timezone
 
+from app.audit.vocabulary import is_known_action
 from app.db import models
 
 CHALLENGE_TTL_SECONDS = 300
@@ -399,7 +400,11 @@ def logout(db, auth_session, now=None):
 
 
 def write_audit(db, actor, action, subject, detail, now=None):
-   """docs/plan/09-security-and-privacy.md, "Audit log": no key material ever reaches detail."""
+   """docs/plan/09-security-and-privacy.md, "Audit log": no key material ever reaches detail, and
+   the action comes from the controlled vocabulary in app/audit/vocabulary.py."""
+   if not is_known_action(action):
+      raise ValueError(f"{action!r} is not in the audit_log vocabulary")
+
    timestamp = as_iso(now or utc_now())
    row = models.AuditLog(
       id=new_id("AUD"),

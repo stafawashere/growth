@@ -1,0 +1,191 @@
+{
+   "id": "ITM-SYN-02006-00",
+   "archetype_id": "BC-QA-02006",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Synthetic fixture item, written for gate 23 only. The function f is given by f(x) = 2x^3 + 1/x + 7. Find f'(x)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Subtract",
+         [
+            "Multiply",
+            6,
+            [
+               "Power",
+               "x",
+               2
+            ]
+         ],
+         [
+            "Power",
+            "x",
+            -2
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Write the reciprocal term as a power, so f(x) = 2x^3 + x^(-1) + 7.",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               2,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Power",
+               "x",
+               -1
+            ],
+            7
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Differentiate term by term; the constant term contributes nothing.",
+         "mathjson": [
+            "Subtract",
+            [
+               "Multiply",
+               6,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Power",
+               "x",
+               -2
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Subtract",
+            [
+               "Multiply",
+               6,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Power",
+               "x",
+               -2
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": [
+            "Subtract",
+            [
+               "Multiply",
+               2,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Power",
+               "x",
+               -2
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02015",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               6,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Power",
+               "x",
+               -1
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02017",
+         "violated_step": 0
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            [
+               "Subtract",
+               [
+                  "Multiply",
+                  6,
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ]
+               ],
+               [
+                  "Power",
+                  "x",
+                  -2
+               ]
+            ],
+            7
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02016",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02025",
+      "BC-SKL-02026",
+      "BC-SKL-02028",
+      "BC-SKL-02029",
+      "BC-SKL-02030",
+      "BC-SKL-02031"
+   ],
+   "parameter_draw": {
+      "coefficient": 2
+   },
+   "authored_on": "2026-09-20"
+}

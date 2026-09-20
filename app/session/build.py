@@ -18,7 +18,10 @@ import statistics
 from dataclasses import dataclass, field
 from datetime import timedelta
 
+from sqlalchemy import select
+
 from app.auth.service import write_audit
+from app.db import models
 from app.engine import constants
 from app.engine.fringe import retrieval_eligible
 from app.engine.select import (
@@ -143,14 +146,32 @@ def requeue_ready(attempts_history, today):
    return [(item_id, archetype_id) for _, item_id, archetype_id in sorted(ready)]
 
 
+def gap_already_recorded(db, user_id, archetype_id):
+   statement = (
+      select(models.AuditLog.id)
+      .where(models.AuditLog.action == COVERAGE_GAP_ACTION)
+      .where(models.AuditLog.actor == user_id)
+      .where(models.AuditLog.subject == f"archetypes:{archetype_id}")
+      .limit(1)
+   )
+
+   return db.scalars(statement).first() is not None
+
+
 def write_coverage_gap_audit(db, user_id, archetype_ids, graph):
    """R18: an archetype excluded from block 2 for want of a published item is named by its
    skill, not just its archetype id, because the skill is what an operator needs to go fill.
+
+   One row per user per archetype. The gap persists until the operator authors the item, so a
+   row per session opened would grow without bound and would say nothing the first row did not.
 
    The row is stamped by write_audit with the wall clock rather than with the engine's session
    clock, which is local midnight of `today` whenever the caller supplies no time.
    """
    for archetype_id in archetype_ids:
+      if gap_already_recorded(db, user_id, archetype_id):
+         continue
+
       record = graph.archetypes.get(archetype_id)
       skill_id = graph.primary_skill(archetype_id) if record is not None else None
       detail = {

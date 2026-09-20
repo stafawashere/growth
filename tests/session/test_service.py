@@ -114,7 +114,7 @@ class World:
 @pytest.fixture
 def world(tmp_path):
    fixture = load_fixture()
-   engine = models.make_engine(tmp_path / "tutor.db")
+   engine = models.make_engine(tmp_path / "growth.db")
    graph = build_graph(fixture)
    bank = build_bank(fixture)
    archetypes = {record["id"]: record for record in fixture["archetypes"]}
@@ -394,3 +394,71 @@ def test_rehearsal_session_writes_no_mastery(world):
    assert after == before
    assert attempt.id is not None
    assert attempt.p_split is not None
+
+
+def test_close_session_applies_unrated_attempts_as_unsure(world):
+   set_unsupported(world)
+   opened = world.open()
+   item, attempt = world.attempt(opened, {"correct": True})
+
+   assert attempt.confidence is None
+
+   before = repository.load_states(world.db, USER_ID)
+   closed = service.close_session(
+      world.db,
+      opened.id,
+      NOW,
+      archetypes=world.archetypes,
+      engine_graph=world.engine_graph,
+      today=TODAY,
+   )
+   stored_attempt = world.db.get(models.Attempt, attempt.id)
+   after = repository.load_states(world.db, USER_ID)
+   primary = world.archetypes[item["archetype_id"]]["skills"][0]
+
+   assert closed.ended_at is not None
+   assert stored_attempt.confidence == Confidence.UNSURE.value
+   assert after[primary].observation_count > before[primary].observation_count
+   assert not after[primary].hypercorrection_due
+
+   opened_second = world.open(seed=13)
+   world.attempt(opened_second, {"correct": True})
+
+   with pytest.raises(ValueError):
+      service.close_session(world.db, opened_second.id, NOW)
+
+
+def test_judgment_never_enters_credit(world):
+   opened = world.open()
+
+   def snapshot():
+      return {
+         row.skill_id: (
+            row.credited_successes,
+            row.credited_failures,
+            row.stability,
+            row.difficulty,
+            row.mastered,
+            row.fading_stage,
+            row.observation_count,
+            row.beta,
+            row.last_practised_at,
+            row.mastered_at,
+            row.hypercorrection_due,
+            row.consecutive_successes,
+            row.consecutive_failures,
+            row.concept_opener_done,
+            row.distinct_archetypes_succeeded,
+            row.success_days,
+            row.updated_at,
+         )
+         for row in world.db.scalars(select(models.SkillState)).all()
+      }
+
+   before = snapshot()
+   judgment = service.record_judgment(world.db, opened.id, "skill", "BC-SKL-01024", 0.7, NOW)
+   after = snapshot()
+
+   assert judgment.id is not None
+   assert world.db.get(models.Judgment, judgment.id).scope_id == "BC-SKL-01024"
+   assert after == before

@@ -1,9 +1,11 @@
-"""The 14 P1 tables from docs/plan/06-architecture.md, "Data model".
+"""The 14 P1 tables from docs/plan/06-architecture.md, "Data model", plus the two the passkey
+layer of docs/plan/09-security-and-privacy.md needs and 06 leaves unlisted: passkey_credentials
+and auth_sessions.
 
 gradings and diagnoses are not P1 tables: they arrive with the grader and the
 diagnostician in P3, per docs/plan/11-phased-delivery.md.
 """
-from sqlalchemy import JSON, Integer, Text, event
+from sqlalchemy import JSON, Integer, LargeBinary, Text, event
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
 
@@ -18,6 +20,7 @@ class User(Base):
    display_name: Mapped[str | None] = mapped_column(Text, nullable=True)
    exam_date: Mapped[str] = mapped_column(Text, nullable=False, default="2027-05-10")
    purge_after: Mapped[str | None] = mapped_column(Text, nullable=True)
+   recovery_code_hash: Mapped[str | None] = mapped_column(Text, nullable=True)
    created_at: Mapped[str] = mapped_column(Text, nullable=False)
    updated_at: Mapped[str] = mapped_column(Text, nullable=False)
 
@@ -250,6 +253,40 @@ class AuditLog(Base):
    action: Mapped[str] = mapped_column(Text, nullable=False)
    subject: Mapped[str] = mapped_column(Text, nullable=False)
    detail: Mapped[str | None] = mapped_column(Text, nullable=True)
+   created_at: Mapped[str] = mapped_column(Text, nullable=False)
+   updated_at: Mapped[str] = mapped_column(Text, nullable=False)
+
+
+class PasskeyCredential(Base):
+   """A registered authenticator, per docs/plan/09-security-and-privacy.md, "Registration"."""
+
+   __tablename__ = "passkey_credentials"
+
+   id: Mapped[str] = mapped_column(Text, primary_key=True)
+   user_id: Mapped[str] = mapped_column(Text, nullable=False)
+   credential_id: Mapped[bytes] = mapped_column(LargeBinary, nullable=False, unique=True)
+   public_key: Mapped[bytes] = mapped_column(LargeBinary, nullable=False)
+   sign_count: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+   transports: Mapped[str | None] = mapped_column(Text, nullable=True)
+   created_at: Mapped[str] = mapped_column(Text, nullable=False)
+   updated_at: Mapped[str] = mapped_column(Text, nullable=False)
+
+
+class AuthSession(Base):
+   """A cookie session and the short-lived re-authentication token it may carry.
+
+   Both tokens are stored as sha256 hashes; the raw values exist only in the response that issues
+   them and in the client cookie or request body that returns them.
+   """
+
+   __tablename__ = "auth_sessions"
+
+   id: Mapped[str] = mapped_column(Text, primary_key=True)
+   user_id: Mapped[str] = mapped_column(Text, nullable=False)
+   token_hash: Mapped[str] = mapped_column(Text, nullable=False, unique=True)
+   expires_at: Mapped[str] = mapped_column(Text, nullable=False)
+   reauth_token_hash: Mapped[str | None] = mapped_column(Text, nullable=True)
+   reauth_expires_at: Mapped[str | None] = mapped_column(Text, nullable=True)
    created_at: Mapped[str] = mapped_column(Text, nullable=False)
    updated_at: Mapped[str] = mapped_column(Text, nullable=False)
 

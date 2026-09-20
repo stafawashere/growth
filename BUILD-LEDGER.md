@@ -26,12 +26,101 @@ Session 2026-09-19 (second session), suite line at close: `72 passed in 14.23s`.
 - Agent B, snapshot persistence and reload reconciliation: `app/content/persist.py`, `app/content/reconcile.py`, `tests/content/test_persist.py`, `tests/content/test_reconcile.py`: test_snapshot_row_written_on_load, test_rejected_snapshot_row_records_reason, test_reload_with_unchanged_digest_reuses_active_row, test_reload_keeps_active_skill_and_sets_snapshot_id, test_reload_rewrites_superseded_skill, test_reload_merges_into_existing_successor_and_recomputes_mastered, test_reload_merge_union_failing_d2_clears_mastered, test_reload_merge_carries_difficulty_with_winning_stability, test_reload_merge_carries_difficulty_from_old_row_when_it_wins, test_reload_merge_preserves_flags_and_resets_consecutive_counters, test_reload_orphans_tombstone_without_successor, test_reload_refuses_inactive_successor, test_reload_writes_audit_entry.
 - Agent C, session service and attempts writer (no HTTP layer): `app/session/repository.py`, `app/session/service.py`, `tests/session/test_service.py`: test_open_session_persists_four_blocks, test_attempt_row_logs_split_and_compensatory, test_attempt_updates_skills_state, test_confidence_before_feedback_sets_hypercorrection, test_error_note_stored_on_attempt, test_close_session_writes_ended_at, test_state_round_trip, test_rehearsal_session_writes_no_mastery, test_record_attempt_refuses_duplicate, test_ungraded_answer_skips_the_update, test_timestamps_are_timezone_aware_utc. Confidence design: `apply_observation` already sets `hypercorrection_due` from the rating, so `record_attempt` applies the observation immediately only at stage example (no rating, convention 3) and defers it at completion and unsupported until `record_confidence` supplies the rating, which runs the single update.
 
+Session 2026-09-19 (third session), suite line at open `72 passed in 14.53s`, at close `93 passed, 1 warning in 15.74s` (the warning is starlette's own anyio alias deprecation). Style gate exit 0 on every touched file; `qa/12_report.py` exit 0; `data/`, `research/`, `docs/` and `qa/` untouched. Slice: HTTP layer and account lifecycle, 11 P1 scope items 13, 14 and 15.
+
+- Agent A, HTTP and passkey auth: `app/api/{app,deps}.py`, `app/api/routes/{auth,me,sessions,purge,content,health}.py`, `app/auth/{webauthn,cookies,service}.py`, `passkey_credentials` and `auth_sessions` tables in `app/db/models.py`, `tests/api/`, `tests/auth/`: test_purge_requires_reauth (gate 24), test_register_refused_once_users_nonempty, test_login_finish_sets_httponly_lax_cookie, test_sign_count_regression_refused, test_session_routes_open_next_attempt_confidence_close, test_session_routes_require_the_cookie, test_healthz_localhost_only, test_reauth_token_single_use, test_content_snapshot_route_reports_the_active_row, test_me_reports_exam_and_purge_dates, test_library_verifier_names_the_missing_package. WebAuthn verification sits behind `PasskeyVerifier`; `LibraryVerifier` imports the `webauthn` package lazily and raises naming it when absent, and every test drives a `FakeVerifier`, because 06 names no WebAuthn library and this session's rule was to add none. Re-authentication is `POST /auth/reauth/begin` and `/finish`, an assertion ceremony 06's table lacks. The purge confirmation string is `PURGE_CONFIRMATION = "DELETE EVERYTHING"` in `app/api/routes/purge.py`. Session cookie `calcbc_session`, HttpOnly, SameSite=Lax, Secure off loopback only.
+- Agent B, services: `app/session/seed.py` (618 rows, 77 BC-PRQ plus 6 external BC-SKL parents mastered, beta from `beta_for_skill` elsewhere), `app/session/purge.py` (audit entry first, every user table, audit_log last), `record_judgment` and the close-session sweep in `app/session/service.py`: test_seed_writes_618_rows_with_83_mastered, test_seed_beta_matches_prior, test_seed_refuses_second_run, test_close_session_applies_unrated_attempts_as_unsure, test_judgment_never_enters_credit, test_purge_empties_user_tables_and_writes_final_audit, test_purge_audit_entry_precedes_deletion.
+- Integrator, after the fresh review: `POST /sessions/{id}/close` now passes the engine context so the sweep runs over HTTP (test_close_route_applies_unrated_attempts, red `ValueError: close_session needs archetypes, engine_graph and today`); the judgments route calls `service.record_judgment` and refuses an unknown scope_id or a retention outside 0 to 1 (test_judgment_route_validates_scope_id_and_retention, red `assert 400 == 200`); registration seeds from `settings.resolve_snapshot()` (test_register_finish_seeds_from_the_resolved_snapshot, red `AttributeError: 'World' object has no attribute 'settings'`); purge deletes `passkey_credentials` and `auth_sessions` through the models (test_purge_deletes_credentials_and_auth_sessions, green on write, red `1 failed` under a mutation that skipped the credential delete); one `random.Random(rng_seed)` per process on `Settings.rng` instead of a fresh one per `POST /sessions`; `tests/db/test_models.py` table set extended by the two new tables; `test_session_routes_open_next_attempt_confidence_close` corrected to send its archetype id under scope `archetype`, since it had been storing an archetype id under scope `skill`.
+
 ## In progress [inferred]
 
-Nothing at the time of writing. The next session starts from Next candidates, and from the one red gate recorded under Known defects.
+Nothing at the time of writing. The next session starts from Next candidates.
+
+Session 2026-09-19 (fourth session), suite line at open `93 passed, 1 warning in 19.90s`, at close
+`122 passed, 1 warning in 19.04s`. Style gate exit 0 on every touched file, checked by feeding the
+hook its JSON payload on stdin and confirmed to bite with a positive control (`style_gate:
+gatecheck.py: em dash present`, exit 2); an argv-only invocation reads no file and exits 0 on
+anything, so it is not evidence. `qa/12_report.py` exit 0; `data/`, `research/`, `docs/` and `qa/`
+untouched. Slice: the four P1 deliverables that need no hand-authored content, no design tokens and
+no provider key, 11 P1 scope items 7, 10, 12 (composition root only), 14 and 15. None of the 31
+gates is named by these modules; they unblock gates 17, 29 and 30, which stay blocked on the 130
+items and the operator audit.
+
+- Agent A, deterministic elaborated feedback selection (11 P1 scope 10 and 13, R35):
+  `app/feedback/render.py`, `tests/feedback/test_render.py`:
+  test_step_verification_at_example_and_completion,
+  test_nothing_returned_before_submission_at_unsupported,
+  test_elaborated_payload_names_violated_step_and_error_path,
+  test_scoring_consequence_comes_from_the_error_record,
+  test_self_explanation_only_on_examples_and_corrected_errors,
+  test_tutor_receives_no_answer_before_submission. The payload the tutor template receives is
+  exactly four fields: violated_step, observed_behavior, scoring_consequence, worked_solution.
+- Agent B, composition root and live item bank: `app/runtime/{context,bank}.py`, `app/main.py`,
+  `tests/runtime/test_context.py`: test_context_builds_from_the_live_registries,
+  test_bank_publishes_only_verified_rows,
+  test_bank_has_no_published_item_for_a_draft_only_archetype,
+  test_main_builds_an_application_without_touching_the_network.
+- Agent C, recovery code at registration (09 Recovery): `app/auth/recovery.py`,
+  `tests/auth/test_recovery.py`, `recovery_code_hash` on `users`:
+  test_recovery_code_is_shown_once_and_stored_hashed,
+  test_recovery_code_authenticates_a_new_registration_once, test_consumed_code_is_refused,
+  test_recovery_writes_an_audit_entry. PBKDF2-SHA256 at 200,000 iterations, salted, compared with
+  hmac.compare_digest; plaintext is returned once and never persisted or logged. Audit action
+  `passkey_recovery_used`.
+- Agent D, item ingestion and the review-queue audit writer: `app/items/ingest.py`,
+  `app/review/audit.py`, `tests/items/test_ingest.py`, `tests/review/test_audit.py`:
+  test_ingest_publishes_an_item_whose_key_passes_every_check, test_ingest_refuses_a_seeded_bad_key,
+  test_indeterminate_check_routes_to_review_queue, test_verification_rows_written_per_check,
+  test_item_audit_verdict_recorded, test_key_error_rate_published_over_the_recorded_verdicts.
+- Integrator: the feedback route `GET /sessions/{id}/attempts/{aid}/feedback` from 06's API
+  surface, wired to `app/feedback/render.py` (test_feedback_route_returns_the_elaborated_payload,
+  test_feedback_route_refuses_an_unknown_attempt, red `KeyError: 'recovery_code'` and a 404 route
+  miss before the wiring); registration now issues a recovery code and returns it once
+  (test_register_finish_returns_a_recovery_code_once); recovery re-registration at
+  `POST /auth/recovery/register/begin` and `/finish`
+  (test_registration_with_a_valid_recovery_code_adds_a_credential). `SessionContext` gained an
+  `errors` field so the feedback route can resolve a BC-ERR record from the chosen option.
+- Integrator, after the fresh review: the served item is redacted (see Plan corrections), with
+  test_bank_hides_the_answer_key_and_the_error_paths and
+  test_next_item_never_carries_the_answer_key, the second shown red by re-adding `answer_key` to
+  `_as_item_dict` (`1 failed`) and green after restoring; option classification now reads `is_key`
+  (test_a_distractor_without_an_error_path_is_refused,
+  test_the_key_is_read_from_is_key_not_from_a_null_error_path, both red first); a failed check now
+  sets status `rejected` rather than `draft`; the ingestion-routed review row carries kind
+  `item_verification_disagreement`
+  (test_an_indeterminate_verification_row_stays_out_of_the_audit_sample); a duplicate `sole_user`
+  the integrator had added was folded into `require_sole_user` over the existing one.
+- Operator instruction, same session: the application is named Growth. `pyproject.toml` name
+  `calc-bc-tutor` to `growth`, FastAPI title and the WebAuthn relying-party name to `Growth`, the
+  session cookie `calcbc_session` to `growth_session`, the environment prefix `TUTOR_` to
+  `GROWTH_` in `app/main.py`, the default database `var/tutor.db` to `var/growth.db`, and the
+  tmp_path database name in nine test modules. The word tutor is kept where it names the provider
+  role of 07 and the `prompts/tutor/` template path, because renaming those would contradict the
+  plan. The third session's entry above still records the old cookie name, as history.
 
 ## Known defects [verified]
 
+- From the fourth session's review, not fixed: `close_session` sweeps graded, unrated attempts and
+  applies them with `Confidence.UNSURE`, which is an observation the student never rated entering
+  `c_k`, `distinct_archetypes_succeeded` and `success_days`; it rests on the operator's second
+  session instruction, not on a plan sentence, and `close_session` now raises `ValueError` (409)
+  when no engine bundle is supplied, so a caller without one cannot close a session at all.
+  `reauth_finish` writes no audit entry although 09 records "a session established from a new
+  authenticator". `app/review/audit.py` divides the key error count by the verdicts recorded
+  rather than by the sample size, which reads correctly only because `verdicts_complete` ships
+  beside it. Coverage gaps from the fail-closed rule go into `sessions.queue` rather than
+  `audit_log`, which 06's traceability row asks for; pre-existing, and live now that the real bank
+  is wired. `app/items/verify.py` still splits options on a null `error_path`; only the ingestion
+  path was corrected to read `is_key`.
+- Recovery issues a replacement code after a successful recovery. 09 says a code is "generated once
+  at registration", so this is a deviation; without it a recovered account has no recovery path
+  left. The plaintext replacement is returned once in the finish response.
+- `app/runtime/bank.py` decides what a served item may carry. Anything a later phase adds to the
+  `items` row is withheld from the student by default and has to be added to `_as_item_dict`
+  deliberately.
+
+- From the third session's review, not fixed: registration issues no recovery code (09 Recovery requires one, hashed, shown once); purge leaves `review_queue`, `jobs`, `items`, `item_verifications` and `content_snapshots` untouched because they carry no `user_id`, and it empties `audit_log` globally, so the purge audit entry itself does not survive; no ASGI entrypoint builds `Settings`, resolves the snapshot and the `SessionContext` for a real run, so `create_app` is reachable only from tests; `LibraryVerifier`'s calls into the `webauthn` package have never executed; challenges live in a per-process `ChallengeStore` with a 300 second TTL; the Secure flag derives from `bind_host` rather than the request scheme; audit actions `session_established` and `session_closed` are not in 09's vocabulary; no per-IP rate limit, CSP or HSTS middleware.
+- `test_purge_requires_reauth` drives a purge double, so no HTTP test runs the real `purge_user`; the real one is covered in `tests/session/test_purge.py` only.
 - Gate 31 margin is thin: pooled 0.0604 against 0.0556 on the fixed per-trajectory seeds, and on ceiling and slipper the control arm scores higher per item than the policy. The pooled win comes from the policy serving fewer items on absent_30_days and floor (block 1 requeues), not from faster mastery. A different seed set could flip it. The eval asserts pooled only, as written.
 - Dependants of BC-SKL-02025 do reach mastery in the prereq_gap trajectory as secondary loaded skills of archetypes whose primary is ungated (BC-SKL-02044, 02045 via BC-QA-02010; BC-SKL-03006 via BC-QA-03001). Invariant 3 gates on the primary skill only, so this is plan-conformant; `test_simulation_prereq_gap_stalls_dependants` asserts that no mastered dependant was credited by an archetype whose primary is itself a dependant. Whether secondary loading should be gated too is a 02 question.
 - `test_simulation_prereq_gap_stalls_dependants` asserts gating on the served trace and is load-bearing; its second clause (dependants of BC-SKL-02025 unmastered) is vacuous until mastery is reachable.
@@ -47,6 +136,30 @@ Nothing at the time of writing. The next session starts from Next candidates, an
 
 ## Plan corrections applied [verified]
 
+- 06 API surface has no row for the recovery ceremony, and 09's registration rule keeps
+  `/auth/passkey/register/begin` closed once the installation has a user, so recovery runs at
+  `POST /auth/recovery/register/begin` and `/finish`. The existing 403 gate on ordinary
+  registration was not loosened.
+- 06 calls `item_audit` the only `review_queue` kind P1 writes, while 04 and 06 both route an
+  indeterminate symbolic check to `review_queue`, and 11 P1 scope 14 says `item_audit` holds the
+  operator's hand-audit verdicts on published items. The routed row carries
+  `item_verification_disagreement`, because `app/review/audit.py` computes gate 29's published key
+  error rate over `item_audit` rows and an ingestion artefact must not move that number.
+- 04's Output schema makes `is_key` required on every option, so the key is read from it. Reading
+  the key as "the option whose `error_path` is null" made rejection rule 7 unreachable and could
+  compare every distractor against another distractor when the mis-authored option came first.
+- 06's `items.status` vocabulary is draft, verified, rejected, retired. A failed check now sets
+  `rejected`, which 04 wants kept with its provenance; `draft` is reserved for an unsettled check.
+- 11 P1 scope 10 and 13 (R35) say nothing reaches the student before submission, and the plan does
+  not say which fields a served item carries. `app/runtime/bank.py` withholds `answer_key`,
+  `worked_solution`, `provenance` and the per-option `error_path` and `is_key` fields, because a
+  served item is copied into `sessions.queue` and returned by `GET /sessions/{id}/next` before
+  anything is submitted, and a null `error_path` would have identified the key by inspection.
+- The application is named Growth on the operator's instruction. No plan document names the
+  product, so nothing in docs/plan changed.
+
+- 06 API surface: re-authentication has no row; the build adds `POST /auth/reauth/begin` and `/finish` because 09 forces re-authentication for purge. 09 "typed confirmation": the string is fixed as `DELETE EVERYTHING`. 09 sign-count regression: refused when the offered counter is below the stored one, or equal while the stored one is non-zero. 06 `users.purge_after`: exam date plus 30 days, 2027-06-09 on the default. None of these edits docs/plan; the sentences are recorded here for the operator to carry into 06 and 09.
+- `skills_state.snapshot_id` at seeding is the `content_snapshots` row id from `SessionContext.snapshot_id`, per the 06 correction above; `seed_skills_state` falls back to the digest only when no row id is supplied.
 - 06 `skills_state.snapshot_id` holds the `content_snapshots.id` row id, not the digest; 06 never says which. `reconcile_skills_state` takes the row id explicitly.
 - 06 reconciliation pseudocode is silent on `difficulty`, `fading_stage`, the consecutive counters, `hypercorrection_due`, `concept_opener_done` and `unaided_success_count`; the code carries difficulty with the winning stability, earliest stage, latest hypercorrection date, OR of the opener flag, summed unaided successes, zeroed counters.
 - 02 invariant 23 does not say whether the two logged predictions use retrievability 1.0 or current retrievability; the service and the runner both use current retrievability, and `p_split` is `p_knowledge` without the MCQ guessing floor so the two columns share a scale.
@@ -88,8 +201,19 @@ Second session, on the instruction "decide anything that needs my input yourself
 
 ## Next candidates [inferred]
 
-- Human-only, blocks P1 exit: 130 hand-authored items (10 per P1 archetype) with MathJSON keys and per-option BC-ERR paths; the 100-item key audit; design tokens with a named contrast checker.
+- Human-only, blocks P1 exit: 130 hand-authored items (10 per P1 archetype) in the record shape
+  `app/items/ingest.py` reads, each with `is_key` on every option, a BC-ERR `error_path` on every
+  distractor and MathJSON on the last worked-solution step, which is the second statement of the
+  key that the SymPy and numeric checks compare against; the 100-item key audit, whose verdicts
+  `app/review/audit.py` records and whose rate it publishes; design tokens with a named contrast
+  checker; confirmation that py_webauthn (`webauthn` on PyPI) may be added to `pyproject.toml` and
+  named in 06; a decision on whether purge truncates the tables without `user_id`.
 - Needs a screen: `app/web/` session, home and settings screens; tests 23, 25, 26.
-- Needs a provider key: Anthropic tutor role, prompt templates, cassettes, test 22.
-- Needs items: test 17 (item verification over each archetype), eval 29, eval 30, eval 31 (six synthetic trajectories exist as fixtures; a minimal simulation runner is needed).
-- Most likely next slice: FastAPI routes over `app/session/service.py` (`httpx2` is in the test extras), the close-session sweep of unrated attempts, passkey registration and login with py_webauthn plus the 618-row seeding on registration, purge with re-authentication (test 24).
+- Needs a provider key: Anthropic tutor role, the two prompt templates, cassettes, test 22.
+- Needs items: test 17, eval 29, eval 30; `app/sim/runner.py` should read `tests/fixtures/items_p1/`
+  through `app/items/ingest.py` once it exists.
+- Most likely next slice without human input: the deterministic grader that decides `correct` and
+  the mastery_state from a submitted MathJSON answer, which `record_attempt` currently takes from
+  the request body; the `audit_log` write for the fail-closed coverage gap; `reauth_finish`'s
+  missing audit entry; and `GET /review-queue` with `POST /review-queue/{id}/resolve` over
+  `app/review/audit.py`, the two operator rows of 06's API surface.

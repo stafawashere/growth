@@ -18,6 +18,8 @@ P1_TABLE_NAMES = {
    "jobs",
    "budgets",
    "audit_log",
+   "passkey_credentials",
+   "auth_sessions",
 }
 
 

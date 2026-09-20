@@ -354,8 +354,80 @@ def record_error_note(db, attempt_id, note):
    return attempt
 
 
-def close_session(db, session_id, now=None):
+def record_judgment(db, session_id, scope, scope_id, predicted_retention, now):
+   """A metacognitive judgment of learning. It is a measurement, never a credit-assignment input
+   (docs/plan/02-adaptive-engine.md line 723), so this writes only the judgments row.
+   """
+   made_at = as_datetime(now)
+   row = models.Judgment(
+      id=new_id("JDG"),
+      user_id=db.get(models.Session, session_id).user_id,
+      session_id=session_id,
+      scope=scope,
+      scope_id=scope_id,
+      predicted_retention=predicted_retention,
+      made_at=made_at.isoformat(),
+      outcome_attempt_id=None,
+      outcome_correct=None,
+      created_at=made_at.isoformat(),
+      updated_at=made_at.isoformat(),
+   )
+   db.add(row)
+   db.flush()
+
+   return row
+
+
+def unrated_graded_attempts(db, session_row):
+   """Every attempt still without a rating at a stage that collects one, correct or not."""
+   result = []
+
+   for attempt in attempt_rows(db, session_row.id):
+      is_graded = attempt.correct is not None
+      awaits_rating = collects_confidence(attempt.served_stage) and attempt.confidence is None
+      needs_update = is_graded and awaits_rating
+
+      if needs_update:
+         result.append(attempt)
+
+   return result
+
+
+def close_session(db, session_id, now=None, archetypes=None, engine_graph=None, today=None):
+   """Sweeps unrated attempts in as Confidence.UNSURE before stamping ended_at.
+
+   No hypercorrection can fire from unsure (BUILD-LEDGER.md, "Decisions taken on the operator's
+   instruction"), so a student who never rates loses no observation and gains no false alarm.
+   """
    session_row = db.get(models.Session, session_id)
+   pending = unrated_graded_attempts(db, session_row)
+   has_pending = len(pending) > 0
+
+   if has_pending:
+      has_context = archetypes is not None and engine_graph is not None and today is not None
+
+      if not has_context:
+         raise ValueError("close_session needs archetypes, engine_graph and today to apply unrated attempts")
+
+      applied_at = as_datetime(now or utc_now())
+
+      for attempt in pending:
+         item = queue_item(session_row, attempt.item_id)
+         attempt.confidence = Confidence.UNSURE.value
+         attempt.updated_at = applied_at.isoformat()
+         apply_attempt(
+            db,
+            session_row,
+            attempt,
+            archetypes[item["archetype_id"]],
+            Confidence.UNSURE,
+            today,
+            engine_graph,
+            applied_at,
+         )
+
+      db.flush()
+
    session_row.ended_at = as_datetime(now or utc_now()).isoformat()
    session_row.updated_at = session_row.ended_at
    db.flush()

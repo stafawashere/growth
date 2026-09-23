@@ -272,3 +272,43 @@ def test_resolving_an_item_audit_resolves_exactly_the_named_row(world):
       ).all()
 
       assert [entry.subject for entry in entries] == ["review_queue:RVQ-same-item-second"]
+
+
+def test_resolving_an_item_audit_with_a_missing_sample_file_is_refused_not_500(world, tmp_path):
+   client = world.client()
+   world.register(client)
+   world.settings.key_audit_sample_path = str(tmp_path / "does-not-exist.json")
+   insert_row(world, "RVQ-missing-file", "item_audit", "ITM-0080", NOW)
+
+   refused = client.post(
+      "/review-queue/RVQ-missing-file/resolve",
+      json={"verdict": audit.VERDICT_CLEAN},
+   )
+
+   assert refused.status_code == 400
+
+   with OrmSession(world.engine) as db:
+      row = db.get(models.ReviewQueue, "RVQ-missing-file")
+
+      assert row.resolved_at is None
+
+
+def test_resolving_an_item_audit_with_a_non_list_sample_file_is_refused_not_500(world, tmp_path):
+   client = world.client()
+   world.register(client)
+   sample_path = tmp_path / "sample.json"
+   sample_path.write_text(json.dumps({"ITM-0090": True}))
+   world.settings.key_audit_sample_path = str(sample_path)
+   insert_row(world, "RVQ-non-list-file", "item_audit", "ITM-0090", NOW)
+
+   refused = client.post(
+      "/review-queue/RVQ-non-list-file/resolve",
+      json={"verdict": audit.VERDICT_CLEAN},
+   )
+
+   assert refused.status_code == 400
+
+   with OrmSession(world.engine) as db:
+      row = db.get(models.ReviewQueue, "RVQ-non-list-file")
+
+      assert row.resolved_at is None

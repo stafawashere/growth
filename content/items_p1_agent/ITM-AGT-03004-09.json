@@ -142,30 +142,6 @@
          "value": [
             "Divide",
             [
-               "Multiply",
-               4,
-               "x"
-            ],
-            [
-               "Add",
-               [
-                  "Multiply",
-                  2,
-                  "x",
-                  "y"
-               ],
-               3
-            ]
-         ],
-         "is_key": false,
-         "error_path": "BC-ERR-03008",
-         "violated_step": 0
-      },
-      {
-         "id": "B",
-         "value": [
-            "Divide",
-            [
                "Subtract",
                [
                   "Multiply",
@@ -194,7 +170,58 @@
          "violated_step": 1
       },
       {
+         "id": "B",
+         "value": [
+            "Divide",
+            [
+               "Multiply",
+               4,
+               "x"
+            ],
+            [
+               "Add",
+               [
+                  "Multiply",
+                  2,
+                  "x",
+                  "y"
+               ],
+               3
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03008",
+         "violated_step": 0
+      },
+      {
          "id": "C",
+         "value": [
+            "Negate",
+            [
+               "Divide",
+               [
+                  "Power",
+                  "y",
+                  2
+               ],
+               [
+                  "Add",
+                  [
+                     "Multiply",
+                     2,
+                     "x",
+                     "y"
+                  ],
+                  3
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03009",
+         "violated_step": 0
+      },
+      {
+         "id": "D",
          "value": [
             "Divide",
             [
@@ -223,33 +250,6 @@
          ],
          "is_key": true,
          "error_path": null
-      },
-      {
-         "id": "D",
-         "value": [
-            "Negate",
-            [
-               "Divide",
-               [
-                  "Power",
-                  "y",
-                  2
-               ],
-               [
-                  "Add",
-                  [
-                     "Multiply",
-                     2,
-                     "x",
-                     "y"
-                  ],
-                  3
-               ]
-            ]
-         ],
-         "is_key": false,
-         "error_path": "BC-ERR-03009",
-         "violated_step": 0
       }
    ],
    "calculator_status": "no_calculator",

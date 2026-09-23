@@ -143,6 +143,34 @@
          "value": [
             "Subtract",
             [
+               "Multiply",
+               6,
+               "x"
+            ],
+            5
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": -5,
+         "is_key": false,
+         "error_path": "BC-ERR-02007",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": 0,
+         "is_key": false,
+         "error_path": "BC-ERR-02005",
+         "violated_step": 2
+      },
+      {
+         "id": "D",
+         "value": [
+            "Subtract",
+            [
                "Add",
                [
                   "Multiply",
@@ -160,34 +188,6 @@
          "is_key": false,
          "error_path": "BC-ERR-02006",
          "violated_step": 3
-      },
-      {
-         "id": "B",
-         "value": [
-            "Subtract",
-            [
-               "Multiply",
-               6,
-               "x"
-            ],
-            5
-         ],
-         "is_key": true,
-         "error_path": null
-      },
-      {
-         "id": "C",
-         "value": -5,
-         "is_key": false,
-         "error_path": "BC-ERR-02007",
-         "violated_step": 1
-      },
-      {
-         "id": "D",
-         "value": 0,
-         "is_key": false,
-         "error_path": "BC-ERR-02005",
-         "violated_step": 2
       }
    ],
    "calculator_status": "no_calculator",

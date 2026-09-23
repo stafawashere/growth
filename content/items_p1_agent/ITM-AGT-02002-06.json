@@ -182,6 +182,27 @@
             "Divide",
             1,
             [
+               "Sqrt",
+               [
+                  "Add",
+                  [
+                     "Multiply",
+                     2,
+                     "x"
+                  ],
+                  5
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": [
+            "Divide",
+            1,
+            [
                "Multiply",
                2,
                [
@@ -201,27 +222,6 @@
          "is_key": false,
          "error_path": "BC-ERR-02007",
          "violated_step": 1
-      },
-      {
-         "id": "B",
-         "value": [
-            "Divide",
-            1,
-            [
-               "Sqrt",
-               [
-                  "Add",
-                  [
-                     "Multiply",
-                     2,
-                     "x"
-                  ],
-                  5
-               ]
-            ]
-         ],
-         "is_key": true,
-         "error_path": null
       },
       {
          "id": "C",

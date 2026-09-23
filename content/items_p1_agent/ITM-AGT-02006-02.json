@@ -143,6 +143,34 @@
    "options": [
       {
          "id": "A",
+         "text": "2x^2 + 4/x^3",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               2,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               4,
+               [
+                  "Power",
+                  "x",
+                  -3
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02015",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
          "text": "6x^2 + 4/x^2",
          "value": [
             "Add",
@@ -168,33 +196,6 @@
          "is_key": false,
          "error_path": "BC-ERR-02017",
          "violated_step": 0
-      },
-      {
-         "id": "B",
-         "text": "6x^2 - 8/x^3",
-         "value": [
-            "Add",
-            [
-               "Multiply",
-               6,
-               [
-                  "Power",
-                  "x",
-                  2
-               ]
-            ],
-            [
-               "Multiply",
-               -8,
-               [
-                  "Power",
-                  "x",
-                  -3
-               ]
-            ]
-         ],
-         "is_key": true,
-         "error_path": null
       },
       {
          "id": "C",
@@ -227,12 +228,12 @@
       },
       {
          "id": "D",
-         "text": "2x^2 + 4/x^3",
+         "text": "6x^2 - 8/x^3",
          "value": [
             "Add",
             [
                "Multiply",
-               2,
+               6,
                [
                   "Power",
                   "x",
@@ -241,7 +242,7 @@
             ],
             [
                "Multiply",
-               4,
+               -8,
                [
                   "Power",
                   "x",
@@ -249,9 +250,8 @@
                ]
             ]
          ],
-         "is_key": false,
-         "error_path": "BC-ERR-02015",
-         "violated_step": 1
+         "is_key": true,
+         "error_path": null
       }
    ],
    "authored_by": "claude-opus-5-5 agent draft, pending operator review",

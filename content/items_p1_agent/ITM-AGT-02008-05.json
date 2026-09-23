@@ -128,13 +128,40 @@
    "options": [
       {
          "id": "A",
+         "value": [
+            "Divide",
+            1,
+            [
+               "Add",
+               1,
+               [
+                  "Cos",
+                  "x"
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": [
+            "Cos",
+            "x"
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02022",
+         "violated_step": 0
+      },
+      {
+         "id": "C",
          "value": 1,
          "is_key": false,
          "error_path": "BC-ERR-02022",
          "violated_step": 1
       },
       {
-         "id": "B",
+         "id": "D",
          "value": [
             "Negate",
             [
@@ -153,23 +180,6 @@
          "is_key": false,
          "error_path": "BC-ERR-02021",
          "violated_step": 1
-      },
-      {
-         "id": "C",
-         "value": [
-            "Divide",
-            1,
-            [
-               "Add",
-               1,
-               [
-                  "Cos",
-                  "x"
-               ]
-            ]
-         ],
-         "is_key": true,
-         "error_path": null
       }
    ],
    "calculator_status": "no_calculator",

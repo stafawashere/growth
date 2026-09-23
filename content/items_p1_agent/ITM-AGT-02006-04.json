@@ -146,5 +146,121 @@
       ]
    },
    "authored_by": "claude-opus-5-5 agent draft, pending operator review",
-   "authored_on": "2026-09-23"
+   "authored_on": "2026-09-23",
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               40,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               -6,
+               [
+                  "Power",
+                  "x",
+                  -3
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               -3,
+               [
+                  "Power",
+                  "x",
+                  -1
+               ]
+            ],
+            [
+               "Multiply",
+               2,
+               [
+                  "Power",
+                  "x",
+                  5
+               ]
+            ],
+            [
+               "Multiply",
+               7,
+               "x"
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02017",
+         "violated_step": 0
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            7,
+            [
+               "Multiply",
+               3,
+               [
+                  "Power",
+                  "x",
+                  -2
+               ]
+            ],
+            [
+               "Multiply",
+               10,
+               [
+                  "Power",
+                  "x",
+                  4
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02015",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": [
+            "Multiply",
+            2,
+            [
+               "Power",
+               "x",
+               -3
+            ],
+            [
+               "Add",
+               3,
+               [
+                  "Multiply",
+                  -20,
+                  [
+                     "Power",
+                     "x",
+                     6
+                  ]
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02016",
+         "violated_step": 3
+      }
+   ]
 }

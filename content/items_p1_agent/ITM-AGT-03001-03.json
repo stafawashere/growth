@@ -117,19 +117,43 @@
          "id": "A",
          "value": [
             "Multiply",
-            -2,
             [
-               "Sin",
+               "Power",
+               "x",
+               -2
+            ],
+            [
+               "Add",
                [
                   "Multiply",
-                  2,
-                  "x"
+                  -1,
+                  [
+                     "Cos",
+                     [
+                        "Multiply",
+                        2,
+                        "x"
+                     ]
+                  ]
+               ],
+               [
+                  "Multiply",
+                  -1,
+                  "x",
+                  [
+                     "Sin",
+                     [
+                        "Multiply",
+                        2,
+                        "x"
+                     ]
+                  ]
                ]
             ]
          ],
          "is_key": false,
-         "error_path": "BC-ERR-03006",
-         "violated_step": 0
+         "error_path": "BC-ERR-03001",
+         "violated_step": 2
       },
       {
          "id": "B",
@@ -176,54 +200,30 @@
          "id": "C",
          "value": [
             "Multiply",
-            [
-               "Power",
-               "x",
-               -2
-            ],
-            [
-               "Add",
-               [
-                  "Multiply",
-                  -1,
-                  [
-                     "Cos",
-                     [
-                        "Multiply",
-                        2,
-                        "x"
-                     ]
-                  ]
-               ],
-               [
-                  "Multiply",
-                  -1,
-                  "x",
-                  [
-                     "Sin",
-                     [
-                        "Multiply",
-                        2,
-                        "x"
-                     ]
-                  ]
-               ]
-            ]
-         ],
-         "is_key": false,
-         "error_path": "BC-ERR-03001",
-         "violated_step": 2
-      },
-      {
-         "id": "D",
-         "value": [
-            "Multiply",
             -2,
             [
                "Power",
                "x",
                -1
             ],
+            [
+               "Sin",
+               [
+                  "Multiply",
+                  2,
+                  "x"
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03006",
+         "violated_step": 0
+      },
+      {
+         "id": "D",
+         "value": [
+            "Multiply",
+            -2,
             [
                "Sin",
                [

@@ -40,10 +40,13 @@
    "options": [
       {
          "id": "A",
-         "value": 0,
+         "value": [
+            "Negate",
+            2
+         ],
          "is_key": false,
-         "error_path": "BC-ERR-03012",
-         "violated_step": 0
+         "error_path": "BC-ERR-03013",
+         "violated_step": 2
       },
       {
          "id": "B",
@@ -56,13 +59,17 @@
       },
       {
          "id": "C",
-         "value": [
-            "Negate",
-            2
-         ],
+         "value": 1,
          "is_key": false,
-         "error_path": "BC-ERR-03013",
-         "violated_step": 2
+         "error_path": "BC-ERR-03012",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": 0,
+         "is_key": false,
+         "error_path": "BC-ERR-03012",
+         "violated_step": 0
       }
    ],
    "calculator_status": "no_calculator",

@@ -90,6 +90,32 @@ def test_ingest_publishes_an_item_whose_key_passes_every_check(tmp_path):
       assert queued == 0
 
 
+def test_a_short_answer_item_carrying_mcq_options_still_ingests(tmp_path):
+   """Operator ruling of 2026-09-23: every agent draft becomes MCQ-capable with four options
+   regardless of its format field, and the served format (app/engine/select.py
+   format_for_attempt) decides which is shown, not the record's own format. Nothing in this
+   module reads format at all, so a short_answer record carrying a full option set is checked
+   and ingested exactly like an mcq one.
+   """
+   record = good_record()
+   record["format"] = "short_answer"
+   directory = write_records(tmp_path / "items_p1", [record])
+
+   with open_db(tmp_path) as db:
+      results = ingest.ingest_directory(db, directory, ACTIVE_ERROR_IDS, SNAPSHOT_ID, NOW)
+      db.commit()
+
+      assert len(results) == 1
+      assert results[0]["status"] == "verified"
+
+      row = db.get(models.Item, "ITM-0001")
+
+      assert row is not None
+      assert row.status == "verified"
+      assert row.options is not None
+      assert len(row.options) == 4
+
+
 def test_ingest_refuses_a_seeded_bad_key(tmp_path):
    record = good_record("ITM-0002")
    record["answer_key"] = {"form": "symbolic", "mathjson": ["Power", "x", 2]}

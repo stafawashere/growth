@@ -60,23 +60,30 @@
    "options": [
       {
          "id": "A",
-         "value": 2,
-         "is_key": true,
-         "error_path": null
+         "value": -2,
+         "is_key": false,
+         "error_path": "BC-ERR-01010",
+         "violated_step": 3
       },
       {
          "id": "B",
+         "value": 1,
+         "is_key": false,
+         "error_path": "BC-ERR-01010",
+         "violated_step": 2
+      },
+      {
+         "id": "C",
          "value": 0,
          "is_key": false,
          "error_path": "BC-ERR-01008",
          "violated_step": 0
       },
       {
-         "id": "C",
-         "value": 1,
-         "is_key": false,
-         "error_path": "BC-ERR-01010",
-         "violated_step": 2
+         "id": "D",
+         "value": 2,
+         "is_key": true,
+         "error_path": null
       }
    ],
    "calculator_status": "no_calculator",

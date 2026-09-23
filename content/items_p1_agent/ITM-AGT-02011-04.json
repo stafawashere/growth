@@ -62,6 +62,27 @@
          "value": [
             "Add",
             [
+               "Negate",
+               "x"
+            ],
+            7
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02028",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": 8,
+         "is_key": false,
+         "error_path": "BC-ERR-02027",
+         "violated_step": 2
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            [
                "Multiply",
                8,
                "x"
@@ -73,7 +94,7 @@
          "violated_step": 1
       },
       {
-         "id": "B",
+         "id": "D",
          "value": [
             "Add",
             [
@@ -85,20 +106,6 @@
          ],
          "is_key": true,
          "error_path": null
-      },
-      {
-         "id": "C",
-         "value": [
-            "Add",
-            [
-               "Negate",
-               "x"
-            ],
-            7
-         ],
-         "is_key": false,
-         "error_path": "BC-ERR-02028",
-         "violated_step": 1
       }
    ],
    "calculator_status": "no_calculator",

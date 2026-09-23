@@ -71,20 +71,6 @@
             "Add",
             [
                "Multiply",
-               5,
-               "x"
-            ],
-            7
-         ],
-         "is_key": true,
-         "error_path": null
-      },
-      {
-         "id": "B",
-         "value": [
-            "Add",
-            [
-               "Multiply",
                2,
                "x"
             ],
@@ -95,7 +81,7 @@
          "violated_step": 1
       },
       {
-         "id": "C",
+         "id": "B",
          "value": [
             "Add",
             "x",
@@ -104,6 +90,27 @@
          "is_key": false,
          "error_path": "BC-ERR-02028",
          "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               5,
+               "x"
+            ],
+            7
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": 2,
+         "is_key": false,
+         "error_path": "BC-ERR-02027",
+         "violated_step": 2
       }
    ],
    "calculator_status": "no_calculator",

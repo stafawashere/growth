@@ -50,6 +50,13 @@
    "options": [
       {
          "id": "A",
+         "value": 0,
+         "is_key": false,
+         "error_path": "BC-ERR-01008",
+         "violated_step": 0
+      },
+      {
+         "id": "B",
          "value": [
             "Rational",
             5,
@@ -59,14 +66,18 @@
          "error_path": null
       },
       {
-         "id": "B",
-         "value": 0,
+         "id": "C",
+         "value": [
+            "Rational",
+            -5,
+            6
+         ],
          "is_key": false,
-         "error_path": "BC-ERR-01008",
-         "violated_step": 0
+         "error_path": "BC-ERR-01010",
+         "violated_step": 3
       },
       {
-         "id": "C",
+         "id": "D",
          "value": 1,
          "is_key": false,
          "error_path": "BC-ERR-01010",

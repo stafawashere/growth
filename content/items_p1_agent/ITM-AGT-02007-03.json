@@ -98,7 +98,7 @@
       {
          "id": "A",
          "value": [
-            "Subtract",
+            "Add",
             3,
             [
                "Multiply",
@@ -106,16 +106,20 @@
                [
                   "Exp",
                   [
-                     "Divide",
-                     "Pi",
-                     2
+                     "Multiply",
+                     [
+                        "Rational",
+                        1,
+                        2
+                     ],
+                     "Pi"
                   ]
                ]
             ]
          ],
          "is_key": false,
          "error_path": "BC-ERR-02018",
-         "violated_step": 0
+         "violated_step": 3
       },
       {
          "id": "B",
@@ -171,6 +175,28 @@
          ],
          "is_key": true,
          "error_path": null
+      },
+      {
+         "id": "D",
+         "value": [
+            "Subtract",
+            3,
+            [
+               "Multiply",
+               2,
+               [
+                  "Exp",
+                  [
+                     "Divide",
+                     "Pi",
+                     2
+                  ]
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02018",
+         "violated_step": 0
       }
    ],
    "calculator_status": "no_calculator",

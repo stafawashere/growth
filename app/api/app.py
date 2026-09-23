@@ -59,7 +59,12 @@ class Settings:
       """docs/operator/key-audit.md: a separate JSON array of the sampled item ids is the sample
       file. The review-queue route (app/api/routes/review.py) reads it through this resolver
       exactly like tools/check_audit_verdicts.py reads its sample argument, so an item_audit
-      verdict is refused the same way through either path once no sample is configured."""
+      verdict is refused the same way through either path once no sample is configured.
+
+      A sample file that is missing, unparsable, or whose JSON is not a list fails closed with a
+      ValueError, the same refusal the route gives when no sample is configured at all, rather
+      than a 500 or a membership check run against a dict's keys or a string's characters.
+      """
       has_sample = self.key_audit_sample_ids is not None
 
       if has_sample:
@@ -73,7 +78,29 @@ class Settings:
       import json
       from pathlib import Path
 
-      self.key_audit_sample_ids = json.loads(Path(self.key_audit_sample_path).read_text())
+      try:
+         raw_text = Path(self.key_audit_sample_path).read_text()
+      except OSError as missing:
+         raise ValueError(
+            f"the key-audit sample file {self.key_audit_sample_path!r} could not be read: {missing}"
+         ) from missing
+
+      try:
+         parsed = json.loads(raw_text)
+      except json.JSONDecodeError as malformed:
+         raise ValueError(
+            f"the key-audit sample file {self.key_audit_sample_path!r} is not valid JSON: {malformed}"
+         ) from malformed
+
+      is_a_list = isinstance(parsed, list)
+
+      if not is_a_list:
+         raise ValueError(
+            f"the key-audit sample file {self.key_audit_sample_path!r} must hold a JSON array "
+            f"of item ids, not {type(parsed).__name__}"
+         )
+
+      self.key_audit_sample_ids = parsed
 
       return self.key_audit_sample_ids
 

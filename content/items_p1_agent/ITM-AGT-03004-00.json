@@ -184,48 +184,6 @@
                [
                   "Add",
                   [
-                     "Add",
-                     [
-                        "Multiply",
-                        2,
-                        "x"
-                     ],
-                     [
-                        "Multiply",
-                        3,
-                        [
-                           "Power",
-                           "y",
-                           2
-                        ]
-                     ]
-                  ],
-                  [
-                     "Multiply",
-                     4,
-                     "y"
-                  ]
-               ],
-               [
-                  "Multiply",
-                  4,
-                  "x"
-               ]
-            ]
-         ],
-         "is_key": false,
-         "error_path": "BC-ERR-03007",
-         "violated_step": 0
-      },
-      {
-         "id": "B",
-         "value": [
-            "Negate",
-            [
-               "Divide",
-               [
-                  "Add",
-                  [
                      "Multiply",
                      2,
                      "x"
@@ -257,6 +215,48 @@
          ],
          "is_key": true,
          "error_path": null
+      },
+      {
+         "id": "B",
+         "value": [
+            "Negate",
+            [
+               "Divide",
+               [
+                  "Add",
+                  [
+                     "Multiply",
+                     2,
+                     "x"
+                  ],
+                  [
+                     "Multiply",
+                     4,
+                     "y"
+                  ]
+               ],
+               [
+                  "Subtract",
+                  [
+                     "Multiply",
+                     4,
+                     "x"
+                  ],
+                  [
+                     "Multiply",
+                     3,
+                     [
+                        "Power",
+                        "y",
+                        2
+                     ]
+                  ]
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03010",
+         "violated_step": 1
       },
       {
          "id": "C",
@@ -301,9 +301,21 @@
                [
                   "Add",
                   [
-                     "Multiply",
-                     2,
-                     "x"
+                     "Add",
+                     [
+                        "Multiply",
+                        2,
+                        "x"
+                     ],
+                     [
+                        "Multiply",
+                        3,
+                        [
+                           "Power",
+                           "y",
+                           2
+                        ]
+                     ]
                   ],
                   [
                      "Multiply",
@@ -312,27 +324,15 @@
                   ]
                ],
                [
-                  "Subtract",
-                  [
-                     "Multiply",
-                     4,
-                     "x"
-                  ],
-                  [
-                     "Multiply",
-                     3,
-                     [
-                        "Power",
-                        "y",
-                        2
-                     ]
-                  ]
+                  "Multiply",
+                  4,
+                  "x"
                ]
             ]
          ],
          "is_key": false,
-         "error_path": "BC-ERR-03010",
-         "violated_step": 1
+         "error_path": "BC-ERR-03007",
+         "violated_step": 0
       }
    ],
    "calculator_status": "no_calculator",

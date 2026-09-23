@@ -175,27 +175,6 @@
       {
          "id": "A",
          "value": [
-            "Subtract",
-            [
-               "Sqrt",
-               3
-            ],
-            [
-               "Multiply",
-               [
-                  "Rational",
-                  2,
-                  3
-               ],
-               "Pi"
-            ]
-         ],
-         "is_key": true,
-         "error_path": null
-      },
-      {
-         "id": "B",
-         "value": [
             "Add",
             [
                "Sqrt",
@@ -216,13 +195,31 @@
          "violated_step": 1
       },
       {
-         "id": "C",
+         "id": "B",
          "value": [
             "Subtract",
             [
                "Sqrt",
                3
             ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  2,
+                  3
+               ],
+               "Pi"
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": [
+            "Subtract",
+            1,
             [
                "Divide",
                [
@@ -244,7 +241,10 @@
          "id": "D",
          "value": [
             "Subtract",
-            1,
+            [
+               "Sqrt",
+               3
+            ],
             [
                "Divide",
                [

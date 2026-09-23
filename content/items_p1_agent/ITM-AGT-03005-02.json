@@ -51,26 +51,45 @@
    "options": [
       {
          "id": "A",
+         "value": [
+            "Multiply",
+            3,
+            [
+               "Power",
+               3,
+               [
+                  "Rational",
+                  1,
+                  2
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03012",
+         "violated_step": 2
+      },
+      {
+         "id": "B",
+         "value": 1,
+         "is_key": false,
+         "error_path": "BC-ERR-03012",
+         "violated_step": 0
+      },
+      {
+         "id": "C",
          "value": 2,
          "is_key": false,
          "error_path": "BC-ERR-03013",
          "violated_step": 2
       },
       {
-         "id": "B",
+         "id": "D",
          "value": [
             "Negate",
             2
          ],
          "is_key": true,
          "error_path": null
-      },
-      {
-         "id": "C",
-         "value": 1,
-         "is_key": false,
-         "error_path": "BC-ERR-03012",
-         "violated_step": 0
       }
    ],
    "calculator_status": "no_calculator",

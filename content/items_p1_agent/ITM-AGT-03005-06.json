@@ -49,23 +49,42 @@
    "options": [
       {
          "id": "A",
+         "value": [
+            "Add",
+            2,
+            [
+               "Power",
+               6,
+               [
+                  "Rational",
+                  1,
+                  2
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03012",
+         "violated_step": 2
+      },
+      {
+         "id": "B",
+         "value": 4,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
          "value": 1,
          "is_key": false,
          "error_path": "BC-ERR-03012",
          "violated_step": 0
       },
       {
-         "id": "B",
+         "id": "D",
          "value": 2,
          "is_key": false,
          "error_path": "BC-ERR-03013",
          "violated_step": 2
-      },
-      {
-         "id": "C",
-         "value": 4,
-         "is_key": true,
-         "error_path": null
       }
    ],
    "calculator_status": "no_calculator",

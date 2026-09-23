@@ -84,7 +84,7 @@
             "Add",
             [
                "Multiply",
-               5,
+               -5,
                [
                   "Sin",
                   "x"
@@ -94,13 +94,21 @@
                "Multiply",
                3,
                [
-                  "Exp",
-                  "x"
+                  "Multiply",
+                  "x",
+                  [
+                     "Exp",
+                     [
+                        "Subtract",
+                        "x",
+                        1
+                     ]
+                  ]
                ]
             ]
          ],
          "is_key": false,
-         "error_path": "BC-ERR-02018",
+         "error_path": "BC-ERR-02019",
          "violated_step": 0
       },
       {
@@ -133,7 +141,7 @@
             "Add",
             [
                "Multiply",
-               -5,
+               5,
                [
                   "Sin",
                   "x"
@@ -143,22 +151,28 @@
                "Multiply",
                3,
                [
-                  "Multiply",
-                  "x",
-                  [
-                     "Exp",
-                     [
-                        "Subtract",
-                        "x",
-                        1
-                     ]
-                  ]
+                  "Exp",
+                  "x"
                ]
             ]
          ],
          "is_key": false,
-         "error_path": "BC-ERR-02019",
+         "error_path": "BC-ERR-02018",
          "violated_step": 0
+      },
+      {
+         "id": "D",
+         "value": [
+            "Multiply",
+            3,
+            [
+               "Exp",
+               "x"
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02018",
+         "violated_step": 1
       }
    ],
    "calculator_status": "no_calculator",

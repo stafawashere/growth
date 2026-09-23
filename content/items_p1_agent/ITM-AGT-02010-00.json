@@ -158,37 +158,6 @@
       {
          "id": "A",
          "value": [
-            "Add",
-            [
-               "Power",
-               [
-                  "Csc",
-                  "x"
-               ],
-               2
-            ],
-            [
-               "Negate",
-               [
-                  "Multiply",
-                  [
-                     "Csc",
-                     "x"
-                  ],
-                  [
-                     "Cot",
-                     "x"
-                  ]
-               ]
-            ]
-         ],
-         "is_key": false,
-         "error_path": "BC-ERR-02025",
-         "violated_step": 1
-      },
-      {
-         "id": "B",
-         "value": [
             "Subtract",
             [
                "Negate",
@@ -217,7 +186,7 @@
          "error_path": null
       },
       {
-         "id": "C",
+         "id": "B",
          "value": [
             "Add",
             [
@@ -245,10 +214,10 @@
          ],
          "is_key": false,
          "error_path": "BC-ERR-02025",
-         "violated_step": 1
+         "violated_step": 3
       },
       {
-         "id": "D",
+         "id": "C",
          "value": [
             "Negate",
             [
@@ -259,6 +228,37 @@
          "is_key": false,
          "error_path": "BC-ERR-02026",
          "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            [
+               "Power",
+               [
+                  "Csc",
+                  "x"
+               ],
+               2
+            ],
+            [
+               "Negate",
+               [
+                  "Multiply",
+                  [
+                     "Csc",
+                     "x"
+                  ],
+                  [
+                     "Cot",
+                     "x"
+                  ]
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02025",
+         "violated_step": 3
       }
    ],
    "calculator_status": "no_calculator",

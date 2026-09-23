@@ -120,5 +120,77 @@
       "exponential_coefficient": -1
    },
    "authored_on": "2026-09-23",
-   "authored_by": "claude-opus-5-5 agent draft, pending operator review"
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review",
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Multiply",
+            7,
+            [
+               "Power",
+               "x",
+               -1
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02019",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Negate",
+            [
+               "Exp",
+               "x"
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02018",
+         "violated_step": 2
+      },
+      {
+         "id": "C",
+         "value": [
+            "Multiply",
+            2,
+            [
+               "Cos",
+               "x"
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02018",
+         "violated_step": 0
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               2,
+               [
+                  "Cos",
+                  "x"
+               ]
+            ],
+            [
+               "Divide",
+               7,
+               "x"
+            ],
+            [
+               "Negate",
+               [
+                  "Exp",
+                  "x"
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      }
+   ]
 }

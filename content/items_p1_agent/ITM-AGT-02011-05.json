@@ -101,10 +101,29 @@
    "options": [
       {
          "id": "A",
-         "value": 0,
-         "is_key": false,
-         "error_path": "BC-ERR-02027",
-         "violated_step": 1
+         "value": [
+            "Multiply",
+            [
+               "Subtract",
+               1,
+               [
+                  "Divide",
+                  "Pi",
+                  2
+               ]
+            ],
+            [
+               "Add",
+               "x",
+               [
+                  "Divide",
+                  "Pi",
+                  2
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
       },
       {
          "id": "B",
@@ -136,28 +155,28 @@
       {
          "id": "C",
          "value": [
-            "Multiply",
+            "Add",
+            1,
             [
-               "Subtract",
-               1,
+               "Multiply",
                [
-                  "Divide",
-                  "Pi",
+                  "Rational",
+                  -1,
                   2
-               ]
-            ],
-            [
-               "Add",
-               "x",
-               [
-                  "Divide",
-                  "Pi",
-                  2
-               ]
+               ],
+               "Pi"
             ]
          ],
-         "is_key": true,
-         "error_path": null
+         "is_key": false,
+         "error_path": "BC-ERR-02027",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": 0,
+         "is_key": false,
+         "error_path": "BC-ERR-02027",
+         "violated_step": 1
       }
    ],
    "calculator_status": "no_calculator",

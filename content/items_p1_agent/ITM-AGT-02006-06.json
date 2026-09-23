@@ -160,7 +160,7 @@
       },
       {
          "id": "B",
-         "text": "10x + x^(-3/2)",
+         "text": "10x - 2/sqrt(x)",
          "value": [
             "Add",
             [
@@ -169,17 +169,22 @@
                "x"
             ],
             [
-               "Power",
-               "x",
+               "Multiply",
+               -2,
                [
-                  "Rational",
-                  -3,
-                  2
+                  "Power",
+                  "x",
+                  [
+                     "Rational",
+                     -1,
+                     2
+                  ]
                ]
             ]
          ],
-         "is_key": true,
-         "error_path": null
+         "is_key": false,
+         "error_path": "BC-ERR-02017",
+         "violated_step": 0
       },
       {
          "id": "C",
@@ -211,7 +216,7 @@
       },
       {
          "id": "D",
-         "text": "10x - 2/sqrt(x)",
+         "text": "10x + x^(-3/2)",
          "value": [
             "Add",
             [
@@ -220,22 +225,17 @@
                "x"
             ],
             [
-               "Multiply",
-               -2,
+               "Power",
+               "x",
                [
-                  "Power",
-                  "x",
-                  [
-                     "Rational",
-                     -1,
-                     2
-                  ]
+                  "Rational",
+                  -3,
+                  2
                ]
             ]
          ],
-         "is_key": false,
-         "error_path": "BC-ERR-02017",
-         "violated_step": 0
+         "is_key": true,
+         "error_path": null
       }
    ],
    "authored_by": "claude-opus-5-5 agent draft, pending operator review",

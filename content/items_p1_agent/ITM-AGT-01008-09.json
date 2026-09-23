@@ -75,9 +75,10 @@
    "options": [
       {
          "id": "A",
-         "value": -2,
-         "is_key": true,
-         "error_path": null
+         "value": 2,
+         "is_key": false,
+         "error_path": "BC-ERR-01017",
+         "violated_step": 3
       },
       {
          "id": "B",
@@ -88,6 +89,12 @@
       },
       {
          "id": "C",
+         "value": -2,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
          "value": 5,
          "is_key": false,
          "error_path": "BC-ERR-01017",

@@ -71,6 +71,19 @@
    "options": [
       {
          "id": "A",
+         "value": -1,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": 0,
+         "is_key": false,
+         "error_path": "BC-ERR-02005",
+         "violated_step": 2
+      },
+      {
+         "id": "C",
          "value": [
             "Divide",
             -4,
@@ -85,14 +98,7 @@
          "violated_step": 3
       },
       {
-         "id": "B",
-         "value": 0,
-         "is_key": false,
-         "error_path": "BC-ERR-02005",
-         "violated_step": 2
-      },
-      {
-         "id": "C",
+         "id": "D",
          "value": [
             "Divide",
             -2,
@@ -105,12 +111,6 @@
          "is_key": false,
          "error_path": "BC-ERR-02006",
          "violated_step": 3
-      },
-      {
-         "id": "D",
-         "value": -1,
-         "is_key": true,
-         "error_path": null
       }
    ],
    "calculator_status": "no_calculator",

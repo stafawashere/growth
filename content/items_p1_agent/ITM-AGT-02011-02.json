@@ -75,18 +75,10 @@
    "options": [
       {
          "id": "A",
-         "value": [
-            "Add",
-            [
-               "Multiply",
-               4,
-               "x"
-            ],
-            12
-         ],
+         "value": 4,
          "is_key": false,
          "error_path": "BC-ERR-02027",
-         "violated_step": 1
+         "violated_step": 2
       },
       {
          "id": "B",
@@ -124,6 +116,21 @@
          ],
          "is_key": true,
          "error_path": null
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               4,
+               "x"
+            ],
+            12
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02027",
+         "violated_step": 1
       }
    ],
    "calculator_status": "no_calculator",

@@ -51,17 +51,16 @@
    "options": [
       {
          "id": "A",
+         "value": 3,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
          "value": 5,
          "is_key": false,
          "error_path": "BC-ERR-01032",
          "violated_step": 2
-      },
-      {
-         "id": "B",
-         "value": 6,
-         "is_key": false,
-         "error_path": "BC-ERR-01031",
-         "violated_step": 0
       },
       {
          "id": "C",
@@ -72,9 +71,10 @@
       },
       {
          "id": "D",
-         "value": 3,
-         "is_key": true,
-         "error_path": null
+         "value": 6,
+         "is_key": false,
+         "error_path": "BC-ERR-01031",
+         "violated_step": 0
       }
    ],
    "calculator_status": "no_calculator",

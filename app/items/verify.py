@@ -68,7 +68,15 @@ def run_bounded(function, arguments, timeout_s, unsettled):
       return _run_in_child(function, arguments, timeout_s, unsettled)
 
    previous_handler = signal.signal(signal.SIGALRM, _raise_timeout)
-   signal.setitimer(signal.ITIMER_REAL, timeout_s)
+
+   # A one-shot alarm that fires while a gc.callbacks hook (hypothesis registers one, seen only
+   # once the rest of the suite has imported it) is running never reaches this frame: CPython's
+   # gc module catches whatever a callback raises and reports it as unraisable instead of letting
+   # it propagate, so the single SIGALRM is silently lost and the comparison runs to completion
+   # past timeout_s. A repeat interval keeps the alarm firing until one delivery lands outside a
+   # gc callback, so the bound holds even when the first shot is swallowed that way.
+   retry_interval_s = min(0.05, timeout_s)
+   signal.setitimer(signal.ITIMER_REAL, timeout_s, retry_interval_s)
 
    try:
       return function(*arguments)

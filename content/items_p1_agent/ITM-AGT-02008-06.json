@@ -88,12 +88,16 @@
          "id": "A",
          "value": [
             "Divide",
-            "ExponentialE",
-            4
+            [
+               "Multiply",
+               3,
+               "ExponentialE"
+            ],
+            2
          ],
          "is_key": false,
-         "error_path": "BC-ERR-02020",
-         "violated_step": 0
+         "error_path": "BC-ERR-02022",
+         "violated_step": 2
       },
       {
          "id": "B",
@@ -114,15 +118,12 @@
          "id": "C",
          "value": [
             "Divide",
-            [
-               "Multiply",
-               3,
-               "ExponentialE"
-            ],
+            "ExponentialE",
             4
          ],
-         "is_key": true,
-         "error_path": null
+         "is_key": false,
+         "error_path": "BC-ERR-02020",
+         "violated_step": 0
       },
       {
          "id": "D",
@@ -133,11 +134,10 @@
                3,
                "ExponentialE"
             ],
-            2
+            4
          ],
-         "is_key": false,
-         "error_path": "BC-ERR-02022",
-         "violated_step": 2
+         "is_key": true,
+         "error_path": null
       }
    ],
    "calculator_status": "no_calculator",

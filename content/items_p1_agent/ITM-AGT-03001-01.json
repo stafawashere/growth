@@ -124,6 +124,55 @@
          "id": "A",
          "value": [
             "Multiply",
+            3,
+            [
+               "Power",
+               "x",
+               2
+            ],
+            [
+               "Exp",
+               [
+                  "Multiply",
+                  3,
+                  "x"
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03006",
+         "violated_step": 0
+      },
+      {
+         "id": "B",
+         "value": [
+            "Multiply",
+            "x",
+            [
+               "Add",
+               2,
+               [
+                  "Multiply",
+                  3,
+                  "x"
+               ]
+            ],
+            [
+               "Exp",
+               [
+                  "Multiply",
+                  3,
+                  "x"
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": [
+            "Multiply",
             6,
             "x",
             [
@@ -140,7 +189,7 @@
          "violated_step": 0
       },
       {
-         "id": "B",
+         "id": "D",
          "value": [
             "Add",
             [
@@ -176,55 +225,6 @@
          "is_key": false,
          "error_path": "BC-ERR-03001",
          "violated_step": 2
-      },
-      {
-         "id": "C",
-         "value": [
-            "Multiply",
-            3,
-            [
-               "Power",
-               "x",
-               2
-            ],
-            [
-               "Exp",
-               [
-                  "Multiply",
-                  3,
-                  "x"
-               ]
-            ]
-         ],
-         "is_key": false,
-         "error_path": "BC-ERR-03006",
-         "violated_step": 0
-      },
-      {
-         "id": "D",
-         "value": [
-            "Multiply",
-            "x",
-            [
-               "Add",
-               2,
-               [
-                  "Multiply",
-                  3,
-                  "x"
-               ]
-            ],
-            [
-               "Exp",
-               [
-                  "Multiply",
-                  3,
-                  "x"
-               ]
-            ]
-         ],
-         "is_key": true,
-         "error_path": null
       }
    ],
    "calculator_status": "no_calculator",

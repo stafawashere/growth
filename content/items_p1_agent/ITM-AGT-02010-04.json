@@ -210,41 +210,6 @@
       {
          "id": "B",
          "value": [
-            "Add",
-            [
-               "Negate",
-               [
-                  "Multiply",
-                  [
-                     "Csc",
-                     "t"
-                  ],
-                  [
-                     "Power",
-                     [
-                        "Cot",
-                        "t"
-                     ],
-                     2
-                  ]
-               ]
-            ],
-            [
-               "Power",
-               [
-                  "Csc",
-                  "t"
-               ],
-               3
-            ]
-         ],
-         "is_key": false,
-         "error_path": "BC-ERR-02025",
-         "violated_step": 1
-      },
-      {
-         "id": "C",
-         "value": [
             "Subtract",
             [
                "Negate",
@@ -277,7 +242,7 @@
          "error_path": null
       },
       {
-         "id": "D",
+         "id": "C",
          "value": [
             "Negate",
             [
@@ -295,6 +260,41 @@
          ],
          "is_key": false,
          "error_path": "BC-ERR-02026",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            [
+               "Negate",
+               [
+                  "Multiply",
+                  [
+                     "Csc",
+                     "t"
+                  ],
+                  [
+                     "Power",
+                     [
+                        "Cot",
+                        "t"
+                     ],
+                     2
+                  ]
+               ]
+            ],
+            [
+               "Power",
+               [
+                  "Csc",
+                  "t"
+               ],
+               3
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02025",
          "violated_step": 1
       }
    ],

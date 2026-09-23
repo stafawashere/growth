@@ -162,6 +162,13 @@
    "options": [
       {
          "id": "A",
+         "value": -2,
+         "is_key": false,
+         "error_path": "BC-ERR-02026",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
          "value": [
             "Subtract",
             [
@@ -175,7 +182,20 @@
          "violated_step": 1
       },
       {
-         "id": "B",
+         "id": "C",
+         "value": [
+            "Subtract",
+            -4,
+            [
+               "Sqrt",
+               2
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
          "value": [
             "Subtract",
             4,
@@ -187,26 +207,6 @@
          "is_key": false,
          "error_path": "BC-ERR-02025",
          "violated_step": 1
-      },
-      {
-         "id": "C",
-         "value": -2,
-         "is_key": false,
-         "error_path": "BC-ERR-02026",
-         "violated_step": 1
-      },
-      {
-         "id": "D",
-         "value": [
-            "Subtract",
-            -4,
-            [
-               "Sqrt",
-               2
-            ]
-         ],
-         "is_key": true,
-         "error_path": null
       }
    ],
    "calculator_status": "no_calculator",

@@ -58,6 +58,13 @@
    "options": [
       {
          "id": "A",
+         "value": -2,
+         "is_key": false,
+         "error_path": "BC-ERR-02022",
+         "violated_step": 0
+      },
+      {
+         "id": "B",
          "value": [
             "Divide",
             -10,
@@ -66,16 +73,6 @@
          "is_key": false,
          "error_path": "BC-ERR-02021",
          "violated_step": 1
-      },
-      {
-         "id": "B",
-         "value": [
-            "Divide",
-            10,
-            9
-         ],
-         "is_key": true,
-         "error_path": null
       },
       {
          "id": "C",
@@ -87,6 +84,16 @@
          "is_key": false,
          "error_path": "BC-ERR-02022",
          "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": [
+            "Divide",
+            10,
+            9
+         ],
+         "is_key": true,
+         "error_path": null
       }
    ],
    "calculator_status": "no_calculator",

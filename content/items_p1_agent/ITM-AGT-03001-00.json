@@ -105,6 +105,28 @@
          "id": "A",
          "value": [
             "Multiply",
+            15,
+            [
+               "Power",
+               [
+                  "Sin",
+                  [
+                     "Multiply",
+                     5,
+                     "x"
+                  ]
+               ],
+               2
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03002",
+         "violated_step": 3
+      },
+      {
+         "id": "B",
+         "value": [
+            "Multiply",
             3,
             [
                "Power",
@@ -122,35 +144,6 @@
          "is_key": false,
          "error_path": "BC-ERR-03001",
          "violated_step": 2
-      },
-      {
-         "id": "B",
-         "value": [
-            "Multiply",
-            15,
-            [
-               "Power",
-               [
-                  "Sin",
-                  [
-                     "Multiply",
-                     5,
-                     "x"
-                  ]
-               ],
-               2
-            ],
-            [
-               "Cos",
-               [
-                  "Multiply",
-                  5,
-                  "x"
-               ]
-            ]
-         ],
-         "is_key": true,
-         "error_path": null
       },
       {
          "id": "C",
@@ -198,11 +191,18 @@
                   ]
                ],
                2
+            ],
+            [
+               "Cos",
+               [
+                  "Multiply",
+                  5,
+                  "x"
+               ]
             ]
          ],
-         "is_key": false,
-         "error_path": "BC-ERR-03002",
-         "violated_step": 3
+         "is_key": true,
+         "error_path": null
       }
    ],
    "calculator_status": "no_calculator",

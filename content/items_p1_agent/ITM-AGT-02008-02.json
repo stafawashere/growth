@@ -88,6 +88,31 @@
          "id": "A",
          "value": [
             "Divide",
+            -7,
+            [
+               "Power",
+               [
+                  "Subtract",
+                  "x",
+                  2
+               ],
+               2
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": 3,
+         "is_key": false,
+         "error_path": "BC-ERR-02022",
+         "violated_step": 0
+      },
+      {
+         "id": "C",
+         "value": [
+            "Divide",
             7,
             [
                "Power",
@@ -104,7 +129,7 @@
          "violated_step": 1
       },
       {
-         "id": "B",
+         "id": "D",
          "value": [
             "Divide",
             -7,
@@ -117,24 +142,6 @@
          "is_key": false,
          "error_path": "BC-ERR-02022",
          "violated_step": 1
-      },
-      {
-         "id": "C",
-         "value": [
-            "Divide",
-            -7,
-            [
-               "Power",
-               [
-                  "Subtract",
-                  "x",
-                  2
-               ],
-               2
-            ]
-         ],
-         "is_key": true,
-         "error_path": null
       }
    ],
    "calculator_status": "no_calculator",

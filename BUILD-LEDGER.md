@@ -10,6 +10,105 @@ purpose: Where the application build stands, session by session, so the next ses
 Application code lives at the repository root under `app/` and `tests/`, at the paths docs/plan names. The project CLAUDE.md still says "docs-only, no product"; that sentence is the operator's to amend and this ledger only records the conflict. Tooling: uv-managed Python 3.12.13 in `.venv/`, dependencies in `pyproject.toml`, tests via `.venv/bin/python -m pytest`. Every H2 below carries a tag because `qa/04_tags.py` scans root-level Markdown: [verified] means the test output or the registry was checked in the session named, [inferred] means a judgement.
 
 ## Done [verified]
+- Twenty-fifth session, 2026-09-23, slice 7 review follow-up: two verified findings against the
+  twenty-fourth session's distractor generator, fixed. First, the generator always placed the key
+  at option A for the 51 previously options-less items and only ever moved a fourth distractor to
+  D for the 31 three-option items, so the key sat at A 67 times against 29, 23 and 11 for B, C and
+  D across the 130 items; a student could score short-answer-turned-MCQ items by picking A with no
+  regard for the item. Every item's option order is now a deterministic per-item shuffle
+  (`hashlib.sha256(item id)` seeding `random.Random`, one script run, not committed, since it is a
+  one-shot content fix like the generator it corrects), re-lettered A to D by the shuffled
+  position; the key now sits at A 32, B 36, C 28, D 34. `tools/check_items.py content/items_p1_agent`
+  still exits 0, 130 clean, and
+  `tests/tools/test_agent_drafts_have_four_options.py`'s two tests still pass, since neither reads
+  option order. Second, `ITM-AGT-02010-08`'s option B held `sin theta/cos^2 theta`, the item's own
+  undifferentiated step-1 rewrite, tagged `BC-ERR-02025` ("cofunction derivative given without its
+  negative sign"), and option C held the key's exact negation tagged `BC-ERR-02026` ("trigonometric
+  quotient differentiated term by term"); neither value is a computation either error actually
+  produces. Re-derived both with SymPy from the item's own quotient-rule work (`u = sin theta`,
+  `v = cos^2 theta`): B is now the quotient rule with the denominator derivative's sign dropped,
+  `sec theta - 2 sec theta tan^2 theta`; C is now the literal term-by-term quotient `u'/v'`,
+  `-1/(2 sin theta)`. `ITM-AGT-02010-07` carried the identical pattern (option B equal to its own
+  step-1 rewrite tagged `BC-ERR-02025`, option C equal to the negated key tagged `BC-ERR-02026`)
+  and was fixed the same way (`6 - 6 tan^2 x + sec x tan x` and `-6/tan x`). Both items' distractor
+  `violated_step` now indexes `BC-QA-02010`'s `expected_solution_path[1]` ("apply the quotient
+  rule"), where the sign-drop and term-by-term errors actually happen, rather than the previous 0
+  or 3. `ITM-AGT-02010-00` and `-01` held two further `BC-ERR-02025` distractors apiece
+  (`violated_step: 1`) whose values were correct as sign flips on one term of the final split-form
+  key, the CED-literal reading of "given without its negative sign", but that sign only appears at
+  `expected_solution_path[3]` ("write the result in the requested trigonometric form") in those two
+  items' own worked solutions, not at the quotient-rule step; `violated_step` corrected from 1 to 3
+  on those four options, values unchanged. All four values checked distinct from the key and from
+  each other with `sympy.simplify`, and the full `BC-QA-02010` archetype's ten items re-verified
+  against a general quotient-rule/sign-drop/term-by-term SymPy model built from each item's own
+  `worked_solution` Divide step; no further mismatches found in that archetype.
+  `tools/check_items.py content/items_p1_agent` exits 0, 130 clean, after these edits.
+- Twenty-fourth session, 2026-09-23, slice 7: every one of the 130 agent drafts in
+  `content/items_p1_agent/` now carries exactly four options (one key, `error_path: null`, plus
+  three distractors, each a BC-ERR id held by the archetype's own skills with a `violated_step`
+  index into that archetype's `expected_solution_path`), closing the options-less and
+  three-option gaps the twenty-third session left in Known defects. `tools/check_items.py
+  content/items_p1_agent` exits 0, 130 clean. The 48 items the previous session already gave four
+  options were left untouched; the 31 three-option and 51 zero-option items were filled by a
+  generator (its source is not part of this repo, since it is a one-shot authoring tool and not a
+  gate). Every added distractor's value is either a genuine intermediate quantity from the item's
+  own `worked_solution` (a value a student really reaches partway through the correct derivation,
+  used prematurely as the final answer) or an algebraic sign flip, dropped multiplicative factor,
+  or off-by-one integer count taken from the item's own key expression, and every one is checked
+  distinct from the key and from every other option by `app/items/verify.py`'s own
+  `compare_expressions` (SymPy symbolic difference, then a 7-point numeric probe) before being
+  written, the same machinery `distractor_path_violations` runs at gate time. Where an archetype
+  holds more error ids than an item needed new distractors for, an error id already used by that
+  item's pre-existing distractors was reused for the generic sign-flip or count-perturbation
+  candidates rather than invented; one id, `BC-ERR-01008` ("indeterminate form read as the answer
+  zero"), is restricted in the generator to the one candidate that is literally that reading (the
+  worked solution's own step-zero value), because nothing else can honestly carry that name. The
+  reused-id distractors are mechanically verified (distinct, valid error id, valid step index) but
+  were not each individually hand-checked for being the most natural instance of that named error
+  the way the original 48 items' distractors were; this is flagged below for operator review.
+  `tests/items/test_ingest.py::test_a_short_answer_item_carrying_mcq_options_still_ingests` (new,
+  red under a temporary guard that refused options on a `short_answer`-format record, green with
+  the guard removed) confirms `app/items/ingest.py` already accepted options on a short_answer
+  item without any change, since nothing in that module reads the `format` field at all; the
+  operator's contingency instruction to change ingest did not apply.
+  `tests/tools/test_agent_drafts_have_four_options.py` (new) reads the real directory and asserts
+  every record carries exactly four options, one key with a null `error_path` and three
+  distractors each with one, since `tools/check_items.py`'s own checks pass an item with fewer
+  options or none (they check whatever option set is actually there, which is why that gate alone
+  did not catch the twenty-third session's options-less items); red with one record's options cut
+  to two, green restored.
+- Twenty-fourth session, 2026-09-23: `app/items/verify.py` `run_bounded`'s SIGALRM path could
+  silently miss its own bound. A one-shot `signal.setitimer` that fires while a `gc.callbacks`
+  hook is executing (the suite registers one only once something imports `hypothesis`, which is
+  why this never reproduced from `tests/items/test_verify_bound.py` run alone) never reaches
+  `run_bounded`'s `except _Timeout`: CPython's gc module catches whatever a callback raises and
+  reports it through `sys.unraisablehook` instead of letting it propagate, so the alarm is lost
+  and the comparison runs to completion past `timeout_s`. Seen directly in a full-suite run as
+  `test_a_pathological_comparison_on_the_main_thread_is_unsettled_within_the_bound` failing with
+  `not_equivalent` instead of `unsettled`, plus a `PytestUnraisableExceptionWarning` naming
+  `app.items.verify._raise_timeout` raised from inside `hypothesis`'s `gc_callback`. Reproduced
+  deterministically outside the full suite by wrapping `_raise_timeout` to swallow exactly its
+  first delivery (mimicking that gc behaviour) and calling `run_bounded` over a busy-loop:
+  the pre-fix single-shot `setitimer` let the loop run to completion (one alarm delivered, zero
+  effect); the fix, a repeating `setitimer(..., timeout_s, min(0.05, timeout_s))`, still returned
+  the timeout sentinel because a second delivery landed outside the callback 0.05 s later. The
+  test's margin assertion was briefly switched to `time.process_time()`; the orchestrator
+  reverted that because CPU time weakens a wall-clock bound, so the test still measures
+  `time.monotonic()`. Proof run: 20/20 green on `tests/items/test_verify_bound.py` alone (both before and
+  after the real fix, since the file-alone run never touched hypothesis's callback), and three
+  full-suite runs, all exit 0, zero failures. The exact race reproduced again live in the second
+  of those three runs, the same `gc_callback`/`_raise_timeout`/`PytestUnraisableExceptionWarning`
+  as the original symptom, and the fix carried the test through it.
+- Twenty-fourth session, 2026-09-23: `app/api/app.py` `Settings.resolve_key_audit_sample_ids`
+  raised `FileNotFoundError` (HTTP 500 through `POST /review-queue/{id}/resolve`) when
+  `GROWTH_KEY_AUDIT_SAMPLE_PATH` named a file that did not exist, and used
+  `item_id in set(sample_ids)` for membership, which reads a dict's keys or a string's characters
+  when the sample file's JSON was not a list, rather than refusing it. Both now fail closed with
+  a `ValueError`, which the route already turns into the documented 400
+  (`tests/api/test_review_routes.py::test_resolving_an_item_audit_with_a_missing_sample_file_is_refused_not_500`
+  and `..._with_a_non_list_sample_file_is_refused_not_500`, both new, red against the pre-fix code
+  (`FileNotFoundError` propagating unhandled, and a 200 from the dict-keys membership check),
+  then green).
 - Twenty-third session, 2026-09-23, serving the agent-drafted P1 items under the operator's
   ruling and keeping them out of every operator count. `content/items_p1_agent/` holds 130 drafts,
   10 per P1 archetype, each with `"authored_by": "claude-opus-5-5 agent draft, pending operator
@@ -865,18 +964,48 @@ done or listed below as needing the operator.
 
 ## Known defects [verified]
 
-From the twenty-third session, 2026-09-23, found and not fixed.
+From the twenty-fifth session, 2026-09-23, found and not fixed.
 
-- 51 of the 130 agent drafts are short answer only and carry no options, but R29's alternation
-  (`app/engine/select.py` `format_for_attempt`, `app/session/service.py`
-  `resolve_served_format`) gives every second stage-unsupported attempt on an archetype the MCQ
-  format whatever the item carries. Such an item then reaches the student as `format: "mcq"` with
-  `options: None`, and `app/items/grade.py` returns it ungraded (`correct: None`). This was seen
-  on `ITM-AGT-02010-08` during this session's end to end run. Stages example and completion are
-  always short answer and are not affected. 31 more drafts are MCQs with three options, while 11
-  describes four. Choices for the operator: author options for the 51, have the MCQ turn pick only
-  items that carry options, or serve an options-less item as short answer (the fixture tests named
-  under the twenty-third session's decisions would then need changing).
+- The option-position shuffle and the `BC-QA-02010` distractor re-derivation (Done above) close
+  the two verified findings this session was given, both against `ITM-AGT-02010-08`, and the same
+  pattern found and fixed in `ITM-AGT-02010-07`. The wider suspicion those findings raised, that
+  the twenty-fourth session's reused-error-id distractors (already flagged below, previous
+  session) might carry the same value/error-id mismatch elsewhere in the 82 items that session
+  touched, was not run to ground archetype by archetype outside `BC-QA-02010`; that would need the
+  same per-item SymPy re-derivation from each archetype's own `worked_solution` steps and its own
+  small set of named errors, which this session did not have the budget to repeat twelve more
+  times. The operator's planned review pass over `content/items_p1_agent/` should treat this as
+  open until it does.
+- The reshuffle script that fixed the key-position skew was a one-shot content edit, not saved to
+  the repository, the same call the twenty-fourth session made for its generator; re-running it
+  would produce a different (still roughly uniform) shuffle since nothing pins the RNG seed to a
+  file. If a specific distribution is ever a gate's business, that gate should assert the property
+  (roughly uniform key position, no single letter dominant) rather than a fixed layout.
+
+From the twenty-fourth session, 2026-09-23, found and not fixed.
+
+- Superseded 2026-09-23, twenty-fourth session: every agent draft now carries four options (Done
+  above), so `ITM-AGT-02010-08` and the rest of the twenty-third session's 51 options-less and 31
+  three-option items no longer reach the student as an ungraded MCQ turn.
+- The server-side fail-safe considered for this ("never serve MCQ for an item without options")
+  was tried again this session, in `app/session/service.py` `resolve_served_format` (fall back to
+  short answer when the stored item's `options` is empty and the resolved format is MCQ), and
+  taken out again: with it in place, four of `tests/session/test_serve_format.py`'s tests go red
+  (`test_second_unsupported_serve_on_the_same_archetype_is_mcq`,
+  `test_serving_twice_without_submitting_returns_the_same_format`,
+  `test_the_served_format_is_persisted_on_the_queue_slot`, and
+  `test_an_attempt_that_skipped_the_serve_still_records_the_resolved_format`), because their
+  fixture items (`tests/session/test_serve_format.py` `item_row`) are built with `options=None`
+  and assert the second stage-unsupported serve is MCQ regardless. Per the task's instruction not
+  to edit those named fixture tests, the guard was reverted after confirming the red. Now that
+  every served content item does carry four options, this conflict only bites a caller whose own
+  fixtures omit them, same as these four tests, so the operator's choice is either to give those
+  fixtures options too or to accept that the guard cannot be added without touching them.
+- The reused-error-id distractors the generator added where an archetype's item needed more new
+  distractors than it had spare named errors for (documented in Done above) are mechanically
+  verified (SymPy-distinct, valid error id, valid step index) but not each hand-checked for being
+  the most natural instance of that named error; the operator may want to review these during the
+  item review pass already planned for `content/items_p1_agent/`.
 
 From the seventeenth session, 2026-09-23, found and not fixed.
 
@@ -1983,11 +2112,12 @@ item below needs content, a key, a download or a ruling.
 
 Human-only, in the order that unblocks the most:
 
-0a. Twenty-third session: the operator reviews the 130 agent drafts in `content/items_p1_agent/`
-   (its README lists what the audit left open) and rules on the options-less MCQ turn under Known
-   defects. The drafts are served now but count toward nothing. Gates 17, 29 and 30 and exit
-   criterion 7 still wait on items with operator provenance, whether hand-authored or drafts the
-   operator has relabelled after review.
+0a. Twenty-third and twenty-fourth sessions: the operator reviews the 130 agent drafts in
+   `content/items_p1_agent/` (its README lists what the audit left open, and the twenty-fourth
+   session's Known defects entry names which distractors were mechanically verified but not
+   individually hand-checked). The drafts are served now, every one with four options, but count
+   toward nothing. Gates 17, 29 and 30 and exit criterion 7 still wait on items with operator
+   provenance, whether hand-authored or drafts the operator has relabelled after review.
 
 0. Closed the twentieth and twenty-first sessions, 2026-09-23: the BC-PT labelling pass
    (`data/bc_pt_determinism_labels.json`, 48 of 76 deterministic and 28 model_required) and the

@@ -1,10 +1,10 @@
 """An attempt the grader cannot settle still reaches a feedback screen the student can leave.
 
-docs/plan/11-phased-delivery.md implementer decision 3 collects no answer to be confident about at
-stage example, so an example attempt is ungraded by construction; app/items/grade.py returns
-ungraded for an empty submission and for a comparison it cannot settle. Feedback at example is
-every worked step marked given with the self-explanation prompt (03, Feedback policy), and an
-ungraded answer states no verdict, carries no elaborated error and moves no mastery.
+app/items/grade.py returns ungraded for an empty submission and for a comparison it cannot settle.
+Stage example collects a graded answer like completion and unsupported do (BUILD-LEDGER.md,
+"Decisions taken on the operator's instruction, 2026-09-23", which withdraws 11 implementer
+decision 3), so an ungraded attempt at example behaves like one at completion: the blank carries no
+verdict and mastery does not move.
 """
 from sqlalchemy import select
 from sqlalchemy.orm import Session as OrmSession
@@ -42,19 +42,25 @@ def stored_attempt(world, attempt_id):
       return {"correct": row.correct, "confidence": row.confidence}
 
 
-def test_an_example_attempt_is_shown_every_step_given_with_no_verdict(world):
+def test_an_example_blank_carries_no_verdict_when_ungraded(world):
    client = world.client()
    session_id, served = served_at(world, client, "example")
    item = served.json()["item"]
    user_id = user_id_of(client)
    before = skills_state_rows(world, user_id)
    attempted = submit(client, session_id, item, UNSETTLED_ANSWER)
+   attempt_id = attempted.json()["id"]
+   rated = client.post(
+      f"/sessions/{session_id}/attempts/{attempt_id}/confidence",
+      json={"confidence": "unsure", "today": TODAY.isoformat()},
+   )
 
    assert attempted.status_code == 200
-   assert stored_attempt(world, attempted.json()["id"])["correct"] is None
+   assert stored_attempt(world, attempt_id)["correct"] is None
+   assert rated.status_code == 200
    assert skills_state_rows(world, user_id) == before
 
-   feedback = client.get(f"/sessions/{session_id}/attempts/{attempted.json()['id']}/feedback")
+   feedback = client.get(f"/sessions/{session_id}/attempts/{attempt_id}/feedback")
 
    assert feedback.status_code == 200
 
@@ -62,10 +68,8 @@ def test_an_example_attempt_is_shown_every_step_given_with_no_verdict(world):
 
    assert body["kind"] not in VERDICT_KINDS
    assert body["elaborated"] is None
-   assert body["step_marks"] == [
-      {"index": position, "text": step["text"], "given": True, "correct": None}
-      for position, step in enumerate(WORKED_STEPS, start=1)
-   ]
+   assert [mark["correct"] for mark in body["step_marks"]] == [None] * len(WORKED_STEPS)
+   assert body["step_marks"][-1]["given"] is False
    assert body["self_explanation_prompt"] == item["self_explanation_prompt"]
 
 

@@ -3,8 +3,10 @@
 The cases are driven off Base.metadata rather than a hand-written list of tables and columns,
 so a column added to any model later is covered without touching this file.
 """
+import json
+
 import pytest
-from sqlalchemy import JSON, Float, Integer, LargeBinary, Numeric, inspect, select
+from sqlalchemy import JSON, Float, Integer, LargeBinary, Numeric, inspect, select, text
 from sqlalchemy.orm import Session
 
 from app.db.migrate import SchemaDriftError, apply_additive_migrations, missing_columns
@@ -221,6 +223,116 @@ def test_a_unique_column_refuses_rather_than_migrating_without_its_constraint():
 
    with pytest.raises(SchemaDriftError):
       _column_definition(dialect, table.columns["marker"])
+
+
+def test_credited_observation_count_is_backfilled_from_attempt_history(tmp_path):
+   """app/engine/fringe.py serve_stage trusts credited_observation_count > 0 to mean the stored
+   fading_stage wins over the p_A_knowledge bands. A skills_state row that already existed before
+   this column did has real credited history the column's server default of 0 cannot see, so a
+   migrated database has to recompute it from app/engine/update.py's credit rule rather than reset
+   every skill to a fresh cold start.
+   """
+   engine = make_engine(tmp_path / "credited.sqlite")
+   now = "2026-09-23T00:00:00+00:00"
+
+   with engine.begin() as connection:
+      connection.execute(
+         text(
+            "INSERT INTO sessions "
+            "(id, user_id, mode, started_at, queue, updates_mastery, snapshot_id, created_at, updated_at) "
+            "VALUES ('SES-1', 'USER-1', 'learning', :now, '{}', 1, 'SNAP-1', :now, :now)"
+         ),
+         {"now": now},
+      )
+      connection.execute(
+         text(
+            "INSERT INTO sessions "
+            "(id, user_id, mode, started_at, queue, updates_mastery, snapshot_id, created_at, updated_at) "
+            "VALUES ('SES-2', 'USER-1', 'rehearsal', :now, '{}', 0, 'SNAP-1', :now, :now)"
+         ),
+         {"now": now},
+      )
+
+      attempt_sql = text(
+         "INSERT INTO attempts "
+         "(id, session_id, item_id, started_at, served_stage, format, per_skill_states, "
+         "snapshot_id, created_at, updated_at, transcription_confirmed) "
+         "VALUES (:id, :session_id, 'ITEM-1', :now, 'completion', 'short_answer', :per_skill_states, "
+         "'SNAP-1', :now, :now, 0)"
+      )
+
+      connection.execute(
+         attempt_sql,
+         {
+            "id": "ATT-1",
+            "session_id": "SES-1",
+            "now": now,
+            "per_skill_states": json.dumps({"SK-01": "mastered", "SK-02": "not_mastered"}),
+         },
+      )
+      connection.execute(
+         attempt_sql,
+         {
+            "id": "ATT-2",
+            "session_id": "SES-1",
+            "now": now,
+            "per_skill_states": json.dumps({"SK-01": "not_attempted"}),
+         },
+      )
+      connection.execute(
+         attempt_sql,
+         {
+            "id": "ATT-3",
+            "session_id": "SES-2",
+            "now": now,
+            "per_skill_states": json.dumps({"SK-01": "mastered"}),
+         },
+      )
+
+      skills_state = Base.metadata.tables["skills_state"]
+      explicit = {"user_id", "skill_id", "snapshot_id", "created_at", "updated_at", "fading_stage"}
+      required = {
+         column.name: 0 if column.type.python_type in (int, float) else "[]"
+         for column in skills_state.columns
+         if not column.nullable and column.server_default is None and column.name not in explicit
+      }
+      required["fading_stage"] = "example"
+
+      for skill_id in ("SK-01", "SK-02"):
+         connection.execute(
+            skills_state.insert().values(
+               **required,
+               user_id="USER-1",
+               skill_id=skill_id,
+               snapshot_id="SNAP-1",
+               created_at=now,
+               updated_at=now,
+            )
+         )
+
+   with engine.begin() as connection:
+      connection.exec_driver_sql(
+         'ALTER TABLE "skills_state" DROP COLUMN "credited_observation_count"'
+      )
+
+   assert missing_columns(engine) == {"skills_state": ("credited_observation_count",)}
+
+   added = apply_additive_migrations(engine)
+
+   assert "skills_state.credited_observation_count" in added
+   assert missing_columns(engine) == {}
+
+   with engine.connect() as connection:
+      counts = dict(
+         connection.execute(
+            text(
+               "SELECT skill_id, credited_observation_count FROM skills_state "
+               "WHERE user_id = 'USER-1'"
+            )
+         ).all()
+      )
+
+   assert counts == {"SK-01": 1, "SK-02": 1}
 
 
 def test_a_database_with_no_drift_opens_no_write_transaction(tmp_path):

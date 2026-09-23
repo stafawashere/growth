@@ -62,19 +62,25 @@ def submit(client, session_id, item, answer):
    )
 
 
-def test_example_serves_every_worked_step_without_mathjson(world):
+def test_example_serves_every_step_but_the_last_without_mathjson(world):
+   """The operator's ruling on how a skill leaves stage example (BUILD-LEDGER.md, "Decisions
+   taken on the operator's instruction, 2026-09-23") withdraws 11 implementer decision 3: example
+   now blanks its last step exactly as completion does.
+   """
    client = world.client()
    session_id, served = served_at(world, client, "example")
 
    assert served.status_code == 200
 
    item = served.json()["item"]
+   given = WORKED_STEPS[:-1]
 
    assert item["stage"] == "example"
    assert item["served_steps"] == [
       {"index": position, "text": step["text"]}
-      for position, step in enumerate(WORKED_STEPS, start=1)
+      for position, step in enumerate(given, start=1)
    ]
+   assert BLANKED_STEP_TEXT not in json.dumps(served.json())
 
 
 def test_completion_serves_every_step_but_the_last(world):
@@ -95,9 +101,12 @@ def test_completion_serves_every_step_but_the_last(world):
    assert item["self_explanation_prompt"] is None
 
 
-def test_completion_below_the_two_step_minimum_is_served_at_example(world):
-   """Q16: an item with fewer than 2 worked steps is served at example and unsupported only, so a
-   completion slot falls back to example rather than refusing the same slot on every read.
+def test_completion_below_the_two_step_minimum_is_served_at_unsupported(world):
+   """Q16: an item with fewer than 2 worked steps is served at stage unsupported only, so a
+   completion slot falls back to unsupported rather than refusing the same slot on every read.
+   Corrected 2026-09-23: example used to be the fallback, but example now collects a graded
+   answer too (BUILD-LEDGER.md, "Decisions taken on the operator's instruction, 2026-09-23") and
+   needs the same 2-step room to blank a step, so it is no longer a shorter item's fallback.
    """
    client = world.client()
    one_step = WORKED_STEPS[-1:]
@@ -107,14 +116,14 @@ def test_completion_below_the_two_step_minimum_is_served_at_example(world):
 
    item = served.json()["item"]
 
-   assert item["stage"] == "example"
-   assert item["served_steps"] == [{"index": 1, "text": one_step[0]["text"]}]
+   assert item["stage"] == "unsupported"
+   assert item["served_steps"] is None
 
    queue = client.get(f"/sessions/{session_id}").json()["queue"]
    slots = [slot for block in ("block1", "block2", "block3") for slot in queue[block]]
    served_slot = next(slot for slot in slots if slot["id"] == item["id"])
 
-   assert served_slot["stage"] == "example"
+   assert served_slot["stage"] == "unsupported"
 
    attempted = submit(client, session_id, item, correct_answer_for(item))
 
@@ -123,7 +132,25 @@ def test_completion_below_the_two_step_minimum_is_served_at_example(world):
    with OrmSession(world.engine) as db:
       stored = db.get(models.Attempt, attempted.json()["id"])
 
-      assert stored.served_stage == "example"
+      assert stored.served_stage == "unsupported"
+
+
+def test_example_below_the_two_step_minimum_is_served_at_unsupported(world):
+   """The same fallback applies to a slot staged at example directly (serve_stage can start a
+   skill at example from the p_A_knowledge bands, not only by falling back from completion), since
+   example now needs a step to blank exactly as completion does.
+   """
+   client = world.client()
+   one_step = WORKED_STEPS[-1:]
+   session_id, served = served_at(world, client, "example", steps=one_step)
+
+   assert served.status_code == 200
+
+   item = served.json()["item"]
+
+   assert item["stage"] == "unsupported"
+   assert item["served_steps"] is None
+   assert BLANKED_STEP_TEXT not in json.dumps(served.json())
 
 
 def test_unsupported_serves_no_steps_and_no_prompt(world):
@@ -152,6 +179,13 @@ def test_the_example_prompt_before_submission_is_the_feedback_prompt(world):
    assert attempted.status_code == 200
 
    attempt_id = attempted.json()["id"]
+   rated = client.post(
+      f"/sessions/{session_id}/attempts/{attempt_id}/confidence",
+      json={"confidence": "unsure", "today": TODAY.isoformat()},
+   )
+
+   assert rated.status_code == 200
+
    feedback = client.get(f"/sessions/{session_id}/attempts/{attempt_id}/feedback")
 
    assert feedback.status_code == 200
@@ -190,10 +224,8 @@ def feedback_after(world, client, stage, answer_for):
       f"/sessions/{session_id}/attempts/{attempt_id}/confidence",
       json={"confidence": "unsure", "today": TODAY.isoformat()},
    )
-   is_rated_stage = stage != "example"
 
-   if is_rated_stage:
-      assert rated.status_code == 200
+   assert rated.status_code == 200
 
    feedback = client.get(f"/sessions/{session_id}/attempts/{attempt_id}/feedback")
 
@@ -232,11 +264,18 @@ def test_a_right_completion_marks_the_blank_right(world):
    assert body["step_marks"] == given_marks(WORKED_STEPS[:-1]) + [blank_mark(True)]
 
 
-def test_a_worked_example_marks_every_step_as_given(world):
+def test_a_right_worked_example_marks_the_blank_right(world):
    client = world.client()
    item, body = feedback_after(world, client, "example", correct_answer_for)
 
-   assert body["step_marks"] == given_marks(WORKED_STEPS)
+   assert body["step_marks"] == given_marks(WORKED_STEPS[:-1]) + [blank_mark(True)]
+
+
+def test_a_wrong_worked_example_marks_the_blank_wrong_whatever_the_body_claims(world):
+   client = world.client()
+   item, body = feedback_after(world, client, "example", wrong_answer_for)
+
+   assert body["step_marks"] == given_marks(WORKED_STEPS[:-1]) + [blank_mark(False)]
 
 
 def test_a_corrected_completion_prompt_names_a_step_the_student_was_shown(world):

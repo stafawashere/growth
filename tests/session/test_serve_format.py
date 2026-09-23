@@ -66,6 +66,7 @@ def set_stage(world, stage):
       if not state.mastered:
          state.fading_stage = stage
          state.observation_count = 1
+         state.credited_observation_count = 1
 
    repository.save_states(world.db, USER_ID, states, SNAPSHOT_ID, ACCOUNT_CREATED_AT)
    world.db.commit()

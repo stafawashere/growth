@@ -161,6 +161,7 @@ def set_unsupported(world):
       if not state.mastered:
          state.fading_stage = FadingStage.UNSUPPORTED
          state.observation_count = 1
+         state.credited_observation_count = 1
 
    repository.save_states(world.db, USER_ID, states, SNAPSHOT_ID, ACCOUNT_CREATED_AT)
    world.db.commit()

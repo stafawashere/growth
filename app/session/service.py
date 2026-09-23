@@ -193,16 +193,20 @@ def resolve_served_format(db, session_row, block, position, item):
 
 
 def resolve_served_stage(db, session_row, block, position, item):
-   """Q16 serves an item with fewer than 2 worked steps at stages example and unsupported only.
+   """Q16 serves an item with fewer than 2 worked steps at stage unsupported only.
 
-   A completion slot over such an item falls back to example, keeping the support the engine
-   judged the student still needs, and the fallback is written onto the slot so the attempt row
-   records the stage that was served. A slot whose item has no items row, or no readable step
-   list, is left as it is, and served_item refuses it.
+   Stages example and completion both blank the item's last worked step, so both need the 2-step
+   minimum to have a step to blank (app/runtime/bank.py served_steps). A slot at either stage over
+   an item under the minimum falls back to unsupported, and the fallback is written onto the slot
+   so the attempt row records the stage that was served. Example used to be the servable fallback
+   here, before the operator's ruling on how a skill leaves stage example (BUILD-LEDGER.md,
+   "Decisions taken on the operator's instruction, 2026-09-23") made example collect a graded
+   answer too, which took away the room a short item has to blank a step for it. A slot whose item
+   has no items row, or no readable step list, is left as it is, and served_item refuses it.
    """
-   is_completion = FadingStage(item["stage"]) == FadingStage.COMPLETION
+   needs_blank_room = FadingStage(item["stage"]) in (FadingStage.COMPLETION, FadingStage.EXAMPLE)
 
-   if not is_completion:
+   if not needs_blank_room:
       return item
 
    stored = db.get(models.Item, item["id"])
@@ -212,15 +216,15 @@ def resolve_served_stage(db, session_row, block, position, item):
       return item
 
    try:
-      keeps_completion = supports_completion(stored.worked_solution)
+      has_blank_room = supports_completion(stored.worked_solution)
    except ValueError:
       return item
 
-   if keeps_completion:
+   if has_blank_room:
       return item
 
    queue = json.loads(session_row.queue)
-   queue[block][position]["stage"] = FadingStage.EXAMPLE.value
+   queue[block][position]["stage"] = FadingStage.UNSUPPORTED.value
    session_row.queue = json.dumps(queue)
    db.flush()
 
@@ -301,8 +305,15 @@ def queue_item(session_row, item_id):
 
 
 def collects_confidence(stage):
-   """Convention 3: a rating is collected at completion and unsupported, never at example."""
-   return FadingStage(stage) != FadingStage.EXAMPLE
+   """A rating is collected before feedback on every stage (11 P1 scope 10), example included:
+   the operator's ruling on how a skill leaves stage example (BUILD-LEDGER.md, "Decisions taken
+   on the operator's instruction, 2026-09-23") withdraws 11 implementer decision 3, which had
+   carved example out because it committed no answer. It now commits one, so it rates like any
+   other stage.
+   """
+   FadingStage(stage)
+
+   return True
 
 
 def observation_for(attempt, archetype, confidence):
@@ -432,11 +443,6 @@ def record_confidence(
    item, but it has no observation to apply, so the rating is stored and mastery is left alone.
    """
    attempt = db.get(models.Attempt, attempt_id)
-   at_example = not collects_confidence(attempt.served_stage)
-
-   if at_example:
-      raise ValueError("stage example collects no confidence rating")
-
    already_rated = attempt.confidence is not None
 
    if already_rated:

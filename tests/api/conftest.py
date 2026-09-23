@@ -127,6 +127,7 @@ def unsupported_states(fixture):
       if not state.mastered:
          state.fading_stage = FadingStage.UNSUPPORTED
          state.observation_count = 1
+         state.credited_observation_count = 1
 
    return states
 

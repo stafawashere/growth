@@ -15,7 +15,9 @@ from app.engine.fringe import (
    enqueue_probe,
    outer_fringe,
    retrieval_eligible,
+   serve_stage,
 )
+from app.engine.prior import primary_skill
 from app.engine.select import format_for_attempt, next_item_learning, next_item_review
 from app.engine.state import FadingStage, PendingProbe, ResponseFormat, SkillState
 from app.session.build import assemble_session, eligible_records
@@ -112,6 +114,32 @@ def test_retrieval_entry():
    stored.unaided_success_count = constants.RETRIEVAL_ENTRY
 
    assert retrieval_eligible(stored)
+
+
+def test_serve_stage_ignores_observation_count_and_reads_credited_observation_count():
+   """02's schema table ties credited_observation_count to the event that moves the R7 counter
+   pair, and serve_stage must gate on that field rather than observation_count, which also
+   advances on an uncredited attempt (line ~404 versus line ~407 of 02-adaptive-engine.md).
+   """
+   fixture = load_fixture()
+   graph = build_graph(fixture)
+   archetype = next(record for record in fixture["archetypes"] if record["id"] == "BC-QA-01004")
+   states = build_states(fixture)
+   primary = primary_skill(archetype)
+   state = states[primary]
+
+   state.fading_stage = FadingStage.UNSUPPORTED
+   state.observation_count = 3
+   state.credited_observation_count = 0
+
+   from_bands = serve_stage(archetype, states, graph)
+
+   assert from_bands != FadingStage.UNSUPPORTED
+   assert from_bands == FadingStage.EXAMPLE
+
+   state.credited_observation_count = 1
+
+   assert serve_stage(archetype, states, graph) == FadingStage.UNSUPPORTED
 
 
 def test_format_alternates():

@@ -30,13 +30,9 @@ const workedSteps: ServedStep[] = [
    { index: 3, text: "f'(x) = 2x sin(x) + x^2 cos(x)" }
 ];
 
-/* app/runtime/bank.py served_steps: every step at example, all but the last at completion. */
+/* app/runtime/bank.py served_steps: example and completion both blank the last step. */
 function servedStepsAt(stage: FadingStage): ServedStep[] | null {
-   if (stage === "example") {
-      return workedSteps;
-   }
-
-   if (stage === "completion") {
+   if (stage === "example" || stage === "completion") {
       return workedSteps.slice(0, -1);
    }
 
@@ -86,15 +82,14 @@ const session: SessionPayload = {
    remaining: []
 };
 
-/* The server grades nothing and records no rating at example (11 implementer decision 3). */
+/* The server grades and rates example like any other stage (BUILD-LEDGER.md, "Decisions taken on
+   the operator's instruction, 2026-09-23": 11 implementer decision 3 is withdrawn). */
 function attempt(stage: FadingStage): AttemptResult {
-   const isExample = stage === "example";
-
    return {
       id: `attempt-${stage}`,
       item_id: `item-${stage}`,
-      correct: isExample ? null : false,
-      confidence: isExample ? null : "unsure",
+      correct: false,
+      confidence: "unsure",
       served_stage: stage,
       format: "short_answer",
       p_split: null,
@@ -102,12 +97,12 @@ function attempt(stage: FadingStage): AttemptResult {
    };
 }
 
-/* app/feedback/render.py as_dict step_marks: every step given at example, the steps shown given and
-   the blank carrying the verdict at completion, none at unsupported. */
+/* app/feedback/render.py as_dict step_marks: the steps shown given, and the blank carrying the
+   verdict at example and at completion, none at unsupported. */
 function stepMarksAt(stage: FadingStage, correct: boolean | null): StepMark[] {
    const shown = (servedStepsAt(stage) ?? []).map((step) => ({ ...step, given: true, correct: null }));
 
-   if (stage === "completion") {
+   if (stage === "example" || stage === "completion") {
       return [...shown, { index: shown.length + 1, text: "f'(x) = 2x sin(x) + x^2 cos(x)", given: false, correct }];
    }
 
@@ -154,21 +149,6 @@ function serverKind(kind: string): string {
    }
 
    return kind;
-}
-
-/* What GET feedback answers for a worked example: no answer was collected, so the attempt is
-   ungraded, every step is given with no verdict, and no rating was asked for. */
-function exampleFeedback(): FeedbackPayload {
-   return {
-      kind: serverKind("step_verification"),
-      stage: "example",
-      step_marks: stepMarksAt("example", null),
-      elaborated: null,
-      self_explanation_prompt: SELF_EXPLANATION_PROMPT,
-      confidence: null,
-      sentence: null,
-      tutor_unavailable: false
-   };
 }
 
 /* What GET feedback answers for an unsupported answer the grader could not settle. */
@@ -446,8 +426,8 @@ async function commitOn(label: RegExp) {
 
 const COMMIT_BUTTONS = /Check my answer|I have explained this/;
 
-describe("SessionScreen confidence gate, 11 implementer decision 3", () => {
-   const RATED_STAGES: FadingStage[] = ["completion", "unsupported"];
+describe("SessionScreen confidence gate", () => {
+   const RATED_STAGES: FadingStage[] = ["example", "completion", "unsupported"];
 
    it("withholds feedback until the rating the committed attempt came back without is recorded", async () => {
       for (const stage of RATED_STAGES) {
@@ -478,20 +458,6 @@ describe("SessionScreen confidence gate, 11 implementer decision 3", () => {
 
          cleanup();
       }
-   });
-
-   it("collects no rating at stage example and serves that feedback straight away", async () => {
-      stageFlow("example");
-      mocked.submitAttempt.mockResolvedValue({ ...attempt("example"), correct: null, confidence: null });
-      mocked.readFeedback.mockResolvedValue(exampleFeedback());
-
-      await commitOn(COMMIT_BUTTONS);
-      await screen.findByTestId("feedback");
-
-      expect(mocked.submitAttempt.mock.calls[0][1].confidence).toBeUndefined();
-      expect(mocked.submitConfidence).not.toHaveBeenCalled();
-
-      cleanup();
    });
 });
 
@@ -612,10 +578,11 @@ describe("SessionScreen served steps and self explanation, 11 P1 scope items 8 a
 
       await screen.findByText("Differentiate f(x) = x^2 sin(x)");
 
-      for (const step of workedSteps) {
+      for (const step of workedSteps.slice(0, -1)) {
          expect(screen.getByText(step.text)).toBeTruthy();
       }
 
+      expect(screen.getByTestId("blanked-step")).toBeTruthy();
       expect(screen.getByLabelText(SELF_EXPLANATION_PROMPT)).toBeTruthy();
 
       cleanup();
@@ -623,8 +590,7 @@ describe("SessionScreen served steps and self explanation, 11 P1 scope items 8 a
 
    it("persists the worked example's self explanation through its route before asking for the next item", async () => {
       stageFlow("example");
-      mocked.submitAttempt.mockResolvedValue({ ...attempt("example"), correct: null, confidence: null });
-      mocked.readFeedback.mockResolvedValue(exampleFeedback());
+      mocked.submitAttempt.mockResolvedValue({ ...attempt("example"), correct: true });
       renderScreen();
 
       await screen.findByText("Differentiate f(x) = x^2 sin(x)");
@@ -632,7 +598,7 @@ describe("SessionScreen served steps and self explanation, 11 P1 scope items 8 a
       fireEvent.change(screen.getByLabelText(SELF_EXPLANATION_PROMPT), {
          target: { value: "  The product rule, because f is a product of two factors.  " }
       });
-      fireEvent.click(screen.getByRole("button", { name: "I have explained this" }));
+      fireEvent.click(screen.getByRole("button", { name: "Check my answer" }));
       await screen.findByTestId("feedback");
       fireEvent.click(screen.getByRole("button", { name: "Next item" }));
 
@@ -719,15 +685,14 @@ describe("SessionScreen served steps and self explanation, 11 P1 scope items 8 a
 describe("SessionScreen self explanation, written once", () => {
    it("does not resend a stored self explanation when the next item fails to load and Next item is retried", async () => {
       stageFlow("example");
-      mocked.submitAttempt.mockResolvedValue({ ...attempt("example"), correct: null, confidence: null });
-      mocked.readFeedback.mockResolvedValue(exampleFeedback());
+      mocked.submitAttempt.mockResolvedValue({ ...attempt("example"), correct: true });
       renderScreen();
 
       await screen.findByText("Differentiate f(x) = x^2 sin(x)");
       fireEvent.change(screen.getByLabelText(SELF_EXPLANATION_PROMPT), {
          target: { value: "The product rule, because f is a product of two factors." }
       });
-      fireEvent.click(screen.getByRole("button", { name: "I have explained this" }));
+      fireEvent.click(screen.getByRole("button", { name: "Check my answer" }));
       await screen.findByTestId("feedback");
 
       mocked.readNextItem.mockRejectedValueOnce(new Error("the connection dropped"));
@@ -746,15 +711,15 @@ describe("SessionScreen self explanation, written once", () => {
 
    it("writes nothing the feedback did not invite, even when an answer was typed before submission", async () => {
       stageFlow("example");
-      mocked.submitAttempt.mockResolvedValue({ ...attempt("example"), correct: null, confidence: null });
-      mocked.readFeedback.mockResolvedValue({ ...exampleFeedback(), self_explanation_prompt: null });
+      mocked.submitAttempt.mockResolvedValue({ ...attempt("example"), correct: true });
+      mocked.readFeedback.mockResolvedValue({ ...feedback("example"), self_explanation_prompt: null });
       renderScreen();
 
       await screen.findByText("Differentiate f(x) = x^2 sin(x)");
       fireEvent.change(screen.getByLabelText(SELF_EXPLANATION_PROMPT), {
          target: { value: "The product rule." }
       });
-      fireEvent.click(screen.getByRole("button", { name: "I have explained this" }));
+      fireEvent.click(screen.getByRole("button", { name: "Check my answer" }));
       await screen.findByTestId("feedback");
       fireEvent.click(screen.getByRole("button", { name: "Next item" }));
 
@@ -784,26 +749,6 @@ describe("SessionScreen resume", () => {
 });
 
 describe("SessionScreen ungraded attempts always move on", () => {
-   it("offers Next item after a worked example, whose attempt the server leaves ungraded", async () => {
-      stageFlow("example");
-      mocked.submitAttempt.mockResolvedValue({ ...attempt("example"), correct: null, confidence: null });
-      mocked.readFeedback.mockResolvedValue(exampleFeedback());
-
-      await commitOn(COMMIT_BUTTONS);
-
-      const next = (await screen.findByRole("button", { name: "Next item" })) as HTMLButtonElement;
-
-      expect(next.disabled).toBe(false);
-      expect(screen.queryByText(CORRECT_WORD)).toBeNull();
-      expect(screen.queryByText(INCORRECT_WORD)).toBeNull();
-
-      fireEvent.click(next);
-
-      await waitFor(() => expect(mocked.readNextItem).toHaveBeenCalledTimes(2));
-
-      cleanup();
-   });
-
    it("offers Next item with no verdict and no error note after an answer the server could not grade", async () => {
       stageFlow("unsupported");
       mocked.submitAttempt.mockResolvedValue({ ...attempt("unsupported"), correct: null });

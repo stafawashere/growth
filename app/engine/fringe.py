@@ -240,10 +240,13 @@ def due_coverage(archetype, states, graph, today, retrievability=None):
 
 
 def serve_stage(archetype, states, graph):
-   """R32: the bands pick the initial stage only, the stored stage wins once an observation exists."""
+   """R32: the bands pick the initial stage only, the stored stage wins once a credited
+   observation exists. An uncredited attempt (NOT_ATTEMPTED, a prerequisite gap with no credit)
+   moves observation_count but never fading_stage, so the bands stay live until credit lands.
+   """
    primary = primary_skill(archetype)
    state = states[primary]
-   has_history = state.observation_count > 0
+   has_history = state.credited_observation_count > 0
 
    if has_history:
       return state.fading_stage

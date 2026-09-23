@@ -17,6 +17,7 @@ from datetime import date, timedelta
 
 from sqlalchemy.orm import Session as OrmSession
 
+from app.auth import service as auth_service
 from app.db import models
 from app.engine import fsrs
 from app.engine.state import FADING_ORDER, FadingStage, MasteryState, ResponseFormat
@@ -428,7 +429,7 @@ def test_unit2_session_changes_mastery_state(world):
       ]
 
 
-def test_mastery_path_across_days_and_unmastery(world):
+def test_mastery_path_across_days_and_unmastery(world, monkeypatch):
    """Exit criterion 6: mastery across 3 or more days spanning 7 or more, then un-mastery (R7).
 
    Sessions are one calendar day apart, so a skill can collect three unaided days inside a week
@@ -436,7 +437,26 @@ def test_mastery_path_across_days_and_unmastery(world):
    that loads it at stage unsupported is answered wrongly: the first credited failure there must
    flip mastered off without touching fading_stage, and the stage may drop only when the run of
    consecutive credited failures in attempts reaches 2.
+
+   app/session/preview.py seeds session assembly's rng from the process seed (fixed at 7 by the
+   world fixture), the user id and the day. The user id is a fresh uuid4 hex from
+   app/auth/service.py's new_id on every registration, so which archetype the tie-breaking draw
+   serves, and so which primary skill this test masters and un-masters, changed from one test run
+   to the next even though nothing else did. That is the fifteenth session's "probably draw
+   dependent" flake: registration is pinned to a fixed id here so the draw this test's own
+   assertions depend on is the same on every run, the one thing Law 3 lets a test control rather
+   than assert around.
    """
+   original_new_id = auth_service.new_id
+   fixed_user_id = "USER-mastery-path-fixed-seed"
+
+   def deterministic_user_id(prefix):
+      if prefix == "USER":
+         return fixed_user_id
+
+      return original_new_id(prefix)
+
+   monkeypatch.setattr(auth_service, "new_id", deterministic_user_id)
    primaries = fixture_primary_skills()
    run = start(world)
    target = {"skill_id": None}

@@ -54,6 +54,7 @@ One row per user per BC-SKL, table `skills_state` in [06-architecture.md](06-arc
 | `last_practised_at` | timestamp | null | every credited observation, direct or propagated |
 | `fading_stage` | enum `example`, `completion`, `unsupported` | `example`, or `unsupported` when the skip condition below fires | 2 consecutive credited successes advance, 2 consecutive credited failures drop [inferred] |
 | `observation_count` | integer | 0 | every direct observation on an archetype loading this skill, including uncredited ones |
+| `credited_observation_count` | integer | 0 | every direct observation that lands success or failure credit (the same event that moves the R7 counter pair below), never an uncredited one |
 | `distinct_archetypes_succeeded` | set of BC-QA ids | empty | on a credited success at stage `unsupported`, add the archetype |
 | `success_days` | set of calendar dates in the user's timezone | empty | on a credited success at stage `unsupported`, add the date; same-day repeats do not add a second entry |
 | `mastered` | boolean | false | evaluated after every update to this skill against the mastery declaration rule |
@@ -246,7 +247,7 @@ Un-mastery fires when either `sigmoid(m_k)` falls below 0.75, or a credited fail
 
 **Precedence: one counter pair, and only one (R7).** Three rules have been written in three documents as if each could move `fading_stage`: un-mastery dropping a level, "after two failed mastery attempts the ladder drops" in [01-learning-model.md](01-learning-model.md), and the two-consecutive-failures trigger here. They are not three rules. `consecutive_successes` and `consecutive_failures` are the only writers of `fading_stage`: 2 consecutive credited successes advance a stage, 2 consecutive credited failures drop one, and nothing else touches it. Un-mastery flips `mastered` and leaves the stage to the counters. The sentence in 01 is a restatement of the same counter and is reworded there to say so.
 
-**`serve_stage` does not compete with the counters (R32).** `serve_stage` chooses the initial stage only, for a skill that has no credited observation yet, and it chooses it from the `p_A_knowledge` bands. Once one observation exists, `fading_stage` is whatever the counter pair last wrote, and `serve_stage` returns it unchanged. The band reading of "below `STAGE_LOW` is served at example or completion" therefore applies at first service only: below `STAGE_LOW` the initial stage is `example`, between the bands it is `completion`, above `STAGE_HIGH` it is `unsupported`. The earlier `min(stage_of(A, state), "completion")` form is withdrawn, because it could never return `example` and it overrode the counters after the first observation.
+**`serve_stage` does not compete with the counters (R32).** `serve_stage` chooses the initial stage only, for a skill that has no credited observation yet, and it chooses it from the `p_A_knowledge` bands. Once one credited observation exists, `fading_stage` is whatever the counter pair last wrote, and `serve_stage` returns it unchanged. `observation_count` and `credited_observation_count` are not the same gate: an uncredited attempt moves the first and never the second, so `serve_stage` reads only `credited_observation_count`, which is the field the schema table above ties to the same event that moves the R7 counter pair. The band reading of "below `STAGE_LOW` is served at example or completion" therefore applies at first service only: below `STAGE_LOW` the initial stage is `example`, between the bands it is `completion`, above `STAGE_HIGH` it is `unsupported`. The earlier `min(stage_of(A, state), "completion")` form is withdrawn, because it could never return `example` and it overrode the counters after the first observation.
 
 **The `example` skip condition, stated once (R32).** Stage `example` is skipped entirely, and the skill starts at `completion`, when every `hard_prerequisite` parent of the skill is mastered and the student's first attempt succeeds with confidence not rated `guess` [inferred]. This sentence is the only statement of the rule; 11-phased-delivery.md points here rather than restating it, and the phrase "confidence-corrected" is not part of it. This is the expertise reversal guard: instructional support that helps novices becomes redundant and then harmful as expertise grows, and a student who already holds every prerequisite is not a novice on this skill.
 
@@ -402,9 +403,11 @@ function serve_stage(A, state):
     # TARGET_LEARN as a fading-stage filter rather than a score term (R4).
     # R32: the bands pick the INITIAL stage only. Once the skill has a
     # credited observation, fading_stage belongs to the R7 counter pair and
-    # this function never overrides it.
+    # this function never overrides it. An uncredited observation (a skipped
+    # item, an ungraded gap) moves observation_count but not
+    # credited_observation_count, so it does not retire the bands.
     k = primary_skill(A)
-    if state[k].observation_count > 0: return state[k].fading_stage
+    if state[k].credited_observation_count > 0: return state[k].fading_stage
     p = p_A_knowledge(A, state)
     if p < STAGE_LOW:  return "example"
     if p > STAGE_HIGH: return "unsupported"

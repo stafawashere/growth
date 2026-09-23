@@ -397,6 +397,11 @@ def apply_observation(states, graph, observation, today):
       state.last_practised_at = as_datetime(today)
       move_counters(state, is_credited_success, is_credited_failure)
 
+      is_credited_observation = is_credited_success or is_credited_failure
+
+      if is_credited_observation:
+         state.credited_observation_count += 1
+
       is_unaided = FadingStage(observation.served_stage) == FadingStage.UNSUPPORTED
       is_full_success = mastery_state == MasteryState.MASTERED
       records_corroboration = is_full_success and is_unaided

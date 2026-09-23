@@ -56,6 +56,7 @@ def _row_to_engine_state(row):
       last_practised_at=_parse_datetime(row.last_practised_at),
       fading_stage=FadingStage(row.fading_stage),
       observation_count=row.observation_count,
+      credited_observation_count=row.credited_observation_count,
       unaided_success_count=row.unaided_success_count,
       distinct_archetypes_succeeded=set(_load_str_list(row.distinct_archetypes_succeeded)),
       success_days={_parse_date(day) for day in _load_str_list(row.success_days)},
@@ -124,6 +125,9 @@ def _merge_into(existing_row, old_row, today, report):
    existing_row.stability = merged_stability
    existing_row.difficulty = merged_difficulty
    existing_row.observation_count = max(existing_row.observation_count, old_row.observation_count)
+   existing_row.credited_observation_count = max(
+      existing_row.credited_observation_count, old_row.credited_observation_count
+   )
    existing_row.distinct_archetypes_succeeded = json.dumps(sorted(merged_archetypes))
    existing_row.success_days = json.dumps(sorted(merged_days))
    existing_row.unaided_success_count = (

@@ -10,6 +10,110 @@ purpose: Where the application build stands, session by session, so the next ses
 Application code lives at the repository root under `app/` and `tests/`, at the paths docs/plan names. The project CLAUDE.md still says "docs-only, no product"; that sentence is the operator's to amend and this ledger only records the conflict. Tooling: uv-managed Python 3.12.13 in `.venv/`, dependencies in `pyproject.toml`, tests via `.venv/bin/python -m pytest`. Every H2 below carries a tag because `qa/04_tags.py` scans root-level Markdown: [verified] means the test output or the registry was checked in the session named, [inferred] means a judgement.
 
 ## Done [verified]
+- Nineteenth session, 2026-09-23, two review findings against the eighteenth session's uncommitted
+  slice 3 work fixed. First, `app/db/models.py` `skills_state.credited_observation_count` was
+  `NOT NULL` with no `server_default`, so `app/db/migrate.py apply_additive_migrations` raised
+  `SchemaDriftError` on any database created before the column existed; `_column_definition`
+  confirmed the message quotes exactly that shape. Fixed with `server_default=text("0")`, matching
+  the pattern the other additive columns on `attempts` already use. A bare server default was not
+  enough: every row already in the table would then read 0, and `app/engine/fringe.py serve_stage`
+  reads `credited_observation_count > 0` to decide whether the stored `fading_stage` wins over the
+  `p_A_knowledge` bands, so a 0 backfill would silently undo a student's fading progress on the
+  first migrated read. `app/db/migrate.py` gains `_backfill_credited_observation_count`, run inside
+  `apply_additive_migrations`'s own transaction immediately after this one column is added (a new
+  `BACKFILLS` map keyed by `"table.column"`, so no other column's migration is touched): it replays
+  `app/engine/update.py credit_for` over every `attempts.per_skill_states` entry, for every session
+  with `updates_mastery = 1` (a rehearsal session never reached `apply_observation` and contributes
+  nothing), and writes the count per `(user_id, skill_id)`. This is an exact replay of the counting
+  rule `apply_observation` itself uses (`is_credited_success = c_credit > 0.0`,
+  `is_credited_failure = f_credit > 0.0 or is_gap`), not an approximation from the counters that
+  reset (`consecutive_successes`/`consecutive_failures`) or the ones a `prerequisite_gap` credit of
+  `(0.0, 0.0)` never moves (`credited_successes`/`credited_failures`), which is why the backfill
+  reads history from `attempts` rather than from any column already on `skills_state`.
+  `tests/db/test_migrate.py::test_credited_observation_count_is_backfilled_from_attempt_history`
+  seeds two sessions (one `updates_mastery = 1`, one `= 0`) and three attempts across them, drops
+  the column, migrates, and asserts the recomputed per-skill counts; red with the backfill call
+  stubbed out (both skills read back 0 against an expected 1), green restored, confirmed by
+  temporarily replacing the `BACKFILLS.get(name)` call with a no-op and rerunning.
+  Second, `app/runtime/bank.py served_steps` let a stage `example` item under the 2-step minimum
+  degrade to showing every step, the final, un-blanked answer step included, while the stage still
+  grades and credits whatever the student submits; two such items would meet 02's 2-consecutive-
+  credited-successes rule and advance a skill out of `example` with no work from the student, since
+  the answer was already on screen. Fixed by dropping the degrade path entirely: both `example` and
+  `completion` now raise the same `a stage needs at least 2 worked steps to blank the last one`
+  `ValueError` below the minimum, and `app/session/service.py resolve_served_stage` (renamed from
+  its narrower completion-only form) rewrites a slot at either stage to `unsupported` when its item
+  is under the minimum, so `served_item` never calls `served_steps` on a stage that cannot blank.
+  This replaces the completion-only fallback the eighteenth session's slice built: an item too
+  short for a completion blank now falls all the way to `unsupported` rather than stopping at
+  `example`, because `example` no longer has room to blank a step either.
+  `tests/api/test_served_steps.py::test_completion_below_the_two_step_minimum_is_served_at_unsupported`
+  (renamed and re-asserted) and the new
+  `::test_example_below_the_two_step_minimum_is_served_at_unsupported` cover both entry points; red
+  against the eighteenth session's code (asserted stage `unsupported`, got `example`), green after,
+  confirmed by stashing `app/runtime/bank.py` and `app/session/service.py` and rerunning.
+  `docs/plan/11-phased-delivery.md` Q16 is corrected in place: "served at stage unsupported only",
+  with the old "example and unsupported only" reading quoted and dated. No live API call; full
+  pytest run, client `306 passed`, `tsc --noEmit`, and `qa/12_report.py` all clean (see the
+  verification lines below this entry). `tests/e2e/test_exit_criteria_mastery.py::test_mastery_path_across_days_and_unmastery`
+  reconfirmed at 30/30 clean runs in a dedicated loop this session, on top of the eighteenth
+  session's fix, which this session did not touch.
+- Eighteenth session, 2026-09-23, slice 3: how a skill leaves stage example, and the flaky mastery
+  e2e test. The operator's ruling (Known defects, fourteenth session, first entry) is that stage
+  `example` collects a graded answer: the worked example is shown with its final step left for the
+  student, the student commits an answer, a confidence rating is collected after the answer and
+  before feedback exactly as at completion and unsupported, and the server grades and credits it
+  under 02's existing rules. `app/runtime/bank.py` `served_steps` now blanks the last step at
+  `example` too, gated on the same 2-step minimum as `completion` (`supports_completion`); below
+  the minimum `example` degrades to showing every step given, unblanked, rather than refusing the
+  slot, which is the same fallback shape the existing below-minimum completion test already
+  exercises. `app/session/service.py` `collects_confidence` now returns true for every stage, and
+  `record_confidence` no longer refuses a rating at `example`; `_check_rating` in
+  `app/feedback/render.py` picks this up unmodified, since it already read `collects_confidence`
+  generically. Client: `app/web/src/session/Item.tsx` blanks the last worked step at `example` the
+  same way as `completion` (`requiredServedStepCount`, `blanksAStep`), collects an answer at every
+  stage (`collectsAnswer = true`), and asks for a rating at every stage
+  (`collectsConfidence` returns true unconditionally); `EXAMPLE_LABEL` and its "I have explained
+  this" commit copy are removed, since every stage now commits the same way. `SessionScreen.tsx`
+  needed no change: `commit`, `rateConfidence` and `awaitsRating` already read `collectsConfidence`
+  generically rather than special-casing example, so flipping the one function was enough to route
+  example's answer and rating through the same path as completion. `docs/plan/11-phased-delivery.md`
+  implementer decision 3 is withdrawn in place, its old text quoted and the new rule stated.
+  02's internal inconsistency (line ~404's "credited observation" against line ~407's
+  `observation_count > 0`, which line 56 says counts uncredited observations too) is resolved by a
+  new field, `credited_observation_count` on `SkillState` (`app/engine/state.py`), incremented in
+  `app/engine/update.py` `apply_observation` on the same `is_credited_success or is_credited_failure`
+  event that already drives `move_counters`; `app/engine/fringe.py` `serve_stage` reads it instead
+  of `observation_count`, `app/db/models.py`/`app/session/repository.py`/`app/content/reconcile.py`
+  carry the new column (additive, picked up by `app/db/migrate.py` with no migration script), and
+  02's schema table and `serve_stage` pseudocode are edited to name the field. New test
+  `tests/engine/test_selection.py::test_serve_stage_ignores_observation_count_and_reads_credited_observation_count`
+  proves the distinction: broken against `observation_count` and watched red (asserted
+  `!= UNSUPPORTED` failed, since the stale `observation_count`-only check honoured a stage no
+  credited observation had set), restored and green. Server tests updated for the new blanking and
+  rating rule: `tests/api/test_served_steps.py`, `tests/api/test_ungraded_flow.py`,
+  `tests/feedback/test_render.py`; fixtures that force a stage via `observation_count = 1`
+  (`tests/api/conftest.py`, `tests/session/test_service.py`, `tests/session/test_serve_format.py`)
+  now also set `credited_observation_count = 1`, since `serve_stage` gates on the new field.
+  Client tests: `app/web/src/session/Item.test.tsx`, `app/web/src/session/SessionScreen.test.tsx`
+  rewritten off the withdrawn decision; the one test that had no analogue left ("offers Next item
+  after a worked example, whose attempt the server leaves ungraded") is deleted rather than
+  loosened, because the ruling makes its premise false. Flake:
+  `tests/e2e/test_exit_criteria_mastery.py::test_mastery_path_across_days_and_unmastery` failed
+  once in 10 runs of the base branch before this session's changes (`UNIQUE constraint failed:
+  audit_log.id`, confirming the shape once a naive fix was tried; the true fix is below) and 8 of 8
+  clean runs otherwise. Root cause: `app/session/preview.py` `user_assembly_rng` seeds session
+  assembly's tie-breaking draw from the process seed (fixed at 7 by the `world` fixture), the user
+  id and the day; the user id is a fresh `uuid.uuid4().hex` from `app/auth/service.py new_id`
+  minted fresh on every test's registration call, so which archetype the draw serves, and so which
+  skill this test masters and un-masters, changed from run to run though nothing else did. Fixed by
+  monkeypatching `auth_service.new_id` for the one `"USER"` prefix only, to a fixed id, leaving
+  every other prefix (`AUD`, `PKC`, `CHL`, ...) on the real generator; an earlier attempt that
+  pinned every prefix to the same fixed string broke on the second `write_audit` call inside one
+  test run (`UNIQUE constraint failed: audit_log.id`), which is the artifact quoted above. Proof:
+  36 consecutive runs with 0 failures (6 immediately after the fix, 30 more in a dedicated loop,
+  `for i in $(seq 1 30); do .venv/bin/python -m pytest -q tests/e2e/test_exit_criteria_mastery.py::test_mastery_path_across_days_and_unmastery; done`,
+  every exit code 0). No live API call; `app/providers/replay.py` cassette only.
 - Seventeenth session, 2026-09-23, slice 2 of the token economy: a Claude-only $100 tier, priced
   and wired, plus a guard fix from the previous review. `tools/cost_model.py` gains
   `tier.hundred_claude_only`, additive next to `tier.hundred`: the verifier prices on
@@ -721,20 +825,6 @@ From the fifteenth session, 2026-09-23, found and not fixed.
 
 From the fourteenth session, 2026-09-23, found and not fixed.
 
-- The fading ladder cannot leave stage example in real use. 02 (lines 55, 245, 709) advances
-  example only on 2 consecutive credited successes, 11 P1 scope item 10 collects a rating "on
-  every item", but 11 implementer decision 3 says there is no answer at example, and the client
-  follows decision 3 and sends none. So a skill whose own items start at example leaves it only
-  through propagated credit or the p_knowledge bands. The server still grades and credits an
-  answer sent at example, and gate 23 and exit criteria 5 and 6 pass only because their helpers
-  send one. Refusing that answer on the server was built and reverted this session: it made gate
-  23, test_unit2_session_changes_mastery_state and test_mastery_path_across_days_and_unmastery
-  fail on every run, and with the helpers changed to send nothing they failed 5 runs in 9. 02
-  also disagrees with itself: line 404 says the bands apply until "a credited observation" and
-  line 407 tests `observation_count > 0`, which line 56 says counts uncredited observations too.
-- `test_mastery_path_across_days_and_unmastery` failed 1 run in 6 under the old behaviour in the
-  repair agent's scratch runs; 6 of 6 clean runs and 4 more at close passed. Probably draw
-  dependent, not confirmed.
 - The review-queue route (`app/api/routes/review.py` around line 70) resolves an item audit row
   with no sample check and no one-verdict rule, so a verdict outside the sample or a second one
   can still reach the table that way. `key_error_rate` counts neither, and it publishes no rate
@@ -1501,6 +1591,54 @@ Fifteenth session, on the instruction to build slice 1 of the persistent develop
   announcement of 2026-09-23, a secondhand report of a price rather than an independent reading of
   the page itself.
 
+Eighteenth session, on the delegated ruling for slice 3, how a skill leaves stage example.
+
+- The ruling: stage `example` collects a graded answer. The worked example is shown with its final
+  step left for the student, the student commits an answer, a confidence rating is collected after
+  the answer and before feedback exactly as at completion and unsupported, and the server grades
+  and credits it under 02's existing rules, so 02's rule of 2 consecutive credited successes at
+  example applies as written. 11 implementer decision 3 is withdrawn; its old text is quoted in
+  place rather than deleted, so the record of what changed survives.
+- Example now blanks its last step the same way completion does, gated on the same 2-step minimum
+  (`supports_completion`), rather than getting its own threshold or its own fallback stage. Below
+  the minimum, example degrades to every step given and unblanked instead of refusing the slot,
+  matching the shape the existing completion-below-minimum test already established, because
+  inventing a second fallback rule for one archetype shape no P1 item actually has was not asked
+  for and was not built.
+- 02's line ~404/line ~407 inconsistency (a comment naming "a credited observation", code reading
+  `observation_count`, which line 56 already says counts uncredited observations too) is resolved
+  toward the comment: a new `credited_observation_count` field, not toward loosening the comment to
+  match the code, because the code's reading is the one the ladder's own R7 counters do not use
+  either, and 02 names `credited_observation_count` as the field tied to the same event that moves
+  `consecutive_successes`/`consecutive_failures`.
+- `test_mastery_path_across_days_and_unmastery`'s flake is fixed by pinning the registered user id
+  for that one test, not by seeding `app/session/preview.py`'s rng some other way. The rng's
+  contract (process seed, user id, day) is real production behaviour, spelled out in 02 and 11;
+  changing it to make one test stable would be changing what ships to make a test convenient, which
+  is backwards. The user id was never a value the operator specified, only one `uuid.uuid4()`
+  handed to `new_id` at registration, so pinning it in the test is the draw the test controls, not
+  the draw the system depends on.
+
+Nineteenth session, on two verified review findings against the eighteenth session's slice 3 work,
+delegated for a fix rather than a second ruling.
+
+- The eighteenth session's "example degrades to every step given and unblanked" reading, quoted
+  above, is withdrawn. It was written to match the existing completion-below-minimum fallback
+  shape, but that shape predates example collecting a graded answer: once example grades what it
+  shows, showing the answer along with the given steps is not a degrade, it is a free credited
+  success. Example now needs the same 2-step room to blank a step that completion needs, and an
+  item under that minimum is served at `unsupported` at either stage rather than at `example`,
+  since `example` no longer has a shorter fallback of its own.
+- The backfill for `skills_state.credited_observation_count` replays `attempts.per_skill_states`
+  rather than approximating from `credited_successes`/`credited_failures` or the consecutive
+  counters, because none of those three round-trips losslessly: a `prerequisite_gap` credit is
+  `(0.0, 0.0)` on the target skill (`app/engine/update.py CREDIT_TABLE`), so it moves neither `c`
+  nor `f`, and it can still land on a `consecutive_failures` value that a later drop resets back to
+  0 while `fading_stage` stays at `example` (`drop_fading` is a no-op at the floor of
+  `FADING_ORDER`, and `move_counters` resets the streak counter regardless). `attempts` is the one
+  place the per-skill mastery state that drove each credited event is still on record, so it is the
+  only source an exact replay can be built from.
+
 ## Decisions taken on the operator's instruction, 2026-09-20 [inferred]
 
 Sixth session, on the instruction "answer all decisions for me". Every open question the ledger
@@ -1570,26 +1708,21 @@ Human-only, in the order that unblocks the most:
    deterministic checks. Free, needs no key, and is the one measurement left that can close part of
    the Claude-only tier's $28.95 overrun (Known defects, this session) rather than leave it priced
    at the worst case.
-1. Ruling on how a skill leaves stage example (Known defects, first entry). Either example
-   collects a graded answer (then decision 3 in 11 is withdrawn and the client sends one), or
-   example is left by another rule 02 must state. Unblocks the server-side refusal and makes gate
-   23 and exit criteria 5 and 6 prove the flow the real client runs.
-2. Gates 17 and 30, exit criterion 7: the 130 hand-authored items, 10 per archetype over 11's 13.
+1. Gates 17 and 30, exit criterion 7: the 130 hand-authored items, 10 per archetype over 11's 13.
    Shape `docs/operator/items.md`, check `python3 tools/check_items.py <dir>`. Unblocks
    `test_item_verification_tools` and `eval_p1_distractor_paths`.
-3. Gate 29, exit criterion 4: the 100-item key audit over those items. Shape
+2. Gate 29, exit criterion 4: the 100-item key audit over those items. Shape
    `docs/operator/key-audit.md`, check `python3 tools/check_audit_verdicts.py`.
-4. Exit criterion 8: real tutor calls with the key, then `tools/serving_cost.py <db>`. The
+3. Exit criterion 8: real tutor calls with the key, then `tools/serving_cost.py <db>`. The
    persistent developer spend cap (`app/providers/guard.py`, this session) now stands in front of
    any such call once `GROWTH_TUTOR_PROVIDER=anthropic` is set; `tools/dev_spend.py` reports spent,
    cap and remaining before and after.
-5. Rulings: which Anthropic stream errors are retryable (07); whether adding a passkey requires
+4. Rulings: which Anthropic stream errors are retryable (07); whether adding a passkey requires
    re-authentication (09); whether a second error note replaces or is refused; the purge
    confirmation phrase; copy for a failed request and for the account screen; PyNaCl for
    provider key storage; `/growth-tokens.css` defaulting to the repository token file (three
    assertions in tests/api/test_static_mount.py); `uvicorn` in pyproject and 06; permission to
    download Inter as a self-hosted woff2.
 
-Blocked on the above: the server refusing an answer at example (item 1); the retryable flag
-(item 5); a re-auth requirement on adding a passkey (item 5); the review-queue route's sample
-check (needs the drawn sample, item 3).
+Blocked on the above: the retryable flag (item 4); a re-auth requirement on adding a passkey
+(item 4); the review-queue route's sample check (needs the drawn sample, item 2).

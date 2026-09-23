@@ -11,14 +11,15 @@ import { SelfExplanationPrompt } from "./SelfExplanationPrompt";
    cannot show. */
 
 /* 11 P1 scope item 8: the completion stage requires the two step minimum in its Q16. That counts
-   the whole worked solution, and the served list is that solution less its blanked last step. */
+   the whole worked solution, and the served list is that solution less its blanked last step.
+   Stage example now blanks the same way (BUILD-LEDGER.md, "Decisions taken on the operator's
+   instruction, 2026-09-23": implementer decision 3 is withdrawn, and example collects a graded
+   answer), so the two stages share the minimum. */
 export const MINIMUM_COMPLETION_STEPS = 2;
 
 const BLANKED_AT_COMPLETION = 1;
 
 export const COMMIT_LABEL = "Check my answer";
-
-export const EXAMPLE_LABEL = "I have explained this";
 
 export const WORKED_STEPS_MISSING =
    "The worked steps for this problem have not reached me, so I cannot work through it yet.";
@@ -26,10 +27,12 @@ export const WORKED_STEPS_MISSING =
 export const ANSWER_UNAVAILABLE =
    "The math keyboard did not load, so this problem cannot take my answer. Nothing I type here would be saved.";
 
-/* app/session/service.py collects_confidence: a rating belongs to completion and unsupported and
-   never to example, which commits no answer to be confident about (11 implementer decision 3). */
-export function collectsConfidence(stage: ServedItem["stage"]) {
-   return stage !== "example";
+/* app/session/service.py collects_confidence: a rating is collected before feedback on every
+   stage, example included. 11 implementer decision 3, which carved example out because it
+   committed no answer, is withdrawn (BUILD-LEDGER.md, "Decisions taken on the operator's
+   instruction, 2026-09-23"): example now commits a graded answer like any other stage. */
+export function collectsConfidence(_stage: ServedItem["stage"]) {
+   return true;
 }
 
 export interface ItemProps {
@@ -48,7 +51,7 @@ export interface ItemProps {
 }
 
 function requiredServedStepCount(stage: ServedItem["stage"]) {
-   if (stage === "completion") {
+   if (stage === "completion" || stage === "example") {
       return MINIMUM_COMPLETION_STEPS - BLANKED_AT_COMPLETION;
    }
 
@@ -92,12 +95,12 @@ export function Item(props: ItemProps) {
    const hasEnoughSteps = shownSteps.length >= requiredServedStepCount(item.stage);
    const canDrawStage = !needsWorkedSteps || hasEnoughSteps;
 
-   const blanksAStep = isCompletion && hasEnoughSteps;
+   const blanksAStep = (isCompletion || isExample) && hasEnoughSteps;
    const blankedStep = blanksAStep ? blankedStepAfter(shownSteps) : null;
 
    const servesMcq = item.format === "mcq" && item.stage === "unsupported";
-   const collectsAnswer = !isExample;
-   const commitLabel = isExample ? EXAMPLE_LABEL : COMMIT_LABEL;
+   const collectsAnswer = true;
+   const commitLabel = COMMIT_LABEL;
 
    const takesNoAnswer = collectsAnswer && !servesMcq && answerUnavailable;
    const isCommitted = awaitingConfidence;

@@ -70,7 +70,11 @@ def answer_for(entry, item, correctly):
 
 
 def collects_confidence(item):
-   return item["stage"] != "example"
+   """A rating is collected before feedback at every stage, example included (BUILD-LEDGER.md,
+   "Decisions taken on the operator's instruction, 2026-09-23": 11 implementer decision 3 is
+   withdrawn, and the stage argument stays so a caller can still read the intent at the call site).
+   """
+   return item["stage"] in ("example", "completion", "unsupported")
 
 
 def submit(client, session_id, item, answer, today):

@@ -70,6 +70,9 @@ class SkillState(Base):
    last_practised_at: Mapped[str | None] = mapped_column(Text, nullable=True)
    fading_stage: Mapped[str] = mapped_column(Text, nullable=False)
    observation_count: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+   credited_observation_count: Mapped[int] = mapped_column(
+      Integer, nullable=False, default=0, server_default=text("0")
+   )
    distinct_archetypes_succeeded: Mapped[str] = mapped_column(Text, nullable=False, default="[]")
    success_days: Mapped[str] = mapped_column(Text, nullable=False, default="[]")
    mastered: Mapped[int] = mapped_column(Integer, nullable=False, default=0)

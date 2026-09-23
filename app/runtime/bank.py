@@ -97,10 +97,17 @@ def supports_completion(worked_solution):
 def served_steps(worked_solution, stage):
    """The steps the stage shows, numbered from 1, as text only.
 
-   Backward fading (11 P1 scope 8): stage example shows every step, stage completion blanks the
-   last one, stage unsupported shows none. A completion needs one step given and one blanked, the
-   2-step minimum of Q16. No step carries its mathjson, because the last step's mathjson is the
-   answer key (app/items/ingest.py checks the key against it).
+   Backward fading (11 P1 scope 8): stage example and stage completion both blank the last step
+   and leave it for the student to answer, stage unsupported shows none. The operator's ruling on
+   how a skill leaves stage example (BUILD-LEDGER.md, "Decisions taken on the operator's
+   instruction, 2026-09-23") withdraws 11 implementer decision 3: example now collects a graded
+   answer exactly as completion does, so the two stages blank the same way and need the same
+   2-step minimum of Q16 to have a step to blank. Below the minimum, showing every given step
+   would show the answer along with them, and the stage still grades and credits what it collects,
+   so both stages refuse rather than degrade; app/session/service.py resolve_served_stage rewrites
+   such a slot to unsupported before served_item ever calls this function on it. No step carries
+   its mathjson, because the last step's mathjson is the answer key (app/items/ingest.py checks
+   the key against it).
    """
    served_stage = FadingStage(stage)
    is_unsupported = served_stage == FadingStage.UNSUPPORTED
@@ -109,13 +116,15 @@ def served_steps(worked_solution, stage):
       return None
 
    steps = worked_steps(worked_solution)
-   is_completion = served_stage == FadingStage.COMPLETION
-   is_below_minimum = is_completion and not supports_completion(worked_solution)
+   has_blank_room = supports_completion(worked_solution)
 
-   if is_below_minimum:
-      raise ValueError(f"a completion needs at least {COMPLETION_MINIMUM_STEPS} worked steps")
+   if not has_blank_room:
+      raise ValueError(
+         f"stage {served_stage.value} needs at least {COMPLETION_MINIMUM_STEPS} worked steps "
+         "to blank the last one"
+      )
 
-   shown = steps[:-1] if is_completion else steps
+   shown = steps[:-1]
 
    return [
       {"index": position, "text": step["text"]}

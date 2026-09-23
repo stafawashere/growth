@@ -67,17 +67,25 @@ def rendered_marks(feedback):
 
 
 def test_step_verification_at_example_and_completion():
+   """Example blanks its last step exactly as completion does (BUILD-LEDGER.md, "Decisions taken
+   on the operator's instruction, 2026-09-23": 11 implementer decision 3 is withdrawn).
+   """
    step_count = len(WORKED_STEP_TEXTS)
-   example = render.render_feedback(
-      stage=FadingStage.EXAMPLE,
-      archetype=ARCHETYPE,
-      item=ITEM,
-      submitted=False,
-   )
    cases = {
       "unsubmitted": (False, None),
       "right": (True, True),
       "wrong": (True, False),
+   }
+   examples = {
+      name: render.render_feedback(
+         stage=FadingStage.EXAMPLE,
+         archetype=ARCHETYPE,
+         item=ITEM,
+         submitted=submitted,
+         correct=correct,
+         confidence=Confidence.UNSURE,
+      )
+      for name, (submitted, correct) in cases.items()
    }
    completions = {
       name: render.render_feedback(
@@ -91,12 +99,14 @@ def test_step_verification_at_example_and_completion():
       for name, (submitted, correct) in cases.items()
    }
 
-   assert rendered_marks(example) == expected_marks(step_count, None)
+   assert rendered_marks(examples["unsubmitted"]) == expected_marks(step_count - 1, None)
+   assert rendered_marks(examples["right"]) == expected_marks(step_count - 1, True)
+   assert rendered_marks(examples["wrong"]) == expected_marks(step_count - 1, False)
    assert rendered_marks(completions["unsubmitted"]) == expected_marks(step_count - 1, None)
    assert rendered_marks(completions["right"]) == expected_marks(step_count - 1, True)
    assert rendered_marks(completions["wrong"]) == expected_marks(step_count - 1, False)
 
-   for feedback in [example, *completions.values()]:
+   for feedback in [*examples.values(), *completions.values()]:
       assert feedback.kind is render.FeedbackKind.STEP_VERIFICATION
       assert feedback.elaborated is None
 
@@ -149,16 +159,17 @@ def test_an_ungraded_submission_at_unsupported_states_no_verdict():
    assert ungraded.self_explanation_prompt is None
 
 
-def test_a_submitted_example_marks_every_step_given_with_no_verdict():
+def test_a_submitted_example_marks_the_blank_with_no_verdict_when_ungraded():
    example = render.render_feedback(
       stage=FadingStage.EXAMPLE,
       archetype=ARCHETYPE,
       item=ITEM,
       submitted=True,
       correct=None,
+      confidence=Confidence.UNSURE,
    )
 
-   assert rendered_marks(example) == expected_marks(len(WORKED_STEP_TEXTS), None)
+   assert rendered_marks(example) == expected_marks(len(WORKED_STEP_TEXTS) - 1, None)
    assert example.kind is render.FeedbackKind.STEP_VERIFICATION
    assert example.elaborated is None
    assert example.self_explanation_prompt is not None
@@ -252,7 +263,7 @@ def test_self_explanation_only_on_examples_and_corrected_errors():
       confidence=Confidence.CONFIDENT,
    )
 
-   assert worked_example.self_explanation_prompt == render.self_explanation_prompt(4)
+   assert worked_example.self_explanation_prompt == render.self_explanation_prompt(3)
    assert corrected_error.self_explanation_prompt == render.self_explanation_prompt(3)
    assert completion_correct.self_explanation_prompt is None
    assert unsupported_correct.self_explanation_prompt is None

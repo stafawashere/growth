@@ -56,6 +56,7 @@ class SkillState:
    last_practised_at: datetime | None = None
    fading_stage: FadingStage = FadingStage.EXAMPLE
    observation_count: int = 0
+   credited_observation_count: int = 0
    unaided_success_count: int = 0
    distinct_archetypes_succeeded: set[str] = field(default_factory=set)
    success_days: set[date] = field(default_factory=set)

@@ -14,13 +14,9 @@ const workedSteps: ServedStep[] = [
    { index: 4, text: "f'(x) = 2x sin(x) + x^2 cos(x)" }
 ];
 
-/* app/runtime/bank.py served_steps: every step at example, all but the last at completion. */
+/* app/runtime/bank.py served_steps: example and completion both blank the last step. */
 function servedStepsAt(stage: FadingStage): ServedStep[] | null {
-   if (stage === "example") {
-      return workedSteps;
-   }
-
-   if (stage === "completion") {
+   if (stage === "example" || stage === "completion") {
       return workedSteps.slice(0, -1);
    }
 
@@ -87,12 +83,15 @@ function affordanceValues() {
 }
 
 describe("Item fading stages", () => {
-   it("renders the worked example and the self explanation prompt at stage example, and no confidence prompt", () => {
+   it("renders the worked example with its self explanation prompt and blanks the last step", () => {
       renderItem("example", "short_answer");
 
-      expect(screen.getByText(workedSteps[3].text)).toBeTruthy();
+      expect(screen.getByText(workedSteps[0].text)).toBeTruthy();
+      expect(screen.getByText(workedSteps[1].text)).toBeTruthy();
+      expect(screen.getByText(workedSteps[2].text)).toBeTruthy();
+      expect(screen.queryByText(workedSteps[3].text)).toBeNull();
+      expect(screen.getByTestId("blanked-step").getAttribute("data-step-index")).toBe("4");
       expect(affordanceValues()).toContain(P1_FEEDBACK_AFFORDANCES.selfExplanationPrompt);
-      expect(affordanceValues()).not.toContain(P1_FEEDBACK_AFFORDANCES.confidencePrompt);
 
       cleanup();
    });
@@ -109,14 +108,14 @@ describe("Item fading stages", () => {
       cleanup();
    });
 
-   it("collects confidence before feedback at stage completion and at stage unsupported", () => {
-      renderItem("completion", "short_answer");
-      expect(affordanceValues()).toContain(P1_FEEDBACK_AFFORDANCES.confidencePrompt);
-      cleanup();
+   it("collects confidence before feedback at every stage, example included", () => {
+      const stages: FadingStage[] = ["example", "completion", "unsupported"];
 
-      renderItem("unsupported", "short_answer");
-      expect(affordanceValues()).toContain(P1_FEEDBACK_AFFORDANCES.confidencePrompt);
-      cleanup();
+      for (const stage of stages) {
+         renderItem(stage, "short_answer");
+         expect(affordanceValues()).toContain(P1_FEEDBACK_AFFORDANCES.confidencePrompt);
+         cleanup();
+      }
    });
 
    it("shows the problem alone at stage unsupported, with no worked steps and no self explanation prompt", () => {
@@ -197,15 +196,27 @@ describe("Item worked step guard", () => {
 
       cleanup();
    });
+
+   it("draws a two step worked example, the first step given and the second blanked", () => {
+      renderItem("example", "short_answer", [workedSteps[0]]);
+
+      expect(screen.queryByTestId("worked-steps-unavailable")).toBeNull();
+      expect(screen.getByText(workedSteps[0].text)).toBeTruthy();
+      expect(screen.getByTestId("blanked-step").getAttribute("data-step-index")).toBe("2");
+
+      cleanup();
+   });
 });
 
 describe("Item copy", () => {
-   it("asks in the student's voice at the stages that commit an answer", () => {
-      renderItem("completion", "short_answer");
+   it("asks in the student's voice at every stage, example included", () => {
+      const stages: FadingStage[] = ["example", "completion", "unsupported"];
 
-      expect(screen.getByRole("button", { name: "Check my answer" })).toBeTruthy();
-
-      cleanup();
+      for (const stage of stages) {
+         renderItem(stage, "short_answer");
+         expect(screen.getByRole("button", { name: "Check my answer" })).toBeTruthy();
+         cleanup();
+      }
    });
 });
 
@@ -258,7 +269,7 @@ describe("Item math input failure", () => {
 
 describe("Item waiting on the rating the attempt was committed without", () => {
    it("keeps the confidence prompt and withdraws the answer entry and the commit button", () => {
-      const stages: FadingStage[] = ["completion", "unsupported"];
+      const stages: FadingStage[] = ["example", "completion", "unsupported"];
 
       for (const stage of stages) {
          renderItem(stage, "short_answer", servedStepsAt(stage), false, vi.fn(), true);
@@ -270,13 +281,5 @@ describe("Item waiting on the rating the attempt was committed without", () => {
 
          cleanup();
       }
-   });
-
-   it("still collects no rating at stage example, which commits no answer to rate", () => {
-      renderItem("example", "short_answer", servedStepsAt("example"), false, vi.fn(), true);
-
-      expect(affordanceValues()).not.toContain(P1_FEEDBACK_AFFORDANCES.confidencePrompt);
-
-      cleanup();
    });
 });

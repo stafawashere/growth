@@ -9,6 +9,60 @@ purpose: Where the application build stands, session by session, so the next ses
 
 Application code lives at the repository root under `app/` and `tests/`, at the paths docs/plan names. The project CLAUDE.md still says "docs-only, no product"; that sentence is the operator's to amend and this ledger only records the conflict. Tooling: uv-managed Python 3.12.13 in `.venv/`, dependencies in `pyproject.toml`, tests via `.venv/bin/python -m pytest`. Every H2 below carries a tag because `qa/04_tags.py` scans root-level Markdown: [verified] means the test output or the registry was checked in the session named, [inferred] means a judgement.
 
+## Overnight orchestration status, 2026-09-23 [verified]
+
+The operator's overnight run stopped on its 10-slice limit. P1 to P3 cannot all be met without the
+operator: gates 17, 29 and 30 and exit criterion 7 count only items with provenance `operator`, and
+the key audit is a human verdict. Every commit below was pushed to `origin/main` only after the
+orchestrator reran `.venv/bin/python -m pytest`, `npx vitest run`, `npx tsc --noEmit` and
+`qa/12_report.py` in the same session, and each exited 0.
+
+| Slice | Commit | What landed |
+| --- | --- | --- |
+| 0 | 8a046d0 | Session fourteen's 139 uncommitted files: export, progress and settings routes, security headers, the account client |
+| 1 | db348bc | Persistent cumulative developer spend cap, $15.00, in `app/providers/guard.py`; `tools/dev_spend.py`; Opus 5.5 priced |
+| 2 | 3a16d02 | Claude-only tier priced; one role-to-model table (`app/providers/model_routing.py`) pinned to `tools/cost_model.py` |
+| 3 | 4b85ba3 | Stage example collects a graded answer and a rating; credited observation count; mastery path flake pinned |
+| 4 | 4e4a527 | The 76 BC-PT records labelled for deterministic grading (48 deterministic, 28 model required); grader priced from it |
+| 5 | cab28e1 | Rulings: retryable stream errors, passkey re-auth, audit sample enforcement, purge phrase, token CSS default, eval cadence |
+| 6 | 8ca265d | 130 agent-drafted P1 items in `content/items_p1_agent/`, served by default, provenance names the model |
+| 7 | 7acb7ee | Four shuffled options on every draft; SymPy bound alarm rearmed; missing audit sample refused with a 400 |
+| 8 | 5162a79 | 360 distractor options re-derived against their named errors, 167 retagged or revalued |
+| 9 | baecad3 | The 42 items whose distractors no held error produced were redesigned |
+| 10 | 5691f56 | First live calls: Haiku 4.5 tutor cassettes, measured prompt tokens per model, cost per served item |
+
+Tests at close: pytest collects 870 and exits 0; vitest 307 passed; tsc exits 0; qa 14 PASS, 0 FAIL;
+`tools/check_items.py content/items_p1_agent` 130 clean.
+
+Live spend: $0.0353 over seventeen claude-haiku-4-5 calls (see "Live API spend log"). The developer
+cap reads spent 0.0353, cap 15.0000, remaining 14.9647. The key held $19.25 before the run, so about
+$19.21 should remain on it.
+
+Per-student projection, `tier.hundred_claude_only.cycle` in `tools/cost_model.py`: $92.95 to exam
+day, inside the $50 to $100 target with $7.05 of headroom. It rests on three things the operator
+should know. The grader line uses the agent's determinism labels, which are [inferred]; if every
+judged point needed a model the tier would be $128.95. The golden set 2 canary cadence was cut from
+9 runs to 2 on the operator's delegated authority. Most role token figures are still characters
+divided by 3.1, because only the tutor has a real template to measure. The measured tutor cost is a
+median of $0.00206 per served item on Haiku, uncached because the 1,092-token prefix is under
+Haiku's 4,096 cache minimum; the same tokens on the assigned Sonnet 5 with the 1-hour cache price at
+a $0.00157 median, so the tutor stays on Sonnet 5.
+
+Open for the operator, in order of what unblocks most:
+
+1. Review the 130 drafts in `content/items_p1_agent/`, including the judgment calls listed in Known
+   defects (twenty-sixth session entry), and author or approve the operator-provenance items gates
+   17 and 30 need. Only the operator may relabel a draft `operator`.
+2. Draw the 100-item key audit sample (`tools/draw_key_audit_sample.py`) over operator items and
+   record verdicts, for gate 29 and exit criterion 4.
+3. Approve or change the eval cadence ruling and the `CHARACTERS_PER_TOKEN` replacement in 14.
+4. The fixture items in `tests/session/test_serve_format.py` have no options, so a server guard that
+   never serves MCQ without options would turn them red; a ruling on those fixtures unblocks the guard.
+
+Recommended next slice: P2 review mode and FSRS scheduling with `test_desired_retention_switch`,
+replay only, since the P1 gates still open are the operator's and the engine needs a finite due
+queue to teach from now to May 2027.
+
 ## Done [verified]
 - Twenty-sixth session, 2026-09-23, distractor repair: nine archetypes' open audit findings were
   repaired one agent per archetype, 42 items in all. 39 stems were redesigned so that every

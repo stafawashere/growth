@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 
 import { App } from "./App";
 import { watchSystemTheme } from "./theme";
+import "katex/dist/katex.min.css";
 import "./styles/motion.css";
 import "./styles/app.css";
 

@@ -227,7 +227,7 @@ def item_row(record, item_id, snapshot_id, status, now):
       variant_id=record.get("variant_id"),
       snapshot_id=snapshot_id,
       parameter_draw=json.dumps(record.get("parameter_draw", {})),
-      stem=json.dumps(record["stem"]),
+      stem=record["stem"]["text"],
       figure_spec=json.dumps(record["figure"]) if record.get("figure") else None,
       options=record.get("options"),
       answer_key=json.dumps(record["answer_key"]),

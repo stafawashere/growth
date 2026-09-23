@@ -29,7 +29,10 @@ model to copy content from.
 - `id`: string, the item id.
 - `archetype_id`: string, one of the 13 ids above.
 - `variant_id`: string or null. P1 disables `pick_variant`, so this is normally null.
-- `format`: `"mcq"` or `"short_answer"`.
+- `format`: `"mcq"` or `"short_answer"`. This is the item's stored format, not what a session
+  serves it as: `app/engine/select.py` `format_for_attempt` picks the served format per attempt
+  (R29), independently of this field, so a `short_answer` item may still carry `options` (see
+  below) for the turns it is served as `mcq`.
 - `stem`: object, at least `text`.
 - `figure`: omit entirely for P1. No P1 archetype carries a figure.
 - `answer_key`: object with `form` and `mathjson`. `mathjson` is what the SymPy and numeric
@@ -38,15 +41,20 @@ model to copy content from.
   The **last** step's `mathjson` is compared against `answer_key.mathjson` by both the SymPy
   equivalence check and the numeric check (`app/items/ingest.py`, `solution_expression`), so it
   must carry MathJSON equivalent to the key, not merely the final English step.
-- `options`: array, present only for `format: "mcq"`. Each option is
+- `options`: array. Present on `mcq` items, and also worth setting on a `short_answer` item so it
+  has something to serve on the turns `format_for_attempt` gives it as `mcq`, since a
+  `short_answer` item never grows options at serve time. Each option is
   `{"id": <string>, "value": <mathjson>, "is_key": <bool>, "error_path": <BC-ERR id or null>}`.
   Exactly one option carries `is_key: true`. That option's `error_path` is null. Every other
   option (a distractor) must carry a non-null `error_path`, and it must be a BC-ERR id that one
   of the archetype's own skills holds, not just any BC-ERR id in the library. `error_path` is
   read from the option itself, never from `archetypes.common_distractors`, which is prose and is
-  parsed by nothing (`app/items/distractor_paths.py`). `violated_step`, a zero-based index into
-  `worked_solution`, is read by the feedback screen and is worth setting on every distractor even
-  though the checker in `tools/check_items.py` does not enforce it.
+  parsed by nothing (`app/items/distractor_paths.py`). `violated_step` is a zero-based index into
+  the archetype's own `expected_solution_path` in `data/archetypes.json`, not into this item's
+  `worked_solution`: `app/feedback/render.py` `violated_step_index` reads it straight off the
+  chosen option (falling back to the error record) and indexes `archetype["expected_solution_path"]`
+  with it. It is read by the feedback screen and is worth setting on every distractor even though
+  the checker in `tools/check_items.py` does not enforce it.
 - `calculator_status`: `"no_calculator"` for every P1 item.
 - `representation`: `"BC-REP-01"` for every P1 item.
 - `difficulty_settings`: array of `{"difficulty_factor_id": <BC-DF id>, "setting": <string>}`.

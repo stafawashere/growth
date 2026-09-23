@@ -127,6 +127,47 @@ BACKFILLS = {
 }
 
 
+def repair_wrapped_stems(engine):
+   """items.stem held json.dumps(record["stem"]) before app/items/ingest.py item_row switched to
+   record["stem"]["text"], so any row ingested under the old code still carries the wrapper, such
+   as '{"text": "Differentiate f with respect to x."}', and app/runtime/bank.py _as_item_dict
+   serves that string straight to the student. ingest_new_records skips a record whose id is
+   already stored, so re-running ingestion never touches those rows; this repairs them in place on
+   every startup, which is cheap and a no-op once every row has been unwrapped once.
+   """
+   with engine.connect() as connection:
+      candidates = connection.execute(
+         text("SELECT id, stem FROM items WHERE stem LIKE '{%'")
+      ).mappings().all()
+
+   repaired = []
+
+   for row in candidates:
+      try:
+         payload = json.loads(row["stem"])
+      except (TypeError, ValueError):
+         continue
+
+      is_wrapped_stem = isinstance(payload, dict) and isinstance(payload.get("text"), str)
+
+      if not is_wrapped_stem:
+         continue
+
+      repaired.append((row["id"], payload["text"]))
+
+   has_work = len(repaired) > 0
+
+   if has_work:
+      with engine.begin() as connection:
+         for item_id, text_value in repaired:
+            connection.execute(
+               text("UPDATE items SET stem = :stem WHERE id = :id"),
+               {"stem": text_value, "id": item_id},
+            )
+
+   return tuple(item_id for item_id, _ in repaired)
+
+
 def apply_additive_migrations(engine):
    """Adds every missing column with ALTER TABLE ADD COLUMN and returns a tuple of the
    "table.column" strings it added, sorted. Raises SchemaDriftError when a missing column

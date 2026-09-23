@@ -9,8 +9,8 @@ import pytest
 from sqlalchemy import JSON, Float, Integer, LargeBinary, Numeric, inspect, select, text
 from sqlalchemy.orm import Session
 
-from app.db.migrate import SchemaDriftError, apply_additive_migrations, missing_columns
-from app.db.models import Attempt, Base, make_engine
+from app.db.migrate import SchemaDriftError, apply_additive_migrations, missing_columns, repair_wrapped_stems
+from app.db.models import Attempt, Base, Item, make_engine
 
 
 def droppable_nullable_columns():
@@ -333,6 +333,70 @@ def test_credited_observation_count_is_backfilled_from_attempt_history(tmp_path)
       )
 
    assert counts == {"SK-01": 1, "SK-02": 1}
+
+
+def item_row(item_id, stem, now):
+   return Item(
+      id=item_id,
+      archetype_id="ARC-01",
+      variant_id=None,
+      snapshot_id="SNAP-1",
+      parameter_draw="{}",
+      stem=stem,
+      figure_spec=None,
+      options=None,
+      answer_key="{}",
+      worked_solution="[]",
+      calculator_status="no_calculator",
+      representation="symbolic",
+      difficulty_settings="[]",
+      skills="[]",
+      provenance="{}",
+      status="draft",
+      dedupe_minhash="[]",
+      created_at=now,
+      updated_at=now,
+   )
+
+
+def test_repair_wrapped_stems_unwraps_a_row_ingested_under_the_old_code(tmp_path):
+   """app/items/ingest.py item_row used to store json.dumps(record["stem"]), and
+   ingest_new_records never re-touches a row whose id is already in items, so a row ingested
+   before the fix keeps serving its JSON wrapper to the student forever unless something repairs
+   the stored value directly.
+   """
+   engine = make_engine(tmp_path / "wrapped.sqlite")
+   now = "2026-09-23T00:00:00+00:00"
+
+   with Session(engine) as session:
+      session.add(item_row("ITM-WRAPPED", '{"text": "Differentiate f with respect to x."}', now))
+      session.add(item_row("ITM-PLAIN", "Differentiate g with respect to x.", now))
+      session.add(item_row("ITM-BRACE-NOT-JSON", "{not json at all", now))
+      session.commit()
+
+   repaired = repair_wrapped_stems(engine)
+
+   assert repaired == ("ITM-WRAPPED",)
+
+   with Session(engine) as session:
+      assert session.get(Item, "ITM-WRAPPED").stem == "Differentiate f with respect to x."
+      assert session.get(Item, "ITM-PLAIN").stem == "Differentiate g with respect to x."
+      assert session.get(Item, "ITM-BRACE-NOT-JSON").stem == "{not json at all"
+
+
+def test_repair_wrapped_stems_is_idempotent(tmp_path):
+   engine = make_engine(tmp_path / "wrapped-twice.sqlite")
+   now = "2026-09-23T00:00:00+00:00"
+
+   with Session(engine) as session:
+      session.add(item_row("ITM-WRAPPED", '{"text": "Differentiate f with respect to x."}', now))
+      session.commit()
+
+   first = repair_wrapped_stems(engine)
+   second = repair_wrapped_stems(engine)
+
+   assert first == ("ITM-WRAPPED",)
+   assert second == ()
 
 
 def test_a_database_with_no_drift_opens_no_write_transaction(tmp_path):

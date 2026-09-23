@@ -309,7 +309,7 @@ class AuthSession(Base):
 def make_engine(path):
    from sqlalchemy import create_engine
 
-   from app.db.migrate import apply_additive_migrations
+   from app.db.migrate import apply_additive_migrations, repair_wrapped_stems
 
    engine = create_engine(f"sqlite:///{path}")
 
@@ -322,5 +322,6 @@ def make_engine(path):
    Base.metadata.create_all(engine)
 
    apply_additive_migrations(engine)
+   repair_wrapped_stems(engine)
 
    return engine

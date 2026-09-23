@@ -8,10 +8,12 @@ export type ServedFormat = "mcq" | "short_answer";
 
 export type Confidence = "guess" | "unsure" | "confident";
 
-/* app/runtime/bank.py STUDENT_OPTION_FIELDS. is_key and error_path are withheld by the server. */
+/* app/runtime/bank.py STUDENT_OPTION_FIELDS. is_key and error_path are withheld by the server.
+   value carries the option's raw MathJSON, a bare number or symbol counting as the simplest
+   case, so its type is unknown rather than string. */
 export interface ServedOption {
    id: string;
-   value?: string;
+   value?: unknown;
    label?: string;
    mathjson?: unknown;
 }

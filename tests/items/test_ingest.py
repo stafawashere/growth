@@ -90,6 +90,22 @@ def test_ingest_publishes_an_item_whose_key_passes_every_check(tmp_path):
       assert queued == 0
 
 
+def test_ingested_stem_is_the_plain_text_not_the_wrapping_object(tmp_path):
+   """A served item hands its stem straight to the student (app/runtime/bank.py
+   _as_item_dict), so the row must hold the plain text of record["stem"]["text"], never the
+   record's {"text": ...} wrapper serialized back into the column.
+   """
+   directory = write_records(tmp_path / "items_p1", [good_record()])
+
+   with open_db(tmp_path) as db:
+      ingest.ingest_directory(db, directory, ACTIVE_ERROR_IDS, SNAPSHOT_ID, NOW)
+      db.commit()
+
+      row = db.get(models.Item, "ITM-0001")
+
+      assert row.stem == "Differentiate f with respect to x."
+
+
 def test_a_short_answer_item_carrying_mcq_options_still_ingests(tmp_path):
    """Operator ruling of 2026-09-23: every agent draft becomes MCQ-capable with four options
    regardless of its format field, and the served format (app/engine/select.py

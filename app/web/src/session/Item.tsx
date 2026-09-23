@@ -1,6 +1,7 @@
 import type { Confidence, ServedItem, ServedStep } from "../api/types";
 import { MathField } from "../input/MathField";
 import { McqControl } from "../input/McqControl";
+import { MathText } from "../math/MathText";
 import { ConfidencePrompt } from "./ConfidencePrompt";
 import { SelfExplanationPrompt } from "./SelfExplanationPrompt";
 
@@ -110,7 +111,7 @@ export function Item(props: ItemProps) {
 
    return (
       <article className="card item" data-testid="item" data-stage={item.stage}>
-         <p className="item-stem" data-testid="item-stem">{item.stem}</p>
+         <p className="item-stem" data-testid="item-stem"><MathText text={item.stem} /></p>
 
          {needsWorkedSteps && !canDrawStage ? (
             <p data-testid="worked-steps-unavailable">{WORKED_STEPS_MISSING}</p>
@@ -120,7 +121,7 @@ export function Item(props: ItemProps) {
             <ol className="worked-steps" data-testid="worked-steps">
                {shownSteps.map((step) => (
                   <li key={step.index} data-step-index={step.index}>
-                     {step.text}
+                     <MathText text={step.text} />
                   </li>
                ))}
 

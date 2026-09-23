@@ -1,11 +1,25 @@
 import { useId } from "react";
 import type { ServedOption } from "../api/types";
+import { MathValue } from "../math/MathValue";
 
 export interface McqControlProps {
    groupLabel: string;
    options: ServedOption[];
    selectedId?: string | null;
    onSelect: (optionId: string) => void;
+}
+
+/* An option carries a human label when one was authored, and otherwise a MathJSON value: a bare
+   number or symbol, or an expression tree such as ["Add", ["Multiply", -5, ["Sin", "x"]]]
+   (app/runtime/bank.py STUDENT_OPTION_FIELDS). Only the label branch is ever plain text; the
+   math branch always goes through MathValue, even for a bare number, so every option is
+   typeset consistently. */
+function optionMathSource(option: ServedOption) {
+   if (option.mathjson !== undefined) {
+      return option.mathjson;
+   }
+
+   return option.value;
 }
 
 export function McqControl(props: McqControlProps) {
@@ -16,8 +30,9 @@ export function McqControl(props: McqControlProps) {
       <fieldset className="choice-group">
          <legend>{groupLabel}</legend>
          {options.map((option) => {
-            const optionText = option.label ?? option.value ?? option.id;
             const isSelected = selectedId === option.id;
+            const hasLabel = option.label !== undefined;
+            const mathSource = optionMathSource(option);
 
             return (
                <label key={option.id}>
@@ -28,7 +43,7 @@ export function McqControl(props: McqControlProps) {
                      checked={isSelected}
                      onChange={() => onSelect(option.id)}
                   />
-                  {optionText}
+                  {hasLabel ? option.label : <MathValue value={mathSource ?? option.id} className="option-math" />}
                </label>
             );
          })}

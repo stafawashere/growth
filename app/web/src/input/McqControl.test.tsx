@@ -89,4 +89,22 @@ describe("McqControl", () => {
          expect(pairs).toEqual(firstPairs);
       }
    });
+
+   it("typesets a MathJSON option as math and never prints the raw array", () => {
+      const options: ServedOption[] = [
+         { id: "A", value: 0 },
+         { id: "B", value: ["Add", ["Multiply", -5, ["Sin", "x"]], 3] },
+         { id: "C", value: ["Rational", 5, 6] },
+         { id: "D", value: 1 }
+      ];
+
+      const { container } = render(
+         <McqControl groupLabel="Choose one" options={options} onSelect={vi.fn()} />
+      );
+
+      expect(container.innerHTML).not.toMatch(/Multiply/);
+      expect(container.innerHTML).not.toMatch(/Sin/);
+      expect(container.innerHTML).not.toMatch(/Rational/);
+      expect(container.querySelectorAll(".katex").length).toBe(options.length);
+   });
 });

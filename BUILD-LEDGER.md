@@ -39,7 +39,13 @@ cap reads spent 0.0353, cap 15.0000, remaining 14.9647. The key held $19.25 befo
 $19.21 should remain on it.
 
 Per-student projection, `tier.hundred_claude_only.cycle` in `tools/cost_model.py`: $92.95 to exam
-day, inside the $50 to $100 target with $7.05 of headroom. It rests on three things the operator
+day, inside the $50 to $100 target with $7.05 of headroom. Split, on the operator's 2026-09-23
+instruction to use the Claude Code subscription wherever the terms allow: $52.14 stays on the API
+key (`tier.hundred_claude_only.api_cycle`, runtime: tutor, grader, transcriber, diagnostician,
+screen, evals) and $40.81, 43.90 percent of the tier, moves to offline Claude Code sessions at
+$0.00 API spend (`tier.hundred_claude_only.offline_cycle`, template authoring and the verifier's
+blind re-solve). See `docs/plan/14-token-economy.md` "Offline work on the operator's Claude Code
+subscription" and `docs/operator/offline-authoring.md`. It rests on three things the operator
 should know. The grader line uses the agent's determinism labels, which are [inferred]; if every
 judged point needed a model the tier would be $128.95. The golden set 2 canary cadence was cut from
 9 runs to 2 on the operator's delegated authority. Most role token figures are still characters
@@ -64,6 +70,110 @@ replay only, since the P1 gates still open are the operator's and the engine nee
 queue to teach from now to May 2027.
 
 ## Done [verified]
+- 2026-09-23, a verified review finding against the MCQ math-rendering fix below: the `stem`
+  fix in `app/items/ingest.py` `item_row` only reaches a record on its first ingest.
+  `ingest_new_records` (`app/runtime/bank.py` `ItemBank._ingest_pending_source`) skips any id
+  already in `items`, so a row ingested before the fix keeps serving its `{"text": ...}` wrapper
+  forever; restarting the app over the operator's persistent database would not touch it. Fixed
+  with a startup data repair rather than a one-off SQL script, since nothing else in this
+  codebase re-ingests: `app/db/migrate.py` `repair_wrapped_stems` selects the rows whose `stem`
+  looks JSON-wrapped (`LIKE '{%'`), unwraps the ones that parse to `{"text": <string>}`, and
+  leaves everything else (a legitimate stem that happens to start with `{`, or one that starts
+  with `{` but is not valid JSON) untouched; `app/db/models.py` `make_engine` calls it right after
+  `apply_additive_migrations`, so it runs once per process start and is a no-op once every row has
+  been unwrapped. Tests: `tests/db/test_migrate.py` gained
+  `test_repair_wrapped_stems_unwraps_a_row_ingested_under_the_old_code` (a wrapped row, a plain
+  row and a row that merely starts with `{` but is not JSON, asserting only the wrapped one
+  changes) and `test_repair_wrapped_stems_is_idempotent`; both proved red (`ImportError: cannot
+  import name 'repair_wrapped_stems'`) against the pre-fix `app/db/migrate.py` and
+  `app/db/models.py`, restored, then green. `.venv/bin/python -m pytest -q -p no:cacheprovider`
+  exits 0. No live Anthropic API call.
+- 2026-09-23, MCQ options no longer render raw MathJSON. `McqControl.tsx` typesets each option's
+  `mathjson`/`value` (a bare number, symbol or an expression tree such as
+  `["Add", ["Multiply", -5, ["Sin", "x"]], 3]`) through `mathlive`'s `convertMathJsonToLatex` and
+  KaTeX's `renderToString` (`app/web/src/math/mathjson.ts`, `MathValue.tsx`, new); the typeset
+  markup is `aria-hidden`, and a `convertLatexToAsciiMath` rendering carries the accessible name in
+  a `.visually-hidden` span instead, so radio semantics, keyboard use and focus styling are
+  untouched. `Item.tsx`'s stem and worked-solution steps, which some curated items carry with
+  inline `\( \)`-delimited LaTeX, now route through the same pattern via `MathText.tsx` (new); an
+  agent-drafted item's plain-text stem with no delimiters renders exactly as before. `mathlive`
+  needs the compute engine loaded before `convertMathJsonToLatex` works, so
+  `@cortex-js/compute-engine` (already a transitive dependency) joined `package.json` directly.
+  `ServedOption.value` is now typed `unknown` in `api/types.ts`, matching what the server actually
+  sends, not `string`. Fixed in the same pass: `app/items/ingest.py`'s `item_row` was storing
+  `json.dumps(record["stem"])`, the whole `{"text": ...}` wrapper, into the `stem` column, so every
+  served item's stem was the literal JSON string, not the plain text; it now stores
+  `record["stem"]["text"]`. `docs/operator/items.md` corrected: `violated_step` indexes the
+  archetype's own `expected_solution_path` (`app/feedback/render.py` `violated_step_index`), not
+  the item's `worked_solution`, and `options` may sit on a `short_answer` item for the turns
+  `format_for_attempt` serves it as `mcq`. Tests: `McqControl.test.tsx` gained a MathJSON-array
+  option case (red on `option.label ?? option.value ?? option.id` rendered as a plain string,
+  green after; the assertion was tightened once, from checking the raw LaTeX source never appears
+  anywhere in the DOM to checking it never appears in the visible `.katex-html` node, since KaTeX's
+  own MathML annotation legitimately carries the LaTeX source hidden from sighted users). `math/
+  MathText.test.tsx` (new) covers both the agent-drafted plain-text case and the `\( \)`-delimited
+  case, each proven red on a stub `MathText` and green after. `tests/items/test_ingest.py` gained
+  a stem-shape test, red on the old `json.dumps` line and green after. `.venv/bin/python -m pytest
+  -q -p no:cacheprovider` exits 0; `npx vitest run` exits 0, 310 tests; `npx tsc --noEmit` exits 0;
+  `qa/12_report.py` exits 0, 14 PASS. Verified live: a session driven through
+  `tests/fixtures/items_p1/` to an `mcq`-stage item (`ITM-SYN-02002-02`, option A
+  `["Multiply", 8, "x"]`) served the fixed stem and options over HTTP; a browser build of the real
+  `McqControl`/`MathText`/`mathjson.ts` source against that served JSON showed `8x`, `0`, `4`, `8`
+  as typeset options with no `Multiply` or bracket text anywhere. `GET /progress` would not answer
+  within 45s against that same seeded state even in isolation, unrelated to this fix and not
+  investigated further; see Known defects. No live Anthropic API call.
+- 2026-09-23, independent item review of `content/items_p1_agent/` applied and re-checked. The
+  review judged all 130 items: 65 approve, 57 fix, 8 reject, 0 wrong keys. Applying it changed 65
+  item files, by archetype 01004 8, 01008 3, 01015 10, 02002 5, 02006 1, 02007 6, 02008 3,
+  02010 8, 02011 3, 03001 2, 03004 4, 03005 8, 03008 4. A separate agent per archetype then
+  re-solved the changed items blind, confirmed every key with SymPy and re-derived every
+  distractor from its tagged error, and corrected 8 items: `01004-06` (new stem, key -1 no longer
+  the only negative), `01008-08` (options reordered, key to D, breaking a run of three B keys),
+  `02010-05` (new stem, key no longer the smallest and no option alone in form), `02011-01` and
+  `02011-09` (redesigned so the `BC-ERR-02028` sign drop is literal), and `03005-00`, `03005-06`,
+  `03005-09` (constants changed so the key is interior; key extreme in 4 of 10 03005 items, down
+  from 7). 01015, 02002, 02006, 02007, 02008, 03001, 03004 and 03008 needed no correction. Every
+  re-check agent's `tools/check_items.py` run exited 0. After the pass, `.venv/bin/python
+  tools/check_items.py content/items_p1_agent` exits 0 with "records read: 130", "clean: 130",
+  "with violations: 0" and 10 items in each of the 13 archetypes, and `.venv/bin/python -m pytest
+  -q -p no:cacheprovider tests/tools tests/items tests/e2e` exits 0 with 162 dots and no F or E
+  (the doubled `-q` suppresses the summary line). Operator sign-off is still pending for all
+  130. What remains is under Known defects, twenty-sixth session.
+- Twenty-eighth session, 2026-09-23, a verified review finding against the twenty-seventh
+  session's runbook: `docs/operator/offline-authoring.md` step 2 had the blind re-solve agent
+  compare its own key against the drafted key, which required handing the drafted key to that
+  agent and broke `docs/plan/13-ai-engineering.md` line 14, "the verifier never sees the key."
+  Step 2 now has the re-solving agent write its own key and worked solution to a file of its own,
+  never given the drafted key, and a script, not the agent, reads both files and compares the two
+  keys; the step no longer contradicts its own claim that the deterministic checks around the
+  verifier are unchanged. Docs-only change, no code touched.
+- Twenty-seventh session, 2026-09-23, offline work on the operator's Claude Code subscription:
+  `tools/cost_model.py` gained a Claude-only offline split, `tier.hundred_claude_only.api_cycle`
+  ($52.14, the tutor, grader, transcriber, diagnostician, screen and evals, all of which stay on
+  the API key) against `tier.hundred_claude_only.offline_cycle` ($40.81, 43.90 percent of the
+  $92.95 tier, template authoring and the verifier's blind re-solve, both moved to Claude Code
+  sessions at $0.00 API spend). Evals do not split: golden set 1 already costs $0.00 on the
+  template gate, and golden sets 2 and 3 grade the production grader and transcriber prompts on
+  their production model, so both stay on the API key in full. `docs/plan/14-token-economy.md`
+  gained "Offline work on the operator's Claude Code subscription" with the Agent SDK quickstart
+  and Claude Code authentication quotes and URLs, and the $100 tier table's Total row gained two
+  "of which" lines. `docs/operator/offline-authoring.md` is the new runbook, describing the
+  one-agent-per-archetype author, independent blind re-solve, and `tools/check_items.py` gate
+  shape the twenty-sixth session actually ran, and naming the rolling five hour and weekly
+  subscription limits as the pacing risk. `tests/tools/test_cost_model.py` gained
+  `test_claude_only_tier_splits_into_runtime_api_and_offline_claude_code_lines`, run red against
+  the pre-edit `tools/cost_model.py` (`KeyError:
+  'tier.hundred_claude_only.offline_template_line'`) and green after, restored via `git stash`
+  around the code edit alone so the test file's addition was never itself reverted. All four
+  checks quoted: `.venv/bin/python -m pytest -q -p no:cacheprovider` exit 0 (870-plus collected,
+  no FAILED lines, the doubled `-q` from `addopts` suppresses the summary line);
+  `npx vitest run` 307 passed, exit 0; `npx tsc --noEmit` exit 0; `qa/12_report.py` exit 0.
+  `python3 tools/cost_model.py --check docs/plan/13-ai-engineering.md
+  docs/operator/ai-operating-costs.md docs/plan/14-token-economy.md` prints "0 unknown dollar
+  figures" for all three and exits 0. No live Anthropic API call was made.
+  `content/items_p1_agent/` and `app/web/` were not touched by this session; both showed unrelated
+  concurrent changes in `git diff` during the session, from other work in progress on this
+  repository, not from anything this session wrote.
 - Twenty-sixth session, 2026-09-23, distractor repair: nine archetypes' open audit findings were
   repaired one agent per archetype, 42 items in all. 39 stems were redesigned so that every
   distractor is a single application of an error the archetype's skills hold (01004 5, 01008 7,
@@ -1186,40 +1296,58 @@ seventeen live calls add nothing to that model, since P1 wires only the tutor an
 
 ## Known defects [verified]
 
-From the twenty-sixth session, 2026-09-23, found and not fixed.
+- 2026-09-23, found while verifying the MCQ math-rendering fix live: `GET /progress`
+  (`app/session/preview.py` `queue_preview`, which calls `assemble_session` again) did not answer
+  within 45 seconds against a seeded user with several completed sessions, over the small
+  `tests/fixtures/items_p1` corpus, in an otherwise idle server with no concurrent request. `GET
+  /sessions/{id}/next` and login against the same state answered immediately. Not investigated
+  past confirming it reproduces with no concurrent access to rule out; not touched, since it sits
+  outside this slice's scope.
 
-- Resolved later the same day by the distractor repair (Done above): the 42 options whose tag did
-  not produce their value, the two-slip values `03005-00` D, `03005-01` C and `03005-08` B, the
-  looser readings `03004-05` A, `02007-08` D and `01008-04` A, the below-top-level cancellations in
-  `01004-02`, `01004-04` and `01004-07`, `03004-05` D, and the three free-`dydx` options
-  (`03004-00` B, `03004-08` B, `03004-09` A). What the repair left open follows.
-- Still open from the audit: `02002-02` C and `02006-00` C (partial application) and `02011` step 1
-  for `BC-ERR-02027` keep their looser readings, since the repair did not cover those archetypes.
-  `03004-03` A keeps the tag-and-value change to `BC-ERR-03011`; the value is what that error
-  produces, but it holds y beside three numeric options, and a fully numeric set needs a stem
-  redesign.
-- Judgement calls in the repair, for operator review. In 01004, "one application of
-  `BC-ERR-01010`" is read as cancelling one top-level summand in the stem or in the simplified
-  quotient, following `01004-00`; under it the value 1 is a distractor in all five redesigned items,
-  and `01004-05` keeps `BC-DF-17` "high" though its piecewise rule is now simpler. In 01008 the
-  point-value redesigns (00, 01, 02, 05, 06, 09) make each distractor the non-key root of a
-  quadratic whose other root is the key, and 01008-04 equates branches at x = 0 though the middle
-  branch is closed there. `02007-04` and `02007-08` each tag two options `BC-ERR-02019`, one of them
-  the base-and-exponent exchange, which may deserve its own error record. The 02008 redesigns all
-  nest a product and a quotient, because a bare product supports only `BC-ERR-02020`; the
-  `violated_step` indices on the nested items are the repairer's reading. Four 03001 items now share
-  the x-times-a-three-layer-composite shape, and `03001-02` tags two options `BC-ERR-03006` under
-  two readings. `03004-00`, `03004-08`, `03008-01` and `03008-07` each tag two options
-  `BC-ERR-03008` (either factor held constant).
-- `BC-QA-03005`: all seven redesigns use one product-curve family, whose distractors are the two
-  off-curve roots and their midpoint with the key outside that interval, a pattern a test-wise
-  student could spot. `03005-03` lost its no-such-point count variant (`BC-QV-03005-01`), `03005-06`
-  is no longer a count item, `03005-05` no longer exercises the numerator-must-be-nonzero variable,
-  and none of the seven had `difficulty_settings` re-rated. The unrepaired `03005-02`, `03005-04`
-  and `03005-07` keep lenient `BC-ERR-03013` readings (the other coordinate, or the origin), and
-  `03008-02` C and `03008-03` A were not re-audited.
-- The audit task listed `BC-QA-03005` as returning no result, although its result was delivered
-  (under an archetype field that carried a preamble). The counts above use that result.
+From the twenty-sixth session, 2026-09-23, found and not fixed. Rewritten after the independent
+item review and its per-archetype re-check (Done above); what the distractor repair and the review
+resolved is no longer listed.
+
+- Operator sign-off is pending for all 130 items in `content/items_p1_agent/`.
+- Bank-wide: 55 `short_answer` records still carry four options; the checker accepts this and no
+  pass changed the formats.
+- `BC-QA-01004`: key 2 in 01004-01 is the largest option, the only extreme key left in the
+  archetype. Every one of the ten items carries 0 (`BC-ERR-01008`) and 1 as options.
+- `BC-QA-01008`: 01008-03 D and 01008-08 A come from one equation at a single boundary, read as one
+  wrong-branch application. 01008-04 equates branches at x = 0 though the middle branch is closed
+  there (not re-examined).
+- `BC-QA-01015`: C is never the key letter (A 3, B 3, D 4). In every item the two bracket
+  distractors differ from the key by exactly the excluded endpoint integers, which cannot be
+  removed while the archetype holds only `BC-ERR-01031` and `BC-ERR-01032`. 01015-04 C could also be
+  tagged `BC-ERR-01032` at step 2.
+- `BC-QA-02002`: the value 0 on the `BC-ERR-02005` options (02002-02 A, 03, 07, 09) does not strictly
+  follow from setting h = 0 before cancelling, which gives 0/0; a fix needs an error the archetype
+  does not hold.
+- `BC-QA-02006`: 02006-00 C keeps its partial-application reading (not re-examined).
+- `BC-QA-02007`: C is the key in 5 of 10 items; the key is the smallest option in 02007-03 and
+  02007-07; in 02, 03, 05, 07 and 09 the key shares a feature with every distractor because the
+  archetype holds only two errors. 02007-04 and 02007-08 each tag two options `BC-ERR-02019`, one of
+  them the base-and-exponent exchange, which may deserve its own error record.
+- `BC-QA-02008`: 02008-04 keeps a key, negation and unsquared-denominator cluster, a weak cue with no
+  alternative single-error value among `BC-ERR-02020` to 02023. The 02008-03 C and D reading
+  requires treating the constant denominator 4 with the quotient rule before the tagged slip.
+- `BC-QA-02010`: 02010-07 B, 08 B and 09 D tag `BC-ERR-02025` for a dropped sign on the derivative
+  of cos, though the record's observed behavior names only cot and csc.
+- `BC-QA-02011`: 02011-00, 02, 04, 06, 07 and 08 still use input-0 readings of `BC-ERR-02028`, left
+  for a set-wide pass. Guess in the re-check: 02011-01 D treats the full swap of slope and height as
+  one application of `BC-ERR-02027`.
+- `BC-QA-03001`: in 03001-09 the key is the only option sharing a surface feature with all three
+  others, a weak convergence cue built into the single-error design. 03001-02 tags two options
+  `BC-ERR-03006` under two readings.
+- `BC-QA-03004` and `BC-QA-03008`: 03004-00, 03004-08, 03008-01 and 03008-07 each tag two options
+  `BC-ERR-03008` (either factor held constant). 03008-02 C still holds y beside three numeric
+  options. In 03008-03 and 03008-08 the `BC-ERR-03023` distractor (y' = 0) always equals holding y
+  constant under `BC-ERR-03008` for a DE of the form y' = g(x)y + ..., so no point choice separates
+  them. The key is the largest numeric option in 4 of the 6 numeric 03008 items (01, 02, 04, 09).
+- `BC-QA-03005`: every product-form item (all but 03005-02) has distractors {r1, r2, midpoint} with
+  the key outside that triple, a give-away that needs a redesign away from the F(x)G(y) = c form.
+  The key is still the extreme option in 01, 03, 05 and 08.
+- The scratchpad generators and the option shuffle are not in the repository.
 
 From the twenty-fifth session, 2026-09-23, found and not fixed.
 
@@ -2296,6 +2424,45 @@ Twenty-third session, on the operator's delegated ruling on the agent-drafted it
   and `tests/api/test_routes.py` (7 tests) went red under it, because their fixture items carry
   `options=None` and expect the MCQ turn. Changing those tests is the operator's call.
 
+Twenty-seventh session, on the instruction to use the operator's Claude Code subscription to cut
+the AI cost wherever the terms allow.
+
+- The Claude-only $100 tier splits into an API-key runtime total and an offline Claude Code
+  subscription total. Template authoring and the verifier's blind re-solve move to Claude Code
+  sessions, $0.00 API spend, because both produce content committed to the repository, the same
+  shape as the 130 items in `content/items_p1_agent/` authored on 2026-09-23. The tutor, the
+  grader, the transcriber, the diagnostician and the screen stay on the API key, because the
+  Claude Agent SDK quickstart states "Unless previously approved, Anthropic does not allow third
+  party developers to offer claude.ai login or rate limits for their products, including agents
+  built on the Claude Agent SDK" (https://code.claude.com/docs/en/agent-sdk/quickstart.md
+  [verified]) and each of those five serves a live student or grades a live attempt. New API total
+  $52.14, offline total $40.81, 43.90 percent of the $92.95 tier
+  [measured: `tier.hundred_claude_only.api_cycle`, `tier.hundred_claude_only.offline_cycle`,
+  `tier.hundred_claude_only.offline_share`, `python3 tools/cost_model.py`].
+- Evals do not split. Golden set 1 already costs $0.00 on the template gate. Golden set 2 grades
+  the production grader prompt on `claude-sonnet-5` and golden set 3 reads the production
+  transcriber prompt on the same model, both against fixed operator labels; a Claude Code agent is
+  a different harness and would not measure the production prompt on its production model, so both
+  stay on the API key in full at $22.88.
+- The offline pass is not free of limits. A Pro or Max plan's usage caps are a rolling five hour
+  window plus a weekly limit, neither published as a count
+  (https://code.claude.com/docs/en/authentication.md [verified]), so `docs/operator/offline-authoring.md`
+  paces the 348 template-authoring calls and 6,178 verifier re-solves across sessions rather than
+  assuming they clear in one sitting.
+
+Twenty-eighth session, a verified review finding against the twenty-seventh session's offline
+work on the operator's Claude Code subscription, `docs/operator/offline-authoring.md` (step 2 of
+the runbook).
+
+- The twenty-seventh session's step 2 had the blind re-solve agent compare its own key against the
+  drafted key, which means an operator following the runbook would have to hand the drafted key to
+  the re-solving session, breaking the quality floor `docs/plan/13-ai-engineering.md` line 14 sets:
+  "The verifier never sees the key." Step 2 now has the re-solving agent write its own key and
+  worked solution to a file of its own, never given the drafted key, and a script, not the agent,
+  reads both files and compares the two keys. The step also drops the reading that the comparison
+  itself is a model judgment, so it no longer contradicts the same paragraph's claim that the
+  deterministic checks around the verifier are unchanged.
+
 ## Decisions taken on the operator's instruction, 2026-09-20 [inferred]
 
 Sixth session, on the instruction "answer all decisions for me". Every open question the ledger
@@ -2362,8 +2529,7 @@ Human-only, in the order that unblocks the most:
 
 0a. Twenty-third and twenty-fourth sessions: the operator reviews the 130 agent drafts in
    `content/items_p1_agent/` (its README lists what the audit left open, and the twenty-sixth
-   session's Known defects entry names the 42 distractors no held error produces and the fixes
-   flagged as weak). The drafts are served now, every one with four options, but count
+   session's Known defects entry lists what the independent review and its re-check left open). The drafts are served now, every one with four options, but count
    toward nothing. Gates 17, 29 and 30 and exit criterion 7 still wait on items with operator
    provenance, whether hand-authored or drafts the operator has relabelled after review.
 
@@ -2372,7 +2538,9 @@ Human-only, in the order that unblocks the most:
    eval-cadence ruling (`CLAUDE_ONLY_GOLDEN_SET_2_CANARY_CADENCE = 2`) together close the
    Claude-only tier's overrun: $92.95, $7.05 under the $100.00 ceiling. What is left to move the
    grader line again is a relabelling, if golden set 2's per point type exact match shows a label
-   was wrong.
+   was wrong. Closed the twenty-seventh session, 2026-09-23: the tier splits $52.14 API key against
+   $40.81 offline Claude Code subscription; `docs/operator/offline-authoring.md` is the runbook the
+   operator follows to run that offline pass.
 1. Gates 17 and 30, exit criterion 7: the 130 hand-authored items, 10 per archetype over 11's 13.
    Shape `docs/operator/items.md`, check `python3 tools/check_items.py <dir>`. Unblocks
    `test_item_verification_tools` and `eval_p1_distractor_paths`. Once published, run

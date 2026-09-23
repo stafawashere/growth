@@ -1,0 +1,388 @@
+{
+ "purpose": "Per-BC-PT judgment label for docs/plan/14-token-economy.md open question 2: whether the record's earns text is fully expressible as one of the four deterministic checks named in docs/plan/03-diagnosis-and-feedback.md (SymPy equivalence, numeric comparison to three decimals, bounds match, units present), given the record also answers no to justification_required, interpretation_required and hypotheses_required.",
+ "research_date": "2026-09-23",
+ "evidence_tag": "inferred",
+ "method": "Each of the 76 active data/scoring_points.json records was read against its own earns, does_not_earn, notation_requirements and precision_rules text and against the four checks and the partition rule in docs/plan/03-diagnosis-and-feedback.md. A record that answers yes to any of justification_required, interpretation_required or hypotheses_required is model_required by 03's own partition. A record that answers no to all three is deterministic only when its earns text names one or more mathematical objects, an expression, an equation, an antiderivative, an integrand, a numeric value, integral bounds or units, that the four checks compare directly; it is model_required when earning the point also depends on reading prose, a verbal claim, a graphical criterion, an implied or inferred choice, a step count, or a label naming a quantity in words, none of which any of the four checks perform.",
+ "labels": [
+  {
+   "id": "BC-PT-99001",
+   "label": "deterministic",
+   "reason": "earns names a definite integral with matching limits and integrand, covered by the bounds-match check and SymPy equivalence on the integrand"
+  },
+  {
+   "id": "BC-PT-99002",
+   "label": "deterministic",
+   "reason": "earns names an integrand only, covered by SymPy equivalence"
+  },
+  {
+   "id": "BC-PT-99003",
+   "label": "deterministic",
+   "reason": "earns names an antiderivative, covered by SymPy equivalence, per 03's own example for this record"
+  },
+  {
+   "id": "BC-PT-99004",
+   "label": "deterministic",
+   "reason": "earns is a numeric value bound by the three-decimal precision rule, covered by the numeric-comparison check"
+  },
+  {
+   "id": "BC-PT-99005",
+   "label": "deterministic",
+   "reason": "earns is a numeric value together with a specific setup expression or equation the item's key can state, covered by SymPy equivalence on the setup and numeric comparison on the value"
+  },
+  {
+   "id": "BC-PT-99006",
+   "label": "deterministic",
+   "reason": "earns is units presence and correctness, covered by the units check"
+  },
+  {
+   "id": "BC-PT-99007",
+   "label": "model_required",
+   "reason": "record answers yes to interpretation_required, so 03's partition routes it to the model regardless of the earns text"
+  },
+  {
+   "id": "BC-PT-99008",
+   "label": "model_required",
+   "reason": "record answers yes to interpretation_required, so 03's partition routes it to the model regardless of the earns text"
+  },
+  {
+   "id": "BC-PT-99009",
+   "label": "model_required",
+   "reason": "record answers yes to interpretation_required, so 03's partition routes it to the model regardless of the earns text"
+  },
+  {
+   "id": "BC-PT-99010",
+   "label": "model_required",
+   "reason": "record answers yes to justification_required, so 03's partition routes it to the model regardless of the earns text"
+  },
+  {
+   "id": "BC-PT-99011",
+   "label": "model_required",
+   "reason": "record answers yes to justification_required, so 03's partition routes it to the model regardless of the earns text"
+  },
+  {
+   "id": "BC-PT-99012",
+   "label": "model_required",
+   "reason": "record answers yes to justification_required, so 03's partition routes it to the model regardless of the earns text"
+  },
+  {
+   "id": "BC-PT-99013",
+   "label": "model_required",
+   "reason": "earns accepts discussing the sign change of the derivative or using the phrase 'critical points of the function' as alternatives to the equation, so the check has to read prose, not only compare an expression"
+  },
+  {
+   "id": "BC-PT-99014",
+   "label": "model_required",
+   "reason": "earns explicitly allows the sign statement 'symbolically or in words', so the check has to read a verbal claim on some responses"
+  },
+  {
+   "id": "BC-PT-99015",
+   "label": "model_required",
+   "reason": "record answers yes to justification and hypotheses_required, so 03's partition routes it to the model regardless of the earns text"
+  },
+  {
+   "id": "BC-PT-99016",
+   "label": "model_required",
+   "reason": "record answers yes to justification and hypotheses_required, so 03's partition routes it to the model regardless of the earns text"
+  },
+  {
+   "id": "BC-PT-99017",
+   "label": "model_required",
+   "reason": "record answers yes to justification and hypotheses_required, so 03's partition routes it to the model regardless of the earns text"
+  },
+  {
+   "id": "BC-PT-99018",
+   "label": "model_required",
+   "reason": "earns turns on which of several sum forms, left, right, midpoint or trapezoidal, the response built and how many of five or six (or seven of eight) factors match, a structural form judgment none of the four checks name"
+  },
+  {
+   "id": "BC-PT-99019",
+   "label": "deterministic",
+   "reason": "earns is a numeric value together with a specific setup expression or equation the item's key can state, covered by SymPy equivalence on the setup and numeric comparison on the value"
+  },
+  {
+   "id": "BC-PT-99020",
+   "label": "deterministic",
+   "reason": "earns names a specific expression or equation the key can state, covered by SymPy equivalence"
+  },
+  {
+   "id": "BC-PT-99021",
+   "label": "deterministic",
+   "reason": "earns names a specific expression or equation the key can state, covered by SymPy equivalence"
+  },
+  {
+   "id": "BC-PT-99022",
+   "label": "deterministic",
+   "reason": "earns names a derivative expression built by a stated rule, covered by SymPy equivalence"
+  },
+  {
+   "id": "BC-PT-99023",
+   "label": "deterministic",
+   "reason": "earns names a derivative expression built by a stated rule, covered by SymPy equivalence"
+  },
+  {
+   "id": "BC-PT-99024",
+   "label": "deterministic",
+   "reason": "earns names a derivative expression built by a stated rule, covered by SymPy equivalence"
+  },
+  {
+   "id": "BC-PT-99025",
+   "label": "deterministic",
+   "reason": "earns is a numeric value bound by the three-decimal precision rule, covered by the numeric-comparison check"
+  },
+  {
+   "id": "BC-PT-99026",
+   "label": "model_required",
+   "reason": "record answers yes to justification_required, so 03's partition routes it to the model regardless of the earns text"
+  },
+  {
+   "id": "BC-PT-99027",
+   "label": "deterministic",
+   "reason": "earns names a derivative expression built by a stated rule, covered by SymPy equivalence"
+  },
+  {
+   "id": "BC-PT-99028",
+   "label": "deterministic",
+   "reason": "earns names a specific expression or equation the key can state, covered by SymPy equivalence"
+  },
+  {
+   "id": "BC-PT-99029",
+   "label": "deterministic",
+   "reason": "earns names an antiderivative, covered by SymPy equivalence, per 03's own example for this record"
+  },
+  {
+   "id": "BC-PT-99030",
+   "label": "deterministic",
+   "reason": "earns names an antiderivative, covered by SymPy equivalence, per 03's own example for this record"
+  },
+  {
+   "id": "BC-PT-99031",
+   "label": "deterministic",
+   "reason": "earns names a specific expression or equation the key can state, covered by SymPy equivalence"
+  },
+  {
+   "id": "BC-PT-99032",
+   "label": "deterministic",
+   "reason": "earns names a specific expression or equation the key can state, covered by SymPy equivalence"
+  },
+  {
+   "id": "BC-PT-99033",
+   "label": "deterministic",
+   "reason": "earns is a numeric value together with a specific setup expression or equation the item's key can state, covered by SymPy equivalence on the setup and numeric comparison on the value"
+  },
+  {
+   "id": "BC-PT-99034",
+   "label": "model_required",
+   "reason": "earns turns on demonstrating the required number of steps and, per notation_requirements, on whether an unlabelled table is present when the answer is wrong, a step count and labelling judgment outside SymPy equivalence, numeric comparison, bounds match and units"
+  },
+  {
+   "id": "BC-PT-99035",
+   "label": "deterministic",
+   "reason": "earns names specific series or polynomial terms, covered by SymPy equivalence on each term"
+  },
+  {
+   "id": "BC-PT-99036",
+   "label": "deterministic",
+   "reason": "earns names specific series or polynomial terms, covered by SymPy equivalence on each term"
+  },
+  {
+   "id": "BC-PT-99037",
+   "label": "deterministic",
+   "reason": "earns names specific series or polynomial terms, covered by SymPy equivalence on each term"
+  },
+  {
+   "id": "BC-PT-99038",
+   "label": "deterministic",
+   "reason": "earns names specific series or polynomial terms, covered by SymPy equivalence on each term"
+  },
+  {
+   "id": "BC-PT-99039",
+   "label": "deterministic",
+   "reason": "earns names a specific expression or equation the key can state, covered by SymPy equivalence"
+  },
+  {
+   "id": "BC-PT-99040",
+   "label": "deterministic",
+   "reason": "earns is a numeric value bound by the three-decimal precision rule, covered by the numeric-comparison check"
+  },
+  {
+   "id": "BC-PT-99041",
+   "label": "model_required",
+   "reason": "record answers yes to justification_required, so 03's partition routes it to the model regardless of the earns text"
+  },
+  {
+   "id": "BC-PT-99042",
+   "label": "deterministic",
+   "reason": "earns names a specific expression or equation the key can state, covered by SymPy equivalence"
+  },
+  {
+   "id": "BC-PT-99043",
+   "label": "model_required",
+   "reason": "notation_requirements makes correct limit notation part of what earns the point rather than an accepted variant, so the check has to read notation the way 03 reserves for the model"
+  },
+  {
+   "id": "BC-PT-99044",
+   "label": "deterministic",
+   "reason": "earns is an interval or set of endpoints the key can state, covered by the bounds-match check"
+  },
+  {
+   "id": "BC-PT-99045",
+   "label": "deterministic",
+   "reason": "earns names specific series or polynomial terms, covered by SymPy equivalence on each term"
+  },
+  {
+   "id": "BC-PT-99046",
+   "label": "model_required",
+   "reason": "record answers yes to justification_required, so 03's partition routes it to the model regardless of the earns text"
+  },
+  {
+   "id": "BC-PT-99047",
+   "label": "deterministic",
+   "reason": "earns is a numeric value bound by the three-decimal precision rule, covered by the numeric-comparison check"
+  },
+  {
+   "id": "BC-PT-99048",
+   "label": "deterministic",
+   "reason": "earns names an integrand only, covered by SymPy equivalence"
+  },
+  {
+   "id": "BC-PT-99049",
+   "label": "deterministic",
+   "reason": "earns names a specific expression or equation the key can state, covered by SymPy equivalence"
+  },
+  {
+   "id": "BC-PT-99050",
+   "label": "deterministic",
+   "reason": "earns names a specific expression or equation the key can state, covered by SymPy equivalence"
+  },
+  {
+   "id": "BC-PT-99051",
+   "label": "deterministic",
+   "reason": "earns names an integrand only, covered by SymPy equivalence"
+  },
+  {
+   "id": "BC-PT-99052",
+   "label": "deterministic",
+   "reason": "earns names two labelled components each compared to its own key value by position, covered by SymPy equivalence, not an argument read"
+  },
+  {
+   "id": "BC-PT-99053",
+   "label": "model_required",
+   "reason": "the point turns on whether a limit was written in place of arithmetic with infinity, per does_not_earn, a notational and procedural distinction rather than a value the four checks compare"
+  },
+  {
+   "id": "BC-PT-99054",
+   "label": "model_required",
+   "reason": "the point turns on whether the limit was written symbolically rather than evaluated with infinity substituted, the same notational distinction as BC-PT-99053"
+  },
+  {
+   "id": "BC-PT-99055",
+   "label": "deterministic",
+   "reason": "earns names a specific expression or equation the key can state, covered by SymPy equivalence"
+  },
+  {
+   "id": "BC-PT-99056",
+   "label": "model_required",
+   "reason": "earns allows 'an implied choice visible in the resulting expression', which asks the checker to infer an unlabelled u, dv, du, v choice rather than compare it directly to a stated object"
+  },
+  {
+   "id": "BC-PT-99057",
+   "label": "deterministic",
+   "reason": "earns names a specific expression or equation the key can state, covered by SymPy equivalence"
+  },
+  {
+   "id": "BC-PT-99058",
+   "label": "deterministic",
+   "reason": "earns names an integrand only, covered by SymPy equivalence"
+  },
+  {
+   "id": "BC-PT-99059",
+   "label": "deterministic",
+   "reason": "earns names an integrand only, covered by SymPy equivalence"
+  },
+  {
+   "id": "BC-PT-99060",
+   "label": "deterministic",
+   "reason": "earns is a numeric value bound by the three-decimal precision rule, covered by the numeric-comparison check"
+  },
+  {
+   "id": "BC-PT-99061",
+   "label": "model_required",
+   "reason": "record answers yes to justification_required, so 03's partition routes it to the model regardless of the earns text"
+  },
+  {
+   "id": "BC-PT-99062",
+   "label": "deterministic",
+   "reason": "earns is an interval or set of endpoints the key can state, covered by the bounds-match check"
+  },
+  {
+   "id": "BC-PT-99063",
+   "label": "model_required",
+   "reason": "record answers yes to justification_required, so 03's partition routes it to the model regardless of the earns text"
+  },
+  {
+   "id": "BC-PT-99064",
+   "label": "model_required",
+   "reason": "earns requires the label text to identify the correct quantity, a natural-language read rather than a symbolic, numeric, bounds or units comparison"
+  },
+  {
+   "id": "BC-PT-99065",
+   "label": "model_required",
+   "reason": "earns is graphical, a drawn curve that extends near both field edges, does not conflict with the segments, and respects the asymptote, outside all four checks"
+  },
+  {
+   "id": "BC-PT-99066",
+   "label": "model_required",
+   "reason": "record answers yes to justification_required, so 03's partition routes it to the model regardless of the earns text"
+  },
+  {
+   "id": "BC-PT-99067",
+   "label": "deterministic",
+   "reason": "earns names a specific expression or equation the key can state, covered by SymPy equivalence"
+  },
+  {
+   "id": "BC-PT-99068",
+   "label": "model_required",
+   "reason": "record answers yes to justification_required, so 03's partition routes it to the model regardless of the earns text"
+  },
+  {
+   "id": "BC-PT-99069",
+   "label": "deterministic",
+   "reason": "earns is a numeric value bound by the three-decimal precision rule, covered by the numeric-comparison check"
+  },
+  {
+   "id": "BC-PT-99070",
+   "label": "deterministic",
+   "reason": "earns is a numeric value bound by the three-decimal precision rule, covered by the numeric-comparison check"
+  },
+  {
+   "id": "BC-PT-99071",
+   "label": "deterministic",
+   "reason": "earns names an antiderivative, covered by SymPy equivalence, per 03's own example for this record"
+  },
+  {
+   "id": "BC-PT-99072",
+   "label": "model_required",
+   "reason": "record answers yes to justification_required, so 03's partition routes it to the model regardless of the earns text"
+  },
+  {
+   "id": "BC-PT-99080",
+   "label": "deterministic",
+   "reason": "earns names a derivative expression built by a stated rule, covered by SymPy equivalence"
+  },
+  {
+   "id": "BC-PT-99081",
+   "label": "deterministic",
+   "reason": "earns names a specific expression or equation the key can state, covered by SymPy equivalence"
+  },
+  {
+   "id": "BC-PT-99082",
+   "label": "deterministic",
+   "reason": "earns is a numeric value together with a specific setup expression or equation the item's key can state, covered by SymPy equivalence on the setup and numeric comparison on the value"
+  },
+  {
+   "id": "BC-PT-99083",
+   "label": "model_required",
+   "reason": "earns is graphical, segments drawn at the indicated points whose slopes match the differential equation there, outside all four checks"
+  }
+ ]
+}

@@ -13,6 +13,7 @@ REPO = Path(__file__).resolve().parents[2]
 DOCUMENTS = (
    REPO / "docs" / "plan" / "13-ai-engineering.md",
    REPO / "docs" / "operator" / "ai-operating-costs.md",
+   REPO / "docs" / "plan" / "14-token-economy.md",
 )
 
 
@@ -43,6 +44,21 @@ def test_the_effort_lever_is_the_high_minus_medium_thinking_output():
    expected = figures["generator.calls"] * extra_thinking * batch_output / 1e6
 
    assert figures["generator.lever.effort"] == pytest.approx(expected)
+
+
+def test_claude_only_tier_grader_line_reads_the_labelling_pass():
+   """docs/plan/14-token-economy.md open question 2 closed on the operator's labelling pass in
+   data/bc_pt_determinism_labels.json, 48 deterministic and 28 model_required of 76 active BC-PT
+   records. A regression that reverted the grader line to the 1,200-point worst case, or to the
+   17-of-76 field bound, would silently reopen an overrun this test pins shut."""
+   figures = cost_model.figures()
+
+   assert cost_model.MEASURED_MODEL_JUDGED_POINT_RECORDS == 28
+   assert round(figures["grader.measured_model_share_cycle"], 2) == 12.44
+   assert round(figures["tier.hundred_claude_only.grader_line"], 2) == 12.44
+   assert round(figures["tier.hundred_claude_only.cycle"], 2) == 108.07
+   assert round(figures["tier.hundred_claude_only.overrun"], 2) == 8.07
+   assert round(figures["tier.hundred_claude_only.worst_case_cycle"], 2) == 128.95
 
 
 @pytest.mark.parametrize("document", DOCUMENTS, ids=lambda path: path.name)

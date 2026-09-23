@@ -10,6 +10,39 @@ purpose: Where the application build stands, session by session, so the next ses
 Application code lives at the repository root under `app/` and `tests/`, at the paths docs/plan names. The project CLAUDE.md still says "docs-only, no product"; that sentence is the operator's to amend and this ledger only records the conflict. Tooling: uv-managed Python 3.12.13 in `.venv/`, dependencies in `pyproject.toml`, tests via `.venv/bin/python -m pytest`. Every H2 below carries a tag because `qa/04_tags.py` scans root-level Markdown: [verified] means the test output or the registry was checked in the session named, [inferred] means a judgement.
 
 ## Done [verified]
+- Slice 4, twentieth session, 2026-09-23, the BC-PT deterministic labelling pass and bringing the
+  Claude-only tier's overrun down. `data/bc_pt_determinism_labels.json` carries one `[inferred]`
+  label per active BC-PT record, `deterministic` or `model_required`, with a short reason read
+  against the record's own `earns`, `does_not_earn`, `notation_requirements` and `precision_rules`
+  text and against the four checks and partition rule in `docs/plan/03-diagnosis-and-feedback.md`.
+  48 of 76 are `deterministic`, 28 `model_required`, 17 of them on `justification_required`,
+  `interpretation_required` or `hypotheses_required` alone and 11 more on the earns text itself (a
+  prose-only earn criterion, a graphical criterion, an implied choice, a step count, or a label
+  naming a quantity in words). A separate data file was used rather than
+  `data/staging/*.json` and `tools/merge_staging.py`, because that tool fully replaces a matched
+  record rather than merging fields, and re-authoring all 76 rich, sourced `scoring_points.json`
+  records through a staging file to add one field risked corrupting or silently dropping sourced
+  content the labelling pass did not touch; the label is also a judgement about the grader's
+  design, not a fact about the rubric the registry otherwise records. `qa/15_determinism_labels.py`
+  asserts every active BC-PT record carries exactly one label with a reason and that the file and
+  the registry agree on the id set; verified red on a record deleted from the labels file, green
+  restored. `tools/cost_model.py` gained `MEASURED_MODEL_JUDGED_POINT_RECORDS = 28` and wired the
+  Claude-only tier's grader line to it, `role_cost("grader", ...)` at 2 samples with a third on
+  disagreement over 442 of 1,200 judged points, $12.44 against the $33.32 worst case every point
+  reaching the model, a saving of $20.88; the worst-case figures stay priced alongside it as
+  `grader.worst_case_conditional_third_cycle` and `tier.hundred_claude_only.worst_case_cycle`
+  because this file never overwrites a figure a document has already quoted. The Claude-only tier
+  now totals $108.07, an overrun of $8.07 against the $100.00 ceiling, down from $128.95 and
+  $28.95. `docs/plan/14-token-economy.md` "The $100 tier, line by line" and open question 2 are
+  rewritten to the measured figures and to state why no further sourced lever closes the
+  remaining $8.07 (see Known defects); `docs/plan/11-phased-delivery.md`'s P3 entry criterion is
+  updated from "all 76 records are labelled" as an open task to the closed count. `tests/tools/test_cost_model.py`
+  gained `test_claude_only_tier_grader_line_reads_the_labelling_pass`, pinning the tier at $108.07
+  and the grader line at $12.44, verified red against the reverted worst-case grader line and
+  green restored; `docs/plan/14-token-economy.md` also joined the `DOCUMENTS` tuple the
+  hand-figure regression test already runs over 13 and the operator cost doc.
+  `tools/cost_model.py --check docs/plan/14-token-economy.md` exits 0. No live Anthropic call was
+  made; no test, gate, threshold or fixture was loosened.
 - Nineteenth session, 2026-09-23, two review findings against the eighteenth session's uncommitted
   slice 3 work fixed. First, `app/db/models.py` `skills_state.credited_observation_count` was
   `NOT NULL` with no `server_default`, so `app/db/migrate.py apply_additive_migrations` raised
@@ -804,16 +837,23 @@ done or listed below as needing the operator.
 
 From the seventeenth session, 2026-09-23, found and not fixed.
 
-- The Claude-only $100 tier prices at $128.95, an overrun of $28.95 against the operator's $100.00
+- Superseded 2026-09-23, nineteenth session: the BC-PT labelling pass closed part of this. The
+  Claude-only $100 tier now prices at $108.07, an overrun of $8.07 against the operator's $100.00
   hard stop (`docs/plan/14-token-economy.md` "The $100 tier, line by line",
-  `tier.hundred_claude_only.cycle` in `tools/cost_model.py`). Not a code defect; a priced fact the
-  operator asked this document to report rather than hide by inventing the grader's judged-point
-  split. Two things can close it: the offline BC-PT labelling pass (question 2, free, no key
-  needed, moves the grader line from $33.32 toward $10.11 as the true model share is found), and
-  nothing on the verifier line, whose $26.94 is the cheapest Claude model already. `app/providers/model_routing.py`
-  `ROLE_MODELS` names a model for every role in `app/providers/guard.py` `ROLES`, but P1 wires only
-  the tutor (`app/feedback/tutor.py`); the other five roles have no provider call site yet, so the
-  table is ahead of the code by design and not itself a gap this session found.
+  `tier.hundred_claude_only.cycle` in `tools/cost_model.py`), down from $128.95 before the pass.
+  Not a code defect; a priced fact the document reports rather than hides. Four further levers
+  named in the labelling instruction were checked against 13 and 14's own arguments and none
+  applies without inventing a number: routing the evals canary to `claude-haiku-4-5` has no
+  sourced basis and would change what the canary measures rather than its cost; the transcriber's
+  move to Haiku 4.5 standard tier and per-template verifier sampling are both already rejected in
+  14's "Rejected directions" table; grader thinking off (direction 4) is the alternative to
+  direction 2 rather than additive to it and the operator already declined it on 2026-09-23. What
+  is left to close the $8.07 is a tighter labelling pass, which can only move the grader line down,
+  and any future Claude pricing change on Haiku 4.5 batch, neither of which this session controls.
+  `app/providers/model_routing.py` `ROLE_MODELS` names a model for every role in
+  `app/providers/guard.py` `ROLES`, but P1 wires only the tutor (`app/feedback/tutor.py`); the
+  other five roles have no provider call site yet, so the table is ahead of the code by design and
+  not itself a gap this session found.
 
 From the fifteenth session, 2026-09-23, found and not fixed.
 
@@ -1639,6 +1679,32 @@ delegated for a fix rather than a second ruling.
   place the per-skill mastery state that drove each credited event is still on record, so it is the
   only source an exact replay can be built from.
 
+Twentieth session, on the instruction to run slice 4, the BC-PT labelling pass, and bring the
+Claude-only tier under $100.
+
+- The 76 labels live in a new file, `data/bc_pt_determinism_labels.json`, rather than as a field
+  merged into `data/scoring_points.json` through `data/staging/*.json` and
+  `tools/merge_staging.py`. `merge_file` in that tool replaces a matched record whole rather than
+  merging fields, so writing a staging patch would have meant re-typing all 76 records' `earns`,
+  `does_not_earn`, `sources`, `rubric_instances` and every other sourced field by hand to add one
+  new one, which is exactly the hand-retyping this project's staging system exists to avoid errors
+  in. The label is also a different kind of fact from the rest of the record, a judgement about
+  which of 03's four checks decide the grading rather than a claim the corpus sources, so keeping
+  it in its own file with its own `[inferred]` tag and its own reason per record is the cleaner
+  separation and does not risk the sourced fields a hand-retyped patch would touch.
+- `qa/15_determinism_labels.py` was added as check 15 rather than folded into an existing check,
+  because it asserts a property of a file no other check reads (`data/bc_pt_determinism_labels.json`
+  against the active BC-PT id set), and `qa/12_report.py` picks up any `qa/[0-9][0-9]_*.py` file
+  automatically.
+- The grader line in the Claude-only tier moves from the worst case, every one of the 1,200 judged
+  points reaching the model, to the measured share, 442 of 1,200. No other lever named in the
+  instruction, evals canary on Haiku, transcriber on Haiku standard tier, grader thinking off, or
+  verifier sampling, was applied: three are already rejected or declined in
+  `docs/plan/14-token-economy.md` and `13-ai-engineering.md`, and routing the evals canary to a
+  cheaper model has no sourced basis and would change what the canary measures rather than its
+  cost, so applying it would be inventing a claim the labelling instruction explicitly ruled out.
+  The tier's overrun is reported at $8.07 rather than closed by an unsourced assumption.
+
 ## Decisions taken on the operator's instruction, 2026-09-20 [inferred]
 
 Sixth session, on the instruction "answer all decisions for me". Every open question the ledger
@@ -1703,11 +1769,11 @@ item below needs content, a key, a download or a ruling.
 
 Human-only, in the order that unblocks the most:
 
-0. The BC-PT labelling pass, docs/plan/14-token-economy.md open question 2: which of the 76 active
-   `data/scoring_points.json` records have an `earns` text fully expressible as one of the four
-   deterministic checks. Free, needs no key, and is the one measurement left that can close part of
-   the Claude-only tier's $28.95 overrun (Known defects, this session) rather than leave it priced
-   at the worst case.
+0. Closed the twentieth session, 2026-09-23: the BC-PT labelling pass,
+   `data/bc_pt_determinism_labels.json`, 48 of 76 deterministic and 28 model_required. It closed
+   $20.88 of the Claude-only tier's overrun; $8.07 remains and no further sourced lever closes it
+   (Known defects, this session). What is left to move the grader line again is a relabelling, if
+   golden set 2's per point type exact match shows a label was wrong.
 1. Gates 17 and 30, exit criterion 7: the 130 hand-authored items, 10 per archetype over 11's 13.
    Shape `docs/operator/items.md`, check `python3 tools/check_items.py <dir>`. Unblocks
    `test_item_verification_tools` and `eval_p1_distractor_paths`.

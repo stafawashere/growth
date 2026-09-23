@@ -177,6 +177,13 @@ BUDGET_CEILING = 100.00
 # is a lower bound on the model share and 76 of 76 is the upper bound the recommended tier uses.
 SCORING_POINT_RECORDS = 76
 MODEL_JUDGED_POINT_RECORDS = 17
+# The operator's labelling pass, docs/plan/14-token-economy.md open question 2, closed
+# 2026-09-23: every active BC-PT record read against its own earns text and 03's four checks,
+# in data/bc_pt_determinism_labels.json. [inferred: each per-record label is a judgement, tagged
+# in that file; the count over the 76 labels is measured.] 48 of 76 are deterministic and 28 of 76
+# are model_required, so this is the true model share the field-based 17 was always a lower bound
+# on. It replaces the worst case in the Claude-only tier below.
+MEASURED_MODEL_JUDGED_POINT_RECORDS = 28
 # [inferred] The share of judged points on which two grader samples disagree and a third is drawn.
 GRADER_DISAGREEMENT_SHARE = 0.25
 # [inferred] The share of incorrect attempts on which the same BC-ERR path has already been seen,
@@ -623,11 +630,12 @@ def figures():
    # Haiku 4.5's 4,096 token cache minimum for the same reason the tutor's prefix cannot cache on
    # Haiku 4.5 (see "Per role model choice" above), so it prices uncached like the Gemini row it
    # replaces. The template author moves to claude-opus-5-5, cheaper than claude-opus-5 at every
-   # rate and already in PRICES. The grader line prices at 14's own stated worst case, every one
-   # of the 1,200 judged points reaching the model, because 17 of 76 is a lower bound on the
-   # model share and not a measured one, and this tier does not invent the missing measurement;
-   # direction 7 still applies underneath it, 2 samples with a third drawn only on disagreement,
-   # thinking left on. Golden set 1 stays free on the template gate and golden set 2 stays the
+   # rate and already in PRICES. The grader line prices at the operator's labelling pass,
+   # MEASURED_MODEL_JUDGED_POINT_RECORDS, 28 of 76 active BC-PT records model_required, rather
+   # than at the worst case every one of the 1,200 judged points reaching the model; 17 of 76 was
+   # always a lower bound and the labelling pass is the measurement that replaces it. Direction 7
+   # still applies underneath it, 2 samples with a third drawn only on disagreement, thinking left
+   # on. Golden set 1 stays free on the template gate and golden set 2 stays the
    # canary-plus-full-run mix, both already the shape hundred_evals prices above.
    claude_only_generator_model = CLAUDE_ONLY_ROLE_MODELS["generator"]
    claude_only_verifier_model = CLAUDE_ONLY_ROLE_MODELS["verifier"]
@@ -640,7 +648,21 @@ def figures():
    add("verifier.on_haiku_batch_cycle", claude_only_verifier_cycle)
    add("verifier.call_on_haiku_batch", role_cost("verifier", 1, model=claude_only_verifier_model, batch=True,
                                                  cached=False))
-   claude_only_grader_cycle = out["grader.conditional_third_cycle"]
+
+   # The labelling pass closes open question 2: the grader line below reads the measured share
+   # rather than the worst case every one of the 1,200 points reaching the model. Direction 7,
+   # 2 samples with a third drawn on disagreement, still applies underneath it.
+   measured_model_share = MEASURED_MODEL_JUDGED_POINT_RECORDS / SCORING_POINT_RECORDS
+   measured_model_points = round(JUDGED_POINTS * measured_model_share)
+   measured_grader_calls = round(measured_model_points * (2 + GRADER_DISAGREEMENT_SHARE))
+   claude_only_grader_cycle = role_cost("grader", measured_grader_calls)
+   add("grader.measured_model_share_of_point_types", measured_model_share)
+   add("grader.measured_model_judged_points", measured_model_points)
+   add("grader.measured_model_share_calls", measured_grader_calls)
+   add("grader.measured_model_share_cycle", claude_only_grader_cycle)
+   add("grader.worst_case_conditional_third_cycle", out["grader.conditional_third_cycle"])
+   add("grader.measured_saving_against_worst_case",
+       out["grader.conditional_third_cycle"] - claude_only_grader_cycle)
    claude_only_hundred = (out["tutor.cycle"] + claude_only_grader_cycle + out["transcriber.cycle"]
                           + out["diagnostician.on_recurrence_cycle"] + claude_only_template_cycle
                           + claude_only_verifier_cycle + out["screen.cycle"] + hundred_evals)
@@ -659,6 +681,17 @@ def figures():
    add("tier.hundred_claude_only.grader_premium_over_split_guess",
        claude_only_grader_cycle - out["grader.model_share_cycle"])
    add("tier.hundred_claude_only.verifier_premium_over_gemini", claude_only_verifier_cycle - lite_cycle)
+
+   # The figures 14 quotes as history, from before the labelling pass closed open question 2 on
+   # 2026-09-23: the grader priced at the full worst case, every one of the 1,200 judged points.
+   add("grader.worst_case_premium_over_split_guess",
+       out["grader.conditional_third_cycle"] - out["grader.model_share_cycle"])
+   worst_case_hundred = (out["tutor.cycle"] + out["grader.conditional_third_cycle"]
+                         + out["transcriber.cycle"] + out["diagnostician.on_recurrence_cycle"]
+                         + claude_only_template_cycle + claude_only_verifier_cycle
+                         + out["screen.cycle"] + hundred_evals)
+   add("tier.hundred_claude_only.worst_case_cycle", worst_case_hundred)
+   add("tier.hundred_claude_only.worst_case_overrun", worst_case_hundred - BUDGET_CEILING)
 
    # Kappa.
    n_aggregate = GOLDEN_SET_2_POINT_TYPES * GOLDEN_SET_2_RESPONSES

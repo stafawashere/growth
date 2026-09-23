@@ -72,8 +72,9 @@ with either.
 ## The $100 tier, line by line [verified]
 
 Superseded 2026-09-23 by the operator's instruction that the AI engine use Anthropic Claude models
-only. The table below is the Claude-only tier the code now computes as `tier.hundred_claude_only`
-in `tools/cost_model.py`; the `tier.hundred` lines above it in the calculator are kept exactly as
+only, and again the same day by the operator's labelling pass closing open question 2. The table
+below is the Claude-only tier the code now computes as `tier.hundred_claude_only` in
+`tools/cost_model.py`; the `tier.hundred` lines above it in the calculator are kept exactly as
 printed, because `13-ai-engineering.md` and `docs/operator/ai-operating-costs.md` still quote the
 $95.03 Gemini-verifier tier as the recorded history of what was recommended on 2026-09-20, and this
 file never patches a figure a document has already quoted.
@@ -81,35 +82,43 @@ file never patches a figure a document has already quoted.
 | Line | Setting | Cost |
 | --- | --- | --- |
 | tutor, 12 calls a session, thinking disabled, effort low, 1h cache | unchanged from 13 | $5.01 |
-| grader, 2 samples with a third on disagreement, all 1,200 judged points | direction 7, no invented split | $33.32 |
+| grader, 2 samples with a third on disagreement, 442 of 1,200 judged points | direction 7, measured share | $12.44 |
 | transcriber, 200 photographed pages | unchanged from 13 | $3.41 |
 | diagnostician, on a recurring error path only | direction 6 | $8.21 |
 | template author, 348 authoring calls on `claude-opus-5-5` batch | direction 1, priced on Opus 5.5 | $13.87 |
 | verifier, 6,178 blind re-solves on `claude-haiku-4-5` batch | Claude-only, replaces direction 8 | $26.94 |
 | Haiku 4.5 screen between transcriber and grader | unchanged from 13 | $0.20 |
 | evals, golden set 1 on the template gate, golden set 2 mixed, golden set 3 monthly | directions 3 and 5 | $38.00 |
-| **Total** | | **$128.95** |
+| **Total** | | **$108.07** |
 
 [measured: the `tier.hundred_claude_only` lines of `python3 tools/cost_model.py`]
 
-**This is an overrun of $28.95 against the $100.00 ceiling, and it is the smallest honest total
-this document can price.** Two decisions drive it, both already argued for above and neither
-loosened to make the number smaller.
+**This is an overrun of $8.07 against the $100.00 ceiling, down from $28.95 before the labelling
+pass, and it is the smallest honest total this document can price.** Two decisions drive the
+remainder, both already argued for above and neither loosened to make the number smaller.
 
-The grader line does not use the 17-of-76 field bound as if it were the model share. 17 of the 76
-active BC-PT records answer yes to at least one of `justification_required`,
-`interpretation_required` or `hypotheses_required` [measured: `python3` over
-`data/scoring_points.json`, 2026-09-20, 76 active records, 59 answer no to all three, 14 require
-justification, 3 require interpretation, 3 require hypotheses], and that is a lower bound on the
-model share, not the share, because 03 adds a second condition the data does not carry: the point's
-`earns` text must also be fully expressible as one of the four deterministic checks. Treating 17 of
-76 as the share was inventing a number the labelling pass has not produced. This tier prices the
-grader at 14's own stated worst case instead, every one of the 1,200 judged points reaching the
-model, with direction 7 still applied underneath it, 2 samples and a third drawn only on
-disagreement, thinking left on. That is $33.32 against the $10.11 the unmeasured split would have
-printed, a premium of $23.21 [measured: `tier.hundred_claude_only.grader_premium_over_split_guess`].
-The operator's labelling pass is still the one measurement that can move this number, and now it
-can only move it down, never a fact this document invents to fit under the ceiling.
+The grader line now reads the labelling pass rather than the 17-of-76 field bound or the worst
+case. `data/bc_pt_determinism_labels.json` [inferred] carries one label per active BC-PT record,
+`deterministic` or `model_required`, read against the record's own `earns`,
+`does_not_earn`, `notation_requirements` and `precision_rules` text and against the four checks and
+the partition rule in `03-diagnosis-and-feedback.md`. 48 of the 76 records are `deterministic`; 28
+are `model_required`, which is every record answering yes to `justification_required`,
+`interpretation_required` or `hypotheses_required` (17 of 76, [measured: `python3` over
+`data/scoring_points.json`, 2026-09-20]) plus 11 more whose `earns` text turns on reading prose, a
+verbal claim, a graphical criterion, an implied choice, a step count, or a label naming a quantity
+in words, none of which SymPy equivalence, numeric comparison, bounds match or units-present
+perform even though the record answers no to all three flags. `qa/15_determinism_labels.py`
+asserts every active BC-PT record carries exactly one label and that the file's own count matches.
+28 of 76 is 0.3684 of the point types [measured: `grader.measured_model_share_of_point_types`], so
+442 of the 1,200 judged points reach the model [measured: `grader.measured_model_judged_points`],
+with direction 7 still applied underneath, 2 samples and a third drawn only on disagreement,
+thinking left on: 994 calls and $12.44 [measured: `grader.measured_model_share_calls`,
+`grader.measured_model_share_cycle`], a saving of $20.88 against the $33.32 worst case
+[measured: `grader.measured_saving_against_worst_case`]. Every label is `[inferred]`, a judgement
+call and not a fact read off a source, and the count over the 76 labels is the arithmetic that is
+measured. A wrong label moves this number in either direction, which is exactly the quality risk
+direction 2 names, and the settling measurement is unchanged: golden set 2's per point type exact
+match, reported with its count.
 
 The verifier line is the direct cost of the Claude-only instruction. `claude-haiku-4-5` on the Batch
 API is the cheapest Claude model, and its prefix of 1,100 tokens sits below Haiku 4.5's 4,096 token
@@ -129,13 +138,22 @@ Template authoring moves to `claude-opus-5-5`, cheaper than `claude-opus-5` at e
 `PRICES` and already the priced Opus row as of the previous slice. 348 calls at $13.87 against
 $17.37, a saving of $3.50, which is the one line below the ceiling rather than above it.
 
-**The ceiling is a hard stop and this tier does not fit under it.** Open question 7 below answers
-that the $100.00 ceiling has no margin built in, so this document reports the overrun rather than
-narrowing the grader's split by assumption to make the total print under $100. The two numbers that
-would close the gap are not inventions: the operator's offline labelling pass on the 76 BC-PT
-records, which can only lower the grader line, and any future Claude pricing change on Haiku 4.5
-batch, which this document does not control. Until the labelling pass runs, $128.95 is the tier's
-honest price under a Claude-only engine.
+**No further honest lever closes the remaining $8.07, and this document does not invent one to
+force the total under $100.** Four candidates were checked against what 13 and this document
+already argue, and none applies today. Routing the evals canary to `claude-haiku-4-5` has no
+sourced basis: the canary measures the grader's exact match against fixed operator labels, so
+running it on a different model would measure a model that is not the one serving students, which
+is not a cost decision, it is a change to what the instrument reports. Moving the transcriber to
+Haiku 4.5's standard tier is already rejected above on the resolution argument 13 makes for
+handwritten calculus, and nothing here reopens it. Grader thinking off, direction 4, is the
+alternative to direction 2 rather than additive to it, and the operator's instruction of
+2026-09-23 already declined it, unchanged at 700 thinking tokens, so it is not available to apply
+now even though 4 permits it in principle. Sampling the verifier per template rather than per
+published item breaks the floor "an unverified item is never served" and is rejected above for
+that reason regardless of the labelling pass. The two numbers that would still close the $8.07 are
+not inventions: a tighter labelling pass, which can only move the grader line down, and any future
+Claude pricing change on Haiku 4.5 batch, which this document does not control. $108.07 is the
+tier's honest price under a Claude-only engine, on the operator's own measurement.
 
 ## Per role model choice [verified]
 
@@ -558,10 +576,12 @@ arithmetic. `GRADER_SAMPLES`: not changed globally, because `tier.recommended` a
 figure are priced at 3 samples and this file does not patch a figure a document has quoted; instead
 `grader.conditional_third_calls` already prices 2 samples with a third on disagreement at the full
 1,200 judged points, and that is the figure the Claude-only tier uses. `JUDGED_POINTS` split into a
-deterministic share and a model share: not applied, and not because it is wrong to apply, but
-because 17 of 76 is a lower bound and not a measurement, so applying it would be inventing the
-missing labelling pass rather than pricing it. The Claude-only tier prices the grader at the full
-1,200 points instead, which is 14's own stated worst case. `ROLES["grader"]["thinking"]`: not
+deterministic share and a model share: applied 2026-09-23, a second time, once the labelling pass
+existed to apply. `MEASURED_MODEL_JUDGED_POINT_RECORDS = 28` reads
+`data/bc_pt_determinism_labels.json` rather than the 17-of-76 field bound, and the Claude-only
+tier's grader line is `grader.measured_model_share_cycle`, not the full 1,200-point worst case;
+`grader.worst_case_conditional_third_cycle` keeps the superseded figure priced alongside it for the
+same reason nothing here overwrites a quoted figure. `ROLES["grader"]["thinking"]`: not
 applied, unchanged at 700, per the operator's instruction to keep grader thinking as it is.
 `ROLES["verifier"]["model"]`: superseded rather than applied as proposed. The row above proposed
 `gemini-3.5-flash-lite`; the operator's Claude-only instruction of 2026-09-23 moves it to
@@ -580,14 +600,16 @@ Each one is a decision only the operator can make, and each blocks or sizes a di
    written today, serves unverified items. The floor is the operator's to restate or to keep.
    Keeping it is what the $95.03 tier assumes.
 
-2. **Which of the 76 BC-PT records have an `earns` text fully expressible as one of the four
-   deterministic checks?** This is the labelling pass that turns the grader line from a bound into a
-   number. It costs nothing and needs no key. Under the Claude-only tier this document no longer
-   waits on it to price the tier honestly: the grader line above is priced at the worst case,
-   $33.32, because 17 of 76 is a lower bound and not a measurement and this document does not
-   invent the difference. The labelling pass is still the only thing that can lower it, from $33.32
-   toward $10.11 as the true share is found, and it is still free, so it is still the first thing to
-   do; it now closes part of a $28.95 overrun rather than deciding whether the tier fits.
+2. **Closed 2026-09-23, on the operator's instruction.** Which of the 76 BC-PT records have an
+   `earns` text fully expressible as one of the four deterministic checks? The operator's
+   labelling pass ran, offline, no key, and is `data/bc_pt_determinism_labels.json`: 48 of 76
+   `deterministic`, 28 `model_required` [inferred label per record, measured count over the 76].
+   The grader line above now reads that pass instead of the worst case, $12.44 against $33.32, a
+   saving of $20.88 [measured: `grader.measured_saving_against_worst_case`], which closes $20.88 of
+   the $28.95 overrun the Claude-only tier opened. $8.07 remains and is not this measurement's to
+   close further; see "No further honest lever" above. A relabelling, if a record's reason turns
+   out wrong under golden set 2's per point type exact match, is still the only thing that can move
+   the grader line again.
 
 3. **Will a provider key be available for one session of `count_tokens` calls before any paid work
    starts?** It is free, it converts every token assumption in 13 and here from inferred to

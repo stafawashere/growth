@@ -4,16 +4,16 @@
    "variant_id": null,
    "format": "mcq",
    "stem": {
-      "text": "Let m(x) = ln(25 - x^2) / x. Consider the largest interval that contains x = 2 and on which m is continuous. How many integers does that interval contain?"
+      "text": "Let m(x) = ln(25 - x^2) / (x + 2). Consider the largest interval that contains x = 0 and on which m is continuous. What is the sum of the integers in that interval?"
    },
    "answer_key": {
       "form": "numeric",
-      "mathjson": 4
+      "mathjson": 9
    },
    "worked_solution": [
       {
          "step": 1,
-         "text": "The logarithm requires 25 - x^2 > 0, so -5 < x < 5, and the denominator is zero at x = 0.",
+         "text": "The logarithm requires 25 - x^2 > 0, so -5 < x < 5, and the denominator x + 2 is zero at x = -2, so that input is excluded as well.",
          "mathjson": [
             "Subtract",
             25,
@@ -26,44 +26,71 @@
       },
       {
          "step": 2,
-         "text": "m is a quotient of a logarithmic function and a polynomial, each continuous on its domain, so m is continuous on (-5, 0) U (0, 5).",
-         "mathjson": 0
+         "text": "m is a quotient of a logarithmic function and a polynomial, each continuous on its domain, so m is continuous on (-5, -2) U (-2, 5).",
+         "mathjson": [
+            "Divide",
+            [
+               "Ln",
+               [
+                  "Subtract",
+                  25,
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ]
+               ]
+            ],
+            [
+               "Add",
+               "x",
+               2
+            ]
+         ]
       },
       {
          "step": 3,
-         "text": "The piece containing x = 2 is (0, 5), open at 0 because of the denominator and open at 5 because ln is undefined at 0.",
-         "mathjson": 5
+         "text": "The piece that contains x = 0 is (-2, 5), open at -2 because of the denominator and open at 5 because ln 0 is undefined. Its integers are -1, 0, 1, 2, 3 and 4.",
+         "mathjson": [
+            "Add",
+            -1,
+            0,
+            1,
+            2,
+            3,
+            4
+         ]
       },
       {
          "step": 4,
-         "text": "The integers in (0, 5) are 1, 2, 3 and 4.",
-         "mathjson": 4
+         "text": "The sum of those integers is 9.",
+         "mathjson": 9
       }
    ],
    "options": [
       {
          "id": "A",
-         "value": 9,
+         "value": 0,
          "is_key": false,
          "error_path": "BC-ERR-01031",
          "violated_step": 0
       },
       {
          "id": "B",
-         "value": 4,
+         "value": 9,
          "is_key": true,
          "error_path": null
       },
       {
          "id": "C",
-         "value": 6,
+         "value": 14,
          "is_key": false,
          "error_path": "BC-ERR-01032",
          "violated_step": 2
       },
       {
          "id": "D",
-         "value": 5,
+         "value": 7,
          "is_key": false,
          "error_path": "BC-ERR-01032",
          "violated_step": 2
@@ -74,7 +101,7 @@
    "difficulty_settings": [
       {
          "difficulty_factor_id": "BC-DF-02",
-         "setting": "high"
+         "setting": "medium"
       },
       {
          "difficulty_factor_id": "BC-DF-10",
@@ -96,9 +123,9 @@
       "BC-SKL-01049"
    ],
    "parameter_draw": {
-      "log_bound": 5,
-      "denominator_root": 0,
-      "anchor_point": 2
+      "log_radius": 5,
+      "denominator_root": -2,
+      "anchor_point": 0
    },
    "authored_by": "claude-opus-5-5 agent draft, pending operator review",
    "authored_on": "2026-09-23"

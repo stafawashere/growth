@@ -4,7 +4,7 @@
    "variant_id": null,
    "format": "short_answer",
    "stem": {
-      "text": "Let v be defined by v(x) = ae^x + b for x < 0, v(x) = 3x + 5 for 0 <= x <= 1, and v(x) = ax + 2b for x > 1, where a and b are constants. Find the value of a for which v is continuous for all real x."
+      "text": "Let v be defined by v(x) = a(3^x) + b for x < 0, v(x) = 3x + 5 for 0 <= x <= 1, and v(x) = 2bx + a for x > 1, where a and b are constants. Find the value of a for which v is continuous for all real x."
    },
    "answer_key": {
       "form": "symbolic",
@@ -13,7 +13,7 @@
    "worked_solution": [
       {
          "step": 1,
-         "text": "At x = 0 the left branch tends to a + b and the middle branch gives 5, so a + b = 5.",
+         "text": "At x = 0 the left branch tends to a(3^0) + b = a + b and the middle branch gives 5, so a + b = 5.",
          "mathjson": [
             "Equal",
             [
@@ -26,7 +26,7 @@
       },
       {
          "step": 2,
-         "text": "At x = 1 the middle branch gives 8 and the right branch gives a + 2b, so a + 2b = 8.",
+         "text": "At x = 1 the middle branch gives 8 and the right branch gives 2b + a, so a + 2b = 8.",
          "mathjson": [
             "Equal",
             [
@@ -71,9 +71,9 @@
       "BC-SKL-01053"
    ],
    "parameter_draw": {
-      "left_branch": "ae^x + b",
+      "left_branch": "a(3^x) + b",
       "middle_branch": "3x + 5",
-      "right_branch": "ax + 2b",
+      "right_branch": "2bx + a",
       "boundaries": [
          0,
          1
@@ -84,42 +84,34 @@
    "options": [
       {
          "id": "A",
-         "value": 3,
+         "value": 5,
          "is_key": false,
          "error_path": "BC-ERR-01017",
          "violated_step": 0
       },
       {
          "id": "B",
-         "value": 2,
-         "is_key": true,
-         "error_path": null
+         "value": [
+            "Rational",
+            3,
+            2
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-01017",
+         "violated_step": 0
       },
       {
          "id": "C",
-         "value": [
-            "Rational",
-            8,
-            3
-         ],
+         "value": 8,
          "is_key": false,
          "error_path": "BC-ERR-01017",
          "violated_step": 0
       },
       {
          "id": "D",
-         "value": [
-            "Divide",
-            3,
-            [
-               "Subtract",
-               "ExponentialE",
-               1
-            ]
-         ],
-         "is_key": false,
-         "error_path": "BC-ERR-01017",
-         "violated_step": 0
+         "value": 2,
+         "is_key": true,
+         "error_path": null
       }
    ]
 }

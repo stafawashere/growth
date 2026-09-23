@@ -4,40 +4,84 @@
    "variant_id": null,
    "format": "short_answer",
    "stem": {
-      "text": "Let k(x) = sqrt(12 - 3x) / (x + 2). Find the largest interval that contains x = 0 on which k is continuous, justify the behavior at each endpoint, and give the number of integers that interval contains."
+      "text": "Let k(x) = sqrt(12 - 3x) / ((x - 1)(x^2 - 16)). Consider the largest interval that contains x = 2 and on which k is continuous. What is the sum of the integers in that interval?"
    },
    "answer_key": {
       "form": "numeric",
-      "mathjson": 6
+      "mathjson": 5
    },
    "worked_solution": [
       {
          "step": 1,
-         "text": "The radicand requires 12 - 3x >= 0, so x <= 4, and the denominator is zero at x = -2.",
+         "text": "The radicand requires 12 - 3x >= 0, so x <= 4, and the denominator (x - 1)(x - 4)(x + 4) is zero at x = -4, 1 and 4, so x = 4 is excluded even though the radicand allows it.",
          "mathjson": [
-            "Subtract",
-            12,
+            "Multiply",
             [
-               "Multiply",
-               3,
-               "x"
+               "Subtract",
+               "x",
+               1
+            ],
+            [
+               "Subtract",
+               "x",
+               4
+            ],
+            [
+               "Add",
+               "x",
+               4
             ]
          ]
       },
       {
          "step": 2,
-         "text": "k is a quotient of a square root function and a polynomial, each continuous on its domain, so k is continuous on (-infinity, -2) U (-2, 4].",
-         "mathjson": -2
+         "text": "k is a quotient of a square root function and a polynomial, each continuous on its domain, so k is continuous on (-infinity, -4) U (-4, 1) U (1, 4).",
+         "mathjson": [
+            "Divide",
+            [
+               "Sqrt",
+               [
+                  "Subtract",
+                  12,
+                  [
+                     "Multiply",
+                     3,
+                     "x"
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Subtract",
+                  "x",
+                  1
+               ],
+               [
+                  "Subtract",
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ],
+                  16
+               ]
+            ]
+         ]
       },
       {
          "step": 3,
-         "text": "At x = 4 the function is defined and the limit from the left equals k(4) = 0, so the interval is closed there. At x = -2 k is undefined, so it is open there. The interval is (-2, 4].",
-         "mathjson": 4
+         "text": "The piece that contains x = 2 is (1, 4), open at 1 and open at 4 because the denominator is zero at both. Its integers are 2 and 3.",
+         "mathjson": [
+            "Add",
+            2,
+            3
+         ]
       },
       {
          "step": 4,
-         "text": "The integers in (-2, 4] are -1, 0, 1, 2, 3 and 4.",
-         "mathjson": 6
+         "text": "The sum of those integers is 5.",
+         "mathjson": 5
       }
    ],
    "calculator_status": "no_calculator",
@@ -49,7 +93,7 @@
       },
       {
          "difficulty_factor_id": "BC-DF-10",
-         "setting": "high"
+         "setting": "off"
       },
       {
          "difficulty_factor_id": "BC-DF-14",
@@ -57,7 +101,7 @@
       },
       {
          "difficulty_factor_id": "BC-DF-17",
-         "setting": "on"
+         "setting": "off"
       }
    ],
    "skills": [
@@ -67,37 +111,41 @@
       "BC-SKL-01049"
    ],
    "parameter_draw": {
-      "radicand": "12 - 3x",
-      "denominator_root": -2,
-      "anchor_point": 0
+      "radicand_bound": 4,
+      "denominator_roots": [
+         -4,
+         1,
+         4
+      ],
+      "anchor_point": 2
    },
    "authored_by": "claude-opus-5-5 agent draft, pending operator review",
    "authored_on": "2026-09-23",
    "options": [
       {
          "id": "A",
-         "value": 14,
+         "value": 0,
          "is_key": false,
          "error_path": "BC-ERR-01031",
          "violated_step": 0
       },
       {
          "id": "B",
-         "value": 11,
-         "is_key": false,
-         "error_path": "BC-ERR-01031",
-         "violated_step": 0
-      },
-      {
-         "id": "C",
-         "value": 7,
+         "value": 6,
          "is_key": false,
          "error_path": "BC-ERR-01032",
          "violated_step": 2
       },
       {
+         "id": "C",
+         "value": 9,
+         "is_key": false,
+         "error_path": "BC-ERR-01031",
+         "violated_step": 0
+      },
+      {
          "id": "D",
-         "value": 6,
+         "value": 5,
          "is_key": true,
          "error_path": null
       }

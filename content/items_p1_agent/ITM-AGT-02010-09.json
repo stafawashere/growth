@@ -4,27 +4,31 @@
    "variant_id": null,
    "format": "short_answer",
    "stem": {
-      "text": "Let q(x) = cot x - 4tan x. Rewrite each term with sin x and cos x, find q'(x), and give the exact value of q'(pi/6)."
+      "text": "Let q(x) = 4cot x + tan x. Rewrite each term with sin x and cos x, find q'(x), and give the exact value of q'(pi/6)."
    },
    "answer_key": {
       "form": "numeric",
       "mathjson": [
          "Rational",
-         -28,
+         -44,
          3
       ]
    },
    "worked_solution": [
       {
          "step": 1,
-         "text": "Write q(x) = cos x/sin x - 4sin x/cos x.",
+         "text": "Write q(x) = 4cos x/sin x + sin x/cos x.",
          "mathjson": [
-            "Subtract",
+            "Add",
             [
                "Divide",
                [
-                  "Cos",
-                  "x"
+                  "Multiply",
+                  4,
+                  [
+                     "Cos",
+                     "x"
+                  ]
                ],
                [
                   "Sin",
@@ -32,49 +36,49 @@
                ]
             ],
             [
-               "Multiply",
-               4,
+               "Divide",
                [
-                  "Divide",
-                  [
-                     "Sin",
-                     "x"
-                  ],
-                  [
-                     "Cos",
-                     "x"
-                  ]
+                  "Sin",
+                  "x"
+               ],
+               [
+                  "Cos",
+                  "x"
                ]
             ]
          ]
       },
       {
          "step": 2,
-         "text": "The quotient rule on each term gives q'(x) = (-sin^2 x - cos^2 x)/sin^2 x - 4(cos^2 x + sin^2 x)/cos^2 x.",
+         "text": "The quotient rule on each term gives q'(x) = 4(-sin^2 x - cos^2 x)/sin^2 x + (cos^2 x + sin^2 x)/cos^2 x.",
          "mathjson": [
-            "Subtract",
+            "Add",
             [
                "Divide",
                [
-                  "Subtract",
+                  "Multiply",
+                  4,
                   [
-                     "Negate",
+                     "Subtract",
+                     [
+                        "Negate",
+                        [
+                           "Power",
+                           [
+                              "Sin",
+                              "x"
+                           ],
+                           2
+                        ]
+                     ],
                      [
                         "Power",
                         [
-                           "Sin",
+                           "Cos",
                            "x"
                         ],
                         2
                      ]
-                  ],
-                  [
-                     "Power",
-                     [
-                        "Cos",
-                        "x"
-                     ],
-                     2
                   ]
                ],
                [
@@ -87,29 +91,9 @@
                ]
             ],
             [
-               "Multiply",
-               4,
+               "Divide",
                [
-                  "Divide",
-                  [
-                     "Add",
-                     [
-                        "Power",
-                        [
-                           "Cos",
-                           "x"
-                        ],
-                        2
-                     ],
-                     [
-                        "Power",
-                        [
-                           "Sin",
-                           "x"
-                        ],
-                        2
-                     ]
-                  ],
+                  "Add",
                   [
                      "Power",
                      [
@@ -117,47 +101,63 @@
                         "x"
                      ],
                      2
+                  ],
+                  [
+                     "Power",
+                     [
+                        "Sin",
+                        "x"
+                     ],
+                     2
                   ]
+               ],
+               [
+                  "Power",
+                  [
+                     "Cos",
+                     "x"
+                  ],
+                  2
                ]
             ]
          ]
       },
       {
          "step": 3,
-         "text": "Both numerators reduce with the Pythagorean identity, so q'(x) = -1/sin^2 x - 4/cos^2 x = -csc^2 x - 4sec^2 x.",
+         "text": "Both numerators reduce with the Pythagorean identity, so q'(x) = -4/sin^2 x + 1/cos^2 x = -4csc^2 x + sec^2 x.",
          "mathjson": [
-            "Subtract",
+            "Add",
             [
                "Negate",
                [
-                  "Power",
+                  "Multiply",
+                  4,
                   [
-                     "Csc",
-                     "x"
-                  ],
-                  2
+                     "Power",
+                     [
+                        "Csc",
+                        "x"
+                     ],
+                     2
+                  ]
                ]
             ],
             [
-               "Multiply",
-               4,
+               "Power",
                [
-                  "Power",
-                  [
-                     "Sec",
-                     "x"
-                  ],
-                  2
-               ]
+                  "Sec",
+                  "x"
+               ],
+               2
             ]
          ]
       },
       {
          "step": 4,
-         "text": "At x = pi/6, csc^2 x = 4 and sec^2 x = 4/3, so q'(pi/6) = -4 - 16/3 = -28/3.",
+         "text": "At x = pi/6, csc^2 x = 4 and sec^2 x = 4/3, so q'(pi/6) = -16 + 4/3 = -44/3.",
          "mathjson": [
             "Rational",
-            -28,
+            -44,
             3
          ]
       }
@@ -181,7 +181,7 @@
       "BC-SKL-02046"
    ],
    "parameter_draw": {
-      "function": "cot x - b tan x",
+      "function": "b cot x + tan x",
       "b": 4,
       "evaluate_at": "pi/6"
    },
@@ -191,19 +191,26 @@
       {
          "id": "A",
          "value": [
-            "Rational",
-            -25,
+            "Divide",
+            [
+               "Multiply",
+               -7,
+               [
+                  "Sqrt",
+                  3
+               ]
+            ],
             3
          ],
          "is_key": false,
          "error_path": "BC-ERR-02026",
-         "violated_step": 3
+         "violated_step": 1
       },
       {
          "id": "B",
          "value": [
             "Rational",
-            -28,
+            -44,
             3
          ],
          "is_key": true,
@@ -213,23 +220,23 @@
          "id": "C",
          "value": [
             "Rational",
-            -31,
+            52,
             3
          ],
          "is_key": false,
          "error_path": "BC-ERR-02025",
-         "violated_step": 3
+         "violated_step": 1
       },
       {
          "id": "D",
          "value": [
             "Rational",
-            28,
+            -46,
             3
          ],
          "is_key": false,
          "error_path": "BC-ERR-02025",
-         "violated_step": 3
+         "violated_step": 1
       }
    ]
 }

@@ -4,17 +4,13 @@
    "variant_id": null,
    "format": "mcq",
    "stem": {
-      "text": "Consider the curve (x^2 + 4x + 3)(y^2 + 4y + 3) = -4, for which dy/dx = -(x + 2)(y^2 + 4y + 3)/((x^2 + 4x + 3)(y + 2)). The horizontal line y = k is tangent to the curve at a point in the third quadrant. What is the value of k?"
+      "text": "Consider the curve (x^2 + 4x + 3)(y^2 + 4y + 3) = -3, for which dy/dx = -(x + 2)(y^2 + 4y + 3)/((x^2 + 4x + 3)(y + 2)). The horizontal line y = k is tangent to the curve at a point in the third quadrant. What is the value of k?"
    },
    "answer_key": {
       "form": "symbolic",
       "mathjson": [
-         "Subtract",
-         -2,
-         [
-            "Sqrt",
-            5
-         ]
+         "Negate",
+         4
       ]
    },
    "worked_solution": [
@@ -28,31 +24,23 @@
       },
       {
          "step": 2,
-         "text": "At y = -1 or y = -3 the factor y^2 + 4y + 3 is 0, so the left side of the curve equation is 0, not -4. No point of the curve has either y-value.",
+         "text": "At y = -1 or y = -3 the factor y^2 + 4y + 3 is 0, so the left side of the curve equation is 0, not -3. No point of the curve has either y-value.",
          "mathjson": 0
       },
       {
          "step": 3,
-         "text": "Substitute x = -2: x^2 + 4x + 3 = -1, so y^2 + 4y + 3 = 4 and y^2 + 4y - 1 = 0, which gives y = -2 + sqrt(5) or y = -2 - sqrt(5).",
+         "text": "Substitute x = -2: x^2 + 4x + 3 = -1, so y^2 + 4y + 3 = 3 and y^2 + 4y = 0, which gives y = 0 or y = -4.",
          "mathjson": [
-            "Subtract",
-            -2,
-            [
-               "Sqrt",
-               5
-            ]
+            "Negate",
+            4
          ]
       },
       {
          "step": 4,
-         "text": "At (-2, -2 - sqrt(5)) the denominator is (-1)(-sqrt(5)) = sqrt(5), which is not zero, so the tangent there is horizontal. That point is in the third quadrant, while -2 + sqrt(5) is positive and puts the other point in the second quadrant. So k = -2 - sqrt(5).",
+         "text": "At (-2, -4) the denominator is (-1)(-2) = 2, which is not zero, so the tangent there is horizontal. That point is in the third quadrant, while (-2, 0) lies on an axis. So k = -4.",
          "mathjson": [
-            "Subtract",
-            -2,
-            [
-               "Sqrt",
-               5
-            ]
+            "Negate",
+            4
          ]
       }
    ],
@@ -67,12 +55,8 @@
       {
          "id": "B",
          "value": [
-            "Subtract",
-            -2,
-            [
-               "Sqrt",
-               5
-            ]
+            "Negate",
+            4
          ],
          "is_key": true,
          "error_path": null
@@ -97,7 +81,7 @@
    "difficulty_settings": [
       {
          "difficulty_factor_id": "BC-DF-09",
-         "setting": "high"
+         "setting": "low"
       }
    ],
    "skills": [
@@ -106,7 +90,7 @@
       "BC-SKL-03011"
    ],
    "parameter_draw": {
-      "curve": "(x^2 + 4x + 3)(y^2 + 4y + 3) = -4",
+      "curve": "(x^2 + 4x + 3)(y^2 + 4y + 3) = -3",
       "direction": "horizontal",
       "posed_as_stated_line": true,
       "quadrant": 3,

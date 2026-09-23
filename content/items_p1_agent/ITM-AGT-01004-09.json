@@ -4,70 +4,97 @@
    "variant_id": null,
    "format": "short_answer",
    "stem": {
-      "text": "Evaluate \\( \\lim_{x \\to \\pi/4} \\dfrac{1 - \\tan x}{\\sin x - \\cos x} \\). Show the limits of the numerator and of the denominator before rewriting, and give an exact value."
+      "text": "Evaluate \\( \\lim_{x \\to \\pi/2} \\dfrac{\\sin^2 x - 3\\sin x + 2}{\\sin^2 x + 2\\sin x - 3} \\)."
    },
    "answer_key": {
       "form": "symbolic",
       "mathjson": [
-         "Negate",
-         [
-            "Sqrt",
-            2
-         ]
+         "Rational",
+         -1,
+         4
       ]
    },
    "worked_solution": [
       {
          "step": 1,
-         "text": "As x approaches pi/4 the numerator approaches 1 - tan(pi/4) = 0 and the denominator approaches sqrt(2)/2 - sqrt(2)/2 = 0, so the form is zero over zero.",
+         "text": "At x = pi/2, sin x = 1, so the numerator is 1 - 3 + 2 = 0 and the denominator is 1 + 2 - 3 = 0, and the quotient is zero over zero.",
          "mathjson": 0
       },
       {
          "step": 2,
-         "text": "Write tan x = sin x / cos x, so 1 - tan x = (cos x - sin x)/cos x = -(sin x - cos x)/cos x.",
+         "text": "Treat sin x as the variable and factor: sin^2 x - 3 sin x + 2 = (sin x - 1)(sin x - 2) and sin^2 x + 2 sin x - 3 = (sin x - 1)(sin x + 3).",
          "mathjson": [
             "Divide",
             [
-               "Negate",
+               "Multiply",
                [
                   "Subtract",
                   [
                      "Sin",
                      "x"
                   ],
+                  1
+               ],
+               [
+                  "Subtract",
                   [
-                     "Cos",
+                     "Sin",
                      "x"
-                  ]
+                  ],
+                  2
                ]
             ],
             [
-               "Cos",
-               "x"
+               "Multiply",
+               [
+                  "Subtract",
+                  [
+                     "Sin",
+                     "x"
+                  ],
+                  1
+               ],
+               [
+                  "Add",
+                  [
+                     "Sin",
+                     "x"
+                  ],
+                  3
+               ]
             ]
          ]
       },
       {
          "step": 3,
-         "text": "Dividing by sin x - cos x, which is not zero near pi/4 except at pi/4, the common factor divides out and leaves -1/cos x.",
+         "text": "For x near pi/2 with x not equal to pi/2, sin x is not 1, so the factor sin x - 1 divides out, leaving (sin x - 2)/(sin x + 3).",
          "mathjson": [
             "Divide",
-            -1,
             [
-               "Cos",
-               "x"
+               "Subtract",
+               [
+                  "Sin",
+                  "x"
+               ],
+               2
+            ],
+            [
+               "Add",
+               [
+                  "Sin",
+                  "x"
+               ],
+               3
             ]
          ]
       },
       {
          "step": 4,
-         "text": "At x = pi/4 this is -1/(sqrt(2)/2) = -sqrt(2).",
+         "text": "The simplified expression is continuous at pi/2, so the limit is (1 - 2)/(1 + 3) = -1/4.",
          "mathjson": [
-            "Negate",
-            [
-               "Sqrt",
-               2
-            ]
+            "Rational",
+            -1,
+            4
          ]
       }
    ],
@@ -80,7 +107,7 @@
       },
       {
          "difficulty_factor_id": "BC-DF-10",
-         "setting": "low"
+         "setting": "off"
       },
       {
          "difficulty_factor_id": "BC-DF-17",
@@ -95,9 +122,17 @@
       "BC-SKL-01028"
    ],
    "parameter_draw": {
-      "target": "pi/4",
-      "identity": "tan x = sin x / cos x",
-      "rewrite": "trigonometric identity"
+      "target": "pi/2",
+      "substitution": "u = sin x",
+      "numerator_roots_in_u": [
+         1,
+         2
+      ],
+      "denominator_roots_in_u": [
+         1,
+         -3
+      ],
+      "rewrite": "factoring in one trigonometric function"
    },
    "authored_on": "2026-09-23",
    "authored_by": "claude-opus-5-5 agent draft, pending operator review",
@@ -105,15 +140,9 @@
       {
          "id": "A",
          "value": [
-            "Negate",
-            [
-               "Add",
-               2,
-               [
-                  "Sqrt",
-                  2
-               ]
-            ]
+            "Rational",
+            -2,
+            3
          ],
          "is_key": false,
          "error_path": "BC-ERR-01010",
@@ -122,25 +151,16 @@
       {
          "id": "B",
          "value": [
-            "Negate",
-            [
-               "Sqrt",
-               2
-            ]
+            "Rational",
+            -1,
+            4
          ],
          "is_key": true,
          "error_path": null
       },
       {
          "id": "C",
-         "value": [
-            "Add",
-            2,
-            [
-               "Sqrt",
-               2
-            ]
-         ],
+         "value": 1,
          "is_key": false,
          "error_path": "BC-ERR-01010",
          "violated_step": 2

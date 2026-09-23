@@ -4,44 +4,71 @@
    "variant_id": null,
    "format": "short_answer",
    "stem": {
-      "text": "The function s is defined by s(x) = (2x + 1) / (x^2 + 2x - 15) for x >= -4 only. Find the largest interval that contains x = 0 on which s is continuous, name the reason, and give the number of integers that interval contains."
+      "text": "The function s is given by s(x) = (x + 3) / (x^2 + 5x - 6) for -4 <= x <= 6. Consider the largest interval that contains x = 0 and on which s is continuous. What is the sum of the integers in that interval?"
    },
    "answer_key": {
       "form": "numeric",
-      "mathjson": 7
+      "mathjson": -10
    },
    "worked_solution": [
       {
          "step": 1,
-         "text": "The denominator (x + 5)(x - 3) is zero at x = -5 and x = 3, and only x = 3 lies in the stated domain x >= -4.",
+         "text": "The denominator x^2 + 5x - 6 = (x + 6)(x - 1) is zero at x = -6 and x = 1. Only x = 1 lies in the stated domain -4 <= x <= 6, so the domain of s is [-4, 1) U (1, 6].",
          "mathjson": [
             "Multiply",
             [
                "Add",
                "x",
-               5
+               6
             ],
             [
                "Subtract",
                "x",
-               3
+               1
             ]
          ]
       },
       {
          "step": 2,
-         "text": "A rational function is continuous at every input of its domain. On x >= -4 its domain is [-4, 3) U (3, infinity), and at x = -4 continuity is one sided from the right.",
-         "mathjson": 3
+         "text": "s is a rational function, continuous at every input of its domain, with one sided continuity at the stated endpoints -4 and 6, so s is continuous on [-4, 1) and on (1, 6].",
+         "mathjson": [
+            "Divide",
+            [
+               "Add",
+               "x",
+               3
+            ],
+            [
+               "Multiply",
+               [
+                  "Add",
+                  "x",
+                  6
+               ],
+               [
+                  "Subtract",
+                  "x",
+                  1
+               ]
+            ]
+         ]
       },
       {
          "step": 3,
-         "text": "The piece containing x = 0 is [-4, 3), closed at the stated endpoint -4 and open at 3.",
-         "mathjson": -4
+         "text": "The piece that contains x = 0 is [-4, 1), closed at -4 because s(-4) exists and s is continuous from the right there, and open at 1. Its integers are -4, -3, -2, -1 and 0.",
+         "mathjson": [
+            "Add",
+            -4,
+            -3,
+            -2,
+            -1,
+            0
+         ]
       },
       {
          "step": 4,
-         "text": "The integers in [-4, 3) are -4, -3, -2, -1, 0, 1 and 2.",
-         "mathjson": 7
+         "text": "The sum of those integers is -10.",
+         "mathjson": -10
       }
    ],
    "calculator_status": "no_calculator",
@@ -53,15 +80,15 @@
       },
       {
          "difficulty_factor_id": "BC-DF-10",
-         "setting": "high"
-      },
-      {
-         "difficulty_factor_id": "BC-DF-14",
          "setting": "off"
       },
       {
-         "difficulty_factor_id": "BC-DF-17",
+         "difficulty_factor_id": "BC-DF-14",
          "setting": "on"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-17",
+         "setting": "off"
       }
    ],
    "skills": [
@@ -71,10 +98,13 @@
       "BC-SKL-01049"
    ],
    "parameter_draw": {
-      "stated_lower_bound": -4,
+      "stated_domain": [
+         -4,
+         6
+      ],
       "denominator_roots": [
-         -5,
-         3
+         -6,
+         1
       ],
       "anchor_point": 0
    },
@@ -83,14 +113,14 @@
    "options": [
       {
          "id": "A",
-         "value": 10,
+         "value": -15,
          "is_key": false,
          "error_path": "BC-ERR-01031",
          "violated_step": 0
       },
       {
          "id": "B",
-         "value": 7,
+         "value": -10,
          "is_key": true,
          "error_path": null
       },
@@ -103,7 +133,7 @@
       },
       {
          "id": "D",
-         "value": 8,
+         "value": -9,
          "is_key": false,
          "error_path": "BC-ERR-01032",
          "violated_step": 2

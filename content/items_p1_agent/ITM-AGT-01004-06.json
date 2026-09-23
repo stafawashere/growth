@@ -4,37 +4,78 @@
    "variant_id": null,
    "format": "mcq",
    "stem": {
-      "text": "Evaluate \\( \\lim_{x \\to -4} \\dfrac{x^2 - 16}{x + 4} \\)."
+      "text": "Evaluate \\( \\lim_{x \\to 2} \\dfrac{x^2 - 7x + 10}{x^2 - x - 2} \\)."
    },
    "answer_key": {
       "form": "symbolic",
-      "mathjson": -8
+      "mathjson": -1
    },
    "worked_solution": [
       {
          "step": 1,
-         "text": "At x = -4 the numerator is 16 - 16 = 0 and the denominator is -4 + 4 = 0, so the quotient is zero over zero.",
+         "text": "At x = 2 the numerator is 4 - 14 + 10 = 0 and the denominator is 4 - 2 - 2 = 0, so the quotient is zero over zero.",
          "mathjson": 0
       },
       {
          "step": 2,
-         "text": "Factor the difference of squares: x^2 - 16 = (x - 4)(x + 4). For x not equal to -4 the factor x + 4 divides out, leaving x - 4.",
+         "text": "Factor both parts: x^2 - 7x + 10 = (x - 2)(x - 5) and x^2 - x - 2 = (x - 2)(x + 1).",
          "mathjson": [
-            "Subtract",
-            "x",
-            4
+            "Divide",
+            [
+               "Multiply",
+               [
+                  "Subtract",
+                  "x",
+                  2
+               ],
+               [
+                  "Subtract",
+                  "x",
+                  5
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Subtract",
+                  "x",
+                  2
+               ],
+               [
+                  "Add",
+                  "x",
+                  1
+               ]
+            ]
          ]
       },
       {
          "step": 3,
-         "text": "The limit is -4 - 4 = -8.",
-         "mathjson": -8
+         "text": "For x not equal to 2 the common factor x - 2 divides out, leaving (x - 5)/(x + 1).",
+         "mathjson": [
+            "Divide",
+            [
+               "Subtract",
+               "x",
+               5
+            ],
+            [
+               "Add",
+               "x",
+               1
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "The simplified quotient is continuous at 2, so the limit is (2 - 5)/(2 + 1) = -3/3 = -1.",
+         "mathjson": -1
       }
    ],
    "options": [
       {
          "id": "A",
-         "value": -5,
+         "value": 1,
          "is_key": false,
          "error_path": "BC-ERR-01010",
          "violated_step": 2
@@ -48,14 +89,14 @@
       },
       {
          "id": "C",
-         "value": -3,
+         "value": -5,
          "is_key": false,
          "error_path": "BC-ERR-01010",
          "violated_step": 2
       },
       {
          "id": "D",
-         "value": -8,
+         "value": -1,
          "is_key": true,
          "error_path": null
       }
@@ -84,8 +125,15 @@
       "BC-SKL-01028"
    ],
    "parameter_draw": {
-      "target": -4,
-      "square_constant": 16,
+      "target": 2,
+      "numerator_factors": [
+         "x - 2",
+         "x - 5"
+      ],
+      "denominator_factors": [
+         "x - 2",
+         "x + 1"
+      ],
       "rewrite": "factoring"
    },
    "authored_on": "2026-09-23",

@@ -4,27 +4,31 @@
    "variant_id": null,
    "format": "mcq",
    "stem": {
-      "text": "Let h(x) = csc x + 2cot x. Rewrite h(x) with sin x and cos x and find h'(pi/4)."
+      "text": "Let h(x) = csc x - 2cot x. Rewrite h(x) with sin x and cos x and find h'(pi/6)."
    },
    "answer_key": {
       "form": "numeric",
       "mathjson": [
          "Subtract",
-         -4,
+         8,
          [
-            "Sqrt",
-            2
+            "Multiply",
+            2,
+            [
+               "Sqrt",
+               3
+            ]
          ]
       ]
    },
    "worked_solution": [
       {
          "step": 1,
-         "text": "Over the denominator sin x, h(x) = (1 + 2cos x)/sin x.",
+         "text": "Over the denominator sin x, h(x) = (1 - 2cos x)/sin x.",
          "mathjson": [
             "Divide",
             [
-               "Add",
+               "Subtract",
                1,
                [
                   "Multiply",
@@ -43,14 +47,14 @@
       },
       {
          "step": 2,
-         "text": "The quotient rule gives h'(x) = (-2sin x sin x - (1 + 2cos x)cos x)/sin^2 x.",
+         "text": "The quotient rule with numerator derivative 2sin x and denominator derivative cos x gives h'(x) = (2sin x sin x - (1 - 2cos x)cos x)/sin^2 x.",
          "mathjson": [
             "Divide",
             [
                "Subtract",
                [
                   "Multiply",
-                  -2,
+                  2,
                   [
                      "Sin",
                      "x"
@@ -63,7 +67,7 @@
                [
                   "Multiply",
                   [
-                     "Add",
+                     "Subtract",
                      1,
                      [
                         "Multiply",
@@ -92,12 +96,12 @@
       },
       {
          "step": 3,
-         "text": "The terms -2sin^2 x - 2cos^2 x equal -2 by the Pythagorean identity, so h'(x) = (-2 - cos x)/sin^2 x.",
+         "text": "The terms 2sin^2 x + 2cos^2 x equal 2 by the Pythagorean identity, so h'(x) = (2 - cos x)/sin^2 x.",
          "mathjson": [
             "Divide",
             [
                "Subtract",
-               -2,
+               2,
                [
                   "Cos",
                   "x"
@@ -115,23 +119,9 @@
       },
       {
          "step": 4,
-         "text": "In reciprocal form, h'(x) = -csc x cot x - 2csc^2 x.",
+         "text": "In reciprocal form, h'(x) = 2csc^2 x - csc x cot x.",
          "mathjson": [
             "Subtract",
-            [
-               "Negate",
-               [
-                  "Multiply",
-                  [
-                     "Csc",
-                     "x"
-                  ],
-                  [
-                     "Cot",
-                     "x"
-                  ]
-               ]
-            ],
             [
                "Multiply",
                2,
@@ -143,18 +133,33 @@
                   ],
                   2
                ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Csc",
+                  "x"
+               ],
+               [
+                  "Cot",
+                  "x"
+               ]
             ]
          ]
       },
       {
          "step": 5,
-         "text": "At x = pi/4, csc x = sqrt(2), cot x = 1 and csc^2 x = 2, so h'(pi/4) = -sqrt(2) - 4.",
+         "text": "At x = pi/6, csc x = 2, cot x = sqrt(3) and csc^2 x = 4, so h'(pi/6) = 8 - 2sqrt(3).",
          "mathjson": [
             "Subtract",
-            -4,
+            8,
             [
-               "Sqrt",
-               2
+               "Multiply",
+               2,
+               [
+                  "Sqrt",
+                  3
+               ]
             ]
          ]
       }
@@ -162,7 +167,18 @@
    "options": [
       {
          "id": "A",
-         "value": -2,
+         "value": [
+            "Divide",
+            [
+               "Multiply",
+               2,
+               [
+                  "Sqrt",
+                  3
+               ]
+            ],
+            3
+         ],
          "is_key": false,
          "error_path": "BC-ERR-02026",
          "violated_step": 1
@@ -172,10 +188,14 @@
          "value": [
             "Subtract",
             [
-               "Sqrt",
-               2
+               "Multiply",
+               2,
+               [
+                  "Sqrt",
+                  3
+               ]
             ],
-            4
+            8
          ],
          "is_key": false,
          "error_path": "BC-ERR-02025",
@@ -185,10 +205,14 @@
          "id": "C",
          "value": [
             "Subtract",
-            -4,
+            8,
             [
-               "Sqrt",
-               2
+               "Multiply",
+               2,
+               [
+                  "Sqrt",
+                  3
+               ]
             ]
          ],
          "is_key": true,
@@ -197,11 +221,15 @@
       {
          "id": "D",
          "value": [
-            "Subtract",
-            4,
+            "Add",
+            8,
             [
-               "Sqrt",
-               2
+               "Multiply",
+               2,
+               [
+                  "Sqrt",
+                  3
+               ]
             ]
          ],
          "is_key": false,
@@ -228,10 +256,10 @@
       "BC-SKL-02046"
    ],
    "parameter_draw": {
-      "function": "a csc x + b cot x",
+      "function": "a csc x - b cot x",
       "a": 1,
       "b": 2,
-      "evaluate_at": "pi/4"
+      "evaluate_at": "pi/6"
    },
    "authored_by": "claude-opus-5-5 agent draft, pending operator review",
    "authored_on": "2026-09-23"

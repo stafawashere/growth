@@ -4,11 +4,22 @@
    "variant_id": null,
    "format": "short_answer",
    "stem": {
-      "text": "Consider the curve (x^2 - 4x + 1)(y^2 + 2y) = -6, for which dy/dx = -(x - 2)(y^2 + 2y)/((x^2 - 4x + 1)(y + 1)). The tangent line to the curve is vertical at a point in the fourth quadrant. What is the x-coordinate of that point?"
+      "text": "Consider the curve (x^2 - 4x + 1)(y^2 + 2y) = -9, for which dy/dx = -(x - 2)(y^2 + 2y)/((x^2 - 4x + 1)(y + 1)). The tangent line to the curve is vertical at a point in the fourth quadrant. What is the x-coordinate of that point?"
    },
    "answer_key": {
       "form": "symbolic",
-      "mathjson": 5
+      "mathjson": [
+         "Add",
+         2,
+         [
+            "Multiply",
+            2,
+            [
+               "Sqrt",
+               3
+            ]
+         ]
+      ]
    },
    "worked_solution": [
       {
@@ -21,7 +32,7 @@
       },
       {
          "step": 2,
-         "text": "At x = 2 + sqrt(3) or x = 2 - sqrt(3) the factor x^2 - 4x + 1 is 0, so the left side of the curve equation is 0, not -6. Neither x-value belongs to a point of the curve.",
+         "text": "At x = 2 + sqrt(3) or x = 2 - sqrt(3) the factor x^2 - 4x + 1 is 0, so the left side of the curve equation is 0, not -9. Neither x-value belongs to a point of the curve.",
          "mathjson": [
             "Add",
             2,
@@ -33,13 +44,35 @@
       },
       {
          "step": 3,
-         "text": "Substitute y = -1: y^2 + 2y = -1, so x^2 - 4x + 1 = 6 and x^2 - 4x - 5 = 0, which gives x = 5 or x = -1.",
-         "mathjson": 5
+         "text": "Substitute y = -1: y^2 + 2y = -1, so x^2 - 4x + 1 = 9 and x^2 - 4x - 8 = 0, which gives x = 2 + 2 sqrt(3) or x = 2 - 2 sqrt(3).",
+         "mathjson": [
+            "Add",
+            2,
+            [
+               "Multiply",
+               2,
+               [
+                  "Sqrt",
+                  3
+               ]
+            ]
+         ]
       },
       {
          "step": 4,
-         "text": "At (5, -1) the numerator is -(3)(-1) = 3, which is nonzero, so the tangent is vertical there. The point (5, -1) is in the fourth quadrant and (-1, -1) is in the third, so the x-coordinate is 5.",
-         "mathjson": 5
+         "text": "At (2 + 2 sqrt(3), -1) the numerator is -(2 sqrt(3))(-1) = 2 sqrt(3), which is nonzero, so the tangent is vertical there. That point is in the fourth quadrant, while 2 - 2 sqrt(3) is negative and puts the other point in the third. So the x-coordinate is 2 + 2 sqrt(3).",
+         "mathjson": [
+            "Add",
+            2,
+            [
+               "Multiply",
+               2,
+               [
+                  "Sqrt",
+                  3
+               ]
+            ]
+         ]
       }
    ],
    "calculator_status": "no_calculator",
@@ -47,7 +80,7 @@
    "difficulty_settings": [
       {
          "difficulty_factor_id": "BC-DF-09",
-         "setting": "high"
+         "setting": "medium"
       }
    ],
    "skills": [
@@ -56,7 +89,7 @@
       "BC-SKL-03011"
    ],
    "parameter_draw": {
-      "curve": "(x^2 - 4x + 1)(y^2 + 2y) = -6",
+      "curve": "(x^2 - 4x + 1)(y^2 + 2y) = -9",
       "direction": "vertical",
       "quadrant": 4,
       "off_curve_candidates": 2
@@ -87,7 +120,18 @@
       },
       {
          "id": "C",
-         "value": 5,
+         "value": [
+            "Add",
+            2,
+            [
+               "Multiply",
+               2,
+               [
+                  "Sqrt",
+                  3
+               ]
+            ]
+         ],
          "is_key": true,
          "error_path": null
       },

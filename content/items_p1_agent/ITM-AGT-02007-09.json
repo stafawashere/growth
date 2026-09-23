@@ -194,42 +194,30 @@
       {
          "id": "D",
          "value": [
-            "Multiply",
+            "Subtract",
             [
-               "Power",
-               "x",
-               -1
-            ],
-            [
-               "Add",
+               "Subtract",
                [
                   "Multiply",
-                  "x",
+                  7,
                   [
-                     "Add",
+                     "Exp",
                      [
-                        "Multiply",
-                        7,
-                        [
-                           "Exp",
-                           [
-                              "Add",
-                              "x",
-                              -1
-                           ]
-                        ]
-                     ],
-                     [
-                        "Multiply",
-                        -1,
-                        [
-                           "Sin",
-                           "x"
-                        ]
+                        "Subtract",
+                        "x",
+                        1
                      ]
                   ]
                ],
-               -2
+               [
+                  "Sin",
+                  "x"
+               ]
+            ],
+            [
+               "Divide",
+               2,
+               "x"
             ]
          ],
          "is_key": false,

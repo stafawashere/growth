@@ -4,7 +4,7 @@
    "variant_id": null,
    "format": "mcq",
    "stem": {
-      "text": "The function w is given by w(x) = (x^2 - 1)/(x - 1) for x < 1, w(x) = ax^2 + b for 1 <= x <= 3, and w(x) = 4x + 14 for x > 3, where a and b are constants. If w is continuous for all real x, what is the value of b?"
+      "text": "The function w is given by w(x) = (x^2 - 1)/(x - 1) for x < 1, w(x) = ax^2 + b for 1 <= x <= 3, and w(x) = 6x + 11 - a for x > 3, where a and b are constants. If w is continuous for all real x, what is the value of b?"
    },
    "answer_key": {
       "form": "symbolic",
@@ -26,24 +26,24 @@
       },
       {
          "step": 2,
-         "text": "At x = 3 the middle branch gives 9a + b and the right branch gives 26, so 9a + b = 26.",
+         "text": "At x = 3 the middle branch gives 9a + b and the right branch gives 18 + 11 - a = 29 - a, so 9a + b = 29 - a, which is 10a + b = 29.",
          "mathjson": [
             "Equal",
             [
                "Add",
                [
                   "Multiply",
-                  9,
+                  10,
                   "a"
                ],
                "b"
             ],
-            26
+            29
          ]
       },
       {
          "step": 3,
-         "text": "Subtracting the first equation from the second gives 8a = 24, so a = 3.",
+         "text": "Subtracting the first equation from the second gives 9a = 27, so a = 3.",
          "mathjson": [
             "Equal",
             "a",
@@ -59,7 +59,7 @@
    "options": [
       {
          "id": "A",
-         "value": 17,
+         "value": 14,
          "is_key": false,
          "error_path": "BC-ERR-01017",
          "violated_step": 0
@@ -74,7 +74,7 @@
          "id": "C",
          "value": [
             "Rational",
-            79,
+            7,
             4
          ],
          "is_key": false,
@@ -83,11 +83,7 @@
       },
       {
          "id": "D",
-         "value": [
-            "Rational",
-            7,
-            4
-         ],
+         "value": -23,
          "is_key": false,
          "error_path": "BC-ERR-01017",
          "violated_step": 0
@@ -110,7 +106,7 @@
    "parameter_draw": {
       "left_branch": "(x^2 - 1)/(x - 1)",
       "middle_branch": "ax^2 + b",
-      "right_branch": "4x + 14",
+      "right_branch": "6x + 11 - a",
       "boundaries": [
          1,
          3

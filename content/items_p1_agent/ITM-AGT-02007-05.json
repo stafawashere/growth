@@ -114,38 +114,27 @@
       {
          "id": "B",
          "value": [
-            "Multiply",
+            "Add",
             [
-               "Power",
-               "x",
-               -1
+               "Exp",
+               [
+                  "Subtract",
+                  "x",
+                  1
+               ]
             ],
             [
-               "Add",
+               "Multiply",
+               2,
                [
-                  "Multiply",
-                  "x",
-                  [
-                     "Add",
-                     [
-                        "Exp",
-                        [
-                           "Add",
-                           "x",
-                           -1
-                        ]
-                     ],
-                     [
-                        "Multiply",
-                        2,
-                        [
-                           "Sin",
-                           "x"
-                        ]
-                     ]
-                  ]
-               ],
-               3
+                  "Sin",
+                  "x"
+               ]
+            ],
+            [
+               "Divide",
+               3,
+               "x"
             ]
          ],
          "is_key": false,

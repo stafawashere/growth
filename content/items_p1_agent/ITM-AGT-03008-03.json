@@ -4,11 +4,11 @@
    "variant_id": null,
    "format": "mcq",
    "stem": {
-      "text": "A solution curve of the differential equation dy/dx = xy + 2x passes through the point (1, 3). What is the value of d^2y/dx^2 at that point?"
+      "text": "A solution curve of the differential equation dy/dx = xy + 2x passes through the point (2, -1). What is the value of d^2y/dx^2 at that point?"
    },
    "answer_key": {
       "form": "numeric",
-      "mathjson": 10
+      "mathjson": 5
    },
    "worked_solution": [
       {
@@ -39,48 +39,40 @@
       },
       {
          "step": 2,
-         "text": "At (1, 3), dy/dx = (1)(3) + 2(1) = 5.",
-         "mathjson": 5
+         "text": "At (2, -1), dy/dx = (2)(-1) + 2(2) = 2.",
+         "mathjson": 2
       },
       {
          "step": 3,
-         "text": "Substitute: d^2y/dx^2 = 3 + (1)(5) + 2 = 10.",
-         "mathjson": 10
+         "text": "Substitute: d^2y/dx^2 = -1 + (2)(2) + 2 = 5.",
+         "mathjson": 5
       }
    ],
    "options": [
       {
          "id": "A",
-         "value": [
-            "Add",
-            [
-               "Multiply",
-               2,
-               "y"
-            ],
-            4
-         ],
+         "value": 1,
          "is_key": false,
-         "error_path": "BC-ERR-03011",
-         "violated_step": 2
+         "error_path": "BC-ERR-03023",
+         "violated_step": 3
       },
       {
          "id": "B",
-         "value": 7,
+         "value": 6,
          "is_key": false,
          "error_path": "BC-ERR-03008",
          "violated_step": 1
       },
       {
          "id": "C",
-         "value": 5,
+         "value": 2,
          "is_key": false,
          "error_path": "BC-ERR-03021",
          "violated_step": 0
       },
       {
          "id": "D",
-         "value": 10,
+         "value": 5,
          "is_key": true,
          "error_path": null
       }
@@ -103,8 +95,8 @@
    "parameter_draw": {
       "differential_equation": "xy + 2x",
       "point": [
-         1,
-         3
+         2,
+         -1
       ]
    },
    "authored_by": "claude-opus-5-5 agent draft, pending operator review",

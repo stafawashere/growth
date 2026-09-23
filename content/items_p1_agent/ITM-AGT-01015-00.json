@@ -4,19 +4,23 @@
    "variant_id": null,
    "format": "mcq",
    "stem": {
-      "text": "Let h(x) = sqrt(x + 3) / (x^2 - 4x). Consider the largest interval that contains x = 1 and on which h is continuous. How many integers does that interval contain?"
+      "text": "Let h(x) = sqrt(x + 5) / (x^2 - 2x - 8). Consider the largest interval that contains x = 0 and on which h is continuous. What is the sum of the integers in that interval?"
    },
    "answer_key": {
       "form": "numeric",
-      "mathjson": 3
+      "mathjson": 5
    },
    "worked_solution": [
       {
          "step": 1,
-         "text": "The radicand requires x >= -3, and the denominator x^2 - 4x = x(x - 4) is zero at x = 0 and x = 4, so the excluded inputs are x < -3, x = 0 and x = 4.",
+         "text": "The radicand requires x >= -5, and the denominator x^2 - 2x - 8 = (x + 2)(x - 4) is zero at x = -2 and x = 4, so those two inputs are excluded as well.",
          "mathjson": [
             "Multiply",
-            "x",
+            [
+               "Add",
+               "x",
+               2
+            ],
             [
                "Subtract",
                "x",
@@ -26,48 +30,74 @@
       },
       {
          "step": 2,
-         "text": "h is a quotient of a square root function and a polynomial, each continuous on its domain, so h is continuous at every input of its domain [-3, 0) U (0, 4) U (4, infinity).",
+         "text": "h is a quotient of a square root function and a polynomial, each continuous on its domain, so h is continuous on its whole domain [-5, -2) U (-2, 4) U (4, infinity).",
          "mathjson": [
-            "Add",
-            "x",
-            3
+            "Divide",
+            [
+               "Sqrt",
+               [
+                  "Add",
+                  "x",
+                  5
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Add",
+                  "x",
+                  2
+               ],
+               [
+                  "Subtract",
+                  "x",
+                  4
+               ]
+            ]
          ]
       },
       {
          "step": 3,
-         "text": "The piece of the domain that contains x = 1 is the open interval (0, 4), and both endpoints are open because h is undefined there.",
-         "mathjson": 4
+         "text": "The piece of the domain that contains x = 0 is (-2, 4), open at both ends because h is undefined at -2 and at 4. Its integers are -1, 0, 1, 2 and 3.",
+         "mathjson": [
+            "Add",
+            -1,
+            0,
+            1,
+            2,
+            3
+         ]
       },
       {
          "step": 4,
-         "text": "The integers in (0, 4) are 1, 2 and 3.",
-         "mathjson": 3
+         "text": "The sum of those integers is 5.",
+         "mathjson": 5
       }
    ],
    "options": [
       {
          "id": "A",
-         "value": 7,
+         "value": -9,
          "is_key": false,
          "error_path": "BC-ERR-01031",
          "violated_step": 0
       },
       {
          "id": "B",
-         "value": 3,
+         "value": 5,
          "is_key": true,
          "error_path": null
       },
       {
          "id": "C",
-         "value": 4,
+         "value": 3,
          "is_key": false,
          "error_path": "BC-ERR-01032",
          "violated_step": 2
       },
       {
          "id": "D",
-         "value": 5,
+         "value": 9,
          "is_key": false,
          "error_path": "BC-ERR-01032",
          "violated_step": 2
@@ -100,12 +130,12 @@
       "BC-SKL-01049"
    ],
    "parameter_draw": {
-      "radicand_shift": 3,
+      "radicand_shift": 5,
       "denominator_roots": [
-         0,
+         -2,
          4
       ],
-      "anchor_point": 1
+      "anchor_point": 0
    },
    "authored_by": "claude-opus-5-5 agent draft, pending operator review",
    "authored_on": "2026-09-23"

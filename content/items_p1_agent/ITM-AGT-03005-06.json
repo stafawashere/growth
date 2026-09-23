@@ -4,86 +4,58 @@
    "variant_id": null,
    "format": "mcq",
    "stem": {
-      "text": "Consider the curve (x^2 - 6x + 8)(1 - y^2) = 9, for which dy/dx = (x - 3)(1 - y^2)/(y(x^2 - 6x + 8)). For a positive constant k, the vertical line x = k is tangent to the curve. Find k."
+      "text": "Consider the curve (x^2 - 8x + 7)(1 - y^2) = -5, for which dy/dx = (x - 4)(1 - y^2)/(y(x^2 - 8x + 7)). The vertical line x = k is tangent to the curve for two values of k. What is the larger value?"
    },
    "answer_key": {
       "form": "symbolic",
-      "mathjson": [
-         "Add",
-         3,
-         [
-            "Sqrt",
-            10
-         ]
-      ]
+      "mathjson": 6
    },
    "worked_solution": [
       {
          "step": 1,
-         "text": "A vertical tangent needs the denominator of dy/dx to be zero with the numerator nonzero. The denominator is zero when y = 0, x = 2, or x = 4.",
+         "text": "A vertical tangent needs the denominator of dy/dx to be zero with the numerator nonzero. The denominator is zero when y = 0, x = 1, or x = 7.",
          "mathjson": 0
       },
       {
          "step": 2,
-         "text": "At x = 2 or x = 4 the factor x^2 - 6x + 8 is 0, so the left side of the curve equation is 0, not 9. Neither x-value belongs to a point of the curve.",
+         "text": "At x = 1 or x = 7 the factor x^2 - 8x + 7 is 0, so the left side of the curve equation is 0, not -5. Neither x-value belongs to a point of the curve.",
          "mathjson": 0
       },
       {
          "step": 3,
-         "text": "Substitute y = 0: x^2 - 6x + 8 = 9, so x^2 - 6x - 1 = 0, which gives x = 3 + sqrt(10) or x = 3 - sqrt(10).",
-         "mathjson": [
-            "Add",
-            3,
-            [
-               "Sqrt",
-               10
-            ]
-         ]
+         "text": "Substitute y = 0: x^2 - 8x + 7 = -5, so x^2 - 8x + 12 = 0, which gives x = 2 or x = 6.",
+         "mathjson": 6
       },
       {
          "step": 4,
-         "text": "At both points the numerator is (x - 3)(1) = sqrt(10) or -sqrt(10), which is nonzero, so both tangents are vertical. Since 3 - sqrt(10) is negative, the positive value is k = 3 + sqrt(10).",
-         "mathjson": [
-            "Add",
-            3,
-            [
-               "Sqrt",
-               10
-            ]
-         ]
+         "text": "At (2, 0) and (6, 0) the numerator is (x - 4)(1) = -2 or 2, which is nonzero, so both tangents are vertical. The two values are k = 2 and k = 6, and the larger is 6.",
+         "mathjson": 6
       }
    ],
    "options": [
       {
          "id": "A",
-         "value": 4,
+         "value": 6,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": 1,
          "is_key": false,
          "error_path": "BC-ERR-03013",
          "violated_step": 3
       },
       {
-         "id": "B",
-         "value": [
-            "Add",
-            3,
-            [
-               "Sqrt",
-               10
-            ]
-         ],
-         "is_key": true,
-         "error_path": null
-      },
-      {
          "id": "C",
-         "value": 3,
+         "value": 4,
          "is_key": false,
          "error_path": "BC-ERR-03012",
          "violated_step": 0
       },
       {
          "id": "D",
-         "value": 2,
+         "value": 7,
          "is_key": false,
          "error_path": "BC-ERR-03013",
          "violated_step": 3
@@ -94,7 +66,7 @@
    "difficulty_settings": [
       {
          "difficulty_factor_id": "BC-DF-09",
-         "setting": "high"
+         "setting": "medium"
       }
    ],
    "skills": [
@@ -103,10 +75,10 @@
       "BC-SKL-03011"
    ],
    "parameter_draw": {
-      "curve": "(x^2 - 6x + 8)(1 - y^2) = 9",
+      "curve": "(x^2 - 8x + 7)(1 - y^2) = -5",
       "direction": "vertical",
       "posed_as_stated_line": true,
-      "sign": "positive",
+      "which": "larger",
       "off_curve_candidates": 2
    },
    "authored_on": "2026-09-23",

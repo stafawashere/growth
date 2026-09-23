@@ -4,11 +4,11 @@
    "variant_id": null,
    "format": "short_answer",
    "stem": {
-      "text": "Consider the curve x^2 + 3xy - y^2 = 3. Find the slope of the curve at the point on it where x = 1 and y > 1."
+      "text": "Consider the curve x^2 + 3xy - y^2 = 3x^2. Find the slope of the curve at the point on it where x = 1 and y > 1."
    },
    "answer_key": {
       "form": "numeric",
-      "mathjson": 8
+      "mathjson": 2
    },
    "worked_solution": [
       {
@@ -18,7 +18,7 @@
       },
       {
          "step": 2,
-         "text": "Differentiate every term with respect to x, using the product rule on 3xy: 2x + 3y + 3x(dy/dx) - 2y(dy/dx) = 0.",
+         "text": "Differentiate every term of both sides with respect to x, using the product rule on 3xy: 2x + 3y + 3x(dy/dx) - 2y(dy/dx) = 6x.",
          "mathjson": [
             "Equal",
             [
@@ -52,12 +52,16 @@
                   "y"
                ]
             ],
-            0
+            [
+               "Multiply",
+               6,
+               "x"
+            ]
          ]
       },
       {
          "step": 3,
-         "text": "Collect the dy/dx terms: (3x - 2y)(dy/dx) = -2x - 3y.",
+         "text": "Collect the dy/dx terms on the left: (3x - 2y)(dy/dx) = 4x - 3y.",
          "mathjson": [
             "Equal",
             [
@@ -80,12 +84,9 @@
             [
                "Subtract",
                [
-                  "Negate",
-                  [
-                     "Multiply",
-                     2,
-                     "x"
-                  ]
+                  "Multiply",
+                  4,
+                  "x"
                ],
                [
                   "Multiply",
@@ -97,44 +98,41 @@
       },
       {
          "step": 4,
-         "text": "Divide by 3x - 2y, so dy/dx = -(2x + 3y)/(3x - 2y).",
+         "text": "Divide by 3x - 2y, so dy/dx = (4x - 3y)/(3x - 2y).",
          "mathjson": [
-            "Negate",
+            "Divide",
             [
-               "Divide",
+               "Subtract",
                [
-                  "Add",
-                  [
-                     "Multiply",
-                     2,
-                     "x"
-                  ],
-                  [
-                     "Multiply",
-                     3,
-                     "y"
-                  ]
+                  "Multiply",
+                  4,
+                  "x"
                ],
                [
-                  "Subtract",
-                  [
-                     "Multiply",
-                     3,
-                     "x"
-                  ],
-                  [
-                     "Multiply",
-                     2,
-                     "y"
-                  ]
+                  "Multiply",
+                  3,
+                  "y"
+               ]
+            ],
+            [
+               "Subtract",
+               [
+                  "Multiply",
+                  3,
+                  "x"
+               ],
+               [
+                  "Multiply",
+                  2,
+                  "y"
                ]
             ]
          ]
       },
       {
          "step": 5,
-         "text": "Substitute x = 1 and y = 2: dy/dx = -(2 + 6)/(3 - 4) = 8.",
-         "mathjson": 8
+         "text": "Substitute x = 1 and y = 2: dy/dx = (4 - 6)/(3 - 4) = 2.",
+         "mathjson": 2
       }
    ],
    "calculator_status": "no_calculator",
@@ -166,7 +164,7 @@
       "BC-SKL-03014"
    ],
    "parameter_draw": {
-      "equation": "x^2 + 3xy - y^2 = 3",
+      "equation": "x^2 + 3xy - y^2 = 3x^2",
       "x_value": 1,
       "branch": "y > 1",
       "target": "slope at point"
@@ -176,37 +174,14 @@
    "options": [
       {
          "id": "A",
-         "value": [
-            "Negate",
-            [
-               "Divide",
-               [
-                  "Add",
-                  2,
-                  [
-                     "Multiply",
-                     3,
-                     "y"
-                  ]
-               ],
-               [
-                  "Subtract",
-                  3,
-                  [
-                     "Multiply",
-                     2,
-                     "y"
-                  ]
-               ]
-            ]
-         ],
+         "value": 8,
          "is_key": false,
-         "error_path": "BC-ERR-03011",
-         "violated_step": 5
+         "error_path": "BC-ERR-03009",
+         "violated_step": 0
       },
       {
          "id": "B",
-         "value": 2,
+         "value": -4,
          "is_key": false,
          "error_path": "BC-ERR-03008",
          "violated_step": 2
@@ -215,7 +190,7 @@
          "id": "C",
          "value": [
             "Rational",
-            -4,
+            2,
             3
          ],
          "is_key": false,
@@ -224,7 +199,7 @@
       },
       {
          "id": "D",
-         "value": 8,
+         "value": 2,
          "is_key": true,
          "error_path": null
       }

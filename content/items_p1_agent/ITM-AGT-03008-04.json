@@ -27,7 +27,39 @@
       {
          "step": 2,
          "text": "Differentiate 2x + y + x y' + 2y y' = 0 again, with the product rule on x y' and on 2y y': 2 + 2y' + x y'' + 2(y')^2 + 2y y'' = 0.",
-         "mathjson": 0
+         "mathjson": [
+            "Equal",
+            [
+               "Add",
+               2,
+               [
+                  "Multiply",
+                  2,
+                  "dydx"
+               ],
+               [
+                  "Multiply",
+                  "x",
+                  "d2ydx2"
+               ],
+               [
+                  "Multiply",
+                  2,
+                  [
+                     "Power",
+                     "dydx",
+                     2
+                  ]
+               ],
+               [
+                  "Multiply",
+                  2,
+                  "y",
+                  "d2ydx2"
+               ]
+            ],
+            0
+         ]
       },
       {
          "step": 3,

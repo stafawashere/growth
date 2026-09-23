@@ -4,76 +4,110 @@
    "variant_id": null,
    "format": "mcq",
    "stem": {
-      "text": "Let q(x) = (x^2 - 4) / (x^3 - 4x). On how many separate maximal intervals is q continuous?"
+      "text": "Let q(x) = (x^2 - 1) / ((x^2 + 5x + 4)(x - 3)). Consider the largest interval that contains x = 0 and on which q is continuous. What is the sum of the integers in that interval?"
    },
    "answer_key": {
       "form": "numeric",
-      "mathjson": 4
+      "mathjson": 3
    },
    "worked_solution": [
       {
          "step": 1,
-         "text": "Factor the denominator as x(x - 2)(x + 2), which is zero at x = -2, x = 0 and x = 2.",
+         "text": "The denominator (x + 1)(x + 4)(x - 3) is zero at x = -4, -1 and 3. Cancelling the common factor x + 1 does not change the domain of q, so x = -1 stays excluded.",
          "mathjson": [
             "Multiply",
-            "x",
             [
-               "Subtract",
+               "Add",
                "x",
-               2
+               1
             ],
             [
                "Add",
                "x",
-               2
+               4
+            ],
+            [
+               "Subtract",
+               "x",
+               3
             ]
          ]
       },
       {
          "step": 2,
-         "text": "q is rational, so it is continuous on its domain. Cancelling x^2 - 4 gives 1/x only where x is not -2 or 2, so those inputs stay excluded.",
+         "text": "q is a rational function, continuous at every input of its domain, so q is continuous on (-infinity, -4) U (-4, -1) U (-1, 3) U (3, infinity).",
          "mathjson": [
             "Divide",
-            1,
-            "x"
+            [
+               "Subtract",
+               [
+                  "Power",
+                  "x",
+                  2
+               ],
+               1
+            ],
+            [
+               "Multiply",
+               [
+                  "Add",
+                  "x",
+                  1
+               ],
+               [
+                  "Add",
+                  "x",
+                  4
+               ],
+               [
+                  "Subtract",
+                  "x",
+                  3
+               ]
+            ]
          ]
       },
       {
          "step": 3,
-         "text": "q is continuous on (-infinity, -2), (-2, 0), (0, 2) and (2, infinity).",
-         "mathjson": 2
+         "text": "The piece that contains x = 0 is (-1, 3), open at both ends. Its integers are 0, 1 and 2.",
+         "mathjson": [
+            "Add",
+            0,
+            1,
+            2
+         ]
       },
       {
          "step": 4,
-         "text": "Those are four separate maximal intervals.",
-         "mathjson": 4
+         "text": "The sum of those integers is 3.",
+         "mathjson": 3
       }
    ],
    "options": [
       {
          "id": "A",
-         "value": 3,
+         "value": 2,
          "is_key": false,
-         "error_path": "BC-ERR-01031",
-         "violated_step": 0
+         "error_path": "BC-ERR-01032",
+         "violated_step": 2
       },
       {
          "id": "B",
-         "value": 1,
+         "value": 6,
          "is_key": false,
-         "error_path": "BC-ERR-01031",
+         "error_path": "BC-ERR-01032",
          "violated_step": 2
       },
       {
          "id": "C",
-         "value": 2,
+         "value": -3,
          "is_key": false,
          "error_path": "BC-ERR-01031",
          "violated_step": 0
       },
       {
          "id": "D",
-         "value": 4,
+         "value": 3,
          "is_key": true,
          "error_path": null
       }
@@ -87,7 +121,7 @@
       },
       {
          "difficulty_factor_id": "BC-DF-10",
-         "setting": "low"
+         "setting": "off"
       },
       {
          "difficulty_factor_id": "BC-DF-14",
@@ -105,12 +139,13 @@
       "BC-SKL-01049"
    ],
    "parameter_draw": {
-      "common_factor": "x^2 - 4",
+      "cancelled_root": -1,
       "denominator_roots": [
-         -2,
-         0,
-         2
-      ]
+         -4,
+         -1,
+         3
+      ],
+      "anchor_point": 0
    },
    "authored_by": "claude-opus-5-5 agent draft, pending operator review",
    "authored_on": "2026-09-23"

@@ -4,7 +4,7 @@
    "variant_id": null,
    "format": "short_answer",
    "stem": {
-      "text": "Let h(x) = 2sin(x) + 7ln(x) - e^x for x > 0. Find h'(x)."
+      "text": "Let h(x) = 2cos(x) + 7ln(x) - e^x for x > 0. Find h'(x)."
    },
    "answer_key": {
       "form": "symbolic",
@@ -12,9 +12,9 @@
          "Add",
          [
             "Multiply",
-            2,
+            -2,
             [
-               "Cos",
+               "Sin",
                "x"
             ]
          ],
@@ -35,12 +35,12 @@
    "worked_solution": [
       {
          "step": 1,
-         "text": "The derivative of sin(x) is cos(x), so 2sin(x) differentiates to 2cos(x).",
+         "text": "The derivative of cos(x) is -sin(x), so 2cos(x) differentiates to -2sin(x).",
          "mathjson": [
             "Multiply",
-            2,
+            -2,
             [
-               "Cos",
+               "Sin",
                "x"
             ]
          ]
@@ -72,9 +72,9 @@
             "Add",
             [
                "Multiply",
-               2,
+               -2,
                [
-                  "Cos",
+                  "Sin",
                   "x"
                ]
             ],
@@ -106,7 +106,7 @@
       },
       {
          "difficulty_factor_id": "BC-DF-12",
-         "setting": "low"
+         "setting": "medium"
       }
    ],
    "skills": [
@@ -115,7 +115,7 @@
       "BC-SKL-02034"
    ],
    "parameter_draw": {
-      "sine_coefficient": 2,
+      "cosine_coefficient": 2,
       "logarithm_coefficient": 7,
       "exponential_coefficient": -1
    },
@@ -125,88 +125,63 @@
       {
          "id": "A",
          "value": [
-            "Multiply",
+            "Add",
             [
-               "Power",
-               "x",
-               -1
+               "Multiply",
+               2,
+               [
+                  "Sin",
+                  "x"
+               ]
             ],
             [
-               "Add",
+               "Divide",
+               7,
+               "x"
+            ],
+            [
+               "Negate",
                [
-                  "Multiply",
-                  "x",
-                  [
-                     "Add",
-                     [
-                        "Multiply",
-                        -1,
-                        "x",
-                        [
-                           "Exp",
-                           [
-                              "Add",
-                              "x",
-                              -1
-                           ]
-                        ]
-                     ],
-                     [
-                        "Multiply",
-                        2,
-                        [
-                           "Cos",
-                           "x"
-                        ]
-                     ]
-                  ]
-               ],
-               7
+                  "Exp",
+                  "x"
+               ]
             ]
          ],
          "is_key": false,
-         "error_path": "BC-ERR-02019",
-         "violated_step": 0
+         "error_path": "BC-ERR-02018",
+         "violated_step": 1
       },
       {
          "id": "B",
          "value": [
-            "Multiply",
+            "Add",
             [
-               "Power",
-               "x",
-               -1
+               "Multiply",
+               -2,
+               [
+                  "Sin",
+                  "x"
+               ]
             ],
             [
-               "Add",
+               "Divide",
+               7,
+               "x"
+            ],
+            [
+               "Negate",
                [
                   "Multiply",
                   "x",
                   [
-                     "Add",
+                     "Exp",
                      [
-                        "Multiply",
-                        -1,
-                        [
-                           "Exp",
-                           [
-                              "Add",
-                              "x",
-                              -1
-                           ]
-                        ]
-                     ],
-                     [
-                        "Multiply",
-                        2,
-                        [
-                           "Cos",
-                           "x"
-                        ]
+                        "Subtract",
+                        "x",
+                        1
                      ]
                   ]
-               ],
-               7
+               ]
             ]
          ],
          "is_key": false,
@@ -219,33 +194,26 @@
             "Add",
             [
                "Multiply",
-               -1,
-               "ExponentialE",
+               -2,
                [
-                  "Power",
-                  "x",
-                  [
-                     "Add",
-                     -1,
-                     "ExponentialE"
-                  ]
-               ]
-            ],
-            [
-               "Multiply",
-               2,
-               [
-                  "Cos",
+                  "Sin",
                   "x"
                ]
             ],
             [
-               "Multiply",
+               "Divide",
                7,
+               "x"
+            ],
+            [
+               "Negate",
                [
-                  "Power",
-                  "x",
-                  -1
+                  "Exp",
+                  [
+                     "Subtract",
+                     "x",
+                     1
+                  ]
                ]
             ]
          ],
@@ -259,9 +227,9 @@
             "Add",
             [
                "Multiply",
-               2,
+               -2,
                [
-                  "Cos",
+                  "Sin",
                   "x"
                ]
             ],

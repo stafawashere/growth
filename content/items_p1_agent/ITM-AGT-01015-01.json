@@ -4,45 +4,78 @@
    "variant_id": null,
    "format": "short_answer",
    "stem": {
-      "text": "Let r(x) = (x + 2) / (x^3 - 9x). State the intervals on which r is continuous and give a reason. On how many separate maximal intervals is r continuous?"
+      "text": "Let r(x) = (x + 4) / ((x + 1)(x^2 - 6x + 8)). Consider the largest interval that contains x = 0 and on which r is continuous. What is the sum of the integers in that interval?"
    },
    "answer_key": {
       "form": "numeric",
-      "mathjson": 4
+      "mathjson": 1
    },
    "worked_solution": [
       {
          "step": 1,
-         "text": "Factor the denominator as x(x - 3)(x + 3), which is zero at x = -3, x = 0 and x = 3, and the numerator never cancels any of these factors.",
+         "text": "The quadratic factors as x^2 - 6x + 8 = (x - 2)(x - 4), so the denominator is zero at x = -1, x = 2 and x = 4, and those three inputs are excluded.",
          "mathjson": [
             "Multiply",
-            "x",
-            [
-               "Subtract",
-               "x",
-               3
-            ],
             [
                "Add",
                "x",
-               3
+               1
+            ],
+            [
+               "Subtract",
+               "x",
+               2
+            ],
+            [
+               "Subtract",
+               "x",
+               4
             ]
          ]
       },
       {
          "step": 2,
-         "text": "A rational function is continuous at every input of its domain. Its domain is every real x except -3, 0 and 3.",
-         "mathjson": 3
+         "text": "r is a rational function, and a rational function is continuous at every input of its domain, so r is continuous on (-infinity, -1) U (-1, 2) U (2, 4) U (4, infinity).",
+         "mathjson": [
+            "Divide",
+            [
+               "Add",
+               "x",
+               4
+            ],
+            [
+               "Multiply",
+               [
+                  "Add",
+                  "x",
+                  1
+               ],
+               [
+                  "Subtract",
+                  "x",
+                  2
+               ],
+               [
+                  "Subtract",
+                  "x",
+                  4
+               ]
+            ]
+         ]
       },
       {
          "step": 3,
-         "text": "r is continuous on (-infinity, -3), (-3, 0), (0, 3) and (3, infinity), all open at the excluded inputs.",
-         "mathjson": 3
+         "text": "The piece that contains x = 0 is (-1, 2), open at both ends. Its integers are 0 and 1.",
+         "mathjson": [
+            "Add",
+            0,
+            1
+         ]
       },
       {
          "step": 4,
-         "text": "Those are four separate maximal intervals.",
-         "mathjson": 4
+         "text": "The sum of those integers is 1.",
+         "mathjson": 1
       }
    ],
    "calculator_status": "no_calculator",
@@ -50,11 +83,11 @@
    "difficulty_settings": [
       {
          "difficulty_factor_id": "BC-DF-02",
-         "setting": "low"
+         "setting": "medium"
       },
       {
          "difficulty_factor_id": "BC-DF-10",
-         "setting": "low"
+         "setting": "off"
       },
       {
          "difficulty_factor_id": "BC-DF-14",
@@ -72,41 +105,42 @@
       "BC-SKL-01049"
    ],
    "parameter_draw": {
-      "numerator_root": -2,
+      "numerator_root": -4,
       "denominator_roots": [
-         -3,
-         0,
-         3
-      ]
+         -1,
+         2,
+         4
+      ],
+      "anchor_point": 0
    },
    "authored_by": "claude-opus-5-5 agent draft, pending operator review",
    "authored_on": "2026-09-23",
    "options": [
       {
          "id": "A",
-         "value": 4,
+         "value": 1,
          "is_key": true,
          "error_path": null
       },
       {
          "id": "B",
-         "value": 2,
+         "value": 6,
          "is_key": false,
          "error_path": "BC-ERR-01031",
          "violated_step": 0
       },
       {
          "id": "C",
-         "value": 1,
+         "value": 0,
          "is_key": false,
-         "error_path": "BC-ERR-01031",
+         "error_path": "BC-ERR-01032",
          "violated_step": 2
       },
       {
          "id": "D",
          "value": 3,
          "is_key": false,
-         "error_path": "BC-ERR-01031",
+         "error_path": "BC-ERR-01032",
          "violated_step": 2
       }
    ]

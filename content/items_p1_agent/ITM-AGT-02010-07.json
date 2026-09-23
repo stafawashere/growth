@@ -171,7 +171,7 @@
       },
       {
          "difficulty_factor_id": "BC-DF-08",
-         "setting": "off"
+         "setting": "low"
       }
    ],
    "skills": [
@@ -260,10 +260,10 @@
          "value": [
             "Negate",
             [
-               "Divide",
+               "Multiply",
                6,
                [
-                  "Tan",
+                  "Cot",
                   "x"
                ]
             ]
@@ -275,35 +275,20 @@
       {
          "id": "D",
          "value": [
-            "Add",
+            "Multiply",
+            6,
             [
-               "Multiply",
-               -6,
-               [
-                  "Power",
-                  [
-                     "Sec",
-                     "x"
-                  ],
-                  2
-               ]
-            ],
-            [
-               "Multiply",
-               -1,
+               "Power",
                [
                   "Sec",
                   "x"
                ],
-               [
-                  "Tan",
-                  "x"
-               ]
+               2
             ]
          ],
          "is_key": false,
-         "error_path": "BC-ERR-02025",
-         "violated_step": 3
+         "error_path": "BC-ERR-02026",
+         "violated_step": 1
       }
    ]
 }

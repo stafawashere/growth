@@ -4,75 +4,87 @@
    "variant_id": null,
    "format": "mcq",
    "stem": {
-      "text": "The function f is defined by f(x) = (x + 3) / (x^2 - 1) for x < 2 and f(x) = 40 / (3x(6 - x)) for x >= 2. On how many separate maximal intervals is f continuous?"
+      "text": "The function f is defined by f(x) = (x + 21) / (x^2 + 4x + 3) for x < 3 and f(x) = 3 / (6 - x) for x >= 3. Consider the largest interval that contains x = 0 and on which f is continuous. What is the sum of the integers in that interval?"
    },
    "answer_key": {
       "form": "numeric",
-      "mathjson": 4
+      "mathjson": 15
    },
    "worked_solution": [
       {
          "step": 1,
-         "text": "On x < 2 the first rule is undefined at x = -1 and x = 1. On x >= 2 the second rule is undefined only at x = 6, since its other zero x = 0 lies outside that piece.",
+         "text": "For x < 3 the denominator x^2 + 4x + 3 = (x + 1)(x + 3) is zero at x = -3 and x = -1, and for x >= 3 the denominator 6 - x is zero at x = 6, so f is undefined at -3, -1 and 6.",
          "mathjson": [
             "Multiply",
             [
-               "Subtract",
+               "Add",
                "x",
                1
             ],
             [
                "Add",
                "x",
-               1
+               3
             ]
          ]
       },
       {
          "step": 2,
-         "text": "Each rule is rational and so continuous on its own domain. At the join, the left limit (2 + 3) / (4 - 1) = 5/3 equals f(2) = 40 / 24 = 5/3, so f is continuous at x = 2.",
+         "text": "Each rule is a rational function, continuous on its domain. At the join, the left rule approaches 24 / 24 = 1 and f(3) = 3 / 3 = 1, so f is continuous at x = 3 and on (-infinity, -3) U (-3, -1) U (-1, 6) U (6, infinity).",
          "mathjson": [
-            "Rational",
-            5,
-            3
+            "Divide",
+            3,
+            [
+               "Subtract",
+               6,
+               3
+            ]
          ]
       },
       {
          "step": 3,
-         "text": "f is continuous on (-infinity, -1), (-1, 1), (1, 6) and (6, infinity).",
-         "mathjson": 6
+         "text": "The piece that contains x = 0 is (-1, 6), open at both ends. Its integers are 0, 1, 2, 3, 4 and 5.",
+         "mathjson": [
+            "Add",
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+         ]
       },
       {
          "step": 4,
-         "text": "Those are four separate maximal intervals.",
-         "mathjson": 4
+         "text": "The sum of those integers is 15.",
+         "mathjson": 15
       }
    ],
    "options": [
       {
          "id": "A",
-         "value": 2,
+         "value": 12,
          "is_key": false,
          "error_path": "BC-ERR-01031",
          "violated_step": 0
       },
       {
          "id": "B",
-         "value": 3,
+         "value": 14,
          "is_key": false,
-         "error_path": "BC-ERR-01031",
-         "violated_step": 0
+         "error_path": "BC-ERR-01032",
+         "violated_step": 2
       },
       {
          "id": "C",
-         "value": 1,
+         "value": 21,
          "is_key": false,
-         "error_path": "BC-ERR-01031",
+         "error_path": "BC-ERR-01032",
          "violated_step": 2
       },
       {
          "id": "D",
-         "value": 4,
+         "value": 15,
          "is_key": true,
          "error_path": null
       }
@@ -86,11 +98,11 @@
       },
       {
          "difficulty_factor_id": "BC-DF-10",
-         "setting": "low"
+         "setting": "off"
       },
       {
          "difficulty_factor_id": "BC-DF-14",
-         "setting": "off"
+         "setting": "on"
       },
       {
          "difficulty_factor_id": "BC-DF-17",
@@ -104,15 +116,13 @@
       "BC-SKL-01049"
    ],
    "parameter_draw": {
-      "join": 2,
-      "left_excluded": [
-         -1,
-         1
+      "left_denominator_roots": [
+         -3,
+         -1
       ],
-      "right_excluded": [
-         6
-      ],
-      "join_value": "5/3"
+      "join": 3,
+      "right_denominator_root": 6,
+      "anchor_point": 0
    },
    "authored_by": "claude-opus-5-5 agent draft, pending operator review",
    "authored_on": "2026-09-23"

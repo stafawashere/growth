@@ -4,16 +4,16 @@
    "variant_id": null,
    "format": "mcq",
    "stem": {
-      "text": "Let p(x) = ln(x + 2) / (x^2 - 7x + 10). Consider the largest interval that contains x = 0 and on which p is continuous. How many integers does that interval contain?"
+      "text": "Let p(x) = ln(x + 3) / (x^2 - 7x + 10). Consider the largest interval that contains x = 0 and on which p is continuous. What is the sum of the integers in that interval?"
    },
    "answer_key": {
       "form": "numeric",
-      "mathjson": 3
+      "mathjson": -2
    },
    "worked_solution": [
       {
          "step": 1,
-         "text": "The logarithm requires x + 2 > 0, so x > -2, and the denominator (x - 2)(x - 5) is zero at x = 2 and x = 5.",
+         "text": "The logarithm requires x + 3 > 0, so x > -3, and the denominator x^2 - 7x + 10 = (x - 2)(x - 5) is zero at x = 2 and x = 5, so those inputs are excluded too.",
          "mathjson": [
             "Multiply",
             [
@@ -30,51 +30,76 @@
       },
       {
          "step": 2,
-         "text": "p is a quotient of a logarithmic function and a polynomial, each continuous on its domain, so p is continuous on its domain (-2, 2) U (2, 5) U (5, infinity).",
+         "text": "p is a quotient of a logarithmic function and a polynomial, each continuous on its domain, so p is continuous on (-3, 2) U (2, 5) U (5, infinity).",
          "mathjson": [
-            "Add",
-            "x",
-            2
+            "Divide",
+            [
+               "Ln",
+               [
+                  "Add",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Subtract",
+                  "x",
+                  2
+               ],
+               [
+                  "Subtract",
+                  "x",
+                  5
+               ]
+            ]
          ]
       },
       {
          "step": 3,
-         "text": "The piece containing x = 0 is (-2, 2), open at -2 because ln is undefined at 0 and open at 2 because the denominator vanishes.",
-         "mathjson": 2
+         "text": "The piece that contains x = 0 is (-3, 2), open at -3 because ln 0 is undefined and open at 2 because the denominator is zero. Its integers are -2, -1, 0 and 1.",
+         "mathjson": [
+            "Add",
+            -2,
+            -1,
+            0,
+            1
+         ]
       },
       {
          "step": 4,
-         "text": "The integers in (-2, 2) are -1, 0 and 1.",
-         "mathjson": 3
+         "text": "The sum of those integers is -2.",
+         "mathjson": -2
       }
    ],
    "options": [
       {
          "id": "A",
-         "value": 3,
+         "value": -2,
          "is_key": true,
          "error_path": null
       },
       {
          "id": "B",
-         "value": 5,
+         "value": 7,
          "is_key": false,
-         "error_path": "BC-ERR-01032",
-         "violated_step": 2
+         "error_path": "BC-ERR-01031",
+         "violated_step": 0
       },
       {
          "id": "C",
-         "value": 4,
+         "value": -5,
          "is_key": false,
          "error_path": "BC-ERR-01032",
          "violated_step": 2
       },
       {
          "id": "D",
-         "value": 6,
+         "value": 0,
          "is_key": false,
-         "error_path": "BC-ERR-01031",
-         "violated_step": 0
+         "error_path": "BC-ERR-01032",
+         "violated_step": 2
       }
    ],
    "calculator_status": "no_calculator",
@@ -104,7 +129,7 @@
       "BC-SKL-01049"
    ],
    "parameter_draw": {
-      "log_shift": 2,
+      "log_shift": 3,
       "denominator_roots": [
          2,
          5

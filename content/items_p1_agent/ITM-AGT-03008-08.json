@@ -4,11 +4,11 @@
    "variant_id": null,
    "format": "mcq",
    "stem": {
-      "text": "The function y = f(x) satisfies dy/dx = x^2 y, and f(2) = 1. What is the value of d^2y/dx^2 at x = 2?"
+      "text": "The function y = f(x) satisfies dy/dx = x^2 y, and f(-2) = 1. What is the value of d^2y/dx^2 at x = -2?"
    },
    "answer_key": {
       "form": "numeric",
-      "mathjson": 20
+      "mathjson": 12
    },
    "worked_solution": [
       {
@@ -43,19 +43,19 @@
       },
       {
          "step": 2,
-         "text": "At (2, 1), dy/dx = (2^2)(1) = 4.",
+         "text": "At (-2, 1), dy/dx = (-2)^2 (1) = 4.",
          "mathjson": 4
       },
       {
          "step": 3,
-         "text": "Substitute x = 2, y = 1 and dy/dx = 4: d^2y/dx^2 = 2(2)(1) + 4(4) = 20.",
-         "mathjson": 20
+         "text": "Substitute x = -2, y = 1 and dy/dx = 4: d^2y/dx^2 = 2(-2)(1) + 4(4) = 12.",
+         "mathjson": 12
       }
    ],
    "options": [
       {
          "id": "A",
-         "value": 4,
+         "value": -4,
          "is_key": false,
          "error_path": "BC-ERR-03023",
          "violated_step": 3
@@ -69,20 +69,16 @@
       },
       {
          "id": "C",
-         "value": 20,
+         "value": 12,
          "is_key": true,
          "error_path": null
       },
       {
          "id": "D",
-         "value": [
-            "Multiply",
-            20,
-            "y"
-         ],
+         "value": 4,
          "is_key": false,
-         "error_path": "BC-ERR-03011",
-         "violated_step": 2
+         "error_path": "BC-ERR-03021",
+         "violated_step": 0
       }
    ],
    "calculator_status": "no_calculator",
@@ -90,7 +86,7 @@
    "difficulty_settings": [
       {
          "difficulty_factor_id": "BC-DF-04",
-         "setting": "high"
+         "setting": "medium"
       }
    ],
    "skills": [
@@ -103,7 +99,7 @@
    "parameter_draw": {
       "differential_equation": "x^2 y",
       "point": [
-         2,
+         -2,
          1
       ]
    },

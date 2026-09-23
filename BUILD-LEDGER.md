@@ -10,6 +10,22 @@ purpose: Where the application build stands, session by session, so the next ses
 Application code lives at the repository root under `app/` and `tests/`, at the paths docs/plan names. The project CLAUDE.md still says "docs-only, no product"; that sentence is the operator's to amend and this ledger only records the conflict. Tooling: uv-managed Python 3.12.13 in `.venv/`, dependencies in `pyproject.toml`, tests via `.venv/bin/python -m pytest`. Every H2 below carries a tag because `qa/04_tags.py` scans root-level Markdown: [verified] means the test output or the registry was checked in the session named, [inferred] means a judgement.
 
 ## Done [verified]
+- Twenty-sixth session, 2026-09-23, distractor repair: nine archetypes' open audit findings were
+  repaired one agent per archetype, 42 items in all. 39 stems were redesigned so that every
+  distractor is a single application of an error the archetype's skills hold (01004 5, 01008 7,
+  01015 1, 02007 2, 02008 8, 03001 5, 03004 2, 03005 7, 03008 2), with keys, worked solutions and
+  `parameter_draw` rewritten to match and every key letter left in place. Three more `BC-QA-03004`
+  options that held a free `dydx` (`03004-00` B, `03004-08` B, `03004-09` A) were re-derived as
+  numeric or closed-form `BC-ERR-03007` and `BC-ERR-03008` values, and `03004-03` A was rechecked
+  and left unchanged. Each agent checked its keys against a blind SymPy solve and every option
+  pair with `compare_expressions`. A spot check solved 8 randomly chosen repaired items by hand and
+  with SymPy (`03001-02`, `03008-07`, `01004-05`, `02008-07`, `02007-04`, `02008-08`, `01008-02`,
+  `01008-04`): all 8 keys matched and all 24 distractors equal their tagged error's computation,
+  so nothing was changed. `.venv/bin/python tools/check_items.py content/items_p1_agent` exits 0
+  with "records read: 130" and "clean: 130", 10 items in each of the 13 archetypes, and
+  `.venv/bin/python -m pytest -q -p no:cacheprovider tests/tools tests/items tests/e2e` exits 0
+  with 171 dots and no failures (the doubled `-q` from `addopts` suppresses the summary line).
+  What the repair left open is under Known defects.
 - Twenty-sixth session, 2026-09-23, distractor audit: the twelve archetypes in
   `content/items_p1_agent/` other than `BC-QA-02010` (re-derived last session) were audited one
   agent per archetype, 30 distractor options each, 360 in all. Each agent re-derived every
@@ -978,35 +994,176 @@ claimed.
 Nothing. The fourteenth session closed with the suite green and every module of its plan either
 done or listed below as needing the operator.
 
+## Live API spend log [verified]
+
+Twenty-seventh session, 2026-09-23, slice 10: seventeen live calls against api.anthropic.com on
+claude-haiku-4-5, all under the operator's key in `.env`, nothing else called. `tools/dev_spend.py`
+before this slice's live work: `spent = 0.0000`, `cap = 15.0000`, `remaining = 15.0000`. After:
+`spent = 0.0353`, `cap = 15.0000`, `remaining = 14.9647`, of the persistent developer cap in
+`app/providers/guard.py DevSpendLedger`. The slice's own self-imposed $1.00 budget was enforced a
+second way, by setting `GROWTH_DEV_SPEND_CAP_USD=1.00` for both recording runs so
+`GuardedProvider`'s own cap check would have refused the sixth of any run that crossed it; neither
+run came close. Every request was built by the real production path, `app/feedback/render.py`
+`elaborated_payload` and `app/feedback/tutor.py` `request_for`, over a real item from
+`content/items_p1_agent/` and its `BC-ERR` record from `data/errors.json`, with only the model
+swapped from the tutor role's assigned `claude-sonnet-5` (`app/providers/model_routing.py`) to
+`claude-haiku-4-5`, and the role's `output_config.effort: low` option dropped because Haiku 4.5
+refuses it (`app/providers/anthropic.py`, Known traps). Each call went through
+`app.providers.guard.GuardedProvider` wrapping a real `app.providers.anthropic.AnthropicProvider`,
+with `dev_spend_track=True`, so the accounting below is the provider's own reported `usage` block,
+not an estimate.
+
+First run, eight calls, one per P1 archetype, recorded as cassettes (see below):
+
+| # | item | model | input | output | cache read | cache write | cost USD |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 0 | ITM-AGT-01004-00 | claude-haiku-4-5 | 1435 | 91 | 0 | 0 | 0.001890 |
+| 1 | ITM-AGT-01008-00 | claude-haiku-4-5 | 1377 | 141 | 0 | 0 | 0.002082 |
+| 2 | ITM-AGT-01015-00 | claude-haiku-4-5 | 1438 | 155 | 0 | 0 | 0.002213 |
+| 3 | ITM-AGT-02002-00 | claude-haiku-4-5 | 1582 | 142 | 0 | 0 | 0.002292 |
+| 4 | ITM-AGT-02006-00 | claude-haiku-4-5 | 1445 | 136 | 0 | 0 | 0.002125 |
+| 5 | ITM-AGT-02007-00 | claude-haiku-4-5 | 1343 | 81 | 0 | 0 | 0.001748 |
+| 6 | ITM-AGT-02008-00 | claude-haiku-4-5 | 1411 | 104 | 0 | 0 | 0.001931 |
+| 7 | ITM-AGT-02010-00 | claude-haiku-4-5 | 1588 | 123 | 0 | 0 | 0.002203 |
+
+Run total 0.016484 (an earlier, duplicate call on item 0 during setup, 0.002125, has no token row here and
+brings the first run to 0.018609, and its cassette was overwritten by the run above; the ledger total after both runs,
+0.035292, is what `tools/dev_spend.py` would have shown mid-slice). Second run, the same eight
+items driven through `app.feedback.tutor.compose_sentence` with real `Session` and `Attempt` rows
+in a temporary SQLite database, the exact function the feedback route calls, so `tutor_calls`,
+`tutor_cost_usd` and `tutor_tokens_in` on each attempt are the guard's own settled accounting:
+costs 0.001940, 0.002043, 0.002083, 0.002397, 0.001970, 0.001788, 0.002334, 0.002128, run total
+0.016683. Combined live spend this slice: 0.035292 of the self-imposed 1.00 cap and of the
+persistent 15.00 developer cap.
+
+Every one of the sixteen calls with a token row reported `cached_read_tokens: 0` and `cached_write_tokens: 0`. This
+is not a defect. `docs/plan/07-ai-provider-layer.md`, Cache-prefix stability, states Haiku 4.5's
+cache minimum as 4,096 tokens; `prompts/feedback/elaborated_v2.md`'s static prefix measures 1,092
+tokens on Haiku 4.5 (`tests/fixtures/prompt_token_counts.json`, freshly measured this slice), and
+every call's whole input, prefix included, is under 1,600 tokens, so nothing here ever crosses even
+that model's total-input floor, let alone reaches the prefix's own minimum. Caching cannot engage
+on this template on Haiku regardless of how many calls share the prefix. The tutor role's assigned
+model, Sonnet 5, has a 1,024-token minimum and the same prefix measures 1,470 tokens on it
+(unchanged, re-measured this slice), so caching would engage there; see the arithmetic below.
+
+Cassettes: `tests/fixtures/provider_cassettes/tutor_haiku_live_00.json` through `_07.json`, one per
+item of the first run, each carrying `"recorded": true` (no `synthetic` key), the real
+`request_id`, the real `text`, and the usage block from the table above.
+`tests/providers/test_haiku_live_cassettes.py` (new) replays all eight with
+`app.providers.replay.ReplayProvider`, asserts each is marked recorded and not synthetic, asserts
+the recorded `cost_usd` reproduces exactly under `app.providers.guard.usage_cost` fed the
+cassette's own usage numbers (red under a mutated `cost_usd` of 999.0 on one cassette,
+`0.0018900000000000002 == 999.0` failed; green restored), and asserts all eight report no cache
+read or write, the live confirmation of the paragraph above. Gate 22 was already closed by an
+earlier session on Sonnet 5; this slice adds the Haiku 4.5 measurement beside it and does not
+reopen it.
+
+**Token counts, `tools/count_prompt_tokens.py`.** `tests/fixtures/prompt_token_counts.json` was
+flat, one entry per template, and the first Haiku run overwrote the three existing Sonnet entries
+in place, since the tool keyed only by template path; caught before anything downstream read the
+corrupted file, by `git diff` on the fixture. `tools/count_prompt_tokens.py` and
+`tests/providers/test_prompt_cache_prefix_length.py` were changed together: the fixture is now
+keyed by template path and then by model
+(`counts[template][model]`), and the gate 22 test reads `counts[template_name][tutor.TUTOR_MODEL]`
+and asserts that key exists before reading it (red with the Sonnet entry deleted,
+`AssertionError: ...has never been measured on claude-sonnet-5...`, green restored). Both models
+were then re-measured fresh for all three templates; the Sonnet figures reproduced exactly what
+was already recorded (730, 485, 1470 prefix tokens), and the file now also carries: Haiku 4.5,
+`prompts/tutor/guardrailed_practice_v1.md` 574, `prompts/feedback/elaborated_v1.md` 364,
+`prompts/feedback/elaborated_v2.md` 1092.
+
+**`tools/cost_model.py` `CHARACTERS_PER_TOKEN`, not applied.** 14's own "Proposed edits" table
+lists this exact replacement and marks it not applied, operator's to approve line by line, because
+no key existed to measure with. A key now exists, but the replacement this slice can honestly make
+is narrow: real prefix measurements exist only for the three templates above, and every other
+role's `prefix`, `uncached` and `visible` figure in `ROLES` (grader, transcriber, diagnostician,
+generator, verifier, template) is still a character-count estimate divided by 3.1, because none of
+those roles has a real prompt template in `prompts/` to measure against; `model_routing.py` says
+outright that P1 wires only the tutor. Moving `CHARACTERS_PER_TOKEN` itself, or even just
+`ROLES["tutor"]["prefix"]` (1,100, still the pre-gate-22 estimate) to the measured 1,470, changes
+`tutor.cycle` and every figure downstream of it, which `tests/tools/test_cost_model.py` pins to
+four decimal-exact totals (`$5.01`, `$12.44`, `$92.95`, `$95.03`, `$113.83`) and which
+`docs/plan/13-ai-engineering.md`, `docs/plan/14-token-economy.md` and
+`docs/operator/ai-operating-costs.md` all quote in prose. Making that edit correctly means
+rewriting the quoted figures in three planning documents and four pinned assertions in the same
+change, which is more editorial surface than this slice's token-count work should carry
+unreviewed. Left for the operator exactly as 14 already flags it, with the one new fact this
+slice adds: the measured Sonnet prefix (1,470) is already very close to the estimate already in use
+(1,100 was an under-estimate, not the character-count figure of 1,470/3.1 ≈ 474 either), so neither
+the old estimate nor the character-count formula it came from was tracking the real number even
+before this slice.
+
+`python3 tools/cost_model.py --check docs/plan/14-token-economy.md` exits 0, unchanged, because
+`tools/cost_model.py` itself was not edited this slice.
+
+**Exit criterion 8, `docs/plan/11-phased-delivery.md`.** `tools/serving_cost.py` run over the
+second run's temporary database (8 attempts, all `served_stage: unsupported`, all with a tutor
+call):
+
+    scope: all users, role tutor
+    served items: 8
+    median tutor cost per served item: 0.0020629999999999997 USD over 8 served items, items with no tutor call counted at 0; 0 excluded for tutor calls with no recorded cost
+    median tutor cost per served item that made a tutor call: 0.0020629999999999997 USD over 8 served items
+    cache read share from attempts: 0.0 = 0 cached read tokens / 11898 input tokens over 8 tutor calls on 8 served items where every call reported a cached read; 0 tutor calls excluded for not reporting; 0 reported calls on 0 served items excluded for sharing a served item with calls that did not report
+    cache read share from budgets: 0.0 = 0 cached read tokens / 11898 input tokens over 8 tutor calls on 1 day rows where every call reported; 0 tutor calls excluded for not reporting and 0 reported calls excluded for sharing a day row with them; 0 day rows with no settled call count excluded as not measured
+
+11's exit criterion 8 sets no threshold, only the measurement, so this is not a pass or fail. What
+the second run's eight (token in, token out) pairs would cost on the tutor role's assigned model,
+`claude-sonnet-5` (`app/providers/model_routing.py`), computed by `app.providers.guard.usage_cost`
+fed the real token counts, no call made: priced uncached (the same treatment the live Haiku calls
+actually got), the median rises to $0.004126 and the sum to $0.033366, almost exactly double the
+Haiku figures, because Sonnet's input and output rates are each exactly double Haiku's. Priced with
+the 1-hour cache the tutor's own request already asks for (Sonnet's 1,024-token minimum is under
+the measured 1,470-token prefix, so it would actually engage there unlike on Haiku): the first of
+the eight calls pays the write rate on the prefix and the other seven pay the read rate, and the
+median falls to $0.001565 and the sum to $0.017784, cheaper than what Haiku actually cost this
+slice, because caching outweighs Sonnet's higher per-token price once more than one call shares a
+prefix.
+
+**Per-student projection against the $50 to $100 target.** The installation is single user, so
+`tools/cost_model.py`'s cycle totals already are the per-student projection to exam day.
+Unchanged this slice, because `tools/cost_model.py` itself was not edited (see the
+`CHARACTERS_PER_TOKEN` paragraph above): the Claude-only $100 tier,
+`tier.hundred_claude_only.cycle`, is $92.95, with the $7.05 headroom
+`tests/tools/test_cost_model.py` already pins; the Gemini-verifier tier, `tier.hundred.cycle`, is
+$95.03. Both sit inside the operator's $50 to $100 ceiling, `BUDGET_CEILING`. This session's
+seventeen live calls add nothing to that model, since P1 wires only the tutor and the tutor's own
+`tutor.cycle` line, $5.01, was not touched.
+
 ## Known defects [verified]
 
 From the twenty-sixth session, 2026-09-23, found and not fixed.
 
-- 42 distractor options still name a BC-ERR id that does not produce their value, because the
-  archetype's skills hold no error that yields a third distinct value for that stem. Each needs an
-  operator ruling: a new BC-ERR record, permission to tag an error outside the archetype's skills,
-  or a stem redesign. `tools/check_items.py` cannot see this, since it checks only that a tag
-  resolves to an active id and that options are distinct. By item: `ITM-AGT-01004-03` A,
-  `01004-05` C; `01008-00` A, `01008-01` B C D, `01008-02` D, `01008-05` B, `01008-06` A C D,
-  `01008-09` A (01008-01 and 01008-06 support no legitimate distractor at all and need a stem
-  redesign); `01015-08` B; `02007-04` C D, `02007-08` B; `02008-00` A C, `02008-01` A B, `02008-02`
-  B, `02008-04` A, `02008-05` B, `02008-07` C D, `02008-08` A, `02008-09` C (02008's products have
-  only `BC-ERR-02020` and its quotients only 02021 and 02022, so a dropped-term error record would
-  clear most of these); `03001-00` A, `03001-02` B C, `03001-04` B, `03001-05` D, `03001-08` A;
-  `03004-04` A C (the find-k format with a constant right side admits one error-derived value);
-  `03005-03` C, `03005-05` D, `03005-06` A, `03005-09` A; `03008-01` C D, `03008-07` D.
-- Fixes the auditors made but flagged as weak or as judgement calls. Value needs two slips:
-  `03005-00` D, `03005-01` C, `03005-08` B. Tag and value both changed, beyond the value-or-tag
-  remedy the audit allowed: `03004-03` A and `03004-05` D (now `BC-ERR-03011`). A looser reading of
-  the named error: `02002-02` C, `02006-00` C (partial application), `03004-05` A (`BC-ERR-03007`
-  extended to x as a function of t), `02007-08` D, `02011` step 1 for `BC-ERR-02027`, `01008-04` A
-  (wrong branch at both boundaries). Cancellation below the top level or in an expanded form:
-  `01004-02` B C, `01004-04` A D, `01004-07` B D.
-- Three `BC-QA-03004` options now hold a free `dydx` symbol, because the error they model divides
-  before the dy/dx terms are collected: `03004-00` B, `03004-08` B (whose key is the number -4/13)
-  and `03004-09` A. They are distinct from the key and pass the checker, but a student sees an
-  answer containing dy/dx, and for 03004-08 a symbolic option beside three numeric ones. The
-  operator may prefer another value for these.
+- Resolved later the same day by the distractor repair (Done above): the 42 options whose tag did
+  not produce their value, the two-slip values `03005-00` D, `03005-01` C and `03005-08` B, the
+  looser readings `03004-05` A, `02007-08` D and `01008-04` A, the below-top-level cancellations in
+  `01004-02`, `01004-04` and `01004-07`, `03004-05` D, and the three free-`dydx` options
+  (`03004-00` B, `03004-08` B, `03004-09` A). What the repair left open follows.
+- Still open from the audit: `02002-02` C and `02006-00` C (partial application) and `02011` step 1
+  for `BC-ERR-02027` keep their looser readings, since the repair did not cover those archetypes.
+  `03004-03` A keeps the tag-and-value change to `BC-ERR-03011`; the value is what that error
+  produces, but it holds y beside three numeric options, and a fully numeric set needs a stem
+  redesign.
+- Judgement calls in the repair, for operator review. In 01004, "one application of
+  `BC-ERR-01010`" is read as cancelling one top-level summand in the stem or in the simplified
+  quotient, following `01004-00`; under it the value 1 is a distractor in all five redesigned items,
+  and `01004-05` keeps `BC-DF-17` "high" though its piecewise rule is now simpler. In 01008 the
+  point-value redesigns (00, 01, 02, 05, 06, 09) make each distractor the non-key root of a
+  quadratic whose other root is the key, and 01008-04 equates branches at x = 0 though the middle
+  branch is closed there. `02007-04` and `02007-08` each tag two options `BC-ERR-02019`, one of them
+  the base-and-exponent exchange, which may deserve its own error record. The 02008 redesigns all
+  nest a product and a quotient, because a bare product supports only `BC-ERR-02020`; the
+  `violated_step` indices on the nested items are the repairer's reading. Four 03001 items now share
+  the x-times-a-three-layer-composite shape, and `03001-02` tags two options `BC-ERR-03006` under
+  two readings. `03004-00`, `03004-08`, `03008-01` and `03008-07` each tag two options
+  `BC-ERR-03008` (either factor held constant).
+- `BC-QA-03005`: all seven redesigns use one product-curve family, whose distractors are the two
+  off-curve roots and their midpoint with the key outside that interval, a pattern a test-wise
+  student could spot. `03005-03` lost its no-such-point count variant (`BC-QV-03005-01`), `03005-06`
+  is no longer a count item, `03005-05` no longer exercises the numerator-must-be-nonzero variable,
+  and none of the seven had `difficulty_settings` re-rated. The unrepaired `03005-02`, `03005-04`
+  and `03005-07` keep lenient `BC-ERR-03013` readings (the other coordinate, or the origin), and
+  `03008-02` C and `03008-03` A were not re-audited.
 - The audit task listed `BC-QA-03005` as returning no result, although its result was delivered
   (under an archetype field that carried a preamble). The counts above use that result.
 

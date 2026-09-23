@@ -8,9 +8,11 @@ requests are counted per template: the prefix as the system block with a one-cha
 message, and the same user message with no system block at all. The difference is the prefix's
 own cost, which is the number the cache minimum is compared against.
 
-Results are merged into tests/fixtures/prompt_token_counts.json, keyed by the template's path
-relative to the repository, together with the sha256 of the exact prefix bytes, so a prefix that
-changes after it was measured no longer matches its entry.
+Results are merged into tests/fixtures/prompt_token_counts.json, keyed first by the template's
+path relative to the repository and then by the model the measurement was taken on, together
+with the sha256 of the exact prefix bytes, so a prefix that changes after it was measured no
+longer matches its entry and a second model measured against the same template does not
+overwrite the first.
 
 The key is read from ANTHROPIC_API_KEY in the repository's .env file and goes nowhere but the
 x-api-key header of a request to api.anthropic.com. Only count_tokens is called, never messages.
@@ -142,7 +144,8 @@ def main():
       template_path = template.resolve()
       relative_name = str(template_path.relative_to(REPOSITORY_ROOT))
       entry = measure(api_key, arguments.model, template_path)
-      counts[relative_name] = entry
+      by_model = counts.setdefault(relative_name, {})
+      by_model[arguments.model] = entry
       print(f"{relative_name}: {entry['prefix_tokens']} prefix tokens on {entry['model']}")
 
    COUNTS_PATH.write_text(json.dumps(counts, indent=3, sort_keys=True) + "\n")

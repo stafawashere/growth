@@ -63,8 +63,11 @@ def test_prompt_cache_prefix_length():
    counts = json.loads(COUNTS_PATH.read_text())
 
    assert template_name in counts, f"{template_name} has never been measured with count_tokens"
+   assert tutor.TUTOR_MODEL in counts[template_name], (
+      f"{template_name} has never been measured on {tutor.TUTOR_MODEL}, the tutor's routed model"
+   )
 
-   entry = counts[template_name]
+   entry = counts[template_name][tutor.TUTOR_MODEL]
    current_digest = hashlib.sha256(tutor_prefix_bytes()).hexdigest()
 
    assert entry["sha256"] == current_digest, (

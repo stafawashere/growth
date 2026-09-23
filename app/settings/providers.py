@@ -9,10 +9,12 @@ from app.feedback.tutor import TUTOR_MODEL
 from app.providers.anthropic import AnthropicProvider
 from app.providers.guard import ROLES
 from app.providers.replay import ReplayProvider
+from app.providers.subscription import SubscriptionProvider
 
 PROVIDER_NAMES = {
    AnthropicProvider: "anthropic",
    ReplayProvider: "replay",
+   SubscriptionProvider: "subscription",
 }
 
 

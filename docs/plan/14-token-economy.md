@@ -250,6 +250,14 @@ and 1,024 on Sonnet 5 (https://platform.claude.com/docs/en/build-with-claude/pro
 [verified]), describe what the retired API-priced rows would have cost, not a rate this offline
 line pays.
 
+## Runtime calls on the operator's subscription [inferred]
+
+Ruled 2026-09-23 on the operator's instruction, and reversing the first paragraph of the section above for this installation: runtime AI calls now run by default on the operator's own Claude subscription through the official Claude Code CLI (`GROWTH_AI_BACKEND=subscription`, `app/providers/subscription.py`). The reading that allows it is narrow. The quickstart bars offering claude.ai login or its rate limits to other users, so the backend serves exactly one account, the operator's own: it refuses to start over a database with more than one user and registration refuses a second account. Any installation with a second person on it uses `GROWTH_AI_BACKEND=api`.
+
+The API key is a fallback, chosen only by `GROWTH_AI_BACKEND=api`. The CLI subprocess receives an allowlisted environment with no `ANTHROPIC_*` variable, so it cannot bill the key, and the API adapter refuses an OAuth token before the wire. The CLI's reported `total_cost_usd` is kept in a separate subscription ledger as a notional figure and is not spent against the developer spend cap on the API key (`app/providers/guard.py`) or the $100.00 ceiling.
+
+No cost figure in this document changes yet. The runtime lines above still show API pricing until a measured pass on the CLI's latency and limits moves them. The pacing risk above applies to runtime calls too: a usage limit stops the tutor for the rest of the window, the student gets the static feedback, and the call is queued.
+
 ## Per role model choice [verified]
 
 Superseded in part 2026-09-23: the operator's Claude-only instruction moves the verifier off

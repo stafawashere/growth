@@ -36,12 +36,16 @@ particular route, and it contains no key material.
 Read from `app/main.py` (the composition root's own docstring and `build_tutor`,
 `build_tutor_caps`, `settings_from_environment`):
 
-- `GROWTH_TUTOR_PROVIDER`: `none` (default), `replay`, or `anthropic`. With no tutor provider,
-  `app/feedback/tutor.py` returns the deterministic payload and no sentence. A key sitting in the
-  environment wires nothing on its own; this variable has to be set to `anthropic` as well.
-- `ANTHROPIC_API_KEY`: read only when `GROWTH_TUTOR_PROVIDER=anthropic`.
-- `GROWTH_TUTOR_CASSETTE`: path to a cassette JSON file, read only when
-  `GROWTH_TUTOR_PROVIDER=replay`.
+- `GROWTH_AI_BACKEND`: `subscription` (default), `api`, `replay` or `none`. `subscription` runs
+  the official Claude Code CLI on the operator's own Claude subscription and serves one account
+  only (docs/plan/07-ai-provider-layer.md, "The subscription backend"). `api` is the only value
+  that uses the key. With `none`, `app/feedback/tutor.py` returns the deterministic payload and no
+  sentence. A key sitting in the environment wires nothing on its own.
+- `GROWTH_TUTOR_PROVIDER`: the older switch, `none`, `replay` or `anthropic` (meaning `api`),
+  read only when `GROWTH_AI_BACKEND` is unset.
+- `ANTHROPIC_API_KEY`: read only on the `api` backend.
+- `GROWTH_CLAUDE_BIN`: the claude CLI the `subscription` backend runs. Default the claude on PATH.
+- `GROWTH_TUTOR_CASSETTE`: path to a cassette JSON file, read only on the `replay` backend.
 - `GROWTH_TUTOR_CAP_USD`: the tutor role's daily dollar cap. Default `1.00`
   (`app/main.py`, `DEFAULT_TUTOR_CAP_USD`), enforced by `app/providers/guard.py` before every
   call. The default is inferred, not sourced from any plan document, and is recorded as a

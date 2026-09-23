@@ -10,6 +10,7 @@ from pathlib import Path
 
 from sqlalchemy import func, select
 
+from app.auth.service import utc_now
 from app.db import models
 from app.providers.base import (
    CacheSettings,
@@ -19,8 +20,10 @@ from app.providers.base import (
    render_template,
    split_template,
 )
-from app.providers.guard import BudgetStopped
+from app.providers.call_queue import queue_call
+from app.providers.guard import BudgetStopped, ProviderCallFailed
 from app.providers.model_routing import model_for
+from app.providers.subscription import SubscriptionLimitReached
 
 TEMPLATE_PATH = Path(__file__).resolve().parents[2] / "prompts" / "feedback" / "elaborated_v2.md"
 TUTOR_MODEL = model_for("tutor")
@@ -32,6 +35,7 @@ TUTOR_PROVIDER_OPTIONS = {
 }
 TUTOR_CALLS_PER_SESSION = 20
 TUTOR_CALLS_PER_ITEM = 3
+LIMIT_QUEUE_REASON = "subscription_limit_reached"
 
 
 def template_text():
@@ -107,7 +111,7 @@ def record_call(db, attempt, accounting):
    db.flush()
 
 
-def compose_sentence(provider, feedback, db=None, attempt=None):
+def compose_sentence(provider, feedback, db=None, attempt=None, user_id=None):
    """The selected payload becomes one paragraph. No provider means no sentence, not an error.
 
    With a session and an attempt row the sentence is cached on the attempt, so re-reading the
@@ -132,6 +136,12 @@ def compose_sentence(provider, feedback, db=None, attempt=None):
    A budget stop is not a provider failure and is not swallowed. 07's hard-stop table says the
    student is told the tutor is unavailable for the rest of today, so the caller has to be able
    to tell a cap from a model that merely returned nothing.
+
+   A subscription usage limit (app/providers/subscription.py SubscriptionLimitReached) degrades
+   the same way. The guard reports it as a ProviderCallFailed naming that exception type, so it is
+   recognised by name. With a session and an attempt the call is queued in the jobs table
+   (app/providers/call_queue.py), and SubscriptionLimitReached is raised for the caller to show
+   the static feedback with the tutor marked unavailable. Nothing retries on the paid API.
    """
    caches = db is not None and attempt is not None
 
@@ -164,6 +174,7 @@ def compose_sentence(provider, feedback, db=None, attempt=None):
    accounting_before = getattr(provider, "last_accounting", None)
    returned = False
    refused_before_the_wire = False
+   limit_reached = False
    result = None
 
    try:
@@ -175,6 +186,13 @@ def compose_sentence(provider, feedback, db=None, attempt=None):
    except RefusedBeforeWire:
       refused_before_the_wire = True
       return None
+   except SubscriptionLimitReached:
+      limit_reached = True
+   except ProviderCallFailed as failed:
+      limit_reached = failed.exception_type == SubscriptionLimitReached.__name__
+
+      if not limit_reached:
+         return None
    except Exception:
       return None
    finally:
@@ -190,6 +208,12 @@ def compose_sentence(provider, feedback, db=None, attempt=None):
 
       if records_the_call:
          record_call(db, attempt, accounting_after if has_this_calls_accounting else None)
+
+   if limit_reached:
+      if caches:
+         queue_call(db, user_id, attempt.id, request, reason=LIMIT_QUEUE_REASON, now=utc_now())
+
+      raise SubscriptionLimitReached(f"the {request.role} call was queued behind a subscription limit")
 
    sentence = result.text
    has_sentence = sentence is not None and sentence.strip() != ""

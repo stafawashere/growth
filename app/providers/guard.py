@@ -142,6 +142,11 @@ DEFAULT_DEV_SPEND_CAP_USD = 15.00
 DEV_SPEND_LEDGER_PATH = Path(__file__).resolve().parents[2] / "var" / "dev_spend_ledger.json"
 DEV_SPEND_SUBJECT = "dev_spend:ledger"
 
+# The notional cost app/providers/subscription.py reads from the CLI's total_cost_usd. The
+# subscription is never billed against ANTHROPIC_API_KEY, so it is counted in a file of its own
+# and never added to DEV_SPEND_LEDGER_PATH, which protects the credit on that key.
+SUBSCRIPTION_SPEND_LEDGER_PATH = Path(__file__).resolve().parents[2] / "var" / "subscription_spend_ledger.json"
+
 
 @dataclass(frozen=True)
 class ModelPrice:
@@ -329,6 +334,15 @@ class DevSpendLedger:
       finally:
          fcntl.flock(lock_file, fcntl.LOCK_UN)
          lock_file.close()
+
+
+@dataclass
+class SubscriptionSpendLedger(DevSpendLedger):
+   """The same flat, locked JSON counter as DevSpendLedger, pointed at a separate file and
+   carrying no cap of its own: this counter is notional (it is never billed against the
+   operator's Anthropic key) and it is not the thing DEFAULT_DEV_SPEND_CAP_USD protects."""
+
+   path: Path = field(default_factory=lambda: SUBSCRIPTION_SPEND_LEDGER_PATH)
 
 
 def dev_spend_cap_usd(env=None):

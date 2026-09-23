@@ -1,0 +1,86 @@
+#!/usr/bin/env python3
+"""GROWTH_FAKE_CLAUDE: a stand-in for the claude CLI in tests.
+
+It reads its mode from $HOME/fake_claude_mode, writes what it was given (argv, stdin, the
+environment and the working directory's contents) to $HOME/fake_claude_record.json, and prints
+a canned result for the mode.
+"""
+import json
+import os
+import sys
+from pathlib import Path
+
+USAGE = {
+   "input_tokens": 1200,
+   "output_tokens": 40,
+   "cache_creation_input_tokens": 300,
+   "cache_read_input_tokens": 900,
+}
+
+
+def result_payload(**overrides):
+   payload = {
+      "type": "result",
+      "subtype": "success",
+      "is_error": False,
+      "duration_ms": 2345,
+      "num_turns": 1,
+      "result": "The factor cancels only after the rewrite, so the answer point is lost.",
+      "session_id": "fake-session-0001",
+      "total_cost_usd": 0.0123,
+      "usage": dict(USAGE),
+   }
+   payload.update(overrides)
+
+   return payload
+
+
+def main():
+   home = Path(os.environ["HOME"])
+   mode_file = home / "fake_claude_mode"
+   mode = mode_file.read_text().strip() if mode_file.exists() else "success"
+   record = {
+      "argv": sys.argv,
+      "stdin": sys.stdin.read(),
+      "env": dict(os.environ),
+      "cwd": os.getcwd(),
+      "cwd_entries": sorted(os.listdir(os.getcwd())),
+   }
+   (home / "fake_claude_record.json").write_text(json.dumps(record))
+
+   if mode == "success":
+      print(json.dumps(result_payload()))
+      return 0
+
+   if mode == "structured":
+      print(json.dumps(result_payload(result="", structured_output={"sentence": "Rewrite first."})))
+      return 0
+
+   if mode == "weekly_limit":
+      limited = result_payload(
+         subtype="error_during_execution",
+         is_error=True,
+         result="You've hit your weekly limit. Resets Monday 9am.",
+         total_cost_usd=0,
+      )
+      print(json.dumps(limited))
+      return 1
+
+   if mode == "five_hour_limit_stderr":
+      print("Claude usage limit reached. Your 5-hour limit resets at 3pm.", file=sys.stderr)
+      return 1
+
+   if mode == "malformed":
+      print("this is not json")
+      return 0
+
+   if mode == "nonzero":
+      print("the CLI crashed", file=sys.stderr)
+      return 2
+
+   print(f"unknown fake mode {mode}", file=sys.stderr)
+   return 3
+
+
+if __name__ == "__main__":
+   sys.exit(main())

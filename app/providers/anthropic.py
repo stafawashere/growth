@@ -72,6 +72,16 @@ class MissingApiKey(RefusedBeforeWire, RuntimeError):
    pass
 
 
+class SubscriptionTokenRefused(RefusedBeforeWire, RuntimeError):
+   """A Claude Code OAuth token is a subscription credential that only the official CLI may
+   present (app/providers/subscription.py), never a Messages API key. Every such token starts
+   with sk-ant-oat, so the adapter refuses it here, before any header is built and before any
+   socket opens, rather than trusting a caller to have kept the two apart."""
+
+
+OAUTH_TOKEN_PREFIX = "sk-ant-oat"
+
+
 _CONNECTION_NEVER_ESTABLISHED_REASONS = (ConnectionRefusedError, socket.gaierror)
 
 
@@ -396,10 +406,19 @@ class AnthropicProvider(Provider):
       return provider_event
 
    def _require_api_key(self):
-      has_key = bool(self._read_api_key())
+      key = self._read_api_key()
+      has_key = bool(key)
 
       if not has_key:
          raise MissingApiKey(f"{self._api_key_env} is not set")
+
+      is_subscription_token = key.strip().startswith(OAUTH_TOKEN_PREFIX)
+
+      if is_subscription_token:
+         raise SubscriptionTokenRefused(
+            "a Claude Code OAuth token may never reach the Messages API because it is a "
+            "subscription credential, not an ANTHROPIC_API_KEY"
+         )
 
    def _headers(self):
       return {

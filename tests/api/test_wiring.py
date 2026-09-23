@@ -13,13 +13,19 @@ The reauth test drives a full passkey ceremony through the `world` fixture tests
 already builds for the other route tests, over a FakeVerifier that never opens a socket either.
 """
 import socket
+from pathlib import Path
 
+import pytest
 from sqlalchemy import select
 from sqlalchemy.orm import Session as OrmSession
 
 from app.db import models
 from app.main import DEFAULT_TUTOR_CAP_USD, build_application
 from app.providers.anthropic import AnthropicProvider
+from app.providers.replay import ReplayProvider
+from app.providers.subscription import SubscriptionProvider
+
+CASSETTE_PATH = Path(__file__).resolve().parents[1] / "fixtures" / "provider_cassettes" / "tutor_elaborated_v1.json"
 
 
 def env_for(tmp_path, **overrides):
@@ -48,7 +54,7 @@ def test_main_wires_a_tutor_when_a_key_is_configured(tmp_path, monkeypatch):
 def test_main_builds_without_a_tutor_when_no_key_is_configured(tmp_path, monkeypatch):
    monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
 
-   application = build_application(env_for(tmp_path))
+   application = build_application(env_for(tmp_path, GROWTH_AI_BACKEND="api"))
 
    assert application.state.settings.tutor is None
 
@@ -61,14 +67,16 @@ def test_main_respects_an_explicit_none_provider_even_with_a_key(tmp_path):
    assert application.state.settings.tutor is None
 
 
-def test_a_stray_key_alone_wires_no_tutor(tmp_path):
-   """07 puts the budget guard, the usage accounting and the audit trail at the provider seam,
-   none of which P1 has built, so a billed role is never wired by the accident of a key sitting
-   in the environment. The deployment names the provider or gets none.
+def test_a_stray_key_alone_wires_no_paid_tutor(tmp_path):
+   """A billed role is never wired by the accident of a key sitting in the environment. Only
+   GROWTH_AI_BACKEND=api, or the older GROWTH_TUTOR_PROVIDER=anthropic, spends on the key. With
+   neither set the default backend is the operator's subscription, which never reads the key.
    """
    application = build_application(env_for(tmp_path, ANTHROPIC_API_KEY="test-key-not-real"))
+   tutor = application.state.settings.tutor
 
-   assert application.state.settings.tutor is None
+   assert not isinstance(tutor, AnthropicProvider)
+   assert isinstance(tutor, SubscriptionProvider)
 
 
 def test_building_the_application_opens_no_socket(tmp_path, monkeypatch):
@@ -84,10 +92,57 @@ def test_building_the_application_opens_no_socket(tmp_path, monkeypatch):
          GROWTH_TUTOR_PROVIDER="anthropic",
       )
    )
-   without_key = build_application(env_for(tmp_path / "second"))
+   without_key = build_application(env_for(tmp_path / "second", GROWTH_AI_BACKEND="api"))
+   on_the_subscription = build_application(env_for(tmp_path / "third"))
 
    assert with_key.state.settings.tutor is not None
    assert without_key.state.settings.tutor is None
+   assert isinstance(on_the_subscription.state.settings.tutor, SubscriptionProvider)
+
+
+def test_the_default_backend_is_the_subscription(tmp_path):
+   application = build_application(env_for(tmp_path))
+
+   assert isinstance(application.state.settings.tutor, SubscriptionProvider)
+
+
+def test_an_explicit_backend_wins_over_the_older_variable(tmp_path):
+   application = build_application(
+      env_for(
+         tmp_path,
+         ANTHROPIC_API_KEY="test-key-not-real",
+         GROWTH_TUTOR_PROVIDER="anthropic",
+         GROWTH_AI_BACKEND="subscription",
+      )
+   )
+
+   assert isinstance(application.state.settings.tutor, SubscriptionProvider)
+
+
+def test_the_api_backend_is_the_only_way_to_the_paid_adapter(tmp_path):
+   application = build_application(
+      env_for(tmp_path, ANTHROPIC_API_KEY="test-key-not-real", GROWTH_AI_BACKEND="api")
+   )
+
+   assert isinstance(application.state.settings.tutor, AnthropicProvider)
+
+
+def test_the_replay_backend_reads_the_cassette(tmp_path):
+   application = build_application(
+      env_for(
+         tmp_path,
+         ANTHROPIC_API_KEY="test-key-not-real",
+         GROWTH_AI_BACKEND="replay",
+         GROWTH_TUTOR_CASSETTE=str(CASSETTE_PATH),
+      )
+   )
+
+   assert isinstance(application.state.settings.tutor, ReplayProvider)
+
+
+def test_an_unknown_backend_stops_the_process_at_startup(tmp_path):
+   with pytest.raises(ValueError, match="GROWTH_AI_BACKEND"):
+      build_application(env_for(tmp_path, GROWTH_AI_BACKEND="anthropic"))
 
 
 def test_reauth_finish_writes_an_audit_entry(world):

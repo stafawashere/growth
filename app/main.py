@@ -17,15 +17,23 @@ GROWTH_ORIGIN         the deployment origin passkey ceremonies are verified agai
 GROWTH_BIND_HOST      the host uvicorn binds to. Default 127.0.0.1.
 GROWTH_EXAM_DATE      the ISO exam date new users are seeded with. Default 2027-05-10.
 GROWTH_RNG_SEED       the seed for the process-wide selection rng. Default 7.
-GROWTH_TUTOR_PROVIDER which provider backs the tutor role: none (the default), replay or
-                      anthropic. anthropic also needs ANTHROPIC_API_KEY in the same environment,
-                      and a key without this variable wires nothing, so a billed role is never
-                      wired by the accident of a key sitting in the environment. With no tutor
-                      app/feedback/tutor.py returns the deterministic payload and no sentence.
-                      replay reads GROWTH_TUTOR_CASSETTE. Neither replay nor anthropic makes a
-                      call at build time; the provider object is only constructed.
-GROWTH_TUTOR_CASSETTE path to a recorded cassette JSON file, read only when
-                      GROWTH_TUTOR_PROVIDER=replay.
+GROWTH_AI_BACKEND     the primary switch for what backs the AI roles, the tutor included:
+                      subscription (the default), api, replay or none. subscription runs the
+                      official Claude Code CLI headless on the operator's own Claude subscription
+                      (app/providers/subscription.py), so runtime calls are not billed to an API
+                      key. It refuses to start when the database holds more than one user
+                      account. api wires app/providers/anthropic.py AnthropicProvider and is the
+                      only value that ever uses ANTHROPIC_API_KEY, which is a fallback chosen
+                      explicitly and never picked up because it happens to be set. api without
+                      a key wires no tutor. replay reads GROWTH_TUTOR_CASSETTE. none wires no tutor,
+                      and app/feedback/tutor.py returns the deterministic payload with no
+                      sentence. No backend makes a call at build time, and the choice is logged.
+GROWTH_TUTOR_PROVIDER the older switch, still honoured: none, replay or anthropic, where anthropic
+                      means api. It is read only when GROWTH_AI_BACKEND is unset, so a
+                      deployment that set it before GROWTH_AI_BACKEND existed keeps its
+                      behaviour, and an explicit GROWTH_AI_BACKEND always wins.
+GROWTH_TUTOR_CASSETTE path to a recorded cassette JSON file, read only by the replay backend.
+GROWTH_CLAUDE_BIN     the claude CLI the subscription backend runs. Default the claude on PATH.
 GROWTH_TUTOR_CAP_USD  the tutor role's daily dollar cap, enforced by app/providers/guard.py
                       before every call. Default 1.00, the tutor daily cap row of
                       docs/plan/12-open-questions.md.
@@ -74,7 +82,9 @@ opens no database and reads no content root, which matters because tests import 
 and mount_client directly and must never touch the repository's own var/growth.db as a side
 effect of that import.
 """
+import logging
 import os
+import sqlite3
 from pathlib import Path
 
 from fastapi import Response
@@ -85,8 +95,17 @@ from app.api.app import Settings, create_app
 from app.providers.anthropic import AnthropicProvider
 from app.providers.guard import BudgetCaps
 from app.providers.replay import ReplayProvider
+from app.providers.subscription import SubscriptionProvider
 from app.runtime.context import build_session_context
 from app.settings.budgets import validated_cap
+
+logger = logging.getLogger(__name__)
+
+AI_BACKEND_ENV_VAR = "GROWTH_AI_BACKEND"
+LEGACY_PROVIDER_ENV_VAR = "GROWTH_TUTOR_PROVIDER"
+DEFAULT_AI_BACKEND = "subscription"
+AI_BACKENDS = ("subscription", "api", "replay", "none")
+LEGACY_PROVIDER_TO_BACKEND = {"none": "none", "replay": "replay", "anthropic": "api"}
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_DB_PATH = REPO_ROOT / "var" / "growth.db"
@@ -100,21 +119,63 @@ NO_ITEMS_DIR = "none"
 WEB_BUILD_COMMAND = "npm run build --prefix app/web"
 
 
+def resolve_ai_backend(env):
+   configured = env.get(AI_BACKEND_ENV_VAR)
+   has_configured = configured is not None and configured != ""
+
+   if has_configured:
+      logger.info("AI backend %s, from %s", configured, AI_BACKEND_ENV_VAR)
+
+      return configured
+
+   legacy = env.get(LEGACY_PROVIDER_ENV_VAR)
+   has_legacy = legacy is not None and legacy != ""
+
+   if has_legacy:
+      backend = LEGACY_PROVIDER_TO_BACKEND.get(legacy, legacy)
+      logger.info("AI backend %s, from %s=%s", backend, LEGACY_PROVIDER_ENV_VAR, legacy)
+
+      return backend
+
+   logger.info("AI backend %s, the default", DEFAULT_AI_BACKEND)
+
+   return DEFAULT_AI_BACKEND
+
+
+def installed_user_count(db_path):
+   """Read-only, and never creates the database file: a first start sees zero users."""
+   path = Path(db_path)
+
+   if not path.is_file():
+      return 0
+
+   connection = sqlite3.connect(f"file:{path}?mode=ro", uri=True)
+
+   try:
+      return connection.execute("SELECT COUNT(*) FROM users").fetchone()[0]
+   except sqlite3.OperationalError:
+      return 0
+   finally:
+      connection.close()
+
+
 def build_tutor(env):
-   """P1 scope item 12: the tutor is the one wired role, and the deployment opts into it by name.
+   """P1 scope item 12: the tutor is the one wired role, and the deployment opts into a backend
+   by name (resolve_ai_backend).
 
    docs/plan/07-ai-provider-layer.md puts the budget guard, the usage accounting and the audit
    trail at the provider seam, and app/providers/guard.py now holds all three, so the role is safe
    to turn on. Opting in stays explicit anyway, because a key in the environment is not a decision
-   to spend. Without GROWTH_TUTOR_PROVIDER there is no tutor, and app/feedback/tutor.py's
-   no-provider degradation returns the deterministic payload with no sentence.
+   to spend. A backend of none, or an unreachable replay cassette, leaves no tutor, and
+   app/feedback/tutor.py's no-provider degradation returns the deterministic payload with no
+   sentence.
    """
-   provider_name = env.get("GROWTH_TUTOR_PROVIDER", "none")
+   backend = resolve_ai_backend(env)
 
-   if provider_name == "none":
+   if backend == "none":
       return None
 
-   if provider_name == "replay":
+   if backend == "replay":
       cassette_path = env.get("GROWTH_TUTOR_CASSETTE")
       has_cassette = cassette_path is not None and cassette_path != ""
 
@@ -123,13 +184,22 @@ def build_tutor(env):
 
       return ReplayProvider(cassette_path=cassette_path)
 
-   api_key = env.get("ANTHROPIC_API_KEY")
-   has_key = api_key is not None and api_key != ""
+   if backend == "api":
+      api_key = env.get("ANTHROPIC_API_KEY")
+      has_key = api_key is not None and api_key != ""
 
-   if not has_key:
-      return None
+      if not has_key:
+         return None
 
-   return AnthropicProvider(environ=env)
+      return AnthropicProvider(environ=env)
+
+   if backend == "subscription":
+      db_path = env.get("GROWTH_DB_PATH", str(DEFAULT_DB_PATH))
+      user_count = installed_user_count(db_path)
+
+      return SubscriptionProvider(environ=env, user_count=user_count)
+
+   raise ValueError(f"{AI_BACKEND_ENV_VAR} must be one of {', '.join(AI_BACKENDS)}, got {backend!r}")
 
 
 def startup_cap(env, variable, default=None):

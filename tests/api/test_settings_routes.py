@@ -13,7 +13,8 @@ from app.db import models
 from app.engine import constants
 from app.feedback import tutor as tutor_module
 from app.feedback.tutor import MAX_OUTPUT_TOKENS, TUTOR_MODEL
-from app.providers.guard import ROLES, price_for
+from app.providers.guard import ROLES, SubscriptionSpendLedger, price_for
+from app.providers.subscription import SubscriptionProvider
 from tests.api.conftest import TODAY, TUTOR_CAP_USD
 from tests.api.test_routes import wrong_answer_for
 from tests.api.test_tutor_budget import CountingProvider, budget_rows, wrong_short_answer
@@ -142,6 +143,17 @@ def test_providers_lists_the_six_roles_and_only_the_wired_tutor(world):
 
    for role in ROLES[1:]:
       assert by_role[role] == {"role": role, "provider": None, "model": None, "wired": False}
+
+
+def test_providers_names_the_default_subscription_tutor_by_its_backend(world, tmp_path):
+   ledger = SubscriptionSpendLedger(path=tmp_path / "subscription-spend.json")
+   world.settings.tutor = SubscriptionProvider(environ={}, subscription_ledger=ledger)
+   client = world.client()
+   world.register(client)
+   roles = client.get("/settings/providers").json()["roles"]
+   tutor = next(entry for entry in roles if entry["role"] == "tutor")
+
+   assert tutor == {"role": "tutor", "provider": "subscription", "model": TUTOR_MODEL, "wired": True}
 
 
 def test_providers_reports_an_unset_tutor_as_unwired(world):

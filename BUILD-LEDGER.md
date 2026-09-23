@@ -70,6 +70,69 @@ replay only, since the P1 gates still open are the operator's and the engine nee
 queue to teach from now to May 2027.
 
 ## Done [verified]
+- 2026-09-23, Slice 1 of the subscription backend: the AI engine runs by default on the
+  operator's Claude subscription through the official Claude Code CLI, and the paid key is a
+  fallback chosen only explicitly. `app/providers/subscription.py` (new) `SubscriptionProvider`
+  runs one `claude -p` per call from an argument list, never a shell: `--model` from the request,
+  `--system-prompt=<static prefix>`, `--output-format json`, `--json-schema` when the request
+  carries a schema, `--max-budget-usd` per role (tutor 0.10, others 0.25),
+  `--no-session-persistence`, `--setting-sources ""`, `--strict-mcp-config` with an empty
+  `--mcp-config`, `--disable-slash-commands`, `--permission-prompts none`, `--tools ""` and a named
+  `--disallowedTools` list, with the user prompt on stdin and the working directory an empty temp
+  directory removed afterwards. Every flag was checked against `claude -p --help` on CLI 2.1.277;
+  `--bare` and `--max-turns` are not used. The subprocess environment is `PATH`, `HOME`, `USER`,
+  `LANG`, `TMPDIR` and the operator's OAuth token when set, and never an `ANTHROPIC_*` variable.
+  The JSON result maps onto `ProviderResult` (`result` or `structured_output`, the four usage
+  counts, `total_cost_usd`, `duration_ms`, `subtype`), and `total_cost_usd` goes to
+  `app/providers/guard.py` `SubscriptionSpendLedger` (`var/subscription_spend_ledger.json`), never
+  to the $15.00 `DevSpendLedger`. A usage-limit answer raises `SubscriptionLimitReached`; a
+  timeout, a non-zero exit or non-JSON output raises `SubscriptionTransportError`, and a missing
+  binary raises `SubscriptionBinaryMissing`, which is refused before the wire. Compliance:
+  `AnthropicProvider` refuses an `sk-ant-oat` key before the wire (`SubscriptionTokenRefused`);
+  only `subscription.py` in `app/` names the token variable and it imports no HTTP client, socket
+  or SDK; the backend refuses to construct over a database with more than one user
+  (`app/main.py` `installed_user_count`, read-only); registration already refuses a second account
+  unconditionally. `app/main.py` adds `GROWTH_AI_BACKEND` (`subscription` default, `api`,
+  `replay`, `none`) as the primary switch, with `GROWTH_TUTOR_PROVIDER` read only when it is
+  unset, and logs the choice. Degradation: `app/feedback/tutor.py` queues a limited call through
+  `app/providers/call_queue.py` (new) as a `provider_call_queued` row in the existing `jobs` table,
+  one per attempt, and re-raises; `app/api/routes/sessions.py` serves the static feedback with
+  `tutor_unavailable` true. Docs: new sections in `docs/plan/07-ai-provider-layer.md` ("The
+  subscription backend") and `docs/plan/14-token-economy.md` ("Runtime calls on the operator's
+  subscription"), and `docs/operator/provider-key.md` and `ai-operating-costs.md` now name
+  `GROWTH_AI_BACKEND`. No cost figure changed. Tests: `tests/fixtures/fake_claude/claude` (a fake
+  CLI that records argv, stdin, environment and working directory, with success, structured,
+  weekly-limit, five-hour-limit, malformed and non-zero modes, configured through `HOME`);
+  `tests/conftest.py` (new) fails any test that resolves a claude binary outside
+  `tests/fixtures` and points the subscription ledger at a temp file;
+  `tests/providers/test_subscription.py` (15), `tests/providers/test_subscription_compliance.py`
+  (11), `tests/api/test_subscription_limit.py` (4) and six new backend-selection tests in
+  `tests/api/test_wiring.py`. Each new test was shown red against a mutation of the code it
+  guards (32 mutations, one or more tests red each, run from a scratchpad script), then green on
+  restore. Suite at close: 909 passed. No live CLI or API call.
+- 2026-09-23, a verified review finding against Slice 1 of the subscription backend:
+  `tests/providers/test_subscription.py`
+  `test_the_reported_cost_lands_on_the_subscription_counter_and_never_on_the_api_cap` built a
+  `DevSpendLedger` at a fresh temp path that nothing ever wrote to, so its "never on the API cap"
+  half could not go red. The test now points `app/providers/guard.py` `DEV_SPEND_LEDGER_PATH` at a
+  temp file (with a positive control that `DevSpendLedger()` resolves there), runs two calls and
+  asserts the default ledger is still empty and its file absent. The provider-level test cannot
+  see the route wiring, so `tests/api/test_subscription_limit.py` gained
+  `test_a_served_subscription_sentence_is_counted_off_the_api_dev_cap`, which serves a real
+  sentence through `/sessions/.../feedback` over the same redirected ledger and asserts the
+  subscription counter holds 0.0123 and the API cap ledger is untouched. Red against two
+  mutations: `SubscriptionProvider._record_cost` also adding to `DevSpendLedger()` (both tests
+  red) and `sessions.py` passing `dev_spend_track=True` (the route test red, `0.00418 == 0.0`);
+  green on restore. No application code changed. Suite at close: 910 tests collected, pytest
+  exit 0 with no failure. No live CLI or API call.
+- 2026-09-23, a second review finding against Slice 1 of the subscription backend:
+  `app/settings/providers.py` `PROVIDER_NAMES` had no entry for the new default backend, so
+  `GET /settings/providers` reported the tutor as the class name `SubscriptionProvider` instead
+  of `subscription`. `PROVIDER_NAMES` now maps `SubscriptionProvider` to `subscription`, and
+  `tests/api/test_settings_routes.py` gained
+  `test_providers_names_the_default_subscription_tutor_by_its_backend`. Red with the map entry
+  removed, green on restore. Suite at close: pytest 911 passed, vitest 310 passed, tsc exit 0,
+  qa/12_report.py exit 0. No live CLI or API call.
 - 2026-09-23, a verified review finding against the MCQ math-rendering fix below: the `stem`
   fix in `app/items/ingest.py` `item_row` only reaches a record on its first ingest.
   `ingest_new_records` (`app/runtime/bank.py` `ItemBank._ingest_pending_source`) skips any id
@@ -1160,6 +1223,10 @@ done or listed below as needing the operator.
 
 ## Live API spend log [verified]
 
+Subscription backend, Slice 1, 2026-09-23: no live call. The claude CLI was run only as
+`claude -p --help` and `claude --version` to check flags, and every test drives
+`tests/fixtures/fake_claude/claude`. API spend $0.00, subscription use none.
+
 Twenty-seventh session, 2026-09-23, slice 10: seventeen live calls against api.anthropic.com on
 claude-haiku-4-5, all under the operator's key in `.env`, nothing else called. `tools/dev_spend.py`
 before this slice's live work: `spent = 0.0000`, `cap = 15.0000`, `remaining = 15.0000`. After:
@@ -1295,6 +1362,24 @@ seventeen live calls add nothing to that model, since P1 wires only the tutor an
 `tutor.cycle` line, $5.01, was not touched.
 
 ## Known defects [verified]
+
+- 2026-09-23, subscription backend Slice 1, open:
+  - Nothing was run against the live CLI. The flags exist in `claude -p --help` on 2.1.277, but
+    whether the CLI accepts `--setting-sources ""`, `--tools ""` together with
+    `--disallowedTools`, the `--system-prompt=<value>` form over a prefix that opens with `---`,
+    and `--permission-prompts none` in one call is unverified. The usage-limit wording the
+    adapter matches ("weekly limit", "5-hour limit", "usage limit", "rate limit") and whether a
+    limit arrives as `is_error` JSON or on stderr are guesses. Slice 2 should confirm both on one
+    live call.
+  - `GuardedProvider` still charges each subscription call to the tutor's per-user daily budget
+    row at API prices (`usage_cost`), so the default $1.00 tutor cap stops the subscription tutor
+    after about $1.00 of notional use a day, and a limited call is charged the worst-case
+    reservation as any failed call is. Left unchanged because the guard is out of this slice's
+    scope and the cap still works as a rate limit.
+  - Queued `provider_call_queued` jobs have no worker. The row holds the request so a later
+    drain can replay it, but nothing drains it yet.
+  - A student who reopens feedback while the limit holds starts a fresh CLI process each time
+    before being told the tutor is unavailable. The queue row is not duplicated.
 
 - 2026-09-23, found while verifying the MCQ math-rendering fix live: `GET /progress`
   (`app/session/preview.py` `queue_preview`, which calls `assemble_session` again) did not answer
@@ -2177,6 +2262,36 @@ Session 2026-09-20 (seventh).
 
 ## Decisions taken on the operator's instruction, 2026-09-23 [inferred]
 
+Subscription backend, Slice 1.
+
+- Precedence: an explicit `GROWTH_AI_BACKEND` always wins; `GROWTH_TUTOR_PROVIDER` is read only
+  when it is unset, and its `anthropic` still maps to the `api` backend. Reason: the brief asks to
+  keep the older variable working, and an existing deployment or test that set
+  `GROWTH_TUTOR_PROVIDER=anthropic` made the same explicit choice to spend on the key. The
+  earlier partial edit let the older variable win over `GROWTH_AI_BACKEND`, which would have let
+  a stale setting override the new switch, and was reversed.
+- `test_a_stray_key_alone_wires_no_tutor` became `test_a_stray_key_alone_wires_no_paid_tutor`:
+  with no backend set the default is now the subscription, so its assertion changed from
+  `tutor is None` to "not an `AnthropicProvider`, and a `SubscriptionProvider`". The property it
+  guards, that a key alone never wires the paid adapter, is unchanged. The earlier partial edit
+  had pinned `GROWTH_TUTOR_PROVIDER=none` instead, which made the test repeat the explicit-none
+  test and prove nothing about the key; reversed. The two other changed wiring tests set
+  `GROWTH_AI_BACKEND=api` explicitly and keep their assertions.
+- The queue is the existing `jobs` table (no migration), one row per role and attempt through an
+  idempotency key, in `app/providers/call_queue.py` rather than inside `subscription.py`, so the
+  subscription module holds no database code.
+- A limit is recognised by `ProviderCallFailed.exception_type`, because the guard strips the
+  original exception by design (13 item 7). A bare `SubscriptionLimitReached` from an unguarded
+  provider degrades the same way.
+- A missing binary is `RefusedBeforeWire`, since no process started, so the guard refunds its
+  reservation. A timeout, a non-zero exit and non-JSON output are ordinary failures and keep the
+  worst-case charge.
+- `stream` yields the whole result as one `{"type": "text", "delta": ...}` event, the normalised
+  shape `AnthropicProvider` uses, because `--output-format json` has no incremental text.
+- The subscription ledger subclasses `DevSpendLedger` with its own path and no cap.
+- The fake CLI reads its mode from, and writes its record to, `HOME`, because the allowlisted
+  environment carries nothing else a test could use to configure it.
+
 Fifteenth session, on the instruction to build slice 1 of the persistent developer spend cap.
 
 - Storage: a flat JSON ledger under `var/dev_spend_ledger.json`, not a table via `app/db/migrate.py`.
@@ -2525,6 +2640,12 @@ P1 reads 28 of 31 (gate_status: 17, 29 and 30 missing). P2 cannot start: its ent
 "P1 merged with all gates green". Nothing further in P1 is buildable without the operator; every
 item below needs content, a key, a download or a ruling.
 
+Subscription backend Slice 2 (agent-buildable, needs one live CLI call the operator approves):
+confirm the CLI accepts the Slice 1 argv and how a usage limit is reported, measure latency per
+tutor call, then move the runtime cost lines in `docs/plan/14-token-economy.md` and
+`tools/cost_model.py`, and decide how the per-role daily cap should count subscription calls
+(Known defects above). A worker to drain `provider_call_queued` jobs is the other open piece.
+
 Human-only, in the order that unblocks the most:
 
 0a. Twenty-third and twenty-fourth sessions: the operator reviews the 130 agent drafts in
@@ -2553,7 +2674,7 @@ Human-only, in the order that unblocks the most:
    no sample configured it refuses every `item_audit` verdict.
 3. Exit criterion 8: real tutor calls with the key, then `tools/serving_cost.py <db>`. The
    persistent developer spend cap (`app/providers/guard.py`, this session) now stands in front of
-   any such call once `GROWTH_TUTOR_PROVIDER=anthropic` is set; `tools/dev_spend.py` reports spent,
+   any such call once `GROWTH_AI_BACKEND=api` is set; `tools/dev_spend.py` reports spent,
    cap and remaining before and after.
 4. Remaining rulings: copy for a failed request and for the account screen; permission to
    download Inter as a self-hosted woff2. Closed this session: the retryable flag, the passkey

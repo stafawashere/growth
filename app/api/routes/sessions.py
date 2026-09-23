@@ -15,6 +15,7 @@ from app.items.grade import grade
 from app.items.verify import ChildDiedError
 from app.providers.anthropic import AnthropicProvider
 from app.providers.guard import BudgetStopped, GuardedProvider
+from app.providers.subscription import SubscriptionLimitReached
 from app.session import preview, service
 
 router = APIRouter(prefix="/sessions", tags=["sessions"])
@@ -276,9 +277,13 @@ def tutor_sentence_for(settings, db, user, attempt, feedback):
    return value carries, so the session screen can say it where it happened rather than only in
    settings.
 
+   A subscription usage limit is the same stop from the student's side: static feedback, the
+   tutor marked unavailable, and the call queued by app/feedback/tutor.py. It never falls through
+   to the paid API.
+
    The guard's persistent developer spend cap only tracks a call this process would actually pay
-   for, which is exactly when settings.tutor is a real AnthropicProvider; replay and the
-   no-provider case never reach dev_spend_track=True.
+   for, which is exactly when settings.tutor is a real AnthropicProvider. Replay, the subscription
+   backend and the no-provider case never reach dev_spend_track=True.
    """
    has_tutor = settings.tutor is not None
 
@@ -289,8 +294,10 @@ def tutor_sentence_for(settings, db, user, attempt, feedback):
    guarded = GuardedProvider(settings.tutor, db, user.id, caps=settings.tutor_caps, dev_spend_track=is_live)
 
    try:
-      sentence = tutor.compose_sentence(guarded, feedback, db=db, attempt=attempt)
+      sentence = tutor.compose_sentence(guarded, feedback, db=db, attempt=attempt, user_id=user.id)
    except BudgetStopped:
+      return None, True
+   except SubscriptionLimitReached:
       return None, True
 
    return sentence, False

@@ -18,14 +18,16 @@ fails if this file prints one the calculator does not.
 Environment, on the composition root.
 
 ```
-GROWTH_TUTOR_PROVIDER=anthropic
+GROWTH_AI_BACKEND=api
 ANTHROPIC_API_KEY=...
 GROWTH_TUTOR_CAP_USD=1.00
 GROWTH_TUTOR_CAP_TOKENS=250000
 ```
 
-The tutor is opt-in and stays off until `GROWTH_TUTOR_PROVIDER` names a provider. A key alone
-wires nothing; that is deliberate and is not a bug.
+That block is the paid fallback. The default backend is `subscription`, which runs the tutor on
+the operator's Claude subscription and never reads the key (docs/plan/07-ai-provider-layer.md,
+"The subscription backend"). A key alone wires nothing, and only `GROWTH_AI_BACKEND=api` spends
+on it.
 
 Per-role model and call settings. Six roles, and only the tutor is live today.
 

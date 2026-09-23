@@ -109,31 +109,72 @@
       {
          "id": "B",
          "value": [
-            "Rational",
-            -33,
-            10
+            "Add",
+            [
+               "Rational",
+               31,
+               10
+            ],
+            [
+               "Divide",
+               [
+                  "Exp",
+                  -8
+               ],
+               5
+            ]
          ],
          "is_key": false,
          "error_path": "BC-ERR-02028",
-         "violated_step": 3
+         "violated_step": 1
       },
       {
          "id": "C",
          "value": [
-            "Rational",
-            43,
-            10
+            "Add",
+            [
+               "Rational",
+               31,
+               10
+            ],
+            [
+               "Divide",
+               [
+                  "Exp",
+                  [
+                     "Rational",
+                     1,
+                     5
+                  ]
+               ],
+               5
+            ]
          ],
          "is_key": false,
-         "error_path": "BC-ERR-02027",
-         "violated_step": 3
+         "error_path": "BC-ERR-02028",
+         "violated_step": 1
       },
       {
          "id": "D",
-         "value": 3,
+         "value": [
+            "Add",
+            [
+               "Rational",
+               31,
+               10
+            ],
+            [
+               "Divide",
+               [
+                  "Exp",
+                  -4
+               ],
+               5
+            ]
+         ],
          "is_key": false,
-         "error_path": "BC-ERR-02027",
-         "violated_step": 2
+         "error_path": "BC-ERR-02028",
+         "violated_step": 1
       }
    ]
 }

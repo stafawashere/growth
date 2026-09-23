@@ -98,29 +98,37 @@
          ],
          "is_key": false,
          "error_path": "BC-ERR-02018",
-         "violated_step": 0
+         "violated_step": 1
       },
       {
          "id": "B",
          "value": [
             "Add",
-            3,
+            -3,
             [
-               "Exp",
+               "Multiply",
+               -1,
                [
-                  "Multiply",
+                  "Exp",
                   [
-                     "Rational",
-                     1,
-                     6
-                  ],
-                  "Pi"
+                     "Add",
+                     -1,
+                     [
+                        "Multiply",
+                        [
+                           "Rational",
+                           1,
+                           6
+                        ],
+                        "Pi"
+                     ]
+                  ]
                ]
             ]
          ],
          "is_key": false,
-         "error_path": "BC-ERR-02018",
-         "violated_step": 3
+         "error_path": "BC-ERR-02019",
+         "violated_step": 0
       },
       {
          "id": "C",

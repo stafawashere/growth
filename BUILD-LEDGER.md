@@ -10,6 +10,22 @@ purpose: Where the application build stands, session by session, so the next ses
 Application code lives at the repository root under `app/` and `tests/`, at the paths docs/plan names. The project CLAUDE.md still says "docs-only, no product"; that sentence is the operator's to amend and this ledger only records the conflict. Tooling: uv-managed Python 3.12.13 in `.venv/`, dependencies in `pyproject.toml`, tests via `.venv/bin/python -m pytest`. Every H2 below carries a tag because `qa/04_tags.py` scans root-level Markdown: [verified] means the test output or the registry was checked in the session named, [inferred] means a judgement.
 
 ## Done [verified]
+- Twenty-sixth session, 2026-09-23, distractor audit: the twelve archetypes in
+  `content/items_p1_agent/` other than `BC-QA-02010` (re-derived last session) were audited one
+  agent per archetype, 30 distractor options each, 360 in all. Each agent re-derived every
+  distractor from the archetype's own named errors (the BC-ERR ids its skills hold) and either
+  corrected the value, the `violated_step`, or the tag, or left the option unchanged and said why.
+  No key changed, and the 03005 auditor rechecked all ten of its keys with SymPy. Options fixed and
+  left unresolved, per archetype: 01004 11 and 2, 01008 6 and 10, 01015 11 and 1, 02002 9 and 0,
+  02006 12 and 0, 02007 21 and 3, 02008 12 and 11, 02011 18 and 0 (plus `violated_step`
+  normalized to 1 on the already-correct options of items 00 to 05), 03001 9 and 6, 03004 25
+  and 2, 03005 15 and 4, 03008 18 and 3. That is 167 fixed and 42 unresolved of 360; the rest were
+  already correct. Each auditor's `tools/check_items.py` run exited 0. After all twelve,
+  `.venv/bin/python tools/check_items.py content/items_p1_agent` exits 0 with "records read: 130,
+  clean: 130, with violations: 0", and `.venv/bin/python -m pytest -q -p no:cacheprovider
+  tests/tools tests/items tests/e2e` exits 0. `var/growth.db` holds no `ITM-AGT-` rows (its items
+  table is empty), so the bank's skip-existing-ids rule leaves no stale copy of an edited item and
+  nothing was deleted. What the audit could not fix is under Known defects.
 - Twenty-fifth session, 2026-09-23, slice 7 review follow-up: two verified findings against the
   twenty-fourth session's distractor generator, fixed. First, the generator always placed the key
   at option A for the 51 previously options-less items and only ever moved a fourth distractor to
@@ -964,18 +980,41 @@ done or listed below as needing the operator.
 
 ## Known defects [verified]
 
+From the twenty-sixth session, 2026-09-23, found and not fixed.
+
+- 42 distractor options still name a BC-ERR id that does not produce their value, because the
+  archetype's skills hold no error that yields a third distinct value for that stem. Each needs an
+  operator ruling: a new BC-ERR record, permission to tag an error outside the archetype's skills,
+  or a stem redesign. `tools/check_items.py` cannot see this, since it checks only that a tag
+  resolves to an active id and that options are distinct. By item: `ITM-AGT-01004-03` A,
+  `01004-05` C; `01008-00` A, `01008-01` B C D, `01008-02` D, `01008-05` B, `01008-06` A C D,
+  `01008-09` A (01008-01 and 01008-06 support no legitimate distractor at all and need a stem
+  redesign); `01015-08` B; `02007-04` C D, `02007-08` B; `02008-00` A C, `02008-01` A B, `02008-02`
+  B, `02008-04` A, `02008-05` B, `02008-07` C D, `02008-08` A, `02008-09` C (02008's products have
+  only `BC-ERR-02020` and its quotients only 02021 and 02022, so a dropped-term error record would
+  clear most of these); `03001-00` A, `03001-02` B C, `03001-04` B, `03001-05` D, `03001-08` A;
+  `03004-04` A C (the find-k format with a constant right side admits one error-derived value);
+  `03005-03` C, `03005-05` D, `03005-06` A, `03005-09` A; `03008-01` C D, `03008-07` D.
+- Fixes the auditors made but flagged as weak or as judgement calls. Value needs two slips:
+  `03005-00` D, `03005-01` C, `03005-08` B. Tag and value both changed, beyond the value-or-tag
+  remedy the audit allowed: `03004-03` A and `03004-05` D (now `BC-ERR-03011`). A looser reading of
+  the named error: `02002-02` C, `02006-00` C (partial application), `03004-05` A (`BC-ERR-03007`
+  extended to x as a function of t), `02007-08` D, `02011` step 1 for `BC-ERR-02027`, `01008-04` A
+  (wrong branch at both boundaries). Cancellation below the top level or in an expanded form:
+  `01004-02` B C, `01004-04` A D, `01004-07` B D.
+- Three `BC-QA-03004` options now hold a free `dydx` symbol, because the error they model divides
+  before the dy/dx terms are collected: `03004-00` B, `03004-08` B (whose key is the number -4/13)
+  and `03004-09` A. They are distinct from the key and pass the checker, but a student sees an
+  answer containing dy/dx, and for 03004-08 a symbolic option beside three numeric ones. The
+  operator may prefer another value for these.
+- The audit task listed `BC-QA-03005` as returning no result, although its result was delivered
+  (under an archetype field that carried a preamble). The counts above use that result.
+
 From the twenty-fifth session, 2026-09-23, found and not fixed.
 
-- The option-position shuffle and the `BC-QA-02010` distractor re-derivation (Done above) close
-  the two verified findings this session was given, both against `ITM-AGT-02010-08`, and the same
-  pattern found and fixed in `ITM-AGT-02010-07`. The wider suspicion those findings raised, that
-  the twenty-fourth session's reused-error-id distractors (already flagged below, previous
-  session) might carry the same value/error-id mismatch elsewhere in the 82 items that session
-  touched, was not run to ground archetype by archetype outside `BC-QA-02010`; that would need the
-  same per-item SymPy re-derivation from each archetype's own `worked_solution` steps and its own
-  small set of named errors, which this session did not have the budget to repeat twelve more
-  times. The operator's planned review pass over `content/items_p1_agent/` should treat this as
-  open until it does.
+- Superseded 2026-09-23, twenty-sixth session: the distractor audit (Done above) re-derived the
+  distractors of the twelve archetypes this entry left open. What remains is in the twenty-sixth
+  session's entries above.
 - The reshuffle script that fixed the key-position skew was a one-shot content edit, not saved to
   the repository, the same call the twenty-fourth session made for its generator; re-running it
   would produce a different (still roughly uniform) shuffle since nothing pins the RNG seed to a
@@ -1001,11 +1040,9 @@ From the twenty-fourth session, 2026-09-23, found and not fixed.
   every served content item does carry four options, this conflict only bites a caller whose own
   fixtures omit them, same as these four tests, so the operator's choice is either to give those
   fixtures options too or to accept that the guard cannot be added without touching them.
-- The reused-error-id distractors the generator added where an archetype's item needed more new
-  distractors than it had spare named errors for (documented in Done above) are mechanically
-  verified (SymPy-distinct, valid error id, valid step index) but not each hand-checked for being
-  the most natural instance of that named error; the operator may want to review these during the
-  item review pass already planned for `content/items_p1_agent/`.
+- Superseded 2026-09-23, twenty-sixth session: the reused-error-id distractors were hand-checked
+  in the distractor audit (Done above). The 42 that no held error produces are listed in the
+  twenty-sixth session's Known defects entry.
 
 From the seventeenth session, 2026-09-23, found and not fixed.
 
@@ -2113,9 +2150,9 @@ item below needs content, a key, a download or a ruling.
 Human-only, in the order that unblocks the most:
 
 0a. Twenty-third and twenty-fourth sessions: the operator reviews the 130 agent drafts in
-   `content/items_p1_agent/` (its README lists what the audit left open, and the twenty-fourth
-   session's Known defects entry names which distractors were mechanically verified but not
-   individually hand-checked). The drafts are served now, every one with four options, but count
+   `content/items_p1_agent/` (its README lists what the audit left open, and the twenty-sixth
+   session's Known defects entry names the 42 distractors no held error produces and the fixes
+   flagged as weak). The drafts are served now, every one with four options, but count
    toward nothing. Gates 17, 29 and 30 and exit criterion 7 still wait on items with operator
    provenance, whether hand-authored or drafts the operator has relabelled after review.
 

@@ -179,43 +179,60 @@
       {
          "id": "A",
          "value": [
-            "Add",
-            4,
+            "Divide",
+            [
+               "Subtract",
+               4,
+               [
+                  "Multiply",
+                  "y",
+                  [
+                     "Cos",
+                     "x"
+                  ]
+               ]
+            ],
             [
                "Multiply",
-               -1,
-               "y",
-               [
-                  "Cos",
-                  "x"
-               ]
+               2,
+               "y"
             ]
          ],
          "is_key": false,
          "error_path": "BC-ERR-03008",
-         "violated_step": 5
+         "violated_step": 2
       },
       {
          "id": "B",
          "value": [
-            "Power",
+            "Negate",
             [
-               "Add",
+               "Divide",
                [
                   "Multiply",
-                  2,
-                  "y"
+                  "y",
+                  [
+                     "Cos",
+                     "x"
+                  ]
                ],
                [
-                  "Sin",
-                  "x"
+                  "Add",
+                  [
+                     "Multiply",
+                     2,
+                     "y"
+                  ],
+                  [
+                     "Sin",
+                     "x"
+                  ]
                ]
-            ],
-            -1
+            ]
          ],
          "is_key": false,
          "error_path": "BC-ERR-03009",
-         "violated_step": 5
+         "violated_step": 0
       },
       {
          "id": "C",
@@ -252,41 +269,35 @@
       {
          "id": "D",
          "value": [
-            "Multiply",
-            -1,
+            "Divide",
             [
-               "Power",
+               "Subtract",
                [
-                  "Add",
+                  "Subtract",
+                  4,
                   [
                      "Multiply",
-                     2,
-                     "y"
-                  ],
-                  [
-                     "Sin",
-                     "x"
+                     "y",
+                     [
+                        "Cos",
+                        "x"
+                     ]
                   ]
                ],
-               -1
-            ],
-            [
-               "Add",
-               4,
                [
                   "Multiply",
-                  -1,
-                  "y",
-                  [
-                     "Cos",
-                     "x"
-                  ]
+                  2,
+                  "y"
                ]
+            ],
+            [
+               "Sin",
+               "x"
             ]
          ],
          "is_key": false,
          "error_path": "BC-ERR-03007",
-         "violated_step": 5
+         "violated_step": 1
       }
    ]
 }

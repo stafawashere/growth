@@ -107,38 +107,25 @@
       },
       {
          "id": "B",
-         "value": [
-            "Add",
-            -2,
-            "y",
-            [
-               "Multiply",
-               -2,
-               "x"
-            ]
-         ],
+         "value": 2,
          "is_key": false,
-         "error_path": "BC-ERR-03008",
-         "violated_step": 4
+         "error_path": "BC-ERR-03023",
+         "violated_step": 3
       },
       {
          "id": "C",
          "value": [
-            "Add",
-            -2,
-            [
-               "Negate",
-               "y"
-            ],
+            "Subtract",
             [
                "Multiply",
                2,
                "x"
-            ]
+            ],
+            "y"
          ],
          "is_key": false,
          "error_path": "BC-ERR-03021",
-         "violated_step": 4
+         "violated_step": 0
       },
       {
          "id": "D",

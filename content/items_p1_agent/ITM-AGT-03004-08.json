@@ -148,27 +148,31 @@
       {
          "id": "B",
          "value": [
-            "Rational",
-            4,
-            11
+            "Subtract",
+            -4,
+            [
+               "Multiply",
+               12,
+               "dydx"
+            ]
          ],
          "is_key": false,
          "error_path": "BC-ERR-03010",
-         "violated_step": 1
+         "violated_step": 3
       },
       {
          "id": "C",
          "value": -16,
          "is_key": false,
          "error_path": "BC-ERR-03007",
-         "violated_step": 0
+         "violated_step": 1
       },
       {
          "id": "D",
          "value": 0,
          "is_key": false,
          "error_path": "BC-ERR-03008",
-         "violated_step": 0
+         "violated_step": 2
       }
    ],
    "calculator_status": "no_calculator",

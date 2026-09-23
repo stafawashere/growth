@@ -178,13 +178,20 @@
          ],
          "is_key": false,
          "error_path": "BC-ERR-03006",
-         "violated_step": 4
+         "violated_step": 0
       },
       {
          "id": "C",
          "value": [
             "Multiply",
-            -2,
+            [
+               "Add",
+               1,
+               [
+                  "Sqrt",
+                  2
+               ]
+            ],
             [
                "Exp",
                [
@@ -199,15 +206,30 @@
             ]
          ],
          "is_key": false,
-         "error_path": "BC-ERR-03002",
-         "violated_step": 4
+         "error_path": "BC-ERR-03001",
+         "violated_step": 2
       },
       {
          "id": "D",
          "value": [
-            "Rational",
-            1,
-            2
+            "Multiply",
+            [
+               "Rational",
+               3,
+               2
+            ],
+            [
+               "Exp",
+               [
+                  "Multiply",
+                  [
+                     "Rational",
+                     1,
+                     2
+                  ],
+                  "Pi"
+               ]
+            ]
          ],
          "is_key": false,
          "error_path": "BC-ERR-03001",

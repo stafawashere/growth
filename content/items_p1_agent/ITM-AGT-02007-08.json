@@ -180,31 +180,71 @@
       {
          "id": "C",
          "value": [
-            "Multiply",
-            -2,
+            "Add",
             [
-               "Sin",
-               "x"
+               "Multiply",
+               2,
+               [
+                  "Sin",
+                  "x"
+               ]
+            ],
+            [
+               "Multiply",
+               -1,
+               4,
+               [
+                  "Cos",
+                  "x"
+               ]
+            ],
+            [
+               "Multiply",
+               3,
+               [
+                  "Power",
+                  "x",
+                  -1
+               ]
             ]
          ],
          "is_key": false,
          "error_path": "BC-ERR-02018",
-         "violated_step": 2
+         "violated_step": 1
       },
       {
          "id": "D",
          "value": [
-            "Multiply",
-            3,
+            "Add",
             [
-               "Power",
-               "x",
-               -1
+               "Multiply",
+               2,
+               [
+                  "Sin",
+                  "x"
+               ]
+            ],
+            [
+               "Multiply",
+               4,
+               [
+                  "Cos",
+                  "x"
+               ]
+            ],
+            [
+               "Multiply",
+               3,
+               [
+                  "Power",
+                  "x",
+                  -1
+               ]
             ]
          ],
          "is_key": false,
          "error_path": "BC-ERR-02018",
-         "violated_step": 0
+         "violated_step": 1
       }
    ]
 }

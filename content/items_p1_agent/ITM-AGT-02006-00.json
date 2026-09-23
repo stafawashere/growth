@@ -144,30 +144,26 @@
       {
          "id": "A",
          "value": [
-            "Multiply",
-            2,
+            "Add",
             [
-               "Add",
-               -4,
+               "Multiply",
+               5,
                [
-                  "Multiply",
-                  -10,
-                  [
-                     "Power",
-                     "x",
-                     3
-                  ]
-               ],
-               [
-                  "Multiply",
-                  3,
-                  "x"
+                  "Power",
+                  "x",
+                  3
                ]
-            ]
+            ],
+            [
+               "Multiply",
+               -3,
+               "x"
+            ],
+            8
          ],
          "is_key": false,
-         "error_path": "BC-ERR-02017",
-         "violated_step": 3
+         "error_path": "BC-ERR-02015",
+         "violated_step": 1
       },
       {
          "id": "B",
@@ -196,45 +192,30 @@
          "id": "C",
          "value": [
             "Add",
-            -6,
-            [
-               "Multiply",
-               -3,
-               [
-                  "Power",
-                  "x",
-                  2
-               ]
-            ],
             [
                "Multiply",
                5,
                [
                   "Power",
                   "x",
-                  4
+                  3
                ]
             ],
-            [
-               "Multiply",
-               8,
-               "x"
-            ]
-         ],
-         "is_key": false,
-         "error_path": "BC-ERR-02015",
-         "violated_step": 0
-      },
-      {
-         "id": "D",
-         "value": [
-            "Add",
-            -8,
             [
                "Multiply",
                -6,
                "x"
             ],
+            8
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02015",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
             [
                "Multiply",
                20,
@@ -243,11 +224,17 @@
                   "x",
                   3
                ]
-            ]
+            ],
+            [
+               "Multiply",
+               -6,
+               "x"
+            ],
+            2
          ],
          "is_key": false,
          "error_path": "BC-ERR-02016",
-         "violated_step": 3
+         "violated_step": 1
       }
    ]
 }

@@ -7,7 +7,7 @@ purpose: Says what the 130 item records in this directory are, how they were aud
 
 # Agent-drafted P1 items [verified]
 
-This directory holds 130 original item records, 10 for each of the 13 P1 archetypes named in scope item 2 of docs/plan/11-phased-delivery.md. Each record is in the output schema of docs/plan/04-item-generation.md and carries `"authored_by": "claude-opus-5-5 agent draft, pending operator review"`. No record copies an AP question stem, figure or rubric text. 79 are MCQ with a BC-ERR `error_path` on every distractor. 48 of those have four options and 31 have three, although 11 describes a four-option MCQ. The other 51 are short answer only and have no options. When R29 gives one of them an MCQ turn at stage unsupported, it is served with no options and cannot be graded. BUILD-LEDGER.md lists this under Known defects, waiting on an operator ruling.
+This directory holds 130 original item records, 10 for each of the 13 P1 archetypes named in scope item 2 of docs/plan/11-phased-delivery.md. Each record is in the output schema of docs/plan/04-item-generation.md and carries `"authored_by": "claude-opus-5-5 agent draft, pending operator review"`. No record copies an AP question stem, figure or rubric text. Every record carries four options, one key with a null `error_path` and three distractors each tagged with a BC-ERR id held by the archetype's own skills, in a per-item shuffled order.
 
 ## Provenance and what they count toward [verified]
 
@@ -19,8 +19,10 @@ The operator ruled on 2026-09-23, under delegated authority, that these drafts m
 
 ## Audit [verified]
 
-Each archetype's 10 items were re-solved blind by an independent agent on 2026-09-23. Every key matched, and `tools/check_items.py` exited 0 for each archetype. The audit changed only distractor metadata. It reindexed `violated_step` to point at the archetype's `expected_solution_path`, which is what `app/feedback/render.py` reads, in 01004, 01008, 02007, 03001, 03005 and 03008. It relabelled two 02002 distractors from BC-ERR-02008 to BC-ERR-02007, and it replaced three 03004 distractors whose values did not follow from the error they named. It changed no key.
+Each archetype's 10 items were re-solved blind by an independent agent on 2026-09-23. Every key matched, and `tools/check_items.py` exited 0 for each archetype. That audit changed only distractor metadata, and no key.
+
+A second audit on 2026-09-23 re-derived every distractor from the archetype's own named errors: 30 options in each of the 12 archetypes other than BC-QA-02010, whose distractors were re-derived the session before. Of those 360 options, 167 had their value, `violated_step` or tag corrected, 42 were left unchanged because no error the archetype's skills hold produces a third distinct value for that stem, and the rest were already correct. No key changed. `tools/check_items.py content/items_p1_agent` exits 0 with all 130 clean, but that gate checks only that each tag resolves to an active id and that options are distinct, so it does not show that a distractor follows from its error.
 
 ## Open for the operator [inferred]
 
-Operator review is pending for all 130. The auditors left some things for that review. 31 MCQs have three options, and 11 describes four. The audit named three of them, the 01004 MCQs 00, 03 and 05. In 01004 the value 1 appears in four of the five MCQs. The step index given to the cosine sign error in 02007 is a judgement call. The scratchpad generators for 02002 and 02007 are not in the repository, and rerunning the 02007 one would bring back the old `violated_step` values.
+Operator review is pending for all 130. BUILD-LEDGER.md, Known defects, twenty-sixth session, lists by item the 42 distractors whose tag does not produce their value, which need a new BC-ERR record, a tag from outside the archetype's skills, or a stem redesign (01008-01 and 01008-06 support no legitimate distractor at all). It also lists the fixes flagged as weak: three values that need two slips in 03005, two 03004 options whose tag and value both changed, several looser readings of a named error, and three 03004 options that contain a free dy/dx symbol. In 01004 the value 1 appears as an option in five of the ten items (00, 01, 03, 05, 08). The scratchpad generators and the option shuffle are not in the repository.

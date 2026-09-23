@@ -233,14 +233,6 @@
                      "Multiply",
                      4,
                      "y"
-                  ]
-               ],
-               [
-                  "Subtract",
-                  [
-                     "Multiply",
-                     4,
-                     "x"
                   ],
                   [
                      "Multiply",
@@ -249,14 +241,20 @@
                         "Power",
                         "y",
                         2
-                     ]
+                     ],
+                     "dydx"
                   ]
+               ],
+               [
+                  "Multiply",
+                  4,
+                  "x"
                ]
             ]
          ],
          "is_key": false,
          "error_path": "BC-ERR-03010",
-         "violated_step": 1
+         "violated_step": 3
       },
       {
          "id": "C",
@@ -290,7 +288,7 @@
          ],
          "is_key": false,
          "error_path": "BC-ERR-03008",
-         "violated_step": 0
+         "violated_step": 2
       },
       {
          "id": "D",
@@ -332,7 +330,7 @@
          ],
          "is_key": false,
          "error_path": "BC-ERR-03007",
-         "violated_step": 0
+         "violated_step": 1
       }
    ],
    "calculator_status": "no_calculator",

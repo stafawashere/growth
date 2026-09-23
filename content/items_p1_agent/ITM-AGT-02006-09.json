@@ -163,7 +163,15 @@
          "id": "A",
          "value": [
             "Add",
-            2,
+            [
+               "Multiply",
+               3,
+               [
+                  "Power",
+                  "s",
+                  -5
+               ]
+            ],
             [
                "Multiply",
                -10,
@@ -172,24 +180,15 @@
                   "s",
                   [
                      "Rational",
-                     2,
+                     -3,
                      5
                   ]
-               ]
-            ],
-            [
-               "Multiply",
-               3,
-               [
-                  "Power",
-                  "s",
-                  -4
                ]
             ]
          ],
          "is_key": false,
          "error_path": "BC-ERR-02015",
-         "violated_step": 0
+         "violated_step": 1
       },
       {
          "id": "B",
@@ -259,12 +258,22 @@
          ],
          "is_key": false,
          "error_path": "BC-ERR-02017",
-         "violated_step": 3
+         "violated_step": 0
       },
       {
          "id": "D",
          "value": [
             "Add",
+            2,
+            [
+               "Multiply",
+               -12,
+               [
+                  "Power",
+                  "s",
+                  -5
+               ]
+            ],
             [
                "Multiply",
                -4,
@@ -277,20 +286,11 @@
                      5
                   ]
                ]
-            ],
-            [
-               "Multiply",
-               12,
-               [
-                  "Power",
-                  "s",
-                  -5
-               ]
             ]
          ],
          "is_key": false,
          "error_path": "BC-ERR-02016",
-         "violated_step": 3
+         "violated_step": 1
       }
    ]
 }

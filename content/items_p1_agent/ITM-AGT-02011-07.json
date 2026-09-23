@@ -76,14 +76,30 @@
    "options": [
       {
          "id": "A",
-         "value": "ExponentialE",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               "ExponentialE",
+               "x"
+            ],
+            [
+               "Negate",
+               [
+                  "Power",
+                  "ExponentialE",
+                  2
+               ]
+            ],
+            "ExponentialE"
+         ],
          "is_key": false,
          "error_path": "BC-ERR-02027",
-         "violated_step": 2
+         "violated_step": 1
       },
       {
          "id": "B",
-         "value": 2,
+         "value": "x",
          "is_key": false,
          "error_path": "BC-ERR-02028",
          "violated_step": 1
@@ -106,15 +122,27 @@
          "id": "D",
          "value": [
             "Add",
-            1,
+            "ExponentialE",
             [
-               "Ln",
-               "x"
+               "Multiply",
+               [
+                  "Add",
+                  1,
+                  [
+                     "Ln",
+                     2
+                  ]
+               ],
+               [
+                  "Subtract",
+                  "x",
+                  "ExponentialE"
+               ]
             ]
          ],
          "is_key": false,
-         "error_path": "BC-ERR-02027",
-         "violated_step": 0
+         "error_path": "BC-ERR-02028",
+         "violated_step": 1
       }
    ]
 }

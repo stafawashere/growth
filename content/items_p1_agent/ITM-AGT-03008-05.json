@@ -136,15 +136,11 @@
             [
                "Add",
                [
-                  "Power",
-                  "x",
-                  2
-               ],
-               [
                   "Multiply",
                   2,
                   "x"
-               ]
+               ],
+               4
             ],
             [
                "Exp",
@@ -153,7 +149,7 @@
          ],
          "is_key": false,
          "error_path": "BC-ERR-03008",
-         "violated_step": 0
+         "violated_step": 1
       },
       {
          "id": "B",
@@ -185,20 +181,10 @@
          "id": "C",
          "value": [
             "Multiply",
-            -1,
             [
-               "Add",
-               6,
-               [
-                  "Power",
-                  "x",
-                  2
-               ],
-               [
-                  "Multiply",
-                  6,
-                  "x"
-               ]
+               "Power",
+               "x",
+               2
             ],
             [
                "Exp",
@@ -206,8 +192,8 @@
             ]
          ],
          "is_key": false,
-         "error_path": "BC-ERR-03022",
-         "violated_step": 4
+         "error_path": "BC-ERR-03008",
+         "violated_step": 1
       },
       {
          "id": "D",
@@ -234,7 +220,7 @@
          ],
          "is_key": false,
          "error_path": "BC-ERR-03021",
-         "violated_step": 1
+         "violated_step": 0
       }
    ]
 }

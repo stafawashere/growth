@@ -158,21 +158,37 @@
          ],
          "is_key": false,
          "error_path": "BC-ERR-02018",
-         "violated_step": 0
+         "violated_step": 1
       },
       {
          "id": "D",
          "value": [
-            "Multiply",
-            3,
+            "Add",
             [
-               "Exp",
-               "x"
+               "Multiply",
+               3,
+               [
+                  "Exp",
+                  [
+                     "Add",
+                     "x",
+                     -1
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               -1,
+               5,
+               [
+                  "Sin",
+                  "x"
+               ]
             ]
          ],
          "is_key": false,
-         "error_path": "BC-ERR-02018",
-         "violated_step": 1
+         "error_path": "BC-ERR-02019",
+         "violated_step": 0
       }
    ],
    "calculator_status": "no_calculator",

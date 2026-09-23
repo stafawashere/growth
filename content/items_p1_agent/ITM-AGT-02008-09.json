@@ -169,7 +169,7 @@
          ],
          "is_key": false,
          "error_path": "BC-ERR-02021",
-         "violated_step": 3
+         "violated_step": 2
       },
       {
          "id": "C",
@@ -185,20 +185,24 @@
       {
          "id": "D",
          "value": [
-            "Add",
-            1,
+            "Divide",
             [
-               "Multiply",
-               -2,
+               "Subtract",
+               1,
                [
-                  "Ln",
-                  "x"
+                  "Multiply",
+                  2,
+                  [
+                     "Ln",
+                     "x"
+                  ]
                ]
-            ]
+            ],
+            "x"
          ],
          "is_key": false,
          "error_path": "BC-ERR-02022",
-         "violated_step": 3
+         "violated_step": 1
       }
    ]
 }

@@ -124,7 +124,7 @@
          ],
          "is_key": false,
          "error_path": "BC-ERR-02018",
-         "violated_step": 0
+         "violated_step": 1
       },
       {
          "id": "B",
@@ -195,16 +195,46 @@
          "id": "D",
          "value": [
             "Multiply",
-            -2,
             [
                "Power",
                "x",
                -1
+            ],
+            [
+               "Add",
+               [
+                  "Multiply",
+                  "x",
+                  [
+                     "Add",
+                     [
+                        "Multiply",
+                        7,
+                        [
+                           "Exp",
+                           [
+                              "Add",
+                              "x",
+                              -1
+                           ]
+                        ]
+                     ],
+                     [
+                        "Multiply",
+                        -1,
+                        [
+                           "Sin",
+                           "x"
+                        ]
+                     ]
+                  ]
+               ],
+               -2
             ]
          ],
          "is_key": false,
-         "error_path": "BC-ERR-02018",
-         "violated_step": 2
+         "error_path": "BC-ERR-02019",
+         "violated_step": 0
       }
    ],
    "calculator_status": "no_calculator",

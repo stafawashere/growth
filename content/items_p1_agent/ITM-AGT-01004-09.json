@@ -105,17 +105,19 @@
       {
          "id": "A",
          "value": [
-            "Power",
-            2,
+            "Negate",
             [
-               "Rational",
-               1,
-               2
+               "Add",
+               2,
+               [
+                  "Sqrt",
+                  2
+               ]
             ]
          ],
          "is_key": false,
          "error_path": "BC-ERR-01010",
-         "violated_step": 3
+         "violated_step": 2
       },
       {
          "id": "B",
@@ -131,10 +133,17 @@
       },
       {
          "id": "C",
-         "value": -1,
+         "value": [
+            "Add",
+            2,
+            [
+               "Sqrt",
+               2
+            ]
+         ],
          "is_key": false,
          "error_path": "BC-ERR-01010",
-         "violated_step": 3
+         "violated_step": 2
       },
       {
          "id": "D",

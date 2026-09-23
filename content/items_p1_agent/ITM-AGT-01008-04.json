@@ -93,13 +93,20 @@
       {
          "id": "A",
          "value": [
-            "Rational",
-            9,
+            "Subtract",
+            [
+               "Divide",
+               [
+                  "Exp",
+                  2
+               ],
+               2
+            ],
             2
          ],
          "is_key": false,
-         "error_path": "BC-ERR-01015",
-         "violated_step": 3
+         "error_path": "BC-ERR-01017",
+         "violated_step": 0
       },
       {
          "id": "B",
@@ -115,23 +122,30 @@
          "id": "C",
          "value": [
             "Rational",
-            5,
+            -5,
             2
          ],
          "is_key": false,
          "error_path": "BC-ERR-01017",
-         "violated_step": 3
+         "violated_step": 0
       },
       {
          "id": "D",
          "value": [
-            "Rational",
-            -7,
+            "Divide",
+            [
+               "Subtract",
+               [
+                  "Exp",
+                  2
+               ],
+               1
+            ],
             2
          ],
          "is_key": false,
          "error_path": "BC-ERR-01017",
-         "violated_step": 3
+         "violated_step": 0
       }
    ]
 }

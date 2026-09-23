@@ -105,10 +105,17 @@
    "options": [
       {
          "id": "A",
-         "value": -6,
+         "value": [
+            "Add",
+            3,
+            [
+               "Sqrt",
+               2
+            ]
+         ],
          "is_key": false,
          "error_path": "BC-ERR-01010",
-         "violated_step": 3
+         "violated_step": 2
       },
       {
          "id": "B",
@@ -125,10 +132,14 @@
       },
       {
          "id": "D",
-         "value": 7,
+         "value": [
+            "Rational",
+            18,
+            7
+         ],
          "is_key": false,
          "error_path": "BC-ERR-01010",
-         "violated_step": 3
+         "violated_step": 2
       }
    ]
 }

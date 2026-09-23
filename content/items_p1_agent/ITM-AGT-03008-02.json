@@ -79,24 +79,41 @@
    "options": [
       {
          "id": "A",
-         "value": -22,
+         "value": 2,
          "is_key": false,
-         "error_path": "BC-ERR-03008",
-         "violated_step": 4
+         "error_path": "BC-ERR-03023",
+         "violated_step": 3
       },
       {
          "id": "B",
          "value": 5,
          "is_key": false,
          "error_path": "BC-ERR-03021",
-         "violated_step": 1
+         "violated_step": 0
       },
       {
          "id": "C",
-         "value": 23,
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               2,
+               [
+                  "Power",
+                  "y",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               2,
+               "y"
+            ],
+            2
+         ],
          "is_key": false,
-         "error_path": "BC-ERR-03022",
-         "violated_step": 4
+         "error_path": "BC-ERR-03011",
+         "violated_step": 2
       },
       {
          "id": "D",

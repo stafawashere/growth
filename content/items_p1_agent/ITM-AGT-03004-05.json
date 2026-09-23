@@ -113,10 +113,10 @@
    "options": [
       {
          "id": "A",
-         "value": 8,
+         "value": -6,
          "is_key": false,
          "error_path": "BC-ERR-03007",
-         "violated_step": 5
+         "violated_step": 1
       },
       {
          "id": "B",
@@ -126,16 +126,23 @@
       },
       {
          "id": "C",
-         "value": -7,
+         "value": -4,
          "is_key": false,
          "error_path": "BC-ERR-03008",
-         "violated_step": 5
+         "violated_step": 2
       },
       {
          "id": "D",
-         "value": -9,
+         "value": [
+            "Negate",
+            [
+               "Add",
+               4,
+               "y"
+            ]
+         ],
          "is_key": false,
-         "error_path": "BC-ERR-03009",
+         "error_path": "BC-ERR-03011",
          "violated_step": 5
       }
    ]

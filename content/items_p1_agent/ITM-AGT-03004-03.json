@@ -176,24 +176,51 @@
    "options": [
       {
          "id": "A",
-         "value": 9,
+         "value": [
+            "Negate",
+            [
+               "Divide",
+               [
+                  "Add",
+                  2,
+                  [
+                     "Multiply",
+                     3,
+                     "y"
+                  ]
+               ],
+               [
+                  "Subtract",
+                  3,
+                  [
+                     "Multiply",
+                     2,
+                     "y"
+                  ]
+               ]
+            ]
+         ],
          "is_key": false,
-         "error_path": "BC-ERR-03009",
+         "error_path": "BC-ERR-03011",
          "violated_step": 5
       },
       {
          "id": "B",
-         "value": -8,
+         "value": 2,
          "is_key": false,
          "error_path": "BC-ERR-03008",
-         "violated_step": 5
+         "violated_step": 2
       },
       {
          "id": "C",
-         "value": 2,
+         "value": [
+            "Rational",
+            -4,
+            3
+         ],
          "is_key": false,
          "error_path": "BC-ERR-03007",
-         "violated_step": 0
+         "violated_step": 1
       },
       {
          "id": "D",

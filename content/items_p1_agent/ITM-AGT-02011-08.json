@@ -144,20 +144,40 @@
       {
          "id": "B",
          "value": [
-            "Rational",
-            6,
-            5
+            "Subtract",
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  6,
+                  5
+               ],
+               "x"
+            ],
+            [
+               "Rational",
+               6,
+               5
+            ]
          ],
          "is_key": false,
          "error_path": "BC-ERR-02027",
-         "violated_step": 2
+         "violated_step": 1
       },
       {
          "id": "C",
          "value": [
-            "Rational",
-            -9,
-            25
+            "Subtract",
+            [
+               "Multiply",
+               3,
+               "x"
+            ],
+            [
+               "Rational",
+               24,
+               5
+            ]
          ],
          "is_key": false,
          "error_path": "BC-ERR-02028",
@@ -166,37 +186,13 @@
       {
          "id": "D",
          "value": [
-            "Multiply",
-            [
-               "Power",
-               [
-                  "Add",
-                  1,
-                  [
-                     "Power",
-                     "x",
-                     2
-                  ]
-               ],
-               -2
-            ],
-            [
-               "Add",
-               3,
-               [
-                  "Multiply",
-                  -3,
-                  [
-                     "Power",
-                     "x",
-                     2
-                  ]
-               ]
-            ]
+            "Rational",
+            6,
+            5
          ],
          "is_key": false,
-         "error_path": "BC-ERR-02027",
-         "violated_step": 0
+         "error_path": "BC-ERR-02028",
+         "violated_step": 1
       }
    ]
 }

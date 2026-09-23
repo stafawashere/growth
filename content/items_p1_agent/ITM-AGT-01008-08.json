@@ -86,8 +86,8 @@
          "id": "A",
          "value": 3,
          "is_key": false,
-         "error_path": "BC-ERR-01015",
-         "violated_step": 3
+         "error_path": "BC-ERR-01017",
+         "violated_step": 0
       },
       {
          "id": "B",
@@ -97,17 +97,29 @@
       },
       {
          "id": "C",
-         "value": -2,
+         "value": [
+            "Rational",
+            8,
+            3
+         ],
          "is_key": false,
          "error_path": "BC-ERR-01017",
-         "violated_step": 3
+         "violated_step": 0
       },
       {
          "id": "D",
-         "value": 1,
+         "value": [
+            "Divide",
+            3,
+            [
+               "Subtract",
+               "ExponentialE",
+               1
+            ]
+         ],
          "is_key": false,
          "error_path": "BC-ERR-01017",
-         "violated_step": 3
+         "violated_step": 0
       }
    ]
 }

@@ -132,14 +132,10 @@
    "options": [
       {
          "id": "A",
-         "value": [
-            "Multiply",
-            4,
-            "x"
-         ],
+         "value": 0,
          "is_key": false,
          "error_path": "BC-ERR-02005",
-         "violated_step": 3
+         "violated_step": 2
       },
       {
          "id": "B",
@@ -158,27 +154,14 @@
          ],
          "is_key": false,
          "error_path": "BC-ERR-02006",
-         "violated_step": 2
+         "violated_step": 3
       },
       {
          "id": "C",
          "value": [
-            "Add",
-            [
-               "Multiply",
-               -2,
-               [
-                  "Power",
-                  "h",
-                  2
-               ]
-            ],
-            [
-               "Multiply",
-               -4,
-               "h",
-               "x"
-            ]
+            "Multiply",
+            2,
+            "x"
          ],
          "is_key": false,
          "error_path": "BC-ERR-02007",

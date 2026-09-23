@@ -1,0 +1,300 @@
+{
+   "id": "ITM-AGT-02002-06",
+   "archetype_id": "BC-QA-02002",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let f(x) = sqrt(2x + 5). Using the limit of [f(x + h) - f(x)]/h as h approaches 0, find f'(x)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Divide",
+         1,
+         [
+            "Sqrt",
+            [
+               "Add",
+               [
+                  "Multiply",
+                  2,
+                  "x"
+               ],
+               5
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Write the difference quotient: [sqrt(2x + 2h + 5) - sqrt(2x + 5)]/h.",
+         "mathjson": [
+            "Divide",
+            [
+               "Subtract",
+               [
+                  "Sqrt",
+                  [
+                     "Add",
+                     [
+                        "Multiply",
+                        2,
+                        "x"
+                     ],
+                     [
+                        "Multiply",
+                        2,
+                        "h"
+                     ],
+                     5
+                  ]
+               ],
+               [
+                  "Sqrt",
+                  [
+                     "Add",
+                     [
+                        "Multiply",
+                        2,
+                        "x"
+                     ],
+                     5
+                  ]
+               ]
+            ],
+            "h"
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Multiply by the conjugate over itself; the numerator becomes (2x + 2h + 5) - (2x + 5) = 2h.",
+         "mathjson": [
+            "Divide",
+            [
+               "Multiply",
+               2,
+               "h"
+            ],
+            [
+               "Multiply",
+               "h",
+               [
+                  "Add",
+                  [
+                     "Sqrt",
+                     [
+                        "Add",
+                        [
+                           "Multiply",
+                           2,
+                           "x"
+                        ],
+                        [
+                           "Multiply",
+                           2,
+                           "h"
+                        ],
+                        5
+                     ]
+                  ],
+                  [
+                     "Sqrt",
+                     [
+                        "Add",
+                        [
+                           "Multiply",
+                           2,
+                           "x"
+                        ],
+                        5
+                     ]
+                  ]
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Divide out h, leaving 2/[sqrt(2x + 2h + 5) + sqrt(2x + 5)] for h not equal to 0.",
+         "mathjson": [
+            "Divide",
+            2,
+            [
+               "Add",
+               [
+                  "Sqrt",
+                  [
+                     "Add",
+                     [
+                        "Multiply",
+                        2,
+                        "x"
+                     ],
+                     [
+                        "Multiply",
+                        2,
+                        "h"
+                     ],
+                     5
+                  ]
+               ],
+               [
+                  "Sqrt",
+                  [
+                     "Add",
+                     [
+                        "Multiply",
+                        2,
+                        "x"
+                     ],
+                     5
+                  ]
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Let h approach 0: 2/[2 sqrt(2x + 5)], so f'(x) = 1/sqrt(2x + 5).",
+         "mathjson": [
+            "Divide",
+            1,
+            [
+               "Sqrt",
+               [
+                  "Add",
+                  [
+                     "Multiply",
+                     2,
+                     "x"
+                  ],
+                  5
+               ]
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Divide",
+            1,
+            [
+               "Multiply",
+               2,
+               [
+                  "Sqrt",
+                  [
+                     "Add",
+                     [
+                        "Multiply",
+                        2,
+                        "x"
+                     ],
+                     5
+                  ]
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02007",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Divide",
+            1,
+            [
+               "Sqrt",
+               [
+                  "Add",
+                  [
+                     "Multiply",
+                     2,
+                     "x"
+                  ],
+                  5
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": 0,
+         "is_key": false,
+         "error_path": "BC-ERR-02005",
+         "violated_step": 2
+      },
+      {
+         "id": "D",
+         "value": [
+            "Divide",
+            2,
+            [
+               "Add",
+               [
+                  "Sqrt",
+                  [
+                     "Add",
+                     [
+                        "Multiply",
+                        2,
+                        "x"
+                     ],
+                     [
+                        "Multiply",
+                        2,
+                        "h"
+                     ],
+                     5
+                  ]
+               ],
+               [
+                  "Sqrt",
+                  [
+                     "Add",
+                     [
+                        "Multiply",
+                        2,
+                        "x"
+                     ],
+                     5
+                  ]
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02006",
+         "violated_step": 3
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02006",
+      "BC-SKL-02007",
+      "BC-SKL-02008",
+      "BC-SKL-02009",
+      "BC-SKL-02027"
+   ],
+   "parameter_draw": {
+      "rule": "sqrt(2x + 5)",
+      "inner_slope": 2,
+      "inner_intercept": 5,
+      "target": "derivative_function",
+      "form": "increment"
+   },
+   "authored_on": "2026-09-23",
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review"
+}

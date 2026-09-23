@@ -1,0 +1,88 @@
+{
+   "id": "ITM-AGT-03005-09",
+   "archetype_id": "BC-QA-03005",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Consider the curve (x - y)^2 = 4x, for which dy/dx = (x - y - 2)/(x - y). The horizontal line y = k is tangent to the curve. What is the value of k?"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Negate",
+         1
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "A horizontal tangent needs the numerator to vanish: x - y - 2 = 0, so y = x - 2.",
+         "mathjson": [
+            "Subtract",
+            "x",
+            2
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Substitute y = x - 2 into the curve: (x - (x - 2))^2 = 4 = 4x, so x = 1.",
+         "mathjson": 1
+      },
+      {
+         "step": 3,
+         "text": "Then y = 1 - 2 = -1, and the denominator x - y = 1 - (-1) = 2 is nonzero, so the tangent at (1, -1) is horizontal and k = -1.",
+         "mathjson": [
+            "Negate",
+            1
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 0,
+         "is_key": false,
+         "error_path": "BC-ERR-03012",
+         "violated_step": 0
+      },
+      {
+         "id": "B",
+         "value": [
+            "Negate",
+            1
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": [
+            "Negate",
+            2
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03013",
+         "violated_step": 2
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-09",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-03012",
+      "BC-SKL-03013",
+      "BC-SKL-03011"
+   ],
+   "parameter_draw": {
+      "curve": "(x - y)^2 = 4x",
+      "direction": "horizontal",
+      "posed_as_stated_line": true
+   },
+   "authored_on": "2026-09-23",
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review"
+}

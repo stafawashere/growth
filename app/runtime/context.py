@@ -15,7 +15,7 @@ from app.content.loader import load_snapshot
 from app.content.persist import record_snapshot
 from app.engine.fringe import Graph
 from app.engine.update import EngineGraph
-from app.runtime.bank import ItemBank
+from app.runtime.bank import ItemBank, ItemSource
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 DEFAULT_CONTENT_ROOT = REPO_ROOT / "data"
@@ -31,7 +31,24 @@ def _archetype_counts(archetypes):
    return counts
 
 
-def build_session_context(engine, content_root=None, library_commit=None, loaded_at=None):
+def build_bank(engine, snapshot, snapshot_id, items_directory):
+   has_items_directory = items_directory is not None
+
+   if not has_items_directory:
+      return ItemBank(engine)
+
+   source = ItemSource(
+      directory=Path(items_directory),
+      active_error_ids=frozenset(snapshot.errors),
+      snapshot_id=snapshot_id,
+   )
+
+   return ItemBank(engine, source=source)
+
+
+def build_session_context(
+   engine, content_root=None, library_commit=None, loaded_at=None, items_directory=None
+):
    root = content_root or DEFAULT_CONTENT_ROOT
    snapshot = load_snapshot(root)
 
@@ -57,7 +74,7 @@ def build_session_context(engine, content_root=None, library_commit=None, loaded
       graph=graph,
       engine_graph=engine_graph,
       archetypes=dict(snapshot.archetypes),
-      bank=ItemBank(engine),
+      bank=build_bank(engine, snapshot, snapshot_id, items_directory),
       snapshot_id=snapshot_id,
       errors=dict(snapshot.errors),
    )

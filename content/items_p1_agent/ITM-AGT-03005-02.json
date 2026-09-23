@@ -1,0 +1,97 @@
+{
+   "id": "ITM-AGT-03005-02",
+   "archetype_id": "BC-QA-03005",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Consider the curve y^2 = x^3 - 12x + 11, for which dy/dx = (3x^2 - 12)/(2y). Every point on the curve at which the tangent line is horizontal has the same x-coordinate. What is that x-coordinate?"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Negate",
+         2
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "A horizontal tangent needs the numerator to vanish: 3x^2 - 12 = 0, so x = 2 or x = -2.",
+         "mathjson": 2
+      },
+      {
+         "step": 2,
+         "text": "Substitute x = 2 into the curve: y^2 = 8 - 24 + 11 = -5, which has no real solution, so no point of the curve has x = 2.",
+         "mathjson": [
+            "Negate",
+            5
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Substitute x = -2: y^2 = -8 + 24 + 11 = 27, so y = 3 sqrt(3) or y = -3 sqrt(3), and 2y is not zero at either point.",
+         "mathjson": [
+            "Multiply",
+            3,
+            [
+               "Sqrt",
+               3
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "The only x-coordinate at which the tangent is horizontal is x = -2.",
+         "mathjson": [
+            "Negate",
+            2
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 2,
+         "is_key": false,
+         "error_path": "BC-ERR-03013",
+         "violated_step": 2
+      },
+      {
+         "id": "B",
+         "value": [
+            "Negate",
+            2
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": 1,
+         "is_key": false,
+         "error_path": "BC-ERR-03012",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-09",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-03012",
+      "BC-SKL-03013",
+      "BC-SKL-03011"
+   ],
+   "parameter_draw": {
+      "curve": "y^2 = x^3 - 12x + 11",
+      "direction": "horizontal",
+      "candidates": 2,
+      "candidates_on_curve": 1
+   },
+   "authored_on": "2026-09-23",
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review"
+}

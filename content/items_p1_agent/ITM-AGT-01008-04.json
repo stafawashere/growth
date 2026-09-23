@@ -1,0 +1,92 @@
+{
+   "id": "ITM-AGT-01008-04",
+   "archetype_id": "BC-QA-01008",
+   "variant_id": null,
+   "format": "short_answer",
+   "stem": {
+      "text": "Let r be defined by r(x) = e^x + a for x < 0, r(x) = bx + 3 for 0 <= x <= 2, and r(x) = ax^2 + x for x > 2, where a and b are constants. Find the value of b for which r is continuous for all real x."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         7,
+         2
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "At x = 0 the left branch tends to e^0 + a = 1 + a and the middle branch gives 3, so a = 2.",
+         "mathjson": [
+            "Equal",
+            "a",
+            2
+         ]
+      },
+      {
+         "step": 2,
+         "text": "At x = 2 the middle branch gives 2b + 3 and the right branch gives 4a + 2 = 10.",
+         "mathjson": [
+            "Equal",
+            [
+               "Add",
+               [
+                  "Multiply",
+                  2,
+                  "b"
+               ],
+               3
+            ],
+            10
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Solving 2b + 3 = 10 gives 2b = 7.",
+         "mathjson": [
+            "Equal",
+            [
+               "Multiply",
+               2,
+               "b"
+            ],
+            7
+         ]
+      },
+      {
+         "step": 4,
+         "text": "So b = 7/2.",
+         "mathjson": [
+            "Rational",
+            7,
+            2
+         ]
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-17",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-01051",
+      "BC-SKL-01052",
+      "BC-SKL-01050",
+      "BC-SKL-01053"
+   ],
+   "parameter_draw": {
+      "left_branch": "e^x + a",
+      "middle_branch": "bx + 3",
+      "right_branch": "ax^2 + x",
+      "boundaries": [
+         0,
+         2
+      ]
+   },
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review",
+   "authored_on": "2026-09-23"
+}

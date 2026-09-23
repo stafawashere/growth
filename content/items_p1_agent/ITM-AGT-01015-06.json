@@ -1,0 +1,83 @@
+{
+   "id": "ITM-AGT-01015-06",
+   "archetype_id": "BC-QA-01015",
+   "variant_id": null,
+   "format": "short_answer",
+   "stem": {
+      "text": "The function s is defined by s(x) = (2x + 1) / (x^2 + 2x - 15) for x >= -4 only. Find the largest interval that contains x = 0 on which s is continuous, name the reason, and give the number of integers that interval contains."
+   },
+   "answer_key": {
+      "form": "numeric",
+      "mathjson": 7
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The denominator (x + 5)(x - 3) is zero at x = -5 and x = 3, and only x = 3 lies in the stated domain x >= -4.",
+         "mathjson": [
+            "Multiply",
+            [
+               "Add",
+               "x",
+               5
+            ],
+            [
+               "Subtract",
+               "x",
+               3
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "A rational function is continuous at every input of its domain. On x >= -4 its domain is [-4, 3) U (3, infinity), and at x = -4 continuity is one sided from the right.",
+         "mathjson": 3
+      },
+      {
+         "step": 3,
+         "text": "The piece containing x = 0 is [-4, 3), closed at the stated endpoint -4 and open at 3.",
+         "mathjson": -4
+      },
+      {
+         "step": 4,
+         "text": "The integers in [-4, 3) are -4, -3, -2, -1, 0, 1 and 2.",
+         "mathjson": 7
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-10",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-17",
+         "setting": "on"
+      }
+   ],
+   "skills": [
+      "BC-SKL-01046",
+      "BC-SKL-01047",
+      "BC-SKL-01048",
+      "BC-SKL-01049"
+   ],
+   "parameter_draw": {
+      "stated_lower_bound": -4,
+      "denominator_roots": [
+         -5,
+         3
+      ],
+      "anchor_point": 0
+   },
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review",
+   "authored_on": "2026-09-23"
+}

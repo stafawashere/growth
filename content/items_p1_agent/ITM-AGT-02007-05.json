@@ -1,0 +1,202 @@
+{
+   "id": "ITM-AGT-02007-05",
+   "archetype_id": "BC-QA-02007",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let p(x) = e^x - 2cos(x) + 3ln(x) for x > 0. Which of the following is p'(x)?"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Exp",
+            "x"
+         ],
+         [
+            "Multiply",
+            2,
+            [
+               "Sin",
+               "x"
+            ]
+         ],
+         [
+            "Divide",
+            3,
+            "x"
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The derivative of e^x is e^x.",
+         "mathjson": [
+            "Exp",
+            "x"
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The derivative of cos(x) is -sin(x), so -2cos(x) differentiates to 2sin(x).",
+         "mathjson": [
+            "Multiply",
+            2,
+            [
+               "Sin",
+               "x"
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The derivative of ln(x) is 1/x, so 3ln(x) differentiates to 3/x.",
+         "mathjson": [
+            "Divide",
+            3,
+            "x"
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Combine the three terms.",
+         "mathjson": [
+            "Add",
+            [
+               "Exp",
+               "x"
+            ],
+            [
+               "Multiply",
+               2,
+               [
+                  "Sin",
+                  "x"
+               ]
+            ],
+            [
+               "Divide",
+               3,
+               "x"
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            [
+               "Exp",
+               "x"
+            ],
+            [
+               "Multiply",
+               -2,
+               [
+                  "Sin",
+                  "x"
+               ]
+            ],
+            [
+               "Divide",
+               3,
+               "x"
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02018",
+         "violated_step": 0
+      },
+      {
+         "id": "B",
+         "value": [
+            "Add",
+            [
+               "Exp",
+               "x"
+            ],
+            [
+               "Multiply",
+               2,
+               [
+                  "Sin",
+                  "x"
+               ]
+            ],
+            [
+               "Divide",
+               3,
+               "x"
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               "x",
+               [
+                  "Exp",
+                  [
+                     "Subtract",
+                     "x",
+                     1
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               2,
+               [
+                  "Sin",
+                  "x"
+               ]
+            ],
+            [
+               "Divide",
+               3,
+               "x"
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02019",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02032",
+      "BC-SKL-02033",
+      "BC-SKL-02034"
+   ],
+   "parameter_draw": {
+      "exponential_coefficient": 1,
+      "cosine_coefficient": -2,
+      "logarithm_coefficient": 3
+   },
+   "authored_on": "2026-09-23",
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review"
+}

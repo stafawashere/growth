@@ -46,6 +46,13 @@ GROWTH_KEY_AUDIT_SAMPLE_PATH path to the key-audit sample file tools/draw_key_au
                       POST /review-queue/{id}/resolve refuses every item_audit verdict rather
                       than guess at a sample. Read once and cached on the Settings object, since
                       the sample is drawn once per audit round rather than per request.
+GROWTH_ITEMS_DIR      the directory of item records the bank ingests through app/items/ingest.py
+                      on its first query, skipping ids already in the items table. Unset, it is
+                      content/items_p1_agent under the repo root when that directory exists (the
+                      agent drafts the operator ruled servable on 2026-09-23; their provenance
+                      model is their authored_by, never operator), and no directory otherwise.
+                      none disables it. A set path that is not a directory stops the process at
+                      startup.
 
 This module also mounts the built React client (app/web/dist, docs/plan/06-architecture.md's
 system diagram: the browser speaks REST to one FastAPI process) at the same origin the API
@@ -88,6 +95,8 @@ DEFAULT_TUTOR_CAP_USD = 1.00
 DEFAULT_TUTOR_CAP_TOKENS = 250000
 DEFAULT_WEB_DIST_DIR = REPO_ROOT / "app" / "web" / "dist"
 DEFAULT_TOKENS_PATH = REPO_ROOT / "app" / "design" / "growth-tokens.json"
+DEFAULT_ITEMS_DIR = REPO_ROOT / "content" / "items_p1_agent"
+NO_ITEMS_DIR = "none"
 WEB_BUILD_COMMAND = "npm run build --prefix app/web"
 
 
@@ -152,6 +161,27 @@ def build_tutor_caps(env):
    return {"tutor": BudgetCaps(cap_tokens=cap_tokens, cap_usd=cap_usd)}
 
 
+def items_directory(env):
+   configured = env.get("GROWTH_ITEMS_DIR")
+   is_unset = configured is None or configured == ""
+
+   if is_unset:
+      has_default = DEFAULT_ITEMS_DIR.is_dir()
+
+      return DEFAULT_ITEMS_DIR if has_default else None
+
+   if configured == NO_ITEMS_DIR:
+      return None
+
+   configured_path = Path(configured)
+   is_a_directory = configured_path.is_dir()
+
+   if not is_a_directory:
+      raise ValueError(f"GROWTH_ITEMS_DIR must name a directory of item records, got {configured!r}")
+
+   return configured_path
+
+
 def settings_from_environment(env=None):
    env = env if env is not None else os.environ
 
@@ -166,6 +196,7 @@ def settings_from_environment(env=None):
       tutor=build_tutor(env),
       tutor_caps=build_tutor_caps(env),
       key_audit_sample_path=env.get("GROWTH_KEY_AUDIT_SAMPLE_PATH"),
+      items_directory=items_directory(env),
    )
 
 
@@ -237,7 +268,9 @@ def build_application(env=None):
    settings = settings_from_environment(env)
    settings.db_path.parent.mkdir(parents=True, exist_ok=True)
    engine = settings.resolve_engine()
-   settings.session_context = build_session_context(engine, settings.content_root)
+   settings.session_context = build_session_context(
+      engine, settings.content_root, items_directory=settings.items_directory
+   )
 
    application = create_app(settings)
    mount_client(application, env)

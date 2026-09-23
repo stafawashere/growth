@@ -1,0 +1,191 @@
+{
+   "id": "ITM-AGT-02007-00",
+   "archetype_id": "BC-QA-02007",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let f(x) = 5cos(x) + 3e^x. Which of the following is f'(x)?"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Multiply",
+            -5,
+            [
+               "Sin",
+               "x"
+            ]
+         ],
+         [
+            "Multiply",
+            3,
+            [
+               "Exp",
+               "x"
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The derivative of cos(x) is -sin(x), so the term 5cos(x) differentiates to -5sin(x).",
+         "mathjson": [
+            "Multiply",
+            -5,
+            [
+               "Sin",
+               "x"
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The natural exponential is its own derivative, so 3e^x differentiates to 3e^x.",
+         "mathjson": [
+            "Multiply",
+            3,
+            [
+               "Exp",
+               "x"
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Add the two derivatives term by term.",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               -5,
+               [
+                  "Sin",
+                  "x"
+               ]
+            ],
+            [
+               "Multiply",
+               3,
+               [
+                  "Exp",
+                  "x"
+               ]
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               5,
+               [
+                  "Sin",
+                  "x"
+               ]
+            ],
+            [
+               "Multiply",
+               3,
+               [
+                  "Exp",
+                  "x"
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02018",
+         "violated_step": 0
+      },
+      {
+         "id": "B",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               -5,
+               [
+                  "Sin",
+                  "x"
+               ]
+            ],
+            [
+               "Multiply",
+               3,
+               [
+                  "Exp",
+                  "x"
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               -5,
+               [
+                  "Sin",
+                  "x"
+               ]
+            ],
+            [
+               "Multiply",
+               3,
+               [
+                  "Multiply",
+                  "x",
+                  [
+                     "Exp",
+                     [
+                        "Subtract",
+                        "x",
+                        1
+                     ]
+                  ]
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02019",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02032",
+      "BC-SKL-02033",
+      "BC-SKL-02034"
+   ],
+   "parameter_draw": {
+      "cosine_coefficient": 5,
+      "exponential_coefficient": 3
+   },
+   "authored_on": "2026-09-23",
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review"
+}

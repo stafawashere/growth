@@ -1,0 +1,119 @@
+{
+   "id": "ITM-AGT-01008-09",
+   "archetype_id": "BC-QA-01008",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let u be defined by u(x) = k^2 + ln(x) for 0 < x < 1, u(1) = 3k + 10, and u(x) = kx + 6 for x > 1, where k is a constant. For what value of k is u continuous at x = 1?"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": -2
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The left-hand limit at x = 1 is k^2 + ln(1) = k^2 and the right-hand limit is k + 6.",
+         "mathjson": [
+            "Equal",
+            [
+               "Power",
+               "k",
+               2
+            ],
+            [
+               "Add",
+               "k",
+               6
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Equal one-sided limits need k^2 - k - 6 = 0, so k = 3 or k = -2.",
+         "mathjson": [
+            "Equal",
+            [
+               "Add",
+               [
+                  "Power",
+                  "k",
+                  2
+               ],
+               [
+                  "Negate",
+                  "k"
+               ],
+               -6
+            ],
+            0
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The common limit must also equal u(1) = 3k + 10. At k = 3 the limit is 9 but u(1) = 19, while at k = -2 the limit is 4 and u(1) = 4.",
+         "mathjson": [
+            "Equal",
+            [
+               "Add",
+               [
+                  "Multiply",
+                  3,
+                  "k"
+               ],
+               10
+            ],
+            4
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Only k = -2 makes u continuous at x = 1.",
+         "mathjson": -2
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": -2,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": 3,
+         "is_key": false,
+         "error_path": "BC-ERR-01015",
+         "violated_step": 2
+      },
+      {
+         "id": "C",
+         "value": 5,
+         "is_key": false,
+         "error_path": "BC-ERR-01017",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-17",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-01051",
+      "BC-SKL-01052",
+      "BC-SKL-01050",
+      "BC-SKL-01053"
+   ],
+   "parameter_draw": {
+      "left_branch": "k^2 + ln(x)",
+      "point_value": "3k + 10",
+      "right_branch": "kx + 6",
+      "boundary": 1
+   },
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review",
+   "authored_on": "2026-09-23"
+}

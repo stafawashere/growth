@@ -1,0 +1,217 @@
+{
+   "id": "ITM-AGT-02002-00",
+   "archetype_id": "BC-QA-02002",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let f(x) = 3x^2 - 5x. Using the limit definition of the derivative, f'(x) = lim as h approaches 0 of [f(x + h) - f(x)]/h, find f'(x)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Subtract",
+         [
+            "Multiply",
+            6,
+            "x"
+         ],
+         5
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Write the difference quotient: [3(x + h)^2 - 5(x + h) - (3x^2 - 5x)]/h.",
+         "mathjson": [
+            "Divide",
+            [
+               "Subtract",
+               [
+                  "Subtract",
+                  [
+                     "Multiply",
+                     3,
+                     [
+                        "Power",
+                        [
+                           "Add",
+                           "x",
+                           "h"
+                        ],
+                        2
+                     ]
+                  ],
+                  [
+                     "Multiply",
+                     5,
+                     [
+                        "Add",
+                        "x",
+                        "h"
+                     ]
+                  ]
+               ],
+               [
+                  "Subtract",
+                  [
+                     "Multiply",
+                     3,
+                     [
+                        "Power",
+                        "x",
+                        2
+                     ]
+                  ],
+                  [
+                     "Multiply",
+                     5,
+                     "x"
+                  ]
+               ]
+            ],
+            "h"
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Expand 3(x + h)^2 = 3x^2 + 6xh + 3h^2 and cancel, so the numerator is 6xh + 3h^2 - 5h.",
+         "mathjson": [
+            "Subtract",
+            [
+               "Add",
+               [
+                  "Multiply",
+                  6,
+                  "x",
+                  "h"
+               ],
+               [
+                  "Multiply",
+                  3,
+                  [
+                     "Power",
+                     "h",
+                     2
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               5,
+               "h"
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Divide the common factor h out of every term, leaving 6x + 3h - 5 for h not equal to 0.",
+         "mathjson": [
+            "Subtract",
+            [
+               "Add",
+               [
+                  "Multiply",
+                  6,
+                  "x"
+               ],
+               [
+                  "Multiply",
+                  3,
+                  "h"
+               ]
+            ],
+            5
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Let h approach 0 by substitution, so f'(x) = 6x - 5.",
+         "mathjson": [
+            "Subtract",
+            [
+               "Multiply",
+               6,
+               "x"
+            ],
+            5
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Subtract",
+            [
+               "Add",
+               [
+                  "Multiply",
+                  6,
+                  "x"
+               ],
+               [
+                  "Multiply",
+                  3,
+                  "h"
+               ]
+            ],
+            5
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02006",
+         "violated_step": 3
+      },
+      {
+         "id": "B",
+         "value": [
+            "Subtract",
+            [
+               "Multiply",
+               6,
+               "x"
+            ],
+            5
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": -5,
+         "is_key": false,
+         "error_path": "BC-ERR-02007",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": 0,
+         "is_key": false,
+         "error_path": "BC-ERR-02005",
+         "violated_step": 2
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02006",
+      "BC-SKL-02007",
+      "BC-SKL-02008",
+      "BC-SKL-02009",
+      "BC-SKL-02027"
+   ],
+   "parameter_draw": {
+      "rule": "3x^2 - 5x",
+      "quadratic_coefficient": 3,
+      "linear_coefficient": -5,
+      "target": "derivative_function",
+      "form": "increment"
+   },
+   "authored_on": "2026-09-23",
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review"
+}

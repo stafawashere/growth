@@ -1,0 +1,119 @@
+{
+   "id": "ITM-AGT-01015-03",
+   "archetype_id": "BC-QA-01015",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "The function f is defined by f(x) = (x + 3) / (x^2 - 1) for x < 2 and f(x) = 40 / (3x(6 - x)) for x >= 2. On how many separate maximal intervals is f continuous?"
+   },
+   "answer_key": {
+      "form": "numeric",
+      "mathjson": 4
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "On x < 2 the first rule is undefined at x = -1 and x = 1. On x >= 2 the second rule is undefined only at x = 6, since its other zero x = 0 lies outside that piece.",
+         "mathjson": [
+            "Multiply",
+            [
+               "Subtract",
+               "x",
+               1
+            ],
+            [
+               "Add",
+               "x",
+               1
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Each rule is rational and so continuous on its own domain. At the join, the left limit (2 + 3) / (4 - 1) = 5/3 equals f(2) = 40 / 24 = 5/3, so f is continuous at x = 2.",
+         "mathjson": [
+            "Rational",
+            5,
+            3
+         ]
+      },
+      {
+         "step": 3,
+         "text": "f is continuous on (-infinity, -1), (-1, 1), (1, 6) and (6, infinity).",
+         "mathjson": 6
+      },
+      {
+         "step": 4,
+         "text": "Those are four separate maximal intervals.",
+         "mathjson": 4
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 3,
+         "is_key": false,
+         "error_path": "BC-ERR-01031",
+         "violated_step": 0
+      },
+      {
+         "id": "B",
+         "value": 2,
+         "is_key": false,
+         "error_path": "BC-ERR-01031",
+         "violated_step": 0
+      },
+      {
+         "id": "C",
+         "value": 4,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": 1,
+         "is_key": false,
+         "error_path": "BC-ERR-01031",
+         "violated_step": 2
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-10",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-17",
+         "setting": "on"
+      }
+   ],
+   "skills": [
+      "BC-SKL-01046",
+      "BC-SKL-01047",
+      "BC-SKL-01048",
+      "BC-SKL-01049"
+   ],
+   "parameter_draw": {
+      "join": 2,
+      "left_excluded": [
+         -1,
+         1
+      ],
+      "right_excluded": [
+         6
+      ],
+      "join_value": "5/3"
+   },
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review",
+   "authored_on": "2026-09-23"
+}

@@ -1,0 +1,259 @@
+{
+   "id": "ITM-AGT-02006-02",
+   "archetype_id": "BC-QA-02006",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let h(x) = 4/x^2 + 2x^3 + 9 for x not equal to 0. Which of the following is h'(x)?"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Multiply",
+            6,
+            [
+               "Power",
+               "x",
+               2
+            ]
+         ],
+         [
+            "Multiply",
+            -8,
+            [
+               "Power",
+               "x",
+               -3
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Rewrite the reciprocal as a power: h(x) = 4x^(-2) + 2x^3 + 9.",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               2,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            9,
+            [
+               "Multiply",
+               4,
+               [
+                  "Power",
+                  "x",
+                  -2
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Differentiate term by term: 4(-2x^(-3)) + 2(3x^2) + 0. The exponent -2 brings down a negative factor.",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               6,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               -8,
+               [
+                  "Power",
+                  "x",
+                  -3
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "So h'(x) = -8x^(-3) + 6x^2, which is 6x^2 - 8/x^3.",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               6,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               -8,
+               [
+                  "Power",
+                  "x",
+                  -3
+               ]
+            ]
+         ]
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02025",
+      "BC-SKL-02026",
+      "BC-SKL-02028",
+      "BC-SKL-02029",
+      "BC-SKL-02030",
+      "BC-SKL-02031"
+   ],
+   "parameter_draw": {
+      "coefficients": [
+         4,
+         2,
+         9
+      ],
+      "exponents": [
+         "-2",
+         "3",
+         "0"
+      ]
+   },
+   "options": [
+      {
+         "id": "A",
+         "text": "6x^2 + 4/x^2",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               6,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               4,
+               [
+                  "Power",
+                  "x",
+                  -2
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02017",
+         "violated_step": 0
+      },
+      {
+         "id": "B",
+         "text": "6x^2 - 8/x^3",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               6,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               -8,
+               [
+                  "Power",
+                  "x",
+                  -3
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "text": "6x^2 + 9 - 8/x^3",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               6,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            9,
+            [
+               "Multiply",
+               -8,
+               [
+                  "Power",
+                  "x",
+                  -3
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02016",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "text": "2x^2 + 4/x^3",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               2,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               4,
+               [
+                  "Power",
+                  "x",
+                  -3
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02015",
+         "violated_step": 1
+      }
+   ],
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review",
+   "authored_on": "2026-09-23"
+}

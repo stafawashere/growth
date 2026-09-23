@@ -1,0 +1,109 @@
+{
+   "id": "ITM-AGT-01015-09",
+   "archetype_id": "BC-QA-01015",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let g(x) = (x + 1) / ((x - 2) sqrt(20 + x - x^2)). Consider the largest interval that contains x = 0 and on which g is continuous. How many integers does that interval contain?"
+   },
+   "answer_key": {
+      "form": "numeric",
+      "mathjson": 5
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The square root sits in the denominator, so 20 + x - x^2 = (5 - x)(x + 4) must be strictly positive, giving -4 < x < 5, and the factor x - 2 also excludes x = 2.",
+         "mathjson": [
+            "Multiply",
+            [
+               "Subtract",
+               5,
+               "x"
+            ],
+            [
+               "Add",
+               "x",
+               4
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "g is a quotient of a polynomial and a product of a polynomial with a square root function, each continuous on its domain, so g is continuous on (-4, 2) U (2, 5).",
+         "mathjson": 2
+      },
+      {
+         "step": 3,
+         "text": "The piece containing x = 0 is (-4, 2), open at -4 because the denominator is zero there and open at 2.",
+         "mathjson": 2
+      },
+      {
+         "step": 4,
+         "text": "The integers in (-4, 2) are -3, -2, -1, 0 and 1.",
+         "mathjson": 5
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 7,
+         "is_key": false,
+         "error_path": "BC-ERR-01032",
+         "violated_step": 2
+      },
+      {
+         "id": "B",
+         "value": 5,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": 8,
+         "is_key": false,
+         "error_path": "BC-ERR-01031",
+         "violated_step": 0
+      },
+      {
+         "id": "D",
+         "value": 6,
+         "is_key": false,
+         "error_path": "BC-ERR-01032",
+         "violated_step": 2
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-10",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "on"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-17",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-01046",
+      "BC-SKL-01047",
+      "BC-SKL-01048",
+      "BC-SKL-01049"
+   ],
+   "parameter_draw": {
+      "radicand": "20 + x - x^2",
+      "linear_root": 2,
+      "anchor_point": 0
+   },
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review",
+   "authored_on": "2026-09-23"
+}

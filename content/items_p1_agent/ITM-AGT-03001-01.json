@@ -1,0 +1,256 @@
+{
+   "id": "ITM-AGT-03001-01",
+   "archetype_id": "BC-QA-03001",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let g(x) = x^2 e^(3x). Which of the following is g'(x)?"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Multiply",
+         "x",
+         [
+            "Add",
+            2,
+            [
+               "Multiply",
+               3,
+               "x"
+            ]
+         ],
+         [
+            "Exp",
+            [
+               "Multiply",
+               3,
+               "x"
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "g is a product of x^2 and the composite e^(3x), so the product rule opens the work: g'(x) = (x^2)' e^(3x) + x^2 (e^(3x))'.",
+         "mathjson": [
+            "Multiply",
+            2,
+            "x"
+         ]
+      },
+      {
+         "step": 2,
+         "text": "By the chain rule, (e^(3x))' = e^(3x) * 3 = 3e^(3x), and (x^2)' = 2x.",
+         "mathjson": [
+            "Multiply",
+            3,
+            [
+               "Exp",
+               [
+                  "Multiply",
+                  3,
+                  "x"
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Substitute: g'(x) = 2x e^(3x) + 3x^2 e^(3x).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               2,
+               "x",
+               [
+                  "Exp",
+                  [
+                     "Multiply",
+                     3,
+                     "x"
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               3,
+               [
+                  "Power",
+                  "x",
+                  2
+               ],
+               [
+                  "Exp",
+                  [
+                     "Multiply",
+                     3,
+                     "x"
+                  ]
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Factor out x e^(3x): g'(x) = x e^(3x)(3x + 2).",
+         "mathjson": [
+            "Multiply",
+            "x",
+            [
+               "Add",
+               2,
+               [
+                  "Multiply",
+                  3,
+                  "x"
+               ]
+            ],
+            [
+               "Exp",
+               [
+                  "Multiply",
+                  3,
+                  "x"
+               ]
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Multiply",
+            6,
+            "x",
+            [
+               "Exp",
+               [
+                  "Multiply",
+                  3,
+                  "x"
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03006",
+         "violated_step": 0
+      },
+      {
+         "id": "B",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               [
+                  "Power",
+                  "x",
+                  2
+               ],
+               [
+                  "Exp",
+                  [
+                     "Multiply",
+                     3,
+                     "x"
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               2,
+               "x",
+               [
+                  "Exp",
+                  [
+                     "Multiply",
+                     3,
+                     "x"
+                  ]
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03001",
+         "violated_step": 2
+      },
+      {
+         "id": "C",
+         "value": [
+            "Multiply",
+            3,
+            [
+               "Power",
+               "x",
+               2
+            ],
+            [
+               "Exp",
+               [
+                  "Multiply",
+                  3,
+                  "x"
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03006",
+         "violated_step": 0
+      },
+      {
+         "id": "D",
+         "value": [
+            "Multiply",
+            "x",
+            [
+               "Add",
+               2,
+               [
+                  "Multiply",
+                  3,
+                  "x"
+               ]
+            ],
+            [
+               "Exp",
+               [
+                  "Multiply",
+                  3,
+                  "x"
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-03002",
+      "BC-SKL-03003",
+      "BC-SKL-03006"
+   ],
+   "parameter_draw": {
+      "polynomial_factor": "x^2",
+      "outer": "exp",
+      "inner": "3x",
+      "inner_coefficient": 3,
+      "enclosing_rule": "product"
+   },
+   "authored_on": "2026-09-23",
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review"
+}

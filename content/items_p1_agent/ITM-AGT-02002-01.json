@@ -1,0 +1,144 @@
+{
+   "id": "ITM-AGT-02002-01",
+   "archetype_id": "BC-QA-02002",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let g(x) = x^2 + 4x. Use the limit definition of the derivative, with increment h, to find the value of g'(3)."
+   },
+   "answer_key": {
+      "form": "numeric",
+      "mathjson": 10
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Write the difference quotient at 3: [(3 + h)^2 + 4(3 + h) - 21]/h, since g(3) = 21.",
+         "mathjson": [
+            "Divide",
+            [
+               "Subtract",
+               [
+                  "Add",
+                  [
+                     "Power",
+                     [
+                        "Add",
+                        3,
+                        "h"
+                     ],
+                     2
+                  ],
+                  [
+                     "Multiply",
+                     4,
+                     [
+                        "Add",
+                        3,
+                        "h"
+                     ]
+                  ]
+               ],
+               21
+            ],
+            "h"
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Expand: 9 + 6h + h^2 + 12 + 4h - 21 = 10h + h^2.",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               10,
+               "h"
+            ],
+            [
+               "Power",
+               "h",
+               2
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Divide out h, leaving 10 + h for h not equal to 0.",
+         "mathjson": [
+            "Add",
+            10,
+            "h"
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Let h approach 0, so g'(3) = 10.",
+         "mathjson": 10
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 4,
+         "is_key": false,
+         "error_path": "BC-ERR-02007",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               2,
+               "x"
+            ],
+            4
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02030",
+         "violated_step": 3
+      },
+      {
+         "id": "C",
+         "value": 10,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            10,
+            "h"
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02006",
+         "violated_step": 3
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02006",
+      "BC-SKL-02007",
+      "BC-SKL-02008",
+      "BC-SKL-02009",
+      "BC-SKL-02027"
+   ],
+   "parameter_draw": {
+      "rule": "x^2 + 4x",
+      "linear_coefficient": 4,
+      "point": 3,
+      "target": "value_at_point",
+      "form": "increment"
+   },
+   "authored_on": "2026-09-23",
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review"
+}

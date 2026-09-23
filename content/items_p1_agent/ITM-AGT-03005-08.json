@@ -1,0 +1,76 @@
+{
+   "id": "ITM-AGT-03005-08",
+   "archetype_id": "BC-QA-03005",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Consider the curve x^2 - xy + y^2 = 12, for which dy/dx = (2x - y)/(x - 2y). At the point P in the first quadrant the tangent line to the curve is vertical. What is the x-coordinate of P?"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 4
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "A vertical tangent needs the denominator to vanish: x - 2y = 0, so x = 2y.",
+         "mathjson": [
+            "Multiply",
+            2,
+            "y"
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Substitute x = 2y into the curve: 4y^2 - 2y^2 + y^2 = 3y^2 = 12, so y = 2 or y = -2.",
+         "mathjson": 2
+      },
+      {
+         "step": 3,
+         "text": "The first-quadrant candidate is (4, 2). The numerator there is 8 - 2 = 6, which is nonzero, so the tangent at (4, 2) is vertical and the x-coordinate of P is 4.",
+         "mathjson": 4
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 0,
+         "is_key": false,
+         "error_path": "BC-ERR-03013",
+         "violated_step": 2
+      },
+      {
+         "id": "B",
+         "value": 2,
+         "is_key": false,
+         "error_path": "BC-ERR-03012",
+         "violated_step": 0
+      },
+      {
+         "id": "C",
+         "value": 4,
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-09",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-03012",
+      "BC-SKL-03013",
+      "BC-SKL-03011"
+   ],
+   "parameter_draw": {
+      "curve": "x^2 - xy + y^2 = 12",
+      "direction": "vertical",
+      "quadrant": 1
+   },
+   "authored_on": "2026-09-23",
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review"
+}

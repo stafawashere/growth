@@ -1,0 +1,290 @@
+{
+   "id": "ITM-AGT-03004-09",
+   "archetype_id": "BC-QA-03004",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "The equation xy^2 + 3y = 2x^2 defines a curve. Which expression is equal to dy/dx on this curve?"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Divide",
+         [
+            "Subtract",
+            [
+               "Multiply",
+               4,
+               "x"
+            ],
+            [
+               "Power",
+               "y",
+               2
+            ]
+         ],
+         [
+            "Add",
+            [
+               "Multiply",
+               2,
+               "x",
+               "y"
+            ],
+            3
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Differentiate both sides with respect to x. The product rule on xy^2 gives y^2 + 2xy(dy/dx): y^2 + 2xy(dy/dx) + 3(dy/dx) = 4x.",
+         "mathjson": [
+            "Equal",
+            [
+               "Add",
+               [
+                  "Add",
+                  [
+                     "Multiply",
+                     2,
+                     "dydx",
+                     "x",
+                     "y"
+                  ],
+                  [
+                     "Multiply",
+                     3,
+                     "dydx"
+                  ]
+               ],
+               [
+                  "Power",
+                  "y",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               4,
+               "x"
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Collect the dy/dx terms: (2xy + 3)(dy/dx) = 4x - y^2.",
+         "mathjson": [
+            "Equal",
+            [
+               "Multiply",
+               [
+                  "Add",
+                  [
+                     "Multiply",
+                     2,
+                     "x",
+                     "y"
+                  ],
+                  3
+               ],
+               "dydx"
+            ],
+            [
+               "Subtract",
+               [
+                  "Multiply",
+                  4,
+                  "x"
+               ],
+               [
+                  "Power",
+                  "y",
+                  2
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Divide by 2xy + 3, so dy/dx = (4x - y^2)/(2xy + 3).",
+         "mathjson": [
+            "Divide",
+            [
+               "Subtract",
+               [
+                  "Multiply",
+                  4,
+                  "x"
+               ],
+               [
+                  "Power",
+                  "y",
+                  2
+               ]
+            ],
+            [
+               "Add",
+               [
+                  "Multiply",
+                  2,
+                  "x",
+                  "y"
+               ],
+               3
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Divide",
+            [
+               "Multiply",
+               4,
+               "x"
+            ],
+            [
+               "Add",
+               [
+                  "Multiply",
+                  2,
+                  "x",
+                  "y"
+               ],
+               3
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03008",
+         "violated_step": 0
+      },
+      {
+         "id": "B",
+         "value": [
+            "Divide",
+            [
+               "Subtract",
+               [
+                  "Multiply",
+                  4,
+                  "x"
+               ],
+               [
+                  "Power",
+                  "y",
+                  2
+               ]
+            ],
+            [
+               "Subtract",
+               [
+                  "Multiply",
+                  2,
+                  "x",
+                  "y"
+               ],
+               3
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03010",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Divide",
+            [
+               "Subtract",
+               [
+                  "Multiply",
+                  4,
+                  "x"
+               ],
+               [
+                  "Power",
+                  "y",
+                  2
+               ]
+            ],
+            [
+               "Add",
+               [
+                  "Multiply",
+                  2,
+                  "x",
+                  "y"
+               ],
+               3
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": [
+            "Negate",
+            [
+               "Divide",
+               [
+                  "Power",
+                  "y",
+                  2
+               ],
+               [
+                  "Add",
+                  [
+                     "Multiply",
+                     2,
+                     "x",
+                     "y"
+                  ],
+                  3
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03009",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-13",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-03007",
+      "BC-SKL-03008",
+      "BC-SKL-03009",
+      "BC-SKL-03010",
+      "BC-SKL-03011",
+      "BC-SKL-03014"
+   ],
+   "parameter_draw": {
+      "equation": "xy^2 + 3y = 2x^2",
+      "mixed_term": "xy^2",
+      "target": "dy/dx general"
+   },
+   "authored_on": "2026-09-23",
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review"
+}

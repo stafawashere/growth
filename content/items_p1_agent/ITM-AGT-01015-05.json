@@ -1,0 +1,117 @@
+{
+   "id": "ITM-AGT-01015-05",
+   "archetype_id": "BC-QA-01015",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let q(x) = (x^2 - 4) / (x^3 - 4x). On how many separate maximal intervals is q continuous?"
+   },
+   "answer_key": {
+      "form": "numeric",
+      "mathjson": 4
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Factor the denominator as x(x - 2)(x + 2), which is zero at x = -2, x = 0 and x = 2.",
+         "mathjson": [
+            "Multiply",
+            "x",
+            [
+               "Subtract",
+               "x",
+               2
+            ],
+            [
+               "Add",
+               "x",
+               2
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "q is rational, so it is continuous on its domain. Cancelling x^2 - 4 gives 1/x only where x is not -2 or 2, so those inputs stay excluded.",
+         "mathjson": [
+            "Divide",
+            1,
+            "x"
+         ]
+      },
+      {
+         "step": 3,
+         "text": "q is continuous on (-infinity, -2), (-2, 0), (0, 2) and (2, infinity).",
+         "mathjson": 2
+      },
+      {
+         "step": 4,
+         "text": "Those are four separate maximal intervals.",
+         "mathjson": 4
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 2,
+         "is_key": false,
+         "error_path": "BC-ERR-01031",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": 4,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": 3,
+         "is_key": false,
+         "error_path": "BC-ERR-01031",
+         "violated_step": 0
+      },
+      {
+         "id": "D",
+         "value": 1,
+         "is_key": false,
+         "error_path": "BC-ERR-01031",
+         "violated_step": 2
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-10",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "on"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-17",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-01046",
+      "BC-SKL-01047",
+      "BC-SKL-01048",
+      "BC-SKL-01049"
+   ],
+   "parameter_draw": {
+      "common_factor": "x^2 - 4",
+      "denominator_roots": [
+         -2,
+         0,
+         2
+      ]
+   },
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review",
+   "authored_on": "2026-09-23"
+}

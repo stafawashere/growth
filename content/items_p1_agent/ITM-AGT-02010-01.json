@@ -1,0 +1,313 @@
+{
+   "id": "ITM-AGT-02010-01",
+   "archetype_id": "BC-QA-02010",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let f(x) = 3csc x - 2cot x. Express f(x) as a single quotient of sine and cosine expressions and find f'(x)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Subtract",
+         [
+            "Multiply",
+            2,
+            [
+               "Power",
+               [
+                  "Csc",
+                  "x"
+               ],
+               2
+            ]
+         ],
+         [
+            "Multiply",
+            3,
+            [
+               "Csc",
+               "x"
+            ],
+            [
+               "Cot",
+               "x"
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Over the common denominator sin x, f(x) = (3 - 2cos x)/sin x.",
+         "mathjson": [
+            "Divide",
+            [
+               "Subtract",
+               3,
+               [
+                  "Multiply",
+                  2,
+                  [
+                     "Cos",
+                     "x"
+                  ]
+               ]
+            ],
+            [
+               "Sin",
+               "x"
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The quotient rule with numerator derivative 2sin x and denominator derivative cos x gives f'(x) = (2sin x sin x - (3 - 2cos x)cos x)/sin^2 x.",
+         "mathjson": [
+            "Divide",
+            [
+               "Subtract",
+               [
+                  "Multiply",
+                  2,
+                  [
+                     "Sin",
+                     "x"
+                  ],
+                  [
+                     "Sin",
+                     "x"
+                  ]
+               ],
+               [
+                  "Multiply",
+                  [
+                     "Subtract",
+                     3,
+                     [
+                        "Multiply",
+                        2,
+                        [
+                           "Cos",
+                           "x"
+                        ]
+                     ]
+                  ],
+                  [
+                     "Cos",
+                     "x"
+                  ]
+               ]
+            ],
+            [
+               "Power",
+               [
+                  "Sin",
+                  "x"
+               ],
+               2
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Collect 2sin^2 x + 2cos^2 x = 2 by the Pythagorean identity, so f'(x) = (2 - 3cos x)/sin^2 x.",
+         "mathjson": [
+            "Divide",
+            [
+               "Subtract",
+               2,
+               [
+                  "Multiply",
+                  3,
+                  [
+                     "Cos",
+                     "x"
+                  ]
+               ]
+            ],
+            [
+               "Power",
+               [
+                  "Sin",
+                  "x"
+               ],
+               2
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Split the fraction into 2/sin^2 x and -3cos x/sin^2 x, so f'(x) = 2csc^2 x - 3csc x cot x.",
+         "mathjson": [
+            "Subtract",
+            [
+               "Multiply",
+               2,
+               [
+                  "Power",
+                  [
+                     "Csc",
+                     "x"
+                  ],
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               3,
+               [
+                  "Csc",
+                  "x"
+               ],
+               [
+                  "Cot",
+                  "x"
+               ]
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               3,
+               [
+                  "Csc",
+                  "x"
+               ],
+               [
+                  "Cot",
+                  "x"
+               ]
+            ],
+            [
+               "Multiply",
+               2,
+               [
+                  "Power",
+                  [
+                     "Csc",
+                     "x"
+                  ],
+                  2
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02025",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Multiply",
+            2,
+            [
+               "Tan",
+               "x"
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02026",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Subtract",
+            [
+               "Multiply",
+               2,
+               [
+                  "Power",
+                  [
+                     "Csc",
+                     "x"
+                  ],
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               3,
+               [
+                  "Csc",
+                  "x"
+               ],
+               [
+                  "Cot",
+                  "x"
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": [
+            "Subtract",
+            [
+               "Negate",
+               [
+                  "Multiply",
+                  3,
+                  [
+                     "Csc",
+                     "x"
+                  ],
+                  [
+                     "Cot",
+                     "x"
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               2,
+               [
+                  "Power",
+                  [
+                     "Csc",
+                     "x"
+                  ],
+                  2
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02025",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02043",
+      "BC-SKL-02044",
+      "BC-SKL-02045",
+      "BC-SKL-02046"
+   ],
+   "parameter_draw": {
+      "function": "a csc x - b cot x",
+      "a": 3,
+      "b": 2
+   },
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review",
+   "authored_on": "2026-09-23"
+}

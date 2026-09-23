@@ -1,0 +1,204 @@
+{
+   "id": "ITM-AGT-02008-05",
+   "archetype_id": "BC-QA-02008",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let k(x) = sin(x)/(1 + cos(x)) on an interval where 1 + cos(x) is not zero. Which of the following is k'(x)?"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Divide",
+         1,
+         [
+            "Add",
+            1,
+            [
+               "Cos",
+               "x"
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Take N = sin(x) and D = 1 + cos(x), so N' = cos(x) and D' = -sin(x).",
+         "mathjson": [
+            "Cos",
+            "x"
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The quotient rule gives k'(x) = ((1 + cos(x)) cos(x) - sin(x)(-sin(x)))/(1 + cos(x))^2.",
+         "mathjson": [
+            "Divide",
+            [
+               "Subtract",
+               [
+                  "Multiply",
+                  [
+                     "Add",
+                     1,
+                     [
+                        "Cos",
+                        "x"
+                     ]
+                  ],
+                  [
+                     "Cos",
+                     "x"
+                  ]
+               ],
+               [
+                  "Multiply",
+                  [
+                     "Sin",
+                     "x"
+                  ],
+                  [
+                     "Negate",
+                     [
+                        "Sin",
+                        "x"
+                     ]
+                  ]
+               ]
+            ],
+            [
+               "Power",
+               [
+                  "Add",
+                  1,
+                  [
+                     "Cos",
+                     "x"
+                  ]
+               ],
+               2
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The numerator is cos(x) + cos^2(x) + sin^2(x) = cos(x) + 1, by the Pythagorean identity.",
+         "mathjson": [
+            "Divide",
+            [
+               "Add",
+               [
+                  "Cos",
+                  "x"
+               ],
+               1
+            ],
+            [
+               "Power",
+               [
+                  "Add",
+                  1,
+                  [
+                     "Cos",
+                     "x"
+                  ]
+               ],
+               2
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Cancel one factor of 1 + cos(x), so k'(x) = 1/(1 + cos(x)).",
+         "mathjson": [
+            "Divide",
+            1,
+            [
+               "Add",
+               1,
+               [
+                  "Cos",
+                  "x"
+               ]
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 1,
+         "is_key": false,
+         "error_path": "BC-ERR-02022",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Negate",
+            [
+               "Divide",
+               1,
+               [
+                  "Add",
+                  1,
+                  [
+                     "Cos",
+                     "x"
+                  ]
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02021",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Divide",
+            1,
+            [
+               "Add",
+               1,
+               [
+                  "Cos",
+                  "x"
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02036",
+      "BC-SKL-02038",
+      "BC-SKL-02039",
+      "BC-SKL-02040",
+      "BC-SKL-02042"
+   ],
+   "parameter_draw": {
+      "numerator": "sin(x)",
+      "denominator": "1 + cos(x)"
+   },
+   "authored_on": "2026-09-23",
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review"
+}

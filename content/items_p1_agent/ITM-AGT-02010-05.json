@@ -1,0 +1,238 @@
+{
+   "id": "ITM-AGT-02010-05",
+   "archetype_id": "BC-QA-02010",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let h(x) = csc x + 2cot x. Rewrite h(x) with sin x and cos x and find h'(pi/4)."
+   },
+   "answer_key": {
+      "form": "numeric",
+      "mathjson": [
+         "Subtract",
+         -4,
+         [
+            "Sqrt",
+            2
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Over the denominator sin x, h(x) = (1 + 2cos x)/sin x.",
+         "mathjson": [
+            "Divide",
+            [
+               "Add",
+               1,
+               [
+                  "Multiply",
+                  2,
+                  [
+                     "Cos",
+                     "x"
+                  ]
+               ]
+            ],
+            [
+               "Sin",
+               "x"
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The quotient rule gives h'(x) = (-2sin x sin x - (1 + 2cos x)cos x)/sin^2 x.",
+         "mathjson": [
+            "Divide",
+            [
+               "Subtract",
+               [
+                  "Multiply",
+                  -2,
+                  [
+                     "Sin",
+                     "x"
+                  ],
+                  [
+                     "Sin",
+                     "x"
+                  ]
+               ],
+               [
+                  "Multiply",
+                  [
+                     "Add",
+                     1,
+                     [
+                        "Multiply",
+                        2,
+                        [
+                           "Cos",
+                           "x"
+                        ]
+                     ]
+                  ],
+                  [
+                     "Cos",
+                     "x"
+                  ]
+               ]
+            ],
+            [
+               "Power",
+               [
+                  "Sin",
+                  "x"
+               ],
+               2
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The terms -2sin^2 x - 2cos^2 x equal -2 by the Pythagorean identity, so h'(x) = (-2 - cos x)/sin^2 x.",
+         "mathjson": [
+            "Divide",
+            [
+               "Subtract",
+               -2,
+               [
+                  "Cos",
+                  "x"
+               ]
+            ],
+            [
+               "Power",
+               [
+                  "Sin",
+                  "x"
+               ],
+               2
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "In reciprocal form, h'(x) = -csc x cot x - 2csc^2 x.",
+         "mathjson": [
+            "Subtract",
+            [
+               "Negate",
+               [
+                  "Multiply",
+                  [
+                     "Csc",
+                     "x"
+                  ],
+                  [
+                     "Cot",
+                     "x"
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               2,
+               [
+                  "Power",
+                  [
+                     "Csc",
+                     "x"
+                  ],
+                  2
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 5,
+         "text": "At x = pi/4, csc x = sqrt(2), cot x = 1 and csc^2 x = 2, so h'(pi/4) = -sqrt(2) - 4.",
+         "mathjson": [
+            "Subtract",
+            -4,
+            [
+               "Sqrt",
+               2
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Subtract",
+            [
+               "Sqrt",
+               2
+            ],
+            4
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02025",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Subtract",
+            4,
+            [
+               "Sqrt",
+               2
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02025",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": -2,
+         "is_key": false,
+         "error_path": "BC-ERR-02026",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": [
+            "Subtract",
+            -4,
+            [
+               "Sqrt",
+               2
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02043",
+      "BC-SKL-02044",
+      "BC-SKL-02045",
+      "BC-SKL-02046"
+   ],
+   "parameter_draw": {
+      "function": "a csc x + b cot x",
+      "a": 1,
+      "b": 2,
+      "evaluate_at": "pi/4"
+   },
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review",
+   "authored_on": "2026-09-23"
+}

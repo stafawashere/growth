@@ -1,0 +1,92 @@
+{
+   "id": "ITM-AGT-03008-07",
+   "archetype_id": "BC-QA-03008",
+   "variant_id": null,
+   "format": "short_answer",
+   "stem": {
+      "text": "The function y = f(x) satisfies dy/dx = 2x - y. Write d^2y/dx^2 in terms of x and y only."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         2,
+         [
+            "Multiply",
+            -2,
+            "x"
+         ],
+         "y"
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Differentiate both sides with respect to x: d^2y/dx^2 = 2 - dy/dx.",
+         "mathjson": [
+            "Subtract",
+            2,
+            [
+               "Subtract",
+               [
+                  "Multiply",
+                  2,
+                  "x"
+               ],
+               "y"
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Replace dy/dx by 2x - y: d^2y/dx^2 = 2 - (2x - y).",
+         "mathjson": [
+            "Subtract",
+            2,
+            [
+               "Subtract",
+               [
+                  "Multiply",
+                  2,
+                  "x"
+               ],
+               "y"
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Distribute the negative sign: d^2y/dx^2 = 2 - 2x + y.",
+         "mathjson": [
+            "Add",
+            2,
+            [
+               "Multiply",
+               -2,
+               "x"
+            ],
+            "y"
+         ]
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-04",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-03030",
+      "BC-SKL-03031",
+      "BC-SKL-03032",
+      "BC-SKL-03033",
+      "BC-SKL-03034"
+   ],
+   "parameter_draw": {
+      "differential_equation": "2x - y"
+   },
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review",
+   "authored_on": "2026-09-23"
+}

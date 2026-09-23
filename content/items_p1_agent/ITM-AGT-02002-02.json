@@ -1,0 +1,132 @@
+{
+   "id": "ITM-AGT-02002-02",
+   "archetype_id": "BC-QA-02002",
+   "variant_id": null,
+   "format": "short_answer",
+   "stem": {
+      "text": "Let p(x) = 5 - 2x^2. Using the limit of the difference quotient [p(x + h) - p(x)]/h as h approaches 0, find p'(x)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Multiply",
+         -4,
+         "x"
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Write the difference quotient: [5 - 2(x + h)^2 - (5 - 2x^2)]/h.",
+         "mathjson": [
+            "Divide",
+            [
+               "Subtract",
+               [
+                  "Subtract",
+                  5,
+                  [
+                     "Multiply",
+                     2,
+                     [
+                        "Power",
+                        [
+                           "Add",
+                           "x",
+                           "h"
+                        ],
+                        2
+                     ]
+                  ]
+               ],
+               [
+                  "Subtract",
+                  5,
+                  [
+                     "Multiply",
+                     2,
+                     [
+                        "Power",
+                        "x",
+                        2
+                     ]
+                  ]
+               ]
+            ],
+            "h"
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Expand -2(x + h)^2 = -2x^2 - 4xh - 2h^2; the constants and the -2x^2 terms cancel, leaving -4xh - 2h^2.",
+         "mathjson": [
+            "Subtract",
+            [
+               "Multiply",
+               -4,
+               "x",
+               "h"
+            ],
+            [
+               "Multiply",
+               2,
+               [
+                  "Power",
+                  "h",
+                  2
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Divide out h, leaving -4x - 2h for h not equal to 0.",
+         "mathjson": [
+            "Subtract",
+            [
+               "Multiply",
+               -4,
+               "x"
+            ],
+            [
+               "Multiply",
+               2,
+               "h"
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Let h approach 0, so p'(x) = -4x.",
+         "mathjson": [
+            "Multiply",
+            -4,
+            "x"
+         ]
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02006",
+      "BC-SKL-02007",
+      "BC-SKL-02008",
+      "BC-SKL-02009",
+      "BC-SKL-02027"
+   ],
+   "parameter_draw": {
+      "rule": "5 - 2x^2",
+      "constant": 5,
+      "quadratic_coefficient": -2,
+      "target": "derivative_function",
+      "form": "increment"
+   },
+   "authored_on": "2026-09-23",
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review"
+}

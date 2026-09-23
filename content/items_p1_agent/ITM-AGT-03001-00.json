@@ -1,0 +1,235 @@
+{
+   "id": "ITM-AGT-03001-00",
+   "archetype_id": "BC-QA-03001",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let f(x) = sin^3(5x), meaning (sin(5x))^3. Which of the following is f'(x)?"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Multiply",
+         15,
+         [
+            "Power",
+            [
+               "Sin",
+               [
+                  "Multiply",
+                  5,
+                  "x"
+               ]
+            ],
+            2
+         ],
+         [
+            "Cos",
+            [
+               "Multiply",
+               5,
+               "x"
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Read the layers from the outside in: the cube, then sine, then the linear inner function 5x. The cube contributes 3 sin^2(5x).",
+         "mathjson": [
+            "Multiply",
+            3,
+            [
+               "Power",
+               [
+                  "Sin",
+                  [
+                     "Multiply",
+                     5,
+                     "x"
+                  ]
+               ],
+               2
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The sine layer contributes its derivative evaluated at 5x, which is cos(5x).",
+         "mathjson": [
+            "Cos",
+            [
+               "Multiply",
+               5,
+               "x"
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The innermost layer 5x contributes its derivative, 5.",
+         "mathjson": 5
+      },
+      {
+         "step": 4,
+         "text": "Multiply the three factors: f'(x) = 3 sin^2(5x) * cos(5x) * 5 = 15 sin^2(5x) cos(5x).",
+         "mathjson": [
+            "Multiply",
+            15,
+            [
+               "Power",
+               [
+                  "Sin",
+                  [
+                     "Multiply",
+                     5,
+                     "x"
+                  ]
+               ],
+               2
+            ],
+            [
+               "Cos",
+               [
+                  "Multiply",
+                  5,
+                  "x"
+               ]
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Multiply",
+            3,
+            [
+               "Power",
+               [
+                  "Sin",
+                  [
+                     "Multiply",
+                     5,
+                     "x"
+                  ]
+               ],
+               2
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03001",
+         "violated_step": 2
+      },
+      {
+         "id": "B",
+         "value": [
+            "Multiply",
+            15,
+            [
+               "Power",
+               [
+                  "Sin",
+                  [
+                     "Multiply",
+                     5,
+                     "x"
+                  ]
+               ],
+               2
+            ],
+            [
+               "Cos",
+               [
+                  "Multiply",
+                  5,
+                  "x"
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": [
+            "Multiply",
+            3,
+            [
+               "Power",
+               [
+                  "Sin",
+                  [
+                     "Multiply",
+                     5,
+                     "x"
+                  ]
+               ],
+               2
+            ],
+            [
+               "Cos",
+               [
+                  "Multiply",
+                  5,
+                  "x"
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03002",
+         "violated_step": 3
+      },
+      {
+         "id": "D",
+         "value": [
+            "Multiply",
+            15,
+            [
+               "Power",
+               [
+                  "Sin",
+                  [
+                     "Multiply",
+                     5,
+                     "x"
+                  ]
+               ],
+               2
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03002",
+         "violated_step": 3
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-03002",
+      "BC-SKL-03003",
+      "BC-SKL-03006"
+   ],
+   "parameter_draw": {
+      "outer": "cube",
+      "middle": "sin",
+      "inner": "5x",
+      "inner_coefficient": 5,
+      "power": 3,
+      "layers": 3
+   },
+   "authored_on": "2026-09-23",
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review"
+}

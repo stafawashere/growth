@@ -7,6 +7,11 @@ distractor-path property, without touching the database or writing anywhere. The
 runs this over their own files before handing them over, so a malformed record shows up
 here instead of turning a gate red later.
 
+A record whose provenance model is not operator (an agent draft, app/items/ingest.py
+provenance_model) is checked like any other and counted under items per archetype, but only
+operator-authored records are counted toward exit criterion 7, per the operator's ruling of
+2026-09-23 in BUILD-LEDGER.md.
+
 Usage: python3 tools/check_items.py <directory>
 """
 import sys
@@ -16,7 +21,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from app.content.loader import LoaderError, load_snapshot
 from app.items.distractor_paths import distractor_path_violations, error_ids_for_skills
-from app.items.ingest import load_records, run_checks
+from app.items.ingest import is_operator_authored, load_records, run_checks
 from tools.build_p1_fixture import P1_ARCHETYPES
 
 DATA_ROOT = Path(__file__).resolve().parents[1] / "data"
@@ -48,6 +53,7 @@ def record_violations(record, active_error_ids):
 def check_directory(directory, active_error_ids):
    records = load_records(directory)
    archetype_counts = {archetype_id: 0 for archetype_id in P1_ARCHETYPES}
+   operator_archetype_counts = {archetype_id: 0 for archetype_id in P1_ARCHETYPES}
    clean_ids = []
    violations_by_id = {}
 
@@ -58,6 +64,11 @@ def check_directory(directory, active_error_ids):
 
       if is_a_p1_archetype:
          archetype_counts[archetype_id] += 1
+
+      counts_toward_exit_criterion_7 = is_a_p1_archetype and is_operator_authored(record)
+
+      if counts_toward_exit_criterion_7:
+         operator_archetype_counts[archetype_id] += 1
 
       violations = record_violations(record, active_error_ids)
       record_is_clean = len(violations) == 0
@@ -72,6 +83,7 @@ def check_directory(directory, active_error_ids):
       "clean_ids": clean_ids,
       "violations_by_id": violations_by_id,
       "archetype_counts": archetype_counts,
+      "operator_archetype_counts": operator_archetype_counts,
    }
 
 
@@ -91,6 +103,12 @@ def print_report(report):
 
    for archetype_id in P1_ARCHETYPES:
       print(f"  {archetype_id}: {report['archetype_counts'][archetype_id]}")
+
+   print()
+   print("operator-authored items per archetype (exit criterion 7, gates 17 and 30 count only these):")
+
+   for archetype_id in P1_ARCHETYPES:
+      print(f"  {archetype_id}: {report['operator_archetype_counts'][archetype_id]}")
 
 
 def main(argv):

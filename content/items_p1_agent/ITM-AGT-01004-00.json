@@ -1,0 +1,113 @@
+{
+   "id": "ITM-AGT-01004-00",
+   "archetype_id": "BC-QA-01004",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Evaluate \\( \\lim_{x \\to 3} \\dfrac{x^2 - x - 6}{x^2 - 9} \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         5,
+         6
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Substituting x = 3 gives 9 - 3 - 6 = 0 in the numerator and 9 - 9 = 0 in the denominator, so the quotient is the indeterminate form zero over zero and must be rewritten.",
+         "mathjson": 0
+      },
+      {
+         "step": 2,
+         "text": "Factor both parts: x^2 - x - 6 = (x - 3)(x + 2) and x^2 - 9 = (x - 3)(x + 3). For x not equal to 3 the common factor x - 3 divides out, leaving (x + 2)/(x + 3).",
+         "mathjson": [
+            "Divide",
+            [
+               "Add",
+               "x",
+               2
+            ],
+            [
+               "Add",
+               "x",
+               3
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The simplified quotient is continuous at 3, so the limit is (3 + 2)/(3 + 3) = 5/6.",
+         "mathjson": [
+            "Rational",
+            5,
+            6
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Rational",
+            5,
+            6
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": 0,
+         "is_key": false,
+         "error_path": "BC-ERR-01008",
+         "violated_step": 0
+      },
+      {
+         "id": "C",
+         "value": 1,
+         "is_key": false,
+         "error_path": "BC-ERR-01010",
+         "violated_step": 2
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-10",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-17",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-01024",
+      "BC-SKL-01025",
+      "BC-SKL-01026",
+      "BC-SKL-01027",
+      "BC-SKL-01028"
+   ],
+   "parameter_draw": {
+      "target": 3,
+      "numerator_roots": [
+         3,
+         -2
+      ],
+      "denominator_roots": [
+         3,
+         -3
+      ],
+      "rewrite": "factoring"
+   },
+   "authored_on": "2026-09-23",
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review"
+}

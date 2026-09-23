@@ -1,0 +1,347 @@
+{
+   "id": "ITM-AGT-02010-06",
+   "archetype_id": "BC-QA-02010",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let f(x) = x^2 cot x. Write f(x) as a quotient in sin x and cos x and find f'(x)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Subtract",
+         [
+            "Multiply",
+            2,
+            "x",
+            [
+               "Cot",
+               "x"
+            ]
+         ],
+         [
+            "Multiply",
+            [
+               "Power",
+               "x",
+               2
+            ],
+            [
+               "Power",
+               [
+                  "Csc",
+                  "x"
+               ],
+               2
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Rewrite the function as f(x) = x^2 cos x/sin x.",
+         "mathjson": [
+            "Divide",
+            [
+               "Multiply",
+               [
+                  "Power",
+                  "x",
+                  2
+               ],
+               [
+                  "Cos",
+                  "x"
+               ]
+            ],
+            [
+               "Sin",
+               "x"
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The numerator x^2 cos x has derivative 2x cos x - x^2 sin x, so the quotient rule gives f'(x) = ((2x cos x - x^2 sin x)sin x - x^2 cos x cos x)/sin^2 x.",
+         "mathjson": [
+            "Divide",
+            [
+               "Subtract",
+               [
+                  "Multiply",
+                  [
+                     "Subtract",
+                     [
+                        "Multiply",
+                        2,
+                        "x",
+                        [
+                           "Cos",
+                           "x"
+                        ]
+                     ],
+                     [
+                        "Multiply",
+                        [
+                           "Power",
+                           "x",
+                           2
+                        ],
+                        [
+                           "Sin",
+                           "x"
+                        ]
+                     ]
+                  ],
+                  [
+                     "Sin",
+                     "x"
+                  ]
+               ],
+               [
+                  "Multiply",
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ],
+                  [
+                     "Cos",
+                     "x"
+                  ],
+                  [
+                     "Cos",
+                     "x"
+                  ]
+               ]
+            ],
+            [
+               "Power",
+               [
+                  "Sin",
+                  "x"
+               ],
+               2
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The terms -x^2 sin^2 x - x^2 cos^2 x combine to -x^2 by the Pythagorean identity, so f'(x) = (2x sin x cos x - x^2)/sin^2 x.",
+         "mathjson": [
+            "Divide",
+            [
+               "Subtract",
+               [
+                  "Multiply",
+                  2,
+                  "x",
+                  [
+                     "Sin",
+                     "x"
+                  ],
+                  [
+                     "Cos",
+                     "x"
+                  ]
+               ],
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Power",
+               [
+                  "Sin",
+                  "x"
+               ],
+               2
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Splitting the fraction gives f'(x) = 2x cot x - x^2 csc^2 x.",
+         "mathjson": [
+            "Subtract",
+            [
+               "Multiply",
+               2,
+               "x",
+               [
+                  "Cot",
+                  "x"
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Power",
+                  "x",
+                  2
+               ],
+               [
+                  "Power",
+                  [
+                     "Csc",
+                     "x"
+                  ],
+                  2
+               ]
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               2,
+               "x",
+               [
+                  "Cot",
+                  "x"
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Power",
+                  "x",
+                  2
+               ],
+               [
+                  "Power",
+                  [
+                     "Csc",
+                     "x"
+                  ],
+                  2
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02025",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Subtract",
+            [
+               "Multiply",
+               2,
+               "x",
+               [
+                  "Cot",
+                  "x"
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Power",
+                  "x",
+                  2
+               ],
+               [
+                  "Power",
+                  [
+                     "Csc",
+                     "x"
+                  ],
+                  2
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": [
+            "Subtract",
+            [
+               "Multiply",
+               2,
+               "x",
+               [
+                  "Cot",
+                  "x"
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Power",
+                  "x",
+                  2
+               ],
+               [
+                  "Tan",
+                  "x"
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02026",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": [
+            "Subtract",
+            [
+               "Multiply",
+               2,
+               "x"
+            ],
+            [
+               "Multiply",
+               [
+                  "Power",
+                  "x",
+                  2
+               ],
+               [
+                  "Tan",
+                  "x"
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02026",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02043",
+      "BC-SKL-02044",
+      "BC-SKL-02045",
+      "BC-SKL-02046"
+   ],
+   "parameter_draw": {
+      "function": "x^n cot x",
+      "n": 2
+   },
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review",
+   "authored_on": "2026-09-23"
+}

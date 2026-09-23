@@ -1,0 +1,136 @@
+{
+   "id": "ITM-AGT-02011-03",
+   "archetype_id": "BC-QA-02011",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let k(x) = sqrt(x + 10). The line tangent to the graph of k at the point where x = -6 is used to approximate k(-5.6). What is this approximation?"
+   },
+   "answer_key": {
+      "form": "numeric",
+      "mathjson": [
+         "Rational",
+         21,
+         10
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "By the chain rule, k'(x) = 1 / (2 sqrt(x + 10)).",
+         "mathjson": [
+            "Divide",
+            1,
+            [
+               "Multiply",
+               2,
+               [
+                  "Sqrt",
+                  [
+                     "Add",
+                     "x",
+                     10
+                  ]
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The slope is k'(-6) = 1 / (2 times 2) = 1/4.",
+         "mathjson": [
+            "Rational",
+            1,
+            4
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The height is k(-6) = sqrt(4) = 2, so the point of tangency is (-6, 2).",
+         "mathjson": 2
+      },
+      {
+         "step": 4,
+         "text": "The tangent line is y = 2 + (1/4)(x + 6).",
+         "mathjson": [
+            "Add",
+            2,
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  4
+               ],
+               [
+                  "Add",
+                  "x",
+                  6
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 5,
+         "text": "At x = -5.6 the line gives 2 + (1/4)(0.4) = 2.1.",
+         "mathjson": [
+            "Rational",
+            21,
+            10
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Rational",
+            21,
+            10
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            14,
+            5
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02027",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Rational",
+            41,
+            20
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02028",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02012",
+      "BC-SKL-02013"
+   ],
+   "parameter_draw": {
+      "function": "sqrt(x + 10)",
+      "input": -6,
+      "approximate_at": -5.6
+   },
+   "authored_on": "2026-09-23",
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review"
+}

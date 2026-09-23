@@ -1,0 +1,263 @@
+{
+   "id": "ITM-AGT-02006-01",
+   "archetype_id": "BC-QA-02006",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let g(x) = 3x^2 + 6sqrt(x) - 4. Which of the following is g'(x)?"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Multiply",
+            6,
+            "x"
+         ],
+         [
+            "Multiply",
+            3,
+            [
+               "Power",
+               "x",
+               [
+                  "Rational",
+                  -1,
+                  2
+               ]
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Rewrite the radical as a power: g(x) = 3x^2 + 6x^(1/2) - 4.",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               6,
+               [
+                  "Power",
+                  "x",
+                  [
+                     "Rational",
+                     1,
+                     2
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               3,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            -4
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Differentiate term by term: 3(2x) + 6((1/2)x^(-1/2)) + 0.",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               6,
+               "x"
+            ],
+            [
+               "Multiply",
+               3,
+               [
+                  "Power",
+                  "x",
+                  [
+                     "Rational",
+                     -1,
+                     2
+                  ]
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "So g'(x) = 6x + 3x^(-1/2), which is 6x + 3/sqrt(x).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               6,
+               "x"
+            ],
+            [
+               "Multiply",
+               3,
+               [
+                  "Power",
+                  "x",
+                  [
+                     "Rational",
+                     -1,
+                     2
+                  ]
+               ]
+            ]
+         ]
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02025",
+      "BC-SKL-02026",
+      "BC-SKL-02028",
+      "BC-SKL-02029",
+      "BC-SKL-02030",
+      "BC-SKL-02031"
+   ],
+   "parameter_draw": {
+      "coefficients": [
+         3,
+         6,
+         -4
+      ],
+      "exponents": [
+         "2",
+         "1/2",
+         "0"
+      ]
+   },
+   "options": [
+      {
+         "id": "A",
+         "text": "3x + 6/sqrt(x)",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               3,
+               "x"
+            ],
+            [
+               "Multiply",
+               6,
+               [
+                  "Power",
+                  "x",
+                  [
+                     "Rational",
+                     -1,
+                     2
+                  ]
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02015",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "text": "6sqrt(x) + 6x",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               6,
+               [
+                  "Power",
+                  "x",
+                  [
+                     "Rational",
+                     1,
+                     2
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               6,
+               "x"
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02017",
+         "violated_step": 0
+      },
+      {
+         "id": "C",
+         "text": "6x + 3/sqrt(x)",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               6,
+               "x"
+            ],
+            [
+               "Multiply",
+               3,
+               [
+                  "Power",
+                  "x",
+                  [
+                     "Rational",
+                     -1,
+                     2
+                  ]
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "text": "6x - 4 + 3/sqrt(x)",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               6,
+               "x"
+            ],
+            -4,
+            [
+               "Multiply",
+               3,
+               [
+                  "Power",
+                  "x",
+                  [
+                     "Rational",
+                     -1,
+                     2
+                  ]
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02016",
+         "violated_step": 1
+      }
+   ],
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review",
+   "authored_on": "2026-09-23"
+}

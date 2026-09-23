@@ -1,0 +1,131 @@
+{
+   "id": "ITM-AGT-03008-05",
+   "archetype_id": "BC-QA-03008",
+   "variant_id": null,
+   "format": "short_answer",
+   "stem": {
+      "text": "Let h(x) = x^2 e^x. Find h'''(x)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Multiply",
+         [
+            "Add",
+            [
+               "Power",
+               "x",
+               2
+            ],
+            [
+               "Multiply",
+               6,
+               "x"
+            ],
+            6
+         ],
+         [
+            "Exp",
+            "x"
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "h'(x) = 2x e^x + x^2 e^x = (x^2 + 2x) e^x.",
+         "mathjson": [
+            "Multiply",
+            [
+               "Add",
+               [
+                  "Power",
+                  "x",
+                  2
+               ],
+               [
+                  "Multiply",
+                  2,
+                  "x"
+               ]
+            ],
+            [
+               "Exp",
+               "x"
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "h''(x) = (2x + 2) e^x + (x^2 + 2x) e^x = (x^2 + 4x + 2) e^x.",
+         "mathjson": [
+            "Multiply",
+            [
+               "Add",
+               [
+                  "Power",
+                  "x",
+                  2
+               ],
+               [
+                  "Multiply",
+                  4,
+                  "x"
+               ],
+               2
+            ],
+            [
+               "Exp",
+               "x"
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "h'''(x) = (2x + 4) e^x + (x^2 + 4x + 2) e^x = (x^2 + 6x + 6) e^x.",
+         "mathjson": [
+            "Multiply",
+            [
+               "Add",
+               [
+                  "Power",
+                  "x",
+                  2
+               ],
+               [
+                  "Multiply",
+                  6,
+                  "x"
+               ],
+               6
+            ],
+            [
+               "Exp",
+               "x"
+            ]
+         ]
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-04",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-03030",
+      "BC-SKL-03031",
+      "BC-SKL-03032",
+      "BC-SKL-03033",
+      "BC-SKL-03034"
+   ],
+   "parameter_draw": {
+      "order": 3,
+      "polynomial_factor": "x^2",
+      "exponential_factor": "e^x"
+   },
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review",
+   "authored_on": "2026-09-23"
+}

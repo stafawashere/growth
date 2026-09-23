@@ -1,0 +1,373 @@
+{
+   "id": "ITM-AGT-03004-00",
+   "archetype_id": "BC-QA-03004",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "A curve is defined by x^2 + 4xy + y^3 = 10. Find dy/dx in terms of x and y."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Negate",
+         [
+            "Divide",
+            [
+               "Add",
+               [
+                  "Multiply",
+                  2,
+                  "x"
+               ],
+               [
+                  "Multiply",
+                  4,
+                  "y"
+               ]
+            ],
+            [
+               "Add",
+               [
+                  "Multiply",
+                  4,
+                  "x"
+               ],
+               [
+                  "Multiply",
+                  3,
+                  [
+                     "Power",
+                     "y",
+                     2
+                  ]
+               ]
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Differentiate every term with respect to x, using the product rule on 4xy and attaching dy/dx to each y term: 2x + 4y + 4x(dy/dx) + 3y^2(dy/dx) = 0.",
+         "mathjson": [
+            "Equal",
+            [
+               "Add",
+               [
+                  "Add",
+                  [
+                     "Add",
+                     [
+                        "Multiply",
+                        4,
+                        "dydx",
+                        "x"
+                     ],
+                     [
+                        "Multiply",
+                        3,
+                        "dydx",
+                        [
+                           "Power",
+                           "y",
+                           2
+                        ]
+                     ]
+                  ],
+                  [
+                     "Multiply",
+                     2,
+                     "x"
+                  ]
+               ],
+               [
+                  "Multiply",
+                  4,
+                  "y"
+               ]
+            ],
+            0
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Keep the dy/dx terms on the left and move the rest across: (4x + 3y^2)(dy/dx) = -2x - 4y.",
+         "mathjson": [
+            "Equal",
+            [
+               "Multiply",
+               [
+                  "Add",
+                  [
+                     "Multiply",
+                     4,
+                     "x"
+                  ],
+                  [
+                     "Multiply",
+                     3,
+                     [
+                        "Power",
+                        "y",
+                        2
+                     ]
+                  ]
+               ],
+               "dydx"
+            ],
+            [
+               "Subtract",
+               [
+                  "Negate",
+                  [
+                     "Multiply",
+                     2,
+                     "x"
+                  ]
+               ],
+               [
+                  "Multiply",
+                  4,
+                  "y"
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Divide by 4x + 3y^2, so dy/dx = -(2x + 4y)/(4x + 3y^2).",
+         "mathjson": [
+            "Negate",
+            [
+               "Divide",
+               [
+                  "Add",
+                  [
+                     "Multiply",
+                     2,
+                     "x"
+                  ],
+                  [
+                     "Multiply",
+                     4,
+                     "y"
+                  ]
+               ],
+               [
+                  "Add",
+                  [
+                     "Multiply",
+                     4,
+                     "x"
+                  ],
+                  [
+                     "Multiply",
+                     3,
+                     [
+                        "Power",
+                        "y",
+                        2
+                     ]
+                  ]
+               ]
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Negate",
+            [
+               "Divide",
+               [
+                  "Add",
+                  [
+                     "Add",
+                     [
+                        "Multiply",
+                        2,
+                        "x"
+                     ],
+                     [
+                        "Multiply",
+                        3,
+                        [
+                           "Power",
+                           "y",
+                           2
+                        ]
+                     ]
+                  ],
+                  [
+                     "Multiply",
+                     4,
+                     "y"
+                  ]
+               ],
+               [
+                  "Multiply",
+                  4,
+                  "x"
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03007",
+         "violated_step": 0
+      },
+      {
+         "id": "B",
+         "value": [
+            "Negate",
+            [
+               "Divide",
+               [
+                  "Add",
+                  [
+                     "Multiply",
+                     2,
+                     "x"
+                  ],
+                  [
+                     "Multiply",
+                     4,
+                     "y"
+                  ]
+               ],
+               [
+                  "Add",
+                  [
+                     "Multiply",
+                     4,
+                     "x"
+                  ],
+                  [
+                     "Multiply",
+                     3,
+                     [
+                        "Power",
+                        "y",
+                        2
+                     ]
+                  ]
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": [
+            "Negate",
+            [
+               "Divide",
+               [
+                  "Multiply",
+                  2,
+                  "x"
+               ],
+               [
+                  "Add",
+                  [
+                     "Multiply",
+                     4,
+                     "x"
+                  ],
+                  [
+                     "Multiply",
+                     3,
+                     [
+                        "Power",
+                        "y",
+                        2
+                     ]
+                  ]
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03008",
+         "violated_step": 0
+      },
+      {
+         "id": "D",
+         "value": [
+            "Negate",
+            [
+               "Divide",
+               [
+                  "Add",
+                  [
+                     "Multiply",
+                     2,
+                     "x"
+                  ],
+                  [
+                     "Multiply",
+                     4,
+                     "y"
+                  ]
+               ],
+               [
+                  "Subtract",
+                  [
+                     "Multiply",
+                     4,
+                     "x"
+                  ],
+                  [
+                     "Multiply",
+                     3,
+                     [
+                        "Power",
+                        "y",
+                        2
+                     ]
+                  ]
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03010",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-13",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-03007",
+      "BC-SKL-03008",
+      "BC-SKL-03009",
+      "BC-SKL-03010",
+      "BC-SKL-03011",
+      "BC-SKL-03014"
+   ],
+   "parameter_draw": {
+      "equation": "x^2 + 4xy + y^3 = 10",
+      "mixed_term": "4xy",
+      "target": "dy/dx general"
+   },
+   "authored_on": "2026-09-23",
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review"
+}

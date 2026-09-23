@@ -1,0 +1,161 @@
+{
+   "id": "ITM-AGT-02006-09",
+   "archetype_id": "BC-QA-02006",
+   "variant_id": null,
+   "format": "short_answer",
+   "stem": {
+      "text": "Let p(s) = 3/s^4 - 10(fifth root of s^2) + 2 for s > 0. Find p'(s)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Multiply",
+            -12,
+            [
+               "Power",
+               "s",
+               -5
+            ]
+         ],
+         [
+            "Multiply",
+            -4,
+            [
+               "Power",
+               "s",
+               [
+                  "Rational",
+                  -3,
+                  5
+               ]
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Rewrite the reciprocal and the radical as powers: p(s) = 3s^(-4) - 10s^(2/5) + 2.",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               -10,
+               [
+                  "Power",
+                  "s",
+                  [
+                     "Rational",
+                     2,
+                     5
+                  ]
+               ]
+            ],
+            2,
+            [
+               "Multiply",
+               3,
+               [
+                  "Power",
+                  "s",
+                  -4
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Differentiate term by term: 3(-4)s^(-5) - 10(2/5)s^(-3/5) + 0.",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               -12,
+               [
+                  "Power",
+                  "s",
+                  -5
+               ]
+            ],
+            [
+               "Multiply",
+               -4,
+               [
+                  "Power",
+                  "s",
+                  [
+                     "Rational",
+                     -3,
+                     5
+                  ]
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "So p'(s) = -12s^(-5) - 4s^(-3/5), with both terms negative.",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               -12,
+               [
+                  "Power",
+                  "s",
+                  -5
+               ]
+            ],
+            [
+               "Multiply",
+               -4,
+               [
+                  "Power",
+                  "s",
+                  [
+                     "Rational",
+                     -3,
+                     5
+                  ]
+               ]
+            ]
+         ]
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02025",
+      "BC-SKL-02026",
+      "BC-SKL-02028",
+      "BC-SKL-02029",
+      "BC-SKL-02030",
+      "BC-SKL-02031"
+   ],
+   "parameter_draw": {
+      "coefficients": [
+         3,
+         -10,
+         2
+      ],
+      "exponents": [
+         "-4",
+         "2/5",
+         "0"
+      ]
+   },
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review",
+   "authored_on": "2026-09-23"
+}

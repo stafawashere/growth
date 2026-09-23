@@ -1,0 +1,178 @@
+{
+   "id": "ITM-AGT-03004-01",
+   "archetype_id": "BC-QA-03004",
+   "variant_id": null,
+   "format": "short_answer",
+   "stem": {
+      "text": "The relation y sin x + y^2 = 4x defines y implicitly as a function of x. Find dy/dx."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Divide",
+         [
+            "Subtract",
+            4,
+            [
+               "Multiply",
+               "y",
+               [
+                  "Cos",
+                  "x"
+               ]
+            ]
+         ],
+         [
+            "Add",
+            [
+               "Multiply",
+               2,
+               "y"
+            ],
+            [
+               "Sin",
+               "x"
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Differentiate both sides with respect to x. The product rule on y sin x gives (dy/dx) sin x + y cos x, and y^2 gives 2y(dy/dx): (dy/dx) sin x + y cos x + 2y(dy/dx) = 4.",
+         "mathjson": [
+            "Equal",
+            [
+               "Add",
+               [
+                  "Add",
+                  [
+                     "Multiply",
+                     2,
+                     "dydx",
+                     "y"
+                  ],
+                  [
+                     "Multiply",
+                     "dydx",
+                     [
+                        "Sin",
+                        "x"
+                     ]
+                  ]
+               ],
+               [
+                  "Multiply",
+                  "y",
+                  [
+                     "Cos",
+                     "x"
+                  ]
+               ]
+            ],
+            4
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Collect the dy/dx terms: (sin x + 2y)(dy/dx) = 4 - y cos x.",
+         "mathjson": [
+            "Equal",
+            [
+               "Multiply",
+               [
+                  "Add",
+                  [
+                     "Multiply",
+                     2,
+                     "y"
+                  ],
+                  [
+                     "Sin",
+                     "x"
+                  ]
+               ],
+               "dydx"
+            ],
+            [
+               "Subtract",
+               4,
+               [
+                  "Multiply",
+                  "y",
+                  [
+                     "Cos",
+                     "x"
+                  ]
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Divide by sin x + 2y, so dy/dx = (4 - y cos x)/(sin x + 2y).",
+         "mathjson": [
+            "Divide",
+            [
+               "Subtract",
+               4,
+               [
+                  "Multiply",
+                  "y",
+                  [
+                     "Cos",
+                     "x"
+                  ]
+               ]
+            ],
+            [
+               "Add",
+               [
+                  "Multiply",
+                  2,
+                  "y"
+               ],
+               [
+                  "Sin",
+                  "x"
+               ]
+            ]
+         ]
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-13",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-03007",
+      "BC-SKL-03008",
+      "BC-SKL-03009",
+      "BC-SKL-03010",
+      "BC-SKL-03011",
+      "BC-SKL-03014"
+   ],
+   "parameter_draw": {
+      "equation": "y sin x + y^2 = 4x",
+      "mixed_term": "y sin x",
+      "target": "dy/dx general"
+   },
+   "authored_on": "2026-09-23",
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review"
+}

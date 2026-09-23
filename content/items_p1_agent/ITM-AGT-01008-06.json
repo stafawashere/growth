@@ -1,0 +1,76 @@
+{
+   "id": "ITM-AGT-01008-06",
+   "archetype_id": "BC-QA-01008",
+   "variant_id": null,
+   "format": "short_answer",
+   "stem": {
+      "text": "The function m is defined by m(x) = (x^2 - 16)/(x - 4) for x != 4 and m(4) = 2k + 2, where k is a constant. Find the value of k for which m is continuous at x = 4."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 3
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "For x != 4, (x^2 - 16)/(x - 4) = x + 4, so the limit of m(x) as x approaches 4 is 8.",
+         "mathjson": 8
+      },
+      {
+         "step": 2,
+         "text": "Continuity at x = 4 needs m(4) to equal that limit, so 2k + 2 = 8.",
+         "mathjson": [
+            "Equal",
+            [
+               "Add",
+               [
+                  "Multiply",
+                  2,
+                  "k"
+               ],
+               2
+            ],
+            8
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Then 2k = 6.",
+         "mathjson": [
+            "Equal",
+            [
+               "Multiply",
+               2,
+               "k"
+            ],
+            6
+         ]
+      },
+      {
+         "step": 4,
+         "text": "So k = 3.",
+         "mathjson": 3
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-17",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-01051",
+      "BC-SKL-01052",
+      "BC-SKL-01050",
+      "BC-SKL-01053"
+   ],
+   "parameter_draw": {
+      "quotient": "(x^2 - 16)/(x - 4)",
+      "point_value": "2k + 2",
+      "boundary": 4
+   },
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review",
+   "authored_on": "2026-09-23"
+}

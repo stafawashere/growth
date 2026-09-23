@@ -1,0 +1,76 @@
+{
+   "id": "ITM-AGT-02011-07",
+   "archetype_id": "BC-QA-02011",
+   "variant_id": null,
+   "format": "short_answer",
+   "stem": {
+      "text": "Let r(x) = x ln x for x > 0. Write the line tangent to the graph of r at the point where x = e in the form y = mx + b, and give the expression mx + b."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Subtract",
+         [
+            "Multiply",
+            2,
+            "x"
+         ],
+         "ExponentialE"
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "By the product rule, r'(x) = ln x + x(1/x) = ln x + 1.",
+         "mathjson": [
+            "Add",
+            [
+               "Ln",
+               "x"
+            ],
+            1
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The slope is r'(e) = 1 + 1 = 2.",
+         "mathjson": 2
+      },
+      {
+         "step": 3,
+         "text": "The height is r(e) = e ln e = e, so the point of tangency is (e, e).",
+         "mathjson": "ExponentialE"
+      },
+      {
+         "step": 4,
+         "text": "Point slope form gives y = e + 2(x - e), which is y = 2x - e.",
+         "mathjson": [
+            "Subtract",
+            [
+               "Multiply",
+               2,
+               "x"
+            ],
+            "ExponentialE"
+         ]
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02012",
+      "BC-SKL-02013"
+   ],
+   "parameter_draw": {
+      "function": "x ln x",
+      "input": "e"
+   },
+   "authored_on": "2026-09-23",
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review"
+}

@@ -1,0 +1,122 @@
+{
+   "id": "ITM-AGT-02011-04",
+   "archetype_id": "BC-QA-02011",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let p(x) = 2x^2 - 5x + 1. The line tangent to the graph of p at the point where x = -1 is y = L(x). Which of the following is L(x)?"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Multiply",
+            -9,
+            "x"
+         ],
+         -1
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Differentiate: p'(x) = 4x - 5.",
+         "mathjson": [
+            "Subtract",
+            [
+               "Multiply",
+               4,
+               "x"
+            ],
+            5
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The slope is p'(-1) = -4 - 5 = -9.",
+         "mathjson": -9
+      },
+      {
+         "step": 3,
+         "text": "The height is p(-1) = 2 + 5 + 1 = 8, so the point of tangency is (-1, 8).",
+         "mathjson": 8
+      },
+      {
+         "step": 4,
+         "text": "Point slope form gives y = 8 - 9(x + 1), which is y = -9x - 1.",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               -9,
+               "x"
+            ],
+            -1
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               8,
+               "x"
+            ],
+            16
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02027",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               -9,
+               "x"
+            ],
+            -1
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            [
+               "Negate",
+               "x"
+            ],
+            7
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02028",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02012",
+      "BC-SKL-02013"
+   ],
+   "parameter_draw": {
+      "function": "2x^2 - 5x + 1",
+      "input": -1
+   },
+   "authored_on": "2026-09-23",
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review"
+}

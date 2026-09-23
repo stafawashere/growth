@@ -1,0 +1,111 @@
+{
+   "id": "ITM-AGT-03001-04",
+   "archetype_id": "BC-QA-03001",
+   "variant_id": null,
+   "format": "short_answer",
+   "stem": {
+      "text": "Let f(x) = ln(cos(x^2)) on an interval where cos(x^2) > 0. Find f'(x) and write it in terms of a single trigonometric function."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Multiply",
+         -2,
+         "x",
+         [
+            "Tan",
+            [
+               "Power",
+               "x",
+               2
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "There are three layers: the natural log, then cosine, then x^2. The log contributes 1/cos(x^2).",
+         "mathjson": [
+            "Power",
+            [
+               "Cos",
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            -1
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The cosine layer contributes -sin(x^2), evaluated at the inner expression x^2.",
+         "mathjson": [
+            "Multiply",
+            -1,
+            [
+               "Sin",
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The innermost layer contributes 2x.",
+         "mathjson": [
+            "Multiply",
+            2,
+            "x"
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Multiply and simplify: f'(x) = (1/cos(x^2))(-sin(x^2))(2x) = -2x tan(x^2).",
+         "mathjson": [
+            "Multiply",
+            -2,
+            "x",
+            [
+               "Tan",
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ]
+         ]
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-03002",
+      "BC-SKL-03003",
+      "BC-SKL-03006"
+   ],
+   "parameter_draw": {
+      "outer": "ln",
+      "middle": "cos",
+      "inner": "x^2",
+      "layers": 3,
+      "simplify_to": "tan"
+   },
+   "authored_on": "2026-09-23",
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review"
+}

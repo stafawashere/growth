@@ -1,0 +1,181 @@
+{
+   "id": "ITM-AGT-02011-05",
+   "archetype_id": "BC-QA-02011",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let q(x) = (x + 1) cos x. The line tangent to the graph of q at the point where x = -pi/2 is y = L(x). Which of the following is L(x)?"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Multiply",
+         [
+            "Subtract",
+            1,
+            [
+               "Divide",
+               "Pi",
+               2
+            ]
+         ],
+         [
+            "Add",
+            "x",
+            [
+               "Divide",
+               "Pi",
+               2
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "By the product rule, q'(x) = cos x - (x + 1) sin x.",
+         "mathjson": [
+            "Subtract",
+            [
+               "Cos",
+               "x"
+            ],
+            [
+               "Multiply",
+               [
+                  "Add",
+                  "x",
+                  1
+               ],
+               [
+                  "Sin",
+                  "x"
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The slope is q'(-pi/2) = 0 - (1 - pi/2)(-1) = 1 - pi/2.",
+         "mathjson": [
+            "Subtract",
+            1,
+            [
+               "Divide",
+               "Pi",
+               2
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The height is q(-pi/2) = (1 - pi/2) times 0 = 0, so the point of tangency is (-pi/2, 0).",
+         "mathjson": 0
+      },
+      {
+         "step": 4,
+         "text": "Point slope form gives y = 0 + (1 - pi/2)(x + pi/2).",
+         "mathjson": [
+            "Multiply",
+            [
+               "Subtract",
+               1,
+               [
+                  "Divide",
+                  "Pi",
+                  2
+               ]
+            ],
+            [
+               "Add",
+               "x",
+               [
+                  "Divide",
+                  "Pi",
+                  2
+               ]
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 0,
+         "is_key": false,
+         "error_path": "BC-ERR-02027",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Multiply",
+            [
+               "Subtract",
+               -1,
+               [
+                  "Divide",
+                  "Pi",
+                  2
+               ]
+            ],
+            [
+               "Add",
+               "x",
+               [
+                  "Divide",
+                  "Pi",
+                  2
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02028",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Multiply",
+            [
+               "Subtract",
+               1,
+               [
+                  "Divide",
+                  "Pi",
+                  2
+               ]
+            ],
+            [
+               "Add",
+               "x",
+               [
+                  "Divide",
+                  "Pi",
+                  2
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02012",
+      "BC-SKL-02013"
+   ],
+   "parameter_draw": {
+      "function": "(x + 1) cos x",
+      "input": "-pi/2"
+   },
+   "authored_on": "2026-09-23",
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review"
+}

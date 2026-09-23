@@ -35,6 +35,8 @@ PASS = "pass"
 FAIL = "fail"
 INDETERMINATE = "indeterminate"
 
+OPERATOR_MODEL = "operator"
+
 
 def new_id(prefix):
    return f"{prefix}-{uuid.uuid4().hex}"
@@ -186,10 +188,30 @@ def needs_review(results):
    return any(result["outcome"] == INDETERMINATE for result in results)
 
 
+def provenance_model(record):
+   """Scope item 7 and R30 give a hand-authored item the model string operator. The operator's
+   ruling of 2026-09-23 lets agent drafts be served before the operator reviews them, and such a
+   record names its author in authored_by, which becomes the model so that nothing counting
+   operator items (exit criterion 7, gates 17, 29 and 30) can count it. A record with no
+   authored_by is the operator's own.
+   """
+   authored_by = record.get("authored_by")
+   names_no_author = authored_by is None
+
+   if names_no_author:
+      return OPERATOR_MODEL
+
+   return authored_by
+
+
+def is_operator_authored(record):
+   return provenance_model(record) == OPERATOR_MODEL
+
+
 def provenance_for(record):
-   """Scope item 7 and R30: model is the string operator, the other two keys are null."""
+   """Scope item 7 and R30: the two generation keys are null, since P1 has no generator."""
    return {
-      "model": "operator",
+      "model": provenance_model(record),
       "prompt_template_version": None,
       "generation_job_id": None,
       "authored_on": record.get("authored_on"),
@@ -281,4 +303,29 @@ def ingest_directory(db, directory, active_error_ids, snapshot_id, now):
 
    return [
       ingest_item(db, record, active_error_ids, snapshot_id, now) for record in records
+   ]
+
+
+def ingest_new_records(db, directory, active_error_ids, snapshot_id, now):
+   """ingest_directory for a bank directory read on every start: a record whose id is already in
+   items is left as it is, so a restart over the same database adds only what is new. Every record
+   must carry its id, because one without would be minted a fresh id and ingested again each time.
+   """
+   records = load_records(directory)
+   unnamed = [record for record in records if not record.get("id")]
+   has_unnamed_records = len(unnamed) > 0
+
+   if has_unnamed_records:
+      raise ValueError(f"{len(unnamed)} records in {directory} carry no id")
+
+   record_ids = [record["id"] for record in records]
+   stored_ids = {
+      item_id
+      for (item_id,) in db.query(models.Item.id).filter(models.Item.id.in_(record_ids))
+   }
+
+   return [
+      ingest_item(db, record, active_error_ids, snapshot_id, now)
+      for record in records
+      if record["id"] not in stored_ids
    ]

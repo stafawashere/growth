@@ -1,0 +1,203 @@
+{
+   "id": "ITM-AGT-03004-02",
+   "archetype_id": "BC-QA-03004",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "The point (1, 2) lies on the curve xy + y^2 = x^3 + 5. What is the slope of the curve at (1, 2)?"
+   },
+   "answer_key": {
+      "form": "numeric",
+      "mathjson": [
+         "Rational",
+         1,
+         5
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Differentiate both sides with respect to x, using the product rule on xy: y + x(dy/dx) + 2y(dy/dx) = 3x^2.",
+         "mathjson": [
+            "Equal",
+            [
+               "Add",
+               [
+                  "Add",
+                  [
+                     "Multiply",
+                     "dydx",
+                     "x"
+                  ],
+                  [
+                     "Multiply",
+                     2,
+                     "dydx",
+                     "y"
+                  ]
+               ],
+               "y"
+            ],
+            [
+               "Multiply",
+               3,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Collect the dy/dx terms: (x + 2y)(dy/dx) = 3x^2 - y.",
+         "mathjson": [
+            "Equal",
+            [
+               "Multiply",
+               [
+                  "Add",
+                  "x",
+                  [
+                     "Multiply",
+                     2,
+                     "y"
+                  ]
+               ],
+               "dydx"
+            ],
+            [
+               "Subtract",
+               [
+                  "Multiply",
+                  3,
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ]
+               ],
+               "y"
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Divide by x + 2y, so dy/dx = (3x^2 - y)/(x + 2y).",
+         "mathjson": [
+            "Divide",
+            [
+               "Subtract",
+               [
+                  "Multiply",
+                  3,
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ]
+               ],
+               "y"
+            ],
+            [
+               "Add",
+               "x",
+               [
+                  "Multiply",
+                  2,
+                  "y"
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Substitute x = 1 and y = 2: dy/dx = (3 - 2)/(1 + 4) = 1/5.",
+         "mathjson": [
+            "Rational",
+            1,
+            5
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Rational",
+            -2,
+            5
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03009",
+         "violated_step": 0
+      },
+      {
+         "id": "B",
+         "value": -3,
+         "is_key": false,
+         "error_path": "BC-ERR-03007",
+         "violated_step": 0
+      },
+      {
+         "id": "C",
+         "value": [
+            "Rational",
+            1,
+            5
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": [
+            "Rational",
+            3,
+            5
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03008",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-13",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-03007",
+      "BC-SKL-03008",
+      "BC-SKL-03009",
+      "BC-SKL-03010",
+      "BC-SKL-03011",
+      "BC-SKL-03014"
+   ],
+   "parameter_draw": {
+      "equation": "xy + y^2 = x^3 + 5",
+      "point": [
+         1,
+         2
+      ],
+      "target": "slope at point"
+   },
+   "authored_on": "2026-09-23",
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review"
+}

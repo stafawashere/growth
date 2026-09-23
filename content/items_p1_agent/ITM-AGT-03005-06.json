@@ -1,0 +1,92 @@
+{
+   "id": "ITM-AGT-03005-06",
+   "archetype_id": "BC-QA-03005",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Consider the curve y^3 - 3y = x^2 - 4x, for which dy/dx = (2x - 4)/(3y^2 - 3). How many points on the curve have a vertical tangent line?"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 4
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "A vertical tangent needs the denominator to be zero with the numerator nonzero: 3y^2 - 3 = 0 gives y = 1 or y = -1.",
+         "mathjson": 1
+      },
+      {
+         "step": 2,
+         "text": "Substitute y = 1 into the curve: -2 = x^2 - 4x, so x^2 - 4x + 2 = 0 and x = 2 + sqrt(2) or x = 2 - sqrt(2).",
+         "mathjson": [
+            "Add",
+            2,
+            [
+               "Sqrt",
+               2
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Substitute y = -1: 2 = x^2 - 4x, so x^2 - 4x - 2 = 0 and x = 2 + sqrt(6) or x = 2 - sqrt(6).",
+         "mathjson": [
+            "Add",
+            2,
+            [
+               "Sqrt",
+               6
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "None of the four x-values equals 2, so the numerator 2x - 4 is nonzero at every one of them. The curve has 4 points with a vertical tangent.",
+         "mathjson": 4
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 1,
+         "is_key": false,
+         "error_path": "BC-ERR-03012",
+         "violated_step": 0
+      },
+      {
+         "id": "B",
+         "value": 2,
+         "is_key": false,
+         "error_path": "BC-ERR-03013",
+         "violated_step": 2
+      },
+      {
+         "id": "C",
+         "value": 4,
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-09",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-03012",
+      "BC-SKL-03013",
+      "BC-SKL-03011"
+   ],
+   "parameter_draw": {
+      "curve": "y^3 - 3y = x^2 - 4x",
+      "direction": "vertical",
+      "candidates": 2,
+      "points_per_candidate": 2
+   },
+   "authored_on": "2026-09-23",
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review"
+}

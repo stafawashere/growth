@@ -1,0 +1,173 @@
+{
+   "id": "ITM-AGT-02008-06",
+   "archetype_id": "BC-QA-02008",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let q(x) = (x e^x)/(x + 1) for x > -1. What is the value of q'(1)?"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Divide",
+         [
+            "Multiply",
+            3,
+            "ExponentialE"
+         ],
+         4
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The numerator N = x e^x is itself a product, so N' = e^x + x e^x = (1 + x) e^x, and the denominator D = x + 1 has D' = 1.",
+         "mathjson": [
+            "Multiply",
+            [
+               "Add",
+               1,
+               "x"
+            ],
+            [
+               "Exp",
+               "x"
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "At x = 1: N = e, N' = 2e, D = 2 and D' = 1.",
+         "mathjson": [
+            "Multiply",
+            2,
+            "ExponentialE"
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The quotient rule gives q'(1) = (D N' - N D')/D^2 = (2(2e) - e(1))/2^2.",
+         "mathjson": [
+            "Divide",
+            [
+               "Subtract",
+               [
+                  "Multiply",
+                  2,
+                  [
+                     "Multiply",
+                     2,
+                     "ExponentialE"
+                  ]
+               ],
+               "ExponentialE"
+            ],
+            [
+               "Power",
+               2,
+               2
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Simplify to q'(1) = 3e/4.",
+         "mathjson": [
+            "Divide",
+            [
+               "Multiply",
+               3,
+               "ExponentialE"
+            ],
+            4
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Divide",
+            "ExponentialE",
+            4
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02020",
+         "violated_step": 0
+      },
+      {
+         "id": "B",
+         "value": [
+            "Divide",
+            [
+               "Multiply",
+               -3,
+               "ExponentialE"
+            ],
+            4
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02021",
+         "violated_step": 2
+      },
+      {
+         "id": "C",
+         "value": [
+            "Divide",
+            [
+               "Multiply",
+               3,
+               "ExponentialE"
+            ],
+            4
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": [
+            "Divide",
+            [
+               "Multiply",
+               3,
+               "ExponentialE"
+            ],
+            2
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02022",
+         "violated_step": 2
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02036",
+      "BC-SKL-02038",
+      "BC-SKL-02039",
+      "BC-SKL-02040",
+      "BC-SKL-02042"
+   ],
+   "parameter_draw": {
+      "numerator": "x e^x",
+      "denominator": "x + 1",
+      "evaluation_point": 1
+   },
+   "authored_on": "2026-09-23",
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review"
+}

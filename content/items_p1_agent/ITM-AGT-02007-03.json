@@ -1,0 +1,204 @@
+{
+   "id": "ITM-AGT-02007-03",
+   "archetype_id": "BC-QA-02007",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let f(x) = 3cos(x) - 2e^x. What is the value of f'(pi/2)?"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Subtract",
+         -3,
+         [
+            "Multiply",
+            2,
+            [
+               "Exp",
+               [
+                  "Divide",
+                  "Pi",
+                  2
+               ]
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The derivative of cos(x) is -sin(x), so 3cos(x) differentiates to -3sin(x).",
+         "mathjson": [
+            "Multiply",
+            -3,
+            [
+               "Sin",
+               "x"
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The derivative of e^x is e^x, so -2e^x differentiates to -2e^x.",
+         "mathjson": [
+            "Multiply",
+            -2,
+            [
+               "Exp",
+               "x"
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Combine the terms: f'(x) = -3sin(x) - 2e^x.",
+         "mathjson": [
+            "Subtract",
+            [
+               "Multiply",
+               -3,
+               [
+                  "Sin",
+                  "x"
+               ]
+            ],
+            [
+               "Multiply",
+               2,
+               [
+                  "Exp",
+                  "x"
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Evaluate at x = pi/2, where sin(pi/2) = 1: f'(pi/2) = -3 - 2e^(pi/2).",
+         "mathjson": [
+            "Subtract",
+            -3,
+            [
+               "Multiply",
+               2,
+               [
+                  "Exp",
+                  [
+                     "Divide",
+                     "Pi",
+                     2
+                  ]
+               ]
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Subtract",
+            3,
+            [
+               "Multiply",
+               2,
+               [
+                  "Exp",
+                  [
+                     "Divide",
+                     "Pi",
+                     2
+                  ]
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02018",
+         "violated_step": 0
+      },
+      {
+         "id": "B",
+         "value": [
+            "Subtract",
+            -3,
+            [
+               "Multiply",
+               2,
+               [
+                  "Multiply",
+                  [
+                     "Divide",
+                     "Pi",
+                     2
+                  ],
+                  [
+                     "Exp",
+                     [
+                        "Subtract",
+                        [
+                           "Divide",
+                           "Pi",
+                           2
+                        ],
+                        1
+                     ]
+                  ]
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02019",
+         "violated_step": 0
+      },
+      {
+         "id": "C",
+         "value": [
+            "Subtract",
+            -3,
+            [
+               "Multiply",
+               2,
+               [
+                  "Exp",
+                  [
+                     "Divide",
+                     "Pi",
+                     2
+                  ]
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02032",
+      "BC-SKL-02033",
+      "BC-SKL-02034"
+   ],
+   "parameter_draw": {
+      "cosine_coefficient": 3,
+      "exponential_coefficient": -2,
+      "point": "pi/2"
+   },
+   "authored_on": "2026-09-23",
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review"
+}

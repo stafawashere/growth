@@ -1,0 +1,116 @@
+{
+   "id": "ITM-AGT-01015-02",
+   "archetype_id": "BC-QA-01015",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let p(x) = ln(x + 2) / (x^2 - 7x + 10). Consider the largest interval that contains x = 0 and on which p is continuous. How many integers does that interval contain?"
+   },
+   "answer_key": {
+      "form": "numeric",
+      "mathjson": 3
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The logarithm requires x + 2 > 0, so x > -2, and the denominator (x - 2)(x - 5) is zero at x = 2 and x = 5.",
+         "mathjson": [
+            "Multiply",
+            [
+               "Subtract",
+               "x",
+               2
+            ],
+            [
+               "Subtract",
+               "x",
+               5
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "p is a quotient of a logarithmic function and a polynomial, each continuous on its domain, so p is continuous on its domain (-2, 2) U (2, 5) U (5, infinity).",
+         "mathjson": [
+            "Add",
+            "x",
+            2
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The piece containing x = 0 is (-2, 2), open at -2 because ln is undefined at 0 and open at 2 because the denominator vanishes.",
+         "mathjson": 2
+      },
+      {
+         "step": 4,
+         "text": "The integers in (-2, 2) are -1, 0 and 1.",
+         "mathjson": 3
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 5,
+         "is_key": false,
+         "error_path": "BC-ERR-01032",
+         "violated_step": 2
+      },
+      {
+         "id": "B",
+         "value": 6,
+         "is_key": false,
+         "error_path": "BC-ERR-01031",
+         "violated_step": 0
+      },
+      {
+         "id": "C",
+         "value": 4,
+         "is_key": false,
+         "error_path": "BC-ERR-01032",
+         "violated_step": 2
+      },
+      {
+         "id": "D",
+         "value": 3,
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-10",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "on"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-17",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-01046",
+      "BC-SKL-01047",
+      "BC-SKL-01048",
+      "BC-SKL-01049"
+   ],
+   "parameter_draw": {
+      "log_shift": 2,
+      "denominator_roots": [
+         2,
+         5
+      ],
+      "anchor_point": 0
+   },
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review",
+   "authored_on": "2026-09-23"
+}

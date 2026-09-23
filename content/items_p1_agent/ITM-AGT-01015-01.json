@@ -1,0 +1,84 @@
+{
+   "id": "ITM-AGT-01015-01",
+   "archetype_id": "BC-QA-01015",
+   "variant_id": null,
+   "format": "short_answer",
+   "stem": {
+      "text": "Let r(x) = (x + 2) / (x^3 - 9x). State the intervals on which r is continuous and give a reason. On how many separate maximal intervals is r continuous?"
+   },
+   "answer_key": {
+      "form": "numeric",
+      "mathjson": 4
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Factor the denominator as x(x - 3)(x + 3), which is zero at x = -3, x = 0 and x = 3, and the numerator never cancels any of these factors.",
+         "mathjson": [
+            "Multiply",
+            "x",
+            [
+               "Subtract",
+               "x",
+               3
+            ],
+            [
+               "Add",
+               "x",
+               3
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "A rational function is continuous at every input of its domain. Its domain is every real x except -3, 0 and 3.",
+         "mathjson": 3
+      },
+      {
+         "step": 3,
+         "text": "r is continuous on (-infinity, -3), (-3, 0), (0, 3) and (3, infinity), all open at the excluded inputs.",
+         "mathjson": 3
+      },
+      {
+         "step": 4,
+         "text": "Those are four separate maximal intervals.",
+         "mathjson": 4
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-10",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "on"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-17",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-01046",
+      "BC-SKL-01047",
+      "BC-SKL-01048",
+      "BC-SKL-01049"
+   ],
+   "parameter_draw": {
+      "numerator_root": -2,
+      "denominator_roots": [
+         -3,
+         0,
+         3
+      ]
+   },
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review",
+   "authored_on": "2026-09-23"
+}

@@ -1,0 +1,283 @@
+{
+   "id": "ITM-AGT-02006-05",
+   "archetype_id": "BC-QA-02006",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let f(x) = 6(cube root of x^2) + x^4 - 10. Which of the following is f'(x) for x not equal to 0?"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Multiply",
+            4,
+            [
+               "Power",
+               "x",
+               3
+            ]
+         ],
+         [
+            "Multiply",
+            4,
+            [
+               "Power",
+               "x",
+               [
+                  "Rational",
+                  -1,
+                  3
+               ]
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Rewrite the cube root of x^2 as x^(2/3): f(x) = 6x^(2/3) + x^4 - 10.",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               6,
+               [
+                  "Power",
+                  "x",
+                  [
+                     "Rational",
+                     2,
+                     3
+                  ]
+               ]
+            ],
+            [
+               "Power",
+               "x",
+               4
+            ],
+            -10
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Differentiate term by term: 6((2/3)x^(-1/3)) + 4x^3 + 0.",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               4,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               4,
+               [
+                  "Power",
+                  "x",
+                  [
+                     "Rational",
+                     -1,
+                     3
+                  ]
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "So f'(x) = 4x^(-1/3) + 4x^3.",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               4,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               4,
+               [
+                  "Power",
+                  "x",
+                  [
+                     "Rational",
+                     -1,
+                     3
+                  ]
+               ]
+            ]
+         ]
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02025",
+      "BC-SKL-02026",
+      "BC-SKL-02028",
+      "BC-SKL-02029",
+      "BC-SKL-02030",
+      "BC-SKL-02031"
+   ],
+   "parameter_draw": {
+      "coefficients": [
+         6,
+         1,
+         -10
+      ],
+      "exponents": [
+         "2/3",
+         "4",
+         "0"
+      ]
+   },
+   "options": [
+      {
+         "id": "A",
+         "text": "4x^3 + 4/x^(1/3)",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               4,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               4,
+               [
+                  "Power",
+                  "x",
+                  [
+                     "Rational",
+                     -1,
+                     3
+                  ]
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "text": "4x^3 - 10 + 4/x^(1/3)",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               4,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            -10,
+            [
+               "Multiply",
+               4,
+               [
+                  "Power",
+                  "x",
+                  [
+                     "Rational",
+                     -1,
+                     3
+                  ]
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02016",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "text": "x^3 + 6/x^(1/3)",
+         "value": [
+            "Add",
+            [
+               "Power",
+               "x",
+               3
+            ],
+            [
+               "Multiply",
+               6,
+               [
+                  "Power",
+                  "x",
+                  [
+                     "Rational",
+                     -1,
+                     3
+                  ]
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02015",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "text": "6x^(2/3) + 4x^3",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               6,
+               [
+                  "Power",
+                  "x",
+                  [
+                     "Rational",
+                     2,
+                     3
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               4,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02017",
+         "violated_step": 0
+      }
+   ],
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review",
+   "authored_on": "2026-09-23"
+}

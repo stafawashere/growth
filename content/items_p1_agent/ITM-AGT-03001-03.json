@@ -1,0 +1,267 @@
+{
+   "id": "ITM-AGT-03001-03",
+   "archetype_id": "BC-QA-03001",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let y = cos(2x)/x for x > 0. Which of the following is dy/dx?"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Multiply",
+         [
+            "Power",
+            "x",
+            -2
+         ],
+         [
+            "Add",
+            [
+               "Multiply",
+               -1,
+               [
+                  "Cos",
+                  [
+                     "Multiply",
+                     2,
+                     "x"
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               -2,
+               "x",
+               [
+                  "Sin",
+                  [
+                     "Multiply",
+                     2,
+                     "x"
+                  ]
+               ]
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "y is a quotient whose numerator is the composite cos(2x), so the quotient rule opens the work: dy/dx = [x (cos(2x))' - cos(2x) * 1] / x^2.",
+         "mathjson": [
+            "Power",
+            "x",
+            2
+         ]
+      },
+      {
+         "step": 2,
+         "text": "By the chain rule, (cos(2x))' = -sin(2x) * 2 = -2 sin(2x).",
+         "mathjson": [
+            "Multiply",
+            -2,
+            [
+               "Sin",
+               [
+                  "Multiply",
+                  2,
+                  "x"
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Substitute into the quotient rule: dy/dx = [x(-2 sin(2x)) - cos(2x)] / x^2 = (-2x sin(2x) - cos(2x)) / x^2.",
+         "mathjson": [
+            "Multiply",
+            [
+               "Power",
+               "x",
+               -2
+            ],
+            [
+               "Add",
+               [
+                  "Multiply",
+                  -1,
+                  [
+                     "Cos",
+                     [
+                        "Multiply",
+                        2,
+                        "x"
+                     ]
+                  ]
+               ],
+               [
+                  "Multiply",
+                  -2,
+                  "x",
+                  [
+                     "Sin",
+                     [
+                        "Multiply",
+                        2,
+                        "x"
+                     ]
+                  ]
+               ]
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Multiply",
+            -2,
+            [
+               "Sin",
+               [
+                  "Multiply",
+                  2,
+                  "x"
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03006",
+         "violated_step": 0
+      },
+      {
+         "id": "B",
+         "value": [
+            "Multiply",
+            [
+               "Power",
+               "x",
+               -2
+            ],
+            [
+               "Add",
+               [
+                  "Multiply",
+                  -1,
+                  [
+                     "Cos",
+                     [
+                        "Multiply",
+                        2,
+                        "x"
+                     ]
+                  ]
+               ],
+               [
+                  "Multiply",
+                  -2,
+                  "x",
+                  [
+                     "Sin",
+                     [
+                        "Multiply",
+                        2,
+                        "x"
+                     ]
+                  ]
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": [
+            "Multiply",
+            [
+               "Power",
+               "x",
+               -2
+            ],
+            [
+               "Add",
+               [
+                  "Multiply",
+                  -1,
+                  [
+                     "Cos",
+                     [
+                        "Multiply",
+                        2,
+                        "x"
+                     ]
+                  ]
+               ],
+               [
+                  "Multiply",
+                  -1,
+                  "x",
+                  [
+                     "Sin",
+                     [
+                        "Multiply",
+                        2,
+                        "x"
+                     ]
+                  ]
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03001",
+         "violated_step": 2
+      },
+      {
+         "id": "D",
+         "value": [
+            "Multiply",
+            -2,
+            [
+               "Power",
+               "x",
+               -1
+            ],
+            [
+               "Sin",
+               [
+                  "Multiply",
+                  2,
+                  "x"
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03006",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-03002",
+      "BC-SKL-03003",
+      "BC-SKL-03006"
+   ],
+   "parameter_draw": {
+      "outer": "cos",
+      "inner": "2x",
+      "inner_coefficient": 2,
+      "denominator": "x",
+      "enclosing_rule": "quotient"
+   },
+   "authored_on": "2026-09-23",
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review"
+}

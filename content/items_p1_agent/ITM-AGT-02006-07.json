@@ -1,0 +1,127 @@
+{
+   "id": "ITM-AGT-02006-07",
+   "archetype_id": "BC-QA-02006",
+   "variant_id": null,
+   "format": "short_answer",
+   "stem": {
+      "text": "Let g(t) = 8sqrt(t) - 4/t^2 + 3t for t > 0. Find the exact value of g'(4)."
+   },
+   "answer_key": {
+      "form": "numeric",
+      "mathjson": [
+         "Rational",
+         41,
+         8
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Rewrite the radical and the reciprocal as powers: g(t) = 8t^(1/2) - 4t^(-2) + 3t.",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               8,
+               [
+                  "Power",
+                  "t",
+                  [
+                     "Rational",
+                     1,
+                     2
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               3,
+               "t"
+            ],
+            [
+               "Multiply",
+               -4,
+               [
+                  "Power",
+                  "t",
+                  -2
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Differentiate term by term: 8(1/2)t^(-1/2) - 4(-2)t^(-3) + 3 = 4t^(-1/2) + 8t^(-3) + 3.",
+         "mathjson": [
+            "Add",
+            3,
+            [
+               "Multiply",
+               8,
+               [
+                  "Power",
+                  "t",
+                  -3
+               ]
+            ],
+            [
+               "Multiply",
+               4,
+               [
+                  "Power",
+                  "t",
+                  [
+                     "Rational",
+                     -1,
+                     2
+                  ]
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Substitute t = 4: 4/2 + 8/64 + 3 = 2 + 1/8 + 3 = 41/8.",
+         "mathjson": [
+            "Rational",
+            41,
+            8
+         ]
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02025",
+      "BC-SKL-02026",
+      "BC-SKL-02028",
+      "BC-SKL-02029",
+      "BC-SKL-02030",
+      "BC-SKL-02031"
+   ],
+   "parameter_draw": {
+      "coefficients": [
+         8,
+         -4,
+         3
+      ],
+      "exponents": [
+         "1/2",
+         "-2",
+         "1"
+      ],
+      "evaluation_point": 4
+   },
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review",
+   "authored_on": "2026-09-23"
+}

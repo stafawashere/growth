@@ -1,0 +1,121 @@
+{
+   "id": "ITM-AGT-02011-08",
+   "archetype_id": "BC-QA-02011",
+   "variant_id": null,
+   "format": "short_answer",
+   "stem": {
+      "text": "Let s(x) = 3x / (x^2 + 1). Write the line tangent to the graph of s at the point where x = 2 in the form y = mx + b, and give the expression mx + b."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Multiply",
+            [
+               "Rational",
+               -9,
+               25
+            ],
+            "x"
+         ],
+         [
+            "Rational",
+            48,
+            25
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "By the quotient rule, s'(x) = (3(x^2 + 1) - 3x(2x)) / (x^2 + 1)^2 = (3 - 3x^2) / (x^2 + 1)^2.",
+         "mathjson": [
+            "Divide",
+            [
+               "Subtract",
+               3,
+               [
+                  "Multiply",
+                  3,
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ]
+               ]
+            ],
+            [
+               "Power",
+               [
+                  "Add",
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ],
+                  1
+               ],
+               2
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The slope is s'(2) = (3 - 12) / 25 = -9/25.",
+         "mathjson": [
+            "Rational",
+            -9,
+            25
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The height is s(2) = 6/5, so the point of tangency is (2, 6/5).",
+         "mathjson": [
+            "Rational",
+            6,
+            5
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Point slope form gives y = 6/5 - (9/25)(x - 2), which is y = -(9/25)x + 48/25.",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -9,
+                  25
+               ],
+               "x"
+            ],
+            [
+               "Rational",
+               48,
+               25
+            ]
+         ]
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02012",
+      "BC-SKL-02013"
+   ],
+   "parameter_draw": {
+      "function": "3x / (x^2 + 1)",
+      "input": 2
+   },
+   "authored_on": "2026-09-23",
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review"
+}

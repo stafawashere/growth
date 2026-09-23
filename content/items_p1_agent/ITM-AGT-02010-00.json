@@ -1,0 +1,291 @@
+{
+   "id": "ITM-AGT-02010-00",
+   "archetype_id": "BC-QA-02010",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let y = cot x + csc x. Rewrite y in terms of sin x and cos x, then find dy/dx."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Subtract",
+         [
+            "Negate",
+            [
+               "Power",
+               [
+                  "Csc",
+                  "x"
+               ],
+               2
+            ]
+         ],
+         [
+            "Multiply",
+            [
+               "Csc",
+               "x"
+            ],
+            [
+               "Cot",
+               "x"
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Write both terms over sin x, so y = (cos x + 1)/sin x.",
+         "mathjson": [
+            "Divide",
+            [
+               "Add",
+               [
+                  "Cos",
+                  "x"
+               ],
+               1
+            ],
+            [
+               "Sin",
+               "x"
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Apply the quotient rule. The numerator has derivative -sin x and the denominator has derivative cos x, so dy/dx = (-sin x sin x - (cos x + 1)cos x)/sin^2 x.",
+         "mathjson": [
+            "Divide",
+            [
+               "Subtract",
+               [
+                  "Multiply",
+                  [
+                     "Negate",
+                     [
+                        "Sin",
+                        "x"
+                     ]
+                  ],
+                  [
+                     "Sin",
+                     "x"
+                  ]
+               ],
+               [
+                  "Multiply",
+                  [
+                     "Add",
+                     [
+                        "Cos",
+                        "x"
+                     ],
+                     1
+                  ],
+                  [
+                     "Cos",
+                     "x"
+                  ]
+               ]
+            ],
+            [
+               "Power",
+               [
+                  "Sin",
+                  "x"
+               ],
+               2
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Group -sin^2 x - cos^2 x as -1 with the Pythagorean identity, so dy/dx = (-1 - cos x)/sin^2 x.",
+         "mathjson": [
+            "Divide",
+            [
+               "Subtract",
+               -1,
+               [
+                  "Cos",
+                  "x"
+               ]
+            ],
+            [
+               "Power",
+               [
+                  "Sin",
+                  "x"
+               ],
+               2
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Split the fraction: -1/sin^2 x is -csc^2 x and -cos x/sin^2 x is -csc x cot x, so dy/dx = -csc^2 x - csc x cot x.",
+         "mathjson": [
+            "Subtract",
+            [
+               "Negate",
+               [
+                  "Power",
+                  [
+                     "Csc",
+                     "x"
+                  ],
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Csc",
+                  "x"
+               ],
+               [
+                  "Cot",
+                  "x"
+               ]
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            [
+               "Power",
+               [
+                  "Csc",
+                  "x"
+               ],
+               2
+            ],
+            [
+               "Negate",
+               [
+                  "Multiply",
+                  [
+                     "Csc",
+                     "x"
+                  ],
+                  [
+                     "Cot",
+                     "x"
+                  ]
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02025",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Subtract",
+            [
+               "Negate",
+               [
+                  "Power",
+                  [
+                     "Csc",
+                     "x"
+                  ],
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Csc",
+                  "x"
+               ],
+               [
+                  "Cot",
+                  "x"
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            [
+               "Negate",
+               [
+                  "Power",
+                  [
+                     "Csc",
+                     "x"
+                  ],
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Csc",
+                  "x"
+               ],
+               [
+                  "Cot",
+                  "x"
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02025",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": [
+            "Negate",
+            [
+               "Tan",
+               "x"
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02026",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02043",
+      "BC-SKL-02044",
+      "BC-SKL-02045",
+      "BC-SKL-02046"
+   ],
+   "parameter_draw": {
+      "function": "cot x + csc x",
+      "coefficients": [
+         1,
+         1
+      ]
+   },
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review",
+   "authored_on": "2026-09-23"
+}

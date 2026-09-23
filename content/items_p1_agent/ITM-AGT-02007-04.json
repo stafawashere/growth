@@ -1,0 +1,113 @@
+{
+   "id": "ITM-AGT-02007-04",
+   "archetype_id": "BC-QA-02007",
+   "variant_id": null,
+   "format": "short_answer",
+   "stem": {
+      "text": "Let k(x) = 2ln(x) + 3cos(x) for x > 0. Find the exact value of k'(pi/6)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Subtract",
+         [
+            "Divide",
+            12,
+            "Pi"
+         ],
+         [
+            "Rational",
+            3,
+            2
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The derivative of ln(x) is 1/x, so 2ln(x) differentiates to 2/x.",
+         "mathjson": [
+            "Divide",
+            2,
+            "x"
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The derivative of cos(x) is -sin(x), so 3cos(x) differentiates to -3sin(x).",
+         "mathjson": [
+            "Multiply",
+            -3,
+            [
+               "Sin",
+               "x"
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Combine the terms: k'(x) = 2/x - 3sin(x).",
+         "mathjson": [
+            "Subtract",
+            [
+               "Divide",
+               2,
+               "x"
+            ],
+            [
+               "Multiply",
+               3,
+               [
+                  "Sin",
+                  "x"
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Evaluate at x = pi/6. Here 2/(pi/6) = 12/pi and sin(pi/6) = 1/2, so k'(pi/6) = 12/pi - 3/2.",
+         "mathjson": [
+            "Subtract",
+            [
+               "Divide",
+               12,
+               "Pi"
+            ],
+            [
+               "Rational",
+               3,
+               2
+            ]
+         ]
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02032",
+      "BC-SKL-02033",
+      "BC-SKL-02034"
+   ],
+   "parameter_draw": {
+      "logarithm_coefficient": 2,
+      "cosine_coefficient": 3,
+      "point": "pi/6"
+   },
+   "authored_on": "2026-09-23",
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review"
+}

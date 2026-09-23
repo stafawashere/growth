@@ -1,0 +1,212 @@
+{
+   "id": "ITM-AGT-03004-08",
+   "archetype_id": "BC-QA-03004",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "The curve x^2 y + y^3 = 10 passes through the point (1, 2). Find dy/dx at that point."
+   },
+   "answer_key": {
+      "form": "numeric",
+      "mathjson": [
+         "Rational",
+         -4,
+         13
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Differentiate every term with respect to x, using the product rule on x^2 y: 2xy + x^2(dy/dx) + 3y^2(dy/dx) = 0.",
+         "mathjson": [
+            "Equal",
+            [
+               "Add",
+               [
+                  "Add",
+                  [
+                     "Multiply",
+                     "dydx",
+                     [
+                        "Power",
+                        "x",
+                        2
+                     ]
+                  ],
+                  [
+                     "Multiply",
+                     3,
+                     "dydx",
+                     [
+                        "Power",
+                        "y",
+                        2
+                     ]
+                  ]
+               ],
+               [
+                  "Multiply",
+                  2,
+                  "x",
+                  "y"
+               ]
+            ],
+            0
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Collect the dy/dx terms: (x^2 + 3y^2)(dy/dx) = -2xy.",
+         "mathjson": [
+            "Equal",
+            [
+               "Multiply",
+               [
+                  "Add",
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ],
+                  [
+                     "Multiply",
+                     3,
+                     [
+                        "Power",
+                        "y",
+                        2
+                     ]
+                  ]
+               ],
+               "dydx"
+            ],
+            [
+               "Negate",
+               [
+                  "Multiply",
+                  2,
+                  "x",
+                  "y"
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Divide by x^2 + 3y^2, so dy/dx = -2xy/(x^2 + 3y^2).",
+         "mathjson": [
+            "Negate",
+            [
+               "Divide",
+               [
+                  "Multiply",
+                  2,
+                  "x",
+                  "y"
+               ],
+               [
+                  "Add",
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ],
+                  [
+                     "Multiply",
+                     3,
+                     [
+                        "Power",
+                        "y",
+                        2
+                     ]
+                  ]
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Substitute x = 1 and y = 2: dy/dx = -4/(1 + 12) = -4/13.",
+         "mathjson": [
+            "Rational",
+            -4,
+            13
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Rational",
+            4,
+            11
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03010",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            -4,
+            13
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": -16,
+         "is_key": false,
+         "error_path": "BC-ERR-03007",
+         "violated_step": 0
+      },
+      {
+         "id": "D",
+         "value": 0,
+         "is_key": false,
+         "error_path": "BC-ERR-03008",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-13",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-03007",
+      "BC-SKL-03008",
+      "BC-SKL-03009",
+      "BC-SKL-03010",
+      "BC-SKL-03011",
+      "BC-SKL-03014"
+   ],
+   "parameter_draw": {
+      "equation": "x^2 y + y^3 = 10",
+      "point": [
+         1,
+         2
+      ],
+      "target": "slope at point"
+   },
+   "authored_on": "2026-09-23",
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review"
+}

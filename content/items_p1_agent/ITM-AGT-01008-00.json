@@ -1,0 +1,91 @@
+{
+   "id": "ITM-AGT-01008-00",
+   "archetype_id": "BC-QA-01008",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let g be defined by g(x) = 2x + 3 for x < 1, g(x) = kx - 1 for 1 <= x < 4, and g(x) = x^2 - kx for x >= 4, where k is a constant. For what value of k is g continuous at x = 1?"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 6
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Just to the left of x = 1 the rule is 2x + 3, so the left-hand limit at x = 1 is 5.",
+         "mathjson": 5
+      },
+      {
+         "step": 2,
+         "text": "At x = 1 and just to its right the rule is kx - 1, so the right-hand limit and g(1) both equal k - 1.",
+         "mathjson": [
+            "Subtract",
+            "k",
+            1
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Continuity at x = 1 needs 5 = k - 1.",
+         "mathjson": [
+            "Equal",
+            5,
+            [
+               "Subtract",
+               "k",
+               1
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "So k = 6.",
+         "mathjson": 6
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 1,
+         "is_key": false,
+         "error_path": "BC-ERR-01017",
+         "violated_step": 0
+      },
+      {
+         "id": "B",
+         "value": 6,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": -4,
+         "is_key": false,
+         "error_path": "BC-ERR-01017",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-17",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-01051",
+      "BC-SKL-01052",
+      "BC-SKL-01050",
+      "BC-SKL-01053"
+   ],
+   "parameter_draw": {
+      "left_branch": "2x + 3",
+      "middle_branch": "kx - 1",
+      "right_branch": "x^2 - kx",
+      "boundary": 1
+   },
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review",
+   "authored_on": "2026-09-23"
+}

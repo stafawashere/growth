@@ -1,0 +1,150 @@
+{
+   "id": "ITM-AGT-02006-04",
+   "archetype_id": "BC-QA-02006",
+   "variant_id": null,
+   "format": "short_answer",
+   "stem": {
+      "text": "Let y = 2x^5 - 3/x + 7x for x not equal to 0. Find the second derivative of y with respect to x."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Multiply",
+            40,
+            [
+               "Power",
+               "x",
+               3
+            ]
+         ],
+         [
+            "Multiply",
+            -6,
+            [
+               "Power",
+               "x",
+               -3
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Rewrite the reciprocal as a power: y = 2x^5 - 3x^(-1) + 7x.",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               2,
+               [
+                  "Power",
+                  "x",
+                  5
+               ]
+            ],
+            [
+               "Multiply",
+               7,
+               "x"
+            ],
+            [
+               "Multiply",
+               -3,
+               [
+                  "Power",
+                  "x",
+                  -1
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Differentiate once: dy/dx = 10x^4 - 3(-1)x^(-2) + 7 = 10x^4 + 3x^(-2) + 7.",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               10,
+               [
+                  "Power",
+                  "x",
+                  4
+               ]
+            ],
+            7,
+            [
+               "Multiply",
+               3,
+               [
+                  "Power",
+                  "x",
+                  -2
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Differentiate again: 40x^3 + 3(-2)x^(-3) + 0 = 40x^3 - 6x^(-3), which is 40x^3 - 6/x^3.",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               40,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               -6,
+               [
+                  "Power",
+                  "x",
+                  -3
+               ]
+            ]
+         ]
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02025",
+      "BC-SKL-02026",
+      "BC-SKL-02028",
+      "BC-SKL-02029",
+      "BC-SKL-02030",
+      "BC-SKL-02031"
+   ],
+   "parameter_draw": {
+      "coefficients": [
+         2,
+         -3,
+         7
+      ],
+      "exponents": [
+         "5",
+         "-1",
+         "1"
+      ]
+   },
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review",
+   "authored_on": "2026-09-23"
+}

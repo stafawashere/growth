@@ -1,0 +1,112 @@
+{
+   "id": "ITM-AGT-03008-08",
+   "archetype_id": "BC-QA-03008",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "The function y = f(x) satisfies dy/dx = x^2 y, and f(2) = 1. What is the value of d^2y/dx^2 at x = 2?"
+   },
+   "answer_key": {
+      "form": "numeric",
+      "mathjson": 20
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The product rule on x^2 y gives d^2y/dx^2 = 2xy + x^2 (dy/dx).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               2,
+               "x",
+               "y"
+            ],
+            [
+               "Multiply",
+               [
+                  "Power",
+                  "x",
+                  2
+               ],
+               [
+                  "Multiply",
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ],
+                  "y"
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "At (2, 1), dy/dx = (2^2)(1) = 4.",
+         "mathjson": 4
+      },
+      {
+         "step": 3,
+         "text": "Substitute x = 2, y = 1 and dy/dx = 4: d^2y/dx^2 = 2(2)(1) + 4(4) = 20.",
+         "mathjson": 20
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 4,
+         "is_key": false,
+         "error_path": "BC-ERR-03008",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": 8,
+         "is_key": false,
+         "error_path": "BC-ERR-03023",
+         "violated_step": 3
+      },
+      {
+         "id": "C",
+         "value": 20,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": [
+            "Multiply",
+            20,
+            "y"
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03011",
+         "violated_step": 2
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-04",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-03030",
+      "BC-SKL-03031",
+      "BC-SKL-03032",
+      "BC-SKL-03033",
+      "BC-SKL-03034"
+   ],
+   "parameter_draw": {
+      "differential_equation": "x^2 y",
+      "point": [
+         2,
+         1
+      ]
+   },
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review",
+   "authored_on": "2026-09-23"
+}

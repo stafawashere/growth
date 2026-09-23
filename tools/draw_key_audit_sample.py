@@ -1,7 +1,7 @@
 """Operator command-line draw of the key-audit sample: gate 29 (eval_p1_key_error_rate) in
 docs/plan/11-phased-delivery.md, P1 exit criterion 4, and docs/operator/key-audit.md.
 
-Draws app/review/audit.draw_key_audit_sample over every published item in the database, stratified
+Draws app/review/audit.draw_key_audit_sample over every published operator-authored item in the database, stratified
 by unit (no more than 15 per unit) and by calculator_status in proportion to what is published,
 with a deterministic seed so the same database and seed always produce the same sample. Writes the
 sample file docs/operator/key-audit.md describes: a JSON array of the sampled item ids, ready to
@@ -19,27 +19,39 @@ from sqlalchemy.orm import Session as OrmSession
 
 from app.content.loader import load_snapshot
 from app.db.models import Item, make_engine
+from app.items.ingest import OPERATOR_MODEL
 from app.review.audit import EVAL_29_SAMPLE_SIZE, draw_key_audit_sample
+from app.runtime.bank import PUBLISHED_STATUS
 
 DEFAULT_SEED = 2026
 
 
 def published_candidates(engine, snapshot):
+   """Published is the bank's status, verified (app/runtime/bank.py). Only the operator's own
+   items are candidates: an agent draft is served under the operator's ruling of 2026-09-23 but
+   gate 29 audits operator provenance alone.
+   """
    with OrmSession(engine) as db:
-      rows = db.query(Item.id, Item.archetype_id, Item.calculator_status).filter(Item.status == "published").all()
+      rows = (
+         db.query(Item.id, Item.archetype_id, Item.calculator_status, Item.provenance)
+         .filter(Item.status == PUBLISHED_STATUS)
+         .all()
+      )
 
    candidates = []
 
-   for item_id, archetype_id, calculator_status in rows:
+   for item_id, archetype_id, calculator_status, provenance in rows:
       archetype = snapshot.archetypes.get(archetype_id)
       has_archetype = archetype is not None
+      is_operator_item = json.loads(provenance).get("model") == OPERATOR_MODEL
+      is_candidate = has_archetype and is_operator_item
 
-      if not has_archetype:
+      if not is_candidate:
          continue
 
       candidates.append({
          "item_id": item_id,
-         "unit": archetype["unit"],
+         "unit": archetype["primary_unit"],
          "calculator_status": calculator_status,
       })
 

@@ -1,0 +1,140 @@
+{
+   "id": "ITM-AGT-02002-07",
+   "archetype_id": "BC-QA-02002",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let q(x) = 4/x. Use the limit definition of the derivative, with increment h, to find q'(2)."
+   },
+   "answer_key": {
+      "form": "numeric",
+      "mathjson": -1
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Write the difference quotient at 2: [4/(2 + h) - 2]/h, since q(2) = 2.",
+         "mathjson": [
+            "Divide",
+            [
+               "Subtract",
+               [
+                  "Divide",
+                  4,
+                  [
+                     "Add",
+                     2,
+                     "h"
+                  ]
+               ],
+               2
+            ],
+            "h"
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Combine over 2 + h: 4/(2 + h) - 2 = (4 - 4 - 2h)/(2 + h) = -2h/(2 + h).",
+         "mathjson": [
+            "Divide",
+            [
+               "Multiply",
+               -2,
+               "h"
+            ],
+            [
+               "Add",
+               2,
+               "h"
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Divide by h, leaving -2/(2 + h) for h not equal to 0.",
+         "mathjson": [
+            "Divide",
+            -2,
+            [
+               "Add",
+               2,
+               "h"
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Let h approach 0, so q'(2) = -2/2 = -1.",
+         "mathjson": -1
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Divide",
+            -4,
+            [
+               "Power",
+               "x",
+               2
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02030",
+         "violated_step": 3
+      },
+      {
+         "id": "B",
+         "value": 0,
+         "is_key": false,
+         "error_path": "BC-ERR-02005",
+         "violated_step": 2
+      },
+      {
+         "id": "C",
+         "value": [
+            "Divide",
+            -2,
+            [
+               "Add",
+               2,
+               "h"
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02006",
+         "violated_step": 3
+      },
+      {
+         "id": "D",
+         "value": -1,
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02006",
+      "BC-SKL-02007",
+      "BC-SKL-02008",
+      "BC-SKL-02009",
+      "BC-SKL-02027"
+   ],
+   "parameter_draw": {
+      "rule": "4/x",
+      "numerator": 4,
+      "point": 2,
+      "target": "value_at_point",
+      "form": "increment"
+   },
+   "authored_on": "2026-09-23",
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review"
+}

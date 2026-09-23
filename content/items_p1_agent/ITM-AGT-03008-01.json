@@ -1,0 +1,152 @@
+{
+   "id": "ITM-AGT-03008-01",
+   "archetype_id": "BC-QA-03008",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let g(x) = x^4 - 3x^2 + 5x + e^(2x). What is the value of g'''(0)?"
+   },
+   "answer_key": {
+      "form": "numeric",
+      "mathjson": 8
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "g'(x) = 4x^3 - 6x + 5 + 2e^(2x).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               4,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               -6,
+               "x"
+            ],
+            5,
+            [
+               "Multiply",
+               2,
+               [
+                  "Exp",
+                  [
+                     "Multiply",
+                     2,
+                     "x"
+                  ]
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "g''(x) = 12x^2 - 6 + 4e^(2x).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               12,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            -6,
+            [
+               "Multiply",
+               4,
+               [
+                  "Exp",
+                  [
+                     "Multiply",
+                     2,
+                     "x"
+                  ]
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "g'''(x) = 24x + 8e^(2x).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               24,
+               "x"
+            ],
+            [
+               "Multiply",
+               8,
+               [
+                  "Exp",
+                  [
+                     "Multiply",
+                     2,
+                     "x"
+                  ]
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "At x = 0, g'''(0) = 0 + 8 = 8.",
+         "mathjson": 8
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": -2,
+         "is_key": false,
+         "error_path": "BC-ERR-03021",
+         "violated_step": 0
+      },
+      {
+         "id": "B",
+         "value": 343,
+         "is_key": false,
+         "error_path": "BC-ERR-03022",
+         "violated_step": 0
+      },
+      {
+         "id": "C",
+         "value": 8,
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-04",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-03030",
+      "BC-SKL-03031",
+      "BC-SKL-03032",
+      "BC-SKL-03033",
+      "BC-SKL-03034"
+   ],
+   "parameter_draw": {
+      "order": 3,
+      "exponential_rate": 2,
+      "linear_coefficient": 5,
+      "point": 0
+   },
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review",
+   "authored_on": "2026-09-23"
+}

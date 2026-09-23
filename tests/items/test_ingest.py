@@ -201,3 +201,24 @@ def test_the_key_is_read_from_is_key_not_from_a_null_error_path(tmp_path):
       db.commit()
 
       assert result["status"] == "rejected"
+
+
+AGENT_AUTHOR = "claude-opus-5-5 agent draft, pending operator review"
+
+
+def test_an_agent_draft_keeps_its_author_as_the_provenance_model(tmp_path):
+   """The operator's ruling of 2026-09-23: an agent draft may be served but is never operator
+   provenance, so exit criterion 7 and gates 17, 29 and 30 cannot count it by accident.
+   """
+   record = good_record("ITM-0007")
+   record["authored_by"] = AGENT_AUTHOR
+
+   with open_db(tmp_path) as db:
+      ingest.ingest_item(db, record, ACTIVE_ERROR_IDS, SNAPSHOT_ID, NOW)
+      db.commit()
+
+      provenance = json.loads(db.get(models.Item, "ITM-0007").provenance)
+
+      assert provenance["model"] == AGENT_AUTHOR
+      assert provenance["prompt_template_version"] is None
+      assert provenance["generation_job_id"] is None

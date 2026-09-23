@@ -2,16 +2,26 @@
 
 Published means items.status == "verified" (docs/plan/11-phased-delivery.md P1 scope item 14,
 Q14): app/engine/select.py and app/session/build.py call only published_items(archetype_id) and
-has_published_item(archetype_id), the ItemBank protocol app/engine/fringe.py declares. The items
-table is empty until the operator's 130 hand-authored items land, so an empty bank answers with no
-rows rather than raising.
+has_published_item(archetype_id), the ItemBank protocol app/engine/fringe.py declares. An empty
+bank answers with no rows rather than raising.
+
+A bank may be given an ItemSource, a directory of item records (app/main.py GROWTH_ITEMS_DIR,
+by default the agent drafts in content/items_p1_agent/ the operator ruled servable on 2026-09-23).
+Its new records go through app/items/ingest.py, checks and provenance included, on the bank's
+first query rather than at build time: the checks take seconds over 130 records, and a process
+that never opens a session, which is most of what builds an application, should not pay for them.
 """
 import json
+import threading
+from dataclasses import dataclass
+from datetime import datetime, timezone
+from pathlib import Path
 
 from sqlalchemy.orm import Session as OrmSession
 
 from app.db.models import Item
 from app.engine.state import FadingStage
+from app.items.ingest import ingest_new_records
 
 PUBLISHED_STATUS = "verified"
 
@@ -132,13 +142,45 @@ def served_steps(worked_solution, stage):
    ]
 
 
+@dataclass(frozen=True)
+class ItemSource:
+   directory: Path
+   active_error_ids: frozenset
+   snapshot_id: str
+
+
 class ItemBank:
    """An ItemBank over the live items table, one short-lived session per query."""
 
-   def __init__(self, engine):
+   def __init__(self, engine, source=None):
       self._engine = engine
+      self._pending_source = source
+      self._source_lock = threading.Lock()
+
+   def _ingest_pending_source(self):
+      """Runs once per process. A failed ingestion leaves the source pending, so the error
+      surfaces again on the next query instead of leaving a silently empty bank.
+      """
+      with self._source_lock:
+         source = self._pending_source
+         has_pending_source = source is not None
+
+         if not has_pending_source:
+            return
+
+         ingested_at = datetime.now(timezone.utc).isoformat()
+
+         with OrmSession(self._engine) as db:
+            ingest_new_records(
+               db, source.directory, source.active_error_ids, source.snapshot_id, ingested_at
+            )
+            db.commit()
+
+         self._pending_source = None
 
    def published_items(self, archetype_id):
+      self._ingest_pending_source()
+
       with OrmSession(self._engine) as db:
          rows = (
             db.query(Item)

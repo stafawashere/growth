@@ -1,0 +1,190 @@
+{
+   "id": "ITM-AGT-02010-07",
+   "archetype_id": "BC-QA-02010",
+   "variant_id": null,
+   "format": "short_answer",
+   "stem": {
+      "text": "Let f(x) = 6tan x - sec x. Rewrite f(x) as one quotient in sin x and cos x, then find f'(x) in terms of sec x and tan x."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Subtract",
+         [
+            "Multiply",
+            6,
+            [
+               "Power",
+               [
+                  "Sec",
+                  "x"
+               ],
+               2
+            ]
+         ],
+         [
+            "Multiply",
+            [
+               "Sec",
+               "x"
+            ],
+            [
+               "Tan",
+               "x"
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Over the denominator cos x, f(x) = (6sin x - 1)/cos x.",
+         "mathjson": [
+            "Divide",
+            [
+               "Subtract",
+               [
+                  "Multiply",
+                  6,
+                  [
+                     "Sin",
+                     "x"
+                  ]
+               ],
+               1
+            ],
+            [
+               "Cos",
+               "x"
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The quotient rule with numerator derivative 6cos x and denominator derivative -sin x gives f'(x) = (6cos x cos x + (6sin x - 1)sin x)/cos^2 x.",
+         "mathjson": [
+            "Divide",
+            [
+               "Add",
+               [
+                  "Multiply",
+                  6,
+                  [
+                     "Cos",
+                     "x"
+                  ],
+                  [
+                     "Cos",
+                     "x"
+                  ]
+               ],
+               [
+                  "Multiply",
+                  [
+                     "Subtract",
+                     [
+                        "Multiply",
+                        6,
+                        [
+                           "Sin",
+                           "x"
+                        ]
+                     ],
+                     1
+                  ],
+                  [
+                     "Sin",
+                     "x"
+                  ]
+               ]
+            ],
+            [
+               "Power",
+               [
+                  "Cos",
+                  "x"
+               ],
+               2
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The terms 6cos^2 x + 6sin^2 x equal 6 by the Pythagorean identity, so f'(x) = (6 - sin x)/cos^2 x.",
+         "mathjson": [
+            "Divide",
+            [
+               "Subtract",
+               6,
+               [
+                  "Sin",
+                  "x"
+               ]
+            ],
+            [
+               "Power",
+               [
+                  "Cos",
+                  "x"
+               ],
+               2
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Splitting the fraction gives f'(x) = 6sec^2 x - sec x tan x.",
+         "mathjson": [
+            "Subtract",
+            [
+               "Multiply",
+               6,
+               [
+                  "Power",
+                  [
+                     "Sec",
+                     "x"
+                  ],
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Sec",
+                  "x"
+               ],
+               [
+                  "Tan",
+                  "x"
+               ]
+            ]
+         ]
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02043",
+      "BC-SKL-02044",
+      "BC-SKL-02045",
+      "BC-SKL-02046"
+   ],
+   "parameter_draw": {
+      "function": "a tan x - b sec x",
+      "a": 6,
+      "b": 1
+   },
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review",
+   "authored_on": "2026-09-23"
+}

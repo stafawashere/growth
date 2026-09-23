@@ -1,0 +1,329 @@
+{
+   "id": "ITM-AGT-03001-08",
+   "archetype_id": "BC-QA-03001",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let f(x) = sqrt(ln(x^2 + 1)) for x > 0. Which of the following is f'(x)?"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Multiply",
+         "x",
+         [
+            "Power",
+            [
+               "Add",
+               1,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            -1
+         ],
+         [
+            "Power",
+            [
+               "Ln",
+               [
+                  "Add",
+                  1,
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ]
+               ]
+            ],
+            [
+               "Rational",
+               -1,
+               2
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The layers are the square root, then the natural log, then x^2 + 1. The square root contributes 1/(2 sqrt(ln(x^2 + 1))).",
+         "mathjson": [
+            "Multiply",
+            [
+               "Rational",
+               1,
+               2
+            ],
+            [
+               "Power",
+               [
+                  "Ln",
+                  [
+                     "Add",
+                     1,
+                     [
+                        "Power",
+                        "x",
+                        2
+                     ]
+                  ]
+               ],
+               [
+                  "Rational",
+                  -1,
+                  2
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The log layer contributes 1/(x^2 + 1), evaluated at the inner expression.",
+         "mathjson": [
+            "Power",
+            [
+               "Add",
+               1,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            -1
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The innermost layer contributes 2x.",
+         "mathjson": [
+            "Multiply",
+            2,
+            "x"
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Multiply the three factors and cancel the 2: f'(x) = x / ((x^2 + 1) sqrt(ln(x^2 + 1))).",
+         "mathjson": [
+            "Multiply",
+            "x",
+            [
+               "Power",
+               [
+                  "Add",
+                  1,
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ]
+               ],
+               -1
+            ],
+            [
+               "Power",
+               [
+                  "Ln",
+                  [
+                     "Add",
+                     1,
+                     [
+                        "Power",
+                        "x",
+                        2
+                     ]
+                  ]
+               ],
+               [
+                  "Rational",
+                  -1,
+                  2
+               ]
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Multiply",
+            [
+               "Rational",
+               1,
+               2
+            ],
+            [
+               "Power",
+               [
+                  "Ln",
+                  [
+                     "Add",
+                     1,
+                     [
+                        "Power",
+                        "x",
+                        2
+                     ]
+                  ]
+               ],
+               [
+                  "Rational",
+                  -1,
+                  2
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03001",
+         "violated_step": 2
+      },
+      {
+         "id": "B",
+         "value": [
+            "Multiply",
+            [
+               "Power",
+               [
+                  "Add",
+                  2,
+                  [
+                     "Multiply",
+                     2,
+                     [
+                        "Power",
+                        "x",
+                        2
+                     ]
+                  ]
+               ],
+               -1
+            ],
+            [
+               "Power",
+               [
+                  "Ln",
+                  [
+                     "Add",
+                     1,
+                     [
+                        "Power",
+                        "x",
+                        2
+                     ]
+                  ]
+               ],
+               [
+                  "Rational",
+                  -1,
+                  2
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03002",
+         "violated_step": 3
+      },
+      {
+         "id": "C",
+         "value": [
+            "Multiply",
+            "x",
+            [
+               "Power",
+               [
+                  "Ln",
+                  [
+                     "Add",
+                     1,
+                     [
+                        "Power",
+                        "x",
+                        2
+                     ]
+                  ]
+               ],
+               [
+                  "Rational",
+                  -1,
+                  2
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03002",
+         "violated_step": 3
+      },
+      {
+         "id": "D",
+         "value": [
+            "Multiply",
+            "x",
+            [
+               "Power",
+               [
+                  "Add",
+                  1,
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ]
+               ],
+               -1
+            ],
+            [
+               "Power",
+               [
+                  "Ln",
+                  [
+                     "Add",
+                     1,
+                     [
+                        "Power",
+                        "x",
+                        2
+                     ]
+                  ]
+               ],
+               [
+                  "Rational",
+                  -1,
+                  2
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-03002",
+      "BC-SKL-03003",
+      "BC-SKL-03006"
+   ],
+   "parameter_draw": {
+      "outer": "sqrt",
+      "middle": "ln",
+      "inner": "x^2 + 1",
+      "layers": 3
+   },
+   "authored_on": "2026-09-23",
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review"
+}

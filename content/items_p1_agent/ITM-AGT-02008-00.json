@@ -1,0 +1,208 @@
+{
+   "id": "ITM-AGT-02008-00",
+   "archetype_id": "BC-QA-02008",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let f(x) = x^4 ln(x) for x > 0. Which of the following is f'(x)?"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Multiply",
+            4,
+            [
+               "Power",
+               "x",
+               3
+            ],
+            [
+               "Ln",
+               "x"
+            ]
+         ],
+         [
+            "Power",
+            "x",
+            3
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Take the factors u = x^4 and v = ln(x), so u' = 4x^3 and v' = 1/x.",
+         "mathjson": [
+            "Multiply",
+            4,
+            [
+               "Power",
+               "x",
+               3
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The product rule gives f'(x) = u'v + uv' = 4x^3 ln(x) + x^4 (1/x).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               4,
+               [
+                  "Power",
+                  "x",
+                  3
+               ],
+               [
+                  "Ln",
+                  "x"
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Power",
+                  "x",
+                  4
+               ],
+               [
+                  "Divide",
+                  1,
+                  "x"
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Simplify x^4 (1/x) to x^3.",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               4,
+               [
+                  "Power",
+                  "x",
+                  3
+               ],
+               [
+                  "Ln",
+                  "x"
+               ]
+            ],
+            [
+               "Power",
+               "x",
+               3
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Multiply",
+            4,
+            [
+               "Power",
+               "x",
+               2
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02020",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               4,
+               [
+                  "Power",
+                  "x",
+                  3
+               ],
+               [
+                  "Ln",
+                  "x"
+               ]
+            ],
+            [
+               "Power",
+               "x",
+               3
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": [
+            "Multiply",
+            4,
+            [
+               "Power",
+               "x",
+               3
+            ],
+            [
+               "Ln",
+               "x"
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02020",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": [
+            "Power",
+            "x",
+            3
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02020",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02036",
+      "BC-SKL-02038",
+      "BC-SKL-02039",
+      "BC-SKL-02040",
+      "BC-SKL-02042"
+   ],
+   "parameter_draw": {
+      "power": 4,
+      "second_factor": "ln(x)"
+   },
+   "authored_on": "2026-09-23",
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review"
+}

@@ -1,0 +1,143 @@
+{
+   "id": "ITM-AGT-02006-00",
+   "archetype_id": "BC-QA-02006",
+   "variant_id": null,
+   "format": "short_answer",
+   "stem": {
+      "text": "Let f(x) = 5x^4 - 3x^2 + 8x - 6. Find f'(x)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Multiply",
+            20,
+            [
+               "Power",
+               "x",
+               3
+            ]
+         ],
+         [
+            "Multiply",
+            -6,
+            "x"
+         ],
+         8
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Every term is already a constant times a power of x, so f(x) = 5x^4 - 3x^2 + 8x - 6 needs no rewriting.",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               5,
+               [
+                  "Power",
+                  "x",
+                  4
+               ]
+            ],
+            [
+               "Multiply",
+               -3,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               8,
+               "x"
+            ],
+            -6
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Apply the power rule and constant multiple rule to each term: 5(4x^3) - 3(2x) + 8(1). The constant -6 has derivative 0.",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               20,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               -6,
+               "x"
+            ],
+            8
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Combine the terms, so f'(x) = 20x^3 - 6x + 8.",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               20,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               -6,
+               "x"
+            ],
+            8
+         ]
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02025",
+      "BC-SKL-02026",
+      "BC-SKL-02028",
+      "BC-SKL-02029",
+      "BC-SKL-02030",
+      "BC-SKL-02031"
+   ],
+   "parameter_draw": {
+      "coefficients": [
+         5,
+         -3,
+         8,
+         -6
+      ],
+      "exponents": [
+         4,
+         2,
+         1,
+         0
+      ]
+   },
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review",
+   "authored_on": "2026-09-23"
+}

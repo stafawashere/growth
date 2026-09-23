@@ -1,0 +1,93 @@
+{
+   "id": "ITM-AGT-01004-06",
+   "archetype_id": "BC-QA-01004",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Evaluate \\( \\lim_{x \\to -4} \\dfrac{x^2 - 16}{x + 4} \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": -8
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "At x = -4 the numerator is 16 - 16 = 0 and the denominator is -4 + 4 = 0, so the quotient is zero over zero.",
+         "mathjson": 0
+      },
+      {
+         "step": 2,
+         "text": "Factor the difference of squares: x^2 - 16 = (x - 4)(x + 4). For x not equal to -4 the factor x + 4 divides out, leaving x - 4.",
+         "mathjson": [
+            "Subtract",
+            "x",
+            4
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The limit is -4 - 4 = -8.",
+         "mathjson": -8
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": -8,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": 0,
+         "is_key": false,
+         "error_path": "BC-ERR-01008",
+         "violated_step": 0
+      },
+      {
+         "id": "C",
+         "value": -5,
+         "is_key": false,
+         "error_path": "BC-ERR-01010",
+         "violated_step": 2
+      },
+      {
+         "id": "D",
+         "value": -3,
+         "is_key": false,
+         "error_path": "BC-ERR-01010",
+         "violated_step": 2
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-10",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-17",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-01024",
+      "BC-SKL-01025",
+      "BC-SKL-01026",
+      "BC-SKL-01027",
+      "BC-SKL-01028"
+   ],
+   "parameter_draw": {
+      "target": -4,
+      "square_constant": 16,
+      "rewrite": "factoring"
+   },
+   "authored_on": "2026-09-23",
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review"
+}

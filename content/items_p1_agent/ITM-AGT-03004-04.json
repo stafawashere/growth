@@ -1,0 +1,143 @@
+{
+   "id": "ITM-AGT-03004-04",
+   "archetype_id": "BC-QA-03004",
+   "variant_id": null,
+   "format": "short_answer",
+   "stem": {
+      "text": "For the curve x^2 - xy + 2y^2 = 7, it can be shown that dy/dx = (2x - y)/(x - ky) for some constant k. Find k."
+   },
+   "answer_key": {
+      "form": "numeric",
+      "mathjson": 4
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Differentiate every term with respect to x, using the product rule on xy: 2x - y - x(dy/dx) + 4y(dy/dx) = 0.",
+         "mathjson": [
+            "Equal",
+            [
+               "Subtract",
+               [
+                  "Subtract",
+                  [
+                     "Add",
+                     [
+                        "Multiply",
+                        4,
+                        "dydx",
+                        "y"
+                     ],
+                     [
+                        "Multiply",
+                        2,
+                        "x"
+                     ]
+                  ],
+                  [
+                     "Multiply",
+                     "dydx",
+                     "x"
+                  ]
+               ],
+               "y"
+            ],
+            0
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Collect the dy/dx terms: (4y - x)(dy/dx) = y - 2x.",
+         "mathjson": [
+            "Equal",
+            [
+               "Multiply",
+               [
+                  "Subtract",
+                  [
+                     "Multiply",
+                     4,
+                     "y"
+                  ],
+                  "x"
+               ],
+               "dydx"
+            ],
+            [
+               "Subtract",
+               "y",
+               [
+                  "Multiply",
+                  2,
+                  "x"
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Divide, and multiply numerator and denominator by -1 to match the stated form: dy/dx = (2x - y)/(x - 4y).",
+         "mathjson": [
+            "Divide",
+            [
+               "Subtract",
+               [
+                  "Multiply",
+                  2,
+                  "x"
+               ],
+               "y"
+            ],
+            [
+               "Subtract",
+               "x",
+               [
+                  "Multiply",
+                  4,
+                  "y"
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Comparing denominators with x - ky gives k = 4.",
+         "mathjson": 4
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-13",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-03007",
+      "BC-SKL-03008",
+      "BC-SKL-03009",
+      "BC-SKL-03010",
+      "BC-SKL-03011",
+      "BC-SKL-03014"
+   ],
+   "parameter_draw": {
+      "equation": "x^2 - xy + 2y^2 = 7",
+      "stated_form": "(2x - y)/(x - ky)",
+      "target": "constant in stated dy/dx"
+   },
+   "authored_on": "2026-09-23",
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review"
+}

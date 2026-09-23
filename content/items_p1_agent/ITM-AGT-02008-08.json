@@ -1,0 +1,122 @@
+{
+   "id": "ITM-AGT-02008-08",
+   "archetype_id": "BC-QA-02008",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let m(x) = (x^2 - 3)/(2x + 1) for x not equal to -1/2. What is the value of m'(1)?"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Divide",
+         10,
+         9
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Take N = x^2 - 3 and D = 2x + 1, so N' = 2x and D' = 2. At x = 1: N = -2, N' = 2, D = 3, D' = 2.",
+         "mathjson": -2
+      },
+      {
+         "step": 2,
+         "text": "The quotient rule gives m'(1) = (D N' - N D')/D^2 = (3(2) - (-2)(2))/3^2.",
+         "mathjson": [
+            "Divide",
+            [
+               "Subtract",
+               [
+                  "Multiply",
+                  3,
+                  2
+               ],
+               [
+                  "Multiply",
+                  -2,
+                  2
+               ]
+            ],
+            [
+               "Power",
+               3,
+               2
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The numerator is 6 + 4 = 10 and the denominator is 9, so m'(1) = 10/9.",
+         "mathjson": [
+            "Divide",
+            10,
+            9
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Divide",
+            -10,
+            9
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02021",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Divide",
+            10,
+            9
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": [
+            "Divide",
+            10,
+            3
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02022",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02036",
+      "BC-SKL-02038",
+      "BC-SKL-02039",
+      "BC-SKL-02040",
+      "BC-SKL-02042"
+   ],
+   "parameter_draw": {
+      "numerator": "x^2 - 3",
+      "denominator": "2x + 1",
+      "evaluation_point": 1
+   },
+   "authored_on": "2026-09-23",
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review"
+}

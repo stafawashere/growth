@@ -1,0 +1,243 @@
+{
+   "id": "ITM-AGT-02006-06",
+   "archetype_id": "BC-QA-02006",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let k(x) = -2/sqrt(x) + 5x^2 + 1 for x > 0. Which of the following is k'(x)?"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Multiply",
+            10,
+            "x"
+         ],
+         [
+            "Power",
+            "x",
+            [
+               "Rational",
+               -3,
+               2
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Rewrite the reciprocal of the radical as a power: k(x) = -2x^(-1/2) + 5x^2 + 1.",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               5,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            1,
+            [
+               "Multiply",
+               -2,
+               [
+                  "Power",
+                  "x",
+                  [
+                     "Rational",
+                     -1,
+                     2
+                  ]
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Differentiate term by term: -2(-1/2)x^(-3/2) + 5(2x) + 0. The two negative factors multiply to a positive one.",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               10,
+               "x"
+            ],
+            [
+               "Power",
+               "x",
+               [
+                  "Rational",
+                  -3,
+                  2
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "So k'(x) = x^(-3/2) + 10x.",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               10,
+               "x"
+            ],
+            [
+               "Power",
+               "x",
+               [
+                  "Rational",
+                  -3,
+                  2
+               ]
+            ]
+         ]
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02025",
+      "BC-SKL-02026",
+      "BC-SKL-02028",
+      "BC-SKL-02029",
+      "BC-SKL-02030",
+      "BC-SKL-02031"
+   ],
+   "parameter_draw": {
+      "coefficients": [
+         -2,
+         5,
+         1
+      ],
+      "exponents": [
+         "-1/2",
+         "2",
+         "0"
+      ]
+   },
+   "options": [
+      {
+         "id": "A",
+         "text": "10x + 1 + x^(-3/2)",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               10,
+               "x"
+            ],
+            1,
+            [
+               "Power",
+               "x",
+               [
+                  "Rational",
+                  -3,
+                  2
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02016",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "text": "10x + x^(-3/2)",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               10,
+               "x"
+            ],
+            [
+               "Power",
+               "x",
+               [
+                  "Rational",
+                  -3,
+                  2
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "text": "5x - 2/x^(3/2)",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               5,
+               "x"
+            ],
+            [
+               "Multiply",
+               -2,
+               [
+                  "Power",
+                  "x",
+                  [
+                     "Rational",
+                     -3,
+                     2
+                  ]
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02015",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "text": "10x - 2/sqrt(x)",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               10,
+               "x"
+            ],
+            [
+               "Multiply",
+               -2,
+               [
+                  "Power",
+                  "x",
+                  [
+                     "Rational",
+                     -1,
+                     2
+                  ]
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02017",
+         "violated_step": 0
+      }
+   ],
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review",
+   "authored_on": "2026-09-23"
+}

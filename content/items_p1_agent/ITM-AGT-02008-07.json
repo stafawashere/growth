@@ -1,0 +1,127 @@
+{
+   "id": "ITM-AGT-02008-07",
+   "archetype_id": "BC-QA-02008",
+   "variant_id": null,
+   "format": "short_answer",
+   "stem": {
+      "text": "Let w(t) = t^3 e^t. Find w'(t) and write it in factored form."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Multiply",
+         [
+            "Power",
+            "t",
+            2
+         ],
+         [
+            "Add",
+            "t",
+            3
+         ],
+         [
+            "Exp",
+            "t"
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Take u = t^3 and v = e^t, so u' = 3t^2 and v' = e^t.",
+         "mathjson": [
+            "Multiply",
+            3,
+            [
+               "Power",
+               "t",
+               2
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The product rule gives w'(t) = 3t^2 e^t + t^3 e^t.",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               3,
+               [
+                  "Power",
+                  "t",
+                  2
+               ],
+               [
+                  "Exp",
+                  "t"
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Power",
+                  "t",
+                  3
+               ],
+               [
+                  "Exp",
+                  "t"
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Factor out t^2 e^t, so w'(t) = t^2 (t + 3) e^t.",
+         "mathjson": [
+            "Multiply",
+            [
+               "Power",
+               "t",
+               2
+            ],
+            [
+               "Add",
+               "t",
+               3
+            ],
+            [
+               "Exp",
+               "t"
+            ]
+         ]
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02036",
+      "BC-SKL-02038",
+      "BC-SKL-02039",
+      "BC-SKL-02040",
+      "BC-SKL-02042"
+   ],
+   "parameter_draw": {
+      "power": 3,
+      "second_factor": "e^t",
+      "variable": "t"
+   },
+   "authored_on": "2026-09-23",
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review"
+}

@@ -1,0 +1,145 @@
+{
+   "id": "ITM-AGT-02002-08",
+   "archetype_id": "BC-QA-02002",
+   "variant_id": null,
+   "format": "short_answer",
+   "stem": {
+      "text": "Let w(x) = x/(x + 1). Using the definition w'(x) = lim as h approaches 0 of [w(x + h) - w(x)]/h, find w'(x)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Divide",
+         1,
+         [
+            "Power",
+            [
+               "Add",
+               "x",
+               1
+            ],
+            2
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Write the difference quotient: [(x + h)/(x + h + 1) - x/(x + 1)]/h.",
+         "mathjson": [
+            "Divide",
+            [
+               "Subtract",
+               [
+                  "Divide",
+                  [
+                     "Add",
+                     "x",
+                     "h"
+                  ],
+                  [
+                     "Add",
+                     "x",
+                     "h",
+                     1
+                  ]
+               ],
+               [
+                  "Divide",
+                  "x",
+                  [
+                     "Add",
+                     "x",
+                     1
+                  ]
+               ]
+            ],
+            "h"
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Combine over (x + h + 1)(x + 1); the numerator is (x + h)(x + 1) - x(x + h + 1) = x^2 + x + hx + h - x^2 - hx - x = h.",
+         "mathjson": [
+            "Divide",
+            "h",
+            [
+               "Multiply",
+               [
+                  "Add",
+                  "x",
+                  "h",
+                  1
+               ],
+               [
+                  "Add",
+                  "x",
+                  1
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Divide out h, leaving 1/[(x + h + 1)(x + 1)] for h not equal to 0.",
+         "mathjson": [
+            "Divide",
+            1,
+            [
+               "Multiply",
+               [
+                  "Add",
+                  "x",
+                  "h",
+                  1
+               ],
+               [
+                  "Add",
+                  "x",
+                  1
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Let h approach 0, so w'(x) = 1/(x + 1)^2.",
+         "mathjson": [
+            "Divide",
+            1,
+            [
+               "Power",
+               [
+                  "Add",
+                  "x",
+                  1
+               ],
+               2
+            ]
+         ]
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02006",
+      "BC-SKL-02007",
+      "BC-SKL-02008",
+      "BC-SKL-02009",
+      "BC-SKL-02027"
+   ],
+   "parameter_draw": {
+      "rule": "x/(x + 1)",
+      "denominator_shift": 1,
+      "target": "derivative_function",
+      "form": "increment"
+   },
+   "authored_on": "2026-09-23",
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review"
+}

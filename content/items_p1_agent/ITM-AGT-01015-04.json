@@ -1,0 +1,76 @@
+{
+   "id": "ITM-AGT-01015-04",
+   "archetype_id": "BC-QA-01015",
+   "variant_id": null,
+   "format": "short_answer",
+   "stem": {
+      "text": "Let k(x) = sqrt(12 - 3x) / (x + 2). Find the largest interval that contains x = 0 on which k is continuous, justify the behavior at each endpoint, and give the number of integers that interval contains."
+   },
+   "answer_key": {
+      "form": "numeric",
+      "mathjson": 6
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The radicand requires 12 - 3x >= 0, so x <= 4, and the denominator is zero at x = -2.",
+         "mathjson": [
+            "Subtract",
+            12,
+            [
+               "Multiply",
+               3,
+               "x"
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "k is a quotient of a square root function and a polynomial, each continuous on its domain, so k is continuous on (-infinity, -2) U (-2, 4].",
+         "mathjson": -2
+      },
+      {
+         "step": 3,
+         "text": "At x = 4 the function is defined and the limit from the left equals k(4) = 0, so the interval is closed there. At x = -2 k is undefined, so it is open there. The interval is (-2, 4].",
+         "mathjson": 4
+      },
+      {
+         "step": 4,
+         "text": "The integers in (-2, 4] are -1, 0, 1, 2, 3 and 4.",
+         "mathjson": 6
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-10",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "on"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-17",
+         "setting": "on"
+      }
+   ],
+   "skills": [
+      "BC-SKL-01046",
+      "BC-SKL-01047",
+      "BC-SKL-01048",
+      "BC-SKL-01049"
+   ],
+   "parameter_draw": {
+      "radicand": "12 - 3x",
+      "denominator_root": -2,
+      "anchor_point": 0
+   },
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review",
+   "authored_on": "2026-09-23"
+}

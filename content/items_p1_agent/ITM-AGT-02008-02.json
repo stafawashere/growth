@@ -1,0 +1,169 @@
+{
+   "id": "ITM-AGT-02008-02",
+   "archetype_id": "BC-QA-02008",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let h(x) = (3x + 1)/(x - 2) for x not equal to 2. Which of the following is h'(x)?"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Divide",
+         -7,
+         [
+            "Power",
+            [
+               "Subtract",
+               "x",
+               2
+            ],
+            2
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Take the numerator N = 3x + 1 and the denominator D = x - 2, so N' = 3 and D' = 1.",
+         "mathjson": 3
+      },
+      {
+         "step": 2,
+         "text": "The quotient rule gives h'(x) = (D N' - N D')/D^2 = (3(x - 2) - (3x + 1))/(x - 2)^2.",
+         "mathjson": [
+            "Divide",
+            [
+               "Subtract",
+               [
+                  "Multiply",
+                  3,
+                  [
+                     "Subtract",
+                     "x",
+                     2
+                  ]
+               ],
+               [
+                  "Add",
+                  [
+                     "Multiply",
+                     3,
+                     "x"
+                  ],
+                  1
+               ]
+            ],
+            [
+               "Power",
+               [
+                  "Subtract",
+                  "x",
+                  2
+               ],
+               2
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The numerator simplifies to 3x - 6 - 3x - 1 = -7.",
+         "mathjson": [
+            "Divide",
+            -7,
+            [
+               "Power",
+               [
+                  "Subtract",
+                  "x",
+                  2
+               ],
+               2
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Divide",
+            7,
+            [
+               "Power",
+               [
+                  "Subtract",
+                  "x",
+                  2
+               ],
+               2
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02021",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Divide",
+            -7,
+            [
+               "Subtract",
+               "x",
+               2
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02022",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Divide",
+            -7,
+            [
+               "Power",
+               [
+                  "Subtract",
+                  "x",
+                  2
+               ],
+               2
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02036",
+      "BC-SKL-02038",
+      "BC-SKL-02039",
+      "BC-SKL-02040",
+      "BC-SKL-02042"
+   ],
+   "parameter_draw": {
+      "numerator": "3x + 1",
+      "denominator": "x - 2"
+   },
+   "authored_on": "2026-09-23",
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review"
+}

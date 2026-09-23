@@ -1,0 +1,253 @@
+{
+   "id": "ITM-AGT-02010-03",
+   "archetype_id": "BC-QA-02010",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let g(x) = tan x + cot x. Combine the two terms into one fraction in sin x and cos x and find g'(x)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Subtract",
+         [
+            "Power",
+            [
+               "Sec",
+               "x"
+            ],
+            2
+         ],
+         [
+            "Power",
+            [
+               "Csc",
+               "x"
+            ],
+            2
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Write each term with sine and cosine, g(x) = sin x/cos x + cos x/sin x.",
+         "mathjson": [
+            "Add",
+            [
+               "Divide",
+               [
+                  "Sin",
+                  "x"
+               ],
+               [
+                  "Cos",
+                  "x"
+               ]
+            ],
+            [
+               "Divide",
+               [
+                  "Cos",
+                  "x"
+               ],
+               [
+                  "Sin",
+                  "x"
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Over the common denominator sin x cos x the numerator is sin^2 x + cos^2 x = 1, so g(x) = 1/(sin x cos x).",
+         "mathjson": [
+            "Divide",
+            1,
+            [
+               "Multiply",
+               [
+                  "Sin",
+                  "x"
+               ],
+               [
+                  "Cos",
+                  "x"
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The quotient rule with a constant numerator gives g'(x) = -(cos^2 x - sin^2 x)/(sin^2 x cos^2 x).",
+         "mathjson": [
+            "Divide",
+            [
+               "Negate",
+               [
+                  "Subtract",
+                  [
+                     "Power",
+                     [
+                        "Cos",
+                        "x"
+                     ],
+                     2
+                  ],
+                  [
+                     "Power",
+                     [
+                        "Sin",
+                        "x"
+                     ],
+                     2
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Power",
+                  [
+                     "Sin",
+                     "x"
+                  ],
+                  2
+               ],
+               [
+                  "Power",
+                  [
+                     "Cos",
+                     "x"
+                  ],
+                  2
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Split the fraction into sin^2 x/(sin^2 x cos^2 x) - cos^2 x/(sin^2 x cos^2 x), so g'(x) = sec^2 x - csc^2 x.",
+         "mathjson": [
+            "Subtract",
+            [
+               "Power",
+               [
+                  "Sec",
+                  "x"
+               ],
+               2
+            ],
+            [
+               "Power",
+               [
+                  "Csc",
+                  "x"
+               ],
+               2
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            [
+               "Power",
+               [
+                  "Sec",
+                  "x"
+               ],
+               2
+            ],
+            [
+               "Power",
+               [
+                  "Csc",
+                  "x"
+               ],
+               2
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02025",
+         "violated_step": 2
+      },
+      {
+         "id": "B",
+         "value": [
+            "Subtract",
+            [
+               "Negate",
+               [
+                  "Cot",
+                  "x"
+               ]
+            ],
+            [
+               "Tan",
+               "x"
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02026",
+         "violated_step": 2
+      },
+      {
+         "id": "C",
+         "value": 0,
+         "is_key": false,
+         "error_path": "BC-ERR-02026",
+         "violated_step": 2
+      },
+      {
+         "id": "D",
+         "value": [
+            "Subtract",
+            [
+               "Power",
+               [
+                  "Sec",
+                  "x"
+               ],
+               2
+            ],
+            [
+               "Power",
+               [
+                  "Csc",
+                  "x"
+               ],
+               2
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02043",
+      "BC-SKL-02044",
+      "BC-SKL-02045",
+      "BC-SKL-02046"
+   ],
+   "parameter_draw": {
+      "function": "tan x + cot x"
+   },
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review",
+   "authored_on": "2026-09-23"
+}

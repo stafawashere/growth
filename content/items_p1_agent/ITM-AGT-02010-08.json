@@ -1,0 +1,189 @@
+{
+   "id": "ITM-AGT-02010-08",
+   "archetype_id": "BC-QA-02010",
+   "variant_id": null,
+   "format": "short_answer",
+   "stem": {
+      "text": "Let p(theta) = sec theta tan theta. Rewrite p as a single quotient in sin theta and cos theta and find p'(theta), written in terms of sec theta and tan theta."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Power",
+            [
+               "Sec",
+               "theta"
+            ],
+            3
+         ],
+         [
+            "Multiply",
+            [
+               "Sec",
+               "theta"
+            ],
+            [
+               "Power",
+               [
+                  "Tan",
+                  "theta"
+               ],
+               2
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Since sec theta = 1/cos theta and tan theta = sin theta/cos theta, p(theta) = sin theta/cos^2 theta.",
+         "mathjson": [
+            "Divide",
+            [
+               "Sin",
+               "theta"
+            ],
+            [
+               "Power",
+               [
+                  "Cos",
+                  "theta"
+               ],
+               2
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The denominator cos^2 theta has derivative -2cos theta sin theta, so the quotient rule gives p'(theta) = (cos theta cos^2 theta + sin theta(2cos theta sin theta))/cos^4 theta.",
+         "mathjson": [
+            "Divide",
+            [
+               "Add",
+               [
+                  "Multiply",
+                  [
+                     "Cos",
+                     "theta"
+                  ],
+                  [
+                     "Power",
+                     [
+                        "Cos",
+                        "theta"
+                     ],
+                     2
+                  ]
+               ],
+               [
+                  "Multiply",
+                  [
+                     "Sin",
+                     "theta"
+                  ],
+                  2,
+                  [
+                     "Cos",
+                     "theta"
+                  ],
+                  [
+                     "Sin",
+                     "theta"
+                  ]
+               ]
+            ],
+            [
+               "Power",
+               [
+                  "Cos",
+                  "theta"
+               ],
+               4
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Cancel one cos theta and write cos^2 theta + 2sin^2 theta as 1 + sin^2 theta, so p'(theta) = (1 + sin^2 theta)/cos^3 theta.",
+         "mathjson": [
+            "Divide",
+            [
+               "Add",
+               1,
+               [
+                  "Power",
+                  [
+                     "Sin",
+                     "theta"
+                  ],
+                  2
+               ]
+            ],
+            [
+               "Power",
+               [
+                  "Cos",
+                  "theta"
+               ],
+               3
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Split the fraction: 1/cos^3 theta is sec^3 theta and sin^2 theta/cos^3 theta is sec theta tan^2 theta, so p'(theta) = sec^3 theta + sec theta tan^2 theta.",
+         "mathjson": [
+            "Add",
+            [
+               "Power",
+               [
+                  "Sec",
+                  "theta"
+               ],
+               3
+            ],
+            [
+               "Multiply",
+               [
+                  "Sec",
+                  "theta"
+               ],
+               [
+                  "Power",
+                  [
+                     "Tan",
+                     "theta"
+                  ],
+                  2
+               ]
+            ]
+         ]
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02043",
+      "BC-SKL-02044",
+      "BC-SKL-02045",
+      "BC-SKL-02046"
+   ],
+   "parameter_draw": {
+      "function": "sec theta tan theta",
+      "variable": "theta"
+   },
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review",
+   "authored_on": "2026-09-23"
+}

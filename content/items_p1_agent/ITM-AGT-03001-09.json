@@ -1,0 +1,143 @@
+{
+   "id": "ITM-AGT-03001-09",
+   "archetype_id": "BC-QA-03001",
+   "variant_id": null,
+   "format": "short_answer",
+   "stem": {
+      "text": "Let g(x) = e^(2x) sin^2(x), where sin^2(x) means (sin x)^2. Find the exact value of g'(pi/4)."
+   },
+   "answer_key": {
+      "form": "numeric",
+      "mathjson": [
+         "Multiply",
+         2,
+         [
+            "Exp",
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  2
+               ],
+               "Pi"
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "g is a product of two composites, so g'(x) = (e^(2x))' sin^2(x) + e^(2x) (sin^2(x))'.",
+         "mathjson": [
+            "Exp",
+            [
+               "Multiply",
+               2,
+               "x"
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "By the chain rule, (e^(2x))' = 2e^(2x) and (sin^2(x))' = 2 sin(x) cos(x). So g'(x) = 2e^(2x) sin^2(x) + 2e^(2x) sin(x) cos(x).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               2,
+               [
+                  "Power",
+                  [
+                     "Sin",
+                     "x"
+                  ],
+                  2
+               ],
+               [
+                  "Exp",
+                  [
+                     "Multiply",
+                     2,
+                     "x"
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               2,
+               [
+                  "Cos",
+                  "x"
+               ],
+               [
+                  "Exp",
+                  [
+                     "Multiply",
+                     2,
+                     "x"
+                  ]
+               ],
+               [
+                  "Sin",
+                  "x"
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "At x = pi/4, e^(2x) = e^(pi/2) and sin(pi/4) = cos(pi/4) = sqrt(2)/2, so sin^2 = sin * cos = 1/2.",
+         "mathjson": [
+            "Rational",
+            1,
+            2
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Then g'(pi/4) = 2e^(pi/2)(1/2) + 2e^(pi/2)(1/2) = 2e^(pi/2).",
+         "mathjson": [
+            "Multiply",
+            2,
+            [
+               "Exp",
+               [
+                  "Multiply",
+                  [
+                     "Rational",
+                     1,
+                     2
+                  ],
+                  "Pi"
+               ]
+            ]
+         ]
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-03002",
+      "BC-SKL-03003",
+      "BC-SKL-03006"
+   ],
+   "parameter_draw": {
+      "first_factor": "e^(2x)",
+      "second_factor": "sin^2(x)",
+      "enclosing_rule": "product",
+      "point": "pi/4"
+   },
+   "authored_on": "2026-09-23",
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review"
+}

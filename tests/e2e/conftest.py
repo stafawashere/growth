@@ -230,6 +230,7 @@ def world(tmp_path, forbid_network):
       "GROWTH_TUTOR_CASSETTE": str(CASSETTE_PATH),
       "GROWTH_RNG_SEED": "7",
       "GROWTH_EXAM_DATE": "2027-05-10",
+      "GROWTH_ITEMS_DIR": "none",
    }
    application = build_application(environment)
    application.state.settings.verifier = FakeVerifier(application.state.settings.rp_id)

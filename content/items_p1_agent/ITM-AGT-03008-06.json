@@ -1,0 +1,189 @@
+{
+   "id": "ITM-AGT-03008-06",
+   "archetype_id": "BC-QA-03008",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "If y = x e^(-x), which of the following is d^2y/dx^2?"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Multiply",
+         [
+            "Subtract",
+            "x",
+            2
+         ],
+         [
+            "Exp",
+            [
+               "Negate",
+               "x"
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The product rule gives dy/dx = e^(-x) - x e^(-x) = (1 - x) e^(-x).",
+         "mathjson": [
+            "Multiply",
+            [
+               "Subtract",
+               1,
+               "x"
+            ],
+            [
+               "Exp",
+               [
+                  "Negate",
+                  "x"
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Differentiate (1 - x) e^(-x) with the product rule: d^2y/dx^2 = -e^(-x) - (1 - x) e^(-x).",
+         "mathjson": [
+            "Subtract",
+            [
+               "Multiply",
+               -1,
+               [
+                  "Exp",
+                  [
+                     "Negate",
+                     "x"
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Subtract",
+                  1,
+                  "x"
+               ],
+               [
+                  "Exp",
+                  [
+                     "Negate",
+                     "x"
+                  ]
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Factor out e^(-x): d^2y/dx^2 = (x - 2) e^(-x).",
+         "mathjson": [
+            "Multiply",
+            [
+               "Subtract",
+               "x",
+               2
+            ],
+            [
+               "Exp",
+               [
+                  "Negate",
+                  "x"
+               ]
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Multiply",
+            [
+               "Subtract",
+               "x",
+               2
+            ],
+            [
+               "Exp",
+               [
+                  "Negate",
+                  "x"
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": [
+            "Multiply",
+            [
+               "Subtract",
+               1,
+               "x"
+            ],
+            [
+               "Exp",
+               [
+                  "Negate",
+                  "x"
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03021",
+         "violated_step": 0
+      },
+      {
+         "id": "C",
+         "value": [
+            "Power",
+            [
+               "Multiply",
+               [
+                  "Subtract",
+                  1,
+                  "x"
+               ],
+               [
+                  "Exp",
+                  [
+                     "Negate",
+                     "x"
+                  ]
+               ]
+            ],
+            2
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03022",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-04",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-03030",
+      "BC-SKL-03031",
+      "BC-SKL-03032",
+      "BC-SKL-03033",
+      "BC-SKL-03034"
+   ],
+   "parameter_draw": {
+      "notation": "Leibniz",
+      "exponential_rate": -1
+   },
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review",
+   "authored_on": "2026-09-23"
+}

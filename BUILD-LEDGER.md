@@ -10,6 +10,36 @@ purpose: Where the application build stands, session by session, so the next ses
 Application code lives at the repository root under `app/` and `tests/`, at the paths docs/plan names. The project CLAUDE.md still says "docs-only, no product"; that sentence is the operator's to amend and this ledger only records the conflict. Tooling: uv-managed Python 3.12.13 in `.venv/`, dependencies in `pyproject.toml`, tests via `.venv/bin/python -m pytest`. Every H2 below carries a tag because `qa/04_tags.py` scans root-level Markdown: [verified] means the test output or the registry was checked in the session named, [inferred] means a judgement.
 
 ## Done [verified]
+- Twenty-third session, 2026-09-23, serving the agent-drafted P1 items under the operator's
+  ruling and keeping them out of every operator count. `content/items_p1_agent/` holds 130 drafts,
+  10 per P1 archetype, each with `"authored_by": "claude-opus-5-5 agent draft, pending operator
+  review"`, audited by an independent agent's blind re-solve on 2026-09-23 (its README says what
+  was corrected). `app/items/ingest.py` `provenance_model` now reads `authored_by`: absent gives
+  `operator` as before, present gives that string, and `is_operator_authored` is the one test for
+  operator provenance (test_an_agent_draft_keeps_its_author_as_the_provenance_model, red
+  `assert 'operator' == 'claude-opus-5-5 agent draft, pending operator review'`, then green).
+  `tools/check_items.py` prints a second table, operator-authored items per archetype, which is
+  the one exit criterion 7 and gates 17 and 30 read. `tools/draw_key_audit_sample.py` draws only
+  operator items, and fixing that exposed two older defects that meant it could never draw
+  anything. It filtered on status `published`, which ingest never writes, because the bank's
+  published status is `verified`. It also read `archetype["unit"]`, which archetype records do
+  not carry, so it raised `KeyError: 'unit'`. It now uses `PUBLISHED_STATUS` and `primary_unit`.
+  `tests/tools/test_agent_drafts_uncounted.py` puts one operator item and one agent draft side by
+  side. It went red with both filters removed (`assert 2 == 1` and a sample holding both ids),
+  then green. Gates 17, 29 and 30 still have no test function (gate_status: missing), so nothing
+  there counted the drafts. `tools/gate_status.py` counts gate tests, not items, and needed no
+  change. The app now loads a bank directory. `GROWTH_ITEMS_DIR` (`app/main.py`) defaults to
+  `content/items_p1_agent` when that directory exists, `none` turns it off, and a set path that is
+  not a directory stops startup. `app/runtime/bank.py` `ItemSource` goes through
+  `ingest.ingest_new_records` on the bank's first query, which skips ids already in items. It
+  runs then and not at build time because the checks take about 12 s over 130 records and most
+  application builds (the API wiring tests among them) never open a session.
+  `tests/e2e/conftest.py`'s gate 23 world sets `GROWTH_ITEMS_DIR=none`, so gate 23 still serves
+  only its own `ITM-SYN` fixtures. `tests/e2e/test_agent_drafts_served.py` builds the app with the
+  variable unset, registers, and drains sessions with the replay tutor until a `BC-UNIT-02` item
+  is served. It answers that item, rates it, reads its feedback, and checks that the stored
+  provenance model is the agent author. It went red with the default made `None`, then green.
+  `tools/check_items.py content/items_p1_agent` exits 0 with 130 clean and 10 per archetype.
 - Slice 4, twentieth session, 2026-09-23, the BC-PT deterministic labelling pass and bringing the
   Claude-only tier's overrun down. `data/bc_pt_determinism_labels.json` carries one `[inferred]`
   label per active BC-PT record, `deterministic` or `model_required`, with a short reason read
@@ -834,6 +864,19 @@ Nothing. The fourteenth session closed with the suite green and every module of 
 done or listed below as needing the operator.
 
 ## Known defects [verified]
+
+From the twenty-third session, 2026-09-23, found and not fixed.
+
+- 51 of the 130 agent drafts are short answer only and carry no options, but R29's alternation
+  (`app/engine/select.py` `format_for_attempt`, `app/session/service.py`
+  `resolve_served_format`) gives every second stage-unsupported attempt on an archetype the MCQ
+  format whatever the item carries. Such an item then reaches the student as `format: "mcq"` with
+  `options: None`, and `app/items/grade.py` returns it ungraded (`correct: None`). This was seen
+  on `ITM-AGT-02010-08` during this session's end to end run. Stages example and completion are
+  always short answer and are not affected. 31 more drafts are MCQs with three options, while 11
+  describes four. Choices for the operator: author options for the 51, have the MCQ turn pick only
+  items that carry options, or serve an options-less item as short answer (the fixture tests named
+  under the twenty-third session's decisions would then need changing).
 
 From the seventeenth session, 2026-09-23, found and not fixed.
 
@@ -1861,6 +1904,21 @@ on the unauthenticated-route list (09 line ~96, ruling 3).
   `/growth-tokens.css` and `/` reported as extra on the left side), green restored. 09's paragraph
   rewritten to name all eleven and both source modules.
 
+Twenty-third session, on the operator's delegated ruling on the agent-drafted items.
+
+- The ruling: the 130 drafts in `content/items_p1_agent/` may be served so the app can teach now,
+  but they are not the operator's hand-authored items. Exit criterion 7, gates 17 and 30, and gate
+  29's audit sample count only items whose provenance model is `operator`. Only the operator may
+  relabel a draft `operator`, by removing its `authored_by` or setting it to `operator`.
+- Implementation choice: the bank directory is ingested on the bank's first query and not when
+  the application is built, for the reason given under Done. A failed ingestion leaves the source
+  pending, so the next query raises again and the bank never ends up silently empty.
+- Not decided here, left for the operator (see Known defects): what an item with no options should
+  do on an R29 MCQ turn. A guard that served such an item as short answer was tried and taken
+  out. `tests/session/test_serve_format.py` (4 tests) and `tests/api/test_feedback_sentence.py`
+  and `tests/api/test_routes.py` (7 tests) went red under it, because their fixture items carry
+  `options=None` and expect the MCQ turn. Changing those tests is the operator's call.
+
 ## Decisions taken on the operator's instruction, 2026-09-20 [inferred]
 
 Sixth session, on the instruction "answer all decisions for me". Every open question the ledger
@@ -1924,6 +1982,12 @@ P1 reads 28 of 31 (gate_status: 17, 29 and 30 missing). P2 cannot start: its ent
 item below needs content, a key, a download or a ruling.
 
 Human-only, in the order that unblocks the most:
+
+0a. Twenty-third session: the operator reviews the 130 agent drafts in `content/items_p1_agent/`
+   (its README lists what the audit left open) and rules on the options-less MCQ turn under Known
+   defects. The drafts are served now but count toward nothing. Gates 17, 29 and 30 and exit
+   criterion 7 still wait on items with operator provenance, whether hand-authored or drafts the
+   operator has relabelled after review.
 
 0. Closed the twentieth and twenty-first sessions, 2026-09-23: the BC-PT labelling pass
    (`data/bc_pt_determinism_labels.json`, 48 of 76 deterministic and 28 model_required) and the

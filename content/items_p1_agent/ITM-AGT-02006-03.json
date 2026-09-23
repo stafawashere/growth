@@ -1,0 +1,135 @@
+{
+   "id": "ITM-AGT-02006-03",
+   "archetype_id": "BC-QA-02006",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let f(x) = x^3 - 12/x + 5 for x not equal to 0. What is the value of f'(2)?"
+   },
+   "answer_key": {
+      "form": "numeric",
+      "mathjson": 15
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Rewrite the reciprocal as a power: f(x) = x^3 - 12x^(-1) + 5.",
+         "mathjson": [
+            "Add",
+            [
+               "Power",
+               "x",
+               3
+            ],
+            5,
+            [
+               "Multiply",
+               -12,
+               [
+                  "Power",
+                  "x",
+                  -1
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Differentiate term by term: 3x^2 - 12(-1)x^(-2) + 0 = 3x^2 + 12x^(-2).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               3,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               12,
+               [
+                  "Power",
+                  "x",
+                  -2
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Substitute x = 2: 3(4) + 12/4 = 12 + 3 = 15.",
+         "mathjson": 15
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02025",
+      "BC-SKL-02026",
+      "BC-SKL-02028",
+      "BC-SKL-02029",
+      "BC-SKL-02030",
+      "BC-SKL-02031"
+   ],
+   "parameter_draw": {
+      "coefficients": [
+         1,
+         -12,
+         5
+      ],
+      "exponents": [
+         "3",
+         "-1",
+         "0"
+      ],
+      "evaluation_point": 2
+   },
+   "options": [
+      {
+         "id": "A",
+         "text": "1",
+         "value": 1,
+         "is_key": false,
+         "error_path": "BC-ERR-02015",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "text": "6",
+         "value": 6,
+         "is_key": false,
+         "error_path": "BC-ERR-02017",
+         "violated_step": 0
+      },
+      {
+         "id": "C",
+         "text": "20",
+         "value": 20,
+         "is_key": false,
+         "error_path": "BC-ERR-02016",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "text": "15",
+         "value": 15,
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review",
+   "authored_on": "2026-09-23"
+}

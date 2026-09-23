@@ -1,0 +1,140 @@
+{
+   "id": "ITM-AGT-02007-06",
+   "archetype_id": "BC-QA-02007",
+   "variant_id": null,
+   "format": "short_answer",
+   "stem": {
+      "text": "Let q(t) = 5e^t - 3cos(t) + t^4. Find q'(t)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Multiply",
+            5,
+            [
+               "Exp",
+               "t"
+            ]
+         ],
+         [
+            "Multiply",
+            3,
+            [
+               "Sin",
+               "t"
+            ]
+         ],
+         [
+            "Multiply",
+            4,
+            [
+               "Power",
+               "t",
+               3
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The derivative of e^t is e^t, so 5e^t differentiates to 5e^t.",
+         "mathjson": [
+            "Multiply",
+            5,
+            [
+               "Exp",
+               "t"
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The derivative of cos(t) is -sin(t), so -3cos(t) differentiates to 3sin(t).",
+         "mathjson": [
+            "Multiply",
+            3,
+            [
+               "Sin",
+               "t"
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "By the power rule, t^4 differentiates to 4t^3.",
+         "mathjson": [
+            "Multiply",
+            4,
+            [
+               "Power",
+               "t",
+               3
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Combine the three terms.",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               5,
+               [
+                  "Exp",
+                  "t"
+               ]
+            ],
+            [
+               "Multiply",
+               3,
+               [
+                  "Sin",
+                  "t"
+               ]
+            ],
+            [
+               "Multiply",
+               4,
+               [
+                  "Power",
+                  "t",
+                  3
+               ]
+            ]
+         ]
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02032",
+      "BC-SKL-02033",
+      "BC-SKL-02034"
+   ],
+   "parameter_draw": {
+      "exponential_coefficient": 5,
+      "cosine_coefficient": -3,
+      "power": 4,
+      "variable": "t"
+   },
+   "authored_on": "2026-09-23",
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review"
+}

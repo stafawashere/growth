@@ -1,0 +1,156 @@
+{
+   "id": "ITM-AGT-03008-04",
+   "archetype_id": "BC-QA-03008",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "The curve x^2 + xy + y^2 = 7 passes through the point (1, 2). What is the value of d^2y/dx^2 at (1, 2)?"
+   },
+   "answer_key": {
+      "form": "numeric",
+      "mathjson": [
+         "Rational",
+         -42,
+         125
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Differentiate implicitly: 2x + y + x (dy/dx) + 2y (dy/dx) = 0, so dy/dx = -(2x + y)/(x + 2y), which is -4/5 at (1, 2).",
+         "mathjson": [
+            "Rational",
+            -4,
+            5
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Differentiate 2x + y + x y' + 2y y' = 0 again, with the product rule on x y' and on 2y y': 2 + 2y' + x y'' + 2(y')^2 + 2y y'' = 0.",
+         "mathjson": 0
+      },
+      {
+         "step": 3,
+         "text": "Solve for y'': y'' = -(2 + 2y' + 2(y')^2)/(x + 2y).",
+         "mathjson": [
+            "Negate",
+            [
+               "Divide",
+               [
+                  "Add",
+                  2,
+                  [
+                     "Multiply",
+                     2,
+                     [
+                        "Rational",
+                        -4,
+                        5
+                     ]
+                  ],
+                  [
+                     "Multiply",
+                     2,
+                     [
+                        "Power",
+                        [
+                           "Rational",
+                           -4,
+                           5
+                        ],
+                        2
+                     ]
+                  ]
+               ],
+               [
+                  "Add",
+                  1,
+                  [
+                     "Multiply",
+                     2,
+                     2
+                  ]
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "At (1, 2) with y' = -4/5: y'' = -(2 - 8/5 + 32/25)/5 = -(42/25)/5 = -42/125.",
+         "mathjson": [
+            "Rational",
+            -42,
+            125
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Rational",
+            -62,
+            125
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03008",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            -4,
+            5
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03021",
+         "violated_step": 0
+      },
+      {
+         "id": "C",
+         "value": [
+            "Rational",
+            16,
+            25
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03022",
+         "violated_step": 0
+      },
+      {
+         "id": "D",
+         "value": [
+            "Rational",
+            -42,
+            125
+         ],
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-04",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-03030",
+      "BC-SKL-03031",
+      "BC-SKL-03032",
+      "BC-SKL-03033",
+      "BC-SKL-03034"
+   ],
+   "parameter_draw": {
+      "curve": "x^2 + xy + y^2 = 7",
+      "point": [
+         1,
+         2
+      ]
+   },
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review",
+   "authored_on": "2026-09-23"
+}

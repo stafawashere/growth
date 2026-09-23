@@ -1,0 +1,146 @@
+{
+   "id": "ITM-AGT-02002-09",
+   "archetype_id": "BC-QA-02002",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let f(x) = 2x^2 + 1. Using the definition f'(3) = lim as x approaches 3 of [f(x) - f(3)]/(x - 3), find f'(3)."
+   },
+   "answer_key": {
+      "form": "numeric",
+      "mathjson": 12
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Write the two point quotient: [2x^2 + 1 - 19]/(x - 3), since f(3) = 19.",
+         "mathjson": [
+            "Divide",
+            [
+               "Subtract",
+               [
+                  "Add",
+                  [
+                     "Multiply",
+                     2,
+                     [
+                        "Power",
+                        "x",
+                        2
+                     ]
+                  ],
+                  1
+               ],
+               19
+            ],
+            [
+               "Subtract",
+               "x",
+               3
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Simplify the numerator to 2x^2 - 18 and factor it as 2(x - 3)(x + 3).",
+         "mathjson": [
+            "Multiply",
+            2,
+            [
+               "Subtract",
+               "x",
+               3
+            ],
+            [
+               "Add",
+               "x",
+               3
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Divide out the factor x - 3, leaving 2(x + 3) for x not equal to 3.",
+         "mathjson": [
+            "Multiply",
+            2,
+            [
+               "Add",
+               "x",
+               3
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Let x approach 3 by substitution: 2(6), so f'(3) = 12.",
+         "mathjson": 12
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 12,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": [
+            "Multiply",
+            4,
+            "x"
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02030",
+         "violated_step": 3
+      },
+      {
+         "id": "C",
+         "value": [
+            "Multiply",
+            2,
+            [
+               "Add",
+               "x",
+               3
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02006",
+         "violated_step": 3
+      },
+      {
+         "id": "D",
+         "value": 0,
+         "is_key": false,
+         "error_path": "BC-ERR-02005",
+         "violated_step": 2
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02006",
+      "BC-SKL-02007",
+      "BC-SKL-02008",
+      "BC-SKL-02009",
+      "BC-SKL-02027"
+   ],
+   "parameter_draw": {
+      "rule": "2x^2 + 1",
+      "quadratic_coefficient": 2,
+      "constant": 1,
+      "point": 3,
+      "target": "value_at_point",
+      "form": "two_point"
+   },
+   "authored_on": "2026-09-23",
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review"
+}

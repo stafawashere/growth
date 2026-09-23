@@ -1,0 +1,113 @@
+{
+   "id": "ITM-AGT-03004-05",
+   "archetype_id": "BC-QA-03004",
+   "variant_id": null,
+   "format": "short_answer",
+   "stem": {
+      "text": "The variables x and y are both differentiable functions of t and satisfy x^2 + xy = 12 for all t. At the instant when x = 2, y = 4 and dx/dt = 2, find dy/dt."
+   },
+   "answer_key": {
+      "form": "numeric",
+      "mathjson": -8
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Differentiate both sides with respect to t. Each variable carries its own rate, and xy needs the product rule: 2x(dx/dt) + y(dx/dt) + x(dy/dt) = 0.",
+         "mathjson": [
+            "Equal",
+            [
+               "Add",
+               [
+                  "Add",
+                  [
+                     "Multiply",
+                     2,
+                     "dxdt",
+                     "x"
+                  ],
+                  [
+                     "Multiply",
+                     "dxdt",
+                     "y"
+                  ]
+               ],
+               [
+                  "Multiply",
+                  "dydt",
+                  "x"
+               ]
+            ],
+            0
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Solve for dy/dt: dy/dt = -(2x + y)(dx/dt)/x.",
+         "mathjson": [
+            "Negate",
+            [
+               "Divide",
+               [
+                  "Multiply",
+                  "dxdt",
+                  [
+                     "Add",
+                     [
+                        "Multiply",
+                        2,
+                        "x"
+                     ],
+                     "y"
+                  ]
+               ],
+               "x"
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Substitute x = 2, y = 4 and dx/dt = 2: dy/dt = -(4 + 4)(2)/2 = -8.",
+         "mathjson": -8
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-13",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-03007",
+      "BC-SKL-03008",
+      "BC-SKL-03009",
+      "BC-SKL-03010",
+      "BC-SKL-03011",
+      "BC-SKL-03014"
+   ],
+   "parameter_draw": {
+      "equation": "x^2 + xy = 12",
+      "point": [
+         2,
+         4
+      ],
+      "dx_dt": 2,
+      "target": "dy/dt at instant"
+   },
+   "authored_on": "2026-09-23",
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review"
+}

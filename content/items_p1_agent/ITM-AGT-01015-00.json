@@ -1,0 +1,112 @@
+{
+   "id": "ITM-AGT-01015-00",
+   "archetype_id": "BC-QA-01015",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let h(x) = sqrt(x + 3) / (x^2 - 4x). Consider the largest interval that contains x = 1 and on which h is continuous. How many integers does that interval contain?"
+   },
+   "answer_key": {
+      "form": "numeric",
+      "mathjson": 3
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The radicand requires x >= -3, and the denominator x^2 - 4x = x(x - 4) is zero at x = 0 and x = 4, so the excluded inputs are x < -3, x = 0 and x = 4.",
+         "mathjson": [
+            "Multiply",
+            "x",
+            [
+               "Subtract",
+               "x",
+               4
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "h is a quotient of a square root function and a polynomial, each continuous on its domain, so h is continuous at every input of its domain [-3, 0) U (0, 4) U (4, infinity).",
+         "mathjson": [
+            "Add",
+            "x",
+            3
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The piece of the domain that contains x = 1 is the open interval (0, 4), and both endpoints are open because h is undefined there.",
+         "mathjson": 4
+      },
+      {
+         "step": 4,
+         "text": "The integers in (0, 4) are 1, 2 and 3.",
+         "mathjson": 3
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 3,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": 5,
+         "is_key": false,
+         "error_path": "BC-ERR-01032",
+         "violated_step": 2
+      },
+      {
+         "id": "C",
+         "value": 4,
+         "is_key": false,
+         "error_path": "BC-ERR-01032",
+         "violated_step": 2
+      },
+      {
+         "id": "D",
+         "value": 7,
+         "is_key": false,
+         "error_path": "BC-ERR-01031",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-10",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "on"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-17",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-01046",
+      "BC-SKL-01047",
+      "BC-SKL-01048",
+      "BC-SKL-01049"
+   ],
+   "parameter_draw": {
+      "radicand_shift": 3,
+      "denominator_roots": [
+         0,
+         4
+      ],
+      "anchor_point": 1
+   },
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review",
+   "authored_on": "2026-09-23"
+}

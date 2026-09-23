@@ -1,0 +1,307 @@
+{
+   "id": "ITM-AGT-03001-06",
+   "archetype_id": "BC-QA-03001",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let y = x(x^2 + 1)^5. Which of the following is dy/dx, written in factored form?"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Multiply",
+         [
+            "Power",
+            [
+               "Add",
+               1,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            4
+         ],
+         [
+            "Add",
+            1,
+            [
+               "Multiply",
+               11,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "y is a product of x and the composite (x^2 + 1)^5, so dy/dx = 1 * (x^2 + 1)^5 + x * d/dx[(x^2 + 1)^5].",
+         "mathjson": [
+            "Power",
+            [
+               "Add",
+               1,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            5
+         ]
+      },
+      {
+         "step": 2,
+         "text": "By the chain rule, d/dx[(x^2 + 1)^5] = 5(x^2 + 1)^4 * 2x = 10x(x^2 + 1)^4.",
+         "mathjson": [
+            "Multiply",
+            10,
+            "x",
+            [
+               "Power",
+               [
+                  "Add",
+                  1,
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ]
+               ],
+               4
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "So dy/dx = (x^2 + 1)^5 + 10x^2 (x^2 + 1)^4.",
+         "mathjson": [
+            "Add",
+            [
+               "Power",
+               [
+                  "Add",
+                  1,
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ]
+               ],
+               5
+            ],
+            [
+               "Multiply",
+               10,
+               [
+                  "Power",
+                  "x",
+                  2
+               ],
+               [
+                  "Power",
+                  [
+                     "Add",
+                     1,
+                     [
+                        "Power",
+                        "x",
+                        2
+                     ]
+                  ],
+                  4
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Factor out (x^2 + 1)^4: dy/dx = (x^2 + 1)^4 (x^2 + 1 + 10x^2) = (x^2 + 1)^4 (11x^2 + 1).",
+         "mathjson": [
+            "Multiply",
+            [
+               "Power",
+               [
+                  "Add",
+                  1,
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ]
+               ],
+               4
+            ],
+            [
+               "Add",
+               1,
+               [
+                  "Multiply",
+                  11,
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ]
+               ]
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Multiply",
+            10,
+            "x",
+            [
+               "Power",
+               [
+                  "Add",
+                  1,
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ]
+               ],
+               4
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03006",
+         "violated_step": 0
+      },
+      {
+         "id": "B",
+         "value": [
+            "Multiply",
+            [
+               "Power",
+               [
+                  "Add",
+                  1,
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ]
+               ],
+               4
+            ],
+            [
+               "Add",
+               1,
+               [
+                  "Power",
+                  "x",
+                  2
+               ],
+               [
+                  "Multiply",
+                  5,
+                  "x"
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03001",
+         "violated_step": 2
+      },
+      {
+         "id": "C",
+         "value": [
+            "Multiply",
+            [
+               "Power",
+               [
+                  "Add",
+                  1,
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ]
+               ],
+               4
+            ],
+            [
+               "Add",
+               1,
+               [
+                  "Multiply",
+                  11,
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ]
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": [
+            "Multiply",
+            10,
+            [
+               "Power",
+               "x",
+               2
+            ],
+            [
+               "Power",
+               [
+                  "Add",
+                  1,
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ]
+               ],
+               4
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03006",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-03002",
+      "BC-SKL-03003",
+      "BC-SKL-03006"
+   ],
+   "parameter_draw": {
+      "polynomial_factor": "x",
+      "outer": "fifth power",
+      "inner": "x^2 + 1",
+      "enclosing_rule": "product",
+      "answer_form": "factored"
+   },
+   "authored_on": "2026-09-23",
+   "authored_by": "claude-opus-5-5 agent draft, pending operator review"
+}

@@ -740,6 +740,34 @@ def figures():
    add("tier.hundred_claude_only.pre_cadence_ruling_worst_case_overrun",
        pre_cadence_ruling_worst_case - BUDGET_CEILING)
 
+   # Offline split, docs/plan/14-token-economy.md "Offline work on the operator's Claude Code
+   # subscription", operator's instruction of 2026-09-23: use the operator's Claude Code
+   # subscription to cut AI cost wherever the terms allow. Template authoring and verifier
+   # blind re-solves are development work that produces content committed to the repository,
+   # the same shape as the 130 items in content/items_p1_agent/ authored on 2026-09-23 at $0 API
+   # spend, so both lines move off the API key and onto Claude Code sessions. Every other role
+   # in the tier serves a live student or grades a live attempt and stays on the API key, per the
+   # Agent SDK quickstart's own instruction against routing product runtime traffic through a
+   # claude.ai login or rate limit
+   # (https://code.claude.com/docs/en/agent-sdk/quickstart.md [verified]).
+   #
+   # Evals do not split. Golden set 1 already costs $0.00, moved onto the deterministic template
+   # gate in "The $100 tier, line by line" above, so there is nothing left on it to move. Golden
+   # set 2 measures the grader and golden set 3 measures the transcriber, both the production
+   # prompt run on its production model against fixed operator labels; a Claude Code agent is a
+   # different harness, a different system prompt and a different tool surface, so running either
+   # set there would not measure what ships to a student. Both stay on the API key in full.
+   claude_only_offline_cycle = claude_only_template_cycle + claude_only_verifier_cycle
+   claude_only_api_cycle = claude_only_hundred - claude_only_offline_cycle
+   add("tier.hundred_claude_only.offline_template_line", claude_only_template_cycle)
+   add("tier.hundred_claude_only.offline_verifier_line", claude_only_verifier_cycle)
+   add("tier.hundred_claude_only.offline_cycle", claude_only_offline_cycle)
+   add("tier.hundred_claude_only.api_cycle", claude_only_api_cycle)
+   add("tier.hundred_claude_only.api_headroom", BUDGET_CEILING - claude_only_api_cycle)
+   add("tier.hundred_claude_only.offline_share", claude_only_offline_cycle / claude_only_hundred)
+   add("evals.claude_only.api_share", claude_only_evals)
+   add("evals.claude_only.offline_share", 0.0)
+
    # Kappa.
    n_aggregate = GOLDEN_SET_2_POINT_TYPES * GOLDEN_SET_2_RESPONSES
    sd, se, low, high = kappa_interval(KAPPA_PO, KAPPA_PE, n_aggregate, KAPPA_Z)

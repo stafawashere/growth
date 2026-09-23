@@ -81,6 +81,32 @@ def test_claude_only_tier_reads_the_2026_09_23_eval_cadence_ruling():
    )
 
 
+def test_claude_only_tier_splits_into_runtime_api_and_offline_claude_code_lines():
+   """Operator's instruction of 2026-09-23: template authoring and verifier re-solves are
+   development work that moves to Claude Code sessions at $0 API spend, while the tutor, grader,
+   transcriber, diagnostician and screen keep serving live students and stay on the API key. A
+   regression that dropped a runtime role out of the API total, or moved a runtime role into the
+   offline share, would silently understate what the app still has to pay for at exam day."""
+   figures = cost_model.figures()
+
+   offline = figures["tier.hundred_claude_only.offline_template_line"] + \
+      figures["tier.hundred_claude_only.offline_verifier_line"]
+   api = figures["tier.hundred_claude_only.cycle"] - offline
+
+   assert round(figures["tier.hundred_claude_only.offline_cycle"], 2) == round(offline, 2)
+   assert round(figures["tier.hundred_claude_only.api_cycle"], 2) == round(api, 2)
+   assert round(figures["tier.hundred_claude_only.offline_cycle"], 2) == 40.81
+   assert round(figures["tier.hundred_claude_only.api_cycle"], 2) == 52.14
+   assert round(figures["tier.hundred_claude_only.api_headroom"], 2) == 47.86
+   assert round(figures["tier.hundred_claude_only.offline_share"], 4) == round(offline / figures["tier.hundred_claude_only.cycle"], 4)
+
+   # Evals do not split: golden set 2 grades the production grader prompt and golden set 3 reads
+   # the production transcriber prompt, both on their production model, so both stay on the API
+   # key entire rather than moving to a different harness that would measure something else.
+   assert figures["evals.claude_only.api_share"] == figures["tier.hundred_claude_only.evals_line"]
+   assert figures["evals.claude_only.offline_share"] == 0.0
+
+
 @pytest.mark.parametrize("document", DOCUMENTS, ids=lambda path: path.name)
 def test_every_dollar_figure_in_the_document_is_emitted_by_the_calculator(document):
    """A figure patched by hand in one section while the model moves in another is how the last

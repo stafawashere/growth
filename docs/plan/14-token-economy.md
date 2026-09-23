@@ -90,6 +90,8 @@ file never patches a figure a document has already quoted.
 | Haiku 4.5 screen between transcriber and grader | unchanged from 13 | $0.20 |
 | evals, golden set 1 on the template gate, golden set 2 mixed at canary cadence 2, golden set 3 monthly (cadence 9) | directions 3 and 5, cadence ruled 2026-09-23 | $22.88 |
 | **Total** | | **$92.95** |
+| of which, on the API key (runtime: tutor, grader, transcriber, diagnostician, screen, evals) | "Offline work on the operator's Claude Code subscription" below | **$52.14** |
+| of which, offline on the operator's Claude Code subscription (template author, verifier re-solves) | same | **$40.81**, 43.90 percent of the total |
 
 [measured: the `tier.hundred_claude_only` lines of `python3 tools/cost_model.py`]
 
@@ -178,6 +180,75 @@ four is a sourced number, which is exactly why the fifth lever, cadence, is the 
 ruled on directly above: it was always an operator choice rather than a sourced measurement, so it
 did not belong in this "no honest lever" list in the first place. $92.95 is the tier's price under
 a Claude-only engine at that ruled cadence, on the operator's own measurement.
+
+## Offline work on the operator's Claude Code subscription [verified]
+
+Ruled 2026-09-23, on the operator's instruction: use the operator's Claude Code subscription to
+cut the AI cost wherever the terms allow. This section prices what moves, what may not, and the
+pacing risk of the plan it depends on.
+
+**Runtime app calls stay on the API key.** The Claude Agent SDK quickstart states: "Unless
+previously approved, Anthropic does not allow third party developers to offer claude.ai login or
+rate limits for their products, including agents built on the Claude Agent SDK. Please use the API
+key authentication methods described in this document instead."
+(https://code.claude.com/docs/en/agent-sdk/quickstart.md [verified]). The tutor, the grader, the
+transcriber, the diagnostician and the Haiku 4.5 screen each serve a live student or grade a live
+attempt inside the running app, so every one of those calls is a product runtime call and none of
+them may route through a subscription token. They keep the pricing already quoted above:
+$5.01, $12.44, $3.41, $8.21 and $0.20.
+
+**Development work in Claude Code sessions is the operator's own tool, not the app's.** A session
+of Claude Code on a Pro or Max plan is the operator working, the same way any other editor or
+terminal is
+(https://code.claude.com/docs/en/authentication.md, headless sessions at
+https://code.claude.com/docs/en/headless.md [verified]). Template authoring and the verifier's
+blind re-solve and distractor audit are exactly that: the operator, in a Claude Code session,
+producing content that is committed to the repository, not a call the running app makes to serve a
+student. The 130 drafts under `content/items_p1_agent/` were authored this way on 2026-09-23 at
+$0.00 API spend, which is the precedent this section prices against. Both lines move off the API
+key:
+
+| Line | On the API key | On the Claude Code subscription |
+| --- | --- | --- |
+| template author, 348 authoring calls | $13.87 | $0.00 |
+| verifier, 6,178 blind re-solves | $26.94 | $0.00 |
+| **Offline total** | | **$40.81**, 43.90 percent of the $92.95 tier |
+
+[measured: `tier.hundred_claude_only.offline_template_line`, `tier.hundred_claude_only.offline_verifier_line`,
+`tier.hundred_claude_only.offline_cycle`, `tier.hundred_claude_only.offline_share`]
+
+**New API total: $52.14, headroom $47.86 against the operator's $100.00 ceiling**
+[measured: `tier.hundred_claude_only.api_cycle`, `tier.hundred_claude_only.api_headroom`]. The
+$40.81 offline share is not spent against the ceiling at all; it is paced against the
+subscription's own limits, argued below.
+
+**Evals do not split.** Golden set 1 already costs $0.00, moved onto the deterministic template
+gate above, so there is nothing paid left on it to move. Golden set 2 grades the same production
+grader prompt on the same production model, `claude-sonnet-5`, that scores a real student's work,
+and golden set 3 reads the same production transcriber prompt on the same model against fixed
+operator transcripts; both are content checks in the sense that no student sees the call, but they
+are checks of the production prompt on the production model, and a Claude Code agent is a
+different harness, a different system prompt and a different tool surface, so running either set
+there would not measure what ships. Both stay on the API key in full, at the $22.88 already
+quoted [measured: `evals.claude_only.api_share`, `evals.claude_only.offline_share`].
+
+**What may move and what may not.** Template authoring and verifier re-solves may move, because
+each produces a committed artefact (a template, a re-solved key or an audited distractor) that the
+operator reviews and merges, the same shape as any other development work. Nothing that serves a
+student inside a session, or that measures a production prompt on its production model, may move,
+because the first would violate the Agent SDK quickstart's own restriction and the second would
+change what the instrument reports rather than where it runs.
+
+**The pacing risk.** Subscription usage on a Pro or Max plan is capped by a rolling five hour
+window and a weekly limit, and neither is published as a call or token count
+(https://code.claude.com/docs/en/authentication.md [verified]), so nothing about this move is free
+of limits, only free of API spend. 348 template-authoring calls and 6,178 verifier re-solves is
+still a large offline pass, and `docs/operator/offline-authoring.md` paces it across sessions
+rather than assuming it fits in one sitting. Batch API discounts do not apply to Claude Code
+sessions at all, so the 50 percent batch discount and the cache minimums, 4,096 tokens on Haiku 4.5
+and 1,024 on Sonnet 5 (https://platform.claude.com/docs/en/build-with-claude/prompt-caching.md
+[verified]), describe what the retired API-priced rows would have cost, not a rate this offline
+line pays.
 
 ## Per role model choice [verified]
 

@@ -71,37 +71,82 @@ with either.
 
 ## The $100 tier, line by line [verified]
 
+Superseded 2026-09-23 by the operator's instruction that the AI engine use Anthropic Claude models
+only. The table below is the Claude-only tier the code now computes as `tier.hundred_claude_only`
+in `tools/cost_model.py`; the `tier.hundred` lines above it in the calculator are kept exactly as
+printed, because `13-ai-engineering.md` and `docs/operator/ai-operating-costs.md` still quote the
+$95.03 Gemini-verifier tier as the recorded history of what was recommended on 2026-09-20, and this
+file never patches a figure a document has already quoted.
+
 | Line | Setting | Cost |
 | --- | --- | --- |
 | tutor, 12 calls a session, thinking disabled, effort low, 1h cache | unchanged from 13 | $5.01 |
-| grader, 3 samples on the model judged share of 1,200 points | direction 2 | $10.11 |
+| grader, 2 samples with a third on disagreement, all 1,200 judged points | direction 7, no invented split | $33.32 |
 | transcriber, 200 photographed pages | unchanged from 13 | $3.41 |
 | diagnostician, on a recurring error path only | direction 6 | $8.21 |
-| generator, 348 template authoring calls on the Batch API | direction 1 | $17.37 |
-| verifier, 6,178 blind re-solves on `gemini-3.5-flash-lite` batch | direction 8 | $12.71 |
+| template author, 348 authoring calls on `claude-opus-5-5` batch | direction 1, priced on Opus 5.5 | $13.87 |
+| verifier, 6,178 blind re-solves on `claude-haiku-4-5` batch | Claude-only, replaces direction 8 | $26.94 |
 | Haiku 4.5 screen between transcriber and grader | unchanged from 13 | $0.20 |
 | evals, golden set 1 on the template gate, golden set 2 mixed, golden set 3 monthly | directions 3 and 5 | $38.00 |
-| **Total** | | **$95.03** |
+| **Total** | | **$128.95** |
 
-Headroom against the ceiling is $4.97, and the saving against the recommended tier is $253.02
-[measured: the `tier.hundred` lines of `python3 tools/cost_model.py`]. Against the $20.00 of credit
-on hand it still needs $75.03.
+[measured: the `tier.hundred_claude_only` lines of `python3 tools/cost_model.py`]
 
-**The tier's single point of failure is direction 2.** The grader line rests on a measurement that
-does not exist. 17 of the 76 active BC-PT records answer yes to at least one of
-`justification_required`, `interpretation_required` or `hypotheses_required`
-[measured: `python3` over `data/scoring_points.json`, 2026-09-20, 76 active records, 59 answer no
-to all three, 14 require justification, 3 require interpretation, 3 require hypotheses]. That is a
-lower bound on the model share, not the share, because 03 adds a second condition the data does not
-carry: the point's `earns` text must also be fully expressible as one of the four deterministic
-checks. If every judged point turns out to need the model, the grader line returns to $44.34 and
-the tier becomes $129.25, an overrun of $29.25. Directions 4 and 7 together bring that worst case
-to $99.33, with $0.67 of headroom, which is too tight to plan on and is why the operator's labelling
-pass is the first thing to do.
+**This is an overrun of $28.95 against the $100.00 ceiling, and it is the smallest honest total
+this document can price.** Two decisions drive it, both already argued for above and neither
+loosened to make the number smaller.
+
+The grader line does not use the 17-of-76 field bound as if it were the model share. 17 of the 76
+active BC-PT records answer yes to at least one of `justification_required`,
+`interpretation_required` or `hypotheses_required` [measured: `python3` over
+`data/scoring_points.json`, 2026-09-20, 76 active records, 59 answer no to all three, 14 require
+justification, 3 require interpretation, 3 require hypotheses], and that is a lower bound on the
+model share, not the share, because 03 adds a second condition the data does not carry: the point's
+`earns` text must also be fully expressible as one of the four deterministic checks. Treating 17 of
+76 as the share was inventing a number the labelling pass has not produced. This tier prices the
+grader at 14's own stated worst case instead, every one of the 1,200 judged points reaching the
+model, with direction 7 still applied underneath it, 2 samples and a third drawn only on
+disagreement, thinking left on. That is $33.32 against the $10.11 the unmeasured split would have
+printed, a premium of $23.21 [measured: `tier.hundred_claude_only.grader_premium_over_split_guess`].
+The operator's labelling pass is still the one measurement that can move this number, and now it
+can only move it down, never a fact this document invents to fit under the ceiling.
+
+The verifier line is the direct cost of the Claude-only instruction. `claude-haiku-4-5` on the Batch
+API is the cheapest Claude model, and its prefix of 1,100 tokens sits below Haiku 4.5's 4,096 token
+cache minimum for the same reason the tutor's prefix cannot cache on Haiku 4.5 ("Per role model
+choice" below), so it prices uncached the same way the Gemini row it replaces did. A verifier call
+is $0.004360 against Flash-Lite's $0.002058, and 6,178 calls are $26.94 against $12.71, a premium of
+$14.22 [measured: `tier.hundred_claude_only.verifier_premium_over_gemini`]. No sourced reason in 13
+or here argues for routing the verifier to a different Claude model than Haiku 4.5: the roles whose
+errors reach a student directly are the grader, the verifier and the transcriber, and 13 already
+holds the grader and the transcriber on Sonnet 5 for that reason, but the verifier's independence
+argument was never about which Claude model, it was about not sharing the generator's model at all,
+and a disagreement still routes to review rather than to publication whichever model returns it. The
+deterministic checks that bracket the role are unchanged by the provider, so Haiku 4.5 batch is the
+correct choice at this cost, not a compromise held against a sourced alternative.
+
+Template authoring moves to `claude-opus-5-5`, cheaper than `claude-opus-5` at every rate in
+`PRICES` and already the priced Opus row as of the previous slice. 348 calls at $13.87 against
+$17.37, a saving of $3.50, which is the one line below the ceiling rather than above it.
+
+**The ceiling is a hard stop and this tier does not fit under it.** Open question 7 below answers
+that the $100.00 ceiling has no margin built in, so this document reports the overrun rather than
+narrowing the grader's split by assumption to make the total print under $100. The two numbers that
+would close the gap are not inventions: the operator's offline labelling pass on the 76 BC-PT
+records, which can only lower the grader line, and any future Claude pricing change on Haiku 4.5
+batch, which this document does not control. Until the labelling pass runs, $128.95 is the tier's
+honest price under a Claude-only engine.
 
 ## Per role model choice [verified]
 
-**No role moves to Haiku 4.5 and the arithmetic says so.** Haiku 4.5's prompt cache minimum is
+Superseded in part 2026-09-23: the operator's Claude-only instruction moves the verifier off
+Gemini and onto `claude-haiku-4-5` batch, which is the one role move to Haiku 4.5 this document
+now makes, priced in "The $100 tier, line by line" above. The tutor paragraph below is otherwise
+unchanged, because nothing about the Claude-only instruction touches the tutor's own comparison
+against Haiku 4.5.
+
+**No role but the verifier moves to Haiku 4.5, and for every other role the arithmetic still says
+so.** Haiku 4.5's prompt cache minimum is
 4,096 tokens against Sonnet 5's 1,024 (https://platform.claude.com/docs/en/build-with-claude/prompt-caching
 [verified, re-read in 13 on 2026-09-20]), and it is absent from the effort parameter's supported
 model list (https://platform.claude.com/docs/en/build-with-claude/effort [verified, same]). The
@@ -113,34 +158,50 @@ to 12 is worth. The transcriber's move off Haiku 4.5 is already decided in 13 on
 and nothing here reopens it. Haiku 4.5 keeps the one role it has, the output screen between the
 transcriber and the grader, at $0.20 for the cycle, and that call is correctly priced uncached.
 
-**The verifier moves to a cheaper Gemini tier.** The pricing page prints Gemini 3.5 Flash-Lite at
-$0.30 input, $2.50 output and $0.03 cached input, with batch at $0.15 and $1.25, and prints no
-promotional end date against those figures, while Gemini 3.8 Flash carries "$0.75 through December
-31, 2026. $1.50 starting January 1, 2027" on input and "$3.75 through December 31, 2026. $7.50
-starting January 1, 2027" on output (https://ai.google.dev/gemini-api/docs/pricing [verified,
-fetched 2026-09-20]). The model page prints Flash-Lite's capability list as "Caching (Supported),
-Code execution (Supported), ... Structured outputs (Supported), Thinking (Supported)", with an
-input limit of 1,048,576 tokens and an output limit of 65,536, and names Batch API among its
-consumption options (https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash-lite [verified,
-fetched 2026-09-20]). The verifier's schema is an answer plus a solution path, which is shallow, so
-nothing the role needs is missing. A verifier call is $0.003270 on 3.8 Flash batch and $0.002058 on
+**The verifier moved to a cheaper Gemini tier, and the operator's instruction of 2026-09-23
+retires that row.** The pricing page prints Gemini 3.5 Flash-Lite at $0.30 input, $2.50 output and
+$0.03 cached input, with batch at $0.15 and $1.25, and prints no promotional end date against those
+figures, while Gemini 3.8 Flash carries "$0.75 through December 31, 2026. $1.50 starting January 1,
+2027" on input and "$3.75 through December 31, 2026. $7.50 starting January 1, 2027" on output
+(https://ai.google.dev/gemini-api/docs/pricing [verified, fetched 2026-09-20]). The model page
+prints Flash-Lite's capability list as "Caching (Supported), Code execution (Supported), ...
+Structured outputs (Supported), Thinking (Supported)", with an input limit of 1,048,576 tokens and
+an output limit of 65,536, and names Batch API among its consumption options
+(https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash-lite [verified, fetched
+2026-09-20]). The verifier's schema is an answer plus a solution path, which is shallow, so nothing
+the role needs is missing. A verifier call is $0.003270 on 3.8 Flash batch and $0.002058 on
 Flash-Lite batch, and 6,178 calls are $20.20 against $12.71. The saving doubles to $27.69 for a
-bank pass that lands after 2026-12-31.
+bank pass that lands after 2026-12-31. None of that pricing is wrong, and `tools/cost_model.py`
+keeps every Gemini constant, because `13-ai-engineering.md` and `docs/operator/ai-operating-costs.md`
+still quote figures derived from it and this file never retires a constant a document has already
+quoted. What changes is which row the $100 tier reads: the operator's instruction of 2026-09-23
+is that the AI engine use Anthropic Claude models only, so the tier above prices the verifier on
+`claude-haiku-4-5` batch instead, at the premium "The $100 tier, line by line" names.
 
-**The generator stays on Opus 5 and the reason changes.** 13 records that the same bank pass costs
-$71.05 on Sonnet 5 batch against $177.62 on Opus 5 batch, a saving of $106.57, and calls that the
-largest single saving available. Under direction 1 it is not, because the generator's call count
-falls from 7,784 to 348 and the whole line falls to $17.37. A Sonnet 5 template pass would save a
+**The generator stays on an Opus tier, and the reason for staying on Opus is unchanged; which Opus
+changes.** 13 records that the same bank pass costs $71.05 on Sonnet 5 batch against $177.62 on
+Opus 5 batch, a saving of $106.57, and calls that the largest single saving available. Under
+direction 1 it is not, because the generator's call count falls from 7,784 to 348 and the whole
+line falls to $17.37. A Sonnet 5 template pass would save a
 fraction of $17.37 while spending the model's judgement on the one artefact in the system that 40
 items inherit from. Downgrading the model that authors the template is the worst dollar per risk
-trade in this document.
+trade in this document. The operator's console announcement of 2026-09-23 adds `claude-opus-5-5`
+to `PRICES` at $4 input, $20 output and $0.20 cache reads, cheaper than `claude-opus-5` at every
+rate, so the template line moves onto it: $13.87 against $17.37, a saving of $3.50, with the same
+artefact-quality argument holding because it is still the frontier Opus tier and not a downgrade
+to Sonnet.
 
-**The grader, the diagnostician and the tutor stay on Sonnet 5.** 13's reasoning holds and nothing
-found here outranks it. The roles whose errors reach a student directly are the grader, the verifier
-and the transcriber, and the two that stay on a frontier tier under this plan are the grader and the
-transcriber. The verifier is the exception and it is defended by the deterministic checks that
-bracket it: a Flash-Lite answer is never trusted, it is compared under SymPy against a key three
-other checks already agree on, and a disagreement routes to review rather than to publication.
+**The grader and the transcriber stay on Sonnet 5; the diagnostician stays on Sonnet 5; the
+verifier is now Claude too, and stays the one role priced on the cheapest tier.** 13's reasoning
+holds and nothing found here outranks it. The roles whose errors reach a student directly are the
+grader, the verifier and the transcriber, and the two that stay on a frontier tier under this plan
+are the grader and the transcriber. The verifier is the exception and it is defended by the
+deterministic checks that bracket it, unchanged by which provider returns the re-solve: its answer
+is never trusted, it is compared under SymPy against a key three other checks already agree on, and
+a disagreement routes to review rather than to publication. No sourced reason in 13 or here argues
+for a different Claude model on the verifier than Haiku 4.5: the independence argument was always
+about not sharing the generator's model, never about which model, so the cheapest Claude model that
+passes the deterministic checks is the correct choice.
 
 ## Thinking and effort per role [verified]
 
@@ -490,6 +551,26 @@ and the reason for keeping both priced is in the generator row.
 | `TEMPLATE_THINKING_TOKENS` | 2,400 | the measured value from a real authoring call's `usage.output_tokens_details.thinking_tokens` | [inferred] | It is the largest uncertain quantity in direction 1 |
 | `TEMPLATE_ATTEMPTS` | 2.5 | the measured attempts per archetype from the first gated pass | [inferred] | It scales direction 1 linearly |
 
+**Applied 2026-09-23, on the operator's instruction, priced additively rather than by mutating the
+rows above.** The generator row: `tier.hundred_claude_only` reads `template_cycle`, never
+`generator.cycle`, so the retirement in favour of `ROLES["template"]` is already the tier's own
+arithmetic. `GRADER_SAMPLES`: not changed globally, because `tier.recommended` and 13's $348.05
+figure are priced at 3 samples and this file does not patch a figure a document has quoted; instead
+`grader.conditional_third_calls` already prices 2 samples with a third on disagreement at the full
+1,200 judged points, and that is the figure the Claude-only tier uses. `JUDGED_POINTS` split into a
+deterministic share and a model share: not applied, and not because it is wrong to apply, but
+because 17 of 76 is a lower bound and not a measurement, so applying it would be inventing the
+missing labelling pass rather than pricing it. The Claude-only tier prices the grader at the full
+1,200 points instead, which is 14's own stated worst case. `ROLES["grader"]["thinking"]`: not
+applied, unchanged at 700, per the operator's instruction to keep grader thinking as it is.
+`ROLES["verifier"]["model"]`: superseded rather than applied as proposed. The row above proposed
+`gemini-3.5-flash-lite`; the operator's Claude-only instruction of 2026-09-23 moves it to
+`claude-haiku-4-5` batch instead, priced as `tier.hundred_claude_only.verifier_line`.
+`MONTHLY_RUNS`, `GOLDEN_SET_1_RUNS` and `INCORRECT_ATTEMPTS`: applied inside `hundred_evals` and
+`diagnostician.on_recurrence_cycle`, which the Claude-only tier reads unchanged, because directions
+3, 5 and 6 were already priced that way before this slice and nothing about a Claude-only engine
+touches them.
+
 ## Open questions for the operator [uncertain]
 
 Each one is a decision only the operator can make, and each blocks or sizes a direction above.
@@ -501,8 +582,12 @@ Each one is a decision only the operator can make, and each blocks or sizes a di
 
 2. **Which of the 76 BC-PT records have an `earns` text fully expressible as one of the four
    deterministic checks?** This is the labelling pass that turns the grader line from a bound into a
-   number, it costs nothing, it needs no key, and the whole tier's headroom depends on it. Without
-   it the worst case is $129.25.
+   number. It costs nothing and needs no key. Under the Claude-only tier this document no longer
+   waits on it to price the tier honestly: the grader line above is priced at the worst case,
+   $33.32, because 17 of 76 is a lower bound and not a measurement and this document does not
+   invent the difference. The labelling pass is still the only thing that can lower it, from $33.32
+   toward $10.11 as the true share is found, and it is still free, so it is still the first thing to
+   do; it now closes part of a $28.95 overrun rather than deciding whether the tier fits.
 
 3. **Will a provider key be available for one session of `count_tokens` calls before any paid work
    starts?** It is free, it converts every token assumption in 13 and here from inferred to
@@ -520,9 +605,16 @@ Each one is a decision only the operator can make, and each blocks or sizes a di
    fallback real?** Per quantisation VRAM is unpublished, so the answer is a measurement on the
    operator's own hardware and nowhere else.
 
-7. **Is $95.03 the target, or is the ceiling a hard stop that wants margin?** Headroom is $4.97. One
-   re-authoring pass after a prompt bump is $7.51, which alone exceeds it. If the ceiling is hard,
-   direction 7 should be taken at the same time as direction 2 rather than held in reserve.
+7. **Answered 2026-09-23, on the operator's instruction: the ceiling is a hard stop, $100.00, with
+   no margin held back.** Direction 7 is taken now rather than held in reserve, and it is already
+   folded into the grader line above: 2 samples with a third drawn only on disagreement, priced at
+   the full 1,200 judged points because the field bound is not a measurement. Taking direction 7
+   without direction 2's unmeasured split still leaves the Claude-only tier at $128.95, $28.95 over
+   the hard stop, because the Claude-only verifier line costs $14.22 more than the Gemini row it
+   replaces and the honest grader line costs $23.21 more than the unmeasured split would have
+   printed. A hard stop with no margin means this document reports that overrun rather than closing
+   it by assumption; question 2's labelling pass is the one lever left that can close part of it
+   honestly.
 
 ## Claims I could not source [verified]
 

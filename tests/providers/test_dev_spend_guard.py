@@ -309,3 +309,69 @@ def test_claude_opus_5_5_price_is_present_in_the_dev_spend_price_table():
 
    assert batch["input"] == pytest.approx(2.00)
    assert batch["output"] == pytest.approx(10.00)
+
+
+class LedgerThatFailsOnTrueUp:
+   """Stands in for a dev-spend ledger file that reads fine at reservation time and then turns
+   out corrupt (a bad byte from a crashed writer, say) by the time _dev_reconcile tries to true
+   the reservation up to actual usage. Reproduces the shape of a real json.JSONDecodeError
+   without touching a file at all."""
+
+   def __init__(self):
+      self.reservation_calls = 0
+
+   def spent(self):
+      return 0.0
+
+   def add(self, delta_usd):
+      self.reservation_calls = self.reservation_calls + 1
+
+      if self.reservation_calls == 1:
+         return delta_usd
+
+      raise ValueError("corrupt dev spend ledger")
+
+
+def _dev_ledger_failure_rows(db):
+   statement = select(models.AuditLog).where(models.AuditLog.action == "dev_spend_ledger_reconcile_failed")
+
+   return list(db.execute(statement).scalars().all())
+
+
+def _unreadable_rows(db):
+   statement = select(models.AuditLog).where(models.AuditLog.action == "provider_result_unreadable")
+
+   return list(db.execute(statement).scalars().all())
+
+
+def test_a_dev_ledger_failure_on_true_up_does_not_double_charge_the_budget_row():
+   """The regression the previous review named: _dev_reconcile ran inside _reconcile's try block,
+   so a corrupt ledger on the true-up read was caught by _settle's unreadable-result handler and
+   charged the worst-case reservation a second time on top of the row _reconcile had already
+   settled to actual usage."""
+   db = _db()
+   ledger = LedgerThatFailsOnTrueUp()
+   double = LiveDouble(tokens_in=50, tokens_out=20, cached_read=0, cached_write=0)
+   guard = _guard(db, double, ledger, cap=1000.0)
+
+   guard.generate(_request())
+
+   budget_row = db.execute(select(models.Budget)).scalars().first()
+
+   assert budget_row.settled_calls == 1
+   assert budget_row.tokens_in == 50
+   assert budget_row.tokens_out == 20
+   assert _unreadable_rows(db) == []
+
+
+def test_a_dev_ledger_failure_on_true_up_is_recorded_under_its_own_action():
+   db = _db()
+   ledger = LedgerThatFailsOnTrueUp()
+   double = LiveDouble(tokens_in=50, tokens_out=20)
+   guard = _guard(db, double, ledger, cap=1000.0)
+
+   guard.generate(_request())
+
+   rows = _dev_ledger_failure_rows(db)
+   assert len(rows) == 1
+   assert rows[0].actor == "USR-1"

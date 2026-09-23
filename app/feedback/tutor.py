@@ -20,9 +20,10 @@ from app.providers.base import (
    split_template,
 )
 from app.providers.guard import BudgetStopped
+from app.providers.model_routing import model_for
 
 TEMPLATE_PATH = Path(__file__).resolve().parents[2] / "prompts" / "feedback" / "elaborated_v2.md"
-TUTOR_MODEL = "claude-sonnet-5"
+TUTOR_MODEL = model_for("tutor")
 MAX_OUTPUT_TOKENS = 600
 PREFIX_CACHE_TTL = "1h"
 TUTOR_PROVIDER_OPTIONS = {

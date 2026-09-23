@@ -124,6 +124,7 @@ CALL_REFUSED_ACTION = "budget_call_refused"
 UNREADABLE_RESULT_ACTION = "provider_result_unreadable"
 CAP_CHANGED_ACTION = "budget_cap_changed"
 DEV_SPEND_CAP_REFUSED_ACTION = "dev_spend_cap_refused"
+DEV_LEDGER_RECONCILE_FAILED_ACTION = "dev_spend_ledger_reconcile_failed"
 
 ROLES = ("tutor", "generator", "verifier", "grader", "diagnostician", "transcriber")
 
@@ -942,10 +943,13 @@ class GuardedProvider(Provider):
       estimate_call already priced; anything else unreadable keeps the worst-case reservation,
       which leaves the row conservative rather than empty."""
       try:
-         self._reconcile(budget, estimate, request, result)
+         reconciled = self._reconcile(budget, estimate, request, result)
       except (AttributeError, TypeError, ValueError) as unreadable:
          self._record_unreadable(budget, request, unreadable)
          self._charge_worst_case(budget, estimate, request)
+         return
+
+      self._dev_reconcile_safely(request, *reconciled)
 
    def _record_unreadable(self, budget, request, unreadable):
       """One row per user per role per day, which is the bound the budgets row already carries,
@@ -984,7 +988,12 @@ class GuardedProvider(Provider):
 
    def _reconcile(self, budget, estimate, request, result):
       """Everything is computed before the row is touched, so a result that turns out unreadable
-      half way leaves the reservation whole for _settle to charge."""
+      half way leaves the reservation whole for _settle to charge.
+
+      Returns what the dev-spend true-up needs, computed after this row is fully settled, rather
+      than calling it here: _dev_reconcile touches a second store (the ledger file) that can fail
+      on its own, for its own reasons, after the provider result was read perfectly well, and that
+      failure must never be mistaken by _settle for this result being unreadable."""
       usage = result.usage
 
       reported_input = usage.input_tokens
@@ -1022,7 +1031,6 @@ class GuardedProvider(Provider):
 
       self._stamp(budget)
       self.session().flush()
-      self._dev_reconcile(request, priced_model, tokens_in, tokens_out, reported_cached_read, reported_cached_write)
 
       self.last_accounting = CallAccounting(
          model=priced_model,
@@ -1032,6 +1040,59 @@ class GuardedProvider(Provider):
          tokens_cached_write=reported_cached_write,
          cost_usd=cost,
       )
+
+      return priced_model, tokens_in, tokens_out, reported_cached_read, reported_cached_write
+
+   def _dev_reconcile_safely(self, request, priced_model, tokens_in, tokens_out, reported_cached_read,
+                             reported_cached_write):
+      """The per-role budget row above is already settled by the time this runs. A corrupt or
+      unreadable dev-spend ledger file must stay a dev-spend problem and never travel back to
+      _settle, where it would be mistaken for the provider result itself being unreadable and
+      double the call onto settled_calls."""
+      try:
+         self._dev_reconcile(request, priced_model, tokens_in, tokens_out, reported_cached_read,
+                             reported_cached_write)
+      except Exception as dev_failure:
+         self._record_dev_ledger_failure(request, dev_failure)
+
+   def _record_dev_ledger_failure(self, request, dev_failure):
+      db = self.session()
+      day = self._clock().date().isoformat()
+      already_recorded = self._dev_ledger_failure_already_recorded(db, day)
+
+      if already_recorded:
+         return
+
+      write_audit(
+         db,
+         self._user_id,
+         DEV_LEDGER_RECONCILE_FAILED_ACTION,
+         DEV_SPEND_SUBJECT,
+         {
+            "role": request.role,
+            "model": request.model,
+            "exception": type(dev_failure).__name__,
+            "day": day,
+         },
+         now=self._clock(),
+      )
+      db.flush()
+
+   def _dev_ledger_failure_already_recorded(self, db, day):
+      statement = (
+         select(models.AuditLog.detail)
+         .where(models.AuditLog.action == DEV_LEDGER_RECONCILE_FAILED_ACTION)
+         .where(models.AuditLog.actor == self._user_id)
+         .where(models.AuditLog.subject == DEV_SPEND_SUBJECT)
+      )
+
+      for detail in db.scalars(statement).all():
+         recorded = json.loads(detail) if detail else {}
+
+         if recorded.get("day") == day:
+            return True
+
+      return False
 
    def _dev_reconcile(self, request, priced_model, tokens_in, tokens_out, reported_cached_read, reported_cached_write):
       """Trues the dev-spend ledger up from the worst-case reservation to the same reconciled

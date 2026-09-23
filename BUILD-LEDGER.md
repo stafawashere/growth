@@ -10,6 +10,50 @@ purpose: Where the application build stands, session by session, so the next ses
 Application code lives at the repository root under `app/` and `tests/`, at the paths docs/plan names. The project CLAUDE.md still says "docs-only, no product"; that sentence is the operator's to amend and this ledger only records the conflict. Tooling: uv-managed Python 3.12.13 in `.venv/`, dependencies in `pyproject.toml`, tests via `.venv/bin/python -m pytest`. Every H2 below carries a tag because `qa/04_tags.py` scans root-level Markdown: [verified] means the test output or the registry was checked in the session named, [inferred] means a judgement.
 
 ## Done [verified]
+- Seventeenth session, 2026-09-23, slice 2 of the token economy: a Claude-only $100 tier, priced
+  and wired, plus a guard fix from the previous review. `tools/cost_model.py` gains
+  `tier.hundred_claude_only`, additive next to `tier.hundred`: the verifier prices on
+  `claude-haiku-4-5` batch (`verifier.on_haiku_batch_cycle`, $26.94, uncached because its 1,100
+  token prefix sits below Haiku 4.5's 4,096 token cache minimum, the same reasoning 14 already
+  gives the tutor); the template author prices on `claude-opus-5-5` (`template.cycle_on_opus_5_5`,
+  $13.87 against $17.37, saving $3.50); the grader prices at 2 samples with a third on
+  disagreement over the full 1,200 judged points, `grader.conditional_third_cycle` ($33.32), not
+  the 17-of-76 field bound, because that bound is a lower bound on the model share and not a
+  measurement and pricing the tier on it would be inventing the labelling pass's answer. New
+  `CLAUDE_ONLY_ROLE_MODELS` names each role's model for the Claude-only tier; the existing
+  `ROLES`/`PRICES`/`tier.hundred` figures are untouched, because `13-ai-engineering.md` and
+  `docs/operator/ai-operating-costs.md` still quote the $95.03 Gemini-verifier tier and this file
+  never patches a figure a document has already quoted. Total: $128.95, an overrun of $28.95
+  against the operator's $100.00 hard stop. `docs/plan/14-token-economy.md`'s "The $100 tier, line
+  by line" table, "Per role model choice" section, the "Proposed edits" table and open questions 2
+  and 7 are rewritten to match and to report the overrun rather than close it by assumption;
+  question 7 is answered, the ceiling is a hard stop with no margin, direction 7 taken now.
+  `python3 tools/cost_model.py --check docs/plan/14-token-economy.md` exits 0.
+  `tests/tools/test_cost_model.py` (13 and ai-operating-costs.md, unchanged) stays green.
+  `app/providers/model_routing.py` is new: `ROLE_MODELS`, the same per-role Claude model choice
+  restated for the application, read by `app/feedback/tutor.py` (`TUTOR_MODEL = model_for("tutor")`,
+  replacing the hardcoded string). `tests/providers/test_model_routing.py` asserts `ROLE_MODELS`
+  and `tools.cost_model.CLAUDE_ONLY_ROLE_MODELS` agree role by role, every role names a Claude
+  model, and the tutor path reads from the shared table; a mismatch introduced by hand (grader
+  changed to `claude-opus-5-5` on the app side only) turned it red before the fix and was reverted
+  to confirm green. Guard fix: `app/providers/guard.py` `_settle` called `_dev_reconcile` from
+  inside `_reconcile`'s own try block, so a `_dev_reconcile` failure (a corrupt dev-spend ledger
+  file, `json.JSONDecodeError`, a `ValueError` subclass) was caught by `_settle`'s
+  unreadable-result handler, which double-counted `settled_calls` and wrote a false
+  `provider_result_unreadable` audit row for a provider result that had, in fact, read fine and
+  already been settled onto the budget row. `_reconcile` now returns what the true-up needs instead
+  of calling it, and `_settle` calls the new `_dev_reconcile_safely`, which isolates
+  `_dev_reconcile`'s own exceptions behind a new audit action,
+  `dev_spend_ledger_reconcile_failed` (added to `app/audit/vocabulary.py`), bounded once per user
+  per day the same way the other refusal rows are.
+  `tests/providers/test_dev_spend_guard.py::test_a_dev_ledger_failure_on_true_up_does_not_double_charge_the_budget_row`
+  and `::test_a_dev_ledger_failure_on_true_up_is_recorded_under_its_own_action` reproduce it with a
+  `LedgerThatFailsOnTrueUp` double whose `add()` raises `ValueError` only on the true-up call (the
+  reservation call still succeeds); both red before the fix (`settled_calls` 2 instead of 1, zero
+  `dev_spend_ledger_reconcile_failed` rows), green after, confirmed by `git stash` of
+  `app/providers/guard.py` alone and rerunning. No live Anthropic call was made. Suite at close:
+  pytest full run clean, client `308 passed`, `tsc --noEmit` clean, `qa/12_report.py` exit 0 (see
+  the verification lines below this entry).
 - Sixteenth session, 2026-09-23, two review findings against the fifteenth session's persistent
   developer spend cap fixed. `DevSpendLedger.spent()` and `.add()` in `app/providers/guard.py` were
   an unlocked read-modify-write of one JSON file, with `write_text` truncating before writing;
@@ -653,6 +697,19 @@ Nothing. The fourteenth session closed with the suite green and every module of 
 done or listed below as needing the operator.
 
 ## Known defects [verified]
+
+From the seventeenth session, 2026-09-23, found and not fixed.
+
+- The Claude-only $100 tier prices at $128.95, an overrun of $28.95 against the operator's $100.00
+  hard stop (`docs/plan/14-token-economy.md` "The $100 tier, line by line",
+  `tier.hundred_claude_only.cycle` in `tools/cost_model.py`). Not a code defect; a priced fact the
+  operator asked this document to report rather than hide by inventing the grader's judged-point
+  split. Two things can close it: the offline BC-PT labelling pass (question 2, free, no key
+  needed, moves the grader line from $33.32 toward $10.11 as the true model share is found), and
+  nothing on the verifier line, whose $26.94 is the cheapest Claude model already. `app/providers/model_routing.py`
+  `ROLE_MODELS` names a model for every role in `app/providers/guard.py` `ROLES`, but P1 wires only
+  the tutor (`app/feedback/tutor.py`); the other five roles have no provider call site yet, so the
+  table is ahead of the code by design and not itself a gap this session found.
 
 From the fifteenth session, 2026-09-23, found and not fixed.
 
@@ -1508,6 +1565,11 @@ item below needs content, a key, a download or a ruling.
 
 Human-only, in the order that unblocks the most:
 
+0. The BC-PT labelling pass, docs/plan/14-token-economy.md open question 2: which of the 76 active
+   `data/scoring_points.json` records have an `earns` text fully expressible as one of the four
+   deterministic checks. Free, needs no key, and is the one measurement left that can close part of
+   the Claude-only tier's $28.95 overrun (Known defects, this session) rather than leave it priced
+   at the worst case.
 1. Ruling on how a skill leaves stage example (Known defects, first entry). Either example
    collects a graded answer (then decision 3 in 11 is withdrawn and the client sends one), or
    example is left by another rule 02 must state. Unblocks the server-side refusal and makes gate

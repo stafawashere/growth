@@ -24,6 +24,11 @@ accounting lives in budgets, and a row per call would flood a record 09 describe
 queryable. dev_spend_cap_refused is the same class of event as budget_call_refused, one level up:
 the persistent developer spend cap in app/providers/guard.py stops every role at once rather than
 one role's daily cap, and is bounded the same way, one row per day rather than one per refused call.
+dev_spend_ledger_reconcile_failed is a different failure than provider_result_unreadable: the
+provider result read fine and the per-role budget row already settled against it, and it is only
+the second store, the dev-spend ledger file, that failed on its own true-up read. Folding it into
+provider_result_unreadable would misreport a working call as an unreadable one, so it gets its own
+name, bounded the same way, one row per day.
 """
 AUDIT_ACTIONS = (
    "budget_call_refused",
@@ -34,6 +39,7 @@ AUDIT_ACTIONS = (
    "content_snapshot_reloaded",
    "coverage_gap_fail_closed",
    "dev_spend_cap_refused",
+   "dev_spend_ledger_reconcile_failed",
    "export_produced",
    "frq_image_deleted",
    "grading_rerun",

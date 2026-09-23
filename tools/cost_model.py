@@ -125,6 +125,26 @@ ROLES = {
                 "visible": TEMPLATE_VISIBLE_TOKENS, "thinking": TEMPLATE_THINKING_TOKENS},
 }
 
+# The Claude-only per-role model choice, docs/plan/14-token-economy.md "Per role model choice",
+# operator's instruction of 2026-09-23 that the AI engine use Anthropic Claude models only.
+# app/providers/model_routing.py ROLE_MODELS is the same table restated for the application, and
+# tests/providers/test_model_routing.py asserts the two agree role by role, so a change here that
+# is not carried into the app fails a test rather than drifting silently. tutor, grader,
+# transcriber and diagnostician read their model from ROLES above, which already holds them on
+# Claude; generator and verifier are named explicitly, because ROLES["template"] and
+# ROLES["verifier"] stay on their 2026-09-20 pricing (Opus 5 and Gemini) so the figures
+# 13-ai-engineering.md and docs/operator/ai-operating-costs.md already quote keep printing, and
+# the Claude-only tier prices generator on claude-opus-5-5 and verifier on claude-haiku-4-5
+# instead (see tier.hundred_claude_only below).
+CLAUDE_ONLY_ROLE_MODELS = {
+   "tutor": ROLES["tutor"]["model"],
+   "grader": ROLES["grader"]["model"],
+   "transcriber": ROLES["transcriber"]["model"],
+   "diagnostician": ROLES["diagnostician"]["model"],
+   "generator": "claude-opus-5-5",
+   "verifier": "claude-haiku-4-5",
+}
+
 TUTOR_AS_BUILT_INPUT = 703
 TUTOR_AS_BUILT_MAX_OUTPUT = 400
 TUTOR_MAX_OUTPUT = 600
@@ -592,6 +612,53 @@ def figures():
    add("tier.hundred.grader_worst_case_rescued", rescued)
    add("tier.hundred.grader_worst_case_rescued_headroom", BUDGET_CEILING - rescued)
    add("tier.hundred.beyond_credit", hundred - CREDIT_ON_HAND)
+
+   # The Claude-only $100 tier, docs/plan/14-token-economy.md "The $100 tier", operator's
+   # instruction of 2026-09-23: no non-Anthropic model anywhere in the tier. Additive next to
+   # tier.hundred above, which stays exactly as printed because 13-ai-engineering.md and
+   # docs/operator/ai-operating-costs.md quote its figures and this file never patches a figure a
+   # document has already quoted; it retires a configuration by pricing the new one beside it.
+   #
+   # The verifier moves to claude-haiku-4-5 on the Batch API. Its prefix is 1,100 tokens, below
+   # Haiku 4.5's 4,096 token cache minimum for the same reason the tutor's prefix cannot cache on
+   # Haiku 4.5 (see "Per role model choice" above), so it prices uncached like the Gemini row it
+   # replaces. The template author moves to claude-opus-5-5, cheaper than claude-opus-5 at every
+   # rate and already in PRICES. The grader line prices at 14's own stated worst case, every one
+   # of the 1,200 judged points reaching the model, because 17 of 76 is a lower bound on the
+   # model share and not a measured one, and this tier does not invent the missing measurement;
+   # direction 7 still applies underneath it, 2 samples with a third drawn only on disagreement,
+   # thinking left on. Golden set 1 stays free on the template gate and golden set 2 stays the
+   # canary-plus-full-run mix, both already the shape hundred_evals prices above.
+   claude_only_generator_model = CLAUDE_ONLY_ROLE_MODELS["generator"]
+   claude_only_verifier_model = CLAUDE_ONLY_ROLE_MODELS["verifier"]
+   claude_only_template_cycle = role_cost("template", template_calls, model=claude_only_generator_model)
+   add("template.cycle_on_opus_5_5", claude_only_template_cycle)
+   add("template.saving_on_opus_5_5", template_cycle - claude_only_template_cycle)
+   add("template.call_on_opus_5_5", role_cost("template", 1, writes=1, model=claude_only_generator_model))
+   claude_only_verifier_cycle = role_cost("verifier", published_verifier_calls, model=claude_only_verifier_model,
+                                          batch=True, cached=False)
+   add("verifier.on_haiku_batch_cycle", claude_only_verifier_cycle)
+   add("verifier.call_on_haiku_batch", role_cost("verifier", 1, model=claude_only_verifier_model, batch=True,
+                                                 cached=False))
+   claude_only_grader_cycle = out["grader.conditional_third_cycle"]
+   claude_only_hundred = (out["tutor.cycle"] + claude_only_grader_cycle + out["transcriber.cycle"]
+                          + out["diagnostician.on_recurrence_cycle"] + claude_only_template_cycle
+                          + claude_only_verifier_cycle + out["screen.cycle"] + hundred_evals)
+   add("tier.hundred_claude_only.tutor_line", out["tutor.cycle"])
+   add("tier.hundred_claude_only.grader_line", claude_only_grader_cycle)
+   add("tier.hundred_claude_only.transcriber_line", out["transcriber.cycle"])
+   add("tier.hundred_claude_only.diagnostician_line", out["diagnostician.on_recurrence_cycle"])
+   add("tier.hundred_claude_only.template_line", claude_only_template_cycle)
+   add("tier.hundred_claude_only.verifier_line", claude_only_verifier_cycle)
+   add("tier.hundred_claude_only.screen_line", out["screen.cycle"])
+   add("tier.hundred_claude_only.evals_line", hundred_evals)
+   add("tier.hundred_claude_only.cycle", claude_only_hundred)
+   add("tier.hundred_claude_only.headroom", BUDGET_CEILING - claude_only_hundred)
+   add("tier.hundred_claude_only.overrun", claude_only_hundred - BUDGET_CEILING)
+   add("tier.hundred_claude_only.saving_against_recommended", out["tier.recommended.cycle"] - claude_only_hundred)
+   add("tier.hundred_claude_only.grader_premium_over_split_guess",
+       claude_only_grader_cycle - out["grader.model_share_cycle"])
+   add("tier.hundred_claude_only.verifier_premium_over_gemini", claude_only_verifier_cycle - lite_cycle)
 
    # Kappa.
    n_aggregate = GOLDEN_SET_2_POINT_TYPES * GOLDEN_SET_2_RESPONSES

@@ -1,8 +1,9 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { cleanup, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { SettingsScreen, type PerRoleCap, type ProviderRow } from "./SettingsScreen";
+import type { BudgetsPayload, ProviderRole, RoleBudget, SettingsPayload } from "../api/types";
+import { SettingsScreen, type SettingsScreenProps } from "./SettingsScreen";
 
 function scopeSeventeenSections(): string[] {
    const planPath = join(process.cwd(), "..", "..", "docs", "plan", "11-phased-delivery.md");
@@ -21,26 +22,51 @@ function scopeSeventeenSections(): string[] {
    return [...items.slice(0, lastIndex), ...lastPair];
 }
 
-const providers: ProviderRow[] = [{ id: "tutor", role: "tutor", provider: "Anthropic", model: "claude-sonnet-5" }];
+const providers: ProviderRole[] = [{ role: "tutor", provider: "anthropic", model: "claude-sonnet-5", wired: true }];
 
-const perRoleCaps: PerRoleCap[] = [
-   { id: "tutor", role: "tutor", dailyCapDollars: 2, spentTodayDollars: 0.5 }
-];
+function roleBudget(role: string, capUsd: number | null, costUsd: number): RoleBudget {
+   return {
+      role,
+      cap_usd: capUsd,
+      cap_tokens: null,
+      cost_usd: costUsd,
+      tokens_in: 0,
+      tokens_out: 0,
+      tokens_cached_read: 0,
+      tokens_cached_write: 0,
+      hard_stopped: false
+   };
+}
 
-function baseProps() {
+const budgets: BudgetsPayload = {
+   day: "2027-01-05",
+   roles: [roleBudget("tutor", 2, 0.5)],
+   month_to_date_usd: 1.23
+};
+
+const queueSettings: SettingsPayload = {
+   exam_date: "2027-05-10",
+   purge_after: "2027-06-09",
+   desired_retention: 0.9
+};
+
+const DESIGN_BRIEF = readFileSync(join(process.cwd(), "..", "..", "docs", "plan", "08-design-brief.md"), "utf8");
+
+function capRow() {
+   return within(screen.getByTestId("per-role-cap-row"));
+}
+
+function baseProps(): SettingsScreenProps {
    return {
       providers,
-      onChangeProvider: vi.fn(),
-      dailyCapDollars: 5,
-      spentThisMonthDollars: 1.23,
-      onDailyCapChange: vi.fn(),
-      perRoleCaps,
-      onOpenPerRoleCaps: vi.fn(),
-      examDate: "2027-05-10",
-      onExport: vi.fn(),
+      budgets,
+      onCapChange: vi.fn().mockResolvedValue(true),
+      queueSettings,
+      onSettingsChange: vi.fn().mockResolvedValue(true),
+      onExport: vi.fn().mockResolvedValue(true),
       purgeConfirmationPhrase: "DELETE MY DATA",
       onReauthenticate: vi.fn().mockResolvedValue(true),
-      onPurge: vi.fn()
+      onPurge: vi.fn().mockResolvedValue(true)
    };
 }
 
@@ -84,7 +110,7 @@ describe("SettingsScreen, purge", () => {
       fireEvent.change(confirmationInput, { target: { value: "wrong phrase" } });
       expect(verifyButton().disabled).toBe(true);
 
-      fireEvent.change(confirmationInput, { target: { value: props.purgeConfirmationPhrase } });
+      fireEvent.change(confirmationInput, { target: { value: props.purgeConfirmationPhrase as string } });
       expect(verifyButton().disabled).toBe(false);
       expect(purgeButton().disabled).toBe(true);
 
@@ -99,6 +125,7 @@ describe("SettingsScreen, purge", () => {
 
       fireEvent.click(purgeButton());
       expect(props.onPurge).toHaveBeenCalledTimes(1);
+      expect(props.onPurge).toHaveBeenCalledWith(props.purgeConfirmationPhrase);
    });
 
    it("keeps purge disabled when the passkey reauthentication fails", async () => {
@@ -108,7 +135,7 @@ describe("SettingsScreen, purge", () => {
       render(<SettingsScreen {...props} />);
 
       const confirmationInput = screen.getByLabelText(/type/i) as HTMLInputElement;
-      fireEvent.change(confirmationInput, { target: { value: props.purgeConfirmationPhrase } });
+      fireEvent.change(confirmationInput, { target: { value: props.purgeConfirmationPhrase as string } });
 
       const verifyButton = screen.getByRole("button", { name: /verify identity/i }) as HTMLButtonElement;
       fireEvent.click(verifyButton);
@@ -126,11 +153,32 @@ describe("SettingsScreen, purge", () => {
    });
 });
 
+describe("SettingsScreen, purge without a confirmation phrase", () => {
+   it("withholds the typed field and both purge controls when no phrase was supplied", () => {
+      const props = baseProps();
+
+      render(<SettingsScreen {...props} purgeConfirmationPhrase={null} />);
+
+      const verifyButton = screen.getByRole("button", { name: /verify identity/i }) as HTMLButtonElement;
+      const purgeButton = screen.getByRole("button", { name: /purge everything/i }) as HTMLButtonElement;
+
+      expect(screen.queryByLabelText(/type/i)).toBeNull();
+      expect(verifyButton.disabled).toBe(true);
+      expect(purgeButton.disabled).toBe(true);
+
+      fireEvent.click(verifyButton);
+      fireEvent.click(purgeButton);
+
+      expect(props.onReauthenticate).not.toHaveBeenCalled();
+      expect(props.onPurge).not.toHaveBeenCalled();
+   });
+});
+
 describe("SettingsScreen, providers and budgets", () => {
-   it("renders provider rows and budget figures from props rather than a typed-out list", () => {
-      const manyProviders: ProviderRow[] = [
-         { id: "tutor", role: "tutor", provider: "Anthropic", model: "claude-sonnet-5" },
-         { id: "generator", role: "generator", provider: "Anthropic", model: "claude-opus-5" }
+   it("renders one read-only provider row per role the route reports, with no change control", () => {
+      const manyProviders: ProviderRole[] = [
+         { role: "tutor", provider: "anthropic", model: "claude-sonnet-5", wired: true },
+         { role: "generator", provider: null, model: null, wired: false }
       ];
 
       render(<SettingsScreen {...baseProps()} providers={manyProviders} />);
@@ -138,6 +186,9 @@ describe("SettingsScreen, providers and budgets", () => {
       const rows = screen.getAllByTestId("provider-row");
 
       expect(rows.length).toBe(manyProviders.length);
+      expect(rows[0].textContent).toContain("claude-sonnet-5");
+      expect(rows[1].textContent).toContain("not wired");
+      expect(screen.queryByRole("button", { name: "change" })).toBeNull();
       expect(screen.getByText(/1\.23/)).toBeTruthy();
    });
 
@@ -148,18 +199,11 @@ describe("SettingsScreen, providers and budgets", () => {
    });
 
    it("reveals per-role caps behind the open control, ranging over props rather than a typed-out list", () => {
-      const manyCaps: PerRoleCap[] = [
-         { id: "tutor", role: "tutor", dailyCapDollars: 2, spentTodayDollars: 0.5 },
-         { id: "generator", role: "generator", dailyCapDollars: 3, spentTodayDollars: 1 },
-         { id: "verifier", role: "verifier", dailyCapDollars: 1.5, spentTodayDollars: 0 }
-      ];
-      const onOpenPerRoleCaps = vi.fn();
+      const manyCaps = [roleBudget("tutor", 2, 0.5), roleBudget("generator", 3, 1), roleBudget("verifier", 1.5, 0)];
 
-      render(<SettingsScreen {...baseProps()} perRoleCaps={manyCaps} onOpenPerRoleCaps={onOpenPerRoleCaps} />);
+      render(<SettingsScreen {...baseProps()} budgets={{ ...budgets, roles: manyCaps }} />);
 
       fireEvent.click(screen.getByRole("button", { name: "open" }));
-
-      expect(onOpenPerRoleCaps).toHaveBeenCalledTimes(1);
 
       const rows = screen.getAllByTestId("per-role-cap-row");
 
@@ -167,10 +211,84 @@ describe("SettingsScreen, providers and budgets", () => {
 
       manyCaps.forEach((cap, index) => {
          const rowText = rows[index].textContent ?? "";
+         const capField = rows[index].querySelector("input") as HTMLInputElement;
 
          expect(rowText).toContain(cap.role);
-         expect(rowText).toContain(cap.dailyCapDollars.toFixed(2));
+         expect(rowText).toContain(cap.cost_usd.toFixed(2));
+         expect(Number(capField.value)).toBe(cap.cap_usd);
       });
+   });
+
+   it("hands a changed cap to onCapChange as numbers, a blank field as null", () => {
+      const props = baseProps();
+
+      render(<SettingsScreen {...props} />);
+      fireEvent.click(screen.getByRole("button", { name: "open" }));
+
+      fireEvent.change(screen.getByLabelText(/cap \$/), { target: { value: "4.5" } });
+      fireEvent.change(screen.getByLabelText(/cap tokens/), { target: { value: "" } });
+      fireEvent.click(capRow().getByRole("button", { name: "save" }));
+
+      expect(props.onCapChange).toHaveBeenCalledWith("tutor", 4.5, null);
+   });
+
+   it("refuses to save a role left with no cap at all, which the server refuses too", () => {
+      const props = baseProps();
+
+      render(<SettingsScreen {...props} />);
+      fireEvent.click(screen.getByRole("button", { name: "open" }));
+
+      fireEvent.change(screen.getByLabelText(/cap \$/), { target: { value: "" } });
+
+      const save = capRow().getByRole("button", { name: "save" }) as HTMLButtonElement;
+
+      expect(save.disabled).toBe(true);
+
+      fireEvent.click(save);
+      expect(props.onCapChange).not.toHaveBeenCalled();
+   });
+
+   it("refuses to save a cap that is not a number rather than sending it as no cap", () => {
+      const props = baseProps();
+
+      render(<SettingsScreen {...props} />);
+      fireEvent.click(screen.getByRole("button", { name: "open" }));
+
+      fireEvent.change(screen.getByLabelText(/cap \$/), { target: { value: "4.5 dollars" } });
+      fireEvent.change(screen.getByLabelText(/cap tokens/), { target: { value: "9000" } });
+
+      const save = capRow().getByRole("button", { name: "save" }) as HTMLButtonElement;
+
+      expect(save.disabled).toBe(true);
+
+      fireEvent.click(save);
+      expect(props.onCapChange).not.toHaveBeenCalled();
+   });
+});
+
+describe("SettingsScreen, sections whose request has not answered", () => {
+   it("renders every heading and no digit while providers, budgets and queue settings are null", () => {
+      render(<SettingsScreen {...baseProps()} providers={null} budgets={null} queueSettings={null} />);
+
+      expect(screen.getAllByRole("heading", { level: 2 }).length).toBe(scopeSeventeenSections().length);
+      expect(document.body.textContent ?? "").not.toMatch(/\d/);
+   });
+});
+
+describe("SettingsScreen, retention line", () => {
+   it("states the plan's default retention, in the plan's own words and date form, only at exam date plus 30 days", () => {
+      render(<SettingsScreen {...baseProps()} />);
+
+      const line = screen.getByText(/Default retention/).textContent ?? "";
+
+      expect(line).toBe("Default retention: until 30 days after 10 May 2027.");
+      expect(DESIGN_BRIEF).toContain(line);
+
+      cleanup();
+
+      render(<SettingsScreen {...baseProps()} queueSettings={{ ...queueSettings, purge_after: "2027-07-01" }} />);
+
+      expect(screen.queryByText(/Default retention/)).toBeNull();
    });
 });
 
@@ -179,5 +297,107 @@ describe("SettingsScreen, design tokens", () => {
       const contents = readFileSync(join(process.cwd(), "src", "settings", "SettingsScreen.tsx"), "utf8");
 
       expect(contents).toMatch(/var\(--growth-[a-z-]+\)/);
+   });
+});
+
+describe("SettingsScreen, editable dates", () => {
+   const dateCases = [
+      { label: "exam date", field: "exam_date", saved: queueSettings.exam_date, typed: "2028-05-08" },
+      { label: "purge date", field: "purge_after", saved: queueSettings.purge_after, typed: "2028-06-07" }
+   ];
+
+   it.each(dateCases)("sends a changed $label as $field and nothing else", async (dateCase) => {
+      const props = baseProps();
+
+      render(<SettingsScreen {...props} />);
+
+      const field = within(screen.getByTestId(`date-field-${dateCase.label}`));
+      const input = field.getByLabelText(dateCase.label) as HTMLInputElement;
+      const save = field.getByRole("button", { name: "save" }) as HTMLButtonElement;
+
+      expect(input.value).toBe(dateCase.saved);
+      expect(save.disabled).toBe(true);
+
+      fireEvent.change(input, { target: { value: dateCase.typed } });
+      fireEvent.click(save);
+
+      await waitFor(() => expect(props.onSettingsChange).toHaveBeenCalledTimes(1));
+
+      expect(props.onSettingsChange).toHaveBeenCalledWith({ [dateCase.field]: dateCase.typed });
+   });
+
+   it("shows the date the server read back, not the one typed", () => {
+      const { rerender } = render(<SettingsScreen {...baseProps()} />);
+      const input = () => screen.getByLabelText("exam date") as HTMLInputElement;
+
+      fireEvent.change(input(), { target: { value: "2028-05-08" } });
+      rerender(<SettingsScreen {...baseProps()} queueSettings={{ ...queueSettings, exam_date: "2028-05-09" }} />);
+
+      expect(input().value).toBe("2028-05-09");
+   });
+});
+
+describe("SettingsScreen, an action that did not happen", () => {
+   it("marks export done only when it happened and hands the control back when it did not", async () => {
+      const props = baseProps();
+
+      props.onExport = vi.fn().mockResolvedValueOnce(false).mockResolvedValueOnce(true);
+      render(<SettingsScreen {...props} />);
+
+      const exportButton = screen.getByRole("button", { name: "export" }) as HTMLButtonElement;
+
+      fireEvent.click(exportButton);
+
+      await waitFor(() => expect(props.onExport).toHaveBeenCalledTimes(1));
+      await waitFor(() => expect(exportButton.disabled).toBe(false));
+
+      expect(exportButton.getAttribute("data-outcome")).toBeNull();
+
+      fireEvent.click(exportButton);
+
+      await waitFor(() => expect(exportButton.getAttribute("data-outcome")).toBe("done"));
+   });
+
+   it("asks for a new verification after a purge that did not happen and shows no done state", async () => {
+      const props = baseProps();
+
+      props.onPurge = vi.fn().mockResolvedValue(false);
+      render(<SettingsScreen {...props} />);
+
+      fireEvent.change(screen.getByLabelText(/type/i), { target: { value: props.purgeConfirmationPhrase as string } });
+      fireEvent.click(screen.getByRole("button", { name: /verify identity/i }));
+
+      const purgeButton = screen.getByRole("button", { name: /purge everything/i }) as HTMLButtonElement;
+      const verifyButton = screen.getByRole("button", { name: /verify identity/i }) as HTMLButtonElement;
+
+      await waitFor(() => expect(purgeButton.disabled).toBe(false));
+
+      fireEvent.click(purgeButton);
+
+      await waitFor(() => expect(props.onPurge).toHaveBeenCalledTimes(1));
+      await waitFor(() => expect(verifyButton.disabled).toBe(false));
+
+      expect(purgeButton.disabled).toBe(true);
+      expect(purgeButton.getAttribute("data-outcome")).toBeNull();
+   });
+
+   it("hands a cap row's save back with the typed value when the change did not happen", async () => {
+      const props = baseProps();
+
+      props.onCapChange = vi.fn().mockResolvedValue(false);
+      render(<SettingsScreen {...props} />);
+      fireEvent.click(screen.getByRole("button", { name: "open" }));
+
+      fireEvent.change(screen.getByLabelText(/cap \$/), { target: { value: "4" } });
+
+      const save = capRow().getByRole("button", { name: "save" }) as HTMLButtonElement;
+
+      fireEvent.click(save);
+
+      await waitFor(() => expect(props.onCapChange).toHaveBeenCalledTimes(1));
+      await waitFor(() => expect(save.disabled).toBe(false));
+
+      expect(save.getAttribute("data-outcome")).toBeNull();
+      expect((screen.getByLabelText(/cap \$/) as HTMLInputElement).value).toBe("4");
    });
 });

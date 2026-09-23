@@ -21,7 +21,7 @@ from tests.api.test_routes import open_session
 
 CASSETTE = {
    "text": "The factor cancels only after the rewrite, so the answer point is lost.",
-   "stop_reason": "end_turn",
+   "finish_reason": "end_turn",
    "provider": "anthropic",
    "model": "claude-sonnet-5",
    "usage": {

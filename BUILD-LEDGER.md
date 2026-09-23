@@ -1,6 +1,6 @@
 ---
 title: Build ledger
-research_date: 2026-09-19
+research_date: 2026-09-23
 status: in_progress
 purpose: Where the application build stands, session by session, so the next session can pick the next slice without rereading the plan.
 ---
@@ -10,6 +10,190 @@ purpose: Where the application build stands, session by session, so the next ses
 Application code lives at the repository root under `app/` and `tests/`, at the paths docs/plan names. The project CLAUDE.md still says "docs-only, no product"; that sentence is the operator's to amend and this ledger only records the conflict. Tooling: uv-managed Python 3.12.13 in `.venv/`, dependencies in `pyproject.toml`, tests via `.venv/bin/python -m pytest`. Every H2 below carries a tag because `qa/04_tags.py` scans root-level Markdown: [verified] means the test output or the registry was checked in the session named, [inferred] means a judgement.
 
 ## Done [verified]
+- Fourteenth session, 2026-09-23. Suite at close: pytest `803 passed`, client `308 passed`, tsc
+  clean, tests/e2e plus tests/api `151 passed` on four repeat runs, `qa/12_report.py` exit 0.
+  Opened at `746 passed` and `286 passed`.
+- R7, R8, R9 from the thirteenth session, reviewed fresh this session and closed with the repairs
+  below: tests/api/test_ungraded_flow.py, tests/items/test_bound_child_failure.py,
+  tests/design/test_contrast_floors.py, app/web/src/styles/app.test.ts.
+- Child death while grading (R8 finished): `ChildDiedError` is re-raised through
+  `app/items/grade.py` instead of being caught as ungraded, and POST /sessions/{id}/attempts
+  answers 503 with no attempt row, so the resubmit is graded.
+  test_a_child_death_while_grading_writes_no_attempt_and_the_resubmit_is_graded (red
+  `assert 200 == 503`), plus three grade-level re-raise tests, each red under its own mutant.
+- Provider seam: `ProviderResult.finish_reason` replaces `stop_reason`; a cassette that still
+  carries `stop_reason` is refused; `output_config.effort` is refused on Haiku 4.5.
+  test_result_names_finish_reason, test_a_cassette_carrying_stop_reason_instead_of_finish_reason_is_refused,
+  test_every_committed_cassette_replays_its_finish_reason, test_effort_is_refused_on_haiku_4_5,
+  test_haiku_4_5_without_effort_reaches_the_wire.
+- Account: `GET /auth/status` answers `{"user_exists": bool}` and the account screen shows only
+  register or only sign-in; `POST /auth/passkey/add/begin|finish` add a second passkey under the
+  session cookie, excluding the credentials already stored; `AddPasskeyControl` is mounted on
+  settings. tests/api/test_auth_status.py, tests/auth/test_add_authenticator.py (including
+  test_a_challenge_issued_to_one_user_cannot_finish_under_another_users_session, red `assert 409
+  == 403` with the guard mutated off, and test_adding_an_authenticator_excludes_the_passkeys_already_stored),
+  test_registration_options_exclude_the_credentials_already_stored against the real py_webauthn,
+  App.test.tsx "offers a signed-in student a second passkey on settings and nowhere else".
+- Key audit: a verdict outside the sample is refused (`VerdictOutsideSample`), a second verdict
+  through `record_item_audit_verdict` is refused (`VerdictAlreadyRecorded`), the denominator is
+  the sample size, and no rate is published until every sampled item has exactly one verdict.
+  test_a_verdict_outside_the_sample_is_refused, test_a_second_verdict_on_an_audited_item_is_refused,
+  test_an_incomplete_sample_publishes_no_rate, test_a_complete_sample_publishes_its_rate,
+  test_check_verdicts_refuses_a_verdict_outside_the_sample.
+- Units in grading (03 check 4): notation credit only for the same unit written differently, SI
+  conversion factor exactly 1; a different unit of any dimension is wrong; symbols are
+  case-sensitive except where the submission reads as no unit at all and matches the key in
+  another case (" M/Sec " against m/sec); physical constants are not units.
+  test_a_different_unit_earns_no_notation_credit (11 cases),
+  test_the_same_unit_written_differently_keeps_notation_credit,
+  test_a_speed_in_metres_per_second_against_a_key_in_feet_per_second_is_wrong,
+  test_unit_symbols_are_case_sensitive, test_a_physical_constant_is_not_a_unit,
+  test_units_that_name_no_known_unit_are_ungraded.
+- Gate 23 seed independence: the gate's loop runs until both screens arrived and every
+  cold-start-reachable archetype was served (no assertion changed; seeds 0 to 49 all pass),
+  `serve_as_mcq` publishes its own sibling item, and `second_wrong_answer` in
+  tests/api/test_settings_routes.py makes the stage and format certain. The session and preview
+  rng is seeded by process seed, user id and day through `preview.user_assembly_inputs`, and the
+  old `assembly_inputs` is deleted. test_two_users_on_the_same_day_get_different_draws,
+  test_the_process_seed_still_moves_the_draw, test_the_same_user_on_the_next_day_gets_a_different_draw,
+  test_the_preview_and_the_session_both_draw_from_the_signed_in_users_rng (red `assert [] ==
+  ['USER-...']`).
+- test_next_item_never_carries_the_answer_key reads its forbidden fields from 04's output schema
+  and 06's items table; red on each of four leaks mutated into `_as_item_dict`.
+- Error note cap of 500 (operator decision 2026-09-20): `ERROR_NOTE_MAX_CHARACTERS`, 422 over it.
+  test_error_note_route_refuses_a_note_over_500_characters, test_a_note_of_exactly_500_characters_is_stored
+  (red `assert 422 == 200` with `>` mutated to `>=`); the client field's maxLength test scans the
+  server constant (red `expected 501 to be 500`).
+- A malformed `today` answers 422 on GET /progress, POST /sessions and the other session routes,
+  with nothing written.
+- Design: the contrast floor tested at exactly 4.5 (red with `<` mutated to `<=`); the accent tint
+  range parsed from 08; `css.py` emits a `:root:not([data-theme])` fallback, light by default and
+  dark under `prefers-color-scheme: dark`, derived from theme.ts, so the first paint carries tokens.
+- Session screen: `rateConfidence` catches a refused rating and releases the in-flight guard; the
+  example-stage mock returns what the server returns (correct null, confidence null).
+
+Session 2026-09-23 (thirteenth), P1 exit criteria, the provider seam defects 13 enumerates, the
+sign-in screen, and the design. Suite line at open `512 passed in 70.40s (0:01:10)`, at the last
+close `746 passed in 148.85s (0:02:28)`. Client `Tests 286 passed (286)`, `npx tsc --noEmit`
+exit 0, `npx vite build` succeeds. Style gate exit 0 on 77 changed Python and Markdown
+files at the pre-wave-3 check. `qa/12_report.py` exit 0; `data/`, `research/`, `cache/` and `qa/`
+untouched. `tools/gate_status.py --phase P1` reads `P1: 31 gates, 28 present, 3 missing, 28
+passing`. Nothing committed.
+
+- Gate 26 `test_contrast_floors` closed (`tests/design/test_contrast_floors.py`). The palette is
+  `app/design/growth-tokens.json`, "Graphite, revised", chosen by the operator on 2026-09-23 from
+  three directions and then four Slate variants rendered as mockups. `tools/check_tokens.py`
+  exits 0 on it; the lowest pair is focus-ring on surface-sunken at 4.91:1 and the lowest text
+  role is 5.60:1. Cross-checked against the WebAIM Contrast Checker API
+  (https://webaim.org/resources/contrastchecker/, api mode, queried 2026-09-23): every text,
+  state and focus pair passes AA in both themes. The six border-hairline rows read AA fail and
+  AA-large pass at 3.02 to 3.57; 08 sets a 3:1 working floor only for the mastery map and the
+  calibration curve, and holding input edges to it is the implementer's extension.
+  Deviations the operator accepted by choosing it: 08 asks for warm neutrals and Graphite is a cool
+  grey; the file carries 08's named neutral tokens and the two semantic base colours, not a
+  separate nine-step ramp or semantic tint ramps, because the vocabulary names none.
+- Gate 22 `test_prompt_cache_prefix_length` closed. The tutor renders
+  `prompts/feedback/elaborated_v2.md`, whose static prefix measures 1,470 tokens on
+  claude-sonnet-5 by `POST /v1/messages/count_tokens` with the operator's key on 2026-09-23 (v1
+  measured 485). The prefix grew only with 13:246's content: guardrail rules, notation and
+  rendering rules, interface-writing rules; P1 has no persistent misconception list, so none was
+  added. The measurement is bound to the prefix bytes by sha256 in
+  `tests/fixtures/prompt_token_counts.json`; `tools/count_prompt_tokens.py` re-measures. P1 now
+  reads 28 of 31.
+- Exit criteria 5 and 6: `tests/e2e/test_exit_criteria_mastery.py`,
+  `test_unit2_session_changes_mastery_state` and `test_mastery_path_across_days_and_unmastery`,
+  over the real HTTP app with the six D2 conditions recomputed from `attempts` rows.
+- Exit criterion 8 instrument: `tools/serving_cost.py <db> [--user id]` prints served items, median
+  tutor cost per served item (all items, and items that made a call) and the cache read share from
+  attempts and from budgets, each with its denominator and exclusions. New attempts columns
+  `tutor_calls`, `tutor_cost_usd`, `tutor_tokens_in`, `tutor_tokens_cached_read`,
+  `tutor_cached_read_reported_calls`.
+- 13's guard items 3 to 7 and its missing hard-stop rows (`app/providers/guard.py`): a call that
+  reached the wire is charged the worst case, a `RefusedBeforeWire` is refunded; a refusal names
+  every crossed cap; null and zero cached counts kept apart through `settled_calls` and
+  `cached_*_reported_calls`; `ProviderCallFailed` carries no message text; an unconfigured role is
+  refused and audited once a day; only a raise of every stopping cap above the day's spend clears
+  a stop, through the guard and `PUT /settings/budgets` alike; `CallAccounting` and
+  `last_accounting`. Price table carries Haiku 4.5, Flash-Lite and dated Gemini 3.8 Flash.
+- Anthropic adapter: allowlisted `provider_options` (thinking disabled, effort), the key never a
+  local on a raising frame, redirects refused, SSE stream mapped per 06 with usage returned,
+  `reasoning_tokens` read, Opus 5 family rule.
+- Tutor: 13's configuration (thinking disabled, effort low, 600 output tokens) and ceilings of 20
+  calls per session and 3 per item, counted from the database, pre-wire failures not counted.
+  Startup caps default to 12's row, $1.00 and 250,000 tokens, and refuse non-finite values.
+- Audit detail bound (`app/audit/detail.py`) on every writer, checked per constructor by AST.
+- CSP and CORS middleware; Secure cookie decided by request host, plain http on a non-loopback
+  host refused.
+- SymPy bounded on every thread for equivalence, numeric check, expression comparison and parse;
+  a SymPy exception on student input is ungraded instead of a 500.
+- Client: account screen (register, sign in, recovery code) over real WebAuthn; `data-theme` from
+  the system preference; `app/web/src/styles/app.css` from the chosen mockup; inline style
+  overrides removed; one main landmark per screen.
+- Reviewer D's findings fixed: an example-stage or ungraded attempt no longer 409s on feedback or
+  confidence, so the student always gets Next item and mastery stays unchanged
+  (`tests/api/test_ungraded_flow.py`, feedback kind `ungraded`); a grader child that dies before
+  answering raises `ChildDiedError` instead of reading as unsettled; gate 26 pins focus-ring and
+  both state colours on every surface; app.css's `:focus-visible` rule, one main landmark per
+  screen, an h1 on the account screen and the recovery-code input's `autocomplete="off"` and focus
+  return are tested.
+- Tests strengthened: the tutor receives only its selected fields (sentinels in every other
+  field), prompt templates carry sha256 goldens, the cookie refusal reads the database.
+- py_webauthn landed in `pyproject.toml` and 06; `LibraryVerifier` builds real options.
+  `uvicorn` is installed in `.venv/` only, on the operator's yes, to run the app locally.
+
+Session 2026-09-22 (twelfth), the server routes and client wiring for the three P1 screens. Suite
+line at open `405 passed in 57.78s`, at close `512 passed in 60.71s (0:01:00)`. Client suite
+`Tests 228 passed (228)`, `npx tsc --noEmit` exit 0, `npx vite build` succeeds. Style gate exit 0 on
+all 64 changed or new files. `qa/12_report.py` exit 0 and `qa/last_report.json` restored. `data/`,
+`research/` and `cache/` untouched. `tools/gate_status.py --phase P1` still reads 26 of 31: every
+remaining gate is operator content or a live key. Nothing committed.
+
+- A, session payload. `GET /sessions/{id}/next` carries `served_steps` (every worked step at
+  example, all but the last at completion, null at unsupported, index and text only) and
+  `self_explanation_prompt` at example. `POST /sessions/{id}/attempts/{aid}/self-explanation`
+  writes `attempts.self_explanation` once, and only for a worked example or a corrected attempt.
+  `attempts.response` keeps only `mathjson`, `option_id` and `units`, so a client-claimed
+  `correct` or `step_outcomes` is no longer stored or trusted. Step marks are computed on the
+  server in `worked_solution` numbering: given steps `given: true, correct: null`, the completion
+  blank carries the server's verdict. A completion slot below Q16's 2-step minimum is served at
+  example. Tests `tests/api/test_served_steps.py`, `tests/api/test_self_explanation.py`, the
+  strengthened `test_next_item_never_carries_the_answer_key`, and the rewritten
+  `tests/feedback/test_render.py::test_step_verification_at_example_and_completion`.
+- B then A, home queue preview. `GET /progress` returns `skills_due_for_review`, `frontier_skills`,
+  `corrected_items_returning`, `forecast_minutes` and `session_in_progress`, writes nothing, and
+  derives its day and rng from `preview.assembly_inputs`, the same function `POST /sessions` now
+  uses, so the forecast is the queue the student opens. Coverage-gap audit rows deduped per user,
+  archetype and day. Tests `tests/session/test_queue_preview.py`,
+  `tests/api/test_progress_route.py` including
+  `test_progress_predicts_the_queue_post_sessions_assembles`.
+- C, settings and budgets. `GET` and `PUT /settings` (exam date and purge date),
+  `GET /settings/providers` (six roles from `guard.ROLES`, no key material), `GET` and
+  `PUT /settings/budgets` behind re-authentication with a `budget_cap_changed` audit entry. Caps
+  live on `budgets` rows and carry forward day to day once a PUT is made; before that the startup
+  caps apply and a lowered one still binds on today's row (the committed
+  `test_a_lowered_cap_binds_on_the_existing_row` passes unchanged). Tests
+  `tests/api/test_settings_routes.py`, `tests/providers/test_cap_change_binds.py`.
+- D, export. `POST /export` behind re-authentication and `GET /export/{id}`, a JSON archive of
+  every user-owned table classified from the SQLAlchemy metadata, with secret-bearing columns
+  dropped, written 0600, replaced new-file-first, 503 on an in-memory database. Tests
+  `tests/export/test_export.py`.
+- P, purge repair. Purge now removes the export archive and its `jobs` row, uses the export's
+  ownership classification instead of a hand-typed table list, and burns a wrong reauth token.
+  Gate 24 unedited and green. Tests `tests/session/test_purge.py` (three new),
+  `tests/api/test_purge_route.py`.
+- E, spacing. `SPACING_TOKENS` holds 08's nine values as `space-<px>`, emitted in a `:root` block,
+  and `stylesheet_from_token_file(path)`. Test `tests/design/test_spacing.py`.
+- F, ASGI mount. `app/main.py` serves `app/web/dist/assets` through `StaticFiles`, `index.html` at
+  `/` only, and `/growth-tokens.css` from `GROWTH_TOKENS_PATH` read per request (404 when unset).
+  `application` is built on first attribute access, so importing `app.main` writes nothing.
+  Tests `tests/api/test_static_mount.py` (19, including three traversal encodings).
+- G, hygiene. Resolution audit logs the row's own kind; `resolve_item_audit_row` resolves exactly
+  the named row and refuses a resolved one; the key error rate divides by eval 29's sample of 100;
+  `verify_item` splits options on `is_key` and refuses inconsistent records.
+- H, client. Home, session and settings are mounted over real calls; the "not built yet" panels
+  and the invented required props are gone. `ServedItem` and `SessionQueue` are checked by exact
+  field-set equality against the server source. Dates print as 08 writes them. Every settings
+  action reports failure by leaving its control re-enabled with no success state.
 
 Session 2026-09-21 (eleventh), the P1 client and gate 25. Suite line at open `388 passed in 64.09s`,
 at close `405 passed in 174.52s`. Client suite `133 passed`, `npx tsc --noEmit` exit 0 and
@@ -421,10 +605,135 @@ claimed.
 
 ## In progress [inferred]
 
-Nothing. The eleventh session closed with the suite green, the client building and the ledger
-current.
+Nothing. The fourteenth session closed with the suite green and every module of its plan either
+done or listed below as needing the operator.
 
 ## Known defects [verified]
+
+From the fourteenth session, 2026-09-23, found and not fixed.
+
+- The fading ladder cannot leave stage example in real use. 02 (lines 55, 245, 709) advances
+  example only on 2 consecutive credited successes, 11 P1 scope item 10 collects a rating "on
+  every item", but 11 implementer decision 3 says there is no answer at example, and the client
+  follows decision 3 and sends none. So a skill whose own items start at example leaves it only
+  through propagated credit or the p_knowledge bands. The server still grades and credits an
+  answer sent at example, and gate 23 and exit criteria 5 and 6 pass only because their helpers
+  send one. Refusing that answer on the server was built and reverted this session: it made gate
+  23, test_unit2_session_changes_mastery_state and test_mastery_path_across_days_and_unmastery
+  fail on every run, and with the helpers changed to send nothing they failed 5 runs in 9. 02
+  also disagrees with itself: line 404 says the bands apply until "a credited observation" and
+  line 407 tests `observation_count > 0`, which line 56 says counts uncredited observations too.
+- `test_mastery_path_across_days_and_unmastery` failed 1 run in 6 under the old behaviour in the
+  repair agent's scratch runs; 6 of 6 clean runs and 4 more at close passed. Probably draw
+  dependent, not confirmed.
+- The review-queue route (`app/api/routes/review.py` around line 70) resolves an item audit row
+  with no sample check and no one-verdict rule, so a verdict outside the sample or a second one
+  can still reach the table that way. `key_error_rate` counts neither, and it publishes no rate
+  while one exists. Nothing in the repository draws the 100-item sample yet; the CLI reads it
+  from a file and the app functions take it as an argument.
+- Stream error events are still always `retryable: False`. 07 has no Anthropic error-type table
+  and no retryable rule, so the constant is unsourced and was not replaced with a guess.
+- Adding a passkey needs only the session cookie, which is all 09 asks. A stolen cookie can add
+  a permanent credential that survives logout. 09's re-authentication list does not name it.
+- 09 line 96 says the login endpoints are the only ones an unauthenticated party can reach; that
+  was already false for `/auth/recovery/*` and is now false for `/auth/status` too.
+- Account copy written by the builder and awaiting the operator: "Add a passkey", "Passkey
+  added.", and the server refusal texts "this passkey is already registered" and "the challenge
+  belongs to another session", which can reach the screen. The credential display name is still
+  always "student".
+- The operator decision of 2026-09-20 says a second error note replaces the first. The code
+  refuses it with 409 (the eighth session's reading of 03's "once"), and
+  test_a_second_error_note_is_refused_and_the_first_survives pins that. The 500 cap from the
+  same decision is now enforced.
+- `tests/design/test_tokens.py` around line 304 types `approx(4.5)` rather than reading the floor
+  from 08.
+- `app/web/.gate-reduced-motion 2.json` is a stale sync copy of the gate report (older, differs
+  from `.gate-reduced-motion.json`). Left for the operator to delete.
+
+From the thirteenth session, 2026-09-23, found and not fixed.
+
+- No plan copy exists for an answer that could not be checked or for a failed feedback read, so
+  the screen shows no sentence there, only Next item.
+- `StepMarks.tsx` `BlankStep` shows the blank step's worked text when there is no verdict, so an
+  ungraded completion answer reveals the step without saying whether the student had it.
+- `app/web/.gate-reduced-motion 2.json` is an untracked file-sync duplicate of the gate 25 report;
+  left for the operator.
+
+- Gate 23 holds only for the seed-7 draw. Seeding the forecast rng by user id (the twelfth
+  session's defect) made `test_session_login_to_feedback` fail 1 run in 6 with `these never were:
+  ['BC-QA-02002']`, and `serve_as_mcq` in tests/api fail with `BC-QA-02011 has no published item
+  outside the queue`. The change was reverted; the rng is still per process and day.
+- The audit detail bound has no length limit (no plan number), and a key that is not in this
+  process's environment and has no plan-named prefix cannot be recognised. `authorization` is not
+  a refused field name.
+- HSTS and per-IP rate limits are not built: 09 gives no max-age and no rate.
+- Cache writes are always charged at the 1h rate; the adapter drops Anthropic's TTL split. The
+  tutor requests 1h, so P1 is exact. Gemini cache writes and hourly storage are not modelled.
+- The e2e exit tests bind mastery conditions 2, 4 and 5 only; 1, 3 and 6 survive deletion from the
+  engine there (gate 7 covers them). Condition 6 cannot bind in P1 because `evaluate_mastery` runs
+  at elapsed 0.
+- `COMPARISON_TIMEOUT_S = 5` has no plan source. A short-answer grade can take 15 s on a sync
+  worker. SIGALRM cannot interrupt one long C call on the main thread (ingest CLI). Forkserver
+  children are unbounded in number and re-import an unguarded `__main__`.
+- A budgets row that spans the migration day mixes unreported sums with counted calls.
+- `stop_reason` versus 07's `finish_reason`: readers in replay.py, several tests and the cassette.
+- Stream error events are always `retryable: False`. Effort on Haiku 4.5 is not refused.
+- `GET /growth-tokens.css` 404s unless `GROWTH_TOKENS_PATH` is set; a default to
+  `app/design/growth-tokens.json` needs three assertions in tests/api/test_static_mount.py changed,
+  which only the operator may approve.
+- No Inter font is bundled, so the system font renders. `letter-spacing` and numeric weights are
+  unset (08 gives none). The page renders once without colour tokens before JS sets `data-theme`.
+- Account screen: no route says whether a user exists, so both buttons show; the credential name is
+  always "student"; adding a second authenticator is not built (09 asks registration to prompt for
+  one); copy strings on the account screen were written by the builder and await the operator.
+- `finish_*` against the real py_webauthn has never run; that needs a real authenticator.
+- `test_next_item_never_carries_the_answer_key` derives forbidden columns from the code under test.
+
+Resolved in the thirteenth session from the list below: no `data-theme` ever set (D33), hand-typed
+`INSTANT_CLASSES`, stream parsed as JSON, thinking refused and options dropped, unbounded
+equivalence off the main thread, the tutor "only four fields" and prompt golden tests, Secure flag
+from bind_host, no CSP, webauthn not installed, `test_library_verifier_names_the_missing_package`
+depending on the package being absent.
+
+From the twelfth session, 2026-09-22, found and not fixed.
+
+- Purge is unreachable from the served app. 08 gives no purge confirmation phrase, so `App.tsx`
+  passes `null` and the purge controls stay disabled with the gap named on screen. Failure
+  scenario: 30 days after the exam the student cannot purge from settings.
+- No plan copy exists for a failed request anywhere in the client. Screens stay silent on a 500
+  or a dropped connection; a refused next-item request leaves feedback on screen to retry.
+- The empty-queue action "Add a 15 minute practice set" opens an ordinary session. No route
+  assembles a 15-minute set, so on an empty queue the button opens an empty session.
+- 08's "daily minute target" and "daily cap, all roles" have no column in 06, so neither is served
+  or shown.
+- Provider key storage (`PUT /settings/providers/{provider}` and its test call) is not built. 09
+  requires libsodium secretbox under a memory-hard KDF, and no libsodium binding is installed or
+  named by package in 06.
+- After the first cap change through settings, the environment cap no longer binds for that role.
+  Stated in `app/providers/guard.py`. A PUT is detected from the `budget_cap_changed` audit entry.
+- The home forecast rng is seeded from `GROWTH_RNG_SEED` and the day, not the user, so two users
+  on one day would share a draw. Harmless while P1 is single user.
+- `test_importing_app_main_leaves_the_repository_database_untouched` cannot fail when the
+  repository database already matches; `test_importing_app_main_opens_no_database` is the one that
+  proves the guarantee.
+- Export audit scope names the actors `worker`, `system` and `operator` as the student's in a
+  single-student deployment; purge deletes the same set. Multi-user (P8) needs a real owner.
+- `format_version = 1` in the export is a label with no plan source, and the `export` job type is
+  taken from 06's API surface row, not from its jobs type list.
+- Purge deletes archive files before its transaction commits. A failed commit leaves the rows and
+  loses the files, which is the privacy-safe side.
+- If more audit verdicts are recorded than the sample holds, `verdicts_complete` reads true and the
+  key error rate can exceed 1. No plan rule decides it.
+- The passkey JSON the client sends to the reauth and purge routes has been tested against mocks
+  only. The `webauthn` package is not installed in `.venv/`, so `LibraryVerifier` has never run.
+
+Resolved this session: the served-steps, pre-submission self-explanation prompt and
+self-explanation persistence defects; `record_attempt` storing a client-claimed `correct`; the
+three unmounted screens; the unserved token stylesheet; the missing spacing vocabulary;
+`ServedItem` omitting `is_probe` and the loosely typed queue; the review audit kind, the wrong-row
+resolution and the key error denominator; `verify.py`'s null `error_path` split; coverage gaps
+missing from `audit_log` per day; `test_next_item_never_carries_the_answer_key` asserting only a
+string. The reauth audit entry was already written by the route.
 
 Two review rounds ran against this session's own diff, and both found blocking defects that were
 reproduced and fixed before close.
@@ -714,6 +1023,80 @@ From the eleventh session, 2026-09-21, found and not fixed.
 - `qa/last_report.json` is regenerated whenever `qa/12_report.py` runs and is restored with `git checkout -- qa/last_report.json` at session close, so the library's committed report does not drift because of build sessions.
 
 ## Plan corrections applied [verified]
+
+Session 2026-09-23 (fourteenth). No plan file was edited. Readings applied in code:
+
+- 03 check 4 "dimensionally correct" read as "the same unit": a unit of the same dimension at a
+  different scale (cm against m, m/s against ft/s) is wrong, because the value is compared
+  without conversion. The builder's first reading, same dimension is notation, credited 12.5 m/s
+  against a key of 12.5 ft/s.
+- 11 exit criterion 4, "measured rather than estimated": no key error rate is published while any
+  sampled item lacks exactly one verdict. Two assertions written earlier expected a partial rate
+  (0.2 and 0.5); they now expect none.
+- One assertion written this session, `"M"` against a key of `m` ungraded, was changed to credit
+  it, to agree with the committed `" M/Sec "` case in test_units_declared_but_absent_is_notation_only.
+- 13 line 60 says a truncated tutor call returns `stop_reason: "max_tokens"`; true of Anthropic's
+  raw response, and the normalised result now carries it as `finish_reason`.
+- 06's API table has no rows for `GET /auth/status` or `POST /auth/passkey/add/begin|finish`.
+
+Session 2026-09-23 (thirteenth).
+
+- `docs/plan/09-security-and-privacy.md` CSP paragraph: adds `style-src-attr 'unsafe-inline'`.
+  Old reading: styles restricted to self with per-build hashes. Reason: MathLive lays out formulas
+  through run-time style attributes; under the old policy a fraction rendered collapsed with 121
+  blocked-style errors, verified in a browser.
+- `docs/plan/02-adaptive-engine.md` lines 733 and 734: gamma 0.4 and rho -0.2 in the tunables
+  table corrected to 1.0 and -0.5, which lines 130 and 131 and the code already use.
+- `docs/plan/06-architecture.md`: attempts gains the five tutor accounting columns; budgets gains
+  `settled_calls`, `cached_read_reported_calls`, `cached_write_reported_calls` and `stopped_by`,
+  with the rule that a count of 0 means the cached sum is not a measurement; line 93 names
+  py_webauthn.
+- 11 entry criterion 5 and implementer decision 6: the token file is the implementer's, not the
+  operator's. The eighth to twelfth sessions filed it as human-only. The operator chose the
+  palette; the implementer produced and checked the values.
+- 11 P1 Goal against scope 17: the onboarding account screen (passkey registration) is in P1,
+  because the Goal has a student register and scope 17 excludes only the diagnostic onboarding.
+- `app/design/tokens.py`: `accent-contrast-text` is no longer checked on `accent-base`, approved by
+  the operator. 08 gives the button text its own token, `text-on-accent`, still checked.
+- 13 item 4 with 07's "No further tutor calls today": the stop latches; its refusal names the cap
+  that stopped it. Three tests in tests/providers/test_guard.py were rewritten on 13 items 3 and 4:
+  the abandoned stream now asserts the worst-case charge (old `tokens_in == 0`, `cost_usd == 0.0`),
+  and the two latch tests assert one refusal row naming `usd` (old `len(refusals) == 2`, `reasons ==
+  {"usd", "hard_stopped"}`).
+- 13 "raising a cap clears the stop": read as every stopping cap raised, none lowered, all above
+  the day's spend.
+- 13 item 6: charged at the 1h write rate because the result carries no TTL split.
+- 07 "the adapter passes it through": replaced by an allowlist, because 13 line 20 makes
+  temperature a 400 and a passthrough let model and max_tokens bypass the guard.
+- 07:145 thinking form: only `{"type": "disabled"}` is accepted, per 13:22 and 13:60; the adaptive
+  form 07 names for the generator stays refused until P4 needs it.
+- 09 "refuses a Secure-less cookie on a non-loopback origin": origin read as the request host.
+- 06 "the verifier stays in-process with SymPy": read as in the application, not a separate
+  service; the child process is a time bound.
+- 11 exit criterion 8 "per served item": items with no tutor call count at cost 0 (06's
+  `tutor_calls` DEFAULT 0); both medians are printed.
+- 13's per-session tutor ceiling: reaching it returns no sentence rather than "unavailable for the
+  rest of today", which 07 writes for the daily cap.
+
+Session 2026-09-22 (twelfth). None of these edits docs/plan.
+
+- 06 API surface, `GET /progress`, listed as "mastery map, calibration, due counts". The progress
+  screen is not P1, but home's three counts and minute forecast need a route, so P1 serves only
+  the due-count part there. Old reading: a progress-screen route. Reason: 08 home needs the counts
+  and 06 names no other route that carries them.
+- 06 API surface has no self-explanation route. `POST /sessions/{id}/attempts/{aid}/self-explanation`
+  is added beside the error-note route, which also predates 06's table. Reason: 06 defines the
+  `attempts.self_explanation` column and 11 P1 scope 10 requires the answer.
+- 11 P1 entry criterion 5 lists the spacing scale among values the implementer produces. 08 already
+  fixes the nine values, so they are emitted from 08 directly and are not operator input. Names
+  are `space-<px>` because 08 gives none.
+- 07 Budget caps, "stored in budgets". Read as: the cap in force is on today's budgets row, carried
+  forward from the latest earlier row once the operator has changed it through settings.
+- 09, "an extension is an explicit act". Read as: a changed exam date never moves `purge_after`.
+- 11 Q16, "served at stages example and unsupported only". The server serves such a completion slot
+  at example, keeping the support the engine chose.
+- 11 Remaining implementer decision 3 (no answer at example). Read as: step marks at example carry
+  no verdict; every step is marked given.
 
 From the eleventh session, 2026-09-21.
 
@@ -1042,206 +1425,29 @@ Second session, on the instruction "decide anything that needs my input yourself
 
 ## Next candidates [inferred]
 
-Session 2026-09-21 (eleventh) closed gate 25 and with it the last P1 deliverable that needed
-nothing from the operator. P1 stands at 26 of 31 gates present and passing. All five remaining
-gates are operator-authored content, and each already has its checker, its shape and its work
-order built. `docs/operator/README.md` is the index. `python3 tools/gate_status.py --phase P1` is
-the check.
+P1 reads 28 of 31 (gate_status: 17, 29 and 30 missing). P2 cannot start: its entry criterion is
+"P1 merged with all gates green". Nothing further in P1 is buildable without the operator; every
+item below needs content, a key, a download or a ruling.
 
 Human-only, in the order that unblocks the most:
 
-1. Gates 17 and 30, and exit criterion 7. The 130 hand-authored items, 10 per archetype over the
-   13 the plan names. Shape reference and field list: `docs/operator/items.md`. Checker:
-   `python3 tools/check_items.py <directory>`, exit 0 when every record is clean. The synthetic
-   records in `tests/fixtures/items_p1/` are the shape and count toward no item-quality gate.
-   Blocked on this: `test_item_verification_tools` and `eval_p1_distractor_paths`, one wrapper each
-   over `app/items/ingest.py` and `app/items/distractor_paths.py` once real items exist.
-2. Gate 29 and exit criterion 4. The 100-item key audit. Field list and verdict meanings:
-   `docs/operator/key-audit.md`. Checker:
-   `python3 tools/check_audit_verdicts.py <verdicts.json> <sample.json>`. P1 sets no pass
-   threshold; the requirement is that the number exists. Depends on the items, so it is second.
-3. Gate 26 and entry criterion 5. The design token file. Copy
-   `docs/operator/design-tokens.template.json`, which now carries the nine type-scale tokens
-   alongside the seventeen colour tokens per theme, fill every null, and run
-   `python3 tools/check_tokens.py <path>`. 11's implementer decision 6 also wants a named WCAG 2.2
-   checker's output in the pull request beside the tool's. Blocked on this: `test_contrast_floors`,
-   a wrapper over `app/design/tokens.py`. Note that the template still offers no spacing slot; see
-   Known defects.
-4. Gate 22. A provider key. `docs/operator/provider-key.md` names the environment variables the
-   composition root reads. The count it measures is the tutor template's static prefix against
-   claude-sonnet-5's 1,024-token minimum, and the ledger already records that both templates are
-   far short of it, so gate 22 will fail on length rather than merely be unmeasurable.
+1. Ruling on how a skill leaves stage example (Known defects, first entry). Either example
+   collects a graded answer (then decision 3 in 11 is withdrawn and the client sends one), or
+   example is left by another rule 02 must state. Unblocks the server-side refusal and makes gate
+   23 and exit criteria 5 and 6 prove the flow the real client runs.
+2. Gates 17 and 30, exit criterion 7: the 130 hand-authored items, 10 per archetype over 11's 13.
+   Shape `docs/operator/items.md`, check `python3 tools/check_items.py <dir>`. Unblocks
+   `test_item_verification_tools` and `eval_p1_distractor_paths`.
+3. Gate 29, exit criterion 4: the 100-item key audit over those items. Shape
+   `docs/operator/key-audit.md`, check `python3 tools/check_audit_verdicts.py`.
+4. Exit criterion 8: real tutor calls with the key, then `tools/serving_cost.py <db>`.
+5. Rulings: which Anthropic stream errors are retryable (07); whether adding a passkey requires
+   re-authentication (09); whether a second error note replaces or is refused; the purge
+   confirmation phrase; copy for a failed request and for the account screen; PyNaCl for
+   provider key storage; `/growth-tokens.css` defaulting to the repository token file (three
+   assertions in tests/api/test_static_mount.py); `uvicorn` in pyproject and 06; permission to
+   download Inter as a self-hosted woff2.
 
-Not human-only and open, for a session that wants work before the operator's content arrives.
-These are the client-side gaps this session opened and could not close from inside the client:
-
-- The `served_steps` payload for stages example and completion, and the pre-submission
-  self-explanation prompt, and a route that persists the self-explanation answer. All three are
-  under Known defects with their failure scenarios. These are server work in
-  `app/runtime/bank.py`, `app/session/service.py` and `app/api/routes/sessions.py`, and until they
-  land the session screen is driven by required props its caller has to invent.
-- The routes the home and settings screens need and no client function returns: the queue minute
-  forecast and the three queue counts, the exam date and days to exam, the provider role
-  assignments and the budget figures, and the passkey re-authentication ceremony gate 24 already
-  tests on the server but which the client cannot call.
-- `app/main.py` still builds no ASGI entrypoint that mounts the client, so nothing serves
-  `app/web` beside the API. `client.ts` issues relative paths on that assumption.
-- A `SPACING_TOKENS` table in `app/design/tokens.py`, which entry criterion 5 names and the
-  vocabulary does not carry.
-
-P2 still cannot start. Its entry criterion in 11 is "P1 merged with all gates green" and five P1
-gates are missing.
-
-
-## Next candidates [inferred]
-
-Session 2026-09-20 (eighth) leaves P1 with no deliverable buildable without the operator. Every
-open gate is one of the five human-only artefacts below, and each one now has its checker, its
-shape and its work order already built, so the operator's step is authoring and nothing else.
-`docs/operator/README.md` is the index. The commands below are the ones that decide whether an
-artefact is done.
-
-- Gates 17 and 30, and exit criterion 7. The 130 hand-authored items, 10 per archetype over the 13
-  the plan names. Shape reference and field list: `docs/operator/items.md`. Checker:
-  `python3 tools/check_items.py <directory>`, exit 0 when every record is clean. The 36 synthetic
-  records in `tests/fixtures/items_p1/` are the shape and count toward no item-quality gate.
-  Blocked on this: the two gate test functions, which are one wrapper each over
-  `app/items/ingest.py` and `app/items/distractor_paths.py` once real items exist.
-- Gate 29 and exit criterion 4. The 100-item key audit. Field list and verdict meanings:
-  `docs/operator/key-audit.md`. Checker:
-  `python3 tools/check_audit_verdicts.py <verdicts.json> <sample.json>`, which publishes the rate
-  only when every verdict in the sample exists and is well formed. P1 sets no pass threshold; the
-  requirement is that the number exists. It depends on the items, so it is second in line.
-- Gate 26 and entry criterion 5. The design token file. Copy
-  `docs/operator/design-tokens.template.json`, fill every null with a hex colour, run
-  `python3 tools/check_tokens.py <path>`. Decision 6 also wants a named WCAG 2.2 checker's output
-  in the pull request alongside the tool's. Blocked on this: `test_contrast_floors`, which is a
-  wrapper over `app/design/tokens.py`.
-- Gate 25. `test_reduced_motion_replaces` and the five P1 feedback affordances it names. `app/web/`
-  does not exist and screens belong to no phase before this one, so this waits on the token file
-  and then on the screens.
-- Gate 22. A provider key. `docs/operator/provider-key.md` names the environment variables the
-  composition root reads and what the key is for here, which is measuring the token count of the
-  tutor template's static prefix. The adapter, the two templates and the replay player exist and
-  run without one. `test_prompt_cache_prefix_length` has no test function anywhere yet and cannot
-  be written honestly until the count can be measured.
-- Not human-only and still open, if a session wants P1 work before the items arrive: the three
-  non-blocking review findings under Known defects, which are the duplicated comparison logic in
-  `app/items/distractor_paths.py`, the contrast floor boundary that no test exercises at exactly
-  4.5, and the accent tint range typed out in `tests/design/test_tokens.py`.
-- P2 cannot start. Its entry criterion in 11 is "P1 merged with all gates green" and six P1 gates
-  are missing. `python3 tools/gate_status.py --phase P1` is the check.
-
-## Decisions taken on the operator's instruction, 2026-09-20 [inferred]
-
-Sixth session, on the instruction "answer all decisions for me". Every open question the ledger
-held for the operator is answered here. None of these is implemented yet except the last; they are
-the standing answers the next slice builds against.
-
-- A wrong short answer does get elaborated feedback in P1, as built this session. R12 rule 3 gives
-  it no error path, so it carries the violated step and the worked solution and leaves the two
-  BC-ERR fields empty. Feedback that names the step beats no feedback at all on the whole short
-  answer path, and 03's Content section already contemplates an archetype with no matched error.
-- `tests/fixtures/items_p1/` may be filled with synthetic items for gate 23. Gate 23's property is
-  the flow, login to feedback to a persisted `skills_state` change, not item quality, so a fixture
-  item exercises it honestly. Gates 17, 29 and 30 are item-quality gates and still wait for the 130
-  hand-authored items; no synthetic item may be counted toward them, and the fixture directory
-  carries a README saying so.
-- Cassettes under `tests/fixtures/provider_cassettes/` may be hand-written fixtures rather than
-  recordings, until a key exists. A cassette is a fixture response for `ReplayProvider`, so writing
-  one by hand proves the replay path and the no-network rule. Every hand-written cassette is marked
-  synthetic in the file, and gate 22's token count still waits for a real key.
-- Purge truncates the tables that carry no `user_id`: `review_queue`, `jobs`, `items` and
-  `item_verifications`. The installation is single-user, so every row in them is that user's work.
-  `content_snapshots` is kept, because it is derived from the read-only library and holds nothing
-  the student wrote. The purge audit entry survives the purge instead of being deleted with the
-  rest of `audit_log`.
-- py_webauthn (`webauthn` on PyPI) is approved for `pyproject.toml` and is to be named in 06 when
-  the dependency lands.
-- The error note is capped at 500 characters and a second POST replaces the first. One note per
-  corrected item is 02's rule; replacing a note is editing it, not adding a second one.
-- `reauth_established` and `coverage_gap_fail_closed` join 09's audit vocabulary, and the code gets
-  one module-level enumeration of action names so the vocabulary is controlled in fact and not only
-  in the plan.
-- The coverage-gap audit writes one row per user per archetype and skips a gap already recorded,
-  rather than one row per session opened.
-- The tutor stays opt-in through `GROWTH_TUTOR_PROVIDER` until 07's budget, usage and audit seam is
-  built. That seam is the next slice.
-- The 24 stray `* 2.py` files were deleted. Twenty-two were byte-identical to their counterparts,
-  and `tests/api/conftest 2.py` and `tests/items/test_verify 2.py` were strictly older versions of
-  files that still hold everything they held. The suite now reports `191 passed` without
-  `--ignore-glob`.
-
-## Decisions taken on the operator's instruction, 2026-09-19 [inferred]
-
-Second session, on the instruction "decide anything that needs my input yourself":
-
-- Gate 31: both structural causes were corrected in the engine and the plan rather than in the fixture, because the real library has the same shape (440 of 522 listed skills sit in exactly one active archetype, `data/archetypes.json`). `gamma` 0.4 to 1.0 and `rho` -0.2 to -0.5 in `app/engine/constants.py`, 02, 11 and 12; 1.0 is PFA's own unit weight on `phi(c)` and keeps the 2 to 1 asymmetry. Mastery condition 3 becomes min(2, archetypes listing the skill in the active snapshot) via `EngineGraph.archetype_counts` and `evaluate_mastery(state, today, archetypes_available)`; a graph without counts keeps the old unconditional 2.
-- Three selection-test fixture rows lacked the `stage` key that every production attempts row carries (`repository.load_attempts_history`, the runner); the new gamma pushed cold-start `p_knowledge` above 0.9 and reached `format_for_attempt`, which reads it. The rows were completed, no assertion changed.
-- `httpx2` as the test dependency for FastAPI's TestClient.
-- WebAuthn: use py_webauthn (`webauthn` on PyPI) when the passkey slice is built; record it in 06 then.
-- Attempts at stage completion or unsupported whose rating never arrives: `close_session` will apply them with rating unsure (no hypercorrection can fire from unsure), so no observation is lost; to be built with the routes slice.
-- Seeding the 618 `skills_state` rows happens on passkey registration finish, the only account-creation path.
-
-- The prerequisite-graph cycle was closed by flipping the reversed row: `BC-SKL-06023,BC-SKL-05020,supporting` became `BC-SKL-05020,BC-SKL-06023,supporting`, because the row's own note stated that the Unit 6 skill depends on the Unit 5 one, which is the opposite of the direction it was stored in. Applied directly to `data/prereq_edges.csv`, then `tools/sync_dependents.py`, `tools/merge_staging.py`, the post-change tool chain and `qa/12_report.py`.
-- The FSRS-7 forms stay as copied from fsrs-rs; 02's transcribed block stays marked superseded.
-- The application lives in this repository; the local CLAUDE.md was amended to say so. The style gate keeps its wider `/docs/` scope.
-- The build is committed on the branch `build/p1-backend-core`; main is untouched.
-
-## Next candidates [inferred]
-
-Session 2026-09-20 (seventh) leaves P1 with no deliverable buildable without the operator. Every
-remaining gate is one of the three human-only classes below.
-
-- Human-only, blocks P1 exit, gates 17, 29 and 30: the 130 hand-authored items, 10 per P1
-  archetype, in the record shape `app/items/ingest.py` reads. `tests/fixtures/items_p1/` now holds
-  36 synthetic records in exactly that shape, which are a template for the authoring and are marked
-  in their README as not countable toward any item-quality gate. Each needs `is_key` on every
-  option, a BC-ERR `error_path` on every distractor resolving to an error the archetype's skills
-  hold, and MathJSON on the last worked-solution step. Then the 100-item key audit, whose verdicts
-  `app/review/audit.py` records and whose rate it publishes.
-- Human-only, gates 25 and 26: the design tokens with a named contrast checker, and the screens.
-  `app/web/` does not exist.
-- Human-only, gate 22: a provider key. The token count of the tutor template's static prefix cannot
-  be measured without one, and the recorded cassettes under `tests/fixtures/provider_cassettes/`
-  are hand-written until then. `app/providers/anthropic.py`'s wire mapping has still never executed.
-- Buildable, small, if a session wants P1 work before the items arrive: a migration path for
-  `attempts.tutor_sentence`, and an audit action for a provider result the guard cannot read. Both
-  are under Known defects.
-- Buildable, the next real slice: P2's entry criteria in 11 decide whether the FSRS scheduling work
-  can start while P1 waits on the operator. That is the first thing the next session should read.
-
-
-- Most likely next slice without human input: the provider seam of 07, meaning the budget row, the
-  usage accounting and the `audit_log` write on every provider call, plus caching the tutor
-  sentence on the attempt so re-reading the feedback screen does not re-spend and does not return a
-  different sentence. That is the last piece of P1 scope 12 that needs no key, and it is what makes
-  `GROWTH_TUTOR_PROVIDER=anthropic` safe to turn on.
-- Still open and not human-only: deduping the coverage-gap audit rows, a controlled vocabulary for
-  audit actions, and the `audit_log` entry 09 asks for on ordinary registration.
-
-- Human-only, blocks P1 exit: 130 hand-authored items (10 per P1 archetype) in the record shape
-  `app/items/ingest.py` reads, each with `is_key` on every option, a BC-ERR `error_path` on every
-  distractor and MathJSON on the last worked-solution step, which is the second statement of the
-  key that the SymPy and numeric checks compare against; the 100-item key audit, whose verdicts
-  `app/review/audit.py` records and whose rate it publishes; design tokens with a named contrast
-  checker; confirmation that py_webauthn (`webauthn` on PyPI) may be added to `pyproject.toml` and
-  named in 06; a decision on whether purge truncates the tables without `user_id`.
-- Needs a screen: `app/web/` session, home and settings screens; tests 23, 25, 26.
-- Needs a provider key: the recorded tutor cassettes under `tests/fixtures/provider_cassettes/`,
-  the token count that gate 22 asserts, and the first real call through
-  `app/providers/anthropic.py`, whose wire mapping has never executed. The adapter, the two
-  templates and the replay player exist and are exercised without a key.
-- Needs items: test 17, eval 29, eval 30; `app/sim/runner.py` should read `tests/fixtures/items_p1/`
-  through `app/items/ingest.py` once it exists.
-- Most likely next slice without human input: whatever unblocks gate 23. That means resolving the
-  served format at serve time rather than freezing it at assembly, so the R16 alternation happens
-  inside a session and an MCQ item is reachable; deciding what elaborated feedback says for a wrong
-  short answer, which today has no BC-ERR record and so composes nothing; an HTTP route for the
-  error note; and `settings.tutor` wired in `app/main.py`. Also still open from the fourth session:
-  the `audit_log` write for the fail-closed coverage gap and `reauth_finish`'s missing audit entry.
-- Two questions only the operator answers. Whether a wrong short answer at stage unsupported should
-  get elaborated feedback at all in P1, given that R12 produces no error path for it and 03 builds
-  the elaborated payload out of one. Whether the deliberately empty `tests/fixtures/items_p1/` may
-  be filled with a handful of synthetic items for gate 23's sake, or whether gate 23 waits for the
-  130 hand-authored ones.
+Blocked on the above: the server refusing an answer at example (item 1); the retryable flag
+(item 5); a re-auth requirement on adding a passkey (item 5); the review-queue route's sample
+check (needs the drawn sample, item 3).

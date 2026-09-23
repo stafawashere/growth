@@ -145,8 +145,6 @@ const STRING_LITERAL = /"([^"\n]*)"|'([^'\n]*)'|`([^`]*)`/g;
 
 const CUSTOM_PROPERTY_REFERENCE = /var\(\s*--[a-z-]+/g;
 
-const GROWTH_TOKEN = /var\(--growth-[a-z-]+\)/;
-
 function sourceFilesUnder(directory: string): string[] {
    const found: string[] = [];
 
@@ -236,11 +234,56 @@ describe("HomeScreen, design tokens", () => {
       expect(offenders).toEqual([]);
    });
 
-   it("styles home only through var(--growth-<token>) custom properties", () => {
+   it("gives the primary action the button-primary class and leaves its colour to app.css's own text-on-accent rule", () => {
       const home = join(process.cwd(), "src", "home", "HomeScreen.tsx");
       const contents = readFileSync(home, "utf8");
+      const css = readFileSync(join(process.cwd(), "src", "styles", "app.css"), "utf8");
 
-      expect(contents).toMatch(GROWTH_TOKEN);
+      expect(contents).toMatch(/className="button-primary"/);
       expect(colourOffendersIn(home)).toEqual([]);
+
+      const buttonPrimaryRule = css.match(/\.button-primary\s*\{[^}]*\}/);
+
+      expect(buttonPrimaryRule).not.toBeNull();
+      expect(buttonPrimaryRule![0]).toMatch(/color:\s*var\(--growth-text-on-accent\)/);
+      expect(buttonPrimaryRule![0]).not.toMatch(/accent-contrast-text/);
+   });
+});
+
+describe("design tokens, primary button vocabulary across every screen", () => {
+   it("never gives a button accent-contrast-text as its own colour, source-wide", () => {
+      const files = sourceFilesUnder(join(process.cwd(), "src")).filter(
+         (file) => !file.endsWith(".test.tsx") && !file.endsWith(".test.ts")
+      );
+      const offenders: string[] = [];
+
+      for (const file of files) {
+         for (const match of file ? readFileSync(file, "utf8").matchAll(/<button[\s\S]{0,600}?(?:\/>|<\/button>)/g) : []) {
+            const buttonMarkup = match[0];
+            const namesAccentContrastText = buttonMarkup.includes("accent-contrast-text");
+
+            if (namesAccentContrastText) {
+               offenders.push(`${file}: ${buttonMarkup.slice(0, 80)}`);
+            }
+         }
+      }
+
+      expect(offenders).toEqual([]);
+   });
+
+   it("renders at most one button-primary per screen state", () => {
+      const readyQueue = render(<HomeScreen {...baseProps()} />);
+
+      expect(readyQueue.container.querySelectorAll(".button-primary").length).toBe(1);
+      cleanup();
+
+      const emptyQueue = render(<HomeScreen {...baseProps()} status="empty" queueMinutes={0} queueLines={[]} />);
+
+      expect(emptyQueue.container.querySelectorAll(".button-primary").length).toBe(1);
+      cleanup();
+
+      const inProgress = render(<HomeScreen {...baseProps()} status="inProgress" />);
+
+      expect(inProgress.container.querySelectorAll(".button-primary").length).toBe(1);
    });
 });

@@ -1,4 +1,6 @@
 """Passkey registration, login, re-authentication and logout over the HTTP layer."""
+import sys
+
 import pytest
 
 from app.api.routes.purge import PURGE_CONFIRMATION
@@ -80,10 +82,20 @@ def test_reauth_token_single_use(world):  # noqa: F811
    assert world.purges.calls == [world.purges.calls[0]]
 
 
-def test_library_verifier_names_the_missing_package():
+def test_library_verifier_names_the_missing_package(monkeypatch):
+   monkeypatch.setitem(sys.modules, "webauthn", None)
    verifier = LibraryVerifier(rp_id="localhost", origin="http://127.0.0.1:8000")
 
    with pytest.raises(RuntimeError) as raised:
       verifier.begin_registration("USER-1", "Student")
 
    assert "webauthn" in str(raised.value)
+
+
+def test_library_verifier_builds_real_registration_options():
+   verifier = LibraryVerifier(rp_id="localhost", origin="http://localhost:8000")
+
+   begun = verifier.begin_registration("USER-1", "Student")
+
+   assert begun["options"]["rp"]["id"] == "localhost"
+   assert begun["options"]["challenge"] == begun["challenge"]

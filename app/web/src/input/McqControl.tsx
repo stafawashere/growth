@@ -13,7 +13,7 @@ export function McqControl(props: McqControlProps) {
    const groupName = useId();
 
    return (
-      <fieldset>
+      <fieldset className="choice-group">
          <legend>{groupLabel}</legend>
          {options.map((option) => {
             const optionText = option.label ?? option.value ?? option.id;

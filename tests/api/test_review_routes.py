@@ -4,6 +4,7 @@ import json
 from sqlalchemy.orm import Session as OrmSession
 
 from app.db import models
+from app.items import ingest
 from app.review import audit
 
 NOW = "2026-03-01T09:00:00+00:00"
@@ -78,7 +79,7 @@ def test_resolve_records_the_operator_verdict(world):
       assert row.resolved_at is not None
       assert json.loads(row.resolution)["verdict"] == audit.VERDICT_KEY_WRONG
 
-      rate = audit.key_error_rate(db, 1)
+      rate = audit.key_error_rate(db, ["ITM-0010"], sample_size=1)
 
       assert rate["verdicts_recorded"] == 1
       assert rate["key_errors"] == 1
@@ -152,3 +153,54 @@ def test_resolve_refuses_an_unknown_verdict(world):
    empty = client.post(f"/review-queue/{row_id}/resolve", json={})
 
    assert empty.status_code == 400
+
+
+def test_resolving_a_row_logs_the_row_own_kind(world):
+   """09 records a review queue item resolved, and the entry has to say which kind of row it was."""
+   client = world.client()
+   world.register(client)
+   insert_row(world, "RVQ-kind-1", ingest.REVIEW_KIND, "ITM-0030", NOW)
+
+   resolved = client.post(
+      "/review-queue/RVQ-kind-1/resolve",
+      json={"resolution": "operator settled the comparison by hand"},
+   )
+
+   assert resolved.status_code == 200
+
+   with OrmSession(world.engine) as db:
+      entries = db.query(models.AuditLog).filter(
+         models.AuditLog.subject == "review_queue:RVQ-kind-1"
+      ).all()
+
+      assert len(entries) == 1
+      assert json.loads(entries[0].detail)["kind"] == ingest.REVIEW_KIND
+
+
+def test_resolving_an_item_audit_resolves_exactly_the_named_row(world):
+   client = world.client()
+   world.register(client)
+   insert_row(world, "RVQ-same-item-first", audit.KIND, "ITM-0040", NOW)
+   insert_row(world, "RVQ-same-item-second", audit.KIND, "ITM-0040", LATER)
+
+   resolved = client.post(
+      "/review-queue/RVQ-same-item-second/resolve",
+      json={"verdict": audit.VERDICT_CLEAN},
+   )
+
+   assert resolved.status_code == 200
+
+   with OrmSession(world.engine) as db:
+      named_row = db.get(models.ReviewQueue, "RVQ-same-item-second")
+      other_row = db.get(models.ReviewQueue, "RVQ-same-item-first")
+
+      assert named_row.resolved_at is not None
+      assert json.loads(named_row.resolution)["verdict"] == audit.VERDICT_CLEAN
+      assert other_row.resolved_at is None
+      assert other_row.resolution is None
+
+      entries = db.query(models.AuditLog).filter(
+         models.AuditLog.action == "review_queue_item_resolved"
+      ).all()
+
+      assert [entry.subject for entry in entries] == ["review_queue:RVQ-same-item-second"]

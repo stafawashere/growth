@@ -21,7 +21,7 @@ export function ElaboratedPanel({ elaborated, sentence }: ElaboratedPanelProps) 
          className={motionClass("elaboratedFeedbackPanel")}
          data-testid="elaborated-panel"
       >
-         <p data-testid="elaborated-verdict" style={{ color: "var(--growth-state-incorrect)" }}>
+         <p className="verdict" data-testid="elaborated-verdict" style={{ color: "var(--growth-state-incorrect)" }}>
             <span data-glyph aria-hidden="true">
                {INCORRECT_GLYPH}
             </span>
@@ -37,10 +37,10 @@ export function ElaboratedPanel({ elaborated, sentence }: ElaboratedPanelProps) 
          ) : null}
 
          {elaborated.scoring_consequence !== null ? (
-            <p data-testid="scoring-consequence">{elaborated.scoring_consequence}</p>
+            <p className="muted" data-testid="scoring-consequence">{elaborated.scoring_consequence}</p>
          ) : null}
 
-         {hasSentence ? <p data-testid="tutor-sentence">{sentence}</p> : null}
+         {hasSentence ? <p className="tutor-note" data-testid="tutor-sentence">{sentence}</p> : null}
       </section>
    );
 }

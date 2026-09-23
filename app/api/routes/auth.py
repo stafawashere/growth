@@ -13,6 +13,12 @@ audit_log records. login_finish already writes that as action "session_establish
 its own ceremony, an authenticator asserted again against a session already open, so reauth_finish
 writes "reauth_established" rather than reusing the login action name, through the same write_audit
 helper login_finish and logout already call.
+
+Two more paths have no 06 row. 09's Recovery makes a second authenticator the primary recovery
+answer, but register/finish closes once users is non-empty, so a signed-in student adds one at
+/auth/passkey/add/begin and /auth/passkey/add/finish. 09 does not list adding a credential among the
+actions that force re-authentication, so the session cookie alone admits it. /auth/status answers
+whether the installation has its user, which register/begin already reveals by refusing.
 """
 from fastapi import APIRouter, Body, Depends, Request, Response
 
@@ -28,8 +34,8 @@ def body_of(payload):
    return payload or {}
 
 
-def issue_session_cookie(response, settings, token):
-   set_session_cookie(response, settings.bind_host, token, settings.session_ttl_seconds)
+def issue_session_cookie(response, request, settings, token):
+   set_session_cookie(response, settings.bind_host, request, token, settings.session_ttl_seconds)
 
 
 @router.post("/passkey/register/begin")
@@ -46,6 +52,7 @@ def register_begin(
 
 @router.post("/passkey/register/finish")
 def register_finish(
+   request: Request,
    response: Response,
    payload: dict = Body(default=None),
    db=Depends(get_db),
@@ -61,7 +68,7 @@ def register_finish(
       fields.get("credential") or {},
       display_name=fields.get("display_name"),
    )
-   issue_session_cookie(response, settings, finished["token"])
+   issue_session_cookie(response, request, settings, finished["token"])
    user = finished["user"]
 
    return {
@@ -76,6 +83,42 @@ def register_finish(
    }
 
 
+@router.get("/status")
+def status(db=Depends(get_db)):
+   return {"user_exists": service.user_exists(db)}
+
+
+@router.post("/passkey/add/begin")
+def add_passkey_begin(
+   payload: dict = Body(default=None),
+   db=Depends(get_db),
+   settings=Depends(get_settings),
+   challenges=Depends(get_challenges),
+   auth_session=Depends(current_session),
+):
+   return service.add_passkey_begin(db, settings, challenges, auth_session)
+
+
+@router.post("/passkey/add/finish")
+def add_passkey_finish(
+   payload: dict = Body(default=None),
+   db=Depends(get_db),
+   settings=Depends(get_settings),
+   challenges=Depends(get_challenges),
+   auth_session=Depends(current_session),
+):
+   fields = body_of(payload)
+
+   return service.add_passkey_finish(
+      db,
+      settings,
+      challenges,
+      auth_session,
+      fields.get("challenge_id"),
+      fields.get("credential") or {},
+   )
+
+
 @router.post("/recovery/register/begin")
 def recovery_register_begin(
    payload: dict = Body(default=None),
@@ -88,6 +131,7 @@ def recovery_register_begin(
 
 @router.post("/recovery/register/finish")
 def recovery_register_finish(
+   request: Request,
    response: Response,
    payload: dict = Body(default=None),
    db=Depends(get_db),
@@ -103,7 +147,7 @@ def recovery_register_finish(
       fields.get("credential") or {},
       fields.get("recovery_code"),
    )
-   issue_session_cookie(response, settings, finished["token"])
+   issue_session_cookie(response, request, settings, finished["token"])
 
    return {
       "user_id": finished["user"].id,
@@ -124,6 +168,7 @@ def login_begin(
 
 @router.post("/passkey/login/finish")
 def login_finish(
+   request: Request,
    response: Response,
    payload: dict = Body(default=None),
    db=Depends(get_db),
@@ -138,13 +183,14 @@ def login_finish(
       fields.get("challenge_id"),
       fields.get("credential") or {},
    )
-   issue_session_cookie(response, settings, finished["token"])
+   issue_session_cookie(response, request, settings, finished["token"])
 
    return {"user_id": finished["user_id"]}
 
 
 @router.post("/logout")
 def logout(
+   request: Request,
    response: Response,
    payload: dict = Body(default=None),
    db=Depends(get_db),
@@ -152,7 +198,7 @@ def logout(
    auth_session=Depends(current_session),
 ):
    service.logout(db, auth_session)
-   clear_session_cookie(response, settings.bind_host)
+   clear_session_cookie(response, settings.bind_host, request)
 
    return {"logged_out": True}
 

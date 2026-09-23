@@ -23,11 +23,23 @@ ERROR_RECORD = {
    "scoring_consequence": "the simplification point is not earned and the answer point falls with it",
 }
 
+WORKED_STEP_TEXTS = (
+   "substitute the target and observe zero over zero",
+   "factor the numerator",
+   "divide out the common factor",
+   "evaluate at the target",
+)
+
+WORKED_SOLUTION = json.dumps([
+   {"step": position + 1, "text": text, "mathjson": None}
+   for position, text in enumerate(WORKED_STEP_TEXTS)
+])
+
 ITEM = {
    "id": "BC-ITM-0001",
    "archetype_id": "BC-QA-01007",
    "answer_key": "seven halves",
-   "worked_solution": "factor the numerator, divide out the common factor, then evaluate at the target",
+   "worked_solution": WORKED_SOLUTION,
    "options": [
       {"value": "seven halves", "error_path": None},
       {"value": "three", "error_path": "BC-ERR-01004", "violated_step": 2},
@@ -37,21 +49,55 @@ ITEM = {
 WRONG_OPTION = ITEM["options"][1]
 
 
+def expected_marks(given_count, verdict):
+   """Worked_solution positions from 1: the first given_count steps given, the rest the blank."""
+   return [
+      {
+         "index": position,
+         "text": text,
+         "given": position <= given_count,
+         "correct": None if position <= given_count else verdict,
+      }
+      for position, text in enumerate(WORKED_STEP_TEXTS, start=1)
+   ]
+
+
+def rendered_marks(feedback):
+   return render.as_dict(feedback)["step_marks"]
+
+
 def test_step_verification_at_example_and_completion():
-   for stage in (FadingStage.EXAMPLE, FadingStage.COMPLETION):
-      feedback = render.render_feedback(
-         stage=stage,
+   step_count = len(WORKED_STEP_TEXTS)
+   example = render.render_feedback(
+      stage=FadingStage.EXAMPLE,
+      archetype=ARCHETYPE,
+      item=ITEM,
+      submitted=False,
+   )
+   cases = {
+      "unsubmitted": (False, None),
+      "right": (True, True),
+      "wrong": (True, False),
+   }
+   completions = {
+      name: render.render_feedback(
+         stage=FadingStage.COMPLETION,
          archetype=ARCHETYPE,
          item=ITEM,
-         submitted=False,
-         step_outcomes=[True, True, False, False],
+         submitted=submitted,
+         correct=correct,
          confidence=Confidence.UNSURE,
       )
+      for name, (submitted, correct) in cases.items()
+   }
 
+   assert rendered_marks(example) == expected_marks(step_count, None)
+   assert rendered_marks(completions["unsubmitted"]) == expected_marks(step_count - 1, None)
+   assert rendered_marks(completions["right"]) == expected_marks(step_count - 1, True)
+   assert rendered_marks(completions["wrong"]) == expected_marks(step_count - 1, False)
+
+   for feedback in [example, *completions.values()]:
       assert feedback.kind is render.FeedbackKind.STEP_VERIFICATION
-      assert len(feedback.step_marks) == len(ARCHETYPE["expected_solution_path"])
-      assert [mark.correct for mark in feedback.step_marks] == [True, True, False, False]
-      assert feedback.step_marks[2].description == ARCHETYPE["expected_solution_path"][2]
       assert feedback.elaborated is None
 
 
@@ -61,7 +107,6 @@ def test_nothing_returned_before_submission_at_unsupported():
       archetype=ARCHETYPE,
       item=ITEM,
       submitted=False,
-      step_outcomes=[True, False, False, False],
       confidence=Confidence.CONFIDENT,
    )
 
@@ -83,6 +128,40 @@ def test_nothing_returned_before_submission_at_unsupported():
 
    assert after.kind is render.FeedbackKind.ELABORATED
    assert after.elaborated is not None
+
+
+def test_an_ungraded_submission_at_unsupported_states_no_verdict():
+   """A wrong option on an attempt the grader never settled still elaborates nothing."""
+   ungraded = render.render_feedback(
+      stage=FadingStage.UNSUPPORTED,
+      archetype=ARCHETYPE,
+      item=ITEM,
+      submitted=True,
+      correct=None,
+      chosen_option=WRONG_OPTION,
+      error_record=ERROR_RECORD,
+      confidence=Confidence.CONFIDENT,
+   )
+
+   assert ungraded.kind is render.FeedbackKind.UNGRADED
+   assert ungraded.step_marks == ()
+   assert ungraded.elaborated is None
+   assert ungraded.self_explanation_prompt is None
+
+
+def test_a_submitted_example_marks_every_step_given_with_no_verdict():
+   example = render.render_feedback(
+      stage=FadingStage.EXAMPLE,
+      archetype=ARCHETYPE,
+      item=ITEM,
+      submitted=True,
+      correct=None,
+   )
+
+   assert rendered_marks(example) == expected_marks(len(WORKED_STEP_TEXTS), None)
+   assert example.kind is render.FeedbackKind.STEP_VERIFICATION
+   assert example.elaborated is None
+   assert example.self_explanation_prompt is not None
 
 
 def test_elaborated_payload_names_violated_step_and_error_path():
@@ -142,7 +221,6 @@ def test_self_explanation_only_on_examples_and_corrected_errors():
       archetype=ARCHETYPE,
       item=ITEM,
       submitted=False,
-      step_outcomes=[True, True, True, True],
    )
 
    corrected_error = render.render_feedback(
@@ -162,7 +240,6 @@ def test_self_explanation_only_on_examples_and_corrected_errors():
       item=ITEM,
       submitted=True,
       correct=True,
-      step_outcomes=[True, True, True, True],
       confidence=Confidence.CONFIDENT,
    )
 
@@ -181,6 +258,19 @@ def test_self_explanation_only_on_examples_and_corrected_errors():
    assert unsupported_correct.self_explanation_prompt is None
    assert "which rule justifies step 3" in corrected_error.self_explanation_prompt
 
+   corrected_completion = render.render_feedback(
+      stage=FadingStage.COMPLETION,
+      archetype=ARCHETYPE,
+      item=ITEM,
+      submitted=True,
+      correct=False,
+      confidence=Confidence.CONFIDENT,
+   )
+
+   assert corrected_completion.self_explanation_prompt == render.self_explanation_prompt(
+      len(WORKED_STEP_TEXTS) - 1
+   )
+
 
 def test_tutor_receives_no_answer_before_submission():
    withheld = render.render_feedback(
@@ -196,12 +286,14 @@ def test_tutor_receives_no_answer_before_submission():
    assert ITEM["answer_key"] not in serialised
    assert ITEM["worked_solution"] not in serialised
 
+   for step_text in WORKED_STEP_TEXTS:
+      assert step_text not in serialised
+
    in_progress_example = render.render_feedback(
       stage=FadingStage.EXAMPLE,
       archetype=ARCHETYPE,
       item=ITEM,
       submitted=False,
-      step_outcomes=[True, False, False, False],
    )
 
    assert ITEM["answer_key"] not in json.dumps(render.as_dict(in_progress_example))
@@ -225,7 +317,7 @@ SHORT_ANSWER_ITEM = {
    "id": "BC-ITM-0002",
    "archetype_id": "BC-QA-01007",
    "answer_key": "seven halves",
-   "worked_solution": "factor the numerator, divide out the common factor, then evaluate at the target",
+   "worked_solution": WORKED_SOLUTION,
    "options": [],
 }
 
@@ -314,3 +406,12 @@ def test_a_distractor_whose_error_path_does_not_resolve_is_refused():
    """
    with pytest.raises(ValueError):
       render.elaborated_payload(ARCHETYPE, ITEM, WRONG_OPTION, None)
+
+
+def test_the_payload_names_the_template_the_tutor_renders():
+   from app.feedback import tutor
+
+   repository_root = tutor.TEMPLATE_PATH.parents[2]
+   rendered_template = tutor.TEMPLATE_PATH.relative_to(repository_root).as_posix()
+
+   assert render.ELABORATED_TEMPLATE == rendered_template

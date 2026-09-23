@@ -27,25 +27,61 @@ GROWTH_TUTOR_PROVIDER which provider backs the tutor role: none (the default), r
 GROWTH_TUTOR_CASSETTE path to a recorded cassette JSON file, read only when
                       GROWTH_TUTOR_PROVIDER=replay.
 GROWTH_TUTOR_CAP_USD  the tutor role's daily dollar cap, enforced by app/providers/guard.py
-                      before every call. Default 1.00. docs/plan/07-ai-provider-layer.md sets no
-                      number, so the default is inferred and is a tunable for 12-open-questions.
-GROWTH_TUTOR_CAP_TOKENS the tutor role's daily token cap. Unset by default, because 07 keeps both
-                      units and the dollar cap is the one the operator cares about; a number here
-                      binds as well, whichever is crossed first.
+                      before every call. Default 1.00, the tutor daily cap row of
+                      docs/plan/12-open-questions.md.
+GROWTH_TUTOR_CAP_TOKENS the tutor role's daily token cap. Default 250,000, the same row of 12,
+                      set by 13-ai-engineering.md so the two caps bind within a few calls of each
+                      other. Whichever is crossed first binds.
+GROWTH_TOKENS_PATH    path to a filled design-token file (the shape
+                      docs/operator/design-tokens.template.json fixes). Unset by default, so
+                      set it to app/design/growth-tokens.json, the file the implementer authored
+                      under entry criterion 5. GET /growth-tokens.css answers 404 while unset, or
+                      while the file is
+                      unreadable or fails app/design/css.py's checks. The path is read again on
+                      every request, never cached at build time, so a changed file or a newly
+                      set path is served without a restart.
+
+This module also mounts the built React client (app/web/dist, docs/plan/06-architecture.md's
+system diagram: the browser speaks REST to one FastAPI process) at the same origin the API
+answers on, which is what lets app/web/src/api/client.ts issue relative paths. Every route
+create_app registers is added to the application before the client mount, and Starlette tries
+routes in registration order, so none of them is ever shadowed by the client's static files.
+
+The client mount answers exactly two shapes of request: a real file under app/web/dist/assets,
+and GET / for index.html. It is not a catch-all. app/web/src/App.tsx routes screens with
+useState, never a URL path, so nothing in the client needs a path served past "/", and giving
+every unmatched GET path a 200 of index.html would also have made GET /export and GET /purge
+(both POST-only) answer 200 with HTML instead of the 405 Starlette already gives a path that
+matches a route by shape but not by method. An unmatched path now falls straight through to
+Starlette's own 404 or 405, exactly as it would if this module mounted nothing at all.
+
+`application`, the object uvicorn resolves from `app.main:application`, is built lazily on first
+attribute access rather than at import time. Importing this module only defines functions; it
+opens no database and reads no content root, which matters because tests import build_application
+and mount_client directly and must never touch the repository's own var/growth.db as a side
+effect of that import.
 """
 import os
 from pathlib import Path
+
+from fastapi import Response
+from fastapi.staticfiles import StaticFiles
+from starlette.responses import FileResponse, PlainTextResponse
 
 from app.api.app import Settings, create_app
 from app.providers.anthropic import AnthropicProvider
 from app.providers.guard import BudgetCaps
 from app.providers.replay import ReplayProvider
 from app.runtime.context import build_session_context
+from app.settings.budgets import validated_cap
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_DB_PATH = REPO_ROOT / "var" / "growth.db"
 DEFAULT_CONTENT_ROOT = REPO_ROOT / "data"
 DEFAULT_TUTOR_CAP_USD = 1.00
+DEFAULT_TUTOR_CAP_TOKENS = 250000
+DEFAULT_WEB_DIST_DIR = REPO_ROOT / "app" / "web" / "dist"
+WEB_BUILD_COMMAND = "npm run build --prefix app/web"
 
 
 def build_tutor(env):
@@ -80,17 +116,31 @@ def build_tutor(env):
    return AnthropicProvider(environ=env)
 
 
+def startup_cap(env, variable, default=None):
+   """One rule for a cap wherever it comes from, so the environment cannot set one that
+   PUT /settings/budgets would refuse: a finite number, not negative. The error names the
+   variable, because it stops the process at startup."""
+   named_value = env.get(variable)
+   is_unset = named_value is None or named_value == ""
+   raw_value = default if is_unset else named_value
+
+   if raw_value is None:
+      return None
+
+   try:
+      return validated_cap(variable, float(raw_value))
+   except ValueError as refused:
+      raise ValueError(f"{variable} must be a finite, non-negative number, got {raw_value!r}") from refused
+
+
 def build_tutor_caps(env):
    """A guard with no cap guards nothing, so the tutor role always carries one.
 
-   docs/plan/07-ai-provider-layer.md names the daily cap in both tokens and dollars but sets no
-   number for either, so the dollar default here is inferred and the token cap stays unset until
-   the operator names one.
+   docs/plan/07-ai-provider-layer.md names the daily cap in both tokens and dollars, and the
+   tutor daily cap row of docs/plan/12-open-questions.md sets both defaults.
    """
-   raw_tokens = env.get("GROWTH_TUTOR_CAP_TOKENS")
-   names_a_token_cap = raw_tokens is not None and raw_tokens != ""
-   cap_tokens = float(raw_tokens) if names_a_token_cap else None
-   cap_usd = float(env.get("GROWTH_TUTOR_CAP_USD", str(DEFAULT_TUTOR_CAP_USD)))
+   cap_tokens = startup_cap(env, "GROWTH_TUTOR_CAP_TOKENS", str(DEFAULT_TUTOR_CAP_TOKENS))
+   cap_usd = startup_cap(env, "GROWTH_TUTOR_CAP_USD", str(DEFAULT_TUTOR_CAP_USD))
 
    return {"tutor": BudgetCaps(cap_tokens=cap_tokens, cap_usd=cap_usd)}
 
@@ -111,13 +161,96 @@ def settings_from_environment(env=None):
    )
 
 
+def _tokens_css_response(env):
+   tokens_path = env.get("GROWTH_TOKENS_PATH")
+   is_configured = tokens_path is not None and tokens_path != ""
+
+   if not is_configured:
+      return Response(status_code=404)
+
+   from app.design.css import stylesheet_from_token_file
+
+   try:
+      stylesheet = stylesheet_from_token_file(tokens_path)
+   except Exception:
+      return Response(status_code=404)
+
+   return Response(content=stylesheet, media_type="text/css")
+
+
+def mount_client(application, env, dist_dir=DEFAULT_WEB_DIST_DIR):
+   """Serves the operator's token stylesheet and the built React client from the same
+   application, added after every router create_app already registered so none of those routes
+   is ever shadowed.
+
+   env is kept as a live reference, not read once here, because GROWTH_TOKENS_PATH is meant to
+   bind on the next request rather than freeze at build time (checklist 7).
+
+   Only two paths are ever claimed here: a real file under dist_dir/assets, served through
+   Starlette's own StaticFiles, whose lookup_path already rejects an absolute path and anything
+   that resolves outside the mounted directory; and GET / for index.html. Nothing else is
+   registered, so a path that is not one of those two, including one that merely looks like an
+   API path, falls straight through to Starlette's own routing: a 405 when some other route
+   matches its shape but not its method, a plain 404 otherwise. A catch-all here would instead
+   intercept both, because Starlette's router treats an unconditional path match as full even
+   when an earlier route only partially matched on method.
+   """
+   dist_dir = Path(dist_dir)
+   index_path = dist_dir / "index.html"
+   assets_dir = dist_dir / "assets"
+
+   @application.get("/growth-tokens.css")
+   def growth_tokens_css():
+      return _tokens_css_response(env)
+
+   if assets_dir.is_dir():
+      application.mount("/assets", StaticFiles(directory=str(assets_dir)), name="web-assets")
+
+   @application.get("/")
+   def serve_client_index():
+      dist_is_built = index_path.is_file()
+
+      if not dist_is_built:
+         message = "the client is not built; run {0} to produce {1}".format(
+            WEB_BUILD_COMMAND, dist_dir
+         )
+
+         return PlainTextResponse(message, status_code=404)
+
+      return FileResponse(index_path)
+
+   return application
+
+
 def build_application(env=None):
+   env = env if env is not None else os.environ
    settings = settings_from_environment(env)
    settings.db_path.parent.mkdir(parents=True, exist_ok=True)
    engine = settings.resolve_engine()
    settings.session_context = build_session_context(engine, settings.content_root)
 
-   return create_app(settings)
+   application = create_app(settings)
+   mount_client(application, env)
+
+   return application
 
 
-application = build_application()
+_application = None
+
+
+def __getattr__(name):
+   """PEP 562 lazy module attribute: `uvicorn app.main:application` resolves this module then
+   reads its `application` attribute, and that attribute access is the only thing allowed to
+   build the real application. A plain `import app.main`, or `from app.main import
+   build_application`, must never open var/growth.db as a side effect, because tests import
+   this module's functions constantly and must stay free to build against a tmp_path instead.
+   """
+   global _application
+
+   if name != "application":
+      raise AttributeError("module {0!r} has no attribute {1!r}".format(__name__, name))
+
+   if _application is None:
+      _application = build_application()
+
+   return _application

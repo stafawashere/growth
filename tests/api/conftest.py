@@ -85,8 +85,14 @@ class FakeVerifier:
    def __init__(self):
       self.rp_id = "localhost"
 
-   def begin_registration(self, user_id, user_name):
-      return {"challenge": "reg-challenge", "options": {"rp": {"id": self.rp_id}, "user": {"id": user_id, "name": user_name}}}
+   def begin_registration(self, user_id, user_name, exclude_credential_ids=()):
+      options = {
+         "rp": {"id": self.rp_id},
+         "user": {"id": user_id, "name": user_name},
+         "excludeCredentials": [credential_id.hex() for credential_id in exclude_credential_ids],
+      }
+
+      return {"challenge": "reg-challenge", "options": options}
 
    def finish_registration(self, challenge, credential):
       offered = credential.get("credential_id")
@@ -99,8 +105,15 @@ class FakeVerifier:
          "transports": credential.get("transports"),
       }
 
-   def begin_login(self):
-      return {"challenge": "login-challenge", "options": {"rpId": self.rp_id}}
+   def begin_login(self, credential_ids=None):
+      allow_credentials = [
+         {"id": credential_id.hex(), "type": "public-key"} for credential_id in (credential_ids or [])
+      ]
+
+      return {
+         "challenge": "login-challenge",
+         "options": {"rpId": self.rp_id, "allowCredentials": allow_credentials},
+      }
 
    def finish_login(self, challenge, credential, public_key, stored_sign_count):
       return {"sign_count": int(credential.get("sign_count", 0))}
@@ -198,9 +211,18 @@ class World:
       self.sign_count = 5
 
    def client(self, host="127.0.0.1"):
+      """Starlette's TestClient parses its own base_url netloc by splitting on the first colon,
+      which breaks on a bracketed IPv6 literal (`[::1]`.split(":", 1)` leaves `":1]"` for `int()`
+      to choke on). The base_url stays a host httpx can parse, and an explicit Host header carries
+      the IPv6 literal instead, which Starlette's own URL(scope=...) accepts through _HOST_RE and
+      uses ahead of scope["server"], so request.url.hostname still comes back "::1"."""
       from starlette.testclient import TestClient
 
-      return TestClient(self.app, client=(host, 40000))
+      is_ipv6_literal = ":" in host
+      headers = {"host": f"[{host}]"} if is_ipv6_literal else None
+      base_url = "http://127.0.0.1" if is_ipv6_literal else f"http://{host}"
+
+      return TestClient(self.app, client=(host, 40000), base_url=base_url, headers=headers)
 
    def register(self, client, sign_count=5, credential_id=None, recovery_code=None):
       begun = client.post("/auth/passkey/register/begin", json={"display_name": "Student"})

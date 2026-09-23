@@ -13,7 +13,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from app.design.contrast import contrast_ratio
-from app.design.tokens import SURFACES, TEXT_ROLES, THEMES, load_tokens, token_violations
+from app.design.tokens import CONTRAST_PAIRS, THEMES, load_tokens, token_violations
 
 
 def _print_ratios(tokens):
@@ -24,11 +24,8 @@ def _print_ratios(tokens):
          continue
 
       theme_tokens = tokens[theme]
-      pairs = [(role, surface) for role in TEXT_ROLES for surface in SURFACES]
-      pairs.append(("text-on-accent", "accent-base"))
-      pairs.extend(("focus-ring", surface) for surface in SURFACES)
 
-      for foreground_name, background_name in pairs:
+      for foreground_name, background_name in CONTRAST_PAIRS:
          has_both = foreground_name in theme_tokens and background_name in theme_tokens
 
          if not has_both:

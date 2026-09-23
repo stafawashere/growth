@@ -4,9 +4,11 @@ import {
    openSession,
    readFeedback,
    readNextItem,
+   readSession,
    submitAttempt,
    submitConfidence,
-   submitErrorNote
+   submitErrorNote,
+   submitSelfExplanation
 } from "../api/client";
 import type { AttemptAnswer } from "../api/client";
 import type {
@@ -18,7 +20,7 @@ import type {
 } from "../api/types";
 import { ElaboratedPanel } from "./ElaboratedPanel";
 import { ErrorNoteField } from "./ErrorNoteField";
-import { collectsConfidence, Item, type WorkedStep } from "./Item";
+import { collectsConfidence, Item } from "./Item";
 import { SelfExplanationPrompt } from "./SelfExplanationPrompt";
 import { StepMarks } from "./StepMarks";
 
@@ -26,20 +28,19 @@ export const SET_FINISHED = "That is today's set finished.";
 
 export const NEXT_LABEL = "Next item";
 
-/* Neither the worked steps nor the pre-submission self explanation prompt reach the client from
-   any P1 route, so both arrive as required functions on this screen. Whoever mounts it has to
-   answer for where they come from; nothing here fills them in. */
+/* resumeSessionId names the open session GET /progress reported, and null opens a new one. It
+   has no default, because opening a session writes a row and resuming one must not. */
 
 export interface SessionScreenProps {
-   workedStepsFor: (item: ServedItem) => WorkedStep[];
-   selfExplanationPromptFor: (item: ServedItem) => string | null;
+   resumeSessionId: string | null;
 }
 
-export function SessionScreen({ workedStepsFor, selfExplanationPromptFor }: SessionScreenProps) {
+export function SessionScreen({ resumeSessionId }: SessionScreenProps) {
    const [session, setSession] = useState<SessionPayload | null>(null);
    const [item, setItem] = useState<ServedItem | null>(null);
    const [committed, setCommitted] = useState<AttemptResult | null>(null);
    const [feedback, setFeedback] = useState<FeedbackPayload | null>(null);
+   const [feedbackUnreadable, setFeedbackUnreadable] = useState(false);
    const [confidence, setConfidence] = useState<Confidence | null>(null);
    const [answerMathJson, setAnswerMathJson] = useState<unknown>(null);
    const [selectedOptionId, setSelectedOptionId] = useState<string | null>(null);
@@ -50,12 +51,14 @@ export function SessionScreen({ workedStepsFor, selfExplanationPromptFor }: Sess
 
    const opened = useRef(false);
    const inFlight = useRef(false);
+   const writtenForAttempt = useRef({ attemptId: "", note: false, explanation: false });
 
    const advance = useCallback(async (sessionId: string) => {
       const next = await readNextItem(sessionId);
 
       setCommitted(null);
       setFeedback(null);
+      setFeedbackUnreadable(false);
       setConfidence(null);
       setAnswerMathJson(null);
       setSelectedOptionId(null);
@@ -82,15 +85,31 @@ export function SessionScreen({ workedStepsFor, selfExplanationPromptFor }: Sess
 
       opened.current = true;
 
-      openSession().then((payload) => {
+      const isResuming = resumeSessionId !== null;
+      const reached = isResuming ? readSession(resumeSessionId) : openSession();
+
+      reached.then((payload) => {
          setSession(payload);
 
          return advance(payload.id);
       });
-   }, [advance]);
+   }, [advance, resumeSessionId]);
 
    const noteAnswerUnavailable = useCallback(() => {
       setAnswerUnavailable(true);
+   }, []);
+
+   /* The attempt is already written when feedback is read, so a refused read must not hold the
+      student on an item they cannot commit again. No plan copy exists for a feedback screen that
+      failed to load, so it shows no sentence and only the way on. */
+   const showFeedback = useCallback(async (sessionId: string, attemptId: string) => {
+      try {
+         const payload = await readFeedback(sessionId, attemptId);
+
+         setFeedback(payload);
+      } catch {
+         setFeedbackUnreadable(true);
+      }
    }, []);
 
    const commit = useCallback(async () => {
@@ -124,13 +143,11 @@ export function SessionScreen({ workedStepsFor, selfExplanationPromptFor }: Sess
             return;
          }
 
-         const payload = await readFeedback(session.id, result.id);
-
-         setFeedback(payload);
+         await showFeedback(session.id, result.id);
       } finally {
          inFlight.current = false;
       }
-   }, [session, item, selectedOptionId, answerMathJson, confidence]);
+   }, [session, item, selectedOptionId, answerMathJson, confidence, showFeedback]);
 
    const rateConfidence = useCallback(
       async (value: Confidence) => {
@@ -149,15 +166,16 @@ export function SessionScreen({ workedStepsFor, selfExplanationPromptFor }: Sess
 
          try {
             const rated = await submitConfidence(session.id, committed.id, { confidence: value });
-            const payload = await readFeedback(session.id, committed.id);
 
             setCommitted({ ...committed, confidence: rated.confidence });
-            setFeedback(payload);
+            await showFeedback(session.id, committed.id);
+         } catch {
+            // no plan copy exists for a refused rating, so the prompt stays on screen to retry
          } finally {
             inFlight.current = false;
          }
       },
-      [session, committed]
+      [session, committed, showFeedback]
    );
 
    const moveOn = useCallback(async () => {
@@ -176,33 +194,56 @@ export function SessionScreen({ workedStepsFor, selfExplanationPromptFor }: Sess
          return;
       }
 
+      const explanation = selfExplanation.trim();
+      const wasInvited = feedback !== null && feedback.self_explanation_prompt !== null;
+      const hasExplanation = wasInvited && explanation.length > 0;
+
+      const isSameAttempt = writtenForAttempt.current.attemptId === committed.id;
+
+      if (!isSameAttempt) {
+         writtenForAttempt.current = { attemptId: committed.id, note: false, explanation: false };
+      }
+
+      const written = writtenForAttempt.current;
+      const writesNote = wasCorrected && !written.note;
+      const writesExplanation = hasExplanation && !written.explanation;
+
       inFlight.current = true;
 
       try {
-         if (wasCorrected) {
+         if (writesNote) {
             await submitErrorNote(session.id, committed.id, note);
+            written.note = true;
+         }
+
+         if (writesExplanation) {
+            await submitSelfExplanation(session.id, committed.id, { answer: explanation });
+            written.explanation = true;
          }
 
          await advance(session.id);
+      } catch {
+         // no plan copy exists for a refused in-session request, so the feedback stays on screen to retry
       } finally {
          inFlight.current = false;
       }
-   }, [session, committed, errorNote, advance]);
+   }, [session, committed, feedback, errorNote, selfExplanation, advance]);
 
    if (finished) {
       return (
-         <main>
+         <div className="card">
             <p>{SET_FINISHED}</p>
-         </main>
+         </div>
       );
    }
 
    if (item === null) {
-      return <main />;
+      return <div />;
    }
 
-   const showsFeedback = feedback !== null;
-   const marksSteps = showsFeedback && feedback.stage !== "unsupported";
+   const showsFeedback = feedback !== null || feedbackUnreadable;
+   const marksSteps = feedback !== null && feedback.stage !== "unsupported";
+   const showsElaborated = feedback !== null && feedback.stage === "unsupported";
 
    /* 11 P1 scope item 10: one note per corrected item, written before the retry is scheduled. An
       item the student got right is requeued by nothing and asks for nothing. */
@@ -212,17 +253,17 @@ export function SessionScreen({ workedStepsFor, selfExplanationPromptFor }: Sess
       committed !== null && collectsConfidence(committed.served_stage) && committed.confidence === null;
 
    return (
-      <main>
+      <div>
          {showsFeedback ? (
-            <section data-testid="feedback">
+            <section className="card feedback" data-testid="feedback">
                {marksSteps ? <StepMarks marks={feedback.step_marks} /> : null}
 
-               {feedback.stage === "unsupported" ? (
+               {showsElaborated ? (
                   <ElaboratedPanel elaborated={feedback.elaborated} sentence={feedback.sentence} />
                ) : null}
 
                <SelfExplanationPrompt
-                  prompt={feedback.self_explanation_prompt}
+                  prompt={feedback?.self_explanation_prompt ?? null}
                   value={selfExplanation}
                   onChange={setSelfExplanation}
                />
@@ -231,7 +272,7 @@ export function SessionScreen({ workedStepsFor, selfExplanationPromptFor }: Sess
 
                <button
                   type="button"
-                  className="motion-instant-question-move"
+                  className="motion-instant-question-move button-primary"
                   disabled={owesNote}
                   onClick={moveOn}
                >
@@ -241,8 +282,6 @@ export function SessionScreen({ workedStepsFor, selfExplanationPromptFor }: Sess
          ) : (
             <Item
                item={item}
-               workedSteps={workedStepsFor(item)}
-               selfExplanationPrompt={selfExplanationPromptFor(item)}
                onAnswerChange={setAnswerMathJson}
                answerUnavailable={answerUnavailable}
                onAnswerUnavailable={noteAnswerUnavailable}
@@ -256,6 +295,6 @@ export function SessionScreen({ workedStepsFor, selfExplanationPromptFor }: Sess
                awaitingConfidence={awaitsRating}
             />
          )}
-      </main>
+      </div>
    );
 }

@@ -177,6 +177,50 @@ def test_a_note_with_a_carriage_return_is_refused(world):
       assert db.get(models.Attempt, attempt_id).error_note is None
 
 
+def test_error_note_route_refuses_a_note_over_500_characters(world):
+   client = world.client()
+   world.register(client)
+   session_id = open_session(client).json()["id"]
+   attempt_id = submit_an_attempt(client, session_id)
+   too_long = "a" * 501
+
+   refused = client.post(
+      f"/sessions/{session_id}/attempts/{attempt_id}/error-note",
+      json={"note": too_long},
+   )
+
+   assert refused.status_code == 422
+
+   with OrmSession(world.engine) as db:
+      stored = db.execute(
+         select(models.Attempt.error_note).where(models.Attempt.id == attempt_id)
+      ).scalar_one()
+
+      assert stored is None
+
+
+def test_a_note_of_exactly_500_characters_is_stored(world):
+   client = world.client()
+   world.register(client)
+   session_id = open_session(client).json()["id"]
+   attempt_id = submit_an_attempt(client, session_id)
+   exactly_500 = "a" * 500
+
+   stored_response = client.post(
+      f"/sessions/{session_id}/attempts/{attempt_id}/error-note",
+      json={"note": exactly_500},
+   )
+
+   assert stored_response.status_code == 200
+
+   with OrmSession(world.engine) as db:
+      stored = db.execute(
+         select(models.Attempt.error_note).where(models.Attempt.id == attempt_id)
+      ).scalar_one()
+
+      assert stored == exactly_500
+
+
 def test_the_refused_second_note_never_reaches_the_column(world):
    client = world.client()
    world.register(client)

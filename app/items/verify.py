@@ -3,6 +3,7 @@ checks and the provenance rule (docs/plan/04-item-generation.md, "Checks on
 the option set" and "Independent key verification"; docs/plan/11 R26, R30).
 """
 import math
+import multiprocessing
 import random
 import signal
 import threading
@@ -20,28 +21,131 @@ class _Timeout(Exception):
    pass
 
 
+class ChildDiedError(Exception):
+   """Raised when a forkserver child exits before sending a result, distinct from a plain
+   timeout. Nothing about the arguments the child was given is folded into the message.
+   """
+
+
 def _raise_timeout(signum, frame):
    raise _Timeout()
 
 
-def equivalence(left, right, timeout_s=5):
+_CHILD_RESULT = "result"
+_CHILD_ERROR = "error"
+
+COMPARISON_TIMEOUT_S = 5
+
+
+def equivalence(left, right, timeout_s=COMPARISON_TIMEOUT_S):
+   """Equivalent, not_equivalent or unsettled, and unsettled whenever the comparison outlives
+   timeout_s. The default of 5 seconds is carried from the original code. No plan document gives
+   one, and numeric_check and compare_expressions reuse it rather than adding another.
+   """
+   return run_bounded(_equivalence_impl, (left, right), timeout_s, "unsettled")
+
+
+def run_bounded(function, arguments, timeout_s, unsettled):
+   """function(*arguments), or unsettled once it outlives timeout_s. On the main thread SIGALRM
+   interrupts it in process. Anywhere else, which is where a sync FastAPI route runs, it runs in a
+   forkserver child that is killed at the deadline, so function must be importable by name. An
+   exception it raises reaches the caller either way, and a child that exits before the deadline
+   without sending anything back, whether it crashed at startup or died some other way, reaches
+   the caller as ChildDiedError rather than as unsettled, because it never ran long enough to say
+   the comparison did not settle.
+   """
+   is_number = isinstance(timeout_s, (int, float)) and not isinstance(timeout_s, bool)
+   is_positive_number = is_number and timeout_s > 0
+
+   if not is_positive_number:
+      raise ValueError(f"a bounded comparison needs a positive timeout_s, got {timeout_s!r}")
+
    supports_alarm = hasattr(signal, "SIGALRM")
    on_main_thread = threading.current_thread() is threading.main_thread()
    can_set_alarm = supports_alarm and on_main_thread
 
    if not can_set_alarm:
-      return _equivalence_impl(left, right)
+      return _run_in_child(function, arguments, timeout_s, unsettled)
 
    previous_handler = signal.signal(signal.SIGALRM, _raise_timeout)
    signal.setitimer(signal.ITIMER_REAL, timeout_s)
 
    try:
-      return _equivalence_impl(left, right)
+      return function(*arguments)
    except _Timeout:
-      return "unsettled"
+      return unsettled
    finally:
       signal.setitimer(signal.ITIMER_REAL, 0)
       signal.signal(signal.SIGALRM, previous_handler)
+
+
+def _child_context():
+   context = multiprocessing.get_context("forkserver")
+   context.set_forkserver_preload([__name__, "sympy"])
+
+   return context
+
+
+def _run_in_child(function, arguments, timeout_s, unsettled):
+   context = _child_context()
+   receiver, sender = context.Pipe(duplex=False)
+   child = context.Process(
+      target=_run_for_parent,
+      args=(function, arguments, sender),
+      daemon=True,
+   )
+   died_without_a_result = False
+   kind, payload = None, None
+
+   try:
+      child.start()
+      sender.close()
+      answered_in_time = receiver.poll(timeout_s)
+
+      if not answered_in_time:
+         return unsettled
+
+      try:
+         kind, payload = receiver.recv()
+      except EOFError:
+         died_without_a_result = True
+   finally:
+      receiver.close()
+      sender.close()
+      child_was_started = child.pid is not None
+      child_still_running = child_was_started and child.is_alive()
+
+      if child_still_running:
+         child.kill()
+
+      if child_was_started:
+         child.join()
+
+   if died_without_a_result:
+      raise ChildDiedError(
+         f"the bounded child exited with code {child.exitcode} before sending a result"
+      )
+
+   is_error = kind == _CHILD_ERROR
+
+   if is_error:
+      raise payload
+
+   return payload
+
+
+def _run_for_parent(function, arguments, sender):
+   try:
+      message = (_CHILD_RESULT, function(*arguments))
+   except Exception as failure:
+      message = (_CHILD_ERROR, failure)
+
+   try:
+      sender.send(message)
+   except Exception as unpicklable:
+      sender.send((_CHILD_ERROR, RuntimeError(repr(unpicklable))))
+   finally:
+      sender.close()
 
 
 def _equivalence_impl(left, right):
@@ -51,7 +155,7 @@ def _equivalence_impl(left, right):
    if settles_to_zero:
       return "equivalent"
 
-   numeric_result = numeric_check(left, right)
+   numeric_result = _numeric_check_impl(left, right)
 
    if numeric_result is True:
       return "equivalent"
@@ -79,7 +183,23 @@ def _settles_to_zero(difference):
    return False
 
 
-def numeric_check(left, right, points=7, rel_tol=_NUMERIC_REL_TOL, abs_floor=_NUMERIC_ABS_FLOOR):
+def numeric_check(
+   left,
+   right,
+   points=7,
+   rel_tol=_NUMERIC_REL_TOL,
+   abs_floor=_NUMERIC_ABS_FLOOR,
+   timeout_s=COMPARISON_TIMEOUT_S,
+):
+   """True, False, or None when the sampled points did not settle it or it outlived timeout_s."""
+   arguments = (left, right, points, rel_tol, abs_floor)
+
+   return run_bounded(_numeric_check_impl, arguments, timeout_s, None)
+
+
+def _numeric_check_impl(
+   left, right, points=7, rel_tol=_NUMERIC_REL_TOL, abs_floor=_NUMERIC_ABS_FLOOR
+):
    free_symbols = sorted(left.free_symbols | right.free_symbols, key=lambda symbol: symbol.name)
    has_no_symbols = len(free_symbols) == 0
 
@@ -166,25 +286,27 @@ RULE_6 = "rule_6"
 RULE_7 = "rule_7"
 
 
-def compare_expressions(key, candidate):
+def compare_expressions(key, candidate, timeout_s=COMPARISON_TIMEOUT_S):
    """Equal, distinct, or neither. A comparison that did not settle is its own answer, because
    rejection rule 5 in 04 asks whether a distractor equals the key and an unsettled comparison
-   has not established that it does not.
+   has not established that it does not. One bound of timeout_s covers the symbolic and the
+   numeric step together, and a comparison that outlives it has not settled.
    """
-   symbolic_result = equivalence(key, candidate)
-   equals_symbolically = symbolic_result == "equivalent"
+   return run_bounded(_compare_impl, (key, candidate), timeout_s, UNSETTLED_VIOLATION)
 
-   if equals_symbolically:
+
+def _compare_impl(key, candidate):
+   settles_to_zero = _settles_to_zero(key - candidate)
+
+   if settles_to_zero:
       return EQUAL
 
-   numeric_result = numeric_check(key, candidate)
+   numeric_result = _numeric_check_impl(key, candidate)
 
    if numeric_result is True:
       return EQUAL
 
-   settled_as_distinct = symbolic_result == "not_equivalent" or numeric_result is False
-
-   if settled_as_distinct:
+   if numeric_result is False:
       return DISTINCT
 
    return UNSETTLED_VIOLATION
@@ -280,12 +402,49 @@ def distractor_checks(key, distractors, error_paths, active_error_ids):
    return list(dict.fromkeys(violations))
 
 
+KEY_WITH_ERROR_PATH = "key_with_error_path"
+EXACTLY_ONE_KEY = "exactly_one_key"
+OPTION_WITHOUT_IS_KEY = "option_without_is_key"
+
+
+def option_set_violations(options):
+   """04's Output schema requires a boolean is_key on every option, and 06 and R26 put a null
+   error_path on the key and a BC-ERR id on every distractor. The split is read from is_key, so a
+   record whose error paths disagree with it is refused rather than reclassified. A distractor
+   with a null path is left to rule 7.
+   """
+   violations = []
+   has_options = len(options) > 0
+
+   if not has_options:
+      return violations
+
+   for option in options:
+      has_boolean_is_key = isinstance(option.get("is_key"), bool)
+      is_key = option.get("is_key") is True
+      key_carries_a_path = is_key and option.get("error_path") is not None
+
+      if not has_boolean_is_key:
+         violations.append(OPTION_WITHOUT_IS_KEY)
+
+      if key_carries_a_path:
+         violations.append(KEY_WITH_ERROR_PATH)
+
+   key_count = len([option for option in options if option.get("is_key") is True])
+   has_exactly_one_key = key_count == 1
+
+   if not has_exactly_one_key:
+      violations.append(EXACTLY_ONE_KEY)
+
+   return violations
+
+
 def verify_item(item, active_error_ids):
    options = item["options"]
-   key_options = [option for option in options if option.get("error_path") is None]
-   distractor_options = [option for option in options if option.get("error_path") is not None]
-   has_key_option = len(key_options) > 0
-   key_source = key_options[0]["value"] if has_key_option else item["answer_key"]
+   key_options = [option for option in options if option.get("is_key") is True]
+   distractor_options = [option for option in options if option.get("is_key") is not True]
+   has_exactly_one_key = len(key_options) == 1
+   key_source = key_options[0]["value"] if has_exactly_one_key else item["answer_key"]
 
    from app.items.mathjson import to_sympy
 
@@ -293,7 +452,9 @@ def verify_item(item, active_error_ids):
    distractor_exprs = [to_sympy(option["value"]) for option in distractor_options]
    error_paths = [option.get("error_path") for option in distractor_options]
 
-   violations = distractor_checks(key_expr, distractor_exprs, error_paths, active_error_ids)
+   violations = option_set_violations(options)
+   violations.extend(distractor_checks(key_expr, distractor_exprs, error_paths, active_error_ids))
+   violations = list(dict.fromkeys(violations))
    violations.extend(_provenance_violations(item.get("provenance", {})))
 
    return {"verified": len(violations) == 0, "violations": violations}

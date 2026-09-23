@@ -4,10 +4,17 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { AFFORDANCE_ATTRIBUTE, P1_FEEDBACK_AFFORDANCES } from "../affordances";
 import { MOTION_CLASS_PREFIX, REDUCED_MOTION_QUERY, TRANSFORM_MOTION_CLASSES } from "../styles/motion";
-import type { AttemptResult, FadingStage, FeedbackPayload, ServedItem, SessionPayload } from "../api/types";
+import type {
+   AttemptResult,
+   FadingStage,
+   FeedbackPayload,
+   ServedItem,
+   ServedStep,
+   SessionPayload,
+   StepMark
+} from "../api/types";
 import * as client from "../api/client";
 import { SessionScreen } from "./SessionScreen";
-import type { WorkedStep } from "./Item";
 
 vi.mock("../api/client");
 
@@ -41,7 +48,10 @@ function servedItem(stage: FadingStage): ServedItem {
       skills: ["BC-SKL-0301"],
       status: "published",
       stage,
-      format: "short_answer"
+      format: "short_answer",
+      is_probe: false,
+      served_steps: servedStepsAt(stage),
+      self_explanation_prompt: stage === "example" ? SELF_EXPLANATION_PROMPT : null
    };
 }
 
@@ -53,7 +63,15 @@ const session: SessionPayload = {
    ended_at: null,
    updates_mastery: true,
    snapshot_id: null,
-   queue: {},
+   queue: {
+      block1: [],
+      block2: [],
+      block3: [],
+      block4: [],
+      forecasts: {},
+      coverage_gaps: [],
+      interleaving_satisfied: true
+   },
    remaining: []
 };
 
@@ -70,13 +88,25 @@ function attempt(stage: FadingStage): AttemptResult {
    };
 }
 
+/* app/feedback/render.py as_dict step_marks: every step given at example, the steps shown given and
+   the blank carrying the verdict at completion, none at unsupported. */
+function stepMarksAt(stage: FadingStage, correct: boolean | null): StepMark[] {
+   const shown = (servedStepsAt(stage) ?? []).map((step) => ({ ...step, given: true, correct: null }));
+
+   if (stage === "completion") {
+      return [...shown, { index: shown.length + 1, text: "f'(x) = 2x sin(x) + x^2 cos(x)", given: false, correct }];
+   }
+
+   return shown;
+}
+
 function feedback(stage: FadingStage): FeedbackPayload {
    const isUnsupported = stage === STAGE_OF_ELABORATED_PANEL;
 
    return {
       kind: isUnsupported ? "elaborated" : "step_verification",
       stage,
-      step_marks: isUnsupported ? [] : [{ index: 1, description: "Factors named", correct: true }],
+      step_marks: stepMarksAt(stage, false),
       elaborated: isUnsupported
          ? {
               violated_step: "Product rule applied to both factors at once",
@@ -93,11 +123,24 @@ function feedback(stage: FadingStage): FeedbackPayload {
    };
 }
 
-const workedSteps: WorkedStep[] = [
-   { index: 1, text: "Name the factors: u = x^2, v = sin(x)" },
-   { index: 2, text: "u' = 2x, v' = cos(x)" },
-   { index: 3, text: "f'(x) = 2x sin(x) + x^2 cos(x)" }
-];
+/* app/runtime/bank.py served_steps: every step at example, all but the last at completion. */
+function servedStepsAt(stage: FadingStage): ServedStep[] | null {
+   const workedSteps: ServedStep[] = [
+      { index: 1, text: "Name the factors: u = x^2, v = sin(x)" },
+      { index: 2, text: "u' = 2x, v' = cos(x)" },
+      { index: 3, text: "f'(x) = 2x sin(x) + x^2 cos(x)" }
+   ];
+
+   if (stage === "example") {
+      return workedSteps;
+   }
+
+   if (stage === "completion") {
+      return workedSteps.slice(0, -1);
+   }
+
+   return null;
+}
 
 function stubReducedMotion() {
    const matchMedia = (query: string) => {
@@ -137,9 +180,7 @@ function mockStage(stage: FadingStage) {
 async function affordancesReachedAt(stage: FadingStage) {
    mockStage(stage);
 
-   render(
-      <SessionScreen workedStepsFor={() => workedSteps} selfExplanationPromptFor={() => SELF_EXPLANATION_PROMPT} />
-   );
+   render(<SessionScreen resumeSessionId={null} />);
 
    const reached = new Set<string>();
 

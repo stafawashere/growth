@@ -1,11 +1,13 @@
 """Route tests for the P1 HTTP layer: the session flow, the purge gate and the liveness rule."""
 import json
+import re
+from pathlib import Path
 
 from sqlalchemy.orm import Session as OrmSession
 
 from app.api.routes.purge import PURGE_CONFIRMATION
 from app.db import models
-from tests.api.conftest import KEY_MATHJSON, SNAPSHOT_ID, TODAY, WRONG_MATHJSON
+from tests.api.conftest import KEY_MATHJSON, SNAPSHOT_ID, TODAY, WRONG_MATHJSON, item_row
 
 
 def correct_answer_for(item):
@@ -254,6 +256,10 @@ def serve_as_mcq(world, session_id, item_id):
    The format is resolved against the user's attempt history when the slot is served and again
    when the attempt is written, so an MCQ case cannot be forced onto the queue row: it has to be
    earned by a prior attempt the alternation counts.
+
+   The prior attempt lands on a sibling published here for the purpose, rather than on whichever
+   bank item the draw left out of the queue, because the fixture bank holds three items per
+   archetype and a session can queue all three.
    """
    with OrmSession(world.engine) as db:
       row = db.get(models.Session, session_id)
@@ -276,7 +282,21 @@ def serve_as_mcq(world, session_id, item_id):
       if slot is None:
          raise AssertionError(f"{item_id} is not in the queue of session {session_id}")
 
-      sibling_id = f"{slot['archetype_id']}-V02"
+      queued_ids = {
+         item["id"]
+         for slots in queue.values()
+         if isinstance(slots, list)
+         for item in slots
+         if isinstance(item, dict)
+      }
+      archetype = world.settings.session_context.archetypes[slot["archetype_id"]]
+      sibling = item_row(f"{item_id}-PRIOR", archetype["id"], archetype["skills"])
+
+      if sibling.id in queued_ids:
+         raise AssertionError(f"{sibling.id} is already queued in session {session_id}")
+
+      db.add(sibling)
+      sibling_id = sibling.id
 
       db.add(
          models.Attempt(
@@ -387,12 +407,99 @@ def test_registration_with_a_valid_recovery_code_adds_a_credential(world):
    assert replayed.status_code == 401
 
 
+def keys_anywhere(value):
+   """Every mapping key at any depth of a decoded JSON body."""
+   found = set()
+   is_mapping = isinstance(value, dict)
+   is_sequence = isinstance(value, list)
+
+   if is_mapping:
+      found.update(value)
+      children = list(value.values())
+   elif is_sequence:
+      children = value
+   else:
+      children = []
+
+   for child in children:
+      found |= keys_anywhere(child)
+
+   return found
+
+
+PLAN_DIRECTORY = Path(__file__).resolve().parents[2] / "docs" / "plan"
+SHOWN_ITEM_PROPERTIES = ("stem", "figure", "options", "metadata")
+SHOWN_OPTION_PROPERTIES = ("id", "text")
+
+
+def plan_item_schema():
+   """The GeneratedItem output schema, parsed out of the json block under its heading in 04."""
+   plan_text = (PLAN_DIRECTORY / "04-item-generation.md").read_text()
+   after_heading = plan_text.split("### Output schema", 1)[1]
+   block = after_heading.split("```json", 1)[1].split("```", 1)[0]
+
+   return json.loads(block)
+
+
+def plan_items_columns():
+   """The column names of the items table in 06, read off the first cell of each table row."""
+   plan_text = (PLAN_DIRECTORY / "06-architecture.md").read_text()
+   section = plan_text.split("### items\n", 1)[1].split("\n### ", 1)[0]
+   rows = [line for line in section.splitlines() if line.startswith("| ")]
+   cells = [row.split("|")[1].strip() for row in rows]
+
+   return {cell for cell in cells if re.fullmatch(r"[a-z_]+", cell)}
+
+
+def plan_option_storage_names():
+   """R26 in 04: the name a generated option field is written under on items.options."""
+   plan_text = (PLAN_DIRECTORY / "04-item-generation.md").read_text()
+   written = re.findall(r"emits it as `(\w+)` and it is written straight to `(\w+)`", plan_text)
+
+   return dict(written)
+
+
+def forbidden_item_names():
+   """Every property of 04's item schema a student is not shown, and the name 06 stores it under.
+
+   The student sees the stem, the figure and the options, and metadata is the backend's echo of
+   the request; everything else in the schema is the answer. On an option the student sees its id
+   and its text, so the key flag, the error path and the rest are the answer too.
+   """
+   schema = plan_item_schema()
+   option_schema = schema["properties"]["options"]["items"]
+   hidden_item = set(schema["properties"]) - set(SHOWN_ITEM_PROPERTIES)
+   hidden_option = set(option_schema["properties"]) - set(SHOWN_OPTION_PROPERTIES)
+   stored_item = {
+      column
+      for column in plan_items_columns()
+      for name in hidden_item
+      if column == name or column.endswith(f"_{name}")
+   }
+   renamed = plan_option_storage_names()
+   stored_option = {renamed[name] for name in hidden_option if name in renamed}
+
+   return hidden_item | stored_item, hidden_option | stored_option
+
+
 def test_next_item_never_carries_the_answer_key(world):
-   """The served item travels through sessions.queue to the student, so it must not hold the key."""
+   """The served item travels through sessions.queue to the student, so it must not hold the key.
+
+   It is served at stage completion, where the most of the worked solution is shown. The forbidden
+   names come from the plan's item schema and items table, not from the code under test.
+   """
    from app.runtime.bank import ItemBank
+   from tests.api.test_served_steps import WORKED_STEPS, author_worked_steps, stage_every_skill
+
+   forbidden_item_fields, forbidden_option_fields = forbidden_item_names()
+
+   assert {"key", "answer_key", "worked_solution"} <= forbidden_item_fields
+   assert {"is_key", "error_path"} <= forbidden_option_fields
 
    client = world.client()
-   world.register(client)
+   user_id = world.register(client).json()["user"]["id"]
+   author_worked_steps(world, WORKED_STEPS)
+   stage_every_skill(world, user_id, "completion")
    world.settings.session_context.bank = ItemBank(world.engine)
    opened = open_session(client)
 
@@ -400,15 +507,27 @@ def test_next_item_never_carries_the_answer_key(world):
 
    served = client.get(f"/sessions/{opened.json()['id']}/next").json()["item"]
 
-   assert "answer_key" not in served
-   assert "worked_solution" not in served
+   assert served["stage"] == "completion"
+   assert len(served["options"]) > 0
 
-   for option in served["options"]:
-      assert "error_path" not in option
+   with OrmSession(world.engine) as db:
+      stored = db.get(models.Item, served["id"])
+      stored_option_fields = {name for option in stored.options for name in option}
+      key_value = json.dumps(json.loads(stored.answer_key)["mathjson"])
+      key_value_inside_a_string = json.dumps(key_value)[1:-1]
+      blanked_text = json.loads(stored.worked_solution)[-1]["text"]
 
-   queued = opened.json()["queue"]
+   assert {"is_key", "error_path"} <= stored_option_fields
 
-   assert "answer_key" not in json.dumps(queued)
+   for body in (served, opened.json()["queue"]):
+      carried_keys = keys_anywhere(body)
+      serialised = json.dumps(body)
+
+      assert carried_keys.isdisjoint(forbidden_item_fields)
+      assert carried_keys.isdisjoint(forbidden_option_fields)
+      assert key_value not in serialised
+      assert key_value_inside_a_string not in serialised
+      assert blanked_text not in serialised
 
 
 def wrong_answer_for(item):
@@ -472,8 +591,10 @@ def test_attempt_refuses_an_item_with_no_items_row(world):
    assert attempted.status_code == 409
 
 
-def test_feedback_is_refused_on_an_ungraded_attempt(world):
-   """An ungraded attempt lost no point, so it earns no elaborated feedback and no worked solution."""
+def test_feedback_on_an_ungraded_attempt_carries_no_elaborated_error(world):
+   """An ungraded attempt lost no point, so it earns no elaborated feedback and no worked solution,
+   and the feedback screen still answers so the student can move on.
+   """
    client = world.client()
    world.register(client)
    session_id = open_session(client).json()["id"]
@@ -494,5 +615,7 @@ def test_feedback_is_refused_on_an_ungraded_attempt(world):
 
    feedback = client.get(f"/sessions/{session_id}/attempts/{attempted.json()['id']}/feedback")
 
-   assert feedback.status_code == 409
+   assert feedback.status_code == 200
+   assert feedback.json()["kind"] == "ungraded"
+   assert feedback.json()["elaborated"] is None
    assert "worked_solution" not in feedback.text

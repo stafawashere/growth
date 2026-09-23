@@ -15,6 +15,8 @@ from fastapi.responses import JSONResponse
 from app.auth.service import REAUTH_TTL_SECONDS, SESSION_TTL_SECONDS, AuthError, ChallengeStore
 from app.auth.webauthn import LibraryVerifier
 
+WEBAUTHN_LIBRARY_ERROR_DETAIL = "the passkey ceremony did not verify"
+
 
 @dataclass
 class SessionContext:
@@ -106,9 +108,11 @@ class Settings:
 
 
 def create_app(settings):
-   from app.api.routes import auth, content, health, me, purge, review, sessions
+   from app.api.routes import auth, content, export, health, me, progress, purge, review, sessions, settings as settings_routes
+   from app.api.security_headers import SecurityHeadersMiddleware
 
    application = FastAPI(title="Growth", version="0.0.1")
+   application.add_middleware(SecurityHeadersMiddleware)
    application.state.settings = settings
    application.state.engine = settings.resolve_engine()
    application.state.challenges = ChallengeStore()
@@ -119,7 +123,19 @@ def create_app(settings):
    async def auth_error_handler(request, exception):
       return JSONResponse(status_code=exception.status_code, content={"detail": exception.detail})
 
-   for module in (auth, me, sessions, purge, content, review, health):
+   from webauthn.helpers.exceptions import (
+      InvalidAuthenticationResponse,
+      InvalidJSONStructure,
+      InvalidRegistrationResponse,
+   )
+
+   @application.exception_handler(InvalidRegistrationResponse)
+   @application.exception_handler(InvalidAuthenticationResponse)
+   @application.exception_handler(InvalidJSONStructure)
+   async def webauthn_library_error_handler(request, exception):
+      return JSONResponse(status_code=400, content={"detail": WEBAUTHN_LIBRARY_ERROR_DETAIL})
+
+   for module in (auth, me, sessions, purge, content, review, progress, settings_routes, export, health):
       application.include_router(module.router)
 
    return application

@@ -34,7 +34,7 @@ def _unreadable_result():
    """usage is None, so the reconciliation raises AttributeError reading the usage block."""
    return ProviderResult(
       text="ok",
-      stop_reason="end_turn",
+      finish_reason="end_turn",
       usage=None,
       provider="anthropic",
       model="claude-sonnet-5",
@@ -44,7 +44,7 @@ def _unreadable_result():
 def _readable_result():
    return ProviderResult(
       text="ok",
-      stop_reason="end_turn",
+      finish_reason="end_turn",
       usage=Usage(input_tokens=50, output_tokens=20, cached_read_tokens=0, cached_write_tokens=0),
       provider="anthropic",
       model="claude-sonnet-5",

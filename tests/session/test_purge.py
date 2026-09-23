@@ -2,11 +2,13 @@
 import json
 from datetime import datetime, timezone
 
-from sqlalchemy import event
+from sqlalchemy import Column, Table, Text, event, select
 from sqlalchemy.orm import Session as OrmSession
 
 from app.db import models
+from app.export import archive
 from app.session import purge
+from tests.export.test_export import OTHER_USER_ID, seed_every_table, seed_non_user_audit_row
 
 USER_ID = "USER-0001"
 NOW = datetime(2026, 3, 1, 9, 0, 0, tzinfo=timezone.utc)
@@ -185,3 +187,132 @@ def test_purge_deletes_credentials_and_auth_sessions(tmp_path):
       assert counts["auth_sessions"] == 1
       assert db.query(models.PasskeyCredential).count() == 0
       assert db.query(models.AuthSession).count() == 0
+
+
+
+def export_jobs_of(db, user_id):
+   return archive.export_jobs_for(db, user_id)
+
+
+def test_purge_removes_the_export_archive_and_its_job(tmp_path):
+   engine = models.make_engine(tmp_path / "growth.db")
+   archive_directory = archive.archive_directory_for(engine)
+
+   with OrmSession(engine) as db:
+      seed_user_rows(db)
+      own_job = archive.produce_export(db, archive_directory, USER_ID, NOW)
+      other_job = archive.produce_export(db, archive_directory, OTHER_USER_ID, NOW)
+      own_archive = archive_directory / json.loads(own_job.payload)["archive"]
+      other_archive = archive_directory / json.loads(other_job.payload)["archive"]
+      db.commit()
+
+   assert own_archive.is_file()
+   assert other_archive.is_file()
+
+   with OrmSession(engine) as db:
+      purge.purge_user(db, USER_ID, NOW)
+      db.commit()
+
+   assert not own_archive.exists()
+   assert other_archive.is_file()
+
+   with OrmSession(engine) as db:
+      assert export_jobs_of(db, USER_ID) == []
+      assert len(export_jobs_of(db, OTHER_USER_ID)) == 1
+
+
+def owned_row_count(connection, table, user_id):
+   clause = archive.owner_clause(table, user_id)
+
+   return len(connection.execute(select(table).where(clause)).all())
+
+
+def rows_only_that_user_owns(connection, table, user_id):
+   is_audit_log = table is models.AuditLog.__table__
+
+   if is_audit_log:
+      clause = table.c.actor == user_id
+   else:
+      clause = archive.owner_clause(table, user_id)
+
+   return len(connection.execute(select(table).where(clause)).all())
+
+
+def test_purge_empties_every_table_the_export_classifies_as_the_students(tmp_path):
+   engine = models.make_engine(tmp_path / "growth.db")
+   seed_every_table(engine, "mine", USER_ID)
+   seed_every_table(engine, "theirs", OTHER_USER_ID)
+   seed_non_user_audit_row(engine)
+   owned_tables = [
+      table
+      for table in models.Base.metadata.sorted_tables
+      if archive.owner_clause(table, USER_ID) is not None
+   ]
+
+   with engine.connect() as connection:
+      other_counts_before = {
+         table.name: rows_only_that_user_owns(connection, table, OTHER_USER_ID)
+         for table in owned_tables
+      }
+
+      for table in owned_tables:
+         assert owned_row_count(connection, table, USER_ID) > 0, table.name
+
+   assert all(count > 0 for count in other_counts_before.values())
+
+   with OrmSession(engine) as db:
+      purge.purge_user(db, USER_ID, NOW)
+      db.commit()
+
+   with engine.connect() as connection:
+      for table in owned_tables:
+         assert owned_row_count(connection, table, USER_ID) == 0, table.name
+
+      other_counts_after = {
+         table.name: rows_only_that_user_owns(connection, table, OTHER_USER_ID)
+         for table in owned_tables
+      }
+
+   assert other_counts_after == other_counts_before
+
+
+def test_purge_reaches_user_tables_added_to_the_schema_later(tmp_path):
+   later_notes = Table(
+      "purge_later_notes",
+      models.Base.metadata,
+      Column("id", Text, primary_key=True),
+      Column("user_id", Text, nullable=False),
+   )
+   later_gradings = Table(
+      "purge_later_gradings",
+      models.Base.metadata,
+      Column("id", Text, primary_key=True),
+      Column("attempt_id", Text, nullable=False),
+   )
+
+   try:
+      engine = models.make_engine(tmp_path / "growth.db")
+
+      with engine.begin() as connection:
+         connection.execute(later_notes.insert().values(id="NOTE-mine", user_id=USER_ID))
+         connection.execute(later_notes.insert().values(id="NOTE-theirs", user_id=OTHER_USER_ID))
+         connection.execute(later_gradings.insert().values(id="GRD-mine", attempt_id="ATT-0001"))
+         connection.execute(later_gradings.insert().values(id="GRD-theirs", attempt_id="ATT-theirs"))
+
+      assert archive.owner_clause(later_notes, USER_ID) is not None
+      assert archive.owner_clause(later_gradings, USER_ID) is not None
+
+      with OrmSession(engine) as db:
+         seed_user_rows(db)
+         purge.purge_user(db, USER_ID, NOW)
+         db.commit()
+
+      with engine.connect() as connection:
+         remaining_notes = connection.execute(select(later_notes.c.id)).scalars().all()
+         remaining_gradings = connection.execute(select(later_gradings.c.id)).scalars().all()
+   finally:
+      models.Base.metadata.remove(later_notes)
+      models.Base.metadata.remove(later_gradings)
+
+   assert remaining_notes == ["NOTE-theirs"]
+   assert remaining_gradings == ["GRD-theirs"]

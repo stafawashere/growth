@@ -19,7 +19,7 @@ export function SelfExplanationPrompt({ prompt, value, onChange }: SelfExplanati
    return (
       <section
          {...affordanceProps("selfExplanationPrompt")}
-         className={motionClass("selfExplanationPrompt")}
+         className={`${motionClass("selfExplanationPrompt")} field`}
          data-testid="self-explanation-prompt"
       >
          <label htmlFor={fieldId}>{prompt}</label>

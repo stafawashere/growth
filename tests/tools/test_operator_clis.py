@@ -211,6 +211,35 @@ def test_check_verdicts_names_a_malformed_verdict(tmp_path):
    assert "not in the audit module's vocabulary" in result.stdout
 
 
+def test_check_verdicts_refuses_a_verdict_outside_the_sample(tmp_path):
+   sample_ids = ["ITM-TEST-0001"]
+   verdicts = [
+      {
+         "item_id": "ITM-TEST-0001",
+         "verdict": VERDICT_KEY_WRONG,
+         "auditor": "operator",
+         "audited_at": "2026-09-20T00:00:00Z",
+      },
+      {
+         "item_id": "ITM-TEST-0099",
+         "verdict": VERDICT_KEY_WRONG,
+         "auditor": "operator",
+         "audited_at": "2026-09-20T00:00:00Z",
+      },
+   ]
+
+   sample_path = tmp_path / "sample.json"
+   verdicts_path = tmp_path / "verdicts.json"
+   sample_path.write_text(json.dumps(sample_ids))
+   verdicts_path.write_text(json.dumps(verdicts))
+
+   result = run_check_verdicts(verdicts_path, sample_path)
+
+   assert result.returncode == 1, result.stdout + result.stderr
+   assert "out of sample: ITM-TEST-0099" in result.stdout
+   assert "key error rate: not published" in result.stdout
+
+
 def test_neither_tool_writes_to_the_data_directory(tmp_path):
    sample_ids = ["ITM-TEST-0001"]
    verdicts = [

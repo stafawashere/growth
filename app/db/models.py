@@ -5,7 +5,7 @@ and auth_sessions.
 gradings and diagnoses are not P1 tables: they arrive with the grader and the
 diagnostician in P3, per docs/plan/11-phased-delivery.md.
 """
-from sqlalchemy import JSON, Integer, LargeBinary, Text, event
+from sqlalchemy import JSON, Integer, LargeBinary, Text, event, text
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
 
@@ -176,6 +176,13 @@ class Attempt(Base):
    error_note: Mapped[str | None] = mapped_column(Text, nullable=True)
    self_explanation: Mapped[str | None] = mapped_column(Text, nullable=True)
    tutor_sentence: Mapped[str | None] = mapped_column(Text, nullable=True)
+   tutor_calls: Mapped[int] = mapped_column(Integer, nullable=False, default=0, server_default=text("0"))
+   tutor_cost_usd: Mapped[float | None] = mapped_column(nullable=True)
+   tutor_tokens_in: Mapped[int | None] = mapped_column(Integer, nullable=True)
+   tutor_tokens_cached_read: Mapped[int | None] = mapped_column(Integer, nullable=True)
+   tutor_cached_read_reported_calls: Mapped[int] = mapped_column(
+      Integer, nullable=False, default=0, server_default=text("0")
+   )
    snapshot_id: Mapped[str] = mapped_column(Text, nullable=False)
    created_at: Mapped[str] = mapped_column(Text, nullable=False)
    updated_at: Mapped[str] = mapped_column(Text, nullable=False)
@@ -241,6 +248,10 @@ class Budget(Base):
    cap_tokens: Mapped[float | None] = mapped_column(nullable=True)
    cap_usd: Mapped[float | None] = mapped_column(nullable=True)
    hard_stopped: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+   settled_calls: Mapped[int] = mapped_column(Integer, nullable=False, default=0, server_default=text("0"))
+   cached_read_reported_calls: Mapped[int] = mapped_column(Integer, nullable=False, default=0, server_default=text("0"))
+   cached_write_reported_calls: Mapped[int] = mapped_column(Integer, nullable=False, default=0, server_default=text("0"))
+   stopped_by: Mapped[str | None] = mapped_column(Text, nullable=True)
    created_at: Mapped[str] = mapped_column(Text, nullable=False)
    updated_at: Mapped[str] = mapped_column(Text, nullable=False)
 

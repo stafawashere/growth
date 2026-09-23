@@ -54,7 +54,7 @@ def _cassette(**overrides):
    usage = dict(input_tokens=50, output_tokens=20, cached_read_tokens=0, cached_write_tokens=0)
    usage.update(overrides)
 
-   return {"text": "Try the chain rule on the inner factor.", "stop_reason": "end_turn", "usage": usage}
+   return {"text": "Try the chain rule on the inner factor.", "finish_reason": "end_turn", "usage": usage}
 
 
 class FakeClock:
@@ -103,6 +103,13 @@ def _budget_rows(db):
 
 def _audit_rows(db):
    return list(db.execute(select(models.AuditLog)).scalars().all())
+
+
+def _refusal_columns(db):
+   audit = models.AuditLog.__table__.c
+   statement = select(audit.actor, audit.subject, audit.detail).where(audit.action == "budget_call_refused")
+
+   return list(db.execute(statement).mappings().all())
 
 
 DEFAULT_TEST_CAPS = BudgetCaps(cap_usd=1000.0)
@@ -269,6 +276,8 @@ def test_guard_writes_no_key_material_into_the_audit_detail():
 
 
 def test_a_stopped_role_refuses_every_later_call_that_day():
+   """13 item 4: a refusal names the cap that binds now, not a latched hard_stopped. The later
+   call is still refused, names usd, and adds no second refusal row for the same reason."""
    db = _db()
    double = RecordingProvider(ReplayProvider(cassette=_cassette()))
    guard = _guard(db, double, caps=BudgetCaps(cap_tokens=None, cap_usd=0.0))
@@ -285,13 +294,18 @@ def test_a_stopped_role_refuses_every_later_call_that_day():
       guard.generate(_request())
 
    assert stopped.value.role == "tutor"
+   assert stopped.value.cap == "usd"
    assert double.calls == 0
 
    hard_stops = [row for row in _audit_rows(db) if row.action == "budget_hard_stop"]
-   refusals = [row for row in _audit_rows(db) if row.action == "budget_call_refused"]
+   refusals = _refusal_columns(db)
+   budget_subject = f"budgets:{_budget_rows(db)[0].id}"
 
    assert len(hard_stops) == 1
-   assert len(refusals) == 2
+   assert len(refusals) == 1
+   assert refusals[0]["actor"] == "USR-1"
+   assert refusals[0]["subject"] == budget_subject
+   assert json.loads(refusals[0]["detail"])["cap"] == "usd"
 
 
 def test_guard_prices_cached_reads_at_the_multiplier():
@@ -352,7 +366,10 @@ class StubProvider(Provider):
       return self.result
 
 
-def test_an_abandoned_stream_releases_the_reservation():
+def test_an_abandoned_stream_keeps_the_worst_case_charge_instead_of_releasing_it():
+   """13 item 3: a call that reached the wire is reconciled to the worst case rather than
+   refunded. The first chunk means the provider was called, so closing the stream leaves the
+   reservation standing as the charge."""
    db = _db()
    double = RecordingProvider(ReplayProvider(cassette=_cassette()))
    guard = _guard(db, double)
@@ -361,11 +378,12 @@ def test_an_abandoned_stream_releases_the_reservation():
    next(generator)
    generator.close()
 
-   row = _budget_rows(db)[0]
+   row = db.execute(select(models.Budget.__table__)).mappings().one()
 
-   assert row.tokens_in == 0
-   assert row.tokens_out == 0
-   assert row.cost_usd == pytest.approx(0.0)
+   assert row["tokens_in"] == EXPECTED_PROMPT_TOKENS
+   assert row["tokens_out"] == MAX_OUTPUT_TOKENS
+   assert row["cost_usd"] == pytest.approx(EXPECTED_ESTIMATE_USD)
+   assert row["settled_calls"] == 1
 
 
 def test_a_completed_stream_reconciles_against_raw_usage():
@@ -386,6 +404,8 @@ def test_a_completed_stream_reconciles_against_raw_usage():
 
 
 def test_a_stopped_role_records_the_refusal_once_and_still_refuses():
+   """13 item 4: a refusal names the cap that binds now, not a latched hard_stopped. Forty
+   refused calls on one row leave one refusal row, naming usd, and the last call still names usd."""
    db = _db()
    double = RecordingProvider(ReplayProvider(cassette=_cassette()))
    guard = _guard(db, double, caps=BudgetCaps(cap_tokens=None, cap_usd=0.0))
@@ -396,15 +416,18 @@ def test_a_stopped_role_records_the_refusal_once_and_still_refuses():
 
    before_the_last_attempt = len([row for row in _audit_rows(db) if row.action == "budget_call_refused"])
 
-   with pytest.raises(BudgetStopped):
+   with pytest.raises(BudgetStopped) as stopped:
       guard.generate(_request())
 
-   refusals = [row for row in _audit_rows(db) if row.action == "budget_call_refused"]
-   reasons = {json.loads(row.detail)["cap"] for row in refusals}
+   refusals = _refusal_columns(db)
+   reasons = {json.loads(row["detail"])["cap"] for row in refusals}
+   subjects = {(row["actor"], row["subject"]) for row in refusals}
 
+   assert stopped.value.cap == "usd"
    assert len(refusals) == before_the_last_attempt
-   assert len(refusals) == 2
-   assert reasons == {"usd", "hard_stopped"}
+   assert len(refusals) == 1
+   assert reasons == {"usd"}
+   assert subjects == {("USR-1", f"budgets:{_budget_rows(db)[0].id}")}
    assert double.calls == 0
 
 
@@ -432,7 +455,7 @@ def test_an_unpriced_result_model_is_charged_at_the_requested_model_price():
    db = _db()
    result = ProviderResult(
       text="ok",
-      stop_reason="end_turn",
+      finish_reason="end_turn",
       usage=Usage(input_tokens=50, output_tokens=20, cached_read_tokens=0, cached_write_tokens=0),
       provider="anthropic",
       model="claude-not-a-model",
@@ -454,7 +477,7 @@ def test_a_result_without_usage_keeps_the_worst_case_reservation():
    db = _db()
    result = ProviderResult(
       text="ok",
-      stop_reason="end_turn",
+      finish_reason="end_turn",
       usage=None,
       provider="anthropic",
       model="claude-sonnet-5",

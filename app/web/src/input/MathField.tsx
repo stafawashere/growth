@@ -85,7 +85,7 @@ export function MathField(props: MathFieldProps) {
 
    if (loadFailed) {
       return (
-         <div>
+         <div className="field">
             <span id={fieldId}>{label}</span>
             <p role="alert">{MATHLIVE_LOAD_FAILURE_MESSAGE}</p>
          </div>
@@ -93,7 +93,7 @@ export function MathField(props: MathFieldProps) {
    }
 
    return (
-      <div>
+      <div className="field">
          <label htmlFor={fieldId}>{label}</label>
          <math-field id={fieldId} aria-label={label} ref={elementRef}>
             {initialLatex ?? ""}

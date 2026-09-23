@@ -90,7 +90,7 @@ Three choices in that picture are deliberate. The engine, grader and verifier si
 
 ## Stack decision with alternatives considered
 
-The choice is D7: Python 3.12 with FastAPI on the server holding engine, grader, verifier, content loader and provider layer; React 18 with TypeScript and Vite on the client with KaTeX for rendering and MathLive for typed math input; SQLite through SQLAlchemy; a single job worker over a SQLite job table; SSE for streaming.
+The choice is D7: Python 3.12 with FastAPI on the server holding engine, grader, verifier, content loader and provider layer; React 18 with TypeScript and Vite on the client with KaTeX for rendering and MathLive for typed math input; SQLite through SQLAlchemy; a single job worker over a SQLite job table; SSE for streaming. Passkey ceremonies are verified by py_webauthn (`webauthn` on PyPI), approved by the operator on 2026-09-19 and landed on 2026-09-23.
 
 The ranking criterion is learning impact first, then cost, then convenience, and that ordering is what decides this table rather than developer taste.
 
@@ -302,6 +302,11 @@ Semantics owned by `01-learning-model.md` for the mechanic and `02-adaptive-engi
 | error_note | TEXT nullable | the student's one-line error note (03) |
 | self_explanation | TEXT nullable | the answer to the structured self-explanation prompt |
 | tutor_sentence | TEXT nullable | the tutor's composed paragraph, written once on the first read of the feedback screen so a re-read spends no second call against the role's daily cap (R35, `07-ai-provider-layer.md` Budget caps) |
+| tutor_calls | INTEGER NOT NULL DEFAULT 0 | tutor calls made for this served item |
+| tutor_cost_usd | REAL nullable | the dollars those calls were charged |
+| tutor_tokens_in | INTEGER nullable | their input tokens |
+| tutor_tokens_cached_read | INTEGER nullable | their cached read tokens, null when no call reported the field. These four carry the per-served-item tutor accounting that exit criterion 8 of P1 in `11-phased-delivery.md` measures: median cost per served item and the cache read share |
+| tutor_cached_read_reported_calls | INTEGER NOT NULL DEFAULT 0 | tutor calls whose usage reported a cached read, zero included. The row sums its calls, so the cache read share uses a served item only when this equals tutor_calls; below it, tutor_tokens_cached_read covers only some of the calls. A call the adapter refused before the wire is in neither count |
 | snapshot_id | TEXT | the content snapshot the item was served under, so an attempt can be reinterpreted after a library update (P1 convention 2 in 11) |
 
 Semantics owned by `03-diagnosis-and-feedback.md` for the confidence and feedback fields, `05-assessment-modes.md` for capture. The `transcription_confirmed` gate is a hard precondition on grading: no point is graded until it is 1, because the 2026 AIED study found roughly 87 percent of residual grading errors were transcription failures rather than rubric misapplication (https://arxiv.org/abs/2605.19043 [single-source]).
@@ -379,10 +384,13 @@ Owned by this document.
 | user_id | TEXT | |
 | role | TEXT | tutor, generator, verifier, grader, diagnostician, transcriber |
 | day | TEXT | ISO date |
-| tokens_in, tokens_out, tokens_cached_read, tokens_cached_write | INTEGER | |
+| tokens_in, tokens_out, tokens_cached_read, tokens_cached_write | INTEGER | tokens_cached_read and tokens_cached_write sum only the values a provider reported; a null usage field adds nothing to them (07, "a null usage field means the provider did not report") |
 | cost_usd | REAL | |
-| cap_tokens, cap_usd | REAL | |
-| hard_stopped | INTEGER | |
+| cap_tokens, cap_usd | REAL | both null for a role with no configured cap, which is refused and shown as unconfigured, never as stopped (13) |
+| hard_stopped | INTEGER | cleared, with stopped_by, only by a raise: every cap that stopped the row raised, none lowered, and every cap in force above the day's recorded spend (13). A lowered cap keeps the stop even when it still sits above the spend, because 07 says no further calls today |
+| stopped_by | TEXT nullable | the caps that stopped the row, comma separated, tokens before usd; read only while hard_stopped is 1, and cleared whenever the stop clears |
+| settled_calls | INTEGER NOT NULL DEFAULT 0 | calls that reached the provider, including one charged at its worst-case reservation because it raised or was abandoned (13, guard item 3). A call the adapter refused before the wire (`RefusedBeforeWire`) is refunded and not counted |
+| cached_read_reported_calls, cached_write_reported_calls | INTEGER NOT NULL DEFAULT 0 | calls whose usage reported that cached field, zero included. A count of 0 means the field was never reported that day and the matching token sum is not a measurement; a count below settled_calls means the sum covers only part of the day. Counts rather than a nullable sum, because SQLite cannot relax the existing NOT NULL in place and the migrator only adds columns. A row written before these three columns existed reads 0 in all three after migration while its sums stay; a row with settled_calls 0 is therefore never a measurement of any cached field, whatever its token sums hold |
 
 Semantics owned by `07-ai-provider-layer.md`.
 

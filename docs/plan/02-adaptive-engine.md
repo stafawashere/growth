@@ -730,8 +730,8 @@ Every parameter below is [inferred]. None has a source that fixes it. Each is li
 
 | Tunable | Current | What would settle it | Watched by |
 |---|---|---|---|
-| `gamma` success weight | 0.4 | per-skill fit once 20+ observations exist on a skill | calibration residual on `p_A_raw` |
-| `rho` failure weight | -0.2 | same | same |
+| `gamma` success weight | 1.0 (corrected 2026-09-19 from 0.4, see Parameters) | per-skill fit once 20+ observations exist on a skill | calibration residual on `p_A_raw` |
+| `rho` failure weight | -0.5 (corrected 2026-09-19 from -0.2, see Parameters) | same | same |
 | `lambda` decay weight | 0 (R3) | arm 6 of the offline simulation, the ablation that compares `lambda = 0` against `lambda = 2.0` on true mastery per item and on retention; that arm is now the gate that would turn it back on | retention at 7 and 30 days |
 | `beta_k` coefficient on BC-DF count | -0.35 per factor, centred on a median count of 2 (R1) | first-attempt accuracy regressed on BC-DF count over 100+ items; before that, the P1 cold-start distribution gate | per-archetype calibration residual; P1 cold-start `p_A` distribution |
 | `beta_k` centring constant | median BC-DF count 2, computed from `data/archetypes.json` 2026-09-19 | recomputation on any content snapshot that changes the archetype set | content snapshot diff |

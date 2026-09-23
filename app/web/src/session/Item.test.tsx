@@ -1,11 +1,37 @@
 import { describe, expect, it, vi } from "vitest";
 import { cleanup, render, screen } from "@testing-library/react";
 import { P1_FEEDBACK_AFFORDANCES, AFFORDANCE_ATTRIBUTE } from "../affordances";
-import type { FadingStage, ServedFormat, ServedItem } from "../api/types";
+import type { FadingStage, ServedFormat, ServedItem, ServedStep } from "../api/types";
 import type { ItemProps } from "./Item";
-import { ANSWER_UNAVAILABLE, COMMIT_LABEL, Item, type WorkedStep } from "./Item";
+import { ANSWER_UNAVAILABLE, COMMIT_LABEL, Item } from "./Item";
 
-function servedItem(stage: FadingStage, format: ServedFormat): ServedItem {
+const SELF_EXPLANATION_PROMPT = "Which rule justifies step 3, and why does it apply here?";
+
+const workedSteps: ServedStep[] = [
+   { index: 1, text: "Name the factors: u = x^2, v = sin(x)" },
+   { index: 2, text: "u' = 2x, v' = cos(x)" },
+   { index: 3, text: "Product rule: f' = u'v + uv'" },
+   { index: 4, text: "f'(x) = 2x sin(x) + x^2 cos(x)" }
+];
+
+/* app/runtime/bank.py served_steps: every step at example, all but the last at completion. */
+function servedStepsAt(stage: FadingStage): ServedStep[] | null {
+   if (stage === "example") {
+      return workedSteps;
+   }
+
+   if (stage === "completion") {
+      return workedSteps.slice(0, -1);
+   }
+
+   return null;
+}
+
+function servedItem(
+   stage: FadingStage,
+   format: ServedFormat,
+   steps: ServedStep[] | null = servedStepsAt(stage)
+): ServedItem {
    return {
       id: "item-1",
       archetype_id: "BC-ARCH-0301",
@@ -21,30 +47,24 @@ function servedItem(stage: FadingStage, format: ServedFormat): ServedItem {
       skills: ["BC-SKL-0301"],
       status: "published",
       stage,
-      format
+      format,
+      is_probe: false,
+      served_steps: steps,
+      self_explanation_prompt: stage === "example" ? SELF_EXPLANATION_PROMPT : null
    };
 }
-
-const workedSteps: WorkedStep[] = [
-   { index: 1, text: "Name the factors: u = x^2, v = sin(x)" },
-   { index: 2, text: "u' = 2x, v' = cos(x)" },
-   { index: 3, text: "Product rule: f' = u'v + uv'" },
-   { index: 4, text: "f'(x) = 2x sin(x) + x^2 cos(x)" }
-];
 
 function renderItem(
    stage: FadingStage,
    format: ServedFormat,
-   steps: WorkedStep[] = workedSteps,
+   steps: ServedStep[] | null = servedStepsAt(stage),
    answerUnavailable = false,
    onAnswerUnavailable: ItemProps["onAnswerUnavailable"] = vi.fn(),
    awaitingConfidence = false
 ) {
    return render(
       <Item
-         item={servedItem(stage, format)}
-         workedSteps={steps}
-         selfExplanationPrompt="Which rule justifies step 3, and why does it apply here?"
+         item={servedItem(stage, format, steps)}
          onAnswerChange={vi.fn()}
          answerUnavailable={answerUnavailable}
          onAnswerUnavailable={onAnswerUnavailable}
@@ -159,8 +179,18 @@ describe("Item worked step guard", () => {
       cleanup();
    });
 
-   it("refuses the completion stage below the two step minimum", () => {
+   it("draws a two step solution at completion, the first step given and the second blanked", () => {
       renderItem("completion", "short_answer", [workedSteps[0]]);
+
+      expect(screen.queryByTestId("worked-steps-unavailable")).toBeNull();
+      expect(screen.getByText(workedSteps[0].text)).toBeTruthy();
+      expect(screen.getByTestId("blanked-step").getAttribute("data-step-index")).toBe("2");
+
+      cleanup();
+   });
+
+   it("refuses the completion stage below the two step minimum, which served no given step", () => {
+      renderItem("completion", "short_answer", []);
 
       expect(screen.getByTestId("worked-steps-unavailable")).toBeTruthy();
       expect(screen.queryByTestId("blanked-step")).toBeNull();
@@ -187,8 +217,6 @@ describe("Item math input failure", () => {
          render(
             <Item
                item={servedItem("unsupported", "short_answer")}
-               workedSteps={workedSteps}
-               selfExplanationPrompt={null}
                onAnswerChange={vi.fn()}
                answerUnavailable={false}
                onAnswerUnavailable={missingHandler}
@@ -209,7 +237,7 @@ describe("Item math input failure", () => {
    });
 
    it("tells the student the problem takes no answer and withdraws the commit button", () => {
-      renderItem("unsupported", "short_answer", workedSteps, true);
+      renderItem("unsupported", "short_answer", null, true);
 
       expect(screen.getByTestId("answer-unavailable").textContent).toBe(ANSWER_UNAVAILABLE);
       expect(screen.queryByRole("button", { name: COMMIT_LABEL })).toBeNull();
@@ -219,7 +247,7 @@ describe("Item math input failure", () => {
    });
 
    it("leaves an mcq item alone, since no math field failed there", () => {
-      renderItem("unsupported", "mcq", workedSteps, true);
+      renderItem("unsupported", "mcq", null, true);
 
       expect(screen.queryByTestId("answer-unavailable")).toBeNull();
       expect(screen.getByRole("button", { name: COMMIT_LABEL })).toBeTruthy();
@@ -233,7 +261,7 @@ describe("Item waiting on the rating the attempt was committed without", () => {
       const stages: FadingStage[] = ["completion", "unsupported"];
 
       for (const stage of stages) {
-         renderItem(stage, "short_answer", workedSteps, false, vi.fn(), true);
+         renderItem(stage, "short_answer", servedStepsAt(stage), false, vi.fn(), true);
 
          expect(affordanceValues()).toContain(P1_FEEDBACK_AFFORDANCES.confidencePrompt);
          expect(screen.queryByRole("button", { name: COMMIT_LABEL })).toBeNull();
@@ -245,7 +273,7 @@ describe("Item waiting on the rating the attempt was committed without", () => {
    });
 
    it("still collects no rating at stage example, which commits no answer to rate", () => {
-      renderItem("example", "short_answer", workedSteps, false, vi.fn(), true);
+      renderItem("example", "short_answer", servedStepsAt("example"), false, vi.fn(), true);
 
       expect(affordanceValues()).not.toContain(P1_FEEDBACK_AFFORDANCES.confidencePrompt);
 

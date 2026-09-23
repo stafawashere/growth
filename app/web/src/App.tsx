@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-import type { HomeScreenProps } from "./home/HomeScreen";
-import type { SessionScreenProps } from "./session/SessionScreen";
+import { AccountScreen } from "./account/AccountScreen";
+import { AddPasskeyControl } from "./account/AddPasskeyControl";
+import { ApiError, readMe } from "./api/client";
+import { HomeRoute } from "./home/HomeRoute";
+import { SessionScreen } from "./session/SessionScreen";
 import type { SettingsScreenProps } from "./settings/SettingsScreen";
+import { SettingsRoute } from "./settings/SettingsRoute";
 
 export type Destination = "home" | "session" | "settings";
 
@@ -16,51 +20,28 @@ export interface UnsuppliedInput {
    wants: string;
 }
 
+/* 08-design-brief.md, Information architecture: settings is reached from the top bar, and a
+   session is reached from home's one primary action, never from a bar that would open one. */
 export const DESTINATIONS: ReadonlyArray<DestinationEntry> = [
    { id: "home", label: "Home" },
-   { id: "session", label: "Session" },
    { id: "settings", label: "Settings" }
 ];
 
 const TOKEN_PROBE = "--growth-surface-page";
 
-const homeInputs = [
-   { name: "queueMinutes", wants: "the minute forecast for today's queue" },
-   { name: "queueLines", wants: "the count on each queue line" },
-   { name: "examDate", wants: "the exam date" },
-   { name: "daysToExam", wants: "the days left before the exam" }
-] as const satisfies ReadonlyArray<{ name: Extract<keyof HomeScreenProps, string>; wants: string }>;
-
-const sessionInputs = [
-   { name: "workedStepsFor", wants: "the worked solution steps an example or a completion item shows" },
-   { name: "selfExplanationPromptFor", wants: "the prompt the student answers before submitting" }
-] as const satisfies ReadonlyArray<{
-   name: Extract<keyof SessionScreenProps, string>;
-   wants: string;
-}>;
-
+/* 08 gives the claudebox acknowledgement verbatim and no phrase for purge, and no client route
+   serves one, so the purge controls stay withheld and the gap is named on the screen. */
 const settingsInputs = [
-   { name: "providers", wants: "the provider and model assigned to each role" },
-   { name: "dailyCapDollars", wants: "the daily spend cap" },
-   { name: "spentThisMonthDollars", wants: "the spend so far this month" },
-   { name: "perRoleCaps", wants: "the per-role spend caps and what each has spent today" },
-   { name: "purgeConfirmationPhrase", wants: "the phrase a student types to confirm a purge" },
-   { name: "onReauthenticate", wants: "the passkey re-authentication ceremony" },
-   { name: "examDate", wants: "the exam date" }
+   { name: "purgeConfirmationPhrase", wants: "the phrase a student types to confirm a purge" }
 ] as const satisfies ReadonlyArray<{
    name: Extract<keyof SettingsScreenProps, string>;
    wants: string;
 }>;
 
 export const UNSUPPLIED_INPUTS: Record<Destination, ReadonlyArray<UnsuppliedInput>> = {
-   home: homeInputs,
-   session: sessionInputs,
+   home: [],
+   session: [],
    settings: settingsInputs
-};
-
-const pageStyle = {
-   background: "var(--growth-surface-page)",
-   color: "var(--growth-text-primary)"
 };
 
 const noticeStyle = {
@@ -69,7 +50,15 @@ const noticeStyle = {
    border: "1px solid var(--growth-border-hairline)"
 };
 
-const mutedTextStyle = { color: "var(--growth-text-muted)" };
+type SessionTarget = { resumeSessionId: string | null };
+
+type Access = "unknown" | "signedIn" | "signedOut";
+
+function isSignedOut(failure: unknown) {
+   const isServerRefusal = failure instanceof ApiError;
+
+   return isServerRefusal && failure.status === 401;
+}
 
 function tokenStylesheetIsLoaded(): boolean {
    const value = getComputedStyle(document.documentElement).getPropertyValue(TOKEN_PROBE);
@@ -77,9 +66,20 @@ function tokenStylesheetIsLoaded(): boolean {
    return value.trim() !== "";
 }
 
+function saveFile(name: string, contents: Blob) {
+   const address = URL.createObjectURL(contents);
+   const link = document.createElement("a");
+
+   link.href = address;
+   link.download = name;
+   link.click();
+
+   setTimeout(() => URL.revokeObjectURL(address));
+}
+
 function TokenNotice() {
    return (
-      <p role="status" style={noticeStyle}>
+      <p role="status" className="notice" style={noticeStyle}>
          The generated design tokens stylesheet is absent, so every colour, type and spacing custom
          property on this page resolves to nothing and falls back to the browser default. The
          operator fills the token file and the build writes the stylesheet from it.
@@ -89,19 +89,22 @@ function TokenNotice() {
 
 function UnsuppliedPanel(props: { destination: Destination }) {
    const inputs = UNSUPPLIED_INPUTS[props.destination];
+   const hasGap = inputs.length > 0;
+
+   if (!hasGap) {
+      return null;
+   }
 
    return (
-      <section style={noticeStyle}>
-         <h2>This screen is not built yet</h2>
-
-         <p style={mutedTextStyle}>
-            Every input below is required by the screen and no route on this client supplies it, so
-            the screen is held back rather than rendered with a stand-in figure.
+      <section className="notice" style={noticeStyle}>
+         <p className="muted">
+            No route on this client supplies the input below, so the part of this screen that needs
+            it is held back rather than rendered with a stand-in.
          </p>
 
          <ul>
             {inputs.map((input) => (
-               <li key={input.name} data-testid="unsupplied-input" style={mutedTextStyle}>
+               <li key={input.name} data-testid="unsupplied-input" className="muted">
                   <code>{input.name}</code>, {input.wants}
                </li>
             ))}
@@ -112,20 +115,89 @@ function UnsuppliedPanel(props: { destination: Destination }) {
 
 export function App() {
    const [destination, setDestination] = useState<Destination>("home");
+   const [sessionTarget, setSessionTarget] = useState<SessionTarget>({ resumeSessionId: null });
+
+   const [access, setAccess] = useState<Access>("unknown");
 
    const tokensAreLoaded = tokenStylesheetIsLoaded();
 
+   useEffect(() => {
+      let isCurrent = true;
+
+      readMe().then(
+         () => {
+            if (isCurrent) {
+               setAccess("signedIn");
+            }
+         },
+         (failure) => {
+            const shouldSignIn = isCurrent && isSignedOut(failure);
+
+            if (shouldSignIn) {
+               setAccess("signedOut");
+            }
+         }
+      );
+
+      return () => {
+         isCurrent = false;
+      };
+   }, []);
+
+   function enterAfterSignIn() {
+      readMe().then(
+         () => {
+            setDestination("home");
+            setAccess("signedIn");
+         },
+         () => undefined
+      );
+   }
+
+   function startSession() {
+      setSessionTarget({ resumeSessionId: null });
+      setDestination("session");
+   }
+
+   function resumeSession(sessionId: string) {
+      setSessionTarget({ resumeSessionId: sessionId });
+      setDestination("session");
+   }
+
+   if (access === "signedOut") {
+      return (
+         <main className="app-page">
+            {tokensAreLoaded ? null : <TokenNotice />}
+
+            <AccountScreen onSignedIn={enterAfterSignIn} />
+         </main>
+      );
+   }
+
    return (
-      <main style={pageStyle}>
-         <nav>
+      <main className="app-page">
+         <nav className="app-bar">
             {DESTINATIONS.map((entry) => (
-               <button key={entry.id} type="button" onClick={() => setDestination(entry.id)}>
+               <button key={entry.id} type="button" className="text-button" onClick={() => setDestination(entry.id)}>
                   {entry.label}
                </button>
             ))}
          </nav>
 
          {tokensAreLoaded ? null : <TokenNotice />}
+
+         {destination === "home" ? (
+            <HomeRoute today={() => new Date()} onStartSession={startSession} onResumeSession={resumeSession} />
+         ) : null}
+
+         {destination === "session" ? <SessionScreen resumeSessionId={sessionTarget.resumeSessionId} /> : null}
+
+         {destination === "settings" ? (
+            <>
+               <SettingsRoute purgeConfirmationPhrase={null} saveFile={saveFile} />
+               <AddPasskeyControl />
+            </>
+         ) : null}
 
          <UnsuppliedPanel destination={destination} />
       </main>

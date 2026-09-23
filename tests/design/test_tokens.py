@@ -9,6 +9,8 @@ compare a hand-typed list to another hand-typed list, they parse 08's own tables
 import io
 import json
 import re
+import subprocess
+import sys
 import tokenize
 from pathlib import Path
 
@@ -110,10 +112,10 @@ def _complete_tokens():
    theme["surface-raised"] = "#ffffff"
    theme["surface-sunken"] = "#ffffff"
    theme["accent-base"] = "#ffffff"
-   theme["accent-tint-1"] = "#ffffff"
-   theme["accent-tint-2"] = "#ffffff"
-   theme["accent-tint-3"] = "#ffffff"
-   theme["accent-tint-4"] = "#ffffff"
+
+   for name in _accent_tint_names():
+      theme[name] = "#ffffff"
+
    theme["accent-contrast-text"] = "#000000"
    theme["state-correct"] = "#000000"
    theme["state-incorrect"] = "#000000"
@@ -225,7 +227,7 @@ def _greys_astride_the_floor():
    return _grey(at_floor), _grey(below_floor), white
 
 
-def test_a_filled_pair_at_the_floor_is_accepted():
+def test_a_filled_pair_at_the_floor_is_accepted(monkeypatch):
    at_floor, below_floor, white = _greys_astride_the_floor()
    filled = _complete_tokens()
 
@@ -249,13 +251,10 @@ def test_a_filled_pair_at_the_floor_is_accepted():
 
    assert len(mentions_the_pair) == len(THEMES)
 
-
-def test_a_pair_whose_ratio_is_exactly_the_floor_is_accepted(monkeypatch):
-   """The floor is a floor, so a ratio equal to it passes and only a ratio under it is reported.
-   No pair of hex colours lands exactly on contrast.TEXT_CONTRAST_FLOOR in floating point, which
-   is why the ratio itself is substituted here. This is the test that goes red if the validator's
-   `ratio < TEXT_CONTRAST_FLOOR` ever became `ratio <= TEXT_CONTRAST_FLOOR`.
-   """
+   # No hex pair lands exactly on the floor in floating point, so the boundary itself, as
+   # opposed to the closest sRGB neighbour on either side, is exercised by substituting the
+   # ratio directly. This is what goes red if `ratio < TEXT_CONTRAST_FLOOR` ever became
+   # `ratio <= TEXT_CONTRAST_FLOOR`.
    monkeypatch.setattr(
       tokens,
       "contrast_ratio",
@@ -394,3 +393,61 @@ def test_a_type_token_missing_from_the_file_is_reported():
    ]
 
    assert len(mentions_the_dropped_token) == len(THEMES)
+
+
+def _reported_pairs_for(foreground_name, below_floor_on):
+   """Gives foreground_name and one background the same grey, so that pair sits at 1:1, and
+   returns every violation naming both."""
+   filled = _complete_tokens()
+
+   for theme in THEMES:
+      filled[theme][foreground_name] = "#808080"
+      filled[theme][below_floor_on] = "#808080"
+
+   return [
+      violation
+      for violation in token_violations(filled)
+      if foreground_name in violation and below_floor_on in violation
+   ]
+
+
+def test_accent_contrast_text_is_checked_on_every_accent_tint():
+   tints = [name for name in COLOUR_TOKENS if name.startswith("accent-tint-")]
+
+   assert tints
+
+   for tint in tints:
+      assert len(_reported_pairs_for("accent-contrast-text", tint)) == len(THEMES), tint
+
+
+def test_accent_contrast_text_is_not_checked_on_accent_base():
+   """The operator's approved loosening: 08 gives the primary button's text its own token,
+   text-on-accent, which stays checked on accent-base, and accent-contrast-text is the tint-hue
+   text for the tint backgrounds."""
+   assert _reported_pairs_for("accent-contrast-text", "accent-base") == []
+   assert len(_reported_pairs_for("text-on-accent", "accent-base")) == len(THEMES)
+
+
+def test_check_tokens_prints_a_ratio_for_every_checked_pair():
+   token_file_path = REPO_ROOT / "app" / "design" / "growth-tokens.json"
+   result = subprocess.run(
+      [sys.executable, str(REPO_ROOT / "tools" / "check_tokens.py"), str(token_file_path)],
+      cwd=str(REPO_ROOT),
+      capture_output=True,
+      text=True,
+   )
+   printed_lines = result.stdout.splitlines()
+   expected_prefixes = [
+      "{0}: {1} on {2} is ".format(theme, foreground_name, background_name)
+      for theme in THEMES
+      for foreground_name, background_name in tokens.CONTRAST_PAIRS
+   ]
+   unprinted = [
+      prefix
+      for prefix in expected_prefixes
+      if not any(line.startswith(prefix) for line in printed_lines)
+   ]
+
+   assert result.returncode == 0, result.stdout
+   assert unprinted == []
+   assert len(printed_lines) == len(expected_prefixes)

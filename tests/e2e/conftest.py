@@ -91,7 +91,7 @@ class FakeVerifier:
          "transports": credential.get("transports"),
       }
 
-   def begin_login(self):
+   def begin_login(self, credential_ids=None):
       return {"challenge": "login-challenge", "options": {"rpId": self.rp_id}}
 
    def finish_login(self, challenge, credential, public_key, stored_sign_count):
@@ -135,7 +135,7 @@ class World:
    def client(self):
       from starlette.testclient import TestClient
 
-      return TestClient(self.application, client=("127.0.0.1", 40000))
+      return TestClient(self.application, client=("127.0.0.1", 40000), base_url="http://127.0.0.1")
 
    def register(self, client, sign_count=1):
       begun = client.post("/auth/passkey/register/begin", json={"display_name": "Student"})

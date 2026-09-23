@@ -21,6 +21,11 @@ per-point decision that P1 has no component to make (03's own table puts per-poi
 mechanic 6). Guessing a point would put an exam consequence in front of the student that nothing
 decided, so the field stays empty until a per-point grader exists.
 
+An answer the grader could not settle lost no point and earned none, so after submission at
+unsupported it gets the ungraded kind: no verdict, no elaborated error and no worked solution. At
+example and completion the same attempt keeps its step marks, every given step with no verdict and
+the blank with none either, because no verdict exists to put there.
+
 The confidence rating and the hypercorrection flag belong to app/session/service.py and
 app/engine/update.py; this module only refuses to render feedback for a stage whose rating has not
 been recorded yet.
@@ -29,9 +34,10 @@ from dataclasses import dataclass
 from enum import Enum
 
 from app.engine.state import Confidence, FadingStage
+from app.runtime.bank import served_steps, worked_steps
 from app.session.service import collects_confidence
 
-ELABORATED_TEMPLATE = "prompts/feedback/elaborated_v1.md"
+ELABORATED_TEMPLATE = "prompts/feedback/elaborated_v2.md"
 
 PROMPT_FIELDS = ("violated_step", "observed_behavior", "scoring_consequence", "worked_solution")
 
@@ -43,12 +49,19 @@ class FeedbackKind(str, Enum):
    WITHHELD = "withheld"
    ELABORATED = "elaborated"
    CORRECT = "correct"
+   UNGRADED = "ungraded"
 
 
 @dataclass(frozen=True)
 class StepMark:
+   """One worked_solution step, numbered from 1 as served_steps numbers it.
+
+   A given step was shown worked, so it carries no verdict. The one step the student supplied is
+   the completion blank, and its verdict is the server's grade of the attempt.
+   """
    index: int
-   description: str
+   text: str
+   given: bool
    correct: bool | None
 
 
@@ -86,17 +99,45 @@ def self_explanation_prompt(step_number):
    return f"which rule justifies step {step_number}, and why does it apply here"
 
 
-def step_verification(archetype, step_outcomes):
-   """One mark per step of expected_solution_path, in the order the path lists them."""
-   path = list(archetype["expected_solution_path"])
-   outcomes = list(step_outcomes) if step_outcomes is not None else []
+def worked_example_prompt(shown_steps):
+   """The prompt names the last step shown worked, numbered as served_steps numbers it.
+
+   A worked example carries it before submission and on the feedback screen alike. A corrected
+   completion asks about its last given step, the step just before the blank, which is the case
+   08's feedback wireframe draws (step 3 of 4 asked about, step 4 blanked).
+   """
+   return self_explanation_prompt(shown_steps[-1]["index"])
+
+
+def pre_submission_prompt(stage, shown_steps):
+   is_worked_example = FadingStage(stage) == FadingStage.EXAMPLE
+
+   if not is_worked_example:
+      return None
+
+   return worked_example_prompt(shown_steps)
+
+
+def step_verification(stage, worked_solution, verdict):
+   """Every worked step at stage example is given. At completion the given steps are marked given
+   and the blank carries the verdict, which stays None until the attempt is graded.
+   """
+   served_stage = FadingStage(stage)
+   steps = worked_steps(worked_solution)
+   given_count = len(served_steps(worked_solution, served_stage))
    marks = []
 
-   for index, description in enumerate(path):
-      has_outcome = index < len(outcomes)
-      outcome = outcomes[index] if has_outcome else None
+   for position, step in enumerate(steps, start=1):
+      is_given = position <= given_count
 
-      marks.append(StepMark(index=index, description=description, correct=outcome))
+      marks.append(
+         StepMark(
+            index=position,
+            text=step["text"],
+            given=is_given,
+            correct=None if is_given else verdict,
+         )
+      )
 
    return tuple(marks)
 
@@ -154,7 +195,6 @@ def render_feedback(
    item,
    submitted=False,
    correct=None,
-   step_outcomes=None,
    chosen_option=None,
    error_record=None,
    confidence=None,
@@ -167,10 +207,15 @@ def render_feedback(
    shows_steps = served_stage in STEP_VERIFICATION_STAGES
 
    if shows_steps:
-      return _supported_feedback(served_stage, archetype, step_outcomes, submitted, correct, rating)
+      return _supported_feedback(served_stage, item, submitted, correct, rating)
 
    if not submitted:
       return Feedback(kind=FeedbackKind.WITHHELD, stage=served_stage, confidence=rating)
+
+   is_ungraded = correct is None
+
+   if is_ungraded:
+      return Feedback(kind=FeedbackKind.UNGRADED, stage=served_stage, confidence=rating)
 
    if correct:
       return Feedback(kind=FeedbackKind.CORRECT, stage=served_stage, confidence=rating)
@@ -194,7 +239,7 @@ def as_dict(feedback):
       "kind": feedback.kind.value,
       "stage": feedback.stage.value,
       "step_marks": [
-         {"index": mark.index, "description": mark.description, "correct": mark.correct}
+         {"index": mark.index, "text": mark.text, "given": mark.given, "correct": mark.correct}
          for mark in feedback.step_marks
       ],
       "elaborated": dict(payload.as_prompt_fields(), error_id=payload.error_id) if has_payload else None,
@@ -203,19 +248,19 @@ def as_dict(feedback):
    }
 
 
-def _supported_feedback(served_stage, archetype, step_outcomes, submitted, correct, rating):
-   marks = step_verification(archetype, step_outcomes)
+def _supported_feedback(served_stage, item, submitted, correct, rating):
+   worked_solution = item["worked_solution"]
+   verdict = correct if submitted else None
+   marks = step_verification(served_stage, worked_solution, verdict)
    is_worked_example = served_stage == FadingStage.EXAMPLE
-   prompt = self_explanation_prompt(len(marks)) if is_worked_example else None
    is_completion = served_stage == FadingStage.COMPLETION
    was_marked_wrong = submitted and correct is False
    is_corrected_completion = is_completion and was_marked_wrong
+   carries_prompt = is_worked_example or is_corrected_completion
+   prompt = None
 
-   if is_corrected_completion:
-      failed = [mark for mark in marks if mark.correct is False]
-      has_failed_step = len(failed) > 0
-      step_number = failed[0].index + 1 if has_failed_step else len(marks)
-      prompt = self_explanation_prompt(step_number)
+   if carries_prompt:
+      prompt = worked_example_prompt(served_steps(worked_solution, served_stage))
 
    return Feedback(
       kind=FeedbackKind.STEP_VERIFICATION,

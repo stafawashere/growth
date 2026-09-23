@@ -6,6 +6,7 @@ import {
    ANIMATABLE_PROPERTIES,
    INSTANT_CLASSES,
    MOTION_CLASSES,
+   MOTION_CLASS_PREFIX,
    MOTION_DURATION,
    MOTION_EASING,
    REDUCED_MOTION_QUERY,
@@ -15,6 +16,45 @@ import {
 const MODULE_URL = import.meta.url;
 
 const STYLESHEET_TEXT = readFileSync(new URL("./motion.css", MODULE_URL), "utf8");
+
+const DESIGN_BRIEF_TEXT = readFileSync(
+   new URL("../../../../docs/plan/08-design-brief.md", MODULE_URL),
+   "utf8"
+);
+
+function repeatedKeystrokePaths(): string[] {
+   const match = DESIGN_BRIEF_TEXT.match(/In this app that means (.+?)\. All of those are instant\./);
+
+   if (match === null) {
+      throw new Error("08-design-brief.md no longer lists the repeated-keystroke paths where expected");
+   }
+
+   const withoutFinalAnd = match[1].replace(/, and /, ", ");
+
+   return withoutFinalAnd.split(", ").map((fragment) => fragment.trim());
+}
+
+function fragmentWords(fragment: string): string[] {
+   return fragment
+      .toLowerCase()
+      .split(/\s+/)
+      .map((word) => word.replace(/[^a-z]/g, ""))
+      .filter((word) => word.length > 0);
+}
+
+function classWordAppearsInFragment(classWord: string, words: string[]): boolean {
+   const exact = words.includes(classWord);
+   const plural = words.includes(classWord + "s");
+
+   const endsInE = classWord.endsWith("e");
+   const gerundFromE = endsInE && words.includes(classWord.slice(0, -1) + "ing");
+
+   const lastLetter = classWord.slice(-1);
+   const gerundDoubled = !endsInE && words.includes(classWord + lastLetter + "ing");
+   const gerundPlain = !endsInE && words.includes(classWord + "ing");
+
+   return exact || plural || gerundFromE || gerundDoubled || gerundPlain;
+}
 
 let baseRules: Map<string, CSSStyleDeclaration>;
 let reducedRules: Map<string, CSSStyleDeclaration>;
@@ -163,5 +203,31 @@ describe("the motion stylesheet", () => {
       const curves = STYLESHEET_TEXT.match(/cubic-bezier\([^)]*\)/g) ?? [];
 
       expect(curves, "motion.css invents an easing curve").toEqual([]);
+   });
+});
+
+describe("INSTANT_CLASSES against 08's repeated-keystroke sentence", () => {
+   it("has one class per path 08 lists, in the order 08 lists them", () => {
+      const paths = repeatedKeystrokePaths();
+
+      expect(paths.length).toBe(INSTANT_CLASSES.length);
+   });
+
+   it("every class name's words are grounded in its path's own words in 08's sentence", () => {
+      const paths = repeatedKeystrokePaths();
+
+      for (const [index, className] of INSTANT_CLASSES.entries()) {
+         const path = paths[index];
+         const words = fragmentWords(path);
+         const slug = className.replace(MOTION_CLASS_PREFIX + "instant-", "");
+         const classWords = slug.split("-");
+
+         for (const classWord of classWords) {
+            expect(
+               classWordAppearsInFragment(classWord, words),
+               `"${classWord}" from ${className} has no match in 08's path "${path}"`
+            ).toBe(true);
+         }
+      }
    });
 });

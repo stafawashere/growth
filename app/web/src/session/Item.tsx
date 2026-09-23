@@ -1,21 +1,20 @@
-import type { Confidence, ServedItem } from "../api/types";
+import type { Confidence, ServedItem, ServedStep } from "../api/types";
 import { MathField } from "../input/MathField";
 import { McqControl } from "../input/McqControl";
 import { ConfidencePrompt } from "./ConfidencePrompt";
 import { SelfExplanationPrompt } from "./SelfExplanationPrompt";
 
-/* The server withholds the worked solution until an answer is submitted (app/runtime/bank.py
-   _as_item_dict), so a ServedItem carries a stem and no steps. The example and completion stages
-   cannot be drawn without them, so the caller passes them in and there is no default: an Item
-   built without them says so on screen rather than showing a stage it cannot show. */
+/* GET /sessions/{id}/next carries the steps a stage shows as served_steps (app/runtime/bank.py
+   served_steps): every step at example, every step but the last at completion, none at
+   unsupported. The blank at completion is the step after the last one served, and the server
+   never sends its text. An item whose steps did not arrive says so rather than drawing a stage it
+   cannot show. */
 
-export interface WorkedStep {
-   index: number;
-   text: string;
-}
-
-/* 11 P1 scope item 8: the completion stage requires the two step minimum in its Q16. */
+/* 11 P1 scope item 8: the completion stage requires the two step minimum in its Q16. That counts
+   the whole worked solution, and the served list is that solution less its blanked last step. */
 export const MINIMUM_COMPLETION_STEPS = 2;
+
+const BLANKED_AT_COMPLETION = 1;
 
 export const COMMIT_LABEL = "Check my answer";
 
@@ -35,8 +34,6 @@ export function collectsConfidence(stage: ServedItem["stage"]) {
 
 export interface ItemProps {
    item: ServedItem;
-   workedSteps: WorkedStep[];
-   selfExplanationPrompt: string | null;
    onAnswerChange: (mathjson: unknown) => void;
    answerUnavailable: boolean;
    onAnswerUnavailable: (reason: unknown) => void;
@@ -50,19 +47,23 @@ export interface ItemProps {
    awaitingConfidence: boolean;
 }
 
-function requiredStepCount(stage: ServedItem["stage"]) {
+function requiredServedStepCount(stage: ServedItem["stage"]) {
    if (stage === "completion") {
-      return MINIMUM_COMPLETION_STEPS;
+      return MINIMUM_COMPLETION_STEPS - BLANKED_AT_COMPLETION;
    }
 
    return 1;
 }
 
+function blankedStepAfter(shownSteps: ServedStep[]) {
+   const lastShown = shownSteps[shownSteps.length - 1];
+
+   return { index: lastShown.index + BLANKED_AT_COMPLETION };
+}
+
 export function Item(props: ItemProps) {
    const {
       item,
-      workedSteps,
-      selfExplanationPrompt,
       onAnswerChange,
       answerUnavailable,
       onAnswerUnavailable,
@@ -87,11 +88,12 @@ export function Item(props: ItemProps) {
    const isExample = item.stage === "example";
    const isCompletion = item.stage === "completion";
    const needsWorkedSteps = isExample || isCompletion;
-   const hasEnoughSteps = workedSteps.length >= requiredStepCount(item.stage);
+   const shownSteps = item.served_steps ?? [];
+   const hasEnoughSteps = shownSteps.length >= requiredServedStepCount(item.stage);
    const canDrawStage = !needsWorkedSteps || hasEnoughSteps;
 
-   const shownSteps = isCompletion ? workedSteps.slice(0, -1) : workedSteps;
-   const blankedStep = isCompletion ? workedSteps[workedSteps.length - 1] : null;
+   const blanksAStep = isCompletion && hasEnoughSteps;
+   const blankedStep = blanksAStep ? blankedStepAfter(shownSteps) : null;
 
    const servesMcq = item.format === "mcq" && item.stage === "unsupported";
    const collectsAnswer = !isExample;
@@ -104,15 +106,15 @@ export function Item(props: ItemProps) {
    const asksToCommit = canDrawStage && !takesNoAnswer && !isCommitted;
 
    return (
-      <article data-testid="item" data-stage={item.stage}>
-         <p data-testid="item-stem">{item.stem}</p>
+      <article className="card item" data-testid="item" data-stage={item.stage}>
+         <p className="item-stem" data-testid="item-stem">{item.stem}</p>
 
          {needsWorkedSteps && !canDrawStage ? (
             <p data-testid="worked-steps-unavailable">{WORKED_STEPS_MISSING}</p>
          ) : null}
 
          {needsWorkedSteps && canDrawStage ? (
-            <ol data-testid="worked-steps">
+            <ol className="worked-steps" data-testid="worked-steps">
                {shownSteps.map((step) => (
                   <li key={step.index} data-step-index={step.index}>
                      {step.text}
@@ -120,7 +122,7 @@ export function Item(props: ItemProps) {
                ))}
 
                {blankedStep !== null ? (
-                  <li data-testid="blanked-step" data-step-index={blankedStep.index}>
+                  <li className="blanked-step" data-testid="blanked-step" data-step-index={blankedStep.index}>
                      This step is mine to write.
                   </li>
                ) : null}
@@ -156,7 +158,7 @@ export function Item(props: ItemProps) {
 
          {canDrawStage && isExample ? (
             <SelfExplanationPrompt
-               prompt={selfExplanationPrompt}
+               prompt={item.self_explanation_prompt}
                value={selfExplanation}
                onChange={onSelfExplanationChange}
             />
@@ -167,7 +169,7 @@ export function Item(props: ItemProps) {
          ) : null}
 
          {asksToCommit ? (
-            <button type="button" className="motion-instant-submit-answer" onClick={onCommit}>
+            <button type="button" className="motion-instant-submit-answer button-primary" onClick={onCommit}>
                {commitLabel}
             </button>
          ) : null}

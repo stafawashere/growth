@@ -5,20 +5,57 @@ grader, so the three facts app/engine/update.py rule_based_mastery_states reads 
 here: whether the response is correct, whether it is equivalent but mis-notated, and which skills
 an incorrect MCQ distractor blames. The MCQ comparison is the one in 03's "MCQ grading"; the short
 answer comparison is check 1 of 03's deterministic pre-checks with check 2 as the numeric fallback.
-Check 4, units declared on the key and absent from or different in the response, is the only
-mechanical notation check the plan supplies for P1, so it is the only one implemented.
+Check 4 asks for units present and dimensionally correct. Units declared on the key and absent
+from the response, or the key's own unit written differently, meaning an SI conversion factor of
+exactly 1 between them, are the only mechanical notation failure the plan supplies for P1. The
+value is compared without converting units, so any other unit, in the same dimension or not,
+fails the check itself and the answer is incorrect rather than mis-notated. Unit symbols are
+case-sensitive, as SI symbols are, and only a spelled-out unit name is read without regard to
+case. A physical constant is not a unit, and units that name no known unit leave the check
+unsettled.
 
 An unsettled comparison and an unparseable submission both leave correct as None with a reason.
 03 is explicit that an unsettled check falls through rather than defaulting to earned or not
-earned, and nothing here scores a parse failure or a timeout against the student.
+earned, and nothing here scores a parse failure or a timeout against the student. The same holds
+for a comparison that raises, and because SymPy's message quotes the student's expression, the
+reason names only the exception type. A bounded child that dies before sending a result
+is the one exception that is raised rather than folded in, because it says nothing about the
+answer, and recording it as ungraded would keep the student from ever submitting that answer again.
+
+Parsing, the symbolic comparison and the numeric fallback each run under app/items/verify.py's
+bound, so one grade call runs at most three of them.
 """
 import json
+import re
+
+from sympy import Integer, simplify
+from sympy.physics import units as sympy_units
+from sympy.physics.units.prefixes import PREFIXES
+from sympy.physics.units.quantities import PhysicalConstant, Quantity
+from sympy.physics.units.systems.si import SI, dimsys_SI
 
 from app.engine.state import ResponseFormat
 from app.items.mathjson import UnsupportedMathJSON, to_sympy
-from app.items.verify import equivalence, numeric_check
+from app.items.verify import (
+   COMPARISON_TIMEOUT_S,
+   ChildDiedError,
+   equivalence,
+   numeric_check,
+   run_bounded,
+)
 
 DEFAULT_DECIMALS = 3
+
+UNIT_SPELLINGS_SYMPY_LACKS = {
+   "sec": "second",
+   "secs": "seconds",
+   "min": "minute",
+   "mins": "minutes",
+   "hr": "hour",
+   "hrs": "hours",
+}
+
+UNIT_TOKEN = re.compile(r"\s*(?:(\*\*|[*/^()])|(\d+)|([A-Za-z]+))")
 
 
 def grade(item, submission, errors, served_format=None):
@@ -160,16 +197,34 @@ def _grade_short_answer(answer_key, submission):
       return _ungraded("the answer key carries no MathJSON to compare against")
 
    try:
-      key_expression = to_sympy(key_mathjson)
-      submitted_expression = to_sympy(submitted_mathjson)
+      parsed = run_bounded(
+         _parsed_pair, (key_mathjson, submitted_mathjson), COMPARISON_TIMEOUT_S, None
+      )
    except UnsupportedMathJSON as failure:
       return _ungraded(f"the submission could not be parsed: {failure}")
+   except ChildDiedError:
+      raise
+   except Exception as failure:
+      return _ungraded(f"parsing the submission raised {type(failure).__name__}")
 
-   comparison = equivalence(key_expression, submitted_expression)
+   parse_did_not_finish = parsed is None
+
+   if parse_did_not_finish:
+      return _ungraded("parsing the submission did not finish within the bound")
+
+   key_expression, submitted_expression = parsed
+
+   try:
+      comparison = equivalence(key_expression, submitted_expression)
+   except ChildDiedError:
+      raise
+   except Exception as failure:
+      return _ungraded(f"the symbolic comparison raised {type(failure).__name__}")
+
    is_equivalent = comparison == "equivalent"
 
    if is_equivalent:
-      return _result(correct=True, equivalent_but_misnotated=_misnotated(answer_key, submission))
+      return _value_matched(answer_key, submission)
 
    key_is_numeric = answer_key.get("form") == "numeric"
 
@@ -187,12 +242,18 @@ def _grade_short_answer(answer_key, submission):
 def _grade_numeric(answer_key, submission, key_expression, submitted_expression):
    decimals = answer_key.get("decimals") or DEFAULT_DECIMALS
    tolerance = 0.5 * 10 ** (-decimals)
-   agrees = numeric_check(
-      key_expression, submitted_expression, rel_tol=0.0, abs_floor=tolerance
-   )
+
+   try:
+      agrees = numeric_check(
+         key_expression, submitted_expression, rel_tol=0.0, abs_floor=tolerance
+      )
+   except ChildDiedError:
+      raise
+   except Exception as failure:
+      return _ungraded(f"the numeric comparison raised {type(failure).__name__}")
 
    if agrees is True:
-      return _result(correct=True, equivalent_but_misnotated=_misnotated(answer_key, submission))
+      return _value_matched(answer_key, submission)
 
    if agrees is False:
       return _result(correct=False)
@@ -200,15 +261,229 @@ def _grade_numeric(answer_key, submission, key_expression, submitted_expression)
    return _ungraded(f"the numeric comparison to {decimals} decimal places did not settle")
 
 
-def _misnotated(answer_key, submission):
+def _parsed_pair(key_mathjson, submitted_mathjson):
+   return to_sympy(key_mathjson), to_sympy(submitted_mathjson)
+
+
+def _value_matched(answer_key, submission):
+   verdict = _units_verdict(answer_key.get("units"), submission.get("units"))
+
+   if verdict == "unsettled":
+      return _ungraded("the submitted units name no unit the dimension check knows")
+
+   if verdict == "wrong_unit":
+      return _result(correct=False)
+
+   return _result(correct=True, equivalent_but_misnotated=verdict == "notation")
+
+
+def _units_verdict(key_units, submitted_units):
    """Check 4 of 03's deterministic pre-checks, and the only notation check P1 can run."""
-   key_units = _normalised_units(answer_key.get("units"))
-   key_declares_units = key_units != ""
+   normalised_key = _normalised_units(key_units)
+   normalised_submission = _normalised_units(submitted_units)
+   key_declares_units = normalised_key != ""
 
    if not key_declares_units:
-      return False
+      return "match"
 
-   return _normalised_units(submission.get("units")) != key_units
+   written_identically = normalised_submission == normalised_key
+
+   if written_identically:
+      return "match"
+
+   units_are_absent = normalised_submission == ""
+
+   if units_are_absent:
+      return "notation"
+
+   key_expression = _unit_expression(key_units)
+   submitted_expression = _unit_expression(submitted_units)
+   unreadable_as_written = submitted_expression is None
+   same_letters_in_another_case = normalised_submission.casefold() == normalised_key.casefold()
+   is_the_key_in_another_case = unreadable_as_written and same_letters_in_another_case
+
+   if is_the_key_in_another_case:
+      return "match"
+
+   either_is_unknown = key_expression is None or submitted_expression is None
+
+   if either_is_unknown:
+      return "unsettled"
+
+   same_dimension = _dimension_of(key_expression) == _dimension_of(submitted_expression)
+   conversion_factor = simplify(_scale_of(submitted_expression) / _scale_of(key_expression))
+   is_same_unit = same_dimension and conversion_factor == 1
+
+   return "notation" if is_same_unit else "wrong_unit"
+
+
+def _unit_expression(units):
+   try:
+      tokens = _unit_tokens(str(units))
+      expression, position = _unit_product(tokens, 0)
+   except ValueError:
+      return None
+
+   consumed_everything = position == len(tokens)
+
+   if not consumed_everything:
+      return None
+
+   return expression
+
+
+def _dimension_of(expression):
+   dimensional_expression = SI.get_dimensional_expr(expression)
+
+   return dimsys_SI.get_dimensional_dependencies(dimensional_expression)
+
+
+def _scale_of(expression):
+   factors = {
+      quantity: SI.get_quantity_scale_factor(quantity)
+      for quantity in expression.atoms(Quantity)
+   }
+
+   return expression.subs(factors)
+
+
+def _unit_tokens(text):
+   spelled_with_per = re.sub(r"\bper\b", "/", text, flags=re.IGNORECASE)
+   tokens = []
+   position = 0
+   stripped_end = len(spelled_with_per.rstrip())
+
+   while position < stripped_end:
+      match = UNIT_TOKEN.match(spelled_with_per, position)
+
+      if match is None:
+         raise ValueError(f"unexpected character at {position}")
+
+      operator, digits, name = match.groups()
+
+      if operator is not None:
+         tokens.append(("op", "^" if operator == "**" else operator))
+      elif digits is not None:
+         tokens.append(("int", int(digits)))
+      else:
+         tokens.append(("unit", _quantity_named(name)))
+
+      position = match.end()
+
+   return tokens
+
+
+def _quantity_named(name):
+   """A symbol as written, then a prefixed symbol, then a spelled-out name in any case."""
+   exact = _unit_attribute(name) or _unit_attribute(UNIT_SPELLINGS_SYMPY_LACKS.get(name))
+
+   if exact is not None:
+      return exact
+
+   prefixed = _prefixed_symbol(name)
+
+   if prefixed is not None:
+      return prefixed
+
+   folded = name.casefold()
+   spelled = _unit_attribute(folded) or _unit_attribute(UNIT_SPELLINGS_SYMPY_LACKS.get(folded))
+   is_spelled_out = spelled is not None and folded != str(spelled.abbrev)
+
+   if is_spelled_out:
+      return spelled
+
+   raise ValueError(f"{name} is not a unit")
+
+
+def _unit_attribute(name):
+   is_absent = not name
+
+   if is_absent:
+      return None
+
+   quantity = getattr(sympy_units, name, None)
+   is_unit = isinstance(quantity, Quantity) and not isinstance(quantity, PhysicalConstant)
+
+   return quantity if is_unit else None
+
+
+def _prefixed_symbol(name):
+   for prefix_symbol, prefix in PREFIXES.items():
+      starts_with_prefix = name.startswith(prefix_symbol) and len(name) > len(prefix_symbol)
+
+      if not starts_with_prefix:
+         continue
+
+      unit_symbol = name[len(prefix_symbol):]
+      quantity = _unit_attribute(unit_symbol)
+      is_symbol = quantity is not None and unit_symbol == str(quantity.abbrev)
+
+      if is_symbol:
+         return prefix.scale_factor * quantity
+
+   return None
+
+
+def _unit_product(tokens, position):
+   product, position = _unit_power(tokens, position)
+
+   while position < len(tokens):
+      kind, value = tokens[position]
+      is_division = (kind, value) == ("op", "/")
+      is_explicit_product = (kind, value) == ("op", "*")
+      starts_implicit_product = kind == "unit" or (kind, value) == ("op", "(")
+      continues_product = is_division or is_explicit_product or starts_implicit_product
+
+      if not continues_product:
+         break
+
+      if is_division or is_explicit_product:
+         position += 1
+
+      factor, position = _unit_power(tokens, position)
+      product = product / factor if is_division else product * factor
+
+   return product, position
+
+
+def _unit_power(tokens, position):
+   base, position = _unit_atom(tokens, position)
+   has_exponent = position < len(tokens) and tokens[position] == ("op", "^")
+
+   if not has_exponent:
+      return base, position
+
+   exponent_is_present = position + 1 < len(tokens) and tokens[position + 1][0] == "int"
+
+   if not exponent_is_present:
+      raise ValueError("an exponent must be a whole number")
+
+   return base ** Integer(tokens[position + 1][1]), position + 2
+
+
+def _unit_atom(tokens, position):
+   is_past_end = position >= len(tokens)
+
+   if is_past_end:
+      raise ValueError("units end early")
+
+   kind, value = tokens[position]
+
+   if kind == "unit":
+      return value, position + 1
+
+   opens_group = (kind, value) == ("op", "(")
+
+   if not opens_group:
+      raise ValueError(f"unexpected {value}")
+
+   inner, position = _unit_product(tokens, position + 1)
+   closes_group = position < len(tokens) and tokens[position] == ("op", ")")
+
+   if not closes_group:
+      raise ValueError("unclosed parenthesis")
+
+   return inner, position + 1
 
 
 def _normalised_units(units):
@@ -217,7 +492,7 @@ def _normalised_units(units):
    if is_absent:
       return ""
 
-   return " ".join(str(units).split()).casefold()
+   return " ".join(str(units).split())
 
 
 def _option_by_id(options, option_id):

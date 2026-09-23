@@ -184,6 +184,20 @@ def drain_session(client, world, session_id, today, screens):
    return served
 
 
+def has_seen_the_whole_flow(screens, all_served, reachable):
+   """Block 2 breaks fringe ties uniformly at random (02-adaptive-engine.md, Item selection
+   algorithm), so which session first serves a given cold-start archetype depends on the draw. The
+   run keeps going until both screens have arrived and every archetype the cold-start gating opened
+   has been served, so the assertions below hold for any seed rather than for the one draw that
+   happened to cover both by the time the screens arrived.
+   """
+   has_both_screens = len(screens) == 2
+   served_archetypes = {item["archetype_id"] for item in all_served}
+   has_served_every_opened = reachable <= served_archetypes
+
+   return has_both_screens and has_served_every_opened
+
+
 def test_session_login_to_feedback(world):
    client = world.client()
    registered = world.register(client)
@@ -230,9 +244,7 @@ def test_session_login_to_feedback(world):
       assert closed.status_code == 200, closed.text
       assert closed.json()["ended_at"] is not None
 
-      has_both_screens = len(screens) == 2
-
-      if has_both_screens:
+      if has_seen_the_whole_flow(screens, all_served, cold_start_reachable):
          break
 
       today = today.fromordinal(today.toordinal() + DAYS_BETWEEN_SESSIONS)

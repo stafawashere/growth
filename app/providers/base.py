@@ -58,12 +58,18 @@ class Usage:
 @dataclass(frozen=True)
 class ProviderResult:
    text: str | None
-   stop_reason: str | None
+   finish_reason: str | None
    usage: Usage
    provider: str
    model: str
    request_id: str | None = None
    raw_usage: dict | None = None
+
+
+class RefusedBeforeWire(Exception):
+   """A call that provably never reached the provider. 13 item 3 keeps the refund path for a
+   call that never left, and this is the only signal that grants it. The message carries no key
+   material and no provider body."""
 
 
 class Provider(ABC):

@@ -22,8 +22,11 @@ class PasskeyVerifier(Protocol):
    def finish_registration(self, challenge, credential):
       """Return {"credential_id": bytes, "public_key": bytes, "sign_count": int, "transports": str | None}."""
 
-   def begin_login(self):
-      """Return {"challenge": str, "options": dict} for an assertion ceremony."""
+   def begin_login(self, credential_ids=None):
+      """Return {"challenge": str, "options": dict} for an assertion ceremony.
+
+      credential_ids, when given, is the stored credential ids to send as allowCredentials, so a
+      non-discoverable credential can be targeted directly rather than requiring a resident key."""
 
    def finish_login(self, challenge, credential, public_key, stored_sign_count):
       """Return {"sign_count": int}, the authenticator's counter after this assertion."""
@@ -44,13 +47,18 @@ class LibraryVerifier:
       self.origin = origin
       self.rp_name = rp_name
 
-   def begin_registration(self, user_id, user_name):
+   def begin_registration(self, user_id, user_name, exclude_credential_ids=()):
       webauthn = _webauthn_module()
+      excluded = [
+         webauthn.helpers.structs.PublicKeyCredentialDescriptor(id=credential_id)
+         for credential_id in exclude_credential_ids
+      ]
       options = webauthn.generate_registration_options(
          rp_id=self.rp_id,
          rp_name=self.rp_name,
          user_id=user_id.encode(),
          user_name=user_name,
+         exclude_credentials=excluded,
       )
 
       return {
@@ -74,9 +82,16 @@ class LibraryVerifier:
          "transports": None,
       }
 
-   def begin_login(self):
+   def begin_login(self, credential_ids=None):
       webauthn = _webauthn_module()
-      options = webauthn.generate_authentication_options(rp_id=self.rp_id)
+      allow_credentials = [
+         webauthn.helpers.structs.PublicKeyCredentialDescriptor(id=credential_id)
+         for credential_id in (credential_ids or [])
+      ]
+      options = webauthn.generate_authentication_options(
+         rp_id=self.rp_id,
+         allow_credentials=allow_credentials or None,
+      )
 
       return {
          "challenge": webauthn.helpers.bytes_to_base64url(options.challenge),

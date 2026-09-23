@@ -155,13 +155,120 @@ def test_units_declared_but_absent_is_notation_only():
 
    wrong_units = grade(item, {"mathjson": 12.5, "units": "meters"}, ERRORS)
 
-   assert wrong_units["correct"] is True
-   assert wrong_units["equivalent_but_misnotated"] is True
+   assert wrong_units["correct"] is False
+   assert wrong_units["equivalent_but_misnotated"] is False
 
    matching_units = grade(item, {"mathjson": 12.5, "units": " M/Sec "}, ERRORS)
 
    assert matching_units["correct"] is True
    assert matching_units["equivalent_but_misnotated"] is False
+
+
+def numeric_item_with_units(units):
+   key = {"form": "numeric", "mathjson": 12.5, "numeric": 12.5, "decimals": 3, "units": units}
+
+   return build_item(key)
+
+
+@pytest.mark.parametrize(
+   "key_units, submitted_units",
+   [
+      ("m/sec", "meters"),
+      ("m/sec", "m^2"),
+      ("ft/s", "ft"),
+      ("ft^2", "ft^3"),
+      ("m/sec", "cm/sec"),
+      ("ft/s", "m/s"),
+      ("ft", "mi"),
+      ("s", "h"),
+      ("m^2", "ft^2"),
+      ("L", "m^3"),
+      ("mm", "Mm"),
+   ],
+)
+def test_a_different_unit_earns_no_notation_credit(key_units, submitted_units):
+   item = numeric_item_with_units(key_units)
+
+   result = grade(item, {"mathjson": 12.5, "units": submitted_units}, ERRORS)
+
+   assert result["equivalent_but_misnotated"] is False
+   assert result["correct"] is False
+   assert rule_based_mastery_states(ARCHETYPE, result) == {
+      "BC-SKL-05022": MasteryState.NOT_MASTERED,
+      "BC-SKL-05017": MasteryState.NOT_ATTEMPTED,
+      "BC-SKL-01045": MasteryState.NOT_ATTEMPTED,
+   }
+
+
+@pytest.mark.parametrize(
+   "key_units, submitted_units",
+   [
+      ("m/sec", "m/s"),
+      ("m/s", "meters per second"),
+      ("ft/s", "feet per second"),
+      ("m^2", "m*m"),
+   ],
+)
+def test_the_same_unit_written_differently_keeps_notation_credit(
+   key_units, submitted_units
+):
+   item = numeric_item_with_units(key_units)
+
+   result = grade(item, {"mathjson": 12.5, "units": submitted_units}, ERRORS)
+
+   assert result["correct"] is True
+   assert result["equivalent_but_misnotated"] is True
+   assert rule_based_mastery_states(ARCHETYPE, result) == {
+      skill: MasteryState.NOTATION_ONLY for skill in ARCHETYPE["skills"]
+   }
+
+
+def test_a_speed_in_metres_per_second_against_a_key_in_feet_per_second_is_wrong():
+   item = numeric_item_with_units("ft/s")
+
+   result = grade(item, {"mathjson": 12.5, "units": "m/s"}, ERRORS)
+
+   assert result["correct"] is False
+   assert result["equivalent_but_misnotated"] is False
+
+
+def test_unit_symbols_are_case_sensitive():
+   item = numeric_item_with_units("mm")
+
+   result = grade(item, {"mathjson": 12.5, "units": "Mm"}, ERRORS)
+
+   assert result["correct"] is False
+   assert result["equivalent_but_misnotated"] is False
+
+   unreadable_capital = grade(numeric_item_with_units("m"), {"mathjson": 12.5, "units": "M"}, ERRORS)
+
+   assert unreadable_capital["correct"] is True
+   assert unreadable_capital["equivalent_but_misnotated"] is False
+
+   readable_capital = grade(numeric_item_with_units("mm"), {"mathjson": 12.5, "units": "MM"}, ERRORS)
+
+   assert readable_capital["correct"] is True
+   assert readable_capital["equivalent_but_misnotated"] is False
+
+
+def test_a_physical_constant_is_not_a_unit():
+   item = numeric_item_with_units("m")
+
+   result = grade(item, {"mathjson": 12.5, "units": "c*s"}, ERRORS)
+
+   assert result["correct"] is None
+   assert result["equivalent_but_misnotated"] is False
+   assert result["reason"] is not None
+
+
+def test_units_that_name_no_known_unit_are_ungraded():
+   item = numeric_item_with_units("m/sec")
+
+   result = grade(item, {"mathjson": 12.5, "units": "__import__('os')"}, ERRORS)
+
+   assert result["correct"] is None
+   assert result["equivalent_but_misnotated"] is False
+   assert result["reason"] is not None
 
 
 def test_units_absent_from_the_key_never_reports_misnotation():

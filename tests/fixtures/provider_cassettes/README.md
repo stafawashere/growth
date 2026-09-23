@@ -1,7 +1,7 @@
 # Provider cassettes
 
 Cassettes for `app/providers/replay.ReplayProvider`, in the result shape
-`app/providers/anthropic.py` produces: `text`, `stop_reason`, `usage` with its token fields,
+`app/providers/anthropic.py` produces: `text`, `finish_reason`, `usage` with its token fields,
 `provider` and `model`.
 
 `tutor_elaborated_v1.json` is hand written, not recorded. No Anthropic key existed when gate 23

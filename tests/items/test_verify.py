@@ -116,3 +116,63 @@ def test_equivalence_runs_off_the_main_thread():
 
    assert "failure" not in outcome, outcome.get("failure")
    assert outcome["result"] == "equivalent"
+
+
+OPERATOR_PROVENANCE = {"model": "operator", "prompt_template_version": None, "generation_job_id": None}
+
+
+def mcq_item(options):
+   return {"answer_key": "x", "options": options, "provenance": OPERATOR_PROVENANCE}
+
+
+def test_a_distractor_with_a_null_error_path_is_not_taken_for_a_second_key():
+   item = mcq_item([
+      {"value": "x", "is_key": True, "error_path": None},
+      {"value": ["Add", "x", 1], "is_key": False, "error_path": None},
+      {"value": ["Add", "x", 2], "is_key": False, "error_path": "BC-ERR-00001"},
+   ])
+
+   verdict = verify_item(item, {"BC-ERR-00001"})
+
+   assert verdict["verified"] is False
+   assert "rule_7" in verdict["violations"]
+
+
+def test_a_key_with_an_error_path_is_refused_and_not_compared_as_a_distractor():
+   item = mcq_item([
+      {"value": "x", "is_key": True, "error_path": "BC-ERR-00001"},
+      {"value": ["Add", "x", 1], "is_key": False, "error_path": "BC-ERR-00001"},
+      {"value": ["Add", "x", 2], "is_key": False, "error_path": "BC-ERR-00001"},
+   ])
+
+   verdict = verify_item(item, {"BC-ERR-00001"})
+
+   assert verdict["verified"] is False
+   assert "key_with_error_path" in verdict["violations"]
+   assert "rule_5" not in verdict["violations"]
+
+
+def test_an_option_set_without_exactly_one_key_is_refused():
+   item = mcq_item([
+      {"value": "x", "is_key": True, "error_path": None},
+      {"value": ["Add", "x", 1], "is_key": True, "error_path": None},
+      {"value": ["Add", "x", 2], "is_key": False, "error_path": "BC-ERR-00001"},
+   ])
+
+   verdict = verify_item(item, {"BC-ERR-00001"})
+
+   assert verdict["verified"] is False
+   assert "exactly_one_key" in verdict["violations"]
+
+
+def test_an_option_without_is_key_is_refused():
+   item = mcq_item([
+      {"value": "x", "is_key": True, "error_path": None},
+      {"value": ["Add", "x", 1], "error_path": "BC-ERR-00001"},
+      {"value": ["Add", "x", 2], "is_key": False, "error_path": "BC-ERR-00001"},
+   ])
+
+   verdict = verify_item(item, {"BC-ERR-00001"})
+
+   assert verdict["verified"] is False
+   assert "option_without_is_key" in verdict["violations"]

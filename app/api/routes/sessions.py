@@ -4,16 +4,17 @@ Every route resolves the session row by id and by the cookie's user id, so one u
 reaches another user's row, and a session belonging to nobody in this cookie reads as 404.
 """
 import json
-from datetime import date
 
 from fastapi import APIRouter, Body, Depends, HTTPException
+from sqlalchemy import select
 
 from app.api.deps import current_user, get_db, get_settings
 from app.db import models
 from app.feedback import render, tutor
 from app.items.grade import grade
+from app.items.verify import ChildDiedError
 from app.providers.guard import BudgetStopped, GuardedProvider
-from app.session import service
+from app.session import preview, service
 
 router = APIRouter(prefix="/sessions", tags=["sessions"])
 
@@ -32,13 +33,17 @@ def known_scope_ids(context, scope):
 
 
 def today_of(fields):
-   raw = fields.get("today")
-   is_given = isinstance(raw, str) and raw != ""
+   try:
+      return preview.assembly_day(fields.get("today"))
+   except preview.UnreadableDay as unreadable:
+      raise HTTPException(status_code=422, detail=str(unreadable)) from unreadable
 
-   if is_given:
-      return date.fromisoformat(raw)
 
-   return date.today()
+def assembly_inputs_of(settings, user, fields):
+   try:
+      return preview.user_assembly_inputs(settings.rng_seed, user.id, fields.get("today"))
+   except preview.UnreadableDay as unreadable:
+      raise HTTPException(status_code=422, detail=str(unreadable)) from unreadable
 
 
 def owned_session(db, session_id, user):
@@ -109,6 +114,7 @@ def open_session(
 ):
    fields = body_of(payload)
    context = settings.session_context
+   today, rng = assembly_inputs_of(settings, user, fields)
    row = service.open_session(
       db,
       user.id,
@@ -118,8 +124,8 @@ def open_session(
       context.archetypes,
       context.bank,
       context.snapshot_id,
-      today_of(fields),
-      settings.rng,
+      today,
+      rng,
       sub_mode=fields.get("sub_mode"),
    )
 
@@ -133,9 +139,24 @@ def read_session(session_id: str, db=Depends(get_db), user=Depends(current_user)
 
 @router.get("/{session_id}/next")
 def read_next_item(session_id: str, db=Depends(get_db), user=Depends(current_user)):
+   """The stage example prompt is the one the feedback screen repeats, from one function in
+   app/feedback/render.py, so the student is asked about the same visible step before and after.
+   """
    row = owned_session(db, session_id, user)
 
-   return {"item": service.next_item(db, row.id)}
+   try:
+      item = service.served_item(db, row.id)
+   except ValueError as refused:
+      raise HTTPException(status_code=409, detail=str(refused)) from refused
+
+   is_exhausted = item is None
+
+   if is_exhausted:
+      return {"item": None}
+
+   prompt = render.pre_submission_prompt(item["stage"], item["served_steps"])
+
+   return {"item": dict(item, self_explanation_prompt=prompt)}
 
 
 @router.post("/{session_id}/attempts")
@@ -178,6 +199,11 @@ def submit_attempt(
          confidence=fields.get("confidence"),
          grader=grade_against_the_stored_key,
       )
+   except ChildDiedError as failure:
+      raise HTTPException(
+         status_code=503,
+         detail="the answer could not be graded just now and was not recorded, so it can be sent again",
+      ) from failure
    except ValueError as refused:
       raise HTTPException(status_code=409, detail=str(refused)) from refused
 
@@ -216,15 +242,6 @@ def read_feedback(
    if is_unknown_archetype:
       raise HTTPException(status_code=404, detail="the item names no archetype in this snapshot")
 
-   is_ungraded = attempt.correct is None
-   awaits_grading = is_ungraded and attempt.submitted_at is not None
-
-   if awaits_grading:
-      raise HTTPException(
-         status_code=409,
-         detail="this attempt is ungraded, so no point was lost and no feedback is composed",
-      )
-
    answer = json.loads(attempt.response) if attempt.response else {}
    chosen = chosen_option(item, answer)
    error_path = (chosen or {}).get("error_path")
@@ -237,7 +254,6 @@ def read_feedback(
          {"worked_solution": item.worked_solution},
          submitted=attempt.submitted_at is not None,
          correct=None if attempt.correct is None else bool(attempt.correct),
-         step_outcomes=answer.get("step_outcomes"),
          chosen_option=chosen,
          error_record=error_record,
          confidence=attempt.confidence,
@@ -342,8 +358,42 @@ def submit_error_note(
       )
    except service.ErrorNoteNotOneLine:
       raise HTTPException(status_code=400, detail="the error note is one line")
+   except service.ErrorNoteTooLong:
+      raise HTTPException(
+         status_code=422,
+         detail=f"the error note is capped at {service.ERROR_NOTE_MAX_CHARACTERS} characters",
+      )
 
    return {"id": attempt.id, "error_note": attempt.error_note}
+
+
+@router.post("/{session_id}/attempts/{attempt_id}/self-explanation")
+def submit_self_explanation(
+   session_id: str,
+   attempt_id: str,
+   payload: dict = Body(default=None),
+   db=Depends(get_db),
+   user=Depends(current_user),
+):
+   """The answer to the one structured prompt of 11 P1 scope 10, written once per attempt."""
+   fields = body_of(payload)
+   row = owned_session(db, session_id, user)
+   owned_attempt(db, row, attempt_id)
+
+   try:
+      service.record_self_explanation(db, attempt_id, fields.get("answer"))
+   except service.SelfExplanationEmpty as refused:
+      raise HTTPException(status_code=422, detail=str(refused)) from refused
+   except service.SelfExplanationNotInvited as refused:
+      raise HTTPException(status_code=409, detail=str(refused)) from refused
+   except service.SelfExplanationAlreadyWritten as refused:
+      raise HTTPException(status_code=409, detail=str(refused)) from refused
+
+   stored = db.execute(
+      select(models.Attempt.self_explanation).where(models.Attempt.id == attempt_id)
+   ).scalar_one()
+
+   return {"attempt_id": attempt_id, "self_explanation": stored}
 
 
 @router.post("/{session_id}/judgments")

@@ -11,8 +11,11 @@ import json
 from sqlalchemy.orm import Session as OrmSession
 
 from app.db.models import Item
+from app.engine.state import FadingStage
 
 PUBLISHED_STATUS = "verified"
+
+COMPLETION_MINIMUM_STEPS = 2
 
 
 def _json_field(value):
@@ -60,6 +63,64 @@ def _as_item_dict(row):
       "skills": _json_field(row.skills),
       "status": row.status,
    }
+
+
+def _is_step_with_text(step):
+   is_mapping = isinstance(step, dict)
+
+   return is_mapping and "text" in step
+
+
+def worked_steps(worked_solution):
+   """The items row's worked_solution as its list of steps, refused when it is anything else."""
+   try:
+      steps = json.loads(worked_solution)
+   except (TypeError, ValueError) as unreadable:
+      raise ValueError("worked_solution is not a JSON list of steps") from unreadable
+
+   is_list = isinstance(steps, list)
+   is_empty = is_list and len(steps) == 0
+   every_step_has_text = is_list and all(_is_step_with_text(step) for step in steps)
+   is_step_list = is_list and not is_empty and every_step_has_text
+
+   if not is_step_list:
+      raise ValueError("worked_solution is not a non-empty list of steps with text")
+
+   return steps
+
+
+def supports_completion(worked_solution):
+   """Q16: a completion blank needs one step given and one blanked."""
+   return len(worked_steps(worked_solution)) >= COMPLETION_MINIMUM_STEPS
+
+
+def served_steps(worked_solution, stage):
+   """The steps the stage shows, numbered from 1, as text only.
+
+   Backward fading (11 P1 scope 8): stage example shows every step, stage completion blanks the
+   last one, stage unsupported shows none. A completion needs one step given and one blanked, the
+   2-step minimum of Q16. No step carries its mathjson, because the last step's mathjson is the
+   answer key (app/items/ingest.py checks the key against it).
+   """
+   served_stage = FadingStage(stage)
+   is_unsupported = served_stage == FadingStage.UNSUPPORTED
+
+   if is_unsupported:
+      return None
+
+   steps = worked_steps(worked_solution)
+   is_completion = served_stage == FadingStage.COMPLETION
+   is_below_minimum = is_completion and not supports_completion(worked_solution)
+
+   if is_below_minimum:
+      raise ValueError(f"a completion needs at least {COMPLETION_MINIMUM_STEPS} worked steps")
+
+   shown = steps[:-1] if is_completion else steps
+
+   return [
+      {"index": position, "text": step["text"]}
+      for position, step in enumerate(shown, start=1)
+   ]
 
 
 class ItemBank:

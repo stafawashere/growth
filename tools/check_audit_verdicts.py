@@ -2,8 +2,9 @@
 (eval_p1_key_error_rate) in docs/plan/11-phased-delivery.md, P1 exit criterion 4.
 
 Prints every malformed verdict, then exactly what gate 29 says CI checks over the audited
-sample: whether every sampled id has a verdict, which ids are missing, and the key error
-rate. No threshold is invented here; P1 sets none, so the rate is reported and never
+sample: whether every sampled id has exactly one verdict, which ids are missing, and the key
+error rate. A verdict for an item outside the sample refuses the rate, and the rate is taken over
+the sample, so it never exceeds 1. No threshold is invented here; P1 sets none, so the rate is reported and never
 compared against anything. Read-only: it never writes to data/, research/ or the database.
 
 Usage: python3 tools/check_audit_verdicts.py <verdicts.json> <sample.json>
@@ -39,6 +40,23 @@ def print_malformed(records):
    return malformed_count
 
 
+def rate_refusal_reason(completeness):
+   sample_is_complete = len(completeness["missing_ids"]) == 0
+   every_verdict_is_sampled = len(completeness["out_of_sample_ids"]) == 0
+   rate_was_computed = completeness["key_error_rate"] is not None
+
+   if not sample_is_complete:
+      return "the sample is incomplete"
+
+   if not every_verdict_is_sampled:
+      return "a verdict names an item outside the sample"
+
+   if not rate_was_computed:
+      return "a verdict in the sample is malformed"
+
+   return None
+
+
 def print_completeness(completeness, sample_size):
    print()
    print(f"sample size: {sample_size}")
@@ -54,10 +72,11 @@ def print_completeness(completeness, sample_size):
    for item_id in completeness["duplicate_ids"]:
       print(f"  duplicate verdict: {item_id}")
 
-   sample_is_complete = len(completeness["missing_ids"]) == 0
+   refusal_reason = rate_refusal_reason(completeness)
+   rate_is_refused = refusal_reason is not None
 
-   if not sample_is_complete:
-      print("key error rate: not published, the sample is incomplete")
+   if rate_is_refused:
+      print(f"key error rate: not published, {refusal_reason}")
 
       return
 
@@ -82,10 +101,11 @@ def main(argv):
 
    print_completeness(completeness, len(sample_ids))
 
-   sample_is_complete = len(completeness["missing_ids"]) == 0
+   rate_is_published = rate_refusal_reason(completeness) is None
    no_malformed_verdicts = malformed_count == 0
+   check_passes = rate_is_published and no_malformed_verdicts
 
-   return 0 if (sample_is_complete and no_malformed_verdicts) else 1
+   return 0 if check_passes else 1
 
 
 if __name__ == "__main__":

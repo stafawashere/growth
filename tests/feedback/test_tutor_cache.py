@@ -26,7 +26,7 @@ class CountingProvider:
 
       return ProviderResult(
          text=self.text,
-         stop_reason="end_turn",
+         finish_reason="end_turn",
          usage=Usage(
             input_tokens=10,
             output_tokens=10,

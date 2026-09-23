@@ -6,12 +6,20 @@ key is mathematically wrong or whose stem the operator judged ambiguous enough t
 correct answer, and the ambiguous verdict carries that second answer so the judgement stays
 auditable. No pass threshold is set in P1: what is checked is that every verdict exists over the
 audited sample and that the rate is published.
+
+Eval 29 defines the rate on "a 100-item sample drawn at random from published P1 items", so the
+denominator is the sample size, 100 unless a caller names another, and never the count of verdicts
+recorded so far. A short set of verdicts is therefore divided by the whole sample and flagged
+incomplete beside it. A verdict is per sampled item: one for an item outside the sample is refused,
+and the sample is complete only when every sampled item carries exactly one verdict.
 """
 import json
 import uuid
 
 from sqlalchemy import select
 
+from app.audit.detail import bind_audit_detail
+from app.audit.vocabulary import is_known_action
 from app.db import models
 
 KIND = "item_audit"
@@ -22,6 +30,47 @@ VERDICT_CLEAN = "clean"
 
 VERDICTS = (VERDICT_KEY_WRONG, VERDICT_AMBIGUOUS, VERDICT_CLEAN)
 KEY_ERROR_VERDICTS = (VERDICT_KEY_WRONG, VERDICT_AMBIGUOUS)
+
+EVAL_29_SAMPLE_SIZE = 100
+
+
+class VerdictOutsideSample(ValueError):
+   pass
+
+
+class VerdictAlreadyRecorded(ValueError):
+   pass
+
+
+def drawn_sample(sample_ids, sample_size):
+   is_a_single_string = isinstance(sample_ids, str)
+
+   if is_a_single_string:
+      raise ValueError("the sample is a collection of item ids, not one string")
+
+   listed_ids = list(sample_ids)
+   sample = set(listed_ids)
+   has_a_sample = sample_size > 0
+   holds_each_item_once = len(sample) == len(listed_ids)
+   holds_the_named_size = len(sample) == sample_size
+
+   if not has_a_sample:
+      raise ValueError(f"the key error rate needs a positive sample size, not {sample_size}")
+
+   if not holds_each_item_once:
+      raise ValueError("the sample names an item more than once")
+
+   if not holds_the_named_size:
+      raise ValueError(f"the sample holds {len(sample)} items, not the {sample_size} named")
+
+   return sample
+
+
+def refuse_outside_sample(item_id, sample_ids):
+   is_sampled = item_id in set(sample_ids)
+
+   if not is_sampled:
+      raise VerdictOutsideSample(f"{item_id} is not in the drawn audit sample")
 
 
 def new_id(prefix):
@@ -58,20 +107,25 @@ def open_row_for(db, item_id):
 
 
 def write_resolution_audit_entry(db, row, verdict, now, actor):
+   action = "review_queue_item_resolved"
+
+   if not is_known_action(action):
+      raise ValueError(f"{action!r} is not in the audit_log vocabulary")
+
    entry = models.AuditLog(
       id=new_id("AUD"),
       at=now,
       actor=actor,
-      action="review_queue_item_resolved",
+      action=action,
       subject=f"review_queue:{row.id}",
-      detail=json.dumps({"kind": KIND, "ref_id": row.ref_id, "verdict": verdict}),
+      detail=json.dumps(bind_audit_detail({"kind": row.kind, "ref_id": row.ref_id, "verdict": verdict})),
       created_at=now,
       updated_at=now,
    )
    db.add(entry)
 
 
-def record_item_audit_verdict(db, item_id, verdict, now, second_answer=None, actor="operator"):
+def refuse_unusable_verdict(item_id, verdict, second_answer):
    is_known_verdict = verdict in VERDICTS
 
    if not is_known_verdict:
@@ -84,11 +138,20 @@ def record_item_audit_verdict(db, item_id, verdict, now, second_answer=None, act
    if missing_second_answer:
       raise ValueError(f"ambiguous verdict on {item_id} needs the second answer the operator found")
 
-   row = open_row_for(db, item_id)
-   has_open_row = row is not None
 
-   if not has_open_row:
-      row = open_item_audit(db, item_id, now)
+def resolve_item_audit_row(db, row, verdict, now, second_answer=None, actor="operator"):
+   """Resolves exactly the row given, so two open audits of one item never stand in for each other."""
+   is_item_audit = row.kind == KIND
+
+   if not is_item_audit:
+      raise ValueError(f"review queue row {row.id} is a {row.kind} row, not an item audit")
+
+   is_already_resolved = row.resolved_at is not None
+
+   if is_already_resolved:
+      raise ValueError(f"review queue row {row.id} is already resolved")
+
+   refuse_unusable_verdict(row.ref_id, verdict, second_answer)
 
    row.resolution = json.dumps({"verdict": verdict, "second_answer": second_answer})
    row.resolved_at = now
@@ -98,6 +161,40 @@ def record_item_audit_verdict(db, item_id, verdict, now, second_answer=None, act
    db.flush()
 
    return row
+
+
+def resolved_row_for(db, item_id):
+   statement = (
+      select(models.ReviewQueue)
+      .where(models.ReviewQueue.kind == KIND)
+      .where(models.ReviewQueue.ref_id == item_id)
+      .where(models.ReviewQueue.resolved_at.is_not(None))
+   )
+
+   return db.scalars(statement).first()
+
+
+def refuse_second_verdict(db, item_id):
+   already_audited = resolved_row_for(db, item_id) is not None
+
+   if already_audited:
+      raise VerdictAlreadyRecorded(f"{item_id} already carries its audit verdict")
+
+
+def record_item_audit_verdict(db, item_id, verdict, now, *, sample_ids, second_answer=None, actor="operator"):
+   """Gate 29 asks for one verdict per sampled item, so a second one is refused rather than
+   written beside the first, where it would leave the sample incomplete for good."""
+   refuse_outside_sample(item_id, sample_ids)
+   refuse_unusable_verdict(item_id, verdict, second_answer)
+   refuse_second_verdict(db, item_id)
+
+   row = open_row_for(db, item_id)
+   has_open_row = row is not None
+
+   if not has_open_row:
+      row = open_item_audit(db, item_id, now)
+
+   return resolve_item_audit_row(db, row, verdict, now, second_answer=second_answer, actor=actor)
 
 
 def recorded_verdicts(db):
@@ -114,26 +211,51 @@ def recorded_verdicts(db):
    ]
 
 
-def key_error_rate(db, sample_size):
-   verdicts = recorded_verdicts(db)
-   recorded = len(verdicts)
+def key_error_rate(db, sample_ids, sample_size=EVAL_29_SAMPLE_SIZE):
+   sample = drawn_sample(sample_ids, sample_size)
+   verdicts_by_item_id = {}
+   verdicts_outside_sample = 0
+
+   for verdict in recorded_verdicts(db):
+      is_sampled = verdict["item_id"] in sample
+
+      if not is_sampled:
+         verdicts_outside_sample += 1
+         continue
+
+      verdicts_by_item_id.setdefault(verdict["item_id"], []).append(verdict)
+
+   single_verdict_by_item_id = {
+      item_id: verdicts[0]
+      for item_id, verdicts in verdicts_by_item_id.items()
+      if len(verdicts) == 1
+   }
+   duplicate_item_ids = sorted(
+      item_id for item_id, verdicts in verdicts_by_item_id.items() if len(verdicts) > 1
+   )
+
    key_errors = len([
-      verdict for verdict in verdicts if verdict["verdict"] in KEY_ERROR_VERDICTS
+      verdict
+      for verdict in single_verdict_by_item_id.values()
+      if verdict["verdict"] in KEY_ERROR_VERDICTS
    ])
-   is_complete = recorded >= sample_size
-   rate = key_errors / recorded if recorded > 0 else None
+   verdicts_recorded = sum(len(verdicts) for verdicts in verdicts_by_item_id.values())
+   is_complete = len(single_verdict_by_item_id) == len(sample)
+   measured_rate = key_errors / len(sample) if is_complete else None
 
    return {
-      "sample_size": sample_size,
-      "verdicts_recorded": recorded,
+      "sample_size": len(sample),
+      "verdicts_recorded": verdicts_recorded,
       "verdicts_complete": is_complete,
+      "duplicate_item_ids": duplicate_item_ids,
+      "verdicts_outside_sample": verdicts_outside_sample,
       "key_errors": key_errors,
-      "key_error_rate": rate,
+      "key_error_rate": measured_rate,
    }
 
 
-def publish_key_error_rate(db, sample_size, now, report_path=None):
-   measurement = key_error_rate(db, sample_size)
+def publish_key_error_rate(db, sample_ids, now, report_path=None, sample_size=EVAL_29_SAMPLE_SIZE):
+   measurement = key_error_rate(db, sample_ids, sample_size=sample_size)
    measurement["measured_at"] = now
 
    has_report_path = report_path is not None

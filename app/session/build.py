@@ -12,8 +12,10 @@ job worker) are recorded twice: in the session's queue payload, which sessions.s
 writes, and in audit_log, naming the skill left unserved and the reason, which the queue payload
 alone does not give an operator a durable, queryable record of. The write reuses app.auth.service's
 write_audit rather than a second audit writer, and is a no-op when no db is supplied, so a caller
-that only wants the in-memory Session, such as the engine unit tests, is unaffected.
+that only wants the in-memory Session, such as the engine unit tests and home's queue preview in
+app/session/preview.py, writes nothing.
 """
+import json
 import statistics
 from dataclasses import dataclass, field
 from datetime import timedelta
@@ -45,6 +47,7 @@ class Session:
    block3: list = field(default_factory=list)
    block4: list = field(default_factory=list)
    served: list = field(default_factory=list)
+   requeued: list = field(default_factory=list)
    coverage_gaps: tuple = ()
    forecasts: dict = field(default_factory=dict)
 
@@ -58,6 +61,11 @@ class Session:
 
    def forecast(self, item):
       return self.forecasts.get(item["archetype_id"], constants.FORECAST_DEFAULT_MINUTES)
+
+   @property
+   def forecast_total(self):
+      """11-phased-delivery.md Q9: the sum of the per-archetype forecast over every served item."""
+      return sum(self.forecast(item) for item in self.served)
 
 
 def forecast_minutes(archetype_id, attempts_history):
@@ -146,30 +154,37 @@ def requeue_ready(attempts_history, today):
    return [(item_id, archetype_id) for _, item_id, archetype_id in sorted(ready)]
 
 
-def gap_already_recorded(db, user_id, archetype_id):
+def gap_already_recorded(db, user_id, archetype_id, today):
    statement = (
-      select(models.AuditLog.id)
+      select(models.AuditLog.detail)
       .where(models.AuditLog.action == COVERAGE_GAP_ACTION)
       .where(models.AuditLog.actor == user_id)
       .where(models.AuditLog.subject == f"archetypes:{archetype_id}")
-      .limit(1)
    )
+   day = today.isoformat()
 
-   return db.scalars(statement).first() is not None
+   for detail in db.scalars(statement):
+      recorded = json.loads(detail) if detail else {}
+
+      if recorded.get("day") == day:
+         return True
+
+   return False
 
 
-def write_coverage_gap_audit(db, user_id, archetype_ids, graph):
+def write_coverage_gap_audit(db, user_id, archetype_ids, graph, today):
    """R18: an archetype excluded from block 2 for want of a published item is named by its
    skill, not just its archetype id, because the skill is what an operator needs to go fill.
 
-   One row per user per archetype. The gap persists until the operator authors the item, so a
-   row per session opened would grow without bound and would say nothing the first row did not.
+   One row per user per archetype per session day, the day being the `today` assembly ran for.
+   A row per session opened would grow with every visit and say nothing the day's first row did
+   not, while a row per day still shows the operator for how long the gap has stood.
 
    The row is stamped by write_audit with the wall clock rather than with the engine's session
    clock, which is local midnight of `today` whenever the caller supplies no time.
    """
    for archetype_id in archetype_ids:
-      if gap_already_recorded(db, user_id, archetype_id):
+      if gap_already_recorded(db, user_id, archetype_id, today):
          continue
 
       record = graph.archetypes.get(archetype_id)
@@ -177,6 +192,7 @@ def write_coverage_gap_audit(db, user_id, archetype_ids, graph):
       detail = {
          "archetype_id": archetype_id,
          "skill": skill_id,
+         "day": today.isoformat(),
          "reason": "no published item for this fringe archetype",
       }
       write_audit(db, user_id, COVERAGE_GAP_ACTION, f"archetypes:{archetype_id}", detail)
@@ -309,6 +325,9 @@ def assemble_session(
 
       assembled += serve(session.block1, served)
 
+      if is_requeue_turn:
+         session.requeued.append(served)
+
    assembled = 0.0
    gaps = ()
 
@@ -336,7 +355,7 @@ def assemble_session(
    has_audit_target = db is not None and user_id is not None
 
    if has_gaps and has_audit_target:
-      write_coverage_gap_audit(db, user_id, gaps, graph)
+      write_coverage_gap_audit(db, user_id, gaps, graph, today)
 
    pool = eligible_records(states, graph, bank, unsupported_successes)
    assembled = 0.0

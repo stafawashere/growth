@@ -17,16 +17,21 @@ import json
 import uuid
 from datetime import datetime, timezone
 
+from sqlalchemy import update
+
 from app.db import models
 from app.engine import constants
 from app.engine.prior import p_compensatory, p_knowledge
 from app.engine.select import format_for_attempt, retrievability_map
 from app.engine.state import Confidence, FadingStage, MasteryState, ResponseFormat
 from app.engine.update import Observation, apply_observation, rule_based_mastery_states
+from app.runtime.bank import served_steps, supports_completion
 from app.session import repository
 from app.session.build import assemble_session
 
 SERVING_BLOCKS = ("block1", "block2", "block3")
+
+RESPONSE_FIELDS = ("mathjson", "units", "option_id")
 
 
 def new_id(prefix):
@@ -187,6 +192,48 @@ def resolve_served_format(db, session_row, block, position, item):
    return queue[block][position]
 
 
+def resolve_served_stage(db, session_row, block, position, item):
+   """Q16 serves an item with fewer than 2 worked steps at stages example and unsupported only.
+
+   A completion slot over such an item falls back to example, keeping the support the engine
+   judged the student still needs, and the fallback is written onto the slot so the attempt row
+   records the stage that was served. A slot whose item has no items row, or no readable step
+   list, is left as it is, and served_item refuses it.
+   """
+   is_completion = FadingStage(item["stage"]) == FadingStage.COMPLETION
+
+   if not is_completion:
+      return item
+
+   stored = db.get(models.Item, item["id"])
+   has_no_row = stored is None
+
+   if has_no_row:
+      return item
+
+   try:
+      keeps_completion = supports_completion(stored.worked_solution)
+   except ValueError:
+      return item
+
+   if keeps_completion:
+      return item
+
+   queue = json.loads(session_row.queue)
+   queue[block][position]["stage"] = FadingStage.EXAMPLE.value
+   session_row.queue = json.dumps(queue)
+   db.flush()
+
+   return queue[block][position]
+
+
+def resolve_slot(db, session_row, block, position, item):
+   """The stage first, because R29's format is resolved per stage."""
+   staged = resolve_served_stage(db, session_row, block, position, item)
+
+   return resolve_served_format(db, session_row, block, position, staged)
+
+
 def next_item(db, session_id):
    """The next unconsumed queue slot, in block order, with its format resolved at serve time.
 
@@ -202,9 +249,43 @@ def next_item(db, session_id):
       is_attempted = item["id"] in attempted
 
       if not is_consumed and not is_attempted:
-         return resolve_served_format(db, session_row, block, position, item)
+         return resolve_slot(db, session_row, block, position, item)
 
    return None
+
+
+def served_item(db, session_id):
+   """next_item with the worked steps its stage shows, read from the items row at serve time.
+
+   The steps are not written into sessions.queue, so GET /sessions/{id} never carries them.
+   """
+   item = next_item(db, session_id)
+   is_exhausted = item is None
+
+   if is_exhausted:
+      return None
+
+   stage = FadingStage(item["stage"])
+   is_unsupported = stage == FadingStage.UNSUPPORTED
+   steps = None
+
+   if not is_unsupported:
+      stored = db.get(models.Item, item["id"])
+      has_no_row = stored is None
+
+      if has_no_row:
+         raise ValueError(f"item {item['id']} has no items row, so its worked steps cannot be shown")
+
+      steps = served_steps(stored.worked_solution, stage)
+
+   return dict(item, served_steps=steps)
+
+
+def stored_response(answer):
+   """06 attempts.response: MathJSON for typed input, with the units typed beside it, which
+   app/items/grade.py reads, or the option id for MCQ. Anything else the body claims is dropped.
+   """
+   return {name: answer[name] for name in RESPONSE_FIELDS if name in answer}
 
 
 def queue_slot(session_row, item_id):
@@ -271,7 +352,7 @@ def record_attempt(
    """
    session_row = db.get(models.Session, session_id)
    block, position, slot = queue_slot(session_row, item_id)
-   item = resolve_served_format(db, session_row, block, position, slot)
+   item = resolve_slot(db, session_row, block, position, slot)
    already_attempted = any(row.item_id == item_id for row in attempt_rows(db, session_id))
 
    if already_attempted:
@@ -303,7 +384,7 @@ def record_attempt(
       item_id=item_id,
       started_at=(started_at or submitted_at).isoformat(),
       submitted_at=submitted_at.isoformat(),
-      response=json.dumps(answer),
+      response=json.dumps(stored_response(answer)),
       confidence=stored_confidence,
       elapsed_ms=elapsed_ms,
       correct=int(is_correct) if is_graded else None,
@@ -345,7 +426,11 @@ def record_confidence(
    today=None,
    now=None,
 ):
-   """The P1 path that supplies the rating to the update, before feedback is shown."""
+   """The P1 path that supplies the rating to the update, before feedback is shown.
+
+   An ungraded attempt still takes the rating, because 11 collects one before feedback on every
+   item, but it has no observation to apply, so the rating is stored and mastery is left alone.
+   """
    attempt = db.get(models.Attempt, attempt_id)
    at_example = not collects_confidence(attempt.served_stage)
 
@@ -357,18 +442,22 @@ def record_confidence(
    if already_rated:
       raise ValueError(f"attempt {attempt_id} already carries a confidence rating")
 
-   is_graded = attempt.correct is not None
-
-   if not is_graded:
-      raise ValueError(f"attempt {attempt_id} was never graded, so there is nothing to apply")
-
-   session_row = db.get(models.Session, attempt.session_id)
-   item = queue_item(session_row, attempt.item_id)
    has_context = archetypes is not None and engine_graph is not None and today is not None
 
    if not has_context:
       raise ValueError("record_confidence applies the observation and needs the engine context")
 
+   is_graded = attempt.correct is not None
+
+   if not is_graded:
+      attempt.confidence = Confidence(confidence).value
+      attempt.updated_at = as_datetime(now or today).isoformat()
+      db.flush()
+
+      return attempt
+
+   session_row = db.get(models.Session, attempt.session_id)
+   item = queue_item(session_row, attempt.item_id)
    attempt.confidence = Confidence(confidence).value
    applied_at = as_datetime(now or today)
    attempt.updated_at = applied_at.isoformat()
@@ -395,10 +484,19 @@ class ErrorNoteNotOneLine(ValueError):
    pass
 
 
+class ErrorNoteTooLong(ValueError):
+   pass
+
+
+ERROR_NOTE_MAX_CHARACTERS = 500
+
+
 def record_error_note(db, attempt_id, note):
    """One line, once, per 03's "The student's one-line error note". The guard lives here rather
    than in the route so that every caller gets it, because a second note overwrites the record of
-   what the student first thought. 03 and 06 set no length, so none is enforced.
+   what the student first thought. 03 and 06 set no length, so the cap is the operator's own
+   decision (BUILD-LEDGER.md, "Decisions taken on the operator's instruction, 2026-09-20": the
+   error note is capped at 500 characters), checked before anything is written.
    """
    attempt = db.get(models.Attempt, attempt_id)
 
@@ -415,7 +513,66 @@ def record_error_note(db, attempt_id, note):
    if spans_more_than_one_line:
       raise ErrorNoteNotOneLine(f"the error note for attempt {attempt_id} is not one line")
 
+   is_too_long = len(note) > ERROR_NOTE_MAX_CHARACTERS
+
+   if is_too_long:
+      raise ErrorNoteTooLong(
+         f"the error note for attempt {attempt_id} is over {ERROR_NOTE_MAX_CHARACTERS} characters"
+      )
+
    attempt.error_note = note
+   db.flush()
+
+   return attempt
+
+
+class SelfExplanationNotInvited(ValueError):
+   pass
+
+
+class SelfExplanationAlreadyWritten(ValueError):
+   pass
+
+
+class SelfExplanationEmpty(ValueError):
+   pass
+
+
+def invites_self_explanation(attempt):
+   """11 P1 scope 10: the prompt is attached to worked examples and corrected errors only."""
+   is_worked_example = attempt.served_stage == FadingStage.EXAMPLE.value
+   was_corrected = attempt.correct == 0
+
+   return is_worked_example or was_corrected
+
+
+def record_self_explanation(db, attempt_id, answer):
+   """One answer per attempt. The write is conditional on the column still being empty, so two
+   racing requests cannot both land.
+   """
+   is_text = isinstance(answer, str)
+   is_empty = not is_text or answer.strip() == ""
+
+   if is_empty:
+      raise SelfExplanationEmpty(f"the self-explanation for attempt {attempt_id} is empty")
+
+   attempt = db.get(models.Attempt, attempt_id)
+
+   if not invites_self_explanation(attempt):
+      raise SelfExplanationNotInvited(
+         f"attempt {attempt_id} is neither a worked example nor a corrected error"
+      )
+
+   written = db.execute(
+      update(models.Attempt)
+      .where(models.Attempt.id == attempt_id, models.Attempt.self_explanation.is_(None))
+      .values(self_explanation=answer.strip())
+   )
+   was_written = written.rowcount == 1
+
+   if not was_written:
+      raise SelfExplanationAlreadyWritten(f"attempt {attempt_id} already carries its self-explanation")
+
    db.flush()
 
    return attempt

@@ -67,8 +67,8 @@ def list_open_rows(db=Depends(get_db), user=Depends(current_user)):
 def resolve_item_audit(db, row, fields, now):
    verdict = fields.get("verdict")
 
-   return audit.record_item_audit_verdict(
-      db, row.ref_id, verdict, now, second_answer=fields.get("second_answer")
+   return audit.resolve_item_audit_row(
+      db, row, verdict, now, second_answer=fields.get("second_answer")
    )
 
 

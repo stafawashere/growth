@@ -20,15 +20,23 @@ state-incorrect. 08 names a tint ramp for each semantic colour without enumerati
 ("state-correct and its tint ramp"), so no semantic ramp step name is invented here; only the two
 base semantic tokens are in the vocabulary.
 
-The pairs token_violations checks are the ones 08 and 11 name: every general text role
-(text-primary, text-secondary, text-muted) against every surface, text-on-accent against
-accent-base, and focus-ring against every surface. 08 fixes token roles, not which role sits on
+The pairs token_violations checks are CONTRAST_PAIRS, the ones 08 and 11 name: every general
+text role (text-primary, text-secondary, text-muted) against every surface, text-on-accent against
+accent-base, accent-contrast-text against each of the four accent tints, each semantic colour
+against every surface, and focus-ring against every surface. accent-contrast-text is not checked
+against accent-base: 08 gives the text on an accent-base fill its own token, text-on-accent, and
+the operator approved dropping that pair on 2026-09-23 when choosing the palette in
+app/design/growth-tokens.json. 08 fixes token roles, not which role sits on
 which screen at which size, so the wider reading is taken: every text role against every surface,
 rather than a guessed subset. For the same reason, every pair here is checked against the same
 floor, TEXT_CONTRAST_FLOOR: 08 never states that any specific colour pair renders only at
 type-title or type-display size, so applying the lower large-text floor to a colour pair would be
 an invented allowance rather than something 08 says. The large/normal marking on TYPE_TOKENS is
 the record of which type-scale steps a future screen-level gate may bind to that lower floor.
+
+SPACING_TOKENS is the nine-value spacing scale 08's Spacing and layout section fixes itself, 4
+through 96 px, named space-<px> because 08 gives the values but no names and naming by value is
+the mechanical choice that adds no number of its own.
 """
 
 import json
@@ -77,16 +85,29 @@ COLOUR_TOKENS = (
    "state-incorrect",
 )
 
+SPACING_TOKENS = {
+   "space-{0}".format(value): value
+   for value in (4, 8, 12, 16, 24, 32, 48, 64, 96)
+}
+
 THEMES = ("light", "dark")
 
 TEXT_ROLES = ("text-primary", "text-secondary", "text-muted")
 
 SURFACES = ("surface-page", "surface-raised", "surface-sunken")
 
-ACCENT_BACKGROUNDS = ("accent-base", "accent-tint-1", "accent-tint-2", "accent-tint-3",
-                      "accent-tint-4")
+ACCENT_CONTRAST_TEXT_BACKGROUNDS = ("accent-tint-1", "accent-tint-2", "accent-tint-3",
+                                    "accent-tint-4")
 
 SEMANTIC_COLOURS = ("state-correct", "state-incorrect")
+
+CONTRAST_PAIRS = (
+   [(role, surface) for role in TEXT_ROLES for surface in SURFACES]
+   + [("text-on-accent", "accent-base")]
+   + [("accent-contrast-text", background) for background in ACCENT_CONTRAST_TEXT_BACKGROUNDS]
+   + [(name, surface) for name in SEMANTIC_COLOURS for surface in SURFACES]
+   + [("focus-ring", surface) for surface in SURFACES]
+)
 
 
 def load_tokens(path):
@@ -149,23 +170,10 @@ def token_violations(tokens):
          if not is_known:
             violations.append("{0}: unknown token {1}".format(theme, name))
 
-      for role in TEXT_ROLES:
-         for surface in SURFACES:
-            violations.extend(_pair_violations(theme, role, surface, valid_hex))
-
-      violations.extend(_pair_violations(theme, "text-on-accent", "accent-base", valid_hex))
-
-      for background in ACCENT_BACKGROUNDS:
+      for foreground_name, background_name in CONTRAST_PAIRS:
          violations.extend(
-            _pair_violations(theme, "accent-contrast-text", background, valid_hex)
+            _pair_violations(theme, foreground_name, background_name, valid_hex)
          )
-
-      for name in SEMANTIC_COLOURS:
-         for surface in SURFACES:
-            violations.extend(_pair_violations(theme, name, surface, valid_hex))
-
-      for surface in SURFACES:
-         violations.extend(_pair_violations(theme, "focus-ring", surface, valid_hex))
 
    return violations
 

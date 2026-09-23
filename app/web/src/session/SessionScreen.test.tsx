@@ -3,15 +3,45 @@ import { join } from "node:path";
 import { describe, expect, it, beforeEach, vi } from "vitest";
 import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { AFFORDANCE_ATTRIBUTE, P1_FEEDBACK_AFFORDANCES } from "../affordances";
-import type { AttemptResult, FadingStage, FeedbackPayload, ServedItem, SessionPayload } from "../api/types";
+import type {
+   AttemptResult,
+   FadingStage,
+   FeedbackPayload,
+   ServedItem,
+   ServedStep,
+   SessionPayload,
+   StepMark
+} from "../api/types";
 import * as client from "../api/client";
 import { MATHLIVE_LOAD_FAILURE_MESSAGE } from "../input/MathField";
 import { SessionScreen } from "./SessionScreen";
-import { ANSWER_UNAVAILABLE, COMMIT_LABEL, type WorkedStep } from "./Item";
+import { ANSWER_UNAVAILABLE, COMMIT_LABEL } from "./Item";
+import { CORRECT_WORD, INCORRECT_WORD } from "./StepMarks";
 
 vi.mock("../api/client");
 
 const mocked = vi.mocked(client);
+
+const SELF_EXPLANATION_PROMPT = "Which rule justifies step 3, and why does it apply here?";
+
+const workedSteps: ServedStep[] = [
+   { index: 1, text: "Name the factors: u = x^2, v = sin(x)" },
+   { index: 2, text: "u' = 2x, v' = cos(x)" },
+   { index: 3, text: "f'(x) = 2x sin(x) + x^2 cos(x)" }
+];
+
+/* app/runtime/bank.py served_steps: every step at example, all but the last at completion. */
+function servedStepsAt(stage: FadingStage): ServedStep[] | null {
+   if (stage === "example") {
+      return workedSteps;
+   }
+
+   if (stage === "completion") {
+      return workedSteps.slice(0, -1);
+   }
+
+   return null;
+}
 
 function servedItem(stage: FadingStage): ServedItem {
    return {
@@ -29,7 +59,10 @@ function servedItem(stage: FadingStage): ServedItem {
       skills: ["BC-SKL-0301"],
       status: "published",
       stage,
-      format: "short_answer"
+      format: "short_answer",
+      is_probe: false,
+      served_steps: servedStepsAt(stage),
+      self_explanation_prompt: stage === "example" ? SELF_EXPLANATION_PROMPT : null
    };
 }
 
@@ -41,21 +74,44 @@ const session: SessionPayload = {
    ended_at: null,
    updates_mastery: true,
    snapshot_id: null,
-   queue: {},
+   queue: {
+      block1: [],
+      block2: [],
+      block3: [],
+      block4: [],
+      forecasts: {},
+      coverage_gaps: [],
+      interleaving_satisfied: true
+   },
    remaining: []
 };
 
+/* The server grades nothing and records no rating at example (11 implementer decision 3). */
 function attempt(stage: FadingStage): AttemptResult {
+   const isExample = stage === "example";
+
    return {
       id: `attempt-${stage}`,
       item_id: `item-${stage}`,
-      correct: false,
-      confidence: "unsure",
+      correct: isExample ? null : false,
+      confidence: isExample ? null : "unsure",
       served_stage: stage,
       format: "short_answer",
       p_split: null,
       p_compensatory: null
    };
+}
+
+/* app/feedback/render.py as_dict step_marks: every step given at example, the steps shown given and
+   the blank carrying the verdict at completion, none at unsupported. */
+function stepMarksAt(stage: FadingStage, correct: boolean | null): StepMark[] {
+   const shown = (servedStepsAt(stage) ?? []).map((step) => ({ ...step, given: true, correct: null }));
+
+   if (stage === "completion") {
+      return [...shown, { index: shown.length + 1, text: "f'(x) = 2x sin(x) + x^2 cos(x)", given: false, correct }];
+   }
+
+   return shown;
 }
 
 function feedback(stage: FadingStage): FeedbackPayload {
@@ -64,7 +120,7 @@ function feedback(stage: FadingStage): FeedbackPayload {
    return {
       kind: isUnsupported ? "elaborated" : "step_verification",
       stage,
-      step_marks: isUnsupported ? [] : [{ index: 1, description: "Factors named", correct: true }],
+      step_marks: stepMarksAt(stage, false),
       elaborated: isUnsupported
          ? {
               violated_step: "Product rule applied to both factors at once",
@@ -74,26 +130,63 @@ function feedback(stage: FadingStage): FeedbackPayload {
               error_id: "BC-ERR-0304"
            }
          : null,
-      self_explanation_prompt: "Which rule justifies step 3, and why does it apply here?",
+      self_explanation_prompt: SELF_EXPLANATION_PROMPT,
       confidence: "unsure",
       sentence: null,
       tutor_unavailable: false
    };
 }
 
-const workedSteps: WorkedStep[] = [
-   { index: 1, text: "Name the factors: u = x^2, v = sin(x)" },
-   { index: 2, text: "u' = 2x, v' = cos(x)" },
-   { index: 3, text: "f'(x) = 2x sin(x) + x^2 cos(x)" }
-];
+/* The feedback kinds come from app/feedback/render.py FeedbackKind, scanned rather than copied, so
+   a payload below cannot name a kind the server never sends. */
+function serverFeedbackKinds(): string[] {
+   const source = readFileSync(join(process.cwd(), "..", "feedback", "render.py"), "utf8");
+   const body = source.split("class FeedbackKind(str, Enum):")[1].split("\n\n\n")[0];
 
-function renderScreen() {
-   return render(
-      <SessionScreen
-         workedStepsFor={() => workedSteps}
-         selfExplanationPromptFor={() => "Which rule justifies step 3, and why does it apply here?"}
-      />
-   );
+   return Array.from(body.matchAll(/^\s+[A-Z_]+ = "([a-z_]+)"$/gm), (match) => match[1]);
+}
+
+function serverKind(kind: string): string {
+   const known = serverFeedbackKinds();
+
+   if (!known.includes(kind)) {
+      throw new Error(`app/feedback/render.py sends no feedback kind named ${kind}`);
+   }
+
+   return kind;
+}
+
+/* What GET feedback answers for a worked example: no answer was collected, so the attempt is
+   ungraded, every step is given with no verdict, and no rating was asked for. */
+function exampleFeedback(): FeedbackPayload {
+   return {
+      kind: serverKind("step_verification"),
+      stage: "example",
+      step_marks: stepMarksAt("example", null),
+      elaborated: null,
+      self_explanation_prompt: SELF_EXPLANATION_PROMPT,
+      confidence: null,
+      sentence: null,
+      tutor_unavailable: false
+   };
+}
+
+/* What GET feedback answers for an unsupported answer the grader could not settle. */
+function ungradedFeedback(): FeedbackPayload {
+   return {
+      kind: serverKind("ungraded"),
+      stage: "unsupported",
+      step_marks: [],
+      elaborated: null,
+      self_explanation_prompt: null,
+      confidence: "unsure",
+      sentence: null,
+      tutor_unavailable: false
+   };
+}
+
+function renderScreen(resumeSessionId: string | null = null) {
+   return render(<SessionScreen resumeSessionId={resumeSessionId} />);
 }
 
 function affordanceValues() {
@@ -108,6 +201,7 @@ function stageFlow(stage: FadingStage) {
    mocked.submitAttempt.mockResolvedValue(attempt(stage));
    mocked.readFeedback.mockResolvedValue(feedback(stage));
    mocked.submitErrorNote.mockResolvedValue({ id: `attempt-${stage}`, error_note: null });
+   mocked.submitSelfExplanation.mockResolvedValue({ attempt_id: `attempt-${stage}`, self_explanation: "" });
    mocked.closeSession.mockResolvedValue({ id: session.id, ended_at: "2027-01-05T09:30:00Z" });
 }
 
@@ -388,7 +482,8 @@ describe("SessionScreen confidence gate, 11 implementer decision 3", () => {
 
    it("collects no rating at stage example and serves that feedback straight away", async () => {
       stageFlow("example");
-      mocked.submitAttempt.mockResolvedValue({ ...attempt("example"), confidence: null });
+      mocked.submitAttempt.mockResolvedValue({ ...attempt("example"), correct: null, confidence: null });
+      mocked.readFeedback.mockResolvedValue(exampleFeedback());
 
       await commitOn(COMMIT_BUTTONS);
       await screen.findByTestId("feedback");
@@ -505,6 +600,294 @@ describe("SessionScreen in-flight guard", () => {
       await screen.findByTestId("feedback");
 
       expect(mocked.submitAttempt).toHaveBeenCalledTimes(1);
+
+      cleanup();
+   });
+});
+
+describe("SessionScreen served steps and self explanation, 11 P1 scope items 8 and 10", () => {
+   it("draws the worked steps and the prompt the served item carries, with nothing supplied by the caller", async () => {
+      stageFlow("example");
+      renderScreen();
+
+      await screen.findByText("Differentiate f(x) = x^2 sin(x)");
+
+      for (const step of workedSteps) {
+         expect(screen.getByText(step.text)).toBeTruthy();
+      }
+
+      expect(screen.getByLabelText(SELF_EXPLANATION_PROMPT)).toBeTruthy();
+
+      cleanup();
+   });
+
+   it("persists the worked example's self explanation through its route before asking for the next item", async () => {
+      stageFlow("example");
+      mocked.submitAttempt.mockResolvedValue({ ...attempt("example"), correct: null, confidence: null });
+      mocked.readFeedback.mockResolvedValue(exampleFeedback());
+      renderScreen();
+
+      await screen.findByText("Differentiate f(x) = x^2 sin(x)");
+
+      fireEvent.change(screen.getByLabelText(SELF_EXPLANATION_PROMPT), {
+         target: { value: "  The product rule, because f is a product of two factors.  " }
+      });
+      fireEvent.click(screen.getByRole("button", { name: "I have explained this" }));
+      await screen.findByTestId("feedback");
+      fireEvent.click(screen.getByRole("button", { name: "Next item" }));
+
+      await waitFor(() => expect(mocked.readNextItem).toHaveBeenCalledTimes(2));
+
+      expect(mocked.submitSelfExplanation).toHaveBeenCalledTimes(1);
+      expect(mocked.submitSelfExplanation).toHaveBeenCalledWith(session.id, "attempt-example", {
+         answer: "The product rule, because f is a product of two factors."
+      });
+      expect(mocked.submitSelfExplanation.mock.invocationCallOrder[0]).toBeLessThan(
+         mocked.readNextItem.mock.invocationCallOrder[1]
+      );
+
+      cleanup();
+   });
+
+   it("persists a corrected item's self explanation alongside its error note", async () => {
+      stageFlow("unsupported");
+
+      await commitOn(COMMIT_BUTTONS);
+      await screen.findByTestId("feedback");
+
+      fireEvent.change(screen.getByLabelText(SELF_EXPLANATION_PROMPT), {
+         target: { value: "The product rule keeps one factor whole." }
+      });
+      fireEvent.change(screen.getByLabelText("In one line, what went wrong?"), {
+         target: { value: "I multiplied the derivatives." }
+      });
+      fireEvent.click(screen.getByRole("button", { name: "Next item" }));
+
+      await waitFor(() => expect(mocked.readNextItem).toHaveBeenCalledTimes(2));
+
+      expect(mocked.submitSelfExplanation).toHaveBeenCalledWith(session.id, "attempt-unsupported", {
+         answer: "The product rule keeps one factor whole."
+      });
+
+      cleanup();
+   });
+
+   it("writes no self explanation when the feedback invited none", async () => {
+      stageFlow("unsupported");
+      mocked.submitAttempt.mockResolvedValue({ ...attempt("unsupported"), correct: true });
+      mocked.readFeedback.mockResolvedValue({ ...feedback("unsupported"), self_explanation_prompt: null });
+
+      await commitOn(COMMIT_BUTTONS);
+      await screen.findByTestId("feedback");
+      fireEvent.click(screen.getByRole("button", { name: "Next item" }));
+
+      await waitFor(() => expect(mocked.readNextItem).toHaveBeenCalledTimes(2));
+
+      expect(mocked.submitSelfExplanation).not.toHaveBeenCalled();
+
+      cleanup();
+   });
+
+   it("does not write the error note a second time when the self explanation write is refused and Next item is retried", async () => {
+      stageFlow("unsupported");
+      mocked.submitSelfExplanation.mockRejectedValueOnce(new Error("the connection dropped"));
+
+      await commitOn(COMMIT_BUTTONS);
+      await screen.findByTestId("feedback");
+
+      fireEvent.change(screen.getByLabelText(SELF_EXPLANATION_PROMPT), {
+         target: { value: "The product rule keeps one factor whole." }
+      });
+      fireEvent.change(screen.getByLabelText("In one line, what went wrong?"), {
+         target: { value: "I multiplied the derivatives." }
+      });
+      fireEvent.click(screen.getByRole("button", { name: "Next item" }));
+
+      await waitFor(() => expect(mocked.submitSelfExplanation).toHaveBeenCalledTimes(1));
+
+      fireEvent.click(screen.getByRole("button", { name: "Next item" }));
+
+      await waitFor(() => expect(mocked.readNextItem).toHaveBeenCalledTimes(2));
+
+      expect(mocked.submitErrorNote).toHaveBeenCalledTimes(1);
+      expect(mocked.submitSelfExplanation).toHaveBeenCalledTimes(2);
+
+      cleanup();
+   });
+});
+
+describe("SessionScreen self explanation, written once", () => {
+   it("does not resend a stored self explanation when the next item fails to load and Next item is retried", async () => {
+      stageFlow("example");
+      mocked.submitAttempt.mockResolvedValue({ ...attempt("example"), correct: null, confidence: null });
+      mocked.readFeedback.mockResolvedValue(exampleFeedback());
+      renderScreen();
+
+      await screen.findByText("Differentiate f(x) = x^2 sin(x)");
+      fireEvent.change(screen.getByLabelText(SELF_EXPLANATION_PROMPT), {
+         target: { value: "The product rule, because f is a product of two factors." }
+      });
+      fireEvent.click(screen.getByRole("button", { name: "I have explained this" }));
+      await screen.findByTestId("feedback");
+
+      mocked.readNextItem.mockRejectedValueOnce(new Error("the connection dropped"));
+      fireEvent.click(screen.getByRole("button", { name: "Next item" }));
+
+      await waitFor(() => expect(mocked.readNextItem).toHaveBeenCalledTimes(2));
+
+      fireEvent.click(screen.getByRole("button", { name: "Next item" }));
+
+      await waitFor(() => expect(mocked.readNextItem).toHaveBeenCalledTimes(3));
+
+      expect(mocked.submitSelfExplanation).toHaveBeenCalledTimes(1);
+
+      cleanup();
+   });
+
+   it("writes nothing the feedback did not invite, even when an answer was typed before submission", async () => {
+      stageFlow("example");
+      mocked.submitAttempt.mockResolvedValue({ ...attempt("example"), correct: null, confidence: null });
+      mocked.readFeedback.mockResolvedValue({ ...exampleFeedback(), self_explanation_prompt: null });
+      renderScreen();
+
+      await screen.findByText("Differentiate f(x) = x^2 sin(x)");
+      fireEvent.change(screen.getByLabelText(SELF_EXPLANATION_PROMPT), {
+         target: { value: "The product rule." }
+      });
+      fireEvent.click(screen.getByRole("button", { name: "I have explained this" }));
+      await screen.findByTestId("feedback");
+      fireEvent.click(screen.getByRole("button", { name: "Next item" }));
+
+      await waitFor(() => expect(mocked.readNextItem).toHaveBeenCalledTimes(2));
+
+      expect(mocked.submitSelfExplanation).not.toHaveBeenCalled();
+
+      cleanup();
+   });
+});
+
+describe("SessionScreen resume", () => {
+   it("reads the session home reported as in progress and opens no new one", async () => {
+      stageFlow("unsupported");
+      mocked.readSession.mockResolvedValue({ ...session, id: "session-open" });
+
+      renderScreen("session-open");
+
+      await screen.findByText("Differentiate f(x) = x^2 sin(x)");
+
+      expect(mocked.readSession).toHaveBeenCalledWith("session-open");
+      expect(mocked.openSession).not.toHaveBeenCalled();
+      expect(mocked.readNextItem).toHaveBeenCalledWith("session-open");
+
+      cleanup();
+   });
+});
+
+describe("SessionScreen ungraded attempts always move on", () => {
+   it("offers Next item after a worked example, whose attempt the server leaves ungraded", async () => {
+      stageFlow("example");
+      mocked.submitAttempt.mockResolvedValue({ ...attempt("example"), correct: null, confidence: null });
+      mocked.readFeedback.mockResolvedValue(exampleFeedback());
+
+      await commitOn(COMMIT_BUTTONS);
+
+      const next = (await screen.findByRole("button", { name: "Next item" })) as HTMLButtonElement;
+
+      expect(next.disabled).toBe(false);
+      expect(screen.queryByText(CORRECT_WORD)).toBeNull();
+      expect(screen.queryByText(INCORRECT_WORD)).toBeNull();
+
+      fireEvent.click(next);
+
+      await waitFor(() => expect(mocked.readNextItem).toHaveBeenCalledTimes(2));
+
+      cleanup();
+   });
+
+   it("offers Next item with no verdict and no error note after an answer the server could not grade", async () => {
+      stageFlow("unsupported");
+      mocked.submitAttempt.mockResolvedValue({ ...attempt("unsupported"), correct: null });
+      mocked.readFeedback.mockResolvedValue(ungradedFeedback());
+
+      await commitOn(COMMIT_BUTTONS);
+
+      const next = (await screen.findByRole("button", { name: "Next item" })) as HTMLButtonElement;
+
+      expect(next.disabled).toBe(false);
+      expect(screen.queryByText(CORRECT_WORD)).toBeNull();
+      expect(screen.queryByText(INCORRECT_WORD)).toBeNull();
+      expect(screen.queryByTestId("elaborated-panel")).toBeNull();
+      expect(screen.queryByTestId("error-note-field")).toBeNull();
+
+      fireEvent.click(next);
+
+      await waitFor(() => expect(mocked.readNextItem).toHaveBeenCalledTimes(2));
+      expect(mocked.submitErrorNote).not.toHaveBeenCalled();
+
+      cleanup();
+   });
+
+   it("offers Next item when the feedback read is refused after the attempt was written", async () => {
+      const actual = await vi.importActual<typeof import("../api/client")>("../api/client");
+
+      stageFlow("unsupported");
+      mocked.submitAttempt.mockResolvedValue({ ...attempt("unsupported"), correct: null });
+      mocked.readFeedback.mockRejectedValue(new actual.ApiError(409, "the feedback read was refused"));
+
+      await commitOn(COMMIT_BUTTONS);
+
+      const next = (await screen.findByRole("button", { name: "Next item" })) as HTMLButtonElement;
+
+      expect(next.disabled).toBe(false);
+
+      fireEvent.click(next);
+
+      await waitFor(() => expect(mocked.readNextItem).toHaveBeenCalledTimes(2));
+
+      cleanup();
+   });
+
+   it("keeps the rating prompt up to retry when the rating is refused", async () => {
+      const actual = await vi.importActual<typeof import("../api/client")>("../api/client");
+
+      stageFlow("unsupported");
+      mocked.submitAttempt.mockResolvedValue({ ...attempt("unsupported"), confidence: null });
+      mocked.submitConfidence
+         .mockRejectedValueOnce(new actual.ApiError(409, "the rating was refused"))
+         .mockResolvedValueOnce({ id: "attempt-unsupported", confidence: "confident" });
+
+      await commitOn(COMMIT_BUTTONS);
+      await waitFor(() => expect(mocked.submitAttempt).toHaveBeenCalledTimes(1));
+      fireEvent.click(screen.getByRole("radio", { name: "confident" }));
+      await waitFor(() => expect(mocked.submitConfidence).toHaveBeenCalledTimes(1));
+
+      expect(screen.queryByTestId("feedback")).toBeNull();
+      expect(mocked.readFeedback).not.toHaveBeenCalled();
+
+      fireEvent.click(screen.getByRole("radio", { name: "unsure" }));
+
+      await screen.findByTestId("feedback");
+
+      expect(mocked.submitConfidence).toHaveBeenCalledTimes(2);
+
+      cleanup();
+   });
+
+   it("offers Next item when the feedback read after a late rating is refused", async () => {
+      const actual = await vi.importActual<typeof import("../api/client")>("../api/client");
+
+      stageFlow("unsupported");
+      mocked.submitAttempt.mockResolvedValue({ ...attempt("unsupported"), correct: null, confidence: null });
+      mocked.submitConfidence.mockResolvedValue({ id: "attempt-unsupported", confidence: "confident" });
+      mocked.readFeedback.mockRejectedValue(new actual.ApiError(409, "the feedback read was refused"));
+
+      await commitOn(COMMIT_BUTTONS);
+      await waitFor(() => expect(mocked.submitAttempt).toHaveBeenCalledTimes(1));
+      fireEvent.click(screen.getByRole("radio", { name: "confident" }));
+
+      const next = (await screen.findByRole("button", { name: "Next item" })) as HTMLButtonElement;
+
+      expect(next.disabled).toBe(false);
 
       cleanup();
    });

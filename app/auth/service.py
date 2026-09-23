@@ -13,6 +13,7 @@ import secrets
 import uuid
 from datetime import date, datetime, timedelta, timezone
 
+from app.audit.detail import bind_audit_detail
 from app.audit.vocabulary import is_known_action
 from app.db import models
 
@@ -221,9 +222,83 @@ def recovery_register_finish(db, settings, store, challenge_id, credential, reco
    }
 
 
+def user_exists(db):
+   return user_count(db) > 0
+
+
+def add_passkey_begin(db, settings, store, auth_session, now=None):
+   """09, "Recovery": a second registered authenticator is the primary recovery answer. The user
+   handle stays the signed-in user's id so the authenticator files both passkeys under one account."""
+   moment = now or utc_now()
+   user = db.get(models.User, auth_session.user_id)
+   is_missing = user is None
+
+   if is_missing:
+      raise AuthError(401, "the session names no user")
+
+   stored_for_user = [
+      row[0]
+      for row in db.query(models.PasskeyCredential.credential_id)
+      .filter(models.PasskeyCredential.user_id == user.id)
+      .all()
+   ]
+   begun = settings.verifier.begin_registration(user.id, user.display_name or "student", stored_for_user)
+   challenge_id = store.issue("add_passkey", begun["challenge"], moment, user_id=user.id)
+
+   return {"challenge_id": challenge_id, "options": begun["options"]}
+
+
+def refuse_stored_credential(db, credential_id):
+   stored = (
+      db.query(models.PasskeyCredential.id)
+      .filter(models.PasskeyCredential.credential_id == credential_id)
+      .first()
+   )
+   is_already_stored = stored is not None
+
+   if is_already_stored:
+      raise AuthError(409, "this passkey is already registered")
+
+
+def add_passkey_finish(db, settings, store, auth_session, challenge_id, credential, now=None):
+   moment = now or utc_now()
+   entry = store.take(challenge_id, "add_passkey", moment)
+   is_other_user = entry["user_id"] != auth_session.user_id
+
+   if is_other_user:
+      raise AuthError(403, "the challenge belongs to another session")
+
+   verified = settings.verifier.finish_registration(entry["challenge"], credential)
+   refuse_stored_credential(db, verified["credential_id"])
+   timestamp = as_iso(moment)
+   credential_row = models.PasskeyCredential(
+      id=new_id("PKC"),
+      user_id=auth_session.user_id,
+      credential_id=verified["credential_id"],
+      public_key=verified["public_key"],
+      sign_count=int(verified["sign_count"]),
+      transports=verified.get("transports"),
+      created_at=timestamp,
+      updated_at=timestamp,
+   )
+   db.add(credential_row)
+   db.flush()
+   write_audit(db, auth_session.user_id, "passkey_registered", f"passkey_credentials:{credential_row.id}", None, moment)
+
+   return {"credential_id": credential_row.id}
+
+
+def stored_credential_ids(db):
+   """09's installation is single-user, so every stored credential belongs to the one account and
+   is offered as allowCredentials, which lets a non-discoverable credential sign in too."""
+   rows = db.query(models.PasskeyCredential.credential_id).all()
+
+   return [row[0] for row in rows]
+
+
 def login_begin(db, settings, store, now=None):
    moment = now or utc_now()
-   begun = settings.verifier.begin_login()
+   begun = settings.verifier.begin_login(stored_credential_ids(db))
    challenge_id = store.issue("login", begun["challenge"], moment)
 
    return {"challenge_id": challenge_id, "options": begun["options"]}
@@ -401,10 +476,12 @@ def logout(db, auth_session, now=None):
 
 def write_audit(db, actor, action, subject, detail, now=None):
    """docs/plan/09-security-and-privacy.md, "Audit log": no key material ever reaches detail, and
-   the action comes from the controlled vocabulary in app/audit/vocabulary.py."""
+   the action comes from the controlled vocabulary in app/audit/vocabulary.py. detail is bound by
+   app/audit/detail.py before it reaches json.dumps, per docs/plan/13-ai-engineering.md item 9."""
    if not is_known_action(action):
       raise ValueError(f"{action!r} is not in the audit_log vocabulary")
 
+   bound_detail = bind_audit_detail(detail)
    timestamp = as_iso(now or utc_now())
    row = models.AuditLog(
       id=new_id("AUD"),
@@ -412,7 +489,7 @@ def write_audit(db, actor, action, subject, detail, now=None):
       actor=actor,
       action=action,
       subject=subject,
-      detail=json.dumps(detail) if detail is not None else None,
+      detail=json.dumps(bound_detail) if bound_detail is not None else None,
       created_at=timestamp,
       updated_at=timestamp,
    )

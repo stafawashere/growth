@@ -5,8 +5,12 @@ string is fixed here and the interface displays it. The order of the checks is t
 gate in docs/plan/11-phased-delivery.md test 24: an unconfirmed request never reaches the
 re-authentication check, and neither refusal deletes anything. The audit entry is app/session/purge.py's
 to write, so this route writes none of its own.
+
+A refused token is answered with a 401 response rather than a raised exception, as the export route
+does, so the request still commits and the single-use token consume_reauth cleared stays cleared.
 """
 from fastapi import APIRouter, Body, Depends, HTTPException
+from fastapi.responses import JSONResponse
 
 from app.api.deps import current_session, current_user, get_db, get_settings
 from app.auth import service as auth_service
@@ -37,7 +41,10 @@ def purge(
    is_reauthenticated = auth_service.consume_reauth(db, auth_session, fields.get("reauth_token"), now)
 
    if not is_reauthenticated:
-      raise HTTPException(status_code=401, detail="the purge needs a fresh passkey re-authentication")
+      return JSONResponse(
+         status_code=401,
+         content={"detail": "the purge needs a fresh passkey re-authentication"},
+      )
 
    deleted = settings.resolve_purge_hook()(db, user.id, now)
 

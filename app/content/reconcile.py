@@ -6,6 +6,7 @@ import uuid
 from dataclasses import dataclass, field
 from datetime import date, datetime, timezone
 
+from app.audit.detail import bind_audit_detail
 from app.audit.vocabulary import is_known_action
 from app.db.models import AuditLog, SkillState as SkillStateRow
 from app.engine.state import FadingStage, SkillState as EngineSkillState
@@ -67,13 +68,14 @@ def _write_audit_entry(db_session, actor, action, old_id, new_id):
       raise ValueError(f"{action!r} is not in the audit_log vocabulary")
 
    timestamp = _now_iso()
+   bound_detail = bind_audit_detail({"old_id": old_id, "new_id": new_id})
    entry = AuditLog(
       id=uuid.uuid4().hex,
       at=timestamp,
       actor=actor,
       action=action,
       subject=old_id,
-      detail=json.dumps({"old_id": old_id, "new_id": new_id}),
+      detail=json.dumps(bound_detail),
       created_at=timestamp,
       updated_at=timestamp,
    )

@@ -22,7 +22,7 @@ export function ConfidencePrompt({ value, onChange }: ConfidencePromptProps) {
    return (
       <fieldset
          {...affordanceProps("confidencePrompt")}
-         className={motionClass("confidencePrompt")}
+         className={`${motionClass("confidencePrompt")} choice-group`}
          data-testid="confidence-prompt"
       >
          <legend>{CONFIDENCE_QUESTION}</legend>

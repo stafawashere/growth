@@ -1,7 +1,7 @@
 """A recorded-cassette player for the Anthropic adapter's wire shape.
 
 docs/plan/07-ai-provider-layer.md names no cassette format, so this reads the same result
-shape app/providers/anthropic.py already produces: text, stop_reason, usage with its four
+shape app/providers/anthropic.py already produces: text, finish_reason, usage with its four
 token fields, provider and model. The cassettes themselves are recorded by the operator
 against a live key and do not exist yet in this repository, so this player works from a
 cassette dict passed in directly or read from a JSON file path, and every test in
@@ -24,6 +24,7 @@ class ReplayProvider(Provider):
          raise ValueError("ReplayProvider needs either a cassette dict or a cassette_path")
 
       self._cassette = cassette if has_cassette else _read_cassette(cassette_path)
+      _refuse_stale_finish_reason_key(self._cassette)
 
    def generate(self, request):
       return self._to_result(request)
@@ -50,13 +51,22 @@ class ReplayProvider(Provider):
 
       return ProviderResult(
          text=cassette.get("text"),
-         stop_reason=cassette.get("stop_reason"),
+         finish_reason=cassette.get("finish_reason"),
          usage=usage,
          provider=cassette.get("provider", "anthropic"),
          model=cassette.get("model", request.model),
          request_id=cassette.get("request_id"),
          raw_usage=raw_usage,
       )
+
+
+def _refuse_stale_finish_reason_key(cassette):
+   """07's result shape names finish_reason. A cassette written under the older stop_reason key
+   would otherwise replay a null finish reason with no error."""
+   has_stale_key = "stop_reason" in cassette
+
+   if has_stale_key:
+      raise ValueError("cassette carries stop_reason; 07's result shape names it finish_reason")
 
 
 def _read_cassette(cassette_path):

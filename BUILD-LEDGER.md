@@ -10,6 +10,50 @@ purpose: Where the application build stands, session by session, so the next ses
 Application code lives at the repository root under `app/` and `tests/`, at the paths docs/plan names. The project CLAUDE.md still says "docs-only, no product"; that sentence is the operator's to amend and this ledger only records the conflict. Tooling: uv-managed Python 3.12.13 in `.venv/`, dependencies in `pyproject.toml`, tests via `.venv/bin/python -m pytest`. Every H2 below carries a tag because `qa/04_tags.py` scans root-level Markdown: [verified] means the test output or the registry was checked in the session named, [inferred] means a judgement.
 
 ## Done [verified]
+- Sixteenth session, 2026-09-23, two review findings against the fifteenth session's persistent
+  developer spend cap fixed. `DevSpendLedger.spent()` and `.add()` in `app/providers/guard.py` were
+  an unlocked read-modify-write of one JSON file, with `write_text` truncating before writing;
+  concurrent reservations under the sync FastAPI route's threadpool could lose an update, and a
+  reader could land on a truncated file mid-write. Fixed with an `fcntl.flock` on a `.lock` sidecar
+  file held for the whole read-modify-write, and an atomic write (`tempfile.mkstemp` in the same
+  directory, then `os.replace`) so a reader never observes a half-written file.
+  `test_dev_spend_ledger_add_is_safe_under_concurrent_writers` reproduces the race with two threads
+  and a monkeypatched `_read` that widens the read-to-write window; red without the lock (final
+  total 1.0 instead of 3.0, one writer's update lost), green with it, confirmed by temporarily
+  stripping the lock and rerunning. Separately, `dev_worst_case_usd` priced every prompt token at
+  the base input rate regardless of `request.cache`, while `dev_actual_usd` charges a reported cache
+  write at `write_1h` (2x input), so a cold-cache reservation could sit below the reconciled cost and
+  let the cap be crossed. Fixed: a request whose `cache` is set now reserves its prompt at
+  `max(input, write_1h)`, falling back to `input` for a model with no `write_1h` row.
+  `test_dev_spend_reservation_prices_a_cached_request_at_the_write_rate` sets the cap just above the
+  uncached worst case and asserts the call is refused; red without the fix (call went through,
+  `DID NOT RAISE DevSpendCapExceeded`), green with it, confirmed by temporarily reverting to the
+  input-only rate and rerunning. No live Anthropic call was made. Suite at close: pytest full run
+  clean, client tests and `tsc --noEmit` clean, `qa/12_report.py` exit 0 (see the verification lines
+  below this entry).
+- Fifteenth session, 2026-09-23, slice 1 of the persistent developer spend cap. `tools/cost_model.py`
+  PRICES gains `claude-opus-5-5` (input 4.00, write_5m 5.00, write_1h 8.00, read 0.20, output 20.00,
+  the operator's console announcement, tagged [inferred] rather than [verified] since it is not an
+  independent reading of the pricing page). `app/providers/guard.py` adds `DevSpendLedger`, a JSON
+  counter under `var/dev_spend_ledger.json`, and `DevSpendCapExceeded`; `GuardedProvider` reserves
+  the worst case against it before a live call, reconciles to the reported usage after, and refuses
+  with an audit row (`dev_spend_cap_refused`, one row per day) when the projection would cross
+  `GROWTH_DEV_SPEND_CAP_USD` (default $15.00). Pricing for the cap comes from
+  `tools/cost_model.py`'s PRICES table, including its batch discount, not from the guard's own
+  MODEL_PRICES. Tracking is off unless the caller passes `dev_spend_track=True`; the only caller
+  that does is `app/api/routes/sessions.py`, from `isinstance(settings.tutor, AnthropicProvider)`,
+  so replay and every Provider test double the suite already wires never touch the ledger, and a
+  future double added to some unrelated test cannot start writing to it by accident either. `tools/dev_spend.py`
+  is a read-only reporter over the same ledger. tests/providers/test_dev_spend_guard.py: refusal
+  before the wire, persistence across a fresh `DevSpendLedger` instance pointed at the same file,
+  reconciliation from the worst-case reservation to reported usage, replay leaving the ledger and
+  its file untouched, tracking off unless `dev_spend_track=True` even over a double that reports
+  real usage, the real `AnthropicProvider` class engaging the cap with no key and no socket opened,
+  and the Opus 5.5 price. Suite at close: pytest full run clean (no FAILED entries; a single
+  `test_a_pathological_comparison_on_the_main_thread_is_unsettled_within_the_bound` failure earlier
+  in the session did not reproduce standalone or on a clean rerun and is unrelated, a timing bound
+  test sensitive to host load per its own comment), client `308 passed`, `tsc --noEmit` exit 0,
+  `qa/12_report.py` exit 0. No live Anthropic call was made.
 - Fourteenth session, 2026-09-23. Suite at close: pytest `803 passed`, client `308 passed`, tsc
   clean, tests/e2e plus tests/api `151 passed` on four repeat runs, `qa/12_report.py` exit 0.
   Opened at `746 passed` and `286 passed`.
@@ -609,6 +653,14 @@ Nothing. The fourteenth session closed with the suite green and every module of 
 done or listed below as needing the operator.
 
 ## Known defects [verified]
+
+From the fifteenth session, 2026-09-23, found and not fixed.
+
+- `tests/items/test_verify_bound.py::test_a_pathological_comparison_on_the_main_thread_is_unsettled_within_the_bound`
+  failed once in a full-suite run under concurrent load this session (the test's own comment names
+  a `TEARDOWN_MARGIN_S` of 1 second on the development machine, and this host was running several
+  full pytest invocations at once at the time). It passed standalone and on two later clean full
+  runs. Not touched by this slice; flagged because it can make a clean gate read red on a busy host.
 
 From the fourteenth session, 2026-09-23, found and not fixed.
 
@@ -1367,6 +1419,31 @@ Session 2026-09-20 (seventh).
 - 02 block 1 ("5 items or 5 minutes of forecast, whichever comes first") with the 3-minute default forecast admits exactly one item until an archetype has 5 timed attempts, so the 5-item cap is unreachable early on. Implemented as written; the exit-criterion-5 walkthrough must not be read as evidence the item cap works.
 - 02 invariant 23 (both the split and the compensatory prediction logged on every observation): `attempts` carries `p_split` and `p_compensatory` columns from this session, schema only; the writer arrives with the session loop in the slice that builds `POST /sessions/{id}/attempts`.
 
+## Decisions taken on the operator's instruction, 2026-09-23 [inferred]
+
+Fifteenth session, on the instruction to build slice 1 of the persistent developer spend cap.
+
+- Storage: a flat JSON ledger under `var/dev_spend_ledger.json`, not a table via `app/db/migrate.py`.
+  The per-role `BudgetCaps` in `app/providers/guard.py` are scoped to a user, a role and a day and
+  reset every day; the developer cap is none of those, one running total, global to every role, every
+  user and every process run, that never resets. `var/` is already gitignored and already holds this
+  repository's other process-local state (`growth.db` itself), so a JSON file there needs no
+  migration, no schema and no database session to read, and survives a checkout where the app
+  database has not been created yet.
+- The cap tracks a call only when the caller opts in (`dev_spend_track=True`), never by guessing from
+  the wrapped provider's class inside the guard. `tests/providers/test_anthropic.py` wires a real
+  `AnthropicProvider` to a fake transport to unit-test the adapter without a socket, and an
+  isinstance-based auto-detection inside `GuardedProvider` would have started writing every such test
+  run to the real ledger file, eventually breaching the real cap purely from test traffic (caught by
+  running the full suite twice: the ledger accumulated to $16.67 and a later, unrelated test then
+  failed with `DevSpendCapExceeded`). The one caller that opts in is
+  `app/api/routes/sessions.py`, from `isinstance(settings.tutor, AnthropicProvider)`, which is the
+  actual decision of whether this process would spend real money.
+- `claude-opus-5-5` in `tools/cost_model.py` is tagged [inferred], not [verified]: the other rows in
+  PRICES are read directly off the provider pricing pages; this one is the operator's own console
+  announcement of 2026-09-23, a secondhand report of a price rather than an independent reading of
+  the page itself.
+
 ## Decisions taken on the operator's instruction, 2026-09-20 [inferred]
 
 Sixth session, on the instruction "answer all decisions for me". Every open question the ledger
@@ -1440,7 +1517,10 @@ Human-only, in the order that unblocks the most:
    `test_item_verification_tools` and `eval_p1_distractor_paths`.
 3. Gate 29, exit criterion 4: the 100-item key audit over those items. Shape
    `docs/operator/key-audit.md`, check `python3 tools/check_audit_verdicts.py`.
-4. Exit criterion 8: real tutor calls with the key, then `tools/serving_cost.py <db>`.
+4. Exit criterion 8: real tutor calls with the key, then `tools/serving_cost.py <db>`. The
+   persistent developer spend cap (`app/providers/guard.py`, this session) now stands in front of
+   any such call once `GROWTH_TUTOR_PROVIDER=anthropic` is set; `tools/dev_spend.py` reports spent,
+   cap and remaining before and after.
 5. Rulings: which Anthropic stream errors are retryable (07); whether adding a passkey requires
    re-authentication (09); whether a second error note replaces or is refused; the purge
    confirmation phrase; copy for a failed request and for the account screen; PyNaCl for

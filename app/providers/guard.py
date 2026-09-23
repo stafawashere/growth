@@ -98,16 +98,21 @@ model. Batch rates are not modelled either (13 item 2). Every other model raises
 priced from a number no plan document carries, so a fallback to an unpriced model is a refusal and
 not a silent wrong charge.
 """
+import fcntl
 import json
 import math
-from dataclasses import dataclass
+import os
+import tempfile
+from dataclasses import dataclass, field
 from datetime import date
+from pathlib import Path
 
 from sqlalchemy import select
 
 from app.auth.service import as_iso, new_id, utc_now, write_audit
 from app.db import models
 from app.providers.base import Provider, RefusedBeforeWire
+from tools import cost_model
 
 CHARACTERS_PER_TOKEN = 4
 
@@ -118,12 +123,23 @@ HARD_STOP_ACTION = "budget_hard_stop"
 CALL_REFUSED_ACTION = "budget_call_refused"
 UNREADABLE_RESULT_ACTION = "provider_result_unreadable"
 CAP_CHANGED_ACTION = "budget_cap_changed"
+DEV_SPEND_CAP_REFUSED_ACTION = "dev_spend_cap_refused"
 
 ROLES = ("tutor", "generator", "verifier", "grader", "diagnostician", "transcriber")
 
 UNCONFIGURED = "unconfigured"
 CAP_SEPARATOR = ","
 CAP_FIELDS = (("tokens", "cap_tokens"), ("usd", "cap_usd"))
+
+# The persistent developer spend cap, operator's instruction of 2026-09-23 [inferred]. Distinct
+# from BudgetCaps above: that is a per-user, per-role, per-day cap the operator sets for the
+# product; this is one number, global to every role and every process run, that stands between
+# the operator's own Anthropic key and the $19.25 of credit on it. See DevSpendLedger for where
+# it lives.
+DEV_SPEND_CAP_ENV_VAR = "GROWTH_DEV_SPEND_CAP_USD"
+DEFAULT_DEV_SPEND_CAP_USD = 15.00
+DEV_SPEND_LEDGER_PATH = Path(__file__).resolve().parents[2] / "var" / "dev_spend_ledger.json"
+DEV_SPEND_SUBJECT = "dev_spend:ledger"
 
 
 @dataclass(frozen=True)
@@ -217,6 +233,166 @@ class BudgetStopped(Exception):
       self.role = role
       self.caps = named
       self.cap = joined
+
+
+class DevSpendCapExceeded(Exception):
+   """Raised before a live call whose worst-case reservation would cross the persistent
+   developer spend cap. Carries only numbers, never a key or a prompt."""
+
+   def __init__(self, role, model, spent_usd, cap_usd, reservation_usd):
+      super().__init__(
+         f"developer spend cap reached: role={role} model={model} spent={spent_usd:.4f} "
+         f"reservation={reservation_usd:.4f} cap={cap_usd:.4f}"
+      )
+      self.role = role
+      self.model = model
+      self.spent_usd = spent_usd
+      self.cap_usd = cap_usd
+      self.reservation_usd = reservation_usd
+
+
+@dataclass
+class DevSpendLedger:
+   """A flat JSON counter of cumulative developer spend against the operator's own Anthropic
+   key, durable across process restarts.
+
+   It is deliberately not a row in the app database. The per-role BudgetCaps above are scoped to
+   a user and a role and reset every day, which is the shape the product's budgets table is built
+   for; the developer cap is none of those things, one running total, global to every role and
+   every user, that never resets. var/ is already gitignored and already holds this repository's
+   other process-local state (growth.db itself), so a small JSON file there needs no migration,
+   no schema and no session to read, and survives a checkout where the app database does not yet
+   exist.
+   """
+
+   path: Path = field(default_factory=lambda: DEV_SPEND_LEDGER_PATH)
+
+   def _lock_path(self):
+      return self.path.with_name(self.path.name + ".lock")
+
+   def _locked(self, flag):
+      """An flock on a sidecar file, held for the duration of a read or a read-modify-write, so
+      two processes (or two threads of the sync FastAPI route, each in its own threadpool worker)
+      cannot interleave a check-then-reserve. The lock file is never the ledger itself, so a
+      reader taking LOCK_SH never blocks on the atomic replace of the ledger file happening
+      underneath it."""
+      self.path.parent.mkdir(parents=True, exist_ok=True)
+      lock_file = open(self._lock_path(), "a")
+      fcntl.flock(lock_file, flag)
+
+      return lock_file
+
+   def _read(self):
+      if not self.path.exists():
+         return 0.0
+
+      raw = json.loads(self.path.read_text())
+
+      return float(raw.get("spent_usd", 0.0))
+
+   def _write(self, spent_usd):
+      """A temp file in the same directory plus os.replace, so a reader never observes the
+      truncated-but-not-yet-written state a plain write_text leaves on the wire between its
+      truncate and its write."""
+      fd, tmp_name = tempfile.mkstemp(dir=self.path.parent, prefix=".dev_spend_ledger-", suffix=".tmp")
+
+      try:
+         with os.fdopen(fd, "w") as tmp_file:
+            tmp_file.write(json.dumps({"spent_usd": spent_usd}))
+
+         os.replace(tmp_name, self.path)
+      except BaseException:
+         Path(tmp_name).unlink(missing_ok=True)
+         raise
+
+   def spent(self):
+      lock_file = self._locked(fcntl.LOCK_SH)
+
+      try:
+         return self._read()
+      finally:
+         fcntl.flock(lock_file, fcntl.LOCK_UN)
+         lock_file.close()
+
+   def add(self, delta_usd):
+      """Positive to reserve or true up, negative to release. Returns the new total. The read and
+      the write happen under the same exclusive lock, so two concurrent reservations against the
+      same ledger cannot both read the same starting total."""
+      lock_file = self._locked(fcntl.LOCK_EX)
+
+      try:
+         updated = self._read() + delta_usd
+         self._write(updated)
+
+         return updated
+      finally:
+         fcntl.flock(lock_file, fcntl.LOCK_UN)
+         lock_file.close()
+
+
+def dev_spend_cap_usd(env=None):
+   env = os.environ if env is None else env
+   raw = env.get(DEV_SPEND_CAP_ENV_VAR)
+   is_unset = raw is None or raw == ""
+
+   if is_unset:
+      return DEFAULT_DEV_SPEND_CAP_USD
+
+   return float(raw)
+
+
+def _is_batch_request(request):
+   options = request.provider_options or {}
+
+   return bool(options.get("batch"))
+
+
+def dev_price_row(model, batch):
+   """Prices for the persistent dev-spend cap come from tools/cost_model.py's PRICES table, not
+   from MODEL_PRICES above: that table already carries a read and a 5-minute and a 1-hour write
+   rate per model, and cost_model.price applies the batch discount, so there is no reason to
+   duplicate either here."""
+   if model not in cost_model.PRICES:
+      raise ValueError(f"no dev-spend price recorded for model {model!r}")
+
+   return cost_model.price(model, batch)
+
+
+def dev_worst_case_usd(request):
+   """The same worst case as estimate_call above, no cache credit taken, priced off
+   tools/cost_model.py instead of MODEL_PRICES.
+
+   A request that carries cache settings can be reconciled at the 1-hour write rate, not just the
+   base input rate: dev_actual_usd, like usage_cost, charges cached_write_tokens at write_1h
+   because the result never says which ttl paid for a write. A reservation that always assumed
+   1x input would then sit below what a cold cache actually costs, so a request with cache set
+   prices its whole prompt at the higher of the two rates. A model with no write_1h row (Gemini's
+   implicit caching bills storage by the hour instead, which this module does not model) falls
+   back to the input rate, unchanged from the uncached case."""
+   rates = dev_price_row(request.model, _is_batch_request(request))
+   prompt_tokens = estimate_prompt_tokens(request)
+   output_tokens = request.max_output_tokens
+   is_cached = request.cache is not None
+   prompt_rate = max(rates["input"], rates.get("write_1h", rates["input"])) if is_cached else rates["input"]
+
+   input_cost = (prompt_tokens / 1_000_000) * prompt_rate
+   output_cost = (output_tokens / 1_000_000) * rates["output"]
+
+   return input_cost + output_cost
+
+
+def dev_actual_usd(model, batch, tokens_in, tokens_out, tokens_cached_read, tokens_cached_write):
+   """Reconciled cost from the provider's own usage block. Cache writes are charged at the
+   1-hour rate, matching usage_cost above: the result reports one cached_write_tokens number and
+   does not say which ttl paid for it."""
+   rates = dev_price_row(model, batch)
+
+   base_input = (tokens_in / 1_000_000) * rates["input"]
+   cached_read = (tokens_cached_read / 1_000_000) * rates["read"]
+   cached_write = (tokens_cached_write / 1_000_000) * rates["write_1h"]
+   output = (tokens_out / 1_000_000) * rates["output"]
+
+   return base_input + cached_read + cached_write + output
 
 
 def price_for(model, day=None):
@@ -478,7 +654,8 @@ class GuardedProvider(Provider):
    last_accounting is None until a call settles and is reset to None when the next call starts, so
    a refused call never leaves the previous call's accounting behind for its caller to read."""
 
-   def __init__(self, provider, db, user_id, clock=None, caps=None, provider_name=None):
+   def __init__(self, provider, db, user_id, clock=None, caps=None, provider_name=None,
+                dev_spend_cap=None, dev_spend_ledger=None, dev_spend_env=None, dev_spend_track=False):
       self._provider = provider
       self._db = db
       self._user_id = user_id
@@ -486,6 +663,19 @@ class GuardedProvider(Provider):
       self._caps = caps or {}
       self._provider_name = provider_name or getattr(provider, "name", type(provider).__name__)
       self.last_accounting = None
+
+      # Off unless the caller opts in. GuardedProvider is exercised in this test suite over
+      # doubles that stand in for a real adapter, including a real AnthropicProvider wired to a
+      # fake transport (tests/providers/test_anthropic.py), and none of them spends a cent, so
+      # guessing "live" from the wrapped provider's class would start writing to the real
+      # developer ledger file the day a new double is added to some unrelated test. The one
+      # caller that opts in is the composition root, app/api/routes/sessions.py, which knows from
+      # its own settings whether app/providers/anthropic.py AnthropicProvider is wired to the real
+      # transport or not built at all.
+      self._dev_spend_enabled = bool(dev_spend_track)
+      self._dev_spend_cap = dev_spend_cap if dev_spend_cap is not None else dev_spend_cap_usd(dev_spend_env)
+      self._dev_ledger = dev_spend_ledger or DevSpendLedger()
+      self._dev_reservation = None
 
    def generate(self, request):
       self.last_accounting = None
@@ -576,6 +766,18 @@ class GuardedProvider(Provider):
       budget.cost_usd = budget.cost_usd - estimate.cost_usd
       self._stamp(budget)
       self.session().flush()
+      self._dev_release()
+
+   def _dev_release(self):
+      """The request never left, so the dev-spend reservation comes off the ledger the same way
+      the per-role one comes off the budget row."""
+      has_reservation = self._dev_spend_enabled and self._dev_reservation is not None
+
+      if not has_reservation:
+         return
+
+      self._dev_ledger.add(-self._dev_reservation)
+      self._dev_reservation = None
 
    def _reserve(self, request):
       db = self.session()
@@ -610,6 +812,8 @@ class GuardedProvider(Provider):
       if already_stopped:
          self._refuse(db, budget, request, stopping_caps(budget))
 
+      self._dev_reserve(db, request)
+
       budget.tokens_in = budget.tokens_in + estimate.prompt_tokens
       budget.tokens_out = budget.tokens_out + estimate.output_tokens
       budget.cost_usd = budget.cost_usd + estimate.cost_usd
@@ -617,6 +821,67 @@ class GuardedProvider(Provider):
       db.flush()
 
       return budget, estimate
+
+   def _dev_reserve(self, db, request):
+      """The persistent developer spend cap, checked once every per-role cap has already let the
+      call through: no point spending the operator's credit budget deciding a call the role's own
+      cap would have refused anyway. Replay never reaches here at all."""
+      self._dev_reservation = None
+
+      if not self._dev_spend_enabled:
+         return
+
+      worst_case = dev_worst_case_usd(request)
+      spent = self._dev_ledger.spent()
+      projected = spent + worst_case
+
+      if projected > self._dev_spend_cap:
+         self._refuse_dev_spend(db, request, spent, worst_case)
+
+      self._dev_ledger.add(worst_case)
+      self._dev_reservation = worst_case
+
+   def _refuse_dev_spend(self, db, request, spent, reservation):
+      """One row per day, the same bound _refuse keeps for a per-role refusal: a cap that stops
+      every role does not need one row per attempted call to say so twice."""
+      day = self._clock().date().isoformat()
+      already_recorded = self._dev_spend_refusal_already_recorded(db, day)
+
+      if not already_recorded:
+         write_audit(
+            db,
+            self._user_id,
+            DEV_SPEND_CAP_REFUSED_ACTION,
+            DEV_SPEND_SUBJECT,
+            {
+               "role": request.role,
+               "model": request.model,
+               "spent_usd": round(spent, 6),
+               "cap_usd": self._dev_spend_cap,
+               "reservation_usd": round(reservation, 6),
+               "day": day,
+            },
+            now=self._clock(),
+         )
+         db.flush()
+
+      raise DevSpendCapExceeded(request.role, request.model, spent, self._dev_spend_cap, reservation)
+
+   def _dev_spend_refusal_already_recorded(self, db, day):
+      statement = (
+         select(models.AuditLog.detail)
+         .where(models.AuditLog.action == DEV_SPEND_CAP_REFUSED_ACTION)
+         .where(models.AuditLog.actor == self._user_id)
+         .where(models.AuditLog.subject == DEV_SPEND_SUBJECT)
+      )
+
+      for detail in db.scalars(statement).all():
+         recorded = json.loads(detail) if detail else {}
+
+         if recorded.get("day") == day:
+            return True
+
+      return False
 
    def _refuse(self, db, budget, request, caps):
       """One refusal row per user per role per day per reason, the way app/session/build.py's
@@ -757,6 +1022,7 @@ class GuardedProvider(Provider):
 
       self._stamp(budget)
       self.session().flush()
+      self._dev_reconcile(request, priced_model, tokens_in, tokens_out, reported_cached_read, reported_cached_write)
 
       self.last_accounting = CallAccounting(
          model=priced_model,
@@ -766,6 +1032,25 @@ class GuardedProvider(Provider):
          tokens_cached_write=reported_cached_write,
          cost_usd=cost,
       )
+
+   def _dev_reconcile(self, request, priced_model, tokens_in, tokens_out, reported_cached_read, reported_cached_write):
+      """Trues the dev-spend ledger up from the worst-case reservation to the same reconciled
+      usage the per-role budget row was just settled to, priced off tools/cost_model.py."""
+      has_reservation = self._dev_spend_enabled and self._dev_reservation is not None
+
+      if not has_reservation:
+         return
+
+      actual = dev_actual_usd(
+         priced_model,
+         _is_batch_request(request),
+         tokens_in,
+         tokens_out,
+         reported(reported_cached_read),
+         reported(reported_cached_write),
+      )
+      self._dev_ledger.add(actual - self._dev_reservation)
+      self._dev_reservation = None
 
    def _priced_model(self, result, request):
       reported_model = result.model

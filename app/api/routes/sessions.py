@@ -13,6 +13,7 @@ from app.db import models
 from app.feedback import render, tutor
 from app.items.grade import grade
 from app.items.verify import ChildDiedError
+from app.providers.anthropic import AnthropicProvider
 from app.providers.guard import BudgetStopped, GuardedProvider
 from app.session import preview, service
 
@@ -274,13 +275,18 @@ def tutor_sentence_for(settings, db, user, attempt, feedback):
    and a line saying the tutor is unavailable for the rest of today. That line is what the second
    return value carries, so the session screen can say it where it happened rather than only in
    settings.
+
+   The guard's persistent developer spend cap only tracks a call this process would actually pay
+   for, which is exactly when settings.tutor is a real AnthropicProvider; replay and the
+   no-provider case never reach dev_spend_track=True.
    """
    has_tutor = settings.tutor is not None
 
    if not has_tutor:
       return None, False
 
-   guarded = GuardedProvider(settings.tutor, db, user.id, caps=settings.tutor_caps)
+   is_live = isinstance(settings.tutor, AnthropicProvider)
+   guarded = GuardedProvider(settings.tutor, db, user.id, caps=settings.tutor_caps, dev_spend_track=is_live)
 
    try:
       sentence = tutor.compose_sentence(guarded, feedback, db=db, attempt=attempt)

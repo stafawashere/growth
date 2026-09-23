@@ -23,8 +23,14 @@ USD_PER_MTOK = 1e-6
 # Prices, USD per million tokens, https://platform.claude.com/docs/en/about-claude/pricing and
 # https://ai.google.dev/gemini-api/docs/pricing, both read 2026-09-20. [verified]
 # The batch discount stacks with the cache multipliers, so a batch row halves every column.
+#
+# claude-opus-5-5 is the operator's Anthropic console announcement of 2026-09-23, not an
+# independent reading of the pricing page, so it is [inferred] rather than [verified]: $4 input,
+# $20 output and $0.20 cache reads as stated, with the writes derived from the standard 1.25x
+# and 2x multipliers the other rows already carry.
 PRICES = {
    "claude-opus-5": {"input": 5.00, "write_5m": 6.25, "write_1h": 10.00, "read": 0.50, "output": 25.00},
+   "claude-opus-5-5": {"input": 4.00, "write_5m": 5.00, "write_1h": 8.00, "read": 0.20, "output": 20.00},
    "claude-sonnet-5": {"input": 2.00, "write_5m": 2.50, "write_1h": 4.00, "read": 0.20, "output": 10.00},
    "claude-haiku-4-5": {"input": 1.00, "write_5m": 1.25, "write_1h": 2.00, "read": 0.10, "output": 5.00},
    "gemini-3.8-flash": {"input": 0.75, "read": 0.075, "output": 3.75},

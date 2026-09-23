@@ -21,7 +21,9 @@ accounting could not be settled against the provider's own usage block is the sa
 as a cap that stops a role, and unlike an ordinary call it is rare by construction, so it cannot
 flood the record. An ordinary provider call is not here at all: its
 accounting lives in budgets, and a row per call would flood a record 09 describes as durable and
-queryable.
+queryable. dev_spend_cap_refused is the same class of event as budget_call_refused, one level up:
+the persistent developer spend cap in app/providers/guard.py stops every role at once rather than
+one role's daily cap, and is bounded the same way, one row per day rather than one per refused call.
 """
 AUDIT_ACTIONS = (
    "budget_call_refused",
@@ -31,6 +33,7 @@ AUDIT_ACTIONS = (
    "claudebox_enabled",
    "content_snapshot_reloaded",
    "coverage_gap_fail_closed",
+   "dev_spend_cap_refused",
    "export_produced",
    "frq_image_deleted",
    "grading_rerun",

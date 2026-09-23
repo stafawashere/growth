@@ -1,0 +1,67 @@
+"""docs/plan/13-ai-engineering.md quotes cost figures, and every one of them has to come out of
+tools/cost_model.py rather than out of a hand edit. Two ways that can go wrong: the arithmetic in
+the calculator drifts from the formula the document states, and a figure is patched in the prose
+without the calculator changing. One test for each.
+"""
+from pathlib import Path
+
+import pytest
+
+from tools import cost_model
+
+REPO = Path(__file__).resolve().parents[2]
+DOCUMENTS = (
+   REPO / "docs" / "plan" / "13-ai-engineering.md",
+   REPO / "docs" / "operator" / "ai-operating-costs.md",
+)
+
+
+def test_tutor_cycle_matches_the_formula_the_document_states():
+   """13 states the prefix term as writes x prefix x write_rate + (calls - writes) x prefix x
+   read_rate. A regression that charged every call as a write, or none, changes this number."""
+   figures = cost_model.figures()
+   sonnet = cost_model.PRICES["claude-sonnet-5"]
+   tutor = cost_model.ROLES["tutor"]
+   calls = cost_model.TUTOR_CALLS_PER_SESSION * cost_model.SESSIONS
+   writes = cost_model.SESSIONS
+
+   prefix = writes * tutor["prefix"] * sonnet["write_1h"] + (calls - writes) * tutor["prefix"] * sonnet["read"]
+   uncached = calls * tutor["uncached"] * sonnet["input"]
+   output = calls * tutor["visible"] * sonnet["output"]
+   by_hand = (prefix + uncached + output) / 1e6
+
+   assert figures["tutor.cycle"] == pytest.approx(by_hand)
+   assert round(by_hand, 2) == 5.01
+
+
+def test_the_effort_lever_is_the_high_minus_medium_thinking_output():
+   """The generator's effort lever is exactly the extra thinking tokens at the batch output
+   rate; a change to how thinking enters output_cost would silently move the largest lever."""
+   figures = cost_model.figures()
+   extra_thinking = cost_model.GENERATOR_THINKING_HIGH - cost_model.GENERATOR_THINKING_MEDIUM
+   batch_output = cost_model.PRICES["claude-opus-5"]["output"] * cost_model.BATCH_DISCOUNT
+   expected = figures["generator.calls"] * extra_thinking * batch_output / 1e6
+
+   assert figures["generator.lever.effort"] == pytest.approx(expected)
+
+
+@pytest.mark.parametrize("document", DOCUMENTS, ids=lambda path: path.name)
+def test_every_dollar_figure_in_the_document_is_emitted_by_the_calculator(document):
+   """A figure patched by hand in one section while the model moves in another is how the last
+   two review rounds were generated. Positive control first: the checker must flag a figure the
+   calculator does not emit, or a clean result over the document proves nothing."""
+   figures = cost_model.figures()
+   control = document.parent / "cost_model_control.md"
+   control_text = "A stray figure of $999,999.99 that no model emits.\n"
+
+   try:
+      control.write_text(control_text)
+      flagged = cost_model.check(control, figures)
+   finally:
+      control.unlink()
+
+   assert flagged == [(1, "999,999.99")]
+
+   unknown = cost_model.check(document, figures)
+
+   assert unknown == [], f"{document.name} prints dollar figures the calculator does not emit: {unknown}"

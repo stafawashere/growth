@@ -46,7 +46,7 @@ Automatic item generation as Gierl and Lai describe it is three steps: develop a
 
 What the spec must contain per archetype, per parameter:
 
-- `name`, `type` (integer, rational, real, symbol, function_form, interval, label, unit), and `role` (`safe` or `difficulty`).
+- `name`, `type` (integer, rational, real, symbol, function_form, interval, label, unit), and `role` (`safe` or `difficulty`). A `safe` parameter is a declared incidental in Bejar's sense and a `difficulty` parameter a declared radical; the declaration is checked rather than trusted, by varying each `safe` parameter alone and requiring the structure of every solution step and of the key to stay fixed (`13-ai-engineering.md`, Radicals and incidentals). Distractor composition is always a radical.
 - `domain`: an explicit set or range, for integers a list or a bounded range with a step, for symbols an allowed alphabet, for function forms an enumerated list of shapes rather than free text.
 - `constraints`: predicates over the whole draw, written so a checker can evaluate them. For BC-QA-06001 these include that consecutive table inputs are strictly increasing, that at least two gap widths differ, and that no width is zero.
 - `derived`: values computed from the draw rather than drawn, with the expression that computes them.
@@ -129,7 +129,7 @@ The parameter draw is made by the backend from the archetype's parameter spec, n
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "GeneratedItem",
   "type": "object",
-  "required": ["stem", "key", "worked_solution", "metadata"],
+  "required": ["stem", "key", "worked_solution"],
   "properties": {
     "stem": {
       "type": "object",
@@ -271,6 +271,8 @@ The parameter draw is made by the backend from the archetype's parameter spec, n
 }
 ```
 
+Corrected 2026-09-20: `metadata` left the `required` list and is no longer model output. Every field in it is an echo of the generation request, so the backend writes it and a model that restates one of them wrongly can no longer corrupt an item's provenance. Measured on a full-schema record, `metadata` was 32.0 percent of the emitted characters against the worked solution's 26.0 percent. The `metadata` schema below stays as the definition of the block the backend writes. See `13-ai-engineering.md`.
+
 Two properties of this contract matter more than the field list. First, the figure is a declarative spec rather than an image or an SVG string, so the renderer controls label placement and the same spec can be re-rendered at another size, in dark theme, or as a table. Second, every worked-solution step carries the BC-PT id it earns, which is what lets the grader in plan document 03 run per-point calls against a generated item with no extra authoring.
 
 ## Difficulty control
@@ -368,13 +370,13 @@ Track 3 states the reason for the strictness: a distractor that accidentally equ
 
 The generating model's own answer is a hypothesis, not a key. The pipeline is five checks and publication requires unanimous agreement.
 
-**Independent re-solve.** A second model, on a different provider where the routing allows it, receives the stem, the figure spec, and nothing else. It does not see the key, the worked solution, or the generating model's output. Its answer is compared to the candidate key symbolically and numerically. D8 routes the verifier role to `claude-opus-5` with Gemini 3.8 Flash as the batch second tier; the constraint that the verifier must not see the key is a property of the prompt, not of the model choice.
+**Independent re-solve.** A second model, on a different provider where the routing allows it, receives the stem, the figure spec, and nothing else. It does not see the key, the worked solution, or the generating model's output. Its answer is compared to the candidate key symbolically and numerically. D8 as corrected on 2026-09-20 routes the verifier role to `gemini-3.5-flash-lite` on batch at the paid tier, with `gemini-3.8-flash` on batch as the second deployment and `claude-sonnet-5` on batch as the third, so that the verifier is never the generator's own model; the tier within Gemini was chosen on cost in `14-token-economy.md` and is defended by this section's own structure, since the re-solve's answer is never trusted and is compared under SymPy against a key the free checks already agree on; the constraint that the verifier must not see the key is a property of the prompt, not of the model choice, and the constraint that the verifier be decorrelated from the generator is a property of the routing. See `13-ai-engineering.md`.
 
 **SymPy equivalence.** For closed-form keys, meaning derivatives, antiderivatives, limits, series coefficients, and equation solutions, the two answers are compared by symbolic simplification. An unsettled comparison is not a pass.
 
 **Numeric evaluation at several points.** Both candidate answers are evaluated at several parameter values in the legal domain. This catches algebraically inequivalent forms that look similar, which the symbolic check can miss when it does not settle.
 
-**Monte Carlo over the parameter family.** A few hundred parameter tuples are drawn from the archetype's parameter spec, the solution path is run symbolically on each, and the `invariants` from the spec are asserted throughout: the integral converges, the denominator does not vanish on the interval, the series radius is finite and positive, the answer stays in a reportable range, the three-decimal answer is not degenerate. Track 3's argument for this is that these are parametrised families, which is a verification advantage nobody grading a one-off problem has, and that a family failing on 2 percent of draws is a family with a latent bad item. A family whose failure rate exceeds a threshold is quarantined rather than having the failing draws filtered out, because filtering hides a spec defect. The threshold is [inferred] and starts at zero failures on 300 draws for P1 archetypes.
+**Monte Carlo over the parameter family.** This check is a property of the parameter spec rather than of an item, so it runs once per archetype per spec version before any item is generated, not once per item; the full cheapest-first ordering of the five checks is in `13-ai-engineering.md`. A few hundred parameter tuples are drawn from the archetype's parameter spec, the solution path is run symbolically on each, and the `invariants` from the spec are asserted throughout: the integral converges, the denominator does not vanish on the interval, the series radius is finite and positive, the answer stays in a reportable range, the three-decimal answer is not degenerate. Track 3's argument for this is that these are parametrised families, which is a verification advantage nobody grading a one-off problem has, and that a family failing on 2 percent of draws is a family with a latent bad item. A family whose failure rate exceeds a threshold is quarantined rather than having the failing draws filtered out, because filtering hides a spec defect. The threshold is [inferred] and starts at zero failures on 300 draws for P1 archetypes.
 
 **Calculator-boundary assertion.** A no-calculator item's verified solution path must be closed-form solvable with no numeric root-finding step. A calculator item's answer must be stated to three decimals, per the published general scoring note that decimal approximations should be accurate to three places after the decimal point (https://apcentral.collegeboard.org/media/pdf/ap25-sg-calculus-bc.pdf [verified]). Track 3's framing is that a Section I Part A item whose verified answer requires numeric root-finding is a mis-filed item, not a hard item.
 
@@ -408,6 +410,7 @@ An item that trips any rule below is not published. Rules 1 through 8 send it ba
 12. The stem contains a span matching cached official text above the duplicate threshold, at any length.
 13. The figure spec places a label outside the figure, or the stem refers to a figure the spec does not contain.
 14. The item's predicted success probability, recomputed from the realised dial settings, differs from the requested target by more than 0.15 [inferred threshold].
+15. A worked-solution step carrying a `sympy` expression does not follow from the previous step's under the rule the step names, checked with `app/items/verify.py` `equivalence`, or a step is an identity under the drawn parameters and therefore vacuous. Added 2026-09-20: none of rules 1 to 14 checks that a worked-solution step is mathematically correct, so the key was verified three ways while the worked solution a student reads on the feedback screen was unverified model output. See `13-ai-engineering.md`.
 
 ## Review queue
 
@@ -484,6 +487,8 @@ The numbers below are from track 4 Part B and all carry [verified] from that led
 What that buys generation specifically: the cached prefix is the archetype record, the parameter spec, the BC-PT definitions the item's points reference, and the generation instructions. That block is identical across every draw from the same archetype, it sits well above the 512-token minimum, and a generation batch for one archetype reads it once per item at 0.1x. The 1-hour TTL is worth its 2x write only when the generation run for that archetype spans more than one 5-minute gap, which a queued batch will. Changing the structured-output format invalidates the prompt cache, and changing `budget_tokens` invalidates cache breakpoints (https://platform.claude.com/docs/en/build-with-claude/structured-outputs and https://platform.claude.com/docs/en/build-with-claude/extended-thinking [verified]), so a prompt-version bump is also a cache-warming event and should be batched rather than trickled.
 
 **Batch API.** 50 percent off both input and output, up to 100,000 requests or 256 MB per batch, most batches finishing under 1 hour with all expiring at 24 hours, results retained 29 days, oversized batches returning 413 `request_too_large`, and `max_tokens: 0` rejected inside a batch (https://platform.claude.com/docs/en/build-with-claude/batch-processing [verified]). Generation, independent verification, and the Monte Carlo family pass are all off the interactive path, so all three run as batches. That is the whole cost argument for keeping the bank pre-generated rather than generating on demand: the interactive path pays list price and the queue does not.
+
+**What the unit of generation does to all of the above, corrected 2026-09-20.** Under the template architecture the model is called once per archetype rather than once per item, so the prefix that caches is the authoring instruction block shared by every request in the pass rather than an archetype record shared by 56 draws, the whole authoring pass is one batch rather than one batch per archetype, and the bank's generation cost falls from $177.62 to $17.37 over the cycle. Instantiation is deterministic backend code and costs nothing. Verification does not follow: the independent re-solve stays per published item, because the floor is that an unverified item is never served. See `14-token-economy.md`.
 
 **Second tier.** D8 routes bulk grading and batch verification to Gemini 3.8 Flash as the cost-controlled second tier, at $0.75 in and $3.75 out per 1M through 31 December 2026, then $1.50 and $7.50 (https://ai.google.dev/gemini-api/docs/pricing [verified]), with implicit context caching on by default above a 4,096-token minimum on the 3.x Flash models and cache reads at $0.075 per 1M through the same date (https://ai.google.dev/gemini-api/docs/caching and the pricing page [verified]). Gemini's structured output supports recursive `$ref`, `minimum` and `maximum`, which Anthropic's does not (https://ai.google.dev/gemini-api/docs/structured-output [verified]); the schemas in this document avoid those keywords so one schema serves both providers.
 

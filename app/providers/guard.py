@@ -24,8 +24,10 @@ estimate already used stands, which errs in the same direction.
 The audit row rule. 09's "Audit log" lists a controlled vocabulary of consequential actions and
 an ordinary provider call is not in it; one row per tutor call would flood a record 09 describes
 as durable and queryable. So the guard writes an audit row when the role hard-stops and when a
-call is refused by the cap, and never on an ordinary call. Per-call usage accounting lives in
-budgets, which is the table 07 names for it.
+call is refused by the cap, and never on an ordinary call. A result the guard cannot read is the
+third, because the money is already spent and the accounting could not be settled, and it is rare
+by construction rather than per call. Per-call usage accounting lives in budgets, which is the
+table 07 names for it.
 
 A role with no configured cap is refused at construction of its budget row, before any call.
 The guard exists to stop spending past a cap, and a role whose caps are both None crosses no cap
@@ -36,10 +38,12 @@ No key material, no raw provider response body and no student response text reac
 detail field or an exception message (09 "Key handling" and "Audit log"). The detail names the
 provider, the model, the role and the cap that bound, and nothing else.
 
-The price table holds only claude-sonnet-5, at the $2 and $10 per MTok that 07 cites against
-Anthropic's own pricing page, because that is the one model P1 routes. Every other model raises
-rather than being priced from a number no plan document carries, so a fallback to an unpriced
-model is a refusal and not a silent wrong charge.
+The price table holds the two models the plan prices: claude-sonnet-5 at $2 and $10 per MTok
+from 07's routing section, and claude-opus-5 at $5 and $25 from 04's Cost and caching section,
+both cited there against Anthropic's own pricing page. Sonnet is the only model P1 routes; Opus is
+here because 04 routes the generator and the verifier to it and its price is already read. Every
+other model raises rather than being priced from a number no plan document carries, so a fallback
+to an unpriced model is a refusal and not a silent wrong charge.
 """
 import json
 import math
@@ -59,6 +63,7 @@ CACHE_WRITE_1H_MULTIPLIER = 2.0
 
 HARD_STOP_ACTION = "budget_hard_stop"
 CALL_REFUSED_ACTION = "budget_call_refused"
+UNREADABLE_RESULT_ACTION = "provider_result_unreadable"
 
 
 @dataclass(frozen=True)
@@ -68,6 +73,7 @@ class ModelPrice:
 
 
 MODEL_PRICES = {
+   "claude-opus-5": ModelPrice(input_usd_per_mtok=5.0, output_usd_per_mtok=25.0),
    "claude-sonnet-5": ModelPrice(input_usd_per_mtok=2.0, output_usd_per_mtok=10.0),
 }
 
@@ -283,9 +289,45 @@ class GuardedProvider(Provider):
       which leaves the row conservative rather than empty."""
       try:
          self._reconcile(budget, estimate, request, result)
-      except (AttributeError, TypeError, ValueError):
+      except (AttributeError, TypeError, ValueError) as unreadable:
+         self._record_unreadable(budget, request, unreadable)
          self._stamp(budget)
          self.session().flush()
+
+   def _record_unreadable(self, budget, request, unreadable):
+      """One row per user per role per day, which is the bound the budgets row already carries,
+      because the subject names that row. A second unreadable result the same day for the same
+      role tells an operator nothing the first did not, and 09 calls the log durable and
+      queryable. The detail carries what an operator can act on and nothing else: no key material
+      and no part of the provider's payload reaches it."""
+      db = self.session()
+      already_recorded = self._unreadable_already_recorded(db, budget)
+
+      if already_recorded:
+         return
+
+      write_audit(
+         db,
+         self._user_id,
+         UNREADABLE_RESULT_ACTION,
+         f"budgets:{budget.id}",
+         {
+            "role": request.role,
+            "model": request.model,
+            "exception": type(unreadable).__name__,
+         },
+         now=self._clock(),
+      )
+
+   def _unreadable_already_recorded(self, db, budget):
+      statement = (
+         select(models.AuditLog.id)
+         .where(models.AuditLog.action == UNREADABLE_RESULT_ACTION)
+         .where(models.AuditLog.actor == self._user_id)
+         .where(models.AuditLog.subject == f"budgets:{budget.id}")
+      )
+
+      return db.scalars(statement).first() is not None
 
    def _reconcile(self, budget, estimate, request, result):
       usage = result.usage

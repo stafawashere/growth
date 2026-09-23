@@ -4,6 +4,9 @@ docs/plan/07-ai-provider-layer.md, Anthropic adapter section and Known traps: th
 block carries the cache_control breakpoint, no tool definitions are ever sent on a tutor
 call, and thinking is never requested because sending thinking: {type: "enabled"} to
 Sonnet 5 or Opus 5 returns 400 and this project has no use for the adaptive form either.
+No temperature is sent either: a non-default temperature, top_p or top_k returns 400 on
+every request to Opus 5 and Sonnet 5, so the wire body carries none and the neutral request
+shape has no such field.
 
 The wire call sits behind an injectable transport callable so every test drives a fake
 transport and no test opens a socket. The only real transport uses urllib.request from the
@@ -76,7 +79,6 @@ class AnthropicProvider(Provider):
       body = {
          "model": request.model,
          "max_tokens": request.max_output_tokens,
-         "temperature": request.temperature,
          "system": [system_block],
          "messages": [{"role": message.role, "content": message.content} for message in request.messages],
          "stream": stream,

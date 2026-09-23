@@ -387,8 +387,34 @@ def record_confidence(
    return attempt
 
 
+class ErrorNoteAlreadyWritten(ValueError):
+   pass
+
+
+class ErrorNoteNotOneLine(ValueError):
+   pass
+
+
 def record_error_note(db, attempt_id, note):
+   """One line, once, per 03's "The student's one-line error note". The guard lives here rather
+   than in the route so that every caller gets it, because a second note overwrites the record of
+   what the student first thought. 03 and 06 set no length, so none is enforced.
+   """
    attempt = db.get(models.Attempt, attempt_id)
+
+   existing = attempt.error_note
+   already_written = isinstance(existing, str) and existing.strip() != ""
+
+   if already_written:
+      raise ErrorNoteAlreadyWritten(f"attempt {attempt_id} already carries its error note")
+
+   carries_newline = "\n" in note
+   carries_carriage_return = "\r" in note
+   spans_more_than_one_line = carries_newline or carries_carriage_return
+
+   if spans_more_than_one_line:
+      raise ErrorNoteNotOneLine(f"the error note for attempt {attempt_id} is not one line")
+
    attempt.error_note = note
    db.flush()
 

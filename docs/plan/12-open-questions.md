@@ -59,8 +59,8 @@ These are the parameters the ledgers could not source. All are [inferred] and li
 
 ## Provider and tooling unknowns
 
-- Gemini free-tier numeric limits (shown only in AI Studio) and Gemini's data-retention policy (not loaded). Gemini stays second tier until the policy is read ([07-ai-provider-layer.md](07-ai-provider-layer.md)).
-- OpenRouter's tool-calling page returned 404; tool_choice semantics are unknown.
+- Gemini's data-retention policy: resolved 2026-09-20. The paid tier does not use prompts or responses to improve Google products; the unpaid tier does and human reviewers may read the content (https://ai.google.dev/gemini-api/terms [verified]). Default log retention is 55 days, configurable to 7, 14, 28 or 55 (https://ai.google.dev/gemini-api/docs/logs-policy [verified]). Gemini is usable on the paid tier and is now the verifier primary; an unpaid Gemini deployment is refused for any role carrying student text ([13-ai-engineering.md](13-ai-engineering.md)). Gemini free-tier numeric limits remain shown only in AI Studio and are now moot, since the free tier is unusable for any role that carries student work.
+- OpenRouter's tool-calling page returned 404; tool_choice semantics are unknown. Closed as not applicable 2026-09-20: no role uses tools, by decision in 07 and enforcement in `app/providers/anthropic.py`.
 - MathLive's licence and current feature list: track 3 loaded the npm page (MathJSON export, 800+ commands [verified]) while track 4 got an empty site. Re-fetch before the input decision is final.
 - KaTeX font family names and their Computer Modern lineage, Inter's optical-size tracking table, Material 3 duration and easing tokens, the WCAG 1.4.11 non-text contrast ratio, and Latin Modern, STIX Two and Libertinus metrics were not loaded (track 4). [08-design-brief.md](08-design-brief.md) states them as unknown.
 - Per-quantisation VRAM for DeepSeek-R1-Distill-Qwen-14B on Ollama is not published on the GPU page; measure before relying on the offline fallback.
@@ -124,11 +124,27 @@ Every parameter below is [inferred] unless noted. The authoritative per-engine l
 | Rapid-guessing threshold | per-archetype latency distribution, factor-count fallback | 05 | latency data |
 | Job retry ladder and cooldown | 1, 5, 25 minutes, 4 attempts; 2 fails, 60 s | 06, 07 | provider error logs |
 | Role temperatures | tutor 0.3, generator 0.7, diagnostician 0.2, grader and verifier and transcriber 0.0 | 07 | golden tests |
-| Item bank size | 30 to 60 verified items per archetype | 06 | repeat-exposure rate |
+| Role thinking setting | tutor and transcriber disabled, grader and diagnostician and generator and verifier on | 13 | golden set output quality at each setting on the same inputs |
+| Role effort setting | tutor and transcriber low, grader and diagnostician and generator and verifier medium | 13 | an effort sweep on each role's golden set |
+| Role max output tokens | tutor 600, grader 2,000, transcriber 1,500, diagnostician 2,000, generator 4,000, verifier 3,000 | 13 | the rate of `stop_reason: "max_tokens"` in production |
+| Cache TTL per role | 1h everywhere, and no breakpoint for a role making fewer than three calls in an hour | 13 | the measured cache hit rate per role |
+| Bank draw rule | least recently served within the archetype, replacing uniform random | 13, 02 | the repeat-exposure rate measured on real serves |
+| Distinct-item corroboration | the three credited unaided successes must come from three distinct item ids | 13, 02 | the false-mastery declaration rate in simulation |
+| Item bank size | 40 verified items per archetype, generated 20 first and topped up on measurement, conditional on the draw rule becoming least recently served (was 30 to 60 until 2026-09-20) | 06, 13 | the 95th percentile per-archetype serve count over the first 60 days of real use, projected to 230 days |
 | Key error rate threshold | unset; measured in P1 | 10, 11 | 100-item audit |
 | Simulation acceptance | 5 percent false-mastery declarations; slip sweeps 0.05, 0.10, 0.20 | 10 | first simulation run |
 | Golden set size | 5 responses on each of at least 30 BC-PT ids | 10 | operator capacity |
 | Diagnostician exit floor | two ranked hypotheses on at least 80 percent of diagnosed errors | 11 | P3 trial |
 | Retention and purge | 30 days after exam date, export first | 09 | operator policy |
-| Tutor daily cap | $1.00 per day, token cap unset | 07 | a week of real sessions against the measured cost per feedback screen |
-| Client token estimate divisor | 4 characters per token | 07 | the first `raw_usage` block from a real key, since 07 records the Claude 4.7 tokenizer producing about 30 percent more tokens for the same text, and an under-estimate is the unsafe direction for a cap |
+| Tutor daily cap | $1.00 per day and 250,000 tokens per day, which bind within a few calls of each other at the corrected tutor configuration (was token cap unset until 2026-09-20) | 07, 13 | a week of real sessions against the measured cost per feedback screen |
+| Client token estimate divisor | Superseded 2026-09-20 by `POST /v1/messages/count_tokens`, which is free and separately rate limited at 5,000 requests per minute on the Start tier (https://platform.claude.com/docs/en/build-with-claude/token-counting [verified]). The divisor survives only as the offline fallback and becomes 3.1 rather than 4 | 07, 13 | nothing; this is now a measured quantity |
+| Generation unit | One gated parameterised template per archetype, instantiated by the backend, at an assumed 2.5 authoring attempts per archetype (was 56 generated items per archetype until 2026-09-20) | 04, 13, 14 | the measured attempts per archetype on the first gated pass, and the per-step defect rate on the 100-item audit |
+| Grader call routing | Only a point whose BC-PT record requires justification, interpretation or hypotheses, and whose `earns` text no deterministic check expresses, reaches a model. 17 of 76 active records qualify on the fields alone, which is a lower bound | 03, 10, 14 | the operator labelling all 76 BC-PT records against the four deterministic checks, which is offline and free |
+| Diagnostician trigger | A recurring BC-ERR path, not every incorrect attempt, at an assumed 0.35 recurrence share | 03, 13, 14 | the diagnostician exit floor plus the error-type recurrence rate with and without a first-occurrence diagnosis |
+| Golden set 2 sampling | One sample on the monthly canary, three on a full run (was three on every run until 2026-09-20) | 10, 14 | whether the canary and the full run ever disagree in direction on exact match over two full runs |
+| Golden set 1 | Satisfied by the template gate at 300 seeded draws rather than by a paid eval run | 10, 14 | nothing; the gate is strictly stronger than the eval it replaces |
+| Verifier model | `gemini-3.5-flash-lite` on batch at the paid tier, with `gemini-3.8-flash` second and `claude-sonnet-5` third | 04, 07, 13, 14 | the disagreement rate with the generator on the same 500 items, Flash-Lite against 3.8 Flash |
+| Grader thinking | On, against a saving of $25.20 | 13, 14 | the sweep in 13: escalation rate and exact match with thinking on against off on the same golden set 2 responses |
+| Grader samples | 3 on every model-judged point, against a saving of $11.02 for a third drawn only on disagreement | 03, 13, 14 | the measured disagreement share over the first month against the assumed 0.25 |
+| Unit of verification | The item. A blind re-solve per published item, never a sample of draws per template | 04, 14 | an operator decision, not a measurement. The floor as written is that an unverified item is never served |
+| Budget ceiling to exam day | $100.00, set by the operator 2026-09-20. The plan costs $95.03 against it | 13, 14 | nothing; it is the operator's number |

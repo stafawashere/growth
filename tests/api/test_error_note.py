@@ -4,6 +4,7 @@ docs/plan/02-adaptive-engine.md, Session assembly block 4: "the one-line student
 note for each item corrected in this session". The note belongs to an item the student got wrong,
 so a correct attempt is refused rather than annotated.
 """
+from sqlalchemy import select
 from sqlalchemy.orm import Session as OrmSession
 
 from app.db import models
@@ -117,3 +118,83 @@ def test_error_note_route_refuses_an_empty_note(world):
    )
 
    assert blank.status_code == 400
+
+
+def test_a_second_error_note_is_refused_and_the_first_survives(world):
+   client = world.client()
+   world.register(client)
+   session_id = open_session(client).json()["id"]
+   attempt_id = submit_an_attempt(client, session_id)
+   first = "I dropped the chain rule factor on the inner function."
+   client.post(f"/sessions/{session_id}/attempts/{attempt_id}/error-note", json={"note": first})
+
+   second = client.post(
+      f"/sessions/{session_id}/attempts/{attempt_id}/error-note",
+      json={"note": "actually I misread the bounds"},
+   )
+
+   assert second.status_code == 409
+
+   with OrmSession(world.engine) as db:
+      stored = db.execute(
+         select(models.Attempt.error_note).where(models.Attempt.id == attempt_id)
+      ).scalar_one()
+
+      assert stored == first
+
+
+def test_a_multiline_error_note_is_refused(world):
+   client = world.client()
+   world.register(client)
+   session_id = open_session(client).json()["id"]
+   attempt_id = submit_an_attempt(client, session_id)
+
+   refused = client.post(
+      f"/sessions/{session_id}/attempts/{attempt_id}/error-note",
+      json={"note": "I dropped the chain rule\nand then I misread the bounds"},
+   )
+
+   assert refused.status_code == 400
+
+   with OrmSession(world.engine) as db:
+      assert db.get(models.Attempt, attempt_id).error_note is None
+
+
+def test_a_note_with_a_carriage_return_is_refused(world):
+   client = world.client()
+   world.register(client)
+   session_id = open_session(client).json()["id"]
+   attempt_id = submit_an_attempt(client, session_id)
+
+   refused = client.post(
+      f"/sessions/{session_id}/attempts/{attempt_id}/error-note",
+      json={"note": "I dropped the chain rule\rand then I misread the bounds"},
+   )
+
+   assert refused.status_code == 400
+
+   with OrmSession(world.engine) as db:
+      assert db.get(models.Attempt, attempt_id).error_note is None
+
+
+def test_the_refused_second_note_never_reaches_the_column(world):
+   client = world.client()
+   world.register(client)
+   session_id = open_session(client).json()["id"]
+   attempt_id = submit_an_attempt(client, session_id)
+   first = "I differentiated the outer function only."
+   overwrite = "I integrated instead of differentiating."
+   client.post(f"/sessions/{session_id}/attempts/{attempt_id}/error-note", json={"note": first})
+
+   client.post(
+      f"/sessions/{session_id}/attempts/{attempt_id}/error-note",
+      json={"note": overwrite},
+   )
+
+   with OrmSession(world.engine) as db:
+      stored = db.execute(
+         select(models.Attempt.error_note).where(models.Attempt.id == attempt_id)
+      ).scalar_one()
+
+      assert overwrite not in stored
+      assert stored == first

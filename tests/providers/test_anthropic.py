@@ -16,7 +16,6 @@ def _request(**overrides):
       system="You are a guardrailed calculus tutor. " * 50,
       messages=(Message(role="user", content="I am stuck on step two."),),
       max_output_tokens=400,
-      temperature=0.3,
       cache=CacheSettings(prefix_breakpoints=1, ttl="1h"),
    )
    defaults.update(overrides)
@@ -56,7 +55,7 @@ def test_call_maps_to_the_messages_wire_shape():
 
    assert body["model"] == "claude-sonnet-5"
    assert body["max_tokens"] == 400
-   assert body["temperature"] == 0.3
+   assert "temperature" not in body
    assert body["messages"] == [{"role": "user", "content": "I am stuck on step two."}]
    assert body["system"][0]["text"].startswith("You are a guardrailed calculus tutor.")
    assert body["system"][0]["cache_control"] == {"type": "ephemeral", "ttl": "1h"}

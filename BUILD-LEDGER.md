@@ -11,6 +11,264 @@ Application code lives at the repository root under `app/` and `tests/`, at the 
 
 ## Done [verified]
 
+Session 2026-09-21 (eleventh), the P1 client and gate 25. Suite line at open `388 passed in 64.09s`,
+at close `405 passed in 174.52s`. Client suite `133 passed`, `npx tsc --noEmit` exit 0 and
+`npx vite build` succeeds. Style gate
+exit 0 on every changed Python and Markdown file. `qa/12_report.py` exit 0. `data/`, `research/`
+and `cache/` untouched, `git status --porcelain` over the three empty. `qa/last_report.json`
+restored. Nothing committed.
+
+- Gate 25 `test_reduced_motion_replaces` closed, which takes P1 from 25 of 31 passing to 26 of 31.
+  `tools/gate_status.py` reports `P1 25 test_reduced_motion_replaces present passing`. The three
+  previous sessions filed this gate as human-only on the ground that it waits on the design token
+  file. That reading is corrected: the gate's property is the motion contract and the presence of
+  five affordances, it reads no hex value, and 11 P1 scope items 8, 11 and 17 put `app/web/` inside
+  P1. See Plan corrections.
+- `app/web/`, new, the P1 client. React 18, TypeScript and Vite, which
+  `docs/plan/06-architecture.md` line 93 names, plus KaTeX and MathLive from the same sentence.
+  `npm` lockfile committed, `node_modules/` ignored.
+- `app/web/src/affordances.ts`, the five gate-25 affordance names as one object with
+  `affordanceProps`. Gate 25 and the session tests range over that object, so no hand-copied list
+  is checked against another hand-copied list.
+- `app/web/src/api/types.ts` and `client.ts`, the typed fetch layer over the routes
+  `app/api/routes/` already exposes. `client.test.ts` scans the FastAPI decorators from disk and
+  asserts every path the client issues is a path the server declares, and, after the wave-1
+  review, scans the route return-dict literals, `bank.STUDENT_OPTION_FIELDS`, `render.as_dict` and
+  `dress_item` and asserts twelve payload types by exact field-set equality.
+- `app/web/src/styles/motion.css` and `motion.ts`, the motion contract. One duration and one
+  easing, both derived from 08's single number. `motion.test.ts` walks the real stylesheet through
+  the CSSOM and fails a reduce block that deletes a transition instead of cross-fading it.
+- `app/web/src/input/MathField.tsx` and `McqControl.tsx`. MathField exports MathJSON, not LaTeX.
+  McqControl takes its option count from the item's own options array and leaks no key: its test
+  compares attribute name and value pairs across the radios, excluding the legitimately varying
+  ones, which is what caught a `data-is-key` mutation that a name-only comparison had missed.
+- `app/web/src/session/`, the session screen: the three fading stages, backward fading with the
+  last step blanked, the five feedback affordances, and the item-to-feedback-to-next-item flow.
+  Colour independence holds: every correct or incorrect state carries a word and a glyph.
+- `app/web/src/home/HomeScreen.tsx` and `settings/SettingsScreen.tsx`, with home's three states
+  (queue ready, queue empty, session in progress) and settings restricted to the five sections
+  11 P1 scope 17 names. The settings test parses that scope sentence out of 11 rather than typing
+  the list. Purge refuses without the typed confirmation.
+- `tests/web/test_reduced_motion.py`, gate 25 in pytest so `tools/gate_status.py` finds it and the
+  operator's one suite command runs it. It shells out to vitest and asserts on the JSON reporter,
+  not the exit code: every `it(...)` title scanned out of the tsx source must be reported passed,
+  the passed count must equal the declared count, and a run matching zero files fails. It never
+  skips.
+- `app/design/css.py`, the only bridge from the operator's token file to the client. The client
+  references `var(--growth-<token>)` and contains no hex value anywhere.
+- The three non-blocking defects carried since the eighth session are fixed.
+  `app/items/verify.py` now holds one comparison and error-path core that both
+  `verify.distractor_checks` and `distractor_paths.distractor_path_violations` call, with the two
+  deliberately different unsettled policies preserved and named in each caller.
+  `tests/design/test_tokens.py`'s floor test now finds the greys astride the floor with
+  `contrast.contrast_ratio` instead of asserting black on white at 21:1, and the accent tint range
+  is parsed from 08's own sentence instead of typed.
+
+Session 2026-09-20 (tenth), the token economy. Suite line at open `388 passed`, at close
+`388 passed, 1 warning in 56.96s`. Style gate exit 0 on every file written. `qa/12_report.py` exit
+0. `data/`, `research/` and `cache/` untouched, `git status --porcelain` over the three empty.
+Nothing committed.
+
+- `docs/plan/14-token-economy.md`, new. The operator set a ceiling of $100.00 to exam day against
+  the recommended tier's $348.05. Ten directions are ranked by dollars saved, each with the quality
+  instrument that would detect its loss and the measurement that settles it, plus rejected
+  directions with the floor that rejects each, proposed constant changes, open questions and
+  unsourced claims. The tier lands at $95.03, Anthropic $82.31 and Google $12.71, with $4.97 of
+  headroom.
+- `tools/cost_model.py`, additive only. `gemini-3.5-flash-lite` prices read off the pricing page on
+  2026-09-20, a `template` role priced from measured prompt and artifact sizes, the grader's model
+  share, the diagnostician's recurrence share, the golden set 2 canary, and the `tier.hundred`
+  lines. No existing constant moved, so the superseded configuration stays priced beside the new
+  one and the four tests stay green. Positive control on the new document: a stray `$999,999.99`
+  appended to a scratch copy gives `14-control.md:535: $999,999.99 is not a figure in
+  tools/cost_model.py` and exit 1; the clean file gives 0 unknown figures and exit 0.
+- What was measured in this session, with the command. 139 active archetypes and a mean
+  `build_prompt` of 1,582.3 characters over all of them; `INSTRUCTIONS` at 4,420 characters and
+  `TEMPLATE_SCHEMA` at 2,280, both from `tools/template_trial.py`; the 26 template artifacts under
+  `var/` at a mean 2,412.1 characters of compact JSON, median 2,372.5, min 1,910, max 3,212; and 76
+  active BC-PT records in `data/scoring_points.json` of which 59 answer no to
+  `justification_required`, `interpretation_required` and `hypotheses_required`, 14 require
+  justification, 3 interpretation and 3 hypotheses.
+- Eight of the ten directions were written into the plan on the operator's instruction: 13 gains a
+  fourth tier, a Flash-Lite verifier row, two price rows, a second per-role table, rewritten eval
+  schedule rows, six tunables and five decisions; 07's D8 verifier row and the paragraph above it;
+  04's re-solve routing and a paragraph on what the unit of generation does to caching, batching and
+  bank cost; 10's golden set 1 onto the template gate, golden set 2's sampling split, which point
+  types reach the grader, and the P3 and P4 gates; 03 gains a section on when the diagnostician is
+  called at all and the rule-based section is renamed from "unavailable" to "does not run"; 11 gains
+  the BC-PT labelling pass as a P3 entry criterion and the calculator boundary on the template gate;
+  12 gains ten tunables rows; and the operator guide's settings, spend, tiers, eval schedule, credit
+  arithmetic and the 2026-12-31 calendar note.
+- Two directions deliberately not taken, on the operator's instruction: grader thinking off at
+  $25.20 and a third grader sample drawn only on disagreement at $11.02. Each asserts a quality
+  decision with no evidence behind it, each has a settling measurement named in 13, and together
+  they are the remedy if the grader line comes in at its worst case of $44.34, which would put the
+  tier at $129.25.
+- The tier's single point of failure, recorded because it is not a defect and will read like one
+  later. The grader line of $10.11 rests on 17 of 76 BC-PT records, which is a lower bound on the
+  share of judged points reaching a model and not the share, because 03 adds a second condition the
+  data does not carry. The labelling pass that settles it is offline, free and is now a P3 entry
+  criterion.
+- No application code was written. `app/generation/` still does not exist and the grader, the
+  diagnostician and the transcriber are still unbuilt, so every direction landed as a plan change
+  and a cost model line rather than as behaviour.
+
+Session 2026-09-20 (ninth), the AI layer follow-through. Suite line at open `341 passed`, at
+close `388 passed, 1 warning in 63.34s`. Style gate exit 0 on every file written. `qa/12_report.py` exit 0.
+`data/`, `research/` and `cache/` untouched, `git status --porcelain` over the three empty.
+Nothing committed. Five tasks in order, each verified before the next.
+
+- The live 400. `app/providers/anthropic.py` sent `"temperature": request.temperature` on
+  every call and `ProviderRequest` defaulted it to 0.0; a non-default temperature is a 400 on
+  Opus 5 and Sonnet 5 at any value. The key left the wire body and the field left
+  `ProviderRequest` entirely rather than becoming optional, because no routed model accepts it
+  and an optional field invites sending it again. `tests/providers/test_anthropic.py` now asserts
+  `"temperature" not in body`; shown red by re-adding the key
+  (`AssertionError: assert 'temperature' not in {... 'temperature': 0.0 ...}`), restored,
+  `tests/providers` 31 passed. `/code-review` over the four files: no findings.
+- The cost model. `tools/cost_model.py` emits every figure `docs/plan/13-ai-engineering.md` and
+  `docs/operator/ai-operating-costs.md` quote, from named price, token, call-count and survival
+  constants, and `--check <file>` lists every dollar figure in a file that the model does not
+  emit. `tests/tools/test_cost_model.py` (4 tests): the tutor cycle against the formula 13
+  states, the effort lever against the thinking difference, and the two documents against the
+  emitted set with a positive control that a stray `$999,999.99` is flagged. Red under mutation:
+  charging every call as a prefix write gives `assert 15.588 == 5.01308`; a hand-patched
+  `$123.45` in the operator guide gives `prints dollar figures the calculator does not emit:
+  [(168, '123.45')]`. Both restored. What the recompute moved: golden set 2 was priced without
+  the grader's 700 thinking tokens, so its run is $6.48 not $3.33 and the recommended tier is
+  $348.05 not $319.70; effort high in the uncapped tier now applies to every thinking role by
+  the generator's 2,500 to 1,200 ratio, so that tier is $1,145.55 not $880.29; five passages
+  still priced the bank at 40 generated per archetype and now read 56 (staging waves of 28,
+  batch queue 7,784 and 6,227, spend avoided $5.09 to $19.70, Sonnet comparison $71.05, effort
+  lever $126.49). 24 bare `[measured]` tags were each given a command, retagged `[verified]`
+  where the evidence was a code read at a named line, or `[single-source]` where the run is not
+  in the repository. Two grep claims written for those tags were false as first written and
+  were corrected before landing: `self_explanation` matches a prompt shown to the student, and
+  `REPEAT_WINDOW_DAYS` is named by 13 itself.
+- The template gate. `tools/template_trial.py` gained `contract_check` (declared
+  representation from the archetype's list; figure spec required for BC-REP-02, 03, 07 and
+  08; every distractor `error_path` an active BC-ERR id; every `point_type_id` a BC-PT id;
+  exactly four options) and `incidental_check` (every parameter declares `radical` or
+  `incidental`; each incidental is varied alone over its domain and the structure of every step
+  and the key must hold). Schema, prompt and defect feedback carry all of it, and the prompt
+  now lists the BC-ERR ids reachable from the archetype's skills. `tests/tools/test_template_trial.py`
+  grew from 32 to 43 tests, one mutation of `tests/fixtures/template_trial/clean_02011.json` per
+  check plus the clean-fixture absence claims; the fixture gained a representation, three
+  resolving distractors and honest roles (`a` incidental, `b` and `c` radical because a zero
+  deletes a term). Every check shown red by disabling it in the code, and the gate wiring shown
+  red by dropping each clean flag from `passes_bar`; all restored, 43 passed. Measured over the
+  26 templates in `var/` with the eleven-check gate: 0 of 26 pass; 12 of 26 on the six old
+  checks. Failures by check: representation undeclared 26, error path unresolved 26, four
+  distractors 14, key copied from the last step 13, point type unresolved 6, key disagreement 1.
+  The role declaration is absent on all 26 by construction. The earlier "6 of 18" and "7 of 8"
+  claims are superseded by that line.
+- The radicals declaration. 13 gained "Radicals and incidentals" with the five primary
+  sources, the contract consequence and the gate above, and the difficulty-prior decision:
+  02 keeps one prior per archetype and accepts a known centre-ward bias, with the measurement
+  that adds a variance term recorded (facility spread above 0.15 over at least 5 instantiations
+  on 30 or more attempts). 02 and 04 carry the surgical corrections listed under Plan
+  corrections.
+- The migration. 13 gained "Template architecture and the migration" with the file-by-file
+  map and the seam decision: instantiate at build time into `items`, never at serve time,
+  because `attempts.item_id` is a permanent reference at `app/session/repository.py:129` and
+  `app/api/routes/sessions.py:154` and `:207`, verification and the duplicate gate are per
+  item, the requeue serves the same id again, and the least-recently-served draw needs stable
+  ids. `app/generation/`, `prompts/generator/` and `prompts/verifier/` do not exist, so 11's
+  P4 items 7 and 11 were corrected to name the template module and prompt. No application
+  code for the migration was written this session.
+
+Session 2026-09-20 (eighth), suite line at open `230 passed in 34.85s`, at close
+`341 passed in 44.31s`. Style gate exit 0 on all 28 changed files, fed the hook its JSON payload
+on stdin, confirmed to bite with a positive control (`style_gate: probe.py: em dash present`,
+exit 2). `qa/12_report.py` exit 0. `data/`, `research/`, `schemas/` and `cache/` untouched,
+confirmed with `git status --porcelain` over all four. The phase stayed P1, because 11's P2 entry
+criterion is "P1 merged with all gates green" and six P1 gates are still open. The slice was every
+P1 deliverable buildable without the operator, plus the operator unblock kit for the six that are
+not. `python3 tools/gate_status.py --phase P1` now reads `P1: 31 gates, 25 present, 6 missing,
+25 passing`, and the six missing are exactly the human-only list: 17, 22, 25, 26, 29 and 30.
+
+- Integrator, gate table: `tools/gate_status.py`, `tests/tools/test_gate_status.py` (17 tests).
+  Reads the gate list out of 11 for every phase, uses the plan's own item numbers for P1 and a
+  running index for the later phases, scans `tests/` for each gate's definition, and reads
+  outcomes from a JUnit report the tool writes itself. It exits 1 when any gate is missing or
+  failing, so a caller can use it as a check. Two defects found in it during review and fixed: the
+  outcome column was asserted by no test, and `run_suite` used `sys.executable`, which under
+  `python3 tools/gate_status.py` is the system interpreter with no pytest, so the run failed
+  silently and every gate read unknown. The tool now runs the repository's own `.venv` interpreter
+  and says on stderr when a run produced no report.
+- Agent M2, schema drift: `app/db/migrate.py`, `tests/db/test_migrate.py`,
+  `tests/db/test_engine_migrates.py`, wired into `make_engine` in `app/db/models.py`.
+  `missing_columns`, `apply_additive_migrations` and `SchemaDriftError`. This closes the
+  `attempts.tutor_sentence` defect: an existing `var/growth.db` no longer raises on the first
+  feedback read. Every ALTER is built and validated before the transaction opens, so a blocking
+  column aborts before any write. A column that is NOT NULL with no server default refuses, and so
+  does a column declared unique or indexed, because ALTER TABLE ADD COLUMN carries neither and the
+  migrated database would otherwise diverge from a fresh one while reporting no drift. A database
+  with no drift opens no write transaction at all.
+- Agent M3, the unreadable provider result: `app/providers/guard.py`, `app/audit/vocabulary.py`,
+  `tests/providers/test_guard_settle.py` (7 tests). A new audit action
+  `provider_result_unreadable`, deduped on the budget row id, which is already one per user per
+  role per day, so two roles give two rows and a day rollover records again. The detail carries
+  the role, the model and the exception type name and nothing else.
+- Agent M4, gate 26's arithmetic: `app/design/contrast.py`, `tests/design/test_contrast.py`
+  (14 tests). WCAG 2.2 relative luminance and contrast ratio, `TEXT_CONTRAST_FLOOR` 4.5 and
+  `LARGE_TEXT_CONTRAST_FLOOR` 3.0, both taken from 08 and 11. No hex value is authored anywhere.
+- Agent M5, gate 30's property: `app/items/distractor_paths.py`,
+  `tests/items/test_distractor_paths.py` (8 tests). `error_ids_for_skills` computes the BC-ERR set
+  over the P1 skills rather than typing 40, and it is 40. An unsettled symbolic comparison is
+  reported as its own violation and never reads as clean.
+- Agent M6 and the integrator, the error note: `app/api/routes/sessions.py`,
+  `tests/api/test_error_note.py`, `app/session/service.py`,
+  `tests/session/test_error_note_service.py`. One note per corrected attempt, refused with 409
+  rather than silently overwritten, and a note containing a line break refused with 400, because
+  03 says the student writes one line. No length cap, because 03 and 06 give none. The guard was
+  moved into `record_error_note` so every caller gets it, not only the route, and the route now
+  maps `ErrorNoteAlreadyWritten` and `ErrorNoteNotOneLine` onto its two status codes.
+- Agent M7, gate 29's shape: `app/review/verdicts.py`, `tests/review/test_verdicts.py` (14 tests).
+  `verdict_violations` and `audit_completeness`. The verdict vocabulary is imported from
+  `app/review/audit.py` and asserted identical rather than retyped.
+- Agent M8, gate 26's vocabulary: `app/design/tokens.py`, `tools/check_tokens.py`,
+  `tests/design/test_tokens.py` (12 tests), `docs/operator/design-tokens.template.json`. The nine
+  type tokens and the seventeen colour tokens, both parsed out of 08 inside the test rather than
+  compared against a second hand-typed list. The template is every token name at null, and a null
+  is reported as missing rather than skipped.
+- Agent M9, the operator's own checks: `tools/check_items.py`, `tools/check_audit_verdicts.py`,
+  `tests/tools/test_operator_clis.py` (8 tests). `python3 tools/check_items.py <directory>` runs
+  gate 17's and gate 30's checks over a directory of records and prints a per-archetype count;
+  `python3 tools/check_audit_verdicts.py <verdicts.json> <sample.json>` prints the key error rate
+  or says why it cannot be published. Over `tests/fixtures/items_p1/` the first reports 36 records,
+  36 clean, exit 0, with six archetypes at 6 records each and the other seven at 0.
+- Agent M10, the work orders: `docs/operator/README.md`, `items.md`, `key-audit.md`,
+  `design-tokens.md`, `provider-key.md`. What the operator has to produce, in what shape, and the
+  command that checks it, with every field list read out of the code rather than recalled.
+- Integrator, the unsettled distractor: `app/items/verify.py`, `app/items/ingest.py`,
+  `tests/items/test_unsettled_distractor.py` (5 tests). `_equals_key` collapsed an unsettled
+  symbolic comparison into not-equal, so a distractor the checker could not compare against the
+  key read as distinct from it and the item reached status `verified`. It is now
+  `INDETERMINATE`, which leaves the item a draft and routes it to review, which is what ingest's
+  own docstring already claimed. Red: `assert 'pass' == 'indeterminate'`.
+- Integrator, gate 23 strengthened: `tests/e2e/test_session_login_to_feedback.py`. Membership in
+  the 13 is a subset check that a regression serving one archetype passes. The gate now also
+  computes, from the engine's own `outer_fringe` and `candidates` over the freshly seeded state,
+  every archetype open at cold start, asserts there is more than one, and asserts every one of
+  them was actually served.
+- Integrator, the archetype lists: `tests/tools/test_p1_archetype_list.py` (4 tests). The 13 ids
+  were typed in three places and checked against 11 in none. The plan text is now the source and
+  every copy is compared against it. Red under mutation: dropping one id from
+  `tools/build_p1_fixture.py` gives `AssertionError: assert {...} == {...}`.
+- Integrator, after the fresh review, which raised two blocking findings and both reproduced.
+  `audit_completeness` published a rate over a sample that was complete by id but not by verdict:
+  100 sample ids, 98 clean, one verdict `mostly_fine` and one `None` gave `missing_ids []` and
+  `key_error_rate 0.0`, which is what gate 29 and exit criterion 4 forbid. It now folds
+  `verdict_violations` in, reports `invalid_ids` and `unidentified_records`, and returns `None`
+  for the rate unless every verdict in the sample exists and is well formed (red:
+  `assert 0.0 is None`). And a record with no `item_id` raised `TypeError` out of a `sorted()`
+  rather than being reported; it is now counted. `app/design/tokens.py` checked
+  `accent-contrast-text`, `state-correct` and `state-incorrect` against nothing, so a token whose
+  role is text could hold any value and pass gate 26; the validator now checks
+  `accent-contrast-text` against the accent base and its four tints and each semantic colour
+  against each surface (red: `these do: ['accent-contrast-text']`).
+
 Session 2026-09-20 (seventh), suite line at open `191 passed in 23.36s`, at close `230 passed in 46.12s`.
 Style gate exit 0 on every touched file; `qa/12_report.py` exit 0; `data/`, `research/`, `schemas/`
 and `cache/` untouched, confirmed by `git status --porcelain` over all four. The slice was the
@@ -163,91 +421,206 @@ claimed.
 
 ## In progress [inferred]
 
-Session 2026-09-20 (eighth). Suite line at open `230 passed in 34.85s`. Phase stays P1: 11's P2
-entry criterion is "P1 merged with all gates green" and P1 has five gates open, so P2 may not
-start. The five open P1 gates are 17, 22, 25, 26, 29 and 30, and every one of them is human-only
-at its core. What this session builds is the whole of Buildable now plus the operator unblock kit
-for the human-only list, so that each remaining gate is one operator artefact away from green.
-
-Declared interfaces, written before any module starts, so wave 2 builds against these rather than
-against wave 1's code.
-
-- `app/design/contrast.py`: `relative_luminance(hex_color) -> float` and
-  `contrast_ratio(hex_a, hex_b) -> float`, taking `#rgb` or `#rrggbb`, case insensitive, raising
-  `ValueError` on anything else.
-- `app/db/migrate.py`: `missing_columns(engine) -> dict` mapping table name to a tuple of column
-  names declared on `Base.metadata` and absent from the live database; `apply_additive_migrations
-  (engine) -> tuple` returning the `table.column` strings added; `SchemaDriftError(RuntimeError)`
-  raised when the drift is not additive or the missing column is NOT NULL with no server default.
-- `app/audit/vocabulary.py`: one new action `provider_result_unreadable`.
-- `app/items/distractor_paths.py`: `error_ids_for_skills(snapshot, skill_ids) -> frozenset` and
-  `distractor_path_violations(record, error_ids) -> list` of human-readable violation strings,
-  empty when gate 30's property holds of the record.
-- `app/review/verdicts.py`: `verdict_violations(record) -> list` and
-  `audit_completeness(records, sample_ids) -> dict` carrying the audited count, the missing ids and
-  the published key error rate.
-- `app/design/tokens.py`: `TYPE_TOKENS` and `COLOUR_TOKENS` scanned from 08's own tables and role
-  list, `load_tokens(path) -> dict`, `token_violations(tokens) -> list`.
-
-Wave 1, seven modules, disjoint files and disjoint test names.
-
-- M1, integrator: `tools/gate_status.py`, `tests/tools/test_gate_status.py`. Reads the gate list
-  out of `docs/plan/11-phased-delivery.md` for every phase, greps `tests/` for each gate's test
-  name and prints phase, gate number, test name, present or missing.
-- M2: `app/db/migrate.py`, `tests/db/test_migrate.py`. Closes the `attempts.tutor_sentence` defect.
-- M3: `app/providers/guard.py`, `app/audit/vocabulary.py`, `tests/providers/test_guard_settle.py`.
-  Closes the silent `_settle` defect with an audit action, deduped per user per role per day.
-- M4: `app/design/contrast.py`, `tests/design/test_contrast.py`. Gate 26's arithmetic.
-- M5: `app/items/distractor_paths.py`, `tests/items/test_distractor_paths.py`. Gate 30's property
-  as a checker the operator can run before an item is published.
-- M6: `app/api/routes/sessions.py`, `tests/api/test_error_note.py`. One note per corrected item,
-  per 03's "the student writes one line", closing the silent-overwrite defect.
-- M7: `app/review/verdicts.py`, `tests/review/test_verdicts.py`. Gate 29's completeness and rate.
-
-Wave 2, the operator unblock kit.
-
-- M8: `app/design/tokens.py`, `tools/check_tokens.py`, `tests/design/test_tokens.py`,
-  `docs/operator/design-tokens.template.json`.
-- M9: `tools/check_items.py`, `tools/check_audit_verdicts.py`, `tests/tools/test_operator_clis.py`.
-- M10: `docs/operator/README.md`, `docs/operator/items.md`, `docs/operator/key-audit.md`,
-  `docs/operator/design-tokens.md`, `docs/operator/provider-key.md`.
-- Integrator: wires `apply_additive_migrations` into `app/main.py`, and strengthens gate 23's
-  archetype assertion.
+Nothing. The eleventh session closed with the suite green, the client building and the ledger
+current.
 
 ## Known defects [verified]
 
-- From the seventh session's review, not fixed. `attempts.tutor_sentence` has no migration. The
-  column reaches an existing `var/growth.db` only through `Base.metadata.create_all`, which does
-  not alter a table that already exists, so a database created before this session will raise on
-  the first feedback read. No migration tool is in `06-architecture.md` and adding one was out of
-  the slice. Until then, an existing development database is deleted and re-created.
-- From the seventh session's review, not fixed. `GuardedProvider._settle` swallows a pricing or
-  usage failure with no audit row, so an unreadable provider result is visible only as a budget row
-  left at the worst-case estimate. The audit vocabulary is closed and no action name covers it.
-- From the seventh session's review, accepted rather than fixed. Gate 23's subset assertion checks
-  membership in the 13, so a regression that serves only one of them still passes. Six of the 13
-  are unreachable at cold start because each one's primary skill has a hard prerequisite that is an
-  ordinary BC-SKL rather than one of the 25 seeded assumed-mastered parents, and BC-QA-01004's
-  gating parent BC-SKL-01028 is one of BC-QA-01004's own skills, so it can never open. That last
-  one looks like a library shape worth a question rather than a test defect.
+Two review rounds ran against this session's own diff, and both found blocking defects that were
+reproduced and fixed before close.
+
+- Wave 1 review, blocking, fixed. `app/design/css.py` emitted colour tokens and silently dropped
+  all nine type tokens on the one path the operator will take: filling
+  `docs/operator/design-tokens.template.json` and calling `stylesheet_from_tokens` produced 34
+  declarations, none of them `--growth-type-*`, while `CUSTOM_PROPERTIES` advertised 26 names. The
+  module now refuses a missing token of either kind, validates type values for the characters that
+  would end a declaration or a rule block, and the template carries the nine type tokens as nulls
+  so the operator can fill them. `tests/design/test_css.py` now exercises the real template rather
+  than only a hand-built full token file.
+- Wave 1 review, blocking, fixed. `app/items/distractor_paths.py` duplicated the comparison and
+  error-path core of `app/items/verify.py`, proven by replacing `verify._compare` and watching
+  `test_distractor_paths.py` stay green. One core now serves both callers and two monkeypatch
+  tests prove a change to it reaches both.
+- Wave 2 review, blocking, fixed, and the most serious finding of the session. Gate 25 could be
+  defeated by `it.skip`. The reviewer skipped the cross-fade case and rewrote every reduce block
+  to `transition: none`, which is the implementation 08 explicitly calls wrong, and the gate still
+  reported `1 passed`: the title regex matched only `it(`, so a skipped case left both sides of
+  the count, and nothing read `numPendingTests`. The scan now captures the modifier and refuses
+  `.skip`, `.todo`, `.only`, `.fails` and `.concurrent`, and the gate asserts `numPendingTests`
+  and `numTodoTests` are 0. The same attack now fails at `test_reduced_motion.py:52`. Everything
+  else thrown at the gate already failed correctly: absent `node_modules`, a renamed test file, a
+  glob matching zero files, broken reduce blocks, a stripped affordance and a stale report.
+- Wave 2 review, blocking, fixed. The client had no entry point. `index.html` named
+  `/src/main.tsx`, which did not exist, so `npx vite build` failed, and nothing imported
+  `motion.css`, so gate 25 asserted a property of a stylesheet no browser loaded. `main.tsx` and
+  `App.tsx` now exist, `main.tsx` imports the motion stylesheet, the build succeeds, and
+  `tests/web/test_client_builds.py` runs the production build so the gap cannot reopen unnoticed.
+  No P1 gate ran the build, which is why this was invisible.
+- Wave 2 review, three plan deviations in the session screen, fixed. The confidence rating could
+  be skipped although 11 P1 scope item 10 says it is collected before feedback on every item; the
+  error note was optional and was prompted after correct answers although the plan says one note
+  per corrected item; and a double-clicked `Next item` stranded the student on the server's 409
+  with nothing said. `commit` now reads the rating back off the attempt row the server wrote
+  rather than off local state, the note field renders only on the corrected path and is required
+  there, and one in-flight guard released in a `finally` covers all three submissions.
+- Wave 2 review, a vacuous test, fixed. `HomeScreen.test.tsx`'s colour scan caught only hex
+  literals, so `rgb(255, 0, 0)` and `red` passed, and its "only" test was an at-least-one match
+  inside a loop with no count guard. The scan now decides whether a value names a colour by
+  assigning it to a DOM node and asking whether the CSS parser kept it, subtracting the seven
+  CSS-wide and context keywords by name, so no colour list is hand-typed anywhere.
+
+From the eleventh session, 2026-09-21, found and not fixed.
+
+- The three screens are built and tested but are not mounted in the bundle. `App.tsx` routes
+  between home, session and settings and, for each, renders a panel headed "This screen is not
+  built yet" naming every required prop no client route supplies, because mounting a screen with
+  `[]`, `null` or `0` would render a queue claiming no work is due and a budget claiming nothing
+  was spent, which is a fabricated figure wearing the screen's real layout. A test asserts no
+  rendered route contains a digit at all, so a default cannot be slipped back in quietly. The
+  consequence to carry: gate 25's "still reaches the student" is asserted at component level, not
+  through a served page, and it closes one screen at a time as routes land.
+- Nothing calls `app/design/css.py` and nothing writes a generated stylesheet into the client, so
+  every `var(--growth-*)` resolves to the browser default. `App` probes `--growth-surface-page` at
+  render and shows a `role="status"` notice when it is absent. What is still owed once the
+  operator's token file lands: a build or startup step that reads it, calls
+  `stylesheet_from_tokens`, writes the result where the client imports it, and a `main.tsx` import
+  of that stylesheet beside the motion one.
+- No plan document gives copy for an in-session request failure. A rejected `submitAttempt`,
+  `submitConfidence` or `submitErrorNote` leaves the student on the same screen with nothing said.
+  The double-click case is closed by the in-flight guard, but a 500 or a dropped connection is
+  not, and the sentence was not invented. It needs a line in 08-design-brief.md's Interface
+  writing before it can be built.
+- `purgeConfirmationPhrase` has no client source. 08 gives the claudebox acknowledgement string
+  verbatim but gives no phrase for purge, so the settings screen takes it as a required prop and
+  the only value anywhere is a fixture in `SettingsScreen.test.tsx`.
+- The consolidation in `app/items/verify.py` changed one outcome beyond the duplication fix. The
+  old `_equals_key` collapsed an unsettled comparison into "not equal", so such an item reached
+  `verified`; it now lands in review. That is the safer reading and it is a behaviour change worth
+  knowing.
+- `tests/web/test_client_builds.py` runs `vite build` rather than `npm run build`, because the
+  latter chains `tsc --noEmit` and a type error in a module the bundle never loads would read as a
+  client that cannot be served. `tsc --noEmit` is still run separately and is clean.
+- The client cannot draw a worked example or a completion problem from what the server sends.
+  `GET /sessions/{id}/next` returns `ServedItem` from `app/runtime/bank.py:_as_item_dict`, which
+  deliberately withholds the worked solution before submission, so it carries `stem` and no step
+  list. Stages `example` and `completion` both need one. Failure scenario: a student opens a
+  session, block 2 serves a stage-example item, and the screen has nothing to render above the
+  answer field. `Item.tsx` takes `workedSteps` as a required prop with no default and
+  `SessionScreen` requires `workedStepsFor(item)` from its caller, so nothing is fabricated, but
+  no route supplies it. What the route owes, for stages example and completion only:
+  `served_steps: [{index, text}]`, all steps at example, the first n-1 and never the last at
+  completion.
+- `FeedbackPayload.self_explanation_prompt` arrives only after submission, but the example stage
+  shows the self-explanation prompt before any submission. `SessionScreen` requires
+  `selfExplanationPromptFor(item)` for that reason. The same pre-submission payload should carry
+  it.
+- Nothing persists the self-explanation answer. `POST /sessions/{id}/attempts/{aid}/error-note` is
+  the error note only. Failure scenario: a student types an answer to "which rule justifies step
+  k, and why does it apply here" at the example stage and it is dropped when the item advances.
+- A student whose MathLive chunk fails to load is stuck on that item. `Item.tsx` now tells them
+  the problem cannot take an answer and withdraws the confidence prompt and the commit button, but
+  the only way forward is `Next item`, which lives behind feedback, and feedback needs an attempt.
+  No plan section specifies a skip or reload path, so none was invented. Worth a decision before
+  P1 ships.
+- Nothing in the client suite exercises real MathLive. Its package exports map answers the "node"
+  condition with a server-side bundle that omits `MathfieldElement`, and Vitest resolves that
+  condition under jsdom. Adding `resolve.conditions` to `vite.config.ts` was tried and broke seven
+  other test files, so the seam is tested against an honest stub custom element instead. Nothing
+  proves `MathfieldElement` registers, that `<math-field>` upgrades, that a real keystroke emits
+  an `input` event, or that the real `getValue("math-json")` returns parseable MathJSON. The
+  failure path is exercised through a mocked rejecting module, so the browser's real rejection
+  shape is assumed rather than observed. A browser-level check is the only thing that closes this.
+- The consolidation in `app/items/verify.py` changed one behaviour. The shared core is `verify`'s
+  comparison, which re-runs `numeric_check` after `equivalence`. For every settled comparison that
+  is identical to what `distractor_paths` did, because `numeric_check` is seeded. The one case
+  that can now decide differently is when `equivalence` hits its 5 second SIGALRM timeout:
+  previously the checker called that unsettled, now the unbounded `numeric_check` may settle it
+  either way. Nothing tests that path.
+- `types.ts` `ServedItem` omits `is_probe`, which `app/engine/select.py` `dress_item` writes onto
+  every served slot, so the client's `ServedItem` gate is one-directional rather than exact
+  equality. `SessionPayload.queue` is typed `Record<string, ServedItem[]>`, but
+  `service.queue_payload` returns `block1` to `block4`, `forecasts`, `coverage_gaps` and
+  `interleaving_satisfied`, so three of those values are not item arrays and no gate covers them.
+- `app/design/css.py` emits only `[data-theme="..."]` selectors, with no `:root` default and no
+  `prefers-color-scheme` block. A document rendered before the shell sets `data-theme` resolves
+  every `var(--growth-*)` to empty. 08 requires no default, so this is an interface note rather
+  than a deviation.
+- Entry criterion 5 names a nine-value spacing scale alongside the nine type-scale steps.
+  `app/design/tokens.py` carries no spacing vocabulary at all, so the template offers no spacing
+  slot and `CUSTOM_PROPERTIES` advertises none. The names were not invented. The operator kit
+  still owes a `SPACING_TOKENS` table, its nulls in the template and its emission in `css.py`.
+- The `var(--growth-*)` role assignments on the home and settings screens, meaning which text sits
+  on `text-secondary` against `text-muted` and which control is `accent-base` against
+  `surface-sunken`, were chosen by the builder. 08 fixes token names and roles in the abstract but
+  gives no screen-by-screen mapping. This is a first pass, not a spec-derived assignment, and a
+  design review should confirm it.
+- `motion.ts`'s `INSTANT_CLASSES` is a hand-typed list of the six repeated-keystroke paths 08
+  names, checked against a hand-authored stylesheet. The six do match 08, and
+  `TRANSFORM_MOTION_CLASSES` is correctly derived from `P1_FEEDBACK_AFFORDANCES`, but nothing
+  parses 08 for them the way `test_tokens.py` parses it for the type scale. A seventh path added
+  to 08 would fail no test.
+- `app/web/src/api/client.ts` issues `POST /sessions/{id}/attempts/{aid}/error-note`, which is not
+  in 06's API surface table. The route predates this session and 06 was never updated. The client
+  conformance test scans the FastAPI decorators, so it catches client and server drift but cannot
+  catch server and plan drift.
+- The style gate blocks U+2600 to U+27BF, so tick and cross glyphs are unusable. The correct and
+  incorrect glyphs are the ASCII strings `ok` and `x`, the second matching 08's own wireframe. Real
+  tick glyphs would need a gate exemption or inline SVG.
+
+- Resolved 2026-09-20 (ninth): the unconditional `temperature` on every Anthropic call, which
+  was a 400 on every routed model. See Done.
+- From the ninth session, not fixed. The 26 templates in `var/` all fail the extended gate,
+  and every one of them was generated before the schema carried `representation`, `figure`,
+  `role` or the allowed BC-ERR list, so the 0 of 26 is a contract measurement and not yet a
+  model measurement. A fresh paid run against the new prompt is the next measurement and is
+  not taken without the operator.
+- From the ninth session, not fixed. `tools/template_trial.py` `structure` treats degree,
+  head, function set, arity and zero-ness as the whole of a solution path's shape. A radical
+  that changes which theorem applies without changing any of those, such as a sign pattern
+  that switches an integrand between two antiderivative rules, passes the incidental check.
+  The check is a floor, not a proof.
+
+- From the eighth session's review, not fixed, not blocking. `app/items/distractor_paths.py`
+  reimplements the two comparison loops and the error-path resolution of
+  `app/items/verify.py`'s `distractor_checks`, although its own docstring says it does not. The
+  two now disagree on policy by design: the checker reports an unsettled comparison as a
+  violation, while `ingest.distractor_distinct_check` returns indeterminate and routes to review.
+  Failure scenario: a future change to 04's rejection rule 5 has to land in two files and a
+  reviewer editing one will not see the other.
+- From the eighth session's review, not fixed, not blocking.
+  `tests/design/test_tokens.py::test_a_filled_pair_at_the_floor_is_accepted` does not test the
+  floor. Its fixture sets every checked pair to black on white, which is 21:1, and the boundary
+  the code tests with `ratio < TEXT_CONTRAST_FLOOR` is never exercised at exactly 4.5.
+- From the eighth session's review, not fixed, not blocking. `tests/design/test_tokens.py` reads
+  the colour token names out of 08 but types out the `accent-tint-1` to `accent-tint-4` range. If
+  08 said "1 through 6" the test would build four names, `COLOUR_TOKENS` holds four, and it would
+  pass.
+- From the eighth session, not fixed. Gate 22, `test_prompt_cache_prefix_length`, has no test
+  function anywhere under `tests/`. It cannot be written honestly without a key, because it
+  asserts a token count of the tutor template's static prefix.
+- From the eighth session's review, not fixed, and worth the operator's eye.
+  `provider_result_unreadable` is a sixth action in `app/audit/vocabulary.py` that 09's prose does
+  not enumerate. So is `app/db/migrate.py` itself: 06 names no migration mechanism at all, and its
+  only migration prose is Postgres through SQLAlchemy at phase 8, so the additive migrator is an
+  implementer-invented seam.
+- From the eighth session, a gap in the evidence rather than a defect. The gate 23 strengthening
+  could not be shown red by a mutant: a copy of the repository under the scratchpad does not run
+  the end-to-end test green even unmutated, because the cassette and content paths do not resolve
+  outside the working tree. The strengthening rests instead on two assertions that are both live,
+  that more than one archetype opens at cold start and that every one of them was served.
+- From the seventh session's review, accepted rather than fixed and still true. Six of the 13 P1
+  archetypes are unreachable at cold start because each one's primary skill has a hard prerequisite
+  that is an ordinary BC-SKL rather than one of the 25 seeded assumed-mastered parents, and
+  BC-QA-01004's gating parent BC-SKL-01028 is one of BC-QA-01004's own skills, so it can never
+  open. That last one looks like a library shape worth a question rather than a test defect. Gate
+  23 no longer accepts a one-archetype regression, but it still cannot reach those six.
 - From the seventh session, a behaviour change to note. `compose_sentence` now returns `None` where
   it used to return `""` when a provider returns an empty string, on the uncached path as well.
   Nothing in the suite depended on the old reading and the route treats a missing sentence as the
   degradation case.
 
-- From the sixth session's review, not fixed. The tutor is still called from the feedback route on
-  every GET with no budget guard, no usage accounting and no `audit_log` write, which is the seam
-  07 describes; the sixth session only made the role opt-in so an unconfigured deployment cannot
-  spend. Until that seam exists, `GROWTH_TUTOR_PROVIDER=anthropic` is a deliberate operator choice
-  to spend without a cap.
-- `write_coverage_gap_audit` writes one row per gap per `open_session` with no dedupe, so a
-  permanent coverage gap produces a row every session for the life of the deployment. 06 asks for
-  the gap to be written to `audit_log`, not for a per-session heartbeat.
-- The error note takes any length and a repeat POST silently overwrites the previous one, although
-  02's block 4 says one note per corrected item. 06 sets no cap, so none was invented.
-- `reauth_established` and `coverage_gap_fail_closed` are free strings at their call sites. 09 asks
-  for an action drawn from a controlled vocabulary and nothing in the code enumerates one. The
-  reauth entry carries `detail=None`, so it records that a re-tap happened but not what it gated.
+- The error note still takes any length. 03 and 06 set no cap, so none was invented. The repeat
+  POST and the multi-line note are fixed as of the eighth session.
 - `scoring_consequence` is empty on every wrong short answer, so feedback carries two of 03's three
   required parts on that path. See Plan corrections for why the BC-PT branch was not implemented.
 
@@ -341,6 +714,175 @@ Wave 2, the operator unblock kit.
 - `qa/last_report.json` is regenerated whenever `qa/12_report.py` runs and is restored with `git checkout -- qa/last_report.json` at session close, so the library's committed report does not drift because of build sessions.
 
 ## Plan corrections applied [verified]
+
+From the eleventh session, 2026-09-21.
+
+- `docs/plan/11-phased-delivery.md` gate 25 and the previous three sessions' Next candidates. The
+  old reading filed `test_reduced_motion_replaces` as human-only, waiting first on the design token
+  file and then on screens. The new reading is that gate 25 reads no hex value: its property is the
+  reduced-motion contract plus the presence of five affordances, and 11's own P1 scope items 8
+  (`app/web/session/Item.tsx`), 11 (`app/web/input/`) and 17 (home, session and settings screens)
+  put the client inside P1. The gate is closed this session with the token file still unwritten.
+  The token file still blocks gate 26, which does read hex values, and that remains human-only.
+- `docs/plan/06-architecture.md` line 93 names React 18, TypeScript, Vite, KaTeX and MathLive, and
+  names no client test runner, exactly as it names no Python test runner. Vitest with jsdom and
+  @testing-library/react are therefore the implementer's choice on the same footing as pytest,
+  hypothesis and httpx2, which 06 also does not name. `@types/node` was added for the same reason.
+  Recorded here rather than treated as a dependency not named in 06.
+- `docs/plan/08-design-brief.md` Motion rules gives one number, "under roughly 300 ms", and states
+  that Material 3's numeric duration and easing tokens could not be loaded, so specific millisecond
+  values are unknown. `motion.css` uses 300ms as the single duration and cites it as the stated
+  ceiling rather than as a token value. This is a bound used as a value and is flagged rather than
+  hidden.
+- `BUILD-LEDGER.md`'s eighth-session finding on the accent tint range does not reproduce as
+  written. It said a brief reading "1 through 6" would leave the test green against a four-name
+  `COLOUR_TOKENS`. In fact the old parser's range regex stops matching under that mutation and the
+  interior names vanish, so the old test also went red, for an incidental reason. The fix is still
+  correct and the endpoints are now derived from 08, but there was no false pass to point at.
+
+Session 2026-09-20 (ninth).
+
+- `docs/plan/02-adaptive-engine.md`, Variant adjustment. Read as if instantiations of one
+  template share the archetype's difficulty. A paragraph now records that they do not, per the
+  sources in 13, that the prior gains no variance term and accepts a centre-ward bias, and the
+  measurement that would add the term. Reason: Tian and Choi (2023) and Sam et al. (2023), as
+  summarised in 13.
+- `docs/plan/04-item-generation.md`, the parameter spec bullet for `role`. Read `role` (`safe`
+  or `difficulty`) with no check behind it. It now maps `safe` to a declared incidental and
+  `difficulty` to a declared radical, states that the declaration is checked by structural
+  invariance of the solution path, and that distractor composition is always a radical.
+  Reason: Embretson and Daniel (2008), distractor evaluation b = 0.999.
+- `docs/plan/11-phased-delivery.md`, P4 scope items 7 and 11. Read `app/generation/generate.py`
+  and `prompts/generator/symbolic_v1.md`, per-item generation. Now read
+  `app/generation/template.py`, `app/generation/instantiate.py` and
+  `prompts/generator/template_v1.md`. Reason: the template architecture decided in 13; none
+  of the named files existed, so no code moved.
+- `docs/operator/ai-operating-costs.md`. Read `app/providers/anthropic.py:79 sends one today
+  and must stop`; now records the fix. Every dollar figure re-derived from
+  `tools/cost_model.py`, see Done.
+
+Session 2026-09-20 (AI layer research pass). No application code, no tests and no `app/` change.
+`docs/plan/13-ai-engineering.md` and `docs/operator/ai-operating-costs.md` are new. Every number
+in both was fetched from a provider page on 2026-09-20 or measured in this repository; the
+unsourced ones are listed in 13 under "Claims I could not source". `data/` and `research/` were
+read and not written; `git status --porcelain` on both is empty. `qa/12_report.py` exit 0.
+`tools/style_gate.py` exit 0 on every file written.
+
+- `docs/plan/07-ai-provider-layer.md`, the D8 routing table, three rows. The verifier read
+  `Anthropic claude-opus-5`, the same model as the generator, which maximises the correlated
+  generator-verifier failure that 04 guards against with "a second model, on a different provider"
+  and that 10 calls "the worst case"; it now reads `Gemini 3.8 Flash (batch, paid tier)` with
+  `claude-sonnet-5` on batch second. The diagnostician read `Anthropic claude-opus-5` while the
+  same document justifies Anthropic-first by naming the grader, the verifier and the transcriber
+  as the roles whose errors reach a student directly, which does not include the diagnostician,
+  and while the grader, which it does name, runs on Sonnet; it now reads `claude-sonnet-5`. The
+  transcriber read `Anthropic claude-haiku-4-5`, which sits in the standard vision tier at a
+  1568 px long edge and 1568 visual tokens against the high-resolution tier's 2576 px and 4784 on
+  Claude 4.7 and later, on the one role whose dominant failure mode is misreading; it now reads
+  `claude-sonnet-5`, at a cost difference of $0.008 a page. A paragraph under the table records
+  each reason and points at 13.
+- `docs/plan/07-ai-provider-layer.md`, the Anthropic Known traps paragraph. It recorded that
+  `thinking: {type: "enabled"}` returns 400 on Opus 5 and Sonnet 5 and left the reader with the
+  impression that not sending a thinking parameter leaves thinking off. It does not: thinking is
+  on by default on both models and its tokens are billed as output. The paragraph now records the
+  default, the explicit `thinking: {"type": "disabled"}` form and its per-model availability, and
+  the `output_config.effort` parameter, whose default is `high` and whose resolved value
+  invalidates the prompt cache. Leaving either at its default is the largest avoidable cost in the
+  tutor role: $14.92 against $5.01 over the cycle at 12 calls a session.
+- `docs/plan/07-ai-provider-layer.md`, the batch paragraph. It recorded the discount, the size
+  limits and the expiry and not the two facts that change how a batch is built: batch results come
+  back in any order and must be matched by `custom_id`, and prompt caching inside a batch is best
+  effort at a reported 30 to 98 percent because requests process concurrently. Both are now
+  recorded, with the mitigation the documentation itself gives.
+- `docs/plan/07-ai-provider-layer.md`, the cache-prefix stability paragraph. It named 4,096 on
+  Haiku 4.5 as a minimum a role had to clear. With the transcriber moved off Haiku 4.5 no role
+  routes there, so the binding minima are 512 on Opus 5 and 1,024 on Sonnet 5.
+- `docs/plan/07-ai-provider-layer.md`, the fallback chain example. Its `diagnostician` block still
+  named `claude-opus-5` as the order 1 deployment after the routing table moved that role to
+  `claude-sonnet-5`. Corrected to match the table.
+- `docs/plan/07-ai-provider-layer.md`, the Gemini adapter table and its Known traps paragraph. The
+  table's Data policy row read "unknown from the loaded pages" and the trap paragraph said the
+  unknown policy "is itself a reason it is a secondary rather than a default". Both were true on
+  2026-09-19 and are false now. The row carries the paid-tier and unpaid-tier statements with their
+  URLs, and the paragraph says the tier rather than the provider is what the router checks, that an
+  unpaid Gemini deployment is refused for the four roles carrying student text, and that the
+  verifier carries only a generated stem, which is one reason it is the role routed to Gemini first.
+- `docs/plan/07-ai-provider-layer.md`, "Why Gemini 3.8 Flash second, by cost" and the sentence
+  "Since Gemini is the secondary for every role". Gemini is now the primary for the verifier, so
+  both read wrong. The heading names the split and the trap paragraph records that the verifier's
+  own prefix of about 1,100 tokens does not clear Gemini's 4,096 implicit minimum, so the verifier
+  is priced uncached in `13-ai-engineering.md`.
+- `docs/plan/04-item-generation.md`, the output schema `required` list. It read
+  `["stem", "key", "worked_solution", "metadata"]`. `metadata` is entirely an echo of the
+  generation request, it was 32.0 percent of the emitted characters on a measured full-schema
+  record, and a model that restates a provenance field wrongly corrupts an item's provenance for
+  no benefit. It now reads `["stem", "key", "worked_solution"]` and the backend writes the block.
+- `docs/plan/04-item-generation.md`, rejection rules. None of rules 1 to 14 checked that a
+  worked-solution step is mathematically correct, so the key was verified three ways while the
+  worked solution a student reads on the feedback screen was unverified model output. Rule 15 is
+  added: a step carrying a `sympy` expression must follow from the previous step's under the rule
+  it names, checked with `app/items/verify.py` `equivalence`, and a step that is an identity under
+  the drawn parameters is vacuous and is rejected.
+- `docs/plan/04-item-generation.md`, the independent re-solve paragraph. It said D8 routes the
+  verifier to `claude-opus-5`, which is now wrong and was always in tension with the same
+  paragraph's own "a second model, on a different provider". It now names the corrected routing
+  and states decorrelation as a property of the routing alongside key-blindness as a property of
+  the prompt.
+- `docs/plan/04-item-generation.md`, the Monte Carlo family pass. It read as a per-item check in a
+  list of per-item checks. It is a property of the parameter spec, so running it per item repeats
+  one archetype's work forty times; it now says it runs once per archetype per spec version before
+  any item is generated, and points at 13 for the cheapest-first ordering of all five checks.
+- `docs/plan/12-open-questions.md`, the Gemini data-policy entry. It said Gemini stays second tier
+  until the policy is read. The policy was read on 2026-09-20: the paid tier does not use prompts
+  or responses to improve Google products, the unpaid tier does and human reviewers may read the
+  content, and default log retention is 55 days configurable to 7. The entry now records the
+  resolution, and the free-tier limits entry is moot because the free tier is unusable for any
+  role carrying student work.
+- `docs/plan/12-open-questions.md`, the OpenRouter tool-calling entry. Closed as not applicable,
+  since no role uses tools.
+- `docs/plan/12-open-questions.md`, the tunables register. Item bank size moved from "30 to 60" to
+  40, generated 20 first and topped up on measurement, conditional on the draw rule becoming least
+  recently served. The client token estimate divisor is superseded by the free
+  `POST /v1/messages/count_tokens` endpoint, with 3.1 rather than 4 surviving as the offline
+  fallback. The tutor token cap moved from unset to 250,000 a day, which binds within a few calls
+  of the $1.00 cap at the corrected configuration. Six new rows were added for the settings 13
+  creates: thinking per role, effort per role, max output tokens per role, cache TTL per role, the
+  bank draw rule and the distinct-item corroboration rule.
+
+Session 2026-09-20 (eighth). None of these edits docs/plan; each is recorded here for the operator
+to carry into the named file.
+
+- 06 names no migration mechanism. Its only migration prose is Postgres replacing SQLite through
+  the same SQLAlchemy models at phase 8, and `Base.metadata.create_all` never alters an existing
+  table, so a column added to a model after a database existed never reached it. The build adds
+  `app/db/migrate.py` and calls it from `make_engine`. It is additive only: it adds a nullable
+  column or one with a server default, and refuses a NOT NULL column with no default and a column
+  declared unique or indexed, because ALTER TABLE ADD COLUMN carries neither constraint. A type
+  change and a dropped table are not detected, which is the documented scope.
+- 09's audit vocabulary has no entry for a provider result the guard cannot read. The build writes
+  `provider_result_unreadable`, deduped on the budget row, which the operator should carry into
+  09's list or rename there. 07 puts usage accounting at the provider seam and says nothing about
+  a result the seam cannot parse.
+- 03's "The student's one-line error note" says the student writes one line and gives no length.
+  The build enforces both halves mechanically, one note per corrected attempt and no line break in
+  it, and enforces no length at all, because a character cap would be a number in no plan
+  document.
+- 04's rejection rule 5 asks whether a distractor equals the key. An unsettled symbolic comparison
+  has not established that it does not, so `app/items/verify.py` no longer collapses unsettled
+  into not-equal and `distractor_distinct_check` returns indeterminate for it, which leaves the
+  item a draft and routes it to review rather than verifying it. That is what
+  `app/items/ingest.py`'s own docstring already claimed of an indeterminate check.
+- 08 fixes token names and roles and no hex values, and says the floors are stated over text.
+  `accent-contrast-text` is a text role and 08 does not say which background it sits on; the
+  validator checks it against the accent base and all four accent tints. `state-correct` and
+  `state-incorrect` are checked against every surface. 08 names tint ramps for both semantic
+  colours without enumerating their steps, so no ramp step names were invented.
+- 11's P1 gate 26 reads the hex values out of a token file the implementer produces. That file
+  does not exist and the build authors no part of it: `docs/operator/design-tokens.template.json`
+  is every token name at null, and a null reads as a missing value rather than as a skip.
+- 11's P1 scope names the 13 archetypes and three files in the repository typed the list
+  independently. `tests/tools/test_p1_archetype_list.py` now parses the ids out of 11 and compares
+  every copy against it.
 
 Session 2026-09-20 (seventh).
 
@@ -441,6 +983,154 @@ Session 2026-09-20 (seventh).
 - `tools/style_gate.py` (pre-existing uncommitted edit from the planning session): the gate now also covers `/docs/` paths, and the two dash literals are written as escapes so the file passes its own check. Both edits strengthen or preserve the gate. The wider scope is pending operator confirmation and is listed as an out-of-scope change.
 - 02 block 1 ("5 items or 5 minutes of forecast, whichever comes first") with the 3-minute default forecast admits exactly one item until an archetype has 5 timed attempts, so the 5-item cap is unreachable early on. Implemented as written; the exit-criterion-5 walkthrough must not be read as evidence the item cap works.
 - 02 invariant 23 (both the split and the compensatory prediction logged on every observation): `attempts` carries `p_split` and `p_compensatory` columns from this session, schema only; the writer arrives with the session loop in the slice that builds `POST /sessions/{id}/attempts`.
+
+## Decisions taken on the operator's instruction, 2026-09-20 [inferred]
+
+Sixth session, on the instruction "answer all decisions for me". Every open question the ledger
+held for the operator is answered here. None of these is implemented yet except the last; they are
+the standing answers the next slice builds against.
+
+- A wrong short answer does get elaborated feedback in P1, as built this session. R12 rule 3 gives
+  it no error path, so it carries the violated step and the worked solution and leaves the two
+  BC-ERR fields empty. Feedback that names the step beats no feedback at all on the whole short
+  answer path, and 03's Content section already contemplates an archetype with no matched error.
+- `tests/fixtures/items_p1/` may be filled with synthetic items for gate 23. Gate 23's property is
+  the flow, login to feedback to a persisted `skills_state` change, not item quality, so a fixture
+  item exercises it honestly. Gates 17, 29 and 30 are item-quality gates and still wait for the 130
+  hand-authored items; no synthetic item may be counted toward them, and the fixture directory
+  carries a README saying so.
+- Cassettes under `tests/fixtures/provider_cassettes/` may be hand-written fixtures rather than
+  recordings, until a key exists. A cassette is a fixture response for `ReplayProvider`, so writing
+  one by hand proves the replay path and the no-network rule. Every hand-written cassette is marked
+  synthetic in the file, and gate 22's token count still waits for a real key.
+- Purge truncates the tables that carry no `user_id`: `review_queue`, `jobs`, `items` and
+  `item_verifications`. The installation is single-user, so every row in them is that user's work.
+  `content_snapshots` is kept, because it is derived from the read-only library and holds nothing
+  the student wrote. The purge audit entry survives the purge instead of being deleted with the
+  rest of `audit_log`.
+- py_webauthn (`webauthn` on PyPI) is approved for `pyproject.toml` and is to be named in 06 when
+  the dependency lands.
+- The error note is capped at 500 characters and a second POST replaces the first. One note per
+  corrected item is 02's rule; replacing a note is editing it, not adding a second one.
+- `reauth_established` and `coverage_gap_fail_closed` join 09's audit vocabulary, and the code gets
+  one module-level enumeration of action names so the vocabulary is controlled in fact and not only
+  in the plan.
+- The coverage-gap audit writes one row per user per archetype and skips a gap already recorded,
+  rather than one row per session opened.
+- The tutor stays opt-in through `GROWTH_TUTOR_PROVIDER` until 07's budget, usage and audit seam is
+  built. That seam is the next slice.
+- The 24 stray `* 2.py` files were deleted. Twenty-two were byte-identical to their counterparts,
+  and `tests/api/conftest 2.py` and `tests/items/test_verify 2.py` were strictly older versions of
+  files that still hold everything they held. The suite now reports `191 passed` without
+  `--ignore-glob`.
+
+## Decisions taken on the operator's instruction, 2026-09-19 [inferred]
+
+Second session, on the instruction "decide anything that needs my input yourself":
+
+- Gate 31: both structural causes were corrected in the engine and the plan rather than in the fixture, because the real library has the same shape (440 of 522 listed skills sit in exactly one active archetype, `data/archetypes.json`). `gamma` 0.4 to 1.0 and `rho` -0.2 to -0.5 in `app/engine/constants.py`, 02, 11 and 12; 1.0 is PFA's own unit weight on `phi(c)` and keeps the 2 to 1 asymmetry. Mastery condition 3 becomes min(2, archetypes listing the skill in the active snapshot) via `EngineGraph.archetype_counts` and `evaluate_mastery(state, today, archetypes_available)`; a graph without counts keeps the old unconditional 2.
+- Three selection-test fixture rows lacked the `stage` key that every production attempts row carries (`repository.load_attempts_history`, the runner); the new gamma pushed cold-start `p_knowledge` above 0.9 and reached `format_for_attempt`, which reads it. The rows were completed, no assertion changed.
+- `httpx2` as the test dependency for FastAPI's TestClient.
+- WebAuthn: use py_webauthn (`webauthn` on PyPI) when the passkey slice is built; record it in 06 then.
+- Attempts at stage completion or unsupported whose rating never arrives: `close_session` will apply them with rating unsure (no hypercorrection can fire from unsure), so no observation is lost; to be built with the routes slice.
+- Seeding the 618 `skills_state` rows happens on passkey registration finish, the only account-creation path.
+
+- The prerequisite-graph cycle was closed by flipping the reversed row: `BC-SKL-06023,BC-SKL-05020,supporting` became `BC-SKL-05020,BC-SKL-06023,supporting`, because the row's own note stated that the Unit 6 skill depends on the Unit 5 one, which is the opposite of the direction it was stored in. Applied directly to `data/prereq_edges.csv`, then `tools/sync_dependents.py`, `tools/merge_staging.py`, the post-change tool chain and `qa/12_report.py`.
+- The FSRS-7 forms stay as copied from fsrs-rs; 02's transcribed block stays marked superseded.
+- The application lives in this repository; the local CLAUDE.md was amended to say so. The style gate keeps its wider `/docs/` scope.
+- The build is committed on the branch `build/p1-backend-core`; main is untouched.
+
+## Next candidates [inferred]
+
+Session 2026-09-21 (eleventh) closed gate 25 and with it the last P1 deliverable that needed
+nothing from the operator. P1 stands at 26 of 31 gates present and passing. All five remaining
+gates are operator-authored content, and each already has its checker, its shape and its work
+order built. `docs/operator/README.md` is the index. `python3 tools/gate_status.py --phase P1` is
+the check.
+
+Human-only, in the order that unblocks the most:
+
+1. Gates 17 and 30, and exit criterion 7. The 130 hand-authored items, 10 per archetype over the
+   13 the plan names. Shape reference and field list: `docs/operator/items.md`. Checker:
+   `python3 tools/check_items.py <directory>`, exit 0 when every record is clean. The synthetic
+   records in `tests/fixtures/items_p1/` are the shape and count toward no item-quality gate.
+   Blocked on this: `test_item_verification_tools` and `eval_p1_distractor_paths`, one wrapper each
+   over `app/items/ingest.py` and `app/items/distractor_paths.py` once real items exist.
+2. Gate 29 and exit criterion 4. The 100-item key audit. Field list and verdict meanings:
+   `docs/operator/key-audit.md`. Checker:
+   `python3 tools/check_audit_verdicts.py <verdicts.json> <sample.json>`. P1 sets no pass
+   threshold; the requirement is that the number exists. Depends on the items, so it is second.
+3. Gate 26 and entry criterion 5. The design token file. Copy
+   `docs/operator/design-tokens.template.json`, which now carries the nine type-scale tokens
+   alongside the seventeen colour tokens per theme, fill every null, and run
+   `python3 tools/check_tokens.py <path>`. 11's implementer decision 6 also wants a named WCAG 2.2
+   checker's output in the pull request beside the tool's. Blocked on this: `test_contrast_floors`,
+   a wrapper over `app/design/tokens.py`. Note that the template still offers no spacing slot; see
+   Known defects.
+4. Gate 22. A provider key. `docs/operator/provider-key.md` names the environment variables the
+   composition root reads. The count it measures is the tutor template's static prefix against
+   claude-sonnet-5's 1,024-token minimum, and the ledger already records that both templates are
+   far short of it, so gate 22 will fail on length rather than merely be unmeasurable.
+
+Not human-only and open, for a session that wants work before the operator's content arrives.
+These are the client-side gaps this session opened and could not close from inside the client:
+
+- The `served_steps` payload for stages example and completion, and the pre-submission
+  self-explanation prompt, and a route that persists the self-explanation answer. All three are
+  under Known defects with their failure scenarios. These are server work in
+  `app/runtime/bank.py`, `app/session/service.py` and `app/api/routes/sessions.py`, and until they
+  land the session screen is driven by required props its caller has to invent.
+- The routes the home and settings screens need and no client function returns: the queue minute
+  forecast and the three queue counts, the exam date and days to exam, the provider role
+  assignments and the budget figures, and the passkey re-authentication ceremony gate 24 already
+  tests on the server but which the client cannot call.
+- `app/main.py` still builds no ASGI entrypoint that mounts the client, so nothing serves
+  `app/web` beside the API. `client.ts` issues relative paths on that assumption.
+- A `SPACING_TOKENS` table in `app/design/tokens.py`, which entry criterion 5 names and the
+  vocabulary does not carry.
+
+P2 still cannot start. Its entry criterion in 11 is "P1 merged with all gates green" and five P1
+gates are missing.
+
+
+## Next candidates [inferred]
+
+Session 2026-09-20 (eighth) leaves P1 with no deliverable buildable without the operator. Every
+open gate is one of the five human-only artefacts below, and each one now has its checker, its
+shape and its work order already built, so the operator's step is authoring and nothing else.
+`docs/operator/README.md` is the index. The commands below are the ones that decide whether an
+artefact is done.
+
+- Gates 17 and 30, and exit criterion 7. The 130 hand-authored items, 10 per archetype over the 13
+  the plan names. Shape reference and field list: `docs/operator/items.md`. Checker:
+  `python3 tools/check_items.py <directory>`, exit 0 when every record is clean. The 36 synthetic
+  records in `tests/fixtures/items_p1/` are the shape and count toward no item-quality gate.
+  Blocked on this: the two gate test functions, which are one wrapper each over
+  `app/items/ingest.py` and `app/items/distractor_paths.py` once real items exist.
+- Gate 29 and exit criterion 4. The 100-item key audit. Field list and verdict meanings:
+  `docs/operator/key-audit.md`. Checker:
+  `python3 tools/check_audit_verdicts.py <verdicts.json> <sample.json>`, which publishes the rate
+  only when every verdict in the sample exists and is well formed. P1 sets no pass threshold; the
+  requirement is that the number exists. It depends on the items, so it is second in line.
+- Gate 26 and entry criterion 5. The design token file. Copy
+  `docs/operator/design-tokens.template.json`, fill every null with a hex colour, run
+  `python3 tools/check_tokens.py <path>`. Decision 6 also wants a named WCAG 2.2 checker's output
+  in the pull request alongside the tool's. Blocked on this: `test_contrast_floors`, which is a
+  wrapper over `app/design/tokens.py`.
+- Gate 25. `test_reduced_motion_replaces` and the five P1 feedback affordances it names. `app/web/`
+  does not exist and screens belong to no phase before this one, so this waits on the token file
+  and then on the screens.
+- Gate 22. A provider key. `docs/operator/provider-key.md` names the environment variables the
+  composition root reads and what the key is for here, which is measuring the token count of the
+  tutor template's static prefix. The adapter, the two templates and the replay player exist and
+  run without one. `test_prompt_cache_prefix_length` has no test function anywhere yet and cannot
+  be written honestly until the count can be measured.
+- Not human-only and still open, if a session wants P1 work before the items arrive: the three
+  non-blocking review findings under Known defects, which are the duplicated comparison logic in
+  `app/items/distractor_paths.py`, the contrast floor boundary that no test exercises at exactly
+  4.5, and the accent tint range typed out in `tests/design/test_tokens.py`.
+- P2 cannot start. Its entry criterion in 11 is "P1 merged with all gates green" and six P1 gates
+  are missing. `python3 tools/gate_status.py --phase P1` is the check.
 
 ## Decisions taken on the operator's instruction, 2026-09-20 [inferred]
 

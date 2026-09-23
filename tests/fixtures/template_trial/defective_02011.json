@@ -1,0 +1,80 @@
+{
+  "archetype_id": "BC-QA-02011",
+  "template_id": "TPL-02011-DEFECTIVE",
+  "parameters": [
+    {
+      "name": "a",
+      "kind": "integer",
+      "low": 1,
+      "high": 4,
+      "exclude": []
+    },
+    {
+      "name": "b",
+      "kind": "integer",
+      "low": -6,
+      "high": -2,
+      "exclude": []
+    },
+    {
+      "name": "c",
+      "kind": "integer",
+      "low": -3,
+      "high": -1,
+      "exclude": []
+    }
+  ],
+  "constraints": [],
+  "expressions": [
+    {
+      "name": "f",
+      "expr": "a*x**2 + b*x"
+    },
+    {
+      "name": "fp",
+      "expr": "2*a*x + b"
+    },
+    {
+      "name": "m",
+      "expr": "2*a*c + b"
+    },
+    {
+      "name": "y0",
+      "expr": "a*c**2 + b*c"
+    },
+    {
+      "name": "ln",
+      "expr": "m*(x - c) + y0"
+    },
+    {
+      "name": "wrong",
+      "expr": "m*(x - c) + y0 + 1"
+    }
+  ],
+  "key": {
+    "name": "wrong",
+    "form": "symbolic"
+  },
+  "stem": {
+    "template": "Let $f(x) = <<f>>$. Write the tangent line at $x = <<c>>$."
+  },
+  "steps": [
+    {
+      "text": "Differentiate. $f'(x) = <<fp>>$.",
+      "expr": "fp"
+    },
+    {
+      "text": "The slope is $m = <<m>>$.",
+      "expr": "m"
+    },
+    {
+      "text": "Restating, the slope is still $m = <<m>>$.",
+      "expr": "m"
+    },
+    {
+      "text": "Point slope form: $y - <<y0>> = <<m>>\\left(x - <<c>>\\right)$.",
+      "expr": "ln"
+    }
+  ],
+  "distractors": []
+}

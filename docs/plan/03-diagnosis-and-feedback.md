@@ -35,7 +35,7 @@ The pipeline has five stages, and the separation between them is the point. Grad
         |
         | any disagreement -> review_queue, point shown provisional
         v
-  [2] DIAGNOSTICIAN  (one call per attempt)
+  [2] DIAGNOSTICIAN  (one call per attempt on a recurring BC-ERR path; see below)
       input: point vector + confirmed work + archetype + skills + item metadata
       matches observed behaviour against data/errors.json (BC-ERR)
         -> observed_errors[]
@@ -261,9 +261,17 @@ When no signal matches, the state is assigned by rule, in this order:
 
 Credit for the three partial states is asymmetric, per R2: `partial_procedural`, `partial_conceptual` and `partial_unspecified` each credit 0 to `c_k` and 0.5 to `f_k`, so no partial observation can raise `m_k`. That is an engine invariant in plan document 02's Update rules, not a convention this document may vary. `notation_only` keeps 0.25 to `c_k` because the mathematics was demonstrated and only the notation failed. The FSRS grade mapping is unchanged by R2.
 
-### Rule-based mastery_state assignment when the diagnostician is unavailable
+### When the diagnostician is called at all, corrected 2026-09-20
 
-P1 wires no diagnostician, and any later phase can lose it to a provider outage or a budget cap. The rule below assigns a mastery state per loaded skill without any model call, and it is what P1 uses for every attempt. It is [inferred] in full (R12); no source supplies it and it belongs in plan document 12 as a tunable rule.
+The diagnostician runs on an incorrect attempt whose BC-ERR path has been seen before for this student, not on every incorrect attempt. On a first occurrence it does not run, and the attempt takes the rule-based assignment below.
+
+The reason is this document's own rule rather than cost. All three parts of elaborated feedback are available without a model call: the rule violated comes from the BC-PT record or from the violated `expected_solution_path` step, the scoring consequence comes from `errors.scoring_consequence` or the BC-PT `does_not_earn` text, and what the correct response would have shown comes from the item's stored worked solution. What the diagnostician adds is a fourth thing, a probability-weighted ranking over candidate misconceptions, and this document already forbids surfacing that as an assertion, permitting it only as the discriminating probe. One observation does not separate a slip from a misconception, so on a first occurrence there is nothing to rank and a hypothesis drawn from it would be exactly the over-claim the Content section warns against. On a recurrence there is.
+
+The cost consequence follows rather than leading: at an `[inferred]` recurrence share of 0.35 the role runs 564 times over the cycle rather than 1,610, and costs $8.21 rather than $20.51 (`14-token-economy.md`). What would overturn the trigger rule: `11-phased-delivery.md`'s diagnostician exit floor, two ranked hypotheses on at least 80 percent of diagnosed errors, together with the error-type recurrence rate measured with and without a first-occurrence diagnosis. If diagnosing the first occurrence measurably lowers recurrence, the trigger goes back to every incorrect attempt.
+
+### Rule-based mastery_state assignment when the diagnostician does not run
+
+P1 wires no diagnostician, a first occurrence of an error path does not call it, and any later phase can lose it to a provider outage or a budget cap. The rule below assigns a mastery state per loaded skill without any model call, and it is what P1 uses for every attempt. It is [inferred] in full (R12); no source supplies it and it belongs in plan document 12 as a tunable rule.
 
 1. A correct answer at the served stage yields `mastered` for every skill the archetype loads. An MCQ success is credited at 0.75 before it reaches `c_k`, per the four-option guessing floor of 0.25.
 2. An incorrect MCQ answer whose chosen distractor carries a BC-ERR path, meaning the selected entry of `items.options` has a non-null `error_path` (R26), yields `not_mastered` for the skills listed on that BC-ERR record, and `not_attempted` for every other skill the archetype loads.
@@ -665,7 +673,7 @@ Each policy below names the mechanic in plan document 01 or the engine rule in p
 | Non-conceptual causes with reserved mass | 01's measurement criterion of a falling recurrence rate for a named error type, which is meaningless if slips are recorded as beliefs |
 | Prerequisite-gap tracing over hard_prerequisite edges | 02 Prerequisite gating and the outer fringe, and its rule that an archetype is never served when its primary skill's hard prerequisites are unmastered outside 02 Cold-start diagnostic design |
 | Mastery-state enum with a preferred BC-SIG match | 02 Update rules and their credit table, which maps each state to a c_k and f_k split and to an FSRS grade |
-| Rule-based assignment when the diagnostician is unavailable | 02 Update rules, which need a state per loaded skill in P1 where no diagnostician runs |
+| Rule-based assignment when the diagnostician does not run | 02 Update rules, which need a state per loaded skill in P1 where no diagnostician runs, on a first occurrence of an error path, and whenever the role is unavailable |
 | `notation_only` as a distinct state | 02 Update rules and their credit of 0.25 of a success, which exists so a notation habit does not read as a missing skill |
 | Immediate step-level feedback in stages example and completion | 01 mechanic 5, adaptive backward fading; 02 Update rules, whose single counter pair advances a stage on 2 consecutive credited successes and drops it on 2 consecutive credited failures |
 | Feedback withheld until submission on unsupported and exam-shaped items | 01 mechanic 3, practice testing as generation, which a mid-item cue destroys |

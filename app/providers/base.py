@@ -38,7 +38,6 @@ class ProviderRequest:
    system: str
    messages: tuple
    max_output_tokens: int
-   temperature: float = 0.0
    output_schema: dict | None = None
    stream: bool = False
    cache: CacheSettings | None = None

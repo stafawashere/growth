@@ -43,7 +43,6 @@ def _request(**overrides):
       system=SYSTEM_TEXT,
       messages=(Message(role="user", content=USER_TEXT),),
       max_output_tokens=MAX_OUTPUT_TOKENS,
-      temperature=0.3,
       cache=CacheSettings(prefix_breakpoints=1, ttl="5m"),
    )
    defaults.update(overrides)

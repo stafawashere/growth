@@ -1,0 +1,109 @@
+{
+  "archetype_id": "BC-QA-02011",
+  "template_id": "TPL-02011-REF",
+  "representation": "BC-REP-01",
+  "parameters": [
+    {
+      "name": "a",
+      "kind": "integer",
+      "low": -6,
+      "high": 6,
+      "exclude": [
+        0
+      ],
+      "role": "incidental"
+    },
+    {
+      "name": "b",
+      "kind": "integer",
+      "low": -8,
+      "high": 8,
+      "exclude": [],
+      "role": "radical"
+    },
+    {
+      "name": "c",
+      "kind": "integer",
+      "low": -5,
+      "high": 5,
+      "exclude": [],
+      "role": "radical"
+    }
+  ],
+  "constraints": [
+    "Ne(a, 0)",
+    "Ne(2*a*c + b, 0)"
+  ],
+  "expressions": [
+    {
+      "name": "f",
+      "expr": "a*x**2 + b*x"
+    },
+    {
+      "name": "fp",
+      "expr": "2*a*x + b"
+    },
+    {
+      "name": "m",
+      "expr": "2*a*c + b"
+    },
+    {
+      "name": "y0",
+      "expr": "a*c**2 + b*c"
+    },
+    {
+      "name": "ln",
+      "expr": "m*(x - c) + y0"
+    },
+    {
+      "name": "kk",
+      "expr": "m*x - m*c + y0"
+    }
+  ],
+  "key": {
+    "name": "kk",
+    "form": "symbolic"
+  },
+  "stem": {
+    "template": "Let $f(x) = <<f>>$. Write an equation for the line tangent to the graph of $f$ at $x = <<c>>$."
+  },
+  "steps": [
+    {
+      "text": "Differentiate. By the power rule, $f'(x) = <<fp>>$.",
+      "expr": "fp",
+      "point_type_id": "BC-PT-99005",
+      "rule_named": "power rule"
+    },
+    {
+      "text": "Evaluate the derivative at the input to get the slope: $f'(<<c>>) = <<m>>$.",
+      "expr": "m",
+      "point_type_id": "BC-PT-99004"
+    },
+    {
+      "text": "Evaluate the function at the input to get the point of tangency: $\\left(<<c>>, <<y0>>\\right)$."
+    },
+    {
+      "text": "Write the line in point slope form, solved for $y$: $y = <<ln>>$.",
+      "expr": "ln",
+      "point_type_id": "BC-PT-99082",
+      "rule_named": "point slope form"
+    }
+  ],
+  "distractors": [
+    {
+      "expr": "y0*(x - c) + m",
+      "mechanism": "reversed_quantities",
+      "error_path": "BC-ERR-02027"
+    },
+    {
+      "expr": "m*x + y0",
+      "mechanism": "forgot to shift by the point of tangency",
+      "error_path": "BC-ERR-02028"
+    },
+    {
+      "expr": "fp*(x - c) + y0",
+      "mechanism": "left the derivative unevaluated",
+      "error_path": "BC-ERR-02027"
+    }
+  ]
+}

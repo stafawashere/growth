@@ -1,0 +1,93 @@
+/* Every transition the client uses, bound by docs/plan/08-design-brief.md's Motion rules.
+
+   08 gives one number, "under roughly 300 ms", and records that Material 3's numeric duration and
+   easing tokens could not be loaded, so 300ms and ease-out are the only timing values here. A
+   second duration, a stagger or a cubic-bezier curve would be invented, not sourced. For the same
+   reason no translation distance or scale factor is written down: 08 fixes none, so each motion
+   class declares its transition and its resting state and the consumer supplies the offset it
+   animates from. Colours would come from var(--growth-<token>) and no motion rule needs one.
+
+   Only transform and opacity are animated. Under prefers-reduced-motion the transform is
+   neutralised and the same duration runs on opacity alone, so the feedback still arrives as a
+   cross-fade; dropping the transition or shipping animation: none here would be wrong. */
+
+.motion-step-verification-mark {
+   transition: transform 300ms ease-out, opacity 300ms ease-out;
+   transform: translateY(0);
+   opacity: 1;
+}
+
+.motion-elaborated-feedback-panel {
+   transition: transform 300ms ease-out, opacity 300ms ease-out;
+   transform: translateY(0);
+   opacity: 1;
+}
+
+.motion-confidence-prompt {
+   transition: transform 300ms ease-out, opacity 300ms ease-out;
+   transform: translateY(0);
+   opacity: 1;
+}
+
+.motion-self-explanation-prompt {
+   transition: transform 300ms ease-out, opacity 300ms ease-out;
+   transform: translateY(0);
+   opacity: 1;
+}
+
+.motion-error-note-field {
+   transition: transform 300ms ease-out, opacity 300ms ease-out;
+   transform: translateY(0);
+   opacity: 1;
+}
+
+.motion-instant-symbol-insertion {
+   transition: none;
+}
+
+.motion-instant-blank-move {
+   transition: none;
+}
+
+.motion-instant-question-move {
+   transition: none;
+}
+
+.motion-instant-mark-for-review {
+   transition: none;
+}
+
+.motion-instant-eliminate-option {
+   transition: none;
+}
+
+.motion-instant-submit-answer {
+   transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+   .motion-step-verification-mark {
+      transition: opacity 300ms ease-out;
+      transform: none;
+   }
+
+   .motion-elaborated-feedback-panel {
+      transition: opacity 300ms ease-out;
+      transform: none;
+   }
+
+   .motion-confidence-prompt {
+      transition: opacity 300ms ease-out;
+      transform: none;
+   }
+
+   .motion-self-explanation-prompt {
+      transition: opacity 300ms ease-out;
+      transform: none;
+   }
+
+   .motion-error-note-field {
+      transition: opacity 300ms ease-out;
+      transform: none;
+   }
+}

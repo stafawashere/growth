@@ -37,6 +37,25 @@ P1_ARCHETYPES = (
 ERROR_NOTE = "I rushed the middle step and never checked the last line against the question."
 
 
+def cold_start_reachable_archetypes(world):
+   """What the engine's own gating opens over the freshly seeded state, computed rather than
+   typed, so the set moves with the library instead of with this file.
+   """
+   from sqlalchemy.orm import Session as OrmSession
+
+   from app.engine.fringe import candidates, outer_fringe
+   from app.session import repository
+
+   context = world.settings.session_context
+
+   with OrmSession(world.engine) as db:
+      states = repository.load_states(db, world.user_id)
+
+   available, _ = candidates(outer_fringe(states, context.graph), context.graph, context.bank)
+
+   return {record["id"] for record in available}
+
+
 def answer_for(entry, item, correctly):
    is_mcq = item["format"] == "mcq"
 
@@ -172,6 +191,7 @@ def test_session_login_to_feedback(world):
    assert registered.status_code == 200, registered.text
    assert registered.json()["seeded_skill_states"] == 618
 
+   cold_start_reachable = cold_start_reachable_archetypes(world)
    seeded_states = world.skill_state_rows()
    logged_out = client.post("/auth/logout")
 
@@ -233,6 +253,21 @@ def test_session_login_to_feedback(world):
    assert outside_the_subset == [], (
       "gate 23 runs over the P1 subset, which scope item 2 of docs/plan/11-phased-delivery.md "
       f"fixes as the 13 archetypes listed here, and these were served instead: {outside_the_subset}"
+   )
+
+   reachable = cold_start_reachable
+   never_served = sorted(reachable - set(served_archetypes))
+
+   opened_more_than_one = len(reachable) > 1
+
+   assert opened_more_than_one, (
+      "gate 23's archetype check is only worth making when the cold-start state opens more than "
+      f"one archetype, and it opened {sorted(reachable)}"
+   )
+   assert never_served == [], (
+      "membership in the 13 is a subset check and a regression that serves one archetype passes "
+      "it, so gate 23 also asserts that every archetype the engine's own gating opens at cold "
+      f"start was actually served, and these never were: {never_served}"
    )
 
    cassette = json.loads(CASSETTE_PATH.read_text())

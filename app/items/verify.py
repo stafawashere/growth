@@ -150,38 +150,132 @@ def _close(left_value, right_value, rel_tol, abs_floor):
    return abs(left_value - right_value) < tolerance
 
 
-def _equals_key(key, candidate):
+UNSETTLED_VIOLATION = "unsettled"
+
+EQUAL = "equal"
+DISTINCT = "distinct"
+
+KEY_COMPARISON = "key"
+PAIR_COMPARISON = "pair"
+
+MISSING_ERROR_PATH = "missing"
+UNRESOLVABLE_ERROR_PATH = "unresolvable"
+
+RULE_5 = "rule_5"
+RULE_6 = "rule_6"
+RULE_7 = "rule_7"
+
+
+def compare_expressions(key, candidate):
+   """Equal, distinct, or neither. A comparison that did not settle is its own answer, because
+   rejection rule 5 in 04 asks whether a distractor equals the key and an unsettled comparison
+   has not established that it does not.
+   """
    symbolic_result = equivalence(key, candidate)
    equals_symbolically = symbolic_result == "equivalent"
 
    if equals_symbolically:
-      return True
+      return EQUAL
 
-   return numeric_check(key, candidate) is True
+   numeric_result = numeric_check(key, candidate)
+
+   if numeric_result is True:
+      return EQUAL
+
+   settled_as_distinct = symbolic_result == "not_equivalent" or numeric_result is False
+
+   if settled_as_distinct:
+      return DISTINCT
+
+   return UNSETTLED_VIOLATION
 
 
-def distractor_checks(key, distractors, error_paths, active_error_ids):
-   violations = []
+def comparison_findings(key, distractors):
+   """Rejection rules 5 and 6 of docs/plan/04-item-generation.md over one option set: every
+   distractor against the key, then every distractor against every later one. A key of None
+   asks rule 6 alone, which is what a record with no single readable key gets.
 
-   for distractor in distractors:
-      violates_rule_5 = _equals_key(key, distractor)
+   A finding carries its kind, the positions in distractors it is about, and the comparison.
+   This is the only implementation of those two loops. distractor_checks below and
+   distractor_path_violations in app/items/distractor_paths.py are its two callers and differ
+   only in the vocabulary they render and in their policy on a comparison that did not settle.
+   """
+   findings = []
+   has_a_key = key is not None
 
-      if violates_rule_5:
-         violations.append("rule_5")
+   if has_a_key:
+      for index, distractor in enumerate(distractors):
+         findings.append({
+            "kind": KEY_COMPARISON,
+            "left": None,
+            "right": index,
+            "comparison": compare_expressions(key, distractor),
+         })
 
    for left_index in range(len(distractors)):
       for right_index in range(left_index + 1, len(distractors)):
-         violates_rule_6 = _equals_key(distractors[left_index], distractors[right_index])
+         findings.append({
+            "kind": PAIR_COMPARISON,
+            "left": left_index,
+            "right": right_index,
+            "comparison": compare_expressions(
+               distractors[left_index], distractors[right_index]
+            ),
+         })
 
-         if violates_rule_6:
-            violations.append("rule_6")
+   return findings
 
-   for error_path in error_paths:
+
+def error_path_findings(error_paths, active_error_ids):
+   """Rejection rule 7 of 04 over one option set: a non-key option that carries no error path,
+   or one whose id does not resolve to an active BC-ERR record. The only implementation of that
+   resolution, shared by distractor_checks and by gate 30's checker.
+   """
+   findings = []
+
+   for index, error_path in enumerate(error_paths):
       is_missing = error_path is None
       is_unresolvable = error_path is not None and error_path not in active_error_ids
 
-      if is_missing or is_unresolvable:
-         violations.append("rule_7")
+      if is_missing:
+         findings.append({"index": index, "reason": MISSING_ERROR_PATH, "error_path": None})
+
+      if is_unresolvable:
+         findings.append({
+            "index": index,
+            "reason": UNRESOLVABLE_ERROR_PATH,
+            "error_path": error_path,
+         })
+
+   return findings
+
+
+def distractor_checks(key, distractors, error_paths, active_error_ids):
+   """Rejection rules 5, 6 and 7 rendered as rule codes over the findings above.
+
+   Policy on a comparison that did not settle: it comes back under its own code,
+   UNSETTLED_VIOLATION, and never as a broken rule, because app/items/ingest.py reads that code
+   as indeterminate and routes the item to review instead of rejecting it. Gate 30's checker,
+   distractor_path_violations in app/items/distractor_paths.py, reads the same findings under
+   the opposite policy and calls an unsettled comparison a violation outright. Both policies are
+   deliberate; the loops and the error-path resolution beneath them are not duplicated.
+   """
+   violations = []
+
+   for finding in comparison_findings(key, distractors):
+      is_key_comparison = finding["kind"] == KEY_COMPARISON
+      is_equal = finding["comparison"] == EQUAL
+      did_not_settle = finding["comparison"] == UNSETTLED_VIOLATION
+
+      if is_equal:
+         violations.append(RULE_5 if is_key_comparison else RULE_6)
+
+      if did_not_settle:
+         violations.append(UNSETTLED_VIOLATION)
+
+   broken_error_paths = error_path_findings(error_paths, active_error_ids)
+
+   violations.extend(RULE_7 for _ in broken_error_paths)
 
    return list(dict.fromkeys(violations))
 

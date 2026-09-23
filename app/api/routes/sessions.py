@@ -333,7 +333,15 @@ def submit_error_note(
    if is_blank:
       raise HTTPException(status_code=400, detail="the error note cannot be empty")
 
-   attempt = service.record_error_note(db, attempt_id, note.strip())
+   try:
+      attempt = service.record_error_note(db, attempt_id, note.strip())
+   except service.ErrorNoteAlreadyWritten:
+      raise HTTPException(
+         status_code=409,
+         detail="this attempt already carries its error note",
+      )
+   except service.ErrorNoteNotOneLine:
+      raise HTTPException(status_code=400, detail="the error note is one line")
 
    return {"id": attempt.id, "error_note": attempt.error_note}
 

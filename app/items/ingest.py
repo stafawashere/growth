@@ -20,7 +20,12 @@ import uuid
 
 from app.db import models
 from app.items.mathjson import to_sympy
-from app.items.verify import distractor_checks, equivalence, numeric_check
+from app.items.verify import (
+   UNSETTLED_VIOLATION,
+   distractor_checks,
+   equivalence,
+   numeric_check,
+)
 
 REVIEW_KIND = "item_verification_disagreement"
 
@@ -130,10 +135,16 @@ def distractor_distinct_check(record, active_error_ids):
       to_sympy(key_source), distractor_expressions, error_paths, active_error_ids
    )
    detail = {"distractors": len(distractors), "violations": violations}
-   has_violations = len(violations) > 0
 
-   if has_violations:
+   settled_violations = [name for name in violations if name != UNSETTLED_VIOLATION]
+   did_not_settle = UNSETTLED_VIOLATION in violations
+   has_settled_violations = len(settled_violations) > 0
+
+   if has_settled_violations:
       return FAIL, detail
+
+   if did_not_settle:
+      return INDETERMINATE, detail
 
    return PASS, detail
 

@@ -258,7 +258,7 @@ At the end of P3 a student answers a free-response item the way the exam demands
 
 ### Entry criteria
 
-P2 merged. The transcriber role is wired in the provider layer. `data/scoring_points.json` loads its 76 BC-PT records, and `data/frq_records.json` loads its 249 parts, 227 with points [verified, repo-facts ledger].
+P2 merged. The transcriber role is wired in the provider layer. `data/scoring_points.json` loads its 76 BC-PT records, and `data/frq_records.json` loads its 249 parts, 227 with points [verified, repo-facts ledger]. All 76 BC-PT records are labelled for whether the `earns` text is fully expressible as one of the four deterministic checks in `03-diagnosis-and-feedback.md`, which is what decides how many judged points reach a model at all and therefore what the grader costs; the labelling is offline, needs no key and costs nothing, and 17 of the 76 already qualify for the model path on the three required fields alone [measured 2026-09-20 over `data/scoring_points.json`]. See `14-token-economy.md`.
 
 ### Scope
 
@@ -306,13 +306,13 @@ P3 merged. The parameter-spec gap named in D13 item (c) is closed for the archet
 2. Figure generation as declarative specs rather than free-form images, with labels and the relevant algebraic step inside the figure, never in a caption, because integrated presentation beat split presentation at g = 0.63 [verified, https://link.springer.com/article/10.1007/s10648-018-9435-9].
 3. Monte Carlo family checks over the parameter family, a few hundred draws per archetype, asserting the archetype's declared invariants.
 4. Distractor checks: each distractor not equal to the key symbolically and numerically, distractors pairwise distinct, each distractor produced by a named BC-ERR path from the 390 active error records.
-5. Calculator-boundary check: every `no_calculator` item must be closed-form solvable.
+5. Calculator-boundary check: every `no_calculator` item must be closed-form solvable. Added 2026-09-20: this check joins the template gate's eleven, because golden set 1 moved onto that gate and the calculator boundary was the one of its four assertions the gate did not already make. See `14-token-economy.md`.
 6. Duplicate gate, two stages: MinHash over 5-grams at Jaccard 0.8 against the official corpus text cache and the generated bank, then embedding cosine at 0.85 [verified, the MinHash configuration, https://arxiv.org/pdf/2107.06499; single-source for the cosine operating point, https://futureagi.com/glossary/cosine-similarity/]. Both thresholds must be validated on a labelled sample rather than adopted as given.
-7. Item generation, the independent re-solve and the item review queue, all three moved here from P1 [R9]: `app/generation/generate.py`, `app/generation/verify.py`, the `prompts/generator/*` and `prompts/verifier/*` templates, and human adjudication of every split decision. Publication on unanimous agreement is conditional on the SymPy settle rate P1 measured and published; if that rate leaves too many items undecided, the rule is revised with the measurement recorded rather than kept on faith.
+7. Item generation, the independent re-solve and the item review queue, all three moved here from P1 [R9]: `app/generation/template.py` and `app/generation/instantiate.py` (one gated parameterised template per archetype, instantiated by the backend into `items` rows at build time; `13-ai-engineering.md`, Template architecture and the migration), `app/generation/verify.py`, the `prompts/generator/*` and `prompts/verifier/*` templates, and human adjudication of every split decision. Publication on unanimous agreement is conditional on the SymPy settle rate P1 measured and published; if that rate leaves too many items undecided, the rule is revised with the measurement recorded rather than kept on faith.
 8. Batch API for generation and verification, at 50 percent off input and output, 100,000 requests or 256 MB per batch, most batches finishing under an hour and all expiring at 24 hours, results retained 29 days, with `max_tokens: 0` rejected inside a batch [verified, https://platform.claude.com/docs/en/build-with-claude/batch-processing].
 9. Provenance logged per item: archetype, variant, parameter draw, model, prompt version.
 10. Copyright rule enforced in code: no official stem, figure or rubric text is ever served, because College Board defines commercial use to include test-prep settings [verified, https://privacy.collegeboard.org/copyright-trademark/request-instructions].
-11. Prompt templates: `prompts/generator/symbolic_v1.md` and `prompts/verifier/independent_resolve_v1.md`, both authored here rather than in P1 [R9], plus `prompts/generator/figure_spec_v1.md`, `prompts/generator/calculator_v1.md` and `prompts/verifier/monte_carlo_v1.md`.
+11. Prompt templates: `prompts/generator/template_v1.md` (one template per archetype, replacing the per-item `symbolic_v1.md` on 2026-09-20) and `prompts/verifier/independent_resolve_v1.md`, both authored here rather than in P1 [R9], plus `prompts/generator/figure_spec_v1.md`, `prompts/generator/calculator_v1.md` and `prompts/verifier/monte_carlo_v1.md`.
 
 ### Out of scope
 

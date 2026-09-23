@@ -51,6 +51,30 @@ class Settings:
    rng_seed: int = 7
    rng: Any = None
    extras: dict = field(default_factory=dict)
+   key_audit_sample_ids: Any = None
+   key_audit_sample_path: Any = None
+
+   def resolve_key_audit_sample_ids(self):
+      """docs/operator/key-audit.md: a separate JSON array of the sampled item ids is the sample
+      file. The review-queue route (app/api/routes/review.py) reads it through this resolver
+      exactly like tools/check_audit_verdicts.py reads its sample argument, so an item_audit
+      verdict is refused the same way through either path once no sample is configured."""
+      has_sample = self.key_audit_sample_ids is not None
+
+      if has_sample:
+         return self.key_audit_sample_ids
+
+      has_path = self.key_audit_sample_path is not None
+
+      if not has_path:
+         return None
+
+      import json
+      from pathlib import Path
+
+      self.key_audit_sample_ids = json.loads(Path(self.key_audit_sample_path).read_text())
+
+      return self.key_audit_sample_ids
 
    def resolve_engine(self):
       has_engine = self.engine is not None

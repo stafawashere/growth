@@ -260,7 +260,7 @@ def refuse_stored_credential(db, credential_id):
       raise AuthError(409, "this passkey is already registered")
 
 
-def add_passkey_finish(db, settings, store, auth_session, challenge_id, credential, now=None):
+def add_passkey_finish(db, settings, store, auth_session, challenge_id, credential, reauth_token=None, now=None):
    moment = now or utc_now()
    entry = store.take(challenge_id, "add_passkey", moment)
    is_other_user = entry["user_id"] != auth_session.user_id
@@ -269,6 +269,11 @@ def add_passkey_finish(db, settings, store, auth_session, challenge_id, credenti
       raise AuthError(403, "the challenge belongs to another session")
 
    verified = settings.verifier.finish_registration(entry["challenge"], credential)
+   is_reauthenticated = consume_reauth(db, auth_session, reauth_token, moment)
+
+   if not is_reauthenticated:
+      raise AuthError(401, "adding a passkey needs a fresh passkey re-authentication")
+
    refuse_stored_credential(db, verified["credential_id"])
    timestamp = as_iso(moment)
    credential_row = models.PasskeyCredential(

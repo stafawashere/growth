@@ -1,9 +1,9 @@
-"""The one-note-per-attempt rule belongs to the service, not to the route.
+"""record_error_note, the service the error-note route and any other caller share.
 
 03's "The student's one-line error note" says the student writes one line before the corrected
-item is requeued. The route refuses a second note, but the route is not the only caller: anything
-reaching record_error_note directly could overwrite the first note and destroy the record of what
-the student first thought. The guard is structural here so that every caller gets it.
+item is requeued. Ruled 2026-09-23, confirming the operator's 2026-09-20 decision: a second call
+replaces the first rather than being refused, because replacing a note is editing it, not adding a
+second one.
 """
 import pytest
 from sqlalchemy import select
@@ -52,24 +52,13 @@ def test_the_service_stores_the_first_note(note_attempt):
    assert stored_note(db, attempt_id) == "I differentiated instead of integrating"
 
 
-def test_the_service_refuses_a_second_note(note_attempt):
+def test_the_service_replaces_a_second_note(note_attempt):
    db, attempt_id = note_attempt
 
    service.record_error_note(db, attempt_id, "the first thing I thought")
+   service.record_error_note(db, attempt_id, "a tidier second thought")
 
-   with pytest.raises(service.ErrorNoteAlreadyWritten):
-      service.record_error_note(db, attempt_id, "a tidier second thought")
-
-
-def test_the_refused_second_note_never_reaches_the_column(note_attempt):
-   db, attempt_id = note_attempt
-
-   service.record_error_note(db, attempt_id, "the first thing I thought")
-
-   with pytest.raises(service.ErrorNoteAlreadyWritten):
-      service.record_error_note(db, attempt_id, "a tidier second thought")
-
-   assert stored_note(db, attempt_id) == "the first thing I thought"
+   assert stored_note(db, attempt_id) == "a tidier second thought"
 
 
 def test_the_service_refuses_a_note_that_is_not_one_line(note_attempt):

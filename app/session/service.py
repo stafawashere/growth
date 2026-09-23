@@ -6,12 +6,12 @@ minute forecast go into the sessions queue column (R5), every attempt row carrie
 and the compensatory prediction (invariant 23), and a rehearsal session writes no mastery state
 (invariant 17).
 
-Confidence is collected after the student commits and before feedback, at stages completion and
-unsupported, and not at all at stage example (docs/plan/11-phased-delivery.md, convention 3).
+Confidence is collected after the student commits and before feedback, at every stage including
+example (BUILD-LEDGER.md, "Decisions taken on the operator's instruction, 2026-09-23", which
+withdraws 11 implementer decision 3 now that example commits a graded answer of its own).
 apply_observation already reads the rating and sets hypercorrection_due itself, so the rating is
-an input to the single update rather than a second pass over the state: an attempt served at a
-stage that collects a rating defers its update until record_confidence supplies one, and an
-attempt served at stage example updates immediately.
+an input to the single update rather than a second pass over the state: every attempt defers its
+update until record_confidence supplies the rating.
 """
 import json
 import uuid
@@ -482,10 +482,6 @@ def record_confidence(
    return attempt
 
 
-class ErrorNoteAlreadyWritten(ValueError):
-   pass
-
-
 class ErrorNoteNotOneLine(ValueError):
    pass
 
@@ -498,19 +494,14 @@ ERROR_NOTE_MAX_CHARACTERS = 500
 
 
 def record_error_note(db, attempt_id, note):
-   """One line, once, per 03's "The student's one-line error note". The guard lives here rather
-   than in the route so that every caller gets it, because a second note overwrites the record of
-   what the student first thought. 03 and 06 set no length, so the cap is the operator's own
-   decision (BUILD-LEDGER.md, "Decisions taken on the operator's instruction, 2026-09-20": the
-   error note is capped at 500 characters), checked before anything is written.
+   """One line, per 03's "The student's one-line error note". Ruled 2026-09-23, confirming the
+   operator's 2026-09-20 decision (BUILD-LEDGER.md, "Decisions taken on the operator's
+   instruction, 2026-09-20"): a second POST replaces the first, because replacing a note is
+   editing it, not adding a second one; a second call to this function overwrites rather than
+   refuses. 03 and 06 set no length, so the cap is the operator's own decision from the same
+   ruling, checked before anything is written.
    """
    attempt = db.get(models.Attempt, attempt_id)
-
-   existing = attempt.error_note
-   already_written = isinstance(existing, str) and existing.strip() != ""
-
-   if already_written:
-      raise ErrorNoteAlreadyWritten(f"attempt {attempt_id} already carries its error note")
 
    carries_newline = "\n" in note
    carries_carriage_return = "\r" in note

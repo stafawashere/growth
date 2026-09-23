@@ -9,7 +9,7 @@ from tests.api.conftest import CREDENTIAL_ID, world  # noqa: F401
 SECOND_CREDENTIAL_ID = b"cred-2"
 
 
-def add_authenticator(client, credential_id_hex, sign_count=0):
+def add_authenticator(client, credential_id_hex, sign_count=0, reauth_token="use-a-fresh-reauth"):
    begun = client.post("/auth/passkey/add/begin", json={})
 
    if begun.status_code != 200:
@@ -18,6 +18,7 @@ def add_authenticator(client, credential_id_hex, sign_count=0):
    payload = {
       "challenge_id": begun.json()["challenge_id"],
       "credential": {"credential_id": credential_id_hex, "sign_count": sign_count},
+      "reauth_token": reauth_token,
    }
 
    return client.post("/auth/passkey/add/finish", json=payload)
@@ -65,8 +66,9 @@ def test_a_signed_in_user_gains_a_second_credential_row(world):  # noqa: F811
    client = world.client()
    world.register(client)
    user_id = registered_user_id(world.engine)
+   token = world.reauth(client).json()["reauth_token"]
 
-   added = add_authenticator(client, SECOND_CREDENTIAL_ID.hex())
+   added = add_authenticator(client, SECOND_CREDENTIAL_ID.hex(), reauth_token=token)
 
    assert added.status_code == 200
    assert stored_credentials(world.engine) == [
@@ -75,10 +77,22 @@ def test_a_signed_in_user_gains_a_second_credential_row(world):  # noqa: F811
    ]
 
 
+def test_adding_an_authenticator_without_a_fresh_reauth_is_refused(world):  # noqa: F811
+   client = world.client()
+   world.register(client)
+   user_id = registered_user_id(world.engine)
+
+   added = add_authenticator(client, SECOND_CREDENTIAL_ID.hex(), reauth_token="not-a-token")
+
+   assert added.status_code == 401
+   assert stored_credentials(world.engine) == [(user_id, CREDENTIAL_ID)]
+
+
 def test_the_added_credential_signs_in_on_its_own(world):  # noqa: F811
    client = world.client()
    world.register(client)
-   add_authenticator(client, SECOND_CREDENTIAL_ID.hex())
+   token = world.reauth(client).json()["reauth_token"]
+   add_authenticator(client, SECOND_CREDENTIAL_ID.hex(), reauth_token=token)
    fresh = world.client()
 
    offered = fresh.post("/auth/passkey/login/begin", json={}).json()["options"]["allowCredentials"]
@@ -93,8 +107,9 @@ def test_the_added_credential_signs_in_on_its_own(world):  # noqa: F811
 def test_an_already_stored_credential_is_not_added_twice(world):  # noqa: F811
    client = world.client()
    world.register(client)
+   token = world.reauth(client).json()["reauth_token"]
 
-   repeated = add_authenticator(client, CREDENTIAL_ID.hex())
+   repeated = add_authenticator(client, CREDENTIAL_ID.hex(), reauth_token=token)
 
    assert repeated.status_code == 409
    assert len(stored_credentials(world.engine)) == 1
@@ -103,7 +118,8 @@ def test_an_already_stored_credential_is_not_added_twice(world):  # noqa: F811
 def test_adding_an_authenticator_writes_a_passkey_registered_audit_row(world):  # noqa: F811
    client = world.client()
    world.register(client)
-   add_authenticator(client, SECOND_CREDENTIAL_ID.hex())
+   token = world.reauth(client).json()["reauth_token"]
+   add_authenticator(client, SECOND_CREDENTIAL_ID.hex(), reauth_token=token)
 
    with OrmSession(world.engine) as db:
       added_row = (

@@ -153,7 +153,10 @@ describe("passkey paths", () => {
       },
       { name: "readAuthStatus", invoke: () => readAuthStatus() },
       { name: "beginAddPasskey", invoke: () => beginAddPasskey() },
-      { name: "finishAddPasskey", invoke: () => finishAddPasskey({ challenge_id: "c", credential: {} }) }
+      {
+         name: "finishAddPasskey",
+         invoke: () => finishAddPasskey({ challenge_id: "c", credential: {}, reauth_token: "t" })
+      }
    ];
 
    it.each(calls)("every path $name issues matches a declared FastAPI route", async (call) => {

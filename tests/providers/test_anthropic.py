@@ -378,7 +378,38 @@ def test_stream_maps_an_error_event():
 
    normalised = list(provider.stream(_request()))
 
-   assert normalised == [{"type": "error", "code": "overloaded_error", "retryable": False}]
+   assert normalised == [{"type": "error", "code": "overloaded_error", "retryable": True}]
+
+
+def test_stream_error_retryable_matches_the_error_type():
+   from app.providers.anthropic import _RETRYABLE_STREAM_ERROR_TYPES
+
+   retryable_types = ("overloaded_error", "api_error", "rate_limit_error")
+   non_retryable_types = (
+      "invalid_request_error",
+      "authentication_error",
+      "permission_error",
+      "not_found_error",
+      "request_too_large",
+   )
+
+   assert set(_RETRYABLE_STREAM_ERROR_TYPES) == set(retryable_types)
+
+   for error_type in retryable_types + non_retryable_types:
+      events = [{"event": "error", "data": {"error": {"type": error_type, "message": "x"}}}]
+
+      def fake_stream_transport(url, headers, body, events=events):
+         return iter(events)
+
+      provider = AnthropicProvider(
+         stream_transport=fake_stream_transport,
+         environ={"ANTHROPIC_API_KEY": "test-key-not-real"},
+      )
+
+      normalised = list(provider.stream(_request()))
+      expected_retryable = error_type in retryable_types
+
+      assert normalised == [{"type": "error", "code": error_type, "retryable": expected_retryable}]
 
 
 def test_sse_parsing_splits_events_on_blank_lines_and_drops_unmapped_deltas():

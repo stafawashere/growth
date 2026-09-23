@@ -2,7 +2,9 @@
 stylesheet from the same origin as the API, per docs/plan/06-architecture.md's system diagram
 (the client speaks REST to one process) and BUILD-LEDGER.md's own line for this module:
 `GET /growth-tokens.css` serves `stylesheet_from_token_file(GROWTH_TOKENS_PATH)` as `text/css`,
-404 when unset or unreadable, and the built client under `app/web/dist` is served at `/`.
+defaulting to the repository's own `app/design/growth-tokens.json` when GROWTH_TOKENS_PATH is
+unset (ruled 2026-09-23), 404 when an explicitly configured path is unreadable, and the built
+client under `app/web/dist` is served at `/`.
 
 The client mount claims exactly two shapes of path, a real file under dist/assets and GET / for
 index.html, so a path that only looks like an API path (GET /export, GET /purge) or is simply
@@ -50,14 +52,15 @@ def full_token_file(tmp_path, name="tokens.json"):
    return path
 
 
-def test_growth_tokens_css_is_404_when_the_path_is_unset(tmp_path):
+def test_growth_tokens_css_defaults_to_the_repository_token_file_when_the_path_is_unset(tmp_path):
    application = build_application(env_for(tmp_path))
    client = TestClient(application)
 
    response = client.get("/growth-tokens.css")
 
-   assert response.status_code == 404
-   assert response.content == b""
+   assert response.status_code == 200
+   assert response.headers["content-type"].startswith("text/css")
+   assert "--growth-surface-page" in response.text
 
 
 def test_growth_tokens_css_is_404_when_the_file_is_unreadable(tmp_path):
@@ -89,15 +92,16 @@ def test_growth_tokens_css_serves_the_stylesheet_when_configured(tmp_path):
 def test_growth_tokens_css_reads_the_path_at_request_time(tmp_path):
    """Checklist 7: configuration read once at build time is frozen configuration. GROWTH_TOKENS_PATH
    is unset when the application is built, and the same env mapping only gains the key afterward,
-   so a handler that captured the env value (or a copy of it) at build time would still answer 404
-   here, never 200."""
+   so a handler that captured the env value (or a copy of it) at build time would still serve the
+   default repository stylesheet here, never the overriding one."""
    env = env_for(tmp_path)
    application = build_application(env)
    client = TestClient(application)
 
    before = client.get("/growth-tokens.css")
 
-   assert before.status_code == 404
+   assert before.status_code == 200
+   default_stylesheet = before.text
 
    token_path = full_token_file(tmp_path, name="tokens.json")
    env["GROWTH_TOKENS_PATH"] = str(token_path)
@@ -105,6 +109,7 @@ def test_growth_tokens_css_reads_the_path_at_request_time(tmp_path):
 
    assert after.status_code == 200
    assert "--growth-surface-page" in after.text
+   assert after.text != default_stylesheet
 
 
 def _registered_api_paths(routes):
@@ -385,7 +390,8 @@ def test_application_attribute_still_builds_the_real_app(tmp_path, monkeypatch):
       "assert application is m.application\n"
       "client = TestClient(application)\n"
       "response = client.get('/growth-tokens.css')\n"
-      "assert response.status_code == 404\n"
+      "assert response.status_code == 200, response.status_code\n"
+      "assert '--growth-surface-page' in response.text\n"
       "print('ok')\n"
    )
 

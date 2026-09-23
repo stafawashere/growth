@@ -33,13 +33,19 @@ GROWTH_TUTOR_CAP_TOKENS the tutor role's daily token cap. Default 250,000, the s
                       set by 13-ai-engineering.md so the two caps bind within a few calls of each
                       other. Whichever is crossed first binds.
 GROWTH_TOKENS_PATH    path to a filled design-token file (the shape
-                      docs/operator/design-tokens.template.json fixes). Unset by default, so
-                      set it to app/design/growth-tokens.json, the file the implementer authored
-                      under entry criterion 5. GET /growth-tokens.css answers 404 while unset, or
-                      while the file is
-                      unreadable or fails app/design/css.py's checks. The path is read again on
-                      every request, never cached at build time, so a changed file or a newly
-                      set path is served without a restart.
+                      docs/operator/design-tokens.template.json fixes). Ruled 2026-09-23:
+                      unset by default, defaults to app/design/growth-tokens.json, the file
+                      the implementer authored under entry criterion 5, so GET /growth-tokens.css
+                      serves real tokens out of the box. Set this to override it with another
+                      file; GET /growth-tokens.css answers 404 only when the configured or
+                      default file is unreadable or fails app/design/css.py's checks. The path
+                      is read again on every request, never cached at build time, so a changed
+                      file or a newly set path is served without a restart.
+GROWTH_KEY_AUDIT_SAMPLE_PATH path to the key-audit sample file tools/draw_key_audit_sample.py
+                      writes (docs/operator/key-audit.md). Unset by default, in which case
+                      POST /review-queue/{id}/resolve refuses every item_audit verdict rather
+                      than guess at a sample. Read once and cached on the Settings object, since
+                      the sample is drawn once per audit round rather than per request.
 
 This module also mounts the built React client (app/web/dist, docs/plan/06-architecture.md's
 system diagram: the browser speaks REST to one FastAPI process) at the same origin the API
@@ -81,6 +87,7 @@ DEFAULT_CONTENT_ROOT = REPO_ROOT / "data"
 DEFAULT_TUTOR_CAP_USD = 1.00
 DEFAULT_TUTOR_CAP_TOKENS = 250000
 DEFAULT_WEB_DIST_DIR = REPO_ROOT / "app" / "web" / "dist"
+DEFAULT_TOKENS_PATH = REPO_ROOT / "app" / "design" / "growth-tokens.json"
 WEB_BUILD_COMMAND = "npm run build --prefix app/web"
 
 
@@ -158,15 +165,18 @@ def settings_from_environment(env=None):
       rng_seed=int(env.get("GROWTH_RNG_SEED", "7")),
       tutor=build_tutor(env),
       tutor_caps=build_tutor_caps(env),
+      key_audit_sample_path=env.get("GROWTH_KEY_AUDIT_SAMPLE_PATH"),
    )
 
 
 def _tokens_css_response(env):
-   tokens_path = env.get("GROWTH_TOKENS_PATH")
-   is_configured = tokens_path is not None and tokens_path != ""
-
-   if not is_configured:
-      return Response(status_code=404)
+   """Ruled 2026-09-23: an unset GROWTH_TOKENS_PATH defaults to the repository's own checked-in
+   token file (DEFAULT_TOKENS_PATH) rather than 404ing, so the served page carries real colour,
+   type and spacing tokens out of the box; an explicitly set but unreadable or malformed path
+   still 404s, which is what lets an operator override with a bad path notice the mistake."""
+   configured_path = env.get("GROWTH_TOKENS_PATH")
+   is_configured = configured_path is not None and configured_path != ""
+   tokens_path = configured_path if is_configured else str(DEFAULT_TOKENS_PATH)
 
    from app.design.css import stylesheet_from_token_file
 

@@ -4,12 +4,20 @@ This installation is single user, so the operator is the session's own user, the
 app/auth/service.require_sole_user names, and there is no second notion of an operator role. P1
 re-runs no grading and retires no item, so the "may re-run a grading or retire an item" trigger
 named for this route in 06-architecture.md has no P1 effect and nothing is implemented for it here.
+
+Ruled 2026-09-23: an item_audit verdict now goes through the same sample check and one-verdict
+rule tools/check_audit_verdicts.py and app/review/audit.record_item_audit_verdict already enforce
+for the CLI path, so a verdict outside the drawn sample or a second verdict on an already-audited
+item is refused here too, rather than only there. The sample itself comes from
+settings.resolve_key_audit_sample_ids() (docs/operator/key-audit.md's sample file); until the
+operator configures one, no item_audit verdict can be resolved through this route, which is the
+fail-closed reading of "outside the sample" when there is no sample yet.
 """
 import json
 
 from fastapi import APIRouter, Body, Depends, HTTPException
 
-from app.api.deps import current_user, get_db
+from app.api.deps import current_user, get_db, get_settings
 from app.auth.service import as_iso, utc_now
 from app.db import models
 from app.review import audit
@@ -64,7 +72,19 @@ def list_open_rows(db=Depends(get_db), user=Depends(current_user)):
    return [open_row_payload(row) for row in rows]
 
 
-def resolve_item_audit(db, row, fields, now):
+class NoKeyAuditSample(ValueError):
+   pass
+
+
+def resolve_item_audit(db, row, fields, now, sample_ids):
+   no_sample_is_configured = sample_ids is None
+
+   if no_sample_is_configured:
+      raise NoKeyAuditSample("no key-audit sample is configured; the operator has not drawn one yet")
+
+   audit.refuse_outside_sample(row.ref_id, sample_ids)
+   audit.refuse_second_verdict(db, row.ref_id)
+
    verdict = fields.get("verdict")
 
    return audit.resolve_item_audit_row(
@@ -88,6 +108,7 @@ def resolve_row(
    row_id: str,
    payload: dict = Body(default=None),
    db=Depends(get_db),
+   settings=Depends(get_settings),
    user=Depends(current_user),
 ):
    row = owned_row(db, row_id)
@@ -102,7 +123,8 @@ def resolve_row(
 
    try:
       if is_item_audit:
-         resolved = resolve_item_audit(db, row, fields, now)
+         sample_ids = settings.resolve_key_audit_sample_ids()
+         resolved = resolve_item_audit(db, row, fields, now, sample_ids)
       else:
          resolved = resolve_generic_row(db, row, fields, now)
    except ValueError as refused:

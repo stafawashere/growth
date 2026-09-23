@@ -300,3 +300,64 @@ def test_a_complete_sample_publishes_its_rate(tmp_path):
 
    assert measurement["verdicts_complete"] is True
    assert measurement["key_error_rate"] == 0.5
+
+
+def _synthetic_candidates(count=200, units=10):
+   statuses = ["no_calculator"] * 5 + ["either"] * 3 + ["calculator"] * 2
+
+   return [
+      {
+         "item_id": f"ITM-{index:04d}",
+         "unit": f"BC-UNIT-{(index % units) + 1:02d}",
+         "calculator_status": statuses[index % len(statuses)],
+      }
+      for index in range(count)
+   ]
+
+
+def test_draw_key_audit_sample_is_deterministic_for_a_seed():
+   candidates = _synthetic_candidates()
+
+   first = audit.draw_key_audit_sample(candidates, rng_seed=2026, sample_size=100)
+   second = audit.draw_key_audit_sample(candidates, rng_seed=2026, sample_size=100)
+
+   assert first == second
+   assert len(first) == 100
+   assert len(set(first)) == 100
+
+
+def test_draw_key_audit_sample_changes_with_the_seed():
+   candidates = _synthetic_candidates()
+
+   drawn_2026 = audit.draw_key_audit_sample(candidates, rng_seed=2026, sample_size=100)
+   drawn_7 = audit.draw_key_audit_sample(candidates, rng_seed=7, sample_size=100)
+
+   assert drawn_2026 != drawn_7
+
+
+def test_draw_key_audit_sample_never_exceeds_the_per_unit_cap():
+   candidates = _synthetic_candidates(count=200, units=10)
+
+   drawn = audit.draw_key_audit_sample(candidates, rng_seed=2026, sample_size=100, max_per_unit=15)
+   by_unit = {row["item_id"]: row["unit"] for row in candidates}
+   unit_counts = {}
+
+   for item_id in drawn:
+      unit = by_unit[item_id]
+      unit_counts[unit] = unit_counts.get(unit, 0) + 1
+
+   assert all(count <= 15 for count in unit_counts.values())
+
+
+def test_draw_key_audit_sample_refuses_a_population_smaller_than_the_sample():
+   candidates = _synthetic_candidates(count=50)
+
+   with pytest.raises(ValueError):
+      audit.draw_key_audit_sample(candidates, rng_seed=2026, sample_size=100)
+
+
+def test_draw_key_audit_sample_refuses_when_the_unit_cap_makes_the_size_unreachable():
+   candidates = _synthetic_candidates(count=150, units=1)
+
+   with pytest.raises(ValueError):
+      audit.draw_key_audit_sample(candidates, rng_seed=2026, sample_size=100, max_per_unit=15)

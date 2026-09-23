@@ -101,6 +101,14 @@ _OPUS_5_FAMILY = "claude-opus-5"
 _OPUS_5_MAX_EFFORT_FOR_DISABLED_THINKING = "high"
 _HAIKU_4_5_FAMILY = "claude-haiku-4-5"
 
+# docs/plan/07-ai-provider-layer.md, "Stream error retryability" table: sourced from the
+# claude-api skill's shared/error-codes.md HTTP error code summary, which marks 429
+# rate_limit_error, 500 api_error and 529 overloaded_error retryable and every other listed
+# type (400, 401, 402, 403, 404, 413) not. That table names no timeout error type at all, so a
+# timeout is not added here; an SSE error event of that shape stays non-retryable until a plan
+# source names it one.
+_RETRYABLE_STREAM_ERROR_TYPES = ("overloaded_error", "api_error", "rate_limit_error")
+
 
 class RedirectRefused(Exception):
    pass
@@ -221,8 +229,10 @@ def _normalise_stream_event(request, provider_event, state):
 
    if event_type == "error":
       error = data.get("error") or {}
+      error_type = error.get("type")
+      retryable = error_type in _RETRYABLE_STREAM_ERROR_TYPES
 
-      return [{"type": "error", "code": error.get("type"), "retryable": False}]
+      return [{"type": "error", "code": error_type, "retryable": retryable}]
 
    return []
 

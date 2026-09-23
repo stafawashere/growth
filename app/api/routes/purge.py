@@ -1,7 +1,8 @@
 """POST /purge: the destructive path, behind a typed confirmation and a fresh re-authentication.
 
-docs/plan/09-security-and-privacy.md requires both and does not fix the confirmation string, so the
-string is fixed here and the interface displays it. The order of the checks is the order of the
+docs/plan/09-security-and-privacy.md requires both and does not fix the confirmation string.
+Ruled 2026-09-23: the phrase is the literal text "delete my data", matching
+app/web/src/App.tsx's PURGE_CONFIRMATION_PHRASE. The order of the checks is the order of the
 gate in docs/plan/11-phased-delivery.md test 24: an unconfirmed request never reaches the
 re-authentication check, and neither refusal deletes anything. The audit entry is app/session/purge.py's
 to write, so this route writes none of its own.
@@ -17,7 +18,7 @@ from app.auth import service as auth_service
 
 router = APIRouter(tags=["purge"])
 
-PURGE_CONFIRMATION = "DELETE EVERYTHING"
+PURGE_CONFIRMATION = "delete my data"
 
 
 @router.post("/purge")

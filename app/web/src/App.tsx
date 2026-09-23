@@ -29,11 +29,13 @@ export const DESTINATIONS: ReadonlyArray<DestinationEntry> = [
 
 const TOKEN_PROBE = "--growth-surface-page";
 
-/* 08 gives the claudebox acknowledgement verbatim and no phrase for purge, and no client route
-   serves one, so the purge controls stay withheld and the gap is named on the screen. */
-const settingsInputs = [
-   { name: "purgeConfirmationPhrase", wants: "the phrase a student types to confirm a purge" }
-] as const satisfies ReadonlyArray<{
+/* Ruled 2026-09-23: the purge confirmation phrase is the literal text "delete my data", matching
+   app/api/routes/purge.py's PURGE_CONFIRMATION. 08 gives no phrase of its own, so this is the
+   operator's decision rather than a plan reading, and it is why this is a constant here rather
+   than a value the client reads off a route. */
+export const PURGE_CONFIRMATION_PHRASE = "delete my data";
+
+const settingsInputs = [] as const satisfies ReadonlyArray<{
    name: Extract<keyof SettingsScreenProps, string>;
    wants: string;
 }>;
@@ -194,7 +196,7 @@ export function App() {
 
          {destination === "settings" ? (
             <>
-               <SettingsRoute purgeConfirmationPhrase={null} saveFile={saveFile} />
+               <SettingsRoute purgeConfirmationPhrase={PURGE_CONFIRMATION_PHRASE} saveFile={saveFile} />
                <AddPasskeyControl />
             </>
          ) : null}

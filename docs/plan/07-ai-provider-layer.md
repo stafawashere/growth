@@ -142,6 +142,28 @@ Each adapter maps the normalised call to one provider's wire format, maps the pr
 
 What the adapter maps: `system` to the top-level system block carrying the `cache_control` breakpoint; `output_schema` to `output_config.format`; `images` to base64 content blocks; the stream events per the mapping in `06-architecture.md`; `usage` from `input_tokens`, `output_tokens`, `cache_read_input_tokens` and `cache_creation_input_tokens`.
 
+Stream error retryability, ruled 2026-09-23. The normalised `error` event's `retryable` flag reads
+the Anthropic error `type` string against the table below, sourced from the claude-api skill's
+own HTTP error code reference (`shared/error-codes.md`, "Error Code Summary"), which is the
+Retryable column of Anthropic's own error taxonomy:
+
+| Error type | HTTP code | Retryable |
+| --- | --- | --- |
+| `overloaded_error` | 529 | Yes |
+| `api_error` | 500 | Yes |
+| `rate_limit_error` | 429 | Yes |
+| `invalid_request_error` | 400 | No |
+| `authentication_error` | 401 | No |
+| `billing_error` | 402 | No |
+| `permission_error` | 403 | No |
+| `not_found_error` | 404 | No |
+| `request_too_large` | 413 | No |
+
+That reference names no timeout error type at all, so a stream error whose type is not in the
+nine rows above (a timeout included) stays `retryable: False` rather than being guessed at; the
+skill is the only source consulted, per the operator's ruling, and it does not document one.
+`app/providers/anthropic.py` `_RETRYABLE_STREAM_ERROR_TYPES` holds the three Yes rows.
+
 Known traps. Adaptive thinking on 4.7 and later is the sharpest one: sending `thinking: {type: "enabled"}` to Opus 5 or Sonnet 5 returns 400, so an adapter written against the older shape fails on exactly the models this project routes to first. The adapter selects the thinking form by model family and a golden test asserts the selection. Corrected 2026-09-20: not sending a thinking parameter does not turn thinking off. On Opus 5 and Sonnet 5 "thinking is already on and needs no configuration", its tokens are billed as output and count toward `max_tokens`, and turning it off takes an explicit `thinking: {"type": "disabled"}`, which Sonnet 5 accepts and Opus 5 accepts at effort `high` or below (https://platform.claude.com/docs/en/build-with-claude/thinking [verified]). There is also an `output_config.effort` parameter with levels low, medium, high, xhigh and max, defaulting to `high`, which is not supported on Haiku 4.5, and changing its resolved value invalidates the prompt cache (https://platform.claude.com/docs/en/build-with-claude/effort [verified]). Both are pinned per role in `13-ai-engineering.md`; leaving either at its default is the single largest avoidable cost in the tutor role. Second, the silent cache miss: a prefix under the model's minimum is processed uncached with no error, so the only way to detect it is to watch `cache_read_input_tokens` stay at zero, which is why the cache hit rate is a named metric. Third, changing the structured-output format or the thinking budget invalidates the cache, so both are pinned per role and versioned with the prompt template rather than tuned per call. Fourth, the 4.7 tokenizer change of roughly 30 percent more tokens for the same text means any cost comparison against a 4.6-or-earlier baseline understates the newer model by about a third on input.
 
 ### OpenAI

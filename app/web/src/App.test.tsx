@@ -274,16 +274,17 @@ describe("the client shell", () => {
          expect(undeclared, `${target.file} declares no such prop`).toEqual([]);
       }
 
-      expect(UNSUPPLIED_INPUTS.settings.map((input) => input.name)).toEqual(["purgeConfirmationPhrase"]);
+      expect(UNSUPPLIED_INPUTS.settings.map((input) => input.name)).toEqual([]);
    });
 
-   it("shows the unsupplied purge phrase on settings rather than leaving the gap silent", async () => {
+   it("wires the purge confirmation phrase rather than leaving the purge controls withheld", async () => {
       mockServer(readyProgress);
       render(<App />);
       visit("settings");
 
-      expect(await screen.findByText("purgeConfirmationPhrase")).toBeTruthy();
+      expect(screen.queryByText("purgeConfirmationPhrase")).toBeNull();
       expect(screen.queryByText("This screen is not built yet")).toBeNull();
+      expect(await screen.findByText(/delete my data/i)).toBeTruthy();
    });
 
    it("offers a signed-in student a second passkey on settings and nowhere else", async () => {

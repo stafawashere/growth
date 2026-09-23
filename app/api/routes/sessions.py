@@ -357,11 +357,6 @@ def submit_error_note(
 
    try:
       attempt = service.record_error_note(db, attempt_id, note.strip())
-   except service.ErrorNoteAlreadyWritten:
-      raise HTTPException(
-         status_code=409,
-         detail="this attempt already carries its error note",
-      )
    except service.ErrorNoteNotOneLine:
       raise HTTPException(status_code=400, detail="the error note is one line")
    except service.ErrorNoteTooLong:

@@ -193,6 +193,12 @@ DIAGNOSTICIAN_RECURRENCE_SHARE = 0.35
 # the escalation rate that needs three is measured free on real gradings.
 GOLDEN_SET_2_CANARY_SAMPLES = 1
 GOLDEN_SET_2_FULL_RUNS = 2
+# Ruled 2026-09-23: the Claude-only $100 tier's own canary cadence, additive next to MONTHLY_RUNS
+# above (see tier.hundred_claude_only below). tier.hundred's own canary line still reads
+# MONTHLY_RUNS unchanged, because 13-ai-engineering.md and docs/operator/ai-operating-costs.md
+# quote its $95.03 total and this file never patches a figure a document has already quoted; this
+# cadence cut applies to the Claude-only tier alone.
+CLAUDE_ONLY_GOLDEN_SET_2_CANARY_CADENCE = 2
 
 # Uncapped tier settings.
 UNCAPPED_PUBLISHED_PER_ARCHETYPE = 60
@@ -663,9 +669,31 @@ def figures():
    add("grader.worst_case_conditional_third_cycle", out["grader.conditional_third_cycle"])
    add("grader.measured_saving_against_worst_case",
        out["grader.conditional_third_cycle"] - claude_only_grader_cycle)
+
+   # Ruled 2026-09-23: golden set 3 stays at MONTHLY_RUNS (9, "golden set 3 monthly" in 14's own
+   # table) because it is the cheaper of the two levers and MONTHLY_RUNS canary_cycle above already
+   # cannot fit the ceiling even with golden set 3 cut to zero, so keeping one line monthly and
+   # cutting the other is the only shape that leaves a monthly regression signal anywhere; the
+   # canary is the line that moves. This is a plan ruling, not a loosened gate: the operator's own
+   # $100 hard ceiling forces a cadence choice 13's kappa analysis and 10's "monthly canary" wording
+   # did not anticipate, so the cadence is set here rather than assumed.
+   claude_only_canary_cycle = (
+      CLAUDE_ONLY_GOLDEN_SET_2_CANARY_CADENCE * canary_calls * golden_2_call
+   )
+   claude_only_evals = claude_only_canary_cycle + full_cycle + out["evals.golden_set_3.cycle"]
+   add("evals.golden_set_2.claude_only_canary_cycle", claude_only_canary_cycle)
+   add("tier.hundred_claude_only.evals_canary_cadence", CLAUDE_ONLY_GOLDEN_SET_2_CANARY_CADENCE)
+   add("tier.hundred_claude_only.evals_golden_set_3_cadence", MONTHLY_RUNS)
+
+   # History, quoted above: the tier's total before the 2026-09-23 cadence ruling, at the labelling
+   # pass's measured grader share but the canary still at MONTHLY_RUNS. Kept as its own figure so
+   # the history this document quotes stays a real emitted number rather than dead prose the
+   # checker cannot verify.
+   add("tier.hundred_claude_only.pre_cadence_ruling_evals_line", hundred_evals)
+
    claude_only_hundred = (out["tutor.cycle"] + claude_only_grader_cycle + out["transcriber.cycle"]
                           + out["diagnostician.on_recurrence_cycle"] + claude_only_template_cycle
-                          + claude_only_verifier_cycle + out["screen.cycle"] + hundred_evals)
+                          + claude_only_verifier_cycle + out["screen.cycle"] + claude_only_evals)
    add("tier.hundred_claude_only.tutor_line", out["tutor.cycle"])
    add("tier.hundred_claude_only.grader_line", claude_only_grader_cycle)
    add("tier.hundred_claude_only.transcriber_line", out["transcriber.cycle"])
@@ -673,10 +701,19 @@ def figures():
    add("tier.hundred_claude_only.template_line", claude_only_template_cycle)
    add("tier.hundred_claude_only.verifier_line", claude_only_verifier_cycle)
    add("tier.hundred_claude_only.screen_line", out["screen.cycle"])
-   add("tier.hundred_claude_only.evals_line", hundred_evals)
+   add("tier.hundred_claude_only.evals_line", claude_only_evals)
    add("tier.hundred_claude_only.cycle", claude_only_hundred)
    add("tier.hundred_claude_only.headroom", BUDGET_CEILING - claude_only_hundred)
    add("tier.hundred_claude_only.overrun", claude_only_hundred - BUDGET_CEILING)
+
+   # History, quoted in 14: the tier's total and overrun before the 2026-09-23 cadence ruling
+   # closed it, at the labelling pass's measured grader share but the canary still at
+   # MONTHLY_RUNS. Emitted so the history this document quotes stays a checkable figure.
+   pre_cadence_ruling_hundred = (out["tutor.cycle"] + claude_only_grader_cycle + out["transcriber.cycle"]
+                                 + out["diagnostician.on_recurrence_cycle"] + claude_only_template_cycle
+                                 + claude_only_verifier_cycle + out["screen.cycle"] + hundred_evals)
+   add("tier.hundred_claude_only.pre_cadence_ruling_cycle", pre_cadence_ruling_hundred)
+   add("tier.hundred_claude_only.pre_cadence_ruling_overrun", pre_cadence_ruling_hundred - BUDGET_CEILING)
    add("tier.hundred_claude_only.saving_against_recommended", out["tier.recommended.cycle"] - claude_only_hundred)
    add("tier.hundred_claude_only.grader_premium_over_split_guess",
        claude_only_grader_cycle - out["grader.model_share_cycle"])
@@ -689,9 +726,19 @@ def figures():
    worst_case_hundred = (out["tutor.cycle"] + out["grader.conditional_third_cycle"]
                          + out["transcriber.cycle"] + out["diagnostician.on_recurrence_cycle"]
                          + claude_only_template_cycle + claude_only_verifier_cycle
-                         + out["screen.cycle"] + hundred_evals)
+                         + out["screen.cycle"] + claude_only_evals)
    add("tier.hundred_claude_only.worst_case_cycle", worst_case_hundred)
    add("tier.hundred_claude_only.worst_case_overrun", worst_case_hundred - BUDGET_CEILING)
+
+   # History, quoted in 14: the worst-case figure from before the 2026-09-23 cadence ruling, at
+   # the pre-labelling grader worst case and the canary still at MONTHLY_RUNS.
+   pre_cadence_ruling_worst_case = (out["tutor.cycle"] + out["grader.conditional_third_cycle"]
+                                    + out["transcriber.cycle"] + out["diagnostician.on_recurrence_cycle"]
+                                    + claude_only_template_cycle + claude_only_verifier_cycle
+                                    + out["screen.cycle"] + hundred_evals)
+   add("tier.hundred_claude_only.pre_cadence_ruling_worst_case_cycle", pre_cadence_ruling_worst_case)
+   add("tier.hundred_claude_only.pre_cadence_ruling_worst_case_overrun",
+       pre_cadence_ruling_worst_case - BUDGET_CEILING)
 
    # Kappa.
    n_aggregate = GOLDEN_SET_2_POINT_TYPES * GOLDEN_SET_2_RESPONSES

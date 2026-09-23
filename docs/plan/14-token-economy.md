@@ -88,14 +88,37 @@ file never patches a figure a document has already quoted.
 | template author, 348 authoring calls on `claude-opus-5-5` batch | direction 1, priced on Opus 5.5 | $13.87 |
 | verifier, 6,178 blind re-solves on `claude-haiku-4-5` batch | Claude-only, replaces direction 8 | $26.94 |
 | Haiku 4.5 screen between transcriber and grader | unchanged from 13 | $0.20 |
-| evals, golden set 1 on the template gate, golden set 2 mixed, golden set 3 monthly | directions 3 and 5 | $38.00 |
-| **Total** | | **$108.07** |
+| evals, golden set 1 on the template gate, golden set 2 mixed at canary cadence 2, golden set 3 monthly (cadence 9) | directions 3 and 5, cadence ruled 2026-09-23 | $22.88 |
+| **Total** | | **$92.95** |
 
 [measured: the `tier.hundred_claude_only` lines of `python3 tools/cost_model.py`]
 
-**This is an overrun of $8.07 against the $100.00 ceiling, down from $28.95 before the labelling
-pass, and it is the smallest honest total this document can price.** Two decisions drive the
-remainder, both already argued for above and neither loosened to make the number smaller.
+**This is $7.05 under the $100.00 ceiling, more than the operator's $5.00 headroom floor, down
+from an $8.07 overrun before the eval-cadence ruling and $28.95 before the labelling pass.** Three
+decisions drive the total, all already argued for above or ruled directly by the operator, and none
+loosened to make the number smaller.
+
+**Ruled 2026-09-23, the eval cadence.** The labelling pass alone left an $8.07 overrun with no
+further sourced lever (quoted below as history). Cadence is an operator choice, not a sourced
+number, so the operator cut it directly rather than inventing a sourced justification for a number
+that has none. `tools/cost_model.py`'s golden set 2 canary and golden set 3 lines both ran at
+`MONTHLY_RUNS` (9, once a month to exam). Golden set 3's monthly run costs only $5.60 over the whole
+cycle; even cutting it to zero could not close $8.07 on its own, so the cut has to land on the
+canary regardless of which line is preferred. The canary is therefore the line that moves, to a new
+`CLAUDE_ONLY_GOLDEN_SET_2_CANARY_CADENCE` of 2 runs over the cycle
+[measured: `tier.hundred_claude_only.evals_canary_cadence`], down from 9; golden set 3 stays at its
+full monthly cadence of 9 [measured: `tier.hundred_claude_only.evals_golden_set_3_cadence`], which
+is what "golden set 3 monthly" in the line above still means and is the one regression signal this
+tier keeps at its original frequency. This changes the Claude-only tier's own evals line only:
+`tier.hundred`, the Gemini-verifier tier 13-ai-engineering.md and
+docs/operator/ai-operating-costs.md quote at $95.03, reads `MONTHLY_RUNS` unchanged and is not
+touched by this cadence, because this file never patches a figure a document has already quoted.
+What is given up is two of the canary's nine monthly exact-match checks against fixed operator
+labels a cycle; the escalation rate 10-quality-and-evaluation.md names stays computed free and
+continuously on real gradings regardless of this cadence, and a full run (2 a cycle, unchanged)
+still catches a grader template bump or a model id change at three samples. This is a ruling that
+changes the plan's cadence, recorded here and in BUILD-LEDGER.md's decisions section, not a gate
+loosened to reach a number.
 
 The grader line now reads the labelling pass rather than the 17-of-76 field bound or the worst
 case. `data/bc_pt_determinism_labels.json` [inferred] carries one label per active BC-PT record,
@@ -138,22 +161,23 @@ Template authoring moves to `claude-opus-5-5`, cheaper than `claude-opus-5` at e
 `PRICES` and already the priced Opus row as of the previous slice. 348 calls at $13.87 against
 $17.37, a saving of $3.50, which is the one line below the ceiling rather than above it.
 
-**No further honest lever closes the remaining $8.07, and this document does not invent one to
-force the total under $100.** Four candidates were checked against what 13 and this document
-already argue, and none applies today. Routing the evals canary to `claude-haiku-4-5` has no
-sourced basis: the canary measures the grader's exact match against fixed operator labels, so
-running it on a different model would measure a model that is not the one serving students, which
-is not a cost decision, it is a change to what the instrument reports. Moving the transcriber to
-Haiku 4.5's standard tier is already rejected above on the resolution argument 13 makes for
-handwritten calculus, and nothing here reopens it. Grader thinking off, direction 4, is the
-alternative to direction 2 rather than additive to it, and the operator's instruction of
-2026-09-23 already declined it, unchanged at 700 thinking tokens, so it is not available to apply
-now even though 4 permits it in principle. Sampling the verifier per template rather than per
-published item breaks the floor "an unverified item is never served" and is rejected above for
-that reason regardless of the labelling pass. The two numbers that would still close the $8.07 are
-not inventions: a tighter labelling pass, which can only move the grader line down, and any future
-Claude pricing change on Haiku 4.5 batch, which this document does not control. $108.07 is the
-tier's honest price under a Claude-only engine, on the operator's own measurement.
+**History, as this document read before the eval-cadence ruling above closed it: no further
+sourced lever closed the remaining $8.07, and this document did not invent one to force the total
+under $100.** Four candidates were checked against what 13 and this document already argue, and
+none applied. Routing the evals canary to `claude-haiku-4-5` has no sourced basis: the canary
+measures the grader's exact match against fixed operator labels, so running it on a different model
+would measure a model that is not the one serving students, which is not a cost decision, it is a
+change to what the instrument reports. Moving the transcriber to Haiku 4.5's standard tier is
+already rejected above on the resolution argument 13 makes for handwritten calculus, and nothing
+here reopens it. Grader thinking off, direction 4, is the alternative to direction 2 rather than
+additive to it, and the operator's instruction of 2026-09-23 already declined it, unchanged at 700
+thinking tokens, so it was not available to apply even though 4 permits it in principle. Sampling
+the verifier per template rather than per published item breaks the floor "an unverified item is
+never served" and is rejected above for that reason regardless of the labelling pass. None of the
+four is a sourced number, which is exactly why the fifth lever, cadence, is the one the operator
+ruled on directly above: it was always an operator choice rather than a sourced measurement, so it
+did not belong in this "no honest lever" list in the first place. $92.95 is the tier's price under
+a Claude-only engine at that ruled cadence, on the operator's own measurement.
 
 ## Per role model choice [verified]
 

@@ -9,6 +9,8 @@ const USER_HANDLE = { text: "VVNSLTE", bytes: [85, 83, 82, 45, 49] };
 const CREDENTIAL = { text: "AKv-EA", bytes: [0, 171, 254, 16] };
 const CLIENT_DATA = { text: "eyJ0In0", bytes: [123, 34, 116, 34, 125] };
 const ATTESTATION = { text: "o2NmbXQ", bytes: [163, 99, 102, 109, 116] };
+const REAUTH_CHALLENGE = { text: "AQID", bytes: [1, 2, 3] };
+const REAUTH_TOKEN = "reauth-token-1";
 
 function buffer(bytes: number[]) {
    return new Uint8Array(bytes).buffer;
@@ -48,11 +50,39 @@ function attestation() {
    };
 }
 
+function reauthAssertion() {
+   return {
+      id: "reauth-credential",
+      rawId: buffer(REAUTH_CHALLENGE.bytes),
+      type: "public-key",
+      response: {
+         clientDataJSON: buffer(CLIENT_DATA.bytes),
+         authenticatorData: buffer([9]),
+         signature: buffer([9, 9]),
+         userHandle: null
+      },
+      getClientExtensionResults: () => ({})
+   };
+}
+
+/* The add ceremony now needs a fresh re-authentication before it can finish (ruled 2026-09-23),
+   so the fetch sequence is add/begin, reauth/begin, reauth/finish, add/finish. */
 function addServer() {
    return vi
       .fn()
       .mockResolvedValueOnce(jsonResponse(200, { challenge_id: "CH-ADD", options: registrationOptions() }))
+      .mockResolvedValueOnce(
+         jsonResponse(200, {
+            challenge_id: "CH-REAUTH",
+            options: { challenge: REAUTH_CHALLENGE.text, allowCredentials: [], userVerification: "preferred" }
+         })
+      )
+      .mockResolvedValueOnce(jsonResponse(200, { reauth_token: REAUTH_TOKEN }))
       .mockResolvedValueOnce(jsonResponse(200, { credential_id: "PKC-2" }));
+}
+
+function credentialsDouble(create: ReturnType<typeof vi.fn>) {
+   return { credentials: { create, get: vi.fn().mockResolvedValue(reauthAssertion()) } };
 }
 
 function notAllowed() {
@@ -77,26 +107,29 @@ afterEach(() => {
 });
 
 describe("adding a passkey while signed in", () => {
-   it("runs the add ceremony with the decoded options and finishes with the attestation", async () => {
+   it("runs the add ceremony with the decoded options and finishes with the attestation and a fresh reauth token", async () => {
       const fetchMock = addServer();
       const create = vi.fn().mockResolvedValue(attestation());
 
       vi.stubGlobal("fetch", fetchMock);
-      vi.stubGlobal("navigator", { credentials: { create } });
+      vi.stubGlobal("navigator", credentialsDouble(create));
 
       render(<AddPasskeyControl />);
       fireEvent.click(addButton());
 
-      await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
+      await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(4));
 
       const publicKey = create.mock.calls[0][0].publicKey;
-      const finish = JSON.parse(fetchMock.mock.calls[1][1].body);
+      const finish = JSON.parse(fetchMock.mock.calls[3][1].body);
 
       expect(Array.from(new Uint8Array(publicKey.challenge))).toEqual(CHALLENGE.bytes);
       expect(Array.from(new Uint8Array(publicKey.user.id))).toEqual(USER_HANDLE.bytes);
       expect(pathOf(fetchMock, 0)).toBe("/auth/passkey/add/begin");
-      expect(pathOf(fetchMock, 1)).toBe("/auth/passkey/add/finish");
+      expect(pathOf(fetchMock, 1)).toBe("/auth/reauth/begin");
+      expect(pathOf(fetchMock, 2)).toBe("/auth/reauth/finish");
+      expect(pathOf(fetchMock, 3)).toBe("/auth/passkey/add/finish");
       expect(finish.challenge_id).toBe("CH-ADD");
+      expect(finish.reauth_token).toBe(REAUTH_TOKEN);
       expect(finish.credential.rawId).toBe(CREDENTIAL.text);
       expect(finish.credential.response.clientDataJSON).toBe(CLIENT_DATA.text);
       expect(finish.credential.response.attestationObject).toBe(ATTESTATION.text);
@@ -105,7 +138,7 @@ describe("adding a passkey while signed in", () => {
 
    it("says the passkey was added only after the server accepts it", async () => {
       vi.stubGlobal("fetch", addServer());
-      vi.stubGlobal("navigator", { credentials: { create: vi.fn().mockResolvedValue(attestation()) } });
+      vi.stubGlobal("navigator", credentialsDouble(vi.fn().mockResolvedValue(attestation())));
 
       render(<AddPasskeyControl />);
 
@@ -119,7 +152,7 @@ describe("adding a passkey while signed in", () => {
 
    it("disables the control while the ceremony runs", () => {
       vi.stubGlobal("fetch", vi.fn().mockReturnValue(new Promise(() => undefined)));
-      vi.stubGlobal("navigator", { credentials: { create: vi.fn() } });
+      vi.stubGlobal("navigator", credentialsDouble(vi.fn()));
 
       render(<AddPasskeyControl />);
       fireEvent.click(addButton());
@@ -131,7 +164,32 @@ describe("adding a passkey while signed in", () => {
       const detail = "this passkey is already registered";
 
       vi.stubGlobal("fetch", vi.fn().mockResolvedValue(jsonResponse(409, { detail })));
-      vi.stubGlobal("navigator", { credentials: { create: vi.fn() } });
+      vi.stubGlobal("navigator", credentialsDouble(vi.fn()));
+
+      render(<AddPasskeyControl />);
+      fireEvent.click(addButton());
+
+      expect((await screen.findByRole("alert")).textContent).toBe(detail);
+      expect(document.body.textContent ?? "").not.toContain("Passkey added.");
+      expect(addButton().disabled).toBe(false);
+   });
+
+   it("shows the server's refusal when re-authentication is stale, and reports nothing added", async () => {
+      const detail = "adding a passkey needs a fresh passkey re-authentication";
+      const fetchMock = vi
+         .fn()
+         .mockResolvedValueOnce(jsonResponse(200, { challenge_id: "CH-ADD", options: registrationOptions() }))
+         .mockResolvedValueOnce(
+            jsonResponse(200, {
+               challenge_id: "CH-REAUTH",
+               options: { challenge: REAUTH_CHALLENGE.text, allowCredentials: [], userVerification: "preferred" }
+            })
+         )
+         .mockResolvedValueOnce(jsonResponse(200, { reauth_token: REAUTH_TOKEN }))
+         .mockResolvedValueOnce(jsonResponse(401, { detail }));
+
+      vi.stubGlobal("fetch", fetchMock);
+      vi.stubGlobal("navigator", credentialsDouble(vi.fn().mockResolvedValue(attestation())));
 
       render(<AddPasskeyControl />);
       fireEvent.click(addButton());

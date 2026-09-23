@@ -90,7 +90,7 @@ Three choices in that picture are deliberate. The engine, grader and verifier si
 
 ## Stack decision with alternatives considered
 
-The choice is D7: Python 3.12 with FastAPI on the server holding engine, grader, verifier, content loader and provider layer; React 18 with TypeScript and Vite on the client with KaTeX for rendering and MathLive for typed math input; SQLite through SQLAlchemy; a single job worker over a SQLite job table; SSE for streaming. Passkey ceremonies are verified by py_webauthn (`webauthn` on PyPI), approved by the operator on 2026-09-19 and landed on 2026-09-23.
+The choice is D7: Python 3.12 with FastAPI on the server holding engine, grader, verifier, content loader and provider layer; React 18 with TypeScript and Vite on the client with KaTeX for rendering and MathLive for typed math input; SQLite through SQLAlchemy; a single job worker over a SQLite job table; SSE for streaming. Passkey ceremonies are verified by py_webauthn (`webauthn` on PyPI), approved by the operator on 2026-09-19 and landed on 2026-09-23. `uvicorn` serves the ASGI application FastAPI builds; approved by the operator on 2026-09-20 to run the app locally and landed in `pyproject.toml`'s dependencies on 2026-09-23, having previously been installed in `.venv/` only.
 
 The ranking criterion is learning impact first, then cost, then convenience, and that ordering is what decides this table rather than developer taste.
 

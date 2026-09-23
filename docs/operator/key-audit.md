@@ -27,6 +27,16 @@ Read from `app/review/verdicts.py`, `verdict_violations`, which is what CI enfor
 One JSON array of these objects is the verdicts file. A separate JSON array of the 100 sampled
 item ids is the sample file.
 
+## Drawing the sample
+
+`python3 tools/draw_key_audit_sample.py <db_path> <content_root> <out_sample.json> [seed]` draws
+it: stratified by unit so no unit contributes more than 15 items, and by calculator status in
+proportion to what is published, over the database's published items, deterministic for a given
+seed (default 2026). Run it once the 130 hand-authored items are published, then point
+`GROWTH_KEY_AUDIT_SAMPLE_PATH` (or `Settings.key_audit_sample_path`) at the file it writes so
+`POST /review-queue/{id}/resolve` can check an item_audit verdict against it; without a sample
+configured, that route refuses every item_audit verdict.
+
 ## What each verdict means
 
 Audit each item by hand against its archetype's `expected_solution_path`, without looking at the

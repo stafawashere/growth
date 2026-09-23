@@ -837,7 +837,11 @@ done or listed below as needing the operator.
 
 From the seventeenth session, 2026-09-23, found and not fixed.
 
-- Superseded 2026-09-23, nineteenth session: the BC-PT labelling pass closed part of this. The
+- Superseded 2026-09-23, twenty-first session: the eval-cadence ruling closed the remaining
+  $8.07. The Claude-only $100 tier now prices at $92.95, $7.05 under the $100.00 ceiling
+  (`tier.hundred_claude_only.cycle`), a ruling on `CLAUDE_ONLY_GOLDEN_SET_2_CANARY_CADENCE`
+  rather than a further sourced lever, since cadence was never a sourced number to begin with.
+  Superseded 2026-09-23, nineteenth session: the BC-PT labelling pass closed part of this. The
   Claude-only $100 tier now prices at $108.07, an overrun of $8.07 against the operator's $100.00
   hard stop (`docs/plan/14-token-economy.md` "The $100 tier, line by line",
   `tier.hundred_claude_only.cycle` in `tools/cost_model.py`), down from $128.95 before the pass.
@@ -865,22 +869,35 @@ From the fifteenth session, 2026-09-23, found and not fixed.
 
 From the fourteenth session, 2026-09-23, found and not fixed.
 
-- The review-queue route (`app/api/routes/review.py` around line 70) resolves an item audit row
+- Superseded 2026-09-23, twenty-first session: the review-queue route now enforces the sample
+  check and one-verdict rule (`app/api/routes/review.py` `resolve_item_audit`,
+  `app/review/audit.draw_key_audit_sample`, `tools/draw_key_audit_sample.py`). The review-queue route (`app/api/routes/review.py` around line 70) resolves an item audit row
   with no sample check and no one-verdict rule, so a verdict outside the sample or a second one
   can still reach the table that way. `key_error_rate` counts neither, and it publishes no rate
   while one exists. Nothing in the repository draws the 100-item sample yet; the CLI reads it
   from a file and the app functions take it as an argument.
-- Stream error events are still always `retryable: False`. 07 has no Anthropic error-type table
+- Superseded 2026-09-23, twenty-first session: the retryable flag now reads the claude-api
+  skill's error-code table (`app/providers/anthropic.py` `_RETRYABLE_STREAM_ERROR_TYPES`; 07 gained
+  a sourced table). Stream error events are still always `retryable: False`. 07 has no Anthropic error-type table
   and no retryable rule, so the constant is unsourced and was not replaced with a guess.
-- Adding a passkey needs only the session cookie, which is all 09 asks. A stolen cookie can add
+- Superseded 2026-09-23, twenty-first session: adding a passkey now requires the same
+  `reauth_established` proof 09's other consequential actions do
+  (`app/auth/service.py` `add_passkey_finish`; 09's re-authentication list names it). Adding a passkey needs only the session cookie, which is all 09 asks. A stolen cookie can add
   a permanent credential that survives logout. 09's re-authentication list does not name it.
-- 09 line 96 says the login endpoints are the only ones an unauthenticated party can reach; that
+- Superseded 2026-09-23, twenty-first session, corrected twenty-second session: 09 line 96 is
+  replaced with the full, route-table-derived list, checked by
+  `tests/api/test_unauthenticated_routes.py` so it cannot drift again. The twenty-first session's
+  list came from `create_app`'s routes only and missed the three `mount_client` adds
+  (`GET /growth-tokens.css`, `GET /`, the `/assets` mount); the twenty-second session's entry above
+  covers that gap. 09 line 96 says the login endpoints are the only ones an unauthenticated party can reach; that
   was already false for `/auth/recovery/*` and is now false for `/auth/status` too.
 - Account copy written by the builder and awaiting the operator: "Add a passkey", "Passkey
   added.", and the server refusal texts "this passkey is already registered" and "the challenge
   belongs to another session", which can reach the screen. The credential display name is still
   always "student".
-- The operator decision of 2026-09-20 says a second error note replaces the first. The code
+- Superseded 2026-09-23, twenty-first session: `record_error_note` now replaces rather than
+  refuses a second note, confirming the 2026-09-20 decision this entry names.
+  `ErrorNoteAlreadyWritten` is removed. The operator decision of 2026-09-20 says a second error note replaces the first. The code
   refuses it with 409 (the eighth session's reading of 03's "once"), and
   test_a_second_error_note_is_refused_and_the_first_survives pins that. The 500 cap from the
   same decision is now enforced.
@@ -916,8 +933,11 @@ From the thirteenth session, 2026-09-23, found and not fixed.
   children are unbounded in number and re-import an unguarded `__main__`.
 - A budgets row that spans the migration day mixes unreported sums with counted calls.
 - `stop_reason` versus 07's `finish_reason`: readers in replay.py, several tests and the cassette.
-- Stream error events are always `retryable: False`. Effort on Haiku 4.5 is not refused.
-- `GET /growth-tokens.css` 404s unless `GROWTH_TOKENS_PATH` is set; a default to
+- Superseded 2026-09-23, twenty-first session: retryable now reads the claude-api skill's
+  error-code table, see above. Stream error events are always `retryable: False`. Effort on Haiku 4.5 is not refused.
+- Superseded 2026-09-23, twenty-first session: `GET /growth-tokens.css` now defaults to
+  `app/design/growth-tokens.json`; the three assertions were changed on the operator's own
+  instruction (this slice). `GET /growth-tokens.css` 404s unless `GROWTH_TOKENS_PATH` is set; a default to
   `app/design/growth-tokens.json` needs three assertions in tests/api/test_static_mount.py changed,
   which only the operator may approve.
 - No Inter font is bundled, so the system font renders. `letter-spacing` and numeric weights are
@@ -936,7 +956,8 @@ depending on the package being absent.
 
 From the twelfth session, 2026-09-22, found and not fixed.
 
-- Purge is unreachable from the served app. 08 gives no purge confirmation phrase, so `App.tsx`
+- Superseded 2026-09-23, twenty-first session: the purge confirmation phrase is ruled
+  (`"delete my data"`) and wired into `App.tsx`; purge is reachable from settings. Purge is unreachable from the served app. 08 gives no purge confirmation phrase, so `App.tsx`
   passes `null` and the purge controls stay disabled with the gap named on screen. Failure
   scenario: 30 days after the exam the student cannot purge from settings.
 - No plan copy exists for a failed request anywhere in the client. Screens stay silent on a 500
@@ -1705,6 +1726,141 @@ Claude-only tier under $100.
   cost, so applying it would be inventing a claim the labelling instruction explicitly ruled out.
   The tier's overrun is reported at $8.07 rather than closed by an unsourced assumption.
 
+Twenty-first session, slice 5, the operator rulings batch: six delegated rulings and one
+cadence ruling, all applied with red-then-green tests.
+
+- Stream error retryability (07). The claude-api skill's own `shared/error-codes.md` HTTP error
+  code summary marks 429 `rate_limit_error`, 500 `api_error` and 529 `overloaded_error`
+  retryable and every other listed type not; it names no timeout error type at all.
+  `app/providers/anthropic.py` `_RETRYABLE_STREAM_ERROR_TYPES` holds exactly those three, and the
+  normalised `error` event's `retryable` flag now reads the error's `type` against it instead of
+  always `False`. A timeout stays `retryable: False`, per the ruling's own instruction that an
+  undocumented type is left alone rather than guessed at. `tests/providers/test_anthropic.py`
+  gained `test_stream_error_retryable_matches_the_error_type`, looping all nine named types; red
+  against the reverted constant (`ImportError`, then the corrected existing test's `False` vs
+  `True`), green restored. 07 gained a sourced table.
+- Adding a passkey now requires the same `reauth_established` proof 09's other consequential
+  actions do. `app/auth/service.py` `add_passkey_finish` takes `reauth_token` and calls
+  `consume_reauth` after the new credential's ceremony verifies and before it is stored;
+  `app/api/routes/auth.py` passes it through. The client (`app/web/src/api/client.ts`
+  `addPasskey`) runs a full `reauthenticate()` ceremony between the authenticator's `create()` and
+  the finish call, and `FinishAddPasskeyFields` gained `reauth_token`. 09's re-authentication list
+  names it. `tests/auth/test_add_authenticator.py` gained
+  `test_adding_an_authenticator_without_a_fresh_reauth_is_refused`, and the tests that add a
+  credential now call `world.reauth(client)` first; `app/web/src/account/AddPasskeyControl.test.tsx`
+  rewritten for the four-call sequence (add/begin, reauth/begin, reauth/finish, add/finish) and a
+  new stale-reauth refusal case. Both red before the fix (401 expected, 200 got; four fetch calls
+  expected, one got), green after.
+- 09 line 96's "the login endpoints are the only ones an unauthenticated party can reach" is
+  false and is replaced with the full list, derived from the route table rather than typed by
+  hand: every route with no `current_session`/`current_user` dependency
+  (`register/begin`, `register/finish`, `/auth/status`, `recovery/register/begin`,
+  `recovery/register/finish`, `passkey/login/begin`, `passkey/login/finish`, `/healthz`).
+  `tests/api/test_unauthenticated_routes.py` is new: it walks `app.routes` (through FastAPI's
+  `_IncludedRouter` wrapping, which does not flatten onto the top-level list in this version) for
+  every route whose dependant tree carries neither dependency, and asserts the set equals the
+  documented list, so a new route added without one or the other silently drifts the doc no
+  longer. Red with `/healthz` removed from the expected set, green restored.
+- The review-queue route (`app/api/routes/review.py`) now enforces the sample check and
+  one-verdict rule `app/review/audit.record_item_audit_verdict` already enforces for the CLI path:
+  `resolve_item_audit` calls `audit.refuse_outside_sample` and `audit.refuse_second_verdict`
+  before resolving an `item_audit` row, reading the sample from
+  `settings.resolve_key_audit_sample_ids()` (new on `Settings`, backed by a new
+  `GROWTH_KEY_AUDIT_SAMPLE_PATH` env var, `app/main.py`). With no sample configured the route
+  refuses every `item_audit` verdict rather than guessing at membership. Since no sample has been
+  drawn yet (gates 17/29/30 still blocked on the 130 hand-authored items), `app/review/audit.py`
+  gained `draw_key_audit_sample`, a seeded, unit-capped (15 per unit), calculator-status-proportional
+  sampler matching `10-quality-and-evaluation.md`'s audit stratification, generalised to whatever
+  population it is given rather than the mature 139-archetype counts; `tools/draw_key_audit_sample.py`
+  is the CLI wrapper that queries published items, joins each to its archetype's unit and writes
+  the sample file `docs/operator/key-audit.md` describes. `tests/review/test_audit.py` gained five
+  tests for the sampler (determinism, seed sensitivity, the unit cap, and both refusal shapes),
+  and `tests/api/test_review_routes.py` gained three route tests (no sample configured, outside the
+  sample, a second verdict through a second row) plus `key_audit_sample_ids` set on existing
+  passing tests. Red confirmed on both (the cap test against a disabled cap check; all three new
+  route tests against the reverted route/Settings changes), green restored.
+- The remaining small rulings. A second error note replaces the first, confirming the operator's
+  2026-09-20 decision the eighth session's code had never implemented (it refused with 409
+  instead): `app/session/service.py` `record_error_note` no longer raises
+  `ErrorNoteAlreadyWritten` (removed) and simply overwrites; the route's matching `except` clause
+  is gone. Purge confirmation is the literal text `"delete my data"`
+  (`app/api/routes/purge.py` `PURGE_CONFIRMATION`), wired into the client as
+  `app/web/src/App.tsx` `PURGE_CONFIRMATION_PHRASE`, which also removes `purgeConfirmationPhrase`
+  from `UNSUPPLIED_INPUTS.settings` so the purge controls are no longer withheld. `uvicorn` joins
+  `pyproject.toml`'s `dependencies` and 06's stack decision paragraph, having previously been
+  installed in `.venv/` only on the operator's yes. `/growth-tokens.css` defaults to
+  `app/design/growth-tokens.json` (new `DEFAULT_TOKENS_PATH` in `app/main.py`) when
+  `GROWTH_TOKENS_PATH` is unset, rather than 404ing; an explicitly configured but unreadable path
+  still 404s. PyNaCl for provider key storage is declined for now: this installation is single-user
+  and local, the key already lives in `.env`, and a `.env` file on a single-user machine is not
+  meaningfully less protected than an encrypted row this same process decrypts back to plaintext on
+  every call; revisit when P8 (multi-user) is scoped. All three code changes are tested:
+  `tests/session/test_error_note_service.py` and `tests/api/test_error_note.py` rewritten for
+  replace-not-refuse (red against the reverted service, both new/renamed tests failing on the
+  `ErrorNoteAlreadyWritten` raise); `app/web/src/App.test.tsx` rewritten for the wired phrase (red
+  with the App.tsx revert, two failures); `tests/api/test_static_mount.py`'s three named
+  assertions rewritten to expect the default stylesheet rather than 404 (red with the main.py
+  revert, three failures, including the `application` attribute's own subprocess test). No test
+  was loosened; every changed assertion asserts a stronger or corrected claim than before.
+- The Claude-only $100 tier's eval cadence. The BC-PT labelling pass alone left an $8.07 overrun
+  with no further sourced lever (twentieth session, above). Cadence is an operator choice, not a
+  sourced number, so this is a ruling that changes the plan's cadence directly rather than a gate
+  loosened to reach a number: `tools/cost_model.py` gained
+  `CLAUDE_ONLY_GOLDEN_SET_2_CANARY_CADENCE = 2`, additive next to `MONTHLY_RUNS` (9), which the
+  Claude-only tier's canary line now reads instead of `MONTHLY_RUNS`; golden set 3 stays at the
+  full `MONTHLY_RUNS` cadence, because its monthly run costs only $5.60 over the whole cycle,
+  cutting it to zero could not close $8.07 alone, and keeping one line at its original frequency
+  rather than cutting both is the shape that leaves a monthly regression signal anywhere. New tier
+  total $92.95, $7.05 under the $100.00 ceiling (above the operator's $5.00 headroom floor), down
+  from $108.07. `tier.hundred`, the Gemini-verifier tier `13-ai-engineering.md` and
+  `docs/operator/ai-operating-costs.md` quote at $95.03, reads `MONTHLY_RUNS` unchanged and is not
+  touched, because this file never patches a figure a document has already quoted; the pre-cadence
+  $108.07/$8.07 total and $128.95/$28.95 worst case are kept as their own emitted figures
+  (`tier.hundred_claude_only.pre_cadence_ruling_cycle` and `.pre_cadence_ruling_worst_case_cycle`)
+  so the history `docs/plan/14-token-economy.md` quotes stays a checkable number rather than dead
+  prose. `docs/plan/14-token-economy.md`'s "The $100 tier, line by line" table and surrounding prose
+  rewritten to the new total and to record the ruling; `python3 tools/cost_model.py --check
+  docs/plan/14-token-economy.md` exits 0 (0 unknown dollar figures).
+  `tests/tools/test_cost_model.py` gained `test_claude_only_tier_reads_the_2026_09_23_eval_cadence_ruling`,
+  pinning the new cadence, the new total, the $7.05 headroom (asserted `>= 5.00`), the new worst
+  case, and that `tier.hundred.cycle` still reads $95.03; red against the reverted
+  `tools/cost_model.py` (`AttributeError`, the constant not existing), green restored. The
+  pre-existing pinning test's `overrun`/`worst_case_cycle` assertions against the old $108.07 total
+  are replaced by a `pre_cadence_ruling_evals_line` assertion, since those old figures are now
+  history rather than the tier's live total; this is the pinning test moving to what the ruling
+  changed, not a loosened gate, and it is recorded as a ruling for exactly that reason.
+- Stale docstrings from the eighteenth session's slice, both about stage example. The
+  `app/session/service.py` module docstring said confidence is collected at completion and
+  unsupported and "not at all" at example, and that an attempt served at example "updates
+  immediately"; both are wrong since the eighteenth/nineteenth sessions' ruling, so the paragraph
+  is rewritten to say confidence is collected at every stage and every attempt defers its update
+  until `record_confidence` supplies the rating, matching `record_attempt`'s actual `awaits_rating`
+  gate. `app/feedback/render.py` `step_verification`'s docstring said "every worked step at stage
+  example is given", which stopped being true once example blanks its last step under the same
+  2-step minimum as completion; rewritten to say so. Both are comment-only; no behaviour changed,
+  so no test was added for either, and the full suite (below) is the confirmation nothing else
+  reads the old wording as a contract.
+
+Twenty-second session, a verified review finding against the twenty-first session's slice 5 work
+on the unauthenticated-route list (09 line ~96, ruling 3).
+
+- The twenty-first session's fix derived the unauthenticated list from `create_app`'s own route
+  table (`tests/api/conftest.py`'s `world` fixture) and missed the three unauthenticated routes
+  `app/main.py`'s `mount_client` adds after `create_app` returns: `GET /growth-tokens.css`,
+  `GET /` and the `/assets` `StaticFiles` mount, none of which `create_app` alone ever registers.
+  `docs/plan/09-security-and-privacy.md`'s "Per IP" paragraph named eight routes, not the eleven
+  the production application `uvicorn app.main:application` actually serves without a cookie.
+  `tests/api/test_unauthenticated_routes.py` now builds the application with `build_application`
+  (`app/main.py`) instead of `create_app` alone, so it exercises the same composition root uvicorn
+  resolves. `DOC_UNAUTHENTICATED_ROUTES` gained `("GET", "/growth-tokens.css")` and
+  `("GET", "/")`, both plain `APIRoute`s the client mount adds directly and so already reachable
+  by the existing dependant-tree walk; a new `DOC_UNAUTHENTICATED_STATIC_MOUNTS = {"/assets"}` and
+  `_unauthenticated_static_mounts` cover the `Mount`, which carries no dependant tree at all to
+  walk and is unauthenticated-reachable by construction (`StaticFiles` answers any matching file
+  regardless of cookie). Red with the doc list reverted to the old eight entries (`AssertionError`,
+  `/growth-tokens.css` and `/` reported as extra on the left side), green restored. 09's paragraph
+  rewritten to name all eleven and both source modules.
+
 ## Decisions taken on the operator's instruction, 2026-09-20 [inferred]
 
 Sixth session, on the instruction "answer all decisions for me". Every open question the ledger
@@ -1769,26 +1925,28 @@ item below needs content, a key, a download or a ruling.
 
 Human-only, in the order that unblocks the most:
 
-0. Closed the twentieth session, 2026-09-23: the BC-PT labelling pass,
-   `data/bc_pt_determinism_labels.json`, 48 of 76 deterministic and 28 model_required. It closed
-   $20.88 of the Claude-only tier's overrun; $8.07 remains and no further sourced lever closes it
-   (Known defects, this session). What is left to move the grader line again is a relabelling, if
-   golden set 2's per point type exact match shows a label was wrong.
+0. Closed the twentieth and twenty-first sessions, 2026-09-23: the BC-PT labelling pass
+   (`data/bc_pt_determinism_labels.json`, 48 of 76 deterministic and 28 model_required) and the
+   eval-cadence ruling (`CLAUDE_ONLY_GOLDEN_SET_2_CANARY_CADENCE = 2`) together close the
+   Claude-only tier's overrun: $92.95, $7.05 under the $100.00 ceiling. What is left to move the
+   grader line again is a relabelling, if golden set 2's per point type exact match shows a label
+   was wrong.
 1. Gates 17 and 30, exit criterion 7: the 130 hand-authored items, 10 per archetype over 11's 13.
    Shape `docs/operator/items.md`, check `python3 tools/check_items.py <dir>`. Unblocks
-   `test_item_verification_tools` and `eval_p1_distractor_paths`.
+   `test_item_verification_tools` and `eval_p1_distractor_paths`. Once published, run
+   `python3 tools/draw_key_audit_sample.py <db_path> <content_root> <out_sample.json>` (new this
+   session) and point `GROWTH_KEY_AUDIT_SAMPLE_PATH` at the file it writes, so the review-queue
+   route (item 2 below) can resolve an `item_audit` verdict at all.
 2. Gate 29, exit criterion 4: the 100-item key audit over those items. Shape
-   `docs/operator/key-audit.md`, check `python3 tools/check_audit_verdicts.py`.
+   `docs/operator/key-audit.md`, check `python3 tools/check_audit_verdicts.py`. The review-queue
+   route now enforces the same sample check and one-verdict rule the CLI does (this session); with
+   no sample configured it refuses every `item_audit` verdict.
 3. Exit criterion 8: real tutor calls with the key, then `tools/serving_cost.py <db>`. The
    persistent developer spend cap (`app/providers/guard.py`, this session) now stands in front of
    any such call once `GROWTH_TUTOR_PROVIDER=anthropic` is set; `tools/dev_spend.py` reports spent,
    cap and remaining before and after.
-4. Rulings: which Anthropic stream errors are retryable (07); whether adding a passkey requires
-   re-authentication (09); whether a second error note replaces or is refused; the purge
-   confirmation phrase; copy for a failed request and for the account screen; PyNaCl for
-   provider key storage; `/growth-tokens.css` defaulting to the repository token file (three
-   assertions in tests/api/test_static_mount.py); `uvicorn` in pyproject and 06; permission to
-   download Inter as a self-hosted woff2.
-
-Blocked on the above: the retryable flag (item 4); a re-auth requirement on adding a passkey
-(item 4); the review-queue route's sample check (needs the drawn sample, item 2).
+4. Remaining rulings: copy for a failed request and for the account screen; permission to
+   download Inter as a self-hosted woff2. Closed this session: the retryable flag, the passkey
+   re-auth requirement, the second-error-note behaviour, the purge confirmation phrase, PyNaCl
+   (declined), `/growth-tokens.css`'s default, `uvicorn` in pyproject, and the eval-cadence
+   overrun.

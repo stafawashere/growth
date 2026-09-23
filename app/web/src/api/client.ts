@@ -548,6 +548,7 @@ export function readAuthStatus() {
 export interface FinishAddPasskeyFields {
    challenge_id: string;
    credential: unknown;
+   reauth_token: string;
 }
 
 export interface AddPasskeyFinish {
@@ -563,6 +564,9 @@ export function finishAddPasskey(fields: FinishAddPasskeyFields) {
 }
 
 export async function addPasskey() {
+   /* Ruled 2026-09-23: adding a passkey now needs a fresh re-authentication, the same proof
+      the other consequential actions require, because a credential it mints outlives the
+      session that requested it. */
    const begun = await beginAddPasskey();
    const publicKey = publicKeyCreationFrom(begun.options as CreationOptionsJson);
    const credential = await navigator.credentials.create({ publicKey });
@@ -572,9 +576,12 @@ export async function addPasskey() {
       throw new PasskeyDeclined();
    }
 
+   const reauthToken = await reauthenticate();
+
    return finishAddPasskey({
       challenge_id: begun.challenge_id,
-      credential: attestationJson(credential as PublicKeyCredential)
+      credential: attestationJson(credential as PublicKeyCredential),
+      reauth_token: reauthToken
    });
 }
 

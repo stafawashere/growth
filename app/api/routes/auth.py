@@ -16,9 +16,14 @@ helper login_finish and logout already call.
 
 Two more paths have no 06 row. 09's Recovery makes a second authenticator the primary recovery
 answer, but register/finish closes once users is non-empty, so a signed-in student adds one at
-/auth/passkey/add/begin and /auth/passkey/add/finish. 09 does not list adding a credential among the
-actions that force re-authentication, so the session cookie alone admits it. /auth/status answers
-whether the installation has its user, which register/begin already reveals by refusing.
+/auth/passkey/add/begin and /auth/passkey/add/finish. Ruled 2026-09-23: adding a passkey now joins
+09's re-authentication list next to setting or rotating a provider key, changing a budget cap,
+enabling claudebox, exporting and purging, because a credential it mints outlives the session that
+requested it and a stolen cookie should not be able to mint one. add_passkey_finish consumes the
+same single-use reauth_token the other consequential actions do, checked after the ceremony
+verifies the new credential and before it is stored, so a finished-but-unauthenticated attempt adds
+nothing. /auth/status answers whether the installation has its user, which register/begin already
+reveals by refusing.
 """
 from fastapi import APIRouter, Body, Depends, Request, Response
 
@@ -116,6 +121,7 @@ def add_passkey_finish(
       auth_session,
       fields.get("challenge_id"),
       fields.get("credential") or {},
+      reauth_token=fields.get("reauth_token"),
    )
 
 

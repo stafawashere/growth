@@ -56,9 +56,29 @@ def test_claude_only_tier_grader_line_reads_the_labelling_pass():
    assert cost_model.MEASURED_MODEL_JUDGED_POINT_RECORDS == 28
    assert round(figures["grader.measured_model_share_cycle"], 2) == 12.44
    assert round(figures["tier.hundred_claude_only.grader_line"], 2) == 12.44
-   assert round(figures["tier.hundred_claude_only.cycle"], 2) == 108.07
-   assert round(figures["tier.hundred_claude_only.overrun"], 2) == 8.07
-   assert round(figures["tier.hundred_claude_only.worst_case_cycle"], 2) == 128.95
+   assert round(figures["tier.hundred_claude_only.pre_cadence_ruling_evals_line"], 2) == 38.00
+
+
+def test_claude_only_tier_reads_the_2026_09_23_eval_cadence_ruling():
+   """Ruled 2026-09-23: the labelling pass alone left an $8.07 overrun with no further sourced
+   lever (docs/plan/14-token-economy.md), so the operator cut the golden set 2 canary cadence from
+   monthly (9) to 2 runs a cycle, keeping golden set 3 at its full monthly cadence of 9 since it is
+   the cheaper line and cutting it alone cannot close the gap. This test pins the new total and the
+   at-least-$5.00 headroom the ruling requires; a regression to the old MONTHLY_RUNS canary cadence
+   would silently reopen the overrun this ruling closed."""
+   figures = cost_model.figures()
+
+   assert cost_model.CLAUDE_ONLY_GOLDEN_SET_2_CANARY_CADENCE == 2
+   assert round(figures["tier.hundred_claude_only.evals_canary_cadence"], 2) == 2
+   assert round(figures["tier.hundred_claude_only.evals_golden_set_3_cadence"], 2) == cost_model.MONTHLY_RUNS
+   assert round(figures["tier.hundred_claude_only.evals_line"], 2) == 22.88
+   assert round(figures["tier.hundred_claude_only.cycle"], 2) == 92.95
+   assert round(figures["tier.hundred_claude_only.headroom"], 2) == 7.05
+   assert figures["tier.hundred_claude_only.headroom"] >= 5.00
+   assert round(figures["tier.hundred_claude_only.worst_case_cycle"], 2) == 113.83
+   assert round(figures["tier.hundred.cycle"], 2) == 95.03, (
+      "the Gemini-verifier tier's already-quoted total must not move with the Claude-only tier's cadence"
+   )
 
 
 @pytest.mark.parametrize("document", DOCUMENTS, ids=lambda path: path.name)

@@ -119,8 +119,11 @@ def pre_submission_prompt(stage, shown_steps):
 
 
 def step_verification(stage, worked_solution, verdict):
-   """Every worked step at stage example is given. At completion the given steps are marked given
-   and the blank carries the verdict, which stays None until the attempt is graded.
+   """Ruled 2026-09-23 (BUILD-LEDGER.md, "Decisions taken on the operator's instruction,
+   2026-09-23"): stage example now blanks its last worked step and collects a graded answer the
+   same way completion does, gated on the same 2-step minimum, so given_count comes from
+   served_steps at either stage. The given steps are marked given and the blank carries the
+   verdict, which stays None until the attempt is graded.
    """
    served_stage = FadingStage(stage)
    steps = worked_steps(worked_solution)

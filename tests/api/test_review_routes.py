@@ -62,6 +62,7 @@ def test_review_queue_requires_the_cookie(world):
 def test_resolve_records_the_operator_verdict(world):
    client = world.client()
    world.register(client)
+   world.settings.key_audit_sample_ids = ["ITM-0010"]
    insert_row(world, "RVQ-audit-1", "item_audit", "ITM-0010", NOW)
 
    resolved = client.post(
@@ -144,6 +145,7 @@ def test_resolve_refuses_an_unknown_verdict(world):
    """An unknown verdict is a bad request, not a crash out of the audit writer."""
    client = world.client()
    world.register(client)
+   world.settings.key_audit_sample_ids = ["ITM-0009"]
    row_id = "RVQ-verdict-1"
    insert_row(world, row_id, "item_audit", "ITM-0009", NOW)
    refused = client.post(f"/review-queue/{row_id}/resolve", json={"verdict": "bogus"})
@@ -153,6 +155,71 @@ def test_resolve_refuses_an_unknown_verdict(world):
    empty = client.post(f"/review-queue/{row_id}/resolve", json={})
 
    assert empty.status_code == 400
+
+
+def test_resolving_an_item_audit_without_a_configured_sample_is_refused(world):
+   client = world.client()
+   world.register(client)
+   insert_row(world, "RVQ-no-sample", "item_audit", "ITM-0050", NOW)
+
+   refused = client.post(
+      "/review-queue/RVQ-no-sample/resolve",
+      json={"verdict": audit.VERDICT_CLEAN},
+   )
+
+   assert refused.status_code == 400
+
+   with OrmSession(world.engine) as db:
+      row = db.get(models.ReviewQueue, "RVQ-no-sample")
+
+      assert row.resolved_at is None
+
+
+def test_resolving_an_item_audit_outside_the_sample_is_refused(world):
+   client = world.client()
+   world.register(client)
+   world.settings.key_audit_sample_ids = ["ITM-0060"]
+   insert_row(world, "RVQ-outside-sample", "item_audit", "ITM-0061", NOW)
+
+   refused = client.post(
+      "/review-queue/RVQ-outside-sample/resolve",
+      json={"verdict": audit.VERDICT_CLEAN},
+   )
+
+   assert refused.status_code == 400
+
+   with OrmSession(world.engine) as db:
+      row = db.get(models.ReviewQueue, "RVQ-outside-sample")
+
+      assert row.resolved_at is None
+
+
+def test_a_second_verdict_on_an_already_audited_item_through_a_new_row_is_refused(world):
+   client = world.client()
+   world.register(client)
+   world.settings.key_audit_sample_ids = ["ITM-0070"]
+   insert_row(
+      world,
+      "RVQ-audited-already",
+      "item_audit",
+      "ITM-0070",
+      NOW,
+      resolved_at=LATER,
+      resolution={"verdict": audit.VERDICT_CLEAN, "second_answer": None},
+   )
+   insert_row(world, "RVQ-second-attempt", "item_audit", "ITM-0070", LATER)
+
+   refused = client.post(
+      "/review-queue/RVQ-second-attempt/resolve",
+      json={"verdict": audit.VERDICT_KEY_WRONG},
+   )
+
+   assert refused.status_code == 400
+
+   with OrmSession(world.engine) as db:
+      row = db.get(models.ReviewQueue, "RVQ-second-attempt")
+
+      assert row.resolved_at is None
 
 
 def test_resolving_a_row_logs_the_row_own_kind(world):
@@ -180,6 +247,7 @@ def test_resolving_a_row_logs_the_row_own_kind(world):
 def test_resolving_an_item_audit_resolves_exactly_the_named_row(world):
    client = world.client()
    world.register(client)
+   world.settings.key_audit_sample_ids = ["ITM-0040"]
    insert_row(world, "RVQ-same-item-first", audit.KIND, "ITM-0040", NOW)
    insert_row(world, "RVQ-same-item-second", audit.KIND, "ITM-0040", LATER)
 

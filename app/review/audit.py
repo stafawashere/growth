@@ -14,7 +14,9 @@ incomplete beside it. A verdict is per sampled item: one for an item outside the
 and the sample is complete only when every sampled item carries exactly one verdict.
 """
 import json
+import random
 import uuid
+from collections import Counter, defaultdict
 
 from sqlalchemy import select
 
@@ -64,6 +66,91 @@ def drawn_sample(sample_ids, sample_size):
       raise ValueError(f"the sample holds {len(sample)} items, not the {sample_size} named")
 
    return sample
+
+
+MAX_ITEMS_PER_UNIT = 15
+
+
+def _proportional_targets(counts_by_key, sample_size):
+   """Largest-remainder rounding, ties broken by key so the result is deterministic. 10's audit
+   section stratifies by calculator status in proportion to the population; this generalises that
+   rule to whatever population is passed in, rather than hard-coding the mature 139-archetype
+   counts P1's 130 hand-authored items do not share."""
+   total = sum(counts_by_key.values())
+   raw = {key: sample_size * count / total for key, count in counts_by_key.items()}
+   targets = {key: int(value) for key, value in raw.items()}
+   remainder = sample_size - sum(targets.values())
+   ranked = sorted(counts_by_key, key=lambda key: (-(raw[key] - targets[key]), key))
+
+   for key in ranked[:remainder]:
+      targets[key] += 1
+
+   return targets
+
+
+def draw_key_audit_sample(candidates, rng_seed, sample_size=EVAL_29_SAMPLE_SIZE, max_per_unit=MAX_ITEMS_PER_UNIT):
+   """Draws the key-audit sample docs/plan/10-quality-and-evaluation.md describes: stratified by
+   unit so no unit contributes more than max_per_unit items, and by calculator_status in
+   proportion to the population offered. Deterministic for a given rng_seed and candidate set.
+
+   candidates: an iterable of {"item_id", "unit", "calculator_status"} for every eligible
+   (published, in P1 hand-authored) item. Ordering does not matter; candidates are sorted by
+   item_id before the seeded shuffle so the draw does not depend on query order.
+   """
+   ordered = sorted(candidates, key=lambda row: row["item_id"])
+   total = len(ordered)
+
+   if total < sample_size:
+      raise ValueError(f"only {total} candidate items are offered; the audit needs {sample_size}")
+
+   rng = random.Random(rng_seed)
+   by_status = defaultdict(list)
+
+   for row in ordered:
+      by_status[row["calculator_status"]].append(row)
+
+   for rows in by_status.values():
+      rng.shuffle(rows)
+
+   status_counts = {status: len(rows) for status, rows in by_status.items()}
+   targets = _proportional_targets(status_counts, sample_size)
+
+   selected = []
+   leftover = []
+   unit_counts = Counter()
+
+   for status in sorted(by_status):
+      target = targets[status]
+      taken = 0
+
+      for row in by_status[status]:
+         fits_the_unit_cap = unit_counts[row["unit"]] < max_per_unit
+
+         if taken < target and fits_the_unit_cap:
+            selected.append(row)
+            unit_counts[row["unit"]] += 1
+            taken += 1
+         else:
+            leftover.append(row)
+
+   rng.shuffle(leftover)
+
+   for row in leftover:
+      if len(selected) >= sample_size:
+         break
+
+      fits_the_unit_cap = unit_counts[row["unit"]] < max_per_unit
+
+      if fits_the_unit_cap:
+         selected.append(row)
+         unit_counts[row["unit"]] += 1
+
+   if len(selected) < sample_size:
+      raise ValueError(
+         f"only {len(selected)} items honour the {max_per_unit}-per-unit cap; {sample_size} were requested"
+      )
+
+   return sorted(row["item_id"] for row in selected[:sample_size])
 
 
 def refuse_outside_sample(item_id, sample_ids):

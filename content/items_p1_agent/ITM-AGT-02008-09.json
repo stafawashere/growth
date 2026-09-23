@@ -4,15 +4,15 @@
    "variant_id": null,
    "format": "short_answer",
    "stem": {
-      "text": "Let s(x) = ln(x)/x^2 for x > 0. Find s'(x) and simplify it to a single fraction with no common factor of x in the numerator and denominator."
+      "text": "Let s(x) = ln(x) p(x), where p(x) = x/(x + 2), for x > 0. Find s'(x) and simplify it to a single fraction."
    },
    "answer_key": {
       "form": "symbolic",
       "mathjson": [
          "Divide",
          [
-            "Subtract",
-            1,
+            "Add",
+            "x",
             [
                "Multiply",
                2,
@@ -20,58 +20,86 @@
                   "Ln",
                   "x"
                ]
-            ]
+            ],
+            2
          ],
          [
             "Power",
-            "x",
-            3
+            [
+               "Add",
+               "x",
+               2
+            ],
+            2
          ]
       ]
    },
    "worked_solution": [
       {
          "step": 1,
-         "text": "Take N = ln(x) and D = x^2, so N' = 1/x and D' = 2x.",
+         "text": "Take u = ln(x), so u' = 1/x. The quotient rule gives p'(x) = ((x + 2)(1) - x(1))/(x + 2)^2 = 2/(x + 2)^2.",
          "mathjson": [
             "Divide",
-            1,
-            "x"
+            2,
+            [
+               "Power",
+               [
+                  "Add",
+                  "x",
+                  2
+               ],
+               2
+            ]
          ]
       },
       {
          "step": 2,
-         "text": "The quotient rule gives s'(x) = (x^2 (1/x) - ln(x)(2x))/(x^2)^2 = (x - 2x ln(x))/x^4.",
+         "text": "The product rule gives s'(x) = u' p + u p' = (1/x)(x/(x + 2)) + 2 ln(x)/(x + 2)^2.",
          "mathjson": [
-            "Divide",
+            "Add",
             [
-               "Subtract",
-               "x",
+               "Divide",
                [
                   "Multiply",
                   2,
-                  "x",
                   [
                      "Ln",
                      "x"
                   ]
+               ],
+               [
+                  "Power",
+                  [
+                     "Add",
+                     "x",
+                     2
+                  ],
+                  2
                ]
             ],
             [
-               "Power",
-               "x",
-               4
+               "Divide",
+               [
+                  "Divide",
+                  "x",
+                  [
+                     "Add",
+                     "x",
+                     2
+                  ]
+               ],
+               "x"
             ]
          ]
       },
       {
          "step": 3,
-         "text": "Divide the numerator and denominator by x, so s'(x) = (1 - 2 ln(x))/x^3.",
+         "text": "The first term is 1/(x + 2) = (x + 2)/(x + 2)^2, so s'(x) = (x + 2 + 2 ln(x))/(x + 2)^2.",
          "mathjson": [
             "Divide",
             [
-               "Subtract",
-               1,
+               "Add",
+               "x",
                [
                   "Multiply",
                   2,
@@ -79,12 +107,17 @@
                      "Ln",
                      "x"
                   ]
-               ]
+               ],
+               2
             ],
             [
                "Power",
-               "x",
-               3
+               [
+                  "Add",
+                  "x",
+                  2
+               ],
+               2
             ]
          ]
       }
@@ -113,8 +146,9 @@
       "BC-SKL-02042"
    ],
    "parameter_draw": {
-      "numerator": "ln(x)",
-      "denominator": "x^2"
+      "structure": "product with a quotient factor",
+      "first_factor": "ln(x)",
+      "second_factor": "x/(x + 2)"
    },
    "authored_on": "2026-09-23",
    "authored_by": "claude-opus-5-5 agent draft, pending operator review",
@@ -124,8 +158,8 @@
          "value": [
             "Divide",
             [
-               "Subtract",
-               1,
+               "Add",
+               "x",
                [
                   "Multiply",
                   2,
@@ -133,12 +167,17 @@
                      "Ln",
                      "x"
                   ]
-               ]
+               ],
+               2
             ],
             [
                "Power",
-               "x",
-               3
+               [
+                  "Add",
+                  "x",
+                  2
+               ],
+               2
             ]
          ],
          "is_key": true,
@@ -147,24 +186,31 @@
       {
          "id": "B",
          "value": [
-            "Multiply",
-            -1,
-            [
-               "Power",
-               "x",
-               -3
-            ],
+            "Divide",
             [
                "Add",
-               1,
+               "x",
                [
-                  "Multiply",
-                  -2,
+                  "Negate",
                   [
-                     "Ln",
-                     "x"
+                     "Multiply",
+                     2,
+                     [
+                        "Ln",
+                        "x"
+                     ]
                   ]
-               ]
+               ],
+               2
+            ],
+            [
+               "Power",
+               [
+                  "Add",
+                  "x",
+                  2
+               ],
+               2
             ]
          ],
          "is_key": false,
@@ -174,21 +220,32 @@
       {
          "id": "C",
          "value": [
-            "Power",
-            "x",
-            -1
+            "Divide",
+            2,
+            [
+               "Multiply",
+               "x",
+               [
+                  "Power",
+                  [
+                     "Add",
+                     "x",
+                     2
+                  ],
+                  2
+               ]
+            ]
          ],
          "is_key": false,
          "error_path": "BC-ERR-02020",
-         "violated_step": 0
+         "violated_step": 1
       },
       {
          "id": "D",
          "value": [
             "Divide",
             [
-               "Subtract",
-               1,
+               "Add",
                [
                   "Multiply",
                   2,
@@ -196,9 +253,14 @@
                      "Ln",
                      "x"
                   ]
-               ]
+               ],
+               1
             ],
-            "x"
+            [
+               "Add",
+               "x",
+               2
+            ]
          ],
          "is_key": false,
          "error_path": "BC-ERR-02022",

@@ -4,31 +4,56 @@
    "variant_id": null,
    "format": "short_answer",
    "stem": {
-      "text": "Let g(x) = x^2 cos(x). Find the exact value of g'(pi)."
+      "text": "Let g(x) = (x^2 cos(x))/(x + 1) for x > -1. Find the exact value of g'(pi)."
    },
    "answer_key": {
       "form": "symbolic",
       "mathjson": [
-         "Multiply",
-         -2,
-         "Pi"
+         "Negate",
+         [
+            "Divide",
+            [
+               "Multiply",
+               "Pi",
+               [
+                  "Add",
+                  2,
+                  "Pi"
+               ]
+            ],
+            [
+               "Power",
+               [
+                  "Add",
+                  1,
+                  "Pi"
+               ],
+               2
+            ]
+         ]
       ]
    },
    "worked_solution": [
       {
          "step": 1,
-         "text": "Take u = x^2 and v = cos(x), so u' = 2x and v' = -sin(x).",
+         "text": "The numerator N = x^2 cos(x) is a product, so N' = 2x cos(x) - x^2 sin(x), and the denominator D = x + 1 has D' = 1.",
          "mathjson": [
-            "Multiply",
-            2,
-            "x"
-         ]
-      },
-      {
-         "step": 2,
-         "text": "The product rule gives g'(x) = 2x cos(x) - x^2 sin(x).",
-         "mathjson": [
-            "Subtract",
+            "Add",
+            [
+               "Negate",
+               [
+                  "Multiply",
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ],
+                  [
+                     "Sin",
+                     "x"
+                  ]
+               ]
+            ],
             [
                "Multiply",
                2,
@@ -37,28 +62,84 @@
                   "Cos",
                   "x"
                ]
-            ],
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "At x = pi, cos(pi) = -1 and sin(pi) = 0, so N = -pi^2, N' = -2 pi, D = pi + 1 and D' = 1.",
+         "mathjson": [
+            "Negate",
             [
                "Multiply",
-               [
-                  "Power",
-                  "x",
-                  2
-               ],
-               [
-                  "Sin",
-                  "x"
-               ]
+               2,
+               "Pi"
             ]
          ]
       },
       {
          "step": 3,
-         "text": "At x = pi, cos(pi) = -1 and sin(pi) = 0, so g'(pi) = 2 pi (-1) - pi^2 (0) = -2 pi.",
+         "text": "The quotient rule gives g'(pi) = (D N' - N D')/D^2 = ((pi + 1)(-2 pi) - (-pi^2)(1))/(pi + 1)^2.",
          "mathjson": [
-            "Multiply",
-            -2,
-            "Pi"
+            "Divide",
+            [
+               "Add",
+               [
+                  "Negate",
+                  [
+                     "Multiply",
+                     2,
+                     "Pi",
+                     [
+                        "Add",
+                        1,
+                        "Pi"
+                     ]
+                  ]
+               ],
+               [
+                  "Power",
+                  "Pi",
+                  2
+               ]
+            ],
+            [
+               "Power",
+               [
+                  "Add",
+                  1,
+                  "Pi"
+               ],
+               2
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "The numerator is -2 pi^2 - 2 pi + pi^2 = -pi^2 - 2 pi, so g'(pi) = -pi (pi + 2)/(pi + 1)^2.",
+         "mathjson": [
+            "Negate",
+            [
+               "Divide",
+               [
+                  "Multiply",
+                  "Pi",
+                  [
+                     "Add",
+                     2,
+                     "Pi"
+                  ]
+               ],
+               [
+                  "Power",
+                  [
+                     "Add",
+                     1,
+                     "Pi"
+                  ],
+                  2
+               ]
+            ]
          ]
       }
    ],
@@ -71,11 +152,11 @@
       },
       {
          "difficulty_factor_id": "BC-DF-06",
-         "setting": "low"
+         "setting": "medium"
       },
       {
          "difficulty_factor_id": "BC-DF-08",
-         "setting": "medium"
+         "setting": "high"
       }
    ],
    "skills": [
@@ -86,8 +167,9 @@
       "BC-SKL-02042"
    ],
    "parameter_draw": {
-      "power": 2,
-      "second_factor": "cos(x)",
+      "structure": "quotient with a product numerator",
+      "numerator": "x^2 cos(x)",
+      "denominator": "x + 1",
       "evaluation_point": "pi"
    },
    "authored_on": "2026-09-23",
@@ -95,34 +177,108 @@
    "options": [
       {
          "id": "A",
-         "value": -2,
+         "value": [
+            "Negate",
+            [
+               "Divide",
+               [
+                  "Multiply",
+                  "Pi",
+                  [
+                     "Add",
+                     2,
+                     "Pi"
+                  ]
+               ],
+               [
+                  "Add",
+                  1,
+                  "Pi"
+               ]
+            ]
+         ],
          "is_key": false,
          "error_path": "BC-ERR-02022",
-         "violated_step": 3
+         "violated_step": 1
       },
       {
          "id": "B",
-         "value": "Pi",
+         "value": [
+            "Divide",
+            [
+               "Multiply",
+               "Pi",
+               [
+                  "Add",
+                  2,
+                  "Pi"
+               ]
+            ],
+            [
+               "Power",
+               [
+                  "Add",
+                  1,
+                  "Pi"
+               ],
+               2
+            ]
+         ],
          "is_key": false,
          "error_path": "BC-ERR-02021",
-         "violated_step": 3
+         "violated_step": 2
       },
       {
          "id": "C",
          "value": [
-            "Multiply",
-            -2,
-            "Pi"
+            "Negate",
+            [
+               "Divide",
+               [
+                  "Multiply",
+                  "Pi",
+                  [
+                     "Add",
+                     2,
+                     "Pi"
+                  ]
+               ],
+               [
+                  "Power",
+                  [
+                     "Add",
+                     1,
+                     "Pi"
+                  ],
+                  2
+               ]
+            ]
          ],
          "is_key": true,
          "error_path": null
       },
       {
          "id": "D",
-         "value": 0,
+         "value": [
+            "Divide",
+            [
+               "Power",
+               "Pi",
+               2
+            ],
+            [
+               "Power",
+               [
+                  "Add",
+                  1,
+                  "Pi"
+               ],
+               2
+            ]
+         ],
          "is_key": false,
          "error_path": "BC-ERR-02020",
-         "violated_step": 1
+         "violated_step": 0
       }
    ]
 }

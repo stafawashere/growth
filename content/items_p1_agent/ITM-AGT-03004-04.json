@@ -4,50 +4,55 @@
    "variant_id": null,
    "format": "short_answer",
    "stem": {
-      "text": "For the curve x^2 - xy + 2y^2 = 7, it can be shown that dy/dx = (2x - y)/(x - ky) for some constant k. Find k."
+      "text": "Find dy/dx at the point (1, 2) on the curve x^2 - 3xy + y^2 = 3x - 4."
    },
    "answer_key": {
       "form": "numeric",
-      "mathjson": 4
+      "mathjson": 7
    },
    "worked_solution": [
       {
          "step": 1,
-         "text": "Differentiate every term with respect to x, using the product rule on xy: 2x - y - x(dy/dx) + 4y(dy/dx) = 0.",
+         "text": "Differentiate both sides with respect to x, using the product rule on 3xy and attaching dy/dx to the y^2 term: 2x - 3y - 3x(dy/dx) + 2y(dy/dx) = 3.",
          "mathjson": [
             "Equal",
             [
-               "Subtract",
+               "Add",
                [
-                  "Subtract",
-                  [
-                     "Add",
-                     [
-                        "Multiply",
-                        4,
-                        "dydx",
-                        "y"
-                     ],
-                     [
-                        "Multiply",
-                        2,
-                        "x"
-                     ]
-                  ],
+                  "Multiply",
+                  2,
+                  "x"
+               ],
+               [
+                  "Negate",
                   [
                      "Multiply",
-                     "dydx",
-                     "x"
+                     3,
+                     "y"
                   ]
                ],
-               "y"
+               [
+                  "Negate",
+                  [
+                     "Multiply",
+                     3,
+                     "x",
+                     "dydx"
+                  ]
+               ],
+               [
+                  "Multiply",
+                  2,
+                  "y",
+                  "dydx"
+               ]
             ],
-            0
+            3
          ]
       },
       {
          "step": 2,
-         "text": "Collect the dy/dx terms: (4y - x)(dy/dx) = y - 2x.",
+         "text": "Collect the dy/dx terms: (2y - 3x)(dy/dx) = 3 - 2x + 3y.",
          "mathjson": [
             "Equal",
             [
@@ -56,53 +61,77 @@
                   "Subtract",
                   [
                      "Multiply",
-                     4,
+                     2,
                      "y"
                   ],
-                  "x"
+                  [
+                     "Multiply",
+                     3,
+                     "x"
+                  ]
                ],
                "dydx"
             ],
             [
-               "Subtract",
-               "y",
+               "Add",
                [
-                  "Multiply",
-                  2,
-                  "x"
-               ]
-            ]
-         ]
-      },
-      {
-         "step": 3,
-         "text": "Divide, and multiply numerator and denominator by -1 to match the stated form: dy/dx = (2x - y)/(x - 4y).",
-         "mathjson": [
-            "Divide",
-            [
-               "Subtract",
-               [
-                  "Multiply",
-                  2,
-                  "x"
+                  "Subtract",
+                  3,
+                  [
+                     "Multiply",
+                     2,
+                     "x"
+                  ]
                ],
-               "y"
-            ],
-            [
-               "Subtract",
-               "x",
                [
                   "Multiply",
-                  4,
+                  3,
                   "y"
                ]
             ]
          ]
       },
       {
+         "step": 3,
+         "text": "Divide by 2y - 3x, so dy/dx = (3 - 2x + 3y)/(2y - 3x).",
+         "mathjson": [
+            "Divide",
+            [
+               "Add",
+               [
+                  "Subtract",
+                  3,
+                  [
+                     "Multiply",
+                     2,
+                     "x"
+                  ]
+               ],
+               [
+                  "Multiply",
+                  3,
+                  "y"
+               ]
+            ],
+            [
+               "Subtract",
+               [
+                  "Multiply",
+                  2,
+                  "y"
+               ],
+               [
+                  "Multiply",
+                  3,
+                  "x"
+               ]
+            ]
+         ]
+      },
+      {
          "step": 4,
-         "text": "Comparing denominators with x - ky gives k = 4.",
-         "mathjson": 4
+         "text": "Substitute x = 1 and y = 2: dy/dx = (3 - 2 + 6)/(4 - 3) = 7.",
+         "mathjson": 7
       }
    ],
    "calculator_status": "no_calculator",
@@ -118,7 +147,7 @@
       },
       {
          "difficulty_factor_id": "BC-DF-13",
-         "setting": "high"
+         "setting": "off"
       },
       {
          "difficulty_factor_id": "BC-DF-14",
@@ -134,39 +163,42 @@
       "BC-SKL-03014"
    ],
    "parameter_draw": {
-      "equation": "x^2 - xy + 2y^2 = 7",
-      "stated_form": "(2x - y)/(x - ky)",
-      "target": "constant in stated dy/dx"
+      "equation": "x^2 - 3xy + y^2 = 3x - 4",
+      "point": [
+         1,
+         2
+      ],
+      "target": "slope at point"
    },
    "authored_on": "2026-09-23",
    "authored_by": "claude-opus-5-5 agent draft, pending operator review",
    "options": [
       {
          "id": "A",
-         "value": 5,
+         "value": -1,
          "is_key": false,
-         "error_path": "BC-ERR-03008",
-         "violated_step": 5
+         "error_path": "BC-ERR-03007",
+         "violated_step": 1
       },
       {
          "id": "B",
-         "value": 4,
+         "value": 7,
          "is_key": true,
          "error_path": null
       },
       {
          "id": "C",
-         "value": 3,
+         "value": 4,
          "is_key": false,
          "error_path": "BC-ERR-03009",
-         "violated_step": 5
+         "violated_step": 0
       },
       {
          "id": "D",
-         "value": 0,
+         "value": 1,
          "is_key": false,
-         "error_path": "BC-ERR-03007",
-         "violated_step": 1
+         "error_path": "BC-ERR-03008",
+         "violated_step": 2
       }
    ]
 }

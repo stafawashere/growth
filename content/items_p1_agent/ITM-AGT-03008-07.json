@@ -4,16 +4,29 @@
    "variant_id": null,
    "format": "short_answer",
    "stem": {
-      "text": "The function y = f(x) satisfies dy/dx = 2x - y. Write d^2y/dx^2 in terms of x and y only."
+      "text": "The function y = f(x) satisfies dy/dx = xy + x^2. Write d^2y/dx^2 in terms of x and y only."
    },
    "answer_key": {
       "form": "symbolic",
       "mathjson": [
          "Add",
-         2,
+         [
+            "Power",
+            "x",
+            3
+         ],
          [
             "Multiply",
-            -2,
+            [
+               "Power",
+               "x",
+               2
+            ],
+            "y"
+         ],
+         [
+            "Multiply",
+            2,
             "x"
          ],
          "y"
@@ -22,47 +35,86 @@
    "worked_solution": [
       {
          "step": 1,
-         "text": "Differentiate both sides with respect to x: d^2y/dx^2 = 2 - dy/dx.",
+         "text": "Differentiate both sides with respect to x, using the product rule on xy: d^2y/dx^2 = y + x(dy/dx) + 2x.",
          "mathjson": [
-            "Subtract",
-            2,
+            "Add",
+            "y",
             [
-               "Subtract",
+               "Multiply",
+               "x",
                [
-                  "Multiply",
-                  2,
-                  "x"
-               ],
-               "y"
+                  "Add",
+                  [
+                     "Multiply",
+                     "x",
+                     "y"
+                  ],
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               2,
+               "x"
             ]
          ]
       },
       {
          "step": 2,
-         "text": "Replace dy/dx by 2x - y: d^2y/dx^2 = 2 - (2x - y).",
+         "text": "Replace dy/dx by xy + x^2: d^2y/dx^2 = y + x(xy + x^2) + 2x.",
          "mathjson": [
-            "Subtract",
-            2,
+            "Add",
+            "y",
             [
-               "Subtract",
+               "Multiply",
+               "x",
                [
-                  "Multiply",
-                  2,
-                  "x"
-               ],
-               "y"
+                  "Add",
+                  [
+                     "Multiply",
+                     "x",
+                     "y"
+                  ],
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               2,
+               "x"
             ]
          ]
       },
       {
          "step": 3,
-         "text": "Distribute the negative sign: d^2y/dx^2 = 2 - 2x + y.",
+         "text": "Expand: d^2y/dx^2 = x^3 + x^2 y + 2x + y.",
          "mathjson": [
             "Add",
-            2,
+            [
+               "Power",
+               "x",
+               3
+            ],
             [
                "Multiply",
-               -2,
+               [
+                  "Power",
+                  "x",
+                  2
+               ],
+               "y"
+            ],
+            [
+               "Multiply",
+               2,
                "x"
             ],
             "y"
@@ -85,7 +137,7 @@
       "BC-SKL-03034"
    ],
    "parameter_draw": {
-      "differential_equation": "2x - y"
+      "differential_equation": "xy + x^2"
    },
    "authored_by": "claude-opus-5-5 agent draft, pending operator review",
    "authored_on": "2026-09-23",
@@ -94,10 +146,23 @@
          "id": "A",
          "value": [
             "Add",
-            2,
+            [
+               "Power",
+               "x",
+               3
+            ],
             [
                "Multiply",
-               -2,
+               [
+                  "Power",
+                  "x",
+                  2
+               ],
+               "y"
+            ],
+            [
+               "Multiply",
+               2,
                "x"
             ],
             "y"
@@ -107,21 +172,33 @@
       },
       {
          "id": "B",
-         "value": 2,
-         "is_key": false,
-         "error_path": "BC-ERR-03023",
-         "violated_step": 3
-      },
-      {
-         "id": "C",
          "value": [
-            "Subtract",
+            "Add",
             [
                "Multiply",
                2,
                "x"
             ],
             "y"
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03008",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               "x",
+               "y"
+            ],
+            [
+               "Power",
+               "x",
+               2
+            ]
          ],
          "is_key": false,
          "error_path": "BC-ERR-03021",
@@ -131,20 +208,29 @@
          "id": "D",
          "value": [
             "Add",
-            2,
             [
-               "Negate",
+               "Power",
+               "x",
+               3
+            ],
+            [
+               "Multiply",
+               [
+                  "Power",
+                  "x",
+                  2
+               ],
                "y"
             ],
             [
                "Multiply",
-               -2,
+               2,
                "x"
             ]
          ],
          "is_key": false,
-         "error_path": "BC-ERR-03022",
-         "violated_step": 4
+         "error_path": "BC-ERR-03008",
+         "violated_step": 1
       }
    ]
 }

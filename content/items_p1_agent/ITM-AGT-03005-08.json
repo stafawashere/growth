@@ -4,60 +4,70 @@
    "variant_id": null,
    "format": "mcq",
    "stem": {
-      "text": "Consider the curve x^2 - xy + y^2 = 12, for which dy/dx = (2x - y)/(x - 2y). At the point P in the first quadrant the tangent line to the curve is vertical. What is the x-coordinate of P?"
+      "text": "Consider the curve (x^2 + 6x + 5)(2y - y^2) = 12, for which dy/dx = -(x + 3)(2y - y^2)/((x^2 + 6x + 5)(1 - y)). At the point P in the second quadrant the tangent line to the curve is vertical. What is the x-coordinate of P?"
    },
    "answer_key": {
       "form": "symbolic",
-      "mathjson": 4
+      "mathjson": -7
    },
    "worked_solution": [
       {
          "step": 1,
-         "text": "A vertical tangent needs the denominator to vanish: x - 2y = 0, so x = 2y.",
-         "mathjson": [
-            "Multiply",
-            2,
-            "y"
-         ]
+         "text": "A vertical tangent needs the denominator of dy/dx to be zero with the numerator nonzero. The denominator is zero when y = 1, x = -1, or x = -5.",
+         "mathjson": 1
       },
       {
          "step": 2,
-         "text": "Substitute x = 2y into the curve: 4y^2 - 2y^2 + y^2 = 3y^2 = 12, so y = 2 or y = -2.",
-         "mathjson": 2
+         "text": "At x = -1 or x = -5 the factor x^2 + 6x + 5 is 0, so the left side of the curve equation is 0, not 12. Neither x-value belongs to a point of the curve.",
+         "mathjson": 0
       },
       {
          "step": 3,
-         "text": "The first-quadrant candidate is (4, 2). The numerator there is 8 - 2 = 6, which is nonzero, so the tangent at (4, 2) is vertical and the x-coordinate of P is 4.",
-         "mathjson": 4
+         "text": "Substitute y = 1: 2y - y^2 = 1, so x^2 + 6x + 5 = 12 and x^2 + 6x - 7 = 0, which gives x = 1 or x = -7.",
+         "mathjson": [
+            "Negate",
+            7
+         ]
+      },
+      {
+         "step": 4,
+         "text": "At (-7, 1) the numerator is -(-4)(1) = 4, which is nonzero, so the tangent is vertical there. The point (-7, 1) is in the second quadrant and (1, 1) is in the first, so the x-coordinate of P is -7.",
+         "mathjson": [
+            "Negate",
+            7
+         ]
       }
    ],
    "options": [
       {
          "id": "A",
-         "value": 0,
+         "value": -5,
          "is_key": false,
          "error_path": "BC-ERR-03013",
-         "violated_step": 2
+         "violated_step": 3
       },
       {
          "id": "B",
-         "value": -2,
+         "value": -3,
          "is_key": false,
          "error_path": "BC-ERR-03012",
          "violated_step": 0
       },
       {
          "id": "C",
-         "value": 4,
+         "value": [
+            "Negate",
+            7
+         ],
          "is_key": true,
          "error_path": null
       },
       {
          "id": "D",
-         "value": 2,
+         "value": -1,
          "is_key": false,
-         "error_path": "BC-ERR-03012",
-         "violated_step": 0
+         "error_path": "BC-ERR-03013",
+         "violated_step": 3
       }
    ],
    "calculator_status": "no_calculator",
@@ -74,9 +84,10 @@
       "BC-SKL-03011"
    ],
    "parameter_draw": {
-      "curve": "x^2 - xy + y^2 = 12",
+      "curve": "(x^2 + 6x + 5)(2y - y^2) = 12",
       "direction": "vertical",
-      "quadrant": 1
+      "quadrant": 2,
+      "off_curve_candidates": 2
    },
    "authored_on": "2026-09-23",
    "authored_by": "claude-opus-5-5 agent draft, pending operator review"

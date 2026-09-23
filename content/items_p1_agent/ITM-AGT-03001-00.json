@@ -4,13 +4,12 @@
    "variant_id": null,
    "format": "mcq",
    "stem": {
-      "text": "Let f(x) = sin^3(5x), meaning (sin(5x))^3. Which of the following is f'(x)?"
+      "text": "Let f(x) = x sin^3(5x), where sin^3(5x) means (sin(5x))^3. Which of the following is f'(x)?"
    },
    "answer_key": {
       "form": "symbolic",
       "mathjson": [
-         "Multiply",
-         15,
+         "Add",
          [
             "Power",
             [
@@ -21,25 +20,12 @@
                   "x"
                ]
             ],
-            2
+            3
          ],
          [
-            "Cos",
-            [
-               "Multiply",
-               5,
-               "x"
-            ]
-         ]
-      ]
-   },
-   "worked_solution": [
-      {
-         "step": 1,
-         "text": "Read the layers from the outside in: the cube, then sine, then the linear inner function 5x. The cube contributes 3 sin^2(5x).",
-         "mathjson": [
             "Multiply",
-            3,
+            15,
+            "x",
             [
                "Power",
                [
@@ -51,29 +37,38 @@
                   ]
                ],
                2
+            ],
+            [
+               "Cos",
+               [
+                  "Multiply",
+                  5,
+                  "x"
+               ]
             ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "f is a product of x and the composite sin^3(5x), so the product rule opens the work: f'(x) = (x)' sin^3(5x) + x d/dx[sin^3(5x)], and the first term is sin^3(5x).",
+         "mathjson": [
+            "Power",
+            [
+               "Sin",
+               [
+                  "Multiply",
+                  5,
+                  "x"
+               ]
+            ],
+            3
          ]
       },
       {
          "step": 2,
-         "text": "The sine layer contributes its derivative evaluated at 5x, which is cos(5x).",
-         "mathjson": [
-            "Cos",
-            [
-               "Multiply",
-               5,
-               "x"
-            ]
-         ]
-      },
-      {
-         "step": 3,
-         "text": "The innermost layer 5x contributes its derivative, 5.",
-         "mathjson": 5
-      },
-      {
-         "step": 4,
-         "text": "Multiply the three factors: f'(x) = 3 sin^2(5x) * cos(5x) * 5 = 15 sin^2(5x) cos(5x).",
+         "text": "Differentiate the composite layer by layer: the cube gives 3 sin^2(5x), the sine gives cos(5x) evaluated at 5x, and 5x gives 5, so d/dx[sin^3(5x)] = 15 sin^2(5x) cos(5x).",
          "mathjson": [
             "Multiply",
             15,
@@ -95,6 +90,50 @@
                   "Multiply",
                   5,
                   "x"
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Substitute into the product rule: f'(x) = sin^3(5x) + 15x sin^2(5x) cos(5x).",
+         "mathjson": [
+            "Add",
+            [
+               "Power",
+               [
+                  "Sin",
+                  [
+                     "Multiply",
+                     5,
+                     "x"
+                  ]
+               ],
+               3
+            ],
+            [
+               "Multiply",
+               15,
+               "x",
+               [
+                  "Power",
+                  [
+                     "Sin",
+                     [
+                        "Multiply",
+                        5,
+                        "x"
+                     ]
+                  ],
+                  2
+               ],
+               [
+                  "Cos",
+                  [
+                     "Multiply",
+                     5,
+                     "x"
+                  ]
                ]
             ]
          ]
@@ -104,8 +143,7 @@
       {
          "id": "A",
          "value": [
-            "Multiply",
-            15,
+            "Add",
             [
                "Power",
                [
@@ -116,29 +154,24 @@
                      "x"
                   ]
                ],
-               2
-            ]
-         ],
-         "is_key": false,
-         "error_path": "BC-ERR-03002",
-         "violated_step": 3
-      },
-      {
-         "id": "B",
-         "value": [
-            "Multiply",
-            3,
+               3
+            ],
             [
-               "Power",
+               "Multiply",
+               3,
+               "x",
                [
-                  "Sin",
+                  "Power",
                   [
-                     "Multiply",
-                     5,
-                     "x"
-                  ]
-               ],
-               2
+                     "Sin",
+                     [
+                        "Multiply",
+                        5,
+                        "x"
+                     ]
+                  ],
+                  2
+               ]
             ]
          ],
          "is_key": false,
@@ -146,10 +179,56 @@
          "violated_step": 2
       },
       {
+         "id": "B",
+         "value": [
+            "Add",
+            [
+               "Power",
+               [
+                  "Sin",
+                  [
+                     "Multiply",
+                     5,
+                     "x"
+                  ]
+               ],
+               3
+            ],
+            [
+               "Multiply",
+               3,
+               "x",
+               [
+                  "Power",
+                  [
+                     "Sin",
+                     [
+                        "Multiply",
+                        5,
+                        "x"
+                     ]
+                  ],
+                  2
+               ],
+               [
+                  "Cos",
+                  [
+                     "Multiply",
+                     5,
+                     "x"
+                  ]
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03002",
+         "violated_step": 3
+      },
+      {
          "id": "C",
          "value": [
             "Multiply",
-            3,
+            15,
             [
                "Power",
                [
@@ -172,14 +251,13 @@
             ]
          ],
          "is_key": false,
-         "error_path": "BC-ERR-03002",
-         "violated_step": 3
+         "error_path": "BC-ERR-03006",
+         "violated_step": 0
       },
       {
          "id": "D",
          "value": [
-            "Multiply",
-            15,
+            "Add",
             [
                "Power",
                [
@@ -190,14 +268,31 @@
                      "x"
                   ]
                ],
-               2
+               3
             ],
             [
-               "Cos",
+               "Multiply",
+               15,
+               "x",
                [
-                  "Multiply",
-                  5,
-                  "x"
+                  "Power",
+                  [
+                     "Sin",
+                     [
+                        "Multiply",
+                        5,
+                        "x"
+                     ]
+                  ],
+                  2
+               ],
+               [
+                  "Cos",
+                  [
+                     "Multiply",
+                     5,
+                     "x"
+                  ]
                ]
             ]
          ],
@@ -210,11 +305,11 @@
    "difficulty_settings": [
       {
          "difficulty_factor_id": "BC-DF-02",
-         "setting": "low"
+         "setting": "medium"
       },
       {
          "difficulty_factor_id": "BC-DF-06",
-         "setting": "low"
+         "setting": "medium"
       }
    ],
    "skills": [
@@ -223,12 +318,14 @@
       "BC-SKL-03006"
    ],
    "parameter_draw": {
+      "polynomial_factor": "x",
       "outer": "cube",
       "middle": "sin",
       "inner": "5x",
       "inner_coefficient": 5,
       "power": 3,
-      "layers": 3
+      "layers": 3,
+      "enclosing_rule": "product"
    },
    "authored_on": "2026-09-23",
    "authored_by": "claude-opus-5-5 agent draft, pending operator review"

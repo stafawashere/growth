@@ -4,7 +4,7 @@
    "variant_id": null,
    "format": "short_answer",
    "stem": {
-      "text": "Let r(x) = x^2/(x^2 + 1). Find r'(x) and simplify the numerator completely."
+      "text": "Let r(x) = (x^2 e^x)/(x^2 + 1). Find r'(x) and simplify the numerator completely."
    },
    "answer_key": {
       "form": "symbolic",
@@ -12,8 +12,28 @@
          "Divide",
          [
             "Multiply",
-            2,
-            "x"
+            [
+               "Add",
+               [
+                  "Power",
+                  "x",
+                  4
+               ],
+               [
+                  "Power",
+                  "x",
+                  2
+               ],
+               [
+                  "Multiply",
+                  2,
+                  "x"
+               ]
+            ],
+            [
+               "Exp",
+               "x"
+            ]
          ],
          [
             "Power",
@@ -33,20 +53,51 @@
    "worked_solution": [
       {
          "step": 1,
-         "text": "Take N = x^2 and D = x^2 + 1, so N' = 2x and D' = 2x.",
+         "text": "The numerator N = x^2 e^x is a product, so N' = 2x e^x + x^2 e^x = (x^2 + 2x) e^x, and the denominator D = x^2 + 1 has D' = 2x.",
          "mathjson": [
             "Multiply",
-            2,
-            "x"
+            [
+               "Add",
+               [
+                  "Power",
+                  "x",
+                  2
+               ],
+               [
+                  "Multiply",
+                  2,
+                  "x"
+               ]
+            ],
+            [
+               "Exp",
+               "x"
+            ]
          ]
       },
       {
          "step": 2,
-         "text": "The quotient rule gives r'(x) = ((x^2 + 1)(2x) - x^2 (2x))/(x^2 + 1)^2.",
+         "text": "The quotient rule gives r'(x) = (D N' - N D')/D^2 = ((x^2 + 1)(x^2 + 2x) e^x - x^2 e^x (2x))/(x^2 + 1)^2.",
          "mathjson": [
             "Divide",
             [
-               "Subtract",
+               "Add",
+               [
+                  "Negate",
+                  [
+                     "Multiply",
+                     2,
+                     [
+                        "Power",
+                        "x",
+                        3
+                     ],
+                     [
+                        "Exp",
+                        "x"
+                     ]
+                  ]
+               ],
                [
                   "Multiply",
                   [
@@ -59,21 +110,20 @@
                      1
                   ],
                   [
-                     "Multiply",
-                     2,
-                     "x"
-                  ]
-               ],
-               [
-                  "Multiply",
-                  [
-                     "Power",
-                     "x",
-                     2
+                     "Add",
+                     [
+                        "Power",
+                        "x",
+                        2
+                     ],
+                     [
+                        "Multiply",
+                        2,
+                        "x"
+                     ]
                   ],
                   [
-                     "Multiply",
-                     2,
+                     "Exp",
                      "x"
                   ]
                ]
@@ -95,13 +145,33 @@
       },
       {
          "step": 3,
-         "text": "Expand the numerator: 2x^3 + 2x - 2x^3 = 2x, so r'(x) = 2x/(x^2 + 1)^2.",
+         "text": "Expand: (x^2 + 1)(x^2 + 2x) = x^4 + 2x^3 + x^2 + 2x, and subtracting 2x^3 leaves x^4 + x^2 + 2x, so r'(x) = e^x (x^4 + x^2 + 2x)/(x^2 + 1)^2.",
          "mathjson": [
             "Divide",
             [
                "Multiply",
-               2,
-               "x"
+               [
+                  "Add",
+                  [
+                     "Power",
+                     "x",
+                     4
+                  ],
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ],
+                  [
+                     "Multiply",
+                     2,
+                     "x"
+                  ]
+               ],
+               [
+                  "Exp",
+                  "x"
+               ]
             ],
             [
                "Power",
@@ -128,11 +198,11 @@
       },
       {
          "difficulty_factor_id": "BC-DF-06",
-         "setting": "medium"
+         "setting": "high"
       },
       {
          "difficulty_factor_id": "BC-DF-08",
-         "setting": "low"
+         "setting": "medium"
       }
    ],
    "skills": [
@@ -143,7 +213,8 @@
       "BC-SKL-02042"
    ],
    "parameter_draw": {
-      "numerator": "x^2",
+      "structure": "quotient with a product numerator",
+      "numerator": "x^2 e^x",
       "denominator": "x^2 + 1"
    },
    "authored_on": "2026-09-23",
@@ -152,9 +223,29 @@
       {
          "id": "A",
          "value": [
-            "Multiply",
-            2,
-            "x"
+            "Divide",
+            [
+               "Multiply",
+               2,
+               "x",
+               [
+                  "Exp",
+                  "x"
+               ]
+            ],
+            [
+               "Power",
+               [
+                  "Add",
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ],
+                  1
+               ],
+               2
+            ]
          ],
          "is_key": false,
          "error_path": "BC-ERR-02020",
@@ -166,8 +257,28 @@
             "Divide",
             [
                "Multiply",
-               2,
-               "x"
+               [
+                  "Add",
+                  [
+                     "Power",
+                     "x",
+                     4
+                  ],
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ],
+                  [
+                     "Multiply",
+                     2,
+                     "x"
+                  ]
+               ],
+               [
+                  "Exp",
+                  "x"
+               ]
             ],
             [
                "Add",
@@ -186,21 +297,47 @@
       {
          "id": "C",
          "value": [
-            "Multiply",
-            -2,
-            "x",
+            "Negate",
             [
-               "Power",
+               "Divide",
                [
-                  "Add",
-                  1,
+                  "Multiply",
                   [
-                     "Power",
-                     "x",
-                     2
+                     "Add",
+                     [
+                        "Power",
+                        "x",
+                        4
+                     ],
+                     [
+                        "Power",
+                        "x",
+                        2
+                     ],
+                     [
+                        "Multiply",
+                        2,
+                        "x"
+                     ]
+                  ],
+                  [
+                     "Exp",
+                     "x"
                   ]
                ],
-               -2
+               [
+                  "Power",
+                  [
+                     "Add",
+                     [
+                        "Power",
+                        "x",
+                        2
+                     ],
+                     1
+                  ],
+                  2
+               ]
             ]
          ],
          "is_key": false,
@@ -213,8 +350,28 @@
             "Divide",
             [
                "Multiply",
-               2,
-               "x"
+               [
+                  "Add",
+                  [
+                     "Power",
+                     "x",
+                     4
+                  ],
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ],
+                  [
+                     "Multiply",
+                     2,
+                     "x"
+                  ]
+               ],
+               [
+                  "Exp",
+                  "x"
+               ]
             ],
             [
                "Power",

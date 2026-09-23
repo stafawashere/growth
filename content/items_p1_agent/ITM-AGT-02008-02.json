@@ -4,62 +4,97 @@
    "variant_id": null,
    "format": "mcq",
    "stem": {
-      "text": "Let h(x) = (3x + 1)/(x - 2) for x not equal to 2. Which of the following is h'(x)?"
+      "text": "Let h(x) = (x + 1)/(x e^x) for x > 0. Which of the following is h'(x)?"
    },
    "answer_key": {
       "form": "symbolic",
       "mathjson": [
-         "Divide",
-         -7,
+         "Negate",
          [
-            "Power",
+            "Divide",
             [
-               "Subtract",
+               "Add",
+               [
+                  "Power",
+                  "x",
+                  2
+               ],
                "x",
-               2
+               1
             ],
-            2
+            [
+               "Multiply",
+               [
+                  "Power",
+                  "x",
+                  2
+               ],
+               [
+                  "Exp",
+                  "x"
+               ]
+            ]
          ]
       ]
    },
    "worked_solution": [
       {
          "step": 1,
-         "text": "Take the numerator N = 3x + 1 and the denominator D = x - 2, so N' = 3 and D' = 1.",
-         "mathjson": 3
+         "text": "Take N = x + 1, so N' = 1. The denominator D = x e^x is a product, so D' = e^x + x e^x = (x + 1) e^x.",
+         "mathjson": [
+            "Multiply",
+            [
+               "Add",
+               "x",
+               1
+            ],
+            [
+               "Exp",
+               "x"
+            ]
+         ]
       },
       {
          "step": 2,
-         "text": "The quotient rule gives h'(x) = (D N' - N D')/D^2 = (3(x - 2) - (3x + 1))/(x - 2)^2.",
+         "text": "The quotient rule gives h'(x) = (D N' - N D')/D^2 = (x e^x - (x + 1)(x + 1) e^x)/(x e^x)^2.",
          "mathjson": [
             "Divide",
             [
                "Subtract",
                [
                   "Multiply",
-                  3,
+                  "x",
                   [
-                     "Subtract",
-                     "x",
-                     2
+                     "Exp",
+                     "x"
                   ]
                ],
                [
-                  "Add",
+                  "Multiply",
                   [
-                     "Multiply",
-                     3,
-                     "x"
+                     "Power",
+                     [
+                        "Add",
+                        "x",
+                        1
+                     ],
+                     2
                   ],
-                  1
+                  [
+                     "Exp",
+                     "x"
+                  ]
                ]
             ],
             [
                "Power",
                [
-                  "Subtract",
+                  "Multiply",
                   "x",
-                  2
+                  [
+                     "Exp",
+                     "x"
+                  ]
                ],
                2
             ]
@@ -67,18 +102,33 @@
       },
       {
          "step": 3,
-         "text": "The numerator simplifies to 3x - 6 - 3x - 1 = -7.",
+         "text": "Cancel one factor of e^x. The numerator is x - (x^2 + 2x + 1) = -(x^2 + x + 1), so h'(x) = -(x^2 + x + 1)/(x^2 e^x).",
          "mathjson": [
-            "Divide",
-            -7,
+            "Negate",
             [
-               "Power",
+               "Divide",
                [
-                  "Subtract",
+                  "Add",
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ],
                   "x",
-                  2
+                  1
                ],
-               2
+               [
+                  "Multiply",
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ],
+                  [
+                     "Exp",
+                     "x"
+                  ]
+               ]
             ]
          ]
       }
@@ -87,16 +137,31 @@
       {
          "id": "A",
          "value": [
-            "Divide",
-            -7,
+            "Negate",
             [
-               "Power",
+               "Divide",
                [
-                  "Subtract",
+                  "Add",
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ],
                   "x",
-                  2
+                  1
                ],
-               2
+               [
+                  "Multiply",
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ],
+                  [
+                     "Exp",
+                     "x"
+                  ]
+               ]
             ]
          ],
          "is_key": true,
@@ -104,24 +169,54 @@
       },
       {
          "id": "B",
-         "value": 3,
+         "value": [
+            "Negate",
+            [
+               "Divide",
+               1,
+               [
+                  "Multiply",
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ],
+                  [
+                     "Exp",
+                     "x"
+                  ]
+               ]
+            ]
+         ],
          "is_key": false,
-         "error_path": "BC-ERR-02022",
+         "error_path": "BC-ERR-02020",
          "violated_step": 0
       },
       {
          "id": "C",
          "value": [
             "Divide",
-            7,
             [
-               "Power",
+               "Add",
                [
-                  "Subtract",
+                  "Power",
                   "x",
                   2
                ],
-               2
+               "x",
+               1
+            ],
+            [
+               "Multiply",
+               [
+                  "Power",
+                  "x",
+                  2
+               ],
+               [
+                  "Exp",
+                  "x"
+               ]
             ]
          ],
          "is_key": false,
@@ -131,12 +226,20 @@
       {
          "id": "D",
          "value": [
-            "Divide",
-            -7,
+            "Negate",
             [
-               "Subtract",
-               "x",
-               2
+               "Divide",
+               [
+                  "Add",
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ],
+                  "x",
+                  1
+               ],
+               "x"
             ]
          ],
          "is_key": false,
@@ -153,11 +256,11 @@
       },
       {
          "difficulty_factor_id": "BC-DF-06",
-         "setting": "low"
+         "setting": "medium"
       },
       {
          "difficulty_factor_id": "BC-DF-08",
-         "setting": "low"
+         "setting": "medium"
       }
    ],
    "skills": [
@@ -168,8 +271,9 @@
       "BC-SKL-02042"
    ],
    "parameter_draw": {
-      "numerator": "3x + 1",
-      "denominator": "x - 2"
+      "structure": "quotient with a product denominator",
+      "numerator": "x + 1",
+      "denominator": "x e^x"
    },
    "authored_on": "2026-09-23",
    "authored_by": "claude-opus-5-5 agent draft, pending operator review"

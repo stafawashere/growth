@@ -4,7 +4,7 @@
    "variant_id": null,
    "format": "mcq",
    "stem": {
-      "text": "Let u be defined by u(x) = k^2 + ln(x) for 0 < x < 1, u(1) = 3k + 10, and u(x) = kx + 6 for x > 1, where k is a constant. For what value of k is u continuous at x = 1?"
+      "text": "Let u be defined by u(x) = k^2 + ln(x) for 0 < x < 1, u(1) = 2k^2 + 3k + 2, and u(x) = kx + 6 for x > 1, where k is a constant. For what value of k is u continuous at x = 1?"
    },
    "answer_key": {
       "form": "symbolic",
@@ -51,17 +51,26 @@
       },
       {
          "step": 3,
-         "text": "The common limit must also equal u(1) = 3k + 10. At k = 3 the limit is 9 but u(1) = 19, while at k = -2 the limit is 4 and u(1) = 4.",
+         "text": "The common limit must also equal u(1) = 2k^2 + 3k + 2. At k = 3 the limit is 9 but u(1) = 29, while at k = -2 the limit is 4 and u(1) = 4.",
          "mathjson": [
             "Equal",
             [
                "Add",
                [
                   "Multiply",
+                  2,
+                  [
+                     "Power",
+                     "k",
+                     2
+                  ]
+               ],
+               [
+                  "Multiply",
                   3,
                   "k"
                ],
-               10
+               2
             ],
             4
          ]
@@ -75,10 +84,10 @@
    "options": [
       {
          "id": "A",
-         "value": 2,
+         "value": -1,
          "is_key": false,
          "error_path": "BC-ERR-01017",
-         "violated_step": 3
+         "violated_step": 0
       },
       {
          "id": "B",
@@ -95,7 +104,7 @@
       },
       {
          "id": "D",
-         "value": 5,
+         "value": 1,
          "is_key": false,
          "error_path": "BC-ERR-01017",
          "violated_step": 0
@@ -117,7 +126,7 @@
    ],
    "parameter_draw": {
       "left_branch": "k^2 + ln(x)",
-      "point_value": "3k + 10",
+      "point_value": "2k^2 + 3k + 2",
       "right_branch": "kx + 6",
       "boundary": 1
    },

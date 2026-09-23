@@ -4,48 +4,54 @@
    "variant_id": null,
    "format": "mcq",
    "stem": {
-      "text": "Let k(x) = sin(x)/(1 + cos(x)) on an interval where 1 + cos(x) is not zero. Which of the following is k'(x)?"
+      "text": "Let k(x) = e^x q(x), where q(x) = sin(x)/(1 + cos(x)), on an interval where 1 + cos(x) is not zero. Which of the following is k'(x)?"
    },
    "answer_key": {
       "form": "symbolic",
       "mathjson": [
          "Divide",
-         1,
+         [
+            "Multiply",
+            [
+               "Add",
+               [
+                  "Sin",
+                  "x"
+               ],
+               1
+            ],
+            [
+               "Exp",
+               "x"
+            ]
+         ],
          [
             "Add",
-            1,
             [
                "Cos",
                "x"
-            ]
+            ],
+            1
          ]
       ]
    },
    "worked_solution": [
       {
          "step": 1,
-         "text": "Take N = sin(x) and D = 1 + cos(x), so N' = cos(x) and D' = -sin(x).",
-         "mathjson": [
-            "Cos",
-            "x"
-         ]
-      },
-      {
-         "step": 2,
-         "text": "The quotient rule gives k'(x) = ((1 + cos(x)) cos(x) - sin(x)(-sin(x)))/(1 + cos(x))^2.",
+         "text": "Take u = e^x, so u' = e^x. The quotient rule gives q'(x) = ((1 + cos(x)) cos(x) - sin(x)(-sin(x)))/(1 + cos(x))^2.",
          "mathjson": [
             "Divide",
             [
-               "Subtract",
+               "Add",
                [
                   "Multiply",
                   [
                      "Add",
-                     1,
                      [
                         "Cos",
                         "x"
-                     ]
+                     ],
+                     1
                   ],
                   [
                      "Cos",
@@ -53,39 +59,34 @@
                   ]
                ],
                [
-                  "Multiply",
+                  "Power",
                   [
                      "Sin",
                      "x"
                   ],
-                  [
-                     "Negate",
-                     [
-                        "Sin",
-                        "x"
-                     ]
-                  ]
+                  2
                ]
             ],
             [
                "Power",
                [
                   "Add",
-                  1,
                   [
                      "Cos",
                      "x"
-                  ]
+                  ],
+                  1
                ],
                2
             ]
          ]
       },
       {
-         "step": 3,
-         "text": "The numerator is cos(x) + cos^2(x) + sin^2(x) = cos(x) + 1, by the Pythagorean identity.",
+         "step": 2,
+         "text": "The numerator of q'(x) is cos(x) + cos^2(x) + sin^2(x) = 1 + cos(x), so q'(x) = 1/(1 + cos(x)).",
          "mathjson": [
             "Divide",
+            1,
             [
                "Add",
                [
@@ -93,34 +94,80 @@
                   "x"
                ],
                1
-            ],
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The product rule gives k'(x) = u' q + u q' = e^x sin(x)/(1 + cos(x)) + e^x/(1 + cos(x)).",
+         "mathjson": [
+            "Add",
             [
-               "Power",
+               "Divide",
                [
-                  "Add",
-                  1,
+                  "Multiply",
                   [
-                     "Cos",
+                     "Exp",
+                     "x"
+                  ],
+                  [
+                     "Sin",
                      "x"
                   ]
                ],
-               2
+               [
+                  "Add",
+                  [
+                     "Cos",
+                     "x"
+                  ],
+                  1
+               ]
+            ],
+            [
+               "Divide",
+               [
+                  "Exp",
+                  "x"
+               ],
+               [
+                  "Add",
+                  [
+                     "Cos",
+                     "x"
+                  ],
+                  1
+               ]
             ]
          ]
       },
       {
          "step": 4,
-         "text": "Cancel one factor of 1 + cos(x), so k'(x) = 1/(1 + cos(x)).",
+         "text": "Combine over the common denominator, so k'(x) = e^x (sin(x) + 1)/(1 + cos(x)).",
          "mathjson": [
             "Divide",
-            1,
+            [
+               "Multiply",
+               [
+                  "Add",
+                  [
+                     "Sin",
+                     "x"
+                  ],
+                  1
+               ],
+               [
+                  "Exp",
+                  "x"
+               ]
+            ],
             [
                "Add",
-               1,
                [
                   "Cos",
                   "x"
-               ]
+               ],
+               1
             ]
          ]
       }
@@ -130,14 +177,28 @@
          "id": "A",
          "value": [
             "Divide",
-            1,
+            [
+               "Multiply",
+               [
+                  "Add",
+                  [
+                     "Sin",
+                     "x"
+                  ],
+                  1
+               ],
+               [
+                  "Exp",
+                  "x"
+               ]
+            ],
             [
                "Add",
-               1,
                [
                   "Cos",
                   "x"
-               ]
+               ],
+               1
             ]
          ],
          "is_key": true,
@@ -146,16 +207,56 @@
       {
          "id": "B",
          "value": [
-            "Cos",
-            "x"
+            "Divide",
+            [
+               "Exp",
+               "x"
+            ],
+            [
+               "Add",
+               [
+                  "Cos",
+                  "x"
+               ],
+               1
+            ]
          ],
          "is_key": false,
-         "error_path": "BC-ERR-02022",
-         "violated_step": 0
+         "error_path": "BC-ERR-02020",
+         "violated_step": 1
       },
       {
          "id": "C",
-         "value": 1,
+         "value": [
+            "Divide",
+            [
+               "Multiply",
+               [
+                  "Add",
+                  [
+                     "Sin",
+                     "x"
+                  ],
+                  [
+                     "Cos",
+                     "x"
+                  ],
+                  1
+               ],
+               [
+                  "Exp",
+                  "x"
+               ]
+            ],
+            [
+               "Add",
+               [
+                  "Cos",
+                  "x"
+               ],
+               1
+            ]
+         ],
          "is_key": false,
          "error_path": "BC-ERR-02022",
          "violated_step": 1
@@ -163,18 +264,29 @@
       {
          "id": "D",
          "value": [
-            "Negate",
+            "Divide",
             [
-               "Divide",
-               1,
+               "Multiply",
                [
                   "Add",
-                  1,
                   [
-                     "Cos",
+                     "Sin",
                      "x"
-                  ]
+                  ],
+                  -1
+               ],
+               [
+                  "Exp",
+                  "x"
                ]
+            ],
+            [
+               "Add",
+               [
+                  "Cos",
+                  "x"
+               ],
+               1
             ]
          ],
          "is_key": false,
@@ -206,8 +318,9 @@
       "BC-SKL-02042"
    ],
    "parameter_draw": {
-      "numerator": "sin(x)",
-      "denominator": "1 + cos(x)"
+      "structure": "product with a quotient factor",
+      "first_factor": "e^x",
+      "second_factor": "sin(x)/(1 + cos(x))"
    },
    "authored_on": "2026-09-23",
    "authored_by": "claude-opus-5-5 agent draft, pending operator review"

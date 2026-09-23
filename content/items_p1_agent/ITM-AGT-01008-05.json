@@ -4,7 +4,7 @@
    "variant_id": null,
    "format": "mcq",
    "stem": {
-      "text": "Let s be defined by s(x) = k sin(x) for x < pi/2, s(x) = cos(x) + 5 for pi/2 <= x <= pi, and s(x) = kx/pi + 1 for x > pi, where k is a constant. For what value of k is s continuous at x = pi/2?"
+      "text": "Let s be defined by s(x) = k^2 sin(x) for x < pi/2, s(pi/2) = 2k^2 - 3k - 10, and s(x) = cos(x) + k + 20 for x > pi/2, where k is a constant. For what value of k is s continuous at x = pi/2?"
    },
    "answer_key": {
       "form": "symbolic",
@@ -13,43 +13,88 @@
    "worked_solution": [
       {
          "step": 1,
-         "text": "Just to the left of x = pi/2 the rule is k sin(x), so the left-hand limit is k sin(pi/2) = k.",
-         "mathjson": "k"
+         "text": "The left-hand limit at x = pi/2 is k^2 sin(pi/2) = k^2 and the right-hand limit is cos(pi/2) + k + 20 = k + 20.",
+         "mathjson": [
+            "Equal",
+            [
+               "Power",
+               "k",
+               2
+            ],
+            [
+               "Add",
+               "k",
+               20
+            ]
+         ]
       },
       {
          "step": 2,
-         "text": "At x = pi/2 and to its right the rule is cos(x) + 5, so the right-hand limit and s(pi/2) are cos(pi/2) + 5 = 5.",
-         "mathjson": 5
+         "text": "Equal one-sided limits need k^2 - k - 20 = 0, so k = 5 or k = -4.",
+         "mathjson": [
+            "Equal",
+            [
+               "Add",
+               [
+                  "Power",
+                  "k",
+                  2
+               ],
+               [
+                  "Negate",
+                  "k"
+               ],
+               -20
+            ],
+            0
+         ]
       },
       {
          "step": 3,
-         "text": "Continuity at x = pi/2 needs k = 5.",
+         "text": "The common limit must also equal s(pi/2) = 2k^2 - 3k - 10. At k = -4 the limit is 16 but s(pi/2) = 34, while at k = 5 the limit is 25 and s(pi/2) = 25.",
          "mathjson": [
             "Equal",
-            "k",
-            5
+            [
+               "Add",
+               [
+                  "Multiply",
+                  2,
+                  [
+                     "Power",
+                     "k",
+                     2
+                  ]
+               ],
+               [
+                  "Multiply",
+                  -3,
+                  "k"
+               ],
+               -10
+            ],
+            25
          ]
       },
       {
          "step": 4,
-         "text": "So k = 5.",
+         "text": "Only k = 5 makes s continuous at x = pi/2.",
          "mathjson": 5
       }
    ],
    "options": [
       {
          "id": "A",
-         "value": 2,
+         "value": -2,
          "is_key": false,
          "error_path": "BC-ERR-01017",
          "violated_step": 0
       },
       {
          "id": "B",
-         "value": -5,
+         "value": -3,
          "is_key": false,
          "error_path": "BC-ERR-01017",
-         "violated_step": 3
+         "violated_step": 0
       },
       {
          "id": "C",
@@ -59,10 +104,10 @@
       },
       {
          "id": "D",
-         "value": 8,
+         "value": -4,
          "is_key": false,
-         "error_path": "BC-ERR-01017",
-         "violated_step": 0
+         "error_path": "BC-ERR-01015",
+         "violated_step": 2
       }
    ],
    "calculator_status": "no_calculator",
@@ -80,9 +125,9 @@
       "BC-SKL-01053"
    ],
    "parameter_draw": {
-      "left_branch": "k sin(x)",
-      "middle_branch": "cos(x) + 5",
-      "right_branch": "kx/pi + 1",
+      "left_branch": "k^2 sin(x)",
+      "point_value": "2k^2 - 3k - 10",
+      "right_branch": "cos(x) + k + 20",
       "boundary": "pi/2"
    },
    "authored_by": "claude-opus-5-5 agent draft, pending operator review",

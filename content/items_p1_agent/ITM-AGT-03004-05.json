@@ -4,71 +4,146 @@
    "variant_id": null,
    "format": "short_answer",
    "stem": {
-      "text": "The variables x and y are both differentiable functions of t and satisfy x^2 + xy = 12 for all t. At the instant when x = 2, y = 4 and dx/dt = 2, find dy/dt."
+      "text": "For the curve 3x^2 - 2xy + y^3 = y + 8, find the value of dy/dx at the point (2, 1)."
    },
    "answer_key": {
       "form": "numeric",
-      "mathjson": -8
+      "mathjson": 5
    },
    "worked_solution": [
       {
          "step": 1,
-         "text": "Differentiate both sides with respect to t. Each variable carries its own rate, and xy needs the product rule: 2x(dx/dt) + y(dx/dt) + x(dy/dt) = 0.",
+         "text": "Differentiate both sides with respect to x, using the product rule on 2xy and attaching dy/dx to every y term, including the y on the right: 6x - 2y - 2x(dy/dx) + 3y^2(dy/dx) = dy/dx.",
          "mathjson": [
             "Equal",
             [
                "Add",
                [
-                  "Add",
+                  "Multiply",
+                  6,
+                  "x"
+               ],
+               [
+                  "Negate",
                   [
                      "Multiply",
                      2,
-                     "dxdt",
-                     "x"
-                  ],
-                  [
-                     "Multiply",
-                     "dxdt",
                      "y"
                   ]
                ],
                [
+                  "Negate",
+                  [
+                     "Multiply",
+                     2,
+                     "x",
+                     "dydx"
+                  ]
+               ],
+               [
                   "Multiply",
-                  "dydt",
-                  "x"
+                  3,
+                  [
+                     "Power",
+                     "y",
+                     2
+                  ],
+                  "dydx"
                ]
             ],
-            0
+            "dydx"
          ]
       },
       {
          "step": 2,
-         "text": "Solve for dy/dt: dy/dt = -(2x + y)(dx/dt)/x.",
+         "text": "Move every dy/dx term to one side and collect: (3y^2 - 2x - 1)(dy/dx) = 2y - 6x.",
          "mathjson": [
-            "Negate",
+            "Equal",
             [
-               "Divide",
+               "Multiply",
                [
-                  "Multiply",
-                  "dxdt",
+                  "Subtract",
                   [
-                     "Add",
+                     "Subtract",
+                     [
+                        "Multiply",
+                        3,
+                        [
+                           "Power",
+                           "y",
+                           2
+                        ]
+                     ],
                      [
                         "Multiply",
                         2,
                         "x"
-                     ],
-                     "y"
-                  ]
+                     ]
+                  ],
+                  1
                ],
-               "x"
+               "dydx"
+            ],
+            [
+               "Subtract",
+               [
+                  "Multiply",
+                  2,
+                  "y"
+               ],
+               [
+                  "Multiply",
+                  6,
+                  "x"
+               ]
             ]
          ]
       },
       {
          "step": 3,
-         "text": "Substitute x = 2, y = 4 and dx/dt = 2: dy/dt = -(4 + 4)(2)/2 = -8.",
-         "mathjson": -8
+         "text": "Divide by 3y^2 - 2x - 1, so dy/dx = (2y - 6x)/(3y^2 - 2x - 1).",
+         "mathjson": [
+            "Divide",
+            [
+               "Subtract",
+               [
+                  "Multiply",
+                  2,
+                  "y"
+               ],
+               [
+                  "Multiply",
+                  6,
+                  "x"
+               ]
+            ],
+            [
+               "Subtract",
+               [
+                  "Subtract",
+                  [
+                     "Multiply",
+                     3,
+                     [
+                        "Power",
+                        "y",
+                        2
+                     ]
+                  ],
+                  [
+                     "Multiply",
+                     2,
+                     "x"
+                  ]
+               ],
+               1
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Substitute x = 2 and y = 1: dy/dx = (2 - 12)/(3 - 4 - 1) = (-10)/(-2) = 5.",
+         "mathjson": 5
       }
    ],
    "calculator_status": "no_calculator",
@@ -76,11 +151,11 @@
    "difficulty_settings": [
       {
          "difficulty_factor_id": "BC-DF-06",
-         "setting": "low"
+         "setting": "medium"
       },
       {
          "difficulty_factor_id": "BC-DF-08",
-         "setting": "high"
+         "setting": "medium"
       },
       {
          "difficulty_factor_id": "BC-DF-13",
@@ -88,7 +163,7 @@
       },
       {
          "difficulty_factor_id": "BC-DF-14",
-         "setting": "low"
+         "setting": "off"
       }
    ],
    "skills": [
@@ -100,50 +175,42 @@
       "BC-SKL-03014"
    ],
    "parameter_draw": {
-      "equation": "x^2 + xy = 12",
+      "equation": "3x^2 - 2xy + y^3 = y + 8",
       "point": [
          2,
-         4
+         1
       ],
-      "dx_dt": 2,
-      "target": "dy/dt at instant"
+      "target": "slope at point"
    },
    "authored_on": "2026-09-23",
    "authored_by": "claude-opus-5-5 agent draft, pending operator review",
    "options": [
       {
          "id": "A",
-         "value": -6,
+         "value": 3,
          "is_key": false,
          "error_path": "BC-ERR-03007",
          "violated_step": 1
       },
       {
          "id": "B",
-         "value": -8,
+         "value": 5,
          "is_key": true,
          "error_path": null
       },
       {
          "id": "C",
-         "value": -4,
+         "value": 6,
          "is_key": false,
          "error_path": "BC-ERR-03008",
          "violated_step": 2
       },
       {
          "id": "D",
-         "value": [
-            "Negate",
-            [
-               "Add",
-               4,
-               "y"
-            ]
-         ],
+         "value": 10,
          "is_key": false,
-         "error_path": "BC-ERR-03011",
-         "violated_step": 5
+         "error_path": "BC-ERR-03009",
+         "violated_step": 0
       }
    ]
 }

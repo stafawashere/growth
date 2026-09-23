@@ -4,35 +4,42 @@
    "variant_id": null,
    "format": "short_answer",
    "stem": {
-      "text": "Let m(x) = 3ln(x) - 4sin(x) + 2cos(x) for x > 0. Find m'(x)."
+      "text": "Let m(x) = 3ln(x) - 4sin(x) + 2cos(x) + e^x for x > 0. Find m'(x)."
    },
    "answer_key": {
       "form": "symbolic",
       "mathjson": [
-         "Subtract",
+         "Add",
          [
             "Subtract",
             [
-               "Divide",
-               3,
-               "x"
+               "Subtract",
+               [
+                  "Divide",
+                  3,
+                  "x"
+               ],
+               [
+                  "Multiply",
+                  4,
+                  [
+                     "Cos",
+                     "x"
+                  ]
+               ]
             ],
             [
                "Multiply",
-               4,
+               2,
                [
-                  "Cos",
+                  "Sin",
                   "x"
                ]
             ]
          ],
          [
-            "Multiply",
-            2,
-            [
-               "Sin",
-               "x"
-            ]
+            "Exp",
+            "x"
          ]
       ]
    },
@@ -72,32 +79,47 @@
       },
       {
          "step": 4,
-         "text": "Combine the three terms.",
+         "text": "The natural exponential is its own derivative, so e^x differentiates to e^x.",
          "mathjson": [
-            "Subtract",
+            "Exp",
+            "x"
+         ]
+      },
+      {
+         "step": 5,
+         "text": "Combine the four terms: m'(x) = 3/x - 4cos(x) - 2sin(x) + e^x.",
+         "mathjson": [
+            "Add",
             [
                "Subtract",
                [
-                  "Divide",
-                  3,
-                  "x"
+                  "Subtract",
+                  [
+                     "Divide",
+                     3,
+                     "x"
+                  ],
+                  [
+                     "Multiply",
+                     4,
+                     [
+                        "Cos",
+                        "x"
+                     ]
+                  ]
                ],
                [
                   "Multiply",
-                  4,
+                  2,
                   [
-                     "Cos",
+                     "Sin",
                      "x"
                   ]
                ]
             ],
             [
-               "Multiply",
-               2,
-               [
-                  "Sin",
-                  "x"
-               ]
+               "Exp",
+               "x"
             ]
          ]
       }
@@ -126,7 +148,8 @@
    "parameter_draw": {
       "logarithm_coefficient": 3,
       "sine_coefficient": -4,
-      "cosine_coefficient": 2
+      "cosine_coefficient": 2,
+      "exponential_coefficient": 1
    },
    "authored_on": "2026-09-23",
    "authored_by": "claude-opus-5-5 agent draft, pending operator review",
@@ -134,30 +157,37 @@
       {
          "id": "A",
          "value": [
-            "Subtract",
+            "Add",
             [
                "Subtract",
                [
-                  "Divide",
-                  3,
-                  "x"
+                  "Subtract",
+                  [
+                     "Divide",
+                     3,
+                     "x"
+                  ],
+                  [
+                     "Multiply",
+                     4,
+                     [
+                        "Cos",
+                        "x"
+                     ]
+                  ]
                ],
                [
                   "Multiply",
-                  4,
+                  2,
                   [
-                     "Cos",
+                     "Sin",
                      "x"
                   ]
                ]
             ],
             [
-               "Multiply",
-               2,
-               [
-                  "Sin",
-                  "x"
-               ]
+               "Exp",
+               "x"
             ]
          ],
          "is_key": true,
@@ -166,46 +196,85 @@
       {
          "id": "B",
          "value": [
-            "Multiply",
-            -4,
+            "Add",
             [
-               "Cos",
-               "x"
+               "Subtract",
+               [
+                  "Subtract",
+                  [
+                     "Divide",
+                     3,
+                     "x"
+                  ],
+                  [
+                     "Multiply",
+                     4,
+                     [
+                        "Cos",
+                        "x"
+                     ]
+                  ]
+               ],
+               [
+                  "Multiply",
+                  2,
+                  [
+                     "Sin",
+                     "x"
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               "x",
+               [
+                  "Exp",
+                  [
+                     "Subtract",
+                     "x",
+                     1
+                  ]
+               ]
             ]
          ],
          "is_key": false,
          "error_path": "BC-ERR-02019",
-         "violated_step": 1
+         "violated_step": 0
       },
       {
          "id": "C",
          "value": [
             "Add",
             [
-               "Multiply",
-               2,
+               "Add",
                [
-                  "Sin",
-                  "x"
+                  "Subtract",
+                  [
+                     "Divide",
+                     3,
+                     "x"
+                  ],
+                  [
+                     "Multiply",
+                     4,
+                     [
+                        "Cos",
+                        "x"
+                     ]
+                  ]
+               ],
+               [
+                  "Multiply",
+                  2,
+                  [
+                     "Sin",
+                     "x"
+                  ]
                ]
             ],
             [
-               "Multiply",
-               -1,
-               4,
-               [
-                  "Cos",
-                  "x"
-               ]
-            ],
-            [
-               "Multiply",
-               3,
-               [
-                  "Power",
-                  "x",
-                  -1
-               ]
+               "Exp",
+               "x"
             ]
          ],
          "is_key": false,
@@ -217,34 +286,49 @@
          "value": [
             "Add",
             [
-               "Multiply",
-               2,
+               "Subtract",
                [
-                  "Sin",
-                  "x"
+                  "Subtract",
+                  [
+                     "Divide",
+                     3,
+                     "x"
+                  ],
+                  [
+                     "Multiply",
+                     4,
+                     [
+                        "Cos",
+                        "x"
+                     ]
+                  ]
+               ],
+               [
+                  "Multiply",
+                  2,
+                  [
+                     "Sin",
+                     "x"
+                  ]
                ]
             ],
             [
                "Multiply",
-               4,
-               [
-                  "Cos",
-                  "x"
-               ]
-            ],
-            [
-               "Multiply",
-               3,
+               "ExponentialE",
                [
                   "Power",
                   "x",
-                  -1
+                  [
+                     "Subtract",
+                     "ExponentialE",
+                     1
+                  ]
                ]
             ]
          ],
          "is_key": false,
-         "error_path": "BC-ERR-02018",
-         "violated_step": 1
+         "error_path": "BC-ERR-02019",
+         "violated_step": 0
       }
    ]
 }

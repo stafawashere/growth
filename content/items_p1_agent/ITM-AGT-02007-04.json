@@ -4,21 +4,32 @@
    "variant_id": null,
    "format": "short_answer",
    "stem": {
-      "text": "Let k(x) = 2ln(x) + 3cos(x) for x > 0. Find the exact value of k'(pi/6)."
+      "text": "Let k(x) = 2ln(x) + 3cos(x) + e^x for x > 0. Find the exact value of k'(pi/6)."
    },
    "answer_key": {
       "form": "symbolic",
       "mathjson": [
-         "Subtract",
+         "Add",
          [
-            "Divide",
-            12,
-            "Pi"
+            "Subtract",
+            [
+               "Divide",
+               12,
+               "Pi"
+            ],
+            [
+               "Rational",
+               3,
+               2
+            ]
          ],
          [
-            "Rational",
-            3,
-            2
+            "Exp",
+            [
+               "Divide",
+               "Pi",
+               6
+            ]
          ]
       ]
    },
@@ -46,38 +57,64 @@
       },
       {
          "step": 3,
-         "text": "Combine the terms: k'(x) = 2/x - 3sin(x).",
+         "text": "The natural exponential is its own derivative, so e^x differentiates to e^x.",
          "mathjson": [
-            "Subtract",
-            [
-               "Divide",
-               2,
-               "x"
-            ],
-            [
-               "Multiply",
-               3,
-               [
-                  "Sin",
-                  "x"
-               ]
-            ]
+            "Exp",
+            "x"
          ]
       },
       {
          "step": 4,
-         "text": "Evaluate at x = pi/6. Here 2/(pi/6) = 12/pi and sin(pi/6) = 1/2, so k'(pi/6) = 12/pi - 3/2.",
+         "text": "Combine the terms: k'(x) = 2/x - 3sin(x) + e^x.",
          "mathjson": [
-            "Subtract",
+            "Add",
             [
-               "Divide",
-               12,
-               "Pi"
+               "Subtract",
+               [
+                  "Divide",
+                  2,
+                  "x"
+               ],
+               [
+                  "Multiply",
+                  3,
+                  [
+                     "Sin",
+                     "x"
+                  ]
+               ]
             ],
             [
-               "Rational",
-               3,
-               2
+               "Exp",
+               "x"
+            ]
+         ]
+      },
+      {
+         "step": 5,
+         "text": "Evaluate at x = pi/6. Here 2/(pi/6) = 12/pi and sin(pi/6) = 1/2, so k'(pi/6) = 12/pi - 3/2 + e^(pi/6).",
+         "mathjson": [
+            "Add",
+            [
+               "Subtract",
+               [
+                  "Divide",
+                  12,
+                  "Pi"
+               ],
+               [
+                  "Rational",
+                  3,
+                  2
+               ]
+            ],
+            [
+               "Exp",
+               [
+                  "Divide",
+                  "Pi",
+                  6
+               ]
             ]
          ]
       }
@@ -106,6 +143,7 @@
    "parameter_draw": {
       "logarithm_coefficient": 2,
       "cosine_coefficient": 3,
+      "exponential_coefficient": 1,
       "point": "pi/6"
    },
    "authored_on": "2026-09-23",
@@ -116,17 +154,24 @@
          "value": [
             "Add",
             [
-               "Rational",
-               3,
-               2
+               "Add",
+               [
+                  "Divide",
+                  12,
+                  "Pi"
+               ],
+               [
+                  "Rational",
+                  3,
+                  2
+               ]
             ],
             [
-               "Multiply",
-               12,
+               "Exp",
                [
-                  "Power",
+                  "Divide",
                   "Pi",
-                  -1
+                  6
                ]
             ]
          ],
@@ -137,16 +182,27 @@
       {
          "id": "B",
          "value": [
-            "Subtract",
+            "Add",
             [
-               "Divide",
-               12,
-               "Pi"
+               "Subtract",
+               [
+                  "Divide",
+                  12,
+                  "Pi"
+               ],
+               [
+                  "Rational",
+                  3,
+                  2
+               ]
             ],
             [
-               "Rational",
-               3,
-               2
+               "Exp",
+               [
+                  "Divide",
+                  "Pi",
+                  6
+               ]
             ]
          ],
          "is_key": true,
@@ -155,49 +211,83 @@
       {
          "id": "C",
          "value": [
-            "Multiply",
+            "Add",
             [
-               "Rational",
-               3,
-               2
+               "Subtract",
+               [
+                  "Divide",
+                  12,
+                  "Pi"
+               ],
+               [
+                  "Rational",
+                  3,
+                  2
+               ]
             ],
             [
-               "Power",
-               "Pi",
-               -1
-            ],
-            [
-               "Add",
-               -8,
-               "Pi"
+               "Multiply",
+               [
+                  "Divide",
+                  "Pi",
+                  6
+               ],
+               [
+                  "Exp",
+                  [
+                     "Subtract",
+                     [
+                        "Divide",
+                        "Pi",
+                        6
+                     ],
+                     1
+                  ]
+               ]
             ]
          ],
          "is_key": false,
-         "error_path": "BC-ERR-02018",
-         "violated_step": 3
+         "error_path": "BC-ERR-02019",
+         "violated_step": 0
       },
       {
          "id": "D",
          "value": [
             "Add",
             [
-               "Rational",
-               -3,
-               2
+               "Subtract",
+               [
+                  "Divide",
+                  12,
+                  "Pi"
+               ],
+               [
+                  "Rational",
+                  3,
+                  2
+               ]
             ],
             [
                "Multiply",
-               -12,
+               "ExponentialE",
                [
                   "Power",
-                  "Pi",
-                  -1
+                  [
+                     "Divide",
+                     "Pi",
+                     6
+                  ],
+                  [
+                     "Subtract",
+                     "ExponentialE",
+                     1
+                  ]
                ]
             ]
          ],
          "is_key": false,
-         "error_path": "BC-ERR-02018",
-         "violated_step": 3
+         "error_path": "BC-ERR-02019",
+         "violated_step": 0
       }
    ]
 }

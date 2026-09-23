@@ -4,101 +4,133 @@
    "variant_id": null,
    "format": "mcq",
    "stem": {
-      "text": "Let f(x) = x^4 ln(x) for x > 0. Which of the following is f'(x)?"
+      "text": "Let f(x) = e^x g(x), where g(x) = (x - 1)/(x + 1), for x > -1. Which of the following is f'(x)?"
    },
    "answer_key": {
       "form": "symbolic",
       "mathjson": [
-         "Add",
+         "Divide",
          [
             "Multiply",
-            4,
             [
-               "Power",
-               "x",
-               3
+               "Add",
+               [
+                  "Power",
+                  "x",
+                  2
+               ],
+               1
             ],
             [
-               "Ln",
+               "Exp",
                "x"
             ]
          ],
          [
             "Power",
-            "x",
-            3
+            [
+               "Add",
+               "x",
+               1
+            ],
+            2
          ]
       ]
    },
    "worked_solution": [
       {
          "step": 1,
-         "text": "Take the factors u = x^4 and v = ln(x), so u' = 4x^3 and v' = 1/x.",
+         "text": "Take u = e^x and g(x) = (x - 1)/(x + 1), so u' = e^x, and the quotient rule gives g'(x) = ((x + 1)(1) - (x - 1)(1))/(x + 1)^2 = 2/(x + 1)^2.",
          "mathjson": [
-            "Multiply",
-            4,
+            "Divide",
+            2,
             [
                "Power",
-               "x",
-               3
+               [
+                  "Add",
+                  "x",
+                  1
+               ],
+               2
             ]
          ]
       },
       {
          "step": 2,
-         "text": "The product rule gives f'(x) = u'v + uv' = 4x^3 ln(x) + x^4 (1/x).",
+         "text": "The product rule gives f'(x) = u' g + u g' = e^x (x - 1)/(x + 1) + e^x (2/(x + 1)^2).",
          "mathjson": [
             "Add",
             [
-               "Multiply",
-               4,
+               "Divide",
                [
-                  "Power",
-                  "x",
-                  3
+                  "Multiply",
+                  [
+                     "Add",
+                     "x",
+                     -1
+                  ],
+                  [
+                     "Exp",
+                     "x"
+                  ]
                ],
                [
-                  "Ln",
-                  "x"
+                  "Add",
+                  "x",
+                  1
                ]
             ],
             [
-               "Multiply",
+               "Divide",
                [
-                  "Power",
-                  "x",
-                  4
+                  "Multiply",
+                  2,
+                  [
+                     "Exp",
+                     "x"
+                  ]
                ],
                [
-                  "Divide",
-                  1,
-                  "x"
+                  "Power",
+                  [
+                     "Add",
+                     "x",
+                     1
+                  ],
+                  2
                ]
             ]
          ]
       },
       {
          "step": 3,
-         "text": "Simplify x^4 (1/x) to x^3.",
+         "text": "Over the common denominator (x + 1)^2 the numerator is e^x ((x - 1)(x + 1) + 2) = e^x (x^2 + 1), so f'(x) = e^x (x^2 + 1)/(x + 1)^2.",
          "mathjson": [
-            "Add",
+            "Divide",
             [
                "Multiply",
-               4,
                [
-                  "Power",
-                  "x",
-                  3
+                  "Add",
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ],
+                  1
                ],
                [
-                  "Ln",
+                  "Exp",
                   "x"
                ]
             ],
             [
                "Power",
-               "x",
-               3
+               [
+                  "Add",
+                  "x",
+                  1
+               ],
+               2
             ]
          ]
       }
@@ -107,22 +139,22 @@
       {
          "id": "A",
          "value": [
-            "Power",
-            "x",
-            3
-         ],
-         "is_key": false,
-         "error_path": "BC-ERR-02020",
-         "violated_step": 1
-      },
-      {
-         "id": "B",
-         "value": [
-            "Multiply",
-            4,
+            "Divide",
+            [
+               "Multiply",
+               2,
+               [
+                  "Exp",
+                  "x"
+               ]
+            ],
             [
                "Power",
-               "x",
+               [
+                  "Add",
+                  "x",
+                  1
+               ],
                2
             ]
          ],
@@ -131,45 +163,77 @@
          "violated_step": 1
       },
       {
-         "id": "C",
+         "id": "B",
          "value": [
-            "Multiply",
-            4,
-            [
-               "Power",
-               "x",
-               3
-            ],
-            [
-               "Ln",
-               "x"
-            ]
-         ],
-         "is_key": false,
-         "error_path": "BC-ERR-02020",
-         "violated_step": 1
-      },
-      {
-         "id": "D",
-         "value": [
-            "Add",
+            "Divide",
             [
                "Multiply",
-               4,
                [
-                  "Power",
-                  "x",
-                  3
+                  "Add",
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ],
+                  -3
                ],
                [
-                  "Ln",
+                  "Exp",
                   "x"
                ]
             ],
             [
                "Power",
-               "x",
-               3
+               [
+                  "Add",
+                  "x",
+                  1
+               ],
+               2
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02021",
+         "violated_step": 2
+      },
+      {
+         "id": "C",
+         "value": [
+            "Exp",
+            "x"
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02022",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": [
+            "Divide",
+            [
+               "Multiply",
+               [
+                  "Add",
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ],
+                  1
+               ],
+               [
+                  "Exp",
+                  "x"
+               ]
+            ],
+            [
+               "Power",
+               [
+                  "Add",
+                  "x",
+                  1
+               ],
+               2
             ]
          ],
          "is_key": true,
@@ -185,11 +249,11 @@
       },
       {
          "difficulty_factor_id": "BC-DF-06",
-         "setting": "low"
+         "setting": "medium"
       },
       {
          "difficulty_factor_id": "BC-DF-08",
-         "setting": "low"
+         "setting": "medium"
       }
    ],
    "skills": [
@@ -200,8 +264,9 @@
       "BC-SKL-02042"
    ],
    "parameter_draw": {
-      "power": 4,
-      "second_factor": "ln(x)"
+      "structure": "product with a quotient factor",
+      "first_factor": "e^x",
+      "second_factor": "(x - 1)/(x + 1)"
    },
    "authored_on": "2026-09-23",
    "authored_by": "claude-opus-5-5 agent draft, pending operator review"

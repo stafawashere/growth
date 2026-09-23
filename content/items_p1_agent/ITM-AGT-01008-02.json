@@ -4,7 +4,7 @@
    "variant_id": null,
    "format": "mcq",
    "stem": {
-      "text": "Let p be defined by p(x) = k^2 x + 2 for x < 1, p(1) = 5k - 4, and p(x) = 3kx for x > 1, where k is a constant. For what value of k is p continuous at x = 1?"
+      "text": "Let p be defined by p(x) = k^2 x + 2 for x < 1, p(1) = 2k^2 + k - 4, and p(x) = 3kx for x > 1, where k is a constant. For what value of k is p continuous at x = 1?"
    },
    "answer_key": {
       "form": "symbolic",
@@ -56,17 +56,22 @@
       },
       {
          "step": 3,
-         "text": "The common limit must also equal p(1) = 5k - 4. At k = 1 the limit is 3 but p(1) = 1, while at k = 2 the limit is 6 and p(1) = 6.",
+         "text": "The common limit must also equal p(1) = 2k^2 + k - 4. At k = 1 the limit is 3 but p(1) = -1, while at k = 2 the limit is 6 and p(1) = 6.",
          "mathjson": [
             "Equal",
             [
-               "Subtract",
+               "Add",
                [
                   "Multiply",
-                  5,
-                  "k"
+                  2,
+                  [
+                     "Power",
+                     "k",
+                     2
+                  ]
                ],
-               4
+               "k",
+               -4
             ],
             6
          ]
@@ -86,7 +91,7 @@
       },
       {
          "id": "B",
-         "value": 3,
+         "value": -3,
          "is_key": false,
          "error_path": "BC-ERR-01017",
          "violated_step": 0
@@ -100,10 +105,10 @@
       },
       {
          "id": "D",
-         "value": -2,
+         "value": -1,
          "is_key": false,
          "error_path": "BC-ERR-01017",
-         "violated_step": 3
+         "violated_step": 0
       }
    ],
    "calculator_status": "no_calculator",
@@ -122,7 +127,7 @@
    ],
    "parameter_draw": {
       "left_branch": "k^2 x + 2",
-      "point_value": "5k - 4",
+      "point_value": "2k^2 + k - 4",
       "right_branch": "3kx",
       "boundary": 1
    },

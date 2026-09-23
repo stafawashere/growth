@@ -4,53 +4,149 @@
    "variant_id": null,
    "format": "short_answer",
    "stem": {
-      "text": "Let w(t) = t^3 e^t. Find w'(t) and write it in factored form."
+      "text": "Let w(t) = (t^2 e^t)/(t + 1) for t > -1. Find w'(t) and write it in factored form."
    },
    "answer_key": {
       "form": "symbolic",
       "mathjson": [
-         "Multiply",
+         "Divide",
+         [
+            "Multiply",
+            "t",
+            [
+               "Add",
+               [
+                  "Power",
+                  "t",
+                  2
+               ],
+               [
+                  "Multiply",
+                  2,
+                  "t"
+               ],
+               2
+            ],
+            [
+               "Exp",
+               "t"
+            ]
+         ],
          [
             "Power",
-            "t",
+            [
+               "Add",
+               "t",
+               1
+            ],
             2
-         ],
-         [
-            "Add",
-            "t",
-            3
-         ],
-         [
-            "Exp",
-            "t"
          ]
       ]
    },
    "worked_solution": [
       {
          "step": 1,
-         "text": "Take u = t^3 and v = e^t, so u' = 3t^2 and v' = e^t.",
+         "text": "The numerator N = t^2 e^t is a product, so N' = 2t e^t + t^2 e^t = (t^2 + 2t) e^t, and the denominator D = t + 1 has D' = 1.",
          "mathjson": [
             "Multiply",
-            3,
             [
-               "Power",
-               "t",
-               2
+               "Add",
+               [
+                  "Power",
+                  "t",
+                  2
+               ],
+               [
+                  "Multiply",
+                  2,
+                  "t"
+               ]
+            ],
+            [
+               "Exp",
+               "t"
             ]
          ]
       },
       {
          "step": 2,
-         "text": "The product rule gives w'(t) = 3t^2 e^t + t^3 e^t.",
+         "text": "The quotient rule gives w'(t) = (D N' - N D')/D^2 = ((t + 1)(t^2 + 2t) e^t - t^2 e^t)/(t + 1)^2.",
          "mathjson": [
-            "Add",
+            "Divide",
+            [
+               "Add",
+               [
+                  "Negate",
+                  [
+                     "Multiply",
+                     [
+                        "Power",
+                        "t",
+                        2
+                     ],
+                     [
+                        "Exp",
+                        "t"
+                     ]
+                  ]
+               ],
+               [
+                  "Multiply",
+                  [
+                     "Add",
+                     "t",
+                     1
+                  ],
+                  [
+                     "Add",
+                     [
+                        "Power",
+                        "t",
+                        2
+                     ],
+                     [
+                        "Multiply",
+                        2,
+                        "t"
+                     ]
+                  ],
+                  [
+                     "Exp",
+                     "t"
+                  ]
+               ]
+            ],
+            [
+               "Power",
+               [
+                  "Add",
+                  "t",
+                  1
+               ],
+               2
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Expand: (t + 1)(t^2 + 2t) - t^2 = t^3 + 2t^2 + 2t = t (t^2 + 2t + 2), so w'(t) = t e^t (t^2 + 2t + 2)/(t + 1)^2.",
+         "mathjson": [
+            "Divide",
             [
                "Multiply",
-               3,
+               "t",
                [
-                  "Power",
-                  "t",
+                  "Add",
+                  [
+                     "Power",
+                     "t",
+                     2
+                  ],
+                  [
+                     "Multiply",
+                     2,
+                     "t"
+                  ],
                   2
                ],
                [
@@ -59,37 +155,13 @@
                ]
             ],
             [
-               "Multiply",
-               [
-                  "Power",
-                  "t",
-                  3
-               ],
-               [
-                  "Exp",
-                  "t"
-               ]
-            ]
-         ]
-      },
-      {
-         "step": 3,
-         "text": "Factor out t^2 e^t, so w'(t) = t^2 (t + 3) e^t.",
-         "mathjson": [
-            "Multiply",
-            [
                "Power",
-               "t",
+               [
+                  "Add",
+                  "t",
+                  1
+               ],
                2
-            ],
-            [
-               "Add",
-               "t",
-               3
-            ],
-            [
-               "Exp",
-               "t"
             ]
          ]
       }
@@ -107,7 +179,7 @@
       },
       {
          "difficulty_factor_id": "BC-DF-08",
-         "setting": "low"
+         "setting": "medium"
       }
    ],
    "skills": [
@@ -118,8 +190,9 @@
       "BC-SKL-02042"
    ],
    "parameter_draw": {
-      "power": 3,
-      "second_factor": "e^t",
+      "structure": "quotient with a product numerator",
+      "numerator": "t^2 e^t",
+      "denominator": "t + 1",
       "variable": "t"
    },
    "authored_on": "2026-09-23",
@@ -128,39 +201,68 @@
       {
          "id": "A",
          "value": [
-            "Multiply",
-            3,
+            "Divide",
             [
-               "Power",
+               "Multiply",
                "t",
-               2
+               [
+                  "Add",
+                  "t",
+                  2
+               ],
+               [
+                  "Exp",
+                  "t"
+               ]
             ],
             [
-               "Exp",
-               "t"
+               "Power",
+               [
+                  "Add",
+                  "t",
+                  1
+               ],
+               2
             ]
          ],
          "is_key": false,
          "error_path": "BC-ERR-02020",
-         "violated_step": 1
+         "violated_step": 0
       },
       {
          "id": "B",
          "value": [
-            "Multiply",
+            "Divide",
+            [
+               "Multiply",
+               "t",
+               [
+                  "Add",
+                  [
+                     "Power",
+                     "t",
+                     2
+                  ],
+                  [
+                     "Multiply",
+                     2,
+                     "t"
+                  ],
+                  2
+               ],
+               [
+                  "Exp",
+                  "t"
+               ]
+            ],
             [
                "Power",
-               "t",
+               [
+                  "Add",
+                  "t",
+                  1
+               ],
                2
-            ],
-            [
-               "Add",
-               "t",
-               3
-            ],
-            [
-               "Exp",
-               "t"
             ]
          ],
          "is_key": true,
@@ -169,44 +271,81 @@
       {
          "id": "C",
          "value": [
-            "Multiply",
+            "Divide",
             [
-               "Add",
-               3,
-               "t"
+               "Multiply",
+               "t",
+               [
+                  "Add",
+                  [
+                     "Power",
+                     "t",
+                     2
+                  ],
+                  [
+                     "Multiply",
+                     2,
+                     "t"
+                  ],
+                  2
+               ],
+               [
+                  "Exp",
+                  "t"
+               ]
             ],
             [
-               "Exp",
-               "t"
+               "Add",
+               "t",
+               1
             ]
          ],
          "is_key": false,
          "error_path": "BC-ERR-02022",
-         "violated_step": 3
+         "violated_step": 1
       },
       {
          "id": "D",
          "value": [
-            "Multiply",
-            -1,
+            "Negate",
             [
-               "Power",
-               "t",
-               2
-            ],
-            [
-               "Add",
-               3,
-               "t"
-            ],
-            [
-               "Exp",
-               "t"
+               "Divide",
+               [
+                  "Multiply",
+                  "t",
+                  [
+                     "Add",
+                     [
+                        "Power",
+                        "t",
+                        2
+                     ],
+                     [
+                        "Multiply",
+                        2,
+                        "t"
+                     ],
+                     2
+                  ],
+                  [
+                     "Exp",
+                     "t"
+                  ]
+               ],
+               [
+                  "Power",
+                  [
+                     "Add",
+                     "t",
+                     1
+                  ],
+                  2
+               ]
             ]
          ],
          "is_key": false,
          "error_path": "BC-ERR-02021",
-         "violated_step": 3
+         "violated_step": 2
       }
    ]
 }

@@ -4,21 +4,46 @@
    "variant_id": null,
    "format": "short_answer",
    "stem": {
-      "text": "The function m is defined by m(x) = (x^2 - 16)/(x - 4) for x != 4 and m(4) = 2k + 2, where k is a constant. Find the value of k for which m is continuous at x = 4."
+      "text": "The function m is defined by m(x) = (x^2 - 16)/(x - 4) for x < 4, m(4) = 2k^2 + 2k - 4, and m(x) = k^2 + x for x > 4, where k is a constant. Find the value of k for which m is continuous at x = 4."
    },
    "answer_key": {
       "form": "symbolic",
-      "mathjson": 3
+      "mathjson": 2
    },
    "worked_solution": [
       {
          "step": 1,
-         "text": "For x != 4, (x^2 - 16)/(x - 4) = x + 4, so the limit of m(x) as x approaches 4 is 8.",
-         "mathjson": 8
+         "text": "For x < 4, (x^2 - 16)/(x - 4) = x + 4, so the left-hand limit at x = 4 is 8. The right-hand limit is k^2 + 4.",
+         "mathjson": [
+            "Equal",
+            8,
+            [
+               "Add",
+               [
+                  "Power",
+                  "k",
+                  2
+               ],
+               4
+            ]
+         ]
       },
       {
          "step": 2,
-         "text": "Continuity at x = 4 needs m(4) to equal that limit, so 2k + 2 = 8.",
+         "text": "Equal one-sided limits need k^2 = 4, so k = 2 or k = -2.",
+         "mathjson": [
+            "Equal",
+            [
+               "Power",
+               "k",
+               2
+            ],
+            4
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The common limit 8 must also equal m(4) = 2k^2 + 2k - 4. At k = -2, m(4) = 0, while at k = 2, m(4) = 8.",
          "mathjson": [
             "Equal",
             [
@@ -26,30 +51,26 @@
                [
                   "Multiply",
                   2,
+                  [
+                     "Power",
+                     "k",
+                     2
+                  ]
+               ],
+               [
+                  "Multiply",
+                  2,
                   "k"
                ],
-               2
+               -4
             ],
             8
          ]
       },
       {
-         "step": 3,
-         "text": "Then 2k = 6.",
-         "mathjson": [
-            "Equal",
-            [
-               "Multiply",
-               2,
-               "k"
-            ],
-            6
-         ]
-      },
-      {
          "step": 4,
-         "text": "So k = 3.",
-         "mathjson": 3
+         "text": "Only k = 2 makes m continuous at x = 4.",
+         "mathjson": 2
       }
    ],
    "calculator_status": "no_calculator",
@@ -67,8 +88,9 @@
       "BC-SKL-01053"
    ],
    "parameter_draw": {
-      "quotient": "(x^2 - 16)/(x - 4)",
-      "point_value": "2k + 2",
+      "left_branch": "(x^2 - 16)/(x - 4)",
+      "point_value": "2k^2 + 2k - 4",
+      "right_branch": "k^2 + x",
       "boundary": 4
    },
    "authored_by": "claude-opus-5-5 agent draft, pending operator review",
@@ -78,25 +100,25 @@
          "id": "A",
          "value": -3,
          "is_key": false,
-         "error_path": "BC-ERR-01015",
-         "violated_step": 3
+         "error_path": "BC-ERR-01017",
+         "violated_step": 0
       },
       {
          "id": "B",
-         "value": 3,
+         "value": 2,
          "is_key": true,
          "error_path": null
       },
       {
          "id": "C",
-         "value": 4,
+         "value": -2,
          "is_key": false,
-         "error_path": "BC-ERR-01017",
-         "violated_step": 3
+         "error_path": "BC-ERR-01015",
+         "violated_step": 2
       },
       {
          "id": "D",
-         "value": 8,
+         "value": -4,
          "is_key": false,
          "error_path": "BC-ERR-01017",
          "violated_step": 0

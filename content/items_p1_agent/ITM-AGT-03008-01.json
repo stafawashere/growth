@@ -4,133 +4,166 @@
    "variant_id": null,
    "format": "mcq",
    "stem": {
-      "text": "Let g(x) = x^4 - 3x^2 + 5x + e^(2x). What is the value of g'''(0)?"
+      "text": "Let g(x) = x e^(2x). What is the value of g'''(1)?"
    },
    "answer_key": {
       "form": "numeric",
-      "mathjson": 8
+      "mathjson": [
+         "Multiply",
+         20,
+         [
+            "Power",
+            "ExponentialE",
+            2
+         ]
+      ]
    },
    "worked_solution": [
       {
          "step": 1,
-         "text": "g'(x) = 4x^3 - 6x + 5 + 2e^(2x).",
+         "text": "Product rule: g'(x) = e^(2x) + 2x e^(2x) = (2x + 1)e^(2x).",
          "mathjson": [
-            "Add",
+            "Multiply",
             [
-               "Multiply",
-               4,
+               "Add",
                [
-                  "Power",
-                  "x",
-                  3
-               ]
+                  "Multiply",
+                  2,
+                  "x"
+               ],
+               1
             ],
             [
-               "Multiply",
-               -6,
-               "x"
-            ],
-            5,
-            [
-               "Multiply",
-               2,
+               "Exp",
                [
-                  "Exp",
-                  [
-                     "Multiply",
-                     2,
-                     "x"
-                  ]
+                  "Multiply",
+                  2,
+                  "x"
                ]
             ]
          ]
       },
       {
          "step": 2,
-         "text": "g''(x) = 12x^2 - 6 + 4e^(2x).",
+         "text": "Product rule again: g''(x) = 2e^(2x) + 2(2x + 1)e^(2x) = (4x + 4)e^(2x).",
          "mathjson": [
-            "Add",
+            "Multiply",
             [
-               "Multiply",
-               12,
+               "Add",
                [
-                  "Power",
-                  "x",
-                  2
-               ]
+                  "Multiply",
+                  4,
+                  "x"
+               ],
+               4
             ],
-            -6,
             [
-               "Multiply",
-               4,
+               "Exp",
                [
-                  "Exp",
-                  [
-                     "Multiply",
-                     2,
-                     "x"
-                  ]
+                  "Multiply",
+                  2,
+                  "x"
                ]
             ]
          ]
       },
       {
          "step": 3,
-         "text": "g'''(x) = 24x + 8e^(2x).",
+         "text": "Product rule a third time: g'''(x) = 4e^(2x) + 2(4x + 4)e^(2x) = (8x + 12)e^(2x).",
          "mathjson": [
-            "Add",
+            "Multiply",
             [
-               "Multiply",
-               24,
-               "x"
+               "Add",
+               [
+                  "Multiply",
+                  8,
+                  "x"
+               ],
+               12
             ],
             [
-               "Multiply",
-               8,
+               "Exp",
                [
-                  "Exp",
-                  [
-                     "Multiply",
-                     2,
-                     "x"
-                  ]
+                  "Multiply",
+                  2,
+                  "x"
                ]
             ]
          ]
       },
       {
          "step": 4,
-         "text": "At x = 0, g'''(0) = 0 + 8 = 8.",
-         "mathjson": 8
+         "text": "At x = 1, g'''(1) = 20e^2.",
+         "mathjson": [
+            "Multiply",
+            20,
+            [
+               "Power",
+               "ExponentialE",
+               2
+            ]
+         ]
       }
    ],
    "options": [
       {
          "id": "A",
-         "value": -2,
+         "value": [
+            "Multiply",
+            8,
+            [
+               "Power",
+               "ExponentialE",
+               2
+            ]
+         ],
          "is_key": false,
          "error_path": "BC-ERR-03021",
          "violated_step": 0
       },
       {
          "id": "B",
-         "value": 8,
+         "value": [
+            "Multiply",
+            20,
+            [
+               "Power",
+               "ExponentialE",
+               2
+            ]
+         ],
          "is_key": true,
          "error_path": null
       },
       {
          "id": "C",
-         "value": -8,
+         "value": [
+            "Multiply",
+            16,
+            [
+               "Power",
+               "ExponentialE",
+               2
+            ]
+         ],
          "is_key": false,
-         "error_path": "BC-ERR-03022",
-         "violated_step": 4
+         "error_path": "BC-ERR-03008",
+         "violated_step": 1
       },
       {
          "id": "D",
-         "value": 343,
+         "value": [
+            "Multiply",
+            4,
+            [
+               "Power",
+               "ExponentialE",
+               2
+            ]
+         ],
          "is_key": false,
-         "error_path": "BC-ERR-03022",
-         "violated_step": 0
+         "error_path": "BC-ERR-03008",
+         "violated_step": 1
       }
    ],
    "calculator_status": "no_calculator",
@@ -150,9 +183,9 @@
    ],
    "parameter_draw": {
       "order": 3,
+      "product": "x e^(2x)",
       "exponential_rate": 2,
-      "linear_coefficient": 5,
-      "point": 0
+      "point": 1
    },
    "authored_by": "claude-opus-5-5 agent draft, pending operator review",
    "authored_on": "2026-09-23"

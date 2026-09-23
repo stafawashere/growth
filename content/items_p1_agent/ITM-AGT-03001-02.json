@@ -4,59 +4,68 @@
    "variant_id": null,
    "format": "short_answer",
    "stem": {
-      "text": "Let h(x) = sqrt(1 + x^3). Find the exact value of h'(2)."
+      "text": "Let h(x) = x sqrt(1 + x^3). Find the exact value of h'(2)."
    },
    "answer_key": {
       "form": "numeric",
-      "mathjson": 2
+      "mathjson": 7
    },
    "worked_solution": [
       {
          "step": 1,
-         "text": "The outer function is the square root and the inner function is 1 + x^3. The outer derivative at the inner expression is 1/(2 sqrt(1 + x^3)).",
+         "text": "h is a product of x and the composite sqrt(1 + x^3), so h'(x) = sqrt(1 + x^3) + x d/dx[sqrt(1 + x^3)].",
          "mathjson": [
-            "Multiply",
+            "Sqrt",
             [
-               "Rational",
+               "Add",
                1,
-               2
-            ],
-            [
-               "Power",
                [
-                  "Add",
-                  1,
-                  [
-                     "Power",
-                     "x",
-                     3
-                  ]
-               ],
-               [
-                  "Rational",
-                  -1,
-                  2
+                  "Power",
+                  "x",
+                  3
                ]
             ]
          ]
       },
       {
          "step": 2,
-         "text": "Multiply by the inner derivative 3x^2: h'(x) = 3x^2 / (2 sqrt(1 + x^3)).",
+         "text": "By the chain rule, the square root contributes 1/(2 sqrt(1 + x^3)) and the inner function contributes 3x^2, so d/dx[sqrt(1 + x^3)] = 3x^2 / (2 sqrt(1 + x^3)).",
          "mathjson": [
-            "Multiply",
+            "Divide",
             [
-               "Rational",
+               "Multiply",
                3,
-               2
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
             ],
             [
-               "Power",
-               "x",
-               2
-            ],
+               "Multiply",
+               2,
+               [
+                  "Sqrt",
+                  [
+                     "Add",
+                     1,
+                     [
+                        "Power",
+                        "x",
+                        3
+                     ]
+                  ]
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "So h'(x) = sqrt(1 + x^3) + 3x^3 / (2 sqrt(1 + x^3)).",
+         "mathjson": [
+            "Add",
             [
-               "Power",
+               "Sqrt",
                [
                   "Add",
                   1,
@@ -65,19 +74,42 @@
                      "x",
                      3
                   ]
+               ]
+            ],
+            [
+               "Divide",
+               [
+                  "Multiply",
+                  3,
+                  [
+                     "Power",
+                     "x",
+                     3
+                  ]
                ],
                [
-                  "Rational",
-                  -1,
-                  2
+                  "Multiply",
+                  2,
+                  [
+                     "Sqrt",
+                     [
+                        "Add",
+                        1,
+                        [
+                           "Power",
+                           "x",
+                           3
+                        ]
+                     ]
+                  ]
                ]
             ]
          ]
       },
       {
-         "step": 3,
-         "text": "At x = 2, the inner expression is 1 + 8 = 9, so h'(2) = 3(4) / (2 * 3) = 12/6 = 2.",
-         "mathjson": 2
+         "step": 4,
+         "text": "At x = 2 the inner expression is 1 + 8 = 9, so h'(2) = 3 + 24/6 = 3 + 4 = 7.",
+         "mathjson": 7
       }
    ],
    "calculator_status": "no_calculator",
@@ -85,11 +117,11 @@
    "difficulty_settings": [
       {
          "difficulty_factor_id": "BC-DF-02",
-         "setting": "low"
+         "setting": "medium"
       },
       {
          "difficulty_factor_id": "BC-DF-06",
-         "setting": "low"
+         "setting": "medium"
       }
    ],
    "skills": [
@@ -98,8 +130,10 @@
       "BC-SKL-03006"
    ],
    "parameter_draw": {
+      "polynomial_factor": "x",
       "outer": "sqrt",
       "inner": "1 + x^3",
+      "enclosing_rule": "product",
       "point": 2
    },
    "authored_on": "2026-09-23",
@@ -109,8 +143,8 @@
          "id": "A",
          "value": [
             "Rational",
-            1,
-            6
+            10,
+            3
          ],
          "is_key": false,
          "error_path": "BC-ERR-03001",
@@ -118,21 +152,21 @@
       },
       {
          "id": "B",
-         "value": 3,
+         "value": 4,
          "is_key": false,
-         "error_path": "BC-ERR-03002",
-         "violated_step": 4
+         "error_path": "BC-ERR-03006",
+         "violated_step": 0
       },
       {
          "id": "C",
-         "value": 1,
+         "value": 2,
          "is_key": false,
          "error_path": "BC-ERR-03006",
-         "violated_step": 4
+         "violated_step": 0
       },
       {
          "id": "D",
-         "value": 2,
+         "value": 7,
          "is_key": true,
          "error_path": null
       }

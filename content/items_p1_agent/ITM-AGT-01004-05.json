@@ -4,44 +4,80 @@
    "variant_id": null,
    "format": "mcq",
    "stem": {
-      "text": "The function f is defined by \\( f(x) = \\dfrac{x^2 - 4}{x - 2} \\) for x < 2, \\( f(2) = 6 \\), and \\( f(x) = \\dfrac{x^2 + 4x - 12}{x^2 - 2x} \\) for x > 2. What is \\( \\lim_{x \\to 2} f(x) \\)?"
+      "text": "The function f is defined by \\( f(x) = \\dfrac{x^2 + x - 6}{x^2 - 4} \\) for \\( x \\neq 2 \\) and \\( f(2) = 7 \\). What is \\( \\lim_{x \\to 2} f(x) \\)?"
    },
    "answer_key": {
       "form": "symbolic",
-      "mathjson": 4
+      "mathjson": [
+         "Rational",
+         5,
+         4
+      ]
    },
    "worked_solution": [
       {
          "step": 1,
-         "text": "Both branches give zero over zero at x = 2: 4 - 4 = 0 over 2 - 2 = 0 on the left, and 4 + 8 - 12 = 0 over 4 - 4 = 0 on the right. The value f(2) = 6 plays no part in the limit.",
+         "text": "For x near 2 but not equal to 2, f(x) is given by the quotient. At x = 2 its numerator is 4 + 2 - 6 = 0 and its denominator is 4 - 4 = 0, so the form is zero over zero. The value f(2) = 7 plays no part in the limit.",
          "mathjson": 0
       },
       {
          "step": 2,
-         "text": "On the left, x^2 - 4 = (x - 2)(x + 2), so for x < 2 the branch equals x + 2, which approaches 4.",
+         "text": "Factor both parts: x^2 + x - 6 = (x - 2)(x + 3) and x^2 - 4 = (x - 2)(x + 2).",
          "mathjson": [
-            "Add",
-            "x",
-            2
+            "Divide",
+            [
+               "Multiply",
+               [
+                  "Subtract",
+                  "x",
+                  2
+               ],
+               [
+                  "Add",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Subtract",
+                  "x",
+                  2
+               ],
+               [
+                  "Add",
+                  "x",
+                  2
+               ]
+            ]
          ]
       },
       {
          "step": 3,
-         "text": "On the right, x^2 + 4x - 12 = (x - 2)(x + 6) and x^2 - 2x = x(x - 2), so for x > 2 the branch equals (x + 6)/x, which approaches 8/2 = 4.",
+         "text": "For x not equal to 2 the common factor x - 2 divides out, leaving (x + 3)/(x + 2).",
          "mathjson": [
             "Divide",
             [
                "Add",
                "x",
-               6
+               3
             ],
-            "x"
+            [
+               "Add",
+               "x",
+               2
+            ]
          ]
       },
       {
          "step": 4,
-         "text": "The one-sided limits agree, so the limit as x approaches 2 is 4.",
-         "mathjson": 4
+         "text": "The simplified quotient is continuous at 2, so the limit is (2 + 3)/(2 + 2) = 5/4.",
+         "mathjson": [
+            "Rational",
+            5,
+            4
+         ]
       }
    ],
    "options": [
@@ -61,14 +97,22 @@
       },
       {
          "id": "C",
-         "value": -4,
+         "value": [
+            "Rational",
+            3,
+            2
+         ],
          "is_key": false,
          "error_path": "BC-ERR-01010",
-         "violated_step": 3
+         "violated_step": 2
       },
       {
          "id": "D",
-         "value": 4,
+         "value": [
+            "Rational",
+            5,
+            4
+         ],
          "is_key": true,
          "error_path": null
       }
@@ -98,9 +142,8 @@
    ],
    "parameter_draw": {
       "target": 2,
-      "left_branch": "(x^2 - 4)/(x - 2)",
-      "right_branch": "(x^2 + 4x - 12)/(x^2 - 2x)",
-      "value_at_target": 6,
+      "rule_away_from_target": "(x^2 + x - 6)/(x^2 - 4)",
+      "value_at_target": 7,
       "rewrite": "factoring"
    },
    "authored_on": "2026-09-23",

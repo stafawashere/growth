@@ -4,77 +4,79 @@
    "variant_id": null,
    "format": "mcq",
    "stem": {
-      "text": "Consider the curve y^3 - 3y = x^2 - 4x, for which dy/dx = (2x - 4)/(3y^2 - 3). How many points on the curve have a vertical tangent line?"
+      "text": "Consider the curve (x^2 - 6x + 8)(1 - y^2) = 9, for which dy/dx = (x - 3)(1 - y^2)/(y(x^2 - 6x + 8)). For a positive constant k, the vertical line x = k is tangent to the curve. Find k."
    },
    "answer_key": {
       "form": "symbolic",
-      "mathjson": 4
+      "mathjson": [
+         "Add",
+         3,
+         [
+            "Sqrt",
+            10
+         ]
+      ]
    },
    "worked_solution": [
       {
          "step": 1,
-         "text": "A vertical tangent needs the denominator to be zero with the numerator nonzero: 3y^2 - 3 = 0 gives y = 1 or y = -1.",
-         "mathjson": 1
+         "text": "A vertical tangent needs the denominator of dy/dx to be zero with the numerator nonzero. The denominator is zero when y = 0, x = 2, or x = 4.",
+         "mathjson": 0
       },
       {
          "step": 2,
-         "text": "Substitute y = 1 into the curve: -2 = x^2 - 4x, so x^2 - 4x + 2 = 0 and x = 2 + sqrt(2) or x = 2 - sqrt(2).",
-         "mathjson": [
-            "Add",
-            2,
-            [
-               "Sqrt",
-               2
-            ]
-         ]
+         "text": "At x = 2 or x = 4 the factor x^2 - 6x + 8 is 0, so the left side of the curve equation is 0, not 9. Neither x-value belongs to a point of the curve.",
+         "mathjson": 0
       },
       {
          "step": 3,
-         "text": "Substitute y = -1: 2 = x^2 - 4x, so x^2 - 4x - 2 = 0 and x = 2 + sqrt(6) or x = 2 - sqrt(6).",
+         "text": "Substitute y = 0: x^2 - 6x + 8 = 9, so x^2 - 6x - 1 = 0, which gives x = 3 + sqrt(10) or x = 3 - sqrt(10).",
          "mathjson": [
             "Add",
-            2,
+            3,
             [
                "Sqrt",
-               6
+               10
             ]
          ]
       },
       {
          "step": 4,
-         "text": "None of the four x-values equals 2, so the numerator 2x - 4 is nonzero at every one of them. The curve has 4 points with a vertical tangent.",
-         "mathjson": 4
+         "text": "At both points the numerator is (x - 3)(1) = sqrt(10) or -sqrt(10), which is nonzero, so both tangents are vertical. Since 3 - sqrt(10) is negative, the positive value is k = 3 + sqrt(10).",
+         "mathjson": [
+            "Add",
+            3,
+            [
+               "Sqrt",
+               10
+            ]
+         ]
       }
    ],
    "options": [
       {
          "id": "A",
-         "value": [
-            "Add",
-            2,
-            [
-               "Power",
-               6,
-               [
-                  "Rational",
-                  1,
-                  2
-               ]
-            ]
-         ],
+         "value": 4,
          "is_key": false,
-         "error_path": "BC-ERR-03012",
-         "violated_step": 2
+         "error_path": "BC-ERR-03013",
+         "violated_step": 3
       },
       {
          "id": "B",
-         "value": 4,
+         "value": [
+            "Add",
+            3,
+            [
+               "Sqrt",
+               10
+            ]
+         ],
          "is_key": true,
          "error_path": null
       },
       {
          "id": "C",
-         "value": 1,
+         "value": 3,
          "is_key": false,
          "error_path": "BC-ERR-03012",
          "violated_step": 0
@@ -84,7 +86,7 @@
          "value": 2,
          "is_key": false,
          "error_path": "BC-ERR-03013",
-         "violated_step": 2
+         "violated_step": 3
       }
    ],
    "calculator_status": "no_calculator",
@@ -101,10 +103,11 @@
       "BC-SKL-03011"
    ],
    "parameter_draw": {
-      "curve": "y^3 - 3y = x^2 - 4x",
+      "curve": "(x^2 - 6x + 8)(1 - y^2) = 9",
       "direction": "vertical",
-      "candidates": 2,
-      "points_per_candidate": 2
+      "posed_as_stated_line": true,
+      "sign": "positive",
+      "off_curve_candidates": 2
    },
    "authored_on": "2026-09-23",
    "authored_by": "claude-opus-5-5 agent draft, pending operator review"

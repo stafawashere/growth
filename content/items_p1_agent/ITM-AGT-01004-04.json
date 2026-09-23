@@ -4,21 +4,25 @@
    "variant_id": null,
    "format": "short_answer",
    "stem": {
-      "text": "Evaluate \\( \\lim_{x \\to 7} \\dfrac{x - 7}{\\sqrt{x + 2} - 3} \\). State the limits of the numerator and of the denominator separately before rewriting."
+      "text": "Evaluate \\( \\lim_{x \\to 2} \\dfrac{x - 2}{x - \\sqrt{x + 2}} \\). State the limits of the numerator and of the denominator separately before rewriting."
    },
    "answer_key": {
       "form": "symbolic",
-      "mathjson": 6
+      "mathjson": [
+         "Rational",
+         4,
+         3
+      ]
    },
    "worked_solution": [
       {
          "step": 1,
-         "text": "The numerator x - 7 has limit 0 as x approaches 7, and the denominator sqrt(x + 2) - 3 has limit sqrt(9) - 3 = 0, so the form is zero over zero.",
+         "text": "The numerator x - 2 has limit 0 as x approaches 2, and the denominator x - sqrt(x + 2) has limit 2 - sqrt(4) = 0, so the form is zero over zero.",
          "mathjson": 0
       },
       {
          "step": 2,
-         "text": "Multiply numerator and denominator by sqrt(x + 2) + 3. The denominator becomes (x + 2) - 9 = x - 7, so the quotient is (x - 7)(sqrt(x + 2) + 3)/(x - 7).",
+         "text": "Multiply numerator and denominator by x + sqrt(x + 2). The denominator becomes x^2 - (x + 2) = x^2 - x - 2 = (x - 2)(x + 1), so the quotient is (x - 2)(x + sqrt(x + 2))/((x - 2)(x + 1)).",
          "mathjson": [
             "Divide",
             [
@@ -26,10 +30,11 @@
                [
                   "Subtract",
                   "x",
-                  7
+                  2
                ],
                [
                   "Add",
+                  "x",
                   [
                      "Sqrt",
                      [
@@ -37,37 +42,56 @@
                         "x",
                         2
                      ]
-                  ],
-                  3
+                  ]
                ]
             ],
             [
-               "Subtract",
-               "x",
-               7
+               "Multiply",
+               [
+                  "Subtract",
+                  "x",
+                  2
+               ],
+               [
+                  "Add",
+                  "x",
+                  1
+               ]
             ]
          ]
       },
       {
          "step": 3,
-         "text": "For x not equal to 7 the factor x - 7 divides out, leaving sqrt(x + 2) + 3.",
+         "text": "For x not equal to 2 the factor x - 2 divides out, leaving (x + sqrt(x + 2))/(x + 1).",
          "mathjson": [
-            "Add",
+            "Divide",
             [
-               "Sqrt",
+               "Add",
+               "x",
                [
-                  "Add",
-                  "x",
-                  2
+                  "Sqrt",
+                  [
+                     "Add",
+                     "x",
+                     2
+                  ]
                ]
             ],
-            3
+            [
+               "Add",
+               "x",
+               1
+            ]
          ]
       },
       {
          "step": 4,
-         "text": "At x = 7 this is 3 + 3 = 6.",
-         "mathjson": 6
+         "text": "At x = 2 this is (2 + 2)/(2 + 1) = 4/3.",
+         "mathjson": [
+            "Rational",
+            4,
+            3
+         ]
       }
    ],
    "calculator_status": "no_calculator",
@@ -94,9 +118,9 @@
       "BC-SKL-01028"
    ],
    "parameter_draw": {
-      "target": 7,
+      "target": 2,
       "radicand_shift": 2,
-      "root_value": 3,
+      "root_value": 2,
       "radical_position": "denominator",
       "rewrite": "conjugate"
    },
@@ -105,14 +129,7 @@
    "options": [
       {
          "id": "A",
-         "value": [
-            "Add",
-            3,
-            [
-               "Sqrt",
-               2
-            ]
-         ],
+         "value": 2,
          "is_key": false,
          "error_path": "BC-ERR-01010",
          "violated_step": 2
@@ -126,17 +143,17 @@
       },
       {
          "id": "C",
-         "value": 6,
+         "value": [
+            "Rational",
+            4,
+            3
+         ],
          "is_key": true,
          "error_path": null
       },
       {
          "id": "D",
-         "value": [
-            "Rational",
-            18,
-            7
-         ],
+         "value": 1,
          "is_key": false,
          "error_path": "BC-ERR-01010",
          "violated_step": 2

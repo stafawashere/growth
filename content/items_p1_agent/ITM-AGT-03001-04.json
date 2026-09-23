@@ -4,30 +4,14 @@
    "variant_id": null,
    "format": "short_answer",
    "stem": {
-      "text": "Let f(x) = ln(cos(x^2)) on an interval where cos(x^2) > 0. Find f'(x) and write it in terms of a single trigonometric function."
+      "text": "Let f(x) = x ln(cos(x^2)) on an interval where cos(x^2) > 0. Which of the following is f'(x)?"
    },
    "answer_key": {
       "form": "symbolic",
       "mathjson": [
-         "Multiply",
-         -2,
-         "x",
+         "Add",
          [
-            "Tan",
-            [
-               "Power",
-               "x",
-               2
-            ]
-         ]
-      ]
-   },
-   "worked_solution": [
-      {
-         "step": 1,
-         "text": "There are three layers: the natural log, then cosine, then x^2. The log contributes 1/cos(x^2).",
-         "mathjson": [
-            "Power",
+            "Ln",
             [
                "Cos",
                [
@@ -35,18 +19,35 @@
                   "x",
                   2
                ]
-            ],
-            -1
-         ]
-      },
-      {
-         "step": 2,
-         "text": "The cosine layer contributes -sin(x^2), evaluated at the inner expression x^2.",
-         "mathjson": [
+            ]
+         ],
+         [
             "Multiply",
-            -1,
+            -2,
             [
-               "Sin",
+               "Power",
+               "x",
+               2
+            ],
+            [
+               "Tan",
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "f is a product of x and the composite ln(cos(x^2)), so f'(x) = ln(cos(x^2)) + x d/dx[ln(cos(x^2))].",
+         "mathjson": [
+            "Ln",
+            [
+               "Cos",
                [
                   "Power",
                   "x",
@@ -56,17 +57,8 @@
          ]
       },
       {
-         "step": 3,
-         "text": "The innermost layer contributes 2x.",
-         "mathjson": [
-            "Multiply",
-            2,
-            "x"
-         ]
-      },
-      {
-         "step": 4,
-         "text": "Multiply and simplify: f'(x) = (1/cos(x^2))(-sin(x^2))(2x) = -2x tan(x^2).",
+         "step": 2,
+         "text": "The composite has three layers: the log gives 1/cos(x^2), the cosine gives -sin(x^2), and x^2 gives 2x. Their product is -2x tan(x^2).",
          "mathjson": [
             "Multiply",
             -2,
@@ -77,6 +69,41 @@
                   "Power",
                   "x",
                   2
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Substitute into the product rule: f'(x) = ln(cos(x^2)) - 2x^2 tan(x^2).",
+         "mathjson": [
+            "Add",
+            [
+               "Ln",
+               [
+                  "Cos",
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               -2,
+               [
+                  "Power",
+                  "x",
+                  2
+               ],
+               [
+                  "Tan",
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ]
                ]
             ]
          ]
@@ -91,7 +118,7 @@
       },
       {
          "difficulty_factor_id": "BC-DF-06",
-         "setting": "medium"
+         "setting": "high"
       }
    ],
    "skills": [
@@ -100,10 +127,12 @@
       "BC-SKL-03006"
    ],
    "parameter_draw": {
+      "polynomial_factor": "x",
       "outer": "ln",
       "middle": "cos",
       "inner": "x^2",
       "layers": 3,
+      "enclosing_rule": "product",
       "simplify_to": "tan"
    },
    "authored_on": "2026-09-23",
@@ -112,16 +141,30 @@
       {
          "id": "A",
          "value": [
-            "Power",
+            "Add",
             [
-               "Cos",
+               "Ln",
                [
-                  "Power",
-                  "x",
-                  2
+                  "Cos",
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ]
                ]
             ],
-            -1
+            [
+               "Divide",
+               "x",
+               [
+                  "Cos",
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ]
+               ]
+            ]
          ],
          "is_key": false,
          "error_path": "BC-ERR-03001",
@@ -129,17 +172,6 @@
       },
       {
          "id": "B",
-         "value": [
-            "Multiply",
-            2,
-            "x"
-         ],
-         "is_key": false,
-         "error_path": "BC-ERR-03001",
-         "violated_step": 2
-      },
-      {
-         "id": "C",
          "value": [
             "Multiply",
             -2,
@@ -153,19 +185,72 @@
                ]
             ]
          ],
+         "is_key": false,
+         "error_path": "BC-ERR-03006",
+         "violated_step": 0
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            [
+               "Ln",
+               [
+                  "Cos",
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               -2,
+               [
+                  "Power",
+                  "x",
+                  2
+               ],
+               [
+                  "Tan",
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ]
+               ]
+            ]
+         ],
          "is_key": true,
          "error_path": null
       },
       {
          "id": "D",
          "value": [
-            "Negate",
+            "Add",
             [
-               "Tan",
+               "Ln",
                [
-                  "Power",
-                  "x",
-                  2
+                  "Cos",
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               -1,
+               "x",
+               [
+                  "Tan",
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ]
                ]
             ]
          ],

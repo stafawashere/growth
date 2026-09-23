@@ -4,13 +4,13 @@
    "variant_id": null,
    "format": "short_answer",
    "stem": {
-      "text": "Let r be defined by r(x) = e^x + a for x < 0, r(x) = bx + 3 for 0 <= x <= 2, and r(x) = ax^2 + x for x > 2, where a and b are constants. Find the value of b for which r is continuous for all real x."
+      "text": "Let r be defined by r(x) = e^x + a for x < 0, r(x) = bx + 3 for 0 <= x <= 2, and r(x) = ax^2 + x - a for x > 2, where a and b are constants. Find the value of b for which r is continuous for all real x."
    },
    "answer_key": {
       "form": "symbolic",
       "mathjson": [
          "Rational",
-         7,
+         5,
          2
       ]
    },
@@ -26,7 +26,7 @@
       },
       {
          "step": 2,
-         "text": "At x = 2 the middle branch gives 2b + 3 and the right branch gives 4a + 2 = 10.",
+         "text": "At x = 2 the middle branch gives 2b + 3 and the right branch gives 4a + 2 - a = 3a + 2 = 8.",
          "mathjson": [
             "Equal",
             [
@@ -38,12 +38,12 @@
                ],
                3
             ],
-            10
+            8
          ]
       },
       {
          "step": 3,
-         "text": "Solving 2b + 3 = 10 gives 2b = 7.",
+         "text": "Solving 2b + 3 = 8 gives 2b = 5.",
          "mathjson": [
             "Equal",
             [
@@ -51,15 +51,15 @@
                2,
                "b"
             ],
-            7
+            5
          ]
       },
       {
          "step": 4,
-         "text": "So b = 7/2.",
+         "text": "So b = 5/2.",
          "mathjson": [
             "Rational",
-            7,
+            5,
             2
          ]
       }
@@ -81,7 +81,7 @@
    "parameter_draw": {
       "left_branch": "e^x + a",
       "middle_branch": "bx + 3",
-      "right_branch": "ax^2 + x",
+      "right_branch": "ax^2 + x - a",
       "boundaries": [
          0,
          2
@@ -92,18 +92,7 @@
    "options": [
       {
          "id": "A",
-         "value": [
-            "Subtract",
-            [
-               "Divide",
-               [
-                  "Exp",
-                  2
-               ],
-               2
-            ],
-            2
-         ],
+         "value": -5,
          "is_key": false,
          "error_path": "BC-ERR-01017",
          "violated_step": 0
@@ -112,7 +101,7 @@
          "id": "B",
          "value": [
             "Rational",
-            7,
+            5,
             2
          ],
          "is_key": true,
@@ -123,7 +112,7 @@
          "value": [
             "Rational",
             -5,
-            2
+            4
          ],
          "is_key": false,
          "error_path": "BC-ERR-01017",

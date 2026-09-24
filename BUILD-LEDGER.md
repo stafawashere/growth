@@ -1392,6 +1392,22 @@ types). Suite at close: pytest 968 passed, 0 failed (exit 0); vitest 323 passed 
   exit 0. The re-solve script stayed in the session scratchpad; its formulations are listed in the
   report's "Computed from the stem" column.
 
+- 2026-09-24, the operator's audit path made runnable end to end. `app/review/audit.py`
+  `unit_cap_for` lifts the 15-per-unit cap to the smallest value that fills the sample, and
+  `tools/draw_key_audit_sample.py` uses it: on P1's 30, 60 and 40 items per unit the cap is 35 and
+  the draw holds 30, 35 and 35. `tools/sign_off_items.py` adopts named reviewed drafts (item ids,
+  archetype ids or `all`) as operator items, moving `authored_by` to `drafted_by`, updating rows
+  a database already ingested, and refusing the whole run when a target names nothing; a record
+  round-trips byte for byte, so the diff is the provenance line only. `tools/key_audit_worksheet.py`
+  writes the gate 29 worksheet (stem, expected solution path, options, never the key) and a
+  verdict template. Tests, each shown red and green: `tests/review/test_audit.py` three new (the
+  cap never rising, 2 red; stepping the cap by 7, `assert 36 == 35`),
+  `tests/tools/test_agent_drafts_uncounted.py` a CLI draw of 100 from the 130 items with operator
+  provenance (red before the fix with "only 45 items honour the 15-per-unit cap"),
+  `tests/tools/test_sign_off_items.py` two (database left alone, 1 red; unknown id skipped instead
+  of refused, 1 red), `tests/tools/test_key_audit_worksheet.py` one (a key marker leaked, red on
+  `key:`; options dropped, red). `docs/operator/key-audit.md` gains the six-step P1 procedure.
+
 ## In progress [inferred]
 
 Nothing. The fourteenth session closed with the suite green and every module of its plan either
@@ -2183,6 +2199,14 @@ From the eleventh session, 2026-09-21, found and not fixed.
   reaches the app on first ingestion. A database that ingested the old records keeps the old
   wording, because `app/items/ingest.py` skips a record whose id is already stored.
 
+- 2026-09-24, `GET /progress` slowness not reproduced. A probe built the real composition root
+  (`app/main.py` `build_application`, the live content snapshot, the subscription backend off)
+  with the test passkey verifier, registered one user and ran a session a day, answering every
+  served item. Over 10 days with `tests/fixtures/items_p1` as the bank it answered in 0.05 to
+  0.15 s each day, and over 5 days with `content/items_p1_agent` in 0.14 to 0.35 s. The 45 s
+  report above came from a seeded state that was not kept, so the cause is unknown; the probe
+  stayed in the session scratchpad and nothing was changed.
+
 ## Plan corrections applied [verified]
 
 Session 2026-09-23 (fourteenth). No plan file was edited. Readings applied in code:
@@ -2540,6 +2564,17 @@ Session 2026-09-20 (seventh).
   beside onboarding, review and mock, so every screen still out of phase, including the three
   progress sections P2 does not build, stays forbidden. A new test asserts progress is reached
   only from home's button, is not on the bar and is not the landing screen.
+
+- 2026-09-24, gate 29's per-unit cap, ruled on the operator's delegated authority. 10 caps each
+  unit at 15 of a 100-item sample, which assumes the mature bank's ten units, and also puts the
+  P1 sample on the 130 hand-authored items, which span three units and so hold at most 45 under
+  that cap. The two sentences cannot both hold. The cap now rises only as far as the population
+  needs (`app/review/audit.py` `unit_cap_for`, 35 for P1) and stays at 15 whenever the
+  population can fill the sample under it, so the mature bank's audit is unchanged. Chosen over
+  shrinking the P1 sample to 45 because the key error rate's Wilson interval from 100 audited
+  items is about a third narrower, and the cap's purpose, keeping one unit from dominating the
+  sample, is still met as closely as three units allow. `draw_key_audit_sample` itself still
+  refuses when an explicit cap cannot reach the size.
 
 ## Decisions taken on the operator's instruction, 2026-09-23 [inferred]
 

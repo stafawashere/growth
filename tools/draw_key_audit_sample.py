@@ -2,7 +2,8 @@
 docs/plan/11-phased-delivery.md, P1 exit criterion 4, and docs/operator/key-audit.md.
 
 Draws app/review/audit.draw_key_audit_sample over every published operator-authored item in the database, stratified
-by unit (no more than 15 per unit) and by calculator_status in proportion to what is published,
+by unit (no more than 15 per unit, or the smallest cap that fills the sample when the items span
+fewer units, audit.unit_cap_for) and by calculator_status in proportion to what is published,
 with a deterministic seed so the same database and seed always produce the same sample. Writes the
 sample file docs/operator/key-audit.md describes: a JSON array of the sampled item ids, ready to
 hand to tools/check_audit_verdicts.py and to Settings.key_audit_sample_path.
@@ -20,7 +21,7 @@ from sqlalchemy.orm import Session as OrmSession
 from app.content.loader import load_snapshot
 from app.db.models import Item, make_engine
 from app.items.ingest import OPERATOR_MODEL
-from app.review.audit import EVAL_29_SAMPLE_SIZE, draw_key_audit_sample
+from app.review.audit import EVAL_29_SAMPLE_SIZE, draw_key_audit_sample, unit_cap_for
 from app.runtime.bank import PUBLISHED_STATUS
 
 DEFAULT_SEED = 2026
@@ -77,7 +78,12 @@ def main(argv):
    candidates = published_candidates(engine, snapshot)
 
    try:
-      sample = draw_key_audit_sample(candidates, rng_seed=seed, sample_size=EVAL_29_SAMPLE_SIZE)
+      sample = draw_key_audit_sample(
+         candidates,
+         rng_seed=seed,
+         sample_size=EVAL_29_SAMPLE_SIZE,
+         max_per_unit=unit_cap_for(candidates),
+      )
    except ValueError as refused:
       print(f"cannot draw the sample: {refused}", file=sys.stderr)
 

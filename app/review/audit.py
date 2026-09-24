@@ -71,6 +71,29 @@ def drawn_sample(sample_ids, sample_size):
 MAX_ITEMS_PER_UNIT = 15
 
 
+def unit_cap_for(candidates, sample_size=EVAL_29_SAMPLE_SIZE, base_cap=MAX_ITEMS_PER_UNIT):
+   """10's cap of 15 per unit assumes the mature bank's ten units. A population spanning fewer
+   units cannot fill the sample under it (P1's three units hold at most 45 of 100), so the cap
+   rises to the smallest value that can, which keeps the draw as even across units as the
+   population allows. A population the base cap already fills keeps the base cap. Ruled
+   2026-09-23 on the operator's delegated authority (BUILD-LEDGER.md, "Plan corrections applied").
+   """
+   unit_counts = Counter(row["unit"] for row in candidates)
+   largest_unit = max(unit_counts.values(), default=0)
+   cap = base_cap
+
+   while True:
+      reachable = sum(min(count, cap) for count in unit_counts.values())
+      fills_the_sample = reachable >= sample_size
+      cannot_rise_further = cap >= largest_unit
+      settles = fills_the_sample or cannot_rise_further
+
+      if settles:
+         return cap
+
+      cap += 1
+
+
 def _proportional_targets(counts_by_key, sample_size):
    """Largest-remainder rounding, ties broken by key so the result is deterministic. 10's audit
    section stratifies by calculator status in proportion to the population; this generalises that

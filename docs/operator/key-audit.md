@@ -78,3 +78,25 @@ shown only to demonstrate the output shape. Any malformed verdict record is prin
 completeness block, one line per violation, under the offending item id. Run the real command
 once the 100-item sample and its verdicts exist, and paste that output, including the published
 key error rate, into the pull request.
+
+## The P1 procedure, end to end
+
+Added 2026-09-23. The 130 P1 items are agent drafts until the operator adopts them, and gate 29
+samples only operator items, so the order is:
+
+1. Review the drafts. `docs/operator/p1-agent-item-key-check.md` lists, per item, the answer SymPy
+   computed from the stem beside the stored key; all 130 matched.
+2. Adopt the reviewed items as the operator's own, which rewrites `authored_by` to `drafted_by` in
+   each record and updates any row `var/growth.db` already holds:
+   `python3 tools/sign_off_items.py all` (or name item ids or archetype ids instead of `all`).
+3. Start the app once so the bank ingests the records, then draw the sample:
+   `python3 tools/draw_key_audit_sample.py var/growth.db data var/key_audit_sample.json`.
+   P1's items span three units, so the 15-per-unit cap rises to the smallest cap that fills 100
+   (35 for the current 30, 60 and 40), `app/review/audit.py` `unit_cap_for`.
+4. Write the worksheet and the verdict template:
+   `python3 tools/key_audit_worksheet.py var/key_audit_sample.json var/key_audit_worksheet.md var/key_audit_verdicts.json`.
+   The worksheet shows each stem, the expected solution path and the options, and never the key.
+5. Solve each item by hand, then fill `verdict`, `auditor`, `audited_at` and, for `ambiguous`, the
+   `second_answer` in the verdicts file.
+6. `python3 tools/check_audit_verdicts.py var/key_audit_verdicts.json var/key_audit_sample.json`
+   prints the key error rate once every record is complete.

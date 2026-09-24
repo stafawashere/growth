@@ -6,6 +6,7 @@ name its size.
 """
 import json
 import re
+from collections import Counter
 from pathlib import Path
 
 import pytest
@@ -361,3 +362,39 @@ def test_draw_key_audit_sample_refuses_when_the_unit_cap_makes_the_size_unreacha
 
    with pytest.raises(ValueError):
       audit.draw_key_audit_sample(candidates, rng_seed=2026, sample_size=100, max_per_unit=15)
+
+
+def _three_unit_candidates():
+   """P1's shape: 130 items over three units, 30, 60 and 40 of them."""
+   units = ["BC-UNIT-01"] * 30 + ["BC-UNIT-02"] * 60 + ["BC-UNIT-03"] * 40
+
+   return [
+      {"item_id": f"ITM-{index:04d}", "unit": unit, "calculator_status": "no_calculator"}
+      for index, unit in enumerate(units)
+   ]
+
+
+def test_unit_cap_rises_only_as_far_as_a_three_unit_population_needs():
+   candidates = _three_unit_candidates()
+   cap = audit.unit_cap_for(candidates)
+   drawn = audit.draw_key_audit_sample(candidates, rng_seed=2026, sample_size=100, max_per_unit=cap)
+   by_unit = {row["item_id"]: row["unit"] for row in candidates}
+   unit_counts = Counter(by_unit[item_id] for item_id in drawn)
+
+   assert cap == 35
+   assert len(drawn) == 100
+   assert unit_counts == {"BC-UNIT-01": 30, "BC-UNIT-02": 35, "BC-UNIT-03": 35}
+
+   with pytest.raises(ValueError):
+      audit.draw_key_audit_sample(candidates, rng_seed=2026, sample_size=100, max_per_unit=cap - 1)
+
+
+def test_unit_cap_stays_at_fifteen_when_ten_units_fill_the_sample():
+   assert audit.unit_cap_for(_synthetic_candidates(count=200, units=10)) == audit.MAX_ITEMS_PER_UNIT
+
+
+def test_unit_cap_cannot_fill_a_population_smaller_than_the_sample():
+   candidates = _synthetic_candidates(count=50, units=2)
+
+   with pytest.raises(ValueError):
+      audit.draw_key_audit_sample(candidates, rng_seed=2026, sample_size=100, max_per_unit=audit.unit_cap_for(candidates))

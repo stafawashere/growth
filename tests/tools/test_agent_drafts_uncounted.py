@@ -16,6 +16,7 @@ from sqlalchemy.orm import Session as OrmSession
 from app.content.loader import load_snapshot
 from app.db import models
 from app.items import ingest
+from tools import draw_key_audit_sample
 from tools.draw_key_audit_sample import published_candidates
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
@@ -101,3 +102,31 @@ def test_the_key_audit_sample_draws_only_from_operator_items(tmp_path):
    candidate_ids = [candidate["item_id"] for candidate in published_candidates(engine, snapshot)]
 
    assert candidate_ids == [OPERATOR_ITEM_ID]
+
+
+def test_the_key_audit_cli_draws_a_full_sample_from_three_units_of_operator_items(tmp_path, capsys):
+   """P1's 130 items span three units, which the 15-per-unit cap alone could never fill to 100."""
+   engine = models.make_engine(tmp_path / "growth.db")
+   snapshot = load_snapshot(DATA_DIR)
+   active_error_ids = set(snapshot.errors)
+   agent_directory = REPOSITORY_ROOT / "content" / "items_p1_agent"
+
+   with OrmSession(engine) as db:
+      for path in sorted(agent_directory.glob("ITM-*.json")):
+         record = json.loads(path.read_text())
+         record.pop("authored_by", None)
+         result = ingest.ingest_item(db, record, active_error_ids, "SNAP-TEST", INGESTED_AT)
+
+         assert result["status"] == "verified", result
+
+      db.commit()
+
+   out_path = tmp_path / "sample.json"
+   exit_code = draw_key_audit_sample.main(["draw", str(tmp_path / "growth.db"), str(DATA_DIR), str(out_path)])
+   printed = capsys.readouterr()
+   sample = json.loads(out_path.read_text()) if out_path.exists() else []
+
+   assert exit_code == 0, printed.err
+   assert len(published_candidates(engine, snapshot)) == 130
+   assert len(sample) == 100
+   assert len(set(sample)) == 100

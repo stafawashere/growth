@@ -1378,6 +1378,20 @@ types). Suite at close: pytest 968 passed, 0 failed (exit 0); vitest 323 passed 
   0, `qa/12_report.py` exit 0. The opening session's ledger line quotes pytest 968 passed, which
   this worktree cannot have held before the rebase; the 924 here is the count this tree produces.
 
+- 2026-09-23, operator's request to check the 130 agent-drafted items and run the key audit:
+  every stem in `content/items_p1_agent/` was re-solved in SymPy from the stem text alone and
+  compared with the stored key and every option through `app/items/mathjson.py` `to_sympy`
+  (`docs/operator/p1-agent-item-key-check.md`, one row per item). 130 of 130 keys match; on every
+  item carrying options exactly one option equals the computed answer and it is the key; the ten
+  stated dy/dx formulas in BC-QA-03005 stems are correct. Positive control in the same run: five
+  planted wrong answers all reported as differing, three of them as equal to a distractor, and a
+  sign-flipped 03005 formula reported wrong. 27 stems worded "Which of the following is ..." were
+  reworded to "Find ..." (see Decisions); no key, option or worked solution changed.
+  `tools/check_items.py content/items_p1_agent` prints `clean: 130` and exits 0. Checks: pytest
+  `967 passed in 228.44s`, vitest `324 passed (324)`, `tsc --noEmit` exit 0, `qa/12_report.py`
+  exit 0. The re-solve script stayed in the session scratchpad; its formulations are listed in the
+  report's "Computed from the stem" column.
+
 ## In progress [inferred]
 
 Nothing. The fourteenth session closed with the suite green and every module of its plan either
@@ -2155,6 +2169,19 @@ From the eleventh session, 2026-09-21, found and not fixed.
   client's calendar day. An attempt made in the evening in a zone behind UTC can fall one day
   later than the student's own date, so at the window's two edges the count can differ by the
   attempts of one evening. Not fixed: no stored field records the student's zone.
+
+- 2026-09-23, gate 29 cannot be drawn as specified. `app/review/audit.py`
+  `draw_key_audit_sample` caps each unit at 15 items (`MAX_ITEMS_PER_UNIT`, from 10's "no unit
+  contributes more than 15 items") and asks for 100 (`EVAL_29_SAMPLE_SIZE`), but P1's items span
+  three units, so at most 45 can be drawn. Run over the 130 agent items as candidates it refuses
+  with "only 45 items honour the 15-per-unit cap; 100 were requested", and with the cap lifted it
+  draws 100, so the cap is the cause. Independently, `tools/draw_key_audit_sample.py` offers only
+  provenance `operator` items and there are none, so today it refuses at "only 0 candidate items".
+  Either the cap is waived for P1's three units or the P1 sample shrinks to 45; both loosen the
+  gate as written, so the operator rules. Not changed.
+- 2026-09-23, `var/growth.db` held no items when the 27 stems were reworded, so the new wording
+  reaches the app on first ingestion. A database that ingested the old records keeps the old
+  wording, because `app/items/ingest.py` skips a record whose id is already stored.
 
 ## Plan corrections applied [verified]
 
@@ -2956,6 +2983,12 @@ P2 Slice 4 closing session: the Progress button on home is a secondary text butt
 queue, because 08 allows one primary action per screen and home's is starting or resuming the
 set. It is present in every home state (ready, empty, in progress), since 08 names no state in
 which progress is unreachable.
+
+Item check, 2026-09-23: 27 agent-drafted stems asked "Which of the following is ..." and now ask
+"Find ...". R29 serves an item as a short answer at stages example and completion and on every
+other attempt at stage unsupported (`app/engine/select.py` `format_for_attempt`), so most serves
+show no options, and nothing rewrites a stem for the served format; "Find" reads correctly in both
+formats. The items stay agent drafts pending the operator's review, and no provenance changed.
 
 ## Decisions taken on the operator's instruction, 2026-09-20 [inferred]
 

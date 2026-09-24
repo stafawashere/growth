@@ -28,3 +28,5 @@ A third, independent review on 2026-09-23 judged every item: 65 approve, 57 fix,
 ## Open for the operator [inferred]
 
 Operator sign-off is still pending for all 130, including the reviewed and re-checked items. What the re-check left open is in BUILD-LEDGER.md, Known defects, twenty-sixth session. In 01004 every one of the ten items carries 0 (always `BC-ERR-01008`) and 1 as options. The scratchpad generators and the option shuffle are not in the repository.
+
+A fourth check on 2026-09-23 re-solved every stem in SymPy from the stem text alone and compared the result with the stored key and every option: 130 of 130 keys match and no distractor equals its key (`docs/operator/p1-agent-item-key-check.md`). The same pass reworded 27 stems from "Which of the following is ..." to "Find ...", because R29 serves most attempts as short answers with no options shown. No key changed.

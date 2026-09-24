@@ -1340,6 +1340,44 @@ Decisions below). Suite at close 918 tests collected, `pytest -q` exit 0 in 364 
   minutes, a stricter check. Checks before rebase: pytest `920 passed in 231.34s`, vitest `310
   passed (310)`, `tsc --noEmit` exit 0, `qa/12_report.py` exit 0.
 
+P2 Slice 4, 2026-09-23: calibration capture and the progress screen's calibration curve (11 P2
+scope item 6). `app/progress/calibration.py` turns a user's counted attempts into three bins
+(guess, unsure, confident), each with its attempt count, count correct, observed accuracy and a
+Wilson 95 percent interval, plus the total n; `GET /progress/calibration` in
+`app/api/routes/progress.py` returns it over the 30 days ending on `today`, and below 30 counted
+attempts it returns `available: false`, `attempts_needed` and an empty `bins` list. A new nullable
+`attempts.confidence_source` records who supplied the rating: `student` from `record_attempt` and
+`record_confidence`, `session_close` from `close_session`'s unsure sweep; the additive migration
+backfills `student` onto stored guess and confident ratings and leaves a stored unsure null.
+Client: `readCalibration` in `app/web/src/api/client.ts`, the `CalibrationPayload` and
+`CalibrationBin` types, and `app/web/src/progress/CalibrationCurve.tsx` (accessible SVG with
+title and description, stated confidence on x, observed accuracy on y, the interval as a capped
+bar, `n = k` over each point, no mark and `n = 0` for an empty level, a table as the text
+alternative, token colours only, no animation) and `ProgressRoute.tsx`. The progress route is not
+reachable from the shell at first; the closing session wired it from home, see Plan corrections applied. Tests added, each watched red against a broken
+implementation and green after restore: `tests/progress/test_calibration.py` (9, including
+`test_calibration_curve_threshold`), `tests/api/test_calibration_route.py` (4),
+`app/web/src/progress/CalibrationCurve.test.tsx` (9), and five new rows in
+`app/web/src/api/client.test.ts` (the path and field-shape contract for the new route and both
+types). Suite at close: pytest 968 passed, 0 failed (exit 0); vitest 323 passed in 24 files; tsc clean;
+`qa/12_report.py` exit 0.
+
+- 2026-09-23, P2 Slice 4 closing session: server side checked against 11 P2 item 6, 08 and 10
+  with no defect found (graded and student-rated attempts only, rating always before feedback
+  because `render_feedback` refuses an unrated submitted attempt and `record_confidence` refuses a
+  second rating, additive nullable column with an in-transaction backfill, every colour a token
+  that `app/design/css.py` emits, no hex, a table as the text alternative, nothing animated). The
+  progress screen is now reached from home: `HomeScreen` takes an optional `onOpenProgress` and
+  draws a secondary "Progress" text button, `App.tsx` gains a `progress` destination that is not
+  on the bar, and `ProgressRoute` declares an empty `ProgressRouteProps` for the shell's props
+  contract. `app/web/src/App.test.tsx` gained "reaches progress from home and never from the bar
+  or as the landing screen" and a rewritten bar gate (see Plan corrections applied). Shown red
+  four ways and green on restore: the home button removed (1 red), Progress added to the bar (2
+  red), `App.tsx` naming a mastery map (1 red), the shell landing on progress (20 red). Checks
+  before rebase: pytest `924 passed in 231.69s`, vitest `324 passed (324)`, `tsc --noEmit` exit
+  0, `qa/12_report.py` exit 0. The opening session's ledger line quotes pytest 968 passed, which
+  this worktree cannot have held before the rebase; the 924 here is the count this tree produces.
+
 ## In progress [inferred]
 
 Nothing. The fourteenth session closed with the suite green and every module of its plan either
@@ -1516,6 +1554,9 @@ seventeen live calls add nothing to that model, since P1 wires only the tutor an
 `tutor.cycle` line, $5.01, was not touched.
 
 P2 Slice 3, 2026-09-23: no live call, $0.00. Every test is replay only.
+
+P2 Slice 4, calibration curve, 2026-09-23: no live call and no claude CLI run. API spend $0.00,
+subscription use none.
 
 ## Known defects [verified]
 
@@ -2096,6 +2137,25 @@ From the eleventh session, 2026-09-21, found and not fixed.
     than ignored. This session linked the main checkout's `cache/pdf` read-only for the QA run and
     removed the link afterwards; an orchestrator that links it must not commit the link.
 
+- 2026-09-23, P2 Slice 4, open:
+  - The curve omits 08's ideal diagonal and its "overconfident on confident by 18 points"
+    sentence, and reports no Brier score or confidence minus accuracy, because all four need each
+    rating mapped to a probability and no plan document fixes that mapping (see Decisions).
+  - A legacy unsure rating stored before `attempts.confidence_source` existed stays unattributed
+    and never counts, because nothing in the row tells a student's unsure from the close sweep's.
+    On a database with P1 history the curve can therefore under-count the unsure level.
+  - The 1.4.11 non-text contrast ratio is still unfetched (08, 11 P8 item 4), so the axis stroke
+    uses `text-muted` and the marks `accent-base` without a measured non-text ratio.
+  - `app/session/service.py` carries four one-line edits (two constants and three
+    `confidence_source` assignments), inside the area Slice 3 also edits; they touch only
+    `record_attempt`, `record_confidence` and `close_session`, not session assembly.
+
+- 2026-09-23, P2 Slice 4 closing session: `app/progress/calibration.py` `counted_attempts` takes
+  the day of each attempt from the UTC `submitted_at` string, while the window's end is the
+  client's calendar day. An attempt made in the evening in a zone behind UTC can fall one day
+  later than the student's own date, so at the window's two edges the count can differ by the
+  attempts of one evening. Not fixed: no stored field records the student's zone.
+
 ## Plan corrections applied [verified]
 
 Session 2026-09-23 (fourteenth). No plan file was edited. Readings applied in code:
@@ -2440,6 +2500,19 @@ Session 2026-09-20 (seventh).
 - `tools/style_gate.py` (pre-existing uncommitted edit from the planning session): the gate now also covers `/docs/` paths, and the two dash literals are written as escapes so the file passes its own check. Both edits strengthen or preserve the gate. The wider scope is pending operator confirmation and is listed as an out-of-scope change.
 - 02 block 1 ("5 items or 5 minutes of forecast, whichever comes first") with the 3-minute default forecast admits exactly one item until an archetype has 5 timed attempts, so the 5-item cap is unreachable early on. Implemented as written; the exit-criterion-5 walkthrough must not be read as evidence the item cap works.
 - 02 invariant 23 (both the split and the compensatory prediction logged on every observation): `attempts` carries `p_split` and `p_compensatory` columns from this session, schema only; the writer arrives with the session loop in the slice that builds `POST /sessions/{id}/attempts`.
+
+- 2026-09-23, P2 Slice 4 closing session, ruling on the shell's bar gate. 11 P2 scope item 6
+  puts "the progress screen's calibration curve" in P2, and P2's exit criterion needs "a
+  calibration curve renders from at least 30 real confidence-rated attempts", so the progress
+  screen is in phase from P2 even though P1's screen list excluded it; the mastery map as a
+  screen stays out (P2 out of scope). 08 says progress is "reachable from home" and "never the
+  landing screen" and that settings is "reachable only from the top bar", so progress joins home,
+  not the bar. The gate in `app/web/src/App.test.tsx` still asserts the bar labels are exactly
+  Home and Settings and now also that `DESTINATIONS` ids are exactly home and settings. Its list of
+  names `App.tsx` may not contain drops `progress` and adds `mastery`, `matrix` and `checkpoint`
+  beside onboarding, review and mock, so every screen still out of phase, including the three
+  progress sections P2 does not build, stays forbidden. A new test asserts progress is reached
+  only from home's button, is not on the bar and is not the landing screen.
 
 ## Decisions taken on the operator's instruction, 2026-09-23 [inferred]
 
@@ -2856,6 +2929,33 @@ that stated block 1's load but dropped one of its two override lanes understated
 minutes. `due_today_skills` still counts only mastered skills below the retention target, the
 definition 11 gives for due; the hypercorrection work shows up in `due_today_minutes` and in
 `DueQueue.item_count`.
+
+P2 Slice 4, calibration curve. P2 was started early on the operator's delegated authority,
+because P1's three open gates (17, 29, 30) are operator-only.
+
+- Which attempts count: graded (`correct` not null), rated by the student
+  (`confidence_source = student`), submitted in the 30 calendar days ending on the requested day,
+  in every stage and every session mode. Reason: 10 defines calibration "over all items carrying
+  a rating"; the rating is collected before feedback at every stage and `render_feedback`
+  refuses an unrated attempt, so a student rating is always a pre-feedback one; 08's wireframe
+  heads the curve "Calibration, last 30 days". The close sweep's unsure is excluded because the
+  student never gave it.
+- Unaided versus aided: not split. Reason: no plan document restricts calibration to unaided
+  attempts, and 10's definition covers every rated item.
+- No summary statistic. 10 names the Brier score and confidence minus accuracy, both over "the
+  confidence rating mapped to a probability", and no plan document gives the mapping from guess,
+  unsure and confident to probabilities, so the record reports counts, accuracies and Wilson 95
+  percent intervals only, and the client draws no ideal line.
+- The threshold of 30 counts attempts inside the 30-day window, not lifetime attempts. Reason:
+  the curve drawn is the 30-day one, and 11's exit criterion asks that it render from at least 30
+  real rated attempts.
+- `attempts.confidence_source` added rather than inferring provenance. Reason: without it the
+  close sweep's unsure would enter the curve as if the student had chosen it.
+
+P2 Slice 4 closing session: the Progress button on home is a secondary text button under the day's
+queue, because 08 allows one primary action per screen and home's is starting or resuming the
+set. It is present in every home state (ready, empty, in progress), since 08 names no state in
+which progress is unreachable.
 
 ## Decisions taken on the operator's instruction, 2026-09-20 [inferred]
 

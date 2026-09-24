@@ -17,6 +17,7 @@ import {
    readMe,
    requestPurge,
    readProgress,
+   readCalibration,
    readSettings,
    updateSettings,
    readProviders,
@@ -384,6 +385,8 @@ const serverShapes = {
          routeFunctionName("api/routes/sessions.py", "POST", "/sessions/{}/attempts/{}/self-explanation")
       ),
    ProgressPayload: () => returnedFields("session/preview.py", "queue_preview"),
+   CalibrationPayload: () => returnedFields("progress/calibration.py", "calibration_view"),
+   CalibrationBin: () => returnedFields("progress/calibration.py", "bin_view"),
    SettingsPayload: () => returnedFields("settings/preferences.py", "settings_view"),
    ProvidersPayload: () => returnedFields("settings/providers.py", "providers_view"),
    ProviderRole: () => returnedFields("settings/providers.py", "role_entry"),
@@ -600,6 +603,7 @@ describe("client path vocabulary", () => {
          invoke: () => submitSelfExplanation("sess-1", "att-1", { answer: "the product rule" })
       },
       { name: "readProgress", dynamic: [], invoke: () => readProgress() },
+      { name: "readCalibration", dynamic: [], invoke: () => readCalibration() },
       { name: "readSettings", dynamic: [], invoke: () => readSettings() },
       { name: "updateSettings", dynamic: [], invoke: () => updateSettings({ exam_date: "2027-05-10" }) },
       { name: "readProviders", dynamic: [], invoke: () => readProviders() },
@@ -705,6 +709,8 @@ describe("response shape vocabulary", () => {
       { typeName: "ServedItem", module: "types.ts" },
       { typeName: "ServedStep", module: "types.ts" },
       { typeName: "ProgressPayload", module: "types.ts" },
+      { typeName: "CalibrationPayload", module: "types.ts" },
+      { typeName: "CalibrationBin", module: "types.ts" },
       { typeName: "SettingsPayload", module: "types.ts" },
       { typeName: "ProvidersPayload", module: "types.ts" },
       { typeName: "ProviderRole", module: "types.ts" },
@@ -806,6 +812,7 @@ describe("response parsing", () => {
          invoke: () => submitSelfExplanation("sess-1", "att-1", { answer: "the product rule" })
       },
       { name: "readProgress", typeName: "ProgressPayload", invoke: () => readProgress() },
+      { name: "readCalibration", typeName: "CalibrationPayload", invoke: () => readCalibration() },
       { name: "readSettings", typeName: "SettingsPayload", invoke: () => readSettings() },
       {
          name: "updateSettings",

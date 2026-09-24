@@ -130,6 +130,28 @@ export interface ProgressPayload {
    session_in_progress: string | null;
 }
 
+/* app/progress/calibration.py calibration_view. Below minimum_rated_attempts the bins list is
+   empty and available is false. */
+export interface CalibrationBin {
+   confidence: Confidence;
+   attempts: number;
+   correct: number;
+   accuracy: number | null;
+   interval_low: number | null;
+   interval_high: number | null;
+}
+
+export interface CalibrationPayload {
+   available: boolean;
+   rated_attempts: number;
+   minimum_rated_attempts: number;
+   attempts_needed: number;
+   window_days: number;
+   window_start: string;
+   window_end: string;
+   bins: CalibrationBin[];
+}
+
 /* app/settings/preferences.py settings_view. */
 export interface SettingsPayload {
    exam_date: string;

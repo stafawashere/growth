@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { cleanup, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 
 import * as client from "./api/client";
 import type { BudgetsPayload, ProgressPayload, ServedItem, SessionPayload, SettingsPayload } from "./api/types";
@@ -20,10 +20,16 @@ const DESIGN_BRIEF = readFileSync(join(SOURCE_ROOT, "..", "..", "..", "docs", "p
 const PROPS_INTERFACE_BY_DESTINATION: Record<Destination, { file: string; name: string }> = {
    home: { file: "home/HomeScreen.tsx", name: "HomeScreenProps" },
    session: { file: "session/SessionScreen.tsx", name: "SessionScreenProps" },
-   settings: { file: "settings/SettingsScreen.tsx", name: "SettingsScreenProps" }
+   settings: { file: "settings/SettingsScreen.tsx", name: "SettingsScreenProps" },
+   progress: { file: "progress/ProgressRoute.tsx", name: "ProgressRouteProps" }
 };
 
-const OUT_OF_P1_SCREENS = ["onboarding", "review", "progress", "mock"];
+/* P2 scope item 6 brings the progress screen into phase with its calibration curve only; the
+   mastery map, the representation matrix and checkpoint history stay out, as do onboarding,
+   review and mock (11-phased-delivery.md P2 scope and out of scope). */
+const OUT_OF_PHASE_SCREENS = ["onboarding", "review", "mock", "mastery", "matrix", "checkpoint"];
+
+const BAR_DESTINATIONS = ["home", "settings"];
 
 /* A local wall-clock moment, so the calendar date the renderer counts from is the same in every
    time zone the suite runs in. */
@@ -251,23 +257,51 @@ afterEach(() => {
 });
 
 describe("the client shell", () => {
-   it("offers home and settings from the bar, opens no session from it, and names no out-of-P1 screen", () => {
+   it("offers home and settings from the bar, opens no session from it, and names no out-of-phase screen", () => {
       mockServer(readyProgress);
       render(<App />);
 
       const labels = buttonsIn(screen.getByRole("navigation")).map((button) => button.textContent);
 
       expect(labels).toEqual(["Home", "Settings"]);
+      expect(DESTINATIONS.map((entry) => entry.id)).toEqual(BAR_DESTINATIONS);
 
       const shellSource = sourceOf("App.tsx").toLowerCase();
-      const named = OUT_OF_P1_SCREENS.filter((screenName) => shellSource.includes(screenName));
+      const named = OUT_OF_PHASE_SCREENS.filter((screenName) => shellSource.includes(screenName));
 
-      expect(named, "App.tsx names a screen that is out of P1 scope").toEqual([]);
+      expect(named, "App.tsx names a screen that is out of phase").toEqual([]);
       expect(mocked.openSession).not.toHaveBeenCalled();
    });
 
+   it("reaches progress from home and never from the bar or as the landing screen", async () => {
+      mockServer(readyProgress);
+      mocked.readCalibration.mockResolvedValue({
+         available: false,
+         rated_attempts: 4,
+         minimum_rated_attempts: 30,
+         attempts_needed: 26,
+         window_days: 30,
+         window_start: "2026-12-07",
+         window_end: "2027-01-05",
+         bins: []
+      });
+      render(<App />);
+
+      await screen.findByText(/Start today's set/);
+
+      expect(within(screen.getByRole("navigation")).queryByRole("button", { name: "Progress" })).toBeNull();
+      expect(screen.queryByTestId("calibration-not-yet")).toBeNull();
+      expect(mocked.readCalibration).not.toHaveBeenCalled();
+
+      fireEvent.click(screen.getByRole("button", { name: "Progress" }));
+
+      expect(await screen.findByTestId("calibration-not-yet")).toBeTruthy();
+      expect(screen.queryByText(/Start today's set/)).toBeNull();
+      expect(mocked.readCalibration).toHaveBeenCalledTimes(1);
+   });
+
    it("names every input it still cannot supply, using the name the screen itself declares", () => {
-      for (const destination of ["home", "session", "settings"] as Destination[]) {
+      for (const destination of ["home", "session", "settings", "progress"] as Destination[]) {
          const target = PROPS_INTERFACE_BY_DESTINATION[destination];
          const declared = declaredPropertyNames(target.file, target.name);
          const listed = UNSUPPLIED_INPUTS[destination].map((input) => input.name);

@@ -15,6 +15,7 @@ export interface HomeScreenProps {
    onStartSession: () => void;
    onAddPracticeSet: () => void;
    onResumeSession: () => void;
+   onOpenProgress?: () => void;
 }
 
 function ExamFooter(props: { examDate: string; daysToExam: number }) {
@@ -72,7 +73,8 @@ function SessionInProgress(props: { onResumeSession: () => void }) {
 }
 
 export function HomeScreen(props: HomeScreenProps) {
-   const { status, examDate, daysToExam, onAddPracticeSet, onResumeSession } = props;
+   const { status, examDate, daysToExam, onAddPracticeSet, onResumeSession, onOpenProgress } = props;
+   const offersProgress = onOpenProgress !== undefined;
 
    return (
       <section className="card home">
@@ -83,6 +85,12 @@ export function HomeScreen(props: HomeScreenProps) {
          {status === "ready" && <ReadyQueue {...props} />}
          {status === "empty" && <EmptyQueue onAddPracticeSet={onAddPracticeSet} />}
          {status === "inProgress" && <SessionInProgress onResumeSession={onResumeSession} />}
+
+         {offersProgress && (
+            <button type="button" className="text-button" onClick={onOpenProgress}>
+               Progress
+            </button>
+         )}
 
          <ExamFooter examDate={examDate} daysToExam={daysToExam} />
       </section>

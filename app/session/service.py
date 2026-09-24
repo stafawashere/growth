@@ -31,6 +31,10 @@ from app.session.build import assemble_session
 
 SERVING_BLOCKS = ("block1", "block2", "block3")
 
+CONFIDENCE_FROM_STUDENT = "student"
+
+CONFIDENCE_FROM_SESSION_CLOSE = "session_close"
+
 RESPONSE_FIELDS = ("mathjson", "units", "option_id")
 
 
@@ -389,6 +393,7 @@ def record_attempt(
 
    is_correct = bool(graded_answer.get("correct")) if is_graded else None
    stored_confidence = Confidence(confidence).value if confidence is not None else None
+   confidence_source = CONFIDENCE_FROM_STUDENT if confidence is not None else None
    attempt = models.Attempt(
       id=new_id("ATT"),
       session_id=session_id,
@@ -397,6 +402,7 @@ def record_attempt(
       submitted_at=submitted_at.isoformat(),
       response=json.dumps(stored_response(answer)),
       confidence=stored_confidence,
+      confidence_source=confidence_source,
       elapsed_ms=elapsed_ms,
       correct=int(is_correct) if is_graded else None,
       p_split=split,
@@ -457,6 +463,7 @@ def record_confidence(
 
    if not is_graded:
       attempt.confidence = Confidence(confidence).value
+      attempt.confidence_source = CONFIDENCE_FROM_STUDENT
       attempt.updated_at = as_datetime(now or today).isoformat()
       db.flush()
 
@@ -465,6 +472,7 @@ def record_confidence(
    session_row = db.get(models.Session, attempt.session_id)
    item = queue_item(session_row, attempt.item_id)
    attempt.confidence = Confidence(confidence).value
+   attempt.confidence_source = CONFIDENCE_FROM_STUDENT
    applied_at = as_datetime(now or today)
    attempt.updated_at = applied_at.isoformat()
    db.flush()
@@ -635,6 +643,7 @@ def close_session(db, session_id, now=None, archetypes=None, engine_graph=None, 
       for attempt in pending:
          item = queue_item(session_row, attempt.item_id)
          attempt.confidence = Confidence.UNSURE.value
+         attempt.confidence_source = CONFIDENCE_FROM_SESSION_CLOSE
          attempt.updated_at = applied_at.isoformat()
          apply_attempt(
             db,

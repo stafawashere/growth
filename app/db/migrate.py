@@ -122,8 +122,25 @@ def _backfill_credited_observation_count(connection):
       )
 
 
+def _backfill_confidence_source(connection):
+   """attempts.confidence_source is new. app/session/service.py close_session sweeps an unrated
+   graded attempt in as unsure, and before this column nothing recorded that it had done so.
+   A stored guess or confident can only have come from the student, so those rows are marked
+   student. A stored unsure may be the student's or the sweep's, and nothing left in the row
+   tells them apart, so it stays null and the calibration curve leaves it out rather than
+   guess.
+   """
+   connection.execute(
+      text(
+         "UPDATE attempts SET confidence_source = 'student' "
+         "WHERE confidence IN ('guess', 'confident') AND confidence_source IS NULL"
+      )
+   )
+
+
 BACKFILLS = {
    "skills_state.credited_observation_count": _backfill_credited_observation_count,
+   "attempts.confidence_source": _backfill_confidence_source,
 }
 
 

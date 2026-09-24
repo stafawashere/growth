@@ -8,6 +8,7 @@ export interface HomeRouteProps {
    today: () => Date;
    onStartSession: () => void;
    onResumeSession: (sessionId: string) => void;
+   onOpenProgress?: () => void;
 }
 
 type HomeLoad =
@@ -41,7 +42,7 @@ export function queueLinesFrom(progress: ProgressPayload): QueueLine[] {
    ];
 }
 
-export function HomeRoute({ today, onStartSession, onResumeSession }: HomeRouteProps) {
+export function HomeRoute({ today, onStartSession, onResumeSession, onOpenProgress }: HomeRouteProps) {
    const [load, setLoad] = useState<HomeLoad>({ kind: "waiting" });
 
    useEffect(() => {
@@ -94,6 +95,7 @@ export function HomeRoute({ today, onStartSession, onResumeSession }: HomeRouteP
          onStartSession={onStartSession}
          onAddPracticeSet={onStartSession}
          onResumeSession={resume}
+         onOpenProgress={onOpenProgress}
       />
    );
 }

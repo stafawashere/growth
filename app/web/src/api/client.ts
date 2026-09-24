@@ -1,6 +1,7 @@
 import type {
    AttemptResult,
    BudgetsPayload,
+   CalibrationPayload,
    Confidence,
    FeedbackPayload,
    ProgressPayload,
@@ -235,6 +236,10 @@ export function submitSelfExplanation(sessionId: string, attemptId: string, fiel
 
 export function readProgress() {
    return requestJson<ProgressPayload>("/progress");
+}
+
+export function readCalibration() {
+   return requestJson<CalibrationPayload>("/progress/calibration");
 }
 
 export function readSettings() {

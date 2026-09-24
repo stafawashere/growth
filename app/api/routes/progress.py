@@ -7,6 +7,7 @@ app/session/preview.py, which runs the Session assembly rule without persisting 
 from fastapi import APIRouter, Depends, HTTPException
 
 from app.api.deps import current_user, get_db, get_settings
+from app.progress import calibration
 from app.session import preview
 
 router = APIRouter(tags=["progress"])
@@ -28,3 +29,20 @@ def read_progress(
       raise HTTPException(status_code=422, detail=str(unreadable)) from unreadable
 
    return preview.queue_preview(db, user.id, context.graph, context.bank, day, rng)
+
+
+@router.get("/progress/calibration")
+def read_calibration(
+   today: str | None = None,
+   db=Depends(get_db),
+   user=Depends(current_user),
+):
+   """The calibration curve beneath the mastery map (08, "Progress"), over the 30 days ending on
+   today. Below 30 counted attempts the payload says how many more are needed and carries no bins.
+   """
+   try:
+      day = preview.assembly_day(today)
+   except preview.UnreadableDay as unreadable:
+      raise HTTPException(status_code=422, detail=str(unreadable)) from unreadable
+
+   return calibration.user_calibration(db, user.id, day)

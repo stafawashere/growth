@@ -4,11 +4,12 @@ import { AccountScreen } from "./account/AccountScreen";
 import { AddPasskeyControl } from "./account/AddPasskeyControl";
 import { ApiError, readMe } from "./api/client";
 import { HomeRoute } from "./home/HomeRoute";
+import { ProgressRoute } from "./progress/ProgressRoute";
 import { SessionScreen } from "./session/SessionScreen";
 import type { SettingsScreenProps } from "./settings/SettingsScreen";
 import { SettingsRoute } from "./settings/SettingsRoute";
 
-export type Destination = "home" | "session" | "settings";
+export type Destination = "home" | "session" | "settings" | "progress";
 
 export interface DestinationEntry {
    id: Destination;
@@ -20,8 +21,8 @@ export interface UnsuppliedInput {
    wants: string;
 }
 
-/* 08-design-brief.md, Information architecture: settings is reached from the top bar, and a
-   session is reached from home's one primary action, never from a bar that would open one. */
+/* 08-design-brief.md, Information architecture: settings is reached from the top bar, a session
+   from home's one primary action, and progress from home, so neither of the last two is here. */
 export const DESTINATIONS: ReadonlyArray<DestinationEntry> = [
    { id: "home", label: "Home" },
    { id: "settings", label: "Settings" }
@@ -43,7 +44,8 @@ const settingsInputs = [] as const satisfies ReadonlyArray<{
 export const UNSUPPLIED_INPUTS: Record<Destination, ReadonlyArray<UnsuppliedInput>> = {
    home: [],
    session: [],
-   settings: settingsInputs
+   settings: settingsInputs,
+   progress: []
 };
 
 const noticeStyle = {
@@ -189,10 +191,17 @@ export function App() {
          {tokensAreLoaded ? null : <TokenNotice />}
 
          {destination === "home" ? (
-            <HomeRoute today={() => new Date()} onStartSession={startSession} onResumeSession={resumeSession} />
+            <HomeRoute
+               today={() => new Date()}
+               onStartSession={startSession}
+               onResumeSession={resumeSession}
+               onOpenProgress={() => setDestination("progress")}
+            />
          ) : null}
 
          {destination === "session" ? <SessionScreen resumeSessionId={sessionTarget.resumeSessionId} /> : null}
+
+         {destination === "progress" ? <ProgressRoute /> : null}
 
          {destination === "settings" ? (
             <>

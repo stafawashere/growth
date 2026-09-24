@@ -1704,6 +1704,8 @@ items) and items 3 and 6 (Slices 3 and 4). Every gate 11 names for P2 now exists
   test_image_quality_gate, test_disagreement_escalates, test_paper_to_grade, and the three evals.
   Live spend: $0.00 on the API key; about 590 subscription calls (goldens 450, transcription eval
   116, paper-to-grade 11, smokes), plus the manual runs.
+  Checks on the tree rebased onto `2d1431f` (P7): pytest `1193 passed in 386.59s (0:06:26)`;
+  vitest `Tests  473 passed (473)` in 36 files; `tsc --noEmit` exit 0; `qa/12_report.py` exit 0.
 
 ## In progress [inferred]
 

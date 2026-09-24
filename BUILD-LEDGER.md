@@ -1606,8 +1606,9 @@ items) and items 3 and 6 (Slices 3 and 4). Every gate 11 names for P2 now exists
   (docs/operator/key-audit-p2/). The bank now serves every `content/items_*` directory, and
   `tests/e2e/test_unit_6_item_served.py` serves, grades and shows feedback for a Unit 6 item
   through `build_application` with the test passkey verifier. Canonical record:
-  docs/operator/items-units-4-to-10.md. Checks on the rebased tree: pytest `1042 passed in
-  593.47s`; vitest `Tests  362 passed (362)`; `tsc --noEmit` exit 0; `qa/12_report.py` exit 0.
+  docs/operator/items-units-4-to-10.md. Checks on the tree rebased onto `bc09905`: pytest
+  `1078 passed in 392.38s (0:06:32)`; vitest `Tests  383 passed (383)`; `tsc --noEmit` exit 0;
+  `qa/12_report.py` exit 0.
 
 ## In progress [inferred]
 
@@ -2430,7 +2431,8 @@ From the eleventh session, 2026-09-21, found and not fixed.
   bank's first query, each bounded SymPy comparison in its own forkserver child off the main
   thread. Measured: 120 records in 3.4 s, 766 in 77.8 s; `tests/e2e/test_unit_6_item_served.py`
   and `tests/e2e/test_agent_drafts_served.py` took 370 s together with other stages running. The
-  operator's database pays it once per new record. It is the same first-query ingestion stage 3
+  operator's database pays it once per new record. These figures predate `bc09905`, which keeps
+  bounded children between calls, and were not re-measured after it. It is the same first-query ingestion stage 3
   found behind the 45 s `GET /progress`, now over 786 records instead of 130. Candidate fixes:
   one bounded child per record, or checks cached by record hash.
 - 2026-09-24, stage 1, open. Five closed-form archetypes have no items for want of held errors:

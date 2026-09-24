@@ -107,4 +107,21 @@ describe("McqControl", () => {
       expect(container.innerHTML).not.toMatch(/Rational/);
       expect(container.querySelectorAll(".katex").length).toBe(options.length);
    });
+
+   it("typesets inline LaTeX in an option label through MathText and never prints its delimiters", () => {
+      const options: ServedOption[] = [
+         { id: "A", label: "\\(\\frac{1}{2}\\)" },
+         { id: "B", label: "3" }
+      ];
+
+      const { container } = render(
+         <McqControl groupLabel="Choose one" options={options} onSelect={vi.fn()} />
+      );
+
+      const labels = container.querySelectorAll("label");
+
+      expect(labels[0].querySelectorAll(".katex").length).toBe(1);
+      expect(labels[1].querySelectorAll(".katex").length).toBe(0);
+      expect(container.textContent).not.toMatch(/\\\(/);
+   });
 });

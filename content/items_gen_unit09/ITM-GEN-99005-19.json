@@ -1,0 +1,115 @@
+{
+   "id": "ITM-GEN-99005-19",
+   "archetype_id": "BC-QA-99005",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "A particle moves along the polar curve \\( r = 2 \\cos{\\left(\\theta \\right)} + 2 \\) so that at time t its angle is \\( \\theta(t) = \\frac{3 t}{2} \\). Using a calculator, find the velocity vector of the particle at time \\( t = 1.8 \\). Show the setup, and give each component correct to three decimal places.",
+      "setup_required": true,
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "\\( v(1.8) \\approx \\left\\langle 1.036,\\ -0.808 \\right\\rangle \\)"
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "With \\( x = r\\cos\\theta \\) and \\( y = r\\sin\\theta \\), the position vector in terms of time is \\( \\left\\langle x(t), y(t) \\right\\rangle = \\left\\langle \\left(2 \\cos{\\left(\\frac{3 t}{2} \\right)} + 2\\right) \\cos{\\left(\\frac{3 t}{2} \\right)},\\ \\left(2 \\cos{\\left(\\frac{3 t}{2} \\right)} + 2\\right) \\sin{\\left(\\frac{3 t}{2} \\right)} \\right\\rangle \\).",
+         "point_type_id": "BC-PT-99005",
+         "rule_named": "polar to rectangular conversion"
+      },
+      {
+         "step": 2,
+         "text": "Differentiate each component and evaluate at \\( t = 1.8 \\) with the calculator in radian mode: \\( x'(1.8) \\approx 1.036 \\) and \\( y'(1.8) \\approx -0.808 \\).",
+         "point_type_id": "BC-PT-99004",
+         "rule_named": "componentwise derivative"
+      },
+      {
+         "step": 3,
+         "text": "So the velocity vector is \\( v(1.8) \\approx \\left\\langle 1.036,\\ -0.808 \\right\\rangle \\).",
+         "point_type_id": "BC-PT-99064",
+         "rule_named": "labelled components"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-09017",
+         "label": "\\( v(1.8) \\approx \\left\\langle -0.808,\\ 1.036 \\right\\rangle \\)",
+         "derivation": "the two components written in the wrong order, the y-component first",
+         "mechanism": "reversed_quantities"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-09023",
+         "label": "\\( v(1.8) \\approx \\left\\langle -0.007,\\ 0.104 \\right\\rangle \\)",
+         "derivation": "both component derivatives evaluated with the calculator in degree mode",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-09027",
+         "label": "\\( v(1.8) \\approx \\left\\langle -1.282,\\ 1.500 \\right\\rangle \\)",
+         "derivation": "the polar pair taken as the position, so the velocity is reported as dr/dt and dtheta/dt",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": true,
+         "error_path": null,
+         "label": "\\( v(1.8) \\approx \\left\\langle 1.036,\\ -0.808 \\right\\rangle \\)"
+      }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-14",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-16",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-09030",
+      "BC-SKL-09029",
+      "BC-SKL-09015",
+      "BC-SKL-09016"
+   ],
+   "parameter_draw": {
+      "constant": "2",
+      "amplitude": "2",
+      "trig": "cos",
+      "angle_rate": "3/2",
+      "instant": "9/5",
+      "angle_form": "linear"
+   },
+   "predicted_success_probability": 0.2592,
+   "provenance": {
+      "template_id": "TPL-BC-QA-99005-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-99005:spec-1:item-19:try-20",
+      "parameter_draw": {
+         "constant": "2",
+         "amplitude": "2",
+         "trig": "cos",
+         "angle_rate": "3/2",
+         "instant": "9/5",
+         "angle_form": "linear"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:54:03Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.1978
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

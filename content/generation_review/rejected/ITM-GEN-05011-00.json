@@ -1,0 +1,143 @@
+{
+   "id": "ITM-GEN-05011-00",
+   "archetype_id": "BC-QA-05011",
+   "variant_id": "BC-QV-05011-01",
+   "format": "mcq",
+   "stem": {
+      "text": "An open-top planter is made from a square sheet of steel 48 inches on a side by cutting a square of side x from each corner and folding up the sides. The planter can be at most 6 inches tall. Find the largest possible volume of the planter, in cubic inches.",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 7776,
+      "units": "cubic inches"
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The planter has height x and a square base of side \\( 48 - 2 x \\), so its volume is \\( V(x) = x\\left(48 - 2 x\\right)^{2} \\).",
+         "rule_named": "objective in one variable"
+      },
+      {
+         "step": 2,
+         "text": "The cut must be positive, less than half the sheet, and at most 6, so the domain is \\( 0 < x \\le 6 \\).",
+         "rule_named": "contextual domain"
+      },
+      {
+         "step": 3,
+         "text": "\\( V'(x) = 12 \\left(x - 24\\right) \\left(x - 8\\right) \\), which is zero at \\( x = 8 \\) and \\( x = 24 \\); only \\( x = 8 \\) lies strictly inside the sheet.",
+         "mathjson": 8,
+         "rule_named": "critical points"
+      },
+      {
+         "step": 4,
+         "text": "The critical point \\( x = 8 \\) is beyond the height limit, and \\( V'(x) > 0 \\) for every x in \\( 0 < x \\le 6 \\), so V is increasing there and is largest at the right endpoint \\( x = 6 \\).",
+         "rule_named": "closed interval method"
+      },
+      {
+         "step": 5,
+         "text": "The largest volume is \\( V(6) = 6\\left(36\\right)^{2} = 7776 \\) cubic inches.",
+         "mathjson": 7776,
+         "rule_named": "evaluate the objective"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "value": 7776
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-05024",
+         "value": 36,
+         "derivation": "the side of the base at the optimum reported instead of the volume",
+         "mechanism": "reversed_quantities"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-05024",
+         "value": 6,
+         "derivation": "the side of the cut square, where the maximum occurs, reported instead of the volume",
+         "mechanism": "reversed_quantities"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-05052",
+         "value": 8192,
+         "derivation": "the height limit left out of the domain, so the critical point x = 8 is used",
+         "mechanism": "theorem_condition_ignored"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-05",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-05",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-05049",
+      "BC-SKL-05050",
+      "BC-SKL-05051",
+      "BC-SKL-05052",
+      "BC-SKL-05053",
+      "BC-SKL-05054",
+      "BC-SKL-05055",
+      "BC-SKL-05056",
+      "BC-SKL-05057"
+   ],
+   "parameter_draw": {
+      "sixth": "8",
+      "height_cap": "6",
+      "material": "steel",
+      "purpose": "planter",
+      "length_unit": "inches",
+      "domain_limit": "binding"
+   },
+   "predicted_success_probability": 0.3318,
+   "provenance": {
+      "template_id": "TPL-BC-QA-05011-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-05011:spec-1:item-0:try-0",
+      "parameter_draw": {
+         "sixth": "8",
+         "height_cap": "6",
+         "material": "steel",
+         "purpose": "planter",
+         "length_unit": "inches",
+         "domain_limit": "binding"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, run D",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:56Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": true,
+      "requested_success_probability": 0.3318
+   },
+   "review_decision": {
+      "item_id": "ITM-GEN-05011-00",
+      "decision": "reject",
+      "reason": "template revised: the family drew too few distinct problems (24 and 35 in 300 draws), so its items were retired and the bank regenerated from the widened template",
+      "by": "claude-opus-5-5 on the operator's delegation of 2026-09-24",
+      "decided_on": "2026-09-24",
+      "rules": [
+         10,
+         11
+      ],
+      "archetype_id": "BC-QA-05011",
+      "prompt_version": "generator/template_v1",
+      "template_id": "TPL-BC-QA-05011-v1",
+      "parameter_seed": "BC-QA-05011:spec-1:item-0:try-0"
+   }
+}

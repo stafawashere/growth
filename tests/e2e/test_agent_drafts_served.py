@@ -44,7 +44,7 @@ def key_answers(records):
 
       answers[record["id"]] = {
          "key_option_id": key_options[0]["id"] if has_key_option else None,
-         "key_mathjson": record["answer_key"]["mathjson"],
+         "key_mathjson": record["answer_key"].get("mathjson"),
       }
 
    return answers
@@ -107,7 +107,8 @@ def answer_and_read_feedback(client, session_id, item, entry, today):
 
 
 def serve_until_a_unit_2_item(world, client):
-   """Drains whole sessions, answering every item correctly, until one from Unit 2 is served."""
+   """Drains whole sessions, answering every item correctly, until an agent draft from Unit 2 is
+   served; generated items from Unit 2 are served alongside the drafts since P4."""
    served = []
    today = FIRST_DAY
 
@@ -134,8 +135,9 @@ def serve_until_a_unit_2_item(world, client):
             client, session_id, item, world.answers[item["id"]], today
          )
          is_from_unit_2 = primary_unit(world, item) == UNIT_2
+         is_an_agent_draft = item["id"].startswith("ITM-AGT-")
 
-         if is_from_unit_2:
+         if is_from_unit_2 and is_an_agent_draft:
             return item, feedback, served
 
       closed = client.post(f"/sessions/{session_id}/close", json={"today": today.isoformat()})

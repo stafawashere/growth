@@ -1,0 +1,116 @@
+{
+   "id": "ITM-GEN-09013-16",
+   "archetype_id": "BC-QA-09013",
+   "variant_id": "BC-QV-09013-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Let R be the region that lies inside the polar curve \\( r = 3 - 3 \\cos{\\left(\\theta \\right)} \\) and outside the circle \\( r = \\frac{7}{2} \\). Using a calculator, find the area of R. Show the setup for the calculation, and give the value correct to three decimal places.",
+      "setup_required": true,
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "numeric",
+      "mathjson": 20.241934631655308,
+      "decimals": 3
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Setting \\( 3 - 3 \\cos{\\left(\\theta \\right)} = \\frac{7}{2} \\) gives the intersection angles \\( \\theta \\approx 1.738 \\) and \\( \\theta \\approx 4.545 \\), and between them the limacon is outside the circle, so it is the outer curve.",
+         "point_type_id": "BC-PT-99001",
+         "rule_named": "intersection angles"
+      },
+      {
+         "step": 2,
+         "text": "The area is one half the integral of the difference of the squares of the radii: \\( A = \\frac{1}{2}\\int_{1.738}^{4.545} \\left(\\left(3 - 3 \\cos{\\left(\\theta \\right)}\\right)^2 - \\frac{49}{4}\\right)\\,d\\theta \\).",
+         "point_type_id": "BC-PT-99048",
+         "rule_named": "area between polar curves"
+      },
+      {
+         "step": 3,
+         "text": "A calculator gives \\( A \\approx 20.242 \\), using the unrounded intersection angles.",
+         "mathjson": 20.241934631655308,
+         "point_type_id": "BC-PT-99004",
+         "rule_named": "numerical integration"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-09035",
+         "value": 40.484,
+         "derivation": "the factor of one half left off the integral of the difference of the squares",
+         "mechanism": "forgot_constant"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-09040",
+         "value": 4.447,
+         "derivation": "the square of the difference of the radii integrated in place of the difference of the squares",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "C",
+         "is_key": true,
+         "error_path": null,
+         "value": 20.242
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-09041",
+         "value": 10.121,
+         "derivation": "the integral taken over half the region, from the axis of symmetry to one intersection angle, without doubling",
+         "mechanism": "forgot_constant"
+      }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-13",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-16",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-09039",
+      "BC-SKL-09040",
+      "BC-SKL-09041",
+      "BC-SKL-09042",
+      "BC-SKL-09043"
+   ],
+   "parameter_draw": {
+      "constant": "3",
+      "coefficient": "3",
+      "circle": "7/2",
+      "orientation": "left",
+      "intersections": "found"
+   },
+   "predicted_success_probability": 0.5,
+   "provenance": {
+      "template_id": "TPL-BC-QA-09013-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-09013:spec-1:item-16:try-16",
+      "parameter_draw": {
+         "constant": "3",
+         "coefficient": "3",
+         "circle": "7/2",
+         "orientation": "left",
+         "intersections": "found"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:54:03Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.5
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

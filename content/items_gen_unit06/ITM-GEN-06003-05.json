@@ -1,0 +1,645 @@
+{
+   "id": "ITM-GEN-06003-05",
+   "archetype_id": "BC-QA-06003",
+   "variant_id": "BC-QV-06003-01",
+   "format": "mcq",
+   "stem": {
+      "text": "The graph of the continuous function f shown consists of four line segments and a semicircle, for \\( 0 \\le t \\le 12 \\). Let \\( g(x) = \\int_{4}^{x} f(t)\\,dt \\). Find the exact value of \\( g(12) \\).",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Multiply",
+            -1,
+            2,
+            "Pi"
+         ],
+         -4
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "\\( g(12) \\) is the signed area between the graph of f and the t-axis from t = 4 to t = 12.",
+         "rule_named": "accumulation function as signed area"
+      },
+      {
+         "step": 2,
+         "text": "From t = 4 to t = 8 the graph is made of line segments, with signed areas \\( -1, -3 \\), totalling \\( -4 \\).",
+         "mathjson": -4,
+         "rule_named": "area of a trapezoid, negative below the axis"
+      },
+      {
+         "step": 3,
+         "text": "On [8, 12] the semicircle has area \\( \\tfrac{1}{2}\\pi (2)^2 = 2\\pi \\), counted as \\( - 2 \\pi \\) because it lies below the axis.",
+         "mathjson": [
+            "Multiply",
+            -1,
+            2,
+            "Pi"
+         ],
+         "rule_named": "area of a semicircle"
+      },
+      {
+         "step": 4,
+         "text": "So \\( g(12) = - 2 \\pi - 4 \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               -1,
+               2,
+               "Pi"
+            ],
+            -4
+         ],
+         "point_type_id": "BC-PT-99069",
+         "rule_named": "additivity over adjacent intervals"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-06013",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               -1,
+               4,
+               "Pi"
+            ],
+            -4
+         ],
+         "derivation": "the semicircle given the area of the full circle, 4 pi",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               -1,
+               2,
+               "Pi"
+            ],
+            -4
+         ]
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-99012",
+         "value": -2,
+         "derivation": "the accumulation function evaluated as f(12) - f(4), the integrand read at the two limits",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-06014",
+         "value": [
+            "Add",
+            [
+               "Rational",
+               28,
+               5
+            ],
+            [
+               "Multiply",
+               2,
+               "Pi"
+            ]
+         ],
+         "derivation": "every piece counted as positive area, including those below the axis",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-02",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-04",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06020",
+      "BC-SKL-06022",
+      "BC-SKL-06023",
+      "BC-SKL-06024",
+      "BC-SKL-06025",
+      "BC-SKL-06026",
+      "BC-SKL-06027",
+      "BC-SKL-06018"
+   ],
+   "parameter_draw": {
+      "heights": [
+         "-2",
+         "0",
+         "2",
+         "-3"
+      ],
+      "lower": "4",
+      "circle": "below",
+      "half_point": "1/2",
+      "letters": "fg",
+      "ask": "value"
+   },
+   "predicted_success_probability": 0.5,
+   "provenance": {
+      "template_id": "TPL-BC-QA-06003-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-06003:spec-1:item-5:try-5",
+      "parameter_draw": {
+         "heights": [
+            "-2",
+            "0",
+            "2",
+            "-3"
+         ],
+         "lower": "4",
+         "circle": "below",
+         "half_point": "1/2",
+         "letters": "fg",
+         "ask": "value"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, run D",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:56Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.5
+   },
+   "figure": {
+      "kind": "function_graph",
+      "domain": [
+         -0.5,
+         12.5
+      ],
+      "range": [
+         -4.0,
+         4.0
+      ],
+      "curves": [
+         {
+            "segments": [
+               [
+                  [
+                     0,
+                     -2
+                  ],
+                  [
+                     2,
+                     0
+                  ]
+               ],
+               [
+                  [
+                     2,
+                     0
+                  ],
+                  [
+                     4,
+                     2
+                  ]
+               ],
+               [
+                  [
+                     4,
+                     2
+                  ],
+                  [
+                     6,
+                     -3
+                  ]
+               ],
+               [
+                  [
+                     6,
+                     -3
+                  ],
+                  [
+                     8,
+                     0
+                  ]
+               ],
+               [
+                  [
+                     8.0,
+                     -0.0
+                  ],
+                  [
+                     8.05,
+                     -0.4444
+                  ],
+                  [
+                     8.1,
+                     -0.6245
+                  ],
+                  [
+                     8.15,
+                     -0.7599
+                  ],
+                  [
+                     8.2,
+                     -0.8718
+                  ],
+                  [
+                     8.25,
+                     -0.9682
+                  ],
+                  [
+                     8.3,
+                     -1.0536
+                  ],
+                  [
+                     8.35,
+                     -1.1303
+                  ],
+                  [
+                     8.4,
+                     -1.2
+                  ],
+                  [
+                     8.45,
+                     -1.2639
+                  ],
+                  [
+                     8.5,
+                     -1.3229
+                  ],
+                  [
+                     8.55,
+                     -1.3775
+                  ],
+                  [
+                     8.6,
+                     -1.4283
+                  ],
+                  [
+                     8.65,
+                     -1.4756
+                  ],
+                  [
+                     8.7,
+                     -1.5199
+                  ],
+                  [
+                     8.75,
+                     -1.5612
+                  ],
+                  [
+                     8.8,
+                     -1.6
+                  ],
+                  [
+                     8.85,
+                     -1.6363
+                  ],
+                  [
+                     8.9,
+                     -1.6703
+                  ],
+                  [
+                     8.95,
+                     -1.7022
+                  ],
+                  [
+                     9.0,
+                     -1.7321
+                  ],
+                  [
+                     9.05,
+                     -1.76
+                  ],
+                  [
+                     9.1,
+                     -1.7861
+                  ],
+                  [
+                     9.15,
+                     -1.8104
+                  ],
+                  [
+                     9.2,
+                     -1.833
+                  ],
+                  [
+                     9.25,
+                     -1.854
+                  ],
+                  [
+                     9.3,
+                     -1.8735
+                  ],
+                  [
+                     9.35,
+                     -1.8914
+                  ],
+                  [
+                     9.4,
+                     -1.9079
+                  ],
+                  [
+                     9.45,
+                     -1.9229
+                  ],
+                  [
+                     9.5,
+                     -1.9365
+                  ],
+                  [
+                     9.55,
+                     -1.9487
+                  ],
+                  [
+                     9.6,
+                     -1.9596
+                  ],
+                  [
+                     9.65,
+                     -1.9691
+                  ],
+                  [
+                     9.7,
+                     -1.9774
+                  ],
+                  [
+                     9.75,
+                     -1.9843
+                  ],
+                  [
+                     9.8,
+                     -1.99
+                  ],
+                  [
+                     9.85,
+                     -1.9944
+                  ],
+                  [
+                     9.9,
+                     -1.9975
+                  ],
+                  [
+                     9.95,
+                     -1.9994
+                  ],
+                  [
+                     10.0,
+                     -2.0
+                  ],
+                  [
+                     10.05,
+                     -1.9994
+                  ],
+                  [
+                     10.1,
+                     -1.9975
+                  ],
+                  [
+                     10.15,
+                     -1.9944
+                  ],
+                  [
+                     10.2,
+                     -1.99
+                  ],
+                  [
+                     10.25,
+                     -1.9843
+                  ],
+                  [
+                     10.3,
+                     -1.9774
+                  ],
+                  [
+                     10.35,
+                     -1.9691
+                  ],
+                  [
+                     10.4,
+                     -1.9596
+                  ],
+                  [
+                     10.45,
+                     -1.9487
+                  ],
+                  [
+                     10.5,
+                     -1.9365
+                  ],
+                  [
+                     10.55,
+                     -1.9229
+                  ],
+                  [
+                     10.6,
+                     -1.9079
+                  ],
+                  [
+                     10.65,
+                     -1.8914
+                  ],
+                  [
+                     10.7,
+                     -1.8735
+                  ],
+                  [
+                     10.75,
+                     -1.854
+                  ],
+                  [
+                     10.8,
+                     -1.833
+                  ],
+                  [
+                     10.85,
+                     -1.8104
+                  ],
+                  [
+                     10.9,
+                     -1.7861
+                  ],
+                  [
+                     10.95,
+                     -1.76
+                  ],
+                  [
+                     11.0,
+                     -1.7321
+                  ],
+                  [
+                     11.05,
+                     -1.7022
+                  ],
+                  [
+                     11.1,
+                     -1.6703
+                  ],
+                  [
+                     11.15,
+                     -1.6363
+                  ],
+                  [
+                     11.2,
+                     -1.6
+                  ],
+                  [
+                     11.25,
+                     -1.5612
+                  ],
+                  [
+                     11.3,
+                     -1.5199
+                  ],
+                  [
+                     11.35,
+                     -1.4756
+                  ],
+                  [
+                     11.4,
+                     -1.4283
+                  ],
+                  [
+                     11.45,
+                     -1.3775
+                  ],
+                  [
+                     11.5,
+                     -1.3229
+                  ],
+                  [
+                     11.55,
+                     -1.2639
+                  ],
+                  [
+                     11.6,
+                     -1.2
+                  ],
+                  [
+                     11.65,
+                     -1.1303
+                  ],
+                  [
+                     11.7,
+                     -1.0536
+                  ],
+                  [
+                     11.75,
+                     -0.9682
+                  ],
+                  [
+                     11.8,
+                     -0.8718
+                  ],
+                  [
+                     11.85,
+                     -0.7599
+                  ],
+                  [
+                     11.9,
+                     -0.6245
+                  ],
+                  [
+                     11.95,
+                     -0.4444
+                  ],
+                  [
+                     12.0,
+                     -0.0
+                  ]
+               ]
+            ],
+            "style": "solid"
+         }
+      ],
+      "fills": [],
+      "marks": [
+         {
+            "type": "point",
+            "at": [
+               0.0,
+               -2.0
+            ]
+         },
+         {
+            "type": "point",
+            "at": [
+               2.0,
+               0.0
+            ]
+         },
+         {
+            "type": "point",
+            "at": [
+               4.0,
+               2.0
+            ]
+         },
+         {
+            "type": "point",
+            "at": [
+               6.0,
+               -3.0
+            ]
+         },
+         {
+            "type": "point",
+            "at": [
+               8.0,
+               0.0
+            ]
+         },
+         {
+            "type": "point",
+            "at": [
+               12.0,
+               0.0
+            ]
+         }
+      ],
+      "labels": [
+         {
+            "text": "y = f(t)",
+            "anchor": [
+               0.6,
+               3.6
+            ],
+            "placement": "inside"
+         }
+      ],
+      "gridlines": true,
+      "axis_titles": [
+         "t",
+         "y"
+      ],
+      "alt": "Line segments through (0, -2), (2, 0), (4, 2), (6, -3), (8, 0), then a semicircle of radius 2 centred at (10, 0) below the t-axis ending at (12, 0)."
+   },
+   "review_decision": {
+      "item_id": "ITM-GEN-06003-05",
+      "decision": "approve",
+      "reason": "one of a duplicate pair with ITM-GEN-06003-08; the lower id is kept",
+      "by": "claude-opus-5-5 on the operator's delegation of 2026-09-24",
+      "decided_on": "2026-09-24",
+      "rules": [
+         10
+      ],
+      "archetype_id": "BC-QA-06003",
+      "prompt_version": "generator/template_v1",
+      "template_id": "TPL-BC-QA-06003-v1"
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

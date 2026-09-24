@@ -1,0 +1,155 @@
+{
+   "id": "ITM-GEN-01002-19",
+   "archetype_id": "BC-QA-01002",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Selected values of a function f are given in the table. The function f is not defined at \\( x = -1 \\). What does the table suggest about \\( \\lim_{x \\to -1} f(x) \\)?",
+      "command_verb": "estimate"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "The table suggests that the limit does not exist, because the outputs approach different values on the two sides of x = -1."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "From the left, the outputs 0.5500, 0.9595, 0.9960, 0.9996 approach 1.",
+         "rule_named": "reading a table from one side"
+      },
+      {
+         "step": 2,
+         "text": "From the right, the outputs -0.3500, -0.0305, -0.0030, -0.0003 approach 0.",
+         "rule_named": "reading a table from one side"
+      },
+      {
+         "step": 3,
+         "text": "The two sides approach different values, so the table suggests the two sided limit does not exist.",
+         "rule_named": "two sided limit exists only when the one sided limits agree"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "label": "The table suggests that the limit does not exist, because the outputs approach different values on the two sides of x = -1."
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-01002",
+         "label": "The table suggests that the limit is 0, because the outputs approach 0 from the right of x = -1.",
+         "derivation": "the value the right hand rows approach reported as the two sided limit",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-01003",
+         "label": "The table suggests that the limit does not exist, because no limit can exist where f is not defined, as at x = -1.",
+         "derivation": "nonexistence concluded from f being undefined at the target rather than from the outputs",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-01002",
+         "label": "The table suggests that the limit is 1, because the outputs approach 1 from the left of x = -1.",
+         "derivation": "the value the left hand rows approach reported as the two sided limit",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-03",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-01015",
+      "BC-SKL-01016",
+      "BC-SKL-01017"
+   ],
+   "parameter_draw": {
+      "target": "-1",
+      "left_value": "1",
+      "right_value": "0",
+      "left_slope": "-4",
+      "right_slope": "-3",
+      "curvature": "-5",
+      "behaviour": "jump"
+   },
+   "predicted_success_probability": 0.4134,
+   "provenance": {
+      "template_id": "TPL-BC-QA-01002-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-01002:spec-1:item-19:try-25",
+      "parameter_draw": {
+         "target": "-1",
+         "left_value": "1",
+         "right_value": "0",
+         "left_slope": "-4",
+         "right_slope": "-3",
+         "curvature": "-5",
+         "behaviour": "jump"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T13:02:04Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": true,
+      "requested_success_probability": 0.4134
+   },
+   "figure": {
+      "kind": "table",
+      "columns": [
+         "x",
+         "f(x)"
+      ],
+      "rows": [
+         [
+            "-1.0001",
+            "0.9996"
+         ],
+         [
+            "-1.0010",
+            "0.9960"
+         ],
+         [
+            "-1.0100",
+            "0.9595"
+         ],
+         [
+            "-1.1000",
+            "0.5500"
+         ],
+         [
+            "-0.9000",
+            "-0.3500"
+         ],
+         [
+            "-0.9900",
+            "-0.0305"
+         ],
+         [
+            "-0.9990",
+            "-0.0030"
+         ],
+         [
+            "-0.9999",
+            "-0.0003"
+         ]
+      ],
+      "labels": [],
+      "alt": "A table of x and f(x): f(-1.0001) = 0.9996, f(-1.0010) = 0.9960, f(-1.0100) = 0.9595, f(-1.1000) = 0.5500, f(-0.9000) = -0.3500, f(-0.9900) = -0.0305, f(-0.9990) = -0.0030, f(-0.9999) = -0.0003."
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

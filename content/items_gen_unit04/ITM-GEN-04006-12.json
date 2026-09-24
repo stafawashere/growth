@@ -1,0 +1,148 @@
+{
+   "id": "ITM-GEN-04006-12",
+   "archetype_id": "BC-QA-04006",
+   "variant_id": "BC-QV-04006-01",
+   "format": "mcq",
+   "stem": {
+      "text": "A ladder 10 meters long leans against a vertical wall. The bottom of the ladder slides away from the wall along level ground at a constant rate of 5 meters per minute. At the instant when the bottom of the ladder is 6 meters from the wall, find the rate of change of the height of the top of the ladder. Give an exact answer with units.",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         -15,
+         4
+      ],
+      "units": "meters per minute"
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "With x the distance from the wall to the bottom and y the height of the top, \\( x^{2} + y^{2} = 100 \\).",
+         "rule_named": "relating equation"
+      },
+      {
+         "step": 2,
+         "text": "At the instant x = 6, so \\( y = \\sqrt{100 - 36} = 8 \\).",
+         "mathjson": 8,
+         "rule_named": "missing instantaneous value from the relating equation"
+      },
+      {
+         "step": 3,
+         "text": "Differentiate with respect to time: \\( 2x\\frac{dx}{dt} + 2y\\frac{dy}{dt} = 0 \\).",
+         "point_type_id": "BC-PT-99023",
+         "rule_named": "chain rule"
+      },
+      {
+         "step": 4,
+         "text": "Substitute x = 6, y = 8 and \\( \\frac{dx}{dt} = 5 \\): \\( \\frac{dy}{dt} = -\\frac{x}{y}\\frac{dx}{dt} = - \\frac{15}{4} \\), negative because the top slides down.",
+         "mathjson": [
+            "Rational",
+            -15,
+            4
+         ],
+         "point_type_id": "BC-PT-99004",
+         "rule_named": "substitute after differentiating"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-04017",
+         "value": [
+            "Rational",
+            -3,
+            4
+         ],
+         "derivation": "the relation differentiated with respect to x, dy/dx = -x/y, and the chain rule factor dx/dt never applied",
+         "mechanism": "chain_rule_omitted"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-04015",
+         "value": 5,
+         "derivation": "the supplied rate dx/dt reported as the requested rate dy/dt",
+         "mechanism": "reversed_quantities"
+      },
+      {
+         "id": "C",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Rational",
+            -15,
+            4
+         ]
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-04005",
+         "value": [
+            "Rational",
+            15,
+            4
+         ],
+         "derivation": "the rate reported as a positive size, so the downward motion of the top is lost",
+         "mechanism": "sign_error"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-05",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-04017",
+      "BC-SKL-04018",
+      "BC-SKL-04019",
+      "BC-SKL-04021",
+      "BC-SKL-04023",
+      "BC-SKL-04024",
+      "BC-SKL-04025",
+      "BC-SKL-04026",
+      "BC-SKL-04027"
+   ],
+   "parameter_draw": {
+      "shape": "ladder",
+      "size": "3",
+      "rate": "5",
+      "ratio": "2",
+      "leg": "short",
+      "length_unit": "meter",
+      "time_unit": "minute"
+   },
+   "predicted_success_probability": 0.4134,
+   "provenance": {
+      "template_id": "TPL-BC-QA-04006-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-04006:spec-1:item-12:try-17",
+      "parameter_draw": {
+         "shape": "ladder",
+         "size": "3",
+         "rate": "5",
+         "ratio": "2",
+         "leg": "short",
+         "length_unit": "meter",
+         "time_unit": "minute"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:53Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.3318
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

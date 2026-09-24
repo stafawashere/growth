@@ -1,0 +1,129 @@
+{
+   "id": "ITM-GEN-10004-18",
+   "archetype_id": "BC-QA-10004",
+   "variant_id": "BC-QV-10004-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Use the direct comparison test to determine whether the series \\( \\sum_{n=2}^{\\infty} a_n \\), where \\( a_n = \\frac{n + 3}{n^{2}} \\), converges or diverges. Verify the conditions of the test.",
+      "command_verb": "determine"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "The series diverges by the direct comparison test, because \\( a_n \\ge \\frac{1}{n} \\text{ and } p = 1 \\le 1 \\)."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The terms are positive, so the direct comparison test applies. Compare with \\( \\sum \\frac{1}{n} \\), the p-series with \\( p = 1 \\).",
+         "rule_named": "name the test"
+      },
+      {
+         "step": 2,
+         "text": "Splitting the fraction, \\( \\frac{n + 3}{n^{2}} = \\frac{1}{n} + \\frac{3}{n^{2}} \\), so \\( \\frac{n + 3}{n^{2}} \\ge \\frac{1}{n} > 0 \\) for every n.",
+         "rule_named": "comparison inequality"
+      },
+      {
+         "step": 3,
+         "text": "Since \\( p = 1 \\le 1 \\), \\( \\sum \\frac{1}{n} \\) diverges.",
+         "rule_named": "p-series test"
+      },
+      {
+         "step": 4,
+         "text": "The series diverges by the direct comparison test, because \\( a_n \\ge \\frac{1}{n} \\text{ and } p = 1 \\le 1 \\), so \\( \\sum_{n=2}^{\\infty} a_n \\) diverges.",
+         "point_type_id": "BC-PT-99005",
+         "rule_named": "direct comparison test"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-10016",
+         "label": "The series diverges by the direct comparison test, because \\( a_n \\le \\frac{1}{n} \\text{ and } p = 1 \\le 1 \\).",
+         "derivation": "the comparison inequality written the other way round, which cannot show divergence",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": true,
+         "error_path": null,
+         "label": "The series diverges by the direct comparison test, because \\( a_n \\ge \\frac{1}{n} \\text{ and } p = 1 \\le 1 \\)."
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-10008",
+         "label": "The series converges by the nth term test, because \\( \\lim_{n\\to\\infty} a_n = 0 \\).",
+         "derivation": "convergence concluded because the terms approach 0",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-10009",
+         "label": "The series converges by the alternating series test, because \\( a_n \\) decreases to 0.",
+         "derivation": "the alternating series test named for a series of positive terms, its alternating hypothesis never checked",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-09",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10011",
+      "BC-SKL-10012",
+      "BC-SKL-10013",
+      "BC-SKL-10018",
+      "BC-SKL-10019",
+      "BC-SKL-10020",
+      "BC-SKL-10022",
+      "BC-SKL-10023",
+      "BC-SKL-10024",
+      "BC-SKL-10027",
+      "BC-SKL-10028",
+      "BC-SKL-10029",
+      "BC-SKL-10030",
+      "BC-SKL-10033"
+   ],
+   "parameter_draw": {
+      "form": "comparison_diverges",
+      "naming": "named",
+      "large_power": "2",
+      "small_power": "1",
+      "coefficient": "8",
+      "shift": "3",
+      "start": "2"
+   },
+   "predicted_success_probability": 0.5,
+   "provenance": {
+      "template_id": "TPL-BC-QA-10004-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-10004:spec-1:item-18:try-18",
+      "parameter_draw": {
+         "form": "comparison_diverges",
+         "naming": "named",
+         "large_power": "2",
+         "small_power": "1",
+         "coefficient": "8",
+         "shift": "3",
+         "start": "2"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:58:54Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.5
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

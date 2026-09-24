@@ -19,6 +19,14 @@ that cannot evaluate enough points raises instead of calling the pair equal. Bef
 result the run perturbs a spread of computed answers and requires every perturbation to be
 reported as different; if one is not, the comparator is blind and the run exits 2.
 
+Generated items (ITM-GEN-*) carry a template-defined answer as well. With --template-answers the
+recheck also rebuilds each generated item from its provenance seed with its template and flags a
+stored key that differs from the template's own SymPy answer (template_differs) or a stem, figure
+or option set the seed no longer reproduces (provenance_drift). The blind formulation stays the
+independent check: its answer is compared with the key the same way as for any other bank. Keys of
+form "numeric" are compared at their three reported decimals, and keys of form "statement" by the
+chosen label.
+
 Exit 0 when every item is formulated and clean, 1 when anything is flagged, 2 when the control
 fails.
 """
@@ -40,6 +48,7 @@ from app.items.mathjson import to_sympy
 x, y = sympy.symbols("x y")
 t, theta = sympy.symbols("t theta")
 increment = sympy.Symbol("h")
+INTEGRATION_CONSTANT = sympy.Symbol("C")
 
 NUMERIC_SAMPLE_POINTS = 12
 MINIMUM_EVALUATED_POINTS = 6
@@ -55,6 +64,8 @@ FORMULATION_FAILED = "formulation_failed"
 OPTION_MISMATCH = "option_mismatch"
 CHOICE_WORDED_STEM = "choice_worded_stem"
 COMPARISON_UNDECIDED = "comparison_undecided"
+TEMPLATE_DIFFERS = "template_differs"
+PROVENANCE_DRIFT = "provenance_drift"
 
 
 class ComparisonUndecided(ValueError):
@@ -350,7 +361,16 @@ def function_with_values(center, values, variable=x):
 
 
 def equivalent(left, right):
-   difference = sympy.simplify(sympy.expand_trig(sympy.sympify(left) - sympy.sympify(right)))
+   """Symbolic simplification, then numeric evaluation at seeded points between 1.1 and 2.9. Two
+   antiderivatives written with the constant of integration C are equivalent when they differ by
+   a constant, and one written without C is compared as C = 0."""
+   difference = sympy.sympify(left) - sympy.sympify(right)
+   carries_constant = INTEGRATION_CONSTANT in difference.free_symbols
+
+   if carries_constant:
+      return _differ_by_a_constant(difference.subs(INTEGRATION_CONSTANT, 0))
+
+   difference = sympy.simplify(sympy.expand_trig(difference))
    is_zero = difference == 0
 
    if is_zero:
@@ -382,6 +402,32 @@ def equivalent(left, right):
    return True
 
 
+def _differ_by_a_constant(difference):
+   """Every derivative of the difference vanishes, taken over real variables so that the
+   derivative of an absolute value is a sign rather than an expression in re and im, and the
+   constant left is real: ln(x - 5) and ln|x - 5| differ by i pi where x < 5, which is not a
+   constant of integration."""
+   variables = sorted(difference.free_symbols, key=str)
+
+   if not variables:
+      return True
+
+   real_variables = {variable: sympy.Symbol(variable.name, real=True) for variable in variables}
+   real_difference = difference.subs(real_variables)
+   derivatives_vanish = all(
+      equivalent(sympy.diff(real_difference, real_variables[variable]), 0) for variable in variables
+   )
+
+   if not derivatives_vanish:
+      return False
+
+   sample = {variable: sympy.Rational(23, 10) for variable in variables}
+   constant = complex(difference.subs(sample).evalf())
+   is_real_constant = abs(constant.imag) <= EQUALITY_TOLERANCE
+
+   return is_real_constant
+
+
 @dataclass
 class ItemResult:
    item_id: str
@@ -393,6 +439,50 @@ class ItemResult:
    @property
    def is_clean(self):
       return self.flags == [KEY_MATCHES]
+
+
+def key_form(record):
+   return record["answer_key"].get("form", "symbolic")
+
+
+def normalised_label(text):
+   return " ".join(str(text).split())
+
+
+def stored_answer(record):
+   form = key_form(record)
+
+   if form == "statement":
+      return normalised_label(record["answer_key"]["label"])
+
+   return to_sympy(record["answer_key"]["mathjson"])
+
+
+def option_answer(record, option):
+   if key_form(record) == "statement":
+      return normalised_label(option.get("label", ""))
+
+   return to_sympy(option["value"])
+
+
+def same_answer(record, left, right):
+   """A statement compares by its label, a numeric key that states its reported decimals at those
+   decimals, and anything else by equivalent."""
+   form = key_form(record)
+
+   if form == "statement":
+      return normalised_label(left) == normalised_label(right)
+
+   decimals = record["answer_key"].get("decimals")
+   is_reported_decimal = form == "numeric" and decimals is not None
+
+   if is_reported_decimal:
+      left_value = float(sympy.N(sympy.sympify(left), 30))
+      right_value = float(sympy.N(sympy.sympify(right), 30))
+
+      return round(left_value, decimals) == round(right_value, decimals)
+
+   return equivalent(left, right)
 
 
 def single_answer(computed):
@@ -411,9 +501,9 @@ def single_answer(computed):
 
 
 def compare_with_key_and_options(result, record, computed, key):
-   result.flags.append(KEY_MATCHES if equivalent(computed, key) else KEY_DIFFERS)
+   result.flags.append(KEY_MATCHES if same_answer(record, computed, key) else KEY_DIFFERS)
    options = record.get("options") or []
-   equal_options = [option["id"] for option in options if equivalent(computed, to_sympy(option["value"]))]
+   equal_options = [option["id"] for option in options if same_answer(record, computed, option_answer(record, option))]
    marked_keys = [option["id"] for option in options if option["is_key"]]
    has_options = len(options) > 0
    options_disagree = has_options and equal_options != marked_keys
@@ -425,8 +515,9 @@ def compare_with_key_and_options(result, record, computed, key):
 
 def check_item(record, formulation):
    result = ItemResult(item_id=record["id"])
-   key = to_sympy(record["answer_key"]["mathjson"])
-   result.stored_key = sympy.sstr(key)
+   key = stored_answer(record)
+   is_statement = key_form(record) == "statement"
+   result.stored_key = key if is_statement else sympy.sstr(key)
    is_choice_worded = CHOICE_WORDING.search(record["stem"]["text"]) is not None
 
    if formulation is None:
@@ -439,7 +530,7 @@ def check_item(record, formulation):
          result.flags.append(NOT_UNIQUE if is_not_unique else FORMULATION_FAILED)
          result.note = str(refused)
       else:
-         result.computed = sympy.sstr(sympy.simplify(computed))
+         result.computed = normalised_label(computed) if is_statement else sympy.sstr(sympy.simplify(computed))
 
          try:
             compare_with_key_and_options(result, record, computed, key)
@@ -453,9 +544,17 @@ def check_item(record, formulation):
    return result
 
 
-def perturbations(value):
+def perturbations(value, record=None):
    """2v + 1 changes scale and offset; it leaves -1 fixed, so a translation by an offset no key is
-   plausibly wrong by also runs. A perturbation identical to the value is dropped, never counted."""
+   plausibly wrong by also runs. A perturbation identical to the value is dropped, never counted.
+   A statement is perturbed into every other option's label, the wrong answers a student sees."""
+   is_statement = record is not None and key_form(record) == "statement"
+
+   if is_statement:
+      labels = [option_answer(record, option) for option in record.get("options") or []]
+
+      return [label for label in labels if label != normalised_label(value)]
+
    value = sympy.sympify(value)
    candidates = [value * 2 + 1, value + sympy.sqrt(2) / 7]
 
@@ -475,14 +574,55 @@ def control_holds(records, formulations):
       except ValueError:
          continue
 
-      key = to_sympy(record["answer_key"]["mathjson"])
+      key = stored_answer(record)
 
-      compares_equal = [equivalent(changed, key) for changed in perturbations(computed)]
+      compares_equal = [same_answer(record, changed, key) for changed in perturbations(computed, record)]
 
       if any(compares_equal):
          blind_on.append(record["id"])
 
    return blind_on
+
+
+def template_check(record):
+   """Rebuild a generated item from its provenance seed with its template: the template's own
+   answer must equal the stored key, and the seed must still reproduce the item."""
+   from app.generation.instantiate import instantiate
+   from app.generation.template import template_module
+
+   provenance = record.get("provenance") or {}
+
+   try:
+      module = template_module(record["archetype_id"])
+   except ImportError:
+      module = None
+
+   has_template = module is not None and provenance.get("template_id") is not None
+
+   if not has_template:
+      return [PROVENANCE_DRIFT], "no template module reproduces this item"
+
+   index = int(record["id"].rsplit("-", 1)[1])
+   rebuilt = instantiate(module, index, provenance["parameter_seed"], generated_at=provenance.get("generated_at"))
+   flags = []
+   notes = []
+   stored_key = stored_answer(record)
+   template_key = stored_answer(rebuilt)
+
+   if not same_answer(record, template_key, stored_key):
+      flags.append(TEMPLATE_DIFFERS)
+      notes.append(f"template answer {template_key}")
+
+   drifted_fields = [
+      name for name in ("stem", "options", "figure", "worked_solution")
+      if json.dumps(rebuilt.get(name), sort_keys=True) != json.dumps(record.get(name), sort_keys=True)
+   ]
+
+   if drifted_fields:
+      flags.append(PROVENANCE_DRIFT)
+      notes.append(f"seed no longer reproduces {drifted_fields}")
+
+   return flags, "; ".join(notes)
 
 
 def load_formulations(path):
@@ -493,10 +633,16 @@ def load_formulations(path):
    return module.FORMULATIONS
 
 
-def recheck(items_dir, formulations):
+def recheck(items_dir, formulations, template_answers=False):
    records = [json.loads(path.read_text()) for path in sorted(Path(items_dir).glob("ITM-*.json"))]
    blind_on = control_holds(records, formulations)
    results = [check_item(record, formulations.get(record["id"])) for record in records]
+
+   if template_answers:
+      for record, result in zip(records, results):
+         flags, note = template_check(record)
+         result.flags.extend(flags)
+         result.note = "; ".join(part for part in (result.note, note) if part)
 
    return results, blind_on
 
@@ -517,9 +663,12 @@ def main(argv):
    parser.add_argument("items_dir")
    parser.add_argument("formulations")
    parser.add_argument("--report")
+   parser.add_argument("--template-answers", action="store_true")
    arguments = parser.parse_args(argv[1:])
 
-   results, blind_on = recheck(arguments.items_dir, load_formulations(arguments.formulations))
+   results, blind_on = recheck(
+      arguments.items_dir, load_formulations(arguments.formulations), arguments.template_answers
+   )
    comparator_is_blind = len(blind_on) > 0
 
    if comparator_is_blind:

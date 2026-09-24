@@ -1,0 +1,125 @@
+{
+   "id": "ITM-GEN-01012-02",
+   "archetype_id": "BC-QA-01012",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = 2 x^{2} + 5 x + 10 \\). Compute the average rate of change of f over each of the intervals \\( [5, 5.100] \\), \\( [5, 5.010] \\), \\( [5, 5.001] \\), and use them to find the instantaneous rate of change of f at \\( x = 5 \\).",
+      "command_verb": "estimate"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 25
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The average rate over \\( [5, 5 + h] \\) is \\( \\frac{f(5 + h) - f(5)}{h} \\), which for h = 0.1, 0.01 and 0.001 gives 25.200, 25.020, 25.002.",
+         "rule_named": "average rate of change"
+      },
+      {
+         "step": 2,
+         "text": "As the intervals shrink the averages approach 25, so the instantaneous rate at \\( x = 5 \\) is 25. Each average is only an approximation of it.",
+         "mathjson": 25,
+         "rule_named": "instantaneous rate as the limit of average rates"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "value": 25
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-01030",
+         "value": [
+            "Rational",
+            126,
+            5
+         ],
+         "derivation": "the average rate over the longest interval, of length 0.1, reported as the instantaneous rate",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-01029",
+         "value": [
+            "Rational",
+            63,
+            25
+         ],
+         "derivation": "the change in the quantity over the first interval reported without dividing by its length 0.1",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-01030",
+         "value": [
+            "Rational",
+            12501,
+            500
+         ],
+         "derivation": "the average rate over the shortest interval, of length 0.001, reported as the exact instantaneous rate",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-03",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-16",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-01001",
+      "BC-SKL-01002",
+      "BC-SKL-01003",
+      "BC-SKL-01004"
+   ],
+   "parameter_draw": {
+      "quadratic": "2",
+      "linear": "5",
+      "constant": "10",
+      "point": "5",
+      "context": "tank",
+      "source": "formula",
+      "framing": "bare"
+   },
+   "predicted_success_probability": 0.4134,
+   "provenance": {
+      "template_id": "TPL-BC-QA-01012-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-01012:spec-1:item-2:try-3",
+      "parameter_draw": {
+         "quadratic": "2",
+         "linear": "5",
+         "constant": "10",
+         "point": "5",
+         "context": "tank",
+         "source": "formula",
+         "framing": "bare"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:48Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": true,
+      "requested_success_probability": 0.4134
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

@@ -1,0 +1,111 @@
+{
+   "id": "ITM-GEN-04005-21",
+   "archetype_id": "BC-QA-04005",
+   "variant_id": "BC-QV-04005-01",
+   "format": "mcq",
+   "stem": {
+      "text": "The concentration of a medicine in a patient's blood is modeled by a differentiable function C of time t, measured in hours, whose rate of change is \\( C'(t) = \\frac{65 e^{- \\frac{t}{6}}}{6} \\) milligrams per liter per hour, for \\( 0 \\le t \\le 18 \\). Using a calculator, find \\( C'(3) \\), showing the setup, and interpret the value in the context of the problem with correct units. Give the value correct to three decimal places.",
+      "setup_required": true,
+      "command_verb": "interpret"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "\\( C'(3) = 6.571 \\), so at time t = 3 hours the concentration of the medicine is increasing at a rate of 6.571 milligrams per liter per hour."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "With a calculator, \\( C'(3) = 6.571 \\) to three decimal places.",
+         "point_type_id": "BC-PT-99027",
+         "rule_named": "evaluate the derivative at the instant"
+      },
+      {
+         "step": 2,
+         "text": "The value is positive, so at time t = 3 hours the concentration of the medicine is increasing at a rate of 6.571 milligrams per liter per hour.",
+         "point_type_id": "BC-PT-99014",
+         "rule_named": "sign of the rate gives the direction of change"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-04013",
+         "label": "\\( C'(3) = 6.571 \\), so at time t = 3 hours the concentration of the medicine is moving with a velocity of 6.571 milligrams per liter per hour.",
+         "derivation": "the rate of change of a non-motion quantity called a velocity",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-04001",
+         "label": "\\( C'(3) = 6.571 \\), so at time t = 3 hours the concentration of the medicine is increasing at a rate of 6.571 hours per milligram per liter.",
+         "derivation": "the units assembled the wrong way round, time units over the units of the quantity",
+         "mechanism": "reversed_quantities"
+      },
+      {
+         "id": "C",
+         "is_key": true,
+         "error_path": null,
+         "label": "\\( C'(3) = 6.571 \\), so at time t = 3 hours the concentration of the medicine is increasing at a rate of 6.571 milligrams per liter per hour."
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-04012",
+         "label": "\\( C'(3) = 6.571 \\), so when the concentration of the medicine is 3 milligrams per liter it is increasing at a rate of 6.571 milligrams per liter per hour.",
+         "derivation": "the independent variable never named, so the input is read as a value of the quantity rather than a time",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-05",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-16",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-04013",
+      "BC-SKL-04014",
+      "BC-SKL-04015",
+      "BC-SKL-04016"
+   ],
+   "parameter_draw": {
+      "context": "medicine",
+      "base": "25",
+      "amount": "65",
+      "scale": "6",
+      "instant": "3",
+      "trend": "rising",
+      "supplied": "rate"
+   },
+   "predicted_success_probability": 0.5,
+   "provenance": {
+      "template_id": "TPL-BC-QA-04005-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-04005:spec-1:item-21:try-21",
+      "parameter_draw": {
+         "context": "medicine",
+         "base": "25",
+         "amount": "65",
+         "scale": "6",
+         "instant": "3",
+         "trend": "rising",
+         "supplied": "rate"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T13:51:57Z",
+      "content_snapshot": "a800600d4c437c1ba8273c7cb1a03e0fe70b74050fbabcbcf27d142ba56fded8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.5
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

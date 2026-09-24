@@ -3,7 +3,7 @@ import { cleanup, render, screen } from "@testing-library/react";
 import { P1_FEEDBACK_AFFORDANCES, AFFORDANCE_ATTRIBUTE } from "../affordances";
 import type { FadingStage, ServedFormat, ServedItem, ServedStep } from "../api/types";
 import type { ItemProps } from "./Item";
-import { ANSWER_UNAVAILABLE, COMMIT_LABEL, Item } from "./Item";
+import { ANSWER_UNAVAILABLE, CALCULATOR_NOTE, COMMIT_LABEL, Item } from "./Item";
 
 const SELF_EXPLANATION_PROMPT = "Which rule justifies step 3, and why does it apply here?";
 
@@ -281,5 +281,98 @@ describe("Item waiting on the rating the attempt was committed without", () => {
 
          cleanup();
       }
+   });
+});
+
+function renderDressedItem(overrides: Partial<ServedItem>) {
+   return render(
+      <Item
+         item={{ ...servedItem("unsupported", "short_answer"), ...overrides }}
+         onAnswerChange={vi.fn()}
+         answerUnavailable={false}
+         onAnswerUnavailable={vi.fn()}
+         selectedOptionId={null}
+         onOptionChange={vi.fn()}
+         confidence={null}
+         onConfidenceChange={vi.fn()}
+         selfExplanation=""
+         onSelfExplanationChange={vi.fn()}
+         onCommit={vi.fn()}
+         awaitingConfidence={false}
+      />
+   );
+}
+
+describe("Item figure and calculator note", () => {
+   it("draws the figure right after the stem when the item carries one, and no figure when it does not", () => {
+      renderDressedItem({
+         figure_spec: {
+            kind: "function_graph",
+            domain: [-1, 1],
+            range: [-1, 1],
+            curves: [{ segments: [[[-1, -1], [1, 1]]], style: "solid" }],
+            fills: [],
+            marks: [],
+            labels: [],
+            gridlines: true,
+            axis_titles: ["x", "y"],
+            alt: "The line y = x."
+         }
+      });
+
+      const figure = screen.getByTestId("item-figure");
+
+      expect(screen.getByRole("img", { name: "The line y = x." })).toBeTruthy();
+      expect(screen.getByTestId("item-stem").nextElementSibling).toBe(figure);
+
+      cleanup();
+
+      renderDressedItem({ figure_spec: null });
+
+      expect(screen.queryByTestId("item-figure")).toBeNull();
+
+      cleanup();
+   });
+
+   it("says a calculator is allowed only on a calculator item", () => {
+      renderDressedItem({ calculator_status: "calculator" });
+
+      expect(screen.getByTestId("calculator-note").textContent).toBe(CALCULATOR_NOTE);
+
+      cleanup();
+
+      renderDressedItem({ calculator_status: "no_calculator" });
+
+      expect(screen.queryByTestId("calculator-note")).toBeNull();
+
+      cleanup();
+   });
+});
+
+describe("Item statement-keyed choice", () => {
+   it("serves a statement-keyed item as a choice at stage completion, where other items take typed answers", () => {
+      const item = { ...servedItem("completion", "mcq"), requires_choice: true };
+
+      render(
+         <Item
+            item={item}
+            onAnswerChange={vi.fn()}
+            answerUnavailable={false}
+            onAnswerUnavailable={vi.fn()}
+            selectedOptionId={null}
+            onOptionChange={vi.fn()}
+            confidence={null}
+            onConfidenceChange={vi.fn()}
+            selfExplanation=""
+            onSelfExplanationChange={vi.fn()}
+            onCommit={vi.fn()}
+            awaitingConfidence={false}
+         />
+      );
+
+      expect(screen.getByTestId("mcq-answer")).not.toBeNull();
+      expect(screen.queryByTestId("math-answer")).toBeNull();
+
+      cleanup();
    });
 });

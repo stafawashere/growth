@@ -1,0 +1,138 @@
+{
+   "id": "ITM-GEN-03007-21",
+   "archetype_id": "BC-QA-03007",
+   "variant_id": "BC-QV-03007-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( h(x) = x^{2} \\arctan{\\left(3 - x^{2} \\right)} \\). Find the exact value of \\( h'(-2) \\).",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         "Pi",
+         8
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The inner expression is \\( u = 3 - x^{2} \\), with \\( u' = - 2 x \\), and \\( \\frac{d}{du}\\arctan u = \\frac{1}{1 + u^{2}} \\).",
+         "rule_named": "inverse trigonometric derivative with the chain rule"
+      },
+      {
+         "step": 2,
+         "text": "By the product rule and the chain rule, \\( h'(x) = - \\frac{2 x^{3}}{\\left(3 - x^{2}\\right)^{2} + 1} + 2 x \\arctan{\\left(3 - x^{2} \\right)} \\).",
+         "rule_named": "product rule"
+      },
+      {
+         "step": 3,
+         "text": "At x = -2, \\( u = -1 \\) and \\( u' = 4 \\), so \\( h'(-2) = \\pi + 8 \\).",
+         "mathjson": [
+            "Add",
+            "Pi",
+            8
+         ],
+         "rule_named": "evaluate"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Add",
+            "Pi",
+            8
+         ]
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-03006",
+         "value": 8,
+         "derivation": "the power factor held constant, so only the inverse trigonometric factor is differentiated",
+         "mechanism": "product_rule_omitted"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-03017",
+         "value": [
+            "Add",
+            -8,
+            "Pi"
+         ],
+         "derivation": "the derivative formula recalled with the wrong sign, the cofunction's formula in its place",
+         "mechanism": "sign_error"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-03018",
+         "value": [
+            "Add",
+            "Pi",
+            [
+               "Rational",
+               16,
+               5
+            ]
+         ],
+         "derivation": "the formula written with x in place of the inner expression, 1 / (1 + x^2)",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-03021",
+      "BC-SKL-03022",
+      "BC-SKL-03024",
+      "BC-SKL-03025"
+   ],
+   "parameter_draw": {
+      "family": "arctan",
+      "inner": "quadratic",
+      "slope": "-1",
+      "at": "-2",
+      "coefficient": "1",
+      "power": "2",
+      "sign": "-1"
+   },
+   "predicted_success_probability": 0.5,
+   "provenance": {
+      "template_id": "TPL-BC-QA-03007-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-03007:spec-1:item-21:try-22",
+      "parameter_draw": {
+         "family": "arctan",
+         "inner": "quadratic",
+         "slope": "-1",
+         "at": "-2",
+         "coefficient": "1",
+         "power": "2",
+         "sign": "-1"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, author tpl-B",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:50Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.5
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

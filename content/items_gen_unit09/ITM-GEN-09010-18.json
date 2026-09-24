@@ -1,0 +1,119 @@
+{
+   "id": "ITM-GEN-09010-18",
+   "archetype_id": "BC-QA-09010",
+   "variant_id": "BC-QV-09010-01",
+   "format": "mcq",
+   "stem": {
+      "text": "A particle moves along the polar curve \\( r = 2 \\cos{\\left(2 \\theta \\right)} + 3 \\) so that its angle at time t is \\( \\theta(t) = \\frac{t}{2} \\). Using a calculator, find the rate at which the particle's distance from the origin is changing with respect to time at the instant when \\( \\theta = 0.4 \\). Show the setup for the calculation, and give the value correct to three decimal places.",
+      "setup_required": true,
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "numeric",
+      "mathjson": -1.4347121817990456,
+      "decimals": 3
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The distance from the origin is r, and by the chain rule \\( \\frac{dr}{dt} = \\frac{dr}{d\\theta}\\cdot\\frac{d\\theta}{dt} \\), with \\( \\frac{dr}{d\\theta} = - 4 \\sin{\\left(2 \\theta \\right)} \\).",
+         "point_type_id": "BC-PT-99049",
+         "rule_named": "chain rule"
+      },
+      {
+         "step": 2,
+         "text": "At \\( \\theta = 0.4 \\), a calculator in radian mode gives \\( \\frac{dr}{d\\theta} \\approx -2.869 \\).",
+         "mathjson": -2.869424363598091,
+         "point_type_id": "BC-PT-99005",
+         "rule_named": "evaluation at the stated angle"
+      },
+      {
+         "step": 3,
+         "text": "Since \\( \\theta(t) = \\frac{t}{2} \\), \\( \\frac{d\\theta}{dt} = \\frac{1}{2} \\). So \\( \\frac{dr}{dt} \\approx -2.869 \\cdot \\frac{1}{2} \\), which is about -1.435.",
+         "mathjson": -1.4347121817990456,
+         "point_type_id": "BC-PT-99004",
+         "rule_named": "multiply by the rate of the angle"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-09023",
+         "value": 0.0,
+         "derivation": "dr/dtheta evaluated with the calculator in degree mode and then multiplied by the rate of the angle",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "B",
+         "is_key": true,
+         "error_path": null,
+         "value": -1.435
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-09030",
+         "value": -2.869,
+         "derivation": "the rate of the angle left out of the chain rule product, so dr/dtheta alone is reported",
+         "mechanism": "chain_rule_omitted"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-99031",
+         "value": 2.197,
+         "derivation": "the chain rule product formed with r in place of dr/dtheta, so r times dtheta/dt is reported",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-13",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-04",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-16",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-09032",
+      "BC-SKL-09030",
+      "BC-SKL-09031"
+   ],
+   "parameter_draw": {
+      "constant": "3",
+      "amplitude": "2",
+      "frequency": "2",
+      "trig": "cos",
+      "angle": "2/5",
+      "angle_rate": "1/2",
+      "rate_form": "angle_function"
+   },
+   "predicted_success_probability": 0.2592,
+   "provenance": {
+      "template_id": "TPL-BC-QA-09010-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-09010:spec-1:item-18:try-18",
+      "parameter_draw": {
+         "constant": "3",
+         "amplitude": "2",
+         "frequency": "2",
+         "trig": "cos",
+         "angle": "2/5",
+         "angle_rate": "1/2",
+         "rate_form": "angle_function"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:54:03Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.2592
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

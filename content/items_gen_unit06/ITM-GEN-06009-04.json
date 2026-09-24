@@ -1,0 +1,232 @@
+{
+   "id": "ITM-GEN-06009-04",
+   "archetype_id": "BC-QA-06009",
+   "variant_id": "BC-QV-06009-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Find the exact value of \\( \\int_{0}^{2} - x e^{3 x}\\,dx \\).",
+      "command_verb": "evaluate"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Multiply",
+            -1,
+            [
+               "Rational",
+               5,
+               9
+            ],
+            [
+               "Exp",
+               6
+            ]
+         ],
+         [
+            "Rational",
+            -1,
+            9
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Let \\( u = - x \\) and \\( dv = e^{3 x}\\,dx \\), so \\( du = -dx \\) and \\( v = \\frac{e^{3 x}}{3} \\).",
+         "point_type_id": "BC-PT-99056",
+         "rule_named": "choice of u and dv"
+      },
+      {
+         "step": 2,
+         "text": "Integration by parts gives \\( - \\frac{x e^{3 x}}{3} - \\int - \\frac{e^{3 x}}{3}\\,dx \\).",
+         "point_type_id": "BC-PT-99057",
+         "rule_named": "integration by parts"
+      },
+      {
+         "step": 3,
+         "text": "So the integral is \\( \\left[- \\frac{x e^{3 x}}{3} + \\frac{e^{3 x}}{9}\\right]_{0}^{2} = - \\frac{5 e^{6}}{9} - \\frac{1}{9} \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               -1,
+               [
+                  "Rational",
+                  5,
+                  9
+               ],
+               [
+                  "Exp",
+                  6
+               ]
+            ],
+            [
+               "Rational",
+               -1,
+               9
+            ]
+         ],
+         "point_type_id": "BC-PT-99004",
+         "rule_named": "Fundamental Theorem of Calculus"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-06023",
+         "value": [
+            "Add",
+            [
+               "Rational",
+               1,
+               9
+            ],
+            [
+               "Multiply",
+               -1,
+               [
+                  "Rational",
+                  7,
+                  9
+               ],
+               [
+                  "Exp",
+                  6
+               ]
+            ]
+         ],
+         "derivation": "the minus sign before the integral of v du dropped",
+         "mechanism": "sign_error"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-99025",
+         "value": [
+            "Add",
+            [
+               "Rational",
+               -1,
+               9
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  9
+               ],
+               [
+                  "Exp",
+                  6
+               ]
+            ]
+         ],
+         "derivation": "the boundary term uv left out, so only the remaining integral is evaluated between the limits",
+         "mechanism": "wrong_limits"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-06022",
+         "value": [
+            "Multiply",
+            -1,
+            [
+               "Rational",
+               2,
+               3
+            ],
+            [
+               "Exp",
+               6
+            ]
+         ],
+         "derivation": "the two factors antidifferentiated separately, - \\frac{x^{2}}{2} times \\frac{e^{3 x}}{3}, and multiplied",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               -1,
+               [
+                  "Rational",
+                  5,
+                  9
+               ],
+               [
+                  "Exp",
+                  6
+               ]
+            ],
+            [
+               "Rational",
+               -1,
+               9
+            ]
+         ]
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06057",
+      "BC-SKL-06058",
+      "BC-SKL-06059",
+      "BC-SKL-06060",
+      "BC-SKL-06061",
+      "BC-SKL-06034"
+   ],
+   "parameter_draw": {
+      "multiplier": "-1",
+      "rate": "3",
+      "variable": "x",
+      "reach": "2",
+      "partner": "exponential",
+      "form": "definite"
+   },
+   "predicted_success_probability": 0.3318,
+   "provenance": {
+      "template_id": "TPL-BC-QA-06009-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-06009:spec-1:item-4:try-4",
+      "parameter_draw": {
+         "multiplier": "-1",
+         "rate": "3",
+         "variable": "x",
+         "reach": "2",
+         "partner": "exponential",
+         "form": "definite"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, run D",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:56Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.3318
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

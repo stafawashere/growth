@@ -1,0 +1,123 @@
+{
+   "id": "ITM-GEN-08002-02",
+   "archetype_id": "BC-QA-08002",
+   "variant_id": "BC-QV-08002-01",
+   "format": "mcq",
+   "stem": {
+      "text": "The mass of a bacteria culture is modeled by \\( W(t) = \\int_{0}^{t} \\left(\\frac{7 s}{\\sqrt{s^{2} + 5}} + 2\\right)\\,ds \\) milligrams, where t is measured in days for \\( 0 \\le t \\le 7 \\). Using a calculator, find the time t in the interval \\( 2 < t < 4 \\) at which the instantaneous rate of change of W equals the average rate of change of W over \\( 2 \\le t \\le 4 \\). Show the setup for the calculation, and give the value correct to three decimal places.",
+      "setup_required": true,
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "numeric",
+      "mathjson": 2.89376286907441,
+      "decimals": 3,
+      "units": "days"
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The average rate of change of W over the interval is \\( \\frac{W(4) - W(2)}{4 - 2} = \\frac{1}{2}\\int_{2}^{4} \\left(\\frac{7 s}{\\sqrt{s^{2} + 5}} + 2\\right)\\,ds \\), which a calculator gives as about 7.539 (more places are kept).",
+         "mathjson": 7.53901493234544,
+         "point_type_id": "BC-PT-99021",
+         "rule_named": "average rate of change"
+      },
+      {
+         "step": 2,
+         "text": "By the Fundamental Theorem of Calculus, \\( W'(t) = \\frac{7 t}{\\sqrt{t^{2} + 5}} + 2 \\). Set \\( W'(t) \\) equal to the average rate of change and solve on \\( 2 < t < 4 \\).",
+         "point_type_id": "BC-PT-99005",
+         "rule_named": "instantaneous rate set equal to the average rate"
+      },
+      {
+         "step": 3,
+         "text": "The calculator's solver gives one solution in the interval, \\( t = 2.894 \\).",
+         "mathjson": 2.89376286907441,
+         "point_type_id": "BC-PT-99004",
+         "rule_named": "numerical solve"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "value": 2.894
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-99019",
+         "value": 2.895,
+         "derivation": "the average rate of change rounded to two decimal places before solving",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-08002",
+         "value": 1.62,
+         "derivation": "the average rate of change taken over 0 to 4 instead of the stated interval, then solved on that wider interval",
+         "mechanism": "wrong_limits"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-99019",
+         "value": 2.84,
+         "derivation": "the average rate of change rounded to one decimal place before solving",
+         "mechanism": "algebra_slip"
+      }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-05",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-03",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-16",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-08004",
+      "BC-SKL-08003"
+   ],
+   "parameter_draw": {
+      "model": "radical",
+      "coefficient": "7",
+      "linear_rate": "2",
+      "scale": "5",
+      "start": "2",
+      "length": "2",
+      "context": "bacteria",
+      "framing": "context",
+      "presentation": "accumulation"
+   },
+   "predicted_success_probability": 0.4134,
+   "provenance": {
+      "template_id": "TPL-BC-QA-08002-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-08002:spec-1:item-2:try-2",
+      "parameter_draw": {
+         "model": "radical",
+         "coefficient": "7",
+         "linear_rate": "2",
+         "scale": "5",
+         "start": "2",
+         "length": "2",
+         "context": "bacteria",
+         "framing": "context",
+         "presentation": "accumulation"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, run F",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T13:02:05Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.5
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

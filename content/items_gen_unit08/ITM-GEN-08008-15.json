@@ -1,0 +1,126 @@
+{
+   "id": "ITM-GEN-08008-15",
+   "archetype_id": "BC-QA-08008",
+   "variant_id": "BC-QV-08008-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = - 3 x^{2} + 16 x - 19 \\) and \\( g(x) = - 2 x - 4 \\). Let R be the region bounded by the graphs of f and g. Find the exact area of R.",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 32
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Setting \\( f(x) = g(x) \\) gives \\( - 3 x^{2} + 18 x - 15 = 0 \\), so the curves meet at \\( x = 1 \\) and \\( x = 5 \\), and f is above g between them.",
+         "point_type_id": "BC-PT-99059",
+         "rule_named": "upper minus lower"
+      },
+      {
+         "step": 2,
+         "text": "The area is \\( \\int_{1}^{5} \\left(- 3 x^{2} + 18 x - 15\\right)\\,dx \\).",
+         "point_type_id": "BC-PT-99001",
+         "rule_named": "area between curves"
+      },
+      {
+         "step": 3,
+         "text": "An antiderivative of the integrand is \\( - x^{3} + 9 x^{2} - 15 x \\).",
+         "point_type_id": "BC-PT-99003",
+         "rule_named": "power rule"
+      },
+      {
+         "step": 4,
+         "text": "Evaluating from \\( 1 \\) to \\( 5 \\), the area is \\( 32 \\).",
+         "mathjson": 32,
+         "point_type_id": "BC-PT-99004",
+         "rule_named": "Fundamental Theorem of Calculus"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-99009",
+         "value": 0,
+         "derivation": "g substituted into f(x) - g(x) without parentheses, so the constant term of g is added instead of subtracted",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-99011",
+         "value": -8,
+         "derivation": "the area under the upper curve alone, the integral of f from the left limit to the right limit",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-08020",
+         "value": -32,
+         "derivation": "the integrand written as g(x) - f(x), lower minus upper",
+         "mechanism": "reversed_quantities"
+      },
+      {
+         "id": "D",
+         "is_key": true,
+         "error_path": null,
+         "value": 32
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-08018",
+      "BC-SKL-08019",
+      "BC-SKL-08020",
+      "BC-SKL-08021",
+      "BC-SKL-08022"
+   ],
+   "parameter_draw": {
+      "left": "1",
+      "width": "4",
+      "bulge": "3",
+      "slope": "-2",
+      "intercept": "-4",
+      "lift": "1",
+      "presentation": "formula",
+      "limits": "intersections"
+   },
+   "predicted_success_probability": 0.3318,
+   "provenance": {
+      "template_id": "TPL-BC-QA-08008-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-08008:spec-1:item-15:try-15",
+      "parameter_draw": {
+         "left": "1",
+         "width": "4",
+         "bulge": "3",
+         "slope": "-2",
+         "intercept": "-4",
+         "lift": "1",
+         "presentation": "formula",
+         "limits": "intersections"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, run F",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T13:02:05Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.3318
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

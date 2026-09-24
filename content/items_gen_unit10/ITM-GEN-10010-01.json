@@ -1,0 +1,357 @@
+{
+   "id": "ITM-GEN-10010-01",
+   "archetype_id": "BC-QA-10010",
+   "variant_id": "BC-QV-10010-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Let f be the function with \\( f(1) = -4 \\) whose derivative satisfies \\( f^{\\prime}(x) = -x f(x) + 2 \\). Find the Taylor polynomial of degree 3 for f about \\( x = 1 \\).",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Multiply",
+            6,
+            "x"
+         ],
+         [
+            "Multiply",
+            -1,
+            [
+               "Rational",
+               5,
+               3
+            ],
+            [
+               "Power",
+               [
+                  "Add",
+                  "x",
+                  -1
+               ],
+               3
+            ]
+         ],
+         [
+            "Negate",
+            [
+               "Power",
+               [
+                  "Add",
+                  "x",
+                  -1
+               ],
+               2
+            ]
+         ],
+         -10
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Substituting \\( x = 1 \\) and \\( f(1) = -4 \\) into the relation gives \\( f^{\\prime}(1) = 6 \\).",
+         "mathjson": 6,
+         "point_type_id": "BC-PT-99027",
+         "rule_named": "evaluate the relation"
+      },
+      {
+         "step": 2,
+         "text": "By the product rule, \\( f^{\\prime\\prime}(x) = -f(x) - x f^{\\prime}(x) \\), so \\( f^{\\prime\\prime}(1) = -2 \\).",
+         "mathjson": -2,
+         "point_type_id": "BC-PT-99022",
+         "rule_named": "product rule"
+      },
+      {
+         "step": 3,
+         "text": "Differentiating again, \\( f^{\\prime\\prime\\prime}(x) = -2 f^{\\prime}(x) - x f^{\\prime\\prime}(x) \\), so \\( f^{\\prime\\prime\\prime}(1) = -10 \\).",
+         "mathjson": -10,
+         "point_type_id": "BC-PT-99027",
+         "rule_named": "product rule"
+      },
+      {
+         "step": 4,
+         "text": "Dividing each value by the matching factorial, the polynomial is \\( -4 + 6 \\left(x - 1\\right) - \\left(x - 1\\right)^{2} - \\frac{5}{3} \\left(x - 1\\right)^{3} \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               6,
+               "x"
+            ],
+            [
+               "Multiply",
+               -1,
+               [
+                  "Rational",
+                  5,
+                  3
+               ],
+               [
+                  "Power",
+                  [
+                     "Add",
+                     "x",
+                     -1
+                  ],
+                  3
+               ]
+            ],
+            [
+               "Negate",
+               [
+                  "Power",
+                  [
+                     "Add",
+                     "x",
+                     -1
+                  ],
+                  2
+               ]
+            ],
+            -10
+         ],
+         "point_type_id": "BC-PT-99035",
+         "rule_named": "Taylor polynomial"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               6,
+               "x"
+            ],
+            [
+               "Multiply",
+               -1,
+               [
+                  "Rational",
+                  5,
+                  3
+               ],
+               [
+                  "Power",
+                  [
+                     "Add",
+                     "x",
+                     -1
+                  ],
+                  3
+               ]
+            ],
+            [
+               "Negate",
+               [
+                  "Power",
+                  [
+                     "Add",
+                     "x",
+                     -1
+                  ],
+                  2
+               ]
+            ],
+            -10
+         ]
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-10030",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               6,
+               "x"
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  2,
+                  3
+               ],
+               [
+                  "Power",
+                  [
+                     "Add",
+                     "x",
+                     -1
+                  ],
+                  4
+               ]
+            ],
+            [
+               "Multiply",
+               -1,
+               [
+                  "Rational",
+                  5,
+                  3
+               ],
+               [
+                  "Power",
+                  [
+                     "Add",
+                     "x",
+                     -1
+                  ],
+                  3
+               ]
+            ],
+            [
+               "Negate",
+               [
+                  "Power",
+                  [
+                     "Add",
+                     "x",
+                     -1
+                  ],
+                  2
+               ]
+            ],
+            -10
+         ],
+         "derivation": "the polynomial carried one degree past 3",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-10028",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               6,
+               "x"
+            ],
+            [
+               "Power",
+               [
+                  "Add",
+                  "x",
+                  -1
+               ],
+               3
+            ],
+            [
+               "Multiply",
+               -1,
+               3,
+               [
+                  "Power",
+                  [
+                     "Add",
+                     "x",
+                     -1
+                  ],
+                  2
+               ]
+            ],
+            -10
+         ],
+         "derivation": "the product rule skipped on alpha x f(x), so each new derivative kept only the alpha x times the previous derivative",
+         "mechanism": "product_rule_omitted"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-10029",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               6,
+               "x"
+            ],
+            [
+               "Multiply",
+               -1,
+               10,
+               [
+                  "Power",
+                  [
+                     "Add",
+                     "x",
+                     -1
+                  ],
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               -1,
+               2,
+               [
+                  "Power",
+                  [
+                     "Add",
+                     "x",
+                     -1
+                  ],
+                  2
+               ]
+            ],
+            -10
+         ],
+         "derivation": "each derivative value placed as the coefficient with no factorial in the denominator",
+         "mechanism": "algebra_slip"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10043",
+      "BC-SKL-10044",
+      "BC-SKL-10046"
+   ],
+   "parameter_draw": {
+      "degree": "3",
+      "centre": "1",
+      "alpha": "-1",
+      "beta": "2",
+      "start_value": "-4"
+   },
+   "predicted_success_probability": 0.4134,
+   "provenance": {
+      "template_id": "TPL-BC-QA-10010-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-10010:spec-1:item-1:try-1",
+      "parameter_draw": {
+         "degree": "3",
+         "centre": "1",
+         "alpha": "-1",
+         "beta": "2",
+         "start_value": "-4"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:58:54Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.4134
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

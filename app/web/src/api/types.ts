@@ -24,6 +24,50 @@ export interface ServedStep {
    text: string;
 }
 
+/* app/generation/kit.py figure, table_figure, label, point_mark and segment_mark, as
+   prompts/generator/figure_spec_v1.md describes them. A point is [x, y] in the figure's own
+   coordinates, y up. */
+export type FigurePoint = [number, number];
+
+export type GraphFigureKind =
+   | "function_graph"
+   | "region"
+   | "parametric_curve"
+   | "polar_curve"
+   | "vector_diagram"
+   | "number_line"
+   | "slope_field"
+   | "geometric_diagram";
+
+export type FigureMark =
+   | { type: "point" | "open_point"; at: FigurePoint }
+   | { type: "segment"; from: FigurePoint; to: FigurePoint; style: "solid" | "dashed" };
+
+export type FigureLabel = { text: string; anchor: FigurePoint; placement: "inside" };
+
+export type GraphFigureSpec = {
+   kind: GraphFigureKind;
+   domain: [number, number];
+   range: [number, number];
+   curves: Array<{ segments: FigurePoint[][]; style: string }>;
+   fills: Array<{ points: FigurePoint[] }>;
+   marks: FigureMark[];
+   labels: FigureLabel[];
+   gridlines: boolean;
+   axis_titles: string[];
+   alt: string;
+};
+
+export type TableFigureSpec = {
+   kind: "table";
+   columns: string[];
+   rows: string[][];
+   labels: FigureLabel[];
+   alt: string;
+};
+
+export type FigureSpec = GraphFigureSpec | TableFigureSpec;
+
 /* A queue slot as sessions.queue stores it: app/runtime/bank.py _as_item_dict plus the fields
    app/engine/select.py dress_item writes onto it. */
 export interface QueueSlot {
@@ -33,13 +77,14 @@ export interface QueueSlot {
    snapshot_id: string | null;
    parameter_draw: unknown;
    stem: string;
-   figure_spec: unknown;
+   figure_spec: FigureSpec | null;
    options: ServedOption[] | null;
    calculator_status: string | null;
    representation: string | null;
    difficulty_settings: unknown;
    skills: string[] | null;
    status: string;
+   requires_choice?: boolean;
    stage: FadingStage;
    format: ServedFormat;
    is_probe: boolean;
@@ -499,13 +544,14 @@ export interface ProbeServedItem {
    snapshot_id: string | null;
    parameter_draw: unknown;
    stem: string;
-   figure_spec: unknown;
+   figure_spec: FigureSpec | null;
    options: ServedOption[] | null;
    calculator_status: string | null;
    representation: string | null;
    difficulty_settings: unknown;
    skills: string[] | null;
    status: string;
+   requires_choice?: boolean;
    format: ServedFormat;
 }
 /* app/api/routes/frq.py: the free-response unit check, capture, read-back and gradings. */

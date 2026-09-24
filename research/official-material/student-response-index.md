@@ -1,6 +1,6 @@
 ---
 title: Student Response Index
-research_date: 2026-09-19
+research_date: 2026-09-24
 status: generated
 purpose: Every cached Student Samples and Commentaries document, one per question per year, with page counts and the number of image-only (handwritten) pages that were quarantined from text extraction.
 ---

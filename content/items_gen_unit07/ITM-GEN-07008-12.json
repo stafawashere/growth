@@ -1,0 +1,183 @@
+{
+   "id": "ITM-GEN-07008-12",
+   "archetype_id": "BC-QA-07008",
+   "variant_id": "BC-QV-07008-01",
+   "format": "mcq",
+   "stem": {
+      "text": "The number of insects N in a colony changes at a rate proportional to N, where t is measured in weeks. At \\( t = 0 \\), \\( N = 280 \\) insects, and at \\( t = 1 \\), \\( N = 1120 \\) insects. Find an expression for \\( N(t) \\).",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Multiply",
+         280,
+         [
+            "Exp",
+            [
+               "Multiply",
+               "t",
+               [
+                  "Ln",
+                  4
+               ]
+            ]
+         ]
+      ],
+      "units": "insects"
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The model is \\( \\frac{dN}{dt} = kN \\). Separating and integrating gives \\( \\ln|N| = kt + C \\), so \\( N = N_0 e^{kt} \\), and the value at t = 0 gives \\( N_0 = 280 \\).",
+         "rule_named": "separation of variables for proportional growth"
+      },
+      {
+         "step": 2,
+         "text": "The second value gives \\( 1120 = 280 e^{1k} \\), so \\( k = \\ln{\\left(4 \\right)} \\).",
+         "rule_named": "constant from a second data pair"
+      },
+      {
+         "step": 3,
+         "text": "Therefore \\( N(t) = 280 e^{t \\ln{\\left(4 \\right)}} \\) insects.",
+         "mathjson": [
+            "Multiply",
+            280,
+            [
+               "Exp",
+               [
+                  "Multiply",
+                  "t",
+                  [
+                     "Ln",
+                     4
+                  ]
+               ]
+            ]
+         ],
+         "rule_named": "particular solution"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Multiply",
+            280,
+            [
+               "Exp",
+               [
+                  "Multiply",
+                  "t",
+                  [
+                     "Ln",
+                     4
+                  ]
+               ]
+            ]
+         ]
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-07034",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               840,
+               "t"
+            ],
+            280
+         ],
+         "derivation": "a straight-line model through the two data values, a constant rate of change instead of a constant relative rate",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-07036",
+         "value": [
+            "Multiply",
+            280,
+            [
+               "Exp",
+               [
+                  "Multiply",
+                  "t",
+                  [
+                     "Ln",
+                     1120
+                  ]
+               ]
+            ]
+         ],
+         "derivation": "k read from the later value alone, 1120 = e^(1k), with the initial value left out",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-07001",
+         "value": [
+            "Multiply",
+            280,
+            [
+               "Exp",
+               "t"
+            ]
+         ],
+         "derivation": "the rate written equal to N with no constant, so k is 1 and the second value is never used",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-05",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-07034",
+      "BC-SKL-07035",
+      "BC-SKL-07036",
+      "BC-SKL-07037",
+      "BC-SKL-07038"
+   ],
+   "parameter_draw": {
+      "change": "growth",
+      "factor": "4",
+      "initial": "280",
+      "elapsed": "1",
+      "context": "insects"
+   },
+   "predicted_success_probability": 0.3318,
+   "provenance": {
+      "template_id": "TPL-BC-QA-07008-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-07008:spec-1:item-12:try-12",
+      "parameter_draw": {
+         "change": "growth",
+         "factor": "4",
+         "initial": "280",
+         "elapsed": "1",
+         "context": "insects"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:54:01Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.2592
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

@@ -1,0 +1,116 @@
+{
+   "id": "ITM-GEN-01006-15",
+   "archetype_id": "BC-QA-01006",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let f be the function defined by \\( f(x) = \\begin{cases} \\frac{- 2 x^{2} + 15 x - 27}{x - 3}, & x \\ne 3 \\\\ 1, & x = 3 \\end{cases} \\). Determine whether f is continuous at \\( x = 3 \\), and justify your answer.",
+      "command_verb": "determine"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "f is not continuous at \\( x = 3 \\), because the limit of f(x) there is 3 while f(3) = 1."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The function value at the boundary is \\( f(3) = 1 \\), from the second line of the rule.",
+         "rule_named": "evaluate the function at the input"
+      },
+      {
+         "step": 2,
+         "text": "For \\( x \\ne 3 \\) the quotient simplifies to \\( 9 - 2 x \\), so \\( \\lim_{x \\to 3} f(x) = 3 \\) from both sides.",
+         "rule_named": "limit after cancelling"
+      },
+      {
+         "step": 3,
+         "text": "The limit exists and equals 3, but \\( f(3) = 1 \\), so the limit does not equal the function value and f is not continuous at \\( x = 3 \\).",
+         "rule_named": "the limit must equal the function value"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-01001",
+         "label": "f is continuous at \\( x = 3 \\), because the limit of f(x) there is 1, which equals f(3).",
+         "derivation": "the function value at the input reported as the limit, so the limit and the value appear to agree",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": true,
+         "error_path": null,
+         "label": "f is not continuous at \\( x = 3 \\), because the limit of f(x) there is 3 while f(3) = 1."
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-01015",
+         "label": "f is continuous at \\( x = 3 \\), because the limits from the left and from the right are both 3.",
+         "derivation": "continuity concluded from the agreement of the one sided limits, with the function value never compared",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-01017",
+         "label": "f is not continuous at \\( x = 3 \\), because the quotient gives 0/0 at \\( x = 3 \\), so f(3) is undefined.",
+         "derivation": "x = 3 substituted into the quotient, which applies only for x not equal to 3, giving 0/0",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-17",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-01043",
+      "BC-SKL-01044",
+      "BC-SKL-01045",
+      "BC-SKL-01042",
+      "BC-SKL-01023"
+   ],
+   "parameter_draw": {
+      "boundary": "3",
+      "left_limit": "3",
+      "right_limit": "-1",
+      "point_value": "1",
+      "left_slope": "-2",
+      "right_slope": "3",
+      "closed_side": "left",
+      "break_kind": "value"
+   },
+   "predicted_success_probability": 0.2592,
+   "provenance": {
+      "template_id": "TPL-BC-QA-01006-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-01006:spec-1:item-15:try-15",
+      "parameter_draw": {
+         "boundary": "3",
+         "left_limit": "3",
+         "right_limit": "-1",
+         "point_value": "1",
+         "left_slope": "-2",
+         "right_slope": "3",
+         "closed_side": "left",
+         "break_kind": "value"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T13:02:04Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.1978
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

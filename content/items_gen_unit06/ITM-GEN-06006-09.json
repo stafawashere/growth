@@ -1,0 +1,124 @@
+{
+   "id": "ITM-GEN-06006-09",
+   "archetype_id": "BC-QA-06006",
+   "variant_id": "BC-QV-06006-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Grain is loaded into a silo at a rate modeled by \\( E(t) = 2 \\sin{\\left(\\frac{t^{2}}{4} \\right)} + 9 \\) tons per hour and is unloaded from it at a rate modeled by \\( L(t) = 2 \\cos{\\left(\\frac{t}{2} \\right)} + 3 \\) tons per hour, for \\( 0 \\le t \\le 3.5 \\), where t is measured in hours. Using a calculator, find the net change in the amount in the silo from t = 0 to t = 3.5. Show the setup for the calculation, and give the value correct to three decimal places.",
+      "setup_required": true,
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "numeric",
+      "mathjson": 20.639824532330856,
+      "decimals": 3,
+      "units": "tons"
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The net rate is inflow minus outflow, \\( E(t) - L(t) \\), so the answer is \\( \\int_{0}^{3.5} \\left(E(t) - L(t)\\right)\\,dt \\).",
+         "point_type_id": "BC-PT-99001",
+         "rule_named": "net rate as inflow minus outflow"
+      },
+      {
+         "step": 2,
+         "text": "With a calculator in radian mode, \\( \\int_{0}^{3.5} \\left(E(t) - L(t)\\right)\\,dt \\) is approximately 20.640 (more places are kept).",
+         "mathjson": 20.639824532330856,
+         "rule_named": "numerical integration"
+      },
+      {
+         "step": 3,
+         "text": "The net change is about 20.640 tons, positive for an increase and negative for a decrease.",
+         "rule_named": "net change"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "value": 20.64
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-99009",
+         "value": 28.512,
+         "derivation": "L(t) substituted without parentheses, so only its constant term is subtracted and its cosine term is added",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-08013",
+         "value": 49.512,
+         "derivation": "the inflow and outflow rates added instead of subtracted",
+         "mechanism": "sign_error"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-06032",
+         "value": 14.126,
+         "derivation": "the integral computed with the calculator in degree mode",
+         "mechanism": "algebra_slip"
+      }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-05",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-16",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06039",
+      "BC-SKL-06037",
+      "BC-SKL-06036",
+      "BC-SKL-08013",
+      "BC-SKL-08016",
+      "BC-SKL-08012"
+   ],
+   "parameter_draw": {
+      "inflow_base": "9",
+      "inflow_swing": "2",
+      "stretch": "4",
+      "outflow_base": "3",
+      "outflow_swing": "2",
+      "horizon": "7/2",
+      "initial": "25",
+      "context": "silo",
+      "ask": "change"
+   },
+   "predicted_success_probability": 0.148,
+   "provenance": {
+      "template_id": "TPL-BC-QA-06006-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-06006:spec-1:item-9:try-9",
+      "parameter_draw": {
+         "inflow_base": "9",
+         "inflow_swing": "2",
+         "stretch": "4",
+         "outflow_base": "3",
+         "outflow_swing": "2",
+         "horizon": "7/2",
+         "initial": "25",
+         "context": "silo",
+         "ask": "change"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, run D",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:56Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.1091
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

@@ -8,7 +8,10 @@ with a deterministic seed so the same database and seed always produce the same 
 sample file docs/operator/key-audit.md describes: a JSON array of the sampled item ids, ready to
 hand to tools/check_audit_verdicts.py and to Settings.key_audit_sample_path.
 
-Usage: python3 tools/draw_key_audit_sample.py <db_path> <content_root> <out_sample.json> [seed]
+Usage: python3 tools/draw_key_audit_sample.py <db_path> <content_root> <out_sample.json> [seed] [--generated]
+
+--generated restricts the draw to items instantiated from a template (P4's key audit, which
+measures the generator against the P1 baseline), read from the provenance ingest stored.
 """
 import json
 import sys
@@ -27,7 +30,7 @@ from app.runtime.bank import PUBLISHED_STATUS
 DEFAULT_SEED = 2026
 
 
-def published_candidates(engine, snapshot):
+def published_candidates(engine, snapshot, generated_only=False):
    """Published is the bank's status, verified (app/runtime/bank.py). Only the operator's own
    items are candidates: an agent draft is served under the operator's ruling of 2026-09-23 but
    gate 29 audits operator provenance alone.
@@ -44,8 +47,11 @@ def published_candidates(engine, snapshot):
    for item_id, archetype_id, calculator_status, provenance in rows:
       archetype = snapshot.archetypes.get(archetype_id)
       has_archetype = archetype is not None
-      is_operator_item = json.loads(provenance).get("model") == OPERATOR_MODEL
-      is_candidate = has_archetype and is_operator_item
+      stored = json.loads(provenance)
+      is_operator_item = stored.get("model") == OPERATOR_MODEL
+      is_generated = stored.get("template_id") is not None
+      is_in_scope = is_generated or not generated_only
+      is_candidate = has_archetype and is_operator_item and is_in_scope
 
       if not is_candidate:
          continue
@@ -60,11 +66,13 @@ def published_candidates(engine, snapshot):
 
 
 def main(argv):
+   generated_only = "--generated" in argv
+   argv = [argument for argument in argv if argument != "--generated"]
    takes_the_needed_arguments = len(argv) in (4, 5)
 
    if not takes_the_needed_arguments:
       print(
-         "usage: python3 tools/draw_key_audit_sample.py <db_path> <content_root> <out_sample.json> [seed]",
+         "usage: python3 tools/draw_key_audit_sample.py <db_path> <content_root> <out_sample.json> [seed] [--generated]",
          file=sys.stderr,
       )
 
@@ -75,7 +83,7 @@ def main(argv):
 
    engine = make_engine(db_path)
    snapshot = load_snapshot(content_root)
-   candidates = published_candidates(engine, snapshot)
+   candidates = published_candidates(engine, snapshot, generated_only)
 
    try:
       sample = draw_key_audit_sample(

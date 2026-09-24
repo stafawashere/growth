@@ -1,0 +1,116 @@
+{
+   "id": "ITM-GEN-05012-01",
+   "archetype_id": "BC-QA-05012",
+   "variant_id": "BC-QV-05012-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Consider the curve given by \\( \\left(y - 3\\right)^{2} = \\left(- x - 8\\right)^{2}\\left(- x - 5\\right) \\). Find all points on the curve at which the tangent line is horizontal.",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "The tangent line is horizontal only at the points \\( (-6, 5) \\) and \\( (-6, 1) \\)."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Differentiating implicitly, \\( 2\\left(y - 3\\right)\\frac{dy}{dx} = - 3 \\left(x + 6\\right) \\left(x + 8\\right) \\), so \\( \\frac{dy}{dx} = - \\frac{3 \\left(x + 6\\right) \\left(x + 8\\right)}{2 y - 6} \\).",
+         "rule_named": "implicit differentiation"
+      },
+      {
+         "step": 2,
+         "text": "The numerator is zero where \\( x = -8 \\) or \\( x = -6 \\). At \\( x = -8 \\) the curve gives \\( y = 3 \\), where the denominator is also zero, so no horizontal tangent is decided there.",
+         "rule_named": "numerator zero with a nonzero denominator"
+      },
+      {
+         "step": 3,
+         "text": "At \\( x = -6 \\) the relation gives \\( \\left(y - 3\\right)^{2} = 4 \\), so \\( y = 5 \\) or \\( y = 1 \\), and the denominator is not zero at either.",
+         "rule_named": "solve the relation and the condition together"
+      },
+      {
+         "step": 4,
+         "text": "The tangent line is horizontal only at the points \\( (-6, 5) \\) and \\( (-6, 1) \\).",
+         "rule_named": "report both coordinates"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "label": "The tangent line is horizontal only at the points \\( (-6, 5) \\) and \\( (-6, 1) \\)."
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-05057",
+         "label": "The tangent line is horizontal only at the points \\( (-8, 3) \\), \\( (-6, 5) \\) and \\( (-6, 1) \\).",
+         "derivation": "every zero of the numerator kept, including (-8, 3) where the denominator is zero too",
+         "mechanism": "theorem_condition_ignored"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-05059",
+         "label": "The tangent line is horizontal only where \\( x = -6 \\).",
+         "derivation": "the input x = -6 reported alone where points were asked for",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-03012",
+         "label": "The tangent line is horizontal only at the point \\( (-5, 3) \\).",
+         "derivation": "the denominator set to zero instead of the numerator, which gives the vertical tangent",
+         "mechanism": "reversed_quantities"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-05058",
+      "BC-SKL-05059",
+      "BC-SKL-05060",
+      "BC-SKL-05061",
+      "BC-SKL-05062",
+      "BC-SKL-05063"
+   ],
+   "parameter_draw": {
+      "across": "-8",
+      "up": "3",
+      "loop": "q1s1",
+      "facing": "-1",
+      "derivative": "derive"
+   },
+   "predicted_success_probability": 0.4134,
+   "provenance": {
+      "template_id": "TPL-BC-QA-05012-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-05012:spec-1:item-1:try-1",
+      "parameter_draw": {
+         "across": "-8",
+         "up": "3",
+         "loop": "q1s1",
+         "facing": "-1",
+         "derivative": "derive"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, run D",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:56Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": true,
+      "requested_success_probability": 0.4134
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

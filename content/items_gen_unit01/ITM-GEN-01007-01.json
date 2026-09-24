@@ -1,0 +1,115 @@
+{
+   "id": "ITM-GEN-01007-01",
+   "archetype_id": "BC-QA-01007",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = \\frac{\\left(- 3 x - 12\\right) \\left(x - 3\\right)}{x^{2} \\left(x + 4\\right)} \\). Determine whether f is continuous at \\( x = 0 \\). If it is not, classify the discontinuity as removable, a jump, or a vertical asymptote. Justify your answer.",
+      "command_verb": "classify"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "The discontinuity at \\( x = 0 \\) is a vertical asymptote, because f(x) is unbounded as x approaches 0."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Factor and divide out the common factor: for \\( x \\ne -4 \\), \\( f(x) = \\frac{9 - 3 x}{x^{2}} \\).",
+         "rule_named": "factor and cancel"
+      },
+      {
+         "step": 2,
+         "text": "Near \\( x = 0 \\) the numerator of the reduced expression approaches 9 and the denominator approaches 0 through positive values, so \\( \\lim_{x \\to 0} f(x) = \\infty \\).",
+         "rule_named": "sign analysis of the reduced quotient"
+      },
+      {
+         "step": 3,
+         "text": "f is unbounded near the input, so the discontinuity is a vertical asymptote.",
+         "rule_named": "classification from the limit"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "label": "The discontinuity at \\( x = 0 \\) is a vertical asymptote, because f(x) is unbounded as x approaches 0."
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-01003",
+         "label": "The discontinuity at \\( x = 0 \\) is a jump, because f is undefined there so the limit does not exist.",
+         "derivation": "the limit declared nonexistent because f is undefined at the input, so the break called a jump",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-01020",
+         "label": "The discontinuity at \\( x = 0 \\) is removable, because the limit of f(x) there exists and equals \\( \\infty \\).",
+         "derivation": "the statement that the limit is infinite read as saying the limit exists, so the break called removable",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-01015",
+         "label": "There is no discontinuity at \\( x = 0 \\), because the limits from the left and from the right are equal.",
+         "derivation": "agreeing one sided limits, both infinite, taken as continuity",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-10",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-01039",
+      "BC-SKL-01040",
+      "BC-SKL-01041",
+      "BC-SKL-01057"
+   ],
+   "parameter_draw": {
+      "coefficient": "-3",
+      "cancelled_root": "-4",
+      "pole": "0",
+      "zero": "3",
+      "form": "factored",
+      "target": "asymptote"
+   },
+   "predicted_success_probability": 0.3318,
+   "provenance": {
+      "template_id": "TPL-BC-QA-01007-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-01007:spec-1:item-1:try-1",
+      "parameter_draw": {
+         "coefficient": "-3",
+         "cancelled_root": "-4",
+         "pole": "0",
+         "zero": "3",
+         "form": "factored",
+         "target": "asymptote"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:48Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": true,
+      "requested_success_probability": 0.3318
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

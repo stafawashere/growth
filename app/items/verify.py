@@ -85,6 +85,7 @@ def run_bounded(function, arguments, timeout_s, unsettled):
    except _Timeout:
       return unsettled
    finally:
+      signal.signal(signal.SIGALRM, signal.SIG_IGN)
       signal.setitimer(signal.ITIMER_REAL, 0)
       signal.signal(signal.SIGALRM, previous_handler)
 

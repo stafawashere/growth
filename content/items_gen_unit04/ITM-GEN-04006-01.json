@@ -1,0 +1,122 @@
+{
+   "id": "ITM-GEN-04006-01",
+   "archetype_id": "BC-QA-04006",
+   "variant_id": "BC-QV-04006-01",
+   "format": "mcq",
+   "stem": {
+      "text": "A crystal grows in the shape of a cube, and each edge lengthens at a constant rate of 8 meters per minute. At the instant when each edge is 8 meters long, find the rate at which the volume of the crystal is increasing. Give an exact answer with units.",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 1536,
+      "units": "cubic meters per minute"
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The volume is \\( V = s^{3} \\), with s the edge length, both depending on time.",
+         "rule_named": "relating equation"
+      },
+      {
+         "step": 2,
+         "text": "Differentiate with respect to time: \\( \\frac{dV}{dt} = 3s^{2} \\frac{ds}{dt} \\).",
+         "point_type_id": "BC-PT-99023",
+         "rule_named": "chain rule"
+      },
+      {
+         "step": 3,
+         "text": "At the instant, s = 8 and \\( \\frac{ds}{dt} = 8 \\), so \\( \\frac{dV}{dt} = 1536 \\).",
+         "mathjson": 1536,
+         "point_type_id": "BC-PT-99004",
+         "rule_named": "substitute after differentiating"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-04017",
+         "value": 192,
+         "derivation": "the volume differentiated with respect to the edge, dV/ds = 3 s squared, and the chain rule factor ds/dt never applied",
+         "mechanism": "chain_rule_omitted"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-04016",
+         "value": 768,
+         "derivation": "the surface area 6 s squared used as the relating equation for the volume, giving 12 s ds/dt",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-04015",
+         "value": 8,
+         "derivation": "the supplied rate ds/dt reported as the requested rate dV/dt",
+         "mechanism": "reversed_quantities"
+      },
+      {
+         "id": "D",
+         "is_key": true,
+         "error_path": null,
+         "value": 1536
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-05",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-04017",
+      "BC-SKL-04018",
+      "BC-SKL-04019",
+      "BC-SKL-04021",
+      "BC-SKL-04023",
+      "BC-SKL-04024",
+      "BC-SKL-04025",
+      "BC-SKL-04026",
+      "BC-SKL-04027"
+   ],
+   "parameter_draw": {
+      "shape": "cube",
+      "size": "8",
+      "rate": "8",
+      "ratio": "3",
+      "leg": "short",
+      "length_unit": "meter",
+      "time_unit": "minute"
+   },
+   "predicted_success_probability": 0.5,
+   "provenance": {
+      "template_id": "TPL-BC-QA-04006-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-04006:spec-1:item-1:try-2",
+      "parameter_draw": {
+         "shape": "cube",
+         "size": "8",
+         "rate": "8",
+         "ratio": "3",
+         "leg": "short",
+         "length_unit": "meter",
+         "time_unit": "minute"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:53Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.4134
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

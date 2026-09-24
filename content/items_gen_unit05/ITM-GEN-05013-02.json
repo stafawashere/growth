@@ -1,0 +1,121 @@
+{
+   "id": "ITM-GEN-05013-02",
+   "archetype_id": "BC-QA-05013",
+   "variant_id": "BC-QV-05013-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( g(x) = 2 x^{3} - 12 x^{2} + 18 x \\). Using the second derivative test where it applies, determine whether g has a relative maximum, a relative minimum, or neither at \\( x = 3 \\) and at \\( x = -4 \\).",
+      "command_verb": "determine"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "At \\( x = 3 \\), g has a relative minimum because \\( g'(3) = 0 \\) and \\( g''(3) = 12 > 0 \\); at \\( x = -4 \\), g has no relative extremum because \\( g'(-4) = 210 \\ne 0 \\)."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Differentiate: \\( g'(x) = 6 x^{2} - 24 x + 18 \\), which factors as \\( g'(x) = 6 \\left(x - 3\\right) \\left(x - 1\\right) \\).",
+         "rule_named": "power rule"
+      },
+      {
+         "step": 2,
+         "text": "\\( g'(3) = 0 \\), so \\( x = 3 \\) is a critical point, while \\( g'(-4) = 210 \\ne 0 \\), so \\( x = -4 \\) is not.",
+         "rule_named": "critical points are zeros of the first derivative"
+      },
+      {
+         "step": 3,
+         "text": "\\( g''(x) = 12 x - 24 \\), and \\( g''(3) = 12 > 0 \\).",
+         "mathjson": 12,
+         "rule_named": "second derivative evaluated at the critical point"
+      },
+      {
+         "step": 4,
+         "text": "By the second derivative test g has a relative minimum at \\( x = 3 \\). At \\( x = -4 \\) the first derivative is not zero, so g has no relative extremum there and the test does not apply.",
+         "rule_named": "second derivative test"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "label": "At \\( x = 3 \\), g has a relative minimum because \\( g'(3) = 0 \\) and \\( g''(3) = 12 > 0 \\); at \\( x = -4 \\), g has no relative extremum because \\( g'(-4) = 210 \\ne 0 \\)."
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-05036",
+         "label": "At \\( x = 3 \\), g has a relative minimum because \\( g'(3) = 0 \\) and \\( g''(3) = 12 > 0 \\); at \\( x = -4 \\), g has a relative maximum because \\( g''(-4) = -72 < 0 \\).",
+         "derivation": "the second derivative test also applied at x = -4, where the first derivative is not zero, and the sign of the second derivative there read as a classification",
+         "mechanism": "theorem_condition_ignored"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-05037",
+         "label": "At \\( x = 3 \\), g has a relative maximum because \\( g'(3) = 0 \\) and \\( g''(3) = 12 > 0 \\); at \\( x = -4 \\), g has no relative extremum because \\( g'(-4) = 210 \\ne 0 \\).",
+         "derivation": "the sign convention of the test reversed, so a negative second derivative is read as a minimum and a positive one as a maximum",
+         "mechanism": "sign_error"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-05039",
+         "label": "At \\( x = 3 \\), g has an absolute minimum because \\( g'(3) = 0 \\) and \\( g''(3) = 12 > 0 \\); at \\( x = -4 \\), g has no relative extremum because \\( g'(-4) = 210 \\ne 0 \\).",
+         "derivation": "the relative extremum from the second derivative test extended to an absolute one with no argument that it is the only critical point, which it is not",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-05036",
+      "BC-SKL-05037",
+      "BC-SKL-05038",
+      "BC-SKL-05039"
+   ],
+   "parameter_draw": {
+      "first_root": "1",
+      "second_root": "3",
+      "other_input": "-4",
+      "tested_root": "second",
+      "leading_sign": "1",
+      "constant": "0",
+      "letter": "g",
+      "given": "function"
+   },
+   "predicted_success_probability": 0.5,
+   "provenance": {
+      "template_id": "TPL-BC-QA-05013-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-05013:spec-1:item-2:try-2",
+      "parameter_draw": {
+         "first_root": "1",
+         "second_root": "3",
+         "other_input": "-4",
+         "tested_root": "second",
+         "leading_sign": "1",
+         "constant": "0",
+         "letter": "g",
+         "given": "function"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, run D",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:56Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": true,
+      "requested_success_probability": 0.5866
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

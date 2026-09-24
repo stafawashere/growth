@@ -1,0 +1,110 @@
+{
+   "id": "ITM-GEN-07009-03",
+   "archetype_id": "BC-QA-07009",
+   "variant_id": "BC-QV-07009-01",
+   "format": "mcq",
+   "stem": {
+      "text": "The number of people P who have installed an app is modeled by the differential equation \\( \\frac{dP}{dt} = \\frac{P}{4} - \\frac{P^{2}}{7200} \\), where t is measured in weeks, and \\( P(0) = 360 \\). Without solving the equation, find the limit of P as t increases without bound, and the value of P at which P is growing fastest.",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "P approaches \\( 1800 \\) people as t increases without bound, and P is growing fastest when \\( P = 900 \\) people."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The right side equals \\( \\frac{1}{4}P\\left(1 - \\frac{P}{1800}\\right) \\), which is 0 at P = 0 and at P = 1800, so the carrying capacity is 1800.",
+         "rule_named": "zeros of the logistic right side"
+      },
+      {
+         "step": 2,
+         "text": "For 0 < P < 1800 the right side is positive, and P(0) = 360 lies in that range, so P increases and approaches 1800 people as t increases without bound.",
+         "rule_named": "sign of the rate gives the limit"
+      },
+      {
+         "step": 3,
+         "text": "The right side is a quadratic in P that opens downward with zeros at 0 and 1800, so it is largest halfway between them, at P = 900 people; P passes through that value because it starts below it.",
+         "rule_named": "vertex of the quadratic rate"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-07041",
+         "label": "P approaches \\( 360 \\) people as t increases without bound, and P is growing fastest when \\( P = 900 \\) people.",
+         "derivation": "a limit named without using the sign of the rate, the initial value taken as the level the population settles at",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-07040",
+         "label": "P approaches \\( 0 \\) people as t increases without bound, and P is growing fastest when \\( P = 900 \\) people.",
+         "derivation": "the limiting value read from the other zero of the right side, P = 0",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-07042",
+         "label": "P approaches \\( 1800 \\) people as t increases without bound, and P is growing fastest when \\( P = 1800 \\) people.",
+         "derivation": "the value of fastest growth reported as the carrying capacity itself",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": true,
+         "error_path": null,
+         "label": "P approaches \\( 1800 \\) people as t increases without bound, and P is growing fastest when \\( P = 900 \\) people."
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-07039",
+      "BC-SKL-07040",
+      "BC-SKL-07041",
+      "BC-SKL-07042",
+      "BC-SKL-07043"
+   ],
+   "parameter_draw": {
+      "form": "expanded",
+      "capacity": "1800",
+      "rate": "1/4",
+      "start_share": "1/5",
+      "context": "app"
+   },
+   "predicted_success_probability": 0.3318,
+   "provenance": {
+      "template_id": "TPL-BC-QA-07009-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-07009:spec-1:item-3:try-3",
+      "parameter_draw": {
+         "form": "expanded",
+         "capacity": "1800",
+         "rate": "1/4",
+         "start_share": "1/5",
+         "context": "app"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:54:01Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.3318
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

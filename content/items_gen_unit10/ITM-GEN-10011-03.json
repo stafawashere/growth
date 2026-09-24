@@ -1,0 +1,433 @@
+{
+   "id": "ITM-GEN-10011-03",
+   "archetype_id": "BC-QA-10011",
+   "variant_id": "BC-QV-10011-01",
+   "format": "mcq",
+   "stem": {
+      "text": "The function f has derivatives of all orders. Values of f and its first four derivatives at two inputs are given in the table. Find the Taylor polynomial of degree 3 for f about \\( x = 2 \\).",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Multiply",
+            4,
+            "x"
+         ],
+         [
+            "Multiply",
+            [
+               "Rational",
+               2,
+               3
+            ],
+            [
+               "Power",
+               [
+                  "Add",
+                  "x",
+                  -2
+               ],
+               3
+            ]
+         ],
+         [
+            "Multiply",
+            -1,
+            [
+               "Rational",
+               9,
+               2
+            ],
+            [
+               "Power",
+               [
+                  "Add",
+                  "x",
+                  -2
+               ],
+               2
+            ]
+         ],
+         -7
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Read the row for \\( x = 2 \\): the values of f and its first 3 derivatives there are 1, 4, -9, 4.",
+         "rule_named": "read the table"
+      },
+      {
+         "step": 2,
+         "text": "Divide the kth derivative value by k! to get the coefficients \\( \\frac{1}{0!} \\), \\( \\frac{4}{1!} \\), \\( \\frac{-9}{2!} \\), \\( \\frac{4}{3!} \\).",
+         "rule_named": "Taylor coefficients"
+      },
+      {
+         "step": 3,
+         "text": "Attach the powers of the displacement from 2: \\( P_3(x) = 1 + 4 \\left(x - 2\\right) - \\frac{9}{2} \\left(x - 2\\right)^{2} + \\frac{2}{3} \\left(x - 2\\right)^{3} \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               4,
+               "x"
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  2,
+                  3
+               ],
+               [
+                  "Power",
+                  [
+                     "Add",
+                     "x",
+                     -2
+                  ],
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               -1,
+               [
+                  "Rational",
+                  9,
+                  2
+               ],
+               [
+                  "Power",
+                  [
+                     "Add",
+                     "x",
+                     -2
+                  ],
+                  2
+               ]
+            ],
+            -7
+         ],
+         "point_type_id": "BC-PT-99035",
+         "rule_named": "Taylor polynomial"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               4,
+               "x"
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  2,
+                  3
+               ],
+               [
+                  "Power",
+                  [
+                     "Add",
+                     "x",
+                     -2
+                  ],
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               -1,
+               [
+                  "Rational",
+                  9,
+                  2
+               ],
+               [
+                  "Power",
+                  [
+                     "Add",
+                     "x",
+                     -2
+                  ],
+                  2
+               ]
+            ],
+            -7
+         ]
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-10031",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               -1,
+               2,
+               "x"
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  5,
+                  6
+               ],
+               [
+                  "Power",
+                  [
+                     "Add",
+                     "x",
+                     -2
+                  ],
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  7,
+                  2
+               ],
+               [
+                  "Power",
+                  [
+                     "Add",
+                     "x",
+                     -2
+                  ],
+                  2
+               ]
+            ],
+            10
+         ],
+         "derivation": "the derivative values read from the row for x = 3 instead of x = 2",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-10029",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               4,
+               "x"
+            ],
+            [
+               "Multiply",
+               4,
+               [
+                  "Power",
+                  [
+                     "Add",
+                     "x",
+                     -2
+                  ],
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               -1,
+               9,
+               [
+                  "Power",
+                  [
+                     "Add",
+                     "x",
+                     -2
+                  ],
+                  2
+               ]
+            ],
+            -7
+         ],
+         "derivation": "each derivative value used as the coefficient with no factorial in the denominator",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-10030",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               4,
+               "x"
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  6
+               ],
+               [
+                  "Power",
+                  [
+                     "Add",
+                     "x",
+                     -2
+                  ],
+                  4
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  2,
+                  3
+               ],
+               [
+                  "Power",
+                  [
+                     "Add",
+                     "x",
+                     -2
+                  ],
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               -1,
+               [
+                  "Rational",
+                  9,
+                  2
+               ],
+               [
+                  "Power",
+                  [
+                     "Add",
+                     "x",
+                     -2
+                  ],
+                  2
+               ]
+            ],
+            -7
+         ],
+         "derivation": "the next derivative in the table used as well, so the polynomial runs one degree past 3",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10044",
+      "BC-SKL-10045"
+   ],
+   "parameter_draw": {
+      "degree": "3",
+      "centre": "2",
+      "gap": "1",
+      "centre_row": [
+         "1",
+         "4",
+         "-9",
+         "4",
+         "4"
+      ],
+      "other_row": [
+         "6",
+         "-2",
+         "7",
+         "5",
+         "3"
+      ],
+      "centre_first": "no"
+   },
+   "predicted_success_probability": 0.4134,
+   "provenance": {
+      "template_id": "TPL-BC-QA-10011-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-10011:spec-1:item-3:try-3",
+      "parameter_draw": {
+         "degree": "3",
+         "centre": "2",
+         "gap": "1",
+         "centre_row": [
+            "1",
+            "4",
+            "-9",
+            "4",
+            "4"
+         ],
+         "other_row": [
+            "6",
+            "-2",
+            "7",
+            "5",
+            "3"
+         ],
+         "centre_first": "no"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:58:54Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.4134
+   },
+   "figure": {
+      "kind": "table",
+      "columns": [
+         "x",
+         "\\( f(x) \\)",
+         "\\( f^{\\prime}(x) \\)",
+         "\\( f^{\\prime\\prime}(x) \\)",
+         "\\( f^{\\prime\\prime\\prime}(x) \\)",
+         "\\( f^{(4)}(x) \\)"
+      ],
+      "rows": [
+         [
+            "3",
+            "6",
+            "-2",
+            "7",
+            "5",
+            "3"
+         ],
+         [
+            "2",
+            "1",
+            "4",
+            "-9",
+            "4",
+            "4"
+         ]
+      ],
+      "labels": [],
+      "alt": "At x = 2: f = 1, f' = 4, f'' = -9, f''' = 4, fourth derivative = 4. At x = 3: f = 6, f' = -2, f'' = 7, f''' = 5, fourth derivative = 3."
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

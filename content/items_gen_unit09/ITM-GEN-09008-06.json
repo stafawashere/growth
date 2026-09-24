@@ -1,0 +1,123 @@
+{
+   "id": "ITM-GEN-09008-06",
+   "archetype_id": "BC-QA-09008",
+   "variant_id": "BC-QV-09008-01",
+   "format": "mcq",
+   "stem": {
+      "text": "A particle moves in the xy-plane so that its position at time t is \\( \\left(x(t), y(t)\\right) = \\left( t^{2} - \\sin{\\left(t \\right)} - 6,\\ - \\frac{t^{3}}{3} + t \\right) \\) for \\( 0 \\le t \\le 2 \\). Using a calculator where needed, find all times t in the open interval \\( 0 < t < 2 \\) at which the particle is moving toward the y-axis. Give a reason for your answer, and give any decimal endpoint correct to three decimal places.",
+      "setup_required": true,
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "The particle moves toward the y-axis for \\( 0.450 < t < 2 \\), because \\( x(t) \\) and \\( x'(t) \\) have opposite signs there."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "On the interval, \\( \\sin t \\ge 0 \\) and \\( t^2 \\le 4 \\), so \\( x(t) \\le -2 \\), and \\( x(t) \\) is negative, so the particle stays on one side of the y-axis.",
+         "point_type_id": "BC-PT-99014",
+         "rule_named": "sign of the coordinate"
+      },
+      {
+         "step": 2,
+         "text": "The particle moves toward the y-axis when \\( x(t) \\) and \\( x'(t) \\) have opposite signs, that is, when \\( x'(t) = 2 t - \\cos{\\left(t \\right)} > 0 \\). A calculator gives \\( x'(t) = 0 \\) at \\( t \\approx 0.450 \\), with \\( x'(t) \\) negative before that time and the opposite sign after it.",
+         "mathjson": 0.45018361129487355,
+         "point_type_id": "BC-PT-99014",
+         "rule_named": "zero of the velocity component"
+      },
+      {
+         "step": 3,
+         "text": "So the particle moves toward the y-axis for \\( 0.450 < t < 2 \\), because there \\( x(t) < 0 \\) and \\( x'(t) > 0 \\), so its distance from the y-axis, \\( |x(t)| \\), is decreasing.",
+         "point_type_id": "BC-PT-99010",
+         "rule_named": "sign analysis of the velocity component"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-09025",
+         "label": "The particle moves toward the y-axis for \\( 0 < t < 0.450 \\), because \\( x'(t) \\) is negative there.",
+         "derivation": "approaching read as a negative rate, so the times with x'(t) < 0 taken without the sign of x(t)",
+         "mechanism": "sign_error"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-99029",
+         "label": "The particle moves toward the y-axis for \\( 0 < t < 1 \\), because \\( y'(t) \\) is positive there.",
+         "derivation": "the other velocity component used, so the times with y'(t) > 0 reported",
+         "mechanism": "reversed_quantities"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-09025",
+         "label": "The particle moves toward the y-axis for \\( 0 < t < 2 \\), because \\( x(t) \\) is negative there.",
+         "derivation": "the sign of the coordinate read as the direction of motion, so every time with x(t) < 0 counted as approaching",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": true,
+         "error_path": null,
+         "label": "The particle moves toward the y-axis for \\( 0.450 < t < 2 \\), because \\( x(t) \\) and \\( x'(t) \\) have opposite signs there."
+      }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-14",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-16",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-09027"
+   ],
+   "parameter_draw": {
+      "offset": "6",
+      "amplitude": "1",
+      "divisor": "1",
+      "end_time": "2",
+      "other_turn": "1",
+      "shape": "falling",
+      "axis": "y-axis",
+      "sign_given": "argued",
+      "side": "negative"
+   },
+   "predicted_success_probability": 0.148,
+   "provenance": {
+      "template_id": "TPL-BC-QA-09008-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-09008:spec-1:item-6:try-6",
+      "parameter_draw": {
+         "offset": "6",
+         "amplitude": "1",
+         "divisor": "1",
+         "end_time": "2",
+         "other_turn": "1",
+         "shape": "falling",
+         "axis": "y-axis",
+         "sign_given": "argued",
+         "side": "negative"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:54:03Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.148
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

@@ -1,0 +1,128 @@
+{
+   "id": "ITM-GEN-10006-19",
+   "archetype_id": "BC-QA-10006",
+   "variant_id": "BC-QV-10006-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Use the limit comparison test with \\( \\sum_{n=1}^{\\infty} \\frac{1}{n^{3}} \\) to show that the series \\( \\sum_{n=1}^{\\infty} a_n \\), where \\( a_n = \\frac{\\left(-1\\right)^{n} \\left(3 n + 9\\right)}{2 n^{4} + 3} \\), converges absolutely. State the conclusion, naming the series it concerns.",
+      "command_verb": "determine"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "\\( \\sum a_n \\) converges absolutely, because \\( \\lim_{n\\to\\infty} \\frac{|a_n|}{1/n^{3}} = \\frac{3}{2} \\) is positive and finite and \\( \\sum \\frac{1}{n^{3}} \\) converges."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Compare the series of absolute values \\( \\sum_{n=1}^{\\infty} \\frac{3 n + 9}{2 n^{4} + 3} \\) with \\( \\sum_{n=1}^{\\infty} \\frac{1}{n^{3}} \\), the p-series with \\( p = 3 \\), since the degrees of the denominator and numerator of the terms differ by 3. Both have positive terms.",
+         "rule_named": "choose the comparison series"
+      },
+      {
+         "step": 2,
+         "text": "\\( \\lim_{n\\to\\infty} \\frac{\\frac{3 n + 9}{2 n^{4} + 3}}{\\frac{1}{n^{3}}} = \\lim_{n\\to\\infty} \\frac{3 n^{4} + 9 n^{3}}{2 n^{4} + 3} = \\frac{3}{2} \\).",
+         "mathjson": [
+            "Rational",
+            3,
+            2
+         ],
+         "rule_named": "limit of the quotient"
+      },
+      {
+         "step": 3,
+         "text": "The limit \\( \\frac{3}{2} \\) is positive and finite, and \\( \\sum_{n=1}^{\\infty} \\frac{1}{n^{3}} \\) converges because \\( p = 3 > 1 \\).",
+         "rule_named": "p-series test"
+      },
+      {
+         "step": 4,
+         "text": "\\( \\sum a_n \\) converges absolutely, because \\( \\lim_{n\\to\\infty} \\frac{|a_n|}{1/n^{3}} = \\frac{3}{2} \\) is positive and finite and \\( \\sum \\frac{1}{n^{3}} \\) converges.",
+         "point_type_id": "BC-PT-99005",
+         "rule_named": "limit comparison test"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "label": "\\( \\sum a_n \\) converges absolutely, because \\( \\lim_{n\\to\\infty} \\frac{|a_n|}{1/n^{3}} = \\frac{3}{2} \\) is positive and finite and \\( \\sum \\frac{1}{n^{3}} \\) converges."
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-10019",
+         "label": "\\( \\sum a_n \\) diverges, because \\( \\lim_{n\\to\\infty} \\frac{|a_n|}{1/n^{3}} = \\frac{3}{2} \\) is greater than 1.",
+         "derivation": "the limit of the quotient compared with 1, as in the ratio test, and found greater than 1",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-10018",
+         "label": "\\( \\sum a_n \\) converges absolutely by the alternating series test, because \\( |a_n| \\) decreases to 0.",
+         "derivation": "absolute values never taken, so only the alternating series test was used and its result called absolute convergence",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-10023",
+         "label": "\\( \\sum a_n \\) converges conditionally, because \\( \\lim_{n\\to\\infty} \\frac{|a_n|}{1/n^{3}} = \\frac{3}{2} \\) is positive and finite and \\( \\sum \\frac{1}{n^{3}} \\) converges.",
+         "derivation": "the absolute and conditional labels exchanged after the series of absolute values was shown to converge",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10025",
+      "BC-SKL-10026",
+      "BC-SKL-10034",
+      "BC-SKL-10035"
+   ],
+   "parameter_draw": {
+      "claim": "absolute",
+      "partner": "given",
+      "gap": "3",
+      "top_degree": "1",
+      "lead_top": "3",
+      "constant_top": "9",
+      "lead_bottom": "2",
+      "constant_bottom": "3",
+      "start": "1"
+   },
+   "predicted_success_probability": 0.4134,
+   "provenance": {
+      "template_id": "TPL-BC-QA-10006-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-10006:spec-1:item-19:try-19",
+      "parameter_draw": {
+         "claim": "absolute",
+         "partner": "given",
+         "gap": "3",
+         "top_degree": "1",
+         "lead_top": "3",
+         "constant_top": "9",
+         "lead_bottom": "2",
+         "constant_bottom": "3",
+         "start": "1"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:58:54Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.4134
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

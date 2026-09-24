@@ -1,0 +1,203 @@
+{
+   "id": "ITM-GEN-07008-00",
+   "archetype_id": "BC-QA-07008",
+   "variant_id": "BC-QV-07008-01",
+   "format": "mcq",
+   "stem": {
+      "text": "The number of bacteria B in a culture changes at a rate proportional to B, where t is measured in hours. At \\( t = 0 \\), \\( B = 100 \\) bacteria, and at \\( t = 5 \\), \\( B = 200 \\) bacteria. Find an expression for \\( B(t) \\).",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Multiply",
+         100,
+         [
+            "Exp",
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  5
+               ],
+               "t",
+               [
+                  "Ln",
+                  2
+               ]
+            ]
+         ]
+      ],
+      "units": "bacteria"
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The model is \\( \\frac{dB}{dt} = kB \\). Separating and integrating gives \\( \\ln|B| = kt + C \\), so \\( B = B_0 e^{kt} \\), and the value at t = 0 gives \\( B_0 = 100 \\).",
+         "rule_named": "separation of variables for proportional growth"
+      },
+      {
+         "step": 2,
+         "text": "The second value gives \\( 200 = 100 e^{5k} \\), so \\( k = \\frac{\\ln{\\left(2 \\right)}}{5} \\).",
+         "rule_named": "constant from a second data pair"
+      },
+      {
+         "step": 3,
+         "text": "Therefore \\( B(t) = 100 e^{\\frac{t \\ln{\\left(2 \\right)}}{5}} \\) bacteria.",
+         "mathjson": [
+            "Multiply",
+            100,
+            [
+               "Exp",
+               [
+                  "Multiply",
+                  [
+                     "Rational",
+                     1,
+                     5
+                  ],
+                  "t",
+                  [
+                     "Ln",
+                     2
+                  ]
+               ]
+            ]
+         ],
+         "rule_named": "particular solution"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Multiply",
+            100,
+            [
+               "Exp",
+               [
+                  "Multiply",
+                  [
+                     "Rational",
+                     1,
+                     5
+                  ],
+                  "t",
+                  [
+                     "Ln",
+                     2
+                  ]
+               ]
+            ]
+         ]
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-07036",
+         "value": [
+            "Multiply",
+            100,
+            [
+               "Exp",
+               [
+                  "Multiply",
+                  [
+                     "Rational",
+                     1,
+                     5
+                  ],
+                  "t",
+                  [
+                     "Ln",
+                     200
+                  ]
+               ]
+            ]
+         ],
+         "derivation": "k read from the later value alone, 200 = e^(5k), with the initial value left out",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-07034",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               20,
+               "t"
+            ],
+            100
+         ],
+         "derivation": "a straight-line model through the two data values, a constant rate of change instead of a constant relative rate",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-07001",
+         "value": [
+            "Multiply",
+            100,
+            [
+               "Exp",
+               "t"
+            ]
+         ],
+         "derivation": "the rate written equal to B with no constant, so k is 1 and the second value is never used",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-05",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-07034",
+      "BC-SKL-07035",
+      "BC-SKL-07036",
+      "BC-SKL-07037",
+      "BC-SKL-07038"
+   ],
+   "parameter_draw": {
+      "change": "growth",
+      "factor": "2",
+      "initial": "100",
+      "elapsed": "5",
+      "context": "bacteria"
+   },
+   "predicted_success_probability": 0.3318,
+   "provenance": {
+      "template_id": "TPL-BC-QA-07008-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-07008:spec-1:item-0:try-0",
+      "parameter_draw": {
+         "change": "growth",
+         "factor": "2",
+         "initial": "100",
+         "elapsed": "5",
+         "context": "bacteria"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:54:01Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.2592
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

@@ -1,0 +1,805 @@
+{
+   "id": "ITM-GEN-09011-18",
+   "archetype_id": "BC-QA-09011",
+   "variant_id": "BC-QV-09011-01",
+   "format": "mcq",
+   "stem": {
+      "text": "The graph of the polar curve \\( r = \\sin{\\left(\\theta \\right)} + 2 \\) for \\( 0.15 \\le \\theta \\le 1.95 \\) is shown. Using a calculator, find the value of \\( \\theta \\) that corresponds to the point on the curve farthest from the y-axis. Justify your answer, show the setup, and give the value correct to three decimal places.",
+      "setup_required": true,
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "numeric",
+      "mathjson": 0.3747344327087401,
+      "decimals": 3
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The distance from the y-axis is \\( |x| \\), where \\( x = r\\cos\\theta = \\left(\\sin{\\left(\\theta \\right)} + 2\\right) \\cos{\\left(\\theta \\right)} \\).",
+         "point_type_id": "BC-PT-99005",
+         "rule_named": "polar to rectangular conversion"
+      },
+      {
+         "step": 2,
+         "text": "Set \\( \\frac{dx}{d\\theta} = - \\left(\\sin{\\left(\\theta \\right)} + 2\\right) \\sin{\\left(\\theta \\right)} + \\cos^{2}{\\left(\\theta \\right)} = 0 \\). On the interval a calculator gives one solution, \\( \\theta \\approx 0.375 \\).",
+         "mathjson": 0.3747344327087401,
+         "point_type_id": "BC-PT-99013",
+         "rule_named": "critical angle"
+      },
+      {
+         "step": 3,
+         "text": "Compare the candidates, the critical angle and both endpoints: \\( |x(0.15)| \\approx 2.125 \\), \\( |x(0.375)| \\approx 2.202 \\), \\( |x(1.95)| \\approx 1.084 \\). The largest distance is at \\( \\theta \\approx 0.375 \\), so that is the farthest point.",
+         "point_type_id": "BC-PT-99011",
+         "rule_named": "candidates test"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-05028",
+         "value": 1.95,
+         "derivation": "the candidates compared correctly but the one nearest the axis reported",
+         "mechanism": "reversed_quantities"
+      },
+      {
+         "id": "B",
+         "is_key": true,
+         "error_path": null,
+         "value": 0.375
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-09027",
+         "value": 1.571,
+         "derivation": "r treated as the distance from the axis, so the angle where r is largest is reported",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-99004",
+         "value": 0.15,
+         "derivation": "the candidates comparison run without the interior critical angle, so the farther endpoint is reported",
+         "mechanism": "theorem_condition_ignored"
+      }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-02",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-03",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-16",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-09034",
+      "BC-SKL-09029"
+   ],
+   "parameter_draw": {
+      "constant": "2",
+      "amplitude": "1",
+      "start": "3/20",
+      "end": "39/20",
+      "axis": "y-axis",
+      "presentation": "graph"
+   },
+   "predicted_success_probability": 0.2592,
+   "provenance": {
+      "template_id": "TPL-BC-QA-09011-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-09011:spec-1:item-18:try-19",
+      "parameter_draw": {
+         "constant": "2",
+         "amplitude": "1",
+         "start": "3/20",
+         "end": "39/20",
+         "axis": "y-axis",
+         "presentation": "graph"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:54:03Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.2592
+   },
+   "figure": {
+      "kind": "polar_curve",
+      "domain": [
+         -3.0,
+         4.0
+      ],
+      "range": [
+         -1.0,
+         4.0
+      ],
+      "curves": [
+         {
+            "segments": [
+               [
+                  [
+                     2.1253,
+                     0.3212
+                  ],
+                  [
+                     2.1325,
+                     0.3469
+                  ],
+                  [
+                     2.1394,
+                     0.3728
+                  ],
+                  [
+                     2.146,
+                     0.3988
+                  ],
+                  [
+                     2.1522,
+                     0.4251
+                  ],
+                  [
+                     2.1581,
+                     0.4515
+                  ],
+                  [
+                     2.1636,
+                     0.4781
+                  ],
+                  [
+                     2.1688,
+                     0.5049
+                  ],
+                  [
+                     2.1736,
+                     0.5319
+                  ],
+                  [
+                     2.178,
+                     0.559
+                  ],
+                  [
+                     2.1821,
+                     0.5863
+                  ],
+                  [
+                     2.1858,
+                     0.6138
+                  ],
+                  [
+                     2.1891,
+                     0.6414
+                  ],
+                  [
+                     2.1921,
+                     0.6691
+                  ],
+                  [
+                     2.1947,
+                     0.697
+                  ],
+                  [
+                     2.1968,
+                     0.725
+                  ],
+                  [
+                     2.1986,
+                     0.7531
+                  ],
+                  [
+                     2.2,
+                     0.7813
+                  ],
+                  [
+                     2.201,
+                     0.8097
+                  ],
+                  [
+                     2.2016,
+                     0.8381
+                  ],
+                  [
+                     2.2018,
+                     0.8667
+                  ],
+                  [
+                     2.2016,
+                     0.8954
+                  ],
+                  [
+                     2.201,
+                     0.9241
+                  ],
+                  [
+                     2.2,
+                     0.9529
+                  ],
+                  [
+                     2.1985,
+                     0.9818
+                  ],
+                  [
+                     2.1966,
+                     1.0107
+                  ],
+                  [
+                     2.1943,
+                     1.0398
+                  ],
+                  [
+                     2.1916,
+                     1.0688
+                  ],
+                  [
+                     2.1885,
+                     1.0979
+                  ],
+                  [
+                     2.1849,
+                     1.1271
+                  ],
+                  [
+                     2.1809,
+                     1.1563
+                  ],
+                  [
+                     2.1764,
+                     1.1855
+                  ],
+                  [
+                     2.1715,
+                     1.2147
+                  ],
+                  [
+                     2.1662,
+                     1.2439
+                  ],
+                  [
+                     2.1605,
+                     1.2731
+                  ],
+                  [
+                     2.1543,
+                     1.3023
+                  ],
+                  [
+                     2.1477,
+                     1.3316
+                  ],
+                  [
+                     2.1406,
+                     1.3607
+                  ],
+                  [
+                     2.1331,
+                     1.3899
+                  ],
+                  [
+                     2.1251,
+                     1.419
+                  ],
+                  [
+                     2.1167,
+                     1.4481
+                  ],
+                  [
+                     2.1078,
+                     1.4771
+                  ],
+                  [
+                     2.0985,
+                     1.5061
+                  ],
+                  [
+                     2.0888,
+                     1.535
+                  ],
+                  [
+                     2.0786,
+                     1.5638
+                  ],
+                  [
+                     2.068,
+                     1.5926
+                  ],
+                  [
+                     2.0569,
+                     1.6212
+                  ],
+                  [
+                     2.0454,
+                     1.6498
+                  ],
+                  [
+                     2.0334,
+                     1.6783
+                  ],
+                  [
+                     2.021,
+                     1.7066
+                  ],
+                  [
+                     2.0082,
+                     1.7348
+                  ],
+                  [
+                     1.9949,
+                     1.7629
+                  ],
+                  [
+                     1.9811,
+                     1.7909
+                  ],
+                  [
+                     1.9669,
+                     1.8187
+                  ],
+                  [
+                     1.9523,
+                     1.8463
+                  ],
+                  [
+                     1.9373,
+                     1.8738
+                  ],
+                  [
+                     1.9218,
+                     1.9012
+                  ],
+                  [
+                     1.9059,
+                     1.9283
+                  ],
+                  [
+                     1.8895,
+                     1.9553
+                  ],
+                  [
+                     1.8728,
+                     1.9821
+                  ],
+                  [
+                     1.8555,
+                     2.0087
+                  ],
+                  [
+                     1.8379,
+                     2.035
+                  ],
+                  [
+                     1.8199,
+                     2.0612
+                  ],
+                  [
+                     1.8014,
+                     2.0871
+                  ],
+                  [
+                     1.7825,
+                     2.1129
+                  ],
+                  [
+                     1.7632,
+                     2.1383
+                  ],
+                  [
+                     1.7435,
+                     2.1636
+                  ],
+                  [
+                     1.7234,
+                     2.1886
+                  ],
+                  [
+                     1.7029,
+                     2.2133
+                  ],
+                  [
+                     1.682,
+                     2.2377
+                  ],
+                  [
+                     1.6607,
+                     2.2619
+                  ],
+                  [
+                     1.639,
+                     2.2858
+                  ],
+                  [
+                     1.6169,
+                     2.3095
+                  ],
+                  [
+                     1.5944,
+                     2.3328
+                  ],
+                  [
+                     1.5715,
+                     2.3558
+                  ],
+                  [
+                     1.5483,
+                     2.3785
+                  ],
+                  [
+                     1.5247,
+                     2.4009
+                  ],
+                  [
+                     1.5008,
+                     2.423
+                  ],
+                  [
+                     1.4764,
+                     2.4448
+                  ],
+                  [
+                     1.4518,
+                     2.4662
+                  ],
+                  [
+                     1.4267,
+                     2.4873
+                  ],
+                  [
+                     1.4014,
+                     2.508
+                  ],
+                  [
+                     1.3757,
+                     2.5284
+                  ],
+                  [
+                     1.3496,
+                     2.5484
+                  ],
+                  [
+                     1.3233,
+                     2.568
+                  ],
+                  [
+                     1.2966,
+                     2.5873
+                  ],
+                  [
+                     1.2696,
+                     2.6062
+                  ],
+                  [
+                     1.2423,
+                     2.6248
+                  ],
+                  [
+                     1.2146,
+                     2.6429
+                  ],
+                  [
+                     1.1867,
+                     2.6606
+                  ],
+                  [
+                     1.1585,
+                     2.678
+                  ],
+                  [
+                     1.13,
+                     2.6949
+                  ],
+                  [
+                     1.1012,
+                     2.7114
+                  ],
+                  [
+                     1.0722,
+                     2.7275
+                  ],
+                  [
+                     1.0429,
+                     2.7432
+                  ],
+                  [
+                     1.0133,
+                     2.7584
+                  ],
+                  [
+                     0.9835,
+                     2.7733
+                  ],
+                  [
+                     0.9534,
+                     2.7877
+                  ],
+                  [
+                     0.9231,
+                     2.8016
+                  ],
+                  [
+                     0.8926,
+                     2.8151
+                  ],
+                  [
+                     0.8618,
+                     2.8282
+                  ],
+                  [
+                     0.8309,
+                     2.8408
+                  ],
+                  [
+                     0.7997,
+                     2.8529
+                  ],
+                  [
+                     0.7683,
+                     2.8646
+                  ],
+                  [
+                     0.7368,
+                     2.8758
+                  ],
+                  [
+                     0.705,
+                     2.8866
+                  ],
+                  [
+                     0.6731,
+                     2.8969
+                  ],
+                  [
+                     0.641,
+                     2.9067
+                  ],
+                  [
+                     0.6087,
+                     2.916
+                  ],
+                  [
+                     0.5763,
+                     2.9249
+                  ],
+                  [
+                     0.5438,
+                     2.9333
+                  ],
+                  [
+                     0.5111,
+                     2.9412
+                  ],
+                  [
+                     0.4782,
+                     2.9486
+                  ],
+                  [
+                     0.4453,
+                     2.9555
+                  ],
+                  [
+                     0.4123,
+                     2.9619
+                  ],
+                  [
+                     0.3791,
+                     2.9678
+                  ],
+                  [
+                     0.3458,
+                     2.9733
+                  ],
+                  [
+                     0.3125,
+                     2.9782
+                  ],
+                  [
+                     0.2791,
+                     2.9826
+                  ],
+                  [
+                     0.2456,
+                     2.9866
+                  ],
+                  [
+                     0.212,
+                     2.99
+                  ],
+                  [
+                     0.1784,
+                     2.9929
+                  ],
+                  [
+                     0.1448,
+                     2.9953
+                  ],
+                  [
+                     0.1111,
+                     2.9973
+                  ],
+                  [
+                     0.0774,
+                     2.9987
+                  ],
+                  [
+                     0.0436,
+                     2.9996
+                  ],
+                  [
+                     0.0099,
+                     3.0
+                  ],
+                  [
+                     -0.0239,
+                     2.9999
+                  ],
+                  [
+                     -0.0576,
+                     2.9993
+                  ],
+                  [
+                     -0.0913,
+                     2.9981
+                  ],
+                  [
+                     -0.125,
+                     2.9965
+                  ],
+                  [
+                     -0.1587,
+                     2.9944
+                  ],
+                  [
+                     -0.1923,
+                     2.9918
+                  ],
+                  [
+                     -0.2259,
+                     2.9886
+                  ],
+                  [
+                     -0.2595,
+                     2.985
+                  ],
+                  [
+                     -0.2929,
+                     2.9808
+                  ],
+                  [
+                     -0.3263,
+                     2.9762
+                  ],
+                  [
+                     -0.3596,
+                     2.9711
+                  ],
+                  [
+                     -0.3928,
+                     2.9654
+                  ],
+                  [
+                     -0.4259,
+                     2.9593
+                  ],
+                  [
+                     -0.459,
+                     2.9527
+                  ],
+                  [
+                     -0.4919,
+                     2.9456
+                  ],
+                  [
+                     -0.5246,
+                     2.938
+                  ],
+                  [
+                     -0.5573,
+                     2.9299
+                  ],
+                  [
+                     -0.5898,
+                     2.9213
+                  ],
+                  [
+                     -0.6221,
+                     2.9122
+                  ],
+                  [
+                     -0.6543,
+                     2.9027
+                  ],
+                  [
+                     -0.6863,
+                     2.8927
+                  ],
+                  [
+                     -0.7182,
+                     2.8822
+                  ],
+                  [
+                     -0.7499,
+                     2.8712
+                  ],
+                  [
+                     -0.7813,
+                     2.8598
+                  ],
+                  [
+                     -0.8126,
+                     2.8479
+                  ],
+                  [
+                     -0.8437,
+                     2.8356
+                  ],
+                  [
+                     -0.8746,
+                     2.8228
+                  ],
+                  [
+                     -0.9053,
+                     2.8096
+                  ],
+                  [
+                     -0.9357,
+                     2.7959
+                  ],
+                  [
+                     -0.9659,
+                     2.7817
+                  ],
+                  [
+                     -0.9959,
+                     2.7672
+                  ],
+                  [
+                     -1.0256,
+                     2.7522
+                  ],
+                  [
+                     -1.055,
+                     2.7367
+                  ],
+                  [
+                     -1.0842,
+                     2.7209
+                  ]
+               ]
+            ],
+            "style": "solid"
+         }
+      ],
+      "fills": [],
+      "marks": [
+         {
+            "type": "point",
+            "at": [
+               0.0,
+               0.0
+            ]
+         }
+      ],
+      "labels": [
+         {
+            "text": "O",
+            "anchor": [
+               0.0,
+               0.0
+            ],
+            "placement": "inside"
+         }
+      ],
+      "gridlines": true,
+      "axis_titles": [
+         "x",
+         "y"
+      ],
+      "alt": "The polar curve r = 2 + 1 sin(theta) drawn for theta from 0.15 to 1.95, with the origin O marked."
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

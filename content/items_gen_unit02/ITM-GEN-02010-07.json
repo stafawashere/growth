@@ -1,0 +1,205 @@
+{
+   "id": "ITM-GEN-02010-07",
+   "archetype_id": "BC-QA-02010",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( h(x) = 2 \\cot{\\left(x \\right)} + 5 \\sec{\\left(x \\right)} \\). Find the exact value of \\( h'\\left(\\frac{\\pi}{4}\\right) \\).",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         -4,
+         [
+            "Multiply",
+            5,
+            [
+               "Sqrt",
+               2
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Rewrite with sine and cosine: \\( \\sec{\\left(x \\right)} = \\frac{1}{\\cos{\\left(x \\right)}} \\) and \\( \\cot{\\left(x \\right)} = \\frac{\\cos{\\left(x \\right)}}{\\sin{\\left(x \\right)}} \\).",
+         "rule_named": "rewrite over sine and cosine"
+      },
+      {
+         "step": 2,
+         "text": "Apply the quotient rule to each piece and simplify the numerators with \\( \\sin^{2} x + \\cos^{2} x = 1 \\): the derivatives are \\( \\tan{\\left(x \\right)} \\sec{\\left(x \\right)} \\) and \\( - \\csc^{2}{\\left(x \\right)} \\).",
+         "rule_named": "quotient rule and a Pythagorean identity"
+      },
+      {
+         "step": 3,
+         "text": "So \\( h'(x) = 5 \\tan{\\left(x \\right)} \\sec{\\left(x \\right)} - 2 \\csc^{2}{\\left(x \\right)} \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               5,
+               [
+                  "Tan",
+                  "x"
+               ],
+               [
+                  "Sec",
+                  "x"
+               ]
+            ],
+            [
+               "Multiply",
+               -1,
+               2,
+               [
+                  "Power",
+                  [
+                     "Csc",
+                     "x"
+                  ],
+                  2
+               ]
+            ]
+         ],
+         "rule_named": "constant multiple and sum rules"
+      },
+      {
+         "step": 4,
+         "text": "At \\( x = \\frac{\\pi}{4} \\), \\( h'\\left(\\frac{\\pi}{4}\\right) = -4 + 5 \\sqrt{2} \\).",
+         "mathjson": [
+            "Add",
+            -4,
+            [
+               "Multiply",
+               5,
+               [
+                  "Sqrt",
+                  2
+               ]
+            ]
+         ],
+         "rule_named": "evaluate at a standard angle"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-02021",
+         "value": [
+            "Add",
+            4,
+            [
+               "Multiply",
+               -1,
+               5,
+               [
+                  "Sqrt",
+                  2
+               ]
+            ]
+         ],
+         "derivation": "the numerator terms of each quotient rule taken in reverse order, which flips every sign",
+         "mechanism": "reversed_quantities"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-02026",
+         "value": -2,
+         "derivation": "each quotient differentiated as the derivative of its numerator over the derivative of its denominator",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-02025",
+         "value": [
+            "Add",
+            4,
+            [
+               "Multiply",
+               5,
+               [
+                  "Sqrt",
+                  2
+               ]
+            ]
+         ],
+         "derivation": "the derivative of cot given without its negative sign",
+         "mechanism": "sign_error"
+      },
+      {
+         "id": "D",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Add",
+            -4,
+            [
+               "Multiply",
+               5,
+               [
+                  "Sqrt",
+                  2
+               ]
+            ]
+         ]
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02043",
+      "BC-SKL-02044",
+      "BC-SKL-02045",
+      "BC-SKL-02046"
+   ],
+   "parameter_draw": {
+      "first": "sec",
+      "second": "cot",
+      "first_coefficient": "5",
+      "second_coefficient": "2",
+      "evaluate": "point",
+      "angle": "1/4"
+   },
+   "predicted_success_probability": 0.3318,
+   "provenance": {
+      "template_id": "TPL-BC-QA-02010-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-02010:spec-1:item-7:try-7",
+      "parameter_draw": {
+         "first": "sec",
+         "second": "cot",
+         "first_coefficient": "5",
+         "second_coefficient": "2",
+         "evaluate": "point",
+         "angle": "1/4"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, author tpl-B",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:50Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": true,
+      "requested_success_probability": 0.4134
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

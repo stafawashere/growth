@@ -1,0 +1,114 @@
+{
+   "id": "ITM-GEN-09003-15",
+   "archetype_id": "BC-QA-09003",
+   "variant_id": "BC-QV-09003-01",
+   "format": "mcq",
+   "stem": {
+      "text": "A curve is defined by \\( x = \\frac{5 t^{2}}{2} \\) and \\( y = \\sin{\\left(2 t \\right)} \\). Using a calculator, find the length of the curve for \\( 0 \\le t \\le 2 \\). Show the setup for the calculation, and give the value correct to three decimal places.",
+      "setup_required": true,
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "numeric",
+      "mathjson": 10.701155744150576,
+      "decimals": 3
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The rates are \\( \\frac{dx}{dt} = 5 t \\) and \\( \\frac{dy}{dt} = 2 \\cos{\\left(2 t \\right)} \\).",
+         "rule_named": "component rates"
+      },
+      {
+         "step": 2,
+         "text": "The length is \\( \\int_{0}^{2} \\sqrt{\\left(5 t\\right)^{2} + \\left(2 \\cos{\\left(2 t \\right)}\\right)^{2}}\\,dt \\), the integral of the speed.",
+         "rule_named": "arc length of a parametric curve"
+      },
+      {
+         "step": 3,
+         "text": "A calculator gives 10.701.",
+         "mathjson": 10.701155744150576,
+         "rule_named": "numerical integration"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-09014",
+         "value": 5.556,
+         "derivation": "(dx/dt)^2 written as 5 t^2, the coefficient left unsquared",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-99010",
+         "value": 10.029,
+         "derivation": "the straight-line distance from the start to the end, the magnitude of the displacement",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": true,
+         "error_path": null,
+         "value": 10.701
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-09013",
+         "value": 9.243,
+         "derivation": "the two rates added, the integral of dx/dt + dy/dt",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-12",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-16",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-09011",
+      "BC-SKL-09012",
+      "BC-SKL-09013",
+      "BC-SKL-09014"
+   ],
+   "parameter_draw": {
+      "stretch": "5/2",
+      "height": "1",
+      "frequency": "2",
+      "end": "2",
+      "units": "feet",
+      "given": "curve"
+   },
+   "predicted_success_probability": 0.3318,
+   "provenance": {
+      "template_id": "TPL-BC-QA-09003-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-09003:spec-1:item-15:try-15",
+      "parameter_draw": {
+         "stretch": "5/2",
+         "height": "1",
+         "frequency": "2",
+         "end": "2",
+         "units": "feet",
+         "given": "curve"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, run F",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T13:02:05Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": true,
+      "requested_success_probability": 0.3318
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

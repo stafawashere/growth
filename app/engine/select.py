@@ -83,6 +83,20 @@ def format_for_attempt(user_attempts, archetype_id, stage):
    return ResponseFormat.MCQ
 
 
+def requires_choice(item):
+   """An item keyed by a statement (04's key form "statement") has labelled options and no value a
+   student could type, so R29's short-answer turn cannot apply to it and it is always a choice.
+   app/runtime/bank.py marks it when the item is read."""
+   return item.get("requires_choice") is True
+
+
+def format_for_item(user_attempts, item, stage):
+   if requires_choice(item):
+      return ResponseFormat.MCQ
+
+   return format_for_attempt(user_attempts, item["archetype_id"], stage)
+
+
 def filter_interleaving(records, history, graph, rules=DEFAULT_RULES):
    return window_filter(records, history, graph, rules)[0]
 
@@ -110,7 +124,7 @@ def dress_item(record, chosen, states, graph, user_attempts, is_probe=False):
    stage = serve_stage(record, states, graph)
    served = dict(chosen)
    served["stage"] = stage
-   served["format"] = format_for_attempt(user_attempts, archetype_id, stage)
+   served["format"] = format_for_item(user_attempts, chosen, stage)
    served["is_probe"] = is_probe
 
    return served

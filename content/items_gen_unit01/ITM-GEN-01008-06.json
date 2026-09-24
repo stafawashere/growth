@@ -1,0 +1,109 @@
+{
+   "id": "ITM-GEN-01008-06",
+   "archetype_id": "BC-QA-01008",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = \\begin{cases} \\frac{x^{2} - 16}{x + 4}, & x < -4 \\\\ kx + m, & -4 \\le x \\le -3 \\\\ 2 x^{2} - 8, & x > -3 \\end{cases} \\), where k and m are constants. Find the values of k and m for which f is continuous for all real numbers. Show that the function value at each boundary agrees with both one sided limits.",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "\\( k = 18 \\) and \\( m = 64 \\), because the middle branch must equal -8 at \\( x = -4 \\) and 10 at \\( x = -3 \\)."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "For \\( x < -4 \\), \\( \\frac{x^{2} - 16}{x + 4} = x - 4 \\), so the limit from the left at \\( x = -4 \\) is -8. The middle branch gives \\( f(-4) = -4k + m \\), so \\( -4k + m = -8 \\).",
+         "rule_named": "match the branches at the first boundary"
+      },
+      {
+         "step": 2,
+         "text": "At \\( x = -3 \\) the middle branch gives \\( f(-3) = -3k + m \\) and the last branch approaches 10, so \\( -3k + m = 10 \\).",
+         "rule_named": "match the branches at the second boundary"
+      },
+      {
+         "step": 3,
+         "text": "Subtracting the equations gives \\( k = 18 \\), and then \\( m = 64 \\).",
+         "rule_named": "solve the linear system"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "label": "\\( k = 18 \\) and \\( m = 64 \\), because the middle branch must equal -8 at \\( x = -4 \\) and 10 at \\( x = -3 \\)."
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-01017",
+         "label": "\\( k = 1 \\) and \\( m = -4 \\), because the middle branch must equal -8 at \\( x = -4 \\) and -7 at \\( x = -3 \\).",
+         "derivation": "at x = -3 the first branch, which applies only for x < -4, used in place of the last branch",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-01017",
+         "label": "\\( k = -14 \\) and \\( m = -32 \\), because the middle branch must equal 24 at \\( x = -4 \\) and 10 at \\( x = -3 \\).",
+         "derivation": "at x = -4 the last branch, which applies only for x > -3, used in place of the first branch",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-01003",
+         "label": "No values of k and m work, because \\( \\frac{x^{2} - 16}{x + 4} \\) is undefined at \\( x = -4 \\), so f has no limit there.",
+         "derivation": "the first branch is undefined at x = -4, and that was taken to mean its limit there does not exist",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-17",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-01051",
+      "BC-SKL-01052",
+      "BC-SKL-01050",
+      "BC-SKL-01053"
+   ],
+   "parameter_draw": {
+      "left_end": "-4",
+      "right_end": "-3",
+      "curvature": "2",
+      "lift": "-8",
+      "check": "values_and_reason"
+   },
+   "predicted_success_probability": 0.4134,
+   "provenance": {
+      "template_id": "TPL-BC-QA-01008-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-01008:spec-1:item-6:try-6",
+      "parameter_draw": {
+         "left_end": "-4",
+         "right_end": "-3",
+         "curvature": "2",
+         "lift": "-8",
+         "check": "values_and_reason"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:48Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": true,
+      "requested_success_probability": 0.4134
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

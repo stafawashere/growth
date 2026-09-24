@@ -1,0 +1,164 @@
+{
+   "id": "ITM-GEN-06002-04",
+   "archetype_id": "BC-QA-06002",
+   "variant_id": "BC-QV-06002-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Rain collects in a gauge at a rate of R(t) millimeters per hour, where t is measured in hours for \\( 0 \\le t \\le 12 \\). Selected values of R(t) are shown in the table. At time t = 0, the gauge holds 80 millimeters. Use a trapezoidal sum with the three subintervals indicated by the table to approximate the amount at time t = 12, in millimeters. Show the setup.",
+      "command_verb": "approximate"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 182,
+      "units": "millimeters"
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The widths of the subintervals are 4, 2, 6, read from the table inputs.",
+         "rule_named": "subinterval widths from the table"
+      },
+      {
+         "step": 2,
+         "text": "Each trapezoid is half the width times the sum of its two end values: \\( \\tfrac{1}{2}(4)(12 + 7) + \\tfrac{1}{2}(2)(7 + 12) + \\tfrac{1}{2}(6)(12 + 3) \\).",
+         "point_type_id": "BC-PT-99018",
+         "rule_named": "trapezoidal sum"
+      },
+      {
+         "step": 3,
+         "text": "The trapezoidal sum is \\( 102 \\) millimeters.",
+         "mathjson": 102,
+         "point_type_id": "BC-PT-99019",
+         "rule_named": "arithmetic"
+      },
+      {
+         "step": 4,
+         "text": "Adding the starting amount, the amount at t = 12 is about \\( 80 + 102 = 182 \\) millimeters.",
+         "mathjson": 182,
+         "point_type_id": "BC-PT-99033",
+         "rule_named": "initial amount plus accumulated change"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "value": 182
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-06001",
+         "value": 186,
+         "derivation": "one common width, 12/3, used for every subinterval although the table inputs are unevenly spaced",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-06004",
+         "value": 246,
+         "derivation": "the factor of one half applied to the first trapezoid only",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-06015",
+         "value": 102,
+         "derivation": "the trapezoidal sum reported as the amount, with the starting 80 millimeters left out",
+         "mechanism": "forgot_constant"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-05",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06008",
+      "BC-SKL-06011",
+      "BC-SKL-06036"
+   ],
+   "parameter_draw": {
+      "gaps": [
+         "4",
+         "2",
+         "6"
+      ],
+      "rates": [
+         "12",
+         "7",
+         "12",
+         "3"
+      ],
+      "initial": "80",
+      "context": "rain",
+      "ask": "amount"
+   },
+   "predicted_success_probability": 0.3318,
+   "provenance": {
+      "template_id": "TPL-BC-QA-06002-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-06002:spec-1:item-4:try-4",
+      "parameter_draw": {
+         "gaps": [
+            "4",
+            "2",
+            "6"
+         ],
+         "rates": [
+            "12",
+            "7",
+            "12",
+            "3"
+         ],
+         "initial": "80",
+         "context": "rain",
+         "ask": "amount"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, run D",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:56Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.3318
+   },
+   "figure": {
+      "kind": "table",
+      "columns": [
+         "t (hours)",
+         "R(t) (millimeters per hour)"
+      ],
+      "rows": [
+         [
+            "0",
+            "12"
+         ],
+         [
+            "4",
+            "7"
+         ],
+         [
+            "6",
+            "12"
+         ],
+         [
+            "12",
+            "3"
+         ]
+      ],
+      "labels": [],
+      "alt": "A table of R(t): at t = 0, R(t) = 12; at t = 4, R(t) = 7; at t = 6, R(t) = 12; at t = 12, R(t) = 3."
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

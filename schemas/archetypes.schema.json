@@ -189,6 +189,9 @@
      },
      "frequency": {
       "type": "object"
+     },
+     "parameter_spec": {
+      "$ref": "#/$defs/parameter_spec"
      }
     },
     "required": [
@@ -298,5 +301,259 @@
    }
   }
  },
- "$schema": "https://json-schema.org/draft/2020-12/schema"
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$defs": {
+  "parameter_spec": {
+   "type": "object",
+   "required": [
+    "spec_version",
+    "evidence_tag",
+    "parameters",
+    "constraints",
+    "derived",
+    "invariants",
+    "dial_bindings",
+    "calculator_guard",
+    "representation_bindings"
+   ],
+   "additionalProperties": false,
+   "properties": {
+    "spec_version": {
+     "type": "string",
+     "minLength": 1
+    },
+    "evidence_tag": {
+     "enum": [
+      "verified",
+      "single-source",
+      "inferred",
+      "uncertain"
+     ]
+    },
+    "parameters": {
+     "type": "array",
+     "minItems": 1,
+     "items": {
+      "type": "object",
+      "required": [
+       "name",
+       "type",
+       "role",
+       "domain"
+      ],
+      "additionalProperties": false,
+      "properties": {
+       "name": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9_]*$"
+       },
+       "type": {
+        "enum": [
+         "integer",
+         "rational",
+         "real",
+         "symbol",
+         "function_form",
+         "interval",
+         "label",
+         "unit"
+        ]
+       },
+       "role": {
+        "enum": [
+         "safe",
+         "difficulty"
+        ]
+       },
+       "domain": {
+        "oneOf": [
+         {
+          "type": "object",
+          "required": [
+           "values"
+          ],
+          "additionalProperties": false,
+          "properties": {
+           "values": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+             "type": [
+              "string",
+              "number",
+              "integer",
+              "array"
+             ]
+            }
+           }
+          }
+         },
+         {
+          "type": "object",
+          "required": [
+           "min",
+           "max",
+           "step"
+          ],
+          "additionalProperties": false,
+          "properties": {
+           "min": {
+            "type": "number"
+           },
+           "max": {
+            "type": "number"
+           },
+           "step": {
+            "type": "number",
+            "exclusiveMinimum": 0
+           },
+           "exclude": {
+            "type": "array",
+            "items": {
+             "type": "number"
+            }
+           }
+          }
+         }
+        ]
+       },
+       "count": {
+        "type": "integer",
+        "minimum": 2
+       },
+       "distinct": {
+        "type": "boolean"
+       },
+       "order": {
+        "enum": [
+         "increasing",
+         "decreasing"
+        ]
+       },
+       "description": {
+        "type": "string"
+       }
+      }
+     }
+    },
+    "constraints": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "minLength": 1
+     }
+    },
+    "derived": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "required": [
+       "name",
+       "expression"
+      ],
+      "additionalProperties": false,
+      "properties": {
+       "name": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9_]*$"
+       },
+       "expression": {
+        "type": "string",
+        "minLength": 1
+       }
+      }
+     }
+    },
+    "invariants": {
+     "type": "array",
+     "minItems": 1,
+     "items": {
+      "type": "string",
+      "minLength": 1
+     }
+    },
+    "dial_bindings": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "required": [
+       "parameter",
+       "difficulty_factor_id",
+       "settings"
+      ],
+      "additionalProperties": false,
+      "properties": {
+       "parameter": {
+        "type": "string"
+       },
+       "difficulty_factor_id": {
+        "type": "string",
+        "pattern": "^BC-DF-\\d{2}$"
+       },
+       "settings": {
+        "type": "object",
+        "additionalProperties": {
+         "enum": [
+          "off",
+          "low",
+          "medium",
+          "high"
+         ]
+        },
+        "minProperties": 1
+       }
+      }
+     }
+    },
+    "calculator_guard": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "representation_bindings": {
+     "type": "array",
+     "minItems": 1,
+     "items": {
+      "type": "object",
+      "required": [
+       "representation",
+       "figure_kind",
+       "requires"
+      ],
+      "additionalProperties": false,
+      "properties": {
+       "representation": {
+        "type": "string",
+        "pattern": "^BC-REP-\\d{2}$"
+       },
+       "figure_kind": {
+        "enum": [
+         null,
+         "function_graph",
+         "slope_field",
+         "table",
+         "region",
+         "parametric_curve",
+         "polar_curve",
+         "vector_diagram",
+         "number_line",
+         "geometric_diagram"
+        ]
+       },
+       "requires": {
+        "type": "array",
+        "items": {
+         "type": "string"
+        }
+       }
+      }
+     }
+    },
+    "notes": {
+     "type": "string"
+    }
+   }
+  }
+ }
 }

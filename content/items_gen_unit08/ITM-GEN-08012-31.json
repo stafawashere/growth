@@ -1,0 +1,179 @@
+{
+   "id": "ITM-GEN-08012-31",
+   "archetype_id": "BC-QA-08012",
+   "variant_id": "BC-QV-08012-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = 4 x^{2} - 1 \\). Let R be the region bounded by the graph of f, the line \\( y = -1 \\), and the vertical line \\( x = 2 \\). Find the exact volume of the solid generated when R is revolved about the line \\( y = -1 \\).",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Multiply",
+         [
+            "Rational",
+            512,
+            5
+         ],
+         "Pi"
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Each slice perpendicular to the x-axis is a disc whose radius is the distance from the curve to the axis, \\( r = f(x) - (-1) = 4 x^{2} \\).",
+         "point_type_id": "BC-PT-99058",
+         "rule_named": "disc radius"
+      },
+      {
+         "step": 2,
+         "text": "The volume is \\( \\pi\\int_{0}^{2} \\left(4 x^{2}\\right)^{2}\\,dx \\).",
+         "point_type_id": "BC-PT-99001",
+         "rule_named": "disc method"
+      },
+      {
+         "step": 3,
+         "text": "Since \\( \\int_{0}^{2} 16 x^{4}\\,dx = \\frac{512}{5} \\), the volume is \\( \\frac{512 \\pi}{5} \\).",
+         "mathjson": [
+            "Multiply",
+            [
+               "Rational",
+               512,
+               5
+            ],
+            "Pi"
+         ],
+         "point_type_id": "BC-PT-99004",
+         "rule_named": "power rule"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-08038",
+         "value": [
+            "Multiply",
+            [
+               "Rational",
+               1246,
+               15
+            ],
+            "Pi"
+         ],
+         "derivation": "the radius measured from the x-axis, f(x), instead of from the line y = -1",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-08036",
+         "value": [
+            "Multiply",
+            [
+               "Rational",
+               32,
+               3
+            ],
+            "Pi"
+         ],
+         "derivation": "the radius left unsquared, pi times the integral of r",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "C",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Multiply",
+            [
+               "Rational",
+               512,
+               5
+            ],
+            "Pi"
+         ]
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-08037",
+         "value": [
+            "Rational",
+            512,
+            5
+         ],
+         "derivation": "the factor of pi left off, the integral of r squared",
+         "mechanism": "forgot_constant"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-08040",
+      "BC-SKL-08041",
+      "BC-SKL-08042",
+      "BC-SKL-08043",
+      "BC-SKL-08044",
+      "BC-SKL-08045",
+      "BC-SKL-08046",
+      "BC-SKL-08047"
+   ],
+   "parameter_draw": {
+      "form": "square",
+      "scale": "4",
+      "left": "0",
+      "width": "2",
+      "level": "-1",
+      "presentation": "formula",
+      "axis": "shifted"
+   },
+   "predicted_success_probability": 0.5,
+   "provenance": {
+      "template_id": "TPL-BC-QA-08012-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-08012:spec-1:item-31:try-1",
+      "parameter_draw": {
+         "form": "square",
+         "scale": "4",
+         "left": "0",
+         "width": "2",
+         "level": "-1",
+         "presentation": "formula",
+         "axis": "shifted"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, run F",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T20:01:51Z",
+      "content_snapshot": "a800600d4c437c1ba8273c7cb1a03e0fe70b74050fbabcbcf27d142ba56fded8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.5
+   },
+   "review_decision": {
+      "item_id": "ITM-GEN-08012-31",
+      "decision": "approve",
+      "reason": "no served item duplicates it once its copies were settled in id order",
+      "by": "claude-opus-5-5 on the operator's delegation of 2026-09-24",
+      "decided_on": "2026-09-24",
+      "rules": [
+         11
+      ],
+      "archetype_id": "BC-QA-08012",
+      "prompt_version": "generator/template_v1",
+      "template_id": "TPL-BC-QA-08012-v1",
+      "parameter_seed": "BC-QA-08012:spec-1:item-31:try-1"
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

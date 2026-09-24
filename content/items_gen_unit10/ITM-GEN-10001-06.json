@@ -1,0 +1,129 @@
+{
+   "id": "ITM-GEN-10001-06",
+   "archetype_id": "BC-QA-10001",
+   "variant_id": "BC-QV-10001-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Determine whether the series \\( \\sum_{n=2}^{\\infty} a_n \\), where \\( a_n = \\frac{2^{n}}{n!} \\), converges or diverges. Name a test whose conditions the series meets and state the verdict it gives.",
+      "command_verb": "determine"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "The series converges by the ratio test, because \\( \\lim_{n\\to\\infty} \\left|\\frac{a_{n+1}}{a_n}\\right| = 0 < 1 \\)."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The general term \\( \\frac{2^{n}}{n!} \\) contains a factorial, so the ratio test fits.",
+         "rule_named": "match the form to a test"
+      },
+      {
+         "step": 2,
+         "text": "\\( \\lim_{n\\to\\infty} \\left|\\frac{a_{n+1}}{a_n}\\right| = \\lim_{n\\to\\infty} \\frac{2}{n+1} = 0 \\).",
+         "rule_named": "ratio test"
+      },
+      {
+         "step": 3,
+         "text": "The series converges by the ratio test, because \\( \\lim_{n\\to\\infty} \\left|\\frac{a_{n+1}}{a_n}\\right| = 0 < 1 \\).",
+         "rule_named": "verdict"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "label": "The series converges by the ratio test, because \\( \\lim_{n\\to\\infty} \\left|\\frac{a_{n+1}}{a_n}\\right| = 0 < 1 \\)."
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-10007",
+         "label": "The series diverges by the nth term test, because \\( \\lim_{n\\to\\infty} a_n = \\infty \\).",
+         "derivation": "the limit of the terms taken as infinite because the numerator grows without bound",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-10004",
+         "label": "The series diverges by the geometric series test, because \\( r = 2 > 1 \\).",
+         "derivation": "the series treated as geometric with the exponential's base as its ratio, ignoring the factorial",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-10008",
+         "label": "The series converges by the nth term test, because \\( \\lim_{n\\to\\infty} a_n = 0 \\).",
+         "derivation": "convergence concluded from the terms approaching 0, a condition that is necessary but never sufficient",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-09",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10001",
+      "BC-SKL-10005",
+      "BC-SKL-10006",
+      "BC-SKL-10011",
+      "BC-SKL-10013",
+      "BC-SKL-10018",
+      "BC-SKL-10021",
+      "BC-SKL-10033"
+   ],
+   "parameter_draw": {
+      "form": "ratio_factorial",
+      "power": "3",
+      "coefficient": "3",
+      "start": "2",
+      "lead_top": "5",
+      "constant_top": "2",
+      "lead_bottom": "6",
+      "constant_bottom": "3",
+      "ratio": "1/4",
+      "base": "2",
+      "degree": "2"
+   },
+   "predicted_success_probability": 0.3318,
+   "provenance": {
+      "template_id": "TPL-BC-QA-10001-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-10001:spec-1:item-6:try-7",
+      "parameter_draw": {
+         "form": "ratio_factorial",
+         "power": "3",
+         "coefficient": "3",
+         "start": "2",
+         "lead_top": "5",
+         "constant_top": "2",
+         "lead_bottom": "6",
+         "constant_bottom": "3",
+         "ratio": "1/4",
+         "base": "2",
+         "degree": "2"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:58:54Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.2592
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

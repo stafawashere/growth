@@ -1,0 +1,110 @@
+{
+   "id": "ITM-GEN-04001-13",
+   "archetype_id": "BC-QA-04001",
+   "variant_id": "BC-QV-04001-01",
+   "format": "mcq",
+   "stem": {
+      "text": "The mass of a block of melting ice, measured in kilograms, is modeled by a twice-differentiable function M of time t, measured in minutes. It is known that \\( M'(5) = 6 \\). Using correct units, interpret the meaning of \\( M'(5) = 6 \\) in the context of the problem.",
+      "command_verb": "interpret"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "At time t = 5 minutes, the mass of the block of ice is increasing at a rate of 6 kilograms per minute."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "\\( M'(5) \\) is the rate of change of the mass of the block of ice at the instant t = 5, so it is measured in kilograms per minute.",
+         "point_type_id": "BC-PT-99008",
+         "rule_named": "derivative as a rate of change"
+      },
+      {
+         "step": 2,
+         "text": "The value is positive, so the mass of the block of ice is increasing at that instant, by 6 kilograms for each minute.",
+         "point_type_id": "BC-PT-99004",
+         "rule_named": "sign of the derivative gives the direction"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-04001",
+         "label": "At time t = 5 minutes, the mass of the block of ice is increasing at a rate of 6 minutes per kilogram.",
+         "derivation": "the units assembled the wrong way round, time units over quantity units",
+         "mechanism": "reversed_quantities"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-04003",
+         "label": "At time t = 5 minutes, the mass of the block of ice has changed by a total of 6 kilograms.",
+         "derivation": "the derivative value read as an amount, the total change in the quantity, rather than a rate",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-99027",
+         "label": "Over the first 5 minutes, the mass of the block of ice is increasing at a rate of 6 kilograms per minute.",
+         "derivation": "the instant replaced by the whole interval up to it, so the interpretation no longer says when the rate holds",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": true,
+         "error_path": null,
+         "label": "At time t = 5 minutes, the mass of the block of ice is increasing at a rate of 6 kilograms per minute."
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-05",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-16",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-04001",
+      "BC-SKL-04002",
+      "BC-SKL-04003",
+      "BC-SKL-04005"
+   ],
+   "parameter_draw": {
+      "context": "ice",
+      "instant": "5",
+      "magnitude": "6",
+      "sign": "positive",
+      "order": "first"
+   },
+   "predicted_success_probability": 0.3318,
+   "provenance": {
+      "template_id": "TPL-BC-QA-04001-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-04001:spec-1:item-13:try-13",
+      "parameter_draw": {
+         "context": "ice",
+         "instant": "5",
+         "magnitude": "6",
+         "sign": "positive",
+         "order": "first"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:53Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.2592
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

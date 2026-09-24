@@ -838,3 +838,38 @@ describe("SessionScreen ungraded attempts always move on", () => {
       cleanup();
    });
 });
+describe("SessionScreen figure on feedback, 03's feedback policy", () => {
+   it("draws the item's figure again on the feedback screen", async () => {
+      stageFlow("unsupported");
+      mocked.readNextItem.mockResolvedValue({
+         item: {
+            ...servedItem("unsupported"),
+            figure_spec: {
+               kind: "table",
+               columns: ["x", "f(x)"],
+               rows: [["0", "2"], ["1", "5"]],
+               labels: [],
+               alt: "A table of f at x = 0 and x = 1."
+            }
+         }
+      });
+
+      await commitOn(COMMIT_BUTTONS);
+      await screen.findByTestId("feedback");
+
+      expect(screen.getByTestId("feedback-figure").querySelector("table")).not.toBeNull();
+
+      cleanup();
+   });
+
+   it("draws no figure box on the feedback screen of an item without one", async () => {
+      stageFlow("unsupported");
+
+      await commitOn(COMMIT_BUTTONS);
+      await screen.findByTestId("feedback");
+
+      expect(screen.queryByTestId("feedback-figure")).toBeNull();
+
+      cleanup();
+   });
+});

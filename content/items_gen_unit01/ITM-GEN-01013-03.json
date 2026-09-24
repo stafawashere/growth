@@ -1,0 +1,109 @@
+{
+   "id": "ITM-GEN-01013-03",
+   "archetype_id": "BC-QA-01013",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "A function k satisfies \\( \\lim_{x \\to 7^{-}} k(x) = \\infty \\). Describe in words what this statement says about k and about its graph.",
+      "command_verb": "interpret"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "As x approaches \\( 7 \\) from the left, k(x) increases without bound, so the line \\( x = 7 \\) is a vertical asymptote."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The input approaches \\( 7 \\) from the left only, and the output is not approaching any number.",
+         "rule_named": "read the input side and the output behaviour"
+      },
+      {
+         "step": 2,
+         "text": "The values k(x) increases without bound, which is what an infinite limit means, so the graph has the vertical asymptote \\( x = 7 \\).",
+         "rule_named": "infinite limit and vertical asymptote"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-01020",
+         "label": "As x approaches \\( 7 \\) from the left, the limit of k(x) exists and equals \\( \\infty \\), so there is no asymptote at \\( x = 7 \\).",
+         "derivation": "the statement that the limit equals infinity read as a statement that the limit exists",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-01002",
+         "label": "As x approaches \\( 7 \\) from either side, k(x) increases without bound, so the line \\( x = 7 \\) is a vertical asymptote.",
+         "derivation": "the one sided statement read as describing the behaviour on both sides of the input",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-01033",
+         "label": "As x increases without bound, k(x) approaches \\( 7 \\), so the line \\( y = 7 \\) is a horizontal asymptote.",
+         "derivation": "the infinite limit at an input read as a limit at infinity, with the roles of input and output exchanged",
+         "mechanism": "reversed_quantities"
+      },
+      {
+         "id": "D",
+         "is_key": true,
+         "error_path": null,
+         "label": "As x approaches \\( 7 \\) from the left, k(x) increases without bound, so the line \\( x = 7 \\) is a vertical asymptote."
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-03",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-01036",
+      "BC-SKL-01037",
+      "BC-SKL-01038",
+      "BC-SKL-01005",
+      "BC-SKL-01006",
+      "BC-SKL-01007",
+      "BC-SKL-01014"
+   ],
+   "parameter_draw": {
+      "number": "7",
+      "side": "left",
+      "growth": "up",
+      "direction": "positive",
+      "letter": "k",
+      "statement": "infinite_limit"
+   },
+   "predicted_success_probability": 0.3318,
+   "provenance": {
+      "template_id": "TPL-BC-QA-01013-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-01013:spec-1:item-3:try-3",
+      "parameter_draw": {
+         "number": "7",
+         "side": "left",
+         "growth": "up",
+         "direction": "positive",
+         "letter": "k",
+         "statement": "infinite_limit"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:48Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": true,
+      "requested_success_probability": 0.3318
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

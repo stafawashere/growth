@@ -1,0 +1,125 @@
+{
+   "id": "ITM-GEN-04003-11",
+   "archetype_id": "BC-QA-04003",
+   "variant_id": "BC-QV-04003-01",
+   "format": "mcq",
+   "stem": {
+      "text": "A particle moves along the x-axis. Its position at time t seconds is \\( x(t) = - 2 t^{3} + 3 t^{2} + 41 t - 5 \\) meters, for \\( t \\ge 0 \\). Find the speed of the particle at time t = 3, and determine whether the speed is increasing or decreasing at that time. Give a reason for the answer.",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "The speed is 5 meters per second, and it is decreasing at that time, because \\( v(3) = 5 \\) and \\( a(3) = -30 \\) have opposite signs."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Velocity is the derivative of position, \\( v(t) = - 6 t^{2} + 6 t + 41 \\), so \\( v(3) = 5 \\).",
+         "mathjson": 5,
+         "point_type_id": "BC-PT-99027",
+         "rule_named": "velocity is the derivative of position"
+      },
+      {
+         "step": 2,
+         "text": "Acceleration is the derivative of velocity, \\( a(t) = 6 - 12 t \\), so \\( a(3) = -30 \\).",
+         "mathjson": -30,
+         "point_type_id": "BC-PT-99027",
+         "rule_named": "acceleration is the derivative of velocity"
+      },
+      {
+         "step": 3,
+         "text": "The speed is \\( \\left|v(3)\\right| = 5 \\) meters per second.",
+         "mathjson": 5,
+         "point_type_id": "BC-PT-99004",
+         "rule_named": "speed is the absolute value of velocity"
+      },
+      {
+         "step": 4,
+         "text": "Because \\( v(3) = 5 \\) and \\( a(3) = -30 \\) have opposite signs, the speed of the particle is decreasing at t = 3.",
+         "point_type_id": "BC-PT-99004",
+         "rule_named": "speed increases when velocity and acceleration share a sign"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-04006",
+         "label": "The speed is 30 meters per second, and it is increasing at that time, because \\( v(3) = -30 \\) and \\( a(3) = -12 \\) have the same sign.",
+         "derivation": "the position differentiated once too often, so the acceleration is read as the velocity and its derivative as the acceleration",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": true,
+         "error_path": null,
+         "label": "The speed is 5 meters per second, and it is decreasing at that time, because \\( v(3) = 5 \\) and \\( a(3) = -30 \\) have opposite signs."
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-04006",
+         "label": "The speed is 5 meters per second, and it is decreasing at that time, because \\( v(3) = 5 \\) and \\( a(3) = -12 \\) have opposite signs.",
+         "derivation": "the velocity found correctly but differentiated twice more for the acceleration",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-04006",
+         "label": "The speed is 91 meters per second, and it is increasing at that time, because \\( v(3) = 91 \\) and \\( a(3) = 5 \\) have the same sign.",
+         "derivation": "the position read as the velocity and the velocity as the acceleration, one differentiation too few",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-04006",
+      "BC-SKL-04007",
+      "BC-SKL-04008",
+      "BC-SKL-04010"
+   ],
+   "parameter_draw": {
+      "cubic": "-2",
+      "quadratic": "3",
+      "free": "-5",
+      "speed_value": "5",
+      "instant": "3",
+      "given": "position",
+      "heading": "right"
+   },
+   "predicted_success_probability": 0.4134,
+   "provenance": {
+      "template_id": "TPL-BC-QA-04003-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-04003:spec-1:item-11:try-11",
+      "parameter_draw": {
+         "cubic": "-2",
+         "quadratic": "3",
+         "free": "-5",
+         "speed_value": "5",
+         "instant": "3",
+         "given": "position",
+         "heading": "right"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T13:51:57Z",
+      "content_snapshot": "a800600d4c437c1ba8273c7cb1a03e0fe70b74050fbabcbcf27d142ba56fded8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.5
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

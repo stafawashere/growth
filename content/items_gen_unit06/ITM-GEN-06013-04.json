@@ -1,0 +1,137 @@
+{
+   "id": "ITM-GEN-06013-04",
+   "archetype_id": "BC-QA-06013",
+   "variant_id": "BC-QV-06013-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Suppose \\( \\int_{1}^{4} f(x)\\,dx = 8 \\) and \\( \\int_{1}^{8} f(x)\\,dx = -5 \\). The function h is defined by \\( h(x) = -2 \\) for \\( x < 7 \\) and \\( h(x) = -4 \\) for \\( x \\ge 7 \\). Find \\( \\int_{8}^{4} \\left(2f(x) + h(x)\\right)\\,dx \\).",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 36
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Split the interval at x = 4: \\( \\int_{4}^{8} f(x)\\,dx = -5 - 8 = -13 \\).",
+         "point_type_id": "BC-PT-99005",
+         "rule_named": "additivity over adjacent intervals"
+      },
+      {
+         "step": 2,
+         "text": "h jumps at x = 7, so split its integral there: \\( -2 \\cdot 3 - 4 \\cdot 1 = -10 \\).",
+         "rule_named": "integral of a step function split at the jump"
+      },
+      {
+         "step": 3,
+         "text": "By linearity, \\( \\int_{4}^{8} \\left(2f(x) + h(x)\\right)\\,dx = 2(-13) - 10 = -36 \\).",
+         "rule_named": "constant multiple and sum properties"
+      },
+      {
+         "step": 4,
+         "text": "The requested limits run from 8 down to 4, which changes the sign: the value is \\( 36 \\).",
+         "mathjson": 36,
+         "point_type_id": "BC-PT-99004",
+         "rule_named": "reversing the limits"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-99012",
+         "value": -36,
+         "derivation": "the reversed pair of limits not handled, so the sign is never changed",
+         "mechanism": "sign_error"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-99032",
+         "value": 20,
+         "derivation": "the integral of f run from 1 instead of from 4, a lower limit the requested integral never has",
+         "mechanism": "wrong_limits"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-06031",
+         "value": 42,
+         "derivation": "h integrated as the single value -4 across the jump at x = 7",
+         "mechanism": "theorem_condition_ignored"
+      },
+      {
+         "id": "D",
+         "is_key": true,
+         "error_path": null,
+         "value": 36
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-17",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06029",
+      "BC-SKL-06030",
+      "BC-SKL-06031",
+      "BC-SKL-06032",
+      "BC-SKL-06033",
+      "BC-SKL-06035"
+   ],
+   "parameter_draw": {
+      "direction": "reversed",
+      "start": "1",
+      "gaps": [
+         "3",
+         "3",
+         "1"
+      ],
+      "first_value": "8",
+      "whole_value": "-5",
+      "multiple": "2",
+      "steps": [
+         "-2",
+         "-4"
+      ]
+   },
+   "predicted_success_probability": 0.1978,
+   "provenance": {
+      "template_id": "TPL-BC-QA-06013-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-06013:spec-1:item-4:try-4",
+      "parameter_draw": {
+         "direction": "reversed",
+         "start": "1",
+         "gaps": [
+            "3",
+            "3",
+            "1"
+         ],
+         "first_value": "8",
+         "whole_value": "-5",
+         "multiple": "2",
+         "steps": [
+            "-2",
+            "-4"
+         ]
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:54:01Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.2592
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

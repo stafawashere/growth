@@ -1,0 +1,136 @@
+{
+   "id": "ITM-GEN-07010-15",
+   "archetype_id": "BC-QA-07010",
+   "variant_id": "BC-QV-07010-01",
+   "format": "mcq",
+   "stem": {
+      "text": "The function \\( y = f(t) \\) is a solution to the differential equation \\( \\frac{dy}{dt} = \\left(t - 5\\right) \\left(t + 3\\right) \\left(3 y + 3\\right) \\), and \\( y > -1 \\) for all t. For \\( t > 0 \\), find the input at which f has a critical point and determine whether it is the location of a relative minimum, a relative maximum, or neither.",
+      "command_verb": "determine"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "The solution has a relative minimum at \\( t = 5 \\), because the derivative changes from negative to positive at \\( t = 5 \\)."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "A critical point needs \\( \\frac{dy}{dt} = 0 \\). Because \\( y > -1 \\), the factor \\( y + 1 \\) is never 0, and for \\( t > 0 \\) the factor \\( t + 3 \\) is positive, so the only zero in the range is \\( t = 5 \\).",
+         "point_type_id": "BC-PT-99005",
+         "rule_named": "zeros of the right side within the stated range"
+      },
+      {
+         "step": 2,
+         "text": "On the range, the sign of \\( \\frac{dy}{dt} \\) is the sign of \\( 3\\left(t - 5\\right) \\) times a positive quantity, so it is negative just before \\( t = 5 \\) and positive just after.",
+         "point_type_id": "BC-PT-99010",
+         "rule_named": "sign analysis of the derivative"
+      },
+      {
+         "step": 3,
+         "text": "Because the derivative changes from negative to positive at \\( t = 5 \\), f has a relative minimum there.",
+         "point_type_id": "BC-PT-99063",
+         "rule_named": "first derivative test"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-07012",
+         "label": "The solution has no critical point for \\( t > 0 \\), because the factor \\( y + 1 \\) is never 0 when \\( y > -1 \\).",
+         "derivation": "the right side never set equal to 0 in t; only the factor in y was examined",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-05025",
+         "label": "The solution has a relative minimum at \\( t = 5 \\) and a relative maximum at \\( t = -3 \\), because the derivative changes sign at both inputs.",
+         "derivation": "the zero at t = -3, outside the stated range, kept as a second critical point",
+         "mechanism": "theorem_condition_ignored"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-05021",
+         "label": "The solution has a relative maximum at \\( t = 5 \\), because the derivative changes from negative to positive at \\( t = 5 \\).",
+         "derivation": "the sign change found correctly and then read the wrong way round",
+         "mechanism": "reversed_quantities"
+      },
+      {
+         "id": "D",
+         "is_key": true,
+         "error_path": null,
+         "label": "The solution has a relative minimum at \\( t = 5 \\), because the derivative changes from negative to positive at \\( t = 5 \\)."
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-07012",
+      "BC-SKL-07018"
+   ],
+   "parameter_draw": {
+      "bound_side": "above",
+      "outside_root": "-3",
+      "inside_root": "5",
+      "level": "-1",
+      "sign": "1",
+      "scale": "3",
+      "letters": "ty"
+   },
+   "predicted_success_probability": 0.5,
+   "provenance": {
+      "template_id": "TPL-BC-QA-07010-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-07010:spec-1:item-15:try-15",
+      "parameter_draw": {
+         "bound_side": "above",
+         "outside_root": "-3",
+         "inside_root": "5",
+         "level": "-1",
+         "sign": "1",
+         "scale": "3",
+         "letters": "ty"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:54:01Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.4134
+   },
+   "review": {
+      "item_id": "ITM-GEN-07010-15",
+      "status": "needs_review",
+      "rules": [
+         10
+      ],
+      "notes": [
+         "Jaccard 0.872 with ITM-GEN-07010-12 (bank)"
+      ]
+   },
+   "review_decision": {
+      "item_id": "ITM-GEN-07010-15",
+      "decision": "reject",
+      "reason": "duplicate of ITM-GEN-07010-12, which is kept",
+      "by": "claude-opus-5-5 on the operator's delegation of 2026-09-24",
+      "decided_on": "2026-09-24",
+      "rules": [
+         10
+      ],
+      "archetype_id": "BC-QA-07010",
+      "prompt_version": "generator/template_v1",
+      "template_id": "TPL-BC-QA-07010-v1"
+   }
+}

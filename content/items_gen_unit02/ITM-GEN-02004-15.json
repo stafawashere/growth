@@ -1,0 +1,174 @@
+{
+   "id": "ITM-GEN-02004-15",
+   "archetype_id": "BC-QA-02004",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "The function g is differentiable for all real numbers, and selected values of g and its derivative are given in the table. Find \\( \\lim_{x \\to 2} \\left(4 g(x) + 3\\right) \\), and justify your answer.",
+      "command_verb": "justify"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "The limit is 39, because g is differentiable at \\( x = 2 \\), so it is continuous there, and \\( \\lim_{x \\to 2} g(x) = g(2) = 9 \\)."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "g is differentiable at \\( x = 2 \\), so it is continuous there.",
+         "rule_named": "differentiability implies continuity"
+      },
+      {
+         "step": 2,
+         "text": "Continuity gives \\( \\lim_{x \\to 2} g(x) = g(2) = 9 \\).",
+         "rule_named": "limit of a continuous function"
+      },
+      {
+         "step": 3,
+         "text": "By the limit laws the limit is 4(9) + 3 = 39.",
+         "rule_named": "sum and constant multiple limit laws"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "label": "The limit is 39, because g is differentiable at \\( x = 2 \\), so it is continuous there, and \\( \\lim_{x \\to 2} g(x) = g(2) = 9 \\)."
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-99008",
+         "label": "The limit is 39, because every function has its limit equal to its value at each input, and \\( \\lim_{x \\to 2} g(x) = g(2) = 9 \\).",
+         "derivation": "the conclusion used as if it held for every function, with no hypothesis about g checked",
+         "mechanism": "theorem_condition_ignored"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-02012",
+         "label": "The limit is 39, because g is continuous at \\( x = 2 \\), so it is differentiable there, and \\( \\lim_{x \\to 2} g(x) = g(2) = 9 \\).",
+         "derivation": "the implication run backwards, with continuity offered as the reason for differentiability",
+         "mechanism": "reversed_quantities"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-02011",
+         "label": "The limit is 39, because the table gives a value of g at every listed input, so g is continuous at \\( x = 2 \\), and \\( \\lim_{x \\to 2} g(x) = g(2) = 9 \\).",
+         "derivation": "continuity asserted on a false basis, having tabulated values, instead of on the differentiability the stem supplies",
+         "mechanism": "theorem_condition_ignored"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-10",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02019",
+      "BC-SKL-02020",
+      "BC-SKL-02024"
+   ],
+   "parameter_draw": {
+      "inputs": [
+         "1",
+         "2",
+         "3",
+         "7"
+      ],
+      "values": [
+         "1",
+         "9",
+         "-7",
+         "6"
+      ],
+      "slopes": [
+         "3",
+         "3",
+         "3",
+         "-1"
+      ],
+      "scale": "4",
+      "offset": "3",
+      "target": "-2",
+      "argument": "limit"
+   },
+   "predicted_success_probability": 0.3318,
+   "provenance": {
+      "template_id": "TPL-BC-QA-02004-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-02004:spec-1:item-15:try-15",
+      "parameter_draw": {
+         "inputs": [
+            "1",
+            "2",
+            "3",
+            "7"
+         ],
+         "values": [
+            "1",
+            "9",
+            "-7",
+            "6"
+         ],
+         "slopes": [
+            "3",
+            "3",
+            "3",
+            "-1"
+         ],
+         "scale": "4",
+         "offset": "3",
+         "target": "-2",
+         "argument": "limit"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T13:02:04Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": true,
+      "requested_success_probability": 0.2592
+   },
+   "figure": {
+      "kind": "table",
+      "columns": [
+         "x",
+         "g(x)",
+         "g'(x)"
+      ],
+      "rows": [
+         [
+            "1",
+            "1",
+            "3"
+         ],
+         [
+            "2",
+            "9",
+            "3"
+         ],
+         [
+            "3",
+            "-7",
+            "3"
+         ],
+         [
+            "7",
+            "6",
+            "-1"
+         ]
+      ],
+      "labels": [],
+      "alt": "A table of x, g(x) and g'(x): at x = 1, g = 1 and g' = 3; at x = 2, g = 9 and g' = 3; at x = 3, g = -7 and g' = 3; at x = 7, g = 6 and g' = -1."
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

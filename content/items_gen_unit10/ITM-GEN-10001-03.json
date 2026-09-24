@@ -1,0 +1,147 @@
+{
+   "id": "ITM-GEN-10001-03",
+   "archetype_id": "BC-QA-10001",
+   "variant_id": "BC-QV-10001-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Determine whether the series \\( \\sum_{n=2}^{\\infty} a_n \\), where \\( a_n = \\frac{4}{n^{\\frac{2}{3}}} \\), converges or diverges. Name a test whose conditions the series meets and state the verdict it gives.",
+      "command_verb": "determine"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "The series diverges by the p-series test, because \\( p = \\frac{2}{3} \\le 1 \\)."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The general term is \\( \\frac{4}{n^{\\frac{2}{3}}} \\), a constant multiple of \\( \\frac{1}{n^{\\frac{2}{3}}} \\), so the p-series test fits: the terms are positive and the series is a p-series times \\( 4 \\).",
+         "rule_named": "match the form to a test"
+      },
+      {
+         "step": 2,
+         "text": "Here \\( p = \\frac{2}{3} \\), and a p-series converges exactly when p is greater than 1.",
+         "mathjson": [
+            "Rational",
+            2,
+            3
+         ],
+         "rule_named": "p-series test"
+      },
+      {
+         "step": 3,
+         "text": "The series diverges by the p-series test, because \\( p = \\frac{2}{3} \\le 1 \\).",
+         "rule_named": "verdict"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-10014",
+         "label": "The series converges by the p-series test, because \\( p = \\frac{2}{3} < 1 \\).",
+         "derivation": "the p-series threshold reversed, so p less than 1 read as convergence",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-10009",
+         "label": "The series converges by the alternating series test, because \\( a_n \\) decreases to 0.",
+         "derivation": "the alternating series test named for a series of positive terms, its alternating hypothesis never checked",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-10008",
+         "label": "The series converges by the nth term test, because \\( \\lim_{n\\to\\infty} a_n = 0 \\).",
+         "derivation": "convergence concluded from the terms approaching 0, a condition that is necessary but never sufficient",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": true,
+         "error_path": null,
+         "label": "The series diverges by the p-series test, because \\( p = \\frac{2}{3} \\le 1 \\)."
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-09",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10001",
+      "BC-SKL-10005",
+      "BC-SKL-10006",
+      "BC-SKL-10011",
+      "BC-SKL-10013",
+      "BC-SKL-10018",
+      "BC-SKL-10021",
+      "BC-SKL-10033"
+   ],
+   "parameter_draw": {
+      "form": "pseries",
+      "power": "2/3",
+      "coefficient": "4",
+      "start": "2",
+      "lead_top": "1",
+      "constant_top": "-3",
+      "lead_bottom": "3",
+      "constant_bottom": "5",
+      "ratio": "5/6",
+      "base": "3",
+      "degree": "2"
+   },
+   "predicted_success_probability": 0.3318,
+   "provenance": {
+      "template_id": "TPL-BC-QA-10001-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-10001:spec-1:item-3:try-4",
+      "parameter_draw": {
+         "form": "pseries",
+         "power": "2/3",
+         "coefficient": "4",
+         "start": "2",
+         "lead_top": "1",
+         "constant_top": "-3",
+         "lead_bottom": "3",
+         "constant_bottom": "5",
+         "ratio": "5/6",
+         "base": "3",
+         "degree": "2"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:58:54Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.2592
+   },
+   "review_decision": {
+      "item_id": "ITM-GEN-10001-03",
+      "decision": "approve",
+      "reason": "one of a duplicate pair with ITM-GEN-10001-14; the lower id is kept",
+      "by": "claude-opus-5-5 on the operator's delegation of 2026-09-24",
+      "decided_on": "2026-09-24",
+      "rules": [
+         10
+      ],
+      "archetype_id": "BC-QA-10001",
+      "prompt_version": "generator/template_v1",
+      "template_id": "TPL-BC-QA-10001-v1"
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

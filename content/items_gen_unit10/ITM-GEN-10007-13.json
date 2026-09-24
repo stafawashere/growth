@@ -1,0 +1,113 @@
+{
+   "id": "ITM-GEN-10007-13",
+   "archetype_id": "BC-QA-10007",
+   "variant_id": "BC-QV-10007-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Classify the series \\( \\sum_{n=1}^{\\infty} \\frac{4 \\left(-1\\right)^{n}}{\\sqrt{n + 9}} \\) as absolutely convergent, conditionally convergent, or divergent.",
+      "command_verb": "classify"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "The series converges conditionally, because it passes the alternating series test while the series of absolute values diverges."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Test the series of absolute values, \\( \\sum \\frac{4}{\\sqrt{n + 9}} \\). By limit comparison with \\( \\sum \\frac{1}{n^{\\frac{1}{2}}} \\), the ratio of terms tends to \\( 4 \\), so both series behave alike.",
+         "mathjson": 4,
+         "rule_named": "limit comparison test"
+      },
+      {
+         "step": 2,
+         "text": "That p-series has p = \\( \\frac{1}{2} \\), not more than 1, so the series of absolute values diverges.",
+         "rule_named": "p-series test"
+      },
+      {
+         "step": 3,
+         "text": "The given series alternates, its terms decrease, and they approach 0, so it converges by the alternating series test. It converges conditionally.",
+         "rule_named": "alternating series test"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-10018",
+         "label": "The series converges absolutely, because it passes the alternating series test, its terms decreasing in size to 0.",
+         "derivation": "absolute values omitted: the alternating series test result reported as absolute convergence",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-10023",
+         "label": "The series converges absolutely, because it passes the alternating series test while the series of absolute values diverges.",
+         "derivation": "the absolute and conditional labels exchanged",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-10003",
+         "label": "The series diverges, because the series of absolute values diverges by comparison with a p-series.",
+         "derivation": "the divergence of the absolute series reported as the verdict on the given series",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": true,
+         "error_path": null,
+         "label": "The series converges conditionally, because it passes the alternating series test while the series of absolute values diverges."
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-09",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10034",
+      "BC-SKL-10035",
+      "BC-SKL-10036",
+      "BC-SKL-10037",
+      "BC-SKL-10038"
+   ],
+   "parameter_draw": {
+      "form": "power",
+      "power": "1/2",
+      "coefficient": "4",
+      "offset": "9",
+      "start": "1",
+      "sign_start": "n"
+   },
+   "predicted_success_probability": 0.5,
+   "provenance": {
+      "template_id": "TPL-BC-QA-10007-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-10007:spec-1:item-13:try-13",
+      "parameter_draw": {
+         "form": "power",
+         "power": "1/2",
+         "coefficient": "4",
+         "offset": "9",
+         "start": "1",
+         "sign_start": "n"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:54:18Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.5
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

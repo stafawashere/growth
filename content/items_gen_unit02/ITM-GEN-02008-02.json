@@ -1,0 +1,289 @@
+{
+   "id": "ITM-GEN-02008-02",
+   "archetype_id": "BC-QA-02008",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( h(x) = \\frac{6 x^{2} + 7}{\\cos{\\left(x \\right)}} \\). Find the exact value of \\( h'\\left(\\frac{\\pi}{3}\\right) \\).",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Multiply",
+            [
+               "Rational",
+               4,
+               3
+            ],
+            [
+               "Sqrt",
+               3
+            ],
+            [
+               "Power",
+               "Pi",
+               2
+            ]
+         ],
+         [
+            "Multiply",
+            14,
+            [
+               "Sqrt",
+               3
+            ]
+         ],
+         [
+            "Multiply",
+            8,
+            "Pi"
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The numerator is \\( u = 6 x^{2} + 7 \\) with \\( u' = 12 x \\), and the denominator is \\( v = \\cos{\\left(x \\right)} \\) with \\( v' = - \\sin{\\left(x \\right)} \\).",
+         "rule_named": "identify the two pieces"
+      },
+      {
+         "step": 2,
+         "text": "By the quotient rule, \\( h'(x) = \\frac{u'v - uv'}{v^{2}} \\), with u'v first in the numerator.",
+         "point_type_id": "BC-PT-99080",
+         "rule_named": "quotient rule"
+      },
+      {
+         "step": 3,
+         "text": "At \\( x = \\frac{\\pi}{3} \\): \\( u = \\frac{2 \\pi^{2}}{3} + 7 \\), \\( u' = 4 \\pi \\), \\( v = \\frac{1}{2} \\) and \\( v' = - \\frac{\\sqrt{3}}{2} \\), so \\( h'\\left(\\frac{\\pi}{3}\\right) = \\frac{4 \\sqrt{3} \\pi^{2}}{3} + 14 \\sqrt{3} + 8 \\pi \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  4,
+                  3
+               ],
+               [
+                  "Sqrt",
+                  3
+               ],
+               [
+                  "Power",
+                  "Pi",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               14,
+               [
+                  "Sqrt",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               8,
+               "Pi"
+            ]
+         ],
+         "point_type_id": "BC-PT-99004",
+         "rule_named": "substitute and simplify"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-02021",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               -1,
+               8,
+               "Pi"
+            ],
+            [
+               "Multiply",
+               -1,
+               14,
+               [
+                  "Sqrt",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               -1,
+               [
+                  "Rational",
+                  4,
+                  3
+               ],
+               [
+                  "Sqrt",
+                  3
+               ],
+               [
+                  "Power",
+                  "Pi",
+                  2
+               ]
+            ]
+         ],
+         "derivation": "the numerator written as u v' - u' v, the two terms in reverse order",
+         "mechanism": "reversed_quantities"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-02022",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  2,
+                  3
+               ],
+               [
+                  "Sqrt",
+                  3
+               ],
+               [
+                  "Power",
+                  "Pi",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               7,
+               [
+                  "Sqrt",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               4,
+               "Pi"
+            ]
+         ],
+         "derivation": "the numerator divided by v instead of by v squared",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "C",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  4,
+                  3
+               ],
+               [
+                  "Sqrt",
+                  3
+               ],
+               [
+                  "Power",
+                  "Pi",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               14,
+               [
+                  "Sqrt",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               8,
+               "Pi"
+            ]
+         ]
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-02026",
+         "value": [
+            "Multiply",
+            -1,
+            [
+               "Rational",
+               8,
+               3
+            ],
+            [
+               "Sqrt",
+               3
+            ],
+            "Pi"
+         ],
+         "derivation": "numerator and denominator differentiated separately, u' / v'",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02036",
+      "BC-SKL-02038",
+      "BC-SKL-02039",
+      "BC-SKL-02040",
+      "BC-SKL-02042"
+   ],
+   "parameter_draw": {
+      "numerator": "quadratic",
+      "leading": "6",
+      "constant": "7",
+      "trig": "cos",
+      "angle": "1/3"
+   },
+   "predicted_success_probability": 0.3318,
+   "provenance": {
+      "template_id": "TPL-BC-QA-02008-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-02008:spec-1:item-2:try-2",
+      "parameter_draw": {
+         "numerator": "quadratic",
+         "leading": "6",
+         "constant": "7",
+         "trig": "cos",
+         "angle": "1/3"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, author tpl-B",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:50Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.4134
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

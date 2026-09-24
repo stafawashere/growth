@@ -1,0 +1,129 @@
+{
+   "id": "ITM-GEN-04007-00",
+   "archetype_id": "BC-QA-04007",
+   "variant_id": "BC-QV-04007-01",
+   "format": "mcq",
+   "stem": {
+      "text": "A particle moves along the curve \\( 2 x^{2} - 2 x y + 3 y^{2} = 42 \\). At the instant when the particle is at the point \\( (-3, 2) \\), its x-coordinate is changing at the rate \\( \\frac{dx}{dt} = 2 \\). Find \\( \\frac{dy}{dt} \\) at that instant.",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         16,
+         9
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Differentiate both sides with respect to t, using the product rule on the mixed term: \\( 4x\\frac{dx}{dt} - 2\\left(\\frac{dx}{dt}\\,y + x\\frac{dy}{dt}\\right) + 6y\\frac{dy}{dt} = 0 \\).",
+         "rule_named": "implicit differentiation with respect to time"
+      },
+      {
+         "step": 2,
+         "text": "Substitute x = -3, y = 2 and \\( \\frac{dx}{dt} = 2 \\): \\( -24 - 8 + 6\\frac{dy}{dt} + 12\\frac{dy}{dt} = 0 \\), that is, \\( -32 + 18\\frac{dy}{dt} = 0 \\).",
+         "rule_named": "substitute after differentiating"
+      },
+      {
+         "step": 3,
+         "text": "Solve for the requested rate: \\( \\frac{dy}{dt} = \\frac{16}{9} \\).",
+         "mathjson": [
+            "Rational",
+            16,
+            9
+         ],
+         "rule_named": "isolate the requested rate"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Rational",
+            16,
+            9
+         ]
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-04020",
+         "value": 0,
+         "derivation": "x replaced by -3 before differentiating, so the x terms become constants and the equation forces dy/dt = 0",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-04017",
+         "value": [
+            "Rational",
+            8,
+            9
+         ],
+         "derivation": "the curve differentiated with respect to x, and dy/dx at the point reported with no factor dx/dt",
+         "mechanism": "chain_rule_omitted"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-04018",
+         "value": [
+            "Rational",
+            8,
+            3
+         ],
+         "derivation": "the mixed term - 2 x y differentiated as though y were constant, giving only - 2 y dx/dt",
+         "mechanism": "product_rule_omitted"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-04022",
+      "BC-SKL-04019",
+      "BC-SKL-04020",
+      "BC-SKL-04023",
+      "BC-SKL-04024"
+   ],
+   "parameter_draw": {
+      "square_x": "2",
+      "mixed": "-2",
+      "square_y": "3",
+      "point_x": "-3",
+      "point_y": "2",
+      "rate_x": "2"
+   },
+   "predicted_success_probability": 0.3318,
+   "provenance": {
+      "template_id": "TPL-BC-QA-04007-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-04007:spec-1:item-0:try-0",
+      "parameter_draw": {
+         "square_x": "2",
+         "mixed": "-2",
+         "square_y": "3",
+         "point_x": "-3",
+         "point_y": "2",
+         "rate_x": "2"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:53Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": true,
+      "requested_success_probability": 0.3318
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

@@ -1,0 +1,125 @@
+{
+   "id": "ITM-GEN-06006-12",
+   "archetype_id": "BC-QA-06006",
+   "variant_id": "BC-QV-06006-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Water enters a storage tank at a rate modeled by \\( E(t) = 3 \\sin{\\left(\\frac{t^{2}}{2} \\right)} + 4 \\) gallons per hour and leaves it at a rate modeled by \\( L(t) = 2 \\cos{\\left(\\frac{t}{2} \\right)} + 4 \\) gallons per hour, for \\( 0 \\le t \\le 3.5 \\), where t is measured in hours. At time t = 0 the tank holds 60 gallons. Using a calculator, find the amount in the tank at time t = 3.5. Show the setup for the calculation, and give the value correct to three decimal places.",
+      "setup_required": true,
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "numeric",
+      "mathjson": 57.900777500706425,
+      "decimals": 3,
+      "units": "gallons"
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The net rate is inflow minus outflow, \\( E(t) - L(t) \\), so the answer is \\( 60 + \\int_{0}^{3.5} \\left(E(t) - L(t)\\right)\\,dt \\).",
+         "point_type_id": "BC-PT-99001",
+         "rule_named": "net rate as inflow minus outflow"
+      },
+      {
+         "step": 2,
+         "text": "With a calculator in radian mode, \\( \\int_{0}^{3.5} \\left(E(t) - L(t)\\right)\\,dt \\) is approximately -2.099 (more places are kept).",
+         "mathjson": -2.099222499293574,
+         "rule_named": "numerical integration"
+      },
+      {
+         "step": 3,
+         "text": "Adding the initial amount gives about 57.901 gallons.",
+         "mathjson": 57.900777500706425,
+         "rule_named": "initial amount plus net change"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "value": 57.901
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-99009",
+         "value": 65.773,
+         "derivation": "L(t) substituted without parentheses, so only its constant term is subtracted and its cosine term is added",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-08013",
+         "value": 93.773,
+         "derivation": "the inflow and outflow rates added instead of subtracted",
+         "mechanism": "sign_error"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-06015",
+         "value": -2.099,
+         "derivation": "the integral of the net rate reported as the amount, with the initial 60 gallons left out",
+         "mechanism": "forgot_constant"
+      }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-05",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-16",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06039",
+      "BC-SKL-06037",
+      "BC-SKL-06036",
+      "BC-SKL-08013",
+      "BC-SKL-08016",
+      "BC-SKL-08012"
+   ],
+   "parameter_draw": {
+      "inflow_base": "4",
+      "inflow_swing": "3",
+      "stretch": "2",
+      "outflow_base": "4",
+      "outflow_swing": "2",
+      "horizon": "7/2",
+      "initial": "60",
+      "context": "tank",
+      "ask": "amount"
+   },
+   "predicted_success_probability": 0.1091,
+   "provenance": {
+      "template_id": "TPL-BC-QA-06006-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-06006:spec-1:item-12:try-12",
+      "parameter_draw": {
+         "inflow_base": "4",
+         "inflow_swing": "3",
+         "stretch": "2",
+         "outflow_base": "4",
+         "outflow_swing": "2",
+         "horizon": "7/2",
+         "initial": "60",
+         "context": "tank",
+         "ask": "amount"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, run D",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:56Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.1091
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

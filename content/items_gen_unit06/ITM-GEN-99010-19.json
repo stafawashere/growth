@@ -1,0 +1,114 @@
+{
+   "id": "ITM-GEN-99010-19",
+   "archetype_id": "BC-QA-99010",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "A vertical shaft is drilled to an unknown depth D meters, where \\( D > 3 \\). The amount of dissolved salt per meter of depth is \\( f(h) = \\sin{\\left(\\frac{h^{2}}{5} \\right)} + 5 \\) grams per meter for \\( 0 \\le h \\le 3 \\), where h is the depth in meters. Below depth 3 the amount per meter is an unknown continuous function g(h), and \\( 0 \\le g(h) \\le 6 e^{3 - h} \\) for \\( h \\ge 3 \\), and \\( \\int_{3}^{\\infty} 6 e^{3 - h}\\,dh = 6 \\). Let T be the total amount of dissolved salt, in grams, along the whole shaft. Write an expression involving integrals for T, and explain why \\( T \\le 23 \\). Use a calculator for any numerical work.",
+      "setup_required": true,
+      "command_verb": "explain"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "\\( T = \\int_{0}^{3} f(h)\\,dh + \\int_{3}^{D} g(h)\\,dh \\), and \\( T \\le 23 \\) because \\( \\int_{0}^{3} f(h)\\,dh \\approx 16.424 \\) and \\( \\int_{3}^{D} g(h)\\,dh \\le \\int_{3}^{\\infty} 6 e^{3 - h}\\,dh = 6 \\)."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The model changes at depth 3, so split the total there: \\( T = \\int_{0}^{3} f(h)\\,dh + \\int_{3}^{D} g(h)\\,dh \\).",
+         "rule_named": "additivity over adjacent intervals"
+      },
+      {
+         "step": 2,
+         "text": "A calculator gives \\( \\int_{0}^{3} f(h)\\,dh \\approx 16.424 \\).",
+         "mathjson": 16.424028099928872,
+         "rule_named": "numerical integration"
+      },
+      {
+         "step": 3,
+         "text": "Since \\( 0 \\le g(h) \\le 6 e^{3 - h} \\) and the interval from 3 to D lies inside the interval from 3 to infinity, \\( \\int_{3}^{D} g(h)\\,dh \\le 6 \\). So \\( T \\le 16.424 + 6 < 23 \\).",
+         "rule_named": "comparison of integrals"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "label": "\\( T = \\int_{0}^{3} f(h)\\,dh + \\int_{3}^{D} g(h)\\,dh \\), and \\( T \\le 23 \\) because \\( \\int_{0}^{3} f(h)\\,dh \\approx 16.424 \\) and \\( \\int_{3}^{D} g(h)\\,dh \\le \\int_{3}^{\\infty} 6 e^{3 - h}\\,dh = 6 \\)."
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-99032",
+         "label": "\\( T = \\int_{0}^{3} f(h)\\,dh + \\int_{3}^{D} g(h)\\,dh + C \\), and \\( T \\le 23 \\) because \\( \\int_{0}^{3} f(h)\\,dh \\approx 16.424 \\) and \\( \\int_{3}^{D} g(h)\\,dh \\le \\int_{3}^{\\infty} 6 e^{3 - h}\\,dh = 6 \\).",
+         "derivation": "a constant of integration attached to a sum of definite integrals",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-99032",
+         "label": "\\( T = \\int_{0}^{3} f(h)\\,dh + g(h), \\text{ where } g(h) = \\int_{3}^{D} g(h)\\,dh \\), and \\( T \\le 23 \\) because \\( \\int_{0}^{3} f(h)\\,dh \\approx 16.424 \\) and \\( \\int_{3}^{D} g(h)\\,dh \\le \\int_{3}^{\\infty} 6 e^{3 - h}\\,dh = 6 \\).",
+         "derivation": "the unknown function set equal to its own integral and substituted for the second piece",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-99012",
+         "label": "\\( T = \\int_{0}^{3} f(h)\\,dh + g(D) - g(3) \\), and \\( T \\le 23 \\) because \\( \\int_{0}^{3} f(h)\\,dh \\approx 16.424 \\) and \\( \\int_{3}^{D} g(h)\\,dh \\le \\int_{3}^{\\infty} 6 e^{3 - h}\\,dh = 6 \\).",
+         "derivation": "the integral of g from the split depth to D written as g(D) - g(split), as though g were its own antiderivative",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-04",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-16",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06029",
+      "BC-SKL-06030",
+      "BC-SKL-06035"
+   ],
+   "parameter_draw": {
+      "base_density": "5",
+      "swing": "1",
+      "stretch": "5",
+      "split": "3",
+      "tail": "6",
+      "context": "salt",
+      "comparison": "explicit"
+   },
+   "predicted_success_probability": 0.2592,
+   "provenance": {
+      "template_id": "TPL-BC-QA-99010-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-99010:spec-1:item-19:try-19",
+      "parameter_draw": {
+         "base_density": "5",
+         "swing": "1",
+         "stretch": "5",
+         "split": "3",
+         "tail": "6",
+         "context": "salt",
+         "comparison": "explicit"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:54:03Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.1978
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

@@ -1,0 +1,171 @@
+{
+   "id": "ITM-GEN-05001-05",
+   "archetype_id": "BC-QA-05001",
+   "variant_id": "BC-QV-05001-01",
+   "format": "mcq",
+   "stem": {
+      "text": "The function f is continuous for all real x and differentiable for all x except \\( x = 8 \\), where its graph has a corner. Selected values of f are given in the table. Does the Mean Value Theorem guarantee a value c, with \\( 4 < c < 12 \\), such that \\( f'(c) = - \\frac{19}{8} \\)? Justify the answer.",
+      "command_verb": "justify"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "No. Although \\( \\frac{f(12) - f(4)}{12 - 4} = - \\frac{19}{8} \\), f is not differentiable at \\( x = 8 \\), which lies in \\( (4, 12) \\), so the Mean Value Theorem does not apply and such a c is not guaranteed."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The average rate of change of f over \\( \\left[4, 12\\right] \\) is \\( \\frac{f(12) - f(4)}{12 - 4} = \\frac{-2 - 17}{8} = - \\frac{19}{8} \\).",
+         "mathjson": [
+            "Rational",
+            -19,
+            8
+         ],
+         "point_type_id": "BC-PT-99021",
+         "rule_named": "average rate of change"
+      },
+      {
+         "step": 2,
+         "text": "The Mean Value Theorem needs f continuous on \\( \\left[4, 12\\right] \\) and differentiable on \\( (4, 12) \\), but f is not differentiable at \\( x = 8 \\), which lies in \\( (4, 12) \\). The theorem does not apply, and no other fact given forces \\( f'(c) = - \\frac{19}{8} \\) anywhere in the interval, so the answer is no.",
+         "point_type_id": "BC-PT-99017",
+         "rule_named": "hypotheses of the Mean Value Theorem"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-99008",
+         "label": "Yes. Since \\( \\frac{f(12) - f(4)}{12 - 4} = - \\frac{19}{8} \\), the Mean Value Theorem guarantees such a c, with f taken to be differentiable on \\( (4, 12) \\).",
+         "derivation": "the Mean Value Theorem applied without checking its hypotheses, which fail at x = 8",
+         "mechanism": "theorem_condition_ignored"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-05004",
+         "label": "Yes. Since \\( \\frac{f(12) - f(4)}{12 - 4} = - \\frac{19}{8} \\), there is a c with \\( 4 < c < 12 \\) and \\( f'(c) = - \\frac{19}{8} \\), because an average rate of change is always reached by the derivative.",
+         "derivation": "existence asserted from the arithmetic alone, with no theorem named and no check that one applies",
+         "mechanism": "theorem_condition_ignored"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-05006",
+         "label": "Yes. Since \\( \\frac{f(12) - f(4)}{12 - 4} = - \\frac{19}{8} \\), the Intermediate Value Theorem guarantees such a c, with f taken to be continuous on \\( \\left[4, 12\\right] \\).",
+         "derivation": "the Intermediate Value Theorem cited for a claim about the derivative",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": true,
+         "error_path": null,
+         "label": "No. Although \\( \\frac{f(12) - f(4)}{12 - 4} = - \\frac{19}{8} \\), f is not differentiable at \\( x = 8 \\), which lies in \\( (4, 12) \\), so the Mean Value Theorem does not apply and such a c is not guaranteed."
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-09",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-05001",
+      "BC-SKL-05002",
+      "BC-SKL-05003",
+      "BC-SKL-05004",
+      "BC-SKL-05006"
+   ],
+   "parameter_draw": {
+      "inputs": [
+         "3",
+         "4",
+         "5",
+         "7",
+         "12"
+      ],
+      "outputs": [
+         "7",
+         "17",
+         "18",
+         "8",
+         "-2"
+      ],
+      "rows": "1-4",
+      "context": "bare",
+      "hypothesis": "corner"
+   },
+   "predicted_success_probability": 0.3318,
+   "provenance": {
+      "template_id": "TPL-BC-QA-05001-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-05001:spec-1:item-5:try-5",
+      "parameter_draw": {
+         "inputs": [
+            "3",
+            "4",
+            "5",
+            "7",
+            "12"
+         ],
+         "outputs": [
+            "7",
+            "17",
+            "18",
+            "8",
+            "-2"
+         ],
+         "rows": "1-4",
+         "context": "bare",
+         "hypothesis": "corner"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T14:03:52Z",
+      "content_snapshot": "a800600d4c437c1ba8273c7cb1a03e0fe70b74050fbabcbcf27d142ba56fded8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.4134
+   },
+   "figure": {
+      "kind": "table",
+      "columns": [
+         "x",
+         "f(x)"
+      ],
+      "rows": [
+         [
+            "3",
+            "7"
+         ],
+         [
+            "4",
+            "17"
+         ],
+         [
+            "5",
+            "18"
+         ],
+         [
+            "7",
+            "8"
+         ],
+         [
+            "12",
+            "-2"
+         ]
+      ],
+      "labels": [],
+      "alt": "The table lists f(x) at five inputs, f(3) = 7; f(4) = 17; f(5) = 18; f(7) = 8; f(12) = -2."
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

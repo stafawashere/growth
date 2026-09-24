@@ -1,0 +1,110 @@
+{
+   "id": "ITM-GEN-07006-11",
+   "archetype_id": "BC-QA-07006",
+   "variant_id": "BC-QV-07006-01",
+   "format": "mcq",
+   "stem": {
+      "text": "The height H of the water in a tank, in centimeters, connected to a reservoir whose water stands at 95 centimeters moves toward the reservoir height at a rate proportional to the difference between the reservoir height and H. At time \\( t = 0 \\) minutes, \\( H = 60 \\). Using k for the positive constant of proportionality, write a differential equation for H as a function of t and state the initial condition.",
+      "command_verb": "write"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "\\( \\frac{dH}{dt} = k\\left(95 - H\\right) \\), with \\( H(0) = 60 \\)"
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The dependent variable is H and the independent variable is t in minutes, so the rate is \\( \\frac{dH}{dt} \\).",
+         "rule_named": "naming the variables"
+      },
+      {
+         "step": 2,
+         "text": "Proportional to the difference means a constant multiple of it. With k positive, \\( k(95 - H) \\) is positive when H is below 95 and negative when it is above, so H moves up toward 95 from its starting value.",
+         "rule_named": "proportionality as a constant multiple"
+      },
+      {
+         "step": 3,
+         "text": "The equation is \\( \\frac{dH}{dt} = k\\left(95 - H\\right) \\), and the initial condition, stated separately, is \\( H(0) = 60 \\).",
+         "rule_named": "differential equation with initial condition"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-07001",
+         "label": "\\( \\frac{dH}{dt} = 95 - H \\), with \\( H(0) = 60 \\)",
+         "derivation": "proportional read as equal, so the constant k never appears",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": true,
+         "error_path": null,
+         "label": "\\( \\frac{dH}{dt} = k\\left(95 - H\\right) \\), with \\( H(0) = 60 \\)"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-07002",
+         "label": "\\( \\frac{dH}{dt} = k\\left(H - 95\\right) \\), with \\( H(0) = 60 \\)",
+         "derivation": "the difference written as H minus the level, which with k positive drives H away from 95",
+         "mechanism": "sign_error"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-07004",
+         "label": "\\( \\frac{dH}{dt} = k\\left(95 - 60\\right) \\), with \\( H(0) = 60 \\)",
+         "derivation": "the initial value 60 substituted for H inside the equation, so the rate becomes a constant",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-04",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-07001",
+      "BC-SKL-07002",
+      "BC-SKL-07003",
+      "BC-SKL-07004",
+      "BC-SKL-07005"
+   ],
+   "parameter_draw": {
+      "context": "tank",
+      "level": "95",
+      "gap": "35",
+      "approach": "from_below",
+      "time_unit": "minutes"
+   },
+   "predicted_success_probability": 0.5866,
+   "provenance": {
+      "template_id": "TPL-BC-QA-07006-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-07006:spec-1:item-11:try-11",
+      "parameter_draw": {
+         "context": "tank",
+         "level": "95",
+         "gap": "35",
+         "approach": "from_below",
+         "time_unit": "minutes"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:54:01Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.5866
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

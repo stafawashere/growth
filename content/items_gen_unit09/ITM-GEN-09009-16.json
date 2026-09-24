@@ -1,0 +1,111 @@
+{
+   "id": "ITM-GEN-09009-16",
+   "archetype_id": "BC-QA-09009",
+   "variant_id": "BC-QV-09009-01",
+   "format": "mcq",
+   "stem": {
+      "text": "A curve is given in polar coordinates by \\( r = \\theta \\cos{\\left(3 \\theta \\right)} + 4 \\). Using a calculator, find the value of \\( \\frac{dr}{d\\theta} \\) at the point on the curve where \\( \\theta = 0.5 \\). Show the setup for the calculation, and give the value correct to three decimal places.",
+      "setup_required": true,
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "numeric",
+      "mathjson": -1.4255052782383788,
+      "decimals": 3
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "By the product rule, \\( \\frac{dr}{d\\theta} = - 3 \\theta \\sin{\\left(3 \\theta \\right)} + \\cos{\\left(3 \\theta \\right)} \\).",
+         "point_type_id": "BC-PT-99049",
+         "rule_named": "product rule"
+      },
+      {
+         "step": 2,
+         "text": "With the calculator in radian mode, the derivative at \\( \\theta = 0.5 \\) is about -1.426.",
+         "mathjson": -1.4255052782383788,
+         "point_type_id": "BC-PT-99005",
+         "rule_named": "evaluation at the stated angle"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-09031",
+         "value": -0.897,
+         "derivation": "dr/dtheta and the slope dy/dx of the curve confused, so the slope of the tangent line at the angle is reported",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-99031",
+         "value": -2.992,
+         "derivation": "the polar radius differentiated without the product rule, theta times the trigonometric factor differentiated as the product of the two derivatives",
+         "mechanism": "product_rule_omitted"
+      },
+      {
+         "id": "C",
+         "is_key": true,
+         "error_path": null,
+         "value": -1.426
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-09023",
+         "value": 0.999,
+         "derivation": "the derivative evaluated with the calculator in degree mode, so the trigonometric factor reads its argument in degrees",
+         "mechanism": "algebra_slip"
+      }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-13",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-05",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-16",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-09030",
+      "BC-SKL-09031",
+      "BC-SKL-09029",
+      "BC-SKL-09033"
+   ],
+   "parameter_draw": {
+      "constant": "4",
+      "coefficient": "1",
+      "frequency": "3",
+      "trig": "cos",
+      "angle": "1/2",
+      "framing": "bare"
+   },
+   "predicted_success_probability": 0.3318,
+   "provenance": {
+      "template_id": "TPL-BC-QA-09009-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-09009:spec-1:item-16:try-16",
+      "parameter_draw": {
+         "constant": "4",
+         "coefficient": "1",
+         "frequency": "3",
+         "trig": "cos",
+         "angle": "1/2",
+         "framing": "bare"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:54:03Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.3318
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

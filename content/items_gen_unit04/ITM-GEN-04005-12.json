@@ -1,0 +1,117 @@
+{
+   "id": "ITM-GEN-04005-12",
+   "archetype_id": "BC-QA-04005",
+   "variant_id": "BC-QV-04005-01",
+   "format": "mcq",
+   "stem": {
+      "text": "The amount of water in a storage tank is modeled by \\( W(t) = 10 + 20 e^{- \\frac{t}{12}} \\) hundreds of gallons, for \\( 0 \\le t \\le 36 \\), where t is measured in hours. Using a calculator, find \\( W'(9) \\), showing the setup, and interpret the value in the context of the problem with correct units. Give the value correct to three decimal places.",
+      "setup_required": true,
+      "command_verb": "interpret"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "\\( W'(9) = -0.787 \\), so at time t = 9 hours the amount of water in the tank is decreasing at a rate of 0.787 hundreds of gallons per hour."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Differentiate the model to get the rate, \\( W'(t) = - \\frac{5 e^{- \\frac{t}{12}}}{3} \\).",
+         "point_type_id": "BC-PT-99027",
+         "rule_named": "derivative of the model"
+      },
+      {
+         "step": 2,
+         "text": "With a calculator, \\( W'(9) = -0.787 \\) to three decimal places.",
+         "point_type_id": "BC-PT-99027",
+         "rule_named": "evaluate the derivative at the instant"
+      },
+      {
+         "step": 3,
+         "text": "The value is negative, so at time t = 9 hours the amount of water in the tank is decreasing at a rate of 0.787 hundreds of gallons per hour.",
+         "point_type_id": "BC-PT-99014",
+         "rule_named": "sign of the rate gives the direction of change"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-04012",
+         "label": "\\( W'(9) = -0.787 \\), so when the amount of water in the tank is 9 hundreds of gallons it is decreasing at a rate of 0.787 hundreds of gallons per hour.",
+         "derivation": "the independent variable never named, so the input is read as a value of the quantity rather than a time",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-04001",
+         "label": "\\( W'(9) = -0.787 \\), so at time t = 9 hours the amount of water in the tank is decreasing at a rate of 0.787 hours per hundred gallons.",
+         "derivation": "the units assembled the wrong way round, time units over the units of the quantity",
+         "mechanism": "reversed_quantities"
+      },
+      {
+         "id": "C",
+         "is_key": true,
+         "error_path": null,
+         "label": "\\( W'(9) = -0.787 \\), so at time t = 9 hours the amount of water in the tank is decreasing at a rate of 0.787 hundreds of gallons per hour."
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-04013",
+         "label": "\\( W'(9) = -0.787 \\), so at time t = 9 hours the amount of water in the tank is moving with a velocity of -0.787 hundreds of gallons per hour.",
+         "derivation": "the rate of change of a non-motion quantity called a velocity",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-05",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-16",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-04013",
+      "BC-SKL-04014",
+      "BC-SKL-04015",
+      "BC-SKL-04016"
+   ],
+   "parameter_draw": {
+      "context": "tank",
+      "base": "10",
+      "amount": "20",
+      "scale": "12",
+      "instant": "9",
+      "trend": "falling",
+      "supplied": "model"
+   },
+   "predicted_success_probability": 0.5,
+   "provenance": {
+      "template_id": "TPL-BC-QA-04005-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-04005:spec-1:item-12:try-12",
+      "parameter_draw": {
+         "context": "tank",
+         "base": "10",
+         "amount": "20",
+         "scale": "12",
+         "instant": "9",
+         "trend": "falling",
+         "supplied": "model"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T13:51:57Z",
+      "content_snapshot": "a800600d4c437c1ba8273c7cb1a03e0fe70b74050fbabcbcf27d142ba56fded8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.5
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

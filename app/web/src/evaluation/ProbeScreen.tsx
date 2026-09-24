@@ -1,6 +1,7 @@
 import type { ProbeAdministration, ProbeServedItem } from "../api/types";
 import { MathField } from "../input/MathField";
 import { McqControl } from "../input/McqControl";
+import { FigureView } from "../figures/FigureView";
 import { MathText } from "../math/MathText";
 import { ANSWER_UNAVAILABLE } from "../session/Item";
 
@@ -81,6 +82,8 @@ export function ProbeItemView(props: ProbeItemViewProps) {
          <h1 className="eyebrow">Concept probe</h1>
 
          <p className="item-stem" data-testid="item-stem"><MathText text={item.stem} /></p>
+
+         {item.figure_spec ? <FigureView spec={item.figure_spec} /> : null}
 
          {servesMcq ? (
             <div data-testid="mcq-answer">

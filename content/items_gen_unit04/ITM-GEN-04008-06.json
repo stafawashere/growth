@@ -1,0 +1,127 @@
+{
+   "id": "ITM-GEN-04008-06",
+   "archetype_id": "BC-QA-04008",
+   "variant_id": "BC-QV-04008-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Let f be a twice-differentiable function with \\( f(1) = -1 \\) and \\( f'(x) = x^{2} - 8 \\) for all x. Use the line tangent to the graph of f at x = 1 to approximate \\( f(1.2) \\). Is this approximation an overestimate or an underestimate of \\( f(1.2) \\)? Give a reason for the answer.",
+      "command_verb": "approximate"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "The approximation is \\( -2.4 \\), and it is an underestimate, because \\( f''(x) = 2 x \\) is positive for x > 0, so the graph of f is concave up and lies above its tangent line there."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The slope of the tangent line is \\( f'(1) = -7 \\).",
+         "mathjson": -7,
+         "point_type_id": "BC-PT-99025",
+         "rule_named": "slope of the tangent line from the derivative"
+      },
+      {
+         "step": 2,
+         "text": "The tangent line at x = 1 is \\( y = -1 - 7(x - 1) \\).",
+         "point_type_id": "BC-PT-99025",
+         "rule_named": "point-slope form"
+      },
+      {
+         "step": 3,
+         "text": "At x = 1.2, \\( y = -1 + (-7)(\\frac{1}{5}) = - \\frac{12}{5} \\).",
+         "mathjson": [
+            "Rational",
+            -12,
+            5
+         ],
+         "point_type_id": "BC-PT-99004",
+         "rule_named": "evaluate the tangent line at the nearby input"
+      },
+      {
+         "step": 4,
+         "text": "\\( f''(x) = 2 x \\), which is positive for every x between 1 and 1.2. The graph is concave up there, so it lies above the tangent line and the approximation is an underestimate.",
+         "point_type_id": "BC-PT-99005",
+         "rule_named": "concavity decides the direction of the error"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-04027",
+         "label": "The approximation is \\( -2.312 \\), and it is an underestimate, because \\( f''(x) = 2 x \\) is positive for x > 0, so the graph of f is concave up and lies above its tangent line there.",
+         "derivation": "the slope taken as f'(1.2) at the nearby input instead of f'(1)",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "B",
+         "is_key": true,
+         "error_path": null,
+         "label": "The approximation is \\( -2.4 \\), and it is an underestimate, because \\( f''(x) = 2 x \\) is positive for x > 0, so the graph of f is concave up and lies above its tangent line there."
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-99020",
+         "label": "The approximation is \\( -2.4 \\), and it is an overestimate, because \\( f'(1) = -7 \\) is negative, so f is decreasing and its values fall below the starting value f(1).",
+         "derivation": "the verdict decided from the sign of the first derivative, not from concavity",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-04024",
+         "label": "The approximation is \\( -1 \\), and it is an underestimate, because \\( f''(x) = 2 x \\) is positive for x > 0, so the graph of f is concave up and lies above its tangent line there.",
+         "derivation": "the tangent line evaluated at the point of tangency x = 1, which returns f(1)",
+         "mechanism": "algebra_slip"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-10",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-04028",
+      "BC-SKL-04029",
+      "BC-SKL-04030",
+      "BC-SKL-04031",
+      "BC-SKL-04032"
+   ],
+   "parameter_draw": {
+      "curvature": "1",
+      "offset": "-8",
+      "anchor": "1",
+      "height": "-1",
+      "step": "1/5",
+      "judgement": "on"
+   },
+   "predicted_success_probability": 0.4134,
+   "provenance": {
+      "template_id": "TPL-BC-QA-04008-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-04008:spec-1:item-6:try-6",
+      "parameter_draw": {
+         "curvature": "1",
+         "offset": "-8",
+         "anchor": "1",
+         "height": "-1",
+         "step": "1/5",
+         "judgement": "on"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:53Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.5
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

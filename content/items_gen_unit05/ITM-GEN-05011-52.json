@@ -1,0 +1,131 @@
+{
+   "id": "ITM-GEN-05011-52",
+   "archetype_id": "BC-QA-05011",
+   "variant_id": "BC-QV-05011-01",
+   "format": "mcq",
+   "stem": {
+      "text": "An open-top planter is made from a rectangular sheet of plastic 35 centimeters by 56 centimeters by cutting a square of side x from each corner and folding up the sides. Find the largest possible volume of the planter, in cubic centimeters.",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 6174,
+      "units": "cubic centimeters"
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The planter has height x and a base \\( 35 - 2 x \\) by \\( 56 - 2 x \\), so its volume is \\( V(x) = x\\left(35 - 2 x\\right)\\left(56 - 2 x\\right) \\).",
+         "rule_named": "objective in one variable"
+      },
+      {
+         "step": 2,
+         "text": "The cut must be positive and less than half the sheet, so the domain is \\( 0 < x < \\frac{35}{2} \\).",
+         "rule_named": "contextual domain"
+      },
+      {
+         "step": 3,
+         "text": "\\( V'(x) = 4 \\left(x - 7\\right) \\left(3 x - 70\\right) \\), which is zero at \\( x = 7 \\) and \\( x = \\frac{70}{3} \\); only \\( x = 7 \\) lies strictly inside the sheet.",
+         "mathjson": 7,
+         "rule_named": "critical points"
+      },
+      {
+         "step": 4,
+         "text": "\\( V'(x) \\) is positive for \\( 0 < x < 7 \\) and negative for \\( 7 < x < \\frac{35}{2} \\), and this is the only critical point in the domain, so V has its absolute maximum there.",
+         "rule_named": "first derivative test for an absolute extremum"
+      },
+      {
+         "step": 5,
+         "text": "The largest volume is \\( V(7) = 7\\left(21\\right)\\left(42\\right) = 6174 \\) cubic centimeters.",
+         "mathjson": 6174,
+         "rule_named": "evaluate the objective"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-05024",
+         "value": 7,
+         "derivation": "the side of the cut square, where the maximum occurs, reported instead of the volume",
+         "mechanism": "reversed_quantities"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-05024",
+         "value": 42,
+         "derivation": "the longer side of the base at the optimum reported instead of the volume",
+         "mechanism": "reversed_quantities"
+      },
+      {
+         "id": "C",
+         "is_key": true,
+         "error_path": null,
+         "value": 6174
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-05024",
+         "value": 21,
+         "derivation": "the shorter side of the base at the optimum reported instead of the volume",
+         "mechanism": "reversed_quantities"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-05",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-05",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-05049",
+      "BC-SKL-05050",
+      "BC-SKL-05051",
+      "BC-SKL-05052",
+      "BC-SKL-05053",
+      "BC-SKL-05054",
+      "BC-SKL-05055",
+      "BC-SKL-05056",
+      "BC-SKL-05057"
+   ],
+   "parameter_draw": {
+      "scale": "7",
+      "height_cap": "4",
+      "sheet_shape": "rectangle",
+      "material": "plastic",
+      "purpose": "planter",
+      "length_unit": "centimeters",
+      "domain_limit": "none"
+   },
+   "predicted_success_probability": 0.4134,
+   "provenance": {
+      "template_id": "TPL-BC-QA-05011-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-05011:spec-1:item-52:try-12",
+      "parameter_draw": {
+         "scale": "7",
+         "height_cap": "4",
+         "sheet_shape": "rectangle",
+         "material": "plastic",
+         "purpose": "planter",
+         "length_unit": "centimeters",
+         "domain_limit": "none"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, run D",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T20:05:37Z",
+      "content_snapshot": "231703a5b8a178b1b047f62e96309ea95a2ecddbe5a502b07eaf3ded30d6b42f",
+      "no_official_examples": true,
+      "requested_success_probability": 0.4134
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

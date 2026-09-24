@@ -1,0 +1,113 @@
+{
+   "id": "ITM-GEN-05010-05",
+   "archetype_id": "BC-QA-05010",
+   "variant_id": "BC-QV-05010-01",
+   "format": "mcq",
+   "stem": {
+      "text": "The function f is twice differentiable at every x in the closed interval \\( [-1, 6] \\), with \\( f'(0) = 0 \\) and \\( f''(0) > 0 \\). Must f attain an absolute minimum value on the closed interval \\( [-1, 6] \\)? Justify the answer.",
+      "command_verb": "justify"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "Yes, because f is differentiable, so continuous, on the closed interval \\( [-1, 6] \\), so the Extreme Value Theorem applies."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The interval \\( [-1, 6] \\) is closed and bounded.",
+         "rule_named": "closed interval hypothesis"
+      },
+      {
+         "step": 2,
+         "text": "The function f is differentiable, so continuous, on the closed interval \\( [-1, 6] \\).",
+         "rule_named": "differentiability implies continuity"
+      },
+      {
+         "step": 3,
+         "text": "Both hypotheses of the Extreme Value Theorem hold, so f attains an absolute minimum value on \\( [-1, 6] \\). The theorem gives existence only, not where the value occurs.",
+         "rule_named": "Extreme Value Theorem"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "label": "Yes, because f is differentiable, so continuous, on the closed interval \\( [-1, 6] \\), so the Extreme Value Theorem applies."
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-05008",
+         "label": "Yes, because the Extreme Value Theorem places the absolute minimum at \\( x = 0 \\), where \\( f'(0) = 0 \\).",
+         "derivation": "the existence theorem used to say where the extreme value is, at the critical point given",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-05007",
+         "label": "Yes, because f is defined at every x in the closed interval \\( [-1, 6] \\), so the Extreme Value Theorem applies.",
+         "derivation": "the theorem applied because the interval is closed, with continuity never checked",
+         "mechanism": "theorem_condition_ignored"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-05012",
+         "label": "Yes, because f has a relative minimum at \\( x = 0 \\), so its absolute minimum value is \\( f(0) \\).",
+         "derivation": "the relative extremum found by the second derivative test reported as the absolute one",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-04",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-05007",
+      "BC-SKL-05008",
+      "BC-SKL-05009",
+      "BC-SKL-05012"
+   ],
+   "parameter_draw": {
+      "left_end": "-1",
+      "length": "7",
+      "jump_offset": "2",
+      "critical_offset": "1",
+      "letter": "f",
+      "extreme": "minimum",
+      "situation": "differentiable"
+   },
+   "predicted_success_probability": 0.5,
+   "provenance": {
+      "template_id": "TPL-BC-QA-05010-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-05010:spec-1:item-5:try-5",
+      "parameter_draw": {
+         "left_end": "-1",
+         "length": "7",
+         "jump_offset": "2",
+         "critical_offset": "1",
+         "letter": "f",
+         "extreme": "minimum",
+         "situation": "differentiable"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, run D",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:56Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": true,
+      "requested_success_probability": 0.5866
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

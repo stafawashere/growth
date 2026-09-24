@@ -1,0 +1,122 @@
+{
+   "id": "ITM-GEN-08002-15",
+   "archetype_id": "BC-QA-08002",
+   "variant_id": "BC-QV-08002-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( W(t) = 4 t + 3 \\sqrt{t^{2} + 4} \\) for \\( 0 \\le t \\le 7 \\). Using a calculator, find the value of t in the interval \\( 2 < t < 6 \\) at which the instantaneous rate of change of W equals the average rate of change of W over \\( 2 \\le t \\le 6 \\). Show the setup for the calculation, and give the value correct to three decimal places.",
+      "setup_required": true,
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "numeric",
+      "mathjson": 3.5978148798957346,
+      "decimals": 3
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The average rate of change of W over the interval is \\( \\frac{W(6) - W(2)}{6 - 2} \\), which is about 6.622 (more places are kept).",
+         "mathjson": 6.622096146692926,
+         "point_type_id": "BC-PT-99021",
+         "rule_named": "average rate of change"
+      },
+      {
+         "step": 2,
+         "text": "Differentiate: \\( W'(t) = \\frac{3 t}{\\sqrt{t^{2} + 4}} + 4 \\). Set \\( W'(t) \\) equal to the average rate of change and solve on \\( 2 < t < 6 \\).",
+         "point_type_id": "BC-PT-99005",
+         "rule_named": "instantaneous rate set equal to the average rate"
+      },
+      {
+         "step": 3,
+         "text": "The calculator's solver gives one solution in the interval, \\( t = 3.598 \\).",
+         "mathjson": 3.5978148798957346,
+         "point_type_id": "BC-PT-99004",
+         "rule_named": "numerical solve"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-08002",
+         "value": 2.08,
+         "derivation": "the average rate of change taken over 0 to 6 instead of the stated interval, then solved on that wider interval",
+         "mechanism": "wrong_limits"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-99019",
+         "value": 4.587,
+         "derivation": "W at both endpoints rounded to whole numbers before forming the average rate of change",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-99019",
+         "value": 3.474,
+         "derivation": "the average rate of change rounded to one decimal place before solving",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "D",
+         "is_key": true,
+         "error_path": null,
+         "value": 3.598
+      }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-03",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-16",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-08004",
+      "BC-SKL-08003"
+   ],
+   "parameter_draw": {
+      "model": "radical",
+      "coefficient": "3",
+      "linear_rate": "4",
+      "scale": "4",
+      "start": "2",
+      "length": "4",
+      "context": "bacteria",
+      "framing": "bare",
+      "presentation": "formula"
+   },
+   "predicted_success_probability": 0.5,
+   "provenance": {
+      "template_id": "TPL-BC-QA-08002-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-08002:spec-1:item-15:try-15",
+      "parameter_draw": {
+         "model": "radical",
+         "coefficient": "3",
+         "linear_rate": "4",
+         "scale": "4",
+         "start": "2",
+         "length": "4",
+         "context": "bacteria",
+         "framing": "bare",
+         "presentation": "formula"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, run F",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T13:02:05Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.4134
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

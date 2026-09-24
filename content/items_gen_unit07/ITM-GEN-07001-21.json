@@ -1,0 +1,737 @@
+{
+   "id": "ITM-GEN-07001-21",
+   "archetype_id": "BC-QA-07001",
+   "variant_id": "BC-QV-07001-01",
+   "format": "mcq",
+   "stem": {
+      "text": "The slope field for the differential equation \\( \\frac{dy}{dx} = \\frac{y}{2} + 1 \\) is shown. Describe the solution curve through the point \\( (-1, -3) \\) across the whole window of the slope field.",
+      "command_verb": "describe"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "The solution curve through \\( (-1, -3) \\) falls across the whole window, flattening toward the line \\( y = -2 \\) from below as x decreases, and never touches the line \\( y = -2 \\)."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "At \\( (-1, -3) \\) the slope is \\( - \\frac{1}{2} \\), which is negative, and every segment below the line \\( y = -2 \\) has that sign, so the curve falls through the point.",
+         "rule_named": "slope from the right side of the equation"
+      },
+      {
+         "step": 2,
+         "text": "The segments along \\( y = -2 \\) are horizontal, so that line is itself a solution and the curve cannot cross or reach it; the segments get flatter near it, so the curve bends toward it on one side and away on the other.",
+         "rule_named": "equilibrium solution"
+      },
+      {
+         "step": 3,
+         "text": "Following the segments in both directions to the edges of the window, the curve falls, flattening toward the line \\( y = -2 \\) from below as x decreases.",
+         "point_type_id": "BC-PT-99065",
+         "rule_named": "solution curve follows the field"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-99024",
+         "label": "The solution curve through \\( (-1, -3) \\) falls across the whole window, leaving the line \\( y = -2 \\) at a finite value of x after running along it, so it meets the line in a corner.",
+         "derivation": "the curve drawn onto the equilibrium row, sitting on y = -2 instead of approaching it",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-07014",
+         "label": "The solution curve through \\( (-1, -3) \\) rises across the whole window, flattening toward the line \\( y = -2 \\) from below as x increases, and never touches the line \\( y = -2 \\).",
+         "derivation": "the curve drawn against the segments near the point, with the wrong direction of change",
+         "mechanism": "sign_error"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-07015",
+         "label": "The solution curve through \\( (-1, -3) \\) falls across the whole window, passing through the line \\( y = -2 \\), and continuing on its other side.",
+         "derivation": "the curve kept moving in its starting direction straight through the row of horizontal segments at y = -2",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": true,
+         "error_path": null,
+         "label": "The solution curve through \\( (-1, -3) \\) falls across the whole window, flattening toward the line \\( y = -2 \\) from below as x decreases, and never touches the line \\( y = -2 \\)."
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-07",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-07014",
+      "BC-SKL-07015",
+      "BC-SKL-07017"
+   ],
+   "parameter_draw": {
+      "stability": "unstable",
+      "offset": "-1",
+      "level": "-2",
+      "start_x": "-1",
+      "rate": "1/2",
+      "letters": "xy"
+   },
+   "predicted_success_probability": 0.5,
+   "provenance": {
+      "template_id": "TPL-BC-QA-07001-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-07001:spec-1:item-21:try-21",
+      "parameter_draw": {
+         "stability": "unstable",
+         "offset": "-1",
+         "level": "-2",
+         "start_x": "-1",
+         "rate": "1/2",
+         "letters": "xy"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:54:01Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.5
+   },
+   "figure": {
+      "kind": "slope_field",
+      "domain": [
+         -3.5,
+         3.5
+      ],
+      "range": [
+         -5.5,
+         1.5
+      ],
+      "curves": [],
+      "fills": [],
+      "marks": [
+         {
+            "type": "segment",
+            "from": [
+               -3.1664100588675685,
+               -4.750384911698647
+            ],
+            "to": [
+               -2.8335899411324315,
+               -5.249615088301353
+            ],
+            "style": "solid"
+         },
+         {
+            "type": "segment",
+            "from": [
+               -3.2121320343559643,
+               -3.7878679656440357
+            ],
+            "to": [
+               -2.7878679656440357,
+               -4.212132034355964
+            ],
+            "style": "solid"
+         },
+         {
+            "type": "segment",
+            "from": [
+               -3.2683281572999747,
+               -2.865835921350013
+            ],
+            "to": [
+               -2.7316718427000253,
+               -3.134164078649987
+            ],
+            "style": "solid"
+         },
+         {
+            "type": "segment",
+            "from": [
+               -3.3,
+               -2.0
+            ],
+            "to": [
+               -2.7,
+               -2.0
+            ],
+            "style": "solid"
+         },
+         {
+            "type": "segment",
+            "from": [
+               -3.2683281572999747,
+               -1.1341640786499874
+            ],
+            "to": [
+               -2.7316718427000253,
+               -0.8658359213500126
+            ],
+            "style": "solid"
+         },
+         {
+            "type": "segment",
+            "from": [
+               -3.2121320343559643,
+               -0.21213203435596423
+            ],
+            "to": [
+               -2.7878679656440357,
+               0.21213203435596423
+            ],
+            "style": "solid"
+         },
+         {
+            "type": "segment",
+            "from": [
+               -3.1664100588675685,
+               0.750384911698647
+            ],
+            "to": [
+               -2.8335899411324315,
+               1.249615088301353
+            ],
+            "style": "solid"
+         },
+         {
+            "type": "segment",
+            "from": [
+               -2.1664100588675685,
+               -4.750384911698647
+            ],
+            "to": [
+               -1.8335899411324312,
+               -5.249615088301353
+            ],
+            "style": "solid"
+         },
+         {
+            "type": "segment",
+            "from": [
+               -2.2121320343559643,
+               -3.7878679656440357
+            ],
+            "to": [
+               -1.7878679656440357,
+               -4.212132034355964
+            ],
+            "style": "solid"
+         },
+         {
+            "type": "segment",
+            "from": [
+               -2.2683281572999747,
+               -2.865835921350013
+            ],
+            "to": [
+               -1.7316718427000253,
+               -3.134164078649987
+            ],
+            "style": "solid"
+         },
+         {
+            "type": "segment",
+            "from": [
+               -2.3,
+               -2.0
+            ],
+            "to": [
+               -1.7,
+               -2.0
+            ],
+            "style": "solid"
+         },
+         {
+            "type": "segment",
+            "from": [
+               -2.2683281572999747,
+               -1.1341640786499874
+            ],
+            "to": [
+               -1.7316718427000253,
+               -0.8658359213500126
+            ],
+            "style": "solid"
+         },
+         {
+            "type": "segment",
+            "from": [
+               -2.2121320343559643,
+               -0.21213203435596423
+            ],
+            "to": [
+               -1.7878679656440357,
+               0.21213203435596423
+            ],
+            "style": "solid"
+         },
+         {
+            "type": "segment",
+            "from": [
+               -2.1664100588675685,
+               0.750384911698647
+            ],
+            "to": [
+               -1.8335899411324312,
+               1.249615088301353
+            ],
+            "style": "solid"
+         },
+         {
+            "type": "segment",
+            "from": [
+               -1.1664100588675688,
+               -4.750384911698647
+            ],
+            "to": [
+               -0.8335899411324312,
+               -5.249615088301353
+            ],
+            "style": "solid"
+         },
+         {
+            "type": "segment",
+            "from": [
+               -1.2121320343559643,
+               -3.7878679656440357
+            ],
+            "to": [
+               -0.7878679656440357,
+               -4.212132034355964
+            ],
+            "style": "solid"
+         },
+         {
+            "type": "segment",
+            "from": [
+               -1.2683281572999747,
+               -2.865835921350013
+            ],
+            "to": [
+               -0.7316718427000253,
+               -3.134164078649987
+            ],
+            "style": "solid"
+         },
+         {
+            "type": "segment",
+            "from": [
+               -1.3,
+               -2.0
+            ],
+            "to": [
+               -0.7,
+               -2.0
+            ],
+            "style": "solid"
+         },
+         {
+            "type": "segment",
+            "from": [
+               -1.2683281572999747,
+               -1.1341640786499874
+            ],
+            "to": [
+               -0.7316718427000253,
+               -0.8658359213500126
+            ],
+            "style": "solid"
+         },
+         {
+            "type": "segment",
+            "from": [
+               -1.2121320343559643,
+               -0.21213203435596423
+            ],
+            "to": [
+               -0.7878679656440357,
+               0.21213203435596423
+            ],
+            "style": "solid"
+         },
+         {
+            "type": "segment",
+            "from": [
+               -1.1664100588675688,
+               0.750384911698647
+            ],
+            "to": [
+               -0.8335899411324312,
+               1.249615088301353
+            ],
+            "style": "solid"
+         },
+         {
+            "type": "segment",
+            "from": [
+               -0.16641005886756874,
+               -4.750384911698647
+            ],
+            "to": [
+               0.16641005886756874,
+               -5.249615088301353
+            ],
+            "style": "solid"
+         },
+         {
+            "type": "segment",
+            "from": [
+               -0.21213203435596423,
+               -3.7878679656440357
+            ],
+            "to": [
+               0.21213203435596423,
+               -4.212132034355964
+            ],
+            "style": "solid"
+         },
+         {
+            "type": "segment",
+            "from": [
+               -0.2683281572999747,
+               -2.865835921350013
+            ],
+            "to": [
+               0.2683281572999747,
+               -3.134164078649987
+            ],
+            "style": "solid"
+         },
+         {
+            "type": "segment",
+            "from": [
+               -0.3,
+               -2.0
+            ],
+            "to": [
+               0.3,
+               -2.0
+            ],
+            "style": "solid"
+         },
+         {
+            "type": "segment",
+            "from": [
+               -0.2683281572999747,
+               -1.1341640786499874
+            ],
+            "to": [
+               0.2683281572999747,
+               -0.8658359213500126
+            ],
+            "style": "solid"
+         },
+         {
+            "type": "segment",
+            "from": [
+               -0.21213203435596423,
+               -0.21213203435596423
+            ],
+            "to": [
+               0.21213203435596423,
+               0.21213203435596423
+            ],
+            "style": "solid"
+         },
+         {
+            "type": "segment",
+            "from": [
+               -0.16641005886756874,
+               0.750384911698647
+            ],
+            "to": [
+               0.16641005886756874,
+               1.249615088301353
+            ],
+            "style": "solid"
+         },
+         {
+            "type": "segment",
+            "from": [
+               0.8335899411324312,
+               -4.750384911698647
+            ],
+            "to": [
+               1.1664100588675688,
+               -5.249615088301353
+            ],
+            "style": "solid"
+         },
+         {
+            "type": "segment",
+            "from": [
+               0.7878679656440357,
+               -3.7878679656440357
+            ],
+            "to": [
+               1.2121320343559643,
+               -4.212132034355964
+            ],
+            "style": "solid"
+         },
+         {
+            "type": "segment",
+            "from": [
+               0.7316718427000253,
+               -2.865835921350013
+            ],
+            "to": [
+               1.2683281572999747,
+               -3.134164078649987
+            ],
+            "style": "solid"
+         },
+         {
+            "type": "segment",
+            "from": [
+               0.7,
+               -2.0
+            ],
+            "to": [
+               1.3,
+               -2.0
+            ],
+            "style": "solid"
+         },
+         {
+            "type": "segment",
+            "from": [
+               0.7316718427000253,
+               -1.1341640786499874
+            ],
+            "to": [
+               1.2683281572999747,
+               -0.8658359213500126
+            ],
+            "style": "solid"
+         },
+         {
+            "type": "segment",
+            "from": [
+               0.7878679656440357,
+               -0.21213203435596423
+            ],
+            "to": [
+               1.2121320343559643,
+               0.21213203435596423
+            ],
+            "style": "solid"
+         },
+         {
+            "type": "segment",
+            "from": [
+               0.8335899411324312,
+               0.750384911698647
+            ],
+            "to": [
+               1.1664100588675688,
+               1.249615088301353
+            ],
+            "style": "solid"
+         },
+         {
+            "type": "segment",
+            "from": [
+               1.8335899411324312,
+               -4.750384911698647
+            ],
+            "to": [
+               2.1664100588675685,
+               -5.249615088301353
+            ],
+            "style": "solid"
+         },
+         {
+            "type": "segment",
+            "from": [
+               1.7878679656440357,
+               -3.7878679656440357
+            ],
+            "to": [
+               2.2121320343559643,
+               -4.212132034355964
+            ],
+            "style": "solid"
+         },
+         {
+            "type": "segment",
+            "from": [
+               1.7316718427000253,
+               -2.865835921350013
+            ],
+            "to": [
+               2.2683281572999747,
+               -3.134164078649987
+            ],
+            "style": "solid"
+         },
+         {
+            "type": "segment",
+            "from": [
+               1.7,
+               -2.0
+            ],
+            "to": [
+               2.3,
+               -2.0
+            ],
+            "style": "solid"
+         },
+         {
+            "type": "segment",
+            "from": [
+               1.7316718427000253,
+               -1.1341640786499874
+            ],
+            "to": [
+               2.2683281572999747,
+               -0.8658359213500126
+            ],
+            "style": "solid"
+         },
+         {
+            "type": "segment",
+            "from": [
+               1.7878679656440357,
+               -0.21213203435596423
+            ],
+            "to": [
+               2.2121320343559643,
+               0.21213203435596423
+            ],
+            "style": "solid"
+         },
+         {
+            "type": "segment",
+            "from": [
+               1.8335899411324312,
+               0.750384911698647
+            ],
+            "to": [
+               2.1664100588675685,
+               1.249615088301353
+            ],
+            "style": "solid"
+         },
+         {
+            "type": "segment",
+            "from": [
+               2.8335899411324315,
+               -4.750384911698647
+            ],
+            "to": [
+               3.1664100588675685,
+               -5.249615088301353
+            ],
+            "style": "solid"
+         },
+         {
+            "type": "segment",
+            "from": [
+               2.7878679656440357,
+               -3.7878679656440357
+            ],
+            "to": [
+               3.2121320343559643,
+               -4.212132034355964
+            ],
+            "style": "solid"
+         },
+         {
+            "type": "segment",
+            "from": [
+               2.7316718427000253,
+               -2.865835921350013
+            ],
+            "to": [
+               3.2683281572999747,
+               -3.134164078649987
+            ],
+            "style": "solid"
+         },
+         {
+            "type": "segment",
+            "from": [
+               2.7,
+               -2.0
+            ],
+            "to": [
+               3.3,
+               -2.0
+            ],
+            "style": "solid"
+         },
+         {
+            "type": "segment",
+            "from": [
+               2.7316718427000253,
+               -1.1341640786499874
+            ],
+            "to": [
+               3.2683281572999747,
+               -0.8658359213500126
+            ],
+            "style": "solid"
+         },
+         {
+            "type": "segment",
+            "from": [
+               2.7878679656440357,
+               -0.21213203435596423
+            ],
+            "to": [
+               3.2121320343559643,
+               0.21213203435596423
+            ],
+            "style": "solid"
+         },
+         {
+            "type": "segment",
+            "from": [
+               2.8335899411324315,
+               0.750384911698647
+            ],
+            "to": [
+               3.1664100588675685,
+               1.249615088301353
+            ],
+            "style": "solid"
+         },
+         {
+            "type": "point",
+            "at": [
+               -1.0,
+               -3.0
+            ]
+         }
+      ],
+      "labels": [
+         {
+            "text": "(-1, -3)",
+            "anchor": [
+               -0.85,
+               -2.7
+            ],
+            "placement": "inside"
+         }
+      ],
+      "gridlines": true,
+      "axis_titles": [
+         "x",
+         "y"
+      ],
+      "alt": "Slope field for dy/dx = 1/2 times (y - -2) at every lattice point with x from -3 to 3 and y from -5 to 1. The segments are horizontal along y = -2; the point (-1, -3) is marked."
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

@@ -1,0 +1,233 @@
+{
+   "id": "ITM-GEN-01001-17",
+   "archetype_id": "BC-QA-01001",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "The graph of the function f shown is defined for \\( 0 \\le x \\le 8 \\), except where the graph shows no filled point. Find \\( \\lim_{x \\to 2} f(x) \\) and \\( f(2) \\). Justify your answers.",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "\\( \\lim_{x \\to 2} f(x) = 2 \\), and \\( f(2) = 4 \\)."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "From both sides the graph approaches the open circle at (2, 2), so \\( \\lim_{x \\to 2} f(x) = 2 \\).",
+         "rule_named": "two sided limit read from a graph"
+      },
+      {
+         "step": 2,
+         "text": "The filled point above or below the circle gives the function value, \\( f(2) = 4 \\). The limit does not depend on it.",
+         "rule_named": "function value read from a graph"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-01001",
+         "label": "\\( \\lim_{x \\to 2} f(x) = 2 \\), and \\( f(2) = 2 \\).",
+         "derivation": "the limit and the plotted value of f treated as the same number, here the height of the open circle",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": true,
+         "error_path": null,
+         "label": "\\( \\lim_{x \\to 2} f(x) = 2 \\), and \\( f(2) = 4 \\)."
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-01003",
+         "label": "The limit \\( \\lim_{x \\to 2} f(x) \\) does not exist, and \\( f(2) = 4 \\).",
+         "derivation": "the open circle read as the function having no value on the curve there, and nonexistence of the limit concluded from that",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-01001",
+         "label": "\\( \\lim_{x \\to 2} f(x) = 4 \\), and \\( f(2) = 4 \\).",
+         "derivation": "the plotted value of f reported as the limit",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-02",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-03",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-10",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-01009",
+      "BC-SKL-01010",
+      "BC-SKL-01011",
+      "BC-SKL-01012",
+      "BC-SKL-01013",
+      "BC-SKL-01008"
+   ],
+   "parameter_draw": {
+      "hole_x": "2",
+      "jump_x": "5",
+      "start_y": "-3",
+      "hole_y": "2",
+      "hole_value": "4",
+      "left_limit": "-3",
+      "right_limit": "0",
+      "end_y": "-2",
+      "jump_value": "-2",
+      "value_mark": "unmarked",
+      "justify": "justified",
+      "request": "hole"
+   },
+   "predicted_success_probability": 0.3318,
+   "provenance": {
+      "template_id": "TPL-BC-QA-01001-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-01001:spec-1:item-17:try-17",
+      "parameter_draw": {
+         "hole_x": "2",
+         "jump_x": "5",
+         "start_y": "-3",
+         "hole_y": "2",
+         "hole_value": "4",
+         "left_limit": "-3",
+         "right_limit": "0",
+         "end_y": "-2",
+         "jump_value": "-2",
+         "value_mark": "unmarked",
+         "justify": "justified",
+         "request": "hole"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T13:02:04Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.4134
+   },
+   "figure": {
+      "kind": "function_graph",
+      "domain": [
+         -0.5,
+         8.5
+      ],
+      "range": [
+         -4.5,
+         5.5
+      ],
+      "curves": [
+         {
+            "segments": [
+               [
+                  [
+                     0,
+                     -3
+                  ],
+                  [
+                     2,
+                     2
+                  ]
+               ],
+               [
+                  [
+                     2,
+                     2
+                  ],
+                  [
+                     5,
+                     -3
+                  ]
+               ],
+               [
+                  [
+                     5,
+                     0
+                  ],
+                  [
+                     8,
+                     -2
+                  ]
+               ]
+            ],
+            "style": "solid"
+         }
+      ],
+      "fills": [],
+      "marks": [
+         {
+            "type": "point",
+            "at": [
+               0.0,
+               -3.0
+            ]
+         },
+         {
+            "type": "open_point",
+            "at": [
+               2.0,
+               2.0
+            ]
+         },
+         {
+            "type": "point",
+            "at": [
+               2.0,
+               4.0
+            ]
+         },
+         {
+            "type": "open_point",
+            "at": [
+               5.0,
+               -3.0
+            ]
+         },
+         {
+            "type": "open_point",
+            "at": [
+               5.0,
+               0.0
+            ]
+         },
+         {
+            "type": "point",
+            "at": [
+               8.0,
+               -2.0
+            ]
+         }
+      ],
+      "labels": [
+         {
+            "text": "y = f(x)",
+            "anchor": [
+               7.2,
+               5.0
+            ],
+            "placement": "inside"
+         }
+      ],
+      "gridlines": true,
+      "axis_titles": [
+         "x",
+         "y"
+      ],
+      "alt": "Line segments from (0, -3) to (2, 2) and on to (5, -3), with an open circle at (2, 2) and a filled point at (2, 4). At x = 5 there are open circles at (5, -3) and (5, 0) and no point plotted at x = 5, and a segment runs from (5, 0) to (8, -2)."
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

@@ -1,0 +1,238 @@
+{
+   "id": "ITM-GEN-01001-06",
+   "archetype_id": "BC-QA-01001",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "The graph of the function f shown is defined for \\( 0 \\le x \\le 8 \\), except where the graph shows no filled point. Find \\( \\lim_{x \\to 6} f(x) \\). If the limit does not exist, say why.",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "The limit does not exist, because f(x) approaches different values from the left and from the right of x = 6."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "As x approaches 6 from the left, the graph approaches the open circle at (6, -1), so the left hand limit is -1.",
+         "rule_named": "one sided limit read from a graph"
+      },
+      {
+         "step": 2,
+         "text": "As x approaches 6 from the right, the graph approaches the open circle at (6, 3), so the right hand limit is 3.",
+         "rule_named": "one sided limit read from a graph"
+      },
+      {
+         "step": 3,
+         "text": "The one sided limits differ, so \\( \\lim_{x \\to 6} f(x) \\) does not exist, whatever the value of f at 6.",
+         "rule_named": "two sided limit exists only when the one sided limits agree"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "label": "The limit does not exist, because f(x) approaches different values from the left and from the right of x = 6."
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-01002",
+         "label": "The limit is -1, because f(x) approaches -1 as x approaches 6 from the left.",
+         "derivation": "the value approached from the left reported as the two sided limit",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-01003",
+         "label": "The limit does not exist, because a limit can never exist where the graph has no filled point, as at x = 6.",
+         "derivation": "nonexistence argued from the missing function value rather than from the one sided limits",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-01002",
+         "label": "The limit is 3, because f(x) approaches 3 as x approaches 6 from the right.",
+         "derivation": "the value approached from the right reported as the two sided limit",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-02",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-03",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-10",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-01009",
+      "BC-SKL-01010",
+      "BC-SKL-01011",
+      "BC-SKL-01012",
+      "BC-SKL-01013",
+      "BC-SKL-01008"
+   ],
+   "parameter_draw": {
+      "hole_x": "2",
+      "jump_x": "6",
+      "start_y": "2",
+      "hole_y": "4",
+      "hole_value": "-2",
+      "left_limit": "-1",
+      "right_limit": "3",
+      "end_y": "-1",
+      "jump_value": "-3",
+      "value_mark": "unmarked",
+      "justify": "bare",
+      "request": "jump"
+   },
+   "predicted_success_probability": 0.4134,
+   "provenance": {
+      "template_id": "TPL-BC-QA-01001-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-01001:spec-1:item-6:try-6",
+      "parameter_draw": {
+         "hole_x": "2",
+         "jump_x": "6",
+         "start_y": "2",
+         "hole_y": "4",
+         "hole_value": "-2",
+         "left_limit": "-1",
+         "right_limit": "3",
+         "end_y": "-1",
+         "jump_value": "-3",
+         "value_mark": "unmarked",
+         "justify": "bare",
+         "request": "jump"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T13:02:04Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.3318
+   },
+   "figure": {
+      "kind": "function_graph",
+      "domain": [
+         -0.5,
+         8.5
+      ],
+      "range": [
+         -4.5,
+         5.5
+      ],
+      "curves": [
+         {
+            "segments": [
+               [
+                  [
+                     0,
+                     2
+                  ],
+                  [
+                     2,
+                     4
+                  ]
+               ],
+               [
+                  [
+                     2,
+                     4
+                  ],
+                  [
+                     6,
+                     -1
+                  ]
+               ],
+               [
+                  [
+                     6,
+                     3
+                  ],
+                  [
+                     8,
+                     -1
+                  ]
+               ]
+            ],
+            "style": "solid"
+         }
+      ],
+      "fills": [],
+      "marks": [
+         {
+            "type": "point",
+            "at": [
+               0.0,
+               2.0
+            ]
+         },
+         {
+            "type": "open_point",
+            "at": [
+               2.0,
+               4.0
+            ]
+         },
+         {
+            "type": "point",
+            "at": [
+               2.0,
+               -2.0
+            ]
+         },
+         {
+            "type": "open_point",
+            "at": [
+               6.0,
+               -1.0
+            ]
+         },
+         {
+            "type": "open_point",
+            "at": [
+               6.0,
+               3.0
+            ]
+         },
+         {
+            "type": "point",
+            "at": [
+               8.0,
+               -1.0
+            ]
+         }
+      ],
+      "labels": [
+         {
+            "text": "y = f(x)",
+            "anchor": [
+               7.2,
+               5.0
+            ],
+            "placement": "inside"
+         }
+      ],
+      "gridlines": true,
+      "axis_titles": [
+         "x",
+         "y"
+      ],
+      "alt": "Line segments from (0, 2) to (2, 4) and on to (6, -1), with an open circle at (2, 4) and a filled point at (2, -2). At x = 6 there are open circles at (6, -1) and (6, 3) and no point plotted at x = 6, and a segment runs from (6, 3) to (8, -1)."
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

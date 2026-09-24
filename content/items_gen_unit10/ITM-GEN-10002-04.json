@@ -1,0 +1,131 @@
+{
+   "id": "ITM-GEN-10002-04",
+   "archetype_id": "BC-QA-10002",
+   "variant_id": "BC-QV-10002-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Find the exact value of the series \\( \\sum_{n=3}^{\\infty} \\frac{4}{\\left(n + 3\\right) \\left(n + 4\\right)} \\).",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         2,
+         3
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Split the term into partial fractions: \\( \\frac{4}{\\left(n + 3\\right) \\left(n + 4\\right)} = 4\\left(\\frac{1}{n + 3} - \\frac{1}{n + 4}\\right) \\).",
+         "rule_named": "partial fractions"
+      },
+      {
+         "step": 2,
+         "text": "In the partial sum from \\( n = 3 \\) to \\( n = N \\) the middle terms cancel: \\( S_N = 4\\left(\\frac{1}{6} - \\frac{1}{N + 4}\\right) \\).",
+         "rule_named": "telescoping partial sum"
+      },
+      {
+         "step": 3,
+         "text": "As \\( N \\to \\infty \\), the second fraction approaches 0, so the value of the series is \\( \\frac{2}{3} \\).",
+         "mathjson": [
+            "Rational",
+            2,
+            3
+         ],
+         "rule_named": "limit of the partial sums"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-99038",
+         "value": [
+            "Rational",
+            2,
+            9
+         ],
+         "derivation": "the first three terms added and their total reported as the value of the series",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-10001",
+         "value": 0,
+         "derivation": "the limit of the general term, 0, reported as the value of the series",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-10006",
+         "value": [
+            "Rational",
+            4,
+            3
+         ],
+         "derivation": "the cancellation started from the index 0 term instead of n = 3, leaving 1 over 3 rather than 1 over 6",
+         "mechanism": "wrong_limits"
+      },
+      {
+         "id": "D",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Rational",
+            2,
+            3
+         ]
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10002",
+      "BC-SKL-10003",
+      "BC-SKL-10004",
+      "BC-SKL-10008",
+      "BC-SKL-10066"
+   ],
+   "parameter_draw": {
+      "form": "telescoping",
+      "start": "3",
+      "coefficient": "4",
+      "ratio": "-2/3",
+      "offset": "3"
+   },
+   "predicted_success_probability": 0.4134,
+   "provenance": {
+      "template_id": "TPL-BC-QA-10002-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-10002:spec-1:item-4:try-4",
+      "parameter_draw": {
+         "form": "telescoping",
+         "start": "3",
+         "coefficient": "4",
+         "ratio": "-2/3",
+         "offset": "3"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:58:54Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": true,
+      "requested_success_probability": 0.5
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

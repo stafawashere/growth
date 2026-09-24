@@ -1,0 +1,117 @@
+{
+   "id": "ITM-GEN-04005-05",
+   "archetype_id": "BC-QA-04005",
+   "variant_id": "BC-QV-04005-01",
+   "format": "mcq",
+   "stem": {
+      "text": "The concentration of a medicine in a patient's blood is modeled by \\( C(t) = 100 - 55 e^{- \\frac{t}{8}} \\) milligrams per liter, for \\( 0 \\le t \\le 24 \\), where t is measured in hours. Using a calculator, find \\( C'(8) \\), showing the setup, and interpret the value in the context of the problem with correct units. Give the value correct to three decimal places.",
+      "setup_required": true,
+      "command_verb": "interpret"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "\\( C'(8) = 2.529 \\), so at time t = 8 hours the concentration of the medicine is increasing at a rate of 2.529 milligrams per liter per hour."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Differentiate the model to get the rate, \\( C'(t) = \\frac{55 e^{- \\frac{t}{8}}}{8} \\).",
+         "point_type_id": "BC-PT-99027",
+         "rule_named": "derivative of the model"
+      },
+      {
+         "step": 2,
+         "text": "With a calculator, \\( C'(8) = 2.529 \\) to three decimal places.",
+         "point_type_id": "BC-PT-99027",
+         "rule_named": "evaluate the derivative at the instant"
+      },
+      {
+         "step": 3,
+         "text": "The value is positive, so at time t = 8 hours the concentration of the medicine is increasing at a rate of 2.529 milligrams per liter per hour.",
+         "point_type_id": "BC-PT-99014",
+         "rule_named": "sign of the rate gives the direction of change"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-04013",
+         "label": "\\( C'(8) = 2.529 \\), so at time t = 8 hours the concentration of the medicine is moving with a velocity of 2.529 milligrams per liter per hour.",
+         "derivation": "the rate of change of a non-motion quantity called a velocity",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": true,
+         "error_path": null,
+         "label": "\\( C'(8) = 2.529 \\), so at time t = 8 hours the concentration of the medicine is increasing at a rate of 2.529 milligrams per liter per hour."
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-04001",
+         "label": "\\( C'(8) = 2.529 \\), so at time t = 8 hours the concentration of the medicine is increasing at a rate of 2.529 hours per milligram per liter.",
+         "derivation": "the units assembled the wrong way round, time units over the units of the quantity",
+         "mechanism": "reversed_quantities"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-04012",
+         "label": "\\( C'(8) = 2.529 \\), so when the concentration of the medicine is 8 milligrams per liter it is increasing at a rate of 2.529 milligrams per liter per hour.",
+         "derivation": "the independent variable never named, so the input is read as a value of the quantity rather than a time",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-05",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-16",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-04013",
+      "BC-SKL-04014",
+      "BC-SKL-04015",
+      "BC-SKL-04016"
+   ],
+   "parameter_draw": {
+      "context": "medicine",
+      "base": "45",
+      "amount": "55",
+      "scale": "8",
+      "instant": "8",
+      "trend": "rising",
+      "supplied": "model"
+   },
+   "predicted_success_probability": 0.5,
+   "provenance": {
+      "template_id": "TPL-BC-QA-04005-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-04005:spec-1:item-5:try-5",
+      "parameter_draw": {
+         "context": "medicine",
+         "base": "45",
+         "amount": "55",
+         "scale": "8",
+         "instant": "8",
+         "trend": "rising",
+         "supplied": "model"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T13:51:57Z",
+      "content_snapshot": "a800600d4c437c1ba8273c7cb1a03e0fe70b74050fbabcbcf27d142ba56fded8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.5
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

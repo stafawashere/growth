@@ -1,0 +1,114 @@
+{
+   "id": "ITM-GEN-06014-06",
+   "archetype_id": "BC-QA-06014",
+   "variant_id": "BC-QV-06014-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Write \\( \\int_{3}^{6} 3\\sqrt{x}\\,dx \\) as the limit of a right Riemann sum with n subintervals of equal width, using k as the index of summation.",
+      "command_verb": "express"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "\\( \\lim_{n\\to\\infty} \\sum_{k=1}^{n} 3\\sqrt{3 + \\frac{3k}{n}} \\cdot \\frac{3}{n} \\)"
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The interval [3, 6] has length 3, so each of the n subintervals has width \\( \\Delta x = \\frac{3}{n} \\).",
+         "rule_named": "width of a uniform partition"
+      },
+      {
+         "step": 2,
+         "text": "The right endpoint of the kth subinterval is \\( x_k = 3 + \\frac{3k}{n} \\), for k = 1 to n.",
+         "rule_named": "right endpoints"
+      },
+      {
+         "step": 3,
+         "text": "Multiply the function value at each right endpoint by the width and take the limit: \\( \\lim_{n\\to\\infty} \\sum_{k=1}^{n} 3\\sqrt{3 + \\frac{3k}{n}} \\cdot \\frac{3}{n} \\).",
+         "rule_named": "definite integral as a limit of Riemann sums"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "label": "\\( \\lim_{n\\to\\infty} \\sum_{k=1}^{n} 3\\sqrt{3 + \\frac{3k}{n}} \\cdot \\frac{3}{n} \\)"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-06003",
+         "label": "\\( \\lim_{n\\to\\infty} \\sum_{k=1}^{n} 3\\sqrt{3 + \\frac{3k}{n}} \\)",
+         "derivation": "the function values at the right endpoints added with no subinterval width",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-99028",
+         "label": "\\( \\lim_{n\\to\\infty} \\sum_{k=1}^{n} 3\\sqrt{3 + \\frac{3k}{n}} \\cdot \\frac{1}{n} \\)",
+         "derivation": "the width taken as 1/n as though the interval had length 1, although the sample points step by 3/n",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-99032",
+         "label": "\\( \\lim_{n\\to\\infty} \\sum_{k=1}^{n} 3\\sqrt{\\frac{3k}{n}} \\cdot \\frac{3}{n} \\)",
+         "derivation": "the sample points started at 0 instead of 3, so the sum is over [0, 3], an interval the integral never gives",
+         "mechanism": "wrong_limits"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-04",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06012",
+      "BC-SKL-06013",
+      "BC-SKL-06014",
+      "BC-SKL-06015",
+      "BC-SKL-06016"
+   ],
+   "parameter_draw": {
+      "direction": "to_sum",
+      "function": "root",
+      "coefficient": "3",
+      "start": "3",
+      "width": "3",
+      "convention": "left",
+      "letter": "x"
+   },
+   "predicted_success_probability": 0.3318,
+   "provenance": {
+      "template_id": "TPL-BC-QA-06014-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-06014:spec-1:item-6:try-6",
+      "parameter_draw": {
+         "direction": "to_sum",
+         "function": "root",
+         "coefficient": "3",
+         "start": "3",
+         "width": "3",
+         "convention": "left",
+         "letter": "x"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:54:01Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.3318
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

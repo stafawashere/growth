@@ -1,0 +1,110 @@
+{
+   "id": "ITM-GEN-07006-04",
+   "archetype_id": "BC-QA-07006",
+   "variant_id": "BC-QV-07006-01",
+   "format": "mcq",
+   "stem": {
+      "text": "The price P of a product, in dollars, in a market whose equilibrium price is 40 dollars moves toward the equilibrium price at a rate proportional to the difference between the equilibrium price and P. At time \\( t = 0 \\) hours, \\( P = 20 \\). Using k for the positive constant of proportionality, write a differential equation for P as a function of t and state the initial condition.",
+      "command_verb": "write"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "\\( \\frac{dP}{dt} = k\\left(40 - P\\right) \\), with \\( P(0) = 20 \\)"
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The dependent variable is P and the independent variable is t in hours, so the rate is \\( \\frac{dP}{dt} \\).",
+         "rule_named": "naming the variables"
+      },
+      {
+         "step": 2,
+         "text": "Proportional to the difference means a constant multiple of it. With k positive, \\( k(40 - P) \\) is positive when P is below 40 and negative when it is above, so P moves up toward 40 from its starting value.",
+         "rule_named": "proportionality as a constant multiple"
+      },
+      {
+         "step": 3,
+         "text": "The equation is \\( \\frac{dP}{dt} = k\\left(40 - P\\right) \\), and the initial condition, stated separately, is \\( P(0) = 20 \\).",
+         "rule_named": "differential equation with initial condition"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-07001",
+         "label": "\\( \\frac{dP}{dt} = 40 - P \\), with \\( P(0) = 20 \\)",
+         "derivation": "proportional read as equal, so the constant k never appears",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-07004",
+         "label": "\\( \\frac{dP}{dt} = k\\left(40 - 20\\right) \\), with \\( P(0) = 20 \\)",
+         "derivation": "the initial value 20 substituted for P inside the equation, so the rate becomes a constant",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": true,
+         "error_path": null,
+         "label": "\\( \\frac{dP}{dt} = k\\left(40 - P\\right) \\), with \\( P(0) = 20 \\)"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-07002",
+         "label": "\\( \\frac{dP}{dt} = k\\left(P - 40\\right) \\), with \\( P(0) = 20 \\)",
+         "derivation": "the difference written as P minus the level, which with k positive drives P away from 40",
+         "mechanism": "sign_error"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-04",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-07001",
+      "BC-SKL-07002",
+      "BC-SKL-07003",
+      "BC-SKL-07004",
+      "BC-SKL-07005"
+   ],
+   "parameter_draw": {
+      "context": "price",
+      "level": "40",
+      "gap": "20",
+      "approach": "from_below",
+      "time_unit": "hours"
+   },
+   "predicted_success_probability": 0.5866,
+   "provenance": {
+      "template_id": "TPL-BC-QA-07006-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-07006:spec-1:item-4:try-4",
+      "parameter_draw": {
+         "context": "price",
+         "level": "40",
+         "gap": "20",
+         "approach": "from_below",
+         "time_unit": "hours"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:54:01Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.5866
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

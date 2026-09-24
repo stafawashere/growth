@@ -1,0 +1,155 @@
+{
+   "id": "ITM-GEN-09012-21",
+   "archetype_id": "BC-QA-09012",
+   "variant_id": "BC-QV-09012-01",
+   "format": "mcq",
+   "stem": {
+      "text": "The polar curve \\( r = 4 \\sin{\\left(3 \\theta \\right)} \\) is a rose with 3 petals. Find the exact area of the region enclosed by one petal.",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Multiply",
+         [
+            "Rational",
+            4,
+            3
+         ],
+         "Pi"
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "One petal is traced between consecutive zeros of r, so the angles run from \\( \\theta = 0 \\) to \\( \\theta = \\frac{\\pi}{3} \\), where \\( 4 \\sin{\\left(3 \\theta \\right)} = 0 \\).",
+         "point_type_id": "BC-PT-99001",
+         "rule_named": "limits from zeros of r"
+      },
+      {
+         "step": 2,
+         "text": "The area is one half the integral of the square of r: \\( A = \\frac{1}{2}\\int_{0}^{\\frac{\\pi}{3}} \\left(4 \\sin{\\left(3 \\theta \\right)}\\right)^2\\,d\\theta \\).",
+         "point_type_id": "BC-PT-99048",
+         "rule_named": "polar area"
+      },
+      {
+         "step": 3,
+         "text": "Expand the square and use \\( \\sin^2 u = \\tfrac{1}{2}(1 - \\cos 2u) \\) or \\( \\cos^2 u = \\tfrac{1}{2}(1 + \\cos 2u) \\) to integrate, giving \\( A = \\frac{4 \\pi}{3} \\).",
+         "mathjson": [
+            "Multiply",
+            [
+               "Rational",
+               4,
+               3
+            ],
+            "Pi"
+         ],
+         "point_type_id": "BC-PT-99004",
+         "rule_named": "power reduction"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Multiply",
+            [
+               "Rational",
+               4,
+               3
+            ],
+            "Pi"
+         ]
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-09036",
+         "value": [
+            "Rational",
+            4,
+            3
+         ],
+         "derivation": "r integrated without being squared, one half the integral of r",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-09035",
+         "value": [
+            "Multiply",
+            [
+               "Rational",
+               8,
+               3
+            ],
+            "Pi"
+         ],
+         "derivation": "the factor of one half left off the polar area integral",
+         "mechanism": "forgot_constant"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-09016",
+         "value": [
+            "Multiply",
+            8,
+            "Pi"
+         ],
+         "derivation": "the area integral taken from 0 to 2 pi instead of over the angles that sweep the region",
+         "mechanism": "wrong_limits"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-13",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-09035",
+      "BC-SKL-09036",
+      "BC-SKL-09037",
+      "BC-SKL-09038"
+   ],
+   "parameter_draw": {
+      "shape": "petal",
+      "constant": "5",
+      "coefficient": "4",
+      "frequency": "3",
+      "trig": "sin",
+      "sweep": "first"
+   },
+   "predicted_success_probability": 0.4134,
+   "provenance": {
+      "template_id": "TPL-BC-QA-09012-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-09012:spec-1:item-21:try-25",
+      "parameter_draw": {
+         "shape": "petal",
+         "constant": "5",
+         "coefficient": "4",
+         "frequency": "3",
+         "trig": "sin",
+         "sweep": "first"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:54:03Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.4134
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

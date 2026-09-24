@@ -1,0 +1,146 @@
+{
+   "id": "ITM-GEN-08008-18",
+   "archetype_id": "BC-QA-08008",
+   "variant_id": "BC-QV-08008-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = - 3 x^{2} + 16 x - 20 \\) and \\( g(x) = x - 3 \\). Let R be the region bounded by the graphs of f and g and the vertical lines \\( x = 2 \\) and \\( x = 3 \\). Find the exact area of R.",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         3,
+         2
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "On \\( [2, 3] \\), \\( f(x) - g(x) = - 3 x^{2} + 15 x - 17 \\), which is positive, so f is the upper curve and the limits are the given vertical lines.",
+         "point_type_id": "BC-PT-99059",
+         "rule_named": "upper minus lower"
+      },
+      {
+         "step": 2,
+         "text": "The area is \\( \\int_{2}^{3} \\left(- 3 x^{2} + 15 x - 17\\right)\\,dx \\).",
+         "point_type_id": "BC-PT-99001",
+         "rule_named": "area between curves"
+      },
+      {
+         "step": 3,
+         "text": "An antiderivative of the integrand is \\( - x^{3} + \\frac{15 x^{2}}{2} - 17 x \\).",
+         "point_type_id": "BC-PT-99003",
+         "rule_named": "power rule"
+      },
+      {
+         "step": 4,
+         "text": "Evaluating from \\( 2 \\) to \\( 3 \\), the area is \\( \\frac{3}{2} \\).",
+         "mathjson": [
+            "Rational",
+            3,
+            2
+         ],
+         "point_type_id": "BC-PT-99004",
+         "rule_named": "Fundamental Theorem of Calculus"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-99009",
+         "value": [
+            "Rational",
+            -9,
+            2
+         ],
+         "derivation": "g substituted into f(x) - g(x) without parentheses, so the constant term of g is added instead of subtracted",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "B",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Rational",
+            3,
+            2
+         ]
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-99011",
+         "value": 1,
+         "derivation": "the area under the upper curve alone, the integral of f from the left limit to the right limit",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-08020",
+         "value": [
+            "Rational",
+            -3,
+            2
+         ],
+         "derivation": "the integrand written as g(x) - f(x), lower minus upper",
+         "mechanism": "reversed_quantities"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-08018",
+      "BC-SKL-08019",
+      "BC-SKL-08020",
+      "BC-SKL-08021",
+      "BC-SKL-08022"
+   ],
+   "parameter_draw": {
+      "left": "2",
+      "width": "1",
+      "bulge": "3",
+      "slope": "1",
+      "intercept": "-3",
+      "lift": "1",
+      "presentation": "formula",
+      "limits": "stated"
+   },
+   "predicted_success_probability": 0.4134,
+   "provenance": {
+      "template_id": "TPL-BC-QA-08008-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-08008:spec-1:item-18:try-18",
+      "parameter_draw": {
+         "left": "2",
+         "width": "1",
+         "bulge": "3",
+         "slope": "1",
+         "intercept": "-3",
+         "lift": "1",
+         "presentation": "formula",
+         "limits": "stated"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, run F",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T13:02:05Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.3318
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

@@ -1,0 +1,175 @@
+{
+   "id": "ITM-GEN-06001-05",
+   "archetype_id": "BC-QA-06001",
+   "variant_id": "BC-QV-06001-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Rain falls on a field at a rate of R(t) millimeters per hour, where t is measured in hours for \\( 0 \\le t \\le 8 \\). Selected values of R(t) are shown in the table. Using a left Riemann sum with the four subintervals indicated by the table, approximate \\( \\int_{0}^{8} R(t)\\,dt \\). Show the setup for the sum, and give the answer in millimeters.",
+      "setup_required": true,
+      "command_verb": "approximate"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 96,
+      "units": "millimeters"
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The table gives four subintervals with endpoints 0, 2, 4, 6, 8, so their widths are 2, 2, 2, 2.",
+         "rule_named": "subinterval widths from the table"
+      },
+      {
+         "step": 2,
+         "text": "A left Riemann sum uses the value of R at the left end of each subinterval: \\( 2(10) + 2(12) + 2(6) + 2(20) \\).",
+         "point_type_id": "BC-PT-99018",
+         "rule_named": "Riemann sum"
+      },
+      {
+         "step": 3,
+         "text": "So \\( \\int_{0}^{8} R(t)\\,dt \\) is approximately \\( 96 \\) millimeters.",
+         "mathjson": 96,
+         "point_type_id": "BC-PT-99019",
+         "rule_named": "arithmetic"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "value": 96
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-06002",
+         "value": 86,
+         "derivation": "the right endpoint of each subinterval used where a left sum was asked for",
+         "mechanism": "wrong_limits"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-99028",
+         "value": 24,
+         "derivation": "the Riemann sum divided by the number of subintervals, as though averaging the rate",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-06003",
+         "value": 48,
+         "derivation": "the four left endpoint values of R added with no widths",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-05",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-05",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-16",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06005",
+      "BC-SKL-06006",
+      "BC-SKL-06010",
+      "BC-SKL-06036"
+   ],
+   "parameter_draw": {
+      "gaps": [
+         "4",
+         "3",
+         "4",
+         "4"
+      ],
+      "even_gap": "2",
+      "rates": [
+         "10",
+         "12",
+         "6",
+         "20",
+         "5"
+      ],
+      "endpoint": "left",
+      "context": "rain",
+      "spacing": "uniform",
+      "framing": "context"
+   },
+   "predicted_success_probability": 0.0794,
+   "provenance": {
+      "template_id": "TPL-BC-QA-06001-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-06001:spec-1:item-5:try-5",
+      "parameter_draw": {
+         "gaps": [
+            "4",
+            "3",
+            "4",
+            "4"
+         ],
+         "even_gap": "2",
+         "rates": [
+            "10",
+            "12",
+            "6",
+            "20",
+            "5"
+         ],
+         "endpoint": "left",
+         "context": "rain",
+         "spacing": "uniform",
+         "framing": "context"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, run D",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:56Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.1091
+   },
+   "figure": {
+      "kind": "table",
+      "columns": [
+         "t (hours)",
+         "R(t) (millimeters per hour)"
+      ],
+      "rows": [
+         [
+            "0",
+            "10"
+         ],
+         [
+            "2",
+            "12"
+         ],
+         [
+            "4",
+            "6"
+         ],
+         [
+            "6",
+            "20"
+         ],
+         [
+            "8",
+            "5"
+         ]
+      ],
+      "labels": [],
+      "alt": "A table of R(t): at t = 0, R(t) = 10; at t = 2, R(t) = 12; at t = 4, R(t) = 6; at t = 6, R(t) = 20; at t = 8, R(t) = 5."
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

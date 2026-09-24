@@ -1,0 +1,187 @@
+{
+   "id": "ITM-GEN-04002-00",
+   "archetype_id": "BC-QA-04002",
+   "variant_id": "BC-QV-04002-01",
+   "format": "mcq",
+   "stem": {
+      "text": "The function F is differentiable, and F(t) gives the amount of a file that has downloaded, in megabytes, at time t seconds. Selected values of F(t) are given in the table. Using the average rate of change of F over the interval \\( 5 \\le t \\le 10 \\), approximate \\( F'(9) \\). Give the exact value of the approximation and indicate units of measure.",
+      "command_verb": "approximate"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         -19,
+         5
+      ],
+      "units": "megabytes per second"
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The interval \\( 5 \\le t \\le 10 \\) uses the rows at t = 5 and t = 10, so the change in F is \\( 35 - 54 = -19 \\).",
+         "mathjson": -19,
+         "point_type_id": "BC-PT-99005",
+         "rule_named": "difference of tabulated values"
+      },
+      {
+         "step": 2,
+         "text": "Dividing by the change in time, \\( F'(9) \\approx \\frac{F(10) - F(5)}{10 - 5} = \\frac{35 - 54}{10 - 5} = - \\frac{19}{5} \\).",
+         "mathjson": [
+            "Rational",
+            -19,
+            5
+         ],
+         "point_type_id": "BC-PT-99005",
+         "rule_named": "average rate of change as a difference quotient"
+      },
+      {
+         "step": 3,
+         "text": "The units are those of F over those of t: megabytes per second.",
+         "point_type_id": "BC-PT-99006",
+         "rule_named": "units of a rate"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-02004",
+         "value": -13,
+         "derivation": "the rows at t = 9 and t = 10 used in place of the named interval",
+         "mechanism": "wrong_limits"
+      },
+      {
+         "id": "B",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Rational",
+            -19,
+            5
+         ]
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-02004",
+         "value": [
+            "Rational",
+            -3,
+            2
+         ],
+         "derivation": "the rows at t = 5 and t = 9 used in place of the named interval",
+         "mechanism": "wrong_limits"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-02001",
+         "value": -19,
+         "derivation": "the change F(10) - F(5) reported without dividing by the change in time",
+         "mechanism": "algebra_slip"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-04004",
+      "BC-SKL-04001",
+      "BC-SKL-02014",
+      "BC-SKL-02015",
+      "BC-SKL-02016",
+      "BC-SKL-02002",
+      "BC-SKL-02003"
+   ],
+   "parameter_draw": {
+      "times": [
+         "1",
+         "5",
+         "9",
+         "10",
+         "11"
+      ],
+      "readings": [
+         "34",
+         "35",
+         "48",
+         "54",
+         "66"
+      ],
+      "context": "download",
+      "trend": "decreasing"
+   },
+   "predicted_success_probability": 0.148,
+   "provenance": {
+      "template_id": "TPL-BC-QA-04002-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-04002:spec-1:item-0:try-0",
+      "parameter_draw": {
+         "times": [
+            "1",
+            "5",
+            "9",
+            "10",
+            "11"
+         ],
+         "readings": [
+            "34",
+            "35",
+            "48",
+            "54",
+            "66"
+         ],
+         "context": "download",
+         "trend": "decreasing"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:53Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.148
+   },
+   "figure": {
+      "kind": "table",
+      "columns": [
+         "t (seconds)",
+         "F(t) (megabytes)"
+      ],
+      "rows": [
+         [
+            "1",
+            "66"
+         ],
+         [
+            "5",
+            "54"
+         ],
+         [
+            "9",
+            "48"
+         ],
+         [
+            "10",
+            "35"
+         ],
+         [
+            "11",
+            "34"
+         ]
+      ],
+      "labels": [],
+      "alt": "The table lists F(t) at five times, F(1) = 66; F(5) = 54; F(9) = 48; F(10) = 35; F(11) = 34."
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

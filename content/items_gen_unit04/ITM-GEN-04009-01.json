@@ -1,0 +1,129 @@
+{
+   "id": "ITM-GEN-04009-01",
+   "archetype_id": "BC-QA-04009",
+   "variant_id": "BC-QV-04009-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Let f be a function with a continuous derivative for all real x, where \\( f(2) = -1 \\), \\( f'(2) = 1 \\) and \\( f(6) = -6 \\), \\( f'(6) = 6 \\). Find \\( \\lim_{x \\to 2} \\frac{f(3x) + 6}{x^{2} - 4} \\), showing the work that justifies the method.",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         9,
+         2
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Check the form first: \\( \\lim_{x \\to 2} \\left(f(3x) + 6\\right) = f(6) + 6 = -6 + 6 = 0 \\) and \\( \\lim_{x \\to 2} \\left(x^{2} - 4\\right) = 0 \\), so the limit has the form 0/0.",
+         "point_type_id": "BC-PT-99005",
+         "rule_named": "verify the indeterminate form"
+      },
+      {
+         "step": 2,
+         "text": "By L'Hospital's rule, differentiate the numerator and the denominator separately, using the chain rule on \\( f(3x) \\): \\( \\lim_{x \\to 2} \\frac{3 f'(3x)}{2 x} = \\frac{3(6)}{4} = \\frac{9}{2} \\).",
+         "mathjson": [
+            "Rational",
+            9,
+            2
+         ],
+         "point_type_id": "BC-PT-99055",
+         "rule_named": "L'Hospital's rule"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-01008",
+         "value": 0,
+         "derivation": "the numerator seen to tend to 0 and the limit reported as 0, with the denominator ignored",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Rational",
+            9,
+            2
+         ]
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-04031",
+         "value": [
+            "Rational",
+            3,
+            2
+         ],
+         "derivation": "the derivative of f(3x) taken as f'(3x), with the chain rule factor 3 dropped",
+         "mechanism": "chain_rule_omitted"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-03003",
+         "value": [
+            "Rational",
+            3,
+            4
+         ],
+         "derivation": "the derivative of f(3x) at x = 2 read as 3 f'(2) instead of 3 f'(6)",
+         "mechanism": "algebra_slip"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-04033",
+      "BC-SKL-04034",
+      "BC-SKL-04035",
+      "BC-SKL-04036",
+      "BC-SKL-04037",
+      "BC-SKL-04038"
+   ],
+   "parameter_draw": {
+      "anchor": "2",
+      "stretch": "3",
+      "far_value": "-6",
+      "far_slope": "6",
+      "near_value": "-1",
+      "near_slope": "1",
+      "denominator": "square"
+   },
+   "predicted_success_probability": 0.5,
+   "provenance": {
+      "template_id": "TPL-BC-QA-04009-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-04009:spec-1:item-1:try-1",
+      "parameter_draw": {
+         "anchor": "2",
+         "stretch": "3",
+         "far_value": "-6",
+         "far_slope": "6",
+         "near_value": "-1",
+         "near_slope": "1",
+         "denominator": "square"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:53Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.5
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

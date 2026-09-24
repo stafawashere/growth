@@ -1,0 +1,120 @@
+{
+   "id": "ITM-GEN-99006-02",
+   "archetype_id": "BC-QA-99006",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Two polar curves are given by \\( r = 2 \\theta \\sin{\\left(\\theta \\right)} + 6 \\) and \\( r = 2 \\cos{\\left(\\theta \\right)} + 2 \\) for \\( 0 \\le \\theta \\le \\frac{\\pi}{2} \\), and they do not meet on this interval. Let D be the distance between the two curves measured along the ray at angle \\( \\theta \\). Using a calculator, find the rate at which D changes with respect to \\( \\theta \\) at \\( \\theta = 1.2 \\). Show the setup, and give the value correct to three decimal places.",
+      "setup_required": true,
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "numeric",
+      "mathjson": 4.597814954612922,
+      "decimals": 3
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "On the interval \\( \\theta\\sin\\theta \\ge 0 \\), so the first radius is at least 6, while the second is at most 4. The first curve is outside, so \\( D(\\theta) = 2 \\theta \\sin{\\left(\\theta \\right)} + 6 - \\left(2 \\cos{\\left(\\theta \\right)} + 2\\right) \\).",
+         "point_type_id": "BC-PT-99005",
+         "rule_named": "distance along a ray"
+      },
+      {
+         "step": 2,
+         "text": "Differentiate, using the product rule on \\( \\theta\\sin\\theta \\): \\( D'(\\theta) = 2 \\theta \\cos{\\left(\\theta \\right)} + 4 \\sin{\\left(\\theta \\right)} \\).",
+         "point_type_id": "BC-PT-99005",
+         "rule_named": "product rule"
+      },
+      {
+         "step": 3,
+         "text": "At \\( \\theta = 1.2 \\), a calculator in radian mode gives \\( D' \\approx 4.598 \\).",
+         "mathjson": 4.597814954612922,
+         "point_type_id": "BC-PT-99004",
+         "rule_named": "evaluation at the stated angle"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-99031",
+         "value": 2.589,
+         "derivation": "the outer radius differentiated without the product rule, theta sin(theta) giving cos(theta)",
+         "mechanism": "product_rule_omitted"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-99031",
+         "value": 2.734,
+         "derivation": "only the outer radius differentiated, so dr/dtheta of the first curve is reported as the rate of the gap",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": true,
+         "error_path": null,
+         "value": 4.598
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-09039",
+         "value": -4.598,
+         "derivation": "the inner curve taken as the outer one, so the gap is written inner minus outer and its derivative has the wrong sign",
+         "mechanism": "sign_error"
+      }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-13",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-16",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-09029",
+      "BC-SKL-09031",
+      "BC-SKL-09033"
+   ],
+   "parameter_draw": {
+      "outer_constant": "6",
+      "outer_sign": "1",
+      "outer_coefficient": "2",
+      "inner_constant": "2",
+      "inner_coefficient": "2",
+      "inner_trig": "cos",
+      "angle": "6/5",
+      "outer_named": "argued"
+   },
+   "predicted_success_probability": 0.1978,
+   "provenance": {
+      "template_id": "TPL-BC-QA-99006-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-99006:spec-1:item-2:try-2",
+      "parameter_draw": {
+         "outer_constant": "6",
+         "outer_sign": "1",
+         "outer_coefficient": "2",
+         "inner_constant": "2",
+         "inner_coefficient": "2",
+         "inner_trig": "cos",
+         "angle": "6/5",
+         "outer_named": "argued"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:54:03Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.2592
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

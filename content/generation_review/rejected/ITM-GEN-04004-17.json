@@ -1,0 +1,137 @@
+{
+   "id": "ITM-GEN-04004-17",
+   "archetype_id": "BC-QA-04004",
+   "variant_id": "BC-QV-04004-01",
+   "format": "mcq",
+   "stem": {
+      "text": "A particle moves along the x-axis so that its position at time t hours is \\( x(t) = - 2 \\left(t - 4\\right) \\left(t - 3\\right)^{2} \\), for \\( 0 \\le t \\le 7 \\). Find all open intervals of time in \\( 0 < t < 7 \\) during which the particle is moving to the left. Give a reason for the answer.",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "The particle is moving to the left exactly on \\( \\left(0, 3\\right) \\) and \\( \\left(\\frac{11}{3}, 7\\right) \\), because \\( v(t) < 0 \\) there."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Differentiate the position with the product rule: \\( v(t) = x'(t) = - 2 \\left(t - 3\\right) \\left(3 t - 11\\right) \\).",
+         "rule_named": "velocity is the derivative of position"
+      },
+      {
+         "step": 2,
+         "text": "Solving \\( v(t) = 0 \\) gives \\( t = 3, \\frac{11}{3} \\), which split \\( 0 < t < 7 \\) into pieces on which v keeps one sign.",
+         "rule_named": "zeros of velocity"
+      },
+      {
+         "step": 3,
+         "text": "Testing a time in each piece shows \\( v(t) < 0 \\) exactly on \\( \\left(0, 3\\right) \\) and \\( \\left(\\frac{11}{3}, 7\\right) \\). The particle moves to the left when its velocity is negative, so it moves to the left on \\( \\left(0, 3\\right) \\) and \\( \\left(\\frac{11}{3}, 7\\right) \\).",
+         "rule_named": "sign of velocity gives the direction of motion"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "label": "The particle is moving to the left exactly on \\( \\left(0, 3\\right) \\) and \\( \\left(\\frac{11}{3}, 7\\right) \\), because \\( v(t) < 0 \\) there."
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-04008",
+         "label": "The particle is moving to the left exactly on \\( \\left(4, 7\\right) \\), because \\( x(t) < 0 \\) there.",
+         "derivation": "the direction read from the sign of the position x(t) rather than of the velocity",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-99030",
+         "label": "The particle is moving to the left exactly on \\( \\left(\\frac{10}{3}, 7\\right) \\), because v(t) is decreasing there.",
+         "derivation": "the direction read from whether the velocity is decreasing, the sign of its change, rather than from its sign",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-04010",
+         "label": "The particle is moving to the left exactly on \\( \\left(0, 3\\right) \\) and \\( \\left(3, 7\\right) \\), because \\( v(t) < 0 \\) there.",
+         "derivation": "only the integer zero t = 3 found by trying whole-number times, so the zero at t = 11/3 is missed and each remaining piece is judged at one whole-number time",
+         "mechanism": "algebra_slip"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-04009",
+      "BC-SKL-04011",
+      "BC-SKL-04012"
+   ],
+   "parameter_draw": {
+      "double_root": "3",
+      "single_root": "4",
+      "size": "2",
+      "leading": "negative",
+      "horizon": "7",
+      "direction": "left",
+      "time_units": "hours"
+   },
+   "predicted_success_probability": 0.3318,
+   "provenance": {
+      "template_id": "TPL-BC-QA-04004-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-04004:spec-1:item-17:try-17",
+      "parameter_draw": {
+         "double_root": "3",
+         "single_root": "4",
+         "size": "2",
+         "leading": "negative",
+         "horizon": "7",
+         "direction": "left",
+         "time_units": "hours"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T13:51:57Z",
+      "content_snapshot": "a800600d4c437c1ba8273c7cb1a03e0fe70b74050fbabcbcf27d142ba56fded8",
+      "no_official_examples": true,
+      "requested_success_probability": 0.4134
+   },
+   "review": {
+      "item_id": "ITM-GEN-04004-17",
+      "status": "needs_review",
+      "rules": [
+         10,
+         11
+      ],
+      "notes": [
+         "Jaccard 0.917 with ITM-GEN-04004-04 (bank)",
+         "math pair Jaccard 1.000 with ITM-GEN-04004-04 (bank)"
+      ]
+   },
+   "review_decision": {
+      "item_id": "ITM-GEN-04004-17",
+      "decision": "reject",
+      "reason": "duplicate of ITM-GEN-04004-04, which is kept",
+      "by": "claude-opus-5-5 on the operator's delegation of 2026-09-24",
+      "decided_on": "2026-09-24",
+      "rules": [
+         10,
+         11
+      ],
+      "archetype_id": "BC-QA-04004",
+      "prompt_version": "generator/template_v1",
+      "template_id": "TPL-BC-QA-04004-v1"
+   }
+}

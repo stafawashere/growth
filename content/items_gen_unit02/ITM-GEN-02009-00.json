@@ -1,0 +1,205 @@
+{
+   "id": "ITM-GEN-02009-00",
+   "archetype_id": "BC-QA-02009",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "The table gives values of the differentiable functions f and g and their derivatives at selected values of x. Let \\( h(x) = \\frac{f(x)}{g(x)} \\). Find the exact value of \\( h'(3) \\).",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         -12,
+         25
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "From the row x = 3: \\( f(3) = -1 \\), \\( f'(3) = 2 \\), \\( g(3) = -5 \\) and \\( g'(3) = -2 \\).",
+         "rule_named": "read the table"
+      },
+      {
+         "step": 2,
+         "text": "By the quotient rule, \\( h'(x) = \\frac{f'(x)\\,g(x) - f(x)\\,g'(x)}{\\left(g(x)\\right)^{2}} \\).",
+         "rule_named": "quotient rule"
+      },
+      {
+         "step": 3,
+         "text": "So \\( h'(3) = \\frac{2 \\cdot \\left(-5\\right) - \\left(-1\\right) \\cdot \\left(-2\\right)}{\\left(-5\\right)^{2}} = - \\frac{12}{25} \\).",
+         "mathjson": [
+            "Rational",
+            -12,
+            25
+         ],
+         "point_type_id": "BC-PT-99004",
+         "rule_named": "substitute and evaluate"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-02022",
+         "value": [
+            "Rational",
+            12,
+            5
+         ],
+         "derivation": "the numerator divided by g(3) instead of by its square",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-02021",
+         "value": [
+            "Rational",
+            12,
+            25
+         ],
+         "derivation": "the two terms of the numerator taken in the reverse order",
+         "mechanism": "reversed_quantities"
+      },
+      {
+         "id": "C",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Rational",
+            -12,
+            25
+         ]
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-02024",
+         "value": [
+            "Rational",
+            3,
+            25
+         ],
+         "derivation": "the value f(3) read where f'(3) belongs in the rule",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-03",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02037",
+      "BC-SKL-02041",
+      "BC-SKL-02017"
+   ],
+   "parameter_draw": {
+      "f_values": [
+         "-5",
+         "-1",
+         "-1"
+      ],
+      "f_slopes": [
+         "3",
+         "5",
+         "2"
+      ],
+      "g_values": [
+         "4",
+         "-5",
+         "-5"
+      ],
+      "g_slopes": [
+         "4",
+         "-2",
+         "-2"
+      ],
+      "row": "2",
+      "start": "1",
+      "form": "quotient"
+   },
+   "predicted_success_probability": 0.5,
+   "provenance": {
+      "template_id": "TPL-BC-QA-02009-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-02009:spec-1:item-0:try-0",
+      "parameter_draw": {
+         "f_values": [
+            "-5",
+            "-1",
+            "-1"
+         ],
+         "f_slopes": [
+            "3",
+            "5",
+            "2"
+         ],
+         "g_values": [
+            "4",
+            "-5",
+            "-5"
+         ],
+         "g_slopes": [
+            "4",
+            "-2",
+            "-2"
+         ],
+         "row": "2",
+         "start": "1",
+         "form": "quotient"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, author tpl-B",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:50Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.5
+   },
+   "figure": {
+      "kind": "table",
+      "columns": [
+         "\\( x \\)",
+         "\\( f(x) \\)",
+         "\\( f'(x) \\)",
+         "\\( g(x) \\)",
+         "\\( g'(x) \\)"
+      ],
+      "rows": [
+         [
+            "1",
+            "-5",
+            "3",
+            "4",
+            "4"
+         ],
+         [
+            "2",
+            "-1",
+            "5",
+            "-5",
+            "-2"
+         ],
+         [
+            "3",
+            "-1",
+            "2",
+            "-5",
+            "-2"
+         ]
+      ],
+      "labels": [],
+      "alt": "A table of values: at x = 1, f = -5, f' = 3, g = 4, g' = 4; at x = 2, f = -1, f' = 5, g = -5, g' = -2; at x = 3, f = -1, f' = 2, g = -5, g' = -2."
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

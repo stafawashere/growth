@@ -21,8 +21,11 @@ import uuid
 from app.db import models
 from app.items.mathjson import to_sympy
 from app.items.verify import (
+   RULE_6,
+   RULE_7,
    UNSETTLED_VIOLATION,
    distractor_checks,
+   error_path_findings,
    equivalence,
    numeric_check,
 )
@@ -30,6 +33,7 @@ from app.items.verify import (
 REVIEW_KIND = "item_verification_disagreement"
 
 CHECK_TYPES = ("sympy_equivalence", "numeric_probe", "distractor_distinct")
+STATEMENT_CHECK_TYPES = ("statement_key", "distractor_distinct")
 
 PASS = "pass"
 FAIL = "fail"
@@ -59,7 +63,13 @@ def solution_expression(record):
    if not has_steps:
       raise ValueError(f"item {record.get('id')} has no worked solution to check the key against")
 
-   return to_sympy(steps[-1]["mathjson"])
+   valued_steps = [step for step in steps if "mathjson" in step]
+   has_valued_step = len(valued_steps) > 0
+
+   if not has_valued_step:
+      raise ValueError(f"item {record.get('id')} has no worked-solution step carrying a value")
+
+   return to_sympy(valued_steps[-1]["mathjson"])
 
 
 def key_options(record):
@@ -151,7 +161,66 @@ def distractor_distinct_check(record, active_error_ids):
    return PASS, detail
 
 
+def is_statement_record(record):
+   """04's key form "statement": a verdict, classification or interpretation chosen among
+   labelled options, which no MathJSON value holds."""
+   return record.get("answer_key", {}).get("form") == "statement"
+
+
+def statement_key_check(record):
+   key_label = record["answer_key"].get("label")
+   keys = key_options(record)
+   has_one_key = len(keys) == 1
+   names_the_key = has_one_key and bool(key_label) and keys[0].get("label") == key_label
+
+   if names_the_key:
+      return PASS, {"label_matches": True}
+
+   return FAIL, {"label_matches": False, "keys": len(keys)}
+
+
+def statement_distractor_check(record, active_error_ids):
+   options = record.get("options") or []
+   labels = [(option.get("label") or "").strip() for option in options]
+   blank_labels = [label for label in labels if not label]
+   repeated_labels = len(set(labels)) != len(labels)
+   distractors = distractor_options(record)
+   error_paths = [option.get("error_path") for option in distractors]
+   violations = option_set_violations(record)
+
+   if blank_labels:
+      violations.append({"rule": "option_without_label"})
+
+   if repeated_labels:
+      violations.append(RULE_6)
+
+   violations.extend(RULE_7 for _ in error_path_findings(error_paths, active_error_ids))
+   detail = {"distractors": len(distractors), "violations": violations}
+
+   if violations:
+      return FAIL, detail
+
+   return PASS, detail
+
+
+def run_statement_checks(record, active_error_ids):
+   key_outcome, key_detail = statement_key_check(record)
+   distractor_outcome, distractor_detail = statement_distractor_check(record, active_error_ids)
+
+   return [
+      {"check_type": "statement_key", "outcome": key_outcome, "detail": key_detail},
+      {
+         "check_type": "distractor_distinct",
+         "outcome": distractor_outcome,
+         "detail": distractor_detail,
+      },
+   ]
+
+
 def run_checks(record, active_error_ids):
+   if is_statement_record(record):
+      return run_statement_checks(record, active_error_ids)
+
    symbolic_outcome, symbolic_detail = sympy_equivalence_check(record)
    numeric_outcome, numeric_detail = numeric_probe_check(record)
    distractor_outcome, distractor_detail = distractor_distinct_check(record, active_error_ids)
@@ -195,6 +264,16 @@ def provenance_model(record):
    operator items (exit criterion 7, gates 17, 29 and 30) can count it. A record with no
    authored_by is the operator's own.
    """
+   generated_by = (record.get("provenance") or {}).get("model")
+   is_generated = generated_by is not None
+   was_signed_off = record.get("signed_off_by") is not None
+
+   if is_generated and not was_signed_off:
+      return generated_by
+
+   if is_generated:
+      return OPERATOR_MODEL
+
    authored_by = record.get("authored_by")
    names_no_author = authored_by is None
 
@@ -209,8 +288,11 @@ def is_operator_authored(record):
 
 
 def provenance_for(record):
-   """Scope item 7 and R30: the two generation keys are null, since P1 has no generator."""
-   return {
+   """Scope item 7 and R30: the two generation keys are null on a hand-authored or agent-drafted
+   item. A generated item carries its own provenance block (04, "Provenance logging"), which is
+   kept whole, with the template and seed as the generation job."""
+   generated = record.get("provenance")
+   provenance = {
       "model": provenance_model(record),
       "prompt_template_version": None,
       "generation_job_id": None,
@@ -218,6 +300,18 @@ def provenance_for(record):
       "archetype_id": record["archetype_id"],
       "variant_id": record.get("variant_id"),
    }
+
+   if generated is None:
+      return provenance
+
+   provenance.update(generated)
+   provenance["generated_by"] = generated.get("model")
+   provenance["model"] = provenance_model(record)
+   provenance["prompt_template_version"] = generated.get("prompt_version")
+   provenance["generation_job_id"] = f"{generated.get('template_id')}:{generated.get('parameter_seed')}"
+   provenance["authored_on"] = (generated.get("generated_at") or "")[:10] or None
+
+   return provenance
 
 
 def item_row(record, item_id, snapshot_id, status, now):

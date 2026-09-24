@@ -1,0 +1,168 @@
+{
+   "id": "ITM-GEN-02011-03",
+   "archetype_id": "BC-QA-02011",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = - 2 x^{2} - 6 x - 3 \\). Find an equation of the line tangent to the graph of f at the point where \\( x = -2 \\). Write it in the form \\( y = mx + b \\).",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Multiply",
+            2,
+            "x"
+         ],
+         5
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Differentiate: \\( f'(x) = - 4 x - 6 \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               -1,
+               4,
+               "x"
+            ],
+            -6
+         ],
+         "rule_named": "power rule"
+      },
+      {
+         "step": 2,
+         "text": "The slope is \\( f'(-2) = 2 \\).",
+         "mathjson": 2,
+         "point_type_id": "BC-PT-99082",
+         "rule_named": "derivative at the point"
+      },
+      {
+         "step": 3,
+         "text": "The point of tangency has \\( f(-2) = 1 \\), so it is \\( (-2, 1) \\).",
+         "mathjson": 1,
+         "rule_named": "function value at the point"
+      },
+      {
+         "step": 4,
+         "text": "Point-slope form gives \\( y - 1 = 2\\left(x + 2\\right) \\), that is \\( y = 2 x + 5 \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               2,
+               "x"
+            ],
+            5
+         ],
+         "point_type_id": "BC-PT-99082",
+         "rule_named": "point-slope form"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               2,
+               "x"
+            ],
+            5
+         ]
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-04023",
+         "value": [
+            "Add",
+            "x",
+            4
+         ],
+         "derivation": "the slope and the function value exchanged in point-slope form",
+         "mechanism": "reversed_quantities"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-02027",
+         "value": [
+            "Add",
+            "x",
+            3
+         ],
+         "derivation": "the function value f(-2) = 1 used as the slope",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-02028",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               -1,
+               10,
+               "x"
+            ],
+            -19
+         ],
+         "derivation": "the derivative evaluated at the y-coordinate 1 instead of at x = -2",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02012",
+      "BC-SKL-02013"
+   ],
+   "parameter_draw": {
+      "square": "-2",
+      "linear": "-6",
+      "constant": "-3",
+      "at": "-2",
+      "given": "input"
+   },
+   "predicted_success_probability": 0.5,
+   "provenance": {
+      "template_id": "TPL-BC-QA-02011-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-02011:spec-1:item-3:try-3",
+      "parameter_draw": {
+         "square": "-2",
+         "linear": "-6",
+         "constant": "-3",
+         "at": "-2",
+         "given": "input"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, author tpl-B",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:50Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.5
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

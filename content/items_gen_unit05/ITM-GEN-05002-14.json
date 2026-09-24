@@ -1,0 +1,177 @@
+{
+   "id": "ITM-GEN-05002-14",
+   "archetype_id": "BC-QA-05002",
+   "variant_id": "BC-QV-05002-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = 2 x^{3} + 12 \\). Find the value of c in the open interval \\( (1, 2) \\) at which the instantaneous rate of change of f equals the average rate of change of f over \\( \\left[1, 2\\right] \\). Give the exact value.",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Multiply",
+         [
+            "Rational",
+            1,
+            3
+         ],
+         [
+            "Sqrt",
+            21
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The average rate of change is \\( \\frac{f(2) - f(1)}{2 - 1} = \\frac{28 - 14}{1} = 14 \\).",
+         "mathjson": 14,
+         "rule_named": "average rate of change"
+      },
+      {
+         "step": 2,
+         "text": "Set the derivative equal to it and solve \\( 6 c^{2} = 14 \\), which gives \\( c^{2} = \\frac{7}{3} \\).",
+         "mathjson": [
+            "Rational",
+            7,
+            3
+         ],
+         "rule_named": "solve the derivative equation"
+      },
+      {
+         "step": 3,
+         "text": "The solutions are \\( c = \\pm \\frac{\\sqrt{21}}{3} \\). Only \\( c = \\frac{\\sqrt{21}}{3} \\) lies in \\( (1, 2) \\), so that is the value.",
+         "mathjson": [
+            "Multiply",
+            [
+               "Rational",
+               1,
+               3
+            ],
+            [
+               "Sqrt",
+               21
+            ]
+         ],
+         "rule_named": "keep the solution in the open interval"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-05003",
+         "value": [
+            "Multiply",
+            [
+               "Rational",
+               1,
+               2
+            ],
+            [
+               "Sqrt",
+               14
+            ]
+         ],
+         "derivation": "the average rate of change formed by averaging the endpoint values f(1) and f(2), 21, and the positive root taken",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-05003",
+         "value": [
+            "Multiply",
+            [
+               "Rational",
+               1,
+               2
+            ],
+            [
+               "Sqrt",
+               10
+            ]
+         ],
+         "derivation": "the average rate of change formed as the average of f'(1) and f'(2), 15, and the positive root taken",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-05005",
+         "value": [
+            "Multiply",
+            -1,
+            [
+               "Rational",
+               1,
+               3
+            ],
+            [
+               "Sqrt",
+               21
+            ]
+         ],
+         "derivation": "the negative solution of the derivative equation reported, which lies outside the open interval",
+         "mechanism": "theorem_condition_ignored"
+      },
+      {
+         "id": "D",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Multiply",
+            [
+               "Rational",
+               1,
+               3
+            ],
+            [
+               "Sqrt",
+               21
+            ]
+         ]
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-05003",
+      "BC-SKL-05005"
+   ],
+   "parameter_draw": {
+      "cubic": "2",
+      "linear": "0",
+      "constant": "12",
+      "low": "1",
+      "width": "1"
+   },
+   "predicted_success_probability": 0.5,
+   "provenance": {
+      "template_id": "TPL-BC-QA-05002-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-05002:spec-1:item-14:try-14",
+      "parameter_draw": {
+         "cubic": "2",
+         "linear": "0",
+         "constant": "12",
+         "low": "1",
+         "width": "1"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:53Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": true,
+      "requested_success_probability": 0.5
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

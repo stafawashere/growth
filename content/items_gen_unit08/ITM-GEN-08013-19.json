@@ -1,0 +1,166 @@
+{
+   "id": "ITM-GEN-08013-19",
+   "archetype_id": "BC-QA-08013",
+   "variant_id": "BC-QV-08013-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = - x^{2} + 2 x + 2 \\) and \\( g(x) = x + 2 \\). Let R be the region bounded by the graphs of f and g. Find the exact volume of the solid generated when R is revolved about the line \\( y = -3 \\).",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Multiply",
+         [
+            "Rational",
+            28,
+            15
+         ],
+         "Pi"
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The graphs meet where \\( f(x) - g(x) = - x^{2} + x = 0 \\), at \\( x = 0 \\) and \\( x = 1 \\). The axis lies below R, so f is farther from it: the outer radius is \\( R = f(x) - (-3) = - x^{2} + 2 x + 5 \\) and the inner radius is \\( r = g(x) - (-3) = x + 5 \\).",
+         "point_type_id": "BC-PT-99058",
+         "rule_named": "washer radii"
+      },
+      {
+         "step": 2,
+         "text": "The volume is \\( \\pi\\int_{0}^{1} \\left(R^{2} - r^{2}\\right)\\,dx \\), and \\( \\int_{0}^{1} \\left(R^{2} - r^{2}\\right)\\,dx = \\frac{28}{15} \\), so the volume is \\( \\frac{28 \\pi}{15} \\).",
+         "mathjson": [
+            "Multiply",
+            [
+               "Rational",
+               28,
+               15
+            ],
+            "Pi"
+         ],
+         "point_type_id": "BC-PT-99001",
+         "rule_named": "washer method"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-08040",
+         "value": [
+            "Multiply",
+            -1,
+            [
+               "Rational",
+               28,
+               15
+            ],
+            "Pi"
+         ],
+         "derivation": "the radii exchanged, r^2 - R^2",
+         "mechanism": "reversed_quantities"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-08038",
+         "value": [
+            "Multiply",
+            [
+               "Rational",
+               13,
+               15
+            ],
+            "Pi"
+         ],
+         "derivation": "both radii measured from the x-axis, f(x) and g(x), instead of from the line y = -3",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-08030",
+         "value": [
+            "Multiply",
+            [
+               "Rational",
+               1,
+               30
+            ],
+            "Pi"
+         ],
+         "derivation": "the square of the difference of the radii, (R - r)^2, used in place of R^2 - r^2",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "D",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Multiply",
+            [
+               "Rational",
+               28,
+               15
+            ],
+            "Pi"
+         ]
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-08048",
+      "BC-SKL-08049",
+      "BC-SKL-08050",
+      "BC-SKL-08051",
+      "BC-SKL-08052",
+      "BC-SKL-08053",
+      "BC-SKL-08054",
+      "BC-SKL-08055"
+   ],
+   "parameter_draw": {
+      "left": "0",
+      "width": "1",
+      "bulge": "1",
+      "slope": "1",
+      "intercept": "2",
+      "depth": "3",
+      "presentation": "formula",
+      "axis": "below"
+   },
+   "predicted_success_probability": 0.5,
+   "provenance": {
+      "template_id": "TPL-BC-QA-08013-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-08013:spec-1:item-19:try-27",
+      "parameter_draw": {
+         "left": "0",
+         "width": "1",
+         "bulge": "1",
+         "slope": "1",
+         "intercept": "2",
+         "depth": "3",
+         "presentation": "formula",
+         "axis": "below"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, run F",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T13:02:05Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.5
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

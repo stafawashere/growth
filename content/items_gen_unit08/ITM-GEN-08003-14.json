@@ -1,0 +1,159 @@
+{
+   "id": "ITM-GEN-08003-14",
+   "archetype_id": "BC-QA-08003",
+   "variant_id": "BC-QV-08003-01",
+   "format": "mcq",
+   "stem": {
+      "text": "A particle moves along the x-axis with velocity \\( v(t) = - 2 t^{2} + 24 t - 64 \\) for \\( t \\ge 0 \\). Find the exact total distance the particle travels over the time interval \\( 0 \\le t \\le 9 \\).",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         398,
+         3
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Total distance is \\( \\int_{0}^{9} \\left|v(t)\\right|\\,dt \\). Since \\( v(t) = - 2 \\left(t - 8\\right) \\left(t - 4\\right) \\), the velocity changes sign at \\( t = 4 \\) and \\( t = 8 \\), so the interval is split there.",
+         "rule_named": "total distance as the integral of speed"
+      },
+      {
+         "step": 2,
+         "text": "On \\( [0, 4] \\), \\( \\int_{0}^{4} v(t)\\,dt = - \\frac{320}{3} \\).",
+         "mathjson": [
+            "Rational",
+            -320,
+            3
+         ],
+         "rule_named": "definite integral of a polynomial"
+      },
+      {
+         "step": 3,
+         "text": "On \\( [4, 8] \\), \\( \\int_{4}^{8} v(t)\\,dt = \\frac{64}{3} \\).",
+         "mathjson": [
+            "Rational",
+            64,
+            3
+         ],
+         "rule_named": "definite integral of a polynomial"
+      },
+      {
+         "step": 4,
+         "text": "On \\( [8, 9] \\), \\( \\int_{8}^{9} v(t)\\,dt = - \\frac{14}{3} \\).",
+         "mathjson": [
+            "Rational",
+            -14,
+            3
+         ],
+         "rule_named": "definite integral of a polynomial"
+      },
+      {
+         "step": 5,
+         "text": "Add the sizes of the three pieces: the total distance is \\( \\frac{320}{3} + \\frac{64}{3} + \\frac{14}{3} = \\frac{398}{3} \\).",
+         "mathjson": [
+            "Rational",
+            398,
+            3
+         ],
+         "rule_named": "sum of absolute changes"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-08009",
+         "value": -90,
+         "derivation": "the velocity itself integrated over the whole interval in place of its absolute value",
+         "mechanism": "sign_error"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-08010",
+         "value": 90,
+         "derivation": "the velocity integrated over the whole interval with one absolute value taken at the end",
+         "mechanism": "theorem_condition_ignored"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-99010",
+         "value": [
+            "Rational",
+            370,
+            3
+         ],
+         "derivation": "the interval split only at t = 4, so the last two pieces net against each other",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Rational",
+            398,
+            3
+         ]
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-08006",
+      "BC-SKL-08007",
+      "BC-SKL-08008",
+      "BC-SKL-08009",
+      "BC-SKL-08010",
+      "BC-SKL-08011"
+   ],
+   "parameter_draw": {
+      "size": "2",
+      "direction": "left_first",
+      "first_zero": "4",
+      "gap": "4",
+      "overrun": "1",
+      "context": "cart",
+      "units": "centimeters",
+      "framing": "bare"
+   },
+   "predicted_success_probability": 0.1978,
+   "provenance": {
+      "template_id": "TPL-BC-QA-08003-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-08003:spec-1:item-14:try-14",
+      "parameter_draw": {
+         "size": "2",
+         "direction": "left_first",
+         "first_zero": "4",
+         "gap": "4",
+         "overrun": "1",
+         "context": "cart",
+         "units": "centimeters",
+         "framing": "bare"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, run F",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T13:02:05Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.2592
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

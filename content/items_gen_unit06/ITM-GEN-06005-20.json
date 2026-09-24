@@ -1,0 +1,134 @@
+{
+   "id": "ITM-GEN-06005-20",
+   "archetype_id": "BC-QA-06005",
+   "variant_id": "BC-QV-06005-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Water flows into and out of a tank. Let A(t) be the amount of water in the tank, in gallons, at time t hours, for \\( t \\ge 0 \\). The rate of change of A is \\( R(t) = 7 - 6 t \\) gallons per hour. At time t = 3, there are 45 gallons. Find the value of \\( A(5) \\), in gallons, and show the setup for the calculation.",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 11,
+      "units": "gallons"
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The known value and the accumulated change combine as \\( A(5) = A(3) + \\int_{3}^{5} \\left(7 - 6 t\\right)\\,dt \\).",
+         "point_type_id": "BC-PT-99033",
+         "rule_named": "net change theorem"
+      },
+      {
+         "step": 2,
+         "text": "An antiderivative of the rate is \\( - 3 t^{2} + 7 t \\), so the integral is \\( \\left[- 3 t^{2} + 7 t\\right]_{3}^{5} = -34 \\).",
+         "mathjson": -34,
+         "point_type_id": "BC-PT-99003",
+         "rule_named": "Fundamental Theorem of Calculus"
+      },
+      {
+         "step": 3,
+         "text": "So \\( A(5) = 45 + \\left(-34\\right) = 11 \\) gallons.",
+         "mathjson": 11,
+         "point_type_id": "BC-PT-99004",
+         "rule_named": "combine with the known value"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "value": 11
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-06015",
+         "value": -34,
+         "derivation": "the integral of the rate from 3 to 5 reported as the amount, with the known 45 gallons left out",
+         "mechanism": "forgot_constant"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-99012",
+         "value": 33,
+         "derivation": "the rate treated as its own antiderivative, so the change is taken as R(5) - R(3)",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-99012",
+         "value": 5,
+         "derivation": "the antiderivative evaluated only at the upper limit 5, ignoring its value at the lower limit 3",
+         "mechanism": "wrong_limits"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-05",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06036",
+      "BC-SKL-06037",
+      "BC-SKL-06034",
+      "BC-SKL-08012",
+      "BC-SKL-08016",
+      "BC-SKL-08017",
+      "BC-SKL-08009"
+   ],
+   "parameter_draw": {
+      "cubic": "0",
+      "square": "-3",
+      "linear": "7",
+      "start": "3",
+      "span": "2",
+      "known": "45",
+      "base_rate": "8",
+      "swing": "3",
+      "stretch": "2",
+      "horizon": "5/2",
+      "context": "tank",
+      "tool": "exact",
+      "direction": "forward"
+   },
+   "predicted_success_probability": 0.1978,
+   "provenance": {
+      "template_id": "TPL-BC-QA-06005-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-06005:spec-1:item-20:try-20",
+      "parameter_draw": {
+         "cubic": "0",
+         "square": "-3",
+         "linear": "7",
+         "start": "3",
+         "span": "2",
+         "known": "45",
+         "base_rate": "8",
+         "swing": "3",
+         "stretch": "2",
+         "horizon": "5/2",
+         "context": "tank",
+         "tool": "exact",
+         "direction": "forward"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, run D",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:56Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.1978
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

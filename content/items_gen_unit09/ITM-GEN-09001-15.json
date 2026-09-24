@@ -1,0 +1,122 @@
+{
+   "id": "ITM-GEN-09001-15",
+   "archetype_id": "BC-QA-09001",
+   "variant_id": "BC-QV-09001-01",
+   "format": "mcq",
+   "stem": {
+      "text": "A bead moves in the xy-plane so that \\( \\frac{dx}{dt} = \\frac{2 t}{t^{2} + 1} + 2 \\) with \\( x(0) = 0 \\), and \\( y(t) = 2 \\cos{\\left(\\frac{2 t^{2}}{3} \\right)} \\), for \\( t \\ge 0 \\). Using a calculator, find the slope of the line tangent to the path of the bead at \\( t = 2 \\). Show the setup for the calculation, and give the value correct to three decimal places.",
+      "setup_required": true,
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "numeric",
+      "mathjson": -0.8709954793063083,
+      "decimals": 3
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "\\( \\frac{dx}{dt} = \\frac{2 t}{t^{2} + 1} + 2 \\) and, by the chain rule, \\( \\frac{dy}{dt} = - \\frac{8 t \\sin{\\left(\\frac{2 t^{2}}{3} \\right)}}{3} \\).",
+         "point_type_id": "BC-PT-99049",
+         "rule_named": "component derivatives"
+      },
+      {
+         "step": 2,
+         "text": "At \\( t = 2 \\), \\( \\frac{dx}{dt} = \\frac{14}{5} \\) and \\( \\frac{dy}{dt} \\approx -2.439 \\) (more places kept).",
+         "mathjson": -2.438787342057663,
+         "point_type_id": "BC-PT-99005",
+         "rule_named": "evaluate at the time"
+      },
+      {
+         "step": 3,
+         "text": "The slope is \\( \\frac{dy/dt}{dx/dt} = \\frac{y'(2)}{x'(2)} \\approx -0.871 \\).",
+         "mathjson": -0.8709954793063083,
+         "point_type_id": "BC-PT-99004",
+         "rule_named": "dy/dx as a quotient of rates"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "value": -0.871
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-09001",
+         "value": -0.327,
+         "derivation": "dy/dt found without the chain rule, the derivative of the outer function only",
+         "mechanism": "chain_rule_omitted"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-09003",
+         "value": -2.439,
+         "derivation": "dy/dt at the time reported as the slope",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-09002",
+         "value": -1.148,
+         "derivation": "the quotient taken the other way, dx/dt divided by dy/dt",
+         "mechanism": "reversed_quantities"
+      }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-12",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-16",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-09001",
+      "BC-SKL-09002",
+      "BC-SKL-09004",
+      "BC-SKL-09005",
+      "BC-SKL-09003",
+      "BC-SKL-09006"
+   ],
+   "parameter_draw": {
+      "drift": "2",
+      "height": "2",
+      "rate": "2/3",
+      "vertical": "cosine",
+      "time": "2",
+      "object": "bead",
+      "given": "rate_of_x"
+   },
+   "predicted_success_probability": 0.3318,
+   "provenance": {
+      "template_id": "TPL-BC-QA-09001-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-09001:spec-1:item-15:try-15",
+      "parameter_draw": {
+         "drift": "2",
+         "height": "2",
+         "rate": "2/3",
+         "vertical": "cosine",
+         "time": "2",
+         "object": "bead",
+         "given": "rate_of_x"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, run F",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T13:02:05Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.3318
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

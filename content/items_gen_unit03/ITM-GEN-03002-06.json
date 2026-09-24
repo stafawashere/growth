@@ -1,0 +1,193 @@
+{
+   "id": "ITM-GEN-03002-06",
+   "archetype_id": "BC-QA-03002",
+   "variant_id": "BC-QV-03002-01",
+   "format": "mcq",
+   "stem": {
+      "text": "The table gives values of the differentiable functions f and g and their derivatives at selected values of x. Let \\( h(x) = f(g(x)) \\). The entry for \\( g'(1) \\) is missing, but \\( h'(1) = -4 \\). Find \\( g'(1) \\).",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": -4
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "By the chain rule, \\( h'(x) = f'(g(x)) \\cdot g'(x) \\). From the table, \\( g(1) = 4 \\), so the outer derivative is read in the row x = 4: \\( f'(4) = 1 \\).",
+         "rule_named": "chain rule"
+      },
+      {
+         "step": 2,
+         "text": "So \\( -4 = h'(1) = 1 \\cdot g'(1) \\), and \\( g'(1) = -4 \\).",
+         "mathjson": -4,
+         "rule_named": "solve for the missing factor"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-03004",
+         "value": -5,
+         "derivation": "the chain rule taken as the sum of the two derivatives, so the missing entry is h' minus the outer derivative",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-03003",
+         "value": [
+            "Rational",
+            -4,
+            5
+         ],
+         "derivation": "the outer derivative read in the row x = 1 instead of at the inner output 4",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": true,
+         "error_path": null,
+         "value": -4
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-03002",
+         "value": -2,
+         "derivation": "the outer layer left undifferentiated, so h' is taken as the outer value times the inner derivative",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-13",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-03004",
+      "BC-SKL-03006"
+   ],
+   "parameter_draw": {
+      "f_values": [
+         "2",
+         "-1",
+         "-6",
+         "2"
+      ],
+      "f_slopes": [
+         "5",
+         "4",
+         "-2",
+         "1"
+      ],
+      "g_values": [
+         "4",
+         "2",
+         "3",
+         "2"
+      ],
+      "g_slopes": [
+         "-4",
+         "5",
+         "4",
+         "3"
+      ],
+      "at": "1",
+      "names": "f,g",
+      "direction": "reversed"
+   },
+   "predicted_success_probability": 0.4134,
+   "provenance": {
+      "template_id": "TPL-BC-QA-03002-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-03002:spec-1:item-6:try-6",
+      "parameter_draw": {
+         "f_values": [
+            "2",
+            "-1",
+            "-6",
+            "2"
+         ],
+         "f_slopes": [
+            "5",
+            "4",
+            "-2",
+            "1"
+         ],
+         "g_values": [
+            "4",
+            "2",
+            "3",
+            "2"
+         ],
+         "g_slopes": [
+            "-4",
+            "5",
+            "4",
+            "3"
+         ],
+         "at": "1",
+         "names": "f,g",
+         "direction": "reversed"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, author tpl-B",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:50Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": true,
+      "requested_success_probability": 0.4134
+   },
+   "figure": {
+      "kind": "table",
+      "columns": [
+         "\\( x \\)",
+         "\\( f(x) \\)",
+         "\\( f'(x) \\)",
+         "\\( g(x) \\)",
+         "\\( g'(x) \\)"
+      ],
+      "rows": [
+         [
+            "1",
+            "2",
+            "5",
+            "4",
+            "?"
+         ],
+         [
+            "2",
+            "-1",
+            "4",
+            "2",
+            "5"
+         ],
+         [
+            "3",
+            "-6",
+            "-2",
+            "3",
+            "4"
+         ],
+         [
+            "4",
+            "2",
+            "1",
+            "2",
+            "3"
+         ]
+      ],
+      "labels": [],
+      "alt": "A table of values: at x = 1, f = 2, f' = 5, g = 4, g' = ?; at x = 2, f = -1, f' = 4, g = 2, g' = 5; at x = 3, f = -6, f' = -2, g = 3, g' = 4; at x = 4, f = 2, f' = 1, g = 2, g' = 3."
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

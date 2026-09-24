@@ -1,0 +1,123 @@
+{
+   "id": "ITM-GEN-08002-01",
+   "archetype_id": "BC-QA-08002",
+   "variant_id": "BC-QV-08002-01",
+   "format": "mcq",
+   "stem": {
+      "text": "The amount of water in a tank is modeled by \\( W(t) = \\int_{0}^{t} \\left(\\frac{6 s}{\\sqrt{s^{2} + 4}} + 1\\right)\\,ds \\) gallons, where t is measured in hours for \\( 0 \\le t \\le 7 \\). Using a calculator, find the time t in the interval \\( 3 < t < 7 \\) at which the instantaneous rate of change of W equals the average rate of change of W over \\( 3 \\le t \\le 7 \\). Show the setup for the calculation, and give the value correct to three decimal places.",
+      "setup_required": true,
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "numeric",
+      "mathjson": 4.650204807146314,
+      "decimals": 3,
+      "units": "hours"
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The average rate of change of W over the interval is \\( \\frac{W(7) - W(3)}{7 - 3} = \\frac{1}{4}\\int_{3}^{7} \\left(\\frac{6 s}{\\sqrt{s^{2} + 4}} + 1\\right)\\,ds \\), which a calculator gives as about 6.512 (more places are kept).",
+         "mathjson": 6.511837920724793,
+         "point_type_id": "BC-PT-99021",
+         "rule_named": "average rate of change"
+      },
+      {
+         "step": 2,
+         "text": "By the Fundamental Theorem of Calculus, \\( W'(t) = \\frac{6 t}{\\sqrt{t^{2} + 4}} + 1 \\). Set \\( W'(t) \\) equal to the average rate of change and solve on \\( 3 < t < 7 \\).",
+         "point_type_id": "BC-PT-99005",
+         "rule_named": "instantaneous rate set equal to the average rate"
+      },
+      {
+         "step": 3,
+         "text": "The calculator's solver gives one solution in the interval, \\( t = 4.650 \\).",
+         "mathjson": 4.650204807146314,
+         "point_type_id": "BC-PT-99004",
+         "rule_named": "numerical solve"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-99019",
+         "value": 4.587,
+         "derivation": "the average rate of change rounded to one decimal place before solving",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "B",
+         "is_key": true,
+         "error_path": null,
+         "value": 4.65
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-08002",
+         "value": 2.298,
+         "derivation": "the average rate of change taken over 0 to 7 instead of the stated interval, then solved on that wider interval",
+         "mechanism": "wrong_limits"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-99019",
+         "value": 4.64,
+         "derivation": "the average rate of change rounded to two decimal places before solving",
+         "mechanism": "algebra_slip"
+      }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-05",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-03",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-16",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-08004",
+      "BC-SKL-08003"
+   ],
+   "parameter_draw": {
+      "model": "radical",
+      "coefficient": "6",
+      "linear_rate": "1",
+      "scale": "4",
+      "start": "3",
+      "length": "4",
+      "context": "water",
+      "framing": "context",
+      "presentation": "accumulation"
+   },
+   "predicted_success_probability": 0.4134,
+   "provenance": {
+      "template_id": "TPL-BC-QA-08002-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-08002:spec-1:item-1:try-1",
+      "parameter_draw": {
+         "model": "radical",
+         "coefficient": "6",
+         "linear_rate": "1",
+         "scale": "4",
+         "start": "3",
+         "length": "4",
+         "context": "water",
+         "framing": "context",
+         "presentation": "accumulation"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, run F",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T13:02:05Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.5
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

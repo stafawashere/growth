@@ -1,0 +1,110 @@
+{
+   "id": "ITM-GEN-07006-13",
+   "archetype_id": "BC-QA-07006",
+   "variant_id": "BC-QV-07006-01",
+   "format": "mcq",
+   "stem": {
+      "text": "The temperature T of a metal rod, in degrees Celsius, placed in a chamber held at 95 degrees Celsius moves toward the chamber temperature at a rate proportional to the difference between the chamber temperature and T. At time \\( t = 0 \\) hours, \\( T = 145 \\). Using k for the positive constant of proportionality, write a differential equation for T as a function of t and state the initial condition.",
+      "command_verb": "write"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "\\( \\frac{dT}{dt} = k\\left(95 - T\\right) \\), with \\( T(0) = 145 \\)"
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The dependent variable is T and the independent variable is t in hours, so the rate is \\( \\frac{dT}{dt} \\).",
+         "rule_named": "naming the variables"
+      },
+      {
+         "step": 2,
+         "text": "Proportional to the difference means a constant multiple of it. With k positive, \\( k(95 - T) \\) is positive when T is below 95 and negative when it is above, so T moves down toward 95 from its starting value.",
+         "rule_named": "proportionality as a constant multiple"
+      },
+      {
+         "step": 3,
+         "text": "The equation is \\( \\frac{dT}{dt} = k\\left(95 - T\\right) \\), and the initial condition, stated separately, is \\( T(0) = 145 \\).",
+         "rule_named": "differential equation with initial condition"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "label": "\\( \\frac{dT}{dt} = k\\left(95 - T\\right) \\), with \\( T(0) = 145 \\)"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-07001",
+         "label": "\\( \\frac{dT}{dt} = 95 - T \\), with \\( T(0) = 145 \\)",
+         "derivation": "proportional read as equal, so the constant k never appears",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-07004",
+         "label": "\\( \\frac{dT}{dt} = k\\left(95 - 145\\right) \\), with \\( T(0) = 145 \\)",
+         "derivation": "the initial value 145 substituted for T inside the equation, so the rate becomes a constant",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-07002",
+         "label": "\\( \\frac{dT}{dt} = k\\left(T - 95\\right) \\), with \\( T(0) = 145 \\)",
+         "derivation": "the difference written as T minus the level, which with k positive drives T away from 95",
+         "mechanism": "sign_error"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-04",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-07001",
+      "BC-SKL-07002",
+      "BC-SKL-07003",
+      "BC-SKL-07004",
+      "BC-SKL-07005"
+   ],
+   "parameter_draw": {
+      "context": "temperature",
+      "level": "95",
+      "gap": "50",
+      "approach": "from_above",
+      "time_unit": "hours"
+   },
+   "predicted_success_probability": 0.5,
+   "provenance": {
+      "template_id": "TPL-BC-QA-07006-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-07006:spec-1:item-13:try-13",
+      "parameter_draw": {
+         "context": "temperature",
+         "level": "95",
+         "gap": "50",
+         "approach": "from_above",
+         "time_unit": "hours"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:54:01Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.5866
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

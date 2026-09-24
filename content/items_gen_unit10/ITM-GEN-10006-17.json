@@ -1,0 +1,128 @@
+{
+   "id": "ITM-GEN-10006-17",
+   "archetype_id": "BC-QA-10006",
+   "variant_id": "BC-QV-10006-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Use the limit comparison test with a p-series you choose to determine whether the series \\( \\sum_{n=2}^{\\infty} a_n \\), where \\( a_n = \\frac{4 n^{2} + 2}{6 n^{4} + 9} \\), converges or diverges. State the conclusion, naming the series it concerns.",
+      "command_verb": "determine"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "\\( \\sum a_n \\) converges, because \\( \\lim_{n\\to\\infty} \\frac{a_n}{1/n^{2}} = \\frac{2}{3} \\) is positive and finite and \\( \\sum \\frac{1}{n^{2}} \\) converges."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Compare the series \\( \\sum_{n=2}^{\\infty} a_n \\) with \\( \\sum_{n=2}^{\\infty} \\frac{1}{n^{2}} \\), the p-series with \\( p = 2 \\), since the degrees of the denominator and numerator of the terms differ by 2. Both have positive terms.",
+         "rule_named": "choose the comparison series"
+      },
+      {
+         "step": 2,
+         "text": "\\( \\lim_{n\\to\\infty} \\frac{\\frac{4 n^{2} + 2}{6 n^{4} + 9}}{\\frac{1}{n^{2}}} = \\lim_{n\\to\\infty} \\frac{4 n^{4} + 2 n^{2}}{6 n^{4} + 9} = \\frac{2}{3} \\).",
+         "mathjson": [
+            "Rational",
+            2,
+            3
+         ],
+         "rule_named": "limit of the quotient"
+      },
+      {
+         "step": 3,
+         "text": "The limit \\( \\frac{2}{3} \\) is positive and finite, and \\( \\sum_{n=2}^{\\infty} \\frac{1}{n^{2}} \\) converges because \\( p = 2 > 1 \\).",
+         "rule_named": "p-series test"
+      },
+      {
+         "step": 4,
+         "text": "\\( \\sum a_n \\) converges, because \\( \\lim_{n\\to\\infty} \\frac{a_n}{1/n^{2}} = \\frac{2}{3} \\) is positive and finite and \\( \\sum \\frac{1}{n^{2}} \\) converges.",
+         "point_type_id": "BC-PT-99005",
+         "rule_named": "limit comparison test"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-10017",
+         "label": "\\( \\sum a_n \\) converges, because \\( \\frac{a_n}{1/n^{2}} = \\frac{2}{3} \\) is positive and finite and \\( \\sum \\frac{1}{n^{2}} \\) converges.",
+         "derivation": "the quotient of the terms written equal to its limit, with the limit notation left off",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-10019",
+         "label": "\\( \\sum a_n \\) converges, because \\( \\lim_{n\\to\\infty} \\frac{a_n}{1/n^{2}} = \\frac{2}{3} \\) is less than 1.",
+         "derivation": "the limit of the quotient compared with 1, as in the ratio test, and found less than 1",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": true,
+         "error_path": null,
+         "label": "\\( \\sum a_n \\) converges, because \\( \\lim_{n\\to\\infty} \\frac{a_n}{1/n^{2}} = \\frac{2}{3} \\) is positive and finite and \\( \\sum \\frac{1}{n^{2}} \\) converges."
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-10003",
+         "label": "It converges, because \\( \\lim_{n\\to\\infty} \\frac{a_n}{1/n^{2}} = \\frac{2}{3} \\) is positive and finite and \\( \\sum \\frac{1}{n^{2}} \\) converges.",
+         "derivation": "the conclusion left with no series named, so it could be read as a statement about the comparison series",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10025",
+      "BC-SKL-10026",
+      "BC-SKL-10034",
+      "BC-SKL-10035"
+   ],
+   "parameter_draw": {
+      "claim": "converging",
+      "partner": "chosen",
+      "gap": "2",
+      "top_degree": "2",
+      "lead_top": "4",
+      "constant_top": "2",
+      "lead_bottom": "6",
+      "constant_bottom": "9",
+      "start": "2"
+   },
+   "predicted_success_probability": 0.4134,
+   "provenance": {
+      "template_id": "TPL-BC-QA-10006-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-10006:spec-1:item-17:try-17",
+      "parameter_draw": {
+         "claim": "converging",
+         "partner": "chosen",
+         "gap": "2",
+         "top_degree": "2",
+         "lead_top": "4",
+         "constant_top": "2",
+         "lead_bottom": "6",
+         "constant_bottom": "9",
+         "start": "2"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:58:54Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.5
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

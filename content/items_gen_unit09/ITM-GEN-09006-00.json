@@ -1,0 +1,112 @@
+{
+   "id": "ITM-GEN-09006-00",
+   "archetype_id": "BC-QA-09006",
+   "variant_id": "BC-QV-09006-01",
+   "format": "mcq",
+   "stem": {
+      "text": "A particle moves in the xy-plane with velocity vector \\( v(t) = \\left\\langle 6 \\cos{\\left(\\frac{t}{2} \\right)}, 2 t^{2} \\right\\rangle \\) for \\( t \\ge 0 \\), with t in seconds and distances in feet. Using a calculator, find the first time \\( t > 0 \\) at which the speed of the particle is 8 feet per second. Show the setup for the calculation, and give the value correct to three decimal places.",
+      "setup_required": true,
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "numeric",
+      "mathjson": 1.8966542229729735,
+      "decimals": 3,
+      "units": "seconds"
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The speed is \\( |v(t)| = \\sqrt{\\left(6 \\cos{\\left(\\frac{t}{2} \\right)}\\right)^{2} + \\left(2 t^{2}\\right)^{2}} \\).",
+         "point_type_id": "BC-PT-99050",
+         "rule_named": "speed as the magnitude of velocity"
+      },
+      {
+         "step": 2,
+         "text": "Set \\( \\sqrt{\\left(6 \\cos{\\left(\\frac{t}{2} \\right)}\\right)^{2} + \\left(2 t^{2}\\right)^{2}} = 8 \\) and solve with a calculator, in radian mode; the smallest positive solution is \\( t = 1.897 \\).",
+         "mathjson": 1.8966542229729735,
+         "point_type_id": "BC-PT-99004",
+         "rule_named": "numerical solve"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "value": 1.897
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-09023",
+         "value": 1.627,
+         "derivation": "the equation solved with the calculator in degree mode",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-09013",
+         "value": 1.253,
+         "derivation": "the two components added instead of combined as a magnitude, x'(t) + y'(t) set equal to the target",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-09014",
+         "value": 2.324,
+         "derivation": "(y'(t))^2 written as 2 t^4, the coefficient left unsquared",
+         "mechanism": "algebra_slip"
+      }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-14",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-16",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-09023",
+      "BC-SKL-09024"
+   ],
+   "parameter_draw": {
+      "amplitude": "6",
+      "frequency": "1/2",
+      "growth": "2",
+      "time": "5/4",
+      "target": "8",
+      "units": "feet",
+      "request": "time"
+   },
+   "predicted_success_probability": 0.3318,
+   "provenance": {
+      "template_id": "TPL-BC-QA-09006-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-09006:spec-1:item-0:try-0",
+      "parameter_draw": {
+         "amplitude": "6",
+         "frequency": "1/2",
+         "growth": "2",
+         "time": "5/4",
+         "target": "8",
+         "units": "feet",
+         "request": "time"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, run F",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T13:02:05Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.3318
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

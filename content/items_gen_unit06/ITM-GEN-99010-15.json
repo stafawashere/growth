@@ -1,0 +1,114 @@
+{
+   "id": "ITM-GEN-99010-15",
+   "archetype_id": "BC-QA-99010",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "A vertical shaft is drilled to an unknown depth D meters, where \\( D > 4 \\). The amount of dissolved salt per meter of depth is \\( f(h) = 2 \\sin{\\left(\\frac{h^{2}}{4} \\right)} + 9 \\) grams per meter for \\( 0 \\le h \\le 4 \\), where h is the depth in meters. Below depth 4 the amount per meter is an unknown continuous function g(h), and \\( 0 \\le g(h) \\le b(h) \\) for \\( h \\ge 4 \\), where b is a function with \\( \\int_{4}^{\\infty} b(h)\\,dh = 10 \\). Let T be the total amount of dissolved salt, in grams, along the whole shaft. Write an expression involving integrals for T, and explain why \\( T \\le 50 \\). Use a calculator for any numerical work.",
+      "setup_required": true,
+      "command_verb": "explain"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "\\( T = \\int_{0}^{4} f(h)\\,dh + \\int_{4}^{D} g(h)\\,dh \\), and \\( T \\le 50 \\) because \\( \\int_{0}^{4} f(h)\\,dh \\approx 39.219 \\) and \\( \\int_{4}^{D} g(h)\\,dh \\le \\int_{4}^{\\infty} b(h)\\,dh = 10 \\)."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The model changes at depth 4, so split the total there: \\( T = \\int_{0}^{4} f(h)\\,dh + \\int_{4}^{D} g(h)\\,dh \\).",
+         "rule_named": "additivity over adjacent intervals"
+      },
+      {
+         "step": 2,
+         "text": "A calculator gives \\( \\int_{0}^{4} f(h)\\,dh \\approx 39.219 \\).",
+         "mathjson": 39.21910595737502,
+         "rule_named": "numerical integration"
+      },
+      {
+         "step": 3,
+         "text": "Since \\( 0 \\le g(h) \\le b(h) \\) and the interval from 4 to D lies inside the interval from 4 to infinity, \\( \\int_{4}^{D} g(h)\\,dh \\le 10 \\). So \\( T \\le 39.219 + 10 < 50 \\).",
+         "rule_named": "comparison of integrals"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-99032",
+         "label": "\\( T = \\int_{0}^{4} f(h)\\,dh + \\int_{4}^{D} g(h)\\,dh + C \\), and \\( T \\le 50 \\) because \\( \\int_{0}^{4} f(h)\\,dh \\approx 39.219 \\) and \\( \\int_{4}^{D} g(h)\\,dh \\le \\int_{4}^{\\infty} b(h)\\,dh = 10 \\).",
+         "derivation": "a constant of integration attached to a sum of definite integrals",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-99012",
+         "label": "\\( T = \\int_{0}^{4} f(h)\\,dh + g(D) - g(4) \\), and \\( T \\le 50 \\) because \\( \\int_{0}^{4} f(h)\\,dh \\approx 39.219 \\) and \\( \\int_{4}^{D} g(h)\\,dh \\le \\int_{4}^{\\infty} b(h)\\,dh = 10 \\).",
+         "derivation": "the integral of g from the split depth to D written as g(D) - g(split), as though g were its own antiderivative",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-99032",
+         "label": "\\( T = \\int_{0}^{4} f(h)\\,dh + g(h), \\text{ where } g(h) = \\int_{4}^{D} g(h)\\,dh \\), and \\( T \\le 50 \\) because \\( \\int_{0}^{4} f(h)\\,dh \\approx 39.219 \\) and \\( \\int_{4}^{D} g(h)\\,dh \\le \\int_{4}^{\\infty} b(h)\\,dh = 10 \\).",
+         "derivation": "the unknown function set equal to its own integral and substituted for the second piece",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "D",
+         "is_key": true,
+         "error_path": null,
+         "label": "\\( T = \\int_{0}^{4} f(h)\\,dh + \\int_{4}^{D} g(h)\\,dh \\), and \\( T \\le 50 \\) because \\( \\int_{0}^{4} f(h)\\,dh \\approx 39.219 \\) and \\( \\int_{4}^{D} g(h)\\,dh \\le \\int_{4}^{\\infty} b(h)\\,dh = 10 \\)."
+      }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-04",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-16",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06029",
+      "BC-SKL-06030",
+      "BC-SKL-06035"
+   ],
+   "parameter_draw": {
+      "base_density": "9",
+      "swing": "2",
+      "stretch": "4",
+      "split": "4",
+      "tail": "10",
+      "context": "salt",
+      "comparison": "named"
+   },
+   "predicted_success_probability": 0.1978,
+   "provenance": {
+      "template_id": "TPL-BC-QA-99010-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-99010:spec-1:item-15:try-15",
+      "parameter_draw": {
+         "base_density": "9",
+         "swing": "2",
+         "stretch": "4",
+         "split": "4",
+         "tail": "10",
+         "context": "salt",
+         "comparison": "named"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:54:03Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.1978
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

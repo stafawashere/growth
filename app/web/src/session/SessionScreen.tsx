@@ -18,6 +18,7 @@ import type {
    ServedItem,
    SessionPayload
 } from "../api/types";
+import { FigureView } from "../figures/FigureView";
 import { ElaboratedPanel } from "./ElaboratedPanel";
 import { ErrorNoteField } from "./ErrorNoteField";
 import { collectsConfidence, Item } from "./Item";
@@ -242,6 +243,7 @@ export function SessionScreen({ resumeSessionId }: SessionScreenProps) {
    }
 
    const showsFeedback = feedback !== null || feedbackUnreadable;
+   const hasFigure = item.figure_spec !== null && item.figure_spec !== undefined;
    const marksSteps = feedback !== null && feedback.stage !== "unsupported";
    const showsElaborated = feedback !== null && feedback.stage === "unsupported";
 
@@ -256,6 +258,12 @@ export function SessionScreen({ resumeSessionId }: SessionScreenProps) {
       <div>
          {showsFeedback ? (
             <section className="card feedback" data-testid="feedback">
+               {hasFigure ? (
+                  <div data-testid="feedback-figure">
+                     <FigureView spec={item.figure_spec} />
+                  </div>
+               ) : null}
+
                {marksSteps ? <StepMarks marks={feedback.step_marks} /> : null}
 
                {showsElaborated ? (

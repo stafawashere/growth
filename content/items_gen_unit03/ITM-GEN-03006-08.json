@@ -1,0 +1,176 @@
+{
+   "id": "ITM-GEN-03006-08",
+   "archetype_id": "BC-QA-03006",
+   "variant_id": "BC-QV-03006-01",
+   "format": "mcq",
+   "stem": {
+      "text": "The function p is differentiable and increasing, and q is the inverse function of p. The table gives values of p and p' at selected values of x. Find the exact value of \\( q'(4) \\).",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         1,
+         2
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The value 4 is an output of p: from the table, \\( p(3) = 4 \\), so \\( q(4) = 3 \\).",
+         "rule_named": "find the matching input"
+      },
+      {
+         "step": 2,
+         "text": "At that input \\( p'(3) = 2 \\), which is not zero, so the inverse is differentiable at 4 and \\( q'(4) = \\frac{1}{p'(q(4))} = \\frac{1}{p'(3)} = \\frac{1}{2} \\).",
+         "mathjson": [
+            "Rational",
+            1,
+            2
+         ],
+         "rule_named": "derivative of an inverse function"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-03016",
+         "value": [
+            "Rational",
+            1,
+            7
+         ],
+         "derivation": "the reciprocal of a function value instead of a derivative, read in the row x = 4: 1 / p(4)",
+         "mechanism": "compound"
+      },
+      {
+         "id": "B",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Rational",
+            1,
+            2
+         ]
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-03016",
+         "value": [
+            "Rational",
+            1,
+            4
+         ],
+         "derivation": "the reciprocal of the function value p(3) = 4 instead of the reciprocal of the derivative",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-03015",
+         "value": [
+            "Rational",
+            1,
+            3
+         ],
+         "derivation": "the reciprocal of p' taken in the row x = 4 instead of at the matching input 3",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-03015",
+      "BC-SKL-03016",
+      "BC-SKL-03017",
+      "BC-SKL-03018",
+      "BC-SKL-03019"
+   ],
+   "parameter_draw": {
+      "values": [
+         "0",
+         "2",
+         "4",
+         "7"
+      ],
+      "slopes": [
+         "7",
+         "5",
+         "2",
+         "3"
+      ],
+      "at": "3",
+      "names": "p,q"
+   },
+   "predicted_success_probability": 0.4134,
+   "provenance": {
+      "template_id": "TPL-BC-QA-03006-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-03006:spec-1:item-8:try-8",
+      "parameter_draw": {
+         "values": [
+            "0",
+            "2",
+            "4",
+            "7"
+         ],
+         "slopes": [
+            "7",
+            "5",
+            "2",
+            "3"
+         ],
+         "at": "3",
+         "names": "p,q"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, author tpl-B",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:50Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": true,
+      "requested_success_probability": 0.4134
+   },
+   "figure": {
+      "kind": "table",
+      "columns": [
+         "\\( x \\)",
+         "\\( p(x) \\)",
+         "\\( p'(x) \\)"
+      ],
+      "rows": [
+         [
+            "1",
+            "0",
+            "7"
+         ],
+         [
+            "2",
+            "2",
+            "5"
+         ],
+         [
+            "3",
+            "4",
+            "2"
+         ],
+         [
+            "4",
+            "7",
+            "3"
+         ]
+      ],
+      "labels": [],
+      "alt": "A table of values: at x = 1, p = 0 and p' = 7; at x = 2, p = 2 and p' = 5; at x = 3, p = 4 and p' = 2; at x = 4, p = 7 and p' = 3."
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

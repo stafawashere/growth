@@ -1707,6 +1707,45 @@ items) and items 3 and 6 (Slices 3 and 4). Every gate 11 names for P2 now exists
   Checks on the tree rebased onto `2d1431f` (P7): pytest `1193 passed in 386.59s (0:06:26)`;
   vitest `Tests  473 passed (473)` in 36 files; `tsc --noEmit` exit 0; `qa/12_report.py` exit 0.
 
+- 2026-09-24, stage 5 (p4), P4 item generation at full coverage, by Claude on the operator's
+  delegation. Canonical record: docs/operator/p4-generation.md. What landed:
+  - Parameter specs (D13 item c): `parameter_spec` on all 139 active archetypes, schema in
+    `schemas/archetypes.schema.json` `$defs/parameter_spec`, validated by `app/generation/spec.py`
+    and `tests/generation/test_parameter_specs.py`, merged through
+    `data/staging/parameter-spec-p4.json`. `tools/merge_staging.py` gained `"merge": "fields"` and
+    `"merge": "append"`, and the post-change tool sequence ran after each merge.
+  - Generation: `app/generation/` (spec, expressions, kit, template gate and Monte Carlo pass,
+    instantiate, verify, dedupe, batch_api, mathjson_out) and 139 templates in
+    `app/generation/templates/`, authored by eight offline sessions and gated at 300 draws each.
+    `tools/template_gate.py`, `tools/generate_bank.py`, `tools/item_review.py`,
+    `tools/export_parameter_specs.py`, `tools/merge_error_links.py`, `tools/duplicate_sample.py`,
+    `tools/p4_cost.py`. Prompts `prompts/generator/{template,figure_spec,calculator}_v1.md` and
+    `prompts/verifier/{independent_resolve,monte_carlo}_v1.md` with golden digests.
+  - Banks: 2,339 signed-off generated items in `content/items_gen_unit01` to `unit10`, every key
+    matching a blind formulation and the template's own answer; 98 rejected items kept in
+    `content/generation_review/` with 187 recorded decisions. Every active archetype now has at
+    least 20 published items (minimum 20, 3,125 served in total).
+  - Key recheck: `tools/key_recheck.py --template-answers` (template_differs, provenance_drift),
+    statement labels, three-decimal keys, and a real constant of integration.
+  - Serving: statement-keyed items are always a choice (`requires_choice`), figures render from
+    their spec in the item, probe, diagnostic and feedback screens (`app/web/src/figures/`), option
+    labels render their LaTeX, calculator items say so.
+  - Duplicate gate: MinHash 5-grams at 0.8, stage two at cosine 0.70 against official text and a
+    same-problem rule within the bank, measured on four labelled samples
+    (docs/operator/duplicate-gate/): final-sample precision 1.000 and recall 0.891, against 0.879
+    and 0.527 at the published points.
+  - Key audit: 0/100 over a fresh `--generated` draw (docs/operator/key-audit-p4/), a model audit.
+  - Cost: $0.00 API; $0.0219 per published item at list and $0.0110 with the batch discount if
+    bought on the API (`tools/p4_cost.py`).
+- Checks at merge of stage 5: pytest `1270 passed in 962.49s (0:16:02)`; vitest `Tests  484 passed
+  (484)` in 37 files; `tsc --noEmit` exit 0; `qa/12_report.py` exit 0.
+- P4 exit criteria, 2026-09-24: all met. At least 20 published, verified items for each of the 139
+  archetypes; P4 key error rate 0/100, not above the P1 baseline 0/100; duplicate-gate precision and
+  recall measured and thresholds adjusted with the evidence recorded; cost per published item with
+  the batch discount recorded; no served item shares a run of more than 25 words with any official
+  page (`test_no_official_text_served`; the longest shared run is 21 words, a generic
+  sentence about a region revolved about the x-axis in ITM-GEN-08012-11).
+
 ## In progress [inferred]
 
 Stage 1, items for Units 4 to 10, is complete in the worktree `../growth-content` on branch
@@ -1723,6 +1762,9 @@ Stage 8, P7 evaluation harness, 2026-09-24, worktree `../growth-p7` on branch `p
 checked on simulated and seeded data (Done, "P7 slice 1"). What remains waits on calendar time
 and the operator's real use, listed under Done, "P7 exit criteria". The next session on P7 is a
 rerun of the stage 8 prompt once at least 8 weeks of real attempts exist.
+
+Stage 5, P4, 2026-09-24, worktree `../growth-p4` on branch `p4`: complete (Done, "stage 5 (p4)"),
+being merged to origin/main. The next stage is 06-p5.
 
 ## Live API spend log [verified]
 
@@ -1898,6 +1940,10 @@ P2 Slice 3, 2026-09-23: no live call, $0.00. Every test is replay only.
 
 P2 Slice 4, calibration curve, 2026-09-23: no live call and no claude CLI run. API spend $0.00,
 subscription use none.
+
+Stage 5, P4, 2026-09-24: no live API call. Template authoring and the blind re-solves ran as
+offline Claude Code sessions on the operator's subscription at $0.00 API spend; every test is
+replay only.
 
 ## Known defects [verified]
 
@@ -2633,6 +2679,37 @@ From the eleventh session, 2026-09-21, found and not fixed.
   prints and used ellipses; with fragments compared line by line, 1 of 150 still fails it. Before
   the fix the golden result was exact agreement 0.9343 on 137 published, 13 escalated.
 
+- 2026-09-24, stage 5 (p4). A publish run hung for about five and a half hours at 1 percent CPU
+  and then died on an uncaught `_Timeout` from `app/items/verify.py` `run_bounded`: a repeat alarm
+  can fire inside the `finally` that disarms it. The handler is now set to ignore before the timer
+  is cleared, which narrows the window without closing it, and `tools/generate_bank.py publish`
+  catches a raising check as rule 4 and runs one bank per process. The hang itself was not
+  reproduced.
+- 2026-09-24, stage 5 (p4). Heavy paraphrase of official text (every listed synonym swapped and the
+  sentences reordered) passes the duplicate gate on 45 to 60 percent of labelled pairs. The
+  zero-miss threshold would block most original items. Residual risk rests on construction.
+- 2026-09-24, stage 5 (p4). BC-QA-04010 (position from velocity with an initial condition) lists
+  only skills 04006 and 04011, neither an accumulation skill; its error links went to 04011 for want
+  of a closer skill. Library work.
+- 2026-09-24, stage 5 (p4). The first query of the app over a fresh database now ingests about
+  3,100 items with SymPy checks; not timed through the running app.
+- 2026-09-24, stage 5 (p4). Template group F (units 8 and 9) was cut off by a usage limit before
+  its final report. All 16 of its templates pass the gate, their 522 candidates went through the
+  blind re-solve like every other, and 14 of the audited 100 came from unit 8 with no key error,
+  but no author report exists for them.
+- 2026-09-24, stage 5 (p4). Two existing tests met the new bank. `tests/e2e/test_cold_start.py`
+  asserts the diagnostic asks only short answers; statement items would have broken that, so the
+  diagnostic now reads a short-answer view of the bank (`ShortAnswerBank`) and statement-only
+  archetypes are diagnostic coverage gaps, as they were before they had items. The helper in
+  `tests/e2e/test_agent_drafts_served.py` read `answer_key["mathjson"]`, which a statement item does
+  not carry (now `.get`), and its search stopped at the first Unit 2 item, now usually a generated
+  one, so it searches for the first agent draft from Unit 2; no assertion changed.
+  `tests/api/test_unauthenticated_routes.py` failed once in a full run because `app/web/dist` did not
+  exist until a later step built it; it passes once built.
+- 2026-09-24, stage 5 (p4). Some templates repeat one BC-ERR id across two distractors where no
+  other held error fits, and a few fits are loose (listed in the template authors' reports kept
+  with the scratch notes of this session, not in the repository).
+
 ## Plan corrections applied [verified]
 
 Session 2026-09-23 (fourteenth). No plan file was edited. Readings applied in code:
@@ -3141,6 +3218,22 @@ Session 2026-09-20 (seventh).
   antiderivative, not a wrong key, so such checks are perturbed by 2v + 1 only. It then held on all
   66 keys.
 
+- 2026-09-24, stage 5 (p4), 04 "Validation on a labelled sample": stage two against official text
+  tightened from cosine 0.85 to 0.70; within the bank the word vector is replaced by the
+  same-problem rule (math-token pairs at 0.80 and numbers at 0.95 over stem and figure); the
+  zero-miss rule for heavy paraphrase was not followed because its threshold would block most
+  original items. Evidence: docs/operator/duplicate-gate/. 04 carries the correction.
+- 2026-09-24, stage 5 (p4), 04 "The missing parameter spec": the spec now lives on the archetype
+  record, a two-state dial is written off and low, and 04 carries the correction.
+- 2026-09-24, stage 5 (p4), 04 "Rejection rules": rule 9's half requiring a step for every listed
+  point type applies to free-response parts, which P4 does not generate; rule 15 is checked as the
+  last valued step equal to the key and no valued step restating the one before, and the key audit
+  reads every worked solution. Rule 14 is checked at batch time against a requested probability
+  spread over what each family can realise.
+- 2026-09-24, stage 5 (p4), 04 "Independent key verification": the verifier is a blind offline
+  Claude Code session writing SymPy formulations from stems alone, compared by a script, as
+  docs/operator/offline-authoring.md describes; no second provider is used.
+
 ## Decisions taken on the operator's instruction, 2026-09-24 [inferred]
 
 Stage 3, the review screen and the mastery map:
@@ -3292,6 +3385,28 @@ stage brief delegates every decision):
 - The paper-to-grade fixture page was chosen because the live grader splits on it: the same
   borderline justification came back with 0, 1 or 2 provisional points across six recordings.
   The committed recording has one, as the gate asks.
+
+Stage 5, P4 item generation, decided on the operator's delegation. Each is argued in
+docs/operator/p4-generation.md or docs/operator/duplicate-gate/.
+
+- Templates are committed Python modules authored offline and gated, not model output executed at
+  run time: the gate, the Monte Carlo pass and the recheck all run on reviewed code.
+- A template for every active archetype, including those with 20 signed-off items already, so every
+  archetype has a Monte Carlo-checked family; generation filled each to 20 plus two spares, and at
+  least 5 items where 20 existed.
+- Distractor errors must be held by the archetype's skills (stage 1's stronger rule). Where fewer
+  than three honest errors were held, existing BC-ERR records gained the archetype's skills through
+  an append staging file, each link with its reason; no error was minted.
+- Statement keys (verdicts, classifications, intervals, interpretations) with parallel labels, a
+  verdict that varies across draws, and every distractor false; statement items are always served
+  as a choice.
+- Disagreements go to review; the lead adjudicates. Of a set of duplicates the first by id is kept.
+- A template changed after publication retires its items: 44 items of 05009 and 05011 were rejected
+  and regenerated when those families were widened; four 01005 items were rebuilt from their seeds
+  when a unit coefficient was fixed, keys unchanged.
+- The gate gained checks beyond 13's eleven, each shown red then green: parallel statement labels,
+  at least 100 distinct problems in 300 draws, a printed coefficient of 1, small distinct constants
+  never called equal.
 
 ## Decisions taken on the operator's instruction, 2026-09-23 [inferred]
 

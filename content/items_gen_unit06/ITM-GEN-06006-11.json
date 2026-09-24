@@ -1,0 +1,125 @@
+{
+   "id": "ITM-GEN-06006-11",
+   "archetype_id": "BC-QA-06006",
+   "variant_id": "BC-QV-06006-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Grain is loaded into a silo at a rate modeled by \\( E(t) = 3 \\sin{\\left(\\frac{t^{2}}{4} \\right)} + 7 \\) tons per hour and is unloaded from it at a rate modeled by \\( L(t) = \\cos{\\left(\\frac{t}{2} \\right)} + 5 \\) tons per hour, for \\( 0 \\le t \\le 2 \\), where t is measured in hours. At time t = 0 the silo holds 30 tons. Using a calculator, find the amount in the silo at time t = 2. Show the setup for the calculation, and give the value correct to three decimal places.",
+      "setup_required": true,
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "numeric",
+      "mathjson": 34.17866784072449,
+      "decimals": 3,
+      "units": "tons"
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The net rate is inflow minus outflow, \\( E(t) - L(t) \\), so the answer is \\( 30 + \\int_{0}^{2} \\left(E(t) - L(t)\\right)\\,dt \\).",
+         "point_type_id": "BC-PT-99001",
+         "rule_named": "net rate as inflow minus outflow"
+      },
+      {
+         "step": 2,
+         "text": "With a calculator in radian mode, \\( \\int_{0}^{2} \\left(E(t) - L(t)\\right)\\,dt \\) is approximately 4.179 (more places are kept).",
+         "mathjson": 4.1786678407244935,
+         "rule_named": "numerical integration"
+      },
+      {
+         "step": 3,
+         "text": "Adding the initial amount gives about 34.179 tons.",
+         "mathjson": 34.17866784072449,
+         "rule_named": "initial amount plus net change"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-06015",
+         "value": 4.179,
+         "derivation": "the integral of the net rate reported as the amount, with the initial 30 tons left out",
+         "mechanism": "forgot_constant"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-99009",
+         "value": 37.545,
+         "derivation": "L(t) substituted without parentheses, so only its constant term is subtracted and its cosine term is added",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-08013",
+         "value": 57.545,
+         "derivation": "the inflow and outflow rates added instead of subtracted",
+         "mechanism": "sign_error"
+      },
+      {
+         "id": "D",
+         "is_key": true,
+         "error_path": null,
+         "value": 34.179
+      }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-05",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-16",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06039",
+      "BC-SKL-06037",
+      "BC-SKL-06036",
+      "BC-SKL-08013",
+      "BC-SKL-08016",
+      "BC-SKL-08012"
+   ],
+   "parameter_draw": {
+      "inflow_base": "7",
+      "inflow_swing": "3",
+      "stretch": "4",
+      "outflow_base": "5",
+      "outflow_swing": "1",
+      "horizon": "2",
+      "initial": "30",
+      "context": "silo",
+      "ask": "amount"
+   },
+   "predicted_success_probability": 0.1091,
+   "provenance": {
+      "template_id": "TPL-BC-QA-06006-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-06006:spec-1:item-11:try-11",
+      "parameter_draw": {
+         "inflow_base": "7",
+         "inflow_swing": "3",
+         "stretch": "4",
+         "outflow_base": "5",
+         "outflow_swing": "1",
+         "horizon": "2",
+         "initial": "30",
+         "context": "silo",
+         "ask": "amount"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, run D",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:56Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.148
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

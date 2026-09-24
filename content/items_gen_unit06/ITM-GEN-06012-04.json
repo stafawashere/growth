@@ -1,0 +1,109 @@
+{
+   "id": "ITM-GEN-06012-04",
+   "archetype_id": "BC-QA-06012",
+   "variant_id": "BC-QV-06012-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( h(x) = \\int_{3}^{2 x^{3}} \\left(- t^{2}\\right)\\,dt \\). Find \\( h^{\\prime}(-1) \\).",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": -24
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "By the Fundamental Theorem of Calculus with the chain rule, the derivative is the integrand evaluated at the upper limit times the derivative of the upper limit: \\( h^{\\prime}(x) = \\left(- 4 x^{6}\\right) \\cdot 6 x^{2} \\).",
+         "point_type_id": "BC-PT-99024",
+         "rule_named": "Fundamental Theorem of Calculus with a composite upper limit"
+      },
+      {
+         "step": 2,
+         "text": "At x = -1 the upper limit is -2, the integrand at \\( t = -2 \\) is \\( -4 \\), and the derivative of the upper limit is 6, so \\( h^{\\prime}(-1) = -4 \\cdot 6 = -24 \\).",
+         "mathjson": -24,
+         "point_type_id": "BC-PT-99004",
+         "rule_named": "evaluation"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-99012",
+         "value": -15,
+         "derivation": "the integrand at the lower limit 3 subtracted as though the constant lower limit contributed to the derivative",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": true,
+         "error_path": null,
+         "value": -24
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-06027",
+         "value": -4,
+         "derivation": "the integrand evaluated at the upper limit with no factor for the derivative of 2 x^{3}",
+         "mechanism": "chain_rule_omitted"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-06028",
+         "value": -1,
+         "derivation": "t replaced by x itself instead of by the upper limit, so the integrand is evaluated at x = -1",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-09",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06018",
+      "BC-SKL-06019",
+      "BC-SKL-06017",
+      "BC-SKL-06021"
+   ],
+   "parameter_draw": {
+      "power": "3",
+      "scale": "2",
+      "quadratic": "-1",
+      "constant": "0",
+      "lower": "3",
+      "point": "-1"
+   },
+   "predicted_success_probability": 0.2592,
+   "provenance": {
+      "template_id": "TPL-BC-QA-06012-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-06012:spec-1:item-4:try-4",
+      "parameter_draw": {
+         "power": "3",
+         "scale": "2",
+         "quadratic": "-1",
+         "constant": "0",
+         "lower": "3",
+         "point": "-1"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:54:01Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.2592
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

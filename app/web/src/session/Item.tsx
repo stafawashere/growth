@@ -1,5 +1,6 @@
 import type { Confidence, ServedItem, ServedStep } from "../api/types";
 import { MathField } from "../input/MathField";
+import { FigureView } from "../figures/FigureView";
 import { McqControl } from "../input/McqControl";
 import { MathText } from "../math/MathText";
 import { ConfidencePrompt } from "./ConfidencePrompt";
@@ -24,6 +25,8 @@ export const COMMIT_LABEL = "Check my answer";
 
 export const WORKED_STEPS_MISSING =
    "The worked steps for this problem have not reached me, so I cannot work through it yet.";
+
+export const CALCULATOR_NOTE = "Calculator allowed for this item.";
 
 export const ANSWER_UNAVAILABLE =
    "The math keyboard did not load, so this problem cannot take my answer. Nothing I type here would be saved.";
@@ -99,7 +102,13 @@ export function Item(props: ItemProps) {
    const blanksAStep = (isCompletion || isExample) && hasEnoughSteps;
    const blankedStep = blanksAStep ? blankedStepAfter(shownSteps) : null;
 
-   const servesMcq = item.format === "mcq" && item.stage === "unsupported";
+   const hasFigure = item.figure_spec !== null && item.figure_spec !== undefined;
+   const allowsCalculator = item.calculator_status === "calculator";
+
+   /* A statement-keyed item has nothing to type, so the server marks it and it is a choice at
+      every stage (app/engine/select.py requires_choice). */
+   const isAlwaysAChoice = item.requires_choice === true;
+   const servesMcq = item.format === "mcq" && (item.stage === "unsupported" || isAlwaysAChoice);
    const collectsAnswer = true;
    const commitLabel = COMMIT_LABEL;
 
@@ -112,6 +121,10 @@ export function Item(props: ItemProps) {
    return (
       <article className="card item" data-testid="item" data-stage={item.stage}>
          <p className="item-stem" data-testid="item-stem"><MathText text={item.stem} /></p>
+
+         {allowsCalculator ? <p className="item-calculator" data-testid="calculator-note">{CALCULATOR_NOTE}</p> : null}
+
+         {hasFigure ? <FigureView spec={item.figure_spec} /> : null}
 
          {needsWorkedSteps && !canDrawStage ? (
             <p data-testid="worked-steps-unavailable">{WORKED_STEPS_MISSING}</p>

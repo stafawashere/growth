@@ -1,0 +1,114 @@
+{
+   "id": "ITM-GEN-06014-07",
+   "archetype_id": "BC-QA-06014",
+   "variant_id": "BC-QV-06014-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Express \\( \\lim_{n\\to\\infty} \\sum_{k=1}^{n} 3e^{4 + \\frac{5k}{n}} \\cdot \\frac{5}{n} \\) as a definite integral in the variable t, taking t to be the sample point \\( 4 + \\frac{5k}{n} \\).",
+      "command_verb": "express"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "\\( \\int_{4}^{9} 3e^{t}\\,dt \\)"
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The factor \\( \\frac{5}{n} \\) is the subinterval width, so the interval has length 5.",
+         "rule_named": "width of a uniform partition"
+      },
+      {
+         "step": 2,
+         "text": "The sample point is \\( 4 + \\frac{5k}{n} \\), which is 4 plus k widths, so the interval starts at t = 4 and ends at t = 4 + 5 = 9.",
+         "rule_named": "sample point gives the lower limit"
+      },
+      {
+         "step": 3,
+         "text": "The remaining factor is the function evaluated at the sample point, so the limit equals \\( \\int_{4}^{9} 3e^{t}\\,dt \\).",
+         "rule_named": "limit of Riemann sums as a definite integral"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-99028",
+         "label": "\\( \\int_{4}^{9} 15e^{t}\\,dt \\)",
+         "derivation": "the width 5/n kept as a factor of the integrand as well as becoming dt, so the width is counted twice",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-06003",
+         "label": "\\( \\int_{0}^{1} 3e^{4 + 5t}\\,dt \\)",
+         "derivation": "k/n read as the variable on [0, 1] with only 1/n as the width, so the factor 5 of the width is lost",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-99032",
+         "label": "\\( \\int_{0}^{5} 3e^{t}\\,dt \\)",
+         "derivation": "the limits read as 0 to the width 5, limits the sum never gives",
+         "mechanism": "wrong_limits"
+      },
+      {
+         "id": "D",
+         "is_key": true,
+         "error_path": null,
+         "label": "\\( \\int_{4}^{9} 3e^{t}\\,dt \\)"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-04",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06012",
+      "BC-SKL-06013",
+      "BC-SKL-06014",
+      "BC-SKL-06015",
+      "BC-SKL-06016"
+   ],
+   "parameter_draw": {
+      "direction": "to_integral",
+      "function": "exponential",
+      "coefficient": "3",
+      "start": "4",
+      "width": "5",
+      "convention": "right",
+      "letter": "t"
+   },
+   "predicted_success_probability": 0.4134,
+   "provenance": {
+      "template_id": "TPL-BC-QA-06014-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-06014:spec-1:item-7:try-7",
+      "parameter_draw": {
+         "direction": "to_integral",
+         "function": "exponential",
+         "coefficient": "3",
+         "start": "4",
+         "width": "5",
+         "convention": "right",
+         "letter": "t"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:54:01Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.4134
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

@@ -1,0 +1,113 @@
+{
+   "id": "ITM-GEN-05003-01",
+   "archetype_id": "BC-QA-05003",
+   "variant_id": "BC-QV-05003-01",
+   "format": "mcq",
+   "stem": {
+      "text": "The derivative of a function f is given by \\( f'(x) = -2\\left(x + 3\\right) \\left(x + 4\\right) e^{x} \\) for all x. Does f have a relative minimum, a relative maximum, or neither at x = -3? Give a reason for the answer.",
+      "command_verb": "classify"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "f has a relative maximum at x = -3, because f' changes from positive to negative at x = -3."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The factor \\( x + 3 \\) makes \\( f'(-3) = 0 \\), so x = -3 is a critical point of f.",
+         "point_type_id": "BC-PT-99013",
+         "rule_named": "critical point"
+      },
+      {
+         "step": 2,
+         "text": "Every other factor keeps one sign near x = -3, and \\( x + 3 \\) changes sign there, so \\( f' \\) changes from positive to negative at x = -3. By the first derivative test f has a relative maximum there.",
+         "point_type_id": "BC-PT-99012",
+         "rule_named": "first derivative test"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "label": "f has a relative maximum at x = -3, because f' changes from positive to negative at x = -3."
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-05021",
+         "label": "f has a relative minimum at x = -3, because f' changes from negative to positive at x = -3.",
+         "derivation": "the sign chart read in the reverse direction, as a change from negative to positive, and classified from that",
+         "mechanism": "reversed_quantities"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-05022",
+         "label": "f has neither a relative minimum nor a relative maximum at x = -3, because f' stays close to 0 on both sides of x = -3.",
+         "derivation": "the classification taken from the size of f' near the input, which is close to 0, rather than from its change of sign",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-05021",
+         "label": "f has a relative minimum at x = -3, because f' changes from positive to negative at x = -3.",
+         "derivation": "the classification read backwards from a positive to negative change",
+         "mechanism": "reversed_quantities"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-03",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-13",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-05019",
+      "BC-SKL-05020",
+      "BC-SKL-05021",
+      "BC-SKL-05022",
+      "BC-SKL-05023"
+   ],
+   "parameter_draw": {
+      "named": "-3",
+      "other": "-4",
+      "scale": "2",
+      "sign": "negative",
+      "multiplicity": "1",
+      "factor": "exponential"
+   },
+   "predicted_success_probability": 0.4134,
+   "provenance": {
+      "template_id": "TPL-BC-QA-05003-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-05003:spec-1:item-1:try-1",
+      "parameter_draw": {
+         "named": "-3",
+         "other": "-4",
+         "scale": "2",
+         "sign": "negative",
+         "multiplicity": "1",
+         "factor": "exponential"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T13:51:57Z",
+      "content_snapshot": "a800600d4c437c1ba8273c7cb1a03e0fe70b74050fbabcbcf27d142ba56fded8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.4134
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

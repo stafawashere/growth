@@ -1,0 +1,160 @@
+{
+   "id": "ITM-GEN-08011-06",
+   "archetype_id": "BC-QA-08011",
+   "variant_id": "BC-QV-08011-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = - x^{2} + 4 x \\) and \\( g(x) = 2 x \\). Let R be the region bounded by the graphs of f and g. R is the base of a solid whose cross sections perpendicular to the x-axis are rectangles whose heights are 3 times their bases. Find the exact volume of the solid.",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         16,
+         5
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The base of each cross section is the vertical distance across R, \\( s = f(x) - g(x) = - x^{2} + 2 x \\).",
+         "rule_named": "distance between the boundary curves"
+      },
+      {
+         "step": 2,
+         "text": "Because a rectangle with base s and height 3s has area 3s^2, each cross section has area \\( 3s^{2} \\).",
+         "rule_named": "area of the named shape"
+      },
+      {
+         "step": 3,
+         "text": "The volume is \\( \\int_{0}^{2} 3\\left(- x^{2} + 2 x\\right)^{2}\\,dx \\), which equals \\( \\frac{16}{5} \\).",
+         "mathjson": [
+            "Rational",
+            16,
+            5
+         ],
+         "point_type_id": "BC-PT-99001",
+         "rule_named": "volume by cross sections"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-08030",
+         "value": [
+            "Rational",
+            96,
+            5
+         ],
+         "derivation": "the base squared as f(x)^2 - g(x)^2 instead of (f(x) - g(x))^2",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-08029",
+         "value": [
+            "Multiply",
+            [
+               "Rational",
+               16,
+               5
+            ],
+            "Pi"
+         ],
+         "derivation": "a factor of pi placed in front of the rectangle's area",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Rational",
+            16,
+            5
+         ]
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-08031",
+         "value": [
+            "Rational",
+            4,
+            3
+         ],
+         "derivation": "the height 3s left out, so only the base s is integrated",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-17",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-08031",
+      "BC-SKL-08032",
+      "BC-SKL-08033",
+      "BC-SKL-08034",
+      "BC-SKL-08035",
+      "BC-SKL-08036",
+      "BC-SKL-08037",
+      "BC-SKL-08038",
+      "BC-SKL-08039"
+   ],
+   "parameter_draw": {
+      "shape": "rectangle",
+      "tool": "by_hand",
+      "left": "0",
+      "width": "2",
+      "bulge": "1",
+      "slope": "2",
+      "intercept": "0",
+      "height_ratio": "3",
+      "peak": "3",
+      "spread": "2",
+      "drop": "1/2",
+      "reach": "2",
+      "presentation": "formula"
+   },
+   "predicted_success_probability": 0.5,
+   "provenance": {
+      "template_id": "TPL-BC-QA-08011-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-08011:spec-1:item-6:try-6",
+      "parameter_draw": {
+         "shape": "rectangle",
+         "tool": "by_hand",
+         "left": "0",
+         "width": "2",
+         "bulge": "1",
+         "slope": "2",
+         "intercept": "0",
+         "height_ratio": "3",
+         "peak": "3",
+         "spread": "2",
+         "drop": "1/2",
+         "reach": "2",
+         "presentation": "formula"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, run F",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T13:02:05Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.4134
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

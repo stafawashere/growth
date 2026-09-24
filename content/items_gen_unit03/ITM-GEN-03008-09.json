@@ -1,0 +1,112 @@
+{
+   "id": "ITM-GEN-03008-09",
+   "archetype_id": "BC-QA-03008",
+   "variant_id": "BC-QV-03008-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( y = f(x) \\) be the solution of the differential equation \\( y' = x y + 5 x - 3 y \\) whose graph passes through the point \\( (1, 2) \\). Find the value of \\( y'' \\) at this point.",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 5
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Differentiate the equation with respect to x, using the product rule on the mixed term and the chain rule on each y: \\( y'' = y + \\left(x - 3\\right)y' + 5 \\).",
+         "point_type_id": "BC-PT-99022",
+         "rule_named": "product rule and chain rule"
+      },
+      {
+         "step": 2,
+         "text": "At \\( (1, 2) \\), \\( y' = 1 \\).",
+         "mathjson": 1,
+         "rule_named": "first derivative at the point"
+      },
+      {
+         "step": 3,
+         "text": "So \\( y'' = 2 + \\left(-2\\right) \\cdot 1 + 5 = 5 \\).",
+         "mathjson": 5,
+         "point_type_id": "BC-PT-99027",
+         "rule_named": "substitute the point and the first derivative"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "value": 5
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-05060",
+         "value": 7,
+         "derivation": "y treated as a constant when differentiating, so every dy/dx term is lost",
+         "mechanism": "chain_rule_omitted"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-03021",
+         "value": 1,
+         "derivation": "the first derivative at the point reported in place of the second",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-03008",
+         "value": 3,
+         "derivation": "the mixed term differentiated as though x were constant, so its y part is lost",
+         "mechanism": "product_rule_omitted"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-03030",
+      "BC-SKL-03031",
+      "BC-SKL-03032",
+      "BC-SKL-03033",
+      "BC-SKL-03034"
+   ],
+   "parameter_draw": {
+      "mixed": "1",
+      "y_part": "-3",
+      "x_part": "5",
+      "x_at": "1",
+      "y_at": "2",
+      "notation": "prime"
+   },
+   "predicted_success_probability": 0.5866,
+   "provenance": {
+      "template_id": "TPL-BC-QA-03008-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-03008:spec-1:item-9:try-9",
+      "parameter_draw": {
+         "mixed": "1",
+         "y_part": "-3",
+         "x_part": "5",
+         "x_at": "1",
+         "y_at": "2",
+         "notation": "prime"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, author tpl-B",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:50Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.5866
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

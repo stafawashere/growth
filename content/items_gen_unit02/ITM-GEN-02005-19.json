@@ -1,0 +1,111 @@
+{
+   "id": "ITM-GEN-02005-19",
+   "archetype_id": "BC-QA-02005",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = -\\left(\\sqrt[5]{x + 1}\\right)^{3} - 5 \\). Determine whether f is differentiable at \\( x = -1 \\), and justify your answer.",
+      "command_verb": "determine"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "f is not differentiable at \\( x = -1 \\), because the difference quotient grows without bound, staying negative, on both sides, so the graph has a vertical tangent there."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "f is continuous at \\( x = -1 \\), since \\( f(-1) = -5 \\) and the root is continuous everywhere.",
+         "rule_named": "continuity of root functions"
+      },
+      {
+         "step": 2,
+         "text": "The difference quotient is \\( \\frac{f(-1 + h) - f(-1)}{h} = -h^{- \\frac{2}{5}} \\), and the exponent \\( - \\frac{2}{5} \\) is negative.",
+         "rule_named": "difference quotient"
+      },
+      {
+         "step": 3,
+         "text": "Because the power of h has an even numerator, the quotient keeps the sign of -1 on both sides, and its size grows without bound as h approaches 0.",
+         "rule_named": "one sided limits of the difference quotient"
+      },
+      {
+         "step": 4,
+         "text": "The difference quotient has no finite limit, so f is not differentiable at \\( x = -1 \\), and the graph has a vertical tangent there.",
+         "rule_named": "derivative as a limit"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "label": "f is not differentiable at \\( x = -1 \\), because the difference quotient grows without bound, staying negative, on both sides, so the graph has a vertical tangent there."
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-02012",
+         "label": "f is differentiable at \\( x = -1 \\), because f is continuous at \\( x = -1 \\), and every continuous function is differentiable.",
+         "derivation": "differentiability concluded from continuity, the implication run backwards",
+         "mechanism": "reversed_quantities"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-03012",
+         "label": "f is differentiable at \\( x = -1 \\) with \\( f'(-1) = 0 \\), because the derivative formula has a zero denominator there, so the tangent is horizontal.",
+         "derivation": "the zero denominator of the derivative formula read as a horizontal tangent instead of a vertical one",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-02013",
+         "label": "f is not differentiable at \\( x = -1 \\), because a sketch of the graph of f shows a corner at \\( x = -1 \\), where two straight pieces meet.",
+         "derivation": "non-differentiability read off the look of a sketch, which suggests a corner, with no difference quotient examined",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-17",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02021",
+      "BC-SKL-02022",
+      "BC-SKL-02023"
+   ],
+   "parameter_draw": {
+      "point": "-1",
+      "shift": "-5",
+      "coefficient": "-1",
+      "exponent": "3/5"
+   },
+   "predicted_success_probability": 0.3318,
+   "provenance": {
+      "template_id": "TPL-BC-QA-02005-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-02005:spec-1:item-19:try-19",
+      "parameter_draw": {
+         "point": "-1",
+         "shift": "-5",
+         "coefficient": "-1",
+         "exponent": "3/5"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T13:02:04Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.3318
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

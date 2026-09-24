@@ -1,0 +1,113 @@
+{
+   "id": "ITM-GEN-10020-15",
+   "archetype_id": "BC-QA-10020",
+   "variant_id": "BC-QV-10020-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = 4 \\ln\\left(1 + \\frac{x - 3}{6}\\right) \\). The Taylor series for f about \\( x = 3 \\) is \\( \\sum_{n=1}^{\\infty} \\frac{4 (-1)^{n+1} \\left(x - 3\\right)^{n}}{n \\cdot 6^{n}} \\). Does the series converge to f at \\( x = 9 \\)? Give a reason for the answer.",
+      "command_verb": "justify"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "Yes, because \\( x = 9 \\) is an endpoint that the interval of convergence \\( -3 < x \\le 9 \\) includes."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The ratio test gives convergence for \\( \\left|x - 3\\right| < 6 \\), the interior \\( -3 < x < 9 \\), and \\( x = 9 \\) is an endpoint.",
+         "rule_named": "interval in play"
+      },
+      {
+         "step": 2,
+         "text": "At \\( x = 9 \\) the series is \\( \\sum_{n=1}^{\\infty} \\frac{4 (-1)^{n+1}}{n} \\), which converges by the alternating series test, so the interval of convergence is \\( -3 < x \\le 9 \\).",
+         "rule_named": "endpoint test"
+      },
+      {
+         "step": 3,
+         "text": "Yes, because \\( x = 9 \\) is an endpoint that the interval of convergence \\( -3 < x \\le 9 \\) includes.",
+         "point_type_id": "BC-PT-99005",
+         "rule_named": "position of the input"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-10037",
+         "label": "No, because \\( x = 9 \\) lies outside the open interval \\( -3 < x < 9 \\).",
+         "derivation": "the endpoint never examined, so the open interval from the ratio test was used to decide",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": true,
+         "error_path": null,
+         "label": "Yes, because \\( x = 9 \\) is an endpoint that the interval of convergence \\( -3 < x \\le 9 \\) includes."
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-10043",
+         "label": "Yes, because the series converges to f at \\( x = 9 \\).",
+         "derivation": "the verdict asserted with no reason that places the input relative to the interval",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-10038",
+         "label": "No, because \\( x = 9 \\) is an endpoint that the interval of convergence \\( -3 \\le x < 9 \\) excludes.",
+         "derivation": "the brackets written the other way round from the endpoint analysis, the convergent right end excluded and the divergent left end included",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-10",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10007",
+      "BC-SKL-10010",
+      "BC-SKL-10073"
+   ],
+   "parameter_draw": {
+      "case": "log_right",
+      "framing": "radius_found",
+      "centre": "3",
+      "radius": "6",
+      "coefficient": "4"
+   },
+   "predicted_success_probability": 0.1091,
+   "provenance": {
+      "template_id": "TPL-BC-QA-10020-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-10020:spec-1:item-15:try-15",
+      "parameter_draw": {
+         "case": "log_right",
+         "framing": "radius_found",
+         "centre": "3",
+         "radius": "6",
+         "coefficient": "4"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:58:54Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.1091
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

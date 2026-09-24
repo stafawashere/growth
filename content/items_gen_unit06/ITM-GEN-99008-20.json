@@ -1,0 +1,115 @@
+{
+   "id": "ITM-GEN-99008-20",
+   "archetype_id": "BC-QA-99008",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Water flows into a tank at the rate \\( R(t) = 3 \\sin{\\left(\\frac{t^{2}}{6} \\right)} + 14 \\) gallons per hour, where t is measured in hours for \\( 0 \\le t \\le 7 \\). The tank holds 40 gallons of water at time \\( t = 0 \\). During the same time, water flows out through a drain at the rate \\( D(t) = t + 7 \\) gallons per hour. Using a calculator, find the total number of gallons that arrive during the time interval \\( 2 \\le t \\le 6 \\). Show the setup, and give the value correct to three decimal places.",
+      "setup_required": true,
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "numeric",
+      "mathjson": 57.93052017685448,
+      "decimals": 3,
+      "units": "gallons"
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The amount that arrives is the integral of the inflow rate over the interval, \\( \\int_{2}^{6} \\left(3 \\sin{\\left(\\frac{t^{2}}{6} \\right)} + 14\\right)\\,dt \\), and nothing is added for the starting amount or taken away.",
+         "point_type_id": "BC-PT-99001",
+         "rule_named": "accumulation of a rate"
+      },
+      {
+         "step": 2,
+         "text": "With the calculator in radian mode, the integral is about 57.931 gallons.",
+         "mathjson": 57.93052017685448,
+         "point_type_id": "BC-PT-99004",
+         "rule_named": "numerical integration"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-08012",
+         "value": 97.931,
+         "derivation": "the amount present at the end reported, the starting amount added to the integral of the inflow",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-06032",
+         "value": 56.605,
+         "derivation": "the integral evaluated with the calculator in degree mode",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "C",
+         "is_key": true,
+         "error_path": null,
+         "value": 57.931
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-99012",
+         "value": -2.693,
+         "derivation": "the rate evaluated at the endpoints and subtracted, R(b) - R(a), in place of its integral",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-05",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-15",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-16",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06036",
+      "BC-SKL-06037",
+      "BC-SKL-08012"
+   ],
+   "parameter_draw": {
+      "base_rate": "14",
+      "swing": "3",
+      "stretch": "6",
+      "start": "2",
+      "length": "4",
+      "initial": "40",
+      "context": "tank",
+      "outflow": "present"
+   },
+   "predicted_success_probability": 0.1978,
+   "provenance": {
+      "template_id": "TPL-BC-QA-99008-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-99008:spec-1:item-20:try-20",
+      "parameter_draw": {
+         "base_rate": "14",
+         "swing": "3",
+         "stretch": "6",
+         "start": "2",
+         "length": "4",
+         "initial": "40",
+         "context": "tank",
+         "outflow": "present"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:54:03Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.2592
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

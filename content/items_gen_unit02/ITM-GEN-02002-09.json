@@ -1,0 +1,128 @@
+{
+   "id": "ITM-GEN-02002-09",
+   "archetype_id": "BC-QA-02002",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = - x^{2} - 5 x - 4 \\). Use the limit definition of the derivative to find the exact value of the derivative of f at \\( x = -2 \\).",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": -1
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Write the difference quotient: \\( \\lim_{h \\to 0} \\frac{f(-2 + h) - f(-2)}{h} \\), with \\( f(-2 + h) = - h^{2} - h + 2 \\) and \\( f(-2) = 2 \\).",
+         "rule_named": "difference quotient"
+      },
+      {
+         "step": 2,
+         "text": "The numerator is \\( - h^{2} - h \\), and every term has a factor of h, so for h not 0 the quotient is \\( - h - 1 \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Negate",
+               "h"
+            ],
+            -1
+         ],
+         "rule_named": "divide out the increment"
+      },
+      {
+         "step": 3,
+         "text": "Taking the limit as h approaches 0 gives \\( -1 \\).",
+         "mathjson": -1,
+         "rule_named": "limit by substitution"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-02007",
+         "value": -5,
+         "derivation": "(-2 + h)^2 expanded as -2^2 + h^2, so the numerator becomes - h^{2} - 5 h and the quotient tends to -5",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "B",
+         "is_key": true,
+         "error_path": null,
+         "value": -1
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-02030",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               -1,
+               2,
+               "x"
+            ],
+            -5
+         ],
+         "derivation": "the derivative function reported where its value at the point was asked for",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-02005",
+         "value": 0,
+         "derivation": "h set to 0 in the numerator before dividing, so the numerator is 0 and the answer is reported as 0",
+         "mechanism": "algebra_slip"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02006",
+      "BC-SKL-02007",
+      "BC-SKL-02008",
+      "BC-SKL-02009",
+      "BC-SKL-02027"
+   ],
+   "parameter_draw": {
+      "leading": "-1",
+      "linear": "-5",
+      "constant": "-4",
+      "point": "-2",
+      "degree": "2"
+   },
+   "predicted_success_probability": 0.5,
+   "provenance": {
+      "template_id": "TPL-BC-QA-02002-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-02002:spec-1:item-9:try-9",
+      "parameter_draw": {
+         "leading": "-1",
+         "linear": "-5",
+         "constant": "-4",
+         "point": "-2",
+         "degree": "2"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:48Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.4134
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

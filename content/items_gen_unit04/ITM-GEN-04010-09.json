@@ -1,0 +1,127 @@
+{
+   "id": "ITM-GEN-04010-09",
+   "archetype_id": "BC-QA-04010",
+   "variant_id": "BC-QV-04010-01",
+   "format": "mcq",
+   "stem": {
+      "text": "A particle moves along the x-axis with velocity \\( v(t) = 6 t^{2} + 6 t + 4 \\) meters per second, where t is measured in seconds, for \\( t \\ge 0 \\). At time t = 1 the position of the particle is \\( x(1) = 3 \\) meters. Find the position of the particle at time t = 3.",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 87,
+      "units": "meters"
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Position changes by the integral of velocity, so \\( x(3) = x(1) + \\int_{1}^{3} v(t)\\,dt \\).",
+         "rule_named": "position from velocity by accumulation"
+      },
+      {
+         "step": 2,
+         "text": "An antiderivative of v is \\( 2 t^{3} + 3 t^{2} + 4 t \\), so \\( \\int_{1}^{3} v(t)\\,dt = \\left[2 t^{3} + 3 t^{2} + 4 t\\right]_{1}^{3} = 84 \\).",
+         "mathjson": 84,
+         "rule_named": "fundamental theorem of calculus"
+      },
+      {
+         "step": 3,
+         "text": "Add the known position: \\( x(3) = x(1) + \\int_{1}^{3} v(t)\\,dt = 3 + 84 = 87 \\) meters.",
+         "mathjson": 87,
+         "rule_named": "add the initial position"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-09021",
+         "value": -81,
+         "derivation": "the accumulation run the wrong way in time, x(1) plus the integral from 3 to 1",
+         "mechanism": "wrong_limits"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-07026",
+         "value": 93,
+         "derivation": "x(t) written as the antiderivative 2 t^{3} + 3 t^{2} + 4 t with no constant and evaluated at t = 3",
+         "mechanism": "forgot_constant"
+      },
+      {
+         "id": "C",
+         "is_key": true,
+         "error_path": null,
+         "value": 87
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-08011",
+         "value": 84,
+         "derivation": "the integral of v from 1 to 3 reported as the position, with x(1) never added",
+         "mechanism": "forgot_constant"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-11",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-04006",
+      "BC-SKL-04011"
+   ],
+   "parameter_draw": {
+      "cubic": "2",
+      "quadratic": "3",
+      "linear": "4",
+      "known_time": "1",
+      "gap": "2",
+      "known_position": "3",
+      "direction": "forward"
+   },
+   "predicted_success_probability": 0.4134,
+   "provenance": {
+      "template_id": "TPL-BC-QA-04010-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-04010:spec-1:item-9:try-9",
+      "parameter_draw": {
+         "cubic": "2",
+         "quadratic": "3",
+         "linear": "4",
+         "known_time": "1",
+         "gap": "2",
+         "known_position": "3",
+         "direction": "forward"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:53Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": true,
+      "requested_success_probability": 0.3318
+   },
+   "review_decision": {
+      "item_id": "ITM-GEN-04010-09",
+      "decision": "approve",
+      "reason": "one of a duplicate pair with ITM-GEN-04010-21; the lower id is kept",
+      "by": "claude-opus-5-5 on the operator's delegation of 2026-09-24",
+      "decided_on": "2026-09-24",
+      "rules": [
+         10
+      ],
+      "archetype_id": "BC-QA-04010",
+      "prompt_version": "generator/template_v1",
+      "template_id": "TPL-BC-QA-04010-v1"
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

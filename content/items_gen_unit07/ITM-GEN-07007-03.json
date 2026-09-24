@@ -1,0 +1,113 @@
+{
+   "id": "ITM-GEN-07007-03",
+   "archetype_id": "BC-QA-07007",
+   "variant_id": "BC-QV-07007-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Determine whether \\( f(x) = -1 + e^{- x} \\) is the particular solution to the differential equation \\( \\frac{dy}{dx} = - y - 1 \\) with the initial condition \\( f(0) = 0 \\). Justify your answer.",
+      "command_verb": "determine"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "Yes. \\( f^{\\prime}(x) = -\\left(f(x) + 1\\right) \\) for every x, and \\( f(0) = 0 \\)."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Differentiate the candidate: \\( f^{\\prime}(x) = - e^{- x} \\).",
+         "point_type_id": "BC-PT-99005",
+         "rule_named": "differentiate the candidate"
+      },
+      {
+         "step": 2,
+         "text": "Substitute into the right side: \\( -\\left(f(x) + 1\\right) = - e^{- x} \\), which equals \\( f^{\\prime}(x) \\) for every x, so f satisfies the differential equation.",
+         "point_type_id": "BC-PT-99068",
+         "rule_named": "verification of the equation"
+      },
+      {
+         "step": 3,
+         "text": "Check the initial condition: \\( f(0) = 0 \\), which matches, so f is the particular solution.",
+         "point_type_id": "BC-PT-99004",
+         "rule_named": "initial condition"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-07006",
+         "label": "No. Substituting f(x) for y on both sides gives \\( -1 + e^{- x} \\) on the left and \\( - e^{- x} \\) on the right, which are not equal.",
+         "derivation": "f substituted for y and for dy/dx alike, never differentiated",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": true,
+         "error_path": null,
+         "label": "Yes. \\( f^{\\prime}(x) = -\\left(f(x) + 1\\right) \\) for every x, and \\( f(0) = 0 \\)."
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-07008",
+         "label": "No. \\( f^{\\prime}(x) \\ne -\\left(f(x) + 1\\right) \\) for the candidate, so f is not a solution of the equation.",
+         "derivation": "failure asserted with no input at which the two sides disagree",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-07009",
+         "label": "Yes. \\( f^{\\prime}(x) = -\\left(f(x) + 1\\right) \\) for every x, so f is the only solution of the equation.",
+         "derivation": "the check of the equation read as making f the only solution of the equation, with the initial condition never used",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-07006",
+      "BC-SKL-07007",
+      "BC-SKL-07008",
+      "BC-SKL-07009",
+      "BC-SKL-07033"
+   ],
+   "parameter_draw": {
+      "case": "solution",
+      "rate": "-1",
+      "level": "-1",
+      "initial": "0",
+      "shift": "2"
+   },
+   "predicted_success_probability": 0.5,
+   "provenance": {
+      "template_id": "TPL-BC-QA-07007-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-07007:spec-1:item-3:try-3",
+      "parameter_draw": {
+         "case": "solution",
+         "rate": "-1",
+         "level": "-1",
+         "initial": "0",
+         "shift": "2"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:54:01Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.4134
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

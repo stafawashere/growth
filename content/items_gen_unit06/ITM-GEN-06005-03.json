@@ -1,0 +1,134 @@
+{
+   "id": "ITM-GEN-06005-03",
+   "archetype_id": "BC-QA-06005",
+   "variant_id": "BC-QV-06005-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Sand is added to and removed from a pile. Let A(t) be the amount of sand in the pile, in tons, at time t hours, for \\( t \\ge 0 \\). The rate of change of A is \\( R(t) = 8 - 6 t \\) tons per hour. At time t = 1, there are 50 tons. Find the value of \\( A(4) \\), in tons, and show the setup for the calculation.",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 29,
+      "units": "tons"
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The known value and the accumulated change combine as \\( A(4) = A(1) + \\int_{1}^{4} \\left(8 - 6 t\\right)\\,dt \\).",
+         "point_type_id": "BC-PT-99033",
+         "rule_named": "net change theorem"
+      },
+      {
+         "step": 2,
+         "text": "An antiderivative of the rate is \\( - 3 t^{2} + 8 t \\), so the integral is \\( \\left[- 3 t^{2} + 8 t\\right]_{1}^{4} = -21 \\).",
+         "mathjson": -21,
+         "point_type_id": "BC-PT-99003",
+         "rule_named": "Fundamental Theorem of Calculus"
+      },
+      {
+         "step": 3,
+         "text": "So \\( A(4) = 50 + \\left(-21\\right) = 29 \\) tons.",
+         "mathjson": 29,
+         "point_type_id": "BC-PT-99004",
+         "rule_named": "combine with the known value"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-99012",
+         "value": 34,
+         "derivation": "the antiderivative evaluated only at the upper limit 4, ignoring its value at the lower limit 1",
+         "mechanism": "wrong_limits"
+      },
+      {
+         "id": "B",
+         "is_key": true,
+         "error_path": null,
+         "value": 29
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-99012",
+         "value": 32,
+         "derivation": "the rate treated as its own antiderivative, so the change is taken as R(4) - R(1)",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-06015",
+         "value": -21,
+         "derivation": "the integral of the rate from 1 to 4 reported as the amount, with the known 50 tons left out",
+         "mechanism": "forgot_constant"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-05",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06036",
+      "BC-SKL-06037",
+      "BC-SKL-06034",
+      "BC-SKL-08012",
+      "BC-SKL-08016",
+      "BC-SKL-08017",
+      "BC-SKL-08009"
+   ],
+   "parameter_draw": {
+      "cubic": "0",
+      "square": "-3",
+      "linear": "8",
+      "start": "1",
+      "span": "3",
+      "known": "50",
+      "base_rate": "8",
+      "swing": "2",
+      "stretch": "4",
+      "horizon": "3",
+      "context": "pile",
+      "tool": "exact",
+      "direction": "forward"
+   },
+   "predicted_success_probability": 0.1978,
+   "provenance": {
+      "template_id": "TPL-BC-QA-06005-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-06005:spec-1:item-3:try-3",
+      "parameter_draw": {
+         "cubic": "0",
+         "square": "-3",
+         "linear": "8",
+         "start": "1",
+         "span": "3",
+         "known": "50",
+         "base_rate": "8",
+         "swing": "2",
+         "stretch": "4",
+         "horizon": "3",
+         "context": "pile",
+         "tool": "exact",
+         "direction": "forward"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, run D",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:56Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.148
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

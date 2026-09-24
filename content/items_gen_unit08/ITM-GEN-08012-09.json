@@ -1,0 +1,141 @@
+{
+   "id": "ITM-GEN-08012-09",
+   "archetype_id": "BC-QA-08012",
+   "variant_id": "BC-QV-08012-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = 3 x^{2} - 2 \\). Let R be the region bounded by the graph of f, the line \\( y = -2 \\), and the vertical lines \\( x = 1 \\) and \\( x = 6 \\). Find the exact volume of the solid generated when R is revolved about the line \\( y = -2 \\).",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Multiply",
+         13995,
+         "Pi"
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Each slice perpendicular to the x-axis is a disc whose radius is the distance from the curve to the axis, \\( r = f(x) - (-2) = 3 x^{2} \\).",
+         "point_type_id": "BC-PT-99058",
+         "rule_named": "disc radius"
+      },
+      {
+         "step": 2,
+         "text": "The volume is \\( \\pi\\int_{1}^{6} \\left(3 x^{2}\\right)^{2}\\,dx \\).",
+         "point_type_id": "BC-PT-99001",
+         "rule_named": "disc method"
+      },
+      {
+         "step": 3,
+         "text": "Since \\( \\int_{1}^{6} 9 x^{4}\\,dx = 13995 \\), the volume is \\( 13995 \\pi \\).",
+         "mathjson": [
+            "Multiply",
+            13995,
+            "Pi"
+         ],
+         "point_type_id": "BC-PT-99004",
+         "rule_named": "power rule"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Multiply",
+            13995,
+            "Pi"
+         ]
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-08036",
+         "value": [
+            "Multiply",
+            215,
+            "Pi"
+         ],
+         "derivation": "the radius left unsquared, pi times the integral of r",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-08038",
+         "value": [
+            "Multiply",
+            13155,
+            "Pi"
+         ],
+         "derivation": "the radius measured from the x-axis, f(x), instead of from the line y = -2",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-08037",
+         "value": 13995,
+         "derivation": "the factor of pi left off, the integral of r squared",
+         "mechanism": "forgot_constant"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-08040",
+      "BC-SKL-08041",
+      "BC-SKL-08042",
+      "BC-SKL-08043",
+      "BC-SKL-08044",
+      "BC-SKL-08045",
+      "BC-SKL-08046",
+      "BC-SKL-08047"
+   ],
+   "parameter_draw": {
+      "form": "square",
+      "scale": "3",
+      "left": "1",
+      "width": "5",
+      "level": "-2",
+      "presentation": "formula",
+      "axis": "shifted"
+   },
+   "predicted_success_probability": 0.5,
+   "provenance": {
+      "template_id": "TPL-BC-QA-08012-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-08012:spec-1:item-9:try-9",
+      "parameter_draw": {
+         "form": "square",
+         "scale": "3",
+         "left": "1",
+         "width": "5",
+         "level": "-2",
+         "presentation": "formula",
+         "axis": "shifted"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, run F",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T13:02:05Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.5
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

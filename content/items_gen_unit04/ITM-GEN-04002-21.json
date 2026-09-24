@@ -1,0 +1,187 @@
+{
+   "id": "ITM-GEN-04002-21",
+   "archetype_id": "BC-QA-04002",
+   "variant_id": "BC-QV-04002-01",
+   "format": "mcq",
+   "stem": {
+      "text": "The function P is differentiable, and P(t) gives the number of people inside a stadium, in hundreds of people, at time t minutes. Selected values of P(t) are given in the table. Using the average rate of change of P over the interval \\( 7 \\le t \\le 11 \\), approximate \\( P'(10) \\). Give the exact value of the approximation and indicate units of measure.",
+      "command_verb": "approximate"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         -53,
+         4
+      ],
+      "units": "hundreds of people per minute"
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The interval \\( 7 \\le t \\le 11 \\) uses the rows at t = 7 and t = 11, so the change in P is \\( 25 - 78 = -53 \\).",
+         "mathjson": -53,
+         "point_type_id": "BC-PT-99005",
+         "rule_named": "difference of tabulated values"
+      },
+      {
+         "step": 2,
+         "text": "Dividing by the change in time, \\( P'(10) \\approx \\frac{P(11) - P(7)}{11 - 7} = \\frac{25 - 78}{11 - 7} = - \\frac{53}{4} \\).",
+         "mathjson": [
+            "Rational",
+            -53,
+            4
+         ],
+         "point_type_id": "BC-PT-99005",
+         "rule_named": "average rate of change as a difference quotient"
+      },
+      {
+         "step": 3,
+         "text": "The units are those of P over those of t: hundreds of people per minute.",
+         "point_type_id": "BC-PT-99006",
+         "rule_named": "units of a rate"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-02004",
+         "value": -4,
+         "derivation": "the rows at t = 10 and t = 11 used in place of the named interval",
+         "mechanism": "wrong_limits"
+      },
+      {
+         "id": "B",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Rational",
+            -53,
+            4
+         ]
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-02001",
+         "value": -53,
+         "derivation": "the change P(11) - P(7) reported without dividing by the change in time",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-02004",
+         "value": [
+            "Rational",
+            -49,
+            3
+         ],
+         "derivation": "the rows at t = 7 and t = 10 used in place of the named interval",
+         "mechanism": "wrong_limits"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-04004",
+      "BC-SKL-04001",
+      "BC-SKL-02014",
+      "BC-SKL-02015",
+      "BC-SKL-02016",
+      "BC-SKL-02002",
+      "BC-SKL-02003"
+   ],
+   "parameter_draw": {
+      "times": [
+         "1",
+         "7",
+         "10",
+         "11",
+         "12"
+      ],
+      "readings": [
+         "22",
+         "25",
+         "29",
+         "78",
+         "81"
+      ],
+      "context": "crowd",
+      "trend": "decreasing"
+   },
+   "predicted_success_probability": 0.148,
+   "provenance": {
+      "template_id": "TPL-BC-QA-04002-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-04002:spec-1:item-21:try-21",
+      "parameter_draw": {
+         "times": [
+            "1",
+            "7",
+            "10",
+            "11",
+            "12"
+         ],
+         "readings": [
+            "22",
+            "25",
+            "29",
+            "78",
+            "81"
+         ],
+         "context": "crowd",
+         "trend": "decreasing"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:53Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.148
+   },
+   "figure": {
+      "kind": "table",
+      "columns": [
+         "t (minutes)",
+         "P(t) (hundreds of people)"
+      ],
+      "rows": [
+         [
+            "1",
+            "81"
+         ],
+         [
+            "7",
+            "78"
+         ],
+         [
+            "10",
+            "29"
+         ],
+         [
+            "11",
+            "25"
+         ],
+         [
+            "12",
+            "22"
+         ]
+      ],
+      "labels": [],
+      "alt": "The table lists P(t) at five times, P(1) = 81; P(7) = 78; P(10) = 29; P(11) = 25; P(12) = 22."
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

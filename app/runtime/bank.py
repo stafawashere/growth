@@ -77,7 +77,16 @@ def _as_item_dict(row):
       "difficulty_settings": _json_field(row.difficulty_settings),
       "skills": _json_field(row.skills),
       "status": row.status,
+      "requires_choice": _is_statement_keyed(row),
    }
+
+
+def _is_statement_keyed(row):
+   """04's key form "statement": the answer is one of the labelled options and nothing a student
+   could type, so the item is always served as a choice (app/engine/select.py requires_choice)."""
+   key = _json_field(row.answer_key) or {}
+
+   return key.get("form") == "statement"
 
 
 def _is_step_with_text(step):

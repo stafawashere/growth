@@ -1,0 +1,139 @@
+{
+   "id": "ITM-GEN-10009-00",
+   "archetype_id": "BC-QA-10009",
+   "variant_id": "BC-QV-10009-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( P_2(x) \\) be the Taylor polynomial of degree 2 for a function f about \\( x = 2 \\). For all x in the interval \\( \\frac{3}{2} \\le x \\le 2 \\), \\( \\left|f^{(3)}(x)\\right| \\le 7 \\). Use the Lagrange error bound to find an upper bound for \\( \\left|f(\\frac{3}{2}) - P_2(\\frac{3}{2})\\right| \\).",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         7,
+         48
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "A polynomial of degree 2 needs the bound M on the third derivative. The bound on the third derivative over the interval is given: \\( M = 7 \\).",
+         "rule_named": "order of the bounding derivative"
+      },
+      {
+         "step": 2,
+         "text": "The Lagrange error bound is \\( \\left|f(\\frac{3}{2}) - P_2(\\frac{3}{2})\\right| \\le \\frac{M}{3!} \\left|\\frac{3}{2} - 2\\right|^{3} \\).",
+         "point_type_id": "BC-PT-99039",
+         "rule_named": "Lagrange error bound form"
+      },
+      {
+         "step": 3,
+         "text": "With \\( M = 7 \\) and distance \\( \\frac{1}{2} \\), the bound is \\( \\frac{7}{6} \\left(\\frac{1}{2}\\right)^{3} = \\frac{7}{48} \\).",
+         "mathjson": [
+            "Rational",
+            7,
+            48
+         ],
+         "point_type_id": "BC-PT-99041",
+         "rule_named": "evaluate the bound"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Rational",
+            7,
+            48
+         ]
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-10032",
+         "value": [
+            "Rational",
+            7,
+            24
+         ],
+         "derivation": "the power of the distance taken as 2, the degree of the polynomial, instead of 3",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-10025",
+         "value": [
+            "Rational",
+            63,
+            16
+         ],
+         "derivation": "the bound evaluated at the input 3/2 itself instead of at its distance 1/2 from the centre",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-10032",
+         "value": [
+            "Rational",
+            7,
+            16
+         ],
+         "derivation": "the factorial taken as 2! instead of 3!",
+         "mechanism": "algebra_slip"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10048",
+      "BC-SKL-10049",
+      "BC-SKL-10050",
+      "BC-SKL-10051",
+      "BC-SKL-10052"
+   ],
+   "parameter_draw": {
+      "given": "bound",
+      "degree": "2",
+      "centre": "2",
+      "step": "-1/2",
+      "maximum": "7",
+      "minimum": "6"
+   },
+   "predicted_success_probability": 0.5866,
+   "provenance": {
+      "template_id": "TPL-BC-QA-10009-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-10009:spec-1:item-0:try-0",
+      "parameter_draw": {
+         "given": "bound",
+         "degree": "2",
+         "centre": "2",
+         "step": "-1/2",
+         "maximum": "7",
+         "minimum": "6"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:58:54Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.5
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

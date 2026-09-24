@@ -1,0 +1,107 @@
+{
+   "id": "ITM-GEN-02013-05",
+   "archetype_id": "BC-QA-02013",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "The number of cars on a stretch of highway is modeled by \\( W(t) = \\ln{\\left(t + 1 \\right)} + 2 \\sin{\\left(\\frac{t^{2}}{2} \\right)} + 21 \\) hundred cars, where t is measured in hours for \\( 0 \\le t \\le 4 \\). Using a calculator, find \\( W'(3) \\), the rate at which the amount is changing at time t = 3. Show the setup for the calculation, give the value correct to three decimal places, and include units.",
+      "setup_required": true,
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "numeric",
+      "mathjson": -1.0147747965846783,
+      "decimals": 3,
+      "units": "hundred cars per hour"
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The quantity asked for is the derivative of W at t = 3: \\( W'(3) = \\left. \\frac{d}{dt}\\left(\\ln{\\left(t + 1 \\right)} + 2 \\sin{\\left(\\frac{t^{2}}{2} \\right)} + 21\\right) \\right|_{t=3} \\).",
+         "rule_named": "derivative at a point"
+      },
+      {
+         "step": 2,
+         "text": "With the calculator in radian mode, the numerical derivative at t = 3 gives \\( W'(3) \\) approximately -1.015 hundred cars per hour.",
+         "mathjson": -1.0147747965846783,
+         "rule_named": "numerical derivative"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "value": -1.015
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-02024",
+         "value": 20.431,
+         "derivation": "the function value W(3) reported in place of the derivative value",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-02032",
+         "value": -1.01,
+         "derivation": "the derivative reported to two places instead of three",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-09023",
+         "value": 0.354,
+         "derivation": "the numerical derivative taken with the calculator in degree mode, so the sine reads its argument in degrees",
+         "mechanism": "algebra_slip"
+      }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-05",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-05",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-16",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02018"
+   ],
+   "parameter_draw": {
+      "level": "21",
+      "swing": "2",
+      "scale": "2",
+      "at": "3",
+      "context": "traffic",
+      "framing": "context"
+   },
+   "predicted_success_probability": 0.2592,
+   "provenance": {
+      "template_id": "TPL-BC-QA-02013-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-02013:spec-1:item-5:try-5",
+      "parameter_draw": {
+         "level": "21",
+         "swing": "2",
+         "scale": "2",
+         "at": "3",
+         "context": "traffic",
+         "framing": "context"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, author tpl-B",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:50Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": true,
+      "requested_success_probability": 0.3318
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

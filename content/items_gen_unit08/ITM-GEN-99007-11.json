@@ -1,0 +1,112 @@
+{
+   "id": "ITM-GEN-99007-11",
+   "archetype_id": "BC-QA-99007",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "The amount of water in a storage tank is modeled by \\( A(t) = 8 \\ln{\\left(t^{2} + 1 \\right)} + 55 \\) gallons, where t is measured in hours for \\( 0 \\le t \\le 5 \\). Using a calculator, find the average rate of change of A over the interval \\( 2 \\le t \\le 4 \\). Show the setup, give the value correct to three decimal places, and indicate units of measure.",
+      "setup_required": true,
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "numeric",
+      "mathjson": 4.895101726488463,
+      "decimals": 3,
+      "units": "gallons per hour"
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The average rate of change is \\( \\frac{A(4) - A(2)}{4 - 2} \\), with \\( A(4) \\approx 77.666 \\) and \\( A(2) \\approx 67.876 \\) from a calculator.",
+         "point_type_id": "BC-PT-99021",
+         "rule_named": "average rate of change"
+      },
+      {
+         "step": 2,
+         "text": "Dividing the change by 2 gives about 4.895 gallons per hour.",
+         "mathjson": 4.895101726488463,
+         "point_type_id": "BC-PT-99006",
+         "rule_named": "units of a rate"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-08002",
+         "value": 5.666,
+         "derivation": "the rate taken over 0 <= t <= 4, an interval the question did not name",
+         "mechanism": "wrong_limits"
+      },
+      {
+         "id": "B",
+         "is_key": true,
+         "error_path": null,
+         "value": 4.895
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-08001",
+         "value": 9.79,
+         "derivation": "the change A(b) - A(a) reported without dividing by the length of the interval",
+         "mechanism": "forgot_constant"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-99015",
+         "value": 73.205,
+         "derivation": "the average value of A over the interval, the integral divided by the length, reported as the average rate of change",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-05",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-16",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-08004",
+      "BC-SKL-08003"
+   ],
+   "parameter_draw": {
+      "level": "55",
+      "scale": "8",
+      "spread": "1",
+      "start": "2",
+      "length": "2",
+      "context": "tank",
+      "direction": "increasing"
+   },
+   "predicted_success_probability": 0.2592,
+   "provenance": {
+      "template_id": "TPL-BC-QA-99007-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-99007:spec-1:item-11:try-11",
+      "parameter_draw": {
+         "level": "55",
+         "scale": "8",
+         "spread": "1",
+         "start": "2",
+         "length": "2",
+         "context": "tank",
+         "direction": "increasing"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:54:03Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.2592
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

@@ -1,0 +1,313 @@
+{
+   "id": "ITM-GEN-10011-02",
+   "archetype_id": "BC-QA-10011",
+   "variant_id": "BC-QV-10011-01",
+   "format": "mcq",
+   "stem": {
+      "text": "The function f has derivatives of all orders. Values of f and its first four derivatives at two inputs are given in the table. Find the Taylor polynomial of degree 2 for f about \\( x = 1 \\).",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Multiply",
+            3,
+            "x"
+         ],
+         [
+            "Multiply",
+            -1,
+            4,
+            [
+               "Power",
+               [
+                  "Add",
+                  "x",
+                  -1
+               ],
+               2
+            ]
+         ],
+         -1
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Read the row for \\( x = 1 \\): the values of f and its first 2 derivatives there are 2, 3, -8.",
+         "rule_named": "read the table"
+      },
+      {
+         "step": 2,
+         "text": "Divide the kth derivative value by k! to get the coefficients \\( \\frac{2}{0!} \\), \\( \\frac{3}{1!} \\), \\( \\frac{-8}{2!} \\).",
+         "rule_named": "Taylor coefficients"
+      },
+      {
+         "step": 3,
+         "text": "Attach the powers of the displacement from 1: \\( P_2(x) = 2 + 3 \\left(x - 1\\right) - 4 \\left(x - 1\\right)^{2} \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               3,
+               "x"
+            ],
+            [
+               "Multiply",
+               -1,
+               4,
+               [
+                  "Power",
+                  [
+                     "Add",
+                     "x",
+                     -1
+                  ],
+                  2
+               ]
+            ],
+            -1
+         ],
+         "point_type_id": "BC-PT-99035",
+         "rule_named": "Taylor polynomial"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-10029",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               3,
+               "x"
+            ],
+            [
+               "Multiply",
+               -1,
+               8,
+               [
+                  "Power",
+                  [
+                     "Add",
+                     "x",
+                     -1
+                  ],
+                  2
+               ]
+            ],
+            -1
+         ],
+         "derivation": "each derivative value used as the coefficient with no factorial in the denominator",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-10031",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               4,
+               "x"
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  2
+               ],
+               [
+                  "Power",
+                  [
+                     "Add",
+                     "x",
+                     -1
+                  ],
+                  2
+               ]
+            ],
+            -11
+         ],
+         "derivation": "the derivative values read from the row for x = 2 instead of x = 1",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               3,
+               "x"
+            ],
+            [
+               "Multiply",
+               -1,
+               4,
+               [
+                  "Power",
+                  [
+                     "Add",
+                     "x",
+                     -1
+                  ],
+                  2
+               ]
+            ],
+            -1
+         ]
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-10030",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               3,
+               "x"
+            ],
+            [
+               "Negate",
+               [
+                  "Power",
+                  [
+                     "Add",
+                     "x",
+                     -1
+                  ],
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               -1,
+               4,
+               [
+                  "Power",
+                  [
+                     "Add",
+                     "x",
+                     -1
+                  ],
+                  2
+               ]
+            ],
+            -1
+         ],
+         "derivation": "the next derivative in the table used as well, so the polynomial runs one degree past 2",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10044",
+      "BC-SKL-10045"
+   ],
+   "parameter_draw": {
+      "degree": "2",
+      "centre": "1",
+      "gap": "1",
+      "centre_row": [
+         "2",
+         "3",
+         "-8",
+         "-6",
+         "6"
+      ],
+      "other_row": [
+         "-7",
+         "4",
+         "1",
+         "8",
+         "-6"
+      ],
+      "centre_first": "yes"
+   },
+   "predicted_success_probability": 0.4134,
+   "provenance": {
+      "template_id": "TPL-BC-QA-10011-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-10011:spec-1:item-2:try-2",
+      "parameter_draw": {
+         "degree": "2",
+         "centre": "1",
+         "gap": "1",
+         "centre_row": [
+            "2",
+            "3",
+            "-8",
+            "-6",
+            "6"
+         ],
+         "other_row": [
+            "-7",
+            "4",
+            "1",
+            "8",
+            "-6"
+         ],
+         "centre_first": "yes"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:58:54Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.4134
+   },
+   "figure": {
+      "kind": "table",
+      "columns": [
+         "x",
+         "\\( f(x) \\)",
+         "\\( f^{\\prime}(x) \\)",
+         "\\( f^{\\prime\\prime}(x) \\)",
+         "\\( f^{\\prime\\prime\\prime}(x) \\)",
+         "\\( f^{(4)}(x) \\)"
+      ],
+      "rows": [
+         [
+            "1",
+            "2",
+            "3",
+            "-8",
+            "-6",
+            "6"
+         ],
+         [
+            "2",
+            "-7",
+            "4",
+            "1",
+            "8",
+            "-6"
+         ]
+      ],
+      "labels": [],
+      "alt": "At x = 1: f = 2, f' = 3, f'' = -8, f''' = -6, fourth derivative = 6. At x = 2: f = -7, f' = 4, f'' = 1, f''' = 8, fourth derivative = -6."
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

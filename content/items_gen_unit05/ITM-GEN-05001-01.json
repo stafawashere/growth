@@ -1,0 +1,171 @@
+{
+   "id": "ITM-GEN-05001-01",
+   "archetype_id": "BC-QA-05001",
+   "variant_id": "BC-QV-05001-01",
+   "format": "mcq",
+   "stem": {
+      "text": "The function f gives the height, in meters, of a drone above the ground at time x seconds. The function f is continuous for all real x and differentiable for all x except \\( x = 3 \\), where its graph has a corner. Selected values of f are given in the table. Does the Mean Value Theorem guarantee a value c, with \\( 0 < c < 6 \\), such that \\( f'(c) = \\frac{3}{2} \\)? Justify the answer.",
+      "command_verb": "justify"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "No. Although \\( \\frac{f(6) - f(0)}{6 - 0} = \\frac{3}{2} \\), f is not differentiable at \\( x = 3 \\), which lies in \\( (0, 6) \\), so the Mean Value Theorem does not apply and such a c is not guaranteed."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The average rate of change of f over \\( \\left[0, 6\\right] \\) is \\( \\frac{f(6) - f(0)}{6 - 0} = \\frac{18 - 9}{6} = \\frac{3}{2} \\).",
+         "mathjson": [
+            "Rational",
+            3,
+            2
+         ],
+         "point_type_id": "BC-PT-99021",
+         "rule_named": "average rate of change"
+      },
+      {
+         "step": 2,
+         "text": "The Mean Value Theorem needs f continuous on \\( \\left[0, 6\\right] \\) and differentiable on \\( (0, 6) \\), but f is not differentiable at \\( x = 3 \\), which lies in \\( (0, 6) \\). The theorem does not apply, and no other fact given forces \\( f'(c) = \\frac{3}{2} \\) anywhere in the interval, so the answer is no.",
+         "point_type_id": "BC-PT-99017",
+         "rule_named": "hypotheses of the Mean Value Theorem"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-05004",
+         "label": "Yes. Since \\( \\frac{f(6) - f(0)}{6 - 0} = \\frac{3}{2} \\), there is a c with \\( 0 < c < 6 \\) and \\( f'(c) = \\frac{3}{2} \\), because an average rate of change is always reached by the derivative.",
+         "derivation": "existence asserted from the arithmetic alone, with no theorem named and no check that one applies",
+         "mechanism": "theorem_condition_ignored"
+      },
+      {
+         "id": "B",
+         "is_key": true,
+         "error_path": null,
+         "label": "No. Although \\( \\frac{f(6) - f(0)}{6 - 0} = \\frac{3}{2} \\), f is not differentiable at \\( x = 3 \\), which lies in \\( (0, 6) \\), so the Mean Value Theorem does not apply and such a c is not guaranteed."
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-99008",
+         "label": "Yes. Since \\( \\frac{f(6) - f(0)}{6 - 0} = \\frac{3}{2} \\), the Mean Value Theorem guarantees such a c, with f taken to be differentiable on \\( (0, 6) \\).",
+         "derivation": "the Mean Value Theorem applied without checking its hypotheses, which fail at x = 3",
+         "mechanism": "theorem_condition_ignored"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-05006",
+         "label": "Yes. Since \\( \\frac{f(6) - f(0)}{6 - 0} = \\frac{3}{2} \\), the Intermediate Value Theorem guarantees such a c, with f taken to be continuous on \\( \\left[0, 6\\right] \\).",
+         "derivation": "the Intermediate Value Theorem cited for a claim about the derivative",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-09",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-05001",
+      "BC-SKL-05002",
+      "BC-SKL-05003",
+      "BC-SKL-05004",
+      "BC-SKL-05006"
+   ],
+   "parameter_draw": {
+      "inputs": [
+         "0",
+         "1",
+         "3",
+         "6",
+         "8"
+      ],
+      "outputs": [
+         "9",
+         "0",
+         "14",
+         "18",
+         "18"
+      ],
+      "rows": "0-3",
+      "context": "context",
+      "hypothesis": "corner"
+   },
+   "predicted_success_probability": 0.2592,
+   "provenance": {
+      "template_id": "TPL-BC-QA-05001-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-05001:spec-1:item-1:try-1",
+      "parameter_draw": {
+         "inputs": [
+            "0",
+            "1",
+            "3",
+            "6",
+            "8"
+         ],
+         "outputs": [
+            "9",
+            "0",
+            "14",
+            "18",
+            "18"
+         ],
+         "rows": "0-3",
+         "context": "context",
+         "hypothesis": "corner"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T14:03:52Z",
+      "content_snapshot": "a800600d4c437c1ba8273c7cb1a03e0fe70b74050fbabcbcf27d142ba56fded8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.3318
+   },
+   "figure": {
+      "kind": "table",
+      "columns": [
+         "x",
+         "f(x)"
+      ],
+      "rows": [
+         [
+            "0",
+            "9"
+         ],
+         [
+            "1",
+            "0"
+         ],
+         [
+            "3",
+            "14"
+         ],
+         [
+            "6",
+            "18"
+         ],
+         [
+            "8",
+            "18"
+         ]
+      ],
+      "labels": [],
+      "alt": "The table lists f(x) at five inputs, f(0) = 9; f(1) = 0; f(3) = 14; f(6) = 18; f(8) = 18."
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

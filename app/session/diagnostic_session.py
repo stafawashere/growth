@@ -23,7 +23,7 @@ import random
 from app.db import models
 from app.engine import constants, diagnostic
 from app.engine.retention import current_retrievability
-from app.engine.select import dress_item
+from app.engine.select import dress_item, requires_choice
 from app.engine.state import Confidence, FadingStage, MasteryState, ResponseFormat
 from app.engine.update import Observation, apply_observation, rule_based_mastery_states
 from app.session import repository
@@ -91,11 +91,29 @@ def run_rng(process_seed, session_id, position):
    return random.Random(f"{process_seed}:{session_id}:{position}")
 
 
+class ShortAnswerBank:
+   """The bank as the diagnostic sees it. The diagnostic asks every item as a short answer (P2),
+   and a statement-keyed item has nothing to type, so it is left out; an archetype whose items are
+   all statements is a coverage gap for the diagnostic, as it was before it had any items."""
+
+   def __init__(self, bank):
+      self.bank = bank
+
+   def published_items(self, archetype_id):
+      return [item for item in self.bank.published_items(archetype_id) if not requires_choice(item)]
+
+   def has_published_item(self, archetype_id):
+      return len(self.published_items(archetype_id)) > 0
+
+   def __getattr__(self, name):
+      return getattr(self.bank, name)
+
+
 def open_diagnostic(db, user_id, graph, bank, snapshot_id, today, process_seed, started_at, session_id):
    states = repository.load_states(db, user_id)
    retrievability = current_retrievability(states, today)
    rng = run_rng(process_seed, session_id, "start")
-   run = diagnostic.start_run(states, graph, bank, retrievability, rng)
+   run = diagnostic.start_run(states, graph, ShortAnswerBank(bank), retrievability, rng)
    stamp = started_at.isoformat()
    row = models.Session(
       id=session_id,
@@ -145,7 +163,7 @@ def advance(db, session_row, graph, engine_graph, bank, today, process_seed, fin
 
    run = load_run(session_row)
    rng = run_rng(process_seed, session_row.id, len(run.asked))
-   record = diagnostic.next_archetype(run, graph, bank, rng)
+   record = diagnostic.next_archetype(run, graph, ShortAnswerBank(bank), rng)
    has_finished = record is None
 
    if has_finished:
@@ -155,7 +173,7 @@ def advance(db, session_row, graph, engine_graph, bank, today, process_seed, fin
 
    history = repository.load_attempts_history(db, session_row.user_id)
    blocked = recently_served(history, today)[0] | answered
-   chosen = pick_item(record, bank, rng, blocked)
+   chosen = pick_item(record, ShortAnswerBank(bank), rng, blocked)
    states = repository.load_states(db, session_row.user_id)
    served = dress_item(record, chosen, states, graph, history)
    served["stage"] = FadingStage.UNSUPPORTED

@@ -1,0 +1,114 @@
+{
+   "id": "ITM-GEN-07010-00",
+   "archetype_id": "BC-QA-07010",
+   "variant_id": "BC-QV-07010-01",
+   "format": "mcq",
+   "stem": {
+      "text": "The function \\( y = f(x) \\) is a solution to the differential equation \\( \\frac{dy}{dx} = \\left(x - 1\\right) \\left(x + 1\\right) \\left(2 y - 6\\right) \\), and \\( y < 3 \\) for all x. For \\( x > 0 \\), find the input at which f has a critical point and determine whether it is the location of a relative minimum, a relative maximum, or neither.",
+      "command_verb": "determine"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "The solution has a relative maximum at \\( x = 1 \\), because the derivative changes from positive to negative at \\( x = 1 \\)."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "A critical point needs \\( \\frac{dy}{dx} = 0 \\). Because \\( y < 3 \\), the factor \\( y - 3 \\) is never 0, and for \\( x > 0 \\) the factor \\( x + 1 \\) is positive, so the only zero in the range is \\( x = 1 \\).",
+         "point_type_id": "BC-PT-99005",
+         "rule_named": "zeros of the right side within the stated range"
+      },
+      {
+         "step": 2,
+         "text": "On the range, the sign of \\( \\frac{dy}{dx} \\) is the sign of \\( -2\\left(x - 1\\right) \\) times a positive quantity, so it is positive just before \\( x = 1 \\) and negative just after.",
+         "point_type_id": "BC-PT-99010",
+         "rule_named": "sign analysis of the derivative"
+      },
+      {
+         "step": 3,
+         "text": "Because the derivative changes from positive to negative at \\( x = 1 \\), f has a relative maximum there.",
+         "point_type_id": "BC-PT-99063",
+         "rule_named": "first derivative test"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-05021",
+         "label": "The solution has a relative minimum at \\( x = 1 \\), because the derivative changes from positive to negative at \\( x = 1 \\).",
+         "derivation": "the sign change found correctly and then read the wrong way round",
+         "mechanism": "reversed_quantities"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-05025",
+         "label": "The solution has a relative maximum at \\( x = 1 \\) and a relative minimum at \\( x = -1 \\), because the derivative changes sign at both inputs.",
+         "derivation": "the zero at x = -1, outside the stated range, kept as a second critical point",
+         "mechanism": "theorem_condition_ignored"
+      },
+      {
+         "id": "C",
+         "is_key": true,
+         "error_path": null,
+         "label": "The solution has a relative maximum at \\( x = 1 \\), because the derivative changes from positive to negative at \\( x = 1 \\)."
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-07012",
+         "label": "The solution has no critical point for \\( x > 0 \\), because the factor \\( y - 3 \\) is never 0 when \\( y < 3 \\).",
+         "derivation": "the right side never set equal to 0 in x; only the factor in y was examined",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-07012",
+      "BC-SKL-07018"
+   ],
+   "parameter_draw": {
+      "bound_side": "below",
+      "outside_root": "-1",
+      "inside_root": "1",
+      "level": "3",
+      "sign": "1",
+      "scale": "2",
+      "letters": "xy"
+   },
+   "predicted_success_probability": 0.4134,
+   "provenance": {
+      "template_id": "TPL-BC-QA-07010-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-07010:spec-1:item-0:try-0",
+      "parameter_draw": {
+         "bound_side": "below",
+         "outside_root": "-1",
+         "inside_root": "1",
+         "level": "3",
+         "sign": "1",
+         "scale": "2",
+         "letters": "xy"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:54:01Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.4134
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

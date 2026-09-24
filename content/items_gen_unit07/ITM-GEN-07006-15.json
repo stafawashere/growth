@@ -1,0 +1,110 @@
+{
+   "id": "ITM-GEN-07006-15",
+   "archetype_id": "BC-QA-07006",
+   "variant_id": "BC-QV-07006-01",
+   "format": "mcq",
+   "stem": {
+      "text": "The concentration C of a medication in a patient's blood, in milligrams per liter, during an infusion that settles at 70 milligrams per liter moves toward the settling concentration at a rate proportional to the difference between the settling concentration and C. At time \\( t = 0 \\) minutes, \\( C = 15 \\). Using k for the positive constant of proportionality, write a differential equation for C as a function of t and state the initial condition.",
+      "command_verb": "write"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "\\( \\frac{dC}{dt} = k\\left(70 - C\\right) \\), with \\( C(0) = 15 \\)"
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The dependent variable is C and the independent variable is t in minutes, so the rate is \\( \\frac{dC}{dt} \\).",
+         "rule_named": "naming the variables"
+      },
+      {
+         "step": 2,
+         "text": "Proportional to the difference means a constant multiple of it. With k positive, \\( k(70 - C) \\) is positive when C is below 70 and negative when it is above, so C moves up toward 70 from its starting value.",
+         "rule_named": "proportionality as a constant multiple"
+      },
+      {
+         "step": 3,
+         "text": "The equation is \\( \\frac{dC}{dt} = k\\left(70 - C\\right) \\), and the initial condition, stated separately, is \\( C(0) = 15 \\).",
+         "rule_named": "differential equation with initial condition"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-07004",
+         "label": "\\( \\frac{dC}{dt} = k\\left(70 - 15\\right) \\), with \\( C(0) = 15 \\)",
+         "derivation": "the initial value 15 substituted for C inside the equation, so the rate becomes a constant",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": true,
+         "error_path": null,
+         "label": "\\( \\frac{dC}{dt} = k\\left(70 - C\\right) \\), with \\( C(0) = 15 \\)"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-07002",
+         "label": "\\( \\frac{dC}{dt} = k\\left(C - 70\\right) \\), with \\( C(0) = 15 \\)",
+         "derivation": "the difference written as C minus the level, which with k positive drives C away from 70",
+         "mechanism": "sign_error"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-07001",
+         "label": "\\( \\frac{dC}{dt} = 70 - C \\), with \\( C(0) = 15 \\)",
+         "derivation": "proportional read as equal, so the constant k never appears",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-04",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-07001",
+      "BC-SKL-07002",
+      "BC-SKL-07003",
+      "BC-SKL-07004",
+      "BC-SKL-07005"
+   ],
+   "parameter_draw": {
+      "context": "concentration",
+      "level": "70",
+      "gap": "55",
+      "approach": "from_below",
+      "time_unit": "minutes"
+   },
+   "predicted_success_probability": 0.5866,
+   "provenance": {
+      "template_id": "TPL-BC-QA-07006-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-07006:spec-1:item-15:try-15",
+      "parameter_draw": {
+         "context": "concentration",
+         "level": "70",
+         "gap": "55",
+         "approach": "from_below",
+         "time_unit": "minutes"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:54:01Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.5
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

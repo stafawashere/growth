@@ -1,0 +1,332 @@
+{
+   "id": "ITM-GEN-06009-00",
+   "archetype_id": "BC-QA-06009",
+   "variant_id": "BC-QV-06009-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Find \\( \\int 5 x \\sin{\\left(2 x \\right)}\\,dx \\).",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         "C",
+         [
+            "Multiply",
+            -1,
+            [
+               "Rational",
+               5,
+               2
+            ],
+            "x",
+            [
+               "Cos",
+               [
+                  "Multiply",
+                  2,
+                  "x"
+               ]
+            ]
+         ],
+         [
+            "Multiply",
+            [
+               "Rational",
+               5,
+               4
+            ],
+            [
+               "Sin",
+               [
+                  "Multiply",
+                  2,
+                  "x"
+               ]
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Let \\( u = 5 x \\) and \\( dv = \\sin{\\left(2 x \\right)}\\,dx \\), so \\( du = 5\\,dx \\) and \\( v = - \\frac{\\cos{\\left(2 x \\right)}}{2} \\).",
+         "point_type_id": "BC-PT-99056",
+         "rule_named": "choice of u and dv"
+      },
+      {
+         "step": 2,
+         "text": "Integration by parts gives \\( - \\frac{5 x \\cos{\\left(2 x \\right)}}{2} - \\int - \\frac{5 \\cos{\\left(2 x \\right)}}{2}\\,dx \\).",
+         "point_type_id": "BC-PT-99057",
+         "rule_named": "integration by parts"
+      },
+      {
+         "step": 3,
+         "text": "The remaining integral is basic, so the antiderivative is \\( C - \\frac{5 x \\cos{\\left(2 x \\right)}}{2} + \\frac{5 \\sin{\\left(2 x \\right)}}{4} \\).",
+         "mathjson": [
+            "Add",
+            "C",
+            [
+               "Multiply",
+               -1,
+               [
+                  "Rational",
+                  5,
+                  2
+               ],
+               "x",
+               [
+                  "Cos",
+                  [
+                     "Multiply",
+                     2,
+                     "x"
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  5,
+                  4
+               ],
+               [
+                  "Sin",
+                  [
+                     "Multiply",
+                     2,
+                     "x"
+                  ]
+               ]
+            ]
+         ],
+         "point_type_id": "BC-PT-99004",
+         "rule_named": "basic antiderivative"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-99025",
+         "value": [
+            "Add",
+            "C",
+            [
+               "Multiply",
+               -1,
+               [
+                  "Rational",
+                  5,
+                  2
+               ],
+               "x",
+               [
+                  "Cos",
+                  [
+                     "Multiply",
+                     2,
+                     "x"
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  5,
+                  2
+               ],
+               [
+                  "Sin",
+                  [
+                     "Multiply",
+                     2,
+                     "x"
+                  ]
+               ]
+            ]
+         ],
+         "derivation": "the remaining integral of v du antidifferentiated without dividing by 2 a second time",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "B",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Add",
+            "C",
+            [
+               "Multiply",
+               -1,
+               [
+                  "Rational",
+                  5,
+                  2
+               ],
+               "x",
+               [
+                  "Cos",
+                  [
+                     "Multiply",
+                     2,
+                     "x"
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  5,
+                  4
+               ],
+               [
+                  "Sin",
+                  [
+                     "Multiply",
+                     2,
+                     "x"
+                  ]
+               ]
+            ]
+         ]
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-06023",
+         "value": [
+            "Add",
+            "C",
+            [
+               "Multiply",
+               -1,
+               [
+                  "Rational",
+                  5,
+                  2
+               ],
+               "x",
+               [
+                  "Cos",
+                  [
+                     "Multiply",
+                     2,
+                     "x"
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               -1,
+               [
+                  "Rational",
+                  5,
+                  4
+               ],
+               [
+                  "Sin",
+                  [
+                     "Multiply",
+                     2,
+                     "x"
+                  ]
+               ]
+            ]
+         ],
+         "derivation": "the minus sign before the integral of v du dropped",
+         "mechanism": "sign_error"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-06022",
+         "value": [
+            "Add",
+            "C",
+            [
+               "Multiply",
+               -1,
+               [
+                  "Rational",
+                  5,
+                  4
+               ],
+               [
+                  "Power",
+                  "x",
+                  2
+               ],
+               [
+                  "Cos",
+                  [
+                     "Multiply",
+                     2,
+                     "x"
+                  ]
+               ]
+            ]
+         ],
+         "derivation": "the two factors antidifferentiated separately, \\frac{5 x^{2}}{2} times - \\frac{\\cos{\\left(2 x \\right)}}{2}, and multiplied",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06057",
+      "BC-SKL-06058",
+      "BC-SKL-06059",
+      "BC-SKL-06060",
+      "BC-SKL-06061",
+      "BC-SKL-06034"
+   ],
+   "parameter_draw": {
+      "multiplier": "5",
+      "rate": "2",
+      "variable": "x",
+      "reach": "1",
+      "partner": "sine",
+      "form": "indefinite"
+   },
+   "predicted_success_probability": 0.3318,
+   "provenance": {
+      "template_id": "TPL-BC-QA-06009-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-06009:spec-1:item-0:try-0",
+      "parameter_draw": {
+         "multiplier": "5",
+         "rate": "2",
+         "variable": "x",
+         "reach": "1",
+         "partner": "sine",
+         "form": "indefinite"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, run D",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:56Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.2592
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

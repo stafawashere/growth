@@ -1,5 +1,6 @@
 import type { DiagnosticServedItem, DiagnosticUnit, DiagnosticUnitState } from "../api/types";
 import { MathField } from "../input/MathField";
+import { FigureView } from "../figures/FigureView";
 import { MathText } from "../math/MathText";
 import { ANSWER_UNAVAILABLE, COMMIT_LABEL } from "../session/Item";
 
@@ -99,6 +100,8 @@ export function DiagnosticItem(props: DiagnosticItemProps) {
          </h2>
 
          <p className="item-stem" data-testid="item-stem"><MathText text={item.stem} /></p>
+
+         {item.figure_spec ? <FigureView spec={item.figure_spec} /> : null}
 
          <div data-testid="math-answer">
             <MathField key={item.id} label="My answer" onChange={onAnswerChange} onLoadFailure={onAnswerUnavailable} />

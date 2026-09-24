@@ -1,0 +1,120 @@
+{
+   "id": "ITM-GEN-10018-03",
+   "archetype_id": "BC-QA-10018",
+   "variant_id": "BC-QV-10018-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = \\sum_{n=1}^{\\infty} \\frac{11 \\left(x - 1\\right)^{n}}{n^{2} 4^{n}} \\). Find the series for f prime obtained by term-by-term differentiation, and give the interval on which it converges.",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "\\( f^{\\prime}(x) = \\sum_{n=1}^{\\infty} \\frac{11 \\left(x - 1\\right)^{n-1}}{n \\cdot 4^{n}} \\), converging for \\( -3 \\le x < 5 \\)."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Differentiate each term: the derivative of \\( \\frac{11 \\left(x - 1\\right)^{n}}{n^{2} 4^{n}} \\) is \\( \\frac{11 \\left(x - 1\\right)^{n-1}}{n \\cdot 4^{n}} \\), so \\( f^{\\prime}(x) = \\sum_{n=1}^{\\infty} \\frac{11 \\left(x - 1\\right)^{n-1}}{n \\cdot 4^{n}} \\).",
+         "point_type_id": "BC-PT-99038",
+         "rule_named": "term-by-term differentiation"
+      },
+      {
+         "step": 2,
+         "text": "Term-by-term differentiation keeps the radius of convergence, so the radius is still \\( 4 \\) and the series converges for \\( \\left|x - 1\\right| < 4 \\).",
+         "point_type_id": "BC-PT-99047",
+         "rule_named": "radius unchanged"
+      },
+      {
+         "step": 3,
+         "text": "The endpoints must be checked again. At the endpoint where the terms keep one sign, the series is \\( \\sum \\frac{11 }{4 n} \\), a multiple of the harmonic series, which diverges. At the other endpoint the terms alternate and decrease to 0, so it converges by the alternating series test.",
+         "rule_named": "endpoint tests"
+      },
+      {
+         "step": 4,
+         "text": "The series for f prime converges for \\( -3 \\le x < 5 \\).",
+         "rule_named": "interval of convergence"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-99018",
+         "label": "\\( f^{\\prime}(x) = \\sum_{n=1}^{\\infty} \\frac{11 \\left(x - 1\\right)^{n}}{n \\cdot 4^{n}} \\), converging for \\( -3 \\le x < 5 \\).",
+         "derivation": "each coefficient divided by n but the power of the displacement left at n instead of lowered to n - 1",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-10037",
+         "label": "\\( f^{\\prime}(x) = \\sum_{n=1}^{\\infty} \\frac{11 \\left(x - 1\\right)^{n-1}}{n \\cdot 4^{n}} \\), converging for \\( -3 \\le x \\le 5 \\).",
+         "derivation": "the interval of f carried over with both endpoints, the endpoints of the new series never tested",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": true,
+         "error_path": null,
+         "label": "\\( f^{\\prime}(x) = \\sum_{n=1}^{\\infty} \\frac{11 \\left(x - 1\\right)^{n-1}}{n \\cdot 4^{n}} \\), converging for \\( -3 \\le x < 5 \\)."
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-10015",
+         "label": "\\( f^{\\prime}(x) = \\sum_{n=1}^{\\infty} \\frac{11 \\left(x - 1\\right)^{n-1}}{n \\cdot 4^{n}} \\), converging for \\( -3 < x < 5 \\).",
+         "derivation": "the alternating endpoint series tested with the p-series test, whose positive-terms condition it fails, and so excluded",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-04",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10060",
+      "BC-SKL-10068",
+      "BC-SKL-10070",
+      "BC-SKL-10071"
+   ],
+   "parameter_draw": {
+      "sign": "positive",
+      "given": "none",
+      "centre": "1",
+      "base": "4",
+      "coefficient": "11"
+   },
+   "predicted_success_probability": 0.1978,
+   "provenance": {
+      "template_id": "TPL-BC-QA-10018-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-10018:spec-1:item-3:try-3",
+      "parameter_draw": {
+         "sign": "positive",
+         "given": "none",
+         "centre": "1",
+         "base": "4",
+         "coefficient": "11"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:58:54Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.148
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

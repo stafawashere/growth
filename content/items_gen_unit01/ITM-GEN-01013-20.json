@@ -1,0 +1,109 @@
+{
+   "id": "ITM-GEN-01013-20",
+   "archetype_id": "BC-QA-01013",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "A function k satisfies \\( \\lim_{x \\to -\\infty} k(x) = \\frac{5}{2} \\). Describe in words what this statement says about k and about its graph.",
+      "command_verb": "interpret"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "As x decreases without bound, k(x) approaches \\( \\frac{5}{2} \\), so the line \\( y = \\frac{5}{2} \\) is a horizontal asymptote."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The input decreases without bound, so the statement is about the left end of the graph only.",
+         "rule_named": "read the input behaviour"
+      },
+      {
+         "step": 2,
+         "text": "The outputs approach the number \\( \\frac{5}{2} \\) there, so the graph has the horizontal asymptote \\( y = \\frac{5}{2} \\) at that end.",
+         "rule_named": "limit at infinity and horizontal asymptote"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-01033",
+         "label": "As x approaches \\( \\frac{5}{2} \\), k(x) decreases without bound, so the line \\( x = \\frac{5}{2} \\) is a vertical asymptote.",
+         "derivation": "the limit at infinity read as an infinite limit at an input, with the roles of input and output exchanged",
+         "mechanism": "reversed_quantities"
+      },
+      {
+         "id": "B",
+         "is_key": true,
+         "error_path": null,
+         "label": "As x decreases without bound, k(x) approaches \\( \\frac{5}{2} \\), so the line \\( y = \\frac{5}{2} \\) is a horizontal asymptote."
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-01021",
+         "label": "The value of k at the input \\( -\\infty \\) is \\( \\frac{5}{2} \\), so the graph of k contains the point \\( (-\\infty, \\frac{5}{2}) \\).",
+         "derivation": "infinity treated as an input at which the function takes the value",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-01002",
+         "label": "As x increases or decreases without bound, k(x) approaches \\( \\frac{5}{2} \\), so the line \\( y = \\frac{5}{2} \\) is a horizontal asymptote at both ends.",
+         "derivation": "the statement about one end read as describing both ends of the graph",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-03",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-01036",
+      "BC-SKL-01037",
+      "BC-SKL-01038",
+      "BC-SKL-01005",
+      "BC-SKL-01006",
+      "BC-SKL-01007",
+      "BC-SKL-01014"
+   ],
+   "parameter_draw": {
+      "number": "5/2",
+      "side": "left",
+      "growth": "up",
+      "direction": "negative",
+      "letter": "k",
+      "statement": "limit_at_infinity"
+   },
+   "predicted_success_probability": 0.4134,
+   "provenance": {
+      "template_id": "TPL-BC-QA-01013-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-01013:spec-1:item-20:try-20",
+      "parameter_draw": {
+         "number": "5/2",
+         "side": "left",
+         "growth": "up",
+         "direction": "negative",
+         "letter": "k",
+         "statement": "limit_at_infinity"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:48Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": true,
+      "requested_success_probability": 0.4134
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

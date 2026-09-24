@@ -1,0 +1,118 @@
+{
+   "id": "ITM-GEN-09004-07",
+   "archetype_id": "BC-QA-09004",
+   "variant_id": "BC-QV-09004-01",
+   "format": "mcq",
+   "stem": {
+      "text": "A particle moves in the xy-plane so that \\( x(t) = - 3 t + \\ln{\\left(t^{2} + 1 \\right)} \\) and \\( y'(t) = 5 e^{\\frac{t}{3}} \\sin{\\left(t \\right)} \\) for \\( t \\ge 0 \\). Using a calculator, find the acceleration vector of the particle at \\( t = 1 \\). Show the setup for the calculations, and give each value correct to three decimal places.",
+      "setup_required": true,
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "\\( \\left\\langle 0.000, 5.728 \\right\\rangle \\)"
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The component given as a velocity is differentiated once, \\( \\frac{5 e^{\\frac{t}{3}} \\sin{\\left(t \\right)}}{3} + 5 e^{\\frac{t}{3}} \\cos{\\left(t \\right)} \\) at \\( t = 1 \\) gives about 5.728.",
+         "point_type_id": "BC-PT-99005",
+         "rule_named": "derivative of a velocity component"
+      },
+      {
+         "step": 2,
+         "text": "The component given as a position is differentiated twice, \\( - \\frac{2 \\left(t - 1\\right) \\left(t + 1\\right)}{\\left(t^{2} + 1\\right)^{2}} \\) at \\( t = 1 \\) gives about 0.000.",
+         "point_type_id": "BC-PT-99052",
+         "rule_named": "second derivative of a position component"
+      },
+      {
+         "step": 3,
+         "text": "The acceleration at \\( t = 1 \\) is \\( \\left\\langle 0.000, 5.728 \\right\\rangle \\).",
+         "point_type_id": "BC-PT-99064",
+         "rule_named": "acceleration vector"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "label": "\\( \\left\\langle 0.000, 5.728 \\right\\rangle \\)"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-99029",
+         "label": "\\( \\left\\langle -2.000, 5.872 \\right\\rangle \\)",
+         "derivation": "the velocity vector at the time reported as the acceleration",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-99029",
+         "label": "\\( \\left\\langle -2.000, 5.728 \\right\\rangle \\)",
+         "derivation": "each given component differentiated once, so the position component yields its velocity, not its acceleration",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-09017",
+         "label": "\\( \\left\\langle 5.728, 0.000 \\right\\rangle \\)",
+         "derivation": "the two components written in the wrong order",
+         "mechanism": "reversed_quantities"
+      }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-14",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-04",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-16",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-09015",
+      "BC-SKL-09016",
+      "BC-SKL-09017",
+      "BC-SKL-09018",
+      "BC-SKL-09028"
+   ],
+   "parameter_draw": {
+      "amplitude": "5",
+      "growth": "1/3",
+      "log_scale": "1",
+      "linear": "-3",
+      "time": "1",
+      "position_axis": "x",
+      "notation": "vector"
+   },
+   "predicted_success_probability": 0.1978,
+   "provenance": {
+      "template_id": "TPL-BC-QA-09004-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-09004:spec-1:item-7:try-7",
+      "parameter_draw": {
+         "amplitude": "5",
+         "growth": "1/3",
+         "log_scale": "1",
+         "linear": "-3",
+         "time": "1",
+         "position_axis": "x",
+         "notation": "vector"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, run F",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T13:02:05Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.1978
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

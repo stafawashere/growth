@@ -1,0 +1,115 @@
+{
+   "id": "ITM-GEN-07005-18",
+   "archetype_id": "BC-QA-07005",
+   "variant_id": "BC-QV-07005-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Let y = f(x) be the solution to the differential equation \\( \\frac{dy}{dx} = 6 - 3 y \\) with \\( f(0) = -1 \\). It is known that \\( f(x) < 2 \\) for all x. The line tangent to the graph of f at \\( x = 0 \\) is used to approximate \\( f(\\frac{1}{2}) \\). Is the approximation an overestimate or an underestimate of the value of the solution? Give a reason for your answer.",
+      "command_verb": "determine"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "An overestimate, because the second derivative of f is negative for all x in the interval, so the graph of f is concave down there."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Differentiate the right side with respect to x and replace dy/dx by the equation: \\( \\frac{d^2y}{dx^2} = 9 \\left(y - 2\\right) \\).",
+         "point_type_id": "BC-PT-99027",
+         "rule_named": "implicit differentiation of the differential equation"
+      },
+      {
+         "step": 2,
+         "text": "Because \\( f(x) < 2 \\) for every x, the factor \\( y - 2 \\) is negative throughout, so the second derivative is negative on the whole interval from \\( x = 0 \\) to \\( x = \\frac{1}{2} \\).",
+         "rule_named": "sign of the second derivative over the interval"
+      },
+      {
+         "step": 3,
+         "text": "The graph of f is concave down there, so it lies below its tangent lines, and the approximation is an overestimate.",
+         "point_type_id": "BC-PT-99026",
+         "rule_named": "direction of the error from concavity"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-07018",
+         "label": "An underestimate, because the first derivative of f is positive for all x in the interval, so f is increasing there.",
+         "derivation": "the direction decided from whether the solution increases or decreases, with no reference to concavity",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-07023",
+         "label": "An underestimate, because a tangent line approximation follows the slope at the point of tangency, and that slope is too steep for the rest of the interval.",
+         "derivation": "a direction asserted from how the method works, with no concavity statement",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": true,
+         "error_path": null,
+         "label": "An overestimate, because the second derivative of f is negative for all x in the interval, so the graph of f is concave down there."
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-99004",
+         "label": "An overestimate, because the second derivative of f is negative at the starting point, so the graph of f is concave down at that point.",
+         "derivation": "the sign of the second derivative checked only at the starting point, a local fact offered where the interval is needed",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-07018",
+      "BC-SKL-07023"
+   ],
+   "parameter_draw": {
+      "form": "autonomous",
+      "method": "tangent",
+      "rate": "3",
+      "rate_sign": "-1",
+      "level": "2",
+      "offset": "-3",
+      "start": "0",
+      "step": "1/2"
+   },
+   "predicted_success_probability": 0.5866,
+   "provenance": {
+      "template_id": "TPL-BC-QA-07005-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-07005:spec-1:item-18:try-18",
+      "parameter_draw": {
+         "form": "autonomous",
+         "method": "tangent",
+         "rate": "3",
+         "rate_sign": "-1",
+         "level": "2",
+         "offset": "-3",
+         "start": "0",
+         "step": "1/2"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:54:01Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.5
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

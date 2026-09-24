@@ -1,0 +1,117 @@
+{
+   "id": "ITM-GEN-99002-02",
+   "archetype_id": "BC-QA-99002",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "A curve is given in polar coordinates by \\( r = 2 \\cos{\\left(3 \\theta \\right)} + 3 \\). Using a calculator, find the value of \\( \\frac{dy}{d\\theta} \\) at \\( \\theta = 0.3 \\), where \\( y = r\\sin\\theta \\). Show the setup for the calculation, and give the value correct to three decimal places.",
+      "setup_required": true,
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "numeric",
+      "mathjson": 2.6647692554641558,
+      "decimals": 3
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Write the coordinate in terms of the angle: \\( y = \\left(2 \\cos{\\left(3 \\theta \\right)} + 3\\right) \\sin{\\left(\\theta \\right)} \\).",
+         "point_type_id": "BC-PT-99049",
+         "rule_named": "polar to rectangular conversion"
+      },
+      {
+         "step": 2,
+         "text": "By the product rule, \\( \\frac{dy}{d\\theta} = \\left(2 \\cos{\\left(3 \\theta \\right)} + 3\\right) \\cos{\\left(\\theta \\right)} - 6 \\sin{\\left(\\theta \\right)} \\sin{\\left(3 \\theta \\right)} \\).",
+         "point_type_id": "BC-PT-99049",
+         "rule_named": "product rule"
+      },
+      {
+         "step": 3,
+         "text": "With the calculator in radian mode, the value at \\( \\theta = 0.3 \\) is about 2.665.",
+         "mathjson": 2.6647692554641558,
+         "point_type_id": "BC-PT-99005",
+         "rule_named": "evaluation at the stated angle"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-09027",
+         "value": -4.7,
+         "derivation": "r taken to be the coordinate y itself, so dr/dtheta is reported",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-09023",
+         "value": 0.087,
+         "derivation": "the derivative of the coordinate evaluated with the calculator in degree mode",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-09032",
+         "value": -4.49,
+         "derivation": "the product r sin(theta) differentiated as the product of the two derivatives, dr/dtheta times the derivative of the angle factor",
+         "mechanism": "product_rule_omitted"
+      },
+      {
+         "id": "D",
+         "is_key": true,
+         "error_path": null,
+         "value": 2.665
+      }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-13",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-16",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-09030",
+      "BC-SKL-09031",
+      "BC-SKL-09029",
+      "BC-SKL-09033"
+   ],
+   "parameter_draw": {
+      "constant": "3",
+      "amplitude": "2",
+      "frequency": "3",
+      "trig": "cos",
+      "coordinate": "y",
+      "angle": "3/10"
+   },
+   "predicted_success_probability": 0.2592,
+   "provenance": {
+      "template_id": "TPL-BC-QA-99002-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-99002:spec-1:item-2:try-2",
+      "parameter_draw": {
+         "constant": "3",
+         "amplitude": "2",
+         "frequency": "3",
+         "trig": "cos",
+         "coordinate": "y",
+         "angle": "3/10"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:54:03Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.3318
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

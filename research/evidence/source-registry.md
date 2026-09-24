@@ -1,6 +1,6 @@
 ---
 title: Source Registry
-research_date: 2026-09-19
+research_date: 2026-09-24
 status: generated
 purpose: Every source used by the library: id, title, organisation, URL, resolved URL, fetch date, hash, exam years, type, primary status, and the files that use it. Generated from data/sources.json.
 ---
@@ -9,7 +9,7 @@ purpose: Every source used by the library: id, title, organisation, URL, resolve
 
 ## Sources [verified]
 
-Generated on 2026-09-19. Primary sources are College Board documents. The `used_by` column is filled by tools/build_indexes.py from ID references found in research/ files.
+Generated on 2026-09-24. Primary sources are College Board documents. The `used_by` column is filled by tools/build_indexes.py from ID references found in research/ files.
 
 | Id | Title | Organisation | Type | Primary | Years | Fetch date | Tier | URL | Used by |
 |---|---|---|---|---|---|---|---|---|---|

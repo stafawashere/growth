@@ -1,0 +1,116 @@
+{
+   "id": "ITM-GEN-03001-10",
+   "archetype_id": "BC-QA-03001",
+   "variant_id": "BC-QV-03001-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( h(x) = 5 x^{2} \\left(x^{2} - 7\\right)^{3} \\). Find the exact value of \\( h'(3) \\).",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 3480
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The composite has outer function F with \\( \\frac{d}{du} u^{3} = 3 u^{2} \\) and inner function \\( u = x^{2} - 7 \\), whose derivative is \\( 2 x \\).",
+         "point_type_id": "BC-PT-99023",
+         "rule_named": "identify the layers"
+      },
+      {
+         "step": 2,
+         "text": "By the product rule and the chain rule, \\( h'(x) = 30 x^{3} \\left(x^{2} - 7\\right)^{2} + 10 x \\left(x^{2} - 7\\right)^{3} \\).",
+         "point_type_id": "BC-PT-99023",
+         "rule_named": "product rule with the chain rule"
+      },
+      {
+         "step": 3,
+         "text": "At x = 3 the inner value is 2 and the inner derivative is 6, so \\( h'(3) = 240 + 45 \\cdot 12 \\cdot 6 = 3480 \\).",
+         "mathjson": 3480,
+         "point_type_id": "BC-PT-99004",
+         "rule_named": "evaluate"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "value": 3480
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-03002",
+         "value": 2400,
+         "derivation": "the outer layer left undifferentiated, so F(u) is multiplied by the inner derivative",
+         "mechanism": "chain_rule_omitted"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-03001",
+         "value": 780,
+         "derivation": "the inner derivative 6 left off the chain rule",
+         "mechanism": "chain_rule_omitted"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-03006",
+         "value": 3240,
+         "derivation": "the factor 5 x^{2} held constant, so only the composite is differentiated",
+         "mechanism": "product_rule_omitted"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-03002",
+      "BC-SKL-03003",
+      "BC-SKL-03006"
+   ],
+   "parameter_draw": {
+      "family": "power",
+      "exponent": "3",
+      "inner_slope": "1",
+      "at": "3",
+      "outside_power": "2",
+      "target": "2",
+      "scale": "5"
+   },
+   "predicted_success_probability": 0.5,
+   "provenance": {
+      "template_id": "TPL-BC-QA-03001-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-03001:spec-1:item-10:try-10",
+      "parameter_draw": {
+         "family": "power",
+         "exponent": "3",
+         "inner_slope": "1",
+         "at": "3",
+         "outside_power": "2",
+         "target": "2",
+         "scale": "5"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, author tpl-B",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:50Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.5
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

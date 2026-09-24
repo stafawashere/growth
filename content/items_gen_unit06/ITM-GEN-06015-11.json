@@ -1,0 +1,115 @@
+{
+   "id": "ITM-GEN-06015-11",
+   "archetype_id": "BC-QA-06015",
+   "variant_id": "BC-QV-06015-01",
+   "format": "mcq",
+   "stem": {
+      "text": "People enter a stadium at a rate of R(t) people per minute, where R is a positive function and t is measured in minutes. Using correct units, interpret the meaning of \\( \\frac{1}{5}\\int_{7}^{12} R(t)\\,dt \\) in the context of the problem.",
+      "command_verb": "interpret"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "It is the average rate at which people enter the stadium over the time interval from \\( t = 7 \\) to \\( t = 12 \\) minutes, measured in people per minute."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "R(t) is a rate measured in people per minute, so integrating it over time multiplies by minutes and gives an amount in people.",
+         "rule_named": "units of a definite integral of a rate"
+      },
+      {
+         "step": 2,
+         "text": "The limits run from \\( t = 7 \\) to \\( t = 12 \\) minutes, so \\( \\int_{7}^{12} R(t)\\,dt \\) is the total number of people who enter the stadium from \\( t = 7 \\) to \\( t = 12 \\) minutes.",
+         "rule_named": "integral of a rate is the accumulated change"
+      },
+      {
+         "step": 3,
+         "text": "Dividing by the length of the interval, 5 minutes, turns the amount into an average rate, so the expression is the average rate at which people enter the stadium from \\( t = 7 \\) to \\( t = 12 \\) minutes, in people per minute.",
+         "rule_named": "average value of a rate"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "label": "It is the average rate at which people enter the stadium over the time interval from \\( t = 7 \\) to \\( t = 12 \\) minutes, measured in people per minute."
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-99005",
+         "label": "It is the average rate at which people enter the stadium over the time interval from \\( t = 7 \\) to \\( t = 12 \\) minutes, measured in people.",
+         "derivation": "the average read correctly but given the units of the accumulated amount instead of the rate",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-06030",
+         "label": "It is the total number of people who enter the stadium from \\( t = 7 \\) to \\( t = 12 \\) minutes, measured in people.",
+         "derivation": "the factor 1 over the interval length ignored, so the average is read as the total amount",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-08017",
+         "label": "It is the average rate at which people enter the stadium over the whole time the model covers, measured in people per minute.",
+         "derivation": "the quantity and units named, the interval of the average never taken from the limits",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-05",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06001",
+      "BC-SKL-06002",
+      "BC-SKL-06003",
+      "BC-SKL-06038",
+      "BC-SKL-08015",
+      "BC-SKL-08005"
+   ],
+   "parameter_draw": {
+      "context": "people",
+      "start": "7",
+      "length": "5",
+      "display": "average",
+      "direction": "accumulates"
+   },
+   "predicted_success_probability": 0.2592,
+   "provenance": {
+      "template_id": "TPL-BC-QA-06015-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-06015:spec-1:item-11:try-11",
+      "parameter_draw": {
+         "context": "people",
+         "start": "7",
+         "length": "5",
+         "display": "average",
+         "direction": "accumulates"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:54:01Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": true,
+      "requested_success_probability": 0.3318
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

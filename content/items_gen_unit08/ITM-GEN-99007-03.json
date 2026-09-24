@@ -1,0 +1,112 @@
+{
+   "id": "ITM-GEN-99007-03",
+   "archetype_id": "BC-QA-99007",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "The amount of water in a storage tank is modeled by \\( A(t) = 40 - 2 \\ln{\\left(\\frac{t^{2}}{3} + 1 \\right)} \\) gallons, where t is measured in hours for \\( 0 \\le t \\le 6 \\). Using a calculator, find the average rate of change of A over the interval \\( 3 \\le t \\le 5 \\). Show the setup, give the value correct to three decimal places, and indicate units of measure.",
+      "setup_required": true,
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "numeric",
+      "mathjson": -0.8472978603872036,
+      "decimals": 3,
+      "units": "gallons per hour"
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The average rate of change is \\( \\frac{A(5) - A(3)}{5 - 3} \\), with \\( A(5) \\approx 35.533 \\) and \\( A(3) \\approx 37.227 \\) from a calculator.",
+         "point_type_id": "BC-PT-99021",
+         "rule_named": "average rate of change"
+      },
+      {
+         "step": 2,
+         "text": "Dividing the change by 2 gives about -0.847 gallons per hour.",
+         "mathjson": -0.8472978603872036,
+         "point_type_id": "BC-PT-99006",
+         "rule_named": "units of a rate"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-99015",
+         "value": 36.332,
+         "derivation": "the average value of A over the interval, the integral divided by the length, reported as the average rate of change",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-08002",
+         "value": -0.893,
+         "derivation": "the rate taken over 0 <= t <= 5, an interval the question did not name",
+         "mechanism": "wrong_limits"
+      },
+      {
+         "id": "C",
+         "is_key": true,
+         "error_path": null,
+         "value": -0.847
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-08001",
+         "value": -1.695,
+         "derivation": "the change A(b) - A(a) reported without dividing by the length of the interval",
+         "mechanism": "forgot_constant"
+      }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-05",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-16",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-08004",
+      "BC-SKL-08003"
+   ],
+   "parameter_draw": {
+      "level": "40",
+      "scale": "2",
+      "spread": "3",
+      "start": "3",
+      "length": "2",
+      "context": "tank",
+      "direction": "decreasing"
+   },
+   "predicted_success_probability": 0.1978,
+   "provenance": {
+      "template_id": "TPL-BC-QA-99007-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-99007:spec-1:item-3:try-3",
+      "parameter_draw": {
+         "level": "40",
+         "scale": "2",
+         "spread": "3",
+         "start": "3",
+         "length": "2",
+         "context": "tank",
+         "direction": "decreasing"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:54:03Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.1978
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

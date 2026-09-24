@@ -1,0 +1,115 @@
+{
+   "id": "ITM-GEN-08006-04",
+   "archetype_id": "BC-QA-08006",
+   "variant_id": "BC-QV-08006-01",
+   "format": "mcq",
+   "stem": {
+      "text": "The amount of water in a storage tank changes at the rate \\( A'(t) = 10 \\cos{\\left(\\frac{\\pi t}{5} \\right)} + 5 \\) gallons per hour for \\( 0 \\le t \\le 10 \\). At time \\( t = 0 \\) there are 140 gallons of water in the tank, and t is measured in hours. Using a calculator, find the time in \\( 0 \\le t \\le 10 \\) at which the amount A(t) of water is greatest, and justify the answer. Show the setup for the calculations.",
+      "setup_required": true,
+      "command_verb": "justify"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "The amount is greatest at t = 10, where A is 190 gallons, the largest of the values of A at t = 0, at both critical points and at t = 10."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The amount is \\( A(t) = 140 + \\int_{0}^{t} \\left(10 \\cos{\\left(\\frac{\\pi s}{5} \\right)} + 5\\right)\\,ds \\), so \\( A'(t) = 10 \\cos{\\left(\\frac{\\pi t}{5} \\right)} + 5 \\). Setting \\( A'(t) = 0 \\) and solving with a calculator gives \\( t = 3.333 \\) and \\( t = 6.667 \\) in the interval.",
+         "point_type_id": "BC-PT-99013",
+         "rule_named": "critical points of an accumulation function"
+      },
+      {
+         "step": 2,
+         "text": "The candidates are the critical points and both endpoints: \\( A(0) = 140 \\), \\( A(3.333) \\approx 170.450 \\), \\( A(6.667) \\approx 159.550 \\), and \\( A(10) = 140 + \\int_{0}^{10} A'(s)\\,ds = 190 \\).",
+         "point_type_id": "BC-PT-99064",
+         "rule_named": "candidates test"
+      },
+      {
+         "step": 3,
+         "text": "The largest candidate value is 190, at the endpoint, so the amount is greatest at \\( t = 10 \\) hours.",
+         "point_type_id": "BC-PT-99011",
+         "rule_named": "candidates test conclusion"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-08011",
+         "label": "The amount is greatest at t = 10, where A is 50 gallons, the largest of the values of A at t = 0, at both critical points and at t = 10.",
+         "derivation": "the amount at each candidate found from the integral alone, without the initial amount",
+         "mechanism": "forgot_constant"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-99004",
+         "label": "The amount is greatest at t = 3.333, where A is 170.450 gallons, because A' changes from positive to negative there.",
+         "derivation": "the sign change of A' from positive to negative at the first critical point taken as proof of the absolute maximum",
+         "mechanism": "theorem_condition_ignored"
+      },
+      {
+         "id": "C",
+         "is_key": true,
+         "error_path": null,
+         "label": "The amount is greatest at t = 10, where A is 190 gallons, the largest of the values of A at t = 0, at both critical points and at t = 10."
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-08016",
+         "label": "The amount is greatest at t = 3.333, where A is 170.450 gallons, the larger of the values of A at the two critical points.",
+         "derivation": "the candidates test run on the two critical points only, leaving out both endpoints",
+         "mechanism": "theorem_condition_ignored"
+      }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-05",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-16",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-08014",
+      "BC-SKL-08012"
+   ],
+   "parameter_draw": {
+      "period": "10",
+      "net": "5",
+      "times": "2",
+      "outflow": "6",
+      "initial": "140",
+      "context": "water",
+      "presentation": "net_rate"
+   },
+   "predicted_success_probability": 0.3318,
+   "provenance": {
+      "template_id": "TPL-BC-QA-08006-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-08006:spec-1:item-4:try-4",
+      "parameter_draw": {
+         "period": "10",
+         "net": "5",
+         "times": "2",
+         "outflow": "6",
+         "initial": "140",
+         "context": "water",
+         "presentation": "net_rate"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, run F",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T13:02:05Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.2592
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

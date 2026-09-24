@@ -1,0 +1,119 @@
+{
+   "id": "ITM-GEN-06011-07",
+   "archetype_id": "BC-QA-06011",
+   "variant_id": "BC-QV-06011-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Evaluate the improper integral \\( \\int_{1}^{2} \\frac{7 x}{\\sqrt{x^{2} - 1}}\\,dx \\), or show that it diverges.",
+      "command_verb": "evaluate"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "The integral converges to \\( 7 \\sqrt{3} \\)."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The integral is improper because the integrand is unbounded as x approaches 1 from the right, so write it as \\( \\lim_{R\\to 1^{+}} \\int_{R}^{2} \\frac{7 x}{\\sqrt{x^{2} - 1}}\\,dx \\).",
+         "point_type_id": "BC-PT-99053",
+         "rule_named": "improper integral as a limit"
+      },
+      {
+         "step": 2,
+         "text": "Substitute \\( u = x^{2} - 1,\\ du = 2 x\\,dx \\). The limits become \\( u = R^{2} - 1 \\text{ to } u = 3 \\), and an antiderivative in u is \\( 7 \\sqrt{u} \\).",
+         "point_type_id": "BC-PT-99003",
+         "rule_named": "substitution with changed limits"
+      },
+      {
+         "step": 3,
+         "text": "Evaluate the limit: \\( \\lim_{R\\to 1^{+}} \\left( 7 \\sqrt{3} - 7\\sqrt{R^{2} - 1} \\right) = 7 \\sqrt{3} \\). The limit is finite, so the integral converges to \\( 7 \\sqrt{3} \\).",
+         "point_type_id": "BC-PT-99005",
+         "rule_named": "limit of the definite integrals"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-06019",
+         "label": "The integral converges to \\( 14 \\sqrt{3} \\).",
+         "derivation": "the factor 1/2 that du introduces dropped",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "B",
+         "is_key": true,
+         "error_path": null,
+         "label": "The integral converges to \\( 7 \\sqrt{3} \\)."
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-06018",
+         "label": "The integral converges to \\( -7 + 7 \\sqrt{2} \\).",
+         "derivation": "the original x limits kept after the substitution, the u antiderivative evaluated from u = 1 to u = 2",
+         "mechanism": "wrong_limits"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-06018",
+         "label": "The integral converges to \\( -14 + 14 \\sqrt{2} \\).",
+         "derivation": "the original x limits kept after the substitution and the factor 1/2 dropped as well",
+         "mechanism": "compound"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06066",
+      "BC-SKL-06067",
+      "BC-SKL-06068",
+      "BC-SKL-06069",
+      "BC-SKL-06070"
+   ],
+   "parameter_draw": {
+      "impropriety": "unbounded",
+      "outcome": "converges",
+      "coefficient": "7",
+      "degree": "2",
+      "lower": "4",
+      "shift": "4",
+      "root": "1",
+      "gap": "1"
+   },
+   "predicted_success_probability": 0.4134,
+   "provenance": {
+      "template_id": "TPL-BC-QA-06011-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-06011:spec-1:item-7:try-7",
+      "parameter_draw": {
+         "impropriety": "unbounded",
+         "outcome": "converges",
+         "coefficient": "7",
+         "degree": "2",
+         "lower": "4",
+         "shift": "4",
+         "root": "1",
+         "gap": "1"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:54:01Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.4134
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

@@ -1,0 +1,457 @@
+{
+ "sample": "docs/operator/duplicate-gate/holdout.json",
+ "pairs": 220,
+ "positives": 110,
+ "published": {
+  "stage_one_jaccard_0.8": {
+   "precision": 1.0,
+   "recall": 0.2364,
+   "true_positive": 26,
+   "false_positive": 0,
+   "false_negative": 84,
+   "missed_pairs": [
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    29,
+    30,
+    31,
+    32,
+    34,
+    37,
+    38,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    150,
+    151,
+    152,
+    153,
+    154,
+    155,
+    156,
+    157,
+    158,
+    159,
+    160,
+    161,
+    162,
+    163,
+    164,
+    165,
+    166,
+    167,
+    168,
+    169,
+    170,
+    171,
+    172,
+    173,
+    174,
+    175,
+    176,
+    177,
+    178,
+    179,
+    180,
+    181,
+    182,
+    183,
+    184,
+    185,
+    186,
+    187,
+    188,
+    189
+   ],
+   "false_alarm_pairs": []
+  },
+  "stage_two_cosine_0.85": {
+   "precision": 0.7821,
+   "recall": 0.5545,
+   "true_positive": 61,
+   "false_positive": 17,
+   "false_negative": 49,
+   "missed_pairs": [
+    32,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    171,
+    172,
+    173,
+    174,
+    175,
+    176,
+    178,
+    179,
+    180,
+    181,
+    182,
+    183,
+    184,
+    185,
+    186,
+    187,
+    188,
+    189
+   ],
+   "false_alarm_pairs": [
+    72,
+    81,
+    83,
+    90,
+    96,
+    103,
+    104,
+    105,
+    106,
+    108,
+    113,
+    118,
+    119,
+    123,
+    126,
+    128,
+    135
+   ]
+  },
+  "gate": {
+   "precision": 0.7821,
+   "recall": 0.5545,
+   "true_positive": 61,
+   "false_positive": 17,
+   "false_negative": 49,
+   "missed_pairs": [
+    32,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    171,
+    172,
+    173,
+    174,
+    175,
+    176,
+    178,
+    179,
+    180,
+    181,
+    182,
+    183,
+    184,
+    185,
+    186,
+    187,
+    188,
+    189
+   ],
+   "false_alarm_pairs": [
+    72,
+    81,
+    83,
+    90,
+    96,
+    103,
+    104,
+    105,
+    106,
+    108,
+    113,
+    118,
+    119,
+    123,
+    126,
+    128,
+    135
+   ]
+  }
+ },
+ "adopted": {
+  "stage_two": {
+   "precision": 1.0,
+   "recall": 0.9182,
+   "true_positive": 101,
+   "false_positive": 0,
+   "false_negative": 9,
+   "missed_pairs": [
+    171,
+    172,
+    173,
+    174,
+    178,
+    183,
+    185,
+    188,
+    189
+   ],
+   "false_alarm_pairs": []
+  },
+  "gate": {
+   "precision": 1.0,
+   "recall": 0.9182,
+   "true_positive": 101,
+   "false_positive": 0,
+   "false_negative": 9,
+   "missed_pairs": [
+    171,
+    172,
+    173,
+    174,
+    178,
+    183,
+    185,
+    188,
+    189
+   ],
+   "false_alarm_pairs": []
+  }
+ },
+ "by_category": {
+  "bank light edit": {
+   "label": "near_duplicate",
+   "pairs": 20,
+   "jaccard_range": [
+    0.474,
+    0.923
+   ],
+   "cosine_range": [
+    0.829,
+    0.991
+   ],
+   "math_range": [
+    1.0,
+    1.0
+   ],
+   "numbers_range": [
+    1.0,
+    1.0
+   ]
+  },
+  "bank paraphrase": {
+   "label": "near_duplicate",
+   "pairs": 30,
+   "jaccard_range": [
+    0.068,
+    0.588
+   ],
+   "cosine_range": [
+    0.415,
+    0.755
+   ],
+   "math_range": [
+    1.0,
+    1.0
+   ],
+   "numbers_range": [
+    1.0,
+    1.0
+   ]
+  },
+  "bank reformatted": {
+   "label": "duplicate",
+   "pairs": 20,
+   "jaccard_range": [
+    1.0,
+    1.0
+   ],
+   "cosine_range": [
+    1.0,
+    1.0
+   ],
+   "math_range": [
+    1.0,
+    1.0
+   ],
+   "numbers_range": [
+    1.0,
+    1.0
+   ]
+  },
+  "bank sibling, other numbers": {
+   "label": "distinct",
+   "pairs": 60,
+   "jaccard_range": [
+    0.0,
+    0.707
+   ],
+   "cosine_range": [
+    0.206,
+    0.985
+   ],
+   "math_range": [
+    0.0,
+    0.738
+   ],
+   "numbers_range": [
+    0.0,
+    1.0
+   ]
+  },
+  "bank, any two items": {
+   "label": "distinct",
+   "pairs": 20,
+   "jaccard_range": [
+    0.0,
+    0.531
+   ],
+   "cosine_range": [
+    0.005,
+    0.941
+   ],
+   "math_range": [
+    0.0,
+    0.185
+   ],
+   "numbers_range": [
+    0.0,
+    0.429
+   ]
+  },
+  "generated item against official text": {
+   "label": "distinct",
+   "pairs": 30,
+   "jaccard_range": [
+    0.0,
+    0.0
+   ],
+   "cosine_range": [
+    0.003,
+    0.055
+   ],
+   "math_range": [
+    0.0,
+    0.03
+   ],
+   "numbers_range": [
+    0.0,
+    0.333
+   ]
+  },
+  "official light edit": {
+   "label": "near_duplicate",
+   "pairs": 20,
+   "jaccard_range": [
+    0.516,
+    0.723
+   ],
+   "cosine_range": [
+    0.883,
+    0.944
+   ],
+   "math_range": [
+    1.0,
+    1.0
+   ],
+   "numbers_range": [
+    1.0,
+    1.0
+   ]
+  },
+  "official paraphrase": {
+   "label": "near_duplicate",
+   "pairs": 20,
+   "jaccard_range": [
+    0.041,
+    0.427
+   ],
+   "cosine_range": [
+    0.277,
+    0.857
+   ],
+   "math_range": [
+    0.706,
+    1.0
+   ],
+   "numbers_range": [
+    0.4,
+    1.0
+   ]
+  }
+ }
+}

@@ -1,0 +1,111 @@
+{
+   "id": "ITM-GEN-04005-16",
+   "archetype_id": "BC-QA-04005",
+   "variant_id": "BC-QV-04005-01",
+   "format": "mcq",
+   "stem": {
+      "text": "The level of a pollutant in a lake is modeled by a differentiable function L of time t, measured in days, whose rate of change is \\( L'(t) = 13 e^{- \\frac{t}{5}} \\) parts per billion per day, for \\( 0 \\le t \\le 15 \\). Using a calculator, find \\( L'(5) \\), showing the setup, and interpret the value in the context of the problem with correct units. Give the value correct to three decimal places.",
+      "setup_required": true,
+      "command_verb": "interpret"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "\\( L'(5) = 4.782 \\), so at time t = 5 days the level of the pollutant is increasing at a rate of 4.782 parts per billion per day."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "With a calculator, \\( L'(5) = 4.782 \\) to three decimal places.",
+         "point_type_id": "BC-PT-99027",
+         "rule_named": "evaluate the derivative at the instant"
+      },
+      {
+         "step": 2,
+         "text": "The value is positive, so at time t = 5 days the level of the pollutant is increasing at a rate of 4.782 parts per billion per day.",
+         "point_type_id": "BC-PT-99014",
+         "rule_named": "sign of the rate gives the direction of change"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-04013",
+         "label": "\\( L'(5) = 4.782 \\), so at time t = 5 days the level of the pollutant is moving with a velocity of 4.782 parts per billion per day.",
+         "derivation": "the rate of change of a non-motion quantity called a velocity",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": true,
+         "error_path": null,
+         "label": "\\( L'(5) = 4.782 \\), so at time t = 5 days the level of the pollutant is increasing at a rate of 4.782 parts per billion per day."
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-04012",
+         "label": "\\( L'(5) = 4.782 \\), so when the level of the pollutant is 5 parts per billion it is increasing at a rate of 4.782 parts per billion per day.",
+         "derivation": "the independent variable never named, so the input is read as a value of the quantity rather than a time",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-04001",
+         "label": "\\( L'(5) = 4.782 \\), so at time t = 5 days the level of the pollutant is increasing at a rate of 4.782 days per part per billion.",
+         "derivation": "the units assembled the wrong way round, time units over the units of the quantity",
+         "mechanism": "reversed_quantities"
+      }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-05",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-16",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-04013",
+      "BC-SKL-04014",
+      "BC-SKL-04015",
+      "BC-SKL-04016"
+   ],
+   "parameter_draw": {
+      "context": "pollutant",
+      "base": "35",
+      "amount": "65",
+      "scale": "5",
+      "instant": "5",
+      "trend": "rising",
+      "supplied": "rate"
+   },
+   "predicted_success_probability": 0.5,
+   "provenance": {
+      "template_id": "TPL-BC-QA-04005-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-04005:spec-1:item-16:try-16",
+      "parameter_draw": {
+         "context": "pollutant",
+         "base": "35",
+         "amount": "65",
+         "scale": "5",
+         "instant": "5",
+         "trend": "rising",
+         "supplied": "rate"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T13:51:57Z",
+      "content_snapshot": "a800600d4c437c1ba8273c7cb1a03e0fe70b74050fbabcbcf27d142ba56fded8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.5
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

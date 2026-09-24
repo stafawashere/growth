@@ -1,0 +1,110 @@
+{
+   "id": "ITM-GEN-04001-21",
+   "archetype_id": "BC-QA-04001",
+   "variant_id": "BC-QV-04001-01",
+   "format": "mcq",
+   "stem": {
+      "text": "The number of bacteria in a dish, measured in bacteria, is modeled by a twice-differentiable function P of time t, measured in hours. It is known that \\( P'(4) = -9 \\). Using correct units, interpret the meaning of \\( P'(4) = -9 \\) in the context of the problem.",
+      "command_verb": "interpret"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "At time t = 4 hours, the number of bacteria in the dish is decreasing at a rate of 9 bacteria per hour."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "\\( P'(4) \\) is the rate of change of the number of bacteria in the dish at the instant t = 4, so it is measured in bacteria per hour.",
+         "point_type_id": "BC-PT-99008",
+         "rule_named": "derivative as a rate of change"
+      },
+      {
+         "step": 2,
+         "text": "The value is negative, so the number of bacteria in the dish is decreasing at that instant, by 9 bacteria for each hour.",
+         "point_type_id": "BC-PT-99004",
+         "rule_named": "sign of the derivative gives the direction"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-04005",
+         "label": "At time t = 4 hours, the number of bacteria in the dish is increasing at a rate of 9 bacteria per hour.",
+         "derivation": "the negative rate reported as its magnitude and described as an increase",
+         "mechanism": "sign_error"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-04001",
+         "label": "At time t = 4 hours, the number of bacteria in the dish is decreasing at a rate of 9 hours per bacterium.",
+         "derivation": "the units assembled the wrong way round, time units over quantity units",
+         "mechanism": "reversed_quantities"
+      },
+      {
+         "id": "C",
+         "is_key": true,
+         "error_path": null,
+         "label": "At time t = 4 hours, the number of bacteria in the dish is decreasing at a rate of 9 bacteria per hour."
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-04003",
+         "label": "At time t = 4 hours, the number of bacteria in the dish has changed by a total of -9 bacteria.",
+         "derivation": "the derivative value read as an amount, the total change in the quantity, rather than a rate",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-05",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-16",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-04001",
+      "BC-SKL-04002",
+      "BC-SKL-04003",
+      "BC-SKL-04005"
+   ],
+   "parameter_draw": {
+      "context": "bacteria",
+      "instant": "4",
+      "magnitude": "9",
+      "sign": "negative",
+      "order": "first"
+   },
+   "predicted_success_probability": 0.2592,
+   "provenance": {
+      "template_id": "TPL-BC-QA-04001-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-04001:spec-1:item-21:try-21",
+      "parameter_draw": {
+         "context": "bacteria",
+         "instant": "4",
+         "magnitude": "9",
+         "sign": "negative",
+         "order": "first"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:53Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.2592
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

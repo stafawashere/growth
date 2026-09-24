@@ -1,0 +1,431 @@
+{
+   "id": "ITM-GEN-10012-04",
+   "archetype_id": "BC-QA-10012",
+   "variant_id": "BC-QV-10012-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( g(x) = 11 x^{2} \\sin\\left(3 x\\right) \\). Use the Maclaurin series for \\( \\sin x \\) to find the Taylor polynomial of degree 9 for g about \\( x = 0 \\).",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Multiply",
+            -1,
+            [
+               "Rational",
+               2673,
+               560
+            ],
+            [
+               "Power",
+               "x",
+               9
+            ]
+         ],
+         [
+            "Multiply",
+            [
+               "Rational",
+               891,
+               40
+            ],
+            [
+               "Power",
+               "x",
+               7
+            ]
+         ],
+         [
+            "Multiply",
+            -1,
+            [
+               "Rational",
+               99,
+               2
+            ],
+            [
+               "Power",
+               "x",
+               5
+            ]
+         ],
+         [
+            "Multiply",
+            33,
+            [
+               "Power",
+               "x",
+               3
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Replace x by \\( 3 x \\) in the series for \\( \\sin x \\): its terms through degree 7 are \\( 3 x - \\frac{9}{2} x^{3} + \\frac{81}{40} x^{5} - \\frac{243}{560} x^{7} \\).",
+         "point_type_id": "BC-PT-99037",
+         "rule_named": "substitution into a known series"
+      },
+      {
+         "step": 2,
+         "text": "Multiply every term by \\( 11 x^{2} \\) and keep the terms of degree at most 9: \\( 33 x^{3} - \\frac{99}{2} x^{5} + \\frac{891}{40} x^{7} - \\frac{2673}{560} x^{9} \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               -1,
+               [
+                  "Rational",
+                  2673,
+                  560
+               ],
+               [
+                  "Power",
+                  "x",
+                  9
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  891,
+                  40
+               ],
+               [
+                  "Power",
+                  "x",
+                  7
+               ]
+            ],
+            [
+               "Multiply",
+               -1,
+               [
+                  "Rational",
+                  99,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  5
+               ]
+            ],
+            [
+               "Multiply",
+               33,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ],
+         "point_type_id": "BC-PT-99035",
+         "rule_named": "multiply and truncate"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-10030",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  2673,
+                  4480
+               ],
+               [
+                  "Power",
+                  "x",
+                  11
+               ]
+            ],
+            [
+               "Multiply",
+               -1,
+               [
+                  "Rational",
+                  2673,
+                  560
+               ],
+               [
+                  "Power",
+                  "x",
+                  9
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  891,
+                  40
+               ],
+               [
+                  "Power",
+                  "x",
+                  7
+               ]
+            ],
+            [
+               "Multiply",
+               -1,
+               [
+                  "Rational",
+                  99,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  5
+               ]
+            ],
+            [
+               "Multiply",
+               33,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ],
+         "derivation": "the next nonzero term, of degree 11, kept beyond the requested degree 9",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-10040",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  2673,
+                  560
+               ],
+               [
+                  "Power",
+                  "x",
+                  9
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  891,
+                  40
+               ],
+               [
+                  "Power",
+                  "x",
+                  7
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  99,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  5
+               ]
+            ],
+            [
+               "Multiply",
+               33,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ],
+         "derivation": "the series for sin x recalled with every sign positive",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-10041",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               -1,
+               [
+                  "Rational",
+                  11,
+                  1680
+               ],
+               [
+                  "Power",
+                  "x",
+                  9
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  11,
+                  40
+               ],
+               [
+                  "Power",
+                  "x",
+                  7
+               ]
+            ],
+            [
+               "Multiply",
+               -1,
+               [
+                  "Rational",
+                  11,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  5
+               ]
+            ],
+            [
+               "Multiply",
+               33,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ],
+         "derivation": "x replaced by 3*x but the factor 3 not raised to the power of each term",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "D",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               -1,
+               [
+                  "Rational",
+                  2673,
+                  560
+               ],
+               [
+                  "Power",
+                  "x",
+                  9
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  891,
+                  40
+               ],
+               [
+                  "Power",
+                  "x",
+                  7
+               ]
+            ],
+            [
+               "Multiply",
+               -1,
+               [
+                  "Rational",
+                  99,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  5
+               ]
+            ],
+            [
+               "Multiply",
+               33,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ]
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10046",
+      "BC-SKL-10047",
+      "BC-SKL-10048",
+      "BC-SKL-10061",
+      "BC-SKL-10065"
+   ],
+   "parameter_draw": {
+      "base": "sin",
+      "power": "2",
+      "terms": "4",
+      "scale": "3",
+      "coefficient": "11"
+   },
+   "predicted_success_probability": 0.4134,
+   "provenance": {
+      "template_id": "TPL-BC-QA-10012-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-10012:spec-1:item-4:try-4",
+      "parameter_draw": {
+         "base": "sin",
+         "power": "2",
+         "terms": "4",
+         "scale": "3",
+         "coefficient": "11"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:58:54Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.4134
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

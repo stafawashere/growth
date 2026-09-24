@@ -1,0 +1,121 @@
+{
+   "id": "ITM-GEN-05008-21",
+   "archetype_id": "BC-QA-05008",
+   "variant_id": "BC-QV-05008-01",
+   "format": "mcq",
+   "stem": {
+      "text": "A function f has derivative \\( f'(x) = -3\\left(x + 3\\right)\\left(x + 2\\right) \\) for all real x. On what open intervals is f decreasing? Give a reason for the answer.",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "f is decreasing on the intervals \\( (-\\infty, -3) \\) and \\( (-2, \\infty) \\), because \\( f'(x) < 0 \\) on each of those intervals."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The sign of f' can change only where \\( f'(x) = 0 \\) at \\( x = -3 \\) and \\( x = -2 \\).",
+         "point_type_id": "BC-PT-99005",
+         "rule_named": "partition points of the sign chart"
+      },
+      {
+         "step": 2,
+         "text": "Testing one point in each piece gives \\( f'(x) < 0 \\) on the intervals \\( (-\\infty, -3) \\) and \\( (-2, \\infty) \\) and \\( f'(x) > 0 \\) on the interval \\( (-3, -2) \\).",
+         "point_type_id": "BC-PT-99010",
+         "rule_named": "sign chart of the derivative"
+      },
+      {
+         "step": 3,
+         "text": "So f is decreasing on the intervals \\( (-\\infty, -3) \\) and \\( (-2, \\infty) \\), because \\( f'(x) < 0 \\) on each of those intervals.",
+         "point_type_id": "BC-PT-99063",
+         "rule_named": "sign of the derivative gives the direction of the function"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-05018",
+         "label": "f is decreasing on the intervals \\( (-\\infty, -3) \\) and \\( (-2, \\infty) \\), because it is negative there.",
+         "derivation": "the right intervals, justified by a pronoun that never says which function is positive or negative",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": true,
+         "error_path": null,
+         "label": "f is decreasing on the intervals \\( (-\\infty, -3) \\) and \\( (-2, \\infty) \\), because \\( f'(x) < 0 \\) on each of those intervals."
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-05014",
+         "label": "f is decreasing on the interval \\( (-3, -2) \\), because \\( f'(x) < 0 \\) on that interval.",
+         "derivation": "the sign of f' read backwards, so the pieces where f' has the opposite sign are reported",
+         "mechanism": "sign_error"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-05016",
+         "label": "f is decreasing on the interval \\( (- \\frac{5}{2}, \\infty) \\), because f' is decreasing there.",
+         "derivation": "f taken to be decreasing where f' is decreasing, on the side of x = -5/2 where f'' has that sign",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-17",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-05014",
+      "BC-SKL-05015",
+      "BC-SKL-05016",
+      "BC-SKL-05017",
+      "BC-SKL-05018"
+   ],
+   "parameter_draw": {
+      "first_zero": "-3",
+      "second_zero": "-2",
+      "gap": "2",
+      "scale": "3",
+      "direction": "decreasing",
+      "leading_sign": "-1",
+      "domain_break": "none"
+   },
+   "predicted_success_probability": 0.4134,
+   "provenance": {
+      "template_id": "TPL-BC-QA-05008-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-05008:spec-1:item-21:try-27",
+      "parameter_draw": {
+         "first_zero": "-3",
+         "second_zero": "-2",
+         "gap": "2",
+         "scale": "3",
+         "direction": "decreasing",
+         "leading_sign": "-1",
+         "domain_break": "none"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, run D",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:56Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.3318
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

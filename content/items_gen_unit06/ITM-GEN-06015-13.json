@@ -1,0 +1,115 @@
+{
+   "id": "ITM-GEN-06015-13",
+   "archetype_id": "BC-QA-06015",
+   "variant_id": "BC-QV-06015-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Water is pumped into a tank at a rate of R(t) liters per minute, where R is a positive function and t is measured in minutes. Using correct units, interpret the meaning of \\( \\frac{1}{3}\\int_{3}^{6} R(t)\\,dt \\) in the context of the problem.",
+      "command_verb": "interpret"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "It is the average rate at which water is pumped into the tank over the time interval from \\( t = 3 \\) to \\( t = 6 \\) minutes, measured in liters per minute."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "R(t) is a rate measured in liters per minute, so integrating it over time multiplies by minutes and gives an amount in liters.",
+         "rule_named": "units of a definite integral of a rate"
+      },
+      {
+         "step": 2,
+         "text": "The limits run from \\( t = 3 \\) to \\( t = 6 \\) minutes, so \\( \\int_{3}^{6} R(t)\\,dt \\) is the total amount of water pumped into the tank from \\( t = 3 \\) to \\( t = 6 \\) minutes.",
+         "rule_named": "integral of a rate is the accumulated change"
+      },
+      {
+         "step": 3,
+         "text": "Dividing by the length of the interval, 3 minutes, turns the amount into an average rate, so the expression is the average rate at which water is pumped into the tank from \\( t = 3 \\) to \\( t = 6 \\) minutes, in liters per minute.",
+         "rule_named": "average value of a rate"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-08017",
+         "label": "It is the average rate at which water is pumped into the tank over the whole time the model covers, measured in liters per minute.",
+         "derivation": "the quantity and units named, the interval of the average never taken from the limits",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-06030",
+         "label": "It is the total amount of water pumped into the tank from \\( t = 3 \\) to \\( t = 6 \\) minutes, measured in liters.",
+         "derivation": "the factor 1 over the interval length ignored, so the average is read as the total amount",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-99005",
+         "label": "It is the average rate at which water is pumped into the tank over the time interval from \\( t = 3 \\) to \\( t = 6 \\) minutes, measured in liters.",
+         "derivation": "the average read correctly but given the units of the accumulated amount instead of the rate",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": true,
+         "error_path": null,
+         "label": "It is the average rate at which water is pumped into the tank over the time interval from \\( t = 3 \\) to \\( t = 6 \\) minutes, measured in liters per minute."
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-05",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06001",
+      "BC-SKL-06002",
+      "BC-SKL-06003",
+      "BC-SKL-06038",
+      "BC-SKL-08015",
+      "BC-SKL-08005"
+   ],
+   "parameter_draw": {
+      "context": "water",
+      "start": "3",
+      "length": "3",
+      "display": "average",
+      "direction": "accumulates"
+   },
+   "predicted_success_probability": 0.2592,
+   "provenance": {
+      "template_id": "TPL-BC-QA-06015-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-06015:spec-1:item-13:try-13",
+      "parameter_draw": {
+         "context": "water",
+         "start": "3",
+         "length": "3",
+         "display": "average",
+         "direction": "accumulates"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:54:01Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": true,
+      "requested_success_probability": 0.2592
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

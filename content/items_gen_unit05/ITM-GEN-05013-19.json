@@ -1,0 +1,116 @@
+{
+   "id": "ITM-GEN-05013-19",
+   "archetype_id": "BC-QA-05013",
+   "variant_id": "BC-QV-05013-01",
+   "format": "mcq",
+   "stem": {
+      "text": "A function h has derivative \\( h'(x) = -6\\left(x + 4\\right)\\left(x + 1\\right) \\). Using the second derivative test where it applies, determine whether h has a relative maximum, a relative minimum, or neither at \\( x = -1 \\) and at \\( x = -3 \\).",
+      "command_verb": "determine"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "At \\( x = -1 \\), h has a relative maximum because \\( h'(-1) = 0 \\) and \\( h''(-1) = -18 < 0 \\); at \\( x = -3 \\), h has no relative extremum because \\( h'(-3) = 12 \\ne 0 \\)."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "\\( h'(-1) = 0 \\), so \\( x = -1 \\) is a critical point, while \\( h'(-3) = 12 \\ne 0 \\), so \\( x = -3 \\) is not.",
+         "rule_named": "critical points are zeros of the first derivative"
+      },
+      {
+         "step": 2,
+         "text": "\\( h''(x) = - 12 x - 30 \\), and \\( h''(-1) = -18 < 0 \\).",
+         "mathjson": -18,
+         "rule_named": "second derivative evaluated at the critical point"
+      },
+      {
+         "step": 3,
+         "text": "By the second derivative test h has a relative maximum at \\( x = -1 \\). At \\( x = -3 \\) the first derivative is not zero, so h has no relative extremum there and the test does not apply.",
+         "rule_named": "second derivative test"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-05037",
+         "label": "At \\( x = -1 \\), h has a relative minimum because \\( h'(-1) = 0 \\) and \\( h''(-1) = -18 < 0 \\); at \\( x = -3 \\), h has no relative extremum because \\( h'(-3) = 12 \\ne 0 \\).",
+         "derivation": "the sign convention of the test reversed, so a negative second derivative is read as a minimum and a positive one as a maximum",
+         "mechanism": "sign_error"
+      },
+      {
+         "id": "B",
+         "is_key": true,
+         "error_path": null,
+         "label": "At \\( x = -1 \\), h has a relative maximum because \\( h'(-1) = 0 \\) and \\( h''(-1) = -18 < 0 \\); at \\( x = -3 \\), h has no relative extremum because \\( h'(-3) = 12 \\ne 0 \\)."
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-05039",
+         "label": "At \\( x = -1 \\), h has an absolute maximum because \\( h'(-1) = 0 \\) and \\( h''(-1) = -18 < 0 \\); at \\( x = -3 \\), h has no relative extremum because \\( h'(-3) = 12 \\ne 0 \\).",
+         "derivation": "the relative extremum from the second derivative test extended to an absolute one with no argument that it is the only critical point, which it is not",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-05036",
+         "label": "At \\( x = -1 \\), h has a relative maximum because \\( h'(-1) = 0 \\) and \\( h''(-1) = -18 < 0 \\); at \\( x = -3 \\), h has a relative minimum because \\( h''(-3) = 6 > 0 \\).",
+         "derivation": "the second derivative test also applied at x = -3, where the first derivative is not zero, and the sign of the second derivative there read as a classification",
+         "mechanism": "theorem_condition_ignored"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-05036",
+      "BC-SKL-05037",
+      "BC-SKL-05038",
+      "BC-SKL-05039"
+   ],
+   "parameter_draw": {
+      "first_root": "-4",
+      "second_root": "-1",
+      "other_input": "-3",
+      "tested_root": "second",
+      "leading_sign": "-1",
+      "constant": "5",
+      "letter": "h",
+      "given": "derivative"
+   },
+   "predicted_success_probability": 0.5866,
+   "provenance": {
+      "template_id": "TPL-BC-QA-05013-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-05013:spec-1:item-19:try-19",
+      "parameter_draw": {
+         "first_root": "-4",
+         "second_root": "-1",
+         "other_input": "-3",
+         "tested_root": "second",
+         "leading_sign": "-1",
+         "constant": "5",
+         "letter": "h",
+         "given": "derivative"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, run D",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:56Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": true,
+      "requested_success_probability": 0.5866
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

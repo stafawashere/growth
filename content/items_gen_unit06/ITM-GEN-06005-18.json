@@ -1,0 +1,140 @@
+{
+   "id": "ITM-GEN-06005-18",
+   "archetype_id": "BC-QA-06005",
+   "variant_id": "BC-QV-06005-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Air is pumped into a balloon and leaks out of it. Let A(t) be the volume of air in the balloon, in liters, at time t minutes, for \\( t \\ge 0 \\). The rate of change of A is \\( R(t) = 3 \\sin{\\left(\\frac{t^{2}}{2} \\right)} + 4 \\) liters per minute. At time t = 0, there are 30 liters. Using a calculator, find \\( A(3) \\). Show the setup for the calculation, and give the value correct to three decimal places.",
+      "setup_required": true,
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "numeric",
+      "mathjson": 44.95905483225306,
+      "decimals": 3,
+      "units": "liters"
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The known value and the accumulated change combine as \\( A(3) = 30 + \\int_{0}^{3} R(t)\\,dt \\).",
+         "point_type_id": "BC-PT-99033",
+         "rule_named": "net change theorem"
+      },
+      {
+         "step": 2,
+         "text": "With a calculator in radian mode, \\( \\int_{0}^{3} R(t)\\,dt \\) is approximately 14.959 (more places are kept).",
+         "mathjson": 14.959054832253056,
+         "point_type_id": "BC-PT-99001",
+         "rule_named": "numerical integration"
+      },
+      {
+         "step": 3,
+         "text": "So \\( A(3) \\) is about 44.959 liters.",
+         "mathjson": 44.95905483225306,
+         "point_type_id": "BC-PT-99004",
+         "rule_named": "combine with the known value"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-99019",
+         "value": 45.0,
+         "derivation": "the integral rounded to one decimal place before the known amount is added",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-06032",
+         "value": 42.236,
+         "derivation": "the integral computed with the calculator in degree mode",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "C",
+         "is_key": true,
+         "error_path": null,
+         "value": 44.959
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-06015",
+         "value": 14.959,
+         "derivation": "the integral of the rate over [0, 3] reported as the amount, with the initial 30 liters left out",
+         "mechanism": "forgot_constant"
+      }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-05",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-16",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06036",
+      "BC-SKL-06037",
+      "BC-SKL-06034",
+      "BC-SKL-08012",
+      "BC-SKL-08016",
+      "BC-SKL-08017",
+      "BC-SKL-08009"
+   ],
+   "parameter_draw": {
+      "cubic": "-1",
+      "square": "2",
+      "linear": "3",
+      "start": "1",
+      "span": "2",
+      "known": "30",
+      "base_rate": "4",
+      "swing": "3",
+      "stretch": "2",
+      "horizon": "3",
+      "context": "balloon",
+      "tool": "calculator",
+      "direction": "forward"
+   },
+   "predicted_success_probability": 0.148,
+   "provenance": {
+      "template_id": "TPL-BC-QA-06005-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-06005:spec-1:item-18:try-18",
+      "parameter_draw": {
+         "cubic": "-1",
+         "square": "2",
+         "linear": "3",
+         "start": "1",
+         "span": "2",
+         "known": "30",
+         "base_rate": "4",
+         "swing": "3",
+         "stretch": "2",
+         "horizon": "3",
+         "context": "balloon",
+         "tool": "calculator",
+         "direction": "forward"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, run D",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:56Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.148
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

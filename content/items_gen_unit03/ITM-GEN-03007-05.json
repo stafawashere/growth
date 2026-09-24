@@ -1,0 +1,203 @@
+{
+   "id": "ITM-GEN-03007-05",
+   "archetype_id": "BC-QA-03007",
+   "variant_id": "BC-QV-03007-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( h(x) = 3 x^{2} \\arctan{\\left(3 x - 10 \\right)} \\). Find the exact value of \\( h'(3) \\).",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Rational",
+            81,
+            2
+         ],
+         [
+            "Multiply",
+            -1,
+            [
+               "Rational",
+               9,
+               2
+            ],
+            "Pi"
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The inner expression is \\( u = 3 x - 10 \\), with \\( u' = 3 \\), and \\( \\frac{d}{du}\\arctan u = \\frac{1}{1 + u^{2}} \\).",
+         "rule_named": "inverse trigonometric derivative with the chain rule"
+      },
+      {
+         "step": 2,
+         "text": "By the product rule and the chain rule, \\( h'(x) = \\frac{9 x^{2}}{\\left(3 x - 10\\right)^{2} + 1} + 6 x \\arctan{\\left(3 x - 10 \\right)} \\).",
+         "rule_named": "product rule"
+      },
+      {
+         "step": 3,
+         "text": "At x = 3, \\( u = -1 \\) and \\( u' = 3 \\), so \\( h'(3) = - \\frac{9 \\pi}{2} + \\frac{81}{2} = \\frac{81}{2} - \\frac{9 \\pi}{2} \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Rational",
+               81,
+               2
+            ],
+            [
+               "Multiply",
+               -1,
+               [
+                  "Rational",
+                  9,
+                  2
+               ],
+               "Pi"
+            ]
+         ],
+         "rule_named": "evaluate"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-03006",
+         "value": [
+            "Rational",
+            81,
+            2
+         ],
+         "derivation": "the power factor held constant, so only the inverse trigonometric factor is differentiated",
+         "mechanism": "product_rule_omitted"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-03018",
+         "value": [
+            "Add",
+            [
+               "Rational",
+               81,
+               10
+            ],
+            [
+               "Multiply",
+               -1,
+               [
+                  "Rational",
+                  9,
+                  2
+               ],
+               "Pi"
+            ]
+         ],
+         "derivation": "the formula written with x in place of the inner expression, 1 / (1 + x^2)",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-03017",
+         "value": [
+            "Add",
+            [
+               "Rational",
+               -81,
+               2
+            ],
+            [
+               "Multiply",
+               -1,
+               [
+                  "Rational",
+                  9,
+                  2
+               ],
+               "Pi"
+            ]
+         ],
+         "derivation": "the derivative formula recalled with the wrong sign, the cofunction's formula in its place",
+         "mechanism": "sign_error"
+      },
+      {
+         "id": "D",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Add",
+            [
+               "Rational",
+               81,
+               2
+            ],
+            [
+               "Multiply",
+               -1,
+               [
+                  "Rational",
+                  9,
+                  2
+               ],
+               "Pi"
+            ]
+         ]
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-03021",
+      "BC-SKL-03022",
+      "BC-SKL-03024",
+      "BC-SKL-03025"
+   ],
+   "parameter_draw": {
+      "family": "arctan",
+      "inner": "linear",
+      "slope": "3",
+      "at": "3",
+      "coefficient": "3",
+      "power": "2",
+      "sign": "-1"
+   },
+   "predicted_success_probability": 0.5866,
+   "provenance": {
+      "template_id": "TPL-BC-QA-03007-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-03007:spec-1:item-5:try-5",
+      "parameter_draw": {
+         "family": "arctan",
+         "inner": "linear",
+         "slope": "3",
+         "at": "3",
+         "coefficient": "3",
+         "power": "2",
+         "sign": "-1"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, author tpl-B",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:50Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.5866
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

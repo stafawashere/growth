@@ -1,0 +1,113 @@
+{
+   "id": "ITM-GEN-05010-15",
+   "archetype_id": "BC-QA-05010",
+   "variant_id": "BC-QV-05010-01",
+   "format": "mcq",
+   "stem": {
+      "text": "The function h is twice differentiable at every x in the closed interval \\( [-4, 2] \\), with \\( h'(0) = 0 \\) and \\( h''(0) < 0 \\). Must h attain an absolute maximum value on the open interval \\( (-4, 2) \\)? Justify the answer.",
+      "command_verb": "justify"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "No, because \\( (-4, 2) \\) is not a closed interval, so the Extreme Value Theorem does not apply there."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "h is differentiable, and so continuous, on \\( [-4, 2] \\), but the question asks about the open interval \\( (-4, 2) \\).",
+         "rule_named": "closed interval hypothesis"
+      },
+      {
+         "step": 2,
+         "text": "The Extreme Value Theorem needs a closed interval, so it gives no conclusion on \\( (-4, 2) \\).",
+         "rule_named": "Extreme Value Theorem"
+      },
+      {
+         "step": 3,
+         "text": "The absolute maximum of h on \\( [-4, 2] \\) may occur only at an endpoint, which the open interval leaves out, so h need not attain an absolute maximum value on \\( (-4, 2) \\).",
+         "rule_named": "endpoint candidates"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "label": "No, because \\( (-4, 2) \\) is not a closed interval, so the Extreme Value Theorem does not apply there."
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-05012",
+         "label": "Yes, because h has a relative maximum at \\( x = 0 \\), so its absolute maximum value is \\( h(0) \\).",
+         "derivation": "the relative extremum found by the second derivative test reported as the absolute one",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-05008",
+         "label": "No, because the Extreme Value Theorem places the absolute maximum of h on \\( [-4, 2] \\) at an endpoint.",
+         "derivation": "the existence theorem used to place the extreme value at an endpoint, which is then read as a verdict",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-05007",
+         "label": "Yes, because h is continuous on the interval \\( (-4, 2) \\), so the Extreme Value Theorem applies.",
+         "derivation": "the theorem applied on an open interval because the function is continuous there",
+         "mechanism": "theorem_condition_ignored"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-04",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-05007",
+      "BC-SKL-05008",
+      "BC-SKL-05009",
+      "BC-SKL-05012"
+   ],
+   "parameter_draw": {
+      "left_end": "-4",
+      "length": "6",
+      "jump_offset": "2",
+      "critical_offset": "4",
+      "letter": "h",
+      "extreme": "maximum",
+      "situation": "open"
+   },
+   "predicted_success_probability": 0.5,
+   "provenance": {
+      "template_id": "TPL-BC-QA-05010-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-05010:spec-1:item-15:try-15",
+      "parameter_draw": {
+         "left_end": "-4",
+         "length": "6",
+         "jump_offset": "2",
+         "critical_offset": "4",
+         "letter": "h",
+         "extreme": "maximum",
+         "situation": "open"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, run D",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:56Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": true,
+      "requested_success_probability": 0.5
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

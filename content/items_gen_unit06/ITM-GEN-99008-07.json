@@ -1,0 +1,115 @@
+{
+   "id": "ITM-GEN-99008-07",
+   "archetype_id": "BC-QA-99008",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Grain is poured into a hopper at the rate \\( R(t) = 2 \\sin{\\left(\\frac{t^{2}}{5} \\right)} + 15 \\) kilograms per minute, where t is measured in minutes for \\( 0 \\le t \\le 6 \\). The hopper holds 30 kilograms of grain at time \\( t = 0 \\). Using a calculator, find the total number of kilograms that arrive during the time interval \\( 0 \\le t \\le 5 \\). Show the setup, and give the value correct to three decimal places.",
+      "setup_required": true,
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "numeric",
+      "mathjson": 77.61159799673018,
+      "decimals": 3,
+      "units": "kilograms"
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The amount that arrives is the integral of the inflow rate over the interval, \\( \\int_{0}^{5} \\left(2 \\sin{\\left(\\frac{t^{2}}{5} \\right)} + 15\\right)\\,dt \\), and nothing is added for the starting amount or taken away.",
+         "point_type_id": "BC-PT-99001",
+         "rule_named": "accumulation of a rate"
+      },
+      {
+         "step": 2,
+         "text": "With the calculator in radian mode, the integral is about 77.612 kilograms.",
+         "mathjson": 77.61159799673018,
+         "point_type_id": "BC-PT-99004",
+         "rule_named": "numerical integration"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-06032",
+         "value": 75.291,
+         "derivation": "the integral evaluated with the calculator in degree mode",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-08012",
+         "value": 107.612,
+         "derivation": "the amount present at the end reported, the starting amount added to the integral of the inflow",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-99012",
+         "value": -1.918,
+         "derivation": "the rate evaluated at the endpoints and subtracted, R(b) - R(a), in place of its integral",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": true,
+         "error_path": null,
+         "value": 77.612
+      }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-05",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-15",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-16",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06036",
+      "BC-SKL-06037",
+      "BC-SKL-08012"
+   ],
+   "parameter_draw": {
+      "base_rate": "15",
+      "swing": "2",
+      "stretch": "5",
+      "start": "0",
+      "length": "5",
+      "initial": "30",
+      "context": "hopper",
+      "outflow": "absent"
+   },
+   "predicted_success_probability": 0.2592,
+   "provenance": {
+      "template_id": "TPL-BC-QA-99008-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-99008:spec-1:item-7:try-7",
+      "parameter_draw": {
+         "base_rate": "15",
+         "swing": "2",
+         "stretch": "5",
+         "start": "0",
+         "length": "5",
+         "initial": "30",
+         "context": "hopper",
+         "outflow": "absent"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:54:03Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.1978
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

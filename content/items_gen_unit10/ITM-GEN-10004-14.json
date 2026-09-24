@@ -1,0 +1,129 @@
+{
+   "id": "ITM-GEN-10004-14",
+   "archetype_id": "BC-QA-10004",
+   "variant_id": "BC-QV-10004-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Use the direct comparison test to determine whether the series \\( \\sum_{n=2}^{\\infty} a_n \\), where \\( a_n = \\frac{9}{n^{3} + 9} \\), converges or diverges. Verify the conditions of the test.",
+      "command_verb": "determine"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "The series converges by the direct comparison test, because \\( 0 < a_n < \\frac{9}{n^{3}} \\text{ and } p = 3 > 1 \\)."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The terms are positive, so the direct comparison test applies. Compare with \\( \\sum \\frac{9}{n^{3}} \\), a multiple of the p-series with \\( p = 3 \\).",
+         "rule_named": "name the test"
+      },
+      {
+         "step": 2,
+         "text": "Adding \\( 9 \\) to the denominator makes each term smaller, so \\( 0 < \\frac{9}{n^{3} + 9} < \\frac{9}{n^{3}} \\) for every n.",
+         "rule_named": "comparison inequality"
+      },
+      {
+         "step": 3,
+         "text": "Since \\( p = 3 > 1 \\), \\( \\sum \\frac{9}{n^{3}} \\) converges.",
+         "rule_named": "p-series test"
+      },
+      {
+         "step": 4,
+         "text": "The series converges by the direct comparison test, because \\( 0 < a_n < \\frac{9}{n^{3}} \\text{ and } p = 3 > 1 \\), so \\( \\sum_{n=2}^{\\infty} a_n \\) converges.",
+         "point_type_id": "BC-PT-99005",
+         "rule_named": "direct comparison test"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "label": "The series converges by the direct comparison test, because \\( 0 < a_n < \\frac{9}{n^{3}} \\text{ and } p = 3 > 1 \\)."
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-10014",
+         "label": "The series diverges by the direct comparison test, because \\( 0 < a_n < \\frac{9}{n^{3}} \\text{ and } p = 3 > 1 \\).",
+         "derivation": "the p-series threshold reversed, so the comparison series with p greater than 1 read as divergent",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-10008",
+         "label": "The series converges by the nth term test, because \\( \\lim_{n\\to\\infty} a_n = 0 \\).",
+         "derivation": "the verdict drawn from the terms approaching 0, which no test supports",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-10016",
+         "label": "The series converges by the direct comparison test, because \\( a_n \\ge \\frac{9}{n^{3}} \\text{ and } p = 3 > 1 \\).",
+         "derivation": "the comparison inequality written the other way round, which could only support divergence",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-09",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10011",
+      "BC-SKL-10012",
+      "BC-SKL-10013",
+      "BC-SKL-10018",
+      "BC-SKL-10019",
+      "BC-SKL-10020",
+      "BC-SKL-10022",
+      "BC-SKL-10023",
+      "BC-SKL-10024",
+      "BC-SKL-10027",
+      "BC-SKL-10028",
+      "BC-SKL-10029",
+      "BC-SKL-10030",
+      "BC-SKL-10033"
+   ],
+   "parameter_draw": {
+      "form": "comparison_converges",
+      "naming": "named",
+      "large_power": "3",
+      "small_power": "1/2",
+      "coefficient": "9",
+      "shift": "9",
+      "start": "2"
+   },
+   "predicted_success_probability": 0.5,
+   "provenance": {
+      "template_id": "TPL-BC-QA-10004-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-10004:spec-1:item-14:try-14",
+      "parameter_draw": {
+         "form": "comparison_converges",
+         "naming": "named",
+         "large_power": "3",
+         "small_power": "1/2",
+         "coefficient": "9",
+         "shift": "9",
+         "start": "2"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:58:54Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.5
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

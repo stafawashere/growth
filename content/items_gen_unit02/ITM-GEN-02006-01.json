@@ -1,0 +1,262 @@
+{
+   "id": "ITM-GEN-02006-01",
+   "archetype_id": "BC-QA-02006",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = 6 \\sqrt{x} - 9 x^{4} + 1 \\) for \\( x > 0 \\). Find \\( f'(x) \\).",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Multiply",
+            -1,
+            36,
+            [
+               "Power",
+               "x",
+               3
+            ]
+         ],
+         [
+            "Multiply",
+            3,
+            [
+               "Power",
+               "x",
+               [
+                  "Rational",
+                  -1,
+                  2
+               ]
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Write every term as a power of x: \\( f(x) = -9 x^{4} + 6 x^{\\frac{1}{2}} + 1 \\).",
+         "rule_named": "rewrite the radical as a power"
+      },
+      {
+         "step": 2,
+         "text": "By the power rule, \\( - 9 x^{4} \\) has derivative \\( - 36 x^{3} \\), \\( 6 \\sqrt{x} \\) has derivative \\( \\frac{3}{\\sqrt{x}} \\), and the constant has derivative 0.",
+         "rule_named": "power rule, term by term"
+      },
+      {
+         "step": 3,
+         "text": "So \\( f'(x) = - 36 x^{3} + \\frac{3}{\\sqrt{x}} \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               -1,
+               36,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               3,
+               [
+                  "Power",
+                  "x",
+                  [
+                     "Rational",
+                     -1,
+                     2
+                  ]
+               ]
+            ]
+         ],
+         "rule_named": "sum rule"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               -1,
+               36,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               3,
+               [
+                  "Power",
+                  "x",
+                  [
+                     "Rational",
+                     -1,
+                     2
+                  ]
+               ]
+            ]
+         ]
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-02017",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               6,
+               [
+                  "Sqrt",
+                  "x"
+               ]
+            ],
+            [
+               "Multiply",
+               -1,
+               36,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ],
+         "derivation": "the radical term copied into the derivative undifferentiated",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-02015",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               -1,
+               9,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               6,
+               [
+                  "Power",
+                  "x",
+                  [
+                     "Rational",
+                     -1,
+                     2
+                  ]
+               ]
+            ]
+         ],
+         "derivation": "each exponent lowered by 1 without multiplying by the old exponent",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-02016",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               -1,
+               36,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            1,
+            [
+               "Multiply",
+               3,
+               [
+                  "Power",
+                  "x",
+                  [
+                     "Rational",
+                     -1,
+                     2
+                  ]
+               ]
+            ]
+         ],
+         "derivation": "the constant 1 carried into the derivative unchanged",
+         "mechanism": "algebra_slip"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02025",
+      "BC-SKL-02026",
+      "BC-SKL-02028",
+      "BC-SKL-02029",
+      "BC-SKL-02030",
+      "BC-SKL-02031"
+   ],
+   "parameter_draw": {
+      "leading": "-9",
+      "degree": "4",
+      "second": "radical",
+      "second_coefficient": "6",
+      "root_index": "2",
+      "reciprocal_power": "3",
+      "constant": "1"
+   },
+   "predicted_success_probability": 0.5,
+   "provenance": {
+      "template_id": "TPL-BC-QA-02006-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-02006:spec-1:item-1:try-1",
+      "parameter_draw": {
+         "leading": "-9",
+         "degree": "4",
+         "second": "radical",
+         "second_coefficient": "6",
+         "root_index": "2",
+         "reciprocal_power": "3",
+         "constant": "1"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, author tpl-B",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:50Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": true,
+      "requested_success_probability": 0.4134
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

@@ -1,0 +1,121 @@
+{
+   "id": "ITM-GEN-05008-03",
+   "archetype_id": "BC-QA-05008",
+   "variant_id": "BC-QV-05008-01",
+   "format": "mcq",
+   "stem": {
+      "text": "A function f has derivative \\( f'(x) = -\\frac{4\\left(x + 1\\right)\\left(x - 1\\right)}{x + 2} \\) for all \\( x \\ne -2 \\), where f is not defined at \\( x = -2 \\). On what open intervals is f decreasing? Give a reason for the answer.",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "f is decreasing on the intervals \\( (-2, -1) \\) and \\( (1, \\infty) \\), because \\( f'(x) < 0 \\) on each of those intervals."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The sign of f' can change only where \\( f'(x) = 0 \\) at \\( x = -1 \\) and \\( x = 1 \\), and f' is undefined at \\( x = -2 \\), which is not in the domain of f.",
+         "point_type_id": "BC-PT-99005",
+         "rule_named": "partition points of the sign chart"
+      },
+      {
+         "step": 2,
+         "text": "Testing one point in each piece gives \\( f'(x) < 0 \\) on the intervals \\( (-2, -1) \\) and \\( (1, \\infty) \\) and \\( f'(x) > 0 \\) on the intervals \\( (-\\infty, -2) \\) and \\( (-1, 1) \\).",
+         "point_type_id": "BC-PT-99010",
+         "rule_named": "sign chart of the derivative"
+      },
+      {
+         "step": 3,
+         "text": "So f is decreasing on the intervals \\( (-2, -1) \\) and \\( (1, \\infty) \\), because \\( f'(x) < 0 \\) on each of those intervals.",
+         "point_type_id": "BC-PT-99063",
+         "rule_named": "sign of the derivative gives the direction of the function"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "label": "f is decreasing on the intervals \\( (-2, -1) \\) and \\( (1, \\infty) \\), because \\( f'(x) < 0 \\) on each of those intervals."
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-05018",
+         "label": "f is decreasing on the intervals \\( (-2, -1) \\) and \\( (1, \\infty) \\), because it is negative there.",
+         "derivation": "the right intervals, justified by a pronoun that never says which function is positive or negative",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-05017",
+         "label": "f is decreasing on the intervals \\( (-\\infty, -1) \\) and \\( (1, \\infty) \\), because \\( f'(x) < 0 \\) on each of those intervals.",
+         "derivation": "the sign chart built on the zeros of f' only, leaving out x = -2 where f' is undefined",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-05014",
+         "label": "f is decreasing on the intervals \\( (-\\infty, -2) \\) and \\( (-1, 1) \\), because \\( f'(x) < 0 \\) on each of those intervals.",
+         "derivation": "the sign of f' read backwards, so the pieces where f' has the opposite sign are reported",
+         "mechanism": "sign_error"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-17",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-05014",
+      "BC-SKL-05015",
+      "BC-SKL-05016",
+      "BC-SKL-05017",
+      "BC-SKL-05018"
+   ],
+   "parameter_draw": {
+      "first_zero": "-1",
+      "second_zero": "1",
+      "gap": "-2",
+      "scale": "4",
+      "direction": "decreasing",
+      "leading_sign": "-1",
+      "domain_break": "odd"
+   },
+   "predicted_success_probability": 0.3318,
+   "provenance": {
+      "template_id": "TPL-BC-QA-05008-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-05008:spec-1:item-3:try-3",
+      "parameter_draw": {
+         "first_zero": "-1",
+         "second_zero": "1",
+         "gap": "-2",
+         "scale": "4",
+         "direction": "decreasing",
+         "leading_sign": "-1",
+         "domain_break": "odd"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, run D",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:56Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.3318
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

@@ -1,0 +1,339 @@
+{
+   "id": "ITM-GEN-10017-01",
+   "archetype_id": "BC-QA-10017",
+   "variant_id": "BC-QV-10017-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = 4 \\sin\\left(4x^{3}\\right) \\). Use the Maclaurin series for \\( \\sin x \\) to find the first 3 nonzero terms of the Maclaurin series for f.",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Multiply",
+            [
+               "Rational",
+               512,
+               15
+            ],
+            [
+               "Power",
+               "x",
+               15
+            ]
+         ],
+         [
+            "Multiply",
+            -1,
+            [
+               "Rational",
+               128,
+               3
+            ],
+            [
+               "Power",
+               "x",
+               9
+            ]
+         ],
+         [
+            "Multiply",
+            16,
+            [
+               "Power",
+               "x",
+               3
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Replace x by \\( 4x^{3} \\) in the series for \\( \\sin x \\), raising the whole of \\( 4x^{3} \\) to each power, so the jth term carries \\( (4)^j x^{3j} \\).",
+         "point_type_id": "BC-PT-99037",
+         "rule_named": "substitution into a known series"
+      },
+      {
+         "step": 2,
+         "text": "Multiply by \\( 4 \\) and keep the first 3 nonzero terms: \\( 16 x^{3} - \\frac{128}{3} x^{9} + \\frac{512}{15} x^{15} \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  512,
+                  15
+               ],
+               [
+                  "Power",
+                  "x",
+                  15
+               ]
+            ],
+            [
+               "Multiply",
+               -1,
+               [
+                  "Rational",
+                  128,
+                  3
+               ],
+               [
+                  "Power",
+                  "x",
+                  9
+               ]
+            ],
+            [
+               "Multiply",
+               16,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ],
+         "point_type_id": "BC-PT-99035",
+         "rule_named": "first nonzero terms"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-10041",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  2,
+                  15
+               ],
+               [
+                  "Power",
+                  "x",
+                  15
+               ]
+            ],
+            [
+               "Multiply",
+               -1,
+               [
+                  "Rational",
+                  8,
+                  3
+               ],
+               [
+                  "Power",
+                  "x",
+                  9
+               ]
+            ],
+            [
+               "Multiply",
+               16,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ],
+         "derivation": "4 not raised to the power of each term, so every term after the first carries 4 once",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "B",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  512,
+                  15
+               ],
+               [
+                  "Power",
+                  "x",
+                  15
+               ]
+            ],
+            [
+               "Multiply",
+               -1,
+               [
+                  "Rational",
+                  128,
+                  3
+               ],
+               [
+                  "Power",
+                  "x",
+                  9
+               ]
+            ],
+            [
+               "Multiply",
+               16,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ]
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-10041",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  512,
+                  15
+               ],
+               [
+                  "Power",
+                  "x",
+                  8
+               ]
+            ],
+            [
+               "Multiply",
+               -1,
+               [
+                  "Rational",
+                  128,
+                  3
+               ],
+               [
+                  "Power",
+                  "x",
+                  6
+               ]
+            ],
+            [
+               "Multiply",
+               16,
+               [
+                  "Power",
+                  "x",
+                  4
+               ]
+            ]
+         ],
+         "derivation": "the power of x^3 added to the exponent instead of multiplying it, so x^j became x^(j + 3)",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-10040",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  512,
+                  15
+               ],
+               [
+                  "Power",
+                  "x",
+                  15
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  128,
+                  3
+               ],
+               [
+                  "Power",
+                  "x",
+                  9
+               ]
+            ],
+            [
+               "Multiply",
+               16,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ],
+         "derivation": "the series for sin x recalled with every sign positive",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10061",
+      "BC-SKL-10062",
+      "BC-SKL-10063",
+      "BC-SKL-10064",
+      "BC-SKL-10065"
+   ],
+   "parameter_draw": {
+      "base": "sin",
+      "inner_power": "3",
+      "scale": "4",
+      "coefficient": "4",
+      "count": "3"
+   },
+   "predicted_success_probability": 0.2592,
+   "provenance": {
+      "template_id": "TPL-BC-QA-10017-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-10017:spec-1:item-1:try-1",
+      "parameter_draw": {
+         "base": "sin",
+         "inner_power": "3",
+         "scale": "4",
+         "coefficient": "4",
+         "count": "3"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:58:54Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.2592
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

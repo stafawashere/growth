@@ -1,0 +1,305 @@
+{
+   "id": "ITM-GEN-06016-18",
+   "archetype_id": "BC-QA-06016",
+   "variant_id": "BC-QV-06016-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Find the indefinite integral \\( \\int \\frac{4 x^{2} + 16}{x + 3}\\,dx \\).",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Multiply",
+            2,
+            [
+               "Power",
+               "x",
+               2
+            ]
+         ],
+         [
+            "Multiply",
+            -1,
+            12,
+            "x"
+         ],
+         [
+            "Multiply",
+            52,
+            [
+               "Ln",
+               [
+                  "Abs",
+                  [
+                     "Add",
+                     "x",
+                     3
+                  ]
+               ]
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The numerator has degree 2 and the denominator degree 1, so the rational function is improper and must be divided before any logarithm appears.",
+         "rule_named": "technique selected by structure"
+      },
+      {
+         "step": 2,
+         "text": "Long division gives \\( \\frac{4 x^{2} + 16}{x + 3} = 4 x - 12 + \\frac{52}{x + 3} \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               4,
+               "x"
+            ],
+            -12,
+            [
+               "Multiply",
+               52,
+               [
+                  "Power",
+                  [
+                     "Add",
+                     "x",
+                     3
+                  ],
+                  -1
+               ]
+            ]
+         ],
+         "rule_named": "polynomial long division"
+      },
+      {
+         "step": 3,
+         "text": "Antidifferentiate term by term: the integral is \\( 2 x^{2} - 12 x + 52 \\ln{\\left(\\left|{x + 3}\\right| \\right)} + C \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               2,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               -1,
+               12,
+               "x"
+            ],
+            [
+               "Multiply",
+               52,
+               [
+                  "Ln",
+                  [
+                     "Abs",
+                     [
+                        "Add",
+                        "x",
+                        3
+                     ]
+                  ]
+               ]
+            ]
+         ],
+         "rule_named": "antiderivatives of a polynomial and of 1 over a linear factor"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-06020",
+         "value": [
+            "Multiply",
+            [
+               "Add",
+               [
+                  "Multiply",
+                  4,
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ]
+               ],
+               16
+            ],
+            [
+               "Ln",
+               [
+                  "Abs",
+                  [
+                     "Add",
+                     "x",
+                     3
+                  ]
+               ]
+            ]
+         ],
+         "derivation": "u taken as the denominator and the whole numerator treated as though it were du, so it is carried in front of the logarithm",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-06022",
+         "value": [
+            "Multiply",
+            [
+               "Add",
+               [
+                  "Multiply",
+                  [
+                     "Rational",
+                     4,
+                     3
+                  ],
+                  [
+                     "Power",
+                     "x",
+                     3
+                  ]
+               ],
+               [
+                  "Multiply",
+                  16,
+                  "x"
+               ]
+            ],
+            [
+               "Ln",
+               [
+                  "Abs",
+                  [
+                     "Add",
+                     "x",
+                     3
+                  ]
+               ]
+            ]
+         ],
+         "derivation": "the numerator and 1 over the denominator antidifferentiated separately and the results multiplied",
+         "mechanism": "product_rule_omitted"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-06026",
+         "value": [
+            "Multiply",
+            52,
+            [
+               "Ln",
+               [
+                  "Abs",
+                  [
+                     "Add",
+                     "x",
+                     3
+                  ]
+               ]
+            ]
+         ],
+         "derivation": "the improper fraction split directly, keeping only the constant 52 over x + 3 and losing the polynomial part",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               2,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               -1,
+               12,
+               "x"
+            ],
+            [
+               "Multiply",
+               52,
+               [
+                  "Ln",
+                  [
+                     "Abs",
+                     [
+                        "Add",
+                        "x",
+                        3
+                     ]
+                  ]
+               ]
+            ]
+         ]
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-15",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06071",
+      "BC-SKL-06072",
+      "BC-SKL-06073",
+      "BC-SKL-06074",
+      "BC-SKL-06056"
+   ],
+   "parameter_draw": {
+      "structure": "improper_rational",
+      "multiplier": "4",
+      "rate": "1",
+      "rate_sign": "1",
+      "shift": "3",
+      "constant": "4"
+   },
+   "predicted_success_probability": 0.1978,
+   "provenance": {
+      "template_id": "TPL-BC-QA-06016-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-06016:spec-1:item-18:try-20",
+      "parameter_draw": {
+         "structure": "improper_rational",
+         "multiplier": "4",
+         "rate": "1",
+         "rate_sign": "1",
+         "shift": "3",
+         "constant": "4"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:54:01Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": true,
+      "requested_success_probability": 0.1978
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

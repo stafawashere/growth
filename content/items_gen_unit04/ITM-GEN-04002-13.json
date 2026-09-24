@@ -1,0 +1,191 @@
+{
+   "id": "ITM-GEN-04002-13",
+   "archetype_id": "BC-QA-04002",
+   "variant_id": "BC-QV-04002-01",
+   "format": "mcq",
+   "stem": {
+      "text": "The function H is differentiable, and H(t) gives the temperature inside an oven, in degrees Fahrenheit, at time t minutes. Selected values of H(t) are given in the table. Using the average rate of change of H over the interval \\( 2 \\le t \\le 11 \\), approximate \\( H'(8) \\). Give the exact value of the approximation and indicate units of measure.",
+      "command_verb": "approximate"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         8,
+         9
+      ],
+      "units": "degrees Fahrenheit per minute"
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The interval \\( 2 \\le t \\le 11 \\) uses the rows at t = 2 and t = 11, so the change in H is \\( 61 - 53 = 8 \\).",
+         "mathjson": 8,
+         "point_type_id": "BC-PT-99005",
+         "rule_named": "difference of tabulated values"
+      },
+      {
+         "step": 2,
+         "text": "Dividing by the change in time, \\( H'(8) \\approx \\frac{H(11) - H(2)}{11 - 2} = \\frac{61 - 53}{11 - 2} = \\frac{8}{9} \\).",
+         "mathjson": [
+            "Rational",
+            8,
+            9
+         ],
+         "point_type_id": "BC-PT-99005",
+         "rule_named": "average rate of change as a difference quotient"
+      },
+      {
+         "step": 3,
+         "text": "The units are those of H over those of t: degrees Fahrenheit per minute.",
+         "point_type_id": "BC-PT-99006",
+         "rule_named": "units of a rate"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-02004",
+         "value": [
+            "Rational",
+            1,
+            6
+         ],
+         "derivation": "the rows at t = 2 and t = 8 used in place of the named interval",
+         "mechanism": "wrong_limits"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-02004",
+         "value": [
+            "Rational",
+            7,
+            3
+         ],
+         "derivation": "the rows at t = 8 and t = 11 used in place of the named interval",
+         "mechanism": "wrong_limits"
+      },
+      {
+         "id": "C",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Rational",
+            8,
+            9
+         ]
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-02001",
+         "value": 8,
+         "derivation": "the change H(11) - H(2) reported without dividing by the change in time",
+         "mechanism": "algebra_slip"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-04004",
+      "BC-SKL-04001",
+      "BC-SKL-02014",
+      "BC-SKL-02015",
+      "BC-SKL-02016",
+      "BC-SKL-02002",
+      "BC-SKL-02003"
+   ],
+   "parameter_draw": {
+      "times": [
+         "0",
+         "2",
+         "8",
+         "11",
+         "12"
+      ],
+      "readings": [
+         "10",
+         "53",
+         "54",
+         "61",
+         "83"
+      ],
+      "context": "oven",
+      "trend": "increasing"
+   },
+   "predicted_success_probability": 0.1978,
+   "provenance": {
+      "template_id": "TPL-BC-QA-04002-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-04002:spec-1:item-13:try-13",
+      "parameter_draw": {
+         "times": [
+            "0",
+            "2",
+            "8",
+            "11",
+            "12"
+         ],
+         "readings": [
+            "10",
+            "53",
+            "54",
+            "61",
+            "83"
+         ],
+         "context": "oven",
+         "trend": "increasing"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:53Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.1978
+   },
+   "figure": {
+      "kind": "table",
+      "columns": [
+         "t (minutes)",
+         "H(t) (degrees Fahrenheit)"
+      ],
+      "rows": [
+         [
+            "0",
+            "10"
+         ],
+         [
+            "2",
+            "53"
+         ],
+         [
+            "8",
+            "54"
+         ],
+         [
+            "11",
+            "61"
+         ],
+         [
+            "12",
+            "83"
+         ]
+      ],
+      "labels": [],
+      "alt": "The table lists H(t) at five times, H(0) = 10; H(2) = 53; H(8) = 54; H(11) = 61; H(12) = 83."
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

@@ -1,0 +1,113 @@
+{
+   "id": "ITM-GEN-10016-02",
+   "archetype_id": "BC-QA-10016",
+   "variant_id": "BC-QV-10016-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = 3 e^{7x} \\). Find the first 3 nonzero terms and the general term of the Maclaurin series for f.",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "\\( 3 + 21 x + \\frac{147}{2} x^{2} + \\cdots + \\frac{3 \\cdot 7^{n} x^{n}}{n!} + \\cdots \\)"
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Start from the Maclaurin series for \\( e^{x} \\) and replace x by \\( 7x \\), raising the whole of \\( 7x \\) to each power.",
+         "rule_named": "substitution into a known series"
+      },
+      {
+         "step": 2,
+         "text": "Multiply every term by \\( 3 \\); the first 3 nonzero terms are \\( 3 + 21 x + \\frac{147}{2} x^{2} \\).",
+         "rule_named": "first nonzero terms"
+      },
+      {
+         "step": 3,
+         "text": "The general term is \\( \\frac{3 \\cdot 7^{n} x^{n}}{n!} \\); putting n = 0, 1, 2 reproduces the terms above.",
+         "rule_named": "general term"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "label": "\\( 3 + 21 x + \\frac{147}{2} x^{2} + \\cdots + \\frac{3 \\cdot 7^{n} x^{n}}{n!} + \\cdots \\)"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-10041",
+         "label": "\\( 3 + 21 x + \\frac{21}{2} x^{2} + \\cdots + \\frac{3 \\cdot 7 x^{n}}{n!} + \\cdots \\)",
+         "derivation": "x replaced by 7x but 7 not raised to the power of each term",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-10040",
+         "label": "\\( 3 + 21 x + 147 x^{2} + \\cdots + 3 \\cdot 7^{n} x^{n} + \\cdots \\)",
+         "derivation": "the series for e^x recalled without its factorials",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-99018",
+         "label": "\\( 3 + 21 x + \\frac{147}{2} x^{2} + \\cdots + \\frac{3 \\cdot 7^{n+1} x^{n+1}}{(n+1)!} + \\cdots \\)",
+         "derivation": "the general term written with n + 1 where n belongs, so at n = 0 it gives the second term rather than the first",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10060",
+      "BC-SKL-10067"
+   ],
+   "parameter_draw": {
+      "base": "exp",
+      "sign": "positive",
+      "count": "3",
+      "scale": "7",
+      "coefficient": "3",
+      "power": "0"
+   },
+   "predicted_success_probability": 0.3318,
+   "provenance": {
+      "template_id": "TPL-BC-QA-10016-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-10016:spec-1:item-2:try-2",
+      "parameter_draw": {
+         "base": "exp",
+         "sign": "positive",
+         "count": "3",
+         "scale": "7",
+         "coefficient": "3",
+         "power": "0"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:58:54Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": true,
+      "requested_success_probability": 0.3318
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

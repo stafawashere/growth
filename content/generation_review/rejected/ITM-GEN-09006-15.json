@@ -1,0 +1,122 @@
+{
+   "id": "ITM-GEN-09006-15",
+   "archetype_id": "BC-QA-09006",
+   "variant_id": "BC-QV-09006-01",
+   "format": "mcq",
+   "stem": {
+      "text": "A particle moves in the xy-plane with velocity vector \\( v(t) = \\left\\langle 4 \\cos{\\left(\\frac{t}{2} \\right)}, \\frac{3 t^{2}}{2} \\right\\rangle \\) for \\( t \\ge 0 \\), with t in seconds and distances in meters. Using a calculator, find the speed of the particle at \\( t = \\frac{5}{4} \\). Show the setup for the calculation, and give the value correct to three decimal places.",
+      "setup_required": true,
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "numeric",
+      "mathjson": 4.001967386381621,
+      "decimals": 3,
+      "units": "meters per second"
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The speed is \\( |v(t)| = \\sqrt{\\left(4 \\cos{\\left(\\frac{t}{2} \\right)}\\right)^{2} + \\left(\\frac{3 t^{2}}{2}\\right)^{2}} \\).",
+         "point_type_id": "BC-PT-99050",
+         "rule_named": "speed as the magnitude of velocity"
+      },
+      {
+         "step": 2,
+         "text": "At \\( t = \\frac{5}{4} \\), with the calculator in radian mode, the speed is about 4.002 meters per second.",
+         "mathjson": 4.001967386381621,
+         "point_type_id": "BC-PT-99004",
+         "rule_named": "evaluate at the time"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-09023",
+         "value": 4.636,
+         "derivation": "the cosine evaluated with the calculator in degree mode",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-09013",
+         "value": 5.588,
+         "derivation": "the two components added instead of combined as a magnitude",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-09014",
+         "value": 3.766,
+         "derivation": "(y'(t))^2 written as \\frac{3}{2} t^4, the coefficient left unsquared",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "D",
+         "is_key": true,
+         "error_path": null,
+         "value": 4.002
+      }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-14",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-16",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-09023",
+      "BC-SKL-09024"
+   ],
+   "parameter_draw": {
+      "amplitude": "4",
+      "frequency": "1/2",
+      "growth": "3/2",
+      "time": "5/4",
+      "target": "5",
+      "units": "meters",
+      "request": "value"
+   },
+   "predicted_success_probability": 0.4134,
+   "provenance": {
+      "template_id": "TPL-BC-QA-09006-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-09006:spec-1:item-15:try-15",
+      "parameter_draw": {
+         "amplitude": "4",
+         "frequency": "1/2",
+         "growth": "3/2",
+         "time": "5/4",
+         "target": "5",
+         "units": "meters",
+         "request": "value"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, run F",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T13:02:05Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.3318
+   },
+   "review": {
+      "item_id": "ITM-GEN-09006-15",
+      "status": "rejected",
+      "rules": [
+         10
+      ],
+      "notes": [
+         "Jaccard 0.865 with ITM-GEN-09006-02 (bank)",
+         "review decision: reject, duplicate of ITM-GEN-09006-02, which is kept"
+      ]
+   }
+}

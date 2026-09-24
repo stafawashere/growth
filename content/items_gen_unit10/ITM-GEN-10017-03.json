@@ -1,0 +1,345 @@
+{
+   "id": "ITM-GEN-10017-03",
+   "archetype_id": "BC-QA-10017",
+   "variant_id": "BC-QV-10017-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = 9 e^{-3x^{3}} \\). Use the Maclaurin series for \\( e^{x} \\) to find the first 4 nonzero terms of the Maclaurin series for f.",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Multiply",
+            -1,
+            [
+               "Rational",
+               81,
+               2
+            ],
+            [
+               "Power",
+               "x",
+               9
+            ]
+         ],
+         [
+            "Multiply",
+            [
+               "Rational",
+               81,
+               2
+            ],
+            [
+               "Power",
+               "x",
+               6
+            ]
+         ],
+         [
+            "Multiply",
+            -1,
+            27,
+            [
+               "Power",
+               "x",
+               3
+            ]
+         ],
+         9
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Replace x by \\( -3x^{3} \\) in the series for \\( e^{x} \\), raising the whole of \\( -3x^{3} \\) to each power, so the jth term carries \\( (-3)^j x^{3j} \\).",
+         "point_type_id": "BC-PT-99037",
+         "rule_named": "substitution into a known series"
+      },
+      {
+         "step": 2,
+         "text": "Multiply by \\( 9 \\) and keep the first 4 nonzero terms: \\( 9 - 27 x^{3} + \\frac{81}{2} x^{6} - \\frac{81}{2} x^{9} \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               -1,
+               [
+                  "Rational",
+                  81,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  9
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  81,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  6
+               ]
+            ],
+            [
+               "Multiply",
+               -1,
+               27,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            9
+         ],
+         "point_type_id": "BC-PT-99035",
+         "rule_named": "first nonzero terms"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               -1,
+               [
+                  "Rational",
+                  81,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  9
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  81,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  6
+               ]
+            ],
+            [
+               "Multiply",
+               -1,
+               27,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            9
+         ]
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-10041",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               -1,
+               [
+                  "Rational",
+                  9,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  9
+               ]
+            ],
+            [
+               "Multiply",
+               -1,
+               [
+                  "Rational",
+                  27,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  6
+               ]
+            ],
+            [
+               "Multiply",
+               -1,
+               27,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            9
+         ],
+         "derivation": "-3 not raised to the power of each term, so every term after the first carries -3 once",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-10041",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               -1,
+               [
+                  "Rational",
+                  81,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  6
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  81,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  5
+               ]
+            ],
+            [
+               "Multiply",
+               -1,
+               27,
+               [
+                  "Power",
+                  "x",
+                  4
+               ]
+            ],
+            9
+         ],
+         "derivation": "the power of x^3 added to the exponent instead of multiplying it, so x^j became x^(j + 3)",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-10040",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               -1,
+               243,
+               [
+                  "Power",
+                  "x",
+                  9
+               ]
+            ],
+            [
+               "Multiply",
+               81,
+               [
+                  "Power",
+                  "x",
+                  6
+               ]
+            ],
+            [
+               "Multiply",
+               -1,
+               27,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            9
+         ],
+         "derivation": "the factorials left out of the series for e^x",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10061",
+      "BC-SKL-10062",
+      "BC-SKL-10063",
+      "BC-SKL-10064",
+      "BC-SKL-10065"
+   ],
+   "parameter_draw": {
+      "base": "exp",
+      "inner_power": "3",
+      "scale": "-3",
+      "coefficient": "9",
+      "count": "4"
+   },
+   "predicted_success_probability": 0.1978,
+   "provenance": {
+      "template_id": "TPL-BC-QA-10017-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-10017:spec-1:item-3:try-3",
+      "parameter_draw": {
+         "base": "exp",
+         "inner_power": "3",
+         "scale": "-3",
+         "coefficient": "9",
+         "count": "4"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:58:54Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.1978
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

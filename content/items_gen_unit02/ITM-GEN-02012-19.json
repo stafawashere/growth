@@ -1,0 +1,118 @@
+{
+   "id": "ITM-GEN-02012-19",
+   "archetype_id": "BC-QA-02012",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( w = g(t) \\) be a twice-differentiable function. Suppose that \\( g'(3) = -11 \\). Write this statement in Leibniz notation, and state what it means.",
+      "command_verb": "write"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "\\( \\left. \\frac{dw}{dt} \\right|_{t=3} = -11 \\), so the rate of change of w with respect to t when t = 3 is -11."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "In \\( g'(3) \\) the function is g, the independent variable is t, and the derivative is evaluated at t = 3, so the statement is about one input only.",
+         "rule_named": "read the notation"
+      },
+      {
+         "step": 2,
+         "text": "In Leibniz notation the same statement is \\( \\left. \\frac{dw}{dt} \\right|_{t=3} = -11 \\).",
+         "rule_named": "convert the notation"
+      },
+      {
+         "step": 3,
+         "text": "It says that the rate of change of w with respect to t when t = 3 is -11.",
+         "rule_named": "interpret the derivative"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "label": "\\( \\left. \\frac{dw}{dt} \\right|_{t=3} = -11 \\), so the rate of change of w with respect to t when t = 3 is -11."
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-04017",
+         "label": "\\( \\left. \\frac{dt}{dw} \\right|_{t=3} = -11 \\), so the rate of change of t with respect to w when t = 3 is -11.",
+         "derivation": "the roles of the two variables exchanged, so the derivative is read with respect to the dependent variable",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-02029",
+         "label": "\\( \\frac{g(3)}{3} = -11 \\), so w divided by t when t = 3 is -11.",
+         "derivation": "the Leibniz fraction read as the quotient of the two quantities at the point",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-02030",
+         "label": "\\( \\frac{dw}{dt} = -11 \\), so the rate of change of w with respect to t, the same at every t, is -11.",
+         "derivation": "the point of evaluation dropped, so a value at one input is read as the derivative function",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-04",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-05",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-16",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02010",
+      "BC-SKL-02011",
+      "BC-SKL-02004"
+   ],
+   "parameter_draw": {
+      "order": "first",
+      "framing": "bare",
+      "supplied": "prime",
+      "setting": "1",
+      "at": "3",
+      "value": "-11"
+   },
+   "predicted_success_probability": 0.4134,
+   "provenance": {
+      "template_id": "TPL-BC-QA-02012-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-02012:spec-1:item-19:try-29",
+      "parameter_draw": {
+         "order": "first",
+         "framing": "bare",
+         "supplied": "prime",
+         "setting": "1",
+         "at": "3",
+         "value": "-11"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, author tpl-B",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:50Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": true,
+      "requested_success_probability": 0.3318
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

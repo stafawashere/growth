@@ -1,0 +1,132 @@
+{
+   "id": "ITM-GEN-09005-03",
+   "archetype_id": "BC-QA-09005",
+   "variant_id": "BC-QV-09005-01",
+   "format": "mcq",
+   "stem": {
+      "text": "A particle moves in the xy-plane with velocity vector \\( v(t) = \\left\\langle 4 \\cos{\\left(\\frac{t^{2}}{4} \\right)}, \\sqrt{t} e^{- \\frac{t}{2}} \\right\\rangle \\) for \\( t \\ge 0 \\). At time \\( t = 1 \\), \\( x(1) = -2 \\) and \\( y(1) = -4 \\). Using a calculator, find the x-coordinate of the particle's position at time \\( t = 3 \\). Show the setup for the calculations, and give the value correct to three decimal places.",
+      "setup_required": true,
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "numeric",
+      "mathjson": 1.2184065893814713,
+      "decimals": 3
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The x-coordinate is the known value plus the accumulated change: \\( x(3) = x(1) + \\int_{1}^{3} \\left(4 \\cos{\\left(\\frac{t^{2}}{4} \\right)}\\right)\\,dt \\).",
+         "point_type_id": "BC-PT-99033",
+         "rule_named": "position from an initial condition"
+      },
+      {
+         "step": 2,
+         "text": "With a calculator the integral is about 3.218.",
+         "mathjson": 3.218406589381471,
+         "point_type_id": "BC-PT-99001",
+         "rule_named": "numerical integration"
+      },
+      {
+         "step": 3,
+         "text": "So \\( x(3) \\approx -2 + (3.218) = 1.218 \\).",
+         "mathjson": 1.2184065893814713,
+         "point_type_id": "BC-PT-99004",
+         "rule_named": "add the initial value"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-08011",
+         "value": 3.218,
+         "derivation": "the integral reported alone, without the known coordinate",
+         "mechanism": "forgot_constant"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-09019",
+         "value": -0.782,
+         "derivation": "the other coordinate's known value, -4, used as the starting value",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-09021",
+         "value": -5.218,
+         "derivation": "the change subtracted from the known coordinate, accumulating in the wrong direction in time",
+         "mechanism": "sign_error"
+      },
+      {
+         "id": "D",
+         "is_key": true,
+         "error_path": null,
+         "value": 1.218
+      }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-14",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-16",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-09019",
+      "BC-SKL-09020",
+      "BC-SKL-09021",
+      "BC-SKL-09022",
+      "BC-SKL-09026",
+      "BC-SKL-09018"
+   ],
+   "parameter_draw": {
+      "x_amplitude": "4",
+      "x_spread": "4",
+      "y_rate": "1",
+      "x_start": "-2",
+      "y_start": "-4",
+      "known_time": "1",
+      "offset": "2",
+      "requested": "x",
+      "direction": "later",
+      "given_as": "coordinates"
+   },
+   "predicted_success_probability": 0.3318,
+   "provenance": {
+      "template_id": "TPL-BC-QA-09005-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-09005:spec-1:item-3:try-3",
+      "parameter_draw": {
+         "x_amplitude": "4",
+         "x_spread": "4",
+         "y_rate": "1",
+         "x_start": "-2",
+         "y_start": "-4",
+         "known_time": "1",
+         "offset": "2",
+         "requested": "x",
+         "direction": "later",
+         "given_as": "coordinates"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, run F",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T13:02:05Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.2592
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

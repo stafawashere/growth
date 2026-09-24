@@ -1,0 +1,132 @@
+{
+   "id": "ITM-GEN-06013-00",
+   "archetype_id": "BC-QA-06013",
+   "variant_id": "BC-QV-06013-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Suppose \\( \\int_{1}^{4} f(x)\\,dx = 3 \\) and \\( \\int_{1}^{10} f(x)\\,dx = 11 \\). The function h is defined by \\( h(x) = -4 \\) for \\( x < 7 \\) and \\( h(x) = 3 \\) for \\( x \\ge 7 \\). Find \\( \\int_{4}^{10} \\left(3f(x) + h(x)\\right)\\,dx \\).",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 21
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Split the interval at x = 4: \\( \\int_{4}^{10} f(x)\\,dx = 11 - 3 = 8 \\).",
+         "point_type_id": "BC-PT-99005",
+         "rule_named": "additivity over adjacent intervals"
+      },
+      {
+         "step": 2,
+         "text": "h jumps at x = 7, so split its integral there: \\( -4 \\cdot 3 + 3 \\cdot 3 = -3 \\).",
+         "rule_named": "integral of a step function split at the jump"
+      },
+      {
+         "step": 3,
+         "text": "By linearity, \\( \\int_{4}^{10} \\left(3f(x) + h(x)\\right)\\,dx = 3(8) - 3 = 21 \\).",
+         "mathjson": 21,
+         "point_type_id": "BC-PT-99004",
+         "rule_named": "constant multiple and sum properties"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "value": 21
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-06031",
+         "value": 42,
+         "derivation": "h integrated as the single value 3 across the jump at x = 7",
+         "mechanism": "theorem_condition_ignored"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-99012",
+         "value": 30,
+         "derivation": "the integral of f from 4 to 10 taken as the given integral from 1, ignoring the part below 4",
+         "mechanism": "wrong_limits"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-99032",
+         "value": -21,
+         "derivation": "the limits written in reverse order, which changes the sign",
+         "mechanism": "sign_error"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-17",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06029",
+      "BC-SKL-06030",
+      "BC-SKL-06031",
+      "BC-SKL-06032",
+      "BC-SKL-06033",
+      "BC-SKL-06035"
+   ],
+   "parameter_draw": {
+      "direction": "forward",
+      "start": "1",
+      "gaps": [
+         "3",
+         "3",
+         "3"
+      ],
+      "first_value": "3",
+      "whole_value": "11",
+      "multiple": "3",
+      "steps": [
+         "-4",
+         "3"
+      ]
+   },
+   "predicted_success_probability": 0.2592,
+   "provenance": {
+      "template_id": "TPL-BC-QA-06013-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-06013:spec-1:item-0:try-0",
+      "parameter_draw": {
+         "direction": "forward",
+         "start": "1",
+         "gaps": [
+            "3",
+            "3",
+            "3"
+         ],
+         "first_value": "3",
+         "whole_value": "11",
+         "multiple": "3",
+         "steps": [
+            "-4",
+            "3"
+         ]
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:54:01Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.1978
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

@@ -1,0 +1,127 @@
+{
+   "id": "ITM-GEN-10015-18",
+   "archetype_id": "BC-QA-10015",
+   "variant_id": "BC-QV-10015-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Determine whether the power series \\( \\sum_{n=1}^{\\infty} \\frac{\\left(x + 5\\right)^{n}}{5^{n} \\left(\\sqrt{n} + 6\\right)} \\) converges or diverges at the right endpoint of its interval of convergence, naming the test used.",
+      "command_verb": "determine"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "At \\( x = 0 \\) the series diverges by limit comparison with \\( \\sum \\frac{1}{\\sqrt{n}} \\), because \\( p = \\frac{1}{2} \\le 1 \\)."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The ratio test gives convergence for \\( \\left|x + 5\\right| < 5 \\), so the right endpoint is \\( x = 0 \\).",
+         "rule_named": "locate the endpoint"
+      },
+      {
+         "step": 2,
+         "text": "At \\( x = 0 \\), \\( \\frac{\\left(x + 5\\right)^{n}}{5^{n}} = \\left(\\frac{5}{5}\\right)^{n} = 1 \\), so the series becomes \\( \\sum_{n=1}^{\\infty} \\frac{1}{\\sqrt{n} + 6} \\).",
+         "rule_named": "substitute the endpoint"
+      },
+      {
+         "step": 3,
+         "text": "The terms are positive and \\( \\lim_{n\\to\\infty} \\frac{\\sqrt{n}}{\\sqrt{n} + 6} = 1 \\), which is positive and finite, and the p-series with \\( p = \\frac{1}{2} \\le 1 \\) diverges.",
+         "rule_named": "limit comparison test"
+      },
+      {
+         "step": 4,
+         "text": "At \\( x = 0 \\) the series diverges by limit comparison with \\( \\sum \\frac{1}{\\sqrt{n}} \\), because \\( p = \\frac{1}{2} \\le 1 \\), so \\( x = 0 \\) does not belong to the interval of convergence.",
+         "rule_named": "verdict at the endpoint"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-10037",
+         "label": "At \\( x = 0 \\) the series diverges by the ratio test, because \\( -10 < x < 0 \\) leaves it out.",
+         "derivation": "the endpoint never examined: the open interval from the ratio test taken as the whole answer",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-10015",
+         "label": "At \\( x = 0 \\) the series converges by the alternating series test, because the sizes \\( \\frac{1}{\\sqrt{n} + 6} \\) decrease to 0.",
+         "derivation": "the alternating series test used on the endpoint series although its terms are all positive",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-10016",
+         "label": "At \\( x = 0 \\) the series diverges by direct comparison with \\( \\sum \\frac{1}{\\sqrt{n}} \\), because \\( \\frac{1}{\\sqrt{n} + 6} < \\frac{1}{\\sqrt{n}} \\).",
+         "derivation": "the comparison inequality in the direction that cannot show divergence: terms smaller than those of a divergent series",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": true,
+         "error_path": null,
+         "label": "At \\( x = 0 \\) the series diverges by limit comparison with \\( \\sum \\frac{1}{\\sqrt{n}} \\), because \\( p = \\frac{1}{2} \\le 1 \\)."
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10020",
+      "BC-SKL-10021",
+      "BC-SKL-10022",
+      "BC-SKL-10024",
+      "BC-SKL-10025",
+      "BC-SKL-10027",
+      "BC-SKL-10030",
+      "BC-SKL-10036",
+      "BC-SKL-10057",
+      "BC-SKL-10058",
+      "BC-SKL-10071"
+   ],
+   "parameter_draw": {
+      "form": "shifted",
+      "power": "1/2",
+      "sign": "positive",
+      "end": "right",
+      "given": "implicit",
+      "centre": "-5",
+      "radius": "5",
+      "shift": "6"
+   },
+   "predicted_success_probability": 0.5,
+   "provenance": {
+      "template_id": "TPL-BC-QA-10015-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-10015:spec-1:item-18:try-18",
+      "parameter_draw": {
+         "form": "shifted",
+         "power": "1/2",
+         "sign": "positive",
+         "end": "right",
+         "given": "implicit",
+         "centre": "-5",
+         "radius": "5",
+         "shift": "6"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:58:54Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": true,
+      "requested_success_probability": 0.5
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

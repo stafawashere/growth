@@ -1,0 +1,113 @@
+{
+   "id": "ITM-GEN-10020-12",
+   "archetype_id": "BC-QA-10020",
+   "variant_id": "BC-QV-10020-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = \\frac{45}{9 - x} \\). The Taylor series for f about \\( x = 4 \\) is \\( \\sum_{n=0}^{\\infty} 9 \\left(\\frac{x - 4}{5}\\right)^{n} \\). Does the series converge to f at \\( x = -1 \\)? Give a reason for the answer.",
+      "command_verb": "justify"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "No, because \\( x = -1 \\) is an endpoint that the interval of convergence \\( -1 < x < 9 \\) excludes."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The ratio test gives convergence for \\( \\left|x - 4\\right| < 5 \\), the interior \\( -1 < x < 9 \\), and \\( x = -1 \\) is an endpoint.",
+         "rule_named": "interval in play"
+      },
+      {
+         "step": 2,
+         "text": "At \\( x = -1 \\) the series is \\( \\sum_{n=0}^{\\infty} 9 (-1)^{n} \\), whose terms do not approach 0, so it diverges there. The interval of convergence is \\( -1 < x < 9 \\).",
+         "rule_named": "endpoint test"
+      },
+      {
+         "step": 3,
+         "text": "No, because \\( x = -1 \\) is an endpoint that the interval of convergence \\( -1 < x < 9 \\) excludes.",
+         "point_type_id": "BC-PT-99005",
+         "rule_named": "position of the input"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-10005",
+         "label": "Yes, because the geometric sum \\( \\frac{9}{1 - (-1)} = \\frac{9}{2} \\) equals \\( f(-1) \\).",
+         "derivation": "the geometric sum formula applied with ratio -1, whose size is not less than 1",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-10038",
+         "label": "Yes, because \\( x = -1 \\) lies in the interval of convergence \\( -1 \\le x < 9 \\).",
+         "derivation": "the excluded left endpoint written into the interval with a closed bracket",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": true,
+         "error_path": null,
+         "label": "No, because \\( x = -1 \\) is an endpoint that the interval of convergence \\( -1 < x < 9 \\) excludes."
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-10043",
+         "label": "Yes, because the series converges to f at every point where f is defined.",
+         "derivation": "the verdict asserted with no reason that places the input relative to the interval",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-10",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10007",
+      "BC-SKL-10010",
+      "BC-SKL-10073"
+   ],
+   "parameter_draw": {
+      "case": "geometric_left",
+      "framing": "radius_found",
+      "centre": "4",
+      "radius": "5",
+      "coefficient": "9"
+   },
+   "predicted_success_probability": 0.148,
+   "provenance": {
+      "template_id": "TPL-BC-QA-10020-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-10020:spec-1:item-12:try-12",
+      "parameter_draw": {
+         "case": "geometric_left",
+         "framing": "radius_found",
+         "centre": "4",
+         "radius": "5",
+         "coefficient": "9"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:58:54Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.1091
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

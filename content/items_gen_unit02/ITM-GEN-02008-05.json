@@ -1,0 +1,258 @@
+{
+   "id": "ITM-GEN-02008-05",
+   "archetype_id": "BC-QA-02008",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( h(x) = \\frac{x - 11}{\\sin{\\left(x \\right)}} \\). Find the exact value of \\( h'\\left(\\frac{\\pi}{3}\\right) \\).",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Multiply",
+            -1,
+            [
+               "Rational",
+               2,
+               9
+            ],
+            "Pi"
+         ],
+         [
+            "Multiply",
+            [
+               "Rational",
+               2,
+               3
+            ],
+            [
+               "Sqrt",
+               3
+            ]
+         ],
+         [
+            "Rational",
+            22,
+            3
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The numerator is \\( u = x - 11 \\) with \\( u' = 1 \\), and the denominator is \\( v = \\sin{\\left(x \\right)} \\) with \\( v' = \\cos{\\left(x \\right)} \\).",
+         "rule_named": "identify the two pieces"
+      },
+      {
+         "step": 2,
+         "text": "By the quotient rule, \\( h'(x) = \\frac{u'v - uv'}{v^{2}} \\), with u'v first in the numerator.",
+         "point_type_id": "BC-PT-99080",
+         "rule_named": "quotient rule"
+      },
+      {
+         "step": 3,
+         "text": "At \\( x = \\frac{\\pi}{3} \\): \\( u = -11 + \\frac{\\pi}{3} \\), \\( u' = 1 \\), \\( v = \\frac{\\sqrt{3}}{2} \\) and \\( v' = \\frac{1}{2} \\), so \\( h'\\left(\\frac{\\pi}{3}\\right) = - \\frac{2 \\pi}{9} + \\frac{2 \\sqrt{3}}{3} + \\frac{22}{3} \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               -1,
+               [
+                  "Rational",
+                  2,
+                  9
+               ],
+               "Pi"
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  2,
+                  3
+               ],
+               [
+                  "Sqrt",
+                  3
+               ]
+            ],
+            [
+               "Rational",
+               22,
+               3
+            ]
+         ],
+         "point_type_id": "BC-PT-99004",
+         "rule_named": "substitute and simplify"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               -1,
+               [
+                  "Rational",
+                  2,
+                  9
+               ],
+               "Pi"
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  2,
+                  3
+               ],
+               [
+                  "Sqrt",
+                  3
+               ]
+            ],
+            [
+               "Rational",
+               22,
+               3
+            ]
+         ]
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-02021",
+         "value": [
+            "Add",
+            [
+               "Rational",
+               -22,
+               3
+            ],
+            [
+               "Multiply",
+               -1,
+               [
+                  "Rational",
+                  2,
+                  3
+               ],
+               [
+                  "Sqrt",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  2,
+                  9
+               ],
+               "Pi"
+            ]
+         ],
+         "derivation": "the numerator written as u v' - u' v, the two terms in reverse order",
+         "mechanism": "reversed_quantities"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-02022",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               -1,
+               [
+                  "Rational",
+                  1,
+                  9
+               ],
+               [
+                  "Sqrt",
+                  3
+               ],
+               "Pi"
+            ],
+            1,
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  11,
+                  3
+               ],
+               [
+                  "Sqrt",
+                  3
+               ]
+            ]
+         ],
+         "derivation": "the numerator divided by v instead of by v squared",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-02026",
+         "value": 2,
+         "derivation": "numerator and denominator differentiated separately, u' / v'",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02036",
+      "BC-SKL-02038",
+      "BC-SKL-02039",
+      "BC-SKL-02040",
+      "BC-SKL-02042"
+   ],
+   "parameter_draw": {
+      "numerator": "linear",
+      "leading": "1",
+      "constant": "-11",
+      "trig": "sin",
+      "angle": "1/3"
+   },
+   "predicted_success_probability": 0.4134,
+   "provenance": {
+      "template_id": "TPL-BC-QA-02008-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-02008:spec-1:item-5:try-5",
+      "parameter_draw": {
+         "numerator": "linear",
+         "leading": "1",
+         "constant": "-11",
+         "trig": "sin",
+         "angle": "1/3"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, author tpl-B",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:50Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.4134
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

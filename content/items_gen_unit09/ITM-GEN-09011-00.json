@@ -1,0 +1,115 @@
+{
+   "id": "ITM-GEN-09011-00",
+   "archetype_id": "BC-QA-09011",
+   "variant_id": "BC-QV-09011-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Consider the polar curve \\( r = \\sin{\\left(\\theta \\right)} + 2 \\) for \\( 0 \\le \\theta \\le 2.1 \\). Using a calculator, find the value of \\( \\theta \\) that corresponds to the point on the curve farthest from the y-axis. Justify your answer, show the setup, and give the value correct to three decimal places.",
+      "setup_required": true,
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "numeric",
+      "mathjson": 0.3747344327087401,
+      "decimals": 3
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The distance from the y-axis is \\( |x| \\), where \\( x = r\\cos\\theta = \\left(\\sin{\\left(\\theta \\right)} + 2\\right) \\cos{\\left(\\theta \\right)} \\).",
+         "point_type_id": "BC-PT-99005",
+         "rule_named": "polar to rectangular conversion"
+      },
+      {
+         "step": 2,
+         "text": "Set \\( \\frac{dx}{d\\theta} = - \\left(\\sin{\\left(\\theta \\right)} + 2\\right) \\sin{\\left(\\theta \\right)} + \\cos^{2}{\\left(\\theta \\right)} = 0 \\). On the interval a calculator gives one solution, \\( \\theta \\approx 0.375 \\).",
+         "mathjson": 0.3747344327087401,
+         "point_type_id": "BC-PT-99013",
+         "rule_named": "critical angle"
+      },
+      {
+         "step": 3,
+         "text": "Compare the candidates, the critical angle and both endpoints: \\( |x(0)| \\approx 2.000 \\), \\( |x(0.375)| \\approx 2.202 \\), \\( |x(2.1)| \\approx 1.445 \\). The largest distance is at \\( \\theta \\approx 0.375 \\), so that is the farthest point.",
+         "point_type_id": "BC-PT-99011",
+         "rule_named": "candidates test"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-05028",
+         "value": 2.1,
+         "derivation": "the candidates compared correctly but the one nearest the axis reported",
+         "mechanism": "reversed_quantities"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-99004",
+         "value": 0.0,
+         "derivation": "the candidates comparison run without the interior critical angle, so the farther endpoint is reported",
+         "mechanism": "theorem_condition_ignored"
+      },
+      {
+         "id": "C",
+         "is_key": true,
+         "error_path": null,
+         "value": 0.375
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-09027",
+         "value": 1.571,
+         "derivation": "r treated as the distance from the axis, so the angle where r is largest is reported",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-13",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-03",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-16",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-09034",
+      "BC-SKL-09029"
+   ],
+   "parameter_draw": {
+      "constant": "2",
+      "amplitude": "1",
+      "start": "0",
+      "end": "21/10",
+      "axis": "y-axis",
+      "presentation": "equation"
+   },
+   "predicted_success_probability": 0.3318,
+   "provenance": {
+      "template_id": "TPL-BC-QA-09011-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-09011:spec-1:item-0:try-0",
+      "parameter_draw": {
+         "constant": "2",
+         "amplitude": "1",
+         "start": "0",
+         "end": "21/10",
+         "axis": "y-axis",
+         "presentation": "equation"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:54:03Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.2592
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

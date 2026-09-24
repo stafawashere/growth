@@ -1,0 +1,119 @@
+{
+   "id": "ITM-GEN-99009-19",
+   "archetype_id": "BC-QA-99009",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "The density of plankton in a vertical column of lake water is modeled by \\( \\rho(h) = 8 \\sin{\\left(\\frac{h^{2}}{4} \\right)} + 60 \\) cells per cubic meter, where h is the depth below the surface in meters. Consider the column, which has horizontal cross-sections of constant area 6.25 square meters. Using a calculator, find the number of plankton cells in the column between the depths \\( h = 0 \\) and \\( h = 5 \\) meters. Show the setup, and give the value correct to three decimal places.",
+      "setup_required": true,
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "numeric",
+      "mathjson": 1918.0517743767527,
+      "decimals": 3,
+      "units": "cells"
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "A thin slab of thickness dh holds about \\( 6.25\\,\\rho(h)\\,dh \\), so the total is \\( 6.25\\int_{0}^{5} \\left(8 \\sin{\\left(\\frac{h^{2}}{4} \\right)} + 60\\right)\\,dh \\).",
+         "rule_named": "accumulation of a density"
+      },
+      {
+         "step": 2,
+         "text": "With the calculator in radian mode the integral is about 306.888.",
+         "mathjson": 306.88828390028044,
+         "rule_named": "numerical integration"
+      },
+      {
+         "step": 3,
+         "text": "Multiplying by the area 6.25 gives about 1918.052.",
+         "mathjson": 1918.0517743767527,
+         "rule_named": "constant cross-section"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-99005",
+         "value": 306.888,
+         "derivation": "the integral of the density reported without the area, an amount per square meter given as the count",
+         "mechanism": "forgot_constant"
+      },
+      {
+         "id": "B",
+         "is_key": true,
+         "error_path": null,
+         "value": 1918.052
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-06032",
+         "value": 1884.083,
+         "derivation": "the integral evaluated with the calculator in degree mode, then multiplied by the area",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-99015",
+         "value": 383.61,
+         "derivation": "the result divided by the thickness of the layer, the average density times the area reported",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-05",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-11",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-16",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06036",
+      "BC-SKL-08012",
+      "BC-SKL-08005"
+   ],
+   "parameter_draw": {
+      "surface_density": "60",
+      "swing": "8",
+      "stretch": "4",
+      "top": "0",
+      "thickness": "5",
+      "side": "5/2",
+      "context": "plankton",
+      "area_form": "area"
+   },
+   "predicted_success_probability": 0.2592,
+   "provenance": {
+      "template_id": "TPL-BC-QA-99009-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-99009:spec-1:item-19:try-19",
+      "parameter_draw": {
+         "surface_density": "60",
+         "swing": "8",
+         "stretch": "4",
+         "top": "0",
+         "thickness": "5",
+         "side": "5/2",
+         "context": "plankton",
+         "area_form": "area"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:54:03Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.2592
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

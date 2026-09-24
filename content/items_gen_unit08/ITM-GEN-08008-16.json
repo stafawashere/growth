@@ -1,0 +1,150 @@
+{
+   "id": "ITM-GEN-08008-16",
+   "archetype_id": "BC-QA-08008",
+   "variant_id": "BC-QV-08008-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = 1 - x^{2} \\) and \\( g(x) = - x - 1 \\). Let R be the region bounded by the graphs of f and g and the vertical lines \\( x = 0 \\) and \\( x = 1 \\). Find the exact area of R.",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         13,
+         6
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "On \\( [0, 1] \\), \\( f(x) - g(x) = - x^{2} + x + 2 \\), which is positive, so f is the upper curve and the limits are the given vertical lines.",
+         "point_type_id": "BC-PT-99059",
+         "rule_named": "upper minus lower"
+      },
+      {
+         "step": 2,
+         "text": "The area is \\( \\int_{0}^{1} \\left(- x^{2} + x + 2\\right)\\,dx \\).",
+         "point_type_id": "BC-PT-99001",
+         "rule_named": "area between curves"
+      },
+      {
+         "step": 3,
+         "text": "An antiderivative of the integrand is \\( - \\frac{x^{3}}{3} + \\frac{x^{2}}{2} + 2 x \\).",
+         "point_type_id": "BC-PT-99003",
+         "rule_named": "power rule"
+      },
+      {
+         "step": 4,
+         "text": "Evaluating from \\( 0 \\) to \\( 1 \\), the area is \\( \\frac{13}{6} \\).",
+         "mathjson": [
+            "Rational",
+            13,
+            6
+         ],
+         "point_type_id": "BC-PT-99004",
+         "rule_named": "Fundamental Theorem of Calculus"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Rational",
+            13,
+            6
+         ]
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-99011",
+         "value": [
+            "Rational",
+            2,
+            3
+         ],
+         "derivation": "the area under the upper curve alone, the integral of f from the left limit to the right limit",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-08020",
+         "value": [
+            "Rational",
+            -13,
+            6
+         ],
+         "derivation": "the integrand written as g(x) - f(x), lower minus upper",
+         "mechanism": "reversed_quantities"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-99009",
+         "value": [
+            "Rational",
+            1,
+            6
+         ],
+         "derivation": "g substituted into f(x) - g(x) without parentheses, so the constant term of g is added instead of subtracted",
+         "mechanism": "algebra_slip"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-08018",
+      "BC-SKL-08019",
+      "BC-SKL-08020",
+      "BC-SKL-08021",
+      "BC-SKL-08022"
+   ],
+   "parameter_draw": {
+      "left": "0",
+      "width": "1",
+      "bulge": "1",
+      "slope": "-1",
+      "intercept": "-1",
+      "lift": "2",
+      "presentation": "formula",
+      "limits": "stated"
+   },
+   "predicted_success_probability": 0.4134,
+   "provenance": {
+      "template_id": "TPL-BC-QA-08008-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-08008:spec-1:item-16:try-16",
+      "parameter_draw": {
+         "left": "0",
+         "width": "1",
+         "bulge": "1",
+         "slope": "-1",
+         "intercept": "-1",
+         "lift": "2",
+         "presentation": "formula",
+         "limits": "stated"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, run F",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T13:02:05Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.4134
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

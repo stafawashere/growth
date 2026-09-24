@@ -1,0 +1,143 @@
+{
+   "id": "ITM-GEN-05002-17",
+   "archetype_id": "BC-QA-05002",
+   "variant_id": "BC-QV-05002-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = 3 x^{3} + 5 x + 3 \\). Find the value of c in the open interval \\( (0, 3) \\) at which the instantaneous rate of change of f equals the average rate of change of f over \\( \\left[0, 3\\right] \\). Give the exact value.",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Sqrt",
+         3
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The average rate of change is \\( \\frac{f(3) - f(0)}{3 - 0} = \\frac{99 - 3}{3} = 32 \\).",
+         "mathjson": 32,
+         "rule_named": "average rate of change"
+      },
+      {
+         "step": 2,
+         "text": "Set the derivative equal to it and solve \\( 9 c^{2} + 5 = 32 \\), which gives \\( c^{2} = 3 \\).",
+         "mathjson": 3,
+         "rule_named": "solve the derivative equation"
+      },
+      {
+         "step": 3,
+         "text": "The solutions are \\( c = \\pm \\sqrt{3} \\). Only \\( c = \\sqrt{3} \\) lies in \\( (0, 3) \\), so that is the value.",
+         "mathjson": [
+            "Sqrt",
+            3
+         ],
+         "rule_named": "keep the solution in the open interval"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-05003",
+         "value": [
+            "Multiply",
+            [
+               "Rational",
+               3,
+               2
+            ],
+            [
+               "Sqrt",
+               2
+            ]
+         ],
+         "derivation": "the average rate of change formed as the average of f'(0) and f'(3), 91/2, and the positive root taken",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-05005",
+         "value": [
+            "Negate",
+            [
+               "Sqrt",
+               3
+            ]
+         ],
+         "derivation": "the negative solution of the derivative equation reported, which lies outside the open interval",
+         "mechanism": "theorem_condition_ignored"
+      },
+      {
+         "id": "C",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Sqrt",
+            3
+         ]
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-05003",
+         "value": [
+            "Multiply",
+            [
+               "Rational",
+               1,
+               3
+            ],
+            [
+               "Sqrt",
+               46
+            ]
+         ],
+         "derivation": "the average rate of change formed by averaging the endpoint values f(0) and f(3), 51, and the positive root taken",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-05003",
+      "BC-SKL-05005"
+   ],
+   "parameter_draw": {
+      "cubic": "3",
+      "linear": "5",
+      "constant": "3",
+      "low": "0",
+      "width": "3"
+   },
+   "predicted_success_probability": 0.5,
+   "provenance": {
+      "template_id": "TPL-BC-QA-05002-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-05002:spec-1:item-17:try-17",
+      "parameter_draw": {
+         "cubic": "3",
+         "linear": "5",
+         "constant": "3",
+         "low": "0",
+         "width": "3"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:53Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": true,
+      "requested_success_probability": 0.5
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

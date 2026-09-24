@@ -1,0 +1,108 @@
+{
+   "id": "ITM-GEN-03005-11",
+   "archetype_id": "BC-QA-03005",
+   "variant_id": "BC-QV-03005-01",
+   "format": "mcq",
+   "stem": {
+      "text": "A curve is defined by \\( \\left(y + 4\\right)^{2} = \\left(x - 1\\right)^{2}\\left(x + 11\\right) \\), and its derivative is \\( \\frac{dy}{dx} = \\frac{\\left(x - 1\\right)\\left(3x + 21\\right)}{2\\left(y + 4\\right)} \\). Find every point of the curve at which the tangent line is horizontal, or show that there is none.",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "The tangent line is horizontal at \\( (-7, 12) \\) and \\( (-7, -20) \\)."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "A horizontal tangent needs the numerator of dy/dx to be 0 and the denominator to be nonzero. The numerator is 0 when \\( x = 1 \\) or \\( x = -7 \\).",
+         "rule_named": "numerator of dy/dx equal to zero"
+      },
+      {
+         "step": 2,
+         "text": "On the curve, \\( x = 1 \\) forces \\( y = -4 \\), where the denominator is also 0, so \\( (1, -4) \\) is not a point with a horizontal tangent.",
+         "rule_named": "check the denominator"
+      },
+      {
+         "step": 3,
+         "text": "Substituting \\( x = -7 \\) into the curve gives \\( \\left(y + 4\\right)^{2} = 256 \\), so \\( y = 12 \\) or \\( y = -20 \\), and the denominator is nonzero at both points.",
+         "rule_named": "substitute into the curve"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "label": "The tangent line is horizontal at \\( (-7, 12) \\) and \\( (-7, -20) \\)."
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-03013",
+         "label": "The tangent line is horizontal at \\( (1, -4) \\) and \\( (-7, -4) \\).",
+         "derivation": "the numerator's roots paired with y = -4 and reported without substituting into the curve",
+         "mechanism": "theorem_condition_ignored"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-03012",
+         "label": "The tangent line is horizontal at \\( (1, -4) \\) and \\( (-11, -4) \\).",
+         "derivation": "the denominator set to 0 instead of the numerator, which finds the points where y = v",
+         "mechanism": "reversed_quantities"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-05057",
+         "label": "The tangent line is horizontal at \\( (1, -4) \\), \\( (-7, 12) \\) and \\( (-7, -20) \\).",
+         "derivation": "the point (1, -4), where the numerator is 0, kept without checking that the denominator is also 0 there",
+         "mechanism": "theorem_condition_ignored"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-09",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-03012",
+      "BC-SKL-03013",
+      "BC-SKL-03011"
+   ],
+   "parameter_draw": {
+      "stretch": "1",
+      "spread": "2",
+      "opening": "left",
+      "h": "1",
+      "v": "-4"
+   },
+   "predicted_success_probability": 0.5866,
+   "provenance": {
+      "template_id": "TPL-BC-QA-03005-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-03005:spec-1:item-11:try-11",
+      "parameter_draw": {
+         "stretch": "1",
+         "spread": "2",
+         "opening": "left",
+         "h": "1",
+         "v": "-4"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, author tpl-B",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:50Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": true,
+      "requested_success_probability": 0.5866
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

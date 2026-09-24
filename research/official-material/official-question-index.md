@@ -1,6 +1,6 @@
 ---
 title: Official Question Coverage Index
-research_date: 2026-09-19
+research_date: 2026-09-24
 status: generated
 purpose: Coverage matrix of every public official AP Calculus BC document by year and type, generated from the cache manifest. States: ok (live on AP Central), archived_only (recovered from the Wayback Machine at the original College Board URL), not_obtained (no public copy found at any tried URL).
 ---
@@ -9,7 +9,7 @@ purpose: Coverage matrix of every public official AP Calculus BC document by yea
 
 ## Coverage matrix [verified]
 
-Generated from cache/manifest.json on 2026-09-19. Source ids are BC-SRC-<doc id>. Years before 2012 were not attempted. 2020 had no standard administration file at the College Board URL pattern [uncertain]. A not_obtained cell is a statement about this project's fetch attempts, not a claim that the document never existed.
+Generated from cache/manifest.json on 2026-09-24. Source ids are BC-SRC-<doc id>. Years before 2012 were not attempted. 2020 had no standard administration file at the College Board URL pattern [uncertain]. A not_obtained cell is a statement about this project's fetch attempts, not a claim that the document never existed.
 
 | Year | FRQ | Scoring guidelines | Samples and commentary | Scoring statistics | Score distribution | AB subscore distribution | Chief Reader report |
 |---|---|---|---|---|---|---|---|

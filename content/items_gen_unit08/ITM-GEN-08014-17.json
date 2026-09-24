@@ -1,0 +1,114 @@
+{
+   "id": "ITM-GEN-08014-17",
+   "archetype_id": "BC-QA-08014",
+   "variant_id": "BC-QV-08014-01",
+   "format": "mcq",
+   "stem": {
+      "text": "A wire is bent into the shape of the graph of \\( f(x) = \\frac{5 x \\sqrt{x + 1}}{2} \\) for \\( 2 \\le x \\le 4 \\), with x and y measured in meters. Write, but do not evaluate, an integral expression in terms of x that gives the length of the wire.",
+      "command_verb": "write"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "\\( \\int_{2}^{4} \\sqrt{1 + \\left(\\frac{5 \\left(3 x + 2\\right)}{4 \\sqrt{x + 1}}\\right)^{2}}\\,dx \\)"
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "By the product rule, \\( f'(x) = \\frac{5 \\left(3 x + 2\\right)}{4 \\sqrt{x + 1}} \\).",
+         "point_type_id": "BC-PT-99022",
+         "rule_named": "product rule"
+      },
+      {
+         "step": 2,
+         "text": "The length is the integral of \\( \\sqrt{1 + \\left(f'(x)\\right)^{2}} \\) over the interval: \\( \\int_{2}^{4} \\sqrt{1 + \\left(\\frac{5 \\left(3 x + 2\\right)}{4 \\sqrt{x + 1}}\\right)^{2}}\\,dx \\).",
+         "point_type_id": "BC-PT-99051",
+         "rule_named": "arc length"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "label": "\\( \\int_{2}^{4} \\sqrt{1 + \\left(\\frac{5 \\left(3 x + 2\\right)}{4 \\sqrt{x + 1}}\\right)^{2}}\\,dx \\)"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-08019",
+         "label": "\\( \\int_{0}^{4} \\sqrt{1 + \\left(\\frac{5 \\left(3 x + 2\\right)}{4 \\sqrt{x + 1}}\\right)^{2}}\\,dx \\)",
+         "derivation": "the lower limit taken as 0, the start of the axis, instead of the left end of the stated interval",
+         "mechanism": "wrong_limits"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-08041",
+         "label": "\\( \\int_{2}^{4} \\left(1 + \\left(\\frac{5 \\left(3 x + 2\\right)}{4 \\sqrt{x + 1}}\\right)^{2}\\right)\\,dx \\)",
+         "derivation": "the square root left off the arc length integrand",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-08042",
+         "label": "\\( \\int_{2}^{4} \\sqrt{1 + \\frac{5 \\left(3 x + 2\\right)}{4 \\sqrt{x + 1}}}\\,dx \\)",
+         "derivation": "the derivative left unsquared inside the radical",
+         "mechanism": "algebra_slip"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-05",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-09",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-08056",
+      "BC-SKL-08057",
+      "BC-SKL-08058",
+      "BC-SKL-08059"
+   ],
+   "parameter_draw": {
+      "form": "radical",
+      "scale": "5/2",
+      "left": "2",
+      "width": "2",
+      "units": "meters",
+      "framing": "context",
+      "task": "setup"
+   },
+   "predicted_success_probability": 0.4134,
+   "provenance": {
+      "template_id": "TPL-BC-QA-08014-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-08014:spec-1:item-17:try-20",
+      "parameter_draw": {
+         "form": "radical",
+         "scale": "5/2",
+         "left": "2",
+         "width": "2",
+         "units": "meters",
+         "framing": "context",
+         "task": "setup"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, run F",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T13:02:05Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.5
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

@@ -1,0 +1,257 @@
+{
+   "id": "ITM-GEN-05004-21",
+   "archetype_id": "BC-QA-05004",
+   "variant_id": "BC-QV-05004-01",
+   "format": "mcq",
+   "stem": {
+      "text": "The graph of f', the derivative of a function f, is shown for \\( 0 \\le x \\le 6 \\) and consists of six line segments. On what open intervals in \\( 0 < x < 6 \\) is the graph of f concave down? Give a reason for the answer.",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "The graph of f is concave down exactly on \\( \\left(2, 4\\right) \\) and \\( \\left(5, 6\\right) \\), because f' is decreasing there."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The graph of f is concave down exactly where f' is decreasing, that is, where the given graph falls from left to right.",
+         "point_type_id": "BC-PT-99063",
+         "rule_named": "concavity from the monotonicity of the derivative"
+      },
+      {
+         "step": 2,
+         "text": "Reading the segments, f' is decreasing on \\( \\left(2, 4\\right) \\) and \\( \\left(5, 6\\right) \\), so the graph of f is concave down on \\( \\left(2, 4\\right) \\) and \\( \\left(5, 6\\right) \\).",
+         "point_type_id": "BC-PT-99062",
+         "rule_named": "read the intervals from the graph"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-05030",
+         "label": "The graph of f is concave down exactly on \\( \\left(2, 4\\right) \\), because f' is decreasing there.",
+         "derivation": "the sign of f'' misread on (5, 6), so that interval is wrongly left out",
+         "mechanism": "sign_error"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-05031",
+         "label": "The graph of f is concave down exactly on \\( \\left(0, \\frac{2}{3}\\right) \\) and \\( \\left(3, \\frac{9}{2}\\right) \\), because f' is negative there.",
+         "derivation": "concavity read from where the plotted derivative is negative rather than where it is decreasing",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": true,
+         "error_path": null,
+         "label": "The graph of f is concave down exactly on \\( \\left(2, 4\\right) \\) and \\( \\left(5, 6\\right) \\), because f' is decreasing there."
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-05030",
+         "label": "The graph of f is concave down exactly on \\( \\left(0, 1\\right) \\), \\( \\left(2, 4\\right) \\) and \\( \\left(5, 6\\right) \\), because f' is decreasing there.",
+         "derivation": "the sign of f'' misread on (0, 1), so that interval is wrongly included",
+         "mechanism": "sign_error"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-02",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-05030",
+      "BC-SKL-05031",
+      "BC-SKL-05035"
+   ],
+   "parameter_draw": {
+      "heights": [
+         "-2",
+         "1",
+         "3",
+         "0",
+         "-3",
+         "3",
+         "1"
+      ],
+      "asked": "down"
+   },
+   "predicted_success_probability": 0.5866,
+   "provenance": {
+      "template_id": "TPL-BC-QA-05004-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-05004:spec-1:item-21:try-21",
+      "parameter_draw": {
+         "heights": [
+            "-2",
+            "1",
+            "3",
+            "0",
+            "-3",
+            "3",
+            "1"
+         ],
+         "asked": "down"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T13:51:57Z",
+      "content_snapshot": "a800600d4c437c1ba8273c7cb1a03e0fe70b74050fbabcbcf27d142ba56fded8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.5866
+   },
+   "figure": {
+      "kind": "function_graph",
+      "domain": [
+         -0.5,
+         6.5
+      ],
+      "range": [
+         -4.0,
+         4.0
+      ],
+      "curves": [
+         {
+            "segments": [
+               [
+                  [
+                     0,
+                     -2
+                  ],
+                  [
+                     1,
+                     1
+                  ]
+               ],
+               [
+                  [
+                     1,
+                     1
+                  ],
+                  [
+                     2,
+                     3
+                  ]
+               ],
+               [
+                  [
+                     2,
+                     3
+                  ],
+                  [
+                     3,
+                     0
+                  ]
+               ],
+               [
+                  [
+                     3,
+                     0
+                  ],
+                  [
+                     4,
+                     -3
+                  ]
+               ],
+               [
+                  [
+                     4,
+                     -3
+                  ],
+                  [
+                     5,
+                     3
+                  ]
+               ],
+               [
+                  [
+                     5,
+                     3
+                  ],
+                  [
+                     6,
+                     1
+                  ]
+               ]
+            ],
+            "style": "solid"
+         }
+      ],
+      "fills": [],
+      "marks": [
+         {
+            "type": "point",
+            "at": [
+               0.0,
+               -2.0
+            ]
+         },
+         {
+            "type": "point",
+            "at": [
+               1.0,
+               1.0
+            ]
+         },
+         {
+            "type": "point",
+            "at": [
+               2.0,
+               3.0
+            ]
+         },
+         {
+            "type": "point",
+            "at": [
+               3.0,
+               0.0
+            ]
+         },
+         {
+            "type": "point",
+            "at": [
+               4.0,
+               -3.0
+            ]
+         },
+         {
+            "type": "point",
+            "at": [
+               5.0,
+               3.0
+            ]
+         },
+         {
+            "type": "point",
+            "at": [
+               6.0,
+               1.0
+            ]
+         }
+      ],
+      "labels": [
+         {
+            "text": "y = f'(x)",
+            "anchor": [
+               0.2,
+               3.6
+            ],
+            "placement": "inside"
+         }
+      ],
+      "gridlines": true,
+      "axis_titles": [
+         "x",
+         "y"
+      ],
+      "alt": "The graph of f' is made of line segments joining (0, -2), (1, 1), (2, 3), (3, 0), (4, -3), (5, 3), (6, 1)."
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

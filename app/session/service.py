@@ -24,7 +24,7 @@ from app.experiments import switches
 from app.engine import constants
 from app.engine.interleave import window_violations
 from app.engine.prior import p_compensatory, p_knowledge, primary_skill
-from app.engine.select import format_for_attempt, retrievability_map
+from app.engine.select import format_for_item, retrievability_map
 from app.engine.state import Confidence, FadingStage, MasteryState, ResponseFormat
 from app.engine.update import Observation, apply_observation, rule_based_mastery_states
 from app.runtime.bank import served_steps, supports_completion
@@ -251,7 +251,7 @@ def resolve_served_format(db, session_row, block, position, item):
    so record_attempt and a second read of the same slot see the format that was served.
    """
    history = repository.load_attempts_history(db, session_row.user_id)
-   resolved = format_for_attempt(history, item["archetype_id"], FadingStage(item["stage"]))
+   resolved = format_for_item(history, item, FadingStage(item["stage"]))
    is_unchanged = item.get("format") == resolved.value
 
    if is_unchanged:

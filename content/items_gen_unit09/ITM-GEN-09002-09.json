@@ -1,0 +1,117 @@
+{
+   "id": "ITM-GEN-09002-09",
+   "archetype_id": "BC-QA-09002",
+   "variant_id": "BC-QV-09002-01",
+   "format": "mcq",
+   "stem": {
+      "text": "A curve is defined by \\( x = - t^{2} + 3 t - 1 \\) and \\( y = 2 t^{3} - 2 t^{2} - 3 \\). Find \\( \\frac{d^{2}y}{dx^{2}} \\) at \\( t = 2 \\), and state whether the curve is concave up or concave down there.",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "The curve is concave down at t = 2, because \\( \\frac{d^{2}y}{dx^{2}} = -12 \\) there."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "\\( \\frac{dy}{dx} = \\frac{dy/dt}{dx/dt} = \\frac{6 t^{2} - 4 t}{3 - 2 t} \\), which simplifies to \\( \\frac{- 6 t^{2} + 4 t}{2 t - 3} \\).",
+         "rule_named": "slope of a parametric curve"
+      },
+      {
+         "step": 2,
+         "text": "Differentiate with respect to t: \\( \\frac{d}{dt}\\left(\\frac{dy}{dx}\\right) = \\frac{- 12 t^{2} + 36 t - 12}{4 t^{2} - 12 t + 9} \\), which is \\( 12 \\) at \\( t = 2 \\).",
+         "mathjson": 12,
+         "rule_named": "quotient rule"
+      },
+      {
+         "step": 3,
+         "text": "Divide by \\( \\frac{dx}{dt} \\), which is \\( -1 \\) at \\( t = 2 \\): \\( \\frac{d^{2}y}{dx^{2}} = -12 \\), so the curve is concave down there.",
+         "mathjson": -12,
+         "rule_named": "second derivative of a parametric curve"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-09012",
+         "label": "The curve is concave up at t = 2, because \\( \\frac{d^{2}y}{dt^{2}} = 20 \\) there.",
+         "derivation": "concavity read from the sign of d2y/dt2",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-09010",
+         "label": "The curve is concave up at t = 2, because \\( \\frac{d^{2}y}{dx^{2}} = 12 \\) there.",
+         "derivation": "the derivative of dy/dx with respect to t, without the second division by dx/dt",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "C",
+         "is_key": true,
+         "error_path": null,
+         "label": "The curve is concave down at t = 2, because \\( \\frac{d^{2}y}{dx^{2}} = -12 \\) there."
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-09009",
+         "label": "The curve is concave down at t = 2, because \\( \\frac{d^{2}y}{dx^{2}} = -10 \\) there.",
+         "derivation": "d2y/dx2 taken as the quotient of the second derivatives, (d2y/dt2)/(d2x/dt2)",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-12",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-09007",
+      "BC-SKL-09008",
+      "BC-SKL-09009",
+      "BC-SKL-09010"
+   ],
+   "parameter_draw": {
+      "x_square": "-1",
+      "x_linear": "3",
+      "x_constant": "-1",
+      "y_cube": "2",
+      "y_square": "-2",
+      "y_constant": "-3",
+      "time": "2",
+      "direction": "backward"
+   },
+   "predicted_success_probability": 0.2592,
+   "provenance": {
+      "template_id": "TPL-BC-QA-09002-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-09002:spec-1:item-9:try-9",
+      "parameter_draw": {
+         "x_square": "-1",
+         "x_linear": "3",
+         "x_constant": "-1",
+         "y_cube": "2",
+         "y_square": "-2",
+         "y_constant": "-3",
+         "time": "2",
+         "direction": "backward"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, run F",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T13:02:05Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.2592
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

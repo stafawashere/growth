@@ -1,0 +1,119 @@
+{
+   "id": "ITM-GEN-05007-00",
+   "archetype_id": "BC-QA-05007",
+   "variant_id": "BC-QV-05007-01",
+   "format": "mcq",
+   "stem": {
+      "text": "The function H is the solution of the differential equation \\( \\frac{dy}{dx} = -2\\left(x - 2\\right)\\left(x + 4\\right)\\left(y^{2} + 1\\right) \\) with \\( H(0) = 2 \\), and H is defined for \\( 0 < x < 6 \\). Find the value of x in \\( 0 < x < 6 \\) at which H has a critical point, and determine whether H has a relative minimum, a relative maximum, or neither there. Give a reason for the answer.",
+      "command_verb": "determine"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "At x = 2 only; H has a relative maximum there because H' changes from positive to negative at x = 2."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "\\( H'(x) \\) is \\( -2\\left(x - 2\\right)\\left(x + 4\\right) \\) times \\( y^{2} + 1 \\), which is positive, so \\( H'(x) = 0 \\) only where \\( -2\\left(x - 2\\right)\\left(x + 4\\right) = 0 \\), at x = 2 and x = -4.",
+         "point_type_id": "BC-PT-99013",
+         "rule_named": "critical points from the derivative"
+      },
+      {
+         "step": 2,
+         "text": "Only x = 2 lies in \\( 0 < x < 6 \\); x = -4 is less than every x in the range.",
+         "point_type_id": "BC-PT-99005",
+         "rule_named": "stated range"
+      },
+      {
+         "step": 3,
+         "text": "On the range the factor \\( \\left(x + 4\\right) \\) keeps one sign, so H' changes from positive to negative at x = 2, and H has a relative maximum there.",
+         "point_type_id": "BC-PT-99012",
+         "rule_named": "first derivative test"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-05022",
+         "label": "At x = 2 only; H has neither there because H' stays close to 0 on both sides of x = 2.",
+         "derivation": "the point classified by the size of the derivative nearby rather than by whether its sign changes",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-05010",
+         "label": "At x = 2 and x = -4; H has a relative maximum at x = 2 and a relative minimum at x = -4 because H' changes sign at each.",
+         "derivation": "the zero x = -4 of the derivative kept although it lies outside the stated range",
+         "mechanism": "theorem_condition_ignored"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-05021",
+         "label": "At x = 2 only; H has a relative minimum there because H' changes from positive to negative at x = 2.",
+         "derivation": "the direction of the sign change read the wrong way round in the classification",
+         "mechanism": "sign_error"
+      },
+      {
+         "id": "D",
+         "is_key": true,
+         "error_path": null,
+         "label": "At x = 2 only; H has a relative maximum there because H' changes from positive to negative at x = 2."
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-05010",
+      "BC-SKL-05020",
+      "BC-SKL-05039"
+   ],
+   "parameter_draw": {
+      "inside_root": "2",
+      "range_end": "6",
+      "outside_root": "-4",
+      "scale": "2",
+      "leading_sign": "-1",
+      "letters": "Hr",
+      "given": "differential"
+   },
+   "predicted_success_probability": 0.3318,
+   "provenance": {
+      "template_id": "TPL-BC-QA-05007-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-05007:spec-1:item-0:try-0",
+      "parameter_draw": {
+         "inside_root": "2",
+         "range_end": "6",
+         "outside_root": "-4",
+         "scale": "2",
+         "leading_sign": "-1",
+         "letters": "Hr",
+         "given": "differential"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, run D",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:56Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.4134
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

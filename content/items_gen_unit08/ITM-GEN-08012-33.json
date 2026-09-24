@@ -1,0 +1,161 @@
+{
+   "id": "ITM-GEN-08012-33",
+   "archetype_id": "BC-QA-08012",
+   "variant_id": "BC-QV-08012-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = x + 2 \\). Let R be the region bounded by the graph of f, the line \\( y = 2 \\), and the vertical line \\( x = 4 \\). Find the exact volume of the solid generated when R is revolved about the line \\( y = 2 \\).",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Multiply",
+         [
+            "Rational",
+            64,
+            3
+         ],
+         "Pi"
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Each slice perpendicular to the x-axis is a disc whose radius is the distance from the curve to the axis, \\( r = f(x) - 2 = x \\).",
+         "point_type_id": "BC-PT-99058",
+         "rule_named": "disc radius"
+      },
+      {
+         "step": 2,
+         "text": "The volume is \\( \\pi\\int_{0}^{4} \\left(x\\right)^{2}\\,dx \\).",
+         "point_type_id": "BC-PT-99001",
+         "rule_named": "disc method"
+      },
+      {
+         "step": 3,
+         "text": "Since \\( \\int_{0}^{4} x^{2}\\,dx = \\frac{64}{3} \\), the volume is \\( \\frac{64 \\pi}{3} \\).",
+         "mathjson": [
+            "Multiply",
+            [
+               "Rational",
+               64,
+               3
+            ],
+            "Pi"
+         ],
+         "point_type_id": "BC-PT-99004",
+         "rule_named": "power rule"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-08038",
+         "value": [
+            "Multiply",
+            [
+               "Rational",
+               208,
+               3
+            ],
+            "Pi"
+         ],
+         "derivation": "the radius measured from the x-axis, f(x), instead of from the line y = 2",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Multiply",
+            [
+               "Rational",
+               64,
+               3
+            ],
+            "Pi"
+         ]
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-08037",
+         "value": [
+            "Rational",
+            64,
+            3
+         ],
+         "derivation": "the factor of pi left off, the integral of r squared",
+         "mechanism": "forgot_constant"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-08036",
+         "value": [
+            "Multiply",
+            8,
+            "Pi"
+         ],
+         "derivation": "the radius left unsquared, pi times the integral of r",
+         "mechanism": "algebra_slip"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-08040",
+      "BC-SKL-08041",
+      "BC-SKL-08042",
+      "BC-SKL-08043",
+      "BC-SKL-08044",
+      "BC-SKL-08045",
+      "BC-SKL-08046",
+      "BC-SKL-08047"
+   ],
+   "parameter_draw": {
+      "form": "linear",
+      "scale": "1",
+      "left": "0",
+      "width": "4",
+      "level": "2",
+      "presentation": "formula",
+      "axis": "shifted"
+   },
+   "predicted_success_probability": 0.5,
+   "provenance": {
+      "template_id": "TPL-BC-QA-08012-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-08012:spec-1:item-33:try-3",
+      "parameter_draw": {
+         "form": "linear",
+         "scale": "1",
+         "left": "0",
+         "width": "4",
+         "level": "2",
+         "presentation": "formula",
+         "axis": "shifted"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, run F",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T20:01:51Z",
+      "content_snapshot": "a800600d4c437c1ba8273c7cb1a03e0fe70b74050fbabcbcf27d142ba56fded8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.5
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

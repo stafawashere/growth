@@ -1,0 +1,139 @@
+{
+   "id": "ITM-GEN-10009-02",
+   "archetype_id": "BC-QA-10009",
+   "variant_id": "BC-QV-10009-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( P_3(x) \\) be the Taylor polynomial of degree 3 for a function f about \\( x = 1 \\). On the interval \\( 1 \\le x \\le \\frac{5}{3} \\), \\( f^{(4)}(x) \\) is positive and increasing, with \\( f^{(4)}(1) = 4 \\) and \\( f^{(4)}(\\frac{5}{3}) = 12 \\). Use the Lagrange error bound to find an upper bound for \\( \\left|f(\\frac{5}{3}) - P_3(\\frac{5}{3})\\right| \\).",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         8,
+         81
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "A polynomial of degree 3 needs the bound M on the fourth derivative. An increasing positive function is largest at the right end of the interval, so \\( M = f^{(4)}(\\frac{5}{3}) = 12 \\).",
+         "rule_named": "order of the bounding derivative"
+      },
+      {
+         "step": 2,
+         "text": "The Lagrange error bound is \\( \\left|f(\\frac{5}{3}) - P_3(\\frac{5}{3})\\right| \\le \\frac{M}{4!} \\left|\\frac{5}{3} - 1\\right|^{4} \\).",
+         "point_type_id": "BC-PT-99039",
+         "rule_named": "Lagrange error bound form"
+      },
+      {
+         "step": 3,
+         "text": "With \\( M = 12 \\) and distance \\( \\frac{2}{3} \\), the bound is \\( \\frac{12}{24} \\left(\\frac{2}{3}\\right)^{4} = \\frac{8}{81} \\).",
+         "mathjson": [
+            "Rational",
+            8,
+            81
+         ],
+         "point_type_id": "BC-PT-99041",
+         "rule_named": "evaluate the bound"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-10025",
+         "value": [
+            "Rational",
+            625,
+            162
+         ],
+         "derivation": "the bound evaluated at the input 5/3 itself instead of at its distance 2/3 from the centre",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "B",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Rational",
+            8,
+            81
+         ]
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-10032",
+         "value": [
+            "Rational",
+            32,
+            81
+         ],
+         "derivation": "the factorial taken as 3! instead of 4!",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-10032",
+         "value": [
+            "Rational",
+            8,
+            243
+         ],
+         "derivation": "the derivative's value 4 at the near end used in place of its maximum 12",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10048",
+      "BC-SKL-10049",
+      "BC-SKL-10050",
+      "BC-SKL-10051",
+      "BC-SKL-10052"
+   ],
+   "parameter_draw": {
+      "given": "endpoints",
+      "degree": "3",
+      "centre": "1",
+      "step": "2/3",
+      "maximum": "12",
+      "minimum": "4"
+   },
+   "predicted_success_probability": 0.5,
+   "provenance": {
+      "template_id": "TPL-BC-QA-10009-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-10009:spec-1:item-2:try-2",
+      "parameter_draw": {
+         "given": "endpoints",
+         "degree": "3",
+         "centre": "1",
+         "step": "2/3",
+         "maximum": "12",
+         "minimum": "4"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:58:54Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.5866
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

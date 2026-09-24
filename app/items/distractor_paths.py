@@ -12,7 +12,7 @@ under the other policy and hands an unsettled comparison back under its own code
 app/items/ingest.py reads as indeterminate and routes to review. Both policies are deliberate.
 """
 from app.items import verify
-from app.items.ingest import distractor_options, key_options
+from app.items.ingest import distractor_options, is_statement_record, key_options
 from app.items.mathjson import UnsupportedMathJSON, to_sympy
 
 
@@ -58,6 +58,9 @@ def distractor_path_violations(record, error_ids):
 
    violations.extend(_error_path_violations(distractors, error_ids))
 
+   if is_statement_record(record):
+      return violations + _statement_label_violations(options)
+
    expressions = {}
 
    for option in options:
@@ -73,6 +76,27 @@ def distractor_path_violations(record, error_ids):
    findings = verify.comparison_findings(key_expression, readable_expressions)
 
    violations.extend(_comparison_violations(findings, readable, key_label))
+
+   return violations
+
+
+def _statement_label_violations(options):
+   """A statement item's options are sentences: each needs one, and no two may be the same."""
+   violations = []
+   seen = {}
+
+   for option in options:
+      label = _label(option)
+      text = " ".join((option.get("label") or "").split())
+
+      if not text:
+         violations.append(f"option {label} carries no label")
+         continue
+
+      if text in seen:
+         violations.append(f"options {seen[text]} and {label} carry the same label")
+
+      seen.setdefault(text, label)
 
    return violations
 

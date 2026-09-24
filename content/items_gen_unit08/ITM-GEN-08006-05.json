@@ -1,0 +1,115 @@
+{
+   "id": "ITM-GEN-08006-05",
+   "archetype_id": "BC-QA-08006",
+   "variant_id": "BC-QV-08006-01",
+   "format": "mcq",
+   "stem": {
+      "text": "The amount of oil in a holding tank changes at the rate \\( A'(t) = 18 \\cos{\\left(\\frac{\\pi t}{8} \\right)} + 6 \\) barrels per hour for \\( 0 \\le t \\le 16 \\). At time \\( t = 0 \\) there are 50 barrels of oil in the tank, and t is measured in hours. Using a calculator, find the time in \\( 0 \\le t \\le 16 \\) at which the amount A(t) of oil is greatest, and justify the answer. Show the setup for the calculations.",
+      "setup_required": true,
+      "command_verb": "justify"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "The amount is greatest at t = 16, where A is 146 barrels, the largest of the values of A at t = 0, at both critical points and at t = 16."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The amount is \\( A(t) = 50 + \\int_{0}^{t} \\left(18 \\cos{\\left(\\frac{\\pi s}{8} \\right)} + 6\\right)\\,ds \\), so \\( A'(t) = 18 \\cos{\\left(\\frac{\\pi t}{8} \\right)} + 6 \\). Setting \\( A'(t) = 0 \\) and solving with a calculator gives \\( t = 4.865 \\) and \\( t = 11.135 \\) in the interval.",
+         "point_type_id": "BC-PT-99013",
+         "rule_named": "critical points of an accumulation function"
+      },
+      {
+         "step": 2,
+         "text": "The candidates are the critical points and both endpoints: \\( A(0) = 50 \\), \\( A(4.865) \\approx 122.408 \\), \\( A(11.135) \\approx 73.592 \\), and \\( A(16) = 50 + \\int_{0}^{16} A'(s)\\,ds = 146 \\).",
+         "point_type_id": "BC-PT-99064",
+         "rule_named": "candidates test"
+      },
+      {
+         "step": 3,
+         "text": "The largest candidate value is 146, at the endpoint, so the amount is greatest at \\( t = 16 \\) hours.",
+         "point_type_id": "BC-PT-99011",
+         "rule_named": "candidates test conclusion"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-99004",
+         "label": "The amount is greatest at t = 4.865, where A is 122.408 barrels, because A' changes from positive to negative there.",
+         "derivation": "the sign change of A' from positive to negative at the first critical point taken as proof of the absolute maximum",
+         "mechanism": "theorem_condition_ignored"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-08011",
+         "label": "The amount is greatest at t = 16, where A is 96 barrels, the largest of the values of A at t = 0, at both critical points and at t = 16.",
+         "derivation": "the amount at each candidate found from the integral alone, without the initial amount",
+         "mechanism": "forgot_constant"
+      },
+      {
+         "id": "C",
+         "is_key": true,
+         "error_path": null,
+         "label": "The amount is greatest at t = 16, where A is 146 barrels, the largest of the values of A at t = 0, at both critical points and at t = 16."
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-08016",
+         "label": "The amount is greatest at t = 4.865, where A is 122.408 barrels, the larger of the values of A at the two critical points.",
+         "derivation": "the candidates test run on the two critical points only, leaving out both endpoints",
+         "mechanism": "theorem_condition_ignored"
+      }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-05",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-16",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-08014",
+      "BC-SKL-08012"
+   ],
+   "parameter_draw": {
+      "period": "16",
+      "net": "6",
+      "times": "3",
+      "outflow": "5",
+      "initial": "50",
+      "context": "oil",
+      "presentation": "net_rate"
+   },
+   "predicted_success_probability": 0.3318,
+   "provenance": {
+      "template_id": "TPL-BC-QA-08006-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-08006:spec-1:item-5:try-5",
+      "parameter_draw": {
+         "period": "16",
+         "net": "6",
+         "times": "3",
+         "outflow": "5",
+         "initial": "50",
+         "context": "oil",
+         "presentation": "net_rate"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, run F",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T13:02:05Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.3318
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

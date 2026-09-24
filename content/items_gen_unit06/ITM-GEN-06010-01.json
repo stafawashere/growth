@@ -1,0 +1,382 @@
+{
+   "id": "ITM-GEN-06010-01",
+   "archetype_id": "BC-QA-06010",
+   "variant_id": "BC-QV-06010-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Find the indefinite integral \\( \\int \\frac{4 x^{2} - 11 x + 106}{4 x^{2} - 11 x - 20}\\,dx \\).",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         "x",
+         [
+            "Multiply",
+            6,
+            [
+               "Ln",
+               [
+                  "Abs",
+                  [
+                     "Add",
+                     "x",
+                     -4
+                  ]
+               ]
+            ]
+         ],
+         [
+            "Multiply",
+            -1,
+            6,
+            [
+               "Ln",
+               [
+                  "Abs",
+                  [
+                     "Add",
+                     [
+                        "Multiply",
+                        4,
+                        "x"
+                     ],
+                     5
+                  ]
+               ]
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The numerator and denominator both have degree 2, so divide first: \\( \\frac{4 x^{2} - 11 x + 106}{4 x^{2} - 11 x - 20} = 1 + \\frac{126}{4 x^{2} - 11 x - 20} \\).",
+         "rule_named": "polynomial division before decomposition"
+      },
+      {
+         "step": 2,
+         "text": "Factor the denominator as \\( \\left(4 x + 5\\right)\\left(x - 4\\right) \\) and write \\( \\frac{126}{4 x^{2} - 11 x - 20} = \\frac{A}{4 x + 5} + \\frac{B}{x - 4} \\). Clearing denominators and substituting \\( x = - \\frac{5}{4} \\) and \\( x = 4 \\) gives \\( A = -24 \\) and \\( B = 6 \\).",
+         "mathjson": [
+            "Add",
+            "x",
+            [
+               "Multiply",
+               -1,
+               24,
+               [
+                  "Power",
+                  [
+                     "Add",
+                     [
+                        "Multiply",
+                        4,
+                        "x"
+                     ],
+                     5
+                  ],
+                  -1
+               ]
+            ],
+            [
+               "Multiply",
+               6,
+               [
+                  "Power",
+                  [
+                     "Add",
+                     "x",
+                     -4
+                  ],
+                  -1
+               ]
+            ]
+         ],
+         "point_type_id": "BC-PT-99081",
+         "rule_named": "partial fraction decomposition"
+      },
+      {
+         "step": 3,
+         "text": "Antidifferentiate each term, dividing by the leading coefficient 4 for the first: the integral is \\( x + 6 \\ln{\\left(\\left|{x - 4}\\right| \\right)} - 6 \\ln{\\left(\\left|{4 x + 5}\\right| \\right)} + C \\).",
+         "mathjson": [
+            "Add",
+            "x",
+            [
+               "Multiply",
+               6,
+               [
+                  "Ln",
+                  [
+                     "Abs",
+                     [
+                        "Add",
+                        "x",
+                        -4
+                     ]
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               -1,
+               6,
+               [
+                  "Ln",
+                  [
+                     "Abs",
+                     [
+                        "Add",
+                        [
+                           "Multiply",
+                           4,
+                           "x"
+                        ],
+                        5
+                     ]
+                  ]
+               ]
+            ]
+         ],
+         "point_type_id": "BC-PT-99003",
+         "rule_named": "antiderivative of 1 over a linear factor"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-06026",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               6,
+               [
+                  "Ln",
+                  [
+                     "Abs",
+                     [
+                        "Add",
+                        "x",
+                        -4
+                     ]
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               -1,
+               6,
+               [
+                  "Ln",
+                  [
+                     "Abs",
+                     [
+                        "Add",
+                        [
+                           "Multiply",
+                           4,
+                           "x"
+                        ],
+                        5
+                     ]
+                  ]
+               ]
+            ]
+         ],
+         "derivation": "the improper fraction decomposed directly; the constants come out the same but the polynomial part x from the division is lost",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Add",
+            "x",
+            [
+               "Multiply",
+               6,
+               [
+                  "Ln",
+                  [
+                     "Abs",
+                     [
+                        "Add",
+                        "x",
+                        -4
+                     ]
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               -1,
+               6,
+               [
+                  "Ln",
+                  [
+                     "Abs",
+                     [
+                        "Add",
+                        [
+                           "Multiply",
+                           4,
+                           "x"
+                        ],
+                        5
+                     ]
+                  ]
+               ]
+            ]
+         ]
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-07030",
+         "value": [
+            "Add",
+            "x",
+            [
+               "Multiply",
+               6,
+               [
+                  "Ln",
+                  [
+                     "Add",
+                     "x",
+                     -4
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               -1,
+               6,
+               [
+                  "Ln",
+                  [
+                     "Add",
+                     [
+                        "Multiply",
+                        4,
+                        "x"
+                     ],
+                     5
+                  ]
+               ]
+            ]
+         ],
+         "derivation": "the absolute values removed from both logarithms with no sign check",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-06019",
+         "value": [
+            "Add",
+            "x",
+            [
+               "Multiply",
+               6,
+               [
+                  "Ln",
+                  [
+                     "Abs",
+                     [
+                        "Add",
+                        "x",
+                        -4
+                     ]
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               -1,
+               24,
+               [
+                  "Ln",
+                  [
+                     "Abs",
+                     [
+                        "Add",
+                        [
+                           "Multiply",
+                           4,
+                           "x"
+                        ],
+                        5
+                     ]
+                  ]
+               ]
+            ]
+         ],
+         "derivation": "the reciprocal 1/4 that d(u) = 4 dx introduces dropped from the first logarithm",
+         "mechanism": "chain_rule_omitted"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06062",
+      "BC-SKL-06063",
+      "BC-SKL-06064",
+      "BC-SKL-06065"
+   ],
+   "parameter_draw": {
+      "degree": "improper",
+      "leading": "4",
+      "first_shift": "5",
+      "second_shift": "-4",
+      "weight": "-6"
+   },
+   "predicted_success_probability": 0.1978,
+   "provenance": {
+      "template_id": "TPL-BC-QA-06010-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-06010:spec-1:item-1:try-1",
+      "parameter_draw": {
+         "degree": "improper",
+         "leading": "4",
+         "first_shift": "5",
+         "second_shift": "-4",
+         "weight": "-6"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T13:51:57Z",
+      "content_snapshot": "a800600d4c437c1ba8273c7cb1a03e0fe70b74050fbabcbcf27d142ba56fded8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.1978
+   },
+   "review_decision": {
+      "item_id": "ITM-GEN-06010-01",
+      "decision": "approve",
+      "reason": "key verified by differentiation on every side of the roots; the blind solver dropped the absolute values (SymPy's log convention), formulation corrected",
+      "by": "claude-opus-5-5 on the operator's delegation of 2026-09-24",
+      "decided_on": "2026-09-24",
+      "rules": [
+         3,
+         5
+      ],
+      "archetype_id": "BC-QA-06010",
+      "prompt_version": "generator/template_v1",
+      "template_id": "TPL-BC-QA-06010-v1"
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

@@ -1,0 +1,175 @@
+{
+   "id": "ITM-GEN-06001-07",
+   "archetype_id": "BC-QA-06001",
+   "variant_id": "BC-QV-06001-01",
+   "format": "mcq",
+   "stem": {
+      "text": "A file downloads at a rate of R(t) megabytes per second, where t is measured in seconds for \\( 0 \\le t \\le 8 \\). Selected values of R(t) are shown in the table. Using a right Riemann sum with the four subintervals indicated by the table, approximate \\( \\int_{0}^{8} R(t)\\,dt \\). Show the setup for the sum, and give the answer in megabytes.",
+      "setup_required": true,
+      "command_verb": "approximate"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 77,
+      "units": "megabytes"
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The table gives four subintervals with endpoints 0, 1, 4, 5, 8, so their widths are 1, 3, 1, 3.",
+         "rule_named": "subinterval widths from the table"
+      },
+      {
+         "step": 2,
+         "text": "A right Riemann sum uses the value of R at the right end of each subinterval: \\( 1(12) + 3(7) + 1(11) + 3(11) \\).",
+         "point_type_id": "BC-PT-99018",
+         "rule_named": "Riemann sum"
+      },
+      {
+         "step": 3,
+         "text": "So \\( \\int_{0}^{8} R(t)\\,dt \\) is approximately \\( 77 \\) megabytes.",
+         "mathjson": 77,
+         "point_type_id": "BC-PT-99019",
+         "rule_named": "arithmetic"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-06001",
+         "value": 82,
+         "derivation": "one common width, 8/4, used for every subinterval although the table inputs are unevenly spaced",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": true,
+         "error_path": null,
+         "value": 77
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-06002",
+         "value": 88,
+         "derivation": "the left endpoint of each subinterval used where a right sum was asked for",
+         "mechanism": "wrong_limits"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-06003",
+         "value": 41,
+         "derivation": "the four right endpoint values of R added with no widths",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-05",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-05",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-16",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06005",
+      "BC-SKL-06006",
+      "BC-SKL-06010",
+      "BC-SKL-06036"
+   ],
+   "parameter_draw": {
+      "gaps": [
+         "1",
+         "3",
+         "1",
+         "3"
+      ],
+      "even_gap": "2",
+      "rates": [
+         "12",
+         "12",
+         "7",
+         "11",
+         "11"
+      ],
+      "endpoint": "right",
+      "context": "download",
+      "spacing": "nonuniform",
+      "framing": "context"
+   },
+   "predicted_success_probability": 0.0573,
+   "provenance": {
+      "template_id": "TPL-BC-QA-06001-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-06001:spec-1:item-7:try-7",
+      "parameter_draw": {
+         "gaps": [
+            "1",
+            "3",
+            "1",
+            "3"
+         ],
+         "even_gap": "2",
+         "rates": [
+            "12",
+            "12",
+            "7",
+            "11",
+            "11"
+         ],
+         "endpoint": "right",
+         "context": "download",
+         "spacing": "nonuniform",
+         "framing": "context"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, run D",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:56Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.0794
+   },
+   "figure": {
+      "kind": "table",
+      "columns": [
+         "t (seconds)",
+         "R(t) (megabytes per second)"
+      ],
+      "rows": [
+         [
+            "0",
+            "12"
+         ],
+         [
+            "1",
+            "12"
+         ],
+         [
+            "4",
+            "7"
+         ],
+         [
+            "5",
+            "11"
+         ],
+         [
+            "8",
+            "11"
+         ]
+      ],
+      "labels": [],
+      "alt": "A table of R(t): at t = 0, R(t) = 12; at t = 1, R(t) = 12; at t = 4, R(t) = 7; at t = 5, R(t) = 11; at t = 8, R(t) = 11."
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

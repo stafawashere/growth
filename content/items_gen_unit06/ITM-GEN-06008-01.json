@@ -1,0 +1,285 @@
+{
+   "id": "ITM-GEN-06008-01",
+   "archetype_id": "BC-QA-06008",
+   "variant_id": "BC-QV-06008-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Find \\( \\int 3 x^{2} \\cos{\\left(2 x^{3} + 2 \\right)}\\,dx \\).",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         "C",
+         [
+            "Multiply",
+            [
+               "Rational",
+               1,
+               2
+            ],
+            [
+               "Sin",
+               [
+                  "Add",
+                  [
+                     "Multiply",
+                     2,
+                     [
+                        "Power",
+                        "x",
+                        3
+                     ]
+                  ],
+                  2
+               ]
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Let \\( u = 2 x^{3} + 2 \\). Then \\( du = 6 x^{2}\\,dx \\), so the integrand is \\( \\frac{1}{2} \\) times \\( \\cos{\\left(u \\right)} \\) du: \\( \\frac{1}{2}\\int \\cos{\\left(u \\right)}\\,du \\).",
+         "point_type_id": "BC-PT-99002",
+         "rule_named": "substitution"
+      },
+      {
+         "step": 2,
+         "text": "Antidifferentiating in u gives \\( \\frac{\\sin{\\left(u \\right)}}{2} + C \\).",
+         "point_type_id": "BC-PT-99003",
+         "rule_named": "basic antiderivative"
+      },
+      {
+         "step": 3,
+         "text": "Replacing u by \\( 2 x^{3} + 2 \\) gives \\( C + \\frac{\\sin{\\left(2 x^{3} + 2 \\right)}}{2} \\).",
+         "mathjson": [
+            "Add",
+            "C",
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  2
+               ],
+               [
+                  "Sin",
+                  [
+                     "Add",
+                     [
+                        "Multiply",
+                        2,
+                        [
+                           "Power",
+                           "x",
+                           3
+                        ]
+                     ],
+                     2
+                  ]
+               ]
+            ]
+         ],
+         "point_type_id": "BC-PT-99004",
+         "rule_named": "back substitution"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-06019",
+         "value": [
+            "Add",
+            "C",
+            [
+               "Multiply",
+               3,
+               [
+                  "Sin",
+                  [
+                     "Add",
+                     [
+                        "Multiply",
+                        2,
+                        [
+                           "Power",
+                           "x",
+                           3
+                        ]
+                     ],
+                     2
+                  ]
+               ]
+            ]
+         ],
+         "derivation": "the reciprocal constant 1/6 from du dropped, keeping only the multiplier 3",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "B",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Add",
+            "C",
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  2
+               ],
+               [
+                  "Sin",
+                  [
+                     "Add",
+                     [
+                        "Multiply",
+                        2,
+                        [
+                           "Power",
+                           "x",
+                           3
+                        ]
+                     ],
+                     2
+                  ]
+               ]
+            ]
+         ]
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-06019",
+         "value": [
+            "Add",
+            "C",
+            [
+               "Multiply",
+               18,
+               [
+                  "Sin",
+                  [
+                     "Add",
+                     [
+                        "Multiply",
+                        2,
+                        [
+                           "Power",
+                           "x",
+                           3
+                        ]
+                     ],
+                     2
+                  ]
+               ]
+            ]
+         ],
+         "derivation": "the constant 6 from du multiplied in instead of its reciprocal",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-06020",
+         "value": [
+            "Add",
+            "C",
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  2
+               ],
+               [
+                  "Sin",
+                  [
+                     "Add",
+                     [
+                        "Multiply",
+                        2,
+                        [
+                           "Power",
+                           "x",
+                           3
+                        ]
+                     ],
+                     2
+                  ]
+               ]
+            ]
+         ],
+         "derivation": "the factor x^{2} treated as a constant and left outside, so the substitution runs as if du held no power of x",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06047",
+      "BC-SKL-06048",
+      "BC-SKL-06049",
+      "BC-SKL-06050",
+      "BC-SKL-06051",
+      "BC-SKL-06052",
+      "BC-SKL-06034"
+   ],
+   "parameter_draw": {
+      "inner_power": "3",
+      "inner_scale": "2",
+      "inner_shift": "2",
+      "multiplier": "3",
+      "outer_power": "2",
+      "upper": "1",
+      "outer": "cosine",
+      "form": "indefinite"
+   },
+   "predicted_success_probability": 0.2592,
+   "provenance": {
+      "template_id": "TPL-BC-QA-06008-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-06008:spec-1:item-1:try-1",
+      "parameter_draw": {
+         "inner_power": "3",
+         "inner_scale": "2",
+         "inner_shift": "2",
+         "multiplier": "3",
+         "outer_power": "2",
+         "upper": "1",
+         "outer": "cosine",
+         "form": "indefinite"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, run D",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T13:51:57Z",
+      "content_snapshot": "a800600d4c437c1ba8273c7cb1a03e0fe70b74050fbabcbcf27d142ba56fded8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.2592
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

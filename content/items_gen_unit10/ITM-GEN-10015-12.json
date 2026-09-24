@@ -1,0 +1,127 @@
+{
+   "id": "ITM-GEN-10015-12",
+   "archetype_id": "BC-QA-10015",
+   "variant_id": "BC-QV-10015-01",
+   "format": "mcq",
+   "stem": {
+      "text": "The power series \\( \\sum_{n=1}^{\\infty} \\frac{\\left(x - 2\\right)^{n}}{3^{n} n^{2}} \\) has radius of convergence \\( 3 \\). Determine whether the series converges or diverges at \\( x = -1 \\), naming the test used.",
+      "command_verb": "determine"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "At \\( x = -1 \\) the series converges by the alternating series test, because the sizes \\( \\frac{1}{n^{2}} \\) decrease to 0."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The ratio test gives convergence for \\( \\left|x - 2\\right| < 3 \\), so the left endpoint is \\( x = -1 \\).",
+         "rule_named": "locate the endpoint"
+      },
+      {
+         "step": 2,
+         "text": "At \\( x = -1 \\), \\( \\frac{\\left(x - 2\\right)^{n}}{3^{n}} = \\left(\\frac{-3}{3}\\right)^{n} = (-1)^{n} \\), so the series becomes \\( \\sum_{n=1}^{\\infty} \\frac{(-1)^{n}}{n^{2}} \\).",
+         "rule_named": "substitute the endpoint"
+      },
+      {
+         "step": 3,
+         "text": "The terms alternate in sign, their sizes \\( \\frac{1}{n^{2}} \\) decrease as n increases, and \\( \\lim_{n\\to\\infty} \\frac{1}{n^{2}} = 0 \\).",
+         "rule_named": "alternating series test"
+      },
+      {
+         "step": 4,
+         "text": "At \\( x = -1 \\) the series converges by the alternating series test, because the sizes \\( \\frac{1}{n^{2}} \\) decrease to 0, so \\( x = -1 \\) belongs to the interval of convergence.",
+         "rule_named": "verdict at the endpoint"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-10017",
+         "label": "At \\( x = -1 \\) the series converges by the alternating series test, because \\( \\frac{1}{n^{2}} = 0 \\).",
+         "derivation": "the limit of the sizes written as an equation without limit notation, so the term itself is set equal to 0",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-10037",
+         "label": "At \\( x = -1 \\) the series diverges by the ratio test, because \\( -1 < x < 5 \\) leaves it out.",
+         "derivation": "the endpoint never examined: the open interval from the ratio test taken as the whole answer",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-10020",
+         "label": "At \\( x = -1 \\) the series converges by the alternating series test, because \\( \\lim_{n\\to\\infty} \\frac{1}{n^{2}} = 0 \\).",
+         "derivation": "the alternating series test applied with only the limit condition, the decrease of the sizes never stated",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": true,
+         "error_path": null,
+         "label": "At \\( x = -1 \\) the series converges by the alternating series test, because the sizes \\( \\frac{1}{n^{2}} \\) decrease to 0."
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10020",
+      "BC-SKL-10021",
+      "BC-SKL-10022",
+      "BC-SKL-10024",
+      "BC-SKL-10025",
+      "BC-SKL-10027",
+      "BC-SKL-10030",
+      "BC-SKL-10036",
+      "BC-SKL-10057",
+      "BC-SKL-10058",
+      "BC-SKL-10071"
+   ],
+   "parameter_draw": {
+      "form": "power",
+      "power": "2",
+      "sign": "positive",
+      "end": "left",
+      "given": "value",
+      "centre": "2",
+      "radius": "3",
+      "shift": "4"
+   },
+   "predicted_success_probability": 0.5866,
+   "provenance": {
+      "template_id": "TPL-BC-QA-10015-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-10015:spec-1:item-12:try-12",
+      "parameter_draw": {
+         "form": "power",
+         "power": "2",
+         "sign": "positive",
+         "end": "left",
+         "given": "value",
+         "centre": "2",
+         "radius": "3",
+         "shift": "4"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:58:54Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": true,
+      "requested_success_probability": 0.5
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

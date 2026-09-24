@@ -1,0 +1,109 @@
+{
+   "id": "ITM-GEN-01009-00",
+   "archetype_id": "BC-QA-01009",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = \\frac{3 x \\left(x + 3\\right)}{x \\left(x + 1\\right)} \\). Find every vertical asymptote of the graph of f, and state the one sided limits of f at each one.",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "Only \\( x = -1 \\) is a vertical asymptote, with \\( \\lim_{x \\to -1^{-}} f(x) = -\\infty \\) and \\( \\lim_{x \\to -1^{+}} f(x) = \\infty \\)."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Factor and cancel: for \\( x \\ne 0 \\), \\( f(x) = \\frac{3 x + 9}{x + 1} \\). The factor at \\( x = 0 \\) divides out, so that break is removable, with no asymptote.",
+         "rule_named": "factor and cancel"
+      },
+      {
+         "step": 2,
+         "text": "The remaining denominator is 0 only at \\( x = -1 \\), where the numerator of the reduced expression is 6, not 0.",
+         "rule_named": "zeros of the reduced denominator"
+      },
+      {
+         "step": 3,
+         "text": "The denominator \\( x + 1 \\) is negative just left of -1 and positive just right of it, so \\( \\lim_{x \\to -1^{-}} f(x) = -\\infty \\) and \\( \\lim_{x \\to -1^{+}} f(x) = \\infty \\).",
+         "rule_named": "sign of the quotient on each side"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "label": "Only \\( x = -1 \\) is a vertical asymptote, with \\( \\lim_{x \\to -1^{-}} f(x) = -\\infty \\) and \\( \\lim_{x \\to -1^{+}} f(x) = \\infty \\)."
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-01019",
+         "label": "Only \\( x = -1 \\) is a vertical asymptote, with \\( \\lim_{x \\to -1} f(x) = \\infty \\) from both sides.",
+         "derivation": "one two sided infinite limit written although the two sides have opposite signs",
+         "mechanism": "sign_error"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-01020",
+         "label": "No line is a vertical asymptote, because \\( \\lim_{x \\to -1^{+}} f(x) = \\infty \\) is a limit that exists at \\( x = -1 \\).",
+         "derivation": "the infinite one sided limit read as an existing limit, so no asymptote is recognised",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-01018",
+         "label": "Both \\( x = 0 \\) and \\( x = -1 \\) are vertical asymptotes, with \\( \\lim_{x \\to -1^{-}} f(x) = -\\infty \\) and \\( \\lim_{x \\to -1^{+}} f(x) = \\infty \\).",
+         "derivation": "a vertical asymptote named at the zero of the denominator whose factor divides out",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-01054",
+      "BC-SKL-01055",
+      "BC-SKL-01056",
+      "BC-SKL-01041"
+   ],
+   "parameter_draw": {
+      "coefficient": "3",
+      "cancelled_root": "0",
+      "pole": "-1",
+      "zero": "-3",
+      "form": "factored"
+   },
+   "predicted_success_probability": 0.1978,
+   "provenance": {
+      "template_id": "TPL-BC-QA-01009-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-01009:spec-1:item-0:try-0",
+      "parameter_draw": {
+         "coefficient": "3",
+         "cancelled_root": "0",
+         "pole": "-1",
+         "zero": "-3",
+         "form": "factored"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:48Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": true,
+      "requested_success_probability": 0.148
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

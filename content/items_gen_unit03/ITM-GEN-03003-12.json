@@ -1,0 +1,307 @@
+{
+   "id": "ITM-GEN-03003-12",
+   "archetype_id": "BC-QA-03003",
+   "variant_id": "BC-QV-03003-01",
+   "format": "mcq",
+   "stem": {
+      "text": "The graphs of the functions f and g shown each consist of three line segments on \\( 0 \\le x \\le 6 \\). Let \\( h(x) = f(g(x)) \\). Find the exact value of \\( h'(1) \\).",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         7,
+         2
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "By the chain rule, \\( h'(1) = f'(g(1)) \\cdot g'(1) \\). From the graph, \\( g(1) = 5 \\), and the segment of g through x = 1 has slope \\( g'(1) = -1 \\).",
+         "rule_named": "read the inner value and slope"
+      },
+      {
+         "step": 2,
+         "text": "The outer slope is read at the inner output x = 5, not at x = 1: the segment of f there has slope \\( f'(5) = - \\frac{7}{2} \\).",
+         "rule_named": "read the outer slope at the inner output"
+      },
+      {
+         "step": 3,
+         "text": "So \\( h'(1) = \\left(- \\frac{7}{2}\\right) \\cdot \\left(-1\\right) = \\frac{7}{2} \\).",
+         "mathjson": [
+            "Rational",
+            7,
+            2
+         ],
+         "rule_named": "chain rule"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-03004",
+         "value": [
+            "Rational",
+            -9,
+            2
+         ],
+         "derivation": "the two slopes added instead of multiplied",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Rational",
+            7,
+            2
+         ]
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-03001",
+         "value": [
+            "Rational",
+            -7,
+            2
+         ],
+         "derivation": "the outer slope at the inner output reported alone, the factor g'(1) omitted",
+         "mechanism": "chain_rule_omitted"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-03003",
+         "value": -2,
+         "derivation": "the slope of f read at x = 1 instead of at the inner output x = 5",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-02",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-03005"
+   ],
+   "parameter_draw": {
+      "outer_heights": [
+         "0",
+         "4",
+         "3",
+         "-4"
+      ],
+      "inner_heights": [
+         "6",
+         "4",
+         "0",
+         "6"
+      ],
+      "at": "1",
+      "names": "f,g"
+   },
+   "predicted_success_probability": 0.4134,
+   "provenance": {
+      "template_id": "TPL-BC-QA-03003-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-03003:spec-1:item-12:try-12",
+      "parameter_draw": {
+         "outer_heights": [
+            "0",
+            "4",
+            "3",
+            "-4"
+         ],
+         "inner_heights": [
+            "6",
+            "4",
+            "0",
+            "6"
+         ],
+         "at": "1",
+         "names": "f,g"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, author tpl-B",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:50Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": true,
+      "requested_success_probability": 0.4134
+   },
+   "figure": {
+      "kind": "function_graph",
+      "domain": [
+         -0.5,
+         7.5
+      ],
+      "range": [
+         -5.0,
+         7.5
+      ],
+      "curves": [
+         {
+            "segments": [
+               [
+                  [
+                     0,
+                     0
+                  ],
+                  [
+                     2,
+                     4
+                  ]
+               ],
+               [
+                  [
+                     2,
+                     4
+                  ],
+                  [
+                     4,
+                     3
+                  ]
+               ],
+               [
+                  [
+                     4,
+                     3
+                  ],
+                  [
+                     6,
+                     -4
+                  ]
+               ]
+            ],
+            "style": "solid"
+         },
+         {
+            "segments": [
+               [
+                  [
+                     0,
+                     6
+                  ],
+                  [
+                     2,
+                     4
+                  ]
+               ],
+               [
+                  [
+                     2,
+                     4
+                  ],
+                  [
+                     4,
+                     0
+                  ]
+               ],
+               [
+                  [
+                     4,
+                     0
+                  ],
+                  [
+                     6,
+                     6
+                  ]
+               ]
+            ],
+            "style": "solid"
+         }
+      ],
+      "fills": [],
+      "marks": [
+         {
+            "type": "point",
+            "at": [
+               0.0,
+               0.0
+            ]
+         },
+         {
+            "type": "point",
+            "at": [
+               2.0,
+               4.0
+            ]
+         },
+         {
+            "type": "point",
+            "at": [
+               4.0,
+               3.0
+            ]
+         },
+         {
+            "type": "point",
+            "at": [
+               6.0,
+               -4.0
+            ]
+         },
+         {
+            "type": "point",
+            "at": [
+               0.0,
+               6.0
+            ]
+         },
+         {
+            "type": "point",
+            "at": [
+               2.0,
+               4.0
+            ]
+         },
+         {
+            "type": "point",
+            "at": [
+               4.0,
+               0.0
+            ]
+         },
+         {
+            "type": "point",
+            "at": [
+               6.0,
+               6.0
+            ]
+         }
+      ],
+      "labels": [
+         {
+            "text": "y = f(x)",
+            "anchor": [
+               0.1,
+               0.6
+            ],
+            "placement": "inside"
+         },
+         {
+            "text": "y = g(x)",
+            "anchor": [
+               6.1,
+               5.4
+            ],
+            "placement": "inside"
+         }
+      ],
+      "gridlines": true,
+      "axis_titles": [
+         "x",
+         "y"
+      ],
+      "alt": "Two polygonal graphs on 0 to 6. The graph of f joins (0, 0), (2, 4), (4, 3), (6, -4) with line segments; the graph of g joins (0, 6), (2, 4), (4, 0), (6, 6) with line segments."
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

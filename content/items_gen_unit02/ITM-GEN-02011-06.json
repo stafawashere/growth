@@ -1,0 +1,180 @@
+{
+   "id": "ITM-GEN-02011-06",
+   "archetype_id": "BC-QA-02011",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = - 3 x^{2} - 4 x + 8 \\). Find an equation of the line tangent to the graph of f at the point \\( (3, -31) \\). Write it in the form \\( y = mx + b \\).",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         35,
+         [
+            "Multiply",
+            -1,
+            22,
+            "x"
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Differentiate: \\( f'(x) = - 6 x - 4 \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               -1,
+               6,
+               "x"
+            ],
+            -4
+         ],
+         "rule_named": "power rule"
+      },
+      {
+         "step": 2,
+         "text": "The slope is \\( f'(3) = -22 \\).",
+         "mathjson": -22,
+         "point_type_id": "BC-PT-99082",
+         "rule_named": "derivative at the point"
+      },
+      {
+         "step": 3,
+         "text": "The point of tangency has \\( f(3) = -31 \\), so it is \\( (3, -31) \\).",
+         "mathjson": -31,
+         "rule_named": "function value at the point"
+      },
+      {
+         "step": 4,
+         "text": "Point-slope form gives \\( y + 31 = -22\\left(x - 3\\right) \\), that is \\( y = 35 - 22 x \\).",
+         "mathjson": [
+            "Add",
+            35,
+            [
+               "Multiply",
+               -1,
+               22,
+               "x"
+            ]
+         ],
+         "point_type_id": "BC-PT-99082",
+         "rule_named": "point-slope form"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-02027",
+         "value": [
+            "Add",
+            62,
+            [
+               "Multiply",
+               -1,
+               31,
+               "x"
+            ]
+         ],
+         "derivation": "the function value f(3) = -31 used as the slope",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Add",
+            35,
+            [
+               "Multiply",
+               -1,
+               22,
+               "x"
+            ]
+         ]
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-04023",
+         "value": [
+            "Add",
+            71,
+            [
+               "Multiply",
+               -1,
+               31,
+               "x"
+            ]
+         ],
+         "derivation": "the slope and the function value exchanged in point-slope form",
+         "mechanism": "reversed_quantities"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-02028",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               182,
+               "x"
+            ],
+            -577
+         ],
+         "derivation": "the derivative evaluated at the y-coordinate -31 instead of at x = 3",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02012",
+      "BC-SKL-02013"
+   ],
+   "parameter_draw": {
+      "square": "-3",
+      "linear": "-4",
+      "constant": "8",
+      "at": "3",
+      "given": "point"
+   },
+   "predicted_success_probability": 0.5866,
+   "provenance": {
+      "template_id": "TPL-BC-QA-02011-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-02011:spec-1:item-6:try-6",
+      "parameter_draw": {
+         "square": "-3",
+         "linear": "-4",
+         "constant": "8",
+         "at": "3",
+         "given": "point"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, author tpl-B",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:50Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.5
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

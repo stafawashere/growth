@@ -1,0 +1,174 @@
+{
+   "id": "ITM-GEN-02004-01",
+   "archetype_id": "BC-QA-02004",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "The function g is differentiable for all real numbers, and selected values of g and its derivative are given in the table. Must there be a value c, with \\( 4 < c < 9 \\), for which \\( g(c) = 4 \\)? Justify your answer.",
+      "command_verb": "justify"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "No, because although g is differentiable on \\( [4, 9] \\), so it is continuous there, every tabulated value of g is less than 4."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "g is differentiable on \\( [4, 9] \\), so it is continuous there.",
+         "rule_named": "differentiability implies continuity"
+      },
+      {
+         "step": 2,
+         "text": "Every tabulated value of g is less than 4, so no two of them have 4 between them.",
+         "rule_named": "straddling values"
+      },
+      {
+         "step": 3,
+         "text": "The Intermediate Value Theorem guarantees nothing here, and g could stay less than 4 on the whole interval, so no such c must exist.",
+         "rule_named": "Intermediate Value Theorem hypotheses"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "label": "No, because although g is differentiable on \\( [4, 9] \\), so it is continuous there, every tabulated value of g is less than 4."
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-02011",
+         "label": "Yes, such a c must exist, because the table gives a value of g at every listed input, so g is continuous on \\( [4, 9] \\), and the Intermediate Value Theorem applies.",
+         "derivation": "continuity asserted on a false basis, having tabulated values, and the theorem then applied without its straddling condition",
+         "mechanism": "compound"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-99008",
+         "label": "Yes, such a c must exist, because g is differentiable on \\( [4, 9] \\), so it is continuous there, and the Intermediate Value Theorem applies.",
+         "derivation": "the Intermediate Value Theorem used without checking that the target lies between two values of g",
+         "mechanism": "theorem_condition_ignored"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-02012",
+         "label": "Yes, such a c must exist, because g is continuous on \\( [4, 9] \\), so it is differentiable there, and the Intermediate Value Theorem applies.",
+         "derivation": "the implication run backwards, continuity offered as the reason for differentiability, and the theorem then applied without its straddling condition",
+         "mechanism": "compound"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-10",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02019",
+      "BC-SKL-02020",
+      "BC-SKL-02024"
+   ],
+   "parameter_draw": {
+      "inputs": [
+         "4",
+         "5",
+         "8",
+         "9"
+      ],
+      "values": [
+         "3",
+         "1",
+         "-9",
+         "-8"
+      ],
+      "slopes": [
+         "-1",
+         "-3",
+         "5",
+         "0"
+      ],
+      "scale": "5",
+      "offset": "1",
+      "target": "4",
+      "argument": "no_existence"
+   },
+   "predicted_success_probability": 0.2592,
+   "provenance": {
+      "template_id": "TPL-BC-QA-02004-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-02004:spec-1:item-1:try-1",
+      "parameter_draw": {
+         "inputs": [
+            "4",
+            "5",
+            "8",
+            "9"
+         ],
+         "values": [
+            "3",
+            "1",
+            "-9",
+            "-8"
+         ],
+         "slopes": [
+            "-1",
+            "-3",
+            "5",
+            "0"
+         ],
+         "scale": "5",
+         "offset": "1",
+         "target": "4",
+         "argument": "no_existence"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T13:02:04Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": true,
+      "requested_success_probability": 0.3318
+   },
+   "figure": {
+      "kind": "table",
+      "columns": [
+         "x",
+         "g(x)",
+         "g'(x)"
+      ],
+      "rows": [
+         [
+            "4",
+            "3",
+            "-1"
+         ],
+         [
+            "5",
+            "1",
+            "-3"
+         ],
+         [
+            "8",
+            "-9",
+            "5"
+         ],
+         [
+            "9",
+            "-8",
+            "0"
+         ]
+      ],
+      "labels": [],
+      "alt": "A table of x, g(x) and g'(x): at x = 4, g = 3 and g' = -1; at x = 5, g = 1 and g' = -3; at x = 8, g = -9 and g' = 5; at x = 9, g = -8 and g' = 0."
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

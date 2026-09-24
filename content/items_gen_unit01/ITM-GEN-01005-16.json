@@ -1,0 +1,116 @@
+{
+   "id": "ITM-GEN-01005-16",
+   "archetype_id": "BC-QA-01005",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = - 2 \\left(x - 1\\right)^{3} \\sin{\\left(\\frac{1}{x - 1} \\right)} + 4 \\) for \\( x \\ne 1 \\). Find \\( \\lim_{x \\to 1} f(x) \\), and justify your answer.",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "The limit is 4, because \\( 4 - 2 \\left|{x - 1}\\right|^{3} \\le f(x) \\le 2 \\left|{x - 1}\\right|^{3} + 4 \\) for \\( x \\ne 1 \\) and both bounds approach 4 as x approaches 1."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "For \\( x \\ne 1 \\), \\( -1 \\le \\sin{\\left(\\frac{1}{x - 1} \\right)} \\le 1 \\).",
+         "rule_named": "bounded oscillating factor"
+      },
+      {
+         "step": 2,
+         "text": "Multiplying by the nonnegative quantity \\( 2 \\left|{x - 1}\\right|^{3} \\) and adding 4 gives \\( 4 - 2 \\left|{x - 1}\\right|^{3} \\le f(x) \\le 2 \\left|{x - 1}\\right|^{3} + 4 \\). The factor \\( - 2 \\left(x - 1\\right)^{3} \\) can be negative, so its absolute value is used to keep the inequality true.",
+         "rule_named": "bounding inequality"
+      },
+      {
+         "step": 3,
+         "text": "Both bounds are continuous, so their limits as x approaches 1 are both 4.",
+         "rule_named": "limits of the bounds"
+      },
+      {
+         "step": 4,
+         "text": "By the squeeze theorem, \\( \\lim_{x \\to 1} f(x) = 4 \\).",
+         "rule_named": "squeeze theorem"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-01013",
+         "label": "The limit is 4, because \\( 4 - 2 \\left|{x - 1}\\right|^{3} \\le f(x) \\le 2 \\left|{x - 1}\\right|^{3} + 4 \\) for \\( x \\ne 1 \\), and bounds that are equal at x = 1 force that limit, whatever their limits.",
+         "derivation": "the bounding functions evaluated at the target instead of their limits being taken",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": true,
+         "error_path": null,
+         "label": "The limit is 4, because \\( 4 - 2 \\left|{x - 1}\\right|^{3} \\le f(x) \\le 2 \\left|{x - 1}\\right|^{3} + 4 \\) for \\( x \\ne 1 \\) and both bounds approach 4 as x approaches 1."
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-01012",
+         "label": "The limit is 4, because \\( 2 \\left(x - 1\\right)^{3} + 4 \\le f(x) \\le - 2 \\left(x - 1\\right)^{3} + 4 \\) for \\( x \\ne 1 \\) and both bounds approach 4 as x approaches 1.",
+         "derivation": "the bounds of the oscillating factor multiplied by the sign changing factor without reversing the inequality where it is negative",
+         "mechanism": "sign_error"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-99008",
+         "label": "The limit is 4, because \\( - 2 \\left(x - 1\\right)^{3} \\) approaches 0 and \\( \\sin{\\left(\\frac{1}{x - 1} \\right)} \\) approaches a limit as x approaches 1, so the product theorem applies.",
+         "derivation": "the product limit theorem used although its hypothesis fails, since the oscillating factor has no limit",
+         "mechanism": "theorem_condition_ignored"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-09",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-01032",
+      "BC-SKL-01033",
+      "BC-SKL-01034",
+      "BC-SKL-01035"
+   ],
+   "parameter_draw": {
+      "target": "1",
+      "shift": "4",
+      "coefficient": "-2",
+      "power": "3",
+      "wave": "sin",
+      "naming": "open"
+   },
+   "predicted_success_probability": 0.4134,
+   "provenance": {
+      "template_id": "TPL-BC-QA-01005-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-01005:spec-1:item-16:try-16",
+      "parameter_draw": {
+         "target": "1",
+         "shift": "4",
+         "coefficient": "-2",
+         "power": "3",
+         "wave": "sin",
+         "naming": "open"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T13:02:04Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": true,
+      "requested_success_probability": 0.4134
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

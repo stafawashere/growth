@@ -1,0 +1,126 @@
+{
+   "id": "ITM-GEN-01012-11",
+   "archetype_id": "BC-QA-01012",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "The mass of a bacteria culture is \\( M(t) = - 3 t^{2} + 8 t + 3 \\) milligrams at time t hours. Compute the average rate of change of M over each of the intervals \\( [3, 3.100] \\), \\( [3, 3.010] \\), \\( [3, 3.001] \\), and use them to find the rate at which M is changing at \\( t = 3 \\). Indicate units of measure.",
+      "command_verb": "estimate"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": -10,
+      "units": "milligrams per hour"
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The average rate over \\( [3, 3 + h] \\) is \\( \\frac{M(3 + h) - M(3)}{h} \\), which for h = 0.1, 0.01 and 0.001 gives -10.300, -10.030, -10.003.",
+         "rule_named": "average rate of change"
+      },
+      {
+         "step": 2,
+         "text": "As the intervals shrink the averages approach -10, so the instantaneous rate at \\( t = 3 \\) is -10 milligrams per hour. Each average is only an approximation of it.",
+         "mathjson": -10,
+         "rule_named": "instantaneous rate as the limit of average rates"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-01029",
+         "value": [
+            "Rational",
+            -103,
+            100
+         ],
+         "derivation": "the change in the quantity over the first interval reported without dividing by its length 0.1",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-01030",
+         "value": [
+            "Rational",
+            -103,
+            10
+         ],
+         "derivation": "the average rate over the longest interval, of length 0.1, reported as the instantaneous rate",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": true,
+         "error_path": null,
+         "value": -10
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-01030",
+         "value": [
+            "Rational",
+            -10003,
+            1000
+         ],
+         "derivation": "the average rate over the shortest interval, of length 0.001, reported as the exact instantaneous rate",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-05",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-03",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-16",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-01001",
+      "BC-SKL-01002",
+      "BC-SKL-01003",
+      "BC-SKL-01004"
+   ],
+   "parameter_draw": {
+      "quadratic": "-3",
+      "linear": "8",
+      "constant": "3",
+      "point": "3",
+      "context": "population",
+      "source": "formula",
+      "framing": "context"
+   },
+   "predicted_success_probability": 0.3318,
+   "provenance": {
+      "template_id": "TPL-BC-QA-01012-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-01012:spec-1:item-11:try-14",
+      "parameter_draw": {
+         "quadratic": "-3",
+         "linear": "8",
+         "constant": "3",
+         "point": "3",
+         "context": "population",
+         "source": "formula",
+         "framing": "context"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:48Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": true,
+      "requested_success_probability": 0.4134
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

@@ -1,0 +1,112 @@
+{
+   "id": "ITM-GEN-02003-00",
+   "archetype_id": "BC-QA-02003",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Find \\( \\lim_{x \\to 4} \\frac{7 \\sqrt{x} - 14}{x - 4} \\).",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "The limit is \\( \\frac{7}{4} \\)."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The numerator is a difference of values of \\( f(x) = 7 \\sqrt{x} \\), at a point approaching \\( 4 \\) and at \\( 4 \\) itself, and \\( f(4) = 14 \\).",
+         "rule_named": "recognise the difference quotient"
+      },
+      {
+         "step": 2,
+         "text": "So the limit is \\( f'(4) \\), and \\( f'(x) = \\frac{7}{2 \\sqrt{x}} \\).",
+         "rule_named": "limit definition of the derivative"
+      },
+      {
+         "step": 3,
+         "text": "Evaluating, \\( f'(4) = \\frac{7}{4} \\).",
+         "mathjson": [
+            "Rational",
+            7,
+            4
+         ],
+         "rule_named": "derivative rule"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-02024",
+         "label": "The limit is \\( 14 \\).",
+         "derivation": "the function's value at the base point reported instead of its derivative's value",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-02010",
+         "label": "The limit is \\( \\frac{\\sqrt{14}}{4} \\).",
+         "derivation": "the constant in the numerator, f at the base point, taken as the base point, so the derivative is evaluated there",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-02009",
+         "label": "The limit does not exist.",
+         "derivation": "the zero over zero form of the difference quotient taken to mean the limit does not exist",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": true,
+         "error_path": null,
+         "label": "The limit is \\( \\frac{7}{4} \\)."
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02035",
+      "BC-SKL-02005"
+   ],
+   "parameter_draw": {
+      "family": "sqrt",
+      "base_index": "0",
+      "coefficient": "7",
+      "increment": "t",
+      "shape": "two_point"
+   },
+   "predicted_success_probability": 0.5,
+   "provenance": {
+      "template_id": "TPL-BC-QA-02003-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-02003:spec-1:item-0:try-0",
+      "parameter_draw": {
+         "family": "sqrt",
+         "base_index": "0",
+         "coefficient": "7",
+         "increment": "t",
+         "shape": "two_point"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:48Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": true,
+      "requested_success_probability": 0.4134
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

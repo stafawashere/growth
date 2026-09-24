@@ -1,6 +1,6 @@
 ---
 title: Scoring Guideline Index
-research_date: 2026-09-19
+research_date: 2026-09-24
 status: generated
 purpose: Every cached official scoring guideline with its source id, resolved URL, page count, and the page on which each question starts.
 ---

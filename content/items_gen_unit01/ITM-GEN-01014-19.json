@@ -1,0 +1,115 @@
+{
+   "id": "ITM-GEN-01014-19",
+   "archetype_id": "BC-QA-01014",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Consider \\( \\lim_{x \\to \\infty} \\frac{2 x - 4}{6 x^{2} + 2} \\). Classify the form of this limit, name the procedure that resolves it, and give the result.",
+      "command_verb": "determine"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "As x grows the form is \\( \\frac{\\infty}{\\infty} \\), so divide both parts by \\( x^{2} \\), which gives \\( 0 \\)."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "As x grows, both the numerator and the denominator grow without bound, the form \\( \\frac{\\infty}{\\infty} \\).",
+         "rule_named": "classify the form at infinity"
+      },
+      {
+         "step": 2,
+         "text": "Divide the numerator and the denominator by \\( x^{2} \\), the highest power in the denominator, and the expression becomes \\( \\frac{\\frac{2}{x} - \\frac{4}{x^{2}}}{6 + \\frac{2}{x^{2}}} \\).",
+         "rule_named": "divide by the highest power"
+      },
+      {
+         "step": 3,
+         "text": "Every term with x in a denominator approaches 0, and the denominator approaches 6, so the limit is \\( 0 \\).",
+         "rule_named": "limits of the terms"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-01021",
+         "label": "Substituting \\( x = \\infty \\) gives \\( \\frac{\\infty}{\\infty} \\), so the infinities cancel, which gives \\( 1 \\).",
+         "derivation": "infinity substituted as a number and infinity over infinity simplified to 1",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-01023",
+         "label": "As x grows the leading terms dominate, so take the ratio of the leading coefficients, which gives \\( \\frac{1}{3} \\).",
+         "derivation": "the ratio of the leading coefficients taken without comparing the degrees",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-01009",
+         "label": "As x grows the form is \\( \\frac{\\infty}{\\infty} \\), an indeterminate form, which means the limit does not exist.",
+         "derivation": "the indeterminate form infinity over infinity read as a statement that the limit does not exist",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": true,
+         "error_path": null,
+         "label": "As x grows the form is \\( \\frac{\\infty}{\\infty} \\), so divide both parts by \\( x^{2} \\), which gives \\( 0 \\)."
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-01029",
+      "BC-SKL-01030",
+      "BC-SKL-01031",
+      "BC-SKL-01021"
+   ],
+   "parameter_draw": {
+      "target": "4",
+      "top_root": "-4",
+      "bottom_root": "2",
+      "root_value": "1",
+      "lead_top": "2",
+      "lead_bottom": "6",
+      "form": "at_infinity",
+      "pole_power": "1"
+   },
+   "predicted_success_probability": 0.5,
+   "provenance": {
+      "template_id": "TPL-BC-QA-01014-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-01014:spec-1:item-19:try-19",
+      "parameter_draw": {
+         "target": "4",
+         "top_root": "-4",
+         "bottom_root": "2",
+         "root_value": "1",
+         "lead_top": "2",
+         "lead_bottom": "6",
+         "form": "at_infinity",
+         "pole_power": "1"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T13:02:04Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": true,
+      "requested_success_probability": 0.5
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

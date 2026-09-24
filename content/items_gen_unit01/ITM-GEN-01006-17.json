@@ -1,0 +1,121 @@
+{
+   "id": "ITM-GEN-01006-17",
+   "archetype_id": "BC-QA-01006",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let f be the function defined by \\( f(x) = \\begin{cases} - 2 x - 1, & x < -1 \\\\ - 3 x - 4, & x \\ge -1 \\end{cases} \\). Determine whether f is continuous at \\( x = -1 \\), and justify your answer.",
+      "command_verb": "determine"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "f is not continuous at \\( x = -1 \\), because the limits from the left and from the right are 1 and -1."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The function value at the boundary is \\( f(-1) = -1 \\).",
+         "rule_named": "evaluate the function at the input"
+      },
+      {
+         "step": 2,
+         "text": "Using the branch for x less than -1, \\( \\lim_{x \\to -1^-} f(x) = 1 \\).",
+         "rule_named": "left hand limit from the left branch"
+      },
+      {
+         "step": 3,
+         "text": "Using the branch for x greater than -1, \\( \\lim_{x \\to -1^+} f(x) = -1 \\).",
+         "rule_named": "right hand limit from the right branch"
+      },
+      {
+         "step": 4,
+         "text": "The one sided limits differ, so \\( \\lim_{x \\to -1} f(x) \\) does not exist and f is not continuous at \\( x = -1 \\).",
+         "rule_named": "the limit must exist"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-99001",
+         "label": "f is not continuous at \\( x = -1 \\), because it has no value there, so it cannot be continuous at \\( x = -1 \\).",
+         "derivation": "a justification about an unnamed it, which reads the missing function value on one branch as missing for f, so the reason given is false",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-01017",
+         "label": "f is continuous at \\( x = -1 \\), because the limits from the left and from the right are both -1.",
+         "derivation": "the left hand limit taken from the branch on the other side, so both one sided limits come out equal to f(-1)",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-01014",
+         "label": "f is continuous at \\( x = -1 \\), because f(-1) = -1 is defined, so f has a value at \\( x = -1 \\).",
+         "derivation": "continuity concluded because the function has a value at the input",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": true,
+         "error_path": null,
+         "label": "f is not continuous at \\( x = -1 \\), because the limits from the left and from the right are 1 and -1."
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-17",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-01043",
+      "BC-SKL-01044",
+      "BC-SKL-01045",
+      "BC-SKL-01042",
+      "BC-SKL-01023"
+   ],
+   "parameter_draw": {
+      "boundary": "-1",
+      "left_limit": "1",
+      "right_limit": "-1",
+      "point_value": "-3",
+      "left_slope": "-2",
+      "right_slope": "-3",
+      "closed_side": "right",
+      "break_kind": "jump"
+   },
+   "predicted_success_probability": 0.1978,
+   "provenance": {
+      "template_id": "TPL-BC-QA-01006-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-01006:spec-1:item-17:try-17",
+      "parameter_draw": {
+         "boundary": "-1",
+         "left_limit": "1",
+         "right_limit": "-1",
+         "point_value": "-3",
+         "left_slope": "-2",
+         "right_slope": "-3",
+         "closed_side": "right",
+         "break_kind": "jump"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T13:02:04Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.2592
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

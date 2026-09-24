@@ -1,0 +1,119 @@
+{
+   "id": "ITM-GEN-99009-13",
+   "archetype_id": "BC-QA-99009",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "The density of suspended sediment in a vertical column of river water is modeled by \\( \\rho(h) = 4 \\sin{\\left(\\frac{h^{2}}{5} \\right)} + 20 \\) grams per cubic meter, where h is the depth below the surface in meters. Consider the column, which has horizontal cross-sections of constant area 9 square meters. Using a calculator, find the mass, in grams, of sediment in the column between the depths \\( h = 0 \\) and \\( h = 6 \\) meters. Show the setup, and give the value correct to three decimal places.",
+      "setup_required": true,
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "numeric",
+      "mathjson": 1120.6568050849373,
+      "decimals": 3,
+      "units": "grams"
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "A thin slab of thickness dh holds about \\( 9\\,\\rho(h)\\,dh \\), so the total is \\( 9\\int_{0}^{6} \\left(4 \\sin{\\left(\\frac{h^{2}}{5} \\right)} + 20\\right)\\,dh \\).",
+         "rule_named": "accumulation of a density"
+      },
+      {
+         "step": 2,
+         "text": "With the calculator in radian mode the integral is about 124.517.",
+         "mathjson": 124.51742278721525,
+         "rule_named": "numerical integration"
+      },
+      {
+         "step": 3,
+         "text": "Multiplying by the area 9 gives about 1120.657.",
+         "mathjson": 1120.6568050849373,
+         "rule_named": "constant cross-section"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-99005",
+         "value": 124.517,
+         "derivation": "the integral of the density reported without the area, an amount per square meter given as the count",
+         "mechanism": "forgot_constant"
+      },
+      {
+         "id": "B",
+         "is_key": true,
+         "error_path": null,
+         "value": 1120.657
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-06032",
+         "value": 1089.038,
+         "derivation": "the integral evaluated with the calculator in degree mode, then multiplied by the area",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-99015",
+         "value": 186.776,
+         "derivation": "the result divided by the thickness of the layer, the average density times the area reported",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-05",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-11",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-16",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06036",
+      "BC-SKL-08012",
+      "BC-SKL-08005"
+   ],
+   "parameter_draw": {
+      "surface_density": "20",
+      "swing": "4",
+      "stretch": "5",
+      "top": "0",
+      "thickness": "6",
+      "side": "3",
+      "context": "sediment",
+      "area_form": "area"
+   },
+   "predicted_success_probability": 0.2592,
+   "provenance": {
+      "template_id": "TPL-BC-QA-99009-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-99009:spec-1:item-13:try-13",
+      "parameter_draw": {
+         "surface_density": "20",
+         "swing": "4",
+         "stretch": "5",
+         "top": "0",
+         "thickness": "6",
+         "side": "3",
+         "context": "sediment",
+         "area_form": "area"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:54:03Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.2592
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

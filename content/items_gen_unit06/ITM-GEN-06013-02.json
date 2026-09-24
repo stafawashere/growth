@@ -1,0 +1,132 @@
+{
+   "id": "ITM-GEN-06013-02",
+   "archetype_id": "BC-QA-06013",
+   "variant_id": "BC-QV-06013-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Suppose \\( \\int_{1}^{3} f(x)\\,dx = 5 \\) and \\( \\int_{1}^{7} f(x)\\,dx = -11 \\). The function h is defined by \\( h(x) = 4 \\) for \\( x < 4 \\) and \\( h(x) = -4 \\) for \\( x \\ge 4 \\). Find \\( \\int_{3}^{7} \\left(3f(x) + h(x)\\right)\\,dx \\).",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": -56
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Split the interval at x = 3: \\( \\int_{3}^{7} f(x)\\,dx = -11 - 5 = -16 \\).",
+         "point_type_id": "BC-PT-99005",
+         "rule_named": "additivity over adjacent intervals"
+      },
+      {
+         "step": 2,
+         "text": "h jumps at x = 4, so split its integral there: \\( 4 \\cdot 1 - 4 \\cdot 3 = -8 \\).",
+         "rule_named": "integral of a step function split at the jump"
+      },
+      {
+         "step": 3,
+         "text": "By linearity, \\( \\int_{3}^{7} \\left(3f(x) + h(x)\\right)\\,dx = 3(-16) - 8 = -56 \\).",
+         "mathjson": -56,
+         "point_type_id": "BC-PT-99004",
+         "rule_named": "constant multiple and sum properties"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-99012",
+         "value": -41,
+         "derivation": "the integral of f from 3 to 7 taken as the given integral from 1, ignoring the part below 3",
+         "mechanism": "wrong_limits"
+      },
+      {
+         "id": "B",
+         "is_key": true,
+         "error_path": null,
+         "value": -56
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-99032",
+         "value": 56,
+         "derivation": "the limits written in reverse order, which changes the sign",
+         "mechanism": "sign_error"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-06031",
+         "value": -64,
+         "derivation": "h integrated as the single value -4 across the jump at x = 4",
+         "mechanism": "theorem_condition_ignored"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-17",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06029",
+      "BC-SKL-06030",
+      "BC-SKL-06031",
+      "BC-SKL-06032",
+      "BC-SKL-06033",
+      "BC-SKL-06035"
+   ],
+   "parameter_draw": {
+      "direction": "forward",
+      "start": "1",
+      "gaps": [
+         "2",
+         "1",
+         "3"
+      ],
+      "first_value": "5",
+      "whole_value": "-11",
+      "multiple": "3",
+      "steps": [
+         "4",
+         "-4"
+      ]
+   },
+   "predicted_success_probability": 0.2592,
+   "provenance": {
+      "template_id": "TPL-BC-QA-06013-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-06013:spec-1:item-2:try-2",
+      "parameter_draw": {
+         "direction": "forward",
+         "start": "1",
+         "gaps": [
+            "2",
+            "1",
+            "3"
+         ],
+         "first_value": "5",
+         "whole_value": "-11",
+         "multiple": "3",
+         "steps": [
+            "4",
+            "-4"
+         ]
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:54:01Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.2592
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

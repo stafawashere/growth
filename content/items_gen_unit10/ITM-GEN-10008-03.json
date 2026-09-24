@@ -1,0 +1,138 @@
+{
+   "id": "ITM-GEN-10008-03",
+   "archetype_id": "BC-QA-10008",
+   "variant_id": "BC-QV-10008-01",
+   "format": "mcq",
+   "stem": {
+      "text": "The Maclaurin series for \\( f(x) = 6 \\arctan x \\) is \\( \\sum_{n=0}^{\\infty} 6 \\frac{(-1)^n x^{2n+1}}{2n+1} \\). Let \\( S_{4} = \\sum_{n=0}^{4} 6 \\frac{(-1)^n x^{2n+1}}{2n+1} \\) evaluated at \\( x = \\frac{5}{6} \\) approximate \\( f(\\frac{5}{6}) \\). Use the alternating series error bound to find the exact value of an upper bound for \\( \\left|f(\\frac{5}{6}) - S_{4}\\right| \\).",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         48828125,
+         665127936
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "At \\( x = \\frac{5}{6} \\) the series alternates, and since \\( 0 < x < 1 \\) the sizes of its terms decrease to 0, so the alternating series error bound applies.",
+         "rule_named": "conditions of the alternating series error bound"
+      },
+      {
+         "step": 2,
+         "text": "The partial sum stops at \\( n = 4 \\), so the first omitted term is the \\( n = 5 \\) term, of size \\( \\frac{6 x^{11}}{11} \\) for \\( x > 0 \\).",
+         "point_type_id": "BC-PT-99040",
+         "rule_named": "first omitted term"
+      },
+      {
+         "step": 3,
+         "text": "At \\( x = \\frac{5}{6} \\) that size is \\( \\frac{48828125}{665127936} \\), so \\( \\left|f(\\frac{5}{6}) - S_{4}\\right| \\le \\frac{48828125}{665127936} \\).",
+         "mathjson": [
+            "Rational",
+            48828125,
+            665127936
+         ],
+         "point_type_id": "BC-PT-99041",
+         "rule_named": "error bound inequality"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Rational",
+            48828125,
+            665127936
+         ]
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-10024",
+         "value": [
+            "Rational",
+            1220703125,
+            28298170368
+         ],
+         "derivation": "the n = 6 term, one past the first omitted term, used as the bound",
+         "mechanism": "wrong_limits"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-10024",
+         "value": [
+            "Rational",
+            1953125,
+            15116544
+         ],
+         "derivation": "the n = 4 term, already inside the partial sum, used as the bound",
+         "mechanism": "wrong_limits"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-10025",
+         "value": [
+            "Rational",
+            6,
+            11
+         ],
+         "derivation": "the first omitted term evaluated at x = 1 instead of at the given input",
+         "mechanism": "algebra_slip"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10028",
+      "BC-SKL-10029",
+      "BC-SKL-10039",
+      "BC-SKL-10040",
+      "BC-SKL-10041",
+      "BC-SKL-10042",
+      "BC-SKL-10052",
+      "BC-SKL-10066"
+   ],
+   "parameter_draw": {
+      "function": "atan",
+      "last": "4",
+      "point": "5/6",
+      "multiple": "6"
+   },
+   "predicted_success_probability": 0.4134,
+   "provenance": {
+      "template_id": "TPL-BC-QA-10008-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-10008:spec-1:item-3:try-3",
+      "parameter_draw": {
+         "function": "atan",
+         "last": "4",
+         "point": "5/6",
+         "multiple": "6"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:58:54Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.4134
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

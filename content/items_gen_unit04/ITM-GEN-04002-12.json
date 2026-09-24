@@ -1,0 +1,187 @@
+{
+   "id": "ITM-GEN-04002-12",
+   "archetype_id": "BC-QA-04002",
+   "variant_id": "BC-QV-04002-01",
+   "format": "mcq",
+   "stem": {
+      "text": "The function R is differentiable, and R(t) gives the amount of water in a reservoir, in millions of gallons, at time t days. Selected values of R(t) are given in the table. Using the average rate of change of R over the interval \\( 1 \\le t \\le 9 \\), approximate \\( R'(7) \\). Give the exact value of the approximation and indicate units of measure.",
+      "command_verb": "approximate"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         -21,
+         8
+      ],
+      "units": "million gallons per day"
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The interval \\( 1 \\le t \\le 9 \\) uses the rows at t = 1 and t = 9, so the change in R is \\( 28 - 49 = -21 \\).",
+         "mathjson": -21,
+         "point_type_id": "BC-PT-99005",
+         "rule_named": "difference of tabulated values"
+      },
+      {
+         "step": 2,
+         "text": "Dividing by the change in time, \\( R'(7) \\approx \\frac{R(9) - R(1)}{9 - 1} = \\frac{28 - 49}{9 - 1} = - \\frac{21}{8} \\).",
+         "mathjson": [
+            "Rational",
+            -21,
+            8
+         ],
+         "point_type_id": "BC-PT-99005",
+         "rule_named": "average rate of change as a difference quotient"
+      },
+      {
+         "step": 3,
+         "text": "The units are those of R over those of t: million gallons per day.",
+         "point_type_id": "BC-PT-99006",
+         "rule_named": "units of a rate"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-02004",
+         "value": [
+            "Rational",
+            -1,
+            2
+         ],
+         "derivation": "the rows at t = 1 and t = 7 used in place of the named interval",
+         "mechanism": "wrong_limits"
+      },
+      {
+         "id": "B",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Rational",
+            -21,
+            8
+         ]
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-02004",
+         "value": -9,
+         "derivation": "the rows at t = 7 and t = 9 used in place of the named interval",
+         "mechanism": "wrong_limits"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-02001",
+         "value": -21,
+         "derivation": "the change R(9) - R(1) reported without dividing by the change in time",
+         "mechanism": "algebra_slip"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-04004",
+      "BC-SKL-04001",
+      "BC-SKL-02014",
+      "BC-SKL-02015",
+      "BC-SKL-02016",
+      "BC-SKL-02002",
+      "BC-SKL-02003"
+   ],
+   "parameter_draw": {
+      "times": [
+         "0",
+         "1",
+         "7",
+         "9",
+         "11"
+      ],
+      "readings": [
+         "18",
+         "28",
+         "46",
+         "49",
+         "63"
+      ],
+      "context": "reservoir",
+      "trend": "decreasing"
+   },
+   "predicted_success_probability": 0.148,
+   "provenance": {
+      "template_id": "TPL-BC-QA-04002-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-04002:spec-1:item-12:try-12",
+      "parameter_draw": {
+         "times": [
+            "0",
+            "1",
+            "7",
+            "9",
+            "11"
+         ],
+         "readings": [
+            "18",
+            "28",
+            "46",
+            "49",
+            "63"
+         ],
+         "context": "reservoir",
+         "trend": "decreasing"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:53Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.148
+   },
+   "figure": {
+      "kind": "table",
+      "columns": [
+         "t (days)",
+         "R(t) (millions of gallons)"
+      ],
+      "rows": [
+         [
+            "0",
+            "63"
+         ],
+         [
+            "1",
+            "49"
+         ],
+         [
+            "7",
+            "46"
+         ],
+         [
+            "9",
+            "28"
+         ],
+         [
+            "11",
+            "18"
+         ]
+      ],
+      "labels": [],
+      "alt": "The table lists R(t) at five times, R(0) = 63; R(1) = 49; R(7) = 46; R(9) = 28; R(11) = 18."
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

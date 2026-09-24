@@ -1,0 +1,108 @@
+{
+   "id": "ITM-GEN-01015-07",
+   "archetype_id": "BC-QA-01015",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = \\frac{18 - 3 x}{x^{2} + 6 x + 5} \\). Find the intervals on which f is continuous.",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "f is continuous on \\( (-\\infty, -5) \\cup (-5, -1) \\cup (-1, \\infty) \\)."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The denominator factors as \\( \\left(x + 1\\right) \\left(x + 5\\right) \\), which is 0 at \\( x = -5 \\) and \\( x = -1 \\).",
+         "rule_named": "zeros of the denominator"
+      },
+      {
+         "step": 2,
+         "text": "A rational function is continuous on its domain, so f is continuous on \\( (-\\infty, -5) \\cup (-5, -1) \\cup (-1, \\infty) \\).",
+         "rule_named": "continuity on the domain"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-01032",
+         "label": "f is continuous on \\( (-\\infty, -5] \\cup [-5, -1] \\cup [-1, \\infty) \\).",
+         "derivation": "closed brackets written at -1 and -5, where f is not defined",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": true,
+         "error_path": null,
+         "label": "f is continuous on \\( (-\\infty, -5) \\cup (-5, -1) \\cup (-1, \\infty) \\)."
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-01031",
+         "label": "f is continuous on \\( (-\\infty, -5) \\cup (-5, \\infty) \\).",
+         "derivation": "only one zero of the denominator found, so the excluded input -1 sits inside an interval",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-01031",
+         "label": "f is continuous on \\( (-\\infty, -1) \\cup (-1, \\infty) \\).",
+         "derivation": "only one zero of the denominator found, so the excluded input -5 sits inside an interval",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-01046",
+      "BC-SKL-01047",
+      "BC-SKL-01048",
+      "BC-SKL-01049"
+   ],
+   "parameter_draw": {
+      "coefficient": "-3",
+      "zero": "6",
+      "roots": [
+         "-5",
+         "-1"
+      ],
+      "family": "rational"
+   },
+   "predicted_success_probability": 0.2592,
+   "provenance": {
+      "template_id": "TPL-BC-QA-01015-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-01015:spec-1:item-7:try-7",
+      "parameter_draw": {
+         "coefficient": "-3",
+         "zero": "6",
+         "roots": [
+            "-5",
+            "-1"
+         ],
+         "family": "rational"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:48Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": true,
+      "requested_success_probability": 0.1978
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

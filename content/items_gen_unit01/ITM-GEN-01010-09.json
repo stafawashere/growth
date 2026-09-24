@@ -1,0 +1,134 @@
+{
+   "id": "ITM-GEN-01010-09",
+   "archetype_id": "BC-QA-01010",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = \\frac{9 - 2 x}{\\sqrt{36 x^{2} + 1}} \\). Write a limit expression that describes the behaviour of f as x decreases without bound, and find the exact value of that limit.",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         1,
+         3
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The behaviour of f as x decreases without bound is described by \\( \\lim_{x \\to -\\infty} f(x) \\).",
+         "point_type_id": "BC-PT-99054",
+         "rule_named": "limit expression for end behaviour"
+      },
+      {
+         "step": 2,
+         "text": "For x < 0, \\( \\sqrt{x^{2}} = -x \\), so \\( \\sqrt{36 x^{2} + 1} = -x \\sqrt{36 + \\frac{1}{x^{2}}} \\). Dividing the numerator and the denominator by \\( -x \\) gives \\( f(x) = \\frac{2 - \\frac{9}{x}}{\\sqrt{36 + \\frac{1}{x^{2}}}} \\).",
+         "rule_named": "divide by the dominant power, with the sign of x"
+      },
+      {
+         "step": 3,
+         "text": "As x decreases without bound the terms with x in the denominator approach 0, so \\( \\lim_{x \\to -\\infty} f(x) = \\frac{1}{3} \\).",
+         "mathjson": [
+            "Rational",
+            1,
+            3
+         ],
+         "point_type_id": "BC-PT-99004",
+         "rule_named": "limit of each term"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-01023",
+         "value": [
+            "Rational",
+            1,
+            18
+         ],
+         "derivation": "the coefficient 36 under the radical used in place of its square root 6",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-01024",
+         "value": [
+            "Rational",
+            -1,
+            3
+         ],
+         "derivation": "the square root of x squared taken as x rather than -x for negative x, so the sign of the limit is lost",
+         "mechanism": "sign_error"
+      },
+      {
+         "id": "C",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Rational",
+            1,
+            3
+         ]
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-01021",
+         "value": 1,
+         "derivation": "negative infinity substituted into numerator and denominator and the quotient of the two infinities taken as plus or minus 1 by their signs",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-11",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-01058",
+      "BC-SKL-01059",
+      "BC-SKL-01060",
+      "BC-SKL-01061",
+      "BC-SKL-01063",
+      "BC-SKL-01062"
+   ],
+   "parameter_draw": {
+      "root_coef": "6",
+      "linear_coef": "-2",
+      "linear_const": "9",
+      "inner_const": "1",
+      "radical_place": "denominator"
+   },
+   "predicted_success_probability": 0.5,
+   "provenance": {
+      "template_id": "TPL-BC-QA-01010-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-01010:spec-1:item-9:try-9",
+      "parameter_draw": {
+         "root_coef": "6",
+         "linear_coef": "-2",
+         "linear_const": "9",
+         "inner_const": "1",
+         "radical_place": "denominator"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T12:53:48Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": false,
+      "requested_success_probability": 0.4134
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

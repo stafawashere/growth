@@ -1,0 +1,115 @@
+{
+   "id": "ITM-GEN-01014-03",
+   "archetype_id": "BC-QA-01014",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Consider \\( \\lim_{x \\to -3} \\frac{\\sqrt{x + 12} - 3}{x + 3} \\). Classify the form of this limit, name the procedure that resolves it, and give the result.",
+      "command_verb": "determine"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "Substitution gives 0/0, so multiply both parts by the conjugate \\( \\sqrt{x + 12} + 3 \\) and cancel \\( x + 3 \\), and then substitute, which gives \\( \\frac{1}{6} \\)."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Substituting \\( x = -3 \\) makes the numerator and the denominator both 0, the indeterminate form 0/0.",
+         "rule_named": "classify by substitution"
+      },
+      {
+         "step": 2,
+         "text": "Multiplying by \\( \\sqrt{x + 12} + 3 \\) over itself turns the numerator into \\( x + 3 \\), and the factor \\( x + 3 \\) cancels, leaving \\( \\frac{1}{\\sqrt{x + 12} + 3} \\).",
+         "rule_named": "algebraic rewriting"
+      },
+      {
+         "step": 3,
+         "text": "Substituting into the rewritten expression gives the limit \\( \\frac{1}{6} \\).",
+         "rule_named": "substitution after rewriting"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-01008",
+         "label": "Substitution makes the numerator \\( \\sqrt{x + 12} - 3 \\) equal to 0, so no rewriting is needed, which gives \\( 0 \\).",
+         "derivation": "the form read from the numerator alone, so the limit reported as 0",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-01006",
+         "label": "The denominator \\( x + 3 \\) has a limit, so divide the limit of the numerator by it, which gives \\( \\frac{0}{0} \\).",
+         "derivation": "the quotient limit theorem chosen although the denominator's limit is 0",
+         "mechanism": "theorem_condition_ignored"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-01009",
+         "label": "Substitution of \\( x = -3 \\) gives 0/0, so no procedure applies, which means the limit does not exist.",
+         "derivation": "the indeterminate form 0/0 read as a statement that the limit does not exist",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": true,
+         "error_path": null,
+         "label": "Substitution gives 0/0, so multiply both parts by the conjugate \\( \\sqrt{x + 12} + 3 \\) and cancel \\( x + 3 \\), and then substitute, which gives \\( \\frac{1}{6} \\)."
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-01029",
+      "BC-SKL-01030",
+      "BC-SKL-01031",
+      "BC-SKL-01021"
+   ],
+   "parameter_draw": {
+      "target": "-3",
+      "top_root": "-1",
+      "bottom_root": "-5",
+      "root_value": "3",
+      "lead_top": "2",
+      "lead_bottom": "3",
+      "form": "conjugate",
+      "pole_power": "2"
+   },
+   "predicted_success_probability": 0.5,
+   "provenance": {
+      "template_id": "TPL-BC-QA-01014-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-01014:spec-1:item-3:try-3",
+      "parameter_draw": {
+         "target": "-3",
+         "top_root": "-1",
+         "bottom_root": "-5",
+         "root_value": "3",
+         "lead_top": "2",
+         "lead_bottom": "3",
+         "form": "conjugate",
+         "pole_power": "2"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-24T13:02:04Z",
+      "content_snapshot": "7a54e88181f23027b1568b703758f6329588690dae8903734b68150bcb32fec8",
+      "no_official_examples": true,
+      "requested_success_probability": 0.5
+   },
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24, docs/operator/p4-generation.md"
+}

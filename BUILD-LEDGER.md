@@ -1596,6 +1596,19 @@ items) and items 3 and 6 (Slices 3 and 4). Every gate 11 names for P2 now exists
   call) and green on restore. This is the likely cause of the slow first bank query noted earlier
   but not reproduced, which was not re-measured through the route.
 
+- 2026-09-24, stage 1 done: items for Units 4 to 10 (P2 scope item 8), by Claude on the
+  operator's delegation. 656 signed-off items in nine banks, `content/items_unit01_agent` to
+  `content/items_unit10_agent` (no Unit 8 bank), for 33 closed-form `no_calculator` archetypes, 17
+  to 23 each; 5 more in scope got none for want of held errors (Known defects). Every key matched a
+  SymPy formulation written by a separate agent from the stems alone (`tools/key_recheck.py`,
+  control holding on every bank); `tools/check_items.py` clean on every bank; gate 29 over a fresh
+  100-item draw from these banks is 0/100, Wilson 95 percent interval 0 to 0.037
+  (docs/operator/key-audit-p2/). The bank now serves every `content/items_*` directory, and
+  `tests/e2e/test_unit_6_item_served.py` serves, grades and shows feedback for a Unit 6 item
+  through `build_application` with the test passkey verifier. Canonical record:
+  docs/operator/items-units-4-to-10.md. Checks on the rebased tree: pytest `1042 passed in
+  593.47s`; vitest `Tests  362 passed (362)`; `tsc --noEmit` exit 0; `qa/12_report.py` exit 0.
+
 ## In progress [inferred]
 
 Stage 1, items for Units 4 to 10, is complete in the worktree `../growth-content` on branch
@@ -2449,6 +2462,18 @@ From the eleventh session, 2026-09-21, found and not fixed.
   built `app/web/dist`, clean tree included, because the `/assets` mount exists only once the
   client is built. Run `npm run build` in a new worktree before the suite.
 
+- 2026-09-24, stage 1, open, environment. The repository and its worktrees live in ~/Documents,
+  which iCloud Drive syncs. After the rebase rewrote the stage 1 files, iCloud left a conflict
+  copy named "<name> 2.<ext>" beside 682 of them (every item record, formulations file and
+  README, and new test files, so pytest collected `test_unit_6_item_served 2.py` as a second
+  module), and some copies were cloud-only placeholders ("compressed,dataless"), so reading one
+  blocked. The full suite hung for 13 minutes at 0 percent CPU inside
+  `tests/e2e/test_agent_drafts_served.py` `agent_records`, `read_text`, found with
+  `-o faulthandler_timeout=300`. All 682 copies were untracked and byte-identical to their
+  originals and were deleted. `test_every_record_file_is_named_by_its_id` fails on such a copy in
+  a bank, but only once the copy can be read. The lasting fix is the operator's: keep the
+  checkouts outside an iCloud-synced folder, or exclude them from sync.
+
 ## Plan corrections applied [verified]
 
 Session 2026-09-23 (fourteenth). No plan file was edited. Readings applied in code:
@@ -2856,7 +2881,7 @@ Session 2026-09-20 (seventh).
   at v = -1, so the Unit 10 bank's sound comparator failed the control on ITM-AGT-10003-04 (answer
   -1). The control now requires every perturbation in `perturbations(v)`, 2v + 1 and
   v + sqrt(2)/7, to compare different, skipping one identical to v. For every v other than -1 this
-  checks strictly more than before, and for -1 it replaces a guaranteed false alarm with a real
+  checks strictly more than before, and for -1 it replaces a false alarm that always fired with a real
   check. Two tests, each shown red under its break.
 - 2026-09-24, stage 1, `tests/review/test_p1_key_audit_record.py` became
   `tests/review/test_key_audit_records.py`, parametrised over docs/operator/key-audit-p1/ and

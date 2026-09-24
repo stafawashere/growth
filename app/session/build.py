@@ -26,6 +26,7 @@ from app.auth.service import write_audit
 from app.db import models
 from app.engine import constants
 from app.engine.fringe import covered_due_skills, retrieval_eligible
+from app.engine.interleave import window_filter
 from app.engine.select import (
    DEFAULT_RULES,
    due_skills,
@@ -55,6 +56,8 @@ class Session:
    coverage_gaps: tuple = ()
    forecasts: dict = field(default_factory=dict)
    due_queue: "DueQueue | None" = None
+   shortfalls: list = field(default_factory=list)
+   unit_counts: dict = field(default_factory=dict)
 
    @property
    def blocks(self):
@@ -409,6 +412,7 @@ def assemble_session(
    rules=DEFAULT_RULES,
    db=None,
    user_id=None,
+   ordering=None,
 ):
    retrievability = retrievability_map(states, today, retrievability)
    now = session_now(today, now)
@@ -431,12 +435,20 @@ def assemble_session(
 
       return session.forecasts[archetype_id]
 
-   def serve(block, item):
+   def serve(block, item, shortfalls=()):
+      for rule_name in shortfalls:
+         session.shortfalls.append({"position": len(session.served), "rule": rule_name})
+
       block.append(item)
       session.served.append(item)
       history.append(item)
       blocked_later.add(item["id"])
       blocked_block1.add(item["id"])
+      counts_toward_quota = block is session.block2 or block is session.block3
+
+      if counts_toward_quota:
+         unit = graph.primary_unit(item["archetype_id"])
+         session.unit_counts[unit] = session.unit_counts.get(unit, 0) + 1
 
       return forecast_for(item)
 
@@ -468,9 +480,12 @@ def assemble_session(
       index = next_requeue_index()
       is_requeue_turn = index is not None
 
+      shortfalls = ()
+
       if is_requeue_turn:
          item_id, archetype_id = pending_requeue.pop(index)
          served = pick_named_item(item_id, archetype_id, states, graph, bank, attempts_history)
+         shortfalls = window_filter([graph.archetypes[archetype_id]], history, graph, rules)[1]
       else:
          selection = next_item_review(
             states, graph, bank, None, history, rng, today,
@@ -481,6 +496,7 @@ def assemble_session(
             rules=rules,
          )
          served = selection.item
+         shortfalls = selection.shortfalls
 
       if served is None:
          if is_requeue_turn:
@@ -491,7 +507,7 @@ def assemble_session(
       if not fits(assembled, served, constants.BLOCK1_MAX_MINUTES):
          break
 
-      assembled += serve(session.block1, served)
+      assembled += serve(session.block1, served, shortfalls)
 
       if is_requeue_turn:
          session.requeued.append(served)
@@ -507,6 +523,8 @@ def assemble_session(
          excluded_ids=blocked_later,
          user_attempts=attempts_history,
          rules=rules,
+         unit_counts=session.unit_counts,
+         ordering=ordering,
       )
       gaps = gaps or selection.coverage_gaps
 
@@ -516,7 +534,7 @@ def assemble_session(
       if not fits(assembled, selection.item, constants.BLOCK2_MAX_MINUTES):
          break
 
-      assembled += serve(session.block2, selection.item)
+      assembled += serve(session.block2, selection.item, selection.shortfalls)
 
    session.coverage_gaps = gaps
    has_gaps = len(gaps) > 0
@@ -535,6 +553,7 @@ def assemble_session(
          excluded_ids=blocked_later,
          user_attempts=attempts_history,
          rules=rules,
+         unit_counts=session.unit_counts,
       )
 
       if selection.item is None:
@@ -543,7 +562,7 @@ def assemble_session(
       if not fits(assembled, selection.item, constants.BLOCK3_MAX_MINUTES):
          break
 
-      assembled += serve(session.block3, selection.item)
+      assembled += serve(session.block3, selection.item, selection.shortfalls)
 
    session.block4 = corrected_today(attempts_history, today)
 

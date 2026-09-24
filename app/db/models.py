@@ -2,8 +2,8 @@
 layer of docs/plan/09-security-and-privacy.md needs and 06 leaves unlisted: passkey_credentials
 and auth_sessions.
 
-gradings and diagnoses are not P1 tables: they arrive with the grader and the
-diagnostician in P3, per docs/plan/11-phased-delivery.md.
+diagnoses is in use from P2 (docs/plan/11-phased-delivery.md P2 scope item 9), written by the
+rule of R12 and R26 until the diagnostician arrives in P3; gradings arrives with the grader in P3.
 """
 from sqlalchemy import JSON, Integer, LargeBinary, Text, event, text
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
@@ -188,6 +188,26 @@ class Attempt(Base):
       Integer, nullable=False, default=0, server_default=text("0")
    )
    snapshot_id: Mapped[str] = mapped_column(Text, nullable=False)
+   created_at: Mapped[str] = mapped_column(Text, nullable=False)
+   updated_at: Mapped[str] = mapped_column(Text, nullable=False)
+
+
+class Diagnosis(Base):
+   """06 "diagnoses", one row per graded attempt, plus diagnosed_by, which 06 does not list: P2
+   writes rows from the R12 and R26 rule and P3's diagnostician writes model rows into the same
+   table, and a reader has to tell the two apart."""
+   __tablename__ = "diagnoses"
+
+   id: Mapped[str] = mapped_column(Text, primary_key=True)
+   attempt_id: Mapped[str] = mapped_column(Text, nullable=False)
+   observed_errors: Mapped[str] = mapped_column(Text, nullable=False)
+   misconception_hypotheses: Mapped[str] = mapped_column(Text, nullable=False)
+   non_conceptual_causes: Mapped[str] = mapped_column(Text, nullable=False)
+   prerequisite_gap: Mapped[str | None] = mapped_column(Text, nullable=True)
+   mastery_states: Mapped[str] = mapped_column(Text, nullable=False)
+   matched_signal: Mapped[str | None] = mapped_column(Text, nullable=True)
+   probe_scheduled: Mapped[str | None] = mapped_column(Text, nullable=True)
+   diagnosed_by: Mapped[str] = mapped_column(Text, nullable=False)
    created_at: Mapped[str] = mapped_column(Text, nullable=False)
    updated_at: Mapped[str] = mapped_column(Text, nullable=False)
 

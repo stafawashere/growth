@@ -6,6 +6,7 @@ the fringe graph app/engine/select.py and app/session/build.py read and the engi
 app/engine/update.py reads, and wires the item bank of app/runtime/bank.py. No second loader is
 built here.
 """
+import json
 from pathlib import Path
 
 from sqlalchemy.orm import Session as OrmSession
@@ -13,22 +14,17 @@ from sqlalchemy.orm import Session as OrmSession
 from app.api.app import SessionContext
 from app.content.loader import load_snapshot
 from app.content.persist import record_snapshot
-from app.engine.fringe import Graph
-from app.engine.update import EngineGraph
 from app.runtime.bank import ItemBank, ItemSource
+from app.runtime.graphs import graphs_from_snapshot
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 DEFAULT_CONTENT_ROOT = REPO_ROOT / "data"
 
 
-def _archetype_counts(archetypes):
-   counts = {}
+def unit_titles(root):
+   curriculum = json.loads((Path(root) / "curriculum.json").read_text())
 
-   for record in archetypes.values():
-      for skill_id in record["skills"]:
-         counts[skill_id] = counts.get(skill_id, 0) + 1
-
-   return counts
+   return {record["id"]: record["name"] for record in curriculum["units"]}
 
 
 def build_bank(engine, snapshot, snapshot_id, items_directory):
@@ -57,18 +53,7 @@ def build_session_context(
       db.commit()
       snapshot_id = row.id
 
-   graph = Graph.from_records(
-      archetypes=list(snapshot.archetypes.values()),
-      skills=list(snapshot.skills.values()),
-      edges=list(snapshot.edges),
-      inert_top=snapshot.inert_top_ids,
-   )
-   engine_graph = EngineGraph(
-      hard_parents=snapshot.hard_parents,
-      supporting_parents=snapshot.supporting_parents,
-      hard_children=snapshot.hard_children,
-      archetype_counts=_archetype_counts(snapshot.archetypes),
-   )
+   graph, engine_graph = graphs_from_snapshot(snapshot)
 
    return SessionContext(
       graph=graph,
@@ -77,4 +62,5 @@ def build_session_context(
       bank=build_bank(engine, snapshot, snapshot_id, items_directory),
       snapshot_id=snapshot_id,
       errors=dict(snapshot.errors),
+      unit_titles=unit_titles(root),
    )

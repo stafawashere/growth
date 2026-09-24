@@ -50,9 +50,10 @@ class Graph:
    co_requisite_parents: dict
    inert_top: frozenset
    _skills_with_archetype: frozenset = field(default=frozenset())
+   conversion_pairs: frozenset = field(default=frozenset())
 
    @classmethod
-   def from_records(cls, archetypes, skills, edges, inert_top):
+   def from_records(cls, archetypes, skills, edges, inert_top, conversion_pairs=frozenset()):
       inert = frozenset(inert_top)
       archetype_map = {record["id"]: record for record in archetypes}
       skill_map = {record["id"]: record for record in skills}
@@ -88,6 +89,7 @@ class Graph:
          co_requisite_parents=co_requisite_parents,
          inert_top=inert,
          _skills_with_archetype=frozenset(loaded),
+         conversion_pairs=frozenset(conversion_pairs),
       )
 
    def primary_skill(self, archetype_id):

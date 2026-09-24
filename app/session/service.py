@@ -21,15 +21,17 @@ from sqlalchemy import update
 
 from app.db import models
 from app.engine import constants
+from app.engine.interleave import window_violations
 from app.engine.prior import p_compensatory, p_knowledge
 from app.engine.select import format_for_attempt, retrievability_map
 from app.engine.state import Confidence, FadingStage, MasteryState, ResponseFormat
 from app.engine.update import Observation, apply_observation, rule_based_mastery_states
 from app.runtime.bank import served_steps, supports_completion
-from app.session import repository
+from app.session import diagnostic_session, repository
 from app.session.build import assemble_session
+from app.session.diagnoses import write_rule_diagnosis
 
-SERVING_BLOCKS = ("block1", "block2", "block3")
+SERVING_BLOCKS = ("block1", "block2", "block3", diagnostic_session.ITEMS_KEY)
 
 CONFIDENCE_FROM_STUDENT = "student"
 
@@ -61,19 +63,26 @@ def utc_now():
    return datetime.now(timezone.utc)
 
 
-def interleaving_satisfied(served, graph):
-   """The queue records the max-2-consecutive-same-primary-skill rule as met (06, sessions.queue)."""
-   primaries = [graph.primary_skill(item["archetype_id"]) for item in served]
-   limit = constants.MAX_CONSECUTIVE_SAME_SKILL
+def unexplained_violations(served, graph, shortfalls):
+   """Window violations that no logged shortfall accounts for.
 
-   for index in range(len(primaries) - limit):
-      window = primaries[index:index + limit + 1]
-      is_run = len(set(window)) == 1
+   shortfalls are (position, rule) pairs. A shortfall is logged when no candidate at that position could meet the rule, which is the
+   plan's own "once 2 units are open" reading applied to every soft rule; anything else the
+   independent check in app/engine/interleave.py finds is a real violation.
+   """
+   records = [graph.archetypes[item["archetype_id"]] for item in served]
+   explained = {(entry[0], entry[1]) for entry in shortfalls}
 
-      if is_run:
-         return False
+   return [
+      violation
+      for violation in window_violations(records, graph.conversion_pairs)
+      if violation not in explained
+   ]
 
-   return True
+
+def interleaving_satisfied(served, graph, shortfalls=()):
+   """06 sessions.queue: the interleaving constraints recorded as satisfied, now all of D3."""
+   return len(unexplained_violations(served, graph, shortfalls)) == 0
 
 
 def queue_payload(session, graph):
@@ -84,7 +93,12 @@ def queue_payload(session, graph):
       "block4": session.block4,
       "forecasts": session.forecasts,
       "coverage_gaps": list(session.coverage_gaps),
-      "interleaving_satisfied": interleaving_satisfied(session.served, graph),
+      "interleaving_satisfied": interleaving_satisfied(
+         session.served,
+         graph,
+         [(entry["position"], entry["rule"]) for entry in session.shortfalls],
+      ),
+      "interleaving_shortfalls": [[entry["position"], entry["rule"]] for entry in session.shortfalls],
    }
 
 
@@ -102,8 +116,29 @@ def open_session(
    probes=None,
    now=None,
    sub_mode=None,
+   process_seed=0,
 ):
    started_at = as_datetime(now or today)
+   opens_diagnostic = mode == diagnostic_session.MODE
+
+   if opens_diagnostic:
+      unfinished = diagnostic_session.unfinished_diagnostic(db, user_id)
+
+      if unfinished is not None:
+         return unfinished
+
+      return diagnostic_session.open_diagnostic(
+         db,
+         user_id,
+         graph,
+         bank,
+         snapshot_id,
+         today,
+         process_seed,
+         started_at,
+         new_id("SES"),
+      )
+
    states = repository.load_states(db, user_id)
    history = repository.load_attempts_history(db, user_id)
    assembled = assemble_session(
@@ -136,7 +171,7 @@ def served_positions(session_row):
    return [
       (block, position, item)
       for block in SERVING_BLOCKS
-      for position, item in enumerate(queue[block])
+      for position, item in enumerate(queue.get(block, []))
    ]
 
 
@@ -367,6 +402,23 @@ def record_attempt(
    """
    session_row = db.get(models.Session, session_id)
    block, position, slot = queue_slot(session_row, item_id)
+
+   if diagnostic_session.is_diagnostic(session_row):
+      return diagnostic_session.record_answer(
+         db,
+         session_row,
+         slot,
+         answer,
+         elapsed_ms,
+         today,
+         archetypes,
+         engine_graph,
+         grader,
+         as_datetime(now or today),
+         started_at,
+         new_id,
+      )
+
    item = resolve_slot(db, session_row, block, position, slot)
    already_attempted = any(row.item_id == item_id for row in attempt_rows(db, session_id))
 
@@ -418,6 +470,9 @@ def record_attempt(
    )
    db.add(attempt)
    db.flush()
+
+   if is_graded:
+      write_rule_diagnosis(db, attempt.id, per_skill_states, graded_answer, submitted_at)
 
    has_rating = confidence is not None
    awaits_rating = collects_confidence(item["stage"]) and not has_rating

@@ -127,19 +127,25 @@ def save_states(db, user_id, states, snapshot_id, now):
 
 
 def load_attempts_history(db, user_id):
-   """The attempt rows assemble_session reads: requeue, repeat window, forecast and format."""
+   """The attempt rows assemble_session reads: requeue, repeat window, forecast and format.
+
+   A diagnostic miss is not marked corrected, because the diagnostic shows no correction, so it
+   never comes back through the R5 requeue.
+   """
    archetype_of = dict(db.execute(select(models.Item.id, models.Item.archetype_id)).all())
    rows = db.execute(
-      select(models.Attempt, models.Session.started_at)
+      select(models.Attempt, models.Session.started_at, models.Session.mode)
       .join(models.Session, models.Session.id == models.Attempt.session_id)
       .where(models.Session.user_id == user_id)
       .order_by(models.Attempt.started_at)
    ).all()
    history = []
 
-   for attempt, started_at in rows:
+   for attempt, started_at, mode in rows:
       submitted_at = attempt.submitted_at or started_at
-      is_incorrect = attempt.correct is not None and attempt.correct == 0
+      was_diagnostic = mode == "diagnostic"
+      was_wrong = attempt.correct is not None and attempt.correct == 0
+      is_incorrect = was_wrong and not was_diagnostic
       minutes = None
       has_elapsed = attempt.elapsed_ms is not None
 

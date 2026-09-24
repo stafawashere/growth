@@ -1486,6 +1486,12 @@ reach): home showed Progress and Review as text buttons with the bar still Home 
 Nothing. The fourteenth session closed with the suite green and every module of its plan either
 done or listed below as needing the operator.
 
+Stage 2 (p2engine), 2026-09-24, worktree `../growth-p2engine`, branch `p2engine`: the rest of 11
+P2 (diagnostic, whole-graph selection with exam-weight quotas, full interleaving, onboarding and
+the long-gap state, the diagnoses table, the three evals). Engine, service, routes and Python
+gates are written and green in the worktree; the onboarding screen and the rewritten shell gate
+are the last piece before the first merge. See Done, "P2 Slice 5".
+
 ## Live API spend log [verified]
 
 Subscription backend, Slice 2, 2026-09-23: 27 live calls through the real claude CLI 2.1.277 on

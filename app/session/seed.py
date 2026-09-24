@@ -37,6 +37,15 @@ def seed_skills_state(db, user_id, snapshot, created_at, snapshot_id=None):
    if already_seeded:
       raise ValueError(f"user {user_id} already has skills_state rows")
 
+   states = initial_states(snapshot, created_at)
+   row_id = snapshot_id or snapshot.digest
+   repository.save_states(db, user_id, states, snapshot_id=row_id, now=created_at)
+
+   return len(states)
+
+
+def initial_states(snapshot, created_at):
+   """The seeded state vector itself, which the whole-graph simulation starts every student from."""
    states = {}
 
    for prq_id in snapshot.prerequisites:
@@ -54,7 +63,4 @@ def seed_skills_state(db, user_id, snapshot, created_at, snapshot_id=None):
          beta=beta_for_skill(skill_id, snapshot.archetypes),
       )
 
-   row_id = snapshot_id or snapshot.digest
-   repository.save_states(db, user_id, states, snapshot_id=row_id, now=created_at)
-
-   return len(states)
+   return states

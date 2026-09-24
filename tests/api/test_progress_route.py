@@ -15,6 +15,9 @@ DECLARED_FIELDS = {
    "due_today_skills": int,
    "due_today_minutes": (int, float),
    "session_in_progress": (str, type(None)),
+   "home_state": str,
+   "days_since_last_session": (int, type(None)),
+   "diagnostic_in_progress": (str, type(None)),
 }
 
 

@@ -1,13 +1,16 @@
 """Learning and review selection, the two-term score of docs/plan/02-adaptive-engine.md (R4).
 
-Candidates are fringe archetypes with at least one published item, the score is due coverage, and
-ties and the no-due case are resolved by uniform random choice. Interleaving beyond the
-max-2-consecutive-same-primary-skill rule is implemented but held off in P1 (scope item 6).
+Candidates are archetypes over the whole loaded graph with at least one published item, the score
+is due coverage, and ties and the no-due case are resolved by uniform random choice. The full D3
+window of app/engine/interleave.py and, in blocks 2 and 3, the exam-weight quota of
+app/engine/exam_weights.py are hard constraints applied before the score, never terms in it.
+The five deferred weights of 02 are read nowhere here.
 """
 from dataclasses import dataclass
 from datetime import datetime, time
 
 from app.engine import constants
+from app.engine.exam_weights import filter_exam_weight
 from app.engine.fringe import (
    candidates,
    drain_probe_queue,
@@ -17,7 +20,8 @@ from app.engine.fringe import (
    outer_fringe,
    serve_stage,
 )
-from app.engine.prior import p_knowledge, primary_skill
+from app.engine.interleave import FULL_RULES, window_filter
+from app.engine.prior import p_knowledge
 from app.engine.retention import current_retrievability
 from app.engine.state import FadingStage, ResponseFormat
 
@@ -26,18 +30,10 @@ from app.engine.state import FadingStage, ResponseFormat
 class Selection:
    item: dict | None
    coverage_gaps: tuple = ()
+   shortfalls: tuple = ()
 
 
-@dataclass(frozen=True)
-class InterleaveRules:
-   """P1 enforces the max-2 rule only. The rest are wired and default off (scope item 6)."""
-   max_consecutive: bool = True
-   block_skills: bool = False
-   block_units: bool = False
-   family_cap: bool = False
-
-
-DEFAULT_RULES = InterleaveRules()
+DEFAULT_RULES = FULL_RULES
 
 REVIEW_RETRIEVAL_FLOOR = 0.5
 
@@ -88,41 +84,25 @@ def format_for_attempt(user_attempts, archetype_id, stage):
 
 
 def filter_interleaving(records, history, graph, rules=DEFAULT_RULES):
-   primaries = [graph.primary_skill(item["archetype_id"]) for item in history]
-   filtered = list(records)
+   return window_filter(records, history, graph, rules)[0]
 
-   if rules.max_consecutive:
-      last_two = primaries[-constants.MAX_CONSECUTIVE_SAME_SKILL:]
-      is_run = len(last_two) == constants.MAX_CONSECUTIVE_SAME_SKILL and len(set(last_two)) == 1
 
-      if is_run:
-         filtered = [record for record in filtered if primary_skill(record) != last_two[0]]
+def servable_records(records, bank, excluded_ids):
+   """Records with an item left to serve, so the window and the quota see only real options."""
+   excluded = set(excluded_ids)
 
-   block = history[-9:]
-   block_primaries = {graph.primary_skill(item["archetype_id"]) for item in block}
+   return [
+      record
+      for record in records
+      if any(item["id"] not in excluded for item in bank.published_items(record["id"]))
+   ]
 
-   if rules.block_skills:
-      too_few_skills = len(block_primaries) < constants.MIN_SKILLS_PER_10 - 1
 
-      if too_few_skills:
-         filtered = [record for record in filtered if primary_skill(record) not in block_primaries]
+def constrained_candidates(records, history, graph, bank, excluded_ids, rules, unit_counts):
+   servable = servable_records(records, bank, excluded_ids)
+   allowed, shortfalls = window_filter(servable, history, graph, rules)
 
-   if rules.block_units:
-      block_units = {graph.primary_unit(item["archetype_id"]) for item in block}
-      too_few_units = len(block_units) < constants.MIN_UNITS_PER_10
-
-      if too_few_units:
-         filtered = [record for record in filtered if record["primary_unit"] not in block_units]
-
-   if rules.family_cap:
-      families = [graph.family(item["archetype_id"]) for item in block]
-      filtered = [
-         record
-         for record in filtered
-         if families.count(record["family"]) < constants.MAX_FAMILY_PER_10
-      ]
-
-   return filtered
+   return filter_exam_weight(allowed, unit_counts), shortfalls
 
 
 def dress_item(record, chosen, states, graph, user_attempts, is_probe=False):
@@ -200,7 +180,12 @@ def next_item_learning(
    excluded_ids=(),
    user_attempts=(),
    rules=DEFAULT_RULES,
+   unit_counts=None,
+   ordering=None,
 ):
+   """unit_counts, when given, is the per-unit tally the exam-weight quota reads (blocks 2 and 3).
+   ordering replaces the two-term ordering only in simulation (app/sim/five_term.py); the running
+   app never passes one."""
    retrievability = retrievability_map(states, today, retrievability)
    probe_archetype = drain_probe_queue(probes, graph, bank, session_now(today, now))
 
@@ -213,14 +198,21 @@ def next_item_learning(
 
    fringe = outer_fringe(states, graph)
    available, coverage_gaps = candidates(fringe, graph, bank)
-   allowed = filter_interleaving(available, history, graph, rules)
-   ordered = choose_by_due_coverage(allowed, states, graph, today, retrievability, rng)
+   allowed, shortfalls = constrained_candidates(
+      available, history, graph, bank, excluded_ids, rules, unit_counts
+   )
+   has_ordering = ordering is not None
+
+   if has_ordering:
+      ordered = ordering(allowed, states, graph, today, retrievability, rng, history)
+   else:
+      ordered = choose_by_due_coverage(allowed, states, graph, today, retrievability, rng)
 
    for record in ordered:
       served = pick_item(record, states, graph, bank, rng, excluded_ids, user_attempts)
 
       if served is not None:
-         return Selection(served, tuple(coverage_gaps))
+         return Selection(served, tuple(coverage_gaps), shortfalls)
 
    return Selection(None, tuple(coverage_gaps))
 
@@ -322,14 +314,16 @@ def next_item_review(
       return Selection(None)
 
    eligible = review_eligible(pool_skills, states, graph, bank, needs_retrieval=not serves_hyper)
-   allowed = filter_interleaving(eligible, history, graph, rules)
+   allowed, shortfalls = constrained_candidates(
+      eligible, history, graph, bank, excluded_ids, rules, None
+   )
    ordered = choose_by_due_coverage(allowed, states, graph, today, retrievability, rng)
 
    for record in ordered:
       served = pick_item(record, states, graph, bank, rng, excluded_ids, user_attempts)
 
       if served is not None:
-         return Selection(served)
+         return Selection(served, shortfalls=shortfalls)
 
    return Selection(None)
 
@@ -346,18 +340,21 @@ def next_item_retrieval(
    excluded_ids=(),
    user_attempts=(),
    rules=DEFAULT_RULES,
+   unit_counts=None,
 ):
    """Block 3: the retrieval-eligible pool is the candidate set, not a filter over a wider pick."""
    retrievability = retrievability_map(states, today, retrievability)
    servable = [record for record in pool if bank.has_published_item(record["id"])]
    gated = gated_records(servable, states, graph)
-   allowed = filter_interleaving(gated, history, graph, rules)
+   allowed, shortfalls = constrained_candidates(
+      gated, history, graph, bank, excluded_ids, rules, unit_counts
+   )
    ordered = choose_by_due_coverage(allowed, states, graph, today, retrievability, rng)
 
    for record in ordered:
       served = pick_item(record, states, graph, bank, rng, excluded_ids, user_attempts)
 
       if served is not None:
-         return Selection(served)
+         return Selection(served, shortfalls=shortfalls)
 
    return Selection(None)

@@ -39,11 +39,12 @@ fixes which archetype a given run serves, and a test that needs a particular arc
 make it certain rather than rely on the seed.
 """
 import random
-from datetime import date
+from datetime import date, datetime
 
 from sqlalchemy import select
 
 from app.db import models
+from app.engine import constants
 from app.engine.select import due_skills, hypercorrection_skills, retrievability_map
 from app.session import repository
 from app.session.build import assemble_session
@@ -76,16 +77,64 @@ def user_assembly_inputs(process_seed, user_id, requested_day):
    return today, user_assembly_rng(process_seed, user_id, today)
 
 
-def open_session_id(db, user_id):
+HOME_FIRST_LOGIN = "first_login"
+HOME_LONG_GAP = "long_gap"
+HOME_QUEUE = "queue"
+
+DIAGNOSTIC_MODE = "diagnostic"
+
+
+def open_session_id(db, user_id, diagnostic=False):
+   """The newest unfinished session of the one kind asked for: a diagnostic resumes on the
+   onboarding screen, anything else on the session screen."""
+   mode_matches = (
+      models.Session.mode == DIAGNOSTIC_MODE
+      if diagnostic
+      else models.Session.mode != DIAGNOSTIC_MODE
+   )
    statement = (
       select(models.Session.id)
       .where(models.Session.user_id == user_id)
       .where(models.Session.ended_at.is_(None))
+      .where(mode_matches)
       .order_by(models.Session.started_at.desc(), models.Session.id)
       .limit(1)
    )
 
    return db.scalars(statement).first()
+
+
+def last_session_day(db, user_id):
+   statement = (
+      select(models.Session.started_at)
+      .where(models.Session.user_id == user_id)
+      .order_by(models.Session.started_at.desc())
+      .limit(1)
+   )
+   started_at = db.scalars(statement).first()
+
+   if started_at is None:
+      return None
+
+   return datetime.fromisoformat(started_at).date()
+
+
+def home_state(db, user_id, today):
+   """08 home: first login runs the onboarding diagnostic, a gap over GAP_DAYS_DIAGNOSTIC days since
+   the last session offers a re-diagnostic instead of the queue (02, Decay), anything else is the
+   queue. The gap counts calendar days from the day the last session started."""
+   last_day = last_session_day(db, user_id)
+
+   if last_day is None:
+      return HOME_FIRST_LOGIN, None
+
+   gap_days = (today - last_day).days
+   is_long_gap = gap_days > constants.GAP_DAYS_DIAGNOSTIC
+
+   if is_long_gap:
+      return HOME_LONG_GAP, gap_days
+
+   return HOME_QUEUE, gap_days
 
 
 def reviewable_skills(states, graph, today):
@@ -110,7 +159,12 @@ def queue_preview(db, user_id, graph, bank, today, rng):
    }
    frontier = {graph.primary_skill(item["archetype_id"]) for item in session.block2}
 
+   state, gap_days = home_state(db, user_id, today)
+
    return {
+      "home_state": state,
+      "days_since_last_session": gap_days,
+      "diagnostic_in_progress": open_session_id(db, user_id, diagnostic=True),
       "skills_due_for_review": len(due_touched),
       "frontier_skills": len(frontier),
       "corrected_items_returning": len(session.requeued),

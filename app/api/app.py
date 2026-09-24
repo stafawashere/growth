@@ -28,6 +28,7 @@ class SessionContext:
    bank: Any
    snapshot_id: str
    errors: dict = field(default_factory=dict)
+   unit_titles: dict = field(default_factory=dict)
 
 
 @dataclass

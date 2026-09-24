@@ -16,7 +16,7 @@ from app.items.verify import ChildDiedError
 from app.providers.anthropic import AnthropicProvider
 from app.providers.guard import BudgetStopped, GuardedProvider, SubscriptionPacingCaps
 from app.providers.subscription import SubscriptionLimitReached, SubscriptionProvider
-from app.session import preview, service
+from app.session import diagnostic_session, preview, service
 
 router = APIRouter(prefix="/sessions", tags=["sessions"])
 
@@ -129,6 +129,7 @@ def open_session(
       today,
       rng,
       sub_mode=fields.get("sub_mode"),
+      process_seed=settings.rng_seed,
    )
 
    return session_payload(db, row)
@@ -140,11 +141,23 @@ def read_session(session_id: str, db=Depends(get_db), user=Depends(current_user)
 
 
 @router.get("/{session_id}/next")
-def read_next_item(session_id: str, db=Depends(get_db), user=Depends(current_user)):
+def read_next_item(
+   session_id: str,
+   today: str | None = None,
+   db=Depends(get_db),
+   settings=Depends(get_settings),
+   user=Depends(current_user),
+):
    """The stage example prompt is the one the feedback screen repeats, from one function in
    app/feedback/render.py, so the student is asked about the same visible step before and after.
+
+   A diagnostic session chooses its next item here, after the last answer, and finishes itself
+   when the engine stops the run; the reply then carries diagnostic_finished.
    """
    row = owned_session(db, session_id, user)
+
+   if diagnostic_session.is_diagnostic(row):
+      return next_diagnostic_item(db, settings, row, today_of({"today": today}))
 
    try:
       item = service.served_item(db, row.id)
@@ -159,6 +172,37 @@ def read_next_item(session_id: str, db=Depends(get_db), user=Depends(current_use
    prompt = render.pre_submission_prompt(item["stage"], item["served_steps"])
 
    return {"item": dict(item, self_explanation_prompt=prompt)}
+
+
+def next_diagnostic_item(db, settings, row, today):
+   context = settings.session_context
+   item = diagnostic_session.advance(
+      db,
+      row,
+      context.graph,
+      context.engine_graph,
+      context.bank,
+      today,
+      settings.rng_seed,
+      service.utc_now(),
+   )
+   is_finished = item is None
+
+   if is_finished:
+      return {"item": None, "diagnostic_finished": True}
+
+   return {"item": dict(item, served_steps=None, self_explanation_prompt=None), "diagnostic_finished": False}
+
+
+@router.get("/{session_id}/diagnostic")
+def read_diagnostic(session_id: str, db=Depends(get_db), settings=Depends(get_settings), user=Depends(current_user)):
+   """08 diagnostic result: unit-level states, never a percentage and never a score."""
+   row = owned_session(db, session_id, user)
+
+   if not diagnostic_session.is_diagnostic(row):
+      raise HTTPException(status_code=404, detail="this session is not a diagnostic")
+
+   return diagnostic_session.result_payload(row, settings.session_context.unit_titles)
 
 
 @router.post("/{session_id}/attempts")
@@ -209,10 +253,13 @@ def submit_attempt(
    except ValueError as refused:
       raise HTTPException(status_code=409, detail=str(refused)) from refused
 
+   shows_correctness = not diagnostic_session.is_diagnostic(row)
+   correct = None if attempt.correct is None else bool(attempt.correct)
+
    return {
       "id": attempt.id,
       "item_id": attempt.item_id,
-      "correct": None if attempt.correct is None else bool(attempt.correct),
+      "correct": correct if shows_correctness else None,
       "confidence": attempt.confidence,
       "served_stage": attempt.served_stage,
       "format": attempt.format,

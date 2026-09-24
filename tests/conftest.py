@@ -3,7 +3,7 @@
 No test may run the operator's real claude CLI, which would spend the operator's subscription
 and could reach the network. Every binary app/providers/subscription.py resolves must sit under
 tests/fixtures, and anything else fails the test before a process starts. The notional
-subscription ledger is pointed at a per-test file so no test writes var/.
+subscription ledger and the pacing ledger are pointed at per-test files so no test writes var/.
 """
 from pathlib import Path
 
@@ -33,3 +33,4 @@ def forbid_the_real_claude_binary(monkeypatch, tmp_path_factory):
    monkeypatch.setattr(subscription, "resolve_binary", resolve_fixture_binary_only)
    ledger_dir = tmp_path_factory.mktemp("subscription_ledger")
    monkeypatch.setattr(guard, "SUBSCRIPTION_SPEND_LEDGER_PATH", ledger_dir / "ledger.json")
+   monkeypatch.setattr(guard, "SUBSCRIPTION_PACING_LEDGER_PATH", ledger_dir / "pacing.json")

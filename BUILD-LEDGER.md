@@ -70,6 +70,53 @@ replay only, since the P1 gates still open are the operator's and the engine nee
 queue to teach from now to May 2027.
 
 ## Done [verified]
+- 2026-09-23, Slice 2 of the subscription backend: live validation, latency, Slice 1's three
+  defects closed, and the runtime cost lines moved to $0.00 API on the subscription backend.
+  Defect a: `app/providers/guard.py` gains `SubscriptionPacingCaps`, `SubscriptionPacingLedger`
+  (`var/subscription_pacing.json`, locked like the dev ledger) and `SubscriptionPaceExceeded` (a
+  `BudgetStopped`); `GuardedProvider(subscription_pacing=...)` counts the call against a per-role
+  daily call cap and a per-minute rate instead of the per-role dollar and token caps, never touches
+  the budgets row, still sets `last_accounting`, releases the slot on a `RefusedBeforeWire`, and
+  audits a pacing refusal once per role, day and cap. Defaults tutor 60 a day, other roles 20, 4 a
+  minute per role, set by `GROWTH_SUBSCRIPTION_<ROLE>_CALLS_PER_DAY` and
+  `GROWTH_SUBSCRIPTION_CALLS_PER_MINUTE` (`app/main.py` `build_subscription_pacing`, a bad value
+  stops startup), wired through `Settings.subscription_pacing` into `app/api/routes/sessions.py`.
+  The $15.00 dev cap is untouched. Defect b: `app/main.py` `refuse_the_legacy_paid_switch` stops
+  startup when `GROWTH_TUTOR_PROVIDER=anthropic` or `GROWTH_TUTOR_PROVIDER=api` is set without
+  `GROWTH_AI_BACKEND=api`, naming the variable to set; `none` and `replay` still work. Defect c: `app/feedback/drain.py` and
+  `tools/drain_subscription_queue.py` retry due `provider_call_queued` jobs through the backend
+  `build_tutor` builds (subscription or api only, never replay or none), under the same guard,
+  store the sentence on `attempt.tutor_sentence` where `compose_sentence` reads it first, mark the
+  job done, re-queue a still-limited job 30 minutes later and stop without counting an attempt,
+  stop cleanly on a pacing, budget or developer spend cap stop, fail a job after 3 other
+  failures, and fail a job without a call when its attempt or session is already at the tutor
+  ceiling (3 per item, 20 per session, `tutor.ceiling_reached`). `app/feedback/tutor.py` gains `request_from_messages` for the rebuild. Live
+  validation: `tools/subscription_smoke.py` (new) ran 27 calls against the real CLI 2.1.277 on the
+  keychain login (Live API spend log). The Slice 1 argv was accepted as built. The CLI's default
+  thinking made one Haiku tutor call take 60.3 s and 6,176 output tokens, so
+  `app/providers/subscription.py` now maps `thinking: disabled` to a fixed `MAX_THINKING_TOKENS=0`
+  in the subprocess environment and `output_config.effort` to `--effort`, both accepted by the CLI.
+  Measured tutor latency (wall, n=10 each): Haiku 4.5 median 3.03 s, p90 3.16 s; Sonnet 5 median
+  3.72 s, p90 4.32 s, under the 10 s line. API latency is unknown (no cassette or ledger entry
+  recorded one). Cost: `tools/cost_model.py` emits
+  `tier.hundred_claude_only.subscription_backend_api_cycle` = $0.00,
+  `subscription_runtime_notional` = $52.14 (the `api_cycle`, kept as the fallback),
+  `runtime_lines_without_evals` = $29.27, `target.per_student_low` and `dev_spend.cap`; projected
+  API cost per student to exam day on the subscription backend is $0.00 against the $50 to $100
+  target. `docs/plan/14-token-economy.md` "Runtime calls on the operator's subscription" rewritten
+  with the backend cost table, the latency table and the pacing sizing; the tier table gains the
+  $0.00 row. `docs/plan/07-ai-provider-layer.md` and `docs/operator/provider-key.md` (switching
+  backends, where the token goes, draining) updated. Tests added:
+  `tests/providers/test_subscription_pacing.py` (5), `tests/api/test_subscription_drain.py` (11),
+  two in `tests/api/test_subscription_limit.py`, two in `tests/providers/test_subscription.py`,
+  six in `tests/api/test_wiring.py` (one parametrized over three backends), two in
+  `tests/tools/test_cost_model.py`. Each was shown red against a mutation of the code it guards
+  (21 mutations from a scratchpad script: pacing ignored, no minute rate, no daily cap, release a
+  no-op, the route unpaced, the legacy switch allowed, the pacing environment ignored, the drain
+  not storing, retrying at once, continuing past a limit, unpaced, the tool draining replay, the
+  tool unpaced, a limit wait counted as a failed attempt, the developer spend cap uncaught, the thinking variable dropped, effort dropped, the host thinking value copied, the
+  evals left on the API, the screen dropped from the runtime lines, and the quoted dev cap
+  changed), one or more tests red each, then green on restore. Suite at close: pytest 936 passed (exit 0), vitest 310 passed, tsc exit 0, qa/12_report.py exit 0.
 - 2026-09-23, Slice 1 of the subscription backend: the AI engine runs by default on the
   operator's Claude subscription through the official Claude Code CLI, and the paid key is a
   fallback chosen only explicitly. `app/providers/subscription.py` (new) `SubscriptionProvider`
@@ -1216,12 +1263,59 @@ claimed.
   payload, which restores the negative case the agent's deletion had dropped
   (test_a_distractor_whose_error_path_does_not_resolve_is_refused, red `DID NOT RAISE ValueError`).
 
+- 2026-09-23, Slice 2 closing session: the drain's ceiling finding was already fixed in the
+  working tree when this session opened, so it was verified rather than rewritten. Each guard in
+  `app/feedback/drain.py` was broken and its tests watched go red, then restored: removing the
+  `tutor.ceiling_reached` check failed `test_a_job_whose_item_ceiling_is_full_fails_without_calling`
+  and `test_a_job_whose_session_ceiling_is_full_fails_without_calling` (`report.failed` 0, not 1);
+  recording a tutor call on a limit wait failed
+  `test_waiting_behind_a_limit_does_not_use_up_the_failure_retries` and
+  `test_waiting_behind_a_limit_does_not_fill_the_item_ceiling`; calling `requeue_job` instead of
+  `defer_job` on a limit wait failed `test_a_limit_that_still_holds_requeues_the_job_later_and_stops`
+  and the failure-retries test. `tools/subscription_smoke.py` `checks_for` now accepts exactly two
+  turns for a call that asked for a schema and got `structured_output` back, and one turn
+  otherwise (`tests/tools/test_subscription_smoke_checks.py`, 5 tests; shown red three ways: one
+  turn always, one failed; the allowance without requiring returned output, one failed; two turns
+  always, two failed). Rechecked offline against `var/subscription_smoke.json`, phase 2 reads
+  `no_tool_ran` true and both phase 1 calls still read true. Checks: pytest `945 passed in
+  484.23s`, vitest `310 passed (310)`, `tsc --noEmit` exit 0, `qa/12_report.py` exit 0.
+
 ## In progress [inferred]
 
 Nothing. The fourteenth session closed with the suite green and every module of its plan either
 done or listed below as needing the operator.
 
 ## Live API spend log [verified]
+
+Subscription backend, Slice 2, 2026-09-23: 27 live calls through the real claude CLI 2.1.277 on
+the operator's keychain login (no `CLAUDE_CODE_OAUTH_TOKEN` in the environment or `.env`), all
+built by `app/main.py` `build_tutor` with `GROWTH_AI_BACKEND=subscription`. These were
+subscription calls, at $0.00 API spend: `tools/dev_spend.py` read `spent = 0.0353` before and
+after. The notional `total_cost_usd` the CLI reported totals 0.17019 USD, which is exactly what
+`var/subscription_spend_ledger.json` holds (`{"spent_usd": 0.17019}`), the positive control that
+every call was counted and that none reached the API ledger. No paid API call was made.
+
+| Run | Calls | Model | Wall seconds | `duration_ms` | Notional USD |
+| --- | --- | --- | --- | --- | --- |
+| smoke phase 1, Slice 1 argv, CLI thinking on | 1 | claude-haiku-4-5 | 61.356 | 60304 | 0.032725 |
+| smoke phase 1, Slice 1 argv | 1 | claude-sonnet-5 | 4.041 | 2964 | 0.011356 |
+| smoke phase 2, `--json-schema`, thinking on | 1 | claude-haiku-4-5 | 35.707 | 34839 | 0.020126 |
+| probe, `MAX_THINKING_TOKENS=0` and `--effort low` | 1 | claude-haiku-4-5 | 2.604 | 1600 | 0.002242 |
+| latency, 10 cassette inputs, paced 5 s | 10 | claude-haiku-4-5 | median 3.03, p90 3.16 | median 2020, p90 2070 | 0.024647 |
+| latency, 10 cassette inputs, paced 5 s | 10 | claude-sonnet-5 | median 3.72, p90 4.32 | median 2740, p90 3310 | 0.066202 |
+| smoke phase 1, final argv | 1 | claude-haiku-4-5 | 3.190 | 2117 | 0.002471 |
+| smoke phase 1, final argv | 1 | claude-sonnet-5 | 3.536 | 2541 | 0.005902 |
+| smoke phase 2, final argv | 1 | claude-haiku-4-5 | 6.535 | 5368 | 0.004519 |
+
+What the checks found: every call returned `subtype` success with one turn and no permission
+denial, except the two structured calls, which report two turns (the CLI's structured output
+takes a second turn; `permission_denials` stayed empty). Usage and `total_cost_usd` parsed on all
+27. Reported input was 1,724 to 1,965 tokens on Haiku 4.5 (the API cassettes: 1,343 to 1,588 for
+the same fields) and 2,402 to 2,405 on Sonnet 5, far below what a leaked CLAUDE.md or the CLI's
+default system prompt would add, and no reply carried text from the operator's CLAUDE.md (markers
+checked: the operator's name, "CLAUDE.md", its first heading, "laconic"). A usage limit was not
+hit, so its real JSON shape is still unobserved. Per-call rows are in `var/subscription_smoke.json`
+(gitignored; it holds the last run only).
 
 Subscription backend, Slice 1, 2026-09-23: no live call. The claude CLI was run only as
 `claude -p --help` and `claude --version` to check flags, and every test drives
@@ -1363,23 +1457,29 @@ seventeen live calls add nothing to that model, since P1 wires only the tutor an
 
 ## Known defects [verified]
 
-- 2026-09-23, subscription backend Slice 1, open:
-  - Nothing was run against the live CLI. The flags exist in `claude -p --help` on 2.1.277, but
-    whether the CLI accepts `--setting-sources ""`, `--tools ""` together with
-    `--disallowedTools`, the `--system-prompt=<value>` form over a prefix that opens with `---`,
-    and `--permission-prompts none` in one call is unverified. The usage-limit wording the
-    adapter matches ("weekly limit", "5-hour limit", "usage limit", "rate limit") and whether a
-    limit arrives as `is_error` JSON or on stderr are guesses. Slice 2 should confirm both on one
-    live call.
-  - `GuardedProvider` still charges each subscription call to the tutor's per-user daily budget
-    row at API prices (`usage_cost`), so the default $1.00 tutor cap stops the subscription tutor
-    after about $1.00 of notional use a day, and a limited call is charged the worst-case
-    reservation as any failed call is. Left unchanged because the guard is out of this slice's
-    scope and the cap still works as a rate limit.
-  - Queued `provider_call_queued` jobs have no worker. The row holds the request so a later
-    drain can replay it, but nothing drains it yet.
+- 2026-09-23, subscription backend Slice 2, open:
+  - The usage-limit wording the adapter matches ("weekly limit", "5-hour limit", "usage limit",
+    "rate limit") and whether a limit arrives as `is_error` JSON or on stderr are still
+    unverified: no limit was hit in the 27 live calls, so the patterns were left as they were.
+  - Nothing drains the queue on its own. `tools/drain_subscription_queue.py` has to be run by the
+    operator (or a scheduler) after a window resets; there is no startup or periodic hook.
+  - The CLI adds about 380 input tokens a call on Haiku 4.5 over the same request on the API, and
+    what they are was not determined. The size rules out a leaked CLAUDE.md or the default Claude
+    Code system prompt, but not something smaller.
+  - Whether `MAX_THINKING_TOKENS=0` or `--effort low` stopped the CLI's thinking was not isolated;
+    both are sent. If a later CLI drops the variable, Haiku latency returns to about 60 s and the
+    smoke tool is the check.
+  - The notional `tutor_cost_usd` stored on a subscription attempt is priced at API rates by the
+    guard, so `tools/serving_cost.py` over a subscription database reports what the calls would
+    have cost on the key, not money spent.
+  - Wall clock includes about one second of CLI start and exit on every call.
+- 2026-09-23, subscription backend Slice 1, carried:
   - A student who reopens feedback while the limit holds starts a fresh CLI process each time
-    before being told the tutor is unavailable. The queue row is not duplicated.
+    before being told the tutor is unavailable. The queue row is not duplicated. The pacing guard
+    now bounds it at 4 a minute and the day's call cap.
+- 2026-09-23, subscription backend Slice 1, closed in Slice 2: the live CLI accepted the Slice 1
+  argv (27 calls); subscription calls no longer consume the per-role dollar and token caps
+  (subscription pacing); queued calls have a drain (`tools/drain_subscription_queue.py`).
 
 - 2026-09-23, found while verifying the MCQ math-rendering fix live: `GET /progress`
   (`app/session/preview.py` `queue_preview`, which calls `assemble_session` again) did not answer
@@ -1915,6 +2015,13 @@ From the eleventh session, 2026-09-21, found and not fixed.
 - `drain_probe_queue` in `app/engine/fringe.py` still takes `now` as a required positional; every public entry point supplies it through `session_now`, so only a direct call without it raises. `session_now` accepts a datetime `today`, but the rest of the selection path compares dates, so pass a date.
 - `qa/last_report.json` is regenerated whenever `qa/12_report.py` runs and is restored with `git checkout -- qa/last_report.json` at session close, so the library's committed report does not drift because of build sessions.
 
+- 2026-09-23, Slice 2 closing session: `var/subscription_smoke.json` is gitignored and was not
+  re-run, so the file on disk still holds `no_tool_ran: false` for phase 2 from the old check. The
+  two-turn allowance rests on the CLI 2.1.277 forcing its internal StructuredOutput tool for
+  `--json-schema`; a later CLI that answers a schema in one turn, or takes more than one extra
+  turn, will read `no_tool_ran` false in the smoke run and needs a look before the check is
+  changed.
+
 ## Plan corrections applied [verified]
 
 Session 2026-09-23 (fourteenth). No plan file was edited. Readings applied in code:
@@ -2262,6 +2369,64 @@ Session 2026-09-20 (seventh).
 
 ## Decisions taken on the operator's instruction, 2026-09-23 [inferred]
 
+Subscription backend, Slice 2.
+
+- Precedence reversed from Slice 1, on the operator's instruction that the paid API is used only
+  when `GROWTH_AI_BACKEND=api`: `GROWTH_TUTOR_PROVIDER=anthropic` now stops startup unless
+  `GROWTH_AI_BACKEND=api` is also set, including beside `GROWTH_AI_BACKEND=subscription`, `replay`
+  or `none`, since each of those is also "without GROWTH_AI_BACKEND=api". Tests changed:
+  `test_main_wires_a_tutor_when_a_key_is_configured` now sets `GROWTH_AI_BACKEND=api` beside the
+  old variable and also asserts no pacing is built; `test_building_the_application_opens_no_socket`
+  sets `GROWTH_AI_BACKEND=api` and now asserts an `AnthropicProvider` rather than any tutor;
+  `test_an_explicit_backend_wins_over_the_older_variable` became
+  `test_the_older_anthropic_switch_refuses_beside_any_backend_but_api`, which asserts a refusal
+  where it asserted a subscription tutor. Each new assertion is at least as strict: none lets the
+  paid adapter be wired by the older variable alone.
+  From the slice review, `GROWTH_TUTOR_PROVIDER=api` is refused the same way: an unmapped older
+  value used to pass straight through as the backend, so it wired the paid adapter without
+  `GROWTH_AI_BACKEND=api`. Other unmapped values still reach `build_tutor`'s unknown-backend
+  error. `test_the_older_variable_naming_api_does_not_wire_the_paid_api` was shown red with the
+  old comparison and green with the fix.
+- Pacing is a call count, not a dollar figure, because the subscription is metered by usage
+  windows and the per-role caps price a call at API rates it is never billed. Defaults tutor 60 a
+  day (three sessions at the per-session ceiling of 20), other roles 20, 4 a minute per role;
+  sizing in `docs/plan/14-token-economy.md`, "Subscription pacing" [inferred], because neither
+  window is published as a count. The count is one file for the process, not per user, because
+  the login it protects is the operator's one account. A pace stop is a `BudgetStopped` so every
+  caller degrades it as a cap.
+- A paced call keeps computing `last_accounting` at API prices, so attempts still record tokens
+  and a notional cost, but writes nothing to the budgets row.
+- The drain is a CLI tool, not a startup or periodic hook, so no subscription call happens
+  without the operator starting it. It refuses `replay` (it would store a canned sentence on a
+  real attempt) and `none`. It stops at the first job that meets a limit, since every later job
+  would meet the same closed window, and at a pacing or budget stop. A limit wait does not increment
+  `attempts_made`, so only real failures count toward `MAX_DRAIN_ATTEMPTS`; the one
+  `tests/api/test_subscription_drain.py` assertion that expected 1 after a limit wait (written
+  earlier in this slice, never committed) now expects 0, an equality as strict as before.
+  From the slice review: a drain retry is held to the tutor ceilings compose_sentence enforces, and
+  a job already at either ceiling is marked failed (`last_error = tutor_ceiling_reached`) without
+  a call, since neither ceiling lifts for that attempt. A retry that meets the limit again no
+  longer counts a tutor call on the attempt, because it is the call already counted when
+  compose_sentence queued the job, still waiting for the window. Counting it filled the item
+  ceiling after two waits and would fail a job no model answered. Other drain failures still count.
+  Shown red by removing the ceiling check (2 tests) and by counting limit waits (2 tests). On the
+  api backend `DevSpendCapExceeded`, which is not a `BudgetStopped`, stops the drain as
+  `stopped_by = dev_spend_cap` with the job untouched instead of escaping as a traceback.
+- The smoke tool calls `SubscriptionProvider` directly, not through `GuardedProvider`, because the
+  default 4-a-minute pacing would refuse a 5-second-paced latency run; the provider, argv and
+  environment are the production ones. It reads `CLAUDE_CODE_OAUTH_TOKEN` from `.env` only to
+  pass it to the subprocess and reports presence, never the value.
+- Thinking off on the CLI: the tutor's API request already disables thinking, and the CLI thinks
+  unless told not to, so the adapter maps the same request options onto the CLI. The variable is a
+  fixed value set by the adapter, never copied from the host, so the allowlist still admits no
+  host variable beyond its five names and the token.
+- Evals move to the subscription with the runtime lines: the argument for keeping them on the key
+  was that Claude Code is a different harness from the one that serves the student, which stops
+  holding once the student is served by the same `claude -p` harness.
+- `tools/cost_model.py` gained `PER_STUDENT_TARGET_LOW` (50.00) and `DEV_SPEND_CAP` (15.00) so
+  doc 14 may print the target and the cap under its dollar-figure check; a test asserts
+  `DEV_SPEND_CAP` equals `app/providers/guard.py` `DEFAULT_DEV_SPEND_CAP_USD`.
+
 Subscription backend, Slice 1.
 
 - Precedence: an explicit `GROWTH_AI_BACKEND` always wins; `GROWTH_TUTOR_PROVIDER` is read only
@@ -2578,6 +2743,28 @@ the runbook).
   itself is a model judgment, so it no longer contradicts the same paragraph's claim that the
   deterministic checks around the verifier are unchanged.
 
+Subscription backend, Slice 2 closing session.
+
+- A drain retry that meets the usage limit again is not counted as a tutor call on the attempt.
+  compose_sentence counted the call when it queued the job, and the retry is that same call
+  still waiting for the window, so counting it would let waiting alone fill the 3-per-item
+  ceiling and fail a job no model ever answered. Only failures that reached the provider for
+  another reason are counted. Both tutor ceilings are checked before every drain call, so on
+  `GROWTH_AI_BACKEND=api` no retry can be paid past what compose_sentence would allow.
+- The drain test assertion the earlier fix agent changed, `job.attempts_made` after a limit wait,
+  went from `== 1` to `== 0`. The drain test file had never been committed, so `git diff tests/`
+  cannot show the old form; the ledger entry above is the record. An equality against 0 is as
+  strict as one against 1, and the dedicated test
+  `test_waiting_behind_a_limit_does_not_use_up_the_failure_retries` adds a stronger check: after
+  more limit waits than `MAX_DRAIN_ATTEMPTS`, one real failure still re-queues rather than fails.
+  The assertion was kept.
+- The structured-output smoke call's second turn is the CLI's internal mechanism, not a tool
+  running. The CLI 2.1.277 binary contains a StructuredOutput tool that the model is forced to
+  call when a schema is set; the argv passes `--tools ""`, which removes every built-in tool, an
+  empty strict MCP config and the full disallowed list, `permission_denials` was empty, and the
+  call returned `structured_output`. The argv was left as it is and the smoke check was taught
+  the one extra turn, only when a schema was asked for and structured output came back.
+
 ## Decisions taken on the operator's instruction, 2026-09-20 [inferred]
 
 Sixth session, on the instruction "answer all decisions for me". Every open question the ledger
@@ -2640,11 +2827,9 @@ P1 reads 28 of 31 (gate_status: 17, 29 and 30 missing). P2 cannot start: its ent
 "P1 merged with all gates green". Nothing further in P1 is buildable without the operator; every
 item below needs content, a key, a download or a ruling.
 
-Subscription backend Slice 2 (agent-buildable, needs one live CLI call the operator approves):
-confirm the CLI accepts the Slice 1 argv and how a usage limit is reported, measure latency per
-tutor call, then move the runtime cost lines in `docs/plan/14-token-economy.md` and
-`tools/cost_model.py`, and decide how the per-role daily cap should count subscription calls
-(Known defects above). A worker to drain `provider_call_queued` jobs is the other open piece.
+Subscription backend, after Slice 2: observe a real usage-limit answer when one happens and align
+the adapter's patterns and the fake CLI to it; decide whether the drain should run on a schedule
+rather than by hand (Known defects above).
 
 Human-only, in the order that unblocks the most:
 

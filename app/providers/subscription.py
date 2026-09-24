@@ -43,6 +43,13 @@ DEFAULT_BINARY = "claude"
 
 ENV_ALLOWLIST = ("PATH", "HOME", "USER", "LANG", "TMPDIR")
 
+# The CLI thinks by default. On 2026-09-23 a tutor call on claude-haiku-4-5 through the CLI spent
+# 6,176 output tokens and 60 s on a 407-character answer, where the same template on the API with
+# thinking disabled spent about 120. A request whose provider_options disable thinking, as the
+# tutor's do, runs the CLI with this fixed value, never one copied from the host.
+THINKING_ENV_VAR = "MAX_THINKING_TOKENS"
+THINKING_DISABLED_VALUE = "0"
+
 DISALLOWED_TOOLS = (
    "Agent",
    "Bash",
@@ -118,7 +125,19 @@ def is_limit_message(text):
    return any(pattern.search(text) for pattern in _LIMIT_PATTERNS)
 
 
-def build_env(host_environ):
+def thinking_disabled(provider_options):
+   thinking = (provider_options or {}).get("thinking") or {}
+
+   return thinking.get("type") == "disabled"
+
+
+def effort_of(provider_options):
+   output_config = (provider_options or {}).get("output_config") or {}
+
+   return output_config.get("effort")
+
+
+def build_env(host_environ, disable_thinking=False):
    env = {}
 
    for name in ENV_ALLOWLIST:
@@ -132,10 +151,13 @@ def build_env(host_environ):
    if has_oauth_token:
       env[OAUTH_TOKEN_ENV_VAR] = host_environ[OAUTH_TOKEN_ENV_VAR]
 
+   if disable_thinking:
+      env[THINKING_ENV_VAR] = THINKING_DISABLED_VALUE
+
    return env
 
 
-def build_argv(binary, model, system_prompt, output_schema=None, max_budget_usd=DEFAULT_MAX_BUDGET_USD):
+def build_argv(binary, model, system_prompt, output_schema=None, max_budget_usd=DEFAULT_MAX_BUDGET_USD, effort=None):
    """The system prompt rides in the --system-prompt=value form because the tutor template opens
    with front matter, and a bare value starting with --- could be read as an option."""
    argv = [
@@ -154,6 +176,11 @@ def build_argv(binary, model, system_prompt, output_schema=None, max_budget_usd=
       "--tools", "",
       "--disallowedTools", ",".join(DISALLOWED_TOOLS),
    ]
+
+   has_effort = effort is not None and effort != ""
+
+   if has_effort:
+      argv.extend(["--effort", effort])
 
    has_schema = output_schema is not None
 
@@ -223,7 +250,7 @@ class SubscriptionProvider(Provider):
       self._ledger = subscription_ledger if subscription_ledger is not None else SubscriptionSpendLedger()
 
    def generate(self, request):
-      env = build_env(self._environ)
+      env = build_env(self._environ, disable_thinking=thinking_disabled(request.provider_options))
       binary_path = resolve_binary(self._binary, env.get("PATH"))
       argv = build_argv(
          binary_path,
@@ -231,6 +258,7 @@ class SubscriptionProvider(Provider):
          request.system,
          output_schema=request.output_schema,
          max_budget_usd=max_budget_for(request.role),
+         effort=effort_of(request.provider_options),
       )
       work_dir = tempfile.mkdtemp(prefix=TEMP_DIR_PREFIX)
       failure = None

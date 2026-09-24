@@ -40,6 +40,7 @@ class Settings:
    verifier: Any = None
    tutor: Any = None
    tutor_caps: dict = field(default_factory=dict)
+   subscription_pacing: Any = None
    rp_id: str = "localhost"
    origin: str = "http://127.0.0.1:8000"
    bind_host: str = "127.0.0.1"

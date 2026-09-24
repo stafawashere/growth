@@ -147,6 +147,19 @@ DEV_SPEND_SUBJECT = "dev_spend:ledger"
 # and never added to DEV_SPEND_LEDGER_PATH, which protects the credit on that key.
 SUBSCRIPTION_SPEND_LEDGER_PATH = Path(__file__).resolve().parents[2] / "var" / "subscription_spend_ledger.json"
 
+# Subscription pacing, the guard's cap for a role running on the operator's subscription in place
+# of the per-role dollar and token caps, which price a call at API rates the subscription never
+# bills. Sized in docs/plan/14-token-economy.md, "Subscription pacing".
+SUBSCRIPTION_PACING_LEDGER_PATH = Path(__file__).resolve().parents[2] / "var" / "subscription_pacing.json"
+SUBSCRIPTION_CALLS_PER_MINUTE_ENV_VAR = "GROWTH_SUBSCRIPTION_CALLS_PER_MINUTE"
+DEFAULT_SUBSCRIPTION_CALLS_PER_DAY = {"tutor": 60}
+DEFAULT_SUBSCRIPTION_CALLS_PER_DAY_OTHER_ROLE = 20
+DEFAULT_SUBSCRIPTION_CALLS_PER_MINUTE = 4
+PACING_WINDOW_SECONDS = 60
+SUBSCRIPTION_DAILY_CAP = "subscription_calls_per_day"
+SUBSCRIPTION_MINUTE_RATE = "subscription_calls_per_minute"
+SUBSCRIPTION_PACING_SUBJECT = "subscription_pacing"
+
 
 @dataclass(frozen=True)
 class ModelPrice:
@@ -343,6 +356,165 @@ class SubscriptionSpendLedger(DevSpendLedger):
    operator's Anthropic key) and it is not the thing DEFAULT_DEV_SPEND_CAP_USD protects."""
 
    path: Path = field(default_factory=lambda: SUBSCRIPTION_SPEND_LEDGER_PATH)
+
+
+@dataclass(frozen=True)
+class SubscriptionPacingCaps:
+   """Call counts, not dollars: the operator's subscription is metered by 5-hour and weekly usage
+   windows, not by a price per token, so a notional API price is the wrong unit to stop it on.
+   docs/plan/14-token-economy.md, "Subscription pacing", gives the sizing."""
+
+   calls_per_day: dict = field(default_factory=lambda: dict(DEFAULT_SUBSCRIPTION_CALLS_PER_DAY))
+   calls_per_minute: int = DEFAULT_SUBSCRIPTION_CALLS_PER_MINUTE
+
+   def daily_cap_for(self, role):
+      return self.calls_per_day.get(role, DEFAULT_SUBSCRIPTION_CALLS_PER_DAY_OTHER_ROLE)
+
+
+class SubscriptionPaceExceeded(BudgetStopped):
+   """A BudgetStopped, so every caller that already degrades a cap degrades this the same way:
+   static feedback with the tutor marked unavailable, and no call made."""
+
+
+@dataclass
+class SubscriptionPacingLedger(DevSpendLedger):
+   """Per-role call counts for the current day plus the start times of each role's calls in the
+   last PACING_WINDOW_SECONDS, in one locked JSON file under var/. Global to the process and not
+   per user, because the subscription it protects is the operator's one login."""
+
+   path: Path = field(default_factory=lambda: SUBSCRIPTION_PACING_LEDGER_PATH)
+
+   def _read_state(self):
+      if not self.path.exists():
+         return {"day": None, "calls": {}, "recent": {}}
+
+      return json.loads(self.path.read_text())
+
+   def _write_state(self, state):
+      fd, tmp_name = tempfile.mkstemp(dir=self.path.parent, prefix=".subscription_pacing-", suffix=".tmp")
+
+      try:
+         with os.fdopen(fd, "w") as tmp_file:
+            tmp_file.write(json.dumps(state, sort_keys=True))
+
+         os.replace(tmp_name, self.path)
+      except BaseException:
+         Path(tmp_name).unlink(missing_ok=True)
+         raise
+
+   def _current(self, state, now):
+      day = now.date().isoformat()
+      is_a_new_day = state.get("day") != day
+
+      if is_a_new_day:
+         state = {"day": day, "calls": {}, "recent": {}}
+
+      window_start = now.timestamp() - PACING_WINDOW_SECONDS
+      state["recent"] = {
+         role: [started for started in starts if started > window_start]
+         for role, starts in state.get("recent", {}).items()
+      }
+
+      return state
+
+   def calls_today(self, role, now):
+      lock_file = self._locked(fcntl.LOCK_SH)
+
+      try:
+         state = self._current(self._read_state(), now)
+      finally:
+         fcntl.flock(lock_file, fcntl.LOCK_UN)
+         lock_file.close()
+
+      return state["calls"].get(role, 0)
+
+   def reserve(self, role, now, caps):
+      """Counts the call and returns its start time, or raises SubscriptionPaceExceeded naming
+      the cap that bound, without counting it. Check and count happen under one exclusive lock."""
+      lock_file = self._locked(fcntl.LOCK_EX)
+
+      try:
+         state = self._current(self._read_state(), now)
+         calls_today = state["calls"].get(role, 0)
+         recent_starts = state["recent"].get(role, [])
+
+         over_daily_cap = calls_today + 1 > caps.daily_cap_for(role)
+         over_minute_rate = len(recent_starts) + 1 > caps.calls_per_minute
+
+         if over_daily_cap:
+            raise SubscriptionPaceExceeded(role, (SUBSCRIPTION_DAILY_CAP,))
+
+         if over_minute_rate:
+            raise SubscriptionPaceExceeded(role, (SUBSCRIPTION_MINUTE_RATE,))
+
+         started = now.timestamp()
+         state["calls"][role] = calls_today + 1
+         state["recent"][role] = recent_starts + [started]
+         self._write_state(state)
+
+         return started
+      finally:
+         fcntl.flock(lock_file, fcntl.LOCK_UN)
+         lock_file.close()
+
+   def release(self, role, now, started):
+      """A call that never left gives its slot back, the way a RefusedBeforeWire releases the
+      per-role reservation."""
+      lock_file = self._locked(fcntl.LOCK_EX)
+
+      try:
+         state = self._current(self._read_state(), now)
+         calls_today = state["calls"].get(role, 0)
+         has_a_call_to_release = calls_today > 0
+
+         if has_a_call_to_release:
+            state["calls"][role] = calls_today - 1
+
+         state["recent"][role] = [
+            recorded for recorded in state["recent"].get(role, []) if recorded != started
+         ]
+         self._write_state(state)
+      finally:
+         fcntl.flock(lock_file, fcntl.LOCK_UN)
+         lock_file.close()
+
+
+def pacing_caps_from_environment(env=None):
+   """GROWTH_SUBSCRIPTION_<ROLE>_CALLS_PER_DAY and GROWTH_SUBSCRIPTION_CALLS_PER_MINUTE, each a
+   positive whole number; anything else stops the process at startup with the variable named."""
+   env = os.environ if env is None else env
+   calls_per_day = dict(DEFAULT_SUBSCRIPTION_CALLS_PER_DAY)
+
+   for role in ROLES:
+      variable = f"GROWTH_SUBSCRIPTION_{role.upper()}_CALLS_PER_DAY"
+      default = DEFAULT_SUBSCRIPTION_CALLS_PER_DAY.get(role, DEFAULT_SUBSCRIPTION_CALLS_PER_DAY_OTHER_ROLE)
+      calls_per_day[role] = _positive_count(env, variable, default)
+
+   calls_per_minute = _positive_count(
+      env, SUBSCRIPTION_CALLS_PER_MINUTE_ENV_VAR, DEFAULT_SUBSCRIPTION_CALLS_PER_MINUTE
+   )
+
+   return SubscriptionPacingCaps(calls_per_day=calls_per_day, calls_per_minute=calls_per_minute)
+
+
+def _positive_count(env, variable, default):
+   raw = env.get(variable)
+   is_unset = raw is None or raw == ""
+
+   if is_unset:
+      return default
+
+   try:
+      value = int(raw)
+   except ValueError as refused:
+      raise ValueError(f"{variable} must be a positive whole number, got {raw!r}") from refused
+
+   is_positive = value > 0
+
+   if not is_positive:
+      raise ValueError(f"{variable} must be a positive whole number, got {raw!r}")
+
+   return value
 
 
 def dev_spend_cap_usd(env=None):
@@ -670,7 +842,8 @@ class GuardedProvider(Provider):
    a refused call never leaves the previous call's accounting behind for its caller to read."""
 
    def __init__(self, provider, db, user_id, clock=None, caps=None, provider_name=None,
-                dev_spend_cap=None, dev_spend_ledger=None, dev_spend_env=None, dev_spend_track=False):
+                dev_spend_cap=None, dev_spend_ledger=None, dev_spend_env=None, dev_spend_track=False,
+                subscription_pacing=None, pacing_ledger=None):
       self._provider = provider
       self._db = db
       self._user_id = user_id
@@ -691,6 +864,14 @@ class GuardedProvider(Provider):
       self._dev_spend_cap = dev_spend_cap if dev_spend_cap is not None else dev_spend_cap_usd(dev_spend_env)
       self._dev_ledger = dev_spend_ledger or DevSpendLedger()
       self._dev_reservation = None
+
+      # A role on the operator's subscription is paced by call counts (SubscriptionPacingCaps)
+      # and never touches the per-role budgets row, whose dollar and token caps price the call at
+      # API rates. The accounting a caller reads from last_accounting is still computed.
+      self._pacing = subscription_pacing
+      self._pacing_ledger = pacing_ledger or (SubscriptionPacingLedger() if subscription_pacing else None)
+      self._pacing_started = None
+      self._pacing_request = None
 
    def generate(self, request):
       self.last_accounting = None
@@ -773,9 +954,57 @@ class GuardedProvider(Provider):
 
       self._charge_worst_case(budget, estimate, request)
 
+   def _is_paced(self):
+      return self._pacing is not None
+
+   def _pacing_release(self, request):
+      has_slot = self._pacing_started is not None
+
+      if not has_slot:
+         return
+
+      self._pacing_ledger.release(request.role, self._clock(), self._pacing_started)
+      self._pacing_started = None
+
+   def _pacing_reserve(self, db, request):
+      self._pacing_started = None
+      self._pacing_request = request
+
+      try:
+         self._pacing_started = self._pacing_ledger.reserve(request.role, self._clock(), self._pacing)
+      except SubscriptionPaceExceeded as paced:
+         self._record_pacing_refusal(db, request, paced)
+         raise
+
+   def _record_pacing_refusal(self, db, request, paced):
+      """One row per role per day per cap, the bound _refuse keeps for a budget refusal."""
+      day = self._clock().date().isoformat()
+      subject = f"{SUBSCRIPTION_PACING_SUBJECT}:{request.role}"
+      statement = (
+         select(models.AuditLog.detail)
+         .where(models.AuditLog.action == CALL_REFUSED_ACTION)
+         .where(models.AuditLog.actor == self._user_id)
+         .where(models.AuditLog.subject == subject)
+      )
+
+      for detail in db.scalars(statement).all():
+         recorded = json.loads(detail) if detail else {}
+         same_day_and_cap = recorded.get("day") == day and recorded.get("cap") == paced.cap
+
+         if same_day_and_cap:
+            return
+
+      detail = dict(self._detail(request, paced.caps), day=day)
+      write_audit(db, self._user_id, CALL_REFUSED_ACTION, subject, detail, now=self._clock())
+      db.flush()
+
    def _release(self, budget, estimate):
       """The request never left, so the reservation comes off the row and settled_calls is not
       touched: no call reached the provider."""
+      if budget is None:
+         self._pacing_release(self._pacing_request)
+         return
+
       budget.tokens_in = budget.tokens_in - estimate.prompt_tokens
       budget.tokens_out = budget.tokens_out - estimate.output_tokens
       budget.cost_usd = budget.cost_usd - estimate.cost_usd
@@ -797,6 +1026,12 @@ class GuardedProvider(Provider):
    def _reserve(self, request):
       db = self.session()
       estimate = estimate_call(request, self._clock().date())
+
+      if self._is_paced():
+         self._pacing_reserve(db, request)
+
+         return None, estimate
+
       budget = self._budget_row(db, request.role)
 
       is_configured = budget.cap_tokens is not None or budget.cap_usd is not None
@@ -938,9 +1173,10 @@ class GuardedProvider(Provider):
    def _charge_worst_case(self, budget, estimate, request):
       """The call reached the provider and nothing readable came back, so the reservation stands
       as the charge and neither cached field was reported."""
-      budget.settled_calls = budget.settled_calls + 1
-      self._stamp(budget)
-      self.session().flush()
+      if budget is not None:
+         budget.settled_calls = budget.settled_calls + 1
+         self._stamp(budget)
+         self.session().flush()
 
       self.last_accounting = CallAccounting(
          model=request.model,
@@ -972,7 +1208,8 @@ class GuardedProvider(Provider):
       queryable. The detail carries what an operator can act on and nothing else: no key material
       and no part of the provider's payload reaches it."""
       db = self.session()
-      already_recorded = self._unreadable_already_recorded(db, budget)
+      subject = self._accounting_subject(budget, request)
+      already_recorded = self._unreadable_already_recorded(db, subject)
 
       if already_recorded:
          return
@@ -981,7 +1218,7 @@ class GuardedProvider(Provider):
          db,
          self._user_id,
          UNREADABLE_RESULT_ACTION,
-         f"budgets:{budget.id}",
+         subject,
          {
             "role": request.role,
             "model": request.model,
@@ -990,12 +1227,22 @@ class GuardedProvider(Provider):
          now=self._clock(),
       )
 
-   def _unreadable_already_recorded(self, db, budget):
+   def _accounting_subject(self, budget, request):
+      """A paced call has no budgets row, so its audit subject names the role and the day, which
+      keeps the same one-row-per-role-per-day bound."""
+      if budget is None:
+         day = self._clock().date().isoformat()
+
+         return f"{SUBSCRIPTION_PACING_SUBJECT}:{request.role}:{day}"
+
+      return f"budgets:{budget.id}"
+
+   def _unreadable_already_recorded(self, db, subject):
       statement = (
          select(models.AuditLog.id)
          .where(models.AuditLog.action == UNREADABLE_RESULT_ACTION)
          .where(models.AuditLog.actor == self._user_id)
-         .where(models.AuditLog.subject == f"budgets:{budget.id}")
+         .where(models.AuditLog.subject == subject)
       )
 
       return db.scalars(statement).first() is not None
@@ -1029,6 +1276,20 @@ class GuardedProvider(Provider):
          reported(reported_cached_write),
          self._clock().date(),
       )
+      reconciled = (priced_model, tokens_in, tokens_out, reported_cached_read, reported_cached_write)
+      accounting = CallAccounting(
+         model=priced_model,
+         tokens_in=tokens_in,
+         tokens_out=tokens_out,
+         tokens_cached_read=reported_cached_read,
+         tokens_cached_write=reported_cached_write,
+         cost_usd=cost,
+      )
+
+      if budget is None:
+         self.last_accounting = accounting
+
+         return reconciled
 
       budget.tokens_in = budget.tokens_in - estimate.prompt_tokens + tokens_in
       budget.tokens_out = budget.tokens_out - estimate.output_tokens + tokens_out
@@ -1046,16 +1307,9 @@ class GuardedProvider(Provider):
       self._stamp(budget)
       self.session().flush()
 
-      self.last_accounting = CallAccounting(
-         model=priced_model,
-         tokens_in=tokens_in,
-         tokens_out=tokens_out,
-         tokens_cached_read=reported_cached_read,
-         tokens_cached_write=reported_cached_write,
-         cost_usd=cost,
-      )
+      self.last_accounting = accounting
 
-      return priced_model, tokens_in, tokens_out, reported_cached_read, reported_cached_write
+      return reconciled
 
    def _dev_reconcile_safely(self, request, priced_model, tokens_in, tokens_out, reported_cached_read,
                              reported_cached_write):

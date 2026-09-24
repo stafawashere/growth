@@ -90,7 +90,8 @@ file never patches a figure a document has already quoted.
 | Haiku 4.5 screen between transcriber and grader | unchanged from 13 | $0.20 |
 | evals, golden set 1 on the template gate, golden set 2 mixed at canary cadence 2, golden set 3 monthly (cadence 9) | directions 3 and 5, cadence ruled 2026-09-23 | $22.88 |
 | **Total** | | **$92.95** |
-| of which, on the API key (runtime: tutor, grader, transcriber, diagnostician, screen, evals) | "Offline work on the operator's Claude Code subscription" below | **$52.14** |
+| of which, runtime (tutor, grader, transcriber, diagnostician, screen, evals), on the API key when `GROWTH_AI_BACKEND=api` | the documented fallback, "Offline work on the operator's Claude Code subscription" below | **$52.14** |
+| the same runtime lines on `GROWTH_AI_BACKEND=subscription`, the default | "Runtime calls on the operator's subscription" below | **$0.00** API |
 | of which, offline on the operator's Claude Code subscription (template author, verifier re-solves) | same | **$40.81**, 43.90 percent of the total |
 
 [measured: the `tier.hundred_claude_only` lines of `python3 tools/cost_model.py`]
@@ -254,9 +255,102 @@ line pays.
 
 Ruled 2026-09-23 on the operator's instruction, and reversing the first paragraph of the section above for this installation: runtime AI calls now run by default on the operator's own Claude subscription through the official Claude Code CLI (`GROWTH_AI_BACKEND=subscription`, `app/providers/subscription.py`). The reading that allows it is narrow. The quickstart bars offering claude.ai login or its rate limits to other users, so the backend serves exactly one account, the operator's own: it refuses to start over a database with more than one user and registration refuses a second account. Any installation with a second person on it uses `GROWTH_AI_BACKEND=api`.
 
-The API key is a fallback, chosen only by `GROWTH_AI_BACKEND=api`. The CLI subprocess receives an allowlisted environment with no `ANTHROPIC_*` variable, so it cannot bill the key, and the API adapter refuses an OAuth token before the wire. The CLI's reported `total_cost_usd` is kept in a separate subscription ledger as a notional figure and is not spent against the developer spend cap on the API key (`app/providers/guard.py`) or the $100.00 ceiling.
+The API key is a fallback, chosen only by `GROWTH_AI_BACKEND=api`. The older `GROWTH_TUTOR_PROVIDER=anthropic` no longer reaches the key by itself: without `GROWTH_AI_BACKEND=api` beside it the app refuses to start and says which variable to set. The CLI subprocess receives an allowlisted environment with no `ANTHROPIC_*` variable, so it cannot bill the key, and the API adapter refuses an OAuth token before the wire. The CLI's reported `total_cost_usd` is kept in a separate subscription ledger as a notional figure and is not spent against the developer spend cap on the API key (`app/providers/guard.py`) or the $100.00 ceiling.
 
-No cost figure in this document changes yet. The runtime lines above still show API pricing until a measured pass on the CLI's latency and limits moves them. The pacing risk above applies to runtime calls too: a usage limit stops the tutor for the rest of the window, the student gets the static feedback, and the call is queued.
+### What the runtime lines cost on each backend
+
+| Backend | Runtime lines (tutor, grader, transcriber, diagnostician, screen, evals) | Offline lines (template author, verifier) | API spend to exam day |
+| --- | --- | --- | --- |
+| `subscription`, the default | on the operator's login, $52.14 notional | on Claude Code, $40.81 notional | **$0.00** |
+| `api`, the fallback | $52.14 on the key | on Claude Code | **$52.14**, headroom $47.86 |
+
+[measured: `tier.hundred_claude_only.subscription_backend_api_cycle`,
+`tier.hundred_claude_only.subscription_runtime_notional`, `tier.hundred_claude_only.api_cycle`,
+`tier.hundred_claude_only.api_headroom` and `tier.hundred_claude_only.offline_cycle` of
+`python3 tools/cost_model.py`]
+
+The runtime lines without evals are $29.27 (`tier.hundred_claude_only.runtime_lines_without_evals`),
+the figure the operator quoted; with the evals at their ruled cadence they are the $52.14 of
+`api_cycle`. On the subscription backend the projected API cost per student to exam day is $0.00
+against the operator's $50.00 to $100.00 target, with $100.00 of headroom
+(`tier.hundred_claude_only.subscription_backend_api_headroom`). What that backend spends instead is
+usage against the plan's 5-hour and weekly windows, which no published figure lets this file price,
+so the notional lines stay here as the size of the load and the API column stays the fallback.
+
+Evals move with the runtime lines. The argument above for keeping golden sets 2 and 3 on the key
+was that a Claude Code agent is a different harness from the one that serves a student. On the
+subscription backend the student is served by that same `claude -p` harness, with the same system
+prompt, model and argv, so running the golden sets there measures what ships.
+
+### Latency, measured 2026-09-23
+
+Twenty tutor calls through the real CLI (2.1.277, keychain login, no OAuth token in the
+environment), built by `tools/subscription_smoke.py` exactly as the app builds them, over the
+fields of the eight recorded Haiku cassettes, paced at least 5 seconds apart. Wall clock is the
+whole subprocess as the app waits on it; `duration_ms` is what the CLI reports. p90 is the nearest
+rank of ten.
+
+| Path | Model | n | Median wall | p90 wall | Median `duration_ms` | p90 `duration_ms` |
+| --- | --- | --- | --- | --- | --- | --- |
+| `claude -p` | claude-haiku-4-5 | 10 | 3.03 s | 3.16 s | 2.02 s | 2.07 s |
+| `claude -p` | claude-sonnet-5 | 10 | 3.72 s | 4.32 s | 2.74 s | 3.31 s |
+| API, `AnthropicProvider` | claude-haiku-4-5 | 16 recorded calls | unknown | unknown | unknown | unknown |
+
+The API row is unknown because neither the eight cassettes under
+`tests/fixtures/provider_cassettes/` nor the ledger's Live API spend log for those sixteen calls
+recorded a latency, and this slice made no paid call to measure one. The tutor's median of 3.72 s
+on its assigned model is under the 10 s line the slice set, so the API stays the fallback for
+multi-user installations and limits, not for speed. About one second of every call is the CLI
+starting and exiting (wall minus `duration_ms`).
+
+The CLI thinks by default, which the API tutor does not. Before the fix, one Haiku 4.5 tutor call
+took 60.3 s and 6,176 output tokens for a 407-character answer, and one structured call took 34.8 s.
+The adapter now maps the request's `thinking: disabled` to `MAX_THINKING_TOKENS=0` in the CLI's
+environment and its `effort: low` to `--effort low`; the twenty calls above ran with both, at 85 to
+234 output tokens. Which of the two did the work was not isolated, to keep inside the call budget.
+
+Input per call: 1,724 to 1,965 tokens on Haiku 4.5 against 1,343 to 1,588 on the API for the same
+fields (the cassettes), and 2,402 to 2,404 on Sonnet 5. The CLI adds about 380 tokens on Haiku.
+A leaked CLAUDE.md or the CLI's default system prompt would add thousands, and no reply carried
+text from the operator's CLAUDE.md, so none leaked; what the 380 are was not determined. Sonnet 5
+calls through the CLI read 1,500 tokens from the prompt cache after the first call, so the CLI
+caches the static prefix without being asked.
+
+### Subscription pacing
+
+The per-role dollar and token caps price a call at API rates, so on the subscription backend they
+would stop the tutor after about a dollar of notional use a day. A role on the subscription is
+instead capped by `app/providers/guard.py` `SubscriptionPacingCaps`, counted in
+`var/subscription_pacing.json`, and never touches the budgets row:
+
+| Cap | Default | Variable |
+| --- | --- | --- |
+| tutor calls a day | 60 | `GROWTH_SUBSCRIPTION_TUTOR_CALLS_PER_DAY` |
+| calls a day, every other role | 20 | `GROWTH_SUBSCRIPTION_<ROLE>_CALLS_PER_DAY` |
+| calls a minute, per role | 4 | `GROWTH_SUBSCRIPTION_CALLS_PER_MINUTE` |
+
+Sizing [inferred]. Neither the 5-hour nor the weekly limit is published as a count
+(https://code.claude.com/docs/en/authentication.md [verified]), so the defaults are set from what
+the app needs rather than from what the plan allows. 60 tutor calls is three full sessions at the
+per-session ceiling of 20 (`app/feedback/tutor.py` `TUTOR_CALLS_PER_SESSION`), five times the 12 a
+session this file prices. At the measured 1.7 to 2.4 thousand input tokens and about 150 output
+tokens a call, a full day is roughly 150 thousand tokens, a small share of one interactive Claude
+Code session, which leaves the operator's own development use of the same login most of the window.
+Four a minute lets a student move through items at their own pace (the fixtures answer an item in
+about 90 s) and stops only a burst, such as a feedback screen reopened in a loop. A pacing stop
+degrades like any cap: static feedback, the tutor marked unavailable, no call. The $15.00
+persistent developer cap on the API key is unchanged and still guards every `api` call.
+
+### A usage limit, and the queue
+
+A 5-hour or weekly limit stops the tutor for the rest of the window: the student gets the static
+feedback and the call is queued in the jobs table. `python3 tools/drain_subscription_queue.py`
+retries the queued calls once the window has reset, through the configured backend under the same
+caps, and stores each sentence on its attempt, where the feedback screen reads it the next time
+the student opens it. A limit that still holds re-queues the job 30 minutes later and stops the
+drain; it never falls through to the API unless `GROWTH_AI_BACKEND=api` is set. The wording and
+JSON shape of a real limit answer were not observed on 2026-09-23, so the patterns the adapter
+matches ("weekly limit", "5-hour limit", "usage limit", "rate limit") are still unverified.
 
 ## Per role model choice [verified]
 

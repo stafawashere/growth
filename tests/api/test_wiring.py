@@ -45,10 +45,12 @@ def test_main_wires_a_tutor_when_a_key_is_configured(tmp_path, monkeypatch):
          tmp_path,
          ANTHROPIC_API_KEY="test-key-not-real",
          GROWTH_TUTOR_PROVIDER="anthropic",
+         GROWTH_AI_BACKEND="api",
       )
    )
 
    assert isinstance(application.state.settings.tutor, AnthropicProvider)
+   assert application.state.settings.subscription_pacing is None
 
 
 def test_main_builds_without_a_tutor_when_no_key_is_configured(tmp_path, monkeypatch):
@@ -69,8 +71,8 @@ def test_main_respects_an_explicit_none_provider_even_with_a_key(tmp_path):
 
 def test_a_stray_key_alone_wires_no_paid_tutor(tmp_path):
    """A billed role is never wired by the accident of a key sitting in the environment. Only
-   GROWTH_AI_BACKEND=api, or the older GROWTH_TUTOR_PROVIDER=anthropic, spends on the key. With
-   neither set the default backend is the operator's subscription, which never reads the key.
+   GROWTH_AI_BACKEND=api spends on the key. With no backend set the default is the operator's
+   subscription, which never reads the key.
    """
    application = build_application(env_for(tmp_path, ANTHROPIC_API_KEY="test-key-not-real"))
    tutor = application.state.settings.tutor
@@ -89,13 +91,13 @@ def test_building_the_application_opens_no_socket(tmp_path, monkeypatch):
       env_for(
          tmp_path,
          ANTHROPIC_API_KEY="test-key-not-real",
-         GROWTH_TUTOR_PROVIDER="anthropic",
+         GROWTH_AI_BACKEND="api",
       )
    )
    without_key = build_application(env_for(tmp_path / "second", GROWTH_AI_BACKEND="api"))
    on_the_subscription = build_application(env_for(tmp_path / "third"))
 
-   assert with_key.state.settings.tutor is not None
+   assert isinstance(with_key.state.settings.tutor, AnthropicProvider)
    assert without_key.state.settings.tutor is None
    assert isinstance(on_the_subscription.state.settings.tutor, SubscriptionProvider)
 
@@ -106,17 +108,66 @@ def test_the_default_backend_is_the_subscription(tmp_path):
    assert isinstance(application.state.settings.tutor, SubscriptionProvider)
 
 
-def test_an_explicit_backend_wins_over_the_older_variable(tmp_path):
+def test_the_older_anthropic_switch_alone_refuses_at_startup_and_names_the_fix(tmp_path):
+   """The paid API is used only when GROWTH_AI_BACKEND=api (operator's instruction, 2026-09-23).
+   The older variable used to wire it by itself; now it stops the process and says what to set."""
+   with pytest.raises(ValueError, match="Set GROWTH_AI_BACKEND=api"):
+      build_application(
+         env_for(tmp_path, ANTHROPIC_API_KEY="test-key-not-real", GROWTH_TUTOR_PROVIDER="anthropic")
+      )
+
+
+@pytest.mark.parametrize("other_backend", ["subscription", "replay", "none"])
+def test_the_older_anthropic_switch_refuses_beside_any_backend_but_api(tmp_path, other_backend):
+   with pytest.raises(ValueError, match="GROWTH_TUTOR_PROVIDER=anthropic"):
+      build_application(
+         env_for(
+            tmp_path,
+            ANTHROPIC_API_KEY="test-key-not-real",
+            GROWTH_TUTOR_PROVIDER="anthropic",
+            GROWTH_AI_BACKEND=other_backend,
+         )
+      )
+
+
+def test_the_older_variable_naming_api_does_not_wire_the_paid_api(tmp_path):
+   """An unmapped older value used to pass straight through as the backend, so api reached the
+   paid key without GROWTH_AI_BACKEND=api."""
+   with pytest.raises(ValueError, match="GROWTH_TUTOR_PROVIDER=api .*Set GROWTH_AI_BACKEND=api"):
+      build_application(
+         env_for(tmp_path, ANTHROPIC_API_KEY="test-key-not-real", GROWTH_TUTOR_PROVIDER="api")
+      )
+
+
+def test_the_older_replay_and_none_values_still_work(tmp_path):
+   replayed = build_application(
+      env_for(tmp_path, GROWTH_TUTOR_PROVIDER="replay", GROWTH_TUTOR_CASSETTE=str(CASSETTE_PATH))
+   )
+   switched_off = build_application(
+      env_for(tmp_path / "second", ANTHROPIC_API_KEY="test-key-not-real", GROWTH_TUTOR_PROVIDER="none")
+   )
+
+   assert isinstance(replayed.state.settings.tutor, ReplayProvider)
+   assert switched_off.state.settings.tutor is None
+
+
+def test_the_subscription_backend_carries_pacing_caps_from_the_environment(tmp_path):
    application = build_application(
       env_for(
          tmp_path,
-         ANTHROPIC_API_KEY="test-key-not-real",
-         GROWTH_TUTOR_PROVIDER="anthropic",
-         GROWTH_AI_BACKEND="subscription",
+         GROWTH_SUBSCRIPTION_TUTOR_CALLS_PER_DAY="12",
+         GROWTH_SUBSCRIPTION_CALLS_PER_MINUTE="2",
       )
    )
+   pacing = application.state.settings.subscription_pacing
 
-   assert isinstance(application.state.settings.tutor, SubscriptionProvider)
+   assert pacing.daily_cap_for("tutor") == 12
+   assert pacing.calls_per_minute == 2
+
+
+def test_a_malformed_pacing_cap_stops_the_process_at_startup(tmp_path):
+   with pytest.raises(ValueError, match="GROWTH_SUBSCRIPTION_CALLS_PER_MINUTE"):
+      build_application(env_for(tmp_path, GROWTH_SUBSCRIPTION_CALLS_PER_MINUTE="0"))
 
 
 def test_the_api_backend_is_the_only_way_to_the_paid_adapter(tmp_path):

@@ -14,8 +14,8 @@ from app.feedback import render, tutor
 from app.items.grade import grade
 from app.items.verify import ChildDiedError
 from app.providers.anthropic import AnthropicProvider
-from app.providers.guard import BudgetStopped, GuardedProvider
-from app.providers.subscription import SubscriptionLimitReached
+from app.providers.guard import BudgetStopped, GuardedProvider, SubscriptionPacingCaps
+from app.providers.subscription import SubscriptionLimitReached, SubscriptionProvider
 from app.session import preview, service
 
 router = APIRouter(prefix="/sessions", tags=["sessions"])
@@ -284,6 +284,10 @@ def tutor_sentence_for(settings, db, user, attempt, feedback):
    The guard's persistent developer spend cap only tracks a call this process would actually pay
    for, which is exactly when settings.tutor is a real AnthropicProvider. Replay, the subscription
    backend and the no-provider case never reach dev_spend_track=True.
+
+   A subscription tutor is paced by call counts (settings.subscription_pacing, else the defaults)
+   instead of the per-role dollar and token caps, which would price each call at API rates the
+   subscription never bills and stop the tutor after about $1.00 of notional use a day.
    """
    has_tutor = settings.tutor is not None
 
@@ -291,7 +295,20 @@ def tutor_sentence_for(settings, db, user, attempt, feedback):
       return None, False
 
    is_live = isinstance(settings.tutor, AnthropicProvider)
-   guarded = GuardedProvider(settings.tutor, db, user.id, caps=settings.tutor_caps, dev_spend_track=is_live)
+   is_on_the_subscription = isinstance(settings.tutor, SubscriptionProvider)
+   pacing = None
+
+   if is_on_the_subscription:
+      pacing = settings.subscription_pacing or SubscriptionPacingCaps()
+
+   guarded = GuardedProvider(
+      settings.tutor,
+      db,
+      user.id,
+      caps=settings.tutor_caps,
+      dev_spend_track=is_live,
+      subscription_pacing=pacing,
+   )
 
    try:
       sentence = tutor.compose_sentence(guarded, feedback, db=db, attempt=attempt, user_id=user.id)

@@ -1,6 +1,6 @@
 ---
 title: The provider key
-research_date: 2026-09-20
+research_date: 2026-09-23
 status: in_progress
 purpose: What gate 22 needs from an Anthropic key, and what already runs without one.
 ---
@@ -41,8 +41,14 @@ Read from `app/main.py` (the composition root's own docstring and `build_tutor`,
   only (docs/plan/07-ai-provider-layer.md, "The subscription backend"). `api` is the only value
   that uses the key. With `none`, `app/feedback/tutor.py` returns the deterministic payload and no
   sentence. A key sitting in the environment wires nothing on its own.
-- `GROWTH_TUTOR_PROVIDER`: the older switch, `none`, `replay` or `anthropic` (meaning `api`),
-  read only when `GROWTH_AI_BACKEND` is unset.
+- `GROWTH_TUTOR_PROVIDER`: the older switch, `none` or `replay`, read only when
+  `GROWTH_AI_BACKEND` is unset. Its old value `anthropic`, and `api`, now stop the app at startup unless
+  `GROWTH_AI_BACKEND=api` is also set; remove it, or set `GROWTH_AI_BACKEND=api` if the paid key is
+  what you meant.
+- `GROWTH_SUBSCRIPTION_TUTOR_CALLS_PER_DAY` (default 60), `GROWTH_SUBSCRIPTION_<ROLE>_CALLS_PER_DAY`
+  (default 20) and `GROWTH_SUBSCRIPTION_CALLS_PER_MINUTE` (default 4): the pacing guard on the
+  `subscription` backend, which replaces the dollar and token caps below for a role on the
+  subscription (`docs/plan/14-token-economy.md`, "Subscription pacing").
 - `ANTHROPIC_API_KEY`: read only on the `api` backend.
 - `GROWTH_CLAUDE_BIN`: the claude CLI the `subscription` backend runs. Default the claude on PATH.
 - `GROWTH_TUTOR_CASSETTE`: path to a cassette JSON file, read only on the `replay` backend.
@@ -52,6 +58,34 @@ Read from `app/main.py` (the composition root's own docstring and `build_tutor`,
   tunable for 12-open-questions.md.
 - `GROWTH_TUTOR_CAP_TOKENS`: the tutor role's daily token cap. Unset by default; when set, it
   binds alongside the dollar cap, whichever crosses first.
+
+## Switching backends
+
+The default needs nothing set: `GROWTH_AI_BACKEND` unset means `subscription`, which runs the
+`claude` CLI on your own Claude login. To run on the paid key instead, set
+`GROWTH_AI_BACKEND=api` and `ANTHROPIC_API_KEY` in the environment the app starts in; unset
+`GROWTH_AI_BACKEND` again (or set it to `subscription`) to go back. `replay` and `none` are for
+tests and for turning the tutor off. The backend is read once at startup, so restart the app after
+changing it; the startup log names the backend it chose.
+
+## Where the subscription token goes
+
+The subscription backend works with no token at all: the CLI then uses the login stored by
+`claude` in the macOS keychain, the same one an interactive `claude` session uses. On a machine
+without that login, run `claude setup-token` and put the long-lived token in the environment the
+app starts in as `CLAUDE_CODE_OAUTH_TOKEN`, for example in the repository's `.env` (gitignored)
+if you load it into the shell before starting the app. The app does not read `.env` itself;
+`tools/subscription_smoke.py` does, for the token only. The token is passed only to the `claude`
+subprocess, never logged or printed, and the API adapter refuses it if it ever reaches
+`ANTHROPIC_API_KEY`. Never commit it.
+
+## When the subscription says no
+
+A 5-hour or weekly usage limit leaves the student with the static feedback and queues the tutor
+call. Once the window has reset, run `python3 tools/drain_subscription_queue.py` (add `--dry-run`
+to see how many are due first); it retries through the same backend and puts each sentence where
+the student will see it on their next look. It never uses the paid key unless
+`GROWTH_AI_BACKEND=api`.
 
 Building the composition root, including constructing an `anthropic` provider, never dials out by
 itself: `app/main.py`'s own docstring states building it makes no network call, since the tutor

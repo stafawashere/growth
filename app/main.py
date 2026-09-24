@@ -28,14 +28,21 @@ GROWTH_AI_BACKEND     the primary switch for what backs the AI roles, the tutor 
                       a key wires no tutor. replay reads GROWTH_TUTOR_CASSETTE. none wires no tutor,
                       and app/feedback/tutor.py returns the deterministic payload with no
                       sentence. No backend makes a call at build time, and the choice is logged.
-GROWTH_TUTOR_PROVIDER the older switch, still honoured: none, replay or anthropic, where anthropic
-                      means api. It is read only when GROWTH_AI_BACKEND is unset, so a
-                      deployment that set it before GROWTH_AI_BACKEND existed keeps its
-                      behaviour, and an explicit GROWTH_AI_BACKEND always wins.
+GROWTH_TUTOR_PROVIDER the older switch: none or replay, read only when GROWTH_AI_BACKEND is
+                      unset. Its old value anthropic stops the process at startup unless
+                      GROWTH_AI_BACKEND=api is also set, because the paid API is used only
+                      when GROWTH_AI_BACKEND says so.
 GROWTH_TUTOR_CASSETTE path to a recorded cassette JSON file, read only by the replay backend.
 GROWTH_CLAUDE_BIN     the claude CLI the subscription backend runs. Default the claude on PATH.
+GROWTH_SUBSCRIPTION_<ROLE>_CALLS_PER_DAY and GROWTH_SUBSCRIPTION_CALLS_PER_MINUTE
+                      the subscription backend's pacing guard (app/providers/guard.py
+                      SubscriptionPacingCaps), which replaces the per-role dollar and token caps
+                      for a role on the subscription. Defaults: tutor 60 calls a day, every other
+                      role 20, and 4 calls a minute per role (docs/plan/14-token-economy.md,
+                      "Subscription pacing"). Read only when the backend is subscription.
 GROWTH_TUTOR_CAP_USD  the tutor role's daily dollar cap, enforced by app/providers/guard.py
-                      before every call. Default 1.00, the tutor daily cap row of
+                      before every call on the api backend (the subscription backend is paced
+                      by call counts instead). Default 1.00, the tutor daily cap row of
                       docs/plan/12-open-questions.md.
 GROWTH_TUTOR_CAP_TOKENS the tutor role's daily token cap. Default 250,000, the same row of 12,
                       set by 13-ai-engineering.md so the two caps bind within a few calls of each
@@ -93,7 +100,7 @@ from starlette.responses import FileResponse, PlainTextResponse
 
 from app.api.app import Settings, create_app
 from app.providers.anthropic import AnthropicProvider
-from app.providers.guard import BudgetCaps
+from app.providers.guard import BudgetCaps, pacing_caps_from_environment
 from app.providers.replay import ReplayProvider
 from app.providers.subscription import SubscriptionProvider
 from app.runtime.context import build_session_context
@@ -105,7 +112,9 @@ AI_BACKEND_ENV_VAR = "GROWTH_AI_BACKEND"
 LEGACY_PROVIDER_ENV_VAR = "GROWTH_TUTOR_PROVIDER"
 DEFAULT_AI_BACKEND = "subscription"
 AI_BACKENDS = ("subscription", "api", "replay", "none")
-LEGACY_PROVIDER_TO_BACKEND = {"none": "none", "replay": "replay", "anthropic": "api"}
+LEGACY_PROVIDER_TO_BACKEND = {"none": "none", "replay": "replay"}
+LEGACY_PAID_PROVIDER = "anthropic"
+LEGACY_PAID_NAMES = (LEGACY_PAID_PROVIDER, "api")
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_DB_PATH = REPO_ROOT / "var" / "growth.db"
@@ -119,9 +128,28 @@ NO_ITEMS_DIR = "none"
 WEB_BUILD_COMMAND = "npm run build --prefix app/web"
 
 
+def refuse_the_legacy_paid_switch(env, configured):
+   """The operator's instruction of 2026-09-23: the paid API is used only when
+   GROWTH_AI_BACKEND=api. The older GROWTH_TUTOR_PROVIDER=anthropic used to wire it on its own, and
+   GROWTH_TUTOR_PROVIDER=api would pass straight through as the backend, so either one now stops
+   the process unless GROWTH_AI_BACKEND=api says the same thing."""
+   legacy = env.get(LEGACY_PROVIDER_ENV_VAR)
+   names_the_paid_api = legacy in LEGACY_PAID_NAMES
+   backend_is_api = configured == "api"
+   is_refused = names_the_paid_api and not backend_is_api
+
+   if is_refused:
+      raise ValueError(
+         f"{LEGACY_PROVIDER_ENV_VAR}={legacy} no longer turns on the paid Anthropic API by itself. "
+         f"Set {AI_BACKEND_ENV_VAR}=api to use the API key, or remove {LEGACY_PROVIDER_ENV_VAR} to "
+         f"run on the Claude subscription."
+      )
+
+
 def resolve_ai_backend(env):
    configured = env.get(AI_BACKEND_ENV_VAR)
    has_configured = configured is not None and configured != ""
+   refuse_the_legacy_paid_switch(env, configured)
 
    if has_configured:
       logger.info("AI backend %s, from %s", configured, AI_BACKEND_ENV_VAR)
@@ -231,6 +259,15 @@ def build_tutor_caps(env):
    return {"tutor": BudgetCaps(cap_tokens=cap_tokens, cap_usd=cap_usd)}
 
 
+def build_subscription_pacing(env):
+   on_the_subscription = resolve_ai_backend(env) == "subscription"
+
+   if not on_the_subscription:
+      return None
+
+   return pacing_caps_from_environment(env)
+
+
 def items_directory(env):
    configured = env.get("GROWTH_ITEMS_DIR")
    is_unset = configured is None or configured == ""
@@ -265,6 +302,7 @@ def settings_from_environment(env=None):
       rng_seed=int(env.get("GROWTH_RNG_SEED", "7")),
       tutor=build_tutor(env),
       tutor_caps=build_tutor_caps(env),
+      subscription_pacing=build_subscription_pacing(env),
       key_audit_sample_path=env.get("GROWTH_KEY_AUDIT_SAMPLE_PATH"),
       items_directory=items_directory(env),
    )

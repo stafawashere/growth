@@ -2,6 +2,7 @@
 stdin, environment and working directory it was started with and answers with a canned result.
 No test here starts the real claude CLI (tests/conftest.py fails any that tries).
 """
+import dataclasses
 import json
 import os
 from pathlib import Path
@@ -252,3 +253,27 @@ def test_the_conftest_guard_fails_a_test_that_resolves_a_binary_outside_the_fixt
       provider.generate(tutor_request())
 
    assert not (cli.home / "fake_claude_record.json").exists()
+
+
+TUTOR_OPTIONS = {"thinking": {"type": "disabled"}, "output_config": {"effort": "low"}}
+
+
+def test_a_request_that_disables_thinking_runs_the_cli_with_thinking_off_and_its_effort(cli, ledger):
+   """Measured live on 2026-09-23: without these a Haiku tutor call through the CLI spent 6,176
+   output tokens and 60 s thinking; with them, 85 tokens and 1.6 s."""
+   request = dataclasses.replace(tutor_request(), provider_options=TUTOR_OPTIONS)
+   environ = cli.environ(MAX_THINKING_TOKENS="31999")
+   SubscriptionProvider(environ=environ, subscription_ledger=ledger).generate(request)
+   record = cli.record()
+
+   assert record["env"]["MAX_THINKING_TOKENS"] == "0"
+   assert option_value(record["argv"], "--effort") == "low"
+
+
+def test_a_request_without_options_leaves_thinking_and_effort_to_the_cli(cli, ledger):
+   environ = cli.environ(MAX_THINKING_TOKENS="31999")
+   SubscriptionProvider(environ=environ, subscription_ledger=ledger).generate(tutor_request())
+   record = cli.record()
+
+   assert "MAX_THINKING_TOKENS" not in record["env"]
+   assert "--effort" not in record["argv"]

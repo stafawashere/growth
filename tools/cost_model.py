@@ -168,6 +168,12 @@ CREDIT_ON_HAND = 20.00
 START_TIER_MONTHLY_SPEND_LIMIT = 500.00
 # The operator's ceiling to exam day, instruction of 2026-09-20.
 BUDGET_CEILING = 100.00
+# The low end of the operator's per-student target to exam day, $50 to $100, instruction of
+# 2026-09-23. BUDGET_CEILING is the high end.
+PER_STUDENT_TARGET_LOW = 50.00
+# app/providers/guard.py DEFAULT_DEV_SPEND_CAP_USD, the persistent developer cap on the API key,
+# quoted here so a document may print it; tests/tools/test_cost_model.py asserts the two agree.
+DEV_SPEND_CAP = 15.00
 
 # The grader's deterministic partition, docs/plan/03-diagnosis-and-feedback.md. A point whose
 # BC-PT record answers no to justification_required, interpretation_required and
@@ -767,6 +773,29 @@ def figures():
    add("tier.hundred_claude_only.offline_share", claude_only_offline_cycle / claude_only_hundred)
    add("evals.claude_only.api_share", claude_only_evals)
    add("evals.claude_only.offline_share", 0.0)
+
+   # The subscription backend, docs/plan/14-token-economy.md "Runtime calls on the operator's
+   # subscription", operator's instruction of 2026-09-23: with GROWTH_AI_BACKEND=subscription the
+   # runtime lines above (tutor, grader, transcriber, diagnostician, screen and evals) run through
+   # the claude CLI on the operator's own login and are billed to no API key. api_cycle above stays
+   # the documented fallback for GROWTH_AI_BACKEND=api. What the subscription backend spends is
+   # usage against the plan's 5-hour and weekly windows, which this file does not price; the
+   # notional line is what the same calls would have cost on the key.
+   claude_only_runtime_without_evals = (
+      out["tutor.cycle"]
+      + claude_only_grader_cycle
+      + out["transcriber.cycle"]
+      + out["diagnostician.on_recurrence_cycle"]
+      + out["screen.cycle"]
+   )
+   subscription_backend_api_cycle = 0.0
+   add("tier.hundred_claude_only.runtime_lines_without_evals", claude_only_runtime_without_evals)
+   add("tier.hundred_claude_only.subscription_runtime_notional", claude_only_api_cycle)
+   add("tier.hundred_claude_only.subscription_backend_api_cycle", subscription_backend_api_cycle)
+   add("tier.hundred_claude_only.subscription_backend_api_headroom", BUDGET_CEILING - subscription_backend_api_cycle)
+   add("target.per_student_low", PER_STUDENT_TARGET_LOW)
+   add("target.per_student_high", BUDGET_CEILING)
+   add("dev_spend.cap", DEV_SPEND_CAP)
 
    # Kappa.
    n_aggregate = GOLDEN_SET_2_POINT_TYPES * GOLDEN_SET_2_RESPONSES

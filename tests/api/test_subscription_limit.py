@@ -136,3 +136,42 @@ def test_a_served_subscription_sentence_is_counted_off_the_api_dev_cap(
    assert subscription_ledger.spent() == pytest.approx(0.0123)
    assert DevSpendLedger().spent() == 0.0
    assert not api_cap_path.exists()
+
+
+def test_a_subscription_tutor_is_not_stopped_by_the_api_dollar_cap(world, cli, tmp_path, no_paid_api):
+   """The default $1.00 tutor cap prices a call at API rates. Set far below one call, it would
+   stop the tutor at once if subscription calls were charged to it; they are paced instead."""
+   cli.mode("success")
+   world.settings.tutor = subscription_tutor(cli, tmp_path)
+   world.settings.tutor_caps = {"tutor": guard.BudgetCaps(cap_usd=0.000001, cap_tokens=10)}
+   world.settings.subscription_pacing = guard.SubscriptionPacingCaps()
+   client = world.client()
+   world.register(client)
+   session_id, attempt_id = wrong_short_answer(client)
+   body = client.get(f"/sessions/{session_id}/attempts/{attempt_id}/feedback").json()
+
+   assert body["sentence"] == "The factor cancels only after the rewrite, so the answer point is lost."
+   assert body["tutor_unavailable"] is False
+
+   with OrmSession(world.engine) as db:
+      tutor_rows = db.scalars(select(models.Budget).where(models.Budget.role == "tutor")).all()
+      attempt = db.get(models.Attempt, attempt_id)
+
+   assert tutor_rows == []
+   assert attempt.tutor_calls == 1
+   assert attempt.tutor_cost_usd > 0.000001
+
+
+def test_the_pacing_cap_marks_the_subscription_tutor_unavailable(world, cli, tmp_path, no_paid_api):
+   cli.mode("success")
+   world.settings.tutor = subscription_tutor(cli, tmp_path)
+   world.settings.subscription_pacing = guard.SubscriptionPacingCaps(calls_per_day={"tutor": 1}, calls_per_minute=10)
+   guard.SubscriptionPacingLedger().reserve("tutor", guard.utc_now(), world.settings.subscription_pacing)
+   client = world.client()
+   world.register(client)
+   session_id, attempt_id = wrong_short_answer(client)
+   body = client.get(f"/sessions/{session_id}/attempts/{attempt_id}/feedback").json()
+
+   assert body["sentence"] is None
+   assert body["tutor_unavailable"] is True
+   assert not (cli.home / "fake_claude_record.json").exists()

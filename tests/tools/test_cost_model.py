@@ -107,6 +107,33 @@ def test_claude_only_tier_splits_into_runtime_api_and_offline_claude_code_lines(
    assert figures["evals.claude_only.offline_share"] == 0.0
 
 
+def test_the_subscription_backend_moves_every_runtime_line_off_the_api_key():
+   """Operator's instruction of 2026-09-23: with GROWTH_AI_BACKEND=subscription the runtime lines
+   run on the operator's login and bill no API key, while the API figures stay the documented
+   fallback. A regression that left a runtime line on the subscription backend's API total, or
+   that dropped one from the notional figure, would misstate the exam-day cost either way."""
+   figures = cost_model.figures()
+   runtime_without_evals = sum(
+      figures[f"tier.hundred_claude_only.{line}"]
+      for line in ("tutor_line", "grader_line", "transcriber_line", "diagnostician_line", "screen_line")
+   )
+   runtime_with_evals = runtime_without_evals + figures["tier.hundred_claude_only.evals_line"]
+
+   assert round(figures["tier.hundred_claude_only.runtime_lines_without_evals"], 2) == round(runtime_without_evals, 2)
+   assert round(figures["tier.hundred_claude_only.runtime_lines_without_evals"], 2) == 29.27
+   assert round(figures["tier.hundred_claude_only.subscription_runtime_notional"], 2) == round(runtime_with_evals, 2)
+   assert figures["tier.hundred_claude_only.subscription_runtime_notional"] == figures["tier.hundred_claude_only.api_cycle"]
+   assert figures["tier.hundred_claude_only.subscription_backend_api_cycle"] == 0.0
+   assert figures["tier.hundred_claude_only.subscription_backend_api_headroom"] == cost_model.BUDGET_CEILING
+   assert round(figures["tier.hundred_claude_only.api_cycle"], 2) == 52.14
+
+
+def test_the_quoted_developer_cap_is_the_one_the_guard_enforces():
+   from app.providers.guard import DEFAULT_DEV_SPEND_CAP_USD
+
+   assert cost_model.figures()["dev_spend.cap"] == DEFAULT_DEV_SPEND_CAP_USD
+
+
 @pytest.mark.parametrize("document", DOCUMENTS, ids=lambda path: path.name)
 def test_every_dollar_figure_in_the_document_is_emitted_by_the_calculator(document):
    """A figure patched by hand in one section while the model moves in another is how the last

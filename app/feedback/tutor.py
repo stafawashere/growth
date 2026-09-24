@@ -6,6 +6,7 @@ and the item's stored worked solution, and passes exactly those four fields into
 prompts/feedback/elaborated_v2.md. Nothing else about the item reaches the model, and no call is
 made before the student has submitted.
 """
+import dataclasses
 from pathlib import Path
 
 from sqlalchemy import func, select
@@ -44,18 +45,31 @@ def template_text():
 
 def request_for(fields):
    text = template_text()
-   system, _variable_section = split_template(text)
    rendered = render_template(text, fields)
 
-   return ProviderRequest(
+   return request_from_messages([Message(role="user", content=rendered)])
+
+
+def request_from_messages(messages, model=None):
+   """A queued call stores only its rendered messages, so a later drain rebuilds the rest of the
+   request from the same template and options the live call used. TUTOR_MODEL is read at call
+   time, never bound as a default."""
+   system, _variable_section = split_template(template_text())
+   request = ProviderRequest(
       role="tutor",
       model=TUTOR_MODEL,
       system=system,
-      messages=[Message(role="user", content=rendered)],
+      messages=list(messages),
       max_output_tokens=MAX_OUTPUT_TOKENS,
       cache=CacheSettings(prefix_breakpoints=1, ttl=PREFIX_CACHE_TTL),
       provider_options={key: dict(value) for key, value in TUTOR_PROVIDER_OPTIONS.items()},
    )
+   has_model = model is not None and model != ""
+
+   if has_model:
+      return dataclasses.replace(request, model=model)
+
+   return request
 
 
 def session_tutor_calls(db, session_id):

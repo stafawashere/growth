@@ -70,7 +70,8 @@ const session: SessionPayload = {
       block4: [],
       forecasts: {},
       coverage_gaps: [],
-      interleaving_satisfied: true
+      interleaving_satisfied: true,
+      interleaving_shortfalls: []
    },
    remaining: []
 };

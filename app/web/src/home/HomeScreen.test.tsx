@@ -19,7 +19,8 @@ function baseProps(): HomeScreenProps {
       queueLines,
       onStartSession: vi.fn(),
       onAddPracticeSet: vi.fn(),
-      onResumeSession: vi.fn()
+      onResumeSession: vi.fn(),
+      onStartRediagnostic: vi.fn()
    };
 }
 
@@ -285,5 +286,25 @@ describe("design tokens, primary button vocabulary across every screen", () => {
       const inProgress = render(<HomeScreen {...baseProps()} status="inProgress" />);
 
       expect(inProgress.container.querySelectorAll(".button-primary").length).toBe(1);
+   });
+});
+describe("HomeScreen, long gap", () => {
+   it("offers only the re-diagnostic in place of the queue, with Progress still reachable", () => {
+      const props = { ...baseProps(), status: "longGap" as const, onOpenProgress: vi.fn() };
+      render(<HomeScreen {...props} />);
+
+      expect(screen.queryAllByTestId("queue-line")).toHaveLength(0);
+      expect(screen.queryByText(/Start today's set/)).toBeNull();
+      expect(screen.queryByText(/23 minutes/)).toBeNull();
+
+      const primary = screen.getByRole("button", { name: "Start the re-diagnostic" });
+
+      expect(primary.className).toContain("button-primary");
+      expect(screen.getByRole("button", { name: "Progress" })).toBeTruthy();
+
+      fireEvent.click(primary);
+
+      expect(props.onStartRediagnostic).toHaveBeenCalledTimes(1);
+      expect(props.onStartSession).not.toHaveBeenCalled();
    });
 });

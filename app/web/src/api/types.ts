@@ -62,6 +62,7 @@ export interface SessionQueue {
    forecasts: Record<string, number>;
    coverage_gaps: string[];
    interleaving_satisfied: boolean;
+   interleaving_shortfalls: Array<[number, string]>;
 }
 
 /* app/api/routes/sessions.py session_payload. */
@@ -119,8 +120,15 @@ export interface FeedbackPayload {
    tutor_unavailable: boolean;
 }
 
-/* app/session/preview.py queue_preview. */
+/* app/session/preview.py home_state. */
+export type HomeState = "first_login" | "long_gap" | "queue";
+
+/* app/session/preview.py queue_preview. session_in_progress never names a diagnostic session;
+   diagnostic_in_progress does. */
 export interface ProgressPayload {
+   home_state: HomeState;
+   days_since_last_session: number | null;
+   diagnostic_in_progress: string | null;
    skills_due_for_review: number;
    frontier_skills: number;
    corrected_items_returning: number;
@@ -128,6 +136,33 @@ export interface ProgressPayload {
    due_today_skills: number;
    due_today_minutes: number;
    session_in_progress: string | null;
+}
+
+/* GET /sessions/{id}/next on a diagnostic session: app/session/diagnostic_session.py advance
+   numbers the item and app/api/routes/sessions.py next_diagnostic_item withholds the steps. */
+export interface DiagnosticServedItem extends ServedItem {
+   diagnostic_position: number;
+   diagnostic_cap: number;
+}
+
+export type DiagnosticUnitState = "not_started" | "partial" | "fluent" | "unresolved" | "not_probed";
+
+/* app/session/diagnostic_session.py result_payload, one entry of its units list. */
+export interface DiagnosticUnit {
+   unit: string;
+   title: string;
+   state: DiagnosticUnitState;
+}
+
+/* app/session/diagnostic_session.py result_payload. */
+export interface DiagnosticResult {
+   session_id: string;
+   finished: boolean;
+   asked: number;
+   cap: number;
+   stop_reason: string | null;
+   units: DiagnosticUnit[];
+   unprobeable_units: string[];
 }
 
 /* app/progress/calibration.py calibration_view. Below minimum_rated_attempts the bins list is

@@ -4,7 +4,7 @@ export interface QueueLine {
    count: number;
 }
 
-export type HomeScreenStatus = "ready" | "empty" | "inProgress";
+export type HomeScreenStatus = "ready" | "empty" | "inProgress" | "longGap";
 
 export interface HomeScreenProps {
    status: HomeScreenStatus;
@@ -15,6 +15,7 @@ export interface HomeScreenProps {
    onStartSession: () => void;
    onAddPracticeSet: () => void;
    onResumeSession: () => void;
+   onStartRediagnostic: () => void;
    onOpenProgress?: () => void;
    onOpenReview?: () => void;
 }
@@ -73,8 +74,34 @@ function SessionInProgress(props: { onResumeSession: () => void }) {
    );
 }
 
+/* 08 home, long gap: over 21 days since the last set, a re-diagnostic is offered instead of the
+   queue, so no queue line and no way into today's set shows here. */
+function LongGap(props: { onStartRediagnostic: () => void }) {
+   return (
+      <>
+         <p>
+            It has been a while since your last set, so a short re-diagnostic comes before the queue. It
+            updates what the app knows about you and never resets it.
+         </p>
+
+         <button type="button" className="button-primary" onClick={props.onStartRediagnostic}>
+            Start the re-diagnostic
+         </button>
+      </>
+   );
+}
+
 export function HomeScreen(props: HomeScreenProps) {
-   const { status, examDate, daysToExam, onAddPracticeSet, onResumeSession, onOpenProgress, onOpenReview } = props;
+   const {
+      status,
+      examDate,
+      daysToExam,
+      onAddPracticeSet,
+      onResumeSession,
+      onStartRediagnostic,
+      onOpenProgress,
+      onOpenReview
+   } = props;
    const offersProgress = onOpenProgress !== undefined;
    const offersReview = onOpenReview !== undefined;
 
@@ -87,6 +114,7 @@ export function HomeScreen(props: HomeScreenProps) {
          {status === "ready" && <ReadyQueue {...props} />}
          {status === "empty" && <EmptyQueue onAddPracticeSet={onAddPracticeSet} />}
          {status === "inProgress" && <SessionInProgress onResumeSession={onResumeSession} />}
+         {status === "longGap" && <LongGap onStartRediagnostic={onStartRediagnostic} />}
 
          {offersProgress && (
             <button type="button" className="text-button" onClick={onOpenProgress}>

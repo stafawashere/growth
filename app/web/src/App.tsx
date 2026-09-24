@@ -4,13 +4,15 @@ import { AccountScreen } from "./account/AccountScreen";
 import { AddPasskeyControl } from "./account/AddPasskeyControl";
 import { ApiError, readMe } from "./api/client";
 import { HomeRoute } from "./home/HomeRoute";
+import { OnboardingRoute } from "./onboarding/OnboardingRoute";
+import type { OnboardingReason } from "./onboarding/OnboardingScreen";
 import { ProgressRoute } from "./progress/ProgressRoute";
 import { ReviewRoute } from "./review/ReviewRoute";
 import { SessionScreen } from "./session/SessionScreen";
 import type { SettingsScreenProps } from "./settings/SettingsScreen";
 import { SettingsRoute } from "./settings/SettingsRoute";
 
-export type Destination = "home" | "session" | "settings" | "progress" | "review";
+export type Destination = "home" | "session" | "settings" | "progress" | "review" | "onboarding";
 
 export interface DestinationEntry {
    id: Destination;
@@ -23,7 +25,8 @@ export interface UnsuppliedInput {
 }
 
 /* 08-design-brief.md, Information architecture: settings is reached from the top bar, a session
-   from home's one primary action, and progress and review from home, so none of the last three is
+   from home's one primary action, progress and review from home, and onboarding only when home
+   sends a first login, an unfinished diagnostic or a long gap there, so none of the last four is
    here. */
 export const DESTINATIONS: ReadonlyArray<DestinationEntry> = [
    { id: "home", label: "Home" },
@@ -48,7 +51,8 @@ export const UNSUPPLIED_INPUTS: Record<Destination, ReadonlyArray<UnsuppliedInpu
    session: [],
    settings: settingsInputs,
    progress: [],
-   review: []
+   review: [],
+   onboarding: []
 };
 
 const noticeStyle = {
@@ -58,6 +62,8 @@ const noticeStyle = {
 };
 
 type SessionTarget = { resumeSessionId: string | null };
+
+type OnboardingTarget = { reason: OnboardingReason; resumeSessionId: string | null };
 
 type Access = "unknown" | "signedIn" | "signedOut";
 
@@ -123,6 +129,10 @@ function UnsuppliedPanel(props: { destination: Destination }) {
 export function App() {
    const [destination, setDestination] = useState<Destination>("home");
    const [sessionTarget, setSessionTarget] = useState<SessionTarget>({ resumeSessionId: null });
+   const [onboardingTarget, setOnboardingTarget] = useState<OnboardingTarget>({
+      reason: "first_login",
+      resumeSessionId: null
+   });
 
    const [access, setAccess] = useState<Access>("unknown");
 
@@ -171,6 +181,11 @@ export function App() {
       setDestination("session");
    }
 
+   function startOnboarding(reason: OnboardingReason, resumeSessionId: string | null) {
+      setOnboardingTarget({ reason, resumeSessionId });
+      setDestination("onboarding");
+   }
+
    if (access === "signedOut") {
       return (
          <main className="app-page">
@@ -200,6 +215,15 @@ export function App() {
                onResumeSession={resumeSession}
                onOpenProgress={() => setDestination("progress")}
                onOpenReview={() => setDestination("review")}
+               onStartOnboarding={startOnboarding}
+            />
+         ) : null}
+
+         {destination === "onboarding" ? (
+            <OnboardingRoute
+               reason={onboardingTarget.reason}
+               resumeSessionId={onboardingTarget.resumeSessionId}
+               onFinished={() => setDestination("home")}
             />
          ) : null}
 

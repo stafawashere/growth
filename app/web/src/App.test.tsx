@@ -6,8 +6,11 @@ import { cleanup, fireEvent, render, screen, waitFor, within } from "@testing-li
 
 import * as client from "./api/client";
 import type {
+   AttemptResult,
    BudgetsPayload,
    CalibrationPayload,
+   DiagnosticResult,
+   DiagnosticServedItem,
    MasteryMapPayload,
    ProgressPayload,
    ReviewPayload,
@@ -31,15 +34,17 @@ const PROPS_INTERFACE_BY_DESTINATION: Record<Destination, { file: string; name: 
    session: { file: "session/SessionScreen.tsx", name: "SessionScreenProps" },
    settings: { file: "settings/SettingsScreen.tsx", name: "SettingsScreenProps" },
    progress: { file: "progress/ProgressRoute.tsx", name: "ProgressRouteProps" },
-   review: { file: "review/ReviewRoute.tsx", name: "ReviewRouteProps" }
+   review: { file: "review/ReviewRoute.tsx", name: "ReviewRouteProps" },
+   onboarding: { file: "onboarding/OnboardingRoute.tsx", name: "OnboardingRouteProps" }
 };
 
 /* P2 scope item 6 brought the progress screen into phase with its calibration curve. Stage 3 of the
    operator's delegated run (BUILD-LEDGER.md, Plan corrections applied, 2026-09-24) brought in the
    review screen and the mastery map, which P8's entry criterion needs and 11 names in no earlier
-   phase. The representation matrix and checkpoint history stay out, as do onboarding until its
-   stage ships it and mock. */
-const OUT_OF_PHASE_SCREENS = ["onboarding", "mock", "matrix", "checkpoint"];
+   phase. P2 scope item 7 brings in the onboarding diagnostic, reached only as the first-login and
+   long-gap route and never from the bar. The representation matrix, checkpoint history and mock
+   stay out. */
+const OUT_OF_PHASE_SCREENS = ["mock", "matrix", "checkpoint"];
 
 /* The screens reached from home's secondary buttons, never from the bar and never the landing
    screen (08, Information architecture). */
@@ -59,6 +64,9 @@ const me: client.MePayload = {
 };
 
 const readyProgress: ProgressPayload = {
+   home_state: "queue",
+   days_since_last_session: 7,
+   diagnostic_in_progress: null,
    skills_due_for_review: 12,
    frontier_skills: 4,
    corrected_items_returning: 7,
@@ -135,7 +143,8 @@ const sessionPayload: SessionPayload = {
       block4: [],
       forecasts: {},
       coverage_gaps: [],
-      interleaving_satisfied: true
+      interleaving_satisfied: true,
+      interleaving_shortfalls: []
    },
    remaining: []
 };
@@ -219,6 +228,70 @@ const reviewPayload: ReviewPayload = {
    grading_available: false,
    provisional_points: []
 };
+
+const firstLoginProgress: ProgressPayload = {
+   ...readyProgress,
+   home_state: "first_login",
+   days_since_last_session: null
+};
+
+const longGapProgress: ProgressPayload = {
+   ...readyProgress,
+   home_state: "long_gap",
+   days_since_last_session: 23
+};
+
+const diagnosticSession: SessionPayload = { ...sessionPayload, id: "SES-D", mode: "diagnostic" };
+
+const diagnosticItem: DiagnosticServedItem = {
+   ...servedItem,
+   id: "ITM-D7",
+   stem: "Evaluate the limit of (x^2 - 9)/(x - 3) as x approaches 3",
+   stage: "unsupported",
+   served_steps: null,
+   self_explanation_prompt: null,
+   diagnostic_position: 6,
+   diagnostic_cap: 30
+};
+
+const diagnosticAttempt: AttemptResult = {
+   id: "ATT-D7",
+   item_id: "ITM-D7",
+   correct: null,
+   confidence: null,
+   served_stage: "unsupported",
+   format: "short_answer",
+   p_split: null,
+   p_compensatory: null
+};
+
+const diagnosticResult: DiagnosticResult = {
+   session_id: "SES-D",
+   finished: true,
+   asked: 11,
+   cap: 30,
+   stop_reason: "entropy_stalled",
+   units: [
+      { unit: "BC-UNIT-01", title: "Limits and Continuity", state: "fluent" },
+      { unit: "BC-UNIT-10", title: "Infinite Sequences and Series", state: "not_probed" }
+   ],
+   unprobeable_units: ["BC-UNIT-10"]
+};
+
+function mockDiagnostic() {
+   mocked.openDiagnostic.mockResolvedValue(diagnosticSession);
+   mocked.readNextItem.mockResolvedValue({ item: diagnosticItem, diagnostic_finished: false });
+   mocked.submitAttempt.mockResolvedValue(diagnosticAttempt);
+   mocked.readDiagnostic.mockResolvedValue(diagnosticResult);
+
+   return [diagnosticSession, diagnosticItem, diagnosticAttempt, diagnosticResult];
+}
+
+async function settled() {
+   await waitFor(() => expect(mocked.readProgress).toHaveBeenCalled());
+   await Promise.resolve();
+   await Promise.resolve();
+}
 
 function mockServer(progress: ProgressPayload) {
    mocked.readMe.mockResolvedValue(me);
@@ -449,8 +522,84 @@ describe("the client shell", () => {
       expect(mocked.readMasteryMap).toHaveBeenCalledTimes(1);
    });
 
+   it("lands a first login on the onboarding intro rather than home's queue, and never puts onboarding on the bar", async () => {
+      mockServer(firstLoginProgress);
+      mockDiagnostic();
+      render(<App />);
+
+      expect(await screen.findByTestId("diagnostic-intro")).toBeTruthy();
+      expect(screen.queryByText(/Start today's set/)).toBeNull();
+      expect(screen.queryAllByTestId("queue-line")).toHaveLength(0);
+
+      const labels = buttonsIn(screen.getByRole("navigation")).map((button) => button.textContent);
+
+      expect(labels).toEqual(["Home", "Settings"]);
+      expect(DESTINATIONS.map((entry) => entry.id)).toEqual(BAR_DESTINATIONS);
+      expect(mocked.openDiagnostic).not.toHaveBeenCalled();
+      expect(mocked.openSession).not.toHaveBeenCalled();
+   });
+
+   it("offers a long gap the re-diagnostic on home instead of the queue, and reaches onboarding only through it", async () => {
+      mockServer(longGapProgress);
+      mockDiagnostic();
+      render(<App />);
+
+      const offer = await screen.findByRole("button", { name: "Start the re-diagnostic" });
+
+      expect(screen.queryByText(/Start today's set/)).toBeNull();
+      expect(screen.queryAllByTestId("queue-line")).toHaveLength(0);
+      expect(screen.queryByTestId("diagnostic-intro")).toBeNull();
+      expect(screen.getByRole("button", { name: "Progress" })).toBeTruthy();
+
+      await settled();
+
+      expect(screen.queryByTestId("diagnostic-intro")).toBeNull();
+
+      fireEvent.click(offer);
+
+      const intro = await screen.findByTestId("diagnostic-intro");
+
+      expect(intro.textContent).toContain("re-diagnostic");
+      expect(intro.textContent).toContain("never resets");
+      expect(mocked.openDiagnostic).not.toHaveBeenCalled();
+
+      fireEvent.click(within(intro).getByRole("button", { name: "Start the re-diagnostic" }));
+
+      await screen.findByText(diagnosticItem.stem);
+
+      expect(mocked.openDiagnostic).toHaveBeenCalledTimes(1);
+      expect(mocked.readNextItem).toHaveBeenCalledWith("SES-D");
+   });
+
+   it("never shows onboarding or opens a diagnostic when home reports the ordinary queue", async () => {
+      mockServer(readyProgress);
+      mockDiagnostic();
+      render(<App />);
+
+      await screen.findByRole("button", { name: "Start today's set" });
+      await settled();
+
+      expect(screen.queryByTestId("diagnostic-intro")).toBeNull();
+      expect(screen.queryByTestId("diagnostic-item")).toBeNull();
+      expect(mocked.openDiagnostic).not.toHaveBeenCalled();
+      expect(mocked.readNextItem).not.toHaveBeenCalled();
+   });
+
+   it("resumes an unfinished diagnostic on onboarding with its own session id rather than opening another", async () => {
+      mockServer({ ...readyProgress, diagnostic_in_progress: "SES-D" });
+      mockDiagnostic();
+      render(<App />);
+
+      await screen.findByText(diagnosticItem.stem);
+
+      expect(mocked.readNextItem).toHaveBeenCalledWith("SES-D");
+      expect(mocked.openDiagnostic).not.toHaveBeenCalled();
+      expect(mocked.openSession).not.toHaveBeenCalled();
+      expect(screen.queryByText(/Start today's set/)).toBeNull();
+   });
+
    it("names every input it still cannot supply, using the name the screen itself declares", () => {
-      for (const destination of ["home", "session", "settings", "progress", "review"] as Destination[]) {
+      for (const destination of ["home", "session", "settings", "progress", "review", "onboarding"] as Destination[]) {
          const target = PROPS_INTERFACE_BY_DESTINATION[destination];
          const declared = declaredPropertyNames(target.file, target.name);
          const listed = UNSUPPLIED_INPUTS[destination].map((input) => input.name);
@@ -530,6 +679,7 @@ describe("home over GET /me and GET /progress", () => {
 
    it("shows the empty queue when the forecast and every count are zero", async () => {
       mockServer({
+         ...readyProgress,
          skills_due_for_review: 0,
          frontier_skills: 0,
          corrected_items_returning: 0,
@@ -546,6 +696,7 @@ describe("home over GET /me and GET /progress", () => {
 
    it("keeps the ready queue when every count is zero but the forecast is not", async () => {
       mockServer({
+         ...readyProgress,
          skills_due_for_review: 0,
          frontier_skills: 0,
          corrected_items_returning: 0,
@@ -667,6 +818,25 @@ describe("no fabricated figure", () => {
 
       expect(document.body.textContent).toContain("in 2 days");
       expect(untracedFigures(payloads, derived), "review").toEqual([]);
+   });
+
+   it("traces every digit on the onboarding diagnostic to a mocked response value or the question number", async () => {
+      const payloads = [...mockServer(firstLoginProgress), ...mockDiagnostic()];
+      const derived = [diagnosticItem.diagnostic_position + 1];
+
+      render(<App />);
+      fireEvent.click(await screen.findByRole("button", { name: "Start the diagnostic" }));
+      await screen.findByText(diagnosticItem.stem);
+
+      expect(screen.getByText("Question 7 of at most 30")).toBeTruthy();
+      expect(untracedFigures(payloads, derived), "diagnostic item").toEqual([]);
+
+      mocked.readNextItem.mockResolvedValue({ item: null, diagnostic_finished: true });
+      fireEvent.click(screen.getByRole("button", { name: "I have not learned this yet" }));
+      await screen.findByTestId("diagnostic-result");
+
+      expect(document.body.textContent ?? "").not.toContain("%");
+      expect(untracedFigures(payloads, derived), "diagnostic result").toEqual([]);
    });
 
    it("traces the empty queue's figures to its mocked values and the plan's own sentence", async () => {

@@ -8,6 +8,8 @@ import {
    openSession,
    readSession,
    readNextItem,
+   openDiagnostic,
+   readDiagnostic,
    submitAttempt,
    readFeedback,
    submitConfidence,
@@ -350,6 +352,20 @@ function servedItemFields() {
    ];
 }
 
+/* A diagnostic item is a queue slot that app/session/diagnostic_session.py advance dresses further,
+   with the two fields app/api/routes/sessions.py next_diagnostic_item sets to null. */
+function diagnosticItemFields() {
+   const advanced = [...functionSource("session/diagnostic_session.py", "advance").matchAll(/served\["([A-Za-z_]+)"\]\s*=/g)];
+
+   return [
+      ...new Set([
+         ...queueSlotFields(),
+         ...advanced.map((match) => match[1]),
+         ...returnedDictCallKeywords("api/routes/sessions.py", "next_diagnostic_item")
+      ])
+   ];
+}
+
 function sorted(names: string[]) {
    return [...names].sort();
 }
@@ -361,6 +377,10 @@ function bodyOf(fields: string[]) {
 const serverShapes = {
    SessionPayload: () => returnedFields("api/routes/sessions.py", "session_payload"),
    NextItemResponse: () => returnedFields("api/routes/sessions.py", "read_next_item"),
+   DiagnosticNextItemResponse: () => returnedFields("api/routes/sessions.py", "next_diagnostic_item"),
+   DiagnosticServedItem: () => diagnosticItemFields(),
+   DiagnosticResult: () => returnedFields("session/diagnostic_session.py", "result_payload"),
+   DiagnosticUnit: () => nestedDictFields("session/diagnostic_session.py", "\"units\": ["),
    AttemptResult: () => returnedFields("api/routes/sessions.py", "submit_attempt"),
    ConfidenceResult: () => returnedFields("api/routes/sessions.py", "submit_confidence"),
    ErrorNoteResult: () => returnedFields("api/routes/sessions.py", "submit_error_note"),
@@ -612,6 +632,8 @@ describe("client path vocabulary", () => {
          dynamic: ["sess-1", "att-1"],
          invoke: () => submitSelfExplanation("sess-1", "att-1", { answer: "the product rule" })
       },
+      { name: "openDiagnostic", dynamic: [], invoke: () => openDiagnostic() },
+      { name: "readDiagnostic", dynamic: ["sess-1"], invoke: () => readDiagnostic("sess-1") },
       { name: "readProgress", dynamic: [], invoke: () => readProgress() },
       { name: "readCalibration", dynamic: [], invoke: () => readCalibration() },
       { name: "readMasteryMap", dynamic: [], invoke: () => readMasteryMap() },
@@ -660,6 +682,26 @@ describe("request semantics", () => {
       expect(init.credentials).toBe("include");
       expect(init.headers["Content-Type"]).toBe("application/json");
       expect(JSON.parse(init.body)).toEqual({ mode: "learning" });
+   });
+
+   it("opens a diagnostic by posting the diagnostic mode to /sessions", async () => {
+      const fetchMock = vi.fn().mockResolvedValue(jsonResponse(200, { id: "sess-1" }));
+
+      vi.stubGlobal("fetch", fetchMock);
+      await openDiagnostic();
+
+      const [url, init] = fetchMock.mock.calls[0];
+
+      expect(new URL(String(url), "http://x").pathname).toBe("/sessions");
+      expect(init.method).toBe("POST");
+      expect(JSON.parse(init.body)).toEqual({ mode: "diagnostic" });
+   });
+
+   it("names the diagnostic mode the server opens a diagnostic for", () => {
+      const declared = pythonSource("session/diagnostic_session.py").match(/^MODE = "([a-z_]+)"$/m);
+
+      expect(declared).not.toBeNull();
+      expect(declared![1]).toBe("diagnostic");
    });
 
    it("raises a typed ApiError carrying the status and detail on a non-2xx response", async () => {
@@ -745,6 +787,10 @@ describe("response shape vocabulary", () => {
       { typeName: "ElaboratedPayload", module: "types.ts" },
       { typeName: "FeedbackPayload", module: "types.ts" },
       { typeName: "NextItemResponse", module: "client.ts" },
+      { typeName: "DiagnosticNextItemResponse", module: "client.ts" },
+      { typeName: "DiagnosticServedItem", module: "types.ts" },
+      { typeName: "DiagnosticResult", module: "types.ts" },
+      { typeName: "DiagnosticUnit", module: "types.ts" },
       { typeName: "ConfidenceResult", module: "client.ts" },
       { typeName: "ErrorNoteResult", module: "client.ts" },
       { typeName: "CloseResult", module: "client.ts" },
@@ -775,7 +821,8 @@ describe("response shape vocabulary", () => {
       { file: "api/routes/settings.py", route: "read_providers", callee: "providers.providers_view" },
       { file: "api/routes/settings.py", route: "read_budgets", callee: "budgets.budgets_view" },
       { file: "api/routes/settings.py", route: "change_budget", callee: "budgets.budgets_view" },
-      { file: "api/routes/auth.py", route: "reauth_begin", callee: "service.reauth_begin" }
+      { file: "api/routes/auth.py", route: "reauth_begin", callee: "service.reauth_begin" },
+      { file: "api/routes/sessions.py", route: "read_diagnostic", callee: "diagnostic_session.result_payload" }
    ];
 
    it.each(routeHelpers)("$route returns what $callee builds, the function scanned for its shape", (helper) => {
@@ -804,6 +851,8 @@ describe("response parsing", () => {
       { name: "openSession", typeName: "SessionPayload", invoke: () => openSession({ mode: "learning" }) },
       { name: "readSession", typeName: "SessionPayload", invoke: () => readSession("sess-1") },
       { name: "readNextItem", typeName: "NextItemResponse", invoke: () => readNextItem("sess-1") },
+      { name: "openDiagnostic", typeName: "SessionPayload", invoke: () => openDiagnostic() },
+      { name: "readDiagnostic", typeName: "DiagnosticResult", invoke: () => readDiagnostic("sess-1") },
       {
          name: "submitAttempt",
          typeName: "AttemptResult",

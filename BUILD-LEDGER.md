@@ -1481,16 +1481,116 @@ passkey verifier, one account seeded through the routes plus 20 Unit 1 and 2 `sk
 written mastered, because mastery needs three days of unaided successes a one-day seed cannot
 reach): home showed Progress and Review as text buttons with the bar still Home and Settings; review listed the confident correction first in the hypercorrection lane, then the unsure one, and both error notes; editing a note by keyboard and Enter replaced it on the server (GET /review returned the new text); progress drew 541 marks (20 mastered, 6 fading, 7 in progress, 508 not attempted) above the calibration curve's not-yet state, with one tab stop, arrow keys moving focus and the caption, and at 375 px wide no horizontal scroll (scrollWidth 375); after a reload no console error was logged and GET /progress/mastery, /progress/calibration and /review answered 200. An earlier seed also showed block 1 serving yesterday's confident correction before the unsure one. Suite at close: pytest 999 passed, vitest 362 passed in 28 files, tsc exit 0, qa/12_report.py exit 0.
 
+P2 Slice 5, 2026-09-24, stage 2 (p2engine): the rest of 11 P2 except scope item 8 (stage 1's
+items) and items 3 and 6 (Slices 3 and 4). Every gate 11 names for P2 now exists and passes.
+
+- Diagnostic (scope item 1), `app/engine/diagnostic.py`: a posterior over not_started, partial
+  and fluent for each of the 10 units. An archetype's chance of being known under state s is
+  the engine's own `p_knowledge` at the start of the run, shifted by a logit per state (-3, 0,
+  +3). The item asked is the one whose predictive p_A is nearest 0.5, or whose raw probability
+  is nearest 0.625 as a four-option MCQ, with a uniform draw among candidates within 0.01. The
+  run is over the whole graph with gating suspended, each family is asked at most once, and no
+  unit takes a fifth item while a servable unit is unprobed. It stops at 30 items, or from item
+  10 once summed unit entropy has fallen by no more than 0.02 bits over the last 3 scored items,
+  or when the pool is exhausted. One held-out extra problem per run is drawn uniformly and never
+  enters the posterior. "I have not learned this yet" is a third outcome. Placement marks as
+  mastered the skills at 0.80 or more under their unit's posterior whose gating parents are
+  mastered or also placed and which the run did not see failed. Each gets FSRS's first-review
+  memory, so it comes back as a review in about 4 days. Nothing is un-mastered by placement,
+  which is how a re-diagnostic updates and never resets. Unresolved skills stay unmastered and
+  sit in the fringe.
+- Whole-graph selection and interleaving (scope items 2 and 4), `app/engine/interleave.py`:
+  every set is read as sliding windows of 10. Max 2 consecutive same primary skill stays
+  strict. At least 4 skills, at least 2 units, at most 3 per family and at least 20 percent
+  translations each bind whenever some candidate can meet them. Otherwise the rule is recorded
+  as a shortfall on the queue (`interleaving_shortfalls`), and `interleaving_satisfied` now
+  checks all of D3 through an independent window checker. The live app already selected over
+  the whole loaded graph; the two-term score is unchanged and the five deferred weights are
+  read nowhere in `app/engine` or `app/session`.
+- Exam-weight quota (scope item 5), `app/engine/exam_weights.py`: BC band midpoints parsed from
+  `research/exam/exam-blueprint.md` at run time. In blocks 2 and 3 a unit's candidates are
+  allowed only while its count is below ceil(share times (n + 1)) among the open units, in exact
+  fractions, so the quota never empties a candidate set.
+- Service, routes and data (scope items 7 and 9):
+  - `app/session/diagnostic_session.py` runs the diagnostic as a session whose next item is
+    chosen after each answer, at stage unsupported, as short answer, with no rating and no
+    feedback. The confidence source is "diagnostic", which the calibration curve does not count.
+  - `GET /sessions/{id}/next` serves it, `GET /sessions/{id}/diagnostic` returns unit-level
+    states, and a second open resumes the unfinished run.
+  - The `diagnoses` table (06, plus `diagnosed_by`) gets one row per graded attempt in every
+    mode, from the R12 and R26 rule.
+  - `GET /progress` adds `home_state` (first_login, long_gap after more than 21 days since the
+    last session started, queue), `days_since_last_session` and `diagnostic_in_progress`.
+  - Diagnostic misses are never requeued as corrected items.
+- Client: `app/web/src/onboarding/` (intro, item and result per 08, units shown in words), a
+  `longGap` home state whose one primary action is the re-diagnostic, and an `onboarding`
+  destination that is not on the bar and not the landing screen. Home sends first login and an
+  unfinished diagnostic there. The shell gate is rewritten; see Plan corrections applied.
+- Simulation and evals: `app/sim/whole_graph.py` runs synthetic students on the real 541-skill
+  graph with a synthetic bank (3 items for each of the 139 archetypes).
+  `app/sim/five_term.py` is the deferred score, used by simulation only. `app/sim/p2_evals.py`
+  holds the three evals, and `tools/p2_evals.py` writes `docs/operator/p2-evals.md`.
+- Gates and tests, each shown red under a mutation and green on restore:
+  - `tests/engine/test_interleave_full.py`: test_interleave_full_constraints (1,000 sessions, 25
+    students by 40 days after a diagnostic each, zero violations and zero shortfalls). Red with
+    the unit rule disabled (`block_units: 10261`) and with the floor disabled
+    (`translation_floor: 10261`). Also a scarce-translation bank where the floor binds, and a
+    positive control that the checker catches each rule.
+  - `tests/engine/test_two_term_whole_graph.py`: test_two_term_selection_whole_graph (red with
+    due coverage ignored), uniform ties by chi-square (red with the five-term ordering made the
+    default), no five-term weight reaching selection, blueprint parsing, and the quota's
+    ceiling (red with one unit of slack) and tilt.
+  - `tests/engine/test_diagnostic.py`: test_diagnostic_target_probability for both formats (red
+    with farthest instead of nearest), test_entropy_stopping (red with the stall sign flipped and
+    with the cap off by one), held-out isolation (red when it enters the posterior), unit
+    coverage, pooling (red with pooling off), placement closure (red without it), unresolved
+    left unattempted, re-diagnostic only adds, and coverage gaps.
+  - `tests/eval/test_p2_evals.py`: eval_diagnostic_information (red with the posterior frozen),
+    eval_selection_bias_control (red with the control arm made the policy), and
+    eval_two_term_against_five_term (red with the five-term ordering removed).
+  - `tests/api/test_diagnostic_routes.py` (5): resume, not-learned credits nothing and writes
+    diagnoses, wrong item refused, and a distractor's error path diagnosed. Red with resume off,
+    with diagnostic misses requeued, and with the diagnosis write removed.
+  - `tests/e2e/test_cold_start.py`: test_cold_start_to_first_session, on the real 130-item bank.
+    First login, diagnostic, unit states with no percentage, a diagnosis per answer, a day-two
+    queue with minutes, the long gap on day 23 and not day 22, and a re-diagnostic that keeps
+    every placed skill. Red with the gap at 21 days (`>=`) and with the diagnosis write removed
+    (`assert 0 == 9`).
+  - Web: `onboarding/OnboardingRoute.test.tsx` (4), the long-gap HomeScreen test, and five shell
+    tests. Red under six mutations: resume ignored, first login ignored, always onboarding, long
+    gap drawn as the queue, a wrong not-learned body, and onboarding added to the bar.
+- Checks at merge: pytest `1033 passed in 381.65s (0:06:21)`, vitest `383 passed (383)` in 29 files, `tsc --noEmit`
+  exit 0, `qa/12_report.py` exit 0.
+- Real-bank reach, measured over 20 synthetic students with `content/items_p1_agent`:
+  - The diagnostic asks 8 or 9 items, then stops on an exhausted pool (9 families in Units 1 to
+    3). 7 units cannot be probed and 126 archetypes are logged as coverage gaps.
+  - 600 sessions on this bank show zero unexplained window violations. Shortfalls were logged
+    for family_cap 458, translation_floor 377, block_units 15 and block_skills 4.
+  - The diagnostic reaches more units as stage 1 merges items for Units 4 to 10.
+
+- P2 complete as far as a session can make it, 2026-09-24. Each gate's pass line from `pytest -v`
+  in this session, 13 passed in 82.97s: test_diagnostic_target_probability (short answer and
+  MCQ), test_entropy_stopping, test_desired_retention_switch,
+  test_two_term_selection_whole_graph, test_interleave_full_constraints, test_due_queue_finite,
+  test_repetition_compression, test_cold_start_to_first_session, eval_diagnostic_information,
+  eval_selection_bias_control, eval_two_term_against_five_term, and the record check, each
+  PASSED. Exit criteria:
+  - The diagnostic finishes within 30 items and stops early on 79.0 percent of 400 synthetic
+    students (see Known defects on why).
+  - A new user reaches a populated, finite, minute-stated queue on day 2 without intervention
+    (test_cold_start_to_first_session).
+  - 1,000 simulated sessions show zero interleaving violations.
+  - The five-term score is off, and its comparison and the random-control arm are recorded in
+    `docs/operator/p2-evals.md`.
+  - Pending on use: a calibration curve rendered from 30 real rated attempts. Only the operator
+    can supply those; the render path is covered by tests (Decisions, 2026-09-24).
+
 ## In progress [inferred]
 
 Nothing. The fourteenth session closed with the suite green and every module of its plan either
 done or listed below as needing the operator.
 
-Stage 2 (p2engine), 2026-09-24, worktree `../growth-p2engine`, branch `p2engine`: the rest of 11
-P2 (diagnostic, whole-graph selection with exam-weight quotas, full interleaving, onboarding and
-the long-gap state, the diagnoses table, the three evals). Engine, service, routes and Python
-gates are written and green in the worktree; the onboarding screen and the rewritten shell gate
-are the last piece before the first merge. See Done, "P2 Slice 5".
+Nothing for stage 2: it merged on 2026-09-24 (Done, "P2 Slice 5").
 
 ## Live API spend log [verified]
 
@@ -2297,6 +2397,31 @@ From the eleventh session, 2026-09-21, found and not fixed.
   observation whose mastery_state is prerequisite_gap, and `rule_based_mastery_states` never emits
   one; the diagnostician (P3) does. The state is tested with a stored attempt, not seen in the app.
 
+- 2026-09-24, stage 2, the diagnostic's entropy stop fires mostly on surprises. At the recorded
+  size (`docs/operator/p2-evals.md`), 316 of 400 synthetic runs stop early. 294 of those came in
+  a 3-item window where one answer raised the summed unit entropy, which the plan's rule reads
+  as entropy that stopped falling. The error direction is conservative: the unit stays
+  unresolved and its skills are fast-tracked. The rule is 02's named tunable, for P7's held-out
+  agreement to settle.
+- 2026-09-24, stage 2, placement accuracy on synthetic students: 3,303 skills placed, 514 (15.6
+  percent) not truly known. Each comes back as a review in about 4 days, and a credited failure
+  un-masters it. The held-out problem shows the model over-predicts on this population, 0.377
+  predicted against 0.095 observed.
+- 2026-09-24, stage 2, the synthetic world never learns. Hidden knowledge is fixed per student,
+  as in the P1 runner, so "truly mastered per item" measures how fast a policy finds known
+  skills, not how fast it teaches. The two-term against five-term comparison should be rerun on
+  a world that learns before P7 rules on it.
+- 2026-09-24, stage 2, the six `SEEDED_PARENT_IDS` in `app/session/seed.py` are still seeded
+  mastered. They were P1 out-of-subgraph parents (R15, Q8); with the whole graph loaded they are
+  ordinary skills. A credited failure flips them, but the diagnostic never places them, because
+  placement only adds.
+- 2026-09-24, stage 2, a queued discriminating probe bypasses the interleaving window, as in P1.
+  Nothing writes probes until P3's diagnostician, which should route a probe through
+  `window_filter` so it is logged like every other serve.
+- 2026-09-24, stage 2, `tests/api/test_unauthenticated_routes.py` fails in any checkout without a
+  built `app/web/dist`, clean tree included, because the `/assets` mount exists only once the
+  client is built. Run `npm run build` in a new worktree before the suite.
+
 ## Plan corrections applied [verified]
 
 Session 2026-09-23 (fourteenth). No plan file was edited. Readings applied in code:
@@ -2700,6 +2825,45 @@ Session 2026-09-20 (seventh).
   at `GET /progress/mastery` instead, beside `GET /progress/calibration`, so home's read of the due
   counts does not build 541 nodes.
 
+- 2026-09-24, stage 2 ruling on the shell gate, following the P2 Slice 4 pattern. P2 scope item 7
+  puts onboarding in phase, so `OUT_OF_PHASE_SCREENS` in `app/web/src/App.test.tsx` drops
+  "onboarding". Stage 3 had already dropped review and mastery, and mock, matrix and checkpoint
+  stay forbidden. The bar stays exactly Home and Settings. New shell tests assert that a first
+  login lands on the onboarding intro, that a long gap reaches onboarding only through home's
+  re-diagnostic action, that the ordinary queue never shows it, and that an unfinished
+  diagnostic resumes with its own id.
+- 2026-09-24, stage 2: `tests/db/test_models.py` asserted `diagnoses` absent, a P1 fact. P2 scope
+  item 9 puts the table in use, so the test now asserts the exact P2 table set, gradings still
+  absent, plus the exact diagnoses columns. That is a stricter assertion, not a looser one.
+- 2026-09-24, stage 2, 06 `diagnoses`: adds `diagnosed_by`. P2 rows come from the R12 and R26 rule
+  (`rule_r12_r26`, empty hypothesis lists) and P3's diagnostician writes to the same table.
+- 2026-09-24, stage 2, 02 and 11 on the translation floor: an archetype is a translation when it
+  carries two BC-REP ids that `data/taxonomies.json` lists as a conversion pair from one
+  representation to a different one. Self-pairs are left out, because one representation
+  cannot show whether an item asks for the translation.
+- 2026-09-24, stage 2, 02 on "once 2 units are open": the reading is extended to every window
+  rule except max-2. A rule binds whenever some candidate can meet it, and otherwise it is
+  logged as a shortfall rather than ending the block. A window shorter than 10 is held to what a
+  full window can still reach.
+- 2026-09-24, stage 2, 11 P2 scope item 5: "MCQ only" is read as the source of the weights,
+  since the CED publishes unit bands for the MC section alone. The quota applies to blocks 2 and
+  3 because P2 serves no free-response item; P3 must exempt free-response archetypes. Block 1 is
+  exempt because due reviews answer to retention.
+- 2026-09-24, stage 2, 02 Cold-start diagnostic design leaves open the likelihood linking unit
+  states to items, and how a unit posterior seeds skill-level state. Both are fixed in
+  `app/engine/diagnostic.py`. The logit shifts are -3, 0 and +3; +3 puts the median archetype
+  (the plan's p50 of 0.456) at 0.94, past the 0.9 mastery threshold. "Not learned" rates are
+  0.8, 0.2 and 0.05 by state. The skill in-state and out-of-state thresholds are ALEKS's 0.80
+  and 0.20. All are new tunables to carry into 12.
+- 2026-09-24, stage 2, 08 diagnostic item: served as short answer at stage unsupported, with no
+  rating and no feedback, because the wireframe draws a MathLive field and the item's states
+  are only unanswered, answered and submitted. The MCQ target of 0.625 is implemented and tested
+  for an item served as MCQ.
+- 2026-09-24, stage 2, 11 P2 exit criterion "populated, finite, minute-stated due queue on day 2"
+  is read as home's queue: `forecast_minutes` above 0 with items in it, plus a finite
+  `due_today_minutes`. Placed skills first come due in about 4 days, so day 2 is populated by
+  fringe learning. The cold-start test asserts exactly this.
+
 ## Decisions taken on the operator's instruction, 2026-09-24 [inferred]
 
 Stage 3, the review screen and the mastery map:
@@ -2724,6 +2888,23 @@ Stage 3, the review screen and the mastery map:
   shows "Ask for a re-read" on each undisputed point; the handler POSTs to
   `/gradings/{gid}/dispute` (06). `ProvisionalPoint` in `api/types.ts` is pinned to
   `PROVISIONAL_POINT_KEYS` by `api/client.test.ts`, so the two cannot drift.
+
+Stage 2 (p2engine):
+
+- The calibration curve's real-use exit criterion (30 real confidence-rated attempts) waits on
+  the operator's use. The render path from a seeded account is covered by
+  `tests/api/test_calibration_route.py::test_thirty_rated_attempts_return_the_curve_with_counts_and_intervals`
+  and `app/web/src/progress/CalibrationCurve.test.tsx`, both run green this session.
+- The five-term score stays off. On the synthetic world it found more truly mastered skills per
+  item (0.0331 against 0.0189, 1,000 sessions per arm). That is recorded for P7 and changes
+  nothing, because R4 turns the score on only by P7's gate and the world does not learn (see
+  Known defects).
+- A diagnostic is offered at first login (no session rows) and after a long gap. An account that
+  already has P1 sessions is not sent to a diagnostic, because the plan names only those two
+  triggers.
+- The onboarding screen was drafted by a subagent. When stage 3 merged mid-stage, its edits were
+  replayed on the rebased tree, the conflicts resolved by hand, and the missing screen and home
+  tests written and mutation-checked in this session.
 
 ## Decisions taken on the operator's instruction, 2026-09-23 [inferred]
 

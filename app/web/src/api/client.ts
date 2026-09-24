@@ -3,6 +3,8 @@ import type {
    BudgetsPayload,
    CalibrationPayload,
    Confidence,
+   DiagnosticResult,
+   DiagnosticServedItem,
    FeedbackPayload,
    MasteryMapPayload,
    ProgressPayload,
@@ -28,6 +30,13 @@ export class ApiError extends Error {
 
 export interface NextItemResponse {
    item: ServedItem | null;
+}
+
+/* app/api/routes/sessions.py next_diagnostic_item. Once diagnostic_finished is true the item is
+   null and the server has already closed the session. */
+export interface DiagnosticNextItemResponse {
+   item: DiagnosticServedItem | null;
+   diagnostic_finished: boolean;
 }
 
 export interface ConfidenceResult {
@@ -62,10 +71,13 @@ export interface PurgeResult {
    deleted: unknown;
 }
 
+/* not_learned is the diagnostic's "I have not learned this yet" (app/session/diagnostic_session.py
+   record_answer), sent in place of an answer. */
 export interface AttemptAnswer {
    option_id?: string;
    mathjson?: unknown;
    units?: string;
+   not_learned?: boolean;
 }
 
 export interface OpenSessionFields {
@@ -192,7 +204,15 @@ export function readSession(sessionId: string) {
 }
 
 export function readNextItem(sessionId: string) {
-   return requestJson<NextItemResponse>(`/sessions/${sessionId}/next`);
+   return requestJson<NextItemResponse | DiagnosticNextItemResponse>(`/sessions/${sessionId}/next`);
+}
+
+export function openDiagnostic() {
+   return openSession({ mode: "diagnostic" });
+}
+
+export function readDiagnostic(sessionId: string) {
+   return requestJson<DiagnosticResult>(`/sessions/${sessionId}/diagnostic`);
 }
 
 export function submitAttempt(sessionId: string, fields: SubmitAttemptFields) {

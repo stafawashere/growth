@@ -20,9 +20,10 @@ from datetime import datetime, timezone
 from sqlalchemy import update
 
 from app.db import models
+from app.experiments import switches
 from app.engine import constants
 from app.engine.interleave import window_violations
-from app.engine.prior import p_compensatory, p_knowledge
+from app.engine.prior import p_compensatory, p_knowledge, primary_skill
 from app.engine.select import format_for_attempt, retrievability_map
 from app.engine.state import Confidence, FadingStage, MasteryState, ResponseFormat
 from app.engine.update import Observation, apply_observation, rule_based_mastery_states
@@ -117,7 +118,10 @@ def open_session(
    now=None,
    sub_mode=None,
    process_seed=0,
+   experiment_default=None,
 ):
+   """experiment_default is the state a student's A/B switches start in (app/experiments); None
+   leaves the switches unread, which is how every caller that predates P7 assembles."""
    started_at = as_datetime(now or today)
    opens_diagnostic = mode == diagnostic_session.MODE
 
@@ -141,8 +145,25 @@ def open_session(
 
    states = repository.load_states(db, user_id)
    history = repository.load_attempts_history(db, user_id)
+   retrieval_entry = None
+
+   if experiment_default is not None:
+      retrieval_entry = switches.retrieval_entry_thresholds(
+         db, user_id, entry_candidates(states), experiment_default, started_at
+      )
+
    assembled = assemble_session(
-      states, graph, bank, probes, history, rng, today, now=now, db=db, user_id=user_id
+      states,
+      graph,
+      bank,
+      probes,
+      history,
+      rng,
+      today,
+      now=now,
+      db=db,
+      user_id=user_id,
+      retrieval_entry=retrieval_entry,
    )
    is_rehearsal = mode == "rehearsal"
    row = models.Session(
@@ -162,6 +183,19 @@ def open_session(
    db.flush()
 
    return row
+
+
+def entry_candidates(states):
+   """Skills whose RETRIEVAL_ENTRY arm now decides whether they are in the block 3 pool: at least
+   one unaided success and short of the treatment arm's entry. A skill is assigned the first time
+   it reaches this point, so assignment never depends on how the skill does afterwards."""
+   highest_entry = max(switches.ENTRY_THRESHOLDS.values())
+
+   return [
+      skill_id
+      for skill_id, state in states.items()
+      if 1 <= state.unaided_success_count < highest_entry
+   ]
 
 
 def served_positions(session_row):
@@ -392,6 +426,7 @@ def record_attempt(
    started_at=None,
    now=None,
    grader=None,
+   experiment_default=None,
 ):
    """Write one attempt row and, once it is graded and rated, apply its single observation.
 
@@ -468,6 +503,22 @@ def record_attempt(
       created_at=submitted_at.isoformat(),
       updated_at=submitted_at.isoformat(),
    )
+   is_unsupported = FadingStage(item["stage"]) == FadingStage.UNSUPPORTED
+   reads_the_feedback_switch = experiment_default is not None and is_unsupported
+
+   if reads_the_feedback_switch:
+      arm = switches.arm_for(
+         db,
+         session_row.user_id,
+         switches.FEEDBACK_ELABORATION,
+         item_id,
+         primary_skill(archetype),
+         split,
+         experiment_default,
+         submitted_at,
+      )
+      switches.record_arm(attempt, switches.FEEDBACK_ELABORATION, arm)
+
    db.add(attempt)
    db.flush()
 

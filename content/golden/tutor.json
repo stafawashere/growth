@@ -1,0 +1,778 @@
+{
+   "role": "tutor",
+   "set": "tutor_goldens",
+   "authored_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24",
+   "labelled_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24",
+   "authored_on": "2026-09-24",
+   "note": "Every candidate sentence and label here was written by claude-opus-5-5 on the operator's delegation, not by a human; the set measures the three-part check (names the rule, states its scoring consequence, describes the correct response) on real distractor choices. The tutor is called only after submission, so reveals_final_answer does not mean a pre-submission leak: following prompts/feedback/elaborated_v2.md, which keeps the paragraph at the level of the violated step, it is true when the sentence states the item's keyed final answer, while describing the correct step or an intermediate value is allowed.",
+   "cases": [
+      {
+         "id": "GLD-TUT-001",
+         "item_id": "ITM-AGT-01003-02",
+         "chosen_option_id": "A",
+         "error_id": "BC-ERR-01007",
+         "violated_step": 1,
+         "candidate_sentence": "The rule here is to identify the composite as written and evaluate from the innermost function outward, and this response applied the functions in the wrong order. That costs the value point. The correct response takes the limit of f at 1 first, feeds that value into g, and only then applies h, using continuity at each stage.",
+         "labels": {
+            "names_rule": true,
+            "states_consequence": true,
+            "describes_correct_response": true,
+            "reveals_final_answer": false
+         },
+         "acceptable": true,
+         "rationale": "Names the order-of-composition rule, states the lost value point, and describes the inside-out evaluation from the worked solution without stating the final value 4."
+      },
+      {
+         "id": "GLD-TUT-002",
+         "item_id": "ITM-AGT-01004-05",
+         "chosen_option_id": "A",
+         "error_id": "BC-ERR-01008",
+         "violated_step": 0,
+         "candidate_sentence": "This response loses the value point, and the rewriting step is missing. The correct response factors x - 2 out of the numerator and the denominator, divides it out, and evaluates the simplified quotient (x + 3)/(x + 2) at 2.",
+         "labels": {
+            "names_rule": false,
+            "states_consequence": true,
+            "describes_correct_response": true,
+            "reveals_final_answer": false
+         },
+         "acceptable": false,
+         "rationale": "Consequence and correct response are present and 5/4 is not stated, but the sentence never names the rule broken at the violated step, that zero over zero is an indeterminate form to be resolved and not a value."
+      },
+      {
+         "id": "GLD-TUT-003",
+         "item_id": "ITM-AGT-01008-03",
+         "chosen_option_id": "A",
+         "error_id": "BC-ERR-01017",
+         "violated_step": 0,
+         "candidate_sentence": "The rule is that each one sided limit at a boundary comes from the branch that applies on that side, and this response substituted the boundary input into a branch that does not apply there. The one sided limit is wrong, so every point that depends on it is lost. The correct response uses 7 - x^2 from the left and ax + b from the right at x = 1, uses ax + b from the left and 4 sqrt(x) + a from the right at x = 4, and solves the two resulting equations.",
+         "labels": {
+            "names_rule": true,
+            "states_consequence": true,
+            "describes_correct_response": true,
+            "reveals_final_answer": false
+         },
+         "acceptable": true,
+         "rationale": "All three parts are present and the value a = 1 is not stated; the two equations are described, not solved."
+      },
+      {
+         "id": "GLD-TUT-004",
+         "item_id": "ITM-AGT-01009-02",
+         "chosen_option_id": "A",
+         "error_id": "BC-ERR-01018",
+         "violated_step": 1,
+         "candidate_sentence": "The rule is that an input whose factor divides out of both numerator and denominator is a removable discontinuity, not a vertical asymptote, and this response named such an input as the asymptote. The location point is lost and the classification is wrong. The correct response cancels the factors at -5, -4 and -2 and finds that the only asymptote is x = 4.",
+         "labels": {
+            "names_rule": true,
+            "states_consequence": true,
+            "describes_correct_response": true,
+            "reveals_final_answer": true
+         },
+         "acceptable": false,
+         "rationale": "Rule, consequence and correct response are all present, but the last clause states the keyed answer c = 4, which the template's step-level reading excludes."
+      },
+      {
+         "id": "GLD-TUT-005",
+         "item_id": "ITM-AGT-01015-03",
+         "chosen_option_id": "B",
+         "error_id": "BC-ERR-01032",
+         "violated_step": 2,
+         "candidate_sentence": "The rule is that an interval of continuity stays open at any input where the function is undefined, and this response closed the interval at such an input. The interval point is lost on notation. The correct response identifies -1 and 6 as excluded inputs, checks that the two rules join continuously at x = 3, and writes the interval containing 0 as open at both ends.",
+         "labels": {
+            "names_rule": true,
+            "states_consequence": true,
+            "describes_correct_response": true,
+            "reveals_final_answer": false
+         },
+         "acceptable": true,
+         "rationale": "Names the open-endpoint rule, states the interval point lost, and describes the correct interval work; the keyed value is the integer sum 15, which is not stated."
+      },
+      {
+         "id": "GLD-TUT-006",
+         "item_id": "ITM-AGT-02002-06",
+         "chosen_option_id": "C",
+         "error_id": "BC-ERR-02005",
+         "violated_step": 2,
+         "candidate_sentence": "The rule is that the increment h must be divided out of the difference quotient before h is allowed to approach 0, and this response set h to 0 while h was still in the denominator. The correct response multiplies by the conjugate, reduces the numerator to 2h, divides out h, and only then lets h approach 0.",
+         "labels": {
+            "names_rule": true,
+            "states_consequence": false,
+            "describes_correct_response": true,
+            "reveals_final_answer": false
+         },
+         "acceptable": false,
+         "rationale": "Rule and correct response are present and the derivative is not stated, but nothing says which points are lost, although the scoring consequence field gives the simplification and value points."
+      },
+      {
+         "id": "GLD-TUT-007",
+         "item_id": "ITM-AGT-02003-02",
+         "chosen_option_id": "B",
+         "error_id": "BC-ERR-02010",
+         "violated_step": 1,
+         "candidate_sentence": "The rule is that a limit of this shape is the derivative of the function at the base point that appears inside it, and this response identified x cubed correctly but evaluated its derivative at the wrong input. The value point is lost. The correct response reads the base point as 2 from (2 + h) cubed minus 8, recognises the limit as the derivative of x cubed at 2, and evaluates 3x^2 there.",
+         "labels": {
+            "names_rule": true,
+            "states_consequence": true,
+            "describes_correct_response": true,
+            "reveals_final_answer": false
+         },
+         "acceptable": true,
+         "rationale": "All three parts are present; evaluating 3x^2 at 2 is described but the key 12 is not stated."
+      },
+      {
+         "id": "GLD-TUT-008",
+         "item_id": "ITM-AGT-02006-03",
+         "chosen_option_id": "A",
+         "error_id": "BC-ERR-02016",
+         "violated_step": 1,
+         "candidate_sentence": "The rule is that a constant term differentiates to zero, and this response carried the constant 5 into the derivative unchanged. The derivative point is lost, and the value at 2 inherits the extra term.",
+         "labels": {
+            "names_rule": true,
+            "states_consequence": true,
+            "describes_correct_response": false,
+            "reveals_final_answer": false
+         },
+         "acceptable": false,
+         "rationale": "Rule and consequence are present, but the sentence never says what the correct response shows (the reciprocal rewritten as a power, the term-by-term derivative, the evaluation at 2)."
+      },
+      {
+         "id": "GLD-TUT-009",
+         "item_id": "ITM-AGT-02007-03",
+         "chosen_option_id": "D",
+         "error_id": "BC-ERR-02018",
+         "violated_step": 1,
+         "candidate_sentence": "The rule is that the derivative of cos x is negative sin x, and this response gave sin x without the negative sign. The derivative point is lost. The correct response differentiates 3 cos x to -3 sin x, keeps -2e^x unchanged, and evaluates at pi/2 to get -3 - 2e^(pi/2).",
+         "labels": {
+            "names_rule": true,
+            "states_consequence": true,
+            "describes_correct_response": true,
+            "reveals_final_answer": true
+         },
+         "acceptable": false,
+         "rationale": "The three required parts are present, but it ends by stating the keyed value -3 - 2e^(pi/2)."
+      },
+      {
+         "id": "GLD-TUT-010",
+         "item_id": "ITM-AGT-02008-03",
+         "chosen_option_id": "B",
+         "error_id": "BC-ERR-02020",
+         "violated_step": 1,
+         "candidate_sentence": "The rule is that the derivative of a product is the first factor's derivative times the second plus the first times the second's derivative, and this response multiplied the two derivatives together instead. The rule point and the result point are both lost. The correct response keeps the constant 1/4 outside and applies the product rule to x squared times e to the x, which gives two terms, each carrying e to the x.",
+         "labels": {
+            "names_rule": true,
+            "states_consequence": true,
+            "describes_correct_response": true,
+            "reveals_final_answer": false
+         },
+         "acceptable": true,
+         "rationale": "Names the product rule, states both lost points, and describes the correct structure without assembling the keyed derivative."
+      },
+      {
+         "id": "GLD-TUT-011",
+         "item_id": "ITM-AGT-02009-02",
+         "chosen_option_id": "B",
+         "error_id": "BC-ERR-02024",
+         "violated_step": 2,
+         "candidate_sentence": "This response loses the value point. The correct response substitutes f'(4) = 4 and g(4) = 2 into the first product and f(4) = -1 and g'(4) = 4 into the second, then adds the two products.",
+         "labels": {
+            "names_rule": false,
+            "states_consequence": true,
+            "describes_correct_response": true,
+            "reveals_final_answer": false
+         },
+         "acceptable": false,
+         "rationale": "Consequence and correct response are present and the sum 4 is not stated, but the rule that each product rule slot takes either a function value or a derivative value is never named."
+      },
+      {
+         "id": "GLD-TUT-012",
+         "item_id": "ITM-AGT-02010-02",
+         "chosen_option_id": "A",
+         "error_id": "BC-ERR-02025",
+         "violated_step": 1,
+         "candidate_sentence": "The rule is that the derivative of cotangent carries a negative sign, negative cosecant squared, and this response dropped that sign. The result point is lost. The correct response writes x cot x as x cos x over sin x, applies the quotient rule with the product rule in the numerator, and uses the Pythagorean identity to reach cot x minus x csc^2 x before substituting pi/6.",
+         "labels": {
+            "names_rule": true,
+            "states_consequence": true,
+            "describes_correct_response": true,
+            "reveals_final_answer": false
+         },
+         "acceptable": true,
+         "rationale": "All three parts are present; the derivative expression is intermediate and the keyed value sqrt(3) - 2pi/3 is not stated."
+      },
+      {
+         "id": "GLD-TUT-013",
+         "item_id": "ITM-AGT-02011-02",
+         "chosen_option_id": "D",
+         "error_id": "BC-ERR-02027",
+         "violated_step": 1,
+         "candidate_sentence": "The rule is that the slope of a tangent line is the value of the derivative at the point of tangency, and this response used the function value h(-2) = 4 as the slope. The correct response computes h prime of x by the quotient rule, evaluates it at -2 for the slope, and uses h(-2) only as the height of the point.",
+         "labels": {
+            "names_rule": true,
+            "states_consequence": false,
+            "describes_correct_response": true,
+            "reveals_final_answer": false
+         },
+         "acceptable": false,
+         "rationale": "Rule and correct response are present and the line is not stated, but the slope and equation points the consequence field names are never mentioned."
+      },
+      {
+         "id": "GLD-TUT-014",
+         "item_id": "ITM-AGT-03001-03",
+         "chosen_option_id": "A",
+         "error_id": "BC-ERR-03001",
+         "violated_step": 2,
+         "candidate_sentence": "The rule is that the chain rule multiplies the derivative of the outer function by the derivative of the inner expression, and this response differentiated cos(2x) to -sin(2x) and stopped, leaving out the factor 2. The derivative is wrong, and in a multipart question the error carries into every later part. The correct response writes the derivative of cos(2x) as -2 sin(2x) inside the quotient rule, so dy/dx = (-2x sin(2x) - cos(2x))/x^2.",
+         "labels": {
+            "names_rule": true,
+            "states_consequence": true,
+            "describes_correct_response": true,
+            "reveals_final_answer": true
+         },
+         "acceptable": false,
+         "rationale": "Rule, consequence and correct response are present, but the final clause gives the complete keyed derivative."
+      },
+      {
+         "id": "GLD-TUT-015",
+         "item_id": "ITM-AGT-03004-06",
+         "chosen_option_id": "C",
+         "error_id": "BC-ERR-03007",
+         "violated_step": 1,
+         "candidate_sentence": "The rule is that every term in y picks up a factor of dy/dx when it is differentiated with respect to x, and this response differentiated the y terms as though y were the independent variable. The differentiation is not eligible for the completely correct differentiation point. The correct response differentiates y^2 to 2y dy/dx and uses the product rule on 5xy, giving 5y + 5x dy/dx, before collecting the dy/dx terms.",
+         "labels": {
+            "names_rule": true,
+            "states_consequence": true,
+            "describes_correct_response": true,
+            "reveals_final_answer": false
+         },
+         "acceptable": true,
+         "rationale": "All three parts are present and the keyed quotient for dy/dx is not written."
+      },
+      {
+         "id": "GLD-TUT-016",
+         "item_id": "ITM-AGT-03005-03",
+         "chosen_option_id": "C",
+         "error_id": "BC-ERR-03013",
+         "violated_step": 3,
+         "candidate_sentence": "The rule is that a coordinate satisfying the tangent condition must be substituted into the curve's equation before it is reported, and this response reported y = -1 without that check. The point for the coordinates is lost.",
+         "labels": {
+            "names_rule": true,
+            "states_consequence": true,
+            "describes_correct_response": false,
+            "reveals_final_answer": false
+         },
+         "acceptable": false,
+         "rationale": "Rule and consequence are present, but nothing describes what the correct response shows (the candidates y = -1 and y = -3 ruled out on the curve, and x = -2 substituted to find the point)."
+      },
+      {
+         "id": "GLD-TUT-017",
+         "item_id": "ITM-AGT-03008-03",
+         "chosen_option_id": "A",
+         "error_id": "BC-ERR-03023",
+         "violated_step": 3,
+         "candidate_sentence": "The rule is that the value of dy/dx at the point must be computed and substituted into the second derivative, and this response evaluated that expression without it. The numerical second derivative is wrong, although the product rule work can still earn its own credit. The correct response differentiates dy/dx = xy + 2x with the product rule, finds dy/dx = 2 at (2, -1), and substitutes both the coordinates and that value.",
+         "labels": {
+            "names_rule": true,
+            "states_consequence": true,
+            "describes_correct_response": true,
+            "reveals_final_answer": false
+         },
+         "acceptable": true,
+         "rationale": "All three parts are present; dy/dx = 2 is an intermediate value and the key 5 is not stated."
+      },
+      {
+         "id": "GLD-TUT-018",
+         "item_id": "ITM-AGT-03009-02",
+         "chosen_option_id": "B",
+         "error_id": "BC-ERR-03006",
+         "violated_step": 0,
+         "candidate_sentence": "This response differentiated the square root factor and then did not return to the rest of the expression. The derivative point is lost, and any later part that uses it inherits the error. The correct response has two terms: e^x times the square root, plus e^x times the chain rule derivative of the square root.",
+         "labels": {
+            "names_rule": false,
+            "states_consequence": true,
+            "describes_correct_response": true,
+            "reveals_final_answer": false
+         },
+         "acceptable": false,
+         "rationale": "It describes what the response did, states the consequence and describes the correct structure, but never names the rule at the violated step, that a product must be classified first and the product rule applied before the chain rule."
+      },
+      {
+         "id": "GLD-TUT-019",
+         "item_id": "ITM-AGT-04007-02",
+         "chosen_option_id": "B",
+         "error_id": "BC-ERR-04021",
+         "violated_step": 3,
+         "candidate_sentence": "The rule is that the differentiated equation has to be solved for the requested rate, and this response stopped once the equation was correct. The final point is lost, although the differentiation points can still be earned. The correct response substitutes the point (3, 2) and dy/dt = -1 into y^2 dx/dt + 2xy dy/dt = 0 and then divides to isolate dx/dt.",
+         "labels": {
+            "names_rule": true,
+            "states_consequence": true,
+            "describes_correct_response": true,
+            "reveals_final_answer": false
+         },
+         "acceptable": true,
+         "rationale": "All three parts are present and the rate 3 is not stated."
+      },
+      {
+         "id": "GLD-TUT-020",
+         "item_id": "ITM-AGT-04009-02",
+         "chosen_option_id": "A",
+         "error_id": "BC-ERR-04029",
+         "violated_step": 2,
+         "candidate_sentence": "The rule is that L'Hospital's rule may be applied only after the limit is shown to be zero over zero or infinity over infinity, and this response differentiated the numerator and the denominator without checking the form. The correct response checks that both tend to 0, applies the rule, finds the form is still zero over zero, and applies it a second time before evaluating.",
+         "labels": {
+            "names_rule": true,
+            "states_consequence": false,
+            "describes_correct_response": true,
+            "reveals_final_answer": false
+         },
+         "acceptable": false,
+         "rationale": "Rule and correct response are present and -1/2 is not stated, but the lost hypothesis point from the consequence field is never mentioned."
+      },
+      {
+         "id": "GLD-TUT-021",
+         "item_id": "ITM-AGT-05007-02",
+         "chosen_option_id": "C",
+         "error_id": "BC-ERR-05021",
+         "violated_step": 3,
+         "candidate_sentence": "The rule is that a relative maximum occurs where the derivative changes from positive to negative, and this response classified the point with the sign change read the wrong way round. The answer with reason point is lost. The correct response reads that g prime changes from positive to negative at x = 1, so the relative maximum is at x = 1.",
+         "labels": {
+            "names_rule": true,
+            "states_consequence": true,
+            "describes_correct_response": true,
+            "reveals_final_answer": true
+         },
+         "acceptable": false,
+         "rationale": "All three required parts are present, but it states the keyed answer x = 1."
+      },
+      {
+         "id": "GLD-TUT-022",
+         "item_id": "ITM-AGT-05012-02",
+         "chosen_option_id": "A",
+         "error_id": "BC-ERR-05060",
+         "violated_step": 0,
+         "candidate_sentence": "The rule is that when dy/dx is differentiated again, y is still a function of x, so each y term needs the chain rule, and this response treated y as a constant. The differentiation point is lost, and the value can be recovered only through a correct substitution. The correct response differentiates -y/(x + 2y) by the quotient rule with dy/dx appearing in both the numerator and the denominator derivatives, then substitutes (1, 2) and dy/dx = -2/5.",
+         "labels": {
+            "names_rule": true,
+            "states_consequence": true,
+            "describes_correct_response": true,
+            "reveals_final_answer": false
+         },
+         "acceptable": true,
+         "rationale": "All three parts are present; dy/dx = -2/5 is an intermediate value and the key 12/125 is not stated."
+      },
+      {
+         "id": "GLD-TUT-023",
+         "item_id": "ITM-AGT-06002-02",
+         "chosen_option_id": "A",
+         "error_id": "BC-ERR-06001",
+         "violated_step": 0,
+         "candidate_sentence": "The rule is that each trapezoid uses the width of its own subinterval, and this response multiplied every value by one common width although the times are unevenly spaced. The form point is lost because several factors are wrong, and the answer point goes with it.",
+         "labels": {
+            "names_rule": true,
+            "states_consequence": true,
+            "describes_correct_response": false,
+            "reveals_final_answer": false
+         },
+         "acceptable": false,
+         "rationale": "Rule and consequence are present, but the sentence does not describe the correct trapezoids (widths 1, 2 and 1, each times the average of its endpoint values)."
+      },
+      {
+         "id": "GLD-TUT-024",
+         "item_id": "ITM-AGT-06008-02",
+         "chosen_option_id": "B",
+         "error_id": "BC-ERR-06018",
+         "violated_step": 4,
+         "candidate_sentence": "The rule is that after substituting u = x^3 + 1, the limits must be converted to u values or the antiderivative returned to x before evaluating, and this response put the original x limits into the antiderivative in u. The response is not eligible for the answer point even if the number came out right. The correct response converts x = 0 and x = 2 to u = 1 and u = 9 and evaluates 2u^(3/2)/9 between those limits.",
+         "labels": {
+            "names_rule": true,
+            "states_consequence": true,
+            "describes_correct_response": true,
+            "reveals_final_answer": false
+         },
+         "acceptable": true,
+         "rationale": "All three parts are present and the keyed value 52/9 is not stated."
+      },
+      {
+         "id": "GLD-TUT-025",
+         "item_id": "ITM-AGT-06009-02",
+         "chosen_option_id": "C",
+         "error_id": "BC-ERR-06023",
+         "violated_step": 1,
+         "candidate_sentence": "This response loses the expression point, and the answer point depends on it. The correct response takes u = ln x and dv = x dx, writes x^2 ln x over 2 evaluated from 1 to e, and subtracts the integral of x/2 from 1 to e.",
+         "labels": {
+            "names_rule": false,
+            "states_consequence": true,
+            "describes_correct_response": true,
+            "reveals_final_answer": false
+         },
+         "acceptable": false,
+         "rationale": "Consequence and correct response are present without the final value, but the rule that integration by parts subtracts the integral of v du is never stated as the rule this response broke."
+      },
+      {
+         "id": "GLD-TUT-026",
+         "item_id": "ITM-AGT-06010-02",
+         "chosen_option_id": "A",
+         "error_id": "BC-ERR-06026",
+         "violated_step": 1,
+         "candidate_sentence": "The rule is that a rational integrand whose numerator degree is not less than its denominator degree is divided first, and only the proper remainder is split into partial fractions, and this response decomposed the improper fraction directly. The antiderivative point is not earned. The correct response divides to get 1 plus (4x - 2)/((x - 1)(x - 2)), splits the remainder into -2/(x - 1) + 6/(x - 2), and integrates each piece from 3 to 4.",
+         "labels": {
+            "names_rule": true,
+            "states_consequence": true,
+            "describes_correct_response": true,
+            "reveals_final_answer": false
+         },
+         "acceptable": true,
+         "rationale": "All three parts are present and the keyed value is not stated."
+      },
+      {
+         "id": "GLD-TUT-027",
+         "item_id": "ITM-AGT-06012-02",
+         "chosen_option_id": "A",
+         "error_id": "BC-ERR-06027",
+         "violated_step": 1,
+         "candidate_sentence": "The rule is that when a limit of integration is a function of x, the integrand at that limit is multiplied by the limit's derivative, and this response left out that factor for the x^2 limit. The answer point is not earned, even though the theorem point may be. The correct response gives g'(x) = 1/x - (1/x^2)(2x), so g'(2) = 1/2 - 1 = -1/2.",
+         "labels": {
+            "names_rule": true,
+            "states_consequence": true,
+            "describes_correct_response": true,
+            "reveals_final_answer": true
+         },
+         "acceptable": false,
+         "rationale": "Rule, consequence and correct response are present, but it states the keyed value -1/2."
+      },
+      {
+         "id": "GLD-TUT-028",
+         "item_id": "ITM-AGT-06013-02",
+         "chosen_option_id": "B",
+         "error_id": "BC-ERR-99012",
+         "violated_step": 1,
+         "candidate_sentence": "The rule is that reversing the limits of an integral changes its sign, and this response mishandled a reversed pair of limits. The correct response rewrites the integral from 5 to 2 of f as 4 over [2, 5], adds it to 6 to get 10 over [0, 5], and then reverses the requested integral from 5 to 0, which multiplies everything, including the constant term, by -1.",
+         "labels": {
+            "names_rule": true,
+            "states_consequence": false,
+            "describes_correct_response": true,
+            "reveals_final_answer": false
+         },
+         "acceptable": false,
+         "rationale": "Rule and correct response are present and -35 is not stated, but it never says which point is not earned."
+      },
+      {
+         "id": "GLD-TUT-029",
+         "item_id": "ITM-AGT-07003-02",
+         "chosen_option_id": "C",
+         "error_id": "BC-ERR-07025",
+         "violated_step": 1,
+         "candidate_sentence": "The rule is that after separating, both sides are antidifferentiated, and this response integrated only one side. The antiderivative point is lost and every later point with it. The correct response integrates dy/y to ln|y| and x dx to x^2/2, adds one constant, and fixes it with f(2) = 5 before solving for y.",
+         "labels": {
+            "names_rule": true,
+            "states_consequence": true,
+            "describes_correct_response": true,
+            "reveals_final_answer": false
+         },
+         "acceptable": true,
+         "rationale": "All three parts are present and the particular solution is not written out."
+      },
+      {
+         "id": "GLD-TUT-030",
+         "item_id": "ITM-AGT-07004-02",
+         "chosen_option_id": "D",
+         "error_id": "BC-ERR-07019",
+         "violated_step": 0,
+         "candidate_sentence": "The rule is that the step size is the length of the interval divided by the number of steps asked for, and this response took the whole interval as a single step. The demonstration point is lost because the step size is wrong.",
+         "labels": {
+            "names_rule": true,
+            "states_consequence": true,
+            "describes_correct_response": false,
+            "reveals_final_answer": false
+         },
+         "acceptable": false,
+         "rationale": "Rule and consequence are present, but the correct response (step 1/2, slope 3 at (0, 3), then the slope at the new point) is never described."
+      },
+      {
+         "id": "GLD-TUT-031",
+         "item_id": "ITM-AGT-07007-02",
+         "chosen_option_id": "C",
+         "error_id": "BC-ERR-07006",
+         "violated_step": 0,
+         "candidate_sentence": "The rule is that verifying a candidate solution starts by differentiating it, so the equation is tested with the candidate's derivatives, and this response substituted the candidate without producing y' and y''. The check does not test the equation, so the conclusion is unsupported. The correct response computes y' = Cke^(kx) and y'' = Ck^2 e^(kx), substitutes them to get Ce^(kx)(k^2 + 3k - 10) = 0, and applies the condition k > 0 to the roots.",
+         "labels": {
+            "names_rule": true,
+            "states_consequence": true,
+            "describes_correct_response": true,
+            "reveals_final_answer": false
+         },
+         "acceptable": true,
+         "rationale": "All three parts are present; the quadratic and the condition are described but the keyed root k = 2 is not stated."
+      },
+      {
+         "id": "GLD-TUT-032",
+         "item_id": "ITM-AGT-07011-02",
+         "chosen_option_id": "A",
+         "error_id": "BC-ERR-07032",
+         "violated_step": 1,
+         "candidate_sentence": "The rule is that the accumulation form must carry the initial value in front of the integral, and this response wrote the integral alone. The expression does not satisfy the initial condition. The correct response writes s(t) = 1 plus the integral of 2 sin u from 0 to t, and at t = pi/3 that is 1 + 1 = 2.",
+         "labels": {
+            "names_rule": true,
+            "states_consequence": true,
+            "describes_correct_response": true,
+            "reveals_final_answer": true
+         },
+         "acceptable": false,
+         "rationale": "Rule, consequence and correct response are present, but it states the keyed value s(pi/3) = 2."
+      },
+      {
+         "id": "GLD-TUT-033",
+         "item_id": "ITM-AGT-10002-02",
+         "chosen_option_id": "A",
+         "error_id": "BC-ERR-10006",
+         "violated_step": 1,
+         "candidate_sentence": "The rule is that the first term of a geometric series is the term at the index where the sum starts, and this response used the index zero term although the series starts at n = 1. The sum is off by a factor, so the value point is lost. The correct response takes a = 4/3 from the n = 1 term and r = 2/3 from consecutive terms, and uses those in the geometric sum formula.",
+         "labels": {
+            "names_rule": true,
+            "states_consequence": true,
+            "describes_correct_response": true,
+            "reveals_final_answer": false
+         },
+         "acceptable": true,
+         "rationale": "All three parts are present; the first term and ratio are intermediate and the key 4 is not stated."
+      },
+      {
+         "id": "GLD-TUT-034",
+         "item_id": "ITM-AGT-10003-02",
+         "chosen_option_id": "D",
+         "error_id": "BC-ERR-10004",
+         "violated_step": 0,
+         "candidate_sentence": "This response loses the sum and the convergence condition from that step onward. The correct response divides the n = 3 term by the n = 2 term to get a ratio of 1/9, takes 1/81 as the first term, and checks that the ratio is less than 1 in size.",
+         "labels": {
+            "names_rule": false,
+            "states_consequence": true,
+            "describes_correct_response": true,
+            "reveals_final_answer": false
+         },
+         "acceptable": false,
+         "rationale": "Consequence and correct response are present and 1/72 is not stated, but the rule that the common ratio is the quotient of consecutive terms is not named as the rule broken."
+      },
+      {
+         "id": "GLD-TUT-035",
+         "item_id": "ITM-AGT-10005-02",
+         "chosen_option_id": "A",
+         "error_id": "BC-ERR-10012",
+         "violated_step": 1,
+         "candidate_sentence": "The rule is that the improper integral in the integral test starts at the index where the series starts, and this response integrated from a different lower limit. The improper integral point is not earned, although a correct limit afterwards keeps the evaluation point in reach. The correct response writes the integral of e^(-x) from 1 to infinity as the limit, as b goes to infinity, of the integral from 1 to b and evaluates that limit.",
+         "labels": {
+            "names_rule": true,
+            "states_consequence": true,
+            "describes_correct_response": true,
+            "reveals_final_answer": false
+         },
+         "acceptable": true,
+         "rationale": "All three parts are present and the keyed value e^(-1) is not stated."
+      },
+      {
+         "id": "GLD-TUT-036",
+         "item_id": "ITM-AGT-10008-02",
+         "chosen_option_id": "A",
+         "error_id": "BC-ERR-10024",
+         "violated_step": 1,
+         "candidate_sentence": "The rule is that the alternating series error bound is the absolute value of the first term left out of the partial sum, and this response bounded the error with a term already included. The correct response notes that the terms alternate and decrease to 0, identifies the n = 4 term as the first omitted one, and evaluates its absolute value at x = 1.",
+         "labels": {
+            "names_rule": true,
+            "states_consequence": false,
+            "describes_correct_response": true,
+            "reveals_final_answer": false
+         },
+         "acceptable": false,
+         "rationale": "Rule and correct response are present and 4/625 is not stated, but the point the consequence field says is earned only for the correct omitted term is never mentioned."
+      },
+      {
+         "id": "GLD-TUT-037",
+         "item_id": "ITM-AGT-10009-02",
+         "chosen_option_id": "D",
+         "error_id": "BC-ERR-10033",
+         "violated_step": 1,
+         "candidate_sentence": "The rule is that the Lagrange bound uses the maximum of the absolute value of the fifth derivative on the interval, and this response used the fifth derivative's value at the centre, which does not meet the bound's conditions. A bound whose conditions are not met earns no justification point. The correct response uses the stated maximum M = 10 with the fifth power of the distance 1/2 over 5 factorial, and compares that bound with 1/100.",
+         "labels": {
+            "names_rule": true,
+            "states_consequence": true,
+            "describes_correct_response": true,
+            "reveals_final_answer": false
+         },
+         "acceptable": true,
+         "rationale": "All three parts are present and the keyed bound 1/384 is not stated."
+      },
+      {
+         "id": "GLD-TUT-038",
+         "item_id": "ITM-AGT-10010-02",
+         "chosen_option_id": "B",
+         "error_id": "BC-ERR-10029",
+         "violated_step": 2,
+         "candidate_sentence": "The rule is that each Taylor coefficient is the derivative value divided by the factorial of its order, and this response placed the derivative values directly as coefficients. The polynomial is not the requested one, so its term points are lost. The correct response divides f(0), f'(0), f''(0) and f'''(0) by 0!, 1!, 2! and 3! before attaching the powers of x.",
+         "labels": {
+            "names_rule": true,
+            "states_consequence": true,
+            "describes_correct_response": true,
+            "reveals_final_answer": false
+         },
+         "acceptable": true,
+         "rationale": "All three parts are present and the keyed polynomial is not written."
+      },
+      {
+         "id": "GLD-TUT-039",
+         "item_id": "ITM-AGT-10011-02",
+         "chosen_option_id": "B",
+         "error_id": "BC-ERR-10031",
+         "violated_step": 0,
+         "candidate_sentence": "The rule is that each derivative value is paired with the power of (x - 2) of the same order, and this response paired the second derivative value with the first power and the first derivative value with the second. Each misplaced value spoils the term that depends on it.",
+         "labels": {
+            "names_rule": true,
+            "states_consequence": true,
+            "describes_correct_response": false,
+            "reveals_final_answer": false
+         },
+         "acceptable": false,
+         "rationale": "Rule and consequence are present, but the correct response (values through order 2 divided by 0!, 1!, 2! and attached to matching powers) is never described."
+      },
+      {
+         "id": "GLD-TUT-040",
+         "item_id": "ITM-AGT-10012-02",
+         "chosen_option_id": "D",
+         "error_id": "BC-ERR-10040",
+         "violated_step": 0,
+         "candidate_sentence": "The rule is that the Maclaurin series for cos x must be recalled with its alternating signs and factorials, and this response used an incorrect series for cosine. Every term built on it is wrong, so the dependent points are lost. The correct response uses cos x as 1 - x^2/2 through degree 2, multiplies by 3 - x + 2x^2, and keeps only the terms through x^2.",
+         "labels": {
+            "names_rule": true,
+            "states_consequence": true,
+            "describes_correct_response": true,
+            "reveals_final_answer": false
+         },
+         "acceptable": true,
+         "rationale": "All three parts are present and the keyed polynomial is not stated."
+      },
+      {
+         "id": "GLD-TUT-041",
+         "item_id": "ITM-AGT-10014-02",
+         "chosen_option_id": "D",
+         "error_id": "BC-ERR-10036",
+         "violated_step": 3,
+         "candidate_sentence": "This response presents a value that is not the radius, so the radius point cannot be earned. The correct response solves 2|x - 3|^2/5 < 1 for |x - 3| and reports the bound on |x - 3| as the radius, with no shift by the centre.",
+         "labels": {
+            "names_rule": false,
+            "states_consequence": true,
+            "describes_correct_response": true,
+            "reveals_final_answer": false
+         },
+         "acceptable": false,
+         "rationale": "Consequence and correct response are present and sqrt(10)/2 is not stated, but the rule at the violated step, that the radius is stated explicitly as a distance and not as an interval or endpoint, is not named."
+      },
+      {
+         "id": "GLD-TUT-042",
+         "item_id": "ITM-AGT-10016-02",
+         "chosen_option_id": "C",
+         "error_id": "BC-ERR-99018",
+         "violated_step": 0,
+         "candidate_sentence": "The rule is that the first terms come from substituting the starting indices into the general term, beginning at n = 0, and this response dropped the n = 0 term and continued one term too far. The general term point is not earned, although the first terms point can be earned separately. The correct response substitutes n = 0, 1, 2 and 3 into the general term, which keeps the constant term and the alternating signs, and stops after four nonzero terms.",
+         "labels": {
+            "names_rule": true,
+            "states_consequence": true,
+            "describes_correct_response": true,
+            "reveals_final_answer": false
+         },
+         "acceptable": true,
+         "rationale": "All three parts are present and the four keyed terms are not listed."
+      },
+      {
+         "id": "GLD-TUT-043",
+         "item_id": "ITM-AGT-10017-02",
+         "chosen_option_id": "A",
+         "error_id": "BC-ERR-10041",
+         "violated_step": 1,
+         "candidate_sentence": "The rule is that substituting 3x into the cosine series raises the whole of 3x to each power, and this response did not raise the 3 along with x. The series is wrong from the first affected term onward. The correct response writes (3x)^2 = 9x^2 and (3x)^4 = 81x^4 inside the series for cosine and then multiplies every term by 2.",
+         "labels": {
+            "names_rule": true,
+            "states_consequence": true,
+            "describes_correct_response": true,
+            "reveals_final_answer": false
+         },
+         "acceptable": true,
+         "rationale": "All three parts are present and the keyed three terms are not assembled."
+      },
+      {
+         "id": "GLD-TUT-044",
+         "item_id": "ITM-AGT-10018-02",
+         "chosen_option_id": "B",
+         "error_id": "BC-ERR-99018",
+         "violated_step": 0,
+         "candidate_sentence": "The rule is that the requested nonzero terms of f'(x) come from differentiating the terms after the constant, and this response stopped after three terms where four were asked for. The correct response differentiates x, x^2/2, x^3/6 and x^4/24 in turn and reports four nonzero terms.",
+         "labels": {
+            "names_rule": true,
+            "states_consequence": false,
+            "describes_correct_response": true,
+            "reveals_final_answer": false
+         },
+         "acceptable": false,
+         "rationale": "Rule and correct response are present and the keyed sum is not written, but the general term point from the consequence field is never mentioned."
+      },
+      {
+         "id": "GLD-TUT-045",
+         "item_id": "ITM-AGT-10019-02",
+         "chosen_option_id": "B",
+         "error_id": "BC-ERR-99018",
+         "violated_step": 1,
+         "candidate_sentence": "The rule is that integrating term by term raises each power by one and divides by the new power, and this response raised the powers without dividing. The general term point is not earned, although the first terms point may be earned separately. The correct response integrates x - x^3/6 term by term, dividing by 2 and by 4, and then uses f(0) = 3 to fix the constant.",
+         "labels": {
+            "names_rule": true,
+            "states_consequence": true,
+            "describes_correct_response": true,
+            "reveals_final_answer": false
+         },
+         "acceptable": true,
+         "rationale": "All three parts are present and the keyed polynomial is not stated."
+      },
+      {
+         "id": "GLD-TUT-046",
+         "item_id": "ITM-AGT-99003-02",
+         "chosen_option_id": "D",
+         "error_id": "BC-ERR-09031",
+         "violated_step": 3,
+         "candidate_sentence": "The rule is that the slope of a polar curve is dy/dtheta divided by dx/dtheta, and this response reported dr/dtheta instead. The slope point is lost. The correct response writes x = r cos theta and y = r sin theta, differentiates each with the product rule, evaluates both at theta = pi/6, and divides the y derivative by the x derivative.",
+         "labels": {
+            "names_rule": true,
+            "states_consequence": true,
+            "describes_correct_response": true,
+            "reveals_final_answer": false
+         },
+         "acceptable": true,
+         "rationale": "All three parts are present and the keyed slope sqrt(3)/7 is not stated."
+      },
+      {
+         "id": "GLD-TUT-047",
+         "item_id": "ITM-AGT-02007-01",
+         "chosen_option_id": "D",
+         "error_id": "BC-ERR-02018",
+         "violated_step": 1,
+         "candidate_sentence": "The rule is that the derivative of cos x is negative sin x, and this response gave the derivative of cos x as sin x with no negative sign. The derivative point is lost. The correct response carries that negative sign through the middle term, so -4 cos x differentiates to a positive multiple of sin x, while x^3 and e^x are differentiated by their own rules.",
+         "labels": {
+            "names_rule": true,
+            "states_consequence": true,
+            "describes_correct_response": true,
+            "reveals_final_answer": false
+         },
+         "acceptable": true,
+         "rationale": "All three parts are present and the keyed derivative is not written out."
+      },
+      {
+         "id": "GLD-TUT-048",
+         "item_id": "ITM-AGT-06002-01",
+         "chosen_option_id": "C",
+         "error_id": "BC-ERR-99028",
+         "violated_step": 0,
+         "candidate_sentence": "The rule is that a trapezoidal sum multiplies each width by the average of the two endpoint values, and this response used a trapezoid area formula that leaves out the averaging. The setup point needs the sum of the correct products to be visible, and the answer point follows it.",
+         "labels": {
+            "names_rule": true,
+            "states_consequence": true,
+            "describes_correct_response": false,
+            "reveals_final_answer": false
+         },
+         "acceptable": false,
+         "rationale": "Rule and consequence are present, but the correct trapezoids (width 3 times each average) are never described."
+      }
+   ]
+}

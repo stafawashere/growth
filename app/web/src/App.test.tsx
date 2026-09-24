@@ -9,10 +9,15 @@ import type {
    AttemptResult,
    BudgetsPayload,
    CalibrationPayload,
+   CheckpointsPayload,
    DiagnosticResult,
    DiagnosticServedItem,
+   ExperimentsPayload,
    MasteryMapPayload,
+   MetricsPayload,
+   ProbePayload,
    ProgressPayload,
+   RepresentationMatrixPayload,
    ReviewPayload,
    ServedItem,
    SessionPayload,
@@ -42,9 +47,9 @@ const PROPS_INTERFACE_BY_DESTINATION: Record<Destination, { file: string; name: 
    operator's delegated run (BUILD-LEDGER.md, Plan corrections applied, 2026-09-24) brought in the
    review screen and the mastery map, which P8's entry criterion needs and 11 names in no earlier
    phase. P2 scope item 7 brings in the onboarding diagnostic, reached only as the first-login and
-   long-gap route and never from the bar. The representation matrix, checkpoint history and mock
-   stay out. */
-const OUT_OF_PHASE_SCREENS = ["mock", "matrix", "checkpoint"];
+   long-gap route and never from the bar. P7 scope item 7 brings in the representation matrix and
+   the checkpoint history on progress. The mock stays out. */
+const OUT_OF_PHASE_SCREENS = ["mock"];
 
 /* The screens reached from home's secondary buttons, never from the bar and never the landing
    screen (08, Information architecture). */
@@ -1000,5 +1005,132 @@ describe("signed out over GET /me", () => {
 
       expect(await screen.findByText(/Start today's set/)).toBeTruthy();
       expect(document.body.textContent ?? "").not.toContain("RC-from-the-finish-response");
+   });
+});
+
+describe("the P7 evaluation screens in the shell", () => {
+   const metricsPayload: MetricsPayload = {
+      as_of: "2027-01-05",
+      metrics: [],
+      experiments: []
+   };
+
+   const representations: RepresentationMatrixPayload = {
+      representations: [
+         { id: "BC-REP-01", name: "Analytical" },
+         { id: "BC-REP-02", name: "Graphical" }
+      ],
+      cells: [
+         { source: "BC-REP-02", target: "BC-REP-01", attempts: 5, correct: 3 },
+         { source: "BC-REP-01", target: "BC-REP-02", attempts: 0, correct: 0 }
+      ],
+      translation_attempts: 5,
+      practice_attempts: 41
+   };
+
+   const checkpoints: CheckpointsPayload = {
+      availability: { open_checkpoint_id: null, available: false, opens_on: "2027-01-19", forms_remaining: 2, cadence_days: 42 },
+      history: [
+         {
+            id: "CKP-1",
+            form_year: 2024,
+            started_at: "2026-12-08T12:00:00+00:00",
+            finished_at: "2026-12-08T12:00:00+00:00",
+            scored_by: "student_self_score",
+            free_response_url: "https://apcentral.collegeboard.org/media/pdf/ap24-frq-calculus-bc.pdf",
+            scoring_guidelines_url: "https://apcentral.collegeboard.org/media/pdf/ap24-sg-calculus-bc.pdf",
+            sections: [],
+            scores: {},
+            questions: [{ question: 1, earned: 6, possible: 9, published_mean: 3.5, published_mean_years: [2024] }],
+            total_earned: 6,
+            total_possible: 9,
+            published_total: 3.5
+         }
+      ],
+      expected_effect: { low: 0.4, high: 0.7 }
+   };
+
+   const probe: ProbePayload = {
+      availability: { open_administration_id: null, available: true, opens_on: null, items: 12, cadence_days: 56 },
+      history: [
+         {
+            id: "PRB-1",
+            probe_set: "stable-probe-v1",
+            started_at: "2026-11-01T12:00:00+00:00",
+            finished_at: "2026-11-01T12:00:00+00:00",
+            answered: 12,
+            graded: 11,
+            correct: 8,
+            items: 12
+         }
+      ]
+   };
+
+   const experiments: ExperimentsPayload = {
+      experiments: [
+         {
+            name: "feedback_elaboration",
+            description: "Elaborated feedback against verification-only feedback on a wrong answer at stage unsupported.",
+            unit: "item",
+            arms: ["elaborated", "verification_only"],
+            state: "off",
+            randomised_from: null,
+            assigned_units: { elaborated: 0, verification_only: 0 }
+         }
+      ]
+   };
+
+   function mockEvaluation() {
+      mocked.readRepresentations.mockResolvedValue(representations);
+      mocked.readCheckpoints.mockResolvedValue(checkpoints);
+      mocked.readProbe.mockResolvedValue(probe);
+      mocked.readExperiments.mockResolvedValue(experiments);
+      mocked.readMetrics.mockResolvedValue(metricsPayload);
+
+      return [representations, checkpoints, probe, experiments];
+   }
+
+   it("reaches the evidence of learning from settings only, never from the bar or from home", async () => {
+      mockServer(readyProgress);
+      mockEvaluation();
+      render(<App />);
+
+      await screen.findByText(/Start today's set/);
+
+      expect(screen.queryByRole("button", { name: "Evidence of learning" })).toBeNull();
+      expect(mocked.readMetrics).not.toHaveBeenCalled();
+
+      visit("settings");
+      fireEvent.click(await screen.findByRole("button", { name: "Evidence of learning" }));
+
+      expect(await screen.findByTestId("metrics-view")).toBeTruthy();
+      expect(mocked.readMetrics).toHaveBeenCalledTimes(1);
+
+      const labels = buttonsIn(screen.getByRole("navigation")).map((button) => button.textContent);
+
+      expect(labels).toEqual(["Home", "Settings"]);
+
+      visit("settings");
+
+      expect(screen.queryByTestId("metrics-view")).toBeNull();
+      expect(screen.getByRole("heading", { name: "Budgets" })).toBeTruthy();
+   });
+
+   it("traces every digit on the matrix, the checkpoint history and the experiments to a mocked response value", async () => {
+      const payloads = [...mockServer(readyProgress), ...mockEvaluation()];
+      const derived = [daysToExam(me.exam_date, PINNED_NOW)];
+
+      render(<App />);
+      fireEvent.click(await screen.findByRole("button", { name: "Progress" }));
+      await screen.findByTestId("representation-matrix");
+      await screen.findByTestId("checkpoint-result");
+      await screen.findByTestId("probe-result");
+
+      expect(untracedFigures(payloads, derived), "progress").toEqual([]);
+
+      visit("settings");
+      await screen.findByTestId("experiment-switch");
+
+      expect(untracedFigures(payloads, derived), "settings").toEqual([]);
    });
 });

@@ -3,12 +3,14 @@ import { useEffect, useState } from "react";
 import { AccountScreen } from "./account/AccountScreen";
 import { AddPasskeyControl } from "./account/AddPasskeyControl";
 import { ApiError, readMe } from "./api/client";
+import { MetricsRoute } from "./evaluation/MetricsRoute";
 import { HomeRoute } from "./home/HomeRoute";
 import { OnboardingRoute } from "./onboarding/OnboardingRoute";
 import type { OnboardingReason } from "./onboarding/OnboardingScreen";
 import { ProgressRoute } from "./progress/ProgressRoute";
 import { ReviewRoute } from "./review/ReviewRoute";
 import { SessionScreen } from "./session/SessionScreen";
+import { OperatorSettings } from "./settings/ExperimentsSection";
 import type { SettingsScreenProps } from "./settings/SettingsScreen";
 import { SettingsRoute } from "./settings/SettingsRoute";
 
@@ -66,6 +68,10 @@ type SessionTarget = { resumeSessionId: string | null };
 type OnboardingTarget = { reason: OnboardingReason; resumeSessionId: string | null };
 
 type Access = "unknown" | "signedIn" | "signedOut";
+
+/* The operator's evidence of learning opens from settings and returns there. It is a page of
+   settings rather than a destination, so it is never on the bar and home cannot reach it. */
+type SettingsPage = "settings" | "evidence";
 
 function isSignedOut(failure: unknown) {
    const isServerRefusal = failure instanceof ApiError;
@@ -135,6 +141,7 @@ export function App() {
    });
 
    const [access, setAccess] = useState<Access>("unknown");
+   const [settingsPage, setSettingsPage] = useState<SettingsPage>("settings");
 
    const tokensAreLoaded = tokenStylesheetIsLoaded();
 
@@ -171,6 +178,11 @@ export function App() {
       );
    }
 
+   function visit(destination: Destination) {
+      setSettingsPage("settings");
+      setDestination(destination);
+   }
+
    function startSession() {
       setSessionTarget({ resumeSessionId: null });
       setDestination("session");
@@ -200,7 +212,7 @@ export function App() {
       <main className="app-page">
          <nav className="app-bar">
             {DESTINATIONS.map((entry) => (
-               <button key={entry.id} type="button" className="text-button" onClick={() => setDestination(entry.id)}>
+               <button key={entry.id} type="button" className="text-button" onClick={() => visit(entry.id)}>
                   {entry.label}
                </button>
             ))}
@@ -233,11 +245,16 @@ export function App() {
 
          {destination === "review" ? <ReviewRoute /> : null}
 
-         {destination === "settings" ? (
+         {destination === "settings" && settingsPage === "settings" ? (
             <>
                <SettingsRoute purgeConfirmationPhrase={PURGE_CONFIRMATION_PHRASE} saveFile={saveFile} />
+               <OperatorSettings onOpenEvidence={() => setSettingsPage("evidence")} />
                <AddPasskeyControl />
             </>
+         ) : null}
+
+         {destination === "settings" && settingsPage === "evidence" ? (
+            <MetricsRoute onLeave={() => setSettingsPage("settings")} />
          ) : null}
 
          <UnsuppliedPanel destination={destination} />

@@ -50,6 +50,7 @@ class FeedbackKind(str, Enum):
    ELABORATED = "elaborated"
    CORRECT = "correct"
    UNGRADED = "ungraded"
+   VERIFICATION = "verification"
 
 
 @dataclass(frozen=True)
@@ -232,6 +233,18 @@ def render_feedback(
       self_explanation_prompt=self_explanation_prompt(payload.violated_step_index + 1),
       confidence=rating,
    )
+
+
+def verification_only(feedback):
+   """The verification-only arm of the feedback A/B switch (docs/plan/10 "A/B readiness"): an
+   elaborated wrong answer is told only that it was wrong. No violated step, no worked solution, no
+   self-explanation prompt and no tutor sentence; the item is still requeued for its retry."""
+   is_elaborated = feedback.kind == FeedbackKind.ELABORATED
+
+   if not is_elaborated:
+      return feedback
+
+   return Feedback(kind=FeedbackKind.VERIFICATION, stage=feedback.stage, confidence=feedback.confidence)
 
 
 def as_dict(feedback):

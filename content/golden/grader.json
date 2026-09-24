@@ -1,0 +1,860 @@
+{
+   "role": "grader",
+   "set": "golden_set_2",
+   "authored_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24",
+   "labelled_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24",
+   "authored_on": "2026-09-24",
+   "note": "Every context, response and label here was written by claude-opus-5-5 on the operator's delegation, not by a human, and has not been reviewed by one. The set measures agreement between the grader's earned decision and each BC-PT record's earns, does_not_earn, notation_requirements, eligibility_after_error and dependency text on the 17 point types that reach a model, five adversarial response categories each. Three notation_failure labels (GLD-GRD-019, 029, 079) were changed from earned to not earned by the orchestrating session on review, also claude-opus-5-5 on the operator's delegation, because in each the slip changes the mathematical claim.",
+   "cases": [
+      {
+         "id": "GLD-GRD-001",
+         "point_type_id": "BC-PT-99007",
+         "category": "fully_correct",
+         "context": "A tank is being filled with water at a rate modeled by \\(R(t)\\) liters per minute, where \\(t\\) is measured in minutes and \\(0 \\le t \\le 30\\). Selected values are \\(R(5) = 12\\), \\(R(10) = 16\\), \\(R(15) = 20\\), \\(R(20) = 18\\). Part (b) asked for a left Riemann sum with three subintervals approximating \\(\\int_{5}^{20} R(t)\\,dt\\). Part (c): Using correct units, explain the meaning of \\(\\int_{5}^{20} R(t)\\,dt\\) in the context of the problem.",
+         "prior_work": "",
+         "response": "\\(\\int_{5}^{20} R(t)\\,dt\\) is the total amount of water, in liters, that flows into the tank from \\(t = 5\\) minutes to \\(t = 20\\) minutes.",
+         "earned": true,
+         "rationale": "Names the accumulated quantity (water entering the tank, in liters) together with the time interval, which is exactly what the earns text asks for."
+      },
+      {
+         "id": "GLD-GRD-002",
+         "point_type_id": "BC-PT-99007",
+         "category": "unconventional_valid",
+         "context": "A tank is being filled with water at a rate modeled by \\(R(t)\\) liters per minute, where \\(t\\) is measured in minutes and \\(0 \\le t \\le 30\\). Selected values are \\(R(5) = 12\\), \\(R(10) = 16\\), \\(R(15) = 20\\), \\(R(20) = 18\\). Part (b) asked for a left Riemann sum with three subintervals approximating \\(\\int_{5}^{20} R(t)\\,dt\\). Part (c): Using correct units, explain the meaning of \\(\\int_{5}^{20} R(t)\\,dt\\) in the context of the problem.",
+         "prior_work": "",
+         "response": "It's how many liters of water got added to the tank during the 15 minutes between minute 5 and minute 20.",
+         "earned": true,
+         "rationale": "The quantity (liters of water added) and the interval (minute 5 to minute 20) are both present in informal wording; the earns text requires the quantity in context with the interval, not a set phrasing."
+      },
+      {
+         "id": "GLD-GRD-003",
+         "point_type_id": "BC-PT-99007",
+         "category": "narrow_fail",
+         "context": "A tank is being filled with water at a rate modeled by \\(R(t)\\) liters per minute, where \\(t\\) is measured in minutes and \\(0 \\le t \\le 30\\). Selected values are \\(R(5) = 12\\), \\(R(10) = 16\\), \\(R(15) = 20\\), \\(R(20) = 18\\). Part (b) asked for a left Riemann sum with three subintervals approximating \\(\\int_{5}^{20} R(t)\\,dt\\). Part (c): Using correct units, explain the meaning of \\(\\int_{5}^{20} R(t)\\,dt\\) in the context of the problem.",
+         "prior_work": "",
+         "response": "\\(\\int_{5}^{20} R(t)\\,dt\\) is the total amount of water, in liters, that flows into the tank.",
+         "earned": false,
+         "rationale": "The interval is omitted, which the does_not_earn text names directly (an interpretation that omits the interval)."
+      },
+      {
+         "id": "GLD-GRD-004",
+         "point_type_id": "BC-PT-99007",
+         "category": "notation_failure",
+         "context": "A tank is being filled with water at a rate modeled by \\(R(t)\\) liters per minute, where \\(t\\) is measured in minutes and \\(0 \\le t \\le 30\\). Selected values are \\(R(5) = 12\\), \\(R(10) = 16\\), \\(R(15) = 20\\), \\(R(20) = 18\\). Part (b) asked for a left Riemann sum with three subintervals approximating \\(\\int_{5}^{20} R(t)\\,dt\\). Part (c): Using correct units, explain the meaning of \\(\\int_{5}^{20} R(t)\\,dt\\) in the context of the problem.",
+         "prior_work": "",
+         "response": "\\(\\int_{5}^{20} R(t)\\) = the number of liters of water that entered the tank between \\(t = 5\\) and \\(t = 20\\) minutes.",
+         "earned": true,
+         "rationale": "The differential is missing from the integral, but the record states no special notation requirement, so the slip is tolerated and the quantity and interval earn the point."
+      },
+      {
+         "id": "GLD-GRD-005",
+         "point_type_id": "BC-PT-99007",
+         "category": "eligible_after_error",
+         "context": "A tank is being filled with water at a rate modeled by \\(R(t)\\) liters per minute, where \\(t\\) is measured in minutes and \\(0 \\le t \\le 30\\). Selected values are \\(R(5) = 12\\), \\(R(10) = 16\\), \\(R(15) = 20\\), \\(R(20) = 18\\). Part (b) asked for a left Riemann sum with three subintervals approximating \\(\\int_{5}^{20} R(t)\\,dt\\). Part (c): Using correct units, explain the meaning of \\(\\int_{5}^{20} R(t)\\,dt\\) in the context of the problem.",
+         "prior_work": "(b) \\(5\\left(R(5) + R(10) + R(15)\\right) = 5(12 + 16 + 20) = 5(46) = 230\\) liters.",
+         "response": "\\(\\int_{5}^{20} R(t)\\,dt\\) is the total amount of water, in liters, that flows into the tank from \\(t = 5\\) to \\(t = 20\\) minutes, which I estimated in (b) as 230 liters.",
+         "earned": true,
+         "rationale": "Part (b) contains an addition error (the sum is 240), but dependency_on_other_points says this point can be earned whether or not the sum and approximation points were earned and the record states no eligibility restriction; the interpretation itself is complete."
+      },
+      {
+         "id": "GLD-GRD-006",
+         "point_type_id": "BC-PT-99008",
+         "category": "fully_correct",
+         "context": "The temperature of a cup of coffee is modeled by \\(H(t) = 20 + 70e^{-0.1t}\\) degrees Celsius, where \\(t\\) is the number of minutes since the coffee was poured. Part (b): Find \\(H'(4)\\). Using correct units, interpret the meaning of \\(H'(4)\\) in the context of the problem.",
+         "prior_work": "\\(H'(t) = -7e^{-0.1t}\\), so \\(H'(4) = -7e^{-0.4} = -4.692\\).",
+         "response": "At time \\(t = 4\\) minutes, the temperature of the coffee is decreasing at a rate of 4.692 degrees Celsius per minute.",
+         "earned": true,
+         "rationale": "Gives the rate of change of the named quantity, its value, its units and the instant, with sign language (decreasing at 4.692) consistent with the negative value."
+      },
+      {
+         "id": "GLD-GRD-007",
+         "point_type_id": "BC-PT-99008",
+         "category": "unconventional_valid",
+         "context": "The temperature of a cup of coffee is modeled by \\(H(t) = 20 + 70e^{-0.1t}\\) degrees Celsius, where \\(t\\) is the number of minutes since the coffee was poured. Part (b): Find \\(H'(4)\\). Using correct units, interpret the meaning of \\(H'(4)\\) in the context of the problem.",
+         "prior_work": "\\(H'(4) = -4.692\\)",
+         "response": "Four minutes after it is poured, the coffee's temperature is changing at \\(-4.692\\) degrees Celsius per minute.",
+         "earned": true,
+         "rationale": "Stating the signed value with the neutral verb changing is consistent with the presented value, and quantity, units and instant are all present, so the earns text is met without the word decreasing."
+      },
+      {
+         "id": "GLD-GRD-008",
+         "point_type_id": "BC-PT-99008",
+         "category": "narrow_fail",
+         "context": "The temperature of a cup of coffee is modeled by \\(H(t) = 20 + 70e^{-0.1t}\\) degrees Celsius, where \\(t\\) is the number of minutes since the coffee was poured. Part (b): Find \\(H'(4)\\). Using correct units, interpret the meaning of \\(H'(4)\\) in the context of the problem.",
+         "prior_work": "\\(H'(4) = -4.692\\)",
+         "response": "At \\(t = 4\\) minutes the temperature of the coffee is decreasing at a rate of \\(-4.692\\) degrees Celsius per minute.",
+         "earned": false,
+         "rationale": "Decreasing at a rate of a negative number is the sign contradiction the does_not_earn text names (sg-23:4), even though every other element is present."
+      },
+      {
+         "id": "GLD-GRD-009",
+         "point_type_id": "BC-PT-99008",
+         "category": "notation_failure",
+         "context": "The temperature of a cup of coffee is modeled by \\(H(t) = 20 + 70e^{-0.1t}\\) degrees Celsius, where \\(t\\) is the number of minutes since the coffee was poured. Part (b): Find \\(H'(4)\\). Using correct units, interpret the meaning of \\(H'(4)\\) in the context of the problem.",
+         "prior_work": "\\(H'(4) = -7e^{-0.4} = -4.692\\)",
+         "response": "\\(H(4) = -4.692\\) means that at \\(t = 4\\) minutes the temperature of the coffee is decreasing at 4.692 degrees Celsius per minute.",
+         "earned": true,
+         "rationale": "The prime is dropped from \\(H'(4)\\) in the opening symbol, but the record states no special notation requirement and the sentence gives the rate, value, units and instant correctly, so the notation slip is tolerated."
+      },
+      {
+         "id": "GLD-GRD-010",
+         "point_type_id": "BC-PT-99008",
+         "category": "eligible_after_error",
+         "context": "The temperature of a cup of coffee is modeled by \\(H(t) = 20 + 70e^{-0.1t}\\) degrees Celsius, where \\(t\\) is the number of minutes since the coffee was poured. Part (b): Find \\(H'(4)\\). Using correct units, interpret the meaning of \\(H'(4)\\) in the context of the problem.",
+         "prior_work": "\\(H'(t) = -70e^{-0.1t}\\), so \\(H'(4) = -70e^{-0.4} = -46.922\\).",
+         "response": "At \\(t = 4\\) minutes, the temperature of the coffee is decreasing at a rate of 46.922 degrees Celsius per minute.",
+         "earned": true,
+         "rationale": "The derivative is wrong (the chain rule factor 0.1 is missing), but dependency_on_other_points requires only some presented value and the record states no eligibility restriction; the interpretation is complete and consistent with the presented value."
+      },
+      {
+         "id": "GLD-GRD-011",
+         "point_type_id": "BC-PT-99009",
+         "category": "fully_correct",
+         "context": "Let \\(f(x) = \\ln x\\) for \\(x > 0\\). Part (a): Find \\(f'(x)\\). Part (b): Explain what the value of \\(\\int_{1}^{4} \\sqrt{1 + \\frac{1}{x^{2}}}\\,dx\\) represents in terms of the graph of \\(f\\).",
+         "prior_work": "(a) \\(f'(x) = \\frac{1}{x}\\)",
+         "response": "It is the arc length of the graph of \\(y = \\ln x\\) from \\(x = 1\\) to \\(x = 4\\).",
+         "earned": true,
+         "rationale": "Names the integral as the arc length of the given curve and names the interval, the two elements the earns text lists."
+      },
+      {
+         "id": "GLD-GRD-012",
+         "point_type_id": "BC-PT-99009",
+         "category": "unconventional_valid",
+         "context": "Let \\(f(x) = \\ln x\\) for \\(x > 0\\). Part (a): Find \\(f'(x)\\). Part (b): Explain what the value of \\(\\int_{1}^{4} \\sqrt{1 + \\frac{1}{x^{2}}}\\,dx\\) represents in terms of the graph of \\(f\\).",
+         "prior_work": "(a) \\(f'(x) = \\frac{1}{x}\\)",
+         "response": "The integral tells how long the curve \\(y = \\ln x\\) is between the points \\((1, 0)\\) and \\((4, \\ln 4)\\), measured along the curve.",
+         "earned": true,
+         "rationale": "Length of the curve measured along it is arc length in other words, and the endpoints fix the interval, so both elements of the earns text are present."
+      },
+      {
+         "id": "GLD-GRD-013",
+         "point_type_id": "BC-PT-99009",
+         "category": "narrow_fail",
+         "context": "Let \\(f(x) = \\ln x\\) for \\(x > 0\\). Part (a): Find \\(f'(x)\\). Part (b): Explain what the value of \\(\\int_{1}^{4} \\sqrt{1 + \\frac{1}{x^{2}}}\\,dx\\) represents in terms of the graph of \\(f\\).",
+         "prior_work": "(a) \\(f'(x) = \\frac{1}{x}\\)",
+         "response": "It is the total distance a particle travels as it moves along \\(y = \\ln x\\) from \\(x = 1\\) to \\(x = 4\\).",
+         "earned": false,
+         "rationale": "Naming the quantity as a distance travelled is listed in does_not_earn (sg-24:16); the interval is right but the quantity is not the length of the graph."
+      },
+      {
+         "id": "GLD-GRD-014",
+         "point_type_id": "BC-PT-99009",
+         "category": "notation_failure",
+         "context": "Let \\(f(x) = \\ln x\\) for \\(x > 0\\). Part (a): Find \\(f'(x)\\). Part (b): Explain what the value of \\(\\int_{1}^{4} \\sqrt{1 + \\frac{1}{x^{2}}}\\,dx\\) represents in terms of the graph of \\(f\\).",
+         "prior_work": "(a) \\(f'(x) = \\frac{1}{x}\\)",
+         "response": "\\(\\int_{1}^{4} \\sqrt{1 + (1/x)^{2}}\\) = length of the graph of \\(\\ln x\\) for \\(1 \\le x \\le 4\\)",
+         "earned": true,
+         "rationale": "The differential is missing and the integrand is rewritten, but the record states no special notation requirement and the arc length and interval are both named."
+      },
+      {
+         "id": "GLD-GRD-015",
+         "point_type_id": "BC-PT-99009",
+         "category": "eligible_after_error",
+         "context": "Let \\(f(x) = \\ln x\\) for \\(x > 0\\). Part (a): Find \\(f'(x)\\). Part (b): Explain what the value of \\(\\int_{1}^{4} \\sqrt{1 + \\frac{1}{x^{2}}}\\,dx\\) represents in terms of the graph of \\(f\\).",
+         "prior_work": "(a) \\(f'(x) = \\frac{1}{x^{2}}\\)",
+         "response": "It is the arc length of the graph of \\(f\\) from \\(x = 1\\) to \\(x = 4\\).",
+         "earned": true,
+         "rationale": "Part (a) is wrong, but the integral in (b) is supplied by the prompt and the record states no eligibility restriction, so the correct interpretation earns the point."
+      },
+      {
+         "id": "GLD-GRD-016",
+         "point_type_id": "BC-PT-99010",
+         "category": "fully_correct",
+         "context": "Let \\(f(x) = x e^{-x/2}\\) for \\(0 \\le x \\le 6\\). Part (a): Find \\(f'(x)\\). Part (b): Find the value of \\(x\\) at which \\(f\\) attains its absolute maximum on \\(0 \\le x \\le 6\\). Justify your answer.",
+         "prior_work": "(a) \\(f'(x) = e^{-x/2}\\left(1 - \\frac{x}{2}\\right)\\)",
+         "response": "\\(f'(x) = 0\\) at \\(x = 2\\). \\(f'(x) > 0\\) for \\(0 < x < 2\\) and \\(f'(x) < 0\\) for \\(2 < x < 6\\), so \\(f\\) is increasing on \\([0, 2]\\) and decreasing on \\([2, 6]\\). Therefore the absolute maximum on the interval is at \\(x = 2\\).",
+         "earned": true,
+         "rationale": "States the derivative is positive on one side and negative on the other and closes with a claim about the whole interval, which is the global argument the earns text requires."
+      },
+      {
+         "id": "GLD-GRD-017",
+         "point_type_id": "BC-PT-99010",
+         "category": "unconventional_valid",
+         "context": "Let \\(f(x) = x e^{-x/2}\\) for \\(0 \\le x \\le 6\\). Part (a): Find \\(f'(x)\\). Part (b): Find the value of \\(x\\) at which \\(f\\) attains its absolute maximum on \\(0 \\le x \\le 6\\). Justify your answer.",
+         "prior_work": "(a) \\(f'(x) = e^{-x/2}\\left(1 - \\frac{x}{2}\\right)\\)",
+         "response": "The only critical point in \\(0 < x < 6\\) is \\(x = 2\\). \\(f'\\) changes from positive to negative at \\(x = 2\\), so \\(f\\) has a relative maximum there, and because it is the only critical point on the interval, that relative maximum is the absolute maximum. Answer \\(x = 2\\).",
+         "earned": true,
+         "rationale": "A local first derivative argument is acceptable when it also states the critical point is the only one, which is what the eligibility_after_error text (sg-22:12) requires."
+      },
+      {
+         "id": "GLD-GRD-018",
+         "point_type_id": "BC-PT-99010",
+         "category": "narrow_fail",
+         "context": "Let \\(f(x) = x e^{-x/2}\\) for \\(0 \\le x \\le 6\\). Part (a): Find \\(f'(x)\\). Part (b): Find the value of \\(x\\) at which \\(f\\) attains its absolute maximum on \\(0 \\le x \\le 6\\). Justify your answer.",
+         "prior_work": "(a) \\(f'(x) = e^{-x/2}\\left(1 - \\frac{x}{2}\\right)\\)",
+         "response": "\\(f'\\) changes from positive to negative at \\(x = 2\\), so \\(f\\) has a relative maximum at \\(x = 2\\), which is the absolute maximum.",
+         "earned": false,
+         "rationale": "A bare first derivative test with no statement that \\(x = 2\\) is the only critical point is the local argument does_not_earn names; the answer point stands but this point is lost."
+      },
+      {
+         "id": "GLD-GRD-019",
+         "point_type_id": "BC-PT-99010",
+         "category": "notation_failure",
+         "context": "Let \\(f(x) = x e^{-x/2}\\) for \\(0 \\le x \\le 6\\). Part (a): Find \\(f'(x)\\). Part (b): Find the value of \\(x\\) at which \\(f\\) attains its absolute maximum on \\(0 \\le x \\le 6\\). Justify your answer.",
+         "prior_work": "(a) \\(f'(x) = e^{-x/2}\\left(1 - \\frac{x}{2}\\right)\\)",
+         "response": "\\(df > 0\\) for \\(0 < x < 2\\) and \\(df < 0\\) for \\(2 < x < 6\\), so \\(f\\) rises on all of \\([0, 2]\\) and falls on all of \\([2, 6]\\). Absolute max at \\(x = 2\\).",
+         "earned": false,
+         "rationale": "Relabelled not earned on review: df is not a function, so the response never states the sign of f' itself, and the earns text needs a statement about the derivative. Writing a symbol that names nothing is not a tolerated notation slip."
+      },
+      {
+         "id": "GLD-GRD-020",
+         "point_type_id": "BC-PT-99010",
+         "category": "eligible_after_error",
+         "context": "Let \\(f(x) = x e^{-x/2}\\) for \\(0 \\le x \\le 6\\). Part (a): Find \\(f'(x)\\). Part (b): Find the value of \\(x\\) at which \\(f\\) attains its absolute maximum on \\(0 \\le x \\le 6\\). Justify your answer.",
+         "prior_work": "(a) \\(f'(x) = e^{-x/2}(2 - x)\\)",
+         "response": "\\(f'(x) = e^{-x/2}(2 - x) = 0\\) only at \\(x = 2\\). \\(f'(x) > 0\\) for \\(0 < x < 2\\) and \\(f'(x) < 0\\) for \\(2 < x < 6\\), so \\(f\\) increases on \\([0, 2]\\) and decreases on \\([2, 6]\\), and the absolute maximum is at \\(x = 2\\).",
+         "earned": true,
+         "rationale": "The derivative in (a) is twice the true one, so the derivative point is lost, but the sign statements are still true of the true derivative and the argument is global; the record restricts only local arguments, so this point is earned."
+      },
+      {
+         "id": "GLD-GRD-021",
+         "point_type_id": "BC-PT-99011",
+         "category": "fully_correct",
+         "context": "Let \\(f(x) = x + 2\\cos x\\) for \\(0 \\le x \\le \\pi\\). Part (a): Find the absolute maximum value of \\(f\\) on the interval. Part (b): Find the absolute minimum value of \\(f\\) on the interval. Justify your answer.",
+         "prior_work": "",
+         "response": "\\(f'(x) = 1 - 2\\sin x = 0\\) at \\(x = \\frac{\\pi}{6}\\) and \\(x = \\frac{5\\pi}{6}\\). Candidates: \\(f(0) = 2\\), \\(f\\left(\\frac{\\pi}{6}\\right) = 2.256\\), \\(f\\left(\\frac{5\\pi}{6}\\right) = 0.886\\), \\(f(\\pi) = 1.142\\). The absolute minimum value is 0.886.",
+         "earned": true,
+         "rationale": "Evaluates \\(f\\) at both interior critical points and both endpoints, each correct well beyond the first decimal digit the precision rule demands."
+      },
+      {
+         "id": "GLD-GRD-022",
+         "point_type_id": "BC-PT-99011",
+         "category": "unconventional_valid",
+         "context": "Let \\(f(x) = x + 2\\cos x\\) for \\(0 \\le x \\le \\pi\\). Part (a): Find the absolute maximum value of \\(f\\) on the interval. Part (b): Find the absolute minimum value of \\(f\\) on the interval. Justify your answer.",
+         "prior_work": "",
+         "response": "Critical points from \\(\\sin x = \\frac{1}{2}\\): \\(x = \\frac{\\pi}{6}, \\frac{5\\pi}{6}\\). Values, truncated: \\(f(0) = 2.0\\), \\(f(\\pi/6) = 2.2\\), \\(f(5\\pi/6) = 0.8\\), \\(f(\\pi) = 1.1\\). Smallest is at \\(x = \\frac{5\\pi}{6}\\), so the absolute minimum value is \\(\\frac{5\\pi}{6} - \\sqrt{3}\\).",
+         "earned": true,
+         "rationale": "Truncated one-decimal values are allowed by the precision_rules (correct to the first digit after the decimal, rounded or truncated), every candidate is present, and the exact minimum value is correct."
+      },
+      {
+         "id": "GLD-GRD-023",
+         "point_type_id": "BC-PT-99011",
+         "category": "narrow_fail",
+         "context": "Let \\(f(x) = x + 2\\cos x\\) for \\(0 \\le x \\le \\pi\\). Part (a): Find the absolute maximum value of \\(f\\) on the interval. Part (b): Find the absolute minimum value of \\(f\\) on the interval. Justify your answer.",
+         "prior_work": "",
+         "response": "\\(f'(x) = 1 - 2\\sin x = 0\\) at \\(x = \\frac{\\pi}{6}, \\frac{5\\pi}{6}\\). \\(f(0) = 2\\), \\(f(\\pi/6) = 2.256\\), \\(f(5\\pi/6) = 0.886\\). The absolute minimum value is 0.886.",
+         "earned": false,
+         "rationale": "The candidates table omits the endpoint \\(x = \\pi\\), which the does_not_earn text lists (sg-23:15); the minimum happens to be right but the global argument is incomplete."
+      },
+      {
+         "id": "GLD-GRD-024",
+         "point_type_id": "BC-PT-99011",
+         "category": "notation_failure",
+         "context": "Let \\(f(x) = x + 2\\cos x\\) for \\(0 \\le x \\le \\pi\\). Part (a): Find the absolute maximum value of \\(f\\) on the interval. Part (b): Find the absolute minimum value of \\(f\\) on the interval. Justify your answer.",
+         "prior_work": "",
+         "response": "\\(f' = 1 - 2\\sin x = 0 \\Rightarrow x = \\pi/6, 5\\pi/6\\). \\(f = 2,\\ 2.256,\\ .886,\\ 1.142\\) at \\(x = 0, \\pi/6, 5\\pi/6, \\pi\\). min = .886",
+         "earned": true,
+         "rationale": "The function is written without arguments and decimals lack a leading zero, but the record states no special notation requirement and all four evaluations are present and correct."
+      },
+      {
+         "id": "GLD-GRD-025",
+         "point_type_id": "BC-PT-99011",
+         "category": "eligible_after_error",
+         "context": "Let \\(f(x) = x + 2\\cos x\\) for \\(0 \\le x \\le \\pi\\). Part (a): Find the absolute maximum value of \\(f\\) on the interval. Part (b): Find the absolute minimum value of \\(f\\) on the interval. Justify your answer.",
+         "prior_work": "(a) \\(f(0) = 2\\), \\(f(\\pi/6) = 2.256\\), \\(f(5\\pi/6) = 0.886\\), \\(f(\\pi) = 1.142\\). The absolute maximum value is 2.25.",
+         "response": "Using the candidate values from part (a): \\(f(0) = 2\\), \\(f(\\pi/6) = 2.256\\), \\(f(5\\pi/6) = 0.886\\), \\(f(\\pi) = 1.142\\). The smallest is \\(f(5\\pi/6)\\), so the absolute minimum value is 0.886.",
+         "earned": true,
+         "rationale": "Part (a) loses its answer point to a decimal presentation error (2.25 for 2.2556), and the eligibility text says a correct justification still earns; dependency_on_other_points allows candidates imported from an earlier part."
+      },
+      {
+         "id": "GLD-GRD-026",
+         "point_type_id": "BC-PT-99012",
+         "category": "fully_correct",
+         "context": "The derivative of a function \\(h\\) is \\(h'(x) = (x - 2)^{2}(x + 1)\\). Part (a): Find \\(h''(x)\\). Part (b): Determine whether \\(h\\) has a relative minimum, a relative maximum, or neither at \\(x = -1\\). Justify your answer.",
+         "prior_work": "(a) \\(h''(x) = 3x^{2} - 6x\\)",
+         "response": "\\(h'(x) < 0\\) for \\(x < -1\\) and \\(h'(x) > 0\\) for \\(-1 < x < 2\\), so \\(h'\\) changes from negative to positive at \\(x = -1\\). \\(h\\) has a relative minimum at \\(x = -1\\).",
+         "earned": true,
+         "rationale": "Correct classification with a first derivative sign analysis on both sides of the critical point, as the earns text requires."
+      },
+      {
+         "id": "GLD-GRD-027",
+         "point_type_id": "BC-PT-99012",
+         "category": "unconventional_valid",
+         "context": "The derivative of a function \\(h\\) is \\(h'(x) = (x - 2)^{2}(x + 1)\\). Part (a): Find \\(h''(x)\\). Part (b): Determine whether \\(h\\) has a relative minimum, a relative maximum, or neither at \\(x = -1\\). Justify your answer.",
+         "prior_work": "(a) \\(h''(x) = 3x^{2} - 6x\\)",
+         "response": "\\(h'(-1) = 0\\) and \\(h''(-1) = 3 + 6 = 9 > 0\\), so the graph of \\(h\\) is concave up at a point with a horizontal tangent: relative minimum.",
+         "earned": true,
+         "rationale": "A second derivative analysis at the critical point is allowed and the test need not be named (sg-26:8); \\(h''(-1) = 9\\) is correct."
+      },
+      {
+         "id": "GLD-GRD-028",
+         "point_type_id": "BC-PT-99012",
+         "category": "narrow_fail",
+         "context": "The derivative of a function \\(h\\) is \\(h'(x) = (x - 2)^{2}(x + 1)\\). Part (a): Find \\(h''(x)\\). Part (b): Determine whether \\(h\\) has a relative minimum, a relative maximum, or neither at \\(x = -1\\). Justify your answer.",
+         "prior_work": "(a) \\(h''(x) = 3x^{2} - 6x\\)",
+         "response": "\\(h'\\) changes sign at \\(x = -1\\), so \\(h\\) has a relative minimum at \\(x = -1\\).",
+         "earned": false,
+         "rationale": "Changes sign without the direction does not distinguish a minimum from a maximum, so this is an assertion without the supporting sign analysis that does_not_earn excludes."
+      },
+      {
+         "id": "GLD-GRD-029",
+         "point_type_id": "BC-PT-99012",
+         "category": "notation_failure",
+         "context": "The derivative of a function \\(h\\) is \\(h'(x) = (x - 2)^{2}(x + 1)\\). Part (a): Find \\(h''(x)\\). Part (b): Determine whether \\(h\\) has a relative minimum, a relative maximum, or neither at \\(x = -1\\). Justify your answer.",
+         "prior_work": "(a) \\(h''(x) = 3x^{2} - 6x\\)",
+         "response": "\\(h'(-1) = 0\\) and \\(h^{2}(-1) = 9 > 0\\), so relative min at \\(x = -1\\).",
+         "earned": false,
+         "rationale": "Relabelled not earned on review: h^{2}(-1) is the square of h at -1, a different quantity from h''(-1), so the classification rests on a statement that is false as written. The record's silence on notation does not cover a symbol that changes the claim."
+      },
+      {
+         "id": "GLD-GRD-030",
+         "point_type_id": "BC-PT-99012",
+         "category": "eligible_after_error",
+         "context": "The derivative of a function \\(h\\) is \\(h'(x) = (x - 2)^{2}(x + 1)\\). Part (a): Find \\(h''(x)\\). Part (b): Determine whether \\(h\\) has a relative minimum, a relative maximum, or neither at \\(x = -1\\). Justify your answer.",
+         "prior_work": "(a) \\(h''(x) = 2(x - 2)(x + 1)\\)",
+         "response": "On \\(x < -1\\), \\((x - 2)^{2} > 0\\) and \\(x + 1 < 0\\), so \\(h' < 0\\); on \\(-1 < x < 2\\), both factors are positive, so \\(h' > 0\\). Since \\(h'\\) goes from negative to positive at \\(x = -1\\), \\(h\\) has a relative minimum there.",
+         "earned": true,
+         "rationale": "Part (a) drops a product rule term, but part (b) does not use it; the record states no eligibility restriction and the critical value is correct, so the sign analysis earns the point."
+      },
+      {
+         "id": "GLD-GRD-031",
+         "point_type_id": "BC-PT-99015",
+         "category": "fully_correct",
+         "context": "The function \\(g\\) is twice differentiable for all real \\(x\\), with \\(g(1) = 3\\) and \\(g(4) = -2\\). Part (a): Find the average rate of change of \\(g\\) on \\(1 \\le x \\le 4\\). Part (b): Explain why there must be a value \\(c\\), with \\(1 < c < 4\\), such that \\(g(c) = 0\\).",
+         "prior_work": "",
+         "response": "Because \\(g\\) is differentiable, \\(g\\) is continuous on \\([1, 4]\\). Since \\(g(4) = -2 < 0 < 3 = g(1)\\), the Intermediate Value Theorem gives a \\(c\\) in \\((1, 4)\\) with \\(g(c) = 0\\).",
+         "earned": true,
+         "rationale": "Explicitly states continuity because of differentiability, the statement the earns text requires."
+      },
+      {
+         "id": "GLD-GRD-032",
+         "point_type_id": "BC-PT-99015",
+         "category": "unconventional_valid",
+         "context": "The function \\(g\\) is twice differentiable for all real \\(x\\), with \\(g(1) = 3\\) and \\(g(4) = -2\\). Part (a): Find the average rate of change of \\(g\\) on \\(1 \\le x \\le 4\\). Part (b): Explain why there must be a value \\(c\\), with \\(1 < c < 4\\), such that \\(g(c) = 0\\).",
+         "prior_work": "",
+         "response": "\\(g''\\) exists, so \\(g'\\) exists everywhere, which means \\(g\\) is continuous on \\([1, 4]\\). Then \\(0\\) is between \\(g(1) = 3\\) and \\(g(4) = -2\\), so some \\(c\\) in \\((1, 4)\\) has \\(g(c) = 0\\).",
+         "earned": true,
+         "rationale": "The chain from twice differentiable through differentiable to continuous is accepted in the earns text (sg-22:14)."
+      },
+      {
+         "id": "GLD-GRD-033",
+         "point_type_id": "BC-PT-99015",
+         "category": "narrow_fail",
+         "context": "The function \\(g\\) is twice differentiable for all real \\(x\\), with \\(g(1) = 3\\) and \\(g(4) = -2\\). Part (a): Find the average rate of change of \\(g\\) on \\(1 \\le x \\le 4\\). Part (b): Explain why there must be a value \\(c\\), with \\(1 < c < 4\\), such that \\(g(c) = 0\\).",
+         "prior_work": "",
+         "response": "\\(g\\) is continuous on \\([1, 4]\\), and \\(g(4) = -2 < 0 < 3 = g(1)\\), so by the Intermediate Value Theorem there is a \\(c\\) in \\((1, 4)\\) with \\(g(c) = 0\\).",
+         "earned": false,
+         "rationale": "Continuity is asserted with no reason, the bare statement that does_not_earn lists; the rest of the argument does not rescue this point."
+      },
+      {
+         "id": "GLD-GRD-034",
+         "point_type_id": "BC-PT-99015",
+         "category": "notation_failure",
+         "context": "The function \\(g\\) is twice differentiable for all real \\(x\\), with \\(g(1) = 3\\) and \\(g(4) = -2\\). Part (a): Find the average rate of change of \\(g\\) on \\(1 \\le x \\le 4\\). Part (b): Explain why there must be a value \\(c\\), with \\(1 < c < 4\\), such that \\(g(c) = 0\\).",
+         "prior_work": "",
+         "response": "\\(g\\) diff. \\(\\Rightarrow\\) \\(g\\) cont. on \\([1,4]\\). \\(g(4) < 0 < g(1)\\) \\(\\Rightarrow\\) IVT \\(\\Rightarrow\\) \\(\\exists\\, c \\in (1,4),\\ g(c) = 0\\).",
+         "earned": true,
+         "rationale": "Abbreviations and implication arrows replace words, but the record states no special notation requirement and the differentiable-implies-continuous link is explicit."
+      },
+      {
+         "id": "GLD-GRD-035",
+         "point_type_id": "BC-PT-99015",
+         "category": "eligible_after_error",
+         "context": "The function \\(g\\) is twice differentiable for all real \\(x\\), with \\(g(1) = 3\\) and \\(g(4) = -2\\). Part (a): Find the average rate of change of \\(g\\) on \\(1 \\le x \\le 4\\). Part (b): Explain why there must be a value \\(c\\), with \\(1 < c < 4\\), such that \\(g(c) = 0\\).",
+         "prior_work": "(a) \\(\\frac{g(4) - g(1)}{4 - 1} = \\frac{5}{3}\\)",
+         "response": "Since \\(g\\) is differentiable, it is continuous on \\([1, 4]\\). \\(g(1) = 3 > 0\\) and \\(g(4) = -2 < 0\\), so \\(0\\) is between them and there is a \\(c\\) in \\((1, 4)\\) with \\(g(c) = 0\\).",
+         "earned": true,
+         "rationale": "Part (a) has a sign error (the rate is \\(-\\frac{5}{3}\\)), but the record states no eligibility restriction and part (b) does not depend on it."
+      },
+      {
+         "id": "GLD-GRD-036",
+         "point_type_id": "BC-PT-99016",
+         "category": "fully_correct",
+         "context": "The function \\(W\\) is continuous on \\(0 \\le t \\le 10\\), with \\(W(0) = 12\\), \\(W(4) = 7\\) and \\(W(10) = 15\\). Part (a): Use the data to estimate \\(W'(7)\\). Part (b): Must there be a value of \\(t\\), with \\(4 < t < 10\\), at which \\(W(t) = 10\\)? Justify your answer.",
+         "prior_work": "",
+         "response": "\\(W\\) is continuous on \\([4, 10]\\) and \\(W(4) = 7 < 10 < 15 = W(10)\\). By the Intermediate Value Theorem, yes, there is a \\(t\\) in \\((4, 10)\\) with \\(W(t) = 10\\).",
+         "earned": true,
+         "rationale": "Shows the target strictly between two function values, states continuity and answers yes, which is the earns text."
+      },
+      {
+         "id": "GLD-GRD-037",
+         "point_type_id": "BC-PT-99016",
+         "category": "unconventional_valid",
+         "context": "The function \\(W\\) is continuous on \\(0 \\le t \\le 10\\), with \\(W(0) = 12\\), \\(W(4) = 7\\) and \\(W(10) = 15\\). Part (a): Use the data to estimate \\(W'(7)\\). Part (b): Must there be a value of \\(t\\), with \\(4 < t < 10\\), at which \\(W(t) = 10\\)? Justify your answer.",
+         "prior_work": "",
+         "response": "Yes. \\(W\\) is continuous for \\(4 \\le t \\le 10\\) and 10 lies between \\(W(4) = 7\\) and \\(W(10) = 15\\), so \\(W\\) has to take the value 10 at some time between 4 and 10.",
+         "earned": true,
+         "rationale": "The theorem is not named, which the eligibility text (sg-25:12, sg-26:5) allows, and every required element is present."
+      },
+      {
+         "id": "GLD-GRD-038",
+         "point_type_id": "BC-PT-99016",
+         "category": "narrow_fail",
+         "context": "The function \\(W\\) is continuous on \\(0 \\le t \\le 10\\), with \\(W(0) = 12\\), \\(W(4) = 7\\) and \\(W(10) = 15\\). Part (a): Use the data to estimate \\(W'(7)\\). Part (b): Must there be a value of \\(t\\), with \\(4 < t < 10\\), at which \\(W(t) = 10\\)? Justify your answer.",
+         "prior_work": "",
+         "response": "Yes, by the Mean Value Theorem, because \\(W\\) is continuous and \\(7 < 10 < 15\\).",
+         "earned": false,
+         "rationale": "Names the wrong theorem, which does_not_earn excludes, and the eligibility text says a named theorem must be the correct one."
+      },
+      {
+         "id": "GLD-GRD-039",
+         "point_type_id": "BC-PT-99016",
+         "category": "notation_failure",
+         "context": "The function \\(W\\) is continuous on \\(0 \\le t \\le 10\\), with \\(W(0) = 12\\), \\(W(4) = 7\\) and \\(W(10) = 15\\). Part (a): Use the data to estimate \\(W'(7)\\). Part (b): Must there be a value of \\(t\\), with \\(4 < t < 10\\), at which \\(W(t) = 10\\)? Justify your answer.",
+         "prior_work": "",
+         "response": "\\(W(4) = 7\\), \\(W(10) = 15\\), \\(W\\) is continuous, so yes by the IVT there is a \\(t\\) in \\((4, 10)\\) with \\(W(t) = 10\\).",
+         "earned": true,
+         "rationale": "The bracketing lists the two values without saying 10 lies between them; the notation_requirements text (sg-22:14) rejects that bracketing but lets the response recover the conclusion point, which is this point."
+      },
+      {
+         "id": "GLD-GRD-040",
+         "point_type_id": "BC-PT-99016",
+         "category": "eligible_after_error",
+         "context": "The function \\(W\\) is continuous on \\(0 \\le t \\le 10\\), with \\(W(0) = 12\\), \\(W(4) = 7\\) and \\(W(10) = 15\\). Part (a): Use the data to estimate \\(W'(7)\\). Part (b): Must there be a value of \\(t\\), with \\(4 < t < 10\\), at which \\(W(t) = 10\\)? Justify your answer.",
+         "prior_work": "(a) \\(W'(7) \\approx \\frac{15 - 7}{10 - 4} = \\frac{6}{8} = 0.75\\)",
+         "response": "Yes. \\(W\\) is continuous on \\([4, 10]\\) and \\(7 < 10 < 15\\), that is \\(W(4) < 10 < W(10)\\), so by the Intermediate Value Theorem \\(W(t) = 10\\) for some \\(t\\) in \\((4, 10)\\).",
+         "earned": true,
+         "rationale": "Part (a) inverts the difference quotient (it is \\(\\frac{8}{6}\\)), but the record states no restriction that ties this point to (a), and the named theorem is the correct one."
+      },
+      {
+         "id": "GLD-GRD-041",
+         "point_type_id": "BC-PT-99017",
+         "category": "fully_correct",
+         "context": "A function \\(p\\) is differentiable for all real \\(x\\), with \\(p(2) = 5\\), \\(p'(2) = 1\\) and \\(p(6) = -3\\). Part (a): Use the line tangent to the graph of \\(p\\) at \\(x = 2\\) to approximate \\(p(2.5)\\). Part (b): Must there be a value \\(c\\), with \\(2 < c < 6\\), for which \\(p'(c) = -2\\)? Justify your answer.",
+         "prior_work": "",
+         "response": "\\(\\frac{p(6) - p(2)}{6 - 2} = \\frac{-3 - 5}{4} = -2\\). Because \\(p\\) is differentiable, it is continuous on \\([2, 6]\\) and differentiable on \\((2, 6)\\). By the Mean Value Theorem, yes, there is a \\(c\\) in \\((2, 6)\\) with \\(p'(c) = -2\\).",
+         "earned": true,
+         "rationale": "Correct average rate of change, differentiability on the open interval, continuity on the closed interval, and a yes, as the earns text requires."
+      },
+      {
+         "id": "GLD-GRD-042",
+         "point_type_id": "BC-PT-99017",
+         "category": "unconventional_valid",
+         "context": "A function \\(p\\) is differentiable for all real \\(x\\), with \\(p(2) = 5\\), \\(p'(2) = 1\\) and \\(p(6) = -3\\). Part (a): Use the line tangent to the graph of \\(p\\) at \\(x = 2\\) to approximate \\(p(2.5)\\). Part (b): Must there be a value \\(c\\), with \\(2 < c < 6\\), for which \\(p'(c) = -2\\)? Justify your answer.",
+         "prior_work": "",
+         "response": "Let \\(q(x) = p(x) + 2x\\). Then \\(q(2) = 9\\) and \\(q(6) = 9\\). \\(q\\) is continuous on \\([2, 6]\\) and differentiable on \\((2, 6)\\) because \\(p\\) is differentiable, so by Rolle's Theorem \\(q'(c) = 0\\) for some \\(c\\) in \\((2, 6)\\). Then \\(p'(c) + 2 = 0\\), so yes, \\(p'(c) = -2\\).",
+         "earned": true,
+         "rationale": "Rolle is accepted as an alternative (sg-23:3); equal values of \\(q\\) at the endpoints carry the same content as the average rate of change being \\(-2\\), and both hypotheses are stated."
+      },
+      {
+         "id": "GLD-GRD-043",
+         "point_type_id": "BC-PT-99017",
+         "category": "narrow_fail",
+         "context": "A function \\(p\\) is differentiable for all real \\(x\\), with \\(p(2) = 5\\), \\(p'(2) = 1\\) and \\(p(6) = -3\\). Part (a): Use the line tangent to the graph of \\(p\\) at \\(x = 2\\) to approximate \\(p(2.5)\\). Part (b): Must there be a value \\(c\\), with \\(2 < c < 6\\), for which \\(p'(c) = -2\\)? Justify your answer.",
+         "prior_work": "",
+         "response": "The average rate of change is \\(\\frac{-3 - 5}{6 - 2} = -2\\). \\(p\\) is continuous, so by the Intermediate Value Theorem, yes, \\(p'(c) = -2\\) for some \\(c\\) in \\((2, 6)\\).",
+         "earned": false,
+         "rationale": "An appeal to the Intermediate Value Theorem cannot earn this point (does_not_earn, sg-23:3), even with the correct average rate."
+      },
+      {
+         "id": "GLD-GRD-044",
+         "point_type_id": "BC-PT-99017",
+         "category": "notation_failure",
+         "context": "A function \\(p\\) is differentiable for all real \\(x\\), with \\(p(2) = 5\\), \\(p'(2) = 1\\) and \\(p(6) = -3\\). Part (a): Use the line tangent to the graph of \\(p\\) at \\(x = 2\\) to approximate \\(p(2.5)\\). Part (b): Must there be a value \\(c\\), with \\(2 < c < 6\\), for which \\(p'(c) = -2\\)? Justify your answer.",
+         "prior_work": "",
+         "response": "\\(m = \\frac{-3-5}{6-2} = -2\\). \\(p\\) diff'able \\(\\Rightarrow\\) cont. on \\([2,6]\\), diff. on \\((2,6)\\) \\(\\Rightarrow\\) MVT \\(\\Rightarrow\\) \\(\\exists\\, c \\in (2,6)\\) with \\(p'(c) = -2\\). Yes.",
+         "earned": true,
+         "rationale": "Symbols and abbreviations replace sentences, but the record states no special notation requirement and every required element is present."
+      },
+      {
+         "id": "GLD-GRD-045",
+         "point_type_id": "BC-PT-99017",
+         "category": "eligible_after_error",
+         "context": "A function \\(p\\) is differentiable for all real \\(x\\), with \\(p(2) = 5\\), \\(p'(2) = 1\\) and \\(p(6) = -3\\). Part (a): Use the line tangent to the graph of \\(p\\) at \\(x = 2\\) to approximate \\(p(2.5)\\). Part (b): Must there be a value \\(c\\), with \\(2 < c < 6\\), for which \\(p'(c) = -2\\)? Justify your answer.",
+         "prior_work": "(a) \\(y = 5 + 1(x - 2)\\), so \\(p(2.5) \\approx 5.25\\).",
+         "response": "\\(\\frac{p(6) - p(2)}{6 - 2} = \\frac{-8}{4} = -2\\). \\(p\\) is differentiable, so it is continuous on \\([2, 6]\\) and differentiable on \\((2, 6)\\). By the Mean Value Theorem there is a \\(c\\) in \\((2, 6)\\) with \\(p'(c) = -2\\). Yes.",
+         "earned": true,
+         "rationale": "Part (a) evaluates the tangent line wrongly (it gives 5.5), but the record states no eligibility restriction and part (b) is complete on its own."
+      },
+      {
+         "id": "GLD-GRD-046",
+         "point_type_id": "BC-PT-99026",
+         "category": "fully_correct",
+         "context": "The function \\(f\\) satisfies \\(f(1) = 2\\) and \\(f'(x) = 5 - x^{3}\\) for all \\(x\\). Part (a): Find \\(f''(x)\\). Part (b): The line tangent to the graph of \\(f\\) at \\(x = 1\\) is used to approximate \\(f(1.3)\\). Find the approximation and decide whether it is an overestimate or an underestimate of \\(f(1.3)\\). Justify your answer.",
+         "prior_work": "(a) \\(f''(x) = -3x^{2}\\)",
+         "response": "Tangent line: \\(y = 2 + 4(x - 1)\\), so \\(f(1.3) \\approx 3.2\\). \\(f''(x) = -3x^{2} < 0\\) for \\(1 \\le x \\le 1.3\\), so the graph of \\(f\\) is concave down on that interval and the tangent line lies above the graph. 3.2 is an overestimate.",
+         "earned": true,
+         "rationale": "Cites the sign of the second derivative on the whole interval and concludes the tangent line lies above the curve, as the earns text requires."
+      },
+      {
+         "id": "GLD-GRD-047",
+         "point_type_id": "BC-PT-99026",
+         "category": "unconventional_valid",
+         "context": "The function \\(f\\) satisfies \\(f(1) = 2\\) and \\(f'(x) = 5 - x^{3}\\) for all \\(x\\). Part (a): Find \\(f''(x)\\). Part (b): The line tangent to the graph of \\(f\\) at \\(x = 1\\) is used to approximate \\(f(1.3)\\). Find the approximation and decide whether it is an overestimate or an underestimate of \\(f(1.3)\\). Justify your answer.",
+         "prior_work": "(a) \\(f''(x) = -3x^{2}\\)",
+         "response": "\\(f(1.3) \\approx 2 + 4(0.3) = 3.2\\). For \\(x > 0\\), \\(x^{3}\\) increases, so \\(f'(x) = 5 - x^{3}\\) is decreasing on \\([1, 1.3]\\). That makes the graph of \\(f\\) concave down there, so the tangent line at \\(x = 1\\) stays above the graph and 3.2 is an overestimate.",
+         "earned": true,
+         "rationale": "Concavity of \\(f\\) is established through \\(f'\\) decreasing on the interval rather than through the sign of \\(f''\\); the earns text accepts citing the concavity of the graph, and it is the concavity of \\(f\\), not of \\(f'\\)."
+      },
+      {
+         "id": "GLD-GRD-048",
+         "point_type_id": "BC-PT-99026",
+         "category": "narrow_fail",
+         "context": "The function \\(f\\) satisfies \\(f(1) = 2\\) and \\(f'(x) = 5 - x^{3}\\) for all \\(x\\). Part (a): Find \\(f''(x)\\). Part (b): The line tangent to the graph of \\(f\\) at \\(x = 1\\) is used to approximate \\(f(1.3)\\). Find the approximation and decide whether it is an overestimate or an underestimate of \\(f(1.3)\\). Justify your answer.",
+         "prior_work": "(a) \\(f''(x) = -3x^{2}\\)",
+         "response": "\\(f(1.3) \\approx 3.2\\). \\(f''(1) = -3 < 0\\), so \\(f\\) is concave down at \\(x = 1\\), and the tangent line approximation is an overestimate.",
+         "earned": false,
+         "rationale": "Concavity is argued at the single point \\(x = 1\\), which does_not_earn excludes (sg-23:10, sg-26:12)."
+      },
+      {
+         "id": "GLD-GRD-049",
+         "point_type_id": "BC-PT-99026",
+         "category": "notation_failure",
+         "context": "The function \\(f\\) satisfies \\(f(1) = 2\\) and \\(f'(x) = 5 - x^{3}\\) for all \\(x\\). Part (a): Find \\(f''(x)\\). Part (b): The line tangent to the graph of \\(f\\) at \\(x = 1\\) is used to approximate \\(f(1.3)\\). Find the approximation and decide whether it is an overestimate or an underestimate of \\(f(1.3)\\). Justify your answer.",
+         "prior_work": "(a) \\(f''(x) = -3x^{2}\\)",
+         "response": "\\(\\frac{d^{2}}{dx} = -3x^{2} < 0\\) on \\([1, 1.3]\\) \\(\\Rightarrow\\) \\(f\\) concave down \\(\\Rightarrow\\) tangent line above curve \\(\\Rightarrow\\) 3.2 is an over estimate.",
+         "earned": true,
+         "rationale": "The second derivative is written in malformed Leibniz notation, but the record states no special notation requirement and the interval-wide sign and the conclusion are correct."
+      },
+      {
+         "id": "GLD-GRD-050",
+         "point_type_id": "BC-PT-99026",
+         "category": "eligible_after_error",
+         "context": "The function \\(f\\) satisfies \\(f(1) = 2\\) and \\(f'(x) = 5 - x^{3}\\) for all \\(x\\). Part (a): Find \\(f''(x)\\). Part (b): The line tangent to the graph of \\(f\\) at \\(x = 1\\) is used to approximate \\(f(1.3)\\). Find the approximation and decide whether it is an overestimate or an underestimate of \\(f(1.3)\\). Justify your answer.",
+         "prior_work": "(a) \\(f''(x) = -3x\\)",
+         "response": "\\(f(1.3) \\approx 2 + 4(0.3) = 3.2\\). \\(f''(x) = -3x < 0\\) for \\(1 \\le x \\le 1.3\\), so \\(f\\) is concave down there and the tangent line lies above the graph of \\(f\\). The approximation is an overestimate.",
+         "earned": true,
+         "rationale": "The second derivative is wrong, but dependency_on_other_points cites sg-23:11, which keeps this point available when the incorrect second derivative is a nonconstant linear function negative over the relevant range, and \\(-3x\\) is exactly that on \\([1, 1.3]\\)."
+      },
+      {
+         "id": "GLD-GRD-051",
+         "point_type_id": "BC-PT-99041",
+         "category": "fully_correct",
+         "context": "The function \\(f\\) is defined by \\(f(x) = \\sum_{n=0}^{\\infty} \\frac{(-1)^{n} x^{n}}{n + 1}\\) for \\(|x| < 1\\). Part (c): The sum of the first three terms of this series at \\(x = \\frac{1}{2}\\), which is \\(\\frac{5}{6}\\), is used to approximate \\(f\\left(\\frac{1}{2}\\right)\\). Use the alternating series error bound to show that this approximation differs from \\(f\\left(\\frac{1}{2}\\right)\\) by less than \\(\\frac{1}{25}\\).",
+         "prior_work": "First omitted term: \\(n = 3\\), \\(\\frac{(1/2)^{3}}{4} = \\frac{1}{32}\\).",
+         "response": "At \\(x = \\frac{1}{2}\\) the series alternates and the terms \\(\\frac{(1/2)^{n}}{n + 1}\\) decrease in absolute value to 0, so \\(\\left|f\\left(\\frac{1}{2}\\right) - \\frac{5}{6}\\right| \\le \\frac{1}{32} < \\frac{1}{25}\\).",
+         "earned": true,
+         "rationale": "Connects the bound to the target with an inequality and states the alternating, decreasing-to-zero conditions that the notes say sg-26:22 and sg-22:21 require."
+      },
+      {
+         "id": "GLD-GRD-052",
+         "point_type_id": "BC-PT-99041",
+         "category": "unconventional_valid",
+         "context": "The function \\(f\\) is defined by \\(f(x) = \\sum_{n=0}^{\\infty} \\frac{(-1)^{n} x^{n}}{n + 1}\\) for \\(|x| < 1\\). Part (c): The sum of the first three terms of this series at \\(x = \\frac{1}{2}\\), which is \\(\\frac{5}{6}\\), is used to approximate \\(f\\left(\\frac{1}{2}\\right)\\). Use the alternating series error bound to show that this approximation differs from \\(f\\left(\\frac{1}{2}\\right)\\) by less than \\(\\frac{1}{25}\\).",
+         "prior_work": "First omitted term: \\(n = 3\\), \\(\\frac{(1/2)^{3}}{4} = \\frac{1}{32}\\).",
+         "response": "Alternating series, terms shrinking to 0 in absolute value, so the error is at most \\(\\frac{1}{32} = 0.03125\\), and \\(0.03125 < 0.04 = \\frac{1}{25}\\).",
+         "earned": true,
+         "rationale": "The comparison is carried out in decimals rather than fractions, but the error is still bounded by an inequality and the conditions are stated."
+      },
+      {
+         "id": "GLD-GRD-053",
+         "point_type_id": "BC-PT-99041",
+         "category": "narrow_fail",
+         "context": "The function \\(f\\) is defined by \\(f(x) = \\sum_{n=0}^{\\infty} \\frac{(-1)^{n} x^{n}}{n + 1}\\) for \\(|x| < 1\\). Part (c): The sum of the first three terms of this series at \\(x = \\frac{1}{2}\\), which is \\(\\frac{5}{6}\\), is used to approximate \\(f\\left(\\frac{1}{2}\\right)\\). Use the alternating series error bound to show that this approximation differs from \\(f\\left(\\frac{1}{2}\\right)\\) by less than \\(\\frac{1}{25}\\).",
+         "prior_work": "First omitted term: \\(n = 3\\), \\(\\frac{(1/2)^{3}}{4} = \\frac{1}{32}\\).",
+         "response": "The series alternates and its terms decrease to 0, so the error is \\(\\frac{1}{32}\\), which is less than \\(\\frac{1}{25}\\).",
+         "earned": false,
+         "rationale": "Declares the error equal to the bound, the equality claim that does_not_earn says all four rubrics withhold the point for."
+      },
+      {
+         "id": "GLD-GRD-054",
+         "point_type_id": "BC-PT-99041",
+         "category": "notation_failure",
+         "context": "The function \\(f\\) is defined by \\(f(x) = \\sum_{n=0}^{\\infty} \\frac{(-1)^{n} x^{n}}{n + 1}\\) for \\(|x| < 1\\). Part (c): The sum of the first three terms of this series at \\(x = \\frac{1}{2}\\), which is \\(\\frac{5}{6}\\), is used to approximate \\(f\\left(\\frac{1}{2}\\right)\\). Use the alternating series error bound to show that this approximation differs from \\(f\\left(\\frac{1}{2}\\right)\\) by less than \\(\\frac{1}{25}\\).",
+         "prior_work": "First omitted term: \\(n = 3\\), \\(\\frac{(1/2)^{3}}{4} = \\frac{1}{32}\\).",
+         "response": "alt. series, \\(|a_n| \\downarrow 0\\), so \\(|\\text{error}| =< \\frac{1}{32} < \\frac{1}{25}\\)",
+         "earned": true,
+         "rationale": "The inequality is typed as =< and the conditions are abbreviated, but the record states no special notation requirement and the relation is an inequality, not an equality."
+      },
+      {
+         "id": "GLD-GRD-055",
+         "point_type_id": "BC-PT-99041",
+         "category": "eligible_after_error",
+         "context": "The function \\(f\\) is defined by \\(f(x) = \\sum_{n=0}^{\\infty} \\frac{(-1)^{n} x^{n}}{n + 1}\\) for \\(|x| < 1\\). Part (c): The sum of the first three terms of this series at \\(x = \\frac{1}{2}\\), which is \\(\\frac{5}{6}\\), is used to approximate \\(f\\left(\\frac{1}{2}\\right)\\). Use the alternating series error bound to show that this approximation differs from \\(f\\left(\\frac{1}{2}\\right)\\) by less than \\(\\frac{1}{25}\\).",
+         "prior_work": "First omitted term: \\(n = 4\\), \\(\\frac{(1/2)^{4}}{5} = \\frac{1}{80}\\).",
+         "response": "The series alternates and its terms decrease to 0 in absolute value, so \\(\\left|f\\left(\\frac{1}{2}\\right) - \\frac{5}{6}\\right| \\le \\frac{1}{80} < \\frac{1}{25}\\).",
+         "earned": false,
+         "rationale": "The prior line bounds with the \\(n = 4\\) term when three terms (n = 0, 1, 2) were used, so the matching bound point is lost; dependency_on_other_points says every instance requires that bound point first, so the well-formed inequality cannot earn this point."
+      },
+      {
+         "id": "GLD-GRD-056",
+         "point_type_id": "BC-PT-99046",
+         "category": "fully_correct",
+         "context": "Consider the power series \\(\\sum_{n=1}^{\\infty} \\frac{(x - 2)^{n}}{n \\cdot 3^{n}}\\). Part (a): Write the first three terms of the series and find its radius of convergence. Part (b): Find the interval of convergence. Justify your answer.",
+         "prior_work": "(a) \\(\\frac{x - 2}{3} + \\frac{(x - 2)^{2}}{18} + \\frac{(x - 2)^{3}}{81}\\); ratio test gives \\(\\frac{|x - 2|}{3} < 1\\), so \\(R = 3\\).",
+         "response": "At \\(x = 5\\): \\(\\sum \\frac{1}{n}\\), the harmonic series, diverges. At \\(x = -1\\): \\(\\sum \\frac{(-1)^{n}}{n}\\) converges by the alternating series test, since \\(\\frac{1}{n}\\) decreases to 0. Interval of convergence: \\(-1 \\le x < 5\\).",
+         "earned": true,
+         "rationale": "Analyses each endpoint with a named, appropriate test and states the interval explicitly, which is the earns text."
+      },
+      {
+         "id": "GLD-GRD-057",
+         "point_type_id": "BC-PT-99046",
+         "category": "unconventional_valid",
+         "context": "Consider the power series \\(\\sum_{n=1}^{\\infty} \\frac{(x - 2)^{n}}{n \\cdot 3^{n}}\\). Part (a): Write the first three terms of the series and find its radius of convergence. Part (b): Find the interval of convergence. Justify your answer.",
+         "prior_work": "(a) \\(\\frac{x - 2}{3} + \\frac{(x - 2)^{2}}{18} + \\frac{(x - 2)^{3}}{81}\\); \\(R = 3\\).",
+         "response": "\\(x = 5\\): terms \\(\\frac{1}{n}\\); \\(\\int_{1}^{\\infty} \\frac{1}{x}\\,dx = \\lim_{b \\to \\infty} \\ln b = \\infty\\), so by the integral test the series diverges. \\(x = -1\\): terms \\(\\frac{(-1)^{n}}{n}\\) alternate and \\(\\frac{1}{n} \\to 0\\) decreasing, so it converges. Interval \\([-1, 5)\\).",
+         "earned": true,
+         "rationale": "The integral test is one of the named analyses sg-25:25 accepts for the divergent endpoint, and the interval is stated."
+      },
+      {
+         "id": "GLD-GRD-058",
+         "point_type_id": "BC-PT-99046",
+         "category": "narrow_fail",
+         "context": "Consider the power series \\(\\sum_{n=1}^{\\infty} \\frac{(x - 2)^{n}}{n \\cdot 3^{n}}\\). Part (a): Write the first three terms of the series and find its radius of convergence. Part (b): Find the interval of convergence. Justify your answer.",
+         "prior_work": "(a) \\(\\frac{x - 2}{3} + \\frac{(x - 2)^{2}}{18} + \\frac{(x - 2)^{3}}{81}\\); \\(R = 3\\).",
+         "response": "At \\(x = 5\\) the series is \\(\\sum \\frac{1}{n}\\), the harmonic series, which diverges. At \\(x = -1\\) the series is \\(\\sum \\frac{(-1)^{n}}{n}\\), which converges. So the interval is \\(-1 \\le x < 5\\).",
+         "earned": false,
+         "rationale": "The \\(x = -1\\) endpoint gets a bare verdict with no test or reason, so the correct analysis at each endpoint that the earns text requires is missing for one endpoint."
+      },
+      {
+         "id": "GLD-GRD-059",
+         "point_type_id": "BC-PT-99046",
+         "category": "notation_failure",
+         "context": "Consider the power series \\(\\sum_{n=1}^{\\infty} \\frac{(x - 2)^{n}}{n \\cdot 3^{n}}\\). Part (a): Write the first three terms of the series and find its radius of convergence. Part (b): Find the interval of convergence. Justify your answer.",
+         "prior_work": "(a) \\(\\frac{x - 2}{3} + \\frac{(x - 2)^{2}}{18} + \\frac{(x - 2)^{3}}{81}\\); \\(R = 3\\).",
+         "response": "\\(x=5\\): \\(\\Sigma 1/n\\) div. (harmonic). \\(x=-1\\): \\(\\Sigma (-1)^n/n\\) conv. (AST). \\(x \\in [-1, 5[\\)",
+         "earned": true,
+         "rationale": "Sigma notation without indices and a reversed bracket for the open end are notation slips, but the record states no special notation requirement and both endpoints are analysed with named tests."
+      },
+      {
+         "id": "GLD-GRD-060",
+         "point_type_id": "BC-PT-99046",
+         "category": "eligible_after_error",
+         "context": "Consider the power series \\(\\sum_{n=1}^{\\infty} \\frac{(x - 2)^{n}}{n \\cdot 3^{n}}\\). Part (a): Write the first three terms of the series and find its radius of convergence. Part (b): Find the interval of convergence. Justify your answer.",
+         "prior_work": "(a) \\(\\frac{x - 2}{3} + \\frac{(x - 2)^{2}}{9} + \\frac{(x - 2)^{3}}{27}\\); ratio test gives \\(\\frac{|x - 2|}{3} < 1\\), so \\(R = 3\\).",
+         "response": "At \\(x = 5\\) the series is \\(\\sum \\frac{1}{n}\\), which diverges because it is the harmonic series. At \\(x = -1\\) the series is \\(\\sum \\frac{(-1)^{n}}{n}\\), which converges by the alternating series test. The interval of convergence is \\(-1 \\le x < 5\\).",
+         "earned": true,
+         "rationale": "The written terms in (a) drop the factor \\(\\frac{1}{n}\\), but the radius on which this point rests is correct, the record states no eligibility restriction, and the endpoint analysis is complete."
+      },
+      {
+         "id": "GLD-GRD-061",
+         "point_type_id": "BC-PT-99061",
+         "category": "fully_correct",
+         "context": "The function \\(g\\) is twice differentiable on \\(0 < x < 10\\). The graph of \\(g'\\) is described as follows: \\(g'\\) increases on \\(0 < x < 3\\), decreases on \\(3 < x < 7\\), and increases on \\(7 < x < 10\\); \\(g'(x) > 0\\) for \\(0 < x < 5\\) and \\(g'(x) < 0\\) for \\(5 < x < 10\\). Part (a): Find the value of \\(x\\) at which \\(g\\) has a relative maximum. Part (b): Find all values of \\(x\\) in \\(0 < x < 10\\) at which the graph of \\(g\\) has a point of inflection. Give a reason for your answer.",
+         "prior_work": "(a) \\(x = 5\\)",
+         "response": "\\(x = 3\\) and \\(x = 7\\), because \\(g'\\) changes from increasing to decreasing at \\(x = 3\\) and from decreasing to increasing at \\(x = 7\\).",
+         "earned": true,
+         "rationale": "The reason is stated in terms of the graphed derivative changing between increasing and decreasing, the first form the earns text lists."
+      },
+      {
+         "id": "GLD-GRD-062",
+         "point_type_id": "BC-PT-99061",
+         "category": "unconventional_valid",
+         "context": "The function \\(g\\) is twice differentiable on \\(0 < x < 10\\). The graph of \\(g'\\) is described as follows: \\(g'\\) increases on \\(0 < x < 3\\), decreases on \\(3 < x < 7\\), and increases on \\(7 < x < 10\\); \\(g'(x) > 0\\) for \\(0 < x < 5\\) and \\(g'(x) < 0\\) for \\(5 < x < 10\\). Part (a): Find the value of \\(x\\) at which \\(g\\) has a relative maximum. Part (b): Find all values of \\(x\\) in \\(0 < x < 10\\) at which the graph of \\(g\\) has a point of inflection. Give a reason for your answer.",
+         "prior_work": "(a) \\(x = 5\\)",
+         "response": "Points of inflection at \\(x = 3\\) and \\(x = 7\\): the graph of \\(g'\\) has a relative maximum at \\(x = 3\\) and a relative minimum at \\(x = 7\\).",
+         "earned": true,
+         "rationale": "Relative extrema of the graphed \\(g'\\) is the third form of reason the earns text accepts (sg-25:17, sg-26:15)."
+      },
+      {
+         "id": "GLD-GRD-063",
+         "point_type_id": "BC-PT-99061",
+         "category": "narrow_fail",
+         "context": "The function \\(g\\) is twice differentiable on \\(0 < x < 10\\). The graph of \\(g'\\) is described as follows: \\(g'\\) increases on \\(0 < x < 3\\), decreases on \\(3 < x < 7\\), and increases on \\(7 < x < 10\\); \\(g'(x) > 0\\) for \\(0 < x < 5\\) and \\(g'(x) < 0\\) for \\(5 < x < 10\\). Part (a): Find the value of \\(x\\) at which \\(g\\) has a relative maximum. Part (b): Find all values of \\(x\\) in \\(0 < x < 10\\) at which the graph of \\(g\\) has a point of inflection. Give a reason for your answer.",
+         "prior_work": "(a) \\(x = 5\\)",
+         "response": "\\(x = 3\\) and \\(x = 7\\), because \\(g''\\) changes sign at both of these values.",
+         "earned": false,
+         "rationale": "A reason in terms of the second derivative changing sign earns the answer point but not this one, as does_not_earn states (sg-25:17, sg-26:15)."
+      },
+      {
+         "id": "GLD-GRD-064",
+         "point_type_id": "BC-PT-99061",
+         "category": "notation_failure",
+         "context": "The function \\(g\\) is twice differentiable on \\(0 < x < 10\\). The graph of \\(g'\\) is described as follows: \\(g'\\) increases on \\(0 < x < 3\\), decreases on \\(3 < x < 7\\), and increases on \\(7 < x < 10\\); \\(g'(x) > 0\\) for \\(0 < x < 5\\) and \\(g'(x) < 0\\) for \\(5 < x < 10\\). Part (a): Find the value of \\(x\\) at which \\(g\\) has a relative maximum. Part (b): Find all values of \\(x\\) in \\(0 < x < 10\\) at which the graph of \\(g\\) has a point of inflection. Give a reason for your answer.",
+         "prior_work": "(a) \\(x = 5\\)",
+         "response": "\\(x = 3, 7\\). At 3, \\(g'\\) goes \\(\\nearrow\\) to \\(\\searrow\\); at 7, \\(g'\\) goes \\(\\searrow\\) to \\(\\nearrow\\).",
+         "earned": true,
+         "rationale": "Arrows stand for increasing and decreasing, but the record states no special notation requirement and the reason still names \\(g'\\) and its change of direction."
+      },
+      {
+         "id": "GLD-GRD-065",
+         "point_type_id": "BC-PT-99061",
+         "category": "eligible_after_error",
+         "context": "The function \\(g\\) is twice differentiable on \\(0 < x < 10\\). The graph of \\(g'\\) is described as follows: \\(g'\\) increases on \\(0 < x < 3\\), decreases on \\(3 < x < 7\\), and increases on \\(7 < x < 10\\); \\(g'(x) > 0\\) for \\(0 < x < 5\\) and \\(g'(x) < 0\\) for \\(5 < x < 10\\). Part (a): Find the value of \\(x\\) at which \\(g\\) has a relative maximum. Part (b): Find all values of \\(x\\) in \\(0 < x < 10\\) at which the graph of \\(g\\) has a point of inflection. Give a reason for your answer.",
+         "prior_work": "(a) \\(g\\) has a relative maximum at \\(x = 3\\), where \\(g'\\) is largest.",
+         "response": "\\(x = 3\\) and \\(x = 7\\), because at these values the graph of \\(g'\\) changes from increasing to decreasing and from decreasing to increasing, respectively.",
+         "earned": true,
+         "rationale": "Part (a) is wrong (the relative maximum of \\(g\\) is at \\(x = 5\\)), but the record states no eligibility restriction, and the location and reason in (b) are correct and tied to the graph of \\(g'\\)."
+      },
+      {
+         "id": "GLD-GRD-066",
+         "point_type_id": "BC-PT-99063",
+         "category": "fully_correct",
+         "context": "The graph of \\(g'\\), the derivative of a twice differentiable function \\(g\\), is described as follows: \\(g'(x) < 0\\) for \\(0 < x < 4\\) and \\(g'(x) > 0\\) for \\(4 < x < 9\\); \\(g'\\) is decreasing on \\(0 < x < 2\\) and increasing on \\(2 < x < 9\\). Part (a): Find the value of \\(x\\) at which \\(g\\) has a relative minimum. Part (b): On what open interval or intervals is \\(g\\) both decreasing and concave up? Give a reason for your answer.",
+         "prior_work": "(a) \\(x = 4\\)",
+         "response": "\\(2 < x < 4\\), because on that interval \\(g'(x) < 0\\) and \\(g'\\) is increasing.",
+         "earned": true,
+         "rationale": "The reason cites both the sign of \\(g'\\) and the increasing behaviour of \\(g'\\), matched to both halves of the compound condition."
+      },
+      {
+         "id": "GLD-GRD-067",
+         "point_type_id": "BC-PT-99063",
+         "category": "unconventional_valid",
+         "context": "The graph of \\(g'\\), the derivative of a twice differentiable function \\(g\\), is described as follows: \\(g'(x) < 0\\) for \\(0 < x < 4\\) and \\(g'(x) > 0\\) for \\(4 < x < 9\\); \\(g'\\) is decreasing on \\(0 < x < 2\\) and increasing on \\(2 < x < 9\\). Part (a): Find the value of \\(x\\) at which \\(g\\) has a relative minimum. Part (b): On what open interval or intervals is \\(g\\) both decreasing and concave up? Give a reason for your answer.",
+         "prior_work": "(a) \\(x = 4\\)",
+         "response": "On \\((2, 4)\\) the graph of \\(g'\\) lies below the \\(x\\)-axis and is rising, so \\(g\\) is decreasing and concave up there.",
+         "earned": true,
+         "rationale": "Below the axis and rising describe the sign and the increasing behaviour of \\(g'\\) in graphical words; both halves of the condition are addressed."
+      },
+      {
+         "id": "GLD-GRD-068",
+         "point_type_id": "BC-PT-99063",
+         "category": "narrow_fail",
+         "context": "The graph of \\(g'\\), the derivative of a twice differentiable function \\(g\\), is described as follows: \\(g'(x) < 0\\) for \\(0 < x < 4\\) and \\(g'(x) > 0\\) for \\(4 < x < 9\\); \\(g'\\) is decreasing on \\(0 < x < 2\\) and increasing on \\(2 < x < 9\\). Part (a): Find the value of \\(x\\) at which \\(g\\) has a relative minimum. Part (b): On what open interval or intervals is \\(g\\) both decreasing and concave up? Give a reason for your answer.",
+         "prior_work": "(a) \\(x = 4\\)",
+         "response": "\\((2, 4)\\), because \\(g'\\) is increasing on that interval.",
+         "earned": false,
+         "rationale": "Addresses only the concave up half of the compound condition, one of the two special cases does_not_earn names (sg-26:16)."
+      },
+      {
+         "id": "GLD-GRD-069",
+         "point_type_id": "BC-PT-99063",
+         "category": "notation_failure",
+         "context": "The graph of \\(g'\\), the derivative of a twice differentiable function \\(g\\), is described as follows: \\(g'(x) < 0\\) for \\(0 < x < 4\\) and \\(g'(x) > 0\\) for \\(4 < x < 9\\); \\(g'\\) is decreasing on \\(0 < x < 2\\) and increasing on \\(2 < x < 9\\). Part (a): Find the value of \\(x\\) at which \\(g\\) has a relative minimum. Part (b): On what open interval or intervals is \\(g\\) both decreasing and concave up? Give a reason for your answer.",
+         "prior_work": "(a) \\(x = 4\\)",
+         "response": "\\((2,4)\\): \\(g' < 0\\) and \\(g' \\uparrow\\)",
+         "earned": true,
+         "rationale": "An arrow stands for increasing, but the record states no special notation requirement and both halves of the reason are present."
+      },
+      {
+         "id": "GLD-GRD-070",
+         "point_type_id": "BC-PT-99063",
+         "category": "eligible_after_error",
+         "context": "The graph of \\(g'\\), the derivative of a twice differentiable function \\(g\\), is described as follows: \\(g'(x) < 0\\) for \\(0 < x < 4\\) and \\(g'(x) > 0\\) for \\(4 < x < 9\\); \\(g'\\) is decreasing on \\(0 < x < 2\\) and increasing on \\(2 < x < 9\\). Part (a): Find the value of \\(x\\) at which \\(g\\) has a relative minimum. Part (b): On what open interval or intervals is \\(g\\) both decreasing and concave up? Give a reason for your answer.",
+         "prior_work": "(a) \\(g\\) has a relative minimum at \\(x = 2\\), where \\(g'\\) is smallest.",
+         "response": "\\(2 < x < 4\\). On that interval \\(g' < 0\\), so \\(g\\) is decreasing, and \\(g'\\) is increasing, so \\(g\\) is concave up.",
+         "earned": true,
+         "rationale": "Part (a) is wrong (the relative minimum of \\(g\\) is at \\(x = 4\\)), but the record states no eligibility restriction and the interval and reason in (b) are correct."
+      },
+      {
+         "id": "GLD-GRD-071",
+         "point_type_id": "BC-PT-99066",
+         "category": "fully_correct",
+         "context": "Consider the differential equation \\(\\frac{dy}{dx} = x(y - 1)\\). Part (a): Sketch the slope field at the nine points with \\(x = -1, 0, 1\\) and \\(y = 0, 1, 2\\). Part (b): Explain, with reference to the slope field, why the solution curve through the point \\((1, 2)\\) is increasing near \\(x = 1\\).",
+         "prior_work": "(a) Segments drawn with slopes: at \\(y = 2\\): \\(-1, 0, 1\\); at \\(y = 1\\): \\(0, 0, 0\\); at \\(y = 0\\): \\(1, 0, -1\\), for \\(x = -1, 0, 1\\).",
+         "response": "In the slope field, the segment at \\((1, 2)\\) has positive slope, so the solution curve through \\((1, 2)\\) is increasing near \\(x = 1\\).",
+         "earned": true,
+         "rationale": "References the sign of the slope of a drawn segment and what it implies for the solution, as the earns text requires; a local argument is accepted (sg-26:11)."
+      },
+      {
+         "id": "GLD-GRD-072",
+         "point_type_id": "BC-PT-99066",
+         "category": "unconventional_valid",
+         "context": "Consider the differential equation \\(\\frac{dy}{dx} = x(y - 1)\\). Part (a): Sketch the slope field at the nine points with \\(x = -1, 0, 1\\) and \\(y = 0, 1, 2\\). Part (b): Explain, with reference to the slope field, why the solution curve through the point \\((1, 2)\\) is increasing near \\(x = 1\\).",
+         "prior_work": "(a) Segments drawn with slopes: at \\(y = 2\\): \\(-1, 0, 1\\); at \\(y = 1\\): \\(0, 0, 0\\); at \\(y = 0\\): \\(1, 0, -1\\), for \\(x = -1, 0, 1\\).",
+         "response": "The little line segments I drew to the right of the \\(y\\)-axis and above \\(y = 1\\) all tilt upward from left to right, and the solution through \\((1, 2)\\) follows them, so it rises near \\(x = 1\\).",
+         "earned": true,
+         "rationale": "Tilting upward from left to right is the sign of the drawn segments' slopes in plain words, connected to the solution curve."
+      },
+      {
+         "id": "GLD-GRD-073",
+         "point_type_id": "BC-PT-99066",
+         "category": "narrow_fail",
+         "context": "Consider the differential equation \\(\\frac{dy}{dx} = x(y - 1)\\). Part (a): Sketch the slope field at the nine points with \\(x = -1, 0, 1\\) and \\(y = 0, 1, 2\\). Part (b): Explain, with reference to the slope field, why the solution curve through the point \\((1, 2)\\) is increasing near \\(x = 1\\).",
+         "prior_work": "(a) Segments drawn with slopes: at \\(y = 2\\): \\(-1, 0, 1\\); at \\(y = 1\\): \\(0, 0, 0\\); at \\(y = 0\\): \\(1, 0, -1\\), for \\(x = -1, 0, 1\\).",
+         "response": "At \\((1, 2)\\), \\(\\frac{dy}{dx} = 1(2 - 1) = 1 > 0\\), so the solution curve is increasing near \\(x = 1\\).",
+         "earned": false,
+         "rationale": "Refers to the sign of the derivative with no connection to the field, the first item does_not_earn lists, although the prompt asked for a reference to the slope field."
+      },
+      {
+         "id": "GLD-GRD-074",
+         "point_type_id": "BC-PT-99066",
+         "category": "notation_failure",
+         "context": "Consider the differential equation \\(\\frac{dy}{dx} = x(y - 1)\\). Part (a): Sketch the slope field at the nine points with \\(x = -1, 0, 1\\) and \\(y = 0, 1, 2\\). Part (b): Explain, with reference to the slope field, why the solution curve through the point \\((1, 2)\\) is increasing near \\(x = 1\\).",
+         "prior_work": "(a) Segments drawn with slopes: at \\(y = 2\\): \\(-1, 0, 1\\); at \\(y = 1\\): \\(0, 0, 0\\); at \\(y = 0\\): \\(1, 0, -1\\), for \\(x = -1, 0, 1\\).",
+         "response": "segments near \\((1,2)\\) in my field: slope \\(> 0\\) \\(\\Rightarrow\\) sol. curve \\(\\uparrow\\) near \\(x = 1\\)",
+         "earned": true,
+         "rationale": "Shorthand and arrows replace words, but the record states no special notation requirement and the reference is to the drawn segments, not to the slope of the slope field."
+      },
+      {
+         "id": "GLD-GRD-075",
+         "point_type_id": "BC-PT-99066",
+         "category": "eligible_after_error",
+         "context": "Consider the differential equation \\(\\frac{dy}{dx} = x(y - 1)\\). Part (a): Sketch the slope field at the nine points with \\(x = -1, 0, 1\\) and \\(y = 0, 1, 2\\). Part (b): Explain, with reference to the slope field, why the solution curve through the point \\((1, 2)\\) is increasing near \\(x = 1\\).",
+         "prior_work": "(a) Segments drawn with slopes: at \\(y = 2\\): \\(-1, 0, 1\\); at \\(y = 1\\): \\(0, 0, 0\\); at \\(y = 0\\): \\(1, 0, 1\\), for \\(x = -1, 0, 1\\).",
+         "response": "The segment I drew at \\((1, 2)\\) has a positive slope, so the solution curve through \\((1, 2)\\) is increasing near \\(x = 1\\).",
+         "earned": true,
+         "rationale": "One segment in (a) is wrong (at \\((1, 0)\\) the slope is \\(-1\\)), but the argument uses the correctly drawn segment at \\((1, 2)\\), and the eligibility text accepts a local argument at any point in the field."
+      },
+      {
+         "id": "GLD-GRD-076",
+         "point_type_id": "BC-PT-99068",
+         "category": "fully_correct",
+         "context": "Consider the curve given by \\(x^{2} + xy + y^{2} = 7\\). Part (a): Show that \\(\\frac{dy}{dx} = -\\frac{2x + y}{x + 2y}\\).",
+         "prior_work": "",
+         "response": "\\(2x + y + x\\frac{dy}{dx} + 2y\\frac{dy}{dx} = 0\\), so \\((x + 2y)\\frac{dy}{dx} = -(2x + y)\\), so \\(\\frac{dy}{dx} = -\\frac{2x + y}{x + 2y}\\).",
+         "earned": true,
+         "rationale": "An algebraic chain from a correct implicit derivative that lands on and closes with the stated target."
+      },
+      {
+         "id": "GLD-GRD-077",
+         "point_type_id": "BC-PT-99068",
+         "category": "unconventional_valid",
+         "context": "Consider the curve given by \\(x^{2} + xy + y^{2} = 7\\). Part (a): Show that \\(\\frac{dy}{dx} = -\\frac{2x + y}{x + 2y}\\).",
+         "prior_work": "",
+         "response": "Rewrite as \\(y^{2} + xy = 7 - x^{2}\\). Differentiate: \\((2y + x)\\frac{dy}{dx} + y = -2x\\). Then \\(\\frac{dy}{dx} = \\frac{-2x - y}{2y + x} = -\\frac{2x + y}{x + 2y}\\).",
+         "earned": true,
+         "rationale": "Rearranging before differentiating is valid and the chain still closes with the target expression."
+      },
+      {
+         "id": "GLD-GRD-078",
+         "point_type_id": "BC-PT-99068",
+         "category": "narrow_fail",
+         "context": "Consider the curve given by \\(x^{2} + xy + y^{2} = 7\\). Part (a): Show that \\(\\frac{dy}{dx} = -\\frac{2x + y}{x + 2y}\\).",
+         "prior_work": "",
+         "response": "\\(2x + y + x\\frac{dy}{dx} + 2y\\frac{dy}{dx} = 0\\), so \\((x + 2y)\\frac{dy}{dx} = -2x - y\\).",
+         "earned": false,
+         "rationale": "The chain stops one step before the target, which does_not_earn names (a chain that stops before the target)."
+      },
+      {
+         "id": "GLD-GRD-079",
+         "point_type_id": "BC-PT-99068",
+         "category": "notation_failure",
+         "context": "Consider the curve given by \\(x^{2} + xy + y^{2} = 7\\). Part (a): Show that \\(\\frac{dy}{dx} = -\\frac{2x + y}{x + 2y}\\).",
+         "prior_work": "",
+         "response": "\\(2x + y + x\\,\\frac{d}{dx} + 2y\\,\\frac{d}{dx} = 0\\), so \\(\\frac{d}{dx}(x + 2y) = -(2x + y)\\), so \\(\\frac{dy}{dx} = -\\frac{2x + y}{x + 2y}\\).",
+         "earned": false,
+         "rationale": "Relabelled not earned on review: x d/dx and 2y d/dx are operators, not the derivative dy/dx, so the working lines are not a correct algebraic chain, and a show-that point needs the chain itself to hold."
+      },
+      {
+         "id": "GLD-GRD-080",
+         "point_type_id": "BC-PT-99068",
+         "category": "eligible_after_error",
+         "context": "Consider the curve given by \\(x^{2} + xy + y^{2} = 7\\). Part (a): Show that \\(\\frac{dy}{dx} = -\\frac{2x + y}{x + 2y}\\).",
+         "prior_work": "\\(2x + x\\frac{dy}{dx} + 2y\\frac{dy}{dx} = 0\\)",
+         "response": "\\((x + 2y)\\frac{dy}{dx} = -(2x + y)\\), so \\(\\frac{dy}{dx} = -\\frac{2x + y}{x + 2y}\\).",
+         "earned": false,
+         "rationale": "The differentiated line omits the \\(y\\) from the product rule on \\(xy\\), so the preceding setup point is lost, and dependency_on_other_points says this point needs that setup point first; the chain also does not follow from the written line."
+      },
+      {
+         "id": "GLD-GRD-081",
+         "point_type_id": "BC-PT-99072",
+         "category": "fully_correct",
+         "context": "Consider the series \\(\\sum_{n=2}^{\\infty} \\frac{(x - 3)^{n}}{n - 1}\\). Part (a): Write the first three terms of the series. Part (b): Determine whether the series converges or diverges at \\(x = 4\\). Justify your answer.",
+         "prior_work": "(a) \\((x - 3)^{2} + \\frac{(x - 3)^{3}}{2} + \\frac{(x - 3)^{4}}{3}\\)",
+         "response": "At \\(x = 4\\) the series is \\(\\sum_{n=2}^{\\infty} \\frac{1}{n - 1}\\). For \\(n \\ge 2\\), \\(\\frac{1}{n - 1} > \\frac{1}{n} > 0\\), and \\(\\sum \\frac{1}{n}\\) is the divergent harmonic series, so by the comparison test the series diverges at \\(x = 4\\).",
+         "earned": true,
+         "rationale": "Considers the term at the substituted value and shows it exceeds the term of a named divergent series, the comparison route in the earns text."
+      },
+      {
+         "id": "GLD-GRD-082",
+         "point_type_id": "BC-PT-99072",
+         "category": "unconventional_valid",
+         "context": "Consider the series \\(\\sum_{n=2}^{\\infty} \\frac{(x - 3)^{n}}{n - 1}\\). Part (a): Write the first three terms of the series. Part (b): Determine whether the series converges or diverges at \\(x = 4\\). Justify your answer.",
+         "prior_work": "(a) \\((x - 3)^{2} + \\frac{(x - 3)^{3}}{2} + \\frac{(x - 3)^{4}}{3}\\)",
+         "response": "At \\(x = 4\\) the terms are \\(\\frac{1}{n - 1}\\). \\(\\lim_{n \\to \\infty} \\frac{1/(n - 1)}{1/n} = \\lim_{n \\to \\infty} \\frac{n}{n - 1} = 1\\), and the harmonic series diverges, so by limit comparison the series diverges.",
+         "earned": true,
+         "rationale": "The limit comparison route with a ratio limit of 1 against a named divergent series is the second form in the earns text."
+      },
+      {
+         "id": "GLD-GRD-083",
+         "point_type_id": "BC-PT-99072",
+         "category": "narrow_fail",
+         "context": "Consider the series \\(\\sum_{n=2}^{\\infty} \\frac{(x - 3)^{n}}{n - 1}\\). Part (a): Write the first three terms of the series. Part (b): Determine whether the series converges or diverges at \\(x = 4\\). Justify your answer.",
+         "prior_work": "(a) \\((x - 3)^{2} + \\frac{(x - 3)^{3}}{2} + \\frac{(x - 3)^{4}}{3}\\)",
+         "response": "By the integral test: at \\(x = 4\\) the terms are \\(\\frac{1}{n - 1}\\), and \\(\\frac{1}{n - 1} > \\frac{1}{n}\\) where \\(\\sum \\frac{1}{n}\\) diverges, so the series diverges.",
+         "earned": false,
+         "rationale": "The work is a comparison but the response declares the integral test, which it never carries out; does_not_earn says the test need not be named but an incorrect one cannot be declared (sg-24:20)."
+      },
+      {
+         "id": "GLD-GRD-084",
+         "point_type_id": "BC-PT-99072",
+         "category": "notation_failure",
+         "context": "Consider the series \\(\\sum_{n=2}^{\\infty} \\frac{(x - 3)^{n}}{n - 1}\\). Part (a): Write the first three terms of the series. Part (b): Determine whether the series converges or diverges at \\(x = 4\\). Justify your answer.",
+         "prior_work": "(a) \\((x - 3)^{2} + \\frac{(x - 3)^{3}}{2} + \\frac{(x - 3)^{4}}{3}\\)",
+         "response": "\\(x=4\\): \\(\\Sigma \\frac{1}{n-1}\\), \\(\\frac{1}{n-1} > \\frac{1}{n}\\), \\(\\Sigma \\frac{1}{n}\\) div. (harmonic) so \\(\\Sigma\\) div. by DCT",
+         "earned": true,
+         "rationale": "Sigma signs carry no indices and the conclusion is abbreviated, but the record states no special notation requirement and the term, the comparison and the divergent series are all present."
+      },
+      {
+         "id": "GLD-GRD-085",
+         "point_type_id": "BC-PT-99072",
+         "category": "eligible_after_error",
+         "context": "Consider the series \\(\\sum_{n=2}^{\\infty} \\frac{(x - 3)^{n}}{n - 1}\\). Part (a): Write the first three terms of the series. Part (b): Determine whether the series converges or diverges at \\(x = 4\\). Justify your answer.",
+         "prior_work": "(a) \\((x - 3)^{2} + (x - 3)^{3} + (x - 3)^{4}\\)",
+         "response": "When \\(x = 4\\) the terms are \\(\\frac{1}{n - 1}\\), which are larger than \\(\\frac{1}{n}\\) for every \\(n \\ge 2\\). Since the harmonic series \\(\\sum \\frac{1}{n}\\) diverges, the series diverges at \\(x = 4\\) by comparison.",
+         "earned": true,
+         "rationale": "Part (a) drops the denominators, but part (b) works from the general term, the record states no eligibility restriction, and the comparison argument is complete."
+      }
+   ]
+}

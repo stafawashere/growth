@@ -10,6 +10,7 @@ from sqlalchemy import select
 
 from app.api.deps import current_user, get_db, get_settings
 from app.db import models
+from app.experiments import switches
 from app.feedback import render, tutor
 from app.items.grade import grade
 from app.items.verify import ChildDiedError
@@ -130,6 +131,7 @@ def open_session(
       rng,
       sub_mode=fields.get("sub_mode"),
       process_seed=settings.rng_seed,
+      experiment_default=settings.experiment_default_state,
    )
 
    return session_payload(db, row)
@@ -244,6 +246,7 @@ def submit_attempt(
          engine_graph=context.engine_graph,
          confidence=fields.get("confidence"),
          grader=grade_against_the_stored_key,
+         experiment_default=settings.experiment_default_state,
       )
    except ChildDiedError as failure:
       raise HTTPException(
@@ -309,6 +312,12 @@ def read_feedback(
       )
    except ValueError as refused:
       raise HTTPException(status_code=409, detail=str(refused)) from refused
+
+   feedback_arm = switches.recorded_arms(attempt).get(switches.FEEDBACK_ELABORATION)
+   is_verification_only = feedback_arm == switches.DEFINITIONS[switches.FEEDBACK_ELABORATION].treatment_arm
+
+   if is_verification_only:
+      feedback = render.verification_only(feedback)
 
    sentence, tutor_unavailable = tutor_sentence_for(settings, db, user, attempt, feedback)
 

@@ -31,7 +31,20 @@ import {
    readExport,
    beginReauth,
    finishReauth,
-   reauthenticate
+   reauthenticate,
+   readMetrics,
+   readRepresentations,
+   readExperiments,
+   setExperimentState,
+   readCheckpoints,
+   startCheckpoint,
+   readCheckpoint,
+   scoreCheckpointPart,
+   finishCheckpoint,
+   readProbe,
+   startProbe,
+   readNextProbeItem,
+   answerProbeItem
 } from "./client";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
@@ -989,5 +1002,118 @@ describe("the re-authentication ceremony", () => {
 
       await expect(reauthenticate()).rejects.toThrow(/no assertion/);
       expect(fetchMock).toHaveBeenCalledTimes(1);
+   });
+});
+
+describe("evaluation path vocabulary", () => {
+   const declared = declaredRoutes("evaluation.py");
+
+   const evaluationCases = [
+      { name: "readMetrics", dynamic: [], invoke: () => readMetrics() },
+      { name: "readRepresentations", dynamic: [], invoke: () => readRepresentations() },
+      { name: "readExperiments", dynamic: [], invoke: () => readExperiments() },
+      {
+         name: "setExperimentState",
+         dynamic: ["feedback_elaboration"],
+         invoke: () => setExperimentState("feedback_elaboration", { state: "on" })
+      },
+      { name: "readCheckpoints", dynamic: [], invoke: () => readCheckpoints() },
+      { name: "startCheckpoint", dynamic: [], invoke: () => startCheckpoint() },
+      { name: "readCheckpoint", dynamic: ["CKP-1"], invoke: () => readCheckpoint("CKP-1") },
+      {
+         name: "scoreCheckpointPart",
+         dynamic: ["CKP-1"],
+         invoke: () => scoreCheckpointPart("CKP-1", { record_id: "BC-FRQ-2024-1A", points_earned: 2 })
+      },
+      { name: "finishCheckpoint", dynamic: ["CKP-1"], invoke: () => finishCheckpoint("CKP-1") },
+      { name: "readProbe", dynamic: [], invoke: () => readProbe() },
+      { name: "startProbe", dynamic: [], invoke: () => startProbe() },
+      { name: "readNextProbeItem", dynamic: ["PRB-1"], invoke: () => readNextProbeItem("PRB-1") },
+      {
+         name: "answerProbeItem",
+         dynamic: ["PRB-1"],
+         invoke: () => answerProbeItem("PRB-1", { item_id: "ITM-1", answer: { option_id: "A" } })
+      }
+   ];
+
+   it.each(evaluationCases)("every path $name issues matches a route app/api/routes/evaluation.py declares", async (wiringCase) => {
+      const fetchMock = vi.fn().mockResolvedValue(jsonResponse(200, {}));
+
+      vi.stubGlobal("fetch", fetchMock);
+      await wiringCase.invoke();
+
+      const { url, method } = issuedRequest(fetchMock);
+      const normalized = normalizedIssuedPath(new URL(url, "http://x").pathname, wiringCase.dynamic);
+
+      expect(declared).toContainEqual({ method, path: normalized });
+   });
+
+   it("passes a stated day to the metrics read as the today query the route takes", async () => {
+      const fetchMock = vi.fn().mockResolvedValue(jsonResponse(200, {}));
+
+      vi.stubGlobal("fetch", fetchMock);
+      await readMetrics("2026-09-24");
+
+      const { url } = issuedRequest(fetchMock);
+
+      expect(new URL(url, "http://x").searchParams.get("today")).toBe("2026-09-24");
+      expect(functionSource("api/routes/evaluation.py", "read_metrics")).toContain("today: str | None = None");
+   });
+});
+
+describe("evaluation response shape vocabulary", () => {
+   const evaluationShapes = [
+      { typeName: "LearningMetric", fields: () => returnedFields("progress/learning_metrics.py", "metric") },
+      {
+         typeName: "ExperimentComparison",
+         fields: () => nestedDictFields("experiments/analysis.py", "return {\n      \"name\": comparison.name")
+      },
+      { typeName: "ArmOutcomes", fields: () => nestedDictFields("experiments/analysis.py", "def arm_view(") },
+      {
+         typeName: "RepresentationMatrixPayload",
+         fields: () => returnedFields("progress/representations.py", "representation_matrix")
+      },
+      {
+         typeName: "CheckpointAvailability",
+         fields: () => returnedFields("checkpoint/service.py", "availability")
+      },
+      { typeName: "CheckpointView", fields: () => returnedFields("checkpoint/service.py", "checkpoint_view") },
+      { typeName: "ProbeAvailability", fields: () => returnedFields("checkpoint/probe.py", "availability") },
+      {
+         typeName: "ProbeAdministration",
+         fields: () => returnedFields("checkpoint/probe.py", "administration_view")
+      },
+      { typeName: "MetricsPayload", fields: () => returnedFields("api/routes/evaluation.py", "read_metrics") },
+      {
+         typeName: "CheckpointsPayload",
+         fields: () => returnedFields("api/routes/evaluation.py", "read_checkpoints")
+      },
+      { typeName: "ProbePayload", fields: () => returnedFields("api/routes/evaluation.py", "read_probe") }
+   ];
+
+   it.each(evaluationShapes)("$typeName carries the field names its server module returns", (shapeCase) => {
+      const declared = declaredTypeFields("types.ts", shapeCase.typeName);
+      const returned = shapeCase.fields();
+
+      expect(returned.length).toBeGreaterThan(0);
+      expect(sorted(declared)).toEqual(sorted(returned));
+   });
+
+   it("MetricValue carries value's fields and the two external_checkpoint adds", () => {
+      const declared = declaredTypeFields("types.ts", "MetricValue");
+      const added = [...functionSource("progress/learning_metrics.py", "external_checkpoint").matchAll(/earned\["([a-z_]+)"\]\s*=/g)].map(
+         (match) => match[1]
+      );
+
+      expect(added.length).toBeGreaterThan(0);
+      expect(sorted(declared)).toEqual(sorted([...returnedFields("progress/learning_metrics.py", "value"), ...added]));
+   });
+
+   it("ProbeServedItem is the bank's item dict plus the served format", () => {
+      const declared = declaredTypeFields("types.ts", "ProbeServedItem");
+      const nextItem = functionSource("checkpoint/probe.py", "next_item");
+
+      expect(nextItem).toContain("dict(_as_item_dict(item_row), format=");
+      expect(sorted(declared)).toEqual(sorted([...returnedFields("runtime/bank.py", "_as_item_dict"), "format"]));
    });
 });

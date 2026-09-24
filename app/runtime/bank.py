@@ -10,6 +10,10 @@ by default every content/items_* bank). Its new records go through app/items/ing
 and provenance included, on the bank's first query rather than at build time: the checks take
 seconds per hundred records, and a process that never opens a session, which is most of what
 builds an application, should not pay for them.
+
+Items the stable concept probe names (app/runtime/probe_set.py) are ingested like any other, so
+the probe can be graded, and are never returned for practice: an item that is both probe and
+practice would measure its own exposure.
 """
 import json
 import threading
@@ -22,6 +26,7 @@ from sqlalchemy.orm import Session as OrmSession
 from app.db.models import Item
 from app.engine.state import FadingStage
 from app.items.ingest import ingest_new_records, load_records
+from app.runtime.probe_set import probe_item_ids
 
 PUBLISHED_STATUS = "verified"
 
@@ -169,8 +174,9 @@ class ItemSource:
 class ItemBank:
    """An ItemBank over the live items table, one short-lived session per query."""
 
-   def __init__(self, engine, source=None):
+   def __init__(self, engine, source=None, withheld_ids=None):
       self._engine = engine
+      self._withheld_ids = probe_item_ids() if withheld_ids is None else frozenset(withheld_ids)
       self._pending_source = source
       self._source_lock = threading.Lock()
 
@@ -199,6 +205,11 @@ class ItemBank:
 
          self._pending_source = None
 
+   def ensure_ingested(self):
+      """Ingests the pending source now. The concept probe reads items rows by id, which a bank
+      that has never been queried for practice has not written yet."""
+      self._ingest_pending_source()
+
    def published_items(self, archetype_id):
       self._ingest_pending_source()
 
@@ -210,7 +221,7 @@ class ItemBank:
             .all()
          )
 
-         return [_as_item_dict(row) for row in rows]
+         return [_as_item_dict(row) for row in rows if row.id not in self._withheld_ids]
 
    def has_published_item(self, archetype_id):
       return len(self.published_items(archetype_id)) > 0

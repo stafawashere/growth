@@ -374,7 +374,7 @@ def corrected_today(attempts_history, today):
    ]
 
 
-def eligible_records(states, graph, bank, unsupported_successes):
+def eligible_records(states, graph, bank, unsupported_successes, retrieval_entry=None):
    pool = []
 
    for archetype_id, record in graph.archetypes.items():
@@ -392,7 +392,9 @@ def eligible_records(states, graph, bank, unsupported_successes):
       if unsupported_successes is not None:
          count = unsupported_successes.get(primary, 0)
 
-      if retrieval_eligible(state, count):
+      entry = (retrieval_entry or {}).get(primary)
+
+      if retrieval_eligible(state, count, entry):
          pool.append(record)
 
    return pool
@@ -413,6 +415,7 @@ def assemble_session(
    db=None,
    user_id=None,
    ordering=None,
+   retrieval_entry=None,
 ):
    retrievability = retrievability_map(states, today, retrievability)
    now = session_now(today, now)
@@ -543,7 +546,7 @@ def assemble_session(
    if has_gaps and has_audit_target:
       write_coverage_gap_audit(db, user_id, gaps, graph, today)
 
-   pool = eligible_records(states, graph, bank, unsupported_successes)
+   pool = eligible_records(states, graph, bank, unsupported_successes, retrieval_entry)
    assembled = 0.0
 
    while assembled < constants.BLOCK3_MIN_MINUTES:

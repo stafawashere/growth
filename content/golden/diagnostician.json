@@ -1,0 +1,963 @@
+{
+   "role": "diagnostician",
+   "set": "diagnostician_goldens",
+   "authored_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24",
+   "labelled_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24",
+   "authored_on": "2026-09-24",
+   "note": "Every wrong attempt and every diagnosis here was written by claude-opus-5-5 on the operator's delegation, not by a human. The set measures whether the diagnostician names the observed BC-ERR, ranks misconception hypotheses from that error's own candidate list without presenting one as certain, and recognises a slip, misread or arithmetic error as non-conceptual.",
+   "cases": [
+      {
+         "id": "GLD-DGN-001",
+         "item_id": "ITM-AGT-01003-01",
+         "archetype_id": "BC-QA-01003",
+         "student_answer": "0",
+         "student_work": "Innermost first: \\(g(1) = 3\\). Then \\(f(3) = 4\\). Then \\(h(4) = 0\\). So \\(\\lim_{x \\to 1} g(f(h(x))) = 0\\).",
+         "observed_errors": [
+            "BC-ERR-01007"
+         ],
+         "misconception_hypotheses": [],
+         "non_conceptual_cause": "misread",
+         "rationale": "The student applied the three functions in exactly reversed order, reading g(f(h(x))) from the outside in, and every table lookup is otherwise correct. That matches the record's non-conceptual cause of reading the composite notation from the outside in, so no misconception is hypothesised; a probe with the composite written out in words would confirm it."
+      },
+      {
+         "id": "GLD-DGN-002",
+         "item_id": "ITM-AGT-01004-03",
+         "archetype_id": "BC-QA-01004",
+         "student_answer": "0",
+         "student_work": "At \\(x = 0\\): numerator \\(\\cos^{2} 0 + \\cos 0 - 2 = 1 + 1 - 2 = 0\\). The top goes to 0, so the limit is 0.",
+         "observed_errors": [
+            "BC-ERR-01008"
+         ],
+         "misconception_hypotheses": [
+            {
+               "id": "BC-MIS-01006",
+               "rank": 1
+            },
+            {
+               "id": "BC-MIS-01005",
+               "rank": 2
+            }
+         ],
+         "non_conceptual_cause": "",
+         "rationale": "The student evaluated only the numerator and reported its limit, never examining the zero denominator, which is BC-ERR-01008. Treating zero over zero as the value zero is the leading hypothesis; applying the quotient limit theorem without its nonzero-denominator condition is the rival."
+      },
+      {
+         "id": "GLD-DGN-003",
+         "item_id": "ITM-AGT-01008-02",
+         "archetype_id": "BC-QA-01008",
+         "student_answer": "1",
+         "student_work": "Left limit \\(k^{2} + 2\\), right limit \\(3k\\). Set equal: \\(k^{2} - 3k + 2 = 0\\), \\((k - 1)(k - 2) = 0\\). Take \\(k = 1\\): both sides give 3, so \\(p\\) is continuous.",
+         "observed_errors": [
+            "BC-ERR-01015"
+         ],
+         "misconception_hypotheses": [
+            {
+               "id": "BC-MIS-01009",
+               "rank": 1
+            },
+            {
+               "id": "BC-MIS-01001",
+               "rank": 2
+            }
+         ],
+         "non_conceptual_cause": "",
+         "rationale": "Continuity was concluded from matching one-sided limits with no comparison against p(1), which at k = 1 is -1. Believing continuity is a single condition fits best; believing the limit and the function value coincide automatically is the rival."
+      },
+      {
+         "id": "GLD-DGN-004",
+         "item_id": "ITM-AGT-01009-01",
+         "archetype_id": "BC-QA-01009",
+         "student_answer": "4",
+         "student_work": "Denominator: \\((x - 3)(x - 4)(x + 2)(x + 3)\\). Numerator: \\((x - 3)(x + 3)(x^{2} - 16)\\). Cancel \\((x - 3)(x + 3)\\): \\(\\frac{x^{2} - 16}{(x - 4)(x + 2)}\\). The denominator is 0 at \\(x = 4\\), so the asymptote is \\(x = 4\\).",
+         "observed_errors": [
+            "BC-ERR-01018"
+         ],
+         "misconception_hypotheses": [
+            {
+               "id": "BC-MIS-01011",
+               "rank": 1
+            },
+            {
+               "id": "BC-MIS-01012",
+               "rank": 2
+            }
+         ],
+         "non_conceptual_cause": "",
+         "rationale": "x = 4 is a zero of the remaining denominator but its factor divides out of x^2 - 16, so it is removable; the student named it as the asymptote. The leading hypothesis is that every input missing from the domain is an asymptote. The record's non-conceptual cause (numerator never fully factored) is a live rival because x^2 - 16 was left unfactored, so the ranking is tentative."
+      },
+      {
+         "id": "GLD-DGN-005",
+         "item_id": "ITM-AGT-01015-02",
+         "archetype_id": "BC-QA-01015",
+         "student_answer": "7",
+         "student_work": "Need \\(x + 3 > 0\\), so \\(x > -3\\). Denominator \\(x^{2} - 7x + 10 = 0\\): \\(x = \\frac{7 + \\sqrt{49 - 40}}{2} = \\frac{7 + 3}{2} = 5\\). So \\(p\\) is continuous on \\((-3, 5)\\). Integers: \\(-2, -1, 0, 1, 2, 3, 4\\), sum 7.",
+         "observed_errors": [
+            "BC-ERR-01031"
+         ],
+         "misconception_hypotheses": [],
+         "non_conceptual_cause": "slip",
+         "rationale": "Only the plus branch of the quadratic formula was written, so the zero at x = 2 was lost and the stated interval contains an excluded input. The work shows the student excluding denominator zeros correctly in principle, which is the record's non-conceptual cause of losing a root while solving, so no misconception is hypothesised."
+      },
+      {
+         "id": "GLD-DGN-006",
+         "item_id": "ITM-AGT-02002-04",
+         "archetype_id": "BC-QA-02002",
+         "student_answer": "0",
+         "student_work": "\\(r'(x) = \\lim_{h \\to 0} \\frac{\\frac{1}{3x + 3h + 1} - \\frac{1}{3x + 1}}{h}\\). Put \\(h = 0\\): \\(\\frac{\\frac{1}{3x + 1} - \\frac{1}{3x + 1}}{h} = \\frac{0}{h} = 0\\).",
+         "observed_errors": [
+            "BC-ERR-02005"
+         ],
+         "misconception_hypotheses": [
+            {
+               "id": "BC-MIS-02002",
+               "rank": 1
+            },
+            {
+               "id": "BC-MIS-02003",
+               "rank": 2
+            }
+         ],
+         "non_conceptual_cause": "",
+         "rationale": "The increment was set to zero in the numerator while it still sat in the denominator, which is BC-ERR-02005. Treating the definition as a formality to write and then abandon is ranked first; treating the limit symbol as decoration is the rival."
+      },
+      {
+         "id": "GLD-DGN-007",
+         "item_id": "ITM-AGT-02003-01",
+         "archetype_id": "BC-QA-02003",
+         "student_answer": "32",
+         "student_work": "This is the derivative of \\(f(x) = x^{2}\\). \\(f'(x) = 2x\\), and the number in the limit is 16, so \\(f'(16) = 32\\).",
+         "observed_errors": [
+            "BC-ERR-02010"
+         ],
+         "misconception_hypotheses": [
+            {
+               "id": "BC-MIS-02014",
+               "rank": 1
+            },
+            {
+               "id": "BC-MIS-02004",
+               "rank": 2
+            }
+         ],
+         "non_conceptual_cause": "",
+         "rationale": "The function was identified correctly but the derivative was evaluated at 16, the function value f(-4), instead of the base point -4. Mixing up the function value and the input at the point is ranked first; the rival that the student sees the limit only as algebra is weaker because the derivative reading was made."
+      },
+      {
+         "id": "GLD-DGN-008",
+         "item_id": "ITM-AGT-02006-02",
+         "archetype_id": "BC-QA-02006",
+         "student_answer": "\\(6x^{2} + 9 - 8x^{-3}\\)",
+         "student_work": "\\(h(x) = 4x^{-2} + 2x^{3} + 9\\). \\(h'(x) = -8x^{-3} + 6x^{2} + 0\\). So \\(h'(x) = 6x^{2} + 9 - 8x^{-3}\\).",
+         "observed_errors": [
+            "BC-ERR-02016"
+         ],
+         "misconception_hypotheses": [],
+         "non_conceptual_cause": "slip",
+         "rationale": "The student wrote the derivative of the constant as 0 and then carried the 9 back into the final line, so the constant term appears in the answer although the work shows it differentiated correctly. That is the record's transcription cause, not a belief about constants."
+      },
+      {
+         "id": "GLD-DGN-009",
+         "item_id": "ITM-AGT-02007-01",
+         "archetype_id": "BC-QA-02007",
+         "student_answer": "\\(3x^{2} + 4\\sin x + x e^{x - 1}\\)",
+         "student_work": "\\(\\frac{d}{dx} x^{3} = 3x^{2}\\). \\(\\frac{d}{dx}(-4\\cos x) = 4\\sin x\\). \\(\\frac{d}{dx} e^{x} = x e^{x - 1}\\) (bring the power down and subtract 1).",
+         "observed_errors": [
+            "BC-ERR-02019"
+         ],
+         "misconception_hypotheses": [
+            {
+               "id": "BC-MIS-02010",
+               "rank": 1
+            },
+            {
+               "id": "BC-MIS-02009",
+               "rank": 2
+            }
+         ],
+         "non_conceptual_cause": "",
+         "rationale": "The natural exponential was differentiated by the power rule, and the student's own note says so. Applying the power rule to every function is ranked first; seeing the power rule as a move on any exponent is the close rival."
+      },
+      {
+         "id": "GLD-DGN-010",
+         "item_id": "ITM-AGT-02008-02",
+         "archetype_id": "BC-QA-02008",
+         "student_answer": "\\(\\frac{x^{2} + x + 1}{x^{2} e^{x}}\\)",
+         "student_work": "\\(N = x + 1\\), \\(N' = 1\\); \\(D = x e^{x}\\), \\(D' = (x + 1)e^{x}\\). \\(h' = \\frac{N D' - D N'}{D^{2}} = \\frac{(x + 1)^{2}e^{x} - x e^{x}}{x^{2}e^{2x}} = \\frac{x^{2} + x + 1}{x^{2}e^{x}}\\).",
+         "observed_errors": [
+            "BC-ERR-02021"
+         ],
+         "misconception_hypotheses": [
+            {
+               "id": "BC-MIS-02012",
+               "rank": 1
+            },
+            {
+               "id": "BC-MIS-02011",
+               "rank": 2
+            }
+         ],
+         "non_conceptual_cause": "",
+         "rationale": "The quotient rule numerator was written in reverse order, so the result has the opposite sign of the correct derivative. A belief that the quotient rule is symmetric is ranked first; confusing it with the product rule pattern is the rival."
+      },
+      {
+         "id": "GLD-DGN-011",
+         "item_id": "ITM-AGT-02009-01",
+         "archetype_id": "BC-QA-02009",
+         "student_answer": "-20",
+         "student_work": "\\(h'(4) = f'(4)g(4) + f(4)g'(4) = (-4)(3) + (-4)(2) = -12 - 8 = -20\\).",
+         "observed_errors": [
+            "BC-ERR-02024"
+         ],
+         "misconception_hypotheses": [],
+         "non_conceptual_cause": "misread",
+         "rationale": "The product rule is written correctly, but f(4) = -4 was read into the f'(4) slot. With the formula right and one value taken from the adjacent column, this matches the record's non-conceptual cause of misreading the table."
+      },
+      {
+         "id": "GLD-DGN-012",
+         "item_id": "ITM-AGT-03001-01",
+         "archetype_id": "BC-QA-03001",
+         "student_answer": "\\(x^{2}e^{3x} + 2x e^{3x}\\)",
+         "student_work": "Product rule: \\(g' = (x^{2})' e^{3x} + x^{2}(e^{3x})' = 2x e^{3x} + x^{2}e^{3x}\\).",
+         "observed_errors": [
+            "BC-ERR-03001"
+         ],
+         "misconception_hypotheses": [
+            {
+               "id": "BC-MIS-03001",
+               "rank": 1
+            },
+            {
+               "id": "BC-MIS-03012",
+               "rank": 2
+            }
+         ],
+         "non_conceptual_cause": "",
+         "rationale": "The derivative of e^(3x) was written as e^(3x), so the inner factor 3 is missing. Differentiating only the outermost shell is ranked first; choosing a rule from the look of the expression is the rival. The record notes that a linear inner function makes a dropped factor easy to miss, so a slip cannot be ruled out."
+      },
+      {
+         "id": "GLD-DGN-013",
+         "item_id": "ITM-AGT-03004-02",
+         "archetype_id": "BC-QA-03004",
+         "student_answer": "-3",
+         "student_work": "\\(\\frac{d}{dx}(xy) = y + x\\frac{dy}{dx}\\), \\(\\frac{d}{dx}(y^{2}) = 2y\\), \\(\\frac{d}{dx}(x^{3} + 5) = 3x^{2}\\). At \\((1, 2)\\): \\(2 + \\frac{dy}{dx} + 4 = 3\\), so \\(\\frac{dy}{dx} = -3\\).",
+         "observed_errors": [
+            "BC-ERR-03007"
+         ],
+         "misconception_hypotheses": [
+            {
+               "id": "BC-MIS-03004",
+               "rank": 1
+            },
+            {
+               "id": "BC-MIS-03014",
+               "rank": 2
+            }
+         ],
+         "non_conceptual_cause": "",
+         "rationale": "The y^2 term was differentiated as though y were the independent variable, with no dy/dx factor. Treating y as an independent symbol is ranked first; the product rule term shows the student can attach dy/dx, which keeps the rival, derivative notation seen as decorative, in play."
+      },
+      {
+         "id": "GLD-DGN-014",
+         "item_id": "ITM-AGT-03005-02",
+         "archetype_id": "BC-QA-03005",
+         "student_answer": "2",
+         "student_work": "Horizontal tangent: \\(3x^{2} - 12 = 0\\), so \\(x = 2\\) or \\(x = -2\\). The question says there is one \\(x\\)-coordinate, so I take \\(x = 2\\).",
+         "observed_errors": [
+            "BC-ERR-03013"
+         ],
+         "misconception_hypotheses": [
+            {
+               "id": "BC-MIS-01015",
+               "rank": 1
+            },
+            {
+               "id": "BC-MIS-03007",
+               "rank": 2
+            }
+         ],
+         "non_conceptual_cause": "",
+         "rationale": "Neither candidate was checked against the curve; at x = 2 the curve has no real point. The student's own reason leans on the stem's claim that one x-coordinate exists, so the belief that a condition holds because the question implies it is ranked first, ahead of treating the tangent condition as a condition on dy/dx alone."
+      },
+      {
+         "id": "GLD-DGN-015",
+         "item_id": "ITM-AGT-03008-01",
+         "archetype_id": "BC-QA-03008",
+         "student_answer": "\\(8e^{2}\\)",
+         "student_work": "\\(g'(x) = (2x + 1)e^{2x}\\). \\(g''(x) = 2e^{2x} + 2(2x + 1)e^{2x} = (4x + 4)e^{2x}\\). \\(g''(1) = 8e^{2}\\).",
+         "observed_errors": [
+            "BC-ERR-03021"
+         ],
+         "misconception_hypotheses": [
+            {
+               "id": "BC-MIS-03013",
+               "rank": 1
+            },
+            {
+               "id": "BC-MIS-03014",
+               "rank": 2
+            }
+         ],
+         "non_conceptual_cause": "",
+         "rationale": "Both differentiations are correct and the student stopped at the second derivative when the third was asked for. Seeing a higher derivative as a different kind of object is ranked first and derivative notation read loosely second; the record's non-conceptual cause (the order in the stem read as the order reached) is a strong rival, so neither hypothesis is certain."
+      },
+      {
+         "id": "GLD-DGN-016",
+         "item_id": "ITM-AGT-03009-01",
+         "archetype_id": "BC-QA-03009",
+         "student_answer": "\\(-6 \\cdot 2^{x}\\sin(2x)\\cos^{2}(2x) + x \\cdot 2^{x - 1}\\cos^{3}(2x)\\)",
+         "student_work": "Product rule. \\((2^{x})' = x \\cdot 2^{x - 1}\\). \\((\\cos^{3}(2x))' = 3\\cos^{2}(2x)(-\\sin(2x))(2)\\). So \\(f' = x \\cdot 2^{x - 1}\\cos^{3}(2x) - 6 \\cdot 2^{x}\\sin(2x)\\cos^{2}(2x)\\).",
+         "observed_errors": [
+            "BC-ERR-99036"
+         ],
+         "misconception_hypotheses": [
+            {
+               "id": "BC-MIS-03012",
+               "rank": 1
+            },
+            {
+               "id": "BC-MIS-02010",
+               "rank": 2
+            }
+         ],
+         "non_conceptual_cause": "",
+         "rationale": "The product and chain rules are handled correctly, and the exponential factor 2^x alone was differentiated by the power rule. Choosing the rule from the look of the expression is ranked first; applying the power rule to every function is the rival."
+      },
+      {
+         "id": "GLD-DGN-017",
+         "item_id": "ITM-AGT-04007-01",
+         "archetype_id": "BC-QA-04007",
+         "student_answer": "\\(-\\frac{1}{4}\\)",
+         "student_work": "\\(3x^{2} + 3y^{2}\\frac{dy}{dx} = 0\\), so \\(\\frac{dy}{dx} = -\\frac{x^{2}}{y^{2}} = -\\frac{1}{4}\\) at \\((1, 2)\\). So \\(\\frac{dy}{dt} = -\\frac{1}{4}\\).",
+         "observed_errors": [
+            "BC-ERR-04017"
+         ],
+         "misconception_hypotheses": [
+            {
+               "id": "BC-MIS-99005",
+               "rank": 1
+            },
+            {
+               "id": "BC-MIS-04008",
+               "rank": 2
+            }
+         ],
+         "non_conceptual_cause": "",
+         "rationale": "The relation was differentiated with respect to x and dy/dx reported as dy/dt; the given dx/dt = 4 is never used. Treating derivatives with respect to x and t as one object is ranked first, and differentiating with respect to a spatial variable by habit second."
+      },
+      {
+         "id": "GLD-DGN-018",
+         "item_id": "ITM-AGT-04007-01",
+         "archetype_id": "BC-QA-04007",
+         "student_answer": "-12",
+         "student_work": "\\(3x^{2}\\frac{dx}{dt} + 3y^{2}\\frac{dy}{dt} = 0\\). At \\((1, 2)\\): \\(3(4) + 12\\frac{dy}{dt} = 0\\), so \\(12\\frac{dy}{dt} = -12\\). Answer \\(-12\\).",
+         "observed_errors": [
+            "BC-ERR-04021"
+         ],
+         "misconception_hypotheses": [],
+         "non_conceptual_cause": "slip",
+         "rationale": "Every step to 12 dy/dt = -12 is correct, and the right-hand side was copied as the answer without the final division. That is the record's non-conceptual cause of an isolation left undone, not a misconception."
+      },
+      {
+         "id": "GLD-DGN-019",
+         "item_id": "ITM-AGT-04009-01",
+         "archetype_id": "BC-QA-04009",
+         "student_answer": "27",
+         "student_work": "L'Hospital: \\(\\lim \\frac{3f'(3x - 2)}{2x}\\). L'Hospital again: \\(\\lim \\frac{9f''(3x - 2)}{2} = \\frac{9(6)}{2} = 27\\).",
+         "observed_errors": [
+            "BC-ERR-04029"
+         ],
+         "misconception_hypotheses": [
+            {
+               "id": "BC-MIS-04015",
+               "rank": 1
+            },
+            {
+               "id": "BC-MIS-04014",
+               "rank": 2
+            }
+         ],
+         "non_conceptual_cause": "",
+         "rationale": "The second application was made to 6 over 2, which is not indeterminate, and no form was checked at either stage. Believing the rule applies to any awkward limit is ranked first; not recognising which forms are indeterminate is the rival."
+      },
+      {
+         "id": "GLD-DGN-020",
+         "item_id": "ITM-AGT-04009-01",
+         "archetype_id": "BC-QA-04009",
+         "student_answer": "1",
+         "student_work": "Both parts go to 0, so L'Hospital: \\(\\lim_{x \\to 1} \\frac{f'(3x - 2)}{2x} = \\frac{f'(1)}{2} = \\frac{2}{2} = 1\\).",
+         "observed_errors": [
+            "BC-ERR-04031"
+         ],
+         "misconception_hypotheses": [
+            {
+               "id": "BC-MIS-04016",
+               "rank": 1
+            },
+            {
+               "id": "BC-MIS-04015",
+               "rank": 2
+            }
+         ],
+         "non_conceptual_cause": "",
+         "rationale": "The hypothesis check and the separate differentiation are right, but the chain rule factor 3 is missing from the numerator's derivative. The record's two candidates are ranked with low confidence because its non-conceptual cause (the chain rule factor dropped inside the numerator) fits this work at least as well as either misconception."
+      },
+      {
+         "id": "GLD-DGN-021",
+         "item_id": "ITM-AGT-05007-01",
+         "archetype_id": "BC-QA-05007",
+         "student_answer": "2",
+         "student_work": "\\(g'(x) = (x + 1)(x - 2)(x - 5)\\). Critical points in \\((0, 6)\\): 2 and 5. \\(g'\\) goes from \\(+\\) to \\(-\\) at \\(x = 2\\), so relative minimum at \\(x = 2\\).",
+         "observed_errors": [
+            "BC-ERR-05021"
+         ],
+         "misconception_hypotheses": [
+            {
+               "id": "BC-MIS-05014",
+               "rank": 1
+            },
+            {
+               "id": "BC-MIS-05023",
+               "rank": 2
+            }
+         ],
+         "non_conceptual_cause": "",
+         "rationale": "The sign change at x = 2 is read correctly as positive to negative but classified as a minimum. The classification-from-derivative-values belief is ranked first; carrying a second derivative rule over wrongly is the rival. The record's non-conceptual cause (labels transposed) also fits and would need a probe."
+      },
+      {
+         "id": "GLD-DGN-022",
+         "item_id": "ITM-AGT-05007-01",
+         "archetype_id": "BC-QA-05007",
+         "student_answer": "\\(2 + \\sqrt{3}\\)",
+         "student_work": "\\(g\\) is smallest where \\(g'\\) is smallest. \\(g''(x) = 3x^{2} - 12x + 3 = 0\\) gives \\(x = 2 \\pm \\sqrt{3}\\), and \\(g'''(2 + \\sqrt{3}) > 0\\), so \\(g'\\) has its minimum at \\(x = 2 + \\sqrt{3}\\). Answer \\(2 + \\sqrt{3}\\).",
+         "observed_errors": [
+            "BC-ERR-05022"
+         ],
+         "misconception_hypotheses": [
+            {
+               "id": "BC-MIS-05014",
+               "rank": 1
+            },
+            {
+               "id": "BC-MIS-05008",
+               "rank": 2
+            }
+         ],
+         "non_conceptual_cause": "",
+         "rationale": "The student located the minimum by the size of g' rather than by where g' changes sign, which is BC-ERR-05022. Classification from the derivative's value is ranked first; treating every critical point as an extremum is the weaker rival."
+      },
+      {
+         "id": "GLD-DGN-023",
+         "item_id": "ITM-AGT-05012-01",
+         "archetype_id": "BC-QA-05012",
+         "student_answer": "\\(-\\frac{9}{16}\\)",
+         "student_work": "\\(\\frac{d^{2}y}{dx^{2}} = \\frac{\\left(\\frac{dy}{dx} - 2\\right)(-x + 2y) - \\left(2\\frac{dy}{dx} - 1\\right)(-2x + y)}{(-x + 2y)^{2}}\\). At \\((2, 3)\\), with \\(\\frac{dy}{dx} = 0\\) at the point: \\(\\frac{(-2)(4) - (-1)(-1)}{16} = -\\frac{9}{16}\\).",
+         "observed_errors": [
+            "BC-ERR-03023"
+         ],
+         "misconception_hypotheses": [
+            {
+               "id": "BC-MIS-03006",
+               "rank": 1
+            },
+            {
+               "id": "BC-MIS-05033",
+               "rank": 2
+            },
+            {
+               "id": "BC-MIS-03013",
+               "rank": 3
+            }
+         ],
+         "non_conceptual_cause": "",
+         "rationale": "The second derivative expression is correct, but dy/dx was replaced by 0 instead of its value -1/4 at (2, 3). Treating dy/dx as a number fixed without computing it is ranked first, the constant-dependent-variable belief second, and the higher-derivative confusion third; the record lists three candidates and none is settled by this work."
+      },
+      {
+         "id": "GLD-DGN-024",
+         "item_id": "ITM-AGT-05012-02",
+         "archetype_id": "BC-QA-05012",
+         "student_answer": "\\(\\frac{4}{25}\\)",
+         "student_work": "\\(\\frac{dy}{dx} = \\frac{-y}{x + 2y}\\). \\(\\frac{d^{2}y}{dx^{2}} = \\frac{\\left(-\\frac{dy}{dx}\\right)(x + 2y) - (-y)(1)}{(x + 2y)^{2}}\\). At \\((1, 2)\\), \\(\\frac{dy}{dx} = -\\frac{2}{5}\\): \\(\\frac{\\frac{2}{5}(5) + 2}{25} = \\frac{4}{25}\\).",
+         "observed_errors": [
+            "BC-ERR-05060"
+         ],
+         "misconception_hypotheses": [
+            {
+               "id": "BC-MIS-05033",
+               "rank": 1
+            },
+            {
+               "id": "BC-MIS-05025",
+               "rank": 2
+            }
+         ],
+         "non_conceptual_cause": "",
+         "rationale": "The chain rule was applied to y in the numerator but the denominator x + 2y was differentiated as 1, as if y were constant there. The constant-dependent-variable belief is ranked first; the rival is weak. The record's non-conceptual cause (chain rule factor dropped in the copy) is possible because the student used dy/dx in the numerator."
+      },
+      {
+         "id": "GLD-DGN-025",
+         "item_id": "ITM-AGT-06002-01",
+         "archetype_id": "BC-QA-06002",
+         "student_answer": "132",
+         "student_work": "Widths are all 3. Trapezoidal sum \\(\\approx 3(10) + 3(14) + 3(20) = 30 + 42 + 60 = 132\\).",
+         "observed_errors": [
+            "BC-ERR-99028"
+         ],
+         "misconception_hypotheses": [
+            {
+               "id": "BC-MIS-06001",
+               "rank": 1
+            },
+            {
+               "id": "BC-MIS-06004",
+               "rank": 2
+            }
+         ],
+         "non_conceptual_cause": "",
+         "rationale": "The response used left endpoint rectangles, the wrong sum type, while labelling it trapezoidal. Seeing a Riemann sum as a sum of listed values is ranked first; a wrong model of the trapezoid is the rival."
+      },
+      {
+         "id": "GLD-DGN-026",
+         "item_id": "ITM-AGT-06008-01",
+         "archetype_id": "BC-QA-06008",
+         "student_answer": "\\(2 + e^{4}\\)",
+         "student_work": "\\(u = x^{2}\\), \\(du = 2x\\,dx\\). \\(\\int_{0}^{2} x e^{x^{2}}\\,dx = \\int_{0}^{4} e^{u}\\,du = e^{4} - 1\\). \\(F(2) = 3 + e^{4} - 1 = 2 + e^{4}\\).",
+         "observed_errors": [
+            "BC-ERR-06019"
+         ],
+         "misconception_hypotheses": [
+            {
+               "id": "BC-MIS-06016",
+               "rank": 1
+            },
+            {
+               "id": "BC-MIS-06017",
+               "rank": 2
+            }
+         ],
+         "non_conceptual_cause": "",
+         "rationale": "du = 2x dx was written but x dx was replaced by du, not by one half du. Seeing substitution as a renaming that leaves the integral unchanged is ranked first; the rival fits less well because the substitution choice itself is right."
+      },
+      {
+         "id": "GLD-DGN-027",
+         "item_id": "ITM-AGT-06009-01",
+         "archetype_id": "BC-QA-06009",
+         "student_answer": "\\(\\frac{\\pi^{2}}{8}\\)",
+         "student_work": "\\(\\int_{0}^{\\pi/2} x\\cos x\\,dx = \\left(\\int_{0}^{\\pi/2} x\\,dx\\right)\\left(\\int_{0}^{\\pi/2} \\cos x\\,dx\\right) = \\frac{\\pi^{2}}{8} \\cdot 1 = \\frac{\\pi^{2}}{8}\\).",
+         "observed_errors": [
+            "BC-ERR-06022"
+         ],
+         "misconception_hypotheses": [
+            {
+               "id": "BC-MIS-06019",
+               "rank": 1
+            },
+            {
+               "id": "BC-MIS-06022",
+               "rank": 2
+            }
+         ],
+         "non_conceptual_cause": "",
+         "rationale": "The integral of the product was split into a product of integrals. Believing antidifferentiation distributes over a product is ranked first; choosing technique by surface look is the rival."
+      },
+      {
+         "id": "GLD-DGN-028",
+         "item_id": "ITM-AGT-06010-01",
+         "archetype_id": "BC-QA-06010",
+         "student_answer": "\\(\\ln 5 - \\ln 3\\)",
+         "student_work": "\\(\\frac{x^{2}}{(x - 2)(x + 2)} = \\frac{A}{x - 2} + \\frac{B}{x + 2}\\), \\(x^{2} = A(x + 2) + B(x - 2)\\). \\(x = 2\\): \\(A = 1\\); \\(x = -2\\): \\(B = -1\\). \\(\\left[\\ln|x - 2| - \\ln|x + 2|\\right]_{3}^{4} = \\ln 2 - \\ln 6 + \\ln 5 = \\ln 5 - \\ln 3\\).",
+         "observed_errors": [
+            "BC-ERR-06026"
+         ],
+         "misconception_hypotheses": [
+            {
+               "id": "BC-MIS-06022",
+               "rank": 1
+            },
+            {
+               "id": "BC-MIS-06017",
+               "rank": 2
+            }
+         ],
+         "non_conceptual_cause": "",
+         "rationale": "An improper rational integrand was decomposed with no preliminary division, so the constant 1 from the division is lost. Choosing technique by the surface look (the factorable denominator) is ranked first."
+      },
+      {
+         "id": "GLD-DGN-029",
+         "item_id": "ITM-AGT-06012-01",
+         "archetype_id": "BC-QA-06012",
+         "student_answer": "-3",
+         "student_work": "\\(g'(x) = -\\sqrt{(2x)^{3} + 1}\\). \\(g'(1) = -\\sqrt{9} = -3\\).",
+         "observed_errors": [
+            "BC-ERR-06027"
+         ],
+         "misconception_hypotheses": [
+            {
+               "id": "BC-MIS-06023",
+               "rank": 1
+            },
+            {
+               "id": "BC-MIS-06024",
+               "rank": 2
+            }
+         ],
+         "non_conceptual_cause": "",
+         "rationale": "The reversal of limits is handled and the integrand is evaluated at the upper limit 2x, but the factor 2 from the chain rule is missing. Believing the first Fundamental Theorem carries no chain rule is ranked first."
+      },
+      {
+         "id": "GLD-DGN-030",
+         "item_id": "ITM-AGT-06013-01",
+         "archetype_id": "BC-QA-06013",
+         "student_answer": "15",
+         "student_work": "\\(\\int_{1}^{3} f\\,dx = 12 - 5 = 7\\). \\(\\int_{1}^{3} g\\,dx = 4\\). So \\(\\int_{1}^{3} (f + 2g)\\,dx = 7 + 2(4) = 15\\).",
+         "observed_errors": [
+            "BC-ERR-99012"
+         ],
+         "misconception_hypotheses": [
+            {
+               "id": "BC-MIS-08012",
+               "rank": 1
+            },
+            {
+               "id": "BC-MIS-99004",
+               "rank": 2
+            }
+         ],
+         "non_conceptual_cause": "",
+         "rationale": "The given integral of g runs from 3 to 1 and was used as the integral from 1 to 3 without the sign change. Treating limits as a window rather than a directed boundary is ranked first; the record's non-conceptual cause (reversal not noticed) is a rival that a probe with the limits highlighted would separate."
+      },
+      {
+         "id": "GLD-DGN-031",
+         "item_id": "ITM-AGT-07003-01",
+         "archetype_id": "BC-QA-07003",
+         "student_answer": "\\(2e^{x^{3}}\\)",
+         "student_work": "\\(\\frac{dy}{y} = 3x^{2}\\,dx\\), \\(\\ln y = x^{3} + C\\). At \\(x = 0\\), \\(y = -2\\): \\(C = \\ln 2\\). \\(y = e^{x^{3} + \\ln 2} = 2e^{x^{3}}\\).",
+         "observed_errors": [
+            "BC-ERR-07030"
+         ],
+         "misconception_hypotheses": [
+            {
+               "id": "BC-MIS-07018",
+               "rank": 1
+            },
+            {
+               "id": "BC-MIS-07019",
+               "rank": 2
+            }
+         ],
+         "non_conceptual_cause": "",
+         "rationale": "The logarithm was written without absolute value, ln 2 was used as though the initial y were 2, and the positive branch was kept, which contradicts f(0) = -2. Dropping the absolute value without checking is ranked first."
+      },
+      {
+         "id": "GLD-DGN-032",
+         "item_id": "ITM-AGT-07004-01",
+         "archetype_id": "BC-QA-07004",
+         "student_answer": "4",
+         "student_work": "Slope at \\((1, 2)\\) is \\(1 \\cdot 2 = 2\\). Step from \\(x = 1\\) to \\(x = 2\\): \\(y \\approx 2 + 1(2) = 4\\).",
+         "observed_errors": [
+            "BC-ERR-07019"
+         ],
+         "misconception_hypotheses": [
+            {
+               "id": "BC-MIS-07011",
+               "rank": 1
+            },
+            {
+               "id": "BC-MIS-07012",
+               "rank": 2
+            }
+         ],
+         "non_conceptual_cause": "",
+         "rationale": "One step of size 1 was taken although two equal steps were asked for. Believing Euler's method evaluates the derivative once is ranked first; the rival fits less because no second step was attempted at all."
+      },
+      {
+         "id": "GLD-DGN-033",
+         "item_id": "ITM-AGT-07007-01",
+         "archetype_id": "BC-QA-07007",
+         "student_answer": "5",
+         "student_work": "\\(y' = ke^{kx}\\), \\(y'' = k^{2}e^{kx}\\). \\(k^{2} - 3k - 10 = 0\\), \\((k - 5)(k + 2) = 0\\), so \\(k = 5\\).",
+         "observed_errors": [
+            "BC-ERR-07007"
+         ],
+         "misconception_hypotheses": [
+            {
+               "id": "BC-MIS-07005",
+               "rank": 1
+            },
+            {
+               "id": "BC-MIS-07003",
+               "rank": 2
+            }
+         ],
+         "non_conceptual_cause": "",
+         "rationale": "The verification is correct and both roots are found, but the stated condition k < 0 was never applied. Believing a differential equation has one solution, taken as the first root, is ranked first; the record's non-conceptual cause (stopping after the first requirement) is a rival."
+      },
+      {
+         "id": "GLD-DGN-034",
+         "item_id": "ITM-AGT-07011-01",
+         "archetype_id": "BC-QA-07011",
+         "student_answer": "20",
+         "student_work": "\\(s\\) comes from \\(\\frac{ds}{dt} = 4t^{3} - 6t\\). At \\(t = 2\\): \\(4(8) - 6(2) = 32 - 12 = 20\\). So \\(s(2) = 20\\).",
+         "observed_errors": [
+            "BC-ERR-07038"
+         ],
+         "misconception_hypotheses": [
+            {
+               "id": "BC-MIS-07002",
+               "rank": 1
+            },
+            {
+               "id": "BC-MIS-07020",
+               "rank": 2
+            }
+         ],
+         "non_conceptual_cause": "",
+         "rationale": "The rate was evaluated at t = 2 and reported as the position, so the reported quantity is one derivative away from the one asked for. Treating the differential equation as an equation for the quantity itself is ranked first."
+      },
+      {
+         "id": "GLD-DGN-035",
+         "item_id": "ITM-AGT-99003-01",
+         "archetype_id": "BC-QA-99003",
+         "student_answer": "\\(-\\frac{\\sqrt{3}}{2}\\)",
+         "student_work": "\\(r = 1 + \\cos\\theta\\), slope \\(= \\frac{dr}{d\\theta} = -\\sin\\theta\\). At \\(\\theta = \\frac{\\pi}{3}\\): \\(-\\frac{\\sqrt{3}}{2}\\).",
+         "observed_errors": [
+            "BC-ERR-09031"
+         ],
+         "misconception_hypotheses": [
+            {
+               "id": "BC-MIS-09015",
+               "rank": 1
+            },
+            {
+               "id": "BC-MIS-09014",
+               "rank": 2
+            }
+         ],
+         "non_conceptual_cause": "",
+         "rationale": "dr/dtheta was reported as the slope of the tangent line with no conversion to x and y. Taking the slope of a polar curve to be dr/dtheta is ranked first."
+      },
+      {
+         "id": "GLD-DGN-036",
+         "item_id": "ITM-AGT-99003-01",
+         "archetype_id": "BC-QA-99003",
+         "student_answer": "\\(\\sqrt{3}\\)",
+         "student_work": "\\(x = r\\cos\\theta\\), \\(y = r\\sin\\theta\\). \\(\\frac{dx}{d\\theta} = \\frac{dr}{d\\theta}\\cos\\theta = -\\sin\\theta\\cos\\theta\\), \\(\\frac{dy}{d\\theta} = \\frac{dr}{d\\theta}\\sin\\theta = -\\sin^{2}\\theta\\). At \\(\\frac{\\pi}{3}\\): \\(\\frac{-3/4}{-\\sqrt{3}/4} = \\sqrt{3}\\).",
+         "observed_errors": [
+            "BC-ERR-09032"
+         ],
+         "misconception_hypotheses": [
+            {
+               "id": "BC-MIS-09013",
+               "rank": 1
+            },
+            {
+               "id": "BC-MIS-09015",
+               "rank": 2
+            }
+         ],
+         "non_conceptual_cause": "",
+         "rationale": "Each coordinate was differentiated as though the trigonometric factor were constant, so only one of the two product rule terms appears. Treating r as a coordinate multiplied by fixed numbers is ranked first; the slope-is-dr/dtheta belief is second because the student did form dy/dtheta over dx/dtheta."
+      },
+      {
+         "id": "GLD-DGN-037",
+         "item_id": "ITM-AGT-99003-01",
+         "archetype_id": "BC-QA-99003",
+         "student_answer": "\\(-\\frac{\\sqrt{3}}{3}\\)",
+         "student_work": "\\(\\frac{dx}{d\\theta} = \\frac{dr}{d\\theta} \\cdot \\frac{d}{d\\theta}\\cos\\theta = (-\\sin\\theta)(-\\sin\\theta) = \\sin^{2}\\theta\\). \\(\\frac{dy}{d\\theta} = (-\\sin\\theta)(\\cos\\theta)\\). Slope \\(= \\frac{-\\sin\\theta\\cos\\theta}{\\sin^{2}\\theta} = -\\cot\\theta = -\\frac{\\sqrt{3}}{3}\\).",
+         "observed_errors": [
+            "BC-ERR-09032"
+         ],
+         "misconception_hypotheses": [
+            {
+               "id": "BC-MIS-09013",
+               "rank": 1
+            },
+            {
+               "id": "BC-MIS-09015",
+               "rank": 2
+            }
+         ],
+         "non_conceptual_cause": "",
+         "rationale": "The derivative of each product was taken as the product of the two derivatives. Both candidates in the record are weak fits for a product-rule error; the ordering is tentative and the product rule on its own should be probed first."
+      },
+      {
+         "id": "GLD-DGN-038",
+         "item_id": "ITM-AGT-10002-01",
+         "archetype_id": "BC-QA-10002",
+         "student_answer": "\\(\\frac{3}{2}\\)",
+         "student_work": "Geometric with \\(r = \\frac{1}{3}\\) and first term \\(\\left(\\frac{1}{3}\\right)^{0} = 1\\). Sum \\(= \\frac{1}{1 - \\frac{1}{3}} = \\frac{3}{2}\\).",
+         "observed_errors": [
+            "BC-ERR-10006"
+         ],
+         "misconception_hypotheses": [
+            {
+               "id": "BC-MIS-10004",
+               "rank": 1
+            },
+            {
+               "id": "BC-MIS-10003",
+               "rank": 2
+            }
+         ],
+         "non_conceptual_cause": "",
+         "rationale": "The first term was taken at index 0 although the series starts at n = 2. Believing the first term is always the index zero term is ranked first; the record's non-conceptual cause (lower index read as zero) is a rival."
+      },
+      {
+         "id": "GLD-DGN-039",
+         "item_id": "ITM-AGT-10003-01",
+         "archetype_id": "BC-QA-10003",
+         "student_answer": "\\(\\frac{9}{7}\\)",
+         "student_work": "First term \\(n = 1\\): \\(\\frac{9}{10}\\). Ratio: \\(\\frac{3}{10}\\). Sum \\(= \\frac{9/10}{1 - 3/10} = \\frac{9}{7}\\).",
+         "observed_errors": [
+            "BC-ERR-10004"
+         ],
+         "misconception_hypotheses": [],
+         "non_conceptual_cause": "misread",
+         "rationale": "The first term was computed correctly from 3^2 over 10, yet the ratio was read off the printed bases 3 and 10 without forming a quotient of consecutive terms. The correct first term shows the exponent 2n was handled once, which points to the record's non-conceptual cause (base read off as the ratio) rather than a belief."
+      },
+      {
+         "id": "GLD-DGN-040",
+         "item_id": "ITM-AGT-10005-01",
+         "archetype_id": "BC-QA-10005",
+         "student_answer": "\\(\\frac{1}{2}\\)",
+         "student_work": "\\(\\int_{1}^{\\infty} \\frac{1}{x^{3}}\\,dx = \\lim_{b \\to \\infty}\\left[-\\frac{1}{2x^{2}}\\right]_{1}^{b} = \\frac{1}{2}\\).",
+         "observed_errors": [
+            "BC-ERR-10012"
+         ],
+         "misconception_hypotheses": [
+            {
+               "id": "BC-MIS-10007",
+               "rank": 1
+            },
+            {
+               "id": "BC-MIS-10004",
+               "rank": 2
+            }
+         ],
+         "non_conceptual_cause": "",
+         "rationale": "The limit notation and antiderivative are correct but the lower limit is 1 while the series starts at 2. Applying the test without matching its conditions is ranked first; the record's non-conceptual cause (lower index read as one by habit) is a strong rival."
+      },
+      {
+         "id": "GLD-DGN-041",
+         "item_id": "ITM-AGT-10008-01",
+         "archetype_id": "BC-QA-10008",
+         "student_answer": "\\(\\frac{9}{64}\\)",
+         "student_work": "First omitted term is \\(n = 3\\): \\(\\frac{(x - 2)^{3}}{3 \\cdot 4^{3}}\\). With \\(x = 3\\): \\(\\frac{3^{3}}{3 \\cdot 64} = \\frac{9}{64}\\).",
+         "observed_errors": [
+            "BC-ERR-10025"
+         ],
+         "misconception_hypotheses": [],
+         "non_conceptual_cause": "misread",
+         "rationale": "The correct omitted term was identified, and 3 was substituted for x - 2 rather than for x. The error is in reading which expression the input replaces, not in the error bound idea, so it is diagnosed as a misread with no misconception hypothesis."
+      },
+      {
+         "id": "GLD-DGN-042",
+         "item_id": "ITM-AGT-10009-01",
+         "archetype_id": "BC-QA-10009",
+         "student_answer": "\\(\\frac{1}{375}\\)",
+         "student_work": "Bound \\(= \\frac{f'''(1)\\,|x - 1|^{3}}{3!} = \\frac{2 \\cdot (1/5)^{3}}{6} = \\frac{1}{375}\\).",
+         "observed_errors": [
+            "BC-ERR-10033"
+         ],
+         "misconception_hypotheses": [
+            {
+               "id": "BC-MIS-10017",
+               "rank": 1
+            },
+            {
+               "id": "BC-MIS-99009",
+               "rank": 2
+            }
+         ],
+         "non_conceptual_cause": "",
+         "rationale": "The value of f''' at the centre was used in place of its maximum on the interval, so the bound's condition is not met. Using a bound without checking its conditions is ranked first and using a theorem's conclusion without its hypotheses second."
+      },
+      {
+         "id": "GLD-DGN-043",
+         "item_id": "ITM-AGT-10010-01",
+         "archetype_id": "BC-QA-10010",
+         "student_answer": "\\(1 + x + x^{2}\\)",
+         "student_work": "\\(f(0) = 1\\), \\(f'(0) = 0 \\cdot 1 + 1 = 1\\), \\(f'' = f + x f'\\), so \\(f''(0) = 1\\). \\(P_{2}(x) = 1 + 1x + 1x^{2}\\).",
+         "observed_errors": [
+            "BC-ERR-10029"
+         ],
+         "misconception_hypotheses": [
+            {
+               "id": "BC-MIS-10019",
+               "rank": 1
+            },
+            {
+               "id": "BC-MIS-10020",
+               "rank": 2
+            }
+         ],
+         "non_conceptual_cause": "",
+         "rationale": "All derivative values are right but f''(0) was placed as the coefficient of x^2 with no division by 2!. Believing Taylor coefficients are the derivative values is ranked first."
+      },
+      {
+         "id": "GLD-DGN-044",
+         "item_id": "ITM-AGT-10011-01",
+         "archetype_id": "BC-QA-10011",
+         "student_answer": "\\(1 + 2x - 3x^{2} + 2x^{3} + x^{4}\\)",
+         "student_work": "\\(\\frac{1}{0!} = 1\\), \\(\\frac{2}{1!} = 2\\), \\(\\frac{-6}{2!} = -3\\), \\(\\frac{12}{3!} = 2\\), \\(\\frac{24}{4!} = 1\\). \\(P = 1 + 2x - 3x^{2} + 2x^{3} + x^{4}\\).",
+         "observed_errors": [
+            "BC-ERR-10030"
+         ],
+         "misconception_hypotheses": [
+            {
+               "id": "BC-MIS-10020",
+               "rank": 1
+            },
+            {
+               "id": "BC-MIS-10021",
+               "rank": 2
+            }
+         ],
+         "non_conceptual_cause": "",
+         "rationale": "Every coefficient is right, and a degree 4 term was kept although degree 3 was requested. Treating a Taylor polynomial and the series as interchangeable is ranked first; the record's non-conceptual cause (every supplied value used before the degree was checked) is a rival."
+      },
+      {
+         "id": "GLD-DGN-045",
+         "item_id": "ITM-AGT-10014-01",
+         "archetype_id": "BC-QA-10014",
+         "student_answer": "7",
+         "student_work": "Ratio test: \\(\\frac{|x + 2|}{9} < 1\\), so \\(-9 < x + 2 < 9\\), \\(-11 < x < 7\\). Radius: 7.",
+         "observed_errors": [
+            "BC-ERR-10036"
+         ],
+         "misconception_hypotheses": [
+            {
+               "id": "BC-MIS-99013",
+               "rank": 1
+            },
+            {
+               "id": "BC-MIS-10023",
+               "rank": 2
+            }
+         ],
+         "non_conceptual_cause": "",
+         "rationale": "The inequality is solved correctly and the right endpoint of the interval is reported as the radius. Treating the radius and the interval as the same statement is ranked first."
+      },
+      {
+         "id": "GLD-DGN-046",
+         "item_id": "ITM-AGT-10017-01",
+         "archetype_id": "BC-QA-10017",
+         "student_answer": "\\(2x^{2} - \\frac{1}{3}x^{4} + \\frac{1}{60}x^{6}\\)",
+         "student_work": "\\(\\sin(2x) = 2x - \\frac{2x^{3}}{3!} + \\frac{2x^{5}}{5!}\\). Times \\(x\\): \\(2x^{2} - \\frac{1}{3}x^{4} + \\frac{1}{60}x^{6}\\).",
+         "observed_errors": [
+            "BC-ERR-10041"
+         ],
+         "misconception_hypotheses": [
+            {
+               "id": "BC-MIS-10026",
+               "rank": 1
+            },
+            {
+               "id": "BC-MIS-10021",
+               "rank": 2
+            }
+         ],
+         "non_conceptual_cause": "",
+         "rationale": "The 2 was attached as a factor to each x power instead of raising 2x to each power. The record's candidates are ranked, but the record's non-conceptual cause (no parentheses around the substituted expression) may explain it as well."
+      }
+   ]
+}

@@ -1,0 +1,802 @@
+{
+   "role": "generator",
+   "set": "golden_set_1",
+   "authored_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24",
+   "labelled_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24",
+   "authored_on": "2026-09-24",
+   "note": "Model-authored and model-labelled by claude-opus-5-5, not a human's work: one signed-off bank item per archetype family (the lowest item id in the family), with its key, its distractor error paths and a value the model reached by solving the stem before reading the key, so the set measures whether a generated item's key and error paths hold. 28 of the 77 active families have signed-off items and appear here; the other 49 have no items in the bank yet: absolute-extremum-candidates, accumulation-extremum, accumulation-function-analysis, accumulation-interpretation, accumulation-of-density, accumulation-total-from-rate, accumulation-with-initial-condition, arc-length, area-between-curves, average-rate-of-change, average-value, concavity-analysis, continuity-at-a-point, cross-sectional-volume, de-modelling, de-qualitative-behaviour, definite-integral-from-graph, derivative-from-graph, derivative-in-context, differentiability-and-continuity, discontinuity-classification, end-behaviour-limit, evt-existence, exponential-model, function-derivative-graph-relationship, improper-integral, integral-comparison-bound, inverse-function-derivative, ivt-existence, limit-from-graph, limit-from-table, logistic-model, mean-value-theorem, monotonicity-analysis, motion-by-accumulation, motion-by-differentiation, notation-translation, optimisation, parametric-calculus, parametric-motion, polar-area, polar-motion, rate-in-rate-out, representation-consistency, revolution-volume, riemann-limit-to-integral, slope-field, squeeze-theorem, technology-numerical-result.",
+   "cases": [
+      {
+         "id": "GLD-GEN-001",
+         "family": "antidifferentiation-technique",
+         "archetype_id": "BC-QA-06008",
+         "item_id": "ITM-AGT-06008-00",
+         "format": "mcq",
+         "calculator": "no_calculator",
+         "answer_key": {
+            "form": "symbolic",
+            "mathjson": [
+               "Rational",
+               15,
+               8
+            ]
+         },
+         "option_error_paths": {
+            "A": "BC-ERR-06019",
+            "B": null,
+            "C": "BC-ERR-06018",
+            "D": "BC-ERR-06018"
+         },
+         "worked_solution_steps": 5,
+         "resolved_independently": "15/8",
+         "agrees_with_key": true
+      },
+      {
+         "id": "GLD-GEN-002",
+         "family": "continuity-interval",
+         "archetype_id": "BC-QA-01015",
+         "item_id": "ITM-AGT-01015-00",
+         "format": "mcq",
+         "calculator": "no_calculator",
+         "answer_key": {
+            "form": "numeric",
+            "mathjson": 5
+         },
+         "option_error_paths": {
+            "A": "BC-ERR-01031",
+            "B": null,
+            "C": "BC-ERR-01032",
+            "D": "BC-ERR-01032"
+         },
+         "worked_solution_steps": 4,
+         "resolved_independently": "5",
+         "agrees_with_key": true
+      },
+      {
+         "id": "GLD-GEN-003",
+         "family": "convergence-test",
+         "archetype_id": "BC-QA-10005",
+         "item_id": "ITM-AGT-10005-00",
+         "format": "mcq",
+         "calculator": "no_calculator",
+         "answer_key": {
+            "form": "symbolic",
+            "mathjson": [
+               "Rational",
+               1,
+               2
+            ]
+         },
+         "option_error_paths": {
+            "A": null,
+            "B": "BC-ERR-10012",
+            "C": "BC-ERR-10013",
+            "D": "BC-ERR-10011"
+         },
+         "worked_solution_steps": 4,
+         "resolved_independently": "1/2",
+         "agrees_with_key": true
+      },
+      {
+         "id": "GLD-GEN-004",
+         "family": "de-verification",
+         "archetype_id": "BC-QA-07007",
+         "item_id": "ITM-AGT-07007-00",
+         "format": "mcq",
+         "calculator": "no_calculator",
+         "answer_key": {
+            "form": "symbolic",
+            "mathjson": 3
+         },
+         "option_error_paths": {
+            "A": "BC-ERR-07007",
+            "B": "BC-ERR-07006",
+            "C": null,
+            "D": "BC-ERR-07006"
+         },
+         "worked_solution_steps": 4,
+         "resolved_independently": "3",
+         "agrees_with_key": true
+      },
+      {
+         "id": "GLD-GEN-005",
+         "family": "derivative-definition-limit",
+         "archetype_id": "BC-QA-02002",
+         "item_id": "ITM-AGT-02002-00",
+         "format": "mcq",
+         "calculator": "no_calculator",
+         "answer_key": {
+            "form": "symbolic",
+            "mathjson": [
+               "Subtract",
+               [
+                  "Multiply",
+                  6,
+                  "x"
+               ],
+               5
+            ]
+         },
+         "option_error_paths": {
+            "A": null,
+            "B": "BC-ERR-02007",
+            "C": "BC-ERR-02005",
+            "D": "BC-ERR-02006"
+         },
+         "worked_solution_steps": 4,
+         "resolved_independently": "6x - 5",
+         "agrees_with_key": true
+      },
+      {
+         "id": "GLD-GEN-006",
+         "family": "derivative-from-table",
+         "archetype_id": "BC-QA-02009",
+         "item_id": "ITM-AGT-02009-00",
+         "format": "mcq",
+         "calculator": "no_calculator",
+         "answer_key": {
+            "form": "symbolic",
+            "mathjson": -14
+         },
+         "option_error_paths": {
+            "A": "BC-ERR-02024",
+            "B": "BC-ERR-02024",
+            "C": "BC-ERR-02020",
+            "D": null
+         },
+         "worked_solution_steps": 4,
+         "resolved_independently": "-14",
+         "agrees_with_key": true
+      },
+      {
+         "id": "GLD-GEN-007",
+         "family": "euler",
+         "archetype_id": "BC-QA-07004",
+         "item_id": "ITM-AGT-07004-00",
+         "format": "mcq",
+         "calculator": "no_calculator",
+         "answer_key": {
+            "form": "symbolic",
+            "mathjson": [
+               "Rational",
+               5,
+               2
+            ]
+         },
+         "option_error_paths": {
+            "A": null,
+            "B": "BC-ERR-07021",
+            "C": "BC-ERR-07019",
+            "D": "BC-ERR-07020"
+         },
+         "worked_solution_steps": 4,
+         "resolved_independently": "5/2",
+         "agrees_with_key": true
+      },
+      {
+         "id": "GLD-GEN-008",
+         "family": "extremum-classification",
+         "archetype_id": "BC-QA-05007",
+         "item_id": "ITM-AGT-05007-00",
+         "format": "mcq",
+         "calculator": "no_calculator",
+         "answer_key": {
+            "form": "symbolic",
+            "mathjson": 7
+         },
+         "option_error_paths": {
+            "A": "BC-ERR-05021",
+            "B": "BC-ERR-05022",
+            "C": null,
+            "D": "BC-ERR-05010"
+         },
+         "worked_solution_steps": 4,
+         "resolved_independently": "7",
+         "agrees_with_key": true
+      },
+      {
+         "id": "GLD-GEN-009",
+         "family": "ftc-differentiation",
+         "archetype_id": "BC-QA-06012",
+         "item_id": "ITM-AGT-06012-00",
+         "format": "mcq",
+         "calculator": "no_calculator",
+         "answer_key": {
+            "form": "symbolic",
+            "mathjson": 12
+         },
+         "option_error_paths": {
+            "A": null,
+            "B": "BC-ERR-06027",
+            "C": "BC-ERR-06028",
+            "D": "BC-ERR-06028"
+         },
+         "worked_solution_steps": 4,
+         "resolved_independently": "12",
+         "agrees_with_key": true
+      },
+      {
+         "id": "GLD-GEN-010",
+         "family": "higher-order-derivative",
+         "archetype_id": "BC-QA-03008",
+         "item_id": "ITM-AGT-03008-00",
+         "format": "mcq",
+         "calculator": "no_calculator",
+         "answer_key": {
+            "form": "symbolic",
+            "mathjson": [
+               "Add",
+               [
+                  "Multiply",
+                  6,
+                  "x",
+                  [
+                     "Ln",
+                     "x"
+                  ]
+               ],
+               [
+                  "Multiply",
+                  5,
+                  "x"
+               ]
+            ]
+         },
+         "option_error_paths": {
+            "A": "BC-ERR-03008",
+            "B": "BC-ERR-03021",
+            "C": null,
+            "D": "BC-ERR-03008"
+         },
+         "worked_solution_steps": 3,
+         "resolved_independently": "6x ln(x) + 5x",
+         "agrees_with_key": true
+      },
+      {
+         "id": "GLD-GEN-011",
+         "family": "implicit-differentiation",
+         "archetype_id": "BC-QA-03004",
+         "item_id": "ITM-AGT-03004-00",
+         "format": "mcq",
+         "calculator": "no_calculator",
+         "answer_key": {
+            "form": "symbolic",
+            "mathjson": [
+               "Negate",
+               [
+                  "Divide",
+                  [
+                     "Add",
+                     [
+                        "Multiply",
+                        2,
+                        "x"
+                     ],
+                     [
+                        "Multiply",
+                        4,
+                        "y"
+                     ]
+                  ],
+                  [
+                     "Add",
+                     [
+                        "Multiply",
+                        4,
+                        "x"
+                     ],
+                     [
+                        "Multiply",
+                        3,
+                        [
+                           "Power",
+                           "y",
+                           2
+                        ]
+                     ]
+                  ]
+               ]
+            ]
+         },
+         "option_error_paths": {
+            "A": null,
+            "B": "BC-ERR-03008",
+            "C": "BC-ERR-03008",
+            "D": "BC-ERR-03007"
+         },
+         "worked_solution_steps": 3,
+         "resolved_independently": "-(2x + 4y)/(4x + 3y^2)",
+         "agrees_with_key": true
+      },
+      {
+         "id": "GLD-GEN-012",
+         "family": "infinite-limit-asymptote",
+         "archetype_id": "BC-QA-01009",
+         "item_id": "ITM-AGT-01009-00",
+         "format": "mcq",
+         "calculator": "no_calculator",
+         "answer_key": {
+            "form": "symbolic",
+            "mathjson": -4
+         },
+         "option_error_paths": {
+            "A": "BC-ERR-01018",
+            "B": "BC-ERR-01018",
+            "C": null,
+            "D": "BC-ERR-01018"
+         },
+         "worked_solution_steps": 5,
+         "resolved_independently": "-4",
+         "agrees_with_key": true
+      },
+      {
+         "id": "GLD-GEN-013",
+         "family": "integral-approximation",
+         "archetype_id": "BC-QA-06002",
+         "item_id": "ITM-AGT-06002-00",
+         "format": "mcq",
+         "calculator": "no_calculator",
+         "answer_key": {
+            "form": "symbolic",
+            "mathjson": [
+               "Rational",
+               145,
+               2
+            ]
+         },
+         "option_error_paths": {
+            "A": null,
+            "B": "BC-ERR-06001",
+            "C": "BC-ERR-06004",
+            "D": "BC-ERR-99028"
+         },
+         "worked_solution_steps": 3,
+         "resolved_independently": "145/2",
+         "agrees_with_key": true
+      },
+      {
+         "id": "GLD-GEN-014",
+         "family": "integral-properties",
+         "archetype_id": "BC-QA-06013",
+         "item_id": "ITM-AGT-06013-00",
+         "format": "mcq",
+         "calculator": "no_calculator",
+         "answer_key": {
+            "form": "symbolic",
+            "mathjson": -34
+         },
+         "option_error_paths": {
+            "A": "BC-ERR-99012",
+            "B": null,
+            "C": "BC-ERR-99032",
+            "D": "BC-ERR-99012"
+         },
+         "worked_solution_steps": 4,
+         "resolved_independently": "-34",
+         "agrees_with_key": true
+      },
+      {
+         "id": "GLD-GEN-015",
+         "family": "lhospital-limit",
+         "archetype_id": "BC-QA-04009",
+         "item_id": "ITM-AGT-04009-00",
+         "format": "mcq",
+         "calculator": "no_calculator",
+         "answer_key": {
+            "form": "symbolic",
+            "mathjson": 2
+         },
+         "option_error_paths": {
+            "A": "BC-ERR-04029",
+            "B": null,
+            "C": "BC-ERR-04030",
+            "D": "BC-ERR-04030"
+         },
+         "worked_solution_steps": 5,
+         "resolved_independently": "2",
+         "agrees_with_key": true
+      },
+      {
+         "id": "GLD-GEN-016",
+         "family": "limit-algebraic-rewrite",
+         "archetype_id": "BC-QA-01004",
+         "item_id": "ITM-AGT-01004-00",
+         "format": "mcq",
+         "calculator": "no_calculator",
+         "answer_key": {
+            "form": "symbolic",
+            "mathjson": [
+               "Rational",
+               5,
+               6
+            ]
+         },
+         "option_error_paths": {
+            "A": "BC-ERR-01008",
+            "B": null,
+            "C": "BC-ERR-01010",
+            "D": "BC-ERR-01010"
+         },
+         "worked_solution_steps": 3,
+         "resolved_independently": "5/6",
+         "agrees_with_key": true
+      },
+      {
+         "id": "GLD-GEN-017",
+         "family": "limit-by-theorems",
+         "archetype_id": "BC-QA-01003",
+         "item_id": "ITM-AGT-01003-00",
+         "format": "mcq",
+         "calculator": "no_calculator",
+         "answer_key": {
+            "form": "symbolic",
+            "mathjson": 4
+         },
+         "option_error_paths": {
+            "A": "BC-ERR-01007",
+            "B": "BC-ERR-01007",
+            "C": null,
+            "D": "BC-ERR-01007"
+         },
+         "worked_solution_steps": 3,
+         "resolved_independently": "4",
+         "agrees_with_key": true
+      },
+      {
+         "id": "GLD-GEN-018",
+         "family": "parameter-for-continuity",
+         "archetype_id": "BC-QA-01008",
+         "item_id": "ITM-AGT-01008-00",
+         "format": "mcq",
+         "calculator": "no_calculator",
+         "answer_key": {
+            "form": "symbolic",
+            "mathjson": 3
+         },
+         "option_error_paths": {
+            "A": "BC-ERR-01015",
+            "B": "BC-ERR-01017",
+            "C": "BC-ERR-01017",
+            "D": null
+         },
+         "worked_solution_steps": 4,
+         "resolved_independently": "3",
+         "agrees_with_key": true
+      },
+      {
+         "id": "GLD-GEN-019",
+         "family": "polar-calculus",
+         "archetype_id": "BC-QA-99003",
+         "item_id": "ITM-AGT-99003-00",
+         "format": "mcq",
+         "calculator": "no_calculator",
+         "answer_key": {
+            "form": "symbolic",
+            "mathjson": [
+               "Negate",
+               [
+                  "Multiply",
+                  3,
+                  [
+                     "Sqrt",
+                     3
+                  ]
+               ]
+            ]
+         },
+         "option_error_paths": {
+            "A": "BC-ERR-09031",
+            "B": "BC-ERR-09032",
+            "C": "BC-ERR-09032",
+            "D": null
+         },
+         "worked_solution_steps": 4,
+         "resolved_independently": "-3 sqrt(3)",
+         "agrees_with_key": true
+      },
+      {
+         "id": "GLD-GEN-020",
+         "family": "procedure-selection",
+         "archetype_id": "BC-QA-03009",
+         "item_id": "ITM-AGT-03009-00",
+         "format": "mcq",
+         "calculator": "no_calculator",
+         "answer_key": {
+            "form": "symbolic",
+            "mathjson": [
+               "Add",
+               [
+                  "Multiply",
+                  [
+                     "Power",
+                     3,
+                     "x"
+                  ],
+                  [
+                     "Ln",
+                     3
+                  ],
+                  [
+                     "Power",
+                     [
+                        "Sin",
+                        [
+                           "Multiply",
+                           3,
+                           "x"
+                        ]
+                     ],
+                     2
+                  ]
+               ],
+               [
+                  "Multiply",
+                  6,
+                  [
+                     "Power",
+                     3,
+                     "x"
+                  ],
+                  [
+                     "Sin",
+                     [
+                        "Multiply",
+                        3,
+                        "x"
+                     ]
+                  ],
+                  [
+                     "Cos",
+                     [
+                        "Multiply",
+                        3,
+                        "x"
+                     ]
+                  ]
+               ]
+            ]
+         },
+         "option_error_paths": {
+            "A": null,
+            "B": "BC-ERR-03006",
+            "C": "BC-ERR-99036",
+            "D": "BC-ERR-03002"
+         },
+         "worked_solution_steps": 4,
+         "resolved_independently": "3^x ln(3) sin^2(3x) + 6 (3^x) sin(3x) cos(3x)",
+         "agrees_with_key": true
+      },
+      {
+         "id": "GLD-GEN-021",
+         "family": "radius-interval",
+         "archetype_id": "BC-QA-10014",
+         "item_id": "ITM-AGT-10014-00",
+         "format": "mcq",
+         "calculator": "no_calculator",
+         "answer_key": {
+            "form": "symbolic",
+            "mathjson": [
+               "Rational",
+               1,
+               2
+            ]
+         },
+         "option_error_paths": {
+            "A": null,
+            "B": "BC-ERR-10021",
+            "C": "BC-ERR-10021",
+            "D": "BC-ERR-10036"
+         },
+         "worked_solution_steps": 4,
+         "resolved_independently": "1/2",
+         "agrees_with_key": true
+      },
+      {
+         "id": "GLD-GEN-022",
+         "family": "related-rates",
+         "archetype_id": "BC-QA-04007",
+         "item_id": "ITM-AGT-04007-00",
+         "format": "mcq",
+         "calculator": "no_calculator",
+         "answer_key": {
+            "form": "symbolic",
+            "mathjson": [
+               "Rational",
+               -12,
+               5
+            ]
+         },
+         "option_error_paths": {
+            "A": null,
+            "B": "BC-ERR-04018",
+            "C": "BC-ERR-04018",
+            "D": "BC-ERR-04017"
+         },
+         "worked_solution_steps": 3,
+         "resolved_independently": "-12/5",
+         "agrees_with_key": true
+      },
+      {
+         "id": "GLD-GEN-023",
+         "family": "rule-manipulation",
+         "archetype_id": "BC-QA-02006",
+         "item_id": "ITM-AGT-02006-00",
+         "format": "short_answer",
+         "calculator": "no_calculator",
+         "answer_key": {
+            "form": "symbolic",
+            "mathjson": [
+               "Add",
+               [
+                  "Multiply",
+                  20,
+                  [
+                     "Power",
+                     "x",
+                     3
+                  ]
+               ],
+               [
+                  "Multiply",
+                  -6,
+                  "x"
+               ],
+               8
+            ]
+         },
+         "option_error_paths": {},
+         "worked_solution_steps": 3,
+         "resolved_independently": "20x^3 - 6x + 8",
+         "agrees_with_key": true
+      },
+      {
+         "id": "GLD-GEN-024",
+         "family": "separation-of-variables",
+         "archetype_id": "BC-QA-07003",
+         "item_id": "ITM-AGT-07003-00",
+         "format": "mcq",
+         "calculator": "no_calculator",
+         "answer_key": {
+            "form": "symbolic",
+            "mathjson": [
+               "Multiply",
+               3,
+               [
+                  "Exp",
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ]
+               ]
+            ]
+         },
+         "option_error_paths": {
+            "A": "BC-ERR-07029",
+            "B": null,
+            "C": "BC-ERR-07026",
+            "D": "BC-ERR-99014"
+         },
+         "worked_solution_steps": 4,
+         "resolved_independently": "3 e^(x^2)",
+         "agrees_with_key": true
+      },
+      {
+         "id": "GLD-GEN-025",
+         "family": "series-value",
+         "archetype_id": "BC-QA-10002",
+         "item_id": "ITM-AGT-10002-00",
+         "format": "mcq",
+         "calculator": "no_calculator",
+         "answer_key": {
+            "form": "symbolic",
+            "mathjson": 2
+         },
+         "option_error_paths": {
+            "A": null,
+            "B": "BC-ERR-10006",
+            "C": "BC-ERR-99038",
+            "D": "BC-ERR-10001"
+         },
+         "worked_solution_steps": 4,
+         "resolved_independently": "2",
+         "agrees_with_key": true
+      },
+      {
+         "id": "GLD-GEN-026",
+         "family": "tangent-line-approximation",
+         "archetype_id": "BC-QA-02011",
+         "item_id": "ITM-AGT-02011-00",
+         "format": "mcq",
+         "calculator": "no_calculator",
+         "answer_key": {
+            "form": "symbolic",
+            "mathjson": [
+               "Add",
+               [
+                  "Multiply",
+                  5,
+                  "x"
+               ],
+               7
+            ]
+         },
+         "option_error_paths": {
+            "A": "BC-ERR-02027",
+            "B": "BC-ERR-02028",
+            "C": null,
+            "D": "BC-ERR-02028"
+         },
+         "worked_solution_steps": 4,
+         "resolved_independently": "5x + 7",
+         "agrees_with_key": true
+      },
+      {
+         "id": "GLD-GEN-027",
+         "family": "taylor-construction",
+         "archetype_id": "BC-QA-10010",
+         "item_id": "ITM-AGT-10010-00",
+         "format": "mcq",
+         "calculator": "no_calculator",
+         "answer_key": {
+            "form": "symbolic",
+            "mathjson": [
+               "Add",
+               2,
+               [
+                  "Multiply",
+                  4,
+                  "x"
+               ],
+               [
+                  "Multiply",
+                  [
+                     "Rational",
+                     17,
+                     2
+                  ],
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ]
+               ]
+            ]
+         },
+         "option_error_paths": {
+            "A": null,
+            "B": "BC-ERR-10028",
+            "C": "BC-ERR-10029",
+            "D": "BC-ERR-10030"
+         },
+         "worked_solution_steps": 4,
+         "resolved_independently": "2 + 4x + (17/2) x^2",
+         "agrees_with_key": true
+      },
+      {
+         "id": "GLD-GEN-028",
+         "family": "taylor-error",
+         "archetype_id": "BC-QA-10008",
+         "item_id": "ITM-AGT-10008-00",
+         "format": "mcq",
+         "calculator": "no_calculator",
+         "answer_key": {
+            "form": "symbolic",
+            "mathjson": [
+               "Rational",
+               1,
+               324
+            ]
+         },
+         "option_error_paths": {
+            "A": null,
+            "B": "BC-ERR-10024",
+            "C": "BC-ERR-10024",
+            "D": "BC-ERR-10025"
+         },
+         "worked_solution_steps": 4,
+         "resolved_independently": "1/324",
+         "agrees_with_key": true
+      }
+   ]
+}

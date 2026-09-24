@@ -1,5 +1,6 @@
-"""docs/plan/06-architecture.md, "Data model": the 14 P1 tables, the two passkey tables, and
-diagnoses, which 11 P2 scope item 9 puts in use in P2. gradings stays out until P3."""
+"""docs/plan/06-architecture.md, "Data model": the 14 P1 tables, the two passkey tables,
+diagnoses, which 11 P2 scope item 9 puts in use in P2, and the six tables of the P7 evaluation
+harness (11 P7 scope items 4 to 6). gradings stays out until P3."""
 from sqlalchemy import inspect
 
 from app.db.models import Base, make_engine
@@ -25,14 +26,27 @@ P1_TABLE_NAMES = {
 
 P2_TABLE_NAMES = P1_TABLE_NAMES | {"diagnoses"}
 
+P7_TABLE_NAMES = P2_TABLE_NAMES | {
+   "experiments",
+   "experiment_assignments",
+   "checkpoints",
+   "checkpoint_scores",
+   "probe_administrations",
+   "probe_responses",
+}
+
 
 def test_models_create_all(tmp_path):
    engine = make_engine(tmp_path / "p1.sqlite")
    inspector = inspect(engine)
    table_names = set(inspector.get_table_names())
 
-   assert table_names == P2_TABLE_NAMES
+   assert table_names == P7_TABLE_NAMES
    assert "gradings" not in table_names
+
+   for table_name in sorted(P7_TABLE_NAMES - P2_TABLE_NAMES):
+      columns = {column["name"] for column in inspector.get_columns(table_name)}
+      assert "user_id" in columns, table_name
 
    diagnoses_columns = {column["name"] for column in inspector.get_columns("diagnoses")}
    assert diagnoses_columns == {
@@ -53,6 +67,7 @@ def test_models_create_all(tmp_path):
    attempts_columns = {column["name"] for column in inspector.get_columns("attempts")}
    assert {"error_note", "self_explanation", "snapshot_id"} <= attempts_columns
    assert {"p_split", "p_compensatory"} <= attempts_columns
+   assert "experiment_arms" in attempts_columns
 
    items_options_column = Base.metadata.tables["items"].columns["options"]
    assert items_options_column.type.__class__.__name__ == "JSON"

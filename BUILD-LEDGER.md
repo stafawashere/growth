@@ -1610,6 +1610,69 @@ items) and items 3 and 6 (Slices 3 and 4). Every gate 11 names for P2 now exists
   `1078 passed in 392.38s (0:06:32)`; vitest `Tests  383 passed (383)`; `tsc --noEmit` exit 0;
   `qa/12_report.py` exit 0.
 
+- 2026-09-24, P7 slice 1, the evaluation harness (docs/plan/11 P7), built by Claude on the
+  operator's delegation before P3 to P6 merged, as the stage brief allows once stages 1 to 3 are
+  in (Decisions, 2026-09-24, stage 8). What landed:
+  - Simulation on a world that learns: `app/sim/learning.py` gives each synthetic student a
+    learning rate per skill (band 0.05 to 0.30, scaled by fading stage) on the P2 knowledge state,
+    two forgetting curves (exponential and power law, same half-life), and the ten arms of 10's
+    arm list reachable without an engine change. `app/sim/p7_evals.py` pairs arms student by
+    student; `tools/p7_evals.py` wrote `docs/operator/p7-evals.md` at 200 students by 60 days, seed
+    base 20270510, and a rerun reproduced every number.
+  - The five-term gate: five-term beat two-term on true mastery per item for 35.0 percent of
+    students (exponential) and 21.5 percent (power law), against a 90 percent bar. It stays off.
+    `lambda` stays 0. Tests hold the live policy to the record.
+  - Metrics view: `GET /progress/metrics` (`app/progress/learning_metrics.py`) returns ten
+    metrics, the nine of 10 plus the concept probe, and every value carries its numerator,
+    denominator and what the denominator counts. The A/B comparisons ride along with a Newcombe
+    interval once each arm holds 30 outcomes. The client page "Evidence of learning" is reached
+    from settings only.
+  - A/B switches: `app/experiments/switches.py`, the two experiments 10 marks powered
+    (feedback_elaboration per item, retrieval_entry per skill), states off, on and randomised,
+    stratified assignment written once and never reassigned, the arm recorded on the attempt
+    (`attempts.experiment_arms`). Verification-only feedback is `FeedbackKind.VERIFICATION`.
+    Settings has the switches; the running app starts them randomised (Plan corrections).
+  - Six-week checkpoint: `app/checkpoint/` offers released Section II forms by reference only
+    (2025, 2024, 2023, 2026, 2022, 2019; 2021 excluded, Known defects), timings read from
+    `research/exam/exam-structure.md`, published means from `research/exam/scoring-system.md`,
+    scores per part in `checkpoint_scores`, self-scored by the student until P3's grader exists.
+    It never writes sessions, attempts, skills_state or the review queue.
+  - Concept probe: `content/probe/concept_probe_v1.json`, 17 items drawn by seed and withheld from
+    the practice bank (`app/runtime/bank.py`), administered every 8 weeks into its own tables.
+  - Progress completion: the representation matrix (`GET /progress/representations`) and the
+    checkpoint history on the progress screen, plus checkpoint and probe screens.
+  - Golden sets for all six roles in `content/golden/`, model-authored and model-labelled, each
+    saying so; `app/evals/golden.py` validates them and scores agreement; `tools/golden_sets.py`
+    wrote `docs/operator/golden-sets.md` with the deterministic verifier baseline.
+- Gate tests, each shown red under a break and green on restore in this session:
+  test_brier_and_calibration (red with the guess mapped to 0.30), test_ab_assignment_balanced
+  (red with the balancing removed), test_simulation_reproducible (red with the world's draws
+  unseeded), test_checkpoint_isolated (red with a checkpoint writing a session row),
+  test_metrics_view_renders (red with denominator_label dropped), eval_policy_against_random_control
+  and eval_five_term_against_two_term (small), the live-policy record tests (red with LAMBDA 2.0
+  and with a five-term import in app/session), eval_the_harness_runs_end_to_end_on_seeded_weeks
+  (twelve simulated weeks through the real routes with both switches randomised, an interval
+  stated; red with the interval floor unreachable), and the outcome, retention, probe-withholding,
+  form, golden-set and switch tests. Web: 51 new vitest tests, 19 of 20 breaks went red (the
+  twentieth was a fabricated number that happened to equal a real payload value; a different one
+  went red).
+- P7 exit criteria, 2026-09-24:
+  - Met: every learning metric renders with its denominator (test_metrics_view_renders and the
+    web MetricsView tests); the simulation reproduces from a seed (test_simulation_reproducible,
+    and the recorded run reproduced every number); the A/B and checkpoint machinery runs end to end
+    on seeded data (eval_the_harness_runs_end_to_end_on_seeded_weeks, test_checkpoint_isolated);
+    the five-term comparison is recorded with its decision (stays off).
+  - Pending on calendar time and real use. The operator's `var/growth.db` held 0 users and 0
+    attempts on 2026-09-24, so every date counts from the first real practice session: an A/B with
+    30 outcomes per arm and a stated interval, and 8 weeks of real attempts, at the earliest
+    2026-11-19 if practice starts 2026-09-24; the first checkpoint 6 weeks after a baseline, with
+    its result beside the internal numbers and the d = 0.4 to 0.7 expectation, at the earliest
+    2026-11-05. Rerun the stage 8 prompt then.
+  - Not met on the simulation, recorded rather than loosened: 10's two-term-beats-random bar and
+    the 5 percent false-mastery ceiling (Known defects).
+- Checks at merge of P7 slice 1: pytest `1119 passed in 427.94s (0:07:07)`; vitest `Tests  434 passed
+  (434)` in 34 files; `tsc --noEmit` exit 0; `qa/12_report.py` exit 0.
+
 ## In progress [inferred]
 
 Stage 1, items for Units 4 to 10, is complete in the worktree `../growth-content` on branch
@@ -1617,6 +1680,11 @@ Stage 1, items for Units 4 to 10, is complete in the worktree `../growth-content
 progress in this worktree.
 
 Nothing for stage 2: it merged on 2026-09-24 (Done, "P2 Slice 5").
+
+Stage 8, P7 evaluation harness, 2026-09-24, worktree `../growth-p7` on branch `p7`: built and
+checked on simulated and seeded data (Done, "P7 slice 1"). What remains waits on calendar time
+and the operator's real use, listed under Done, "P7 exit criteria". The next session on P7 is a
+rerun of the stage 8 prompt once at least 8 weeks of real attempts exist.
 
 ## Live API spend log [verified]
 
@@ -2476,6 +2544,34 @@ From the eleventh session, 2026-09-21, found and not fixed.
   a bank, but only once the copy can be read. The lasting fix is the operator's: keep the
   checkouts outside an iCloud-synced folder, or exclude them from sync.
 
+- 2026-09-24, stage 8 (P7), open. On the learning world two-term does not clearly beat the
+  random-within-fringe control: it matched or beat the control on true mastery per item for 67.5
+  percent of 200 students (exponential) and 59.5 percent (power law), against 10's 90 percent bar,
+  with means 0.01092 against 0.01055 and 0.02306 against 0.02310. The P2 world, which did not
+  learn, passed the same comparison. Due-coverage selection is so far not shown to teach better
+  than a uniform draw from the gated fringe. Simulation only; it is not a finding about the student.
+- 2026-09-24, stage 8, open. Arm 6 (`lambda` 2.0) and the compensatory arm served every student
+  exactly what two-term served. Under two-term selection `LAMBDA` reaches only `sigmoid(m_k)` with
+  a retrievability argument, which nothing that chooses items reads, so the decay gate in 10 cannot
+  pass by construction. Deciding on decay needs a selection path that reads it first.
+- 2026-09-24, stage 8, open. False mastery exceeds 10's 5 percent ceiling on every arm, 22.1 and
+  23.3 percent at worst, and none of it comes from practice (0.0 percent of masteries declared from
+  practice). It is the six seeded parents of `app/session/seed.py` (about half not known by a
+  synthetic student) and the diagnostic's placement (about 13 percent). The seeded-parent defect of
+  stage 2 is the larger share.
+- 2026-09-24, stage 8, open. The deterministic item checks miss a wrong intermediate
+  worked-solution step (0 of 6 in the verifier golden set) and a no_calculator stem that is not
+  closed-form (0 of 6). Only P4's independent re-solve and model verifier can catch them.
+- 2026-09-24, stage 8, open, library. `data/frq_records.json` gives 2021 Question 4 parts that sum
+  to 8, not 9, so the 2021 released form is left out of the checkpoint forms until the part points
+  are corrected through staging. Six forms remain, one per 6-week checkpoint to May 2027.
+- 2026-09-24, stage 8, open, bank. ITM-AGT-10005-02 option B (1/(e - 1), the series sum) is tagged
+  BC-ERR-10013, which describes a different substitution. The key is right; the error tag is not.
+  Found by the golden-set agent, not changed.
+- 2026-09-24, stage 8, open. Transcriber golden set 3 has page specifications and reference
+  transcripts but no images: each page must be written by hand and photographed, which no session
+  can do. Golden set 2 covers 17 point types, not 30, because only 17 reach a model.
+
 ## Plan corrections applied [verified]
 
 Session 2026-09-23 (fourteenth). No plan file was edited. Readings applied in code:
@@ -2933,6 +3029,37 @@ Session 2026-09-20 (seventh).
   `due_today_minutes`. Placed skills first come due in about 4 days, so day 2 is populated by
   fringe learning. The cold-start test asserts exactly this.
 
+- 2026-09-24, stage 8: 11 puts P6 merged and 8 weeks of real attempts in front of P7. The harness
+  was built after stages 1 to 3 merged, before P3 to P6, as the stage brief allows; its exit
+  criteria that need real use wait (Done, "P7 exit criteria").
+- 2026-09-24, stage 8, 10 "Switch design" says every experiment defaults to off. The running app
+  (`app/main.py` RUNNING_EXPERIMENT_DEFAULTS) starts retrieval_entry randomised and
+  feedback_elaboration off, so one powered comparison accrues from the first session without
+  anyone turning it on. `GROWTH_EXPERIMENTS_DEFAULT` sets both; unset in `Settings` (tests) means
+  off. A first attempt starting both randomised turned `tests/e2e/test_session_login_to_feedback.py`
+  red (verification-only feedback where it expects elaborated); the test was not edited.
+- 2026-09-24, stage 8, 10 "Offline simulation": "true skills mastered per item" is read on a world
+  that learns as the expected number of skills learned during the run that the student can still
+  retrieve the day after it, per item served; "on at least 90 percent of simulated students" is
+  read as a paired share on identical seeds; a setting changes only when it clears its bar under
+  both forgetting curves; the interleaving threshold uses the same paired bar.
+- 2026-09-24, stage 8, 10 "Learning-outcome metrics" readings fixed in
+  `app/progress/learning_metrics.py`'s docstring: the confidence-to-probability map (guess 0.25,
+  unsure 0.60, confident 0.90), method selection read from a distractor's violated_step 0,
+  recurrence over errors diagnosed at least once, and adherence over every day since the first.
+- 2026-09-24, stage 8, 01 "External checkpoint" says the checkpoint is scored per point. Until P3's
+  grader exists the student records points per part against College Board's published scoring
+  guidelines, opened by reference; `checkpoints.scored_by` says so and the history prints it.
+- 2026-09-24, stage 8, shell gate: `OUT_OF_PHASE_SCREENS` in `app/web/src/App.test.tsx` drops
+  "matrix" and "checkpoint", which P7 scope item 7 puts in phase; "mock" stays forbidden (red when
+  named in App.tsx). The bar stays exactly Home and Settings. Settings now holds a sixth section,
+  the switches and the "Evidence of learning" link, where 08 lists five.
+- 2026-09-24, stage 8, `tests/db/test_models.py` asserted the exact P2 table set; it now asserts the
+  exact P7 set, every new table carrying user_id, and `attempts.experiment_arms`. Stricter, not looser.
+- 2026-09-24, stage 8, golden set 2: three notation_failure labels (GLD-GRD-019, 029, 079) were
+  changed from earned to not earned on review, because in each the slip changes the mathematical
+  claim; the file's note records it.
+
 ## Decisions taken on the operator's instruction, 2026-09-24 [inferred]
 
 Stage 3, the review screen and the mastery map:
@@ -3007,6 +3134,27 @@ every decision). Each is argued in docs/operator/items-units-4-to-10.md.
 - The stems may carry inline LaTeX between `\(` and `\)`, which `MathText` already renders,
   because integrals and series read badly in plain text.
 
+Stage 8, P7 evaluation harness, decided on the operator's delegation:
+
+- The five-term score stays off and `lambda` stays 0, on `docs/operator/p7-evals.md`: five-term
+  beat two-term for 35.0 and 21.5 percent of students against a 90 percent bar. The P2 record
+  (five-term ahead on a world that does not learn) is superseded, because that world measured
+  detection, not teaching.
+- The metrics view is the operator's page, reached from settings and never from the bar or home,
+  because 08 rules out a dashboard in the student's daily path. Every value carries its
+  denominator; a zero denominator prints no number.
+- The feedback A/B starts off in the running app because elaborated feedback is the better-evidenced
+  arm; the retrieval_entry A/B, a real uncertainty, starts randomised. An interval is stated once
+  each arm holds 30 outcomes ([inferred], the calibration curve's floor).
+- A checkpoint is available at once and then every 42 days, so the first one is a baseline and six
+  forms cover the months to the exam. Forms come newest first among years with published
+  per-question means (2025, 2024, 2023), then 2026, 2022, 2019. No stem, figure or scoring text is
+  stored or served: the screen links College Board's own PDFs.
+- The concept probe is 17 bank items, two per unit where the bank allows, drawn by seed 20261001
+  and withheld from practice. Unit 8 has no bank; Unit 9 gives one.
+- Golden sets for all six roles were written by two agents and one frontend agent built the
+  screens; each result was checked here (validation, spot checks, relabels, both web checks, 20
+  mutation runs) before it was kept.
 
 ## Decisions taken on the operator's instruction, 2026-09-23 [inferred]
 

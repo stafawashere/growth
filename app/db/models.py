@@ -4,6 +4,13 @@ and auth_sessions.
 
 diagnoses is in use from P2 (docs/plan/11-phased-delivery.md P2 scope item 9), written by the
 rule of R12 and R26 until the diagnostician arrives in P3; gradings arrives with the grader in P3.
+
+P7 adds the evaluation harness's own tables, which 06 does not list: experiments and
+experiment_assignments for the A/B switches of docs/plan/10 "Switch design", checkpoints and
+checkpoint_scores for the six-week released-material checkpoint, and probe_administrations and
+probe_responses for the stable concept probe. Every one carries user_id, so export and purge reach
+them by the rule in app/export/archive.py, and none is read by the engine, so a checkpoint or a
+probe can never train the model it measures.
 """
 from sqlalchemy import JSON, Integer, LargeBinary, Text, event, text
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
@@ -187,6 +194,7 @@ class Attempt(Base):
    tutor_cached_read_reported_calls: Mapped[int] = mapped_column(
       Integer, nullable=False, default=0, server_default=text("0")
    )
+   experiment_arms: Mapped[str | None] = mapped_column(Text, nullable=True)
    snapshot_id: Mapped[str] = mapped_column(Text, nullable=False)
    created_at: Mapped[str] = mapped_column(Text, nullable=False)
    updated_at: Mapped[str] = mapped_column(Text, nullable=False)
@@ -323,6 +331,92 @@ class AuthSession(Base):
    expires_at: Mapped[str] = mapped_column(Text, nullable=False)
    reauth_token_hash: Mapped[str | None] = mapped_column(Text, nullable=True)
    reauth_expires_at: Mapped[str | None] = mapped_column(Text, nullable=True)
+   created_at: Mapped[str] = mapped_column(Text, nullable=False)
+   updated_at: Mapped[str] = mapped_column(Text, nullable=False)
+
+
+class Experiment(Base):
+   """One named A/B switch per student: state off, on or randomised, its seed and start."""
+
+   __tablename__ = "experiments"
+
+   user_id: Mapped[str] = mapped_column(Text, primary_key=True)
+   name: Mapped[str] = mapped_column(Text, primary_key=True)
+   state: Mapped[str] = mapped_column(Text, nullable=False)
+   seed: Mapped[int] = mapped_column(Integer, nullable=False)
+   randomised_from: Mapped[str | None] = mapped_column(Text, nullable=True)
+   created_at: Mapped[str] = mapped_column(Text, nullable=False)
+   updated_at: Mapped[str] = mapped_column(Text, nullable=False)
+
+
+class ExperimentAssignment(Base):
+   """A unit's arm, written once and never reassigned for the life of the experiment."""
+
+   __tablename__ = "experiment_assignments"
+
+   user_id: Mapped[str] = mapped_column(Text, primary_key=True)
+   experiment: Mapped[str] = mapped_column(Text, primary_key=True)
+   unit_id: Mapped[str] = mapped_column(Text, primary_key=True)
+   arm: Mapped[str] = mapped_column(Text, nullable=False)
+   stratum: Mapped[str] = mapped_column(Text, nullable=False)
+   assigned_at: Mapped[str] = mapped_column(Text, nullable=False)
+   created_at: Mapped[str] = mapped_column(Text, nullable=False)
+   updated_at: Mapped[str] = mapped_column(Text, nullable=False)
+
+
+class Checkpoint(Base):
+   __tablename__ = "checkpoints"
+
+   id: Mapped[str] = mapped_column(Text, primary_key=True)
+   user_id: Mapped[str] = mapped_column(Text, nullable=False)
+   form_year: Mapped[int] = mapped_column(Integer, nullable=False)
+   started_at: Mapped[str] = mapped_column(Text, nullable=False)
+   finished_at: Mapped[str | None] = mapped_column(Text, nullable=True)
+   scored_by: Mapped[str] = mapped_column(Text, nullable=False)
+   created_at: Mapped[str] = mapped_column(Text, nullable=False)
+   updated_at: Mapped[str] = mapped_column(Text, nullable=False)
+
+
+class CheckpointScore(Base):
+   """Points earned on one released free-response part. The response itself is the student's
+   paper; the app stores the point count and the BC-PT ids the part carries, nothing official."""
+
+   __tablename__ = "checkpoint_scores"
+
+   id: Mapped[str] = mapped_column(Text, primary_key=True)
+   user_id: Mapped[str] = mapped_column(Text, nullable=False)
+   checkpoint_id: Mapped[str] = mapped_column(Text, nullable=False)
+   frq_record_id: Mapped[str] = mapped_column(Text, nullable=False)
+   question: Mapped[int] = mapped_column(Integer, nullable=False)
+   part: Mapped[str] = mapped_column(Text, nullable=False)
+   points_possible: Mapped[int] = mapped_column(Integer, nullable=False)
+   points_earned: Mapped[int] = mapped_column(Integer, nullable=False)
+   created_at: Mapped[str] = mapped_column(Text, nullable=False)
+   updated_at: Mapped[str] = mapped_column(Text, nullable=False)
+
+
+class ProbeAdministration(Base):
+   __tablename__ = "probe_administrations"
+
+   id: Mapped[str] = mapped_column(Text, primary_key=True)
+   user_id: Mapped[str] = mapped_column(Text, nullable=False)
+   probe_set: Mapped[str] = mapped_column(Text, nullable=False)
+   started_at: Mapped[str] = mapped_column(Text, nullable=False)
+   finished_at: Mapped[str | None] = mapped_column(Text, nullable=True)
+   created_at: Mapped[str] = mapped_column(Text, nullable=False)
+   updated_at: Mapped[str] = mapped_column(Text, nullable=False)
+
+
+class ProbeResponse(Base):
+   __tablename__ = "probe_responses"
+
+   id: Mapped[str] = mapped_column(Text, primary_key=True)
+   user_id: Mapped[str] = mapped_column(Text, nullable=False)
+   administration_id: Mapped[str] = mapped_column(Text, nullable=False)
+   item_id: Mapped[str] = mapped_column(Text, nullable=False)
+   response: Mapped[str | None] = mapped_column(Text, nullable=True)
+   correct: Mapped[int | None] = mapped_column(Integer, nullable=True)
+   elapsed_ms: Mapped[int | None] = mapped_column(Integer, nullable=True)
    created_at: Mapped[str] = mapped_column(Text, nullable=False)
    updated_at: Mapped[str] = mapped_column(Text, nullable=False)
 

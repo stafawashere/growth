@@ -71,6 +71,10 @@ GROWTH_ITEMS_DIR      the directories of item records the bank ingests through a
                       authored_by before). none disables it. A set path that is not a directory
                       stops the process at startup, and an item id found in two directories stops
                       the first ingestion rather than serving whichever came first.
+GROWTH_EXPERIMENTS_DEFAULT the state both A/B switches of app/experiments/switches.py start in
+                      for a student: off, on or randomised. Unset, retrieval_entry starts
+                      randomised and feedback_elaboration starts off (RUNNING_EXPERIMENT_DEFAULTS).
+                      A switch the student has already set keeps its state.
 
 This module also mounts the built React client (app/web/dist, docs/plan/06-architecture.md's
 system diagram: the browser speaks REST to one FastAPI process) at the same origin the API
@@ -102,6 +106,7 @@ from fastapi.staticfiles import StaticFiles
 from starlette.responses import FileResponse, PlainTextResponse
 
 from app.api.app import Settings, create_app
+from app.experiments import switches
 from app.providers.anthropic import AnthropicProvider
 from app.providers.guard import BudgetCaps, pacing_caps_from_environment
 from app.providers.replay import ReplayProvider
@@ -303,6 +308,31 @@ def items_directories(env):
    return configured_paths
 
 
+RUNNING_EXPERIMENT_DEFAULTS = {
+   switches.FEEDBACK_ELABORATION: switches.OFF,
+   switches.RETRIEVAL_ENTRY: switches.RANDOMISED,
+}
+
+
+def experiment_default_state(env):
+   """The state each A/B switch starts in for a student. Unset, the retrieval_entry comparison
+   starts randomised, so it accrues from the first session with nobody turning it on, and the
+   feedback comparison starts off, because the evidence already favours elaborated feedback and
+   withholding it from half the corrected items would cost the student more than the answer is
+   worth. GROWTH_EXPERIMENTS_DEFAULT names one state for both."""
+   configured = env.get("GROWTH_EXPERIMENTS_DEFAULT")
+
+   if configured is None:
+      return dict(RUNNING_EXPERIMENT_DEFAULTS)
+
+   is_known = configured in switches.STATES
+
+   if not is_known:
+      raise ValueError(f"GROWTH_EXPERIMENTS_DEFAULT must be one of {', '.join(switches.STATES)}, got {configured!r}")
+
+   return configured
+
+
 def settings_from_environment(env=None):
    env = env if env is not None else os.environ
 
@@ -319,6 +349,7 @@ def settings_from_environment(env=None):
       subscription_pacing=build_subscription_pacing(env),
       key_audit_sample_path=env.get("GROWTH_KEY_AUDIT_SAMPLE_PATH"),
       items_directories=items_directories(env),
+      experiment_default_state=experiment_default_state(env),
    )
 
 

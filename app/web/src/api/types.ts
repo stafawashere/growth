@@ -294,3 +294,217 @@ export interface BudgetsPayload {
    roles: RoleBudget[];
    month_to_date_usd: number;
 }
+
+/* app/progress/learning_metrics.py value. A value whose denominator is 0 carries value null, and a
+   statistic that is not a ratio, such as a Brier score or a median, carries numerator null.
+   external_checkpoint adds published_total and scored_by to each points value. */
+export interface MetricValue {
+   label: string;
+   value: number | null;
+   numerator: number | null;
+   denominator: number;
+   denominator_label: string;
+   published_total?: number;
+   scored_by?: string;
+}
+
+export interface MetricWindow {
+   start: string;
+   end: string;
+}
+
+export type MetricStatus = "measured" | "no_data";
+
+/* app/progress/learning_metrics.py metric. */
+export interface LearningMetric {
+   key: string;
+   name: string;
+   status: MetricStatus;
+   definition: string;
+   window: MetricWindow | null;
+   values: MetricValue[];
+}
+
+/* app/experiments/analysis.py comparison_view, arm_view. */
+export interface ArmOutcomes {
+   arm: string;
+   outcomes: number;
+   correct: number;
+   accuracy: number | null;
+}
+
+/* app/experiments/analysis.py comparison_view. The interval is null until each arm holds
+   minimum_outcomes_per_arm outcomes, and stated says which. */
+export interface ExperimentComparison {
+   name: string;
+   control: ArmOutcomes;
+   treatment: ArmOutcomes;
+   difference: number | null;
+   interval_low: number | null;
+   interval_high: number | null;
+   stated: boolean;
+   minimum_outcomes_per_arm: number;
+}
+
+/* app/api/routes/evaluation.py read_metrics. */
+export interface MetricsPayload {
+   as_of: string;
+   metrics: LearningMetric[];
+   experiments: ExperimentComparison[];
+}
+
+/* app/progress/representations.py representation_matrix. cells holds one entry per conversion
+   pair the taxonomy lists, so a source and target with no entry is not a translation. */
+export interface Representation {
+   id: string;
+   name: string;
+}
+
+export interface RepresentationCell {
+   source: string;
+   target: string;
+   attempts: number;
+   correct: number;
+}
+
+export interface RepresentationMatrixPayload {
+   representations: Representation[];
+   cells: RepresentationCell[];
+   translation_attempts: number;
+   practice_attempts: number;
+}
+
+/* app/experiments/switches.py STATES. */
+export type ExperimentState = "off" | "on" | "randomised";
+
+/* app/experiments/switches.py switch_view. assigned_units maps each arm to the units assigned it. */
+export interface ExperimentSwitch {
+   name: string;
+   description: string;
+   unit: string;
+   arms: string[];
+   state: ExperimentState;
+   randomised_from: string | null;
+   assigned_units: Record<string, number>;
+}
+
+/* app/api/routes/evaluation.py read_experiments and set_experiment. */
+export interface ExperimentsPayload {
+   experiments: ExperimentSwitch[];
+}
+
+/* app/checkpoint/service.py availability. opens_on is null unless a finished checkpoint holds the
+   next one back. */
+export interface CheckpointAvailability {
+   open_checkpoint_id: string | null;
+   available: boolean;
+   opens_on: string | null;
+   forms_remaining: number;
+   cadence_days: number;
+}
+
+/* app/checkpoint/forms.py section_plan. calculator is the exam-structure cell as written, such as
+   "Required" or "Not permitted". */
+export interface CheckpointPart {
+   record_id: string;
+   part: string;
+   points: number;
+}
+
+export interface CheckpointQuestion {
+   question: number;
+   parts: CheckpointPart[];
+}
+
+export interface CheckpointSection {
+   part: string;
+   minutes: number;
+   calculator: string;
+   questions: CheckpointQuestion[];
+}
+
+/* app/checkpoint/service.py question_results. published_mean is null when no year's mean is
+   published for the question, and published_mean_years names the years it was taken from. */
+export interface CheckpointQuestionResult {
+   question: number;
+   earned: number;
+   possible: number;
+   published_mean: number | null;
+   published_mean_years: number[];
+}
+
+/* app/checkpoint/service.py checkpoint_view. The form is named by reference only: it carries links
+   to College Board's documents and never a question's text. */
+export interface CheckpointView {
+   id: string;
+   form_year: number;
+   started_at: string;
+   finished_at: string | null;
+   scored_by: string;
+   free_response_url: string;
+   scoring_guidelines_url: string;
+   sections: CheckpointSection[];
+   scores: Record<string, number>;
+   questions: CheckpointQuestionResult[];
+   total_earned: number;
+   total_possible: number;
+   published_total: number;
+}
+
+export interface ExpectedEffect {
+   low: number;
+   high: number;
+}
+
+/* app/api/routes/evaluation.py read_checkpoints. */
+export interface CheckpointsPayload {
+   availability: CheckpointAvailability;
+   history: CheckpointView[];
+   expected_effect: ExpectedEffect;
+}
+
+/* app/checkpoint/probe.py availability. */
+export interface ProbeAvailability {
+   open_administration_id: string | null;
+   available: boolean;
+   opens_on: string | null;
+   items: number;
+   cadence_days: number;
+}
+
+/* app/checkpoint/probe.py administration_view. */
+export interface ProbeAdministration {
+   id: string;
+   probe_set: string;
+   started_at: string;
+   finished_at: string | null;
+   answered: number;
+   graded: number;
+   correct: number;
+   items: number;
+}
+
+/* app/api/routes/evaluation.py read_probe. */
+export interface ProbePayload {
+   availability: ProbeAvailability;
+   history: ProbeAdministration[];
+}
+
+/* app/checkpoint/probe.py next_item: app/runtime/bank.py _as_item_dict plus the served format. A
+   probe item carries no stage, no steps and no prompt. */
+export interface ProbeServedItem {
+   id: string;
+   archetype_id: string;
+   variant_id: string | null;
+   snapshot_id: string | null;
+   parameter_draw: unknown;
+   stem: string;
+   figure_spec: unknown;
+   options: ServedOption[] | null;
+   calculator_status: string | null;
+   representation: string | null;
+   difficulty_settings: unknown;
+   skills: string[] | null;
+   status: string;
+   format: ServedFormat;
+}

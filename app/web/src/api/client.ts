@@ -2,13 +2,22 @@ import type {
    AttemptResult,
    BudgetsPayload,
    CalibrationPayload,
+   CheckpointsPayload,
+   CheckpointView,
    Confidence,
    DiagnosticResult,
    DiagnosticServedItem,
+   ExperimentsPayload,
+   ExperimentState,
    FeedbackPayload,
    MasteryMapPayload,
+   MetricsPayload,
+   ProbeAdministration,
+   ProbePayload,
+   ProbeServedItem,
    ProgressPayload,
    ProvidersPayload,
+   RepresentationMatrixPayload,
    ReviewPayload,
    ServedItem,
    SessionPayload,
@@ -148,6 +157,39 @@ export interface ReauthFinish {
    reauth_token: string;
 }
 
+/* The evaluation routes of app/api/routes/evaluation.py read today from the body on a write and
+   from the query on a read, and fall back to the server's own date without it. */
+export interface DayFields {
+   today?: string;
+}
+
+export interface SetExperimentFields {
+   state: ExperimentState;
+   today?: string;
+}
+
+export interface ScoreCheckpointPartFields {
+   record_id: string;
+   points_earned: number;
+   today?: string;
+}
+
+export interface ProbeAnswer {
+   option_id?: string;
+   mathjson?: unknown;
+}
+
+export interface AnswerProbeItemFields {
+   item_id: string;
+   answer: ProbeAnswer;
+   elapsed_ms?: number;
+   today?: string;
+}
+
+export interface ProbeNextItemResponse {
+   item: ProbeServedItem | null;
+}
+
 async function detailFrom(response: Response) {
    try {
       const body = await response.json();
@@ -193,6 +235,12 @@ function jsonInit(method: string, fields?: unknown) {
       method,
       body: hasFields ? JSON.stringify(fields) : undefined
    };
+}
+
+function withToday(path: string, today?: string) {
+   const hasDay = today !== undefined;
+
+   return hasDay ? `${path}?today=${encodeURIComponent(today)}` : path;
 }
 
 export function openSession(fields?: OpenSessionFields) {
@@ -268,6 +316,14 @@ export function readMasteryMap() {
    return requestJson<MasteryMapPayload>("/progress/mastery");
 }
 
+export function readMetrics(today?: string) {
+   return requestJson<MetricsPayload>(withToday("/progress/metrics", today));
+}
+
+export function readRepresentations() {
+   return requestJson<RepresentationMatrixPayload>("/progress/representations");
+}
+
 export function readReview() {
    return requestJson<ReviewPayload>("/review");
 }
@@ -290,6 +346,50 @@ export function readBudgets() {
 
 export function updateBudget(fields: UpdateBudgetFields) {
    return requestJson<BudgetsPayload>("/settings/budgets", jsonInit("PUT", fields));
+}
+
+export function readExperiments() {
+   return requestJson<ExperimentsPayload>("/settings/experiments");
+}
+
+export function setExperimentState(name: string, fields: SetExperimentFields) {
+   return requestJson<ExperimentsPayload>(`/settings/experiments/${name}`, jsonInit("POST", fields));
+}
+
+export function readCheckpoints(today?: string) {
+   return requestJson<CheckpointsPayload>(withToday("/checkpoints", today));
+}
+
+export function startCheckpoint(fields?: DayFields) {
+   return requestJson<CheckpointView>("/checkpoints", jsonInit("POST", fields ?? {}));
+}
+
+export function readCheckpoint(checkpointId: string) {
+   return requestJson<CheckpointView>(`/checkpoints/${checkpointId}`);
+}
+
+export function scoreCheckpointPart(checkpointId: string, fields: ScoreCheckpointPartFields) {
+   return requestJson<CheckpointView>(`/checkpoints/${checkpointId}/scores`, jsonInit("POST", fields));
+}
+
+export function finishCheckpoint(checkpointId: string, fields?: DayFields) {
+   return requestJson<CheckpointView>(`/checkpoints/${checkpointId}/finish`, jsonInit("POST", fields ?? {}));
+}
+
+export function readProbe(today?: string) {
+   return requestJson<ProbePayload>(withToday("/probe", today));
+}
+
+export function startProbe(fields?: DayFields) {
+   return requestJson<ProbeAdministration>("/probe", jsonInit("POST", fields ?? {}));
+}
+
+export function readNextProbeItem(administrationId: string) {
+   return requestJson<ProbeNextItemResponse>(`/probe/${administrationId}/next`);
+}
+
+export function answerProbeItem(administrationId: string, fields: AnswerProbeItemFields) {
+   return requestJson<ProbeAdministration>(`/probe/${administrationId}/answers`, jsonInit("POST", fields));
 }
 
 export function requestExport(fields: RequestExportFields) {

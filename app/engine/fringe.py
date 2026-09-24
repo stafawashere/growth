@@ -287,14 +287,17 @@ def count_unsupported_successes(observations, skill_id):
    return total
 
 
-def retrieval_eligible(state, unsupported_success_count=None):
+def retrieval_eligible(state, unsupported_success_count=None, entry=None):
    """R8, R33: a skill joins the block 3 pool on its first credited success at stage unsupported.
 
    The stored counter already records only successes credited at stage unsupported, so the current
    fading stage does not enter the test: a skill dropped back to completion after entry stays in
    the pool. The explicit count argument is still accepted for callers that recount observations.
+   entry, when given, is the skill's RETRIEVAL_ENTRY under the P7 A/B switch (app/experiments).
    """
-   if unsupported_success_count is not None:
-      return unsupported_success_count >= constants.RETRIEVAL_ENTRY
+   threshold = constants.RETRIEVAL_ENTRY if entry is None else entry
 
-   return state.unaided_success_count >= constants.RETRIEVAL_ENTRY
+   if unsupported_success_count is not None:
+      return unsupported_success_count >= threshold
+
+   return state.unaided_success_count >= threshold

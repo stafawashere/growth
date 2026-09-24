@@ -680,3 +680,321 @@ export interface DisputeResult {
    attempt_id: string;
    rereading: boolean;
 }
+
+/* app/api/routes/assessment.py: the mock exam, the part drills and the unit check. Counts,
+   minutes and calculator rules arrive in these payloads (app/assessment/shape.py reads them from
+   research/exam/exam-structure.md) and are never typed into the client. */
+export type TimedKind = "mocks" | "drills";
+
+export type PartKey = "I-A" | "I-B" | "II-A" | "II-B";
+
+export type AssessmentTool =
+   | "timer"
+   | "highlight_and_notes"
+   | "mark_for_review"
+   | "option_eliminator"
+   | "question_menu"
+   | "zoom"
+   | "graphing_panel";
+
+export type PartStatus = "not_started" | "open" | "closed";
+
+export interface ReferenceSheet {
+   shown: boolean;
+   note: string;
+}
+
+export interface ShapePart {
+   key: string;
+   section: string;
+   part: string;
+   label: string;
+   question_type: string;
+   multiple_choice: boolean;
+   question_count: number;
+   minutes: number | null;
+   calculator: boolean;
+   calculator_label: string | null;
+   calculator_note: string | null;
+   first_number: number;
+   budget_seconds_per_question: number | null;
+   tools: AssessmentTool[];
+   five_minute_alert_seconds: number;
+}
+
+export interface AssessmentShape {
+   form: string;
+   parts: ShapePart[];
+   multiple_choice_total: number;
+   free_response_total: number;
+   points_per_free_response_question: number;
+   section_weights: Record<string, number>;
+   testing_minutes: number;
+   reference_sheet: ReferenceSheet;
+   radian_note: string;
+   timed_available: boolean;
+}
+
+export interface HighlightRange {
+   start: number;
+   end: number;
+}
+
+export interface AssessmentAnswer {
+   option_id?: string;
+   mathjson?: unknown;
+   units?: string;
+}
+
+export interface AssessmentItem {
+   id: string;
+   archetype_id: string;
+   variant_id: string | null;
+   snapshot_id: string | null;
+   parameter_draw: unknown;
+   stem: string;
+   figure_spec: FigureSpec | null;
+   options: ServedOption[] | null;
+   calculator_status: string | null;
+   representation: string | null;
+   difficulty_settings: unknown;
+   skills: string[] | null;
+   status: string;
+   requires_choice?: boolean;
+   radian_note: boolean;
+}
+
+export interface AssessmentFrqItem {
+   id: string;
+   archetype_id: string;
+   calculator_status: string;
+   stem: string;
+   parts: FrqPart[];
+   radian_note: boolean;
+}
+
+export type AssessmentQuestionKind = "mcq" | "short_answer" | "frq";
+
+export interface AssessmentQuestion {
+   number: number;
+   kind: AssessmentQuestionKind;
+   format: string;
+   answer: AssessmentAnswer | null;
+   marked: boolean;
+   eliminated: string[];
+   notes: string | null;
+   highlights: HighlightRange[];
+   confidence: Confidence | null;
+   time_ms: number;
+   attempt_id: string | null;
+   item: AssessmentItem | AssessmentFrqItem;
+}
+
+export interface FreeResponseCapture {
+   number: number;
+   item_id: string;
+   attempt_id: string | null;
+   grading_state: string | null;
+   item: AssessmentFrqItem;
+}
+
+export interface AssessmentPart extends ShapePart {
+   position: number;
+   status: PartStatus;
+   timed: boolean;
+   started_at: string | null;
+   deadline_at: string | null;
+   closed_at: string | null;
+   closed_by: "submitted" | "time" | null;
+   time_remaining_ms: number | null;
+   answered: number;
+   questions: AssessmentQuestion[];
+   capture?: FreeResponseCapture[];
+}
+
+export interface AssessmentSession {
+   id: string;
+   mode: string;
+   sub_mode: string | null;
+   updates_mastery: boolean;
+   started_at: string;
+   ended_at: string | null;
+   capture_mode: string | null;
+   parts: AssessmentPart[];
+   closed_part_note: string;
+   break_note: string;
+   reference_sheet: ReferenceSheet;
+   radian_note: string;
+}
+
+export interface SavedQuestion {
+   number: number;
+   saved: boolean;
+}
+
+export interface PacingRatio {
+   numerator: number;
+   denominator: number;
+   value: number | null;
+}
+
+export interface PacingQuestion {
+   number: number;
+   seconds: number;
+   answered: boolean;
+   rapid_guess: boolean;
+   revisited: boolean;
+   marked: boolean;
+   eliminator_used: boolean;
+}
+
+export interface PartPacing {
+   part_key: string;
+   label: string;
+   questions: number;
+   limit_seconds: number;
+   budget_seconds_per_question: number;
+   time_used_seconds: number | null;
+   time_remaining_seconds: number | null;
+   closed_by: string | null;
+   mean_seconds_per_question: number | null;
+   mean_counts: PacingRatio;
+   answered: PacingRatio;
+   rapid_guess: PacingRatio;
+   revisit: PacingRatio;
+   marked: PacingRatio;
+   per_question: PacingQuestion[];
+}
+
+export interface MultipleChoiceCount {
+   correct: number;
+   total: number;
+}
+
+export interface FreeResponseCount {
+   earned: number;
+   pending: number;
+   total: number;
+}
+
+export interface PublishedMean {
+   year: number;
+   mean: number;
+   sd: number;
+}
+
+export interface QuestionComparison {
+   question: number;
+   earned: number;
+   pending: number;
+   possible: number;
+   published: PublishedMean[];
+}
+
+export interface ScoreBand {
+   low: number;
+   high: number;
+}
+
+export interface BandAssumption {
+   key: string;
+   text: string;
+}
+
+export interface AssessmentResult {
+   id: string;
+   mode: string;
+   complete: boolean;
+   pacing: PartPacing[];
+   multiple_choice: MultipleChoiceCount | null;
+   free_response?: FreeResponseCount;
+   questions?: QuestionComparison[];
+   band?: ScoreBand;
+   band_years?: number[];
+   assumptions?: BandAssumption[];
+   statement?: string;
+}
+
+export interface MockHistoryRow {
+   session_id: string;
+   taken_at: string;
+   band: ScoreBand;
+   multiple_choice: MultipleChoiceCount;
+   free_response: FreeResponseCount;
+}
+
+export interface MockHistoryPayload {
+   mocks: MockHistoryRow[];
+}
+
+export interface CheckUnit {
+   unit_id: string;
+   items: number;
+   covered_skills: number;
+   unit_skills: number;
+   available: boolean;
+   title: string;
+}
+
+export interface CheckUnitsPayload {
+   units: CheckUnit[];
+}
+
+export interface WorkedStep {
+   step: number;
+   text: string;
+   rule_named?: string;
+}
+
+export interface CheckItemResult {
+   number: number;
+   item_id: string;
+   archetype_id: string;
+   answered: boolean;
+   correct: boolean | null;
+   answer: AssessmentAnswer | null;
+   key_option_id: string | null;
+   worked_solution: WorkedStep[];
+}
+
+export interface SkillSnapshot {
+   mastered: boolean;
+   credited_successes: number;
+   credited_failures: number;
+}
+
+export interface MovedSkill {
+   skill_id: string;
+   name: string;
+   before: SkillSnapshot | null;
+   after: SkillSnapshot | null;
+}
+
+export interface CheckCoverage {
+   covered: string[];
+   unreached: Record<string, string>;
+}
+
+export interface CheckResult {
+   id: string;
+   unit_id: string;
+   items: CheckItemResult[];
+   moved: MovedSkill[];
+   coverage: CheckCoverage;
+}
+
+
+export type UnfinishedMode = "mock" | "part_drill" | "unit_check";
+
+export interface UnfinishedAssessment {
+   id: string;
+   mode: UnfinishedMode;
+   sub_mode: string | null;
+   started_at: string;
+   parts_closed: number;
+   parts_total: number;
+}
+
+export interface UnfinishedPayload {
+   unfinished: UnfinishedAssessment[];
+}

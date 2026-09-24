@@ -83,14 +83,17 @@ HOME_QUEUE = "queue"
 
 DIAGNOSTIC_MODE = "diagnostic"
 
+ASSESSMENT_MODES = ("unit_check", "part_drill", "mock")
+
 
 def open_session_id(db, user_id, diagnostic=False):
    """The newest unfinished session of the one kind asked for: a diagnostic resumes on the
-   onboarding screen, anything else on the session screen."""
+   onboarding screen, a micro-session on the session screen. A unit check, a part drill or a mock
+   resumes from the mock exam screen's own list (GET /assessments/unfinished), never from home."""
    mode_matches = (
       models.Session.mode == DIAGNOSTIC_MODE
       if diagnostic
-      else models.Session.mode != DIAGNOSTIC_MODE
+      else models.Session.mode.not_in((DIAGNOSTIC_MODE, *ASSESSMENT_MODES))
    )
    statement = (
       select(models.Session.id)

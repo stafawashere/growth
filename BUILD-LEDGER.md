@@ -1746,6 +1746,65 @@ items) and items 3 and 6 (Slices 3 and 4). Every gate 11 names for P2 now exists
   page (`test_no_official_text_served`; the longest shared run is 21 words, a generic
   sentence about a region revolved about the x-axis in ITM-GEN-08012-11).
 
+- 2026-09-24, stage 6 (p5), P5 assessment modes, all ten scope items of 11 P5, by Claude on the
+  operator's delegation. Canonical record: docs/operator/p5-assessment.md. What landed:
+  - Server `app/assessment/`: `shape.py` (the four parts read from exam-structure.md joined to the
+    form template `content/assessment/form_2027.json`, tool sets), `assemble.py` (multiple choice by
+    calculator status and BC-UNIT weights, nine-point free response, the radian note),
+    `service.py` (one lifecycle for unit checks, drills and mocks: server deadline, parts in order,
+    closed parts never reopen, attempts written at close, rule diagnosis except on rapid guesses,
+    results, finish, the unfinished list), `pacing.py`, `band.py`, `unit_check.py` (set cover
+    under the fringe gate, 8 to 12 items, feedback at submission), `evals.py`. Routes in
+    `app/api/routes/assessment.py`: 06's /mocks rows plus /drills, /unit-checks,
+    /assessments/shape and /assessments/unfinished. Tables `assessment_parts`,
+    `assessment_responses`, `mock_results`. `app/checkpoint/published.py` now also reads the part
+    weights, the per-question point total and the score distributions. Rollback:
+    `GROWTH_TIMED_ASSESSMENTS=off`.
+  - Free-response capture in a timed part waits for the part to close; the booklet page for a mock
+    is headed by the part's calculator rule and addressed by exam question number.
+  - Sixteen nine-point free-response questions (6 calculator), blind formulations 71 of 71 matched
+    with the control holding, the bank 137 of 137, signed off by claude-opus-5-5 on the delegation
+    (a model review); the whole free-response bank is now under the official-text gate.
+  - Client `app/web/src/assessment/` (setup with resume, the part runner with the six tools and the
+    graphing panel on calculator parts only, break screen, capture, result, unit check), the Mock
+    exam button on home, mock history on progress; built by a frontend agent from a brief and
+    reviewed here.
+  - Fixes found by driving the app: home no longer offers an open assessment as today's set;
+    grading no longer holds SQLite's write lock through the diagnostician's call, and the busy wait
+    is 30 s; the capture list refreshes and a confirmed question reopens on its grading with a
+    "Grade it again" after about five minutes; revisits and free-response answered counts;
+    `app/grading/latex.py` reads a d-theta differential; the BC-QA-01005 template brackets a sum
+    factor and ITM-GEN-01005-04 is retired.
+  - Measurements: 20 timed runs through the running app, 0 skills_state rows changed, two unit-check
+    controls changed it (docs/operator/p5-timed-runs.md); one full mock at the documented shape
+    driven in the browser with live transcription and grading on the subscription, skills_state
+    unchanged, band 3 to 5 with its assumptions (docs/operator/p5-full-mock.md). $0.00 API spend;
+    about 111 subscription calls in the browser mock.
+  - Gate tests, each shown red under a break and green on restore in this session:
+    test_part_shapes (a minute added to the shape), test_timed_does_not_update_mastery (timed modes
+    added to the credited modes; a timed close applying observations), test_score_band_never_single_number
+    (a centre key exposed), test_band_is_never_narrower_than_two_points_anywhere (half width 0; no
+    slide at the bounds), test_calculator_lockout (panel on every part), test_part_boundary_closed
+    (reopen allowed; no expiry), test_tool_set_present (eliminator on free response; notes
+    dropped), test_full_mock_run (a mock crediting free response; numbering restarting per part;
+    captured questions not counted answered), eval_mock_against_published_means and
+    eval_pacing_metrics, and the unit check, rapid-guess, requeue, radian, revisit, resume, home,
+    lock, d-theta, official-text and template-stem tests. Client: 617 vitest tests, every new one
+    broken and restored by the frontend agent (its break log is in the session scratchpad).
+- Checks at merge of stage 6: pytest `1293 passed in 1050.30s (0:17:30)`; vitest `Tests  617 passed
+  (617)` in 45 files; `tsc --noEmit` exit 0; `qa/12_report.py` exit 0. An earlier full run the same
+  hour read `1 failed, 1292 passed in 936.35s (0:15:36)`, the failure being
+  eval_the_harness_runs_end_to_end_on_seeded_weeks (Known defects, stage 6).
+- P5 exit criteria, 2026-09-24: all met. A full mock ran end to end at the documented shape with
+  the paper capture path in one sitting, driven through the running app in the browser
+  (docs/operator/p5-full-mock.md); no skills_state row changed in 20 logged timed runs, with two
+  unit-check controls that did change it (docs/operator/p5-timed-runs.md); the result carries a
+  band and its assumptions and never a single score (test_score_band_never_single_number and the
+  browser result); pacing renders per part (the result screen, eval_pacing_metrics); the
+  reference-sheet and Desmos-variant questions are restated in docs/plan/12 with what would settle
+  them. What waits on real use: the operator's own mocks, real handwriting, and real latencies for
+  the rapid-guess threshold.
+
 ## In progress [inferred]
 
 Stage 1, items for Units 4 to 10, is complete in the worktree `../growth-content` on branch
@@ -1765,6 +1824,10 @@ rerun of the stage 8 prompt once at least 8 weeks of real attempts exist.
 
 Stage 5, P4, 2026-09-24, worktree `../growth-p4` on branch `p4`: complete (Done, "stage 5 (p4)"),
 being merged to origin/main. The next stage is 06-p5.
+
+Stage 6, P5, 2026-09-24, worktree `../growth-p5` on branch `p5`: built and checked (Done, "stage 6
+(p5)"), being merged to origin/main. What remains waits on real use: the operator's own mocks for
+the band and pacing figures, and real handwriting for the capture path. The next stage is 07-p6-p8.
 
 ## Live API spend log [verified]
 
@@ -2710,6 +2773,31 @@ From the eleventh session, 2026-09-21, found and not fixed.
   other held error fits, and a few fits are loose (listed in the template authors' reports kept
   with the scratch notes of this session, not in the repository).
 
+- 2026-09-24, stage 6 (p5), open. The function-graph figures (app/web/src/figures/FigureView.tsx)
+  print no numbers on the axes, so a value read off a graph has to be found by counting grid
+  lines; a mock question on BC-QA-06003 was missed that way. Figure work for a later stage.
+- 2026-09-24, stage 6 (p5), open. The free-response bank holds 6 calculator and 10 no-calculator
+  nine-point questions, so the fourth mock repeats Section II Part A questions and the third
+  repeats Part B's (least-used first). Writing more is content work.
+- 2026-09-24, stage 6 (p5), open. Calculator free-response questions lean on the model: their
+  setup points with a numeric root as a limit carry no check, and a student's integrand written
+  with the stem's function names (E(t), L(t)) is unreadable to the deterministic checks, so with
+  the grader off those points stay provisional (docs/operator/p5-timed-runs.md, runs 9 to 12).
+- 2026-09-24, stage 6 (p5), open. The band's placement rests on an assumed cohort shape (the
+  free-response section's summed means and spreads); no measurement can check it until the
+  operator's mocks sit beside released-form checkpoints.
+- 2026-09-24, stage 6 (p5), open. A database that ingested ITM-GEN-01005-04 before its retirement
+  keeps serving it, because ingestion never re-reads a stored id; the operator's var/growth.db held
+  no attempts on 2026-09-24.
+- 2026-09-24, stage 6 (p5), open. eval_the_harness_runs_end_to_end_on_seeded_weeks (P7) failed in
+  two of four whole-suite runs this stage (one serial, one with four workers) and passed in every
+  run of it alone or with tests/api (five runs). The failing assertion was not captured; nothing in
+  stage 6 touches the experiments or the metrics view, and whether it fails on 6b5ba6d was not run.
+  Read a red here as this flake only after rerunning it alone.
+- 2026-09-24, stage 6 (p5), open. The model answered the browser mock, so its pacing figures show
+  the screens work, not how a student paces; the rapid-guess threshold is untested on real
+  latencies.
+
 ## Plan corrections applied [verified]
 
 Session 2026-09-23 (fourteenth). No plan file was edited. Readings applied in code:
@@ -3234,6 +3322,28 @@ Session 2026-09-20 (seventh).
   Claude Code session writing SymPy formulations from stems alone, compared by a script, as
   docs/operator/offline-authoring.md describes; no second provider is used.
 
+- 2026-09-24, stage 6 (p5), 02 invariant 3 lists rehearsal among the modes the fringe gate binds.
+  The full mock and the part drills are exempt: they are the whole exam, write no mastery, and could
+  not be assembled under the gate before the graph is mastered. The unit check keeps the gate.
+  02 is not edited; this entry is the reading.
+- 2026-09-24, stage 6 (p5), 06 "sessions": mode takes `part_drill`, `mock` and `unit_check` (the
+  names app/grading/service.py already used), not `rehearsal` with a sub_mode; sub_mode carries the
+  part key, `full_mock` or the unit id. 06's API rows are read with {n} as the part's position (1 to
+  4), and five rows are added beside them: PUT .../sections/{n}/questions/{number}, GET .../result,
+  GET /mocks, the same subroutes under /drills, and the /unit-checks routes. Three tables are added
+  (`assessment_parts`, `assessment_responses`, `mock_results`), each with user_id.
+- 2026-09-24, stage 6 (p5), 05 "Free-response capture": capture in a timed part runs after the part
+  closes, for photo and typed alike (Decisions, stage 6).
+- 2026-09-24, stage 6 (p5), `tests/db/test_models.py` now asserts the exact P7, P3 and P5 table set
+  and user_id on the three new tables; `tests/grading/test_latex.py` gains a d-theta case and
+  `tests/generation/test_no_official_text.py` gains the free-response bank. All three are stricter.
+- 2026-09-24, stage 6 (p5), `app/web/src/App.test.tsx`: P5 puts the mock in phase, so "mock" leaves
+  `OUT_OF_PHASE_SCREENS` and "Mock exam" joins `REACHED_FROM_HOME`, the pattern of stages 2, 3, 4
+  and 8. The bar stays exactly Home and Settings.
+- 2026-09-24, stage 6 (p5), 12: the reference-sheet and Desmos-variant questions are restated with
+  what would settle them and how the product behaves until then, and the band method, the
+  rapid-guess threshold, the unit check size and the band half-width join the register.
+
 ## Decisions taken on the operator's instruction, 2026-09-24 [inferred]
 
 Stage 3, the review screen and the mastery map:
@@ -3407,6 +3517,53 @@ docs/operator/p4-generation.md or docs/operator/duplicate-gate/.
 - The gate gained checks beyond 13's eleven, each shown red then green: parallel statement labels,
   at least 100 distinct problems in 300 draws, a printed coefficient of 1, small distinct constants
   never called equal.
+
+Stage 6 (p5), P5 assessment modes, decided on the operator's delegation (the stage brief delegates
+every decision). Canonical record: docs/operator/p5-assessment.md.
+
+- One lifecycle for all three modes: a session holds parts (`assessment_parts`) and each part its
+  questions (`assessment_responses`), which keep the answer, tools and time while the part is open;
+  an attempts row is written for each answered question only when the part closes. Reason: a
+  timed part must accept changed answers until it closes, as Bluebook does, and the unit check
+  withholds feedback until submission, so neither can grade on each answer.
+- The full mock and the part drills do not apply the fringe gate. A mock is the whole exam and
+  writes no mastery; gated, it could not be assembled until the whole graph was mastered. The unit
+  check, which writes mastery, keeps the gate. Recorded under Plan corrections against 02
+  invariant 3's "rehearsal".
+- Free-response answers are written on paper during a timed part and captured after it closes,
+  in both capture modes; the image and typed routes refuse while the part's clock runs. Typed
+  capture means typing from the paper afterwards. Reason: the exam's artefact is the booklet, and
+  capture during the part would give grading feedback before Section II ends.
+- A mock's free-response questions must carry the per-question total exam-structure.md states
+  (9); a part that cannot be filled at that shape is refused with the reason. Sixteen nine-point
+  questions were written for this (Done, stage 6).
+- The Bluebook calculator is represented by the product's own graphing panel, not Desmos and not
+  any model provider: plot in a chosen window, zeros, numerical derivative, numerical definite
+  integral (the CED's four), with a radians or degrees indicator defaulting to radians. It is
+  rendered only on calculator parts and is absent from the page on the others. Reason: Desmos's
+  embeddable API needs a key and third-party script loading the CSP forbids, and 12 keeps the
+  variant question open.
+- The reference sheet is absent and the setup screen says so, from the form template.
+- The score band method (docs/operator/p5-assessment.md, "The score band"): composite placed on
+  a normal curve built from the free-response section's published means and summed standard
+  deviations, read against each published year's distribution, widened one score point by
+  sliding, unioned over years and over provisional points. The internal score is never returned
+  or stored. Chosen over fitting third-party cut points, which 05 rejects.
+- Rapid guessing: fast (per-archetype threshold) and first answered inside the part's final five
+  minutes; flagged questions leave the pacing means and the rule diagnosis. The threshold values
+  are carried into 12 as tunables.
+- The unit check collects a confidence rating per item with its answer and applies it at
+  submission; an unrated item is applied as unsure, as the micro-session's close sweep does.
+- Numbering: Section I runs 1 to 42 across the part boundary and Section II 1 to 6, from the
+  template's `continuous_within_section`, since exam-structure.md's CED reading says so and the
+  Bluebook numbering stays open in 12.
+- The break between parts is a screen the student leaves by starting the next part; no break
+  length is invented, because no cached source states one.
+- The 20 exit-criterion runs were driven over HTTP by a script against the running app with the
+  grader off (docs/operator/p5-timed-runs.md); the one full mock with the live grader and a
+  photographed booklet page was driven in the browser (docs/operator/p5-full-mock.md).
+- The client screens were built by a frontend agent from a written brief and reviewed here before
+  merge.
 
 ## Decisions taken on the operator's instruction, 2026-09-23 [inferred]
 

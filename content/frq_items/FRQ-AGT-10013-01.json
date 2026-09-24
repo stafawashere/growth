@@ -1,0 +1,215 @@
+{
+   "id": "FRQ-AGT-10013-01",
+   "archetype_id": "BC-QA-10013",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "stem": {
+      "text": "The function \\( g \\) is defined by the power series \\[ g(x) = \\sum_{n=1}^{\\infty} \\frac{(-1)^{n+1}(x - 3)^{n}}{n \\cdot 2^{n}} \\] for all real \\( x \\) for which the series converges."
+   },
+   "skills": [
+      "BC-SKL-10031",
+      "BC-SKL-10032",
+      "BC-SKL-10053",
+      "BC-SKL-10054",
+      "BC-SKL-10055",
+      "BC-SKL-10057",
+      "BC-SKL-10059"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Use the ratio test to find the values of \\( x \\) for which the series for \\( g(x) \\) converges absolutely. Give your answer as an open interval.",
+         "setup_required": false,
+         "answer_latex": "1 < x < 5",
+         "worked_solution": [
+            {
+               "text": "Form the ratio of consecutive terms in absolute value.",
+               "latex": "\\left| \\frac{(x - 3)^{n+1}}{(n+1)2^{n+1}} \\cdot \\frac{n \\cdot 2^{n}}{(x - 3)^{n}} \\right| = \\frac{n}{n+1} \\cdot \\frac{|x - 3|}{2}"
+            },
+            {
+               "text": "Take the limit as n grows.",
+               "latex": "\\lim_{n \\to \\infty} \\frac{n}{n+1} \\cdot \\frac{|x - 3|}{2} = \\frac{|x - 3|}{2}"
+            },
+            {
+               "text": "Set the limit less than 1 and solve.",
+               "latex": "\\frac{|x - 3|}{2} < 1 \\iff -2 < x - 3 < 2 \\iff 1 < x < 5"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99042",
+               "skills": [
+                  "BC-SKL-10031",
+                  "BC-SKL-10053"
+               ],
+               "criterion": "Writes the ratio of the (n+1)st term to the nth term, (x - 3)^(n+1)/((n+1)2^(n+1)) divided by (x - 3)^n/(n 2^n), or its simplified form n|x - 3|/(2(n+1)), with or without absolute values.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99043",
+               "skills": [
+                  "BC-SKL-10032",
+                  "BC-SKL-10054"
+               ],
+               "criterion": "Evaluates the limit of the ratio as |x - 3|/2 with correct limit notation; any simplification error in the limit loses this point.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "a3",
+               "point_type_id": "BC-PT-99044",
+               "skills": [
+                  "BC-SKL-10055"
+               ],
+               "criterion": "Resolves |x - 3|/2 < 1 to the two-sided inequality 1 < x < 5 or the interval (1, 5); leaving |x - 3| < 2 unresolved does not earn the point.",
+               "eligible_only_if": [
+                  "a2"
+               ],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Determine whether the series for \\( g(x) \\) converges at each endpoint of the interval from part (a), and state the interval of convergence of the series. Justify your answers.",
+         "setup_required": false,
+         "answer_latex": "1 < x \\le 5",
+         "worked_solution": [
+            {
+               "text": "At x = 5 the series is the alternating harmonic series.",
+               "latex": "\\sum_{n=1}^{\\infty} \\frac{(-1)^{n+1} 2^{n}}{n \\cdot 2^{n}} = \\sum_{n=1}^{\\infty} \\frac{(-1)^{n+1}}{n}"
+            },
+            {
+               "text": "Its terms 1/n decrease to 0, so it converges by the alternating series test.",
+               "latex": "\\frac{1}{n+1} < \\frac{1}{n}, \\quad \\lim_{n \\to \\infty} \\frac{1}{n} = 0"
+            },
+            {
+               "text": "At x = 1 every term is -1/n, the negative of the harmonic series, which diverges.",
+               "latex": "\\sum_{n=1}^{\\infty} \\frac{(-1)^{n+1}(-2)^{n}}{n \\cdot 2^{n}} = -\\sum_{n=1}^{\\infty} \\frac{1}{n}"
+            },
+            {
+               "text": "State the interval.",
+               "latex": "1 < x \\le 5"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99045",
+               "skills": [
+                  "BC-SKL-10057"
+               ],
+               "criterion": "Substitutes both x = 1 and x = 5 and writes the two resulting numerical series, the sum of -1/n and the sum of (-1)^(n+1)/n.",
+               "eligible_only_if": [],
+               "check": null,
+               "follows_from": [
+                  "a3"
+               ]
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99046",
+               "skills": [
+                  "BC-SKL-10057",
+                  "BC-SKL-10059"
+               ],
+               "criterion": "Concludes the series at x = 5 converges by the alternating series test and the series at x = 1 diverges as a multiple of the harmonic series (or a p-series with p = 1), and states the interval of convergence 1 < x <= 5.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": null,
+               "follows_from": [
+                  "a3"
+               ]
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "The series obtained by differentiating the series for \\( g(x) \\) term by term is \\[ g'(x) = \\sum_{n=1}^{\\infty} \\frac{(-1)^{n+1}(x - 3)^{n-1}}{2^{n}}. \\] Find the interval of convergence of this series. Justify your answer.",
+         "setup_required": false,
+         "answer_latex": "1 < x < 5",
+         "worked_solution": [
+            {
+               "text": "Ratio of consecutive terms and its limit.",
+               "latex": "\\lim_{n \\to \\infty} \\left| \\frac{(x - 3)^{n}}{2^{n+1}} \\cdot \\frac{2^{n}}{(x - 3)^{n-1}} \\right| = \\frac{|x - 3|}{2}"
+            },
+            {
+               "text": "The series converges absolutely when the limit is less than 1.",
+               "latex": "1 < x < 5"
+            },
+            {
+               "text": "At x = 5 the terms are (-1)^(n+1)/2, and at x = 1 every term is 1/2.",
+               "latex": "\\sum_{n=1}^{\\infty} \\frac{(-1)^{n+1}}{2}, \\quad \\sum_{n=1}^{\\infty} \\frac{1}{2}"
+            },
+            {
+               "text": "Neither sequence of terms tends to 0, so both endpoint series diverge by the nth term test.",
+               "latex": "1 < x < 5"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99043",
+               "skills": [
+                  "BC-SKL-10031",
+                  "BC-SKL-10032",
+                  "BC-SKL-10054"
+               ],
+               "criterion": "Shows the ratio of consecutive terms of the differentiated series and evaluates its limit as |x - 3|/2 with correct limit notation.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99044",
+               "skills": [
+                  "BC-SKL-10055"
+               ],
+               "criterion": "Resolves the limit inequality to 1 < x < 5 or the interval (1, 5).",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "c3",
+               "point_type_id": "BC-PT-99045",
+               "skills": [
+                  "BC-SKL-10057"
+               ],
+               "criterion": "Substitutes both endpoints and writes the two series, the sum of (-1)^(n+1)/2 and the sum of 1/2.",
+               "eligible_only_if": [],
+               "check": null,
+               "follows_from": [
+                  "c2"
+               ]
+            },
+            {
+               "point_id": "c4",
+               "point_type_id": "BC-PT-99046",
+               "skills": [
+                  "BC-SKL-10057",
+                  "BC-SKL-10059"
+               ],
+               "criterion": "Concludes both endpoint series diverge because their terms do not approach 0 (nth term test), and states the interval of convergence 1 < x < 5.",
+               "eligible_only_if": [
+                  "c3"
+               ],
+               "check": null,
+               "follows_from": [
+                  "c2"
+               ]
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 6 (p5)",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24 (stage 6 review: blind SymPy recheck 71 of 71, stems read for ambiguity and official text)"
+}

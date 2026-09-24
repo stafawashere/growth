@@ -1,0 +1,247 @@
+{
+   "id": "FRQ-AGT-10010-02",
+   "archetype_id": "BC-QA-10010",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "The function \\( f \\) has derivatives of all orders for all real \\( x \\). It satisfies \\( f(1) = 2 \\) and \\( f'(x) = x f(x) - 3 \\) for all \\( x \\)."
+   },
+   "skills": [
+      "BC-SKL-10043",
+      "BC-SKL-10044",
+      "BC-SKL-10046"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find \\( f''(x) \\) in terms of \\( x \\), \\( f(x) \\) and \\( f'(x) \\). Then find the value of \\( f''(1) \\).",
+         "setup_required": false,
+         "answer_latex": "f''(1) = 1",
+         "worked_solution": [
+            {
+               "text": "Differentiate x f(x) - 3 with the product rule.",
+               "latex": "f''(x) = f(x) + x f'(x)"
+            },
+            {
+               "text": "From the relation, f'(1) = 1 \\cdot 2 - 3 = -1.",
+               "latex": "f'(1) = -1"
+            },
+            {
+               "text": "Evaluate at x = 1.",
+               "latex": "f''(1) = 2 + 1\\cdot(-1) = 1"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99022",
+               "skills": [
+                  "BC-SKL-10043"
+               ],
+               "criterion": "Applies the product rule to x f(x) to get f''(x) = f(x) + x f'(x); the constant -3 contributes nothing.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99027",
+               "skills": [
+                  "BC-SKL-10043"
+               ],
+               "criterion": "Finds f'(1) = -1 and gives f''(1) = 1.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "1",
+                  "up_to_constant": false,
+                  "variable": "x"
+               },
+               "follows_from": [
+                  "a1"
+               ]
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find \\( f'''(x) \\) in terms of \\( x \\), \\( f'(x) \\) and \\( f''(x) \\), and find the value of \\( f'''(1) \\).",
+         "setup_required": false,
+         "answer_latex": "f'''(1) = -1",
+         "worked_solution": [
+            {
+               "text": "Differentiate f''(x) = f(x) + x f'(x); the product x f'(x) gives f'(x) + x f''(x).",
+               "latex": "f'''(x) = 2f'(x) + x f''(x)"
+            },
+            {
+               "text": "Evaluate at x = 1.",
+               "latex": "f'''(1) = 2(-1) + 1\\cdot 1 = -1"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99022",
+               "skills": [
+                  "BC-SKL-10043"
+               ],
+               "criterion": "Applies the product rule to x f'(x) to get f'''(x) = 2f'(x) + x f''(x), or an equivalent expression.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99027",
+               "skills": [
+                  "BC-SKL-10043"
+               ],
+               "criterion": "Gives f'''(1) = -1.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "-1",
+                  "up_to_constant": false,
+                  "variable": "x"
+               },
+               "follows_from": [
+                  "a1",
+                  "a2",
+                  "b1"
+               ]
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Write the third-degree Taylor polynomial for \\( f \\) about \\( x = 1 \\), and use it to approximate \\( f(1.2) \\).",
+         "setup_required": false,
+         "answer_latex": "2 - (x - 1) + \\frac{(x - 1)^{2}}{2} - \\frac{(x - 1)^{3}}{6}, \\quad f(1.2) \\approx \\frac{682}{375} \\approx 1.819",
+         "worked_solution": [
+            {
+               "text": "Each coefficient is the derivative value at 1 divided by the matching factorial.",
+               "latex": "2 + (-1)(x - 1) + \\frac{1}{2!}(x - 1)^{2} + \\frac{-1}{3!}(x - 1)^{3}"
+            },
+            {
+               "text": "Simplify.",
+               "latex": "P_{3}(x) = 2 - (x - 1) + \\frac{(x - 1)^{2}}{2} - \\frac{(x - 1)^{3}}{6}"
+            },
+            {
+               "text": "Substitute x = 1.2, so x - 1 = 0.2.",
+               "latex": "P_{3}(1.2) = 2 - 0.2 + 0.02 - \\frac{0.008}{6} = \\frac{682}{375}"
+            },
+            {
+               "text": "State the approximation.",
+               "latex": "f(1.2) \\approx \\frac{682}{375} \\approx 1.819"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99035",
+               "skills": [
+                  "BC-SKL-10044"
+               ],
+               "criterion": "Writes the first two terms, 2 - (x - 1), in powers of (x - 1).",
+               "eligible_only_if": [],
+               "check": null,
+               "follows_from": [
+                  "a2"
+               ]
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99036",
+               "skills": [
+                  "BC-SKL-10044"
+               ],
+               "criterion": "Completes the polynomial with (x - 1)^2/2 - (x - 1)^3/6 and no terms of higher degree.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "2 - (x - 1) + (x - 1)**2/2 - (x - 1)**3/6",
+                  "up_to_constant": false,
+                  "variable": "x"
+               },
+               "follows_from": [
+                  "a2",
+                  "b2"
+               ]
+            },
+            {
+               "point_id": "c3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-10044"
+               ],
+               "criterion": "Gives the approximation 682/375, about 1.819, from the third-degree polynomial.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "682/375"
+               },
+               "follows_from": [
+                  "c1",
+                  "c2"
+               ]
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "Show that \\( f^{(4)}(1) = 2 \\). Then find the coefficient of \\( (x - 1)^{4} \\) in the Taylor series for \\( f \\) about \\( x = 1 \\).",
+         "setup_required": false,
+         "answer_latex": "\\frac{1}{12}",
+         "worked_solution": [
+            {
+               "text": "Differentiate f'''(x) = 2f'(x) + x f''(x).",
+               "latex": "f^{(4)}(x) = 3f''(x) + x f'''(x)"
+            },
+            {
+               "text": "Evaluate at x = 1 with the values from parts (a) and (b).",
+               "latex": "f^{(4)}(1) = 3(1) + 1\\cdot(-1) = 2"
+            },
+            {
+               "text": "Divide by 4!.",
+               "latex": "\\frac{f^{(4)}(1)}{4!} = \\frac{2}{24} = \\frac{1}{12}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99068",
+               "skills": [
+                  "BC-SKL-10043"
+               ],
+               "criterion": "Differentiates to reach f^(4)(x) = 3f''(x) + x f'''(x), substitutes f''(1) = 1 and f'''(1) = -1, and closes with f^(4)(1) = 2. A chain that stops short of 2 or that uses values inconsistent with parts (a) and (b) does not earn the point.",
+               "eligible_only_if": [],
+               "check": null,
+               "follows_from": [
+                  "a2",
+                  "b2"
+               ]
+            },
+            {
+               "point_id": "d2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-10044"
+               ],
+               "criterion": "Gives the coefficient 1/12, that is 2 divided by 4!.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "1/12",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 6 (p5)",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24 (stage 6 review: blind SymPy recheck 71 of 71, stems read for ambiguity and official text)"
+}

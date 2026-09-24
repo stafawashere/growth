@@ -1,10 +1,11 @@
 import { useState } from "react";
 
-import { readCalibration, readCheckpoints, readMasteryMap, readProbe, readRepresentations } from "../api/client";
+import { readCalibration, readCheckpoints, readMasteryMap, readMockHistory, readProbe, readRepresentations } from "../api/client";
 import type {
    CalibrationPayload,
    CheckpointsPayload,
    MasteryMapPayload,
+   MockHistoryPayload,
    ProbePayload,
    RepresentationMatrixPayload
 } from "../api/types";
@@ -14,6 +15,7 @@ import { CalibrationCurve } from "./CalibrationCurve";
 import { CheckpointHistory, ProbeHistory } from "./CheckpointHistory";
 import { useLoad } from "./load";
 import { MasteryMap } from "./MasteryMap";
+import { MockHistory } from "./MockHistory";
 import { RepresentationMatrix } from "./RepresentationMatrix";
 
 /* Progress takes no input from the shell: it is reached from home and reads its own record. Each
@@ -47,6 +49,7 @@ function ProgressOverview(props: {
    const matrix = useLoad<RepresentationMatrixPayload>(readRepresentations);
    const checkpoints = useLoad<CheckpointsPayload>(readCheckpoints);
    const probe = useLoad<ProbePayload>(readProbe);
+   const mocks = useLoad<MockHistoryPayload>(readMockHistory);
 
    return (
       <section className="card">
@@ -82,6 +85,12 @@ function ProgressOverview(props: {
                onOpenCheckpoint={() => props.onOpenCheckpoint(checkpoints.value.availability.open_checkpoint_id)}
             />
          ) : null}
+
+         {mocks.kind === "waiting" ? <Waiting testId="mock-history-waiting" /> : null}
+
+         {mocks.kind === "failed" ? <SectionFailed testId="mock-history-failed" what="mock history" /> : null}
+
+         {mocks.kind === "loaded" ? <MockHistory history={mocks.value} /> : null}
 
          {probe.kind === "waiting" ? <Waiting testId="probe-history-waiting" /> : null}
 

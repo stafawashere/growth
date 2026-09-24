@@ -13,6 +13,10 @@ checkpoint_scores for the six-week released-material checkpoint, and probe_admin
 probe_responses for the stable concept probe. Every one carries user_id, so export and purge reach
 them by the rule in app/export/archive.py, and none is read by the engine, so a checkpoint or a
 probe can never train the model it measures.
+
+P5 adds assessment_parts, assessment_responses and mock_results for the unit check, the timed
+part drills and the full mock (docs/plan/05, 11 P5), which 06 names routes for but no tables. Each
+carries user_id for the same reason.
 """
 from sqlalchemy import JSON, Integer, LargeBinary, Text, event, text
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
@@ -471,12 +475,96 @@ class ProbeResponse(Base):
    updated_at: Mapped[str] = mapped_column(Text, nullable=False)
 
 
+class AssessmentPart(Base):
+   """One part of a unit check, a part drill or a mock. A timed part has a deadline the server
+   enforces; once closed_at is set the part never opens again."""
+
+   __tablename__ = "assessment_parts"
+
+   id: Mapped[str] = mapped_column(Text, primary_key=True)
+   user_id: Mapped[str] = mapped_column(Text, nullable=False)
+   session_id: Mapped[str] = mapped_column(Text, nullable=False)
+   position: Mapped[int] = mapped_column(Integer, nullable=False)
+   exam_part: Mapped[str] = mapped_column(Text, nullable=False)
+   question_type: Mapped[str] = mapped_column(Text, nullable=False)
+   calculator: Mapped[int] = mapped_column(Integer, nullable=False)
+   minutes: Mapped[int | None] = mapped_column(Integer, nullable=True)
+   question_count: Mapped[int] = mapped_column(Integer, nullable=False)
+   started_at: Mapped[str | None] = mapped_column(Text, nullable=True)
+   deadline_at: Mapped[str | None] = mapped_column(Text, nullable=True)
+   closed_at: Mapped[str | None] = mapped_column(Text, nullable=True)
+   closed_by: Mapped[str | None] = mapped_column(Text, nullable=True)
+   time_remaining_ms: Mapped[int | None] = mapped_column(Integer, nullable=True)
+   created_at: Mapped[str] = mapped_column(Text, nullable=False)
+   updated_at: Mapped[str] = mapped_column(Text, nullable=False)
+
+
+class AssessmentResponse(Base):
+   """One question of a part, as the student left it: the answer, the tools used on it and the
+   time spent on it. An attempts row is written from it when the part closes."""
+
+   __tablename__ = "assessment_responses"
+
+   id: Mapped[str] = mapped_column(Text, primary_key=True)
+   user_id: Mapped[str] = mapped_column(Text, nullable=False)
+   session_id: Mapped[str] = mapped_column(Text, nullable=False)
+   part_id: Mapped[str] = mapped_column(Text, nullable=False)
+   number: Mapped[int] = mapped_column(Integer, nullable=False)
+   item_id: Mapped[str] = mapped_column(Text, nullable=False)
+   kind: Mapped[str] = mapped_column(Text, nullable=False)
+   served_format: Mapped[str] = mapped_column(Text, nullable=False)
+   answer: Mapped[str | None] = mapped_column(Text, nullable=True)
+   first_answered_at: Mapped[str | None] = mapped_column(Text, nullable=True)
+   answered_at: Mapped[str | None] = mapped_column(Text, nullable=True)
+   time_ms: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+   visits: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+   visits_after_answer: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+   marked: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+   eliminated: Mapped[str] = mapped_column(Text, nullable=False, default="[]")
+   eliminator_used: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+   notes: Mapped[str | None] = mapped_column(Text, nullable=True)
+   highlights: Mapped[str] = mapped_column(Text, nullable=False, default="[]")
+   confidence: Mapped[str | None] = mapped_column(Text, nullable=True)
+   attempt_id: Mapped[str | None] = mapped_column(Text, nullable=True)
+   correct: Mapped[int | None] = mapped_column(Integer, nullable=True)
+   rapid_guess: Mapped[int | None] = mapped_column(Integer, nullable=True)
+   created_at: Mapped[str] = mapped_column(Text, nullable=False)
+   updated_at: Mapped[str] = mapped_column(Text, nullable=False)
+
+
+class MockResult(Base):
+   """A finished mock: raw points, the band and its assumptions, never a centre (05, R24)."""
+
+   __tablename__ = "mock_results"
+
+   id: Mapped[str] = mapped_column(Text, primary_key=True)
+   user_id: Mapped[str] = mapped_column(Text, nullable=False)
+   session_id: Mapped[str] = mapped_column(Text, nullable=False)
+   taken_at: Mapped[str] = mapped_column(Text, nullable=False)
+   mcq_correct: Mapped[int] = mapped_column(Integer, nullable=False)
+   mcq_total: Mapped[int] = mapped_column(Integer, nullable=False)
+   frq_points: Mapped[int] = mapped_column(Integer, nullable=False)
+   frq_pending: Mapped[int] = mapped_column(Integer, nullable=False)
+   frq_total: Mapped[int] = mapped_column(Integer, nullable=False)
+   band_low: Mapped[int] = mapped_column(Integer, nullable=False)
+   band_high: Mapped[int] = mapped_column(Integer, nullable=False)
+   payload: Mapped[str] = mapped_column(Text, nullable=False)
+   created_at: Mapped[str] = mapped_column(Text, nullable=False)
+   updated_at: Mapped[str] = mapped_column(Text, nullable=False)
+
+
+# SQLite admits one writer. A free-response grading run in the background and the read-back of the
+# next question can both reach a write inside the same few seconds, and the driver's default five
+# second wait turned that into a failed request during a mock's capture step.
+SQLITE_BUSY_TIMEOUT_SECONDS = 30
+
+
 def make_engine(path):
    from sqlalchemy import create_engine
 
    from app.db.migrate import apply_additive_migrations, repair_wrapped_stems
 
-   engine = create_engine(f"sqlite:///{path}")
+   engine = create_engine(f"sqlite:///{path}", connect_args={"timeout": SQLITE_BUSY_TIMEOUT_SECONDS})
 
    @event.listens_for(engine, "connect")
    def _enable_wal(dbapi_connection, connection_record):

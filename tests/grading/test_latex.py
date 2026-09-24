@@ -6,7 +6,7 @@ import sympy
 
 from app.grading import latex
 
-x, y, b, C, n = sympy.symbols("x y b C n")
+x, y, b, C, n, theta = sympy.symbols("x y b C n theta")
 
 READINGS = [
    (r"e^{2x}\cos x", sympy.exp(2 * x) * sympy.cos(x)),
@@ -22,6 +22,7 @@ READINGS = [
    (r"\int_{0}^{3} x^{2}\,dx", sympy.Integral(x**2, (x, 0, 3))),
    (r"\int_{1}^{b} x^{-2} dx", sympy.Integral(x**-2, (x, 1, b))),
    (r"\sum_{n=1}^{\infty} x^{n}", sympy.Sum(x**n, (n, 1, sympy.oo))),
+   (r"\frac{1}{2}\int_{0}^{\pi} (1+2\sin\theta)^2 \, d\theta", sympy.Integral((1 + 2 * sympy.sin(theta)) ** 2, (theta, 0, sympy.pi)) / 2),
 ]
 
 

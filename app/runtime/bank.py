@@ -81,6 +81,11 @@ def _as_item_dict(row):
    }
 
 
+def as_served_item(row):
+   """The served form of an items row, for callers outside the bank (app/assessment)."""
+   return _as_item_dict(row)
+
+
 def _is_statement_keyed(row):
    """04's key form "statement": the answer is one of the labelled options and nothing a student
    could type, so the item is always served as a choice (app/engine/select.py requires_choice)."""

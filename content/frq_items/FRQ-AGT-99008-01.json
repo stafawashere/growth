@@ -1,0 +1,222 @@
+{
+   "id": "FRQ-AGT-99008-01",
+   "archetype_id": "BC-QA-99008",
+   "calculator_status": "calculator",
+   "representation": "BC-REP-05",
+   "stem": {
+      "text": "Cars enter a parking garage at a rate modeled by \\( C(t) = 120 + 80\\sin\\left(\\frac{t^{2}}{12}\\right) \\) cars per hour, where \\( t \\) is the number of hours after the garage opens and \\( 0 \\le t \\le 10 \\)."
+   },
+   "skills": [
+      "BC-SKL-06036",
+      "BC-SKL-06037",
+      "BC-SKL-08012"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find the total number of cars that enter the garage during the first 4 hours after it opens.",
+         "setup_required": true,
+         "answer_latex": "\\int_{0}^{4} C(t)\\,dt \\approx 605.153",
+         "worked_solution": [
+            {
+               "text": "The number of cars is the integral of the entry rate over the first 4 hours.",
+               "latex": "\\int_{0}^{4} \\left(120 + 80\\sin\\left(\\frac{t^{2}}{12}\\right)\\right)dt"
+            },
+            {
+               "text": "Evaluate on the calculator.",
+               "latex": "\\int_{0}^{4} C(t)\\,dt \\approx 605.153"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-06036"
+               ],
+               "criterion": "Writes the definite integral of C(t) from t = 0 to t = 4.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "0",
+                  "upper": "4",
+                  "integrand": "120 + 80*sin(t**2/12)",
+                  "variable": "t"
+               }
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-06036"
+               ],
+               "criterion": "Gives 605.153 cars.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "Integral(120 + 80*sin(t**2/12), (t, 0, 4))"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find the total number of cars that enter the garage during the last 3 hours of the interval \\( 0 \\le t \\le 10 \\).",
+         "setup_required": true,
+         "answer_latex": "\\int_{7}^{10} C(t)\\,dt \\approx 334.619",
+         "worked_solution": [
+            {
+               "text": "The last 3 hours of the interval run from t = 7 to t = 10.",
+               "latex": "\\int_{7}^{10} \\left(120 + 80\\sin\\left(\\frac{t^{2}}{12}\\right)\\right)dt"
+            },
+            {
+               "text": "Evaluate on the calculator.",
+               "latex": "\\int_{7}^{10} C(t)\\,dt \\approx 334.619"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-06036"
+               ],
+               "criterion": "Writes the definite integral of C(t) from t = 7 to t = 10.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "7",
+                  "upper": "10",
+                  "integrand": "120 + 80*sin(t**2/12)",
+                  "variable": "t"
+               }
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-06036"
+               ],
+               "criterion": "Gives 334.619 cars.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "Integral(120 + 80*sin(t**2/12), (t, 7, 10))"
+               }
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Find the time \\( T \\) at which a total of 500 cars have entered the garage since it opened.",
+         "setup_required": true,
+         "answer_latex": "T \\approx 3.455",
+         "worked_solution": [
+            {
+               "text": "The number of cars that have entered by time T is the integral of the rate from 0 to T.",
+               "latex": "\\int_{0}^{T} C(t)\\,dt = 500"
+            },
+            {
+               "text": "Solve on the calculator.",
+               "latex": "T \\approx 3.455"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-06036",
+                  "BC-SKL-06037"
+               ],
+               "criterion": "Writes the equation the definite integral of C(t) from t = 0 to t = T equals 500.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-06036"
+               ],
+               "criterion": "Gives T = 3.455 hours.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "3.455147467946511178034517911"
+               }
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "Each car that enters the garage at time \\( t \\) pays an entry fee of \\( F(t) = 12 - 0.8t \\) dollars. Find the total amount of entry fees paid by the cars that enter during \\( 0 \\le t \\le 10 \\).",
+         "setup_required": true,
+         "answer_latex": "\\int_{0}^{10} F(t)\\,C(t)\\,dt \\approx 11356.660",
+         "worked_solution": [
+            {
+               "text": "Fees are collected at the rate F(t)C(t) dollars per hour.",
+               "latex": "F(t)\\,C(t) = \\left(12 - 0.8t\\right)\\left(120 + 80\\sin\\left(\\frac{t^{2}}{12}\\right)\\right)"
+            },
+            {
+               "text": "Integrate over the whole interval and evaluate on the calculator.",
+               "latex": "\\int_{0}^{10} F(t)\\,C(t)\\,dt \\approx 11356.660"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99002",
+               "skills": [
+                  "BC-SKL-06036"
+               ],
+               "criterion": "Writes an integral whose integrand is the product of the fee and the entry rate, (12 - 0.8t) times C(t), whatever its limits.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "d2",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-06036"
+               ],
+               "criterion": "Uses the limits t = 0 and t = 10 for that integral.",
+               "eligible_only_if": [
+                  "d1"
+               ],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "0",
+                  "upper": "10",
+                  "integrand": null,
+                  "variable": "t"
+               }
+            },
+            {
+               "point_id": "d3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-06036"
+               ],
+               "criterion": "Gives 11356.660 dollars.",
+               "eligible_only_if": [
+                  "d1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "Integral((12 - 4*t/5)*(120 + 80*sin(t**2/12)), (t, 0, 10))"
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 6 (p5)",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24 (stage 6 review: blind SymPy recheck 71 of 71, stems read for ambiguity and official text)"
+}

@@ -1,0 +1,214 @@
+{
+   "id": "FRQ-AGT-05007-03",
+   "archetype_id": "BC-QA-05007",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "stem": {
+      "text": "Let \\( y = f(x) \\) be the particular solution to the differential equation \\( \\dfrac{dy}{dx} = y\\,(x^{2} - 2x - 3) \\) with the initial condition \\( f(0) = 2 \\). It is known that \\( f(x) > 0 \\) for all \\( x \\)."
+   },
+   "skills": [
+      "BC-SKL-05010",
+      "BC-SKL-05020",
+      "BC-SKL-05039"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find the \\( x \\)-coordinates of the critical points of \\( f \\).",
+         "setup_required": false,
+         "answer_latex": "x = -1, \\; x = 3",
+         "worked_solution": [
+            {
+               "text": "Set the derivative equal to zero.",
+               "latex": "y\\,(x^{2} - 2x - 3) = 0"
+            },
+            {
+               "text": "Since y = f(x) > 0, only the quadratic factor can vanish.",
+               "latex": "(x - 3)(x + 1) = 0, \\quad x = -1, \\; x = 3"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99013",
+               "skills": [
+                  "BC-SKL-05010"
+               ],
+               "criterion": "Sets dy/dx = y(x^2 - 2x - 3) equal to zero.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-05010"
+               ],
+               "criterion": "Uses f(x) > 0 to reduce the equation to x^2 - 2x - 3 = 0 and gives both x = -1 and x = 3.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find \\( \\dfrac{d^{2}y}{dx^{2}} \\) in terms of \\( x \\) and \\( y \\). Find \\( f''(0) \\), and determine whether the graph of \\( f \\) is concave up or concave down at \\( x = 0 \\).",
+         "setup_required": false,
+         "answer_latex": "f''(0) = 14, \\text{ concave up}",
+         "worked_solution": [
+            {
+               "text": "Product rule, with dy/dx substituted.",
+               "latex": "\\frac{d^{2}y}{dx^{2}} = \\frac{dy}{dx}\\cdot(x^{2} - 2x - 3) + y\\cdot(2x - 2) = y\\cdot(x^{2} - 2x - 3)^{2} + y\\cdot(2x - 2)"
+            },
+            {
+               "text": "Evaluate at (0, 2).",
+               "latex": "f''(0) = 2(9) + 2(-2) = 14"
+            },
+            {
+               "text": "The second derivative is positive there.",
+               "latex": "f''(0) > 0, \\text{ so concave up}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-05039"
+               ],
+               "criterion": "Differentiates with the product rule and substitutes dy/dx, giving y(x^2 - 2x - 3)^2 + y(2x - 2) in any equivalent form in x and y.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "y*(x**2 - 2*x - 3)**2 + y*(2*x - 2)",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-05039"
+               ],
+               "criterion": "Gives f''(0) = 14.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "14",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "b3",
+               "point_type_id": "BC-PT-99014",
+               "skills": [
+                  "BC-SKL-05039"
+               ],
+               "criterion": "States that f''(0) is positive, so the graph of f is concave up at x = 0.",
+               "eligible_only_if": [],
+               "check": null,
+               "follows_from": [
+                  "b2"
+               ]
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Use the second derivative test to determine whether \\( f \\) has a relative minimum, a relative maximum, or neither at \\( x = 3 \\). Justify your answer.",
+         "setup_required": false,
+         "answer_latex": "\\text{relative minimum at } x = 3",
+         "worked_solution": [
+            {
+               "text": "At x = 3 the factor x^2 - 2x - 3 is zero, so only the second term remains.",
+               "latex": "f''(3) = f(3)(2 \\cdot 3 - 2) = 4f(3)"
+            },
+            {
+               "text": "Since f(3) > 0, the second derivative is positive at the critical point.",
+               "latex": "f''(3) > 0"
+            },
+            {
+               "text": "Classify.",
+               "latex": "\\text{relative minimum at } x = 3"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99014",
+               "skills": [
+                  "BC-SKL-05039"
+               ],
+               "criterion": "Shows f''(3) = 4f(3) and states it is positive because f(3) > 0.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99012",
+               "skills": [
+                  "BC-SKL-05039"
+               ],
+               "criterion": "Concludes that f has a relative minimum at x = 3, based on f'(3) = 0 and f''(3) > 0.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "Use the first derivative test to determine whether \\( f \\) has a relative minimum, a relative maximum, or neither at \\( x = -1 \\). Justify your answer.",
+         "setup_required": false,
+         "answer_latex": "\\text{relative maximum at } x = -1",
+         "worked_solution": [
+            {
+               "text": "The sign of dy/dx is the sign of (x - 3)(x + 1), because y > 0.",
+               "latex": "\\operatorname{sign}\\frac{dy}{dx} = \\operatorname{sign}\\bigl((x-3)(x+1)\\bigr)"
+            },
+            {
+               "text": "Just left of x = -1 both factors are negative; just right, only x - 3 is.",
+               "latex": "f' > 0 \\text{ on } (-3, -1), \\quad f' < 0 \\text{ on } (-1, 3)"
+            },
+            {
+               "text": "Classify.",
+               "latex": "\\text{relative maximum at } x = -1"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99014",
+               "skills": [
+                  "BC-SKL-05020"
+               ],
+               "criterion": "States that f'(x) changes from positive to negative at x = -1, using f(x) > 0 and the signs of the factors x - 3 and x + 1.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "d2",
+               "point_type_id": "BC-PT-99012",
+               "skills": [
+                  "BC-SKL-05020"
+               ],
+               "criterion": "Concludes that f has a relative maximum at x = -1, based on that sign change.",
+               "eligible_only_if": [
+                  "d1"
+               ],
+               "check": null
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 6 (p5)",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24 (stage 6 review: blind SymPy recheck 71 of 71, stems read for ambiguity and official text)"
+}

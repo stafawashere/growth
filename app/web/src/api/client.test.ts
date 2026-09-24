@@ -55,7 +55,23 @@ import {
    confirmReadBack,
    submitTypedAnswer,
    readGradings,
-   askForReread
+   askForReread,
+   readAssessmentShape,
+   readUnfinished,
+   openMock,
+   openDrill,
+   readTimedSession,
+   startPart,
+   submitPart,
+   saveQuestion,
+   readTimedResult,
+   finishMock,
+   readMockHistory,
+   readCheckUnits,
+   openCheck,
+   readCheck,
+   saveCheckQuestion,
+   submitCheck
 } from "./client";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
@@ -390,6 +406,31 @@ function diagnosticItemFields() {
    ];
 }
 
+/* The keys a function adds to a dict it built earlier, written as variable["key"] = value. */
+function assignedKeys(relativePath: string, functionName: string, variable: string) {
+   const body = functionSource(relativePath, functionName);
+   const pattern = new RegExp(`${variable}\\["([A-Za-z_]+)"\\]\\s*=`, "g");
+
+   return [...body.matchAll(pattern)].map((match) => match[1]);
+}
+
+/* The body fields a route reads straight off its payload, as (payload or {}).get("x"). */
+function payloadReads(relativePath: string, functionName: string) {
+   const body = functionSource(relativePath, functionName);
+
+   return [...new Set([...body.matchAll(/\.get\("([A-Za-z_]+)"\)/g)].map((match) => match[1]))];
+}
+
+function formTemplateKeys(key: string) {
+   const template = JSON.parse(fs.readFileSync(path.join(appDir, "..", "content", "assessment", "form_2027.json"), "utf8"));
+
+   return Object.keys(template[key]);
+}
+
+function distinct(names: string[]) {
+   return [...new Set(names)];
+}
+
 function sorted(names: string[]) {
    return [...names].sort();
 }
@@ -457,7 +498,64 @@ const serverShapes = {
    PhotoVerdict: () => returnedFields("api/routes/frq.py", "upload_image"),
    GradingsPayload: () => returnedFields("api/routes/frq.py", "gradings_payload"),
    GradedPoint: () => nestedDictFields("api/routes/frq.py", "entries.append("),
-   DisputeResult: () => returnedFields("api/routes/frq.py", "dispute")
+   DisputeResult: () => returnedFields("api/routes/frq.py", "dispute"),
+   AssessmentShape: () => [
+      ...returnedFields("assessment/shape.py", "shape_payload"),
+      ...assignedKeys("api/routes/assessment.py", "read_shape", "payload")
+   ],
+   ShapePart: () => returnedFields("assessment/shape.py", "part_payload"),
+   ReferenceSheet: () => formTemplateKeys("reference_sheet"),
+   AssessmentPart: () =>
+      distinct([
+         ...returnedFields("assessment/shape.py", "part_payload"),
+         ...callKeywordFields("assessment/service.py", "payload = dict(\n      shape.part_payload(part_shape)"),
+         ...assignedKeys("assessment/service.py", "part_payload", "payload")
+      ]),
+   AssessmentSession: () => nestedDictFields("assessment/service.py", "def session_payload("),
+   AssessmentQuestion: () => [
+      ...nestedDictFields("assessment/service.py", "def response_payload("),
+      ...assignedKeys("assessment/service.py", "response_payload", "payload")
+   ],
+   AssessmentItem: () => [
+      ...returnedFields("runtime/bank.py", "_as_item_dict"),
+      ...assignedKeys("assessment/assemble.py", "served_multiple_choice", "item")
+   ],
+   AssessmentFrqItem: () => [
+      ...returnedFields("frq/items.py", "served_record"),
+      ...assignedKeys("assessment/service.py", "item_for_response", "served")
+   ],
+   AssessmentAnswer: () => tupleConstantFields("assessment/service.py", "ANSWER_FIELDS"),
+   FreeResponseCapture: () => returnedFields("assessment/service.py", "free_response_capture"),
+   SavedQuestion: () => returnedFields("api/routes/assessment.py", "save_timed_question"),
+   AssessmentResult: () =>
+      distinct([
+         ...nestedDictFields("assessment/service.py", "def results("),
+         ...assignedKeys("assessment/service.py", "results", "payload"),
+         ...returnedFields("assessment/band.py", "result_payload")
+      ]),
+   PartPacing: () => returnedFields("assessment/pacing.py", "part_pacing"),
+   PacingRatio: () => returnedFields("assessment/pacing.py", "ratio"),
+   PacingQuestion: () => nestedDictFields("assessment/pacing.py", "\"per_question\": ["),
+   QuestionComparison: () => nestedDictFields("assessment/band.py", "rows.append("),
+   PublishedMean: () => nestedDictFields("assessment/band.py", "\"published\": ["),
+   ScoreBand: () => nestedDictFields("assessment/band.py", "\"band\": {"),
+   BandAssumption: () => returnedListItemFields("assessment/band.py", "assumptions"),
+   MultipleChoiceCount: () => nestedDictFields("assessment/band.py", "\"multiple_choice\": {"),
+   FreeResponseCount: () => nestedDictFields("assessment/band.py", "\"free_response\": {"),
+   MockHistoryPayload: () => returnedFields("api/routes/assessment.py", "list_mocks"),
+   MockHistoryRow: () => returnedListItemFields("assessment/service.py", "mock_history"),
+   CheckUnitsPayload: () => returnedFields("api/routes/assessment.py", "unit_check_units"),
+   CheckUnit: () => [
+      ...nestedDictFields("assessment/unit_check.py", "rows.append("),
+      ...callKeywordFields("api/routes/assessment.py", "dict(entry, title=")
+   ],
+   CheckResult: () => returnedFields("assessment/unit_check.py", "breakdown"),
+   CheckItemResult: () => nestedDictFields("assessment/unit_check.py", "items.append("),
+   MovedSkill: () => nestedDictFields("assessment/unit_check.py", "moved.append("),
+   SkillSnapshot: () => returnedFields("assessment/unit_check.py", "state_summary"),
+   CheckCoverage: () => nestedDictFields("assessment/unit_check.py", "\"coverage\": {"),
+   UnfinishedPayload: () => returnedFields("api/routes/assessment.py", "list_unfinished"),
+   UnfinishedAssessment: () => nestedDictFields("assessment/service.py", "listed.append(")
 };
 
 const requestShapes = {
@@ -473,7 +571,10 @@ const requestShapes = {
    ],
    RequestExportFields: () => readRequestFields("api/routes/export.py", "create_export"),
    FinishReauthFields: () => readRequestFields("api/routes/auth.py", "reauth_finish"),
-   RequestPurgeFields: () => readRequestFields("api/routes/purge.py", "purge")
+   RequestPurgeFields: () => readRequestFields("api/routes/purge.py", "purge"),
+   SaveQuestionFields: () => readRequestFields("assessment/service.py", "save_response"),
+   OpenDrillFields: () => payloadReads("api/routes/assessment.py", "open_drill"),
+   OpenMockFields: () => payloadReads("api/routes/assessment.py", "open_mock")
 };
 
 function declaredRoutes(fileName: string) {
@@ -505,7 +606,8 @@ function allDeclaredRoutes() {
       ...declaredRoutes("settings.py"),
       ...declaredRoutes("export.py"),
       ...declaredRoutes("auth.py"),
-      ...declaredRoutes("frq.py")
+      ...declaredRoutes("frq.py"),
+      ...declaredRoutes("assessment.py")
    ];
 }
 
@@ -696,7 +798,28 @@ describe("client path vocabulary", () => {
       { name: "confirmReadBack", dynamic: ["ATT-1"], invoke: () => confirmReadBack("ATT-1", { confidence: "unsure" }) },
       { name: "submitTypedAnswer", dynamic: ["ATT-1"], invoke: () => submitTypedAnswer("ATT-1", { read_back: { parts: [], unreadable: [] } }) },
       { name: "readGradings", dynamic: ["ATT-1"], invoke: () => readGradings("ATT-1") },
-      { name: "askForReread", dynamic: ["GRD-1"], invoke: () => askForReread("GRD-1") }
+      { name: "askForReread", dynamic: ["GRD-1"], invoke: () => askForReread("GRD-1") },
+      { name: "readAssessmentShape", dynamic: [], invoke: () => readAssessmentShape() },
+      { name: "readUnfinished", dynamic: [], invoke: () => readUnfinished() },
+      { name: "openMock", dynamic: [], invoke: () => openMock({ capture_mode: "photo" }) },
+      { name: "openDrill", dynamic: [], invoke: () => openDrill({ part: "I-B", capture_mode: "typed" }) },
+      { name: "readTimedSession mocks", dynamic: ["SES-A"], invoke: () => readTimedSession("mocks", "SES-A") },
+      { name: "readTimedSession drills", dynamic: ["SES-A"], invoke: () => readTimedSession("drills", "SES-A") },
+      { name: "startPart", dynamic: ["SES-A", "2"], invoke: () => startPart("mocks", "SES-A", 2) },
+      { name: "submitPart", dynamic: ["SES-A", "1"], invoke: () => submitPart("drills", "SES-A", 1) },
+      {
+         name: "saveQuestion",
+         dynamic: ["SES-A", "3", "58"],
+         invoke: () => saveQuestion("mocks", "SES-A", 3, 58, { visit_ms: 1200 })
+      },
+      { name: "readTimedResult", dynamic: ["SES-A"], invoke: () => readTimedResult("drills", "SES-A") },
+      { name: "finishMock", dynamic: ["SES-A"], invoke: () => finishMock("SES-A") },
+      { name: "readMockHistory", dynamic: [], invoke: () => readMockHistory() },
+      { name: "readCheckUnits", dynamic: [], invoke: () => readCheckUnits() },
+      { name: "openCheck", dynamic: [], invoke: () => openCheck("BC-UNIT-01") },
+      { name: "readCheck", dynamic: ["SES-A"], invoke: () => readCheck("SES-A") },
+      { name: "saveCheckQuestion", dynamic: ["SES-A", "4"], invoke: () => saveCheckQuestion("SES-A", 4, { confidence: "unsure" }) },
+      { name: "submitCheck", dynamic: ["SES-A"], invoke: () => submitCheck("SES-A") }
    ];
 
    it.each(wiringCases)("every path $name issues matches a declared FastAPI route", async (wiringCase) => {
@@ -851,7 +974,39 @@ describe("response shape vocabulary", () => {
       { typeName: "PhotoVerdict", module: "types.ts" },
       { typeName: "GradingsPayload", module: "types.ts" },
       { typeName: "GradedPoint", module: "types.ts" },
-      { typeName: "DisputeResult", module: "types.ts" }
+      { typeName: "DisputeResult", module: "types.ts" },
+      { typeName: "AssessmentShape", module: "types.ts" },
+      { typeName: "ShapePart", module: "types.ts" },
+      { typeName: "ReferenceSheet", module: "types.ts" },
+      { typeName: "AssessmentPart", module: "types.ts" },
+      { typeName: "AssessmentSession", module: "types.ts" },
+      { typeName: "AssessmentQuestion", module: "types.ts" },
+      { typeName: "AssessmentItem", module: "types.ts" },
+      { typeName: "AssessmentFrqItem", module: "types.ts" },
+      { typeName: "AssessmentAnswer", module: "types.ts" },
+      { typeName: "FreeResponseCapture", module: "types.ts" },
+      { typeName: "SavedQuestion", module: "types.ts" },
+      { typeName: "AssessmentResult", module: "types.ts" },
+      { typeName: "PartPacing", module: "types.ts" },
+      { typeName: "PacingRatio", module: "types.ts" },
+      { typeName: "PacingQuestion", module: "types.ts" },
+      { typeName: "QuestionComparison", module: "types.ts" },
+      { typeName: "PublishedMean", module: "types.ts" },
+      { typeName: "ScoreBand", module: "types.ts" },
+      { typeName: "BandAssumption", module: "types.ts" },
+      { typeName: "MultipleChoiceCount", module: "types.ts" },
+      { typeName: "FreeResponseCount", module: "types.ts" },
+      { typeName: "MockHistoryPayload", module: "types.ts" },
+      { typeName: "MockHistoryRow", module: "types.ts" },
+      { typeName: "CheckUnitsPayload", module: "types.ts" },
+      { typeName: "CheckUnit", module: "types.ts" },
+      { typeName: "CheckResult", module: "types.ts" },
+      { typeName: "CheckItemResult", module: "types.ts" },
+      { typeName: "MovedSkill", module: "types.ts" },
+      { typeName: "SkillSnapshot", module: "types.ts" },
+      { typeName: "CheckCoverage", module: "types.ts" },
+      { typeName: "UnfinishedPayload", module: "types.ts" },
+      { typeName: "UnfinishedAssessment", module: "types.ts" }
    ];
 
    it.each(shapeCases)("$typeName carries the field names its server module returns", (shapeCase) => {
@@ -878,8 +1033,21 @@ describe("response shape vocabulary", () => {
       { file: "api/routes/settings.py", route: "read_budgets", callee: "budgets.budgets_view" },
       { file: "api/routes/settings.py", route: "change_budget", callee: "budgets.budgets_view" },
       { file: "api/routes/auth.py", route: "reauth_begin", callee: "service.reauth_begin" },
-      { file: "api/routes/sessions.py", route: "read_diagnostic", callee: "diagnostic_session.result_payload" }
+      { file: "api/routes/sessions.py", route: "read_diagnostic", callee: "diagnostic_session.result_payload" },
+      { file: "api/routes/assessment.py", route: "read_timed", callee: "assessment.session_payload" },
+      { file: "api/routes/assessment.py", route: "start_timed_part", callee: "assessment.session_payload" },
+      { file: "api/routes/assessment.py", route: "submit_timed_part", callee: "assessment.session_payload" },
+      { file: "api/routes/assessment.py", route: "open_unit_check", callee: "assessment.session_payload" },
+      { file: "api/routes/assessment.py", route: "read_unit_check", callee: "assessment.session_payload" },
+      { file: "api/routes/assessment.py", route: "read_timed_result", callee: "assessment.results" },
+      { file: "api/routes/assessment.py", route: "finish_mock", callee: "assessment.finish_mock" },
+      { file: "api/routes/assessment.py", route: "submit_unit_check", callee: "unit_check.submit_unit_check" },
+      { file: "assessment/unit_check.py", route: "submit_unit_check", callee: "breakdown" }
    ];
+
+   it("list_unfinished lists what assessment.unfinished builds, the function scanned for its entries", () => {
+      expect(functionSource("api/routes/assessment.py", "list_unfinished")).toContain('{"unfinished": assessment.unfinished(db, user.id)}');
+   });
 
    it.each(routeHelpers)("$route returns what $callee builds, the function scanned for its shape", (helper) => {
       expect(returnsCallOf(helper.file, helper.route, helper.callee)).toBe(true);
@@ -968,7 +1136,23 @@ describe("response parsing", () => {
       { name: "requestReadBack", typeName: "FrqAttempt", invoke: () => requestReadBack("ATT-1") },
       { name: "confirmReadBack", typeName: "FrqAttempt", invoke: () => confirmReadBack("ATT-1", {}) },
       { name: "readGradings", typeName: "GradingsPayload", invoke: () => readGradings("ATT-1") },
-      { name: "askForReread", typeName: "DisputeResult", invoke: () => askForReread("GRD-1") }
+      { name: "askForReread", typeName: "DisputeResult", invoke: () => askForReread("GRD-1") },
+      { name: "readAssessmentShape", typeName: "AssessmentShape", invoke: () => readAssessmentShape() },
+      { name: "readUnfinished", typeName: "UnfinishedPayload", invoke: () => readUnfinished() },
+      { name: "openMock", typeName: "AssessmentSession", invoke: () => openMock({ capture_mode: "typed" }) },
+      { name: "openDrill", typeName: "AssessmentSession", invoke: () => openDrill({ part: "II-B", capture_mode: "photo" }) },
+      { name: "readTimedSession", typeName: "AssessmentSession", invoke: () => readTimedSession("mocks", "SES-1") },
+      { name: "startPart", typeName: "AssessmentSession", invoke: () => startPart("mocks", "SES-1", 1) },
+      { name: "submitPart", typeName: "AssessmentSession", invoke: () => submitPart("mocks", "SES-1", 1) },
+      { name: "saveQuestion", typeName: "SavedQuestion", invoke: () => saveQuestion("mocks", "SES-1", 1, 1, { marked: true }) },
+      { name: "readTimedResult", typeName: "AssessmentResult", invoke: () => readTimedResult("mocks", "SES-1") },
+      { name: "finishMock", typeName: "AssessmentResult", invoke: () => finishMock("SES-1") },
+      { name: "readMockHistory", typeName: "MockHistoryPayload", invoke: () => readMockHistory() },
+      { name: "readCheckUnits", typeName: "CheckUnitsPayload", invoke: () => readCheckUnits() },
+      { name: "openCheck", typeName: "AssessmentSession", invoke: () => openCheck("BC-UNIT-01") },
+      { name: "readCheck", typeName: "AssessmentSession", invoke: () => readCheck("SES-1") },
+      { name: "saveCheckQuestion", typeName: "SavedQuestion", invoke: () => saveCheckQuestion("SES-1", 1, { answer: { option_id: "A" } }) },
+      { name: "submitCheck", typeName: "CheckResult", invoke: () => submitCheck("SES-1") }
    ];
 
    it.each(parseCases)("$name hands back every field $typeName names", async (parseCase) => {

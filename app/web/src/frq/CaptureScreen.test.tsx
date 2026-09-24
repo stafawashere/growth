@@ -16,6 +16,7 @@ vi.mock("../api/client", async (importOriginal) => {
       confirmReadBack: vi.fn(),
       submitTypedAnswer: vi.fn(),
       readGradings: vi.fn(),
+      readReadBack: vi.fn(),
       askForReread: vi.fn()
    };
 });
@@ -264,5 +265,39 @@ describe("waiting on the grader", () => {
       fireEvent.click(screen.getByRole("button", { name: "Yes, grade it" }));
 
       expect(await screen.findByText(/Grading has not finished/, undefined, { timeout: 4000 })).toBeTruthy();
+   });
+
+   it.each(["confirmed", "partly_graded", "graded"])(
+      "reopens an attempt already %s on its grading, not on the photo step",
+      async (state) => {
+         mocked.startFrqAttempt.mockResolvedValue(attempt({ grading_state: state, transcription_confirmed: true, confirmed: READ_BACK }));
+         mocked.readGradings.mockResolvedValue(GRADED);
+         render(<CaptureScreen sessionId="SES-1" question={QUESTION} pollMilliseconds={5} captureMode="photo" />);
+
+         expect(await screen.findByTestId("grading-summary")).toBeTruthy();
+         expect(mocked.startFrqAttempt).toHaveBeenCalledWith("SES-1", QUESTION.id, "photo");
+         expect(screen.queryByLabelText("Photo of the page")).toBeNull();
+         expect(screen.queryByTestId("photo-capture")).toBeNull();
+      }
+   );
+
+   it("offers to grade a reopened confirmed answer again when no point arrives, with the reason, using the stored read-back", async () => {
+      mocked.startFrqAttempt.mockResolvedValue(attempt({ grading_state: "confirmed", transcription_confirmed: true, confirmed: READ_BACK }));
+      mocked.readGradings.mockResolvedValue({ ...GRADED, grading_state: "confirmed", points: [] });
+      mocked.readReadBack.mockResolvedValue(attempt({ grading_state: "confirmed", transcription_confirmed: true, confirmed: READ_BACK }));
+      mocked.confirmReadBack.mockResolvedValue(attempt({ grading_state: "confirmed", transcription_confirmed: true }));
+      render(<CaptureScreen sessionId="SES-1" question={QUESTION} pollMilliseconds={1} captureMode="photo" />);
+
+      const stalled = await screen.findByTestId("grading-stalled", undefined, { timeout: 4000 });
+
+      expect(stalled.textContent).toContain("no point has been graded after about five minutes");
+      expect(screen.queryByTestId("photo-capture")).toBeNull();
+      expect(mocked.confirmReadBack).not.toHaveBeenCalled();
+
+      mocked.readGradings.mockResolvedValue(GRADED);
+      fireEvent.click(screen.getByRole("button", { name: "Grade it again" }));
+
+      await waitFor(() => expect(mocked.confirmReadBack).toHaveBeenCalledWith("ATT-1", { read_back: READ_BACK }));
+      expect(await screen.findByTestId("grading-summary")).toBeTruthy();
    });
 });

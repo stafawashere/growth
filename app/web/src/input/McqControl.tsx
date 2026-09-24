@@ -8,6 +8,8 @@ export interface McqControlProps {
    options: ServedOption[];
    selectedId?: string | null;
    onSelect: (optionId: string) => void;
+   eliminatedIds?: ReadonlyArray<string>;
+   onToggleEliminated?: (optionId: string) => void;
 }
 
 /* An option carries a human label when one was authored, and otherwise a MathJSON value: a bare
@@ -24,8 +26,9 @@ function optionMathSource(option: ServedOption) {
 }
 
 export function McqControl(props: McqControlProps) {
-   const { groupLabel, options, selectedId, onSelect } = props;
+   const { groupLabel, options, selectedId, onSelect, eliminatedIds, onToggleEliminated } = props;
    const groupName = useId();
+   const offersEliminator = onToggleEliminated !== undefined;
 
    return (
       <fieldset className="choice-group">
@@ -35,7 +38,10 @@ export function McqControl(props: McqControlProps) {
             const hasLabel = option.label !== undefined;
             const mathSource = optionMathSource(option);
 
-            return (
+            const isEliminated = eliminatedIds?.includes(option.id) ?? false;
+            const optionText = hasLabel ? <MathText text={option.label!} /> : <MathValue value={mathSource ?? option.id} className="option-math" />;
+
+            const choice = (
                <label key={option.id}>
                   <input
                      type="radio"
@@ -44,8 +50,27 @@ export function McqControl(props: McqControlProps) {
                      checked={isSelected}
                      onChange={() => onSelect(option.id)}
                   />
-                  {hasLabel ? <MathText text={option.label!} /> : <MathValue value={mathSource ?? option.id} className="option-math" />}
+                  {offersEliminator ? <span className={isEliminated ? "crossed-out" : undefined}>({option.id}) {optionText}</span> : optionText}
                </label>
+            );
+
+            if (!offersEliminator) {
+               return choice;
+            }
+
+            return (
+               <div key={option.id} className="choice-option" data-testid="choice-option" data-eliminated={isEliminated}>
+                  {choice}
+
+                  <button
+                     type="button"
+                     className="text-button motion-instant-eliminate-option"
+                     aria-pressed={isEliminated}
+                     onClick={() => onToggleEliminated(option.id)}
+                  >
+                     {isEliminated ? `Restore option ${option.id}` : `Cross out option ${option.id}`}
+                  </button>
+               </div>
             );
          })}
       </fieldset>

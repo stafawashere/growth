@@ -1,0 +1,237 @@
+{
+   "id": "FRQ-AGT-06005-01",
+   "archetype_id": "BC-QA-06005",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "Water flows into a tank at the rate \\( R(t) = 30 + 12\\sin\\left(\\dfrac{\\pi t}{6}\\right) \\) liters per hour and drains out of the tank at the rate \\( D(t) = 3t \\) liters per hour, where \\( t \\) is measured in hours and \\( 0 \\le t \\le 12 \\). At time \\( t = 0 \\) the tank holds 200 liters of water."
+   },
+   "skills": [
+      "BC-SKL-06036",
+      "BC-SKL-06037",
+      "BC-SKL-06034",
+      "BC-SKL-08012",
+      "BC-SKL-08016",
+      "BC-SKL-08017",
+      "BC-SKL-08009"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "How many liters of water flow into the tank during the time interval \\( 0 \\le t \\le 6 \\)? Show the work that leads to your answer.",
+         "setup_required": false,
+         "answer_latex": "180 + \\frac{144}{\\pi}",
+         "worked_solution": [
+            {
+               "text": "Integrate the inflow rate over the interval.",
+               "latex": "\\int_{0}^{6} \\left(30 + 12\\sin\\frac{\\pi t}{6}\\right) dt"
+            },
+            {
+               "text": "Antidifferentiate.",
+               "latex": "\\left[30t - \\frac{72}{\\pi}\\cos\\frac{\\pi t}{6}\\right]_{0}^{6}"
+            },
+            {
+               "text": "Evaluate, with cos(pi) = -1 and cos(0) = 1.",
+               "latex": "\\left(180 + \\frac{72}{\\pi}\\right) - \\left(-\\frac{72}{\\pi}\\right) = 180 + \\frac{144}{\\pi}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-08016",
+                  "BC-SKL-06036"
+               ],
+               "criterion": "Writes the definite integral of R(t) from 0 to 6.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "0",
+                  "upper": "6",
+                  "integrand": null,
+                  "variable": "t"
+               }
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99003",
+               "skills": [
+                  "BC-SKL-06034"
+               ],
+               "criterion": "Writes the antiderivative 30t - (72/pi)cos(pi t/6) of R(t).",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "30*t - 72*cos(pi*t/6)/pi",
+                  "up_to_constant": true,
+                  "variable": "t"
+               }
+            },
+            {
+               "point_id": "a3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-06034",
+                  "BC-SKL-08017"
+               ],
+               "criterion": "Gives 180 + 144/pi liters.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "180 + 144/pi",
+                  "up_to_constant": false,
+                  "variable": "t"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find the amount of water in the tank at time \\( t = 6 \\).",
+         "setup_required": false,
+         "answer_latex": "326 + \\frac{144}{\\pi}",
+         "worked_solution": [
+            {
+               "text": "The amount at t = 6 is the starting amount plus the net inflow.",
+               "latex": "200 + \\int_{0}^{6} \\left(R(t) - D(t)\\right) dt"
+            },
+            {
+               "text": "The drained amount is the integral of 3t from 0 to 6.",
+               "latex": "\\int_{0}^{6} 3t\\,dt = \\left[\\frac{3t^{2}}{2}\\right]_{0}^{6} = 54"
+            },
+            {
+               "text": "Combine with part (a).",
+               "latex": "200 + \\left(180 + \\frac{144}{\\pi}\\right) - 54 = 326 + \\frac{144}{\\pi}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99002",
+               "skills": [
+                  "BC-SKL-06036",
+                  "BC-SKL-08016"
+               ],
+               "criterion": "Integrates the net rate R(t) - D(t), or integrates R and D separately and subtracts, with the drained amount 54 liters.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99033",
+               "skills": [
+                  "BC-SKL-06037",
+                  "BC-SKL-08012"
+               ],
+               "criterion": "Adds the initial 200 liters to the net change over 0 <= t <= 6.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "b3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-06037",
+                  "BC-SKL-08017"
+               ],
+               "criterion": "Gives 326 + 144/pi liters.",
+               "eligible_only_if": [
+                  "b2"
+               ],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "326 + 144/pi",
+                  "up_to_constant": false,
+                  "variable": "t"
+               },
+               "follows_from": [
+                  "a3"
+               ]
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Write an expression, without an integral sign, for \\( W(t) \\), the amount of water in the tank at time \\( t \\) for \\( 0 \\le t \\le 12 \\). Use it to find \\( W(12) \\).",
+         "setup_required": false,
+         "answer_latex": "W(12) = 344",
+         "worked_solution": [
+            {
+               "text": "Start from the initial amount plus the accumulated net rate.",
+               "latex": "W(t) = 200 + \\int_{0}^{t} \\left(30 + 12\\sin\\frac{\\pi s}{6} - 3s\\right) ds"
+            },
+            {
+               "text": "Antidifferentiate and evaluate from 0 to t.",
+               "latex": "W(t) = 200 + 30t - \\frac{72}{\\pi}\\cos\\frac{\\pi t}{6} + \\frac{72}{\\pi} - \\frac{3t^{2}}{2}"
+            },
+            {
+               "text": "Substitute t = 12, where cos(2 pi) = 1.",
+               "latex": "W(12) = 200 + 360 - \\frac{72}{\\pi} + \\frac{72}{\\pi} - 216 = 344"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99033",
+               "skills": [
+                  "BC-SKL-06037",
+                  "BC-SKL-08012"
+               ],
+               "criterion": "Writes W(t) as 200 plus the integral of R - D from 0 to t, or equivalently fixes the constant of an antiderivative so that W(0) = 200.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99003",
+               "skills": [
+                  "BC-SKL-06034"
+               ],
+               "criterion": "Writes the antiderivative 30t - (72/pi)cos(pi t/6) - 3t^2/2 of R(t) - D(t), with the constant that makes W(0) = 200 or without it.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "30*t - 72*cos(pi*t/6)/pi - 3*t**2/2",
+                  "up_to_constant": true,
+                  "variable": "t"
+               }
+            },
+            {
+               "point_id": "c3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-06037",
+                  "BC-SKL-08017"
+               ],
+               "criterion": "Gives W(12) = 344 liters.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "344",
+                  "up_to_constant": false,
+                  "variable": "t"
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 6 (p5)",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24 (stage 6 review: blind SymPy recheck 71 of 71, stems read for ambiguity and official text)"
+}

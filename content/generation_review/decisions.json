@@ -2557,5 +2557,18 @@
   "prompt_version": "generator/template_v1",
   "template_id": "TPL-BC-QA-05011-v1",
   "parameter_seed": "BC-QA-05011:spec-1:item-50:try-10"
+ },
+ {
+  "item_id": "ITM-GEN-01005-04",
+  "decision": "reject",
+  "reason": "the stem printed the factor x + 3 without brackets, so f(x) read as x + 3 sin(1/(x + 3)) - 1, whose limit at -3 does not exist; found while taking the P5 mock in the running app. The template now brackets a sum factor; the archetype keeps 21 published items",
+  "by": "claude-opus-5-5 on the operator's delegation of 2026-09-24",
+  "decided_on": "2026-09-24",
+  "rules": [
+   3
+  ],
+  "archetype_id": "BC-QA-01005",
+  "prompt_version": "generator/template_v1",
+  "template_id": "TPL-BC-QA-01005-v1"
  }
 ]

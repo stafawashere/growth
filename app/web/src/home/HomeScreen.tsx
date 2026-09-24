@@ -19,6 +19,7 @@ export interface HomeScreenProps {
    onOpenProgress?: () => void;
    onOpenReview?: () => void;
    onOpenFreeResponse?: () => void;
+   onOpenMockExam?: () => void;
 }
 
 function ExamFooter(props: { examDate: string; daysToExam: number }) {
@@ -102,11 +103,13 @@ export function HomeScreen(props: HomeScreenProps) {
       onStartRediagnostic,
       onOpenProgress,
       onOpenReview,
-      onOpenFreeResponse
+      onOpenFreeResponse,
+      onOpenMockExam
    } = props;
    const offersProgress = onOpenProgress !== undefined;
    const offersReview = onOpenReview !== undefined;
    const offersFreeResponse = onOpenFreeResponse !== undefined;
+   const offersMockExam = onOpenMockExam !== undefined;
 
    return (
       <section className="card home">
@@ -134,6 +137,12 @@ export function HomeScreen(props: HomeScreenProps) {
          {offersFreeResponse && (
             <button type="button" className="text-button" onClick={onOpenFreeResponse}>
                Free response
+            </button>
+         )}
+
+         {offersMockExam && (
+            <button type="button" className="text-button" onClick={onOpenMockExam}>
+               Mock exam
             </button>
          )}
 

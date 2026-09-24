@@ -1,0 +1,235 @@
+{
+   "id": "FRQ-AGT-07004-02",
+   "archetype_id": "BC-QA-07004",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "stem": {
+      "text": "Let \\( y = f(x) \\) be the solution to the differential equation \\( \\dfrac{dy}{dx} = y - 2x \\) with the initial condition \\( f(0) = 3 \\)."
+   },
+   "skills": [
+      "BC-SKL-07019",
+      "BC-SKL-07020",
+      "BC-SKL-07021",
+      "BC-SKL-07022",
+      "BC-SKL-07023"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find \\( \\dfrac{d^{2}y}{dx^{2}} \\) in terms of \\( x \\) and \\( y \\), and find the value of \\( f''(0) \\).",
+         "setup_required": false,
+         "answer_latex": "f''(0) = 1",
+         "worked_solution": [
+            {
+               "text": "Differentiate y - 2x with respect to x.",
+               "latex": "\\frac{d^{2}y}{dx^{2}} = \\frac{dy}{dx} - 2 = y - 2x - 2"
+            },
+            {
+               "text": "Evaluate at (0, 3).",
+               "latex": "f''(0) = 3 - 0 - 2 = 1"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-07023"
+               ],
+               "criterion": "Differentiates the right side with dy/dx carried through and substitutes, giving d2y/dx2 = y - 2x - 2.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "y - 2*x - 2",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-07023"
+               ],
+               "criterion": "Gives f''(0) = 1.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "1",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Use Euler's method, starting at \\( x = 0 \\) with two steps of equal size, to approximate \\( f(1) \\). Show the work that leads to your answer.",
+         "setup_required": false,
+         "answer_latex": "f(1) \\approx \\frac{25}{4}",
+         "worked_solution": [
+            {
+               "text": "Step size.",
+               "latex": "\\Delta x = 0.5"
+            },
+            {
+               "text": "First step from (0, 3), slope 3 - 0 = 3.",
+               "latex": "f(0.5) \\approx 3 + 0.5(3) = 4.5"
+            },
+            {
+               "text": "Second step from (0.5, 4.5), slope 4.5 - 1 = 3.5.",
+               "latex": "f(1) \\approx 4.5 + 0.5(3.5) = 6.25"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99034",
+               "skills": [
+                  "BC-SKL-07019",
+                  "BC-SKL-07020",
+                  "BC-SKL-07021",
+                  "BC-SKL-07022"
+               ],
+               "criterion": "Carries out two Euler steps of size 0.5 from (0, 3), using the slope y - 2x evaluated at the start of each step.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-07021"
+               ],
+               "criterion": "Gives f(1) approximately 6.25.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "25/4"
+               }
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Use Euler's method, starting at \\( x = 0 \\) with two steps of equal size, to approximate \\( f(-1) \\). Show the work that leads to your answer.",
+         "setup_required": false,
+         "answer_latex": "f(-1) \\approx \\frac{1}{4}",
+         "worked_solution": [
+            {
+               "text": "The steps run to the left, so the step size is negative.",
+               "latex": "\\Delta x = -0.5"
+            },
+            {
+               "text": "First step from (0, 3), slope 3.",
+               "latex": "f(-0.5) \\approx 3 + (-0.5)(3) = 1.5"
+            },
+            {
+               "text": "Second step from (-0.5, 1.5), slope 1.5 + 1 = 2.5.",
+               "latex": "f(-1) \\approx 1.5 + (-0.5)(2.5) = 0.25"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99034",
+               "skills": [
+                  "BC-SKL-07019",
+                  "BC-SKL-07020",
+                  "BC-SKL-07021",
+                  "BC-SKL-07022"
+               ],
+               "criterion": "Carries out two Euler steps of size -0.5 from (0, 3), using the slope y - 2x evaluated at the start of each step.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-07021"
+               ],
+               "criterion": "Gives f(-1) approximately 0.25.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "1/4"
+               }
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "Use Euler's method, starting at \\( x = 0 \\) with two steps of size \\( 0.25 \\), to approximate \\( f(0.5) \\). Given that \\( f''(x) > 0 \\) for all \\( x \\), is this approximation an overestimate or an underestimate of \\( f(0.5) \\)? Give a reason for your answer.",
+         "setup_required": false,
+         "answer_latex": "f(0.5) \\approx \\frac{73}{16}, \\text{ an underestimate}",
+         "worked_solution": [
+            {
+               "text": "First step from (0, 3), slope 3.",
+               "latex": "f(0.25) \\approx 3 + 0.25(3) = 3.75"
+            },
+            {
+               "text": "Second step from (0.25, 3.75), slope 3.75 - 0.5 = 3.25.",
+               "latex": "f(0.5) \\approx 3.75 + 0.25(3.25) = 4.5625"
+            },
+            {
+               "text": "The graph of f is concave up, so each Euler segment, which follows a tangent direction, lies below the curve.",
+               "latex": "f''(x) > 0"
+            },
+            {
+               "text": "So the approximation is an underestimate of f(0.5).",
+               "latex": "f(0.5) \\approx \\frac{73}{16}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99034",
+               "skills": [
+                  "BC-SKL-07019",
+                  "BC-SKL-07020",
+                  "BC-SKL-07021",
+                  "BC-SKL-07022"
+               ],
+               "criterion": "Carries out two Euler steps of size 0.25 from (0, 3), using the slope y - 2x evaluated at the start of each step.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "d2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-07021"
+               ],
+               "criterion": "Gives f(0.5) approximately 4.5625.",
+               "eligible_only_if": [
+                  "d1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "73/16"
+               }
+            },
+            {
+               "point_id": "d3",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-07023"
+               ],
+               "criterion": "States that the approximation is an underestimate and gives the reason that f'' > 0, so the graph of f is concave up and the Euler segments lie below it. A verdict with no reason, or a reason about f or f' being positive, does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 6 (p5)",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24 (stage 6 review: blind SymPy recheck 71 of 71, stems read for ambiguity and official text)"
+}

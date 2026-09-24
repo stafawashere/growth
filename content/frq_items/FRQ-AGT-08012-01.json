@@ -1,0 +1,208 @@
+{
+   "id": "FRQ-AGT-08012-01",
+   "archetype_id": "BC-QA-08012",
+   "calculator_status": "calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "Let \\( f(x) = 4xe^{-x} \\) for \\( x \\ge 0 \\). The graph of \\( f \\) meets the horizontal line \\( y = 1 \\) at exactly two points, where \\( x = p \\) and \\( x = q \\) with \\( 0 < p < q \\)."
+   },
+   "skills": [
+      "BC-SKL-08040",
+      "BC-SKL-08041",
+      "BC-SKL-08042",
+      "BC-SKL-08043",
+      "BC-SKL-08044",
+      "BC-SKL-08045",
+      "BC-SKL-08046",
+      "BC-SKL-08047"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Let \\( R \\) be the region bounded by the graph of \\( f \\) and the line \\( y = 1 \\). Find the volume of the solid generated when \\( R \\) is revolved about the line \\( y = 1 \\).",
+         "setup_required": true,
+         "answer_latex": "\\pi\\int_{p}^{q} \\left(4xe^{-x} - 1\\right)^{2}dx \\approx 0.624",
+         "worked_solution": [
+            {
+               "text": "Solve 4x e^(-x) = 1 on the calculator for the ends of the region.",
+               "latex": "p \\approx 0.357, \\quad q \\approx 2.153"
+            },
+            {
+               "text": "Each disc has radius equal to the distance from the curve down to the line y = 1.",
+               "latex": "r(x) = 4xe^{-x} - 1"
+            },
+            {
+               "text": "Integrate pi times the square of the radius.",
+               "latex": "\\pi\\int_{p}^{q} \\left(4xe^{-x} - 1\\right)^{2}dx \\approx 0.624"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99058",
+               "skills": [
+                  "BC-SKL-08040",
+                  "BC-SKL-08044",
+                  "BC-SKL-08046"
+               ],
+               "criterion": "Writes a disc integrand pi times (4x e^(-x) - 1)^2, the square of the distance from the curve to the line y = 1.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-08046",
+                  "BC-SKL-08047"
+               ],
+               "criterion": "Uses the limits p, about 0.357, and q, about 2.153, the solutions of 4x e^(-x) = 1.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "a3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-08043"
+               ],
+               "criterion": "Gives the volume as 0.624.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "pi*Integral((4*x*exp(-x) - 1)**2, (x, -LambertW(-1/4), -LambertW(-1/4, -1)))"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Let \\( U \\) be the unbounded region in the first quadrant between the graph of \\( f \\) and the x-axis. The solid generated when \\( U \\) is revolved about the x-axis has finite volume. Find the volume of this solid, using an antiderivative and showing the limit that evaluates the improper integral.",
+         "setup_required": true,
+         "answer_latex": "\\pi\\int_{0}^{\\infty} 16x^{2}e^{-2x}\\,dx = \\lim_{b \\to \\infty} \\pi\\left[-4\\left(2x^{2} + 2x + 1\\right)e^{-2x}\\right]_{0}^{b} = 4\\pi",
+         "worked_solution": [
+            {
+               "text": "Each disc has radius f(x), so the volume is an improper integral.",
+               "latex": "\\pi\\int_{0}^{\\infty} \\left(4xe^{-x}\\right)^{2}dx = \\lim_{b \\to \\infty} \\pi\\int_{0}^{b} 16x^{2}e^{-2x}\\,dx"
+            },
+            {
+               "text": "Integrate by parts twice.",
+               "latex": "\\int 16x^{2}e^{-2x}\\,dx = -4\\left(2x^{2} + 2x + 1\\right)e^{-2x} + C"
+            },
+            {
+               "text": "Evaluate and take the limit.",
+               "latex": "\\lim_{b \\to \\infty} \\pi\\left(4 - 4\\left(2b^{2} + 2b + 1\\right)e^{-2b}\\right) = 4\\pi \\approx 12.566"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99058",
+               "skills": [
+                  "BC-SKL-08040",
+                  "BC-SKL-08041"
+               ],
+               "criterion": "Writes a disc integrand pi times (4x e^(-x))^2, that is 16 pi x^2 e^(-2x), on the interval from 0 to infinity.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99053",
+               "skills": [
+                  "BC-SKL-08041"
+               ],
+               "criterion": "Replaces the infinite upper limit with a variable, such as b, and writes the limit as that variable approaches infinity, applied to the integral or to the evaluated antiderivative.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "b3",
+               "point_type_id": "BC-PT-99003",
+               "skills": [
+                  "BC-SKL-08041"
+               ],
+               "criterion": "Gives a correct antiderivative of 16x^2 e^(-2x), namely -4(2x^2 + 2x + 1)e^(-2x), with or without the factor pi and the constant.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "b4",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-08043"
+               ],
+               "criterion": "Gives the volume 4 pi, about 12.566.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "4*pi"
+               }
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Let \\( k \\) be the positive number for which the solid generated by revolving the region between the graph of \\( f \\) and the x-axis for \\( 0 \\le x \\le k \\) about the x-axis has half the volume of the solid in part (b). Find the value of \\( k \\).",
+         "setup_required": true,
+         "answer_latex": "k \\approx 1.337",
+         "worked_solution": [
+            {
+               "text": "Set the volume on the interval from 0 to k equal to half of 4 pi.",
+               "latex": "\\pi\\int_{0}^{k} \\left(4xe^{-x}\\right)^{2}dx = 2\\pi"
+            },
+            {
+               "text": "Solve on the calculator.",
+               "latex": "k \\approx 1.337"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-08041",
+                  "BC-SKL-08047"
+               ],
+               "criterion": "Writes the equation pi times the integral of (4x e^(-x))^2 from 0 to k equals 2 pi, half of the volume from part (b), or an equivalent equation.",
+               "eligible_only_if": [],
+               "check": null,
+               "follows_from": [
+                  "b4"
+               ]
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-08043"
+               ],
+               "criterion": "Gives k = 1.337.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "1.337030156861780158956728632"
+               },
+               "follows_from": [
+                  "b4"
+               ]
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 6 (p5)",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24 (stage 6 review: blind SymPy recheck 71 of 71, stems read for ambiguity and official text)"
+}

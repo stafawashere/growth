@@ -1,0 +1,230 @@
+{
+   "id": "FRQ-AGT-08008-01",
+   "archetype_id": "BC-QA-08008",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "Let \\( f(x) = 6x - x^{2} \\) and \\( g(x) = x^{2} - 2x \\). Let \\( R \\) be the region bounded by the graphs of \\( f \\) and \\( g \\)."
+   },
+   "skills": [
+      "BC-SKL-08018",
+      "BC-SKL-08019",
+      "BC-SKL-08020",
+      "BC-SKL-08021",
+      "BC-SKL-08022"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find the area of \\( R \\). Show the work that leads to your answer.",
+         "setup_required": false,
+         "answer_latex": "\\frac{64}{3}",
+         "worked_solution": [
+            {
+               "text": "The graphs meet where 6x - x^2 = x^2 - 2x.",
+               "latex": "2x^{2} - 8x = 0 \\implies x = 0, \\ x = 4"
+            },
+            {
+               "text": "On 0 < x < 4 the graph of f lies above the graph of g, for example f(1) = 5 > g(1) = -1.",
+               "latex": "\\int_{0}^{4} \\left[(6x - x^{2}) - (x^{2} - 2x)\\right] dx = \\int_{0}^{4} (8x - 2x^{2})\\,dx"
+            },
+            {
+               "text": "Antidifferentiate.",
+               "latex": "\\left[4x^{2} - \\frac{2x^{3}}{3}\\right]_{0}^{4}"
+            },
+            {
+               "text": "Evaluate.",
+               "latex": "64 - \\frac{128}{3} = \\frac{64}{3}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99059",
+               "skills": [
+                  "BC-SKL-08018",
+                  "BC-SKL-08019"
+               ],
+               "criterion": "Places the difference of the two functions, f(x) - g(x) = 8x - 2x^2 in either order or inside an absolute value, in a definite integral.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-08019",
+                  "BC-SKL-08020"
+               ],
+               "criterion": "Uses the intersection x-values 0 and 4 as the limits of the area integral.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "0",
+                  "upper": "4",
+                  "integrand": null,
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "a3",
+               "point_type_id": "BC-PT-99003",
+               "skills": [
+                  "BC-SKL-08022"
+               ],
+               "criterion": "Writes the antiderivative 4x^2 - 2x^3/3 of the difference, or the antiderivatives of f and g separately.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "4*x**2 - 2*x**3/3",
+                  "up_to_constant": true,
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "a4",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-08022"
+               ],
+               "criterion": "Gives the area 64/3.",
+               "eligible_only_if": [
+                  "a2"
+               ],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "64/3",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "The vertical line \\( x = k \\) divides \\( R \\) into two regions of equal area. Write an equation involving an integral expression whose solution is \\( k \\), and find the value of \\( k \\).",
+         "setup_required": false,
+         "answer_latex": "k = 2",
+         "worked_solution": [
+            {
+               "text": "The part of R to the left of x = k has half the area of R.",
+               "latex": "\\int_{0}^{k} (8x - 2x^{2})\\,dx = \\frac{32}{3}"
+            },
+            {
+               "text": "Antidifferentiate and evaluate.",
+               "latex": "4k^{2} - \\frac{2k^{3}}{3} = \\frac{32}{3} \\iff k^{3} - 6k^{2} + 16 = 0"
+            },
+            {
+               "text": "k = 2 is a root, and the other two roots, 2 plus or minus 2 sqrt(3), lie outside 0 < k < 4.",
+               "latex": "(k - 2)(k^{2} - 4k - 8) = 0"
+            },
+            {
+               "text": "State the value.",
+               "latex": "k = 2"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-08019"
+               ],
+               "criterion": "Writes an equation with a definite integral of the difference from 0 to k (or from k to 4) set equal to 32/3, half the area from part (a), or sets the two integrals on either side of k equal to each other.",
+               "eligible_only_if": [],
+               "check": null,
+               "follows_from": [
+                  "a4"
+               ]
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99003",
+               "skills": [
+                  "BC-SKL-08022"
+               ],
+               "criterion": "Evaluates the integral with the antiderivative 4x^2 - 2x^3/3 at k, reaching an equation in k such as 4k^2 - 2k^3/3 = 32/3.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "b3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-08020",
+                  "BC-SKL-08022"
+               ],
+               "criterion": "Gives k = 2, the only solution between 0 and 4.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "2",
+                  "up_to_constant": false,
+                  "variable": "k"
+               }
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Let \\( S \\) be the region bounded by the graphs of \\( f \\) and \\( g \\) and the vertical line \\( x = 5 \\). Find the area of \\( S \\).",
+         "setup_required": false,
+         "answer_latex": "\\frac{14}{3}",
+         "worked_solution": [
+            {
+               "text": "For 4 < x < 5 the graph of g lies above the graph of f, for example g(5) = 15 > f(5) = 5.",
+               "latex": "\\int_{4}^{5} \\left[(x^{2} - 2x) - (6x - x^{2})\\right] dx = \\int_{4}^{5} (2x^{2} - 8x)\\,dx"
+            },
+            {
+               "text": "Antidifferentiate and evaluate.",
+               "latex": "\\left[\\frac{2x^{3}}{3} - 4x^{2}\\right]_{4}^{5} = \\left(\\frac{250}{3} - 100\\right) - \\left(\\frac{128}{3} - 64\\right) = \\frac{14}{3}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99059",
+               "skills": [
+                  "BC-SKL-08018",
+                  "BC-SKL-08019"
+               ],
+               "criterion": "Writes a definite integral from 4 to 5 of g(x) - f(x) = 2x^2 - 8x, or the difference inside an absolute value; an integrand of f - g earns the point only if the response then takes the absolute value of the result.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-08022"
+               ],
+               "criterion": "Gives the area 14/3.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "14/3",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 6 (p5)",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24 (stage 6 review: blind SymPy recheck 71 of 71, stems read for ambiguity and official text)"
+}

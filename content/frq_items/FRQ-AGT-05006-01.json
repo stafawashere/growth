@@ -1,0 +1,225 @@
+{
+   "id": "FRQ-AGT-05006-01",
+   "archetype_id": "BC-QA-05006",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "Let \\( f(x) = x^{3} - 9x^{2} + 24x \\), and let \\( g(x) = \\displaystyle\\int_{0}^{x} \\bigl(f(t) - 20\\bigr)\\,dt \\). Both functions are considered on the closed interval \\( 0 \\le x \\le 6 \\)."
+   },
+   "skills": [
+      "BC-SKL-05010",
+      "BC-SKL-05024",
+      "BC-SKL-05025",
+      "BC-SKL-05026",
+      "BC-SKL-05027",
+      "BC-SKL-05028",
+      "BC-SKL-05029"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find the absolute maximum value of \\( f \\) on \\( 0 \\le x \\le 6 \\). Justify your answer.",
+         "setup_required": false,
+         "answer_latex": "36",
+         "worked_solution": [
+            {
+               "text": "Set the derivative equal to zero.",
+               "latex": "f'(x) = 3x^{2} - 18x + 24 = 3(x-2)(x-4) = 0, \\quad x = 2, 4"
+            },
+            {
+               "text": "Evaluate f at the critical points and both endpoints.",
+               "latex": "f(0) = 0,\\; f(2) = 20,\\; f(4) = 16,\\; f(6) = 36"
+            },
+            {
+               "text": "The largest candidate value is at the right endpoint.",
+               "latex": "\\text{absolute maximum } = 36"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99013",
+               "skills": [
+                  "BC-SKL-05010"
+               ],
+               "criterion": "Sets f'(x) = 3x^2 - 18x + 24 equal to zero, or states that the critical points come from f' = 0, and finds x = 2 and x = 4.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99011",
+               "skills": [
+                  "BC-SKL-05024",
+                  "BC-SKL-05025",
+                  "BC-SKL-05028"
+               ],
+               "criterion": "Justifies with a candidates test that evaluates f at x = 0, 2, 4 and 6 (0, 20, 16 and 36), with no endpoint missing.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "a3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-05026",
+                  "BC-SKL-05027"
+               ],
+               "criterion": "Gives the absolute maximum value 36.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "36",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find the absolute minimum value of \\( f \\) on \\( 0 \\le x \\le 6 \\), and the value of \\( x \\) at which it occurs. Justify your answer.",
+         "setup_required": false,
+         "answer_latex": "0 \\text{ at } x = 0",
+         "worked_solution": [
+            {
+               "text": "The candidate values from part (a) apply again.",
+               "latex": "f(0) = 0,\\; f(2) = 20,\\; f(4) = 16,\\; f(6) = 36"
+            },
+            {
+               "text": "The smallest candidate value is at the left endpoint.",
+               "latex": "\\text{absolute minimum } = f(0) = 0"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99011",
+               "skills": [
+                  "BC-SKL-05024",
+                  "BC-SKL-05028"
+               ],
+               "criterion": "Justifies the minimum by comparing f at every candidate, 0, 2, 4 and 6, whether recomputed or carried from part (a).",
+               "eligible_only_if": [],
+               "check": null,
+               "follows_from": [
+                  "a2"
+               ]
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-05026",
+                  "BC-SKL-05027"
+               ],
+               "criterion": "Gives the absolute minimum value 0, attained at x = 0.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "0",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Find the value of \\( x \\) at which \\( g \\) attains its absolute minimum on \\( 0 \\le x \\le 6 \\), and find the absolute minimum value of \\( g \\). Justify your answer.",
+         "setup_required": false,
+         "answer_latex": "g(5) = -\\frac{75}{4}",
+         "worked_solution": [
+            {
+               "text": "By the Fundamental Theorem of Calculus, set g' equal to zero.",
+               "latex": "g'(x) = f(x) - 20 = x^{3} - 9x^{2} + 24x - 20 = (x-2)^{2}(x-5) = 0"
+            },
+            {
+               "text": "Critical points.",
+               "latex": "x = 2, \\; x = 5"
+            },
+            {
+               "text": "An antiderivative gives g in closed form.",
+               "latex": "g(x) = \\frac{x^{4}}{4} - 3x^{3} + 12x^{2} - 20x"
+            },
+            {
+               "text": "Evaluate g at the critical points and both endpoints.",
+               "latex": "g(0) = 0,\\; g(2) = -12,\\; g(5) = -\\frac{75}{4},\\; g(6) = -12"
+            },
+            {
+               "text": "The smallest candidate value is at x = 5.",
+               "latex": "g(5) = -\\frac{75}{4}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99013",
+               "skills": [
+                  "BC-SKL-05010"
+               ],
+               "criterion": "Sets g'(x) = f(x) - 20 equal to zero, and finds the critical points x = 2 and x = 5.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-05026"
+               ],
+               "criterion": "Identifies x = 5 as the location of the absolute minimum.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "5",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "c3",
+               "point_type_id": "BC-PT-99011",
+               "skills": [
+                  "BC-SKL-05024",
+                  "BC-SKL-05025",
+                  "BC-SKL-05028"
+               ],
+               "criterion": "Justifies with a candidates test that evaluates g at x = 0, 2, 5 and 6 (0, -12, -75/4 and -12), with no endpoint missing.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "c4",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-05025",
+                  "BC-SKL-05027"
+               ],
+               "criterion": "Gives the absolute minimum value g(5) = -75/4, supported by an antiderivative or integral evaluation.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "-75/4",
+                  "up_to_constant": false,
+                  "variable": "x"
+               },
+               "follows_from": [
+                  "c3"
+               ]
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 6 (p5)",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24 (stage 6 review: blind SymPy recheck 71 of 71, stems read for ambiguity and official text)"
+}

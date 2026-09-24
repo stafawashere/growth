@@ -1,7 +1,13 @@
 import type {
+   AssessmentAnswer,
+   AssessmentResult,
+   AssessmentSession,
+   AssessmentShape,
    AttemptResult,
    BudgetsPayload,
    CalibrationPayload,
+   CheckResult,
+   CheckUnitsPayload,
    CheckpointsPayload,
    CheckpointView,
    Confidence,
@@ -14,8 +20,11 @@ import type {
    FrqAttempt,
    FrqUnitsPayload,
    GradingsPayload,
+   HighlightRange,
    MasteryMapPayload,
    MetricsPayload,
+   MockHistoryPayload,
+   PartKey,
    PhotoVerdict,
    ProbeAdministration,
    ProbePayload,
@@ -25,9 +34,12 @@ import type {
    ReadBack,
    RepresentationMatrixPayload,
    ReviewPayload,
+   SavedQuestion,
    ServedItem,
    SessionPayload,
    SettingsPayload,
+   TimedKind,
+   UnfinishedPayload,
    UnitCheckPayload
 } from "./types";
 
@@ -816,4 +828,102 @@ export function askForReread(gradingId: string, reason?: string) {
    const path = `/gradings/${encodeURIComponent(gradingId)}/dispute`;
 
    return requestJson<DisputeResult>(path, jsonInit("POST", { reason: reason ?? "" }));
+}
+
+
+export interface OpenMockFields {
+   capture_mode: CaptureMode;
+}
+
+export interface OpenDrillFields {
+   part: PartKey;
+   capture_mode: CaptureMode;
+}
+
+/* visit_ms is the length of the visit that just ended, sent whenever the student leaves a
+   question. The server never answers with correctness here. */
+export interface SaveQuestionFields {
+   answer?: AssessmentAnswer | null;
+   visit_ms?: number;
+   marked?: boolean;
+   eliminated?: string[];
+   notes?: string;
+   highlights?: HighlightRange[];
+   confidence?: Confidence | null;
+}
+
+function timedPath(kind: TimedKind, sessionId: string) {
+   return `/${kind}/${encodeURIComponent(sessionId)}`;
+}
+
+function partPath(kind: TimedKind, sessionId: string, position: number) {
+   return `${timedPath(kind, sessionId)}/sections/${position}`;
+}
+
+export function readUnfinished() {
+   return requestJson<UnfinishedPayload>("/assessments/unfinished");
+}
+
+export function readAssessmentShape() {
+   return requestJson<AssessmentShape>("/assessments/shape");
+}
+
+export function openMock(fields: OpenMockFields) {
+   return requestJson<AssessmentSession>("/mocks", jsonInit("POST", fields));
+}
+
+export function openDrill(fields: OpenDrillFields) {
+   return requestJson<AssessmentSession>("/drills", jsonInit("POST", fields));
+}
+
+export function readTimedSession(kind: TimedKind, sessionId: string) {
+   return requestJson<AssessmentSession>(timedPath(kind, sessionId));
+}
+
+export function startPart(kind: TimedKind, sessionId: string, position: number) {
+   return requestJson<AssessmentSession>(`${partPath(kind, sessionId, position)}/start`, jsonInit("POST"));
+}
+
+export function submitPart(kind: TimedKind, sessionId: string, position: number) {
+   return requestJson<AssessmentSession>(`${partPath(kind, sessionId, position)}/submit`, jsonInit("POST"));
+}
+
+export function saveQuestion(kind: TimedKind, sessionId: string, position: number, number: number, fields: SaveQuestionFields) {
+   const path = `${partPath(kind, sessionId, position)}/questions/${number}`;
+
+   return requestJson<SavedQuestion>(path, jsonInit("PUT", fields));
+}
+
+export function readTimedResult(kind: TimedKind, sessionId: string) {
+   return requestJson<AssessmentResult>(`${timedPath(kind, sessionId)}/result`);
+}
+
+export function finishMock(sessionId: string) {
+   return requestJson<AssessmentResult>(`${timedPath("mocks", sessionId)}/finish`, jsonInit("POST"));
+}
+
+export function readMockHistory() {
+   return requestJson<MockHistoryPayload>("/mocks");
+}
+
+export function readCheckUnits() {
+   return requestJson<CheckUnitsPayload>("/unit-checks/units");
+}
+
+export function openCheck(unitId: string) {
+   return requestJson<AssessmentSession>("/unit-checks", jsonInit("POST", { unit_id: unitId }));
+}
+
+export function readCheck(sessionId: string) {
+   return requestJson<AssessmentSession>(`/unit-checks/${encodeURIComponent(sessionId)}`);
+}
+
+export function saveCheckQuestion(sessionId: string, number: number, fields: SaveQuestionFields) {
+   const path = `/unit-checks/${encodeURIComponent(sessionId)}/questions/${number}`;
+
+   return requestJson<SavedQuestion>(path, jsonInit("PUT", fields));
+}
+
+export function submitCheck(sessionId: string, fields?: DayFields) {
+   return requestJson<CheckResult>(`/unit-checks/${encodeURIComponent(sessionId)}/submit`, jsonInit("POST", fields ?? {}));
 }

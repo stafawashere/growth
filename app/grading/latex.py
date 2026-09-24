@@ -45,7 +45,7 @@ _SUPERSCRIPT_THEN_FACTOR = re.compile(r"\^(\{[^{}]*\}|\w)\s*(?=[a-zA-Z(\\])")
 _BARE_ARGUMENT = re.compile(r"\\(" + "|".join(FUNCTION_NAMES) + r")(\^\{[^}]*\}|\^\d)?\s+([a-zA-Z0-9])(?![a-zA-Z0-9^_])")
 _ENDS_WITH_FUNCTION = re.compile(r"\\(?:" + "|".join(FUNCTION_NAMES) + r")$")
 _ENDS_WITH_BOUNDED_OPERATOR = re.compile(r"\\(?:int|sum|prod|lim)(?:_\{[^{}]*\}|_\w)?$")
-_DIFFERENTIAL_NEXT = re.compile(r"d[a-zA-Z](?![a-zA-Z])")
+_DIFFERENTIAL_NEXT = re.compile(r"d(?:[a-zA-Z](?![a-zA-Z])|\\theta(?![a-zA-Z]))")
 
 
 class Unreadable(ValueError):

@@ -84,6 +84,9 @@ GROWTH_EXPERIMENTS_DEFAULT the state both A/B switches of app/experiments/switch
                       for a student: off, on or randomised. Unset, retrieval_entry starts
                       randomised and feedback_elaboration starts off (RUNNING_EXPERIMENT_DEFAULTS).
                       A switch the student has already set keeps its state.
+GROWTH_TIMED_ASSESSMENTS on (the default) or off. off switches the full mock and the timed part
+                      drills off, 11 P5's rollback; the unit check stays on. Any other value
+                      stops the process at startup.
 
 This module also mounts the built React client (app/web/dist, docs/plan/06-architecture.md's
 system diagram: the browser speaks REST to one FastAPI process) at the same origin the API
@@ -399,7 +402,18 @@ def settings_from_environment(env=None):
       experiment_default_state=experiment_default_state(env),
       ai_provider=build_grading_provider(env),
       grading_caps=build_grading_caps(env),
+      timed_assessments=timed_assessments_enabled(env),
    )
+
+
+def timed_assessments_enabled(env):
+   configured = env.get("GROWTH_TIMED_ASSESSMENTS", "on")
+   is_known = configured in ("on", "off")
+
+   if not is_known:
+      raise ValueError(f"GROWTH_TIMED_ASSESSMENTS must be on or off, got {configured!r}")
+
+   return configured == "on"
 
 
 def _tokens_css_response(env):

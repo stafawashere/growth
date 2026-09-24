@@ -1,0 +1,254 @@
+{
+   "id": "FRQ-AGT-07003-02",
+   "archetype_id": "BC-QA-07003",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "stem": {
+      "text": "A function \\( y = f(t) \\) is positive and continuous for \\( t \\ge 0 \\), with \\( f(0) = 1 \\). For \\( 0 < t < 2 \\) the function satisfies the differential equation \\( \\dfrac{dy}{dt} = 4t\\sqrt{y} \\), and for \\( t > 2 \\) it satisfies the differential equation \\( \\dfrac{dy}{dt} = -\\dfrac{2y}{t} \\)."
+   },
+   "skills": [
+      "BC-SKL-07024",
+      "BC-SKL-07025",
+      "BC-SKL-07026",
+      "BC-SKL-07027",
+      "BC-SKL-07029",
+      "BC-SKL-07030",
+      "BC-SKL-07033"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Use separation of variables to find \\( f(t) \\) for \\( 0 \\le t \\le 2 \\).",
+         "setup_required": false,
+         "answer_latex": "f(t) = (t^{2}+1)^{2}",
+         "worked_solution": [
+            {
+               "text": "Separate the variables.",
+               "latex": "\\frac{1}{\\sqrt{y}}\\,dy = 4t\\,dt"
+            },
+            {
+               "text": "Antidifferentiate both sides.",
+               "latex": "2\\sqrt{y} = 2t^{2} + C"
+            },
+            {
+               "text": "Use f(0) = 1.",
+               "latex": "2 = 0 + C, \\quad C = 2"
+            },
+            {
+               "text": "Solve for y. The square root is positive, so squaring loses nothing.",
+               "latex": "\\sqrt{y} = t^{2} + 1, \\quad f(t) = (t^{2}+1)^{2}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99028",
+               "skills": [
+                  "BC-SKL-07024"
+               ],
+               "criterion": "Separates the variables so that y and dy sit on one side and t and dt on the other, for example dy over the square root of y equals 4t dt.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99029",
+               "skills": [
+                  "BC-SKL-07025"
+               ],
+               "criterion": "Writes a correct antiderivative of the y side, 2 times the square root of y, up to a constant.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "2*sqrt(y)",
+                  "up_to_constant": true,
+                  "variable": "y",
+                  "each_side": true
+               }
+            },
+            {
+               "point_id": "a3",
+               "point_type_id": "BC-PT-99030",
+               "skills": [
+                  "BC-SKL-07025"
+               ],
+               "criterion": "Writes a correct antiderivative of the t side, 2t squared, up to a constant.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "2*t**2",
+                  "up_to_constant": true,
+                  "variable": "t",
+                  "each_side": true
+               }
+            },
+            {
+               "point_id": "a4",
+               "point_type_id": "BC-PT-99031",
+               "skills": [
+                  "BC-SKL-07026",
+                  "BC-SKL-07029"
+               ],
+               "criterion": "Includes a constant of integration and uses f(0) = 1 to find it (C = 2 in the form 2 sqrt(y) = 2t^2 + C).",
+               "eligible_only_if": [
+                  "a2",
+                  "a3"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "a5",
+               "point_type_id": "BC-PT-99032",
+               "skills": [
+                  "BC-SKL-07027",
+                  "BC-SKL-07030",
+                  "BC-SKL-07033"
+               ],
+               "criterion": "Solves for y to give f(t) = (t^2 + 1)^2 in any equivalent form.",
+               "eligible_only_if": [
+                  "a4"
+               ],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "(t**2 + 1)**2",
+                  "up_to_constant": false,
+                  "variable": "t"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Use your answer to part (a) to find \\( f(2) \\), and use separation of variables to find \\( f(t) \\) for \\( t \\ge 2 \\).",
+         "setup_required": false,
+         "answer_latex": "f(t) = \\frac{100}{t^{2}}",
+         "worked_solution": [
+            {
+               "text": "By continuity, the second equation starts from the value the first solution reaches.",
+               "latex": "f(2) = (4 + 1)^{2} = 25"
+            },
+            {
+               "text": "Separate the variables.",
+               "latex": "\\frac{1}{y}\\,dy = -\\frac{2}{t}\\,dt"
+            },
+            {
+               "text": "Antidifferentiate both sides.",
+               "latex": "\\ln|y| = -2\\ln t + C"
+            },
+            {
+               "text": "Since y is positive, y = A/t^2 with A = e^C, and f(2) = 25 gives A = 100.",
+               "latex": "25 = \\frac{A}{4}, \\quad A = 100"
+            },
+            {
+               "text": "State the solution.",
+               "latex": "f(t) = \\frac{100}{t^{2}}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99028",
+               "skills": [
+                  "BC-SKL-07024"
+               ],
+               "criterion": "Separates the variables of the second equation, for example dy over y equals -2 over t times dt.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99029",
+               "skills": [
+                  "BC-SKL-07025"
+               ],
+               "criterion": "Antidifferentiates both sides consistently, ln|y| = -2 ln t plus a constant (one point for both antiderivatives here).",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "b3",
+               "point_type_id": "BC-PT-99032",
+               "skills": [
+                  "BC-SKL-07026",
+                  "BC-SKL-07027",
+                  "BC-SKL-07029",
+                  "BC-SKL-07030"
+               ],
+               "criterion": "Uses the starting value f(2) = 25 from part (a) to fix the constant and solves for y, giving f(t) = 100/t^2 in any equivalent form.",
+               "eligible_only_if": [
+                  "b2"
+               ],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "100/t**2",
+                  "up_to_constant": false,
+                  "variable": "t"
+               },
+               "follows_from": [
+                  "a5"
+               ]
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Let \\( W \\) be the function with \\( W'(t) = f(t) \\) for \\( t \\ge 0 \\) and \\( W(0) = 10 \\). Find \\( W(4) \\).",
+         "setup_required": false,
+         "answer_latex": "W(4) = \\frac{731}{15}",
+         "worked_solution": [
+            {
+               "text": "Start from W(0) and add the accumulated change, split where the formula for f changes.",
+               "latex": "W(4) = 10 + \\int_{0}^{2} (t^{2}+1)^{2}\\,dt + \\int_{2}^{4} \\frac{100}{t^{2}}\\,dt"
+            },
+            {
+               "text": "First integral.",
+               "latex": "\\int_{0}^{2} (t^{4} + 2t^{2} + 1)\\,dt = \\frac{32}{5} + \\frac{16}{3} + 2 = \\frac{206}{15}"
+            },
+            {
+               "text": "Second integral.",
+               "latex": "\\int_{2}^{4} \\frac{100}{t^{2}}\\,dt = 100\\left(\\frac{1}{2} - \\frac{1}{4}\\right) = 25"
+            },
+            {
+               "text": "Add.",
+               "latex": "W(4) = 10 + \\frac{206}{15} + 25 = \\frac{731}{15}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99033",
+               "skills": [
+                  "BC-SKL-07029",
+                  "BC-SKL-07033"
+               ],
+               "criterion": "Adds the initial value W(0) = 10 to the definite integral of f from 0 to 4, split at t = 2, and evaluates it to 731/15 (about 48.733), consistent with the answers to parts (a) and (b).",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "731/15",
+                  "up_to_constant": false,
+                  "variable": "x"
+               },
+               "follows_from": [
+                  "a5",
+                  "b3"
+               ]
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 6 (p5)",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24 (stage 6 review: blind SymPy recheck 71 of 71, stems read for ambiguity and official text)"
+}

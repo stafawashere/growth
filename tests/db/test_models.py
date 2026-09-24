@@ -1,7 +1,8 @@
 """docs/plan/06-architecture.md, "Data model": the 14 P1 tables, the two passkey tables,
 diagnoses, which 11 P2 scope item 9 puts in use in P2, the six tables of the P7 evaluation
 harness (11 P7 scope items 4 to 6), and gradings, which 11 P3 scope item 10 puts in use in P3,
-with frq_images for the photographs 06's image routes store."""
+with frq_images for the photographs 06's image routes store, and the three P5 assessment tables
+(11 P5 scope items 1, 2 and 5)."""
 from sqlalchemy import inspect
 
 from app.db.models import Base, make_engine
@@ -38,13 +39,15 @@ P7_TABLE_NAMES = P2_TABLE_NAMES | {
 
 P3_TABLE_NAMES = {"gradings", "frq_images"}
 
+P5_TABLE_NAMES = {"assessment_parts", "assessment_responses", "mock_results"}
+
 
 def test_models_create_all(tmp_path):
    engine = make_engine(tmp_path / "p1.sqlite")
    inspector = inspect(engine)
    table_names = set(inspector.get_table_names())
 
-   assert table_names == P7_TABLE_NAMES | P3_TABLE_NAMES
+   assert table_names == P7_TABLE_NAMES | P3_TABLE_NAMES | P5_TABLE_NAMES
 
    gradings_columns = {column["name"] for column in inspector.get_columns("gradings")}
    assert gradings_columns == {
@@ -68,7 +71,7 @@ def test_models_create_all(tmp_path):
       "updated_at",
    }
 
-   for table_name in sorted(P7_TABLE_NAMES - P2_TABLE_NAMES):
+   for table_name in sorted((P7_TABLE_NAMES - P2_TABLE_NAMES) | P5_TABLE_NAMES):
       columns = {column["name"] for column in inspector.get_columns(table_name)}
       assert "user_id" in columns, table_name
 

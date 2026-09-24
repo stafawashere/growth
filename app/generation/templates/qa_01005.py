@@ -79,7 +79,8 @@ def build(names):
    magnitude = offset**power if power % 2 == 0 else sympy.Abs(offset) ** power
    size = sympy.Mul(abs(coefficient), magnitude, evaluate=False)
    size_tex = tex(magnitude) if abs(coefficient) == 1 else tex(size)
-   vanishing_tex = tex(vanishing)
+   is_a_sum = isinstance(vanishing, sympy.Add)
+   vanishing_tex = rf"\left({tex(vanishing)}\right)" if is_a_sum else tex(vanishing)
    function_tex = _plus_constant(f"{vanishing_tex} {tex(oscillating)}", shift)
    lower_tex = _minus_term(shift, size_tex)
    upper_tex = _plus_constant(size_tex, shift)

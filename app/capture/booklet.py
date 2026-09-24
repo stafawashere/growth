@@ -72,23 +72,29 @@ def marker_boxes():
    ]
 
 
-def page_label(record):
+def page_label(record, question=None):
    part_ids = [part["id"] for part in record["parts"]]
    named = ", ".join(f"({part_id})" for part_id in part_ids)
+   is_addressed = question is not None
+
+   if is_addressed:
+      return f"Answer Question {question} parts {named} on this page."
 
    return f"Answer {record['id']} parts {named} on this page."
 
 
-def draw_page(record, page_code=""):
+def draw_page(record, page_code="", header=None, question=None):
+   """header and question address the page as a mock's booklet does (the header from the part,
+   the question by its exam number); without them the page is addressed by the record."""
    image = Image.new("RGB", (PAGE_WIDTH_PX, PAGE_HEIGHT_PX), PAPER)
    draw = ImageDraw.Draw(image)
 
    for box in marker_boxes():
       draw.rectangle(box, fill=INK)
 
-   header = CALCULATOR_HEADERS.get(record["calculator_status"], CALCULATOR_HEADERS["no_calculator"])
+   header = header or CALCULATOR_HEADERS.get(record["calculator_status"], CALCULATOR_HEADERS["no_calculator"])
    draw.text((PAGE_WIDTH_PX // 2, HEADER_TOP_PX), header, fill=INK, font=font(30), anchor="mm")
-   draw.text((PAGE_WIDTH_PX // 2, HEADER_TOP_PX + 55), page_label(record), fill=INK, font=font(24), anchor="mm")
+   draw.text((PAGE_WIDTH_PX // 2, HEADER_TOP_PX + 55), page_label(record, question), fill=INK, font=font(24), anchor="mm")
 
    for index, line in enumerate(INSTRUCTIONS):
       draw.text((PAGE_WIDTH_PX // 2, HEADER_TOP_PX + 105 + index * 32), line, fill=INK, font=font(20), anchor="mm")
@@ -109,8 +115,8 @@ def draw_page(record, page_code=""):
    return image
 
 
-def page_png(record, page_code=""):
+def page_png(record, page_code="", header=None, question=None):
    buffer = io.BytesIO()
-   draw_page(record, page_code).save(buffer, format="PNG")
+   draw_page(record, page_code, header=header, question=question).save(buffer, format="PNG")
 
    return buffer.getvalue()

@@ -40,3 +40,33 @@ def test_no_official_text_served():
    )
 
    assert longest_length <= dedupe.ANCHOR_QUOTE_CAP, report
+
+
+def free_response_texts(record):
+   return [("stem", record["stem"]["text"])] + [(f"part {part['id']}", part["prompt"]) for part in record["parts"]]
+
+
+def test_no_official_text_in_free_response_questions():
+   """The same cap over content/frq_items, which the mock serves: every stem and part prompt."""
+   from app.frq.items import load_frq_records
+   from app.frq.bank import DEFAULT_FRQ_DIR
+
+   official_index = dedupe.OfficialShingleIndex(dedupe.load_official_pages())
+   control_page = next(page for page in official_index.pages if len(page.tokens) >= 2 * CONTROL_SPAN_LENGTH)
+   control_text = " ".join(control_page.tokens[CONTROL_SPAN_LENGTH:2 * CONTROL_SPAN_LENGTH])
+   control_length, _ = official_index.longest_run(dedupe.normalise(control_text))
+
+   assert control_length >= CONTROL_SPAN_LENGTH
+
+   records = load_frq_records(DEFAULT_FRQ_DIR)
+   longest = (0, None, None)
+
+   for record in records:
+      for field_name, text in free_response_texts(record):
+         run_length, _ = official_index.longest_run(dedupe.normalise(text))
+
+         if run_length > longest[0]:
+            longest = (run_length, record["id"], field_name)
+
+   assert records, "no free-response records found"
+   assert longest[0] <= dedupe.ANCHOR_QUOTE_CAP, f"{len(records)} records; longest shared run {longest}"

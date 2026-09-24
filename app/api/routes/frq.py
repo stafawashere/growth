@@ -18,6 +18,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session as OrmSession
 
 from app.api.deps import current_user, get_db, get_settings
+from app.assessment import shape as assessment_shape
 from app.auth.service import write_audit
 from app.capture import booklet
 from app.db import models
@@ -107,6 +108,44 @@ def refused(error):
    return HTTPException(status_code=409, detail=str(error))
 
 
+QUEUED_QUESTION_MODES = (unit_check.MODE, "part_drill", "mock")
+
+
+def assessment_response_of(db, attempt):
+   return db.scalar(select(models.AssessmentResponse).where(models.AssessmentResponse.attempt_id == attempt.id))
+
+
+def refuse_while_part_open(db, attempt):
+   """In a timed part the answer is written on paper during the part and captured after it, as on
+   the exam, so no capture step runs while the part's clock is still going."""
+   response = assessment_response_of(db, attempt)
+
+   if response is None:
+      return
+
+   part = db.get(models.AssessmentPart, response.part_id)
+   is_closed = part.closed_at is not None
+   is_past_deadline = part.deadline_at is not None and utc_now() >= datetime.fromisoformat(part.deadline_at)
+
+   if not is_closed and not is_past_deadline:
+      raise HTTPException(status_code=409, detail="capture opens when the part closes; write in the booklet until then")
+
+
+def booklet_addressing(db, attempt):
+   """The mock's booklet page: the part's calculator header and the exam question number, from the
+   form template (content/assessment/form_2027.json)."""
+   response = assessment_response_of(db, attempt)
+
+   if response is None:
+      return {}
+
+   part = db.get(models.AssessmentPart, response.part_id)
+   booklet = assessment_shape.form_template()["booklet"]
+   header = booklet["calculator_required_header"] if part.calculator else booklet["calculator_absent_header"]
+
+   return {"header": header, "question": response.number}
+
+
 @router.get("/frq/units")
 def list_units(settings=Depends(get_settings), user=Depends(current_user)):
    context = frq_context(settings)
@@ -172,8 +211,8 @@ def start_attempt(session_id: str, item_id: str, payload: dict = Body(default=No
 
    record = frq_context(settings).record(item_id)
    is_known = record is not None
-   is_unit_check = session_row.mode == unit_check.MODE
-   is_outside_the_check = is_unit_check and not unit_check.holds_question(session_row, item_id)
+   holds_a_list = session_row.mode in QUEUED_QUESTION_MODES
+   is_outside_the_check = holds_a_list and not unit_check.holds_question(session_row, item_id)
 
    if not is_known or is_outside_the_check:
       raise HTTPException(status_code=404, detail="this question is not in the session")
@@ -191,7 +230,7 @@ def start_attempt(session_id: str, item_id: str, payload: dict = Body(default=No
 @router.get("/attempts/{attempt_id}/booklet.png")
 def booklet_page(attempt_id: str, db=Depends(get_db), settings=Depends(get_settings), user=Depends(current_user)):
    attempt, _session_row = owned_attempt(db, attempt_id, user)
-   png = booklet.page_png(record_of(settings, attempt), page_code=attempt.id[-8:])
+   png = booklet.page_png(record_of(settings, attempt), page_code=attempt.id[-8:], **booklet_addressing(db, attempt))
 
    return Response(content=png, media_type="image/png", headers={"Cache-Control": "no-store"})
 
@@ -199,6 +238,7 @@ def booklet_page(attempt_id: str, db=Depends(get_db), settings=Depends(get_setti
 @router.post("/attempts/{attempt_id}/images")
 def upload_image(attempt_id: str, payload: dict = Body(...), db=Depends(get_db), settings=Depends(get_settings), user=Depends(current_user)):
    attempt, _session_row = owned_attempt(db, attempt_id, user)
+   refuse_while_part_open(db, attempt)
    encoded = payload.get("data_base64") or ""
 
    try:
@@ -352,6 +392,7 @@ def submit_typed(
    user=Depends(current_user),
 ):
    attempt, _session_row = owned_attempt(db, attempt_id, user)
+   refuse_while_part_open(db, attempt)
    record = record_of(settings, attempt)
    confidence = confidence_of(payload)
 

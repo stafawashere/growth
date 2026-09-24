@@ -7,6 +7,7 @@ import {
    confirmReadBack,
    photoAddress,
    readGradings,
+   readReadBack,
    requestReadBack,
    startFrqAttempt,
    submitTypedAnswer,
@@ -24,20 +25,28 @@ import { TypedEntry } from "./TypedEntry";
    print, a photograph, the image check, the read-back to confirm or correct, then per-point
    grading. The typed mode, MathLive lines per part, is the secondary mode and skips the
    photograph and the read-back, because what the student typed is what gets graded. Nothing is
-   graded before the student presses confirm. */
+   graded before the student presses confirm. An attempt the student already confirmed reopens on
+   its grading, never on the photo step. */
 
 export interface CaptureScreenProps {
    sessionId: string;
    question: FrqQuestion;
    pollMilliseconds?: number;
    readFile?: (file: File) => Promise<string>;
+   captureMode?: CaptureMode;
 }
 
-type Stage = "choosing" | "capturing" | "reading" | "confirming" | "editing" | "typing" | "grading" | "graded";
+type Stage = "choosing" | "capturing" | "reading" | "confirming" | "editing" | "typing" | "grading" | "graded" | "stalled";
 
 const SETTLED_STATES = ["graded", "partly_graded"];
 const DEFAULT_POLL_MILLISECONDS = 2000;
 const MAXIMUM_POLLS = 150;
+/* A confirmed attempt has gone to the grader, so reopening it shows the grading, not the photo step. */
+const PAST_CONFIRMATION_STATES = ["confirmed", "partly_graded", "graded"];
+
+export const REGRADE_OFFER =
+   "This answer was confirmed but no point has been graded after about five minutes. Grading can stop if the app restarted while it ran. Grading it again sends the read-back you already confirmed to the grader once more.";
+
 export const GRADING_STALLED_MESSAGE =
    "Grading has not finished. Your answer is saved; confirming it again grades it again.";
 
@@ -61,7 +70,7 @@ function problemText(problem: unknown, fallback: string) {
    return hasDetail ? problem.detail : fallback;
 }
 
-export function CaptureScreen({ sessionId, question, pollMilliseconds, readFile }: CaptureScreenProps) {
+export function CaptureScreen({ sessionId, question, pollMilliseconds, readFile, captureMode }: CaptureScreenProps) {
    const [stage, setStage] = useState<Stage>("choosing");
    const [attempt, setAttempt] = useState<FrqAttempt | null>(null);
    const [verdicts, setVerdicts] = useState<PhotoVerdict[]>([]);
@@ -73,6 +82,16 @@ export function CaptureScreen({ sessionId, question, pollMilliseconds, readFile 
    const partIds = question.parts.map((part) => part.id);
    const pollEvery = pollMilliseconds ?? DEFAULT_POLL_MILLISECONDS;
    const accepted = verdicts.filter((verdict) => verdict.accepted);
+
+   /* A mock or part drill fixes the capture mode when it opens and has already started the attempt,
+      which the start route hands back, so the student is not asked to choose again. */
+   useEffect(() => {
+      const isModeFixed = captureMode !== undefined;
+
+      if (isModeFixed) {
+         choose(captureMode);
+      }
+   }, []);
 
    useEffect(() => {
       const isWaiting = stage === "grading" && attempt !== null;
@@ -88,6 +107,15 @@ export function CaptureScreen({ sessionId, question, pollMilliseconds, readFile 
 
          if (polls > MAXIMUM_POLLS) {
             clearInterval(timer);
+
+            const wasReopened = readBack === null && attempt.transcription_confirmed;
+
+            if (wasReopened) {
+               setStage("stalled");
+
+               return;
+            }
+
             setProblem(GRADING_STALLED_MESSAGE);
             setStage(readBack === null ? "typing" : "confirming");
 
@@ -118,8 +146,16 @@ export function CaptureScreen({ sessionId, question, pollMilliseconds, readFile 
 
       try {
          const started = await startFrqAttempt(sessionId, question.id, mode);
+         const isPastConfirmation = PAST_CONFIRMATION_STATES.includes(started.grading_state ?? "");
 
          setAttempt(started);
+
+         if (isPastConfirmation) {
+            setStage("grading");
+
+            return;
+         }
+
          setStage(mode === "photo" ? "capturing" : "typing");
       } catch (failure) {
          setProblem(problemText(failure, "The question could not be opened."));
@@ -199,6 +235,29 @@ export function CaptureScreen({ sessionId, question, pollMilliseconds, readFile 
       }
    }
 
+   async function gradeAgain() {
+      if (attempt === null) {
+         return;
+      }
+
+      setProblem(null);
+
+      try {
+         const stored = await readReadBack(attempt.attempt_id);
+
+         if (stored.confirmed === null) {
+            setProblem("No confirmed read-back is stored for this answer, so it cannot be graded again.");
+
+            return;
+         }
+
+         await confirmReadBack(attempt.attempt_id, { read_back: stored.confirmed });
+         setStage("grading");
+      } catch (failure) {
+         setProblem(problemText(failure, "The answer could not be sent for grading again."));
+      }
+   }
+
    async function reread(gradingId: string) {
       setRereads((current) => [...current, gradingId]);
 
@@ -249,7 +308,7 @@ export function CaptureScreen({ sessionId, question, pollMilliseconds, readFile 
 
          {problem !== null ? <p role="alert">{problem}</p> : null}
 
-         {stage === "choosing" ? (
+         {stage === "choosing" && captureMode === undefined ? (
             <div className="choice-row">
                <button type="button" className="button-primary" onClick={() => choose("photo")}>
                   Write on paper and photograph it
@@ -340,6 +399,16 @@ export function CaptureScreen({ sessionId, question, pollMilliseconds, readFile 
          ) : null}
 
          {stage === "grading" ? <p aria-busy="true">Grading each point. A point the gradings disagree on is marked provisional.</p> : null}
+
+         {stage === "stalled" ? (
+            <div data-testid="grading-stalled">
+               <p>{REGRADE_OFFER}</p>
+
+               <button type="button" className="button-primary" onClick={gradeAgain}>
+                  Grade it again
+               </button>
+            </div>
+         ) : null}
 
          {stage === "graded" && gradings !== null ? (
             <GradingView gradings={gradings} onAskForReread={reread} rereadAskedFor={rereads} />

@@ -344,22 +344,26 @@ def credited_decisions(decisions):
    return [decision for decision in decisions if not decision.provisional]
 
 
-def run_diagnosis(db, attempt, record, decisions, work, library, provider, confidence, strengths, now):
-   lost = [decision for decision in decisions if decision.earned == 0]
-   lost_ids = {decision.point_id for decision in lost}
+def observe_lost_points(record, decisions, work, library, provider):
+   """The diagnostician's model call, made before anything is written, so no write transaction is
+   held open while it runs (SQLite admits one writer, and a capture of the next question must not
+   wait on this call). Returns (observation, diagnosed_by)."""
+   lost_ids = {decision.point_id for decision in decisions if decision.earned == 0}
    lost_points = [point for part in record["parts"] for point in part["points"] if point["point_id"] in lost_ids]
    lost_skills = {skill_id for point in lost_points for skill_id in point["skills"]}
-   has_lost = len(lost) > 0
-   observation = diagnosis_module.Observation()
-   diagnosed_by = DIAGNOSED_BY_RULE_ONLY
+   has_lost = len(lost_ids) > 0
 
    if has_lost and provider is not None:
       try:
-         observation = observe(provider, record, decisions, work, library, lost_skills)
-         diagnosed_by = DIAGNOSED_BY_MODEL
+         return observe(provider, record, decisions, work, library, lost_skills), DIAGNOSED_BY_MODEL
       except ObservationFailed:
-         observation = diagnosis_module.Observation()
+         pass
 
+   return diagnosis_module.Observation(), DIAGNOSED_BY_RULE_ONLY
+
+
+def run_diagnosis(db, attempt, record, decisions, work, library, confidence, strengths, now, observed):
+   observation, diagnosed_by = observed
    result = diagnosis_module.diagnose(
       record,
       credited_decisions(decisions),
@@ -526,12 +530,12 @@ def engine_strengths(db, user_id):
 
 
 def finish(db, session_row, attempt, record, grading, work, context, now, previous_rows=()):
+   observed = observe_lost_points(record, grading.decisions, work, context["library"], context.get("diagnostician"))
    rows = write_decisions(db, attempt, grading, now, previous_rows)
    reverse_credit(db, attempt, session_row.user_id, now)
    strengths = engine_strengths(db, session_row.user_id)
    result = run_diagnosis(
-      db, attempt, record, grading.decisions, work, context["library"], context.get("diagnostician"),
-      attempt.confidence, strengths, now,
+      db, attempt, record, grading.decisions, work, context["library"], attempt.confidence, strengths, now, observed,
    )
    states_by_skill = {entry["skill_id"]: entry["mastery_state"] for entry in result["per_skill_mastery_state"]}
    attempt.per_skill_states = json.dumps(states_by_skill)

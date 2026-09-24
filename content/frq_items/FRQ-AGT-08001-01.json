@@ -1,0 +1,223 @@
+{
+   "id": "FRQ-AGT-08001-01",
+   "archetype_id": "BC-QA-08001",
+   "calculator_status": "calculator",
+   "representation": "BC-REP-05",
+   "stem": {
+      "text": "The temperature inside a greenhouse is modeled by \\( H(t) = 50 + 20e^{-(t - 14)^{2}/25} \\) degrees Fahrenheit, where \\( t \\) is the number of hours after midnight and \\( 0 \\le t \\le 24 \\)."
+   },
+   "skills": [
+      "BC-SKL-08001",
+      "BC-SKL-08002",
+      "BC-SKL-08003",
+      "BC-SKL-08005",
+      "BC-SKL-06038",
+      "BC-SKL-06036"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find the average temperature of the greenhouse over the interval \\( 0 \\le t \\le 24 \\).",
+         "setup_required": true,
+         "answer_latex": "\\frac{1}{24}\\int_{0}^{24} H(t)\\,dt \\approx 57.368",
+         "worked_solution": [
+            {
+               "text": "Divide the integral of H over the interval by the length of the interval.",
+               "latex": "\\frac{1}{24 - 0}\\int_{0}^{24} \\left(50 + 20e^{-(t - 14)^{2}/25}\\right)dt"
+            },
+            {
+               "text": "Evaluate on the calculator.",
+               "latex": "\\frac{1}{24}\\int_{0}^{24} H(t)\\,dt \\approx 57.368"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99020",
+               "skills": [
+                  "BC-SKL-08001",
+                  "BC-SKL-08003"
+               ],
+               "criterion": "Writes the definite integral of H(t) from t = 0 to t = 24 divided by 24.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "0",
+                  "upper": "24",
+                  "integrand": "50 + 20*exp(-(t - 14)**2/25)",
+                  "variable": "t"
+               }
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-06038",
+                  "BC-SKL-08003"
+               ],
+               "criterion": "Gives the average temperature as 57.368 degrees Fahrenheit.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "Integral(50 + 20*exp(-(t - 14)**2/25), (t, 0, 24))/24"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find the time \\( t \\), with \\( 0 < t < 14 \\), at which the temperature of the greenhouse equals its average temperature over the interval \\( 0 \\le t \\le 24 \\).",
+         "setup_required": true,
+         "answer_latex": "t \\approx 9.003",
+         "worked_solution": [
+            {
+               "text": "Set the temperature equal to the average value.",
+               "latex": "50 + 20e^{-(t - 14)^{2}/25} = \\frac{1}{24}\\int_{0}^{24} H(s)\\,ds \\approx 57.368"
+            },
+            {
+               "text": "Solve on the calculator, keeping the solution with t less than 14.",
+               "latex": "t \\approx 9.003"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99020",
+               "skills": [
+                  "BC-SKL-08001",
+                  "BC-SKL-06038"
+               ],
+               "criterion": "Writes the equation H(t) equals the average value, with the average written as the integral of H from 0 to 24 divided by 24 or taken as the value from part (a).",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-08003"
+               ],
+               "criterion": "Gives t = 9.003.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "14 - 5*sqrt(log(20/(Integral(50 + 20*exp(-(t - 14)**2/25), (t, 0, 24))/24 - 50)))"
+               },
+               "follows_from": [
+                  "a2"
+               ]
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "For \\( 0 < x \\le 24 \\), let \\( A(x) \\) be the average temperature of the greenhouse over the interval \\( 0 \\le t \\le x \\). Find the value of \\( x \\) for which \\( A(x) = 55 \\).",
+         "setup_required": true,
+         "answer_latex": "x \\approx 12.723",
+         "worked_solution": [
+            {
+               "text": "Write the average over the interval from 0 to x.",
+               "latex": "A(x) = \\frac{1}{x}\\int_{0}^{x} H(t)\\,dt"
+            },
+            {
+               "text": "Set it equal to 55 and solve on the calculator.",
+               "latex": "\\frac{1}{x}\\int_{0}^{x} H(t)\\,dt = 55 \\implies x \\approx 12.723"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-08001"
+               ],
+               "criterion": "Writes the definite integral of H(t) from t = 0 to t = x.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99020",
+               "skills": [
+                  "BC-SKL-08001",
+                  "BC-SKL-06038"
+               ],
+               "criterion": "Divides that integral by x, the length of the interval, and sets the quotient equal to 55.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "c3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-08003"
+               ],
+               "criterion": "Gives x = 12.723.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "12.72258781546472123858978394"
+               }
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "A second greenhouse has temperature \\( W(t) = 62 + \\frac{t}{4} \\) degrees Fahrenheit for \\( 0 \\le t \\le 24 \\). Find the average value of \\( H(t) - W(t) \\) over the interval \\( 0 \\le t \\le 24 \\).",
+         "setup_required": true,
+         "answer_latex": "\\frac{1}{24}\\int_{0}^{24} \\left(H(t) - W(t)\\right)dt \\approx -7.632",
+         "worked_solution": [
+            {
+               "text": "Divide the integral of the difference by the length of the interval.",
+               "latex": "\\frac{1}{24}\\int_{0}^{24} \\left(H(t) - W(t)\\right)dt = \\frac{1}{24}\\int_{0}^{24} H(t)\\,dt - \\frac{1}{24}\\int_{0}^{24} \\left(62 + \\frac{t}{4}\\right)dt"
+            },
+            {
+               "text": "The average of W is 65, so subtract it from the average found in part (a).",
+               "latex": "57.368 - 65 = -7.632"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99020",
+               "skills": [
+                  "BC-SKL-08001",
+                  "BC-SKL-06038"
+               ],
+               "criterion": "Writes the integral of H(t) - W(t) from 0 to 24 divided by 24, or the average of H from part (a) minus the average of W written as an integral divided by 24.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "d2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-08003"
+               ],
+               "criterion": "Gives the average value as -7.632 degrees Fahrenheit.",
+               "eligible_only_if": [
+                  "d1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "Integral(50 + 20*exp(-(t - 14)**2/25), (t, 0, 24))/24 - 65"
+               },
+               "follows_from": [
+                  "a2"
+               ]
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 6 (p5)",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24 (stage 6 review: blind SymPy recheck 71 of 71, stems read for ambiguity and official text)"
+}

@@ -537,3 +537,128 @@ select {
    align-items: center;
    gap: var(--growth-space-8) var(--growth-space-16);
 }
+
+.part-header {
+   display: flex;
+   flex-wrap: wrap;
+   align-items: center;
+   justify-content: space-between;
+   gap: var(--growth-space-8) var(--growth-space-16);
+}
+
+.part-header > * {
+   margin-block: 0;
+}
+
+.part-timer {
+   display: flex;
+   align-items: center;
+   gap: var(--growth-space-12);
+}
+
+.part-clock {
+   margin-block: 0;
+   font-size: var(--growth-type-heading);
+   line-height: 28px;
+   font-weight: bold;
+}
+
+.calculator-label {
+   font-size: var(--growth-type-label);
+   line-height: 20px;
+   font-weight: bold;
+   text-transform: uppercase;
+}
+
+.question-area > * {
+   margin-block: 0;
+}
+
+.question-area > * + * {
+   margin-top: var(--growth-space-16);
+}
+
+.choice-option {
+   display: flex;
+   flex-wrap: wrap;
+   align-items: center;
+   justify-content: space-between;
+   gap: var(--growth-space-8) var(--growth-space-16);
+   flex: auto;
+}
+
+.choice-option > label {
+   display: inline-flex;
+   align-items: center;
+   gap: var(--growth-space-8);
+   cursor: pointer;
+}
+
+.choice-option > .text-button {
+   padding: 0;
+   font-size: var(--growth-type-label);
+   line-height: 20px;
+}
+
+.stem-highlight {
+   background: var(--growth-accent-tint-2);
+   color: var(--growth-accent-contrast-text);
+   border-radius: var(--growth-space-4);
+   padding-inline: var(--growth-space-4);
+}
+
+::highlight(assessment-highlight) {
+   background-color: var(--growth-accent-tint-2);
+   color: var(--growth-accent-contrast-text);
+}
+
+.graphing-panel {
+   border: calc(var(--growth-space-4) / 4) solid var(--growth-border-hairline);
+   border-radius: var(--growth-space-8);
+   padding: var(--growth-space-12) var(--growth-space-16);
+}
+
+.graphing-body > * {
+   margin-block: 0;
+}
+
+.graphing-body > * + * {
+   margin-top: var(--growth-space-12);
+}
+
+.graphing-mode {
+   margin-block: 0;
+   font-size: var(--growth-type-label);
+   line-height: 20px;
+   font-weight: bold;
+}
+
+.graphing-window {
+   display: flex;
+   flex-wrap: wrap;
+   gap: var(--growth-space-8) var(--growth-space-16);
+}
+
+.graphing-window .field {
+   flex: auto;
+}
+
+.graphing-plot {
+   display: block;
+   max-width: 68ch;
+   height: auto;
+}
+
+.result table {
+   display: block;
+   overflow-x: auto;
+   border-collapse: collapse;
+}
+
+.result th,
+.result td {
+   padding: var(--growth-space-4) var(--growth-space-16) var(--growth-space-4) 0;
+   text-align: start;
+   font-size: var(--growth-type-label);
+   line-height: 20px;
+}

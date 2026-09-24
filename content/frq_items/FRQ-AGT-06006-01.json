@@ -1,0 +1,248 @@
+{
+   "id": "FRQ-AGT-06006-01",
+   "archetype_id": "BC-QA-06006",
+   "calculator_status": "calculator",
+   "representation": "BC-REP-05",
+   "stem": {
+      "text": "Water flows into a storage tank at a rate modeled by \\( E(t) = 20 + 12\\sin\\left(\\frac{t^{2}}{10}\\right) \\) liters per minute, and water is pumped out of the tank at a rate modeled by \\( L(t) = 24 - 2t + 3\\sqrt{t}\\,\\cos\\left(\\frac{t}{3}\\right) \\) liters per minute, where \\( t \\) is measured in minutes and \\( 0 \\le t \\le 8 \\). At time \\( t = 0 \\) the tank holds 150 liters of water."
+   },
+   "skills": [
+      "BC-SKL-06039",
+      "BC-SKL-06037",
+      "BC-SKL-06036",
+      "BC-SKL-08013",
+      "BC-SKL-08016",
+      "BC-SKL-08012"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Show that more water flows into the tank than is pumped out of the tank during the interval \\( 0 \\le t \\le 8 \\).",
+         "setup_required": true,
+         "answer_latex": "\\int_{0}^{8} E(t)\\,dt \\approx 176.384 > 126.205 \\approx \\int_{0}^{8} L(t)\\,dt",
+         "worked_solution": [
+            {
+               "text": "The water that flows in over the interval is the integral of the inflow rate.",
+               "latex": "\\int_{0}^{8} E(t)\\,dt \\approx 176.384"
+            },
+            {
+               "text": "The water pumped out over the interval is the integral of the outflow rate.",
+               "latex": "\\int_{0}^{8} L(t)\\,dt \\approx 126.205"
+            },
+            {
+               "text": "Compare the two amounts.",
+               "latex": "\\int_{0}^{8} E(t)\\,dt \\approx 176.384 > 126.205 \\approx \\int_{0}^{8} L(t)\\,dt"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-06036",
+                  "BC-SKL-08016"
+               ],
+               "criterion": "Writes the definite integral of E(t) from t = 0 to t = 8 for the water that flows in.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "0",
+                  "upper": "8",
+                  "integrand": "20 + 12*sin(t**2/10)",
+                  "variable": "t"
+               }
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-06036",
+                  "BC-SKL-08016"
+               ],
+               "criterion": "Writes the definite integral of L(t) from t = 0 to t = 8 for the water that is pumped out.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "0",
+                  "upper": "8",
+                  "integrand": "24 - 2*t + 3*sqrt(t)*cos(t/3)",
+                  "variable": "t"
+               }
+            },
+            {
+               "point_id": "a3",
+               "point_type_id": "BC-PT-99068",
+               "skills": [
+                  "BC-SKL-06036"
+               ],
+               "criterion": "Evaluates both integrals, about 176.384 liters in and 126.205 liters out, and concludes from the comparison that more water flows in than is pumped out.",
+               "eligible_only_if": [
+                  "a1",
+                  "a2"
+               ],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Show that, to the nearest liter, the tank holds 200 liters of water at time \\( t = 8 \\).",
+         "setup_required": true,
+         "answer_latex": "150 + \\int_{0}^{8} \\left(E(t) - L(t)\\right)dt \\approx 200.179",
+         "worked_solution": [
+            {
+               "text": "The amount at t = 8 is the initial amount plus the net change over the interval.",
+               "latex": "150 + \\int_{0}^{8} \\left(E(t) - L(t)\\right)dt"
+            },
+            {
+               "text": "Evaluate on the calculator.",
+               "latex": "150 + 50.179 = 200.179"
+            },
+            {
+               "text": "Round to the nearest liter.",
+               "latex": "200.179 \\approx 200"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-06039",
+                  "BC-SKL-08013",
+                  "BC-SKL-08012"
+               ],
+               "criterion": "Writes the amount at t = 8 as 150 plus the definite integral of E(t) - L(t) from t = 0 to t = 8, or as 150 plus the integral of E minus the integral of L over that interval.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "0",
+                  "upper": "8",
+                  "integrand": null,
+                  "variable": "t"
+               }
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99068",
+               "skills": [
+                  "BC-SKL-06037",
+                  "BC-SKL-08012"
+               ],
+               "criterion": "Evaluates the amount as about 200.179 liters and states that this rounds to 200 liters.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Show that the tank holds less water at time \\( t = 2 \\) than at time \\( t = 0 \\).",
+         "setup_required": true,
+         "answer_latex": "\\int_{0}^{2} \\left(E(t) - L(t)\\right)dt \\approx -5.967 < 0",
+         "worked_solution": [
+            {
+               "text": "The change in the amount from t = 0 to t = 2 is the integral of the net rate.",
+               "latex": "\\int_{0}^{2} \\left(E(t) - L(t)\\right)dt"
+            },
+            {
+               "text": "Evaluate on the calculator. The change is negative, so the amount at t = 2 is below 150 liters.",
+               "latex": "\\int_{0}^{2} \\left(E(t) - L(t)\\right)dt \\approx -5.967 < 0"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-06039",
+                  "BC-SKL-08013",
+                  "BC-SKL-08016"
+               ],
+               "criterion": "Writes the definite integral of E(t) - L(t) from t = 0 to t = 2 as the change in the amount, or 150 plus that integral as the amount at t = 2.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "0",
+                  "upper": "2",
+                  "integrand": null,
+                  "variable": "t"
+               }
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99068",
+               "skills": [
+                  "BC-SKL-06036"
+               ],
+               "criterion": "Evaluates the change as about -5.967 liters (or the amount as about 144.033 liters) and concludes that because the change is negative the tank holds less than 150 liters at t = 2.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "At time \\( t = 8 \\) the pump is switched off. For \\( 8 \\le t \\le 12 \\), water continues to flow into the tank at the rate \\( E(t) \\) and no water is pumped out. The tank can hold at most 300 liters. Show that the tank does not overflow during the interval \\( 8 \\le t \\le 12 \\).",
+         "setup_required": true,
+         "answer_latex": "150 + \\int_{0}^{8} \\left(E(t) - L(t)\\right)dt + \\int_{8}^{12} E(t)\\,dt \\approx 288.705 < 300",
+         "worked_solution": [
+            {
+               "text": "Because E(t) > 0 on the interval, the amount only increases, so the largest amount occurs at t = 12.",
+               "latex": "E(t) \\ge 8 > 0 \\text{ for } 8 \\le t \\le 12"
+            },
+            {
+               "text": "The amount at t = 12 is the amount at t = 8 plus the water that flows in.",
+               "latex": "150 + \\int_{0}^{8} \\left(E(t) - L(t)\\right)dt + \\int_{8}^{12} E(t)\\,dt"
+            },
+            {
+               "text": "Evaluate on the calculator and compare with the capacity.",
+               "latex": "200.179 + 88.526 = 288.705 < 300"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-06037",
+                  "BC-SKL-08012",
+                  "BC-SKL-08016"
+               ],
+               "criterion": "Writes the amount at t = 12 as the amount at t = 8 (from part (b), or its integral expression) plus the definite integral of E(t) from t = 8 to t = 12.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "8",
+                  "upper": "12",
+                  "integrand": "20 + 12*sin(t**2/10)",
+                  "variable": "t"
+               }
+            },
+            {
+               "point_id": "d2",
+               "point_type_id": "BC-PT-99068",
+               "skills": [
+                  "BC-SKL-06037",
+                  "BC-SKL-08012"
+               ],
+               "criterion": "Evaluates the amount at t = 12 as about 288.705 liters, states that the amount increases on the interval because E(t) > 0 there so t = 12 gives the largest amount, and concludes that the amount stays below 300 liters.",
+               "eligible_only_if": [
+                  "d1"
+               ],
+               "check": null,
+               "follows_from": [
+                  "b2"
+               ]
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 6 (p5)",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24 (stage 6 review: blind SymPy recheck 71 of 71, stems read for ambiguity and official text)"
+}

@@ -12,6 +12,7 @@ export interface HomeRouteProps {
    onOpenProgress?: () => void;
    onOpenReview?: () => void;
    onOpenFreeResponse?: () => void;
+   onOpenMockExam?: () => void;
    onStartOnboarding?: (reason: OnboardingReason, resumeSessionId: string | null) => void;
 }
 
@@ -68,6 +69,7 @@ export function HomeRoute({
    onOpenProgress,
    onOpenReview,
    onOpenFreeResponse,
+   onOpenMockExam,
    onStartOnboarding
 }: HomeRouteProps) {
    const [load, setLoad] = useState<HomeLoad>({ kind: "waiting" });
@@ -145,6 +147,7 @@ export function HomeRoute({
          onOpenProgress={onOpenProgress}
          onOpenReview={onOpenReview}
          onOpenFreeResponse={onOpenFreeResponse}
+         onOpenMockExam={onOpenMockExam}
       />
    );
 }

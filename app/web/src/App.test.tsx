@@ -6,6 +6,7 @@ import { cleanup, fireEvent, render, screen, waitFor, within } from "@testing-li
 
 import * as client from "./api/client";
 import type {
+   AssessmentShape,
    AttemptResult,
    BudgetsPayload,
    CalibrationPayload,
@@ -41,7 +42,8 @@ const PROPS_INTERFACE_BY_DESTINATION: Record<Destination, { file: string; name: 
    progress: { file: "progress/ProgressRoute.tsx", name: "ProgressRouteProps" },
    review: { file: "review/ReviewRoute.tsx", name: "ReviewRouteProps" },
    onboarding: { file: "onboarding/OnboardingRoute.tsx", name: "OnboardingRouteProps" },
-   frq: { file: "frq/FrqRoute.tsx", name: "FrqRouteProps" }
+   frq: { file: "frq/FrqRoute.tsx", name: "FrqRouteProps" },
+   mock: { file: "assessment/AssessmentRoute.tsx", name: "AssessmentRouteProps" }
 };
 
 /* P2 scope item 6 brought the progress screen into phase with its calibration curve. Stage 3 of the
@@ -49,12 +51,13 @@ const PROPS_INTERFACE_BY_DESTINATION: Record<Destination, { file: string; name: 
    review screen and the mastery map, which P8's entry criterion needs and 11 names in no earlier
    phase. P2 scope item 7 brings in the onboarding diagnostic, reached only as the first-login and
    long-gap route and never from the bar. P7 scope item 7 brings in the representation matrix and
-   the checkpoint history on progress. The mock stays out. */
-const OUT_OF_PHASE_SCREENS = ["mock"];
+   the checkpoint history on progress. P5 brings in the mock exam, reached from home and never
+   from the bar, so no screen is out of phase any more. */
+const OUT_OF_PHASE_SCREENS: string[] = [];
 
 /* The screens reached from home's secondary buttons, never from the bar and never the landing
    screen (08, Information architecture). */
-const REACHED_FROM_HOME = ["Progress", "Review", "Free response"];
+const REACHED_FROM_HOME = ["Progress", "Review", "Free response", "Mock exam"];
 
 const BAR_DESTINATIONS = ["home", "settings"];
 
@@ -233,6 +236,37 @@ const reviewPayload: ReviewPayload = {
    ],
    grading_available: false,
    provisional_points: []
+};
+
+const assessmentShape: AssessmentShape = {
+   form: "2027",
+   parts: [
+      {
+         key: "I-A",
+         section: "I",
+         part: "A",
+         label: "Section I, Part A",
+         question_type: "Multiple choice",
+         multiple_choice: true,
+         question_count: 29,
+         minutes: 62,
+         calculator: false,
+         calculator_label: "NO CALCULATOR ALLOWED",
+         calculator_note: "There is no calculator on this part. It is not hidden. It is not there.",
+         first_number: 1,
+         budget_seconds_per_question: 128.3,
+         tools: ["timer", "question_menu"],
+         five_minute_alert_seconds: 300
+      }
+   ],
+   multiple_choice_total: 42,
+   free_response_total: 6,
+   points_per_free_response_question: 9,
+   section_weights: { I: 50, II: 50 },
+   testing_minutes: 190,
+   reference_sheet: { shown: false, note: "No reference sheet is shown." },
+   radian_note: "Your calculator should be in radian mode.",
+   timed_available: true
 };
 
 const firstLoginProgress: ProgressPayload = {
@@ -529,6 +563,28 @@ describe("the client shell", () => {
       expect(await screen.findByTestId("frq-units")).toBeTruthy();
       expect(screen.getByRole("button", { name: "Analytical applications" })).toBeTruthy();
       expect(screen.queryByText(/Start today's set/)).toBeNull();
+   });
+
+   it("reaches the mock exam from home and never from the bar or as the landing screen", async () => {
+      mockServer(readyProgress);
+      mocked.readAssessmentShape.mockResolvedValue(assessmentShape);
+      mocked.readCheckUnits.mockResolvedValue({ units: [] });
+      render(<App />);
+
+      await screen.findByText(/Start today's set/);
+
+      const bar = within(screen.getByRole("navigation"));
+
+      expect(bar.queryByRole("button", { name: "Mock exam" })).toBeNull();
+      expect(screen.queryByTestId("assessment-setup")).toBeNull();
+      expect(mocked.readAssessmentShape).not.toHaveBeenCalled();
+
+      fireEvent.click(screen.getByRole("button", { name: "Mock exam" }));
+
+      expect(await screen.findByTestId("mock-setup")).toBeTruthy();
+      expect(screen.queryByText(/Start today's set/)).toBeNull();
+      expect(mocked.readAssessmentShape).toHaveBeenCalledTimes(1);
+      expect(mocked.openMock).not.toHaveBeenCalled();
    });
 
    it("draws the mastery map above the calibration curve on progress", async () => {

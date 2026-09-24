@@ -1,0 +1,200 @@
+{
+   "id": "FRQ-AGT-09013-01",
+   "archetype_id": "BC-QA-09013",
+   "calculator_status": "calculator",
+   "representation": "BC-REP-13",
+   "stem": {
+      "text": "The curves \\( r = 4\\sin\\theta \\) and \\( r = 1 + \\theta \\) are drawn in the xy-plane for \\( 0 \\le \\theta \\le \\pi \\). They intersect at the two angles \\( \\theta = \\alpha \\) and \\( \\theta = \\beta \\), where \\( 0 < \\alpha < \\beta < \\pi \\). Let \\( R \\) be the region that is inside the curve \\( r = 4\\sin\\theta \\) and outside the curve \\( r = 1 + \\theta \\)."
+   },
+   "skills": [
+      "BC-SKL-09039",
+      "BC-SKL-09040",
+      "BC-SKL-09041",
+      "BC-SKL-09042",
+      "BC-SKL-09043"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find the area of \\( R \\).",
+         "setup_required": true,
+         "answer_latex": "\\frac{1}{2}\\int_{\\alpha}^{\\beta} \\left((4\\sin\\theta)^{2} - (1 + \\theta)^{2}\\right)d\\theta \\approx 5.541",
+         "worked_solution": [
+            {
+               "text": "Solve 4 sin(theta) = 1 + theta on the calculator for the intersection angles.",
+               "latex": "\\alpha \\approx 0.342, \\quad \\beta \\approx 2.210"
+            },
+            {
+               "text": "Between the angles the circle is the outer curve.",
+               "latex": "4\\sin\\theta > 1 + \\theta \\text{ for } \\alpha < \\theta < \\beta"
+            },
+            {
+               "text": "Integrate one half the difference of the squares.",
+               "latex": "\\frac{1}{2}\\int_{\\alpha}^{\\beta} \\left((4\\sin\\theta)^{2} - (1 + \\theta)^{2}\\right)d\\theta \\approx 5.541"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99048",
+               "skills": [
+                  "BC-SKL-09040",
+                  "BC-SKL-09041"
+               ],
+               "criterion": "Writes an integral with the factor one half whose integrand is (4 sin theta)^2 minus (1 + theta)^2.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-09039"
+               ],
+               "criterion": "Uses the intersection angles as limits, alpha about 0.342 and beta about 2.210, found from 4 sin theta = 1 + theta.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "a3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-09042"
+               ],
+               "criterion": "Gives the area as 5.541.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "Integral((16*sin(theta)**2 - (1 + theta)**2)/2, (theta, 0.3421850529244582209950829677, 2.210083944092660896205946605))"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Let \\( S \\) be the region bounded by the curve \\( r = 1 + \\theta \\), the curve \\( r = 4\\sin\\theta \\), and the negative x-axis. Find the area of \\( S \\).",
+         "setup_required": true,
+         "answer_latex": "\\frac{1}{2}\\int_{\\beta}^{\\pi} \\left((1 + \\theta)^{2} - (4\\sin\\theta)^{2}\\right)d\\theta \\approx 4.516",
+         "worked_solution": [
+            {
+               "text": "The region lies between the angle beta and the negative x-axis, theta = pi, where the spiral is the outer curve.",
+               "latex": "1 + \\theta > 4\\sin\\theta \\text{ for } \\beta < \\theta \\le \\pi"
+            },
+            {
+               "text": "Integrate one half the difference of the squares.",
+               "latex": "\\frac{1}{2}\\int_{\\beta}^{\\pi} \\left((1 + \\theta)^{2} - (4\\sin\\theta)^{2}\\right)d\\theta \\approx 4.516"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99002",
+               "skills": [
+                  "BC-SKL-09040",
+                  "BC-SKL-09041"
+               ],
+               "criterion": "Writes an integral whose integrand is one half times (1 + theta)^2 minus (4 sin theta)^2, with the spiral as the outer curve, whatever its limits.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-09039",
+                  "BC-SKL-09043"
+               ],
+               "criterion": "Uses the limits beta, about 2.210, and pi.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "b3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-09042"
+               ],
+               "criterion": "Gives the area as 4.516.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "Integral(((1 + theta)**2 - 16*sin(theta)**2)/2, (theta, 2.210083944092660896205946605, pi))"
+               }
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "The ray \\( \\theta = k \\), where \\( \\alpha < k < \\beta \\), divides \\( R \\) into two regions of equal area. Write an equation involving an integral that \\( k \\) satisfies, and find the value of \\( k \\).",
+         "setup_required": true,
+         "answer_latex": "\\frac{1}{2}\\int_{\\alpha}^{k} \\left((4\\sin\\theta)^{2} - (1 + \\theta)^{2}\\right)d\\theta = \\frac{5.541}{2}, \\quad k \\approx 1.368",
+         "worked_solution": [
+            {
+               "text": "The part of R between alpha and k holds half the area of R.",
+               "latex": "\\frac{1}{2}\\int_{\\alpha}^{k} \\left((4\\sin\\theta)^{2} - (1 + \\theta)^{2}\\right)d\\theta = \\frac{1}{2}\\cdot 5.541"
+            },
+            {
+               "text": "Solve on the calculator.",
+               "latex": "k \\approx 1.368"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99048",
+               "skills": [
+                  "BC-SKL-09041"
+               ],
+               "criterion": "Writes an integral from alpha to k (or from k to beta) with the factor one half and the integrand (4 sin theta)^2 minus (1 + theta)^2.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-09041",
+                  "BC-SKL-09043"
+               ],
+               "criterion": "Sets that integral equal to half the area of R from part (a), or equates the integrals from alpha to k and from k to beta.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": null,
+               "follows_from": [
+                  "a3"
+               ]
+            },
+            {
+               "point_id": "c3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-09042"
+               ],
+               "criterion": "Gives k = 1.368.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "1.368430075962559389911304834"
+               },
+               "follows_from": [
+                  "a3"
+               ]
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 6 (p5)",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24 (stage 6 review: blind SymPy recheck 71 of 71, stems read for ambiguity and official text)"
+}

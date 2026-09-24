@@ -16,6 +16,9 @@ SCORING_SYSTEM_PATH = REPOSITORY_ROOT / "research" / "exam" / "scoring-system.md
 
 MEAN_CELL = re.compile(r"^\s*(\d+(?:\.\d+)?)\s*\((\d+(?:\.\d+)?)\)\s*$")
 MINUTES_CELL = re.compile(r"^\s*(\d+)\s+minutes\s*$")
+PERCENT_CELL = re.compile(r"^\s*(\d+(?:\.\d+)?)%\s*$")
+POINTS_SENTENCE = re.compile(r"free-response questions carries (\d+) possible points")
+SCORE_SHARE_CELL = re.compile(r"\((\d+(?:\.\d+)?)%\)")
 
 
 def table_rows(text, first_header_cell):
@@ -53,6 +56,7 @@ class ExamPart:
    questions: int
    minutes: int
    calculator: str
+   weighting: float = 0.0
 
 
 @lru_cache(maxsize=1)
@@ -67,6 +71,11 @@ def exam_parts(path=EXAM_STRUCTURE_PATH):
       if minutes is None:
          raise ValueError(f"unreadable timing {row[column['Timing']]!r} in {path}")
 
+      weighting = PERCENT_CELL.match(row[column["Exam weighting"]])
+
+      if weighting is None:
+         raise ValueError(f"unreadable weighting {row[column['Exam weighting']]!r} in {path}")
+
       parts.append(
          ExamPart(
             section=row[column["Section"]],
@@ -75,6 +84,7 @@ def exam_parts(path=EXAM_STRUCTURE_PATH):
             questions=int(row[column["Questions"]]),
             minutes=int(minutes.group(1)),
             calculator=row[column["Calculator"]],
+            weighting=float(weighting.group(1)),
          )
       )
 
@@ -83,6 +93,47 @@ def exam_parts(path=EXAM_STRUCTURE_PATH):
 
 def free_response_parts():
    return tuple(part for part in exam_parts() if part.question_type == "Free response")
+
+
+@lru_cache(maxsize=1)
+def points_per_free_response_question(path=EXAM_STRUCTURE_PATH):
+   """The per-question free-response maximum, read from the sentence exam-structure.md states it in."""
+   found = POINTS_SENTENCE.search(Path(path).read_text())
+
+   if found is None:
+      raise ValueError(f"no free-response point total stated in {path}")
+
+   return int(found.group(1))
+
+
+@dataclass(frozen=True)
+class ScoreDistribution:
+   year: int
+   shares: dict
+
+
+@lru_cache(maxsize=1)
+def score_distributions(path=SCORING_SYSTEM_PATH):
+   """The published BC score distributions, each score's share of the cohort in percent. The first
+   table headed Year in scoring-system.md is the BC table; the AB subscore table follows it."""
+   header, rows = table_rows(Path(path).read_text(), "Year")
+   column = {name: position for position, name in enumerate(header)}
+   distributions = []
+
+   for row in rows:
+      shares = {}
+
+      for score in (5, 4, 3, 2, 1):
+         parsed = SCORE_SHARE_CELL.search(row[column[str(score)]])
+
+         if parsed is None:
+            raise ValueError(f"unreadable share for score {score} in {path}")
+
+         shares[score] = float(parsed.group(1))
+
+      distributions.append(ScoreDistribution(year=int(row[column["Year"]]), shares=shares))
+
+   return tuple(distributions)
 
 
 @dataclass(frozen=True)

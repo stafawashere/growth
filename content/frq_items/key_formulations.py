@@ -107,3 +107,19 @@ FORMULATIONS = {
    "FRQ-AGT-10018-01:c1": lambda: sympy.Integer(3),
    "FRQ-AGT-10018-01:d1": lambda: 1 / (3 - x),
 }
+
+
+def stage_six_formulations():
+   """The 16 nine-point questions added in stage 6 (P5), formulated blind by another agent."""
+   import importlib.util
+   from pathlib import Path
+
+   path = Path(__file__).with_name("key_formulations_p5.py")
+   spec = importlib.util.spec_from_file_location("frq_formulations_p5", path)
+   module = importlib.util.module_from_spec(spec)
+   spec.loader.exec_module(module)
+
+   return module.FORMULATIONS
+
+
+FORMULATIONS.update(stage_six_formulations())

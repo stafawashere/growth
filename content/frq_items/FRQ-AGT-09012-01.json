@@ -1,0 +1,234 @@
+{
+   "id": "FRQ-AGT-09012-01",
+   "archetype_id": "BC-QA-09012",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-13",
+   "stem": {
+      "text": "The polar curve \\( r = 1 + 2\\sin\\theta \\) for \\( 0 \\le \\theta \\le 2\\pi \\) is a limacon with an inner loop. The inner loop is traced for the angles at which \\( r \\le 0 \\)."
+   },
+   "skills": [
+      "BC-SKL-09035",
+      "BC-SKL-09036",
+      "BC-SKL-09037",
+      "BC-SKL-09038"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find the area of the region in the first quadrant that lies inside the curve, bounded by the curve and the rays \\( \\theta = 0 \\) and \\( \\theta = \\tfrac{\\pi}{2} \\).",
+         "setup_required": false,
+         "answer_latex": "2 + \\frac{3\\pi}{4}",
+         "worked_solution": [
+            {
+               "text": "Polar area is one half the integral of r squared.",
+               "latex": "\\frac{1}{2}\\int_{0}^{\\pi/2} (1 + 2\\sin\\theta)^{2}\\,d\\theta"
+            },
+            {
+               "text": "Expand and use the double angle identity for sine squared.",
+               "latex": "(1 + 2\\sin\\theta)^{2} = 3 + 4\\sin\\theta - 2\\cos 2\\theta"
+            },
+            {
+               "text": "Antidifferentiate and evaluate.",
+               "latex": "\\frac{1}{2}\\left[3\\theta - 4\\cos\\theta - \\sin 2\\theta\\right]_{0}^{\\pi/2} = \\frac{1}{2}\\left(\\frac{3\\pi}{2} + 4\\right)"
+            },
+            {
+               "text": "Simplify.",
+               "latex": "2 + \\frac{3\\pi}{4}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99048",
+               "skills": [
+                  "BC-SKL-09035"
+               ],
+               "criterion": "Writes a definite integral whose integrand contains (1 + 2 sin theta)^2, the square of r, with or without the one half and the differential.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-09035",
+                  "BC-SKL-09036"
+               ],
+               "criterion": "Uses the limits 0 and pi/2 on one half the integral of (1 + 2 sin theta)^2.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "0",
+                  "upper": "pi/2",
+                  "integrand": null,
+                  "variable": "theta"
+               }
+            },
+            {
+               "point_id": "a3",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-09038"
+               ],
+               "criterion": "Gives the area 2 + 3pi/4, supported by the integral of part (a).",
+               "eligible_only_if": [
+                  "a2"
+               ],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "2 + 3*pi/4",
+                  "up_to_constant": false,
+                  "variable": "theta"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find the two values of \\( \\theta \\) in \\( 0 \\le \\theta \\le 2\\pi \\) at which \\( r = 0 \\), and find the area of the region enclosed by the inner loop.",
+         "setup_required": false,
+         "answer_latex": "\\theta = \\frac{7\\pi}{6}, \\frac{11\\pi}{6}; \\quad \\pi - \\frac{3\\sqrt{3}}{2}",
+         "worked_solution": [
+            {
+               "text": "Solve 1 + 2 sin theta = 0.",
+               "latex": "\\sin\\theta = -\\frac{1}{2} \\implies \\theta = \\frac{7\\pi}{6}, \\ \\frac{11\\pi}{6}"
+            },
+            {
+               "text": "r is negative between these angles, and that arc traces the inner loop once.",
+               "latex": "\\frac{1}{2}\\int_{7\\pi/6}^{11\\pi/6} (1 + 2\\sin\\theta)^{2}\\,d\\theta"
+            },
+            {
+               "text": "Evaluate with the same antiderivative as part (a).",
+               "latex": "\\frac{1}{2}\\left[3\\theta - 4\\cos\\theta - \\sin 2\\theta\\right]_{7\\pi/6}^{11\\pi/6} = \\frac{1}{2}\\left(2\\pi - 4\\sqrt{3} + \\sqrt{3}\\right)"
+            },
+            {
+               "text": "Simplify.",
+               "latex": "\\pi - \\frac{3\\sqrt{3}}{2}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-09036",
+                  "BC-SKL-09037"
+               ],
+               "criterion": "Gives both angles, theta = 7pi/6 and theta = 11pi/6.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99048",
+               "skills": [
+                  "BC-SKL-09035"
+               ],
+               "criterion": "Writes a definite integral whose integrand contains (1 + 2 sin theta)^2, with or without the one half and the differential.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b3",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-09035",
+                  "BC-SKL-09037"
+               ],
+               "criterion": "Uses the limits 7pi/6 and 11pi/6 (or another interval of length 2pi/3 that traces exactly the inner loop) on one half the integral of (1 + 2 sin theta)^2.",
+               "eligible_only_if": [
+                  "b2"
+               ],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "7*pi/6",
+                  "upper": "11*pi/6",
+                  "integrand": null,
+                  "variable": "theta"
+               },
+               "follows_from": [
+                  "b1"
+               ]
+            },
+            {
+               "point_id": "b4",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-09038"
+               ],
+               "criterion": "Gives the area pi - 3sqrt(3)/2, supported by the integral.",
+               "eligible_only_if": [
+                  "b3"
+               ],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "pi - 3*sqrt(3)/2",
+                  "up_to_constant": false,
+                  "variable": "theta"
+               }
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Find the area of the region that lies inside the outer loop of the curve and outside the inner loop.",
+         "setup_required": false,
+         "answer_latex": "\\pi + 3\\sqrt{3}",
+         "worked_solution": [
+            {
+               "text": "The outer loop is traced while r is nonnegative, from theta = -pi/6 to theta = 7pi/6.",
+               "latex": "\\frac{1}{2}\\int_{-\\pi/6}^{7\\pi/6} (1 + 2\\sin\\theta)^{2}\\,d\\theta = \\frac{1}{2}\\left(4\\pi + 3\\sqrt{3}\\right) = 2\\pi + \\frac{3\\sqrt{3}}{2}"
+            },
+            {
+               "text": "Subtract the inner loop area from part (b).",
+               "latex": "\\left(2\\pi + \\frac{3\\sqrt{3}}{2}\\right) - \\left(\\pi - \\frac{3\\sqrt{3}}{2}\\right) = \\pi + 3\\sqrt{3}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-09035",
+                  "BC-SKL-09037"
+               ],
+               "criterion": "Writes one half the integral of (1 + 2 sin theta)^2 over an interval that traces the outer loop once, such as -pi/6 to 7pi/6 (or the sum over 0 to 7pi/6 and 11pi/6 to 2pi), and subtracts the inner loop area.",
+               "eligible_only_if": [],
+               "check": null,
+               "follows_from": [
+                  "b1",
+                  "b4"
+               ]
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-09038"
+               ],
+               "criterion": "Gives the area pi + 3sqrt(3), supported by the outer loop area minus the inner loop area.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "pi + 3*sqrt(3)",
+                  "up_to_constant": false,
+                  "variable": "theta"
+               },
+               "follows_from": [
+                  "b4"
+               ]
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 6 (p5)",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24 (stage 6 review: blind SymPy recheck 71 of 71, stems read for ambiguity and official text)"
+}

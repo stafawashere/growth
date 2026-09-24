@@ -1,0 +1,207 @@
+{
+   "id": "FRQ-AGT-09005-01",
+   "archetype_id": "BC-QA-09005",
+   "calculator_status": "calculator",
+   "representation": "BC-REP-14",
+   "stem": {
+      "text": "A particle moves in the xy-plane so that its velocity vector at time \\( t \\) is \\( \\langle x'(t), y'(t) \\rangle = \\left\\langle \\sqrt{1 + t^{3}},\\; 4 - e^{t^{2}/4} \\right\\rangle \\) for \\( 0 \\le t \\le 4 \\). At time \\( t = 2 \\) the particle is at the point \\( (4, 1) \\)."
+   },
+   "skills": [
+      "BC-SKL-09019",
+      "BC-SKL-09020",
+      "BC-SKL-09021",
+      "BC-SKL-09022",
+      "BC-SKL-09026",
+      "BC-SKL-09018"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find the x-coordinate of the position of the particle at time \\( t = 0 \\).",
+         "setup_required": true,
+         "answer_latex": "x(0) = 4 - \\int_{0}^{2} \\sqrt{1 + t^{3}}\\,dt \\approx 0.759",
+         "worked_solution": [
+            {
+               "text": "The x-coordinate at t = 2 equals the x-coordinate at t = 0 plus the integral of x'(t) from 0 to 2.",
+               "latex": "x(2) = x(0) + \\int_{0}^{2} \\sqrt{1 + t^{3}}\\,dt"
+            },
+            {
+               "text": "Solve for x(0) and evaluate the integral on the calculator.",
+               "latex": "x(0) = 4 - 3.241 = 0.759"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-09019",
+                  "BC-SKL-09020"
+               ],
+               "criterion": "Writes the definite integral of sqrt(1 + t^3) with t = 0 and t = 2 as its limits.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "0",
+                  "upper": "2",
+                  "integrand": "sqrt(1 + t**3)",
+                  "variable": "t"
+               }
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99033",
+               "skills": [
+                  "BC-SKL-09021",
+                  "BC-SKL-09022"
+               ],
+               "criterion": "Uses the known x-coordinate 4 at t = 2 by subtracting the integral from 0 to 2 from 4 (equivalently, adding the integral from 2 to 0 to 4).",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "a3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-09026"
+               ],
+               "criterion": "Gives x(0) = 0.759.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "4 - Integral(sqrt(1 + t**3), (t, 0, 2))"
+               },
+               "follows_from": [
+                  "a2"
+               ]
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find the greatest y-coordinate of the position of the particle for \\( 0 \\le t \\le 4 \\). Justify your answer.",
+         "setup_required": true,
+         "answer_latex": "y\\left(2\\sqrt{\\ln 4}\\right) = 1 + \\int_{2}^{2\\sqrt{\\ln 4}} \\left(4 - e^{t^{2}/4}\\right)dt \\approx 1.248",
+         "worked_solution": [
+            {
+               "text": "Set the vertical velocity equal to zero.",
+               "latex": "4 - e^{t^{2}/4} = 0 \\implies t = 2\\sqrt{\\ln 4} \\approx 2.355"
+            },
+            {
+               "text": "The vertical velocity is positive before this time and negative after it, so y increases and then decreases on the whole interval and the only critical time gives the greatest y-coordinate.",
+               "latex": "y'(t) > 0 \\text{ for } 0 \\le t < 2\\sqrt{\\ln 4}, \\quad y'(t) < 0 \\text{ for } 2\\sqrt{\\ln 4} < t \\le 4"
+            },
+            {
+               "text": "Recover the y-coordinate at that time from the known position at t = 2.",
+               "latex": "y\\left(2\\sqrt{\\ln 4}\\right) = 1 + \\int_{2}^{2\\sqrt{\\ln 4}} \\left(4 - e^{t^{2}/4}\\right)dt \\approx 1.248"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-09018",
+                  "BC-SKL-09020",
+                  "BC-SKL-09021"
+               ],
+               "criterion": "Writes the y-coordinate at the critical time as 1 plus the definite integral of 4 - e^(t^2/4) from t = 2 to t = 2 sqrt(ln 4), about 2.355.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99013",
+               "skills": [
+                  "BC-SKL-09026"
+               ],
+               "criterion": "Sets y'(t) = 4 - e^(t^2/4) equal to 0 and finds the critical time t = 2 sqrt(ln 4), about 2.355.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "b3",
+               "point_type_id": "BC-PT-99010",
+               "skills": [
+                  "BC-SKL-09026"
+               ],
+               "criterion": "Argues that y'(t) is positive before the critical time and negative after it on the whole interval from 0 to 4, so that the only critical time gives the greatest y-coordinate on the interval (a candidates comparison with y(0) and y(4) also earns this point).",
+               "eligible_only_if": [
+                  "b1",
+                  "b2"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "b4",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-09021",
+                  "BC-SKL-09026"
+               ],
+               "criterion": "Gives the greatest y-coordinate as 1.248.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "1 + Integral(4 - exp(t**2/4), (t, 2, 2*sqrt(log(4))))"
+               }
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Find the time \\( t \\) at which the x-coordinate of the position of the particle is 7.",
+         "setup_required": true,
+         "answer_latex": "t \\approx 2.781",
+         "worked_solution": [
+            {
+               "text": "The x-coordinate increases because x'(t) > 0, so it equals 7 once, after t = 2.",
+               "latex": "4 + \\int_{2}^{T} \\sqrt{1 + t^{3}}\\,dt = 7"
+            },
+            {
+               "text": "Solve the equation on the calculator.",
+               "latex": "T \\approx 2.781"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-09021",
+                  "BC-SKL-09026"
+               ],
+               "criterion": "Writes the equation 4 plus the definite integral of sqrt(1 + t^3) from t = 2 to t = T equals 7 (or an equivalent equation built from x(0) and a lower limit of 0).",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-09026"
+               ],
+               "criterion": "Solves that equation to give t = 2.781.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "2.780661866272224296367131777"
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 6 (p5)",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-24 (stage 6 review: blind SymPy recheck 71 of 71, stems read for ambiguity and official text)"
+}

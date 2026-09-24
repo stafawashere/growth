@@ -1420,6 +1420,18 @@ types). Suite at close: pytest 968 passed, 0 failed (exit 0); vitest 323 passed 
   guard removed, the option check removed, the stem wording check removed, a missing formulation
   passing, the control made blind (3 red), and a real key edited on disk (the gate red).
 
+- 2026-09-24, found by launching the real app for the readiness audit: the production build
+  inlined `KaTeX_Size3.woff2` (under Vite's 4 KB inline limit) as a data: URL, which the CSP in
+  `app/api/security_headers.py` (default-src 'self', no font-src) blocks, so large delimiters fell
+  back to a system font. `app/web/vite.config.ts` now keeps every font a file
+  (`build.assetsInlineLimit` refuses .woff, .woff2, .ttf and .otf) and the CSP is unchanged.
+  `app/web/src/buildConfig.test.ts` checks every KaTeX font file is refused inlining (red before
+  the fix, `expected 'undefined' to be 'function'`; red again with only .ttf refused; green after).
+  Rebuilt: 0 data: fonts in the stylesheet, 20 woff2 files emitted, and the Size3 file loaded as a
+  FontFace in the served page. Also seen: in the Claude desktop browser pane "Register a passkey"
+  sends register/begin (200) and then waits on a platform prompt the pane cannot show, with no
+  message to the student; a normal browser shows the prompt.
+
 ## In progress [inferred]
 
 Nothing. The fourteenth session closed with the suite green and every module of its plan either

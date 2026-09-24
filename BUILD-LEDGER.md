@@ -1408,6 +1408,18 @@ types). Suite at close: pytest 968 passed, 0 failed (exit 0); vitest 323 passed 
   of refused, 1 red), `tests/tools/test_key_audit_worksheet.py` one (a key marker leaked, red on
   `key:`; options dropped, red). `docs/operator/key-audit.md` gains the six-step P1 procedure.
 
+- 2026-09-24, the key recheck made a standing gate. `tools/key_recheck.py` recomputes each item's
+  answer from a formulations file written from the stems alone, and flags a key that differs, an
+  option set where anything but the marked key equals the answer, a stem worded as a choice, an
+  ambiguous stem (more than one computed answer), an unformulated item, and a comparison it cannot
+  decide; before trusting a run it perturbs 8 computed answers and exits 2 if any compares equal.
+  `content/items_p1_agent/key_formulations.py` holds the 130 P1 formulations (the bank loader and
+  `tools/check_items.py` read only .json there). `tests/items/test_key_recheck.py` runs the whole
+  bank as a gate (130 clean, about 5 s) and shows each check can fail; broken one at a time, each
+  guard turned its test red: the comparator calling unequal pairs equal (4 red), the evaluation
+  guard removed, the option check removed, the stem wording check removed, a missing formulation
+  passing, the control made blind (3 red), and a real key edited on disk (the gate red).
+
 ## In progress [inferred]
 
 Nothing. The fourteenth session closed with the suite green and every module of its plan either
@@ -3024,6 +3036,13 @@ Item check, 2026-09-23: 27 agent-drafted stems asked "Which of the following is 
 other attempt at stage unsupported (`app/engine/select.py` `format_for_attempt`), so most serves
 show no options, and nothing rewrites a stem for the served format; "Find" reads correctly in both
 formats. The items stay agent drafts pending the operator's review, and no provenance changed.
+
+Item audits, 2026-09-24: the deterministic part of auditing items is code, not guidance, on the
+operator's standing rule that a check which must hold belongs in a mechanical check.
+`tools/key_recheck.py` and each bank's formulations file carry it, and the recheck runs in the
+suite so a later edit to a key or a stem cannot pass unchecked. The judgment part (formulating
+from stems without reading keys, triage, what the tool cannot see, the lessons log) is a local
+Claude Code skill under `.claude/`, which stays out of the repository by the same operator rule.
 
 ## Decisions taken on the operator's instruction, 2026-09-20 [inferred]
 

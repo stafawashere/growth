@@ -5,11 +5,12 @@ import { AddPasskeyControl } from "./account/AddPasskeyControl";
 import { ApiError, readMe } from "./api/client";
 import { HomeRoute } from "./home/HomeRoute";
 import { ProgressRoute } from "./progress/ProgressRoute";
+import { ReviewRoute } from "./review/ReviewRoute";
 import { SessionScreen } from "./session/SessionScreen";
 import type { SettingsScreenProps } from "./settings/SettingsScreen";
 import { SettingsRoute } from "./settings/SettingsRoute";
 
-export type Destination = "home" | "session" | "settings" | "progress";
+export type Destination = "home" | "session" | "settings" | "progress" | "review";
 
 export interface DestinationEntry {
    id: Destination;
@@ -22,7 +23,8 @@ export interface UnsuppliedInput {
 }
 
 /* 08-design-brief.md, Information architecture: settings is reached from the top bar, a session
-   from home's one primary action, and progress from home, so neither of the last two is here. */
+   from home's one primary action, and progress and review from home, so none of the last three is
+   here. */
 export const DESTINATIONS: ReadonlyArray<DestinationEntry> = [
    { id: "home", label: "Home" },
    { id: "settings", label: "Settings" }
@@ -45,7 +47,8 @@ export const UNSUPPLIED_INPUTS: Record<Destination, ReadonlyArray<UnsuppliedInpu
    home: [],
    session: [],
    settings: settingsInputs,
-   progress: []
+   progress: [],
+   review: []
 };
 
 const noticeStyle = {
@@ -196,12 +199,15 @@ export function App() {
                onStartSession={startSession}
                onResumeSession={resumeSession}
                onOpenProgress={() => setDestination("progress")}
+               onOpenReview={() => setDestination("review")}
             />
          ) : null}
 
          {destination === "session" ? <SessionScreen resumeSessionId={sessionTarget.resumeSessionId} /> : null}
 
          {destination === "progress" ? <ProgressRoute /> : null}
+
+         {destination === "review" ? <ReviewRoute /> : null}
 
          {destination === "settings" ? (
             <>

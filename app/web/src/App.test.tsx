@@ -5,7 +5,16 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { cleanup, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 
 import * as client from "./api/client";
-import type { BudgetsPayload, ProgressPayload, ServedItem, SessionPayload, SettingsPayload } from "./api/types";
+import type {
+   BudgetsPayload,
+   CalibrationPayload,
+   MasteryMapPayload,
+   ProgressPayload,
+   ReviewPayload,
+   ServedItem,
+   SessionPayload,
+   SettingsPayload
+} from "./api/types";
 import { App, DESTINATIONS, UNSUPPLIED_INPUTS, type Destination } from "./App";
 import { daysToExam, formatPlanDate } from "./home/dates";
 
@@ -21,13 +30,20 @@ const PROPS_INTERFACE_BY_DESTINATION: Record<Destination, { file: string; name: 
    home: { file: "home/HomeScreen.tsx", name: "HomeScreenProps" },
    session: { file: "session/SessionScreen.tsx", name: "SessionScreenProps" },
    settings: { file: "settings/SettingsScreen.tsx", name: "SettingsScreenProps" },
-   progress: { file: "progress/ProgressRoute.tsx", name: "ProgressRouteProps" }
+   progress: { file: "progress/ProgressRoute.tsx", name: "ProgressRouteProps" },
+   review: { file: "review/ReviewRoute.tsx", name: "ReviewRouteProps" }
 };
 
-/* P2 scope item 6 brings the progress screen into phase with its calibration curve only; the
-   mastery map, the representation matrix and checkpoint history stay out, as do onboarding,
-   review and mock (11-phased-delivery.md P2 scope and out of scope). */
-const OUT_OF_PHASE_SCREENS = ["onboarding", "review", "mock", "mastery", "matrix", "checkpoint"];
+/* P2 scope item 6 brought the progress screen into phase with its calibration curve. Stage 3 of the
+   operator's delegated run (BUILD-LEDGER.md, Plan corrections applied, 2026-09-24) brought in the
+   review screen and the mastery map, which P8's entry criterion needs and 11 names in no earlier
+   phase. The representation matrix and checkpoint history stay out, as do onboarding until its
+   stage ships it and mock. */
+const OUT_OF_PHASE_SCREENS = ["onboarding", "mock", "matrix", "checkpoint"];
+
+/* The screens reached from home's secondary buttons, never from the bar and never the landing
+   screen (08, Information architecture). */
+const REACHED_FROM_HOME = ["Progress", "Review"];
 
 const BAR_DESTINATIONS = ["home", "settings"];
 
@@ -124,6 +140,86 @@ const sessionPayload: SessionPayload = {
    remaining: []
 };
 
+const calibrationNotYet: CalibrationPayload = {
+   available: false,
+   rated_attempts: 4,
+   minimum_rated_attempts: 30,
+   attempts_needed: 26,
+   window_days: 30,
+   window_start: "2026-12-07",
+   window_end: "2027-01-05",
+   bins: []
+};
+
+const masteryPayload: MasteryMapPayload = {
+   today: "2027-01-05",
+   states: ["not_attempted", "in_progress", "mastered", "fading", "gap"],
+   units: [
+      {
+         unit_id: "BC-UNIT-03",
+         number: 3,
+         name: "Differentiation: Composite, Implicit, and Inverse Functions",
+         nodes: [
+            {
+               skill_id: "BC-SKL-03004",
+               name: "Chain rule with three layers",
+               state: "fading",
+               depth: 0,
+               assumed: false,
+               last_success_on: "2026-12-25",
+               days_since_success: 11
+            },
+            {
+               skill_id: "BC-SKL-03009",
+               name: "Implicit differentiation",
+               state: "in_progress",
+               depth: 1,
+               assumed: false,
+               last_success_on: null,
+               days_since_success: null
+            }
+         ]
+      }
+   ]
+};
+
+const reviewPayload: ReviewPayload = {
+   today: "2027-01-05",
+   coming_back: [
+      {
+         item_id: "ITM-40",
+         attempt_id: "ATT-40",
+         label: "Quotient rule, numerator order",
+         lane: "hypercorrection",
+         confidence: "confident",
+         corrected_on: "2027-01-04",
+         returns_on: "2027-01-05",
+         days_until: 0
+      },
+      {
+         item_id: "ITM-41",
+         attempt_id: "ATT-41",
+         label: "Limit by conjugate",
+         lane: "requeue",
+         confidence: "unsure",
+         corrected_on: "2027-01-05",
+         returns_on: "2027-01-07",
+         days_until: 2
+      }
+   ],
+   error_notes: [
+      {
+         attempt_id: "ATT-40",
+         session_id: "SES-8",
+         note: "I kept the numerator terms in the wrong order.",
+         written_on: "2027-01-04",
+         label: "Quotient rule, numerator order"
+      }
+   ],
+   grading_available: false,
+   provisional_points: []
+};
+
 function mockServer(progress: ProgressPayload) {
    mocked.readMe.mockResolvedValue(me);
    mocked.readProgress.mockResolvedValue(progress);
@@ -134,8 +230,22 @@ function mockServer(progress: ProgressPayload) {
    mocked.readSession.mockResolvedValue(sessionPayload);
    mocked.readNextItem.mockResolvedValue({ item: servedItem });
    mocked.readAuthStatus.mockResolvedValue({ user_exists: true });
+   mocked.readCalibration.mockResolvedValue(calibrationNotYet);
+   mocked.readMasteryMap.mockResolvedValue(masteryPayload);
+   mocked.readReview.mockResolvedValue(reviewPayload);
 
-   return [me, progress, settingsPayload, providersPayload, budgetsPayload, sessionPayload, servedItem];
+   return [
+      me,
+      progress,
+      settingsPayload,
+      providersPayload,
+      budgetsPayload,
+      sessionPayload,
+      servedItem,
+      calibrationNotYet,
+      masteryPayload,
+      reviewPayload
+   ];
 }
 
 function sourceOf(relativePath: string): string {
@@ -300,8 +410,47 @@ describe("the client shell", () => {
       expect(mocked.readCalibration).toHaveBeenCalledTimes(1);
    });
 
+   it("reaches review from home and never from the bar or as the landing screen", async () => {
+      mockServer(readyProgress);
+      mocked.readReview.mockResolvedValue(reviewPayload);
+      render(<App />);
+
+      await screen.findByText(/Start today's set/);
+
+      const bar = within(screen.getByRole("navigation"));
+
+      for (const label of REACHED_FROM_HOME) {
+         expect(bar.queryByRole("button", { name: label }), `${label} is on the bar`).toBeNull();
+      }
+
+      expect(screen.queryByRole("heading", { name: "Review" })).toBeNull();
+      expect(mocked.readReview).not.toHaveBeenCalled();
+
+      fireEvent.click(screen.getByRole("button", { name: "Review" }));
+
+      expect(await screen.findByRole("heading", { name: "Review" })).toBeTruthy();
+      expect(screen.queryByText(/Start today's set/)).toBeNull();
+      expect(mocked.readReview).toHaveBeenCalledTimes(1);
+   });
+
+   it("draws the mastery map above the calibration curve on progress", async () => {
+      mockServer(readyProgress);
+      mocked.readCalibration.mockResolvedValue(calibrationNotYet);
+      mocked.readMasteryMap.mockResolvedValue(masteryPayload);
+      render(<App />);
+
+      fireEvent.click(await screen.findByRole("button", { name: "Progress" }));
+
+      const map = await screen.findByTestId("mastery-map");
+      const curve = await screen.findByTestId("calibration-not-yet");
+      const mapComesFirst = map.compareDocumentPosition(curve) & Node.DOCUMENT_POSITION_FOLLOWING;
+
+      expect(mapComesFirst).toBeTruthy();
+      expect(mocked.readMasteryMap).toHaveBeenCalledTimes(1);
+   });
+
    it("names every input it still cannot supply, using the name the screen itself declares", () => {
-      for (const destination of ["home", "session", "settings", "progress"] as Destination[]) {
+      for (const destination of ["home", "session", "settings", "progress", "review"] as Destination[]) {
          const target = PROPS_INTERFACE_BY_DESTINATION[destination];
          const declared = declaredPropertyNames(target.file, target.name);
          const listed = UNSUPPLIED_INPUTS[destination].map((input) => input.name);
@@ -498,6 +647,26 @@ describe("no fabricated figure", () => {
 
       expect(screen.getAllByTestId("per-role-cap-row").length).toBe(budgetsPayload.roles.length);
       expect(untracedFigures(payloads, derived), "settings").toEqual([]);
+   });
+
+   it("traces every digit on progress and review to a mocked response value", async () => {
+      const payloads = mockServer(readyProgress);
+      const derived = [daysToExam(me.exam_date, PINNED_NOW)];
+
+      render(<App />);
+      fireEvent.click(await screen.findByRole("button", { name: "Progress" }));
+      await screen.findByTestId("mastery-map");
+      fireEvent.click(screen.getAllByRole("button", { name: /Chain rule with three layers/ })[0]);
+
+      expect(screen.getByTestId("mastery-caption").textContent).toContain("11 days ago");
+      expect(untracedFigures(payloads, derived), "progress").toEqual([]);
+
+      visit("home");
+      fireEvent.click(await screen.findByRole("button", { name: "Review" }));
+      await screen.findByText("Limit by conjugate");
+
+      expect(document.body.textContent).toContain("in 2 days");
+      expect(untracedFigures(payloads, derived), "review").toEqual([]);
    });
 
    it("traces the empty queue's figures to its mocked values and the plan's own sentence", async () => {

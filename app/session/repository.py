@@ -147,12 +147,14 @@ def load_attempts_history(db, user_id):
          minutes = attempt.elapsed_ms / MILLISECONDS_PER_MINUTE
 
       history.append({
+         "attempt_id": attempt.id,
          "item_id": attempt.item_id,
          "archetype_id": archetype_of.get(attempt.item_id),
          "attempted_on": datetime.fromisoformat(submitted_at).date(),
          "minutes": minutes,
          "corrected": is_incorrect,
          "stage": FadingStage(attempt.served_stage),
+         "confidence": attempt.confidence,
       })
 
    return history

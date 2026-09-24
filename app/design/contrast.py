@@ -19,6 +19,12 @@ reads the hex values out of it and calls these functions.
 TEXT_CONTRAST_FLOOR = 4.5
 LARGE_TEXT_CONTRAST_FLOOR = 3.0
 
+# WCAG 2.2 SC 1.4.11 Non-text Contrast, Level AA: graphical objects and user interface components
+# hold "at least 3:1 against adjacent color(s)". Read off
+# https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html on 2026-09-24, the fetch 08's
+# Colour system section asks for before the mastery map and the calibration curve are finalised.
+NON_TEXT_CONTRAST_FLOOR = 3.0
+
 _LINEARISATION_THRESHOLD = 0.04045
 _LOW_CHANNEL_DIVISOR = 12.92
 _GAMMA_OFFSET = 0.055

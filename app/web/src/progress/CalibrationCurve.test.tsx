@@ -1,7 +1,7 @@
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { cleanup, render, screen, within } from "@testing-library/react";
 
 import * as client from "../api/client";
@@ -127,6 +127,10 @@ describe("the calibration curve at or above its threshold", () => {
 });
 
 describe("the progress route", () => {
+   beforeEach(() => {
+      mocked.readMasteryMap.mockReturnValue(new Promise(() => undefined));
+   });
+
    it("loads the calibration record and draws the curve from it", async () => {
       mocked.readCalibration.mockResolvedValue(available);
       render(<ProgressRoute />);

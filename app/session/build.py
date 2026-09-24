@@ -18,7 +18,7 @@ app/session/preview.py, writes nothing.
 import json
 import statistics
 from dataclasses import dataclass, field
-from datetime import timedelta
+from datetime import date, timedelta
 
 from sqlalchemy import select
 
@@ -39,6 +39,7 @@ from app.engine.select import (
    review_eligible,
    session_now,
 )
+from app.engine.state import Confidence
 
 COVERAGE_GAP_ACTION = "coverage_gap_fail_closed"
 
@@ -110,14 +111,23 @@ def recently_served(attempts_history, today):
    return recent, corrected
 
 
-def requeue_ready(attempts_history, today):
-   """R5: a corrected item comes back through block 1 once the REQUEUE gap has elapsed.
+@dataclass(frozen=True)
+class OpenCorrection:
+   """The latest correction of an item that no later retry has retired."""
 
-   The latest correction of an item opens a window from REQUEUE_GAP_DAYS_MIN to
-   REQUEUE_GAP_DAYS_MAX days after it. Inside the window the item is served ahead of the FSRS
-   order; a retry of the item after the correction, or the window closing, retires the requeue.
-   """
-   corrected_on = {}
+   item_id: str
+   archetype_id: str | None
+   corrected_on: date
+   confidence: str | None
+   attempt_id: str | None
+
+   @property
+   def was_confident(self):
+      return self.confidence == Confidence.CONFIDENT.value
+
+
+def open_corrections(attempts_history):
+   corrected = {}
    retried_on = {}
 
    for attempt in attempts_history:
@@ -131,11 +141,17 @@ def requeue_ready(attempts_history, today):
       is_correction = bool(attempt.get("corrected"))
 
       if is_correction:
-         previous = corrected_on.get(item_id)
-         is_later = previous is None or attempted_on > previous[0]
+         previous = corrected.get(item_id)
+         is_later = previous is None or attempted_on > previous.corrected_on
 
          if is_later:
-            corrected_on[item_id] = (attempted_on, attempt.get("archetype_id"))
+            corrected[item_id] = OpenCorrection(
+               item_id=item_id,
+               archetype_id=attempt.get("archetype_id"),
+               corrected_on=attempted_on,
+               confidence=attempt.get("confidence"),
+               attempt_id=attempt.get("attempt_id"),
+            )
       else:
          previous_retry = retried_on.get(item_id)
          is_later_retry = previous_retry is None or attempted_on > previous_retry
@@ -143,19 +159,59 @@ def requeue_ready(attempts_history, today):
          if is_later_retry:
             retried_on[item_id] = attempted_on
 
+   still_open = []
+
+   for correction in corrected.values():
+      last_retry = retried_on.get(correction.item_id)
+      was_retried = last_retry is not None and last_retry > correction.corrected_on
+
+      if not was_retried:
+         still_open.append(correction)
+
+   return still_open
+
+
+def lane_order(correction):
+   """The hypercorrection lane first (08, Review: high-confidence errors are "served first"),
+   then by the day of the correction."""
+   return (not correction.was_confident, correction.corrected_on, correction.item_id)
+
+
+def requeue_pending(attempts_history, today):
+   """Every open correction whose R5 window has not yet closed, including one made today whose
+   window opens later, in the order block 1 serves them. The review screen lists these."""
+   pending = []
+
+   for correction in open_corrections(attempts_history):
+      waited_days = (today - correction.corrected_on).days
+      window_is_open_or_ahead = 0 <= waited_days <= constants.REQUEUE_GAP_DAYS_MAX
+      is_known = correction.archetype_id is not None
+      is_pending = window_is_open_or_ahead and is_known
+
+      if is_pending:
+         pending.append(correction)
+
+   return sorted(pending, key=lane_order)
+
+
+def requeue_ready(attempts_history, today):
+   """R5: a corrected item comes back through block 1 once the REQUEUE gap has elapsed.
+
+   The latest correction of an item opens a window from REQUEUE_GAP_DAYS_MIN to
+   REQUEUE_GAP_DAYS_MAX days after it. Inside the window the item is served ahead of the FSRS
+   order; a retry of the item after the correction, or the window closing, retires the requeue.
+   A correction the student had rated confident is a hypercorrection and goes ahead of the rest.
+   """
    ready = []
 
-   for item_id, (date_corrected, archetype_id) in corrected_on.items():
-      waited_days = (today - date_corrected).days
-      in_window = constants.REQUEUE_GAP_DAYS_MIN <= waited_days <= constants.REQUEUE_GAP_DAYS_MAX
-      is_known = archetype_id is not None
-      last_retry = retried_on.get(item_id)
-      was_retried = last_retry is not None and last_retry > date_corrected
+   for correction in requeue_pending(attempts_history, today):
+      waited_days = (today - correction.corrected_on).days
+      in_window = waited_days >= constants.REQUEUE_GAP_DAYS_MIN
 
-      if in_window and is_known and not was_retried:
-         ready.append((date_corrected, item_id, archetype_id))
+      if in_window:
+         ready.append((correction.item_id, correction.archetype_id))
 
-   return [(item_id, archetype_id) for _, item_id, archetype_id in sorted(ready)]
+   return ready
 
 
 @dataclass(frozen=True)

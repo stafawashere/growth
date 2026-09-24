@@ -111,7 +111,7 @@ def _complete_tokens():
    theme["surface-page"] = "#ffffff"
    theme["surface-raised"] = "#ffffff"
    theme["surface-sunken"] = "#ffffff"
-   theme["accent-base"] = "#ffffff"
+   theme["accent-base"] = "#888888"
 
    for name in _accent_tint_names():
       theme[name] = "#ffffff"

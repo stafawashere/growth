@@ -152,6 +152,73 @@ export interface CalibrationPayload {
    bins: CalibrationBin[];
 }
 
+/* app/progress/mastery.py mastery_map, unit_payload and node_payload. A node's state is one of the
+   five 08 names; the map carries no count or percentage. */
+export type MasteryNodeState = "not_attempted" | "in_progress" | "mastered" | "fading" | "gap";
+
+export interface MasteryNode {
+   skill_id: string;
+   name: string;
+   state: MasteryNodeState;
+   depth: number;
+   assumed: boolean;
+   last_success_on: string | null;
+   days_since_success: number | null;
+}
+
+export interface MasteryUnit {
+   unit_id: string;
+   number: number;
+   name: string;
+   nodes: MasteryNode[];
+}
+
+export interface MasteryMapPayload {
+   today: string;
+   states: MasteryNodeState[];
+   units: MasteryUnit[];
+}
+
+/* app/review/screen.py review_screen, coming_back_entry and error_notes. provisional_points is empty
+   until P3's grader writes gradings; each entry then carries PROVISIONAL_POINT_KEYS. */
+export type ReviewLane = "hypercorrection" | "requeue";
+
+export interface ComingBackEntry {
+   item_id: string;
+   attempt_id: string | null;
+   label: string;
+   lane: ReviewLane;
+   confidence: Confidence | null;
+   corrected_on: string;
+   returns_on: string;
+   days_until: number;
+}
+
+export interface ErrorNoteEntry {
+   attempt_id: string;
+   session_id: string;
+   note: string;
+   written_on: string;
+   label: string;
+}
+
+export interface ProvisionalPoint {
+   grading_id: string;
+   attempt_id: string;
+   label: string;
+   point_label: string;
+   reason: string;
+   disputed: boolean;
+}
+
+export interface ReviewPayload {
+   today: string;
+   coming_back: ComingBackEntry[];
+   error_notes: ErrorNoteEntry[];
+   grading_available: boolean;
+   provisional_points: ProvisionalPoint[];
+}
+
 /* app/settings/preferences.py settings_view. */
 export interface SettingsPayload {
    exam_date: string;

@@ -4,8 +4,10 @@ import type {
    CalibrationPayload,
    Confidence,
    FeedbackPayload,
+   MasteryMapPayload,
    ProgressPayload,
    ProvidersPayload,
+   ReviewPayload,
    ServedItem,
    SessionPayload,
    SettingsPayload
@@ -240,6 +242,14 @@ export function readProgress() {
 
 export function readCalibration() {
    return requestJson<CalibrationPayload>("/progress/calibration");
+}
+
+export function readMasteryMap() {
+   return requestJson<MasteryMapPayload>("/progress/mastery");
+}
+
+export function readReview() {
+   return requestJson<ReviewPayload>("/review");
 }
 
 export function readSettings() {

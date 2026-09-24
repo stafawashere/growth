@@ -43,6 +43,7 @@ import json
 
 from app.design.contrast import (
    LARGE_TEXT_CONTRAST_FLOOR,
+   NON_TEXT_CONTRAST_FLOOR,
    TEXT_CONTRAST_FLOOR,
    contrast_ratio,
    relative_luminance,
@@ -107,6 +108,17 @@ CONTRAST_PAIRS = (
    + [("accent-contrast-text", background) for background in ACCENT_CONTRAST_TEXT_BACKGROUNDS]
    + [(name, surface) for name in SEMANTIC_COLOURS for surface in SURFACES]
    + [("focus-ring", surface) for surface in SURFACES]
+)
+
+# The colours the mastery map and the calibration curve draw marks with, node outlines and fills,
+# the gap slash, the curve's axes, points and interval bars. Each is a graphical object that SC
+# 1.4.11 holds at NON_TEXT_CONTRAST_FLOOR against the surface it sits on, and the map and curve sit
+# on any surface, so every surface is checked. app/web/src/progress/nonTextContrast.test.ts checks
+# that the two components draw with no colour outside this list.
+GRAPHIC_TOKENS = ("accent-base", "text-muted", "text-primary")
+
+GRAPHIC_CONTRAST_PAIRS = tuple(
+   (graphic, surface) for graphic in GRAPHIC_TOKENS for surface in SURFACES
 )
 
 
@@ -175,23 +187,30 @@ def token_violations(tokens):
             _pair_violations(theme, foreground_name, background_name, valid_hex)
          )
 
+      for graphic_name, surface_name in GRAPHIC_CONTRAST_PAIRS:
+         violations.extend(
+            _pair_violations(
+               theme, graphic_name, surface_name, valid_hex, NON_TEXT_CONTRAST_FLOOR
+            )
+         )
+
    return violations
 
 
-def _pair_violations(theme, foreground_name, background_name, valid_hex):
+def _pair_violations(theme, foreground_name, background_name, valid_hex, floor=TEXT_CONTRAST_FLOOR):
    has_both = foreground_name in valid_hex and background_name in valid_hex
 
    if not has_both:
       return []
 
    ratio = contrast_ratio(valid_hex[foreground_name], valid_hex[background_name])
-   is_below_floor = ratio < TEXT_CONTRAST_FLOOR
+   is_below_floor = ratio < floor
 
    if not is_below_floor:
       return []
 
    message = "{0}: {1} on {2} is {3:.2f}:1, below the {4}:1 floor".format(
-      theme, foreground_name, background_name, ratio, TEXT_CONTRAST_FLOOR
+      theme, foreground_name, background_name, ratio, floor
    )
 
    return [message]

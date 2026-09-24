@@ -1446,6 +1446,41 @@ types). Suite at close: pytest 968 passed, 0 failed (exit 0); vitest 323 passed 
   complete, tied to operator items, and its published rate equal to the verdicts' (red on a wrong
   published rate, a missing verdict, and an unsigned sampled item).
 
+Stage 3 (screens), 2026-09-24: the review screen and the mastery map, the two 08 screens no earlier
+slice built. Server: `GET /progress/mastery` (`app/progress/mastery.py`) returns one node per
+active BC-SKL, grouped by unit in unit order and, inside a unit, ordered by the longest chain of
+hard prerequisite edges above it, each node in one of 08's five states read off `skills_state`
+and today's FSRS retrievability (gap: the latest observation that assessed it said
+prerequisite_gap and it is not mastered; fading: mastered and `is_due`, the test the due queue
+uses; mastered, with `assumed` true for a row seeded mastered and never observed; in_progress;
+not_attempted), plus the last unaided success day and the days since it, and no count or
+percentage. `GET /review` (`app/api/routes/review_screen.py`, `app/review/screen.py`, separate
+from the operator's `/review-queue`) returns `coming_back`, every open R5 correction whose window
+has not closed in the order block 1 serves it, each in the `hypercorrection` lane when the student
+had rated it confident; `error_notes`, newest first, with the session id the existing
+`POST /sessions/{sid}/attempts/{aid}/error-note` needs to replace one; and `provisional_points`,
+empty with `grading_available` false until P3. `app/session/build.py` gained `open_corrections`
+and `requeue_pending`, and `requeue_ready` now serves a confident correction ahead of the rest;
+`load_attempts_history` carries each attempt's id and confidence. Client:
+`progress/MasteryMap.tsx` above the existing curve on `ProgressRoute`, `review/ReviewRoute.tsx`,
+`ReviewScreen.tsx` and `ProvisionalPoints.tsx`, a Review text button on home after Progress, and
+`readMasteryMap` and `readReview` pinned to their server shapes in `api/client.test.ts`.
+Accessibility, each checked by a test: WCAG 2.2 SC 1.4.11 fetched from w3.org (3:1 against
+adjacent colours) and held by the token gate over the map's and the curve's mark colours
+(`app/design/tokens.py` `GRAPHIC_TOKENS`, `NON_TEXT_CONTRAST_FLOOR` in `contrast.py`) and by
+`progress/nonTextContrast.test.ts`, which reads the mark colours out of both components; a list by
+unit as the map's text alternative, plus a legend; five mark shapes that stay distinct with colour
+removed; one tab stop with arrow-key movement; token colours only; nothing animated, so reduced
+motion has nothing to replace. Tests added, each watched red against a broken implementation and
+green after restore: `tests/progress/test_mastery.py` (4), `tests/api/test_mastery_route.py` (3),
+`tests/api/test_review_screen_route.py` (6), `tests/session/test_requeue_lane.py` (2),
+`tests/design/test_non_text_contrast.py` (2), `progress/MasteryMap.test.tsx` (8),
+`progress/nonTextContrast.test.ts` (4), `review/ReviewScreen.test.tsx` (9), 14 new rows in
+`api/client.test.ts` and 3 new cases in `App.test.tsx`. In the running app (worktree build, test
+passkey verifier, one account seeded through the routes plus 20 Unit 1 and 2 `skills_state` rows
+written mastered, because mastery needs three days of unaided successes a one-day seed cannot
+reach): home showed Progress and Review as text buttons with the bar still Home and Settings; review listed the confident correction first in the hypercorrection lane, then the unsure one, and both error notes; editing a note by keyboard and Enter replaced it on the server (GET /review returned the new text); progress drew 541 marks (20 mastered, 6 fading, 7 in progress, 508 not attempted) above the calibration curve's not-yet state, with one tab stop, arrow keys moving focus and the caption, and at 375 px wide no horizontal scroll (scrollWidth 375); after a reload no console error was logged and GET /progress/mastery, /progress/calibration and /review answered 200. An earlier seed also showed block 1 serving yesterday's confident correction before the unsure one. Suite at close: pytest 999 passed, vitest 362 passed in 28 files, tsc exit 0, qa/12_report.py exit 0.
+
 ## In progress [inferred]
 
 Nothing. The fourteenth session closed with the suite green and every module of its plan either
@@ -2245,6 +2280,17 @@ From the eleventh session, 2026-09-21, found and not fixed.
   report above came from a seeded state that was not kept, so the cause is unknown; the probe
   stayed in the session scratchpad and nothing was changed.
 
+- 2026-09-24, stage 3: the likely cause of the 45 s `GET /progress` report above. On a fresh
+  database the first call that asks the bank for a published item (`app/runtime/bank.py`
+  `has_published_item`, reached from `assemble_session` under both `GET /progress` and
+  `POST /sessions`) ingests every pending source item and runs its SymPy distractor checks in
+  forkserver children. A faulthandler dump of stage 3's seed run showed the first
+  `POST /sessions` still inside `ingest_new_records` after 45 s, 84 child runs in. The earlier
+  probe measured later calls, after ingestion. Not changed here.
+- 2026-09-24, stage 3: the gap state of the mastery map cannot appear in P1. It needs an
+  observation whose mastery_state is prerequisite_gap, and `rule_based_mastery_states` never emits
+  one; the diagnostician (P3) does. The state is tested with a stored attempt, not seen in the app.
+
 ## Plan corrections applied [verified]
 
 Session 2026-09-23 (fourteenth). No plan file was edited. Readings applied in code:
@@ -2623,6 +2669,55 @@ Session 2026-09-20 (seventh).
   labelled that way. Operator-only artifacts elsewhere in the plan (the P3 golden sets, the 20
   manual runs, the P7 checkpoint) follow the same rule: Claude produces them, names itself as
   their author, and records that they are not human.
+
+- 2026-09-24, stage 3 ruling on the operator's delegated authority: the review screen and the
+  mastery map are built now. 11 puts the review screen in P3 (scope item 8) and names the mastery
+  map in no phase, while P8's entry criterion needs every 08 screen to exist; both are built in
+  this stage so the operator has them while studying. The shell gate in `app/web/src/App.test.tsx`
+  keeps the bar exactly Home and Settings; its list of names `App.tsx` may not contain drops
+  `review` and `mastery` and keeps `onboarding` (until its stage ships it), `mock`, `matrix` and
+  `checkpoint`; a new test asserts review is reached only from home's button, is not on the bar
+  and is not the landing screen, and another that the map sits above the curve.
+- 2026-09-24, stage 3: 08 and 11 record the WCAG 1.4.11 non-text ratio as unknown. It is 3:1
+  against adjacent colours, read off https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html
+  on 2026-09-24, now `NON_TEXT_CONTRAST_FLOOR` in `app/design/contrast.py` and applied to every
+  mark colour of the mastery map and the calibration curve on every surface in both themes. The
+  lowest measured pair is dark `accent-base` on `surface-raised` at 3.08:1. The strengthened token
+  gate made `_complete_tokens` in `tests/design/test_tokens.py`, which painted `accent-base` white
+  on white surfaces, an invalid file; its `accent-base` is now the helper's own default grey
+  `#888888` (5.92:1 under black text-on-accent, 3.54:1 on white). No assertion changed; the
+  operator may reverse this fixture edit.
+- 2026-09-24, stage 3: 08 says the hypercorrection lane is "served first", but block 1 served
+  corrected items by correction date only. `requeue_ready` now puts a correction the student had
+  rated confident ahead of the rest, so the review screen's order is the order block 1 serves.
+- 2026-09-24, stage 3: 06's API surface lists the mastery map under `GET /progress`. It is served
+  at `GET /progress/mastery` instead, beside `GET /progress/calibration`, so home's read of the due
+  counts does not build 541 nodes.
+
+## Decisions taken on the operator's instruction, 2026-09-24 [inferred]
+
+Stage 3, the review screen and the mastery map:
+
+- The map is a row of marks per unit, ordered along the prerequisite graph, drawn as HTML buttons
+  holding a 16 px SVG mark with 8 px gaps. Buttons give focus and a name to each skill for free;
+  the 8 px gap keeps mark centres 24 px apart, the spacing WCAG 2.2 SC 2.5.8 accepts for targets
+  under 24 px. Edges are not drawn: with up to 74 skills a unit, drawn edges would be unreadable.
+- The map is one tab stop. Arrow keys move along a unit and between units, Home and End to the ends
+  of a unit, and the focused mark's 08-style sentence is printed under the map.
+- A skill seeded mastered at registration (R15) and never observed shows as mastered and its
+  sentence says it is assumed, not shown.
+- The hypercorrection lane is the open corrections the student rated confident. The engine's
+  `hypercorrection_due` is per skill; the screen lists items, as 08's wireframe does.
+- An edited error note goes through the existing error-note route, which already replaces a note
+  (the 2026-09-20 ruling), so no new write route was added.
+- The P3 seam for stage 4: `GET /review` already carries `grading_available` and
+  `provisional_points`; P3 fills the list from gradings with `provisional` 1, one entry per point
+  with the keys `app/review/screen.py` `PROVISIONAL_POINT_KEYS` names (grading_id, attempt_id,
+  label, point_label, reason, disputed), and sets `grading_available` true. On the client,
+  `ReviewRoute` passes an `onAskForReread(gradingId)` handler to `ProvisionalPoints`, which then
+  shows "Ask for a re-read" on each undisputed point; the handler POSTs to
+  `/gradings/{gid}/dispute` (06). `ProvisionalPoint` in `api/types.ts` is pinned to
+  `PROVISIONAL_POINT_KEYS` by `api/client.test.ts`, so the two cannot drift.
 
 ## Decisions taken on the operator's instruction, 2026-09-23 [inferred]
 

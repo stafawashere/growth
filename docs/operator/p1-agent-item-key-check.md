@@ -1,7 +1,7 @@
 ---
 title: Mechanical key check of the 130 agent-drafted P1 items
 research_date: 2026-09-23
-status: pending_operator_review
+status: complete
 purpose: Lists, per agent-drafted item, the answer SymPy computes from the stem alone beside the stored key, so the operator's sign-off and key audit start from a checked list.
 ---
 

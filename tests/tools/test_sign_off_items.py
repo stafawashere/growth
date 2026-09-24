@@ -5,9 +5,9 @@ record must count on disk and in a database that ingested it before the sign-off
 the operator did not name may change.
 """
 import json
-import shutil
 from pathlib import Path
 
+import pytest
 from sqlalchemy.orm import Session as OrmSession
 
 from app.content.loader import load_snapshot
@@ -22,6 +22,8 @@ DATA_DIR = REPOSITORY_ROOT / "data"
 SIGNED_ITEM = "ITM-AGT-01004-00"
 UNSIGNED_ITEM = "ITM-AGT-01004-01"
 INGESTED_AT = "2026-09-23T09:00:00+00:00"
+SIGNER = "the operator"
+DRAFT_AUTHOR = "claude-opus-5-5 agent draft, pending operator review"
 
 
 def copied_items(tmp_path):
@@ -29,7 +31,11 @@ def copied_items(tmp_path):
    directory.mkdir()
 
    for item_id in (SIGNED_ITEM, UNSIGNED_ITEM):
-      shutil.copy(AGENT_DIR / f"{item_id}.json", directory / f"{item_id}.json")
+      record = json.loads((AGENT_DIR / f"{item_id}.json").read_text())
+      record.pop("drafted_by", None)
+      record.pop("signed_off_by", None)
+      record["authored_by"] = DRAFT_AUTHOR
+      (directory / f"{item_id}.json").write_text(json.dumps(record, indent=3))
 
    return directory
 
@@ -55,7 +61,7 @@ def test_signing_off_one_item_counts_it_on_disk_and_in_the_database(tmp_path):
    assert published_candidates(engine, snapshot) == []
 
    exit_code = sign_off_items.main(
-      ["sign_off", SIGNED_ITEM, "--items-dir", str(directory), "--db", str(tmp_path / "growth.db")]
+      ["sign_off", SIGNED_ITEM, "--items-dir", str(directory), "--db", str(tmp_path / "growth.db"), "--by", SIGNER]
    )
    signed = json.loads((directory / f"{SIGNED_ITEM}.json").read_text())
    unsigned = json.loads((directory / f"{UNSIGNED_ITEM}.json").read_text())
@@ -63,6 +69,7 @@ def test_signing_off_one_item_counts_it_on_disk_and_in_the_database(tmp_path):
    assert exit_code == 0
    assert ingest.is_operator_authored(signed)
    assert signed["drafted_by"] == drafted_by
+   assert signed["signed_off_by"] == SIGNER
    assert not ingest.is_operator_authored(unsigned)
    assert [row["item_id"] for row in published_candidates(engine, snapshot)] == [SIGNED_ITEM]
 
@@ -71,8 +78,18 @@ def test_an_unknown_id_changes_nothing(tmp_path):
    directory = copied_items(tmp_path)
    before = {path.name: path.read_text() for path in directory.glob("*.json")}
 
-   exit_code = sign_off_items.main(["sign_off", SIGNED_ITEM, "ITM-AGT-99999-00", "--items-dir", str(directory)])
+   exit_code = sign_off_items.main(["sign_off", SIGNED_ITEM, "ITM-AGT-99999-00", "--items-dir", str(directory), "--by", SIGNER])
    after = {path.name: path.read_text() for path in directory.glob("*.json")}
 
    assert exit_code == 1
    assert after == before
+
+
+def test_a_sign_off_must_name_who_signed(tmp_path):
+   directory = copied_items(tmp_path)
+   before = (directory / f"{SIGNED_ITEM}.json").read_text()
+
+   with pytest.raises(SystemExit):
+      sign_off_items.main(["sign_off", SIGNED_ITEM, "--items-dir", str(directory)])
+
+   assert (directory / f"{SIGNED_ITEM}.json").read_text() == before

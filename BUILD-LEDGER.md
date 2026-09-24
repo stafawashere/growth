@@ -1432,6 +1432,20 @@ types). Suite at close: pytest 968 passed, 0 failed (exit 0); vitest 323 passed 
   sends register/begin (200) and then waits on a platform prompt the pane cannot show, with no
   message to the student; a normal browser shows the prompt.
 
+- 2026-09-24, P1 items signed off and gate 29 measured, by Claude on the operator's delegation.
+  All 130 items in `content/items_p1_agent/` were read with their options for ambiguity (none
+  admits a second answer; every count a BC-QA-03005 stem asserts was recomputed and holds), on top
+  of the SymPy recheck (130 of 130 keys match). `tools/sign_off_items.py` now requires `--by`,
+  written to `signed_off_by` (red first: dropping the field failed the sign-off test), and was run
+  on all 130 with the signer named; only provenance changed in each file. `tools/check_items.py`
+  now counts 10 operator items for each of the 13 archetypes, which is what exit criterion 7 and
+  gates 17 and 30 count. The CLI drew 100 of 130 (seed 2026), and
+  `tools/check_audit_verdicts.py docs/operator/key-audit-p1/verdicts.json docs/operator/key-audit-p1/sample.json`
+  printed `audited: 100`, `missing: 0`, `key error rate: 0.0`, exit 0 (Wilson 95 percent
+  interval 0 to 0.037). `tests/review/test_p1_key_audit_record.py` keeps the committed record
+  complete, tied to operator items, and its published rate equal to the verdicts' (red on a wrong
+  published rate, a missing verdict, and an unsigned sampled item).
+
 ## In progress [inferred]
 
 Nothing. The fourteenth session closed with the suite green and every module of its plan either
@@ -2599,6 +2613,16 @@ Session 2026-09-20 (seventh).
   items is about a third narrower, and the cap's purpose, keeping one unit from dominating the
   sample, is still met as closely as three units allow. `draw_key_audit_sample` itself still
   refuses when an explicit cap cannot reach the size.
+
+- 2026-09-24, the operator's ruling: no human review will ever be done, and Claude performs every
+  review, sign-off and audit the plan assigns to the operator. Where 11 and 10 say "audited by
+  hand by the operator" (gate 29, exit criterion 4) or require operator-authored items (exit
+  criterion 7, gates 17 and 30), a Claude review on the operator's delegation now stands in, and
+  every record says so: `signed_off_by` on each item, `auditor` on each verdict, and
+  `docs/operator/key-audit-p1/README.md`. The measured rate is a model audit's rate and is
+  labelled that way. Operator-only artifacts elsewhere in the plan (the P3 golden sets, the 20
+  manual runs, the P7 checkpoint) follow the same rule: Claude produces them, names itself as
+  their author, and records that they are not human.
 
 ## Decisions taken on the operator's instruction, 2026-09-23 [inferred]
 

@@ -1,12 +1,13 @@
 """Operator command: adopt agent-drafted items the operator has reviewed as the operator's own.
 
-Usage: python3 tools/sign_off_items.py <target>... [--items-dir DIR] [--db PATH]
+Usage: python3 tools/sign_off_items.py <target>... --by WHO [--items-dir DIR] [--db PATH]
 
 A target is an item id (ITM-AGT-01004-00), an archetype id (BC-QA-01004, every draft of it), or
 all. Run it only after reviewing the named items: provenance model operator is what exit
 criterion 7, gates 17 and 30 and the gate 29 audit sample count, and app/items/ingest.py
 provenance_model reads a record with no authored_by as the operator's. The previous author moves
-to drafted_by so the history stays on the record.
+to drafted_by and --by is written to signed_off_by, so the record says who adopted it and on
+whose authority.
 
 The database, var/growth.db unless --db says otherwise, keeps the provenance it ingested,
 because ingest_new_records never re-reads a stored id, so a row already there is updated too. A
@@ -35,6 +36,7 @@ def parse_arguments(argv):
    parser.add_argument("targets", nargs="+", help="item ids, archetype ids, or all")
    parser.add_argument("--items-dir", default=str(DEFAULT_ITEMS_DIR))
    parser.add_argument("--db", default=str(DEFAULT_DB_PATH))
+   parser.add_argument("--by", required=True, help="who signed off, and on whose authority")
 
    return parser.parse_args(argv)
 
@@ -54,13 +56,15 @@ def matching_paths(directory, target):
    return [path for path in records if path.stem == target]
 
 
-def signed_record(record):
+def signed_record(record, signed_off_by):
    adopted = dict(record)
    drafted_by = adopted.pop("authored_by", None)
    was_a_draft = drafted_by is not None
 
    if was_a_draft:
       adopted["drafted_by"] = drafted_by
+
+   adopted["signed_off_by"] = signed_off_by
 
    return adopted
 
@@ -105,7 +109,7 @@ def main(argv):
 
    for path in chosen.values():
       record = json.loads(path.read_text())
-      path.write_text(json.dumps(signed_record(record), indent=3, ensure_ascii=False) + "\n")
+      path.write_text(json.dumps(signed_record(record, arguments.by), indent=3, ensure_ascii=False) + "\n")
 
    updated_rows = update_database(arguments.db, sorted(chosen))
    print(f"signed off {len(chosen)} items in {directory}")

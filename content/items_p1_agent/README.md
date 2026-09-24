@@ -1,7 +1,7 @@
 ---
 title: Agent-drafted P1 items
 research_date: 2026-09-23
-status: pending_operator_review
+status: signed_off
 purpose: Says what the 130 item records in this directory are, how they were audited, and why they never count as the operator's hand-authored items.
 ---
 
@@ -32,3 +32,5 @@ Operator sign-off is still pending for all 130, including the reviewed and re-ch
 A fourth check on 2026-09-23 re-solved every stem in SymPy from the stem text alone and compared the result with the stored key and every option: 130 of 130 keys match and no distractor equals its key (`docs/operator/p1-agent-item-key-check.md`). The same pass reworded 27 stems from "Which of the following is ..." to "Find ...", because R29 serves most attempts as short answers with no options shown. No key changed.
 
 `key_formulations.py` in this directory writes each stem as the SymPy computation of its answer, from the stem text alone. `tools/key_recheck.py` compares those answers with every key and option, and `tests/items/test_key_recheck.py` runs it on every test run, so an edited stem needs its formulation rewritten from the new stem before the suite passes again.
+
+Signed off on 2026-09-24 by Claude on the operator's delegation (BUILD-LEDGER.md, "Plan corrections applied"): each record now carries `drafted_by` and `signed_off_by` instead of `authored_by`, so its provenance model is operator and it counts toward exit criterion 7 and gates 17, 29 and 30. The gate 29 audit of 100 of them is in `docs/operator/key-audit-p1/`.

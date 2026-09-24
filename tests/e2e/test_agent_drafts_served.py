@@ -65,6 +65,12 @@ def primary_unit(world, item):
    return world.settings.session_context.archetypes[item["archetype_id"]]["primary_unit"]
 
 
+def on_disk_record(item_id):
+   """The drafts were signed off on the operator's delegation of 2026-09-24, so each record now
+   names its drafter in drafted_by and is served with provenance model operator."""
+   return json.loads((DEFAULT_ITEMS_DIR / f"{item_id}.json").read_text())
+
+
 def stored_provenance(world, item_id):
    with OrmSession(world.engine) as db:
       return json.loads(db.get(models.Item, item_id).provenance)
@@ -149,4 +155,5 @@ def test_a_session_serves_an_agent_drafted_unit_2_item_end_to_end(agent_world):
    assert not_an_agent_draft == []
    assert unit_2_item["id"].startswith("ITM-AGT-02")
    assert feedback["stage"] == unit_2_item["stage"]
-   assert stored_provenance(agent_world, unit_2_item["id"])["model"] == AGENT_AUTHOR
+   assert stored_provenance(agent_world, unit_2_item["id"])["model"] == "operator"
+   assert on_disk_record(unit_2_item["id"])["drafted_by"] == AGENT_AUTHOR

@@ -1585,6 +1585,17 @@ items) and items 3 and 6 (Slices 3 and 4). Every gate 11 names for P2 now exists
   - Pending on use: a calibration curve rendered from 30 real rated attempts. Only the operator
     can supply those; the render path is covered by tests (Decisions, 2026-09-24).
 
+- 2026-09-24, bounded SymPy children are kept between calls. `run_bounded` off the main thread,
+  which is where a sync route runs, used to start a forkserver child per comparison, and each one
+  refilled SymPy's caches. Ingesting the 130 P1 agent drafts from a thread other than the main
+  one took 247.3 s; with the kept child it took 15.5 s (same machine, other sessions running).
+  `app/items/verify.py` keeps up to four children that answered in time and kills any that timed
+  out, died or were interrupted, so a late answer never reaches a later caller. New
+  `tests/items/test_bound_worker_reuse.py` covers both; each test went red when its half was
+  broken (never keeping a child; keeping one after a timeout, which returned "late" for the next
+  call) and green on restore. This is the likely cause of the slow first bank query noted earlier
+  but not reproduced, which was not re-measured through the route.
+
 ## In progress [inferred]
 
 Nothing. The fourteenth session closed with the suite green and every module of its plan either

@@ -4,6 +4,7 @@ the option set" and "Independent key verification"; docs/plan/11 R26, R30).
 """
 import math
 import multiprocessing
+import os
 import random
 import signal
 import threading
@@ -48,8 +49,9 @@ def equivalence(left, right, timeout_s=COMPARISON_TIMEOUT_S):
 def run_bounded(function, arguments, timeout_s, unsettled):
    """function(*arguments), or unsettled once it outlives timeout_s. On the main thread SIGALRM
    interrupts it in process. Anywhere else, which is where a sync FastAPI route runs, it runs in a
-   forkserver child that is killed at the deadline, so function must be importable by name. An
-   exception it raises reaches the caller either way, and a child that exits before the deadline
+   forkserver child that is killed at the deadline, so function must be importable by name. A child
+   that answers in time is kept for the next call, see _BoundedWorker. An exception it raises
+   reaches the caller either way, and a child that exits before the deadline
    without sending anything back, whether it crashed at startup or died some other way, reaches
    the caller as ChildDiedError rather than as unsettled, because it never ran long enough to say
    the comparison did not settle.
@@ -94,45 +96,107 @@ def _child_context():
    return context
 
 
+# A child that answered in time goes back here for the next bounded call from any thread. Four
+# covers the route threads that grade or ingest at once for the single user this app serves; a
+# fifth concurrent caller still gets a child, which is stopped instead of kept.
+_MAX_IDLE_WORKERS = 4
+
+_idle_workers = []
+_idle_workers_lock = threading.Lock()
+_idle_workers_pid = None
+
+
+class _BoundedWorker:
+   """One forkserver child that runs bounded calls one after another. A fresh child per call spent
+   most of its life refilling SymPy's caches, which cost about 0.2 to 0.45 s against well under a
+   millisecond for the same comparison in a warm process, and 130 items of about eight
+   comparisons each paid that on a bank's first query. A child is only ever reused after it
+   answered in time; one that timed out, died or was interrupted is killed, so no late answer can
+   reach a later caller.
+   """
+
+   def __init__(self, context):
+      self.connection, child_end = context.Pipe()
+      self.process = context.Process(target=_serve_parent, args=(child_end,), daemon=True)
+      self.process.start()
+      child_end.close()
+
+   def is_alive(self):
+      return self.process.is_alive()
+
+   def stop(self):
+      self.connection.close()
+
+      if self.process.is_alive():
+         self.process.kill()
+
+      self.process.join()
+
+
+def _take_worker():
+   global _idle_workers_pid
+
+   with _idle_workers_lock:
+      forked_since_the_pool_filled = _idle_workers_pid != os.getpid()
+
+      if forked_since_the_pool_filled:
+         _idle_workers.clear()
+         _idle_workers_pid = os.getpid()
+
+      while _idle_workers:
+         worker = _idle_workers.pop()
+
+         if worker.is_alive():
+            return worker
+
+         worker.stop()
+
+   return _BoundedWorker(_child_context())
+
+
+def _keep_worker(worker):
+   with _idle_workers_lock:
+      owned_by_this_process = _idle_workers_pid == os.getpid()
+      has_room = len(_idle_workers) < _MAX_IDLE_WORKERS
+      is_kept = owned_by_this_process and has_room
+
+      if is_kept:
+         _idle_workers.append(worker)
+
+   if not is_kept:
+      worker.stop()
+
+
 def _run_in_child(function, arguments, timeout_s, unsettled):
-   context = _child_context()
-   receiver, sender = context.Pipe(duplex=False)
-   child = context.Process(
-      target=_run_for_parent,
-      args=(function, arguments, sender),
-      daemon=True,
-   )
+   worker = _take_worker()
+   answered_in_time = False
    died_without_a_result = False
    kind, payload = None, None
 
    try:
-      child.start()
-      sender.close()
-      answered_in_time = receiver.poll(timeout_s)
-
-      if not answered_in_time:
-         return unsettled
-
       try:
-         kind, payload = receiver.recv()
-      except EOFError:
+         worker.connection.send((function, arguments))
+         answered_in_time = worker.connection.poll(timeout_s)
+
+         if answered_in_time:
+            kind, payload = worker.connection.recv()
+      except (EOFError, BrokenPipeError, ConnectionResetError):
          died_without_a_result = True
    finally:
-      receiver.close()
-      sender.close()
-      child_was_started = child.pid is not None
-      child_still_running = child_was_started and child.is_alive()
+      completed = answered_in_time and not died_without_a_result
 
-      if child_still_running:
-         child.kill()
-
-      if child_was_started:
-         child.join()
+      if completed:
+         _keep_worker(worker)
+      else:
+         worker.stop()
 
    if died_without_a_result:
       raise ChildDiedError(
-         f"the bounded child exited with code {child.exitcode} before sending a result"
+         f"the bounded child exited with code {worker.process.exitcode} before sending a result"
       )
+
+   if not answered_in_time:
+      return unsettled
 
    is_error = kind == _CHILD_ERROR
 
@@ -142,18 +206,29 @@ def _run_in_child(function, arguments, timeout_s, unsettled):
    return payload
 
 
-def _run_for_parent(function, arguments, sender):
+def _serve_parent(connection):
+   """The child's loop. A request that cannot be unpickled here, because its function's module
+   fails to import, ends the child, which the parent reads as ChildDiedError, the same as a child
+   that crashed at startup."""
+   while True:
+      try:
+         function, arguments = connection.recv()
+      except EOFError:
+         return
+
+      _answer_parent(function, arguments, connection)
+
+
+def _answer_parent(function, arguments, connection):
    try:
       message = (_CHILD_RESULT, function(*arguments))
    except Exception as failure:
       message = (_CHILD_ERROR, failure)
 
    try:
-      sender.send(message)
+      connection.send(message)
    except Exception as unpicklable:
-      sender.send((_CHILD_ERROR, RuntimeError(repr(unpicklable))))
-   finally:
-      sender.close()
+      connection.send((_CHILD_ERROR, RuntimeError(repr(unpicklable))))
 
 
 def _equivalence_impl(left, right):

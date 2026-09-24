@@ -6,7 +6,10 @@
    "stem": {
       "text": "Let \\( f(x) = \\sqrt{x} + \\dfrac{8}{x} \\) for \\( x > 0 \\)."
    },
-   "skills": ["BC-SKL-02012", "BC-SKL-02013"],
+   "skills": [
+      "BC-SKL-02012",
+      "BC-SKL-02013"
+   ],
    "parts": [
       {
          "id": "a",
@@ -14,17 +17,31 @@
          "setup_required": false,
          "answer_latex": "f'(4) = -\\frac{1}{4}",
          "worked_solution": [
-            {"text": "Differentiate.", "latex": "f'(x) = \\frac{1}{2\\sqrt{x}} - \\frac{8}{x^{2}}"},
-            {"text": "Substitute x = 4.", "latex": "f'(4) = \\frac{1}{4} - \\frac{1}{2} = -\\frac{1}{4}"}
+            {
+               "text": "Differentiate.",
+               "latex": "f'(x) = \\frac{1}{2\\sqrt{x}} - \\frac{8}{x^{2}}"
+            },
+            {
+               "text": "Substitute x = 4.",
+               "latex": "f'(4) = \\frac{1}{4} - \\frac{1}{2} = -\\frac{1}{4}"
+            }
          ],
          "points": [
             {
                "point_id": "a1",
                "point_type_id": "BC-PT-99004",
-               "skills": ["BC-SKL-02012"],
+               "skills": [
+                  "BC-SKL-02012"
+               ],
                "criterion": "Gives f'(4) = -1/4.",
                "eligible_only_if": [],
-               "check": {"kind": "sympy_equivalence", "target": "answer", "expected": "-1/4", "up_to_constant": false, "variable": "x"}
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "-1/4",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
             }
          ]
       },
@@ -34,14 +51,23 @@
          "setup_required": false,
          "answer_latex": "y = 4 - \\frac{1}{4}(x - 4)",
          "worked_solution": [
-            {"text": "The point on the curve.", "latex": "f(4) = 2 + 2 = 4"},
-            {"text": "Point-slope form with the slope from part (a).", "latex": "y = 4 - \\frac{1}{4}(x - 4)"}
+            {
+               "text": "The point on the curve.",
+               "latex": "f(4) = 2 + 2 = 4"
+            },
+            {
+               "text": "Point-slope form with the slope from part (a).",
+               "latex": "y = 4 - \\frac{1}{4}(x - 4)"
+            }
          ],
          "points": [
             {
                "point_id": "b1",
                "point_type_id": "BC-PT-99082",
-               "skills": ["BC-SKL-02012", "BC-SKL-02013"],
+               "skills": [
+                  "BC-SKL-02012",
+                  "BC-SKL-02013"
+               ],
                "criterion": "Writes a line through (4, 4) with slope -1/4, for example y = 4 - (1/4)(x - 4).",
                "eligible_only_if": [],
                "check": null
@@ -54,16 +80,28 @@
          "setup_required": false,
          "answer_latex": "f(4.2) \\approx 3.95",
          "worked_solution": [
-            {"text": "Substitute x = 4.2 into the tangent line.", "latex": "f(4.2) \\approx 4 - \\frac{1}{4}(0.2) = 3.95"}
+            {
+               "text": "Substitute x = 4.2 into the tangent line.",
+               "latex": "f(4.2) \\approx 4 - \\frac{1}{4}(0.2) = 3.95"
+            }
          ],
          "points": [
             {
                "point_id": "c1",
                "point_type_id": "BC-PT-99005",
-               "skills": ["BC-SKL-02013"],
+               "skills": [
+                  "BC-SKL-02013"
+               ],
                "criterion": "Evaluates the tangent line at x = 4.2 and gives 3.95.",
                "eligible_only_if": [],
-               "check": {"kind": "numeric_three_decimals", "expected": "79/20"}
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "79/20"
+               },
+               "follows_from": [
+                  "a1",
+                  "b1"
+               ]
             }
          ]
       }

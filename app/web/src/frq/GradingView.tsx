@@ -1,5 +1,6 @@
 import type { GradedPoint, GradingsPayload } from "../api/types";
 import { MathText } from "../math/MathText";
+import { mixedText } from "./ReadBack";
 
 /* 03 "What the student sees for a provisional grade" and 08's provisional-grade copy: a provisional
    point shows its rule, the evidence from the student's own work and a plain statement that the
@@ -46,7 +47,7 @@ function PointEntry(props: { point: GradedPoint; onAskForReread: (gradingId: str
 
          {hasQuote ? (
             <p className="muted">
-               From your work: <MathText text={point.evidence_quote ?? ""} />
+               From your work: <MathText text={mixedText(point.evidence_quote ?? "")} />
             </p>
          ) : null}
 

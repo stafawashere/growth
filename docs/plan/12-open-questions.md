@@ -41,10 +41,10 @@ These are the parameters the ledgers could not source. All are [inferred] and li
 
 ## Grading, generation and verification questions
 
-- At what per-point agreement the app should stop showing scores at all. The ledger ceiling is kappa 0.56 and exact agreement at most 0.22 on N = 28 (https://arxiv.org/pdf/2603.00451 and https://arxiv.org/html/2607.01247 [single-source]); no published figure exists for agreement with AP Readers on the nine-point scale. Every point stays provisional; the threshold is unset. Settled by: the operator golden set in 10 (exact match and kappa per point type).
+- At what per-point agreement the app should stop showing scores at all. The ledger ceiling is kappa 0.56 and exact agreement at most 0.22 on N = 28 (https://arxiv.org/pdf/2603.00451 and https://arxiv.org/html/2607.01247 [single-source]); no published figure exists for agreement with AP Readers on the nine-point scale. Every point stays provisional; the threshold is unset. Settled by: the operator golden set in 10 (exact match and kappa per point type). P3 measured the grader against its model-authored golden set on 2026-09-24 (`docs/operator/p3-grader-eval.md`); the threshold stays unset, as 11 requires, and that number is a model-against-model figure until real Reader-graded work exists.
 - The acceptable key error rate for items. No source gives one. Gate: measured on a 100-item audited sample in P1, then P4 may not regress against it ([11-phased-delivery.md](11-phased-delivery.md)).
 - The fraction of BC-relevant expressions SymPy can settle. Unknown until measured; P1 measures it on the 40-pair equivalence fixture, and unanimity as the P4 publication rule is conditional on it ([04-item-generation.md](04-item-generation.md)).
-- How LLM graders handle eligibility-after-error rules, which no cited study covers. Settled by: golden responses in 10 written specifically with earlier-step errors.
+- How LLM graders handle eligibility-after-error rules, which no cited study covers. Settled by: golden responses in 10 written specifically with earlier-step errors. Instrumented in P3 (2026-09-24): golden set 2 carries an eligible_after_error response for each of its 30 point types, and the grader's agreement on that category is published separately in `docs/operator/p3-grader-eval.md`; the eligibility pass itself runs in the backend over the point vector (`app/grading/point.py`), never inside a model call. The set is model-authored, so this is one model's reading against another's, not a Reader's.
 - Whether transcription and rubric evaluation should be one call or two. The literature has both designs and does not settle it (track 3 [single-source]). The plan separates them so the read-back can be confirmed.
 - Duplicate-detection thresholds (MinHash 5-gram Jaccard 0.8, embedding cosine 0.85) are practitioner rules of thumb, not validated on mathematics item text (track 3 [single-source]). Settled by: a labelled sample of near-duplicates against the official corpus.
 - Whether College Board treats a structural description of a question type, as opposed to its text, as protected. No cited page answers it. The plan serves no official text and logs provenance per item. Settled by: counsel, not research.
@@ -115,7 +115,12 @@ Every parameter below is [inferred] unless noted. The authoritative per-engine l
 | Session blocks and forecast | 5 review, 25 minute learning, 10 to 15 mixed, 3 minutes per unknown archetype | 02 | accuracy by minute; queue completion |
 | Probe queue | 3 entries, 7-day expiry | 02, 03 | probe resolution rate |
 | Diagnostician priors and multipliers | 0.5 / 0.25 / 0.1; 2.0 and 0.5 signal match; 1.5 confidence; 0.3 to 0.5 non-conceptual mass | 03 | error-type recurrence after diagnosis |
-| Grader sampling | 2 at temperature 0 plus 1 strictness-varied | 03 | agreement on the golden set |
+| Grader sampling | 2 standard (liberal) samples plus 1 strict; the two cannot be at temperature 0 on Sonnet 5 (a 400 on the API, no option on the CLI), so they run at the model's own setting | 03 | agreement and escalation rate on golden set 2 |
+| Image quality gate | Laplacian variance 60 at a 1000 px long edge; ink-to-paper luminance spread 90; mean luminance 70 to 250; four corner markers spanning 55 percent of the frame; short edge 700 px | 05, 11 | the first photographs of real handwriting, which none of the rendered fixtures are |
+| Rounding-only band | a decimal that misses three places by no more than one unit of its last written place, or 0.005, counts as a rounding loss for the per-question cap | 03, 05 | Reader practice on premature rounding |
+| Follow-through | a failed fixed-key check on a point whose follows_from names a lost point is judged again by the model on the student's own earlier result | 03 | golden set 2's eligible_after_error category |
+| Guess rating in diagnosis | conceptual candidates times 0.5 and non-conceptual mass times 1.5, the reverse of a confident error | 03 | error-type recurrence after diagnosis |
+| Subscription pacing for P3 roles | grader 120 a day and 12 a minute, transcriber and diagnostician 30 a day | 14 | the operator's usage windows |
 | Monte Carlo family gate | 0 failures on 300 draws (P1), threshold unset for P4 | 04 | measured family failure rate |
 | Duplicate thresholds | Jaccard 0.8 on 5-grams; cosine 0.85 | 04 | labelled near-duplicate sample |
 | Difficulty dial cost | 0.35 logits per step | 04 | same regression as beta |
@@ -123,7 +128,7 @@ Every parameter below is [inferred] unless noted. The authoritative per-engine l
 | Score band | at least one point either side, no centre shown | 05 | nothing public; policy |
 | Rapid-guessing threshold | per-archetype latency distribution, factor-count fallback | 05 | latency data |
 | Job retry ladder and cooldown | 1, 5, 25 minutes, 4 attempts; 2 fails, 60 s | 06, 07 | provider error logs |
-| Role temperatures | tutor 0.3, generator 0.7, diagnostician 0.2, grader and verifier and transcriber 0.0 | 07 | golden tests |
+| Role temperatures | tutor 0.3, generator 0.7, diagnostician 0.2, grader and verifier and transcriber 0.0; on the routed Sonnet 5 and Opus 5 no temperature is sent at all (a non-default value is a 400, `app/providers/anthropic.py`), so these hold only for a model that accepts one | 07 | golden tests |
 | Role thinking setting | tutor and transcriber disabled, grader and diagnostician and generator and verifier on | 13 | golden set output quality at each setting on the same inputs |
 | Role effort setting | tutor and transcriber low, grader and diagnostician and generator and verifier medium | 13 | an effort sweep on each role's golden set |
 | Role max output tokens | tutor 600, grader 2,000, transcriber 1,500, diagnostician 2,000, generator 4,000, verifier 3,000 | 13 | the rate of `stop_reason: "max_tokens"` in production |

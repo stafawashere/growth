@@ -30,7 +30,7 @@ Readings this module fixes, which no plan document does:
 """
 import json
 import statistics
-from datetime import date, timedelta
+from datetime import date, datetime, time, timedelta, timezone
 
 from sqlalchemy import select
 
@@ -38,6 +38,7 @@ from app.checkpoint import probe as probe_service
 from app.checkpoint import service as checkpoint_service
 from app.db import models
 from app.engine import constants
+from app.frq import metrics as frq_metrics
 from app.progress.attempt_log import load_attempts
 from app.session.service import CONFIDENCE_FROM_STUDENT
 
@@ -307,24 +308,22 @@ def adherence_and_effort(db, user_id, attempts, today):
    )
 
 
-def free_response_participation(attempts, today):
+def free_response_participation(db, user_id, today):
+   """Metric 9 from app/frq/metrics.py, the module P3's routes and tests measure it with, so the
+   metrics view and GET /frq/metrics cannot count it two ways."""
    first_day = today - timedelta(days=PARTICIPATION_WINDOW_DAYS - 1)
-   free_response = [
-      record
-      for record in attempts
-      if record.format == FREE_RESPONSE_FORMAT and in_window(record, first_day, today)
-   ]
-   captures = [record for record in attempts if record.image_ids]
-   abandoned = sum(1 for record in captures if not record.transcription_confirmed)
+   end_of_today = datetime.combine(today, time.max, tzinfo=timezone.utc)
+   measured = frq_metrics.metric_nine(db, user_id, end_of_today)
+   abandonment = measured["abandonment"]
 
    return metric(
       "free_response_participation",
       "Free-response participation and read-back abandonment",
       [
-         value("free-response items attempted", len(free_response), PARTICIPATION_WINDOW_DAYS, "days"),
-         value("read-back abandonment", abandoned, len(captures), "captures that passed the quality gate"),
+         value("free-response items attempted", frq_metrics.confirmed_between(db, user_id, first_day, today), PARTICIPATION_WINDOW_DAYS, "days"),
+         value("read-back abandonment", abandonment["abandoned"], abandonment["captures_started"], "photographed captures started and settled"),
       ],
-      "Weekly free-response attempts, and the share of captures whose read-back was never confirmed.",
+      "Weekly free-response items whose read-back was confirmed, and the share of photographed captures never confirmed within a day.",
       {"start": first_day.isoformat(), "end": today.isoformat()},
    )
 
@@ -414,7 +413,7 @@ def learning_metrics(db, user_id, archetypes, today):
       method_and_execution(db, attempts),
       error_recurrence(db, attempts),
       adherence_and_effort(db, user_id, attempts, today),
-      free_response_participation(attempts, today),
+      free_response_participation(db, user_id, today),
       external_checkpoint(db, user_id, attempts),
       concept_probe(db, user_id),
    ]

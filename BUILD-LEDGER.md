@@ -1673,6 +1673,38 @@ items) and items 3 and 6 (Slices 3 and 4). Every gate 11 names for P2 now exists
 - Checks at merge of P7 slice 1: pytest `1119 passed in 427.94s (0:07:07)`; vitest `Tests  434 passed
   (434)` in 34 files; `tsc --noEmit` exit 0; `qa/12_report.py` exit 0.
 
+- 2026-09-24, stage 4 (p3), P3 free response, grading and diagnosis, all eleven scope items of 11 P3.
+  Capture: a server-rendered booklet page with corner markers (`app/capture/booklet.py`), the image
+  quality gate before any provider call (`app/capture/quality.py`: blur, contrast, markers, crop),
+  the transcriber as its own stage with images reaching the subscription CLI as stream-json
+  (`app/grading/transcribe.py`, `app/providers/subscription.py`), and the confirmed read-back as the
+  only thing graded. Grading: `app/grading/point.py` with the four deterministic checks first
+  (`app/grading/checks.py` over `app/grading/latex.py`), three samples per judged point, escalation
+  to `review_queue` never averaged, the per-question rounding cap, the eligibility pass and
+  follow-through; show-the-setup is required on calculator parts by `tools/check_frq_items.py`.
+  Diagnosis: `app/diagnosis/observe.py` (model reads the work) and `app/diagnosis/diagnose.py`
+  (probabilities, gap trace, probe, mastery states), probes queued in `pending_probes` and drained
+  by the next micro-session. Tables: `gradings`, `frq_images`, four attempt columns. Routes:
+  `app/api/routes/frq.py` (06's image, transcription, confirm, gradings and dispute routes, the unit
+  check, typed entry, metric 9). Client: `app/web/src/frq/` (capture, read-back confirm or fix,
+  typed MathLive entry, per-point grading with provisional copy and a re-read on every point),
+  home's Free response button, and the review screen's re-read on every provisional point. Prompts:
+  the four templates of scope item 11, each with a digest golden and role tests. Bank: 24 questions
+  in `content/frq_items` over Units 1 to 7 and 10, 66 checked keys matched 66 blind SymPy
+  formulations with the control holding. Evals, recorded on the subscription and replayed: golden
+  set 2 (150 responses, 30 BC-PT ids) exact agreement 0.9315 on 146 published points, mean absolute
+  error per point 0.0685, 4 of 150 escalated, one-sample agreement 0.9133, standard-sample MAE
+  0.0867 against strict 0.0800; golden set 3 (P7's 20 page specs, rendered) 17 of 20 through the
+  gate, 30 of 43 point-bearing expressions read back exactly, character similarity 0.9919, 3 of 3
+  struck lines marked; transcription error share 1 of 1 on 15 rendered golden-2 pages
+  (`docs/operator/p3-grader-eval.md`, all model-authored and model-graded). Manual runs: 20 through
+  the live app, 0 gradings rows before a confirmation (`docs/operator/p3-manual-runs.md`). Gate
+  tests, each shown red under a break and green on restore in this session: test_three_decimal_cap,
+  test_deterministic_precheck_priority, test_diagnosis_never_certain, test_readback_gate,
+  test_image_quality_gate, test_disagreement_escalates, test_paper_to_grade, and the three evals.
+  Live spend: $0.00 on the API key; about 590 subscription calls (goldens 450, transcription eval
+  116, paper-to-grade 11, smokes), plus the manual runs.
+
 ## In progress [inferred]
 
 Stage 1, items for Units 4 to 10, is complete in the worktree `../growth-content` on branch
@@ -1680,6 +1712,10 @@ Stage 1, items for Units 4 to 10, is complete in the worktree `../growth-content
 progress in this worktree.
 
 Nothing for stage 2: it merged on 2026-09-24 (Done, "P2 Slice 5").
+
+Stage 4, P3, 2026-09-24: complete and merged (Done, "stage 4 (p3)"). What remains waits on real
+use: photographs of real handwriting to re-tune the image gate and to measure the transcriber, and
+four weeks of free-response use for metric 9.
 
 Stage 8, P7 evaluation harness, 2026-09-24, worktree `../growth-p7` on branch `p7`: built and
 checked on simulated and seeded data (Done, "P7 slice 1"). What remains waits on calendar time
@@ -2572,6 +2608,29 @@ From the eleventh session, 2026-09-21, found and not fixed.
   transcripts but no images: each page must be written by hand and photographed, which no session
   can do. Golden set 2 covers 17 point types, not 30, because only 17 reach a model.
 
+- 2026-09-24, stage 4, open. The image gate's thresholds were set on rendered pages only; the first
+  real photographs should re-tune them (`frq_images.quality` records every measurement).
+- 2026-09-24, stage 4, open. Grading runs as a request background task, not a `jobs` row: a server
+  stopped mid-grade leaves the attempt confirmed with no points until the student confirms again,
+  and a point left pending by a pacing or usage stop is retried only by the next confirm or re-read.
+  The capture screen now says so after about five minutes instead of spinning.
+- 2026-09-24, stage 4, open. Credit reversal restores a skill row only if nothing moved it since;
+  otherwise it takes back c and f alone, leaving FSRS, fading counters and success days as the
+  later attempt left them.
+- 2026-09-24, stage 4, open. The live grader is not stable on borderline justifications: the same
+  confirmed work split 0, 1 or 2 points across six recordings, and a re-read of a split point in
+  the manual runs split again. That is the escalation doing its job; it also means a point on the
+  boundary will often stay provisional.
+- 2026-09-24, stage 4, open. Golden sets 2 and 3 are model-authored and model-graded, the
+  transcription error share rests on one error, and no metric 9 week exists: it is built and reads
+  pending_on_usage until four weeks of real captures exist.
+- 2026-09-24, stage 4, open. The re-read of a point only re-judges it; the transcription behind it is
+  not re-read. Purge leaves `review_queue` rows whose ref_id named a deleted grading.
+- 2026-09-24, stage 4. `app/grading/point.py`'s evidence-quote check first escalated 10 of 150
+  golden targets because the grader quoted across the "2. [math]" and "answer:" labels the prompt
+  prints and used ellipses; with fragments compared line by line, 1 of 150 still fails it. Before
+  the fix the golden result was exact agreement 0.9343 on 137 published, 13 escalated.
+
 ## Plan corrections applied [verified]
 
 Session 2026-09-23 (fourteenth). No plan file was edited. Readings applied in code:
@@ -3060,6 +3119,26 @@ Session 2026-09-20 (seventh).
   changed from earned to not earned on review, because in each the slip changes the mathematical
   claim; the file's note records it.
 
+- 2026-09-24, stage 4 (P3). 03 "Sampling, agreement, and escalation" and 12's grader rows said two
+  samples at temperature 0. The routed Sonnet 5 rejects any non-default temperature, so both now
+  say the two standard samples run at the model's own setting (see Decisions). 12's role
+  temperature row says the same for every routed model.
+- 2026-09-24, stage 4. `tests/db/test_models.py` asserted gradings absent. P3 puts it in use, so the
+  test now asserts the exact P7 plus P3 table set and the exact gradings columns, a stricter
+  assertion. `app/web/src/App.test.tsx` `REACHED_FROM_HOME` gains "Free response", so the shell
+  gate now also holds the new screen off the bar and off the landing screen.
+- 2026-09-24, stage 4. 14 "Subscription pacing": rows added for the grader, transcriber and
+  diagnostician, and a per-role minute rate for the grader.
+- 2026-09-24, stage 4. P7's `free_response_participation` (metric 9 in the metrics view) counted a
+  capture only once its read-back existed and every free-response attempt in the window as
+  attempted. It now reads `app/frq/metrics.py`: an item is attempted when its read-back is
+  confirmed, a capture starts at its first photograph, and abandonment counts only captures still
+  unconfirmed a day after they started, so the view and `GET /frq/metrics` count one way.
+- 2026-09-24, stage 4. `tools/frq_key_recheck.py`'s control perturbed every key by 2v + 1 and
+  v + sqrt(2)/7; for a check that accepts any constant of integration the second is a correct
+  antiderivative, not a wrong key, so such checks are perturbed by 2v + 1 only. It then held on all
+  66 keys.
+
 ## Decisions taken on the operator's instruction, 2026-09-24 [inferred]
 
 Stage 3, the review screen and the mastery map:
@@ -3155,6 +3234,62 @@ Stage 8, P7 evaluation harness, decided on the operator's delegation:
 - Golden sets for all six roles were written by two agents and one frontend agent built the
   screens; each result was checked here (validation, spot checks, relabels, both web checks, 20
   mutation runs) before it was kept.
+
+Stage 4 (p3), P3 free response, grading and diagnosis, decided on the operator's delegation (the
+stage brief delegates every decision):
+
+- Images reach the subscription CLI as one stream-json user message: `claude -p --input-format
+  stream-json --output-format stream-json --verbose`, image blocks first, the prompt last, with
+  every flag that switches tools, settings and MCP servers off unchanged. A live run on 2026-09-24
+  (`tools/subscription_image_smoke.py`) showed tools `["StructuredOutput"]`, `mcp_servers []`, no
+  permission denial and the page read correctly on Haiku 4.5 and Sonnet 5. The paid API was never
+  needed, so no API call was made in this stage.
+- The two standard grader samples cannot be at temperature 0 on Sonnet 5 (a 400 through the API; the
+  CLI has no temperature option). They are two samples at the model's own setting; the standard
+  prompt is the liberal one (`prompts/grader/point_liberal_v1.md`), the third sample the strict one.
+  Reason: the only study isolating the dial found liberal lowered MAE for every model.
+- Per-point grading needs one of the four modes R10 names, and P5 builds them. P3 ships the
+  free-response half of the unit check (`app/frq/unit_check.py`, session mode `unit_check`,
+  untimed, credits the engine); the multiple-choice sweep and set cover arrive with P5. Reason: 05
+  makes the unit check the untimed mode that moves mastery, so it is the one P3 can honestly host.
+- Free-response questions live in `content/frq_items/` in their own format (`app/frq/items.py`) and
+  get item rows with status `frq_verified`, which `app/runtime/bank.py` never serves, and
+  `load_attempts_history` leaves free-response attempts out, so no micro-session can serve or
+  requeue one (R10).
+- The student's confirmed work is LaTeX, read into SymPy on the server with SymPy's lark LaTeX
+  backend plus a normaliser (`app/grading/latex.py`); anything it cannot read is unsettled and goes
+  to the model, as 03 requires. `lark` and `pillow` are now dependencies. The LESSONS rule against
+  installing a LaTeX parser is about audit formulation, which still never parses stems.
+- The diagnostician's model call only observes (errors, signals, gap descriptions, procedural or
+  conceptual) with verbatim evidence; every probability, the gap trace and the probe are
+  deterministic code (`app/diagnosis/diagnose.py`). It runs on every graded free-response answer
+  with a lost point, not only on a recurring BC-ERR path, because a free response has no BC-ERR
+  path until something reads it. 03's "a guess does the reverse" is read as conceptual times 0.5
+  and non-conceptual mass times 1.5.
+- A dispute is a one-click re-read: a visible `dispute` review_queue row and a fresh three-sample
+  judgement of that point, with every other point keeping its stored samples. The operator never
+  reviews, so the re-read is the resolution path the student has.
+- Engine credit from a graded answer comes only from published points; a provisional point's
+  skills are not_attempted. Reversal restores each skill row untouched since the credit, and takes
+  back only c and f on a row a later attempt moved (logged to audit_log).
+- A fixed-key answer check cannot see AP follow-through, so a point may name `follows_from`: when
+  its check fails after one of those points was lost, the model judges it on the student's own
+  earlier result. Found by the bank author; no served item used the field at the stage's close.
+- Pacing for the new roles on the subscription: grader 120 a day and 12 a minute, transcriber and
+  diagnostician 30 a day; a minute stop waits instead of failing. API caps for the fallback:
+  grader $1.50, transcriber and diagnostician $0.40 a day.
+- Grading runs as a FastAPI background task, not a `jobs` row. A crash leaves the attempt confirmed
+  with no points, and confirming again grades it; the retry ladder 06 names is not built.
+- The printable page is a server-rendered PNG with a solid square in each corner, which is what the
+  quality gate's marker check looks for.
+- Golden set 2 for the P3 eval is the stage's own (150 responses, 30 BC-PT ids that reach a model,
+  written and hand-graded by two Claude subagents on the delegation, eight of their labels
+  re-read by the stage lead and upheld). P7's `content/golden/grader.json` (85 responses, 17
+  types) was written in parallel; the two are kept, and the P3 numbers come from the larger set.
+  Golden set 3 uses P7's 20 page specifications, rendered into fixture photographs here.
+- The paper-to-grade fixture page was chosen because the live grader splits on it: the same
+  borderline justification came back with 0, 1 or 2 provisional points across six recordings.
+  The committed recording has one, as the gate asks.
 
 ## Decisions taken on the operator's instruction, 2026-09-23 [inferred]
 

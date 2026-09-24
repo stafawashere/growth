@@ -156,7 +156,9 @@ def add_image(db, attempt, user_id, data, declared_media_type, now):
 
 
 def read_back(db, attempt, record, provider, now):
-   """The transcriber reads every accepted photograph. Nothing here grades."""
+   """The transcriber reads the latest photograph that passed the gate, because the booklet is one
+   page per question and an earlier accepted photograph is a retake the student replaced. Nothing
+   here grades."""
    if attempt.transcription_confirmed:
       raise GradingRefused("this read-back is already confirmed")
 
@@ -169,10 +171,10 @@ def read_back(db, attempt, record, provider, now):
    if provider is None:
       raise GradingRefused("no transcriber is configured; the typed mode still works")
 
-   inputs = [transcribe.image_input(image) for image in accepted]
-   transcription = transcribe.transcribe(provider, record, inputs)
+   latest = accepted[-1:]
+   transcription = transcribe.transcribe(provider, record, [transcribe.image_input(image) for image in latest])
    attempt.transcription = json.dumps({"read": transcription, "confirmed": None})
-   attempt.image_ids = json.dumps([image.id for image in accepted])
+   attempt.image_ids = json.dumps([image.id for image in latest])
    attempt.grading_state = AWAITING_CONFIRMATION
    attempt.updated_at = stamp(now)
    db.flush()
@@ -344,7 +346,9 @@ def credited_decisions(decisions):
 
 def run_diagnosis(db, attempt, record, decisions, work, library, provider, confidence, strengths, now):
    lost = [decision for decision in decisions if decision.earned == 0]
-   lost_skills = {skill_id for part in record["parts"] for point in part["points"] if point["point_id"] in {decision.point_id for decision in lost} for skill_id in point["skills"]}
+   lost_ids = {decision.point_id for decision in lost}
+   lost_points = [point for part in record["parts"] for point in part["points"] if point["point_id"] in lost_ids]
+   lost_skills = {skill_id for point in lost_points for skill_id in point["skills"]}
    has_lost = len(lost) > 0
    observation = diagnosis_module.Observation()
    diagnosed_by = DIAGNOSED_BY_RULE_ONLY
@@ -446,7 +450,7 @@ def reverse_credit(db, attempt, user_id, now):
          continue
 
       after = record["after"][skill_id]
-      untouched_since = all(getattr(row, column) == value for column, value in after.items() if column != "updated_at")
+      untouched_since = all(getattr(row, column) == value for column, value in without_stamp(after).items())
 
       if untouched_since:
          for column, value in before.items():
@@ -468,6 +472,10 @@ def reverse_credit(db, attempt, user_id, now):
    return len(record["before"])
 
 
+def without_stamp(values):
+   return {column: value for column, value in values.items() if column != "updated_at"}
+
+
 def apply_credit(db, session_row, attempt, record, states_by_skill, engine_graph, today, now):
    if session_row.mode not in MASTERY_MODES or engine_graph is None:
       return
@@ -485,7 +493,7 @@ def apply_credit(db, session_row, attempt, record, states_by_skill, engine_graph
    )
    apply_observation(states, engine_graph, observation, today)
    after = {skill_id: repository.state_values(state, session_row.snapshot_id, now) for skill_id, state in states.items()}
-   changed = [skill_id for skill_id in after if {k: v for k, v in after[skill_id].items() if k != "updated_at"} != {k: v for k, v in before[skill_id].items() if k != "updated_at"}]
+   changed = [skill_id for skill_id in after if without_stamp(after[skill_id]) != without_stamp(before[skill_id])]
    repository.save_states(db, session_row.user_id, {skill_id: states[skill_id] for skill_id in changed}, session_row.snapshot_id, now)
    attempt.credit_record = json.dumps({
       "applied_at": stamp(now),
@@ -559,8 +567,11 @@ def grade(db, session_row, attempt, record, context, now):
 
 
 def reread(db, session_row, attempt, record, grading_row, context, reason, now):
-   """The one-click re-read: a dispute row the student can see, and that one point judged afresh."""
-   open_review(db, DISPUTE, grading_row.id, now, visible_to_student=True)
+   """The one-click re-read: a dispute row the student can see, and that one point judged afresh.
+   The row is resolved once the re-read has run, so a point that splits again can be re-read
+   again rather than waiting on a review nobody will do."""
+   dispute = open_review(db, DISPUTE, grading_row.id, now, visible_to_student=True)
+   point_id = grading_row.point_id
    work = confirmed_work(attempt)
    previous_rows = gradings_of(db, attempt.id)
    stored_samples = {row.point_id: json.loads(row.samples or "[]") for row in previous_rows}
@@ -572,6 +583,10 @@ def reread(db, session_row, attempt, record, grading_row, context, reason, now):
       row.rereads = rereads[row.point_id]
 
    rows, result = finish(db, session_row, attempt, record, grading, work, context, now, previous_rows)
-   write_audit(db, session_row.user_id, "grading_rerun", grading_row.id, {"reason": (reason or "")[:200], "point": grading_row.point_id}, now=now)
+   decided = grading.by_point()[point_id]
+   dispute.resolved_at = stamp(now)
+   dispute.resolution = "re-read: still provisional" if decided.provisional else f"re-read: decided, earned {decided.earned}"
+   write_audit(db, session_row.user_id, "grading_rerun", dispute.ref_id, {"reason": (reason or "")[:200], "point": point_id}, now=now)
+   db.flush()
 
    return rows, result

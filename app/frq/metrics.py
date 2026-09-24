@@ -2,11 +2,13 @@
 items attempted per week, which must hold a non-zero floor in every trial week, and the read-back
 abandonment rate, captures started where confirm was never pressed.
 
-An item counts as attempted in the ISO week its read-back was confirmed. A capture is started when
-the student opens the question's capture, by photograph or typed; one that is still unconfirmed after
-ABANDONED_AFTER_HOURS is abandoned, and a younger one is still open and counted in neither
-numerator nor denominator. Both come with their denominators, and a week with no confirmed item
-is listed with 0 rather than left out, because the floor is about empty weeks.
+An item counts as attempted in the ISO week its read-back was confirmed, photographed or typed. A
+capture is started when the student's first photograph of the page is uploaded, whether or not it
+passed the quality gate; the typed mode has no read-back to abandon and is not a capture. A capture
+still unconfirmed ABANDONED_AFTER_HOURS after it started is abandoned, and a younger one is still
+open and counted in neither numerator nor denominator. Both come with their denominators, and a
+week with no confirmed item is listed with 0 rather than left out, because the floor is about
+empty weeks. app/progress/learning_metrics.py reads the same numbers for the metrics view.
 
 The measurement needs weeks of real use to mean anything, so until then it reports what exists
 and says pending_on_usage.
@@ -37,6 +39,31 @@ def captures(db, user_id):
    ).all()
 
 
+def photographed_attempt_ids(db, user_id):
+   return set(
+      db.scalars(
+         select(models.FrqImage.attempt_id).where(models.FrqImage.user_id == user_id)
+      ).all()
+   )
+
+
+def confirmed_between(db, user_id, first_day, last_day):
+   """Read-backs confirmed on the calendar days first_day to last_day, both included."""
+   count = 0
+
+   for attempt, _mode in captures(db, user_id):
+      if not attempt.transcription_confirmed:
+         continue
+
+      confirmed_on = datetime.fromisoformat(attempt.submitted_at or attempt.updated_at).date()
+      is_inside = first_day <= confirmed_on <= last_day
+
+      if is_inside:
+         count += 1
+
+   return count
+
+
 def week_span(first, last):
    weeks = []
    cursor = first - timedelta(days=first.weekday())
@@ -50,6 +77,7 @@ def week_span(first, last):
 
 def metric_nine(db, user_id, now):
    rows = captures(db, user_id)
+   photographed = photographed_attempt_ids(db, user_id)
    confirmed_weeks = {}
    started = 0
    abandoned = 0
@@ -61,11 +89,16 @@ def metric_nine(db, user_id, now):
       first_capture = begun if first_capture is None or begun < first_capture else first_capture
       is_confirmed = bool(attempt.transcription_confirmed)
 
+      is_a_capture = attempt.id in photographed
+
       if is_confirmed:
          confirmed_at = datetime.fromisoformat(attempt.submitted_at or attempt.updated_at)
          week = iso_week(confirmed_at)
          confirmed_weeks[week] = confirmed_weeks.get(week, 0) + 1
-         started += 1
+         started += int(is_a_capture)
+         continue
+
+      if not is_a_capture:
          continue
 
       age_hours = (now - begun).total_seconds() / 3600

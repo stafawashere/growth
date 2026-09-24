@@ -317,3 +317,18 @@ def test_a_failed_check_after_a_lost_earlier_result_is_judged_as_follow_through(
 
    assert plain.by_point()["b1"].earned == 0
    assert asked == []
+
+
+def test_a_quote_across_labelled_lines_is_on_the_page_and_one_invented_fragment_is_not():
+   page = "h(-2) = 0\nh(-1) = 7\nh(3) = -25\nthe smallest value is \\(-25\\)"
+   across_lines = "h(-2) = 0\n  2. [math] h(-1) = 7\n  3. [math] h(3) = -25"
+   joined_with_commas = "h(-2) = 0, h(-1) = 7, h(3) = -25"
+   with_an_ellipsis = "h(-2) = 0 ... the smallest value is -25"
+   with_an_invented_line = "h(-2) = 0\n  2. [math] h(5) = 12"
+
+   assert grader.quote_is_verbatim(across_lines, page)
+   assert grader.quote_is_verbatim(joined_with_commas, page)
+   assert grader.quote_is_verbatim(with_an_ellipsis, page)
+   assert grader.quote_is_verbatim("answer: h(3) = -25", page)
+   assert not grader.quote_is_verbatim(with_an_invented_line, page)
+   assert not grader.quote_is_verbatim("h(4) = -18", page)

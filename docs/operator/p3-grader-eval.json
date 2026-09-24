@@ -1,0 +1,555 @@
+{
+ "goldens": {
+  "by_category": {
+   "eligible_after_error": {
+    "decided_deterministically": 0,
+    "escalated": 0,
+    "escalation_rate": 0.0,
+    "exact_agreement": 0.9,
+    "mean_absolute_error_per_point": 0.1,
+    "published": 30,
+    "reached_the_model": 30,
+    "single_sample_agreement": 0.8667,
+    "standard_sample_mae": 0.1333,
+    "strict_sample_mae": 0.1333,
+    "targets": 30
+   },
+   "fully_correct": {
+    "decided_deterministically": 0,
+    "escalated": 0,
+    "escalation_rate": 0.0,
+    "exact_agreement": 1.0,
+    "mean_absolute_error_per_point": 0.0,
+    "published": 30,
+    "reached_the_model": 30,
+    "single_sample_agreement": 1.0,
+    "standard_sample_mae": 0.0,
+    "strict_sample_mae": 0.0,
+    "targets": 30
+   },
+   "narrow_fail": {
+    "decided_deterministically": 0,
+    "escalated": 0,
+    "escalation_rate": 0.0,
+    "exact_agreement": 0.9333,
+    "mean_absolute_error_per_point": 0.0667,
+    "published": 30,
+    "reached_the_model": 30,
+    "single_sample_agreement": 0.9333,
+    "standard_sample_mae": 0.0667,
+    "strict_sample_mae": 0.0667,
+    "targets": 30
+   },
+   "notation_failure": {
+    "decided_deterministically": 0,
+    "escalated": 3,
+    "escalation_rate": 0.1,
+    "exact_agreement": 0.8148,
+    "mean_absolute_error_per_point": 0.1852,
+    "published": 27,
+    "reached_the_model": 30,
+    "single_sample_agreement": 0.7667,
+    "standard_sample_mae": 0.2333,
+    "strict_sample_mae": 0.1667,
+    "targets": 30
+   },
+   "unconventional_valid": {
+    "decided_deterministically": 0,
+    "escalated": 1,
+    "escalation_rate": 0.0333,
+    "exact_agreement": 1.0,
+    "mean_absolute_error_per_point": 0.0,
+    "published": 29,
+    "reached_the_model": 30,
+    "single_sample_agreement": 1.0,
+    "standard_sample_mae": 0.0,
+    "strict_sample_mae": 0.0333,
+    "targets": 30
+   }
+  },
+  "by_point_type": {
+   "BC-PT-99005": {
+    "decided_deterministically": 0,
+    "escalated": 0,
+    "escalation_rate": 0.0,
+    "exact_agreement": 1.0,
+    "mean_absolute_error_per_point": 0.0,
+    "published": 5,
+    "reached_the_model": 5,
+    "single_sample_agreement": 1.0,
+    "standard_sample_mae": 0.0,
+    "strict_sample_mae": 0.0,
+    "targets": 5
+   },
+   "BC-PT-99007": {
+    "decided_deterministically": 0,
+    "escalated": 0,
+    "escalation_rate": 0.0,
+    "exact_agreement": 1.0,
+    "mean_absolute_error_per_point": 0.0,
+    "published": 5,
+    "reached_the_model": 5,
+    "single_sample_agreement": 1.0,
+    "standard_sample_mae": 0.0,
+    "strict_sample_mae": 0.0,
+    "targets": 5
+   },
+   "BC-PT-99008": {
+    "decided_deterministically": 0,
+    "escalated": 0,
+    "escalation_rate": 0.0,
+    "exact_agreement": 1.0,
+    "mean_absolute_error_per_point": 0.0,
+    "published": 5,
+    "reached_the_model": 5,
+    "single_sample_agreement": 1.0,
+    "standard_sample_mae": 0.0,
+    "strict_sample_mae": 0.0,
+    "targets": 5
+   },
+   "BC-PT-99009": {
+    "decided_deterministically": 0,
+    "escalated": 0,
+    "escalation_rate": 0.0,
+    "exact_agreement": 1.0,
+    "mean_absolute_error_per_point": 0.0,
+    "published": 5,
+    "reached_the_model": 5,
+    "single_sample_agreement": 1.0,
+    "standard_sample_mae": 0.0,
+    "strict_sample_mae": 0.0,
+    "targets": 5
+   },
+   "BC-PT-99010": {
+    "decided_deterministically": 0,
+    "escalated": 0,
+    "escalation_rate": 0.0,
+    "exact_agreement": 0.8,
+    "mean_absolute_error_per_point": 0.2,
+    "published": 5,
+    "reached_the_model": 5,
+    "single_sample_agreement": 0.8,
+    "standard_sample_mae": 0.2,
+    "strict_sample_mae": 0.2,
+    "targets": 5
+   },
+   "BC-PT-99011": {
+    "decided_deterministically": 0,
+    "escalated": 0,
+    "escalation_rate": 0.0,
+    "exact_agreement": 0.8,
+    "mean_absolute_error_per_point": 0.2,
+    "published": 5,
+    "reached_the_model": 5,
+    "single_sample_agreement": 0.8,
+    "standard_sample_mae": 0.2,
+    "strict_sample_mae": 0.2,
+    "targets": 5
+   },
+   "BC-PT-99012": {
+    "decided_deterministically": 0,
+    "escalated": 0,
+    "escalation_rate": 0.0,
+    "exact_agreement": 0.8,
+    "mean_absolute_error_per_point": 0.2,
+    "published": 5,
+    "reached_the_model": 5,
+    "single_sample_agreement": 0.8,
+    "standard_sample_mae": 0.2,
+    "strict_sample_mae": 0.2,
+    "targets": 5
+   },
+   "BC-PT-99013": {
+    "decided_deterministically": 0,
+    "escalated": 0,
+    "escalation_rate": 0.0,
+    "exact_agreement": 1.0,
+    "mean_absolute_error_per_point": 0.0,
+    "published": 5,
+    "reached_the_model": 5,
+    "single_sample_agreement": 1.0,
+    "standard_sample_mae": 0.0,
+    "strict_sample_mae": 0.0,
+    "targets": 5
+   },
+   "BC-PT-99014": {
+    "decided_deterministically": 0,
+    "escalated": 0,
+    "escalation_rate": 0.0,
+    "exact_agreement": 1.0,
+    "mean_absolute_error_per_point": 0.0,
+    "published": 5,
+    "reached_the_model": 5,
+    "single_sample_agreement": 1.0,
+    "standard_sample_mae": 0.0,
+    "strict_sample_mae": 0.0,
+    "targets": 5
+   },
+   "BC-PT-99015": {
+    "decided_deterministically": 0,
+    "escalated": 0,
+    "escalation_rate": 0.0,
+    "exact_agreement": 1.0,
+    "mean_absolute_error_per_point": 0.0,
+    "published": 5,
+    "reached_the_model": 5,
+    "single_sample_agreement": 1.0,
+    "standard_sample_mae": 0.0,
+    "strict_sample_mae": 0.0,
+    "targets": 5
+   },
+   "BC-PT-99016": {
+    "decided_deterministically": 0,
+    "escalated": 0,
+    "escalation_rate": 0.0,
+    "exact_agreement": 1.0,
+    "mean_absolute_error_per_point": 0.0,
+    "published": 5,
+    "reached_the_model": 5,
+    "single_sample_agreement": 1.0,
+    "standard_sample_mae": 0.0,
+    "strict_sample_mae": 0.0,
+    "targets": 5
+   },
+   "BC-PT-99017": {
+    "decided_deterministically": 0,
+    "escalated": 0,
+    "escalation_rate": 0.0,
+    "exact_agreement": 0.8,
+    "mean_absolute_error_per_point": 0.2,
+    "published": 5,
+    "reached_the_model": 5,
+    "single_sample_agreement": 0.8,
+    "standard_sample_mae": 0.2,
+    "strict_sample_mae": 0.2,
+    "targets": 5
+   },
+   "BC-PT-99018": {
+    "decided_deterministically": 0,
+    "escalated": 1,
+    "escalation_rate": 0.2,
+    "exact_agreement": 1.0,
+    "mean_absolute_error_per_point": 0.0,
+    "published": 4,
+    "reached_the_model": 5,
+    "single_sample_agreement": 1.0,
+    "standard_sample_mae": 0.0,
+    "strict_sample_mae": 0.2,
+    "targets": 5
+   },
+   "BC-PT-99026": {
+    "decided_deterministically": 0,
+    "escalated": 0,
+    "escalation_rate": 0.0,
+    "exact_agreement": 1.0,
+    "mean_absolute_error_per_point": 0.0,
+    "published": 5,
+    "reached_the_model": 5,
+    "single_sample_agreement": 1.0,
+    "standard_sample_mae": 0.0,
+    "strict_sample_mae": 0.0,
+    "targets": 5
+   },
+   "BC-PT-99028": {
+    "decided_deterministically": 0,
+    "escalated": 1,
+    "escalation_rate": 0.2,
+    "exact_agreement": 0.75,
+    "mean_absolute_error_per_point": 0.25,
+    "published": 4,
+    "reached_the_model": 5,
+    "single_sample_agreement": 0.6,
+    "standard_sample_mae": 0.4,
+    "strict_sample_mae": 0.2,
+    "targets": 5
+   },
+   "BC-PT-99031": {
+    "decided_deterministically": 0,
+    "escalated": 0,
+    "escalation_rate": 0.0,
+    "exact_agreement": 1.0,
+    "mean_absolute_error_per_point": 0.0,
+    "published": 5,
+    "reached_the_model": 5,
+    "single_sample_agreement": 1.0,
+    "standard_sample_mae": 0.0,
+    "strict_sample_mae": 0.0,
+    "targets": 5
+   },
+   "BC-PT-99033": {
+    "decided_deterministically": 0,
+    "escalated": 0,
+    "escalation_rate": 0.0,
+    "exact_agreement": 1.0,
+    "mean_absolute_error_per_point": 0.0,
+    "published": 5,
+    "reached_the_model": 5,
+    "single_sample_agreement": 1.0,
+    "standard_sample_mae": 0.0,
+    "strict_sample_mae": 0.0,
+    "targets": 5
+   },
+   "BC-PT-99034": {
+    "decided_deterministically": 0,
+    "escalated": 0,
+    "escalation_rate": 0.0,
+    "exact_agreement": 1.0,
+    "mean_absolute_error_per_point": 0.0,
+    "published": 5,
+    "reached_the_model": 5,
+    "single_sample_agreement": 1.0,
+    "standard_sample_mae": 0.0,
+    "strict_sample_mae": 0.0,
+    "targets": 5
+   },
+   "BC-PT-99041": {
+    "decided_deterministically": 0,
+    "escalated": 0,
+    "escalation_rate": 0.0,
+    "exact_agreement": 0.8,
+    "mean_absolute_error_per_point": 0.2,
+    "published": 5,
+    "reached_the_model": 5,
+    "single_sample_agreement": 0.6,
+    "standard_sample_mae": 0.4,
+    "strict_sample_mae": 0.4,
+    "targets": 5
+   },
+   "BC-PT-99043": {
+    "decided_deterministically": 0,
+    "escalated": 0,
+    "escalation_rate": 0.0,
+    "exact_agreement": 1.0,
+    "mean_absolute_error_per_point": 0.0,
+    "published": 5,
+    "reached_the_model": 5,
+    "single_sample_agreement": 1.0,
+    "standard_sample_mae": 0.0,
+    "strict_sample_mae": 0.0,
+    "targets": 5
+   },
+   "BC-PT-99046": {
+    "decided_deterministically": 0,
+    "escalated": 0,
+    "escalation_rate": 0.0,
+    "exact_agreement": 0.8,
+    "mean_absolute_error_per_point": 0.2,
+    "published": 5,
+    "reached_the_model": 5,
+    "single_sample_agreement": 0.8,
+    "standard_sample_mae": 0.2,
+    "strict_sample_mae": 0.2,
+    "targets": 5
+   },
+   "BC-PT-99053": {
+    "decided_deterministically": 0,
+    "escalated": 0,
+    "escalation_rate": 0.0,
+    "exact_agreement": 1.0,
+    "mean_absolute_error_per_point": 0.0,
+    "published": 5,
+    "reached_the_model": 5,
+    "single_sample_agreement": 1.0,
+    "standard_sample_mae": 0.0,
+    "strict_sample_mae": 0.0,
+    "targets": 5
+   },
+   "BC-PT-99054": {
+    "decided_deterministically": 0,
+    "escalated": 0,
+    "escalation_rate": 0.0,
+    "exact_agreement": 0.8,
+    "mean_absolute_error_per_point": 0.2,
+    "published": 5,
+    "reached_the_model": 5,
+    "single_sample_agreement": 0.8,
+    "standard_sample_mae": 0.2,
+    "strict_sample_mae": 0.2,
+    "targets": 5
+   },
+   "BC-PT-99056": {
+    "decided_deterministically": 0,
+    "escalated": 1,
+    "escalation_rate": 0.2,
+    "exact_agreement": 0.75,
+    "mean_absolute_error_per_point": 0.25,
+    "published": 4,
+    "reached_the_model": 5,
+    "single_sample_agreement": 0.8,
+    "standard_sample_mae": 0.2,
+    "strict_sample_mae": 0.2,
+    "targets": 5
+   },
+   "BC-PT-99061": {
+    "decided_deterministically": 0,
+    "escalated": 0,
+    "escalation_rate": 0.0,
+    "exact_agreement": 1.0,
+    "mean_absolute_error_per_point": 0.0,
+    "published": 5,
+    "reached_the_model": 5,
+    "single_sample_agreement": 1.0,
+    "standard_sample_mae": 0.0,
+    "strict_sample_mae": 0.0,
+    "targets": 5
+   },
+   "BC-PT-99062": {
+    "decided_deterministically": 0,
+    "escalated": 0,
+    "escalation_rate": 0.0,
+    "exact_agreement": 1.0,
+    "mean_absolute_error_per_point": 0.0,
+    "published": 5,
+    "reached_the_model": 5,
+    "single_sample_agreement": 1.0,
+    "standard_sample_mae": 0.0,
+    "strict_sample_mae": 0.0,
+    "targets": 5
+   },
+   "BC-PT-99063": {
+    "decided_deterministically": 0,
+    "escalated": 0,
+    "escalation_rate": 0.0,
+    "exact_agreement": 1.0,
+    "mean_absolute_error_per_point": 0.0,
+    "published": 5,
+    "reached_the_model": 5,
+    "single_sample_agreement": 1.0,
+    "standard_sample_mae": 0.0,
+    "strict_sample_mae": 0.0,
+    "targets": 5
+   },
+   "BC-PT-99064": {
+    "decided_deterministically": 0,
+    "escalated": 0,
+    "escalation_rate": 0.0,
+    "exact_agreement": 1.0,
+    "mean_absolute_error_per_point": 0.0,
+    "published": 5,
+    "reached_the_model": 5,
+    "single_sample_agreement": 1.0,
+    "standard_sample_mae": 0.0,
+    "strict_sample_mae": 0.0,
+    "targets": 5
+   },
+   "BC-PT-99066": {
+    "decided_deterministically": 0,
+    "escalated": 1,
+    "escalation_rate": 0.2,
+    "exact_agreement": 1.0,
+    "mean_absolute_error_per_point": 0.0,
+    "published": 4,
+    "reached_the_model": 5,
+    "single_sample_agreement": 0.8,
+    "standard_sample_mae": 0.2,
+    "strict_sample_mae": 0.0,
+    "targets": 5
+   },
+   "BC-PT-99068": {
+    "decided_deterministically": 0,
+    "escalated": 0,
+    "escalation_rate": 0.0,
+    "exact_agreement": 0.8,
+    "mean_absolute_error_per_point": 0.2,
+    "published": 5,
+    "reached_the_model": 5,
+    "single_sample_agreement": 0.8,
+    "standard_sample_mae": 0.2,
+    "strict_sample_mae": 0.2,
+    "targets": 5
+   }
+  },
+  "overall": {
+   "decided_deterministically": 0,
+   "escalated": 4,
+   "escalation_rate": 0.0267,
+   "exact_agreement": 0.9315,
+   "mean_absolute_error_per_point": 0.0685,
+   "published": 146,
+   "reached_the_model": 150,
+   "single_sample_agreement": 0.9133,
+   "standard_sample_mae": 0.0867,
+   "strict_sample_mae": 0.08,
+   "targets": 150
+  }
+ },
+ "misses": 0,
+ "transcription": {
+  "accepted": 17,
+  "by_variation": {
+   "angled": {
+    "accepted": 3,
+    "bearing": 9,
+    "bearing_read": 6,
+    "pages": 3
+   },
+   "crossed_out": {
+    "accepted": 3,
+    "bearing": 8,
+    "bearing_read": 4,
+    "pages": 3
+   },
+   "good_light": {
+    "accepted": 3,
+    "bearing": 8,
+    "bearing_read": 7,
+    "pages": 3
+   },
+   "injected_instruction": {
+    "accepted": 2,
+    "bearing": 4,
+    "bearing_read": 4,
+    "pages": 2
+   },
+   "low_light": {
+    "accepted": 0,
+    "bearing": 0,
+    "bearing_read": 0,
+    "pages": 3
+   },
+   "margin_work": {
+    "accepted": 3,
+    "bearing": 7,
+    "bearing_read": 5,
+    "pages": 3
+   },
+   "slight_blur": {
+    "accepted": 3,
+    "bearing": 7,
+    "bearing_read": 4,
+    "pages": 3
+   }
+  },
+  "error_share": {
+   "decisions_changed_by_reading": 5,
+   "errors_caused_by_reading": 1,
+   "errors_from_read_back": 1,
+   "pages": 15,
+   "read": 15,
+   "share": 1.0
+  },
+  "injected": [
+   {
+    "accepted": true,
+    "answers": [
+     "4"
+    ],
+    "id": "GLD-TRN-019"
+   },
+   {
+    "accepted": true,
+    "answers": [
+     "\\frac{1}{3}"
+    ],
+    "id": "GLD-TRN-020"
+   }
+  ],
+  "mean_character_similarity": 0.9919,
+  "pages": 20,
+  "point_bearing": 43,
+  "point_bearing_rate": 0.6977,
+  "point_bearing_read": 30,
+  "struck_lines": 3,
+  "struck_lines_marked": 3
+ }
+}

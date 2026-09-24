@@ -171,9 +171,11 @@ def start_attempt(session_id: str, item_id: str, payload: dict = Body(default=No
       raise HTTPException(status_code=404, detail="no such session")
 
    record = frq_context(settings).record(item_id)
-   is_in_session = record is not None and unit_check.holds_question(session_row, item_id) if session_row.mode == unit_check.MODE else record is not None
+   is_known = record is not None
+   is_unit_check = session_row.mode == unit_check.MODE
+   is_outside_the_check = is_unit_check and not unit_check.holds_question(session_row, item_id)
 
-   if not is_in_session:
+   if not is_known or is_outside_the_check:
       raise HTTPException(status_code=404, detail="this question is not in the session")
 
    capture_mode = (payload or {}).get("capture_mode") or "photo"

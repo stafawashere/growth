@@ -28,6 +28,7 @@ A model the grader cannot reach, because a budget or pacing cap stopped it or th
 hit its usage limit, leaves the remaining judged points pending: provisional, earned null, and
 retried by the next grading pass. Nothing is guessed.
 """
+import re
 from dataclasses import dataclass, field, replace
 
 from app.grading import checks
@@ -131,13 +132,40 @@ def squeezed(text):
    return "".join(plain.split()).lower()
 
 
-def quote_is_verbatim(quote, confirmed_text):
-   has_quote = squeezed(quote) != ""
+RENDERED_LINE_LABEL = re.compile(r"^\s*(\d+\.\s*\[(math|text)\]|answer:)\s*", re.IGNORECASE)
+FRAGMENT_BREAK = re.compile(r"\n|\.\.\.|\u2026")
+SHORTEST_FRAGMENT = 3
 
-   if not has_quote:
+
+def quote_fragments(quote):
+   """A quote may run across lines of the rendered work, carry the "2. [math]" and "answer:"
+   labels the prompt prints before each line, or skip a stretch with an ellipsis. Each piece
+   between those breaks, with its label removed, is a fragment; a fragment too short to mean
+   anything is not checked."""
+   pieces = [RENDERED_LINE_LABEL.sub("", piece) for piece in FRAGMENT_BREAK.split(quote or "")]
+
+   return [piece for piece in pieces if len(squeezed(piece)) >= SHORTEST_FRAGMENT]
+
+
+def fragment_on_page(fragment, page):
+   """A fragment is on the page when it appears whole, or when every comma-separated piece of it
+   does, which is how a grader quotes several short lines as one."""
+   if squeezed(fragment) in page:
       return True
 
-   return squeezed(quote) in squeezed(confirmed_text)
+   pieces = [piece for piece in fragment.split(",") if len(squeezed(piece)) >= SHORTEST_FRAGMENT]
+   has_pieces = len(pieces) > 1
+
+   return has_pieces and all(squeezed(piece) in page for piece in pieces)
+
+
+def quote_is_verbatim(quote, confirmed_text):
+   """03 "Hallucinated steps": the evidence must be the student's own work. Every fragment of the
+   quote must be on the page; the page is compared with spacing, delimiters and braces removed."""
+   fragments = quote_fragments(quote)
+   page = squeezed(confirmed_text)
+
+   return all(fragment_on_page(fragment, page) for fragment in fragments)
 
 
 def deterministic_decision(part, point, result):

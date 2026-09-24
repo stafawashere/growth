@@ -11,6 +11,18 @@ export function lineText(line: ReadBackLine) {
    return isMath ? `\\(${line.content}\\)` : line.content;
 }
 
+const PROSE_WORD = /(^|\s)[a-zA-Z]{3,}(\s|$)/;
+const DELIMITED = /\\\(|\\\[/;
+
+/* A read-back answer or an evidence quote may be LaTeX, words with delimited math, or plain words.
+   Words are shown as words; bare LaTeX is typeset. */
+export function mixedText(content: string) {
+   const isDelimited = DELIMITED.test(content);
+   const isProse = PROSE_WORD.test(content.replace(/\\[a-zA-Z]+/g, " "));
+
+   return isDelimited || isProse ? content : `\\(${content}\\)`;
+}
+
 function PartView({ part }: { part: ReadBackPart }) {
    const hasLines = part.lines.length > 0;
    const hasAnswer = part.answer.trim() !== "";
@@ -32,7 +44,7 @@ function PartView({ part }: { part: ReadBackPart }) {
 
          {hasAnswer ? (
             <p>
-               Answer: <MathText text={`\\(${part.answer}\\)`} />
+               Answer: <MathText text={mixedText(part.answer)} />
             </p>
          ) : null}
       </li>
@@ -48,11 +60,11 @@ export function ReadBackView({ readBack }: { readBack: ReadBack }) {
             What I read
          </h2>
 
-         <ol className="read-back">
+         <ul className="read-back">
             {readBack.parts.map((part) => (
                <PartView key={part.part_id} part={part} />
             ))}
-         </ol>
+         </ul>
 
          {hasUnreadable ? (
             <div data-testid="unreadable">

@@ -221,3 +221,48 @@ describe("free-response capture", () => {
       expect(await screen.findByTestId("grading-summary")).toBeTruthy();
    });
 });
+
+describe("waiting on the grader", () => {
+   beforeEach(() => {
+      vi.clearAllMocks();
+   });
+
+   afterEach(() => {
+      cleanup();
+   });
+
+   it("shows the re-read's result once it has run", async () => {
+      await reachReadBack();
+      mocked.confirmReadBack.mockResolvedValue(attempt({ transcription_confirmed: true }));
+      const reread = {
+         ...GRADED,
+         earned: 2,
+         decided: 2,
+         provisional: 0,
+         points: GRADED.points.map((point) =>
+            point.grading_id === "GRD-2" ? { ...point, provisional: false, earned: 1, decided_by: "model", rereads: 1 } : point
+         )
+      };
+      mocked.readGradings.mockResolvedValueOnce(GRADED).mockResolvedValueOnce(GRADED).mockResolvedValue(reread);
+      mocked.askForReread.mockResolvedValue({ grading_id: "GRD-2", attempt_id: "ATT-1", rereading: true });
+
+      fireEvent.click(screen.getByLabelText("unsure"));
+      fireEvent.click(screen.getByRole("button", { name: "Yes, grade it" }));
+      await screen.findByTestId("provisional-copy");
+      fireEvent.click(screen.getAllByRole("button", { name: "Ask for a re-read" })[1]);
+
+      await waitFor(() => expect(screen.queryByTestId("provisional-copy")).toBeNull());
+      expect(screen.getByTestId("grading-summary").textContent).toContain("2 of the 2 decided points earned");
+   });
+
+   it("says grading stalled instead of waiting forever", async () => {
+      await reachReadBack();
+      mocked.confirmReadBack.mockResolvedValue(attempt({ transcription_confirmed: true }));
+      mocked.readGradings.mockResolvedValue({ ...GRADED, grading_state: "confirmed", points: [] });
+
+      fireEvent.click(screen.getByLabelText("unsure"));
+      fireEvent.click(screen.getByRole("button", { name: "Yes, grade it" }));
+
+      expect(await screen.findByText(/Grading has not finished/, undefined, { timeout: 4000 })).toBeTruthy();
+   });
+});

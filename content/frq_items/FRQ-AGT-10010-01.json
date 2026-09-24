@@ -6,7 +6,11 @@
    "stem": {
       "text": "The function \\( f \\) has derivatives of all orders for all real \\( x \\), with \\( f(0) = 2 \\) and \\( f'(x) = x f(x) + 1 \\)."
    },
-   "skills": ["BC-SKL-10043", "BC-SKL-10044", "BC-SKL-10046"],
+   "skills": [
+      "BC-SKL-10043",
+      "BC-SKL-10044",
+      "BC-SKL-10046"
+   ],
    "parts": [
       {
          "id": "a",
@@ -14,14 +18,22 @@
          "setup_required": false,
          "answer_latex": "f''(0) = 2",
          "worked_solution": [
-            {"text": "Differentiate x f(x) + 1 with the product rule.", "latex": "f''(x) = f(x) + x f'(x)"},
-            {"text": "f'(0) = 0 + 1 = 1, so f''(0) = 2 + 0.", "latex": "f''(0) = 2"}
+            {
+               "text": "Differentiate x f(x) + 1 with the product rule.",
+               "latex": "f''(x) = f(x) + x f'(x)"
+            },
+            {
+               "text": "f'(0) = 0 + 1 = 1, so f''(0) = 2 + 0.",
+               "latex": "f''(0) = 2"
+            }
          ],
          "points": [
             {
                "point_id": "a1",
                "point_type_id": "BC-PT-99022",
-               "skills": ["BC-SKL-10043"],
+               "skills": [
+                  "BC-SKL-10043"
+               ],
                "criterion": "Applies the product rule to x f(x) to get f''(x) = f(x) + x f'(x).",
                "eligible_only_if": [],
                "check": null
@@ -29,10 +41,18 @@
             {
                "point_id": "a2",
                "point_type_id": "BC-PT-99027",
-               "skills": ["BC-SKL-10043"],
+               "skills": [
+                  "BC-SKL-10043"
+               ],
                "criterion": "Gives f''(0) = 2.",
                "eligible_only_if": [],
-               "check": {"kind": "sympy_equivalence", "target": "answer", "expected": "2", "up_to_constant": false, "variable": "x"}
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "2",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
             }
          ]
       },
@@ -42,17 +62,35 @@
          "setup_required": false,
          "answer_latex": "f'''(0) = 2",
          "worked_solution": [
-            {"text": "Differentiate f''(x) = f(x) + x f'(x).", "latex": "f'''(x) = 2f'(x) + x f''(x)"},
-            {"text": "Evaluate at 0.", "latex": "f'''(0) = 2(1) + 0 = 2"}
+            {
+               "text": "Differentiate f''(x) = f(x) + x f'(x).",
+               "latex": "f'''(x) = 2f'(x) + x f''(x)"
+            },
+            {
+               "text": "Evaluate at 0.",
+               "latex": "f'''(0) = 2(1) + 0 = 2"
+            }
          ],
          "points": [
             {
                "point_id": "b1",
                "point_type_id": "BC-PT-99027",
-               "skills": ["BC-SKL-10043"],
+               "skills": [
+                  "BC-SKL-10043"
+               ],
                "criterion": "Gives f'''(0) = 2.",
                "eligible_only_if": [],
-               "check": {"kind": "sympy_equivalence", "target": "answer", "expected": "2", "up_to_constant": false, "variable": "x"}
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "2",
+                  "up_to_constant": false,
+                  "variable": "x"
+               },
+               "follows_from": [
+                  "a1",
+                  "a2"
+               ]
             }
          ]
       },
@@ -62,14 +100,23 @@
          "setup_required": false,
          "answer_latex": "2 + x + x^{2} + \\frac{x^{3}}{3}",
          "worked_solution": [
-            {"text": "Coefficients f^(k)(0)/k!.", "latex": "2 + 1\\cdot x + \\frac{2}{2!}x^{2} + \\frac{2}{3!}x^{3}"},
-            {"text": "Simplify.", "latex": "2 + x + x^{2} + \\frac{x^{3}}{3}"}
+            {
+               "text": "Coefficients f^(k)(0)/k!.",
+               "latex": "2 + 1\\cdot x + \\frac{2}{2!}x^{2} + \\frac{2}{3!}x^{3}"
+            },
+            {
+               "text": "Simplify.",
+               "latex": "2 + x + x^{2} + \\frac{x^{3}}{3}"
+            }
          ],
          "points": [
             {
                "point_id": "c1",
                "point_type_id": "BC-PT-99035",
-               "skills": ["BC-SKL-10044", "BC-SKL-10046"],
+               "skills": [
+                  "BC-SKL-10044",
+                  "BC-SKL-10046"
+               ],
                "criterion": "Writes the first two terms, 2 + x.",
                "eligible_only_if": [],
                "check": null
@@ -77,10 +124,23 @@
             {
                "point_id": "c2",
                "point_type_id": "BC-PT-99036",
-               "skills": ["BC-SKL-10044", "BC-SKL-10046"],
+               "skills": [
+                  "BC-SKL-10044",
+                  "BC-SKL-10046"
+               ],
                "criterion": "Completes the polynomial with x^2 + x^3/3.",
                "eligible_only_if": [],
-               "check": {"kind": "sympy_equivalence", "target": "answer", "expected": "2 + x + x**2 + x**3/3", "up_to_constant": false, "variable": "x"}
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "2 + x + x**2 + x**3/3",
+                  "up_to_constant": false,
+                  "variable": "x"
+               },
+               "follows_from": [
+                  "a2",
+                  "b1"
+               ]
             }
          ]
       }

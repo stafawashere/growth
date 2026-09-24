@@ -37,6 +37,9 @@ type Stage = "choosing" | "capturing" | "reading" | "confirming" | "editing" | "
 
 const SETTLED_STATES = ["graded", "partly_graded"];
 const DEFAULT_POLL_MILLISECONDS = 2000;
+const MAXIMUM_POLLS = 150;
+export const GRADING_STALLED_MESSAGE =
+   "Grading has not finished. Your answer is saved; confirming it again grades it again.";
 
 export function base64Of(file: File): Promise<string> {
    return new Promise((resolve, reject) => {
@@ -79,7 +82,18 @@ export function CaptureScreen({ sessionId, question, pollMilliseconds, readFile 
       }
 
       let isCurrent = true;
+      let polls = 0;
       const timer = setInterval(() => {
+         polls += 1;
+
+         if (polls > MAXIMUM_POLLS) {
+            clearInterval(timer);
+            setProblem(GRADING_STALLED_MESSAGE);
+            setStage(readBack === null ? "typing" : "confirming");
+
+            return;
+         }
+
          readGradings(attempt.attempt_id).then(
             (payload) => {
                const isSettled = SETTLED_STATES.includes(payload.grading_state ?? "");
@@ -97,7 +111,7 @@ export function CaptureScreen({ sessionId, question, pollMilliseconds, readFile 
          isCurrent = false;
          clearInterval(timer);
       };
-   }, [stage, attempt, pollEvery]);
+   }, [stage, attempt, pollEvery, readBack]);
 
    async function choose(mode: CaptureMode) {
       setProblem(null);
@@ -189,10 +203,27 @@ export function CaptureScreen({ sessionId, question, pollMilliseconds, readFile 
       setRereads((current) => [...current, gradingId]);
 
       try {
+         const before = gradings?.points.find((point) => point.grading_id === gradingId)?.rereads ?? 0;
+
          await askForReread(gradingId);
 
-         if (attempt !== null) {
-            setGradings(await readGradings(attempt.attempt_id));
+         if (attempt === null) {
+            return;
+         }
+
+         for (let poll = 0; poll < MAXIMUM_POLLS; poll += 1) {
+            const payload = await readGradings(attempt.attempt_id);
+            const reread = payload.points.find((point) => point.grading_id === gradingId);
+            const hasFinished = reread !== undefined && reread.rereads > before;
+
+            if (hasFinished) {
+               setGradings(payload);
+               setRereads((current) => current.filter((entry) => entry !== gradingId));
+
+               return;
+            }
+
+            await new Promise((resolve) => setTimeout(resolve, pollEvery));
          }
       } catch (failure) {
          setProblem(problemText(failure, "The re-read could not be asked for."));
@@ -207,14 +238,14 @@ export function CaptureScreen({ sessionId, question, pollMilliseconds, readFile 
             <MathText text={question.stem} />
          </p>
 
-         <ol className="frq-parts">
+         <ul className="frq-parts">
             {question.parts.map((part) => (
                <li key={part.id}>
                   ({part.id}) <MathText text={part.prompt} />
                   {part.setup_required ? <span className="muted"> Show the setup for your calculations.</span> : null}
                </li>
             ))}
-         </ol>
+         </ul>
 
          {problem !== null ? <p role="alert">{problem}</p> : null}
 

@@ -99,6 +99,7 @@ class CassetteBookProvider(Provider):
       self._live = live
       self._record = bool(record) and live is not None
       self.calls = []
+      self.misses = []
       self._lock = threading.Lock()
 
    @property
@@ -115,6 +116,7 @@ class CassetteBookProvider(Provider):
          return result_from_entry(entry, request)
 
       if not self._record:
+         self.misses.append((request.role, digest))
          raise CassetteMiss(f"no recorded {request.role} call for digest {digest}")
 
       result = self._live.generate(request)

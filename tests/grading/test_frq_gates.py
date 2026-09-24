@@ -154,6 +154,12 @@ def test_a_reread_is_one_click_from_the_review_screen_and_judges_the_point_again
       disputes = db.scalars(select(models.ReviewQueue).where(models.ReviewQueue.kind == "dispute")).all()
 
    assert [(row.ref_id, row.visible_to_student) for row in disputes] == [(provisional["grading_id"], 1)]
+   assert disputes[0].resolved_at is not None
+   assert disputes[0].resolution == "re-read: decided, earned 1"
+
+   review = frq_world.client.get("/review", params={"today": date.today().isoformat()}).json()
+
+   assert review["provisional_points"] == []
 
 
 def test_grading_refuses_outside_the_four_modes(frq_world):

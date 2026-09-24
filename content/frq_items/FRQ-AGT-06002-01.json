@@ -1,0 +1,90 @@
+{
+   "id": "FRQ-AGT-06002-01",
+   "archetype_id": "BC-QA-06002",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "stem": {
+      "text": "Water flows into a tank at a rate of \\( R(t) \\) liters per minute, where \\( R \\) is a differentiable function of time \\( t \\) in minutes. Selected values of \\( R(t) \\) are given in the table. At time \\( t = 0 \\) the tank holds 40 liters of water. \\[ \\begin{array}{c|ccccc} t & 0 & 2 & 5 & 9 & 10 \\\\ \\hline R(t) & 12 & 16 & 10 & 8 & 14 \\end{array} \\]"
+   },
+   "skills": ["BC-SKL-06008", "BC-SKL-06011", "BC-SKL-06036"],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Use a trapezoidal sum with the four subintervals indicated by the table to approximate \\( \\displaystyle\\int_{0}^{10} R(t)\\,dt \\). Show the computations that lead to your answer.",
+         "setup_required": false,
+         "answer_latex": "114",
+         "worked_solution": [
+            {"text": "One trapezoid per subinterval, width times the average of the endpoint values.", "latex": "2\\cdot\\frac{12 + 16}{2} + 3\\cdot\\frac{16 + 10}{2} + 4\\cdot\\frac{10 + 8}{2} + 1\\cdot\\frac{8 + 14}{2}"},
+            {"text": "Add.", "latex": "28 + 39 + 36 + 11 = 114"}
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99018",
+               "skills": ["BC-SKL-06008"],
+               "criterion": "Writes a trapezoidal sum over the four subintervals with each width and each pair of endpoint values shown.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99019",
+               "skills": ["BC-SKL-06008"],
+               "criterion": "Gives the value 114 supported by that sum.",
+               "eligible_only_if": ["a1"],
+               "check": {"kind": "sympy_equivalence", "target": "answer", "expected": "114", "up_to_constant": false, "variable": "x"}
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Use your answer from part (a) to approximate the amount of water in the tank at time \\( t = 10 \\).",
+         "setup_required": false,
+         "answer_latex": "154",
+         "worked_solution": [
+            {"text": "Initial amount plus accumulated inflow.", "latex": "40 + \\int_{0}^{10} R(t)\\,dt \\approx 40 + 114 = 154"}
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99033",
+               "skills": ["BC-SKL-06036"],
+               "criterion": "Adds the initial 40 liters to the integral of R from 0 to 10 (or its approximation) to estimate the amount at t = 10.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Use a trapezoidal sum with the two subintervals indicated by the table on \\( 2 \\le t \\le 9 \\) to approximate the average rate of flow into the tank over that interval.",
+         "setup_required": false,
+         "answer_latex": "\\frac{75}{7}",
+         "worked_solution": [
+            {"text": "Trapezoidal sum on [2, 9].", "latex": "3\\cdot\\frac{16 + 10}{2} + 4\\cdot\\frac{10 + 8}{2} = 39 + 36 = 75"},
+            {"text": "Divide by the length of the interval.", "latex": "\\frac{1}{9 - 2}\\cdot 75 = \\frac{75}{7}"}
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99018",
+               "skills": ["BC-SKL-06008"],
+               "criterion": "Writes the two-trapezoid sum on [2, 9] and divides by the interval length 7.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99019",
+               "skills": ["BC-SKL-06008", "BC-SKL-06036"],
+               "criterion": "Gives 75/7, about 10.714 liters per minute.",
+               "eligible_only_if": ["c1"],
+               "check": {"kind": "numeric_three_decimals", "expected": "75/7"}
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 4 (p3)",
+   "signed_off_by": null
+}

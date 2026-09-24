@@ -43,6 +43,7 @@ Anthropic's wire field is stop_reason and 07's normalised result shape names it 
 so the rename happens here and nowhere downstream.
 content_block_start, content_block_stop and signature_delta are outside the mapping and dropped.
 """
+import base64
 import json
 import os
 import socket
@@ -443,7 +444,7 @@ class AnthropicProvider(Provider):
          "model": request.model,
          "max_tokens": request.max_output_tokens,
          "system": [system_block],
-         "messages": [{"role": message.role, "content": message.content} for message in request.messages],
+         "messages": wire_messages(request),
          "stream": stream,
       }
 
@@ -485,6 +486,34 @@ class AnthropicProvider(Provider):
          request_id=response.get("id"),
          raw_usage=raw_usage,
       )
+
+
+def wire_image_block(image):
+   return {
+      "type": "image",
+      "source": {
+         "type": "base64",
+         "media_type": image.media_type,
+         "data": base64.b64encode(image.data).decode("ascii"),
+      },
+   }
+
+
+def wire_messages(request):
+   """Images ride as base64 blocks ahead of the text of the last user message
+   (https://platform.claude.com/docs/en/build-with-claude/vision), never inside a prompt string."""
+   messages = [{"role": message.role, "content": message.content} for message in request.messages]
+   has_images = len(request.images) > 0
+
+   if not has_images:
+      return messages
+
+   last = messages[-1]
+   blocks = [wire_image_block(image) for image in request.images]
+   blocks.append({"type": "text", "text": last["content"]})
+   messages[-1] = {"role": last["role"], "content": blocks}
+
+   return messages
 
 
 def _guard_provider_options(provider_options):

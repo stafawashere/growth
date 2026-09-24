@@ -4,6 +4,7 @@ import { AccountScreen } from "./account/AccountScreen";
 import { AddPasskeyControl } from "./account/AddPasskeyControl";
 import { ApiError, readMe } from "./api/client";
 import { MetricsRoute } from "./evaluation/MetricsRoute";
+import { FrqRoute } from "./frq/FrqRoute";
 import { HomeRoute } from "./home/HomeRoute";
 import { OnboardingRoute } from "./onboarding/OnboardingRoute";
 import type { OnboardingReason } from "./onboarding/OnboardingScreen";
@@ -14,7 +15,7 @@ import { OperatorSettings } from "./settings/ExperimentsSection";
 import type { SettingsScreenProps } from "./settings/SettingsScreen";
 import { SettingsRoute } from "./settings/SettingsRoute";
 
-export type Destination = "home" | "session" | "settings" | "progress" | "review" | "onboarding";
+export type Destination = "home" | "session" | "settings" | "progress" | "review" | "onboarding" | "frq";
 
 export interface DestinationEntry {
    id: Destination;
@@ -27,9 +28,9 @@ export interface UnsuppliedInput {
 }
 
 /* 08-design-brief.md, Information architecture: settings is reached from the top bar, a session
-   from home's one primary action, progress and review from home, and onboarding only when home
-   sends a first login, an unfinished diagnostic or a long gap there, so none of the last four is
-   here. */
+   from home's one primary action, progress, review and the free-response unit check from home,
+   and onboarding only when home sends a first login, an unfinished diagnostic or a long gap there,
+   so none of the last five is here. */
 export const DESTINATIONS: ReadonlyArray<DestinationEntry> = [
    { id: "home", label: "Home" },
    { id: "settings", label: "Settings" }
@@ -54,7 +55,8 @@ export const UNSUPPLIED_INPUTS: Record<Destination, ReadonlyArray<UnsuppliedInpu
    settings: settingsInputs,
    progress: [],
    review: [],
-   onboarding: []
+   onboarding: [],
+   frq: []
 };
 
 const noticeStyle = {
@@ -227,6 +229,7 @@ export function App() {
                onResumeSession={resumeSession}
                onOpenProgress={() => setDestination("progress")}
                onOpenReview={() => setDestination("review")}
+               onOpenFreeResponse={() => setDestination("frq")}
                onStartOnboarding={startOnboarding}
             />
          ) : null}
@@ -244,6 +247,8 @@ export function App() {
          {destination === "progress" ? <ProgressRoute /> : null}
 
          {destination === "review" ? <ReviewRoute /> : null}
+
+         {destination === "frq" ? <FrqRoute /> : null}
 
          {destination === "settings" && settingsPage === "settings" ? (
             <>

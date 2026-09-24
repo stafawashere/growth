@@ -1,0 +1,69 @@
+{
+   "id": "FRQ-GLD-A-12",
+   "archetype_id": "BC-QA-10009",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "Let \\( f \\) be a function that has derivatives of all orders for all real numbers. The third-degree Taylor polynomial \\( P_{3}(x) \\) for \\( f \\) about \\( x = 1 \\) is used to approximate \\( f(1.4) \\). For \\( 1 \\le x \\le 1.4 \\), the fourth derivative of \\( f \\) satisfies \\( |f^{(4)}(x)| \\le 12 \\)."
+   },
+   "skills": [
+      "BC-SKL-10048",
+      "BC-SKL-10049",
+      "BC-SKL-10050",
+      "BC-SKL-10051",
+      "BC-SKL-10052"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Use the Lagrange error bound to show that \\( P_{3}(1.4) \\) approximates \\( f(1.4) \\) with an error less than 0.02.",
+         "setup_required": false,
+         "answer_latex": "|f(1.4) - P_{3}(1.4)| \\le 0.0128 < 0.02",
+         "worked_solution": [
+            {
+               "text": "Lagrange bound with the fourth derivative bound 12 and distance 0.4.",
+               "latex": "|f(1.4) - P_{3}(1.4)| \\le \\frac{12}{4!}(0.4)^{4} = 0.0128"
+            },
+            {
+               "text": "Compare with the tolerance.",
+               "latex": "0.0128 < 0.02"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99039",
+               "skills": [
+                  "BC-SKL-10049",
+                  "BC-SKL-10050"
+               ],
+               "criterion": "Writes the Lagrange bound 12/4! times (0.4)^4, or its value 0.0128.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "8/625",
+                  "up_to_constant": false,
+                  "variable": "x",
+                  "each_side": true
+               }
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99041",
+               "skills": [
+                  "BC-SKL-10051"
+               ],
+               "criterion": "Connects the bound to the error with an inequality (the error is at most 0.0128) and concludes it is less than 0.02.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": null
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude golden-set author, stage 4 (p3), model-authored",
+   "signed_off_by": null
+}

@@ -1,0 +1,76 @@
+{
+   "id": "FRQ-AGT-06010-01",
+   "archetype_id": "BC-QA-06010",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "Let \\( r(x) = \\dfrac{x + 7}{x^{2} - x - 6} \\)."
+   },
+   "skills": ["BC-SKL-06062", "BC-SKL-06063", "BC-SKL-06064", "BC-SKL-06065"],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Write \\( r(x) \\) as a sum of two fractions whose denominators are linear.",
+         "setup_required": false,
+         "answer_latex": "\\frac{2}{x - 3} - \\frac{1}{x + 2}",
+         "worked_solution": [
+            {"text": "Factor the denominator.", "latex": "x^{2} - x - 6 = (x - 3)(x + 2)"},
+            {"text": "Set up the constants.", "latex": "x + 7 = A(x + 2) + B(x - 3)"},
+            {"text": "x = 3 gives A, x = -2 gives B.", "latex": "A = 2, \\quad B = -1"},
+            {"text": "The decomposition.", "latex": "r(x) = \\frac{2}{x - 3} - \\frac{1}{x + 2}"}
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99081",
+               "skills": ["BC-SKL-06062", "BC-SKL-06063"],
+               "criterion": "Writes r(x) as 2/(x - 3) - 1/(x + 2), with both numerators found.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find \\( \\displaystyle\\int r(x)\\,dx \\).",
+         "setup_required": false,
+         "answer_latex": "2\\ln|x - 3| - \\ln|x + 2| + C",
+         "worked_solution": [
+            {"text": "Antidifferentiate each fraction.", "latex": "\\int r(x)\\,dx = 2\\ln|x - 3| - \\ln|x + 2| + C"}
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99003",
+               "skills": ["BC-SKL-06064"],
+               "criterion": "Gives 2ln|x - 3| - ln|x + 2|, with or without a constant of integration.",
+               "eligible_only_if": [],
+               "check": {"kind": "sympy_equivalence", "target": "answer", "expected": "2*log(Abs(x - 3)) - log(Abs(x + 2))", "up_to_constant": true, "variable": "x"}
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Evaluate \\( \\displaystyle\\int_{4}^{5} r(x)\\,dx \\). Show the work that leads to your answer.",
+         "setup_required": false,
+         "answer_latex": "\\ln\\frac{24}{7}",
+         "worked_solution": [
+            {"text": "Apply the limits to the antiderivative from part (b).", "latex": "\\Big(2\\ln 2 - \\ln 7\\Big) - \\Big(2\\ln 1 - \\ln 6\\Big)"},
+            {"text": "Combine the logarithms.", "latex": "2\\ln 2 - \\ln 7 + \\ln 6 = \\ln\\frac{24}{7}"}
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99005",
+               "skills": ["BC-SKL-06065"],
+               "criterion": "Evaluates the antiderivative at 5 minus at 4 and gives ln(24/7) in any equivalent form.",
+               "eligible_only_if": [],
+               "check": {"kind": "sympy_equivalence", "target": "answer", "expected": "log(24/7)", "up_to_constant": false, "variable": "x"}
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 4 (p3)",
+   "signed_off_by": null
+}

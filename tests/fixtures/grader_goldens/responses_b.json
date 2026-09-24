@@ -1,0 +1,4296 @@
+{
+   "author": "claude-opus-5-5 subagent on the operator's delegation of 2026-09-24; model-authored and model-graded, not human",
+   "graded_against": "data/scoring_points.json BC-PT definitions and each question's criterion",
+   "responses": [
+      {
+         "id": "GR-B-001",
+         "item_id": "FRQ-GLD-B-01",
+         "target_point": "a2",
+         "target_point_type": "BC-PT-99043",
+         "category": "fully_correct",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "Ratio test",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "|(x-2)^{n+1} / ((n+1)3^{n+1}) \\cdot (n 3^{n}) / (x-2)^{n}| = \\frac{n}{n+1} \\cdot \\frac{|x-2|}{3}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\lim_{n \\to \\infty} \\frac{n}{n+1} \\cdot \\frac{|x-2|}{3} = \\frac{|x-2|}{3}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\frac{|x-2|}{3} < 1",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "-3 < x-2 < 3",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "-1 < x < 5",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\(x = 5\\): \\(\\sum \\frac{1}{n}\\) harmonic series, p-series with \\(p = 1\\), diverges",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\(x = -1\\): \\(\\sum (-1)^{n}/n\\), terms decrease to 0 so it converges by the alternating series test",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "Interval of convergence is \\(-1 \\le x < 5\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "-1 \\le x < 5"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "a3": 1,
+            "a4": 1,
+            "a5": 1
+         },
+         "label_note": "The limit is written with lim as n tends to infinity and evaluated correctly to |x-2|/3."
+      },
+      {
+         "id": "GR-B-002",
+         "item_id": "FRQ-GLD-B-01",
+         "target_point": "a2",
+         "target_point_type": "BC-PT-99043",
+         "category": "unconventional_valid",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "use ratio test, square it instead of abs value",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "(a_{n+1}/a_{n})^{2} = \\frac{1}{9}(x-2)^{2} \\cdot (\\frac{n}{n+1})^{2}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\lim_{n \\to \\infty} \\frac{1}{9}(x-2)^{2} \\cdot (\\frac{n}{n+1})^{2} = \\frac{1}{9}(x-2)^{2}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\frac{1}{9}(x-2)^{2} < 1",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "(x-2)^{2} < 9",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "-3 < x - 2 < 3 , \\quad -1 < x < 5",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "endpoints: \\(x=5\\) gives \\(\\sum \\frac{1}{n}\\), diverges (p-series p=1)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\(x=-1\\) gives \\(\\sum (-1)^{n}/n\\) converges by AST",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "so \\([-1, 5)\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "[-1, 5)"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "a3": 1,
+            "a4": 1,
+            "a5": 1
+         },
+         "label_note": "A squared ratio with its limit written in lim notation and the squared inequality resolved is accepted in place of absolute value, and the limit is correct."
+      },
+      {
+         "id": "GR-B-003",
+         "item_id": "FRQ-GLD-B-01",
+         "target_point": "a2",
+         "target_point_type": "BC-PT-99043",
+         "category": "narrow_fail",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "|(x-2)^{n+1} / ((n+1)3^{n+1}) \\cdot (n 3^{n}) / (x-2)^{n}|",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "= \\frac{n |x-2|}{n+1}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\lim_{n \\to \\infty} \\frac{n |x-2|}{n+1} = |x-2|",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "|x-2| < 1",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "1 < x < 3",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "1 < x < 3"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 0,
+            "a3": 1,
+            "a4": 0,
+            "a5": 0
+         },
+         "label_note": "The ratio is right but the factor 1/3 is lost in simplification, so the limit is evaluated as |x-2|, an evaluation error that forfeits this point even though the ratio point stands."
+      },
+      {
+         "id": "GR-B-004",
+         "item_id": "FRQ-GLD-B-01",
+         "target_point": "a2",
+         "target_point_type": "BC-PT-99043",
+         "category": "notation_failure",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "|(x-2)^{n+1} / ((n+1)3^{n+1}) \\cdot (n 3^{n}) / (x-2)^{n}| = \\frac{n |x-2|}{3(n+1)} = \\frac{|x-2|}{3}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\frac{|x-2|}{3} < 1",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "-1 < x < 5",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "x = 5: \\(\\sum \\frac{1}{n}\\) which is harmonic so diverges",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "x = -1: \\(\\sum (-1)^{n}/n\\), alternating series test says converges",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "answer \\(-1 \\le x < 5\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "-1 \\le x < 5"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 0,
+            "a3": 1,
+            "a4": 1,
+            "a5": 1
+         },
+         "label_note": "The value |x-2|/3 is right, but no lim is written and the n-dependent ratio is set equal to the limit, so the required limit notation is missing."
+      },
+      {
+         "id": "GR-B-005",
+         "item_id": "FRQ-GLD-B-01",
+         "target_point": "a2",
+         "target_point_type": "BC-PT-99043",
+         "category": "eligible_after_error",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "ratio test (I flipped it so it has to be > 1)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "|a_{n}/a_{n+1}| = |(x-2)^{n} / (n 3^{n}) \\cdot ((n+1) 3^{n+1}) / (x-2)^{n+1}| = \\frac{3(n+1)}{n|x-2|}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\lim_{n \\to \\infty} \\frac{3(n+1)}{n |x-2|} = \\frac{3}{|x-2|}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\frac{3}{|x-2|} > 1",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "|x-2| < 3 , \\quad -1 < x < 5",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\(x=5\\): \\(\\sum \\frac{1}{n}\\) diverges, harmonic",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\(x=-1\\): \\(\\sum (-1)^{n}/n\\) converges, alternating series test",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "IOC \\([-1,5)\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "[-1, 5)"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "a3": 1,
+            "a4": 1,
+            "a5": 0
+         },
+         "label_note": "A reciprocal ratio keeps the response eligible for the middle points, and its limit 3/|x-2| is evaluated correctly with lim notation, so this point is earned while the final interval point is not."
+      },
+      {
+         "id": "GR-B-006",
+         "item_id": "FRQ-GLD-B-01",
+         "target_point": "a5",
+         "target_point_type": "BC-PT-99046",
+         "category": "fully_correct",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "|(x-2)^{n+1} / ((n+1)3^{n+1}) \\cdot (n 3^{n}) / (x-2)^{n}| = \\frac{n}{n+1} \\cdot \\frac{|x-2|}{3}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\lim_{n \\to \\infty} \\frac{n}{n+1} \\cdot \\frac{|x-2|}{3} = \\frac{|x-2|}{3} < 1",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "|x - 2| < 3",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "-1 < x < 5",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "At \\(x = 5\\): \\(\\sum_{n=1}^{\\infty} 3^{n}/(n 3^{n}) = \\sum \\frac{1}{n}\\), a p-series with \\(p = 1\\), diverges.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "At \\(x = -1\\): \\(\\sum_{n=1}^{\\infty} (-3)^{n}/(n 3^{n}) = \\sum (-1)^{n}/n\\). The terms \\(\\frac{1}{n}\\) decrease and go to 0, so it converges by the alternating series test.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "The interval of convergence is \\(-1 \\le x < 5\\).",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "-1 \\le x < 5"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "a3": 1,
+            "a4": 1,
+            "a5": 1
+         },
+         "label_note": "Both endpoint series are analysed with named tests and the interval -1 <= x < 5 is stated."
+      },
+      {
+         "id": "GR-B-007",
+         "item_id": "FRQ-GLD-B-01",
+         "target_point": "a5",
+         "target_point_type": "BC-PT-99046",
+         "category": "unconventional_valid",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "|(x-2)^{n+1} / ((n+1)3^{n+1}) \\cdot (n 3^{n}) / (x-2)^{n}| = \\frac{n|x-2|}{3(n+1)}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\lim_{n \\to \\infty} \\frac{n|x-2|}{3(n+1)} = \\frac{|x-2|}{3}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "-1 < x < 5",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "x = 5: \\(\\sum \\frac{1}{n}\\). Integral test: \\(\\int_{1}^{\\infty} \\frac{1}{x} dx = \\lim_{b \\to \\infty} \\ln b = \\infty\\), so the series diverges.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "x = -1: \\(\\sum (-1)^{n}/n\\), alternates, \\(\\frac{1}{n}\\) decreasing, \\(\\lim_{n \\to \\infty} \\frac{1}{n} = 0\\), converges by AST",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "include -1, leave out 5",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "[-1, 5)"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "a3": 1,
+            "a4": 1,
+            "a5": 1
+         },
+         "label_note": "The integral test is an accepted named analysis at x = 5, the alternating series test handles x = -1, and the interval is stated in bracket form."
+      },
+      {
+         "id": "GR-B-008",
+         "item_id": "FRQ-GLD-B-01",
+         "target_point": "a5",
+         "target_point_type": "BC-PT-99046",
+         "category": "narrow_fail",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "|(x-2)^{n+1} / ((n+1)3^{n+1}) \\cdot (n 3^{n}) / (x-2)^{n}| = \\frac{n}{n+1} \\cdot \\frac{|x-2|}{3}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\lim_{n \\to \\infty} \\frac{n}{n+1} \\cdot \\frac{|x-2|}{3} = \\frac{|x-2|}{3} < 1",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "-1 < x < 5",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "x = 5: \\(\\sum \\frac{1}{n}\\), harmonic, diverges",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "x = -1: \\(\\sum (-1)^{n}/n\\). Take abs value, get \\(\\sum \\frac{1}{n}\\) which diverges, so this diverges too",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "interval \\(-1 < x < 5\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "-1 < x < 5"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "a3": 1,
+            "a4": 1,
+            "a5": 0
+         },
+         "label_note": "Both endpoints are substituted, but divergence of the absolute series does not show divergence at x = -1, so the analysis there is wrong and the stated interval omits -1."
+      },
+      {
+         "id": "GR-B-009",
+         "item_id": "FRQ-GLD-B-01",
+         "target_point": "a5",
+         "target_point_type": "BC-PT-99046",
+         "category": "notation_failure",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "|(x-2)^{n+1} / ((n+1)3^{n+1}) \\cdot (n 3^{n}) / (x-2)^{n}| = \\frac{n|x-2|}{3(n+1)}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\lim_{n \\to \\infty} \\frac{n|x-2|}{3(n+1)} = \\frac{|x-2|}{3} < 1",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "-1 < x < 5",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "x=5 \\(\\to\\) \\(\\sum \\frac{1}{n}\\) div. (p=1)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "x=-1 \\(\\to\\) \\(\\sum (-1)^{n}/n\\) conv. AST",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "x in [-1,5)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "[-1, 5)"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "a3": 1,
+            "a4": 1,
+            "a5": 1
+         },
+         "label_note": "The abbreviations 'div. (p=1)' and 'conv. AST' still name appropriate tests, which is sufficient analysis, and the interval [-1, 5) is stated; no notation requirement applies to this point."
+      },
+      {
+         "id": "GR-B-010",
+         "item_id": "FRQ-GLD-B-01",
+         "target_point": "a5",
+         "target_point_type": "BC-PT-99046",
+         "category": "eligible_after_error",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "ratio test, upside down version",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "|a_{n}/a_{n+1}| = \\frac{3(n+1)}{n|x-2|}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\lim_{n \\to \\infty} \\frac{3(n+1)}{n|x-2|} = \\frac{3}{|x-2|} > 1",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "-1 < x < 5",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "x = 5: \\(\\sum \\frac{1}{n}\\) diverges (p-series, p = 1)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "x = -1: \\(\\sum (-1)^{n}/n\\) converges by alternating series test",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "interval: \\(-1 \\le x < 5\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "-1 \\le x < 5"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "a3": 1,
+            "a4": 1,
+            "a5": 0
+         },
+         "label_note": "The endpoint analysis and interval are correct, but they follow from a reciprocal ratio, which the rubric states is not eligible for this point."
+      },
+      {
+         "id": "GR-B-011",
+         "item_id": "FRQ-GLD-B-02",
+         "target_point": "a1",
+         "target_point_type": "BC-PT-99053",
+         "category": "fully_correct",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\int_{0}^{\\infty} x e^{-x^{2}} dx = \\lim_{b \\to \\infty} \\int_{0}^{b} x e^{-x^{2}} dx",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "= \\lim_{b \\to \\infty} [-\\frac{1}{2} e^{-x^{2}}]_{0}^{b}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "= \\lim_{b \\to \\infty} (-\\frac{1}{2} e^{-b^{2}} + \\frac{1}{2})",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "= 0 + \\frac{1}{2} = \\frac{1}{2}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "converges to \\(\\frac{1}{2}\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "\\frac{1}{2}"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "a3": 1
+         },
+         "label_note": "The infinite limit is replaced by b and the limit as b tends to infinity is written throughout."
+      },
+      {
+         "id": "GR-B-012",
+         "item_id": "FRQ-GLD-B-02",
+         "target_point": "a1",
+         "target_point_type": "BC-PT-99053",
+         "category": "unconventional_valid",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "let \\(u = x^{2}\\), \\(du = 2x dx\\), bounds 0 to \\(\\infty\\) stay the same",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\int_{0}^{\\infty} x e^{-x^{2}} dx = \\frac{1}{2} \\int_{0}^{\\infty} e^{-u} du",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "= \\frac{1}{2} \\lim_{R \\to \\infty} \\int_{0}^{R} e^{-u} du",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "= \\frac{1}{2} \\lim_{R \\to \\infty} (-e^{-R} + 1)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "= \\frac{1}{2}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "\\frac{1}{2}"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "a3": 1
+         },
+         "label_note": "After substitution the infinite limit of the u-integral is replaced by R with a limit as R tends to infinity, which is correct limit notation applied to the integral."
+      },
+      {
+         "id": "GR-B-013",
+         "item_id": "FRQ-GLD-B-02",
+         "target_point": "a1",
+         "target_point_type": "BC-PT-99053",
+         "category": "narrow_fail",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\int x e^{-x^{2}} dx = -\\frac{1}{2} e^{-x^{2}}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\int_{0}^{\\infty} x e^{-x^{2}} dx = [-\\frac{1}{2} e^{-x^{2}}]_{0}^{\\infty}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "= -\\frac{1}{2} e^{-\\infty} + \\frac{1}{2} e^{0}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "= 0 + \\frac{1}{2} = \\frac{1}{2}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "converges",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "\\frac{1}{2}"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 0,
+            "a2": 1,
+            "a3": 1
+         },
+         "label_note": "No limit is ever written; infinity is substituted into the antiderivative, which is arithmetic with infinity and fails this point."
+      },
+      {
+         "id": "GR-B-014",
+         "item_id": "FRQ-GLD-B-02",
+         "target_point": "a1",
+         "target_point_type": "BC-PT-99053",
+         "category": "notation_failure",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\int_{0}^{\\infty} x e^{-x^{2}} dx = \\lim_{b \\to \\infty} \\int_{0}^{b} x e^{-x^{2}} dx",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "= -\\frac{1}{2} e^{-b^{2}} + \\frac{1}{2}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "= \\frac{1}{2}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "since \\(e^{-b^{2}}\\) goes to 0",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "\\frac{1}{2}"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "a3": 1
+         },
+         "label_note": "The first line writes the limit correctly and the criterion banks the point once correct notation appears, so dropping the lim on later lines does not remove it, although an older, stricter reading would not award it."
+      },
+      {
+         "id": "GR-B-015",
+         "item_id": "FRQ-GLD-B-02",
+         "target_point": "a1",
+         "target_point_type": "BC-PT-99053",
+         "category": "eligible_after_error",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\int_{0}^{\\infty} x e^{-x^{2}} dx = \\lim_{b \\to \\infty} \\int_{0}^{b} x e^{-x^{2}} dx",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "= \\lim_{b \\to \\infty} [-2 e^{-x^{2}}]_{0}^{b}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "= \\lim_{b \\to \\infty} (-2 e^{-b^{2}} + 2)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "= 2",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "2"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 0,
+            "a3": 0
+         },
+         "label_note": "The antiderivative is wrong by a factor, but the limit notation on the improper integral is correct, so this point stands on its own."
+      },
+      {
+         "id": "GR-B-016",
+         "item_id": "FRQ-GLD-B-03",
+         "target_point": "a1",
+         "target_point_type": "BC-PT-99054",
+         "category": "fully_correct",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\lim_{x \\to \\infty} (5x + \\ln x) = \\infty",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\lim_{x \\to \\infty} (2x + 1) = \\infty",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "so L'Hospital's rule applies",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\lim_{x \\to \\infty} \\frac{5x + \\ln x}{2x+1} = \\lim_{x \\to \\infty} \\frac{5 + 1/x}{2} = \\frac{5}{2}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "\\frac{5}{2}"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "a3": 1
+         },
+         "label_note": "The limit of the quotient is written with x tending to infinity."
+      },
+      {
+         "id": "GR-B-017",
+         "item_id": "FRQ-GLD-B-03",
+         "target_point": "a1",
+         "target_point_type": "BC-PT-99054",
+         "category": "unconventional_valid",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "divide top and bottom by x",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\lim_{x \\to \\infty} C(x) = \\lim_{x \\to \\infty} \\frac{5 + (\\ln x)/x}{2 + 1/x}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\lim_{x \\to \\infty} \\frac{\\ln x}{x} = \\lim_{x \\to \\infty} \\frac{1/x}{1} = 0",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "= \\frac{5 + 0}{2 + 0} = \\frac{5}{2}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "\\frac{5}{2}"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 0,
+            "a3": 1
+         },
+         "label_note": "The requested limit is written as the limit of C(x) as x tends to infinity; the unusual route by dividing through by x does not affect this point."
+      },
+      {
+         "id": "GR-B-018",
+         "item_id": "FRQ-GLD-B-03",
+         "target_point": "a1",
+         "target_point_type": "BC-PT-99054",
+         "category": "narrow_fail",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "C(\\infty) = \\frac{\\infty}{\\infty}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "L'Hospital",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\frac{5 + 1/x}{2} = \\frac{5 + 0}{2} = \\frac{5}{2}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "\\frac{5}{2}"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 0,
+            "a2": 0,
+            "a3": 1
+         },
+         "label_note": "No limit expression appears anywhere; C of infinity equal to infinity over infinity is arithmetic with infinity in place of the limit."
+      },
+      {
+         "id": "GR-B-019",
+         "item_id": "FRQ-GLD-B-03",
+         "target_point": "a1",
+         "target_point_type": "BC-PT-99054",
+         "category": "notation_failure",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\lim_{x \\to \\infty} = \\frac{5x + \\ln x}{2x + 1}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "top \\(\\to \\infty\\), bottom \\(\\to \\infty\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "= \\frac{5 + 1/x}{2}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "= \\frac{5}{2}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "\\frac{5}{2}"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 0,
+            "a2": 0,
+            "a3": 1
+         },
+         "label_note": "The lim symbol is written with no argument and then set equal to the quotient, so the limit is never written as a limit of an expression, and the later lines drop the limit entirely."
+      },
+      {
+         "id": "GR-B-020",
+         "item_id": "FRQ-GLD-B-03",
+         "target_point": "a1",
+         "target_point_type": "BC-PT-99054",
+         "category": "eligible_after_error",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\lim_{x \\to \\infty} (5x + \\ln x) = \\infty , \\quad \\lim_{x \\to \\infty} (2x+1) = \\infty",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\lim_{x \\to \\infty} \\frac{5x + \\ln x}{2x + 1} = \\lim_{x \\to \\infty} \\frac{5 + x}{2}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "= \\infty",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "C(x) grows without bound",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "\\infty"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "a3": 0
+         },
+         "label_note": "The derivative of ln x is wrong, which costs the answer, but the limit is still written symbolically as x tends to infinity and this point has no eligibility restriction."
+      },
+      {
+         "id": "GR-B-021",
+         "item_id": "FRQ-GLD-B-04",
+         "target_point": "a1",
+         "target_point_type": "BC-PT-99056",
+         "category": "fully_correct",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "u = x \\quad dv = \\sin(\\frac{x}{2}) dx",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "du = dx \\quad v = -2\\cos(\\frac{x}{2})",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\int_{0}^{\\pi} x\\sin(\\frac{x}{2}) dx = [-2x\\cos(\\frac{x}{2})]_{0}^{\\pi} - \\int_{0}^{\\pi} -2\\cos(\\frac{x}{2}) dx",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "= (-2\\pi \\cos(\\frac{\\pi}{2}) - 0) + [4\\sin(\\frac{x}{2})]_{0}^{\\pi}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "= 0 + 4 - 0 = 4",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "4"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "a3": 1
+         },
+         "label_note": "u, dv, du and v are all stated correctly."
+      },
+      {
+         "id": "GR-B-022",
+         "item_id": "FRQ-GLD-B-04",
+         "target_point": "a1",
+         "target_point_type": "BC-PT-99056",
+         "category": "unconventional_valid",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "tabular",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "D column: \\(x\\), \\(1\\), \\(0\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "I column: \\(\\sin(\\frac{x}{2})\\), \\(-2\\cos(\\frac{x}{2})\\), \\(-4\\sin(\\frac{x}{2})\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "signs \\(+\\), \\(-\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "= [-2x\\cos(\\frac{x}{2}) + 4\\sin(\\frac{x}{2})]_{0}^{\\pi}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "= (0 + 4) - (0 + 0) = 4",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "4"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "a3": 1
+         },
+         "label_note": "Tabular columns beginning with x and sin(x/2) are accepted as the choice of u and dv."
+      },
+      {
+         "id": "GR-B-023",
+         "item_id": "FRQ-GLD-B-04",
+         "target_point": "a1",
+         "target_point_type": "BC-PT-99056",
+         "category": "narrow_fail",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "u = x , \\quad dv = \\sin(\\frac{x}{2}) dx",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "du = dx , \\quad v = -\\frac{1}{2}\\cos(\\frac{x}{2})",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\int_{0}^{\\pi} x \\sin(\\frac{x}{2}) dx = -\\frac{1}{2} x \\cos(\\frac{x}{2}) + \\int \\frac{1}{2}\\cos(\\frac{x}{2}) dx",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "= [-\\frac{1}{2} x\\cos(\\frac{x}{2}) + \\frac{1}{4}\\sin(\\frac{x}{2})]_{0}^{\\pi}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "= \\frac{1}{4}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "\\frac{1}{4}"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 0,
+            "a2": 0,
+            "a3": 0
+         },
+         "label_note": "The choice of u and dv is right but v is wrong, -1/2 cos(x/2) instead of -2cos(x/2), so the assignment with du and v is not correct."
+      },
+      {
+         "id": "GR-B-024",
+         "item_id": "FRQ-GLD-B-04",
+         "target_point": "a1",
+         "target_point_type": "BC-PT-99056",
+         "category": "notation_failure",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "u = x \\quad dv = \\sin(\\frac{x}{2})",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "du = 1 \\quad v = -2\\cos(\\frac{x}{2})",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\int_{0}^{\\pi} x \\sin(\\frac{x}{2}) = -2x\\cos(\\frac{x}{2}) - \\int -2\\cos(\\frac{x}{2})",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "= -2x\\cos(\\frac{x}{2}) + 4\\sin(\\frac{x}{2}) , \\quad 0 \\to \\pi",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "= 4",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "4"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "a3": 1
+         },
+         "label_note": "The differentials are missing from dv and du, but the choice and the resulting du and v are correct and this point states no notation requirement beyond the parts structure."
+      },
+      {
+         "id": "GR-B-025",
+         "item_id": "FRQ-GLD-B-04",
+         "target_point": "a1",
+         "target_point_type": "BC-PT-99056",
+         "category": "eligible_after_error",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "integral of \\(x \\sin(2x)\\) from 0 to \\(\\pi\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "u = x \\quad dv = \\sin(2x) dx",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "du = dx \\quad v = -\\frac{1}{2}\\cos(2x)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "= [-\\frac{1}{2} x \\cos(2x)]_{0}^{\\pi} - \\int_{0}^{\\pi} -\\frac{1}{2}\\cos(2x) dx",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "= -\\frac{\\pi}{2} + [\\frac{1}{4}\\sin(2x)]_{0}^{\\pi} = -\\frac{\\pi}{2}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "-\\frac{\\pi}{2}"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "a3": 0
+         },
+         "label_note": "The integrand is miscopied as x sin(2x), which still requires parts, so the response stays eligible and earns this point for a correct u, dv, du and v on that integral."
+      },
+      {
+         "id": "GR-B-026",
+         "item_id": "FRQ-GLD-B-05",
+         "target_point": "a2",
+         "target_point_type": "BC-PT-99061",
+         "category": "fully_correct",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "\\(x = 3\\) and \\(x = 7\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "At \\(x = 3\\), \\(f'\\) changes from increasing to decreasing, and at \\(x = 7\\), \\(f'\\) changes from decreasing to increasing. So the concavity of \\(f\\) changes at both.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\(x = 5\\) and \\(x = 9\\) are where \\(f' = 0\\), which are critical points, not inflection points.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "x = 3, 7"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1
+         },
+         "label_note": "The reason is stated in terms of f' changing between increasing and decreasing at each value."
+      },
+      {
+         "id": "GR-B-027",
+         "item_id": "FRQ-GLD-B-05",
+         "target_point": "a2",
+         "target_point_type": "BC-PT-99061",
+         "category": "unconventional_valid",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "inflection points of \\(f\\) are where \\(f'\\) has a local extremum",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\(f'\\) goes up then down at 3 so \\(f'\\) has a rel max at \\(x = 3\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\(f'\\) goes down then up at 7 so \\(f'\\) has a rel min at \\(x = 7\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "POI at \\(x = 3, 7\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "x = 3, x = 7"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1
+         },
+         "label_note": "A relative maximum of f' at x = 3 and a relative minimum of f' at x = 7 is an accepted reason tied to the described derivative."
+      },
+      {
+         "id": "GR-B-028",
+         "item_id": "FRQ-GLD-B-05",
+         "target_point": "a2",
+         "target_point_type": "BC-PT-99061",
+         "category": "narrow_fail",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "\\(f''\\) is positive on \\(0 < x < 3\\), negative on \\(3 < x < 7\\), positive on \\(7 < x < 10\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\(f''\\) changes sign at \\(x = 3\\) and \\(x = 7\\), so these are points of inflection",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "x = 3 \\text{ and } x = 7"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 0
+         },
+         "label_note": "The reason is given only as f'' changing sign, which the rubric states earns the location point but not the reason point tied to f'."
+      },
+      {
+         "id": "GR-B-029",
+         "item_id": "FRQ-GLD-B-05",
+         "target_point": "a2",
+         "target_point_type": "BC-PT-99061",
+         "category": "notation_failure",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "x = 3 and x = 7",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "because the graph changes from increasing to decreasing at x = 3 and from decreasing to increasing at x = 7",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "x = 3, 7"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 0
+         },
+         "label_note": "The intended object is f', but 'the graph' is an ambiguous term that does not identify which function changes, so the reason does not earn the point."
+      },
+      {
+         "id": "GR-B-030",
+         "item_id": "FRQ-GLD-B-05",
+         "target_point": "a2",
+         "target_point_type": "BC-PT-99061",
+         "category": "eligible_after_error",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "\\(f'\\) switches from increasing to decreasing at \\(x = 3\\) and decreasing to increasing at \\(x = 7\\), so inflection points there.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "Also \\(f'(5) = 0\\) so \\(x = 5\\) is an inflection point.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\(x = 3, 5, 7\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "x = 3, 5, 7"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 0,
+            "a2": 0
+         },
+         "label_note": "The reasons at 3 and 7 are correct, but the extra declared value x = 5 forfeits both the location point and this reason point."
+      },
+      {
+         "id": "GR-B-031",
+         "item_id": "FRQ-GLD-B-06",
+         "target_point": "b1",
+         "target_point_type": "BC-PT-99062",
+         "category": "fully_correct",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "f''(x) = 2x - 6",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "f''(x) < 0 \\quad x < 3",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "concave down on \\((-\\infty, 3)\\) because \\(f'' < 0\\) there",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "(-\\infty, 3)"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "f'(x) = (x-1)(x-5) < 0 \\quad 1 < x < 5",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "f''(x) = 2x - 6 > 0 \\quad x > 3",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "both on \\((3, 5)\\) because \\(f' < 0\\) and \\(f'' > 0\\) there",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "(3, 5)"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "b1": 1,
+            "b2": 1
+         },
+         "label_note": "The interval (3, 5) is exactly where both conditions hold."
+      },
+      {
+         "id": "GR-B-032",
+         "item_id": "FRQ-GLD-B-06",
+         "target_point": "b1",
+         "target_point_type": "BC-PT-99062",
+         "category": "unconventional_valid",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "\\(f'\\) is an upward parabola with vertex at \\(x = 3\\), so \\(f'\\) is decreasing left of 3",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\(f\\) is concave down for \\(x < 3\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "x < 3"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "sign chart",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\(f'\\): \\(+\\) before 1, \\(-\\) between 1 and 5, \\(+\\) after 5",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\(f''\\): \\(-\\) before 3, \\(+\\) after 3",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "both conditions on \\([3, 5]\\) since \\(f'\\) is negative and increasing there",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "[3, 5]"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "b1": 1,
+            "b2": 1
+         },
+         "label_note": "The closed interval [3, 5] is accepted because endpoints are optional for this point."
+      },
+      {
+         "id": "GR-B-033",
+         "item_id": "FRQ-GLD-B-06",
+         "target_point": "b1",
+         "target_point_type": "BC-PT-99062",
+         "category": "narrow_fail",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "f'' = 2x - 6",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\(f'' < 0\\) for \\(x < 3\\) so concave down on \\(x < 3\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "x < 3"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "f' = (x-1)(x-5)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\(f\\) decreasing when \\(f' < 0\\): \\(1 < x < 5\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "answer \\(1 < x < 5\\) since \\(f' < 0\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "1 < x < 5"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "b1": 0,
+            "b2": 0
+         },
+         "label_note": "The interval 1 < x < 5 answers only the decreasing half of the compound condition and ignores concave up."
+      },
+      {
+         "id": "GR-B-034",
+         "item_id": "FRQ-GLD-B-06",
+         "target_point": "b1",
+         "target_point_type": "BC-PT-99062",
+         "category": "notation_failure",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "f''(x) = 2x - 6 < 0 \\quad x < 3",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "CD on \\(x < 3\\), \\(f''\\) negative",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "x < 3"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "dec: \\(f' < 0\\) on \\(1 < x < 5\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "CU: \\(f'' > 0\\) on \\(x > 3\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "both: \\((3, 5]\\) because \\(f' < 0\\) and \\(f'' > 0\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "(3, 5]"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "b1": 1,
+            "b2": 1
+         },
+         "label_note": "The half-open interval includes x = 5, where f' = 0, but endpoints are optional for this point, so the interval is accepted."
+      },
+      {
+         "id": "GR-B-035",
+         "item_id": "FRQ-GLD-B-06",
+         "target_point": "b1",
+         "target_point_type": "BC-PT-99062",
+         "category": "eligible_after_error",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "f''(x) = 2x - 5",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "2x - 5 < 0 , \\quad x < \\frac{5}{2}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "concave down on \\(x < \\frac{5}{2}\\) because \\(f'' < 0\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "x < \\frac{5}{2}"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "\\(f' < 0\\) on \\(1 < x < 5\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\(f'' > 0\\) on \\(x > \\frac{5}{2}\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "so \\(\\frac{5}{2} < x < 5\\), since \\(f'\\) is negative and \\(f''\\) positive",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "\\frac{5}{2} < x < 5"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 0,
+            "a2": 0,
+            "b1": 0,
+            "b2": 0
+         },
+         "label_note": "The wrong f'' from part (a) is carried into part (b); the interval point has no consistency allowance, so 5/2 < x < 5 does not earn it."
+      },
+      {
+         "id": "GR-B-036",
+         "item_id": "FRQ-GLD-B-06",
+         "target_point": "b2",
+         "target_point_type": "BC-PT-99063",
+         "category": "fully_correct",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "f''(x) = 2x - 6",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\(f'' < 0\\) when \\(x < 3\\), so \\(f\\) is concave down on \\((-\\infty, 3)\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "(-\\infty, 3)"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "\\(f'(x) = (x-1)(x-5)\\) is negative on \\(1 < x < 5\\), so \\(f\\) is decreasing there",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\(f''(x) > 0\\) for \\(x > 3\\), so \\(f'\\) is increasing and \\(f\\) is concave up there",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "On \\(3 < x < 5\\), \\(f' < 0\\) and \\(f'\\) is increasing.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "3 < x < 5"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "b1": 1,
+            "b2": 1
+         },
+         "label_note": "The reason cites both f' < 0 and f' increasing on 3 < x < 5."
+      },
+      {
+         "id": "GR-B-037",
+         "item_id": "FRQ-GLD-B-06",
+         "target_point": "b2",
+         "target_point_type": "BC-PT-99063",
+         "category": "unconventional_valid",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "\\(f'\\) is a parabola opening up with vertex at \\(x = 3\\); left of the vertex \\(f'\\) falls",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "so concave down for \\(x < 3\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "x < 3"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "between its roots 1 and 5 the parabola \\(f'\\) is below the x-axis, and right of its vertex at 3 it is rising",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "so on \\(3 < x < 5\\) \\(f'\\) is below the axis and rising",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "3 < x < 5"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "b1": 1,
+            "b2": 1
+         },
+         "label_note": "Describing f' as below the axis and rising on 3 < x < 5 is the sign of f' and its increasing behaviour, in geometric words."
+      },
+      {
+         "id": "GR-B-038",
+         "item_id": "FRQ-GLD-B-06",
+         "target_point": "b2",
+         "target_point_type": "BC-PT-99063",
+         "category": "narrow_fail",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "f'' = 2x - 6",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "CD when \\(f'' < 0\\): \\(x < 3\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "x < 3"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "f' = (x-1)(x-5)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "decreasing on (1, 5) and concave up on \\(x > 3\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\((3, 5)\\) because \\(f'' > 0\\) for \\(x > 3\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "(3, 5)"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "b1": 1,
+            "b2": 0
+         },
+         "label_note": "The stated reason addresses only concave up (f'' > 0) and never gives f' < 0 as the reason, so it covers one half of the compound condition."
+      },
+      {
+         "id": "GR-B-039",
+         "item_id": "FRQ-GLD-B-06",
+         "target_point": "b2",
+         "target_point_type": "BC-PT-99063",
+         "category": "notation_failure",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "f''(x) = 2x - 6",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\(f''\\) negative on \\(x < 3\\), concave down",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "x < 3"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "\\((3, 5)\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "because \\(f\\) is negative and \\(f'\\) is increasing there",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "(3, 5)"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "b1": 1,
+            "b2": 0
+         },
+         "label_note": "The sign condition is attributed to f rather than f', which is a false statement about f, so the reason does not correctly cite the sign of the derivative."
+      },
+      {
+         "id": "GR-B-040",
+         "item_id": "FRQ-GLD-B-06",
+         "target_point": "b2",
+         "target_point_type": "BC-PT-99063",
+         "category": "eligible_after_error",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "f''(x) = 2x - 6",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\(f'' > 0\\) for \\(x > 3\\) so concave down on \\(x > 3\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "x > 3"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "\\(f' = (x-1)(x-5) < 0\\) on \\(1 < x < 5\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\(f'' = 2x - 6 > 0\\) on \\(x > 3\\), \\(f'\\) increasing",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\(3 < x < 5\\) because \\(f' < 0\\) and \\(f'\\) is increasing",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "3 < x < 5"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 0,
+            "a2": 0,
+            "b1": 1,
+            "b2": 1
+         },
+         "label_note": "Part (a) is wrong, but part (b) is independent of it, gets the interval, and cites both f' < 0 and f' increasing."
+      },
+      {
+         "id": "GR-B-041",
+         "item_id": "FRQ-GLD-B-07",
+         "target_point": "a3",
+         "target_point_type": "BC-PT-99064",
+         "category": "fully_correct",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "x(2) = 3 + \\int_{0}^{2} (\\sin(t^{2}) + 1) dt = 5.805",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "x'(2) = 0.2432 , \\quad y'(2) = -0.1531",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "speed = \\sqrt{(0.2432)^{2} + (-0.1531)^{2}} = 0.287",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "x(2) = 5.805, speed = 0.287"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "a3": 1
+         },
+         "label_note": "Both values carry labels, x(2) and speed."
+      },
+      {
+         "id": "GR-B-042",
+         "item_id": "FRQ-GLD-B-07",
+         "target_point": "a3",
+         "target_point_type": "BC-PT-99064",
+         "category": "unconventional_valid",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "x(t) = 3 + \\int_{0}^{t} (\\sin(s^{2}) + 1) ds",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "3 + \\int_{0}^{2} (\\sin(s^{2}) + 1) ds = 5.805",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\sqrt{(x'(2))^{2} + (y'(2))^{2}} = 0.287",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "The x-coordinate at \\(t = 2\\) is 5.805 and the particle's speed at \\(t = 2\\) is 0.287.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "5.805 and 0.287"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "a3": 1
+         },
+         "label_note": "The labels are given in a sentence rather than as equations, which still identifies each value."
+      },
+      {
+         "id": "GR-B-043",
+         "item_id": "FRQ-GLD-B-07",
+         "target_point": "a3",
+         "target_point_type": "BC-PT-99064",
+         "category": "narrow_fail",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\int_{0}^{2} (\\sin(t^{2}) + 1) dt = 2.805",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "3 + 2.805 = 5.805",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\sqrt{(0.2432)^{2} + (-0.1531)^{2}} = 0.287",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "5.805, 0.287"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "a3": 0
+         },
+         "label_note": "The work is right but neither value is ever named as x(2) or as speed, so the values are unlabelled."
+      },
+      {
+         "id": "GR-B-044",
+         "item_id": "FRQ-GLD-B-07",
+         "target_point": "a3",
+         "target_point_type": "BC-PT-99064",
+         "category": "notation_failure",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "x(2) = 3 + \\int_{0}^{2} (\\sin(t^{2}) + 1) dt = 5.805",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "v(2) = \\sqrt{x'(2)^{2} + y'(2)^{2}} = \\sqrt{(0.2432)^{2} + (-0.1531)^{2}} = 0.287",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "x(2) = 5.805, v(2) = 0.287"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "a3": 1
+         },
+         "label_note": "Speed is labelled v(2), the velocity symbol, but the square-root setup makes the quantity clear and the rubric treats imperfect label communication as scratch work, so it is judged labelled; a stricter reader could withhold it."
+      },
+      {
+         "id": "GR-B-045",
+         "item_id": "FRQ-GLD-B-07",
+         "target_point": "a3",
+         "target_point_type": "BC-PT-99064",
+         "category": "eligible_after_error",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "x(2) = 3 + \\int_{0}^{2} (\\sin(t^{2}) + 1) dt = 5.805",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "speed = x'(2) + y'(2) = 0.2432 - 0.1531 = 0.090",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "x(2) = 5.805, speed = 0.090"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 0,
+            "a3": 1
+         },
+         "label_note": "The speed is computed wrongly, which costs a2, but both reported values are labelled and the criterion judges correctness elsewhere, so the labelling point is earned."
+      },
+      {
+         "id": "GR-B-046",
+         "item_id": "FRQ-GLD-B-08",
+         "target_point": "a1",
+         "target_point_type": "BC-PT-99066",
+         "category": "fully_correct",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\frac{dy}{dx} = \\frac{1(4-2)}{2} = 1",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "The segment of the slope field at \\((1, 2)\\) has slope 1, which is positive, so the solution curve through \\((1, 2)\\) is increasing there.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "slope 1 > 0"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\frac{dy}{dx} = \\frac{2(4-5)}{2} = -1",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "The segment at \\((2, 5)\\) has negative slope, so the solution curve through it is decreasing there.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "slope -1 < 0"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "b1": 1
+         },
+         "label_note": "The explanation refers to the positive slope of the field segment at (1, 2)."
+      },
+      {
+         "id": "GR-B-047",
+         "item_id": "FRQ-GLD-B-08",
+         "target_point": "b1",
+         "target_point_type": "BC-PT-99066",
+         "category": "unconventional_valid",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "at \\((1, 2)\\) the little line segment has slope \\(\\frac{1 \\cdot 2}{2} = 1 > 0\\), so the curve goes up there",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "increasing"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "For every point with \\(x > 0\\) and \\(y > 4\\), \\(x > 0\\) and \\(4 - y < 0\\) so every segment in that region of the slope field has negative slope.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\((2, 5)\\) is in that region, so the solution curve through it is decreasing near \\((2, 5)\\).",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "decreasing"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "b1": 1
+         },
+         "label_note": "A region-wide argument that every segment with x > 0 and y > 4 has negative slope, applied to (2, 5), is an accepted explanation using the field."
+      },
+      {
+         "id": "GR-B-048",
+         "item_id": "FRQ-GLD-B-08",
+         "target_point": "a1",
+         "target_point_type": "BC-PT-99066",
+         "category": "narrow_fail",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\frac{dy}{dx} = \\frac{1(4-2)}{2} = 1",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\(\\frac{dy}{dx} > 0\\) so \\(y\\) is increasing",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "increasing"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\frac{dy}{dx} = \\frac{2(-1)}{2} = -1",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "the slope segment at \\((2, 5)\\) is negative so the solution curve goes down there",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "decreasing"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 0,
+            "b1": 1
+         },
+         "label_note": "Part (a) states only that dy/dx is positive, with no reference to the segments or to the solution curve's slope, which is the sign of the derivative with no connection to the field."
+      },
+      {
+         "id": "GR-B-049",
+         "item_id": "FRQ-GLD-B-08",
+         "target_point": "b1",
+         "target_point_type": "BC-PT-99066",
+         "category": "notation_failure",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "At \\((1, 2)\\) the slope of the segment is \\(\\frac{1 \\cdot 2}{2} = 1\\), positive, so the solution curve rises there.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "increasing"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "At \\((2, 5)\\) the slope field is negative, \\(\\frac{dy}{dx} = -1\\), so the solution is decreasing.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "decreasing"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "b1": 0
+         },
+         "label_note": "Part (b) refers to the sign of the slope field rather than the sign of the slopes of its segments, which the rubric lists as a communication failure even though the value -1 is right."
+      },
+      {
+         "id": "GR-B-050",
+         "item_id": "FRQ-GLD-B-08",
+         "target_point": "b1",
+         "target_point_type": "BC-PT-99066",
+         "category": "eligible_after_error",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\frac{dy}{dx} = \\frac{1(2-4)}{2} = -1",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "the segment at \\((1,2)\\) has slope \\(-1\\) so it is decreasing?? (but question says increasing)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "-1"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\frac{dy}{dx} = \\frac{2(4 - 5)}{2} = -1",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "segments near \\((2, 5)\\) have negative slope, so the solution curve through \\((2, 5)\\) is decreasing near there",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "decreasing"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 0,
+            "b1": 1
+         },
+         "label_note": "Part (a) is wrong from a sign slip, but part (b) is its own local argument citing the negative slopes of the segments near (2, 5), and this point has no dependence on part (a)."
+      },
+      {
+         "id": "GR-B-051",
+         "item_id": "FRQ-GLD-B-09",
+         "target_point": "a2",
+         "target_point_type": "BC-PT-99068",
+         "category": "fully_correct",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "geometric, first term \\(\\frac{x}{3}\\), ratio \\(\\frac{x}{3}\\), \\(|\\frac{x}{3}| < 1\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "g(x) = \\frac{x/3}{1 - x/3}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "= \\frac{x/3}{(3 - x)/3}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "= \\frac{x}{3 - x}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "g(x) = \\frac{x}{3-x}"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\frac{x}{3-x} = 1",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "x = 3 - x , \\quad x = \\frac{3}{2}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "x = \\frac{3}{2}"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "b1": 1
+         },
+         "label_note": "The chain runs from the sum formula through a correct step and closes on x/(3 - x)."
+      },
+      {
+         "id": "GR-B-052",
+         "item_id": "FRQ-GLD-B-09",
+         "target_point": "a2",
+         "target_point_type": "BC-PT-99068",
+         "category": "unconventional_valid",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "g = \\frac{x}{3} + (\\frac{x}{3})^{2} + (\\frac{x}{3})^{3} + ...",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\frac{x}{3} g = (\\frac{x}{3})^{2} + (\\frac{x}{3})^{3} + ...",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "g - \\frac{x}{3} g = \\frac{x}{3}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "g (1 - \\frac{x}{3}) = \\frac{x}{3}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "g = \\frac{x}{3} \\cdot \\frac{1}{1 - x/3} = \\frac{x}{3} \\cdot \\frac{3}{3 - x} = \\frac{x}{3-x}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "g(x) = \\frac{x}{3-x}"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "x = 3 - x",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "x = 1.5",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "1.5"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "b1": 1
+         },
+         "label_note": "The shift-and-subtract derivation reaches the first-term-over-one-minus-ratio form and the algebra closes on x/(3 - x)."
+      },
+      {
+         "id": "GR-B-053",
+         "item_id": "FRQ-GLD-B-09",
+         "target_point": "a2",
+         "target_point_type": "BC-PT-99068",
+         "category": "narrow_fail",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "geometric with \\(a = \\frac{x}{3}\\) and \\(r = \\frac{x}{3}\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "g(x) = \\frac{x}{3} \\cdot \\frac{1}{1 - x/3}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "which is the formula for g, shown",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "g(x) = \\frac{x}{3} \\cdot \\frac{1}{1 - x/3}"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\frac{x}{3-x} = 1 , \\quad x = \\frac{3}{2}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "\\frac{3}{2}"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 0,
+            "b1": 1
+         },
+         "label_note": "The chain stops at (x/3)(1/(1 - x/3)) and never reaches the target x/(3 - x)."
+      },
+      {
+         "id": "GR-B-054",
+         "item_id": "FRQ-GLD-B-09",
+         "target_point": "a2",
+         "target_point_type": "BC-PT-99068",
+         "category": "notation_failure",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "a = x/3, r = x/3",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "g(x) = x/3 / 1 - x/3",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "= \\frac{x}{3-x}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "\\frac{x}{3-x}"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "x = 3 - x",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "x = \\frac{3}{2}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "x = \\frac{3}{2}"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 0,
+            "b1": 1
+         },
+         "label_note": "Written without grouping, x/3 / 1 - x/3 reads as x/3 - x/3 = 0, so the chain contains a false equality before it reaches x/(3 - x) and does not verify the target, even though the intended setup is clear enough to keep a1."
+      },
+      {
+         "id": "GR-B-055",
+         "item_id": "FRQ-GLD-B-09",
+         "target_point": "a2",
+         "target_point_type": "BC-PT-99068",
+         "category": "eligible_after_error",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "first term 1, ratio \\(\\frac{x}{3}\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "g(x) = \\frac{1}{1 - x/3} = \\frac{3}{3-x}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "= \\frac{x}{3-x}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "\\frac{x}{3-x}"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\frac{x}{3-x} = 1",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "x = \\frac{3}{2}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "x = \\frac{3}{2}"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 0,
+            "a2": 0,
+            "b1": 1
+         },
+         "label_note": "The first term is taken as 1, so the setup point is lost and the verification, which requires it, is unavailable; the chain also jumps from 3/(3 - x) to the target with a false equality."
+      },
+      {
+         "id": "GR-B-056",
+         "item_id": "FRQ-GLD-B-10",
+         "target_point": "a1",
+         "target_point_type": "BC-PT-99028",
+         "category": "fully_correct",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\frac{dy}{y-1} = \\cos x dx",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\ln|y-1| = \\sin x + C",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\ln|3-1| = \\sin 0 + C , \\quad C = \\ln 2",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "|y-1| = e^{\\sin x + \\ln 2} = 2e^{\\sin x}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\(y - 1 > 0\\) at \\((0, 3)\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "y = 1 + 2e^{\\sin x}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "y = 1 + 2e^{\\sin x}"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "g(2) = 5 + \\int_{0}^{2} (1 + 2e^{\\sin x}) dx",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "g(2) = 5 + \\int_{0}^{2} (1 + 2e^{\\sin x}) dx"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "a3": 1,
+            "a4": 1,
+            "a5": 1,
+            "b1": 1
+         },
+         "label_note": "The variables are separated with each differential on its own side."
+      },
+      {
+         "id": "GR-B-057",
+         "item_id": "FRQ-GLD-B-10",
+         "target_point": "a1",
+         "target_point_type": "BC-PT-99028",
+         "category": "unconventional_valid",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "separate and integrate from the initial point",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\int_{3}^{y} \\frac{1}{s-1} ds = \\int_{0}^{x} \\cos t dt",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\ln|y-1| - \\ln 2 = \\sin x",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\ln(\\frac{y-1}{2}) = \\sin x",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "y = 1 + 2e^{\\sin x}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "y = 1 + 2e^{\\sin x}"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "g(2) = g(0) + \\int_{0}^{2} g'(x) dx = 5 + \\int_{0}^{2} (1 + 2e^{\\sin x}) dx",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "5 + \\int_{0}^{2} (1 + 2e^{\\sin x}) dx"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "a3": 1,
+            "a4": 1,
+            "a5": 1,
+            "b1": 1
+         },
+         "label_note": "The separation appears inside a definite-integral form, with y and its differential on one side and x and its differential on the other."
+      },
+      {
+         "id": "GR-B-058",
+         "item_id": "FRQ-GLD-B-10",
+         "target_point": "a1",
+         "target_point_type": "BC-PT-99028",
+         "category": "narrow_fail",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "dy = (y - 1)\\cos x dx",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "y = (y - 1)\\sin x + C",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "3 = 2 \\cdot 0 + C , \\quad C = 3",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "y = (y-1)\\sin x + 3",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "y = (y-1)\\sin x + 3"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "g(2) = 5 + \\int_{0}^{2} f(x) dx",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "g(2) = 5 + \\int_{0}^{2} f(x) dx"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 0,
+            "a2": 0,
+            "a3": 0,
+            "a4": 0,
+            "a5": 0,
+            "b1": 1
+         },
+         "label_note": "Both variables stay on the same side, so there is no separation and part (a) scores zero."
+      },
+      {
+         "id": "GR-B-059",
+         "item_id": "FRQ-GLD-B-10",
+         "target_point": "a1",
+         "target_point_type": "BC-PT-99028",
+         "category": "notation_failure",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\frac{1}{y-1} = \\cos x",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\ln|y-1| = \\sin x + C",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\ln 2 = C",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "y = 1 + 2e^{\\sin x}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "y = 1 + 2e^{\\sin x}"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "g(2) = 5 + \\int_{0}^{2} (1 + 2e^{\\sin x}) dx",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "5 + \\int_{0}^{2} (1 + 2e^{\\sin x}) dx"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 0,
+            "a2": 0,
+            "a3": 0,
+            "a4": 0,
+            "a5": 0,
+            "b1": 1
+         },
+         "label_note": "The separated line has no differentials and as written claims 1/(y - 1) equals cos x, so it is not the separated form the point requires, and the rest of part (a) is unavailable; a lenient reader might read intent here."
+      },
+      {
+         "id": "GR-B-060",
+         "item_id": "FRQ-GLD-B-10",
+         "target_point": "a1",
+         "target_point_type": "BC-PT-99028",
+         "category": "eligible_after_error",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "(y - 1) dy = \\cos x dx",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\frac{1}{2}(y-1)^{2} = \\sin x + C",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\frac{4}{2} = 0 + C , \\quad C = 2",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "(y - 1)^{2} = 2\\sin x + 4",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "y = 1 + \\sqrt{2\\sin x + 4}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "y = 1 + \\sqrt{2\\sin x + 4}"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "g(2) = 5 + \\int_{0}^{2} (1 + \\sqrt{2\\sin x + 4}) dx",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "g(2) = 5 + \\int_{0}^{2} (1 + \\sqrt{2\\sin x + 4}) dx"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 0,
+            "a2": 0,
+            "a3": 1,
+            "a4": 0,
+            "a5": 0,
+            "b1": 1
+         },
+         "label_note": "Multiplying by y - 1 instead of dividing is a separation error, so this point is lost; the x side stays correct, which keeps only the matching antiderivative point available."
+      },
+      {
+         "id": "GR-B-061",
+         "item_id": "FRQ-GLD-B-10",
+         "target_point": "a4",
+         "target_point_type": "BC-PT-99031",
+         "category": "fully_correct",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\frac{1}{y-1} dy = \\cos x dx",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\int \\frac{1}{y-1} dy = \\int \\cos x dx",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\ln|y - 1| = \\sin x + C",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "plug in \\((0, 3)\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\ln 2 = \\sin 0 + C",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "C = \\ln 2",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "y - 1 = e^{\\sin x + \\ln 2} = 2e^{\\sin x}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "y = 1 + 2e^{\\sin x}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "y = 1 + 2e^{\\sin x}"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "g(2) = 5 + \\int_{0}^{2} f(x) dx = 5 + \\int_{0}^{2} (1 + 2e^{\\sin x}) dx",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "g(2) = 5 + \\int_{0}^{2} (1 + 2e^{\\sin x}) dx"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "a3": 1,
+            "a4": 1,
+            "a5": 1,
+            "b1": 1
+         },
+         "label_note": "The constant C appears in the equation and the initial values x = 0, y = 3 are substituted to give C = ln 2."
+      },
+      {
+         "id": "GR-B-062",
+         "item_id": "FRQ-GLD-B-10",
+         "target_point": "a4",
+         "target_point_type": "BC-PT-99031",
+         "category": "unconventional_valid",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\frac{dy}{y-1} = \\cos x dx",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\ln|y - 1| = \\sin x + C",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "|y - 1| = e^{C} e^{\\sin x}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "y - 1 = K e^{\\sin x}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "3 - 1 = K e^{0} , \\quad K = 2",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "y = 1 + 2e^{\\sin x}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "y = 1 + 2e^{\\sin x}"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "g(2) = 5 + \\int_{0}^{2} (1 + 2e^{\\sin x}) dx",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "g(2) = 5 + \\int_{0}^{2} (1 + 2e^{\\sin x}) dx"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "a3": 1,
+            "a4": 1,
+            "a5": 1,
+            "b1": 1
+         },
+         "label_note": "The additive constant is converted to a multiplicative constant K, which is then found from the initial condition, an accepted way to use the constant."
+      },
+      {
+         "id": "GR-B-063",
+         "item_id": "FRQ-GLD-B-10",
+         "target_point": "a4",
+         "target_point_type": "BC-PT-99031",
+         "category": "narrow_fail",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\frac{dy}{y-1} = \\cos x dx",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\ln|y-1| = \\sin x",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "y - 1 = e^{\\sin x}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "y = 1 + e^{\\sin x}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "check: \\(f(0) = 1 + 1 = 2\\)?",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "y = 1 + e^{\\sin x}"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "g(2) = 5 + \\int_{0}^{2} (1 + e^{\\sin x}) dx",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "g(2) = 5 + \\int_{0}^{2} (1 + e^{\\sin x}) dx"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "a3": 1,
+            "a4": 0,
+            "a5": 0,
+            "b1": 1
+         },
+         "label_note": "No constant of integration appears anywhere, which blocks this point and the solve point."
+      },
+      {
+         "id": "GR-B-064",
+         "item_id": "FRQ-GLD-B-10",
+         "target_point": "a4",
+         "target_point_type": "BC-PT-99031",
+         "category": "notation_failure",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\frac{dy}{y-1} = \\cos x dx",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\ln y - 1 = \\sin x + C",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\ln 3 - 1 = \\sin 0 + C",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "C = \\ln 2",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "y = 1 + 2e^{\\sin x}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "y = 1 + 2e^{\\sin x}"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "g(2) = 5 + \\int_{0}^{2} (1 + 2e^{\\sin x}) dx",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "g(2) = 5 + \\int_{0}^{2} (1 + 2e^{\\sin x}) dx"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 0,
+            "a3": 1,
+            "a4": 1,
+            "a5": 0,
+            "b1": 1
+         },
+         "label_note": "Missing parentheses make ln y - 1 read as (ln y) - 1, which costs the logarithmic antiderivative and so the solve point, but a constant is included and the initial values are substituted to reach C = ln 2; judged earned on the evident substitution, though the substituted line as literally written does not give ln 2."
+      },
+      {
+         "id": "GR-B-065",
+         "item_id": "FRQ-GLD-B-10",
+         "target_point": "a4",
+         "target_point_type": "BC-PT-99031",
+         "category": "eligible_after_error",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\frac{dy}{y-1} = \\cos x dx",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "-(y-1)^{-2} = \\sin x + C",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "-\\frac{1}{4} = 0 + C , \\quad C = -\\frac{1}{4}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "-(y-1)^{-2} = \\sin x - \\frac{1}{4}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "y = 1 + (1/4 - \\sin x)^{-1/2}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "y = 1 + (1/4 - \\sin x)^{-1/2}"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "g(2) = 5 + \\int_{0}^{2} f(x) dx",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "g(2) = 5 + \\int_{0}^{2} f(x) dx"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 0,
+            "a3": 1,
+            "a4": 1,
+            "a5": 0,
+            "b1": 1
+         },
+         "label_note": "The y-side antiderivative is wrong, but separation and the x-side antiderivative stand, and the constant is included and found from (0, 3) in the student's equation, so this point is earned."
+      },
+      {
+         "id": "GR-B-066",
+         "item_id": "FRQ-GLD-B-10",
+         "target_point": "b1",
+         "target_point_type": "BC-PT-99033",
+         "category": "fully_correct",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\frac{dy}{y - 1} = \\cos x dx",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\ln|y - 1| = \\sin x + C , \\quad C = \\ln 2",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "y = 1 + 2e^{\\sin x}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "y = 1 + 2e^{\\sin x}"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "g(2) = g(0) + \\int_{0}^{2} g'(x) dx",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "g(2) = 5 + \\int_{0}^{2} (1 + 2e^{\\sin x}) dx",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "5 + \\int_{0}^{2} (1 + 2e^{\\sin x}) dx"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "a3": 1,
+            "a4": 1,
+            "a5": 1,
+            "b1": 1
+         },
+         "label_note": "g(0) = 5 is added to the definite integral of f from 0 to 2."
+      },
+      {
+         "id": "GR-B-067",
+         "item_id": "FRQ-GLD-B-10",
+         "target_point": "b1",
+         "target_point_type": "BC-PT-99033",
+         "category": "unconventional_valid",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\frac{dy}{y-1} = \\cos x dx",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\ln|y-1| = \\sin x + C",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\ln 2 = C",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "y = 1 + 2e^{\\sin x}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "y = 1 + 2e^{\\sin x}"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "g(x) = 5 + \\int_{0}^{x} f(t) dt",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "g(2) = \\int_{0}^{2} 1 dt + \\int_{0}^{2} 2e^{\\sin t} dt + 5",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "\\int_{0}^{2} 1 dt + \\int_{0}^{2} 2e^{\\sin t} dt + 5"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "a3": 1,
+            "a4": 1,
+            "a5": 1,
+            "b1": 1
+         },
+         "label_note": "The integral is split into two pieces with the 5 added at the end, which still adds the known value to the accumulated change over [0, 2]."
+      },
+      {
+         "id": "GR-B-068",
+         "item_id": "FRQ-GLD-B-10",
+         "target_point": "b1",
+         "target_point_type": "BC-PT-99033",
+         "category": "narrow_fail",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\frac{dy}{y-1} = \\cos x dx",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\ln|y-1| = \\sin x + C , \\quad \\ln 2 = C",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "y = 1 + 2e^{\\sin x}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "y = 1 + 2e^{\\sin x}"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "g(2) = \\int_{0}^{2} (1 + 2e^{\\sin x}) dx",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "g(2) = \\int_{0}^{2} (1 + 2e^{\\sin x}) dx"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "a3": 1,
+            "a4": 1,
+            "a5": 1,
+            "b1": 0
+         },
+         "label_note": "The definite integral is right but the known value g(0) = 5 is never added."
+      },
+      {
+         "id": "GR-B-069",
+         "item_id": "FRQ-GLD-B-10",
+         "target_point": "b1",
+         "target_point_type": "BC-PT-99033",
+         "category": "notation_failure",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\frac{dy}{y-1} = \\cos x dx",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\ln|y-1| = \\sin x + C",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "C = \\ln 2",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "y = 1 + 2e^{\\sin x}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "y = 1 + 2e^{\\sin x}"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "g(2) = 5 + \\int_{0}^{2} (1 + 2e^{\\sin x})",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "5 + \\int_{0}^{2} (1 + 2e^{\\sin x})"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "a3": 1,
+            "a4": 1,
+            "a5": 1,
+            "b1": 1
+         },
+         "label_note": "The differential is missing, but the 5 is added to a definite integral with the right limits and integrand, which is what this point assesses; the missing dx is a risk under the sg-22:8 differential cases rather than a clear loss here."
+      },
+      {
+         "id": "GR-B-070",
+         "item_id": "FRQ-GLD-B-10",
+         "target_point": "b1",
+         "target_point_type": "BC-PT-99033",
+         "category": "eligible_after_error",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\frac{dy}{y-1} = \\cos x dx",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\ln|y-1| = \\sin x + C",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "C = \\ln 3",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "y = 1 + 3e^{\\sin x}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "y = 1 + 3e^{\\sin x}"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "g(2) = 5 + \\int_{0}^{2} (1 + 3e^{\\sin x}) dx",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "g(2) = 5 + \\int_{0}^{2} (1 + 3e^{\\sin x}) dx"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "a3": 1,
+            "a4": 0,
+            "a5": 0,
+            "b1": 1
+         },
+         "label_note": "Part (a) finds the constant wrongly, but part (b) adds g(0) = 5 to a definite integral of the student's own f, and this point has no eligibility restriction."
+      },
+      {
+         "id": "GR-B-071",
+         "item_id": "FRQ-GLD-B-11",
+         "target_point": "b1",
+         "target_point_type": "BC-PT-99005",
+         "category": "fully_correct",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\int_{0}^{3} f(x) dx = \\int_{0}^{5} f(x) dx - \\int_{3}^{5} f(x) dx = 8 - 3 = 5",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "5"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\int_{3}^{0} (2f(x) - 4g(x)) dx = -\\int_{0}^{3} (2f(x) - 4g(x)) dx",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "= -(2 \\cdot 5 - 4(-2))",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "= -(10 + 8) = -18",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "-18"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "b1": 1
+         },
+         "label_note": "The limits are reversed with a sign change and the constant multiple and sum properties give -(2(5) - 4(-2)) = -18."
+      },
+      {
+         "id": "GR-B-072",
+         "item_id": "FRQ-GLD-B-11",
+         "target_point": "b1",
+         "target_point_type": "BC-PT-99005",
+         "category": "unconventional_valid",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "8 - 3 = 5",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "5"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "do each piece separately, flipping the limits on each",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\int_{3}^{0} 2f(x) dx = -2 \\cdot 5 = -10",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\int_{3}^{0} -4g(x) dx = -4 \\int_{3}^{0} g(x) dx = -4 \\cdot 2 = -8",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "-10 + (-8) = -18",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "-18"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "b1": 1
+         },
+         "label_note": "Splitting into two integrals and reversing each one separately is a valid setup that gives -18."
+      },
+      {
+         "id": "GR-B-073",
+         "item_id": "FRQ-GLD-B-11",
+         "target_point": "a1",
+         "target_point_type": "BC-PT-99005",
+         "category": "narrow_fail",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\int_{0}^{3} f(x) dx = 5",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "5"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "-(2(5) - 4(-2)) = -18",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "-18"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 0,
+            "b1": 1
+         },
+         "label_note": "Part (a) gives the correct 5 with no setup at all, an unsupported value."
+      },
+      {
+         "id": "GR-B-074",
+         "item_id": "FRQ-GLD-B-11",
+         "target_point": "a1",
+         "target_point_type": "BC-PT-99005",
+         "category": "notation_failure",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\int_{0}^{3} f(x) dx = \\int_{0}^{5} - \\int_{3}^{5}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "= 8 - 3 = 5",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "5"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\int_{3}^{0} (2f - 4g) = -(2\\int_{0}^{3} f - 4\\int_{0}^{3} g) = -(10 + 8) = -18",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "-18"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "b1": 1
+         },
+         "label_note": "The integrands and differentials are dropped on the right side, but the adjacent-interval setup 8 - 3 is clear and correct, and this point states no notation requirement that the dropped integrands break."
+      },
+      {
+         "id": "GR-B-075",
+         "item_id": "FRQ-GLD-B-11",
+         "target_point": "b1",
+         "target_point_type": "BC-PT-99005",
+         "category": "eligible_after_error",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\int_{0}^{3} f(x) dx = \\int_{0}^{5} f(x) dx + \\int_{3}^{5} f(x) dx = 8 + 3 = 11",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "11"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\int_{3}^{0} (2f(x) - 4g(x)) dx = -(2 \\cdot 11 - 4(-2))",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "= -(22 + 8) = -30",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "-30"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 0,
+            "b1": 1
+         },
+         "label_note": "Part (a) adds instead of subtracting, but part (b) reverses the limits and applies the properties correctly to the imported value 11, and the criterion accepts a value consistent with part (a)."
+      }
+   ]
+}

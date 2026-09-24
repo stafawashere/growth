@@ -1,0 +1,80 @@
+{
+   "id": "FRQ-GLD-B-07",
+   "archetype_id": "BC-QA-09004",
+   "calculator_status": "calculator",
+   "representation": "BC-REP-12",
+   "stem": {
+      "text": "A particle moves in the \\( xy \\)-plane so that for \\( 0 \\le t \\le 4 \\) its velocity components are \\( x'(t) = \\sin(t^{2}) + 1 \\) and \\( y'(t) = e^{-t/2}\\cos t \\). At time \\( t = 0 \\) the particle is at the point \\( (3, -1) \\)."
+   },
+   "skills": [
+      "BC-SKL-09015",
+      "BC-SKL-09016",
+      "BC-SKL-09017",
+      "BC-SKL-09018",
+      "BC-SKL-09028"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find the \\( x \\)-coordinate of the particle's position at time \\( t = 2 \\), and find the speed of the particle at time \\( t = 2 \\). Label each value you report.",
+         "setup_required": true,
+         "answer_latex": "x(2) = 5.805, \\text{ speed } = 0.287",
+         "worked_solution": [
+            {
+               "text": "Accumulate the x-velocity from the initial position.",
+               "latex": "x(2) = 3 + \\int_{0}^{2} \\left(\\sin(t^{2}) + 1\\right)dt = 5.805"
+            },
+            {
+               "text": "Speed is the magnitude of the velocity vector.",
+               "latex": "\\text{speed} = \\sqrt{x'(2)^{2} + y'(2)^{2}} = \\sqrt{(0.24320)^{2} + (-0.15309)^{2}} = 0.287"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-09016"
+               ],
+               "criterion": "Writes x(2) as 3 plus the definite integral from 0 to 2 of sin(t^2) + 1 and reports 5.805 (or 5.804).",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "0",
+                  "upper": "2",
+                  "integrand": "sin(t**2) + 1",
+                  "variable": "t"
+               }
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99050",
+               "skills": [
+                  "BC-SKL-09016",
+                  "BC-SKL-09018"
+               ],
+               "criterion": "Writes the speed at t = 2 as the square root of x'(2)^2 + y'(2)^2 with the setup visible and reports 0.287.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "a3",
+               "point_type_id": "BC-PT-99064",
+               "skills": [
+                  "BC-SKL-09016"
+               ],
+               "criterion": "Presents each of the two reported values with a label that identifies which quantity it is, such as x(2) = and speed =. Correctness of the values is judged by a1 and a2, so a value consistent with the student's own work counts here. Unlabelled values do not earn it.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": null
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude golden-set author, stage 4 (p3), model-authored",
+   "signed_off_by": null
+}

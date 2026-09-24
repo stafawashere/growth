@@ -508,3 +508,129 @@ export interface ProbeServedItem {
    status: string;
    format: ServedFormat;
 }
+/* app/api/routes/frq.py: the free-response unit check, capture, read-back and gradings. */
+export interface FrqUnit {
+   unit_id: string;
+   title: string;
+   questions: number;
+}
+
+export interface FrqUnitsPayload {
+   units: FrqUnit[];
+}
+
+export interface FrqPart {
+   id: string;
+   prompt: string;
+   setup_required: boolean;
+   points: number;
+}
+
+export interface FrqQuestion {
+   id: string;
+   archetype_id: string;
+   calculator_status: string;
+   stem: string;
+   parts: FrqPart[];
+   attempt_id?: string | null;
+   grading_state?: string | null;
+}
+
+export interface UnitCheckPayload {
+   session_id: string;
+   mode: string;
+   unit_id: string;
+   questions: FrqQuestion[];
+}
+
+export type ReadBackLineKind = "math" | "text";
+
+export interface ReadBackLine {
+   kind: ReadBackLineKind;
+   content: string;
+   crossed_out: boolean;
+   outside_box: boolean;
+}
+
+export interface ReadBackPart {
+   part_id: string;
+   lines: ReadBackLine[];
+   answer: string;
+}
+
+export interface ReadBack {
+   parts: ReadBackPart[];
+   unreadable: string[];
+}
+
+export interface ImageQuality {
+   accepted: boolean;
+   reasons: string[];
+   measurements: Record<string, unknown>;
+}
+
+export interface CaptureImage {
+   image_id: string;
+   accepted: boolean;
+   quality: ImageQuality;
+   created_at: string;
+}
+
+export interface FrqAttempt {
+   attempt_id: string;
+   item_id: string;
+   capture_mode: string | null;
+   grading_state: string | null;
+   transcription_confirmed: boolean;
+   read_back: ReadBack | null;
+   confirmed: ReadBack | null;
+   images: CaptureImage[];
+}
+
+export interface PhotoVerdict {
+   image_id: string;
+   accepted: boolean;
+   reasons: string[];
+   measurements: Record<string, unknown>;
+}
+
+export interface GradedPoint {
+   grading_id: string;
+   part_id: string;
+   point_id: string;
+   point_type_id: string;
+   point_label: string;
+   criterion: string;
+   decided_by: string;
+   earned: number | null;
+   provisional: boolean;
+   rationale: string;
+   evidence_quote: string | null;
+   eligibility_note: string | null;
+   rereads: number;
+}
+
+export interface WorkedPart {
+   part_id: string;
+   answer_latex: string;
+   steps: { text: string; latex: string }[];
+}
+
+export interface GradingsPayload {
+   attempt_id: string;
+   item_id: string;
+   grading_state: string | null;
+   points: GradedPoint[];
+   earned: number;
+   decided: number;
+   total: number;
+   provisional: number;
+   worked_solution: WorkedPart[];
+   probe_scheduled: string | null;
+}
+
+export interface DisputeResult {
+   grading_id: string;
+   attempt_id: string;
+   rereading: boolean;
+}

@@ -1,0 +1,114 @@
+{
+   "id": "FRQ-GLD-B-01",
+   "archetype_id": "BC-QA-10013",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "stem": {
+      "text": "Consider the power series \\( \\displaystyle\\sum_{n=1}^{\\infty} \\frac{(x-2)^{n}}{n \\cdot 3^{n}} \\)."
+   },
+   "skills": [
+      "BC-SKL-10031",
+      "BC-SKL-10032",
+      "BC-SKL-10053",
+      "BC-SKL-10054",
+      "BC-SKL-10055",
+      "BC-SKL-10057",
+      "BC-SKL-10059"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find the interval of convergence of the series. Justify your answer.",
+         "setup_required": false,
+         "answer_latex": "-1 \\le x < 5",
+         "worked_solution": [
+            {
+               "text": "Form the ratio of consecutive terms.",
+               "latex": "\\left| \\frac{(x-2)^{n+1}}{(n+1)3^{n+1}} \\cdot \\frac{n\\,3^{n}}{(x-2)^{n}} \\right| = \\frac{n}{n+1} \\cdot \\frac{|x-2|}{3}"
+            },
+            {
+               "text": "Take the limit as n goes to infinity.",
+               "latex": "\\lim_{n \\to \\infty} \\frac{n}{n+1} \\cdot \\frac{|x-2|}{3} = \\frac{|x-2|}{3}"
+            },
+            {
+               "text": "The series converges when the limit is less than 1.",
+               "latex": "\\frac{|x-2|}{3} < 1 \\iff -1 < x < 5"
+            },
+            {
+               "text": "At x = 5 the series is the harmonic series, a p-series with p = 1, which diverges.",
+               "latex": "\\sum_{n=1}^{\\infty} \\frac{1}{n}"
+            },
+            {
+               "text": "At x = -1 the series is the alternating harmonic series; its terms decrease to 0, so it converges by the alternating series test.",
+               "latex": "\\sum_{n=1}^{\\infty} \\frac{(-1)^{n}}{n}"
+            },
+            {
+               "text": "State the interval.",
+               "latex": "-1 \\le x < 5"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99042",
+               "skills": [
+                  "BC-SKL-10031",
+                  "BC-SKL-10054"
+               ],
+               "criterion": "Writes the ratio of consecutive terms, the (n+1)th term over the nth term, which simplifies to n|x - 2| / (3(n + 1)), with or without absolute values.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99043",
+               "skills": [
+                  "BC-SKL-10032",
+                  "BC-SKL-10054"
+               ],
+               "criterion": "Evaluates the limit of the ratio as n tends to infinity correctly as |x - 2|/3, written with correct limit notation (lim with n tending to infinity) and with absolute value or a squared inequality that is then resolved. A simplification or evaluation error in the limit, or an equality between the n-dependent ratio and the limit with no lim written, does not earn it.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "a3",
+               "point_type_id": "BC-PT-99044",
+               "skills": [
+                  "BC-SKL-10055"
+               ],
+               "criterion": "Resolves the inequality to the interior -1 < x < 5, as a two-sided inequality or an open interval. When an incorrect but positive limit was found, the matching interior earns it.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a4",
+               "point_type_id": "BC-PT-99045",
+               "skills": [
+                  "BC-SKL-10057"
+               ],
+               "criterion": "Substitutes both endpoints, x = -1 and x = 5, and writes the two resulting numerical series.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a5",
+               "point_type_id": "BC-PT-99046",
+               "skills": [
+                  "BC-SKL-10057",
+                  "BC-SKL-10059"
+               ],
+               "criterion": "Analyses both endpoint series correctly with an appropriate test named or clearly identified (x = 5: harmonic or p-series with p = 1, or the integral test, diverges; x = -1: alternating series test, converges) and states the interval -1 <= x < 5. An interval with no endpoint analysis, or endpoint analysis that follows from a reciprocal ratio, does not earn it.",
+               "eligible_only_if": [
+                  "a4"
+               ],
+               "check": null
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude golden-set author, stage 4 (p3), model-authored",
+   "signed_off_by": null
+}

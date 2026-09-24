@@ -26,4 +26,6 @@ def read_review(
    history = repository.load_attempts_history(db, user.id)
    archetypes = settings.session_context.archetypes
 
-   return review_screen(db, user.id, archetypes, history, day)
+   point_types = settings.frq.point_types if settings.frq is not None else None
+
+   return review_screen(db, user.id, archetypes, history, day, point_types=point_types)

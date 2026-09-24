@@ -1,0 +1,83 @@
+{
+   "id": "FRQ-AGT-02007-01",
+   "archetype_id": "BC-QA-02007",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "Let \\( f(x) = 2\\sin x - 3\\ln x + e^{x} \\) for \\( x > 0 \\)."
+   },
+   "skills": ["BC-SKL-02032", "BC-SKL-02033", "BC-SKL-02034"],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find \\( f'(x) \\).",
+         "setup_required": false,
+         "answer_latex": "f'(x) = 2\\cos x - \\frac{3}{x} + e^{x}",
+         "worked_solution": [
+            {"text": "Differentiate term by term.", "latex": "f'(x) = 2\\cos x - \\frac{3}{x} + e^{x}"}
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99004",
+               "skills": ["BC-SKL-02032", "BC-SKL-02033", "BC-SKL-02034"],
+               "criterion": "Gives f'(x) = 2cos x - 3/x + e^x in any equivalent form.",
+               "eligible_only_if": [],
+               "check": {"kind": "sympy_equivalence", "target": "answer", "expected": "2*cos(x) - 3/x + exp(x)", "up_to_constant": false, "variable": "x"}
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find the slope of the graph of \\( f \\) at \\( x = \\pi \\). Show the work that leads to your answer.",
+         "setup_required": false,
+         "answer_latex": "f'(\\pi) = -2 - \\frac{3}{\\pi} + e^{\\pi}",
+         "worked_solution": [
+            {"text": "Substitute x = pi into f'(x).", "latex": "f'(\\pi) = 2\\cos\\pi - \\frac{3}{\\pi} + e^{\\pi}"},
+            {"text": "cos pi = -1.", "latex": "f'(\\pi) = -2 - \\frac{3}{\\pi} + e^{\\pi}"}
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99005",
+               "skills": ["BC-SKL-02032", "BC-SKL-02033", "BC-SKL-02034"],
+               "criterion": "Substitutes pi into the derivative and gives -2 - 3/pi + e^pi.",
+               "eligible_only_if": [],
+               "check": {"kind": "sympy_equivalence", "target": "answer", "expected": "-2 - 3/pi + exp(pi)", "up_to_constant": false, "variable": "x"}
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Let \\( k(x) = f(2x) \\). Find \\( k'(x) \\), and find the value of \\( k'\\left(\\tfrac{\\pi}{2}\\right) \\).",
+         "setup_required": false,
+         "answer_latex": "k'\\left(\\tfrac{\\pi}{2}\\right) = -4 - \\frac{6}{\\pi} + 2e^{\\pi}",
+         "worked_solution": [
+            {"text": "Write k out and differentiate, multiplying each term by the derivative of 2x.", "latex": "k(x) = 2\\sin(2x) - 3\\ln(2x) + e^{2x}"},
+            {"text": "Apply the chain rule to each term.", "latex": "k'(x) = 4\\cos(2x) - \\frac{3}{x} + 2e^{2x}"},
+            {"text": "Substitute x = pi/2.", "latex": "k'\\left(\\tfrac{\\pi}{2}\\right) = 4\\cos\\pi - \\frac{6}{\\pi} + 2e^{\\pi} = -4 - \\frac{6}{\\pi} + 2e^{\\pi}"}
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99023",
+               "skills": ["BC-SKL-02032", "BC-SKL-02033", "BC-SKL-02034"],
+               "criterion": "Writes k'(x) = 4cos(2x) - 3/x + 2e^(2x), with the factor 2 from the inner function on every term.",
+               "eligible_only_if": [],
+               "check": {"kind": "sympy_equivalence", "target": "any_line", "expected": "4*cos(2*x) - 3/x + 2*exp(2*x)", "up_to_constant": false, "each_side": false, "variable": "x"}
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99004",
+               "skills": ["BC-SKL-02032", "BC-SKL-02033"],
+               "criterion": "Gives k'(pi/2) = -4 - 6/pi + 2e^pi.",
+               "eligible_only_if": [],
+               "check": {"kind": "sympy_equivalence", "target": "answer", "expected": "-4 - 6/pi + 2*exp(pi)", "up_to_constant": false, "variable": "x"}
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 4 (p3)",
+   "signed_off_by": null
+}

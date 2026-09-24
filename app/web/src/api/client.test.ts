@@ -44,7 +44,18 @@ import {
    readProbe,
    startProbe,
    readNextProbeItem,
-   answerProbeItem
+   answerProbeItem,
+   readFrqUnits,
+   openUnitCheck,
+   readUnitCheck,
+   startFrqAttempt,
+   uploadPhoto,
+   requestReadBack,
+   readReadBack,
+   confirmReadBack,
+   submitTypedAnswer,
+   readGradings,
+   askForReread
 } from "./client";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
@@ -436,7 +447,17 @@ const serverShapes = {
    RoleBudget: () => roleBudgetFields(),
    ExportJob: () => returnedFields("api/routes/export.py", "create_export"),
    ReauthBegin: () => returnedFields("auth/service.py", "reauth_begin"),
-   ReauthFinish: () => returnedFields("auth/service.py", "reauth_finish")
+   ReauthFinish: () => returnedFields("auth/service.py", "reauth_finish"),
+   FrqUnitsPayload: () => returnedFields("api/routes/frq.py", "list_units"),
+   FrqUnit: () => nestedDictFields("api/routes/frq.py", "\"units\": ["),
+   UnitCheckPayload: () => returnedFields("api/routes/frq.py", "open_unit_check"),
+   FrqPart: () => nestedDictFields("frq/items.py", "\"parts\": ["),
+   FrqAttempt: () => returnedFields("api/routes/frq.py", "attempt_payload"),
+   CaptureImage: () => returnedFields("api/routes/frq.py", "image_payload"),
+   PhotoVerdict: () => returnedFields("api/routes/frq.py", "upload_image"),
+   GradingsPayload: () => returnedFields("api/routes/frq.py", "gradings_payload"),
+   GradedPoint: () => nestedDictFields("api/routes/frq.py", "entries.append("),
+   DisputeResult: () => returnedFields("api/routes/frq.py", "dispute")
 };
 
 const requestShapes = {
@@ -483,7 +504,8 @@ function allDeclaredRoutes() {
       ...declaredRoutes("review_screen.py"),
       ...declaredRoutes("settings.py"),
       ...declaredRoutes("export.py"),
-      ...declaredRoutes("auth.py")
+      ...declaredRoutes("auth.py"),
+      ...declaredRoutes("frq.py")
    ];
 }
 
@@ -663,7 +685,18 @@ describe("client path vocabulary", () => {
       { name: "requestExport", dynamic: [], invoke: () => requestExport({ reauth_token: "t" }) },
       { name: "readExport", dynamic: ["EXP-1"], invoke: () => readExport("EXP-1") },
       { name: "beginReauth", dynamic: [], invoke: () => beginReauth() },
-      { name: "finishReauth", dynamic: [], invoke: () => finishReauth({ challenge_id: "c", credential: {} }) }
+      { name: "finishReauth", dynamic: [], invoke: () => finishReauth({ challenge_id: "c", credential: {} }) },
+      { name: "readFrqUnits", dynamic: [], invoke: () => readFrqUnits() },
+      { name: "openUnitCheck", dynamic: [], invoke: () => openUnitCheck("BC-UNIT-05") },
+      { name: "readUnitCheck", dynamic: ["SES-1"], invoke: () => readUnitCheck("SES-1") },
+      { name: "startFrqAttempt", dynamic: ["SES-1", "FRQ-1"], invoke: () => startFrqAttempt("SES-1", "FRQ-1", "photo") },
+      { name: "uploadPhoto", dynamic: ["ATT-1"], invoke: () => uploadPhoto("ATT-1", { media_type: "image/jpeg", data_base64: "AA==" }) },
+      { name: "requestReadBack", dynamic: ["ATT-1"], invoke: () => requestReadBack("ATT-1") },
+      { name: "readReadBack", dynamic: ["ATT-1"], invoke: () => readReadBack("ATT-1") },
+      { name: "confirmReadBack", dynamic: ["ATT-1"], invoke: () => confirmReadBack("ATT-1", { confidence: "unsure" }) },
+      { name: "submitTypedAnswer", dynamic: ["ATT-1"], invoke: () => submitTypedAnswer("ATT-1", { read_back: { parts: [], unreadable: [] } }) },
+      { name: "readGradings", dynamic: ["ATT-1"], invoke: () => readGradings("ATT-1") },
+      { name: "askForReread", dynamic: ["GRD-1"], invoke: () => askForReread("GRD-1") }
    ];
 
    it.each(wiringCases)("every path $name issues matches a declared FastAPI route", async (wiringCase) => {
@@ -808,7 +841,17 @@ describe("response shape vocabulary", () => {
       { typeName: "ErrorNoteResult", module: "client.ts" },
       { typeName: "CloseResult", module: "client.ts" },
       { typeName: "MePayload", module: "client.ts" },
-      { typeName: "PurgeResult", module: "client.ts" }
+      { typeName: "PurgeResult", module: "client.ts" },
+      { typeName: "FrqUnitsPayload", module: "types.ts" },
+      { typeName: "FrqUnit", module: "types.ts" },
+      { typeName: "UnitCheckPayload", module: "types.ts" },
+      { typeName: "FrqPart", module: "types.ts" },
+      { typeName: "FrqAttempt", module: "types.ts" },
+      { typeName: "CaptureImage", module: "types.ts" },
+      { typeName: "PhotoVerdict", module: "types.ts" },
+      { typeName: "GradingsPayload", module: "types.ts" },
+      { typeName: "GradedPoint", module: "types.ts" },
+      { typeName: "DisputeResult", module: "types.ts" }
    ];
 
    it.each(shapeCases)("$typeName carries the field names its server module returns", (shapeCase) => {
@@ -917,7 +960,15 @@ describe("response parsing", () => {
          name: "finishReauth",
          typeName: "ReauthFinish",
          invoke: () => finishReauth({ challenge_id: "c", credential: {} })
-      }
+      },
+      { name: "readFrqUnits", typeName: "FrqUnitsPayload", invoke: () => readFrqUnits() },
+      { name: "openUnitCheck", typeName: "UnitCheckPayload", invoke: () => openUnitCheck("BC-UNIT-05") },
+      { name: "startFrqAttempt", typeName: "FrqAttempt", invoke: () => startFrqAttempt("SES-1", "FRQ-1", "typed") },
+      { name: "uploadPhoto", typeName: "PhotoVerdict", invoke: () => uploadPhoto("ATT-1", { media_type: "image/jpeg", data_base64: "AA==" }) },
+      { name: "requestReadBack", typeName: "FrqAttempt", invoke: () => requestReadBack("ATT-1") },
+      { name: "confirmReadBack", typeName: "FrqAttempt", invoke: () => confirmReadBack("ATT-1", {}) },
+      { name: "readGradings", typeName: "GradingsPayload", invoke: () => readGradings("ATT-1") },
+      { name: "askForReread", typeName: "DisputeResult", invoke: () => askForReread("GRD-1") }
    ];
 
    it.each(parseCases)("$name hands back every field $typeName names", async (parseCase) => {

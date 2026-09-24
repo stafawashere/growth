@@ -1,0 +1,102 @@
+{
+   "id": "FRQ-GLD-A-05",
+   "archetype_id": "BC-QA-05006",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "Let \\( h \\) be the function defined by \\( h(x) = x^{3} - 3x^{2} - 9x + 2 \\) on the closed interval \\( [-2, 4] \\)."
+   },
+   "skills": [
+      "BC-SKL-05010",
+      "BC-SKL-05024",
+      "BC-SKL-05025",
+      "BC-SKL-05026",
+      "BC-SKL-05027",
+      "BC-SKL-05028",
+      "BC-SKL-05029"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find the \\( x \\)-coordinates of all critical points of \\( h \\) on the open interval \\( (-2, 4) \\).",
+         "setup_required": false,
+         "answer_latex": "x = -1, \\; x = 3",
+         "worked_solution": [
+            {
+               "text": "Differentiate and set the derivative to zero.",
+               "latex": "h'(x) = 3x^{2} - 6x - 9 = 3(x - 3)(x + 1) = 0"
+            },
+            {
+               "text": "Both roots lie in the interval.",
+               "latex": "x = -1, \\; x = 3"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99013",
+               "skills": [
+                  "BC-SKL-05010"
+               ],
+               "criterion": "Sets h'(x) = 3x^2 - 6x - 9 equal to zero, or an equivalent equation.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-05010"
+               ],
+               "criterion": "Gives x = -1 and x = 3, supported by the factored derivative.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find the absolute minimum value of \\( h \\) on \\( [-2, 4] \\). Justify your answer.",
+         "setup_required": false,
+         "answer_latex": "-25",
+         "worked_solution": [
+            {
+               "text": "Evaluate h at both endpoints and both critical points.",
+               "latex": "h(-2) = 0, \\; h(-1) = 7, \\; h(3) = -25, \\; h(4) = -18"
+            },
+            {
+               "text": "The smallest candidate value is the absolute minimum.",
+               "latex": "-25"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99011",
+               "skills": [
+                  "BC-SKL-05024",
+                  "BC-SKL-05025",
+                  "BC-SKL-05028"
+               ],
+               "criterion": "Justifies with a candidates test that evaluates h correctly at both endpoints and at every critical point (candidates imported from part (a) are accepted), or with another complete global argument, and identifies the smallest value.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-05026",
+                  "BC-SKL-05027"
+               ],
+               "criterion": "States the absolute minimum value -25, or the smallest value consistent with critical points imported from part (a).",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude golden-set author, stage 4 (p3), model-authored",
+   "signed_off_by": null
+}

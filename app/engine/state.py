@@ -43,6 +43,7 @@ class Confidence(str, Enum):
 class ResponseFormat(str, Enum):
    MCQ = "mcq"
    SHORT_ANSWER = "short_answer"
+   FREE_RESPONSE = "free_response"
 
 
 @dataclass

@@ -1,0 +1,83 @@
+{
+   "id": "FRQ-AGT-07005-01",
+   "archetype_id": "BC-QA-07005",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "stem": {
+      "text": "Consider the differential equation \\( \\dfrac{dy}{dx} = x^{2} - y \\). Let \\( y = f(x) \\) be the particular solution with \\( f(1) = 3 \\). The line tangent to the graph of \\( f \\) at \\( x = 1 \\) is \\( y = 3 - 2(x - 1) \\), and it gives the approximation \\( f(1.1) \\approx 2.8 \\)."
+   },
+   "skills": ["BC-SKL-07018", "BC-SKL-07023"],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find the value of \\( \\dfrac{d^{2}y}{dx^{2}} \\) at the point \\( (1, 3) \\).",
+         "setup_required": false,
+         "answer_latex": "4",
+         "worked_solution": [
+            {"text": "Differentiate the equation.", "latex": "\\frac{d^{2}y}{dx^{2}} = 2x - \\frac{dy}{dx} = 2x - (x^{2} - y)"},
+            {"text": "Evaluate at (1, 3).", "latex": "\\frac{d^{2}y}{dx^{2}}\\Big|_{(1,3)} = 2 - (1 - 3) = 4"}
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99027",
+               "skills": ["BC-SKL-07018"],
+               "criterion": "Gives the value 4 for the second derivative at (1, 3).",
+               "eligible_only_if": [],
+               "check": {"kind": "sympy_equivalence", "target": "answer", "expected": "4", "up_to_constant": false, "variable": "x"}
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Is the approximation \\( f(1.1) \\approx 2.8 \\) an overestimate or an underestimate? Give a reason for your answer.",
+         "setup_required": false,
+         "answer_latex": "\\text{underestimate}",
+         "worked_solution": [
+            {"text": "The second derivative is positive at (1, 3), so the graph of f is concave up near x = 1.", "latex": "\\frac{d^{2}y}{dx^{2}}\\Big|_{(1,3)} = 4 > 0"},
+            {"text": "A tangent line lies below a concave up graph.", "latex": "\\text{underestimate}"}
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99026",
+               "skills": ["BC-SKL-07018", "BC-SKL-07023"],
+               "criterion": "Cites the positive second derivative (concave up near x = 1) and concludes the tangent line lies below the curve, so 2.8 is an underestimate.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Let \\( y = g(x) \\) be the particular solution to the same differential equation with \\( g(0) = -1 \\). Find \\( g''(0) \\), and determine whether the tangent line approximation \\( g(0.3) \\approx -0.7 \\) is an overestimate or an underestimate. Give a reason for your answer.",
+         "setup_required": false,
+         "answer_latex": "g''(0) = -1; \\text{ overestimate}",
+         "worked_solution": [
+            {"text": "Second derivative at (0, -1).", "latex": "g''(0) = 2(0) - \\big(0^{2} - (-1)\\big) = -1"},
+            {"text": "Negative second derivative means concave down near x = 0, so the tangent line lies above the graph.", "latex": "\\text{overestimate}"}
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99027",
+               "skills": ["BC-SKL-07018"],
+               "criterion": "Gives g''(0) = -1.",
+               "eligible_only_if": [],
+               "check": {"kind": "sympy_equivalence", "target": "any_line", "expected": "-1", "up_to_constant": false, "each_side": false, "variable": "x"}
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99026",
+               "skills": ["BC-SKL-07018", "BC-SKL-07023"],
+               "criterion": "Cites g''(0) < 0 (concave down near x = 0) and concludes the tangent line lies above the curve, so -0.7 is an overestimate.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 4 (p3)",
+   "signed_off_by": null
+}

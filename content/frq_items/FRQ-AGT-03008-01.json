@@ -1,0 +1,101 @@
+{
+   "id": "FRQ-AGT-03008-01",
+   "archetype_id": "BC-QA-03008",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "stem": {
+      "text": "Let \\( y = f(x) \\) be the solution to the differential equation \\( \\dfrac{dy}{dx} = xy^{2} + 1 \\) with \\( f(1) = 2 \\)."
+   },
+   "skills": ["BC-SKL-03030", "BC-SKL-03031", "BC-SKL-03032", "BC-SKL-03033", "BC-SKL-03034"],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find \\( \\dfrac{d^{2}y}{dx^{2}} \\) in terms of \\( x \\) and \\( y \\).",
+         "setup_required": false,
+         "answer_latex": "\\frac{d^{2}y}{dx^{2}} = y^{2} + 2xy\\left(xy^{2} + 1\\right)",
+         "worked_solution": [
+            {"text": "Differentiate x y^2 with the product rule, and y^2 with the chain rule.", "latex": "\\frac{d^{2}y}{dx^{2}} = y^{2} + 2xy\\frac{dy}{dx}"},
+            {"text": "Substitute the differential equation for dy/dx.", "latex": "\\frac{d^{2}y}{dx^{2}} = y^{2} + 2xy\\left(xy^{2} + 1\\right)"}
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99022",
+               "skills": ["BC-SKL-03030", "BC-SKL-03033"],
+               "criterion": "Applies the product rule to x y^2, producing y^2 plus x times the derivative of y^2.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99023",
+               "skills": ["BC-SKL-03033"],
+               "criterion": "Differentiates y^2 as 2y dy/dx and replaces dy/dx with xy^2 + 1 to express the result in x and y.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find the value of \\( \\dfrac{d^{2}y}{dx^{2}} \\) at the point \\( (1, 2) \\).",
+         "setup_required": false,
+         "answer_latex": "24",
+         "worked_solution": [
+            {"text": "Slope at (1, 2).", "latex": "\\frac{dy}{dx}\\Big|_{(1,2)} = 1 \\cdot 4 + 1 = 5"},
+            {"text": "Second derivative at (1, 2).", "latex": "\\frac{d^{2}y}{dx^{2}}\\Big|_{(1,2)} = 4 + 2(1)(2)(5) = 24"}
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99027",
+               "skills": ["BC-SKL-03034"],
+               "criterion": "Evaluates the second derivative at (1, 2), using dy/dx = 5 there, and gives 24.",
+               "eligible_only_if": [],
+               "check": {"kind": "sympy_equivalence", "target": "answer", "expected": "24", "up_to_constant": false, "variable": "x"}
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Let \\( g(x) = x e^{2x} \\). Find \\( g'(x) \\) and \\( g''(x) \\), and find the value of \\( g'''(0) \\).",
+         "setup_required": false,
+         "answer_latex": "g'''(0) = 12",
+         "worked_solution": [
+            {"text": "Product rule.", "latex": "g'(x) = e^{2x} + 2xe^{2x} = e^{2x}(1 + 2x)"},
+            {"text": "Differentiate again.", "latex": "g''(x) = 2e^{2x} + 2e^{2x}(1 + 2x) = e^{2x}(4 + 4x)"},
+            {"text": "Differentiate a third time.", "latex": "g'''(x) = 4e^{2x} + 2e^{2x}(4 + 4x) = e^{2x}(12 + 8x)"},
+            {"text": "Substitute x = 0.", "latex": "g'''(0) = 12"}
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99022",
+               "skills": ["BC-SKL-03030"],
+               "criterion": "Applies the product rule to get g'(x) = (1 + 2x)e^(2x) or an equivalent expression.",
+               "eligible_only_if": [],
+               "check": {"kind": "sympy_equivalence", "target": "any_line", "expected": "(1 + 2*x)*exp(2*x)", "up_to_constant": false, "each_side": false, "variable": "x"}
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99023",
+               "skills": ["BC-SKL-03030", "BC-SKL-03032"],
+               "criterion": "Gives g''(x) = (4 + 4x)e^(2x) or an equivalent expression, with the chain-rule factor 2 on each exponential.",
+               "eligible_only_if": [],
+               "check": {"kind": "sympy_equivalence", "target": "any_line", "expected": "(4 + 4*x)*exp(2*x)", "up_to_constant": false, "each_side": false, "variable": "x"}
+            },
+            {
+               "point_id": "c3",
+               "point_type_id": "BC-PT-99027",
+               "skills": ["BC-SKL-03031", "BC-SKL-03032"],
+               "criterion": "Gives g'''(0) = 12.",
+               "eligible_only_if": [],
+               "check": {"kind": "sympy_equivalence", "target": "answer", "expected": "12", "up_to_constant": false, "variable": "x"}
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 4 (p3)",
+   "signed_off_by": null
+}

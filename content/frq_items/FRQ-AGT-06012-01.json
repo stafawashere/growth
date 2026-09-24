@@ -1,0 +1,99 @@
+{
+   "id": "FRQ-AGT-06012-01",
+   "archetype_id": "BC-QA-06012",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "Let \\( F(x) = \\displaystyle\\int_{0}^{x} \\sqrt{t^{2} + 16}\\,dt \\) for all real \\( x \\)."
+   },
+   "skills": ["BC-SKL-06018", "BC-SKL-06019", "BC-SKL-06017", "BC-SKL-06021"],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find \\( F'(x) \\) and the value of \\( F'(3) \\).",
+         "setup_required": false,
+         "answer_latex": "F'(3) = 5",
+         "worked_solution": [
+            {"text": "Fundamental Theorem of Calculus.", "latex": "F'(x) = \\sqrt{x^{2} + 16}"},
+            {"text": "Substitute x = 3.", "latex": "F'(3) = \\sqrt{25} = 5"}
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99024",
+               "skills": ["BC-SKL-06018"],
+               "criterion": "Writes F'(x) = sqrt(x^2 + 16), the integrand evaluated at x.",
+               "eligible_only_if": [],
+               "check": {"kind": "sympy_equivalence", "target": "any_line", "expected": "sqrt(x**2 + 16)", "up_to_constant": false, "each_side": false, "variable": "x"}
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99004",
+               "skills": ["BC-SKL-06018"],
+               "criterion": "Gives F'(3) = 5.",
+               "eligible_only_if": [],
+               "check": {"kind": "sympy_equivalence", "target": "answer", "expected": "5", "up_to_constant": false, "variable": "x"}
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Let \\( G(x) = \\displaystyle\\int_{0}^{x^{2}} \\sqrt{t^{2} + 16}\\,dt \\). Find \\( G'(x) \\) and the value of \\( G'\\big(\\sqrt{3}\\big) \\).",
+         "setup_required": false,
+         "answer_latex": "G'(\\sqrt{3}) = 10\\sqrt{3}",
+         "worked_solution": [
+            {"text": "Fundamental Theorem with the chain rule on the upper limit.", "latex": "G'(x) = \\sqrt{(x^{2})^{2} + 16}\\cdot 2x = 2x\\sqrt{x^{4} + 16}"},
+            {"text": "Substitute x = sqrt(3).", "latex": "G'(\\sqrt{3}) = 2\\sqrt{3}\\sqrt{25} = 10\\sqrt{3}"}
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99024",
+               "skills": ["BC-SKL-06019"],
+               "criterion": "Writes G'(x) = 2x sqrt(x^4 + 16), the integrand at x^2 times the derivative of x^2.",
+               "eligible_only_if": [],
+               "check": {"kind": "sympy_equivalence", "target": "any_line", "expected": "2*x*sqrt(x**4 + 16)", "up_to_constant": false, "each_side": false, "variable": "x"}
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99004",
+               "skills": ["BC-SKL-06019"],
+               "criterion": "Gives G'(sqrt 3) = 10 sqrt 3.",
+               "eligible_only_if": [],
+               "check": {"kind": "sympy_equivalence", "target": "answer", "expected": "10*sqrt(3)", "up_to_constant": false, "variable": "x"}
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Let \\( H(x) = \\displaystyle\\int_{x}^{5} e^{-t^{2}}\\,dt \\). Find \\( H'(x) \\) and the value of \\( H'(0) \\).",
+         "setup_required": false,
+         "answer_latex": "H'(0) = -1",
+         "worked_solution": [
+            {"text": "Reverse the limits, then apply the Fundamental Theorem.", "latex": "H(x) = -\\int_{5}^{x} e^{-t^{2}}\\,dt, \\quad H'(x) = -e^{-x^{2}}"},
+            {"text": "Substitute x = 0.", "latex": "H'(0) = -1"}
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99024",
+               "skills": ["BC-SKL-06017", "BC-SKL-06018"],
+               "criterion": "Writes H'(x) = -e^(-x^2), with the sign from the variable lower limit.",
+               "eligible_only_if": [],
+               "check": {"kind": "sympy_equivalence", "target": "any_line", "expected": "-exp(-x**2)", "up_to_constant": false, "each_side": false, "variable": "x"}
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99004",
+               "skills": ["BC-SKL-06018"],
+               "criterion": "Gives H'(0) = -1.",
+               "eligible_only_if": [],
+               "check": {"kind": "sympy_equivalence", "target": "answer", "expected": "-1", "up_to_constant": false, "variable": "x"}
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 4 (p3)",
+   "signed_off_by": null
+}

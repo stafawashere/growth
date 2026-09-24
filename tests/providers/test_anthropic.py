@@ -964,3 +964,24 @@ def test_haiku_4_5_without_effort_reaches_the_wire(haiku_model_id):
 
    assert transport.calls[0]["body"]["model"] == haiku_model_id
    assert "output_config" not in transport.calls[0]["body"]
+
+
+def test_an_image_reaches_the_wire_as_a_base64_block_before_the_text():
+   """The transcriber's photograph goes as an image content block on the last user message
+   (https://platform.claude.com/docs/en/build-with-claude/vision), never inside the prompt text."""
+   import base64
+
+   from app.providers.base import ImageInput
+
+   response = {"content": [{"type": "text", "text": "ok"}], "stop_reason": "end_turn", "usage": {}}
+   provider, transport = _provider(response)
+   page = ImageInput(media_type="image/jpeg", data=b"jpeg bytes", width=10, height=10)
+
+   provider.generate(_request(images=(page,)))
+
+   content = transport.calls[0]["body"]["messages"][-1]["content"]
+
+   assert [block["type"] for block in content] == ["image", "text"]
+   assert content[0]["source"]["media_type"] == "image/jpeg"
+   assert base64.b64decode(content[0]["source"]["data"]) == b"jpeg bytes"
+   assert content[1]["text"] == "I am stuck on step two."

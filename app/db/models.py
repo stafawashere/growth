@@ -3,7 +3,9 @@ layer of docs/plan/09-security-and-privacy.md needs and 06 leaves unlisted: pass
 and auth_sessions.
 
 diagnoses is in use from P2 (docs/plan/11-phased-delivery.md P2 scope item 9), written by the
-rule of R12 and R26 until the diagnostician arrives in P3; gradings arrives with the grader in P3.
+rule of R12 and R26 until the diagnostician arrives in P3. gradings arrives with the grader in P3
+(11 P3 scope item 10), together with frq_images, the stored photographs 06's image routes name
+without giving them a table.
 
 P7 adds the evaluation harness's own tables, which 06 does not list: experiments and
 experiment_assignments for the A/B switches of docs/plan/10 "Switch design", checkpoints and
@@ -195,6 +197,10 @@ class Attempt(Base):
       Integer, nullable=False, default=0, server_default=text("0")
    )
    experiment_arms: Mapped[str | None] = mapped_column(Text, nullable=True)
+   capture_mode: Mapped[str | None] = mapped_column(Text, nullable=True)
+   transcription_corrected: Mapped[int | None] = mapped_column(Integer, nullable=True)
+   grading_state: Mapped[str | None] = mapped_column(Text, nullable=True)
+   credit_record: Mapped[str | None] = mapped_column(Text, nullable=True)
    snapshot_id: Mapped[str] = mapped_column(Text, nullable=False)
    created_at: Mapped[str] = mapped_column(Text, nullable=False)
    updated_at: Mapped[str] = mapped_column(Text, nullable=False)
@@ -216,6 +222,50 @@ class Diagnosis(Base):
    matched_signal: Mapped[str | None] = mapped_column(Text, nullable=True)
    probe_scheduled: Mapped[str | None] = mapped_column(Text, nullable=True)
    diagnosed_by: Mapped[str] = mapped_column(Text, nullable=False)
+   created_at: Mapped[str] = mapped_column(Text, nullable=False)
+   updated_at: Mapped[str] = mapped_column(Text, nullable=False)
+
+
+class Grading(Base):
+   """06 "gradings", one row per scoring point per attempt. part_id and point_id name the point
+   on the item, since one BC-PT can score twice on one question; rule_field, evidence_quote and
+   eligibility_note carry 03's GraderOutput fields; rereads counts re-reads the student asked for."""
+   __tablename__ = "gradings"
+   id: Mapped[str] = mapped_column(Text, primary_key=True)
+   attempt_id: Mapped[str] = mapped_column(Text, nullable=False)
+   part_id: Mapped[str] = mapped_column(Text, nullable=False)
+   point_id: Mapped[str] = mapped_column(Text, nullable=False)
+   point_type_id: Mapped[str] = mapped_column(Text, nullable=False)
+   decided_by: Mapped[str] = mapped_column(Text, nullable=False)
+   earned: Mapped[int | None] = mapped_column(Integer, nullable=True)
+   samples: Mapped[str] = mapped_column(Text, nullable=False, default="[]")
+   agreement: Mapped[str] = mapped_column(Text, nullable=False)
+   provisional: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+   rationale: Mapped[str] = mapped_column(Text, nullable=False)
+   rule_field: Mapped[str | None] = mapped_column(Text, nullable=True)
+   evidence_quote: Mapped[str | None] = mapped_column(Text, nullable=True)
+   eligibility_note: Mapped[str | None] = mapped_column(Text, nullable=True)
+   deterministic_check: Mapped[str | None] = mapped_column(Text, nullable=True)
+   rereads: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+   created_at: Mapped[str] = mapped_column(Text, nullable=False)
+   updated_at: Mapped[str] = mapped_column(Text, nullable=False)
+
+
+class FrqImage(Base):
+   """A photographed booklet page. quality is the gate's verdict as JSON; an image the gate
+   rejected is kept so the student sees why, and is never sent to a provider."""
+   __tablename__ = "frq_images"
+   id: Mapped[str] = mapped_column(Text, primary_key=True)
+   attempt_id: Mapped[str] = mapped_column(Text, nullable=False)
+   user_id: Mapped[str] = mapped_column(Text, nullable=False)
+   media_type: Mapped[str] = mapped_column(Text, nullable=False)
+   data: Mapped[bytes | None] = mapped_column(LargeBinary, nullable=True)
+   width: Mapped[int] = mapped_column(Integer, nullable=False)
+   height: Mapped[int] = mapped_column(Integer, nullable=False)
+   sha256: Mapped[str] = mapped_column(Text, nullable=False)
+   quality: Mapped[str] = mapped_column(Text, nullable=False)
+   accepted: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+   deleted_at: Mapped[str | None] = mapped_column(Text, nullable=True)
    created_at: Mapped[str] = mapped_column(Text, nullable=False)
    updated_at: Mapped[str] = mapped_column(Text, nullable=False)
 

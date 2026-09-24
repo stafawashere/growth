@@ -70,6 +70,14 @@ def main():
       print("Claude usage limit reached. Your 5-hour limit resets at 3pm.", file=sys.stderr)
       return 1
 
+   if mode == "stream_json":
+      system_event = {"type": "system", "subtype": "init", "tools": ["StructuredOutput"], "mcp_servers": []}
+      result_event = result_payload(result="", structured_output={"parts": [], "unreadable": []})
+      print(json.dumps(system_event))
+      print(json.dumps({"type": "assistant", "message": {"content": []}}))
+      print(json.dumps(result_event))
+      return 0
+
    if mode == "malformed":
       print("this is not json")
       return 0

@@ -29,6 +29,7 @@ class SessionContext:
    snapshot_id: str
    errors: dict = field(default_factory=dict)
    unit_titles: dict = field(default_factory=dict)
+   snapshot: Any = None
 
 
 @dataclass
@@ -57,6 +58,10 @@ class Settings:
    key_audit_sample_path: Any = None
    items_directories: tuple = ()
    experiment_default_state: str | dict | None = None
+   ai_provider: Any = None
+   grading_caps: dict = field(default_factory=dict)
+   frq: Any = None
+   grading_sleep: Any = None
 
    def resolve_key_audit_sample_ids(self):
       """docs/operator/key-audit.md: a separate JSON array of the sampled item ids is the sample
@@ -163,7 +168,7 @@ class Settings:
 
 
 def create_app(settings):
-   from app.api.routes import auth, content, evaluation, export, health, me, progress, purge, review, review_screen, sessions
+   from app.api.routes import auth, content, evaluation, export, frq, health, me, progress, purge, review, review_screen, sessions
    from app.api.routes import settings as settings_routes
    from app.api.security_headers import SecurityHeadersMiddleware
 
@@ -191,7 +196,7 @@ def create_app(settings):
    async def webauthn_library_error_handler(request, exception):
       return JSONResponse(status_code=400, content={"detail": WEBAUTHN_LIBRARY_ERROR_DETAIL})
 
-   for module in (auth, me, sessions, purge, content, review, review_screen, progress, evaluation, settings_routes, export, health):
+   for module in (auth, me, sessions, frq, purge, content, review, review_screen, progress, evaluation, settings_routes, export, health):
       application.include_router(module.router)
 
    return application

@@ -1,0 +1,92 @@
+{
+   "id": "FRQ-AGT-06008-01",
+   "archetype_id": "BC-QA-06008",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "Answer each part without a calculator."
+   },
+   "skills": ["BC-SKL-06047", "BC-SKL-06048", "BC-SKL-06049", "BC-SKL-06050", "BC-SKL-06051", "BC-SKL-06052", "BC-SKL-06034"],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find \\( \\displaystyle\\int x^{2}\\left(x^{3} + 2\\right)^{4}\\,dx \\).",
+         "setup_required": false,
+         "answer_latex": "\\frac{(x^{3} + 2)^{5}}{15} + C",
+         "worked_solution": [
+            {"text": "Let u = x^3 + 2, so du = 3x^2 dx.", "latex": "\\int x^{2}(x^{3}+2)^{4}\\,dx = \\frac{1}{3}\\int u^{4}\\,du"},
+            {"text": "Antidifferentiate and back-substitute.", "latex": "\\frac{1}{15}u^{5} + C = \\frac{(x^{3} + 2)^{5}}{15} + C"}
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99003",
+               "skills": ["BC-SKL-06047", "BC-SKL-06048", "BC-SKL-06049"],
+               "criterion": "Gives (x^3 + 2)^5/15, with or without a constant of integration.",
+               "eligible_only_if": [],
+               "check": {"kind": "sympy_equivalence", "target": "answer", "expected": "(x**3 + 2)**5/15", "up_to_constant": true, "variable": "x"}
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Evaluate \\( \\displaystyle\\int_{0}^{\\pi/2} \\cos x \\; e^{\\sin x}\\,dx \\).",
+         "setup_required": false,
+         "answer_latex": "e - 1",
+         "worked_solution": [
+            {"text": "Let u = sin x, du = cos x dx; the limits become 0 and 1.", "latex": "\\int_{0}^{1} e^{u}\\,du"},
+            {"text": "Antidifferentiate.", "latex": "\\Big[e^{u}\\Big]_{0}^{1}"},
+            {"text": "Evaluate.", "latex": "e - 1"}
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99002",
+               "skills": ["BC-SKL-06047", "BC-SKL-06050"],
+               "criterion": "Writes the integral in terms of u with integrand e^u, or keeps x with the integrand cos x e^(sin x) prepared for substitution.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99003",
+               "skills": ["BC-SKL-06048", "BC-SKL-06051"],
+               "criterion": "Gives the antiderivative e^u, or e^(sin x) in terms of x.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b3",
+               "point_type_id": "BC-PT-99004",
+               "skills": ["BC-SKL-06051", "BC-SKL-06034"],
+               "criterion": "Gives the value e - 1.",
+               "eligible_only_if": [],
+               "check": {"kind": "sympy_equivalence", "target": "answer", "expected": "E - 1", "up_to_constant": false, "variable": "x"}
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Evaluate \\( \\displaystyle\\int_{0}^{1} \\frac{x}{x^{2} + 1}\\,dx \\).",
+         "setup_required": false,
+         "answer_latex": "\\frac{\\ln 2}{2}",
+         "worked_solution": [
+            {"text": "Let u = x^2 + 1, du = 2x dx; the limits become 1 and 2.", "latex": "\\frac{1}{2}\\int_{1}^{2}\\frac{1}{u}\\,du"},
+            {"text": "Antidifferentiate and evaluate.", "latex": "\\frac{1}{2}\\Big[\\ln u\\Big]_{1}^{2} = \\frac{\\ln 2}{2}"}
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99004",
+               "skills": ["BC-SKL-06052", "BC-SKL-06034"],
+               "criterion": "Gives the value (ln 2)/2.",
+               "eligible_only_if": [],
+               "check": {"kind": "sympy_equivalence", "target": "answer", "expected": "log(2)/2", "up_to_constant": false, "variable": "x"}
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 4 (p3)",
+   "signed_off_by": null
+}

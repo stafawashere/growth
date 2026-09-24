@@ -1,0 +1,68 @@
+{
+   "id": "FRQ-GLD-A-08",
+   "archetype_id": "BC-QA-05001",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "stem": {
+      "text": "The function \\( g \\) is differentiable for all real numbers. Selected values of \\( g \\) are given in the table. \\( \\begin{array}{c|cccc} x & 1 & 3 & 6 & 8 \\\\ \\hline g(x) & 2 & 8 & 5 & 18 \\end{array} \\)"
+   },
+   "skills": [
+      "BC-SKL-05001",
+      "BC-SKL-05002",
+      "BC-SKL-05003",
+      "BC-SKL-05004",
+      "BC-SKL-05006"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Must there be a value \\( c \\), for \\( 3 < c < 8 \\), such that \\( g'(c) = 2 \\)? Justify your answer.",
+         "setup_required": false,
+         "answer_latex": "\\text{yes}",
+         "worked_solution": [
+            {
+               "text": "Average rate of change over [3, 8].",
+               "latex": "\\frac{g(8) - g(3)}{8 - 3} = \\frac{18 - 8}{5} = 2"
+            },
+            {
+               "text": "g is differentiable, so continuous on [3, 8] and differentiable on (3, 8); the Mean Value Theorem applies.",
+               "latex": "\\text{yes}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99021",
+               "skills": [
+                  "BC-SKL-05003"
+               ],
+               "criterion": "Writes the difference quotient (g(8) - g(3))/(8 - 3) with values, or its value 2.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "2",
+                  "up_to_constant": false,
+                  "variable": "x",
+                  "each_side": true
+               }
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99017",
+               "skills": [
+                  "BC-SKL-05001",
+                  "BC-SKL-05002",
+                  "BC-SKL-05004"
+               ],
+               "criterion": "With the average rate of change 2, states g is continuous on [3, 8] and differentiable on (3, 8) (or that differentiability gives both) and concludes yes, a c with g'(c) = 2 exists.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude golden-set author, stage 4 (p3), model-authored",
+   "signed_off_by": null
+}

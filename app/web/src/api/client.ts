@@ -9,19 +9,26 @@ import type {
    DiagnosticServedItem,
    ExperimentsPayload,
    ExperimentState,
+   DisputeResult,
    FeedbackPayload,
+   FrqAttempt,
+   FrqUnitsPayload,
+   GradingsPayload,
    MasteryMapPayload,
    MetricsPayload,
+   PhotoVerdict,
    ProbeAdministration,
    ProbePayload,
    ProbeServedItem,
    ProgressPayload,
    ProvidersPayload,
+   ReadBack,
    RepresentationMatrixPayload,
    ReviewPayload,
    ServedItem,
    SessionPayload,
-   SettingsPayload
+   SettingsPayload,
+   UnitCheckPayload
 } from "./types";
 
 export class ApiError extends Error {
@@ -734,4 +741,79 @@ export async function signInWithPasskey() {
       challenge_id: begun.challenge_id,
       credential: assertionJson(credential as PublicKeyCredential)
    });
+}
+
+export type CaptureMode = "photo" | "typed";
+
+export interface PhotoFields {
+   media_type: string;
+   data_base64: string;
+}
+
+export interface ConfirmReadBackFields {
+   read_back?: ReadBack;
+   confidence?: Confidence;
+}
+
+export interface TypedAnswerFields {
+   read_back: ReadBack;
+   confidence?: Confidence;
+}
+
+export function readFrqUnits() {
+   return requestJson<FrqUnitsPayload>("/frq/units");
+}
+
+export function openUnitCheck(unitId: string) {
+   return requestJson<UnitCheckPayload>("/frq/unit-checks", jsonInit("POST", { unit_id: unitId }));
+}
+
+export function readUnitCheck(sessionId: string) {
+   return requestJson<UnitCheckPayload>(`/frq/unit-checks/${encodeURIComponent(sessionId)}`);
+}
+
+export function startFrqAttempt(sessionId: string, itemId: string, captureMode: CaptureMode) {
+   const path = `/sessions/${encodeURIComponent(sessionId)}/frq/${encodeURIComponent(itemId)}/attempts`;
+
+   return requestJson<FrqAttempt>(path, jsonInit("POST", { capture_mode: captureMode }));
+}
+
+export function bookletAddress(attemptId: string) {
+   return `/attempts/${encodeURIComponent(attemptId)}/booklet.png`;
+}
+
+export function photoAddress(attemptId: string, imageId: string) {
+   return `/attempts/${encodeURIComponent(attemptId)}/images/${encodeURIComponent(imageId)}`;
+}
+
+export function uploadPhoto(attemptId: string, fields: PhotoFields) {
+   return requestJson<PhotoVerdict>(`/attempts/${encodeURIComponent(attemptId)}/images`, jsonInit("POST", fields));
+}
+
+export function requestReadBack(attemptId: string) {
+   return requestJson<FrqAttempt>(`/attempts/${encodeURIComponent(attemptId)}/transcription`, jsonInit("POST"));
+}
+
+export function readReadBack(attemptId: string) {
+   return requestJson<FrqAttempt>(`/attempts/${encodeURIComponent(attemptId)}/transcription`);
+}
+
+export function confirmReadBack(attemptId: string, fields: ConfirmReadBackFields) {
+   const path = `/attempts/${encodeURIComponent(attemptId)}/transcription/confirm`;
+
+   return requestJson<FrqAttempt>(path, jsonInit("POST", fields));
+}
+
+export function submitTypedAnswer(attemptId: string, fields: TypedAnswerFields) {
+   return requestJson<FrqAttempt>(`/attempts/${encodeURIComponent(attemptId)}/typed`, jsonInit("POST", fields));
+}
+
+export function readGradings(attemptId: string) {
+   return requestJson<GradingsPayload>(`/attempts/${encodeURIComponent(attemptId)}/gradings`);
+}
+
+export function askForReread(gradingId: string, reason?: string) {
+   const path = `/gradings/${encodeURIComponent(gradingId)}/dispute`;
+
+   return requestJson<DisputeResult>(path, jsonInit("POST", { reason: reason ?? "" }));
 }

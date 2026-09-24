@@ -1,0 +1,97 @@
+{
+   "id": "FRQ-GLD-A-01",
+   "archetype_id": "BC-QA-06001",
+   "calculator_status": "calculator",
+   "representation": "BC-REP-03",
+   "stem": {
+      "text": "Water is pumped into a storage tank at a rate modeled by the differentiable function \\( W \\), where \\( W(t) \\) is measured in gallons per hour and \\( t \\) is measured in hours for \\( 0 \\le t \\le 12 \\). Selected values of \\( W(t) \\) are given in the table. \\( \\begin{array}{c|cccc} t \\text{ (hours)} & 0 & 3 & 7 & 12 \\\\ \\hline W(t) \\text{ (gallons per hour)} & 20 & 26 & 35 & 41 \\end{array} \\)"
+   },
+   "skills": [
+      "BC-SKL-06005",
+      "BC-SKL-06006",
+      "BC-SKL-06010",
+      "BC-SKL-06036"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Use a left Riemann sum with the three subintervals indicated by the table to approximate \\( \\int_{0}^{12} W(t)\\,dt \\). Show the computations that lead to your answer.",
+         "setup_required": true,
+         "answer_latex": "339",
+         "worked_solution": [
+            {
+               "text": "Each subinterval uses the rate at its left endpoint times its width.",
+               "latex": "\\int_{0}^{12} W(t)\\,dt \\approx 3(20) + 4(26) + 5(35)"
+            },
+            {
+               "text": "Add the three products.",
+               "latex": "= 60 + 104 + 175 = 339"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99018",
+               "skills": [
+                  "BC-SKL-06005"
+               ],
+               "criterion": "Writes a left Riemann sum whose three terms each show a width and a rate value, 3(20) + 4(26) + 5(35), with at least five of the six factors correct, as the setup for the integral from 0 to 12.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "0",
+                  "upper": "12",
+                  "integrand": null,
+                  "variable": "t"
+               }
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99019",
+               "skills": [
+                  "BC-SKL-06005",
+                  "BC-SKL-06036"
+               ],
+               "criterion": "Gives the value 339 with the supporting products present.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Using correct units, explain the meaning of \\( \\int_{0}^{12} W(t)\\,dt \\) in the context of the problem.",
+         "setup_required": true,
+         "answer_latex": "\\text{total gallons pumped into the tank from } t = 0 \\text{ to } t = 12",
+         "worked_solution": [
+            {
+               "text": "The integral of a rate over an interval is the amount accumulated over that interval.",
+               "latex": "\\int_{0}^{12} W(t)\\,dt = \\text{gallons of water pumped in during } 0 \\le t \\le 12"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99007",
+               "skills": [
+                  "BC-SKL-06036"
+               ],
+               "criterion": "States that the integral is the total amount of water, in gallons, pumped into the tank over the time interval from t = 0 to t = 12 hours; both the quantity with gallons and the interval are needed.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "0",
+                  "upper": "12",
+                  "integrand": null,
+                  "variable": "t"
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude golden-set author, stage 4 (p3), model-authored",
+   "signed_off_by": null
+}

@@ -1,0 +1,69 @@
+{
+   "id": "FRQ-AGT-07003-01",
+   "archetype_id": "BC-QA-07003",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "Consider the differential equation \\( \\dfrac{dy}{dx} = 2xy^2 \\). Let \\( y = f(x) \\) be the particular solution to the differential equation with the initial condition \\( f(1) = -\\tfrac{1}{2} \\)."
+   },
+   "skills": ["BC-SKL-07024", "BC-SKL-07025", "BC-SKL-07026", "BC-SKL-07027", "BC-SKL-07029", "BC-SKL-07030", "BC-SKL-07033"],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find \\( y = f(x) \\), the particular solution to the differential equation with the initial condition \\( f(1) = -\\tfrac{1}{2} \\).",
+         "setup_required": false,
+         "answer_latex": "y = -\\frac{1}{x^{2}+1}",
+         "worked_solution": [
+            {"text": "Separate the variables.", "latex": "\\frac{1}{y^{2}}\\,dy = 2x\\,dx"},
+            {"text": "Antidifferentiate both sides.", "latex": "-\\frac{1}{y} = x^{2} + C"},
+            {"text": "Use f(1) = -1/2.", "latex": "2 = 1 + C, \\quad C = 1"},
+            {"text": "Solve for y.", "latex": "y = -\\frac{1}{x^{2}+1}"}
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99028",
+               "skills": ["BC-SKL-07024", "BC-SKL-07025"],
+               "criterion": "Separates the variables, with every y and dy on one side and every x and dx on the other, for example dy over y squared equals 2x dx.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99029",
+               "skills": ["BC-SKL-07026"],
+               "criterion": "Writes a correct antiderivative of the y side, -1/y, up to a constant.",
+               "eligible_only_if": ["a1"],
+               "check": {"kind": "sympy_equivalence", "target": "any_line", "expected": "-1/y", "up_to_constant": true, "each_side": true, "variable": "y"}
+            },
+            {
+               "point_id": "a3",
+               "point_type_id": "BC-PT-99030",
+               "skills": ["BC-SKL-07026"],
+               "criterion": "Writes a correct antiderivative of the x side, x squared, up to a constant.",
+               "eligible_only_if": ["a1"],
+               "check": {"kind": "sympy_equivalence", "target": "any_line", "expected": "x**2", "up_to_constant": true, "each_side": true, "variable": "x"}
+            },
+            {
+               "point_id": "a4",
+               "point_type_id": "BC-PT-99031",
+               "skills": ["BC-SKL-07027", "BC-SKL-07029"],
+               "criterion": "Includes a constant of integration and uses the initial condition f(1) = -1/2 to find it.",
+               "eligible_only_if": ["a2", "a3"],
+               "check": null
+            },
+            {
+               "point_id": "a5",
+               "point_type_id": "BC-PT-99032",
+               "skills": ["BC-SKL-07030", "BC-SKL-07033"],
+               "criterion": "States the particular solution y = -1/(x^2 + 1) in any equivalent form.",
+               "eligible_only_if": ["a4"],
+               "check": {"kind": "sympy_equivalence", "target": "answer", "expected": "-1/(x**2 + 1)", "up_to_constant": false, "variable": "x"}
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 4 (p3)",
+   "signed_off_by": null
+}

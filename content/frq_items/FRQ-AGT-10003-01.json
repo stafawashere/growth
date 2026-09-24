@@ -1,0 +1,95 @@
+{
+   "id": "FRQ-AGT-10003-01",
+   "archetype_id": "BC-QA-10003",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "stem": {
+      "text": "Let \\( f(x) = \\displaystyle\\sum_{n=0}^{\\infty} \\frac{(x - 1)^{n}}{2^{n}} \\) for \\( |x - 1| < 2 \\)."
+   },
+   "skills": ["BC-SKL-10006", "BC-SKL-10007", "BC-SKL-10008", "BC-SKL-10009", "BC-SKL-10010", "BC-SKL-10063", "BC-SKL-10072"],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find the sum of the series \\( \\displaystyle\\sum_{n=0}^{\\infty} 5\\left(-\\tfrac{2}{3}\\right)^{n} \\).",
+         "setup_required": false,
+         "answer_latex": "3",
+         "worked_solution": [
+            {"text": "Geometric with first term 5 and ratio -2/3, and |r| < 1.", "latex": "a = 5, \\quad r = -\\tfrac{2}{3}"},
+            {"text": "Sum.", "latex": "\\frac{5}{1 + \\tfrac{2}{3}} = 3"}
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99067",
+               "skills": ["BC-SKL-10006", "BC-SKL-10007", "BC-SKL-10008"],
+               "criterion": "Uses 5 over 1 minus (-2/3) and gives 3.",
+               "eligible_only_if": [],
+               "check": {"kind": "sympy_equivalence", "target": "answer", "expected": "3", "up_to_constant": false, "variable": "x"}
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find the sum of the series \\( \\displaystyle\\sum_{n=1}^{\\infty} 3\\left(\\tfrac{1}{4}\\right)^{n} \\).",
+         "setup_required": false,
+         "answer_latex": "1",
+         "worked_solution": [
+            {"text": "The first term is the n = 1 term.", "latex": "a = \\frac{3}{4}, \\quad r = \\frac{1}{4}"},
+            {"text": "Sum.", "latex": "\\frac{3/4}{1 - 1/4} = 1"}
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99067",
+               "skills": ["BC-SKL-10008", "BC-SKL-10009"],
+               "criterion": "Uses first term 3/4 and ratio 1/4 and gives 1.",
+               "eligible_only_if": [],
+               "check": {"kind": "sympy_equivalence", "target": "answer", "expected": "1", "up_to_constant": false, "variable": "x"}
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Write \\( f(x) \\) as a rational function of \\( x \\).",
+         "setup_required": false,
+         "answer_latex": "f(x) = \\frac{2}{3 - x}",
+         "worked_solution": [
+            {"text": "Geometric with first term 1 and ratio (x - 1)/2.", "latex": "f(x) = \\frac{1}{1 - \\frac{x - 1}{2}}"},
+            {"text": "Simplify.", "latex": "f(x) = \\frac{2}{3 - x}"}
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99067",
+               "skills": ["BC-SKL-10010", "BC-SKL-10063", "BC-SKL-10072"],
+               "criterion": "Uses first term 1 and ratio (x - 1)/2 to give f(x) = 2/(3 - x).",
+               "eligible_only_if": [],
+               "check": {"kind": "sympy_equivalence", "target": "answer", "expected": "2/(3 - x)", "up_to_constant": false, "variable": "x"}
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "Find the value of \\( x \\) for which \\( f(x) = 4 \\).",
+         "setup_required": false,
+         "answer_latex": "x = \\frac{5}{2}",
+         "worked_solution": [
+            {"text": "Solve.", "latex": "\\frac{2}{3 - x} = 4 \\Rightarrow 3 - x = \\frac{1}{2} \\Rightarrow x = \\frac{5}{2}"},
+            {"text": "5/2 satisfies |x - 1| < 2.", "latex": "\\left|\\tfrac{5}{2} - 1\\right| = \\tfrac{3}{2} < 2"}
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99004",
+               "skills": ["BC-SKL-10010"],
+               "criterion": "Gives x = 5/2.",
+               "eligible_only_if": [],
+               "check": {"kind": "sympy_equivalence", "target": "answer", "expected": "5/2", "up_to_constant": false, "variable": "x"}
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 4 (p3)",
+   "signed_off_by": null
+}

@@ -33,6 +33,15 @@ GROWTH_TUTOR_PROVIDER the older switch: none or replay, read only when GROWTH_AI
                       GROWTH_AI_BACKEND=api is also set, because the paid API is used only
                       when GROWTH_AI_BACKEND says so.
 GROWTH_TUTOR_CASSETTE path to a recorded cassette JSON file, read only by the replay backend.
+GROWTH_GRADING_CASSETTES path to a cassette book (app/providers/cassette_book.py) the replay
+                      backend answers the transcriber, grader and diagnostician from. Unset, the
+                      replay backend grades deterministic points only and leaves judged points
+                      pending.
+GROWTH_FRQ_DIR        the directory of free-response records. Default content/frq_items.
+GROWTH_<ROLE>_CAP_USD and GROWTH_<ROLE>_CAP_TOKENS for grader, transcriber and diagnostician
+                      the daily caps those roles carry on the api backend, where a role with no
+                      cap is refused. Defaults in DEFAULT_GRADING_CAPS. The subscription backend
+                      paces them by call counts instead.
 GROWTH_CLAUDE_BIN     the claude CLI the subscription backend runs. Default the claude on PATH.
 GROWTH_SUBSCRIPTION_<ROLE>_CALLS_PER_DAY and GROWTH_SUBSCRIPTION_CALLS_PER_MINUTE
                       the subscription backend's pacing guard (app/providers/guard.py
@@ -107,7 +116,9 @@ from starlette.responses import FileResponse, PlainTextResponse
 
 from app.api.app import Settings, create_app
 from app.experiments import switches
+from app.frq.bank import DEFAULT_FRQ_DIR, build_frq_context
 from app.providers.anthropic import AnthropicProvider
+from app.providers.cassette_book import CassetteBookProvider
 from app.providers.guard import BudgetCaps, pacing_caps_from_environment
 from app.providers.replay import ReplayProvider
 from app.providers.subscription import SubscriptionProvider
@@ -240,6 +251,42 @@ def build_tutor(env):
    raise ValueError(f"{AI_BACKEND_ENV_VAR} must be one of {', '.join(AI_BACKENDS)}, got {backend!r}")
 
 
+def build_grading_provider(env):
+   """The backend the grader, the transcriber and the diagnostician run on: the same choice as the
+   tutor's (resolve_ai_backend), except that replay reads a cassette book keyed by request,
+   because those roles make a different call per point, page and attempt."""
+   backend = resolve_ai_backend(env)
+
+   if backend == "replay":
+      book_path = env.get("GROWTH_GRADING_CASSETTES")
+      has_book = book_path is not None and book_path != ""
+
+      return CassetteBookProvider(path=book_path) if has_book else None
+
+   return build_tutor(env)
+
+
+# 12's tutor row sets the tutor's caps; the three P3 roles carry these [inferred] defaults on the
+# api backend, set so a day of free-response practice fits: about eight questions of fifteen
+# grader calls at the priced grader call, one read-back a question and one diagnosis a question.
+DEFAULT_GRADING_CAPS = {
+   "grader": (1.50, 600000),
+   "transcriber": (0.40, 150000),
+   "diagnostician": (0.40, 150000),
+}
+
+
+def build_grading_caps(env):
+   caps = {}
+
+   for role, (default_usd, default_tokens) in DEFAULT_GRADING_CAPS.items():
+      cap_usd = startup_cap(env, f"GROWTH_{role.upper()}_CAP_USD", str(default_usd))
+      cap_tokens = startup_cap(env, f"GROWTH_{role.upper()}_CAP_TOKENS", str(default_tokens))
+      caps[role] = BudgetCaps(cap_tokens=cap_tokens, cap_usd=cap_usd)
+
+   return caps
+
+
 def startup_cap(env, variable, default=None):
    """One rule for a cap wherever it comes from, so the environment cannot set one that
    PUT /settings/budgets would refuse: a finite number, not negative. The error names the
@@ -350,6 +397,8 @@ def settings_from_environment(env=None):
       key_audit_sample_path=env.get("GROWTH_KEY_AUDIT_SAMPLE_PATH"),
       items_directories=items_directories(env),
       experiment_default_state=experiment_default_state(env),
+      ai_provider=build_grading_provider(env),
+      grading_caps=build_grading_caps(env),
    )
 
 
@@ -423,6 +472,11 @@ def build_application(env=None):
    engine = settings.resolve_engine()
    settings.session_context = build_session_context(
       engine, settings.content_root, items_directories=settings.items_directories
+   )
+   settings.frq = build_frq_context(
+      settings.session_context.snapshot,
+      Path(env.get("GROWTH_FRQ_DIR", str(DEFAULT_FRQ_DIR))),
+      unit_titles=settings.session_context.unit_titles,
    )
 
    application = create_app(settings)

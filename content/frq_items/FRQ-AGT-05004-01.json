@@ -1,0 +1,98 @@
+{
+   "id": "FRQ-AGT-05004-01",
+   "archetype_id": "BC-QA-05004",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "The function \\( f \\) is twice differentiable for all real \\( x \\), with derivative \\( f'(x) = x^{3} - 6x^{2} + 5 \\). The function \\( g \\) is twice differentiable for all real \\( x \\), with derivative \\( g'(x) = (x - 2)e^{x} \\)."
+   },
+   "skills": ["BC-SKL-05030", "BC-SKL-05031", "BC-SKL-05035"],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find all open intervals on which the graph of \\( f \\) is concave down. Give a reason for your answer.",
+         "setup_required": false,
+         "answer_latex": "(0, 4)",
+         "worked_solution": [
+            {"text": "Differentiate f'.", "latex": "f''(x) = 3x^{2} - 12x = 3x(x - 4)"},
+            {"text": "f'' is negative between its zeros.", "latex": "f''(x) < 0 \\text{ on } (0, 4)"}
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99062",
+               "skills": ["BC-SKL-05030"],
+               "criterion": "Gives the interval (0, 4).",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99063",
+               "skills": ["BC-SKL-05030", "BC-SKL-05031", "BC-SKL-05035"],
+               "criterion": "Reasons that f''(x) = 3x(x - 4) is negative on (0, 4), or that f' is decreasing there.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find all open intervals on which the graph of \\( f \\) is concave up. Give a reason for your answer.",
+         "setup_required": false,
+         "answer_latex": "(-\\infty, 0) \\text{ and } (4, \\infty)",
+         "worked_solution": [
+            {"text": "f'' is positive outside its zeros.", "latex": "f''(x) > 0 \\text{ on } (-\\infty, 0) \\cup (4, \\infty)"}
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99062",
+               "skills": ["BC-SKL-05030"],
+               "criterion": "Gives both intervals, x < 0 and x > 4.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99063",
+               "skills": ["BC-SKL-05030", "BC-SKL-05031", "BC-SKL-05035"],
+               "criterion": "Reasons that f'' is positive, or f' is increasing, on each of those intervals.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Find all open intervals on which the graph of \\( g \\) is concave up. Give a reason for your answer.",
+         "setup_required": false,
+         "answer_latex": "(1, \\infty)",
+         "worked_solution": [
+            {"text": "Differentiate g' with the product rule.", "latex": "g''(x) = e^{x} + (x - 2)e^{x} = (x - 1)e^{x}"},
+            {"text": "e^x is positive, so g'' has the sign of x - 1.", "latex": "g''(x) > 0 \\text{ on } (1, \\infty)"}
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99062",
+               "skills": ["BC-SKL-05030"],
+               "criterion": "Gives the interval (1, infinity).",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99063",
+               "skills": ["BC-SKL-05030", "BC-SKL-05035"],
+               "criterion": "Reasons that g''(x) = (x - 1)e^x is positive for x > 1, or that g' is increasing there.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 4 (p3)",
+   "signed_off_by": null
+}

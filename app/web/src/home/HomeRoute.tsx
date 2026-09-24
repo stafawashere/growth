@@ -11,6 +11,7 @@ export interface HomeRouteProps {
    onResumeSession: (sessionId: string) => void;
    onOpenProgress?: () => void;
    onOpenReview?: () => void;
+   onOpenFreeResponse?: () => void;
    onStartOnboarding?: (reason: OnboardingReason, resumeSessionId: string | null) => void;
 }
 
@@ -66,6 +67,7 @@ export function HomeRoute({
    onResumeSession,
    onOpenProgress,
    onOpenReview,
+   onOpenFreeResponse,
    onStartOnboarding
 }: HomeRouteProps) {
    const [load, setLoad] = useState<HomeLoad>({ kind: "waiting" });
@@ -142,6 +144,7 @@ export function HomeRoute({
          onStartRediagnostic={() => onStartOnboarding?.("long_gap", null)}
          onOpenProgress={onOpenProgress}
          onOpenReview={onOpenReview}
+         onOpenFreeResponse={onOpenFreeResponse}
       />
    );
 }

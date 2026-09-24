@@ -1,0 +1,86 @@
+{
+   "id": "FRQ-GLD-B-04",
+   "archetype_id": "BC-QA-06009",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "Consider the definite integral \\( \\displaystyle\\int_{0}^{\\pi} x \\sin\\left(\\frac{x}{2}\\right) dx \\)."
+   },
+   "skills": [
+      "BC-SKL-06057",
+      "BC-SKL-06058",
+      "BC-SKL-06059",
+      "BC-SKL-06060",
+      "BC-SKL-06061",
+      "BC-SKL-06034"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Use integration by parts to find the exact value of the integral.",
+         "setup_required": false,
+         "answer_latex": "4",
+         "worked_solution": [
+            {
+               "text": "Choose the parts.",
+               "latex": "u = x,\\ dv = \\sin\\left(\\frac{x}{2}\\right)dx,\\ du = dx,\\ v = -2\\cos\\left(\\frac{x}{2}\\right)"
+            },
+            {
+               "text": "Apply the formula.",
+               "latex": "\\int_{0}^{\\pi} x \\sin\\left(\\frac{x}{2}\\right)dx = \\left[-2x\\cos\\left(\\frac{x}{2}\\right)\\right]_{0}^{\\pi} + \\int_{0}^{\\pi} 2\\cos\\left(\\frac{x}{2}\\right)dx"
+            },
+            {
+               "text": "Evaluate.",
+               "latex": "= 0 + \\left[4\\sin\\left(\\frac{x}{2}\\right)\\right]_{0}^{\\pi} = 4"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99056",
+               "skills": [
+                  "BC-SKL-06057"
+               ],
+               "criterion": "Chooses u = x and dv = sin(x/2) dx and gives du and v = -2cos(x/2) correctly, or shows that choice implicitly in a correct parts expression; tabular columns beginning with x and sin(x/2) also earn it. A wrong v, or a jump to the answer with no parts structure visible, does not earn it. An integrand miscopied into one that still needs parts stays eligible.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99057",
+               "skills": [
+                  "BC-SKL-06058"
+               ],
+               "criterion": "Writes uv minus the integral of v du for the chosen parts, -2x cos(x/2) minus the integral of -2cos(x/2) dx, with the remaining integral present; limits may be present or omitted. A correct tabular sum of signed diagonal products also earns it.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "a3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-06060",
+                  "BC-SKL-06034"
+               ],
+               "criterion": "Gives the value 4.",
+               "eligible_only_if": [
+                  "a1",
+                  "a2"
+               ],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "4",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude golden-set author, stage 4 (p3), model-authored",
+   "signed_off_by": null
+}

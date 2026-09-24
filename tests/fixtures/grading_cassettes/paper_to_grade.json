@@ -1,0 +1,134 @@
+{
+ "15186737b0a27cba6c391dc5d7b71d47c5e5d67efc088708cd6269d1dec2ce9c": {
+  "finish_reason": "success",
+  "model": "claude-sonnet-5",
+  "provider": "subscription",
+  "text": "{\"decision\": \"earned\", \"evidence_quote\": \"set \\\\(g'(x) = 0\\\\)\", \"rule_field\": \"earns\", \"rule_cited\": \"Presenting the equation derivative equals zero, or an equivalent equation\", \"eligibility_note\": \"No earlier error affects this point; the student explicitly wrote g'(x) = 0 before solving for x = 3, which directly satisfies the criterion of setting the derivative equal to zero.\"}",
+  "usage": {
+   "cached_read_tokens": 1336,
+   "cached_write_tokens": 1186,
+   "input_tokens": 2,
+   "output_tokens": 249
+  }
+ },
+ "21f45e1979e55dc35ec4fcc7aed176fef55c960fc9c901536badcdb17db5ae6e": {
+  "finish_reason": "success",
+  "model": "claude-sonnet-5",
+  "provider": "subscription",
+  "text": "{\"decision\": \"earned\", \"evidence_quote\": \"for \\\\(x < 3\\\\), \\\\(x - 3 < 0\\\\); for \\\\(x > 3\\\\), \\\\(x - 3 > 0\\\\) ... so \\\\(g\\\\) has a relative minimum at \\\\(x = 3\\\\)\", \"rule_field\": \"earns\", \"rule_cited\": \"Correct classification of the critical point as a relative maximum, relative minimum, or neither, with analysis using a first or second derivative test; the test need not be named\", \"eligibility_note\": \"No earlier error affects this point per the record (no eligibility restriction stated, and this point does not require the critical value to be restated here, only that it was found in part (a)). The student's analysis of the sign of x - 3, the factor that (with the always-positive e^x) determines the sign of g', correctly shows g' changes from negative to positive at x = 3, which is a valid first derivative test, and the conclusion of a relative minimum at x = 3 matches the criterion.\"}",
+  "usage": {
+   "cached_read_tokens": 1336,
+   "cached_write_tokens": 1210,
+   "input_tokens": 2,
+   "output_tokens": 628
+  }
+ },
+ "348e3e82904ce49714825b42206a577f5bda38d827cf3a70a916e8545cafaa44": {
+  "finish_reason": "success",
+  "model": "claude-sonnet-5",
+  "provider": "subscription",
+  "text": "{\"decision\": \"earned\", \"evidence_quote\": \"set \\\\(g'(x) = 0\\\\)\", \"rule_field\": \"earns\", \"rule_cited\": \"Presenting the equation derivative equals zero, or an equivalent equation\", \"eligibility_note\": \"No earlier error affects this point; the student explicitly wrote g'(x) = 0 before giving the solved value x = 3, satisfying the criterion directly.\"}",
+  "usage": {
+   "cached_read_tokens": 1355,
+   "cached_write_tokens": 1185,
+   "input_tokens": 2,
+   "output_tokens": 239
+  }
+ },
+ "4dcb1f560c5aa0c7019d91c24b1c23ff7686a0370aa1d923724c784bb5ae319e": {
+  "finish_reason": "success",
+  "model": "claude-sonnet-5",
+  "provider": "subscription",
+  "text": "{\"decision\": \"not_earned\", \"evidence_quote\": \"for \\\\(x < 3\\\\), \\\\(x - 3 < 0\\\\); for \\\\(x > 3\\\\), \\\\(x - 3 > 0\\\\)\", \"rule_field\": \"does_not_earn\", \"rule_cited\": \"A statement about the sign of the function rather than the derivative, or a reference to the concavity of the derivative itself (sg-26:12).\", \"eligibility_note\": \"No earlier point's error was considered; this point stands on its own. The student's work only states the sign of the factor (x-3), not the sign of g'(x) itself (nor of g''(3)), so the explicit derivative-sign statement required by the criterion is missing from the page.\"}",
+  "usage": {
+   "cached_read_tokens": 1355,
+   "cached_write_tokens": 1194,
+   "input_tokens": 2,
+   "output_tokens": 327
+  }
+ },
+ "729acce1419f733a6b20f5bc9b2f9dbd9fbf1a4978da2602b27d7095f87dc19d": {
+  "finish_reason": "success",
+  "model": "claude-sonnet-5",
+  "provider": "subscription",
+  "text": "{\"decision\": \"not_earned\", \"evidence_quote\": \"for \\\\(x < 3\\\\), \\\\(x - 3 < 0\\\\); for \\\\(x > 3\\\\), \\\\(x - 3 > 0\\\\)\", \"rule_field\": \"does_not_earn\", \"rule_cited\": \"A statement about the sign of the function rather than the derivative, or a reference to the concavity of the derivative itself (sg-26:12).\", \"eligibility_note\": \"No earlier point's error affects this one; this point is judged on its own criterion. The student's part (b) work discusses only the sign of the algebraic factor (x - 3), never explicitly identifying this as the sign of g'(x) or referencing g' or g'' by name or notation anywhere in the shown work. The criterion requires an explicit statement about the sign of g' (or g''(3)), not merely about a factor within g'. Although e^x > 0 makes the sign of (x-3) equal to the sign of g'(x), the student never draws or states this equivalence, so the statement as written is about the sign of an expression, not explicitly about the derivative.</eligibility_note>\\n</invoke>\\n\"}",
+  "usage": {
+   "cached_read_tokens": 1336,
+   "cached_write_tokens": 1194,
+   "input_tokens": 2,
+   "output_tokens": 939
+  }
+ },
+ "7a89d3e1ddc1c416ae32fdb68b7299f88aabec95d0c7abefd276add428afd143": {
+  "finish_reason": "success",
+  "model": "claude-sonnet-5",
+  "provider": "subscription",
+  "text": "{\"decision\": \"not_earned\", \"evidence_quote\": \"for \\\\(x < 3\\\\), \\\\(x - 3 < 0\\\\); for \\\\(x > 3\\\\), \\\\(x - 3 > 0\\\\)\", \"rule_field\": \"does_not_earn\", \"rule_cited\": \"an assertion with no supporting sign or second-derivative analysis\", \"eligibility_note\": \"No earlier error is being invoked to withhold this point; this is judged on the point's own criterion. Part (a)'s critical point result is not required to be restated here per the dependency note. The issue is that the student's work analyzes the sign of the factor x - 3 but never states the sign of g'(x) itself or connects the sign of x - 3 to g'(x) explicitly on the page (e.g., noting e^x > 0). The strict reading does not permit supplying that missing link for the student, so the required first-derivative-test analysis of g' is not explicitly present.\"}",
+  "usage": {
+   "cached_read_tokens": 1355,
+   "cached_write_tokens": 1209,
+   "input_tokens": 2,
+   "output_tokens": 852
+  }
+ },
+ "84af62cb08bfc96ceb1ebbf74a75a55543cca8df7917465751c3475a56c6671f": {
+  "finish_reason": "success",
+  "model": "claude-sonnet-5",
+  "provider": "subscription",
+  "text": "{\"parts\": [{\"part_id\": \"a\", \"lines\": [{\"kind\": \"math\", \"content\": \"g'(x) = (x-3)e^{x}\", \"crossed_out\": false, \"outside_box\": false}, {\"kind\": \"text\", \"content\": \"set \\\\(g'(x) = 0\\\\)\", \"crossed_out\": false, \"outside_box\": false}, {\"kind\": \"math\", \"content\": \"x = 3\", \"crossed_out\": false, \"outside_box\": false}], \"answer\": \"x = 3\"}, {\"part_id\": \"b\", \"lines\": [{\"kind\": \"text\", \"content\": \"for \\\\(x < 3\\\\), \\\\(x - 3 < 0\\\\); for \\\\(x > 3\\\\), \\\\(x - 3 > 0\\\\)\", \"crossed_out\": false, \"outside_box\": false}, {\"kind\": \"text\", \"content\": \"so \\\\(g\\\\) has a relative minimum at \\\\(x = 3\\\\)\", \"crossed_out\": false, \"outside_box\": false}], \"answer\": \"g has a relative minimum at x = 3\"}], \"unreadable\": []}",
+  "usage": {
+   "cached_read_tokens": 1499,
+   "cached_write_tokens": 4996,
+   "input_tokens": 2,
+   "output_tokens": 404
+  }
+ },
+ "a5e77a5c4e7c9073989fbe751b8f62645227c9e2ecb9722ac97690725f7f0310": {
+  "finish_reason": "success",
+  "model": "claude-sonnet-5",
+  "provider": "subscription",
+  "text": "{\"observed_errors\": [{\"error_id\": \"\", \"new_behavior\": \"The response states the sign of the factor (x-3) on each side of x=3 but never explicitly states the sign of g'(x) itself or the value of g''(3).\", \"evidence\": \"for \\\\(x < 3\\\\), \\\\(x - 3 < 0\\\\); for \\\\(x > 3\\\\), \\\\(x - 3 > 0\\\\)\", \"points_lost\": [\"b1\"]}, {\"error_id\": \"\", \"new_behavior\": \"The response states the conclusion of a relative minimum without explicitly tying it to a stated sign change of g' or to g''(3) > 0.\", \"evidence\": \"so \\\\(g\\\\) has a relative minimum at \\\\(x = 3\\\\)\", \"points_lost\": [\"b2\"]}], \"matched_signals\": [], \"skill_readings\": [{\"skill_id\": \"BC-PT-99014\", \"reading\": \"unclear\"}, {\"skill_id\": \"BC-PT-99012\", \"reading\": \"unclear\"}], \"gap_descriptions_matched\": []}",
+  "usage": {
+   "cached_read_tokens": 4392,
+   "cached_write_tokens": 2398,
+   "input_tokens": 4,
+   "output_tokens": 1233
+  }
+ },
+ "a8b565175a531a8b085dd78bd9bdfb06837d82f90f8c67db0c9fbc1fe26c0814": {
+  "finish_reason": "success",
+  "model": "claude-sonnet-5",
+  "provider": "subscription",
+  "text": "{\"decision\": \"earned\", \"evidence_quote\": \"set \\\\(g'(x) = 0\\\\)\", \"rule_field\": \"earns\", \"rule_cited\": \"Presenting the equation derivative equals zero, or an equivalent equation\", \"eligibility_note\": \"No earlier error affects this point; the student explicitly wrote g'(x) = 0 before solving, which directly satisfies the criterion. This point does not depend on other points (setup alone earns).\"}",
+  "usage": {
+   "cached_read_tokens": 1336,
+   "cached_write_tokens": 1185,
+   "input_tokens": 2,
+   "output_tokens": 249
+  }
+ },
+ "bf566367ff5b72b8267d67494796e65fe6ebb2766076747250374b518d6c0dfe": {
+  "finish_reason": "success",
+  "model": "claude-sonnet-5",
+  "provider": "subscription",
+  "text": "{\"decision\": \"not_earned\", \"evidence_quote\": \"for \\\\(x < 3\\\\), \\\\(x - 3 < 0\\\\); for \\\\(x > 3\\\\), \\\\(x - 3 > 0\\\\)\", \"rule_field\": \"does_not_earn\", \"rule_cited\": \"A statement about the sign of the function rather than the derivative... does not earn it\", \"eligibility_note\": \"No earlier point's error affects this point per the record (no eligibility restriction stated, setup alone earns). The issue is purely whether the student's statement meets the criterion: the student states the sign of the factor (x-3), not an explicit statement that g'(x) is positive/negative, nor any statement about g''(3). The rubric explicitly distinguishes sign-of-function-or-expression statements from sign-of-derivative statements, and requires the latter to be explicit. Since g' is never named or its sign explicitly asserted, the point is not earned under a strict but reasonable reading of the criterion.</eligibility_note>\\n</invoke>\\n\"}",
+  "usage": {
+   "cached_read_tokens": 1336,
+   "cached_write_tokens": 1195,
+   "input_tokens": 2,
+   "output_tokens": 880
+  }
+ },
+ "feb95101db3dc17b6137231ae5a828dfff293c7879322d4651dbb8e4d5c02d51": {
+  "finish_reason": "success",
+  "model": "claude-sonnet-5",
+  "provider": "subscription",
+  "text": "{\"decision\": \"earned\", \"evidence_quote\": \"for \\\\(x < 3\\\\), \\\\(x - 3 < 0\\\\); for \\\\(x > 3\\\\), \\\\(x - 3 > 0\\\\)\", \"rule_field\": \"earns\", \"rule_cited\": \"Correct classification of the critical point as a relative maximum, relative minimum, or neither, with analysis using a first or second derivative test; the test need not be named\", \"eligibility_note\": \"No eligibility restriction stated for this point type, and it does not depend on any earlier point being correct beyond the critical value being found (which the question states was done in part a). The student's sign analysis of (x - 3), the sign-determining factor of g'(x) = (x-3)e^x since e^x > 0 always, is a valid first derivative test, not a candidates test, since it examines sign behavior on intervals rather than merely comparing endpoint values.\"}",
+  "usage": {
+   "cached_read_tokens": 1336,
+   "cached_write_tokens": 1209,
+   "input_tokens": 2,
+   "output_tokens": 698
+  }
+ }
+}

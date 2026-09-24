@@ -1,0 +1,103 @@
+{
+   "id": "FRQ-AGT-01011-01",
+   "archetype_id": "BC-QA-01011",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "stem": {
+      "text": "The function \\( f \\) is differentiable on the closed interval \\( [0, 6] \\). The table gives selected values of \\( f \\). \\[ \\begin{array}{c|cccc} x & 0 & 2 & 5 & 6 \\\\ \\hline f(x) & 2 & -3 & 4 & 1 \\end{array} \\]"
+   },
+   "skills": ["BC-SKL-01064", "BC-SKL-01065", "BC-SKL-01066", "BC-SKL-01067", "BC-SKL-01068"],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Must there be a value \\( c \\), with \\( 0 < c < 2 \\), for which \\( f(c) = 0 \\)? Justify your answer.",
+         "setup_required": false,
+         "answer_latex": "\\text{Yes}",
+         "worked_solution": [
+            {"text": "f is differentiable on [0, 6], so it is continuous on [0, 2].", "latex": "f \\text{ continuous on } [0,2]"},
+            {"text": "0 lies between f(2) and f(0).", "latex": "f(2) = -3 < 0 < 2 = f(0)"},
+            {"text": "By the Intermediate Value Theorem such a c exists.", "latex": "\\text{Yes}"}
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99015",
+               "skills": ["BC-SKL-01064", "BC-SKL-01065"],
+               "criterion": "States that f is continuous on [0, 2] because f is differentiable there.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99016",
+               "skills": ["BC-SKL-01066", "BC-SKL-01067", "BC-SKL-01068"],
+               "criterion": "Shows that 0 is strictly between f(2) = -3 and f(0) = 2 and answers yes, with continuity cited.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Explain why the equation \\( f(x) = -1 \\) must have at least two solutions in the open interval \\( (0, 6) \\).",
+         "setup_required": false,
+         "answer_latex": "\\text{at least one solution in } (0,2) \\text{ and one in } (2,5)",
+         "worked_solution": [
+            {"text": "f is continuous on [0, 6] because it is differentiable there.", "latex": "f \\text{ continuous on } [0,6]"},
+            {"text": "-1 lies between f(0) and f(2).", "latex": "f(2) = -3 < -1 < 2 = f(0)"},
+            {"text": "-1 also lies between f(2) and f(5).", "latex": "f(2) = -3 < -1 < 4 = f(5)"},
+            {"text": "The Intermediate Value Theorem gives a solution in each of the two disjoint intervals.", "latex": "x_1 \\in (0,2), \\quad x_2 \\in (2,5)"}
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99015",
+               "skills": ["BC-SKL-01064", "BC-SKL-01065"],
+               "criterion": "States that f is continuous on the intervals used because f is differentiable on [0, 6].",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99016",
+               "skills": ["BC-SKL-01066", "BC-SKL-01067", "BC-SKL-01068"],
+               "criterion": "Places -1 strictly between f(0) and f(2) and strictly between f(2) and f(5), concluding there is a solution in each of the two separate intervals.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Let \\( g(x) = f(x) + x \\). Must there be a value \\( c \\), with \\( 2 < c < 5 \\), for which \\( g(c) = 5 \\)? Justify your answer.",
+         "setup_required": false,
+         "answer_latex": "\\text{Yes}",
+         "worked_solution": [
+            {"text": "g is a sum of two functions continuous on [2, 5], since f is differentiable.", "latex": "g \\text{ continuous on } [2,5]"},
+            {"text": "Evaluate g at the endpoints.", "latex": "g(2) = -3 + 2 = -1, \\quad g(5) = 4 + 5 = 9"},
+            {"text": "5 lies between the endpoint values, so such a c exists.", "latex": "-1 < 5 < 9 \\Rightarrow \\text{Yes}"}
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99015",
+               "skills": ["BC-SKL-01064", "BC-SKL-01065"],
+               "criterion": "States that g is continuous on [2, 5] because f is differentiable (hence continuous) and x is continuous.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99016",
+               "skills": ["BC-SKL-01066", "BC-SKL-01067", "BC-SKL-01068"],
+               "criterion": "Computes g(2) = -1 and g(5) = 9, shows 5 is strictly between them and answers yes.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 4 (p3)",
+   "signed_off_by": null
+}

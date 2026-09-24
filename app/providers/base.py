@@ -26,6 +26,18 @@ class Message:
 
 
 @dataclass(frozen=True)
+class ImageInput:
+   """One photographed page. The bytes travel to the provider as a base64 image block on the last
+   user message, ahead of its text, and never inside a prompt string. width and height are the
+   decoded pixel size, which the budget guard prices before the call."""
+
+   media_type: str
+   data: bytes
+   width: int
+   height: int
+
+
+@dataclass(frozen=True)
 class CacheSettings:
    prefix_breakpoints: int = 1
    ttl: str = "5m"
@@ -44,6 +56,8 @@ class ProviderRequest:
    provider_options: dict | None = None
    idempotency_key: str | None = None
    correlation_id: str | None = None
+   images: tuple = ()
+   sample_label: str | None = None
 
 
 @dataclass(frozen=True)

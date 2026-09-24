@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { ApiError, readReview, submitErrorNote } from "../api/client";
+import { ApiError, askForReread, readReview, submitErrorNote } from "../api/client";
 import type { ErrorNoteEntry, ReviewPayload } from "../api/types";
 import { ReviewScreen } from "./ReviewScreen";
 
@@ -71,12 +71,23 @@ export function ReviewRoute(_props: ReviewRouteProps) {
       }
    }
 
+   async function reread(gradingId: string) {
+      await askForReread(gradingId);
+
+      const marked = review.provisional_points.map((point) =>
+         point.grading_id === gradingId ? { ...point, disputed: true } : point
+      );
+
+      setLoad({ kind: "loaded", review: { ...review, provisional_points: marked } });
+   }
+
    return (
       <ReviewScreen
          comingBack={review.coming_back}
          errorNotes={review.error_notes}
          provisionalPoints={review.provisional_points}
          onSaveNote={saveNote}
+         onAskForReread={review.grading_available ? reread : undefined}
       />
    );
 }

@@ -27,10 +27,11 @@ export interface MathFieldProps {
    initialLatex?: string;
    onChange: (mathjson: unknown) => void;
    onLoadFailure: (reason: unknown) => void;
+   onLatexChange?: (latex: string) => void;
 }
 
 export function MathField(props: MathFieldProps) {
-   const { label, initialLatex, onChange, onLoadFailure } = props;
+   const { label, initialLatex, onChange, onLoadFailure, onLatexChange } = props;
    const handlesLoadFailure = typeof onLoadFailure === "function";
 
    if (!handlesLoadFailure) {
@@ -73,7 +74,14 @@ export function MathField(props: MathFieldProps) {
       }
 
       const handleInput = () => {
-         onChange(readMathJsonValue(node as unknown as MathFieldElementLike));
+         const field = node as unknown as MathFieldElementLike;
+         const wantsLatex = onLatexChange !== undefined;
+
+         if (wantsLatex) {
+            onLatexChange(field.getValue("latex"));
+         }
+
+         onChange(readMathJsonValue(field));
       };
 
       node.addEventListener("input", handleInput);
@@ -81,7 +89,7 @@ export function MathField(props: MathFieldProps) {
       return () => {
          node.removeEventListener("input", handleInput);
       };
-   }, [onChange, loadFailed]);
+   }, [onChange, onLatexChange, loadFailed]);
 
    if (loadFailed) {
       return (

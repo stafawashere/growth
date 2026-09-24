@@ -63,4 +63,5 @@ def build_session_context(
       snapshot_id=snapshot_id,
       errors=dict(snapshot.errors),
       unit_titles=unit_titles(root),
+      snapshot=snapshot,
    )

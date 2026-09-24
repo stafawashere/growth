@@ -1,0 +1,93 @@
+{
+   "id": "FRQ-AGT-06013-01",
+   "archetype_id": "BC-QA-06013",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "The functions \\( f \\) and \\( g \\) are continuous for all real \\( x \\), with \\( \\displaystyle\\int_{0}^{4} f(x)\\,dx = 7 \\), \\( \\displaystyle\\int_{4}^{10} f(x)\\,dx = -3 \\), \\( \\displaystyle\\int_{0}^{10} g(x)\\,dx = 5 \\) and \\( \\displaystyle\\int_{0}^{4} g(x)\\,dx = 2 \\)."
+   },
+   "skills": ["BC-SKL-06029", "BC-SKL-06030", "BC-SKL-06031", "BC-SKL-06032", "BC-SKL-06033", "BC-SKL-06035"],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find \\( \\displaystyle\\int_{0}^{10} f(x)\\,dx \\).",
+         "setup_required": false,
+         "answer_latex": "4",
+         "worked_solution": [
+            {"text": "Adjacent intervals add.", "latex": "\\int_{0}^{10} f(x)\\,dx = 7 + (-3) = 4"}
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99004",
+               "skills": ["BC-SKL-06031"],
+               "criterion": "Gives 4.",
+               "eligible_only_if": [],
+               "check": {"kind": "sympy_equivalence", "target": "answer", "expected": "4", "up_to_constant": false, "variable": "x"}
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find \\( \\displaystyle\\int_{10}^{4} \\big(2f(x) - 3\\big)\\,dx \\). Show the work that leads to your answer.",
+         "setup_required": false,
+         "answer_latex": "24",
+         "worked_solution": [
+            {"text": "Reverse the limits.", "latex": "\\int_{10}^{4}\\big(2f(x) - 3\\big)\\,dx = -\\int_{4}^{10}\\big(2f(x) - 3\\big)\\,dx"},
+            {"text": "Split with the constant multiple and sum properties.", "latex": "-\\Big(2(-3) - 3\\cdot 6\\Big) = -(-24) = 24"}
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99005",
+               "skills": ["BC-SKL-06029", "BC-SKL-06030"],
+               "criterion": "Reverses the limits, splits the integral into 2 times the integral of f minus the integral of 3, and gives 24.",
+               "eligible_only_if": [],
+               "check": {"kind": "sympy_equivalence", "target": "answer", "expected": "24", "up_to_constant": false, "variable": "x"}
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Find \\( \\displaystyle\\int_{4}^{10} \\big(f(x) + 4g(x)\\big)\\,dx \\). Show the work that leads to your answer.",
+         "setup_required": false,
+         "answer_latex": "9",
+         "worked_solution": [
+            {"text": "Integral of g on [4, 10].", "latex": "\\int_{4}^{10} g(x)\\,dx = 5 - 2 = 3"},
+            {"text": "Combine.", "latex": "\\int_{4}^{10}\\big(f(x) + 4g(x)\\big)\\,dx = -3 + 4\\cdot 3 = 9"}
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99005",
+               "skills": ["BC-SKL-06029", "BC-SKL-06031"],
+               "criterion": "Finds the integral of g on [4, 10] as 3 and combines it with -3 to give 9.",
+               "eligible_only_if": [],
+               "check": {"kind": "sympy_equivalence", "target": "answer", "expected": "9", "up_to_constant": false, "variable": "x"}
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "Let \\( A(x) = \\displaystyle\\int_{4}^{x} f(t)\\,dt \\). Find \\( A(0) \\).",
+         "setup_required": false,
+         "answer_latex": "A(0) = -7",
+         "worked_solution": [
+            {"text": "Reverse the limits.", "latex": "A(0) = \\int_{4}^{0} f(t)\\,dt = -\\int_{0}^{4} f(t)\\,dt = -7"}
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99069",
+               "skills": ["BC-SKL-06030"],
+               "criterion": "Gives A(0) = -7, with the sign reversed because the upper limit is below the lower one.",
+               "eligible_only_if": [],
+               "check": {"kind": "sympy_equivalence", "target": "answer", "expected": "-7", "up_to_constant": false, "variable": "x"}
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 4 (p3)",
+   "signed_off_by": null
+}

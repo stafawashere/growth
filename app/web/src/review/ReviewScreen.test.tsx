@@ -9,7 +9,7 @@ import { ReviewScreen } from "./ReviewScreen";
 vi.mock("../api/client", async (importOriginal) => {
    const actual = await importOriginal<typeof client>();
 
-   return { ...actual, readReview: vi.fn(), submitErrorNote: vi.fn() };
+   return { ...actual, readReview: vi.fn(), submitErrorNote: vi.fn(), askForReread: vi.fn() };
 });
 
 const mocked = vi.mocked(client);
@@ -216,6 +216,26 @@ describe("the review route over GET /review", () => {
 
       expect(await screen.findByText("I drop the inner derivative.")).toBeTruthy();
       expect(mocked.submitErrorNote).toHaveBeenCalledWith("SES-3", "ATT-7", "I drop the inner derivative");
+   });
+
+   it("reaches every provisional point with a one-click re-read once grading is available", async () => {
+      const provisional: ProvisionalPoint = {
+         grading_id: "GRD-9",
+         attempt_id: "ATT-9",
+         label: "Critical point classified, part b",
+         point_label: "Classification of a critical point",
+         reason: "the gradings disagreed, 2 of 3 earned",
+         disputed: false
+      };
+      mocked.readReview.mockResolvedValue({ ...payload, grading_available: true, provisional_points: [provisional] });
+      mocked.askForReread.mockResolvedValue({ grading_id: "GRD-9", attempt_id: "ATT-9", rereading: true });
+      render(<ReviewRoute />);
+
+      fireEvent.click(await screen.findByRole("button", { name: "Ask for a re-read" }));
+
+      await waitFor(() => expect(mocked.askForReread).toHaveBeenCalledWith("GRD-9"));
+      expect(await screen.findByText("Re-read asked for")).toBeTruthy();
+      expect(screen.queryByRole("button", { name: "Ask for a re-read" })).toBeNull();
    });
 
    it("says the record could not be loaded when GET /review fails", async () => {

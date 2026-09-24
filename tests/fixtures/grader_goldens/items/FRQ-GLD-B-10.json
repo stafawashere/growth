@@ -1,0 +1,144 @@
+{
+   "id": "FRQ-GLD-B-10",
+   "archetype_id": "BC-QA-07003",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "stem": {
+      "text": "Let \\( y = f(x) \\) be the particular solution to the differential equation \\( \\dfrac{dy}{dx} = (y - 1)\\cos x \\) with the initial condition \\( f(0) = 3 \\)."
+   },
+   "skills": [
+      "BC-SKL-07024",
+      "BC-SKL-07025",
+      "BC-SKL-07026",
+      "BC-SKL-07027",
+      "BC-SKL-07029",
+      "BC-SKL-07030",
+      "BC-SKL-07033"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find \\( y = f(x) \\), the particular solution to the differential equation with the initial condition \\( f(0) = 3 \\).",
+         "setup_required": false,
+         "answer_latex": "y = 1 + 2e^{\\sin x}",
+         "worked_solution": [
+            {
+               "text": "Separate the variables.",
+               "latex": "\\frac{dy}{y - 1} = \\cos x\\,dx"
+            },
+            {
+               "text": "Antidifferentiate both sides.",
+               "latex": "\\ln|y - 1| = \\sin x + C"
+            },
+            {
+               "text": "Use f(0) = 3.",
+               "latex": "\\ln 2 = 0 + C, \\quad C = \\ln 2"
+            },
+            {
+               "text": "Solve for y; y - 1 > 0 near the initial condition.",
+               "latex": "y = 1 + 2e^{\\sin x}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99028",
+               "skills": [
+                  "BC-SKL-07024"
+               ],
+               "criterion": "Separates the variables, with y and dy on one side and x and dx on the other, each variable with its own differential, for example dy/(y - 1) = cos x dx. Without separation the whole part scores zero.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99029",
+               "skills": [
+                  "BC-SKL-07025"
+               ],
+               "criterion": "Writes a correct antiderivative of the y side, ln|y - 1| (parentheses in place of the absolute value are accepted). Available without separation only when an error in separation leaves the y side correct.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a3",
+               "point_type_id": "BC-PT-99030",
+               "skills": [
+                  "BC-SKL-07025"
+               ],
+               "criterion": "Writes a correct antiderivative of the x side, sin x. Available without separation only when an error in separation leaves the x side correct.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "sin(x)",
+                  "up_to_constant": true,
+                  "each_side": true,
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "a4",
+               "point_type_id": "BC-PT-99031",
+               "skills": [
+                  "BC-SKL-07026",
+                  "BC-SKL-07029"
+               ],
+               "criterion": "Includes a constant of integration in an equation and substitutes x = 0, y = 3 to find it (C = ln 2, or a multiplicative constant 2); a definite-integral form that builds the initial condition into the limits also earns it. Requires separation and at least one correct antiderivative. Work with no constant anywhere does not earn it.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "a5",
+               "point_type_id": "BC-PT-99032",
+               "skills": [
+                  "BC-SKL-07027",
+                  "BC-SKL-07030",
+                  "BC-SKL-07033"
+               ],
+               "criterion": "Solves for y = 1 + 2e^(sin x) in any equivalent form. A solution left in implicit logarithmic form, or one reached with no constant anywhere, does not earn it.",
+               "eligible_only_if": [
+                  "a2",
+                  "a3"
+               ],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "1 + 2*exp(sin(x))",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Let \\( g \\) be the function with \\( g(0) = 5 \\) whose derivative is \\( g'(x) = f(x) \\). Write, but do not evaluate, an expression involving a definite integral that gives \\( g(2) \\).",
+         "setup_required": false,
+         "answer_latex": "g(2) = 5 + \\int_{0}^{2} \\left(1 + 2e^{\\sin x}\\right)dx",
+         "worked_solution": [
+            {
+               "text": "Add the known value at x = 0 to the accumulated change over [0, 2].",
+               "latex": "g(2) = g(0) + \\int_{0}^{2} f(x)\\,dx = 5 + \\int_{0}^{2} \\left(1 + 2e^{\\sin x}\\right)dx"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99033",
+               "skills": [
+                  "BC-SKL-07029"
+               ],
+               "criterion": "Adds the known value g(0) = 5 to a definite integral of f from 0 to 2, with f written as the student's part (a) solution or left as f(x). A definite integral alone, without the 5, does not earn it.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude golden-set author, stage 4 (p3), model-authored",
+   "signed_off_by": null
+}

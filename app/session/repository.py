@@ -15,6 +15,7 @@ from app.engine.fringe import DictItemBank
 from app.engine.state import FadingStage, SkillState
 
 MILLISECONDS_PER_MINUTE = 60000.0
+FREE_RESPONSE_FORMAT = "free_response"
 
 
 def as_iso(value):
@@ -130,13 +131,16 @@ def load_attempts_history(db, user_id):
    """The attempt rows assemble_session reads: requeue, repeat window, forecast and format.
 
    A diagnostic miss is not marked corrected, because the diagnostic shows no correction, so it
-   never comes back through the R5 requeue.
+   never comes back through the R5 requeue. A free-response attempt is left out altogether: its
+   question is point-graded and may only be served in the four modes R10 names, so the
+   micro-session's requeue and repeat window must never see it.
    """
    archetype_of = dict(db.execute(select(models.Item.id, models.Item.archetype_id)).all())
    rows = db.execute(
       select(models.Attempt, models.Session.started_at, models.Session.mode)
       .join(models.Session, models.Session.id == models.Attempt.session_id)
       .where(models.Session.user_id == user_id)
+      .where(models.Attempt.format != FREE_RESPONSE_FORMAT)
       .order_by(models.Attempt.started_at)
    ).all()
    history = []

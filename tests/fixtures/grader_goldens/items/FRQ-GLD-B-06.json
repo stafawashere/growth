@@ -1,0 +1,98 @@
+{
+   "id": "FRQ-GLD-B-06",
+   "archetype_id": "BC-QA-05004",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "The derivative of a function \\( f \\) is given by \\( f'(x) = x^{2} - 6x + 5 \\) for all real \\( x \\)."
+   },
+   "skills": [
+      "BC-SKL-05030",
+      "BC-SKL-05031",
+      "BC-SKL-05035"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find the open interval or intervals on which the graph of \\( f \\) is concave down. Give a reason for your answer.",
+         "setup_required": false,
+         "answer_latex": "x < 3",
+         "worked_solution": [
+            {
+               "text": "Differentiate f'.",
+               "latex": "f''(x) = 2x - 6"
+            },
+            {
+               "text": "f'' is negative, so f' is decreasing, exactly when x < 3.",
+               "latex": "(-\\infty, 3)"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99062",
+               "skills": [
+                  "BC-SKL-05030"
+               ],
+               "criterion": "Gives the interval x < 3, that is (-infinity, 3); endpoints are optional.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99063",
+               "skills": [
+                  "BC-SKL-05030",
+                  "BC-SKL-05035"
+               ],
+               "criterion": "Reason: f'' = 2x - 6 < 0 there, or f' is decreasing there.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find the open interval or intervals on which \\( f \\) is both decreasing and concave up. Give a reason for your answer.",
+         "setup_required": false,
+         "answer_latex": "3 < x < 5",
+         "worked_solution": [
+            {
+               "text": "f' = (x - 1)(x - 5) is negative for 1 < x < 5, and f'' = 2x - 6 is positive for x > 3.",
+               "latex": "f'(x) < 0 \\text{ and } f''(x) > 0 \\text{ on } 3 < x < 5"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99062",
+               "skills": [
+                  "BC-SKL-05030",
+                  "BC-SKL-05031"
+               ],
+               "criterion": "Gives the interval 3 < x < 5; endpoints are optional. An interval that answers only one half of the compound condition, such as 1 < x < 5 or x > 3, does not earn it.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99063",
+               "skills": [
+                  "BC-SKL-05031",
+                  "BC-SKL-05035"
+               ],
+               "criterion": "Reason cites both halves on 3 < x < 5: f' < 0 there, and f' is increasing there (or f'' > 0). A reason addressing only one half does not earn it, nor does one that attributes the sign to f instead of f'.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": null
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude golden-set author, stage 4 (p3), model-authored",
+   "signed_off_by": null
+}

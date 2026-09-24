@@ -1,0 +1,82 @@
+{
+   "id": "FRQ-GLD-B-02",
+   "archetype_id": "BC-QA-06011",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "Consider the improper integral \\( \\displaystyle\\int_{0}^{\\infty} x e^{-x^{2}}\\,dx \\)."
+   },
+   "skills": [
+      "BC-SKL-06066",
+      "BC-SKL-06067",
+      "BC-SKL-06068",
+      "BC-SKL-06069",
+      "BC-SKL-06070"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Determine whether the integral converges or diverges. If it converges, find its value. Show the work that leads to your answer.",
+         "setup_required": false,
+         "answer_latex": "\\frac{1}{2}",
+         "worked_solution": [
+            {
+               "text": "Replace the infinite limit with a variable.",
+               "latex": "\\int_{0}^{\\infty} x e^{-x^{2}}\\,dx = \\lim_{b \\to \\infty} \\int_{0}^{b} x e^{-x^{2}}\\,dx"
+            },
+            {
+               "text": "Antidifferentiate with u = x squared.",
+               "latex": "\\int x e^{-x^{2}}\\,dx = -\\frac{1}{2} e^{-x^{2}} + C"
+            },
+            {
+               "text": "Evaluate and take the limit.",
+               "latex": "\\lim_{b \\to \\infty} \\left( -\\frac{1}{2} e^{-b^{2}} + \\frac{1}{2} \\right) = \\frac{1}{2}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99053",
+               "skills": [
+                  "BC-SKL-06066",
+                  "BC-SKL-06067"
+               ],
+               "criterion": "Replaces the infinite upper limit with a variable, for example b, and writes the limit as that variable tends to infinity, applied to the integral from 0 to b or to the evaluated antiderivative. Once correct limit notation appears the point is banked, so a later line that drops the lim or writes e to the minus infinity does not remove it. A response that only substitutes infinity into the antiderivative, with no limit ever written, does not earn it.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99003",
+               "skills": [
+                  "BC-SKL-06068"
+               ],
+               "criterion": "Writes a correct antiderivative of the integrand, -e^(-x^2)/2 or its equivalent in a substituted variable, with or without the constant.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-06068"
+               ],
+               "criterion": "Gives the value 1/2 and concludes the integral converges.",
+               "eligible_only_if": [
+                  "a2"
+               ],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "1/2",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude golden-set author, stage 4 (p3), model-authored",
+   "signed_off_by": null
+}

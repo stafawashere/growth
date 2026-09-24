@@ -1,0 +1,100 @@
+{
+   "id": "FRQ-AGT-04009-01",
+   "archetype_id": "BC-QA-04009",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "The function \\( g \\) is differentiable for all real numbers, with \\( g(1) = 3 \\) and \\( g'(1) = 5 \\)."
+   },
+   "skills": ["BC-SKL-04033", "BC-SKL-04034", "BC-SKL-04035", "BC-SKL-04036", "BC-SKL-04037", "BC-SKL-04038"],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find \\( \\displaystyle\\lim_{x \\to 0} \\frac{e^{2x} - 1 - 2x}{x^{2}} \\). Show the work that leads to your answer.",
+         "setup_required": false,
+         "answer_latex": "2",
+         "worked_solution": [
+            {"text": "Numerator and denominator both tend to 0.", "latex": "\\lim_{x\\to 0}(e^{2x} - 1 - 2x) = 0, \\quad \\lim_{x\\to 0}x^{2} = 0"},
+            {"text": "Apply L'Hospital's Rule; the new quotient is again 0 over 0.", "latex": "\\lim_{x\\to 0}\\frac{2e^{2x} - 2}{2x}"},
+            {"text": "Apply the rule a second time.", "latex": "\\lim_{x\\to 0}\\frac{4e^{2x}}{2} = 2"}
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99055",
+               "skills": ["BC-SKL-04033", "BC-SKL-04035", "BC-SKL-04037"],
+               "criterion": "Shows numerator and denominator each tend to 0 and writes a quotient of derivatives, with at least one derivative correct.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99004",
+               "skills": ["BC-SKL-04036", "BC-SKL-04037"],
+               "criterion": "Gives the limit 2.",
+               "eligible_only_if": [],
+               "check": {"kind": "sympy_equivalence", "target": "answer", "expected": "2", "up_to_constant": false, "variable": "x"}
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find \\( \\displaystyle\\lim_{x \\to 1} \\frac{g(x) - 3}{x^{2} - 1} \\). Show the work that leads to your answer.",
+         "setup_required": false,
+         "answer_latex": "\\frac{5}{2}",
+         "worked_solution": [
+            {"text": "g is continuous at 1 because it is differentiable, so both parts tend to 0.", "latex": "\\lim_{x\\to 1}(g(x) - 3) = 0, \\quad \\lim_{x\\to 1}(x^{2} - 1) = 0"},
+            {"text": "Apply L'Hospital's Rule.", "latex": "\\lim_{x\\to 1}\\frac{g'(x)}{2x} = \\frac{g'(1)}{2} = \\frac{5}{2}"}
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99055",
+               "skills": ["BC-SKL-04033", "BC-SKL-04034", "BC-SKL-04038"],
+               "criterion": "Uses g(1) = 3 and continuity of g to show the form is 0 over 0, then writes g'(x) over 2x.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99005",
+               "skills": ["BC-SKL-04036", "BC-SKL-04038"],
+               "criterion": "Evaluates the quotient of derivatives at x = 1 and gives 5/2.",
+               "eligible_only_if": [],
+               "check": {"kind": "sympy_equivalence", "target": "answer", "expected": "5/2", "up_to_constant": false, "variable": "x"}
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Let \\( h(x) = \\dfrac{\\ln x}{\\sqrt{x}} \\) for \\( x > 0 \\). Write a limit expression that describes the behavior of \\( h(x) \\) as \\( x \\) increases without bound, and find its value.",
+         "setup_required": false,
+         "answer_latex": "\\lim_{x\\to\\infty}\\frac{\\ln x}{\\sqrt{x}} = 0",
+         "worked_solution": [
+            {"text": "Write the limit; both parts grow without bound.", "latex": "\\lim_{x\\to\\infty}\\frac{\\ln x}{\\sqrt{x}}"},
+            {"text": "Apply L'Hospital's Rule.", "latex": "\\lim_{x\\to\\infty}\\frac{1/x}{1/(2\\sqrt{x})} = \\lim_{x\\to\\infty}\\frac{2}{\\sqrt{x}} = 0"}
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99054",
+               "skills": ["BC-SKL-04033"],
+               "criterion": "Writes the limit of ln x over sqrt(x) as x tends to infinity in correct notation.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99004",
+               "skills": ["BC-SKL-04035", "BC-SKL-04036"],
+               "criterion": "Gives the value 0.",
+               "eligible_only_if": [],
+               "check": {"kind": "sympy_equivalence", "target": "answer", "expected": "0", "up_to_constant": false, "variable": "x"}
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 4 (p3)",
+   "signed_off_by": null
+}

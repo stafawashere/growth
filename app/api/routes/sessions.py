@@ -4,6 +4,7 @@ Every route resolves the session row by id and by the cookie's user id, so one u
 reaches another user's row, and a session belonging to nobody in this cookie reads as 404.
 """
 import json
+from datetime import datetime, timezone
 
 from fastapi import APIRouter, Body, Depends, HTTPException
 from sqlalchemy import select
@@ -17,7 +18,7 @@ from app.items.verify import ChildDiedError
 from app.providers.anthropic import AnthropicProvider
 from app.providers.guard import BudgetStopped, GuardedProvider, SubscriptionPacingCaps
 from app.providers.subscription import SubscriptionLimitReached, SubscriptionProvider
-from app.session import diagnostic_session, preview, service
+from app.session import diagnostic_session, preview, probes, service
 
 router = APIRouter(prefix="/sessions", tags=["sessions"])
 
@@ -118,6 +119,7 @@ def open_session(
    fields = body_of(payload)
    context = settings.session_context
    today, rng = assembly_inputs_of(settings, user, fields)
+   probe_rows, probe_queue = probes.load_queue(db, user.id, datetime.now(timezone.utc))
    row = service.open_session(
       db,
       user.id,
@@ -129,10 +131,12 @@ def open_session(
       context.snapshot_id,
       today,
       rng,
+      probes=probe_queue,
       sub_mode=fields.get("sub_mode"),
       process_seed=settings.rng_seed,
       experiment_default=settings.experiment_default_state,
    )
+   probes.mark_drained(db, probe_rows, probe_queue, datetime.now(timezone.utc))
 
    return session_payload(db, row)
 

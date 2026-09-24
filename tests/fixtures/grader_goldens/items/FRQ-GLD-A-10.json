@@ -1,0 +1,81 @@
+{
+   "id": "FRQ-GLD-A-10",
+   "archetype_id": "BC-QA-07005",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "stem": {
+      "text": "Let \\( y = f(x) \\) be the particular solution to the differential equation \\( \\dfrac{dy}{dx} = xy \\) with the initial condition \\( f(1) = 2 \\)."
+   },
+   "skills": [
+      "BC-SKL-07018",
+      "BC-SKL-07023"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find \\( \\dfrac{d^{2}y}{dx^{2}} \\) in terms of \\( x \\) and \\( y \\), and evaluate it at the point \\( (1, 2) \\).",
+         "setup_required": false,
+         "answer_latex": "4",
+         "worked_solution": [
+            {
+               "text": "Differentiate xy with the product rule and substitute dy/dx.",
+               "latex": "\\frac{d^{2}y}{dx^{2}} = y + x\\frac{dy}{dx} = y + x^{2}y = y(1 + x^{2})"
+            },
+            {
+               "text": "Evaluate at (1, 2).",
+               "latex": "2(1 + 1) = 4"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99027",
+               "skills": [
+                  "BC-SKL-07018"
+               ],
+               "criterion": "Gives y(1 + x^2), or an equivalent expression in x and y, and the value 4 at (1, 2).",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "4",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "The line tangent to the graph of \\( f \\) at \\( x = 1 \\) is used to approximate \\( f(1.3) \\), giving the value 2.6. Is this approximation an overestimate or an underestimate of \\( f(1.3) \\)? Give a reason for your answer.",
+         "setup_required": false,
+         "answer_latex": "\\text{underestimate}",
+         "worked_solution": [
+            {
+               "text": "y starts at 2 and dy/dx = xy is positive while y is, so y stays positive for 1 <= x <= 1.3.",
+               "latex": "y > 0 \\text{ on } [1, 1.3]"
+            },
+            {
+               "text": "So the second derivative is positive on the whole interval; the graph is concave up and lies above its tangent line.",
+               "latex": "\\frac{d^{2}y}{dx^{2}} = y(1 + x^{2}) > 0 \\Rightarrow \\text{underestimate}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99026",
+               "skills": [
+                  "BC-SKL-07018",
+                  "BC-SKL-07023"
+               ],
+               "criterion": "Concludes underestimate because the second derivative is positive (f is concave up) on the interval from x = 1 to x = 1.3, not only at x = 1, so the tangent line lies below the graph.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude golden-set author, stage 4 (p3), model-authored",
+   "signed_off_by": null
+}

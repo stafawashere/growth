@@ -1,0 +1,105 @@
+{
+   "id": "FRQ-GLD-A-03",
+   "archetype_id": "BC-QA-08014",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "Let \\( f \\) be the function defined by \\( f(x) = x \\ln x \\) for \\( x > 0 \\)."
+   },
+   "skills": [
+      "BC-SKL-08056",
+      "BC-SKL-08057",
+      "BC-SKL-08058",
+      "BC-SKL-08059"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find \\( f'(x) \\).",
+         "setup_required": false,
+         "answer_latex": "\\ln x + 1",
+         "worked_solution": [
+            {
+               "text": "Apply the product rule.",
+               "latex": "f'(x) = 1 \\cdot \\ln x + x \\cdot \\frac{1}{x} = \\ln x + 1"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99022",
+               "skills": [
+                  "BC-SKL-08056"
+               ],
+               "criterion": "Applies the product rule to x ln x and gets ln x + 1.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "log(x) + 1",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Write, but do not evaluate, an integral expression that gives the length of the graph of \\( f \\) from \\( x = 1 \\) to \\( x = e \\).",
+         "setup_required": false,
+         "answer_latex": "\\int_{1}^{e} \\sqrt{1 + (\\ln x + 1)^{2}}\\,dx",
+         "worked_solution": [
+            {
+               "text": "Arc length integrand is the square root of one plus the square of the derivative.",
+               "latex": "\\int_{1}^{e} \\sqrt{1 + (\\ln x + 1)^{2}}\\,dx"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99051",
+               "skills": [
+                  "BC-SKL-08056",
+                  "BC-SKL-08057"
+               ],
+               "criterion": "Writes a definite integral from 1 to e whose integrand is the square root of 1 plus the square of f'(x).",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "1",
+                  "upper": "e",
+                  "integrand": "sqrt(1 + (log(x) + 1)**2)",
+                  "variable": "x"
+               }
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Explain what \\( \\int_{0}^{3} \\sqrt{1 + 9x^{4}}\\,dx \\) represents in terms of the graph of \\( y = x^{3} \\).",
+         "setup_required": false,
+         "answer_latex": "\\text{the length of the graph of } y = x^{3} \\text{ from } x = 0 \\text{ to } x = 3",
+         "worked_solution": [
+            {
+               "text": "For y = x^3, 1 + (dy/dx)^2 = 1 + 9x^4, so the integral is an arc length.",
+               "latex": "1 + (3x^{2})^{2} = 1 + 9x^{4}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99009",
+               "skills": [
+                  "BC-SKL-08058"
+               ],
+               "criterion": "Names the integral as the arc length (length of the graph) of y = x^3 and names the interval from x = 0 to x = 3.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude golden-set author, stage 4 (p3), model-authored",
+   "signed_off_by": null
+}

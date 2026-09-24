@@ -40,7 +40,8 @@ const PROPS_INTERFACE_BY_DESTINATION: Record<Destination, { file: string; name: 
    settings: { file: "settings/SettingsScreen.tsx", name: "SettingsScreenProps" },
    progress: { file: "progress/ProgressRoute.tsx", name: "ProgressRouteProps" },
    review: { file: "review/ReviewRoute.tsx", name: "ReviewRouteProps" },
-   onboarding: { file: "onboarding/OnboardingRoute.tsx", name: "OnboardingRouteProps" }
+   onboarding: { file: "onboarding/OnboardingRoute.tsx", name: "OnboardingRouteProps" },
+   frq: { file: "frq/FrqRoute.tsx", name: "FrqRouteProps" }
 };
 
 /* P2 scope item 6 brought the progress screen into phase with its calibration curve. Stage 3 of the
@@ -53,7 +54,7 @@ const OUT_OF_PHASE_SCREENS = ["mock"];
 
 /* The screens reached from home's secondary buttons, never from the bar and never the landing
    screen (08, Information architecture). */
-const REACHED_FROM_HOME = ["Progress", "Review"];
+const REACHED_FROM_HOME = ["Progress", "Review", "Free response"];
 
 const BAR_DESTINATIONS = ["home", "settings"];
 
@@ -509,6 +510,25 @@ describe("the client shell", () => {
       expect(await screen.findByRole("heading", { name: "Review" })).toBeTruthy();
       expect(screen.queryByText(/Start today's set/)).toBeNull();
       expect(mocked.readReview).toHaveBeenCalledTimes(1);
+   });
+
+   it("reaches the free-response unit check from home and never from the bar or as the landing screen", async () => {
+      mockServer(readyProgress);
+      mocked.readFrqUnits.mockResolvedValue({ units: [{ unit_id: "BC-UNIT-05", title: "Analytical applications", questions: 1 }] });
+      render(<App />);
+
+      await screen.findByText(/Start today's set/);
+
+      const bar = within(screen.getByRole("navigation"));
+
+      expect(bar.queryByRole("button", { name: "Free response" })).toBeNull();
+      expect(mocked.readFrqUnits).not.toHaveBeenCalled();
+
+      fireEvent.click(screen.getByRole("button", { name: "Free response" }));
+
+      expect(await screen.findByTestId("frq-units")).toBeTruthy();
+      expect(screen.getByRole("button", { name: "Analytical applications" })).toBeTruthy();
+      expect(screen.queryByText(/Start today's set/)).toBeNull();
    });
 
    it("draws the mastery map above the calibration curve on progress", async () => {

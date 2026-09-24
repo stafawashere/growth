@@ -1,0 +1,78 @@
+{
+   "id": "FRQ-GLD-B-03",
+   "archetype_id": "BC-QA-04009",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "The function \\( C \\) is defined for \\( x > 0 \\) by \\( C(x) = \\dfrac{5x + \\ln x}{2x + 1} \\)."
+   },
+   "skills": [
+      "BC-SKL-04033",
+      "BC-SKL-04034",
+      "BC-SKL-04035",
+      "BC-SKL-04036",
+      "BC-SKL-04037",
+      "BC-SKL-04038"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find the value that \\( C(x) \\) approaches as \\( x \\) increases without bound. Show the work that leads to your answer.",
+         "setup_required": false,
+         "answer_latex": "\\frac{5}{2}",
+         "worked_solution": [
+            {
+               "text": "Write the limit and check the form: numerator and denominator each tend to infinity.",
+               "latex": "\\lim_{x \\to \\infty} (5x + \\ln x) = \\infty, \\quad \\lim_{x \\to \\infty} (2x + 1) = \\infty"
+            },
+            {
+               "text": "Apply L'Hospital's rule.",
+               "latex": "\\lim_{x \\to \\infty} C(x) = \\lim_{x \\to \\infty} \\frac{5 + \\frac{1}{x}}{2} = \\frac{5}{2}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99054",
+               "skills": [
+                  "BC-SKL-04033"
+               ],
+               "criterion": "Writes the requested limit symbolically with x tending to infinity, as the limit of C(x), of the quotient, or of the ratio of derivatives. A limit written with x tending to 0, a limit symbol with no argument, or arithmetic with infinity in place of a limit does not earn it.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99055",
+               "skills": [
+                  "BC-SKL-04033",
+                  "BC-SKL-04034",
+                  "BC-SKL-04035"
+               ],
+               "criterion": "Shows separately that the numerator and the denominator each tend to infinity, then writes the limit of the ratio of their derivatives, (5 + 1/x)/2, with at least one of the two derivatives correct. Writing infinity over infinity as a value, with no separate limits, does not earn it.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-04036"
+               ],
+               "criterion": "Gives the value 5/2.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "5/2",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude golden-set author, stage 4 (p3), model-authored",
+   "signed_off_by": null
+}

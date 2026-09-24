@@ -1,0 +1,99 @@
+{
+   "id": "FRQ-GLD-A-06",
+   "archetype_id": "BC-QA-05007",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "The function \\( g \\) is defined for all real \\( x \\) by \\( g(x) = \\displaystyle\\int_{0}^{x} (t - 2)(t + 1)^{2}\\,dt \\)."
+   },
+   "skills": [
+      "BC-SKL-05010",
+      "BC-SKL-05020",
+      "BC-SKL-05039"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find all values of \\( x \\) at which \\( g \\) has a critical point.",
+         "setup_required": false,
+         "answer_latex": "x = -1, \\; x = 2",
+         "worked_solution": [
+            {
+               "text": "By the Fundamental Theorem of Calculus the derivative is the integrand at x.",
+               "latex": "g'(x) = (x - 2)(x + 1)^{2}"
+            },
+            {
+               "text": "Set the derivative equal to zero.",
+               "latex": "(x - 2)(x + 1)^{2} = 0 \\Rightarrow x = -1, \\; x = 2"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99013",
+               "skills": [
+                  "BC-SKL-05010"
+               ],
+               "criterion": "Considers g'(x) = 0, for example by writing (x - 2)(x + 1)^2 = 0, or discusses where g' is zero or changes sign.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-05010"
+               ],
+               "criterion": "Gives both x = -1 and x = 2, supported by the derivative.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Determine whether \\( g \\) has a relative minimum, a relative maximum, or neither at \\( x = -1 \\). Justify your answer.",
+         "setup_required": false,
+         "answer_latex": "\\text{neither}",
+         "worked_solution": [
+            {
+               "text": "The squared factor is nonnegative and x - 2 is negative near x = -1.",
+               "latex": "g'(x) < 0 \\text{ for } x < -1 \\text{ and for } -1 < x < 2"
+            },
+            {
+               "text": "g' does not change sign at x = -1.",
+               "latex": "\\text{neither a relative minimum nor a relative maximum}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99014",
+               "skills": [
+                  "BC-SKL-05020",
+                  "BC-SKL-05039"
+               ],
+               "criterion": "States explicitly that g' is negative on both sides of x = -1 (for x < -1 and for -1 < x < 2), symbolically or in words.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99012",
+               "skills": [
+                  "BC-SKL-05020",
+                  "BC-SKL-05039"
+               ],
+               "criterion": "Concludes that g has neither a relative minimum nor a relative maximum at x = -1 because g' does not change sign there.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": null
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude golden-set author, stage 4 (p3), model-authored",
+   "signed_off_by": null
+}

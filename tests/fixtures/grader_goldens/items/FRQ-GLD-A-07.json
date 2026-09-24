@@ -1,0 +1,66 @@
+{
+   "id": "FRQ-GLD-A-07",
+   "archetype_id": "BC-QA-01011",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "stem": {
+      "text": "The function \\( f \\) is twice differentiable for all real numbers. Selected values of \\( f \\) are given in the table. \\( \\begin{array}{c|cccc} x & 0 & 2 & 5 & 7 \\\\ \\hline f(x) & 4 & -1 & 3 & 6 \\end{array} \\)"
+   },
+   "skills": [
+      "BC-SKL-01064",
+      "BC-SKL-01065",
+      "BC-SKL-01066",
+      "BC-SKL-01067",
+      "BC-SKL-01068"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Must there be a value \\( c \\), for \\( 0 < c < 2 \\), such that \\( f(c) = 0 \\)? Justify your answer.",
+         "setup_required": false,
+         "answer_latex": "\\text{yes}",
+         "worked_solution": [
+            {
+               "text": "A twice differentiable function is differentiable, hence continuous.",
+               "latex": "f \\text{ continuous on } [0, 2]"
+            },
+            {
+               "text": "The target value lies strictly between the endpoint values.",
+               "latex": "f(2) = -1 < 0 < 4 = f(0)"
+            },
+            {
+               "text": "By the Intermediate Value Theorem such a c exists.",
+               "latex": "\\text{yes}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99015",
+               "skills": [
+                  "BC-SKL-01064",
+                  "BC-SKL-01065"
+               ],
+               "criterion": "States that f is continuous on [0, 2] because it is differentiable (or twice differentiable, hence differentiable, hence continuous).",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99016",
+               "skills": [
+                  "BC-SKL-01066",
+                  "BC-SKL-01067",
+                  "BC-SKL-01068"
+               ],
+               "criterion": "Shows that 0 lies strictly between f(2) = -1 and f(0) = 4, states f is continuous, and answers yes; a named theorem must be the Intermediate Value Theorem.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude golden-set author, stage 4 (p3), model-authored",
+   "signed_off_by": null
+}

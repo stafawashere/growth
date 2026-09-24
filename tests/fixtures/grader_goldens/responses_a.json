@@ -1,0 +1,3806 @@
+{
+   "author": "claude-opus-5-5 subagent on the operator's delegation of 2026-09-24; model-authored and model-graded, not human",
+   "graded_against": "data/scoring_points.json BC-PT definitions and each question's criterion",
+   "responses": [
+      {
+         "id": "GR-A-001",
+         "item_id": "FRQ-GLD-A-01",
+         "target_point": "b1",
+         "target_point_type": "BC-PT-99007",
+         "category": "fully_correct",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\int_{0}^{12} W(t) dt \\approx 3(20) + 4(26) + 5(35)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "= 60 + 104 + 175 = 339",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "339 gallons"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "It is the total number of gallons of water pumped into the tank from \\(t = 0\\) to \\(t = 12\\) hours.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "total gallons pumped in from t = 0 to t = 12"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "b1": 1
+         },
+         "label_note": "Names the accumulated quantity (gallons of water pumped in) and the interval t = 0 to t = 12 hours."
+      },
+      {
+         "id": "GR-A-002",
+         "item_id": "FRQ-GLD-A-01",
+         "target_point": "b1",
+         "target_point_type": "BC-PT-99007",
+         "category": "unconventional_valid",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "3 \\cdot 20 + 4 \\cdot 26 + 5 \\cdot 35 = 339",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "339"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "\\(W\\) is how fast water comes in, so integrating it adds up all the water that came in.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "So it's how many gallons the water in the tank went up by because of the pump during the first 12 hours, \\(0 \\le t \\le 12\\).",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "increase in gallons from pumping over the first 12 hours"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "b1": 1
+         },
+         "label_note": "Describing the integral as the increase in gallons due to the pump over 0 <= t <= 12 names the accumulated quantity with units and the interval, so the point is earned despite the unusual phrasing."
+      },
+      {
+         "id": "GR-A-003",
+         "item_id": "FRQ-GLD-A-01",
+         "target_point": "b1",
+         "target_point_type": "BC-PT-99007",
+         "category": "narrow_fail",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\int_{0}^{12} W(t) dt \\approx 3(20) + 4(26) + 5(35)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "= 60 + 104 + 175 = 339",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "339 gallons"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "The integral is the total number of gallons of water pumped into the tank.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "total gallons pumped into the tank"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "b1": 0
+         },
+         "label_note": "Names the quantity and units but omits the time interval, which the does_not_earn text says loses the point."
+      },
+      {
+         "id": "GR-A-004",
+         "item_id": "FRQ-GLD-A-01",
+         "target_point": "b1",
+         "target_point_type": "BC-PT-99007",
+         "category": "notation_failure",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\int_{0}^{12} W(t) dt \\approx 3(20) + 4(26) + 5(35)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "= 60 + 104 + 175 = 339",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "339 gallons"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "total amount of water pumped into the tank, in gallons per hour, from t = 0 to t = 12 hrs",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "water pumped in, gallons per hour, t = 0 to 12"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "b1": 0
+         },
+         "label_note": "Quantity and interval are right but the units are given as gallons per hour, a rate unit, so the interpretation with correct units that the prompt asks for is not given."
+      },
+      {
+         "id": "GR-A-005",
+         "item_id": "FRQ-GLD-A-01",
+         "target_point": "b1",
+         "target_point_type": "BC-PT-99007",
+         "category": "eligible_after_error",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\int_{0}^{12} W(t) dt \\approx 3(26) + 4(35) + 5(41)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "= 78 + 140 + 205 = 423",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "423"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "It means the number of gallons of water that got pumped into the tank between \\(t = 0\\) and \\(t = 12\\) hours.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "gallons pumped in between t = 0 and t = 12"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 0,
+            "a2": 0,
+            "b1": 1
+         },
+         "label_note": "Part (a) uses a right sum where a left sum was asked, losing a1 and a2, but 99007 has no eligibility restriction and the interpretation names gallons pumped in over t = 0 to 12."
+      },
+      {
+         "id": "GR-A-006",
+         "item_id": "FRQ-GLD-A-02",
+         "target_point": "b1",
+         "target_point_type": "BC-PT-99008",
+         "category": "fully_correct",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "H'(5) \\approx \\frac{H(7) - H(3)}{7 - 3} = \\frac{66 - 78}{4} = -3",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "degrees Celsius per minute",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "-3"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "At \\(t = 5\\) minutes, the temperature of the coffee is decreasing at a rate of about 3 degrees Celsius per minute.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "decreasing about 3 degrees Celsius per minute at t = 5"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "b1": 1
+         },
+         "label_note": "Gives the quantity, the rate 3 with units, decreasing language consistent with -3, and the instant t = 5."
+      },
+      {
+         "id": "GR-A-007",
+         "item_id": "FRQ-GLD-A-02",
+         "target_point": "b1",
+         "target_point_type": "BC-PT-99008",
+         "category": "unconventional_valid",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "H'(5) \\approx \\frac{H(7) - H(3)}{7 - 3} = \\frac{66 - 78}{4} = -3",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "degrees Celsius per minute",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "-3"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "\\(H'(5) \\approx -3\\), so right at the 5 minute mark the coffee's temperature is changing by roughly \\(-3\\) degrees Celsius per minute, meaning it is cooling off at that moment.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "temperature changing at about -3 degrees Celsius per minute at 5 minutes"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "b1": 1
+         },
+         "label_note": "Uses 'changing by -3' rather than 'decreasing at 3', which is sign-consistent, and includes the quantity, units and the instant t = 5."
+      },
+      {
+         "id": "GR-A-008",
+         "item_id": "FRQ-GLD-A-02",
+         "target_point": "b1",
+         "target_point_type": "BC-PT-99008",
+         "category": "narrow_fail",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "H'(5) \\approx \\frac{H(7) - H(3)}{7 - 3} = \\frac{66 - 78}{4} = -3",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "degrees Celsius per minute",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "-3"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "At time \\(t = 5\\) minutes the temperature of the coffee is decreasing at a rate of \\(-3\\) degrees Celsius per minute.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "decreasing at -3 degrees Celsius per minute"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "b1": 0
+         },
+         "label_note": "Decreasing at a rate of a negative number contradicts the presented value, which the does_not_earn text names explicitly."
+      },
+      {
+         "id": "GR-A-009",
+         "item_id": "FRQ-GLD-A-02",
+         "target_point": "b1",
+         "target_point_type": "BC-PT-99008",
+         "category": "notation_failure",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\frac{66 - 78}{7 - 3} = -3",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "deg C/min",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "-3 deg C/min"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "at 5 min the coffee temp is dropping about 3 deg C/min",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "at 5 min temp dropping 3 deg C/min"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "b1": 1
+         },
+         "label_note": "Abbreviations aside, the sentence names the temperature, the rate 3 with units, dropping (consistent with -3) and the instant 5 minutes; no notation requirement applies."
+      },
+      {
+         "id": "GR-A-010",
+         "item_id": "FRQ-GLD-A-02",
+         "target_point": "b1",
+         "target_point_type": "BC-PT-99008",
+         "category": "eligible_after_error",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "H'(5) \\approx \\frac{H(3) - H(0)}{3 - 0} = \\frac{78 - 90}{3} = -4",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "degrees Celsius per minute",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "-4"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "At \\(t = 5\\) minutes the coffee's temperature is going down at about 4 degrees Celsius per minute.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "going down 4 degrees Celsius per minute at t = 5"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 0,
+            "a2": 1,
+            "b1": 1
+         },
+         "label_note": "The estimate -4 uses an interval that does not contain t = 5, but 99008 only needs a presented value, and the interpretation of -4 is complete and sign-consistent."
+      },
+      {
+         "id": "GR-A-011",
+         "item_id": "FRQ-GLD-A-03",
+         "target_point": "c1",
+         "target_point_type": "BC-PT-99009",
+         "category": "fully_correct",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "f'(x) = 1 \\cdot \\ln(x) + x \\cdot \\frac{1}{x}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "f'(x) = \\ln(x) + 1",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "\\ln(x) + 1"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "L = \\int_{1}^{e} \\sqrt{1 + (\\ln(x) + 1)^{2}} dx",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "\\int_{1}^{e} \\sqrt{1 + (\\ln(x) + 1)^{2}} dx"
+               },
+               {
+                  "part_id": "c",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "It's the arc length of the curve \\(y = x^{3}\\) from \\(x = 0\\) to \\(x = 3\\).",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "arc length of y = x^3 from x = 0 to x = 3"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "b1": 1,
+            "c1": 1
+         },
+         "label_note": "Names the integral as the arc length of y = x^3 and names the interval x = 0 to x = 3."
+      },
+      {
+         "id": "GR-A-012",
+         "item_id": "FRQ-GLD-A-03",
+         "target_point": "c1",
+         "target_point_type": "BC-PT-99009",
+         "category": "unconventional_valid",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "f'(x) = 1 \\cdot \\ln(x) + x \\cdot \\frac{1}{x}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "f'(x) = \\ln(x) + 1",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "\\ln(x) + 1"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "L = \\int_{1}^{e} \\sqrt{1 + (\\ln(x) + 1)^{2}} dx",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "\\int_{1}^{e} \\sqrt{1 + (\\ln(x) + 1)^{2}} dx"
+               },
+               {
+                  "part_id": "c",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "y = x^{3}, y' = 3x^{2}, 1 + (y')^{2} = 1 + 9x^{4}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "so this is the length along the graph of \\(y = x^{3}\\) between the points \\((0, 0)\\) and \\((3, 27)\\).",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "length of the graph between (0, 0) and (3, 27)"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "b1": 1,
+            "c1": 1
+         },
+         "label_note": "Identifies the length of the graph of y = x^3 and gives the interval through its endpoints (0, 0) and (3, 27), which fixes x from 0 to 3."
+      },
+      {
+         "id": "GR-A-013",
+         "item_id": "FRQ-GLD-A-03",
+         "target_point": "c1",
+         "target_point_type": "BC-PT-99009",
+         "category": "narrow_fail",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "f'(x) = 1 \\cdot \\ln(x) + x \\cdot \\frac{1}{x}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "f'(x) = \\ln(x) + 1",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "\\ln(x) + 1"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "L = \\int_{1}^{e} \\sqrt{1 + (\\ln(x) + 1)^{2}} dx",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "\\int_{1}^{e} \\sqrt{1 + (\\ln(x) + 1)^{2}} dx"
+               },
+               {
+                  "part_id": "c",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "This integral gives the arc length of the graph of \\(y = x^{3}\\).",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "arc length of y = x^3"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "b1": 1,
+            "c1": 0
+         },
+         "label_note": "Names arc length of the right curve but gives no interval; the criterion needs both."
+      },
+      {
+         "id": "GR-A-014",
+         "item_id": "FRQ-GLD-A-03",
+         "target_point": "c1",
+         "target_point_type": "BC-PT-99009",
+         "category": "notation_failure",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "f'(x) = 1 \\cdot \\ln(x) + x \\cdot \\frac{1}{x}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "f'(x) = \\ln(x) + 1",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "\\ln(x) + 1"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "L = \\int_{1}^{e} \\sqrt{1 + (\\ln(x) + 1)^{2}} dx",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "\\int_{1}^{e} \\sqrt{1 + (\\ln(x) + 1)^{2}} dx"
+               },
+               {
+                  "part_id": "c",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\int_{0}^{3} \\sqrt{1 + (\\frac{dy}{dx})^{2}} dx",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "w/ \\(y = x^{3}\\), so its the length of the curve, 0 to 3",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "length of curve y = x^3, 0 to 3"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "b1": 1,
+            "c1": 1
+         },
+         "label_note": "Terse, with the interval written as '0 to 3' and no variable named, but the general formula line ties the limits to x, so length of the graph and interval are both named."
+      },
+      {
+         "id": "GR-A-015",
+         "item_id": "FRQ-GLD-A-03",
+         "target_point": "c1",
+         "target_point_type": "BC-PT-99009",
+         "category": "eligible_after_error",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "f'(x) = x \\cdot \\frac{1}{x} = 1",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "1"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\int_{1}^{e} \\sqrt{1 + 1^{2}} dx = \\int_{1}^{e} \\sqrt{2} dx",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "\\int_{1}^{e} \\sqrt{2} dx"
+               },
+               {
+                  "part_id": "c",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "It's the length of the graph of \\(y = x^{3}\\) on the interval \\(0 \\le x \\le 3\\).",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "length of y = x^3 for 0 <= x <= 3"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 0,
+            "b1": 1,
+            "c1": 1
+         },
+         "label_note": "Part (a) drops a product rule term; b1 is kept because the arc length form with an imported wrong derivative is allowed for 99051 (sg-23:8), and c1 has no eligibility restriction and is complete."
+      },
+      {
+         "id": "GR-A-016",
+         "item_id": "FRQ-GLD-A-04",
+         "target_point": "b2",
+         "target_point_type": "BC-PT-99010",
+         "category": "fully_correct",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "\\(e^{-x} > 0\\) so the sign of \\(f'\\) is the sign of \\(x - 3\\).",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\(f'(x) < 0\\) for \\(0 < x < 3\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "(0, 3)"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "f'(x) = 0 \\to x = 3",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\(f'(x) < 0\\) on \\((0, 3)\\) and \\(f'(x) > 0\\) on \\((3, 8)\\). \\(x = 3\\) is the only critical point in the interval, so \\(f\\) decreases until 3 and increases after, and \\(f(3)\\) is the absolute minimum on \\([0, 8]\\).",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "x = 3"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "b1": 1,
+            "b2": 1
+         },
+         "label_note": "Sign of f' on each side plus the statement that x = 3 is the only critical point on the interval gives the global argument."
+      },
+      {
+         "id": "GR-A-017",
+         "item_id": "FRQ-GLD-A-04",
+         "target_point": "b2",
+         "target_point_type": "BC-PT-99010",
+         "category": "unconventional_valid",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "\\(e^{-x} > 0\\) so the sign of \\(f'\\) is the sign of \\(x - 3\\).",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\(f'(x) < 0\\) for \\(0 < x < 3\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "(0, 3)"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "Since \\(f' < 0\\) on \\((0,3)\\), \\(f\\) is decreasing on all of \\([0, 3]\\), and since \\(f' > 0\\) on \\((3, 8)\\), \\(f\\) is increasing on all of \\([3, 8]\\).",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "so \\(f(x) \\ge f(3)\\) for every \\(x\\) in \\([0, 8]\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "x = 3"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "b1": 1,
+            "b2": 1
+         },
+         "label_note": "Does not say 'only critical point' but proves the global claim directly: monotone on each whole piece, so f(x) >= f(3) on all of [0, 8]."
+      },
+      {
+         "id": "GR-A-018",
+         "item_id": "FRQ-GLD-A-04",
+         "target_point": "b2",
+         "target_point_type": "BC-PT-99010",
+         "category": "narrow_fail",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "\\(e^{-x} > 0\\) so the sign of \\(f'\\) is the sign of \\(x - 3\\).",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\(f'(x) < 0\\) for \\(0 < x < 3\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "(0, 3)"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "\\(f'\\) changes from negative to positive at \\(x = 3\\), so \\(f\\) has a relative min at \\(x = 3\\). That is the absolute minimum.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "x = 3"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "b1": 1,
+            "b2": 0
+         },
+         "label_note": "A local first derivative test with no statement that x = 3 is the only critical point is the local-only argument the does_not_earn text rejects; the answer point stands."
+      },
+      {
+         "id": "GR-A-019",
+         "item_id": "FRQ-GLD-A-04",
+         "target_point": "b2",
+         "target_point_type": "BC-PT-99010",
+         "category": "notation_failure",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "\\(e^{-x} > 0\\) so the sign of \\(f'\\) is the sign of \\(x - 3\\).",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\(f'(x) < 0\\) for \\(0 < x < 3\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "(0, 3)"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "\\(f(x) < 0\\) on \\((0, 3)\\) and \\(f(x) > 0\\) on \\((3, 8)\\), and 3 is the only critical point on the interval, so the absolute min is at \\(x = 3\\).",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "x = 3"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "b1": 1,
+            "b2": 0
+         },
+         "label_note": "The primes are dropped, so the stated signs are of f, not f'; the justification as written is about the wrong function and does not earn the point."
+      },
+      {
+         "id": "GR-A-020",
+         "item_id": "FRQ-GLD-A-04",
+         "target_point": "b2",
+         "target_point_type": "BC-PT-99010",
+         "category": "eligible_after_error",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "f'(x) = (x - 3)e^{-x}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\(f' < 0\\) when \\(x - 3 < 0\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "(3, 8)"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "f'(1) = -2e^{-1} < 0, f'(4) = e^{-4} > 0",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "So \\(f' < 0\\) on \\((0, 3)\\) and \\(f' > 0\\) on \\((3, 8)\\). Only critical point on \\((0, 8)\\) is \\(x = 3\\), so the absolute minimum is at \\(x = 3\\).",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "x = 3"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 0,
+            "b1": 1,
+            "b2": 1
+         },
+         "label_note": "Part (a) reports the wrong interval, but 99010 has no eligibility restriction and part (b) gives both signs with the only-critical-point global statement."
+      },
+      {
+         "id": "GR-A-021",
+         "item_id": "FRQ-GLD-A-05",
+         "target_point": "b1",
+         "target_point_type": "BC-PT-99011",
+         "category": "fully_correct",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "h'(x) = 3x^{2} - 6x - 9 = 0",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "3(x - 3)(x + 1) = 0",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "x = -1, x = 3",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "x = -1, x = 3"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "h(-2) = 0",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "h(-1) = 7",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "h(3) = -25",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "h(4) = -18",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "Candidates test: the smallest value is \\(-25\\), at \\(x = 3\\).",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "-25"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "b1": 1,
+            "b2": 1
+         },
+         "label_note": "Evaluates h correctly at both endpoints and both critical points and picks the smallest."
+      },
+      {
+         "id": "GR-A-022",
+         "item_id": "FRQ-GLD-A-05",
+         "target_point": "b1",
+         "target_point_type": "BC-PT-99011",
+         "category": "unconventional_valid",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "h'(x) = 3x^{2} - 6x - 9 = 0",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "3(x - 3)(x + 1) = 0",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "x = -1, x = 3",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "x = -1, x = 3"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "h(x) + 25 = x^{3} - 3x^{2} - 9x + 27 = (x - 3)^{2}(x + 3)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "For \\(x\\) in \\([-2, 4]\\), \\((x-3)^{2} \\ge 0\\) and \\(x + 3 > 0\\), so \\(h(x) + 25 \\ge 0\\), i.e. \\(h(x) \\ge -25\\), with equality at \\(x = 3\\).",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "-25"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "b1": 1,
+            "b2": 1
+         },
+         "label_note": "Not a candidates table, but a complete global argument (h(x) + 25 factors as a nonnegative product on the interval), which the criterion accepts."
+      },
+      {
+         "id": "GR-A-023",
+         "item_id": "FRQ-GLD-A-05",
+         "target_point": "b1",
+         "target_point_type": "BC-PT-99011",
+         "category": "narrow_fail",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "h'(x) = 3x^{2} - 6x - 9 = 0",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "3(x - 3)(x + 1) = 0",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "x = -1, x = 3",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "x = -1, x = 3"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "h(-1) = 7",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "h(3) = -25",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "h(4) = -18",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "abs min is \\(-25\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "-25"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "b1": 0,
+            "b2": 1
+         },
+         "label_note": "The candidates list is missing the endpoint x = -2, which the does_not_earn text names; the value -25 still earns the answer point."
+      },
+      {
+         "id": "GR-A-024",
+         "item_id": "FRQ-GLD-A-05",
+         "target_point": "b1",
+         "target_point_type": "BC-PT-99011",
+         "category": "notation_failure",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "h'(x) = 3x^{2} - 6x - 9 = 0",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "3(x - 3)(x + 1) = 0",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "x = -1, x = 3",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "x = -1, x = 3"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "(-2, 0), (-1, 7), (3, -25), (4, -18)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "min = \\(-25\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "-25"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "b1": 1,
+            "b2": 1
+         },
+         "label_note": "Candidates written as bare ordered pairs with no h label, but every endpoint and critical point is evaluated correctly and 99011 states no notation requirement."
+      },
+      {
+         "id": "GR-A-025",
+         "item_id": "FRQ-GLD-A-05",
+         "target_point": "b1",
+         "target_point_type": "BC-PT-99011",
+         "category": "eligible_after_error",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "h'(x) = 3x^{2} - 6x - 9 = 0",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "3(x + 3)(x - 1) = 0",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "x = -3, x = 1",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "only \\(x = 1\\) is in \\((-2, 4)\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "x = 1"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "h(-2) = 0",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "h(1) = 1 - 3 - 9 + 2 = -9",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "h(4) = -18",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "smallest is \\(-18\\), so the absolute min value is \\(-18\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "-18"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 0,
+            "b1": 1,
+            "b2": 1
+         },
+         "label_note": "Part (a) factors wrongly, but sg-25:19 allows candidates imported from an earlier part; both endpoints and the imported critical point are evaluated correctly, and the answer follows the imported values."
+      },
+      {
+         "id": "GR-A-026",
+         "item_id": "FRQ-GLD-A-06",
+         "target_point": "a1",
+         "target_point_type": "BC-PT-99013",
+         "category": "fully_correct",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "g'(x) = (x - 2)(x + 1)^{2}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "(x - 2)(x + 1)^{2} = 0",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "x = 2, x = -1",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "x = -1, x = 2"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "\\(g'(x) < 0\\) for \\(x < -1\\) and \\(g'(x) < 0\\) for \\(-1 < x < 2\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\(g'\\) doesn't change sign at \\(x = -1\\), so \\(g\\) has neither a relative min nor a relative max there.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "neither"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "b1": 1,
+            "b2": 1
+         },
+         "label_note": "Writes (x - 2)(x + 1)^2 = 0, the derivative set equal to zero."
+      },
+      {
+         "id": "GR-A-027",
+         "item_id": "FRQ-GLD-A-06",
+         "target_point": "a1",
+         "target_point_type": "BC-PT-99013",
+         "category": "unconventional_valid",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "g'(x) = (x - 2)(x + 1)^{2} = x^{3} - 3x - 2",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "try \\(x = -1\\): \\(-1 + 3 - 2 = 0\\), so \\(x + 1\\) is a factor",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "x^{3} - 3x - 2 = (x + 1)(x^{2} - x - 2) = (x + 1)^{2}(x - 2)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "so \\(g'\\) is zero at \\(x = -1\\) and \\(x = 2\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "x = -1, x = 2"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "\\(g'(x) < 0\\) for \\(x < -1\\) and \\(g'(x) < 0\\) for \\(-1 < x < 2\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\(g'\\) doesn't change sign at \\(x = -1\\), so \\(g\\) has neither a relative min nor a relative max there.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "neither"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "b1": 1,
+            "b2": 1
+         },
+         "label_note": "Finds the zeros of g' by testing a root and factoring the expanded cubic, and says g' is zero there, which is considering g' = 0 without the usual equation line."
+      },
+      {
+         "id": "GR-A-028",
+         "item_id": "FRQ-GLD-A-06",
+         "target_point": "a1",
+         "target_point_type": "BC-PT-99013",
+         "category": "narrow_fail",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "g'(x) = (x - 2)(x + 1)^{2}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "x = 2, x = -1",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "x = 2, x = -1"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "\\(g'(x) < 0\\) for \\(x < -1\\) and \\(g'(x) < 0\\) for \\(-1 < x < 2\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\(g'\\) doesn't change sign at \\(x = -1\\), so \\(g\\) has neither a relative min nor a relative max there.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "neither"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 0,
+            "a2": 1,
+            "b1": 1,
+            "b2": 1
+         },
+         "label_note": "Writes g' and then only the solved values, with no equation g' = 0, no sign discussion and no 'critical points' phrase; does_not_earn names presenting only the solved values. The sg-22:12 exception covers a single isolated critical number, not this."
+      },
+      {
+         "id": "GR-A-029",
+         "item_id": "FRQ-GLD-A-06",
+         "target_point": "a1",
+         "target_point_type": "BC-PT-99013",
+         "category": "notation_failure",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "g(x) = (x - 2)(x + 1)^{2} = 0",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "x = 2, x = -1",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "x = 2, x = -1"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "\\(g'(x) < 0\\) for \\(x < -1\\) and for \\(-1 < x < 2\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "no sign change of \\(g'\\) at \\(-1\\), so neither",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "neither"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "b1": 1,
+            "b2": 1
+         },
+         "label_note": "The prime is dropped so the line reads g(x) = ..., but the equation (x - 2)(x + 1)^2 = 0 is presented and 99013 has no notation requirement; a strict reader could withhold it for the mislabel."
+      },
+      {
+         "id": "GR-A-030",
+         "item_id": "FRQ-GLD-A-06",
+         "target_point": "a1",
+         "target_point_type": "BC-PT-99013",
+         "category": "eligible_after_error",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "g'(x) = (x + 1)^{2} + 2(x - 2)(x + 1)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "g'(x) = (x + 1)(3x - 3) = 0",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "x = -1, x = 1",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "x = -1, x = 1"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "g'(x) = 3(x + 1)(x - 1)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\(g'(x) > 0\\) for \\(x < -1\\), \\(g'(x) < 0\\) for \\(-1 < x < 1\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\(g'\\) goes from positive to negative, so relative max at \\(x = -1\\).",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "relative maximum"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 0,
+            "b1": 0,
+            "b2": 0
+         },
+         "label_note": "The derivative is wrong (the integrand was differentiated instead of evaluated), but the response sets its g'(x) equal to zero, which is what 99013 rewards; the wrong critical values lose a2, and part (b) states signs that are false for the true g'."
+      },
+      {
+         "id": "GR-A-031",
+         "item_id": "FRQ-GLD-A-06",
+         "target_point": "b1",
+         "target_point_type": "BC-PT-99014",
+         "category": "fully_correct",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "g'(x) = (x - 2)(x + 1)^{2}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "(x - 2)(x + 1)^{2} = 0",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "x = 2, x = -1",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "x = -1, x = 2"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "\\(g'(x) < 0\\) for \\(x < -1\\) and \\(g'(x) < 0\\) for \\(-1 < x < 2\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\(g'\\) doesn't change sign at \\(x = -1\\), so \\(g\\) has neither a relative min nor a relative max there.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "neither"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "b1": 1,
+            "b2": 1
+         },
+         "label_note": "States g'(x) < 0 for x < -1 and for -1 < x < 2 explicitly."
+      },
+      {
+         "id": "GR-A-032",
+         "item_id": "FRQ-GLD-A-06",
+         "target_point": "b1",
+         "target_point_type": "BC-PT-99014",
+         "category": "unconventional_valid",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "g'(x) = (x - 2)(x + 1)^{2}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "(x - 2)(x + 1)^{2} = 0",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "x = 2, x = -1",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "x = -1, x = 2"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "\\((x + 1)^{2} \\ge 0\\) always, and \\(x - 2 < 0\\) for all \\(x < 2\\), so \\(g'(x) = (x - 2)(x + 1)^{2}\\) is negative for every \\(x < 2\\) except \\(x = -1\\), where it is 0.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "So \\(g'\\) is negative on both sides of \\(-1\\), no sign change, so neither.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "neither"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "b1": 1,
+            "b2": 1
+         },
+         "label_note": "Argues the sign from the factors rather than a chart or test points, and states that g' is negative on both sides of -1."
+      },
+      {
+         "id": "GR-A-033",
+         "item_id": "FRQ-GLD-A-06",
+         "target_point": "b1",
+         "target_point_type": "BC-PT-99014",
+         "category": "narrow_fail",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "g'(x) = (x - 2)(x + 1)^{2}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "(x - 2)(x + 1)^{2} = 0",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "x = 2, x = -1",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "x = -1, x = 2"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "\\(g(x) > 0\\) to the left and to the right of \\(x = -1\\), so \\(g\\) doesn't change sign and it's neither.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "neither"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "b1": 0,
+            "b2": 0
+         },
+         "label_note": "The statement is about the sign of g, not g', which the does_not_earn text names; b2 is then ineligible."
+      },
+      {
+         "id": "GR-A-034",
+         "item_id": "FRQ-GLD-A-06",
+         "target_point": "b1",
+         "target_point_type": "BC-PT-99014",
+         "category": "notation_failure",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "g'(x) = (x - 2)(x + 1)^{2}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "(x - 2)(x + 1)^{2} = 0",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "x = 2, x = -1",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "x = -1, x = 2"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "g'(-1^{-}) < 0, g'(-1^{+}) < 0",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "same sign on both sides, so neither",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "neither"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "b1": 1,
+            "b2": 1
+         },
+         "label_note": "Uses nonstandard one-sided notation g'(-1^-) and g'(-1^+) for the sign just left and right of -1; the meaning is clear and 99014 states no notation requirement."
+      },
+      {
+         "id": "GR-A-035",
+         "item_id": "FRQ-GLD-A-06",
+         "target_point": "b1",
+         "target_point_type": "BC-PT-99014",
+         "category": "eligible_after_error",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "g'(x) = (x - 2)(x + 1)^{2} - (0 - 2)(0 + 1)^{2}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "= x^{3} - 3x - 2 + 2 = x^{3} - 3x",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "x^{3} - 3x = 0",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "x = 0, x = \\sqrt{3}, x = -\\sqrt{3}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "x = 0, x = \\sqrt{3}, x = -\\sqrt{3}"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "g'(-1) = -1 + 3 = 2",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\(g'(x) > 0\\) on both sides of \\(x = -1\\) (for \\(-\\sqrt{3} < x < 0\\)), so no sign change and \\(x = -1\\) is neither.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "neither"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 0,
+            "b1": 0,
+            "b2": 0
+         },
+         "label_note": "The derivative from part (a) subtracts the integrand at 0, so part (b) states g' is positive near -1, which is false; 99014 has no import provision, so b1 is lost and b2 is ineligible even though 'neither' is the right word."
+      },
+      {
+         "id": "GR-A-036",
+         "item_id": "FRQ-GLD-A-06",
+         "target_point": "b2",
+         "target_point_type": "BC-PT-99012",
+         "category": "fully_correct",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "g'(x) = (x - 2)(x + 1)^{2}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "(x - 2)(x + 1)^{2} = 0",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "x = 2, x = -1",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "x = -1, x = 2"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "\\(g'(x) < 0\\) on \\((-\\infty, -1)\\) and on \\((-1, 2)\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "Since \\(g'\\) is negative before and after \\(x = -1\\), it does not change sign there, so \\(g\\) has neither a relative maximum nor a relative minimum at \\(x = -1\\).",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "neither"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "b1": 1,
+            "b2": 1
+         },
+         "label_note": "Classifies x = -1 as neither, tied to g' not changing sign."
+      },
+      {
+         "id": "GR-A-037",
+         "item_id": "FRQ-GLD-A-06",
+         "target_point": "b2",
+         "target_point_type": "BC-PT-99012",
+         "category": "unconventional_valid",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "g'(x) = (x - 2)(x + 1)^{2}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "(x - 2)(x + 1)^{2} = 0",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "x = 2, x = -1",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "x = -1, x = 2"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "\\(g'(x) \\le 0\\) for all \\(x \\le 2\\), and \\(g' = 0\\) only at \\(x = -1\\) there, so \\(g\\) is decreasing on \\((-\\infty, 2]\\).",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "A function decreasing through \\(x = -1\\) can't have a max or min there, so neither.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "neither"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "b1": 1,
+            "b2": 1
+         },
+         "label_note": "Argues through g being decreasing across x = -1 rather than a named first derivative test; the sign analysis is present and the test need not be named."
+      },
+      {
+         "id": "GR-A-038",
+         "item_id": "FRQ-GLD-A-06",
+         "target_point": "b2",
+         "target_point_type": "BC-PT-99012",
+         "category": "narrow_fail",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "g'(x) = (x - 2)(x + 1)^{2}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "(x - 2)(x + 1)^{2} = 0",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "x = 2, x = -1",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "x = -1, x = 2"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "g(x) = 0.25x^{4} - 1.5x^{2} - 2x",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "g(-2) = 2, g(-1) = 0.75, g(0) = 0",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\(g(-1)\\) is between the values on either side, so it is neither a max nor a min.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "neither"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "b1": 0,
+            "b2": 0
+         },
+         "label_note": "Right classification, but the support is a candidates-style comparison of g values, which the does_not_earn text says is not sufficient, and no sign of g' is stated so b1 is also lost."
+      },
+      {
+         "id": "GR-A-039",
+         "item_id": "FRQ-GLD-A-06",
+         "target_point": "b2",
+         "target_point_type": "BC-PT-99012",
+         "category": "notation_failure",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "g'(x) = (x - 2)(x + 1)^{2}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "(x - 2)(x + 1)^{2} = 0",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "x = 2, x = -1",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "x = -1, x = 2"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "\\(g'(x) < 0\\) for \\(x < -1\\) and for \\(-1 < x < 2\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\(g\\) does not change sign at \\(x = -1\\), so it's neither.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "neither"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "b1": 1,
+            "b2": 0
+         },
+         "label_note": "The sign analysis of g' is right, but the stated reason drops the prime and says g does not change sign, which is not a reason for no extremum; the conclusion is not tied to g'."
+      },
+      {
+         "id": "GR-A-040",
+         "item_id": "FRQ-GLD-A-06",
+         "target_point": "b2",
+         "target_point_type": "BC-PT-99012",
+         "category": "eligible_after_error",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "(x - 2)(x + 1)^{2} = 0",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "divide by \\((x + 1)^{2}\\):",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "x - 2 = 0, x = 2",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "x = 2"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "g'(x) = (x - 2)(x + 1)^{2}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "g'(-2) = -4 < 0, g'(0) = -2 < 0",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\(g' < 0\\) for \\(x < -1\\) and for \\(-1 < x < 2\\), no sign change at \\(x = -1\\), so neither.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "neither"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 0,
+            "b1": 1,
+            "b2": 1
+         },
+         "label_note": "Part (a) loses x = -1 by dividing it out, but part (b) is about x = -1 as given in the prompt; the sign statement earns b1, and 99012 does not need the value restated."
+      },
+      {
+         "id": "GR-A-041",
+         "item_id": "FRQ-GLD-A-07",
+         "target_point": "a1",
+         "target_point_type": "BC-PT-99015",
+         "category": "fully_correct",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "\\(f\\) is twice differentiable, so \\(f\\) is differentiable, so \\(f\\) is continuous on \\([0, 2]\\).",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "f(2) = -1 < 0 < 4 = f(0)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "By the IVT, yes, there is a \\(c\\) in \\((0, 2)\\) with \\(f(c) = 0\\).",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "Yes"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1
+         },
+         "label_note": "Gives the chain twice differentiable to differentiable to continuous."
+      },
+      {
+         "id": "GR-A-042",
+         "item_id": "FRQ-GLD-A-07",
+         "target_point": "a1",
+         "target_point_type": "BC-PT-99015",
+         "category": "unconventional_valid",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "\\(f''\\) exists everywhere, which means \\(f'\\) exists at every point. A function with a derivative at every point can't have a jump or a hole, so \\(f\\) is continuous on \\([0, 2]\\).",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "-1 < 0 < 4",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "0 is between \\(f(2)\\) and \\(f(0)\\), so yes by IVT.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "Yes"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1
+         },
+         "label_note": "Informal wording, but it states that f' exists everywhere and that this makes f continuous, which is differentiable implies continuous."
+      },
+      {
+         "id": "GR-A-043",
+         "item_id": "FRQ-GLD-A-07",
+         "target_point": "a1",
+         "target_point_type": "BC-PT-99015",
+         "category": "narrow_fail",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "\\(f\\) is continuous on \\([0, 2]\\).",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "f(2) = -1 < 0 < 4 = f(0)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "So yes, by the Intermediate Value Theorem.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "Yes"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 0,
+            "a2": 1
+         },
+         "label_note": "A bare statement that f is continuous, with no reason, is the does_not_earn case; a2 is independent and complete."
+      },
+      {
+         "id": "GR-A-044",
+         "item_id": "FRQ-GLD-A-07",
+         "target_point": "a1",
+         "target_point_type": "BC-PT-99015",
+         "category": "notation_failure",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "\\(f\\) is differentiable so \\(f'\\) is continuous on \\([0, 2]\\).",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "f(2) < 0 < f(0)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "yes, IVT",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "yes"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 0,
+            "a2": 0
+         },
+         "label_note": "A stray prime makes the claim about f' being continuous, so continuity of f is never stated; that loses a1, and a2 also needs a statement that f is continuous."
+      },
+      {
+         "id": "GR-A-045",
+         "item_id": "FRQ-GLD-A-07",
+         "target_point": "a1",
+         "target_point_type": "BC-PT-99015",
+         "category": "eligible_after_error",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "f(0) = 4, f(2) = 1",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\(f\\) is differentiable so it is continuous on \\([0, 2]\\).",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "0 is not between 1 and 4, so no, there doesn't have to be.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "No"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 0
+         },
+         "label_note": "Misreads f(2) as 1 and answers no, losing a2, but 99015 has no eligibility restriction and 'differentiable so continuous' is stated."
+      },
+      {
+         "id": "GR-A-046",
+         "item_id": "FRQ-GLD-A-07",
+         "target_point": "a2",
+         "target_point_type": "BC-PT-99016",
+         "category": "fully_correct",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "Since \\(f\\) is differentiable it is continuous on \\([0, 2]\\).",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\(f(2) = -1\\) and \\(f(0) = 4\\), and \\(0\\) is between \\(-1\\) and \\(4\\).",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "So by the Intermediate Value Theorem, yes, there is a \\(c\\) with \\(0 < c < 2\\) and \\(f(c) = 0\\).",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "Yes"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1
+         },
+         "label_note": "Shows 0 between f(2) and f(0), states continuity, answers yes, and names the correct theorem."
+      },
+      {
+         "id": "GR-A-047",
+         "item_id": "FRQ-GLD-A-07",
+         "target_point": "a2",
+         "target_point_type": "BC-PT-99016",
+         "category": "unconventional_valid",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "f(0) \\cdot f(2) = (4)(-1) = -4 < 0",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "So \\(f(0)\\) and \\(f(2)\\) have opposite signs, meaning 0 is strictly between them. \\(f\\) is differentiable, hence continuous on \\([0, 2]\\), so \\(f\\) has a zero in \\((0, 2)\\). Yes.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "Yes"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1
+         },
+         "label_note": "Uses the negative product to show 0 lies strictly between the two values and says so in words; continuity is stated and the answer is yes."
+      },
+      {
+         "id": "GR-A-048",
+         "item_id": "FRQ-GLD-A-07",
+         "target_point": "a2",
+         "target_point_type": "BC-PT-99016",
+         "category": "narrow_fail",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "\\(f\\) is differentiable so it's continuous.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "Yes, by the Intermediate Value Theorem.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "Yes"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 0
+         },
+         "label_note": "A yes with the theorem named but no comparison of 0 with f(0) and f(2) is the bare yes the does_not_earn text rejects."
+      },
+      {
+         "id": "GR-A-049",
+         "item_id": "FRQ-GLD-A-07",
+         "target_point": "a2",
+         "target_point_type": "BC-PT-99016",
+         "category": "notation_failure",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "f(0) = 4, f(2) = -1",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\(f\\) is differentiable so continuous on \\([0, 2]\\), so yes by IVT.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "yes"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 0
+         },
+         "label_note": "Lists the two endpoint values without saying 0 is between them, which the notation_requirements text (sg-22:14) rejects for this point."
+      },
+      {
+         "id": "GR-A-050",
+         "item_id": "FRQ-GLD-A-07",
+         "target_point": "a2",
+         "target_point_type": "BC-PT-99016",
+         "category": "eligible_after_error",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "\\(f\\) is continuous because \\(f(0)\\) and \\(f(2)\\) both exist.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "f(2) = -1 < 0 < 4 = f(0)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "so yes, by IVT there's a \\(c\\) in \\((0, 2)\\) with \\(f(c) = 0\\).",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "Yes"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 0,
+            "a2": 1
+         },
+         "label_note": "The reason given for continuity is wrong, so a1 is lost, but 99016 does not depend on it; continuity is stated, 0 is shown between the values, and the answer is yes."
+      },
+      {
+         "id": "GR-A-051",
+         "item_id": "FRQ-GLD-A-08",
+         "target_point": "a2",
+         "target_point_type": "BC-PT-99017",
+         "category": "fully_correct",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\frac{g(8) - g(3)}{8 - 3} = \\frac{18 - 8}{5} = 2",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\(g\\) is differentiable on \\((3, 8)\\), so it's also continuous on \\([3, 8]\\). By the Mean Value Theorem, yes, there is a \\(c\\) in \\((3, 8)\\) with \\(g'(c) = 2\\).",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "Yes"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1
+         },
+         "label_note": "Average rate 2, both hypotheses on the right intervals, and yes."
+      },
+      {
+         "id": "GR-A-052",
+         "item_id": "FRQ-GLD-A-08",
+         "target_point": "a2",
+         "target_point_type": "BC-PT-99017",
+         "category": "unconventional_valid",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "slope of secant from \\((3, 8)\\) to \\((8, 18)\\):",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "\\frac{18 - 8}{8 - 3} = \\frac{10}{5} = 2",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\(g\\) has a derivative everywhere, so it's continuous on \\([3, 8]\\) and differentiable on \\((3, 8)\\). So some tangent line between \\(x = 3\\) and \\(x = 8\\) has to be parallel to this secant line, which means \\(g'(c) = 2\\) for some \\(c\\) in \\((3, 8)\\). Yes.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "Yes"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1
+         },
+         "label_note": "States the Mean Value Theorem in secant and tangent language without naming it; the average rate, both hypotheses and the yes are all present."
+      },
+      {
+         "id": "GR-A-053",
+         "item_id": "FRQ-GLD-A-08",
+         "target_point": "a2",
+         "target_point_type": "BC-PT-99017",
+         "category": "narrow_fail",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\frac{18 - 8}{8 - 3} = 2",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "Yes by MVT.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "Yes"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 0
+         },
+         "label_note": "Correct average rate of change but no statement of continuity or differentiability, which the earns text requires."
+      },
+      {
+         "id": "GR-A-054",
+         "item_id": "FRQ-GLD-A-08",
+         "target_point": "a2",
+         "target_point_type": "BC-PT-99017",
+         "category": "notation_failure",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\frac{g(8) - g(3)}{8 - 3} = 2",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\(g\\) is differentiable, so continuous on \\([3, 8]\\) and differentiable on \\((3, 8)\\). So by MVT there is a \\(c\\) in \\((3, 8)\\) with \\(g(c) = 2\\).",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "yes"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 0
+         },
+         "label_note": "Everything is in place except the conclusion drops the prime and claims g(c) = 2, which is a different statement from the one asked, so the conclusion point is not earned."
+      },
+      {
+         "id": "GR-A-055",
+         "item_id": "FRQ-GLD-A-08",
+         "target_point": "a2",
+         "target_point_type": "BC-PT-99017",
+         "category": "eligible_after_error",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\frac{g(8) - g(3)}{8 - 3} = \\frac{18 - 5}{5} = \\frac{13}{5}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\(g\\) is differentiable and continuous, but the average rate of change is \\(\\frac{13}{5}\\), not 2, so no, the MVT doesn't guarantee it.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "No"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 0,
+            "a2": 0
+         },
+         "label_note": "Misreads g(3) as 5, so the average rate is wrong; 99017 needs a correct average rate of change and a yes, and nothing in its eligibility text rescues a wrong value."
+      },
+      {
+         "id": "GR-A-056",
+         "item_id": "FRQ-GLD-A-09",
+         "target_point": "a1",
+         "target_point_type": "BC-PT-99018",
+         "category": "fully_correct",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\int_{0}^{7} S(t) dt \\approx 2 \\cdot \\frac{5 + 8}{2} + 1 \\cdot \\frac{8 + 6}{2} + 4 \\cdot \\frac{6 + 10}{2}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "= 13 + 7 + 32 = 52",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "52"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "40 + \\int_{0}^{7} S(t) dt \\approx 40 + 52 = 92",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "92 cubic feet"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "b1": 1
+         },
+         "label_note": "All six factors correct in a trapezoidal sum."
+      },
+      {
+         "id": "GR-A-057",
+         "item_id": "FRQ-GLD-A-09",
+         "target_point": "a1",
+         "target_point_type": "BC-PT-99018",
+         "category": "unconventional_valid",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "L = 2(5) + 1(8) + 4(6) = 42",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "R = 2(8) + 1(6) + 4(10) = 62",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "T = \\frac{L + R}{2} = \\frac{42 + 62}{2} = 52",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "52"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "40 + \\int_{0}^{7} S(t) dt \\approx 40 + 52 = 92",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "92 cubic feet"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "b1": 1
+         },
+         "label_note": "Builds the trapezoidal sum as the average of left and right sums; every term shows a width and a value, all correct, which is equivalent to the trapezoidal form."
+      },
+      {
+         "id": "GR-A-058",
+         "item_id": "FRQ-GLD-A-09",
+         "target_point": "a1",
+         "target_point_type": "BC-PT-99018",
+         "category": "narrow_fail",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "2 \\cdot \\frac{5 + 8}{2} + 2 \\cdot \\frac{8 + 6}{2} + 2 \\cdot \\frac{6 + 10}{2}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "= 13 + 14 + 16 = 43",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "43"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "40 + 43 = 83",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "83"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 0,
+            "a2": 0,
+            "b1": 1
+         },
+         "label_note": "Uses width 2 for every subinterval, so two of the six factors are wrong and only four of six are correct, below the five needed; b1 adds 40 to the imported value."
+      },
+      {
+         "id": "GR-A-059",
+         "item_id": "FRQ-GLD-A-09",
+         "target_point": "a1",
+         "target_point_type": "BC-PT-99018",
+         "category": "notation_failure",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\int_{0}^{7} S(t) dt = \\frac{1}{2}(2)(5 + 8) + \\frac{1}{2}(1)(8 + 6) + \\frac{1}{2}(4)(6 + 10) = 52",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "52"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "40 + 52 = 92",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "92"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1,
+            "b1": 1
+         },
+         "label_note": "Writes an equals sign where the sum only approximates the integral; the notation_requirements text tells readers to read it as approximately equal, and all factors are correct."
+      },
+      {
+         "id": "GR-A-060",
+         "item_id": "FRQ-GLD-A-09",
+         "target_point": "a1",
+         "target_point_type": "BC-PT-99018",
+         "category": "eligible_after_error",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "2 \\cdot \\frac{5 + 8}{2} + 1 \\cdot \\frac{8 + 6}{2} + 5 \\cdot \\frac{6 + 10}{2}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "= 13 + 7 + 40 = 60",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "60"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "40 + 60 = 100",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "100 cubic feet"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 0,
+            "b1": 1
+         },
+         "label_note": "One wrong width (5 instead of 4) leaves five of six factors correct, so the form point stands while the value point is blocked, as the eligibility text states."
+      },
+      {
+         "id": "GR-A-061",
+         "item_id": "FRQ-GLD-A-10",
+         "target_point": "b1",
+         "target_point_type": "BC-PT-99026",
+         "category": "fully_correct",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "y'' = y + x \\cdot y' = y + x(xy)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "y'' = y(1 + x^{2})",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "y''(1, 2) = 2(1 + 1) = 4",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "4"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "For \\(1 \\le x \\le 1.3\\), \\(y\\) stays positive (it starts at 2 and \\(y' = xy > 0\\), so it's increasing), so \\(y'' = y(1 + x^{2}) > 0\\) on that whole interval.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\(f\\) is concave up there, so the tangent line lies below the graph and 2.6 is an underestimate.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "underestimate"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "b1": 1
+         },
+         "label_note": "Positive second derivative on the whole interval, with the tangent line below the curve, giving underestimate."
+      },
+      {
+         "id": "GR-A-062",
+         "item_id": "FRQ-GLD-A-10",
+         "target_point": "b1",
+         "target_point_type": "BC-PT-99026",
+         "category": "unconventional_valid",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "y'' = y + x \\cdot y' = y + x(xy)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "y'' = y(1 + x^{2})",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "y''(1, 2) = 2(1 + 1) = 4",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "4"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "\\(y' = xy\\). On \\([1, 1.3]\\), \\(x\\) is positive and increasing and \\(y\\) is positive and increasing (since \\(y' > 0\\)), so the product \\(xy\\) is increasing.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\(f'\\) increasing means \\(f\\) is concave up on the interval, so the tangent line is below the curve: underestimate.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "underestimate"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "b1": 1
+         },
+         "label_note": "Gets concave up on the interval from f' increasing rather than from the sign of y'', then concludes the tangent line is below; that cites concavity over the interval."
+      },
+      {
+         "id": "GR-A-063",
+         "item_id": "FRQ-GLD-A-10",
+         "target_point": "b1",
+         "target_point_type": "BC-PT-99026",
+         "category": "narrow_fail",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "y'' = y + x \\cdot y' = y + x(xy)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "y'' = y(1 + x^{2})",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "y''(1, 2) = 2(1 + 1) = 4",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "4"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "\\(y''\\) at \\((1, 2)\\) is \\(4 > 0\\), so the graph is concave up at \\(x = 1\\) and the tangent line is below the curve. Underestimate.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "underestimate"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "b1": 0
+         },
+         "label_note": "Argues from concavity at the single point x = 1 only, which the does_not_earn text rejects."
+      },
+      {
+         "id": "GR-A-064",
+         "item_id": "FRQ-GLD-A-10",
+         "target_point": "b1",
+         "target_point_type": "BC-PT-99026",
+         "category": "notation_failure",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "y'' = y + x \\cdot y' = y + x(xy)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "y'' = y(1 + x^{2})",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "y''(1, 2) = 2(1 + 1) = 4",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "4"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "\\(y' = y(1 + x^{2}) > 0\\) for \\(1 \\le x \\le 1.3\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "since \\(y > 0\\) there. so concave up, the tangent is under \\(f\\), \\(2.6 < f(1.3)\\), under.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "under"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "b1": 1
+         },
+         "label_note": "Labels the second derivative y' (one prime) in part (b), but it is the expression from part (a), the interval is given, and concave up with the tangent below is stated; 99026 has no notation requirement, though a strict reader could balk at the label."
+      },
+      {
+         "id": "GR-A-065",
+         "item_id": "FRQ-GLD-A-10",
+         "target_point": "b1",
+         "target_point_type": "BC-PT-99026",
+         "category": "eligible_after_error",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "y'' = y - x(xy) = y(1 - x^{2})",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "y''(1, 2) = 2(0) = 0",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "0"
+               },
+               {
+                  "part_id": "b",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "\\(y'' = y(1 - x^{2}) < 0\\) for \\(1 < x \\le 1.3\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "since \\(y > 0\\). So \\(f\\) is concave down, the tangent line is above the curve, and 2.6 is an overestimate.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "overestimate"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 0,
+            "b1": 0
+         },
+         "label_note": "Consistent with its wrong second derivative, but sg-23:11 only carries an incorrect second derivative forward when it is a nonconstant linear function; y(1 - x^2) is not, and the conclusion is wrong."
+      },
+      {
+         "id": "GR-A-066",
+         "item_id": "FRQ-GLD-A-11",
+         "target_point": "a1",
+         "target_point_type": "BC-PT-99034",
+         "category": "fully_correct",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\Delta x = 0.5",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "f(0.5) \\approx 3 + 0.5(2 \\cdot 0 - 3) = 3 - 1.5 = 1.5",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "f(1) \\approx 1.5 + 0.5(2 \\cdot 0.5 - 1.5) = 1.5 - 0.25 = 1.25",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "1.25"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1
+         },
+         "label_note": "Two steps of 0.5 from (0, 3), each with the slope at the current point."
+      },
+      {
+         "id": "GR-A-067",
+         "item_id": "FRQ-GLD-A-11",
+         "target_point": "a1",
+         "target_point_type": "BC-PT-99034",
+         "category": "unconventional_valid",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "tangent at \\((0, 3)\\): slope \\(2(0) - 3 = -3\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "y = 3 - 3x, x = 0.5: y = 1.5",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "tangent at \\((0.5, 1.5)\\): slope \\(2(0.5) - 1.5 = -0.5\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "y = 1.5 - 0.5(x - 0.5), x = 1: y = 1.25",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "1.25"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1
+         },
+         "label_note": "Writes each Euler step as a tangent line equation evaluated half a unit on; that is the same two steps with the right step size and slopes."
+      },
+      {
+         "id": "GR-A-068",
+         "item_id": "FRQ-GLD-A-11",
+         "target_point": "a1",
+         "target_point_type": "BC-PT-99034",
+         "category": "narrow_fail",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "f(1) \\approx 3 + 1(2 \\cdot 0 - 3) = 0",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "0"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 0,
+            "a2": 0
+         },
+         "label_note": "Takes one step of size 1 where two steps were asked, the does_not_earn case."
+      },
+      {
+         "id": "GR-A-069",
+         "item_id": "FRQ-GLD-A-11",
+         "target_point": "a1",
+         "target_point_type": "BC-PT-99034",
+         "category": "notation_failure",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "0, 3, -3",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "0.5, 1.5, -0.5",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "1, 1.25",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "1.25"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1
+         },
+         "label_note": "An unlabelled table of x, y and slope; the notation_requirements text accepts an unlabelled table when the answer is correct, and 1.25 is correct."
+      },
+      {
+         "id": "GR-A-070",
+         "item_id": "FRQ-GLD-A-11",
+         "target_point": "a1",
+         "target_point_type": "BC-PT-99034",
+         "category": "eligible_after_error",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\Delta x = 0.5",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "f(0.5) \\approx 3 + 0.5(-3) = 1",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "f(1) \\approx 1 + 0.5(2 \\cdot 0.5 - 1) = 1 + 0 = 1",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "1"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 0
+         },
+         "label_note": "One arithmetic error in the first step (3 - 1.5 written as 1); the second step imports it correctly, which sg-21:19 does not count as a second error, so the step point stands and the answer point is lost."
+      },
+      {
+         "id": "GR-A-071",
+         "item_id": "FRQ-GLD-A-12",
+         "target_point": "a2",
+         "target_point_type": "BC-PT-99041",
+         "category": "fully_correct",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "|f(1.4) - P_{3}(1.4)| \\le \\frac{12}{24}(1.4 - 1)^{4}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "math",
+                        "content": "= 0.5(0.0256) = 0.0128",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "and \\(0.0128 < 0.02\\), so the error is less than 0.02.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "0.0128 < 0.02"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1
+         },
+         "label_note": "Writes the error as at most 0.0128 and compares with 0.02."
+      },
+      {
+         "id": "GR-A-072",
+         "item_id": "FRQ-GLD-A-12",
+         "target_point": "a2",
+         "target_point_type": "BC-PT-99041",
+         "category": "unconventional_valid",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "\\frac{12}{24}(\\frac{2}{5})^{4} = \\frac{1}{2} \\cdot \\frac{16}{625} = \\frac{8}{625}",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "so \\(|f(1.4) - P_{3}(1.4)| \\le \\frac{8}{625}\\). And \\(0.02 = \\frac{1}{50}\\): \\(8 \\cdot 50 = 400 < 625\\), so \\(\\frac{8}{625} < \\frac{1}{50}\\).",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "Error less than 0.02.",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "8/625 < 1/50"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1
+         },
+         "label_note": "Works in exact fractions and compares by cross-multiplying, but the error is still bounded with an inequality and shown below 0.02."
+      },
+      {
+         "id": "GR-A-073",
+         "item_id": "FRQ-GLD-A-12",
+         "target_point": "a2",
+         "target_point_type": "BC-PT-99041",
+         "category": "narrow_fail",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "text",
+                        "content": "Error \\(= \\frac{12}{24}(0.4)^{4} = 0.0128\\)",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\(0.0128 < 0.02\\) so the error is less than 0.02",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "0.0128"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 0
+         },
+         "label_note": "Declares the error equal to the bound, the equality claim every cited rubric withholds this point for."
+      },
+      {
+         "id": "GR-A-074",
+         "item_id": "FRQ-GLD-A-12",
+         "target_point": "a2",
+         "target_point_type": "BC-PT-99041",
+         "category": "notation_failure",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "R_{3}(1.4) \\le \\frac{12}{24}(0.4)^{4} = 0.0128 < 0.02",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "0.0128"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 1,
+            "a2": 1
+         },
+         "label_note": "Writes R_3(1.4) with no absolute value bars, but it is an inequality bounding the error by 0.0128 and then 0.02, which is what the point asks for; a strict reader could want the absolute value."
+      },
+      {
+         "id": "GR-A-075",
+         "item_id": "FRQ-GLD-A-12",
+         "target_point": "a2",
+         "target_point_type": "BC-PT-99041",
+         "category": "eligible_after_error",
+         "work": {
+            "parts": [
+               {
+                  "part_id": "a",
+                  "lines": [
+                     {
+                        "kind": "math",
+                        "content": "|f(1.4) - P_{3}(1.4)| \\le \\frac{12}{120}(0.4)^{4} = 0.1(0.0256) = 0.00256",
+                        "crossed_out": false,
+                        "outside_box": false
+                     },
+                     {
+                        "kind": "text",
+                        "content": "\\(0.00256 < 0.02\\), so yes the error is less than 0.02",
+                        "crossed_out": false,
+                        "outside_box": false
+                     }
+                  ],
+                  "answer": "0.00256"
+               }
+            ],
+            "unreadable": []
+         },
+         "labels": {
+            "a1": 0,
+            "a2": 0
+         },
+         "label_note": "Uses 5! instead of 4!, so the bound point is lost, and 99041 requires the matching bound point first, so the correctly shaped inequality does not earn it."
+      }
+   ]
+}

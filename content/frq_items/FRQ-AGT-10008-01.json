@@ -1,0 +1,92 @@
+{
+   "id": "FRQ-AGT-10008-01",
+   "archetype_id": "BC-QA-10008",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "stem": {
+      "text": "Let \\( f(x) = \\displaystyle\\sum_{n=0}^{\\infty} \\frac{(-1)^{n}x^{n}}{(n + 1)^{2}} \\) for \\( |x| \\le 1 \\)."
+   },
+   "skills": ["BC-SKL-10028", "BC-SKL-10029", "BC-SKL-10039", "BC-SKL-10040", "BC-SKL-10041", "BC-SKL-10042", "BC-SKL-10052", "BC-SKL-10066"],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Write the third-degree Taylor polynomial \\( P_{3}(x) \\) for \\( f \\) about \\( x = 0 \\).",
+         "setup_required": false,
+         "answer_latex": "P_{3}(x) = 1 - \\frac{x}{4} + \\frac{x^{2}}{9} - \\frac{x^{3}}{16}",
+         "worked_solution": [
+            {"text": "Take the terms n = 0 to 3.", "latex": "P_{3}(x) = 1 - \\frac{x}{4} + \\frac{x^{2}}{9} - \\frac{x^{3}}{16}"}
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99036",
+               "skills": ["BC-SKL-10066"],
+               "criterion": "Gives P3(x) = 1 - x/4 + x^2/9 - x^3/16.",
+               "eligible_only_if": [],
+               "check": {"kind": "sympy_equivalence", "target": "answer", "expected": "1 - x/4 + x**2/9 - x**3/16", "up_to_constant": false, "variable": "x"}
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Show that \\( \\left| f\\left(\\tfrac{1}{2}\\right) - P_{3}\\left(\\tfrac{1}{2}\\right) \\right| < \\dfrac{1}{150} \\).",
+         "setup_required": false,
+         "answer_latex": "\\left|f\\left(\\tfrac{1}{2}\\right) - P_{3}\\left(\\tfrac{1}{2}\\right)\\right| \\le \\frac{1}{400} < \\frac{1}{150}",
+         "worked_solution": [
+            {"text": "At x = 1/2 the series alternates, and its terms (1/2)^n/(n + 1)^2 decrease in absolute value to 0.", "latex": "\\frac{(1/2)^{n}}{(n+1)^{2}} \\to 0"},
+            {"text": "The error is at most the first omitted term.", "latex": "\\text{error} \\le \\frac{(1/2)^{4}}{25} = \\frac{1}{400}"},
+            {"text": "Compare with the tolerance.", "latex": "\\frac{1}{400} < \\frac{1}{150}"}
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99040",
+               "skills": ["BC-SKL-10040", "BC-SKL-10041"],
+               "criterion": "Evaluates the first omitted term at x = 1/2 as (1/2)^4/25 = 1/400.",
+               "eligible_only_if": [],
+               "check": {"kind": "sympy_equivalence", "target": "any_line", "expected": "1/400", "up_to_constant": false, "each_side": false, "variable": "x"}
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99041",
+               "skills": ["BC-SKL-10028", "BC-SKL-10029", "BC-SKL-10039", "BC-SKL-10042"],
+               "criterion": "Uses the alternating series error bound, with terms decreasing to 0, to write that the error is at most 1/400, which is less than 1/150.",
+               "eligible_only_if": ["b1"],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Let \\( S = \\displaystyle\\sum_{n=1}^{\\infty} \\frac{(-1)^{n+1}}{n^{3}} \\), and let \\( S_{4} \\) be the sum of its first four terms. Show that \\( |S - S_{4}| < 0.01 \\).",
+         "setup_required": false,
+         "answer_latex": "|S - S_{4}| \\le \\frac{1}{125} < 0.01",
+         "worked_solution": [
+            {"text": "The terms 1/n^3 decrease to 0 and the signs alternate.", "latex": "\\frac{1}{(n+1)^{3}} < \\frac{1}{n^{3}}, \\quad \\frac{1}{n^{3}} \\to 0"},
+            {"text": "The first omitted term is the fifth.", "latex": "|S - S_{4}| \\le \\frac{1}{5^{3}} = \\frac{1}{125}"},
+            {"text": "Compare.", "latex": "\\frac{1}{125} = 0.008 < 0.01"}
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99040",
+               "skills": ["BC-SKL-10040", "BC-SKL-10041"],
+               "criterion": "Identifies the first omitted term as 1/5^3 = 1/125.",
+               "eligible_only_if": [],
+               "check": {"kind": "sympy_equivalence", "target": "any_line", "expected": "1/125", "up_to_constant": false, "each_side": false, "variable": "x"}
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99041",
+               "skills": ["BC-SKL-10028", "BC-SKL-10029", "BC-SKL-10039", "BC-SKL-10042"],
+               "criterion": "Uses the alternating series error bound, with terms decreasing to 0, to write that the error is at most 1/125 = 0.008, which is less than 0.01.",
+               "eligible_only_if": ["c1"],
+               "check": null
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 4 (p3)",
+   "signed_off_by": null
+}

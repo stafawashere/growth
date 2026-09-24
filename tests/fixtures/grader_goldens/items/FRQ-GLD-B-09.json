@@ -1,0 +1,96 @@
+{
+   "id": "FRQ-GLD-B-09",
+   "archetype_id": "BC-QA-10003",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "stem": {
+      "text": "For \\( |x| < 3 \\), the function \\( g \\) is defined by \\( g(x) = \\displaystyle\\sum_{n=1}^{\\infty} \\frac{x^{n}}{3^{n}} \\)."
+   },
+   "skills": [
+      "BC-SKL-10006",
+      "BC-SKL-10007",
+      "BC-SKL-10008",
+      "BC-SKL-10009",
+      "BC-SKL-10010",
+      "BC-SKL-10063",
+      "BC-SKL-10072"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Show that \\( g(x) = \\dfrac{x}{3 - x} \\) for \\( |x| < 3 \\).",
+         "setup_required": false,
+         "answer_latex": "g(x) = \\frac{x}{3 - x}",
+         "worked_solution": [
+            {
+               "text": "The series is geometric with first term x/3 and ratio x/3, and |x/3| < 1.",
+               "latex": "g(x) = \\frac{x/3}{1 - x/3}"
+            },
+            {
+               "text": "Multiply numerator and denominator by 3.",
+               "latex": "= \\frac{x}{3 - x}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99067",
+               "skills": [
+                  "BC-SKL-10006",
+                  "BC-SKL-10009",
+                  "BC-SKL-10010"
+               ],
+               "criterion": "Identifies the first term x/3 and the ratio x/3 and writes first term over one minus ratio, (x/3)/(1 - x/3), or an equivalent form such as (x/3) times 1/(1 - x/3).",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99068",
+               "skills": [
+                  "BC-SKL-10008",
+                  "BC-SKL-10072"
+               ],
+               "criterion": "Continues the algebra from the sum formula to x/(3 - x) and closes on that target expression. A chain that stops before x/(3 - x), that asserts the target without a correct connecting step, or that contains a false equality, does not earn it.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find the value of \\( x \\) for which \\( g(x) = 1 \\).",
+         "setup_required": false,
+         "answer_latex": "x = \\frac{3}{2}",
+         "worked_solution": [
+            {
+               "text": "Solve the equation.",
+               "latex": "\\frac{x}{3 - x} = 1 \\implies x = 3 - x \\implies x = \\frac{3}{2}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-10007"
+               ],
+               "criterion": "Gives x = 3/2.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "3/2",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude golden-set author, stage 4 (p3), model-authored",
+   "signed_off_by": null
+}

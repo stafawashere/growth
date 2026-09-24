@@ -1,0 +1,67 @@
+{
+   "id": "FRQ-GLD-A-11",
+   "archetype_id": "BC-QA-07004",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "stem": {
+      "text": "Let \\( y = f(x) \\) be the particular solution to the differential equation \\( \\dfrac{dy}{dx} = 2x - y \\) with the initial condition \\( f(0) = 3 \\)."
+   },
+   "skills": [
+      "BC-SKL-07019",
+      "BC-SKL-07020",
+      "BC-SKL-07021",
+      "BC-SKL-07022",
+      "BC-SKL-07023"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Use Euler's method, starting at \\( x = 0 \\) with two steps of equal size, to approximate \\( f(1) \\). Show the work that leads to your answer.",
+         "setup_required": false,
+         "answer_latex": "1.25",
+         "worked_solution": [
+            {
+               "text": "Step size is 0.5. First step from (0, 3), where the slope is -3.",
+               "latex": "f(0.5) \\approx 3 + 0.5(-3) = 1.5"
+            },
+            {
+               "text": "Second step from (0.5, 1.5), where the slope is 2(0.5) - 1.5 = -0.5.",
+               "latex": "f(1) \\approx 1.5 + 0.5(-0.5) = 1.25"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99034",
+               "skills": [
+                  "BC-SKL-07019",
+                  "BC-SKL-07020",
+                  "BC-SKL-07021"
+               ],
+               "criterion": "Shows two Euler steps of size 0.5 from (0, 3), each using the slope 2x - y at the current point, with at most one error.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-07021"
+               ],
+               "criterion": "Gives the approximation f(1) = 1.25.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "5/4",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude golden-set author, stage 4 (p3), model-authored",
+   "signed_off_by": null
+}

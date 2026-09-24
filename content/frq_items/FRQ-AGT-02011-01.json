@@ -1,0 +1,74 @@
+{
+   "id": "FRQ-AGT-02011-01",
+   "archetype_id": "BC-QA-02011",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "Let \\( f(x) = \\sqrt{x} + \\dfrac{8}{x} \\) for \\( x > 0 \\)."
+   },
+   "skills": ["BC-SKL-02012", "BC-SKL-02013"],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find \\( f'(4) \\).",
+         "setup_required": false,
+         "answer_latex": "f'(4) = -\\frac{1}{4}",
+         "worked_solution": [
+            {"text": "Differentiate.", "latex": "f'(x) = \\frac{1}{2\\sqrt{x}} - \\frac{8}{x^{2}}"},
+            {"text": "Substitute x = 4.", "latex": "f'(4) = \\frac{1}{4} - \\frac{1}{2} = -\\frac{1}{4}"}
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99004",
+               "skills": ["BC-SKL-02012"],
+               "criterion": "Gives f'(4) = -1/4.",
+               "eligible_only_if": [],
+               "check": {"kind": "sympy_equivalence", "target": "answer", "expected": "-1/4", "up_to_constant": false, "variable": "x"}
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Write an equation for the line tangent to the graph of \\( f \\) at \\( x = 4 \\).",
+         "setup_required": false,
+         "answer_latex": "y = 4 - \\frac{1}{4}(x - 4)",
+         "worked_solution": [
+            {"text": "The point on the curve.", "latex": "f(4) = 2 + 2 = 4"},
+            {"text": "Point-slope form with the slope from part (a).", "latex": "y = 4 - \\frac{1}{4}(x - 4)"}
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99082",
+               "skills": ["BC-SKL-02012", "BC-SKL-02013"],
+               "criterion": "Writes a line through (4, 4) with slope -1/4, for example y = 4 - (1/4)(x - 4).",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Use the tangent line from part (b) to approximate \\( f(4.2) \\).",
+         "setup_required": false,
+         "answer_latex": "f(4.2) \\approx 3.95",
+         "worked_solution": [
+            {"text": "Substitute x = 4.2 into the tangent line.", "latex": "f(4.2) \\approx 4 - \\frac{1}{4}(0.2) = 3.95"}
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99005",
+               "skills": ["BC-SKL-02013"],
+               "criterion": "Evaluates the tangent line at x = 4.2 and gives 3.95.",
+               "eligible_only_if": [],
+               "check": {"kind": "numeric_three_decimals", "expected": "79/20"}
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 4 (p3)",
+   "signed_off_by": null
+}

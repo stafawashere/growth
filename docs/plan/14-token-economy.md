@@ -326,8 +326,18 @@ instead capped by `app/providers/guard.py` `SubscriptionPacingCaps`, counted in
 | Cap | Default | Variable |
 | --- | --- | --- |
 | tutor calls a day | 60 | `GROWTH_SUBSCRIPTION_TUTOR_CALLS_PER_DAY` |
+| grader calls a day | 120 | `GROWTH_SUBSCRIPTION_GRADER_CALLS_PER_DAY` |
+| transcriber and diagnostician calls a day | 30 each | `GROWTH_SUBSCRIPTION_<ROLE>_CALLS_PER_DAY` |
 | calls a day, every other role | 20 | `GROWTH_SUBSCRIPTION_<ROLE>_CALLS_PER_DAY` |
-| calls a minute, per role | 4 | `GROWTH_SUBSCRIPTION_CALLS_PER_MINUTE` |
+| grader calls a minute | 12 | `GROWTH_SUBSCRIPTION_GRADER_CALLS_PER_MINUTE` |
+| calls a minute, every other role | 4 | `GROWTH_SUBSCRIPTION_CALLS_PER_MINUTE` |
+
+The grader, transcriber and diagnostician rows were added on 2026-09-24 in P3 (stage 4, on the
+operator's delegation, BUILD-LEDGER.md): one free-response question with five judged points is
+fifteen grader calls, one transcriber call and one diagnostician call, so 120 grader calls hold
+about eight questions a day and twelve a minute grade one question in about a minute and a half.
+A minute stop on the grader waits for the window (app/grading/judge.py) instead of failing the
+point.
 
 Sizing [inferred]. Neither the 5-hour nor the weekly limit is published as a count
 (https://code.claude.com/docs/en/authentication.md [verified]), so the defaults are set from what

@@ -23,10 +23,19 @@ total_cost_usd in the CLI's result is what the call would have cost on the API. 
 app/providers/guard.py's SubscriptionSpendLedger, a separate counter that never touches the $15
 developer cap on the API key.
 
+A request that carries images (the transcriber's photographed page) cannot ride on stdin as plain
+text, so it runs with --input-format stream-json and --output-format stream-json: stdin holds one
+user message whose content is the base64 image blocks followed by the prompt text, and the answer
+is the final "result" event, which has the same fields as the json format's single object. The
+flags that switch every tool, setting source and MCP server off are the same on both paths. A live
+run on 2026-09-24 (tools/subscription_image_smoke.py, BUILD-LEDGER.md) confirmed the CLI then
+loads only its internal StructuredOutput tool and reads the image.
+
 A usage-limit answer (5-hour or weekly) raises SubscriptionLimitReached. The caller degrades as
 docs/plan/07-ai-provider-layer.md degrades a hard stop and queues the call; nothing here falls
 through to the API.
 """
+import base64
 import json
 import os
 import re
@@ -157,15 +166,27 @@ def build_env(host_environ, disable_thinking=False):
    return env
 
 
-def build_argv(binary, model, system_prompt, output_schema=None, max_budget_usd=DEFAULT_MAX_BUDGET_USD, effort=None):
+def build_argv(
+   binary,
+   model,
+   system_prompt,
+   output_schema=None,
+   max_budget_usd=DEFAULT_MAX_BUDGET_USD,
+   effort=None,
+   streams_json=False,
+):
    """The system prompt rides in the --system-prompt=value form because the tutor template opens
-   with front matter, and a bare value starting with --- could be read as an option."""
+   with front matter, and a bare value starting with --- could be read as an option.
+
+   streams_json is the image path: stream-json on both sides, which the CLI accepts only with
+   --verbose."""
+   output_format = "stream-json" if streams_json else "json"
    argv = [
       binary,
       "-p",
       "--model", model,
       f"--system-prompt={system_prompt}",
-      "--output-format", "json",
+      "--output-format", output_format,
       "--max-budget-usd", f"{max_budget_usd:.2f}",
       "--no-session-persistence",
       "--setting-sources", "",
@@ -176,6 +197,9 @@ def build_argv(binary, model, system_prompt, output_schema=None, max_budget_usd=
       "--tools", "",
       "--disallowedTools", ",".join(DISALLOWED_TOOLS),
    ]
+
+   if streams_json:
+      argv.extend(["--input-format", "stream-json", "--verbose"])
 
    has_effort = effort is not None and effort != ""
 
@@ -200,6 +224,44 @@ def prompt_text(messages):
       return messages[0].content
 
    return "\n\n".join(f"{message.role}: {message.content}" for message in messages)
+
+
+def image_block(image):
+   return {
+      "type": "image",
+      "source": {
+         "type": "base64",
+         "media_type": image.media_type,
+         "data": base64.b64encode(image.data).decode("ascii"),
+      },
+   }
+
+
+def stream_json_input(request):
+   """One user message: every image block first, then the prompt text."""
+   content = [image_block(image) for image in request.images]
+   content.append({"type": "text", "text": prompt_text(request.messages)})
+   message = {"type": "user", "message": {"role": "user", "content": content}}
+
+   return json.dumps(message) + "\n"
+
+
+def result_event_of(stdout):
+   """The last stream-json line whose type is result, or None."""
+   found = None
+
+   for line in (stdout or "").splitlines():
+      try:
+         event = json.loads(line)
+      except ValueError:
+         continue
+
+      is_result = isinstance(event, dict) and event.get("type") == "result"
+
+      if is_result:
+         found = event
+
+   return found
 
 
 def resolve_binary(binary, search_path):
@@ -252,6 +314,7 @@ class SubscriptionProvider(Provider):
    def generate(self, request):
       env = build_env(self._environ, disable_thinking=thinking_disabled(request.provider_options))
       binary_path = resolve_binary(self._binary, env.get("PATH"))
+      carries_images = len(request.images) > 0
       argv = build_argv(
          binary_path,
          request.model,
@@ -259,14 +322,16 @@ class SubscriptionProvider(Provider):
          output_schema=request.output_schema,
          max_budget_usd=max_budget_for(request.role),
          effort=effort_of(request.provider_options),
+         streams_json=carries_images,
       )
+      stdin_text = stream_json_input(request) if carries_images else prompt_text(request.messages)
       work_dir = tempfile.mkdtemp(prefix=TEMP_DIR_PREFIX)
       failure = None
 
       try:
          completed = subprocess.run(
             argv,
-            input=prompt_text(request.messages),
+            input=stdin_text,
             capture_output=True,
             text=True,
             cwd=work_dir,
@@ -283,7 +348,7 @@ class SubscriptionProvider(Provider):
       if failure is not None:
          raise failure
 
-      return self._to_result(request, completed)
+      return self._to_result(request, completed, streamed=carries_images)
 
    def stream(self, request):
       """The json output format has no incremental text, so the whole result is one delta."""
@@ -294,8 +359,8 @@ class SubscriptionProvider(Provider):
 
       return result
 
-   def _to_result(self, request, completed):
-      payload = self._payload_of(completed.stdout)
+   def _to_result(self, request, completed, streamed=False):
+      payload = result_event_of(completed.stdout) if streamed else self._payload_of(completed.stdout)
       exit_failed = completed.returncode != 0
       has_payload = payload is not None
 

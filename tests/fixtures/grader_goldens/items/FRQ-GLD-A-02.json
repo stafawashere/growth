@@ -1,0 +1,105 @@
+{
+   "id": "FRQ-GLD-A-02",
+   "archetype_id": "BC-QA-04002",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "stem": {
+      "text": "The temperature of a cup of coffee is modeled by the differentiable function \\( H \\), where \\( H(t) \\) is measured in degrees Celsius and \\( t \\) is measured in minutes. Selected values of \\( H(t) \\) are given in the table. \\( \\begin{array}{c|cccc} t \\text{ (minutes)} & 0 & 3 & 7 & 12 \\\\ \\hline H(t) \\text{ (degrees Celsius)} & 90 & 78 & 66 & 57 \\end{array} \\)"
+   },
+   "skills": [
+      "BC-SKL-04004",
+      "BC-SKL-04001",
+      "BC-SKL-02014",
+      "BC-SKL-02015",
+      "BC-SKL-02016",
+      "BC-SKL-02002",
+      "BC-SKL-02003"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Use the data in the table to approximate \\( H'(5) \\). Show the computations that lead to your answer, and indicate units of measure.",
+         "setup_required": false,
+         "answer_latex": "-3 \\text{ degrees Celsius per minute}",
+         "worked_solution": [
+            {
+               "text": "Use the two table values that bracket t = 5.",
+               "latex": "H'(5) \\approx \\frac{H(7) - H(3)}{7 - 3} = \\frac{66 - 78}{4} = -3"
+            },
+            {
+               "text": "Units are the output units per input unit.",
+               "latex": "\\text{degrees Celsius per minute}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-02014",
+                  "BC-SKL-02016",
+                  "BC-SKL-04004"
+               ],
+               "criterion": "Gives -3 supported by a difference quotient over the interval from t = 3 to t = 7.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "-3",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99006",
+               "skills": [
+                  "BC-SKL-04001",
+                  "BC-SKL-02015"
+               ],
+               "criterion": "Gives the units degrees Celsius per minute.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "units_present",
+                  "units": [
+                     "degrees celsius per minute",
+                     "degrees c per minute",
+                     "degrees per minute",
+                     "deg c/min",
+                     "c/min",
+                     "deg/min"
+                  ]
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Using correct units, interpret the meaning of \\( H'(5) \\) in the context of the problem, using your answer to part (a).",
+         "setup_required": false,
+         "answer_latex": "\\text{at } t = 5 \\text{ the temperature is decreasing at about 3 degrees Celsius per minute}",
+         "worked_solution": [
+            {
+               "text": "A negative rate means the temperature is falling at that instant.",
+               "latex": "\\text{At } t = 5 \\text{ minutes the temperature is decreasing at about 3 degrees Celsius per minute.}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99008",
+               "skills": [
+                  "BC-SKL-04001",
+                  "BC-SKL-04004"
+               ],
+               "criterion": "States that at t = 5 minutes the coffee's temperature is changing at the presented rate (decreasing at about 3 degrees Celsius per minute for -3), naming the quantity, the rate with units and the instant, with sign language consistent with the presented value.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude golden-set author, stage 4 (p3), model-authored",
+   "signed_off_by": null
+}

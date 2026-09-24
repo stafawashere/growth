@@ -1,0 +1,81 @@
+{
+   "id": "FRQ-GLD-A-09",
+   "archetype_id": "BC-QA-06002",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "stem": {
+      "text": "Sand is added to a pile at a rate modeled by the differentiable function \\( S \\), where \\( S(t) \\) is measured in cubic feet per hour and \\( t \\) is measured in hours for \\( 0 \\le t \\le 7 \\). At time \\( t = 0 \\) the pile contains 40 cubic feet of sand. Selected values of \\( S(t) \\) are given in the table. \\( \\begin{array}{c|cccc} t \\text{ (hours)} & 0 & 2 & 3 & 7 \\\\ \\hline S(t) \\text{ (cubic feet per hour)} & 5 & 8 & 6 & 10 \\end{array} \\)"
+   },
+   "skills": [
+      "BC-SKL-06008",
+      "BC-SKL-06011",
+      "BC-SKL-06036"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Use a trapezoidal sum with the three subintervals indicated by the table to approximate \\( \\int_{0}^{7} S(t)\\,dt \\). Show the computations that lead to your answer.",
+         "setup_required": false,
+         "answer_latex": "52",
+         "worked_solution": [
+            {
+               "text": "Each trapezoid is its width times the average of its two end values.",
+               "latex": "2 \\cdot \\frac{5 + 8}{2} + 1 \\cdot \\frac{8 + 6}{2} + 4 \\cdot \\frac{6 + 10}{2}"
+            },
+            {
+               "text": "Add.",
+               "latex": "= 13 + 7 + 32 = 52"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99018",
+               "skills": [
+                  "BC-SKL-06008"
+               ],
+               "criterion": "Writes a trapezoidal sum of three terms, each a width times an average of two table values, with at least five of the six factors correct.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99019",
+               "skills": [
+                  "BC-SKL-06008"
+               ],
+               "criterion": "Gives the value 52 with the supporting products present.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Use your answer from part (a) to approximate the amount of sand in the pile at time \\( t = 7 \\) hours.",
+         "setup_required": false,
+         "answer_latex": "92",
+         "worked_solution": [
+            {
+               "text": "Add the initial amount to the accumulated change.",
+               "latex": "40 + \\int_{0}^{7} S(t)\\,dt \\approx 40 + 52 = 92"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99033",
+               "skills": [
+                  "BC-SKL-06036"
+               ],
+               "criterion": "Adds the initial 40 cubic feet to the integral approximation from part (a), consistent with that answer.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude golden-set author, stage 4 (p3), model-authored",
+   "signed_off_by": null
+}

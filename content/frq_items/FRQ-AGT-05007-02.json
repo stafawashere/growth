@@ -1,0 +1,90 @@
+{
+   "id": "FRQ-AGT-05007-02",
+   "archetype_id": "BC-QA-05007",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "The function \\( f \\) is twice differentiable for all real \\( x \\), and its derivative is \\( f'(x) = (2 - x)\\sqrt{x^{2} + 5} \\)."
+   },
+   "skills": ["BC-SKL-05010", "BC-SKL-05020", "BC-SKL-05039"],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find the \\( x \\)-coordinate of the critical point of \\( f \\).",
+         "setup_required": false,
+         "answer_latex": "x = 2",
+         "worked_solution": [
+            {"text": "Set the derivative equal to zero; the square root is never zero.", "latex": "(2 - x)\\sqrt{x^{2} + 5} = 0 \\Rightarrow x = 2"}
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99013",
+               "skills": ["BC-SKL-05010"],
+               "criterion": "Sets f'(x) = (2 - x)sqrt(x^2 + 5) equal to zero, or an equivalent equation, to find the critical point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99004",
+               "skills": ["BC-SKL-05010", "BC-SKL-05020"],
+               "criterion": "Gives x = 2.",
+               "eligible_only_if": [],
+               "check": {"kind": "sympy_equivalence", "target": "answer", "expected": "2", "up_to_constant": false, "variable": "x"}
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find \\( f''(2) \\). Show the work that leads to your answer.",
+         "setup_required": false,
+         "answer_latex": "f''(2) = -3",
+         "worked_solution": [
+            {"text": "Product rule with the chain rule on the root.", "latex": "f''(x) = -\\sqrt{x^{2} + 5} + (2 - x)\\frac{x}{\\sqrt{x^{2} + 5}}"},
+            {"text": "Substitute x = 2; the second term vanishes.", "latex": "f''(2) = -\\sqrt{9} = -3"}
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99005",
+               "skills": ["BC-SKL-05039"],
+               "criterion": "Differentiates f' and evaluates at x = 2 to get f''(2) = -3.",
+               "eligible_only_if": [],
+               "check": {"kind": "sympy_equivalence", "target": "answer", "expected": "-3", "up_to_constant": false, "variable": "x"}
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Does \\( f \\) have a relative minimum, a relative maximum, or neither at the critical point found in part (a)? Justify your answer.",
+         "setup_required": false,
+         "answer_latex": "\\text{relative maximum at } x = 2",
+         "worked_solution": [
+            {"text": "f'(2) = 0 and f''(2) < 0.", "latex": "f'(2) = 0, \\quad f''(2) = -3 < 0"},
+            {"text": "By the second derivative test f has a relative maximum at x = 2.", "latex": "\\text{relative maximum at } x = 2"}
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99014",
+               "skills": ["BC-SKL-05039"],
+               "criterion": "States f''(2) < 0 together with f'(2) = 0, or states that f' changes from positive to negative at x = 2.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99012",
+               "skills": ["BC-SKL-05020", "BC-SKL-05039"],
+               "criterion": "Concludes that f has a relative maximum at x = 2, tied to the sign statement from the derivative test.",
+               "eligible_only_if": ["c1"],
+               "check": null
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 4 (p3)",
+   "signed_off_by": null
+}

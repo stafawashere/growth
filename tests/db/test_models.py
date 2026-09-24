@@ -1,6 +1,7 @@
 """docs/plan/06-architecture.md, "Data model": the 14 P1 tables, the two passkey tables,
-diagnoses, which 11 P2 scope item 9 puts in use in P2, and the six tables of the P7 evaluation
-harness (11 P7 scope items 4 to 6). gradings stays out until P3."""
+diagnoses, which 11 P2 scope item 9 puts in use in P2, the six tables of the P7 evaluation
+harness (11 P7 scope items 4 to 6), and gradings, which 11 P3 scope item 10 puts in use in P3,
+with frq_images for the photographs 06's image routes store."""
 from sqlalchemy import inspect
 
 from app.db.models import Base, make_engine
@@ -35,14 +36,37 @@ P7_TABLE_NAMES = P2_TABLE_NAMES | {
    "probe_responses",
 }
 
+P3_TABLE_NAMES = {"gradings", "frq_images"}
+
 
 def test_models_create_all(tmp_path):
    engine = make_engine(tmp_path / "p1.sqlite")
    inspector = inspect(engine)
    table_names = set(inspector.get_table_names())
 
-   assert table_names == P7_TABLE_NAMES
-   assert "gradings" not in table_names
+   assert table_names == P7_TABLE_NAMES | P3_TABLE_NAMES
+
+   gradings_columns = {column["name"] for column in inspector.get_columns("gradings")}
+   assert gradings_columns == {
+      "id",
+      "attempt_id",
+      "part_id",
+      "point_id",
+      "point_type_id",
+      "decided_by",
+      "earned",
+      "samples",
+      "agreement",
+      "provisional",
+      "rationale",
+      "rule_field",
+      "evidence_quote",
+      "eligibility_note",
+      "deterministic_check",
+      "rereads",
+      "created_at",
+      "updated_at",
+   }
 
    for table_name in sorted(P7_TABLE_NAMES - P2_TABLE_NAMES):
       columns = {column["name"] for column in inspector.get_columns(table_name)}

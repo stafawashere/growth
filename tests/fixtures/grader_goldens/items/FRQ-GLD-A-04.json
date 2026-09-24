@@ -1,0 +1,97 @@
+{
+   "id": "FRQ-GLD-A-04",
+   "archetype_id": "BC-QA-05008",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "The function \\( f \\) is differentiable on the closed interval \\( [0, 8] \\), and its derivative is \\( f'(x) = (x - 3)e^{-x} \\)."
+   },
+   "skills": [
+      "BC-SKL-05014",
+      "BC-SKL-05015",
+      "BC-SKL-05016",
+      "BC-SKL-05017",
+      "BC-SKL-05018"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find the open interval on which \\( f \\) is decreasing. Show the analysis that leads to your answer.",
+         "setup_required": false,
+         "answer_latex": "(0, 3)",
+         "worked_solution": [
+            {
+               "text": "The exponential factor is positive, so f' has the sign of x - 3.",
+               "latex": "f'(x) < 0 \\iff x < 3"
+            },
+            {
+               "text": "Restrict to the domain.",
+               "latex": "(0, 3)"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-05014",
+                  "BC-SKL-05016"
+               ],
+               "criterion": "Gives the interval (0, 3), supported by the sign of x - 3 with e^{-x} positive.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find the value of \\( x \\) at which \\( f \\) attains its absolute minimum on the closed interval \\( [0, 8] \\). Justify your answer.",
+         "setup_required": false,
+         "answer_latex": "x = 3",
+         "worked_solution": [
+            {
+               "text": "f' is negative on (0, 3) and positive on (3, 8).",
+               "latex": "f'(x) < 0 \\text{ on } (0,3), \\quad f'(x) > 0 \\text{ on } (3, 8)"
+            },
+            {
+               "text": "x = 3 is the only critical point in the interval, so f falls to f(3) and rises after it.",
+               "latex": "\\text{absolute minimum at } x = 3"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-05014",
+                  "BC-SKL-05018"
+               ],
+               "criterion": "Gives x = 3 with supporting sign analysis.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "3",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99010",
+               "skills": [
+                  "BC-SKL-05016",
+                  "BC-SKL-05017",
+                  "BC-SKL-05018"
+               ],
+               "criterion": "Justifies with the sign of f' on each side of x = 3 (negative on (0, 3), positive on (3, 8)) and a global statement, such as x = 3 being the only critical point on the interval or f decreasing on all of [0, 3] and increasing on all of [3, 8].",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude golden-set author, stage 4 (p3), model-authored",
+   "signed_off_by": null
+}

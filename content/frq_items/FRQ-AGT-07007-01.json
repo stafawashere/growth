@@ -1,0 +1,98 @@
+{
+   "id": "FRQ-AGT-07007-01",
+   "archetype_id": "BC-QA-07007",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "stem": {
+      "text": "Consider the differential equation \\( \\dfrac{dy}{dx} = 2y + 4x \\)."
+   },
+   "skills": ["BC-SKL-07006", "BC-SKL-07007", "BC-SKL-07008", "BC-SKL-07009", "BC-SKL-07033"],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Show that \\( y = 5e^{2x} - 2x - 1 \\) is a solution to the differential equation.",
+         "setup_required": false,
+         "answer_latex": "\\frac{dy}{dx} = 2y + 4x",
+         "worked_solution": [
+            {"text": "Differentiate the candidate.", "latex": "\\frac{dy}{dx} = 10e^{2x} - 2"},
+            {"text": "Substitute into the right side.", "latex": "2y + 4x = 10e^{2x} - 4x - 2 + 4x = 10e^{2x} - 2"},
+            {"text": "The two sides agree for every x.", "latex": "\\frac{dy}{dx} = 2y + 4x"}
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99068",
+               "skills": ["BC-SKL-07006"],
+               "criterion": "Computes dy/dx = 10e^(2x) - 2 and shows 2y + 4x simplifies to the same expression.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "For some constant \\( k \\), the function \\( y = ke^{2x} - 2x - 1 \\) is the solution to the differential equation with \\( y(0) = 3 \\). Find \\( k \\).",
+         "setup_required": false,
+         "answer_latex": "k = 4",
+         "worked_solution": [
+            {"text": "Use the initial condition.", "latex": "3 = k e^{0} - 0 - 1"},
+            {"text": "Solve.", "latex": "k = 4"}
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99005",
+               "skills": ["BC-SKL-07007", "BC-SKL-07033"],
+               "criterion": "Substitutes x = 0 and y = 3 into the family and gives k = 4.",
+               "eligible_only_if": [],
+               "check": {"kind": "sympy_equivalence", "target": "answer", "expected": "4", "up_to_constant": false, "variable": "k"}
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Find the solution to the differential equation whose graph is a line, \\( y = mx + b \\).",
+         "setup_required": false,
+         "answer_latex": "y = -2x - 1",
+         "worked_solution": [
+            {"text": "Substitute y = mx + b.", "latex": "m = 2(mx + b) + 4x = (2m + 4)x + 2b"},
+            {"text": "Match coefficients.", "latex": "2m + 4 = 0, \\quad m = 2b \\Rightarrow m = -2, \\; b = -1"},
+            {"text": "The linear solution.", "latex": "y = -2x - 1"}
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99005",
+               "skills": ["BC-SKL-07006", "BC-SKL-07009"],
+               "criterion": "Substitutes y = mx + b into the equation, matches coefficients and gives y = -2x - 1.",
+               "eligible_only_if": [],
+               "check": {"kind": "sympy_equivalence", "target": "answer", "expected": "-2*x - 1", "up_to_constant": false, "variable": "x"}
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "Show that \\( y = e^{2x} + x^{2} \\) is not a solution to the differential equation.",
+         "setup_required": false,
+         "answer_latex": "\\frac{dy}{dx} \\ne 2y + 4x",
+         "worked_solution": [
+            {"text": "Differentiate the candidate.", "latex": "\\frac{dy}{dx} = 2e^{2x} + 2x"},
+            {"text": "Right side.", "latex": "2y + 4x = 2e^{2x} + 2x^{2} + 4x"},
+            {"text": "They differ by 2x^2 + 2x, which is not zero for every x, for example at x = 1.", "latex": "2x^{2} + 2x \\ne 0"}
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99068",
+               "skills": ["BC-SKL-07006", "BC-SKL-07008"],
+               "criterion": "Computes both sides, shows they differ (for example at x = 1) and concludes the function is not a solution.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 4 (p3)",
+   "signed_off_by": null
+}

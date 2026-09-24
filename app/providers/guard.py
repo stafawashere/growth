@@ -152,7 +152,12 @@ SUBSCRIPTION_SPEND_LEDGER_PATH = Path(__file__).resolve().parents[2] / "var" / "
 # bills. Sized in docs/plan/14-token-economy.md, "Subscription pacing".
 SUBSCRIPTION_PACING_LEDGER_PATH = Path(__file__).resolve().parents[2] / "var" / "subscription_pacing.json"
 SUBSCRIPTION_CALLS_PER_MINUTE_ENV_VAR = "GROWTH_SUBSCRIPTION_CALLS_PER_MINUTE"
-DEFAULT_SUBSCRIPTION_CALLS_PER_DAY = {"tutor": 60}
+# P3 on the operator's delegation, 2026-09-24: one free-response question with five judged points
+# is fifteen grader calls, one transcriber call and one diagnostician call, so the grader's day
+# holds about eight questions and its minute rate lets one question grade in about a minute and a
+# half rather than four. See BUILD-LEDGER.md, decisions of 2026-09-24, stage 4.
+DEFAULT_SUBSCRIPTION_CALLS_PER_DAY = {"tutor": 60, "grader": 120, "transcriber": 30, "diagnostician": 30}
+DEFAULT_SUBSCRIPTION_CALLS_PER_MINUTE_BY_ROLE = {"grader": 12}
 DEFAULT_SUBSCRIPTION_CALLS_PER_DAY_OTHER_ROLE = 20
 DEFAULT_SUBSCRIPTION_CALLS_PER_MINUTE = 4
 PACING_WINDOW_SECONDS = 60
@@ -366,9 +371,13 @@ class SubscriptionPacingCaps:
 
    calls_per_day: dict = field(default_factory=lambda: dict(DEFAULT_SUBSCRIPTION_CALLS_PER_DAY))
    calls_per_minute: int = DEFAULT_SUBSCRIPTION_CALLS_PER_MINUTE
+   calls_per_minute_by_role: dict = field(default_factory=lambda: dict(DEFAULT_SUBSCRIPTION_CALLS_PER_MINUTE_BY_ROLE))
 
    def daily_cap_for(self, role):
       return self.calls_per_day.get(role, DEFAULT_SUBSCRIPTION_CALLS_PER_DAY_OTHER_ROLE)
+
+   def minute_cap_for(self, role):
+      return self.calls_per_minute_by_role.get(role, self.calls_per_minute)
 
 
 class SubscriptionPaceExceeded(BudgetStopped):
@@ -439,7 +448,7 @@ class SubscriptionPacingLedger(DevSpendLedger):
          recent_starts = state["recent"].get(role, [])
 
          over_daily_cap = calls_today + 1 > caps.daily_cap_for(role)
-         over_minute_rate = len(recent_starts) + 1 > caps.calls_per_minute
+         over_minute_rate = len(recent_starts) + 1 > caps.minute_cap_for(role)
 
          if over_daily_cap:
             raise SubscriptionPaceExceeded(role, (SUBSCRIPTION_DAILY_CAP,))
@@ -493,8 +502,17 @@ def pacing_caps_from_environment(env=None):
    calls_per_minute = _positive_count(
       env, SUBSCRIPTION_CALLS_PER_MINUTE_ENV_VAR, DEFAULT_SUBSCRIPTION_CALLS_PER_MINUTE
    )
+   calls_per_minute_by_role = {}
 
-   return SubscriptionPacingCaps(calls_per_day=calls_per_day, calls_per_minute=calls_per_minute)
+   for role, default in DEFAULT_SUBSCRIPTION_CALLS_PER_MINUTE_BY_ROLE.items():
+      variable = f"GROWTH_SUBSCRIPTION_{role.upper()}_CALLS_PER_MINUTE"
+      calls_per_minute_by_role[role] = _positive_count(env, variable, default)
+
+   return SubscriptionPacingCaps(
+      calls_per_day=calls_per_day,
+      calls_per_minute=calls_per_minute,
+      calls_per_minute_by_role=calls_per_minute_by_role,
+   )
 
 
 def _positive_count(env, variable, default):
@@ -599,12 +617,30 @@ def price_for(model, day=None):
    return price.on(day)
 
 
+# https://platform.claude.com/docs/en/build-with-claude/vision, read 2026-09-20 in
+# docs/plan/13-ai-engineering.md: the high-resolution tier resizes to a 2576 px long edge and
+# spends at most 4784 visual tokens, at about one token per 750 pixels.
+IMAGE_MAX_LONG_EDGE_PX = 2576
+IMAGE_MAX_TOKENS = 4784
+IMAGE_PIXELS_PER_TOKEN = 750
+
+
+def estimate_image_tokens(image):
+   long_edge = max(image.width, image.height, 1)
+   scale = min(1.0, IMAGE_MAX_LONG_EDGE_PX / long_edge)
+   pixels = (image.width * scale) * (image.height * scale)
+
+   return min(IMAGE_MAX_TOKENS, math.ceil(pixels / IMAGE_PIXELS_PER_TOKEN))
+
+
 def estimate_prompt_tokens(request):
-   """An estimate from characters, never exact. See the module docstring."""
+   """An estimate from characters, never exact. See the module docstring. Images are priced at
+   the vision page's high-resolution tier, the dearest the routed models use."""
    message_characters = sum(len(message.content) for message in request.messages)
    total_characters = len(request.system or "") + message_characters
+   image_tokens = sum(estimate_image_tokens(image) for image in getattr(request, "images", ()))
 
-   return math.ceil(total_characters / CHARACTERS_PER_TOKEN)
+   return math.ceil(total_characters / CHARACTERS_PER_TOKEN) + image_tokens
 
 
 def estimate_call(request, day=None):

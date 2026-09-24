@@ -1,0 +1,71 @@
+{
+   "id": "FRQ-GLD-B-11",
+   "archetype_id": "BC-QA-06013",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "The functions \\( f \\) and \\( g \\) are continuous for all real \\( x \\), with \\( \\displaystyle\\int_{0}^{5} f(x)\\,dx = 8 \\), \\( \\displaystyle\\int_{3}^{5} f(x)\\,dx = 3 \\), \\( \\displaystyle\\int_{0}^{3} g(x)\\,dx = -2 \\), and \\( \\displaystyle\\int_{3}^{5} g(x)\\,dx = 4 \\)."
+   },
+   "skills": [
+      "BC-SKL-06029",
+      "BC-SKL-06030",
+      "BC-SKL-06031",
+      "BC-SKL-06032",
+      "BC-SKL-06033",
+      "BC-SKL-06035"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find \\( \\displaystyle\\int_{0}^{3} f(x)\\,dx \\). Show the work that leads to your answer.",
+         "setup_required": false,
+         "answer_latex": "5",
+         "worked_solution": [
+            {
+               "text": "Use the adjacent interval property.",
+               "latex": "\\int_{0}^{3} f(x)\\,dx = \\int_{0}^{5} f(x)\\,dx - \\int_{3}^{5} f(x)\\,dx = 8 - 3 = 5"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-06031"
+               ],
+               "criterion": "Shows a setup from the adjacent interval property, such as 8 - 3, and gives 5. A bare 5 does not earn it.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find \\( \\displaystyle\\int_{3}^{0} \\left(2f(x) - 4g(x)\\right) dx \\). Show the work that leads to your answer.",
+         "setup_required": false,
+         "answer_latex": "-18",
+         "worked_solution": [
+            {
+               "text": "Reverse the limits, then use the constant multiple and sum properties.",
+               "latex": "\\int_{3}^{0} (2f(x) - 4g(x))\\,dx = -\\left(2\\int_{0}^{3} f(x)\\,dx - 4\\int_{0}^{3} g(x)\\,dx\\right) = -(2 \\cdot 5 - 4 \\cdot (-2)) = -18"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-06029",
+                  "BC-SKL-06030"
+               ],
+               "criterion": "Shows a setup that reverses the limits and applies the constant multiple and sum properties, such as -(2(5) - 4(-2)), and gives -18. A value consistent with the student's own part (a) value earns it when the setup is otherwise correct. A bare value does not earn it.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude golden-set author, stage 4 (p3), model-authored",
+   "signed_off_by": null
+}

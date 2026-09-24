@@ -1,0 +1,93 @@
+{
+   "id": "FRQ-AGT-10018-01",
+   "archetype_id": "BC-QA-10018",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "stem": {
+      "text": "Let \\( f(x) = \\displaystyle\\sum_{n=1}^{\\infty} \\frac{x^{n}}{n\\,3^{n}} \\). The radius of convergence of this series is 3."
+   },
+   "skills": ["BC-SKL-10060", "BC-SKL-10068", "BC-SKL-10070", "BC-SKL-10071"],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Write the first three nonzero terms of the Maclaurin series for \\( f'(x) \\).",
+         "setup_required": false,
+         "answer_latex": "\\frac{1}{3} + \\frac{x}{9} + \\frac{x^{2}}{27}",
+         "worked_solution": [
+            {"text": "Differentiate term by term.", "latex": "f'(x) = \\sum_{n=1}^{\\infty}\\frac{x^{n-1}}{3^{n}}"},
+            {"text": "First three terms.", "latex": "\\frac{1}{3} + \\frac{x}{9} + \\frac{x^{2}}{27}"}
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99037",
+               "skills": ["BC-SKL-10068"],
+               "criterion": "Gives 1/3 + x/9 + x^2/27.",
+               "eligible_only_if": [],
+               "check": {"kind": "sympy_equivalence", "target": "answer", "expected": "1/3 + x/9 + x**2/27", "up_to_constant": false, "variable": "x"}
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Write the general term of the Maclaurin series for \\( f'(x) \\).",
+         "setup_required": false,
+         "answer_latex": "\\frac{x^{n-1}}{3^{n}}",
+         "worked_solution": [
+            {"text": "Derivative of the general term.", "latex": "\\frac{d}{dx}\\frac{x^{n}}{n\\,3^{n}} = \\frac{x^{n-1}}{3^{n}}"}
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99038",
+               "skills": ["BC-SKL-10060", "BC-SKL-10068"],
+               "criterion": "Gives the general term x^(n-1)/3^n for n starting at 1, or an equivalent reindexed form such as x^n/3^(n+1) for n starting at 0.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Find the radius of convergence of the Maclaurin series for \\( f'(x) \\).",
+         "setup_required": false,
+         "answer_latex": "R = 3",
+         "worked_solution": [
+            {"text": "Term-by-term differentiation keeps the radius.", "latex": "R = 3"}
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99047",
+               "skills": ["BC-SKL-10070"],
+               "criterion": "States the radius 3, carried over from the series for f.",
+               "eligible_only_if": [],
+               "check": {"kind": "sympy_equivalence", "target": "answer", "expected": "3", "up_to_constant": false, "variable": "R"}
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "For \\( |x| < 3 \\), write \\( f'(x) \\) as a rational function of \\( x \\).",
+         "setup_required": false,
+         "answer_latex": "f'(x) = \\frac{1}{3 - x}",
+         "worked_solution": [
+            {"text": "The series for f' is geometric with first term 1/3 and ratio x/3.", "latex": "f'(x) = \\frac{1/3}{1 - x/3}"},
+            {"text": "Simplify.", "latex": "f'(x) = \\frac{1}{3 - x}"}
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99067",
+               "skills": ["BC-SKL-10068", "BC-SKL-10070"],
+               "criterion": "Uses first term 1/3 and ratio x/3 to give f'(x) = 1/(3 - x).",
+               "eligible_only_if": [],
+               "check": {"kind": "sympy_equivalence", "target": "answer", "expected": "1/(3 - x)", "up_to_constant": false, "variable": "x"}
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 4 (p3)",
+   "signed_off_by": null
+}

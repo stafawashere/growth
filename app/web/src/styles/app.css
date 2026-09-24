@@ -494,3 +494,45 @@ select {
    display: inline-block;
    padding: 0;
 }
+
+.choice-row {
+   display: flex;
+   flex-wrap: wrap;
+   align-items: center;
+   gap: var(--growth-space-8) var(--growth-space-16);
+}
+
+.frq-parts,
+.read-back {
+   padding-left: var(--growth-space-24);
+}
+
+.read-back-lines {
+   list-style: none;
+   padding-left: var(--growth-space-16);
+}
+
+.read-back-pair {
+   display: flex;
+   flex-wrap: wrap;
+   gap: var(--growth-space-16);
+}
+
+.read-back-photo {
+   max-width: 68ch;
+   width: calc(var(--growth-space-8) * 40);
+   height: auto;
+   outline: calc(var(--growth-space-4) / 4) solid var(--growth-border-hairline);
+}
+
+.crossed-out {
+   text-decoration: line-through;
+   color: var(--growth-text-muted);
+}
+
+.read-back-edit-line {
+   display: flex;
+   flex-wrap: wrap;
+   align-items: center;
+   gap: var(--growth-space-8) var(--growth-space-16);
+}

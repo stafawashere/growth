@@ -1,0 +1,78 @@
+{
+   "id": "FRQ-GLD-B-08",
+   "archetype_id": "BC-QA-07002",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "stem": {
+      "text": "Consider the differential equation \\( \\dfrac{dy}{dx} = \\dfrac{x(4 - y)}{2} \\). A slope field for this equation is drawn at the lattice points of the region \\( -3 \\le x \\le 3 \\), \\( 0 \\le y \\le 6 \\), with each segment having the slope the equation assigns to its point."
+   },
+   "skills": [
+      "BC-SKL-07010",
+      "BC-SKL-07011",
+      "BC-SKL-07012",
+      "BC-SKL-07013",
+      "BC-SKL-07016"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "With reference to the slope field, explain why the solution curve through the point \\( (1, 2) \\) is increasing near that point.",
+         "setup_required": false,
+         "answer_latex": "\\text{the segment at } (1, 2) \\text{ has slope } 1 > 0",
+         "worked_solution": [
+            {
+               "text": "The equation gives the slope of the segment at (1, 2).",
+               "latex": "\\frac{dy}{dx}\\Big|_{(1,2)} = \\frac{1(4 - 2)}{2} = 1"
+            },
+            {
+               "text": "That segment has positive slope, so the solution curve through (1, 2) rises there.",
+               "latex": ""
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99066",
+               "skills": [
+                  "BC-SKL-07010"
+               ],
+               "criterion": "Explains with the field: the segment at (1, 2), or the segments near it, have positive slope (the slope there is 1), so the solution curve is increasing there; stating that the solution curve's graph has positive slope there also earns it. A bare 'dy/dx > 0 so y increases' with no reference to the segments or to the solution curve's slope, or phrases such as 'the slope field is positive' or 'the slope field is increasing', do not earn it. A local argument is enough.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "With reference to the slope field, explain why the solution curve through the point \\( (2, 5) \\) is decreasing near that point.",
+         "setup_required": false,
+         "answer_latex": "\\text{the segment at } (2, 5) \\text{ has slope } -1 < 0",
+         "worked_solution": [
+            {
+               "text": "The slope of the segment at (2, 5).",
+               "latex": "\\frac{dy}{dx}\\Big|_{(2,5)} = \\frac{2(4 - 5)}{2} = -1"
+            },
+            {
+               "text": "That segment has negative slope, so the solution curve through (2, 5) falls there.",
+               "latex": ""
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99066",
+               "skills": [
+                  "BC-SKL-07010",
+                  "BC-SKL-07012"
+               ],
+               "criterion": "Explains with the field: the segment at (2, 5), or the segments near it, have negative slope (the slope there is -1), so the solution curve is decreasing there; a region-wide argument about the sign of the segments also earns it. Referring to the sign of the slope field, the slope of the slope field, or the slope field decreasing, or to dy/dx < 0 with no link to the segments or to the solution curve's slope, does not earn it.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude golden-set author, stage 4 (p3), model-authored",
+   "signed_off_by": null
+}

@@ -1,0 +1,115 @@
+{
+   "id": "ITM-AGT-04007-19",
+   "archetype_id": "BC-QA-04007",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "A particle moves along the curve \\( x^{2} - 4 x + y^{2} + 6 y = 12 \\) so that its coordinates \\( x \\) and \\( y \\) are differentiable functions of time \\( t \\). At the instant the particle is at the point \\( (5, 1) \\), the \\( y \\)-coordinate of the particle is decreasing at a rate of 3 units per second. Find \\( \\frac{dx}{dt} \\), in units per second, at that instant."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 4
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Differentiate both sides of \\( x^{2} - 4 x + y^{2} + 6 y = 12 \\) with respect to \\( t \\), using the chain rule on each term: \\( \\left(2 x - 4\\right)\\frac{dx}{dt} + \\left(2 y + 6\\right)\\frac{dy}{dt} = 0 \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               2,
+               "y"
+            ],
+            6
+         ]
+      },
+      {
+         "step": 2,
+         "text": "At \\( (5, 1) \\) the coefficient of \\( \\frac{dy}{dt} \\) is \\( 8 \\) and the coefficient of \\( \\frac{dx}{dt} \\) is \\( 6 \\). Substitute \\( \\frac{dy}{dt} = -3 \\): \\( (8)(-3) + (6)\\frac{dx}{dt} = 0 \\).",
+         "mathjson": -24
+      },
+      {
+         "step": 3,
+         "text": "Solve for the requested rate: \\( \\frac{dx}{dt} = 4 \\).",
+         "mathjson": 4
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 24,
+         "is_key": false,
+         "error_path": "BC-ERR-04021",
+         "violated_step": 3
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            -3,
+            4
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-04017",
+         "violated_step": 0
+      },
+      {
+         "id": "C",
+         "value": 0,
+         "is_key": false,
+         "error_path": "BC-ERR-04020",
+         "violated_step": 2
+      },
+      {
+         "id": "D",
+         "value": 4,
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-04022",
+      "BC-SKL-04019",
+      "BC-SKL-04020",
+      "BC-SKL-04023",
+      "BC-SKL-04024"
+   ],
+   "parameter_draw": {
+      "curve": "x**2 - 4*x + y**2 + 6*y = 12",
+      "point": [
+         5,
+         1
+      ],
+      "supplied_rate": "dy/dt = -3",
+      "requested_rate": "dx/dt",
+      "rate_stated_in_words_as_decreasing": true,
+      "difficulty_variables": {
+         "mixed_term_present": false,
+         "supplied_rate_negative": true
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

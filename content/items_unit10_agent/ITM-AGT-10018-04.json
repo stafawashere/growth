@@ -1,0 +1,245 @@
+{
+   "id": "ITM-AGT-10018-04",
+   "archetype_id": "BC-QA-10018",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = \\sum_{n=0}^{\\infty} (n + 1) x^{n} \\) for all \\( x \\) where the series converges. Find the sum of the first three nonzero terms of the series for \\( f'(x) \\) obtained by differentiating the series for \\( f \\) term by term."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         2,
+         [
+            "Multiply",
+            6,
+            "x"
+         ],
+         [
+            "Multiply",
+            12,
+            [
+               "Power",
+               "x",
+               2
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Write out the series: \\( f(x) = 1 + 2x + 3x^{2} + 4x^{3} + \\cdots \\). The constant term differentiates to 0, so the first three nonzero terms of \\( f'(x) \\) come from the next three terms of \\( f \\).",
+         "mathjson": [
+            "Add",
+            1,
+            [
+               "Multiply",
+               2,
+               "x"
+            ],
+            [
+               "Multiply",
+               3,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               4,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Differentiate the general term with respect to \\( x \\): \\( \\frac{d}{dx} \\left[ (n + 1) x^{n} \\right] = n \\cdot (n + 1) \\, x^{n - 1} \\), multiplying by the exponent and lowering it by 1.",
+         "mathjson": [
+            "Add",
+            2,
+            [
+               "Multiply",
+               6,
+               "x"
+            ],
+            [
+               "Multiply",
+               12,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The first three nonzero terms of \\( f'(x) \\) sum to \\( 2 + 6x + 12x^{2} \\).",
+         "mathjson": [
+            "Add",
+            2,
+            [
+               "Multiply",
+               6,
+               "x"
+            ],
+            [
+               "Multiply",
+               12,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               2,
+               "x"
+            ],
+            [
+               "Multiply",
+               6,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               12,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99018",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Add",
+            2,
+            [
+               "Multiply",
+               6,
+               "x"
+            ],
+            [
+               "Multiply",
+               12,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            2,
+            [
+               "Multiply",
+               3,
+               "x"
+            ],
+            [
+               "Multiply",
+               4,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99018",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            2,
+            [
+               "Multiply",
+               6,
+               "x"
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99018",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-04",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-10",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10060",
+      "BC-SKL-10068",
+      "BC-SKL-10070",
+      "BC-SKL-10071"
+   ],
+   "parameter_draw": {
+      "general_term": "(n + 1)",
+      "power": "n",
+      "centre": 0,
+      "terms_requested": 3,
+      "general_term_has_factorial": false,
+      "question": "first nonzero terms of the derivative series",
+      "distractor_mistakes": [
+         "exponent not lowered",
+         "coefficient not multiplied by the exponent",
+         "differentiated only the first terms of f, one of which is the constant"
+      ]
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

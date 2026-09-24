@@ -1,0 +1,99 @@
+{
+   "id": "ITM-AGT-02003-17",
+   "archetype_id": "BC-QA-02003",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Find the value of \\( \\lim_{\\Delta x \\to 0} \\frac{(5 + \\Delta x)^{2} - 25}{\\Delta x} \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 10
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The numerator has the form \\( f(5 + \\Delta x) - f(5) \\) with \\( f(x) = x^{2} \\), because \\( f(5) = 25 \\).",
+         "mathjson": 25
+      },
+      {
+         "step": 2,
+         "text": "So the function is \\( f(x) = x^{2} \\) and the base point is \\( x = 5 \\).",
+         "mathjson": 5
+      },
+      {
+         "step": 3,
+         "text": "The limit is the definition of \\( f'(5) \\), and \\( f'(x) = 2 x \\).",
+         "mathjson": [
+            "Multiply",
+            2,
+            "x"
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Evaluate: \\( f'(5) = 10 \\).",
+         "mathjson": 10
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 20,
+         "is_key": false,
+         "error_path": "BC-ERR-02010",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": 10,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": 0,
+         "is_key": false,
+         "error_path": "BC-ERR-02010",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": 50,
+         "is_key": false,
+         "error_path": "BC-ERR-02010",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02035",
+      "BC-SKL-02005"
+   ],
+   "parameter_draw": {
+      "function": "x**2",
+      "base_point": "5",
+      "increment_variable": "\\Delta x",
+      "form": "increment",
+      "wrong_base_readings": {
+         "shift": "10",
+         "zero": "0",
+         "constant": "25"
+      },
+      "difficulty_variables": {
+         "standard angle or value": false,
+         "two point form": false,
+         "transcendental": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

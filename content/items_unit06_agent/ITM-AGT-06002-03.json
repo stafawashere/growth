@@ -1,0 +1,109 @@
+{
+   "id": "ITM-AGT-06002-03",
+   "archetype_id": "BC-QA-06002",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Oil leaks from a storage tank at a rate of L(t) gallons per hour, where L is differentiable and t is measured in hours. Measured values are L(0) = 5, L(2) = 8, L(4) = 6, L(6) = 3. Find the approximation to \\( \\int_{0}^{6} L(t)\\,dt \\), the number of gallons of oil that leak out from t = 0 to t = 6, given by a trapezoidal sum with the three subintervals indicated by these values. Give the exact value."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 36
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Each subinterval contributes its width times the average of its two endpoint values: \\( 2 \\cdot \\frac{5 + 8}{2} = 13 \\); \\( 2 \\cdot \\frac{8 + 6}{2} = 14 \\); \\( 2 \\cdot \\frac{6 + 3}{2} = 9 \\).",
+         "mathjson": 13
+      },
+      {
+         "step": 2,
+         "text": "Add the three contributions: \\( 13 + 14 + 9 = 36 \\).",
+         "mathjson": 36
+      },
+      {
+         "step": 3,
+         "text": "The trapezoidal approximation is \\( 36 \\).",
+         "mathjson": 36
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 63,
+         "is_key": false,
+         "error_path": "BC-ERR-06004",
+         "violated_step": 0
+      },
+      {
+         "id": "B",
+         "value": 34,
+         "is_key": false,
+         "error_path": "BC-ERR-99028",
+         "violated_step": 0
+      },
+      {
+         "id": "C",
+         "value": 59,
+         "is_key": false,
+         "error_path": "BC-ERR-06004",
+         "violated_step": 0
+      },
+      {
+         "id": "D",
+         "value": 36,
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-10",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06008",
+      "BC-SKL-06011",
+      "BC-SKL-06036"
+   ],
+   "parameter_draw": {
+      "context": "oil",
+      "times": [
+         "0",
+         "2",
+         "4",
+         "6"
+      ],
+      "values": [
+         "5",
+         "8",
+         "6",
+         "3"
+      ],
+      "difficulty_variables": {
+         "nonuniform versus uniform widths": "uniform",
+         "whether the sum must be simplified to a single number": "yes",
+         "whether a concavity based over or under estimate justification is required": "no",
+         "calculator versus no calculator": "no calculator"
+      },
+      "distractor_derivations": {
+         "A": "factor 1/2 applied to the last trapezoid only",
+         "B": "right Riemann sum used in place of the trapezoidal sum",
+         "C": "factor 1/2 applied to the first trapezoid only"
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

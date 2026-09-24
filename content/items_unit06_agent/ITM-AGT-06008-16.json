@@ -1,0 +1,234 @@
+{
+   "id": "ITM-AGT-06008-16",
+   "archetype_id": "BC-QA-06008",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let F be the antiderivative of \\( f(x) = \\frac{x + 1}{x^{2} + 2 x + 2} \\) with \\( F(1) = 2 \\). Find the exact value of \\( F\\left(3\\right) \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Divide",
+            [
+               "Ln",
+               [
+                  "Rational",
+                  17,
+                  5
+               ]
+            ],
+            2
+         ],
+         2
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Let \\( u = x^{2} + 2 x + 2 \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Power",
+               "x",
+               2
+            ],
+            [
+               "Multiply",
+               2,
+               "x"
+            ],
+            2
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Then \\( du = \\left(2 x + 2\\right) \\, dx \\), so \\( \\left(x + 1\\right) \\, dx = \\frac{1}{2} \\, du \\).",
+         "mathjson": [
+            "Rational",
+            1,
+            2
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Since \\( F(3) = F(1) + \\int_{1}^{3} \\frac{x + 1}{x^{2} + 2 x + 2} \\, dx \\), convert the limits: \\( x = 1 \\) gives \\( u = 5 \\) and \\( x = 3 \\) gives \\( u = 17 \\), so the integral becomes \\( \\int_{5}^{17} \\frac{1}{2 u} \\, du \\).",
+         "mathjson": [
+            "Divide",
+            1,
+            [
+               "Multiply",
+               2,
+               "u"
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "An antiderivative of \\( \\frac{1}{2 u} \\) is \\( \\frac{\\ln{\\left(u \\right)}}{2} \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Ln",
+               "u"
+            ],
+            2
+         ]
+      },
+      {
+         "step": 5,
+         "text": "The integral is \\( \\frac{\\ln{\\left(17 \\right)}}{2} - \\left(\\frac{\\ln{\\left(5 \\right)}}{2}\\right) = \\frac{\\ln{\\left(\\frac{17}{5} \\right)}}{2} \\), so \\( F(3) = 2 + \\frac{\\ln{\\left(\\frac{17}{5} \\right)}}{2} = \\frac{\\ln{\\left(\\frac{17}{5} \\right)}}{2} + 2 \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Divide",
+               [
+                  "Ln",
+                  [
+                     "Rational",
+                     17,
+                     5
+                  ]
+               ],
+               2
+            ],
+            2
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            [
+               "Ln",
+               [
+                  "Rational",
+                  17,
+                  5
+               ]
+            ],
+            2
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06019",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Add",
+            [
+               "Divide",
+               [
+                  "Ln",
+                  [
+                     "Rational",
+                     17,
+                     5
+                  ]
+               ],
+               2
+            ],
+            2
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            [
+               "Divide",
+               [
+                  "Ln",
+                  3
+               ],
+               2
+            ],
+            2
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06018",
+         "violated_step": 4
+      },
+      {
+         "id": "D",
+         "value": [
+            "Divide",
+            [
+               "Ln",
+               17
+            ],
+            2
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-07026",
+         "violated_step": 3
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-11",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06047",
+      "BC-SKL-06048",
+      "BC-SKL-06049",
+      "BC-SKL-06050",
+      "BC-SKL-06051",
+      "BC-SKL-06052",
+      "BC-SKL-06034"
+   ],
+   "parameter_draw": {
+      "form": "pinned antiderivative value",
+      "integrand": "(x + 1)/(x**2 + 2*x + 2)",
+      "inner_u": "x**2 + 2*x + 2",
+      "du_constant_k": "2",
+      "limits": [
+         "1",
+         "3"
+      ],
+      "u_limits": [
+         "5",
+         "17"
+      ],
+      "difficulty_variables": {
+         "whether a constant adjustment is needed": "yes",
+         "whether the answer is logarithmic, exponential, trigonometric, or a power": "logarithmic",
+         "definite versus indefinite": "antiderivative pinned by an initial value",
+         "whether the limits must be converted": "yes",
+         "whether the substitution is disguised by a prior rearrangement": "yes"
+      },
+      "F_at_a": "2",
+      "distractor_derivations": {
+         "A": "substitution carried out as if (x + 1) dx = du, without the constant 1/(2)",
+         "C": "antiderivative in u evaluated at the original x limits 1 and 3",
+         "D": "antiderivative log(x**2 + 2*x + 2)/2 written with no constant and evaluated at x = 3, ignoring F(1)"
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

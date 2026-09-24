@@ -1,0 +1,114 @@
+{
+   "id": "ITM-AGT-06012-05",
+   "archetype_id": "BC-QA-06012",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let f be a continuous function with \\( f(3) = 1 \\), \\( f(6) = -2 \\), \\( f(9) = 4 \\). Let \\( g(x) = \\int_{2 x}^{x^{2}} f(t) \\, dt \\). Find the value of \\( g'\\left(3\\right) \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 28
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Split the integral at any constant k in the domain of the integrand: \\( g(x) = \\int_{k}^{x^{2}} f(t) \\, dt - \\int_{k}^{2 x} f(t) \\, dt \\), and apply the Fundamental Theorem of Calculus to each piece.",
+         "mathjson": 9
+      },
+      {
+         "step": 2,
+         "text": "With the chain rule, \\( g'(x) = f\\left(x^{2}\\right) \\cdot 2 x - f\\left(2 x\\right) \\cdot 2 \\).",
+         "mathjson": 6
+      },
+      {
+         "step": 3,
+         "text": "At \\( x = 3 \\): the limits are \\( 9 \\) and \\( 6 \\), with derivatives \\( 6 \\) and \\( 2 \\), and \\( f\\left(9\\right) = 4 \\), \\( f\\left(6\\right) = -2 \\).",
+         "mathjson": 4
+      },
+      {
+         "step": 4,
+         "text": "So \\( g'\\left(3\\right) = 4 \\cdot 6 - \\left(-2\\right) \\cdot 2 = 28 \\).",
+         "mathjson": 28
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 6,
+         "is_key": false,
+         "error_path": "BC-ERR-06027",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": 28,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": 4,
+         "is_key": false,
+         "error_path": "BC-ERR-06028",
+         "violated_step": 0
+      },
+      {
+         "id": "D",
+         "value": 20,
+         "is_key": false,
+         "error_path": "BC-ERR-99012",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-03",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-09",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-10",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06018",
+      "BC-SKL-06019",
+      "BC-SKL-06017",
+      "BC-SKL-06021"
+   ],
+   "parameter_draw": {
+      "form": "both limits variable",
+      "integrand": "table of f values",
+      "limits": {
+         "lower": "2*x",
+         "upper": "x**2"
+      },
+      "point": "3",
+      "difficulty_variables": {
+         "upper limit equal to x versus a function of x": "both limits variable",
+         "integrand given by a formula, a graph, or a table": "table",
+         "whether a reason naming the theorem is demanded": "no",
+         "whether values of the integrand must come from a table": "yes"
+      },
+      "table": {
+         "3": "1",
+         "6": "-2",
+         "9": "4"
+      },
+      "distractor_derivations": {
+         "A": "f(upper) - f(lower) with both chain rule factors left off",
+         "C": "integrand evaluated at x = 3 instead of at the two limits",
+         "D": "lower limit term added instead of subtracted"
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

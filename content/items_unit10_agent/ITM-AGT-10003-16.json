@@ -1,0 +1,193 @@
+{
+   "id": "ITM-AGT-10003-16",
+   "archetype_id": "BC-QA-10003",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "For \\( |x| < 2 \\), the series \\( \\sum_{n=1}^{\\infty} \\frac{(-1)^{n+1}x^{n}}{2^{n}} \\) converges. Find its sum as an expression in \\( x \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Divide",
+         "x",
+         [
+            "Add",
+            "x",
+            2
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Dividing consecutive terms gives the constant ratio \\( r = - \\frac{x}{2} \\).",
+         "mathjson": [
+            "Negate",
+            [
+               "Divide",
+               "x",
+               2
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The series as written starts at \\( n = 1 \\), so its first term is \\( a = \\frac{x}{2} \\).",
+         "mathjson": [
+            "Divide",
+            "x",
+            2
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The closed form needs \\( |r| < 1 \\), which holds because \\( |x| < 2 \\) is given.",
+         "mathjson": [
+            "Negate",
+            [
+               "Divide",
+               "x",
+               2
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "The sum is \\( \\frac{a}{1 - r} = \\frac{x}{x + 2} \\), so the sum is \\( \\frac{x}{x + 2} \\).",
+         "mathjson": [
+            "Divide",
+            "x",
+            [
+               "Add",
+               "x",
+               2
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Divide",
+            "x",
+            [
+               "Add",
+               "x",
+               2
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": [
+            "Negate",
+            [
+               "Divide",
+               2,
+               [
+                  "Add",
+                  "x",
+                  2
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10006",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            [
+               "Divide",
+               "x",
+               2
+            ],
+            [
+               "Negate",
+               [
+                  "Divide",
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ],
+                  4
+               ]
+            ],
+            [
+               "Divide",
+               [
+                  "Power",
+                  "x",
+                  3
+               ],
+               8
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99038",
+         "violated_step": 3
+      },
+      {
+         "id": "D",
+         "value": [
+            "Divide",
+            "x",
+            [
+               "Add",
+               2,
+               [
+                  "Negate",
+                  "x"
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10004",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-13",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10006",
+      "BC-SKL-10007",
+      "BC-SKL-10008",
+      "BC-SKL-10009",
+      "BC-SKL-10010",
+      "BC-SKL-10063",
+      "BC-SKL-10072"
+   ],
+   "parameter_draw": {
+      "general_term": "\\frac{(-1)^{n+1}x^{n}}{2^{n}}",
+      "start": 1,
+      "condition": "|x| < 2",
+      "ratio": "-x/2",
+      "misread_ratio": "x/2",
+      "misread": "drops the sign and reads the ratio as x/2",
+      "difficulty_variables": {
+         "ratio_contains_variable": true,
+         "starts_at_index_zero": false,
+         "closed_form_given": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

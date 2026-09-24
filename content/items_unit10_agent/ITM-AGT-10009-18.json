@@ -1,0 +1,181 @@
+{
+   "id": "ITM-AGT-10009-18",
+   "archetype_id": "BC-QA-10009",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = e^{-x} \\). The second-degree Taylor polynomial for \\( f \\) about \\( x = 0 \\) is used to approximate \\( f\\left(- \\frac{1}{2}\\right) \\). Find the Lagrange error bound for this approximation, taking \\( M \\) to be the maximum of \\( |f'''(x)| \\) on \\( \\left[- \\frac{1}{2}, 0\\right] \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Divide",
+         [
+            "Exp",
+            [
+               "Rational",
+               1,
+               2
+            ]
+         ],
+         48
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "A degree 2 polynomial needs the derivative of order 3: \\( f'''(x) = - e^{- x} \\).",
+         "mathjson": [
+            "Negate",
+            [
+               "Exp",
+               [
+                  "Negate",
+                  "x"
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Its absolute value is monotonic on \\( \\left[- \\frac{1}{2}, 0\\right] \\), so the maximum is at an endpoint: \\( M = e^{\\frac{1}{2}} \\). The bound is \\( \\frac{M\\,|x - 0|^{3}}{3!} \\).",
+         "mathjson": [
+            "Exp",
+            [
+               "Rational",
+               1,
+               2
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "With \\( |x - 0| = \\frac{1}{2} \\), the bound is \\( \\frac{e^{\\frac{1}{2}} \\cdot \\left(\\frac{1}{2}\\right)^{3}}{6} = \\frac{e^{\\frac{1}{2}}}{48} \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Exp",
+               [
+                  "Rational",
+                  1,
+                  2
+               ]
+            ],
+            48
+         ]
+      },
+      {
+         "step": 4,
+         "text": "The error is at most \\( \\frac{e^{\\frac{1}{2}}}{48} \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Exp",
+               [
+                  "Rational",
+                  1,
+                  2
+               ]
+            ],
+            48
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Divide",
+            [
+               "Exp",
+               [
+                  "Rational",
+                  1,
+                  2
+               ]
+            ],
+            16
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10032",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Divide",
+            [
+               "Exp",
+               [
+                  "Rational",
+                  1,
+                  2
+               ]
+            ],
+            24
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10032",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Divide",
+            [
+               "Exp",
+               [
+                  "Rational",
+                  1,
+                  2
+               ]
+            ],
+            48
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": [
+            "Rational",
+            1,
+            48
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10033",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10048",
+      "BC-SKL-10049",
+      "BC-SKL-10050",
+      "BC-SKL-10051",
+      "BC-SKL-10052"
+   ],
+   "parameter_draw": {
+      "function": "e^{-x}",
+      "centre": "0",
+      "input": "-1/2",
+      "degree": 2,
+      "derivative_bound": "exp(1/2)",
+      "derivative_at_centre": "-1",
+      "difficulty_variables": {
+         "derivative_bound_supplied": false,
+         "displacement": "1/2",
+         "tolerance_comparison_shown": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

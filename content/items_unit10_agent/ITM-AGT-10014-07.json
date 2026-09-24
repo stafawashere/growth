@@ -1,0 +1,139 @@
+{
+   "id": "ITM-AGT-10014-07",
+   "archetype_id": "BC-QA-10014",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Find the radius of convergence of the power series \\( \\sum_{n=1}^{\\infty} \\frac{(x+3)^{3n}}{8^{n}} \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 2
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "For the ratio test, \\( \\left|\\frac{a_{n+1}}{a_n}\\right| = \\frac{\\left|{x + 3}\\right|^{3}}{8} \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Power",
+               [
+                  "Abs",
+                  [
+                     "Add",
+                     "x",
+                     3
+                  ]
+               ],
+               3
+            ],
+            8
+         ]
+      },
+      {
+         "step": 2,
+         "text": "As \\( n \\to \\infty \\), the limit of this ratio is \\( \\frac{\\left|{x + 3}\\right|^{3}}{8} \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Power",
+               [
+                  "Abs",
+                  [
+                     "Add",
+                     "x",
+                     3
+                  ]
+               ],
+               3
+            ],
+            8
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The series converges when \\( \\frac{\\left|{x + 3}\\right|^{3}}{8} < 1 \\), that is, when \\( \\left|x + 3\\right| < 2 \\).",
+         "mathjson": 2
+      },
+      {
+         "step": 4,
+         "text": "The radius of convergence is \\( R = 2 \\).",
+         "mathjson": 2
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 8,
+         "is_key": false,
+         "error_path": "BC-ERR-10021",
+         "violated_step": 0
+      },
+      {
+         "id": "B",
+         "value": 1,
+         "is_key": false,
+         "error_path": "BC-ERR-10021",
+         "violated_step": 0
+      },
+      {
+         "id": "C",
+         "value": -1,
+         "is_key": false,
+         "error_path": "BC-ERR-10036",
+         "violated_step": 3
+      },
+      {
+         "id": "D",
+         "value": 2,
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10031",
+      "BC-SKL-10032",
+      "BC-SKL-10053",
+      "BC-SKL-10054",
+      "BC-SKL-10056"
+   ],
+   "parameter_draw": {
+      "general_term": "\\frac{(x+3)^{3n}}{8^{n}}",
+      "centre": -3,
+      "numerator_base_and_step": [
+         1,
+         0
+      ],
+      "denominator_base_and_step": [
+         8,
+         1
+      ],
+      "power_step": 3,
+      "distractor_errors": [
+         "shifts the exponent of the power of the displacement by 1 instead of the correct amount",
+         "shifts the exponent of the exponential factor in the denominator by 0 instead of the correct amount",
+         "reports the right endpoint of the open interval"
+      ],
+      "difficulty_variables": {
+         "coefficients_exponential_in_index": true,
+         "radius_irrational": false,
+         "centred_away_from_zero": true
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

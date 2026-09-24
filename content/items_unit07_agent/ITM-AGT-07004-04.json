@@ -1,0 +1,140 @@
+{
+   "id": "ITM-AGT-07004-04",
+   "archetype_id": "BC-QA-07004",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( y = f(x) \\) be the solution to the differential equation \\( \\frac{dy}{dx} = - x + y^{2} \\) with \\( f(0) = 1 \\). Find the approximation to \\( f(\\frac{1}{2}) \\) given by Euler's method, starting at \\( x = 0 \\) with two steps of equal size. Give the exact value."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         101,
+         64
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The step size is \\( \\Delta x = \\frac{\\frac{1}{2} - (0)}{2} = \\frac{1}{4} \\).",
+         "mathjson": [
+            "Rational",
+            1,
+            4
+         ]
+      },
+      {
+         "step": 2,
+         "text": "At \\( (0, 1) \\) the slope is \\( 1 \\), so \\( y \\approx 1 + (\\frac{1}{4})(1) = \\frac{5}{4} \\) at \\( x = \\frac{1}{4} \\).",
+         "mathjson": [
+            "Rational",
+            5,
+            4
+         ]
+      },
+      {
+         "step": 3,
+         "text": "At \\( (\\frac{1}{4}, \\frac{5}{4}) \\) the slope is \\( \\frac{21}{16} \\), so \\( y \\approx \\frac{5}{4} + (\\frac{1}{4})(\\frac{21}{16}) = \\frac{101}{64} \\) at \\( x = \\frac{1}{2} \\).",
+         "mathjson": [
+            "Rational",
+            101,
+            64
+         ]
+      },
+      {
+         "step": 4,
+         "text": "So \\( f(\\frac{1}{2}) \\approx \\frac{101}{64} \\).",
+         "mathjson": [
+            "Rational",
+            101,
+            64
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Rational",
+            101,
+            64
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            23,
+            16
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-07021",
+         "violated_step": 2
+      },
+      {
+         "id": "C",
+         "value": [
+            "Rational",
+            3,
+            2
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-07019",
+         "violated_step": 0
+      },
+      {
+         "id": "D",
+         "value": [
+            "Rational",
+            353,
+            256
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-07020",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-07019",
+      "BC-SKL-07020",
+      "BC-SKL-07021",
+      "BC-SKL-07022",
+      "BC-SKL-07023"
+   ],
+   "parameter_draw": {
+      "dy_dx": "-x + y**2",
+      "x0": "0",
+      "y0": "1",
+      "target_x": "1/2",
+      "steps": 2,
+      "step_size": "1/4",
+      "difficulty_variables": {
+         "derivative_depends_on_both_variables": true,
+         "number_of_steps": 2,
+         "imported_from_earlier_part": false,
+         "direction_of_error_demanded": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

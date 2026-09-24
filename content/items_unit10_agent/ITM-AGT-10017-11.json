@@ -1,0 +1,237 @@
+{
+   "id": "ITM-AGT-10017-11",
+   "archetype_id": "BC-QA-10017",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = 3x \\sin\\left(2x\\right) \\). Find the coefficient of \\( x^{4} \\) in the Maclaurin series for \\( f \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": -4
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Recall \\( \\sin u = u - \\frac{u^{3}}{3!} + \\frac{u^{5}}{5!} - \\cdots \\).",
+         "mathjson": [
+            "Add",
+            "x",
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -1,
+                  6
+               ],
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  120
+               ],
+               [
+                  "Power",
+                  "x",
+                  5
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -1,
+                  5040
+               ],
+               [
+                  "Power",
+                  "x",
+                  7
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Substitute \\( u = 2x \\), raising the whole of \\( 2x \\) to each power: the series begins \\( 2x - \\frac{4}{3}x^{3} + \\frac{4}{15}x^{5} - \\frac{8}{315}x^{7} + \\cdots \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               2,
+               "x"
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -4,
+                  3
+               ],
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  4,
+                  15
+               ],
+               [
+                  "Power",
+                  "x",
+                  5
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -8,
+                  315
+               ],
+               [
+                  "Power",
+                  "x",
+                  7
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Multiply every term by \\( 3 x \\): \\( f(x) = 6x^{2} - 4x^{4} + \\frac{4}{5}x^{6} - \\frac{8}{105}x^{8} + \\cdots \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               6,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               -4,
+               [
+                  "Power",
+                  "x",
+                  4
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  4,
+                  5
+               ],
+               [
+                  "Power",
+                  "x",
+                  6
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -8,
+                  105
+               ],
+               [
+                  "Power",
+                  "x",
+                  8
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "The \\( x^{4} \\) term is \\( -4x^{4} \\), so the coefficient is \\( -4 \\).",
+         "mathjson": -4
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Rational",
+            -4,
+            3
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10041",
+         "violated_step": 2
+      },
+      {
+         "id": "B",
+         "value": 4,
+         "is_key": false,
+         "error_path": "BC-ERR-10040",
+         "violated_step": 0
+      },
+      {
+         "id": "C",
+         "value": -1,
+         "is_key": false,
+         "error_path": "BC-ERR-10041",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": -4,
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10061",
+      "BC-SKL-10062",
+      "BC-SKL-10063",
+      "BC-SKL-10064",
+      "BC-SKL-10065"
+   ],
+   "parameter_draw": {
+      "standard_series": "sin",
+      "constant_multiple": "3",
+      "power_of_x_multiplier": 1,
+      "inner_coefficient": "2",
+      "inner_power": 1,
+      "question": "coefficient",
+      "terms_or_power": 4,
+      "substitution_raises_powers": false,
+      "misremembered_variants": [
+         "signs wrong"
+      ]
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

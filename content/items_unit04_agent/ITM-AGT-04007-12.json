@@ -1,0 +1,108 @@
+{
+   "id": "ITM-AGT-04007-12",
+   "archetype_id": "BC-QA-04007",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "A particle moves along the curve \\( x^{3} + x y^{2} = 10 \\) so that its coordinates \\( x \\) and \\( y \\) are differentiable functions of time \\( t \\). At the instant the particle is at the point \\( (1, 3) \\), \\( \\frac{dy}{dt} = -2 \\) units per second. Find \\( \\frac{dx}{dt} \\), in units per second, at that instant."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 1
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Differentiate both sides of \\( x^{3} + x y^{2} = 10 \\) with respect to \\( t \\), using the product rule on the term that contains both variables: \\( \\left(3 x^{2} + y^{2}\\right)\\frac{dx}{dt} + \\left(2 x y\\right)\\frac{dy}{dt} = 0 \\).",
+         "mathjson": [
+            "Multiply",
+            2,
+            "x",
+            "y"
+         ]
+      },
+      {
+         "step": 2,
+         "text": "At \\( (1, 3) \\) the coefficient of \\( \\frac{dy}{dt} \\) is \\( 6 \\) and the coefficient of \\( \\frac{dx}{dt} \\) is \\( 12 \\). Substitute \\( \\frac{dy}{dt} = -2 \\): \\( (6)(-2) + (12)\\frac{dx}{dt} = 0 \\).",
+         "mathjson": -12
+      },
+      {
+         "step": 3,
+         "text": "Solve for the requested rate: \\( \\frac{dx}{dt} = 1 \\).",
+         "mathjson": 1
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 1,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": 0,
+         "is_key": false,
+         "error_path": "BC-ERR-04018",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": 4,
+         "is_key": false,
+         "error_path": "BC-ERR-04018",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": -2,
+         "is_key": false,
+         "error_path": "BC-ERR-04017",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-04022",
+      "BC-SKL-04019",
+      "BC-SKL-04020",
+      "BC-SKL-04023",
+      "BC-SKL-04024"
+   ],
+   "parameter_draw": {
+      "curve": "x**3 + x*y**2 = 10",
+      "point": [
+         1,
+         3
+      ],
+      "supplied_rate": "dy/dt = -2",
+      "requested_rate": "dx/dt",
+      "rate_stated_in_words_as_decreasing": false,
+      "difficulty_variables": {
+         "mixed_term_present": true,
+         "supplied_rate_negative": true
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

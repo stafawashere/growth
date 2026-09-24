@@ -110,3 +110,12 @@ over the real 130 once they exist. A clean run prints no per-item violation line
 each violation line names the item id, then the check type (`sympy_equivalence`, `numeric_probe`,
 `distractor_distinct`, or a gate-30 distractor-path violation) and what failed. The per-archetype
 count at the bottom is how the operator confirms exactly 10 per archetype.
+
+## Later banks [verified]
+
+The 130 P1 items live in content/items_p1_agent/. Stage 1 adds one bank per unit,
+content/items_unitNN_agent/, in the same record shape; its scope rule and the choices it settles
+(format-neutral stems, symbolic keys, inline LaTeX, per-archetype error paths) are in
+[items-units-4-to-10.md](items-units-4-to-10.md). Since 2026-09-24 `tools/check_items.py` checks
+each distractor's error_path against the errors held by that record's own archetype, not the
+union over the P1 archetypes, and prints a count for every archetype it reads.

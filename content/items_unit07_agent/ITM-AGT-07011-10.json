@@ -1,0 +1,153 @@
+{
+   "id": "ITM-AGT-07011-10",
+   "archetype_id": "BC-QA-07011",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( y = f(x) \\) be the particular solution to the differential equation \\( \\frac{dy}{dx} = 2\\left(1 + y^{2}\\right) \\) with \\( f(1) = 0 \\). The solution exists on a largest open interval \\( (a, b) \\) containing \\( x = 1 \\). Find \\( b \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Divide",
+            "Pi",
+            4
+         ],
+         1
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Separate and antidifferentiate: \\( \\arctan y = 2 x + C \\), so \\( y = \\tan(2 x + C) \\).",
+         "mathjson": [
+            "Multiply",
+            2,
+            "x"
+         ]
+      },
+      {
+         "step": 2,
+         "text": "At \\( x = 1 \\): \\( C = \\arctan(0) - 2 = -2 \\).",
+         "mathjson": -2
+      },
+      {
+         "step": 3,
+         "text": "The tangent is undefined where \\( 2 x + C = \\pm \\frac{\\pi}{2} \\), which gives the neighbours \\( x = 1 - \\frac{\\pi}{4} \\) and \\( x = \\frac{\\pi}{4} + 1 \\) of \\( x = 1 \\).",
+         "mathjson": [
+            "Add",
+            1,
+            [
+               "Negate",
+               [
+                  "Divide",
+                  "Pi",
+                  4
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "The interval containing \\( x = 1 \\) is \\( \\left(1 - \\frac{\\pi}{4}, \\frac{\\pi}{4} + 1\\right) \\), so \\( b = \\frac{\\pi}{4} + 1 \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Divide",
+               "Pi",
+               4
+            ],
+            1
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Divide",
+            "Pi",
+            2
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-07031",
+         "violated_step": 2
+      },
+      {
+         "id": "B",
+         "value": [
+            "Add",
+            [
+               "Divide",
+               "Pi",
+               4
+            ],
+            1
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            1,
+            [
+               "Negate",
+               [
+                  "Divide",
+                  "Pi",
+                  4
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-07031",
+         "violated_step": 3
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            1,
+            [
+               "Divide",
+               "Pi",
+               2
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99014",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-03",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-07030",
+      "BC-SKL-07031",
+      "BC-SKL-07032",
+      "BC-SKL-07038"
+   ],
+   "parameter_draw": {
+      "k": "2",
+      "x0": "1",
+      "y0": "0",
+      "difficulty_variables": {
+         "vertical_asymptote": true,
+         "absolute_value_resolved": false,
+         "accumulation_form": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

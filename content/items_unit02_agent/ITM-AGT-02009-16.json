@@ -1,0 +1,133 @@
+{
+   "id": "ITM-AGT-02009-16",
+   "archetype_id": "BC-QA-02009",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "A tank holds \\( V(t) \\) liters of water shared equally among \\( N(t) \\) animals, where \\( t \\) is measured in days. At \\( t = 3 \\), \\( V(3) = 50 \\), \\( V'(3) = -3 \\), \\( N(3) = 3 \\), and \\( N'(3) = 2 \\). The water per animal is \\( W(t) = \\frac{V(t)}{N(t)} \\) liters. Find the value of \\( W'(3) \\), in liters per animal per day."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         -109,
+         9
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Record the values at \\( t = 3 \\): \\( V(3) = 50 \\), \\( V'(3) = -3 \\), \\( N(3) = 3 \\), \\( N'(3) = 2 \\).",
+         "mathjson": -3
+      },
+      {
+         "step": 2,
+         "text": "By the quotient rule, \\( \\left(\\frac{V}{N}\\right)'(3) = \\frac{V'(3)N(3) - V(3)N'(3)}{[N(3)]^{2}} \\).",
+         "mathjson": 50
+      },
+      {
+         "step": 3,
+         "text": "Substitute: \\( \\frac{(-3)(3) - (50)(2)}{(3)^{2}} = \\frac{-109}{9} \\).",
+         "mathjson": [
+            "Rational",
+            -109,
+            9
+         ]
+      },
+      {
+         "step": 4,
+         "text": "So \\( W'(3) = - \\frac{109}{9} \\) liters per animal per day at \\( t = 3 \\).",
+         "mathjson": [
+            "Rational",
+            -109,
+            9
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Rational",
+            109,
+            9
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02021",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            -109,
+            9
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": [
+            "Rational",
+            -53,
+            3
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02024",
+         "violated_step": 2
+      },
+      {
+         "id": "D",
+         "value": [
+            "Rational",
+            -109,
+            3
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02022",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-03",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-05",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02037",
+      "BC-SKL-02041",
+      "BC-SKL-02017"
+   ],
+   "parameter_draw": {
+      "kind": "context_quotient",
+      "a": 3,
+      "values": {
+         "f": 50,
+         "f_prime": -3,
+         "g": 3,
+         "g_prime": 2
+      },
+      "names": [
+         "V",
+         "N"
+      ],
+      "extra_row_shown": false,
+      "difficulty_variables": {
+         "table against graphs": "table",
+         "product against quotient": "quotient",
+         "value read as a slope": false,
+         "interpreted in context": true
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

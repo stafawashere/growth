@@ -1,0 +1,133 @@
+{
+   "id": "ITM-AGT-02009-17",
+   "archetype_id": "BC-QA-02009",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "A tank holds \\( V(t) \\) liters of water shared equally among \\( N(t) \\) animals, where \\( t \\) is measured in days. At \\( t = 5 \\), \\( V(5) = 40 \\), \\( V'(5) = 18 \\), \\( N(5) = 7 \\), and \\( N'(5) = -1 \\). The water per animal is \\( W(t) = \\frac{V(t)}{N(t)} \\) liters. Find the value of \\( W'(5) \\), in liters per animal per day."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         166,
+         49
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Record the values at \\( t = 5 \\): \\( V(5) = 40 \\), \\( V'(5) = 18 \\), \\( N(5) = 7 \\), \\( N'(5) = -1 \\).",
+         "mathjson": 18
+      },
+      {
+         "step": 2,
+         "text": "By the quotient rule, \\( \\left(\\frac{V}{N}\\right)'(5) = \\frac{V'(5)N(5) - V(5)N'(5)}{[N(5)]^{2}} \\).",
+         "mathjson": 40
+      },
+      {
+         "step": 3,
+         "text": "Substitute: \\( \\frac{(18)(7) - (40)(-1)}{(7)^{2}} = \\frac{166}{49} \\).",
+         "mathjson": [
+            "Rational",
+            166,
+            49
+         ]
+      },
+      {
+         "step": 4,
+         "text": "So \\( W'(5) = \\frac{166}{49} \\) liters per animal per day at \\( t = 5 \\).",
+         "mathjson": [
+            "Rational",
+            166,
+            49
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Rational",
+            166,
+            49
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            320,
+            49
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02024",
+         "violated_step": 2
+      },
+      {
+         "id": "C",
+         "value": [
+            "Rational",
+            -166,
+            49
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02021",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": [
+            "Rational",
+            166,
+            7
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02022",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-03",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-05",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02037",
+      "BC-SKL-02041",
+      "BC-SKL-02017"
+   ],
+   "parameter_draw": {
+      "kind": "context_quotient",
+      "a": 5,
+      "values": {
+         "f": 40,
+         "f_prime": 18,
+         "g": 7,
+         "g_prime": -1
+      },
+      "names": [
+         "V",
+         "N"
+      ],
+      "extra_row_shown": false,
+      "difficulty_variables": {
+         "table against graphs": "table",
+         "product against quotient": "quotient",
+         "value read as a slope": false,
+         "interpreted in context": true
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

@@ -1,7 +1,9 @@
 """Operator command: the gate 29 worksheet for a drawn key-audit sample.
 
 Usage: python3 tools/key_audit_worksheet.py <sample.json> <out_worksheet.md> <out_verdicts.json>
-       [--items-dir DIR] [--content-root DIR]
+       [--items-dir DIR ...] [--content-root DIR]
+
+--items-dir may be given more than once; unset, every content/items_* bank is searched.
 
 docs/plan/10-quality-and-evaluation.md, "The audit": the operator solves each sampled item by hand,
 without seeing the key, against the archetype's expected_solution_path. The worksheet lists, per
@@ -22,7 +24,7 @@ import sympy
 from app.items.mathjson import to_sympy
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_ITEMS_DIR = REPO_ROOT / "content" / "items_p1_agent"
+CONTENT_DIR = REPO_ROOT / "content"
 DEFAULT_CONTENT_ROOT = REPO_ROOT / "data"
 
 
@@ -31,10 +33,29 @@ def parse_arguments(argv):
    parser.add_argument("sample")
    parser.add_argument("worksheet")
    parser.add_argument("verdicts")
-   parser.add_argument("--items-dir", default=str(DEFAULT_ITEMS_DIR))
+   parser.add_argument("--items-dir", action="append", dest="items_dirs")
    parser.add_argument("--content-root", default=str(DEFAULT_CONTENT_ROOT))
 
    return parser.parse_args(argv)
+
+
+def bank_directories(named):
+   is_named = named is not None and len(named) > 0
+
+   if is_named:
+      return [Path(directory) for directory in named]
+
+   return sorted(path for path in CONTENT_DIR.glob("items_*") if path.is_dir())
+
+
+def record_path(item_id, directories):
+   for directory in directories:
+      candidate = directory / f"{item_id}.json"
+
+      if candidate.is_file():
+         return candidate
+
+   return None
 
 
 def option_text(value):
@@ -73,16 +94,17 @@ def item_section(record, archetype):
 def main(argv):
    arguments = parse_arguments(argv[1:])
    sample = json.loads(Path(arguments.sample).read_text())
-   items_dir = Path(arguments.items_dir)
+   directories = bank_directories(arguments.items_dirs)
    archetypes = {
       record["id"]: record
       for record in json.loads((Path(arguments.content_root) / "archetypes.json").read_text())["archetypes"]
    }
-   missing = [item_id for item_id in sample if not (items_dir / f"{item_id}.json").is_file()]
+   missing = [item_id for item_id in sample if record_path(item_id, directories) is None]
    has_missing = len(missing) > 0
 
    if has_missing:
-      print(f"no record in {items_dir} for {', '.join(missing)}; nothing was written", file=sys.stderr)
+      searched = ", ".join(str(directory) for directory in directories)
+      print(f"no record in {searched} for {', '.join(missing)}; nothing was written", file=sys.stderr)
 
       return 1
 
@@ -94,7 +116,7 @@ def main(argv):
    ]
 
    for item_id in sample:
-      record = json.loads((items_dir / f"{item_id}.json").read_text())
+      record = json.loads(record_path(item_id, directories).read_text())
       lines.extend(item_section(record, archetypes.get(record["archetype_id"], {})))
 
    template = [

@@ -1,0 +1,388 @@
+{
+   "id": "ITM-AGT-10012-05",
+   "archetype_id": "BC-QA-10012",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "The third-degree Taylor polynomial for \\( f \\) about \\( x = 0 \\) is \\( 3 + x - 2x^{2} + 5x^{3} \\). Let \\( g(x) = \\sin(2x) f(x) \\). Find the third-degree Taylor polynomial for \\( g \\) about \\( x = 0 \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Multiply",
+            6,
+            "x"
+         ],
+         [
+            "Multiply",
+            2,
+            [
+               "Power",
+               "x",
+               2
+            ]
+         ],
+         [
+            "Multiply",
+            -8,
+            [
+               "Power",
+               "x",
+               3
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Start from \\( \\sin u = u - \\frac{u^{3}}{3!} + \\frac{u^{5}}{5!} - \\cdots \\). Replace \\( u \\) by \\( 2x \\), raising the whole of \\( 2x \\) to each power. Through degree 3, \\( \\sin(2x) \\approx 2x - \\frac{4}{3}x^{3} \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               2,
+               "x"
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -4,
+                  3
+               ],
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Multiply by \\( 3 + x - 2x^{2} + 5x^{3} \\): the product is \\( 6x + 2x^{2} - 8x^{3} + \\frac{26}{3}x^{4} + \\frac{8}{3}x^{5} - \\frac{20}{3}x^{6} \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               6,
+               "x"
+            ],
+            [
+               "Multiply",
+               2,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               -8,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  26,
+                  3
+               ],
+               [
+                  "Power",
+                  "x",
+                  4
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  8,
+                  3
+               ],
+               [
+                  "Power",
+                  "x",
+                  5
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -20,
+                  3
+               ],
+               [
+                  "Power",
+                  "x",
+                  6
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The coefficients of the Taylor polynomial for \\( g \\) are those of the product through \\( x^{3} \\); the factorials are already inside the series coefficients.",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               6,
+               "x"
+            ],
+            [
+               "Multiply",
+               2,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               -8,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Drop every power above 3: \\( 6x + 2x^{2} - 8x^{3} \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               6,
+               "x"
+            ],
+            [
+               "Multiply",
+               2,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               -8,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               6,
+               "x"
+            ],
+            [
+               "Multiply",
+               2,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10040",
+         "violated_step": 0
+      },
+      {
+         "id": "B",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               6,
+               "x"
+            ],
+            [
+               "Multiply",
+               2,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               -5,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10041",
+         "violated_step": 0
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               6,
+               "x"
+            ],
+            [
+               "Multiply",
+               2,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               -8,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  26,
+                  3
+               ],
+               [
+                  "Power",
+                  "x",
+                  4
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  8,
+                  3
+               ],
+               [
+                  "Power",
+                  "x",
+                  5
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -20,
+                  3
+               ],
+               [
+                  "Power",
+                  "x",
+                  6
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10030",
+         "violated_step": 3
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               6,
+               "x"
+            ],
+            [
+               "Multiply",
+               2,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               -8,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10046",
+      "BC-SKL-10047",
+      "BC-SKL-10048",
+      "BC-SKL-10061",
+      "BC-SKL-10065"
+   ],
+   "parameter_draw": {
+      "defining_relation": "g(x) = h(x) f(x) with h = sin(2*x)",
+      "known_series": "sin",
+      "substitution_factor": "2",
+      "f_polynomial": {
+         "0": "3",
+         "1": "1",
+         "2": "-2",
+         "3": "5"
+      },
+      "centre": 0,
+      "degree_requested": 3,
+      "route": "multiply known series",
+      "misremembered_variants": [
+         "signs wrong"
+      ]
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

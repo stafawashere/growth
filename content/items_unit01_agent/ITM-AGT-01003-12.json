@@ -1,0 +1,130 @@
+{
+   "id": "ITM-AGT-01003-12",
+   "archetype_id": "BC-QA-01003",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "The functions \\( f \\) and \\( h \\) are continuous for all real numbers. The function \\( g \\) is continuous except at \\( x = 2 \\), where \\( \\lim_{x \\to 2^-} g(x) = 1 \\) and \\( \\lim_{x \\to 2^+} g(x) = 4 \\). The known values are \\( f(0) = 1 \\), \\( f(1) = 1 \\), \\( f(2) = 3 \\), \\( f(3) = 4 \\), \\( f(4) = 2 \\), \\( g(0) = 4 \\), \\( g(1) = 4 \\), \\( g(3) = 0 \\), \\( g(4) = 4 \\), \\( h(0) = 3 \\), \\( h(1) = 4 \\), \\( h(2) = 4 \\), \\( h(3) = 1 \\), \\( h(4) = 2 \\). Find the value of \\( \\lim_{x \\to 2^+} \\left[ 3h(f(x)) + 2g(h(x)) + 3f(g(x)) \\right] \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 17
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Record the limits. As \\( x \\to 2^+ \\), \\( g(x) \\to 4 \\), and \\( f \\) and \\( h \\) are continuous, so their limits are their values at 2.",
+         "mathjson": 4
+      },
+      {
+         "step": 2,
+         "text": "The expression is a sum of constant multiples of three composites. In each composite the outer function is continuous at the limit of the inner one, so \\( \\lim_{x \\to 2^+} h(f(x)) = h(3) = 1 \\), \\( \\lim_{x \\to 2^+} g(h(x)) = g(4) = 4 \\), \\( \\lim_{x \\to 2^+} f(g(x)) = f(4) = 2 \\).",
+         "mathjson": 1
+      },
+      {
+         "step": 3,
+         "text": "Apply the sum and constant multiple theorems: \\( (3)(1) + (2)(4) + (3)(2) = 17 \\).",
+         "mathjson": 17
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 20,
+         "is_key": false,
+         "error_path": "BC-ERR-01007",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": 13,
+         "is_key": false,
+         "error_path": "BC-ERR-01007",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": 17,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": 11,
+         "is_key": false,
+         "error_path": "BC-ERR-01007",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-09",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-10",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-01018",
+      "BC-SKL-01019",
+      "BC-SKL-01020",
+      "BC-SKL-01022"
+   ],
+   "parameter_draw": {
+      "structure": "onesided",
+      "a": 2,
+      "side": "+",
+      "composites": [
+         "h(f(x))",
+         "g(h(x))",
+         "f(g(x))"
+      ],
+      "coefficients": [
+         3,
+         2,
+         3
+      ],
+      "tables": {
+         "f": {
+            "0": 1,
+            "1": 1,
+            "2": 3,
+            "3": 4,
+            "4": 2
+         },
+         "g": {
+            "0": 4,
+            "1": 4,
+            "3": 0,
+            "4": 4
+         },
+         "h": {
+            "0": 3,
+            "1": 4,
+            "2": 4,
+            "3": 1,
+            "4": 2
+         }
+      },
+      "jump_limits": [
+         1,
+         4
+      ],
+      "difficulty_variables": {
+         "denominator limit zero": false,
+         "composite involved": true,
+         "one sided limit supplied": true
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

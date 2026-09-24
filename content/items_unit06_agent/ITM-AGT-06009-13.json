@@ -1,0 +1,191 @@
+{
+   "id": "ITM-AGT-06009-13",
+   "archetype_id": "BC-QA-06009",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Find the exact value of \\( \\int_{0}^{\\frac{\\pi}{4}} x \\cos{\\left(2 x \\right)} \\, dx \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Rational",
+            -1,
+            4
+         ],
+         [
+            "Divide",
+            "Pi",
+            8
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Let \\( u = x \\) and \\( dv = \\cos{\\left(2 x \\right)} \\, dx \\), so \\( du = dx \\) and \\( v = \\frac{\\sin{\\left(2 x \\right)}}{2} \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Sin",
+               [
+                  "Multiply",
+                  2,
+                  "x"
+               ]
+            ],
+            2
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Then the integral equals \\( \\left[\\frac{x \\sin{\\left(2 x \\right)}}{2}\\right]_{0}^{\\frac{\\pi}{4}} - \\int_{0}^{\\frac{\\pi}{4}} \\frac{\\sin{\\left(2 x \\right)}}{2} \\, dx \\), and the boundary term is \\( \\frac{\\pi}{8} \\).",
+         "mathjson": [
+            "Divide",
+            "Pi",
+            8
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The remaining integral is \\( \\int_{0}^{\\frac{\\pi}{4}} \\frac{\\sin{\\left(2 x \\right)}}{2} \\, dx = \\frac{1}{4} \\).",
+         "mathjson": [
+            "Rational",
+            1,
+            4
+         ]
+      },
+      {
+         "step": 4,
+         "text": "So the value is \\( \\frac{\\pi}{8} - \\left(\\frac{1}{4}\\right) = - \\frac{1}{4} + \\frac{\\pi}{8} \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Rational",
+               -1,
+               4
+            ],
+            [
+               "Divide",
+               "Pi",
+               8
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Divide",
+            [
+               "Power",
+               "Pi",
+               2
+            ],
+            64
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06022",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Add",
+            [
+               "Rational",
+               1,
+               4
+            ],
+            [
+               "Divide",
+               "Pi",
+               8
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06023",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Rational",
+            -1,
+            4
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99025",
+         "violated_step": 3
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            [
+               "Rational",
+               -1,
+               4
+            ],
+            [
+               "Divide",
+               "Pi",
+               8
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06057",
+      "BC-SKL-06058",
+      "BC-SKL-06059",
+      "BC-SKL-06060",
+      "BC-SKL-06061",
+      "BC-SKL-06034"
+   ],
+   "parameter_draw": {
+      "integrand": "x*cos(2*x)",
+      "u": "x",
+      "dv": "cos(2*x)",
+      "limits": [
+         "0",
+         "pi/4"
+      ],
+      "difficulty_variables": {
+         "whether parts must be applied more than once": "no",
+         "definite versus indefinite": "definite",
+         "whether the non polynomial factor is trigonometric, exponential, or logarithmic": "trigonometric",
+         "whether the integrand contains an unknown function and its derivative": "no",
+         "whether supplied values of the unknown function must be imported": "no"
+      },
+      "distractor_derivations": {
+         "A": "antiderivatives x**2/2 and sin(2*x)/2 multiplied and evaluated from 0 to pi/4",
+         "B": "boundary term plus the remaining integral instead of minus",
+         "C": "boundary term [uv] left out, only minus the remaining integral kept"
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

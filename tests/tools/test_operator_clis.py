@@ -119,6 +119,22 @@ def test_check_items_counts_per_archetype():
       assert f"{archetype_id}: {count}" in result.stdout
 
 
+def test_check_items_rejects_an_error_path_held_only_by_another_archetype(tmp_path):
+   """BC-ERR-02015 is held by a skill of BC-QA-02006, a P1 archetype, but by none of BC-QA-01004's
+   skills, so a BC-QA-01004 distractor citing it names an error its own archetype cannot produce."""
+   record = json.loads((REPOSITORY_ROOT / "content" / "items_p1_agent" / "ITM-AGT-01004-00.json").read_text())
+   distractor = next(option for option in record["options"] if option["is_key"] is False)
+   distractor["error_path"] = "BC-ERR-02015"
+   directory = tmp_path / "foreign_error"
+   directory.mkdir()
+   (directory / "ITM-AGT-01004-00.json").write_text(json.dumps(record))
+
+   result = run_check_items(directory)
+
+   assert result.returncode == 1, result.stdout
+   assert "BC-ERR-02015" in result.stdout
+
+
 def test_check_verdicts_reports_a_missing_verdict_and_exits_one(tmp_path):
    sample_ids = ["ITM-TEST-0001", "ITM-TEST-0002", "ITM-TEST-0003"]
    verdicts = [

@@ -1,0 +1,147 @@
+{
+   "id": "ITM-AGT-01009-06",
+   "archetype_id": "BC-QA-01009",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = \\frac{\\left(x^{2} + 3 x - 10\\right)\\left(x^{2} + 5 x + 6\\right)}{\\left(x^{2} + x - 6\\right)\\left(x^{2} + 2 x - 15\\right)} \\). The graph of \\( f \\) has exactly one vertical asymptote, the line \\( x = c \\). Find the value of \\( c \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 3
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The numerator factors as \\( \\left(x - 2\\right) \\left(x + 2\\right) \\left(x + 3\\right) \\left(x + 5\\right) \\) and the denominator as \\( \\left(x - 3\\right) \\left(x - 2\\right) \\left(x + 3\\right) \\left(x + 5\\right) \\).",
+         "mathjson": [
+            "Multiply",
+            [
+               "Subtract",
+               "x",
+               2
+            ],
+            [
+               "Add",
+               "x",
+               3
+            ],
+            [
+               "Add",
+               "x",
+               5
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The factors at \\( x = -5 \\), \\( x = -3 \\), and \\( x = 2 \\) divide out, so \\( f(x) = \\frac{x + 2}{x - 3} \\) for \\( x \\neq -5, -3, 2 \\). Those three inputs are removable discontinuities, not asymptotes.",
+         "mathjson": [
+            "Divide",
+            [
+               "Add",
+               "x",
+               2
+            ],
+            [
+               "Subtract",
+               "x",
+               3
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "After cancelling, the denominator is zero only at \\( x = 3 \\), and the numerator is not zero there.",
+         "mathjson": 3
+      },
+      {
+         "step": 4,
+         "text": "The one sided limits are \\( \\lim_{x \\to 3^-} f(x) = -\\infty \\) and \\( \\lim_{x \\to 3^+} f(x) = \\infty \\).",
+         "mathjson": 3
+      },
+      {
+         "step": 5,
+         "text": "So the line \\( x = 3 \\) is the only vertical asymptote, and \\( c = 3 \\).",
+         "mathjson": 3
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": -5,
+         "is_key": false,
+         "error_path": "BC-ERR-01018",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": -3,
+         "is_key": false,
+         "error_path": "BC-ERR-01018",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": 3,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": 2,
+         "is_key": false,
+         "error_path": "BC-ERR-01018",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-04",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-10",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-01054",
+      "BC-SKL-01055",
+      "BC-SKL-01056",
+      "BC-SKL-01041"
+   ],
+   "parameter_draw": {
+      "variant": "simple",
+      "cancelled_zeros": [
+         -5,
+         -3,
+         2
+      ],
+      "asymptote": 3,
+      "numerator_only_zero": -2,
+      "numerator_constant": null,
+      "difficulty_variables": {
+         "factor cancels": true,
+         "sides same sign": false,
+         "logarithmic asymptote": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

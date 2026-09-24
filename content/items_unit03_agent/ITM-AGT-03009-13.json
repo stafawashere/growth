@@ -1,0 +1,193 @@
+{
+   "id": "ITM-AGT-03009-13",
+   "archetype_id": "BC-QA-03009",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = 2^{x}\\,\\left(1 + \\sin(2x)\\right)^{3} \\). Find the value of \\( f'(0) \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Ln",
+            2
+         ],
+         6
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The outermost operation is a product of \\( 2^{x} \\) and \\( \\left(1 + \\sin(2x)\\right)^{3} \\), so the product rule comes first: \\( f'(x) = \\left(2^{x}\\right)'\\,\\left(1 + \\sin(2x)\\right)^{3} + 2^{x}\\left(\\left(1 + \\sin(2x)\\right)^{3}\\right)' \\).",
+         "mathjson": [
+            "Multiply",
+            [
+               "Power",
+               2,
+               "x"
+            ],
+            [
+               "Power",
+               [
+                  "Add",
+                  [
+                     "Sin",
+                     [
+                        "Multiply",
+                        2,
+                        "x"
+                     ]
+                  ],
+                  1
+               ],
+               3
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "\\( 2^{x} \\) is an exponential function with a constant base, so its derivative is \\( 2^{x} \\ln{\\left(2 \\right)} \\); the power rule does not apply to it.",
+         "mathjson": [
+            "Multiply",
+            [
+               "Power",
+               2,
+               "x"
+            ],
+            [
+               "Ln",
+               2
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The factor \\( \\left(1 + \\sin(2x)\\right)^{3} \\) is a cube of \\( 1 + \\sin(2x) \\), which contains a sine of \\( 2x \\), so apply the chain rule from the outside inward: \\( \\left(\\left(1 + \\sin(2x)\\right)^{3}\\right)' = 6 \\left(\\sin{\\left(2 x \\right)} + 1\\right)^{2} \\cos{\\left(2 x \\right)} \\).",
+         "mathjson": [
+            "Multiply",
+            6,
+            [
+               "Power",
+               [
+                  "Add",
+                  [
+                     "Sin",
+                     [
+                        "Multiply",
+                        2,
+                        "x"
+                     ]
+                  ],
+                  1
+               ],
+               2
+            ],
+            [
+               "Cos",
+               [
+                  "Multiply",
+                  2,
+                  "x"
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Assemble the product rule and evaluate at \\( x = 0 \\): \\( f'(0) = \\ln{\\left(2 \\right)} + 6 \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Ln",
+               2
+            ],
+            6
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Ln",
+            64
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03006",
+         "violated_step": 0
+      },
+      {
+         "id": "B",
+         "value": 6,
+         "is_key": false,
+         "error_path": "BC-ERR-99036",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            [
+               "Ln",
+               2
+            ],
+            6
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            [
+               "Ln",
+               2
+            ],
+            3
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03002",
+         "violated_step": 2
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-03026",
+      "BC-SKL-03027",
+      "BC-SKL-03028",
+      "BC-SKL-03029",
+      "BC-SKL-03006"
+   ],
+   "parameter_draw": {
+      "exponential_base": "2",
+      "composite": "cube_1_sin2x",
+      "structure": "product",
+      "answer_mode": "value",
+      "difficulty_variables": {
+         "algebraic rewrite available": false,
+         "rules needed": [
+            "product",
+            "exponential",
+            "chain (three layers)"
+         ],
+         "surface resembles another family": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

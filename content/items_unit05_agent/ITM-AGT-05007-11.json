@@ -1,0 +1,118 @@
+{
+   "id": "ITM-AGT-05007-11",
+   "archetype_id": "BC-QA-05007",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( y = h(x) \\) be a solution of the differential equation \\( \\frac{dy}{dx} = x^{3} + 2 x^{2} - 15 x \\), defined for \\( -1 < x < 4 \\). Find the value of \\( x \\) at which \\( h \\) has a relative minimum."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 3
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The differential equation gives the derivative directly: \\( h'(x) = x^{3} + 2 x^{2} - 15 x \\) for \\( -1 < x < 4 \\).",
+         "mathjson": [
+            "Multiply",
+            "x",
+            [
+               "Add",
+               "x",
+               -3
+            ],
+            [
+               "Add",
+               "x",
+               5
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Set \\( h'(x) = 0 \\) and factor: \\( x(x + 5)(x - 3) = 0 \\), so \\( x = -5, 0, 3 \\).",
+         "mathjson": 3
+      },
+      {
+         "step": 3,
+         "text": "Only \\( x = 0 \\) and \\( x = 3 \\) lie in \\( -1 < x < 4 \\); \\( x = -5 \\) is outside the interval on which \\( h \\) is defined, so it is not a critical point of \\( h \\).",
+         "mathjson": 3
+      },
+      {
+         "step": 4,
+         "text": "\\( h' \\) changes from negative to positive at \\( x = 3 \\) and from positive to negative at \\( x = 0 \\), so \\( h \\) has its relative minimum at \\( x = 3 \\).",
+         "mathjson": 3
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": -5,
+         "is_key": false,
+         "error_path": "BC-ERR-05010",
+         "violated_step": 2
+      },
+      {
+         "id": "B",
+         "value": 3,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": 0,
+         "is_key": false,
+         "error_path": "BC-ERR-05021",
+         "violated_step": 3
+      },
+      {
+         "id": "D",
+         "value": [
+            "Rational",
+            5,
+            3
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-05022",
+         "violated_step": 3
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-05010",
+      "BC-SKL-05020",
+      "BC-SKL-05039"
+   ],
+   "parameter_draw": {
+      "given_object": "differential equation",
+      "derivative": "t*(t - 3)*(t + 5)",
+      "shown_form": "expanded",
+      "interval": [
+         "-1",
+         "4"
+      ],
+      "asked": "relative minimum",
+      "lower_limit": null,
+      "zero_outside_interval": "-5",
+      "difficulty_variables": {
+         "given_object_is_differential_equation": true,
+         "classification_by": "sign change",
+         "factoring_needed": true
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

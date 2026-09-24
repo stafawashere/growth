@@ -1,0 +1,177 @@
+{
+   "id": "ITM-AGT-99003-15",
+   "archetype_id": "BC-QA-99003",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "A curve is given by the polar equation \\( r = 3 - 2\\cos\\theta \\). Find the exact slope of the line tangent to the curve at the point where \\( \\theta = \\frac{\\pi}{3} \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Negate",
+         [
+            "Divide",
+            [
+               "Multiply",
+               5,
+               [
+                  "Sqrt",
+                  3
+               ]
+            ],
+            3
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Write the Cartesian coordinates in terms of \\( \\theta \\): \\( x = r\\cos\\theta = \\left(3 - 2\\cos\\theta\\right)\\cos\\theta \\) and \\( y = r\\sin\\theta = \\left(3 - 2\\cos\\theta\\right)\\sin\\theta \\). At \\( \\theta = \\frac{\\pi}{3} \\), \\( r = 2 \\).",
+         "mathjson": 2
+      },
+      {
+         "step": 2,
+         "text": "Differentiate each product with respect to \\( \\theta \\): \\( \\frac{dx}{d\\theta} = \\frac{dr}{d\\theta}\\cos\\theta - r\\sin\\theta \\) and \\( \\frac{dy}{d\\theta} = \\frac{dr}{d\\theta}\\sin\\theta + r\\cos\\theta \\), where \\( \\frac{dr}{d\\theta} = 2 \\sin{\\left(\\theta \\right)} \\), which is \\( \\sqrt{3} \\) at \\( \\theta = \\frac{\\pi}{3} \\).",
+         "mathjson": [
+            "Sqrt",
+            3
+         ]
+      },
+      {
+         "step": 3,
+         "text": "At \\( \\theta = \\frac{\\pi}{3} \\): \\( \\frac{dx}{d\\theta} = - \\frac{\\sqrt{3}}{2} \\) and \\( \\frac{dy}{d\\theta} = \\frac{5}{2} \\).",
+         "mathjson": [
+            "Rational",
+            5,
+            2
+         ]
+      },
+      {
+         "step": 4,
+         "text": "The slope is \\( \\frac{dy}{dx} = \\frac{dy/d\\theta}{dx/d\\theta} = - \\frac{5 \\sqrt{3}}{3} \\).",
+         "mathjson": [
+            "Negate",
+            [
+               "Divide",
+               [
+                  "Multiply",
+                  5,
+                  [
+                     "Sqrt",
+                     3
+                  ]
+               ],
+               3
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Sqrt",
+            3
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-09031",
+         "violated_step": 3
+      },
+      {
+         "id": "B",
+         "value": [
+            "Negate",
+            [
+               "Divide",
+               [
+                  "Sqrt",
+                  3
+               ],
+               3
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-09032",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Negate",
+            [
+               "Divide",
+               [
+                  "Multiply",
+                  5,
+                  [
+                     "Sqrt",
+                     3
+                  ]
+               ],
+               3
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": [
+            "Negate",
+            [
+               "Divide",
+               [
+                  "Sqrt",
+                  3
+               ],
+               5
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99031",
+         "violated_step": 3
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-13",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-04",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-09030",
+      "BC-SKL-09031",
+      "BC-SKL-09029",
+      "BC-SKL-09033"
+   ],
+   "parameter_draw": {
+      "polar_equation": "r = 3 - 2*cos(theta)",
+      "angle": "pi/3",
+      "r_at_angle": "2",
+      "dr_dtheta_at_angle": "sqrt(3)",
+      "difficulty_variables": {
+         "angle_makes_one_derivative_vanish": false,
+         "derivative_of_r_supplied": false,
+         "calculator_available": false,
+         "inner_chain_rule_in_r": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

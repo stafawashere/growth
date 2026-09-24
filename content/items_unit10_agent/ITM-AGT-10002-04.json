@@ -1,0 +1,124 @@
+{
+   "id": "ITM-AGT-10002-04",
+   "archetype_id": "BC-QA-10002",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Find the exact value of \\( \\sum_{n=2}^{\\infty} \\frac{5}{4^{n}} \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         5,
+         12
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Dividing consecutive terms gives the constant quotient \\( r = \\frac{1}{4} \\), so the series is geometric, and \\( |r| < 1 \\).",
+         "mathjson": [
+            "Rational",
+            1,
+            4
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The series starts at \\( n = 2 \\), so the first term is \\( a = \\frac{5}{16} \\).",
+         "mathjson": [
+            "Rational",
+            5,
+            16
+         ]
+      },
+      {
+         "step": 3,
+         "text": "A convergent geometric series equals \\( \\frac{a}{1 - r} = \\frac{\\frac{5}{16}}{1 - \\left(\\frac{1}{4}\\right)} \\).",
+         "mathjson": [
+            "Rational",
+            5,
+            12
+         ]
+      },
+      {
+         "step": 4,
+         "text": "The value of the series is \\( \\frac{5}{12} \\).",
+         "mathjson": [
+            "Rational",
+            5,
+            12
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Rational",
+            5,
+            12
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            20,
+            3
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10006",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Rational",
+            105,
+            256
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99038",
+         "violated_step": 2
+      },
+      {
+         "id": "D",
+         "value": 0,
+         "is_key": false,
+         "error_path": "BC-ERR-10001",
+         "violated_step": 2
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10002",
+      "BC-SKL-10003",
+      "BC-SKL-10004",
+      "BC-SKL-10008",
+      "BC-SKL-10066"
+   ],
+   "parameter_draw": {
+      "general_term": "\\frac{5}{4^{n}}",
+      "start": 2,
+      "ratio": "1/4",
+      "difficulty_variables": {
+         "structure": "geometric",
+         "starts_at_index_zero": false,
+         "from_taylor_series_at_point": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

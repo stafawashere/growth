@@ -1,0 +1,292 @@
+{
+   "id": "ITM-AGT-10010-12",
+   "archetype_id": "BC-QA-10010",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f \\) be the function that satisfies \\( f''(x) = x f'(x) + \\left(f(x)\\right)^{2} \\), with \\( f(0) = 1 \\) and \\( f'(0) = 2 \\). Find the third-degree Taylor polynomial for \\( f \\) about \\( x = 0 \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         1,
+         [
+            "Multiply",
+            2,
+            "x"
+         ],
+         [
+            "Multiply",
+            [
+               "Rational",
+               1,
+               2
+            ],
+            [
+               "Power",
+               "x",
+               2
+            ]
+         ],
+         [
+            "Power",
+            "x",
+            3
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Differentiate the relation, using the product rule and the chain rule on each term that holds \\( f \\): \\( f''' = 2 f f' + f' + f'' x \\).",
+         "mathjson": 1
+      },
+      {
+         "step": 2,
+         "text": "Evaluate in order at \\( x = 0 \\), feeding each value into the next: \\( f''(0) = 1 \\), \\( f'''(0) = 6 \\).",
+         "mathjson": 6
+      },
+      {
+         "step": 3,
+         "text": "Divide each value by the matching factorial: \\( \\frac{1}{0!} = 1 \\), \\( \\frac{2}{1!} = 2 \\), \\( \\frac{1}{2!} = \\frac{1}{2} \\), \\( \\frac{6}{3!} = 1 \\).",
+         "mathjson": [
+            "Add",
+            1,
+            [
+               "Multiply",
+               2,
+               "x"
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Power",
+               "x",
+               3
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Stop at degree 3: \\( P_{3}(x) = 1 + 2x + \\frac{1}{2}x^{2} + x^{3} \\).",
+         "mathjson": [
+            "Add",
+            1,
+            [
+               "Multiply",
+               2,
+               "x"
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Power",
+               "x",
+               3
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            1,
+            [
+               "Multiply",
+               2,
+               "x"
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Power",
+               "x",
+               3
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": [
+            "Add",
+            1,
+            [
+               "Multiply",
+               2,
+               "x"
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  2,
+                  3
+               ],
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10028",
+         "violated_step": 0
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            1,
+            [
+               "Multiply",
+               2,
+               "x"
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Power",
+               "x",
+               3
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  4
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10030",
+         "violated_step": 3
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            1,
+            [
+               "Multiply",
+               2,
+               "x"
+            ],
+            [
+               "Power",
+               "x",
+               2
+            ],
+            [
+               "Multiply",
+               6,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10029",
+         "violated_step": 2
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10043",
+      "BC-SKL-10044",
+      "BC-SKL-10046"
+   ],
+   "parameter_draw": {
+      "centre": 0,
+      "initial_values": [
+         "1",
+         "2"
+      ],
+      "relation": "f'' = f**2 + f'*x",
+      "order_requested": 3,
+      "differentiations_needed": 1,
+      "product_rule_needed": true,
+      "coefficients_that_vanish": [],
+      "distractor_error_mode": "chain"
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

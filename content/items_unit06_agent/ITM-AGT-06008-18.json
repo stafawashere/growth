@@ -1,0 +1,185 @@
+{
+   "id": "ITM-AGT-06008-18",
+   "archetype_id": "BC-QA-06008",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let F be the antiderivative of \\( f(x) = x \\left(1 - x^{2}\\right)^{4} \\) with \\( F(0) = 1 \\). Find the exact value of \\( F\\left(1\\right) \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         11,
+         10
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Let \\( u = 1 - x^{2} \\).",
+         "mathjson": [
+            "Add",
+            1,
+            [
+               "Negate",
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Then \\( du = - 2 x \\, dx \\), so \\( x \\, dx = - \\frac{1}{2} \\, du \\).",
+         "mathjson": [
+            "Rational",
+            -1,
+            2
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Since \\( F(1) = F(0) + \\int_{0}^{1} x \\left(1 - x^{2}\\right)^{4} \\, dx \\), convert the limits: \\( x = 0 \\) gives \\( u = 1 \\) and \\( x = 1 \\) gives \\( u = 0 \\), so the integral becomes \\( \\int_{1}^{0} - \\frac{u^{4}}{2} \\, du \\).",
+         "mathjson": [
+            "Negate",
+            [
+               "Divide",
+               [
+                  "Power",
+                  "u",
+                  4
+               ],
+               2
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "An antiderivative of \\( - \\frac{u^{4}}{2} \\) is \\( - \\frac{u^{5}}{10} \\).",
+         "mathjson": [
+            "Negate",
+            [
+               "Divide",
+               [
+                  "Power",
+                  "u",
+                  5
+               ],
+               10
+            ]
+         ]
+      },
+      {
+         "step": 5,
+         "text": "The integral is \\( 0 - \\left(- \\frac{1}{10}\\right) = \\frac{1}{10} \\), so \\( F(1) = 1 + \\frac{1}{10} = \\frac{11}{10} \\).",
+         "mathjson": [
+            "Rational",
+            11,
+            10
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Rational",
+            4,
+            5
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06019",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            9,
+            10
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06018",
+         "violated_step": 4
+      },
+      {
+         "id": "C",
+         "value": 0,
+         "is_key": false,
+         "error_path": "BC-ERR-07026",
+         "violated_step": 3
+      },
+      {
+         "id": "D",
+         "value": [
+            "Rational",
+            11,
+            10
+         ],
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-11",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06047",
+      "BC-SKL-06048",
+      "BC-SKL-06049",
+      "BC-SKL-06050",
+      "BC-SKL-06051",
+      "BC-SKL-06052",
+      "BC-SKL-06034"
+   ],
+   "parameter_draw": {
+      "form": "pinned antiderivative value",
+      "integrand": "x*(1 - x**2)**4",
+      "inner_u": "1 - x**2",
+      "du_constant_k": "-2",
+      "limits": [
+         "0",
+         "1"
+      ],
+      "u_limits": [
+         "1",
+         "0"
+      ],
+      "difficulty_variables": {
+         "whether a constant adjustment is needed": "yes",
+         "whether the answer is logarithmic, exponential, trigonometric, or a power": "power",
+         "definite versus indefinite": "antiderivative pinned by an initial value",
+         "whether the limits must be converted": "yes",
+         "whether the substitution is disguised by a prior rearrangement": "no"
+      },
+      "F_at_a": "1",
+      "distractor_derivations": {
+         "A": "substitution carried out as if x dx = du, without the constant 1/(-2)",
+         "B": "antiderivative in u evaluated at the original x limits 0 and 1",
+         "C": "antiderivative -(1 - x**2)**5/10 written with no constant and evaluated at x = 1, ignoring F(0)"
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

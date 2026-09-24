@@ -1,0 +1,281 @@
+{
+   "id": "ITM-AGT-10003-13",
+   "archetype_id": "BC-QA-10003",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "For \\( |x - 1| < 5 \\), the series \\( \\sum_{n=1}^{\\infty} \\frac{2(x-1)^{n}}{5^{n}} \\) converges. Find its sum as an expression in \\( x \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Divide",
+         [
+            "Multiply",
+            2,
+            [
+               "Add",
+               "x",
+               -1
+            ]
+         ],
+         [
+            "Add",
+            6,
+            [
+               "Negate",
+               "x"
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Dividing consecutive terms gives the constant ratio \\( r = \\frac{x}{5} - \\frac{1}{5} \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Divide",
+               "x",
+               5
+            ],
+            [
+               "Rational",
+               -1,
+               5
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The series as written starts at \\( n = 1 \\), so its first term is \\( a = \\frac{2 x}{5} - \\frac{2}{5} \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Divide",
+               [
+                  "Multiply",
+                  2,
+                  "x"
+               ],
+               5
+            ],
+            [
+               "Rational",
+               -2,
+               5
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The closed form needs \\( |r| < 1 \\), which holds because \\( |x - 1| < 5 \\) is given.",
+         "mathjson": [
+            "Add",
+            [
+               "Divide",
+               "x",
+               5
+            ],
+            [
+               "Rational",
+               -1,
+               5
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "The sum is \\( \\frac{a}{1 - r} = \\frac{2 \\left(x - 1\\right)}{6 - x} \\), so the sum is \\( \\frac{2 \\left(x - 1\\right)}{6 - x} \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Multiply",
+               2,
+               [
+                  "Add",
+                  "x",
+                  -1
+               ]
+            ],
+            [
+               "Add",
+               6,
+               [
+                  "Negate",
+                  "x"
+               ]
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Divide",
+            10,
+            [
+               "Add",
+               6,
+               [
+                  "Negate",
+                  "x"
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10006",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Divide",
+            [
+               "Multiply",
+               2,
+               [
+                  "Add",
+                  "x",
+                  -1
+               ]
+            ],
+            [
+               "Add",
+               6,
+               [
+                  "Negate",
+                  "x"
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            [
+               "Divide",
+               [
+                  "Multiply",
+                  2,
+                  [
+                     "Add",
+                     "x",
+                     -1
+                  ]
+               ],
+               5
+            ],
+            [
+               "Divide",
+               [
+                  "Multiply",
+                  2,
+                  [
+                     "Power",
+                     [
+                        "Add",
+                        "x",
+                        -1
+                     ],
+                     2
+                  ]
+               ],
+               25
+            ],
+            [
+               "Divide",
+               [
+                  "Multiply",
+                  2,
+                  [
+                     "Power",
+                     [
+                        "Add",
+                        "x",
+                        -1
+                     ],
+                     3
+                  ]
+               ],
+               125
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99038",
+         "violated_step": 3
+      },
+      {
+         "id": "D",
+         "value": [
+            "Divide",
+            [
+               "Multiply",
+               2,
+               [
+                  "Add",
+                  "x",
+                  -1
+               ]
+            ],
+            [
+               "Add",
+               10,
+               [
+                  "Negate",
+                  [
+                     "Multiply",
+                     5,
+                     "x"
+                  ]
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10004",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-13",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10006",
+      "BC-SKL-10007",
+      "BC-SKL-10008",
+      "BC-SKL-10009",
+      "BC-SKL-10010",
+      "BC-SKL-10063",
+      "BC-SKL-10072"
+   ],
+   "parameter_draw": {
+      "general_term": "\\frac{2(x-1)^{n}}{5^{n}}",
+      "start": 1,
+      "condition": "|x - 1| < 5",
+      "ratio": "x/5 - 1/5",
+      "misread_ratio": "x - 1",
+      "misread": "reads the ratio as x - 1, ignoring the 5 to the n",
+      "difficulty_variables": {
+         "ratio_contains_variable": true,
+         "starts_at_index_zero": false,
+         "closed_form_given": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

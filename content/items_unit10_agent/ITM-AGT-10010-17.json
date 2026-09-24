@@ -1,0 +1,424 @@
+{
+   "id": "ITM-AGT-10010-17",
+   "archetype_id": "BC-QA-10010",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f \\) be the function that satisfies \\( f''(x) = x^{2} + \\left(f(x)\\right)^{2} \\), with \\( f(-1) = 2 \\) and \\( f'(-1) = 3 \\). Find the third-degree Taylor polynomial for \\( f \\) about \\( x = -1 \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         2,
+         [
+            "Multiply",
+            3,
+            [
+               "Add",
+               "x",
+               1
+            ]
+         ],
+         [
+            "Multiply",
+            [
+               "Rational",
+               5,
+               2
+            ],
+            [
+               "Power",
+               [
+                  "Add",
+                  "x",
+                  1
+               ],
+               2
+            ]
+         ],
+         [
+            "Multiply",
+            [
+               "Rational",
+               5,
+               3
+            ],
+            [
+               "Power",
+               [
+                  "Add",
+                  "x",
+                  1
+               ],
+               3
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Differentiate the relation, using the chain rule on each term that holds \\( f \\): \\( f''' = 2 f f' + 2 x \\).",
+         "mathjson": 5
+      },
+      {
+         "step": 2,
+         "text": "Evaluate in order at \\( x = -1 \\), feeding each value into the next: \\( f''(-1) = 5 \\), \\( f'''(-1) = 10 \\).",
+         "mathjson": 10
+      },
+      {
+         "step": 3,
+         "text": "Divide each value by the matching factorial: \\( \\frac{2}{0!} = 2 \\), \\( \\frac{3}{1!} = 3 \\), \\( \\frac{5}{2!} = \\frac{5}{2} \\), \\( \\frac{10}{3!} = \\frac{5}{3} \\).",
+         "mathjson": [
+            "Add",
+            2,
+            [
+               "Multiply",
+               3,
+               [
+                  "Add",
+                  "x",
+                  1
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  5,
+                  2
+               ],
+               [
+                  "Power",
+                  [
+                     "Add",
+                     "x",
+                     1
+                  ],
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  5,
+                  3
+               ],
+               [
+                  "Power",
+                  [
+                     "Add",
+                     "x",
+                     1
+                  ],
+                  3
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Stop at degree 3: \\( P_{3}(x) = 2 + 3(x + 1) + \\frac{5}{2}(x + 1)^{2} + \\frac{5}{3}(x + 1)^{3} \\).",
+         "mathjson": [
+            "Add",
+            2,
+            [
+               "Multiply",
+               3,
+               [
+                  "Add",
+                  "x",
+                  1
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  5,
+                  2
+               ],
+               [
+                  "Power",
+                  [
+                     "Add",
+                     "x",
+                     1
+                  ],
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  5,
+                  3
+               ],
+               [
+                  "Power",
+                  [
+                     "Add",
+                     "x",
+                     1
+                  ],
+                  3
+               ]
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            2,
+            [
+               "Multiply",
+               3,
+               [
+                  "Add",
+                  "x",
+                  1
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  5,
+                  2
+               ],
+               [
+                  "Power",
+                  [
+                     "Add",
+                     "x",
+                     1
+                  ],
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  5,
+                  3
+               ],
+               [
+                  "Power",
+                  [
+                     "Add",
+                     "x",
+                     1
+                  ],
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  5,
+                  3
+               ],
+               [
+                  "Power",
+                  [
+                     "Add",
+                     "x",
+                     1
+                  ],
+                  4
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10030",
+         "violated_step": 3
+      },
+      {
+         "id": "B",
+         "value": [
+            "Add",
+            2,
+            [
+               "Multiply",
+               3,
+               [
+                  "Add",
+                  "x",
+                  1
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  5,
+                  2
+               ],
+               [
+                  "Power",
+                  [
+                     "Add",
+                     "x",
+                     1
+                  ],
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  5,
+                  3
+               ],
+               [
+                  "Power",
+                  [
+                     "Add",
+                     "x",
+                     1
+                  ],
+                  3
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            2,
+            [
+               "Multiply",
+               3,
+               [
+                  "Add",
+                  "x",
+                  1
+               ]
+            ],
+            [
+               "Multiply",
+               5,
+               [
+                  "Power",
+                  [
+                     "Add",
+                     "x",
+                     1
+                  ],
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               10,
+               [
+                  "Power",
+                  [
+                     "Add",
+                     "x",
+                     1
+                  ],
+                  3
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10029",
+         "violated_step": 2
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            2,
+            [
+               "Multiply",
+               3,
+               [
+                  "Add",
+                  "x",
+                  1
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  5,
+                  2
+               ],
+               [
+                  "Power",
+                  [
+                     "Add",
+                     "x",
+                     1
+                  ],
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  3
+               ],
+               [
+                  "Power",
+                  [
+                     "Add",
+                     "x",
+                     1
+                  ],
+                  3
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10028",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10043",
+      "BC-SKL-10044",
+      "BC-SKL-10046"
+   ],
+   "parameter_draw": {
+      "centre": -1,
+      "initial_values": [
+         "2",
+         "3"
+      ],
+      "relation": "f'' = f**2 + x**2",
+      "order_requested": 3,
+      "differentiations_needed": 1,
+      "product_rule_needed": false,
+      "coefficients_that_vanish": [],
+      "distractor_error_mode": "chain"
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

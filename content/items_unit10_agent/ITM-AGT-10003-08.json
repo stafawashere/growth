@@ -1,0 +1,203 @@
+{
+   "id": "ITM-AGT-10003-08",
+   "archetype_id": "BC-QA-10003",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "For \\( |x - 2| < 3 \\), the series \\( \\sum_{n=0}^{\\infty} \\frac{(-1)^{n}(x-2)^{n}}{3^{n}} \\) converges. Find its sum as an expression in \\( x \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Divide",
+         3,
+         [
+            "Add",
+            "x",
+            1
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Dividing consecutive terms gives the constant ratio \\( r = \\frac{2}{3} - \\frac{x}{3} \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Rational",
+               2,
+               3
+            ],
+            [
+               "Negate",
+               [
+                  "Divide",
+                  "x",
+                  3
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The series as written starts at \\( n = 0 \\), so its first term is \\( a = 1 \\).",
+         "mathjson": 1
+      },
+      {
+         "step": 3,
+         "text": "The closed form needs \\( |r| < 1 \\), which holds because \\( |x - 2| < 3 \\) is given.",
+         "mathjson": [
+            "Add",
+            [
+               "Rational",
+               2,
+               3
+            ],
+            [
+               "Negate",
+               [
+                  "Divide",
+                  "x",
+                  3
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "The sum is \\( \\frac{a}{1 - r} = \\frac{3}{x + 1} \\), so the sum is \\( \\frac{3}{x + 1} \\).",
+         "mathjson": [
+            "Divide",
+            3,
+            [
+               "Add",
+               "x",
+               1
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Divide",
+            3,
+            [
+               "Add",
+               "x",
+               1
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": [
+            "Divide",
+            3,
+            [
+               "Add",
+               5,
+               [
+                  "Negate",
+                  "x"
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10040",
+         "violated_step": 3
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            1,
+            [
+               "Negate",
+               [
+                  "Divide",
+                  [
+                     "Add",
+                     "x",
+                     -2
+                  ],
+                  3
+               ]
+            ],
+            [
+               "Divide",
+               [
+                  "Power",
+                  [
+                     "Add",
+                     "x",
+                     -2
+                  ],
+                  2
+               ],
+               9
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99038",
+         "violated_step": 3
+      },
+      {
+         "id": "D",
+         "value": [
+            "Divide",
+            1,
+            [
+               "Add",
+               "x",
+               -1
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10004",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-13",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10006",
+      "BC-SKL-10007",
+      "BC-SKL-10008",
+      "BC-SKL-10009",
+      "BC-SKL-10010",
+      "BC-SKL-10063",
+      "BC-SKL-10072"
+   ],
+   "parameter_draw": {
+      "general_term": "\\frac{(-1)^{n}(x-2)^{n}}{3^{n}}",
+      "start": 0,
+      "condition": "|x - 2| < 3",
+      "ratio": "2/3 - x/3",
+      "misread_ratio": "2 - x",
+      "misread": "reads the ratio as -(x - 2), ignoring the 3 to the n",
+      "sign_error": "writes the sum of the alternating series as a/(1 - |r|), the one over one minus u form, instead of a/(1 + |r|)",
+      "difficulty_variables": {
+         "ratio_contains_variable": true,
+         "starts_at_index_zero": true,
+         "closed_form_given": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

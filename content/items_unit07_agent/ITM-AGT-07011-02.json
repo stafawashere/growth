@@ -1,0 +1,106 @@
+{
+   "id": "ITM-AGT-07011-02",
+   "archetype_id": "BC-QA-07011",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "A particle moves along a line, and its position \\( s(t) \\) satisfies the differential equation \\( \\frac{ds}{dt} = 2 \\sin{\\left(t \\right)} \\) with \\( s(0) = 1 \\). Writing the particular solution as \\( s(t) = 1 + \\int_{0}^{t} v(u) \\, du \\), where \\( v \\) is the given rate, find the exact value of \\( s(\\frac{\\pi}{3}) \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 2
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The accumulation form of the solution is \\( s(t) = 1 + \\int_{0}^{t} v(u) \\, du \\), with an antiderivative of the rate \\( - 2 \\cos{\\left(t \\right)} \\).",
+         "mathjson": [
+            "Negate",
+            [
+               "Multiply",
+               2,
+               [
+                  "Cos",
+                  "t"
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The initial value fixes the constant term: at \\( t = 0 \\) the integral is 0, so \\( s(0) = 1 \\).",
+         "mathjson": 1
+      },
+      {
+         "step": 3,
+         "text": "Evaluate the integral: \\( \\int_{0}^{\\frac{\\pi}{3}} v(u) \\, du = 1 \\).",
+         "mathjson": 1
+      },
+      {
+         "step": 4,
+         "text": "So \\( s(\\frac{\\pi}{3}) = 1 + 1 = 2 \\).",
+         "mathjson": 2
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 1,
+         "is_key": false,
+         "error_path": "BC-ERR-07032",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": 2,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": [
+            "Sqrt",
+            3
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-07038",
+         "violated_step": 0
+      },
+      {
+         "id": "D",
+         "value": 0,
+         "is_key": false,
+         "error_path": "BC-ERR-99014",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-03",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-07030",
+      "BC-SKL-07031",
+      "BC-SKL-07032",
+      "BC-SKL-07038"
+   ],
+   "parameter_draw": {
+      "rate": "2*sin(t)",
+      "t0": "0",
+      "s0": "1",
+      "target": "pi/3",
+      "wrong_antiderivative_used_for_99014": "antiderivative of sin taken as cos",
+      "difficulty_variables": {
+         "vertical_asymptote": false,
+         "absolute_value_resolved": false,
+         "accumulation_form": true
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

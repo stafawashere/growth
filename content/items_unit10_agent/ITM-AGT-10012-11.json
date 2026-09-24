@@ -1,0 +1,253 @@
+{
+   "id": "ITM-AGT-10012-11",
+   "archetype_id": "BC-QA-10012",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "The function \\( f \\) has derivatives of all orders, with \\( f(1) = 2 \\), \\( f'(1) = -1 \\), \\( f''(1) = 3 \\), \\( f'''(1) = 4 \\). Let \\( g(x) = x f(x) \\). Find the second-degree Taylor polynomial for \\( g \\) about \\( x = 1 \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         2,
+         [
+            "Subtract",
+            "x",
+            1
+         ],
+         [
+            "Multiply",
+            [
+               "Rational",
+               1,
+               2
+            ],
+            [
+               "Power",
+               [
+                  "Subtract",
+                  "x",
+                  1
+               ],
+               2
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "By the product rule, \\( g'(x) = f(x) + x f'(x) \\), and differentiating again, \\( g''(x) = 2 f'(x) + x f''(x) \\).",
+         "mathjson": 1
+      },
+      {
+         "step": 2,
+         "text": "At \\( x = 1 \\): \\( g(1) = 2 \\), \\( g'(1) = 1 \\), \\( g''(1) = 1 \\).",
+         "mathjson": 1
+      },
+      {
+         "step": 3,
+         "text": "Divide by the factorials: the coefficients are \\( 2 \\), \\( 1 \\), and \\( \\frac{1}{2!} = \\frac{1}{2} \\).",
+         "mathjson": [
+            "Rational",
+            1,
+            2
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Stop at degree 2: \\( 2 + (x - 1) + \\frac{1}{2}(x - 1)^{2} \\).",
+         "mathjson": [
+            "Add",
+            2,
+            [
+               "Subtract",
+               "x",
+               1
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  2
+               ],
+               [
+                  "Power",
+                  [
+                     "Subtract",
+                     "x",
+                     1
+                  ],
+                  2
+               ]
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            2,
+            [
+               "Subtract",
+               "x",
+               1
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  2
+               ],
+               [
+                  "Power",
+                  [
+                     "Subtract",
+                     "x",
+                     1
+                  ],
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  13,
+                  6
+               ],
+               [
+                  "Power",
+                  [
+                     "Subtract",
+                     "x",
+                     1
+                  ],
+                  3
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10030",
+         "violated_step": 3
+      },
+      {
+         "id": "B",
+         "value": [
+            "Add",
+            2,
+            [
+               "Subtract",
+               "x",
+               1
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  2
+               ],
+               [
+                  "Power",
+                  [
+                     "Subtract",
+                     "x",
+                     1
+                  ],
+                  2
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            2,
+            [
+               "Subtract",
+               "x",
+               1
+            ],
+            [
+               "Power",
+               [
+                  "Subtract",
+                  "x",
+                  1
+               ],
+               2
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10028",
+         "violated_step": 0
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            2,
+            [
+               "Negate",
+               [
+                  "Subtract",
+                  "x",
+                  1
+               ]
+            ],
+            [
+               "Power",
+               [
+                  "Subtract",
+                  "x",
+                  1
+               ],
+               2
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10028",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10046",
+      "BC-SKL-10047",
+      "BC-SKL-10048",
+      "BC-SKL-10061",
+      "BC-SKL-10065"
+   ],
+   "parameter_draw": {
+      "defining_relation": "g(x) = (x) f(x)",
+      "centre": 1,
+      "f_derivative_values": [
+         "2",
+         "-1",
+         "3",
+         "4"
+      ],
+      "degree_requested": 2,
+      "route": "differentiate the product",
+      "product_rule_needed": true
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

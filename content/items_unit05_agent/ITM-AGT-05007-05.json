@@ -1,0 +1,125 @@
+{
+   "id": "ITM-AGT-05007-05",
+   "archetype_id": "BC-QA-05007",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( g \\) be the function defined by \\( g(x) = \\int_{0}^{x} \\left(- t^{3} + 7 t^{2} - 36\\right) \\, dt \\) for \\( 0 < x < 8 \\). Find the value of \\( x \\) at which \\( g \\) has a relative maximum."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 6
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "By the Fundamental Theorem of Calculus, \\( g'(x) = - x^{3} + 7 x^{2} - 36 \\) for \\( 0 < x < 8 \\).",
+         "mathjson": [
+            "Multiply",
+            [
+               "Add",
+               "x",
+               -6
+            ],
+            [
+               "Add",
+               "x",
+               -3
+            ],
+            [
+               "Add",
+               [
+                  "Negate",
+                  "x"
+               ],
+               -2
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Set \\( g'(x) = 0 \\) and factor: \\( -(x + 2)(x - 3)(x - 6) = 0 \\), so \\( x = -2, 3, 6 \\).",
+         "mathjson": 6
+      },
+      {
+         "step": 3,
+         "text": "Only \\( x = 3 \\) and \\( x = 6 \\) lie in \\( 0 < x < 8 \\); \\( x = -2 \\) is outside the interval on which \\( g \\) is defined, so it is not a critical point of \\( g \\).",
+         "mathjson": 6
+      },
+      {
+         "step": 4,
+         "text": "\\( g' \\) changes from positive to negative at \\( x = 6 \\) and from negative to positive at \\( x = 3 \\), so \\( g \\) has its relative maximum at \\( x = 6 \\).",
+         "mathjson": 6
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": -2,
+         "is_key": false,
+         "error_path": "BC-ERR-05010",
+         "violated_step": 2
+      },
+      {
+         "id": "B",
+         "value": 3,
+         "is_key": false,
+         "error_path": "BC-ERR-05021",
+         "violated_step": 3
+      },
+      {
+         "id": "C",
+         "value": [
+            "Rational",
+            14,
+            3
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-05022",
+         "violated_step": 3
+      },
+      {
+         "id": "D",
+         "value": 6,
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-05010",
+      "BC-SKL-05020",
+      "BC-SKL-05039"
+   ],
+   "parameter_draw": {
+      "given_object": "accumulation function",
+      "derivative": "(-t - 2)*(t - 6)*(t - 3)",
+      "shown_form": "expanded",
+      "interval": [
+         "0",
+         "8"
+      ],
+      "asked": "relative maximum",
+      "lower_limit": 0,
+      "zero_outside_interval": "-2",
+      "difficulty_variables": {
+         "given_object_is_differential_equation": false,
+         "classification_by": "sign change",
+         "factoring_needed": true
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

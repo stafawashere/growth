@@ -1598,8 +1598,9 @@ items) and items 3 and 6 (Slices 3 and 4). Every gate 11 names for P2 now exists
 
 ## In progress [inferred]
 
-Nothing. The fourteenth session closed with the suite green and every module of its plan either
-done or listed below as needing the operator.
+Stage 1, items for Units 4 to 10, is complete in the worktree `../growth-content` on branch
+`content` and is being committed and merged; see "Done", 2026-09-24, stage 1. Nothing else is in
+progress in this worktree.
 
 Nothing for stage 2: it merged on 2026-09-24 (Done, "P2 Slice 5").
 
@@ -2407,6 +2408,21 @@ From the eleventh session, 2026-09-21, found and not fixed.
 - 2026-09-24, stage 3: the gap state of the mastery map cannot appear in P1. It needs an
   observation whose mastery_state is prerequisite_gap, and `rule_based_mastery_states` never emits
   one; the diagnostician (P3) does. The state is tested with a stored attempt, not seen in the app.
+- 2026-09-24, stage 1, resolved the same day. `tests/e2e/test_agent_drafts_served.py` read the
+  renamed `settings.items_directory` and only the P1 bank's keys; fixed as recorded under "Plan
+  corrections applied". BC-QA-06010's single held error narrowed its items to improper rational
+  integrands; 06014 and 10019 are settled in docs/operator/items-units-4-to-10.md.
+
+- 2026-09-24, stage 1, open. Ingestion cost grew with the bank: every record's checks run on the
+  bank's first query, each bounded SymPy comparison in its own forkserver child off the main
+  thread. Measured: 120 records in 3.4 s, 766 in 77.8 s; `tests/e2e/test_unit_6_item_served.py`
+  and `tests/e2e/test_agent_drafts_served.py` took 370 s together with other stages running. The
+  operator's database pays it once per new record. It is the same first-query ingestion stage 3
+  found behind the 45 s `GET /progress`, now over 786 records instead of 130. Candidate fixes:
+  one bounded child per record, or checks cached by record hash.
+- 2026-09-24, stage 1, open. Five closed-form archetypes have no items for want of held errors:
+  BC-QA-01005, 06011, 06014, 07010, 10006 (docs/operator/items-units-4-to-10.md, "Result"). With
+  06011 empty and every 10005 stem convergent, no item asks the student to recognise divergence.
 
 - 2026-09-24, stage 2, the diagnostic's entropy stop fires mostly on surprises. At the recorded
   size (`docs/operator/p2-evals.md`), 316 of 400 synthetic runs stop early. 294 of those came in
@@ -2835,6 +2851,21 @@ Session 2026-09-20 (seventh).
 - 2026-09-24, stage 3: 06's API surface lists the mastery map under `GET /progress`. It is served
   at `GET /progress/mastery` instead, beside `GET /progress/calibration`, so home's read of the due
   counts does not build 541 nodes.
+- 2026-09-24, stage 1, the recheck control. `tools/key_recheck.py` checked that 2v + 1 of each
+  sampled computed answer compared different from the key, and exited 2 otherwise. 2v + 1 equals v
+  at v = -1, so the Unit 10 bank's sound comparator failed the control on ITM-AGT-10003-04 (answer
+  -1). The control now requires every perturbation in `perturbations(v)`, 2v + 1 and
+  v + sqrt(2)/7, to compare different, skipping one identical to v. For every v other than -1 this
+  checks strictly more than before, and for -1 it replaces a guaranteed false alarm with a real
+  check. Two tests, each shown red under its break.
+- 2026-09-24, stage 1, `tests/review/test_p1_key_audit_record.py` became
+  `tests/review/test_key_audit_records.py`, parametrised over docs/operator/key-audit-p1/ and
+  key-audit-p2/; the P1 assertions are unchanged.
+- 2026-09-24, stage 1, `tests/e2e/test_agent_drafts_served.py` asserted
+  `settings.items_directory == DEFAULT_ITEMS_DIR`. The setting became `items_directories`; the test
+  now asserts it equals `default_item_directories()` and contains `DEFAULT_ITEMS_DIR`, reads keys
+  from every bank, and accepts either drafting string in `drafted_by` (a set of two exact strings,
+  where it compared one).
 
 - 2026-09-24, stage 2 ruling on the shell gate, following the P2 Slice 4 pattern. P2 scope item 7
   puts onboarding in phase, so `OUT_OF_PHASE_SCREENS` in `app/web/src/App.test.tsx` drops
@@ -2916,6 +2947,39 @@ Stage 2 (p2engine):
 - The onboarding screen was drafted by a subagent. When stage 3 merged mid-stage, its edits were
   replayed on the rebased tree, the conflicts resolved by hand, and the missing screen and home
   tests written and mutation-checked in this session.
+
+Stage 1, items for Units 4 to 10, decided on the operator's delegation (the stage brief delegates
+every decision). Each is argued in docs/operator/items-units-4-to-10.md.
+
+- Closed-form rule: an archetype gets items when it is active, `no_calculator`, not covered by
+  P1, its answer can be one finite value or expression in the MathJSON `app/items/mathjson.py`
+  reads, and its stem needs no figure. 38 of 62 candidates qualify (6 from Units 1 to 3, 32 from
+  Units 4 to 10). Out: 16 verdict or classification archetypes, 7 printed-graph or slope-field
+  archetypes, and BC-QA-10013, whose answer is an interval. Reason: a key the reader cannot hold
+  cannot be rechecked or graded as a short answer under R29, and adding Infinity or Interval
+  heads would change the client input and the grader, outside this stage.
+- Verdict-shaped archetypes in scope are posed on their finite part: convergent improper
+  integrals only (06011, 10005), a vertical asymptote asked as its x-value (01009), error bounds
+  or a least number of terms (10008), never a general term with n!.
+- One bank per unit, `content/items_unitNN_agent/`, each with its own `key_formulations.py`.
+  `GROWTH_ITEMS_DIR` unset now serves every `content/items_*` bank and a set value may list
+  several, `os.pathsep`-separated; `Settings.items_directory` became `items_directories`.
+- `tools/check_items.py` checks error paths per archetype rather than over the P1 union. Stronger;
+  P1's 130 stay clean.
+- Formulations are written by separate agents given stems only, because the authoring agents know
+  their keys.
+- Five in-scope archetypes got no items because the errors their skills hold cannot produce three
+  honest distractors: BC-QA-01005, 06011, 06014, 07010, 10006. No error was retagged and no
+  registry link was added from the item side; linking more BC-ERR records to their skills is
+  research-library work through staging and `tools/merge_staging.py`.
+- The recheck control's single perturbation 2v + 1 leaves -1 fixed; it now also applies
+  v + sqrt(2)/7 and skips a perturbation identical to the value. Recorded under "Plan
+  corrections applied".
+- Gate 29 for the new items was drawn over a scratch database that ingested only the nine unit
+  banks, so the P1 items that already have their own record could not enter it.
+- The stems may carry inline LaTeX between `\(` and `\)`, which `MathText` already renders,
+  because integrals and series read badly in plain text.
+
 
 ## Decisions taken on the operator's instruction, 2026-09-23 [inferred]
 

@@ -1,0 +1,485 @@
+{
+   "id": "ITM-AGT-03009-02",
+   "archetype_id": "BC-QA-03009",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = e^{x}\\,\\sqrt{1 + \\sin(4x)} \\). Find \\( f'(x) \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Multiply",
+            [
+               "Sqrt",
+               [
+                  "Add",
+                  [
+                     "Sin",
+                     [
+                        "Multiply",
+                        4,
+                        "x"
+                     ]
+                  ],
+                  1
+               ]
+            ],
+            [
+               "Exp",
+               "x"
+            ]
+         ],
+         [
+            "Divide",
+            [
+               "Multiply",
+               2,
+               [
+                  "Exp",
+                  "x"
+               ],
+               [
+                  "Cos",
+                  [
+                     "Multiply",
+                     4,
+                     "x"
+                  ]
+               ]
+            ],
+            [
+               "Sqrt",
+               [
+                  "Add",
+                  [
+                     "Sin",
+                     [
+                        "Multiply",
+                        4,
+                        "x"
+                     ]
+                  ],
+                  1
+               ]
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The outermost operation is a product of \\( e^{x} \\) and \\( \\sqrt{1 + \\sin(4x)} \\), so the product rule comes first: \\( f'(x) = \\left(e^{x}\\right)'\\,\\sqrt{1 + \\sin(4x)} + e^{x}\\left(\\sqrt{1 + \\sin(4x)}\\right)' \\).",
+         "mathjson": [
+            "Multiply",
+            [
+               "Sqrt",
+               [
+                  "Add",
+                  [
+                     "Sin",
+                     [
+                        "Multiply",
+                        4,
+                        "x"
+                     ]
+                  ],
+                  1
+               ]
+            ],
+            [
+               "Exp",
+               "x"
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "\\( e^{x} \\) is an exponential function with a constant base, so its derivative is \\( e^{x} \\); the power rule does not apply to it.",
+         "mathjson": [
+            "Exp",
+            "x"
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Write the root as the power \\( \\left(1 + \\sin(4x)\\right)^{1/2} \\) so the power rule applies to the outer layer. The factor \\( \\sqrt{1 + \\sin(4x)} \\) is a square root of \\( 1 + \\sin(4x) \\), which contains a sine of \\( 4x \\), so apply the chain rule from the outside inward: \\( \\left(\\sqrt{1 + \\sin(4x)}\\right)' = \\frac{2 \\cos{\\left(4 x \\right)}}{\\sqrt{\\sin{\\left(4 x \\right)} + 1}} \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Multiply",
+               2,
+               [
+                  "Cos",
+                  [
+                     "Multiply",
+                     4,
+                     "x"
+                  ]
+               ]
+            ],
+            [
+               "Sqrt",
+               [
+                  "Add",
+                  [
+                     "Sin",
+                     [
+                        "Multiply",
+                        4,
+                        "x"
+                     ]
+                  ],
+                  1
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Assemble the product rule: \\( f'(x) = \\sqrt{\\sin{\\left(4 x \\right)} + 1} e^{x} + \\frac{2 e^{x} \\cos{\\left(4 x \\right)}}{\\sqrt{\\sin{\\left(4 x \\right)} + 1}} \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               [
+                  "Sqrt",
+                  [
+                     "Add",
+                     [
+                        "Sin",
+                        [
+                           "Multiply",
+                           4,
+                           "x"
+                        ]
+                     ],
+                     1
+                  ]
+               ],
+               [
+                  "Exp",
+                  "x"
+               ]
+            ],
+            [
+               "Divide",
+               [
+                  "Multiply",
+                  2,
+                  [
+                     "Exp",
+                     "x"
+                  ],
+                  [
+                     "Cos",
+                     [
+                        "Multiply",
+                        4,
+                        "x"
+                     ]
+                  ]
+               ],
+               [
+                  "Sqrt",
+                  [
+                     "Add",
+                     [
+                        "Sin",
+                        [
+                           "Multiply",
+                           4,
+                           "x"
+                        ]
+                     ],
+                     1
+                  ]
+               ]
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               [
+                  "Sqrt",
+                  [
+                     "Add",
+                     [
+                        "Sin",
+                        [
+                           "Multiply",
+                           4,
+                           "x"
+                        ]
+                     ],
+                     1
+                  ]
+               ],
+               [
+                  "Exp",
+                  "x"
+               ]
+            ],
+            [
+               "Divide",
+               [
+                  "Multiply",
+                  2,
+                  [
+                     "Exp",
+                     "x"
+                  ],
+                  [
+                     "Cos",
+                     [
+                        "Multiply",
+                        4,
+                        "x"
+                     ]
+                  ]
+               ],
+               [
+                  "Sqrt",
+                  [
+                     "Add",
+                     [
+                        "Sin",
+                        [
+                           "Multiply",
+                           4,
+                           "x"
+                        ]
+                     ],
+                     1
+                  ]
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": [
+            "Divide",
+            [
+               "Multiply",
+               2,
+               [
+                  "Exp",
+                  "x"
+               ],
+               [
+                  "Cos",
+                  [
+                     "Multiply",
+                     4,
+                     "x"
+                  ]
+               ]
+            ],
+            [
+               "Sqrt",
+               [
+                  "Add",
+                  [
+                     "Sin",
+                     [
+                        "Multiply",
+                        4,
+                        "x"
+                     ]
+                  ],
+                  1
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03006",
+         "violated_step": 0
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               "x",
+               [
+                  "Sqrt",
+                  [
+                     "Add",
+                     [
+                        "Sin",
+                        [
+                           "Multiply",
+                           4,
+                           "x"
+                        ]
+                     ],
+                     1
+                  ]
+               ],
+               [
+                  "Exp",
+                  [
+                     "Subtract",
+                     "x",
+                     1
+                  ]
+               ]
+            ],
+            [
+               "Divide",
+               [
+                  "Multiply",
+                  2,
+                  [
+                     "Exp",
+                     "x"
+                  ],
+                  [
+                     "Cos",
+                     [
+                        "Multiply",
+                        4,
+                        "x"
+                     ]
+                  ]
+               ],
+               [
+                  "Sqrt",
+                  [
+                     "Add",
+                     [
+                        "Sin",
+                        [
+                           "Multiply",
+                           4,
+                           "x"
+                        ]
+                     ],
+                     1
+                  ]
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99036",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               [
+                  "Sqrt",
+                  [
+                     "Add",
+                     [
+                        "Sin",
+                        [
+                           "Multiply",
+                           4,
+                           "x"
+                        ]
+                     ],
+                     1
+                  ]
+               ],
+               [
+                  "Exp",
+                  "x"
+               ]
+            ],
+            [
+               "Divide",
+               [
+                  "Multiply",
+                  [
+                     "Exp",
+                     "x"
+                  ],
+                  [
+                     "Cos",
+                     [
+                        "Multiply",
+                        4,
+                        "x"
+                     ]
+                  ]
+               ],
+               [
+                  "Multiply",
+                  2,
+                  [
+                     "Sqrt",
+                     [
+                        "Add",
+                        [
+                           "Sin",
+                           [
+                              "Multiply",
+                              4,
+                              "x"
+                           ]
+                        ],
+                        1
+                     ]
+                  ]
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03002",
+         "violated_step": 2
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-03026",
+      "BC-SKL-03027",
+      "BC-SKL-03028",
+      "BC-SKL-03029",
+      "BC-SKL-03006"
+   ],
+   "parameter_draw": {
+      "exponential_base": "e",
+      "composite": "sqrt_1_sin4x",
+      "structure": "product",
+      "answer_mode": "expr",
+      "difficulty_variables": {
+         "algebraic rewrite available": true,
+         "rules needed": [
+            "product",
+            "exponential",
+            "chain (three layers)"
+         ],
+         "surface resembles another family": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

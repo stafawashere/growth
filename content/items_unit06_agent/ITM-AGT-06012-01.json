@@ -1,0 +1,137 @@
+{
+   "id": "ITM-AGT-06012-01",
+   "archetype_id": "BC-QA-06012",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( g(x) = \\int_{2 x}^{5} \\sqrt{t^{3} + 1} \\, dt \\). Find the exact value of \\( g'\\left(1\\right) \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": -6
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Reversing the limits, \\( g(x) = -\\int_{5}^{2 x} \\sqrt{t^{3} + 1} \\, dt \\), so by the Fundamental Theorem of Calculus its derivative is minus the integrand evaluated at \\( 2 x \\).",
+         "mathjson": [
+            "Negate",
+            [
+               "Sqrt",
+               [
+                  "Add",
+                  [
+                     "Multiply",
+                     8,
+                     [
+                        "Power",
+                        "x",
+                        3
+                     ]
+                  ],
+                  1
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The chain rule multiplies by the derivative of \\( 2 x \\), which is \\( 2 \\).",
+         "mathjson": 2
+      },
+      {
+         "step": 3,
+         "text": "At \\( x = 1 \\) the limit is \\( 2 \\) and its derivative is \\( 2 \\).",
+         "mathjson": 2
+      },
+      {
+         "step": 4,
+         "text": "Using \\( f\\left(2\\right) = 3 \\), \\( g'\\left(1\\right) = -3 \\cdot 2 = -6 \\).",
+         "mathjson": -6
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": -3,
+         "is_key": false,
+         "error_path": "BC-ERR-06027",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": -6,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": [
+            "Negate",
+            [
+               "Multiply",
+               2,
+               [
+                  "Sqrt",
+                  2
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06028",
+         "violated_step": 0
+      },
+      {
+         "id": "D",
+         "value": 6,
+         "is_key": false,
+         "error_path": "BC-ERR-99012",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-03",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-09",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-10",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06018",
+      "BC-SKL-06019",
+      "BC-SKL-06017",
+      "BC-SKL-06021"
+   ],
+   "parameter_draw": {
+      "form": "composite limit in the lower position",
+      "integrand": "sqrt(t**3 + 1)",
+      "limits": {
+         "lower": "2*x",
+         "upper": "5"
+      },
+      "point": "1",
+      "difficulty_variables": {
+         "upper limit equal to x versus a function of x": "composite limit in the lower position",
+         "integrand given by a formula, a graph, or a table": "formula",
+         "whether a reason naming the theorem is demanded": "no",
+         "whether values of the integrand must come from a table": "no"
+      },
+      "distractor_derivations": {
+         "A": "-f(2) with the factor u'(1) = 2 left off",
+         "C": "integrand evaluated at x = 1 instead of at the limit 2",
+         "D": "sign of the reversed limits lost, as if the variable limit were the upper limit"
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

@@ -1,0 +1,125 @@
+{
+   "id": "ITM-AGT-06002-17",
+   "archetype_id": "BC-QA-06002",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Rain falls at a rate of r(t) millimeters per hour, where r is differentiable and t is measured in hours. Measured values are r(0) = 2, r(1) = 6, r(1.5) = 8, r(3) = 4. Find the approximation to \\( \\int_{0}^{3} r(t)\\,dt \\), the total rainfall, in millimeters, from t = 0 to t = 3, given by a trapezoidal sum with the three subintervals indicated by these values. Give the exact value."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         33,
+         2
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Each subinterval contributes its width times the average of its two endpoint values: \\( 1 \\cdot \\frac{2 + 6}{2} = 4 \\); \\( 0.5 \\cdot \\frac{6 + 8}{2} = \\frac{7}{2} \\); \\( 1.5 \\cdot \\frac{8 + 4}{2} = 9 \\).",
+         "mathjson": 4
+      },
+      {
+         "step": 2,
+         "text": "Add the three contributions: \\( 4 + \\frac{7}{2} + 9 = \\frac{33}{2} \\).",
+         "mathjson": [
+            "Rational",
+            33,
+            2
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The trapezoidal approximation is \\( \\frac{33}{2} \\).",
+         "mathjson": [
+            "Rational",
+            33,
+            2
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 17,
+         "is_key": false,
+         "error_path": "BC-ERR-06001",
+         "violated_step": 0
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            33,
+            2
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": 33,
+         "is_key": false,
+         "error_path": "BC-ERR-99028",
+         "violated_step": 0
+      },
+      {
+         "id": "D",
+         "value": 24,
+         "is_key": false,
+         "error_path": "BC-ERR-06004",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-10",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06008",
+      "BC-SKL-06011",
+      "BC-SKL-06036"
+   ],
+   "parameter_draw": {
+      "context": "rain",
+      "times": [
+         "0",
+         "1",
+         "1.5",
+         "3"
+      ],
+      "values": [
+         "2",
+         "6",
+         "8",
+         "4"
+      ],
+      "difficulty_variables": {
+         "nonuniform versus uniform widths": "nonuniform",
+         "whether the sum must be simplified to a single number": "yes",
+         "whether a concavity based over or under estimate justification is required": "no",
+         "calculator versus no calculator": "no calculator"
+      },
+      "distractor_derivations": {
+         "A": "trapezoidal sum with the common width (b - a)/3 used for every subinterval",
+         "C": "trapezoid area taken as width times the sum of the two endpoint values, with no division by 2",
+         "D": "factor 1/2 applied to the last trapezoid only"
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

@@ -1,0 +1,139 @@
+{
+   "id": "ITM-AGT-02003-19",
+   "archetype_id": "BC-QA-02003",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Find the value of \\( \\lim_{x \\to 5} \\frac{\\sqrt{x + 4} - 3}{x - 5} \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         1,
+         6
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Let \\( u = x + 4 \\). As \\( x \\to 5 \\), \\( u \\to 9 \\), and \\( x - 5 = u - 9 \\), so the numerator is \\( g(u) - g(9) \\) with \\( g(u) = \\sqrt{u} \\) and \\( g(9) = 3 \\).",
+         "mathjson": 3
+      },
+      {
+         "step": 2,
+         "text": "So the function is \\( g(u) = \\sqrt{u} \\) and the base point is \\( u = 9 \\).",
+         "mathjson": 9
+      },
+      {
+         "step": 3,
+         "text": "The limit is \\( \\lim_{u \\to 9} \\frac{g(u) - g(9)}{u - 9} = g'(9) \\), and \\( g'(u) = \\frac{1}{2 \\sqrt{u}} \\).",
+         "mathjson": [
+            "Divide",
+            1,
+            [
+               "Multiply",
+               2,
+               [
+                  "Sqrt",
+                  "u"
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Evaluate: \\( g'(9) = \\frac{1}{6} \\).",
+         "mathjson": [
+            "Rational",
+            1,
+            6
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Divide",
+            [
+               "Sqrt",
+               5
+            ],
+            10
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02010",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Divide",
+            [
+               "Sqrt",
+               13
+            ],
+            26
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02010",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Rational",
+            1,
+            6
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": [
+            "Divide",
+            [
+               "Sqrt",
+               3
+            ],
+            6
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02010",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02035",
+      "BC-SKL-02005"
+   ],
+   "parameter_draw": {
+      "function": "sqrt(u)",
+      "base_point": 9,
+      "form": "two point",
+      "shift": 4,
+      "wrong_base_readings": {
+         "g at the approach value": 5,
+         "shifted function at the true base": 9,
+         "g at the subtracted constant": "3"
+      },
+      "difficulty_variables": {
+         "standard angle or value": false,
+         "two point form": true,
+         "transcendental": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

@@ -1,0 +1,151 @@
+{
+   "id": "ITM-AGT-01009-07",
+   "archetype_id": "BC-QA-01009",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = \\frac{\\left(x^{2} + 3 x + 2\\right)\\left(x^{2} - 3 x - 18\\right)}{\\left(x^{2} - 5 x - 6\\right)\\left(x^{2} - 4\\right)\\left(x - 2\\right)} \\). The graph of \\( f \\) has exactly one vertical asymptote, the line \\( x = c \\). Find the value of \\( c \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 2
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The numerator factors as \\( \\left(x - 6\\right) \\left(x + 1\\right) \\left(x + 2\\right) \\left(x + 3\\right) \\) and the denominator as \\( \\left(x - 6\\right) \\left(x - 2\\right)^{2} \\left(x + 1\\right) \\left(x + 2\\right) \\).",
+         "mathjson": [
+            "Multiply",
+            [
+               "Subtract",
+               "x",
+               6
+            ],
+            [
+               "Add",
+               "x",
+               1
+            ],
+            [
+               "Add",
+               "x",
+               2
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The factors at \\( x = -2 \\), \\( x = -1 \\), and \\( x = 6 \\) divide out, so \\( f(x) = \\frac{x + 3}{\\left(x - 2\\right)^{2}} \\) for \\( x \\neq -2, -1, 6 \\). Those three inputs are removable discontinuities, not asymptotes.",
+         "mathjson": [
+            "Divide",
+            [
+               "Add",
+               "x",
+               3
+            ],
+            [
+               "Power",
+               [
+                  "Subtract",
+                  "x",
+                  2
+               ],
+               2
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "After cancelling, the denominator is zero only at \\( x = 2 \\), and the numerator is not zero there.",
+         "mathjson": 2
+      },
+      {
+         "step": 4,
+         "text": "The one sided limits are \\( \\lim_{x \\to 2^-} f(x) = \\infty \\) and \\( \\lim_{x \\to 2^+} f(x) = \\infty \\).",
+         "mathjson": 2
+      },
+      {
+         "step": 5,
+         "text": "So the line \\( x = 2 \\) is the only vertical asymptote, and \\( c = 2 \\).",
+         "mathjson": 2
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 2,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": -2,
+         "is_key": false,
+         "error_path": "BC-ERR-01018",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": -1,
+         "is_key": false,
+         "error_path": "BC-ERR-01018",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": 6,
+         "is_key": false,
+         "error_path": "BC-ERR-01018",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-04",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-10",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-01054",
+      "BC-SKL-01055",
+      "BC-SKL-01056",
+      "BC-SKL-01041"
+   ],
+   "parameter_draw": {
+      "variant": "double",
+      "cancelled_zeros": [
+         -2,
+         -1,
+         6
+      ],
+      "asymptote": 2,
+      "numerator_only_zero": -3,
+      "numerator_constant": null,
+      "difficulty_variables": {
+         "factor cancels": true,
+         "sides same sign": true,
+         "logarithmic asymptote": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

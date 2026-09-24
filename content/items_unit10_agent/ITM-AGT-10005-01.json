@@ -1,0 +1,182 @@
+{
+   "id": "ITM-AGT-10005-01",
+   "archetype_id": "BC-QA-10005",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "The integral test is applied to the series \\( \\sum_{n=2}^{\\infty} \\frac{1}{n^{3}} \\). Take f(x) to be the series' general term with n replaced by x, and the lower limit of integration to be the series' starting index. Find the exact value of the improper integral of f from that lower limit to infinity."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         1,
+         8
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Take \\( f(x) = \\frac{1}{x^{3}} \\), so \\( f(n) \\) is the general term. On \\( [2, \\infty) \\), \\( f \\) is positive, continuous, and decreasing, so the integral test applies.",
+         "mathjson": [
+            "Divide",
+            1,
+            [
+               "Power",
+               "x",
+               3
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The series starts at \\( n = 2 \\), so the matching integral is \\( \\int_{2}^{\\infty} \\frac{1}{x^{3}} \\, dx = \\lim_{b \\to \\infty} \\int_{2}^{b} \\frac{1}{x^{3}} \\, dx \\).",
+         "mathjson": 2
+      },
+      {
+         "step": 3,
+         "text": "An antiderivative is \\( F(x) = - \\frac{1}{2 x^{2}} \\), so \\( \\int_{2}^{b} \\frac{1}{x^{3}} \\, dx = \\frac{1}{8} - \\frac{1}{2 b^{2}} \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Rational",
+               1,
+               8
+            ],
+            [
+               "Negate",
+               [
+                  "Divide",
+                  1,
+                  [
+                     "Multiply",
+                     2,
+                     [
+                        "Power",
+                        "b",
+                        2
+                     ]
+                  ]
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "As \\( b \\to \\infty \\), \\( F(b) \\to 0 \\), so the integral converges to \\( \\frac{1}{8} \\). This number is the value of the integral, not the sum of the series.",
+         "mathjson": [
+            "Rational",
+            1,
+            8
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Rational",
+            1,
+            2
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10012",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            1,
+            8
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": [
+            "Rational",
+            1,
+            18
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10012",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            [
+               "Rational",
+               1,
+               8
+            ],
+            [
+               "Negate",
+               [
+                  "Divide",
+                  1,
+                  [
+                     "Multiply",
+                     2,
+                     [
+                        "Power",
+                        "b",
+                        2
+                     ]
+                  ]
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10011",
+         "violated_step": 2
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-09",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10014",
+      "BC-SKL-10015",
+      "BC-SKL-10016",
+      "BC-SKL-10017"
+   ],
+   "parameter_draw": {
+      "general_term": "\\frac{1}{n^{3}}",
+      "function": "\\frac{1}{x^{3}}",
+      "start": 2,
+      "distractor_plan": [
+         [
+            "lower",
+            1
+         ],
+         [
+            "lower",
+            3
+         ],
+         [
+            "abandon"
+         ]
+      ],
+      "difficulty_variables": {
+         "conditions_requested_explicitly": false,
+         "antiderivative_needs_substitution_or_parts": false,
+         "integral_diverges": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

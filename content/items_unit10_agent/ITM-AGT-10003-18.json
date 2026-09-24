@@ -1,0 +1,128 @@
+{
+   "id": "ITM-AGT-10003-18",
+   "archetype_id": "BC-QA-10003",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "The constant \\( c \\) is chosen so that \\( \\sum_{n=1}^{\\infty} \\frac{c\\,2^{2n}}{9^{n}} = 8 \\). Find the value of \\( c \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 10
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Dividing consecutive terms gives the constant ratio \\( r = \\frac{4}{9} \\).",
+         "mathjson": [
+            "Rational",
+            4,
+            9
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The series starts at \\( n = 1 \\), so its first term is \\( a = \\frac{4 c}{9} \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Multiply",
+               4,
+               "c"
+            ],
+            9
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Since \\( |r| = \\frac{4}{9} < 1 \\), the series converges to \\( \\frac{a}{1 - r} = \\frac{4 c}{5} \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Multiply",
+               4,
+               "c"
+            ],
+            5
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Setting \\( \\frac{4 c}{5} = 8 \\) gives \\( c = 10 \\).",
+         "mathjson": 10
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Rational",
+            40,
+            9
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10006",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            1458,
+            133
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99038",
+         "violated_step": 3
+      },
+      {
+         "id": "C",
+         "value": 10,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": 14,
+         "is_key": false,
+         "error_path": "BC-ERR-10004",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-13",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10006",
+      "BC-SKL-10007",
+      "BC-SKL-10008",
+      "BC-SKL-10009",
+      "BC-SKL-10010",
+      "BC-SKL-10063",
+      "BC-SKL-10072"
+   ],
+   "parameter_draw": {
+      "general_term": "\\frac{c\\,2^{2n}}{9^{n}}",
+      "start": 1,
+      "target_sum": 8,
+      "misread_ratio": "2/9",
+      "misread": "reads the ratio as 2/9, ignoring the 2 in the exponent 2n",
+      "difficulty_variables": {
+         "ratio_contains_variable": false,
+         "starts_at_index_zero": false,
+         "closed_form_given": true
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

@@ -1,0 +1,131 @@
+{
+   "id": "ITM-AGT-10002-14",
+   "archetype_id": "BC-QA-10002",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Find the exact value of \\( \\sum_{n=1}^{\\infty} \\frac{(-1)^{n}\\,2^{n}}{n!} \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Exp",
+            -2
+         ],
+         -1
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Each term has the form \\( \\frac{x^{n}}{n!} \\) with \\( x = -2 \\), so this is the Maclaurin series for \\( e^{x} \\) evaluated at \\( x = -2 \\).",
+         "mathjson": -2
+      },
+      {
+         "step": 2,
+         "text": "That series converges for every \\( x \\), and its full sum from \\( n = 0 \\) is \\( e^{-2} \\).",
+         "mathjson": [
+            "Exp",
+            -2
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The series starts at \\( n = 1 \\), so it is \\( e^{-2} \\) minus the \\( n = 0 \\) term, which is \\( 1 \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Exp",
+               -2
+            ],
+            -1
+         ]
+      },
+      {
+         "step": 4,
+         "text": "The value of the series is \\( -1 + e^{-2} \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Exp",
+               -2
+            ],
+            -1
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Exp",
+            -2
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10006",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            -4,
+            3
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99038",
+         "violated_step": 2
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            [
+               "Exp",
+               -2
+            ],
+            -1
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": 0,
+         "is_key": false,
+         "error_path": "BC-ERR-10001",
+         "violated_step": 2
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10002",
+      "BC-SKL-10003",
+      "BC-SKL-10004",
+      "BC-SKL-10008",
+      "BC-SKL-10066"
+   ],
+   "parameter_draw": {
+      "general_term": "\\frac{(-1)^{n}\\,2^{n}}{n!}",
+      "start": 1,
+      "input": "-2",
+      "series_named_in_stem": false,
+      "difficulty_variables": {
+         "structure": "exponential Maclaurin series",
+         "starts_at_index_zero": false,
+         "from_taylor_series_at_point": true
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

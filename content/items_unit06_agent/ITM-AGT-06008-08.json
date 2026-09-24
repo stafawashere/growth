@@ -1,0 +1,179 @@
+{
+   "id": "ITM-AGT-06008-08",
+   "archetype_id": "BC-QA-06008",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Find the exact value of \\( \\int_{0}^{1} x^{3} \\left(x^{4} + 1\\right)^{2} \\, dx \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         7,
+         12
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Let \\( u = x^{4} + 1 \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Power",
+               "x",
+               4
+            ],
+            1
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Then \\( du = 4 x^{3} \\, dx \\), so \\( x^{3} \\, dx = \\frac{1}{4} \\, du \\).",
+         "mathjson": [
+            "Rational",
+            1,
+            4
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Convert the limits: \\( x = 0 \\) gives \\( u = 1 \\) and \\( x = 1 \\) gives \\( u = 2 \\), so the integral becomes \\( \\int_{1}^{2} \\frac{u^{2}}{4} \\, du \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Power",
+               "u",
+               2
+            ],
+            4
+         ]
+      },
+      {
+         "step": 4,
+         "text": "An antiderivative of \\( \\frac{u^{2}}{4} \\) is \\( \\frac{u^{3}}{12} \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Power",
+               "u",
+               3
+            ],
+            12
+         ]
+      },
+      {
+         "step": 5,
+         "text": "Evaluate at the new limits: \\( \\frac{2}{3} - \\left(\\frac{1}{12}\\right) = \\frac{7}{12} \\).",
+         "mathjson": [
+            "Rational",
+            7,
+            12
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Rational",
+            7,
+            3
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06019",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            7,
+            12
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": [
+            "Rational",
+            1,
+            12
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06018",
+         "violated_step": 4
+      },
+      {
+         "id": "D",
+         "value": [
+            "Rational",
+            2,
+            3
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06018",
+         "violated_step": 4
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-11",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06047",
+      "BC-SKL-06048",
+      "BC-SKL-06049",
+      "BC-SKL-06050",
+      "BC-SKL-06051",
+      "BC-SKL-06052",
+      "BC-SKL-06034"
+   ],
+   "parameter_draw": {
+      "form": "definite integral",
+      "integrand": "x**3*(x**4 + 1)**2",
+      "inner_u": "x**4 + 1",
+      "du_constant_k": "4",
+      "limits": [
+         "0",
+         "1"
+      ],
+      "u_limits": [
+         "1",
+         "2"
+      ],
+      "difficulty_variables": {
+         "whether a constant adjustment is needed": "yes",
+         "whether the answer is logarithmic, exponential, trigonometric, or a power": "power",
+         "definite versus indefinite": "definite",
+         "whether the limits must be converted": "yes",
+         "whether the substitution is disguised by a prior rearrangement": "no"
+      },
+      "distractor_derivations": {
+         "A": "substitution carried out as if x**3 dx = du, without the constant 1/(4)",
+         "C": "antiderivative in u evaluated at the original x limits 0 and 1",
+         "D": "upper limit converted to u = 2 but the original lower limit 0 kept"
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

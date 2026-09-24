@@ -1,0 +1,130 @@
+{
+   "id": "ITM-AGT-01003-15",
+   "archetype_id": "BC-QA-01003",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "The functions \\( f \\) and \\( h \\) are continuous for all real numbers. The function \\( g \\) is continuous except at \\( x = 3 \\), where \\( \\lim_{x \\to 3^-} g(x) = 0 \\) and \\( \\lim_{x \\to 3^+} g(x) = 2 \\). The known values are \\( f(0) = 0 \\), \\( f(1) = 2 \\), \\( f(2) = 0 \\), \\( f(3) = 0 \\), \\( f(4) = 0 \\), \\( g(0) = 2 \\), \\( g(1) = 0 \\), \\( g(2) = 1 \\), \\( g(4) = 1 \\), \\( h(0) = 4 \\), \\( h(1) = 2 \\), \\( h(2) = 1 \\), \\( h(3) = 2 \\), \\( h(4) = 0 \\). Find the value of \\( \\lim_{x \\to 3^-} \\left[ f(g(x)) + h(f(x)) - g(h(x)) \\right] \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 3
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Record the limits. As \\( x \\to 3^- \\), \\( g(x) \\to 0 \\), and \\( f \\) and \\( h \\) are continuous, so their limits are their values at 3.",
+         "mathjson": 0
+      },
+      {
+         "step": 2,
+         "text": "The expression is a sum of constant multiples of three composites. In each composite the outer function is continuous at the limit of the inner one, so \\( \\lim_{x \\to 3^-} f(g(x)) = f(0) = 0 \\), \\( \\lim_{x \\to 3^-} h(f(x)) = h(0) = 4 \\), \\( \\lim_{x \\to 3^-} g(h(x)) = g(2) = 1 \\).",
+         "mathjson": 0
+      },
+      {
+         "step": 3,
+         "text": "Apply the sum and constant multiple theorems: \\( (1)(0) + (1)(4) + (-1)(1) = 3 \\).",
+         "mathjson": 3
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 5,
+         "is_key": false,
+         "error_path": "BC-ERR-01007",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": -1,
+         "is_key": false,
+         "error_path": "BC-ERR-01007",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": 3,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": 0,
+         "is_key": false,
+         "error_path": "BC-ERR-01007",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-09",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-10",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-01018",
+      "BC-SKL-01019",
+      "BC-SKL-01020",
+      "BC-SKL-01022"
+   ],
+   "parameter_draw": {
+      "structure": "onesided",
+      "a": 3,
+      "side": "-",
+      "composites": [
+         "f(g(x))",
+         "h(f(x))",
+         "g(h(x))"
+      ],
+      "coefficients": [
+         1,
+         1,
+         -1
+      ],
+      "tables": {
+         "f": {
+            "0": 0,
+            "1": 2,
+            "2": 0,
+            "3": 0,
+            "4": 0
+         },
+         "g": {
+            "0": 2,
+            "1": 0,
+            "2": 1,
+            "4": 1
+         },
+         "h": {
+            "0": 4,
+            "1": 2,
+            "2": 1,
+            "3": 2,
+            "4": 0
+         }
+      },
+      "jump_limits": [
+         0,
+         2
+      ],
+      "difficulty_variables": {
+         "denominator limit zero": false,
+         "composite involved": true,
+         "one sided limit supplied": true
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

@@ -1,0 +1,353 @@
+{
+   "id": "ITM-AGT-10018-02",
+   "archetype_id": "BC-QA-10018",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = \\sum_{n=0}^{\\infty} \\frac{1}{n!} x^{n} \\) for all \\( x \\) where the series converges. Find the sum of the first four nonzero terms of the series for \\( f'(x) \\) obtained by differentiating the series for \\( f \\) term by term."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         1,
+         "x",
+         [
+            "Multiply",
+            [
+               "Rational",
+               1,
+               2
+            ],
+            [
+               "Power",
+               "x",
+               2
+            ]
+         ],
+         [
+            "Multiply",
+            [
+               "Rational",
+               1,
+               6
+            ],
+            [
+               "Power",
+               "x",
+               3
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Write out the series: \\( f(x) = 1 + x + \\frac{1}{2}x^{2} + \\frac{1}{6}x^{3} + \\frac{1}{24}x^{4} + \\cdots \\). The constant term differentiates to 0, so the first four nonzero terms of \\( f'(x) \\) come from the next four terms of \\( f \\).",
+         "mathjson": [
+            "Add",
+            1,
+            "x",
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  6
+               ],
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  24
+               ],
+               [
+                  "Power",
+                  "x",
+                  4
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Differentiate the general term with respect to \\( x \\): \\( \\frac{d}{dx} \\left[ \\frac{1}{n!} x^{n} \\right] = n \\cdot \\frac{1}{n!} \\, x^{n - 1} \\), multiplying by the exponent and lowering it by 1.",
+         "mathjson": [
+            "Add",
+            1,
+            "x",
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  6
+               ],
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The first four nonzero terms of \\( f'(x) \\) sum to \\( 1 + x + \\frac{1}{2}x^{2} + \\frac{1}{6}x^{3} \\).",
+         "mathjson": [
+            "Add",
+            1,
+            "x",
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  6
+               ],
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            "x",
+            [
+               "Power",
+               "x",
+               2
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  6
+               ],
+               [
+                  "Power",
+                  "x",
+                  4
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99018",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Add",
+            1,
+            "x",
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99018",
+         "violated_step": 0
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            1,
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  2
+               ],
+               "x"
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  6
+               ],
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  24
+               ],
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99018",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            1,
+            "x",
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  6
+               ],
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-04",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-10",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10060",
+      "BC-SKL-10068",
+      "BC-SKL-10070",
+      "BC-SKL-10071"
+   ],
+   "parameter_draw": {
+      "general_term": "\\frac{1}{n!}",
+      "power": "n",
+      "centre": 0,
+      "terms_requested": 4,
+      "general_term_has_factorial": true,
+      "question": "first nonzero terms of the derivative series",
+      "distractor_mistakes": [
+         "exponent not lowered",
+         "coefficient not multiplied by the exponent",
+         "differentiated only the first terms of f, one of which is the constant"
+      ]
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

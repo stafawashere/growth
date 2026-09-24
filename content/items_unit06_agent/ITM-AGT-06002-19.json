@@ -1,0 +1,113 @@
+{
+   "id": "ITM-AGT-06002-19",
+   "archetype_id": "BC-QA-06002",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Cars pass a checkpoint at a rate of C(t) cars per minute, where C is differentiable and t is measured in minutes. Measured values are C(0) = 8, C(5) = 14, C(15) = 20, C(20) = 10. Find the approximation to \\( \\int_{0}^{20} C(t)\\,dt \\), the number of cars that pass the checkpoint from t = 0 to t = 20, given by a trapezoidal sum with the three subintervals indicated by these values. Give the exact value."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 300
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Each subinterval contributes its width times the average of its two endpoint values: \\( 5 \\cdot \\frac{8 + 14}{2} = 55 \\); \\( 10 \\cdot \\frac{14 + 20}{2} = 170 \\); \\( 5 \\cdot \\frac{20 + 10}{2} = 75 \\).",
+         "mathjson": 55
+      },
+      {
+         "step": 2,
+         "text": "Add the three contributions: \\( 55 + 170 + 75 = 300 \\).",
+         "mathjson": 300
+      },
+      {
+         "step": 3,
+         "text": "The trapezoidal approximation is \\( 300 \\).",
+         "mathjson": 300
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Rational",
+            860,
+            3
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06001",
+         "violated_step": 0
+      },
+      {
+         "id": "B",
+         "value": 320,
+         "is_key": false,
+         "error_path": "BC-ERR-99028",
+         "violated_step": 0
+      },
+      {
+         "id": "C",
+         "value": 545,
+         "is_key": false,
+         "error_path": "BC-ERR-06004",
+         "violated_step": 0
+      },
+      {
+         "id": "D",
+         "value": 300,
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-10",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06008",
+      "BC-SKL-06011",
+      "BC-SKL-06036"
+   ],
+   "parameter_draw": {
+      "context": "traffic",
+      "times": [
+         "0",
+         "5",
+         "15",
+         "20"
+      ],
+      "values": [
+         "8",
+         "14",
+         "20",
+         "10"
+      ],
+      "difficulty_variables": {
+         "nonuniform versus uniform widths": "nonuniform",
+         "whether the sum must be simplified to a single number": "yes",
+         "whether a concavity based over or under estimate justification is required": "no",
+         "calculator versus no calculator": "no calculator"
+      },
+      "distractor_derivations": {
+         "A": "trapezoidal sum with the common width (b - a)/3 used for every subinterval",
+         "B": "right Riemann sum used in place of the trapezoidal sum",
+         "C": "factor 1/2 applied to the first trapezoid only"
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

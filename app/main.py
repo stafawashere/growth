@@ -61,13 +61,16 @@ GROWTH_KEY_AUDIT_SAMPLE_PATH path to the key-audit sample file tools/draw_key_au
                       POST /review-queue/{id}/resolve refuses every item_audit verdict rather
                       than guess at a sample. Read once and cached on the Settings object, since
                       the sample is drawn once per audit round rather than per request.
-GROWTH_ITEMS_DIR      the directory of item records the bank ingests through app/items/ingest.py
-                      on its first query, skipping ids already in the items table. Unset, it is
-                      content/items_p1_agent under the repo root when that directory exists (the
-                      agent drafts the operator ruled servable on 2026-09-23; their provenance
-                      model is their authored_by, never operator), and no directory otherwise.
-                      none disables it. A set path that is not a directory stops the process at
-                      startup.
+GROWTH_ITEMS_DIR      the directories of item records the bank ingests through app/items/ingest.py
+                      on its first query, skipping ids already in the items table, separated by
+                      the platform path separator (":" on macOS and Linux). Unset, it is every
+                      content/items_* directory under the repo root, in name order: the P1 bank
+                      content/items_p1_agent and the per-unit banks content/items_unitNN_agent
+                      (agent drafts the operator ruled servable on 2026-09-23 and signed off on
+                      the operator's delegation; provenance model operator once signed off, their
+                      authored_by before). none disables it. A set path that is not a directory
+                      stops the process at startup, and an item id found in two directories stops
+                      the first ingestion rather than serving whichever came first.
 
 This module also mounts the built React client (app/web/dist, docs/plan/06-architecture.md's
 system diagram: the browser speaks REST to one FastAPI process) at the same origin the API
@@ -123,7 +126,9 @@ DEFAULT_TUTOR_CAP_USD = 1.00
 DEFAULT_TUTOR_CAP_TOKENS = 250000
 DEFAULT_WEB_DIST_DIR = REPO_ROOT / "app" / "web" / "dist"
 DEFAULT_TOKENS_PATH = REPO_ROOT / "app" / "design" / "growth-tokens.json"
-DEFAULT_ITEMS_DIR = REPO_ROOT / "content" / "items_p1_agent"
+DEFAULT_CONTENT_DIR = REPO_ROOT / "content"
+DEFAULT_ITEMS_DIR = DEFAULT_CONTENT_DIR / "items_p1_agent"
+ITEM_BANK_PATTERN = "items_*"
 NO_ITEMS_DIR = "none"
 WEB_BUILD_COMMAND = "npm run build --prefix app/web"
 
@@ -268,25 +273,34 @@ def build_subscription_pacing(env):
    return pacing_caps_from_environment(env)
 
 
-def items_directory(env):
+def default_item_directories(content_dir=DEFAULT_CONTENT_DIR):
+   has_content_dir = content_dir.is_dir()
+
+   if not has_content_dir:
+      return ()
+
+   return tuple(sorted(path for path in content_dir.glob(ITEM_BANK_PATTERN) if path.is_dir()))
+
+
+def items_directories(env):
    configured = env.get("GROWTH_ITEMS_DIR")
    is_unset = configured is None or configured == ""
 
    if is_unset:
-      has_default = DEFAULT_ITEMS_DIR.is_dir()
-
-      return DEFAULT_ITEMS_DIR if has_default else None
+      return default_item_directories()
 
    if configured == NO_ITEMS_DIR:
-      return None
+      return ()
 
-   configured_path = Path(configured)
-   is_a_directory = configured_path.is_dir()
+   configured_paths = tuple(Path(part) for part in configured.split(os.pathsep) if part != "")
 
-   if not is_a_directory:
-      raise ValueError(f"GROWTH_ITEMS_DIR must name a directory of item records, got {configured!r}")
+   for configured_path in configured_paths:
+      is_a_directory = configured_path.is_dir()
 
-   return configured_path
+      if not is_a_directory:
+         raise ValueError(f"GROWTH_ITEMS_DIR must name directories of item records, got {configured!r}")
+
+   return configured_paths
 
 
 def settings_from_environment(env=None):
@@ -304,7 +318,7 @@ def settings_from_environment(env=None):
       tutor_caps=build_tutor_caps(env),
       subscription_pacing=build_subscription_pacing(env),
       key_audit_sample_path=env.get("GROWTH_KEY_AUDIT_SAMPLE_PATH"),
-      items_directory=items_directory(env),
+      items_directories=items_directories(env),
    )
 
 
@@ -377,7 +391,7 @@ def build_application(env=None):
    settings.db_path.parent.mkdir(parents=True, exist_ok=True)
    engine = settings.resolve_engine()
    settings.session_context = build_session_context(
-      engine, settings.content_root, items_directory=settings.items_directory
+      engine, settings.content_root, items_directories=settings.items_directories
    )
 
    application = create_app(settings)

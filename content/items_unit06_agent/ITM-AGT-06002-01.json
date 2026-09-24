@@ -1,0 +1,109 @@
+{
+   "id": "ITM-AGT-06002-01",
+   "archetype_id": "BC-QA-06002",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "A car moves along a straight road with positive velocity v(t) meters per second, where v is differentiable and t is measured in seconds. Measured values are v(0) = 10, v(3) = 14, v(6) = 20, v(9) = 18. Find the approximation to \\( \\int_{0}^{9} v(t)\\,dt \\), the distance, in meters, that the car travels from t = 0 to t = 9, given by a trapezoidal sum with the three subintervals indicated by these values. Give the exact value."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 144
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Each subinterval contributes its width times the average of its two endpoint values: \\( 3 \\cdot \\frac{10 + 14}{2} = 36 \\); \\( 3 \\cdot \\frac{14 + 20}{2} = 51 \\); \\( 3 \\cdot \\frac{20 + 18}{2} = 57 \\).",
+         "mathjson": 36
+      },
+      {
+         "step": 2,
+         "text": "Add the three contributions: \\( 36 + 51 + 57 = 144 \\).",
+         "mathjson": 144
+      },
+      {
+         "step": 3,
+         "text": "The trapezoidal approximation is \\( 144 \\).",
+         "mathjson": 144
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 132,
+         "is_key": false,
+         "error_path": "BC-ERR-99028",
+         "violated_step": 0
+      },
+      {
+         "id": "B",
+         "value": 144,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": 288,
+         "is_key": false,
+         "error_path": "BC-ERR-99028",
+         "violated_step": 0
+      },
+      {
+         "id": "D",
+         "value": 231,
+         "is_key": false,
+         "error_path": "BC-ERR-06004",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-10",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06008",
+      "BC-SKL-06011",
+      "BC-SKL-06036"
+   ],
+   "parameter_draw": {
+      "context": "car",
+      "times": [
+         "0",
+         "3",
+         "6",
+         "9"
+      ],
+      "values": [
+         "10",
+         "14",
+         "20",
+         "18"
+      ],
+      "difficulty_variables": {
+         "nonuniform versus uniform widths": "uniform",
+         "whether the sum must be simplified to a single number": "yes",
+         "whether a concavity based over or under estimate justification is required": "no",
+         "calculator versus no calculator": "no calculator"
+      },
+      "distractor_derivations": {
+         "A": "left Riemann sum used in place of the trapezoidal sum",
+         "C": "trapezoid area taken as width times the sum of the two endpoint values, with no division by 2",
+         "D": "factor 1/2 applied to the last trapezoid only"
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

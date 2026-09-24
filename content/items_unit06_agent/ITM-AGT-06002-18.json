@@ -1,0 +1,109 @@
+{
+   "id": "ITM-AGT-06002-18",
+   "archetype_id": "BC-QA-06002",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "A building draws electrical power at a rate of W(t) kilowatts, where W is differentiable and t is measured in hours. Measured values are W(0) = 2, W(6) = 6, W(12) = 7, W(18) = 3. Find the approximation to \\( \\int_{0}^{18} W(t)\\,dt \\), the energy, in kilowatt hours, used from t = 0 to t = 18, given by a trapezoidal sum with the three subintervals indicated by these values. Give the exact value."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 93
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Each subinterval contributes its width times the average of its two endpoint values: \\( 6 \\cdot \\frac{2 + 6}{2} = 24 \\); \\( 6 \\cdot \\frac{6 + 7}{2} = 39 \\); \\( 6 \\cdot \\frac{7 + 3}{2} = 30 \\).",
+         "mathjson": 24
+      },
+      {
+         "step": 2,
+         "text": "Add the three contributions: \\( 24 + 39 + 30 = 93 \\).",
+         "mathjson": 93
+      },
+      {
+         "step": 3,
+         "text": "The trapezoidal approximation is \\( 93 \\).",
+         "mathjson": 93
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 156,
+         "is_key": false,
+         "error_path": "BC-ERR-06004",
+         "violated_step": 0
+      },
+      {
+         "id": "B",
+         "value": 96,
+         "is_key": false,
+         "error_path": "BC-ERR-99028",
+         "violated_step": 0
+      },
+      {
+         "id": "C",
+         "value": 93,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": 162,
+         "is_key": false,
+         "error_path": "BC-ERR-06004",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-10",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06008",
+      "BC-SKL-06011",
+      "BC-SKL-06036"
+   ],
+   "parameter_draw": {
+      "context": "energy",
+      "times": [
+         "0",
+         "6",
+         "12",
+         "18"
+      ],
+      "values": [
+         "2",
+         "6",
+         "7",
+         "3"
+      ],
+      "difficulty_variables": {
+         "nonuniform versus uniform widths": "uniform",
+         "whether the sum must be simplified to a single number": "yes",
+         "whether a concavity based over or under estimate justification is required": "no",
+         "calculator versus no calculator": "no calculator"
+      },
+      "distractor_derivations": {
+         "A": "factor 1/2 applied to the last trapezoid only",
+         "B": "right Riemann sum used in place of the trapezoidal sum",
+         "D": "factor 1/2 applied to the first trapezoid only"
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

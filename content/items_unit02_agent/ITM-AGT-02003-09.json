@@ -1,0 +1,147 @@
+{
+   "id": "ITM-AGT-02003-09",
+   "archetype_id": "BC-QA-02003",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Find the value of \\( \\lim_{h \\to 0} \\frac{\\cos\\left(\\frac{\\pi}{6} + h\\right) - \\frac{\\sqrt{3}}{2}}{h} \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         -1,
+         2
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The numerator has the form \\( f(\\frac{\\pi}{6} + h) - f(\\frac{\\pi}{6}) \\) with \\( f(x) = \\cos x \\), because \\( f(\\frac{\\pi}{6}) = \\frac{\\sqrt{3}}{2} \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Sqrt",
+               3
+            ],
+            2
+         ]
+      },
+      {
+         "step": 2,
+         "text": "So the function is \\( f(x) = \\cos x \\) and the base point is \\( x = \\frac{\\pi}{6} \\).",
+         "mathjson": [
+            "Divide",
+            "Pi",
+            6
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The limit is the definition of \\( f'(\\frac{\\pi}{6}) \\), and \\( f'(x) = - \\sin{\\left(x \\right)} \\).",
+         "mathjson": [
+            "Negate",
+            [
+               "Sin",
+               "x"
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Evaluate: \\( f'(\\frac{\\pi}{6}) = - \\frac{1}{2} \\).",
+         "mathjson": [
+            "Rational",
+            -1,
+            2
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Negate",
+            [
+               "Divide",
+               [
+                  "Sqrt",
+                  3
+               ],
+               2
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02010",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": 0,
+         "is_key": false,
+         "error_path": "BC-ERR-02010",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Negate",
+            [
+               "Sin",
+               [
+                  "Divide",
+                  [
+                     "Sqrt",
+                     3
+                  ],
+                  2
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02010",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": [
+            "Rational",
+            -1,
+            2
+         ],
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02035",
+      "BC-SKL-02005"
+   ],
+   "parameter_draw": {
+      "function": "cos(x)",
+      "base_point": "pi/6",
+      "increment_variable": "h",
+      "form": "increment",
+      "wrong_base_readings": {
+         "shift": "pi/3",
+         "zero": "0",
+         "constant": "sqrt(3)/2"
+      },
+      "difficulty_variables": {
+         "standard angle or value": true,
+         "two point form": false,
+         "transcendental": true
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

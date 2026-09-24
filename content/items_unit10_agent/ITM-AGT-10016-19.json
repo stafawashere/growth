@@ -1,0 +1,274 @@
+{
+   "id": "ITM-AGT-10016-19",
+   "archetype_id": "BC-QA-10016",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = \\sum_{n=0}^{\\infty} \\frac{2^{n}}{n!} x^{n + 1} \\), where the series converges. Find the sum of the first three nonzero terms of the series for \\( f'(x) \\) obtained by differentiating term by term."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         1,
+         [
+            "Multiply",
+            4,
+            "x"
+         ],
+         [
+            "Multiply",
+            6,
+            [
+               "Power",
+               "x",
+               2
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Write the first terms of \\( f \\): \\( x + 2x^{2} + 2x^{3} + \\frac{4}{3}x^{4} + \\cdots \\).",
+         "mathjson": [
+            "Add",
+            "x",
+            [
+               "Multiply",
+               2,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               2,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  4,
+                  3
+               ],
+               [
+                  "Power",
+                  "x",
+                  4
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Apply the power rule \\( \\frac{d}{dx} x^{k} = k x^{k - 1} \\) to each term; the constant term, if any, differentiates to 0.",
+         "mathjson": [
+            "Add",
+            1,
+            [
+               "Multiply",
+               4,
+               "x"
+            ],
+            [
+               "Multiply",
+               6,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  16,
+                  3
+               ],
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Keep the first three nonzero results: \\( f'(x) \\) begins \\( 1 + 4x + 6x^{2} \\).",
+         "mathjson": [
+            "Add",
+            1,
+            [
+               "Multiply",
+               4,
+               "x"
+            ],
+            [
+               "Multiply",
+               6,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            "x",
+            [
+               "Multiply",
+               4,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               6,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99018",
+         "violated_step": 0
+      },
+      {
+         "id": "B",
+         "value": [
+            "Add",
+            1,
+            [
+               "Multiply",
+               4,
+               "x"
+            ],
+            [
+               "Multiply",
+               6,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  16,
+                  3
+               ],
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10030",
+         "violated_step": 0
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            1,
+            [
+               "Multiply",
+               4,
+               "x"
+            ],
+            [
+               "Multiply",
+               6,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            1,
+            [
+               "Multiply",
+               2,
+               "x"
+            ],
+            [
+               "Multiply",
+               2,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99018",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10060",
+      "BC-SKL-10067"
+   ],
+   "parameter_draw": {
+      "general_term": "\\frac{2^{n}}{n!}",
+      "power": "n + 1",
+      "operation": "derivative",
+      "terms_requested": 3,
+      "alternating": false,
+      "has_factorial": true,
+      "question": "first nonzero terms of the derivative series",
+      "distractor_mistakes": [
+         "exponent not lowered",
+         "coefficient not multiplied by the exponent"
+      ]
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

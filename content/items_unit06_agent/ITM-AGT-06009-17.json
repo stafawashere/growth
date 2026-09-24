@@ -1,0 +1,162 @@
+{
+   "id": "ITM-AGT-06009-17",
+   "archetype_id": "BC-QA-06009",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Find the exact value of \\( \\int_{0}^{\\pi} x^{2} \\sin{\\left(x \\right)} \\, dx \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         -4,
+         [
+            "Power",
+            "Pi",
+            2
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Let \\( u = x^{2} \\) and \\( dv = \\sin{\\left(x \\right)} \\, dx \\), so \\( du = 2 x \\, dx \\) and \\( v = - \\cos{\\left(x \\right)} \\).",
+         "mathjson": [
+            "Negate",
+            [
+               "Cos",
+               "x"
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Then the integral equals \\( \\left[- x^{2} \\cos{\\left(x \\right)}\\right]_{0}^{\\pi} - \\int_{0}^{\\pi} - 2 x \\cos{\\left(x \\right)} \\, dx \\), and the boundary term is \\( \\pi^{2} \\).",
+         "mathjson": [
+            "Power",
+            "Pi",
+            2
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The remaining integral \\( \\int_{0}^{\\pi} - 2 x \\cos{\\left(x \\right)} \\, dx \\) needs integration by parts once more, with the polynomial factor as the new u; it equals \\( 4 \\).",
+         "mathjson": 4
+      },
+      {
+         "step": 4,
+         "text": "So the value is \\( \\pi^{2} - \\left(4\\right) = -4 + \\pi^{2} \\).",
+         "mathjson": [
+            "Add",
+            -4,
+            [
+               "Power",
+               "Pi",
+               2
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Divide",
+            [
+               "Power",
+               "Pi",
+               3
+            ],
+            3
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06022",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Add",
+            4,
+            [
+               "Power",
+               "Pi",
+               2
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06023",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": -4,
+         "is_key": false,
+         "error_path": "BC-ERR-99025",
+         "violated_step": 3
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            -4,
+            [
+               "Power",
+               "Pi",
+               2
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06057",
+      "BC-SKL-06058",
+      "BC-SKL-06059",
+      "BC-SKL-06060",
+      "BC-SKL-06061",
+      "BC-SKL-06034"
+   ],
+   "parameter_draw": {
+      "integrand": "x**2*sin(x)",
+      "u": "x**2",
+      "dv": "sin(x)",
+      "limits": [
+         "0",
+         "pi"
+      ],
+      "difficulty_variables": {
+         "whether parts must be applied more than once": "yes",
+         "definite versus indefinite": "definite",
+         "whether the non polynomial factor is trigonometric, exponential, or logarithmic": "trigonometric",
+         "whether the integrand contains an unknown function and its derivative": "no",
+         "whether supplied values of the unknown function must be imported": "no"
+      },
+      "distractor_derivations": {
+         "A": "antiderivatives x**3/3 and -cos(x) multiplied and evaluated from 0 to pi",
+         "B": "boundary term plus the remaining integral instead of minus",
+         "C": "boundary term [uv] left out, only minus the remaining integral kept"
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

@@ -1,0 +1,600 @@
+{
+   "id": "ITM-AGT-03009-11",
+   "archetype_id": "BC-QA-03009",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = \\frac{\\sqrt{1 + \\sin(4x)}}{5^{x}} \\). Find \\( f'(x) \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Divide",
+         [
+            "Add",
+            [
+               "Negate",
+               [
+                  "Multiply",
+                  [
+                     "Power",
+                     5,
+                     "x"
+                  ],
+                  [
+                     "Sqrt",
+                     [
+                        "Add",
+                        [
+                           "Sin",
+                           [
+                              "Multiply",
+                              4,
+                              "x"
+                           ]
+                        ],
+                        1
+                     ]
+                  ],
+                  [
+                     "Ln",
+                     5
+                  ]
+               ]
+            ],
+            [
+               "Divide",
+               [
+                  "Multiply",
+                  2,
+                  [
+                     "Power",
+                     5,
+                     "x"
+                  ],
+                  [
+                     "Cos",
+                     [
+                        "Multiply",
+                        4,
+                        "x"
+                     ]
+                  ]
+               ],
+               [
+                  "Sqrt",
+                  [
+                     "Add",
+                     [
+                        "Sin",
+                        [
+                           "Multiply",
+                           4,
+                           "x"
+                        ]
+                     ],
+                     1
+                  ]
+               ]
+            ]
+         ],
+         [
+            "Power",
+            5,
+            [
+               "Multiply",
+               2,
+               "x"
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The outermost operation is a quotient with numerator \\( \\sqrt{1 + \\sin(4x)} \\) and denominator \\( 5^{x} \\), so the quotient rule comes first (equivalently, rewrite \\( f \\) as a product with the factor \\( 5^{-x} \\)).",
+         "mathjson": [
+            "Divide",
+            [
+               "Sqrt",
+               [
+                  "Add",
+                  [
+                     "Sin",
+                     [
+                        "Multiply",
+                        4,
+                        "x"
+                     ]
+                  ],
+                  1
+               ]
+            ],
+            [
+               "Power",
+               5,
+               "x"
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "\\( 5^{x} \\) is an exponential function with a constant base, so its derivative is \\( 5^{x} \\ln{\\left(5 \\right)} \\); the power rule does not apply to it.",
+         "mathjson": [
+            "Multiply",
+            [
+               "Power",
+               5,
+               "x"
+            ],
+            [
+               "Ln",
+               5
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Write the root as the power \\( \\left(1 + \\sin(4x)\\right)^{1/2} \\) so the power rule applies to the outer layer. The factor \\( \\sqrt{1 + \\sin(4x)} \\) is a square root of \\( 1 + \\sin(4x) \\), which contains a sine of \\( 4x \\), so apply the chain rule from the outside inward: \\( \\left(\\sqrt{1 + \\sin(4x)}\\right)' = \\frac{2 \\cos{\\left(4 x \\right)}}{\\sqrt{\\sin{\\left(4 x \\right)} + 1}} \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Multiply",
+               2,
+               [
+                  "Cos",
+                  [
+                     "Multiply",
+                     4,
+                     "x"
+                  ]
+               ]
+            ],
+            [
+               "Sqrt",
+               [
+                  "Add",
+                  [
+                     "Sin",
+                     [
+                        "Multiply",
+                        4,
+                        "x"
+                     ]
+                  ],
+                  1
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Assemble the quotient rule: \\( f'(x) = 5^{- 2 x} \\left(- 5^{x} \\sqrt{\\sin{\\left(4 x \\right)} + 1} \\ln{\\left(5 \\right)} + \\frac{2 \\cdot 5^{x} \\cos{\\left(4 x \\right)}}{\\sqrt{\\sin{\\left(4 x \\right)} + 1}}\\right) \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Add",
+               [
+                  "Negate",
+                  [
+                     "Multiply",
+                     [
+                        "Power",
+                        5,
+                        "x"
+                     ],
+                     [
+                        "Sqrt",
+                        [
+                           "Add",
+                           [
+                              "Sin",
+                              [
+                                 "Multiply",
+                                 4,
+                                 "x"
+                              ]
+                           ],
+                           1
+                        ]
+                     ],
+                     [
+                        "Ln",
+                        5
+                     ]
+                  ]
+               ],
+               [
+                  "Divide",
+                  [
+                     "Multiply",
+                     2,
+                     [
+                        "Power",
+                        5,
+                        "x"
+                     ],
+                     [
+                        "Cos",
+                        [
+                           "Multiply",
+                           4,
+                           "x"
+                        ]
+                     ]
+                  ],
+                  [
+                     "Sqrt",
+                     [
+                        "Add",
+                        [
+                           "Sin",
+                           [
+                              "Multiply",
+                              4,
+                              "x"
+                           ]
+                        ],
+                        1
+                     ]
+                  ]
+               ]
+            ],
+            [
+               "Power",
+               5,
+               [
+                  "Multiply",
+                  2,
+                  "x"
+               ]
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Divide",
+            [
+               "Multiply",
+               2,
+               [
+                  "Cos",
+                  [
+                     "Multiply",
+                     4,
+                     "x"
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Power",
+                  5,
+                  "x"
+               ],
+               [
+                  "Sqrt",
+                  [
+                     "Add",
+                     [
+                        "Sin",
+                        [
+                           "Multiply",
+                           4,
+                           "x"
+                        ]
+                     ],
+                     1
+                  ]
+               ],
+               [
+                  "Ln",
+                  5
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03006",
+         "violated_step": 0
+      },
+      {
+         "id": "B",
+         "value": [
+            "Divide",
+            [
+               "Add",
+               [
+                  "Negate",
+                  [
+                     "Multiply",
+                     [
+                        "Power",
+                        5,
+                        "x"
+                     ],
+                     [
+                        "Sqrt",
+                        [
+                           "Add",
+                           [
+                              "Sin",
+                              [
+                                 "Multiply",
+                                 4,
+                                 "x"
+                              ]
+                           ],
+                           1
+                        ]
+                     ],
+                     [
+                        "Ln",
+                        5
+                     ]
+                  ]
+               ],
+               [
+                  "Divide",
+                  [
+                     "Multiply",
+                     2,
+                     [
+                        "Power",
+                        5,
+                        "x"
+                     ],
+                     [
+                        "Cos",
+                        [
+                           "Multiply",
+                           4,
+                           "x"
+                        ]
+                     ]
+                  ],
+                  [
+                     "Sqrt",
+                     [
+                        "Add",
+                        [
+                           "Sin",
+                           [
+                              "Multiply",
+                              4,
+                              "x"
+                           ]
+                        ],
+                        1
+                     ]
+                  ]
+               ]
+            ],
+            [
+               "Power",
+               5,
+               [
+                  "Multiply",
+                  2,
+                  "x"
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": [
+            "Divide",
+            [
+               "Subtract",
+               [
+                  "Divide",
+                  [
+                     "Multiply",
+                     2,
+                     [
+                        "Power",
+                        5,
+                        "x"
+                     ],
+                     [
+                        "Cos",
+                        [
+                           "Multiply",
+                           4,
+                           "x"
+                        ]
+                     ]
+                  ],
+                  [
+                     "Sqrt",
+                     [
+                        "Add",
+                        [
+                           "Sin",
+                           [
+                              "Multiply",
+                              4,
+                              "x"
+                           ]
+                        ],
+                        1
+                     ]
+                  ]
+               ],
+               [
+                  "Multiply",
+                  [
+                     "Power",
+                     5,
+                     [
+                        "Subtract",
+                        "x",
+                        1
+                     ]
+                  ],
+                  "x",
+                  [
+                     "Sqrt",
+                     [
+                        "Add",
+                        [
+                           "Sin",
+                           [
+                              "Multiply",
+                              4,
+                              "x"
+                           ]
+                        ],
+                        1
+                     ]
+                  ]
+               ]
+            ],
+            [
+               "Power",
+               5,
+               [
+                  "Multiply",
+                  2,
+                  "x"
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99036",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": [
+            "Divide",
+            [
+               "Add",
+               [
+                  "Negate",
+                  [
+                     "Multiply",
+                     [
+                        "Power",
+                        5,
+                        "x"
+                     ],
+                     [
+                        "Sqrt",
+                        [
+                           "Add",
+                           [
+                              "Sin",
+                              [
+                                 "Multiply",
+                                 4,
+                                 "x"
+                              ]
+                           ],
+                           1
+                        ]
+                     ],
+                     [
+                        "Ln",
+                        5
+                     ]
+                  ]
+               ],
+               [
+                  "Divide",
+                  [
+                     "Multiply",
+                     [
+                        "Power",
+                        5,
+                        "x"
+                     ],
+                     [
+                        "Cos",
+                        [
+                           "Multiply",
+                           4,
+                           "x"
+                        ]
+                     ]
+                  ],
+                  [
+                     "Multiply",
+                     2,
+                     [
+                        "Sqrt",
+                        [
+                           "Add",
+                           [
+                              "Sin",
+                              [
+                                 "Multiply",
+                                 4,
+                                 "x"
+                              ]
+                           ],
+                           1
+                        ]
+                     ]
+                  ]
+               ]
+            ],
+            [
+               "Power",
+               5,
+               [
+                  "Multiply",
+                  2,
+                  "x"
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03002",
+         "violated_step": 2
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-03026",
+      "BC-SKL-03027",
+      "BC-SKL-03028",
+      "BC-SKL-03029",
+      "BC-SKL-03006"
+   ],
+   "parameter_draw": {
+      "exponential_base": "5",
+      "composite": "sqrt_1_sin4x",
+      "structure": "quotient",
+      "answer_mode": "expr",
+      "difficulty_variables": {
+         "algebraic rewrite available": true,
+         "rules needed": [
+            "quotient",
+            "exponential",
+            "chain (three layers)"
+         ],
+         "surface resembles another family": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

@@ -1,0 +1,163 @@
+{
+   "id": "ITM-AGT-10011-19",
+   "archetype_id": "BC-QA-10011",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "The function \\( f \\) has derivatives of all orders, and its values at \\( x = 5 \\) are \\( f(5) = -2 \\), \\( f'(5) = 1 \\), \\( f''(5) = 3 \\), \\( f'''(5) = 4 \\), \\( f^{(4)}(5) = -5 \\). Let \\( P \\) be the third-degree Taylor polynomial for \\( f \\) about \\( x = 5 \\). Find the value of \\( P\\left(6\\right) \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         7,
+         6
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "A degree 3 polynomial needs the values through order 3: \\( f(5) = -2 \\), \\( f'(5) = 1 \\), \\( f''(5) = 3 \\), \\( f'''(5) = 4 \\). The value of order 4 is not used.",
+         "mathjson": 4
+      },
+      {
+         "step": 2,
+         "text": "Divide each by the matching factorial: \\( \\frac{-2}{0!} = -2 \\), \\( \\frac{1}{1!} = 1 \\), \\( \\frac{3}{2!} = \\frac{3}{2} \\), \\( \\frac{4}{3!} = \\frac{2}{3} \\).",
+         "mathjson": [
+            "Rational",
+            2,
+            3
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Attach \\( (x - 5)^{k} \\) to the coefficient of order \\( k \\): \\( P(x) = -2 + (x - 5) + \\frac{3}{2}(x - 5)^{2} + \\frac{2}{3}(x - 5)^{3} \\).",
+         "mathjson": [
+            "Add",
+            -2,
+            [
+               "Subtract",
+               "x",
+               5
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  3,
+                  2
+               ],
+               [
+                  "Power",
+                  [
+                     "Subtract",
+                     "x",
+                     5
+                  ],
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  2,
+                  3
+               ],
+               [
+                  "Power",
+                  [
+                     "Subtract",
+                     "x",
+                     5
+                  ],
+                  3
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Substitute \\( x = 6 \\), so \\( (x - 5) = 1 \\): \\( P\\left(6\\right) = \\frac{7}{6} \\).",
+         "mathjson": [
+            "Rational",
+            7,
+            6
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Rational",
+            7,
+            6
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            3,
+            2
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10031",
+         "violated_step": 0
+      },
+      {
+         "id": "C",
+         "value": 6,
+         "is_key": false,
+         "error_path": "BC-ERR-10029",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": [
+            "Rational",
+            23,
+            24
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10030",
+         "violated_step": 3
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10044",
+      "BC-SKL-10045"
+   ],
+   "parameter_draw": {
+      "function_letter": "f",
+      "centre": 5,
+      "table_values": [
+         "-2",
+         "1",
+         "3",
+         "4",
+         "-5"
+      ],
+      "degree_requested": 3,
+      "centre_is_zero": false,
+      "approximation_at": "6",
+      "rows_swapped_in_distractor": [
+         2,
+         3
+      ]
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

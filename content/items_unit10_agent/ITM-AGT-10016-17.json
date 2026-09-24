@@ -1,0 +1,392 @@
+{
+   "id": "ITM-AGT-10016-17",
+   "archetype_id": "BC-QA-10016",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = \\sum_{n=0}^{\\infty} \\frac{(-1)^{n}}{n + 1} x^{2 n} \\), where the series converges. Find the sum of the first three nonzero terms of the series for \\( f'(x) \\) obtained by differentiating term by term."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Negate",
+            "x"
+         ],
+         [
+            "Multiply",
+            [
+               "Rational",
+               4,
+               3
+            ],
+            [
+               "Power",
+               "x",
+               3
+            ]
+         ],
+         [
+            "Multiply",
+            [
+               "Rational",
+               -3,
+               2
+            ],
+            [
+               "Power",
+               "x",
+               5
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Write the first terms of \\( f \\): \\( 1 - \\frac{1}{2}x^{2} + \\frac{1}{3}x^{4} - \\frac{1}{4}x^{6} + \\cdots \\).",
+         "mathjson": [
+            "Add",
+            1,
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -1,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  3
+               ],
+               [
+                  "Power",
+                  "x",
+                  4
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -1,
+                  4
+               ],
+               [
+                  "Power",
+                  "x",
+                  6
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Apply the power rule \\( \\frac{d}{dx} x^{k} = k x^{k - 1} \\) to each term; the constant term, if any, differentiates to 0.",
+         "mathjson": [
+            "Add",
+            [
+               "Negate",
+               "x"
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  4,
+                  3
+               ],
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -3,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  5
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  8,
+                  5
+               ],
+               [
+                  "Power",
+                  "x",
+                  7
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Keep the first three nonzero results: \\( f'(x) \\) begins \\( -x + \\frac{4}{3}x^{3} - \\frac{3}{2}x^{5} \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Negate",
+               "x"
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  4,
+                  3
+               ],
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -3,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  5
+               ]
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            [
+               "Negate",
+               "x"
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  4,
+                  3
+               ],
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -3,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  5
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": [
+            "Add",
+            [
+               "Negate",
+               "x"
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  4,
+                  3
+               ],
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -3,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  5
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  8,
+                  5
+               ],
+               [
+                  "Power",
+                  "x",
+                  7
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10030",
+         "violated_step": 0
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            [
+               "Negate",
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  4,
+                  3
+               ],
+               [
+                  "Power",
+                  "x",
+                  4
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -3,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  6
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99018",
+         "violated_step": 0
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -1,
+                  2
+               ],
+               "x"
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  3
+               ],
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -1,
+                  4
+               ],
+               [
+                  "Power",
+                  "x",
+                  5
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99018",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10060",
+      "BC-SKL-10067"
+   ],
+   "parameter_draw": {
+      "general_term": "\\frac{(-1)^{n}}{n + 1}",
+      "power": "2*n",
+      "operation": "derivative",
+      "terms_requested": 3,
+      "alternating": true,
+      "has_factorial": false,
+      "question": "first nonzero terms of the derivative series",
+      "distractor_mistakes": [
+         "exponent not lowered",
+         "coefficient not multiplied by the exponent"
+      ]
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

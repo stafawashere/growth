@@ -1,0 +1,226 @@
+{
+   "id": "ITM-AGT-07011-20",
+   "archetype_id": "BC-QA-07011",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Consider the differential equation \\( \\frac{dy}{dx} = -4x(y + 1) \\). Find the particular solution \\( y = f(x) \\) with \\( f(0) = -3 \\), written as an explicit function of \\( x \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         -1,
+         [
+            "Negate",
+            [
+               "Divide",
+               2,
+               [
+                  "Exp",
+                  [
+                     "Multiply",
+                     2,
+                     [
+                        "Power",
+                        "x",
+                        2
+                     ]
+                  ]
+               ]
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Separate and antidifferentiate: \\( \\ln|y - (-1)| = - 2 x^{2} + C \\).",
+         "mathjson": [
+            "Negate",
+            [
+               "Multiply",
+               2,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "At \\( x = 0 \\), \\( y - (-1) = -2 \\), which is negative, and a solution never crosses the equilibrium \\( y = -1 \\), so \\( y - (-1) = -2 e^{- 2 x^{2}} \\).",
+         "mathjson": -2
+      },
+      {
+         "step": 3,
+         "text": "This expression is defined for every real \\( x \\), so no restriction arises, and \\( y = -1 - 2 e^{- 2 x^{2}} \\).",
+         "mathjson": [
+            "Add",
+            -1,
+            [
+               "Negate",
+               [
+                  "Divide",
+                  2,
+                  [
+                     "Exp",
+                     [
+                        "Multiply",
+                        2,
+                        [
+                           "Power",
+                           "x",
+                           2
+                        ]
+                     ]
+                  ]
+               ]
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            -1,
+            [
+               "Divide",
+               2,
+               [
+                  "Exp",
+                  [
+                     "Multiply",
+                     2,
+                     [
+                        "Power",
+                        "x",
+                        2
+                     ]
+                  ]
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-07030",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Add",
+            [
+               "Negate",
+               [
+                  "Multiply",
+                  2,
+                  [
+                     "Exp",
+                     [
+                        "Multiply",
+                        2,
+                        [
+                           "Power",
+                           "x",
+                           2
+                        ]
+                     ]
+                  ]
+               ]
+            ],
+            -1
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99014",
+         "violated_step": 0
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            -1,
+            [
+               "Negate",
+               [
+                  "Divide",
+                  2,
+                  [
+                     "Exp",
+                     [
+                        "Multiply",
+                        4,
+                        [
+                           "Power",
+                           "x",
+                           2
+                        ]
+                     ]
+                  ]
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99014",
+         "violated_step": 0
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            -1,
+            [
+               "Negate",
+               [
+                  "Divide",
+                  2,
+                  [
+                     "Exp",
+                     [
+                        "Multiply",
+                        2,
+                        [
+                           "Power",
+                           "x",
+                           2
+                        ]
+                     ]
+                  ]
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-03",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-07030",
+      "BC-SKL-07031",
+      "BC-SKL-07032",
+      "BC-SKL-07038"
+   ],
+   "parameter_draw": {
+      "rate": "-4x(y + 1)",
+      "equilibrium": "-1",
+      "y0": "-3",
+      "difficulty_variables": {
+         "vertical_asymptote": false,
+         "absolute_value_resolved": true,
+         "accumulation_form": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

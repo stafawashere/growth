@@ -1,0 +1,369 @@
+{
+   "id": "ITM-AGT-06010-10",
+   "archetype_id": "BC-QA-06010",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Find the exact value of \\( \\int_{0}^{2} \\frac{2 x^{2} + x}{x^{2} + 4 x + 3} \\, dx \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Negate",
+            [
+               "Divide",
+               [
+                  "Multiply",
+                  15,
+                  [
+                     "Ln",
+                     5
+                  ]
+               ],
+               2
+            ]
+         ],
+         4,
+         [
+            "Multiply",
+            8,
+            [
+               "Ln",
+               3
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Factor the denominator: \\( x^{2} + 4 x + 3 = \\left(x + 1\\right) \\left(x + 3\\right) \\).",
+         "mathjson": [
+            "Multiply",
+            [
+               "Add",
+               "x",
+               1
+            ],
+            [
+               "Add",
+               "x",
+               3
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The numerator's degree is not less than the denominator's, so divide first: \\( \\frac{2 x^{2} + x}{x^{2} + 4 x + 3} = 2 + \\frac{- 7 x - 6}{x^{2} + 4 x + 3} \\), and write \\( \\frac{- 7 x - 6}{x^{2} + 4 x + 3} = \\frac{A}{x + 1} + \\frac{B}{x + 3} \\).",
+         "mathjson": 2
+      },
+      {
+         "step": 3,
+         "text": "Clearing denominators gives \\( - 7 x - 6 = A \\left(x + 3\\right) + B \\left(x + 1\\right) \\). Setting \\( x = -1 \\) gives \\( A = \\frac{1}{2} \\), and setting \\( x = -3 \\) gives \\( B = - \\frac{15}{2} \\), so the integrand is \\( 2 - \\frac{15}{2 \\left(x + 3\\right)} + \\frac{1}{2 \\left(x + 1\\right)} \\).",
+         "mathjson": [
+            "Add",
+            2,
+            [
+               "Negate",
+               [
+                  "Divide",
+                  15,
+                  [
+                     "Add",
+                     [
+                        "Multiply",
+                        2,
+                        "x"
+                     ],
+                     6
+                  ]
+               ]
+            ],
+            [
+               "Divide",
+               1,
+               [
+                  "Add",
+                  [
+                     "Multiply",
+                     2,
+                     "x"
+                  ],
+                  2
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "An antiderivative is \\( 2 x + \\frac{\\ln{\\left(\\left|{x + 1}\\right| \\right)}}{2} - \\frac{15 \\ln{\\left(\\left|{x + 3}\\right| \\right)}}{2} \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               2,
+               "x"
+            ],
+            [
+               "Divide",
+               [
+                  "Ln",
+                  [
+                     "Abs",
+                     [
+                        "Add",
+                        "x",
+                        1
+                     ]
+                  ]
+               ],
+               2
+            ],
+            [
+               "Negate",
+               [
+                  "Divide",
+                  [
+                     "Multiply",
+                     15,
+                     [
+                        "Ln",
+                        [
+                           "Abs",
+                           [
+                              "Add",
+                              "x",
+                              3
+                           ]
+                        ]
+                     ]
+                  ],
+                  2
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 5,
+         "text": "Evaluate from \\( x = 0 \\) to \\( x = 2 \\): the value is \\( - \\frac{15 \\ln{\\left(5 \\right)}}{2} + 4 + 8 \\ln{\\left(3 \\right)} \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Negate",
+               [
+                  "Divide",
+                  [
+                     "Multiply",
+                     15,
+                     [
+                        "Ln",
+                        5
+                     ]
+                  ],
+                  2
+               ]
+            ],
+            4,
+            [
+               "Multiply",
+               8,
+               [
+                  "Ln",
+                  3
+               ]
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            [
+               "Negate",
+               [
+                  "Divide",
+                  [
+                     "Multiply",
+                     15,
+                     [
+                        "Ln",
+                        5
+                     ]
+                  ],
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               8,
+               [
+                  "Ln",
+                  3
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06026",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Add",
+            [
+               "Negate",
+               [
+                  "Divide",
+                  [
+                     "Multiply",
+                     15,
+                     [
+                        "Ln",
+                        5
+                     ]
+                  ],
+                  2
+               ]
+            ],
+            4,
+            [
+               "Multiply",
+               8,
+               [
+                  "Ln",
+                  3
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            [
+               "Negate",
+               [
+                  "Multiply",
+                  2,
+                  [
+                     "Ln",
+                     3
+                  ]
+               ]
+            ],
+            [
+               "Divide",
+               [
+                  "Multiply",
+                  3,
+                  [
+                     "Ln",
+                     5
+                  ]
+               ],
+               2
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06026",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            [
+               "Negate",
+               [
+                  "Divide",
+                  [
+                     "Multiply",
+                     3,
+                     [
+                        "Ln",
+                        5
+                     ]
+                  ],
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               2,
+               [
+                  "Ln",
+                  3
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06026",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06062",
+      "BC-SKL-06063",
+      "BC-SKL-06064",
+      "BC-SKL-06065"
+   ],
+   "parameter_draw": {
+      "numerator": "2*x**2 + x",
+      "denominator_factors": [
+         "x + 1",
+         "x + 3"
+      ],
+      "limits": [
+         "0",
+         "2"
+      ],
+      "quotient": "2",
+      "remainder": "-7*x - 6",
+      "A": "1/2",
+      "B": "-15/2",
+      "difficulty_variables": {
+         "whether the numerator degree forces a division first": "yes",
+         "whether the constants must be found by substitution or by equating coefficients": "substitution at the roots",
+         "whether the logarithms must be combined": "no, the answer is written with logarithms of primes",
+         "whether a definite integral requires the limits": "yes"
+      },
+      "distractor_derivations": {
+         "A": "decomposed without dividing; constants found by substituting both roots (cover up), so the polynomial part of the quotient is lost: A = 1/2, B = -15/2",
+         "C": "decomposed without dividing; constants found by matching only the x and constant coefficients, ignoring the unmatched higher powers: A = -1/2, B = 3/2",
+         "D": "decomposed without dividing; constants found by substituting the root of the first factor and x = 0: A = 1/2, B = -3/2"
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

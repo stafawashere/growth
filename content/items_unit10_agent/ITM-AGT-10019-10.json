@@ -1,0 +1,346 @@
+{
+   "id": "ITM-AGT-10019-10",
+   "archetype_id": "BC-QA-10019",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f \\) be the function with \\( f(0) = 0 \\) and \\( f'(x) = \\frac{x}{1 + 4x^{2}} \\). Use a known Maclaurin series for \\( f' \\), integrated term by term, to find the sum of the first three nonzero terms of the Maclaurin series for \\( f \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Multiply",
+            [
+               "Rational",
+               1,
+               2
+            ],
+            [
+               "Power",
+               "x",
+               2
+            ]
+         ],
+         [
+            "Negate",
+            [
+               "Power",
+               "x",
+               4
+            ]
+         ],
+         [
+            "Multiply",
+            [
+               "Rational",
+               8,
+               3
+            ],
+            [
+               "Power",
+               "x",
+               6
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "From the series for \\( \\frac{1}{1 - u} \\) with \\( u = -4x^{2} \\), \\( f'(x) = x - 4x^{3} + 16x^{5} + \\cdots \\).",
+         "mathjson": [
+            "Add",
+            "x",
+            [
+               "Multiply",
+               -4,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               16,
+               [
+                  "Power",
+                  "x",
+                  5
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Integrate each term, raising the power by 1 and dividing by the new power: \\( f(x) = C + \\frac{1}{2}x^{2} - x^{4} + \\frac{8}{3}x^{6} + \\cdots \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Negate",
+               [
+                  "Power",
+                  "x",
+                  4
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  8,
+                  3
+               ],
+               [
+                  "Power",
+                  "x",
+                  6
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Every term after the constant vanishes at 0, so \\( f(0) = C = 0 \\).",
+         "mathjson": 0
+      },
+      {
+         "step": 4,
+         "text": "The first three nonzero terms sum to \\( \\frac{1}{2}x^{2} - x^{4} + \\frac{8}{3}x^{6} \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Negate",
+               [
+                  "Power",
+                  "x",
+                  4
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  8,
+                  3
+               ],
+               [
+                  "Power",
+                  "x",
+                  6
+               ]
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Negate",
+               [
+                  "Power",
+                  "x",
+                  4
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  8,
+                  3
+               ],
+               [
+                  "Power",
+                  "x",
+                  6
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": [
+            "Add",
+            [
+               "Power",
+               "x",
+               2
+            ],
+            [
+               "Multiply",
+               -4,
+               [
+                  "Power",
+                  "x",
+                  4
+               ]
+            ],
+            [
+               "Multiply",
+               16,
+               [
+                  "Power",
+                  "x",
+                  6
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99018",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            [
+               "Power",
+               "x",
+               2
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -4,
+                  3
+               ],
+               [
+                  "Power",
+                  "x",
+                  4
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  16,
+                  5
+               ],
+               [
+                  "Power",
+                  "x",
+                  6
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99018",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  2
+               ],
+               "x"
+            ],
+            [
+               "Negate",
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  8,
+                  3
+               ],
+               [
+                  "Power",
+                  "x",
+                  5
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99018",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10069"
+   ],
+   "parameter_draw": {
+      "integrand": "\\frac{x}{1 + 4x^{2}}",
+      "known_series": "\\frac{1}{1 - u}",
+      "substitution": "-4x^{2}",
+      "value_at_zero": 0,
+      "constant_is_zero": true,
+      "terms_requested": 3,
+      "distractor_mistakes": [
+         "power raised without dividing",
+         "divided by the new exponent without raising the power",
+         "divided by the old exponent"
+      ]
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

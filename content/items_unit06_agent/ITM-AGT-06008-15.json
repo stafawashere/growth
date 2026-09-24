@@ -1,0 +1,181 @@
+{
+   "id": "ITM-AGT-06008-15",
+   "archetype_id": "BC-QA-06008",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Find the exact value of \\( \\int_{0}^{3} x \\sqrt{x^{2} + 16} \\, dx \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         61,
+         3
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Let \\( u = x^{2} + 16 \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Power",
+               "x",
+               2
+            ],
+            16
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Then \\( du = 2 x \\, dx \\), so \\( x \\, dx = \\frac{1}{2} \\, du \\).",
+         "mathjson": [
+            "Rational",
+            1,
+            2
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Convert the limits: \\( x = 0 \\) gives \\( u = 16 \\) and \\( x = 3 \\) gives \\( u = 25 \\), so the integral becomes \\( \\int_{16}^{25} \\frac{\\sqrt{u}}{2} \\, du \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Sqrt",
+               "u"
+            ],
+            2
+         ]
+      },
+      {
+         "step": 4,
+         "text": "An antiderivative of \\( \\frac{\\sqrt{u}}{2} \\) is \\( \\frac{u^{\\frac{3}{2}}}{3} \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Power",
+               "u",
+               [
+                  "Rational",
+                  3,
+                  2
+               ]
+            ],
+            3
+         ]
+      },
+      {
+         "step": 5,
+         "text": "Evaluate at the new limits: \\( \\frac{125}{3} - \\left(\\frac{64}{3}\\right) = \\frac{61}{3} \\).",
+         "mathjson": [
+            "Rational",
+            61,
+            3
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Rational",
+            61,
+            3
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            122,
+            3
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06019",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Sqrt",
+            3
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06018",
+         "violated_step": 4
+      },
+      {
+         "id": "D",
+         "value": [
+            "Rational",
+            125,
+            3
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06018",
+         "violated_step": 4
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-11",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06047",
+      "BC-SKL-06048",
+      "BC-SKL-06049",
+      "BC-SKL-06050",
+      "BC-SKL-06051",
+      "BC-SKL-06052",
+      "BC-SKL-06034"
+   ],
+   "parameter_draw": {
+      "form": "definite integral",
+      "integrand": "x*sqrt(x**2 + 16)",
+      "inner_u": "x**2 + 16",
+      "du_constant_k": "2",
+      "limits": [
+         "0",
+         "3"
+      ],
+      "u_limits": [
+         "16",
+         "25"
+      ],
+      "difficulty_variables": {
+         "whether a constant adjustment is needed": "yes",
+         "whether the answer is logarithmic, exponential, trigonometric, or a power": "power",
+         "definite versus indefinite": "definite",
+         "whether the limits must be converted": "yes",
+         "whether the substitution is disguised by a prior rearrangement": "no"
+      },
+      "distractor_derivations": {
+         "B": "substitution carried out as if x dx = du, without the constant 1/(2)",
+         "C": "antiderivative in u evaluated at the original x limits 0 and 3",
+         "D": "upper limit converted to u = 25 but the original lower limit 0 kept"
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

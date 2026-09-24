@@ -7,6 +7,10 @@ distractor-path property, without touching the database or writing anywhere. The
 runs this over their own files before handing them over, so a malformed record shows up
 here instead of turning a gate red later.
 
+Gate 30's error-path rule is applied per record: a distractor's error_path must be a BC-ERR id
+held by one of the skills of that record's own archetype, not by any skill in the bank. A record
+naming an archetype the snapshot does not hold is a violation.
+
 A record whose provenance model is not operator (an agent draft, app/items/ingest.py
 provenance_model) is checked like any other and counted under items per archetype, but only
 operator-authored records are counted toward exit criterion 7, per the operator's ruling of
@@ -27,16 +31,23 @@ from tools.build_p1_fixture import P1_ARCHETYPES
 DATA_ROOT = Path(__file__).resolve().parents[1] / "data"
 
 
-def p1_skill_ids(snapshot):
-   skill_ids = set()
+def archetype_error_ids(snapshot, archetype_id):
+   archetype = snapshot.archetypes.get(archetype_id)
+   is_known_archetype = archetype is not None
 
-   for archetype_id in P1_ARCHETYPES:
-      skill_ids.update(snapshot.archetypes[archetype_id]["skills"])
+   if not is_known_archetype:
+      return None
 
-   return frozenset(skill_ids)
+   return error_ids_for_skills(snapshot, archetype["skills"])
 
 
-def record_violations(record, active_error_ids):
+def record_violations(record, snapshot):
+   active_error_ids = archetype_error_ids(snapshot, record.get("archetype_id"))
+   names_unknown_archetype = active_error_ids is None
+
+   if names_unknown_archetype:
+      return [f"archetype {record.get('archetype_id')!r} is not an active archetype in the snapshot"]
+
    violations = []
 
    for result in run_checks(record, active_error_ids):
@@ -50,7 +61,7 @@ def record_violations(record, active_error_ids):
    return violations
 
 
-def check_directory(directory, active_error_ids):
+def check_directory(directory, snapshot):
    records = load_records(directory)
    archetype_counts = {archetype_id: 0 for archetype_id in P1_ARCHETYPES}
    operator_archetype_counts = {archetype_id: 0 for archetype_id in P1_ARCHETYPES}
@@ -60,17 +71,15 @@ def check_directory(directory, active_error_ids):
    for record in records:
       record_id = record.get("id", "<no id>")
       archetype_id = record.get("archetype_id")
-      is_a_p1_archetype = archetype_id in archetype_counts
-
-      if is_a_p1_archetype:
-         archetype_counts[archetype_id] += 1
+      is_a_p1_archetype = archetype_id in operator_archetype_counts
+      archetype_counts[archetype_id] = archetype_counts.get(archetype_id, 0) + 1
 
       counts_toward_exit_criterion_7 = is_a_p1_archetype and is_operator_authored(record)
 
       if counts_toward_exit_criterion_7:
          operator_archetype_counts[archetype_id] += 1
 
-      violations = record_violations(record, active_error_ids)
+      violations = record_violations(record, snapshot)
       record_is_clean = len(violations) == 0
 
       if record_is_clean:
@@ -101,7 +110,7 @@ def print_report(report):
    print()
    print("items per archetype:")
 
-   for archetype_id in P1_ARCHETYPES:
+   for archetype_id in sorted(report["archetype_counts"]):
       print(f"  {archetype_id}: {report['archetype_counts'][archetype_id]}")
 
    print()
@@ -128,8 +137,7 @@ def main(argv):
 
       return 1
 
-   active_error_ids = error_ids_for_skills(snapshot, p1_skill_ids(snapshot))
-   report = check_directory(directory, active_error_ids)
+   report = check_directory(directory, snapshot)
 
    print_report(report)
 

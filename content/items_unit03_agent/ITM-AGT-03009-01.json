@@ -1,0 +1,483 @@
+{
+   "id": "ITM-AGT-03009-01",
+   "archetype_id": "BC-QA-03009",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = 2^{x}\\,\\cos^{3}(2x) \\). Find \\( f'(x) \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Negate",
+            [
+               "Multiply",
+               6,
+               [
+                  "Power",
+                  2,
+                  "x"
+               ],
+               [
+                  "Sin",
+                  [
+                     "Multiply",
+                     2,
+                     "x"
+                  ]
+               ],
+               [
+                  "Power",
+                  [
+                     "Cos",
+                     [
+                        "Multiply",
+                        2,
+                        "x"
+                     ]
+                  ],
+                  2
+               ]
+            ]
+         ],
+         [
+            "Multiply",
+            [
+               "Power",
+               2,
+               "x"
+            ],
+            [
+               "Ln",
+               2
+            ],
+            [
+               "Power",
+               [
+                  "Cos",
+                  [
+                     "Multiply",
+                     2,
+                     "x"
+                  ]
+               ],
+               3
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The outermost operation is a product of \\( 2^{x} \\) and \\( \\cos^{3}(2x) \\), so the product rule comes first: \\( f'(x) = \\left(2^{x}\\right)'\\,\\cos^{3}(2x) + 2^{x}\\left(\\cos^{3}(2x)\\right)' \\).",
+         "mathjson": [
+            "Multiply",
+            [
+               "Power",
+               2,
+               "x"
+            ],
+            [
+               "Power",
+               [
+                  "Cos",
+                  [
+                     "Multiply",
+                     2,
+                     "x"
+                  ]
+               ],
+               3
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "\\( 2^{x} \\) is an exponential function with a constant base, so its derivative is \\( 2^{x} \\ln{\\left(2 \\right)} \\); the power rule does not apply to it.",
+         "mathjson": [
+            "Multiply",
+            [
+               "Power",
+               2,
+               "x"
+            ],
+            [
+               "Ln",
+               2
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The factor \\( \\cos^{3}(2x) \\) is a cube of \\( \\cos(2x) \\), which is a cosine of \\( 2x \\), so apply the chain rule from the outside inward: \\( \\left(\\cos^{3}(2x)\\right)' = - 6 \\sin{\\left(2 x \\right)} \\cos^{2}{\\left(2 x \\right)} \\).",
+         "mathjson": [
+            "Negate",
+            [
+               "Multiply",
+               6,
+               [
+                  "Sin",
+                  [
+                     "Multiply",
+                     2,
+                     "x"
+                  ]
+               ],
+               [
+                  "Power",
+                  [
+                     "Cos",
+                     [
+                        "Multiply",
+                        2,
+                        "x"
+                     ]
+                  ],
+                  2
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Assemble the product rule: \\( f'(x) = - 6 \\cdot 2^{x} \\sin{\\left(2 x \\right)} \\cos^{2}{\\left(2 x \\right)} + 2^{x} \\ln{\\left(2 \\right)} \\cos^{3}{\\left(2 x \\right)} \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Negate",
+               [
+                  "Multiply",
+                  6,
+                  [
+                     "Power",
+                     2,
+                     "x"
+                  ],
+                  [
+                     "Sin",
+                     [
+                        "Multiply",
+                        2,
+                        "x"
+                     ]
+                  ],
+                  [
+                     "Power",
+                     [
+                        "Cos",
+                        [
+                           "Multiply",
+                           2,
+                           "x"
+                        ]
+                     ],
+                     2
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Power",
+                  2,
+                  "x"
+               ],
+               [
+                  "Ln",
+                  2
+               ],
+               [
+                  "Power",
+                  [
+                     "Cos",
+                     [
+                        "Multiply",
+                        2,
+                        "x"
+                     ]
+                  ],
+                  3
+               ]
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            [
+               "Negate",
+               [
+                  "Multiply",
+                  6,
+                  [
+                     "Power",
+                     2,
+                     "x"
+                  ],
+                  [
+                     "Sin",
+                     [
+                        "Multiply",
+                        2,
+                        "x"
+                     ]
+                  ],
+                  [
+                     "Power",
+                     [
+                        "Cos",
+                        [
+                           "Multiply",
+                           2,
+                           "x"
+                        ]
+                     ],
+                     2
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Power",
+                  2,
+                  "x"
+               ],
+               [
+                  "Ln",
+                  2
+               ],
+               [
+                  "Power",
+                  [
+                     "Cos",
+                     [
+                        "Multiply",
+                        2,
+                        "x"
+                     ]
+                  ],
+                  3
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": [
+            "Negate",
+            [
+               "Multiply",
+               6,
+               [
+                  "Power",
+                  2,
+                  "x"
+               ],
+               [
+                  "Ln",
+                  2
+               ],
+               [
+                  "Sin",
+                  [
+                     "Multiply",
+                     2,
+                     "x"
+                  ]
+               ],
+               [
+                  "Power",
+                  [
+                     "Cos",
+                     [
+                        "Multiply",
+                        2,
+                        "x"
+                     ]
+                  ],
+                  2
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03006",
+         "violated_step": 0
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            [
+               "Negate",
+               [
+                  "Multiply",
+                  6,
+                  [
+                     "Power",
+                     2,
+                     "x"
+                  ],
+                  [
+                     "Sin",
+                     [
+                        "Multiply",
+                        2,
+                        "x"
+                     ]
+                  ],
+                  [
+                     "Power",
+                     [
+                        "Cos",
+                        [
+                           "Multiply",
+                           2,
+                           "x"
+                        ]
+                     ],
+                     2
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Power",
+                  2,
+                  [
+                     "Subtract",
+                     "x",
+                     1
+                  ]
+               ],
+               "x",
+               [
+                  "Power",
+                  [
+                     "Cos",
+                     [
+                        "Multiply",
+                        2,
+                        "x"
+                     ]
+                  ],
+                  3
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99036",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            [
+               "Negate",
+               [
+                  "Multiply",
+                  3,
+                  [
+                     "Power",
+                     2,
+                     "x"
+                  ],
+                  [
+                     "Sin",
+                     [
+                        "Multiply",
+                        2,
+                        "x"
+                     ]
+                  ],
+                  [
+                     "Power",
+                     [
+                        "Cos",
+                        [
+                           "Multiply",
+                           2,
+                           "x"
+                        ]
+                     ],
+                     2
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Power",
+                  2,
+                  "x"
+               ],
+               [
+                  "Ln",
+                  2
+               ],
+               [
+                  "Power",
+                  [
+                     "Cos",
+                     [
+                        "Multiply",
+                        2,
+                        "x"
+                     ]
+                  ],
+                  3
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03002",
+         "violated_step": 2
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-03026",
+      "BC-SKL-03027",
+      "BC-SKL-03028",
+      "BC-SKL-03029",
+      "BC-SKL-03006"
+   ],
+   "parameter_draw": {
+      "exponential_base": "2",
+      "composite": "cos3_2x",
+      "structure": "product",
+      "answer_mode": "expr",
+      "difficulty_variables": {
+         "algebraic rewrite available": false,
+         "rules needed": [
+            "product",
+            "exponential",
+            "chain (three layers)"
+         ],
+         "surface resembles another family": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

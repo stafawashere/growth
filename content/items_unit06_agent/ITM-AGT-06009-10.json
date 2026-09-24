@@ -1,0 +1,183 @@
+{
+   "id": "ITM-AGT-06009-10",
+   "archetype_id": "BC-QA-06009",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Find the exact value of \\( \\int_{1}^{e} \\frac{\\ln{\\left(x \\right)}}{x^{2}} \\, dx \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         1,
+         [
+            "Negate",
+            [
+               "Divide",
+               2,
+               "ExponentialE"
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Let \\( u = \\ln{\\left(x \\right)} \\) and \\( dv = \\frac{1}{x^{2}} \\, dx \\), so \\( du = \\frac{1}{x} \\, dx \\) and \\( v = - \\frac{1}{x} \\).",
+         "mathjson": [
+            "Negate",
+            [
+               "Divide",
+               1,
+               "x"
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Then the integral equals \\( \\left[- \\frac{\\ln{\\left(x \\right)}}{x}\\right]_{1}^{e} - \\int_{1}^{e} - \\frac{1}{x^{2}} \\, dx \\), and the boundary term is \\( - \\frac{1}{e} \\).",
+         "mathjson": [
+            "Negate",
+            [
+               "Exp",
+               -1
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The remaining integral is \\( \\int_{1}^{e} - \\frac{1}{x^{2}} \\, dx = -1 + e^{-1} \\).",
+         "mathjson": [
+            "Add",
+            -1,
+            [
+               "Exp",
+               -1
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "So the value is \\( - \\frac{1}{e} - \\left(-1 + e^{-1}\\right) = 1 - \\frac{2}{e} \\).",
+         "mathjson": [
+            "Add",
+            1,
+            [
+               "Negate",
+               [
+                  "Divide",
+                  2,
+                  "ExponentialE"
+               ]
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            1,
+            [
+               "Negate",
+               [
+                  "Divide",
+                  2,
+                  "ExponentialE"
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": -1,
+         "is_key": false,
+         "error_path": "BC-ERR-06022",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            1,
+            [
+               "Negate",
+               [
+                  "Exp",
+                  -1
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99025",
+         "violated_step": 3
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            -1,
+            [
+               "Divide",
+               2,
+               "ExponentialE"
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99025",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06057",
+      "BC-SKL-06058",
+      "BC-SKL-06059",
+      "BC-SKL-06060",
+      "BC-SKL-06061",
+      "BC-SKL-06034"
+   ],
+   "parameter_draw": {
+      "integrand": "log(x)/x**2",
+      "u": "log(x)",
+      "dv": "x**(-2)",
+      "limits": [
+         "1",
+         "E"
+      ],
+      "difficulty_variables": {
+         "whether parts must be applied more than once": "no",
+         "definite versus indefinite": "definite",
+         "whether the non polynomial factor is trigonometric, exponential, or logarithmic": "logarithmic",
+         "whether the integrand contains an unknown function and its derivative": "no",
+         "whether supplied values of the unknown function must be imported": "no"
+      },
+      "distractor_derivations": {
+         "B": "antiderivatives x*log(x) - x and -1/x multiplied and evaluated from 1 to E",
+         "C": "boundary term [uv] left out, only minus the remaining integral kept",
+         "D": "v taken as 1/x, the antiderivative of dv with the wrong sign"
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

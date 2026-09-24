@@ -27,14 +27,14 @@ def unit_titles(root):
    return {record["id"]: record["name"] for record in curriculum["units"]}
 
 
-def build_bank(engine, snapshot, snapshot_id, items_directory):
-   has_items_directory = items_directory is not None
+def build_bank(engine, snapshot, snapshot_id, items_directories):
+   has_items_directories = len(items_directories) > 0
 
-   if not has_items_directory:
+   if not has_items_directories:
       return ItemBank(engine)
 
    source = ItemSource(
-      directory=Path(items_directory),
+      directories=tuple(Path(directory) for directory in items_directories),
       active_error_ids=frozenset(snapshot.errors),
       snapshot_id=snapshot_id,
    )
@@ -43,7 +43,7 @@ def build_bank(engine, snapshot, snapshot_id, items_directory):
 
 
 def build_session_context(
-   engine, content_root=None, library_commit=None, loaded_at=None, items_directory=None
+   engine, content_root=None, library_commit=None, loaded_at=None, items_directories=()
 ):
    root = content_root or DEFAULT_CONTENT_ROOT
    snapshot = load_snapshot(root)
@@ -59,7 +59,7 @@ def build_session_context(
       graph=graph,
       engine_graph=engine_graph,
       archetypes=dict(snapshot.archetypes),
-      bank=build_bank(engine, snapshot, snapshot_id, items_directory),
+      bank=build_bank(engine, snapshot, snapshot_id, items_directories),
       snapshot_id=snapshot_id,
       errors=dict(snapshot.errors),
       unit_titles=unit_titles(root),

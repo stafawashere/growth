@@ -1,0 +1,128 @@
+{
+   "id": "ITM-AGT-10009-11",
+   "archetype_id": "BC-QA-10009",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "A function \\( f \\) has derivatives of all orders. The fourth-degree Taylor polynomial for \\( f \\) about \\( x = 1 \\) is used to approximate \\( f\\left(\\frac{1}{2}\\right) \\). It is known that \\( f^{(5)}(1) = 8 \\) and that \\( |f^{(5)}(x)| \\le 20 \\) for all \\( x \\) in \\( \\left[\\frac{1}{2}, 1\\right] \\). The approximation is meant to be within \\( \\frac{1}{100} \\) of \\( f\\left(\\frac{1}{2}\\right) \\). Find the Lagrange error bound for this approximation."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         1,
+         192
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "A degree 4 polynomial needs the maximum of \\( |f^{(5)}(x)| \\), the derivative of order \\( 5 \\), between the centre and the input.",
+         "mathjson": 5
+      },
+      {
+         "step": 2,
+         "text": "The bound is \\( \\frac{M\\,|x - 1|^{5}}{5!} \\) with \\( M = 20 \\) and \\( |x - 1| = \\frac{1}{2} \\).",
+         "mathjson": [
+            "Rational",
+            1,
+            192
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Evaluating gives \\( \\frac{20 \\cdot \\left(\\frac{1}{2}\\right)^{5}}{120} = \\frac{1}{192} \\).",
+         "mathjson": [
+            "Rational",
+            1,
+            192
+         ]
+      },
+      {
+         "step": 4,
+         "text": "The error is at most \\( \\frac{1}{192} \\), which is at most \\( \\frac{1}{100} \\).",
+         "mathjson": [
+            "Rational",
+            1,
+            192
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Rational",
+            5,
+            192
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10032",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            1,
+            96
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10032",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Rational",
+            1,
+            480
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10033",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": [
+            "Rational",
+            1,
+            192
+         ],
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10048",
+      "BC-SKL-10049",
+      "BC-SKL-10050",
+      "BC-SKL-10051",
+      "BC-SKL-10052"
+   ],
+   "parameter_draw": {
+      "centre": "1",
+      "input": "1/2",
+      "degree": 4,
+      "derivative_bound": "20",
+      "derivative_at_centre": "8",
+      "interval_stated": true,
+      "tolerance": "1/100",
+      "difficulty_variables": {
+         "derivative_bound_supplied": true,
+         "displacement": "1/2",
+         "tolerance_comparison_shown": true
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

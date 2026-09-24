@@ -5,11 +5,11 @@ Q14): app/engine/select.py and app/session/build.py call only published_items(ar
 has_published_item(archetype_id), the ItemBank protocol app/engine/fringe.py declares. An empty
 bank answers with no rows rather than raising.
 
-A bank may be given an ItemSource, a directory of item records (app/main.py GROWTH_ITEMS_DIR,
-by default the agent drafts in content/items_p1_agent/ the operator ruled servable on 2026-09-23).
-Its new records go through app/items/ingest.py, checks and provenance included, on the bank's
-first query rather than at build time: the checks take seconds over 130 records, and a process
-that never opens a session, which is most of what builds an application, should not pay for them.
+A bank may be given an ItemSource, the directories of item records (app/main.py GROWTH_ITEMS_DIR,
+by default every content/items_* bank). Its new records go through app/items/ingest.py, checks
+and provenance included, on the bank's first query rather than at build time: the checks take
+seconds per hundred records, and a process that never opens a session, which is most of what
+builds an application, should not pay for them.
 """
 import json
 import threading
@@ -21,7 +21,7 @@ from sqlalchemy.orm import Session as OrmSession
 
 from app.db.models import Item
 from app.engine.state import FadingStage
-from app.items.ingest import ingest_new_records
+from app.items.ingest import ingest_new_records, load_records
 
 PUBLISHED_STATUS = "verified"
 
@@ -142,9 +142,26 @@ def served_steps(worked_solution, stage):
    ]
 
 
+def refuse_duplicate_ids(directories):
+   """ingest_new_records skips an id already stored, so an id in two banks would be served from
+   whichever directory came first and the other record would be silently ignored."""
+   first_seen = {}
+
+   for directory in directories:
+      for record in load_records(directory):
+         item_id = record.get("id")
+         earlier = first_seen.get(item_id)
+         is_duplicate = item_id is not None and earlier is not None
+
+         if is_duplicate:
+            raise ValueError(f"item {item_id} is in both {earlier} and {directory}")
+
+         first_seen[item_id] = directory
+
+
 @dataclass(frozen=True)
 class ItemSource:
-   directory: Path
+   directories: tuple
    active_error_ids: frozenset
    snapshot_id: str
 
@@ -170,10 +187,14 @@ class ItemBank:
 
          ingested_at = datetime.now(timezone.utc).isoformat()
 
+         refuse_duplicate_ids(source.directories)
+
          with OrmSession(self._engine) as db:
-            ingest_new_records(
-               db, source.directory, source.active_error_ids, source.snapshot_id, ingested_at
-            )
+            for directory in source.directories:
+               ingest_new_records(
+                  db, directory, source.active_error_ids, source.snapshot_id, ingested_at
+               )
+
             db.commit()
 
          self._pending_source = None

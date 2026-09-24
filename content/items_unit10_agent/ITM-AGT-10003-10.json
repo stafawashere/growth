@@ -1,0 +1,211 @@
+{
+   "id": "ITM-AGT-10003-10",
+   "archetype_id": "BC-QA-10003",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "For \\( |x + 1| < 2 \\), the series \\( \\sum_{n=0}^{\\infty} \\frac{3(-1)^{n}(x+1)^{n}}{2^{n}} \\) converges. Find its sum as an expression in \\( x \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Divide",
+         6,
+         [
+            "Add",
+            "x",
+            3
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Dividing consecutive terms gives the constant ratio \\( r = - \\frac{x}{2} - \\frac{1}{2} \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Negate",
+               [
+                  "Divide",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Rational",
+               -1,
+               2
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The series as written starts at \\( n = 0 \\), so its first term is \\( a = 3 \\).",
+         "mathjson": 3
+      },
+      {
+         "step": 3,
+         "text": "The closed form needs \\( |r| < 1 \\), which holds because \\( |x + 1| < 2 \\) is given.",
+         "mathjson": [
+            "Add",
+            [
+               "Negate",
+               [
+                  "Divide",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Rational",
+               -1,
+               2
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "The sum is \\( \\frac{a}{1 - r} = \\frac{6}{x + 3} \\), so the sum is \\( \\frac{6}{x + 3} \\).",
+         "mathjson": [
+            "Divide",
+            6,
+            [
+               "Add",
+               "x",
+               3
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Divide",
+            6,
+            [
+               "Add",
+               1,
+               [
+                  "Negate",
+                  "x"
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10040",
+         "violated_step": 3
+      },
+      {
+         "id": "B",
+         "value": [
+            "Add",
+            3,
+            [
+               "Negate",
+               [
+                  "Divide",
+                  [
+                     "Multiply",
+                     3,
+                     [
+                        "Add",
+                        "x",
+                        1
+                     ]
+                  ],
+                  2
+               ]
+            ],
+            [
+               "Divide",
+               [
+                  "Multiply",
+                  3,
+                  [
+                     "Power",
+                     [
+                        "Add",
+                        "x",
+                        1
+                     ],
+                     2
+                  ]
+               ],
+               4
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99038",
+         "violated_step": 3
+      },
+      {
+         "id": "C",
+         "value": [
+            "Divide",
+            6,
+            [
+               "Add",
+               "x",
+               3
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": [
+            "Divide",
+            3,
+            [
+               "Add",
+               "x",
+               2
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10004",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-13",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10006",
+      "BC-SKL-10007",
+      "BC-SKL-10008",
+      "BC-SKL-10009",
+      "BC-SKL-10010",
+      "BC-SKL-10063",
+      "BC-SKL-10072"
+   ],
+   "parameter_draw": {
+      "general_term": "\\frac{3(-1)^{n}(x+1)^{n}}{2^{n}}",
+      "start": 0,
+      "condition": "|x + 1| < 2",
+      "ratio": "-x/2 - 1/2",
+      "misread_ratio": "-x - 1",
+      "misread": "reads the ratio as -(x + 1), ignoring the 2 to the n",
+      "sign_error": "writes the sum of the alternating series as a/(1 - |r|), the one over one minus u form, instead of a/(1 + |r|)",
+      "difficulty_variables": {
+         "ratio_contains_variable": true,
+         "starts_at_index_zero": true,
+         "closed_form_given": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

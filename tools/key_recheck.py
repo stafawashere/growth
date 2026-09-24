@@ -38,6 +38,7 @@ import sympy
 from app.items.mathjson import to_sympy
 
 x, y = sympy.symbols("x y")
+t, theta = sympy.symbols("t theta")
 increment = sympy.Symbol("h")
 
 NUMERIC_SAMPLE_POINTS = 12
@@ -181,6 +182,173 @@ def vertical_tangent_points(curve, quadrant=None):
    return [point for point in candidates if sympy.diff(curve, x).subs({x: point[0], y: point[1]}) != 0]
 
 
+def definite_integral(integrand, lower, upper, variable=x):
+   """Also the improper case: pass sympy.oo as a limit, or a limit where the integrand is unbounded."""
+   return sympy.integrate(integrand, (variable, lower, upper))
+
+
+def pinned_antiderivative_value(integrand, anchor, anchor_value, at, variable=x):
+   """F(at) for the antiderivative F of integrand with F(anchor) = anchor_value."""
+   return anchor_value + definite_integral(integrand, anchor, at, variable)
+
+
+def accumulation_derivative(integrand, lower, upper, at, variable=t):
+   """d/dx of the integral of integrand(t) dt from lower(x) to upper(x), at x = at, by the
+   fundamental theorem and the chain rule, never by integrating first."""
+   rate_through_upper = integrand.subs(variable, upper) * sympy.diff(upper, x)
+   rate_through_lower = integrand.subs(variable, lower) * sympy.diff(lower, x)
+
+   return sympy.simplify((rate_through_upper - rate_through_lower).subs(x, at))
+
+
+def trapezoidal_sum(points):
+   """points: (input, value) pairs in increasing input order, spacing allowed to vary."""
+   total = sympy.Integer(0)
+
+   for (left_input, left_value), (right_input, right_value) in zip(points, points[1:]):
+      width = sympy.nsimplify(right_input) - sympy.nsimplify(left_input)
+      total += width * (sympy.nsimplify(left_value) + sympy.nsimplify(right_value)) / 2
+
+   return total
+
+
+def riemann_sum_limit(term, index, count, first=1):
+   """The limit as count grows of the sum of term over index = first .. count."""
+   partial_sum = sympy.summation(term, (index, first, count))
+
+   return sympy.limit(partial_sum, count, sympy.oo)
+
+
+def series_value(term, index, first):
+   return sympy.summation(term, (index, first, sympy.oo))
+
+
+def first_omitted_term(term, index, last_index):
+   """The alternating series error bound for the partial sum ending at last_index."""
+   return sympy.Abs(term.subs(index, last_index + 1))
+
+
+def least_terms_for_tolerance(term, index, first, tolerance, search_limit=10000):
+   """The least number of terms whose alternating series error bound is below tolerance."""
+   for last_index in range(first, first + search_limit):
+      bound = first_omitted_term(term, index, last_index)
+      is_within = bool(bound < tolerance)
+
+      if is_within:
+         return last_index - first + 1
+
+   raise ValueError(f"no partial sum within {tolerance} in {search_limit} terms")
+
+
+def limit_comparison_value(term, comparison_term, index):
+   return sympy.limit(term / comparison_term, index, sympy.oo)
+
+
+def lagrange_error_bound(derivative_bound, at, center, degree):
+   return derivative_bound * sympy.Abs(sympy.nsimplify(at) - center) ** (degree + 1) / sympy.factorial(degree + 1)
+
+
+def radius_of_convergence(term, index, center=0, variable=x):
+   """From the ratio test on the general term, which carries the variable: the displacement at
+   which the limit of the ratio of consecutive terms equals 1."""
+   displacement = sympy.Symbol("displacement", positive=True)
+   at_displacement = term.subs(variable, center + displacement)
+   ratio = sympy.simplify(at_displacement.subs(index, index + 1) / at_displacement)
+   limit = sympy.limit(sympy.Abs(ratio), index, sympy.oo)
+
+   if limit.is_zero:
+      raise ValueError("the ratio tends to 0, so the radius is infinite")
+
+   return sympy.solve(sympy.Eq(limit, 1), displacement)
+
+
+def taylor_polynomial(expression, center, degree, variable=x):
+   return sympy.expand(sympy.series(expression, variable, center, degree + 1).removeO())
+
+
+def taylor_from_derivatives(values, center, variable=x):
+   """values[k] is the k-th derivative at center, values[0] the function value."""
+   return sympy.expand(sum(
+      sympy.nsimplify(value) * (variable - center) ** order / sympy.factorial(order)
+      for order, value in enumerate(values)
+   ))
+
+
+def derivatives_along_solution(slope_field, center, value, count):
+   """f(center), f'(center), ... up to count values, for y' = slope_field(x, y) and y(center) = value."""
+   values = [sympy.nsimplify(value)]
+   current = slope_field
+
+   for _ in range(count - 1):
+      values.append(sympy.simplify(current.subs({x: center, y: value})))
+      current = sympy.diff(current, x) + sympy.diff(current, y) * slope_field
+
+   return values
+
+
+def taylor_from_relation(slope_field, center, value, degree):
+   return taylor_from_derivatives(derivatives_along_solution(slope_field, center, value, degree + 1), center)
+
+
+def euler_approximation(slope_field, start_x, start_y, step, steps):
+   current_x = sympy.nsimplify(start_x)
+   current_y = sympy.nsimplify(start_y)
+   step = sympy.nsimplify(step)
+
+   for _ in range(steps):
+      current_y = current_y + step * slope_field.subs({x: current_x, y: current_y})
+      current_x = current_x + step
+
+   return sympy.simplify(current_y)
+
+
+def particular_solutions(slope_field, start_x, start_y):
+   """Every explicit solution of y' = slope_field(x, y) through (start_x, start_y)."""
+   unknown = sympy.Function("solution")
+   equation = sympy.Eq(unknown(x).diff(x), slope_field.subs(y, unknown(x)))
+   found = sympy.dsolve(equation, unknown(x), ics={unknown(start_x): start_y})
+   found = found if isinstance(found, list) else [found]
+
+   return [solution.rhs for solution in found if sympy.simplify(solution.rhs.subs(x, start_x) - start_y) == 0]
+
+
+def is_solution(candidate, slope_field):
+   residual = sympy.diff(candidate, x) - slope_field.subs(y, candidate)
+
+   return sympy.simplify(residual) == 0
+
+
+def polar_slope(radius, at, variable=theta):
+   horizontal = radius * sympy.cos(variable)
+   vertical = radius * sympy.sin(variable)
+   slope = sympy.diff(vertical, variable) / sympy.diff(horizontal, variable)
+
+   return sympy.simplify(slope.subs(variable, at))
+
+
+def related_rate(curve, point, known_rate, known="x"):
+   """The rate of the other coordinate of a point moving on curve = 0, from F_x x' + F_y y' = 0."""
+   at_point = {x: point[0], y: point[1]}
+   on_curve = sympy.simplify(curve.subs(at_point)) == 0
+
+   if not on_curve:
+      raise ValueError(f"{point} is not on the curve")
+
+   partial_x = sympy.diff(curve, x).subs(at_point)
+   partial_y = sympy.diff(curve, y).subs(at_point)
+
+   if known == "x":
+      return sympy.simplify(-partial_x * known_rate / partial_y)
+
+   return sympy.simplify(-partial_y * known_rate / partial_x)
+
+
+def function_with_values(center, values, variable=x):
+   """The polynomial whose value and derivatives at center are the given values, standing in for a
+   function a stem describes only through those values."""
+   return taylor_from_derivatives(values, center, variable)
+
+
 def equivalent(left, right):
    difference = sympy.simplify(sympy.expand_trig(sympy.sympify(left) - sympy.sympify(right)))
    is_zero = difference == 0
@@ -285,12 +453,17 @@ def check_item(record, formulation):
    return result
 
 
-def perturbed(value):
-   return sympy.sympify(value) * 2 + 1
+def perturbations(value):
+   """2v + 1 changes scale and offset; it leaves -1 fixed, so a translation by an offset no key is
+   plausibly wrong by also runs. A perturbation identical to the value is dropped, never counted."""
+   value = sympy.sympify(value)
+   candidates = [value * 2 + 1, value + sympy.sqrt(2) / 7]
+
+   return [candidate for candidate in candidates if sympy.simplify(candidate - value) != 0]
 
 
 def control_holds(records, formulations):
-   """Every perturbed computed answer must be reported as different from its stored key."""
+   """Every perturbation of a computed answer must be reported as different from its stored key."""
    formulated = [record for record in records if record["id"] in formulations]
    rng = random.Random(7)
    chosen = rng.sample(formulated, min(CONTROL_SAMPLE_SIZE, len(formulated)))
@@ -304,7 +477,9 @@ def control_holds(records, formulations):
 
       key = to_sympy(record["answer_key"]["mathjson"])
 
-      if equivalent(perturbed(computed), key):
+      compares_equal = [equivalent(changed, key) for changed in perturbations(computed)]
+
+      if any(compares_equal):
          blind_on.append(record["id"])
 
    return blind_on

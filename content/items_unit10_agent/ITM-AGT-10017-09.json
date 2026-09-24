@@ -1,0 +1,226 @@
+{
+   "id": "ITM-AGT-10017-09",
+   "archetype_id": "BC-QA-10017",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = x^{2} e^{3x} \\). Find the coefficient of \\( x^{5} \\) in the Maclaurin series for \\( f \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         9,
+         2
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Recall \\( e^{u} = 1 + u + \\frac{u^{2}}{2!} + \\frac{u^{3}}{3!} + \\cdots \\).",
+         "mathjson": [
+            "Add",
+            1,
+            "x",
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  6
+               ],
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Substitute \\( u = 3x \\), raising the whole of \\( 3x \\) to each power: the series begins \\( 1 + 3x + \\frac{9}{2}x^{2} + \\frac{9}{2}x^{3} + \\cdots \\).",
+         "mathjson": [
+            "Add",
+            1,
+            [
+               "Multiply",
+               3,
+               "x"
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  9,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  9,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Multiply every term by \\( x^{2} \\): \\( f(x) = x^{2} + 3x^{3} + \\frac{9}{2}x^{4} + \\frac{9}{2}x^{5} + \\cdots \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Power",
+               "x",
+               2
+            ],
+            [
+               "Multiply",
+               3,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  9,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  4
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  9,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  5
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "The \\( x^{5} \\) term is \\( \\frac{9}{2}x^{5} \\), so the coefficient is \\( \\frac{9}{2} \\).",
+         "mathjson": [
+            "Rational",
+            9,
+            2
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Rational",
+            -9,
+            2
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10040",
+         "violated_step": 0
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            9,
+            2
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": [
+            "Rational",
+            1,
+            2
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10041",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": 27,
+         "is_key": false,
+         "error_path": "BC-ERR-10040",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10061",
+      "BC-SKL-10062",
+      "BC-SKL-10063",
+      "BC-SKL-10064",
+      "BC-SKL-10065"
+   ],
+   "parameter_draw": {
+      "standard_series": "exp",
+      "constant_multiple": "1",
+      "power_of_x_multiplier": 2,
+      "inner_coefficient": "3",
+      "inner_power": 1,
+      "question": "coefficient",
+      "terms_or_power": 5,
+      "substitution_raises_powers": false,
+      "misremembered_variants": [
+         "factorials dropped",
+         "signs wrong"
+      ]
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

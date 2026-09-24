@@ -1,0 +1,120 @@
+{
+   "id": "ITM-AGT-06013-03",
+   "archetype_id": "BC-QA-06013",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let h be a continuous function with \\( \\int_{-2}^{3} h(x)\\,dx = 8 \\) and \\( \\int_{1}^{3} h(x)\\,dx = -2 \\). Find the value of \\( \\int_{1}^{-2} \\left(h(x) - 3\\right) dx \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": -1
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Split at \\( x = 1 \\): \\( \\int_{-2}^{1} h(x)\\,dx = \\int_{-2}^{3} h(x)\\,dx - \\int_{1}^{3} h(x)\\,dx = 8 - (-2) = 10 \\).",
+         "mathjson": 10
+      },
+      {
+         "step": 2,
+         "text": "Reverse the requested integral and use linearity: \\( \\int_{1}^{-2} \\left(h(x) - 3\\right) dx = -(1) \\int_{-2}^{1} h(x)\\,dx + (-3)(-2 - 1) \\), and the constant contributes \\( 9 \\).",
+         "mathjson": 9
+      },
+      {
+         "step": 3,
+         "text": "Substitute: \\( -(1)(10) + (9) \\).",
+         "mathjson": -1
+      },
+      {
+         "step": 4,
+         "text": "The value is \\( -1 \\).",
+         "mathjson": -1
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": -1,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": 1,
+         "is_key": false,
+         "error_path": "BC-ERR-99012",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": 19,
+         "is_key": false,
+         "error_path": "BC-ERR-99032",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": -19,
+         "is_key": false,
+         "error_path": "BC-ERR-99012",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-17",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06029",
+      "BC-SKL-06030",
+      "BC-SKL-06031",
+      "BC-SKL-06032",
+      "BC-SKL-06033",
+      "BC-SKL-06035"
+   ],
+   "parameter_draw": {
+      "template": "T1",
+      "endpoints": [
+         -2,
+         1,
+         3
+      ],
+      "given_values": [
+         8,
+         -2
+      ],
+      "alpha": 1,
+      "beta_or_gamma": -3,
+      "difficulty_variables": {
+         "whether a reversal of limits is required": "yes, the requested integral runs right to left",
+         "whether an interval must be split or joined": "split",
+         "whether a constant multiple or a sum appears": "constant multiple plus a constant term",
+         "whether an integral of a constant must be computed geometrically": "yes"
+      },
+      "distractor_derivations": {
+         "B": "sign change for the reversed target integral left out",
+         "C": "split written with its limits reversed, taking the integral from -2 to 1 as -2 - (8)",
+         "D": "constant term integrated as if its limits ran left to right, so its sign change is left out"
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

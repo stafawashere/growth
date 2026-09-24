@@ -1,0 +1,197 @@
+{
+   "id": "ITM-AGT-03009-17",
+   "archetype_id": "BC-QA-03009",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = \\frac{\\left(1 + \\sin(2x)\\right)^{3}}{3^{x}} \\). Find the value of \\( f'(0) \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Subtract",
+         6,
+         [
+            "Ln",
+            3
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The outermost operation is a quotient with numerator \\( \\left(1 + \\sin(2x)\\right)^{3} \\) and denominator \\( 3^{x} \\), so the quotient rule comes first (equivalently, rewrite \\( f \\) as a product with the factor \\( 3^{-x} \\)).",
+         "mathjson": [
+            "Divide",
+            [
+               "Power",
+               [
+                  "Add",
+                  [
+                     "Sin",
+                     [
+                        "Multiply",
+                        2,
+                        "x"
+                     ]
+                  ],
+                  1
+               ],
+               3
+            ],
+            [
+               "Power",
+               3,
+               "x"
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "\\( 3^{x} \\) is an exponential function with a constant base, so its derivative is \\( 3^{x} \\ln{\\left(3 \\right)} \\); the power rule does not apply to it.",
+         "mathjson": [
+            "Multiply",
+            [
+               "Power",
+               3,
+               "x"
+            ],
+            [
+               "Ln",
+               3
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The factor \\( \\left(1 + \\sin(2x)\\right)^{3} \\) is a cube of \\( 1 + \\sin(2x) \\), which contains a sine of \\( 2x \\), so apply the chain rule from the outside inward: \\( \\left(\\left(1 + \\sin(2x)\\right)^{3}\\right)' = 6 \\left(\\sin{\\left(2 x \\right)} + 1\\right)^{2} \\cos{\\left(2 x \\right)} \\).",
+         "mathjson": [
+            "Multiply",
+            6,
+            [
+               "Power",
+               [
+                  "Add",
+                  [
+                     "Sin",
+                     [
+                        "Multiply",
+                        2,
+                        "x"
+                     ]
+                  ],
+                  1
+               ],
+               2
+            ],
+            [
+               "Cos",
+               [
+                  "Multiply",
+                  2,
+                  "x"
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Assemble the quotient rule and evaluate at \\( x = 0 \\): \\( f'(0) = 6 - \\ln{\\left(3 \\right)} \\).",
+         "mathjson": [
+            "Subtract",
+            6,
+            [
+               "Ln",
+               3
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Divide",
+            6,
+            [
+               "Ln",
+               3
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03006",
+         "violated_step": 0
+      },
+      {
+         "id": "B",
+         "value": 6,
+         "is_key": false,
+         "error_path": "BC-ERR-99036",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Subtract",
+            3,
+            [
+               "Ln",
+               3
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03002",
+         "violated_step": 2
+      },
+      {
+         "id": "D",
+         "value": [
+            "Subtract",
+            6,
+            [
+               "Ln",
+               3
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-03026",
+      "BC-SKL-03027",
+      "BC-SKL-03028",
+      "BC-SKL-03029",
+      "BC-SKL-03006"
+   ],
+   "parameter_draw": {
+      "exponential_base": "3",
+      "composite": "cube_1_sin2x",
+      "structure": "quotient",
+      "answer_mode": "value",
+      "difficulty_variables": {
+         "algebraic rewrite available": true,
+         "rules needed": [
+            "quotient",
+            "exponential",
+            "chain (three layers)"
+         ],
+         "surface resembles another family": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

@@ -1,0 +1,132 @@
+{
+   "id": "ITM-AGT-07011-16",
+   "archetype_id": "BC-QA-07011",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( y = f(x) \\) be the particular solution to the differential equation \\( \\frac{dy}{dx} = \\frac{x}{y} \\) with \\( f(-2) = 1 \\). The largest open interval containing \\( x = -2 \\) on which the solution exists has exactly one finite endpoint. Find that endpoint."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Negate",
+         [
+            "Sqrt",
+            3
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Separate and antidifferentiate: \\( \\frac{y^{2}}{2} = \\frac{x^{2}}{2} + C \\), so \\( y^{2} = x^{2} + 2C \\).",
+         "mathjson": [
+            "Power",
+            "x",
+            2
+         ]
+      },
+      {
+         "step": 2,
+         "text": "At \\( (-2, 1) \\): \\( 2C = -3 \\), and the positive root applies, so \\( y = \\sqrt{x^{2} - 3} \\).",
+         "mathjson": -3
+      },
+      {
+         "step": 3,
+         "text": "The expression needs \\( x^{2} > 3 \\), because at \\( x^{2} = 3 \\) \\( y = 0 \\) and \\( \\frac{dy}{dx} \\) is undefined.",
+         "mathjson": 3
+      },
+      {
+         "step": 4,
+         "text": "The piece containing \\( x = -2 \\) is \\( \\left(-\\infty, - \\sqrt{3}\\right) \\), so the finite endpoint is \\( - \\sqrt{3} \\).",
+         "mathjson": [
+            "Negate",
+            [
+               "Sqrt",
+               3
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Sqrt",
+            3
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-07031",
+         "violated_step": 3
+      },
+      {
+         "id": "B",
+         "value": [
+            "Negate",
+            [
+               "Divide",
+               [
+                  "Sqrt",
+                  14
+               ],
+               2
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99014",
+         "violated_step": 0
+      },
+      {
+         "id": "C",
+         "value": [
+            "Negate",
+            [
+               "Sqrt",
+               2
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99014",
+         "violated_step": 0
+      },
+      {
+         "id": "D",
+         "value": [
+            "Negate",
+            [
+               "Sqrt",
+               3
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-03",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-07030",
+      "BC-SKL-07031",
+      "BC-SKL-07032",
+      "BC-SKL-07038"
+   ],
+   "parameter_draw": {
+      "x0": "-2",
+      "y0": "1",
+      "difficulty_variables": {
+         "vertical_asymptote": false,
+         "absolute_value_resolved": false,
+         "branch_resolved_by_initial_condition": true,
+         "accumulation_form": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

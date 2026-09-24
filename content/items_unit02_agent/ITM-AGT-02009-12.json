@@ -1,0 +1,105 @@
+{
+   "id": "ITM-AGT-02009-12",
+   "archetype_id": "BC-QA-02009",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "The functions \\( f \\) and \\( g \\) are differentiable, with \\( f(1) = -4 \\) and \\( f'(1) = 4 \\). The line tangent to the graph of \\( g \\) at \\( x = 1 \\) has equation \\( y = 2 x \\). Let \\( h(x) = \\frac{f(x)}{g(x)} \\). Find the value of \\( h'(1) \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 4
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Record the values at \\( x = 1 \\): \\( f(1) = -4 \\), \\( f'(1) = 4 \\). The tangent line gives \\( g(1) = 2 \\) (its height at \\( x = 1 \\)) and \\( g'(1) = 2 \\) (its slope).",
+         "mathjson": 4
+      },
+      {
+         "step": 2,
+         "text": "By the quotient rule, \\( \\left(\\frac{f}{g}\\right)'(1) = \\frac{f'(1)g(1) - f(1)g'(1)}{[g(1)]^{2}} \\).",
+         "mathjson": -4
+      },
+      {
+         "step": 3,
+         "text": "Substitute: \\( \\frac{(4)(2) - (-4)(2)}{(2)^{2}} = \\frac{16}{4} \\).",
+         "mathjson": 4
+      },
+      {
+         "step": 4,
+         "text": "So \\( h'(1) = 4 \\).",
+         "mathjson": 4
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 0,
+         "is_key": false,
+         "error_path": "BC-ERR-02024",
+         "violated_step": 2
+      },
+      {
+         "id": "B",
+         "value": 8,
+         "is_key": false,
+         "error_path": "BC-ERR-02022",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": -4,
+         "is_key": false,
+         "error_path": "BC-ERR-02021",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": 4,
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-03",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-05",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02037",
+      "BC-SKL-02041",
+      "BC-SKL-02017"
+   ],
+   "parameter_draw": {
+      "kind": "tangent_quotient",
+      "a": 1,
+      "values": {
+         "f": -4,
+         "f_prime": 4,
+         "g": 2,
+         "g_prime": 2
+      },
+      "names": [
+         "f",
+         "g"
+      ],
+      "extra_row_shown": false,
+      "difficulty_variables": {
+         "table against graphs": "tangent line equation",
+         "product against quotient": "quotient",
+         "value read as a slope": true,
+         "interpreted in context": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

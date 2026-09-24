@@ -1,0 +1,249 @@
+{
+   "id": "ITM-AGT-10017-10",
+   "archetype_id": "BC-QA-10017",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = 4 \\cos\\left(\\frac{x}{2}\\right) \\). Find the coefficient of \\( x^{4} \\) in the Maclaurin series for \\( f \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         1,
+         96
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Recall \\( \\cos u = 1 - \\frac{u^{2}}{2!} + \\frac{u^{4}}{4!} - \\cdots \\).",
+         "mathjson": [
+            "Add",
+            1,
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -1,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  24
+               ],
+               [
+                  "Power",
+                  "x",
+                  4
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -1,
+                  720
+               ],
+               [
+                  "Power",
+                  "x",
+                  6
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Substitute \\( u = \\frac{x}{2} \\), raising the whole of \\( \\frac{x}{2} \\) to each power: the series begins \\( 1 - \\frac{1}{8}x^{2} + \\frac{1}{384}x^{4} - \\frac{1}{46080}x^{6} + \\cdots \\).",
+         "mathjson": [
+            "Add",
+            1,
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -1,
+                  8
+               ],
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  384
+               ],
+               [
+                  "Power",
+                  "x",
+                  4
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -1,
+                  46080
+               ],
+               [
+                  "Power",
+                  "x",
+                  6
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Multiply every term by \\( 4 \\): \\( f(x) = 4 - \\frac{1}{2}x^{2} + \\frac{1}{96}x^{4} - \\frac{1}{11520}x^{6} + \\cdots \\).",
+         "mathjson": [
+            "Add",
+            4,
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -1,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  96
+               ],
+               [
+                  "Power",
+                  "x",
+                  4
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -1,
+                  11520
+               ],
+               [
+                  "Power",
+                  "x",
+                  6
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "The \\( x^{4} \\) term is \\( \\frac{1}{96}x^{4} \\), so the coefficient is \\( \\frac{1}{96} \\).",
+         "mathjson": [
+            "Rational",
+            1,
+            96
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Rational",
+            1,
+            4
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10040",
+         "violated_step": 0
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            1,
+            12
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10041",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Rational",
+            1,
+            96
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": [
+            "Rational",
+            1,
+            384
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10041",
+         "violated_step": 2
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10061",
+      "BC-SKL-10062",
+      "BC-SKL-10063",
+      "BC-SKL-10064",
+      "BC-SKL-10065"
+   ],
+   "parameter_draw": {
+      "standard_series": "cos",
+      "constant_multiple": "4",
+      "power_of_x_multiplier": 0,
+      "inner_coefficient": "1/2",
+      "inner_power": 1,
+      "question": "coefficient",
+      "terms_or_power": 4,
+      "substitution_raises_powers": false,
+      "misremembered_variants": [
+         "factorials dropped"
+      ]
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

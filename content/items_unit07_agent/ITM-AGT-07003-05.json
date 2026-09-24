@@ -1,0 +1,182 @@
+{
+   "id": "ITM-AGT-07003-05",
+   "archetype_id": "BC-QA-07003",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( y = f(x) \\) be the particular solution to the differential equation \\( \\frac{dy}{dx} = 2 x y \\) with \\( f(1) = 7 \\). Find the exact value of \\( f(2) \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Multiply",
+         7,
+         [
+            "Exp",
+            3
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Separate the variables: \\( \\frac{dy}{y} = 2 x \\, dx \\).",
+         "mathjson": [
+            "Multiply",
+            2,
+            "x"
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Antidifferentiate both sides with one constant: \\( \\ln|y| = x^{2} + C \\).",
+         "mathjson": [
+            "Power",
+            "x",
+            2
+         ]
+      },
+      {
+         "step": 3,
+         "text": "At \\( x = 1 \\), \\( y = 7 \\), so \\( C = -1 + \\ln{\\left(7 \\right)} \\).",
+         "mathjson": [
+            "Add",
+            -1,
+            [
+               "Ln",
+               7
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Exponentiate: \\( |y| = 7 e^{x^{2} - 1} \\). Since \\( f(1) > 0 \\) and the solution is never 0, \\( y = 7 e^{x^{2} - 1} \\).",
+         "mathjson": [
+            "Multiply",
+            7,
+            [
+               "Exp",
+               [
+                  "Add",
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ],
+                  -1
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 5,
+         "text": "Substitute \\( x = 2 \\): \\( f(2) = 7 e^{3} \\).",
+         "mathjson": [
+            "Multiply",
+            7,
+            [
+               "Exp",
+               3
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            [
+               "Negate",
+               "ExponentialE"
+            ],
+            7,
+            [
+               "Exp",
+               4
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-07029",
+         "violated_step": 4
+      },
+      {
+         "id": "B",
+         "value": [
+            "Multiply",
+            7,
+            [
+               "Exp",
+               2
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-07025",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Multiply",
+            7,
+            [
+               "Exp",
+               3
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": [
+            "Multiply",
+            7,
+            [
+               "Exp",
+               6
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99014",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-07024",
+      "BC-SKL-07025",
+      "BC-SKL-07026",
+      "BC-SKL-07027",
+      "BC-SKL-07029",
+      "BC-SKL-07030",
+      "BC-SKL-07033"
+   ],
+   "parameter_draw": {
+      "k": "2",
+      "power_of_x": 1,
+      "x0": "1",
+      "y0": "7",
+      "difficulty_variables": {
+         "dependent_side": "logarithm",
+         "absolute_value_resolved": false,
+         "substitution_on_independent_side": false,
+         "explicit_answer": true
+      },
+      "asked_for": "f(2)"
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

@@ -1,0 +1,187 @@
+{
+   "id": "ITM-AGT-06008-07",
+   "archetype_id": "BC-QA-06008",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let F be the antiderivative of \\( f(x) = \\frac{x}{\\left(x^{2} + 1\\right)^{2}} \\) with \\( F(1) = 1 \\). Find the exact value of \\( F\\left(2\\right) \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         23,
+         20
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Let \\( u = x^{2} + 1 \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Power",
+               "x",
+               2
+            ],
+            1
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Then \\( du = 2 x \\, dx \\), so \\( x \\, dx = \\frac{1}{2} \\, du \\).",
+         "mathjson": [
+            "Rational",
+            1,
+            2
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Since \\( F(2) = F(1) + \\int_{1}^{2} \\frac{x}{\\left(x^{2} + 1\\right)^{2}} \\, dx \\), convert the limits: \\( x = 1 \\) gives \\( u = 2 \\) and \\( x = 2 \\) gives \\( u = 5 \\), so the integral becomes \\( \\int_{2}^{5} \\frac{1}{2 u^{2}} \\, du \\).",
+         "mathjson": [
+            "Divide",
+            1,
+            [
+               "Multiply",
+               2,
+               [
+                  "Power",
+                  "u",
+                  2
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "An antiderivative of \\( \\frac{1}{2 u^{2}} \\) is \\( - \\frac{1}{2 u} \\).",
+         "mathjson": [
+            "Negate",
+            [
+               "Divide",
+               1,
+               [
+                  "Multiply",
+                  2,
+                  "u"
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 5,
+         "text": "The integral is \\( - \\frac{1}{10} - \\left(- \\frac{1}{4}\\right) = \\frac{3}{20} \\), so \\( F(2) = 1 + \\frac{3}{20} = \\frac{23}{20} \\).",
+         "mathjson": [
+            "Rational",
+            23,
+            20
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Rational",
+            23,
+            20
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            13,
+            10
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06019",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Rational",
+            5,
+            4
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06018",
+         "violated_step": 4
+      },
+      {
+         "id": "D",
+         "value": [
+            "Rational",
+            -1,
+            10
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-07026",
+         "violated_step": 3
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-11",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06047",
+      "BC-SKL-06048",
+      "BC-SKL-06049",
+      "BC-SKL-06050",
+      "BC-SKL-06051",
+      "BC-SKL-06052",
+      "BC-SKL-06034"
+   ],
+   "parameter_draw": {
+      "form": "pinned antiderivative value",
+      "integrand": "x/(x**2 + 1)**2",
+      "inner_u": "x**2 + 1",
+      "du_constant_k": "2",
+      "limits": [
+         "1",
+         "2"
+      ],
+      "u_limits": [
+         "2",
+         "5"
+      ],
+      "difficulty_variables": {
+         "whether a constant adjustment is needed": "yes",
+         "whether the answer is logarithmic, exponential, trigonometric, or a power": "power",
+         "definite versus indefinite": "antiderivative pinned by an initial value",
+         "whether the limits must be converted": "yes",
+         "whether the substitution is disguised by a prior rearrangement": "no"
+      },
+      "F_at_a": "1",
+      "distractor_derivations": {
+         "B": "substitution carried out as if x dx = du, without the constant 1/(2)",
+         "C": "antiderivative in u evaluated at the original x limits 1 and 2",
+         "D": "antiderivative -1/(2*(x**2 + 1)) written with no constant and evaluated at x = 2, ignoring F(1)"
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

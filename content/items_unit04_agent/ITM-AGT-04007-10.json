@@ -1,0 +1,103 @@
+{
+   "id": "ITM-AGT-04007-10",
+   "archetype_id": "BC-QA-04007",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "A particle moves along the curve \\( x y = 8 \\) so that its coordinates \\( x \\) and \\( y \\) are differentiable functions of time \\( t \\). At the instant the particle is at the point \\( (2, 4) \\), the \\( x \\)-coordinate of the particle is decreasing at a rate of 3 units per second. Find \\( \\frac{dy}{dt} \\), in units per second, at that instant."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 6
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Differentiate both sides of \\( x y = 8 \\) with respect to \\( t \\), using the product rule on the term that contains both variables: \\( \\left(y\\right)\\frac{dx}{dt} + \\left(x\\right)\\frac{dy}{dt} = 0 \\).",
+         "mathjson": "y"
+      },
+      {
+         "step": 2,
+         "text": "At \\( (2, 4) \\) the coefficient of \\( \\frac{dx}{dt} \\) is \\( 4 \\) and the coefficient of \\( \\frac{dy}{dt} \\) is \\( 2 \\). Substitute \\( \\frac{dx}{dt} = -3 \\): \\( (4)(-3) + (2)\\frac{dy}{dt} = 0 \\).",
+         "mathjson": -12
+      },
+      {
+         "step": 3,
+         "text": "Solve for the requested rate: \\( \\frac{dy}{dt} = 6 \\).",
+         "mathjson": 6
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 0,
+         "is_key": false,
+         "error_path": "BC-ERR-04020",
+         "violated_step": 2
+      },
+      {
+         "id": "B",
+         "value": 12,
+         "is_key": false,
+         "error_path": "BC-ERR-04021",
+         "violated_step": 3
+      },
+      {
+         "id": "C",
+         "value": 6,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": -2,
+         "is_key": false,
+         "error_path": "BC-ERR-04017",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-04022",
+      "BC-SKL-04019",
+      "BC-SKL-04020",
+      "BC-SKL-04023",
+      "BC-SKL-04024"
+   ],
+   "parameter_draw": {
+      "curve": "x*y = 8",
+      "point": [
+         2,
+         4
+      ],
+      "supplied_rate": "dx/dt = -3",
+      "requested_rate": "dy/dt",
+      "rate_stated_in_words_as_decreasing": true,
+      "difficulty_variables": {
+         "mixed_term_present": true,
+         "supplied_rate_negative": true
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

@@ -1,0 +1,187 @@
+{
+   "id": "ITM-AGT-10005-11",
+   "archetype_id": "BC-QA-10005",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "The integral test is applied to the series \\( \\sum_{n=2}^{\\infty} \\frac{1}{n^{2}+4} \\). Take f(x) to be the series' general term with n replaced by x, and the lower limit of integration to be the series' starting index. Find the exact value of the improper integral of f from that lower limit to infinity."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Divide",
+         "Pi",
+         8
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Take \\( f(x) = \\frac{1}{x^{2}+4} \\), so \\( f(n) \\) is the general term. On \\( [2, \\infty) \\), \\( f \\) is positive, continuous, and decreasing, so the integral test applies.",
+         "mathjson": [
+            "Divide",
+            1,
+            [
+               "Add",
+               [
+                  "Power",
+                  "x",
+                  2
+               ],
+               4
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The series starts at \\( n = 2 \\), so the matching integral is \\( \\int_{2}^{\\infty} \\frac{1}{x^{2}+4} \\, dx = \\lim_{b \\to \\infty} \\int_{2}^{b} \\frac{1}{x^{2}+4} \\, dx \\).",
+         "mathjson": 2
+      },
+      {
+         "step": 3,
+         "text": "An antiderivative is \\( F(x) = \\frac{\\arctan{\\left(\\frac{x}{2} \\right)}}{2} \\), so \\( \\int_{2}^{b} \\frac{1}{x^{2}+4} \\, dx = \\frac{\\arctan{\\left(\\frac{b}{2} \\right)}}{2} - \\frac{\\pi}{8} \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Divide",
+               [
+                  "Arctan",
+                  [
+                     "Divide",
+                     "b",
+                     2
+                  ]
+               ],
+               2
+            ],
+            [
+               "Negate",
+               [
+                  "Divide",
+                  "Pi",
+                  8
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "As \\( b \\to \\infty \\), \\( F(b) \\to \\frac{\\pi}{4} \\), so the integral converges to \\( \\frac{\\pi}{8} \\). This number is the value of the integral, not the sum of the series.",
+         "mathjson": [
+            "Divide",
+            "Pi",
+            8
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            [
+               "Divide",
+               "Pi",
+               4
+            ],
+            [
+               "Negate",
+               [
+                  "Divide",
+                  [
+                     "Arctan",
+                     [
+                        "Rational",
+                        1,
+                        2
+                     ]
+                  ],
+                  2
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10012",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Divide",
+            "Pi",
+            4
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10012",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Negate",
+            [
+               "Divide",
+               "Pi",
+               8
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10011",
+         "violated_step": 2
+      },
+      {
+         "id": "D",
+         "value": [
+            "Divide",
+            "Pi",
+            8
+         ],
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-09",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10014",
+      "BC-SKL-10015",
+      "BC-SKL-10016",
+      "BC-SKL-10017"
+   ],
+   "parameter_draw": {
+      "general_term": "\\frac{1}{n^{2}+4}",
+      "function": "\\frac{1}{x^{2}+4}",
+      "start": 2,
+      "distractor_plan": [
+         [
+            "lower",
+            1
+         ],
+         [
+            "lower",
+            0
+         ],
+         [
+            "inf_zero"
+         ]
+      ],
+      "difficulty_variables": {
+         "conditions_requested_explicitly": false,
+         "antiderivative_needs_substitution_or_parts": true,
+         "integral_diverges": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

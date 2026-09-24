@@ -55,7 +55,7 @@ class Settings:
    extras: dict = field(default_factory=dict)
    key_audit_sample_ids: Any = None
    key_audit_sample_path: Any = None
-   items_directory: Any = None
+   items_directories: tuple = ()
 
    def resolve_key_audit_sample_ids(self):
       """docs/operator/key-audit.md: a separate JSON array of the sampled item ids is the sample

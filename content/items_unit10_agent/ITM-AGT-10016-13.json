@@ -1,0 +1,97 @@
+{
+   "id": "ITM-AGT-10016-13",
+   "archetype_id": "BC-QA-10016",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = \\sum_{n=0}^{\\infty} \\frac{(-1)^{n} 2^{n}}{n + 1} x^{n + 2} \\), where the series converges. Find the coefficient of \\( x^{5} \\) in the Maclaurin series for \\( f \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": -2
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The power in the general term is \\( n + 2 \\); set it equal to 5 to find the index.",
+         "mathjson": 5
+      },
+      {
+         "step": 2,
+         "text": "Solving \\( n + 2 = 5 \\) gives \\( n = 3 \\).",
+         "mathjson": 3
+      },
+      {
+         "step": 3,
+         "text": "Substitute \\( n = 3 \\) into the coefficient \\( \\frac{(-1)^{n} 2^{n}}{n + 1} \\), keeping its sign: the coefficient is \\( -2 \\).",
+         "mathjson": -2
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": -2,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            4,
+            3
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99018",
+         "violated_step": 2
+      },
+      {
+         "id": "C",
+         "value": [
+            "Rational",
+            -16,
+            3
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99018",
+         "violated_step": 2
+      },
+      {
+         "id": "D",
+         "value": 2,
+         "is_key": false,
+         "error_path": "BC-ERR-99018",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10060",
+      "BC-SKL-10067"
+   ],
+   "parameter_draw": {
+      "general_term": "\\frac{(-1)^{n} 2^{n}}{n + 1}",
+      "power": "n + 2",
+      "centre": 0,
+      "target_power": 5,
+      "index_of_target": 3,
+      "alternating": true,
+      "has_factorial": false,
+      "question": "coefficient of a stated power",
+      "index_offsets_used": "n - 1"
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

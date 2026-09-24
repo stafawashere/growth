@@ -1,0 +1,501 @@
+{
+   "id": "ITM-AGT-03009-10",
+   "archetype_id": "BC-QA-03009",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = \\frac{\\cos^{3}(2x)}{e^{x}} \\). Find \\( f'(x) \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Divide",
+         [
+            "Subtract",
+            [
+               "Negate",
+               [
+                  "Multiply",
+                  6,
+                  [
+                     "Exp",
+                     "x"
+                  ],
+                  [
+                     "Sin",
+                     [
+                        "Multiply",
+                        2,
+                        "x"
+                     ]
+                  ],
+                  [
+                     "Power",
+                     [
+                        "Cos",
+                        [
+                           "Multiply",
+                           2,
+                           "x"
+                        ]
+                     ],
+                     2
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Exp",
+                  "x"
+               ],
+               [
+                  "Power",
+                  [
+                     "Cos",
+                     [
+                        "Multiply",
+                        2,
+                        "x"
+                     ]
+                  ],
+                  3
+               ]
+            ]
+         ],
+         [
+            "Exp",
+            [
+               "Multiply",
+               2,
+               "x"
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The outermost operation is a quotient with numerator \\( \\cos^{3}(2x) \\) and denominator \\( e^{x} \\), so the quotient rule comes first (equivalently, rewrite \\( f \\) as a product with the factor \\( e^{-x} \\)).",
+         "mathjson": [
+            "Divide",
+            [
+               "Power",
+               [
+                  "Cos",
+                  [
+                     "Multiply",
+                     2,
+                     "x"
+                  ]
+               ],
+               3
+            ],
+            [
+               "Exp",
+               "x"
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "\\( e^{x} \\) is an exponential function with a constant base, so its derivative is \\( e^{x} \\); the power rule does not apply to it.",
+         "mathjson": [
+            "Exp",
+            "x"
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The factor \\( \\cos^{3}(2x) \\) is a cube of \\( \\cos(2x) \\), which is a cosine of \\( 2x \\), so apply the chain rule from the outside inward: \\( \\left(\\cos^{3}(2x)\\right)' = - 6 \\sin{\\left(2 x \\right)} \\cos^{2}{\\left(2 x \\right)} \\).",
+         "mathjson": [
+            "Negate",
+            [
+               "Multiply",
+               6,
+               [
+                  "Sin",
+                  [
+                     "Multiply",
+                     2,
+                     "x"
+                  ]
+               ],
+               [
+                  "Power",
+                  [
+                     "Cos",
+                     [
+                        "Multiply",
+                        2,
+                        "x"
+                     ]
+                  ],
+                  2
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Assemble the quotient rule: \\( f'(x) = \\left(- 6 e^{x} \\sin{\\left(2 x \\right)} \\cos^{2}{\\left(2 x \\right)} - e^{x} \\cos^{3}{\\left(2 x \\right)}\\right) e^{- 2 x} \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Subtract",
+               [
+                  "Negate",
+                  [
+                     "Multiply",
+                     6,
+                     [
+                        "Exp",
+                        "x"
+                     ],
+                     [
+                        "Sin",
+                        [
+                           "Multiply",
+                           2,
+                           "x"
+                        ]
+                     ],
+                     [
+                        "Power",
+                        [
+                           "Cos",
+                           [
+                              "Multiply",
+                              2,
+                              "x"
+                           ]
+                        ],
+                        2
+                     ]
+                  ]
+               ],
+               [
+                  "Multiply",
+                  [
+                     "Exp",
+                     "x"
+                  ],
+                  [
+                     "Power",
+                     [
+                        "Cos",
+                        [
+                           "Multiply",
+                           2,
+                           "x"
+                        ]
+                     ],
+                     3
+                  ]
+               ]
+            ],
+            [
+               "Exp",
+               [
+                  "Multiply",
+                  2,
+                  "x"
+               ]
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Negate",
+            [
+               "Divide",
+               [
+                  "Multiply",
+                  6,
+                  [
+                     "Sin",
+                     [
+                        "Multiply",
+                        2,
+                        "x"
+                     ]
+                  ],
+                  [
+                     "Power",
+                     [
+                        "Cos",
+                        [
+                           "Multiply",
+                           2,
+                           "x"
+                        ]
+                     ],
+                     2
+                  ]
+               ],
+               [
+                  "Exp",
+                  "x"
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03006",
+         "violated_step": 0
+      },
+      {
+         "id": "B",
+         "value": [
+            "Divide",
+            [
+               "Subtract",
+               [
+                  "Negate",
+                  [
+                     "Multiply",
+                     "x",
+                     [
+                        "Exp",
+                        [
+                           "Subtract",
+                           "x",
+                           1
+                        ]
+                     ],
+                     [
+                        "Power",
+                        [
+                           "Cos",
+                           [
+                              "Multiply",
+                              2,
+                              "x"
+                           ]
+                        ],
+                        3
+                     ]
+                  ]
+               ],
+               [
+                  "Multiply",
+                  6,
+                  [
+                     "Exp",
+                     "x"
+                  ],
+                  [
+                     "Sin",
+                     [
+                        "Multiply",
+                        2,
+                        "x"
+                     ]
+                  ],
+                  [
+                     "Power",
+                     [
+                        "Cos",
+                        [
+                           "Multiply",
+                           2,
+                           "x"
+                        ]
+                     ],
+                     2
+                  ]
+               ]
+            ],
+            [
+               "Exp",
+               [
+                  "Multiply",
+                  2,
+                  "x"
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99036",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Divide",
+            [
+               "Subtract",
+               [
+                  "Negate",
+                  [
+                     "Multiply",
+                     3,
+                     [
+                        "Exp",
+                        "x"
+                     ],
+                     [
+                        "Sin",
+                        [
+                           "Multiply",
+                           2,
+                           "x"
+                        ]
+                     ],
+                     [
+                        "Power",
+                        [
+                           "Cos",
+                           [
+                              "Multiply",
+                              2,
+                              "x"
+                           ]
+                        ],
+                        2
+                     ]
+                  ]
+               ],
+               [
+                  "Multiply",
+                  [
+                     "Exp",
+                     "x"
+                  ],
+                  [
+                     "Power",
+                     [
+                        "Cos",
+                        [
+                           "Multiply",
+                           2,
+                           "x"
+                        ]
+                     ],
+                     3
+                  ]
+               ]
+            ],
+            [
+               "Exp",
+               [
+                  "Multiply",
+                  2,
+                  "x"
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03002",
+         "violated_step": 2
+      },
+      {
+         "id": "D",
+         "value": [
+            "Divide",
+            [
+               "Subtract",
+               [
+                  "Negate",
+                  [
+                     "Multiply",
+                     6,
+                     [
+                        "Exp",
+                        "x"
+                     ],
+                     [
+                        "Sin",
+                        [
+                           "Multiply",
+                           2,
+                           "x"
+                        ]
+                     ],
+                     [
+                        "Power",
+                        [
+                           "Cos",
+                           [
+                              "Multiply",
+                              2,
+                              "x"
+                           ]
+                        ],
+                        2
+                     ]
+                  ]
+               ],
+               [
+                  "Multiply",
+                  [
+                     "Exp",
+                     "x"
+                  ],
+                  [
+                     "Power",
+                     [
+                        "Cos",
+                        [
+                           "Multiply",
+                           2,
+                           "x"
+                        ]
+                     ],
+                     3
+                  ]
+               ]
+            ],
+            [
+               "Exp",
+               [
+                  "Multiply",
+                  2,
+                  "x"
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-03026",
+      "BC-SKL-03027",
+      "BC-SKL-03028",
+      "BC-SKL-03029",
+      "BC-SKL-03006"
+   ],
+   "parameter_draw": {
+      "exponential_base": "e",
+      "composite": "cos3_2x",
+      "structure": "quotient",
+      "answer_mode": "expr",
+      "difficulty_variables": {
+         "algebraic rewrite available": true,
+         "rules needed": [
+            "quotient",
+            "exponential",
+            "chain (three layers)"
+         ],
+         "surface resembles another family": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

@@ -1,0 +1,105 @@
+{
+   "id": "ITM-AGT-07011-05",
+   "archetype_id": "BC-QA-07011",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "A particle moves along a line, and its position \\( s(t) \\) satisfies the differential equation \\( \\frac{ds}{dt} = 3 t^{2} + 2 \\) with \\( s(1) = 4 \\). Writing the particular solution as \\( s(t) = 4 + \\int_{1}^{t} v(u) \\, du \\), where \\( v \\) is the given rate, find the exact value of \\( s(3) \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 34
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The accumulation form of the solution is \\( s(t) = 4 + \\int_{1}^{t} v(u) \\, du \\), with an antiderivative of the rate \\( t^{3} + 2 t \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Power",
+               "t",
+               3
+            ],
+            [
+               "Multiply",
+               2,
+               "t"
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The initial value fixes the constant term: at \\( t = 1 \\) the integral is 0, so \\( s(1) = 4 \\).",
+         "mathjson": 4
+      },
+      {
+         "step": 3,
+         "text": "Evaluate the integral: \\( \\int_{1}^{3} v(u) \\, du = 30 \\).",
+         "mathjson": 30
+      },
+      {
+         "step": 4,
+         "text": "So \\( s(3) = 4 + 30 = 34 \\).",
+         "mathjson": 34
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 34,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": 30,
+         "is_key": false,
+         "error_path": "BC-ERR-07032",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": 29,
+         "is_key": false,
+         "error_path": "BC-ERR-07038",
+         "violated_step": 0
+      },
+      {
+         "id": "D",
+         "value": 86,
+         "is_key": false,
+         "error_path": "BC-ERR-99014",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-03",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-07030",
+      "BC-SKL-07031",
+      "BC-SKL-07032",
+      "BC-SKL-07038"
+   ],
+   "parameter_draw": {
+      "rate": "3*t**2 + 2",
+      "t0": "1",
+      "s0": "4",
+      "target": "3",
+      "wrong_antiderivative_used_for_99014": "power rule without dividing by the new exponent",
+      "difficulty_variables": {
+         "vertical_asymptote": false,
+         "absolute_value_resolved": false,
+         "accumulation_form": true
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

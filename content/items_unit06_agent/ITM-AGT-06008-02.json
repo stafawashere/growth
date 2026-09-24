@@ -1,0 +1,189 @@
+{
+   "id": "ITM-AGT-06008-02",
+   "archetype_id": "BC-QA-06008",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Find the exact value of \\( \\int_{0}^{2} x^{2} \\sqrt{x^{3} + 1} \\, dx \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         52,
+         9
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Let \\( u = x^{3} + 1 \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Power",
+               "x",
+               3
+            ],
+            1
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Then \\( du = 3 x^{2} \\, dx \\), so \\( x^{2} \\, dx = \\frac{1}{3} \\, du \\).",
+         "mathjson": [
+            "Rational",
+            1,
+            3
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Convert the limits: \\( x = 0 \\) gives \\( u = 1 \\) and \\( x = 2 \\) gives \\( u = 9 \\), so the integral becomes \\( \\int_{1}^{9} \\frac{\\sqrt{u}}{3} \\, du \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Sqrt",
+               "u"
+            ],
+            3
+         ]
+      },
+      {
+         "step": 4,
+         "text": "An antiderivative of \\( \\frac{\\sqrt{u}}{3} \\) is \\( \\frac{2 u^{\\frac{3}{2}}}{9} \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Multiply",
+               2,
+               [
+                  "Power",
+                  "u",
+                  [
+                     "Rational",
+                     3,
+                     2
+                  ]
+               ]
+            ],
+            9
+         ]
+      },
+      {
+         "step": 5,
+         "text": "Evaluate at the new limits: \\( 6 - \\left(\\frac{2}{9}\\right) = \\frac{52}{9} \\).",
+         "mathjson": [
+            "Rational",
+            52,
+            9
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Rational",
+            52,
+            3
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06019",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Divide",
+            [
+               "Multiply",
+               4,
+               [
+                  "Sqrt",
+                  2
+               ]
+            ],
+            9
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06018",
+         "violated_step": 4
+      },
+      {
+         "id": "C",
+         "value": 6,
+         "is_key": false,
+         "error_path": "BC-ERR-06018",
+         "violated_step": 4
+      },
+      {
+         "id": "D",
+         "value": [
+            "Rational",
+            52,
+            9
+         ],
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-11",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06047",
+      "BC-SKL-06048",
+      "BC-SKL-06049",
+      "BC-SKL-06050",
+      "BC-SKL-06051",
+      "BC-SKL-06052",
+      "BC-SKL-06034"
+   ],
+   "parameter_draw": {
+      "form": "definite integral",
+      "integrand": "x**2*sqrt(x**3 + 1)",
+      "inner_u": "x**3 + 1",
+      "du_constant_k": "3",
+      "limits": [
+         "0",
+         "2"
+      ],
+      "u_limits": [
+         "1",
+         "9"
+      ],
+      "difficulty_variables": {
+         "whether a constant adjustment is needed": "yes",
+         "whether the answer is logarithmic, exponential, trigonometric, or a power": "power",
+         "definite versus indefinite": "definite",
+         "whether the limits must be converted": "yes",
+         "whether the substitution is disguised by a prior rearrangement": "no"
+      },
+      "distractor_derivations": {
+         "A": "substitution carried out as if x**2 dx = du, without the constant 1/(3)",
+         "B": "antiderivative in u evaluated at the original x limits 0 and 2",
+         "C": "upper limit converted to u = 9 but the original lower limit 0 kept"
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

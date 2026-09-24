@@ -1,0 +1,182 @@
+{
+   "id": "ITM-AGT-06008-17",
+   "archetype_id": "BC-QA-06008",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let F be the antiderivative of \\( f(x) = \\left(e^{x} + 1\\right)^{2} e^{x} \\) with \\( F(0) = 1 \\). Find the exact value of \\( F\\left(\\ln{\\left(3 \\right)}\\right) \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         59,
+         3
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Let \\( u = e^{x} + 1 \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Exp",
+               "x"
+            ],
+            1
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Then \\( du = e^{x} \\, dx \\), which is exactly the factor left in the integrand, so no constant is needed.",
+         "mathjson": 1
+      },
+      {
+         "step": 3,
+         "text": "Since \\( F(\\ln{\\left(3 \\right)}) = F(0) + \\int_{0}^{\\ln{\\left(3 \\right)}} \\left(e^{x} + 1\\right)^{2} e^{x} \\, dx \\), convert the limits: \\( x = 0 \\) gives \\( u = 2 \\) and \\( x = \\ln{\\left(3 \\right)} \\) gives \\( u = 4 \\), so the integral becomes \\( \\int_{2}^{4} u^{2} \\, du \\).",
+         "mathjson": [
+            "Power",
+            "u",
+            2
+         ]
+      },
+      {
+         "step": 4,
+         "text": "An antiderivative of \\( u^{2} \\) is \\( \\frac{u^{3}}{3} \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Power",
+               "u",
+               3
+            ],
+            3
+         ]
+      },
+      {
+         "step": 5,
+         "text": "The integral is \\( \\frac{64}{3} - \\left(\\frac{8}{3}\\right) = \\frac{56}{3} \\), so \\( F(\\ln{\\left(3 \\right)}) = 1 + \\frac{56}{3} = \\frac{59}{3} \\).",
+         "mathjson": [
+            "Rational",
+            59,
+            3
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            [
+               "Divide",
+               [
+                  "Power",
+                  [
+                     "Ln",
+                     3
+                  ],
+                  3
+               ],
+               3
+            ],
+            1
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06018",
+         "violated_step": 4
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            64,
+            3
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-07026",
+         "violated_step": 3
+      },
+      {
+         "id": "C",
+         "value": [
+            "Rational",
+            59,
+            3
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": [
+            "Rational",
+            67,
+            3
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06018",
+         "violated_step": 4
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-11",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06047",
+      "BC-SKL-06048",
+      "BC-SKL-06049",
+      "BC-SKL-06050",
+      "BC-SKL-06051",
+      "BC-SKL-06052",
+      "BC-SKL-06034"
+   ],
+   "parameter_draw": {
+      "form": "pinned antiderivative value",
+      "integrand": "(exp(x) + 1)**2*exp(x)",
+      "inner_u": "exp(x) + 1",
+      "du_constant_k": "1",
+      "limits": [
+         "0",
+         "log(3)"
+      ],
+      "u_limits": [
+         "2",
+         "4"
+      ],
+      "difficulty_variables": {
+         "whether a constant adjustment is needed": "no",
+         "whether the answer is logarithmic, exponential, trigonometric, or a power": "power",
+         "definite versus indefinite": "antiderivative pinned by an initial value",
+         "whether the limits must be converted": "yes",
+         "whether the substitution is disguised by a prior rearrangement": "yes"
+      },
+      "F_at_a": "1",
+      "distractor_derivations": {
+         "A": "antiderivative in u evaluated at the original x limits 0 and log(3)",
+         "B": "antiderivative (exp(x) + 1)**3/3 written with no constant and evaluated at x = log(3), ignoring F(0)",
+         "D": "upper limit converted to u = 4 but the original lower limit 0 kept"
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

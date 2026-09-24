@@ -1,0 +1,373 @@
+{
+   "id": "ITM-AGT-06010-09",
+   "archetype_id": "BC-QA-06010",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Find the exact value of \\( \\int_{4}^{5} \\frac{x^{2} + 4}{x^{2} - 4 x + 3} \\, dx \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         1,
+         [
+            "Divide",
+            [
+               "Multiply",
+               3,
+               [
+                  "Ln",
+                  2
+               ]
+            ],
+            2
+         ],
+         [
+            "Divide",
+            [
+               "Multiply",
+               5,
+               [
+                  "Ln",
+                  3
+               ]
+            ],
+            2
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Factor the denominator: \\( x^{2} - 4 x + 3 = \\left(x - 1\\right) \\left(x - 3\\right) \\).",
+         "mathjson": [
+            "Multiply",
+            [
+               "Add",
+               "x",
+               -3
+            ],
+            [
+               "Add",
+               "x",
+               -1
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The numerator's degree is not less than the denominator's, so divide first: \\( \\frac{x^{2} + 4}{x^{2} - 4 x + 3} = 1 + \\frac{4 x + 1}{x^{2} - 4 x + 3} \\), and write \\( \\frac{4 x + 1}{x^{2} - 4 x + 3} = \\frac{A}{x - 1} + \\frac{B}{x - 3} \\).",
+         "mathjson": 1
+      },
+      {
+         "step": 3,
+         "text": "Clearing denominators gives \\( 4 x + 1 = A \\left(x - 3\\right) + B \\left(x - 1\\right) \\). Setting \\( x = 1 \\) gives \\( A = - \\frac{5}{2} \\), and setting \\( x = 3 \\) gives \\( B = \\frac{13}{2} \\), so the integrand is \\( 1 - \\frac{5}{2 \\left(x - 1\\right)} + \\frac{13}{2 \\left(x - 3\\right)} \\).",
+         "mathjson": [
+            "Add",
+            1,
+            [
+               "Negate",
+               [
+                  "Divide",
+                  5,
+                  [
+                     "Add",
+                     [
+                        "Multiply",
+                        2,
+                        "x"
+                     ],
+                     -2
+                  ]
+               ]
+            ],
+            [
+               "Divide",
+               13,
+               [
+                  "Add",
+                  [
+                     "Multiply",
+                     2,
+                     "x"
+                  ],
+                  -6
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "An antiderivative is \\( x + \\frac{13 \\ln{\\left(\\left|{x - 3}\\right| \\right)}}{2} - \\frac{5 \\ln{\\left(\\left|{x - 1}\\right| \\right)}}{2} \\).",
+         "mathjson": [
+            "Add",
+            "x",
+            [
+               "Divide",
+               [
+                  "Multiply",
+                  13,
+                  [
+                     "Ln",
+                     [
+                        "Abs",
+                        [
+                           "Add",
+                           "x",
+                           -3
+                        ]
+                     ]
+                  ]
+               ],
+               2
+            ],
+            [
+               "Negate",
+               [
+                  "Divide",
+                  [
+                     "Multiply",
+                     5,
+                     [
+                        "Ln",
+                        [
+                           "Abs",
+                           [
+                              "Add",
+                              "x",
+                              -1
+                           ]
+                        ]
+                     ]
+                  ],
+                  2
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 5,
+         "text": "Evaluate from \\( x = 4 \\) to \\( x = 5 \\): the value is \\( 1 + \\frac{3 \\ln{\\left(2 \\right)}}{2} + \\frac{5 \\ln{\\left(3 \\right)}}{2} \\).",
+         "mathjson": [
+            "Add",
+            1,
+            [
+               "Divide",
+               [
+                  "Multiply",
+                  3,
+                  [
+                     "Ln",
+                     2
+                  ]
+               ],
+               2
+            ],
+            [
+               "Divide",
+               [
+                  "Multiply",
+                  5,
+                  [
+                     "Ln",
+                     3
+                  ]
+               ],
+               2
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            1,
+            [
+               "Divide",
+               [
+                  "Multiply",
+                  3,
+                  [
+                     "Ln",
+                     2
+                  ]
+               ],
+               2
+            ],
+            [
+               "Divide",
+               [
+                  "Multiply",
+                  5,
+                  [
+                     "Ln",
+                     3
+                  ]
+               ],
+               2
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": [
+            "Add",
+            [
+               "Divide",
+               [
+                  "Multiply",
+                  3,
+                  [
+                     "Ln",
+                     2
+                  ]
+               ],
+               2
+            ],
+            [
+               "Divide",
+               [
+                  "Multiply",
+                  5,
+                  [
+                     "Ln",
+                     3
+                  ]
+               ],
+               2
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06026",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            [
+               "Negate",
+               [
+                  "Multiply",
+                  2,
+                  [
+                     "Ln",
+                     2
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               2,
+               [
+                  "Ln",
+                  3
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06026",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            [
+               "Negate",
+               [
+                  "Divide",
+                  [
+                     "Multiply",
+                     3,
+                     [
+                        "Ln",
+                        2
+                     ]
+                  ],
+                  2
+               ]
+            ],
+            [
+               "Divide",
+               [
+                  "Multiply",
+                  5,
+                  [
+                     "Ln",
+                     3
+                  ]
+               ],
+               2
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06026",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06062",
+      "BC-SKL-06063",
+      "BC-SKL-06064",
+      "BC-SKL-06065"
+   ],
+   "parameter_draw": {
+      "numerator": "x**2 + 4",
+      "denominator_factors": [
+         "x - 1",
+         "x - 3"
+      ],
+      "limits": [
+         "4",
+         "5"
+      ],
+      "quotient": "1",
+      "remainder": "4*x + 1",
+      "A": "-5/2",
+      "B": "13/2",
+      "difficulty_variables": {
+         "whether the numerator degree forces a division first": "yes",
+         "whether the constants must be found by substitution or by equating coefficients": "substitution at the roots",
+         "whether the logarithms must be combined": "no, the answer is written with logarithms of primes",
+         "whether a definite integral requires the limits": "yes"
+      },
+      "distractor_derivations": {
+         "B": "decomposed without dividing; constants found by substituting both roots (cover up), so the polynomial part of the quotient is lost: A = -5/2, B = 13/2",
+         "C": "decomposed without dividing; constants found by matching only the x and constant coefficients, ignoring the unmatched higher powers: A = -2, B = 2",
+         "D": "decomposed without dividing; constants found by substituting the root of the first factor and x = 0: A = -5/2, B = 7/2"
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

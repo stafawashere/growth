@@ -100,3 +100,11 @@ samples only operator items, so the order is:
    `second_answer` in the verdicts file.
 6. `python3 tools/check_audit_verdicts.py var/key_audit_verdicts.json var/key_audit_sample.json`
    prints the key error rate once every record is complete.
+
+## Auditing several banks [verified]
+
+Added 2026-09-24. `tools/key_audit_worksheet.py` takes `--items-dir` more than once and, with
+none given, searches every content/items_* bank, so a sample drawn over the per-unit banks of
+[items-units-4-to-10.md](items-units-4-to-10.md) finds each record. The stage 1 audit draws over
+the new items only, from a scratch database that ingested only the unit banks, and is recorded
+in docs/operator/key-audit-p2/ beside key-audit-p1/.

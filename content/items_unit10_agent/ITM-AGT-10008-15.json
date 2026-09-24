@@ -1,0 +1,128 @@
+{
+   "id": "ITM-AGT-10008-15",
+   "archetype_id": "BC-QA-10008",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "The Maclaurin series \\( \\cos x = \\sum_{n=0}^{\\infty} \\frac{(-1)^{n} x^{2n}}{(2n)!} \\) is evaluated at \\( x = \\frac{2}{5} \\). The sum of its first three nonzero terms is used to approximate \\( \\cos\\left(\\frac{2}{5}\\right) \\). Find the alternating series error bound for this approximation."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         4,
+         703125
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "At \\( x = \\frac{2}{5} \\) the series alternates, and its terms \\( \\frac{(\\frac{2}{5})^{m}}{m!} \\) decrease in absolute value to 0.",
+         "mathjson": [
+            "Rational",
+            2,
+            5
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The first three nonzero terms stop at the power \\( x^{4} \\), so the first omitted term has power \\( x^{6} \\).",
+         "mathjson": 6
+      },
+      {
+         "step": 3,
+         "text": "Its absolute value at \\( x = \\frac{2}{5} \\) is \\( \\frac{(\\frac{2}{5})^{6}}{6!} = \\frac{4}{703125} \\).",
+         "mathjson": [
+            "Rational",
+            4,
+            703125
+         ]
+      },
+      {
+         "step": 4,
+         "text": "The error is at most \\( \\frac{4}{703125} \\).",
+         "mathjson": [
+            "Rational",
+            4,
+            703125
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Rational",
+            2,
+            1875
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10024",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            2,
+            123046875
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10024",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Rational",
+            4,
+            46875
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10033",
+         "violated_step": 0
+      },
+      {
+         "id": "D",
+         "value": [
+            "Rational",
+            4,
+            703125
+         ],
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10028",
+      "BC-SKL-10029",
+      "BC-SKL-10039",
+      "BC-SKL-10040",
+      "BC-SKL-10041",
+      "BC-SKL-10042",
+      "BC-SKL-10052",
+      "BC-SKL-10066"
+   ],
+   "parameter_draw": {
+      "function": "cos",
+      "input": "2/5",
+      "nonzero_terms_used": 3,
+      "lagrange_error": "uses the Lagrange bound with maximum 1 and the polynomial's own degree plus one",
+      "difficulty_variables": {
+         "tolerance_supplied": false,
+         "from_taylor_series_at_point": true,
+         "first_omitted_index": 3
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

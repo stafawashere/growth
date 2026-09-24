@@ -1,0 +1,361 @@
+{
+   "id": "ITM-AGT-10017-14",
+   "archetype_id": "BC-QA-10017",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = 8 e^{\\frac{x}{2}} \\). Find the sum of the first four nonzero terms of the Maclaurin series for \\( f \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         8,
+         [
+            "Multiply",
+            4,
+            "x"
+         ],
+         [
+            "Power",
+            "x",
+            2
+         ],
+         [
+            "Multiply",
+            [
+               "Rational",
+               1,
+               6
+            ],
+            [
+               "Power",
+               "x",
+               3
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Recall \\( e^{u} = 1 + u + \\frac{u^{2}}{2!} + \\frac{u^{3}}{3!} + \\cdots \\).",
+         "mathjson": [
+            "Add",
+            1,
+            "x",
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  6
+               ],
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Substitute \\( u = \\frac{x}{2} \\), raising the whole of \\( \\frac{x}{2} \\) to each power: the series begins \\( 1 + \\frac{1}{2}x + \\frac{1}{8}x^{2} + \\frac{1}{48}x^{3} + \\cdots \\).",
+         "mathjson": [
+            "Add",
+            1,
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  2
+               ],
+               "x"
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  8
+               ],
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  48
+               ],
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Multiply every term by \\( 8 \\): \\( f(x) = 8 + 4x + x^{2} + \\frac{1}{6}x^{3} + \\cdots \\).",
+         "mathjson": [
+            "Add",
+            8,
+            [
+               "Multiply",
+               4,
+               "x"
+            ],
+            [
+               "Power",
+               "x",
+               2
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  6
+               ],
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "The first four nonzero terms sum to \\( 8 + 4x + x^{2} + \\frac{1}{6}x^{3} \\).",
+         "mathjson": [
+            "Add",
+            8,
+            [
+               "Multiply",
+               4,
+               "x"
+            ],
+            [
+               "Power",
+               "x",
+               2
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  6
+               ],
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            1,
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  2
+               ],
+               "x"
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  8
+               ],
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  48
+               ],
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10041",
+         "violated_step": 2
+      },
+      {
+         "id": "B",
+         "value": [
+            "Add",
+            8,
+            [
+               "Multiply",
+               4,
+               "x"
+            ],
+            [
+               "Multiply",
+               2,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Power",
+               "x",
+               3
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10040",
+         "violated_step": 0
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            8,
+            [
+               "Multiply",
+               4,
+               "x"
+            ],
+            [
+               "Power",
+               "x",
+               2
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  6
+               ],
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            8,
+            [
+               "Multiply",
+               4,
+               "x"
+            ],
+            [
+               "Multiply",
+               2,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  2,
+                  3
+               ],
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10041",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10061",
+      "BC-SKL-10062",
+      "BC-SKL-10063",
+      "BC-SKL-10064",
+      "BC-SKL-10065"
+   ],
+   "parameter_draw": {
+      "standard_series": "exp",
+      "constant_multiple": "8",
+      "power_of_x_multiplier": 0,
+      "inner_coefficient": "1/2",
+      "inner_power": 1,
+      "question": "terms",
+      "terms_or_power": 4,
+      "substitution_raises_powers": false,
+      "misremembered_variants": [
+         "factorials dropped"
+      ]
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

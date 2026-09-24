@@ -1,0 +1,124 @@
+{
+   "id": "ITM-AGT-10008-11",
+   "archetype_id": "BC-QA-10008",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "The Maclaurin series \\( \\sin x = \\sum_{n=0}^{\\infty} \\frac{(-1)^{n} x^{2n+1}}{(2n+1)!} \\) is evaluated at \\( x = 1 \\). The sum of its first three nonzero terms is used to approximate \\( \\sin\\left(1\\right) \\). Find the alternating series error bound for this approximation."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         1,
+         5040
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "At \\( x = 1 \\) the series alternates, and its terms \\( \\frac{(1)^{m}}{m!} \\) decrease in absolute value to 0.",
+         "mathjson": 1
+      },
+      {
+         "step": 2,
+         "text": "The first three nonzero terms stop at the power \\( x^{5} \\), so the first omitted term has power \\( x^{7} \\).",
+         "mathjson": 7
+      },
+      {
+         "step": 3,
+         "text": "Its absolute value at \\( x = 1 \\) is \\( \\frac{(1)^{7}}{7!} = \\frac{1}{5040} \\).",
+         "mathjson": [
+            "Rational",
+            1,
+            5040
+         ]
+      },
+      {
+         "step": 4,
+         "text": "The error is at most \\( \\frac{1}{5040} \\).",
+         "mathjson": [
+            "Rational",
+            1,
+            5040
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Rational",
+            1,
+            120
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10024",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            1,
+            362880
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10024",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Rational",
+            1,
+            720
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10033",
+         "violated_step": 0
+      },
+      {
+         "id": "D",
+         "value": [
+            "Rational",
+            1,
+            5040
+         ],
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10028",
+      "BC-SKL-10029",
+      "BC-SKL-10039",
+      "BC-SKL-10040",
+      "BC-SKL-10041",
+      "BC-SKL-10042",
+      "BC-SKL-10052",
+      "BC-SKL-10066"
+   ],
+   "parameter_draw": {
+      "function": "sin",
+      "input": "1",
+      "nonzero_terms_used": 3,
+      "lagrange_error": "uses the Lagrange bound with maximum 1 and the polynomial's own degree plus one",
+      "difficulty_variables": {
+         "tolerance_supplied": false,
+         "from_taylor_series_at_point": true,
+         "first_omitted_index": 3
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

@@ -1,0 +1,158 @@
+{
+   "id": "ITM-AGT-10011-09",
+   "archetype_id": "BC-QA-10011",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "The function \\( h \\) has derivatives of all orders, and its values at \\( x = 2 \\) are \\( h(2) = -1 \\), \\( h'(2) = 4 \\), \\( h''(2) = 6 \\), \\( h'''(2) = -6 \\), \\( h^{(4)}(2) = 10 \\). Let \\( P \\) be the third-degree Taylor polynomial for \\( h \\) about \\( x = 2 \\). Find the value of \\( P\\left(\\frac{3}{2}\\right) \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         -17,
+         8
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "A degree 3 polynomial needs the values through order 3: \\( h(2) = -1 \\), \\( h'(2) = 4 \\), \\( h''(2) = 6 \\), \\( h'''(2) = -6 \\). The value of order 4 is not used.",
+         "mathjson": -6
+      },
+      {
+         "step": 2,
+         "text": "Divide each by the matching factorial: \\( \\frac{-1}{0!} = -1 \\), \\( \\frac{4}{1!} = 4 \\), \\( \\frac{6}{2!} = 3 \\), \\( \\frac{-6}{3!} = -1 \\).",
+         "mathjson": -1
+      },
+      {
+         "step": 3,
+         "text": "Attach \\( (x - 2)^{k} \\) to the coefficient of order \\( k \\): \\( P(x) = -1 + 4(x - 2) + 3(x - 2)^{2} - (x - 2)^{3} \\).",
+         "mathjson": [
+            "Add",
+            -1,
+            [
+               "Multiply",
+               4,
+               [
+                  "Subtract",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               3,
+               [
+                  "Power",
+                  [
+                     "Subtract",
+                     "x",
+                     2
+                  ],
+                  2
+               ]
+            ],
+            [
+               "Negate",
+               [
+                  "Power",
+                  [
+                     "Subtract",
+                     "x",
+                     2
+                  ],
+                  3
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Substitute \\( x = \\frac{3}{2} \\), so \\( (x - 2) = -\\frac{1}{2} \\): \\( P\\left(\\frac{3}{2}\\right) = -\\frac{17}{8} \\).",
+         "mathjson": [
+            "Rational",
+            -17,
+            8
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Rational",
+            -31,
+            8
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10031",
+         "violated_step": 0
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            -403,
+            192
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10030",
+         "violated_step": 3
+      },
+      {
+         "id": "C",
+         "value": [
+            "Rational",
+            -17,
+            8
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": [
+            "Rational",
+            -3,
+            4
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10029",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10044",
+      "BC-SKL-10045"
+   ],
+   "parameter_draw": {
+      "function_letter": "h",
+      "centre": 2,
+      "table_values": [
+         "-1",
+         "4",
+         "6",
+         "-6",
+         "10"
+      ],
+      "degree_requested": 3,
+      "centre_is_zero": false,
+      "approximation_at": "3/2",
+      "rows_swapped_in_distractor": [
+         2,
+         3
+      ]
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

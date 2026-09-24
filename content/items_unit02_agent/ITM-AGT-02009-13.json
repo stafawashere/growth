@@ -1,0 +1,133 @@
+{
+   "id": "ITM-AGT-02009-13",
+   "archetype_id": "BC-QA-02009",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "The functions \\( f \\) and \\( g \\) are differentiable, with \\( f(2) = 5 \\) and \\( f'(2) = -1 \\). The line tangent to the graph of \\( g \\) at \\( x = 2 \\) has equation \\( y = x \\). Let \\( h(x) = \\frac{f(x)}{g(x)} \\). Find the value of \\( h'(2) \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         -7,
+         4
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Record the values at \\( x = 2 \\): \\( f(2) = 5 \\), \\( f'(2) = -1 \\). The tangent line gives \\( g(2) = 2 \\) (its height at \\( x = 2 \\)) and \\( g'(2) = 1 \\) (its slope).",
+         "mathjson": -1
+      },
+      {
+         "step": 2,
+         "text": "By the quotient rule, \\( \\left(\\frac{f}{g}\\right)'(2) = \\frac{f'(2)g(2) - f(2)g'(2)}{[g(2)]^{2}} \\).",
+         "mathjson": 5
+      },
+      {
+         "step": 3,
+         "text": "Substitute: \\( \\frac{(-1)(2) - (5)(1)}{(2)^{2}} = \\frac{-7}{4} \\).",
+         "mathjson": [
+            "Rational",
+            -7,
+            4
+         ]
+      },
+      {
+         "step": 4,
+         "text": "So \\( h'(2) = - \\frac{7}{4} \\).",
+         "mathjson": [
+            "Rational",
+            -7,
+            4
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Rational",
+            5,
+            4
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02024",
+         "violated_step": 2
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            -7,
+            4
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": [
+            "Rational",
+            7,
+            4
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02021",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": [
+            "Rational",
+            -7,
+            2
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02022",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-03",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-05",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02037",
+      "BC-SKL-02041",
+      "BC-SKL-02017"
+   ],
+   "parameter_draw": {
+      "kind": "tangent_quotient",
+      "a": 2,
+      "values": {
+         "f": 5,
+         "f_prime": -1,
+         "g": 2,
+         "g_prime": 1
+      },
+      "names": [
+         "f",
+         "g"
+      ],
+      "extra_row_shown": false,
+      "difficulty_variables": {
+         "table against graphs": "tangent line equation",
+         "product against quotient": "quotient",
+         "value read as a slope": true,
+         "interpreted in context": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

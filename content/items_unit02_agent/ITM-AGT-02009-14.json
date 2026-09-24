@@ -1,0 +1,105 @@
+{
+   "id": "ITM-AGT-02009-14",
+   "archetype_id": "BC-QA-02009",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "A shop sets the price of an item at \\( p(t) \\) dollars and sells \\( n(t) \\) items per day, where \\( t \\) is measured in weeks. At \\( t = 3 \\), \\( p(3) = 6 \\), \\( p'(3) = -1 \\), \\( n(3) = 13 \\), and \\( n'(3) = -2 \\). The daily revenue is \\( R(t) = p(t)n(t) \\) dollars per day. Find the value of \\( R'(3) \\), in dollars per day per week."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": -25
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Record the values at \\( t = 3 \\): \\( p(3) = 6 \\), \\( p'(3) = -1 \\), \\( n(3) = 13 \\), \\( n'(3) = -2 \\).",
+         "mathjson": -1
+      },
+      {
+         "step": 2,
+         "text": "By the product rule, \\( (pn)'(3) = p'(3)n(3) + p(3)n'(3) \\).",
+         "mathjson": 6
+      },
+      {
+         "step": 3,
+         "text": "Substitute: \\( (-1)(13) + (6)(-2) = -25 \\).",
+         "mathjson": -25
+      },
+      {
+         "step": 4,
+         "text": "So \\( R'(3) = -25 \\): revenue is changing at -25 dollars per day per week at \\( t = 3 \\).",
+         "mathjson": -25
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 2,
+         "is_key": false,
+         "error_path": "BC-ERR-02020",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": 65,
+         "is_key": false,
+         "error_path": "BC-ERR-02024",
+         "violated_step": 2
+      },
+      {
+         "id": "C",
+         "value": -25,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": 66,
+         "is_key": false,
+         "error_path": "BC-ERR-02024",
+         "violated_step": 2
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-03",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-05",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02037",
+      "BC-SKL-02041",
+      "BC-SKL-02017"
+   ],
+   "parameter_draw": {
+      "kind": "context_product",
+      "a": 3,
+      "values": {
+         "f": 6,
+         "f_prime": -1,
+         "g": 13,
+         "g_prime": -2
+      },
+      "names": [
+         "p",
+         "n"
+      ],
+      "extra_row_shown": false,
+      "difficulty_variables": {
+         "table against graphs": "table",
+         "product against quotient": "product",
+         "value read as a slope": false,
+         "interpreted in context": true
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

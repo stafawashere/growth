@@ -1,0 +1,210 @@
+{
+   "id": "ITM-AGT-06009-14",
+   "archetype_id": "BC-QA-06009",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Find the exact value of \\( \\int_{1}^{2} x \\ln{\\left(x \\right)} \\, dx \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Rational",
+            -3,
+            4
+         ],
+         [
+            "Multiply",
+            2,
+            [
+               "Ln",
+               2
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Let \\( u = \\ln{\\left(x \\right)} \\) and \\( dv = x \\, dx \\), so \\( du = \\frac{1}{x} \\, dx \\) and \\( v = \\frac{x^{2}}{2} \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Power",
+               "x",
+               2
+            ],
+            2
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Then the integral equals \\( \\left[\\frac{x^{2} \\ln{\\left(x \\right)}}{2}\\right]_{1}^{2} - \\int_{1}^{2} \\frac{x}{2} \\, dx \\), and the boundary term is \\( 2 \\ln{\\left(2 \\right)} \\).",
+         "mathjson": [
+            "Multiply",
+            2,
+            [
+               "Ln",
+               2
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The remaining integral is \\( \\int_{1}^{2} \\frac{x}{2} \\, dx = \\frac{3}{4} \\).",
+         "mathjson": [
+            "Rational",
+            3,
+            4
+         ]
+      },
+      {
+         "step": 4,
+         "text": "So the value is \\( 2 \\ln{\\left(2 \\right)} - \\left(\\frac{3}{4}\\right) = - \\frac{3}{4} + 2 \\ln{\\left(2 \\right)} \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Rational",
+               -3,
+               4
+            ],
+            [
+               "Multiply",
+               2,
+               [
+                  "Ln",
+                  2
+               ]
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            [
+               "Rational",
+               -3,
+               4
+            ],
+            [
+               "Multiply",
+               2,
+               [
+                  "Ln",
+                  2
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": [
+            "Add",
+            [
+               "Rational",
+               -7,
+               2
+            ],
+            [
+               "Multiply",
+               4,
+               [
+                  "Ln",
+                  2
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06022",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            [
+               "Rational",
+               3,
+               4
+            ],
+            [
+               "Multiply",
+               2,
+               [
+                  "Ln",
+                  2
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06023",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": [
+            "Rational",
+            -3,
+            4
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99025",
+         "violated_step": 3
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06057",
+      "BC-SKL-06058",
+      "BC-SKL-06059",
+      "BC-SKL-06060",
+      "BC-SKL-06061",
+      "BC-SKL-06034"
+   ],
+   "parameter_draw": {
+      "integrand": "x*log(x)",
+      "u": "log(x)",
+      "dv": "x",
+      "limits": [
+         "1",
+         "2"
+      ],
+      "difficulty_variables": {
+         "whether parts must be applied more than once": "no",
+         "definite versus indefinite": "definite",
+         "whether the non polynomial factor is trigonometric, exponential, or logarithmic": "logarithmic",
+         "whether the integrand contains an unknown function and its derivative": "no",
+         "whether supplied values of the unknown function must be imported": "no"
+      },
+      "distractor_derivations": {
+         "B": "antiderivatives x*log(x) - x and x**2/2 multiplied and evaluated from 1 to 2",
+         "C": "boundary term plus the remaining integral instead of minus",
+         "D": "boundary term [uv] left out, only minus the remaining integral kept"
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

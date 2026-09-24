@@ -82,3 +82,13 @@ all. A full pass, 348 template-authoring calls and 6,178 verifier re-solves pric
 twenty-sixth session's audit already split by archetype for exactly this reason, one agent per
 archetype rather than one agent for all twelve. Schedule accordingly and do not assume a whole
 authoring or audit pass clears in a single five hour window.
+
+## Stage 1 variant: blind formulation instead of blind re-solve [verified]
+
+For the per-unit banks of [items-units-4-to-10.md](items-units-4-to-10.md), run on 2026-09-24,
+the independent reader writes code rather than prose: a separate agent receives a file of stems
+only and writes the bank's `key_formulations.py`, a SymPy computation per item, using the helpers
+in `tools/key_recheck.py`. The recheck script, not an agent, compares those answers with the
+stored keys and every option, with its planted-error control. The authoring agents each computed
+their keys and distractors in SymPy in their own scratch folders and ran `tools/check_items.py`
+to clean, but they know their keys, so their checks are not the independent one.

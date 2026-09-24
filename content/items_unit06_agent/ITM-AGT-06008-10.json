@@ -1,0 +1,163 @@
+{
+   "id": "ITM-AGT-06008-10",
+   "archetype_id": "BC-QA-06008",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Find the exact value of \\( \\int_{0}^{1} \\left(2 x + 1\\right)^{3} \\, dx \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 10
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Let \\( u = 2 x + 1 \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               2,
+               "x"
+            ],
+            1
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Then \\( du = 2 \\, dx \\), so \\( dx = \\frac{1}{2} \\, du \\).",
+         "mathjson": [
+            "Rational",
+            1,
+            2
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Convert the limits: \\( x = 0 \\) gives \\( u = 1 \\) and \\( x = 1 \\) gives \\( u = 3 \\), so the integral becomes \\( \\int_{1}^{3} \\frac{u^{3}}{2} \\, du \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Power",
+               "u",
+               3
+            ],
+            2
+         ]
+      },
+      {
+         "step": 4,
+         "text": "An antiderivative of \\( \\frac{u^{3}}{2} \\) is \\( \\frac{u^{4}}{8} \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Power",
+               "u",
+               4
+            ],
+            8
+         ]
+      },
+      {
+         "step": 5,
+         "text": "Evaluate at the new limits: \\( \\frac{81}{8} - \\left(\\frac{1}{8}\\right) = 10 \\).",
+         "mathjson": 10
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 20,
+         "is_key": false,
+         "error_path": "BC-ERR-06019",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            1,
+            8
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06018",
+         "violated_step": 4
+      },
+      {
+         "id": "C",
+         "value": [
+            "Rational",
+            81,
+            8
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06018",
+         "violated_step": 4
+      },
+      {
+         "id": "D",
+         "value": 10,
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-11",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06047",
+      "BC-SKL-06048",
+      "BC-SKL-06049",
+      "BC-SKL-06050",
+      "BC-SKL-06051",
+      "BC-SKL-06052",
+      "BC-SKL-06034"
+   ],
+   "parameter_draw": {
+      "form": "definite integral",
+      "integrand": "(2*x + 1)**3",
+      "inner_u": "2*x + 1",
+      "du_constant_k": "2",
+      "limits": [
+         "0",
+         "1"
+      ],
+      "u_limits": [
+         "1",
+         "3"
+      ],
+      "difficulty_variables": {
+         "whether a constant adjustment is needed": "yes",
+         "whether the answer is logarithmic, exponential, trigonometric, or a power": "power",
+         "definite versus indefinite": "definite",
+         "whether the limits must be converted": "yes",
+         "whether the substitution is disguised by a prior rearrangement": "no"
+      },
+      "distractor_derivations": {
+         "A": "substitution carried out as if dx = du, without the constant 1/(2)",
+         "B": "antiderivative in u evaluated at the original x limits 0 and 1",
+         "C": "upper limit converted to u = 3 but the original lower limit 0 kept"
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

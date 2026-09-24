@@ -1,0 +1,113 @@
+{
+   "id": "ITM-AGT-10018-18",
+   "archetype_id": "BC-QA-10018",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = \\sum_{n=0}^{\\infty} \\frac{1}{25^{n}(n + 1)} (x - 1)^{2 n} \\) for all \\( x \\) where the series converges. The series for \\( f'(x) \\) is obtained by differentiating the series for \\( f \\) term by term. Find the radius of convergence of the series for \\( f'(x) \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 5
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Apply the ratio test to the series for \\( f \\): the ratio of consecutive terms has limit \\( \\frac{|x - 1|^{2}}{25} \\) as \\( n \\to \\infty \\), since every factor that is polynomial in \\( n \\) has ratio tending to 1.",
+         "mathjson": [
+            "Rational",
+            1,
+            25
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The series for \\( f \\) converges when \\( |x - 1|^{2} < 25 \\), that is \\( |x - 1| < 5 \\), so its radius of convergence is \\( 5 \\).",
+         "mathjson": 5
+      },
+      {
+         "step": 3,
+         "text": "Differentiating a power series term by term does not change its radius of convergence, so the series for \\( f'(x) \\) also has radius \\( 5 \\).",
+         "mathjson": 5
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Rational",
+            1,
+            5
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10042",
+         "violated_step": 2
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            1,
+            25
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10042",
+         "violated_step": 2
+      },
+      {
+         "id": "C",
+         "value": 25,
+         "is_key": false,
+         "error_path": "BC-ERR-10042",
+         "violated_step": 2
+      },
+      {
+         "id": "D",
+         "value": 5,
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-04",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-10",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10060",
+      "BC-SKL-10068",
+      "BC-SKL-10070",
+      "BC-SKL-10071"
+   ],
+   "parameter_draw": {
+      "general_term": "\\frac{1}{25^{n}(n + 1)}",
+      "power": "2*n",
+      "centre": 1,
+      "ratio_base": 25,
+      "root_taken": 2,
+      "question": "radius of the derivative series",
+      "distractor_mistakes": [
+         "root of the ratio base not taken",
+         "radius reported as the reciprocal",
+         "coefficient ratio limit reported as the radius"
+      ]
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

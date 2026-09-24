@@ -1,0 +1,114 @@
+{
+   "id": "ITM-AGT-05012-06",
+   "archetype_id": "BC-QA-05012",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Consider the curve given by \\( 2xy - y^{2} = 3 \\), along which \\( y \\) is a differentiable function of \\( x \\) near the point \\( (2, 1) \\). Find the value of \\( \\frac{d^2y}{dx^2} \\) at the point \\( (2, 1) \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 3
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Differentiate \\( 2xy - y^{2} = 3 \\) implicitly with respect to \\( x \\): \\( 2 y + \\left(2 x - 2 y\\right)\\frac{dy}{dx} = 0 \\), so \\( \\frac{dy}{dx} = - \\frac{y}{x - y} \\).",
+         "mathjson": [
+            "Negate",
+            [
+               "Divide",
+               "y",
+               [
+                  "Add",
+                  "x",
+                  [
+                     "Negate",
+                     "y"
+                  ]
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Differentiate \\( \\frac{dy}{dx} = \\frac{- 2 y}{2 x - 2 y} \\) again with the quotient rule, treating \\( y \\) as a function of \\( x \\): \\( \\frac{d^2y}{dx^2} = \\frac{- 2 \\frac{dy}{dx} \\left(2 x - 2 y\\right) + 2 y \\left(2 - 2 \\frac{dy}{dx}\\right)}{\\left(2 x - 2 y\\right)^{2}} \\).",
+         "mathjson": -1
+      },
+      {
+         "step": 3,
+         "text": "At \\( (2, 1) \\), \\( \\frac{dy}{dx} = -1 \\). Substitute this value and the coordinates into the second derivative.",
+         "mathjson": 3
+      },
+      {
+         "step": 4,
+         "text": "So \\( \\frac{d^2y}{dx^2} = 3 \\) at \\( (2, 1) \\).",
+         "mathjson": 3
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 0,
+         "is_key": false,
+         "error_path": "BC-ERR-05060",
+         "violated_step": 0
+      },
+      {
+         "id": "B",
+         "value": 3,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": 1,
+         "is_key": false,
+         "error_path": "BC-ERR-03023",
+         "violated_step": 2
+      },
+      {
+         "id": "D",
+         "value": 2,
+         "is_key": false,
+         "error_path": "BC-ERR-05060",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-11",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-05058",
+      "BC-SKL-05059",
+      "BC-SKL-05060",
+      "BC-SKL-05061",
+      "BC-SKL-05062",
+      "BC-SKL-05063"
+   ],
+   "parameter_draw": {
+      "task": "second derivative at a point",
+      "relation": "2*x*y - y**2 = 3",
+      "point": [
+         2,
+         1
+      ],
+      "difficulty_variables": {
+         "second_derivative_asked": true,
+         "relation_type": "polynomial",
+         "both_conditions_solved_together": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

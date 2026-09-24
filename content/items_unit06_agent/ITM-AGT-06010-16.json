@@ -1,0 +1,464 @@
+{
+   "id": "ITM-AGT-06010-16",
+   "archetype_id": "BC-QA-06010",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let F be the antiderivative of \\( f(x) = \\frac{x^{2} - x + 1}{x^{2} - x - 6} \\) on the interval \\( x > 3 \\) with \\( F(4) = 1 \\). Find the exact value of \\( F(5) \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Negate",
+            [
+               "Divide",
+               [
+                  "Multiply",
+                  7,
+                  [
+                     "Ln",
+                     7
+                  ]
+               ],
+               5
+            ]
+         ],
+         [
+            "Divide",
+            [
+               "Multiply",
+               7,
+               [
+                  "Ln",
+                  3
+               ]
+            ],
+            5
+         ],
+         [
+            "Divide",
+            [
+               "Multiply",
+               14,
+               [
+                  "Ln",
+                  2
+               ]
+            ],
+            5
+         ],
+         2
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Factor the denominator: \\( x^{2} - x - 6 = \\left(x + 2\\right) \\left(x - 3\\right) \\).",
+         "mathjson": [
+            "Multiply",
+            [
+               "Add",
+               "x",
+               -3
+            ],
+            [
+               "Add",
+               "x",
+               2
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The numerator's degree is not less than the denominator's, so divide first: \\( \\frac{x^{2} - x + 1}{x^{2} - x - 6} = 1 + \\frac{7}{x^{2} - x - 6} \\), and write \\( \\frac{7}{x^{2} - x - 6} = \\frac{A}{x + 2} + \\frac{B}{x - 3} \\).",
+         "mathjson": 1
+      },
+      {
+         "step": 3,
+         "text": "Clearing denominators gives \\( 7 = A \\left(x - 3\\right) + B \\left(x + 2\\right) \\). Setting \\( x = -2 \\) gives \\( A = - \\frac{7}{5} \\), and setting \\( x = 3 \\) gives \\( B = \\frac{7}{5} \\), so the integrand is \\( 1 - \\frac{7}{5 \\left(x + 2\\right)} + \\frac{7}{5 \\left(x - 3\\right)} \\).",
+         "mathjson": [
+            "Add",
+            1,
+            [
+               "Negate",
+               [
+                  "Divide",
+                  7,
+                  [
+                     "Add",
+                     [
+                        "Multiply",
+                        5,
+                        "x"
+                     ],
+                     10
+                  ]
+               ]
+            ],
+            [
+               "Divide",
+               7,
+               [
+                  "Add",
+                  [
+                     "Multiply",
+                     5,
+                     "x"
+                  ],
+                  -15
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "An antiderivative is \\( x + \\frac{7 \\ln{\\left(\\left|{x - 3}\\right| \\right)}}{5} - \\frac{7 \\ln{\\left(\\left|{x + 2}\\right| \\right)}}{5} \\).",
+         "mathjson": [
+            "Add",
+            "x",
+            [
+               "Divide",
+               [
+                  "Multiply",
+                  7,
+                  [
+                     "Ln",
+                     [
+                        "Abs",
+                        [
+                           "Add",
+                           "x",
+                           -3
+                        ]
+                     ]
+                  ]
+               ],
+               5
+            ],
+            [
+               "Negate",
+               [
+                  "Divide",
+                  [
+                     "Multiply",
+                     7,
+                     [
+                        "Ln",
+                        [
+                           "Abs",
+                           [
+                              "Add",
+                              "x",
+                              2
+                           ]
+                        ]
+                     ]
+                  ],
+                  5
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 5,
+         "text": "Evaluate from \\( x = 4 \\) to \\( x = 5 \\) to get \\( - \\frac{7 \\ln{\\left(7 \\right)}}{5} + 1 + \\frac{7 \\ln{\\left(3 \\right)}}{5} + \\frac{14 \\ln{\\left(2 \\right)}}{5} \\), so \\( F(5) = F(4) + \\left(- \\frac{7 \\ln{\\left(7 \\right)}}{5} + 1 + \\frac{7 \\ln{\\left(3 \\right)}}{5} + \\frac{14 \\ln{\\left(2 \\right)}}{5}\\right) = - \\frac{7 \\ln{\\left(7 \\right)}}{5} + \\frac{7 \\ln{\\left(3 \\right)}}{5} + \\frac{14 \\ln{\\left(2 \\right)}}{5} + 2 \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Negate",
+               [
+                  "Divide",
+                  [
+                     "Multiply",
+                     7,
+                     [
+                        "Ln",
+                        7
+                     ]
+                  ],
+                  5
+               ]
+            ],
+            [
+               "Divide",
+               [
+                  "Multiply",
+                  7,
+                  [
+                     "Ln",
+                     3
+                  ]
+               ],
+               5
+            ],
+            [
+               "Divide",
+               [
+                  "Multiply",
+                  14,
+                  [
+                     "Ln",
+                     2
+                  ]
+               ],
+               5
+            ],
+            2
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            [
+               "Negate",
+               [
+                  "Divide",
+                  [
+                     "Multiply",
+                     7,
+                     [
+                        "Ln",
+                        7
+                     ]
+                  ],
+                  5
+               ]
+            ],
+            1,
+            [
+               "Divide",
+               [
+                  "Multiply",
+                  7,
+                  [
+                     "Ln",
+                     3
+                  ]
+               ],
+               5
+            ],
+            [
+               "Divide",
+               [
+                  "Multiply",
+                  14,
+                  [
+                     "Ln",
+                     2
+                  ]
+               ],
+               5
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06026",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Add",
+            [
+               "Negate",
+               [
+                  "Divide",
+                  [
+                     "Multiply",
+                     3,
+                     [
+                        "Ln",
+                        7
+                     ]
+                  ],
+                  5
+               ]
+            ],
+            [
+               "Divide",
+               [
+                  "Ln",
+                  2
+               ],
+               5
+            ],
+            [
+               "Divide",
+               [
+                  "Multiply",
+                  3,
+                  [
+                     "Ln",
+                     3
+                  ]
+               ],
+               5
+            ],
+            1
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06026",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            [
+               "Negate",
+               [
+                  "Divide",
+                  [
+                     "Multiply",
+                     7,
+                     [
+                        "Ln",
+                        7
+                     ]
+                  ],
+                  5
+               ]
+            ],
+            [
+               "Negate",
+               [
+                  "Divide",
+                  [
+                     "Ln",
+                     2
+                  ],
+                  5
+               ]
+            ],
+            1,
+            [
+               "Divide",
+               [
+                  "Multiply",
+                  7,
+                  [
+                     "Ln",
+                     3
+                  ]
+               ],
+               5
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06026",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            [
+               "Negate",
+               [
+                  "Divide",
+                  [
+                     "Multiply",
+                     7,
+                     [
+                        "Ln",
+                        7
+                     ]
+                  ],
+                  5
+               ]
+            ],
+            [
+               "Divide",
+               [
+                  "Multiply",
+                  7,
+                  [
+                     "Ln",
+                     3
+                  ]
+               ],
+               5
+            ],
+            [
+               "Divide",
+               [
+                  "Multiply",
+                  14,
+                  [
+                     "Ln",
+                     2
+                  ]
+               ],
+               5
+            ],
+            2
+         ],
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06062",
+      "BC-SKL-06063",
+      "BC-SKL-06064",
+      "BC-SKL-06065"
+   ],
+   "parameter_draw": {
+      "numerator": "x**2 - x + 1",
+      "denominator_factors": [
+         "x + 2",
+         "x - 3"
+      ],
+      "limits": [
+         "4",
+         "5"
+      ],
+      "quotient": "1",
+      "remainder": "7",
+      "A": "-7/5",
+      "B": "7/5",
+      "difficulty_variables": {
+         "whether the numerator degree forces a division first": "yes",
+         "whether the constants must be found by substitution or by equating coefficients": "substitution at the roots",
+         "whether the logarithms must be combined": "no, the answer is written with logarithms of primes",
+         "whether a definite integral requires the limits": "yes, through an antiderivative pinned by an initial value"
+      },
+      "F_at_a": "1",
+      "distractor_derivations": {
+         "A": "decomposed without dividing; constants found by substituting both roots (cover up), so the polynomial part of the quotient is lost: A = -7/5, B = 7/5",
+         "B": "decomposed without dividing; constants found by matching only the x and constant coefficients, ignoring the unmatched higher powers: A = -3/5, B = -2/5",
+         "C": "decomposed without dividing; constants found by substituting the root of the first factor and x = 0: A = -7/5, B = -8/5"
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

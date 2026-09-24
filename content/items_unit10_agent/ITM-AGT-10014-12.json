@@ -1,0 +1,219 @@
+{
+   "id": "ITM-AGT-10014-12",
+   "archetype_id": "BC-QA-10014",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Find the radius of convergence of the power series \\( \\sum_{n=1}^{\\infty} \\frac{2^{n}x^{3n+1}}{27^{n+1}} \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Divide",
+         [
+            "Multiply",
+            3,
+            [
+               "Power",
+               2,
+               [
+                  "Rational",
+                  2,
+                  3
+               ]
+            ]
+         ],
+         2
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "For the ratio test, \\( \\left|\\frac{a_{n+1}}{a_n}\\right| = \\frac{2 \\left|{x}\\right|^{3}}{27} \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Multiply",
+               2,
+               [
+                  "Power",
+                  [
+                     "Abs",
+                     "x"
+                  ],
+                  3
+               ]
+            ],
+            27
+         ]
+      },
+      {
+         "step": 2,
+         "text": "As \\( n \\to \\infty \\), the limit of this ratio is \\( \\frac{2 \\left|{x}\\right|^{3}}{27} \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Multiply",
+               2,
+               [
+                  "Power",
+                  [
+                     "Abs",
+                     "x"
+                  ],
+                  3
+               ]
+            ],
+            27
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The series converges when \\( \\frac{2 \\left|{x}\\right|^{3}}{27} < 1 \\), that is, when \\( \\left|x\\right| < \\frac{3 \\cdot 2^{\\frac{2}{3}}}{2} \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Multiply",
+               3,
+               [
+                  "Power",
+                  2,
+                  [
+                     "Rational",
+                     2,
+                     3
+                  ]
+               ]
+            ],
+            2
+         ]
+      },
+      {
+         "step": 4,
+         "text": "The radius of convergence is \\( R = \\frac{3 \\cdot 2^{\\frac{2}{3}}}{2} \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Multiply",
+               3,
+               [
+                  "Power",
+                  2,
+                  [
+                     "Rational",
+                     2,
+                     3
+                  ]
+               ]
+            ],
+            2
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Divide",
+            [
+               "Multiply",
+               3,
+               [
+                  "Power",
+                  2,
+                  [
+                     "Rational",
+                     2,
+                     3
+                  ]
+               ]
+            ],
+            2
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            27,
+            2
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10021",
+         "violated_step": 0
+      },
+      {
+         "id": "C",
+         "value": [
+            "Divide",
+            [
+               "Power",
+               2,
+               [
+                  "Rational",
+                  2,
+                  3
+               ]
+            ],
+            2
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10021",
+         "violated_step": 0
+      },
+      {
+         "id": "D",
+         "value": 3,
+         "is_key": false,
+         "error_path": "BC-ERR-10021",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10031",
+      "BC-SKL-10032",
+      "BC-SKL-10053",
+      "BC-SKL-10054",
+      "BC-SKL-10056"
+   ],
+   "parameter_draw": {
+      "general_term": "\\frac{2^{n}x^{3n+1}}{27^{n+1}}",
+      "centre": 0,
+      "numerator_base_and_step": [
+         2,
+         1
+      ],
+      "denominator_base_and_step": [
+         27,
+         1
+      ],
+      "power_step": 3,
+      "distractor_errors": [
+         "shifts the exponent of the power of the displacement by 1 instead of the correct amount",
+         "shifts the exponent of the exponential factor in the denominator by 0 instead of the correct amount",
+         "shifts the exponent of the exponential factor in the numerator by 0 instead of the correct amount"
+      ],
+      "difficulty_variables": {
+         "coefficients_exponential_in_index": true,
+         "radius_irrational": true,
+         "centred_away_from_zero": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

@@ -1,0 +1,182 @@
+{
+   "id": "ITM-AGT-10002-16",
+   "archetype_id": "BC-QA-10002",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Find the exact value of \\( \\sum_{n=2}^{\\infty} \\frac{1}{n^{2}-1} \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         3,
+         4
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Partial fractions give \\( \\frac{1}{n^{2}-1} = \\frac{1}{2}\\left(\\frac{1}{n-1} - \\frac{1}{n+1}\\right) \\), so the series telescopes.",
+         "mathjson": [
+            "Add",
+            [
+               "Divide",
+               1,
+               [
+                  "Multiply",
+                  2,
+                  [
+                     "Add",
+                     "n",
+                     -1
+                  ]
+               ]
+            ],
+            [
+               "Negate",
+               [
+                  "Divide",
+                  1,
+                  [
+                     "Multiply",
+                     2,
+                     [
+                        "Add",
+                        "n",
+                        1
+                     ]
+                  ]
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Writing out the terms from \\( n = 2 \\) to \\( n = N \\), the inner terms cancel and the partial sum is \\( S_N = \\frac{3}{4} - \\frac{1}{2 \\left(N + 1\\right)} - \\frac{1}{2 N} \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Rational",
+               3,
+               4
+            ],
+            [
+               "Negate",
+               [
+                  "Divide",
+                  1,
+                  [
+                     "Multiply",
+                     2,
+                     "N"
+                  ]
+               ]
+            ],
+            [
+               "Negate",
+               [
+                  "Divide",
+                  1,
+                  [
+                     "Multiply",
+                     2,
+                     [
+                        "Add",
+                        "N",
+                        1
+                     ]
+                  ]
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "As \\( N \\to \\infty \\), the terms containing \\( N \\) approach their limits, so \\( \\lim_{N \\to \\infty} S_N = \\frac{3}{4} \\).",
+         "mathjson": [
+            "Rational",
+            3,
+            4
+         ]
+      },
+      {
+         "step": 4,
+         "text": "The value of the series is \\( \\frac{3}{4} \\).",
+         "mathjson": [
+            "Rational",
+            3,
+            4
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Rational",
+            3,
+            4
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            11,
+            24
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99038",
+         "violated_step": 2
+      },
+      {
+         "id": "C",
+         "value": [
+            "Rational",
+            21,
+            40
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99038",
+         "violated_step": 2
+      },
+      {
+         "id": "D",
+         "value": 0,
+         "is_key": false,
+         "error_path": "BC-ERR-10001",
+         "violated_step": 2
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10002",
+      "BC-SKL-10003",
+      "BC-SKL-10004",
+      "BC-SKL-10008",
+      "BC-SKL-10066"
+   ],
+   "parameter_draw": {
+      "general_term": "\\frac{1}{n^{2}-1}",
+      "start": 2,
+      "partial_fractions_needed": true,
+      "difficulty_variables": {
+         "structure": "telescoping",
+         "starts_at_index_zero": false,
+         "from_taylor_series_at_point": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

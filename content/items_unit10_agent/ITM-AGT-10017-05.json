@@ -1,0 +1,336 @@
+{
+   "id": "ITM-AGT-10017-05",
+   "archetype_id": "BC-QA-10017",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = 2x e^{-x^{2}} \\). Find the sum of the first three nonzero terms of the Maclaurin series for \\( f \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Multiply",
+            2,
+            "x"
+         ],
+         [
+            "Multiply",
+            -2,
+            [
+               "Power",
+               "x",
+               3
+            ]
+         ],
+         [
+            "Power",
+            "x",
+            5
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Recall \\( e^{u} = 1 + u + \\frac{u^{2}}{2!} + \\frac{u^{3}}{3!} + \\cdots \\).",
+         "mathjson": [
+            "Add",
+            1,
+            "x",
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  6
+               ],
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Substitute \\( u = -x^{2} \\), raising the whole of \\( -x^{2} \\) to each power: the series begins \\( 1 - x^{2} + \\frac{1}{2}x^{4} - \\frac{1}{6}x^{6} + \\cdots \\).",
+         "mathjson": [
+            "Add",
+            1,
+            [
+               "Negate",
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  4
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -1,
+                  6
+               ],
+               [
+                  "Power",
+                  "x",
+                  6
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Multiply every term by \\( 2 x \\): \\( f(x) = 2x - 2x^{3} + x^{5} - \\frac{1}{3}x^{7} + \\cdots \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               2,
+               "x"
+            ],
+            [
+               "Multiply",
+               -2,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Power",
+               "x",
+               5
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -1,
+                  3
+               ],
+               [
+                  "Power",
+                  "x",
+                  7
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "The first three nonzero terms sum to \\( 2x - 2x^{3} + x^{5} \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               2,
+               "x"
+            ],
+            [
+               "Multiply",
+               -2,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Power",
+               "x",
+               5
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            "x",
+            [
+               "Negate",
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  5
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10041",
+         "violated_step": 2
+      },
+      {
+         "id": "B",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               2,
+               "x"
+            ],
+            [
+               "Multiply",
+               -2,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Power",
+               "x",
+               5
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               2,
+               "x"
+            ],
+            [
+               "Multiply",
+               -2,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Negate",
+               [
+                  "Power",
+                  "x",
+                  5
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10041",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               2,
+               "x"
+            ],
+            [
+               "Multiply",
+               -2,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               2,
+               [
+                  "Power",
+                  "x",
+                  5
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10040",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10061",
+      "BC-SKL-10062",
+      "BC-SKL-10063",
+      "BC-SKL-10064",
+      "BC-SKL-10065"
+   ],
+   "parameter_draw": {
+      "standard_series": "exp",
+      "constant_multiple": "2",
+      "power_of_x_multiplier": 1,
+      "inner_coefficient": "-1",
+      "inner_power": 2,
+      "question": "terms",
+      "terms_or_power": 3,
+      "substitution_raises_powers": true,
+      "misremembered_variants": [
+         "factorials dropped"
+      ]
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

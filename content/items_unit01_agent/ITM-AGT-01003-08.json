@@ -1,0 +1,136 @@
+{
+   "id": "ITM-AGT-01003-08",
+   "archetype_id": "BC-QA-01003",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "The functions \\( f \\), \\( g \\), and \\( h \\) are continuous for all real numbers, with \\( f(0) = 4 \\), \\( f(1) = 0 \\), \\( f(2) = 2 \\), \\( f(3) = 2 \\), \\( f(4) = 1 \\), \\( g(0) = 2 \\), \\( g(1) = 1 \\), \\( g(2) = 3 \\), \\( g(3) = 4 \\), \\( g(4) = 2 \\), \\( h(0) = 4 \\), \\( h(1) = 1 \\), \\( h(2) = 0 \\), \\( h(3) = 4 \\), \\( h(4) = 4 \\). Find the value of \\( \\lim_{x \\to 2} \\frac{h(f(x)) + f(g(x))}{g(h(x))} \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 1
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Each function is continuous, so each limit at 2 is a function value: \\( f(2) = 2 \\), \\( g(2) = 3 \\), \\( h(2) = 0 \\).",
+         "mathjson": 2
+      },
+      {
+         "step": 2,
+         "text": "The expression is a quotient whose numerator is a sum of two composites and whose denominator is a composite. In each composite the outer function is continuous at the limit of the inner one, so \\( \\lim_{x \\to 2} h(f(x)) = h(2) = 0 \\), \\( \\lim_{x \\to 2} f(g(x)) = f(3) = 2 \\), \\( \\lim_{x \\to 2} g(h(x)) = g(0) = 2 \\).",
+         "mathjson": 0
+      },
+      {
+         "step": 3,
+         "text": "The denominator's limit is 2, which is not zero, so the quotient theorem applies.",
+         "mathjson": 2
+      },
+      {
+         "step": 4,
+         "text": "Apply the quotient theorem: \\( \\frac{0 + 2}{2} = 1 \\).",
+         "mathjson": 1
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 3,
+         "is_key": false,
+         "error_path": "BC-ERR-01007",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            3,
+            2
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-01007",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Rational",
+            1,
+            2
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-01007",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": 1,
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-09",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-10",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-01018",
+      "BC-SKL-01019",
+      "BC-SKL-01020",
+      "BC-SKL-01022"
+   ],
+   "parameter_draw": {
+      "structure": "quotient",
+      "a": 2,
+      "side": "two-sided",
+      "composites": [
+         "h(f(x))",
+         "f(g(x))",
+         "g(h(x))"
+      ],
+      "coefficients": null,
+      "tables": {
+         "f": {
+            "0": 4,
+            "1": 0,
+            "2": 2,
+            "3": 2,
+            "4": 1
+         },
+         "g": {
+            "0": 2,
+            "1": 1,
+            "2": 3,
+            "3": 4,
+            "4": 2
+         },
+         "h": {
+            "0": 4,
+            "1": 1,
+            "2": 0,
+            "3": 4,
+            "4": 4
+         }
+      },
+      "difficulty_variables": {
+         "denominator limit zero": false,
+         "composite involved": true,
+         "one sided limit supplied": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

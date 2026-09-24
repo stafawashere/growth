@@ -1,0 +1,351 @@
+{
+   "id": "ITM-AGT-10016-05",
+   "archetype_id": "BC-QA-10016",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = \\sum_{n=0}^{\\infty} \\frac{(-1)^{n}}{2^{n}} x^{3 n} \\), where the series converges. Find the sum of the first three nonzero terms of the Maclaurin series for \\( f \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         1,
+         [
+            "Multiply",
+            [
+               "Rational",
+               -1,
+               2
+            ],
+            [
+               "Power",
+               "x",
+               3
+            ]
+         ],
+         [
+            "Multiply",
+            [
+               "Rational",
+               1,
+               4
+            ],
+            [
+               "Power",
+               "x",
+               6
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The series is already the Maclaurin series for \\( f \\). Its first terms come from \\( n = 0 \\), \\( n = 1 \\), \\( n = 2 \\), and none of these terms is zero.",
+         "mathjson": 1
+      },
+      {
+         "step": 2,
+         "text": "Substituting each index into the general term gives the coefficients \\( 1 \\), \\( -\\frac{1}{2} \\), \\( \\frac{1}{4} \\), attached to the powers \\( 0 \\), \\( 3 \\), \\( 6 \\).",
+         "mathjson": [
+            "Add",
+            1,
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -1,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  4
+               ],
+               [
+                  "Power",
+                  "x",
+                  6
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Check the pattern: the signs alternate, as the sign factor in the general term requires, and the powers step by 3, matching \\( 3 n \\).",
+         "mathjson": [
+            "Add",
+            1,
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -1,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  4
+               ],
+               [
+                  "Power",
+                  "x",
+                  6
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "The sum of the first three nonzero terms is \\( 1 - \\frac{1}{2}x^{3} + \\frac{1}{4}x^{6} \\).",
+         "mathjson": [
+            "Add",
+            1,
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -1,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  4
+               ],
+               [
+                  "Power",
+                  "x",
+                  6
+               ]
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            1,
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -1,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  4
+               ],
+               [
+                  "Power",
+                  "x",
+                  6
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -1,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  4
+               ],
+               [
+                  "Power",
+                  "x",
+                  6
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -1,
+                  8
+               ],
+               [
+                  "Power",
+                  "x",
+                  9
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99018",
+         "violated_step": 0
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            1,
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -1,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  4
+               ],
+               [
+                  "Power",
+                  "x",
+                  6
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -1,
+                  8
+               ],
+               [
+                  "Power",
+                  "x",
+                  9
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10030",
+         "violated_step": 0
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            1,
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  4
+               ],
+               [
+                  "Power",
+                  "x",
+                  6
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99018",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10060",
+      "BC-SKL-10067"
+   ],
+   "parameter_draw": {
+      "general_term": "\\frac{(-1)^{n}}{2^{n}}",
+      "power": "3*n",
+      "start_index": 0,
+      "centre": 0,
+      "terms_requested": 3,
+      "alternating": true,
+      "has_factorial": false,
+      "question": "sum of first nonzero terms",
+      "third_distractor": "alternating factor dropped"
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

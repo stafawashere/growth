@@ -1,0 +1,104 @@
+{
+   "id": "ITM-AGT-10002-00",
+   "archetype_id": "BC-QA-10002",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Find the exact value of \\( \\sum_{n=1}^{\\infty} 3\\left(\\frac{2}{5}\\right)^{n} \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 2
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Dividing consecutive terms gives the constant quotient \\( r = \\frac{2}{5} \\), so the series is geometric, and \\( |r| < 1 \\).",
+         "mathjson": [
+            "Rational",
+            2,
+            5
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The series starts at \\( n = 1 \\), so the first term is \\( a = \\frac{6}{5} \\).",
+         "mathjson": [
+            "Rational",
+            6,
+            5
+         ]
+      },
+      {
+         "step": 3,
+         "text": "A convergent geometric series equals \\( \\frac{a}{1 - r} = \\frac{\\frac{6}{5}}{1 - \\left(\\frac{2}{5}\\right)} \\).",
+         "mathjson": 2
+      },
+      {
+         "step": 4,
+         "text": "The value of the series is \\( 2 \\).",
+         "mathjson": 2
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 2,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": 5,
+         "is_key": false,
+         "error_path": "BC-ERR-10006",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Rational",
+            234,
+            125
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99038",
+         "violated_step": 2
+      },
+      {
+         "id": "D",
+         "value": 0,
+         "is_key": false,
+         "error_path": "BC-ERR-10001",
+         "violated_step": 2
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10002",
+      "BC-SKL-10003",
+      "BC-SKL-10004",
+      "BC-SKL-10008",
+      "BC-SKL-10066"
+   ],
+   "parameter_draw": {
+      "general_term": "3\\left(\\frac{2}{5}\\right)^{n}",
+      "start": 1,
+      "ratio": "2/5",
+      "difficulty_variables": {
+         "structure": "geometric",
+         "starts_at_index_zero": false,
+         "from_taylor_series_at_point": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

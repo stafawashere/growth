@@ -1,0 +1,490 @@
+{
+   "id": "ITM-AGT-03009-05",
+   "archetype_id": "BC-QA-03009",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = 3^{x}\\,\\tan^{2}(5x) \\). Find \\( f'(x) \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Multiply",
+            10,
+            [
+               "Power",
+               3,
+               "x"
+            ],
+            [
+               "Add",
+               [
+                  "Power",
+                  [
+                     "Tan",
+                     [
+                        "Multiply",
+                        5,
+                        "x"
+                     ]
+                  ],
+                  2
+               ],
+               1
+            ],
+            [
+               "Tan",
+               [
+                  "Multiply",
+                  5,
+                  "x"
+               ]
+            ]
+         ],
+         [
+            "Multiply",
+            [
+               "Power",
+               3,
+               "x"
+            ],
+            [
+               "Ln",
+               3
+            ],
+            [
+               "Power",
+               [
+                  "Tan",
+                  [
+                     "Multiply",
+                     5,
+                     "x"
+                  ]
+               ],
+               2
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The outermost operation is a product of \\( 3^{x} \\) and \\( \\tan^{2}(5x) \\), so the product rule comes first: \\( f'(x) = \\left(3^{x}\\right)'\\,\\tan^{2}(5x) + 3^{x}\\left(\\tan^{2}(5x)\\right)' \\).",
+         "mathjson": [
+            "Multiply",
+            [
+               "Power",
+               3,
+               "x"
+            ],
+            [
+               "Power",
+               [
+                  "Tan",
+                  [
+                     "Multiply",
+                     5,
+                     "x"
+                  ]
+               ],
+               2
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "\\( 3^{x} \\) is an exponential function with a constant base, so its derivative is \\( 3^{x} \\ln{\\left(3 \\right)} \\); the power rule does not apply to it.",
+         "mathjson": [
+            "Multiply",
+            [
+               "Power",
+               3,
+               "x"
+            ],
+            [
+               "Ln",
+               3
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The factor \\( \\tan^{2}(5x) \\) is a square of \\( \\tan(5x) \\), which is a tangent of \\( 5x \\), so apply the chain rule from the outside inward: \\( \\left(\\tan^{2}(5x)\\right)' = 10 \\left(\\tan^{2}{\\left(5 x \\right)} + 1\\right) \\tan{\\left(5 x \\right)} \\).",
+         "mathjson": [
+            "Multiply",
+            10,
+            [
+               "Add",
+               [
+                  "Power",
+                  [
+                     "Tan",
+                     [
+                        "Multiply",
+                        5,
+                        "x"
+                     ]
+                  ],
+                  2
+               ],
+               1
+            ],
+            [
+               "Tan",
+               [
+                  "Multiply",
+                  5,
+                  "x"
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Assemble the product rule: \\( f'(x) = 10 \\cdot 3^{x} \\left(\\tan^{2}{\\left(5 x \\right)} + 1\\right) \\tan{\\left(5 x \\right)} + 3^{x} \\ln{\\left(3 \\right)} \\tan^{2}{\\left(5 x \\right)} \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               10,
+               [
+                  "Power",
+                  3,
+                  "x"
+               ],
+               [
+                  "Add",
+                  [
+                     "Power",
+                     [
+                        "Tan",
+                        [
+                           "Multiply",
+                           5,
+                           "x"
+                        ]
+                     ],
+                     2
+                  ],
+                  1
+               ],
+               [
+                  "Tan",
+                  [
+                     "Multiply",
+                     5,
+                     "x"
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Power",
+                  3,
+                  "x"
+               ],
+               [
+                  "Ln",
+                  3
+               ],
+               [
+                  "Power",
+                  [
+                     "Tan",
+                     [
+                        "Multiply",
+                        5,
+                        "x"
+                     ]
+                  ],
+                  2
+               ]
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Multiply",
+            10,
+            [
+               "Power",
+               3,
+               "x"
+            ],
+            [
+               "Add",
+               [
+                  "Power",
+                  [
+                     "Tan",
+                     [
+                        "Multiply",
+                        5,
+                        "x"
+                     ]
+                  ],
+                  2
+               ],
+               1
+            ],
+            [
+               "Ln",
+               3
+            ],
+            [
+               "Tan",
+               [
+                  "Multiply",
+                  5,
+                  "x"
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03006",
+         "violated_step": 0
+      },
+      {
+         "id": "B",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               10,
+               [
+                  "Power",
+                  3,
+                  "x"
+               ],
+               [
+                  "Add",
+                  [
+                     "Power",
+                     [
+                        "Tan",
+                        [
+                           "Multiply",
+                           5,
+                           "x"
+                        ]
+                     ],
+                     2
+                  ],
+                  1
+               ],
+               [
+                  "Tan",
+                  [
+                     "Multiply",
+                     5,
+                     "x"
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Power",
+                  3,
+                  "x"
+               ],
+               [
+                  "Ln",
+                  3
+               ],
+               [
+                  "Power",
+                  [
+                     "Tan",
+                     [
+                        "Multiply",
+                        5,
+                        "x"
+                     ]
+                  ],
+                  2
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               10,
+               [
+                  "Power",
+                  3,
+                  "x"
+               ],
+               [
+                  "Add",
+                  [
+                     "Power",
+                     [
+                        "Tan",
+                        [
+                           "Multiply",
+                           5,
+                           "x"
+                        ]
+                     ],
+                     2
+                  ],
+                  1
+               ],
+               [
+                  "Tan",
+                  [
+                     "Multiply",
+                     5,
+                     "x"
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Power",
+                  3,
+                  [
+                     "Subtract",
+                     "x",
+                     1
+                  ]
+               ],
+               "x",
+               [
+                  "Power",
+                  [
+                     "Tan",
+                     [
+                        "Multiply",
+                        5,
+                        "x"
+                     ]
+                  ],
+                  2
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99036",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               2,
+               [
+                  "Power",
+                  3,
+                  "x"
+               ],
+               [
+                  "Add",
+                  [
+                     "Power",
+                     [
+                        "Tan",
+                        [
+                           "Multiply",
+                           5,
+                           "x"
+                        ]
+                     ],
+                     2
+                  ],
+                  1
+               ],
+               [
+                  "Tan",
+                  [
+                     "Multiply",
+                     5,
+                     "x"
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Power",
+                  3,
+                  "x"
+               ],
+               [
+                  "Ln",
+                  3
+               ],
+               [
+                  "Power",
+                  [
+                     "Tan",
+                     [
+                        "Multiply",
+                        5,
+                        "x"
+                     ]
+                  ],
+                  2
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03002",
+         "violated_step": 2
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-03026",
+      "BC-SKL-03027",
+      "BC-SKL-03028",
+      "BC-SKL-03029",
+      "BC-SKL-03006"
+   ],
+   "parameter_draw": {
+      "exponential_base": "3",
+      "composite": "tan2_5x",
+      "structure": "product",
+      "answer_mode": "expr",
+      "difficulty_variables": {
+         "algebraic rewrite available": false,
+         "rules needed": [
+            "product",
+            "exponential",
+            "chain (three layers)"
+         ],
+         "surface resembles another family": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

@@ -1,0 +1,325 @@
+{
+   "id": "ITM-AGT-10012-16",
+   "archetype_id": "BC-QA-10012",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "The fourth-degree Taylor polynomial for \\( f \\) about \\( x = 0 \\) is \\( 1 - 2x + 3x^{2} - x^{3} + 2x^{4} \\). Let \\( g(x) = f\\left(2x\\right) \\). Find the third-degree Taylor polynomial for \\( g \\) about \\( x = 0 \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         1,
+         [
+            "Multiply",
+            -4,
+            "x"
+         ],
+         [
+            "Multiply",
+            12,
+            [
+               "Power",
+               "x",
+               2
+            ]
+         ],
+         [
+            "Multiply",
+            -8,
+            [
+               "Power",
+               "x",
+               3
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Replace \\( x \\) by \\( 2x \\) in the polynomial for \\( f \\), raising the whole of \\( 2x \\) to each power: \\( 1 - 4x + 12x^{2} - 8x^{3} + 32x^{4} \\).",
+         "mathjson": [
+            "Add",
+            1,
+            [
+               "Multiply",
+               -4,
+               "x"
+            ],
+            [
+               "Multiply",
+               12,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               -8,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               32,
+               [
+                  "Power",
+                  "x",
+                  4
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Each coefficient \\( \\frac{f^{(n)}(0)}{n!} \\) has been multiplied by \\( (2)^{n} \\), which is \\( \\frac{g^{(n)}(0)}{n!} \\) by the chain rule, so no further division is needed.",
+         "mathjson": [
+            "Add",
+            1,
+            [
+               "Multiply",
+               -4,
+               "x"
+            ],
+            [
+               "Multiply",
+               12,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               -8,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               32,
+               [
+                  "Power",
+                  "x",
+                  4
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Keep the terms through \\( x^{3} \\): \\( 1 - 4x + 12x^{2} - 8x^{3} \\).",
+         "mathjson": [
+            "Add",
+            1,
+            [
+               "Multiply",
+               -4,
+               "x"
+            ],
+            [
+               "Multiply",
+               12,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               -8,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            1,
+            [
+               "Multiply",
+               -4,
+               "x"
+            ],
+            [
+               "Multiply",
+               12,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               -8,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               32,
+               [
+                  "Power",
+                  "x",
+                  4
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10030",
+         "violated_step": 3
+      },
+      {
+         "id": "B",
+         "value": [
+            "Add",
+            1,
+            [
+               "Multiply",
+               -4,
+               "x"
+            ],
+            [
+               "Multiply",
+               6,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               -2,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10041",
+         "violated_step": 0
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            1,
+            [
+               "Multiply",
+               -4,
+               "x"
+            ],
+            [
+               "Multiply",
+               12,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               -8,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            1,
+            [
+               "Multiply",
+               -2,
+               "x"
+            ],
+            [
+               "Multiply",
+               3,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Negate",
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10041",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10046",
+      "BC-SKL-10047",
+      "BC-SKL-10048",
+      "BC-SKL-10061",
+      "BC-SKL-10065"
+   ],
+   "parameter_draw": {
+      "defining_relation": "g(x) = f(2*x)",
+      "substitution_factor": "2",
+      "f_polynomial": {
+         "0": "1",
+         "1": "-2",
+         "2": "3",
+         "3": "-1",
+         "4": "2"
+      },
+      "centre": 0,
+      "degree_requested": 3,
+      "route": "substitute into the known polynomial"
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

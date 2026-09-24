@@ -1,0 +1,513 @@
+{
+   "id": "ITM-AGT-03009-07",
+   "archetype_id": "BC-QA-03009",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = 5^{x}\\,\\left(1 + \\sin(4x)\\right)^{2} \\). Find \\( f'(x) \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Multiply",
+            [
+               "Power",
+               5,
+               "x"
+            ],
+            [
+               "Power",
+               [
+                  "Add",
+                  [
+                     "Sin",
+                     [
+                        "Multiply",
+                        4,
+                        "x"
+                     ]
+                  ],
+                  1
+               ],
+               2
+            ],
+            [
+               "Ln",
+               5
+            ]
+         ],
+         [
+            "Multiply",
+            4,
+            [
+               "Power",
+               5,
+               "x"
+            ],
+            [
+               "Add",
+               [
+                  "Multiply",
+                  2,
+                  [
+                     "Sin",
+                     [
+                        "Multiply",
+                        4,
+                        "x"
+                     ]
+                  ]
+               ],
+               2
+            ],
+            [
+               "Cos",
+               [
+                  "Multiply",
+                  4,
+                  "x"
+               ]
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The outermost operation is a product of \\( 5^{x} \\) and \\( \\left(1 + \\sin(4x)\\right)^{2} \\), so the product rule comes first: \\( f'(x) = \\left(5^{x}\\right)'\\,\\left(1 + \\sin(4x)\\right)^{2} + 5^{x}\\left(\\left(1 + \\sin(4x)\\right)^{2}\\right)' \\).",
+         "mathjson": [
+            "Multiply",
+            [
+               "Power",
+               5,
+               "x"
+            ],
+            [
+               "Power",
+               [
+                  "Add",
+                  [
+                     "Sin",
+                     [
+                        "Multiply",
+                        4,
+                        "x"
+                     ]
+                  ],
+                  1
+               ],
+               2
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "\\( 5^{x} \\) is an exponential function with a constant base, so its derivative is \\( 5^{x} \\ln{\\left(5 \\right)} \\); the power rule does not apply to it.",
+         "mathjson": [
+            "Multiply",
+            [
+               "Power",
+               5,
+               "x"
+            ],
+            [
+               "Ln",
+               5
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The factor \\( \\left(1 + \\sin(4x)\\right)^{2} \\) is a square of \\( 1 + \\sin(4x) \\), which contains a sine of \\( 4x \\), so apply the chain rule from the outside inward: \\( \\left(\\left(1 + \\sin(4x)\\right)^{2}\\right)' = 8 \\left(\\sin{\\left(4 x \\right)} + 1\\right) \\cos{\\left(4 x \\right)} \\).",
+         "mathjson": [
+            "Multiply",
+            4,
+            [
+               "Add",
+               [
+                  "Multiply",
+                  2,
+                  [
+                     "Sin",
+                     [
+                        "Multiply",
+                        4,
+                        "x"
+                     ]
+                  ]
+               ],
+               2
+            ],
+            [
+               "Cos",
+               [
+                  "Multiply",
+                  4,
+                  "x"
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Assemble the product rule: \\( f'(x) = 5^{x} \\left(\\sin{\\left(4 x \\right)} + 1\\right)^{2} \\ln{\\left(5 \\right)} + 4 \\cdot 5^{x} \\left(2 \\sin{\\left(4 x \\right)} + 2\\right) \\cos{\\left(4 x \\right)} \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               [
+                  "Power",
+                  5,
+                  "x"
+               ],
+               [
+                  "Power",
+                  [
+                     "Add",
+                     [
+                        "Sin",
+                        [
+                           "Multiply",
+                           4,
+                           "x"
+                        ]
+                     ],
+                     1
+                  ],
+                  2
+               ],
+               [
+                  "Ln",
+                  5
+               ]
+            ],
+            [
+               "Multiply",
+               4,
+               [
+                  "Power",
+                  5,
+                  "x"
+               ],
+               [
+                  "Add",
+                  [
+                     "Multiply",
+                     2,
+                     [
+                        "Sin",
+                        [
+                           "Multiply",
+                           4,
+                           "x"
+                        ]
+                     ]
+                  ],
+                  2
+               ],
+               [
+                  "Cos",
+                  [
+                     "Multiply",
+                     4,
+                     "x"
+                  ]
+               ]
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               [
+                  "Power",
+                  5,
+                  "x"
+               ],
+               [
+                  "Power",
+                  [
+                     "Add",
+                     [
+                        "Sin",
+                        [
+                           "Multiply",
+                           4,
+                           "x"
+                        ]
+                     ],
+                     1
+                  ],
+                  2
+               ],
+               [
+                  "Ln",
+                  5
+               ]
+            ],
+            [
+               "Multiply",
+               4,
+               [
+                  "Power",
+                  5,
+                  "x"
+               ],
+               [
+                  "Add",
+                  [
+                     "Multiply",
+                     2,
+                     [
+                        "Sin",
+                        [
+                           "Multiply",
+                           4,
+                           "x"
+                        ]
+                     ]
+                  ],
+                  2
+               ],
+               [
+                  "Cos",
+                  [
+                     "Multiply",
+                     4,
+                     "x"
+                  ]
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": [
+            "Multiply",
+            4,
+            [
+               "Power",
+               5,
+               "x"
+            ],
+            [
+               "Add",
+               [
+                  "Multiply",
+                  2,
+                  [
+                     "Sin",
+                     [
+                        "Multiply",
+                        4,
+                        "x"
+                     ]
+                  ]
+               ],
+               2
+            ],
+            [
+               "Ln",
+               5
+            ],
+            [
+               "Cos",
+               [
+                  "Multiply",
+                  4,
+                  "x"
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03006",
+         "violated_step": 0
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               4,
+               [
+                  "Power",
+                  5,
+                  "x"
+               ],
+               [
+                  "Add",
+                  [
+                     "Multiply",
+                     2,
+                     [
+                        "Sin",
+                        [
+                           "Multiply",
+                           4,
+                           "x"
+                        ]
+                     ]
+                  ],
+                  2
+               ],
+               [
+                  "Cos",
+                  [
+                     "Multiply",
+                     4,
+                     "x"
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Power",
+                  5,
+                  [
+                     "Subtract",
+                     "x",
+                     1
+                  ]
+               ],
+               "x",
+               [
+                  "Power",
+                  [
+                     "Add",
+                     [
+                        "Sin",
+                        [
+                           "Multiply",
+                           4,
+                           "x"
+                        ]
+                     ],
+                     1
+                  ],
+                  2
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99036",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               [
+                  "Power",
+                  5,
+                  "x"
+               ],
+               [
+                  "Power",
+                  [
+                     "Add",
+                     [
+                        "Sin",
+                        [
+                           "Multiply",
+                           4,
+                           "x"
+                        ]
+                     ],
+                     1
+                  ],
+                  2
+               ],
+               [
+                  "Ln",
+                  5
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Power",
+                  5,
+                  "x"
+               ],
+               [
+                  "Add",
+                  [
+                     "Multiply",
+                     2,
+                     [
+                        "Sin",
+                        [
+                           "Multiply",
+                           4,
+                           "x"
+                        ]
+                     ]
+                  ],
+                  2
+               ],
+               [
+                  "Cos",
+                  [
+                     "Multiply",
+                     4,
+                     "x"
+                  ]
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03002",
+         "violated_step": 2
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-03026",
+      "BC-SKL-03027",
+      "BC-SKL-03028",
+      "BC-SKL-03029",
+      "BC-SKL-03006"
+   ],
+   "parameter_draw": {
+      "exponential_base": "5",
+      "composite": "sq_1_sin4x",
+      "structure": "product",
+      "answer_mode": "expr",
+      "difficulty_variables": {
+         "algebraic rewrite available": false,
+         "rules needed": [
+            "product",
+            "exponential",
+            "chain (three layers)"
+         ],
+         "surface resembles another family": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

@@ -1,0 +1,105 @@
+{
+   "id": "ITM-AGT-02009-04",
+   "archetype_id": "BC-QA-02009",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "The functions \\( f \\) and \\( g \\) are differentiable, with \\( f(2) = 3 \\), \\( f'(2) = -1 \\), \\( g(2) = -1 \\), \\( g'(2) = 4 \\). Let \\( h(x) = f(x)g(x) \\). Find the value of \\( h'(2) \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 13
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Record the values at \\( x = 2 \\): \\( f(2) = 3 \\), \\( f'(2) = -1 \\), \\( g(2) = -1 \\), \\( g'(2) = 4 \\).",
+         "mathjson": -1
+      },
+      {
+         "step": 2,
+         "text": "By the product rule, \\( (fg)'(2) = f'(2)g(2) + f(2)g'(2) \\).",
+         "mathjson": 3
+      },
+      {
+         "step": 3,
+         "text": "Substitute: \\( (-1)(-1) + (3)(4) = 13 \\).",
+         "mathjson": 13
+      },
+      {
+         "step": 4,
+         "text": "So \\( h'(2) = 13 \\).",
+         "mathjson": 13
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": -4,
+         "is_key": false,
+         "error_path": "BC-ERR-02020",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": -2,
+         "is_key": false,
+         "error_path": "BC-ERR-02024",
+         "violated_step": 2
+      },
+      {
+         "id": "C",
+         "value": 9,
+         "is_key": false,
+         "error_path": "BC-ERR-02024",
+         "violated_step": 2
+      },
+      {
+         "id": "D",
+         "value": 13,
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-03",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-05",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02037",
+      "BC-SKL-02041",
+      "BC-SKL-02017"
+   ],
+   "parameter_draw": {
+      "kind": "product",
+      "a": 2,
+      "values": {
+         "f": 3,
+         "f_prime": -1,
+         "g": -1,
+         "g_prime": 4
+      },
+      "names": [
+         "f",
+         "g"
+      ],
+      "extra_row_shown": false,
+      "difficulty_variables": {
+         "table against graphs": "table",
+         "product against quotient": "product",
+         "value read as a slope": false,
+         "interpreted in context": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

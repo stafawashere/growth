@@ -1,0 +1,150 @@
+{
+   "id": "ITM-AGT-10002-19",
+   "archetype_id": "BC-QA-10002",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Find the exact value of \\( \\sum_{n=1}^{\\infty} \\frac{4}{(2n-1)(2n+1)} \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 2
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Partial fractions give \\( \\frac{4}{(2n-1)(2n+1)} = \\frac{2}{2n-1} - \\frac{2}{2n+1} \\), so the series telescopes.",
+         "mathjson": [
+            "Add",
+            [
+               "Divide",
+               2,
+               [
+                  "Add",
+                  [
+                     "Multiply",
+                     2,
+                     "n"
+                  ],
+                  -1
+               ]
+            ],
+            [
+               "Negate",
+               [
+                  "Divide",
+                  2,
+                  [
+                     "Add",
+                     [
+                        "Multiply",
+                        2,
+                        "n"
+                     ],
+                     1
+                  ]
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Writing out the terms from \\( n = 1 \\) to \\( n = N \\), the inner terms cancel and the partial sum is \\( S_N = 2 - \\frac{2}{2 N + 1} \\).",
+         "mathjson": [
+            "Add",
+            2,
+            [
+               "Negate",
+               [
+                  "Divide",
+                  2,
+                  [
+                     "Add",
+                     [
+                        "Multiply",
+                        2,
+                        "N"
+                     ],
+                     1
+                  ]
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "As \\( N \\to \\infty \\), the terms containing \\( N \\) approach their limits, so \\( \\lim_{N \\to \\infty} S_N = 2 \\).",
+         "mathjson": 2
+      },
+      {
+         "step": 4,
+         "text": "The value of the series is \\( 2 \\).",
+         "mathjson": 2
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Rational",
+            8,
+            5
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99038",
+         "violated_step": 2
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            12,
+            7
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99038",
+         "violated_step": 2
+      },
+      {
+         "id": "C",
+         "value": 0,
+         "is_key": false,
+         "error_path": "BC-ERR-10001",
+         "violated_step": 2
+      },
+      {
+         "id": "D",
+         "value": 2,
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10002",
+      "BC-SKL-10003",
+      "BC-SKL-10004",
+      "BC-SKL-10008",
+      "BC-SKL-10066"
+   ],
+   "parameter_draw": {
+      "general_term": "\\frac{4}{(2n-1)(2n+1)}",
+      "start": 1,
+      "partial_fractions_needed": true,
+      "difficulty_variables": {
+         "structure": "telescoping",
+         "starts_at_index_zero": false,
+         "from_taylor_series_at_point": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

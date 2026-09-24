@@ -1,0 +1,181 @@
+{
+   "id": "ITM-AGT-10017-12",
+   "archetype_id": "BC-QA-10017",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = \\frac{5x^{3}}{1 - 2x^{2}} \\). Find the coefficient of \\( x^{9} \\) in the Maclaurin series for \\( f \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 40
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Recall \\( \\frac{1}{1 - u} = 1 + u + u^{2} + u^{3} + \\cdots \\).",
+         "mathjson": [
+            "Add",
+            1,
+            "x",
+            [
+               "Power",
+               "x",
+               2
+            ],
+            [
+               "Power",
+               "x",
+               3
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Substitute \\( u = 2x^{2} \\), raising the whole of \\( 2x^{2} \\) to each power: the series begins \\( 1 + 2x^{2} + 4x^{4} + 8x^{6} + \\cdots \\).",
+         "mathjson": [
+            "Add",
+            1,
+            [
+               "Multiply",
+               2,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               4,
+               [
+                  "Power",
+                  "x",
+                  4
+               ]
+            ],
+            [
+               "Multiply",
+               8,
+               [
+                  "Power",
+                  "x",
+                  6
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Multiply every term by \\( 5 x^{3} \\): \\( f(x) = 5x^{3} + 10x^{5} + 20x^{7} + 40x^{9} + \\cdots \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               5,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               10,
+               [
+                  "Power",
+                  "x",
+                  5
+               ]
+            ],
+            [
+               "Multiply",
+               20,
+               [
+                  "Power",
+                  "x",
+                  7
+               ]
+            ],
+            [
+               "Multiply",
+               40,
+               [
+                  "Power",
+                  "x",
+                  9
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "The \\( x^{9} \\) term is \\( 40x^{9} \\), so the coefficient is \\( 40 \\).",
+         "mathjson": 40
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 40,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": 8,
+         "is_key": false,
+         "error_path": "BC-ERR-10041",
+         "violated_step": 2
+      },
+      {
+         "id": "C",
+         "value": -40,
+         "is_key": false,
+         "error_path": "BC-ERR-10040",
+         "violated_step": 0
+      },
+      {
+         "id": "D",
+         "value": 10,
+         "is_key": false,
+         "error_path": "BC-ERR-10041",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10061",
+      "BC-SKL-10062",
+      "BC-SKL-10063",
+      "BC-SKL-10064",
+      "BC-SKL-10065"
+   ],
+   "parameter_draw": {
+      "standard_series": "geom",
+      "constant_multiple": "5",
+      "power_of_x_multiplier": 3,
+      "inner_coefficient": "2",
+      "inner_power": 2,
+      "question": "coefficient",
+      "terms_or_power": 9,
+      "substitution_raises_powers": true,
+      "misremembered_variants": [
+         "signs wrong"
+      ]
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

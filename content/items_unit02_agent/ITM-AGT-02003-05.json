@@ -1,0 +1,127 @@
+{
+   "id": "ITM-AGT-02003-05",
+   "archetype_id": "BC-QA-02003",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Find the value of \\( \\lim_{h \\to 0} \\frac{\\left(\\frac{1}{2} + h\\right)^{3} - \\frac{1}{8}}{h} \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         3,
+         4
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The numerator has the form \\( f(\\frac{1}{2} + h) - f(\\frac{1}{2}) \\) with \\( f(x) = x^{3} \\), because \\( f(\\frac{1}{2}) = \\frac{1}{8} \\).",
+         "mathjson": [
+            "Rational",
+            1,
+            8
+         ]
+      },
+      {
+         "step": 2,
+         "text": "So the function is \\( f(x) = x^{3} \\) and the base point is \\( x = \\frac{1}{2} \\).",
+         "mathjson": [
+            "Rational",
+            1,
+            2
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The limit is the definition of \\( f'(\\frac{1}{2}) \\), and \\( f'(x) = 3 x^{2} \\).",
+         "mathjson": [
+            "Multiply",
+            3,
+            [
+               "Power",
+               "x",
+               2
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Evaluate: \\( f'(\\frac{1}{2}) = \\frac{3}{4} \\).",
+         "mathjson": [
+            "Rational",
+            3,
+            4
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 3,
+         "is_key": false,
+         "error_path": "BC-ERR-02010",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": 0,
+         "is_key": false,
+         "error_path": "BC-ERR-02010",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Rational",
+            3,
+            4
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": [
+            "Rational",
+            3,
+            64
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02010",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02035",
+      "BC-SKL-02005"
+   ],
+   "parameter_draw": {
+      "function": "x**3",
+      "base_point": "1/2",
+      "increment_variable": "h",
+      "form": "increment",
+      "wrong_base_readings": {
+         "shift": "1",
+         "zero": "0",
+         "constant": "1/8"
+      },
+      "difficulty_variables": {
+         "standard angle or value": false,
+         "two point form": false,
+         "transcendental": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

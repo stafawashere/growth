@@ -1,0 +1,129 @@
+{
+   "id": "ITM-AGT-07007-11",
+   "archetype_id": "BC-QA-07007",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "The function \\( y = e^{kx} \\) is a solution of the differential equation \\( 2y'' + y' - 6y = 0 \\), where \\( k > 0 \\). Find the value of the constant \\( k \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         3,
+         2
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Differentiate the candidate: \\( y' = k e^{kx} \\) and \\( y'' = k^{2} e^{kx} \\).",
+         "mathjson": [
+            "Power",
+            "k",
+            2
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Substitute into the equation: \\( e^{kx} \\left( 2 k^{2} + k - 6 \\right) = 0 \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               2,
+               [
+                  "Power",
+                  "k",
+                  2
+               ]
+            ],
+            "k",
+            -6
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Since \\( e^{kx} \\neq 0 \\), \\( 2 k^{2} + k - 6 = 0 \\), so \\( k = \\frac{3}{2} \\) or \\( k = -2 \\).",
+         "mathjson": -2
+      },
+      {
+         "step": 4,
+         "text": "The condition \\( k > 0 \\) keeps \\( k = \\frac{3}{2} \\).",
+         "mathjson": [
+            "Rational",
+            3,
+            2
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": -2,
+         "is_key": false,
+         "error_path": "BC-ERR-07007",
+         "violated_step": 3
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            3,
+            2
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": 4,
+         "is_key": false,
+         "error_path": "BC-ERR-07006",
+         "violated_step": 0
+      },
+      {
+         "id": "D",
+         "value": 2,
+         "is_key": false,
+         "error_path": "BC-ERR-07006",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-09",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-07006",
+      "BC-SKL-07007",
+      "BC-SKL-07008",
+      "BC-SKL-07009",
+      "BC-SKL-07033"
+   ],
+   "parameter_draw": {
+      "roots": [
+         "3/2",
+         "-2"
+      ],
+      "leading_coefficient": "2",
+      "candidate": "y = e^{kx}",
+      "condition": "k_positive",
+      "difficulty_variables": {
+         "candidate_carries_arbitrary_constant": false,
+         "extra_condition_must_be_checked": true,
+         "fails_on_part_of_domain": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

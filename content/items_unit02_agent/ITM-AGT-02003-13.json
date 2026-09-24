@@ -1,0 +1,104 @@
+{
+   "id": "ITM-AGT-02003-13",
+   "archetype_id": "BC-QA-02003",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Find the value of \\( \\lim_{h \\to 0} \\frac{e^{\\ln 3 + h} - 3}{h} \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 3
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The numerator has the form \\( f(\\ln 3 + h) - f(\\ln 3) \\) with \\( f(x) = e^{x} \\), because \\( f(\\ln 3) = 3 \\).",
+         "mathjson": 3
+      },
+      {
+         "step": 2,
+         "text": "So the function is \\( f(x) = e^{x} \\) and the base point is \\( x = \\ln 3 \\).",
+         "mathjson": [
+            "Ln",
+            3
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The limit is the definition of \\( f'(\\ln 3) \\), and \\( f'(x) = e^{x} \\).",
+         "mathjson": [
+            "Exp",
+            "x"
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Evaluate: \\( f'(\\ln 3) = 3 \\).",
+         "mathjson": 3
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 9,
+         "is_key": false,
+         "error_path": "BC-ERR-02010",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": 1,
+         "is_key": false,
+         "error_path": "BC-ERR-02010",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Exp",
+            3
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02010",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": 3,
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02035",
+      "BC-SKL-02005"
+   ],
+   "parameter_draw": {
+      "function": "exp(x)",
+      "base_point": "log(3)",
+      "increment_variable": "h",
+      "form": "increment",
+      "wrong_base_readings": {
+         "shift": "2*log(3)",
+         "zero": "0",
+         "constant": "3"
+      },
+      "difficulty_variables": {
+         "standard angle or value": false,
+         "two point form": false,
+         "transcendental": true
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

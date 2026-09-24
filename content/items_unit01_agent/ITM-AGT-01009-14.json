@@ -1,0 +1,139 @@
+{
+   "id": "ITM-AGT-01009-14",
+   "archetype_id": "BC-QA-01009",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = \\ln\\left| x - 2 \\right| + \\frac{\\left(x^{2} - x - 12\\right)\\left(x^{2} - 11 x + 30\\right)}{\\left(x^{2} - 3 x - 18\\right)\\left(x - 5\\right)} \\). The graph of \\( f \\) has exactly one vertical asymptote, the line \\( x = c \\). Find the value of \\( c \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 2
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The rational part has numerator \\( \\left(x - 6\\right) \\left(x - 5\\right) \\left(x - 4\\right) \\left(x + 3\\right) \\) and denominator \\( \\left(x - 6\\right) \\left(x - 5\\right) \\left(x + 3\\right) \\).",
+         "mathjson": [
+            "Multiply",
+            [
+               "Subtract",
+               "x",
+               6
+            ],
+            [
+               "Subtract",
+               "x",
+               5
+            ],
+            [
+               "Add",
+               "x",
+               3
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The factors at \\( x = -3 \\), \\( x = 5 \\), and \\( x = 6 \\) divide out, so away from those inputs the rational part equals \\( x - 4 \\), a polynomial. Those three inputs are removable discontinuities, not asymptotes.",
+         "mathjson": [
+            "Subtract",
+            "x",
+            4
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The only input left where \\( f \\) is undefined is \\( x = 2 \\), where \\( \\ln\\left| x - 2 \\right| \\) is undefined.",
+         "mathjson": 2
+      },
+      {
+         "step": 4,
+         "text": "As \\( x \\to 2 \\) from either side, \\( \\left| x - 2 \\right| \\to 0^+ \\), so the logarithm decreases without bound while the polynomial part stays finite: \\( f(x) \\to -\\infty \\) on both sides.",
+         "mathjson": 2
+      },
+      {
+         "step": 5,
+         "text": "So the line \\( x = 2 \\) is the only vertical asymptote, and \\( c = 2 \\).",
+         "mathjson": 2
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": -3,
+         "is_key": false,
+         "error_path": "BC-ERR-01018",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": 5,
+         "is_key": false,
+         "error_path": "BC-ERR-01018",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": 6,
+         "is_key": false,
+         "error_path": "BC-ERR-01018",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": 2,
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-04",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-10",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-01054",
+      "BC-SKL-01055",
+      "BC-SKL-01056",
+      "BC-SKL-01041"
+   ],
+   "parameter_draw": {
+      "variant": "log",
+      "cancelled_zeros": [
+         -3,
+         5,
+         6
+      ],
+      "asymptote": 2,
+      "numerator_only_zero": 4,
+      "numerator_constant": null,
+      "difficulty_variables": {
+         "factor cancels": true,
+         "sides same sign": true,
+         "logarithmic asymptote": true
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

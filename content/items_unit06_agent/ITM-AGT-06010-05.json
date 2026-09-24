@@ -1,0 +1,343 @@
+{
+   "id": "ITM-AGT-06010-05",
+   "archetype_id": "BC-QA-06010",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Find the exact value of \\( \\int_{2}^{3} \\frac{x^{3} + 2}{x^{2} - x} \\, dx \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Negate",
+            [
+               "Multiply",
+               2,
+               [
+                  "Ln",
+                  3
+               ]
+            ]
+         ],
+         [
+            "Multiply",
+            5,
+            [
+               "Ln",
+               2
+            ]
+         ],
+         [
+            "Rational",
+            7,
+            2
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Factor the denominator: \\( x^{2} - x = x \\left(x - 1\\right) \\).",
+         "mathjson": [
+            "Multiply",
+            "x",
+            [
+               "Add",
+               "x",
+               -1
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The numerator's degree is not less than the denominator's, so divide first: \\( \\frac{x^{3} + 2}{x^{2} - x} = x + 1 + \\frac{x + 2}{x^{2} - x} \\), and write \\( \\frac{x + 2}{x^{2} - x} = \\frac{A}{x} + \\frac{B}{x - 1} \\).",
+         "mathjson": [
+            "Add",
+            "x",
+            1
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Clearing denominators gives \\( x + 2 = A \\left(x - 1\\right) + B \\left(x\\right) \\). Setting \\( x = 0 \\) gives \\( A = -2 \\), and setting \\( x = 1 \\) gives \\( B = 3 \\), so the integrand is \\( x + 1 + \\frac{3}{x - 1} - \\frac{2}{x} \\).",
+         "mathjson": [
+            "Add",
+            "x",
+            1,
+            [
+               "Divide",
+               3,
+               [
+                  "Add",
+                  "x",
+                  -1
+               ]
+            ],
+            [
+               "Negate",
+               [
+                  "Divide",
+                  2,
+                  "x"
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "An antiderivative is \\( \\frac{x^{2}}{2} + x - 2 \\ln{\\left(\\left|{x}\\right| \\right)} + 3 \\ln{\\left(\\left|{x - 1}\\right| \\right)} \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Divide",
+               [
+                  "Power",
+                  "x",
+                  2
+               ],
+               2
+            ],
+            "x",
+            [
+               "Negate",
+               [
+                  "Multiply",
+                  2,
+                  [
+                     "Ln",
+                     [
+                        "Abs",
+                        "x"
+                     ]
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               3,
+               [
+                  "Ln",
+                  [
+                     "Abs",
+                     [
+                        "Add",
+                        "x",
+                        -1
+                     ]
+                  ]
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 5,
+         "text": "Evaluate from \\( x = 2 \\) to \\( x = 3 \\): the value is \\( - 2 \\ln{\\left(3 \\right)} + 5 \\ln{\\left(2 \\right)} + \\frac{7}{2} \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Negate",
+               [
+                  "Multiply",
+                  2,
+                  [
+                     "Ln",
+                     3
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               5,
+               [
+                  "Ln",
+                  2
+               ]
+            ],
+            [
+               "Rational",
+               7,
+               2
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            [
+               "Negate",
+               [
+                  "Multiply",
+                  2,
+                  [
+                     "Ln",
+                     3
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               5,
+               [
+                  "Ln",
+                  2
+               ]
+            ],
+            [
+               "Rational",
+               7,
+               2
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": [
+            "Add",
+            [
+               "Negate",
+               [
+                  "Multiply",
+                  2,
+                  [
+                     "Ln",
+                     3
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               5,
+               [
+                  "Ln",
+                  2
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06026",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            [
+               "Negate",
+               [
+                  "Multiply",
+                  2,
+                  [
+                     "Ln",
+                     3
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               4,
+               [
+                  "Ln",
+                  2
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06026",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            [
+               "Negate",
+               [
+                  "Multiply",
+                  3,
+                  [
+                     "Ln",
+                     3
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               6,
+               [
+                  "Ln",
+                  2
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06026",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06062",
+      "BC-SKL-06063",
+      "BC-SKL-06064",
+      "BC-SKL-06065"
+   ],
+   "parameter_draw": {
+      "numerator": "x**3 + 2",
+      "denominator_factors": [
+         "x",
+         "x - 1"
+      ],
+      "limits": [
+         "2",
+         "3"
+      ],
+      "quotient": "x + 1",
+      "remainder": "x + 2",
+      "A": "-2",
+      "B": "3",
+      "difficulty_variables": {
+         "whether the numerator degree forces a division first": "yes",
+         "whether the constants must be found by substitution or by equating coefficients": "substitution at the roots",
+         "whether the logarithms must be combined": "no, the answer is written with logarithms of primes",
+         "whether a definite integral requires the limits": "yes"
+      },
+      "distractor_derivations": {
+         "B": "decomposed without dividing; constants found by substituting both roots (cover up), so the polynomial part of the quotient is lost: A = -2, B = 3",
+         "C": "decomposed without dividing; constants found by matching only the x and constant coefficients, ignoring the unmatched higher powers: A = -2, B = 2",
+         "D": "decomposed without dividing; constants found from the root of the second factor and the x coefficient: A = -3, B = 3"
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

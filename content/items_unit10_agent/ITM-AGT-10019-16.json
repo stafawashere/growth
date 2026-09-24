@@ -1,0 +1,299 @@
+{
+   "id": "ITM-AGT-10019-16",
+   "archetype_id": "BC-QA-10019",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f \\) be the function with \\( f(0) = 1 \\) and \\( f'(x) = x e^{x} \\). Use a known Maclaurin series for \\( f' \\), integrated term by term, to find the sum of the first three nonzero terms of the Maclaurin series for \\( f \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         1,
+         [
+            "Multiply",
+            [
+               "Rational",
+               1,
+               2
+            ],
+            [
+               "Power",
+               "x",
+               2
+            ]
+         ],
+         [
+            "Multiply",
+            [
+               "Rational",
+               1,
+               3
+            ],
+            [
+               "Power",
+               "x",
+               3
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "From the series for \\( e^{x} \\), \\( f'(x) = x + x^{2} + \\frac{1}{2}x^{3} + \\cdots \\).",
+         "mathjson": [
+            "Add",
+            "x",
+            [
+               "Power",
+               "x",
+               2
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Integrate each term, raising the power by 1 and dividing by the new power: \\( f(x) = C + \\frac{1}{2}x^{2} + \\frac{1}{3}x^{3} + \\frac{1}{8}x^{4} + \\cdots \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  3
+               ],
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  8
+               ],
+               [
+                  "Power",
+                  "x",
+                  4
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Every term after the constant vanishes at 0, so \\( f(0) = C = 1 \\).",
+         "mathjson": 1
+      },
+      {
+         "step": 4,
+         "text": "The first three nonzero terms sum to \\( 1 + \\frac{1}{2}x^{2} + \\frac{1}{3}x^{3} \\).",
+         "mathjson": [
+            "Add",
+            1,
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  3
+               ],
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            1,
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  2
+               ],
+               "x"
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  3
+               ],
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99018",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Add",
+            1,
+            [
+               "Power",
+               "x",
+               2
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99018",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            1,
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  3
+               ],
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            1,
+            [
+               "Power",
+               "x",
+               2
+            ],
+            [
+               "Power",
+               "x",
+               3
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99018",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10069"
+   ],
+   "parameter_draw": {
+      "integrand": "x e^{x}",
+      "known_series": "e^{x}",
+      "substitution": null,
+      "value_at_zero": 1,
+      "constant_is_zero": false,
+      "terms_requested": 3,
+      "distractor_mistakes": [
+         "power raised without dividing",
+         "divided by the new exponent without raising the power",
+         "divided by the old exponent"
+      ]
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

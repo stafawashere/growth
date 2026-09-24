@@ -1,0 +1,121 @@
+{
+   "id": "ITM-AGT-06013-07",
+   "archetype_id": "BC-QA-06013",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let p and q be continuous functions with \\( \\int_{-1}^{5} p(x)\\,dx = 7 \\), \\( \\int_{2}^{5} p(x)\\,dx = -3 \\), and \\( \\int_{2}^{-1} q(x)\\,dx = 6 \\). Find the value of \\( \\int_{-1}^{2} \\left(2p(x) + 3q(x)\\right) dx \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 2
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Split at \\( x = 2 \\): \\( \\int_{-1}^{2} p(x)\\,dx = 7 - (-3) = 10 \\).",
+         "mathjson": 10
+      },
+      {
+         "step": 2,
+         "text": "Reverse the given integral of q: \\( \\int_{-1}^{2} q(x)\\,dx = -(6) = -6 \\), and use linearity on the requested integral.",
+         "mathjson": -6
+      },
+      {
+         "step": 3,
+         "text": "Substitute: \\( (2)(10) + (3)(-6) \\).",
+         "mathjson": 2
+      },
+      {
+         "step": 4,
+         "text": "The value is \\( 2 \\).",
+         "mathjson": 2
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 2,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": 38,
+         "is_key": false,
+         "error_path": "BC-ERR-99012",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": -38,
+         "is_key": false,
+         "error_path": "BC-ERR-99032",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": -10,
+         "is_key": false,
+         "error_path": "BC-ERR-99012",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-17",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06029",
+      "BC-SKL-06030",
+      "BC-SKL-06031",
+      "BC-SKL-06032",
+      "BC-SKL-06033",
+      "BC-SKL-06035"
+   ],
+   "parameter_draw": {
+      "template": "T2",
+      "endpoints": [
+         -1,
+         2,
+         5
+      ],
+      "given_values": [
+         7,
+         -3,
+         6
+      ],
+      "alpha": 2,
+      "beta_or_gamma": 3,
+      "difficulty_variables": {
+         "whether a reversal of limits is required": "yes, one supplied integral runs right to left",
+         "whether an interval must be split or joined": "split",
+         "whether a constant multiple or a sum appears": "a linear combination of two functions",
+         "whether an integral of a constant must be computed geometrically": "no"
+      },
+      "distractor_derivations": {
+         "B": "given integral of q from 2 to -1 used as if it ran from -1 to 2",
+         "C": "split written with its limits reversed, taking the integral of p from -1 to 2 as -3 - (7)",
+         "D": "integral of p from 5 to 2 taken as -3 instead of 3"
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

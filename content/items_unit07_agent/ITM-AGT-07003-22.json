@@ -1,0 +1,192 @@
+{
+   "id": "ITM-AGT-07003-22",
+   "archetype_id": "BC-QA-07003",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Consider the differential equation \\( \\frac{dy}{dx} = \\frac{x^{2}}{y^{2}} \\). Find the particular solution \\( y = f(x) \\) with \\( f(0) = 2 \\), written as an explicit function of \\( x \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Root",
+         [
+            "Add",
+            [
+               "Power",
+               "x",
+               3
+            ],
+            8
+         ],
+         3
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Separate the variables: \\( y^{2} \\, dy = x^{2} \\, dx \\).",
+         "mathjson": [
+            "Power",
+            "x",
+            2
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Antidifferentiate both sides with one constant: \\( \\frac{y^{3}}{3} = \\frac{x^{3}}{3} + C \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Power",
+               "x",
+               3
+            ],
+            3
+         ]
+      },
+      {
+         "step": 3,
+         "text": "At \\( x = 0 \\), \\( y = 2 \\), so \\( C = \\frac{8}{3} \\).",
+         "mathjson": [
+            "Rational",
+            8,
+            3
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Solve for \\( y \\): \\( y = \\sqrt[3]{x^{3} + 8} \\).",
+         "mathjson": [
+            "Root",
+            [
+               "Add",
+               [
+                  "Power",
+                  "x",
+                  3
+               ],
+               8
+            ],
+            3
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Root",
+            [
+               "Add",
+               [
+                  "Divide",
+                  [
+                     "Power",
+                     "x",
+                     3
+                  ],
+                  3
+               ],
+               8
+            ],
+            3
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99014",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Root",
+            [
+               "Add",
+               [
+                  "Multiply",
+                  3,
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ]
+               ],
+               8
+            ],
+            3
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-07025",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Root",
+            [
+               "Power",
+               "x",
+               3
+            ],
+            3
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-07026",
+         "violated_step": 2
+      },
+      {
+         "id": "D",
+         "value": [
+            "Root",
+            [
+               "Add",
+               [
+                  "Power",
+                  "x",
+                  3
+               ],
+               8
+            ],
+            3
+         ],
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-07024",
+      "BC-SKL-07025",
+      "BC-SKL-07026",
+      "BC-SKL-07027",
+      "BC-SKL-07029",
+      "BC-SKL-07030",
+      "BC-SKL-07033"
+   ],
+   "parameter_draw": {
+      "rate_in_x": "x**2",
+      "x0": "0",
+      "y0": "2",
+      "difficulty_variables": {
+         "dependent_side": "power",
+         "absolute_value_resolved": false,
+         "substitution_on_independent_side": false,
+         "explicit_answer": true
+      },
+      "asked_for": "expression"
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

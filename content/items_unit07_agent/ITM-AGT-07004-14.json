@@ -1,0 +1,149 @@
+{
+   "id": "ITM-AGT-07004-14",
+   "archetype_id": "BC-QA-07004",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( y = f(x) \\) be the solution to the differential equation \\( \\frac{dy}{dx} = x + y \\) with \\( f(0) = 2 \\). Find the approximation to \\( f(1) \\) given by Euler's method, starting at \\( x = 0 \\) with three steps of equal size. Give the exact value."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         46,
+         9
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The step size is \\( \\Delta x = \\frac{1 - (0)}{3} = \\frac{1}{3} \\).",
+         "mathjson": [
+            "Rational",
+            1,
+            3
+         ]
+      },
+      {
+         "step": 2,
+         "text": "At \\( (0, 2) \\) the slope is \\( 2 \\), so \\( y \\approx 2 + (\\frac{1}{3})(2) = \\frac{8}{3} \\) at \\( x = \\frac{1}{3} \\).",
+         "mathjson": [
+            "Rational",
+            8,
+            3
+         ]
+      },
+      {
+         "step": 3,
+         "text": "At \\( (\\frac{1}{3}, \\frac{8}{3}) \\) the slope is \\( 3 \\), so \\( y \\approx \\frac{8}{3} + (\\frac{1}{3})(3) = \\frac{11}{3} \\) at \\( x = \\frac{2}{3} \\).",
+         "mathjson": [
+            "Rational",
+            11,
+            3
+         ]
+      },
+      {
+         "step": 4,
+         "text": "At \\( (\\frac{2}{3}, \\frac{11}{3}) \\) the slope is \\( \\frac{13}{3} \\), so \\( y \\approx \\frac{11}{3} + (\\frac{1}{3})(\\frac{13}{3}) = \\frac{46}{9} \\) at \\( x = 1 \\).",
+         "mathjson": [
+            "Rational",
+            46,
+            9
+         ]
+      },
+      {
+         "step": 5,
+         "text": "So \\( f(1) \\approx \\frac{46}{9} \\).",
+         "mathjson": [
+            "Rational",
+            46,
+            9
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Rational",
+            154,
+            27
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-07020",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            193,
+            27
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99026",
+         "violated_step": 3
+      },
+      {
+         "id": "C",
+         "value": [
+            "Rational",
+            46,
+            9
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": [
+            "Rational",
+            130,
+            27
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-07021",
+         "violated_step": 2
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-07019",
+      "BC-SKL-07020",
+      "BC-SKL-07021",
+      "BC-SKL-07022",
+      "BC-SKL-07023"
+   ],
+   "parameter_draw": {
+      "dy_dx": "x + y",
+      "x0": "0",
+      "y0": "2",
+      "target_x": "1",
+      "steps": 3,
+      "step_size": "1/3",
+      "difficulty_variables": {
+         "derivative_depends_on_both_variables": true,
+         "number_of_steps": 3,
+         "imported_from_earlier_part": false,
+         "direction_of_error_demanded": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

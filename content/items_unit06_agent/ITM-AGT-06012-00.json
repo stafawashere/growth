@@ -1,0 +1,154 @@
+{
+   "id": "ITM-AGT-06012-00",
+   "archetype_id": "BC-QA-06012",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( g(x) = \\int_{0}^{x^{2}} \\sqrt{t + 5} \\, dt \\). Find the exact value of \\( g'\\left(2\\right) \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 12
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "By the Fundamental Theorem of Calculus, the derivative of the integral with respect to its upper limit is the integrand evaluated at that limit, \\( \\sqrt{x^{2} + 5} \\).",
+         "mathjson": [
+            "Sqrt",
+            [
+               "Add",
+               [
+                  "Power",
+                  "x",
+                  2
+               ],
+               5
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The upper limit is \\( x^{2} \\), so the chain rule multiplies by its derivative: \\( g'(x) = \\sqrt{x^{2} + 5} \\cdot 2 x \\).",
+         "mathjson": [
+            "Multiply",
+            2,
+            "x",
+            [
+               "Sqrt",
+               [
+                  "Add",
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ],
+                  5
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "At \\( x = 2 \\) the limit is \\( 4 \\) and its derivative is \\( 4 \\).",
+         "mathjson": 4
+      },
+      {
+         "step": 4,
+         "text": "So \\( g'\\left(2\\right) = 3 \\cdot 4 = 12 \\).",
+         "mathjson": 12
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 12,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": 3,
+         "is_key": false,
+         "error_path": "BC-ERR-06027",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Multiply",
+            4,
+            [
+               "Sqrt",
+               7
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06028",
+         "violated_step": 0
+      },
+      {
+         "id": "D",
+         "value": [
+            "Multiply",
+            4,
+            [
+               "Sqrt",
+               [
+                  "Add",
+                  "t",
+                  5
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06028",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-03",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-09",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-10",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06018",
+      "BC-SKL-06019",
+      "BC-SKL-06017",
+      "BC-SKL-06021"
+   ],
+   "parameter_draw": {
+      "form": "composite upper limit",
+      "integrand": "sqrt(t + 5)",
+      "limits": {
+         "lower": "0",
+         "upper": "x**2"
+      },
+      "point": "2",
+      "difficulty_variables": {
+         "upper limit equal to x versus a function of x": "composite upper limit",
+         "integrand given by a formula, a graph, or a table": "formula",
+         "whether a reason naming the theorem is demanded": "no",
+         "whether values of the integrand must come from a table": "no"
+      },
+      "distractor_derivations": {
+         "B": "f(4) with the factor u'(2) = 4 left off",
+         "C": "integrand evaluated at x = 2 instead of at the limit u(2) = 4",
+         "D": "answer left in terms of the variable of integration t"
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

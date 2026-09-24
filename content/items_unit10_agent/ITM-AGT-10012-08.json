@@ -1,0 +1,219 @@
+{
+   "id": "ITM-AGT-10012-08",
+   "archetype_id": "BC-QA-10012",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "The second-degree Taylor polynomial for \\( f \\) about \\( x = 0 \\) is \\( 2 + x - x^{2} \\). Let \\( g(x) = \\frac{1}{1 + x} f(x) \\). Find the second-degree Taylor polynomial for \\( g \\) about \\( x = 0 \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         2,
+         [
+            "Negate",
+            "x"
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Start from \\( \\frac{1}{1 - u} = 1 + u + u^{2} + u^{3} + \\cdots \\). Replace \\( u \\) by \\( -x \\), raising the whole of \\( -x \\) to each power. Through degree 2, \\( \\frac{1}{1 + x} \\approx 1 - x + x^{2} \\).",
+         "mathjson": [
+            "Add",
+            1,
+            [
+               "Negate",
+               "x"
+            ],
+            [
+               "Power",
+               "x",
+               2
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Multiply by \\( 2 + x - x^{2} \\): the product is \\( 2 - x + 2x^{3} - x^{4} \\).",
+         "mathjson": [
+            "Add",
+            2,
+            [
+               "Negate",
+               "x"
+            ],
+            [
+               "Multiply",
+               2,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Negate",
+               [
+                  "Power",
+                  "x",
+                  4
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The coefficients of the Taylor polynomial for \\( g \\) are those of the product through \\( x^{2} \\); the factorials are already inside the series coefficients.",
+         "mathjson": [
+            "Add",
+            2,
+            [
+               "Negate",
+               "x"
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Drop every power above 2: \\( 2 - x \\).",
+         "mathjson": [
+            "Add",
+            2,
+            [
+               "Negate",
+               "x"
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            2,
+            [
+               "Negate",
+               "x"
+            ],
+            [
+               "Multiply",
+               2,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Negate",
+               [
+                  "Power",
+                  "x",
+                  4
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10030",
+         "violated_step": 3
+      },
+      {
+         "id": "B",
+         "value": [
+            "Add",
+            2,
+            [
+               "Multiply",
+               3,
+               "x"
+            ],
+            [
+               "Multiply",
+               2,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10040",
+         "violated_step": 0
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            2,
+            [
+               "Negate",
+               "x"
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            2,
+            [
+               "Negate",
+               "x"
+            ],
+            [
+               "Multiply",
+               -4,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10041",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10046",
+      "BC-SKL-10047",
+      "BC-SKL-10048",
+      "BC-SKL-10061",
+      "BC-SKL-10065"
+   ],
+   "parameter_draw": {
+      "defining_relation": "g(x) = h(x) f(x) with h = geom(-x)",
+      "known_series": "geom",
+      "substitution_factor": "-1",
+      "f_polynomial": {
+         "0": "2",
+         "1": "1",
+         "2": "-1"
+      },
+      "centre": 0,
+      "degree_requested": 2,
+      "route": "multiply known series",
+      "misremembered_variants": [
+         "signs wrong"
+      ]
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

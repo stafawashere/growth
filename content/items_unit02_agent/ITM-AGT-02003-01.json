@@ -1,0 +1,99 @@
+{
+   "id": "ITM-AGT-02003-01",
+   "archetype_id": "BC-QA-02003",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Find the value of \\( \\lim_{h \\to 0} \\frac{(-4 + h)^{2} - 16}{h} \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": -8
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The numerator has the form \\( f(-4 + h) - f(-4) \\) with \\( f(x) = x^{2} \\), because \\( f(-4) = 16 \\).",
+         "mathjson": 16
+      },
+      {
+         "step": 2,
+         "text": "So the function is \\( f(x) = x^{2} \\) and the base point is \\( x = -4 \\).",
+         "mathjson": -4
+      },
+      {
+         "step": 3,
+         "text": "The limit is the definition of \\( f'(-4) \\), and \\( f'(x) = 2 x \\).",
+         "mathjson": [
+            "Multiply",
+            2,
+            "x"
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Evaluate: \\( f'(-4) = -8 \\).",
+         "mathjson": -8
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": -8,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": -16,
+         "is_key": false,
+         "error_path": "BC-ERR-02010",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": 0,
+         "is_key": false,
+         "error_path": "BC-ERR-02010",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": 32,
+         "is_key": false,
+         "error_path": "BC-ERR-02010",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02035",
+      "BC-SKL-02005"
+   ],
+   "parameter_draw": {
+      "function": "x**2",
+      "base_point": "-4",
+      "increment_variable": "h",
+      "form": "increment",
+      "wrong_base_readings": {
+         "shift": "-8",
+         "zero": "0",
+         "constant": "16"
+      },
+      "difficulty_variables": {
+         "standard angle or value": false,
+         "two point form": false,
+         "transcendental": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

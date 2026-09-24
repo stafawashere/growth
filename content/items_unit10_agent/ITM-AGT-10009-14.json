@@ -1,0 +1,127 @@
+{
+   "id": "ITM-AGT-10009-14",
+   "archetype_id": "BC-QA-10009",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = \\ln x \\). The second-degree Taylor polynomial for \\( f \\) about \\( x = 1 \\) is used to approximate \\( f\\left(\\frac{1}{2}\\right) \\). Find the Lagrange error bound for this approximation, taking \\( M \\) to be the maximum of \\( |f'''(x)| \\) on \\( \\left[\\frac{1}{2}, 1\\right] \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         1,
+         3
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "A degree 2 polynomial needs the derivative of order 3: \\( f'''(x) = \\frac{2}{x^{3}} \\).",
+         "mathjson": [
+            "Divide",
+            2,
+            [
+               "Power",
+               "x",
+               3
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Its absolute value is monotonic on \\( \\left[\\frac{1}{2}, 1\\right] \\), so the maximum is at an endpoint: \\( M = 16 \\). The bound is \\( \\frac{M\\,|x - 1|^{3}}{3!} \\).",
+         "mathjson": 16
+      },
+      {
+         "step": 3,
+         "text": "With \\( |x - 1| = \\frac{1}{2} \\), the bound is \\( \\frac{16 \\cdot \\left(\\frac{1}{2}\\right)^{3}}{6} = \\frac{1}{3} \\).",
+         "mathjson": [
+            "Rational",
+            1,
+            3
+         ]
+      },
+      {
+         "step": 4,
+         "text": "The error is at most \\( \\frac{1}{3} \\).",
+         "mathjson": [
+            "Rational",
+            1,
+            3
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 1,
+         "is_key": false,
+         "error_path": "BC-ERR-10032",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            2,
+            3
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10032",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Rational",
+            1,
+            3
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": [
+            "Rational",
+            1,
+            24
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10033",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10048",
+      "BC-SKL-10049",
+      "BC-SKL-10050",
+      "BC-SKL-10051",
+      "BC-SKL-10052"
+   ],
+   "parameter_draw": {
+      "function": "\\ln x",
+      "centre": "1",
+      "input": "1/2",
+      "degree": 2,
+      "derivative_bound": "16",
+      "derivative_at_centre": "2",
+      "difficulty_variables": {
+         "derivative_bound_supplied": false,
+         "displacement": "1/2",
+         "tolerance_comparison_shown": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

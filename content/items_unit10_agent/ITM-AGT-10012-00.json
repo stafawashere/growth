@@ -1,0 +1,276 @@
+{
+   "id": "ITM-AGT-10012-00",
+   "archetype_id": "BC-QA-10012",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "The second-degree Taylor polynomial for \\( f \\) about \\( x = 0 \\) is \\( 2 - x + 3x^{2} \\). Let \\( g(x) = e^{x} f(x) \\). Find the second-degree Taylor polynomial for \\( g \\) about \\( x = 0 \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         2,
+         "x",
+         [
+            "Multiply",
+            3,
+            [
+               "Power",
+               "x",
+               2
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Start from \\( e^{u} = 1 + u + \\frac{u^{2}}{2!} + \\frac{u^{3}}{3!} + \\cdots \\). Through degree 2, \\( e^{x} \\approx 1 + x + \\frac{1}{2}x^{2} \\).",
+         "mathjson": [
+            "Add",
+            1,
+            "x",
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Multiply by \\( 2 - x + 3x^{2} \\): the product is \\( 2 + x + 3x^{2} + \\frac{5}{2}x^{3} + \\frac{3}{2}x^{4} \\).",
+         "mathjson": [
+            "Add",
+            2,
+            "x",
+            [
+               "Multiply",
+               3,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  5,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  3,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  4
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The coefficients of the Taylor polynomial for \\( g \\) are those of the product through \\( x^{2} \\); the factorials are already inside the series coefficients.",
+         "mathjson": [
+            "Add",
+            2,
+            "x",
+            [
+               "Multiply",
+               3,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Drop every power above 2: \\( 2 + x + 3x^{2} \\).",
+         "mathjson": [
+            "Add",
+            2,
+            "x",
+            [
+               "Multiply",
+               3,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            2,
+            [
+               "Multiply",
+               -3,
+               "x"
+            ],
+            [
+               "Multiply",
+               5,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10040",
+         "violated_step": 0
+      },
+      {
+         "id": "B",
+         "value": [
+            "Add",
+            2,
+            "x",
+            [
+               "Multiply",
+               3,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  5,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  3,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  4
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10030",
+         "violated_step": 3
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            2,
+            "x",
+            [
+               "Multiply",
+               3,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            2,
+            "x",
+            [
+               "Multiply",
+               4,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10040",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10046",
+      "BC-SKL-10047",
+      "BC-SKL-10048",
+      "BC-SKL-10061",
+      "BC-SKL-10065"
+   ],
+   "parameter_draw": {
+      "defining_relation": "g(x) = h(x) f(x) with h = exp(x)",
+      "known_series": "exp",
+      "substitution_factor": "1",
+      "f_polynomial": {
+         "0": "2",
+         "1": "-1",
+         "2": "3"
+      },
+      "centre": 0,
+      "degree_requested": 2,
+      "route": "multiply known series",
+      "misremembered_variants": [
+         "factorials dropped",
+         "signs wrong"
+      ]
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

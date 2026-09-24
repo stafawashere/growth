@@ -1,0 +1,127 @@
+{
+   "id": "ITM-AGT-01003-05",
+   "archetype_id": "BC-QA-01003",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "The functions \\( f \\), \\( g \\), and \\( h \\) are continuous for all real numbers, with \\( f(0) = 4 \\), \\( f(1) = 4 \\), \\( f(2) = 3 \\), \\( f(3) = 4 \\), \\( f(4) = 4 \\), \\( g(0) = 1 \\), \\( g(1) = 2 \\), \\( g(2) = 2 \\), \\( g(3) = 2 \\), \\( g(4) = 4 \\), \\( h(0) = 3 \\), \\( h(1) = 2 \\), \\( h(2) = 0 \\), \\( h(3) = 0 \\), \\( h(4) = 1 \\). Find the value of \\( \\lim_{x \\to 2} \\left[ 3f(g(x)) + 2g(h(x)) + h(f(x)) \\right] \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 11
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Each function is continuous, so each limit at 2 is a function value: \\( f(2) = 3 \\), \\( g(2) = 2 \\), \\( h(2) = 0 \\).",
+         "mathjson": 3
+      },
+      {
+         "step": 2,
+         "text": "The expression is a sum of constant multiples of three composites. In each composite the outer function is continuous at the limit of the inner one, so \\( \\lim_{x \\to 2} f(g(x)) = f(2) = 3 \\), \\( \\lim_{x \\to 2} g(h(x)) = g(0) = 1 \\), \\( \\lim_{x \\to 2} h(f(x)) = h(3) = 0 \\).",
+         "mathjson": 3
+      },
+      {
+         "step": 3,
+         "text": "Apply the sum and constant multiple theorems: \\( (3)(3) + (2)(1) + (1)(0) = 11 \\).",
+         "mathjson": 11
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 8,
+         "is_key": false,
+         "error_path": "BC-ERR-01007",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": 11,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": 9,
+         "is_key": false,
+         "error_path": "BC-ERR-01007",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": 15,
+         "is_key": false,
+         "error_path": "BC-ERR-01007",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-09",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-10",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-01018",
+      "BC-SKL-01019",
+      "BC-SKL-01020",
+      "BC-SKL-01022"
+   ],
+   "parameter_draw": {
+      "structure": "sum",
+      "a": 2,
+      "side": "two-sided",
+      "composites": [
+         "f(g(x))",
+         "g(h(x))",
+         "h(f(x))"
+      ],
+      "coefficients": [
+         3,
+         2,
+         1
+      ],
+      "tables": {
+         "f": {
+            "0": 4,
+            "1": 4,
+            "2": 3,
+            "3": 4,
+            "4": 4
+         },
+         "g": {
+            "0": 1,
+            "1": 2,
+            "2": 2,
+            "3": 2,
+            "4": 4
+         },
+         "h": {
+            "0": 3,
+            "1": 2,
+            "2": 0,
+            "3": 0,
+            "4": 1
+         }
+      },
+      "difficulty_variables": {
+         "denominator limit zero": false,
+         "composite involved": true,
+         "one sided limit supplied": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

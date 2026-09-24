@@ -1,0 +1,257 @@
+{
+   "id": "ITM-AGT-10003-14",
+   "archetype_id": "BC-QA-10003",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "For \\( |x| < 2 \\), the series \\( \\sum_{n=2}^{\\infty} \\frac{x^{2n}}{4^{n}} \\) converges. Find its sum as an expression in \\( x \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Divide",
+         [
+            "Power",
+            "x",
+            4
+         ],
+         [
+            "Add",
+            16,
+            [
+               "Negate",
+               [
+                  "Multiply",
+                  4,
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ]
+               ]
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Dividing consecutive terms gives the constant ratio \\( r = \\frac{x^{2}}{4} \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Power",
+               "x",
+               2
+            ],
+            4
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The series as written starts at \\( n = 2 \\), so its first term is \\( a = \\frac{x^{4}}{16} \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Power",
+               "x",
+               4
+            ],
+            16
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The closed form needs \\( |r| < 1 \\), which holds because \\( |x| < 2 \\) is given.",
+         "mathjson": [
+            "Divide",
+            [
+               "Power",
+               "x",
+               2
+            ],
+            4
+         ]
+      },
+      {
+         "step": 4,
+         "text": "The sum is \\( \\frac{a}{1 - r} = \\frac{x^{4}}{16 - 4 x^{2}} \\), so the sum is \\( \\frac{x^{4}}{16 - 4 x^{2}} \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Power",
+               "x",
+               4
+            ],
+            [
+               "Add",
+               16,
+               [
+                  "Negate",
+                  [
+                     "Multiply",
+                     4,
+                     [
+                        "Power",
+                        "x",
+                        2
+                     ]
+                  ]
+               ]
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Divide",
+            4,
+            [
+               "Add",
+               4,
+               [
+                  "Negate",
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ]
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10006",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Add",
+            [
+               "Divide",
+               [
+                  "Power",
+                  "x",
+                  4
+               ],
+               16
+            ],
+            [
+               "Divide",
+               [
+                  "Power",
+                  "x",
+                  6
+               ],
+               64
+            ],
+            [
+               "Divide",
+               [
+                  "Power",
+                  "x",
+                  8
+               ],
+               256
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99038",
+         "violated_step": 3
+      },
+      {
+         "id": "C",
+         "value": [
+            "Divide",
+            [
+               "Power",
+               "x",
+               4
+            ],
+            [
+               "Add",
+               16,
+               [
+                  "Negate",
+                  [
+                     "Multiply",
+                     4,
+                     [
+                        "Power",
+                        "x",
+                        2
+                     ]
+                  ]
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": [
+            "Divide",
+            [
+               "Power",
+               "x",
+               4
+            ],
+            [
+               "Add",
+               16,
+               [
+                  "Negate",
+                  [
+                     "Multiply",
+                     4,
+                     "x"
+                  ]
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10004",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-13",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10006",
+      "BC-SKL-10007",
+      "BC-SKL-10008",
+      "BC-SKL-10009",
+      "BC-SKL-10010",
+      "BC-SKL-10063",
+      "BC-SKL-10072"
+   ],
+   "parameter_draw": {
+      "general_term": "\\frac{x^{2n}}{4^{n}}",
+      "start": 2,
+      "condition": "|x| < 2",
+      "ratio": "x**2/4",
+      "misread_ratio": "x/4",
+      "misread": "reads the ratio as x/4, ignoring the 2 in the exponent 2n",
+      "difficulty_variables": {
+         "ratio_contains_variable": true,
+         "starts_at_index_zero": false,
+         "closed_form_given": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

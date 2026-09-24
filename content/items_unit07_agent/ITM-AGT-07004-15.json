@@ -1,0 +1,145 @@
+{
+   "id": "ITM-AGT-07004-15",
+   "archetype_id": "BC-QA-07004",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( y = f(x) \\) be the solution to the differential equation \\( \\frac{dy}{dx} = - x + 2 y \\) with \\( f(1) = 1 \\). Find the approximation to \\( f(2) \\) given by Euler's method, starting at \\( x = 1 \\) with three steps of equal size. Give the exact value."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         65,
+         27
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The step size is \\( \\Delta x = \\frac{2 - (1)}{3} = \\frac{1}{3} \\).",
+         "mathjson": [
+            "Rational",
+            1,
+            3
+         ]
+      },
+      {
+         "step": 2,
+         "text": "At \\( (1, 1) \\) the slope is \\( 1 \\), so \\( y \\approx 1 + (\\frac{1}{3})(1) = \\frac{4}{3} \\) at \\( x = \\frac{4}{3} \\).",
+         "mathjson": [
+            "Rational",
+            4,
+            3
+         ]
+      },
+      {
+         "step": 3,
+         "text": "At \\( (\\frac{4}{3}, \\frac{4}{3}) \\) the slope is \\( \\frac{4}{3} \\), so \\( y \\approx \\frac{4}{3} + (\\frac{1}{3})(\\frac{4}{3}) = \\frac{16}{9} \\) at \\( x = \\frac{5}{3} \\).",
+         "mathjson": [
+            "Rational",
+            16,
+            9
+         ]
+      },
+      {
+         "step": 4,
+         "text": "At \\( (\\frac{5}{3}, \\frac{16}{9}) \\) the slope is \\( \\frac{17}{9} \\), so \\( y \\approx \\frac{16}{9} + (\\frac{1}{3})(\\frac{17}{9}) = \\frac{65}{27} \\) at \\( x = 2 \\).",
+         "mathjson": [
+            "Rational",
+            65,
+            27
+         ]
+      },
+      {
+         "step": 5,
+         "text": "So \\( f(2) \\approx \\frac{65}{27} \\).",
+         "mathjson": [
+            "Rational",
+            65,
+            27
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Rational",
+            271,
+            81
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99026",
+         "violated_step": 3
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            55,
+            27
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-07021",
+         "violated_step": 2
+      },
+      {
+         "id": "C",
+         "value": 2,
+         "is_key": false,
+         "error_path": "BC-ERR-07019",
+         "violated_step": 0
+      },
+      {
+         "id": "D",
+         "value": [
+            "Rational",
+            65,
+            27
+         ],
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-07019",
+      "BC-SKL-07020",
+      "BC-SKL-07021",
+      "BC-SKL-07022",
+      "BC-SKL-07023"
+   ],
+   "parameter_draw": {
+      "dy_dx": "-x + 2*y",
+      "x0": "1",
+      "y0": "1",
+      "target_x": "2",
+      "steps": 3,
+      "step_size": "1/3",
+      "difficulty_variables": {
+         "derivative_depends_on_both_variables": true,
+         "number_of_steps": 3,
+         "imported_from_earlier_part": false,
+         "direction_of_error_demanded": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

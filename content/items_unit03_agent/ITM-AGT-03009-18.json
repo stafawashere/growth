@@ -1,0 +1,187 @@
+{
+   "id": "ITM-AGT-03009-18",
+   "archetype_id": "BC-QA-03009",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = \\frac{e^{\\sin(5x)}}{5^{x}} \\). Find the value of \\( f'(0) \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Subtract",
+         5,
+         [
+            "Ln",
+            5
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The outermost operation is a quotient with numerator \\( e^{\\sin(5x)} \\) and denominator \\( 5^{x} \\), so the quotient rule comes first (equivalently, rewrite \\( f \\) as a product with the factor \\( 5^{-x} \\)).",
+         "mathjson": [
+            "Divide",
+            [
+               "Exp",
+               [
+                  "Sin",
+                  [
+                     "Multiply",
+                     5,
+                     "x"
+                  ]
+               ]
+            ],
+            [
+               "Power",
+               5,
+               "x"
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "\\( 5^{x} \\) is an exponential function with a constant base, so its derivative is \\( 5^{x} \\ln{\\left(5 \\right)} \\); the power rule does not apply to it.",
+         "mathjson": [
+            "Multiply",
+            [
+               "Power",
+               5,
+               "x"
+            ],
+            [
+               "Ln",
+               5
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The factor \\( e^{\\sin(5x)} \\) is an exponential of \\( \\sin(5x) \\), which is a sine of \\( 5x \\), so apply the chain rule from the outside inward: \\( \\left(e^{\\sin(5x)}\\right)' = 5 e^{\\sin{\\left(5 x \\right)}} \\cos{\\left(5 x \\right)} \\).",
+         "mathjson": [
+            "Multiply",
+            5,
+            [
+               "Exp",
+               [
+                  "Sin",
+                  [
+                     "Multiply",
+                     5,
+                     "x"
+                  ]
+               ]
+            ],
+            [
+               "Cos",
+               [
+                  "Multiply",
+                  5,
+                  "x"
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Assemble the quotient rule and evaluate at \\( x = 0 \\): \\( f'(0) = 5 - \\ln{\\left(5 \\right)} \\).",
+         "mathjson": [
+            "Subtract",
+            5,
+            [
+               "Ln",
+               5
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Divide",
+            5,
+            [
+               "Ln",
+               5
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03006",
+         "violated_step": 0
+      },
+      {
+         "id": "B",
+         "value": [
+            "Subtract",
+            5,
+            [
+               "Ln",
+               5
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": 5,
+         "is_key": false,
+         "error_path": "BC-ERR-99036",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": [
+            "Subtract",
+            1,
+            [
+               "Ln",
+               5
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03002",
+         "violated_step": 2
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-03026",
+      "BC-SKL-03027",
+      "BC-SKL-03028",
+      "BC-SKL-03029",
+      "BC-SKL-03006"
+   ],
+   "parameter_draw": {
+      "exponential_base": "5",
+      "composite": "exp_sin5x",
+      "structure": "quotient",
+      "answer_mode": "value",
+      "difficulty_variables": {
+         "algebraic rewrite available": true,
+         "rules needed": [
+            "quotient",
+            "exponential",
+            "chain (three layers)"
+         ],
+         "surface resembles another family": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

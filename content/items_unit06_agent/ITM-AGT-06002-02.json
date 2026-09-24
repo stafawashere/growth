@@ -1,0 +1,113 @@
+{
+   "id": "ITM-AGT-06002-02",
+   "archetype_id": "BC-QA-06002",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "People enter a park at a rate of E(t) people per hour, where E is differentiable and t is measured in hours after the park opens. Measured values are E(0) = 30, E(1) = 50, E(3) = 60, E(4) = 40. Find the approximation to \\( \\int_{0}^{4} E(t)\\,dt \\), the number of people who enter the park from t = 0 to t = 4, given by a trapezoidal sum with the three subintervals indicated by these values. Give the exact value."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 200
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Each subinterval contributes its width times the average of its two endpoint values: \\( 1 \\cdot \\frac{30 + 50}{2} = 40 \\); \\( 2 \\cdot \\frac{50 + 60}{2} = 110 \\); \\( 1 \\cdot \\frac{60 + 40}{2} = 50 \\).",
+         "mathjson": 40
+      },
+      {
+         "step": 2,
+         "text": "Add the three contributions: \\( 40 + 110 + 50 = 200 \\).",
+         "mathjson": 200
+      },
+      {
+         "step": 3,
+         "text": "The trapezoidal approximation is \\( 200 \\).",
+         "mathjson": 200
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Rational",
+            580,
+            3
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06001",
+         "violated_step": 0
+      },
+      {
+         "id": "B",
+         "value": 400,
+         "is_key": false,
+         "error_path": "BC-ERR-99028",
+         "violated_step": 0
+      },
+      {
+         "id": "C",
+         "value": 200,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": 350,
+         "is_key": false,
+         "error_path": "BC-ERR-06004",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-10",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06008",
+      "BC-SKL-06011",
+      "BC-SKL-06036"
+   ],
+   "parameter_draw": {
+      "context": "park",
+      "times": [
+         "0",
+         "1",
+         "3",
+         "4"
+      ],
+      "values": [
+         "30",
+         "50",
+         "60",
+         "40"
+      ],
+      "difficulty_variables": {
+         "nonuniform versus uniform widths": "nonuniform",
+         "whether the sum must be simplified to a single number": "yes",
+         "whether a concavity based over or under estimate justification is required": "no",
+         "calculator versus no calculator": "no calculator"
+      },
+      "distractor_derivations": {
+         "A": "trapezoidal sum with the common width (b - a)/3 used for every subinterval",
+         "B": "trapezoid area taken as width times the sum of the two endpoint values, with no division by 2",
+         "D": "factor 1/2 applied to the last trapezoid only"
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

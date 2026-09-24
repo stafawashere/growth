@@ -1,0 +1,121 @@
+{
+   "id": "ITM-AGT-06013-16",
+   "archetype_id": "BC-QA-06013",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let f and h be continuous functions with \\( \\int_{3}^{9} f(x)\\,dx = 20 \\), \\( \\int_{6}^{9} f(x)\\,dx = 8 \\), and \\( \\int_{6}^{3} h(x)\\,dx = -7 \\). Find the value of \\( \\int_{3}^{6} \\left(f(x) + 4h(x)\\right) dx \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 40
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Split at \\( x = 6 \\): \\( \\int_{3}^{6} f(x)\\,dx = 20 - (8) = 12 \\).",
+         "mathjson": 12
+      },
+      {
+         "step": 2,
+         "text": "Reverse the given integral of h: \\( \\int_{3}^{6} h(x)\\,dx = -(-7) = 7 \\), and use linearity on the requested integral.",
+         "mathjson": 7
+      },
+      {
+         "step": 3,
+         "text": "Substitute: \\( (1)(12) + (4)(7) \\).",
+         "mathjson": 40
+      },
+      {
+         "step": 4,
+         "text": "The value is \\( 40 \\).",
+         "mathjson": 40
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": -16,
+         "is_key": false,
+         "error_path": "BC-ERR-99012",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": 40,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": 16,
+         "is_key": false,
+         "error_path": "BC-ERR-99032",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": 56,
+         "is_key": false,
+         "error_path": "BC-ERR-99012",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-17",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06029",
+      "BC-SKL-06030",
+      "BC-SKL-06031",
+      "BC-SKL-06032",
+      "BC-SKL-06033",
+      "BC-SKL-06035"
+   ],
+   "parameter_draw": {
+      "template": "T2",
+      "endpoints": [
+         3,
+         6,
+         9
+      ],
+      "given_values": [
+         20,
+         8,
+         -7
+      ],
+      "alpha": 1,
+      "beta_or_gamma": 4,
+      "difficulty_variables": {
+         "whether a reversal of limits is required": "yes, one supplied integral runs right to left",
+         "whether an interval must be split or joined": "split",
+         "whether a constant multiple or a sum appears": "a linear combination of two functions",
+         "whether an integral of a constant must be computed geometrically": "no"
+      },
+      "distractor_derivations": {
+         "A": "given integral of h from 6 to 3 used as if it ran from 3 to 6",
+         "C": "split written with its limits reversed, taking the integral of f from 3 to 6 as 8 - (20)",
+         "D": "integral of f from 9 to 6 taken as 8 instead of -8"
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

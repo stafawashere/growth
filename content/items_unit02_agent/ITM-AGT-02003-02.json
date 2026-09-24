@@ -1,0 +1,103 @@
+{
+   "id": "ITM-AGT-02003-02",
+   "archetype_id": "BC-QA-02003",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Find the value of \\( \\lim_{h \\to 0} \\frac{(2 + h)^{3} - 8}{h} \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 12
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The numerator has the form \\( f(2 + h) - f(2) \\) with \\( f(x) = x^{3} \\), because \\( f(2) = 8 \\).",
+         "mathjson": 8
+      },
+      {
+         "step": 2,
+         "text": "So the function is \\( f(x) = x^{3} \\) and the base point is \\( x = 2 \\).",
+         "mathjson": 2
+      },
+      {
+         "step": 3,
+         "text": "The limit is the definition of \\( f'(2) \\), and \\( f'(x) = 3 x^{2} \\).",
+         "mathjson": [
+            "Multiply",
+            3,
+            [
+               "Power",
+               "x",
+               2
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Evaluate: \\( f'(2) = 12 \\).",
+         "mathjson": 12
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 12,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": 48,
+         "is_key": false,
+         "error_path": "BC-ERR-02010",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": 0,
+         "is_key": false,
+         "error_path": "BC-ERR-02010",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": 192,
+         "is_key": false,
+         "error_path": "BC-ERR-02010",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02035",
+      "BC-SKL-02005"
+   ],
+   "parameter_draw": {
+      "function": "x**3",
+      "base_point": "2",
+      "increment_variable": "h",
+      "form": "increment",
+      "wrong_base_readings": {
+         "shift": "4",
+         "zero": "0",
+         "constant": "8"
+      },
+      "difficulty_variables": {
+         "standard angle or value": false,
+         "two point form": false,
+         "transcendental": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

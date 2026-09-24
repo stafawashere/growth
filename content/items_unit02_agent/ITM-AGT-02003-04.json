@@ -1,0 +1,103 @@
+{
+   "id": "ITM-AGT-02003-04",
+   "archetype_id": "BC-QA-02003",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Find the value of \\( \\lim_{t \\to 0} \\frac{(-1 + t)^{4} - 1}{t} \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": -4
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The numerator has the form \\( f(-1 + t) - f(-1) \\) with \\( f(x) = x^{4} \\), because \\( f(-1) = 1 \\).",
+         "mathjson": 1
+      },
+      {
+         "step": 2,
+         "text": "So the function is \\( f(x) = x^{4} \\) and the base point is \\( x = -1 \\).",
+         "mathjson": -1
+      },
+      {
+         "step": 3,
+         "text": "The limit is the definition of \\( f'(-1) \\), and \\( f'(x) = 4 x^{3} \\).",
+         "mathjson": [
+            "Multiply",
+            4,
+            [
+               "Power",
+               "x",
+               3
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Evaluate: \\( f'(-1) = -4 \\).",
+         "mathjson": -4
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": -32,
+         "is_key": false,
+         "error_path": "BC-ERR-02010",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": 0,
+         "is_key": false,
+         "error_path": "BC-ERR-02010",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": -4,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": 4,
+         "is_key": false,
+         "error_path": "BC-ERR-02010",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02035",
+      "BC-SKL-02005"
+   ],
+   "parameter_draw": {
+      "function": "x**4",
+      "base_point": "-1",
+      "increment_variable": "t",
+      "form": "increment",
+      "wrong_base_readings": {
+         "shift": "-2",
+         "zero": "0",
+         "constant": "1"
+      },
+      "difficulty_variables": {
+         "standard angle or value": false,
+         "two point form": false,
+         "transcendental": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

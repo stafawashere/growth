@@ -1,0 +1,159 @@
+{
+   "id": "ITM-AGT-05012-09",
+   "archetype_id": "BC-QA-05012",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Consider the curve given by \\( xy^{2} - x^{3} = 10 \\), along which \\( y \\) is a differentiable function of \\( x \\) near the point \\( (2, 3) \\). Find the value of \\( \\frac{d^2y}{dx^2} \\) at the point \\( (2, 3) \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         35,
+         48
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Differentiate \\( xy^{2} - x^{3} = 10 \\) implicitly with respect to \\( x \\): \\( - 3 x^{2} + y^{2} + \\left(2 x y\\right)\\frac{dy}{dx} = 0 \\), so \\( \\frac{dy}{dx} = \\frac{3 x}{2 y} - \\frac{y}{2 x} \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Divide",
+               [
+                  "Multiply",
+                  3,
+                  "x"
+               ],
+               [
+                  "Multiply",
+                  2,
+                  "y"
+               ]
+            ],
+            [
+               "Negate",
+               [
+                  "Divide",
+                  "y",
+                  [
+                     "Multiply",
+                     2,
+                     "x"
+                  ]
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Differentiate \\( \\frac{dy}{dx} = \\frac{3 x^{2} - y^{2}}{2 x y} \\) again with the quotient rule, treating \\( y \\) as a function of \\( x \\): \\( \\frac{d^2y}{dx^2} = \\frac{2 x y \\left(- 2 \\frac{dy}{dx} y + 6 x\\right) - \\left(3 x^{2} - y^{2}\\right) \\left(2 \\frac{dy}{dx} x + 2 y\\right)}{4 x^{2} y^{2}} \\).",
+         "mathjson": [
+            "Rational",
+            1,
+            4
+         ]
+      },
+      {
+         "step": 3,
+         "text": "At \\( (2, 3) \\), \\( \\frac{dy}{dx} = \\frac{1}{4} \\). Substitute this value and the coordinates into the second derivative.",
+         "mathjson": [
+            "Rational",
+            35,
+            48
+         ]
+      },
+      {
+         "step": 4,
+         "text": "So \\( \\frac{d^2y}{dx^2} = \\frac{35}{48} \\) at \\( (2, 3) \\).",
+         "mathjson": [
+            "Rational",
+            35,
+            48
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Rational",
+            35,
+            48
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            7,
+            8
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03023",
+         "violated_step": 2
+      },
+      {
+         "id": "C",
+         "value": [
+            "Rational",
+            3,
+            4
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-05060",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": [
+            "Rational",
+            41,
+            48
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-05060",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-11",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-05058",
+      "BC-SKL-05059",
+      "BC-SKL-05060",
+      "BC-SKL-05061",
+      "BC-SKL-05062",
+      "BC-SKL-05063"
+   ],
+   "parameter_draw": {
+      "task": "second derivative at a point",
+      "relation": "-x**3 + x*y**2 = 10",
+      "point": [
+         2,
+         3
+      ],
+      "difficulty_variables": {
+         "second_derivative_asked": true,
+         "relation_type": "polynomial",
+         "both_conditions_solved_together": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

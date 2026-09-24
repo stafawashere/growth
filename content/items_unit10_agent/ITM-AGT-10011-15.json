@@ -1,0 +1,301 @@
+{
+   "id": "ITM-AGT-10011-15",
+   "archetype_id": "BC-QA-10011",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "The function \\( h \\) has derivatives of all orders, and its values at \\( x = 3 \\) are \\( h(3) = 2 \\), \\( h'(3) = 0 \\), \\( h''(3) = -4 \\), \\( h'''(3) = 6 \\), \\( h^{(4)}(3) = 12 \\). Find the third-degree Taylor polynomial for \\( h \\) about \\( x = 3 \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         2,
+         [
+            "Multiply",
+            -2,
+            [
+               "Power",
+               [
+                  "Subtract",
+                  "x",
+                  3
+               ],
+               2
+            ]
+         ],
+         [
+            "Power",
+            [
+               "Subtract",
+               "x",
+               3
+            ],
+            3
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "A degree 3 polynomial needs the values through order 3: \\( h(3) = 2 \\), \\( h'(3) = 0 \\), \\( h''(3) = -4 \\), \\( h'''(3) = 6 \\). The value of order 4 is not used.",
+         "mathjson": 6
+      },
+      {
+         "step": 2,
+         "text": "Divide each by the matching factorial: \\( \\frac{2}{0!} = 2 \\), \\( \\frac{0}{1!} = 0 \\), \\( \\frac{-4}{2!} = -2 \\), \\( \\frac{6}{3!} = 1 \\).",
+         "mathjson": 1
+      },
+      {
+         "step": 3,
+         "text": "Attach \\( (x - 3)^{k} \\) to the coefficient of order \\( k \\): \\( P(x) = 2 - 2(x - 3)^{2} + (x - 3)^{3} \\).",
+         "mathjson": [
+            "Add",
+            2,
+            [
+               "Multiply",
+               -2,
+               [
+                  "Power",
+                  [
+                     "Subtract",
+                     "x",
+                     3
+                  ],
+                  2
+               ]
+            ],
+            [
+               "Power",
+               [
+                  "Subtract",
+                  "x",
+                  3
+               ],
+               3
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "This is the third-degree Taylor polynomial, with no term past degree 3.",
+         "mathjson": [
+            "Add",
+            2,
+            [
+               "Multiply",
+               -2,
+               [
+                  "Power",
+                  [
+                     "Subtract",
+                     "x",
+                     3
+                  ],
+                  2
+               ]
+            ],
+            [
+               "Power",
+               [
+                  "Subtract",
+                  "x",
+                  3
+               ],
+               3
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            2,
+            [
+               "Multiply",
+               -2,
+               [
+                  "Power",
+                  [
+                     "Subtract",
+                     "x",
+                     3
+                  ],
+                  2
+               ]
+            ],
+            [
+               "Power",
+               [
+                  "Subtract",
+                  "x",
+                  3
+               ],
+               3
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": [
+            "Add",
+            2,
+            [
+               "Multiply",
+               3,
+               [
+                  "Power",
+                  [
+                     "Subtract",
+                     "x",
+                     3
+                  ],
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -2,
+                  3
+               ],
+               [
+                  "Power",
+                  [
+                     "Subtract",
+                     "x",
+                     3
+                  ],
+                  3
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10031",
+         "violated_step": 0
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            2,
+            [
+               "Multiply",
+               -4,
+               [
+                  "Power",
+                  [
+                     "Subtract",
+                     "x",
+                     3
+                  ],
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               6,
+               [
+                  "Power",
+                  [
+                     "Subtract",
+                     "x",
+                     3
+                  ],
+                  3
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10029",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            2,
+            [
+               "Multiply",
+               -2,
+               [
+                  "Power",
+                  [
+                     "Subtract",
+                     "x",
+                     3
+                  ],
+                  2
+               ]
+            ],
+            [
+               "Power",
+               [
+                  "Subtract",
+                  "x",
+                  3
+               ],
+               3
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  2
+               ],
+               [
+                  "Power",
+                  [
+                     "Subtract",
+                     "x",
+                     3
+                  ],
+                  4
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10030",
+         "violated_step": 3
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10044",
+      "BC-SKL-10045"
+   ],
+   "parameter_draw": {
+      "function_letter": "h",
+      "centre": 3,
+      "table_values": [
+         "2",
+         "0",
+         "-4",
+         "6",
+         "12"
+      ],
+      "degree_requested": 3,
+      "centre_is_zero": false,
+      "approximation_at": null,
+      "rows_swapped_in_distractor": [
+         2,
+         3
+      ]
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

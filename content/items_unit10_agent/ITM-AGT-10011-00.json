@@ -1,0 +1,219 @@
+{
+   "id": "ITM-AGT-10011-00",
+   "archetype_id": "BC-QA-10011",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "The function \\( f \\) has derivatives of all orders, and its values at \\( x = 0 \\) are \\( f(0) = 3 \\), \\( f'(0) = -2 \\), \\( f''(0) = 4 \\), \\( f'''(0) = 6 \\). Find the second-degree Taylor polynomial for \\( f \\) about \\( x = 0 \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         3,
+         [
+            "Multiply",
+            -2,
+            "x"
+         ],
+         [
+            "Multiply",
+            2,
+            [
+               "Power",
+               "x",
+               2
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "A degree 2 polynomial needs the values through order 2: \\( f(0) = 3 \\), \\( f'(0) = -2 \\), \\( f''(0) = 4 \\). The value of order 3 is not used.",
+         "mathjson": 4
+      },
+      {
+         "step": 2,
+         "text": "Divide each by the matching factorial: \\( \\frac{3}{0!} = 3 \\), \\( \\frac{-2}{1!} = -2 \\), \\( \\frac{4}{2!} = 2 \\).",
+         "mathjson": 2
+      },
+      {
+         "step": 3,
+         "text": "Attach \\( x^{k} \\) to the coefficient of order \\( k \\): \\( P(x) = 3 - 2x + 2x^{2} \\).",
+         "mathjson": [
+            "Add",
+            3,
+            [
+               "Multiply",
+               -2,
+               "x"
+            ],
+            [
+               "Multiply",
+               2,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "This is the second-degree Taylor polynomial, with no term past degree 2.",
+         "mathjson": [
+            "Add",
+            3,
+            [
+               "Multiply",
+               -2,
+               "x"
+            ],
+            [
+               "Multiply",
+               2,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            3,
+            [
+               "Multiply",
+               -2,
+               "x"
+            ],
+            [
+               "Multiply",
+               4,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10029",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Add",
+            3,
+            [
+               "Multiply",
+               -2,
+               "x"
+            ],
+            [
+               "Multiply",
+               2,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            3,
+            [
+               "Multiply",
+               -2,
+               "x"
+            ],
+            [
+               "Multiply",
+               2,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Power",
+               "x",
+               3
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10030",
+         "violated_step": 3
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            3,
+            [
+               "Multiply",
+               4,
+               "x"
+            ],
+            [
+               "Negate",
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10031",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10044",
+      "BC-SKL-10045"
+   ],
+   "parameter_draw": {
+      "function_letter": "f",
+      "centre": 0,
+      "table_values": [
+         "3",
+         "-2",
+         "4",
+         "6"
+      ],
+      "degree_requested": 2,
+      "centre_is_zero": true,
+      "approximation_at": null,
+      "rows_swapped_in_distractor": [
+         1,
+         2
+      ]
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

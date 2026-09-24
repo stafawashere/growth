@@ -1,0 +1,178 @@
+{
+   "id": "ITM-AGT-10014-14",
+   "archetype_id": "BC-QA-10014",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Find the radius of convergence of the power series \\( \\sum_{n=1}^{\\infty} \\frac{(x-2)^{2n}}{6^{n}\\,n^{2}} \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Sqrt",
+         6
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "For the ratio test, \\( \\left|\\frac{a_{n+1}}{a_n}\\right| = \\frac{n^{2} \\left|{x - 2}\\right|^{2}}{6 \\left(n + 1\\right)^{2}} \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Multiply",
+               [
+                  "Power",
+                  "n",
+                  2
+               ],
+               [
+                  "Power",
+                  [
+                     "Abs",
+                     [
+                        "Add",
+                        "x",
+                        -2
+                     ]
+                  ],
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               6,
+               [
+                  "Power",
+                  [
+                     "Add",
+                     "n",
+                     1
+                  ],
+                  2
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "As \\( n \\to \\infty \\), the limit of this ratio is \\( \\frac{\\left|{x - 2}\\right|^{2}}{6} \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Power",
+               [
+                  "Abs",
+                  [
+                     "Add",
+                     "x",
+                     -2
+                  ]
+               ],
+               2
+            ],
+            6
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The series converges when \\( \\frac{\\left|{x - 2}\\right|^{2}}{6} < 1 \\), that is, when \\( \\left|x - 2\\right| < \\sqrt{6} \\).",
+         "mathjson": [
+            "Sqrt",
+            6
+         ]
+      },
+      {
+         "step": 4,
+         "text": "The radius of convergence is \\( R = \\sqrt{6} \\).",
+         "mathjson": [
+            "Sqrt",
+            6
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 6,
+         "is_key": false,
+         "error_path": "BC-ERR-10021",
+         "violated_step": 0
+      },
+      {
+         "id": "B",
+         "value": 1,
+         "is_key": false,
+         "error_path": "BC-ERR-10021",
+         "violated_step": 0
+      },
+      {
+         "id": "C",
+         "value": [
+            "Sqrt",
+            6
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            2,
+            [
+               "Sqrt",
+               6
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10036",
+         "violated_step": 3
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10031",
+      "BC-SKL-10032",
+      "BC-SKL-10053",
+      "BC-SKL-10054",
+      "BC-SKL-10056"
+   ],
+   "parameter_draw": {
+      "general_term": "\\frac{(x-2)^{2n}}{6^{n}\\,n^{2}}",
+      "centre": 2,
+      "numerator_base_and_step": [
+         1,
+         0
+      ],
+      "denominator_base_and_step": [
+         6,
+         1
+      ],
+      "power_step": 2,
+      "distractor_errors": [
+         "shifts the exponent of the power of the displacement by 1 instead of the correct amount",
+         "shifts the exponent of the exponential factor in the denominator by 0 instead of the correct amount",
+         "reports the right endpoint of the open interval"
+      ],
+      "difficulty_variables": {
+         "coefficients_exponential_in_index": true,
+         "radius_irrational": true,
+         "centred_away_from_zero": true
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

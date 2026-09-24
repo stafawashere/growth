@@ -1,0 +1,102 @@
+{
+   "id": "ITM-AGT-10008-17",
+   "archetype_id": "BC-QA-10008",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = \\sum_{n=1}^{\\infty} \\frac{(-1)^{n+1}(x - 1)^{n}}{n\\,4^{n}} \\) for \\( |x - 1| < 4 \\). A partial sum made of the first \\( N \\) terms of this series at \\( x = 2 \\) is used to approximate \\( f\\left(2\\right) \\). Find the least \\( N \\) for which the alternating series error bound guarantees that the error is at most \\( \\frac{1}{1000} \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 3
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "At \\( x = 2 \\), \\( x - 1 = 1 \\), so the series alternates with terms \\( a_n = \\frac{(\\frac{1}{4})^{n}}{n} \\) that decrease to 0.",
+         "mathjson": 1
+      },
+      {
+         "step": 2,
+         "text": "With \\( N \\) terms, the error is at most the first omitted term \\( a_{N+1} \\).",
+         "mathjson": 4
+      },
+      {
+         "step": 3,
+         "text": "Here \\( a_{3} = \\frac{1}{192} \\) is larger than \\( \\frac{1}{1000} \\) but \\( a_{4} = \\frac{1}{1024} \\) is at most \\( \\frac{1}{1000} \\).",
+         "mathjson": [
+            "Rational",
+            1,
+            1024
+         ]
+      },
+      {
+         "step": 4,
+         "text": "So \\( N = 3 \\) terms are enough, and no smaller \\( N \\) is guaranteed by the bound.",
+         "mathjson": 3
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 4,
+         "is_key": false,
+         "error_path": "BC-ERR-10024",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": 3,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": 2,
+         "is_key": false,
+         "error_path": "BC-ERR-10024",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": 7,
+         "is_key": false,
+         "error_path": "BC-ERR-10025",
+         "violated_step": 2
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10028",
+      "BC-SKL-10029",
+      "BC-SKL-10039",
+      "BC-SKL-10040",
+      "BC-SKL-10041",
+      "BC-SKL-10042",
+      "BC-SKL-10052",
+      "BC-SKL-10066"
+   ],
+   "parameter_draw": {
+      "centre": 1,
+      "base": 4,
+      "input": "2",
+      "denominator": "n",
+      "tolerance": "1/1000",
+      "wrong_input_error": "substitutes x itself instead of the displacement x minus the centre",
+      "difficulty_variables": {
+         "tolerance_supplied": true,
+         "from_taylor_series_at_point": true,
+         "first_omitted_index": 4
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

@@ -1,0 +1,118 @@
+{
+   "id": "ITM-AGT-06012-03",
+   "archetype_id": "BC-QA-06012",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let f be a continuous function with \\( f(1) = 4 \\), \\( f(3) = 5 \\), \\( f(9) = -2 \\). Let \\( g(x) = \\int_{x^{2}}^{10} f(t) \\, dt \\). Find the value of \\( g'\\left(3\\right) \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 12
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Reversing the limits, \\( g(x) = -\\int_{10}^{x^{2}} f(t) \\, dt \\), so by the Fundamental Theorem of Calculus its derivative is minus the integrand evaluated at \\( x^{2} \\).",
+         "mathjson": -1
+      },
+      {
+         "step": 2,
+         "text": "The chain rule multiplies by the derivative of \\( x^{2} \\), which is \\( 2 x \\).",
+         "mathjson": [
+            "Multiply",
+            2,
+            "x"
+         ]
+      },
+      {
+         "step": 3,
+         "text": "At \\( x = 3 \\) the limit is \\( 9 \\) and its derivative is \\( 6 \\).",
+         "mathjson": 6
+      },
+      {
+         "step": 4,
+         "text": "Using \\( f\\left(9\\right) = -2 \\), \\( g'\\left(3\\right) = -\\left(-2\\right) \\cdot 6 = 12 \\).",
+         "mathjson": 12
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 2,
+         "is_key": false,
+         "error_path": "BC-ERR-06027",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": -30,
+         "is_key": false,
+         "error_path": "BC-ERR-06028",
+         "violated_step": 0
+      },
+      {
+         "id": "C",
+         "value": -12,
+         "is_key": false,
+         "error_path": "BC-ERR-99012",
+         "violated_step": 0
+      },
+      {
+         "id": "D",
+         "value": 12,
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-03",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-09",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-10",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06018",
+      "BC-SKL-06019",
+      "BC-SKL-06017",
+      "BC-SKL-06021"
+   ],
+   "parameter_draw": {
+      "form": "composite limit in the lower position",
+      "integrand": "table of f values",
+      "limits": {
+         "lower": "x**2",
+         "upper": "10"
+      },
+      "point": "3",
+      "difficulty_variables": {
+         "upper limit equal to x versus a function of x": "composite limit in the lower position",
+         "integrand given by a formula, a graph, or a table": "table",
+         "whether a reason naming the theorem is demanded": "no",
+         "whether values of the integrand must come from a table": "yes"
+      },
+      "table": {
+         "1": "4",
+         "3": "5",
+         "9": "-2"
+      },
+      "distractor_derivations": {
+         "A": "-f(9) with the factor u'(3) = 6 left off",
+         "B": "integrand evaluated at x = 3 instead of at the limit 9",
+         "C": "sign of the reversed limits lost, as if the variable limit were the upper limit"
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

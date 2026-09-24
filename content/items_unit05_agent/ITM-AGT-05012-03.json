@@ -1,0 +1,152 @@
+{
+   "id": "ITM-AGT-05012-03",
+   "archetype_id": "BC-QA-05012",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Consider the curve given by \\( x^{2}y + y^{2} = 6 \\), along which \\( y \\) is a differentiable function of \\( x \\) near the point \\( (1, 2) \\). Find the value of \\( \\frac{d^2y}{dx^2} \\) at the point \\( (1, 2) \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         -52,
+         125
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Differentiate \\( x^{2}y + y^{2} = 6 \\) implicitly with respect to \\( x \\): \\( 2 x y + \\left(x^{2} + 2 y\\right)\\frac{dy}{dx} = 0 \\), so \\( \\frac{dy}{dx} = - \\frac{2 x y}{x^{2} + 2 y} \\).",
+         "mathjson": [
+            "Negate",
+            [
+               "Divide",
+               [
+                  "Multiply",
+                  2,
+                  "x",
+                  "y"
+               ],
+               [
+                  "Add",
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ],
+                  [
+                     "Multiply",
+                     2,
+                     "y"
+                  ]
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Differentiate \\( \\frac{dy}{dx} = \\frac{- 2 x y}{x^{2} + 2 y} \\) again with the quotient rule, treating \\( y \\) as a function of \\( x \\): \\( \\frac{d^2y}{dx^2} = \\frac{2 x y \\left(2 \\frac{dy}{dx} + 2 x\\right) + \\left(x^{2} + 2 y\\right) \\left(- 2 \\frac{dy}{dx} x - 2 y\\right)}{\\left(x^{2} + 2 y\\right)^{2}} \\).",
+         "mathjson": [
+            "Rational",
+            -4,
+            5
+         ]
+      },
+      {
+         "step": 3,
+         "text": "At \\( (1, 2) \\), \\( \\frac{dy}{dx} = - \\frac{4}{5} \\). Substitute this value and the coordinates into the second derivative.",
+         "mathjson": [
+            "Rational",
+            -52,
+            125
+         ]
+      },
+      {
+         "step": 4,
+         "text": "So \\( \\frac{d^2y}{dx^2} = - \\frac{52}{125} \\) at \\( (1, 2) \\).",
+         "mathjson": [
+            "Rational",
+            -52,
+            125
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": -1,
+         "is_key": false,
+         "error_path": "BC-ERR-05060",
+         "violated_step": 0
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            -12,
+            25
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03023",
+         "violated_step": 2
+      },
+      {
+         "id": "C",
+         "value": [
+            "Rational",
+            -52,
+            125
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": [
+            "Rational",
+            -4,
+            25
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-05060",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-11",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-05058",
+      "BC-SKL-05059",
+      "BC-SKL-05060",
+      "BC-SKL-05061",
+      "BC-SKL-05062",
+      "BC-SKL-05063"
+   ],
+   "parameter_draw": {
+      "task": "second derivative at a point",
+      "relation": "x**2*y + y**2 = 6",
+      "point": [
+         1,
+         2
+      ],
+      "difficulty_variables": {
+         "second_derivative_asked": true,
+         "relation_type": "polynomial",
+         "both_conditions_solved_together": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

@@ -1,0 +1,117 @@
+{
+   "id": "ITM-AGT-05007-08",
+   "archetype_id": "BC-QA-05007",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( g \\) be the function defined by \\( g(x) = \\int_{1}^{x} \\left(t^{3} - 9 t\\right) \\, dt \\) for \\( -1 < x < 4 \\). Find the value of \\( x \\) at which \\( g \\) has a relative minimum."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 3
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "By the Fundamental Theorem of Calculus, \\( g'(x) = x^{3} - 9 x \\) for \\( -1 < x < 4 \\).",
+         "mathjson": [
+            "Multiply",
+            "x",
+            [
+               "Add",
+               "x",
+               -3
+            ],
+            [
+               "Add",
+               "x",
+               3
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Set \\( g'(x) = 0 \\) and factor: \\( x(x + 3)(x - 3) = 0 \\), so \\( x = -3, 0, 3 \\).",
+         "mathjson": 3
+      },
+      {
+         "step": 3,
+         "text": "Only \\( x = 0 \\) and \\( x = 3 \\) lie in \\( -1 < x < 4 \\); \\( x = -3 \\) is outside the interval on which \\( g \\) is defined, so it is not a critical point of \\( g \\).",
+         "mathjson": 3
+      },
+      {
+         "step": 4,
+         "text": "\\( g' \\) changes from negative to positive at \\( x = 3 \\) and from positive to negative at \\( x = 0 \\), so \\( g \\) has its relative minimum at \\( x = 3 \\).",
+         "mathjson": 3
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": -3,
+         "is_key": false,
+         "error_path": "BC-ERR-05010",
+         "violated_step": 2
+      },
+      {
+         "id": "B",
+         "value": 0,
+         "is_key": false,
+         "error_path": "BC-ERR-05021",
+         "violated_step": 3
+      },
+      {
+         "id": "C",
+         "value": 3,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": [
+            "Sqrt",
+            3
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-05022",
+         "violated_step": 3
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-05010",
+      "BC-SKL-05020",
+      "BC-SKL-05039"
+   ],
+   "parameter_draw": {
+      "given_object": "accumulation function",
+      "derivative": "t*(t - 3)*(t + 3)",
+      "shown_form": "expanded",
+      "interval": [
+         "-1",
+         "4"
+      ],
+      "asked": "relative minimum",
+      "lower_limit": 1,
+      "zero_outside_interval": "-3",
+      "difficulty_variables": {
+         "given_object_is_differential_equation": false,
+         "classification_by": "sign change",
+         "factoring_needed": true
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

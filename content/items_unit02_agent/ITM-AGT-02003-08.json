@@ -1,0 +1,140 @@
+{
+   "id": "ITM-AGT-02003-08",
+   "archetype_id": "BC-QA-02003",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Find the value of \\( \\lim_{t \\to 0} \\frac{\\sin\\left(\\frac{\\pi}{4} + t\\right) - \\frac{\\sqrt{2}}{2}}{t} \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Divide",
+         [
+            "Sqrt",
+            2
+         ],
+         2
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The numerator has the form \\( f(\\frac{\\pi}{4} + t) - f(\\frac{\\pi}{4}) \\) with \\( f(x) = \\sin x \\), because \\( f(\\frac{\\pi}{4}) = \\frac{\\sqrt{2}}{2} \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Sqrt",
+               2
+            ],
+            2
+         ]
+      },
+      {
+         "step": 2,
+         "text": "So the function is \\( f(x) = \\sin x \\) and the base point is \\( x = \\frac{\\pi}{4} \\).",
+         "mathjson": [
+            "Divide",
+            "Pi",
+            4
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The limit is the definition of \\( f'(\\frac{\\pi}{4}) \\), and \\( f'(x) = \\cos{\\left(x \\right)} \\).",
+         "mathjson": [
+            "Cos",
+            "x"
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Evaluate: \\( f'(\\frac{\\pi}{4}) = \\frac{\\sqrt{2}}{2} \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Sqrt",
+               2
+            ],
+            2
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Divide",
+            [
+               "Sqrt",
+               2
+            ],
+            2
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": 0,
+         "is_key": false,
+         "error_path": "BC-ERR-02010",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": 1,
+         "is_key": false,
+         "error_path": "BC-ERR-02010",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": [
+            "Cos",
+            [
+               "Divide",
+               [
+                  "Sqrt",
+                  2
+               ],
+               2
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02010",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02035",
+      "BC-SKL-02005"
+   ],
+   "parameter_draw": {
+      "function": "sin(x)",
+      "base_point": "pi/4",
+      "increment_variable": "t",
+      "form": "increment",
+      "wrong_base_readings": {
+         "shift": "pi/2",
+         "zero": "0",
+         "constant": "sqrt(2)/2"
+      },
+      "difficulty_variables": {
+         "standard angle or value": true,
+         "two point form": false,
+         "transcendental": true
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

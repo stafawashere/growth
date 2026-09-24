@@ -1,0 +1,309 @@
+{
+   "id": "ITM-AGT-10017-17",
+   "archetype_id": "BC-QA-10017",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = \\frac{3}{1 + x} \\). Find the sum of the first four nonzero terms of the Maclaurin series for \\( f \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         3,
+         [
+            "Multiply",
+            -3,
+            "x"
+         ],
+         [
+            "Multiply",
+            3,
+            [
+               "Power",
+               "x",
+               2
+            ]
+         ],
+         [
+            "Multiply",
+            -3,
+            [
+               "Power",
+               "x",
+               3
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Recall \\( \\frac{1}{1 - u} = 1 + u + u^{2} + u^{3} + \\cdots \\).",
+         "mathjson": [
+            "Add",
+            1,
+            "x",
+            [
+               "Power",
+               "x",
+               2
+            ],
+            [
+               "Power",
+               "x",
+               3
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Substitute \\( u = -x \\), raising the whole of \\( -x \\) to each power: the series begins \\( 1 - x + x^{2} - x^{3} + \\cdots \\).",
+         "mathjson": [
+            "Add",
+            1,
+            [
+               "Negate",
+               "x"
+            ],
+            [
+               "Power",
+               "x",
+               2
+            ],
+            [
+               "Negate",
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Multiply every term by \\( 3 \\): \\( f(x) = 3 - 3x + 3x^{2} - 3x^{3} + \\cdots \\).",
+         "mathjson": [
+            "Add",
+            3,
+            [
+               "Multiply",
+               -3,
+               "x"
+            ],
+            [
+               "Multiply",
+               3,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               -3,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "The first four nonzero terms sum to \\( 3 - 3x + 3x^{2} - 3x^{3} \\).",
+         "mathjson": [
+            "Add",
+            3,
+            [
+               "Multiply",
+               -3,
+               "x"
+            ],
+            [
+               "Multiply",
+               3,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               -3,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            3,
+            [
+               "Multiply",
+               3,
+               "x"
+            ],
+            [
+               "Multiply",
+               3,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               3,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10040",
+         "violated_step": 0
+      },
+      {
+         "id": "B",
+         "value": [
+            "Add",
+            3,
+            [
+               "Multiply",
+               -3,
+               "x"
+            ],
+            [
+               "Multiply",
+               3,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               -3,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            1,
+            [
+               "Negate",
+               "x"
+            ],
+            [
+               "Power",
+               "x",
+               2
+            ],
+            [
+               "Negate",
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10041",
+         "violated_step": 2
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            3,
+            [
+               "Multiply",
+               -3,
+               "x"
+            ],
+            [
+               "Multiply",
+               -3,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               -3,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10041",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10061",
+      "BC-SKL-10062",
+      "BC-SKL-10063",
+      "BC-SKL-10064",
+      "BC-SKL-10065"
+   ],
+   "parameter_draw": {
+      "standard_series": "geom",
+      "constant_multiple": "3",
+      "power_of_x_multiplier": 0,
+      "inner_coefficient": "-1",
+      "inner_power": 1,
+      "question": "terms",
+      "terms_or_power": 4,
+      "substitution_raises_powers": false,
+      "misremembered_variants": [
+         "signs wrong"
+      ]
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

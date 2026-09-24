@@ -1,0 +1,232 @@
+{
+   "id": "ITM-AGT-07003-18",
+   "archetype_id": "BC-QA-07003",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Consider the differential equation \\( \\frac{dy}{dx} = \\frac{x y}{x^{2} + 4} \\). Find the particular solution \\( y = f(x) \\) with \\( f(0) = 6 \\), written as an explicit function of \\( x \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Multiply",
+         3,
+         [
+            "Sqrt",
+            [
+               "Add",
+               [
+                  "Power",
+                  "x",
+                  2
+               ],
+               4
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Separate the variables: \\( \\frac{dy}{y} = \\frac{x}{x^{2} + 4} \\, dx \\).",
+         "mathjson": [
+            "Divide",
+            "x",
+            [
+               "Add",
+               [
+                  "Power",
+                  "x",
+                  2
+               ],
+               4
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "With \\( u = x^{2} + 4 \\), antidifferentiate both sides with one constant: \\( \\ln|y| = \\frac{\\ln{\\left(x^{2} + 4 \\right)}}{2} + C \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Ln",
+               [
+                  "Add",
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ],
+                  4
+               ]
+            ],
+            2
+         ]
+      },
+      {
+         "step": 3,
+         "text": "At \\( x = 0 \\), \\( y = 6 \\), so \\( C = - \\frac{\\ln{\\left(4 \\right)}}{2} + \\ln{\\left(6 \\right)} \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Negate",
+               [
+                  "Divide",
+                  [
+                     "Ln",
+                     4
+                  ],
+                  2
+               ]
+            ],
+            [
+               "Ln",
+               6
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Exponentiate and keep the sign of the initial value: \\( y = 3 \\sqrt{x^{2} + 4} \\).",
+         "mathjson": [
+            "Multiply",
+            3,
+            [
+               "Sqrt",
+               [
+                  "Add",
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ],
+                  4
+               ]
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            [
+               "Sqrt",
+               [
+                  "Add",
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ],
+                  4
+               ]
+            ],
+            4
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-07029",
+         "violated_step": 4
+      },
+      {
+         "id": "B",
+         "value": [
+            "Sqrt",
+            [
+               "Add",
+               [
+                  "Power",
+                  "x",
+                  2
+               ],
+               4
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-07026",
+         "violated_step": 2
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            [
+               "Divide",
+               [
+                  "Multiply",
+                  3,
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ]
+               ],
+               2
+            ],
+            6
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99014",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": [
+            "Multiply",
+            3,
+            [
+               "Sqrt",
+               [
+                  "Add",
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ],
+                  4
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-07024",
+      "BC-SKL-07025",
+      "BC-SKL-07026",
+      "BC-SKL-07027",
+      "BC-SKL-07029",
+      "BC-SKL-07030",
+      "BC-SKL-07033"
+   ],
+   "parameter_draw": {
+      "inner_function": "x**2 + 4",
+      "factor": "1/2",
+      "x0": "0",
+      "y0": "6",
+      "difficulty_variables": {
+         "dependent_side": "logarithm",
+         "absolute_value_resolved": false,
+         "substitution_on_independent_side": true,
+         "explicit_answer": true
+      },
+      "asked_for": "expression"
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

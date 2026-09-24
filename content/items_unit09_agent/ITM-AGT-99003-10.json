@@ -1,0 +1,158 @@
+{
+   "id": "ITM-AGT-99003-10",
+   "archetype_id": "BC-QA-99003",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "A curve is given by the polar equation \\( r = 1 - \\sin\\theta \\). Find the exact slope of the line tangent to the curve at the point where \\( \\theta = \\frac{\\pi}{3} \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 1
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Write the Cartesian coordinates in terms of \\( \\theta \\): \\( x = r\\cos\\theta = \\left(1 - \\sin\\theta\\right)\\cos\\theta \\) and \\( y = r\\sin\\theta = \\left(1 - \\sin\\theta\\right)\\sin\\theta \\). At \\( \\theta = \\frac{\\pi}{3} \\), \\( r = 1 - \\frac{\\sqrt{3}}{2} \\).",
+         "mathjson": [
+            "Add",
+            1,
+            [
+               "Negate",
+               [
+                  "Divide",
+                  [
+                     "Sqrt",
+                     3
+                  ],
+                  2
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Differentiate each product with respect to \\( \\theta \\): \\( \\frac{dx}{d\\theta} = \\frac{dr}{d\\theta}\\cos\\theta - r\\sin\\theta \\) and \\( \\frac{dy}{d\\theta} = \\frac{dr}{d\\theta}\\sin\\theta + r\\cos\\theta \\), where \\( \\frac{dr}{d\\theta} = - \\cos{\\left(\\theta \\right)} \\), which is \\( - \\frac{1}{2} \\) at \\( \\theta = \\frac{\\pi}{3} \\).",
+         "mathjson": [
+            "Rational",
+            -1,
+            2
+         ]
+      },
+      {
+         "step": 3,
+         "text": "At \\( \\theta = \\frac{\\pi}{3} \\): \\( \\frac{dx}{d\\theta} = \\frac{1}{2} - \\frac{\\sqrt{3}}{2} \\) and \\( \\frac{dy}{d\\theta} = \\frac{1}{2} - \\frac{\\sqrt{3}}{2} \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Rational",
+               1,
+               2
+            ],
+            [
+               "Negate",
+               [
+                  "Divide",
+                  [
+                     "Sqrt",
+                     3
+                  ],
+                  2
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "The slope is \\( \\frac{dy}{dx} = \\frac{dy/d\\theta}{dx/d\\theta} = 1 \\).",
+         "mathjson": 1
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Sqrt",
+            3
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-09032",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": 1,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": [
+            "Rational",
+            -1,
+            2
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-09031",
+         "violated_step": 3
+      },
+      {
+         "id": "D",
+         "value": [
+            "Negate",
+            [
+               "Divide",
+               [
+                  "Sqrt",
+                  3
+               ],
+               3
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-09032",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-13",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-04",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-09030",
+      "BC-SKL-09031",
+      "BC-SKL-09029",
+      "BC-SKL-09033"
+   ],
+   "parameter_draw": {
+      "polar_equation": "r = 1 - sin(theta)",
+      "angle": "pi/3",
+      "r_at_angle": "1 - sqrt(3)/2",
+      "dr_dtheta_at_angle": "-1/2",
+      "difficulty_variables": {
+         "angle_makes_one_derivative_vanish": false,
+         "derivative_of_r_supplied": false,
+         "calculator_available": false,
+         "inner_chain_rule_in_r": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

@@ -1,0 +1,113 @@
+{
+   "id": "ITM-AGT-10016-12",
+   "archetype_id": "BC-QA-10016",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = \\sum_{n=0}^{\\infty} \\frac{n + 1}{2^{n}} x^{2 n + 1} \\), where the series converges. Find the coefficient of \\( x^{7} \\) in the Maclaurin series for \\( f \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         1,
+         2
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The power in the general term is \\( 2 n + 1 \\); set it equal to 7 to find the index.",
+         "mathjson": 7
+      },
+      {
+         "step": 2,
+         "text": "Solving \\( 2 n + 1 = 7 \\) gives \\( n = 3 \\).",
+         "mathjson": 3
+      },
+      {
+         "step": 3,
+         "text": "Substitute \\( n = 3 \\) into the coefficient \\( \\frac{n + 1}{2^{n}} \\), keeping its sign: the coefficient is \\( \\frac{1}{2} \\).",
+         "mathjson": [
+            "Rational",
+            1,
+            2
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Rational",
+            5,
+            16
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99018",
+         "violated_step": 2
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            3,
+            4
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99018",
+         "violated_step": 2
+      },
+      {
+         "id": "C",
+         "value": [
+            "Rational",
+            1,
+            16
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99018",
+         "violated_step": 2
+      },
+      {
+         "id": "D",
+         "value": [
+            "Rational",
+            1,
+            2
+         ],
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10060",
+      "BC-SKL-10067"
+   ],
+   "parameter_draw": {
+      "general_term": "\\frac{n + 1}{2^{n}}",
+      "power": "2*n + 1",
+      "centre": 0,
+      "target_power": 7,
+      "index_of_target": 3,
+      "alternating": false,
+      "has_factorial": false,
+      "question": "coefficient of a stated power",
+      "index_offsets_used": "n - 1 and n + 1"
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

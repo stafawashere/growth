@@ -1,0 +1,163 @@
+{
+   "id": "ITM-AGT-05007-13",
+   "archetype_id": "BC-QA-05007",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( g \\) be the function defined by \\( g(x) = \\int_{0}^{x} \\left(2\\cos t - 1\\right) \\, dt \\) for \\( 0 < x < 2 \\pi \\). Find the value of \\( x \\) at which \\( g \\) has a relative minimum."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Divide",
+         [
+            "Multiply",
+            5,
+            "Pi"
+         ],
+         3
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "By the Fundamental Theorem of Calculus, \\( g'(x) = 2\\cos x - 1 \\) for \\( 0 < x < 2 \\pi \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               2,
+               [
+                  "Cos",
+                  "x"
+               ]
+            ],
+            -1
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Set \\( g'(x) = 0 \\): \\( 2\\cos x - 1 = 0 \\). The solutions in \\( 0 < x < 2 \\pi \\) are \\( x = \\frac{\\pi}{3} \\) and \\( x = \\frac{5 \\pi}{3} \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Multiply",
+               5,
+               "Pi"
+            ],
+            3
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Only \\( x = \\frac{\\pi}{3} \\) and \\( x = \\frac{5 \\pi}{3} \\) lie in \\( 0 < x < 2 \\pi \\); \\( x = - \\frac{\\pi}{3} \\) is outside the interval on which \\( g \\) is defined, so it is not a critical point of \\( g \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Multiply",
+               5,
+               "Pi"
+            ],
+            3
+         ]
+      },
+      {
+         "step": 4,
+         "text": "\\( g' \\) changes from negative to positive at \\( x = \\frac{5 \\pi}{3} \\) and from positive to negative at \\( x = \\frac{\\pi}{3} \\), so \\( g \\) has its relative minimum at \\( x = \\frac{5 \\pi}{3} \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Multiply",
+               5,
+               "Pi"
+            ],
+            3
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": "Pi",
+         "is_key": false,
+         "error_path": "BC-ERR-05022",
+         "violated_step": 3
+      },
+      {
+         "id": "B",
+         "value": [
+            "Negate",
+            [
+               "Divide",
+               "Pi",
+               3
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-05010",
+         "violated_step": 2
+      },
+      {
+         "id": "C",
+         "value": [
+            "Divide",
+            "Pi",
+            3
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-05021",
+         "violated_step": 3
+      },
+      {
+         "id": "D",
+         "value": [
+            "Divide",
+            [
+               "Multiply",
+               5,
+               "Pi"
+            ],
+            3
+         ],
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-05010",
+      "BC-SKL-05020",
+      "BC-SKL-05039"
+   ],
+   "parameter_draw": {
+      "given_object": "accumulation function",
+      "derivative": "2*cos(t) - 1",
+      "shown_form": "trig",
+      "interval": [
+         "0",
+         "2*pi"
+      ],
+      "asked": "relative minimum",
+      "lower_limit": 0,
+      "zero_outside_interval": "-pi/3",
+      "difficulty_variables": {
+         "given_object_is_differential_equation": false,
+         "classification_by": "sign change",
+         "factoring_needed": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

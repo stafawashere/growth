@@ -1,0 +1,185 @@
+{
+   "id": "ITM-AGT-06008-19",
+   "archetype_id": "BC-QA-06008",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let F be the antiderivative of \\( f(x) = \\sec^{2}{\\left(2 x \\right)} \\) with \\( F(0) = 1 \\). Find the exact value of \\( F\\left(\\frac{\\pi}{8}\\right) \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         3,
+         2
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Let \\( u = 2 x \\).",
+         "mathjson": [
+            "Multiply",
+            2,
+            "x"
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Then \\( du = 2 \\, dx \\), so \\( dx = \\frac{1}{2} \\, du \\).",
+         "mathjson": [
+            "Rational",
+            1,
+            2
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Since \\( F(\\frac{\\pi}{8}) = F(0) + \\int_{0}^{\\frac{\\pi}{8}} \\sec^{2}{\\left(2 x \\right)} \\, dx \\), convert the limits: \\( x = 0 \\) gives \\( u = 0 \\) and \\( x = \\frac{\\pi}{8} \\) gives \\( u = \\frac{\\pi}{4} \\), so the integral becomes \\( \\int_{0}^{\\frac{\\pi}{4}} \\frac{\\sec^{2}{\\left(u \\right)}}{2} \\, du \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Power",
+               [
+                  "Sec",
+                  "u"
+               ],
+               2
+            ],
+            2
+         ]
+      },
+      {
+         "step": 4,
+         "text": "An antiderivative of \\( \\frac{\\sec^{2}{\\left(u \\right)}}{2} \\) is \\( \\frac{\\tan{\\left(u \\right)}}{2} \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Tan",
+               "u"
+            ],
+            2
+         ]
+      },
+      {
+         "step": 5,
+         "text": "The integral is \\( \\frac{1}{2} - \\left(0\\right) = \\frac{1}{2} \\), so \\( F(\\frac{\\pi}{8}) = 1 + \\frac{1}{2} = \\frac{3}{2} \\).",
+         "mathjson": [
+            "Rational",
+            3,
+            2
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Rational",
+            3,
+            2
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": 2,
+         "is_key": false,
+         "error_path": "BC-ERR-06019",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            [
+               "Rational",
+               1,
+               2
+            ],
+            [
+               "Divide",
+               [
+                  "Sqrt",
+                  2
+               ],
+               2
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06018",
+         "violated_step": 4
+      },
+      {
+         "id": "D",
+         "value": [
+            "Rational",
+            1,
+            2
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-07026",
+         "violated_step": 3
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-11",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06047",
+      "BC-SKL-06048",
+      "BC-SKL-06049",
+      "BC-SKL-06050",
+      "BC-SKL-06051",
+      "BC-SKL-06052",
+      "BC-SKL-06034"
+   ],
+   "parameter_draw": {
+      "form": "pinned antiderivative value",
+      "integrand": "sec(2*x)**2",
+      "inner_u": "2*x",
+      "du_constant_k": "2",
+      "limits": [
+         "0",
+         "pi/8"
+      ],
+      "u_limits": [
+         "0",
+         "pi/4"
+      ],
+      "difficulty_variables": {
+         "whether a constant adjustment is needed": "yes",
+         "whether the answer is logarithmic, exponential, trigonometric, or a power": "trigonometric",
+         "definite versus indefinite": "antiderivative pinned by an initial value",
+         "whether the limits must be converted": "yes",
+         "whether the substitution is disguised by a prior rearrangement": "no"
+      },
+      "F_at_a": "1",
+      "distractor_derivations": {
+         "B": "substitution carried out as if dx = du, without the constant 1/(2)",
+         "C": "antiderivative in u evaluated at the original x limits 0 and pi/8",
+         "D": "antiderivative tan(2*x)/2 written with no constant and evaluated at x = pi/8, ignoring F(0)"
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

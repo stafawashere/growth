@@ -1,0 +1,174 @@
+{
+   "id": "ITM-AGT-06012-16",
+   "archetype_id": "BC-QA-06012",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( g(x) = \\int_{1}^{x^{3}} \\ln{\\left(t \\right)} \\, dt \\). Find the exact value of \\( g'\\left(2\\right) \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Multiply",
+         36,
+         [
+            "Ln",
+            2
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "By the Fundamental Theorem of Calculus, the derivative of the integral with respect to its upper limit is the integrand evaluated at that limit, \\( \\ln{\\left(x^{3} \\right)} \\).",
+         "mathjson": [
+            "Ln",
+            [
+               "Power",
+               "x",
+               3
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The upper limit is \\( x^{3} \\), so the chain rule multiplies by its derivative: \\( g'(x) = \\ln{\\left(x^{3} \\right)} \\cdot 3 x^{2} \\).",
+         "mathjson": [
+            "Multiply",
+            3,
+            [
+               "Power",
+               "x",
+               2
+            ],
+            [
+               "Ln",
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "At \\( x = 2 \\) the limit is \\( 8 \\) and its derivative is \\( 12 \\).",
+         "mathjson": 12
+      },
+      {
+         "step": 4,
+         "text": "So \\( g'\\left(2\\right) = 3 \\ln{\\left(2 \\right)} \\cdot 12 = 36 \\ln{\\left(2 \\right)} \\).",
+         "mathjson": [
+            "Multiply",
+            36,
+            [
+               "Ln",
+               2
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Multiply",
+            36,
+            [
+               "Ln",
+               2
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": [
+            "Multiply",
+            3,
+            [
+               "Ln",
+               2
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06027",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Multiply",
+            12,
+            [
+               "Ln",
+               2
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06028",
+         "violated_step": 0
+      },
+      {
+         "id": "D",
+         "value": [
+            "Multiply",
+            12,
+            [
+               "Ln",
+               "t"
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06028",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-03",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-09",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-10",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06018",
+      "BC-SKL-06019",
+      "BC-SKL-06017",
+      "BC-SKL-06021"
+   ],
+   "parameter_draw": {
+      "form": "composite upper limit",
+      "integrand": "log(t)",
+      "limits": {
+         "lower": "1",
+         "upper": "x**3"
+      },
+      "point": "2",
+      "difficulty_variables": {
+         "upper limit equal to x versus a function of x": "composite upper limit",
+         "integrand given by a formula, a graph, or a table": "formula",
+         "whether a reason naming the theorem is demanded": "no",
+         "whether values of the integrand must come from a table": "no"
+      },
+      "distractor_derivations": {
+         "B": "f(8) with the factor u'(2) = 12 left off",
+         "C": "integrand evaluated at x = 2 instead of at the limit u(2) = 8",
+         "D": "answer left in terms of the variable of integration t"
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

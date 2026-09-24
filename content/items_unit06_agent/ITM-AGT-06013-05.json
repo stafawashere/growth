@@ -1,0 +1,120 @@
+{
+   "id": "ITM-AGT-06013-05",
+   "archetype_id": "BC-QA-06013",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let g be a continuous function with \\( \\int_{1}^{4} g(x)\\,dx = -3 \\) and \\( \\int_{7}^{4} g(x)\\,dx = 5 \\). Find the value of \\( \\int_{7}^{1} \\left(2g(x) + 2\\right) dx \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 4
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Join the adjacent intervals: \\( \\int_{1}^{7} g(x)\\,dx = \\int_{1}^{4} g(x)\\,dx + \\int_{4}^{7} g(x)\\,dx = -3 + (-5) = -8 \\), since reversing \\( \\int_{7}^{4} \\) changes its sign.",
+         "mathjson": -8
+      },
+      {
+         "step": 2,
+         "text": "Reverse the requested integral: \\( \\int_{7}^{1} \\left(2g(x) + 2\\right) dx = -(2) \\int_{1}^{7} g(x)\\,dx + (2)(1 - 7) \\), and the constant contributes \\( -12 \\).",
+         "mathjson": -12
+      },
+      {
+         "step": 3,
+         "text": "Substitute: \\( -(2)(-8) + (-12) \\).",
+         "mathjson": 4
+      },
+      {
+         "step": 4,
+         "text": "The value is \\( 4 \\).",
+         "mathjson": 4
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": -4,
+         "is_key": false,
+         "error_path": "BC-ERR-99012",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": -16,
+         "is_key": false,
+         "error_path": "BC-ERR-99012",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": 4,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": 28,
+         "is_key": false,
+         "error_path": "BC-ERR-99012",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-17",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06029",
+      "BC-SKL-06030",
+      "BC-SKL-06031",
+      "BC-SKL-06032",
+      "BC-SKL-06033",
+      "BC-SKL-06035"
+   ],
+   "parameter_draw": {
+      "template": "T3",
+      "endpoints": [
+         1,
+         4,
+         7
+      ],
+      "given_values": [
+         -3,
+         5
+      ],
+      "alpha": 2,
+      "beta_or_gamma": 2,
+      "difficulty_variables": {
+         "whether a reversal of limits is required": "yes, both a supplied integral and the requested one run right to left",
+         "whether an interval must be split or joined": "joined",
+         "whether a constant multiple or a sum appears": "constant multiple plus a constant term",
+         "whether an integral of a constant must be computed geometrically": "yes"
+      },
+      "distractor_derivations": {
+         "A": "sign change for the reversed target integral left out",
+         "B": "given integral from 7 to 4 used as if it ran from 4 to 7",
+         "D": "constant term integrated as if its limits ran left to right, so its sign change is left out"
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

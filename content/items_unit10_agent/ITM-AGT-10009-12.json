@@ -1,0 +1,128 @@
+{
+   "id": "ITM-AGT-10009-12",
+   "archetype_id": "BC-QA-10009",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "A function \\( f \\) has derivatives of all orders. The first-degree Taylor polynomial for \\( f \\) about \\( x = -2 \\) is used to approximate \\( f\\left(- \\frac{7}{4}\\right) \\). It is known that \\( f''(-2) = 2 \\) and that \\( |f''(x)| \\le 6 \\) for all \\( x \\) between \\( -2 \\) and \\( - \\frac{7}{4} \\). Find the Lagrange error bound for this approximation."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         3,
+         16
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "A degree 1 polynomial needs the maximum of \\( |f''(x)| \\), the derivative of order \\( 2 \\), between the centre and the input.",
+         "mathjson": 2
+      },
+      {
+         "step": 2,
+         "text": "The bound is \\( \\frac{M\\,|x - -2|^{2}}{2!} \\) with \\( M = 6 \\) and \\( |x - -2| = \\frac{1}{4} \\).",
+         "mathjson": [
+            "Rational",
+            3,
+            16
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Evaluating gives \\( \\frac{6 \\cdot \\left(\\frac{1}{4}\\right)^{2}}{2} = \\frac{3}{16} \\).",
+         "mathjson": [
+            "Rational",
+            3,
+            16
+         ]
+      },
+      {
+         "step": 4,
+         "text": "The error is at most \\( \\frac{3}{16} \\).",
+         "mathjson": [
+            "Rational",
+            3,
+            16
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Rational",
+            3,
+            16
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            3,
+            8
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10032",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Rational",
+            3,
+            4
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10032",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": [
+            "Rational",
+            1,
+            16
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10033",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10048",
+      "BC-SKL-10049",
+      "BC-SKL-10050",
+      "BC-SKL-10051",
+      "BC-SKL-10052"
+   ],
+   "parameter_draw": {
+      "centre": "-2",
+      "input": "-7/4",
+      "degree": 1,
+      "derivative_bound": "6",
+      "derivative_at_centre": "2",
+      "interval_stated": false,
+      "tolerance": null,
+      "difficulty_variables": {
+         "derivative_bound_supplied": true,
+         "displacement": "1/4",
+         "tolerance_comparison_shown": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

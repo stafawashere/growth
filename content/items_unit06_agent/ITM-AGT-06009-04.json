@@ -1,0 +1,118 @@
+{
+   "id": "ITM-AGT-06009-04",
+   "archetype_id": "BC-QA-06009",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Find the exact value of \\( \\int_{0}^{\\frac{\\pi}{2}} \\left(2 x + 1\\right) \\sin{\\left(x \\right)} \\, dx \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 3
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Let \\( u = 2 x + 1 \\) and \\( dv = \\sin{\\left(x \\right)} \\, dx \\), so \\( du = 2 \\, dx \\) and \\( v = - \\cos{\\left(x \\right)} \\).",
+         "mathjson": [
+            "Negate",
+            [
+               "Cos",
+               "x"
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Then the integral equals \\( \\left[- \\left(2 x + 1\\right) \\cos{\\left(x \\right)}\\right]_{0}^{\\frac{\\pi}{2}} - \\int_{0}^{\\frac{\\pi}{2}} - 2 \\cos{\\left(x \\right)} \\, dx \\), and the boundary term is \\( 1 \\).",
+         "mathjson": 1
+      },
+      {
+         "step": 3,
+         "text": "The remaining integral is \\( \\int_{0}^{\\frac{\\pi}{2}} - 2 \\cos{\\left(x \\right)} \\, dx = -2 \\).",
+         "mathjson": -2
+      },
+      {
+         "step": 4,
+         "text": "So the value is \\( 1 - \\left(-2\\right) = 3 \\).",
+         "mathjson": 3
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 0,
+         "is_key": false,
+         "error_path": "BC-ERR-06022",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": -1,
+         "is_key": false,
+         "error_path": "BC-ERR-06023",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": 3,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": 2,
+         "is_key": false,
+         "error_path": "BC-ERR-99025",
+         "violated_step": 3
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06057",
+      "BC-SKL-06058",
+      "BC-SKL-06059",
+      "BC-SKL-06060",
+      "BC-SKL-06061",
+      "BC-SKL-06034"
+   ],
+   "parameter_draw": {
+      "integrand": "(2*x + 1)*sin(x)",
+      "u": "2*x + 1",
+      "dv": "sin(x)",
+      "limits": [
+         "0",
+         "pi/2"
+      ],
+      "difficulty_variables": {
+         "whether parts must be applied more than once": "no",
+         "definite versus indefinite": "definite",
+         "whether the non polynomial factor is trigonometric, exponential, or logarithmic": "trigonometric",
+         "whether the integrand contains an unknown function and its derivative": "no",
+         "whether supplied values of the unknown function must be imported": "no"
+      },
+      "distractor_derivations": {
+         "A": "antiderivatives x**2 + x and -cos(x) multiplied and evaluated from 0 to pi/2",
+         "B": "boundary term plus the remaining integral instead of minus",
+         "D": "boundary term [uv] left out, only minus the remaining integral kept"
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

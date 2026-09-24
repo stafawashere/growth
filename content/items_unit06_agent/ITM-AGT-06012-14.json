@@ -1,0 +1,159 @@
+{
+   "id": "ITM-AGT-06012-14",
+   "archetype_id": "BC-QA-06012",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( g(x) = \\int_{\\cos{\\left(x \\right)}}^{\\sin{\\left(x \\right)}} \\sqrt{1 - t^{2}} \\, dt \\). Find the exact value of \\( g'\\left(\\frac{\\pi}{4}\\right) \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 1
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Split the integral at any constant k in the domain of the integrand: \\( g(x) = \\int_{k}^{\\sin{\\left(x \\right)}} \\sqrt{1 - t^{2}} \\, dt - \\int_{k}^{\\cos{\\left(x \\right)}} \\sqrt{1 - t^{2}} \\, dt \\), and apply the Fundamental Theorem of Calculus to each piece.",
+         "mathjson": [
+            "Divide",
+            [
+               "Sqrt",
+               2
+            ],
+            2
+         ]
+      },
+      {
+         "step": 2,
+         "text": "With the chain rule, \\( g'(x) = f\\left(\\sin{\\left(x \\right)}\\right) \\cdot \\cos{\\left(x \\right)} - f\\left(\\cos{\\left(x \\right)}\\right) \\cdot \\left(- \\sin{\\left(x \\right)}\\right) \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Sqrt",
+               2
+            ],
+            2
+         ]
+      },
+      {
+         "step": 3,
+         "text": "At \\( x = \\frac{\\pi}{4} \\): the limits are \\( \\frac{\\sqrt{2}}{2} \\) and \\( \\frac{\\sqrt{2}}{2} \\), with derivatives \\( \\frac{\\sqrt{2}}{2} \\) and \\( - \\frac{\\sqrt{2}}{2} \\), and \\( f\\left(\\frac{\\sqrt{2}}{2}\\right) = \\frac{\\sqrt{2}}{2} \\), \\( f\\left(\\frac{\\sqrt{2}}{2}\\right) = \\frac{\\sqrt{2}}{2} \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Sqrt",
+               2
+            ],
+            2
+         ]
+      },
+      {
+         "step": 4,
+         "text": "So \\( g'\\left(\\frac{\\pi}{4}\\right) = \\frac{\\sqrt{2}}{2} \\cdot \\frac{\\sqrt{2}}{2} - \\frac{\\sqrt{2}}{2} \\cdot \\left(- \\frac{\\sqrt{2}}{2}\\right) = 1 \\).",
+         "mathjson": 1
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 0,
+         "is_key": false,
+         "error_path": "BC-ERR-06027",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Divide",
+            [
+               "Multiply",
+               [
+                  "Sqrt",
+                  2
+               ],
+               [
+                  "Sqrt",
+                  [
+                     "Add",
+                     16,
+                     [
+                        "Negate",
+                        [
+                           "Power",
+                           "Pi",
+                           2
+                        ]
+                     ]
+                  ]
+               ]
+            ],
+            4
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06028",
+         "violated_step": 0
+      },
+      {
+         "id": "C",
+         "value": 1,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": [
+            "Rational",
+            1,
+            2
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99012",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-03",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-09",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-10",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06018",
+      "BC-SKL-06019",
+      "BC-SKL-06017",
+      "BC-SKL-06021"
+   ],
+   "parameter_draw": {
+      "form": "both limits variable",
+      "integrand": "sqrt(1 - t**2)",
+      "limits": {
+         "lower": "cos(x)",
+         "upper": "sin(x)"
+      },
+      "point": "pi/4",
+      "difficulty_variables": {
+         "upper limit equal to x versus a function of x": "both limits variable",
+         "integrand given by a formula, a graph, or a table": "formula",
+         "whether a reason naming the theorem is demanded": "no",
+         "whether values of the integrand must come from a table": "no"
+      },
+      "distractor_derivations": {
+         "A": "f(upper) - f(lower) with both chain rule factors left off",
+         "B": "integrand evaluated at x = pi/4 instead of at the two limits",
+         "D": "lower limit term dropped, as if the lower limit were constant"
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

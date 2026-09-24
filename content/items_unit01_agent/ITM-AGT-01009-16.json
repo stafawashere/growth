@@ -1,0 +1,143 @@
+{
+   "id": "ITM-AGT-01009-16",
+   "archetype_id": "BC-QA-01009",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = \\frac{\\left(2 x + 2\\right)\\left(x^{2} + 7 x + 12\\right)}{\\left(x^{2} + 5 x + 4\\right)\\left(x^{2} + 8 x + 15\\right)} \\). The graph of \\( f \\) has exactly one vertical asymptote, the line \\( x = c \\). Find the value of \\( c \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": -5
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The numerator factors as \\( 2 \\left(x + 1\\right) \\left(x + 3\\right) \\left(x + 4\\right) \\) and the denominator as \\( \\left(x + 1\\right) \\left(x + 3\\right) \\left(x + 4\\right) \\left(x + 5\\right) \\).",
+         "mathjson": [
+            "Multiply",
+            [
+               "Add",
+               "x",
+               1
+            ],
+            [
+               "Add",
+               "x",
+               3
+            ],
+            [
+               "Add",
+               "x",
+               4
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The factors at \\( x = -4 \\), \\( x = -3 \\), and \\( x = -1 \\) divide out, so \\( f(x) = \\frac{2}{x + 5} \\) for \\( x \\neq -4, -3, -1 \\). Those three inputs are removable discontinuities, not asymptotes.",
+         "mathjson": [
+            "Divide",
+            2,
+            [
+               "Add",
+               "x",
+               5
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "After cancelling, the denominator is zero only at \\( x = -5 \\), and the numerator is not zero there.",
+         "mathjson": -5
+      },
+      {
+         "step": 4,
+         "text": "The one sided limits are \\( \\lim_{x \\to -5^-} f(x) = -\\infty \\) and \\( \\lim_{x \\to -5^+} f(x) = \\infty \\).",
+         "mathjson": -5
+      },
+      {
+         "step": 5,
+         "text": "So the line \\( x = -5 \\) is the only vertical asymptote, and \\( c = -5 \\).",
+         "mathjson": -5
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": -4,
+         "is_key": false,
+         "error_path": "BC-ERR-01018",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": -5,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": -3,
+         "is_key": false,
+         "error_path": "BC-ERR-01018",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": -1,
+         "is_key": false,
+         "error_path": "BC-ERR-01018",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-04",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-10",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-01054",
+      "BC-SKL-01055",
+      "BC-SKL-01056",
+      "BC-SKL-01041"
+   ],
+   "parameter_draw": {
+      "variant": "constant",
+      "cancelled_zeros": [
+         -4,
+         -3,
+         -1
+      ],
+      "asymptote": -5,
+      "numerator_only_zero": null,
+      "numerator_constant": 2,
+      "difficulty_variables": {
+         "factor cancels": true,
+         "sides same sign": false,
+         "logarithmic asymptote": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

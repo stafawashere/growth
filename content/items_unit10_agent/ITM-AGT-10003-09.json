@@ -1,0 +1,227 @@
+{
+   "id": "ITM-AGT-10003-09",
+   "archetype_id": "BC-QA-10003",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "For \\( |x| < \\frac{1}{\\sqrt{2}} \\), the series \\( \\sum_{n=0}^{\\infty} (-1)^{n}2^{n}x^{2n} \\) converges. Find its sum as an expression in \\( x \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Divide",
+         1,
+         [
+            "Add",
+            [
+               "Multiply",
+               2,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            1
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Dividing consecutive terms gives the constant ratio \\( r = - 2 x^{2} \\).",
+         "mathjson": [
+            "Negate",
+            [
+               "Multiply",
+               2,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The series as written starts at \\( n = 0 \\), so its first term is \\( a = 1 \\).",
+         "mathjson": 1
+      },
+      {
+         "step": 3,
+         "text": "The closed form needs \\( |r| < 1 \\), which holds because \\( |x| < \\frac{1}{\\sqrt{2}} \\) is given.",
+         "mathjson": [
+            "Negate",
+            [
+               "Multiply",
+               2,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "The sum is \\( \\frac{a}{1 - r} = 1 \\frac{1}{2 x^{2} + 1} \\), so the sum is \\( 1 \\frac{1}{2 x^{2} + 1} \\).",
+         "mathjson": [
+            "Divide",
+            1,
+            [
+               "Add",
+               [
+                  "Multiply",
+                  2,
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ]
+               ],
+               1
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Divide",
+            1,
+            [
+               "Add",
+               1,
+               [
+                  "Negate",
+                  [
+                     "Multiply",
+                     2,
+                     [
+                        "Power",
+                        "x",
+                        2
+                     ]
+                  ]
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10040",
+         "violated_step": 3
+      },
+      {
+         "id": "B",
+         "value": [
+            "Divide",
+            1,
+            [
+               "Add",
+               [
+                  "Multiply",
+                  2,
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ]
+               ],
+               1
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            1,
+            [
+               "Negate",
+               [
+                  "Multiply",
+                  2,
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               4,
+               [
+                  "Power",
+                  "x",
+                  4
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99038",
+         "violated_step": 3
+      },
+      {
+         "id": "D",
+         "value": [
+            "Divide",
+            1,
+            [
+               "Add",
+               [
+                  "Multiply",
+                  2,
+                  "x"
+               ],
+               1
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10004",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-13",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10006",
+      "BC-SKL-10007",
+      "BC-SKL-10008",
+      "BC-SKL-10009",
+      "BC-SKL-10010",
+      "BC-SKL-10063",
+      "BC-SKL-10072"
+   ],
+   "parameter_draw": {
+      "general_term": "(-1)^{n}2^{n}x^{2n}",
+      "start": 0,
+      "condition": "|x| < \\frac{1}{\\sqrt{2}}",
+      "ratio": "-2*x**2",
+      "misread_ratio": "-2*x",
+      "misread": "reads the ratio as -2x, ignoring the 2 in the exponent 2n",
+      "sign_error": "writes the sum of the alternating series as a/(1 - |r|), the one over one minus u form, instead of a/(1 + |r|)",
+      "difficulty_variables": {
+         "ratio_contains_variable": true,
+         "starts_at_index_zero": true,
+         "closed_form_given": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

@@ -1,0 +1,106 @@
+{
+   "id": "ITM-AGT-04009-05",
+   "archetype_id": "BC-QA-04009",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f \\) be a function with a continuous second derivative such that \\( f(3) = 2 \\), \\( f'(3) = 2 \\), and \\( f''(3) = 1 \\). Find the value of \\( \\lim_{x \\to 3} \\frac{f(x^{2} - 6) - 2}{\\ln(x - 2)} \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 12
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Because \\( f \\) is differentiable, it is continuous, so as \\( x \\to 3 \\) the numerator \\( f(x^{2} - 6) - 2 \\) tends to 0, using \\( f(3) = 2 \\).",
+         "mathjson": 0
+      },
+      {
+         "step": 2,
+         "text": "As \\( x \\to 3 \\), the denominator \\( \\ln(x - 2) \\) tends to \\( 0 \\).",
+         "mathjson": 0
+      },
+      {
+         "step": 3,
+         "text": "The numerator and the denominator both tend to 0, so the form is \\( \\frac{0}{0} \\) and L'Hospital's rule applies. Differentiate the numerator and the denominator separately: the limit equals \\( \\lim_{x \\to 3} \\frac{2x f'(x^{2} - 6)}{\\frac{1}{x - 2}} \\).",
+         "mathjson": 12
+      },
+      {
+         "step": 4,
+         "text": "At \\( x = 3 \\) this numerator is \\( 12 \\) and this denominator is \\( 1 \\), which is not 0, so the limit is \\( 12 \\).",
+         "mathjson": 12
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 2,
+         "is_key": false,
+         "error_path": "BC-ERR-04031",
+         "violated_step": 3
+      },
+      {
+         "id": "B",
+         "value": -40,
+         "is_key": false,
+         "error_path": "BC-ERR-04029",
+         "violated_step": 2
+      },
+      {
+         "id": "C",
+         "value": 12,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": 26,
+         "is_key": false,
+         "error_path": "BC-ERR-04030",
+         "violated_step": 3
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-03",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-10",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-04033",
+      "BC-SKL-04034",
+      "BC-SKL-04035",
+      "BC-SKL-04036",
+      "BC-SKL-04037",
+      "BC-SKL-04038"
+   ],
+   "parameter_draw": {
+      "numerator": "f(x^{2} - 6) - 2",
+      "denominator": "\\ln(x - 2)",
+      "point": 3,
+      "form": "0/0",
+      "applications_needed": 1,
+      "unknown_function_values": {
+         "at": 3,
+         "f_and_derivatives": [
+            2,
+            2,
+            1
+         ]
+      },
+      "difficulty_variables": {
+         "function_supplied_through_stated_values": true,
+         "rule_applied_more_than_once": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

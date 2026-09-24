@@ -1,10 +1,11 @@
 """A session built by app/main.py with GROWTH_ITEMS_DIR unset serves the agent drafts.
 
 The operator ruled on 2026-09-23 that the drafts in content/items_p1_agent/ may be served so the
-app can teach before the operator's own 130 items exist. Nothing but the default wiring puts them
-in the bank here: the application is built from an environment that names no item directory, the
-bank ingests the default one on its first query, and the student answers a Unit 2 item from it
-through the HTTP routes with the replayed tutor, down to its feedback screen.
+app can teach before the operator's own 130 items exist; since stage 1 the default is every
+content/items_* bank. Nothing but the default wiring puts them in the bank here: the application
+is built from an environment that names no item directory, the bank ingests the default ones on
+its first query, and the student answers a Unit 2 item from them through the HTTP routes with the
+replayed tutor, down to its feedback screen.
 """
 import json
 
@@ -12,18 +13,21 @@ import pytest
 from sqlalchemy.orm import Session as OrmSession
 
 from app.db import models
-from app.main import DEFAULT_ITEMS_DIR, build_application
+from app.main import DEFAULT_ITEMS_DIR, build_application, default_item_directories
 from tests.e2e.conftest import CASSETTE_PATH, FIRST_DAY, FakeVerifier, World
 from tests.e2e.test_session_login_to_feedback import answer_for, collects_confidence, rate, submit
 
-AGENT_AUTHOR = "claude-opus-5-5 agent draft, pending operator review"
+AGENT_AUTHORS = {
+   "claude-opus-5-5 agent draft, pending operator review",
+   "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+}
 UNIT_2 = "BC-UNIT-02"
 DAYS_BETWEEN_SESSIONS = 8
 MAX_SESSIONS = 12
 
 
 def agent_records():
-   paths = sorted(path for path in DEFAULT_ITEMS_DIR.iterdir() if path.suffix == ".json")
+   paths = sorted(path for directory in default_item_directories() for path in directory.glob("ITM-*.json"))
 
    return [json.loads(path.read_text()) for path in paths]
 
@@ -68,7 +72,12 @@ def primary_unit(world, item):
 def on_disk_record(item_id):
    """The drafts were signed off on the operator's delegation of 2026-09-24, so each record now
    names its drafter in drafted_by and is served with provenance model operator."""
-   return json.loads((DEFAULT_ITEMS_DIR / f"{item_id}.json").read_text())
+   paths = [directory / f"{item_id}.json" for directory in default_item_directories()]
+   existing = [path for path in paths if path.is_file()]
+
+   assert len(existing) == 1, existing
+
+   return json.loads(existing[0].read_text())
 
 
 def stored_provenance(world, item_id):
@@ -141,7 +150,8 @@ def serve_until_a_unit_2_item(world, client):
 
 
 def test_a_session_serves_an_agent_drafted_unit_2_item_end_to_end(agent_world):
-   assert agent_world.settings.items_directory == DEFAULT_ITEMS_DIR
+   assert agent_world.settings.items_directories == default_item_directories()
+   assert DEFAULT_ITEMS_DIR in agent_world.settings.items_directories
 
    client = agent_world.client()
    registered = agent_world.register(client)
@@ -156,4 +166,4 @@ def test_a_session_serves_an_agent_drafted_unit_2_item_end_to_end(agent_world):
    assert unit_2_item["id"].startswith("ITM-AGT-02")
    assert feedback["stage"] == unit_2_item["stage"]
    assert stored_provenance(agent_world, unit_2_item["id"])["model"] == "operator"
-   assert on_disk_record(unit_2_item["id"])["drafted_by"] == AGENT_AUTHOR
+   assert on_disk_record(unit_2_item["id"])["drafted_by"] in AGENT_AUTHORS

@@ -1,0 +1,284 @@
+{
+   "id": "ITM-AGT-06010-03",
+   "archetype_id": "BC-QA-06010",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Find the exact value of \\( \\int_{3}^{5} \\frac{2 x^{2} - 3}{x^{2} - 3 x + 2} \\, dx \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Ln",
+            2
+         ],
+         4,
+         [
+            "Multiply",
+            5,
+            [
+               "Ln",
+               3
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Factor the denominator: \\( x^{2} - 3 x + 2 = \\left(x - 1\\right) \\left(x - 2\\right) \\).",
+         "mathjson": [
+            "Multiply",
+            [
+               "Add",
+               "x",
+               -2
+            ],
+            [
+               "Add",
+               "x",
+               -1
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The numerator's degree is not less than the denominator's, so divide first: \\( \\frac{2 x^{2} - 3}{x^{2} - 3 x + 2} = 2 + \\frac{6 x - 7}{x^{2} - 3 x + 2} \\), and write \\( \\frac{6 x - 7}{x^{2} - 3 x + 2} = \\frac{A}{x - 1} + \\frac{B}{x - 2} \\).",
+         "mathjson": 2
+      },
+      {
+         "step": 3,
+         "text": "Clearing denominators gives \\( 6 x - 7 = A \\left(x - 2\\right) + B \\left(x - 1\\right) \\). Setting \\( x = 1 \\) gives \\( A = 1 \\), and setting \\( x = 2 \\) gives \\( B = 5 \\), so the integrand is \\( 2 + \\frac{1}{x - 1} + \\frac{5}{x - 2} \\).",
+         "mathjson": [
+            "Add",
+            2,
+            [
+               "Divide",
+               1,
+               [
+                  "Add",
+                  "x",
+                  -1
+               ]
+            ],
+            [
+               "Divide",
+               5,
+               [
+                  "Add",
+                  "x",
+                  -2
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "An antiderivative is \\( 2 x + 5 \\ln{\\left(\\left|{x - 2}\\right| \\right)} + \\ln{\\left(\\left|{x - 1}\\right| \\right)} \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               2,
+               "x"
+            ],
+            [
+               "Multiply",
+               5,
+               [
+                  "Ln",
+                  [
+                     "Abs",
+                     [
+                        "Add",
+                        "x",
+                        -2
+                     ]
+                  ]
+               ]
+            ],
+            [
+               "Ln",
+               [
+                  "Abs",
+                  [
+                     "Add",
+                     "x",
+                     -1
+                  ]
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 5,
+         "text": "Evaluate from \\( x = 3 \\) to \\( x = 5 \\): the value is \\( \\ln{\\left(2 \\right)} + 4 + 5 \\ln{\\left(3 \\right)} \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Ln",
+               2
+            ],
+            4,
+            [
+               "Multiply",
+               5,
+               [
+                  "Ln",
+                  3
+               ]
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            [
+               "Ln",
+               2
+            ],
+            [
+               "Multiply",
+               5,
+               [
+                  "Ln",
+                  3
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06026",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Add",
+            [
+               "Negate",
+               [
+                  "Multiply",
+                  3,
+                  [
+                     "Ln",
+                     3
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               3,
+               [
+                  "Ln",
+                  2
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06026",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            [
+               "Ln",
+               2
+            ],
+            4,
+            [
+               "Multiply",
+               5,
+               [
+                  "Ln",
+                  3
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            [
+               "Ln",
+               2
+            ],
+            [
+               "Ln",
+               3
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06026",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06062",
+      "BC-SKL-06063",
+      "BC-SKL-06064",
+      "BC-SKL-06065"
+   ],
+   "parameter_draw": {
+      "numerator": "2*x**2 - 3",
+      "denominator_factors": [
+         "x - 1",
+         "x - 2"
+      ],
+      "limits": [
+         "3",
+         "5"
+      ],
+      "quotient": "2",
+      "remainder": "6*x - 7",
+      "A": "1",
+      "B": "5",
+      "difficulty_variables": {
+         "whether the numerator degree forces a division first": "yes",
+         "whether the constants must be found by substitution or by equating coefficients": "substitution at the roots",
+         "whether the logarithms must be combined": "no, the answer is written with logarithms of primes",
+         "whether a definite integral requires the limits": "yes"
+      },
+      "distractor_derivations": {
+         "A": "decomposed without dividing; constants found by substituting both roots (cover up), so the polynomial part of the quotient is lost: A = 1, B = 5",
+         "B": "decomposed without dividing; constants found by matching only the x and constant coefficients, ignoring the unmatched higher powers: A = 3, B = -3",
+         "D": "decomposed without dividing; constants found by substituting the root of the first factor and x = 0: A = 1, B = 1"
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

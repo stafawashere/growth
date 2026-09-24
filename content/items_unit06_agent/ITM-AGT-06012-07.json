@@ -1,0 +1,169 @@
+{
+   "id": "ITM-AGT-06012-07",
+   "archetype_id": "BC-QA-06012",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( g(x) = \\int_{0}^{2 x} e^{t^{2}} \\, dt \\). Find the exact value of \\( g'\\left(\\frac{1}{2}\\right) \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Multiply",
+         2,
+         "ExponentialE"
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "By the Fundamental Theorem of Calculus, the derivative of the integral with respect to its upper limit is the integrand evaluated at that limit, \\( e^{4 x^{2}} \\).",
+         "mathjson": [
+            "Exp",
+            [
+               "Multiply",
+               4,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The upper limit is \\( 2 x \\), so the chain rule multiplies by its derivative: \\( g'(x) = e^{4 x^{2}} \\cdot 2 \\).",
+         "mathjson": [
+            "Multiply",
+            2,
+            [
+               "Exp",
+               [
+                  "Multiply",
+                  4,
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ]
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "At \\( x = \\frac{1}{2} \\) the limit is \\( 1 \\) and its derivative is \\( 2 \\).",
+         "mathjson": 2
+      },
+      {
+         "step": 4,
+         "text": "So \\( g'\\left(\\frac{1}{2}\\right) = e \\cdot 2 = 2 e \\).",
+         "mathjson": [
+            "Multiply",
+            2,
+            "ExponentialE"
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": "ExponentialE",
+         "is_key": false,
+         "error_path": "BC-ERR-06027",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Multiply",
+            2,
+            [
+               "Exp",
+               [
+                  "Rational",
+                  1,
+                  4
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06028",
+         "violated_step": 0
+      },
+      {
+         "id": "C",
+         "value": [
+            "Multiply",
+            2,
+            [
+               "Exp",
+               [
+                  "Power",
+                  "t",
+                  2
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06028",
+         "violated_step": 0
+      },
+      {
+         "id": "D",
+         "value": [
+            "Multiply",
+            2,
+            "ExponentialE"
+         ],
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-03",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-09",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-10",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06018",
+      "BC-SKL-06019",
+      "BC-SKL-06017",
+      "BC-SKL-06021"
+   ],
+   "parameter_draw": {
+      "form": "composite upper limit",
+      "integrand": "exp(t**2)",
+      "limits": {
+         "lower": "0",
+         "upper": "2*x"
+      },
+      "point": "1/2",
+      "difficulty_variables": {
+         "upper limit equal to x versus a function of x": "composite upper limit",
+         "integrand given by a formula, a graph, or a table": "formula",
+         "whether a reason naming the theorem is demanded": "no",
+         "whether values of the integrand must come from a table": "no"
+      },
+      "distractor_derivations": {
+         "A": "f(1) with the factor u'(1/2) = 2 left off",
+         "B": "integrand evaluated at x = 1/2 instead of at the limit u(1/2) = 1",
+         "C": "answer left in terms of the variable of integration t"
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

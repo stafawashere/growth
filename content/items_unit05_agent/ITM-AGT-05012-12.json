@@ -1,0 +1,108 @@
+{
+   "id": "ITM-AGT-05012-12",
+   "archetype_id": "BC-QA-05012",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Consider the curve \\( y^{2} = x^{2}(12 - x) \\). There are exactly two points on this curve at which the tangent line is horizontal. Find the \\( y \\)-coordinate of the one at which \\( \\frac{d^2y}{dx^2} < 0 \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 16
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Differentiate implicitly: \\( 2y\\frac{dy}{dx} = - 3 x^{2} + 24 x \\), so \\( \\frac{dy}{dx} = \\frac{- 3 x^{2} + 24 x}{2y} \\). The numerator is 0 at \\( x = 0 \\) and at \\( x = 8 \\). At \\( x = 0 \\) the curve gives \\( y = 0 \\), where the denominator is also 0, so there is no horizontal tangent there. At \\( x = 8 \\), \\( y^{2} = 256 \\), so \\( y = \\pm 16 \\) and the denominator is not 0.",
+         "mathjson": 8
+      },
+      {
+         "step": 2,
+         "text": "Differentiate again, keeping \\( y \\) as a function of \\( x \\): \\( 2\\left(\\frac{dy}{dx}\\right)^{2} + 2y\\frac{d^2y}{dx^2} = 24 - 6 x \\).",
+         "mathjson": -24
+      },
+      {
+         "step": 3,
+         "text": "At both points \\( \\frac{dy}{dx} = 0 \\) and \\( x = 8 \\), so \\( \\frac{d^2y}{dx^2} = \\frac{-24}{2y} \\). At \\( y = 16 \\) this is \\( - \\frac{3}{4} \\), and at \\( y = -16 \\) it is \\( \\frac{3}{4} \\).",
+         "mathjson": [
+            "Rational",
+            -3,
+            4
+         ]
+      },
+      {
+         "step": 4,
+         "text": "The second derivative is negative at \\( (8, 16) \\), so the \\( y \\)-coordinate is \\( 16 \\).",
+         "mathjson": 16
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": -16,
+         "is_key": false,
+         "error_path": "BC-ERR-05062",
+         "violated_step": 3
+      },
+      {
+         "id": "B",
+         "value": 8,
+         "is_key": false,
+         "error_path": "BC-ERR-05059",
+         "violated_step": 3
+      },
+      {
+         "id": "C",
+         "value": 0,
+         "is_key": false,
+         "error_path": "BC-ERR-05057",
+         "violated_step": 3
+      },
+      {
+         "id": "D",
+         "value": 16,
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-11",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-05058",
+      "BC-SKL-05059",
+      "BC-SKL-05060",
+      "BC-SKL-05061",
+      "BC-SKL-05062",
+      "BC-SKL-05063"
+   ],
+   "parameter_draw": {
+      "task": "horizontal tangent point selected by the sign of the second derivative",
+      "relation": "y**2 = x**2*(12 - x)",
+      "k": 1,
+      "a": 12,
+      "mirrored": true,
+      "wanted_second_derivative_sign": "negative",
+      "singular_point": [
+         0,
+         0
+      ],
+      "difficulty_variables": {
+         "second_derivative_asked": true,
+         "relation_type": "polynomial",
+         "both_conditions_solved_together": true
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

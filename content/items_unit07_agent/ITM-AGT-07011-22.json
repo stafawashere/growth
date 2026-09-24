@@ -1,0 +1,212 @@
+{
+   "id": "ITM-AGT-07011-22",
+   "archetype_id": "BC-QA-07011",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Consider the differential equation \\( \\frac{dy}{dx} = 2(y - 5)\\cos x \\). Find the particular solution \\( y = f(x) \\) with \\( f(0) = 2 \\), written as an explicit function of \\( x \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         5,
+         [
+            "Negate",
+            [
+               "Multiply",
+               3,
+               [
+                  "Exp",
+                  [
+                     "Multiply",
+                     2,
+                     [
+                        "Sin",
+                        "x"
+                     ]
+                  ]
+               ]
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Separate and antidifferentiate: \\( \\ln|y - (5)| = 2 \\sin{\\left(x \\right)} + C \\).",
+         "mathjson": [
+            "Multiply",
+            2,
+            [
+               "Sin",
+               "x"
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "At \\( x = 0 \\), \\( y - (5) = -3 \\), which is negative, and a solution never crosses the equilibrium \\( y = 5 \\), so \\( y - (5) = -3 e^{2 \\sin{\\left(x \\right)}} \\).",
+         "mathjson": -3
+      },
+      {
+         "step": 3,
+         "text": "This expression is defined for every real \\( x \\), so no restriction arises, and \\( y = 5 - 3 e^{2 \\sin{\\left(x \\right)}} \\).",
+         "mathjson": [
+            "Add",
+            5,
+            [
+               "Negate",
+               [
+                  "Multiply",
+                  3,
+                  [
+                     "Exp",
+                     [
+                        "Multiply",
+                        2,
+                        [
+                           "Sin",
+                           "x"
+                        ]
+                     ]
+                  ]
+               ]
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               3,
+               [
+                  "Exp",
+                  [
+                     "Multiply",
+                     2,
+                     [
+                        "Sin",
+                        "x"
+                     ]
+                  ]
+               ]
+            ],
+            5
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-07030",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Add",
+            5,
+            [
+               "Negate",
+               [
+                  "Multiply",
+                  3,
+                  [
+                     "Exp",
+                     [
+                        "Multiply",
+                        2,
+                        [
+                           "Sin",
+                           "x"
+                        ]
+                     ]
+                  ]
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            5,
+            [
+               "Negate",
+               [
+                  "Divide",
+                  3,
+                  [
+                     "Exp",
+                     [
+                        "Multiply",
+                        2,
+                        [
+                           "Sin",
+                           "x"
+                        ]
+                     ]
+                  ]
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99014",
+         "violated_step": 0
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            5,
+            [
+               "Negate",
+               [
+                  "Multiply",
+                  3,
+                  [
+                     "Exp",
+                     [
+                        "Sin",
+                        "x"
+                     ]
+                  ]
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99014",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-03",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-07030",
+      "BC-SKL-07031",
+      "BC-SKL-07032",
+      "BC-SKL-07038"
+   ],
+   "parameter_draw": {
+      "rate": "2(y - 5)\\cos x",
+      "equilibrium": "5",
+      "y0": "2",
+      "difficulty_variables": {
+         "vertical_asymptote": false,
+         "absolute_value_resolved": true,
+         "accumulation_form": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

@@ -1,0 +1,120 @@
+{
+   "id": "ITM-AGT-06013-00",
+   "archetype_id": "BC-QA-06013",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let f be a continuous function with \\( \\int_{0}^{6} f(x)\\,dx = 10 \\) and \\( \\int_{4}^{6} f(x)\\,dx = 3 \\). Find the value of \\( \\int_{4}^{0} \\left(2f(x) + 5\\right) dx \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": -34
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Split at \\( x = 4 \\): \\( \\int_{0}^{4} f(x)\\,dx = \\int_{0}^{6} f(x)\\,dx - \\int_{4}^{6} f(x)\\,dx = 10 - (3) = 7 \\).",
+         "mathjson": 7
+      },
+      {
+         "step": 2,
+         "text": "Reverse the requested integral and use linearity: \\( \\int_{4}^{0} \\left(2f(x) + 5\\right) dx = -(2) \\int_{0}^{4} f(x)\\,dx + (5)(0 - 4) \\), and the constant contributes \\( -20 \\).",
+         "mathjson": -20
+      },
+      {
+         "step": 3,
+         "text": "Substitute: \\( -(2)(7) + (-20) \\).",
+         "mathjson": -34
+      },
+      {
+         "step": 4,
+         "text": "The value is \\( -34 \\).",
+         "mathjson": -34
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 34,
+         "is_key": false,
+         "error_path": "BC-ERR-99012",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": -34,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": -6,
+         "is_key": false,
+         "error_path": "BC-ERR-99032",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": 6,
+         "is_key": false,
+         "error_path": "BC-ERR-99012",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-17",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06029",
+      "BC-SKL-06030",
+      "BC-SKL-06031",
+      "BC-SKL-06032",
+      "BC-SKL-06033",
+      "BC-SKL-06035"
+   ],
+   "parameter_draw": {
+      "template": "T1",
+      "endpoints": [
+         0,
+         4,
+         6
+      ],
+      "given_values": [
+         10,
+         3
+      ],
+      "alpha": 2,
+      "beta_or_gamma": 5,
+      "difficulty_variables": {
+         "whether a reversal of limits is required": "yes, the requested integral runs right to left",
+         "whether an interval must be split or joined": "split",
+         "whether a constant multiple or a sum appears": "constant multiple plus a constant term",
+         "whether an integral of a constant must be computed geometrically": "yes"
+      },
+      "distractor_derivations": {
+         "A": "sign change for the reversed target integral left out",
+         "C": "split written with its limits reversed, taking the integral from 0 to 4 as 3 - (10)",
+         "D": "constant term integrated as if its limits ran left to right, so its sign change is left out"
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

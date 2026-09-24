@@ -1,0 +1,166 @@
+{
+   "id": "ITM-AGT-10002-15",
+   "archetype_id": "BC-QA-10002",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Find the exact value of \\( \\sum_{n=1}^{\\infty} \\frac{2}{n(n+2)} \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         3,
+         2
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Partial fractions give \\( \\frac{2}{n(n+2)} = \\frac{1}{n} - \\frac{1}{n+2} \\), so the series telescopes.",
+         "mathjson": [
+            "Add",
+            [
+               "Divide",
+               1,
+               "n"
+            ],
+            [
+               "Negate",
+               [
+                  "Divide",
+                  1,
+                  [
+                     "Add",
+                     "n",
+                     2
+                  ]
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Writing out the terms from \\( n = 1 \\) to \\( n = N \\), the inner terms cancel and the partial sum is \\( S_N = \\frac{3}{2} - \\frac{1}{N + 2} - \\frac{1}{N + 1} \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Rational",
+               3,
+               2
+            ],
+            [
+               "Negate",
+               [
+                  "Divide",
+                  1,
+                  [
+                     "Add",
+                     "N",
+                     1
+                  ]
+               ]
+            ],
+            [
+               "Negate",
+               [
+                  "Divide",
+                  1,
+                  [
+                     "Add",
+                     "N",
+                     2
+                  ]
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "As \\( N \\to \\infty \\), the terms containing \\( N \\) approach their limits, so \\( \\lim_{N \\to \\infty} S_N = \\frac{3}{2} \\).",
+         "mathjson": [
+            "Rational",
+            3,
+            2
+         ]
+      },
+      {
+         "step": 4,
+         "text": "The value of the series is \\( \\frac{3}{2} \\).",
+         "mathjson": [
+            "Rational",
+            3,
+            2
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Rational",
+            11,
+            12
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99038",
+         "violated_step": 2
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            21,
+            20
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99038",
+         "violated_step": 2
+      },
+      {
+         "id": "C",
+         "value": 0,
+         "is_key": false,
+         "error_path": "BC-ERR-10001",
+         "violated_step": 2
+      },
+      {
+         "id": "D",
+         "value": [
+            "Rational",
+            3,
+            2
+         ],
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10002",
+      "BC-SKL-10003",
+      "BC-SKL-10004",
+      "BC-SKL-10008",
+      "BC-SKL-10066"
+   ],
+   "parameter_draw": {
+      "general_term": "\\frac{2}{n(n+2)}",
+      "start": 1,
+      "partial_fractions_needed": true,
+      "difficulty_variables": {
+         "structure": "telescoping",
+         "starts_at_index_zero": false,
+         "from_taylor_series_at_point": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

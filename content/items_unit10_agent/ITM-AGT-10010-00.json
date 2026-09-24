@@ -1,0 +1,248 @@
+{
+   "id": "ITM-AGT-10010-00",
+   "archetype_id": "BC-QA-10010",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f \\) be the function that satisfies \\( f'(x) = x + \\left(f(x)\\right)^{2} \\), with \\( f(0) = 2 \\). Find the second-degree Taylor polynomial for \\( f \\) about \\( x = 0 \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         2,
+         [
+            "Multiply",
+            4,
+            "x"
+         ],
+         [
+            "Multiply",
+            [
+               "Rational",
+               17,
+               2
+            ],
+            [
+               "Power",
+               "x",
+               2
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The relation gives \\( f'(0) = 4 \\). Differentiate the relation, using the chain rule on each term that holds \\( f \\): \\( f'' = 2 f f' + 1 \\).",
+         "mathjson": 4
+      },
+      {
+         "step": 2,
+         "text": "Evaluate in order at \\( x = 0 \\), feeding each value into the next: \\( f'(0) = 4 \\), \\( f''(0) = 17 \\).",
+         "mathjson": 17
+      },
+      {
+         "step": 3,
+         "text": "Divide each value by the matching factorial: \\( \\frac{2}{0!} = 2 \\), \\( \\frac{4}{1!} = 4 \\), \\( \\frac{17}{2!} = \\frac{17}{2} \\).",
+         "mathjson": [
+            "Add",
+            2,
+            [
+               "Multiply",
+               4,
+               "x"
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  17,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Stop at degree 2: \\( P_{2}(x) = 2 + 4x + \\frac{17}{2}x^{2} \\).",
+         "mathjson": [
+            "Add",
+            2,
+            [
+               "Multiply",
+               4,
+               "x"
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  17,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            2,
+            [
+               "Multiply",
+               4,
+               "x"
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  17,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": [
+            "Add",
+            2,
+            [
+               "Multiply",
+               4,
+               "x"
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  5,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10028",
+         "violated_step": 0
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            2,
+            [
+               "Multiply",
+               4,
+               "x"
+            ],
+            [
+               "Multiply",
+               17,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10029",
+         "violated_step": 2
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            2,
+            [
+               "Multiply",
+               4,
+               "x"
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  17,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  50,
+                  3
+               ],
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10030",
+         "violated_step": 3
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10043",
+      "BC-SKL-10044",
+      "BC-SKL-10046"
+   ],
+   "parameter_draw": {
+      "centre": 0,
+      "initial_values": [
+         "2"
+      ],
+      "relation": "f' = f**2 + x",
+      "order_requested": 2,
+      "differentiations_needed": 1,
+      "product_rule_needed": false,
+      "coefficients_that_vanish": [],
+      "distractor_error_mode": "chain"
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

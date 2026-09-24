@@ -1,0 +1,122 @@
+{
+   "id": "ITM-AGT-04007-05",
+   "archetype_id": "BC-QA-04007",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "A particle moves along the curve \\( x^{2} - 3 x y + y^{2} = -1 \\) so that its coordinates \\( x \\) and \\( y \\) are differentiable functions of time \\( t \\). At the instant the particle is at the point \\( (2, 1) \\), \\( \\frac{dy}{dt} = 2 \\) units per second. Find \\( \\frac{dx}{dt} \\), in units per second, at that instant."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 8
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Differentiate both sides of \\( x^{2} - 3 x y + y^{2} = -1 \\) with respect to \\( t \\), using the product rule on the term that contains both variables: \\( \\left(2 x - 3 y\\right)\\frac{dx}{dt} + \\left(- 3 x + 2 y\\right)\\frac{dy}{dt} = 0 \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Negate",
+               [
+                  "Multiply",
+                  3,
+                  "x"
+               ]
+            ],
+            [
+               "Multiply",
+               2,
+               "y"
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "At \\( (2, 1) \\) the coefficient of \\( \\frac{dy}{dt} \\) is \\( -4 \\) and the coefficient of \\( \\frac{dx}{dt} \\) is \\( 1 \\). Substitute \\( \\frac{dy}{dt} = 2 \\): \\( (-4)(2) + (1)\\frac{dx}{dt} = 0 \\).",
+         "mathjson": -8
+      },
+      {
+         "step": 3,
+         "text": "Solve for the requested rate: \\( \\frac{dx}{dt} = 8 \\).",
+         "mathjson": 8
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Rational",
+            1,
+            4
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-04017",
+         "violated_step": 0
+      },
+      {
+         "id": "B",
+         "value": 8,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": 0,
+         "is_key": false,
+         "error_path": "BC-ERR-04020",
+         "violated_step": 2
+      },
+      {
+         "id": "D",
+         "value": -4,
+         "is_key": false,
+         "error_path": "BC-ERR-04018",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-04022",
+      "BC-SKL-04019",
+      "BC-SKL-04020",
+      "BC-SKL-04023",
+      "BC-SKL-04024"
+   ],
+   "parameter_draw": {
+      "curve": "x**2 - 3*x*y + y**2 = -1",
+      "point": [
+         2,
+         1
+      ],
+      "supplied_rate": "dy/dt = 2",
+      "requested_rate": "dx/dt",
+      "rate_stated_in_words_as_decreasing": false,
+      "difficulty_variables": {
+         "mixed_term_present": true,
+         "supplied_rate_negative": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

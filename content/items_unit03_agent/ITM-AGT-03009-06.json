@@ -1,0 +1,408 @@
+{
+   "id": "ITM-AGT-03009-06",
+   "archetype_id": "BC-QA-03009",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = e^{x}\\,e^{\\sin(3x)} \\). Find \\( f'(x) \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Multiply",
+            3,
+            [
+               "Exp",
+               "x"
+            ],
+            [
+               "Exp",
+               [
+                  "Sin",
+                  [
+                     "Multiply",
+                     3,
+                     "x"
+                  ]
+               ]
+            ],
+            [
+               "Cos",
+               [
+                  "Multiply",
+                  3,
+                  "x"
+               ]
+            ]
+         ],
+         [
+            "Multiply",
+            [
+               "Exp",
+               "x"
+            ],
+            [
+               "Exp",
+               [
+                  "Sin",
+                  [
+                     "Multiply",
+                     3,
+                     "x"
+                  ]
+               ]
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The outermost operation is a product of \\( e^{x} \\) and \\( e^{\\sin(3x)} \\), so the product rule comes first: \\( f'(x) = \\left(e^{x}\\right)'\\,e^{\\sin(3x)} + e^{x}\\left(e^{\\sin(3x)}\\right)' \\).",
+         "mathjson": [
+            "Multiply",
+            [
+               "Exp",
+               "x"
+            ],
+            [
+               "Exp",
+               [
+                  "Sin",
+                  [
+                     "Multiply",
+                     3,
+                     "x"
+                  ]
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "\\( e^{x} \\) is an exponential function with a constant base, so its derivative is \\( e^{x} \\); the power rule does not apply to it.",
+         "mathjson": [
+            "Exp",
+            "x"
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The factor \\( e^{\\sin(3x)} \\) is an exponential of \\( \\sin(3x) \\), which is a sine of \\( 3x \\), so apply the chain rule from the outside inward: \\( \\left(e^{\\sin(3x)}\\right)' = 3 e^{\\sin{\\left(3 x \\right)}} \\cos{\\left(3 x \\right)} \\).",
+         "mathjson": [
+            "Multiply",
+            3,
+            [
+               "Exp",
+               [
+                  "Sin",
+                  [
+                     "Multiply",
+                     3,
+                     "x"
+                  ]
+               ]
+            ],
+            [
+               "Cos",
+               [
+                  "Multiply",
+                  3,
+                  "x"
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Assemble the product rule: \\( f'(x) = 3 e^{x} e^{\\sin{\\left(3 x \\right)}} \\cos{\\left(3 x \\right)} + e^{x} e^{\\sin{\\left(3 x \\right)}} \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               3,
+               [
+                  "Exp",
+                  "x"
+               ],
+               [
+                  "Exp",
+                  [
+                     "Sin",
+                     [
+                        "Multiply",
+                        3,
+                        "x"
+                     ]
+                  ]
+               ],
+               [
+                  "Cos",
+                  [
+                     "Multiply",
+                     3,
+                     "x"
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Exp",
+                  "x"
+               ],
+               [
+                  "Exp",
+                  [
+                     "Sin",
+                     [
+                        "Multiply",
+                        3,
+                        "x"
+                     ]
+                  ]
+               ]
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Multiply",
+            3,
+            [
+               "Exp",
+               "x"
+            ],
+            [
+               "Exp",
+               [
+                  "Sin",
+                  [
+                     "Multiply",
+                     3,
+                     "x"
+                  ]
+               ]
+            ],
+            [
+               "Cos",
+               [
+                  "Multiply",
+                  3,
+                  "x"
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03006",
+         "violated_step": 0
+      },
+      {
+         "id": "B",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               3,
+               [
+                  "Exp",
+                  "x"
+               ],
+               [
+                  "Exp",
+                  [
+                     "Sin",
+                     [
+                        "Multiply",
+                        3,
+                        "x"
+                     ]
+                  ]
+               ],
+               [
+                  "Cos",
+                  [
+                     "Multiply",
+                     3,
+                     "x"
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Exp",
+                  "x"
+               ],
+               [
+                  "Exp",
+                  [
+                     "Sin",
+                     [
+                        "Multiply",
+                        3,
+                        "x"
+                     ]
+                  ]
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               "x",
+               [
+                  "Exp",
+                  [
+                     "Subtract",
+                     "x",
+                     1
+                  ]
+               ],
+               [
+                  "Exp",
+                  [
+                     "Sin",
+                     [
+                        "Multiply",
+                        3,
+                        "x"
+                     ]
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               3,
+               [
+                  "Exp",
+                  "x"
+               ],
+               [
+                  "Exp",
+                  [
+                     "Sin",
+                     [
+                        "Multiply",
+                        3,
+                        "x"
+                     ]
+                  ]
+               ],
+               [
+                  "Cos",
+                  [
+                     "Multiply",
+                     3,
+                     "x"
+                  ]
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99036",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               [
+                  "Exp",
+                  "x"
+               ],
+               [
+                  "Exp",
+                  [
+                     "Sin",
+                     [
+                        "Multiply",
+                        3,
+                        "x"
+                     ]
+                  ]
+               ],
+               [
+                  "Cos",
+                  [
+                     "Multiply",
+                     3,
+                     "x"
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Exp",
+                  "x"
+               ],
+               [
+                  "Exp",
+                  [
+                     "Sin",
+                     [
+                        "Multiply",
+                        3,
+                        "x"
+                     ]
+                  ]
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03002",
+         "violated_step": 2
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-03026",
+      "BC-SKL-03027",
+      "BC-SKL-03028",
+      "BC-SKL-03029",
+      "BC-SKL-03006"
+   ],
+   "parameter_draw": {
+      "exponential_base": "e",
+      "composite": "exp_sin3x",
+      "structure": "product",
+      "answer_mode": "expr",
+      "difficulty_variables": {
+         "algebraic rewrite available": false,
+         "rules needed": [
+            "product",
+            "exponential",
+            "chain (three layers)"
+         ],
+         "surface resembles another family": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

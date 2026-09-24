@@ -1,0 +1,512 @@
+{
+   "id": "ITM-AGT-03009-09",
+   "archetype_id": "BC-QA-03009",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = \\frac{\\sin^{2}(3x)}{2^{x}} \\). Find \\( f'(x) \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Divide",
+         [
+            "Add",
+            [
+               "Negate",
+               [
+                  "Multiply",
+                  [
+                     "Power",
+                     2,
+                     "x"
+                  ],
+                  [
+                     "Ln",
+                     2
+                  ],
+                  [
+                     "Power",
+                     [
+                        "Sin",
+                        [
+                           "Multiply",
+                           3,
+                           "x"
+                        ]
+                     ],
+                     2
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               6,
+               [
+                  "Power",
+                  2,
+                  "x"
+               ],
+               [
+                  "Sin",
+                  [
+                     "Multiply",
+                     3,
+                     "x"
+                  ]
+               ],
+               [
+                  "Cos",
+                  [
+                     "Multiply",
+                     3,
+                     "x"
+                  ]
+               ]
+            ]
+         ],
+         [
+            "Power",
+            2,
+            [
+               "Multiply",
+               2,
+               "x"
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The outermost operation is a quotient with numerator \\( \\sin^{2}(3x) \\) and denominator \\( 2^{x} \\), so the quotient rule comes first (equivalently, rewrite \\( f \\) as a product with the factor \\( 2^{-x} \\)).",
+         "mathjson": [
+            "Divide",
+            [
+               "Power",
+               [
+                  "Sin",
+                  [
+                     "Multiply",
+                     3,
+                     "x"
+                  ]
+               ],
+               2
+            ],
+            [
+               "Power",
+               2,
+               "x"
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "\\( 2^{x} \\) is an exponential function with a constant base, so its derivative is \\( 2^{x} \\ln{\\left(2 \\right)} \\); the power rule does not apply to it.",
+         "mathjson": [
+            "Multiply",
+            [
+               "Power",
+               2,
+               "x"
+            ],
+            [
+               "Ln",
+               2
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The factor \\( \\sin^{2}(3x) \\) is a square of \\( \\sin(3x) \\), which is a sine of \\( 3x \\), so apply the chain rule from the outside inward: \\( \\left(\\sin^{2}(3x)\\right)' = 6 \\sin{\\left(3 x \\right)} \\cos{\\left(3 x \\right)} \\).",
+         "mathjson": [
+            "Multiply",
+            6,
+            [
+               "Sin",
+               [
+                  "Multiply",
+                  3,
+                  "x"
+               ]
+            ],
+            [
+               "Cos",
+               [
+                  "Multiply",
+                  3,
+                  "x"
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Assemble the quotient rule: \\( f'(x) = 2^{- 2 x} \\left(- 2^{x} \\ln{\\left(2 \\right)} \\sin^{2}{\\left(3 x \\right)} + 6 \\cdot 2^{x} \\sin{\\left(3 x \\right)} \\cos{\\left(3 x \\right)}\\right) \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Add",
+               [
+                  "Negate",
+                  [
+                     "Multiply",
+                     [
+                        "Power",
+                        2,
+                        "x"
+                     ],
+                     [
+                        "Ln",
+                        2
+                     ],
+                     [
+                        "Power",
+                        [
+                           "Sin",
+                           [
+                              "Multiply",
+                              3,
+                              "x"
+                           ]
+                        ],
+                        2
+                     ]
+                  ]
+               ],
+               [
+                  "Multiply",
+                  6,
+                  [
+                     "Power",
+                     2,
+                     "x"
+                  ],
+                  [
+                     "Sin",
+                     [
+                        "Multiply",
+                        3,
+                        "x"
+                     ]
+                  ],
+                  [
+                     "Cos",
+                     [
+                        "Multiply",
+                        3,
+                        "x"
+                     ]
+                  ]
+               ]
+            ],
+            [
+               "Power",
+               2,
+               [
+                  "Multiply",
+                  2,
+                  "x"
+               ]
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Divide",
+            [
+               "Multiply",
+               6,
+               [
+                  "Sin",
+                  [
+                     "Multiply",
+                     3,
+                     "x"
+                  ]
+               ],
+               [
+                  "Cos",
+                  [
+                     "Multiply",
+                     3,
+                     "x"
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Power",
+                  2,
+                  "x"
+               ],
+               [
+                  "Ln",
+                  2
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03006",
+         "violated_step": 0
+      },
+      {
+         "id": "B",
+         "value": [
+            "Divide",
+            [
+               "Subtract",
+               [
+                  "Multiply",
+                  6,
+                  [
+                     "Power",
+                     2,
+                     "x"
+                  ],
+                  [
+                     "Sin",
+                     [
+                        "Multiply",
+                        3,
+                        "x"
+                     ]
+                  ],
+                  [
+                     "Cos",
+                     [
+                        "Multiply",
+                        3,
+                        "x"
+                     ]
+                  ]
+               ],
+               [
+                  "Multiply",
+                  [
+                     "Power",
+                     2,
+                     [
+                        "Subtract",
+                        "x",
+                        1
+                     ]
+                  ],
+                  "x",
+                  [
+                     "Power",
+                     [
+                        "Sin",
+                        [
+                           "Multiply",
+                           3,
+                           "x"
+                        ]
+                     ],
+                     2
+                  ]
+               ]
+            ],
+            [
+               "Power",
+               2,
+               [
+                  "Multiply",
+                  2,
+                  "x"
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99036",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Divide",
+            [
+               "Add",
+               [
+                  "Negate",
+                  [
+                     "Multiply",
+                     [
+                        "Power",
+                        2,
+                        "x"
+                     ],
+                     [
+                        "Ln",
+                        2
+                     ],
+                     [
+                        "Power",
+                        [
+                           "Sin",
+                           [
+                              "Multiply",
+                              3,
+                              "x"
+                           ]
+                        ],
+                        2
+                     ]
+                  ]
+               ],
+               [
+                  "Multiply",
+                  6,
+                  [
+                     "Power",
+                     2,
+                     "x"
+                  ],
+                  [
+                     "Sin",
+                     [
+                        "Multiply",
+                        3,
+                        "x"
+                     ]
+                  ],
+                  [
+                     "Cos",
+                     [
+                        "Multiply",
+                        3,
+                        "x"
+                     ]
+                  ]
+               ]
+            ],
+            [
+               "Power",
+               2,
+               [
+                  "Multiply",
+                  2,
+                  "x"
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": [
+            "Divide",
+            [
+               "Add",
+               [
+                  "Negate",
+                  [
+                     "Multiply",
+                     [
+                        "Power",
+                        2,
+                        "x"
+                     ],
+                     [
+                        "Ln",
+                        2
+                     ],
+                     [
+                        "Power",
+                        [
+                           "Sin",
+                           [
+                              "Multiply",
+                              3,
+                              "x"
+                           ]
+                        ],
+                        2
+                     ]
+                  ]
+               ],
+               [
+                  "Multiply",
+                  2,
+                  [
+                     "Power",
+                     2,
+                     "x"
+                  ],
+                  [
+                     "Sin",
+                     [
+                        "Multiply",
+                        3,
+                        "x"
+                     ]
+                  ],
+                  [
+                     "Cos",
+                     [
+                        "Multiply",
+                        3,
+                        "x"
+                     ]
+                  ]
+               ]
+            ],
+            [
+               "Power",
+               2,
+               [
+                  "Multiply",
+                  2,
+                  "x"
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03002",
+         "violated_step": 2
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-03026",
+      "BC-SKL-03027",
+      "BC-SKL-03028",
+      "BC-SKL-03029",
+      "BC-SKL-03006"
+   ],
+   "parameter_draw": {
+      "exponential_base": "2",
+      "composite": "sin2_3x",
+      "structure": "quotient",
+      "answer_mode": "expr",
+      "difficulty_variables": {
+         "algebraic rewrite available": true,
+         "rules needed": [
+            "quotient",
+            "exponential",
+            "chain (three layers)"
+         ],
+         "surface resembles another family": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

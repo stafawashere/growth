@@ -1,0 +1,153 @@
+{
+   "id": "ITM-AGT-07003-13",
+   "archetype_id": "BC-QA-07003",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( y = f(x) \\) be the particular solution to the differential equation \\( \\frac{dy}{dx} = 4 x y^{2} \\) with \\( f(0) = \\frac{1}{3} \\). Find the exact value of \\( f(\\frac{1}{2}) \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         2,
+         5
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Separate the variables: \\( y^{-2} \\, dy = 4 x \\, dx \\).",
+         "mathjson": [
+            "Multiply",
+            4,
+            "x"
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Antidifferentiate both sides with one constant: \\( -\\frac{1}{y} = 2 x^{2} + C \\).",
+         "mathjson": [
+            "Multiply",
+            2,
+            [
+               "Power",
+               "x",
+               2
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "At \\( x = 0 \\), \\( y = \\frac{1}{3} \\), so \\( C = -3 \\).",
+         "mathjson": -3
+      },
+      {
+         "step": 4,
+         "text": "Solve for \\( y \\): \\( y = - \\frac{1}{2 x^{2} - 3} \\).",
+         "mathjson": [
+            "Divide",
+            1,
+            [
+               "Add",
+               3,
+               [
+                  "Negate",
+                  [
+                     "Multiply",
+                     2,
+                     [
+                        "Power",
+                        "x",
+                        2
+                     ]
+                  ]
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 5,
+         "text": "Substitute \\( x = \\frac{1}{2} \\): \\( f(\\frac{1}{2}) = \\frac{2}{5} \\).",
+         "mathjson": [
+            "Rational",
+            2,
+            5
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Rational",
+            2,
+            7
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99014",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": 1,
+         "is_key": false,
+         "error_path": "BC-ERR-07025",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Rational",
+            2,
+            5
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": -2,
+         "is_key": false,
+         "error_path": "BC-ERR-07026",
+         "violated_step": 2
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-07024",
+      "BC-SKL-07025",
+      "BC-SKL-07026",
+      "BC-SKL-07027",
+      "BC-SKL-07029",
+      "BC-SKL-07030",
+      "BC-SKL-07033"
+   ],
+   "parameter_draw": {
+      "k": "4",
+      "power_of_x": 1,
+      "x0": "0",
+      "y0": "1/3",
+      "difficulty_variables": {
+         "dependent_side": "power",
+         "absolute_value_resolved": false,
+         "substitution_on_independent_side": false,
+         "explicit_answer": true
+      },
+      "asked_for": "f(1/2)"
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

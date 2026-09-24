@@ -1,0 +1,141 @@
+{
+   "id": "ITM-AGT-07011-07",
+   "archetype_id": "BC-QA-07011",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( y = f(x) \\) be the particular solution to the differential equation \\( \\frac{dy}{dx} = 2\\left(1 + y^{2}\\right) \\) with \\( f(0) = 1 \\). The solution exists on a largest open interval \\( (a, b) \\) containing \\( x = 0 \\). Find \\( b \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Divide",
+         "Pi",
+         8
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Separate and antidifferentiate: \\( \\arctan y = 2 x + C \\), so \\( y = \\tan(2 x + C) \\).",
+         "mathjson": [
+            "Multiply",
+            2,
+            "x"
+         ]
+      },
+      {
+         "step": 2,
+         "text": "At \\( x = 0 \\): \\( C = \\arctan(1) - 0 = \\frac{\\pi}{4} \\).",
+         "mathjson": [
+            "Divide",
+            "Pi",
+            4
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The tangent is undefined where \\( 2 x + C = \\pm \\frac{\\pi}{2} \\), which gives the neighbours \\( x = - \\frac{3 \\pi}{8} \\) and \\( x = \\frac{\\pi}{8} \\) of \\( x = 0 \\).",
+         "mathjson": [
+            "Negate",
+            [
+               "Divide",
+               [
+                  "Multiply",
+                  3,
+                  "Pi"
+               ],
+               8
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "The interval containing \\( x = 0 \\) is \\( \\left(- \\frac{3 \\pi}{8}, \\frac{\\pi}{8}\\right) \\), so \\( b = \\frac{\\pi}{8} \\).",
+         "mathjson": [
+            "Divide",
+            "Pi",
+            8
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Divide",
+            "Pi",
+            2
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-07031",
+         "violated_step": 2
+      },
+      {
+         "id": "B",
+         "value": [
+            "Negate",
+            [
+               "Divide",
+               [
+                  "Multiply",
+                  3,
+                  "Pi"
+               ],
+               8
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-07031",
+         "violated_step": 3
+      },
+      {
+         "id": "C",
+         "value": [
+            "Divide",
+            "Pi",
+            8
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": [
+            "Divide",
+            "Pi",
+            4
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99014",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-03",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-07030",
+      "BC-SKL-07031",
+      "BC-SKL-07032",
+      "BC-SKL-07038"
+   ],
+   "parameter_draw": {
+      "k": "2",
+      "x0": "0",
+      "y0": "1",
+      "difficulty_variables": {
+         "vertical_asymptote": true,
+         "absolute_value_resolved": false,
+         "accumulation_form": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

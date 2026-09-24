@@ -1,0 +1,448 @@
+{
+   "id": "ITM-AGT-10017-16",
+   "archetype_id": "BC-QA-10017",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = -2x \\sin\\left(x^{2}\\right) \\). Find the sum of the first three nonzero terms of the Maclaurin series for \\( f \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Multiply",
+            -2,
+            [
+               "Power",
+               "x",
+               3
+            ]
+         ],
+         [
+            "Multiply",
+            [
+               "Rational",
+               1,
+               3
+            ],
+            [
+               "Power",
+               "x",
+               7
+            ]
+         ],
+         [
+            "Multiply",
+            [
+               "Rational",
+               -1,
+               60
+            ],
+            [
+               "Power",
+               "x",
+               11
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Recall \\( \\sin u = u - \\frac{u^{3}}{3!} + \\frac{u^{5}}{5!} - \\cdots \\).",
+         "mathjson": [
+            "Add",
+            "x",
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -1,
+                  6
+               ],
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  120
+               ],
+               [
+                  "Power",
+                  "x",
+                  5
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -1,
+                  5040
+               ],
+               [
+                  "Power",
+                  "x",
+                  7
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Substitute \\( u = x^{2} \\), raising the whole of \\( x^{2} \\) to each power: the series begins \\( x^{2} - \\frac{1}{6}x^{6} + \\frac{1}{120}x^{10} - \\frac{1}{5040}x^{14} + \\cdots \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Power",
+               "x",
+               2
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -1,
+                  6
+               ],
+               [
+                  "Power",
+                  "x",
+                  6
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  120
+               ],
+               [
+                  "Power",
+                  "x",
+                  10
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -1,
+                  5040
+               ],
+               [
+                  "Power",
+                  "x",
+                  14
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Multiply every term by \\( -2 x \\): \\( f(x) = -2x^{3} + \\frac{1}{3}x^{7} - \\frac{1}{60}x^{11} + \\frac{1}{2520}x^{15} + \\cdots \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               -2,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  3
+               ],
+               [
+                  "Power",
+                  "x",
+                  7
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -1,
+                  60
+               ],
+               [
+                  "Power",
+                  "x",
+                  11
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  2520
+               ],
+               [
+                  "Power",
+                  "x",
+                  15
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "The first three nonzero terms sum to \\( -2x^{3} + \\frac{1}{3}x^{7} - \\frac{1}{60}x^{11} \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               -2,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  3
+               ],
+               [
+                  "Power",
+                  "x",
+                  7
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -1,
+                  60
+               ],
+               [
+                  "Power",
+                  "x",
+                  11
+               ]
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               -2,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  3
+               ],
+               [
+                  "Power",
+                  "x",
+                  7
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -1,
+                  60
+               ],
+               [
+                  "Power",
+                  "x",
+                  11
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": [
+            "Add",
+            [
+               "Power",
+               "x",
+               3
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -1,
+                  6
+               ],
+               [
+                  "Power",
+                  "x",
+                  7
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  120
+               ],
+               [
+                  "Power",
+                  "x",
+                  11
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10041",
+         "violated_step": 2
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               -2,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               2,
+               [
+                  "Power",
+                  "x",
+                  7
+               ]
+            ],
+            [
+               "Multiply",
+               -2,
+               [
+                  "Power",
+                  "x",
+                  11
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10040",
+         "violated_step": 0
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               -2,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -1,
+                  3
+               ],
+               [
+                  "Power",
+                  "x",
+                  7
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -1,
+                  60
+               ],
+               [
+                  "Power",
+                  "x",
+                  11
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10040",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10061",
+      "BC-SKL-10062",
+      "BC-SKL-10063",
+      "BC-SKL-10064",
+      "BC-SKL-10065"
+   ],
+   "parameter_draw": {
+      "standard_series": "sin",
+      "constant_multiple": "-2",
+      "power_of_x_multiplier": 1,
+      "inner_coefficient": "1",
+      "inner_power": 2,
+      "question": "terms",
+      "terms_or_power": 3,
+      "substitution_raises_powers": true,
+      "misremembered_variants": [
+         "signs wrong",
+         "factorials dropped"
+      ]
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

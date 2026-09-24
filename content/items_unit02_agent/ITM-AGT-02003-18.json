@@ -1,0 +1,99 @@
+{
+   "id": "ITM-AGT-02003-18",
+   "archetype_id": "BC-QA-02003",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Find the value of \\( \\lim_{x \\to 2} \\frac{(x + 1)^{2} - 9}{x - 2} \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 6
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Let \\( u = x + 1 \\). As \\( x \\to 2 \\), \\( u \\to 3 \\), and \\( x - 2 = u - 3 \\), so the numerator is \\( g(u) - g(3) \\) with \\( g(u) = u^{2} \\) and \\( g(3) = 9 \\).",
+         "mathjson": 9
+      },
+      {
+         "step": 2,
+         "text": "So the function is \\( g(u) = u^{2} \\) and the base point is \\( u = 3 \\).",
+         "mathjson": 3
+      },
+      {
+         "step": 3,
+         "text": "The limit is \\( \\lim_{u \\to 3} \\frac{g(u) - g(3)}{u - 3} = g'(3) \\), and \\( g'(u) = 2 u \\).",
+         "mathjson": [
+            "Multiply",
+            2,
+            "u"
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Evaluate: \\( g'(3) = 6 \\).",
+         "mathjson": 6
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 4,
+         "is_key": false,
+         "error_path": "BC-ERR-02010",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": 8,
+         "is_key": false,
+         "error_path": "BC-ERR-02010",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": 18,
+         "is_key": false,
+         "error_path": "BC-ERR-02010",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": 6,
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02035",
+      "BC-SKL-02005"
+   ],
+   "parameter_draw": {
+      "function": "u**2",
+      "base_point": 3,
+      "form": "two point",
+      "shift": 1,
+      "wrong_base_readings": {
+         "g at the approach value": 2,
+         "shifted function at the true base": 3,
+         "g at the subtracted constant": "9"
+      },
+      "difficulty_variables": {
+         "standard angle or value": false,
+         "two point form": true,
+         "transcendental": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

@@ -1,0 +1,133 @@
+{
+   "id": "ITM-AGT-06002-04",
+   "archetype_id": "BC-QA-06002",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Snow falls on a field at a rate of S(t) centimeters per hour, where S is differentiable and t is measured in hours. Measured values are S(0) = 2, S(1) = 3, S(4) = 5, S(6) = 1. Find the approximation to \\( \\int_{0}^{6} S(t)\\,dt \\), the depth of snow, in centimeters, that falls from t = 0 to t = 6, given by a trapezoidal sum with the three subintervals indicated by these values. Give the exact value."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         41,
+         2
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Each subinterval contributes its width times the average of its two endpoint values: \\( 1 \\cdot \\frac{2 + 3}{2} = \\frac{5}{2} \\); \\( 3 \\cdot \\frac{3 + 5}{2} = 12 \\); \\( 2 \\cdot \\frac{5 + 1}{2} = 6 \\).",
+         "mathjson": [
+            "Rational",
+            5,
+            2
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Add the three contributions: \\( \\frac{5}{2} + 12 + 6 = \\frac{41}{2} \\).",
+         "mathjson": [
+            "Rational",
+            41,
+            2
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The trapezoidal approximation is \\( \\frac{41}{2} \\).",
+         "mathjson": [
+            "Rational",
+            41,
+            2
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Rational",
+            41,
+            2
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": 19,
+         "is_key": false,
+         "error_path": "BC-ERR-06001",
+         "violated_step": 0
+      },
+      {
+         "id": "C",
+         "value": 20,
+         "is_key": false,
+         "error_path": "BC-ERR-99028",
+         "violated_step": 0
+      },
+      {
+         "id": "D",
+         "value": [
+            "Rational",
+            77,
+            2
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06004",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-10",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06008",
+      "BC-SKL-06011",
+      "BC-SKL-06036"
+   ],
+   "parameter_draw": {
+      "context": "snow",
+      "times": [
+         "0",
+         "1",
+         "4",
+         "6"
+      ],
+      "values": [
+         "2",
+         "3",
+         "5",
+         "1"
+      ],
+      "difficulty_variables": {
+         "nonuniform versus uniform widths": "nonuniform",
+         "whether the sum must be simplified to a single number": "yes",
+         "whether a concavity based over or under estimate justification is required": "no",
+         "calculator versus no calculator": "no calculator"
+      },
+      "distractor_derivations": {
+         "B": "trapezoidal sum with the common width (b - a)/3 used for every subinterval",
+         "C": "right Riemann sum used in place of the trapezoidal sum",
+         "D": "factor 1/2 applied to the first trapezoid only"
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

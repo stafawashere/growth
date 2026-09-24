@@ -1,0 +1,106 @@
+{
+   "id": "ITM-AGT-04009-09",
+   "archetype_id": "BC-QA-04009",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f \\) be a function with a continuous second derivative such that \\( f(1) = 5 \\), \\( f'(1) = -2 \\), and \\( f''(1) = 3 \\). Find the value of \\( \\lim_{x \\to 1} \\frac{f(x^{2}) - 5}{\\ln x} \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": -4
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Because \\( f \\) is differentiable, it is continuous, so as \\( x \\to 1 \\) the numerator \\( f(x^{2}) - 5 \\) tends to 0, using \\( f(1) = 5 \\).",
+         "mathjson": 0
+      },
+      {
+         "step": 2,
+         "text": "As \\( x \\to 1 \\), the denominator \\( \\ln x \\) tends to \\( 0 \\).",
+         "mathjson": 0
+      },
+      {
+         "step": 3,
+         "text": "The numerator and the denominator both tend to 0, so the form is \\( \\frac{0}{0} \\) and L'Hospital's rule applies. Differentiate the numerator and the denominator separately: the limit equals \\( \\lim_{x \\to 1} \\frac{2x f'(x^{2})}{\\frac{1}{x}} \\).",
+         "mathjson": -4
+      },
+      {
+         "step": 4,
+         "text": "At \\( x = 1 \\) this numerator is \\( -4 \\) and this denominator is \\( 1 \\), which is not 0, so the limit is \\( -4 \\).",
+         "mathjson": -4
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": -2,
+         "is_key": false,
+         "error_path": "BC-ERR-04031",
+         "violated_step": 3
+      },
+      {
+         "id": "B",
+         "value": -8,
+         "is_key": false,
+         "error_path": "BC-ERR-04029",
+         "violated_step": 2
+      },
+      {
+         "id": "C",
+         "value": -4,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": 2,
+         "is_key": false,
+         "error_path": "BC-ERR-04030",
+         "violated_step": 3
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-03",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-10",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-04033",
+      "BC-SKL-04034",
+      "BC-SKL-04035",
+      "BC-SKL-04036",
+      "BC-SKL-04037",
+      "BC-SKL-04038"
+   ],
+   "parameter_draw": {
+      "numerator": "f(x^{2}) - 5",
+      "denominator": "\\ln x",
+      "point": 1,
+      "form": "0/0",
+      "applications_needed": 1,
+      "unknown_function_values": {
+         "at": 1,
+         "f_and_derivatives": [
+            5,
+            -2,
+            3
+         ]
+      },
+      "difficulty_variables": {
+         "function_supplied_through_stated_values": true,
+         "rule_applied_more_than_once": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

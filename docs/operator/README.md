@@ -23,3 +23,10 @@ to merge. Each one unblocks specific gates named in docs/plan/11-phased-delivery
 
 None of these documents restates the plan's reasoning. Read docs/plan/11-phased-delivery.md
 for that.
+
+## Beyond P1 [verified]
+
+Items for the Units 1 to 3 archetypes P1 left out and for Units 4 to 10 (P2 scope item 8) are
+specified in docs/operator/items-units-4-to-10.md: which 38 archetypes get items and why the
+other 24 do not, the per-unit banks under content/items_unitNN_agent/, and how they are verified,
+signed off and audited.

@@ -1,0 +1,115 @@
+{
+   "id": "ITM-AGT-10002-09",
+   "archetype_id": "BC-QA-10002",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "The Maclaurin series for \\( e^{x} \\) is \\( \\sum_{n=0}^{\\infty} \\frac{x^{n}}{n!} \\), which converges for every real \\( x \\). Find the exact value of \\( \\sum_{n=0}^{\\infty} \\frac{(-1)^{n}\\,3^{n}}{n!} \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Exp",
+         -3
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Each term has the form \\( \\frac{x^{n}}{n!} \\) with \\( x = -3 \\), so this is the Maclaurin series for \\( e^{x} \\) evaluated at \\( x = -3 \\).",
+         "mathjson": -3
+      },
+      {
+         "step": 2,
+         "text": "That series converges for every \\( x \\), and its full sum from \\( n = 0 \\) is \\( e^{-3} \\).",
+         "mathjson": [
+            "Exp",
+            -3
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The series starts at \\( n = 0 \\), so nothing is removed and the series equals \\( e^{-3} \\).",
+         "mathjson": [
+            "Exp",
+            -3
+         ]
+      },
+      {
+         "step": 4,
+         "text": "The value of the series is \\( e^{-3} \\).",
+         "mathjson": [
+            "Exp",
+            -3
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Exp",
+            3
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10034",
+         "violated_step": 2
+      },
+      {
+         "id": "B",
+         "value": [
+            "Exp",
+            -3
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": [
+            "Rational",
+            5,
+            2
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99038",
+         "violated_step": 2
+      },
+      {
+         "id": "D",
+         "value": 0,
+         "is_key": false,
+         "error_path": "BC-ERR-10001",
+         "violated_step": 2
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10002",
+      "BC-SKL-10003",
+      "BC-SKL-10004",
+      "BC-SKL-10008",
+      "BC-SKL-10066"
+   ],
+   "parameter_draw": {
+      "general_term": "\\frac{(-1)^{n}\\,3^{n}}{n!}",
+      "start": 0,
+      "input": "-3",
+      "series_named_in_stem": true,
+      "difficulty_variables": {
+         "structure": "exponential Maclaurin series",
+         "starts_at_index_zero": true,
+         "from_taylor_series_at_point": true
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

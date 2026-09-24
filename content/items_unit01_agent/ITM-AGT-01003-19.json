@@ -1,0 +1,125 @@
+{
+   "id": "ITM-AGT-01003-19",
+   "archetype_id": "BC-QA-01003",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = x^{2} - 3 x + 2 \\). The functions \\( g \\) and \\( h \\) are continuous for all real numbers, with \\( g(0) = 1 \\), \\( g(1) = 2 \\), \\( g(2) = 0 \\), \\( g(3) = 0 \\), \\( g(4) = 2 \\), \\( h(0) = 1 \\), \\( h(1) = 1 \\), \\( h(2) = 3 \\), \\( h(3) = 1 \\), \\( h(4) = 4 \\). Find the value of \\( \\lim_{x \\to 3} \\left[ 2f(g(x)) - 2g(h(x)) - h(f(x)) \\right] \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": -3
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Record the limits. \\( f \\) is a polynomial and \\( g \\) and \\( h \\) are continuous, so \\( \\lim_{x \\to 3} f(x) = f(3) = 2 \\), \\( \\lim_{x \\to 3} g(x) = 0 \\), and \\( \\lim_{x \\to 3} h(x) = 1 \\).",
+         "mathjson": 2
+      },
+      {
+         "step": 2,
+         "text": "The expression is a sum of constant multiples of three composites. In each composite the outer function is continuous at the limit of the inner one, so \\( \\lim_{x \\to 3} f(g(x)) = f(0) = 2 \\), \\( \\lim_{x \\to 3} g(h(x)) = g(1) = 2 \\), \\( \\lim_{x \\to 3} h(f(x)) = h(2) = 3 \\).",
+         "mathjson": 2
+      },
+      {
+         "step": 3,
+         "text": "Apply the sum and constant multiple theorems: \\( (2)(2) + (-2)(2) + (-1)(3) = -3 \\).",
+         "mathjson": -3
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": -7,
+         "is_key": false,
+         "error_path": "BC-ERR-01007",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": -1,
+         "is_key": false,
+         "error_path": "BC-ERR-01007",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": 0,
+         "is_key": false,
+         "error_path": "BC-ERR-01007",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": -3,
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-09",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-10",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-01018",
+      "BC-SKL-01019",
+      "BC-SKL-01020",
+      "BC-SKL-01022"
+   ],
+   "parameter_draw": {
+      "structure": "formula",
+      "a": 3,
+      "side": "two-sided",
+      "composites": [
+         "f(g(x))",
+         "g(h(x))",
+         "h(f(x))"
+      ],
+      "coefficients": [
+         2,
+         -2,
+         -1
+      ],
+      "tables": {
+         "g": {
+            "0": 1,
+            "1": 2,
+            "2": 0,
+            "3": 0,
+            "4": 2
+         },
+         "h": {
+            "0": 1,
+            "1": 1,
+            "2": 3,
+            "3": 1,
+            "4": 4
+         }
+      },
+      "f_coefficients": [
+         1,
+         -3,
+         2
+      ],
+      "difficulty_variables": {
+         "denominator limit zero": false,
+         "composite involved": true,
+         "one sided limit supplied": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

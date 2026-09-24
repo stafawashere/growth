@@ -1,0 +1,161 @@
+{
+   "id": "ITM-AGT-10011-12",
+   "archetype_id": "BC-QA-10011",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "The function \\( f \\) has derivatives of all orders, and its values at \\( x = 4 \\) are \\( f(4) = 2 \\), \\( f'(4) = \\frac{1}{4} \\), \\( f''(4) = -\\frac{1}{32} \\), \\( f'''(4) = \\frac{3}{256} \\). Let \\( P \\) be the second-degree Taylor polynomial for \\( f \\) about \\( x = 4 \\). Find the value of \\( P\\left(5\\right) \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         143,
+         64
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "A degree 2 polynomial needs the values through order 2: \\( f(4) = 2 \\), \\( f'(4) = \\frac{1}{4} \\), \\( f''(4) = -\\frac{1}{32} \\). The value of order 3 is not used.",
+         "mathjson": [
+            "Rational",
+            -1,
+            32
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Divide each by the matching factorial: \\( \\frac{2}{0!} = 2 \\), \\( \\frac{\\frac{1}{4}}{1!} = \\frac{1}{4} \\), \\( \\frac{-\\frac{1}{32}}{2!} = -\\frac{1}{64} \\).",
+         "mathjson": [
+            "Rational",
+            -1,
+            64
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Attach \\( (x - 4)^{k} \\) to the coefficient of order \\( k \\): \\( P(x) = 2 + \\frac{1}{4}(x - 4) - \\frac{1}{64}(x - 4)^{2} \\).",
+         "mathjson": [
+            "Add",
+            2,
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  4
+               ],
+               [
+                  "Subtract",
+                  "x",
+                  4
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -1,
+                  64
+               ],
+               [
+                  "Power",
+                  [
+                     "Subtract",
+                     "x",
+                     4
+                  ],
+                  2
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Substitute \\( x = 5 \\), so \\( (x - 4) = 1 \\): \\( P\\left(5\\right) = \\frac{143}{64} \\).",
+         "mathjson": [
+            "Rational",
+            143,
+            64
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Rational",
+            67,
+            32
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10031",
+         "violated_step": 0
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            143,
+            64
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": [
+            "Rational",
+            1145,
+            512
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10030",
+         "violated_step": 3
+      },
+      {
+         "id": "D",
+         "value": [
+            "Rational",
+            71,
+            32
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10029",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10044",
+      "BC-SKL-10045"
+   ],
+   "parameter_draw": {
+      "function_letter": "f",
+      "centre": 4,
+      "table_values": [
+         "2",
+         "1/4",
+         "-1/32",
+         "3/256"
+      ],
+      "degree_requested": 2,
+      "centre_is_zero": false,
+      "approximation_at": "5",
+      "rows_swapped_in_distractor": [
+         1,
+         2
+      ]
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

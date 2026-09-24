@@ -1,0 +1,105 @@
+{
+   "id": "ITM-AGT-02009-18",
+   "archetype_id": "BC-QA-02009",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "The functions \\( f \\) and \\( g \\) are differentiable, with \\( f(1) = -2 \\), \\( f'(1) = 6 \\), \\( g(1) = -1 \\), \\( g'(1) = 1 \\). Let \\( h(x) = f(x)g(x) - 3f(x) \\). Find the value of \\( h'(1) \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": -26
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Record the values at \\( x = 1 \\): \\( f(1) = -2 \\), \\( f'(1) = 6 \\), \\( g(1) = -1 \\), \\( g'(1) = 1 \\).",
+         "mathjson": 6
+      },
+      {
+         "step": 2,
+         "text": "By the product rule, \\( (fg)'(1) = f'(1)g(1) + f(1)g'(1) \\).",
+         "mathjson": -2
+      },
+      {
+         "step": 3,
+         "text": "Substitute: \\( (6)(-1) + (-2)(1) = -8 \\).",
+         "mathjson": -8
+      },
+      {
+         "step": 4,
+         "text": "The term \\( -3f(x) \\) contributes \\( -3f'(1) = -18 \\), so \\( h'(1) = -8 + (-18) = -26 \\).",
+         "mathjson": -26
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": -22,
+         "is_key": false,
+         "error_path": "BC-ERR-02024",
+         "violated_step": 2
+      },
+      {
+         "id": "B",
+         "value": -12,
+         "is_key": false,
+         "error_path": "BC-ERR-02020",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": -26,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": -18,
+         "is_key": false,
+         "error_path": "BC-ERR-02024",
+         "violated_step": 2
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-03",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-05",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02037",
+      "BC-SKL-02041",
+      "BC-SKL-02017"
+   ],
+   "parameter_draw": {
+      "kind": "combo_product",
+      "a": 1,
+      "values": {
+         "f": -2,
+         "f_prime": 6,
+         "g": -1,
+         "g_prime": 1
+      },
+      "names": [
+         "f",
+         "g"
+      ],
+      "extra_row_shown": false,
+      "difficulty_variables": {
+         "table against graphs": "table",
+         "product against quotient": "product",
+         "value read as a slope": false,
+         "interpreted in context": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

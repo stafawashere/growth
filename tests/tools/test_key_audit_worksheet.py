@@ -38,3 +38,27 @@ def test_the_worksheet_carries_every_stem_and_hides_every_key(tmp_path):
 
    for giveaway in ("is_key", "answer_key", "worked_solution", "key:", "answer:", "correct"):
       assert giveaway not in lowered, giveaway
+
+
+def test_the_worksheet_finds_items_across_several_banks(tmp_path):
+   """A gate 29 sample over Units 4 to 10 draws from several content/items_unitNN_agent banks."""
+   other_bank = tmp_path / "other_bank"
+   other_bank.mkdir()
+   record = json.loads((AGENT_DIR / "ITM-AGT-01004-00.json").read_text())
+   record["id"] = "ITM-AGT-01004-90"
+   (other_bank / "ITM-AGT-01004-90.json").write_text(json.dumps(record))
+   sample = ["ITM-AGT-02011-03", "ITM-AGT-01004-90"]
+   sample_path = tmp_path / "sample.json"
+   sample_path.write_text(json.dumps(sample))
+   worksheet_path = tmp_path / "worksheet.md"
+
+   exit_code = key_audit_worksheet.main(
+      [
+         "worksheet", str(sample_path), str(worksheet_path), str(tmp_path / "verdicts.json"),
+         "--items-dir", str(AGENT_DIR), "--items-dir", str(other_bank),
+      ]
+   )
+
+   assert exit_code == 0
+   assert "## ITM-AGT-01004-90" in worksheet_path.read_text()
+   assert "## ITM-AGT-02011-03" in worksheet_path.read_text()

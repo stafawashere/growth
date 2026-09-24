@@ -1,0 +1,113 @@
+{
+   "id": "ITM-AGT-10016-15",
+   "archetype_id": "BC-QA-10016",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = \\sum_{n=0}^{\\infty} \\frac{(-1)^{n}(n + 1)}{4^{n}} (x - 2)^{2 n} \\), where the series converges. Find the coefficient of \\( (x - 2)^{6} \\) in the Taylor series for \\( f \\) about \\( x = 2 \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         -1,
+         16
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The power in the general term is \\( 2 n \\); set it equal to 6 to find the index.",
+         "mathjson": 6
+      },
+      {
+         "step": 2,
+         "text": "Solving \\( 2 n = 6 \\) gives \\( n = 3 \\).",
+         "mathjson": 3
+      },
+      {
+         "step": 3,
+         "text": "Substitute \\( n = 3 \\) into the coefficient \\( \\frac{(-1)^{n}(n + 1)}{4^{n}} \\), keeping its sign: the coefficient is \\( -\\frac{1}{16} \\).",
+         "mathjson": [
+            "Rational",
+            -1,
+            16
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Rational",
+            7,
+            4096
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99018",
+         "violated_step": 2
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            1,
+            16
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99018",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Rational",
+            -1,
+            16
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": [
+            "Rational",
+            3,
+            16
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99018",
+         "violated_step": 2
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10060",
+      "BC-SKL-10067"
+   ],
+   "parameter_draw": {
+      "general_term": "\\frac{(-1)^{n}(n + 1)}{4^{n}}",
+      "power": "2*n",
+      "centre": 2,
+      "target_power": 6,
+      "index_of_target": 3,
+      "alternating": true,
+      "has_factorial": false,
+      "question": "coefficient of a stated power",
+      "index_offsets_used": "n - 1"
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

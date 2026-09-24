@@ -1,0 +1,224 @@
+{
+   "id": "ITM-AGT-06008-01",
+   "archetype_id": "BC-QA-06008",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let F be the antiderivative of \\( f(x) = x e^{x^{2}} \\) with \\( F(0) = 3 \\). Find the exact value of \\( F\\left(2\\right) \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Rational",
+            5,
+            2
+         ],
+         [
+            "Divide",
+            [
+               "Exp",
+               4
+            ],
+            2
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Let \\( u = x^{2} \\).",
+         "mathjson": [
+            "Power",
+            "x",
+            2
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Then \\( du = 2 x \\, dx \\), so \\( x \\, dx = \\frac{1}{2} \\, du \\).",
+         "mathjson": [
+            "Rational",
+            1,
+            2
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Since \\( F(2) = F(0) + \\int_{0}^{2} x e^{x^{2}} \\, dx \\), convert the limits: \\( x = 0 \\) gives \\( u = 0 \\) and \\( x = 2 \\) gives \\( u = 4 \\), so the integral becomes \\( \\int_{0}^{4} \\frac{e^{u}}{2} \\, du \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Exp",
+               "u"
+            ],
+            2
+         ]
+      },
+      {
+         "step": 4,
+         "text": "An antiderivative of \\( \\frac{e^{u}}{2} \\) is \\( \\frac{e^{u}}{2} \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Exp",
+               "u"
+            ],
+            2
+         ]
+      },
+      {
+         "step": 5,
+         "text": "The integral is \\( \\frac{e^{4}}{2} - \\left(\\frac{1}{2}\\right) = - \\frac{1}{2} + \\frac{e^{4}}{2} \\), so \\( F(2) = 3 + \\left(- \\frac{1}{2} + \\frac{e^{4}}{2}\\right) = \\frac{5}{2} + \\frac{e^{4}}{2} \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Rational",
+               5,
+               2
+            ],
+            [
+               "Divide",
+               [
+                  "Exp",
+                  4
+               ],
+               2
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            2,
+            [
+               "Exp",
+               4
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06019",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Add",
+            [
+               "Rational",
+               5,
+               2
+            ],
+            [
+               "Divide",
+               [
+                  "Exp",
+                  2
+               ],
+               2
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06018",
+         "violated_step": 4
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            [
+               "Rational",
+               5,
+               2
+            ],
+            [
+               "Divide",
+               [
+                  "Exp",
+                  4
+               ],
+               2
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": [
+            "Divide",
+            [
+               "Exp",
+               4
+            ],
+            2
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-07026",
+         "violated_step": 3
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-11",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06047",
+      "BC-SKL-06048",
+      "BC-SKL-06049",
+      "BC-SKL-06050",
+      "BC-SKL-06051",
+      "BC-SKL-06052",
+      "BC-SKL-06034"
+   ],
+   "parameter_draw": {
+      "form": "pinned antiderivative value",
+      "integrand": "x*exp(x**2)",
+      "inner_u": "x**2",
+      "du_constant_k": "2",
+      "limits": [
+         "0",
+         "2"
+      ],
+      "u_limits": [
+         "0",
+         "4"
+      ],
+      "difficulty_variables": {
+         "whether a constant adjustment is needed": "yes",
+         "whether the answer is logarithmic, exponential, trigonometric, or a power": "exponential",
+         "definite versus indefinite": "antiderivative pinned by an initial value",
+         "whether the limits must be converted": "yes",
+         "whether the substitution is disguised by a prior rearrangement": "no"
+      },
+      "F_at_a": "3",
+      "distractor_derivations": {
+         "A": "substitution carried out as if x dx = du, without the constant 1/(2)",
+         "B": "antiderivative in u evaluated at the original x limits 0 and 2",
+         "D": "antiderivative exp(x**2)/2 written with no constant and evaluated at x = 2, ignoring F(0)"
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

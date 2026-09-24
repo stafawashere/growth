@@ -1,0 +1,138 @@
+{
+   "id": "ITM-AGT-10009-15",
+   "archetype_id": "BC-QA-10009",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = \\frac{1}{x} \\). The second-degree Taylor polynomial for \\( f \\) about \\( x = 1 \\) is used to approximate \\( f\\left(\\frac{4}{5}\\right) \\). Find the Lagrange error bound for this approximation, taking \\( M \\) to be the maximum of \\( |f'''(x)| \\) on \\( \\left[\\frac{4}{5}, 1\\right] \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         5,
+         256
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "A degree 2 polynomial needs the derivative of order 3: \\( f'''(x) = - \\frac{6}{x^{4}} \\).",
+         "mathjson": [
+            "Negate",
+            [
+               "Divide",
+               6,
+               [
+                  "Power",
+                  "x",
+                  4
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Its absolute value is monotonic on \\( \\left[\\frac{4}{5}, 1\\right] \\), so the maximum is at an endpoint: \\( M = \\frac{1875}{128} \\). The bound is \\( \\frac{M\\,|x - 1|^{3}}{3!} \\).",
+         "mathjson": [
+            "Rational",
+            1875,
+            128
+         ]
+      },
+      {
+         "step": 3,
+         "text": "With \\( |x - 1| = \\frac{1}{5} \\), the bound is \\( \\frac{\\frac{1875}{128} \\cdot \\left(\\frac{1}{5}\\right)^{3}}{6} = \\frac{5}{256} \\).",
+         "mathjson": [
+            "Rational",
+            5,
+            256
+         ]
+      },
+      {
+         "step": 4,
+         "text": "The error is at most \\( \\frac{5}{256} \\).",
+         "mathjson": [
+            "Rational",
+            5,
+            256
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Rational",
+            15,
+            256
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10032",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            25,
+            256
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10032",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Rational",
+            1,
+            125
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10033",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": [
+            "Rational",
+            5,
+            256
+         ],
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10048",
+      "BC-SKL-10049",
+      "BC-SKL-10050",
+      "BC-SKL-10051",
+      "BC-SKL-10052"
+   ],
+   "parameter_draw": {
+      "function": "\\frac{1}{x}",
+      "centre": "1",
+      "input": "4/5",
+      "degree": 2,
+      "derivative_bound": "1875/128",
+      "derivative_at_centre": "-6",
+      "difficulty_variables": {
+         "derivative_bound_supplied": false,
+         "displacement": "1/5",
+         "tolerance_comparison_shown": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

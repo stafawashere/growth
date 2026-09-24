@@ -1,0 +1,164 @@
+{
+   "id": "ITM-AGT-06008-13",
+   "archetype_id": "BC-QA-06008",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let F be the antiderivative of \\( f(x) = e^{\\cos{\\left(x \\right)}} \\sin{\\left(x \\right)} \\) with \\( F(0) = 1 \\). Find the exact value of \\( F\\left(\\frac{\\pi}{2}\\right) \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": "ExponentialE"
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Let \\( u = \\cos{\\left(x \\right)} \\).",
+         "mathjson": [
+            "Cos",
+            "x"
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Then \\( du = - \\sin{\\left(x \\right)} \\, dx \\), so \\( \\sin{\\left(x \\right)} \\, dx = -du \\).",
+         "mathjson": -1
+      },
+      {
+         "step": 3,
+         "text": "Since \\( F(\\frac{\\pi}{2}) = F(0) + \\int_{0}^{\\frac{\\pi}{2}} e^{\\cos{\\left(x \\right)}} \\sin{\\left(x \\right)} \\, dx \\), convert the limits: \\( x = 0 \\) gives \\( u = 1 \\) and \\( x = \\frac{\\pi}{2} \\) gives \\( u = 0 \\), so the integral becomes \\( \\int_{1}^{0} - e^{u} \\, du \\).",
+         "mathjson": [
+            "Negate",
+            [
+               "Exp",
+               "u"
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "An antiderivative of \\( - e^{u} \\) is \\( - e^{u} \\).",
+         "mathjson": [
+            "Negate",
+            [
+               "Exp",
+               "u"
+            ]
+         ]
+      },
+      {
+         "step": 5,
+         "text": "The integral is \\( -1 - \\left(- e\\right) = -1 + e \\), so \\( F(\\frac{\\pi}{2}) = 1 + \\left(-1 + e\\right) = e \\).",
+         "mathjson": "ExponentialE"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            2,
+            [
+               "Negate",
+               "ExponentialE"
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06019",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Add",
+            2,
+            [
+               "Negate",
+               [
+                  "Exp",
+                  [
+                     "Divide",
+                     "Pi",
+                     2
+                  ]
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06018",
+         "violated_step": 4
+      },
+      {
+         "id": "C",
+         "value": "ExponentialE",
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": -1,
+         "is_key": false,
+         "error_path": "BC-ERR-07026",
+         "violated_step": 3
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-11",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06047",
+      "BC-SKL-06048",
+      "BC-SKL-06049",
+      "BC-SKL-06050",
+      "BC-SKL-06051",
+      "BC-SKL-06052",
+      "BC-SKL-06034"
+   ],
+   "parameter_draw": {
+      "form": "pinned antiderivative value",
+      "integrand": "exp(cos(x))*sin(x)",
+      "inner_u": "cos(x)",
+      "du_constant_k": "-1",
+      "limits": [
+         "0",
+         "pi/2"
+      ],
+      "u_limits": [
+         "1",
+         "0"
+      ],
+      "difficulty_variables": {
+         "whether a constant adjustment is needed": "yes",
+         "whether the answer is logarithmic, exponential, trigonometric, or a power": "exponential",
+         "definite versus indefinite": "antiderivative pinned by an initial value",
+         "whether the limits must be converted": "yes",
+         "whether the substitution is disguised by a prior rearrangement": "yes"
+      },
+      "F_at_a": "1",
+      "distractor_derivations": {
+         "A": "substitution carried out as if sin(x) dx = du, without the constant 1/(-1)",
+         "B": "antiderivative in u evaluated at the original x limits 0 and pi/2",
+         "D": "antiderivative -exp(cos(x)) written with no constant and evaluated at x = pi/2, ignoring F(0)"
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

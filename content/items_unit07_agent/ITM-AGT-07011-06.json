@@ -1,0 +1,142 @@
+{
+   "id": "ITM-AGT-07011-06",
+   "archetype_id": "BC-QA-07011",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "A particle moves along a line, and its position \\( s(t) \\) satisfies the differential equation \\( \\frac{ds}{dt} = 6 \\cos{\\left(3 t \\right)} \\) with \\( s(0) = -2 \\). Writing the particular solution as \\( s(t) = -2 + \\int_{0}^{t} v(u) \\, du \\), where \\( v \\) is the given rate, find the exact value of \\( s(\\frac{\\pi}{9}) \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         -2,
+         [
+            "Sqrt",
+            3
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The accumulation form of the solution is \\( s(t) = -2 + \\int_{0}^{t} v(u) \\, du \\), with an antiderivative of the rate \\( 2 \\sin{\\left(3 t \\right)} \\).",
+         "mathjson": [
+            "Multiply",
+            2,
+            [
+               "Sin",
+               [
+                  "Multiply",
+                  3,
+                  "t"
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The initial value fixes the constant term: at \\( t = 0 \\) the integral is 0, so \\( s(0) = -2 \\).",
+         "mathjson": -2
+      },
+      {
+         "step": 3,
+         "text": "Evaluate the integral: \\( \\int_{0}^{\\frac{\\pi}{9}} v(u) \\, du = \\sqrt{3} \\).",
+         "mathjson": [
+            "Sqrt",
+            3
+         ]
+      },
+      {
+         "step": 4,
+         "text": "So \\( s(\\frac{\\pi}{9}) = -2 + \\sqrt{3} = -2 + \\sqrt{3} \\).",
+         "mathjson": [
+            "Add",
+            -2,
+            [
+               "Sqrt",
+               3
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Sqrt",
+            3
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-07032",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Add",
+            -2,
+            [
+               "Sqrt",
+               3
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": 3,
+         "is_key": false,
+         "error_path": "BC-ERR-07038",
+         "violated_step": 0
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            -2,
+            [
+               "Multiply",
+               9,
+               [
+                  "Sqrt",
+                  3
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99014",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-03",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-07030",
+      "BC-SKL-07031",
+      "BC-SKL-07032",
+      "BC-SKL-07038"
+   ],
+   "parameter_draw": {
+      "rate": "6*cos(3*t)",
+      "t0": "0",
+      "s0": "-2",
+      "target": "pi/9",
+      "wrong_antiderivative_used_for_99014": "antiderivative of cos(3t) multiplied by 3 instead of divided",
+      "difficulty_variables": {
+         "vertical_asymptote": false,
+         "absolute_value_resolved": false,
+         "accumulation_form": true
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

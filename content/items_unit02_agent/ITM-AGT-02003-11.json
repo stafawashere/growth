@@ -1,0 +1,147 @@
+{
+   "id": "ITM-AGT-02003-11",
+   "archetype_id": "BC-QA-02003",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Find the value of \\( \\lim_{h \\to 0} \\frac{\\tan\\left(\\frac{\\pi}{6} + h\\right) - \\frac{\\sqrt{3}}{3}}{h} \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         4,
+         3
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The numerator has the form \\( f(\\frac{\\pi}{6} + h) - f(\\frac{\\pi}{6}) \\) with \\( f(x) = \\tan x \\), because \\( f(\\frac{\\pi}{6}) = \\frac{\\sqrt{3}}{3} \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Sqrt",
+               3
+            ],
+            3
+         ]
+      },
+      {
+         "step": 2,
+         "text": "So the function is \\( f(x) = \\tan x \\) and the base point is \\( x = \\frac{\\pi}{6} \\).",
+         "mathjson": [
+            "Divide",
+            "Pi",
+            6
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The limit is the definition of \\( f'(\\frac{\\pi}{6}) \\), and \\( f'(x) = \\tan^{2}{\\left(x \\right)} + 1 \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Power",
+               [
+                  "Tan",
+                  "x"
+               ],
+               2
+            ],
+            1
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Evaluate: \\( f'(\\frac{\\pi}{6}) = \\frac{4}{3} \\).",
+         "mathjson": [
+            "Rational",
+            4,
+            3
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Rational",
+            4,
+            3
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": 4,
+         "is_key": false,
+         "error_path": "BC-ERR-02010",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": 1,
+         "is_key": false,
+         "error_path": "BC-ERR-02010",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            [
+               "Power",
+               [
+                  "Tan",
+                  [
+                     "Divide",
+                     [
+                        "Sqrt",
+                        3
+                     ],
+                     3
+                  ]
+               ],
+               2
+            ],
+            1
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-02010",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02035",
+      "BC-SKL-02005"
+   ],
+   "parameter_draw": {
+      "function": "tan(x)",
+      "base_point": "pi/6",
+      "increment_variable": "h",
+      "form": "increment",
+      "wrong_base_readings": {
+         "shift": "pi/3",
+         "zero": "0",
+         "constant": "sqrt(3)/3"
+      },
+      "difficulty_variables": {
+         "standard angle or value": true,
+         "two point form": false,
+         "transcendental": true
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

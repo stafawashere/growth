@@ -1,0 +1,143 @@
+{
+   "id": "ITM-AGT-10014-01",
+   "archetype_id": "BC-QA-10014",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Find the radius of convergence of the power series \\( \\sum_{n=1}^{\\infty} \\frac{(x+2)^{n}}{3^{2n}\\,n} \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 9
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "For the ratio test, \\( \\left|\\frac{a_{n+1}}{a_n}\\right| = \\frac{n \\left|{x + 2}\\right|}{9 \\left(n + 1\\right)} \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Multiply",
+               "n",
+               [
+                  "Abs",
+                  [
+                     "Add",
+                     "x",
+                     2
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               9,
+               [
+                  "Add",
+                  "n",
+                  1
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "As \\( n \\to \\infty \\), the limit of this ratio is \\( \\frac{\\left|{x + 2}\\right|}{9} \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Abs",
+               [
+                  "Add",
+                  "x",
+                  2
+               ]
+            ],
+            9
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The series converges when \\( \\frac{\\left|{x + 2}\\right|}{9} < 1 \\), that is, when \\( \\left|x + 2\\right| < 9 \\).",
+         "mathjson": 9
+      },
+      {
+         "step": 4,
+         "text": "The radius of convergence is \\( R = 9 \\).",
+         "mathjson": 9
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 3,
+         "is_key": false,
+         "error_path": "BC-ERR-10021",
+         "violated_step": 0
+      },
+      {
+         "id": "B",
+         "value": 9,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": 1,
+         "is_key": false,
+         "error_path": "BC-ERR-10021",
+         "violated_step": 0
+      },
+      {
+         "id": "D",
+         "value": 7,
+         "is_key": false,
+         "error_path": "BC-ERR-10036",
+         "violated_step": 3
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10031",
+      "BC-SKL-10032",
+      "BC-SKL-10053",
+      "BC-SKL-10054",
+      "BC-SKL-10056"
+   ],
+   "parameter_draw": {
+      "general_term": "\\frac{(x+2)^{n}}{3^{2n}\\,n}",
+      "centre": -2,
+      "numerator_base_and_step": [
+         1,
+         0
+      ],
+      "denominator_base_and_step": [
+         3,
+         2
+      ],
+      "power_step": 1,
+      "distractor_errors": [
+         "shifts the exponent of the exponential factor in the denominator by 1 instead of the correct amount",
+         "shifts the exponent of the exponential factor in the denominator by 0 instead of the correct amount",
+         "reports the right endpoint of the open interval"
+      ],
+      "difficulty_variables": {
+         "coefficients_exponential_in_index": true,
+         "radius_irrational": false,
+         "centred_away_from_zero": true
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

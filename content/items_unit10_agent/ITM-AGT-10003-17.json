@@ -1,0 +1,124 @@
+{
+   "id": "ITM-AGT-10003-17",
+   "archetype_id": "BC-QA-10003",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "The constant \\( c \\) is chosen so that \\( \\sum_{n=1}^{\\infty} \\frac{c\\,3^{2n}}{10^{n}} = 27 \\). Find the value of \\( c \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 3
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Dividing consecutive terms gives the constant ratio \\( r = \\frac{9}{10} \\).",
+         "mathjson": [
+            "Rational",
+            9,
+            10
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The series starts at \\( n = 1 \\), so its first term is \\( a = \\frac{9 c}{10} \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Multiply",
+               9,
+               "c"
+            ],
+            10
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Since \\( |r| = \\frac{9}{10} < 1 \\), the series converges to \\( \\frac{a}{1 - r} = 9 c \\).",
+         "mathjson": [
+            "Multiply",
+            9,
+            "c"
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Setting \\( 9 c = 27 \\) gives \\( c = 3 \\).",
+         "mathjson": 3
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Rational",
+            27,
+            10
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10006",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": 3,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": [
+            "Rational",
+            3000,
+            271
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99038",
+         "violated_step": 3
+      },
+      {
+         "id": "D",
+         "value": 21,
+         "is_key": false,
+         "error_path": "BC-ERR-10004",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-13",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10006",
+      "BC-SKL-10007",
+      "BC-SKL-10008",
+      "BC-SKL-10009",
+      "BC-SKL-10010",
+      "BC-SKL-10063",
+      "BC-SKL-10072"
+   ],
+   "parameter_draw": {
+      "general_term": "\\frac{c\\,3^{2n}}{10^{n}}",
+      "start": 1,
+      "target_sum": 27,
+      "misread_ratio": "3/10",
+      "misread": "reads the ratio as 3/10, ignoring the 2 in the exponent 2n",
+      "difficulty_variables": {
+         "ratio_contains_variable": false,
+         "starts_at_index_zero": false,
+         "closed_form_given": true
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

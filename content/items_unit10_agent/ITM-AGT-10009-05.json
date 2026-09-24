@@ -1,0 +1,128 @@
+{
+   "id": "ITM-AGT-10009-05",
+   "archetype_id": "BC-QA-10009",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "A function \\( f \\) has derivatives of all orders. The first-degree Taylor polynomial for \\( f \\) about \\( x = 1 \\) is used to approximate \\( f\\left(\\frac{4}{3}\\right) \\). It is known that \\( f''(1) = 1 \\) and that \\( |f''(x)| \\le 4 \\) for all \\( x \\) in \\( \\left[1, \\frac{4}{3}\\right] \\). The approximation is meant to be within \\( \\frac{1}{2} \\) of \\( f\\left(\\frac{4}{3}\\right) \\). Find the Lagrange error bound for this approximation."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         2,
+         9
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "A degree 1 polynomial needs the maximum of \\( |f''(x)| \\), the derivative of order \\( 2 \\), between the centre and the input.",
+         "mathjson": 2
+      },
+      {
+         "step": 2,
+         "text": "The bound is \\( \\frac{M\\,|x - 1|^{2}}{2!} \\) with \\( M = 4 \\) and \\( |x - 1| = \\frac{1}{3} \\).",
+         "mathjson": [
+            "Rational",
+            2,
+            9
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Evaluating gives \\( \\frac{4 \\cdot \\left(\\frac{1}{3}\\right)^{2}}{2} = \\frac{2}{9} \\).",
+         "mathjson": [
+            "Rational",
+            2,
+            9
+         ]
+      },
+      {
+         "step": 4,
+         "text": "The error is at most \\( \\frac{2}{9} \\), which is at most \\( \\frac{1}{2} \\).",
+         "mathjson": [
+            "Rational",
+            2,
+            9
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Rational",
+            4,
+            9
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10032",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            2,
+            9
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": [
+            "Rational",
+            2,
+            3
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10032",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": [
+            "Rational",
+            1,
+            18
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10033",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10048",
+      "BC-SKL-10049",
+      "BC-SKL-10050",
+      "BC-SKL-10051",
+      "BC-SKL-10052"
+   ],
+   "parameter_draw": {
+      "centre": "1",
+      "input": "4/3",
+      "degree": 1,
+      "derivative_bound": "4",
+      "derivative_at_centre": "1",
+      "interval_stated": true,
+      "tolerance": "1/2",
+      "difficulty_variables": {
+         "derivative_bound_supplied": true,
+         "displacement": "1/3",
+         "tolerance_comparison_shown": true
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

@@ -1,0 +1,200 @@
+{
+   "id": "ITM-AGT-10017-13",
+   "archetype_id": "BC-QA-10017",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = 2 e^{-x^{3}} \\). Find the coefficient of \\( x^{6} \\) in the Maclaurin series for \\( f \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 1
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Recall \\( e^{u} = 1 + u + \\frac{u^{2}}{2!} + \\frac{u^{3}}{3!} + \\cdots \\).",
+         "mathjson": [
+            "Add",
+            1,
+            "x",
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  6
+               ],
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Substitute \\( u = -x^{3} \\), raising the whole of \\( -x^{3} \\) to each power: the series begins \\( 1 - x^{3} + \\frac{1}{2}x^{6} - \\frac{1}{6}x^{9} + \\cdots \\).",
+         "mathjson": [
+            "Add",
+            1,
+            [
+               "Negate",
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  6
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -1,
+                  6
+               ],
+               [
+                  "Power",
+                  "x",
+                  9
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Multiply every term by \\( 2 \\): \\( f(x) = 2 - 2x^{3} + x^{6} - \\frac{1}{3}x^{9} + \\cdots \\).",
+         "mathjson": [
+            "Add",
+            2,
+            [
+               "Multiply",
+               -2,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Power",
+               "x",
+               6
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -1,
+                  3
+               ],
+               [
+                  "Power",
+                  "x",
+                  9
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "The \\( x^{6} \\) term is \\( x^{6} \\), so the coefficient is \\( 1 \\).",
+         "mathjson": 1
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": -1,
+         "is_key": false,
+         "error_path": "BC-ERR-10041",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": 1,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": 2,
+         "is_key": false,
+         "error_path": "BC-ERR-10040",
+         "violated_step": 0
+      },
+      {
+         "id": "D",
+         "value": [
+            "Rational",
+            1,
+            2
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10041",
+         "violated_step": 2
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10061",
+      "BC-SKL-10062",
+      "BC-SKL-10063",
+      "BC-SKL-10064",
+      "BC-SKL-10065"
+   ],
+   "parameter_draw": {
+      "standard_series": "exp",
+      "constant_multiple": "2",
+      "power_of_x_multiplier": 0,
+      "inner_coefficient": "-1",
+      "inner_power": 3,
+      "question": "coefficient",
+      "terms_or_power": 6,
+      "substitution_raises_powers": true,
+      "misremembered_variants": [
+         "factorials dropped"
+      ]
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

@@ -1,0 +1,105 @@
+{
+   "id": "ITM-AGT-02009-10",
+   "archetype_id": "BC-QA-02009",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "The functions \\( f \\) and \\( g \\) are differentiable, with \\( f(2) = -4 \\) and \\( f'(2) = -3 \\). The line tangent to the graph of \\( g \\) at \\( x = 2 \\) has equation \\( y = 2 x - 7 \\). Let \\( h(x) = f(x)g(x) \\). Find the value of \\( h'(2) \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 1
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Record the values at \\( x = 2 \\): \\( f(2) = -4 \\), \\( f'(2) = -3 \\). The tangent line gives \\( g(2) = -3 \\) (its height at \\( x = 2 \\)) and \\( g'(2) = 2 \\) (its slope).",
+         "mathjson": -3
+      },
+      {
+         "step": 2,
+         "text": "By the product rule, \\( (fg)'(2) = f'(2)g(2) + f(2)g'(2) \\).",
+         "mathjson": -4
+      },
+      {
+         "step": 3,
+         "text": "Substitute: \\( (-3)(-3) + (-4)(2) = 1 \\).",
+         "mathjson": 1
+      },
+      {
+         "step": 4,
+         "text": "So \\( h'(2) = 1 \\).",
+         "mathjson": 1
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 21,
+         "is_key": false,
+         "error_path": "BC-ERR-02024",
+         "violated_step": 2
+      },
+      {
+         "id": "B",
+         "value": 4,
+         "is_key": false,
+         "error_path": "BC-ERR-02024",
+         "violated_step": 2
+      },
+      {
+         "id": "C",
+         "value": -6,
+         "is_key": false,
+         "error_path": "BC-ERR-02020",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": 1,
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-03",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-05",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02037",
+      "BC-SKL-02041",
+      "BC-SKL-02017"
+   ],
+   "parameter_draw": {
+      "kind": "tangent_product",
+      "a": 2,
+      "values": {
+         "f": -4,
+         "f_prime": -3,
+         "g": -3,
+         "g_prime": 2
+      },
+      "names": [
+         "f",
+         "g"
+      ],
+      "extra_row_shown": false,
+      "difficulty_variables": {
+         "table against graphs": "tangent line equation",
+         "product against quotient": "product",
+         "value read as a slope": true,
+         "interpreted in context": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

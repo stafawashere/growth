@@ -1,0 +1,149 @@
+{
+   "id": "ITM-AGT-05012-10",
+   "archetype_id": "BC-QA-05012",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Consider the curve given by \\( xe^{y} + y = 2 \\), along which \\( y \\) is a differentiable function of \\( x \\) near the point \\( (2, 0) \\). Find the value of \\( \\frac{d^2y}{dx^2} \\) at the point \\( (2, 0) \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         4,
+         27
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Differentiate \\( xe^{y} + y = 2 \\) implicitly with respect to \\( x \\): \\( e^{y} + \\left(x e^{y} + 1\\right)\\frac{dy}{dx} = 0 \\), so \\( \\frac{dy}{dx} = - \\frac{e^{y}}{x e^{y} + 1} \\).",
+         "mathjson": [
+            "Negate",
+            [
+               "Divide",
+               [
+                  "Exp",
+                  "y"
+               ],
+               [
+                  "Add",
+                  [
+                     "Multiply",
+                     "x",
+                     [
+                        "Exp",
+                        "y"
+                     ]
+                  ],
+                  1
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Differentiate \\( \\frac{dy}{dx} = \\frac{- e^{y}}{x e^{y} + 1} \\) again with the quotient rule, treating \\( y \\) as a function of \\( x \\): \\( \\frac{d^2y}{dx^2} = \\frac{- \\frac{dy}{dx} \\left(x e^{y} + 1\\right) e^{y} + \\left(\\frac{dy}{dx} x e^{y} + e^{y}\\right) e^{y}}{\\left(x e^{y} + 1\\right)^{2}} \\).",
+         "mathjson": [
+            "Rational",
+            -1,
+            3
+         ]
+      },
+      {
+         "step": 3,
+         "text": "At \\( (2, 0) \\), \\( \\frac{dy}{dx} = - \\frac{1}{3} \\). Substitute this value and the coordinates into the second derivative.",
+         "mathjson": [
+            "Rational",
+            4,
+            27
+         ]
+      },
+      {
+         "step": 4,
+         "text": "So \\( \\frac{d^2y}{dx^2} = \\frac{4}{27} \\) at \\( (2, 0) \\).",
+         "mathjson": [
+            "Rational",
+            4,
+            27
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 1,
+         "is_key": false,
+         "error_path": "BC-ERR-05060",
+         "violated_step": 0
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            4,
+            27
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": [
+            "Rational",
+            1,
+            9
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-03023",
+         "violated_step": 2
+      },
+      {
+         "id": "D",
+         "value": [
+            "Rational",
+            2,
+            9
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-05060",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-11",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-05058",
+      "BC-SKL-05059",
+      "BC-SKL-05060",
+      "BC-SKL-05061",
+      "BC-SKL-05062",
+      "BC-SKL-05063"
+   ],
+   "parameter_draw": {
+      "task": "second derivative at a point",
+      "relation": "x*exp(y) + y = 2",
+      "point": [
+         2,
+         0
+      ],
+      "difficulty_variables": {
+         "second_derivative_asked": true,
+         "relation_type": "transcendental",
+         "both_conditions_solved_together": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

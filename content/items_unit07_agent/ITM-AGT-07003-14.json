@@ -1,0 +1,182 @@
+{
+   "id": "ITM-AGT-07003-14",
+   "archetype_id": "BC-QA-07003",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Consider the differential equation \\( \\frac{dy}{dx} = x e^{-y} \\). Find the particular solution \\( y = f(x) \\) with \\( f(0) = 0 \\), written as an explicit function of \\( x \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Ln",
+         [
+            "Add",
+            [
+               "Divide",
+               [
+                  "Power",
+                  "x",
+                  2
+               ],
+               2
+            ],
+            1
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Separate the variables: \\( e^{y} \\, dy = x \\, dx \\).",
+         "mathjson": "x"
+      },
+      {
+         "step": 2,
+         "text": "Antidifferentiate both sides with one constant: \\( e^{y} = \\frac{x^{2}}{2} + C \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Power",
+               "x",
+               2
+            ],
+            2
+         ]
+      },
+      {
+         "step": 3,
+         "text": "At \\( x = 0 \\), \\( y = 0 \\), so \\( C = 1 \\).",
+         "mathjson": 1
+      },
+      {
+         "step": 4,
+         "text": "Take the natural logarithm: \\( y = \\ln{\\left(\\frac{x^{2}}{2} + 1 \\right)} \\).",
+         "mathjson": [
+            "Ln",
+            [
+               "Add",
+               [
+                  "Divide",
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ],
+                  2
+               ],
+               1
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Ln",
+            [
+               "Divide",
+               [
+                  "Power",
+                  "x",
+                  2
+               ],
+               2
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-07026",
+         "violated_step": 2
+      },
+      {
+         "id": "B",
+         "value": [
+            "Ln",
+            [
+               "Add",
+               [
+                  "Power",
+                  "x",
+                  2
+               ],
+               1
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99014",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Ln",
+            [
+               "Add",
+               "x",
+               1
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-07025",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": [
+            "Ln",
+            [
+               "Add",
+               [
+                  "Divide",
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ],
+                  2
+               ],
+               1
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-07024",
+      "BC-SKL-07025",
+      "BC-SKL-07026",
+      "BC-SKL-07027",
+      "BC-SKL-07029",
+      "BC-SKL-07030",
+      "BC-SKL-07033"
+   ],
+   "parameter_draw": {
+      "power_of_x": 1,
+      "x0": "0",
+      "y0": "0",
+      "difficulty_variables": {
+         "dependent_side": "exponential",
+         "absolute_value_resolved": false,
+         "substitution_on_independent_side": false,
+         "explicit_answer": true
+      },
+      "asked_for": "expression"
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

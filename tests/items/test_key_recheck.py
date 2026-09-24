@@ -1,8 +1,9 @@
-"""tools/key_recheck.py over content/items_p1_agent/ with its formulations file.
+"""tools/key_recheck.py over every item bank with its formulations file.
 
-The first test is the standing gate: every agent-drafted P1 key equals the answer computed from its
-stem, no distractor equals it, and no stem is worded as a choice. The rest show the recheck can
-fail for each reason it claims to check, so a clean run means something.
+The first two tests are the standing gate: in every bank the app serves (app/main.py
+default_item_directories, content/items_*), every key equals the answer computed from its stem, no
+distractor equals it, and no stem is worded as a choice. The rest show the recheck can fail for
+each reason it claims to check, so a clean run means something.
 """
 import json
 import shutil
@@ -11,6 +12,7 @@ from pathlib import Path
 import pytest
 import sympy
 
+from app.main import default_item_directories
 from tools import key_recheck
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
@@ -46,6 +48,20 @@ def test_every_p1_agent_item_rechecks_clean():
 
    assert blind_on == []
    assert len(results) == 130
+   assert flagged == {}
+
+
+@pytest.mark.parametrize("bank", default_item_directories(), ids=lambda bank: bank.name)
+def test_every_bank_rechecks_clean(bank):
+   formulations_path = bank / "key_formulations.py"
+
+   assert formulations_path.is_file(), f"{bank.name} has no key_formulations.py"
+
+   results, blind_on = key_recheck.recheck(bank, key_recheck.load_formulations(formulations_path))
+   flagged = {result.item_id: result.flags for result in results if not result.is_clean}
+
+   assert blind_on == []
+   assert len(results) > 0, f"{bank.name} holds no items"
    assert flagged == {}
 
 
@@ -88,3 +104,23 @@ def test_a_comparison_that_cannot_be_evaluated_is_never_called_equal():
 
    with pytest.raises(key_recheck.ComparisonUndecided):
       key_recheck.equivalent(unevaluable, 0)
+
+
+def test_the_control_holds_on_an_answer_of_minus_one(tmp_path):
+   """2v + 1 leaves -1 fixed, so a bank whose sampled answer was -1 once failed its control while
+   the comparator was sound (ITM-AGT-10003-04, 2026-09-24)."""
+   def key_of_minus_one(record):
+      record["answer_key"]["mathjson"] = -1
+
+   directory = one_item_bank(tmp_path, key_of_minus_one)
+   _, blind_on = key_recheck.recheck(directory, {ITEM_ID: lambda: -1})
+
+   assert blind_on == []
+
+
+def test_a_comparator_that_calls_everything_equal_fails_the_control(tmp_path, monkeypatch):
+   monkeypatch.setattr(key_recheck, "equivalent", lambda left, right: True)
+
+   _, blind_on = key_recheck.recheck(one_item_bank(tmp_path), FORMULATIONS)
+
+   assert blind_on == [ITEM_ID]

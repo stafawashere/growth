@@ -1,0 +1,141 @@
+{
+   "id": "ITM-AGT-10003-06",
+   "archetype_id": "BC-QA-10003",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Find the exact sum of the geometric series \\( \\sum_{n=1}^{\\infty} \\frac{3(-2)^{n}}{5^{n}} \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Negate",
+         [
+            "Divide",
+            6,
+            7
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Dividing consecutive terms gives the constant ratio \\( r = - \\frac{2}{5} \\).",
+         "mathjson": [
+            "Rational",
+            -2,
+            5
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The series as written starts at \\( n = 1 \\), so its first term is \\( a = - \\frac{6}{5} \\).",
+         "mathjson": [
+            "Rational",
+            -6,
+            5
+         ]
+      },
+      {
+         "step": 3,
+         "text": "The closed form needs \\( |r| < 1 \\), which holds because \\( |r| = \\frac{2}{5} \\).",
+         "mathjson": [
+            "Rational",
+            -2,
+            5
+         ]
+      },
+      {
+         "step": 4,
+         "text": "The sum is \\( \\frac{a}{1 - r} = - \\frac{6}{7} \\), so the sum is \\( - \\frac{6}{7} \\).",
+         "mathjson": [
+            "Negate",
+            [
+               "Divide",
+               6,
+               7
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Divide",
+            15,
+            7
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10006",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            -114,
+            125
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99038",
+         "violated_step": 3
+      },
+      {
+         "id": "C",
+         "value": [
+            "Negate",
+            [
+               "Divide",
+               6,
+               7
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": -2,
+         "is_key": false,
+         "error_path": "BC-ERR-10004",
+         "violated_step": 0
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-13",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10006",
+      "BC-SKL-10007",
+      "BC-SKL-10008",
+      "BC-SKL-10009",
+      "BC-SKL-10010",
+      "BC-SKL-10063",
+      "BC-SKL-10072"
+   ],
+   "parameter_draw": {
+      "general_term": "\\frac{3(-2)^{n}}{5^{n}}",
+      "start": 1,
+      "ratio": "-2/5",
+      "misread_ratio": "2/5",
+      "misread": "drops the sign and reads the ratio as 2/5",
+      "difficulty_variables": {
+         "ratio_contains_variable": false,
+         "starts_at_index_zero": false,
+         "closed_form_given": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

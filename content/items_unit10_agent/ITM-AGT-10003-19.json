@@ -1,0 +1,122 @@
+{
+   "id": "ITM-AGT-10003-19",
+   "archetype_id": "BC-QA-10003",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "The constant \\( c \\) is chosen so that \\( \\sum_{n=1}^{\\infty} \\frac{c(-1)^{n}}{2^{n}} = 2 \\). Find the value of \\( c \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": -6
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Dividing consecutive terms gives the constant ratio \\( r = - \\frac{1}{2} \\).",
+         "mathjson": [
+            "Rational",
+            -1,
+            2
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The series starts at \\( n = 1 \\), so its first term is \\( a = - \\frac{c}{2} \\).",
+         "mathjson": [
+            "Negate",
+            [
+               "Divide",
+               "c",
+               2
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Since \\( |r| = \\frac{1}{2} < 1 \\), the series converges to \\( \\frac{a}{1 - r} = \\frac{\\left(-1\\right) c}{3} \\).",
+         "mathjson": [
+            "Divide",
+            [
+               "Negate",
+               "c"
+            ],
+            3
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Setting \\( \\frac{\\left(-1\\right) c}{3} = 2 \\) gives \\( c = -6 \\).",
+         "mathjson": -6
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 3,
+         "is_key": false,
+         "error_path": "BC-ERR-10006",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            -16,
+            3
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99038",
+         "violated_step": 3
+      },
+      {
+         "id": "C",
+         "value": -2,
+         "is_key": false,
+         "error_path": "BC-ERR-10004",
+         "violated_step": 0
+      },
+      {
+         "id": "D",
+         "value": -6,
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-13",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10006",
+      "BC-SKL-10007",
+      "BC-SKL-10008",
+      "BC-SKL-10009",
+      "BC-SKL-10010",
+      "BC-SKL-10063",
+      "BC-SKL-10072"
+   ],
+   "parameter_draw": {
+      "general_term": "\\frac{c(-1)^{n}}{2^{n}}",
+      "start": 1,
+      "target_sum": 2,
+      "misread_ratio": "1/2",
+      "misread": "drops the sign and reads the ratio as 1/2",
+      "difficulty_variables": {
+         "ratio_contains_variable": false,
+         "starts_at_index_zero": false,
+         "closed_form_given": true
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

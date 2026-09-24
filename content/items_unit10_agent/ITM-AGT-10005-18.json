@@ -1,0 +1,170 @@
+{
+   "id": "ITM-AGT-10005-18",
+   "archetype_id": "BC-QA-10005",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "An improper integral is used to decide whether the series \\( \\sum_{n=4}^{\\infty} \\frac{1}{n^{3/2}} \\) converges. Take f(x) to be the series' general term with n replaced by x, and the lower limit of integration to be the series' starting index. Find the exact value of the improper integral of f from that lower limit to infinity."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 1
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Take \\( f(x) = \\frac{1}{x^{3/2}} \\), so \\( f(n) \\) is the general term. On \\( [4, \\infty) \\), \\( f \\) is positive, continuous, and decreasing, so the integral test applies.",
+         "mathjson": [
+            "Divide",
+            1,
+            [
+               "Power",
+               "x",
+               [
+                  "Rational",
+                  3,
+                  2
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The series starts at \\( n = 4 \\), so the matching integral is \\( \\int_{4}^{\\infty} \\frac{1}{x^{3/2}} \\, dx = \\lim_{b \\to \\infty} \\int_{4}^{b} \\frac{1}{x^{3/2}} \\, dx \\).",
+         "mathjson": 4
+      },
+      {
+         "step": 3,
+         "text": "An antiderivative is \\( F(x) = - \\frac{2}{\\sqrt{x}} \\), so \\( \\int_{4}^{b} \\frac{1}{x^{3/2}} \\, dx = 1 - \\frac{2}{\\sqrt{b}} \\).",
+         "mathjson": [
+            "Add",
+            1,
+            [
+               "Negate",
+               [
+                  "Divide",
+                  2,
+                  [
+                     "Sqrt",
+                     "b"
+                  ]
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "As \\( b \\to \\infty \\), \\( F(b) \\to 0 \\), so the integral converges to \\( 1 \\). This number is the value of the integral, not the sum of the series.",
+         "mathjson": 1
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Divide",
+            [
+               "Multiply",
+               2,
+               [
+                  "Sqrt",
+                  3
+               ]
+            ],
+            3
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10012",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Divide",
+            [
+               "Multiply",
+               2,
+               [
+                  "Sqrt",
+                  5
+               ]
+            ],
+            5
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10012",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": 1,
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            1,
+            [
+               "Negate",
+               [
+                  "Divide",
+                  2,
+                  [
+                     "Sqrt",
+                     "b"
+                  ]
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10011",
+         "violated_step": 2
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-09",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10014",
+      "BC-SKL-10015",
+      "BC-SKL-10016",
+      "BC-SKL-10017"
+   ],
+   "parameter_draw": {
+      "general_term": "\\frac{1}{n^{3/2}}",
+      "function": "\\frac{1}{x^{3/2}}",
+      "start": 4,
+      "distractor_plan": [
+         [
+            "lower",
+            3
+         ],
+         [
+            "lower",
+            5
+         ],
+         [
+            "abandon"
+         ]
+      ],
+      "difficulty_variables": {
+         "conditions_requested_explicitly": false,
+         "antiderivative_needs_substitution_or_parts": false,
+         "integral_diverges": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

@@ -1,0 +1,389 @@
+{
+   "id": "ITM-AGT-06010-12",
+   "archetype_id": "BC-QA-06010",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Find the exact value of \\( \\int_{0}^{1} \\frac{x^{2}}{x^{2} + 4 x + 3} \\, dx \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Negate",
+            [
+               "Divide",
+               [
+                  "Multiply",
+                  17,
+                  [
+                     "Ln",
+                     2
+                  ]
+               ],
+               2
+            ]
+         ],
+         1,
+         [
+            "Divide",
+            [
+               "Multiply",
+               9,
+               [
+                  "Ln",
+                  3
+               ]
+            ],
+            2
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Factor the denominator: \\( x^{2} + 4 x + 3 = \\left(x + 1\\right) \\left(x + 3\\right) \\).",
+         "mathjson": [
+            "Multiply",
+            [
+               "Add",
+               "x",
+               1
+            ],
+            [
+               "Add",
+               "x",
+               3
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The numerator's degree is not less than the denominator's, so divide first: \\( \\frac{x^{2}}{x^{2} + 4 x + 3} = 1 + \\frac{- 4 x - 3}{x^{2} + 4 x + 3} \\), and write \\( \\frac{- 4 x - 3}{x^{2} + 4 x + 3} = \\frac{A}{x + 1} + \\frac{B}{x + 3} \\).",
+         "mathjson": 1
+      },
+      {
+         "step": 3,
+         "text": "Clearing denominators gives \\( - 4 x - 3 = A \\left(x + 3\\right) + B \\left(x + 1\\right) \\). Setting \\( x = -1 \\) gives \\( A = \\frac{1}{2} \\), and setting \\( x = -3 \\) gives \\( B = - \\frac{9}{2} \\), so the integrand is \\( 1 - \\frac{9}{2 \\left(x + 3\\right)} + \\frac{1}{2 \\left(x + 1\\right)} \\).",
+         "mathjson": [
+            "Add",
+            1,
+            [
+               "Negate",
+               [
+                  "Divide",
+                  9,
+                  [
+                     "Add",
+                     [
+                        "Multiply",
+                        2,
+                        "x"
+                     ],
+                     6
+                  ]
+               ]
+            ],
+            [
+               "Divide",
+               1,
+               [
+                  "Add",
+                  [
+                     "Multiply",
+                     2,
+                     "x"
+                  ],
+                  2
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "An antiderivative is \\( x + \\frac{\\ln{\\left(\\left|{x + 1}\\right| \\right)}}{2} - \\frac{9 \\ln{\\left(\\left|{x + 3}\\right| \\right)}}{2} \\).",
+         "mathjson": [
+            "Add",
+            "x",
+            [
+               "Divide",
+               [
+                  "Ln",
+                  [
+                     "Abs",
+                     [
+                        "Add",
+                        "x",
+                        1
+                     ]
+                  ]
+               ],
+               2
+            ],
+            [
+               "Negate",
+               [
+                  "Divide",
+                  [
+                     "Multiply",
+                     9,
+                     [
+                        "Ln",
+                        [
+                           "Abs",
+                           [
+                              "Add",
+                              "x",
+                              3
+                           ]
+                        ]
+                     ]
+                  ],
+                  2
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 5,
+         "text": "Evaluate from \\( x = 0 \\) to \\( x = 1 \\): the value is \\( - \\frac{17 \\ln{\\left(2 \\right)}}{2} + 1 + \\frac{9 \\ln{\\left(3 \\right)}}{2} \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Negate",
+               [
+                  "Divide",
+                  [
+                     "Multiply",
+                     17,
+                     [
+                        "Ln",
+                        2
+                     ]
+                  ],
+                  2
+               ]
+            ],
+            1,
+            [
+               "Divide",
+               [
+                  "Multiply",
+                  9,
+                  [
+                     "Ln",
+                     3
+                  ]
+               ],
+               2
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            [
+               "Negate",
+               [
+                  "Divide",
+                  [
+                     "Multiply",
+                     17,
+                     [
+                        "Ln",
+                        2
+                     ]
+                  ],
+                  2
+               ]
+            ],
+            [
+               "Divide",
+               [
+                  "Multiply",
+                  9,
+                  [
+                     "Ln",
+                     3
+                  ]
+               ],
+               2
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06026",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Add",
+            [
+               "Negate",
+               [
+                  "Divide",
+                  [
+                     "Multiply",
+                     5,
+                     [
+                        "Ln",
+                        2
+                     ]
+                  ],
+                  2
+               ]
+            ],
+            [
+               "Divide",
+               [
+                  "Multiply",
+                  3,
+                  [
+                     "Ln",
+                     3
+                  ]
+               ],
+               2
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06026",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            [
+               "Negate",
+               [
+                  "Divide",
+                  [
+                     "Multiply",
+                     15,
+                     [
+                        "Ln",
+                        2
+                     ]
+                  ],
+                  2
+               ]
+            ],
+            [
+               "Divide",
+               [
+                  "Multiply",
+                  9,
+                  [
+                     "Ln",
+                     3
+                  ]
+               ],
+               2
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-06026",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            [
+               "Negate",
+               [
+                  "Divide",
+                  [
+                     "Multiply",
+                     17,
+                     [
+                        "Ln",
+                        2
+                     ]
+                  ],
+                  2
+               ]
+            ],
+            1,
+            [
+               "Divide",
+               [
+                  "Multiply",
+                  9,
+                  [
+                     "Ln",
+                     3
+                  ]
+               ],
+               2
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06062",
+      "BC-SKL-06063",
+      "BC-SKL-06064",
+      "BC-SKL-06065"
+   ],
+   "parameter_draw": {
+      "numerator": "x**2",
+      "denominator_factors": [
+         "x + 1",
+         "x + 3"
+      ],
+      "limits": [
+         "0",
+         "1"
+      ],
+      "quotient": "1",
+      "remainder": "-4*x - 3",
+      "A": "1/2",
+      "B": "-9/2",
+      "difficulty_variables": {
+         "whether the numerator degree forces a division first": "yes",
+         "whether the constants must be found by substitution or by equating coefficients": "substitution at the roots",
+         "whether the logarithms must be combined": "no, the answer is written with logarithms of primes",
+         "whether a definite integral requires the limits": "yes"
+      },
+      "distractor_derivations": {
+         "A": "decomposed without dividing; constants found by substituting both roots (cover up), so the polynomial part of the quotient is lost: A = 1/2, B = -9/2",
+         "B": "decomposed without dividing; constants found by substituting the root of the first factor and x = 0: A = 1/2, B = -3/2",
+         "C": "decomposed without dividing; constants found by substituting the root of the second factor and x = 0: A = 3/2, B = -9/2"
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

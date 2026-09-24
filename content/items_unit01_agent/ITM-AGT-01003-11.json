@@ -1,0 +1,148 @@
+{
+   "id": "ITM-AGT-01003-11",
+   "archetype_id": "BC-QA-01003",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "The functions \\( f \\), \\( g \\), and \\( h \\) are continuous for all real numbers, with \\( f(0) = 1 \\), \\( f(1) = 4 \\), \\( f(2) = 2 \\), \\( f(3) = 2 \\), \\( f(4) = 0 \\), \\( g(0) = 4 \\), \\( g(1) = 1 \\), \\( g(2) = 2 \\), \\( g(3) = 4 \\), \\( g(4) = 3 \\), \\( h(0) = 1 \\), \\( h(1) = 0 \\), \\( h(2) = 4 \\), \\( h(3) = 1 \\), \\( h(4) = 2 \\). Find the value of \\( \\lim_{x \\to 1} \\frac{g(h(x)) + h(f(x))}{f(g(x))} \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         3,
+         2
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Each function is continuous, so each limit at 1 is a function value: \\( f(1) = 4 \\), \\( g(1) = 1 \\), \\( h(1) = 0 \\).",
+         "mathjson": 4
+      },
+      {
+         "step": 2,
+         "text": "The expression is a quotient whose numerator is a sum of two composites and whose denominator is a composite. In each composite the outer function is continuous at the limit of the inner one, so \\( \\lim_{x \\to 1} g(h(x)) = g(0) = 4 \\), \\( \\lim_{x \\to 1} h(f(x)) = h(4) = 2 \\), \\( \\lim_{x \\to 1} f(g(x)) = f(1) = 4 \\).",
+         "mathjson": 4
+      },
+      {
+         "step": 3,
+         "text": "The denominator's limit is 4, which is not zero, so the quotient theorem applies.",
+         "mathjson": 4
+      },
+      {
+         "step": 4,
+         "text": "Apply the quotient theorem: \\( \\frac{4 + 2}{4} = \\frac{3}{2} \\).",
+         "mathjson": [
+            "Rational",
+            3,
+            2
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Rational",
+            1,
+            2
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-01007",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            3,
+            2
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": [
+            "Rational",
+            5,
+            4
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-01007",
+         "violated_step": 1
+      },
+      {
+         "id": "D",
+         "value": 2,
+         "is_key": false,
+         "error_path": "BC-ERR-01007",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-09",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-10",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-14",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-01018",
+      "BC-SKL-01019",
+      "BC-SKL-01020",
+      "BC-SKL-01022"
+   ],
+   "parameter_draw": {
+      "structure": "quotient",
+      "a": 1,
+      "side": "two-sided",
+      "composites": [
+         "g(h(x))",
+         "h(f(x))",
+         "f(g(x))"
+      ],
+      "coefficients": null,
+      "tables": {
+         "f": {
+            "0": 1,
+            "1": 4,
+            "2": 2,
+            "3": 2,
+            "4": 0
+         },
+         "g": {
+            "0": 4,
+            "1": 1,
+            "2": 2,
+            "3": 4,
+            "4": 3
+         },
+         "h": {
+            "0": 1,
+            "1": 0,
+            "2": 4,
+            "3": 1,
+            "4": 2
+         }
+      },
+      "difficulty_variables": {
+         "denominator limit zero": false,
+         "composite involved": true,
+         "one sided limit supplied": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

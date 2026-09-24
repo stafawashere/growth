@@ -1,0 +1,200 @@
+{
+   "id": "ITM-AGT-10005-07",
+   "archetype_id": "BC-QA-10005",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "An improper integral is used to decide whether the series \\( \\sum_{n=3}^{\\infty} \\frac{1}{n(\\ln n)^{2}} \\) converges. Take f(x) to be the series' general term with n replaced by x, and the lower limit of integration to be the series' starting index. Find the exact value of the improper integral of f from that lower limit to infinity."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Divide",
+         1,
+         [
+            "Ln",
+            3
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Take \\( f(x) = \\frac{1}{x(\\ln x)^{2}} \\), so \\( f(n) \\) is the general term. On \\( [3, \\infty) \\), \\( f \\) is positive, continuous, and decreasing, so the integral test applies.",
+         "mathjson": [
+            "Divide",
+            1,
+            [
+               "Multiply",
+               "x",
+               [
+                  "Power",
+                  [
+                     "Ln",
+                     "x"
+                  ],
+                  2
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "The series starts at \\( n = 3 \\), so the matching integral is \\( \\int_{3}^{\\infty} \\frac{1}{x(\\ln x)^{2}} \\, dx = \\lim_{b \\to \\infty} \\int_{3}^{b} \\frac{1}{x(\\ln x)^{2}} \\, dx \\).",
+         "mathjson": 3
+      },
+      {
+         "step": 3,
+         "text": "An antiderivative is \\( F(x) = - \\frac{1}{\\ln{\\left(x \\right)}} \\), so \\( \\int_{3}^{b} \\frac{1}{x(\\ln x)^{2}} \\, dx = \\frac{1}{\\ln{\\left(3 \\right)}} - \\frac{1}{\\ln{\\left(b \\right)}} \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Divide",
+               1,
+               [
+                  "Ln",
+                  3
+               ]
+            ],
+            [
+               "Negate",
+               [
+                  "Divide",
+                  1,
+                  [
+                     "Ln",
+                     "b"
+                  ]
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "As \\( b \\to \\infty \\), \\( F(b) \\to 0 \\), so the integral converges to \\( \\frac{1}{\\ln{\\left(3 \\right)}} \\). This number is the value of the integral, not the sum of the series.",
+         "mathjson": [
+            "Divide",
+            1,
+            [
+               "Ln",
+               3
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Divide",
+            1,
+            [
+               "Ln",
+               2
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10012",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Divide",
+            1,
+            [
+               "Ln",
+               4
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10012",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            [
+               "Divide",
+               1,
+               [
+                  "Ln",
+                  3
+               ]
+            ],
+            [
+               "Negate",
+               [
+                  "Divide",
+                  1,
+                  [
+                     "Ln",
+                     "b"
+                  ]
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10011",
+         "violated_step": 2
+      },
+      {
+         "id": "D",
+         "value": [
+            "Divide",
+            1,
+            [
+               "Ln",
+               3
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-09",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10014",
+      "BC-SKL-10015",
+      "BC-SKL-10016",
+      "BC-SKL-10017"
+   ],
+   "parameter_draw": {
+      "general_term": "\\frac{1}{n(\\ln n)^{2}}",
+      "function": "\\frac{1}{x(\\ln x)^{2}}",
+      "start": 3,
+      "distractor_plan": [
+         [
+            "lower",
+            2
+         ],
+         [
+            "lower",
+            4
+         ],
+         [
+            "abandon"
+         ]
+      ],
+      "difficulty_variables": {
+         "conditions_requested_explicitly": false,
+         "antiderivative_needs_substitution_or_parts": true,
+         "integral_diverges": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

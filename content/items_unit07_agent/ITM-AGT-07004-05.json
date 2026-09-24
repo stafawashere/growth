@@ -1,0 +1,132 @@
+{
+   "id": "ITM-AGT-07004-05",
+   "archetype_id": "BC-QA-07004",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( y = f(x) \\) be the solution to the differential equation \\( \\frac{dy}{dx} = x - 2 y \\) with \\( f(2) = 3 \\). Find the approximation to \\( f(3) \\) given by Euler's method, starting at \\( x = 2 \\) with two steps of equal size. Give the exact value."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         5,
+         4
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The step size is \\( \\Delta x = \\frac{3 - (2)}{2} = \\frac{1}{2} \\).",
+         "mathjson": [
+            "Rational",
+            1,
+            2
+         ]
+      },
+      {
+         "step": 2,
+         "text": "At \\( (2, 3) \\) the slope is \\( -4 \\), so \\( y \\approx 3 + (\\frac{1}{2})(-4) = 1 \\) at \\( x = \\frac{5}{2} \\).",
+         "mathjson": 1
+      },
+      {
+         "step": 3,
+         "text": "At \\( (\\frac{5}{2}, 1) \\) the slope is \\( \\frac{1}{2} \\), so \\( y \\approx 1 + (\\frac{1}{2})(\\frac{1}{2}) = \\frac{5}{4} \\) at \\( x = 3 \\).",
+         "mathjson": [
+            "Rational",
+            5,
+            4
+         ]
+      },
+      {
+         "step": 4,
+         "text": "So \\( f(3) \\approx \\frac{5}{4} \\).",
+         "mathjson": [
+            "Rational",
+            5,
+            4
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": -1,
+         "is_key": false,
+         "error_path": "BC-ERR-07019",
+         "violated_step": 0
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            5,
+            4
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": [
+            "Rational",
+            3,
+            2
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99026",
+         "violated_step": 3
+      },
+      {
+         "id": "D",
+         "value": [
+            "Rational",
+            -3,
+            4
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-07021",
+         "violated_step": 2
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-12",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-07019",
+      "BC-SKL-07020",
+      "BC-SKL-07021",
+      "BC-SKL-07022",
+      "BC-SKL-07023"
+   ],
+   "parameter_draw": {
+      "dy_dx": "x - 2*y",
+      "x0": "2",
+      "y0": "3",
+      "target_x": "3",
+      "steps": 2,
+      "step_size": "1/2",
+      "difficulty_variables": {
+         "derivative_depends_on_both_variables": true,
+         "number_of_steps": 2,
+         "imported_from_earlier_part": false,
+         "direction_of_error_demanded": false
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

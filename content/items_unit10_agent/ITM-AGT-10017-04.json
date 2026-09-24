@@ -1,0 +1,267 @@
+{
+   "id": "ITM-AGT-10017-04",
+   "archetype_id": "BC-QA-10017",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = \\frac{4}{1 - 3x} \\). Find the sum of the first three nonzero terms of the Maclaurin series for \\( f \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         4,
+         [
+            "Multiply",
+            12,
+            "x"
+         ],
+         [
+            "Multiply",
+            36,
+            [
+               "Power",
+               "x",
+               2
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Recall \\( \\frac{1}{1 - u} = 1 + u + u^{2} + u^{3} + \\cdots \\).",
+         "mathjson": [
+            "Add",
+            1,
+            "x",
+            [
+               "Power",
+               "x",
+               2
+            ],
+            [
+               "Power",
+               "x",
+               3
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Substitute \\( u = 3x \\), raising the whole of \\( 3x \\) to each power: the series begins \\( 1 + 3x + 9x^{2} + 27x^{3} + \\cdots \\).",
+         "mathjson": [
+            "Add",
+            1,
+            [
+               "Multiply",
+               3,
+               "x"
+            ],
+            [
+               "Multiply",
+               9,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               27,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Multiply every term by \\( 4 \\): \\( f(x) = 4 + 12x + 36x^{2} + 108x^{3} + \\cdots \\).",
+         "mathjson": [
+            "Add",
+            4,
+            [
+               "Multiply",
+               12,
+               "x"
+            ],
+            [
+               "Multiply",
+               36,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               108,
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "The first three nonzero terms sum to \\( 4 + 12x + 36x^{2} \\).",
+         "mathjson": [
+            "Add",
+            4,
+            [
+               "Multiply",
+               12,
+               "x"
+            ],
+            [
+               "Multiply",
+               36,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            4,
+            [
+               "Multiply",
+               12,
+               "x"
+            ],
+            [
+               "Multiply",
+               36,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "B",
+         "value": [
+            "Add",
+            4,
+            [
+               "Multiply",
+               -12,
+               "x"
+            ],
+            [
+               "Multiply",
+               36,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10040",
+         "violated_step": 0
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            1,
+            [
+               "Multiply",
+               3,
+               "x"
+            ],
+            [
+               "Multiply",
+               9,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10041",
+         "violated_step": 2
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            4,
+            [
+               "Multiply",
+               12,
+               "x"
+            ],
+            [
+               "Multiply",
+               12,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10041",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10061",
+      "BC-SKL-10062",
+      "BC-SKL-10063",
+      "BC-SKL-10064",
+      "BC-SKL-10065"
+   ],
+   "parameter_draw": {
+      "standard_series": "geom",
+      "constant_multiple": "4",
+      "power_of_x_multiplier": 0,
+      "inner_coefficient": "3",
+      "inner_power": 1,
+      "question": "terms",
+      "terms_or_power": 3,
+      "substitution_raises_powers": false,
+      "misremembered_variants": [
+         "signs wrong"
+      ]
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

@@ -1,0 +1,141 @@
+{
+   "id": "ITM-AGT-10011-08",
+   "archetype_id": "BC-QA-10011",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "The function \\( f \\) has derivatives of all orders, and its values at \\( x = 1 \\) are \\( f(1) = 3 \\), \\( f'(1) = 2 \\), \\( f''(1) = -4 \\), \\( f'''(1) = 12 \\). Let \\( P \\) be the second-degree Taylor polynomial for \\( f \\) about \\( x = 1 \\). Find the value of \\( P\\left(\\frac{3}{2}\\right) \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         7,
+         2
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "A degree 2 polynomial needs the values through order 2: \\( f(1) = 3 \\), \\( f'(1) = 2 \\), \\( f''(1) = -4 \\). The value of order 3 is not used.",
+         "mathjson": -4
+      },
+      {
+         "step": 2,
+         "text": "Divide each by the matching factorial: \\( \\frac{3}{0!} = 3 \\), \\( \\frac{2}{1!} = 2 \\), \\( \\frac{-4}{2!} = -2 \\).",
+         "mathjson": -2
+      },
+      {
+         "step": 3,
+         "text": "Attach \\( (x - 1)^{k} \\) to the coefficient of order \\( k \\): \\( P(x) = 3 + 2(x - 1) - 2(x - 1)^{2} \\).",
+         "mathjson": [
+            "Add",
+            3,
+            [
+               "Multiply",
+               2,
+               [
+                  "Subtract",
+                  "x",
+                  1
+               ]
+            ],
+            [
+               "Multiply",
+               -2,
+               [
+                  "Power",
+                  [
+                     "Subtract",
+                     "x",
+                     1
+                  ],
+                  2
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 4,
+         "text": "Substitute \\( x = \\frac{3}{2} \\), so \\( (x - 1) = \\frac{1}{2} \\): \\( P\\left(\\frac{3}{2}\\right) = \\frac{7}{2} \\).",
+         "mathjson": [
+            "Rational",
+            7,
+            2
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": 3,
+         "is_key": false,
+         "error_path": "BC-ERR-10029",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            7,
+            2
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "C",
+         "value": [
+            "Rational",
+            5,
+            4
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10031",
+         "violated_step": 0
+      },
+      {
+         "id": "D",
+         "value": [
+            "Rational",
+            15,
+            4
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10030",
+         "violated_step": 3
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-01",
+         "setting": "high"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10044",
+      "BC-SKL-10045"
+   ],
+   "parameter_draw": {
+      "function_letter": "f",
+      "centre": 1,
+      "table_values": [
+         "3",
+         "2",
+         "-4",
+         "12"
+      ],
+      "degree_requested": 2,
+      "centre_is_zero": false,
+      "approximation_at": "3/2",
+      "rows_swapped_in_distractor": [
+         1,
+         2
+      ]
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

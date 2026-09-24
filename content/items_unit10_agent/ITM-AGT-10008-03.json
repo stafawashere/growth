@@ -1,0 +1,126 @@
+{
+   "id": "ITM-AGT-10008-03",
+   "archetype_id": "BC-QA-10008",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = \\sum_{n=1}^{\\infty} \\frac{(-1)^{n+1}(x - 3)^{n}}{n^{2}\\,2^{n}} \\) for \\( |x - 3| < 2 \\). The sum of the first four terms of this series at \\( x = 4 \\) is used to approximate \\( f(4) \\). Find the alternating series error bound for this approximation."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         1,
+         800
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "At \\( x = 4 \\), \\( x - 3 = 1 \\), so the terms are \\( (-1)^{n+1} a_n \\) with \\( a_n = \\frac{(\\frac{1}{2})^{n}}{n^{2}} \\). These alternate in sign and decrease in absolute value to 0.",
+         "mathjson": 1
+      },
+      {
+         "step": 2,
+         "text": "The approximation uses terms \\( n = 1 \\) to \\( n = 4 \\), so the first omitted term is the one with \\( n = 5 \\).",
+         "mathjson": 5
+      },
+      {
+         "step": 3,
+         "text": "Its absolute value is \\( a_{5} = \\frac{1}{800} \\).",
+         "mathjson": [
+            "Rational",
+            1,
+            800
+         ]
+      },
+      {
+         "step": 4,
+         "text": "By the alternating series error bound, the error is at most \\( \\frac{1}{800} \\).",
+         "mathjson": [
+            "Rational",
+            1,
+            800
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Rational",
+            1,
+            256
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10024",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Rational",
+            1,
+            2304
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10024",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Rational",
+            32,
+            25
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-10025",
+         "violated_step": 2
+      },
+      {
+         "id": "D",
+         "value": [
+            "Rational",
+            1,
+            800
+         ],
+         "is_key": true,
+         "error_path": null
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-08",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10028",
+      "BC-SKL-10029",
+      "BC-SKL-10039",
+      "BC-SKL-10040",
+      "BC-SKL-10041",
+      "BC-SKL-10042",
+      "BC-SKL-10052",
+      "BC-SKL-10066"
+   ],
+   "parameter_draw": {
+      "centre": 3,
+      "base": 2,
+      "input": 4,
+      "denominator": "n2",
+      "terms_used": 4,
+      "wrong_input_error": "substitutes x itself instead of the displacement x minus the centre",
+      "difficulty_variables": {
+         "tolerance_supplied": false,
+         "from_taylor_series_at_point": true,
+         "first_omitted_index": 5
+      }
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

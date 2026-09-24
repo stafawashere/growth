@@ -1,0 +1,435 @@
+{
+   "id": "ITM-AGT-10019-12",
+   "archetype_id": "BC-QA-10019",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f \\) be the function with \\( f(0) = -2 \\) and \\( f'(x) = x^{2} \\cos x \\). Use a known Maclaurin series for \\( f' \\), integrated term by term, to find the sum of the first four nonzero terms of the Maclaurin series for \\( f \\)."
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         -2,
+         [
+            "Multiply",
+            [
+               "Rational",
+               1,
+               3
+            ],
+            [
+               "Power",
+               "x",
+               3
+            ]
+         ],
+         [
+            "Multiply",
+            [
+               "Rational",
+               -1,
+               10
+            ],
+            [
+               "Power",
+               "x",
+               5
+            ]
+         ],
+         [
+            "Multiply",
+            [
+               "Rational",
+               1,
+               168
+            ],
+            [
+               "Power",
+               "x",
+               7
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "From the series for \\( \\cos x \\), \\( f'(x) = x^{2} - \\frac{1}{2}x^{4} + \\frac{1}{24}x^{6} - \\frac{1}{720}x^{8} + \\cdots \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Power",
+               "x",
+               2
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -1,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  4
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  24
+               ],
+               [
+                  "Power",
+                  "x",
+                  6
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -1,
+                  720
+               ],
+               [
+                  "Power",
+                  "x",
+                  8
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 2,
+         "text": "Integrate each term, raising the power by 1 and dividing by the new power: \\( f(x) = C + \\frac{1}{3}x^{3} - \\frac{1}{10}x^{5} + \\frac{1}{168}x^{7} - \\frac{1}{6480}x^{9} + \\cdots \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  3
+               ],
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -1,
+                  10
+               ],
+               [
+                  "Power",
+                  "x",
+                  5
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  168
+               ],
+               [
+                  "Power",
+                  "x",
+                  7
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -1,
+                  6480
+               ],
+               [
+                  "Power",
+                  "x",
+                  9
+               ]
+            ]
+         ]
+      },
+      {
+         "step": 3,
+         "text": "Every term after the constant vanishes at 0, so \\( f(0) = C = -2 \\).",
+         "mathjson": -2
+      },
+      {
+         "step": 4,
+         "text": "The first four nonzero terms sum to \\( -2 + \\frac{1}{3}x^{3} - \\frac{1}{10}x^{5} + \\frac{1}{168}x^{7} \\).",
+         "mathjson": [
+            "Add",
+            -2,
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  3
+               ],
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -1,
+                  10
+               ],
+               [
+                  "Power",
+                  "x",
+                  5
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  168
+               ],
+               [
+                  "Power",
+                  "x",
+                  7
+               ]
+            ]
+         ]
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "value": [
+            "Add",
+            -2,
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  3
+               ],
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -1,
+                  10
+               ],
+               [
+                  "Power",
+                  "x",
+                  4
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  168
+               ],
+               [
+                  "Power",
+                  "x",
+                  6
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99018",
+         "violated_step": 1
+      },
+      {
+         "id": "B",
+         "value": [
+            "Add",
+            -2,
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -1,
+                  8
+               ],
+               [
+                  "Power",
+                  "x",
+                  5
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  144
+               ],
+               [
+                  "Power",
+                  "x",
+                  7
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99018",
+         "violated_step": 1
+      },
+      {
+         "id": "C",
+         "value": [
+            "Add",
+            -2,
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  3
+               ],
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -1,
+                  10
+               ],
+               [
+                  "Power",
+                  "x",
+                  5
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  168
+               ],
+               [
+                  "Power",
+                  "x",
+                  7
+               ]
+            ]
+         ],
+         "is_key": true,
+         "error_path": null
+      },
+      {
+         "id": "D",
+         "value": [
+            "Add",
+            -2,
+            [
+               "Power",
+               "x",
+               3
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  -1,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  5
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  24
+               ],
+               [
+                  "Power",
+                  "x",
+                  7
+               ]
+            ]
+         ],
+         "is_key": false,
+         "error_path": "BC-ERR-99018",
+         "violated_step": 1
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10069"
+   ],
+   "parameter_draw": {
+      "integrand": "x^{2} \\cos x",
+      "known_series": "\\cos x",
+      "substitution": null,
+      "value_at_zero": -2,
+      "constant_is_zero": false,
+      "terms_requested": 4,
+      "distractor_mistakes": [
+         "power raised without dividing",
+         "divided by the new exponent without raising the power",
+         "divided by the old exponent"
+      ]
+   },
+   "authored_on": "2026-09-24",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 1 content run of 2026-09-24",
+   "signed_off_by": "claude-opus-5-5 review on the operator's delegation of 2026-09-24, docs/operator/items-units-4-to-10.md"
+}

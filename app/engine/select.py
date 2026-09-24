@@ -13,9 +13,8 @@ from app.engine.fringe import (
    drain_probe_queue,
    due_coverage,
    gated_records,
-   is_mastered,
+   is_due,
    outer_fringe,
-   retrievability_of,
    serve_stage,
 )
 from app.engine.prior import p_knowledge, primary_skill
@@ -40,6 +39,7 @@ class InterleaveRules:
 
 DEFAULT_RULES = InterleaveRules()
 
+REVIEW_RETRIEVAL_FLOOR = 0.5
 
 
 def session_now(today, now=None):
@@ -231,7 +231,7 @@ def due_skills(states, graph, today, retrievability):
    return {
       skill_id
       for skill_id in states
-      if is_mastered(skill_id, states) and retrievability_of(skill_id, retrievability) < target
+      if is_due(skill_id, states, retrievability, target)
    }
 
 
@@ -243,11 +243,49 @@ def hypercorrection_skills(states, today):
    }
 
 
-def archetypes_touching(skill_ids, graph):
+def reached_skills(record, graph, include_parents):
+   reached = set(record["skills"])
+
+   if include_parents:
+      for skill_id in record["skills"]:
+         reached.update(graph.gating_parents(skill_id))
+
+   return reached
+
+
+def archetypes_touching(skill_ids, graph, include_parents=False):
+   """include_parents widens the reach to 1-hop gating parents, the same reach
+   covered_due_skills credits, so an archetype that retires a due skill only as an ancestor
+   is still a candidate."""
    return [
       record
       for record in graph.archetypes.values()
-      if any(skill in skill_ids for skill in record["skills"])
+      if reached_skills(record, graph, include_parents) & set(skill_ids)
+   ]
+
+
+def review_eligible(pool_skills, states, graph, bank, needs_retrieval=True):
+   """Archetypes touching the pool that have a published item (R18) and clear gating.
+
+   A due review is a retrieval opportunity, not a fringe probe, so it also needs p_A of at least
+   REVIEW_RETRIEVAL_FLOOR, and it reaches the pool through 1-hop hard ancestors as repetition
+   compression does. Hypercorrection overrides the floor, as it overrides the FSRS order, and
+   is served only by archetypes loading the flagged skill directly.
+   """
+   touching = [
+      record
+      for record in archetypes_touching(pool_skills, graph, include_parents=needs_retrieval)
+      if bank.has_published_item(record["id"])
+   ]
+   gated = gated_records(touching, states, graph)
+
+   if not needs_retrieval:
+      return gated
+
+   return [
+      record
+      for record in gated
+      if p_knowledge(record, states, graph.hard_parents) >= REVIEW_RETRIEVAL_FLOOR
    ]
 
 
@@ -283,24 +321,9 @@ def next_item_review(
    if not pool_skills:
       return Selection(None)
 
-   touching = [
-      record
-      for record in archetypes_touching(pool_skills, graph)
-      if bank.has_published_item(record["id"])
-   ]
-   gated = gated_records(touching, states, graph)
-   allowed = filter_interleaving(gated, history, graph, rules)
-
-   if serves_hyper:
-      retrievable = allowed
-   else:
-      retrievable = [
-         record
-         for record in allowed
-         if p_knowledge(record, states, graph.hard_parents) >= 0.5
-      ]
-
-   ordered = choose_by_due_coverage(retrievable, states, graph, today, retrievability, rng)
+   eligible = review_eligible(pool_skills, states, graph, bank, needs_retrieval=not serves_hyper)
+   allowed = filter_interleaving(eligible, history, graph, rules)
+   ordered = choose_by_due_coverage(allowed, states, graph, today, retrievability, rng)
 
    for record in ordered:
       served = pick_item(record, states, graph, bank, rng, excluded_ids, user_attempts)

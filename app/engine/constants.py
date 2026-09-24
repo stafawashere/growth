@@ -3,7 +3,7 @@
 Every value here is tagged inferred in the plan and listed as a tunable in
 docs/plan/12-open-questions.md. Change them there first.
 """
-from datetime import date
+from datetime import date, datetime
 
 GAMMA = 1.0
 RHO = -0.5
@@ -73,6 +73,25 @@ DESIRED_RETENTION_LATE = 0.95
 DESIRED_RETENTION_SWITCH_DATE = date(2027, 3, 15)
 
 
+def calendar_day(today):
+   """The day the app assembles for is a calendar date: the one the client sends, or the server's
+   local date when none is sent (app/session/preview.py, assembly_day). A datetime is read on its
+   own wall clock, so an aware value is never shifted into another zone first.
+   """
+   is_datetime = isinstance(today, datetime)
+
+   if is_datetime:
+      return today.date()
+
+   return today
+
+
 def desired_retention(today):
-   """P1 returns the early constant only. The dated switch arrives with FSRS scheduling in P2."""
+   """0.90 up to the day before the switch date and 0.95 from the switch date itself (02, Decay)."""
+   day = calendar_day(today)
+   is_late_window = day >= DESIRED_RETENTION_SWITCH_DATE
+
+   if is_late_window:
+      return DESIRED_RETENTION_LATE
+
    return DESIRED_RETENTION_EARLY

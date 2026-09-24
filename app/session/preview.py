@@ -22,6 +22,12 @@ because the wireframe counts them as items and the requeue returns a named item.
 
 forecast_minutes, blocks 1 to 3: Session.forecast_total. Block 4 serves no items and so adds none.
 
+due_today_skills and due_today_minutes, the whole of today's due queue (Session.due_queue), which
+block 1 serves only the first 5 items or 5 minutes of: the count of mastered skills below the
+retention target, and the forecast over the archetypes that cover them, the archetypes serving a
+hypercorrection that has come due and the corrected items returning. Both are finite for any day,
+because the queue is built from a finite skill set.
+
 The preview predicts POST /sessions only if both read the same assembly inputs, so the day and the
 rng for both routes come from one place: the requested day, or the server's date when none is sent,
 and an rng seeded by the process seed, the user and that day. Two reads on one day agree, and the session
@@ -109,5 +115,7 @@ def queue_preview(db, user_id, graph, bank, today, rng):
       "frontier_skills": len(frontier),
       "corrected_items_returning": len(session.requeued),
       "forecast_minutes": session.forecast_total,
+      "due_today_skills": len(session.due_queue.skills),
+      "due_today_minutes": session.due_queue.minutes,
       "session_in_progress": open_session_id(db, user_id),
    }

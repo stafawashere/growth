@@ -220,23 +220,31 @@ def retrievability_of(skill_id, retrievability):
    return retrievability.get(skill_id, 1.0)
 
 
-def due_coverage(archetype, states, graph, today, retrievability=None):
+def is_due(skill_id, states, retrievability, target):
+   """Due for review means mastered and below the retention target; nothing unmastered is due."""
+   mastered = is_mastered(skill_id, states)
+   below_target = retrievability_of(skill_id, retrievability) < target
+
+   return mastered and below_target
+
+
+def covered_due_skills(archetype, states, graph, today, retrievability=None):
+   """The due skills one archetype retires: its loaded skills and their 1-hop hard ancestors."""
    target = constants.desired_retention(today)
-   counted = set()
-
-   def count(skill_id):
-      is_due = is_mastered(skill_id, states) and retrievability_of(skill_id, retrievability) < target
-
-      if is_due:
-         counted.add(skill_id)
+   covered = set()
 
    for skill_id in archetype["skills"]:
-      count(skill_id)
+      reached = [skill_id] + graph.gating_parents(skill_id)
 
-      for parent in graph.gating_parents(skill_id):
-         count(parent)
+      for candidate in reached:
+         if is_due(candidate, states, retrievability, target):
+            covered.add(candidate)
 
-   return len(counted)
+   return covered
+
+
+def due_coverage(archetype, states, graph, today, retrievability=None):
+   return len(covered_due_skills(archetype, states, graph, today, retrievability))
 
 
 def serve_stage(archetype, states, graph):

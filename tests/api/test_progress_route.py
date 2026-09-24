@@ -12,6 +12,8 @@ DECLARED_FIELDS = {
    "frontier_skills": int,
    "corrected_items_returning": int,
    "forecast_minutes": (int, float),
+   "due_today_skills": int,
+   "due_today_minutes": (int, float),
    "session_in_progress": (str, type(None)),
 }
 

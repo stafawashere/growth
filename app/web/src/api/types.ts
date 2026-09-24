@@ -125,6 +125,8 @@ export interface ProgressPayload {
    frontier_skills: number;
    corrected_items_returning: number;
    forecast_minutes: number;
+   due_today_skills: number;
+   due_today_minutes: number;
    session_in_progress: string | null;
 }
 

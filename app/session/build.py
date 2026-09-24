@@ -25,15 +25,18 @@ from sqlalchemy import select
 from app.auth.service import write_audit
 from app.db import models
 from app.engine import constants
-from app.engine.fringe import retrieval_eligible
+from app.engine.fringe import covered_due_skills, retrieval_eligible
 from app.engine.select import (
    DEFAULT_RULES,
+   due_skills,
    filter_interleaving,
+   hypercorrection_skills,
    next_item_learning,
    next_item_retrieval,
    next_item_review,
    pick_named_item,
    retrievability_map,
+   review_eligible,
    session_now,
 )
 
@@ -50,6 +53,7 @@ class Session:
    requeued: list = field(default_factory=list)
    coverage_gaps: tuple = ()
    forecasts: dict = field(default_factory=dict)
+   due_queue: "DueQueue | None" = None
 
    @property
    def blocks(self):
@@ -154,6 +158,111 @@ def requeue_ready(attempts_history, today):
    return [(item_id, archetype_id) for _, item_id, archetype_id in sorted(ready)]
 
 
+@dataclass(frozen=True)
+class DueQueue:
+   """Today's due reviews in full, of which block 1 serves the first 5 items or 5 minutes.
+
+   skills are the mastered skills below the retention target. archetypes is a greedy cover of
+   them under repetition compression, and uncovered_skills the due skills no eligible archetype
+   reaches, left unserved rather than served from an unpublished row (R18). requeued are the
+   corrected items whose R5 window is open. hypercorrection_skills are the skills whose
+   hypercorrection date has come, which block 1 serves ahead of the FSRS order, and
+   hypercorrection_archetypes the archetypes loading them directly that would serve them. minutes
+   is the forecast over every archetype and requeued item in the queue.
+   """
+   skills: tuple
+   archetypes: tuple
+   uncovered_skills: tuple
+   requeued: tuple
+   minutes: float
+   hypercorrection_skills: tuple = ()
+   hypercorrection_archetypes: tuple = ()
+
+   @property
+   def item_count(self):
+      return len(self.hypercorrection_archetypes) + len(self.archetypes) + len(self.requeued)
+
+
+def greedy_cover(targets, candidates, covered_by):
+   """Pick, each round, the candidate retiring the most still-uncovered targets.
+
+   Every round removes one archetype from a finite candidate list, so the cover ends. Ties go to
+   the lowest archetype id, because this is an estimate of the queue and not the served draw.
+   """
+   remaining = set(targets)
+   pool = sorted(candidates, key=lambda record: record["id"])
+   chosen = []
+
+   while remaining and pool:
+      scored = [(len(covered_by(record) & remaining), record) for record in pool]
+      best_cover, best = max(scored, key=lambda pair: pair[0])
+      covers_nothing = best_cover == 0
+
+      if covers_nothing:
+         break
+
+      chosen.append(best["id"])
+      remaining -= covered_by(best)
+      pool = [record for record in pool if record["id"] != best["id"]]
+
+   return chosen, remaining
+
+
+def compression_cover(due, states, graph, bank, today, retrievability):
+   """Repetition compression: an archetype retires its due loaded skills and due 1-hop hard
+   ancestors."""
+   candidates = review_eligible(due, states, graph, bank)
+
+   def covered_by(record):
+      return covered_due_skills(record, states, graph, today, retrievability)
+
+   return greedy_cover(due, candidates, covered_by)
+
+
+def hypercorrection_cover(hyper, states, graph, bank):
+   """Hypercorrection is served only by archetypes loading the flagged skill directly, with no
+   retrieval floor, as next_item_review serves it."""
+   candidates = review_eligible(hyper, states, graph, bank, needs_retrieval=False)
+
+   def covered_by(record):
+      return set(record["skills"])
+
+   return greedy_cover(hyper, candidates, covered_by)
+
+
+def is_published_item(bank, item_id, archetype_id):
+   return any(item["id"] == item_id for item in bank.published_items(archetype_id))
+
+
+def due_today_queue(states, graph, bank, attempts_history, today, retrievability=None):
+   retrievability = retrievability_map(states, today, retrievability)
+   due = due_skills(states, graph, today, retrievability)
+   hyper = hypercorrection_skills(states, today)
+   chosen, uncovered = compression_cover(due, states, graph, bank, today, retrievability)
+   hyper_chosen, _hyper_uncovered = hypercorrection_cover(hyper, states, graph, bank)
+   requeued = tuple(
+      (item_id, archetype_id)
+      for item_id, archetype_id in requeue_ready(attempts_history, today)
+      if is_published_item(bank, item_id, archetype_id)
+   )
+   requeued_archetypes = [archetype_id for _, archetype_id in requeued]
+   served_archetypes = list(hyper_chosen) + list(chosen) + requeued_archetypes
+   minutes = sum(
+      forecast_minutes(archetype_id, attempts_history)
+      for archetype_id in served_archetypes
+   )
+
+   return DueQueue(
+      skills=tuple(sorted(due)),
+      archetypes=tuple(chosen),
+      uncovered_skills=tuple(sorted(uncovered)),
+      requeued=requeued,
+      minutes=minutes,
+      hypercorrection_skills=tuple(sorted(hyper)),
+      hypercorrection_archetypes=tuple(hyper_chosen),
+   )
+
+
 def gap_already_recorded(db, user_id, archetype_id, today):
    statement = (
       select(models.AuditLog.detail)
@@ -249,6 +358,9 @@ def assemble_session(
    now = session_now(today, now)
    history = []
    session = Session()
+   session.due_queue = due_today_queue(
+      states, graph, bank, attempts_history, today, retrievability
+   )
    recent = recently_served(attempts_history, today)[0]
    requeue = requeue_ready(attempts_history, today)
    ready_ids = {item_id for item_id, _ in requeue}

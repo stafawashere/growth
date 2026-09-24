@@ -41,6 +41,8 @@ const readyProgress: ProgressPayload = {
    frontier_skills: 4,
    corrected_items_returning: 7,
    forecast_minutes: 23,
+   due_today_skills: 12,
+   due_today_minutes: 15,
    session_in_progress: null
 };
 
@@ -349,6 +351,8 @@ describe("home over GET /me and GET /progress", () => {
          frontier_skills: 0,
          corrected_items_returning: 0,
          forecast_minutes: 0,
+         due_today_skills: 0,
+         due_today_minutes: 0,
          session_in_progress: null
       });
       render(<App />);
@@ -363,6 +367,8 @@ describe("home over GET /me and GET /progress", () => {
          frontier_skills: 0,
          corrected_items_returning: 0,
          forecast_minutes: 5,
+         due_today_skills: 0,
+         due_today_minutes: 0,
          session_in_progress: null
       });
       render(<App />);

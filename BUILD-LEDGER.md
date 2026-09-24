@@ -1280,6 +1280,66 @@ claimed.
   `no_tool_ran` true and both phase 1 calls still read true. Checks: pytest `945 passed in
   484.23s`, vitest `310 passed (310)`, `tsc --noEmit` exit 0, `qa/12_report.py` exit 0.
 
+P2 Slice 3, 2026-09-23, review mode and FSRS scheduling (`docs/plan/11-phased-delivery.md` P2
+scope item 3), started ahead of P2's entry criterion on the operator's delegated authority (see
+Decisions below). Suite at close 918 tests collected, `pytest -q` exit 0 in 364 s (911 at open), vitest 310 passed, tsc exit 0, `qa/12_report.py` exit 0.
+
+- `constants.desired_retention(today)` now returns 0.90 before `DESIRED_RETENTION_SWITCH_DATE`
+  (2027-03-15) and 0.95 from that day on, with the signature 11's Q-list fixed. The day is the
+  calendar date the app assembles for (the client's `today`, else the server's local date); a
+  datetime is read on its own wall clock and never shifted into another zone first
+  (`constants.calendar_day`). The three existing constants stay the one configuration point.
+- The due test is one function, `fringe.is_due` (mastered and `R_k` below target), read by
+  `select.due_skills` and by the new `fringe.covered_due_skills`, the set of due skills one
+  archetype retires over its loaded skills and their 1-hop hard ancestors; `due_coverage` is its
+  size. `select.review_eligible` factors out block 1's candidate filter (published item, R18;
+  gating; `p_A >= 0.5` except for hypercorrection) so the queue and `next_item_review` share it.
+- `session.build.due_today_queue` builds today's finite due queue: the due skills, a greedy
+  repetition-compression cover of them (each round takes the eligible archetype retiring the most
+  still-uncovered due skills, lowest id on ties, stops when nothing more is retired), the due skills
+  no published archetype reaches (`uncovered_skills`, fail closed), the R5 requeues whose item is
+  published, and `minutes`, the sum of 02's per-archetype forecast (running median, 3 minutes until
+  5 attempts, `forecast_minutes`) over cover plus requeues. `assemble_session` stores it on
+  `Session.due_queue`; block 1 still serves the first 5 items or 5 minutes through
+  `next_item_review` and the requeue path, so FSRS-due skills and corrected items both appear.
+- `GET /progress` adds `due_today_skills` and `due_today_minutes` (`app/session/preview.py`);
+  `ProgressPayload` in `app/web/src/api/types.ts` declares both and the App test mocks carry them.
+  The client does not render them, so no vitest assertion was added; the five existing fields are
+  unchanged. `tests/api/test_progress_route.py` DECLARED_FIELDS gains the two fields with types,
+  which tightens that exact-set assertion.
+- Tests, `tests/engine/test_scheduling.py`: test_desired_retention_switch,
+  test_due_queue_finite, test_repetition_compression (the three named in 11 P2), plus
+  test_mastered_skill_is_due_exactly_when_retrievability_drops_below_target,
+  test_unmastered_skill_is_never_due_for_review,
+  test_due_queue_finite_leaves_a_skill_without_a_published_archetype_uncovered and
+  test_a_year_of_daily_sessions_never_grows_an_unbounded_queue. Each was watched red under a
+  mutation of the implementation, then green on restore: the retention function returning 0.90
+  always (switch red); `covered_due_skills` dropping ancestors (compression red); unpublished
+  archetypes made eligible (compression and uncovered red); the cover's nothing-left break removed
+  (uncovered red); the cover not subtracting retired skills (finite, uncovered, compression and
+  year red); the due test ignoring mastery (unmastered red); the due test always reading 0.95
+  (switch, exactly-due and year red).
+- Review fix: `select.review_eligible` reached the pool only through archetypes loading a due
+  skill directly, so a due skill whose only published archetype loads a hard child was reported
+  uncovered and never served, although `covered_due_skills` credits 1-hop hard ancestors. For due
+  reviews `archetypes_touching` now also reaches 1-hop gating parents; hypercorrection still needs
+  the flagged skill loaded directly. test_due_skill_reached_only_as_a_hard_parent_is_covered_and_served
+  went red with the widening turned off and green with it on. It is one test beyond the 918 counted at close; the rerun full suite exited 0 in 281 s.
+
+- 2026-09-23, P2 Slice 3 closing session: checked the slice against 11 P2 scope item 3 and 02
+  (Decay, review-mode pseudocode, block 1). One defect fixed: `due_today_queue` left out the
+  hypercorrection lane block 1 serves ahead of the FSRS order, so on a day with a hypercorrection
+  due and nothing FSRS-due the queue read 0 items and 0 minutes while block 1 served an item.
+  `DueQueue` gains `hypercorrection_skills` and `hypercorrection_archetypes` (a greedy cover over
+  archetypes loading the flagged skill directly, no retrieval floor, as `next_item_review` serves
+  it), counted in `item_count` and `minutes`; `session.build.greedy_cover` is the shared cover.
+  test_due_queue_counts_the_hypercorrection_requeue_block_one_serves_first went red before the fix
+  (`assert 0 == 1` on `item_count`) and red again with the hypercorrection archetypes dropped from
+  the minutes (`assert 0 == 3.0`), then green on restore. The shared queue check in
+  `tests/engine/test_scheduling.py` now also sums the hypercorrection archetypes into the stated
+  minutes, a stricter check. Checks before rebase: pytest `920 passed in 231.34s`, vitest `310
+  passed (310)`, `tsc --noEmit` exit 0, `qa/12_report.py` exit 0.
+
 ## In progress [inferred]
 
 Nothing. The fourteenth session closed with the suite green and every module of its plan either
@@ -1454,6 +1514,8 @@ Unchanged this slice, because `tools/cost_model.py` itself was not edited (see t
 $95.03. Both sit inside the operator's $50 to $100 ceiling, `BUDGET_CEILING`. This session's
 seventeen live calls add nothing to that model, since P1 wires only the tutor and the tutor's own
 `tutor.cycle` line, $5.01, was not touched.
+
+P2 Slice 3, 2026-09-23: no live call, $0.00. Every test is replay only.
 
 ## Known defects [verified]
 
@@ -2021,6 +2083,18 @@ From the eleventh session, 2026-09-21, found and not fixed.
   `--json-schema`; a later CLI that answers a schema in one turn, or takes more than one extra
   turn, will read `no_tool_ran` false in the smoke run and needs a look before the check is
   changed.
+
+- 2026-09-23, P2 Slice 3, open:
+  - `due_today_minutes` estimates the whole due queue through a deterministic cover; block 1 serves
+    only 5 items or 5 minutes of it with a random draw, so the rest carries to later days and
+    the served items can differ from the cover. Home does not show either new number; whether it
+    should is a design-brief question for the operator.
+  - A due skill with no published archetype (`DueQueue.uncovered_skills`) stays due every day and
+    is not written to `audit_log`; block 2's coverage gaps are audited, block 1's are not.
+  - In a fresh worktree `qa/12_report.py` exits 1 on `00_manifest` (97 "pdf missing") because
+    `cache/pdf/` is not in the checkout, and `git status` shows `cache/pdf` as untracked rather
+    than ignored. This session linked the main checkout's `cache/pdf` read-only for the QA run and
+    removed the link afterwards; an orchestrator that links it must not commit the link.
 
 ## Plan corrections applied [verified]
 
@@ -2765,6 +2839,24 @@ Subscription backend, Slice 2 closing session.
   call returned `structured_output`. The argv was left as it is and the smoke check was taught
   the one extra turn, only when a schema was asked for and structured output came back.
 
+P2 Slice 3, 2026-09-23: P2 scope item 3 (review mode and FSRS scheduling) was built although P2's
+entry criterion, "P1 merged with all gates green", is knowingly not met, since P1 reads 28 of 31
+gates. The reason is that the engine needs a finite due queue to teach from now to May 2027, and
+the three open P1 gates (17, 29, 30) need operator-authored items and a human key audit that no
+agent can supply. Nothing else in P2 (diagnostic, whole-graph selection, full interleaving,
+calibration) was started. Two narrower choices: the due queue counts FSRS-due skills and R5
+requeues and leaves hypercorrection out, because hypercorrection is block 1's override lane, not
+an FSRS due date; and the queue's cover breaks ties by lowest archetype id, because it is an
+estimate of the day's load, while block 1 keeps its uniform random draw.
+
+P2 Slice 3 closing session: the due queue now counts hypercorrection, reversing the slice's
+earlier choice to leave it out. The queue already counted R5 requeues, which are no more an FSRS
+due date than hypercorrection is, and 02 puts both in block 1 ahead of the FSRS order, so a queue
+that stated block 1's load but dropped one of its two override lanes understated the day's
+minutes. `due_today_skills` still counts only mastered skills below the retention target, the
+definition 11 gives for due; the hypercorrection work shows up in `due_today_minutes` and in
+`DueQueue.item_count`.
+
 ## Decisions taken on the operator's instruction, 2026-09-20 [inferred]
 
 Sixth session, on the instruction "answer all decisions for me". Every open question the ledger
@@ -2866,3 +2958,7 @@ Human-only, in the order that unblocks the most:
    re-auth requirement, the second-error-note behaviour, the purge confirmation phrase, PyNaCl
    (declined), `/growth-tokens.css`'s default, `uvicorn` in pyproject, and the eval-cadence
    overrun.
+
+P2 Slice 3, 2026-09-23: P2 scope item 3 (review mode, the dated desired-retention switch, the
+finite due-today queue and its minute estimate) landed ahead of the entry criterion, see
+Decisions. The rest of P2 still waits on it.

@@ -9,13 +9,18 @@ import katex from "katex";
 
 const INLINE_MATH = /\\\(([\s\S]*?)\\\)/g;
 
+/* compute-engine writes the constant e as its own \exponentialE, which KaTeX renders as an error. */
+const COMPUTE_ENGINE_E = /\\exponentialE(?![a-zA-Z])/g;
+
 export function mathJsonToLatex(node: unknown): string {
    if (node === null || node === undefined) {
       return "";
    }
 
    try {
-      return convertMathJsonToLatex(node as Parameters<typeof convertMathJsonToLatex>[0]);
+      const latex = convertMathJsonToLatex(node as Parameters<typeof convertMathJsonToLatex>[0]);
+
+      return latex.replace(COMPUTE_ENGINE_E, "\\mathrm{e}");
    } catch {
       return "";
    }

@@ -957,12 +957,14 @@ th {
 }
 
 .question-tools {
-   display: flex;
-   flex-wrap: wrap;
-   align-items: center;
-   gap: var(--growth-space-4) var(--growth-space-24);
-   padding-block: var(--growth-space-4);
-   border-bottom: var(--growth-stroke-hairline) solid var(--growth-border-hairline);
+   display: grid;
+   justify-items: stretch;
+   gap: var(--growth-space-8);
+   padding-block: var(--growth-space-4) var(--growth-space-16);
+}
+
+.question-tools > .text-button {
+   justify-self: start;
 }
 
 .question-tools .text-button {

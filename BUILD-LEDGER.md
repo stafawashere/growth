@@ -1907,6 +1907,17 @@ items) and items 3 and 6 (Slices 3 and 4). Every gate 11 names for P2 now exists
   `Tests  655 passed (655)` in 51 files; `tsc --noEmit` exit 0; `qa/12_report.py` exit 0;
   `tools/check_tokens.py` exit 0.
 
+- 2026-09-26, stage 9 (ui), slice 2 and exit: the constant e renders in option rows (see Known
+  defects), the timed-part tool bar is drawn only when a part offers a tool, and highlight and notes
+  stack beneath the question. Every screen was walked in the real app at 1280, 900 and 375 px in
+  both themes by claude-opus-5-5 in headless Brave, not by a person: 22 states, 132 after shots, 44
+  before shots and 44 pairs, listed in `docs/operator/ui-redesign.md`; no state scrolls the page
+  sideways at 375 px. Exit criteria met: every screen restyled in both themes at the three widths;
+  the token file holds the new palette; the contrast, type-scale, literal-value, keyboard,
+  greyscale and reduced-motion gates pass; no prototype sample data, study plan, provider choice,
+  simulated auth or single score reached the app. Checks: pytest `1358 passed in 1251.16s (0:20:51)`; vitest
+  `Tests  656 passed (656)` in 52 files; `tsc --noEmit` exit 0; `qa/12_report.py` exit 0.
+
 ## In progress [inferred]
 
 Stage 1, items for Units 4 to 10, is complete in the worktree `../growth-content` on branch
@@ -1936,13 +1947,8 @@ Stage 7, P6 and P8, 2026-09-26, worktree `../growth-p6p8` on branch `p6p8`: comp
 to confirm the CLI wording, the queue lengths after real limit windows for the drain pacing, and 8
 weeks of real attempts for P7. The next stage is 08, the P7 rerun, once those weeks exist.
 
-Stage 9, the UI redesign, 2026-09-26, worktree `../growth-ui` on branch `ui`: slice 1 (tokens,
-fonts, chrome and every screen's stylesheet and markup) is built and checked, being committed and
-pushed. Still to do in this stage: the e-constant rendering fix, a second walk of every screen at
-1280, 900 and 375 px in both themes, the before and after pairs in `docs/operator/ui-redesign.md`,
-and cleanup of the worktree `../growth-ui-before` (detached, used only to serve the old client for
-the before screenshots). Scratch tooling (the CDP driver `shoot.mjs`, the walk `walk.py`, the server
-`run_ui_server.py`) lives in the session scratchpad, not in the repository.
+Stage 9, the UI redesign, 2026-09-26: complete and merged (Done, "stage 9 (ui)"). Nothing
+remains in progress for it. The next stage is 08, the P7 rerun, once 8 weeks of real attempts exist.
 
 ## Live API spend log [verified]
 
@@ -2934,7 +2940,8 @@ From the eleventh session, 2026-09-21, found and not fixed.
 - 2026-09-26, stage 9, open. MathLive's `convertMathJsonToLatex` with compute-engine 0.24.1 writes
   the constant e as `\exponentialE`, a macro KaTeX does not know, so an option whose MathJSON holds
   `ExponentialE` rendered as raw LaTeX (seen on a Section I Part B drill option, `440\exponentialE^{t}`).
-  Present before stage 9. Being fixed in the client's `mathJsonToLatex`; see Done, stage 9.
+  Present before stage 9. Closed the same day: `mathJsonToLatex` rewrites it to `\mathrm{e}`, and
+  `app/web/src/math/mathjson.test.ts` went red on the old code and green after.
 - 2026-09-26, stage 9, open. The before and after screenshot walks start from one database snapshot
   but a part drill draws its questions afresh, so a pair shows the same screen with different
   questions.

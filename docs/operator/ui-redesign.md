@@ -1,7 +1,7 @@
 ---
 title: Stage 9 UI redesign, from the operator's prototype to the app
 research_date: 2026-09-26
-status: in_progress
+status: done
 purpose: The record of how the operator's standalone prototype was ported onto the running app, which token values changed to meet a gate, which prototype features were not taken and why, and where the before and after screenshots are.
 ---
 
@@ -108,6 +108,10 @@ at 4.90:1 and light `text-muted` on `surface-sunken` at 4.94:1.
   ruled rows, a tool bar (mark for review, question menu, zoom) above the question, the question
   menu opening as a block of tiles beneath it, and Back, Next and Submit part in a ruled bottom row.
 - Settings: tables and lists as ruled rows, inputs capped at 288 px.
+- The constant e in a multiple-choice option now renders. MathLive with compute-engine 0.24.1 wrote
+  it as `\exponentialE`, which KaTeX showed as raw LaTeX; `mathJsonToLatex` rewrites it to
+  `\mathrm{e}`. This was a defect present before the stage, fixed because it showed on the
+  redesigned option rows; `src/math/mathjson.test.ts` went red on the old code and green after.
 
 ## Prototype features not taken [verified]
 
@@ -134,4 +138,46 @@ at 4.90:1 and light `text-muted` on `surface-sunken` at 4.94:1.
 
 ## Screenshot pairs [verified]
 
-Pending the final capture of this stage; see the section's later revision.
+Taken on 2026-09-26 by claude-opus-5-5 in headless Brave 152, not by a person. Both apps were
+served from the same database snapshot (the item bank ingested, one registered student), the before
+app from a detached worktree at 54898ee and the after app from the `ui` branch, and walked through
+the same 22 states by one script. A part drill draws its questions afresh, so the timed-part pairs
+show different questions. The files are in the session scratchpad, not the repository:
+
+`/private/tmp/claude-502/-Users-mahfujm-dev-growth/f2920e88-e8bd-434f-a3f9-1b20be9fa70f/scratchpad/shots/`
+
+- `before/`: the old client, every state at 1280 px in both themes (44 files).
+- `after/`: the new client, every state at 1280, 900 and 375 px in both themes (132 files).
+- `pairs/`: one image per state and theme with before on the left and after on the right (44 files).
+
+| Screen | Pair |
+| --- | --- |
+| Onboarding, the diagnostic introduction | `pairs/onboarding-intro-1280-dark.png`, `pairs/onboarding-intro-1280-light.png` |
+| Onboarding, a diagnostic question | `pairs/diagnostic-question-1280-dark.png`, `pairs/diagnostic-question-1280-light.png` |
+| Onboarding, the unit results | `pairs/diagnostic-result-1280-dark.png`, `pairs/diagnostic-result-1280-light.png` |
+| Home, the queue ready | `pairs/home-ready-1280-dark.png`, `pairs/home-ready-1280-light.png` |
+| Session, an item at the example stage | `pairs/session-item-1280-dark.png`, `pairs/session-item-1280-light.png` |
+| Session, the item answered with a confidence chosen | `pairs/session-item-answered-1280-dark.png`, `pairs/session-item-answered-1280-light.png` |
+| Session, step-mark feedback with the self-explanation and the error note | `pairs/session-feedback-1280-dark.png`, `pairs/session-feedback-1280-light.png` |
+| Home, a set in progress | `pairs/home-in-progress-1280-dark.png`, `pairs/home-in-progress-1280-light.png` |
+| Progress, the map, the curve, representations and histories | `pairs/progress-1280-dark.png`, `pairs/progress-1280-light.png` |
+| Review | `pairs/review-1280-dark.png`, `pairs/review-1280-light.png` |
+| Free response, the unit list | `pairs/frq-units-1280-dark.png`, `pairs/frq-units-1280-light.png` |
+| Free response, a question and its capture choice | `pairs/frq-question-1280-dark.png`, `pairs/frq-question-1280-light.png` |
+| Mock exam setup, with the capture tiles, drills and unit checks | `pairs/mock-setup-1280-dark.png`, `pairs/mock-setup-1280-light.png` |
+| Unit check, a question with option rows and confidence tiles | `pairs/unit-check-1280-dark.png`, `pairs/unit-check-1280-light.png` |
+| Part drill, the start screen | `pairs/part-start-1280-dark.png`, `pairs/part-start-1280-light.png` |
+| Timed part, a calculator question | `pairs/part-runner-1280-dark.png`, `pairs/part-runner-1280-light.png` |
+| Timed part, the question menu open and the graphing panel plotting | `pairs/part-tools-1280-dark.png`, `pairs/part-tools-1280-light.png` |
+| Timed part, the closed-part boundary | `pairs/part-closed-1280-dark.png`, `pairs/part-closed-1280-light.png` |
+| Part drill result, raw counts and pacing | `pairs/part-result-1280-dark.png`, `pairs/part-result-1280-light.png` |
+| Settings | `pairs/settings-1280-dark.png`, `pairs/settings-1280-light.png` |
+| Evidence of learning, from settings | `pairs/evidence-1280-dark.png`, `pairs/evidence-1280-light.png` |
+| Account, signed out | `pairs/account-signed-out-1280-dark.png`, `pairs/account-signed-out-1280-light.png` |
+
+The prototype's own views, for side-by-side reading, are in `proto/` (17 routes at the three
+widths in both themes) and `proto-flow/` (its session, feedback and part setup).
+
+At 375 px no state scrolls the page sideways: `scrollWidth` equalled `clientWidth` (375) on all 22.
+The only elements past the edge were inside a horizontally scrolling table or KaTeX's clipped
+MathML layer, which also shows the probe was reading real elements.

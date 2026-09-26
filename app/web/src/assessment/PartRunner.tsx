@@ -452,6 +452,11 @@ export function PartRunner({ part, radianNote, sectionCount, onSave, onSubmit, o
    const stemText = stemElement?.textContent ?? "";
    const shortAnswerLatex = current.answer?.mathjson === undefined ? undefined : mathJsonToLatex(current.answer.mathjson);
 
+   const offersMarkForReview = tools.has("mark_for_review");
+   const offersQuestionMenu = tools.has("question_menu");
+   const offersZoom = tools.has("zoom");
+   const offersToolbar = offersMarkForReview || offersQuestionMenu || offersZoom;
+
    return (
       <section className="card part-runner" data-testid="part-runner">
          <header className="part-header">
@@ -471,35 +476,37 @@ export function PartRunner({ part, radianNote, sectionCount, onSave, onSubmit, o
 
          {part.calculator_note !== null ? <p data-testid="calculator-note">{part.calculator_note}</p> : null}
 
-         <div className="exam-toolbar">
-            {tools.has("mark_for_review") ? (
-               <label className="mark-for-review">
-                  <input
-                     type="checkbox"
-                     className="motion-instant-mark-for-review"
-                     checked={current.marked}
-                     onChange={(event) => toggleMarked(event.target.checked)}
-                  />{" "}
-                  Mark for review
-               </label>
-            ) : null}
+         {offersToolbar ? (
+            <div className="exam-toolbar">
+               {tools.has("mark_for_review") ? (
+                  <label className="mark-for-review">
+                     <input
+                        type="checkbox"
+                        className="motion-instant-mark-for-review"
+                        checked={current.marked}
+                        onChange={(event) => toggleMarked(event.target.checked)}
+                     />{" "}
+                     Mark for review
+                  </label>
+               ) : null}
 
-            {tools.has("question_menu") ? (
-               <button type="button" className="text-button" aria-expanded={isMenuOpen} onClick={() => setIsMenuOpen(!isMenuOpen)}>
-                  Question menu
-               </button>
-            ) : null}
+               {tools.has("question_menu") ? (
+                  <button type="button" className="text-button" aria-expanded={isMenuOpen} onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                     Question menu
+                  </button>
+               ) : null}
 
-            {tools.has("zoom") ? (
-               <div role="group" aria-label="Zoom" className="choice-row" data-testid="zoom">
-                  {ZOOM_STEPS.map((step) => (
-                     <button key={step} type="button" className="text-button" aria-pressed={zoom === step} onClick={() => setZoom(step)}>
-                        {step} percent
-                     </button>
-                  ))}
-               </div>
-            ) : null}
-         </div>
+               {tools.has("zoom") ? (
+                  <div role="group" aria-label="Zoom" className="choice-row" data-testid="zoom">
+                     {ZOOM_STEPS.map((step) => (
+                        <button key={step} type="button" className="text-button" aria-pressed={zoom === step} onClick={() => setZoom(step)}>
+                           {step} percent
+                        </button>
+                     ))}
+                  </div>
+               ) : null}
+            </div>
+         ) : null}
 
          {tools.has("question_menu") && isMenuOpen ? (
             <QuestionMenuList

@@ -55,10 +55,10 @@ describe("HomeScreen, queue ready", () => {
 
       expect(rendered.length).toBe(arbitraryLines.length);
 
-      arbitraryLines.forEach((line) => {
-         const matcher = new RegExp(`${line.count}\\s+${line.label}`);
+      arbitraryLines.forEach((line, index) => {
+         const matcher = new RegExp(`^${line.count}\\s+${line.label}$`);
 
-         expect(screen.getByText(matcher)).toBeTruthy();
+         expect(rendered[index].textContent).toMatch(matcher);
       });
    });
 

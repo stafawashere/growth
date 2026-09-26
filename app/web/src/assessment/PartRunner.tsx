@@ -212,50 +212,37 @@ function PartTimer(props: { part: AssessmentPart; onTimeUp: () => void }) {
    );
 }
 
-function QuestionMenu(props: {
+function QuestionMenuList(props: {
    questions: AssessmentQuestion[];
    work: Record<number, QuestionWork>;
    currentIndex: number;
    onJump: (index: number) => void;
 }) {
-   const [isOpen, setIsOpen] = useState(false);
-
    return (
-      <div className="question-menu" data-testid="question-menu">
-         <button type="button" className="text-button" aria-expanded={isOpen} onClick={() => setIsOpen(!isOpen)}>
-            Question menu
-         </button>
+      <ul className="question-menu" aria-label="Questions in this part" data-testid="question-menu">
+         {props.questions.map((question, index) => {
+            const work = props.work[question.number];
+            const choiceState = isAnswered(work) ? "answered" : "unanswered";
+            const answeredState = isFreeResponse(question) ? "written in the booklet" : choiceState;
+            const markedState = work.marked ? ", marked for review" : "";
+            const isCurrent = index === props.currentIndex;
 
-         {isOpen ? (
-            <ul className="review-list" aria-label="Questions in this part">
-               {props.questions.map((question, index) => {
-                  const work = props.work[question.number];
-                  const choiceState = isAnswered(work) ? "answered" : "unanswered";
-                  const answeredState = isFreeResponse(question) ? "written in the booklet" : choiceState;
-                  const markedState = work.marked ? ", marked for review" : "";
-                  const isCurrent = index === props.currentIndex;
-
-                  return (
-                     <li key={question.number}>
-                        <button
-                           type="button"
-                           className="text-button motion-instant-question-move"
-                           aria-current={isCurrent ? "true" : undefined}
-                           data-testid="question-menu-entry"
-                           onClick={() => {
-                              setIsOpen(false);
-                              props.onJump(index);
-                           }}
-                        >
-                           Question {question.number}, {answeredState}
-                           {markedState}
-                        </button>
-                     </li>
-                  );
-               })}
-            </ul>
-         ) : null}
-      </div>
+            return (
+               <li key={question.number} data-answered={isAnswered(work)}>
+                  <button
+                     type="button"
+                     className="text-button motion-instant-question-move"
+                     aria-current={isCurrent ? "true" : undefined}
+                     data-testid="question-menu-entry"
+                     onClick={() => props.onJump(index)}
+                  >
+                     Question {question.number}, {answeredState}
+                     {markedState}
+                  </button>
+               </li>
+            );
+         })}
+      </ul>
    );
 }
 
@@ -313,6 +300,7 @@ export function PartRunner({ part, radianNote, sectionCount, onSave, onSubmit, o
    );
    const [zoom, setZoom] = useState(ZOOM_STEPS[0]);
    const [isConfirmingSubmit, setIsConfirmingSubmit] = useState(false);
+   const [isMenuOpen, setIsMenuOpen] = useState(false);
    const [highlightProblem, setHighlightProblem] = useState<string | null>(null);
    const [stemElement, setStemElement] = useState<HTMLElement | null>(null);
    const [answerUnavailable, setAnswerUnavailable] = useState(false);
@@ -483,6 +471,48 @@ export function PartRunner({ part, radianNote, sectionCount, onSave, onSubmit, o
 
          {part.calculator_note !== null ? <p data-testid="calculator-note">{part.calculator_note}</p> : null}
 
+         <div className="exam-toolbar">
+            {tools.has("mark_for_review") ? (
+               <label className="mark-for-review">
+                  <input
+                     type="checkbox"
+                     className="motion-instant-mark-for-review"
+                     checked={current.marked}
+                     onChange={(event) => toggleMarked(event.target.checked)}
+                  />{" "}
+                  Mark for review
+               </label>
+            ) : null}
+
+            {tools.has("question_menu") ? (
+               <button type="button" className="text-button" aria-expanded={isMenuOpen} onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                  Question menu
+               </button>
+            ) : null}
+
+            {tools.has("zoom") ? (
+               <div role="group" aria-label="Zoom" className="choice-row" data-testid="zoom">
+                  {ZOOM_STEPS.map((step) => (
+                     <button key={step} type="button" className="text-button" aria-pressed={zoom === step} onClick={() => setZoom(step)}>
+                        {step} percent
+                     </button>
+                  ))}
+               </div>
+            ) : null}
+         </div>
+
+         {tools.has("question_menu") && isMenuOpen ? (
+            <QuestionMenuList
+               questions={questions}
+               work={work}
+               currentIndex={index}
+               onJump={(target) => {
+                  setIsMenuOpen(false);
+                  goTo(target);
+               }}
+            />
+         ) : null}
+
          {tools.has("graphing_panel") ? <GraphingPanel /> : null}
 
          <div className="question-area" data-testid="question-area" data-zoom={zoom} style={{ fontSize: `${zoom}%` }}>
@@ -556,42 +586,16 @@ export function PartRunner({ part, radianNote, sectionCount, onSave, onSubmit, o
             </div>
          ) : null}
 
-         <div className="choice-row">
-            {tools.has("mark_for_review") ? (
-               <label className="mark-for-review">
-                  <input
-                     type="checkbox"
-                     className="motion-instant-mark-for-review"
-                     checked={current.marked}
-                     onChange={(event) => toggleMarked(event.target.checked)}
-                  />{" "}
-                  Mark for review
-               </label>
-            ) : null}
+         <div className="exam-bottom">
+            <div className="choice-row">
+               <button type="button" className="text-button motion-instant-question-move" disabled={isFirst} onClick={() => goTo(index - 1)}>
+                  Back
+               </button>
 
-            {tools.has("question_menu") ? (
-               <QuestionMenu questions={questions} work={work} currentIndex={index} onJump={goTo} />
-            ) : null}
-
-            {tools.has("zoom") ? (
-               <div role="group" aria-label="Zoom" className="choice-row" data-testid="zoom">
-                  {ZOOM_STEPS.map((step) => (
-                     <button key={step} type="button" className="text-button" aria-pressed={zoom === step} onClick={() => setZoom(step)}>
-                        {step} percent
-                     </button>
-                  ))}
-               </div>
-            ) : null}
-         </div>
-
-         <div className="choice-row">
-            <button type="button" className="text-button motion-instant-question-move" disabled={isFirst} onClick={() => goTo(index - 1)}>
-               Back
-            </button>
-
-            <button type="button" className="text-button motion-instant-question-move" disabled={isLast} onClick={() => goTo(index + 1)}>
-               Next
-            </button>
+               <button type="button" className="text-button motion-instant-question-move" disabled={isLast} onClick={() => goTo(index + 1)}>
+                  Next
+               </button>
+            </div>
 
             <button type="button" className="text-button" onClick={() => setIsConfirmingSubmit(true)}>
                Submit part

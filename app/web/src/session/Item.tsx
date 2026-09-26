@@ -130,6 +130,8 @@ export function Item(props: ItemProps) {
             <p data-testid="worked-steps-unavailable">{WORKED_STEPS_MISSING}</p>
          ) : null}
 
+         {needsWorkedSteps && canDrawStage ? <p className="eyebrow">Worked so far</p> : null}
+
          {needsWorkedSteps && canDrawStage ? (
             <ol className="worked-steps" data-testid="worked-steps">
                {shownSteps.map((step) => (
@@ -186,9 +188,11 @@ export function Item(props: ItemProps) {
          ) : null}
 
          {asksToCommit ? (
-            <button type="button" className="motion-instant-submit-answer button-primary" onClick={onCommit}>
-               {commitLabel}
-            </button>
+            <div className="submit-row submit-row-end">
+               <button type="button" className="motion-instant-submit-answer button-primary" onClick={onCommit}>
+                  {commitLabel}
+               </button>
+            </div>
          ) : null}
       </article>
    );

@@ -178,7 +178,7 @@ export function SetupScreen({ problem, onStartMock, onStartDrill, onStartUnitChe
 
          {shape.kind === "loaded" ? (
             <>
-               <fieldset className="choice-group">
+               <fieldset className="choice-group choice-tiles">
                   <legend>Free-response answers</legend>
 
                   {CAPTURE_CHOICES.map((choice) => (

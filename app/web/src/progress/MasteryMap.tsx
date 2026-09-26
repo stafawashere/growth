@@ -241,6 +241,8 @@ export function MasteryMap({ map }: MasteryMapProps) {
             What you can do, and how well it is holding
          </h2>
 
+         <Legend />
+
          <div
             role="group"
             aria-label="Mastery map. Use the arrow keys to move between skills."
@@ -250,7 +252,7 @@ export function MasteryMap({ map }: MasteryMapProps) {
          >
             {units.map((unit, unitIndex) => (
                <div key={unit.unit_id} role="group" aria-label={unitHeading(unit)} className="mastery-row">
-                  <p className="caption">{unitHeading(unit)}</p>
+                  <p className="mastery-unit">{unitHeading(unit)}</p>
 
                   <div className="mastery-nodes">
                      {unit.nodes.map((node, nodeIndex) => {
@@ -283,8 +285,6 @@ export function MasteryMap({ map }: MasteryMapProps) {
          <p className="muted" data-testid="mastery-caption">
             {isShowing ? nodeSentence(activeNode) : "Select a mark, or move to one with the arrow keys, to read it."}
          </p>
-
-         <Legend />
 
          <MapList units={units} />
       </section>

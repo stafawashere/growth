@@ -104,6 +104,14 @@ function TokenNotice() {
    );
 }
 
+function AppFooter() {
+   return (
+      <footer className="app-footer">
+         <p>AP Calculus BC</p>
+      </footer>
+   );
+}
+
 function UnsuppliedPanel(props: { destination: Destination }) {
    const inputs = UNSUPPLIED_INPUTS[props.destination];
    const hasGap = inputs.length > 0;
@@ -198,70 +206,95 @@ export function App() {
 
    if (access === "signedOut") {
       return (
-         <main className="app-page">
-            {tokensAreLoaded ? null : <TokenNotice />}
+         <>
+            <header className="app-header">
+               <div className="app-bar">
+                  <span className="app-brand">Calculus BC</span>
+               </div>
+            </header>
 
-            <AccountScreen onSignedIn={enterAfterSignIn} />
-         </main>
+            <main className="app-page">
+               {tokensAreLoaded ? null : <TokenNotice />}
+
+               <AccountScreen onSignedIn={enterAfterSignIn} />
+            </main>
+
+            <AppFooter />
+         </>
       );
    }
 
    return (
-      <main className="app-page">
-         <nav className="app-bar">
-            {DESTINATIONS.map((entry) => (
-               <button key={entry.id} type="button" className="text-button" onClick={() => visit(entry.id)}>
-                  {entry.label}
-               </button>
-            ))}
-         </nav>
+      <>
+         <header className="app-header">
+            <nav className="app-bar" aria-label="Main">
+               <span className="app-brand">Calculus BC</span>
 
-         {tokensAreLoaded ? null : <TokenNotice />}
+               {DESTINATIONS.map((entry) => (
+                  <span key={entry.id} className={entry.id === "settings" ? "app-bar-end" : undefined}>
+                     <button
+                        type="button"
+                        className="text-button"
+                        aria-current={destination === entry.id ? "page" : undefined}
+                        onClick={() => visit(entry.id)}
+                     >
+                        {entry.label}
+                     </button>
+                  </span>
+               ))}
+            </nav>
+         </header>
 
-         {destination === "home" ? (
-            <HomeRoute
-               today={() => new Date()}
-               onStartSession={startSession}
-               onResumeSession={resumeSession}
-               onOpenProgress={() => setDestination("progress")}
-               onOpenReview={() => setDestination("review")}
-               onOpenFreeResponse={() => setDestination("frq")}
-               onOpenMockExam={() => setDestination("mock")}
-               onStartOnboarding={startOnboarding}
-            />
-         ) : null}
+         <main className="app-page">
+            {tokensAreLoaded ? null : <TokenNotice />}
 
-         {destination === "onboarding" ? (
-            <OnboardingRoute
-               reason={onboardingTarget.reason}
-               resumeSessionId={onboardingTarget.resumeSessionId}
-               onFinished={() => setDestination("home")}
-            />
-         ) : null}
+            {destination === "home" ? (
+               <HomeRoute
+                  today={() => new Date()}
+                  onStartSession={startSession}
+                  onResumeSession={resumeSession}
+                  onOpenProgress={() => setDestination("progress")}
+                  onOpenReview={() => setDestination("review")}
+                  onOpenFreeResponse={() => setDestination("frq")}
+                  onOpenMockExam={() => setDestination("mock")}
+                  onStartOnboarding={startOnboarding}
+               />
+            ) : null}
 
-         {destination === "session" ? <SessionScreen resumeSessionId={sessionTarget.resumeSessionId} /> : null}
+            {destination === "onboarding" ? (
+               <OnboardingRoute
+                  reason={onboardingTarget.reason}
+                  resumeSessionId={onboardingTarget.resumeSessionId}
+                  onFinished={() => setDestination("home")}
+               />
+            ) : null}
 
-         {destination === "progress" ? <ProgressRoute /> : null}
+            {destination === "session" ? <SessionScreen resumeSessionId={sessionTarget.resumeSessionId} /> : null}
 
-         {destination === "review" ? <ReviewRoute /> : null}
+            {destination === "progress" ? <ProgressRoute /> : null}
 
-         {destination === "frq" ? <FrqRoute /> : null}
+            {destination === "review" ? <ReviewRoute /> : null}
 
-         {destination === "mock" ? <AssessmentRoute /> : null}
+            {destination === "frq" ? <FrqRoute /> : null}
 
-         {destination === "settings" && settingsPage === "settings" ? (
-            <>
-               <SettingsRoute purgeConfirmationPhrase={PURGE_CONFIRMATION_PHRASE} saveFile={saveFile} />
-               <OperatorSettings onOpenEvidence={() => setSettingsPage("evidence")} />
-               <AddPasskeyControl />
-            </>
-         ) : null}
+            {destination === "mock" ? <AssessmentRoute /> : null}
 
-         {destination === "settings" && settingsPage === "evidence" ? (
-            <MetricsRoute onLeave={() => setSettingsPage("settings")} />
-         ) : null}
+            {destination === "settings" && settingsPage === "settings" ? (
+               <>
+                  <SettingsRoute purgeConfirmationPhrase={PURGE_CONFIRMATION_PHRASE} saveFile={saveFile} />
+                  <OperatorSettings onOpenEvidence={() => setSettingsPage("evidence")} />
+                  <AddPasskeyControl />
+               </>
+            ) : null}
 
-         <UnsuppliedPanel destination={destination} />
-      </main>
+            {destination === "settings" && settingsPage === "evidence" ? (
+               <MetricsRoute onLeave={() => setSettingsPage("settings")} />
+            ) : null}
+
+            <UnsuppliedPanel destination={destination} />
+         </main>
+
+         <AppFooter />
+      </>
    );
 }

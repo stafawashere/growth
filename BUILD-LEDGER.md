@@ -1896,6 +1896,17 @@ items) and items 3 and 6 (Slices 3 and 4). Every gate 11 names for P2 now exists
   one provider serves every role. P7's entry criterion "P6 merged" is met by this merge; its 8 weeks
   of real attempts are not, and only calendar time and the operator's practice supply them.
 
+- 2026-09-26, stage 9 (ui), slice 1: the operator's prototype ported onto the app. The token file
+  holds the prototype's palette with `border-hairline` raised to 3:1 in both themes; Inter 400,
+  500 and 600 ship from `@fontsource/inter` 5.3.0 with the OFL; a header with the brand, Home and
+  Settings, a footer, flat screens with ruled titles, the session item and feedback in a raised
+  panel with a stage badge, option rows and confidence tiles, the progress map with its legend
+  above, the timed-part tool bar above the question with the question menu as tiles, and phone
+  layouts at 900 and 600 px. The mapping, the gate-driven values and the features not taken are in
+  `docs/operator/ui-redesign.md`. Checks: pytest `1358 passed in 1290.24s (0:21:30)`; vitest
+  `Tests  655 passed (655)` in 51 files; `tsc --noEmit` exit 0; `qa/12_report.py` exit 0;
+  `tools/check_tokens.py` exit 0.
+
 ## In progress [inferred]
 
 Stage 1, items for Units 4 to 10, is complete in the worktree `../growth-content` on branch
@@ -1924,6 +1935,14 @@ Stage 7, P6 and P8, 2026-09-26, worktree `../growth-p6p8` on branch `p6p8`: comp
 7 (p6p8)"), being merged to origin/main. What remains waits on real use: a real usage-limit answer
 to confirm the CLI wording, the queue lengths after real limit windows for the drain pacing, and 8
 weeks of real attempts for P7. The next stage is 08, the P7 rerun, once those weeks exist.
+
+Stage 9, the UI redesign, 2026-09-26, worktree `../growth-ui` on branch `ui`: slice 1 (tokens,
+fonts, chrome and every screen's stylesheet and markup) is built and checked, being committed and
+pushed. Still to do in this stage: the e-constant rendering fix, a second walk of every screen at
+1280, 900 and 375 px in both themes, the before and after pairs in `docs/operator/ui-redesign.md`,
+and cleanup of the worktree `../growth-ui-before` (detached, used only to serve the old client for
+the before screenshots). Scratch tooling (the CDP driver `shoot.mjs`, the walk `walk.py`, the server
+`run_ui_server.py`) lives in the session scratchpad, not in the repository.
 
 ## Live API spend log [verified]
 
@@ -2912,6 +2931,14 @@ From the eleventh session, 2026-09-21, found and not fixed.
   does what a browser does with Tab, Enter and Space; the real MathLive field was driven by keyboard
   in the browser once (the diagnostic item), not through a whole set.
 
+- 2026-09-26, stage 9, open. MathLive's `convertMathJsonToLatex` with compute-engine 0.24.1 writes
+  the constant e as `\exponentialE`, a macro KaTeX does not know, so an option whose MathJSON holds
+  `ExponentialE` rendered as raw LaTeX (seen on a Section I Part B drill option, `440\exponentialE^{t}`).
+  Present before stage 9. Being fixed in the client's `mathJsonToLatex`; see Done, stage 9.
+- 2026-09-26, stage 9, open. The before and after screenshot walks start from one database snapshot
+  but a part drill draws its questions afresh, so a pair shows the same screen with different
+  questions.
+
 ## Plan corrections applied [verified]
 
 Session 2026-09-23 (fourteenth). No plan file was edited. Readings applied in code:
@@ -3509,6 +3536,49 @@ Stage 7, P6 and P8, decided on the operator's delegation (the stage brief delega
   touched.
 - The frontend agent's contrast catalogue render got a 60 s setup budget of its own, because the
   new suite's setup takes about 9 s alone and passed 10 s beside the other suites.
+
+Stage 9, the UI redesign, decided on the operator's delegation (the stage brief delegates every
+decision). Every judgement below was made by claude-opus-5-5, not by a person.
+
+- The operator attached `growth-standalone-source.zip` on 2026-09-26, which is the instruction to
+  replace the Graphite palette chosen on 2026-09-23. `app/design/growth-tokens.json` now holds the
+  prototype's zinc palette, mapped token by token in `docs/operator/ui-redesign.md`. Its one accent
+  is the ink colour (white on dark, near-black on light), read as 08's single accent with the
+  accent set to the ink hue; its neutrals are cool where 08 asks for warm, which the operator's
+  choice of design overrides as Graphite did.
+- `border-hairline` moved from the prototype's #2b2b30 (dark) and #d6d6db (light) to #6b6b72 and
+  #83838b, the lightest values that hold 3:1 against all three surfaces, because
+  `eval_contrast_all_screens` holds every drawn border to SC 1.4.11. The first light value tried,
+  #8e8e96, failed at 2.83:1 on `surface-sunken`. No gate was changed.
+- Inter 400, 500 and 600 ship from `@fontsource/inter` 5.3.0, not from the prototype, whose font
+  files hash differently, with the OFL beside them. Each weight is its own family in
+  `app/web/src/styles/fonts.css`, so no numeric weight appears in a stylesheet and
+  `test_no_literal_values` and `app.test.ts` stay unchanged. The faces sit in their own file
+  because `testing/cascade.ts` cannot match an `@font-face` block; `fonts.css` is still scanned by
+  the literal gate.
+- The page column is the prototype's 820 px; every paragraph and list item in a screen still stops
+  at 08's 68 characters.
+- Section headings carry no rule beneath them. At 3:1 a rule under every heading reads heavy, and
+  08 prefers space to borders; the page title keeps its rule.
+- The session gains a stage badge ("Stage: completion") and a "Worked so far" label over the
+  steps, both from 08's session wireframe. The prototype's set position, progress segments, stop
+  control, Enter hint, theorem reference and "you wrote / the rule gives" block are not built,
+  because the client has no data or route behind them (listed in `docs/operator/ui-redesign.md`).
+- The timed-part tools (mark for review, question menu, zoom) moved above the question and the
+  question menu opens as a block of tiles beneath them, as in the prototype; every label, role and
+  test id is unchanged.
+- `app/web/src/home/HomeScreen.test.tsx`, "renders the queue lines from its props": the queue count
+  moved into its own span, so `getByText(/7\s+alpha skills/)`, which reads only an element's own
+  text nodes, can no longer find the line. Old assertion: `screen.getByText(new
+  RegExp(`${count}\\s+${label}`))` is truthy. New assertion: the rendered line at the same index has
+  `textContent` matching `^${count}\\s+${label}$`, which is anchored and checks the order as well.
+  It went red with the label written without its space and green restored.
+- The contrast catalogue in `app/web/src/testing/screens.tsx` gained four screens it never
+  rendered: a session item with a confidence chosen, the diagnostic introduction, a diagnostic
+  question answered, and the diagnostic result. This widens `eval_contrast_all_screens`; no check
+  was removed.
+- The prototype's skill count ("68 skills") beside each unit of the mastery map was tried and dropped:
+  `MasteryMap.test.tsx` "prints no count and no percentage anywhere on the map" went red.
 
 ## Decisions taken on the operator's instruction, 2026-09-24 [inferred]
 

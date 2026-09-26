@@ -24,7 +24,7 @@ export interface HomeScreenProps {
 
 function ExamFooter(props: { examDate: string; daysToExam: number }) {
    return (
-      <p className="caption">
+      <p className="exam-line">
          Exam: {props.examDate}, {props.daysToExam} days away
       </p>
    );
@@ -35,12 +35,12 @@ function ReadyQueue(props: HomeScreenProps) {
 
    return (
       <>
-         <p>About {queueMinutes} minutes of work is in today&apos;s queue.</p>
+         <p className="home-lead">About {queueMinutes} minutes of work is in today&apos;s queue.</p>
 
          <ul className="queue-counts">
             {queueLines.map((line) => (
                <li key={line.id} data-testid="queue-line">
-                  {line.count} {line.label}
+                  <span className="queue-count">{line.count}</span> {line.label}
                </li>
             ))}
          </ul>
@@ -55,7 +55,7 @@ function ReadyQueue(props: HomeScreenProps) {
 function EmptyQueue(props: { onAddPracticeSet: () => void }) {
    return (
       <>
-         <p>Nothing is due today. You can add a 15 minute practice set if you want one.</p>
+         <p className="home-lead">Nothing is due today. You can add a 15 minute practice set if you want one.</p>
 
          <button type="button" className="button-primary" onClick={props.onAddPracticeSet}>
             Add a 15 minute practice set
@@ -67,7 +67,7 @@ function EmptyQueue(props: { onAddPracticeSet: () => void }) {
 function SessionInProgress(props: { onResumeSession: () => void }) {
    return (
       <>
-         <p>You have a set in progress.</p>
+         <p className="home-lead">You have a set in progress.</p>
 
          <button type="button" className="button-primary" onClick={props.onResumeSession}>
             Resume
@@ -81,7 +81,7 @@ function SessionInProgress(props: { onResumeSession: () => void }) {
 function LongGap(props: { onStartRediagnostic: () => void }) {
    return (
       <>
-         <p>
+         <p className="home-lead">
             It has been a while since your last set, so a short re-diagnostic comes before the queue. It
             updates what the app knows about you and never resets it.
          </p>
@@ -110,40 +110,43 @@ export function HomeScreen(props: HomeScreenProps) {
    const offersReview = onOpenReview !== undefined;
    const offersFreeResponse = onOpenFreeResponse !== undefined;
    const offersMockExam = onOpenMockExam !== undefined;
+   const offersAnyLink = offersProgress || offersReview || offersFreeResponse || offersMockExam;
 
    return (
       <section className="card home">
-         <h1 className="eyebrow">Calculus BC</h1>
-
-         <h2 className="screen-title">Today</h2>
+         <h1 className="screen-title">Today</h1>
 
          {status === "ready" && <ReadyQueue {...props} />}
          {status === "empty" && <EmptyQueue onAddPracticeSet={onAddPracticeSet} />}
          {status === "inProgress" && <SessionInProgress onResumeSession={onResumeSession} />}
          {status === "longGap" && <LongGap onStartRediagnostic={onStartRediagnostic} />}
 
-         {offersProgress && (
-            <button type="button" className="text-button" onClick={onOpenProgress}>
-               Progress
-            </button>
-         )}
+         {offersAnyLink && (
+            <div className="home-links">
+               {offersProgress && (
+                  <button type="button" className="text-button" onClick={onOpenProgress}>
+                     Progress
+                  </button>
+               )}
 
-         {offersReview && (
-            <button type="button" className="text-button" onClick={onOpenReview}>
-               Review
-            </button>
-         )}
+               {offersReview && (
+                  <button type="button" className="text-button" onClick={onOpenReview}>
+                     Review
+                  </button>
+               )}
 
-         {offersFreeResponse && (
-            <button type="button" className="text-button" onClick={onOpenFreeResponse}>
-               Free response
-            </button>
-         )}
+               {offersFreeResponse && (
+                  <button type="button" className="text-button" onClick={onOpenFreeResponse}>
+                     Free response
+                  </button>
+               )}
 
-         {offersMockExam && (
-            <button type="button" className="text-button" onClick={onOpenMockExam}>
-               Mock exam
-            </button>
+               {offersMockExam && (
+                  <button type="button" className="text-button" onClick={onOpenMockExam}>
+                     Mock exam
+                  </button>
+               )}
+            </div>
          )}
 
          <ExamFooter examDate={examDate} daysToExam={daysToExam} />

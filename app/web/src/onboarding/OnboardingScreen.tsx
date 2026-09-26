@@ -54,9 +54,7 @@ export function DiagnosticIntro({ reason, onStart }: DiagnosticIntroProps) {
 
    return (
       <section className="card" data-testid="diagnostic-intro">
-         <h1 className="eyebrow">Calculus BC</h1>
-
-         <h2 className="screen-title">{copy.title}</h2>
+         <h1 className="screen-title">{copy.title}</h1>
 
          <p>{copy.purpose}</p>
 
@@ -109,20 +107,22 @@ export function DiagnosticItem(props: DiagnosticItemProps) {
             {answerUnavailable ? <p data-testid="answer-unavailable">{ANSWER_UNAVAILABLE}</p> : null}
          </div>
 
-         <button type="button" className="text-button" disabled={isSubmitted} onClick={onNotLearned}>
-            {NOT_LEARNED_LABEL}
-         </button>
-
-         {offersCheck ? (
-            <button
-               type="button"
-               className="motion-instant-submit-answer button-primary"
-               disabled={!canCheck}
-               onClick={onCheck}
-            >
-               {COMMIT_LABEL}
+         <div className="submit-row">
+            <button type="button" className="text-button" disabled={isSubmitted} onClick={onNotLearned}>
+               {NOT_LEARNED_LABEL}
             </button>
-         ) : null}
+
+            {offersCheck ? (
+               <button
+                  type="button"
+                  className="motion-instant-submit-answer button-primary"
+                  disabled={!canCheck}
+                  onClick={onCheck}
+               >
+                  {COMMIT_LABEL}
+               </button>
+            ) : null}
+         </div>
 
          <p className="caption">{EARLY_STOP_NOTE}</p>
       </article>
@@ -137,13 +137,11 @@ export interface DiagnosticResultViewProps {
 export function DiagnosticResultView({ units, onFinished }: DiagnosticResultViewProps) {
    return (
       <section className="card" data-testid="diagnostic-result">
-         <h1 className="eyebrow">Calculus BC</h1>
-
-         <h2 className="screen-title">Where you are starting</h2>
+         <h1 className="screen-title">Where you are starting</h1>
 
          <p>There is no score. This is where each unit stands, and today&apos;s set starts from it.</p>
 
-         <dl>
+         <dl className="unit-states">
             {units.map((entry) => (
                <div key={entry.unit} data-testid="diagnostic-unit">
                   <dt>{entry.title}</dt>

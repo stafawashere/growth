@@ -256,6 +256,10 @@ export function SessionScreen({ resumeSessionId }: SessionScreenProps) {
 
    return (
       <div>
+         <p className="session-meta">
+            <span className="badge">Stage: {item.stage}</span>
+         </p>
+
          {showsFeedback ? (
             <section className="card feedback" data-testid="feedback">
                {hasFigure ? (
@@ -278,14 +282,16 @@ export function SessionScreen({ resumeSessionId }: SessionScreenProps) {
 
                {wasCorrected ? <ErrorNoteField value={errorNote} onChange={setErrorNote} /> : null}
 
-               <button
-                  type="button"
-                  className="motion-instant-question-move button-primary"
-                  disabled={owesNote}
-                  onClick={moveOn}
-               >
-                  {NEXT_LABEL}
-               </button>
+               <div className="submit-row submit-row-end">
+                  <button
+                     type="button"
+                     className="motion-instant-question-move button-primary"
+                     disabled={owesNote}
+                     onClick={moveOn}
+                  >
+                     {NEXT_LABEL}
+                  </button>
+               </div>
             </section>
          ) : (
             <Item

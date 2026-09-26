@@ -31,7 +31,7 @@ export function McqControl(props: McqControlProps) {
    const offersEliminator = onToggleEliminated !== undefined;
 
    return (
-      <fieldset className="choice-group">
+      <fieldset className="choice-group option-list">
          <legend>{groupLabel}</legend>
          {options.map((option) => {
             const isSelected = selectedId === option.id;
@@ -50,7 +50,7 @@ export function McqControl(props: McqControlProps) {
                      checked={isSelected}
                      onChange={() => onSelect(option.id)}
                   />
-                  {offersEliminator ? <span className={isEliminated ? "crossed-out" : undefined}>({option.id}) {optionText}</span> : optionText}
+                  {offersEliminator ? <span className={isEliminated ? "crossed-out" : undefined}>({option.id}) {optionText}</span> : <span>{optionText}</span>}
                </label>
             );
 

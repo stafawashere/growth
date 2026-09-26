@@ -23,6 +23,7 @@ import { CaptureScreen } from "../frq/CaptureScreen";
 import { ReadBackEditor, ReadBackView } from "../frq/ReadBack";
 import { GradingView } from "../frq/GradingView";
 import { HomeScreen, type HomeScreenStatus } from "../home/HomeScreen";
+import { DiagnosticIntro, DiagnosticItem, DiagnosticResultView } from "../onboarding/OnboardingScreen";
 import { CalibrationCurve } from "../progress/CalibrationCurve";
 import { MasteryMap } from "../progress/MasteryMap";
 import { ReviewScreen } from "../review/ReviewScreen";
@@ -383,6 +384,52 @@ export const SCREENS: Screen[] = [
 
          return container;
       }
+   },
+   {
+      name: "session item at completion, with a confidence chosen",
+      mount: async () => {
+         mocked.openSession.mockResolvedValue(SESSION);
+         mocked.readNextItem.mockResolvedValue({ item: servedItem({ figure_spec: null }) });
+
+         const container = inPage(<SessionScreen resumeSessionId={null} />);
+
+         await screen.findByTestId("item");
+         fireEvent.click(screen.getByRole("radio", { name: "unsure" }));
+
+         return container;
+      }
+   },
+   {
+      name: "onboarding, diagnostic introduction",
+      mount: async () => inPage(<DiagnosticIntro reason="first_login" onStart={vi.fn()} />)
+   },
+   {
+      name: "onboarding, diagnostic question answered",
+      mount: async () =>
+         inPage(
+            <DiagnosticItem
+               item={{ ...servedItem({ figure_spec: null, served_steps: null, stage: "unsupported" }), diagnostic_position: 6, diagnostic_cap: 30 }}
+               state="answered"
+               answerUnavailable={false}
+               onAnswerChange={vi.fn()}
+               onAnswerUnavailable={vi.fn()}
+               onCheck={vi.fn()}
+               onNotLearned={vi.fn()}
+            />
+         )
+   },
+   {
+      name: "onboarding, diagnostic result",
+      mount: async () =>
+         inPage(
+            <DiagnosticResultView
+               units={[
+                  { unit: "BC-UNIT-01", title: "Limits and Continuity", state: "fluent" },
+                  { unit: "BC-UNIT-02", title: "Differentiation: Definition and Fundamental Properties", state: "partial" }
+               ]}
+               onFinished={vi.fn()}
+            />
+         )
    },
    {
       name: "session item at example, multiple choice with a table",

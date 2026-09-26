@@ -1,6 +1,6 @@
 ---
 title: The design token file
-research_date: 2026-09-23
+research_date: 2026-09-26
 status: in_progress
 purpose: Where the design token file lives, who authored it, which palette was chosen, and how it is checked.
 ---
@@ -19,10 +19,13 @@ unset, so a deployment sets `GROWTH_TOKENS_PATH=app/design/growth-tokens.json`; 
 
 ## The palette chosen
 
-The operator chose Graphite, revised, on 2026-09-23. The file holds that palette unchanged: 17
-colour tokens and 9 type tokens under each of `light` and `dark`. The type values are 08's own
-sizes from its type scale table (`type-display` 32px down to `type-caption` 13px), and a test
-checks the file against that table.
+The operator chose Graphite, revised, on 2026-09-23. On 2026-09-26 the operator attached a design
+prototype for stage 9, which is the instruction to replace it, and the file now holds that design's
+palette: a monochrome zinc ramp whose one accent is the ink colour, white in dark and near-black in
+light. `docs/operator/ui-redesign.md` maps each prototype variable onto its 08 token and lists the
+two values moved to meet a gate: `border-hairline` rose from #2b2b30 to #6b6b72 in dark and from
+#d6d6db to #83838b in light to reach the 3:1 non-text floor. The file still holds 17 colour tokens
+and 9 type tokens under each of `light` and `dark`, and the type values are still 08's own sizes.
 
 ## Token names by group
 
@@ -77,10 +80,14 @@ It prints every violation, one per line, then the computed ratio for every pair 
 `CONTRAST_PAIRS` in each theme, and exits 0 only when there are no violations. The nine type
 tokens are known to the checker and are not reported as unknown.
 
-Run on 2026-09-23 against `app/design/growth-tokens.json`, it printed no violations and 46 ratio
-lines (23 pairs in each of two themes), and exited 0. The lowest ratios were `focus-ring` on
-`surface-sunken` at 4.91:1 (light) and `focus-ring` on `surface-raised` at 4.92:1 (dark). The
-lowest text-role ratio was `text-muted` on `surface-raised` at 5.71:1 (dark).
+Run on 2026-09-26 against `app/design/growth-tokens.json`, it printed no violations and exited 0.
+The lowest pairs were light `state-correct` on `surface-sunken` at 4.60:1, light
+`state-incorrect` on `surface-sunken` at 4.90:1 and light `text-muted` on `surface-sunken` at
+4.94:1. `border-hairline` is not in `CONTRAST_PAIRS`; its 3:1 floor is held by
+`eval_contrast_all_screens` wherever a border is drawn.
+
+The Graphite run on 2026-09-23 had printed 46 ratio lines with the lowest at `focus-ring` on
+`surface-sunken`, 4.91:1 (light).
 
 ## The named checker cross-check
 

@@ -1,9 +1,10 @@
 /* Layout, type and surface for the P1 screens, bound by docs/plan/08-design-brief.md.
 
    Every colour and font size is a var(--growth-<token>) reference to the names in
-   app/design/tokens.py, and every length is a spacing step or a calc of one. Line heights are
-   the px values 08's type table pairs with each type step, so every rule that sets a line height
-   also sets the font size it belongs to. The column stops at 08's 68 character measure.
+   app/design/tokens.py, and every length is a spacing step, a stroke width or a calc of one.
+   Line heights are the leading-<step> tokens that carry 08's type table, so every rule that sets
+   a line height also sets the font size it belongs to. The column stops at 08's 68 character
+   measure.
 
    08 records the Inter tracking values as unknown, so no letter-spacing is set, and fixes no
    weight numbers, so weights are the bold and normal keywords. A hairline is the 4 px step
@@ -33,7 +34,7 @@ body {
    color: var(--growth-text-primary);
    font-family: Inter, system-ui, sans-serif;
    font-size: var(--growth-type-body);
-   line-height: 26px;
+   line-height: var(--growth-leading-body);
    font-variant-numeric: tabular-nums;
    overflow-wrap: anywhere;
 }
@@ -93,13 +94,13 @@ select {
    padding: var(--growth-space-12) var(--growth-space-16);
    margin-block: var(--growth-space-16);
    font-size: var(--growth-type-label);
-   line-height: 20px;
+   line-height: var(--growth-leading-label);
 }
 
 .eyebrow {
    color: var(--growth-text-muted);
    font-size: var(--growth-type-label);
-   line-height: 20px;
+   line-height: var(--growth-leading-label);
    font-weight: bold;
    text-transform: uppercase;
 }
@@ -107,7 +108,7 @@ select {
 .screen-title {
    color: var(--growth-text-primary);
    font-size: var(--growth-type-title);
-   line-height: 32px;
+   line-height: var(--growth-leading-title);
    font-weight: bold;
 }
 
@@ -118,20 +119,20 @@ select {
 .section-heading {
    color: var(--growth-text-primary);
    font-size: var(--growth-type-heading);
-   line-height: 28px;
+   line-height: var(--growth-leading-heading);
    font-weight: normal;
 }
 
 .caption {
    color: var(--growth-text-muted);
    font-size: var(--growth-type-caption);
-   line-height: 18px;
+   line-height: var(--growth-leading-caption);
 }
 
 .muted {
    color: var(--growth-text-muted);
    font-size: var(--growth-type-label);
-   line-height: 20px;
+   line-height: var(--growth-leading-label);
 }
 
 .button-primary {
@@ -142,7 +143,7 @@ select {
    border-radius: var(--growth-space-8);
    padding: var(--growth-space-12) var(--growth-space-24);
    font-size: var(--growth-type-body);
-   line-height: 26px;
+   line-height: var(--growth-leading-body);
    font-weight: bold;
    cursor: pointer;
    box-shadow: inset 0 calc(var(--growth-space-4) / 4) 0
@@ -153,6 +154,8 @@ select {
    background: var(--growth-surface-sunken);
    color: var(--growth-text-muted);
    box-shadow: none;
+   outline: var(--growth-stroke-hairline) dashed var(--growth-border-hairline);
+   outline-offset: calc(var(--growth-stroke-hairline) * -2);
    cursor: not-allowed;
 }
 
@@ -164,24 +167,34 @@ select {
    text-align: start;
    color: var(--growth-text-secondary);
    font-size: var(--growth-type-body);
-   line-height: 26px;
+   line-height: var(--growth-leading-body);
    cursor: pointer;
 }
 
 .app-bar .text-button {
    display: inline-block;
    font-size: var(--growth-type-label);
-   line-height: 20px;
+   line-height: var(--growth-leading-label);
 }
 
 .text-button:hover {
    text-decoration: underline;
 }
 
+.text-button[aria-pressed="true"],
+.text-button[aria-current="true"] {
+   font-weight: bold;
+   text-decoration: underline;
+}
+
 .text-button:disabled {
    color: var(--growth-text-muted);
-   text-decoration: none;
+   text-decoration: line-through;
    cursor: not-allowed;
+}
+
+.text-button[aria-pressed="true"]:disabled {
+   text-decoration: underline;
 }
 
 .text-button-destructive,
@@ -211,7 +224,7 @@ select {
 
 .item-stem {
    font-size: var(--growth-type-body);
-   line-height: 26px;
+   line-height: var(--growth-leading-body);
 }
 
 .worked-steps {
@@ -240,7 +253,7 @@ select {
 
 .verdict {
    font-size: var(--growth-type-heading);
-   line-height: 28px;
+   line-height: var(--growth-leading-heading);
    font-weight: bold;
 }
 
@@ -282,7 +295,7 @@ select {
 .field > span {
    color: var(--growth-text-secondary);
    font-size: var(--growth-type-label);
-   line-height: 20px;
+   line-height: var(--growth-leading-label);
 }
 
 .app-page input:not([type="radio"]),
@@ -298,7 +311,7 @@ select {
 
 .app-page math-field {
    font-size: var(--growth-type-math-inline);
-   line-height: 26px;
+   line-height: var(--growth-leading-math-inline);
    overflow-x: auto;
 }
 
@@ -307,7 +320,8 @@ select {
    min-height: var(--growth-space-96);
 }
 
-.app-page input[type="radio"] {
+.app-page input[type="radio"],
+.app-page input[type="checkbox"] {
    accent-color: var(--growth-accent-base);
    margin: 0;
 }
@@ -326,7 +340,7 @@ select {
    margin-bottom: var(--growth-space-8);
    color: var(--growth-text-secondary);
    font-size: var(--growth-type-label);
-   line-height: 20px;
+   line-height: var(--growth-leading-label);
 }
 
 .choice-group > label {
@@ -376,7 +390,7 @@ select {
    overflow-wrap: normal;
    padding: var(--growth-space-4) var(--growth-space-16) var(--growth-space-4) 0;
    font-size: var(--growth-type-label);
-   line-height: 20px;
+   line-height: var(--growth-leading-label);
 }
 
 .settings ul {
@@ -399,7 +413,7 @@ select {
    flex-direction: column;
    gap: var(--growth-space-4);
    font-size: var(--growth-type-label);
-   line-height: 20px;
+   line-height: var(--growth-leading-label);
 }
 
 .settings dl {
@@ -413,7 +427,7 @@ select {
 .label-heading {
    color: var(--growth-text-secondary);
    font-size: var(--growth-type-label);
-   line-height: 20px;
+   line-height: var(--growth-leading-label);
    font-weight: bold;
 }
 
@@ -457,7 +471,7 @@ select {
    padding: 0;
    color: var(--growth-text-secondary);
    font-size: var(--growth-type-label);
-   line-height: 20px;
+   line-height: var(--growth-leading-label);
 }
 
 .mastery-legend li {
@@ -475,7 +489,7 @@ select {
 .mastery-list ul {
    padding-inline-start: var(--growth-space-16);
    font-size: var(--growth-type-label);
-   line-height: 20px;
+   line-height: var(--growth-leading-label);
 }
 
 .review-list {
@@ -559,13 +573,13 @@ select {
 .part-clock {
    margin-block: 0;
    font-size: var(--growth-type-heading);
-   line-height: 28px;
+   line-height: var(--growth-leading-heading);
    font-weight: bold;
 }
 
 .calculator-label {
    font-size: var(--growth-type-label);
-   line-height: 20px;
+   line-height: var(--growth-leading-label);
    font-weight: bold;
    text-transform: uppercase;
 }
@@ -597,7 +611,7 @@ select {
 .choice-option > .text-button {
    padding: 0;
    font-size: var(--growth-type-label);
-   line-height: 20px;
+   line-height: var(--growth-leading-label);
 }
 
 .stem-highlight {
@@ -629,7 +643,7 @@ select {
 .graphing-mode {
    margin-block: 0;
    font-size: var(--growth-type-label);
-   line-height: 20px;
+   line-height: var(--growth-leading-label);
    font-weight: bold;
 }
 
@@ -660,5 +674,86 @@ select {
    padding: var(--growth-space-4) var(--growth-space-16) var(--growth-space-4) 0;
    text-align: start;
    font-size: var(--growth-type-label);
-   line-height: 20px;
+   line-height: var(--growth-leading-label);
+}
+
+.notice-framed {
+   background: var(--growth-surface-raised);
+   color: var(--growth-text-primary);
+   border: var(--growth-stroke-hairline) solid var(--growth-border-hairline);
+}
+
+.item-figure {
+   max-width: calc(var(--growth-space-96) * 5);
+}
+
+.figure-graph,
+.chart {
+   display: block;
+}
+
+.figure-gridlines,
+.figure-axes,
+.chart-axis {
+   stroke-width: var(--growth-stroke-hairline);
+}
+
+.figure-region {
+   fill: var(--growth-accent-tint-1);
+}
+
+.figure-curve,
+.graphing-curve,
+.chart-interval,
+.mastery-mark-stroke {
+   stroke-width: var(--growth-stroke-curve);
+}
+
+.figure-mark {
+   stroke-width: var(--growth-stroke-mark);
+}
+
+.figure-mark-dashed {
+   stroke-dasharray: calc(var(--growth-space-12) / 2) var(--growth-space-4);
+}
+
+.figure-point {
+   r: var(--growth-space-4);
+}
+
+.chart-point {
+   r: calc(var(--growth-space-12) / 2);
+}
+
+.figure-label {
+   fill: var(--growth-text-primary);
+   font-size: var(--growth-type-caption);
+}
+
+.figure-tick,
+.chart-caption {
+   fill: var(--growth-text-secondary);
+   font-size: var(--growth-type-caption);
+}
+
+.figure-axis-title {
+   fill: var(--growth-text-secondary);
+   font-size: var(--growth-type-caption);
+   font-style: italic;
+}
+
+.figure-table {
+   border-collapse: collapse;
+}
+
+.figure-table th,
+.figure-table td {
+   border: var(--growth-stroke-hairline) solid var(--growth-border-hairline);
+   padding: var(--growth-space-4) var(--growth-space-8);
+   text-align: center;
+}
+
+.mastery-mark {
+   width: var(--growth-space-16);
+   height: var(--growth-space-16);
 }

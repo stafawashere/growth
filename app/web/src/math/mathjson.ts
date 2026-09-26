@@ -39,6 +39,7 @@ export function renderLatexToMarkup(latex: string, displayMode = false): string 
    try {
       return katex.renderToString(latex, {
          throwOnError: false,
+         errorColor: "var(--growth-text-primary)",
          output: "htmlAndMathml",
          displayMode
       });

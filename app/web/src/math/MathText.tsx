@@ -6,7 +6,11 @@ export interface MathTextProps {
 
 /* Stems and worked-solution steps are plain text that may carry LaTeX delimited \( like this \)
    (app/items/ingest.py records, e.g. tests/fixtures/items_p1). Agent-drafted items carry no
-   delimiters at all, so this renders exactly the plain text it always did for them. */
+   delimiters at all, so this renders exactly the plain text it always did for them.
+
+   KaTeX writes each formula twice, as MathML that a screen reader reads as structure and as HTML
+   for the eye that KaTeX itself marks aria-hidden, so the markup goes in whole and nothing else
+   reads the formula a second time. A formula KaTeX cannot render falls back to its ASCII reading. */
 export function MathText({ text }: MathTextProps) {
    const segments = splitInlineMath(text);
 
@@ -18,14 +22,13 @@ export function MathText({ text }: MathTextProps) {
             }
 
             const markup = renderLatexToMarkup(segment.latex);
-            const accessibleText = latexToAccessibleText(segment.latex);
+            const isRendered = markup !== "";
 
-            return (
-               <span key={index}>
-                  <span aria-hidden="true" dangerouslySetInnerHTML={{ __html: markup }} />
-                  <span className="visually-hidden">{accessibleText}</span>
-               </span>
-            );
+            if (!isRendered) {
+               return <span key={index}>{latexToAccessibleText(segment.latex)}</span>;
+            }
+
+            return <span key={index} dangerouslySetInnerHTML={{ __html: markup }} />;
          })}
       </>
    );

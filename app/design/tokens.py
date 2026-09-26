@@ -91,6 +91,45 @@ SPACING_TOKENS = {
    for value in (4, 8, 12, 16, 24, 32, 48, 64, 96)
 }
 
+# 08's type table pairs every type step with a px line height, so these are fixed by the brief
+# the way the spacing scale is and carry no slot in the operator's token file. Each is named after
+# the type step it belongs to, leading-<step>.
+LINE_HEIGHT_TOKENS = {
+   "leading-display": 38,
+   "leading-title": 32,
+   "leading-heading": 28,
+   "leading-body": 26,
+   "leading-math-inline": 26,
+   "leading-math-display": 34,
+   "leading-label": 20,
+   "leading-caption": 18,
+   "leading-mono": 22,
+}
+
+# The px widths every drawn line in the client takes: a hairline for gridlines, axes and control
+# borders, a mark width for figure segments and point outlines, and a curve width for plotted
+# curves, interval bars and mastery marks. 08 fixes no stroke width, so these are the three widths
+# the figures, the map and the curve drew with before P8, given one home here.
+STROKE_TOKENS = {
+   "stroke-hairline": 1,
+   "stroke-mark": 1.5,
+   "stroke-curve": 2,
+}
+
+# 08's Motion rules: "Every animation runs under roughly 300 ms and uses ease-out". The only timing
+# values the brief gives, so the only ones the client may use.
+MOTION_TOKENS = {
+   "motion-duration": "300ms",
+   "motion-easing": "ease-out",
+}
+
+FIXED_LENGTH_TOKENS = {**LINE_HEIGHT_TOKENS, **STROKE_TOKENS}
+
+
+def line_height_token_for(type_token):
+   return "leading-" + type_token[len("type-"):]
+
+
 THEMES = ("light", "dark")
 
 TEXT_ROLES = ("text-primary", "text-secondary", "text-muted")

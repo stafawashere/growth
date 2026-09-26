@@ -18,11 +18,16 @@ section fixes the nine pixel values itself, so they are not operator input, carr
 operator's token file, and are emitted once in a theme-independent `:root` block rather than
 inside either `[data-theme]` selector. Spacing emission never depends on what the token file
 carries.
+
+The line heights and stroke widths in app/design/tokens.py are theme-independent for the same
+reason and go out in a second `:root` block after the spacing one. They are advertised in
+FIXED_CUSTOM_PROPERTIES rather than CUSTOM_PROPERTIES, which stays the operator-filled and spacing
+names only.
 """
 
 import json
 
-from app.design.tokens import COLOUR_TOKENS, SPACING_TOKENS, THEMES, TYPE_TOKENS
+from app.design.tokens import COLOUR_TOKENS, FIXED_LENGTH_TOKENS, SPACING_TOKENS, THEMES, TYPE_TOKENS
 
 CUSTOM_PROPERTY_PREFIX = "--growth-"
 
@@ -43,9 +48,11 @@ CUSTOM_PROPERTIES = tuple(
    custom_property_name(name) for name in SPACING_TOKENS
 )
 
+FIXED_CUSTOM_PROPERTIES = tuple(custom_property_name(name) for name in FIXED_LENGTH_TOKENS)
+
 
 def stylesheet_from_tokens(tokens):
-   selectors = [_root_selector()]
+   selectors = [_root_selector(), _fixed_root_selector()]
 
    for theme in THEMES:
       has_theme = theme in tokens
@@ -75,6 +82,15 @@ def _root_selector():
    declarations = [
       "   {0}: {1}px;".format(custom_property_name(name), value)
       for name, value in SPACING_TOKENS.items()
+   ]
+
+   return ":root {{\n{0}\n}}".format("\n".join(declarations))
+
+
+def _fixed_root_selector():
+   declarations = [
+      "   {0}: {1}px;".format(custom_property_name(name), value)
+      for name, value in FIXED_LENGTH_TOKENS.items()
    ]
 
    return ":root {{\n{0}\n}}".format("\n".join(declarations))

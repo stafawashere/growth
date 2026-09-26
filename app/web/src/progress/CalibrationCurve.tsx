@@ -30,7 +30,7 @@ const PLOT_TOP = 32;
 
 const PLOT_BOTTOM = 236;
 
-const POINT_RADIUS = 6;
+const LABEL_GAP = 6;
 
 const INTERVAL_CAP_HALF_WIDTH = 8;
 
@@ -39,11 +39,6 @@ const ACCURACY_TICKS = [0, 0.5, 1];
 const TITLE_ID = "calibration-curve-title";
 
 const DESCRIPTION_ID = "calibration-curve-description";
-
-const captionText = {
-   fill: "var(--growth-text-secondary)",
-   fontSize: "var(--growth-type-caption)"
-};
 
 export function percent(value: number) {
    return `${Math.round(value * 100)} percent`;
@@ -87,7 +82,7 @@ function BinMark(props: { bin: CalibrationBin; x: number }) {
 
    if (!hasObservation(bin)) {
       return (
-         <text x={x} y={PLOT_BOTTOM - POINT_RADIUS * 2} textAnchor="middle" style={captionText}>
+         <text x={x} y={PLOT_BOTTOM - LABEL_GAP * 2} textAnchor="middle" className="chart-caption">
             n = 0
          </text>
       );
@@ -105,7 +100,7 @@ function BinMark(props: { bin: CalibrationBin; x: number }) {
             y1={lowY}
             y2={highY}
             stroke="var(--growth-accent-base)"
-            strokeWidth={2}
+            className="chart-interval"
             data-testid="calibration-interval"
          />
          <line
@@ -114,7 +109,7 @@ function BinMark(props: { bin: CalibrationBin; x: number }) {
             y1={lowY}
             y2={lowY}
             stroke="var(--growth-accent-base)"
-            strokeWidth={2}
+            className="chart-interval"
          />
          <line
             x1={x - INTERVAL_CAP_HALF_WIDTH}
@@ -122,10 +117,10 @@ function BinMark(props: { bin: CalibrationBin; x: number }) {
             y1={highY}
             y2={highY}
             stroke="var(--growth-accent-base)"
-            strokeWidth={2}
+            className="chart-interval"
          />
-         <circle cx={x} cy={pointY} r={POINT_RADIUS} fill="var(--growth-accent-base)" />
-         <text x={x} y={highY - POINT_RADIUS * 2} textAnchor="middle" style={captionText}>
+         <circle cx={x} cy={pointY} className="chart-point" fill="var(--growth-accent-base)" />
+         <text x={x} y={highY - LABEL_GAP * 2} textAnchor="middle" className="chart-caption">
             n = {bin.attempts}
          </text>
       </g>
@@ -143,7 +138,7 @@ function Axes(props: { bins: ReadonlyArray<CalibrationBin> }) {
             y1={PLOT_TOP}
             y2={PLOT_BOTTOM}
             stroke="var(--growth-text-muted)"
-            strokeWidth={1}
+            className="chart-axis"
          />
          <line
             x1={PLOT_LEFT}
@@ -151,23 +146,23 @@ function Axes(props: { bins: ReadonlyArray<CalibrationBin> }) {
             y1={PLOT_BOTTOM}
             y2={PLOT_BOTTOM}
             stroke="var(--growth-text-muted)"
-            strokeWidth={1}
+            className="chart-axis"
          />
 
          {ACCURACY_TICKS.map((tick) => (
             <text
                key={tick}
-               x={PLOT_LEFT - POINT_RADIUS * 2}
+               x={PLOT_LEFT - LABEL_GAP * 2}
                y={accuracyY(tick)}
                textAnchor="end"
                dominantBaseline="middle"
-               style={captionText}
+               className="chart-caption"
             >
                {tick.toFixed(1)}
             </text>
          ))}
 
-         <text x={PLOT_LEFT} y={PLOT_TOP - POINT_RADIUS * 2} textAnchor="middle" style={captionText}>
+         <text x={PLOT_LEFT} y={PLOT_TOP - LABEL_GAP * 2} textAnchor="middle" className="chart-caption">
             accuracy
          </text>
 
@@ -175,15 +170,15 @@ function Axes(props: { bins: ReadonlyArray<CalibrationBin> }) {
             <text
                key={bin.confidence}
                x={levelX(index, bins.length)}
-               y={PLOT_BOTTOM + POINT_RADIUS * 4}
+               y={PLOT_BOTTOM + LABEL_GAP * 4}
                textAnchor="middle"
-               style={captionText}
+               className="chart-caption"
             >
                {LEVEL_LABELS[bin.confidence]}
             </text>
          ))}
 
-         <text x={PLOT_RIGHT} y={VIEW_HEIGHT - POINT_RADIUS} textAnchor="end" style={captionText}>
+         <text x={PLOT_RIGHT} y={VIEW_HEIGHT - LABEL_GAP} textAnchor="end" className="chart-caption">
             confidence
          </text>
       </g>
@@ -236,7 +231,7 @@ function Curve({ calibration }: CalibrationCurveProps) {
             role="img"
             aria-labelledby={`${TITLE_ID} ${DESCRIPTION_ID}`}
             viewBox={`0 0 ${VIEW_WIDTH} ${VIEW_HEIGHT}`}
-            width="100%"
+            className="chart"
             data-testid="calibration-curve"
          >
             <title id={TITLE_ID}>Calibration curve</title>

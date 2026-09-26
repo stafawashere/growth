@@ -15,9 +15,9 @@ from app.experiments import switches
 from app.feedback import render, tutor
 from app.items.grade import grade
 from app.items.verify import ChildDiedError
-from app.providers.anthropic import AnthropicProvider
-from app.providers.guard import BudgetStopped, GuardedProvider, SubscriptionPacingCaps
-from app.providers.subscription import SubscriptionLimitReached, SubscriptionProvider
+from app.providers.guard import BudgetStopped
+from app.providers.router import chain_for
+from app.providers.subscription import SubscriptionLimitReached
 from app.session import diagnostic_session, preview, probes, service
 
 router = APIRouter(prefix="/sessions", tags=["sessions"])
@@ -338,37 +338,16 @@ def tutor_sentence_for(settings, db, user, attempt, feedback):
    settings.
 
    A subscription usage limit is the same stop from the student's side: static feedback, the
-   tutor marked unavailable, and the call queued by app/feedback/tutor.py. It never falls through
-   to the paid API.
+   tutor marked unavailable, and the call queued by app/feedback/tutor.py.
 
-   The guard's persistent developer spend cap only tracks a call this process would actually pay
-   for, which is exactly when settings.tutor is a real AnthropicProvider. Replay, the subscription
-   backend and the no-provider case never reach dev_spend_track=True.
-
-   A subscription tutor is paced by call counts (settings.subscription_pacing, else the defaults)
-   instead of the per-role dollar and token caps, which would price each call at API rates the
-   subscription never bills and stop the tutor after about $1.00 of notional use a day.
+   The tutor runs down its fallback chain (app/providers/router.py): the subscription, paced by
+   call counts, then the paid API only when GROWTH_AI_BACKEND=api put it in the chain, each link
+   behind its own guard. Only the API link is tracked against the persistent developer spend cap.
    """
-   has_tutor = settings.tutor is not None
+   guarded = chain_for(settings, db, user.id, "tutor_links", "tutor", settings.tutor_caps)
 
-   if not has_tutor:
+   if guarded is None:
       return None, False
-
-   is_live = isinstance(settings.tutor, AnthropicProvider)
-   is_on_the_subscription = isinstance(settings.tutor, SubscriptionProvider)
-   pacing = None
-
-   if is_on_the_subscription:
-      pacing = settings.subscription_pacing or SubscriptionPacingCaps()
-
-   guarded = GuardedProvider(
-      settings.tutor,
-      db,
-      user.id,
-      caps=settings.tutor_caps,
-      dev_spend_track=is_live,
-      subscription_pacing=pacing,
-   )
 
    try:
       sentence = tutor.compose_sentence(guarded, feedback, db=db, attempt=attempt, user_id=user.id)

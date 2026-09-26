@@ -93,6 +93,10 @@ ROLE_MAX_BUDGET_USD = {
 TEMP_DIR_PREFIX = "growth-claude-"
 DEFAULT_TIMEOUT_SECONDS = 120
 
+# No live call has met a usage limit yet, so the wording comes from the CLI itself: claude 2.1.277
+# composes its limit line as "You've hit your <limit>" and keeps a list of the prefixes it treats as
+# a limit, both read out of the installed binary on 2026-09-24 (BUILD-LEDGER.md, stage 7). The first
+# four patterns are the ones in use before that reading and stay.
 _LIMIT_PATTERNS = tuple(
    re.compile(pattern, re.IGNORECASE)
    for pattern in (
@@ -100,6 +104,15 @@ _LIMIT_PATTERNS = tuple(
       r"5[- ]hour limit",
       r"usage limit",
       r"rate limit",
+      r"you've hit your",
+      r"you've reached your",
+      r"you're out of (extra )?usage",
+      r"out of usage credits",
+      r"org is out of usage",
+      r"seat type doesn't include (extra )?usage",
+      r"usage allocation has been disabled",
+      r"usage limit is set to \$0",
+      r"requires usage credits",
    )
 )
 

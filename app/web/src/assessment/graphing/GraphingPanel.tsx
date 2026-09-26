@@ -88,15 +88,15 @@ function PlotView(props: { f: RealFunction; window: PlotWindow; source: string }
          <rect x={0} y={0} width={PLOT_WIDTH} height={PLOT_HEIGHT} fill="var(--growth-surface-sunken)" />
 
          {xAxisVisible ? (
-            <line x1={0} x2={PLOT_WIDTH} y1={xAxisY} y2={xAxisY} stroke="var(--growth-text-muted)" strokeWidth={1} />
+            <line x1={0} x2={PLOT_WIDTH} y1={xAxisY} y2={xAxisY} stroke="var(--growth-text-muted)" className="chart-axis" />
          ) : null}
 
          {yAxisVisible ? (
-            <line x1={yAxisX} x2={yAxisX} y1={0} y2={PLOT_HEIGHT} stroke="var(--growth-text-muted)" strokeWidth={1} />
+            <line x1={yAxisX} x2={yAxisX} y1={0} y2={PLOT_HEIGHT} stroke="var(--growth-text-muted)" className="chart-axis" />
          ) : null}
 
          {segments.map((segment, index) => (
-            <path key={index} d={pathOf(segment, window)} fill="none" stroke="var(--growth-accent-base)" strokeWidth={2} />
+            <path key={index} d={pathOf(segment, window)} fill="none" stroke="var(--growth-accent-base)" className="graphing-curve" />
          ))}
       </svg>
    );

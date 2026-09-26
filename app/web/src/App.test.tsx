@@ -110,7 +110,9 @@ const budgetsPayload: BudgetsPayload = {
 };
 
 const providersPayload = {
-   roles: [{ role: "tutor", provider: "anthropic", model: "claude-sonnet-5", wired: true }]
+   roles: [{ role: "tutor", provider: "anthropic", model: "claude-sonnet-5", wired: true }],
+   chains: { tutor: ["subscription", "api"], grading: ["subscription", "api"] },
+   cooling: []
 };
 
 const servedItem: ServedItem = {

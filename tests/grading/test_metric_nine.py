@@ -1,6 +1,6 @@
 """Metric 9: free-response items attempted per week and the read-back abandonment rate, each with
 its denominator, over rows the real routes wrote."""
-from datetime import date, datetime, timedelta, timezone
+from datetime import datetime, timedelta, timezone
 
 from sqlalchemy.orm import Session as OrmSession
 
@@ -38,7 +38,7 @@ def test_weeks_with_no_item_are_listed_and_abandonment_counts_only_settled_photo
 
    with OrmSession(frq_world.engine) as db:
       measured = metrics.metric_nine(db, frq_world.user_id, now)
-      viewed = learning_metrics.free_response_participation(db, frq_world.user_id, date.today())
+      viewed = learning_metrics.free_response_participation(db, frq_world.user_id, now.date())
 
    weeks = measured["items_attempted_per_week"]
 

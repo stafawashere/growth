@@ -36,7 +36,9 @@ function refused(status: number) {
 
 function mockRoutes() {
    mocked.readProviders.mockResolvedValue({
-      roles: [{ role: "tutor", provider: "anthropic", model: "claude-sonnet-5", wired: true }]
+      roles: [{ role: "tutor", provider: "anthropic", model: "claude-sonnet-5", wired: true }],
+      chains: { tutor: ["subscription", "api"], grading: ["subscription", "api"] },
+      cooling: []
    });
    mocked.readBudgets.mockResolvedValue(budgetsWith(2));
    mocked.readSettings.mockResolvedValue({

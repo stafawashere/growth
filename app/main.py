@@ -84,6 +84,8 @@ GROWTH_EXPERIMENTS_DEFAULT the state both A/B switches of app/experiments/switch
                       for a student: off, on or randomised. Unset, retrieval_entry starts
                       randomised and feedback_elaboration starts off (RUNNING_EXPERIMENT_DEFAULTS).
                       A switch the student has already set keeps its state.
+GROWTH_AUTO_DRAIN     on (the default) or off. on drains tutor calls queued behind a usage limit from
+                      inside the running server, paced and capped (app/feedback/autodrain.py).
 GROWTH_TIMED_ASSESSMENTS on (the default) or off. off switches the full mock and the timed part
                       drills off, 11 P5's rollback; the unit check stays on. Any other value
                       stops the process at startup.
@@ -119,12 +121,14 @@ from starlette.responses import FileResponse, PlainTextResponse
 
 from app.api.app import Settings, create_app
 from app.experiments import switches
+from app.feedback.autodrain import AutoDrain, auto_drain_enabled
 from app.frq.bank import DEFAULT_FRQ_DIR, build_frq_context
 from app.providers.anthropic import AnthropicProvider
 from app.providers.cassette_book import CassetteBookProvider
 from app.providers.guard import BudgetCaps, pacing_caps_from_environment
 from app.providers.replay import ReplayProvider
-from app.providers.subscription import SubscriptionProvider
+from app.providers.router import API_LINK, REPLAY_LINK, SUBSCRIPTION_LINK, ChainLink
+from app.providers.subscription import SubscriptionProvider, SubscriptionSingleUserError
 from app.runtime.context import build_session_context
 from app.settings.budgets import validated_cap
 
@@ -269,6 +273,51 @@ def build_grading_provider(env):
    return build_tutor(env)
 
 
+def subscription_link(env, provider=None):
+   """The operator's subscription as a chain link, paced by call counts. None when the login may
+   not be offered, which SubscriptionProvider decides from the database's user count."""
+   if provider is None:
+      db_path = env.get("GROWTH_DB_PATH", str(DEFAULT_DB_PATH))
+
+      try:
+         provider = SubscriptionProvider(environ=env, user_count=installed_user_count(db_path))
+      except SubscriptionSingleUserError:
+         return None
+
+   return ChainLink(SUBSCRIPTION_LINK, provider, pacing=pacing_caps_from_environment(env))
+
+
+def provider_links(env, provider):
+   """A role's fallback chain (app/providers/router.py), from the backend's own provider.
+
+   subscription: the subscription alone. api: the subscription first, then the paid API, so the key
+   is spent only on a call the subscription could not take, and only because GROWTH_AI_BACKEND=api
+   allowed it. replay: the cassette alone. none, or a backend whose provider is not configured: no
+   link, and every caller degrades to static feedback."""
+   backend = resolve_ai_backend(env)
+   has_provider = provider is not None
+
+   if backend == "none":
+      return ()
+
+   if backend == "replay":
+      return (ChainLink(REPLAY_LINK, provider),) if has_provider else ()
+
+   if backend == "subscription":
+      return (subscription_link(env, provider),) if has_provider else ()
+
+   links = []
+   first_link = subscription_link(env)
+
+   if first_link is not None:
+      links.append(first_link)
+
+   if has_provider:
+      links.append(ChainLink(API_LINK, provider, pays=True))
+
+   return tuple(links)
+
+
 # 12's tutor row sets the tutor's caps; the three P3 roles carry these [inferred] defaults on the
 # api backend, set so a day of free-response practice fits: about eight questions of fifteen
 # grader calls at the priced grader call, one read-back a question and one diagnosis a question.
@@ -337,6 +386,13 @@ def default_item_directories(content_dir=DEFAULT_CONTENT_DIR):
    return tuple(sorted(path for path in content_dir.glob(ITEM_BANK_PATTERN) if path.is_dir()))
 
 
+def default_retired_directories(content_dir=DEFAULT_CONTENT_DIR):
+   """Records withdrawn after publication (app/runtime/bank.py retire_withdrawn_items)."""
+   rejected = content_dir / "generation_review" / "rejected"
+
+   return (rejected,) if rejected.is_dir() else ()
+
+
 def items_directories(env):
    configured = env.get("GROWTH_ITEMS_DIR")
    is_unset = configured is None or configured == ""
@@ -386,6 +442,9 @@ def experiment_default_state(env):
 def settings_from_environment(env=None):
    env = env if env is not None else os.environ
 
+   tutor = build_tutor(env)
+   ai_provider = build_grading_provider(env)
+
    return Settings(
       db_path=Path(env.get("GROWTH_DB_PATH", str(DEFAULT_DB_PATH))),
       content_root=Path(env.get("GROWTH_CONTENT_ROOT", str(DEFAULT_CONTENT_ROOT))),
@@ -394,13 +453,15 @@ def settings_from_environment(env=None):
       bind_host=env.get("GROWTH_BIND_HOST", "127.0.0.1"),
       exam_date=env.get("GROWTH_EXAM_DATE", "2027-05-10"),
       rng_seed=int(env.get("GROWTH_RNG_SEED", "7")),
-      tutor=build_tutor(env),
+      tutor=tutor,
+      tutor_links=provider_links(env, tutor),
       tutor_caps=build_tutor_caps(env),
       subscription_pacing=build_subscription_pacing(env),
       key_audit_sample_path=env.get("GROWTH_KEY_AUDIT_SAMPLE_PATH"),
       items_directories=items_directories(env),
       experiment_default_state=experiment_default_state(env),
-      ai_provider=build_grading_provider(env),
+      ai_provider=ai_provider,
+      ai_links=provider_links(env, ai_provider),
       grading_caps=build_grading_caps(env),
       timed_assessments=timed_assessments_enabled(env),
    )
@@ -485,7 +546,10 @@ def build_application(env=None):
    settings.db_path.parent.mkdir(parents=True, exist_ok=True)
    engine = settings.resolve_engine()
    settings.session_context = build_session_context(
-      engine, settings.content_root, items_directories=settings.items_directories
+      engine,
+      settings.content_root,
+      items_directories=settings.items_directories,
+      retired_directories=default_retired_directories(),
    )
    settings.frq = build_frq_context(
       settings.session_context.snapshot,
@@ -495,8 +559,20 @@ def build_application(env=None):
 
    application = create_app(settings)
    mount_client(application, env)
+   start_the_auto_drain(application, settings, engine, env)
 
    return application
+
+
+def start_the_auto_drain(application, settings, engine, env):
+   """app/feedback/autodrain.py, started with the server and stopped with it. Building the
+   application starts nothing."""
+   auto_drain = AutoDrain(engine, settings.tutor_links, settings.tutor_caps, settings.provider_cooldowns)
+   application.state.auto_drain = auto_drain
+
+   if auto_drain_enabled(env):
+      application.router.add_event_handler("startup", auto_drain.start)
+      application.router.add_event_handler("shutdown", auto_drain.stop)
 
 
 _application = None

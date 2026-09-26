@@ -85,8 +85,7 @@ export function NodeMark(props: { state: MasteryNodeState }) {
    return (
       <svg
          viewBox={`0 0 ${MARK_SIZE} ${MARK_SIZE}`}
-         width={MARK_SIZE}
-         height={MARK_SIZE}
+         className="mastery-mark"
          aria-hidden="true"
          focusable="false"
          data-mark={state}
@@ -98,11 +97,11 @@ export function NodeMark(props: { state: MasteryNodeState }) {
             height={MARK_SIZE - 2}
             fill={isSolid ? FILL : "none"}
             stroke={isFilledEdge ? FILL : OUTLINE}
-            strokeWidth={2}
+            className="mastery-mark-stroke"
          />
          {isHalf ? <rect x={1} y={MARK_SIZE / 2} width={MARK_SIZE - 2} height={MARK_SIZE / 2 - 1} fill={FILL} /> : null}
          {isDot ? <rect x={5} y={5} width={6} height={6} fill={FILL} /> : null}
-         {isSlash ? <line x1={3} y1={13} x2={13} y2={3} stroke={SLASH} strokeWidth={2} /> : null}
+         {isSlash ? <line x1={3} y1={13} x2={13} y2={3} stroke={SLASH} className="mastery-mark-stroke" /> : null}
       </svg>
    );
 }

@@ -193,6 +193,39 @@ def test_a_five_hour_limit_on_stderr_with_a_failed_exit_raises_the_limit_error(c
       provider_for(cli, ledger).generate(tutor_request())
 
 
+CLI_LIMIT_LINES = (
+   "You've hit your session limit \u00b7 resets 5pm",
+   "You've hit your limit \u00b7 resets 5pm",
+   "You've hit your weekly limit \u00b7 resets Mon 9am",
+   "You've reached your Fable limit.",
+   "You're out of extra usage",
+   "You're out of usage credits",
+   "Your org is out of usage \u00b7 add funds to continue",
+   "Your seat type doesn't include usage credits",
+   "Usage limit reached \u00b7 continuing automatically at 5pm",
+)
+
+
+@pytest.mark.parametrize("line", CLI_LIMIT_LINES)
+def test_every_limit_line_the_cli_composes_raises_the_limit_error(cli, ledger, line):
+   """The lines are the ones claude 2.1.277 composes for a usage limit, read out of its binary on
+   2026-09-24 (its own prefix list and its "You've hit your ${limit}" builder), because no live
+   call has met a limit yet."""
+   cli.mode("limit_message")
+   (cli.home / "fake_claude_message").write_text(line)
+
+   with pytest.raises(SubscriptionLimitReached):
+      provider_for(cli, ledger).generate(tutor_request())
+
+
+def test_an_error_that_names_no_limit_stays_a_transport_error(cli, ledger):
+   cli.mode("limit_message")
+   (cli.home / "fake_claude_message").write_text("API Error: 500 Internal server error")
+
+   with pytest.raises(SubscriptionTransportError):
+      provider_for(cli, ledger).generate(tutor_request())
+
+
 def test_output_that_is_not_json_is_a_transport_error(cli, ledger):
    cli.mode("malformed")
 

@@ -29,6 +29,7 @@ from app.items.ingest import ingest_new_records, load_records
 from app.runtime.probe_set import probe_item_ids
 
 PUBLISHED_STATUS = "verified"
+RETIRED_STATUS = "retired"
 
 COMPLETION_MINIMUM_STEPS = 2
 
@@ -183,6 +184,35 @@ class ItemSource:
    directories: tuple
    active_error_ids: frozenset
    snapshot_id: str
+   retired_directories: tuple = ()
+
+
+def retire_withdrawn_items(db, source, now):
+   """ingest_new_records never re-reads an id it has stored, so a record withdrawn after a database
+   ingested it (moved to content/generation_review/rejected when its key or template was found
+   wrong) would be served from that database for good. Every record in a retired directory that no
+   bank still holds is retired here; one a bank still holds is left, since the bank is the record."""
+   current_ids = {record.get("id") for directory in source.directories for record in load_records(directory)}
+   retired_ids = {
+      record.get("id")
+      for directory in source.retired_directories
+      for record in load_records(directory)
+   }
+   withdrawn_ids = sorted(retired_ids - current_ids - {None})
+   has_withdrawn = len(withdrawn_ids) > 0
+
+   if not has_withdrawn:
+      return 0
+
+   rows = db.query(Item).filter(Item.id.in_(withdrawn_ids), Item.status != RETIRED_STATUS).all()
+
+   for row in rows:
+      row.status = RETIRED_STATUS
+      row.updated_at = now
+
+   db.flush()
+
+   return len(rows)
 
 
 class ItemBank:
@@ -215,6 +245,7 @@ class ItemBank:
                   db, directory, source.active_error_ids, source.snapshot_id, ingested_at
                )
 
+            retire_withdrawn_items(db, source, ingested_at)
             db.commit()
 
          self._pending_source = None

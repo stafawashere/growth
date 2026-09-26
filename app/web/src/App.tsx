@@ -61,12 +61,6 @@ export const UNSUPPLIED_INPUTS: Record<Destination, ReadonlyArray<UnsuppliedInpu
    mock: []
 };
 
-const noticeStyle = {
-   background: "var(--growth-surface-raised)",
-   color: "var(--growth-text-primary)",
-   border: "1px solid var(--growth-border-hairline)"
-};
-
 type SessionTarget = { resumeSessionId: string | null };
 
 type OnboardingTarget = { reason: OnboardingReason; resumeSessionId: string | null };
@@ -102,7 +96,7 @@ function saveFile(name: string, contents: Blob) {
 
 function TokenNotice() {
    return (
-      <p role="status" className="notice" style={noticeStyle}>
+      <p role="status" className="notice notice-framed">
          The generated design tokens stylesheet is absent, so every colour, type and spacing custom
          property on this page resolves to nothing and falls back to the browser default. The
          operator fills the token file and the build writes the stylesheet from it.
@@ -119,7 +113,7 @@ function UnsuppliedPanel(props: { destination: Destination }) {
    }
 
    return (
-      <section className="notice" style={noticeStyle}>
+      <section className="notice notice-framed">
          <p className="muted">
             No route on this client supplies the input below, so the part of this screen that needs
             it is held back rather than rendered with a stand-in.

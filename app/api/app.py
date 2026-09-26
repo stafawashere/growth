@@ -14,6 +14,7 @@ from fastapi.responses import JSONResponse
 
 from app.auth.service import REAUTH_TTL_SECONDS, SESSION_TTL_SECONDS, AuthError, ChallengeStore
 from app.auth.webauthn import LibraryVerifier
+from app.providers.router import CooldownBoard
 
 WEBAUTHN_LIBRARY_ERROR_DETAIL = "the passkey ceremony did not verify"
 
@@ -59,6 +60,9 @@ class Settings:
    items_directories: tuple = ()
    experiment_default_state: str | dict | None = None
    ai_provider: Any = None
+   tutor_links: tuple = ()
+   ai_links: tuple = ()
+   provider_cooldowns: Any = field(default_factory=CooldownBoard)
    grading_caps: dict = field(default_factory=dict)
    frq: Any = None
    grading_sleep: Any = None

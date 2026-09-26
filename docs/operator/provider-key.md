@@ -82,10 +82,12 @@ subprocess, never logged or printed, and the API adapter refuses it if it ever r
 ## When the subscription says no
 
 A 5-hour or weekly usage limit leaves the student with the static feedback and queues the tutor
-call. Once the window has reset, run `python3 tools/drain_subscription_queue.py` (add `--dry-run`
-to see how many are due first); it retries through the same backend and puts each sentence where
-the student will see it on their next look. It never uses the paid key unless
-`GROWTH_AI_BACKEND=api`.
+call. The running server retries queued calls on its own once the window has reset (a pass every
+10 minutes, at most 5 calls a pass) and puts each sentence where the student will see it on their
+next look; `GROWTH_AUTO_DRAIN=off` stops that, and `python3 tools/drain_subscription_queue.py`
+(add `--dry-run` to see how many are due first) runs one pass by hand. It never uses the paid key
+unless `GROWTH_AI_BACKEND=api`, and with that set the subscription is still tried first: the key is
+spent only on a call the subscription could not take.
 
 Building the composition root, including constructing an `anthropic` provider, never dials out by
 itself: `app/main.py`'s own docstring states building it makes no network call, since the tutor

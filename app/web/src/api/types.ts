@@ -315,8 +315,19 @@ export interface ProviderRole {
 }
 
 /* app/settings/providers.py providers_view. */
+/* app/settings/providers.py providers_view: chains is each role group's fallback order and cooling
+   every link on cooldown now (app/providers/router.py CooldownBoard.snapshot). */
+export interface ProviderCooldown {
+   role: string;
+   link: string;
+   until: string;
+   because: string | null;
+}
+
 export interface ProvidersPayload {
    roles: ProviderRole[];
+   chains: { tutor: string[]; grading: string[] };
+   cooling: ProviderCooldown[];
 }
 
 /* app/settings/budgets.py role_view: caps_as_dict and USAGE_FIELDS spread between role and

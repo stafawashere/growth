@@ -9,7 +9,14 @@ read from the schema, so a table the export carries is a table the purge empties
 is resolved before any is deleted, because attempts and the tables beneath them reach the student
 through sessions. The export archive files and their jobs rows go too: the export exists to be
 downloaded before the purge, and a copy left on disk would outlive a purge 09 calls irreversible.
+
+Two shared tables the export leaves out still hold rows about the student, and the purge removes
+them: a jobs row whose payload names the student (a tutor call queued behind a usage limit carries
+the student's own feedback text), and a review_queue row whose ref_id is one of the student's rows
+(a split or disputed grading point). Rows of either table about anything else stay.
 """
+import json
+
 import uuid
 
 from sqlalchemy import delete, select, tuple_
@@ -21,6 +28,8 @@ from app.export import archive
 PURGE_ACTION = "purge"
 AUDIT_TABLE = models.AuditLog.__table__
 EXPORT_JOBS_KEY = "jobs"
+STUDENT_JOBS_KEY = "queued_jobs"
+REVIEWS_KEY = "review_queue"
 
 
 def write_purge_audit_entry(db, user_id, now):
@@ -90,6 +99,55 @@ def delete_exports(db, user_id):
    return len(export_jobs)
 
 
+def owned_single_keys(owned_by_table):
+   keys = set()
+
+   for table, primary_keys in owned_by_table.items():
+      has_single_key = len(table.primary_key.columns) == 1
+
+      if has_single_key:
+         keys.update(key[0] for key in primary_keys)
+
+   return keys
+
+
+def names_the_student(payload_text, user_id):
+   try:
+      payload = json.loads(payload_text)
+   except ValueError:
+      return False
+
+   is_object = isinstance(payload, dict)
+
+   return is_object and payload.get("user_id") == user_id
+
+
+def delete_student_jobs(db, user_id):
+   student_jobs = [job for job in db.scalars(select(models.Job)) if names_the_student(job.payload, user_id)]
+
+   for job in student_jobs:
+      db.delete(job)
+
+   db.flush()
+
+   return len(student_jobs)
+
+
+def delete_reviews_of(db, owned_keys):
+   has_keys = len(owned_keys) > 0
+
+   if not has_keys:
+      return 0
+
+   review_ids = [
+      row.id
+      for row in db.scalars(select(models.ReviewQueue))
+      if row.ref_id in owned_keys
+   ]
+
+   return delete_rows(db, models.ReviewQueue.__table__, [(review_id,) for review_id in review_ids])
+
+
 def purge_user(db, user_id, now):
    write_purge_audit_entry(db, user_id, now)
 
@@ -111,6 +169,8 @@ def purge_user(db, user_id, now):
          counts[table.name] = delete_rows(db, table, primary_keys)
 
    counts[EXPORT_JOBS_KEY] = delete_exports(db, user_id)
+   counts[STUDENT_JOBS_KEY] = delete_student_jobs(db, user_id)
+   counts[REVIEWS_KEY] = delete_reviews_of(db, owned_single_keys(owned_by_table))
    counts[AUDIT_TABLE.name] = delete_rows(db, AUDIT_TABLE, owned_by_table.get(AUDIT_TABLE, []))
    db.flush()
 

@@ -1,6 +1,7 @@
 import { affordanceProps } from "../affordances";
 import { motionClass } from "../styles/motion";
 import type { StepMark } from "../api/types";
+import { MathText } from "../math/MathText";
 
 /* 08's Accessibility section: every state that uses state-correct or state-incorrect also carries
    a glyph and a word, so the greyscale render says the same thing as the colour render. The
@@ -31,7 +32,7 @@ function GivenStep({ mark }: { mark: StepMark }) {
          data-given="true"
          style={{ color: "var(--growth-text-secondary)" }}
       >
-         <span>{mark.text}</span>
+         <span><MathText text={mark.text} /></span>
          <span>{GIVEN_WORD}</span>
       </li>
    );
@@ -43,7 +44,7 @@ function BlankStep({ mark }: { mark: StepMark }) {
    if (!hasVerdict) {
       return (
          <li data-testid={`step-mark-${mark.index}`}>
-            <span>{mark.text}</span>
+            <span><MathText text={mark.text} /></span>
          </li>
       );
    }
@@ -58,7 +59,7 @@ function BlankStep({ mark }: { mark: StepMark }) {
             {glyph}
          </span>
          <span>{word}</span>
-         <span>{mark.text}</span>
+         <span><MathText text={mark.text} /></span>
       </li>
    );
 }

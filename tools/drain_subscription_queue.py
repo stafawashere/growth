@@ -1,5 +1,8 @@
 """Retry the tutor calls a Claude subscription usage limit queued, once the window has reset.
 
+The running app does this on its own (app/feedback/autodrain.py); this tool runs one pass by hand,
+for a server that is not running or was started with GROWTH_AUTO_DRAIN=off.
+
 Usage: python3 tools/drain_subscription_queue.py [--limit N] [--dry-run]
 
 The backend is the one the app would run, from the same environment (app/main.py build_tutor):
@@ -24,7 +27,8 @@ from sqlalchemy.orm import Session as OrmSession
 from app.auth.service import utc_now
 from app.db.models import make_engine
 from app.feedback.drain import drain_queued_calls, due_jobs
-from app.main import DEFAULT_DB_PATH, build_subscription_pacing, build_tutor, build_tutor_caps, resolve_ai_backend
+from app.main import DEFAULT_DB_PATH, build_subscription_pacing, build_tutor, build_tutor_caps, provider_links, resolve_ai_backend
+from app.providers.router import CooldownBoard
 
 DRAINING_BACKENDS = ("subscription", "api")
 
@@ -72,6 +76,8 @@ def main(argv=None, env=None):
          tutor_caps=build_tutor_caps(env),
          pacing=build_subscription_pacing(env),
          limit=arguments.limit,
+         links=provider_links(env, provider),
+         board=CooldownBoard(),
       )
 
    print(f"done = {report.done}")

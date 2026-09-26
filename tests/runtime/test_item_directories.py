@@ -8,10 +8,12 @@ import os
 from pathlib import Path
 
 import pytest
+from sqlalchemy.orm import Session as OrmSession
 
 from app.content.loader import load_snapshot
 from app.db import models
-from app.main import DEFAULT_ITEMS_DIR, default_item_directories, items_directories
+from app.main import DEFAULT_ITEMS_DIR, default_item_directories, default_retired_directories, items_directories
+from app.runtime.bank import RETIRED_STATUS
 from app.runtime.context import build_session_context
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
@@ -97,3 +99,31 @@ def test_every_record_file_is_named_by_its_id():
             misnamed.append(str(path.relative_to(CONTENT_DIR)))
 
    assert misnamed == []
+
+
+def test_an_item_retired_after_a_database_stored_it_stops_being_served(tmp_path):
+   """P5 found ITM-GEN-01005-04 served from a database that had ingested it before it moved to
+   content/generation_review/rejected, because ingestion never re-reads a stored id. A record in a
+   retired directory now retires the stored row on the next start."""
+   bank = bank_directory(tmp_path, "bank", "ITM-AGT-01004-90")
+   bank_directory(tmp_path, "later", "ITM-AGT-01004-91")
+   engine = models.make_engine(tmp_path / "growth.db")
+   first_start = build_session_context(engine, DATA_ROOT, items_directories=(bank, tmp_path / "later"))
+
+   assert [item["id"] for item in first_start.bank.published_items("BC-QA-01004")] == ["ITM-AGT-01004-90", "ITM-AGT-01004-91"]
+
+   rejected = tmp_path / "rejected"
+   rejected.mkdir()
+   (tmp_path / "later" / "ITM-AGT-01004-91.json").rename(rejected / "ITM-AGT-01004-91.json")
+   next_start = build_session_context(
+      engine, DATA_ROOT, items_directories=(bank, tmp_path / "later"), retired_directories=(rejected,)
+   )
+
+   assert [item["id"] for item in next_start.bank.published_items("BC-QA-01004")] == ["ITM-AGT-01004-90"]
+
+   with OrmSession(engine) as db:
+      assert db.get(models.Item, "ITM-AGT-01004-91").status == RETIRED_STATUS
+
+
+def test_the_running_app_reads_the_rejected_items_as_retired():
+   assert default_retired_directories() == (CONTENT_DIR / "generation_review" / "rejected",)

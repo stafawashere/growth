@@ -16,6 +16,18 @@ export interface MathFieldElementLike {
    getValue(format: string): string;
 }
 
+/* MathLive speaks the field's content as spoken text (its "spoken-text" output), and that reading
+   is carried as the field's description, so a screen reader landing on the field hears what is in
+   it as mathematics rather than as the LaTeX keystrokes. An element MathLive has not upgraded has
+   no reading to give. */
+export function readSpokenText(field: MathFieldElementLike): string {
+   try {
+      return field.getValue("spoken-text");
+   } catch {
+      return "";
+   }
+}
+
 export function readMathJsonValue(field: MathFieldElementLike): unknown {
    const raw = field.getValue("math-json");
 
@@ -41,6 +53,8 @@ export function MathField(props: MathFieldProps) {
    }
 
    const fieldId = useId();
+   const speechId = useId();
+   const [spoken, setSpoken] = useState("");
    const elementRef = useRef<HTMLElement | null>(null);
    const failureHandler = useRef(onLoadFailure);
    const [loadFailed, setLoadFailed] = useState(false);
@@ -81,6 +95,7 @@ export function MathField(props: MathFieldProps) {
             onLatexChange(field.getValue("latex"));
          }
 
+         setSpoken(readSpokenText(field));
          onChange(readMathJsonValue(field));
       };
 
@@ -103,9 +118,12 @@ export function MathField(props: MathFieldProps) {
    return (
       <div className="field">
          <label htmlFor={fieldId}>{label}</label>
-         <math-field id={fieldId} aria-label={label} ref={elementRef}>
+         <math-field id={fieldId} aria-label={label} aria-describedby={speechId} ref={elementRef}>
             {initialLatex ?? ""}
          </math-field>
+         <span id={speechId} className="visually-hidden" data-testid="math-field-speech">
+            {spoken}
+         </span>
       </div>
    );
 }

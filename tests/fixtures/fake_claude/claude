@@ -66,6 +66,12 @@ def main():
       print(json.dumps(limited))
       return 1
 
+   if mode == "limit_message":
+      message = (home / "fake_claude_message").read_text()
+      limited = result_payload(subtype="error_during_execution", is_error=True, result=message, total_cost_usd=0)
+      print(json.dumps(limited))
+      return 1
+
    if mode == "five_hour_limit_stderr":
       print("Claude usage limit reached. Your 5-hour limit resets at 3pm.", file=sys.stderr)
       return 1

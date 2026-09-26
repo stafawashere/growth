@@ -148,8 +148,8 @@ export function ReadBackEditor({ readBack, onChange }: ReadBackEditorProps) {
                         crossed out
                      </label>
 
-                     <span className="muted" aria-hidden="true">
-                        <MathText text={lineText(line)} />
+                     <span className="muted">
+                        reads as <MathText text={lineText(line)} />
                      </span>
                   </div>
                ))}

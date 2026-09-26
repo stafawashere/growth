@@ -158,3 +158,7 @@ Every parameter below is [inferred] unless noted. The authoritative per-engine l
 | Rapid-guess threshold | 10 percent of the median untimed time on the archetype after 10 attempts, else 4 s plus 2 s per difficulty factor, inside the final 5 minutes of a part | 05, P5 | the operator's latency distributions after the first drills |
 | Unit check size | 8 to 12 items, greedy set cover then topped up with the least-evidenced archetypes | 05, P5 | skills left unreached per check and the check-to-checkpoint agreement in 10 |
 | Score band half-width | 1 score point either side, never narrower than 2 points in all | 05, P5 | nothing public; fixed by R24 |
+| Provider cooldown after a usage limit | 30 minutes per role and link, the drain's own retry interval (app/providers/router.py LIMIT_COOLDOWN) | 07, P6 | the reset times the CLI reports once a real limit is met |
+| Provider cooldown after other failures | 60 s after 3 consecutive failures of one link for one role (FAILURE_COOLDOWN, FAILURES_BEFORE_COOLDOWN) | 07, P6 | the failure runs the audit and the automatic drain log record in real use |
+| Automatic drain pacing | one pass every 10 minutes, at most 5 queued tutor calls a pass, under the subscription's call counts (app/feedback/autodrain.py) | 07, 14, P6 | queue lengths after real usage-limit windows |
+

@@ -354,13 +354,17 @@ persistent developer cap on the API key is unchanged and still guards every `api
 ### A usage limit, and the queue
 
 A 5-hour or weekly limit stops the tutor for the rest of the window: the student gets the static
-feedback and the call is queued in the jobs table. `python3 tools/drain_subscription_queue.py`
-retries the queued calls once the window has reset, through the configured backend under the same
-caps, and stores each sentence on its attempt, where the feedback screen reads it the next time
-the student opens it. A limit that still holds re-queues the job 30 minutes later and stops the
-drain; it never falls through to the API unless `GROWTH_AI_BACKEND=api` is set. The wording and
-JSON shape of a real limit answer were not observed on 2026-09-23, so the patterns the adapter
-matches ("weekly limit", "5-hour limit", "usage limit", "rate limit") are still unverified.
+feedback and the call is queued in the jobs table. Since 2026-09-24 (stage 7) the running server
+drains the queue itself (`app/feedback/autodrain.py`): a pass every 10 minutes, at most 5 calls a
+pass, under the same caps, storing each sentence on its attempt, where the feedback screen reads it
+the next time the student opens it. For 30 minutes after a limit the subscription link cools
+(`app/providers/router.py`), so neither the feedback screen nor the drain starts a CLI process into
+a closed window; a limit that still holds after that re-queues the job 30 minutes later and ends the
+pass. `python3 tools/drain_subscription_queue.py` runs one pass by hand. Nothing falls through to
+the API unless `GROWTH_AI_BACKEND=api` is set, and then only after the subscription link has
+refused. No live call has met a limit yet, so the patterns the adapter matches were aligned on
+2026-09-24 to the limit lines the installed CLI (2.1.277) composes, read out of its binary; a real
+limit answer is still to be observed.
 
 ## Per role model choice [verified]
 

@@ -1,0 +1,23 @@
+{
+   "recorded": true,
+   "recorded_on": "2026-09-24",
+   "note": "Recorded live on the operator's Claude subscription through the claude CLI (GROWTH_AI_BACKEND=subscription, $0.00 API), stage 7, as the output golden of prompts/tutor/guardrailed_practice_v1.md. The template is not wired to any route; this is its one recorded answer.",
+   "template": "prompts/tutor/guardrailed_practice_v1.md",
+   "fields": {
+      "misconception_list": "BC-MIS-01003: treats an indeterminate form as the value of the limit",
+      "item_skills": "BC-SKL-01011 limits by factoring and cancelling a common factor",
+      "guardrail_level": "strict"
+   },
+   "student_message": "The limit of (x^2 - 9)/(x - 3) as x goes to 3. I plugged in 3 and got 0/0. Is the answer 0?",
+   "role": "tutor",
+   "provider": "subscription",
+   "model": "claude-sonnet-5",
+   "finish_reason": "success",
+   "text": "0/0 isn't a value, it just means direct substitution won't work here. What can you do to the numerator to simplify the expression first?",
+   "usage": {
+      "input_tokens": 2,
+      "output_tokens": 43,
+      "cached_read_tokens": 0,
+      "cached_write_tokens": 1390
+   }
+}

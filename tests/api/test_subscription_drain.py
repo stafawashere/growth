@@ -236,7 +236,10 @@ def test_waiting_behind_a_limit_does_not_use_up_the_failure_retries(world, cli, 
 
 def test_the_developer_spend_cap_stops_an_api_drain_cleanly(world, cli, no_paid_api, monkeypatch, tmp_path, capsys):
    """DevSpendCapExceeded is not a BudgetStopped, so it needs its own clean stop: the tool reports
-   and exits 0, and the job is left exactly as it was."""
+   and exits 0, and the job is left exactly as it was.
+
+   On the api backend the subscription comes first in the chain (app/main.py provider_links), so
+   the CLI is made unavailable here for the drain to reach the API link at all."""
    _client, _session_id, attempt_id = limited_attempt(world, cli)
    monkeypatch.setattr(guard, "DEV_SPEND_LEDGER_PATH", tmp_path / "dev_spend_ledger.json")
    monkeypatch.setenv(DEV_SPEND_CAP_ENV_VAR, "0.000001")
@@ -244,6 +247,7 @@ def test_the_developer_spend_cap_stops_an_api_drain_cleanly(world, cli, no_paid_
       GROWTH_DB_PATH=str(world.engine.url.database),
       GROWTH_AI_BACKEND="api",
       ANTHROPIC_API_KEY="test-key-not-real",
+      GROWTH_CLAUDE_BIN=str(tmp_path / "no-claude-installed"),
    )
 
    exit_code = drain_subscription_queue.main([], env=env)

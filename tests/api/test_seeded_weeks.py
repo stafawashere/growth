@@ -6,6 +6,13 @@ nothing of a model. The fixture bank serves about five items a session, far fewe
 bank, so it takes twelve weeks here for both feedback arms to pass the 30-outcome floor an interval
 needs. It shows the machinery works, not that anything was learned: no number here is evidence
 about the real student.
+
+The registered user's id is pinned. app/auth/service.py new_id gives every registration a fresh
+uuid4, and that id seeds the experiment tie-breaks (app/experiments/switches.py default_seed) and
+session assembly (app/session/preview.py), so with a fresh id the twelve weeks were a different run
+every time and about one in twelve left a feedback arm under the 30-outcome floor (2 of 25 runs
+alone, and one of 30 pinned ids, USER-probe-27, fails every time). Pinning the id to one derived
+from SEED makes the run the seeded run this test claims to be.
 """
 import json
 import random
@@ -14,6 +21,7 @@ from datetime import timedelta
 from sqlalchemy import update
 from sqlalchemy.orm import Session as OrmSession
 
+from app.auth import service as auth_service
 from app.db import models
 from app.experiments import switches
 from app.runtime.probe_set import probe_item_ids
@@ -22,6 +30,7 @@ from tests.api.test_evaluation_routes import publish_probe_items, run_checkpoint
 
 WEEKS = 12
 SEED = 20260924
+SEEDED_USER_ID = f"USER-seeded-weeks-{SEED}"
 WORKED_STEPS = [
    {"step": 1, "text": "Divide out the common factor.", "mathjson": 0},
    {"step": 2, "text": "Evaluate what is left.", "mathjson": KEY_MATHJSON},
@@ -77,7 +86,19 @@ def day_session(client, day, rng):
    assert client.post(f"/sessions/{session_id}/close", json={"today": day.isoformat()}).status_code == 200
 
 
-def eval_the_harness_runs_end_to_end_on_seeded_weeks(world):
+def pin_the_registered_user_id(monkeypatch):
+   original_new_id = auth_service.new_id
+
+   def seeded_user_id(prefix):
+      is_user = prefix == "USER"
+
+      return SEEDED_USER_ID if is_user else original_new_id(prefix)
+
+   monkeypatch.setattr(auth_service, "new_id", seeded_user_id)
+
+
+def eval_the_harness_runs_end_to_end_on_seeded_weeks(world, monkeypatch):
+   pin_the_registered_user_id(monkeypatch)
    world.settings.experiment_default_state = switches.RANDOMISED
    client = world.client()
    world.register(client)

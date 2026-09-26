@@ -5,10 +5,12 @@ provider is configured (docs/plan/07-ai-provider-layer.md, "Roles and routing").
 is reported unwired with no provider and no model, because nothing in this process would answer
 it. No key material and no sign of whether a key exists is read here.
 """
+from app.auth.service import utc_now
 from app.feedback.tutor import TUTOR_MODEL
 from app.providers.anthropic import AnthropicProvider
 from app.providers.guard import ROLES
 from app.providers.replay import ReplayProvider
+from app.providers.router import links_from_settings
 from app.providers.subscription import SubscriptionProvider
 
 PROVIDER_NAMES = {
@@ -41,5 +43,20 @@ def role_entry(role, settings):
    return {"role": role, "provider": provider_name_of(settings.tutor), "model": TUTOR_MODEL, "wired": True}
 
 
-def providers_view(settings):
-   return {"roles": [role_entry(role, settings) for role in ROLES]}
+def chain_names(settings, links_field, provider_field):
+   return [link.name for link in links_from_settings(settings, links_field, provider_field)]
+
+
+def providers_view(settings, now=None):
+   """roles as before; chains is each role group's fallback order, and cooling every link that is
+   on cooldown now (app/providers/router.py)."""
+   board = settings.provider_cooldowns
+
+   return {
+      "roles": [role_entry(role, settings) for role in ROLES],
+      "chains": {
+         "tutor": chain_names(settings, "tutor_links", "tutor"),
+         "grading": chain_names(settings, "ai_links", "ai_provider"),
+      },
+      "cooling": board.snapshot(now or utc_now()),
+   }

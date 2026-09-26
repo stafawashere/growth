@@ -21,6 +21,18 @@ describe("MathText", () => {
 
       expect(visibleMath?.textContent).not.toMatch(/\\/);
       expect(container.textContent?.startsWith("Evaluate ")).toBe(true);
-      expect(container.textContent?.endsWith(").")).toBe(true);
+
+      const region = container.querySelector(".katex")!;
+      const trailing = region.parentElement!.nextElementSibling;
+
+      expect(trailing?.textContent).toBe(".");
+      expect(region.compareDocumentPosition(trailing!) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+
+      const mathml = region.querySelector("math");
+
+      expect(mathml, "KaTeX rendered no MathML").not.toBeNull();
+      expect(mathml!.closest("[aria-hidden='true']"), "the MathML sits under aria-hidden").toBeNull();
+      expect(region.querySelector(".katex-html")?.getAttribute("aria-hidden")).toBe("true");
+      expect(container.querySelectorAll(".visually-hidden").length, "a plain-text reading duplicates the MathML").toBe(0);
    });
 });

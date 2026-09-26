@@ -104,13 +104,23 @@ function spacingTokenNames() {
    return values[1].split(",").map((value) => nameTemplate[1] + value.trim());
 }
 
+function dictionaryKeys(name: string) {
+   const block = pythonBlock(name, "{", "}");
+
+   return Array.from(block.matchAll(/"([a-z0-9-]+)":/g), (match) => match[1]);
+}
+
 const COLOUR_TOKENS = colourTokenNames();
 
 const TYPE_TOKENS = typeTokenNames();
 
 const SPACING_TOKENS = spacingTokenNames();
 
-const KNOWN_TOKENS = [...COLOUR_TOKENS, ...TYPE_TOKENS, ...SPACING_TOKENS];
+const LINE_HEIGHT_TOKENS = dictionaryKeys("LINE_HEIGHT_TOKENS");
+
+const STROKE_TOKENS = dictionaryKeys("STROKE_TOKENS");
+
+const KNOWN_TOKENS = [...COLOUR_TOKENS, ...TYPE_TOKENS, ...SPACING_TOKENS, ...LINE_HEIGHT_TOKENS, ...STROKE_TOKENS];
 
 /* 08's type table, read row by row: the token in the first column and the px line height in the
    third. */
@@ -177,10 +187,10 @@ function typeTokenOf(rule: Rule) {
    return match === null ? null : match[1];
 }
 
-/* Every numeric literal a declaration may carry once its spacing references are removed: a bare
-   zero, a unitless factor applied to a spacing step inside calc, the prose measure in ch, and a
-   px line height that 08's type table pairs with the rule's own type token. */
-function lengthOffenders(rule: Rule, measure: number, lineHeights: Map<string, number>) {
+/* Every numeric literal a declaration may carry once its token references are removed: a bare
+   zero, a unitless factor applied to a spacing step inside calc, and the prose measure in ch. A
+   line height is a leading token like any other length, never a px literal. */
+function lengthOffenders(rule: Rule, measure: number) {
    const offenders: string[] = [];
    const numberPattern = /(^|[^\w-])(-?\d*\.?\d+)([a-z%]*)/gi;
 
@@ -200,12 +210,7 @@ function lengthOffenders(rule: Rule, measure: number, lineHeights: Map<string, n
          const isFactor = isUnitless && scalesANeighbour;
          const isMeasure = unit === "ch" && amount === measure;
 
-         const ruleToken = typeTokenOf(rule);
-         const pairedLineHeight = ruleToken === null ? undefined : lineHeights.get(ruleToken);
-         const isLineHeight = declaration.property === "line-height" && unit === "px";
-         const isTableLineHeight = isLineHeight && pairedLineHeight === amount;
-
-         const isAllowed = isBareZero || isFactor || isMeasure || isTableLineHeight;
+         const isAllowed = isBareZero || isFactor || isMeasure;
 
          if (!isAllowed) {
             offenders.push(`${rule.selector} { ${declaration.property}: ${declaration.value} }`);
@@ -279,9 +284,29 @@ describe("the application stylesheet", () => {
 
       expect(lineHeights.size, "08's type table did not parse").toBe(TYPE_TOKENS.length);
 
-      const offenders = RULES.flatMap((rule) => lengthOffenders(rule, measure, lineHeights));
+      const offenders = RULES.flatMap((rule) => lengthOffenders(rule, measure));
 
       expect(offenders).toEqual([]);
+
+      const lineHeightRules = RULES.filter((rule) =>
+         rule.declarations.some((declaration) => declaration.property === "line-height")
+      );
+
+      expect(lineHeightRules.length, "app.css sets no line height").toBeGreaterThan(0);
+
+      for (const rule of lineHeightRules) {
+         const lineHeight = rule.declarations.find((declaration) => declaration.property === "line-height")!;
+         const typeToken = typeTokenOf(rule);
+
+         expect(typeToken, `${rule.selector} sets a line height without the type step it belongs to`).not.toBeNull();
+
+         const pairedLeading = `var(--growth-leading-${typeToken!.slice("type-".length)})`;
+
+         expect(lineHeight.value, `${rule.selector} sets a line height 08 does not pair with ${typeToken}`)
+            .toBe(pairedLeading);
+         expect(LINE_HEIGHT_TOKENS, `${pairedLeading} is not a token app/design/tokens.py names`)
+            .toContain(pairedLeading.slice("var(--growth-".length, -1));
+      }
 
       const spacingReferences = DECLARATIONS.filter((declaration) =>
          declaration.value.includes("var(--growth-space-")

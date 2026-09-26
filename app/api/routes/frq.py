@@ -26,9 +26,7 @@ from app.frq import metrics, unit_check
 from app.frq.bank import ensure_item_rows
 from app.grading import service, transcribe
 from app.grading.judge import ModelJudge
-from app.providers.anthropic import AnthropicProvider
-from app.providers.guard import GuardedProvider, SubscriptionPacingCaps
-from app.providers.subscription import SubscriptionProvider
+from app.providers.router import chain_for
 
 router = APIRouter(tags=["free response"])
 
@@ -68,23 +66,10 @@ def record_of(settings, attempt):
 
 
 def guarded_provider(settings, db, user_id):
-   provider = settings.ai_provider
-
-   if provider is None:
-      return None
-
-   is_live = isinstance(provider, AnthropicProvider)
-   is_on_the_subscription = isinstance(provider, SubscriptionProvider)
-   pacing = (settings.subscription_pacing or SubscriptionPacingCaps()) if is_on_the_subscription else None
-
-   return GuardedProvider(
-      provider,
-      db,
-      user_id,
-      caps=settings.grading_caps,
-      dev_spend_track=is_live,
-      subscription_pacing=pacing,
-   )
+   """The grader, the transcriber and the diagnostician run down their fallback chain
+   (app/providers/router.py), each link behind its own guard, or not at all when no link is
+   configured."""
+   return chain_for(settings, db, user_id, "ai_links", "ai_provider", settings.grading_caps)
 
 
 def grading_context(settings, db, user_id, today=None):

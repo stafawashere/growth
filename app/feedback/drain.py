@@ -2,11 +2,11 @@
 stores each sentence on its attempt, where app/feedback/tutor.py compose_sentence already looks
 first, so the student sees the elaborated feedback the next time the feedback screen is opened.
 
-Every retry goes through GuardedProvider with the same caps the feedback route would apply: the
-subscription pacing guard on the subscription backend, the per-role caps and the persistent
-developer spend cap on the api backend. Which backend is the caller's choice
-(tools/drain_subscription_queue.py builds it with app/main.py build_tutor), so nothing here can
-reach the paid API unless GROWTH_AI_BACKEND=api chose it.
+Every retry runs down the tutor's fallback chain (app/providers/router.py) with the same caps the
+feedback route would apply: the subscription pacing guard on the subscription link, the per-role
+caps and the persistent developer spend cap on the API link, which is in the chain only when
+GROWTH_AI_BACKEND=api put it there. The running app drains on its own (app/feedback/autodrain.py);
+tools/drain_subscription_queue.py runs one pass by hand.
 
 A limit that still holds re-queues the job with a later not_before and stops the drain, because
 every later job would meet the same closed window; waiting behind a limit is not a failure, so it
@@ -33,7 +33,8 @@ from app.feedback import tutor
 from app.providers.anthropic import AnthropicProvider
 from app.providers.base import Message, RefusedBeforeWire
 from app.providers.call_queue import QUEUED_CALL_JOB_TYPE, QUEUED_CALL_STATE
-from app.providers.guard import BudgetStopped, DevSpendCapExceeded, GuardedProvider, ProviderCallFailed
+from app.providers.guard import BudgetStopped, DevSpendCapExceeded, ProviderCallFailed
+from app.providers.router import API_LINK, SUBSCRIPTION_LINK, ChainLink, FallbackChain
 from app.providers.subscription import SubscriptionLimitReached
 
 DONE_STATE = "done"
@@ -74,18 +75,15 @@ def is_limit_failure(raised):
    return is_bare_limit or is_guarded_limit
 
 
-def guarded_for(provider, db, user_id, tutor_caps, pacing, clock):
+def single_link(provider, pacing):
    is_live_api = isinstance(provider, AnthropicProvider)
+   name = API_LINK if is_live_api else SUBSCRIPTION_LINK
 
-   return GuardedProvider(
-      provider,
-      db,
-      user_id,
-      clock=clock,
-      caps=tutor_caps,
-      dev_spend_track=is_live_api,
-      subscription_pacing=pacing,
-   )
+   return ChainLink(name, provider, pacing=pacing, pays=is_live_api)
+
+
+def guarded_for(links, db, user_id, tutor_caps, clock, board):
+   return FallbackChain(links, db, user_id, caps=tutor_caps, clock=clock, board=board)
 
 
 def settle_job(job, state, now, error=None):
@@ -119,10 +117,12 @@ def fail_or_requeue(job, now, error, report):
    report.requeued = report.requeued + 1
 
 
-def drain_queued_calls(db, provider, clock, tutor_caps=None, pacing=None, limit=None):
+def drain_queued_calls(db, provider, clock, tutor_caps=None, pacing=None, limit=None, links=None, board=None):
    """Drains the due jobs in the order they were queued, at most limit of them. Returns a
-   DrainReport; stopped_by names why the drain ended early, if it did."""
+   DrainReport; stopped_by names why the drain ended early, if it did. links is the tutor's chain;
+   without it the one provider given is the chain, paced by pacing when that is set."""
    report = DrainReport()
+   links = links or (single_link(provider, pacing),)
    now = clock()
    jobs = due_jobs(db, now)
    has_limit = limit is not None
@@ -132,7 +132,7 @@ def drain_queued_calls(db, provider, clock, tutor_caps=None, pacing=None, limit=
 
    for job in jobs:
       now = clock()
-      stop = drain_one(db, job, provider, clock, now, tutor_caps or {}, pacing, report)
+      stop = drain_one(db, job, links, clock, now, tutor_caps or {}, board, report)
       db.commit()
 
       if stop is not None:
@@ -142,7 +142,7 @@ def drain_queued_calls(db, provider, clock, tutor_caps=None, pacing=None, limit=
    return report
 
 
-def drain_one(db, job, provider, clock, now, tutor_caps, pacing, report):
+def drain_one(db, job, links, clock, now, tutor_caps, board, report):
    payload = json.loads(job.payload)
    role = payload.get("role")
    is_drainable = role in DRAINABLE_ROLES
@@ -179,7 +179,7 @@ def drain_one(db, job, provider, clock, now, tutor_caps, pacing, report):
 
    messages = [Message(role=message["role"], content=message["content"]) for message in payload["messages"]]
    request = tutor.request_from_messages(messages, model=payload.get("model"))
-   guarded = guarded_for(provider, db, payload.get("user_id"), tutor_caps, pacing, clock)
+   guarded = guarded_for(links, db, payload.get("user_id"), tutor_caps, clock, board)
 
    try:
       result = guarded.generate(request)

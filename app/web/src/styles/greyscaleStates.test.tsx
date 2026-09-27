@@ -1,6 +1,6 @@
 import { act, cleanup, fireEvent, screen, waitFor, within } from "@testing-library/react";
 import type { ReactElement } from "react";
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { afterAll, afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import * as client from "../api/client";
 import type { ExperimentState, MasteryNodeState } from "../api/types";
@@ -16,7 +16,7 @@ import { ConfidencePrompt } from "../session/ConfidencePrompt";
 import { StepMarks } from "../session/StepMarks";
 import { OperatorSettings } from "../settings/ExperimentsSection";
 import { SettingsScreen } from "../settings/SettingsScreen";
-import { colourlessDeclarations, isSvgElement, resolvedSvgPaint } from "../testing/cascade";
+import { DESKTOP_WIDTH, VIEWPORT_WIDTHS, colourlessDeclarations, isSvgElement, resolvedSvgPaint, setViewportWidth } from "../testing/cascade";
 import {
    CALIBRATION,
    EVERY_STEP_MARK,
@@ -40,7 +40,8 @@ const mocked = vi.mocked(client);
    ground, or unpainted. Hue and lightness are gone from that description, so two states whose
    descriptions match differ by colour alone and fail. Text a sighted reader never sees, under
    .visually-hidden or KaTeX's hidden MathML, is left out, as are ARIA attributes, class names
-   and data attributes, which are not drawn. */
+   and data attributes, which are not drawn. Every state is read at a desktop and a phone width,
+   each matching only the @media rules of app.css that hold there. */
 
 const GROUND_TOKENS = /^(surface-|accent-tint-)/;
 
@@ -125,7 +126,15 @@ afterEach(() => {
    cleanup();
 });
 
-describe("eval_greyscale_states", () => {
+describe.each(VIEWPORT_WIDTHS)("eval_greyscale_states at %i px", (width) => {
+   beforeEach(() => {
+      setViewportWidth(width);
+   });
+
+   afterAll(() => {
+      setViewportWidth(DESKTOP_WIDTH);
+   });
+
    it("tells two states apart that differ only in colour, and not two that differ in text", () => {
       const red = described(<p style={{ color: "var(--growth-state-incorrect)" }}>Checked</p>);
       const green = described(<p style={{ color: "var(--growth-state-correct)" }}>Checked</p>);

@@ -25,6 +25,50 @@ export interface Rule {
    specificity: number;
    order: number;
    declarations: Map<string, string>;
+   media: string[];
+}
+
+/* The two widths the evals read app.css at: the desktop column and the smallest phone 08 designs
+   for. A rule inside @media is matched only at a width its condition holds for. */
+export const DESKTOP_WIDTH = 1280;
+
+export const PHONE_WIDTH = 375;
+
+export const VIEWPORT_WIDTHS = [DESKTOP_WIDTH, PHONE_WIDTH];
+
+let viewportWidth = DESKTOP_WIDTH;
+
+export function setViewportWidth(width: number) {
+   viewportWidth = width;
+}
+
+function widthFeatureHolds(feature: string, width: number) {
+   const match = /^\(\s*(min|max)-width\s*:\s*(\d+(?:\.\d+)?)px\s*\)$/.exec(feature);
+
+   if (match === null) {
+      throw new Error(`the cascade cannot evaluate the media feature ${feature}`);
+   }
+
+   const limit = Number(match[2]);
+
+   return match[1] === "min" ? width >= limit : width <= limit;
+}
+
+export function mediaHolds(condition: string, width: number) {
+   return condition.split(",").some((query) =>
+      query
+         .trim()
+         .split(/\s+and\s+/)
+         .every((term) => {
+            const isMediaType = term === "all" || term === "screen";
+
+            return isMediaType || widthFeatureHolds(term.trim(), width);
+         })
+   );
+}
+
+export function appliesAtWidth(rule: Rule, width: number) {
+   return rule.media.every((condition) => mediaHolds(condition, width));
 }
 
 export const COLOUR_PROPERTIES = [
@@ -52,29 +96,69 @@ function specificityOf(selector: string) {
    return ids * 10000 + classes * 100 + types;
 }
 
+function declarationsOf(body: string) {
+   const declarations = new Map<string, string>();
+
+   for (const statement of body.split(";")) {
+      const colon = statement.indexOf(":");
+
+      if (colon > 0) {
+         declarations.set(statement.slice(0, colon).trim().toLowerCase(), statement.slice(colon + 1).trim());
+      }
+   }
+
+   return declarations;
+}
+
+/* Rules in source order, each carrying the @media conditions it sits inside. Any other at-rule
+   with a block is refused, so a rule the evals cannot place is never read as always applying. */
 export function parseRules(text: string): Rule[] {
    const rules: Rule[] = [];
    const withoutComments = text.replace(/\/\*[\s\S]*?\*\//g, " ");
    let order = 0;
 
-   for (const block of withoutComments.matchAll(/([^{}]+)\{([^{}]*)\}/g)) {
-      const declarations = new Map<string, string>();
+   function readBlock(position: number, media: string[]): number {
+      while (position < withoutComments.length) {
+         const open = withoutComments.indexOf("{", position);
+         const close = withoutComments.indexOf("}", position);
+         const blockEnds = close !== -1 && (open === -1 || close < open);
 
-      for (const statement of block[2].split(";")) {
-         const colon = statement.indexOf(":");
-
-         if (colon > 0) {
-            declarations.set(statement.slice(0, colon).trim().toLowerCase(), statement.slice(colon + 1).trim());
+         if (blockEnds) {
+            return close + 1;
          }
+
+         if (open === -1) {
+            return withoutComments.length;
+         }
+
+         const prelude = withoutComments.slice(position, open).trim();
+
+         if (prelude.startsWith("@media")) {
+            position = readBlock(open + 1, [...media, prelude.slice("@media".length).trim()]);
+            continue;
+         }
+
+         if (prelude.startsWith("@")) {
+            throw new Error(`the cascade cannot place the at-rule ${prelude}`);
+         }
+
+         const end = withoutComments.indexOf("}", open);
+         const declarations = declarationsOf(withoutComments.slice(open + 1, end));
+
+         for (const part of prelude.split(",")) {
+            const selector = part.trim();
+
+            order += 1;
+            rules.push({ selector, specificity: specificityOf(selector), order, declarations, media });
+         }
+
+         position = end + 1;
       }
 
-      for (const part of block[1].split(",")) {
-         const selector = part.trim();
-
-         order += 1;
-         rules.push({ selector, specificity: specificityOf(selector), order, declarations });
-      }
+      return position;
    }
+
+   readBlock(0, []);
 
    return rules;
 }
@@ -96,7 +180,9 @@ export function isMatchable(rule: Rule) {
 
 export function matchingRules(element: Element): Rule[] {
    return RULES.filter((rule) => {
-      if (!isMatchable(rule)) {
+      const applies = isMatchable(rule) && appliesAtWidth(rule, viewportWidth);
+
+      if (!applies) {
          return false;
       }
 

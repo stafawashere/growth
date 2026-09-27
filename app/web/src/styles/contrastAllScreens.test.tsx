@@ -6,8 +6,12 @@ import { afterEach, beforeAll, describe, expect, it, vi } from "vitest";
 
 import {
    COLOUR_PROPERTIES,
+   DESKTOP_WIDTH,
+   PHONE_WIDTH,
    RULES,
    THEMES,
+   VIEWPORT_WIDTHS,
+   appliesAtWidth,
    borderPaint,
    contrast,
    declared,
@@ -22,6 +26,7 @@ import {
    resolvedColour,
    resolvedSvgPaint,
    rgbOf,
+   setViewportWidth,
    type Paint,
    type Rule
 } from "../testing/cascade";
@@ -34,7 +39,8 @@ vi.mock("../api/client");
    the pairs are the ones the client produces, not a list typed here. Text holds 4.5:1, or 3:1 at
    type-title and type-display (WCAG 2.2 SC 1.4.3); a control's boundary, the focus ring and every
    drawn mark hold the SC 1.4.11 floor against what they sit on. Both themes of growth-tokens.json
-   are checked. Coverage then holds every colour-bearing rule in app.css and every colour token a
+   are checked, at a desktop and a phone width, each width matching only the @media rules that
+   hold there. Coverage then holds every colour-bearing rule in app.css and every colour token a
    component writes to having been drawn by some screen, so a new rule cannot escape.
 
    Not checked, each for its reason: the text of an element clipped by .visually-hidden or
@@ -74,6 +80,7 @@ const FOCUSABLE = "button:not(:disabled), input:not(:disabled), textarea, select
 
 interface Pair {
    screen: string;
+   width: number | null;
    what: string;
    foreground: Paint;
    background: Paint;
@@ -131,14 +138,14 @@ function svgBackdrops(element: Element): Array<{ paint: Paint; beneath: Paint | 
    return backdrops;
 }
 
-function pairsIn(screen: string, container: HTMLElement): Pair[] {
+function pairsIn(screen: string, width: number, container: HTMLElement): Pair[] {
    const pairs: Pair[] = [];
    const focusRule = RULES.find((rule) => rule.selector === ":focus-visible");
    const focusRing = focusRule === undefined ? null : (paintOf(/var\(--growth-[a-z-]+\)/.exec(focusRule.declarations.get("outline") ?? "")?.[0] ?? "") as Paint | null);
 
    function add(what: string, foreground: Paint | null, background: Paint, floor: number, beneath: Paint | null = null) {
       if (foreground !== null) {
-         pairs.push({ screen, what, foreground, background, beneath, floor });
+         pairs.push({ screen, width, what, foreground, background, beneath, floor });
       }
    }
 
@@ -225,7 +232,7 @@ function selfContainedPairs(): Pair[] {
       const background = paintOf(ground!);
       const isPaintPair = foreground !== null && foreground !== "current" && background !== null && background !== "current";
 
-      return isPaintPair ? [{ screen: "app.css", what: rule.selector, foreground, background, beneath: null, floor: TEXT_FLOOR }] : [];
+      return isPaintPair ? [{ screen: "app.css", width: null, what: rule.selector, foreground, background, beneath: null, floor: TEXT_FLOOR }] : [];
    });
 }
 
@@ -271,9 +278,10 @@ function componentColourTokens() {
    return found;
 }
 
-const collected: { pairs: Pair[]; matchedRules: Set<Rule>; renderedMarkup: string; screens: number } = {
+const collected: { pairs: Pair[]; matchedRules: Set<Rule>; matchedAtWidth: Map<number, Set<Rule>>; renderedMarkup: string; screens: number } = {
    pairs: [],
    matchedRules: new Set(),
+   matchedAtWidth: new Map(VIEWPORT_WIDTHS.map((width) => [width, new Set<Rule>()])),
    renderedMarkup: "",
    screens: 0
 };
@@ -285,19 +293,23 @@ const CATALOGUE_RENDER_TIMEOUT_MS = 60000;
 beforeAll(async () => {
    for (const entry of SCREENS) {
       const container = await entry.mount();
-
-      collected.pairs.push(...pairsIn(entry.name, container));
-      collected.renderedMarkup += container.innerHTML;
-      collected.screens += 1;
-
       const ancestors = [document.documentElement, document.body];
 
-      for (const element of [...ancestors, ...Array.from(container.querySelectorAll("*"))]) {
-         for (const rule of matchingRules(element)) {
-            collected.matchedRules.add(rule);
+      for (const width of VIEWPORT_WIDTHS) {
+         setViewportWidth(width);
+         collected.pairs.push(...pairsIn(entry.name, width, container));
+
+         for (const element of [...ancestors, ...Array.from(container.querySelectorAll("*"))]) {
+            for (const rule of matchingRules(element)) {
+               collected.matchedRules.add(rule);
+               collected.matchedAtWidth.get(width)!.add(rule);
+            }
          }
       }
 
+      setViewportWidth(DESKTOP_WIDTH);
+      collected.renderedMarkup += container.innerHTML;
+      collected.screens += 1;
       cleanup();
    }
 
@@ -306,6 +318,7 @@ beforeAll(async () => {
 
 afterEach(() => {
    cleanup();
+   setViewportWidth(DESKTOP_WIDTH);
 });
 
 describe("eval_contrast_all_screens", () => {
@@ -314,6 +327,27 @@ describe("eval_contrast_all_screens", () => {
       expect(collected.pairs.filter((pair) => pair.floor === NON_TEXT_FLOOR).length).toBeGreaterThan(50);
       expect(collected.pairs.filter((pair) => pair.floor === TEXT_FLOOR).length).toBeGreaterThan(200);
       expect([TEXT_FLOOR, LARGE_TEXT_FLOOR, NON_TEXT_FLOOR]).toEqual([4.5, 3, 3]);
+   });
+
+   it("reads app.css at both widths, and a phone-only rule is matched at the phone width alone", () => {
+      const phoneOnly = Array.from(collected.matchedAtWidth.get(PHONE_WIDTH)!).filter((rule) => rule.media.length > 0);
+      const leakedToDesktop = phoneOnly.filter((rule) => collected.matchedAtWidth.get(DESKTOP_WIDTH)!.has(rule));
+      const pairsAt = (width: number) => collected.pairs.filter((pair) => pair.width === width).length;
+
+      expect(VIEWPORT_WIDTHS).toEqual([1280, 375]);
+      expect(phoneOnly.length).toBeGreaterThan(0);
+      expect(leakedToDesktop).toEqual([]);
+      expect(pairsAt(DESKTOP_WIDTH)).toBeGreaterThan(250);
+      expect(pairsAt(PHONE_WIDTH)).toBeGreaterThan(250);
+   });
+
+   it("refuses a media condition it cannot evaluate, rather than guessing", () => {
+      const rule = (media: string): Rule => ({ selector: "p", specificity: 1, order: 1, declarations: new Map(), media: [media] });
+
+      expect(appliesAtWidth(rule("(max-width: 600px)"), PHONE_WIDTH)).toBe(true);
+      expect(appliesAtWidth(rule("(max-width: 600px)"), DESKTOP_WIDTH)).toBe(false);
+      expect(appliesAtWidth(rule("(min-width: 1100px)"), DESKTOP_WIDTH)).toBe(true);
+      expect(() => appliesAtWidth(rule("(prefers-reduced-motion: reduce)"), PHONE_WIDTH)).toThrow(/cannot evaluate/);
    });
 
    it("every pair holds its floor in both themes", () => {
@@ -327,8 +361,10 @@ describe("eval_contrast_all_screens", () => {
             const ratio = contrast(foreground, background);
 
             if (ratio < pair.floor) {
+               const where = pair.width === null ? pair.screen : `${pair.screen} at ${pair.width} px`;
+
                failures.add(
-                  `${theme}: ${pair.screen}: ${pair.what}: ${describePaint(pair.foreground)} on ${describePaint(pair.background)}${beneath ? ` over ${describePaint(beneath)}` : ""} is ${ratio.toFixed(2)}:1, floor ${pair.floor}:1`
+                  `${theme}: ${where}: ${pair.what}: ${describePaint(pair.foreground)} on ${describePaint(pair.background)}${beneath ? ` over ${describePaint(beneath)}` : ""} is ${ratio.toFixed(2)}:1, floor ${pair.floor}:1`
                );
             }
          }

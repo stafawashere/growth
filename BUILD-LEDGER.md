@@ -3588,6 +3588,13 @@ rate against 10's 5 percent ceiling as an engine fix:
   at 0 of 66 and 0 of 71, red at 18 of 206 with placement back at 0.80 and at 66 of 235 with the
   six parents seeded again. New `test_a_parent_no_archetype_teaches_does_not_gate` was red with
   `parents_mastered` back on `gating_parents` and red with BC-PRQ parents dropped from blocking.
+- `eval_selection_bias_control` failed after the fix, `(1215, 9) != (1215, 9)`: over 6 students
+  and 20 days nothing placed came due, so the policy and the control served the same items. The
+  operator delegated the decision; `ARM_DAYS` in `tests/eval/test_p2_evals.py` went from 20 to 40,
+  the size `tools/p2_evals.py` records at, and the assertion is unchanged. The P2 record was rerun:
+  placement 54 of 950 not known (5.7 percent), from 514 of 3303 (15.6). The record's claim that a
+  wrongly placed skill comes back as a review within days was withdrawn; on 20 students none of 23
+  wrongly placed skills was served in 60 days.
 
 Pre-practice session, on the instruction to do everything needed before the operator starts
 practicing:

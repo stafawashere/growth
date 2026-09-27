@@ -10,7 +10,7 @@ from app.sim import p2_evals
 
 DIAGNOSTIC_STUDENTS = 60
 ARM_STUDENTS = 6
-ARM_DAYS = 20
+ARM_DAYS = 40
 
 RECORD_PATH = Path(__file__).resolve().parents[2] / "docs" / "operator" / "p2-evals.md"
 

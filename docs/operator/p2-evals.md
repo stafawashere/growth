@@ -1,6 +1,6 @@
 ---
 title: P2 evaluation record
-research_date: 2026-09-24
+research_date: 2026-09-26
 status: recorded
 purpose: The measured results of eval_diagnostic_information, eval_selection_bias_control and eval_two_term_against_five_term at the recorded size, for the P7 gate on the five-term score.
 ---
@@ -19,11 +19,11 @@ how fast each policy finds what is known rather than how fast it teaches.
 
 400 synthetic students, each one diagnostic from a fresh account.
 
-- Mean posterior movement per item (total variation summed over units): 0.3708 over items 1 to 10, 0.2154 after item 10. Measures after item 10 move less than before it, the ALEKS-observed shape 11 asks for.
-- Runs stopping early on the entropy rule: 316 of 400 (79.0%). Longest run 30 items, median 24.0.
-- Of the 316 early stops, 294 came in a 3-item window where one answer raised the summed unit entropy. The plan's rule reads a rise as entropy that stopped falling, so most early stops follow an answer the posterior did not expect rather than a posterior that settled. The error direction is conservative (the unit is left unresolved and its skills are fast-tracked), and the rule is a named tunable in 02 for the held-out agreement to settle.
-- Held-out extra problem: 400 asked, mean predicted raw probability 0.3770, observed success rate 0.0950. The model over-predicts on this population by 0.2820.
-- Placement: 3303 skills marked mastered from the unit posterior, 2789 truly known, 514 not known (15.6%). Each wrongly placed skill comes back as a review within days and a credited failure un-masters it.
+- Mean posterior movement per item (total variation summed over units): 0.3708 over items 1 to 10, 0.2123 after item 10. Measures after item 10 move less than before it, the ALEKS-observed shape 11 asks for.
+- Runs stopping early on the entropy rule: 306 of 400 (76.5%). Longest run 30 items, median 25.0.
+- Of the 306 early stops, 290 came in a 3-item window where one answer raised the summed unit entropy. The plan's rule reads a rise as entropy that stopped falling, so most early stops follow an answer the posterior did not expect rather than a posterior that settled. The error direction is conservative (the unit is left unresolved and its skills are fast-tracked), and the rule is a named tunable in 02 for the held-out agreement to settle.
+- Held-out extra problem: 400 asked, mean predicted raw probability 0.3761, observed success rate 0.0825. The model over-predicts on this population by 0.2936.
+- Placement: 950 skills marked mastered from the unit posterior, 896 truly known, 54 not known (5.7%). A wrongly placed skill is un-mastered only by a credited failure, and on the P7 simulation most were not served again within 60 days (BUILD-LEDGER.md, 2026-09-26, false mastery).
 
 ## Selection bias control
 
@@ -31,8 +31,8 @@ how fast each policy finds what is known rather than how fast it teaches.
 
 | Arm | Sessions | Items | Declared mastered | Truly mastered | True mastered per item | Mean predicted p_A | Observed success | Bias |
 |---|---|---|---|---|---|---|---|---|
-| policy | 1000 | 9990 | 275 | 189 | 0.0189 | 0.4830 | 0.1113 | +0.3717 |
-| control | 1000 | 10045 | 285 | 199 | 0.0198 | 0.4825 | 0.1168 | +0.3657 |
+| policy | 1000 | 9983 | 103 | 103 | 0.0103 | 0.4779 | 0.1083 | +0.3696 |
+| control | 1000 | 9982 | 103 | 103 | 0.0103 | 0.4782 | 0.1084 | +0.3698 |
 
 ## Two-term against five-term
 
@@ -40,7 +40,7 @@ Same students, seeds and days. The five-term arm replaces block 2's ordering wit
 
 | Arm | Sessions | Items | Declared mastered | Truly mastered | True mastered per item | Mean predicted p_A | Observed success | Bias |
 |---|---|---|---|---|---|---|---|---|
-| two_term | 1000 | 9990 | 275 | 189 | 0.0189 | 0.4830 | 0.1113 | +0.3717 |
-| five_term | 1000 | 9880 | 413 | 327 | 0.0331 | 0.5770 | 0.2017 | +0.3752 |
+| two_term | 1000 | 9983 | 103 | 103 | 0.0103 | 0.4779 | 0.1083 | +0.3696 |
+| five_term | 1000 | 9915 | 192 | 192 | 0.0194 | 0.5730 | 0.1865 | +0.3865 |
 
 On this world the five-term score finds more truly mastered skills per item than the two-term score. This is evidence for the P7 gate, which turns the five-term score on only when a simulation shows it beating the two-term score on true mastery per item. It is recorded here and changes nothing in P2.

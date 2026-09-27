@@ -85,7 +85,7 @@ how fast each policy finds what is known rather than how fast it teaches.
 - Runs stopping early on the entropy rule: {information.early_stops} of {information.students} ({information.early_stop_share:.1%}). Longest run {information.longest_run} items, median {information.median_run}.
 - Of the {information.early_stops} early stops, {information.early_stops_after_an_entropy_rise} came in a 3-item window where one answer raised the summed unit entropy. The plan's rule reads a rise as entropy that stopped falling, {stop_reading}. The error direction is conservative (the unit is left unresolved and its skills are fast-tracked), and the rule is a named tunable in 02 for the held-out agreement to settle.
 - Held-out extra problem: {information.held_out_count} asked, mean predicted raw probability {information.held_out_mean_predicted:.4f}, observed success rate {information.held_out_observed_rate:.4f}. The model {calibration} on this population by {abs(calibration_gap):.4f}.
-- Placement: {information.placed_skills} skills marked mastered from the unit posterior, {information.placed_skills_truly_known} truly known, {placed_wrong} not known ({placed_wrong / max(information.placed_skills, 1):.1%}). Each wrongly placed skill comes back as a review within days and a credited failure un-masters it.
+- Placement: {information.placed_skills} skills marked mastered from the unit posterior, {information.placed_skills_truly_known} truly known, {placed_wrong} not known ({placed_wrong / max(information.placed_skills, 1):.1%}). A wrongly placed skill is un-mastered only by a credited failure, and on the P7 simulation most were not served again within 60 days (BUILD-LEDGER.md, 2026-09-26, false mastery).
 
 ## Selection bias control
 

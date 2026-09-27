@@ -317,6 +317,7 @@ export function PartRunner({ part, radianNote, sectionCount, onSave, onSubmit, o
    const [zoom, setZoom] = useState(ZOOM_STEPS[0]);
    const [isConfirmingSubmit, setIsConfirmingSubmit] = useState(false);
    const [isMenuOpen, setIsMenuOpen] = useState(false);
+   const [isGraphingOpen, setIsGraphingOpen] = useState(false);
    const shortcut = useRef<(event: KeyboardEvent) => void>(() => undefined);
    const [highlightProblem, setHighlightProblem] = useState<string | null>(null);
    const [stemElement, setStemElement] = useState<HTMLElement | null>(null);
@@ -523,9 +524,11 @@ export function PartRunner({ part, radianNote, sectionCount, onSave, onSubmit, o
    const offersQuestionMenu = tools.has("question_menu");
    const offersZoom = tools.has("zoom");
    const offersToolbar = offersMarkForReview || offersQuestionMenu || offersZoom;
+   const offersGraphing = tools.has("graphing_panel");
+   const showsGraphingBeside = offersGraphing && isGraphingOpen;
 
    return (
-      <section className="card part-runner" data-testid="part-runner">
+      <section className="card part-runner" data-testid="part-runner" data-graphing-open={showsGraphingBeside ? "true" : undefined}>
          <header className="part-header">
             <p className="label-heading">{partHeading(part)}</p>
 
@@ -587,78 +590,82 @@ export function PartRunner({ part, radianNote, sectionCount, onSave, onSubmit, o
             />
          ) : null}
 
-         {tools.has("graphing_panel") ? <GraphingPanel /> : null}
+         <div className="question-layout">
+            {offersGraphing ? <GraphingPanel onOpenChange={setIsGraphingOpen} /> : null}
 
-         <div className="question-area" data-testid="question-area" data-zoom={zoom} style={{ fontSize: `${zoom}%` }}>
-            {item.radian_note ? <p data-testid="radian-note">{radianNote}</p> : null}
+            <div className="question-column">
+               <div className="question-area" data-testid="question-area" data-zoom={zoom} style={{ fontSize: `${zoom}%` }}>
+                  {item.radian_note ? <p data-testid="radian-note">{radianNote}</p> : null}
 
-            <p className="item-stem" data-testid="question-stem" ref={setStemElement}>
-               <MathText text={item.stem} />
-            </p>
+                  <p className="item-stem" data-testid="question-stem" ref={setStemElement}>
+                     <MathText text={item.stem} />
+                  </p>
 
-            {hasFigure ? <FigureView spec={(item as AssessmentItem).figure_spec} /> : null}
+                  {hasFigure ? <FigureView spec={(item as AssessmentItem).figure_spec} /> : null}
 
-            {freeResponse ? <FreeResponseBody question={question} /> : null}
+                  {freeResponse ? <FreeResponseBody question={question} /> : null}
 
-            {offersOptions ? (
-               <McqControl
-                  key={question.number}
-                  groupLabel={`Question ${question.number}`}
-                  options={(item as AssessmentItem).options ?? []}
-                  selectedId={current.answer?.option_id ?? null}
-                  onSelect={chooseOption}
-                  eliminatedIds={current.eliminated}
-                  onToggleEliminated={offersEliminator ? toggleEliminated : undefined}
-               />
-            ) : null}
+                  {offersOptions ? (
+                     <McqControl
+                        key={question.number}
+                        groupLabel={`Question ${question.number}`}
+                        options={(item as AssessmentItem).options ?? []}
+                        selectedId={current.answer?.option_id ?? null}
+                        onSelect={chooseOption}
+                        eliminatedIds={current.eliminated}
+                        onToggleEliminated={offersEliminator ? toggleEliminated : undefined}
+                     />
+                  ) : null}
 
-            {!freeResponse && !offersOptions ? (
-               <div data-testid="math-answer">
-                  <MathAnswerField
-                     key={question.number}
-                     label="My answer"
-                     initialLatex={shortAnswerLatex}
-                     onChange={typeShortAnswer}
-                     onLoadFailure={() => setAnswerUnavailable(true)}
-                  />
+                  {!freeResponse && !offersOptions ? (
+                     <div data-testid="math-answer">
+                        <MathAnswerField
+                           key={question.number}
+                           label="My answer"
+                           initialLatex={shortAnswerLatex}
+                           onChange={typeShortAnswer}
+                           onLoadFailure={() => setAnswerUnavailable(true)}
+                        />
 
-                  {answerUnavailable ? <p role="alert">The math keyboard did not load, so this question cannot take an answer.</p> : null}
+                        {answerUnavailable ? <p role="alert">The math keyboard did not load, so this question cannot take an answer.</p> : null}
+                     </div>
+                  ) : null}
                </div>
-            ) : null}
-         </div>
 
-         {tools.has("highlight_and_notes") ? (
-            <div className="question-tools" data-testid="highlight-and-notes">
-               <button type="button" className="text-button" onClick={highlightSelection}>
-                  Highlight selection
-               </button>
+               {tools.has("highlight_and_notes") ? (
+                  <div className="question-tools" data-testid="highlight-and-notes">
+                     <button type="button" className="text-button" onClick={highlightSelection}>
+                        Highlight selection
+                     </button>
 
-               {highlightProblem !== null ? <p role="alert">{highlightProblem}</p> : null}
+                     {highlightProblem !== null ? <p role="alert">{highlightProblem}</p> : null}
 
-               {current.highlights.length > 0 ? (
-                  <ul className="review-list" aria-label="Highlights">
-                     {current.highlights.map((highlight, position) => (
-                        <li key={`${highlight.start}-${highlight.end}-${position}`}>
-                           <mark className="stem-highlight">{stemText.slice(highlight.start, highlight.end)}</mark>
+                     {current.highlights.length > 0 ? (
+                        <ul className="review-list" aria-label="Highlights">
+                           {current.highlights.map((highlight, position) => (
+                              <li key={`${highlight.start}-${highlight.end}-${position}`}>
+                                 <mark className="stem-highlight">{stemText.slice(highlight.start, highlight.end)}</mark>
 
-                           <button type="button" className="text-button" onClick={() => removeHighlight(position)}>
-                              Remove highlight
-                           </button>
-                        </li>
-                     ))}
-                  </ul>
+                                 <button type="button" className="text-button" onClick={() => removeHighlight(position)}>
+                                    Remove highlight
+                                 </button>
+                              </li>
+                           ))}
+                        </ul>
+                     ) : null}
+
+                     <label className="field">
+                        <span>Notes on this question</span>
+                        <textarea
+                           value={current.notes}
+                           onChange={(event) => update(question.number, { notes: event.target.value })}
+                           onBlur={saveNotes}
+                        />
+                     </label>
+                  </div>
                ) : null}
-
-               <label className="field">
-                  <span>Notes on this question</span>
-                  <textarea
-                     value={current.notes}
-                     onChange={(event) => update(question.number, { notes: event.target.value })}
-                     onBlur={saveNotes}
-                  />
-               </label>
             </div>
-         ) : null}
+         </div>
 
          <div className="exam-bottom">
             <div className="choice-row">

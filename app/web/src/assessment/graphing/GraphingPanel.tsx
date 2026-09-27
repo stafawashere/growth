@@ -116,7 +116,8 @@ function ResultLine(props: { result: Result | null; testId: string }) {
    );
 }
 
-export function GraphingPanel() {
+/* onOpenChange lets the part runner lay the open panel out beside the question. */
+export function GraphingPanel(props: { onOpenChange?: (isOpen: boolean) => void }) {
    const [isOpen, setIsOpen] = useState(false);
    const [source, setSource] = useState("");
    const [mode, setMode] = useState<AngleMode>("radians");
@@ -128,6 +129,13 @@ export function GraphingPanel() {
    const [derivative, setDerivative] = useState<Result | null>(null);
    const [integral, setIntegral] = useState<Result | null>(null);
    const modeName = useId();
+
+   function toggle() {
+      const opens = !isOpen;
+
+      setIsOpen(opens);
+      props.onOpenChange?.(opens);
+   }
 
    const compiled = useMemo(() => {
       try {
@@ -214,7 +222,7 @@ export function GraphingPanel() {
    return (
       <section className="graphing-panel" data-testid="graphing-panel" aria-label="Graphing calculator">
          <div className="choice-row">
-            <button type="button" className="text-button" aria-expanded={isOpen} onClick={() => setIsOpen(!isOpen)}>
+            <button type="button" className="text-button" aria-expanded={isOpen} onClick={toggle}>
                {isOpen ? "Close graphing panel" : "Open graphing panel"}
             </button>
 

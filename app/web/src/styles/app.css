@@ -1140,6 +1140,20 @@ th {
    color: var(--growth-accent-contrast-text);
 }
 
+/* The graphing panel, the question and its tools, stacked as the card's own children are below
+   1100 px, and side by side above it while the panel is open (08: the reference beside the
+   problem). The panel takes the left column, as Bluebook's calculator does, so the reading and
+   focus order stays the order on screen. */
+.question-layout > *,
+.question-column > * {
+   margin-block: 0;
+}
+
+.question-layout > * + *,
+.question-column > * + * {
+   margin-top: var(--growth-space-16);
+}
+
 .graphing-panel {
    background: var(--growth-surface-raised);
    border: var(--growth-stroke-hairline) solid var(--growth-border-hairline);
@@ -1251,6 +1265,31 @@ th {
    border: var(--growth-stroke-hairline) solid var(--growth-border-hairline);
    padding: var(--growth-space-8) var(--growth-space-12);
    text-align: center;
+}
+
+/* From 1100 px an open graphing panel sits beside the question, and the part widens past the page
+   column to hold both. */
+
+@media (min-width: 1100px) {
+   .app-page > .part-runner[data-graphing-open="true"] {
+      max-width: calc(var(--growth-space-96) * 12);
+   }
+
+   .part-runner[data-graphing-open="true"] .question-layout {
+      display: flex;
+      gap: var(--growth-space-32);
+      align-items: flex-start;
+   }
+
+   .part-runner[data-graphing-open="true"] .question-layout > * {
+      flex: auto;
+      flex-basis: 0;
+      min-width: 0;
+   }
+
+   .part-runner[data-graphing-open="true"] .question-layout > * + * {
+      margin-top: 0;
+   }
 }
 
 /* The design's two breakpoints: a narrower gutter at 900 px, then the phone layout at 600 px. */

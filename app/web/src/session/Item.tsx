@@ -1,5 +1,5 @@
 import type { Confidence, ServedItem, ServedStep } from "../api/types";
-import { MathField } from "../input/MathField";
+import { MathAnswerField } from "../input/MathAnswerField";
 import { FigureView } from "../figures/FigureView";
 import { McqControl } from "../input/McqControl";
 import { MathText } from "../math/MathText";
@@ -178,7 +178,7 @@ export function Item(props: ItemProps) {
                   </div>
                ) : (
                   <div data-testid="math-answer">
-                     <MathField
+                     <MathAnswerField
                         label="My answer"
                         onChange={onAnswerChange}
                         onLoadFailure={onAnswerUnavailable}

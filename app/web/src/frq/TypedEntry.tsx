@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import type { Confidence, ReadBack, ReadBackLine } from "../api/types";
-import { MathField } from "../input/MathField";
+import { MathAnswerField } from "../input/MathAnswerField";
 import { ConfidencePrompt } from "../session/ConfidencePrompt";
 
 /* 11 P3 scope item 9: typed MathLive entry as the secondary free-response mode. Each part is a list
@@ -23,7 +23,7 @@ function LineInput(props: { label: string; line: ReadBackLine; onChange: (line: 
 
    if (usesMathField) {
       return (
-         <MathField
+         <MathAnswerField
             label={label}
             initialLatex={line.content}
             onChange={() => undefined}

@@ -1,5 +1,5 @@
 import type { DiagnosticServedItem, DiagnosticUnit, DiagnosticUnitState } from "../api/types";
-import { MathField } from "../input/MathField";
+import { MathAnswerField } from "../input/MathAnswerField";
 import { FigureView } from "../figures/FigureView";
 import { MathText } from "../math/MathText";
 import { ANSWER_UNAVAILABLE, COMMIT_LABEL } from "../session/Item";
@@ -103,7 +103,7 @@ export function DiagnosticItem(props: DiagnosticItemProps) {
          {item.figure_spec ? <FigureView spec={item.figure_spec} /> : null}
 
          <div data-testid="math-answer">
-            <MathField key={item.id} label="My answer" onChange={onAnswerChange} onLoadFailure={onAnswerUnavailable} />
+            <MathAnswerField key={item.id} label="My answer" onChange={onAnswerChange} onLoadFailure={onAnswerUnavailable} />
 
             {answerUnavailable ? <p data-testid="answer-unavailable">{ANSWER_UNAVAILABLE}</p> : null}
          </div>

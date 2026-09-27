@@ -11,7 +11,7 @@ import type {
    HighlightRange
 } from "../api/types";
 import { FigureView } from "../figures/FigureView";
-import { MathField } from "../input/MathField";
+import { MathAnswerField } from "../input/MathAnswerField";
 import { McqControl } from "../input/McqControl";
 import { mathJsonToLatex } from "../math/mathjson";
 import { MathText } from "../math/MathText";
@@ -602,7 +602,7 @@ export function PartRunner({ part, radianNote, sectionCount, onSave, onSubmit, o
 
             {!freeResponse && !offersOptions ? (
                <div data-testid="math-answer">
-                  <MathField
+                  <MathAnswerField
                      key={question.number}
                      label="My answer"
                      initialLatex={shortAnswerLatex}

@@ -598,6 +598,23 @@ th {
    overflow-x: auto;
 }
 
+/* 08's raw LaTeX inspector: what the student typed, in type-mono, text-secondary on
+   surface-sunken, with no syntax colouring. */
+.latex-inspector {
+   margin-top: var(--growth-space-8);
+   padding: var(--growth-space-4) var(--growth-space-8);
+   border-radius: var(--growth-space-4);
+   background: var(--growth-surface-sunken);
+   color: var(--growth-text-secondary);
+   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+   font-size: var(--growth-type-mono);
+   line-height: var(--growth-leading-mono);
+}
+
+.latex-inspector code {
+   font: inherit;
+}
+
 .app-page textarea {
    resize: vertical;
    min-height: var(--growth-space-96);

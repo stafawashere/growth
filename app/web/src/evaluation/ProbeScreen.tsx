@@ -1,5 +1,5 @@
 import type { ProbeAdministration, ProbeServedItem } from "../api/types";
-import { MathField } from "../input/MathField";
+import { MathAnswerField } from "../input/MathAnswerField";
 import { McqControl } from "../input/McqControl";
 import { FigureView } from "../figures/FigureView";
 import { MathText } from "../math/MathText";
@@ -97,7 +97,7 @@ export function ProbeItemView(props: ProbeItemViewProps) {
             </div>
          ) : (
             <div data-testid="math-answer">
-               <MathField key={item.id} label="My answer" onChange={onAnswerChange} onLoadFailure={onAnswerUnavailable} />
+               <MathAnswerField key={item.id} label="My answer" onChange={onAnswerChange} onLoadFailure={onAnswerUnavailable} />
 
                {answerUnavailable ? <p data-testid="answer-unavailable">{ANSWER_UNAVAILABLE}</p> : null}
             </div>

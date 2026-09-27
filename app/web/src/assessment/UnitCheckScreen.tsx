@@ -13,7 +13,7 @@ import type {
    SkillSnapshot
 } from "../api/types";
 import { FigureView } from "../figures/FigureView";
-import { MathField } from "../input/MathField";
+import { MathAnswerField } from "../input/MathAnswerField";
 import { McqControl } from "../input/McqControl";
 import { MathText } from "../math/MathText";
 import { MathValue } from "../math/MathValue";
@@ -278,7 +278,7 @@ export function UnitCheckScreen({ sessionId, initial, unitTitle }: UnitCheckScre
             />
          ) : (
             <div data-testid="math-answer">
-               <MathField
+               <MathAnswerField
                   key={question.number}
                   label="My answer"
                   onChange={(mathjson) => typeAnswer(question.number, mathjson)}

@@ -1994,6 +1994,32 @@ items) and items 3 and 6 (Slices 3 and 4). Every gate 11 names for P2 now exists
   --noEmit` exit 0; `qa/12_report.py` exit 0. The full pytest suite was not run, on the
   operator's earlier instruction.
 
+- 2026-09-27, stage 13 (content2), four defects closed by claude-opus-5-5 on the operator's
+  delegation. Slice 1: 2021 Question 4's ninth point is a question-level point (sg-21 page 14), now
+  `global_points` on BC-FRQ-2021-Q4-A through `data/staging/corrections-frq-2021-q4.json`, and
+  `app/checkpoint/forms.py` offers seven forms; test_a_point_the_guidelines_award_in_any_one_part_counts_toward_the_question
+  was red on the old code (KeyError, 2021 excluded) and green after. Slice 2: BC-ERR-10044 minted
+  and linked through the `corrections-*-10` staging files, the nine BC-QA-10005 series-sum
+  distractors retagged, the post-change tool sequence run, research/PROGRESS.md errors 425;
+  `tools/check_items.py content/items_unit10_agent` clean 257 of 257. Slice 3: `app/grading`
+  reads a question's `functions` and `roots` and the new `equation_setup` check;
+  `tests/grading/test_question_definitions.py`, 23 cases, 12 red on the old code and every guard
+  case red under a planted break (slack widened, a fail returned, the place count ignored, an
+  unset symbol given a value, proportionality dropped, an undefined name substituted), green
+  restored; runs 9 to 12, grader off, 25 of 72 points decided against 6
+  (docs/operator/p5-timed-runs.md). Slice 4: 79 new nine-point questions (docs/operator/p5-assessment.md).
+  Checks: pytest on the first three commits `1 failed, 1388 passed in 2937.96s (0:48:57)`, the
+  failure the loader's pinned error count, now 391; after the bank, on the operator's instruction,
+  targeted only: tests/grading, tests/checkpoint, tests/content/test_loader.py,
+  tests/eval/test_golden_sets.py, tests/generation/test_no_official_text.py, tests/assessment,
+  tests/e2e/test_full_mock_run.py and tests/api/test_evaluation_routes.py, `132 passed in 1059.86s
+  (0:17:39)`, run with webauthn on a scratch path (Known defects); vitest `Tests  669 passed (669)`;
+  `tsc --noEmit` exit 0; `qa/12_report.py` exit 0; `tools/check_frq_items.py content/frq_items`
+  `119 records, 0 problems` (run with `.venv/bin/python`, since the system python3 has no SymPy);
+  `tools/frq_key_recheck.py` `checked points: 439, match 439`, `control: held`. Live API spend
+  $0.00; authoring and re-solves ran as 15 Claude Code subagents of this session on the
+  subscription, logged in the spend log.
+
 ## In progress [inferred]
 
 Stage 1, items for Units 4 to 10, is complete in the worktree `../growth-content` on branch
@@ -2037,6 +2063,12 @@ Stage 12, item selection, 2026-09-27, worktree `../growth-select` on branch `sel
 (Done, "stage 12 (select)"), merged, and the bar ruling merged after it. What remains, for the
 decay and spacing questions, is a world whose retrieval gain grows with the lag, or the student's
 delayed checkpoint accuracy.
+
+Stage 13, content and free-response grading fixes, 2026-09-27, worktree `../growth-content2` on
+branch `content2`: complete and merged (Done, "stage 13 (content2)"). Nothing remains in
+progress. What stays open is listed under Known defects: integrand points with a constant factor
+outside the integral are never decided by a check, and the full test suite was not rerun after
+the bank was added (the operator asked to merge on targeted checks).
 
 ## Live API spend log [verified]
 
@@ -2216,6 +2248,11 @@ subscription use none.
 Stage 5, P4, 2026-09-24: no live API call. Template authoring and the blind re-solves ran as
 offline Claude Code sessions on the operator's subscription at $0.00 API spend; every test is
 replay only.
+
+Stage 13 (content2), 2026-09-27: $0.00 on the API key. 12 authoring subagents (groups A to L, two
+of them resumed for replacements) and 3 blind re-solve subagents ran inside this Claude Code
+session on the operator's subscription; no test called a live model and no app route ran with a
+live backend (runs 9 to 12 used `GROWTH_AI_BACKEND` none).
 
 ## Known defects [verified]
 
@@ -2943,6 +2980,13 @@ From the eleventh session, 2026-09-21, found and not fixed.
 - 2026-09-24, stage 8, open, library. `data/frq_records.json` gives 2021 Question 4 parts that sum
   to 8, not 9, so the 2021 released form is left out of the checkpoint forms until the part points
   are corrected through staging. Six forms remain, one per 6-week checkpoint to May 2027.
+  Closed 2026-09-27 (stage 13): the parts were right and the ninth point is a question-level
+  point. sg-21 page 14 prints it before part (a), 1 point for writing the derivative of the
+  accumulation function as the plotted function, earned in any one part; pages 15 to 17 give
+  parts (a) to (d) 1, 3, 2 and 2, total 9. `data/staging/corrections-frq-2021-q4.json` puts
+  `global_points` 1 and `global_point_types` BC-PT-99024 on BC-FRQ-2021-Q4-A, and
+  `app/checkpoint/forms.py` offers it as its own row, "any one part", before the lettered parts.
+  Seven forms: 2025, 2024, 2023, 2026, 2022, 2021, 2019.
 - 2026-09-24, stage 8, open, bank. ITM-AGT-10005-02 option B (1/(e - 1), the series sum) is tagged
   BC-ERR-10013, which describes a different substitution. The key is right; the error tag is not.
   Found by the golden-set agent, not changed.
@@ -2950,6 +2994,15 @@ From the eleventh session, 2026-09-21, found and not fixed.
   whose observed behaviour is the reverse direction (integral value reported as the series sum).
   The linked misconception, BC-MIS-10008, fits both. A fix needs a new error record through
   staging, not an item edit; left open.
+  Closed 2026-09-27 (stage 13): BC-ERR-10044, "Sum of the series reported as the value of the
+  improper integral" [inferred], sources ced:189, minted through
+  `data/staging/corrections-errors-10.json` and linked to BC-MIS-10008, BC-SKL-10016 and 10017
+  and BC-ERR-10013 through the other `corrections-*-10` files. The series-sum distractor of
+  ITM-AGT-10005-00, 02, 04, 08, 09, 10, 12, 13 and 17 now names BC-ERR-10044; SymPy confirmed
+  each retagged option equals the series sum and differs from the key. BC-ERR-10013 stays: the
+  template `app/generation/templates/qa_10005.py` and ITM-GEN-10005-00 to 04 test its own
+  direction (the integral's value stated as the series sum). `tools/check_items.py
+  content/items_unit10_agent`: "records read: 257", "clean: 257", "with violations: 0".
 - 2026-09-24, stage 8, open. Transcriber golden set 3 has page specifications and reference
   transcripts but no images: each page must be written by hand and photographed, which no session
   can do. Golden set 2 covers 17 point types, not 30, because only 17 reach a model.
@@ -3014,10 +3067,24 @@ From the eleventh session, 2026-09-21, found and not fixed.
 - 2026-09-24, stage 6 (p5), open. The free-response bank holds 6 calculator and 10 no-calculator
   nine-point questions, so the fourth mock repeats Section II Part A questions and the third
   repeats Part B's (least-used first). Writing more is content work.
+  Closed 2026-09-27 (stage 13): 79 new original questions, 24 calculator and 55 no-calculator,
+  so the bank holds 30 and 65 nine-point questions against a target of 30 and 60 (10 mocks and 5
+  drills of each Section II part to 10 May 2027, Decisions, 2026-09-27). 119 records, 0 problems
+  (`tools/check_frq_items.py`); 439 of 439 checked keys match blind formulations, control held.
 - 2026-09-24, stage 6 (p5), open. Calculator free-response questions lean on the model: their
   setup points with a numeric root as a limit carry no check, and a student's integrand written
   with the stem's function names (E(t), L(t)) is unreadable to the deterministic checks, so with
   the grader off those points stay provisional (docs/operator/p5-timed-runs.md, runs 9 to 12).
+  Closed 2026-09-27 (stage 13): a question now carries `functions` (each name's variable and
+  expression) and `roots` (each named root's value and the equation it solves), the checks read a
+  line through those definitions, a limit written as a named root, a three-place decimal or a
+  symbol the student set to one is compared with the root, and `equation_setup` decides a setup
+  equation whose unknown is a root. A capital name the question does not define is refused and
+  the point stays provisional; `equation_setup` passes or stays provisional, never fails. Runs 9
+  to 12 again, grader off: 25 of 72 points decided, 47 provisional, against 6 and 66 on the tree
+  before (docs/operator/p5-timed-runs.md). What stays provisional is model-required, or an
+  integrand point with a constant factor outside the integral (BC-PT-99048, 99058, 99002), which no
+  check reads, or gated on one of those; that last kind is still open.
 - 2026-09-24, stage 6 (p5), open. The band's placement rests on an assumed cohort shape (the
   free-response section's summed means and spreads); no measurement can check it until the
   operator's mocks sit beside released-form checkpoints.
@@ -3098,11 +3165,28 @@ From the eleventh session, 2026-09-21, found and not fixed.
   page body they move and choose as before (checked in the real app: "Question 30 of 42" to 31 and
   back).
 
-
 - 2026-09-27, open. The contrast catalogue's setup, which renders every catalogued screen, took about
   59 s against its 60 s budget when vitest ran beside the full pytest run (9 to 14 s unloaded in
   stage 9). Each catalogue screen added since pushes it closer. Run vitest and pytest one after the
   other, or split the catalogue, before the budget is reached unloaded.
+
+- 2026-09-27, stage 13, open. An integrand-only point with a constant factor outside the integral
+  (BC-PT-99048 one half, 99058 pi, 99002) has no check, so with the grader off it and every point
+  gated on it stay provisional; FRQ-AGT-09013-01 decides none of its nine points for that reason.
+- 2026-09-27, stage 13, open. The LaTeX reader leaves some ordinary student forms unreadable, so
+  their points go to the model rather than a check (never a false fail): `\cdot` written before
+  `\sin`, `\cos` or `\ln`, `\cdot 2x`, `\sqrt{x}e^{-x/4}`, `\sin 2\theta`, and a factored `x(x-2)`,
+  which reads two ways. Found by the stage 13 authors, who rewrote their own keys around them.
+- 2026-09-27, stage 13. The full pytest suite was run once on the first three stage 13 commits
+  (1388 passed, 1 failed: `tests/content/test_loader.py` pins BC-ERR_active at 390, and the new
+  BC-ERR-10044 makes 391; the pin now reads 391). It was not rerun after the 79 new questions were
+  added, on the operator's instruction to merge on targeted checks; the targeted files are listed
+  in Done.
+
+- 2026-09-27, stage 13, open, environment. The shared `.venv` was reinstalled at 01:50 by another
+  session whose uncommitted main-checkout changes drop `webauthn`, so on this tree every test that
+  builds the app errors at import. Stage 13's targeted run put `webauthn` on a scratch
+  PYTHONPATH; the shared venv was not touched. Whoever lands that auth change owns the venv.
 
 ## Plan corrections applied [verified]
 
@@ -3860,6 +3944,73 @@ policies that differ on this world, even oracles; the interval narrows with stud
 share does not; and the asymmetry keeps the burden on anything that would change the live policy.
 On the rerun P7 record the two-term floor passes, and five-term, `lambda` and removing
 interleaving stay off. `app/sim/p7_evals.py` decide() and 10 carry the ruling.
+
+Stage 13 (content2), four defects, by claude-opus-5-5 on the operator's delegation; every choice
+below was the session's, logged with its reason.
+
+- The 2021 Question 4 ninth point is modelled as a question-level point, not folded into a part.
+  sg-21 page 14 prints it as its own block before part (a), "1 point", earned in any one part, and
+  pages 15 to 17 total parts (a) to (d) at 1, 3, 2 and 2. A new frq record would have added a
+  pseudo-part to the frequency tables, and folding it into part (a) would have said part (a) is
+  worth 2, which the guideline does not. So BC-FRQ-2021-Q4-A carries `global_points` 1 and
+  `global_point_types` [BC-PT-99024] (the derivative of an accumulation function by the
+  Fundamental Theorem), added to `schemas/frq_records.schema.json`, and the checkpoint offers it as
+  its own scoring row, "Part (any one part)", before the lettered parts.
+- The checkpoint schedule with seven forms. The 42-day cadence (`app/checkpoint/service.py`) opens
+  the first checkpoint at once and each next one 42 days after the last is finished. From
+  2026-09-27 the forms fall on 2026-09-27 (2025), 2026-11-08 (2024), 2026-12-20 (2023),
+  2027-01-31 (2026), 2027-03-14 (2022) and 2027-04-25 (2021); the seventh, 2019, would open on
+  2027-06-06, after the exam, so it is the spare that absorbs one late checkpoint. The order is the
+  existing one: years with published per-question means first, newest first.
+- Staging corrections go in files prefixed `corrections-`, added last to `PHASE_ORDER` in
+  `tools/merge_staging.py`, and were merged by name, never by a full replay: a full replay on this
+  tree changed 4,299 lines across nine registries, dropping link entries later files had added
+  (the regression recorded in Known defects on 2026-09-19).
+- BC-ERR-10044 is tagged [inferred], like BC-ERR-10013: ced:189 states the integral test as a test
+  of convergence, and no cached source observes either direction of the value confusion. It is held
+  by BC-SKL-10016 (the integral's value is what the item asks for) and BC-SKL-10017 (the skill
+  BC-MIS-10008 sits on), so gate 30's error-path rule reaches it from the archetype's skills.
+- `content/golden/generator.json` GLD-GEN-003 froze ITM-AGT-10005-00's option C as BC-ERR-10013,
+  the defect itself. Its frozen path was changed to BC-ERR-10044 so the golden records the
+  corrected bank; the check that compares frozen and live paths is unchanged and as strict. This
+  is a fixture edit made because the fixture recorded the defect, and it is named here so the
+  operator can overrule it.
+- Free-response reading. A capital letter called like a function that the question does not
+  define is refused only when the question carries a `functions` record, so the forty questions
+  that carry none read exactly as before. `equation_setup` passes or stays unsettled and never
+  fails a written line. A limit written to fewer than three places is unsettled, not failed. An
+  integrand point with a constant factor outside the integral (BC-PT-99048, 99058, 99002) was left
+  to the model; no check reads it.
+- The free-response target. 05's cadence is the only source and it is [inferred]: a full mock
+  every four to six weeks, more often in the final eight weeks, and one part drill every two to
+  three weeks between mocks, rising in the final eight weeks. The target takes the frequent end,
+  so no cadence 05 allows repeats a question. From 2026-09-27 to 2027-05-10 is 225 days; the final
+  eight weeks start 2027-03-15, leaving 24 weeks before them. Mocks: one every 4 weeks for 24
+  weeks is 6, and one every 2 weeks in the final 8 is 4, 10 in all. Drills: one every 2 weeks for
+  24 weeks is 12, and one a week in the final 8 is 8, 20 in all, a quarter of them on each of the
+  four parts, so 5 Section II Part A drills and 5 Part B drills. Per research/exam/exam-structure.md,
+  Part A is 2 calculator questions and Part B is 4 no-calculator questions, each 9 points. Need:
+  calculator 10 x 2 + 5 x 2 = 30, no-calculator 10 x 4 + 5 x 4 = 60. The bank held 6 and 10, so
+  the target was 24 and 50 new.
+- Which archetypes can carry a calculator question. `tools/check_frq_items.py` requires a setup
+  point in every calculator part, and only 15 active archetypes list a setup point type (BC-PT-99001,
+  99002, 99020, 99048, 99051, 99058 or 99059) and allow the calculator: 06005, 06006, 99008,
+  08001, 08002, 08008, 08011, 08012, 08013, 08014, 09001, 09005, 09007, 09012 and 09013. The gate was
+  not loosened and no setup check was put on a non-setup point type; two drafts that did so
+  (BC-QA-06001 with bounds_match on BC-PT-99019) were deleted. So the 24 new calculator questions
+  sit in Units 6, 8 and 9 (6, 10 and 8), and the Unit 4 and Unit 5 shares were written as
+  no-calculator questions (5 and 9). Against the exam weights of `app/engine/exam_weights.py` (BC
+  band midpoints 7.5, 7.5, 7.5, 7.5, 12.5, 17.5, 7.5, 7.5, 12.5, 17.5 over 105), 74 new questions
+  would split 5, 5, 5, 5, 9, 13, 5, 5, 9, 13; the bank received 5, 5, 5, 5, 9, 14, 5, 10, 8, 13 (79,
+  five over target because the calculator share could only land in Units 6, 8 and 9).
+- Audit rulings applied to every new question before the blind re-solve: an `any_line` check whose
+  expected value is a constant became `target: answer` when it was the part's only value check and
+  the part's answer, and null otherwise (a stray line equal to a small constant must not earn a
+  point; 79 such checks changed across the three batches); an `each_side` check up to a
+  constant was nulled (a correct constant multiple would fail it, 2); a BC-PT-99036 check on a
+  polynomial centred away from 0 was nulled (an expanded form earns the first-terms point but not
+  the remaining-terms point per the BC-PT-99035 record, 3). FRQ-AGT-10009-01 part (d) now names the
+  Lagrange bound value of part (a) rather than "the result", which read two ways.
 
 ## Decisions taken on the operator's instruction, 2026-09-26 [inferred]
 

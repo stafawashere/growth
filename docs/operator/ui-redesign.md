@@ -181,3 +181,61 @@ widths in both themes) and `proto-flow/` (its session, feedback and part setup).
 At 375 px no state scrolls the page sideways: `scrollWidth` equalled `clientWidth` (375) on all 22.
 The only elements past the edge were inside a horizontally scrolling table or KaTeX's clipped
 MathML layer, which also shows the probe was reading real elements.
+
+# Stage 11, the remaining UI items [verified]
+
+Stage 10 listed seven UI items it did not build. Stage 11 built all seven on 2026-09-27, decided
+on the operator's delegation by claude-opus-5-5, not by a person. The decisions and their reasons
+are in `BUILD-LEDGER.md`, "Decisions taken on the operator's instruction, 2026-09-27".
+
+| Item | What was built |
+| --- | --- |
+| Media-aware contrast gate | `testing/cascade.ts` keeps each rule's @media conditions; the contrast and greyscale evals read app.css at 1280 and 375 px |
+| Shared page components | `page/PageHeader.tsx` for every ruled title, and `status/load.ts` `useLoad` with a retry for home, review and free response |
+| Raw LaTeX inspector | `input/MathAnswerField.tsx`: "raw LaTeX:" and what was typed, in `type-mono`, `text-secondary` on `surface-sunken`, under every math answer field, outside the tab order |
+| Theme switch | System, Light and Dark in an Accessibility card on the settings page, kept in localStorage and applied at once |
+| Question-menu tiles | the number, `*` when marked; answered filled with a solid border, unanswered dashed, the question on screen with a 2 px border; the full sentence as the accessible name |
+| Graphing panel beside the question | from 1100 px, on calculator parts with the panel open, the panel on the left and the question on the right, the part widened to 1152 px |
+| Diagnostic "Skip this unit" | a button with a confirming step and `POST /sessions/{id}/diagnostic/skip-unit` |
+
+## The walk in the real app [verified]
+
+On 2026-09-27 claude-opus-5-5, not a person, served the `ux2` worktree with `app/main.py` over a
+scratch copy of the stage 9 database, with the passkey verifier replaced by a double in a
+scratchpad script, and drove headless Brave over the Chrome DevTools Protocol with real key
+events. What it read back:
+
+- Inspector: typing x, ^ and 2 into the diagnostic's math field showed "raw LaTeX: x^2", and the
+  inspector had no tabindex. In a session, "2" pressed from the page body chose unsure, and "2x"
+  typed into the math field left the rating at unsure and showed "raw LaTeX: 2x".
+- Skip: "Skip this unit" opened its confirmation; confirming moved from question 1 to question 2,
+  and the diagnostic then ran to its result.
+- Tiles: 13 tiles, the first reading "30*" and named "Question 30, answered, marked for review",
+  the second named "Question 31, unanswered". N and P from the page body moved from question 30
+  to 31 and back.
+- Graphing panel: at 1280 px the panel (x 64, width 585) and the question (x 681, width 535) both
+  start at y 305; at 1100 px likewise (x 32 and 591). At 1099, 900 and 375 px they stack, as
+  before, with the question below the panel.
+- Theme: with the system light, choosing Dark set `data-theme` to dark and the page ground to
+  rgb(16, 16, 18) at once, and a reload kept it; Light held while the system turned dark; System
+  then followed the system to dark.
+- At 375 px, `scrollWidth` equalled `clientWidth` in every captured state, in both themes.
+
+The walk found two defects, both fixed in the stage (Known defects, 2026-09-27): a read straight
+after a write could see the state from before it, and the diagnostic numbered its questions from 2.
+
+## After screenshots [verified]
+
+Taken by claude-opus-5-5 in headless Brave, not by a person, at 1280, 900 and 375 px in both
+themes (50 files). They are in the session scratchpad, not the repository:
+
+`/private/tmp/claude-502/-Users-mahfujm-dev-growth/b4462ac9-6ea4-4b5d-8f49-725ebfb0f43b/scratchpad/shots/`
+
+| Item | Files |
+| --- | --- |
+| Contrast gate and shared components (home) | `item1-2-home-<width>-<theme>.png` |
+| Raw LaTeX inspector | `item3-diagnostic-latex-*.png`, `item3-session-latex-*.png` |
+| Theme switch | `item4-settings-*.png`, `item4-dark-chosen-under-light-system-1280.png` |
+| Question-menu tiles | `item5-question-tiles-*.png` |
+| Graphing panel beside the question | `item6-graphing-*.png` |
+| Diagnostic skip | `item7-skip-confirm-*.png`, `item7-after-skip-1280-dark.png`, `item7-diagnostic-result-*.png` |

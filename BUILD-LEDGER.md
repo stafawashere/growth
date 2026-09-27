@@ -1944,6 +1944,22 @@ items) and items 3 and 6 (Slices 3 and 4). Every gate 11 names for P2 now exists
   claude-opus-5-5 in headless Brave, not by a person; see the stage 11 section of
   `docs/operator/ui-redesign.md`.
 
+- 2026-09-27, stage 11 (ux2), slice 7 and exit: `POST /sessions/{id}/diagnostic/skip-unit` and a
+  "Skip this unit" button with a confirming step answer "I have not learned this yet" to every
+  remaining diagnostic item of the unit being asked, through `service.record_attempt` as the
+  button's own answer is; `tests/api/test_diagnostic_routes.py` shows the result, the posterior,
+  every asked entry, every stored answer and every skill state equal to answering each item one by
+  one, skipping at the unit's first item and at its second. The real app surfaced two defects,
+  both fixed here: the client could read the state from before a write it had just made, because
+  `get_db` committed after the response was sent, and the diagnostic numbered its questions from
+  2. Checks at e9a69a0: vitest `Tests  699 passed (699)` in 57 files; `tsc --noEmit` exit 0;
+  `qa/12_report.py` exit 0; pytest `tests/api` `233 passed in 76.71s (0:01:16)` on the same code.
+  The full pytest run at e9a69a0 stopped at 50 percent with no summary line, and the operator then
+  asked for the merge without a full run, so no full-suite count exists for slice 7. Every item was walked in the real app at 1280, 900 and 375 px
+  in both themes by claude-opus-5-5 in headless Brave, not by a person, with real key events; no
+  state scrolls the page sideways at 375 px (see `docs/operator/ui-redesign.md`, stage 11).
+  Exit: all seven items built and merged.
+
 ## In progress [inferred]
 
 Stage 1, items for Units 4 to 10, is complete in the worktree `../growth-content` on branch
@@ -1980,9 +1996,8 @@ Stage 10, the experience pass, 2026-09-26: complete and merged (Done, "stage 10 
 candidates it did not build are listed in its decisions paragraph.
 
 Stage 11, the seven UI items stage 10 left, 2026-09-27, worktree `../growth-ux2` on branch `ux2`:
-slices 1 to 6 are merged (Done, "stage 11 (ux2), slices 1 to 6"). Slice 7, the diagnostic skip, and
-the commit-before-reply fix to `get_db` are committed on `ux2` and are being checked and merged;
-the stage 11 section of `docs/operator/ui-redesign.md` comes with them.
+complete and merged (Done, "stage 11 (ux2)", slices 1 to 6 and slice 7). Nothing remains in
+progress for it; its open defects are under Known defects, 2026-09-27.
 
 ## Live API spend log [verified]
 
@@ -3007,6 +3022,23 @@ From the eleventh session, 2026-09-21, found and not fixed.
   non-colour declarations reach no greyscale state.
 - 2026-09-27, stage 11, open. The theme choice lives in one browser's localStorage, so a second
   browser or a cleared profile starts at System; the server holds no copy.
+- 2026-09-27, stage 11, closed. `get_db` committed after the response was sent (FastAPI's default
+  scope for a dependency with yield), so a read sent the moment a write returned could see the
+  state from before it. In the real app, "I have not learned this yet" once left the diagnostic on a
+  question the server had recorded, after which every click was refused as already answered, and
+  "Start the diagnostic" once opened a session the next read could not find. Every use is now
+  `Depends(get_db, scope="function")`; `tests/api/test_db_commits_before_reply.py` failed with one
+  plain use left in `content.py` and passed restored. The race does not show under the test
+  client, so the evidence it is gone is the real-app walk, which completed the diagnostic, the
+  skip and the session.
+- 2026-09-27, stage 11, closed. The diagnostic numbered its first question 2 and its last could
+  read "Question 31 of at most 30": `diagnostic_position` was taken after the new entry was
+  appended. The new test in `test_diagnostic_routes.py` failed with `[1, 2, 3, ...] == [0, 1, 2,
+  ...]` on the old line and passes now.
+- 2026-09-27, stage 11, open. N and P, and A to D, do nothing while focus is on a button, a
+  question-menu tile included, by stage 10's rule that a key on a button activates it. From the
+  page body they move and choose as before (checked in the real app: "Question 30 of 42" to 31 and
+  back).
 
 ## Plan corrections applied [verified]
 
@@ -3619,8 +3651,9 @@ brief delegates every decision) by claude-opus-5-5, not by a person.
   so its tests, whose stand-in element serves MathJSON only, are unchanged. The inspector is a
   paragraph whose visible label "raw LaTeX:" is read before the LaTeX, with no tabindex, so it adds
   no tab stop and takes no key; it is dropped when the math keyboard did not load.
-- The theme setting sits in its own "Accessibility" card on the settings page, below the student's
-  settings and above the operator's disclosures, not inside `SettingsScreen`, because
+- The theme setting sits in its own "Accessibility" card on the settings page, after the settings
+  card (whose last block is the closed providers and budgets disclosure) and before the experiments
+  disclosure, not inside `SettingsScreen`, because
   `SettingsScreen.test.tsx` holds `SettingsScreen` to exactly 11's scope 17 sections. That is how
   stage 8 placed the experiment switches, and the scope test is unchanged. The choice is kept under
   `growth-theme` in localStorage, every read and write guarded, and a value that cannot be read or is
@@ -3636,6 +3669,31 @@ brief delegates every decision) by claude-opus-5-5, not by a person.
   order stays the order on screen; the part widens to 1152 px while the panel is open at 1100 px
   and above. The columns are flex items with a zero basis, because `1fr` is a literal the
   literal-value gate refuses.
+- The skip is a server route, `POST /sessions/{id}/diagnostic/skip-unit`, beside 06's table as the
+  error-note and self-explanation routes are. It marks the unit of the item on screen as skipped in
+  the session's queue and answers that item through `service.record_attempt` with
+  `{"not_learned": true}`, the request body the button already sends; GET next then answers every
+  later item of the unit the run chooses, as it is served, through the same call, so an item of a
+  skipped unit is never shown. The engine is not touched. An answered-for-you item carries no
+  elapsed time, since the student never saw it. The button asks once more before skipping, as the
+  set's stop does, and its confirmation holds no primary button, so the diagnostic keeps one.
+- `tests/api/conftest.py`: the `world` fixture's body moved into `build_world(tmp_path)`, which the
+  fixture returns, so the equivalence test can build two installations. The fixture is unchanged.
+- `get_db` in `app/api/deps.py` is now taken with `Depends(get_db, scope="function")` at every one
+  of its 86 uses, so a request's commit lands before its response is sent. With the default
+  scope the commit landed after the response, and the client, which reads straight after a write,
+  could read the state from before it. In the real app this left the diagnostic on a question the
+  server had already recorded (the next "I have not learned this yet" was refused as already
+  answered) and, once, left "Start the diagnostic" on a session the next read could not find. The
+  routes in `app/api/routes/frq.py` that call `db.commit()` before replying had worked around the
+  same thing locally. A new test holds every `Depends(get_db` in app/ to the function scope, since
+  the race itself does not show under the test client, which waits for the whole request.
+- The diagnostic numbered its first question 2 and could print "Question 31 of at most 30",
+  because `diagnostic_position` was `len(run.asked)` after the new entry was appended. It is now
+  that length less one, which is what the client and its fixtures already assumed. A session
+  served before the fix keeps the numbers it was served with.
+- The raw LaTeX inspector now fits its text (`width: fit-content`) rather than running to the
+  68 character measure, seen in the real app beside a short answer.
 - Tests changed, as the brief allows: `app/web/src/assessment/PartRunner.test.tsx`, "lists answered,
   unanswered and marked questions" and "shows each question's exam number". Old assertion: each
   tile's `textContent` equals the sentence, such as "Question 2, unanswered, marked for review".
@@ -3652,7 +3710,14 @@ brief delegates every decision) by claude-opus-5-5, not by a person.
   unguarded read, an unknown stored value trusted, a tile that does not apply); the greyscale
   tile test (answered by fill alone, no `*`); `assessment/graphingBeside.test.tsx` (the part never
   told the panel opened, the breakpoint at 900 px, the layout at every width); and
-  `status/load.test.tsx` (the value rebuilt on every render).
+  `status/load.test.tsx` (the value rebuilt on every render). Slice 7: the equivalence test in
+  `tests/api/test_diagnostic_routes.py` went red with the unit never recorded as skipped, with
+  later items of the unit served instead of answered, with every later item answered not learned,
+  and with the item on screen answered wrongly; a first version passed every one of those breaks
+  but the last, because its client said "not learned" to the unit's later items itself, and it was
+  rewritten so that after a skip the client never does and must never be served the unit again.
+  `OnboardingRoute.test.tsx` went red with the skip sent as a plain not-learned answer and with the
+  confirming step removed.
 - Merges: slices 1 to 6 touch only the client, so they merged together after one full run of the
   checks at their tip, and slice 7, which touches the server, merged on its own after another. Each
   slice is its own commit, and each new test was shown red under its break and green restored.

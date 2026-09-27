@@ -119,9 +119,8 @@ def constrained_candidates(records, history, graph, bank, excluded_ids, rules, u
    return filter_exam_weight(allowed, unit_counts), shortfalls
 
 
-def dress_item(record, chosen, states, graph, user_attempts, is_probe=False):
-   archetype_id = record["id"]
-   stage = serve_stage(record, states, graph)
+def dress_item(record, chosen, states, graph, user_attempts, is_probe=False, retrievability=None):
+   stage = serve_stage(record, states, graph, retrievability)
    served = dict(chosen)
    served["stage"] = stage
    served["format"] = format_for_item(user_attempts, chosen, stage)
@@ -130,7 +129,17 @@ def dress_item(record, chosen, states, graph, user_attempts, is_probe=False):
    return served
 
 
-def pick_item(record, states, graph, bank, rng, excluded_ids, user_attempts, is_probe=False):
+def pick_item(
+   record,
+   states,
+   graph,
+   bank,
+   rng,
+   excluded_ids,
+   user_attempts,
+   is_probe=False,
+   retrievability=None,
+):
    archetype_id = record["id"]
    options = [
       item
@@ -143,10 +152,10 @@ def pick_item(record, states, graph, bank, rng, excluded_ids, user_attempts, is_
 
    chosen = rng.choice(sorted(options, key=lambda item: item["id"]))
 
-   return dress_item(record, chosen, states, graph, user_attempts, is_probe)
+   return dress_item(record, chosen, states, graph, user_attempts, is_probe, retrievability)
 
 
-def pick_named_item(item_id, archetype_id, states, graph, bank, user_attempts):
+def pick_named_item(item_id, archetype_id, states, graph, bank, user_attempts, retrievability=None):
    """Serve one named item, the path the corrected-item requeue takes back into block 1."""
    record = graph.archetypes.get(archetype_id)
 
@@ -155,7 +164,7 @@ def pick_named_item(item_id, archetype_id, states, graph, bank, user_attempts):
 
    for item in bank.published_items(archetype_id):
       if item["id"] == item_id:
-         return dress_item(record, item, states, graph, user_attempts)
+         return dress_item(record, item, states, graph, user_attempts, retrievability=retrievability)
 
    return None
 
@@ -205,7 +214,9 @@ def next_item_learning(
 
    if probe_archetype is not None:
       record = graph.archetypes[probe_archetype]
-      served = pick_item(record, states, graph, bank, rng, excluded_ids, user_attempts, True)
+      served = pick_item(
+         record, states, graph, bank, rng, excluded_ids, user_attempts, True, retrievability
+      )
 
       if served is not None:
          return Selection(served)
@@ -223,7 +234,9 @@ def next_item_learning(
       ordered = choose_by_due_coverage(allowed, states, graph, today, retrievability, rng)
 
    for record in ordered:
-      served = pick_item(record, states, graph, bank, rng, excluded_ids, user_attempts)
+      served = pick_item(
+         record, states, graph, bank, rng, excluded_ids, user_attempts, retrievability=retrievability
+      )
 
       if served is not None:
          return Selection(served, tuple(coverage_gaps), shortfalls)
@@ -270,13 +283,14 @@ def archetypes_touching(skill_ids, graph, include_parents=False):
    ]
 
 
-def review_eligible(pool_skills, states, graph, bank, needs_retrieval=True):
+def review_eligible(pool_skills, states, graph, bank, needs_retrieval=True, retrievability=None):
    """Archetypes touching the pool that have a published item (R18) and clear gating.
 
    A due review is a retrieval opportunity, not a fringe probe, so it also needs p_A of at least
    REVIEW_RETRIEVAL_FLOOR, and it reaches the pool through 1-hop hard ancestors as repetition
    compression does. Hypercorrection overrides the floor, as it overrides the FSRS order, and
-   is served only by archetypes loading the flagged skill directly.
+   is served only by archetypes loading the flagged skill directly. p_A is read at today's
+   retrievability, which changes nothing while LAMBDA is 0 (R3).
    """
    touching = [
       record
@@ -291,7 +305,7 @@ def review_eligible(pool_skills, states, graph, bank, needs_retrieval=True):
    return [
       record
       for record in gated
-      if p_knowledge(record, states, graph.hard_parents) >= REVIEW_RETRIEVAL_FLOOR
+      if p_knowledge(record, states, graph.hard_parents, retrievability) >= REVIEW_RETRIEVAL_FLOOR
    ]
 
 
@@ -314,7 +328,9 @@ def next_item_review(
 
    if probe_archetype is not None:
       record = graph.archetypes[probe_archetype]
-      served = pick_item(record, states, graph, bank, rng, excluded_ids, user_attempts, True)
+      served = pick_item(
+         record, states, graph, bank, rng, excluded_ids, user_attempts, True, retrievability
+      )
 
       if served is not None:
          return Selection(served)
@@ -327,14 +343,18 @@ def next_item_review(
    if not pool_skills:
       return Selection(None)
 
-   eligible = review_eligible(pool_skills, states, graph, bank, needs_retrieval=not serves_hyper)
+   eligible = review_eligible(
+      pool_skills, states, graph, bank, needs_retrieval=not serves_hyper, retrievability=retrievability
+   )
    allowed, shortfalls = constrained_candidates(
       eligible, history, graph, bank, excluded_ids, rules, None
    )
    ordered = choose_by_due_coverage(allowed, states, graph, today, retrievability, rng)
 
    for record in ordered:
-      served = pick_item(record, states, graph, bank, rng, excluded_ids, user_attempts)
+      served = pick_item(
+         record, states, graph, bank, rng, excluded_ids, user_attempts, retrievability=retrievability
+      )
 
       if served is not None:
          return Selection(served, shortfalls=shortfalls)
@@ -366,7 +386,9 @@ def next_item_retrieval(
    ordered = choose_by_due_coverage(allowed, states, graph, today, retrievability, rng)
 
    for record in ordered:
-      served = pick_item(record, states, graph, bank, rng, excluded_ids, user_attempts)
+      served = pick_item(
+         record, states, graph, bank, rng, excluded_ids, user_attempts, retrievability=retrievability
+      )
 
       if served is not None:
          return Selection(served, shortfalls=shortfalls)

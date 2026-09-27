@@ -1973,6 +1973,20 @@ items) and items 3 and 6 (Slices 3 and 4). Every gate 11 names for P2 now exists
   tests/api/test_security_headers.py with test_evaluation_routes.py, 16 passed. The full pytest was
   not rerun on the merged tip.
 
+- 2026-09-27, stage 12 (select): the selection study (`docs/operator/selection-study.md`, numbers
+  in `docs/operator/selection-study-record.md`, `tools/selection_study.py`). Positive, negative
+  and noise-floor controls on the learning world (`app/sim/selection_study.py`); three world
+  corrections behind `learning.WorldRules` with `LEGACY_WORLD` reproducing stage 8; delayed mastery
+  per item added beside the existing measure; `p_A` read at today's retrievability in the stage
+  bands and the review floor, so arm 6 now serves differently; the P7 record rerun on the corrected
+  world. No live setting changed: two-term stays, `LAMBDA` 0, five-term off. New tests, each red
+  under a break and green on restore: the decay arm diverging (red with retrievability dropped from
+  `serve_stage`), keyed draws (red with a shared stream), daily growth, consolidated prior and the
+  controls' ordering. Checks: the touched files `138 passed in 54.95s` (tests/engine, tests/session
+  and the three simulation eval files); vitest `Tests  669 passed (669)`; `tsc --noEmit` exit 0;
+  `qa/12_report.py` exit 0. The full pytest suite was not run to completion: the operator stopped
+  it and asked for the merge without it.
+
 ## In progress [inferred]
 
 Stage 1, items for Units 4 to 10, is complete in the worktree `../growth-content` on branch
@@ -2011,6 +2025,12 @@ candidates it did not build are listed in its decisions paragraph.
 Stage 11, the seven UI items stage 10 left, 2026-09-27, worktree `../growth-ux2` on branch `ux2`:
 complete and merged (Done, "stage 11 (ux2)", slices 1 to 6 and slice 7). Nothing remains in
 progress for it; its open defects are under Known defects, 2026-09-27.
+
+Stage 12, item selection, 2026-09-27, worktree `../growth-select` on branch `select`: complete
+(Done, "stage 12 (select)"), being merged to origin/main. What remains needs the operator's ruling
+on the form of 10's selection bars (Decisions, 2026-09-27) and, for the decay and spacing
+questions, a world whose retrieval gain grows with the lag, or the student's delayed checkpoint
+accuracy.
 
 ## Live API spend log [verified]
 
@@ -2880,10 +2900,26 @@ From the eleventh session, 2026-09-21, found and not fixed.
   with means 0.01092 against 0.01055 and 0.02306 against 0.02310. The P2 world, which did not
   learn, passed the same comparison. Due-coverage selection is so far not shown to teach better
   than a uniform draw from the gated fringe. Simulation only; it is not a finding about the student.
+  Updated 2026-09-27, stage 12, still open, now read as undecidable on this simulator rather than
+  as a policy failure (`docs/operator/selection-study.md`). Two-term's only non-random term, due
+  coverage, is above 0 on 1.1 percent of block 2 choices in 60 days and 7.5 percent in 226, because
+  practice declares a mean of 13.6 skills in 60 days, so two-term and the control are nearly one
+  policy: on the stage 8 world 106 and 116 of 200 students got identical traces, and the strict
+  wins were 17.5 and 18.0 percent. Two-term against itself with reseeded engine draws wins on 47
+  to 58 percent of 200 students, and the mean paired difference against the control has a 95
+  percent interval across 0 at every horizon and curve. On the corrected world the bar reads 69.0
+  and 68.5 percent at 60 days and 50.0 and 55.0 at 226. Deciding it needs the operator's ruling on
+  the bar's form (Decisions, 2026-09-27). Simulation only.
 - 2026-09-24, stage 8, open. Arm 6 (`lambda` 2.0) and the compensatory arm served every student
   exactly what two-term served. Under two-term selection `LAMBDA` reaches only `sigmoid(m_k)` with
   a retrievability argument, which nothing that chooses items reads, so the decay gate in 10 cannot
   pass by construction. Deciding on decay needs a selection path that reads it first.
+  Closed 2026-09-27, stage 12. The stage bands and the review floor now read `p_A` at today's
+  retrievability, so arm 6 serves differently from two-term for 78 and 75 of 200 students at 60
+  days (82 and 80 at 226) and beat it on at most 3.5 percent of students on mastery per item and 0
+  percent on retention at day 30. `lambda` stays 0 on that result (Decisions, 2026-09-27). The
+  compensatory arm still serves what two-term serves; its prediction is read only by the stage
+  bands of skills with no credited observation. Simulation only.
 - 2026-09-24, stage 8, open. False mastery exceeds 10's 5 percent ceiling on every arm, 22.1 and
   23.3 percent at worst, and none of it comes from practice (0.0 percent of masteries declared from
   practice). It is the six seeded parents of `app/session/seed.py` (about half not known by a
@@ -3633,6 +3669,19 @@ Session 2026-09-20 (seventh).
 - 2026-09-26, stage 7, 11 P8 risk: MathLive's licence read out of the installed package is MIT
   (0.101.2, `LICENSE.txt`), as are KaTeX 0.16.47 and the compute engine 0.24.1.
 
+- 2026-09-27, stage 12, 02 "The strength formula" writes `m_k` with the decay term and mastery
+  condition 1 "at the current retrievability". Selection now reads `p_A` at today's retrievability
+  wherever two-term selection reads `sigmoid(m_k)` (`serve_stage`'s stage bands, `review_eligible`'s
+  floor), which is the same number while `LAMBDA` is 0 and is the path arm 6 needs. The update
+  rule's condition 1 and un-mastery are evaluated after the observation sets `last_practised_at`,
+  where retrievability is about 1, so they are unchanged.
+- 2026-09-27, stage 12, 10 "The world" and "Forgetting" are read in `app/sim/learning.py` with
+  three corrections: draws keyed per roll so arms are paired in their draws; prior knowledge
+  starting at the capped half-life instead of never decaying until practised; and half-life growth
+  at most once a calendar day, 01's same-day repeats rule. `LEGACY_WORLD` reproduces stage 8. The
+  P7 record (`docs/operator/p7-evals.md`) was rerun on the corrected world and gained 10's day-30
+  delay as delayed mastery per item beside the existing measure.
+
 ## Decisions taken on the operator's instruction, 2026-09-27 [inferred]
 
 Stage 11, the seven UI items stage 10 left unbuilt, decided on the operator's delegation (the stage
@@ -3757,6 +3806,35 @@ calculator website"), decided by claude-opus-5-5, not by a person.
   was sent, so a diagnostic answered at once was refused as "not in the queue" 4 times in 6 in the
   running app. The same scope="function" change made here was dropped in favour of stage 11's.
   On the fixed server the immediate-answer probe answered all 30 diagnostic items with 0 refusals.
+
+Stage 12, item selection, decided by the model (Claude) on the operator's delegation, every result
+a simulation's (`docs/operator/selection-study.md`, `docs/operator/selection-study-record.md`):
+
+- Two-term stays the live score, `LAMBDA` stays 0, and the five-term score and `EXPLORE_SHARE`
+  stay in `app/sim/five_term.py`, which nothing live imports. Reason: on the corrected world
+  five-term beat two-term for 39.0 and 19.0 percent of 200 students at 60 days and 55.5 and 39.0
+  at 226, and its mean was lower or within noise; arm 6 beat arm 1 for at most 3.5 percent. Both
+  fail 10's 90 percent bar and would fail a mean-difference bar too.
+- The retrievability path into the stage bands and the review floor ships live. Reason: at
+  `LAMBDA` 0 it computes the same value, and `LAMBDA` is the switch that stays off, held by
+  `test_the_live_decay_term_matches_the_recorded_decision`.
+- The simulator's world was corrected (keyed draws, consolidated prior knowledge, daily half-life
+  growth) and the P7 record rerun on it. Reason: the stage 8 world let practice lower the
+  retention of a known skill and grew half-lives on same-day repeats, which 01 says do not count.
+- Two positive controls and one negative control were run, not one of each. Reason: the brief's
+  forgetting oracle targets spacing, which mastery per item read the day after cannot see, so a
+  teaching oracle was added to check the day-after measure can see anything.
+- The run length was extended to 226 days, 2026-09-26 to 2027-05-10, beside stage 8's 60.
+  Reason: mastery needs 7 days and a mastered skill comes due weeks later, so at 60 days due
+  coverage fires on 1.1 percent of choices.
+- 10's bars were not changed. Reason: only the operator loosens a bar.
+
+For the operator's ruling (not decided here): whether 10's "on at least 90 percent of simulated
+students" should read as a paired mean difference whose 95 percent interval lies above 0, with
+the per-student share kept and reported. On this world the same policy against itself wins on 47
+to 58 percent of students and only controls that read the hidden student reach 88.5 to 91 percent,
+in single cells, so the two-term-against-random bar cannot be decided by a per-student share.
+The ruling changes no live setting today: five-term and `lambda` fail on the mean as well.
 
 ## Decisions taken on the operator's instruction, 2026-09-26 [inferred]
 

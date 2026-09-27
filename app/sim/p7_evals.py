@@ -28,6 +28,7 @@ class ArmSummary:
    items: int
    learned: int
    mean_true_mastery_per_item: float
+   mean_delayed_mastery_per_item: float
    mean_retention_day_7: float
    mean_retention_day_30: float
    mean_measurement_bias: float
@@ -89,6 +90,7 @@ def summarise(runs):
       items=sum(run.items for run in runs),
       learned=sum(run.learned for run in runs),
       mean_true_mastery_per_item=statistics.mean(run.true_mastery_per_item for run in runs),
+      mean_delayed_mastery_per_item=statistics.mean(run.delayed_mastery_per_item for run in runs),
       mean_retention_day_7=statistics.mean(run.retention_day_7 for run in runs),
       mean_retention_day_30=statistics.mean(run.retention_day_30 for run in runs),
       mean_measurement_bias=statistics.mean(run.measurement_bias for run in runs),

@@ -270,7 +270,7 @@ def greedy_cover(targets, candidates, covered_by):
 def compression_cover(due, states, graph, bank, today, retrievability):
    """Repetition compression: an archetype retires its due loaded skills and due 1-hop hard
    ancestors."""
-   candidates = review_eligible(due, states, graph, bank)
+   candidates = review_eligible(due, states, graph, bank, retrievability=retrievability)
 
    def covered_by(record):
       return covered_due_skills(record, states, graph, today, retrievability)
@@ -487,7 +487,9 @@ def assemble_session(
 
       if is_requeue_turn:
          item_id, archetype_id = pending_requeue.pop(index)
-         served = pick_named_item(item_id, archetype_id, states, graph, bank, attempts_history)
+         served = pick_named_item(
+            item_id, archetype_id, states, graph, bank, attempts_history, retrievability
+         )
          shortfalls = window_filter([graph.archetypes[archetype_id]], history, graph, rules)[1]
       else:
          selection = next_item_review(

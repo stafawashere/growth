@@ -38,6 +38,8 @@ These are the parameters the ledgers could not source. All are [inferred] and li
 - The 85 percent rule is derived for a binary classifier under Gaussian noise and its authors state it does not yet generalise to multi-choice tasks (https://www.nature.com/articles/s41467-019-12552-4 [verified]); Math Academy's 80 percent is vendor-published [single-source]. The plan uses 0.8 as a fading-stage filter, not a score term.
 - Whether the co_requisite edge type (2 edges) should ever gate. Treated as inert (02 invariant 21).
 - Precedence when a diagnosis, a hypercorrection flag and a pending probe all want the next slot. Order fixed in 02 Session assembly (probe, then hypercorrection, then due reviews) [inferred].
+- Whether 10's selection bars read "on at least 90 percent of simulated students" can be decided on the P7 learning world. Two-term against itself with reseeded engine draws wins on 47 to 58 percent of 200 students, and only controls reading the hidden student reach 88 to 91 percent, in single cells (simulation, `docs/operator/selection-study.md`). Open for the operator alone: keep the per-student share, or decide on a paired mean difference whose 95 percent interval lies above 0. No live setting changes on today's numbers either way [inferred].
+- The learning world grows a half-life by the same factor whatever the lag since the last retrieval, so it cannot reward spacing and cannot tell a spacing policy from massing (the negative control scores within 7 points of the forgetting oracle). Settled by: a world whose retrieval gain grows with the lag, checked against the student's delayed checkpoint accuracy [inferred].
 
 ## Grading, generation and verification questions
 
@@ -161,4 +163,6 @@ Every parameter below is [inferred] unless noted. The authoritative per-engine l
 | Provider cooldown after a usage limit | 30 minutes per role and link, the drain's own retry interval (app/providers/router.py LIMIT_COOLDOWN) | 07, P6 | the reset times the CLI reports once a real limit is met |
 | Provider cooldown after other failures | 60 s after 3 consecutive failures of one link for one role (FAILURE_COOLDOWN, FAILURES_BEFORE_COOLDOWN) | 07, P6 | the failure runs the audit and the automatic drain log record in real use |
 | Automatic drain pacing | one pass every 10 minutes, at most 5 queued tutor calls a pass, under the subscription's call counts (app/feedback/autodrain.py) | 07, 14, P6 | queue lengths after real usage-limit windows |
-
+| Simulated prior knowledge | a skill known before the run starts at the capped half-life, 365 days, last retrieved on the start day (app/sim/learning.py WorldRules) | 10, stage 12 | the student's retention on skills placed by the diagnostic and never practised, measured at the first checkpoint |
+| Simulated half-life growth | at most once per calendar day per skill, from 01's same-day repeats rule (Rohrer and Taylor 2006) | 10, 01, stage 12 | a lag-dependent world checked against delayed checkpoint accuracy |
+| Delayed mastery per item | skills the run taught, retention 30 days after the run, per item served; 10's day-30 delay | 10, stage 12 | nothing; it is a reading of 10's day-30 retention |

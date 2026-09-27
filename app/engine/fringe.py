@@ -260,10 +260,12 @@ def due_coverage(archetype, states, graph, today, retrievability=None):
    return len(covered_due_skills(archetype, states, graph, today, retrievability))
 
 
-def serve_stage(archetype, states, graph):
+def serve_stage(archetype, states, graph, retrievability=None):
    """R32: the bands pick the initial stage only, the stored stage wins once a credited
    observation exists. An uncredited attempt (NOT_ATTEMPTED, a prerequisite gap with no credit)
    moves observation_count but never fading_stage, so the bands stay live until credit lands.
+   p_A is read at today's retrievability, the m_k of 02 with its decay term, which changes
+   nothing while LAMBDA is 0 (R3).
    """
    primary = primary_skill(archetype)
    state = states[primary]
@@ -272,7 +274,7 @@ def serve_stage(archetype, states, graph):
    if has_history:
       return state.fading_stage
 
-   knowledge = p_knowledge(archetype, states, graph.hard_parents)
+   knowledge = p_knowledge(archetype, states, graph.hard_parents, retrievability)
 
    if knowledge < constants.STAGE_LOW:
       return FadingStage.EXAMPLE

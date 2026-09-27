@@ -16,9 +16,22 @@ the simulator, which is why every acceptance comparison in 10 is relative.
 
 A run is a pure function of its seed: the student, the engine's draws and the world's draws each
 come from their own random.Random derived from it, and nothing reads the clock.
+
+WorldRules carries three corrections made in stage 12 (docs/operator/selection-study.md), each of
+which LEGACY_WORLD turns off to reproduce the stage 8 record. Keyed draws give every chance the
+world rolls its own uniform, fixed by the student's seed and by what is rolled (which skill or
+archetype, which day, which occurrence that day), so two arms that serve the same item on the same
+day see the same outcome however they got there, and a paired comparison is paired in its draws
+and not only in its student. Consolidated prior knowledge starts every skill known before the run
+at the capped half-life, where the stage 8 world held it at retention 1.0 until its first practice
+and then let it decay from the initial half-life, so practising a known skill lowered its
+retention. Daily growth lets a successful retrieval grow a half-life at most once per calendar
+day, the plan's reading of Rohrer and Taylor 2006 in docs/plan/01 ("Same-day repeats | do not
+count"), where the stage 8 world grew it on every correct answer and so rewarded massing.
 """
 import random
 import statistics
+from collections import Counter
 from contextlib import contextmanager
 from dataclasses import dataclass, field
 from datetime import timedelta
@@ -57,14 +70,28 @@ NO_INTERLEAVING = InterleaveRules(
 
 
 @dataclass(frozen=True)
+class WorldRules:
+   keyed_draws: bool = True
+   consolidated_prior: bool = True
+   daily_growth: bool = True
+
+
+WORLD = WorldRules()
+LEGACY_WORLD = WorldRules(keyed_draws=False, consolidated_prior=False, daily_growth=False)
+
+
+@dataclass(frozen=True)
 class Arm:
-   """One row of 10's arm list. overrides patches app.engine.constants for the run only."""
+   """One row of 10's arm list. overrides patches app.engine.constants for the run only.
+   world_ordering, when given, is called with the hidden world and returns a block 2 ordering; it
+   exists for the controls of docs/operator/selection-study.md, which may read what no policy can."""
    name: str
    control: bool = False
    ordering: object = None
    rules: object = FULL_RULES
    overrides: tuple = ()
    compensatory: bool = False
+   world_ordering: object = None
 
 
 ARMS = {
@@ -150,17 +177,57 @@ def retention_after(elapsed_days, half_life, curve):
    return 0.5 ** (elapsed_days / half_life)
 
 
+class KeyedDraws:
+   """One uniform per named roll: the same seed and the same key give the same number, and the
+   n-th roll of a key on a day is the same n-th roll in every arm."""
+
+   def __init__(self, seed):
+      self.seed = seed
+      self.counts = Counter()
+
+   def random(self, *key):
+      self.counts[key] += 1
+      occurrence = self.counts[key]
+
+      return random.Random(f"{self.seed}|{'|'.join(map(str, key))}|{occurrence}").random()
+
+
 class LearningWorld:
    """The hidden student. knows() reads a state that attempts can grow."""
 
-   def __init__(self, student, hard_parents, rng, curve=EXPONENTIAL):
+   def __init__(
+      self,
+      student,
+      hard_parents,
+      rng,
+      curve=EXPONENTIAL,
+      rules=LEGACY_WORLD,
+      seed=None,
+      start_day=None,
+   ):
       self.student = student
       self.hard_parents = hard_parents
       self.rng = rng
       self.curve = curve
+      self.rules = rules
+      self.draws = KeyedDraws(seed) if rules.keyed_draws else None
       self.half_life = {}
       self.last_success = {}
+      self.grown_on = {}
       self.learned = {}
+      starts_consolidated = rules.consolidated_prior and start_day is not None
+
+      if starts_consolidated:
+         for skill_id, known in sorted(student.known.items()):
+            if known:
+               self.half_life[skill_id] = HALF_LIFE_CAP_DAYS
+               self.last_success[skill_id] = start_day
+
+   def roll(self, *key):
+      if self.draws is None:
+         return self.rng.random()
+
+      return self.draws.random(*key)
 
    def knows(self, skill_id):
       return bool(self.student.known.get(skill_id, True))
@@ -184,12 +251,18 @@ class LearningWorld:
       if not self.knows(skill_id):
          return False
 
-      return self.rng.random() < self.retention(skill_id, today)
+      return self.roll("available", skill_id, today) < self.retention(skill_id, today)
 
    def reinforce(self, skill_ids, today):
       for skill_id in skill_ids:
-         grown = self.half_life.get(skill_id, INITIAL_HALF_LIFE_DAYS) * HALF_LIFE_GROWTH
-         self.half_life[skill_id] = min(grown, HALF_LIFE_CAP_DAYS)
+         grew_today = self.grown_on.get(skill_id) == today
+         holds_growth = self.rules.daily_growth and grew_today
+
+         if not holds_growth:
+            grown = self.half_life.get(skill_id, INITIAL_HALF_LIFE_DAYS) * HALF_LIFE_GROWTH
+            self.half_life[skill_id] = min(grown, HALF_LIFE_CAP_DAYS)
+            self.grown_on[skill_id] = today
+
          self.last_success[skill_id] = today
 
    def ready_to_learn(self, skill_id):
@@ -206,7 +279,7 @@ class LearningWorld:
             continue
 
          chance = self.student.learning_rate.get(skill_id, LEARNING_RATE_LOW) * multiplier
-         learns = self.rng.random() < chance
+         learns = self.roll("learn", skill_id, today) < chance
 
          if learns:
             self.student.known[skill_id] = True
@@ -219,7 +292,7 @@ class LearningWorld:
       is_mcq = response_format == "mcq"
       floor = max(self.student.guess, constants.MCQ_GUESS_FLOOR) if is_mcq else self.student.guess
       p_correct = 1.0 - self.student.slip if all_available else floor
-      is_correct = self.rng.random() < p_correct
+      is_correct = self.roll("answer", record["id"], today) < p_correct
 
       if is_correct and all_available:
          self.reinforce(loaded, today)
@@ -239,6 +312,7 @@ class StudentRun:
    known_at_start: int
    learned: int
    taught_retained: float
+   taught_retained_day_30: float
    declared_mastered: int
    declared_not_known: int
    placed_mastered: int
@@ -251,6 +325,12 @@ class StudentRun:
    @property
    def true_mastery_per_item(self):
       return self.taught_retained / self.items if self.items else 0.0
+
+   @property
+   def delayed_mastery_per_item(self):
+      """What the run taught that the student can still retrieve 30 days after it, per item: the
+      measure that sees spacing, where true_mastery_per_item reads retention the day after."""
+      return self.taught_retained_day_30 / self.items if self.items else 0.0
 
    @property
    def false_mastery_share(self):
@@ -275,8 +355,18 @@ def mean_retention(world, skill_ids, day):
    return statistics.mean(values) if values else 0.0
 
 
-def run_student(arm, seed, days, curve=EXPONENTIAL, keep_trace=False):
-   """One student through a diagnostic and then one assembled session per day."""
+def run_student(
+   arm,
+   seed,
+   days,
+   curve=EXPONENTIAL,
+   keep_trace=False,
+   world_rules=WORLD,
+   engine_seed=None,
+):
+   """One student through a diagnostic and then one assembled session per day. engine_seed, when
+   given, reseeds only the engine's draws after the diagnostic (tie-breaks and item picks), so the
+   same policy can be run against itself on the same student and the same world."""
    library = whole_graph.library()
    graph = library.graph
    engine_graph = library.engine_graph
@@ -296,8 +386,17 @@ def run_student(arm, seed, days, curve=EXPONENTIAL, keep_trace=False):
    )
    states = placed.states
    placed_ids = set(placed.run.placement["newly_mastered"])
-   world = LearningWorld(student, engine_graph.hard_parents, random.Random(seed + 104729), curve)
-   engine_rng = random.Random(seed)
+   world = LearningWorld(
+      student,
+      engine_graph.hard_parents,
+      random.Random(seed + 104729),
+      curve,
+      rules=world_rules,
+      seed=seed + 104729,
+      start_day=whole_graph.START_DAY,
+   )
+   engine_rng = random.Random(seed if engine_seed is None else engine_seed)
+   ordering = arm.world_ordering(world) if arm.world_ordering is not None else arm.ordering
    attempts = []
    trace = []
    items = 0
@@ -313,8 +412,8 @@ def run_student(arm, seed, days, curve=EXPONENTIAL, keep_trace=False):
          )
          options = {"rules": arm.rules}
 
-         if arm.ordering is not None:
-            options["ordering"] = arm.ordering
+         if ordering is not None:
+            options["ordering"] = ordering
 
          session = assemble_session(
             states,
@@ -356,6 +455,8 @@ def run_student(arm, seed, days, curve=EXPONENTIAL, keep_trace=False):
 
    end_day = today + timedelta(days=1)
    taught_retained = sum(world.retention(skill_id, end_day) for skill_id in sorted(world.learned))
+   late_day = end_day + timedelta(days=RETENTION_PROBE_DAYS[1])
+   taught_retained_day_30 = sum(world.retention(skill_id, late_day) for skill_id in sorted(world.learned))
    declared = [skill_id for skill_id in graph.skills if states[skill_id].mastered]
    declared_not_known = [skill_id for skill_id in declared if not world.knows(skill_id)]
    placed = [skill_id for skill_id in declared if skill_id in placed_ids]
@@ -371,6 +472,7 @@ def run_student(arm, seed, days, curve=EXPONENTIAL, keep_trace=False):
       known_at_start=len(known_at_start),
       learned=len(world.learned),
       taught_retained=taught_retained,
+      taught_retained_day_30=taught_retained_day_30,
       declared_mastered=len(declared),
       declared_not_known=len(declared_not_known),
       placed_mastered=len(placed),

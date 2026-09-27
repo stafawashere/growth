@@ -9,55 +9,55 @@ purpose: The P7 policy comparison on a synthetic world that learns, and the deci
 
 Written by `tools/p7_evals.py` from `app/sim/p7_evals.py` and `app/sim/learning.py`, seed base 20270510, 200 synthetic students, 60 daily sessions after a diagnostic, every arm on the same students and seeds. Every number is a simulation's measurement on synthetic students whose world model is invented. None is a human's measurement and none is a real student's. A simulation can falsify a policy choice and cannot validate one.
 
-The world learns. Each student starts from the P2 knowledge state, closed under hard prerequisites, and carries a learning rate per skill drawn uniformly from 0.05 to 0.3. An attempt can teach a loaded skill whose hard parents are all known, with that rate scaled by the fading stage the item was served at (example 1.0, completion 0.75, unsupported 0.5). True mastery per item is the sum, over skills learned during the run, of the student's chance of retrieving each skill the day after the run, divided by items served. Retention at day 7 and day 30 is the mean retrieval chance over every known skill that many days after the run with no practice. Bias is 10's measurement bias, the mean of sigmoid(m_k) minus the retrieval chance over observed skills. The learning band and the stage multipliers are [inferred]; no source gives them.
+The world learns. Each student starts from the P2 knowledge state, closed under hard prerequisites, and carries a learning rate per skill drawn uniformly from 0.05 to 0.3. An attempt can teach a loaded skill whose hard parents are all known, with that rate scaled by the fading stage the item was served at (example 1.0, completion 0.75, unsupported 0.5). True mastery per item is the sum, over skills learned during the run, of the student's chance of retrieving each skill the day after the run, divided by items served; delayed mastery per item is the same sum 30 days after the run. The world is `learning.WORLD`: keyed draws, consolidated prior knowledge and daily half-life growth (`docs/operator/selection-study.md`). Retention at day 7 and day 30 is the mean retrieval chance over every known skill that many days after the run with no practice. Bias is 10's measurement bias, the mean of sigmoid(m_k) minus the retrieval chance over observed skills. The learning band and the stage multipliers are [inferred]; no source gives them.
 
 ## Forgetting curve: exponential
 
-| Arm | Items | Skills learned | True mastery per item | Retention day 7 | Retention day 30 | Bias | Declared | Declared, not known | Placed, not known |
-|---|---|---|---|---|---|---|---|---|---|
-| two_term | 121175 | 14948 | 0.01021 | 0.5074 | 0.4892 | +0.2464 | 1327 | 29 | 29 of 329 |
-| random_control | 121273 | 15044 | 0.01048 | 0.5065 | 0.4879 | +0.2459 | 1309 | 29 | 29 of 329 |
-| five_term | 120481 | 12294 | 0.00929 | 0.6030 | 0.5861 | +0.2215 | 2763 | 29 | 29 of 329 |
-| no_interleaving | 121453 | 15115 | 0.01070 | 0.5043 | 0.4857 | +0.2464 | 1317 | 29 | 29 of 329 |
-| no_propagation | 121269 | 14892 | 0.01022 | 0.5089 | 0.4907 | +0.2428 | 1326 | 29 | 29 of 330 |
-| decay_lambda_2 | 121175 | 14948 | 0.01021 | 0.5074 | 0.4892 | +0.2464 | 1327 | 29 | 29 of 329 |
-| compensatory_only | 121175 | 14948 | 0.01021 | 0.5074 | 0.4892 | +0.2464 | 1327 | 29 | 29 of 329 |
-| stage_high_0_6 | 121986 | 14836 | 0.01052 | 0.5141 | 0.4952 | +0.2427 | 1420 | 29 | 29 of 329 |
-| stage_high_0_7 | 121430 | 14944 | 0.01030 | 0.5089 | 0.4907 | +0.2459 | 1345 | 29 | 29 of 329 |
-| stage_high_0_8 | 121190 | 14955 | 0.01023 | 0.5075 | 0.4892 | +0.2462 | 1329 | 29 | 29 of 329 |
+| Arm | Items | Skills learned | True mastery per item | Delayed mastery per item | Retention day 7 | Retention day 30 | Bias | Declared | Declared, not known | Placed, not known |
+|---|---|---|---|---|---|---|---|---|---|---|
+| two_term | 126997 | 15074 | 0.01211 | 0.00227 | 0.5764 | 0.5399 | +0.2039 | 3051 | 29 | 29 of 334 |
+| random_control | 127108 | 15168 | 0.01227 | 0.00225 | 0.5754 | 0.5387 | +0.2038 | 3073 | 30 | 30 of 334 |
+| five_term | 125424 | 12469 | 0.01048 | 0.00299 | 0.6150 | 0.5796 | +0.2090 | 4845 | 29 | 29 of 335 |
+| no_interleaving | 127137 | 15138 | 0.01210 | 0.00237 | 0.5758 | 0.5394 | +0.2039 | 3158 | 29 | 29 of 334 |
+| no_propagation | 127034 | 15098 | 0.01208 | 0.00233 | 0.5761 | 0.5398 | +0.2004 | 3034 | 29 | 29 of 333 |
+| decay_lambda_2 | 126997 | 15086 | 0.01211 | 0.00227 | 0.5762 | 0.5398 | +0.2039 | 3051 | 29 | 29 of 334 |
+| compensatory_only | 126997 | 15074 | 0.01211 | 0.00227 | 0.5764 | 0.5399 | +0.2039 | 3051 | 29 | 29 of 334 |
+| stage_high_0_6 | 128036 | 15020 | 0.01216 | 0.00232 | 0.5776 | 0.5410 | +0.2043 | 3247 | 29 | 29 of 335 |
+| stage_high_0_7 | 127280 | 15160 | 0.01209 | 0.00227 | 0.5752 | 0.5388 | +0.2039 | 3122 | 29 | 29 of 334 |
+| stage_high_0_8 | 127086 | 15116 | 0.01215 | 0.00227 | 0.5759 | 0.5394 | +0.2038 | 3074 | 29 | 29 of 334 |
 
-- Two-term against the random-within-fringe control: two-term matched or beat the control on true mastery per item for 73.0% of 200 students. Bar 90%. Passes: no.
-- Five-term against two-term: five-term beat two-term on true mastery per item for 40.0% of 200 students. Bar 90%. Five-term turned on: no.
-- Decay term, arm 6 against arm 1: lambda 2.0 beat lambda 0 on true mastery per item for 0.0% and on retention at day 30 for 0.0% of 200 students. Bar 90% on either. lambda returns to 2.0: no.
-- Interleaving removed: mean retention at day 30 moved by -0.0035 against two-term, and was higher without interleaving for 32.0% of 200 students. Bar 90%. The constraint costs retention: no.
-- Measurement bias: two-term +0.2464, control +0.2459. Within 0.05 in absolute value: yes.
-- False mastery: the worst arm, random_control, declared 2.2% of its masteries on skills the student did not know. Ceiling 5%. Within: yes. Set apart the diagnostic's placements, the worst arm's share among masteries declared from practice is 0.0%.
+- Two-term against the random-within-fringe control: two-term matched or beat the control on true mastery per item for 69.0% of 200 students. Bar 90%. Passes: no.
+- Five-term against two-term: five-term beat two-term on true mastery per item for 39.0% of 200 students. Bar 90%. Five-term turned on: no.
+- Decay term, arm 6 against arm 1: lambda 2.0 beat lambda 0 on true mastery per item for 3.5% and on retention at day 30 for 0.0% of 200 students. Bar 90% on either. lambda returns to 2.0: no.
+- Interleaving removed: mean retention at day 30 moved by -0.0005 against two-term, and was higher without interleaving for 34.5% of 200 students. Bar 90%. The constraint costs retention: no.
+- Measurement bias: two-term +0.2039, control +0.2038. Within 0.05 in absolute value: yes.
+- False mastery: the worst arm, random_control, declared 1.0% of its masteries on skills the student did not know. Ceiling 5%. Within: yes. Set apart the diagnostic's placements, the worst arm's share among masteries declared from practice is 0.0%.
 
 ## Forgetting curve: power law
 
-| Arm | Items | Skills learned | True mastery per item | Retention day 7 | Retention day 30 | Bias | Declared | Declared, not known | Placed, not known |
-|---|---|---|---|---|---|---|---|---|---|
-| two_term | 120739 | 15064 | 0.02342 | 0.5523 | 0.5208 | +0.2168 | 1150 | 29 | 29 of 326 |
-| random_control | 120813 | 15029 | 0.02335 | 0.5533 | 0.5219 | +0.2165 | 1150 | 30 | 30 of 326 |
-| five_term | 119304 | 12211 | 0.01969 | 0.6355 | 0.6071 | +0.2031 | 2440 | 29 | 29 of 328 |
-| no_interleaving | 121127 | 14941 | 0.02304 | 0.5537 | 0.5222 | +0.2172 | 1242 | 29 | 29 of 327 |
-| no_propagation | 120764 | 15076 | 0.02343 | 0.5525 | 0.5210 | +0.2133 | 1142 | 29 | 29 of 327 |
-| decay_lambda_2 | 120739 | 15064 | 0.02342 | 0.5523 | 0.5208 | +0.2168 | 1150 | 29 | 29 of 326 |
-| compensatory_only | 120739 | 15064 | 0.02342 | 0.5523 | 0.5208 | +0.2168 | 1150 | 29 | 29 of 326 |
-| stage_high_0_6 | 121737 | 14929 | 0.02342 | 0.5566 | 0.5248 | +0.2153 | 1273 | 29 | 29 of 326 |
-| stage_high_0_7 | 121029 | 15036 | 0.02323 | 0.5532 | 0.5220 | +0.2167 | 1190 | 29 | 29 of 326 |
-| stage_high_0_8 | 120765 | 15061 | 0.02341 | 0.5526 | 0.5212 | +0.2166 | 1157 | 29 | 29 of 326 |
+| Arm | Items | Skills learned | True mastery per item | Delayed mastery per item | Retention day 7 | Retention day 30 | Bias | Declared | Declared, not known | Placed, not known |
+|---|---|---|---|---|---|---|---|---|---|---|
+| two_term | 126562 | 15066 | 0.02434 | 0.01163 | 0.5992 | 0.5486 | +0.1881 | 2938 | 29 | 29 of 334 |
+| random_control | 126713 | 15181 | 0.02463 | 0.01176 | 0.5983 | 0.5475 | +0.1878 | 2933 | 30 | 30 of 334 |
+| five_term | 125176 | 12330 | 0.02070 | 0.01110 | 0.6348 | 0.5862 | +0.1978 | 4876 | 29 | 29 of 335 |
+| no_interleaving | 126757 | 15227 | 0.02478 | 0.01206 | 0.5986 | 0.5479 | +0.1873 | 3028 | 29 | 29 of 333 |
+| no_propagation | 126547 | 15132 | 0.02468 | 0.01178 | 0.5991 | 0.5482 | +0.1836 | 2953 | 29 | 29 of 334 |
+| decay_lambda_2 | 126562 | 15078 | 0.02435 | 0.01164 | 0.5991 | 0.5484 | +0.1881 | 2938 | 29 | 29 of 334 |
+| compensatory_only | 126562 | 15066 | 0.02434 | 0.01163 | 0.5992 | 0.5486 | +0.1881 | 2938 | 29 | 29 of 334 |
+| stage_high_0_6 | 127438 | 15032 | 0.02446 | 0.01167 | 0.6005 | 0.5495 | +0.1881 | 3082 | 29 | 29 of 335 |
+| stage_high_0_7 | 126896 | 15129 | 0.02441 | 0.01166 | 0.5987 | 0.5480 | +0.1881 | 2994 | 29 | 29 of 334 |
+| stage_high_0_8 | 126673 | 15076 | 0.02437 | 0.01164 | 0.5992 | 0.5485 | +0.1881 | 2948 | 29 | 29 of 334 |
 
-- Two-term against the random-within-fringe control: two-term matched or beat the control on true mastery per item for 78.0% of 200 students. Bar 90%. Passes: no.
-- Five-term against two-term: five-term beat two-term on true mastery per item for 21.0% of 200 students. Bar 90%. Five-term turned on: no.
-- Decay term, arm 6 against arm 1: lambda 2.0 beat lambda 0 on true mastery per item for 0.0% and on retention at day 30 for 0.0% of 200 students. Bar 90% on either. lambda returns to 2.0: no.
-- Interleaving removed: mean retention at day 30 moved by +0.0014 against two-term, and was higher without interleaving for 37.5% of 200 students. Bar 90%. The constraint costs retention: no.
-- Measurement bias: two-term +0.2168, control +0.2165. Within 0.05 in absolute value: yes.
-- False mastery: the worst arm, random_control, declared 2.6% of its masteries on skills the student did not know. Ceiling 5%. Within: yes. Set apart the diagnostic's placements, the worst arm's share among masteries declared from practice is 0.0%.
+- Two-term against the random-within-fringe control: two-term matched or beat the control on true mastery per item for 68.5% of 200 students. Bar 90%. Passes: no.
+- Five-term against two-term: five-term beat two-term on true mastery per item for 19.0% of 200 students. Bar 90%. Five-term turned on: no.
+- Decay term, arm 6 against arm 1: lambda 2.0 beat lambda 0 on true mastery per item for 3.5% and on retention at day 30 for 0.0% of 200 students. Bar 90% on either. lambda returns to 2.0: no.
+- Interleaving removed: mean retention at day 30 moved by -0.0006 against two-term, and was higher without interleaving for 35.0% of 200 students. Bar 90%. The constraint costs retention: no.
+- Measurement bias: two-term +0.1881, control +0.1878. Within 0.05 in absolute value: yes.
+- False mastery: the worst arm, random_control, declared 1.0% of its masteries on skills the student did not know. Ceiling 5%. Within: yes. Set apart the diagnostic's placements, the worst arm's share among masteries declared from practice is 0.0%.
 
 ## Reading the table
 
-Arms that served every student exactly what two-term served, item for item: exponential, decay_lambda_2, compensatory_only; power law, decay_lambda_2, compensatory_only. Under two-term selection `LAMBDA` reaches only `sigmoid(m_k)` taken with a retrievability argument. The fringe, block 1's due coverage and the mastery rule read none of that, so the decay term has no path into what is served, and arm 6 cannot pass its gate by construction. Its failure is not evidence that decay is useless. The compensatory prediction is read only by the stage bands of skills with no credited observation.
+Arms that served every student exactly what two-term served, item for item: exponential, compensatory_only; power law, compensatory_only. Since stage 12, p_A is read at today's retrievability in the stage bands and the review floor, the two places two-term selection reads `sigmoid(m_k)`, so `LAMBDA` 2.0 can change the fading stage a candidate is served at and, once that changes an outcome, everything served after it. It never enters the choice between candidates directly, because due coverage reads retrievability through the due test and never through `m_k`. The compensatory prediction is read only by the stage bands of skills with no credited observation. The study of the controls, the noise floor and the longer horizon is `docs/operator/selection-study.md`.
 
 Retention at day 7 and day 30 averages over every known skill, including skills known from the start and never practised, which sit at 1.0. An arm that teaches fewer skills keeps a higher mean, so an arm can lead on retention while losing on true mastery per item.
 

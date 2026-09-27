@@ -20,16 +20,17 @@ STUDENTS = 200
 DAYS = 60
 
 ARM_HEADER = (
-   "| Arm | Items | Skills learned | True mastery per item | Retention day 7 | Retention day 30 | "
-   "Bias | Declared | Declared, not known | Placed, not known |\n"
-   "|---|---|---|---|---|---|---|---|---|---|"
+   "| Arm | Items | Skills learned | True mastery per item | Delayed mastery per item | Retention day 7 | "
+   "Retention day 30 | Bias | Declared | Declared, not known | Placed, not known |\n"
+   "|---|---|---|---|---|---|---|---|---|---|---|"
 )
 
 
 def arm_row(summary):
    return (
       f"| {summary.arm} | {summary.items} | {summary.learned} | "
-      f"{summary.mean_true_mastery_per_item:.5f} | {summary.mean_retention_day_7:.4f} | "
+      f"{summary.mean_true_mastery_per_item:.5f} | {summary.mean_delayed_mastery_per_item:.5f} | "
+      f"{summary.mean_retention_day_7:.4f} | "
       f"{summary.mean_retention_day_30:.4f} | {summary.mean_measurement_bias:+.4f} | "
       f"{summary.declared_mastered} | {summary.declared_not_known} | "
       f"{summary.placed_not_known} of {summary.placed_mastered} |"
@@ -67,7 +68,7 @@ def render(results):
       f"Written by `tools/p7_evals.py` from `app/sim/p7_evals.py` and `app/sim/learning.py`, seed base {p7_evals.SEED_BASE}, {STUDENTS} synthetic students, {DAYS} daily sessions after a diagnostic, every arm on the same students and seeds. Every number is a simulation's measurement on synthetic students whose world model is invented. None is a human's measurement and none is a real student's. A simulation can falsify a policy choice and cannot validate one.",
       "",
       "The world learns. Each student starts from the P2 knowledge state, closed under hard prerequisites, and carries a learning rate per skill drawn uniformly from "
-      f"{learning.LEARNING_RATE_LOW} to {learning.LEARNING_RATE_HIGH}. An attempt can teach a loaded skill whose hard parents are all known, with that rate scaled by the fading stage the item was served at (example 1.0, completion 0.75, unsupported 0.5). True mastery per item is the sum, over skills learned during the run, of the student's chance of retrieving each skill the day after the run, divided by items served. Retention at day 7 and day 30 is the mean retrieval chance over every known skill that many days after the run with no practice. Bias is 10's measurement bias, the mean of sigmoid(m_k) minus the retrieval chance over observed skills. The learning band and the stage multipliers are [inferred]; no source gives them.",
+      f"{learning.LEARNING_RATE_LOW} to {learning.LEARNING_RATE_HIGH}. An attempt can teach a loaded skill whose hard parents are all known, with that rate scaled by the fading stage the item was served at (example 1.0, completion 0.75, unsupported 0.5). True mastery per item is the sum, over skills learned during the run, of the student's chance of retrieving each skill the day after the run, divided by items served; delayed mastery per item is the same sum 30 days after the run. The world is `learning.WORLD`: keyed draws, consolidated prior knowledge and daily half-life growth (`docs/operator/selection-study.md`). Retention at day 7 and day 30 is the mean retrieval chance over every known skill that many days after the run with no practice. Bias is 10's measurement bias, the mean of sigmoid(m_k) minus the retrieval chance over observed skills. The learning band and the stage multipliers are [inferred]; no source gives them.",
       "",
    ]
 
@@ -92,7 +93,7 @@ def render(results):
       "",
       "Arms that served every student exactly what two-term served, item for item: "
       + "; ".join(f"{curve.replace('_', ' ')}, {', '.join(names) if names else 'none'}" for curve, names in identical.items())
-      + ". Under two-term selection `LAMBDA` reaches only `sigmoid(m_k)` taken with a retrievability argument. The fringe, block 1's due coverage and the mastery rule read none of that, so the decay term has no path into what is served, and arm 6 cannot pass its gate by construction. Its failure is not evidence that decay is useless. The compensatory prediction is read only by the stage bands of skills with no credited observation.",
+      + ". Since stage 12, p_A is read at today's retrievability in the stage bands and the review floor, the two places two-term selection reads `sigmoid(m_k)`, so `LAMBDA` 2.0 can change the fading stage a candidate is served at and, once that changes an outcome, everything served after it. It never enters the choice between candidates directly, because due coverage reads retrievability through the due test and never through `m_k`. The compensatory prediction is read only by the stage bands of skills with no credited observation. The study of the controls, the noise floor and the longer horizon is `docs/operator/selection-study.md`.",
       "",
       "Retention at day 7 and day 30 averages over every known skill, including skills known from the start and never practised, which sit at 1.0. An arm that teaches fewer skills keeps a higher mean, so an arm can lead on retention while losing on true mastery per item.",
       "",

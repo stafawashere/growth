@@ -401,3 +401,16 @@ describe("SettingsScreen, an action that did not happen", () => {
       expect((screen.getByLabelText(/cap \$/) as HTMLInputElement).value).toBe("4");
    });
 });
+describe("SettingsScreen, the operator's machinery", () => {
+   it("keeps providers and budgets closed, after the student's own sections", () => {
+      render(<SettingsScreen {...baseProps()} />);
+
+      const disclosure = screen.getByTestId("operator-providers-budgets") as HTMLDetailsElement;
+      const headings = screen.getAllByRole("heading", { level: 2 }).map((heading) => heading.textContent);
+
+      expect(disclosure.open).toBe(false);
+      expect(within(disclosure).getByRole("heading", { name: "Providers" })).toBeTruthy();
+      expect(within(disclosure).getByRole("heading", { name: "Budgets" })).toBeTruthy();
+      expect(headings.indexOf("Providers")).toBeGreaterThan(headings.indexOf("Purge"));
+   });
+});

@@ -2,9 +2,11 @@
 (11 P7 test_metrics_view_renders and test_checkpoint_isolated)."""
 import json
 from datetime import timedelta
+from types import SimpleNamespace
 
 from sqlalchemy.orm import Session as OrmSession
 
+from app.api.routes.evaluation import representation_names
 from app.checkpoint import forms
 from app.checkpoint import service as checkpoint_service
 from app.db import models
@@ -298,3 +300,10 @@ def test_a_probe_item_with_no_items_row_is_refused_not_a_server_error(world):
 
    assert served.status_code == 409
    assert "no items row" in served.json()["detail"]
+
+
+def test_the_representation_matrix_names_come_from_the_snapshot_the_server_loaded():
+   loaded = SimpleNamespace(representations={"BC-REP-01": {"id": "BC-REP-01", "name": "Symbolic (analytical) expression"}})
+   settings = SimpleNamespace(snapshot=None, session_context=SimpleNamespace(snapshot=loaded))
+
+   assert representation_names(settings) == {"BC-REP-01": "Symbolic (analytical) expression"}

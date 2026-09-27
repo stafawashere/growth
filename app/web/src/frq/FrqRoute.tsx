@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { ApiError, openUnitCheck, readFrqUnits } from "../api/client";
 import type { FrqQuestion, FrqUnit, UnitCheckPayload } from "../api/types";
 import { CaptureScreen } from "./CaptureScreen";
+import { Loading } from "../status/LoadState";
 
 /* The free-response part of a unit check, reached from home (08: home offers progress, review and
    the assessment modes, and none of them is the landing screen). The student picks a unit, the
@@ -88,7 +89,7 @@ export function FrqRoute({ pollMilliseconds }: FrqRouteProps) {
    }
 
    if (units.kind === "waiting") {
-      return <section aria-busy="true" data-testid="frq-waiting" />;
+      return <Loading testId="frq-waiting" />;
    }
 
    if (units.kind === "failed") {

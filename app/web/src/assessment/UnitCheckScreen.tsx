@@ -19,6 +19,7 @@ import { MathText } from "../math/MathText";
 import { MathValue } from "../math/MathValue";
 import { ConfidencePrompt } from "../session/ConfidencePrompt";
 import { refusalText } from "./format";
+import { Loading } from "../status/LoadState";
 
 /* 05 "Unit check": untimed, one question at a time with a confidence rating, and no correctness
    anywhere until the whole check is submitted, so one question's feedback cannot answer the
@@ -182,7 +183,7 @@ export function UnitCheckScreen({ sessionId, initial, unitTitle }: UnitCheckScre
    }
 
    if (session === null) {
-      return problem === null ? <section aria-busy="true" data-testid="unit-check-waiting" /> : <p role="alert">{problem}</p>;
+      return problem === null ? <Loading testId="unit-check-waiting" /> : <p role="alert">{problem}</p>;
    }
 
    const questions = session.parts[0]?.questions ?? [];

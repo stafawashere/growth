@@ -18,6 +18,10 @@ import { MathText } from "../math/MathText";
 import { clockText, FIVE_MINUTE_ANNOUNCEMENT, partHeading } from "./format";
 import { GraphingPanel } from "./graphing/GraphingPanel";
 
+const PART_OPTION_KEYS = ["a", "b", "c", "d", "e"];
+
+export const PART_KEY_HINT = "A, B, C and D choose. N goes to the next question and P to the previous one.";
+
 /* One open timed part, laid out as 08's two mock wireframes. Questions carry their exam number,
    which runs on across a section's parts, and are counted against the section's total, so the
    first question of Section I Part B reads "Question 30 of 42". Every tool is drawn only when the
@@ -301,6 +305,7 @@ export function PartRunner({ part, radianNote, sectionCount, onSave, onSubmit, o
    const [zoom, setZoom] = useState(ZOOM_STEPS[0]);
    const [isConfirmingSubmit, setIsConfirmingSubmit] = useState(false);
    const [isMenuOpen, setIsMenuOpen] = useState(false);
+   const shortcut = useRef<(event: KeyboardEvent) => void>(() => undefined);
    const [highlightProblem, setHighlightProblem] = useState<string | null>(null);
    const [stemElement, setStemElement] = useState<HTMLElement | null>(null);
    const [answerUnavailable, setAnswerUnavailable] = useState(false);
@@ -312,6 +317,18 @@ export function PartRunner({ part, radianNote, sectionCount, onSave, onSubmit, o
    const current = question === undefined ? null : work[question.number];
 
    useStemHighlights(stemElement, current?.highlights ?? []);
+
+   useEffect(() => {
+      const listener = (event: KeyboardEvent) => shortcut.current(event);
+
+      document.addEventListener("keydown", listener);
+
+      return () => {
+         document.removeEventListener("keydown", listener);
+      };
+   }, []);
+
+   shortcut.current = () => undefined;
 
    if (question === undefined || current === null) {
       return (
@@ -371,6 +388,44 @@ export function PartRunner({ part, radianNote, sectionCount, onSave, onSubmit, o
 
       update(question.number, { answer });
       onSave(question.number, { answer });
+   }
+
+   /* A to D choose, N and P move. A key typed into the notes or the math field is the student's
+      text, and a key on a focused button is that button's own activation, so neither is read. */
+   shortcut.current = onShortcut;
+
+   function onShortcut(event: KeyboardEvent) {
+      const target = event.target as HTMLElement;
+      const hasModifier = event.altKey || event.ctrlKey || event.metaKey;
+      const isTyping = target.matches("textarea, select, math-field, input:not([type='radio']):not([type='checkbox'])");
+      const isActivating = target.matches("button, a[href], summary");
+      const isIgnored = hasModifier || event.defaultPrevented || isTyping || isActivating;
+
+      if (isIgnored) {
+         return;
+      }
+
+      const key = event.key.toLowerCase();
+      const options = offersOptions ? (item as AssessmentItem).options ?? [] : [];
+      const optionIndex = PART_OPTION_KEYS.indexOf(key);
+      const picksOption = optionIndex >= 0 && optionIndex < options.length;
+      const movesOn = key === "n" && !isLast;
+      const movesBack = key === "p" && !isFirst;
+
+      if (picksOption) {
+         event.preventDefault();
+         chooseOption(options[optionIndex].id);
+      }
+
+      if (movesOn) {
+         event.preventDefault();
+         goTo(index + 1);
+      }
+
+      if (movesBack) {
+         event.preventDefault();
+         goTo(index - 1);
+      }
    }
 
    function typeShortAnswer(mathjson: unknown) {
@@ -603,6 +658,8 @@ export function PartRunner({ part, radianNote, sectionCount, onSave, onSubmit, o
                   Next
                </button>
             </div>
+
+            <p className="caption key-hint">{PART_KEY_HINT}</p>
 
             <button type="button" className="text-button" onClick={() => setIsConfirmingSubmit(true)}>
                Submit part

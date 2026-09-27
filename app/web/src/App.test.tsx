@@ -26,6 +26,7 @@ import type {
 } from "./api/types";
 import { App, DESTINATIONS, UNSUPPLIED_INPUTS, type Destination } from "./App";
 import { daysToExam, formatPlanDate } from "./home/dates";
+import { LOAD_FAILED_TEXT, RETRY_LABEL } from "./status/LoadState";
 
 vi.mock("./api/client");
 
@@ -1210,5 +1211,20 @@ describe("the P7 evaluation screens in the shell", () => {
       await screen.findByTestId("experiment-switch");
 
       expect(untracedFigures(payloads, derived), "settings").toEqual([]);
+   });
+});
+
+describe("home when its requests fail", () => {
+   it("says home did not load and loads it again on request", async () => {
+      mockServer(readyProgress);
+      mocked.readProgress.mockRejectedValueOnce(new Error("the connection dropped"));
+
+      render(<App />);
+
+      expect(await screen.findByText(LOAD_FAILED_TEXT)).toBeTruthy();
+
+      fireEvent.click(screen.getByRole("button", { name: RETRY_LABEL }));
+
+      expect(await screen.findByRole("button", { name: "Start today's set" })).toBeTruthy();
    });
 });

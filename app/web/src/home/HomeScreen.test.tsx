@@ -308,3 +308,18 @@ describe("HomeScreen, long gap", () => {
       expect(props.onStartSession).not.toHaveBeenCalled();
    });
 });
+
+describe("HomeScreen, a queue line with nothing in it", () => {
+   it("leaves out a line whose count is zero", () => {
+      const lines: QueueLine[] = [
+         { id: "due", label: "skills due for review", count: 0 },
+         { id: "frontier", label: "skills at your current frontier", count: 8 }
+      ];
+
+      render(<HomeScreen {...baseProps()} queueLines={lines} />);
+
+      const rendered = screen.getAllByTestId("queue-line").map((line) => line.textContent);
+
+      expect(rendered).toEqual(["8 skills at your current frontier"]);
+   });
+});

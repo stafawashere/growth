@@ -26,6 +26,7 @@ import { HomeScreen, type HomeScreenStatus } from "../home/HomeScreen";
 import { DiagnosticIntro, DiagnosticItem, DiagnosticResultView } from "../onboarding/OnboardingScreen";
 import { CalibrationCurve } from "../progress/CalibrationCurve";
 import { MasteryMap } from "../progress/MasteryMap";
+import { RepresentationMatrix } from "../progress/RepresentationMatrix";
 import { ReviewScreen } from "../review/ReviewScreen";
 import { SessionScreen } from "../session/SessionScreen";
 import { OperatorSettings } from "../settings/ExperimentsSection";
@@ -492,6 +493,28 @@ export const SCREENS: Screen[] = [
             <section className="card">
                <MasteryMap map={MASTERY} />
                <CalibrationCurve calibration={CALIBRATION} />
+            </section>
+         )
+   },
+   {
+      name: "progress representation matrix, one translation attempted",
+      mount: async () =>
+         inPage(
+            <section className="card">
+               <RepresentationMatrix
+                  matrix={{
+                     representations: [
+                        { id: "BC-REP-01", name: "Symbolic (analytical) expression" },
+                        { id: "BC-REP-02", name: "Graph" }
+                     ],
+                     cells: [
+                        { source: "BC-REP-01", target: "BC-REP-02", attempts: 3, correct: 2 },
+                        { source: "BC-REP-02", target: "BC-REP-01", attempts: 0, correct: 0 }
+                     ],
+                     translation_attempts: 3,
+                     practice_attempts: 12
+                  }}
+               />
             </section>
          )
    },

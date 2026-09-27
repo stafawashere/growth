@@ -27,6 +27,7 @@ function cellText(cell: RepresentationCell) {
 export function RepresentationMatrix({ matrix }: RepresentationMatrixProps) {
    const cells = new Map(matrix.cells.map((cell) => [cellKey(cell.source, cell.target), cell]));
    const hasPairs = matrix.representations.length > 0;
+   const hasTranslations = matrix.translation_attempts > 0;
 
    return (
       <section aria-labelledby="representation-heading" data-testid="representation-matrix">
@@ -41,38 +42,42 @@ export function RepresentationMatrix({ matrix }: RepresentationMatrixProps) {
          </p>
 
          {hasPairs ? (
-            <table>
-               <caption className="caption">
-                  Correct of attempted, from the row&apos;s representation to the column&apos;s. A blank cell is a
-                  pair the taxonomy does not list as a translation.
-               </caption>
-               <thead>
-                  <tr>
-                     <th scope="col">From</th>
-                     {matrix.representations.map((target) => (
-                        <th key={target.id} scope="col">
-                           {target.name}
-                        </th>
-                     ))}
-                  </tr>
-               </thead>
-               <tbody>
-                  {matrix.representations.map((source) => (
-                     <tr key={source.id}>
-                        <th scope="row">{source.name}</th>
-                        {matrix.representations.map((target) => {
-                           const cell = cells.get(cellKey(source.id, target.id));
+            <details className="matrix-details" open={hasTranslations} data-testid="representation-table">
+               <summary>{hasTranslations ? "The table, source by target" : "No translations yet. The table, source by target"}</summary>
 
-                           return (
-                              <td key={target.id} data-testid="representation-cell">
-                                 {cell === undefined ? "" : cellText(cell)}
-                              </td>
-                           );
-                        })}
+               <table>
+                  <caption className="caption">
+                     Correct of attempted, from the row&apos;s representation to the column&apos;s. A blank cell is a
+                     pair the taxonomy does not list as a translation.
+                  </caption>
+                  <thead>
+                     <tr>
+                        <th scope="col">From</th>
+                        {matrix.representations.map((target) => (
+                           <th key={target.id} scope="col">
+                              {target.name}
+                           </th>
+                        ))}
                      </tr>
-                  ))}
-               </tbody>
-            </table>
+                  </thead>
+                  <tbody>
+                     {matrix.representations.map((source) => (
+                        <tr key={source.id}>
+                           <th scope="row">{source.name}</th>
+                           {matrix.representations.map((target) => {
+                              const cell = cells.get(cellKey(source.id, target.id));
+
+                              return (
+                                 <td key={target.id} data-testid="representation-cell">
+                                    {cell === undefined ? "" : cellText(cell)}
+                                 </td>
+                              );
+                           })}
+                        </tr>
+                     ))}
+                  </tbody>
+               </table>
+            </details>
          ) : (
             <p className="muted">The taxonomy lists no translation between representations yet.</p>
          )}

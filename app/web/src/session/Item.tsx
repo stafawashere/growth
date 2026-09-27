@@ -39,6 +39,26 @@ export function collectsConfidence(_stage: ServedItem["stage"]) {
    return true;
 }
 
+/* A statement-keyed item has nothing to type, so the server marks it and it is a choice at every
+   stage (app/engine/select.py requires_choice); any other multiple-choice item is a choice only
+   once it is unsupported. The screen that shows the options and the commit that sends the answer
+   both read this, so they cannot disagree. */
+export function servesChoice(item: ServedItem) {
+   const isAlwaysAChoice = item.requires_choice === true;
+   const isMultipleChoice = item.format === "mcq";
+   const isUnsupported = item.stage === "unsupported";
+
+   return isMultipleChoice && (isUnsupported || isAlwaysAChoice);
+}
+
+/* The keys SessionScreen answers an item with, said beside the button so they can be found. */
+export function keyHint(offersOptions: boolean) {
+   const confidenceKeys = "1, 2 and 3 rate your confidence.";
+   const optionKeys = offersOptions ? " A, B, C and D pick an option." : "";
+
+   return `Enter checks your answer. ${confidenceKeys}${optionKeys}`;
+}
+
 export interface ItemProps {
    item: ServedItem;
    onAnswerChange: (mathjson: unknown) => void;
@@ -105,10 +125,7 @@ export function Item(props: ItemProps) {
    const hasFigure = item.figure_spec !== null && item.figure_spec !== undefined;
    const allowsCalculator = item.calculator_status === "calculator";
 
-   /* A statement-keyed item has nothing to type, so the server marks it and it is a choice at
-      every stage (app/engine/select.py requires_choice). */
-   const isAlwaysAChoice = item.requires_choice === true;
-   const servesMcq = item.format === "mcq" && (item.stage === "unsupported" || isAlwaysAChoice);
+   const servesMcq = servesChoice(item);
    const collectsAnswer = true;
    const commitLabel = COMMIT_LABEL;
 
@@ -188,7 +205,11 @@ export function Item(props: ItemProps) {
          ) : null}
 
          {asksToCommit ? (
-            <div className="submit-row submit-row-end">
+            <div className="submit-row">
+               <p className="caption key-hint" data-testid="key-hint">
+                  {keyHint(servesMcq)}
+               </p>
+
                <button type="button" className="motion-instant-submit-answer button-primary" onClick={onCommit}>
                   {commitLabel}
                </button>

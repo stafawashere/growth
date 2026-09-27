@@ -43,6 +43,8 @@ const TOKEN_PROBE = "--growth-surface-page";
    app/api/routes/purge.py's PURGE_CONFIRMATION. 08 gives no phrase of its own, so this is the
    operator's decision rather than a plan reading, and it is why this is a constant here rather
    than a value the client reads off a route. */
+export const OPERATOR_EXPERIMENTS_SUMMARY = "For the operator: experiments and evidence of learning";
+
 export const PURGE_CONFIRMATION_PHRASE = "delete my data";
 
 const settingsInputs = [] as const satisfies ReadonlyArray<{
@@ -282,7 +284,11 @@ export function App() {
             {destination === "settings" && settingsPage === "settings" ? (
                <>
                   <SettingsRoute purgeConfirmationPhrase={PURGE_CONFIRMATION_PHRASE} saveFile={saveFile} />
-                  <OperatorSettings onOpenEvidence={() => setSettingsPage("evidence")} />
+                  <details className="operator-details" data-testid="operator-experiments-evidence">
+                     <summary>{OPERATOR_EXPERIMENTS_SUMMARY}</summary>
+
+                     <OperatorSettings onOpenEvidence={() => setSettingsPage("evidence")} />
+                  </details>
                   <AddPasskeyControl />
                </>
             ) : null}

@@ -4,6 +4,7 @@ import { readAssessmentShape, readCheckUnits, readUnfinished, type CaptureMode }
 import type { AssessmentShape, CheckUnitsPayload, PartKey, UnfinishedAssessment, UnfinishedPayload } from "../api/types";
 import { formatPlanDate } from "../home/dates";
 import { useLoad } from "../progress/load";
+import { Loading } from "../status/LoadState";
 
 /* 08 "Information architecture", mock: setup chooses the form, the parts and paper or typed
    capture. Every count and every minute is read from /assessments/shape, which reads
@@ -172,7 +173,7 @@ export function SetupScreen({ problem, onStartMock, onStartDrill, onStartUnitChe
 
          {unfinished.kind === "loaded" ? <ResumeSection unfinished={unfinished.value} unitTitles={unitTitles} onResume={onResume} /> : null}
 
-         {shape.kind === "waiting" ? <div aria-busy="true" data-testid="shape-waiting" /> : null}
+         {shape.kind === "waiting" ? <Loading testId="shape-waiting" /> : null}
 
          {shape.kind === "failed" ? <p className="muted">The exam shape could not be loaded.</p> : null}
 

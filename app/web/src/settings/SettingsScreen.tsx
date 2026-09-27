@@ -375,14 +375,14 @@ function PurgeSection(props: {
    );
 }
 
+/* Which model serves each role and what it may spend are the operator's machinery, not study
+   settings, so they sit closed beneath the student's own sections. */
+export const OPERATOR_PROVIDERS_SUMMARY = "For the operator: providers and budgets";
+
 export function SettingsScreen(props: SettingsScreenProps) {
    return (
       <section className="card settings">
          <h1 className="screen-title">Settings</h1>
-
-         <ProvidersSection providers={props.providers} />
-
-         <BudgetsSection budgets={props.budgets} onCapChange={props.onCapChange} />
 
          <QueueSettingsSection queueSettings={props.queueSettings} onSettingsChange={props.onSettingsChange} />
 
@@ -397,6 +397,14 @@ export function SettingsScreen(props: SettingsScreenProps) {
             onReauthenticate={props.onReauthenticate}
             onPurge={props.onPurge}
          />
+
+         <details className="operator-details" data-testid="operator-providers-budgets">
+            <summary>{OPERATOR_PROVIDERS_SUMMARY}</summary>
+
+            <ProvidersSection providers={props.providers} />
+
+            <BudgetsSection budgets={props.budgets} onCapChange={props.onCapChange} />
+         </details>
       </section>
    );
 }

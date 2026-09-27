@@ -38,7 +38,7 @@ function ReadyQueue(props: HomeScreenProps) {
          <p className="home-lead">About {queueMinutes} minutes of work is in today&apos;s queue.</p>
 
          <ul className="queue-counts">
-            {queueLines.map((line) => (
+            {queueLines.filter((line) => line.count > 0).map((line) => (
                <li key={line.id} data-testid="queue-line">
                   <span className="queue-count">{line.count}</span> {line.label}
                </li>

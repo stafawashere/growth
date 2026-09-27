@@ -17,6 +17,7 @@ import { useLoad } from "./load";
 import { MasteryMap } from "./MasteryMap";
 import { MockHistory } from "./MockHistory";
 import { RepresentationMatrix } from "./RepresentationMatrix";
+import { Loading } from "../status/LoadState";
 
 /* Progress takes no input from the shell: it is reached from home and reads its own record. Each
    section loads separately, so one failing leaves the others drawn. The checkpoint and the concept
@@ -37,7 +38,7 @@ function SectionFailed(props: { testId: string; what: string }) {
 }
 
 function Waiting(props: { testId: string }) {
-   return <div aria-busy="true" data-testid={props.testId} />;
+   return <Loading testId={props.testId} />;
 }
 
 function ProgressOverview(props: {

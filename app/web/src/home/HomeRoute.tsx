@@ -4,6 +4,7 @@ import type { ProgressPayload } from "../api/types";
 import type { OnboardingReason } from "../onboarding/OnboardingScreen";
 import { daysToExam, formatPlanDate } from "./dates";
 import { HomeScreen, type HomeScreenStatus, type QueueLine } from "./HomeScreen";
+import { LoadFailed, Loading } from "../status/LoadState";
 
 export interface HomeRouteProps {
    today: () => Date;
@@ -73,6 +74,7 @@ export function HomeRoute({
    onStartOnboarding
 }: HomeRouteProps) {
    const [load, setLoad] = useState<HomeLoad>({ kind: "waiting" });
+   const [loadAttempt, setLoadAttempt] = useState(0);
 
    useEffect(() => {
       let isCurrent = true;
@@ -93,7 +95,12 @@ export function HomeRoute({
       return () => {
          isCurrent = false;
       };
-   }, []);
+   }, [loadAttempt]);
+
+   function retry() {
+      setLoad({ kind: "waiting" });
+      setLoadAttempt((attempt) => attempt + 1);
+   }
 
    const redirects = load.kind === "loaded" && sendsToOnboarding(load.progress);
 
@@ -111,11 +118,11 @@ export function HomeRoute({
    }, [redirects, load, onStartOnboarding]);
 
    if (load.kind === "waiting") {
-      return <section aria-busy="true" data-testid="home-waiting" />;
+      return <Loading testId="home-waiting" />;
    }
 
    if (load.kind === "failed") {
-      return <section data-testid="home-failed" />;
+      return <LoadFailed testId="home-failed" onRetry={retry} />;
    }
 
    if (redirects) {

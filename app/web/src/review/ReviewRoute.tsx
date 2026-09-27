@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { ApiError, askForReread, readReview, submitErrorNote } from "../api/client";
 import type { ErrorNoteEntry, ReviewPayload } from "../api/types";
 import { ReviewScreen } from "./ReviewScreen";
+import { Loading } from "../status/LoadState";
 
 type ReviewLoad = { kind: "waiting" } | { kind: "failed" } | { kind: "loaded"; review: ReviewPayload };
 
@@ -41,7 +42,7 @@ export function ReviewRoute(_props: ReviewRouteProps) {
    }, []);
 
    if (load.kind === "waiting") {
-      return <section aria-busy="true" data-testid="review-waiting" />;
+      return <Loading testId="review-waiting" />;
    }
 
    if (load.kind === "failed") {

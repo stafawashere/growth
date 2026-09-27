@@ -16,6 +16,7 @@ import {
    type DiagnosticItemState,
    type OnboardingReason
 } from "./OnboardingScreen";
+import { Loading } from "../status/LoadState";
 
 /* resumeSessionId names the unfinished diagnostic GET /progress reported, and null opens a new
    one once the student starts from the intro. reason picks the intro's copy: a long gap runs a
@@ -121,7 +122,7 @@ export function OnboardingRoute({ reason, resumeSessionId, onFinished }: Onboard
    }
 
    if (stage.kind === "waiting") {
-      return <section aria-busy="true" data-testid="onboarding-waiting" />;
+      return <Loading testId="onboarding-waiting" />;
    }
 
    if (stage.kind === "failed") {

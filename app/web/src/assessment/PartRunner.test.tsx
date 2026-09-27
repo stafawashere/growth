@@ -258,3 +258,30 @@ describe("highlights and zoom", () => {
       expect(area.style.fontSize).toBe("150%");
    });
 });
+
+describe("PartRunner keys", () => {
+   it("chooses with a letter and moves with N and P, but leaves the notes alone", async () => {
+      const props = renderRunner(noCalculatorPart());
+      const stem = screen.getByTestId("question-stem");
+
+      fireEvent.keyDown(stem, { key: "c" });
+
+      expect(props.onSave).toHaveBeenCalledWith(1, { answer: { option_id: "C" } });
+
+      fireEvent.keyDown(stem, { key: "n" });
+
+      expect(screen.getByTestId("question-position").textContent).toBe("Question 2 of 42");
+
+      fireEvent.keyDown(screen.getByTestId("question-stem"), { key: "p" });
+
+      expect(screen.getByTestId("question-position").textContent).toBe("Question 1 of 42");
+
+      const notes = screen.getByLabelText("Notes on this question");
+
+      fireEvent.keyDown(notes, { key: "n" });
+      fireEvent.keyDown(notes, { key: "a" });
+
+      expect(screen.getByTestId("question-position").textContent).toBe("Question 1 of 42");
+      expect(props.onSave).not.toHaveBeenCalledWith(1, { answer: { option_id: "A" } });
+   });
+});

@@ -3,6 +3,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { answerProbeItem, ApiError, readNextProbeItem, readProbe, startProbe, type ProbeAnswer } from "../api/client";
 import type { ProbeAdministration, ProbeServedItem } from "../api/types";
 import { ProbeFinished, ProbeIntro, ProbeItemView } from "./ProbeScreen";
+import { Loading } from "../status/LoadState";
 
 /* openAdministrationId names the probe GET /probe reported open, and null starts a new one once
    the student chooses to from the intro. */
@@ -138,7 +139,7 @@ export function ProbeRoute({ openAdministrationId, onLeave }: ProbeRouteProps) {
    }
 
    if (stage.kind === "waiting") {
-      return <section aria-busy="true" data-testid="probe-waiting" />;
+      return <Loading testId="probe-waiting" />;
    }
 
    if (stage.kind === "failed") {

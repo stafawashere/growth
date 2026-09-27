@@ -1918,6 +1918,17 @@ items) and items 3 and 6 (Slices 3 and 4). Every gate 11 names for P2 now exists
   simulated auth or single score reached the app. Checks: pytest `1358 passed in 1251.16s (0:20:51)`; vitest
   `Tests  656 passed (656)` in 52 files; `tsc --noEmit` exit 0; `qa/12_report.py` exit 0.
 
+- 2026-09-26, stage 10 (ux): loading and failure states with a retry on every screen that had
+  none; the set's remaining items and minutes, a confirmed stop, and an end-of-set summary; what
+  the student wrote at the head of feedback; keys for the session and timed parts; operator
+  settings behind two closed disclosures; named and collapsible representation table; no zero
+  lines on home; and the `requires_choice` commit fixed. Every new test was run red against a
+  deliberate break and green once restored. The real app was driven in headless Brave with real
+  key events: "2" from the page body rated unsure, "2x" typed into the math field left the rating
+  alone, Enter from the field checked the answer, and stop, the end screen, settings and progress
+  were read back. Checks: pytest `1359 passed in 1488.08s (0:24:48)`; vitest
+  `Tests  669 passed (669)` in 53 files; `tsc --noEmit` exit 0; `qa/12_report.py` exit 0.
+
 ## In progress [inferred]
 
 Stage 1, items for Units 4 to 10, is complete in the worktree `../growth-content` on branch
@@ -1949,6 +1960,9 @@ weeks of real attempts for P7. The next stage is 08, the P7 rerun, once those we
 
 Stage 9, the UI redesign, 2026-09-26: complete and merged (Done, "stage 9 (ui)"). Nothing
 remains in progress for it. The next stage is 08, the P7 rerun, once 8 weeks of real attempts exist.
+
+Stage 10, the experience pass, 2026-09-26: complete and merged (Done, "stage 10 (ux)"). The
+candidates it did not build are listed in its decisions paragraph.
 
 ## Live API spend log [verified]
 
@@ -2946,6 +2960,14 @@ From the eleventh session, 2026-09-21, found and not fixed.
   but a part drill draws its questions afresh, so a pair shows the same screen with different
   questions.
 
+- 2026-09-26, stage 10, closed. A statement-keyed item (`requires_choice`) served at example or
+  completion showed its options, but the commit sent `{mathjson: null}` because it treated only the
+  unsupported stage as a choice, so the chosen option was never graded. `servesChoice` in
+  `app/web/src/session/Item.tsx` is now read by both the screen and the commit; the new test in
+  `SessionScreen.test.tsx` failed with `"mathjson": null` before the fix.
+- 2026-09-26, stage 10, closed. The representation matrix labelled every row and column with its
+  bare BC-REP id in the running app, because `settings.snapshot` is empty until first use.
+
 ## Plan corrections applied [verified]
 
 Session 2026-09-23 (fourteenth). No plan file was edited. Readings applied in code:
@@ -3586,6 +3608,42 @@ decision). Every judgement below was made by claude-opus-5-5, not by a person.
   was removed.
 - The prototype's skill count ("68 skills") beside each unit of the mastery map was tried and dropped:
   `MasteryMap.test.tsx` "prints no count and no percentage anywhere on the map" went red.
+
+Stage 10, the experience pass the operator asked for on 2026-09-26 ("do best course of action"
+on the audit of stage 9), decided on that delegation by claude-opus-5-5, not by a person.
+
+- Loading and failure copy. 08 gives none, and earlier stages invented none, which left blank
+  screens and 18 silent catches. The operator's request for the best experience is read as the
+  instruction to write it: "Loading", "This did not load. The app may have stopped or lost its
+  connection.", "Try again", and for a refused action "That did not go through. Nothing you wrote
+  is lost, so you can try again." None carries a digit, so the no-digit tests on home and settings
+  still hold. The loading line carries no live role, because the token notice is the page's one
+  status region and `App.test.tsx` reads it by role.
+- A set shows what is left: the unanswered slots of GET /sessions/{id} and the sum of their
+  archetype forecasts, "8 items left in this set, about 24 minutes". The count includes the item on
+  screen and refreshes when the next item is served.
+- "I want to stop here" (08's own copy) closes the set through the existing close route after a
+  second, confirming step, so one stray click cannot end a set. Leaving through Home still keeps
+  the set resumable.
+- The end of a set says how many items this sitting worked through and how many corrected items
+  come back in Review, and gives no score and no count of correct answers, as 08 requires.
+- Feedback opens with what the student wrote or chose. The "the rule says" half of 08's feedback
+  wireframe is not built, because the feedback payload carries no worked answer at completion.
+- Keys: Enter checks and moves on, 1, 2 and 3 rate confidence, A to D choose; in timed parts A to D
+  choose and N and P move. They are read on the document, since focus sits on the body after a
+  load, and never from a text field, and Enter is also read from the math field, where it has no
+  other use. The hint beside the button is hidden under 600 px, where there is no keyboard.
+- Providers and budgets, and experiments and the evidence of learning, sit in two closed
+  disclosures under the student's own settings.
+- The representation table's labels were bare ids because the route read `settings.snapshot`,
+  which is filled only on first use; it now reads the snapshot the server loaded at start. The
+  table stays closed until a translation has been attempted.
+- Home drops a queue line whose count is zero.
+- Not built, with the reason: splitting the 1.76 MB bundle, because on localhost first contentful
+  paint measured 60 to 84 ms and the script fetch 21 ms, so a split would save tens of ms at the
+  cost of async loading on every screen; the graphing panel beside the question, compact question
+  menu tiles, a diagnostic unit skip (needs a backend ruling), the LaTeX inspector, a theme switch,
+  shared page components, a media-aware contrast cascade and layout tokens. Each stays a candidate.
 
 ## Decisions taken on the operator's instruction, 2026-09-24 [inferred]
 

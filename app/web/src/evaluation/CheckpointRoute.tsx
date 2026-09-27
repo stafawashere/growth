@@ -9,6 +9,7 @@ import {
 } from "../api/client";
 import type { CheckpointView } from "../api/types";
 import { CheckpointIntro, CheckpointScreen } from "./CheckpointScreen";
+import { Loading } from "../status/LoadState";
 
 /* openCheckpointId names the checkpoint GET /checkpoints reported open, and null starts a new one
    once the student chooses to from the intro. */
@@ -113,7 +114,7 @@ export function CheckpointRoute({ openCheckpointId, onLeave }: CheckpointRoutePr
    }
 
    if (stage.kind === "waiting") {
-      return <section aria-busy="true" data-testid="checkpoint-waiting" />;
+      return <Loading testId="checkpoint-waiting" />;
    }
 
    if (stage.kind === "failed") {

@@ -14,7 +14,8 @@ import type {
 } from "../api/types";
 import * as client from "../api/client";
 import { MATHLIVE_LOAD_FAILURE_MESSAGE } from "../input/MathField";
-import { SessionScreen } from "./SessionScreen";
+import { LOAD_FAILED_TEXT, RETRY_LABEL } from "../status/LoadState";
+import { SessionScreen, SET_STOPPED, STOP_CONFIRM_LABEL, STOP_LABEL, YOU_WROTE_LABEL, correctedSentence, remainingSentence } from "./SessionScreen";
 import { ANSWER_UNAVAILABLE, COMMIT_LABEL } from "./Item";
 import { CORRECT_WORD, INCORRECT_WORD } from "./StepMarks";
 
@@ -871,5 +872,160 @@ describe("SessionScreen figure on feedback, 03's feedback policy", () => {
       expect(screen.queryByTestId("feedback-figure")).toBeNull();
 
       cleanup();
+   });
+});
+
+describe("SessionScreen, an item that is always a choice", () => {
+   it("sends the chosen option for a statement-keyed item served at completion", async () => {
+      const statementItem: ServedItem = {
+         ...servedItem("completion"),
+         format: "mcq",
+         requires_choice: true,
+         options: [
+            { id: "A", label: "The series converges" },
+            { id: "B", label: "The series diverges" }
+         ]
+      };
+
+      mocked.openSession.mockResolvedValue(session);
+      mocked.readNextItem.mockResolvedValue({ item: statementItem });
+      mocked.submitAttempt.mockResolvedValue(attempt("completion"));
+      mocked.readFeedback.mockResolvedValue(feedback("completion"));
+
+      render(<SessionScreen resumeSessionId={null} />);
+
+      fireEvent.click(await screen.findByRole("radio", { name: "The series diverges" }));
+      fireEvent.click(screen.getByRole("radio", { name: "unsure" }));
+      fireEvent.click(screen.getByRole("button", { name: COMMIT_LABEL }));
+
+      await waitFor(() => expect(mocked.submitAttempt).toHaveBeenCalled());
+
+      expect(mocked.submitAttempt.mock.calls[0][1].answer).toEqual({ option_id: "B" });
+   });
+});
+
+function choiceItem(): ServedItem {
+   return {
+      ...servedItem("unsupported"),
+      format: "mcq",
+      options: [
+         { id: "A", label: "The series converges" },
+         { id: "B", label: "The series diverges" }
+      ]
+   };
+}
+
+function serveOnce(item: ServedItem) {
+   mocked.openSession.mockResolvedValue(session);
+   mocked.readNextItem.mockResolvedValueOnce({ item }).mockResolvedValue({ item: null });
+   mocked.submitAttempt.mockResolvedValue({ ...attempt(item.stage), item_id: item.id });
+   mocked.readFeedback.mockResolvedValue(feedback(item.stage));
+   mocked.closeSession.mockResolvedValue({ id: session.id, ended_at: "2027-01-05T09:30:00Z" });
+}
+
+describe("SessionScreen, keys, position, stopping and the end of a set", () => {
+   it("answers a choice item from the keyboard: a letter picks, a digit rates, Enter checks", async () => {
+      serveOnce(choiceItem());
+      render(<SessionScreen resumeSessionId={null} />);
+
+      const stem = await screen.findByTestId("item-stem");
+
+      fireEvent.keyDown(stem, { key: "b" });
+      fireEvent.keyDown(stem, { key: "2" });
+
+      expect((screen.getByRole("radio", { name: "The series diverges" }) as HTMLInputElement).checked).toBe(true);
+      expect((screen.getByRole("radio", { name: "unsure" }) as HTMLInputElement).checked).toBe(true);
+
+      fireEvent.keyDown(stem, { key: "Enter" });
+
+      await waitFor(() => expect(mocked.submitAttempt).toHaveBeenCalledTimes(1));
+
+      expect(mocked.submitAttempt.mock.calls[0][1]).toMatchObject({ answer: { option_id: "B" }, confidence: "unsure" });
+   });
+
+   it("reads a key pressed while focus is on the page body, as it is after a page loads", async () => {
+      serveOnce(choiceItem());
+      render(<SessionScreen resumeSessionId={null} />);
+
+      await screen.findByTestId("item-stem");
+      fireEvent.keyDown(document.body, { key: "a" });
+
+      expect((screen.getByRole("radio", { name: "The series converges" }) as HTMLInputElement).checked).toBe(true);
+   });
+
+   it("leaves a key typed into a text field alone", async () => {
+      serveOnce(servedItem("example"));
+      render(<SessionScreen resumeSessionId={null} />);
+
+      const explanation = await screen.findByRole("textbox");
+
+      fireEvent.keyDown(explanation, { key: "2" });
+      fireEvent.keyDown(explanation, { key: "Enter" });
+
+      expect((screen.getByRole("radio", { name: "unsure" }) as HTMLInputElement).checked).toBe(false);
+      expect(mocked.submitAttempt).not.toHaveBeenCalled();
+   });
+
+   it("says how much of the set is left, from the session's remaining slots and forecasts", async () => {
+      serveOnce(servedItem("completion"));
+      mocked.readSession.mockResolvedValue({
+         ...session,
+         queue: { ...session.queue, forecasts: { "BC-ARCH-0301": 2.5, "BC-ARCH-0302": 4 } },
+         remaining: [
+            { ...servedItem("completion"), archetype_id: "BC-ARCH-0301" },
+            { ...servedItem("completion"), archetype_id: "BC-ARCH-0302" }
+         ] as unknown as SessionPayload["remaining"]
+      });
+
+      render(<SessionScreen resumeSessionId={null} />);
+
+      expect((await screen.findByTestId("session-remaining")).textContent).toBe(remainingSentence({ items: 2, minutes: 7 }));
+      expect(remainingSentence({ items: 2, minutes: 7 })).toBe("2 items left in this set, about 7 minutes");
+   });
+
+   it("stops only after a second, confirming step, and closes the set", async () => {
+      serveOnce(servedItem("completion"));
+      render(<SessionScreen resumeSessionId={null} />);
+
+      fireEvent.click(await screen.findByRole("button", { name: STOP_LABEL }));
+
+      expect(mocked.closeSession).not.toHaveBeenCalled();
+
+      fireEvent.click(screen.getByRole("button", { name: STOP_CONFIRM_LABEL }));
+
+      expect(await screen.findByRole("heading", { name: SET_STOPPED })).toBeTruthy();
+      expect(mocked.closeSession).toHaveBeenCalledWith(session.id);
+   });
+
+   it("ends the set by naming what comes back in Review, and shows what the student chose", async () => {
+      serveOnce(choiceItem());
+      render(<SessionScreen resumeSessionId={null} />);
+
+      fireEvent.click(await screen.findByRole("radio", { name: "The series diverges" }));
+      fireEvent.click(screen.getByRole("radio", { name: "unsure" }));
+      fireEvent.click(screen.getByRole("button", { name: COMMIT_LABEL }));
+
+      const wrote = await screen.findByTestId("you-wrote");
+
+      expect(wrote.textContent).toBe(`${YOU_WROTE_LABEL}The series diverges`);
+
+      fireEvent.change(screen.getByLabelText("In one line, what went wrong?"), { target: { value: "Misread the ratio test" } });
+      fireEvent.click(screen.getByRole("button", { name: "Next item" }));
+
+      expect(await screen.findByText(correctedSentence(1))).toBeTruthy();
+   });
+
+   it("says a session that did not open did not load, and opens it again on request", async () => {
+      serveOnce(servedItem("completion"));
+      mocked.openSession.mockRejectedValueOnce(new Error("the connection dropped"));
+
+      render(<SessionScreen resumeSessionId={null} />);
+
+      expect(await screen.findByText(LOAD_FAILED_TEXT)).toBeTruthy();
+
+      fireEvent.click(screen.getByRole("button", { name: RETRY_LABEL }));
+
+      expect(await screen.findByTestId("item")).toBeTruthy();
+      expect(mocked.openSession).toHaveBeenCalledTimes(2);
    });
 });

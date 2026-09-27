@@ -2,6 +2,7 @@ import { readMetrics } from "../api/client";
 import type { MetricsPayload } from "../api/types";
 import { useLoad } from "../progress/load";
 import { MetricsView } from "./MetricsView";
+import { Loading } from "../status/LoadState";
 
 export interface MetricsRouteProps {
    onLeave: () => void;
@@ -12,7 +13,7 @@ export function MetricsRoute({ onLeave }: MetricsRouteProps) {
 
    return (
       <>
-         {metrics.kind === "waiting" ? <section aria-busy="true" data-testid="metrics-waiting" /> : null}
+         {metrics.kind === "waiting" ? <Loading testId="metrics-waiting" /> : null}
 
          {metrics.kind === "failed" ? (
             <section className="card">

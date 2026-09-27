@@ -78,13 +78,24 @@ def read_representation_matrix(
 ):
    context = settings.session_context
    attempts = load_attempts(db, user.id, context.archetypes)
-   records = getattr(settings.snapshot, "representations", None) or {}
-   names = {
+   names = representation_names(settings)
+
+   return representation_matrix(attempts, context.archetypes, context.graph.conversion_pairs, names)
+
+
+def representation_names(settings):
+   """The BC-REP names the matrix labels its rows and columns with. The session context holds the
+   snapshot the server loaded at start; settings.snapshot is filled only on first use, so reading it
+   first left every label as its bare id."""
+   context_snapshot = getattr(settings.session_context, "snapshot", None)
+   has_context_snapshot = context_snapshot is not None
+   snapshot = context_snapshot if has_context_snapshot else settings.snapshot
+   records = getattr(snapshot, "representations", None) or {}
+
+   return {
       representation_id: record.get("name", representation_id)
       for representation_id, record in records.items()
    }
-
-   return representation_matrix(attempts, context.archetypes, context.graph.conversion_pairs, names)
 
 
 @router.get("/settings/experiments")

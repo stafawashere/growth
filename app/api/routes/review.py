@@ -61,7 +61,7 @@ def owned_row(db, row_id):
 
 
 @router.get("")
-def list_open_rows(db=Depends(get_db), user=Depends(current_user)):
+def list_open_rows(db=Depends(get_db, scope="function"), user=Depends(current_user)):
    rows = (
       db.query(models.ReviewQueue)
       .filter(models.ReviewQueue.resolved_at.is_(None))
@@ -107,7 +107,7 @@ def resolve_generic_row(db, row, fields, now):
 def resolve_row(
    row_id: str,
    payload: dict = Body(default=None),
-   db=Depends(get_db),
+   db=Depends(get_db, scope="function"),
    settings=Depends(get_settings),
    user=Depends(current_user),
 ):

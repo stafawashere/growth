@@ -20,6 +20,9 @@ def get_challenges(request: Request):
 
 
 def get_db(request: Request):
+   """Every route takes this with scope="function", so the commit lands before the response is
+   sent. With the default scope it landed after, and a client that read straight after a write,
+   as the diagnostic does after an answer, could read the state from before it."""
    db = OrmSession(request.app.state.engine)
 
    try:
@@ -32,7 +35,7 @@ def get_db(request: Request):
       db.close()
 
 
-def current_session(request: Request, db=Depends(get_db)):
+def current_session(request: Request, db=Depends(get_db, scope="function")):
    token = request.cookies.get(SESSION_COOKIE)
    auth_session = service.resolve_session(db, token)
    is_anonymous = auth_session is None
@@ -43,7 +46,7 @@ def current_session(request: Request, db=Depends(get_db)):
    return auth_session
 
 
-def current_user(db=Depends(get_db), auth_session=Depends(current_session)):
+def current_user(db=Depends(get_db, scope="function"), auth_session=Depends(current_session)):
    user = db.get(models.User, auth_session.user_id)
    is_missing = user is None
 

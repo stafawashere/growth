@@ -17,7 +17,7 @@ router = APIRouter(tags=["progress"])
 @router.get("/progress")
 def read_progress(
    today: str | None = None,
-   db=Depends(get_db),
+   db=Depends(get_db, scope="function"),
    settings=Depends(get_settings),
    user=Depends(current_user),
 ):
@@ -35,7 +35,7 @@ def read_progress(
 @router.get("/progress/calibration")
 def read_calibration(
    today: str | None = None,
-   db=Depends(get_db),
+   db=Depends(get_db, scope="function"),
    user=Depends(current_user),
 ):
    """The calibration curve beneath the mastery map (08, "Progress"), over the 30 days ending on
@@ -52,7 +52,7 @@ def read_calibration(
 @router.get("/progress/mastery")
 def read_mastery_map(
    today: str | None = None,
-   db=Depends(get_db),
+   db=Depends(get_db, scope="function"),
    settings=Depends(get_settings),
    user=Depends(current_user),
 ):

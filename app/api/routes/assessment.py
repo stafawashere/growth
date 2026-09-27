@@ -96,24 +96,24 @@ def open_timed(db, settings, user, part_keys, capture_mode):
 
 
 @router.post("/mocks")
-def open_mock(payload: dict = Body(default=None), db=Depends(get_db), settings=Depends(get_settings), user=Depends(current_user)):
+def open_mock(payload: dict = Body(default=None), db=Depends(get_db, scope="function"), settings=Depends(get_settings), user=Depends(current_user)):
    capture_mode = (payload or {}).get("capture_mode") or "photo"
 
    return open_timed(db, settings, user, list(shape.part_keys()), capture_mode)
 
 
 @router.get("/mocks")
-def list_mocks(db=Depends(get_db), user=Depends(current_user)):
+def list_mocks(db=Depends(get_db, scope="function"), user=Depends(current_user)):
    return {"mocks": assessment.mock_history(db, user.id)}
 
 
 @router.get("/assessments/unfinished")
-def list_unfinished(db=Depends(get_db), user=Depends(current_user)):
+def list_unfinished(db=Depends(get_db, scope="function"), user=Depends(current_user)):
    return {"unfinished": assessment.unfinished(db, user.id)}
 
 
 @router.post("/drills")
-def open_drill(payload: dict = Body(default=None), db=Depends(get_db), settings=Depends(get_settings), user=Depends(current_user)):
+def open_drill(payload: dict = Body(default=None), db=Depends(get_db, scope="function"), settings=Depends(get_settings), user=Depends(current_user)):
    fields = payload or {}
    part_key = fields.get("part")
    is_known = part_key in shape.part_keys()
@@ -186,57 +186,57 @@ def read_timed_result(db, settings, user, kind, session_id):
 
 
 @router.get("/mocks/{session_id}")
-def read_mock(session_id: str, db=Depends(get_db), settings=Depends(get_settings), user=Depends(current_user)):
+def read_mock(session_id: str, db=Depends(get_db, scope="function"), settings=Depends(get_settings), user=Depends(current_user)):
    return read_timed(db, settings, user, "mocks", session_id)
 
 
 @router.post("/mocks/{session_id}/sections/{position}/start")
-def start_mock_part(session_id: str, position: int, db=Depends(get_db), settings=Depends(get_settings), user=Depends(current_user)):
+def start_mock_part(session_id: str, position: int, db=Depends(get_db, scope="function"), settings=Depends(get_settings), user=Depends(current_user)):
    return start_timed_part(db, settings, user, "mocks", session_id, position)
 
 
 @router.put("/mocks/{session_id}/sections/{position}/questions/{number}")
-def save_mock_question(session_id: str, position: int, number: int, payload: dict = Body(default=None), db=Depends(get_db), settings=Depends(get_settings), user=Depends(current_user)):
+def save_mock_question(session_id: str, position: int, number: int, payload: dict = Body(default=None), db=Depends(get_db, scope="function"), settings=Depends(get_settings), user=Depends(current_user)):
    return save_timed_question(db, settings, user, "mocks", session_id, position, number, payload)
 
 
 @router.post("/mocks/{session_id}/sections/{position}/submit")
-def submit_mock_part(session_id: str, position: int, db=Depends(get_db), settings=Depends(get_settings), user=Depends(current_user)):
+def submit_mock_part(session_id: str, position: int, db=Depends(get_db, scope="function"), settings=Depends(get_settings), user=Depends(current_user)):
    return submit_timed_part(db, settings, user, "mocks", session_id, position)
 
 
 @router.get("/mocks/{session_id}/result")
-def read_mock_result(session_id: str, db=Depends(get_db), settings=Depends(get_settings), user=Depends(current_user)):
+def read_mock_result(session_id: str, db=Depends(get_db, scope="function"), settings=Depends(get_settings), user=Depends(current_user)):
    return read_timed_result(db, settings, user, "mocks", session_id)
 
 
 @router.get("/drills/{session_id}")
-def read_drill(session_id: str, db=Depends(get_db), settings=Depends(get_settings), user=Depends(current_user)):
+def read_drill(session_id: str, db=Depends(get_db, scope="function"), settings=Depends(get_settings), user=Depends(current_user)):
    return read_timed(db, settings, user, "drills", session_id)
 
 
 @router.post("/drills/{session_id}/sections/{position}/start")
-def start_drill_part(session_id: str, position: int, db=Depends(get_db), settings=Depends(get_settings), user=Depends(current_user)):
+def start_drill_part(session_id: str, position: int, db=Depends(get_db, scope="function"), settings=Depends(get_settings), user=Depends(current_user)):
    return start_timed_part(db, settings, user, "drills", session_id, position)
 
 
 @router.put("/drills/{session_id}/sections/{position}/questions/{number}")
-def save_drill_question(session_id: str, position: int, number: int, payload: dict = Body(default=None), db=Depends(get_db), settings=Depends(get_settings), user=Depends(current_user)):
+def save_drill_question(session_id: str, position: int, number: int, payload: dict = Body(default=None), db=Depends(get_db, scope="function"), settings=Depends(get_settings), user=Depends(current_user)):
    return save_timed_question(db, settings, user, "drills", session_id, position, number, payload)
 
 
 @router.post("/drills/{session_id}/sections/{position}/submit")
-def submit_drill_part(session_id: str, position: int, db=Depends(get_db), settings=Depends(get_settings), user=Depends(current_user)):
+def submit_drill_part(session_id: str, position: int, db=Depends(get_db, scope="function"), settings=Depends(get_settings), user=Depends(current_user)):
    return submit_timed_part(db, settings, user, "drills", session_id, position)
 
 
 @router.get("/drills/{session_id}/result")
-def read_drill_result(session_id: str, db=Depends(get_db), settings=Depends(get_settings), user=Depends(current_user)):
+def read_drill_result(session_id: str, db=Depends(get_db, scope="function"), settings=Depends(get_settings), user=Depends(current_user)):
    return read_timed_result(db, settings, user, "drills", session_id)
 
 
 @router.post("/mocks/{session_id}/finish")
-def finish_mock(session_id: str, db=Depends(get_db), settings=Depends(get_settings), user=Depends(current_user)):
+def finish_mock(session_id: str, db=Depends(get_db, scope="function"), settings=Depends(get_settings), user=Depends(current_user)):
    row = timed_session(db, settings, user, "mocks", session_id)
 
    try:
@@ -246,7 +246,7 @@ def finish_mock(session_id: str, db=Depends(get_db), settings=Depends(get_settin
 
 
 @router.get("/unit-checks/units")
-def unit_check_units(db=Depends(get_db), settings=Depends(get_settings), user=Depends(current_user)):
+def unit_check_units(db=Depends(get_db, scope="function"), settings=Depends(get_settings), user=Depends(current_user)):
    context = context_of(settings)
    titles = settings.session_context.unit_titles or {}
    rows = unit_check.available_units(db, context, user.id)
@@ -255,7 +255,7 @@ def unit_check_units(db=Depends(get_db), settings=Depends(get_settings), user=De
 
 
 @router.post("/unit-checks")
-def open_unit_check(payload: dict = Body(default=None), db=Depends(get_db), settings=Depends(get_settings), user=Depends(current_user)):
+def open_unit_check(payload: dict = Body(default=None), db=Depends(get_db, scope="function"), settings=Depends(get_settings), user=Depends(current_user)):
    unit_id = (payload or {}).get("unit_id")
    context = context_of(settings)
    now = assessment.utc_now()
@@ -279,14 +279,14 @@ def owned_unit_check(db, session_id, user):
 
 
 @router.get("/unit-checks/{session_id}")
-def read_unit_check(session_id: str, db=Depends(get_db), settings=Depends(get_settings), user=Depends(current_user)):
+def read_unit_check(session_id: str, db=Depends(get_db, scope="function"), settings=Depends(get_settings), user=Depends(current_user)):
    row = owned_unit_check(db, session_id, user)
 
    return assessment.session_payload(db, context_of(settings), row, assessment.utc_now())
 
 
 @router.put("/unit-checks/{session_id}/questions/{number}")
-def save_unit_check_question(session_id: str, number: int, payload: dict = Body(default=None), db=Depends(get_db), settings=Depends(get_settings), user=Depends(current_user)):
+def save_unit_check_question(session_id: str, number: int, payload: dict = Body(default=None), db=Depends(get_db, scope="function"), settings=Depends(get_settings), user=Depends(current_user)):
    row = owned_unit_check(db, session_id, user)
 
    try:
@@ -298,7 +298,7 @@ def save_unit_check_question(session_id: str, number: int, payload: dict = Body(
 
 
 @router.post("/unit-checks/{session_id}/submit")
-def submit_unit_check(session_id: str, payload: dict = Body(default=None), db=Depends(get_db), settings=Depends(get_settings), user=Depends(current_user)):
+def submit_unit_check(session_id: str, payload: dict = Body(default=None), db=Depends(get_db, scope="function"), settings=Depends(get_settings), user=Depends(current_user)):
    row = owned_unit_check(db, session_id, user)
    today_text = (payload or {}).get("today")
 

@@ -25,7 +25,7 @@ def archive_directory_or_503(db):
 @router.post("/export")
 def create_export(
    payload: dict = Body(default=None),
-   db=Depends(get_db),
+   db=Depends(get_db, scope="function"),
    auth_session=Depends(current_session),
    user=Depends(current_user),
 ):
@@ -48,7 +48,7 @@ def create_export(
 @router.get("/export/{export_id}")
 def fetch_export(
    export_id: str,
-   db=Depends(get_db),
+   db=Depends(get_db, scope="function"),
    user=Depends(current_user),
 ):
    archive_directory = archive_directory_or_503(db)

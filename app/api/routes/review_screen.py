@@ -14,7 +14,7 @@ router = APIRouter(tags=["review"])
 @router.get("/review")
 def read_review(
    today: str | None = None,
-   db=Depends(get_db),
+   db=Depends(get_db, scope="function"),
    settings=Depends(get_settings),
    user=Depends(current_user),
 ):

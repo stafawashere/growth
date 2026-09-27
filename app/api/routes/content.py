@@ -10,7 +10,7 @@ router = APIRouter(prefix="/content", tags=["content"])
 
 
 @router.get("/snapshot")
-def read_snapshot(db=Depends(get_db), user=Depends(current_user)):
+def read_snapshot(db=Depends(get_db, scope="function"), user=Depends(current_user)):
    row = (
       db.query(models.ContentSnapshot)
       .filter(models.ContentSnapshot.status == "active")

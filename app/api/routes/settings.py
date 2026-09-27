@@ -31,7 +31,7 @@ def read_settings(user=Depends(current_user)):
 
 
 @router.put("/settings")
-def update_settings(payload: dict = Body(default=None), db=Depends(get_db), user=Depends(current_user)):
+def update_settings(payload: dict = Body(default=None), db=Depends(get_db, scope="function"), user=Depends(current_user)):
    fields = fields_of(payload)
    now = auth_service.utc_now()
 
@@ -49,14 +49,14 @@ def read_providers(settings=Depends(get_settings), user=Depends(current_user)):
 
 
 @router.get("/settings/budgets")
-def read_budgets(db=Depends(get_db), settings=Depends(get_settings), user=Depends(current_user)):
+def read_budgets(db=Depends(get_db, scope="function"), settings=Depends(get_settings), user=Depends(current_user)):
    return budgets.budgets_view(db, user.id, settings.tutor_caps, auth_service.utc_now())
 
 
 @router.put("/settings/budgets")
 def change_budget(
    payload: dict = Body(default=None),
-   db=Depends(get_db),
+   db=Depends(get_db, scope="function"),
    settings=Depends(get_settings),
    auth_session=Depends(current_session),
    user=Depends(current_user),

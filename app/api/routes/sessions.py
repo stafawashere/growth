@@ -112,7 +112,7 @@ def session_payload(db, row):
 @router.post("")
 def open_session(
    payload: dict = Body(default=None),
-   db=Depends(get_db),
+   db=Depends(get_db, scope="function"),
    settings=Depends(get_settings),
    user=Depends(current_user),
 ):
@@ -142,7 +142,7 @@ def open_session(
 
 
 @router.get("/{session_id}")
-def read_session(session_id: str, db=Depends(get_db), user=Depends(current_user)):
+def read_session(session_id: str, db=Depends(get_db, scope="function"), user=Depends(current_user)):
    return session_payload(db, owned_session(db, session_id, user))
 
 
@@ -150,7 +150,7 @@ def read_session(session_id: str, db=Depends(get_db), user=Depends(current_user)
 def read_next_item(
    session_id: str,
    today: str | None = None,
-   db=Depends(get_db),
+   db=Depends(get_db, scope="function"),
    settings=Depends(get_settings),
    user=Depends(current_user),
 ):
@@ -214,7 +214,7 @@ def next_diagnostic_item(db, settings, row, today):
 def skip_diagnostic_unit(
    session_id: str,
    payload: dict = Body(default=None),
-   db=Depends(get_db),
+   db=Depends(get_db, scope="function"),
    settings=Depends(get_settings),
    user=Depends(current_user),
 ):
@@ -249,7 +249,7 @@ def skip_diagnostic_unit(
 
 
 @router.get("/{session_id}/diagnostic")
-def read_diagnostic(session_id: str, db=Depends(get_db), settings=Depends(get_settings), user=Depends(current_user)):
+def read_diagnostic(session_id: str, db=Depends(get_db, scope="function"), settings=Depends(get_settings), user=Depends(current_user)):
    """08 diagnostic result: unit-level states, never a percentage and never a score."""
    row = owned_session(db, session_id, user)
 
@@ -263,7 +263,7 @@ def read_diagnostic(session_id: str, db=Depends(get_db), settings=Depends(get_se
 def submit_attempt(
    session_id: str,
    payload: dict = Body(default=None),
-   db=Depends(get_db),
+   db=Depends(get_db, scope="function"),
    settings=Depends(get_settings),
    user=Depends(current_user),
 ):
@@ -327,7 +327,7 @@ def submit_attempt(
 def read_feedback(
    session_id: str,
    attempt_id: str,
-   db=Depends(get_db),
+   db=Depends(get_db, scope="function"),
    settings=Depends(get_settings),
    user=Depends(current_user),
 ):
@@ -412,7 +412,7 @@ def submit_confidence(
    session_id: str,
    attempt_id: str,
    payload: dict = Body(default=None),
-   db=Depends(get_db),
+   db=Depends(get_db, scope="function"),
    settings=Depends(get_settings),
    user=Depends(current_user),
 ):
@@ -441,7 +441,7 @@ def submit_error_note(
    session_id: str,
    attempt_id: str,
    payload: dict = Body(default=None),
-   db=Depends(get_db),
+   db=Depends(get_db, scope="function"),
    user=Depends(current_user),
 ):
    """One note per item corrected in this session, per 02's Session assembly block 4.
@@ -484,7 +484,7 @@ def submit_self_explanation(
    session_id: str,
    attempt_id: str,
    payload: dict = Body(default=None),
-   db=Depends(get_db),
+   db=Depends(get_db, scope="function"),
    user=Depends(current_user),
 ):
    """The answer to the one structured prompt of 11 P1 scope 10, written once per attempt."""
@@ -512,7 +512,7 @@ def submit_self_explanation(
 def record_judgment(
    session_id: str,
    payload: dict = Body(default=None),
-   db=Depends(get_db),
+   db=Depends(get_db, scope="function"),
    settings=Depends(get_settings),
    user=Depends(current_user),
 ):
@@ -544,7 +544,7 @@ def record_judgment(
 def close_session(
    session_id: str,
    payload: dict = Body(default=None),
-   db=Depends(get_db),
+   db=Depends(get_db, scope="function"),
    settings=Depends(get_settings),
    user=Depends(current_user),
 ):

@@ -52,7 +52,7 @@ def body_fields(payload):
 @router.get("/progress/metrics")
 def read_metrics(
    today: str | None = None,
-   db=Depends(get_db),
+   db=Depends(get_db, scope="function"),
    settings=Depends(get_settings),
    user=Depends(current_user),
 ):
@@ -72,7 +72,7 @@ def read_metrics(
 
 @router.get("/progress/representations")
 def read_representation_matrix(
-   db=Depends(get_db),
+   db=Depends(get_db, scope="function"),
    settings=Depends(get_settings),
    user=Depends(current_user),
 ):
@@ -101,7 +101,7 @@ def representation_names(settings):
 @router.get("/settings/experiments")
 def read_experiments(
    today: str | None = None,
-   db=Depends(get_db),
+   db=Depends(get_db, scope="function"),
    settings=Depends(get_settings),
    user=Depends(current_user),
 ):
@@ -112,7 +112,7 @@ def read_experiments(
 def set_experiment(
    name: str,
    payload: dict = Body(default=None),
-   db=Depends(get_db),
+   db=Depends(get_db, scope="function"),
    settings=Depends(get_settings),
    user=Depends(current_user),
 ):
@@ -130,7 +130,7 @@ def set_experiment(
 @router.get("/checkpoints")
 def read_checkpoints(
    today: str | None = None,
-   db=Depends(get_db),
+   db=Depends(get_db, scope="function"),
    user=Depends(current_user),
 ):
    day = day_of(today)
@@ -148,7 +148,7 @@ def read_checkpoints(
 @router.post("/checkpoints")
 def start_checkpoint(
    payload: dict = Body(default=None),
-   db=Depends(get_db),
+   db=Depends(get_db, scope="function"),
    user=Depends(current_user),
 ):
    now = moment_of(body_fields(payload).get("today"))
@@ -169,7 +169,7 @@ def owned_checkpoint(db, user, checkpoint_id):
 
 
 @router.get("/checkpoints/{checkpoint_id}")
-def read_checkpoint(checkpoint_id: str, db=Depends(get_db), user=Depends(current_user)):
+def read_checkpoint(checkpoint_id: str, db=Depends(get_db, scope="function"), user=Depends(current_user)):
    return checkpoint_service.checkpoint_view(db, owned_checkpoint(db, user, checkpoint_id))
 
 
@@ -177,7 +177,7 @@ def read_checkpoint(checkpoint_id: str, db=Depends(get_db), user=Depends(current
 def score_checkpoint_part(
    checkpoint_id: str,
    payload: dict = Body(default=None),
-   db=Depends(get_db),
+   db=Depends(get_db, scope="function"),
    user=Depends(current_user),
 ):
    fields = body_fields(payload)
@@ -202,7 +202,7 @@ def score_checkpoint_part(
 def finish_checkpoint(
    checkpoint_id: str,
    payload: dict = Body(default=None),
-   db=Depends(get_db),
+   db=Depends(get_db, scope="function"),
    user=Depends(current_user),
 ):
    owned_checkpoint(db, user, checkpoint_id)
@@ -216,7 +216,7 @@ def finish_checkpoint(
 
 
 @router.get("/probe")
-def read_probe(today: str | None = None, db=Depends(get_db), user=Depends(current_user)):
+def read_probe(today: str | None = None, db=Depends(get_db, scope="function"), user=Depends(current_user)):
    return {
       "availability": probe_service.availability(db, user.id, day_of(today)),
       "history": probe_service.history(db, user.id),
@@ -226,7 +226,7 @@ def read_probe(today: str | None = None, db=Depends(get_db), user=Depends(curren
 @router.post("/probe")
 def start_probe(
    payload: dict = Body(default=None),
-   db=Depends(get_db),
+   db=Depends(get_db, scope="function"),
    settings=Depends(get_settings),
    user=Depends(current_user),
 ):
@@ -251,7 +251,7 @@ def owned_administration(db, user, administration_id):
 
 
 @router.get("/probe/{administration_id}/next")
-def next_probe_item(administration_id: str, db=Depends(get_db), user=Depends(current_user)):
+def next_probe_item(administration_id: str, db=Depends(get_db, scope="function"), user=Depends(current_user)):
    owned_administration(db, user, administration_id)
 
    try:
@@ -266,7 +266,7 @@ def next_probe_item(administration_id: str, db=Depends(get_db), user=Depends(cur
 def answer_probe_item(
    administration_id: str,
    payload: dict = Body(default=None),
-   db=Depends(get_db),
+   db=Depends(get_db, scope="function"),
    settings=Depends(get_settings),
    user=Depends(current_user),
 ):

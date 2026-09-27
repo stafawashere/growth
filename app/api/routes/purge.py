@@ -24,7 +24,7 @@ PURGE_CONFIRMATION = "delete my data"
 @router.post("/purge")
 def purge(
    payload: dict = Body(default=None),
-   db=Depends(get_db),
+   db=Depends(get_db, scope="function"),
    settings=Depends(get_settings),
    auth_session=Depends(current_session),
    user=Depends(current_user),

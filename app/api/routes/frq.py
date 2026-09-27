@@ -148,7 +148,7 @@ def list_units(settings=Depends(get_settings), user=Depends(current_user)):
 
 
 @router.post("/frq/unit-checks")
-def open_unit_check(payload: dict = Body(default=None), db=Depends(get_db), settings=Depends(get_settings), user=Depends(current_user)):
+def open_unit_check(payload: dict = Body(default=None), db=Depends(get_db, scope="function"), settings=Depends(get_settings), user=Depends(current_user)):
    context = frq_context(settings)
    unit_id = (payload or {}).get("unit_id")
    first_item_id = (payload or {}).get("item_id")
@@ -165,7 +165,7 @@ def open_unit_check(payload: dict = Body(default=None), db=Depends(get_db), sett
 
 
 @router.get("/frq/unit-checks/{session_id}")
-def read_unit_check(session_id: str, db=Depends(get_db), settings=Depends(get_settings), user=Depends(current_user)):
+def read_unit_check(session_id: str, db=Depends(get_db, scope="function"), settings=Depends(get_settings), user=Depends(current_user)):
    row = db.get(models.Session, session_id)
    is_owned = row is not None and row.user_id == user.id and row.mode == unit_check.MODE
 
@@ -187,7 +187,7 @@ def read_unit_check(session_id: str, db=Depends(get_db), settings=Depends(get_se
 
 
 @router.post("/sessions/{session_id}/frq/{item_id}/attempts")
-def start_attempt(session_id: str, item_id: str, payload: dict = Body(default=None), db=Depends(get_db), settings=Depends(get_settings), user=Depends(current_user)):
+def start_attempt(session_id: str, item_id: str, payload: dict = Body(default=None), db=Depends(get_db, scope="function"), settings=Depends(get_settings), user=Depends(current_user)):
    session_row = db.get(models.Session, session_id)
    is_owned = session_row is not None and session_row.user_id == user.id
 
@@ -213,7 +213,7 @@ def start_attempt(session_id: str, item_id: str, payload: dict = Body(default=No
 
 
 @router.get("/attempts/{attempt_id}/booklet.png")
-def booklet_page(attempt_id: str, db=Depends(get_db), settings=Depends(get_settings), user=Depends(current_user)):
+def booklet_page(attempt_id: str, db=Depends(get_db, scope="function"), settings=Depends(get_settings), user=Depends(current_user)):
    attempt, _session_row = owned_attempt(db, attempt_id, user)
    png = booklet.page_png(record_of(settings, attempt), page_code=attempt.id[-8:], **booklet_addressing(db, attempt))
 
@@ -221,7 +221,7 @@ def booklet_page(attempt_id: str, db=Depends(get_db), settings=Depends(get_setti
 
 
 @router.post("/attempts/{attempt_id}/images")
-def upload_image(attempt_id: str, payload: dict = Body(...), db=Depends(get_db), settings=Depends(get_settings), user=Depends(current_user)):
+def upload_image(attempt_id: str, payload: dict = Body(...), db=Depends(get_db, scope="function"), settings=Depends(get_settings), user=Depends(current_user)):
    attempt, _session_row = owned_attempt(db, attempt_id, user)
    refuse_while_part_open(db, attempt)
    encoded = payload.get("data_base64") or ""
@@ -240,7 +240,7 @@ def upload_image(attempt_id: str, payload: dict = Body(...), db=Depends(get_db),
 
 
 @router.get("/attempts/{attempt_id}/images/{image_id}")
-def read_image(attempt_id: str, image_id: str, db=Depends(get_db), user=Depends(current_user)):
+def read_image(attempt_id: str, image_id: str, db=Depends(get_db, scope="function"), user=Depends(current_user)):
    attempt, _session_row = owned_attempt(db, attempt_id, user)
    image = db.get(models.FrqImage, image_id)
    is_present = image is not None and image.attempt_id == attempt.id and image.deleted_at is None and image.data is not None
@@ -252,7 +252,7 @@ def read_image(attempt_id: str, image_id: str, db=Depends(get_db), user=Depends(
 
 
 @router.delete("/attempts/{attempt_id}/images/{image_id}")
-def delete_image(attempt_id: str, image_id: str, db=Depends(get_db), user=Depends(current_user)):
+def delete_image(attempt_id: str, image_id: str, db=Depends(get_db, scope="function"), user=Depends(current_user)):
    attempt, _session_row = owned_attempt(db, attempt_id, user)
    image = db.get(models.FrqImage, image_id)
    is_present = image is not None and image.attempt_id == attempt.id and image.deleted_at is None
@@ -270,7 +270,7 @@ def delete_image(attempt_id: str, image_id: str, db=Depends(get_db), user=Depend
 
 
 @router.post("/attempts/{attempt_id}/transcription")
-def run_read_back(attempt_id: str, db=Depends(get_db), settings=Depends(get_settings), user=Depends(current_user)):
+def run_read_back(attempt_id: str, db=Depends(get_db, scope="function"), settings=Depends(get_settings), user=Depends(current_user)):
    attempt, _session_row = owned_attempt(db, attempt_id, user)
    record = record_of(settings, attempt)
    provider = guarded_provider(settings, db, user.id)
@@ -286,7 +286,7 @@ def run_read_back(attempt_id: str, db=Depends(get_db), settings=Depends(get_sett
 
 
 @router.get("/attempts/{attempt_id}/transcription")
-def read_transcription(attempt_id: str, db=Depends(get_db), user=Depends(current_user)):
+def read_transcription(attempt_id: str, db=Depends(get_db, scope="function"), user=Depends(current_user)):
    attempt, _session_row = owned_attempt(db, attempt_id, user)
 
    return attempt_payload(db, attempt)
@@ -339,7 +339,7 @@ def confirm_transcription(
    request: Request,
    background: BackgroundTasks,
    payload: dict = Body(default=None),
-   db=Depends(get_db),
+   db=Depends(get_db, scope="function"),
    settings=Depends(get_settings),
    user=Depends(current_user),
 ):
@@ -372,7 +372,7 @@ def submit_typed(
    request: Request,
    background: BackgroundTasks,
    payload: dict = Body(...),
-   db=Depends(get_db),
+   db=Depends(get_db, scope="function"),
    settings=Depends(get_settings),
    user=Depends(current_user),
 ):
@@ -399,7 +399,7 @@ def submit_typed(
 
 
 @router.get("/attempts/{attempt_id}/gradings")
-def read_gradings(attempt_id: str, db=Depends(get_db), settings=Depends(get_settings), user=Depends(current_user)):
+def read_gradings(attempt_id: str, db=Depends(get_db, scope="function"), settings=Depends(get_settings), user=Depends(current_user)):
    attempt, _session_row = owned_attempt(db, attempt_id, user)
    record = record_of(settings, attempt)
 
@@ -412,7 +412,7 @@ def dispute(
    request: Request,
    background: BackgroundTasks,
    payload: dict = Body(default=None),
-   db=Depends(get_db),
+   db=Depends(get_db, scope="function"),
    settings=Depends(get_settings),
    user=Depends(current_user),
 ):
@@ -429,7 +429,7 @@ def dispute(
 
 
 @router.get("/frq/metrics")
-def read_metrics(db=Depends(get_db), user=Depends(current_user)):
+def read_metrics(db=Depends(get_db, scope="function"), user=Depends(current_user)):
    return metrics.metric_nine(db, user.id, utc_now())
 
 

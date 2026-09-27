@@ -46,7 +46,7 @@ def issue_session_cookie(response, request, settings, token):
 @router.post("/passkey/register/begin")
 def register_begin(
    payload: dict = Body(default=None),
-   db=Depends(get_db),
+   db=Depends(get_db, scope="function"),
    settings=Depends(get_settings),
    challenges=Depends(get_challenges),
 ):
@@ -60,7 +60,7 @@ def register_finish(
    request: Request,
    response: Response,
    payload: dict = Body(default=None),
-   db=Depends(get_db),
+   db=Depends(get_db, scope="function"),
    settings=Depends(get_settings),
    challenges=Depends(get_challenges),
 ):
@@ -89,14 +89,14 @@ def register_finish(
 
 
 @router.get("/status")
-def status(db=Depends(get_db)):
+def status(db=Depends(get_db, scope="function")):
    return {"user_exists": service.user_exists(db)}
 
 
 @router.post("/passkey/add/begin")
 def add_passkey_begin(
    payload: dict = Body(default=None),
-   db=Depends(get_db),
+   db=Depends(get_db, scope="function"),
    settings=Depends(get_settings),
    challenges=Depends(get_challenges),
    auth_session=Depends(current_session),
@@ -107,7 +107,7 @@ def add_passkey_begin(
 @router.post("/passkey/add/finish")
 def add_passkey_finish(
    payload: dict = Body(default=None),
-   db=Depends(get_db),
+   db=Depends(get_db, scope="function"),
    settings=Depends(get_settings),
    challenges=Depends(get_challenges),
    auth_session=Depends(current_session),
@@ -128,7 +128,7 @@ def add_passkey_finish(
 @router.post("/recovery/register/begin")
 def recovery_register_begin(
    payload: dict = Body(default=None),
-   db=Depends(get_db),
+   db=Depends(get_db, scope="function"),
    settings=Depends(get_settings),
    challenges=Depends(get_challenges),
 ):
@@ -140,7 +140,7 @@ def recovery_register_finish(
    request: Request,
    response: Response,
    payload: dict = Body(default=None),
-   db=Depends(get_db),
+   db=Depends(get_db, scope="function"),
    settings=Depends(get_settings),
    challenges=Depends(get_challenges),
 ):
@@ -165,7 +165,7 @@ def recovery_register_finish(
 @router.post("/passkey/login/begin")
 def login_begin(
    payload: dict = Body(default=None),
-   db=Depends(get_db),
+   db=Depends(get_db, scope="function"),
    settings=Depends(get_settings),
    challenges=Depends(get_challenges),
 ):
@@ -177,7 +177,7 @@ def login_finish(
    request: Request,
    response: Response,
    payload: dict = Body(default=None),
-   db=Depends(get_db),
+   db=Depends(get_db, scope="function"),
    settings=Depends(get_settings),
    challenges=Depends(get_challenges),
 ):
@@ -199,7 +199,7 @@ def logout(
    request: Request,
    response: Response,
    payload: dict = Body(default=None),
-   db=Depends(get_db),
+   db=Depends(get_db, scope="function"),
    settings=Depends(get_settings),
    auth_session=Depends(current_session),
 ):
@@ -212,7 +212,7 @@ def logout(
 @router.post("/reauth/begin")
 def reauth_begin(
    payload: dict = Body(default=None),
-   db=Depends(get_db),
+   db=Depends(get_db, scope="function"),
    settings=Depends(get_settings),
    challenges=Depends(get_challenges),
    auth_session=Depends(current_session),
@@ -223,7 +223,7 @@ def reauth_begin(
 @router.post("/reauth/finish")
 def reauth_finish(
    payload: dict = Body(default=None),
-   db=Depends(get_db),
+   db=Depends(get_db, scope="function"),
    settings=Depends(get_settings),
    challenges=Depends(get_challenges),
    auth_session=Depends(current_session),

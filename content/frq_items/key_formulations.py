@@ -122,4 +122,26 @@ def stage_six_formulations():
    return module.FORMULATIONS
 
 
+def stage_thirteen_formulations():
+   """The setup points stage 13 (content2) gave checks, and the questions it added."""
+   import importlib.util
+   from pathlib import Path
+
+   formulations = {}
+
+   for name in ("key_formulations_stage13.py", "key_formulations_stage13_bank.py"):
+      path = Path(__file__).with_name(name)
+
+      if not path.exists():
+         continue
+
+      spec = importlib.util.spec_from_file_location(f"frq_formulations_{path.stem}", path)
+      module = importlib.util.module_from_spec(spec)
+      spec.loader.exec_module(module)
+      formulations.update(module.FORMULATIONS)
+
+   return formulations
+
+
 FORMULATIONS.update(stage_six_formulations())
+FORMULATIONS.update(stage_thirteen_formulations())

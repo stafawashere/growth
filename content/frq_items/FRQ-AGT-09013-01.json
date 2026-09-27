@@ -13,6 +13,18 @@
       "BC-SKL-09042",
       "BC-SKL-09043"
    ],
+   "roots": {
+      "alpha": {
+         "value": "0.3421850529244582209950829677",
+         "equation": "4*sin(theta) - 1 - theta",
+         "variable": "theta"
+      },
+      "beta": {
+         "value": "2.210083944092660896205946605",
+         "equation": "4*sin(theta) - 1 - theta",
+         "variable": "theta"
+      }
+   },
    "parts": [
       {
          "id": "a",
@@ -55,7 +67,13 @@
                "eligible_only_if": [
                   "a1"
                ],
-               "check": null
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "alpha",
+                  "upper": "beta",
+                  "integrand": null,
+                  "variable": "theta"
+               }
             },
             {
                "point_id": "a3",
@@ -112,7 +130,13 @@
                "eligible_only_if": [
                   "b1"
                ],
-               "check": null
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "beta",
+                  "upper": "pi",
+                  "integrand": null,
+                  "variable": "theta"
+               }
             },
             {
                "point_id": "b3",
@@ -168,7 +192,16 @@
                "eligible_only_if": [
                   "c1"
                ],
-               "check": null,
+               "check": {
+                  "kind": "equation_setup",
+                  "unknown": "k",
+                  "left": "Integral((16*sin(theta)**2 - (1 + theta)**2)/2, (theta, alpha, k))",
+                  "right": "Integral((16*sin(theta)**2 - (1 + theta)**2)/2, (theta, alpha, beta))/2",
+                  "interval": [
+                     "0.5",
+                     "2.1"
+                  ]
+               },
                "follows_from": [
                   "a3"
                ]

@@ -58,3 +58,31 @@ shape), 327 attempts graded and 327 diagnoses written by them, and
 0 skills_state rows changed in any of them. The two unit-check controls each changed the
 digest. The bands are wide because the model-judged free-response points stayed provisional with
 the grader off, and the band covers every way a provisional point could fall.
+
+## Runs 9 to 12 again, grader off, 2026-09-27 [verified]
+
+Stage 13 gave the calculator free-response checks two readings they lacked: a line written with
+the stem's own function names (E(t), L(t), C(t)) is read through each name's definition in the
+question's `functions` record, and a setup whose limit or unknown is a numeric root is checked
+against the root (`roots`, `bounds_match` with a named root, and the new `equation_setup` check).
+A capital letter called like a function that the question does not define is refused, and the
+point stays provisional. The four Section II Part A drills were driven again by claude-opus-5-5,
+not by a person, through the real routes (`tools/frq_scenarios.py` build, `GROWTH_AI_BACKEND`
+none, `GROWTH_RNG_SEED` 7, typed entry of each question's own worked solution), once on the tree
+before the change and once after, both over the same six calculator questions.
+
+| run | before: questions, decided | after: questions, decided |
+| --- | --- | --- |
+| 9 | 06006-01 0, 99008-01 4 | 06006-01 5, 09013-01 0 |
+| 10 | 08012-01 0, 08001-01 2 | 99008-01 6, 08001-01 4 |
+| 11 | 09005-01 0, 09013-01 0 | 08012-01 2, 09005-01 4 |
+| 12 | 08012-01 0, 06006-01 0 | 09005-01 4, 09013-01 0 |
+| total of 72 points | 6 decided, 66 provisional | 25 decided, 47 provisional |
+
+Which questions a run draws depends on the attempts already stored, so the two columns pair
+different questions per run; per question, grader off, the decided points went from 0 to 5
+(06006-01), 2 to 4 (08001-01), 0 to 2 (08012-01), 0 to 4 (09005-01), 0 to 0 (09013-01) and 4
+to 6 (99008-01). What stays provisional is model-required (justifications, BC-PT-99068), an
+integrand-only point with a constant factor outside the integral (BC-PT-99048, 99058, 99002),
+which no check reads, and every point whose eligibility waits on one of those; 09013-01 decides
+its limits and setup equation but all six are gated on its three integrand points.

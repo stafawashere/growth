@@ -111,7 +111,13 @@
                ],
                "criterion": "Writes the y-coordinate at the critical time as 1 plus the definite integral of 4 - e^(t^2/4) from t = 2 to t = 2 sqrt(ln 4), about 2.355.",
                "eligible_only_if": [],
-               "check": null
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "2",
+                  "upper": "2*sqrt(log(4))",
+                  "integrand": "4 - exp(t**2/4)",
+                  "variable": "t"
+               }
             },
             {
                "point_id": "b2",
@@ -181,7 +187,16 @@
                ],
                "criterion": "Writes the equation 4 plus the definite integral of sqrt(1 + t^3) from t = 2 to t = T equals 7 (or an equivalent equation built from x(0) and a lower limit of 0).",
                "eligible_only_if": [],
-               "check": null
+               "check": {
+                  "kind": "equation_setup",
+                  "unknown": "T",
+                  "left": "4 + Integral(sqrt(1 + t**3), (t, 2, T))",
+                  "right": "7",
+                  "interval": [
+                     "2",
+                     "4"
+                  ]
+               }
             },
             {
                "point_id": "c2",

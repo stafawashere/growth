@@ -11,6 +11,16 @@
       "BC-SKL-06037",
       "BC-SKL-08012"
    ],
+   "functions": {
+      "C": {
+         "variable": "t",
+         "expression": "120 + 80*sin(t**2/12)"
+      },
+      "F": {
+         "variable": "t",
+         "expression": "12 - 4*t/5"
+      }
+   },
    "parts": [
       {
          "id": "a",
@@ -135,7 +145,16 @@
                ],
                "criterion": "Writes the equation the definite integral of C(t) from t = 0 to t = T equals 500.",
                "eligible_only_if": [],
-               "check": null
+               "check": {
+                  "kind": "equation_setup",
+                  "unknown": "T",
+                  "left": "Integral(120 + 80*sin(t**2/12), (t, 0, T))",
+                  "right": "500",
+                  "interval": [
+                     "0",
+                     "10"
+                  ]
+               }
             },
             {
                "point_id": "c2",

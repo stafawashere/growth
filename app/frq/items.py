@@ -29,6 +29,15 @@ The four checks of 03 "Deterministic pre-checks decide the mechanical points", e
    {"kind": "bounds_match", "lower": <SymPy text>, "upper": <SymPy text>,
     "integrand": <SymPy text or null>, "variable": "x"}
    {"kind": "units_present", "units": [<accepted spellings>]}
+   {"kind": "equation_setup", "unknown": "T", "left": <SymPy text>, "right": <SymPy text>,
+    "interval": [<low>, <high>]}, a setup equation whose unknown is a numeric root in the interval
+
+A record may also carry what its stem defines, so the checks can read work written with it:
+
+   functions: {"E": {"variable": "t", "expression": <SymPy text>}, ...}, the functions the stem
+      names, so a line written with E(t) is read through E's expression
+   roots: {"p": {"value": <SymPy text>, "equation": <SymPy text zero at the root>,
+      "variable": "x"}, ...}, the numeric roots the stem names, which a limit may be written as
 
 Expected values are SymPy text rather than MathJSON because they are compared with SymPy objects
 read from the student's LaTeX, and the author states them once, in the form SymPy reads.
@@ -45,7 +54,8 @@ import sympy
 FRQ_FORMAT = "free_response"
 FRQ_PUBLISHED_STATUS = "frq_verified"
 
-CHECK_KINDS = ("sympy_equivalence", "numeric_three_decimals", "bounds_match", "units_present")
+CHECK_KINDS = ("sympy_equivalence", "numeric_three_decimals", "bounds_match", "units_present", "equation_setup")
+ROOT_RESIDUAL_TOLERANCE = 1e-9
 CHECK_TARGETS = ("answer", "any_line")
 CALCULATOR_STATUSES = ("no_calculator", "calculator", "either")
 
@@ -71,8 +81,17 @@ REQUIRED_PART_FIELDS = ("id", "prompt", "setup_required", "answer_latex", "worke
 REQUIRED_POINT_FIELDS = ("point_id", "point_type_id", "skills", "criterion", "eligible_only_if", "check")
 
 
-def sympy_of(text):
-   return sympy.sympify(text, locals=SYMPY_LOCALS)
+def sympy_of(text, names=()):
+   """SymPy text read with e, pi and C as the records mean them, and each of names as a plain
+   symbol, so a root named beta is not read as the beta function."""
+   local_names = dict(SYMPY_LOCALS)
+   local_names.update({name: sympy.Symbol(name) for name in names})
+
+   return sympy.sympify(text, locals=local_names)
+
+
+def root_names(record):
+   return tuple((record.get("roots") or {}).keys())
 
 
 def load_frq_records(directory):
@@ -127,6 +146,21 @@ def check_violations(check, where):
       if has_integrand:
          expressions.append(check["integrand"])
 
+   if kind == "equation_setup":
+      interval = check.get("interval")
+      has_interval = isinstance(interval, list) and len(interval) == 2
+      names_unknown = isinstance(check.get("unknown"), str) and check.get("unknown") != ""
+
+      if not has_interval:
+         problems.append(f"{where}: equation_setup needs an interval of two ends")
+      else:
+         expressions.extend(interval)
+
+      if not names_unknown:
+         problems.append(f"{where}: equation_setup needs the unknown's name")
+
+      expressions.extend([check.get("left"), check.get("right")])
+
    if kind == "units_present":
       units = check.get("units")
       has_units = isinstance(units, list) and len(units) > 0
@@ -143,6 +177,48 @@ def check_violations(check, where):
    return problems
 
 
+def definition_violations(record, record_id):
+   """The stem's functions must be SymPy in their stated variable, and each named root must make
+   its own equation vanish, so a check never reads work through a wrong definition."""
+   problems = []
+
+   for name, spec in (record.get("functions") or {}).items():
+      is_one_letter = isinstance(name, str) and len(name) == 1 and name.isalpha()
+
+      if not is_one_letter:
+         problems.append(f"{record_id}: function name {name!r} must be one letter")
+         continue
+
+      try:
+         expression = sympy_of(spec["expression"])
+         variable = sympy.Symbol(spec["variable"])
+      except (KeyError, sympy.SympifyError, TypeError, SyntaxError):
+         problems.append(f"{record_id}: function {name} needs a variable and SymPy expression")
+         continue
+
+      stray = expression.free_symbols - {variable}
+
+      if stray:
+         problems.append(f"{record_id}: function {name} uses {sorted(map(str, stray))} beside {variable}")
+
+   for name, spec in (record.get("roots") or {}).items():
+      try:
+         value = sympy_of(spec["value"])
+         equation = sympy_of(spec["equation"])
+         variable = sympy.Symbol(spec["variable"])
+         residual = abs(float(sympy.N(equation.subs(variable, value), 30)))
+      except (KeyError, sympy.SympifyError, TypeError, SyntaxError, ValueError):
+         problems.append(f"{record_id}: root {name} needs a value, an equation and a variable that evaluate")
+         continue
+
+      is_a_root = residual <= ROOT_RESIDUAL_TOLERANCE
+
+      if not is_a_root:
+         problems.append(f"{record_id}: root {name} leaves its equation at {residual:.3g}, not 0")
+
+   return problems
+
+
 def record_violations(record, archetypes, point_types):
    """Every structural problem with one record, as sentences. An empty list is a clean record."""
    record_id = record.get("id", "<no id>")
@@ -150,6 +226,8 @@ def record_violations(record, archetypes, point_types):
 
    if problems:
       return problems
+
+   problems.extend(definition_violations(record, record_id))
 
    archetype = archetypes.get(record["archetype_id"])
 

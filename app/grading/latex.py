@@ -1,4 +1,4 @@
-"""Reads one line of confirmed student work, written in LaTeX, into SymPy.
+r"""Reads one line of confirmed student work, written in LaTeX, into SymPy.
 
 The read-back the student confirms is LaTeX, because that is what the transcriber writes and what
 MathLive edits. SymPy's LaTeX parser (the lark backend) reads most of it once a few habits of
@@ -8,9 +8,16 @@ and a line such as f'(x) = 3x^2 - 7 is a claim whose right-hand side is the obje
 Anything the parser cannot read, or reads two ways that disagree, is Unreadable. A deterministic
 check that meets an Unreadable line reports unsettled, and 03 sends an unsettled point to the
 model path rather than deciding it either way.
+
+A question that names its functions (E(t), L(t), H(t) in the stem) carries their definitions, and a
+line written with those names is read by substituting each definition at its argument, so
+\int_0^8 E(t)\,dt reads as the integral of E's expression. A prime on a defined name
+differentiates it. When a question carries definitions, a capital letter called like a function
+that the question does not define is Unreadable, because nothing says what it stands for.
 """
 import re
 import warnings
+from dataclasses import dataclass, field
 
 import sympy
 
@@ -50,6 +57,91 @@ _DIFFERENTIAL_NEXT = re.compile(r"d(?:[a-zA-Z](?![a-zA-Z])|\\theta(?![a-zA-Z]))"
 
 class Unreadable(ValueError):
    pass
+
+
+@dataclass(frozen=True)
+class Definitions:
+   """The functions a question defines, each name mapped to (variable, expression)."""
+   functions: dict = field(default_factory=dict)
+
+
+PLACEHOLDER_LETTER = "Q"
+MAX_PLACEHOLDERS = 10
+_PLACEHOLDER_IN_TEXT = re.compile(PLACEHOLDER_LETTER + r"_")
+_NAMED_CALL = re.compile(r"(?<![\\A-Za-z^_])([A-Za-z])('*)\s*\(")
+
+
+def without_spacing(text):
+   return _SPACING.sub(" ", text)
+
+
+def _placeholder(index):
+   return f"{PLACEHOLDER_LETTER}_{{{index}}}"
+
+
+def _placeholder_symbol(index):
+   return sympy.Symbol(f"{PLACEHOLDER_LETTER}_{{{index}}}")
+
+
+def with_definitions(latex, definitions):
+   """The line with every call of a defined function replaced by a placeholder symbol, and the
+   expression each placeholder stands for. Without definitions the line is returned unchanged."""
+   if definitions is None:
+      return latex, {}
+
+   text = without_spacing(latex)
+
+   if _PLACEHOLDER_IN_TEXT.search(text):
+      raise Unreadable(f"{latex!r} already uses the placeholder name")
+
+   pieces = []
+   bindings = {}
+   cursor = 0
+
+   while True:
+      match = _NAMED_CALL.search(text, cursor)
+
+      if match is None:
+         break
+
+      name, primes = match.group(1), match.group(2)
+      is_defined = name in definitions.functions
+      is_capital = name.isupper()
+
+      if not is_defined and is_capital:
+         raise Unreadable(f"{latex!r} calls {name}, which the question does not define")
+
+      if not is_defined:
+         pieces.append(text[cursor:match.end()])
+         cursor = match.end()
+         continue
+
+      opening = match.end() - 1
+      closing = _closing_paren(text, opening)
+
+      if closing is None:
+         raise Unreadable(f"{latex!r} leaves a call of {name} open")
+
+      has_room = len(bindings) < MAX_PLACEHOLDERS
+
+      if not has_room:
+         raise Unreadable(f"{latex!r} calls defined functions too many times to read")
+
+      argument = _read_normalised(normalised(text[opening + 1:closing]))
+      variable, expression = definitions.functions[name]
+
+      for _prime in primes:
+         expression = sympy.diff(expression, variable)
+
+      index = len(bindings)
+      bindings[_placeholder_symbol(index)] = expression.subs(variable, argument)
+      pieces.append(text[cursor:match.start()])
+      pieces.append("(" + _placeholder(index) + ")")
+      cursor = closing + 1
+
+   pieces.append(text[cursor:])
+
+   return "".join(pieces), bindings
 
 
 def _parenthesised_argument(match):
@@ -207,8 +299,10 @@ def _disambiguated(parsed, text):
    return first
 
 
-def to_sympy(latex):
-   return _read_normalised(normalised(latex))
+def to_sympy(latex, definitions=None):
+   text, bindings = with_definitions(latex, definitions)
+
+   return _read_normalised(normalised(text)).subs(bindings)
 
 
 def _read_normalised(text):
@@ -237,8 +331,30 @@ def _limit_tuples(expression):
    return held
 
 
-def rhs_to_sympy(latex):
-   return _read_normalised(right_hand_side(latex))
+def rhs_to_sympy(latex, definitions=None):
+   text, bindings = with_definitions(latex, definitions)
+
+   return _read_normalised(right_hand_side(text)).subs(bindings)
+
+
+def split_sides(latex, definitions=None):
+   """The sides of a line written as a chain of = (or \\approx), normalised and unread, with the
+   placeholder bindings read_side needs. A side is read on its own, so one unreadable side does
+   not hide the others."""
+   text, bindings = with_definitions(latex, definitions)
+   sides = [side.strip() for side in normalised(text).split("=") if side.strip() != ""]
+
+   return sides, bindings
+
+
+def read_side(side, bindings):
+   return _read_normalised(side).subs(bindings)
+
+
+def sides_to_sympy(latex, definitions=None):
+   sides, bindings = split_sides(latex, definitions)
+
+   return [read_side(side, bindings) for side in sides]
 
 
 def decimal_places(latex):

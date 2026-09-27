@@ -14,6 +14,20 @@
       "BC-SKL-06038",
       "BC-SKL-06036"
    ],
+   "functions": {
+      "H": {
+         "variable": "t",
+         "expression": "50 + 20*exp(-(t - 14)**2/25)"
+      },
+      "W": {
+         "variable": "t",
+         "expression": "62 + t/4"
+      },
+      "A": {
+         "variable": "x",
+         "expression": "Integral(50 + 20*exp(-(s - 14)**2/25), (s, 0, x))/x"
+      }
+   },
    "parts": [
       {
          "id": "a",
@@ -91,7 +105,16 @@
                ],
                "criterion": "Writes the equation H(t) equals the average value, with the average written as the integral of H from 0 to 24 divided by 24 or taken as the value from part (a).",
                "eligible_only_if": [],
-               "check": null
+               "check": {
+                  "kind": "equation_setup",
+                  "unknown": "t",
+                  "left": "50 + 20*exp(-(t - 14)**2/25)",
+                  "right": "Integral(50 + 20*exp(-(s - 14)**2/25), (s, 0, 24))/24",
+                  "interval": [
+                     "0",
+                     "14"
+                  ]
+               }
             },
             {
                "point_id": "b2",
@@ -150,7 +173,16 @@
                "eligible_only_if": [
                   "c1"
                ],
-               "check": null
+               "check": {
+                  "kind": "equation_setup",
+                  "unknown": "x",
+                  "left": "Integral(50 + 20*exp(-(t - 14)**2/25), (t, 0, x))/x",
+                  "right": "55",
+                  "interval": [
+                     "1",
+                     "24"
+                  ]
+               }
             },
             {
                "point_id": "c3",

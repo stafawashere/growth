@@ -281,7 +281,7 @@ def decide_point(record, part, point, work, labels, judge, judge_available):
    check_record = None
 
    if check_decides:
-      result = checks.run_check(point["check"], part_work)
+      result = checks.run_check(point["check"], part_work, checks.question_context(record, work))
       is_settled = result.outcome in SETTLED_OUTCOMES
 
       if is_settled:

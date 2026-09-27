@@ -16,6 +16,24 @@
       "BC-SKL-08046",
       "BC-SKL-08047"
    ],
+   "functions": {
+      "f": {
+         "variable": "x",
+         "expression": "4*x*exp(-x)"
+      }
+   },
+   "roots": {
+      "p": {
+         "value": "-LambertW(-1/4)",
+         "equation": "4*x*exp(-x) - 1",
+         "variable": "x"
+      },
+      "q": {
+         "value": "-LambertW(-1/4, -1)",
+         "equation": "4*x*exp(-x) - 1",
+         "variable": "x"
+      }
+   },
    "parts": [
       {
          "id": "a",
@@ -60,7 +78,13 @@
                "eligible_only_if": [
                   "a1"
                ],
-               "check": null
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "p",
+                  "upper": "q",
+                  "integrand": null,
+                  "variable": "x"
+               }
             },
             {
                "point_id": "a3",
@@ -176,7 +200,16 @@
                ],
                "criterion": "Writes the equation pi times the integral of (4x e^(-x))^2 from 0 to k equals 2 pi, half of the volume from part (b), or an equivalent equation.",
                "eligible_only_if": [],
-               "check": null,
+               "check": {
+                  "kind": "equation_setup",
+                  "unknown": "k",
+                  "left": "pi*Integral((4*x*exp(-x))**2, (x, 0, k))",
+                  "right": "2*pi",
+                  "interval": [
+                     "0.2",
+                     "6"
+                  ]
+               },
                "follows_from": [
                   "b4"
                ]

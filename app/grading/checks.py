@@ -13,15 +13,30 @@ answer must be accurate to three places after the decimal point, by rounding or 
 and an unsimplified exact answer is accepted. A decimal that misses only because it was rounded
 too early or to too few places fails with rounding_only set, which is what the per-question cap in
 app/grading/point.py counts. The cap itself is the second rule and lives there, not here.
+
+A check reads the part's work in the context of its question (QuestionContext): the functions the
+question defines, so a line written with E(t) is read through E's definition; the numeric roots
+the question names (p, q, alpha), so a limit written as the name, as a three-place decimal, or as a
+symbol the student set to such a decimal elsewhere in the question is compared with the root's
+value; and the whole question's work, where those assignments are found. A limit written to fewer
+than three places is unsettled, never failed.
+
+equation_setup, the fifth check, decides a setup equation whose unknown is a numeric root, such as
+the integral of C from 0 to T set equal to 500. A written equation passes when its two sides, as a
+function of the one symbol left in it, differ by a nonzero constant multiple of the reference
+equation's difference at sampled points of the stated interval. It never fails a written line,
+because a setup it cannot match may still be one the criterion accepts; it only passes or stays
+unsettled.
 """
 import math
+import re
 from dataclasses import dataclass, field
 
 import sympy
 
-from app.frq.items import sympy_of
+from app.frq.items import root_names, sympy_of
 from app.grading import latex
-from app.items.verify import equivalence
+from app.items.verify import equivalence, run_bounded
 
 PASS = "pass"
 FAIL = "fail"
@@ -31,6 +46,12 @@ EQUIVALENT = "equivalent"
 NOT_EQUIVALENT = "not_equivalent"
 
 REQUIRED_DECIMAL_PLACES = 3
+
+EQUATION_SAMPLES = 5
+EQUATION_TIMEOUT_S = 10
+ROUNDED_CONSTANT_SLACK = 0.002
+_DECIMAL = re.compile(r"-?\d*\.\d+")
+_STATEMENT_BREAK = re.compile(r"\\implies|\\Rightarrow|\\Longrightarrow")
 
 
 @dataclass(frozen=True)
@@ -52,6 +73,39 @@ class CheckResult:
          "matched_line": self.matched_line,
          "unreadable": list(self.unreadable),
       }
+
+
+@dataclass(frozen=True)
+class QuestionContext:
+   definitions: latex.Definitions | None = None
+   roots: dict = field(default_factory=dict)
+   question_work: dict = field(default_factory=dict)
+
+   def expression(self, text):
+      return sympy_of(text, names=[symbol.name for symbol in self.roots])
+
+
+NO_CONTEXT = QuestionContext()
+
+
+def question_context(record, work):
+   """The context a check reads a part in: the question's defined functions and named roots, and
+   the student's work on every part of the question."""
+   functions = record.get("functions")
+   definitions = None
+
+   if functions is not None:
+      definitions = latex.Definitions({
+         name: (sympy.Symbol(spec["variable"]), sympy_of(spec["expression"]))
+         for name, spec in functions.items()
+      })
+
+   roots = {
+      sympy.Symbol(name): sympy_of(spec["value"], names=root_names(record))
+      for name, spec in (record.get("roots") or {}).items()
+   }
+
+   return QuestionContext(definitions=definitions, roots=roots, question_work=work or {})
 
 
 def live_lines(part_work):
@@ -120,24 +174,27 @@ def _contains_unevaluated(expression):
    return bool(expression.atoms(sympy.Integral, sympy.Derivative, sympy.Limit, sympy.Sum))
 
 
-def readings_of(line, each_side):
+def readings_of(line, each_side, definitions=None):
    """What a line offers the check: its right-hand side, or with each_side every side of it, so an
    antiderivative written on the left of -1/y = x^2/2 + C can be found too."""
    if not each_side:
-      return [(line, lambda: latex.rhs_to_sympy(line))]
+      return [(line, lambda: latex.rhs_to_sympy(line, definitions))]
 
-   sides = [side for side in latex.normalised(line).split("=") if side.strip() != ""]
+   try:
+      sides, bindings = latex.split_sides(line, definitions)
+   except latex.Unreadable:
+      return [(line, lambda: latex.to_sympy(line, definitions))]
 
-   return [(line, lambda side=side: latex.to_sympy(side)) for side in sides]
+   return [(line, lambda side=side: latex.read_side(side, bindings)) for side in sides]
 
 
-def sympy_equivalence(check, part_work):
+def sympy_equivalence(check, part_work, context=NO_CONTEXT):
    expected = sympy_of(check["expected"])
    variable = sympy.Symbol(check.get("variable") or "x")
    up_to_constant = bool(check.get("up_to_constant"))
    each_side = bool(check.get("each_side"))
    lines = candidate_lines(part_work, check["target"])
-   readings = [reading for line in lines for reading in readings_of(line, each_side)]
+   readings = [reading for line in lines for reading in readings_of(line, each_side, context.definitions)]
    unreadable = []
    unsettled = False
 
@@ -197,7 +254,7 @@ def accurate_to_three_places(written, exact):
    return rounded_matches or truncated_matches
 
 
-def numeric_three_decimals(check, part_work):
+def numeric_three_decimals(check, part_work, context=NO_CONTEXT):
    expected = sympy_of(check["expected"])
    line = answer_line(part_work)
    has_line = line != ""
@@ -206,7 +263,7 @@ def numeric_three_decimals(check, part_work):
       return CheckResult("numeric_three_decimals", FAIL, "no answer was written for this part")
 
    try:
-      candidate = latex.rhs_to_sympy(line)
+      candidate = latex.rhs_to_sympy(line, context.definitions)
    except latex.Unreadable:
       return CheckResult("numeric_three_decimals", UNSETTLED, "the answer could not be read", unreadable=(line,))
 
@@ -240,8 +297,12 @@ def numeric_three_decimals(check, part_work):
    return CheckResult("numeric_three_decimals", FAIL, detail, rounding_only=near_the_value, matched_line=line)
 
 
-def _integrals_in(line):
-   sides = latex.normalised(line).split("=")
+def _integrals_in(line, definitions=None):
+   try:
+      sides, bindings = latex.split_sides(line, definitions)
+   except latex.Unreadable:
+      return [], [line]
+
    found = []
    unreadable = []
 
@@ -252,7 +313,7 @@ def _integrals_in(line):
          continue
 
       try:
-         expression = latex.to_sympy(side)
+         expression = latex.read_side(side, bindings)
       except latex.Unreadable:
          unreadable.append(line)
          continue
@@ -262,7 +323,84 @@ def _integrals_in(line):
    return found, unreadable
 
 
-def _bounds_equal(integral, lower, upper):
+def written_decimal_places(value, line):
+   """The places after the point of the decimal numeral in line that reads as value, or None when
+   no numeral in the line does."""
+   for numeral in _DECIMAL.findall(line):
+      is_this_value = math.isclose(float(numeral), float(value), rel_tol=0, abs_tol=1e-12)
+
+      if is_this_value:
+         return len(numeral.split(".")[1])
+
+   return None
+
+
+def assigned_decimals(symbol, question_work):
+   """The decimals the student set symbol to anywhere in the question, as in p \\approx 0.357."""
+   name = sympy.latex(symbol)
+   assignment = re.compile(r"(?<![A-Za-z\\])" + re.escape(name) + r"(?![A-Za-z])\s*(?:=|\\approx)\s*(-?\d*\.\d+)")
+   found = []
+
+   for part_work in question_work.get("parts", []):
+      for line in live_math_lines(part_work):
+         found.extend(assignment.findall(latex.without_spacing(line)))
+
+   return found
+
+
+def decimal_verdict(value_text_or_number, places, exact):
+   has_enough_places = places is not None and places >= REQUIRED_DECIMAL_PLACES
+
+   if not has_enough_places:
+      return UNSETTLED
+
+   is_accurate = accurate_to_three_places(float(value_text_or_number), float(exact))
+
+   return EQUIVALENT if is_accurate else NOT_EQUIVALENT
+
+
+def bound_verdict(written, expected, line, context):
+   """A written limit against the expected one. Beyond symbolic equivalence, an expected limit
+   that is a named root (or evaluates to a number once the roots are known) accepts the root's
+   name, a decimal accurate to three places, or a symbol the student set to such a decimal."""
+   verdict = equivalence(written, expected)
+
+   if verdict == EQUIVALENT:
+      return EQUIVALENT
+
+   expected_value = expected.subs(context.roots)
+   is_irrational_limit = expected_value.is_number and not expected_value.is_rational
+
+   if not is_irrational_limit:
+      return verdict
+
+   is_named_root = written in context.roots
+
+   if is_named_root:
+      return equivalence(context.roots[written], expected_value)
+
+   is_decimal = isinstance(written, sympy.Float)
+
+   if is_decimal:
+      return decimal_verdict(written, written_decimal_places(written, line), expected_value)
+
+   is_student_symbol = isinstance(written, sympy.Symbol)
+
+   if is_student_symbol:
+      assigned = set(assigned_decimals(written, context.question_work))
+      has_one_value = len(assigned) == 1
+
+      if not has_one_value:
+         return UNSETTLED
+
+      numeral = assigned.pop()
+
+      return decimal_verdict(numeral, len(numeral.split(".")[1]), expected_value)
+
+   return verdict
+
+
+def _bounds_equal(integral, lower, upper, line="", context=NO_CONTEXT):
    limits = integral.limits[0]
    has_bounds = len(limits) == 3
 
@@ -270,8 +408,8 @@ def _bounds_equal(integral, lower, upper):
       return NOT_EQUIVALENT
 
    _variable, written_lower, written_upper = limits
-   lower_verdict = equivalence(written_lower, lower)
-   upper_verdict = equivalence(written_upper, upper)
+   lower_verdict = bound_verdict(written_lower, lower, line, context)
+   upper_verdict = bound_verdict(written_upper, upper, line, context)
    both_equal = lower_verdict == EQUIVALENT and upper_verdict == EQUIVALENT
    either_differs = lower_verdict == NOT_EQUIVALENT or upper_verdict == NOT_EQUIVALENT
 
@@ -284,23 +422,23 @@ def _bounds_equal(integral, lower, upper):
    return UNSETTLED
 
 
-def bounds_match(check, part_work):
-   lower = sympy_of(check["lower"])
-   upper = sympy_of(check["upper"])
+def bounds_match(check, part_work, context=NO_CONTEXT):
+   lower = context.expression(check["lower"])
+   upper = context.expression(check["upper"])
    has_integrand = check.get("integrand") is not None
-   integrand = sympy_of(check["integrand"]) if has_integrand else None
+   integrand = context.expression(check["integrand"]) if has_integrand else None
    variable = sympy.Symbol(check.get("variable") or "x")
    unreadable = []
    any_integral = False
    unsettled = False
 
    for line in live_math_lines(part_work):
-      integrals, unread = _integrals_in(line)
+      integrals, unread = _integrals_in(line, context.definitions)
       unreadable.extend(unread)
 
       for integral in integrals:
          any_integral = True
-         bounds_verdict = _bounds_equal(integral, lower, upper)
+         bounds_verdict = _bounds_equal(integral, lower, upper, line, context)
 
          if bounds_verdict == UNSETTLED:
             unsettled = True
@@ -340,7 +478,7 @@ def _plain_text(line):
    return " ".join(text.lower().split())
 
 
-def units_present(check, part_work):
+def units_present(check, part_work, context=NO_CONTEXT):
    texts = [_plain_text(line["content"]) for line in live_lines(part_work)]
    texts.append(_plain_text(part_work.get("answer") or ""))
    accepted = [" ".join(unit.lower().split()) for unit in check["units"]]
@@ -357,18 +495,130 @@ def units_present(check, part_work):
    return CheckResult("units_present", FAIL, f"none of {check['units']} written")
 
 
+def sample_points(interval, count=EQUATION_SAMPLES):
+   low, high = (float(sympy_of(end)) for end in interval)
+   step = (high - low) / (count + 1)
+
+   return [low + step * index for index in range(1, count + 1)]
+
+
+def residuals(difference, symbol, points):
+   """difference evaluated at each point, as floats, or None when any value is not a real number.
+   Module level, so run_bounded can run it in a child process."""
+   values = []
+
+   for point in points:
+      value = sympy.N(difference.subs(symbol, point), 15)
+      is_real_number = value.is_number and value.is_real and value.is_finite
+
+      if not is_real_number:
+         return None
+
+      values.append(float(value))
+
+   return values
+
+
+def proportional_to(candidate, reference):
+   """Whether candidate is a nonzero constant multiple of reference at every sample, allowing the
+   slack of constants written to three decimal places."""
+   anchor = max(range(len(reference)), key=lambda index: abs(reference[index]))
+   is_flat_reference = abs(reference[anchor]) < 1e-9
+
+   if is_flat_reference:
+      return False
+
+   factor = candidate[anchor] / reference[anchor]
+   is_zero_factor = abs(factor) < 1e-9
+
+   if is_zero_factor:
+      return False
+
+   slack = ROUNDED_CONSTANT_SLACK * max(1.0, abs(factor))
+
+   return all(abs(written - factor * expected) <= slack for written, expected in zip(candidate, reference))
+
+
+def equation_pairs(line, definitions):
+   """Each pair of adjacent sides that both read, within each statement of the line, where a
+   statement ends at \\implies or \\Rightarrow."""
+   pairs = []
+
+   for statement in _STATEMENT_BREAK.split(line):
+      sides, bindings = latex.split_sides(statement, definitions)
+      readings = []
+
+      for side in sides:
+         try:
+            readings.append(latex.read_side(side, bindings))
+         except latex.Unreadable:
+            readings.append(None)
+
+      pairs.extend((left, right) for left, right in zip(readings, readings[1:]) if left is not None and right is not None)
+
+   return pairs
+
+
+def equation_setup(check, part_work, context=NO_CONTEXT):
+   unknown = sympy.Symbol(check["unknown"])
+   reference_difference = (context.expression(check["left"]) - context.expression(check["right"])).subs(context.roots)
+   points = sample_points(check["interval"])
+   reference = run_bounded(residuals, (reference_difference, unknown, points), EQUATION_TIMEOUT_S, None)
+   needs_integral = bool(reference_difference.atoms(sympy.Integral))
+   lines = candidate_lines(part_work, "any_line")
+   unreadable = []
+
+   if reference is None:
+      return CheckResult("equation_setup", UNSETTLED, "the reference equation did not evaluate")
+
+   if not lines:
+      return CheckResult("equation_setup", FAIL, "no work was written for this part")
+
+   for line in lines:
+      try:
+         pairs = equation_pairs(line, context.definitions)
+      except latex.Unreadable:
+         unreadable.append(line)
+         continue
+
+      for left, right in pairs:
+         difference = (left - right).subs(context.roots)
+         symbols = difference.free_symbols
+         has_one_unknown = len(symbols) == 1
+         has_integral = bool(difference.atoms(sympy.Integral))
+         is_candidate = has_one_unknown and (has_integral or not needs_integral)
+
+         if not is_candidate:
+            continue
+
+         written_unknown = next(iter(symbols))
+         written = run_bounded(residuals, (difference, written_unknown, points), EQUATION_TIMEOUT_S, None)
+         matches = written is not None and proportional_to(written, reference)
+
+         if matches:
+            return CheckResult("equation_setup", PASS, f"{line} is the setup equation in {written_unknown}", matched_line=line)
+
+   return CheckResult(
+      "equation_setup",
+      UNSETTLED,
+      f"no line matched the setup equation in {check['unknown']}",
+      unreadable=tuple(unreadable),
+   )
+
+
 CHECKS = {
    "sympy_equivalence": sympy_equivalence,
    "numeric_three_decimals": numeric_three_decimals,
    "bounds_match": bounds_match,
    "units_present": units_present,
+   "equation_setup": equation_setup,
 }
 
 
-def run_check(check, part_work):
+def run_check(check, part_work, context=NO_CONTEXT):
    """A check that raises has not decided anything, so it reports unsettled and the point goes to
    the model, as 03 sends every unsettled check."""
    try:
-      return CHECKS[check["kind"]](check, part_work)
+      return CHECKS[check["kind"]](check, part_work, context)
    except Exception as raised:
       return CheckResult(check["kind"], UNSETTLED, f"the check could not run: {type(raised).__name__}")

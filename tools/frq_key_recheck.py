@@ -11,7 +11,8 @@ Usage:
       zero-argument function returning a SymPy expression.
 
 Checks compared: sympy_equivalence and numeric_three_decimals (the value), bounds_match (lower and
-upper). up_to_constant checks compare derivatives in the check's variable. units_present checks are
+upper, with the record's named roots put in), equation_setup (the root of the reference equation in
+its interval, compared with the formulation's root). up_to_constant checks compare derivatives in the check's variable. units_present checks are
 listed for reading, not compared. The control perturbs every computed value (2v + 1 and
 v + sqrt(2)/7, skipping one identical to v, and only 2v + 1 for a check that accepts any
 constant, since an added constant is not a wrong antiderivative) and requires each perturbation
@@ -31,9 +32,10 @@ sys.path.insert(0, str(REPO_ROOT))
 
 import sympy
 
-from app.frq.items import all_points, load_frq_records, sympy_of
+from app.frq.items import all_points, load_frq_records, root_names, sympy_of
 
-COMPARED_KINDS = ("sympy_equivalence", "numeric_three_decimals", "bounds_match")
+COMPARED_KINDS = ("sympy_equivalence", "numeric_three_decimals", "bounds_match", "equation_setup")
+ROOT_DIGITS = 30
 
 
 def stems_document(records):
@@ -57,6 +59,8 @@ def stems_document(records):
                is_intermediate = check.get("target") == "any_line"
                wanted = "the lower and upper limits of the definite integral" if is_bounds else "the part's final answer"
                wanted = "an intermediate expression the work must contain" if is_intermediate else wanted
+               is_setup = kind == "equation_setup"
+               wanted = f"the value of the unknown {check.get('unknown')} that the part's setup equation determines" if is_setup else wanted
                note = " (an antiderivative, any constant)" if check.get("up_to_constant") else ""
                note = note + f" [{point['point_type_id']}]"
                lines.append(f"   - key {record['id']}:{point['point_id']}: {wanted} this point checks{note}; variable {check.get('variable') or 'x'}")
@@ -77,6 +81,11 @@ def load_formulations(path):
 def equal(left, right, up_to_constant=False, variable=None):
    """Equal when the difference simplifies to 0 or vanishes at six rational points. Unevaluated
    integrals are evaluated first. A difference that cannot be evaluated is not called equal."""
+   is_missing = left is None or right is None
+
+   if is_missing:
+      return False
+
    difference = sympy.sympify(left).doit() - sympy.sympify(right).doit()
 
    if up_to_constant:
@@ -97,11 +106,44 @@ def equal(left, right, up_to_constant=False, variable=None):
    return all(abs(value) < 1e-9 for value in values)
 
 
-def expected_values(check):
+def record_roots(record):
+   return {
+      sympy.Symbol(name): sympy_of(spec["value"], names=root_names(record))
+      for name, spec in (record.get("roots") or {}).items()
+   }
+
+
+def setup_root(check, roots):
+   """The root of the reference equation left = right inside its interval: a sign change on a grid
+   of the interval, refined by nsolve. None when the grid finds no single sign change."""
+   unknown = sympy.Symbol(check["unknown"])
+   names = [symbol.name for symbol in roots]
+   difference = (sympy_of(check["left"], names) - sympy_of(check["right"], names)).subs(roots)
+   low, high = (float(sympy_of(end)) for end in check["interval"])
+   grid = [low + (high - low) * index / 200 for index in range(201)]
+   values = [float(sympy.N(difference.subs(unknown, point), 15)) for point in grid]
+   changes = [index for index in range(200) if values[index] * values[index + 1] < 0]
+   has_one_change = len(changes) == 1
+
+   if not has_one_change:
+      return None
+
+   start = (grid[changes[0]] + grid[changes[0] + 1]) / 2
+
+   return sympy.nsolve(difference, unknown, start, prec=ROOT_DIGITS)
+
+
+def expected_values(check, roots=None):
    kind = check["kind"]
+   roots = roots or {}
+
+   names = [symbol.name for symbol in roots]
 
    if kind == "bounds_match":
-      return [sympy_of(check["lower"]), sympy_of(check["upper"])]
+      return [sympy_of(check["lower"], names).subs(roots), sympy_of(check["upper"], names).subs(roots)]
+
+   if kind == "equation_setup":
+      return [setup_root(check, roots)]
 
    return [sympy_of(check["expected"])]
 
@@ -140,7 +182,7 @@ def check_bank(records, formulations):
          variable = sympy.Symbol(check.get("variable") or "x")
          up_to_constant = bool(check.get("up_to_constant"))
          computed = computed_values(check, formulation())
-         expected = expected_values(check)
+         expected = expected_values(check, record_roots(record))
          matches = all(equal(left, right, up_to_constant, variable) for left, right in zip(computed, expected))
          results.append((key, "match" if matches else "key_differs", (computed, expected, up_to_constant, variable)))
 

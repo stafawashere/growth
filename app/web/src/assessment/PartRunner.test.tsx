@@ -157,6 +157,17 @@ describe("the timer", () => {
    });
 });
 
+/* Each tile's accessible name, in order, one tile per name. */
+function expectTileNames(names: string[]) {
+   const tiles = screen.getAllByTestId("question-menu-entry");
+
+   expect(tiles.length).toBe(names.length);
+
+   for (const [position, name] of names.entries()) {
+      expect(screen.getByRole("button", { name })).toBe(tiles[position]);
+   }
+}
+
 describe("the question menu", () => {
    it("lists answered, unanswered and marked questions and jumps to the one chosen", () => {
       const props = renderRunner();
@@ -166,13 +177,12 @@ describe("the question menu", () => {
       fireEvent.click(screen.getByRole("checkbox", { name: /Mark for review/ }));
       fireEvent.click(screen.getByRole("button", { name: "Question menu" }));
 
-      const entries = screen.getAllByTestId("question-menu-entry").map((entry) => entry.textContent);
-
-      expect(entries).toEqual([
+      expectTileNames([
          "Question 1, answered",
          "Question 2, unanswered, marked for review",
          "Question 3, unanswered"
       ]);
+      expect(screen.getAllByTestId("question-menu-entry").map((entry) => entry.textContent)).toEqual(["1", "2*", "3"]);
 
       fireEvent.click(screen.getAllByTestId("question-menu-entry")[2]);
 
@@ -196,10 +206,7 @@ describe("question numbering", () => {
 
       fireEvent.click(screen.getByRole("button", { name: "Question menu" }));
 
-      expect(screen.getAllByTestId("question-menu-entry").map((entry) => entry.textContent)).toEqual([
-         "Question 30, unanswered",
-         "Question 31, unanswered"
-      ]);
+      expectTileNames(["Question 30, unanswered", "Question 31, unanswered"]);
    });
 });
 

@@ -216,6 +216,11 @@ function PartTimer(props: { part: AssessmentPart; onTimeUp: () => void }) {
    );
 }
 
+export const QUESTION_MENU_KEY = "Filled means answered, a heavy border is the question on screen, and * marks one for review.";
+
+/* Each tile shows the question's number and reads without colour: an answered tile is filled with a
+   solid border, an unanswered one keeps a dashed border, the one on screen has a heavier border, and
+   * follows a number marked for review. The full sentence is the tile's accessible name. */
 function QuestionMenuList(props: {
    questions: AssessmentQuestion[];
    work: Record<number, QuestionWork>;
@@ -223,30 +228,37 @@ function QuestionMenuList(props: {
    onJump: (index: number) => void;
 }) {
    return (
-      <ul className="question-menu" aria-label="Questions in this part" data-testid="question-menu">
-         {props.questions.map((question, index) => {
-            const work = props.work[question.number];
-            const choiceState = isAnswered(work) ? "answered" : "unanswered";
-            const answeredState = isFreeResponse(question) ? "written in the booklet" : choiceState;
-            const markedState = work.marked ? ", marked for review" : "";
-            const isCurrent = index === props.currentIndex;
+      <div className="question-menu-block">
+         <ul className="question-menu" aria-label="Questions in this part" data-testid="question-menu">
+            {props.questions.map((question, index) => {
+               const work = props.work[question.number];
+               const choiceState = isAnswered(work) ? "answered" : "unanswered";
+               const answeredState = isFreeResponse(question) ? "written in the booklet" : choiceState;
+               const markedState = work.marked ? ", marked for review" : "";
+               const isCurrent = index === props.currentIndex;
 
-            return (
-               <li key={question.number} data-answered={isAnswered(work)}>
-                  <button
-                     type="button"
-                     className="text-button motion-instant-question-move"
-                     aria-current={isCurrent ? "true" : undefined}
-                     data-testid="question-menu-entry"
-                     onClick={() => props.onJump(index)}
-                  >
-                     Question {question.number}, {answeredState}
-                     {markedState}
-                  </button>
-               </li>
-            );
-         })}
-      </ul>
+               return (
+                  <li key={question.number} data-answered={isAnswered(work)}>
+                     <button
+                        type="button"
+                        className="question-tile motion-instant-question-move"
+                        aria-current={isCurrent ? "true" : undefined}
+                        aria-label={`Question ${question.number}, ${answeredState}${markedState}`}
+                        data-testid="question-menu-entry"
+                        onClick={() => props.onJump(index)}
+                     >
+                        {question.number}
+                        {work.marked ? "*" : ""}
+                     </button>
+                  </li>
+               );
+            })}
+         </ul>
+
+         <p className="muted question-menu-key" aria-hidden="true">
+            {QUESTION_MENU_KEY}
+         </p>
+      </div>
    );
 }
 

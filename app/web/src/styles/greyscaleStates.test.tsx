@@ -315,6 +315,17 @@ describe.each(VIEWPORT_WIDTHS)("eval_greyscale_states at %i px", (width) => {
       expectDistinct({ timerShown, timerHidden: timer() });
    });
 
+   it("a question tile reads answered, unanswered and marked for review without colour", async () => {
+      const answered = { ...workedQuestion(), number: 2, marked: false };
+      const markedUnanswered = { ...multipleChoiceQuestion(4), marked: true };
+
+      await partRunner(noCalculatorPart({ questions: [workedQuestion(), answered, multipleChoiceQuestion(3), markedUnanswered] }));
+
+      const tile = (index: number) => colourless(screen.getAllByTestId("question-menu-entry")[index].parentElement!).replace(/"\d+"/g, "\"N\"");
+
+      expectDistinct({ answered: tile(1), unanswered: tile(2), markedForReview: tile(3) });
+   });
+
    it("which experiment arm is on reads without colour", async () => {
       async function onButton(state: ExperimentState) {
          mocked.readExperiments.mockResolvedValue({

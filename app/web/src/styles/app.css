@@ -276,8 +276,7 @@ th {
    text-underline-offset: calc(var(--growth-space-4) + var(--growth-stroke-hairline));
 }
 
-.text-button[aria-pressed="true"],
-.text-button[aria-current="true"] {
+.text-button[aria-pressed="true"] {
    color: var(--growth-text-primary);
    font-family: "Inter SemiBold", "Inter", system-ui, sans-serif;
    font-weight: normal;
@@ -1074,19 +1073,39 @@ th {
    padding: 0;
 }
 
-.question-menu > li {
+/* A tile per question. Answered is filled with a solid border and unanswered keeps a dashed one,
+   so the two differ without colour; the question on screen has the heavier border. The answered
+   border is text-muted because the hairline on accent-tint-2 is under 3:1 in dark. */
+.question-tile {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   min-width: var(--growth-space-48);
+   min-height: calc(var(--growth-space-32) + var(--growth-space-8));
+   padding: 0 var(--growth-space-8);
    background: var(--growth-surface-sunken);
-   border: var(--growth-stroke-hairline) solid var(--growth-border-hairline);
+   color: var(--growth-text-secondary);
+   border: var(--growth-stroke-hairline) dashed var(--growth-border-hairline);
    border-radius: calc(var(--growth-space-4) / 2);
+   font-size: var(--growth-type-label);
+   line-height: var(--growth-leading-label);
+   cursor: pointer;
 }
 
-.question-menu > li[data-answered="true"] {
+.question-menu > li[data-answered="true"] > .question-tile {
    background: var(--growth-accent-tint-2);
+   color: var(--growth-text-primary);
    border: var(--growth-stroke-hairline) solid var(--growth-text-muted);
 }
 
-.question-menu .text-button {
-   padding: var(--growth-space-8) var(--growth-space-12);
+.question-menu > li > .question-tile[aria-current="true"] {
+   border-width: calc(var(--growth-space-4) / 2);
+   border-color: var(--growth-text-primary);
+   color: var(--growth-text-primary);
+}
+
+.question-menu-key {
+   margin-top: var(--growth-space-8);
    font-size: var(--growth-type-caption);
    line-height: var(--growth-leading-caption);
 }

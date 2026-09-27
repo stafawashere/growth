@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { readMe, readProgress, type MePayload } from "../api/client";
 import type { ProgressPayload } from "../api/types";
 import type { OnboardingReason } from "../onboarding/OnboardingScreen";
 import { daysToExam, formatPlanDate } from "./dates";
 import { HomeScreen, type HomeScreenStatus, type QueueLine } from "./HomeScreen";
+import { useLoad } from "../status/load";
 import { LoadFailed, Loading } from "../status/LoadState";
 
 export interface HomeRouteProps {
@@ -17,10 +18,11 @@ export interface HomeRouteProps {
    onStartOnboarding?: (reason: OnboardingReason, resumeSessionId: string | null) => void;
 }
 
-type HomeLoad =
-   | { kind: "waiting" }
-   | { kind: "failed" }
-   | { kind: "loaded"; me: MePayload; progress: ProgressPayload };
+async function readHome(): Promise<{ me: MePayload; progress: ProgressPayload }> {
+   const [me, progress] = await Promise.all([readMe(), readProgress()]);
+
+   return { me, progress };
+}
 
 /* 08 home: a first login runs the onboarding diagnostic before any queue exists, and an unfinished
    diagnostic is resumed wherever the student left it, so home itself is never shown for either. */
@@ -73,36 +75,8 @@ export function HomeRoute({
    onOpenMockExam,
    onStartOnboarding
 }: HomeRouteProps) {
-   const [load, setLoad] = useState<HomeLoad>({ kind: "waiting" });
-   const [loadAttempt, setLoadAttempt] = useState(0);
-
-   useEffect(() => {
-      let isCurrent = true;
-
-      Promise.all([readMe(), readProgress()]).then(
-         ([me, progress]) => {
-            if (isCurrent) {
-               setLoad({ kind: "loaded", me, progress });
-            }
-         },
-         () => {
-            if (isCurrent) {
-               setLoad({ kind: "failed" });
-            }
-         }
-      );
-
-      return () => {
-         isCurrent = false;
-      };
-   }, [loadAttempt]);
-
-   function retry() {
-      setLoad({ kind: "waiting" });
-      setLoadAttempt((attempt) => attempt + 1);
-   }
-
-   const redirects = load.kind === "loaded" && sendsToOnboarding(load.progress);
+   const load = useLoad(readHome);
+   const redirects = load.kind === "loaded" && sendsToOnboarding(load.value.progress);
 
    useEffect(() => {
       const canRedirect = redirects && load.kind === "loaded" && onStartOnboarding !== undefined;
@@ -111,7 +85,7 @@ export function HomeRoute({
          return;
       }
 
-      const { progress } = load;
+      const { progress } = load.value;
       const reason = progress.home_state === "long_gap" ? "long_gap" : "first_login";
 
       onStartOnboarding(reason, progress.diagnostic_in_progress);
@@ -122,14 +96,14 @@ export function HomeRoute({
    }
 
    if (load.kind === "failed") {
-      return <LoadFailed testId="home-failed" onRetry={retry} />;
+      return <LoadFailed testId="home-failed" onRetry={load.retry} />;
    }
 
    if (redirects) {
       return null;
    }
 
-   const { me, progress } = load;
+   const { me, progress } = load.value;
    const openSessionId = progress.session_in_progress;
 
    function resume() {

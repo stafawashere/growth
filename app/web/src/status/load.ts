@@ -1,12 +1,17 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 export type Load<T> = { kind: "waiting" } | { kind: "failed" } | { kind: "loaded"; value: T };
 
-/* Every screen section that reads its own route loads through this, so a refused request, a
+export type Loader<T> = Load<T> & { retry: () => void };
+
+/* Every screen and section that reads its own route on arrival loads through this, and draws the
+   waiting and failed states with Loading and LoadFailed from LoadState.tsx. A refused request, a
    request that could not be made and a response that is not a JSON object all end in the same
-   failed state, and a section never draws from a payload it did not receive. */
-export function useLoad<T>(read: () => Promise<T>): Load<T> {
+   failed state, and a screen never draws from a payload it did not receive. retry goes back to
+   waiting and reads again. */
+export function useLoad<T>(read: () => Promise<T>): Loader<T> {
    const [load, setLoad] = useState<Load<T>>({ kind: "waiting" });
+   const [attempt, setAttempt] = useState(0);
 
    useEffect(() => {
       let isCurrent = true;
@@ -36,7 +41,9 @@ export function useLoad<T>(read: () => Promise<T>): Load<T> {
       return () => {
          isCurrent = false;
       };
-   }, [read]);
+   }, [read, attempt]);
 
-   return load;
+   const retry = useCallback(() => setAttempt((previous) => previous + 1), []);
+
+   return { ...load, retry };
 }

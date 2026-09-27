@@ -1,3 +1,5 @@
+import { PageHeader } from "../page/PageHeader";
+
 export interface QueueLine {
    id: string;
    label: string;
@@ -114,7 +116,7 @@ export function HomeScreen(props: HomeScreenProps) {
 
    return (
       <section className="card home">
-         <h1 className="screen-title">Today</h1>
+         <PageHeader title="Today" />
 
          {status === "ready" && <ReadyQueue {...props} />}
          {status === "empty" && <EmptyQueue onAddPracticeSet={onAddPracticeSet} />}

@@ -24,6 +24,7 @@ import { CaptureScreen } from "../frq/CaptureScreen";
 import { refusalText, withLabel } from "./format";
 import { PartRunner } from "./PartRunner";
 import { Loading } from "../status/LoadState";
+import { PageHeader } from "../page/PageHeader";
 
 /* A full mock or a part drill, from the first part's start to the result. Parts run in order and
    a closed part is never offered again. The only way forward is the next part, and there is no
@@ -315,7 +316,7 @@ export function TimedSessionScreen({ kind, sessionId, initial, pollMilliseconds,
    if (nextPart !== undefined && lastClosed === null) {
       return (
          <section className="card" data-testid="part-intro">
-            <h1 className="screen-title">{kind === "mocks" ? "Mock exam" : "Part drill"}</h1>
+            <PageHeader title={kind === "mocks" ? "Mock exam" : "Part drill"} />
 
             {problemLine}
 
@@ -335,7 +336,7 @@ export function TimedSessionScreen({ kind, sessionId, initial, pollMilliseconds,
    if (nextPart !== undefined && lastClosed !== null) {
       return (
          <section className="card" data-testid="break-screen">
-            <h1 className="screen-title">Break</h1>
+            <PageHeader title="Break" />
 
             {problemLine}
 
@@ -358,7 +359,7 @@ export function TimedSessionScreen({ kind, sessionId, initial, pollMilliseconds,
 
    return (
       <section className="card" data-testid="timed-finished">
-         <h1 className="screen-title">Every part is closed</h1>
+         <PageHeader title="Every part is closed" />
 
          {problemLine}
 

@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import type { ComingBackEntry, ErrorNoteEntry, ProvisionalPoint } from "../api/types";
 import { ProvisionalPoints } from "./ProvisionalPoints";
+import { PageHeader } from "../page/PageHeader";
 
 /* The review screen, 08-design-brief.md "Review": what is coming back, the student's own error
    notes, and the provisional points. The list arrives in the order block 1 serves it, so the
@@ -222,7 +223,7 @@ function ErrorNotes(props: {
 export function ReviewScreen(props: ReviewScreenProps) {
    return (
       <section className="card review">
-         <h1 className="screen-title">Review</h1>
+         <PageHeader title="Review" />
 
          <ComingBack entries={props.comingBack} />
 

@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { ApiError, askForReread, readReview, submitErrorNote } from "../api/client";
 import type { ErrorNoteEntry, ReviewPayload } from "../api/types";
 import { ReviewScreen } from "./ReviewScreen";
+import { useLoad } from "../status/load";
 import { Loading } from "../status/LoadState";
-
-type ReviewLoad = { kind: "waiting" } | { kind: "failed" } | { kind: "loaded"; review: ReviewPayload };
+import { PageHeader } from "../page/PageHeader";
 
 /* Review takes no input from the shell: it is reached from home and reads GET /review. An edited
    note goes through the session route that wrote it, which replaces the note. */
@@ -18,28 +18,8 @@ function saveFailure(problem: unknown) {
 }
 
 export function ReviewRoute(_props: ReviewRouteProps) {
-   const [load, setLoad] = useState<ReviewLoad>({ kind: "waiting" });
-
-   useEffect(() => {
-      let isCurrent = true;
-
-      readReview().then(
-         (review) => {
-            if (isCurrent) {
-               setLoad({ kind: "loaded", review });
-            }
-         },
-         () => {
-            if (isCurrent) {
-               setLoad({ kind: "failed" });
-            }
-         }
-      );
-
-      return () => {
-         isCurrent = false;
-      };
-   }, []);
+   const load = useLoad(readReview);
+   const [edited, setEdited] = useState<ReviewPayload | null>(null);
 
    if (load.kind === "waiting") {
       return <Loading testId="review-waiting" />;
@@ -48,7 +28,7 @@ export function ReviewRoute(_props: ReviewRouteProps) {
    if (load.kind === "failed") {
       return (
          <section className="card">
-            <h1 className="screen-title">Review</h1>
+            <PageHeader title="Review" />
 
             <p data-testid="review-failed" className="muted">
                The review record could not be loaded.
@@ -57,7 +37,7 @@ export function ReviewRoute(_props: ReviewRouteProps) {
       );
    }
 
-   const { review } = load;
+   const review = edited ?? load.value;
 
    async function saveNote(entry: ErrorNoteEntry, note: string) {
       try {
@@ -66,7 +46,7 @@ export function ReviewRoute(_props: ReviewRouteProps) {
             current.attempt_id === entry.attempt_id ? { ...current, note: saved.error_note ?? note } : current
          );
 
-         setLoad({ kind: "loaded", review: { ...review, error_notes: replaced } });
+         setEdited({ ...review, error_notes: replaced });
       } catch (problem) {
          throw saveFailure(problem);
       }
@@ -79,7 +59,7 @@ export function ReviewRoute(_props: ReviewRouteProps) {
          point.grading_id === gradingId ? { ...point, disputed: true } : point
       );
 
-      setLoad({ kind: "loaded", review: { ...review, provisional_points: marked } });
+      setEdited({ ...review, provisional_points: marked });
    }
 
    return (

@@ -1,6 +1,6 @@
 import { readMetrics } from "../api/client";
 import type { MetricsPayload } from "../api/types";
-import { useLoad } from "../progress/load";
+import { useLoad } from "../status/load";
 import { MetricsView } from "./MetricsView";
 import { Loading } from "../status/LoadState";
 

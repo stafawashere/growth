@@ -20,6 +20,7 @@ import { ConfidencePrompt } from "../session/ConfidencePrompt";
 import { GradingView } from "./GradingView";
 import { ReadBackEditor, ReadBackView, emptyReadBack } from "./ReadBack";
 import { TypedEntry } from "./TypedEntry";
+import { PageHeader } from "../page/PageHeader";
 
 /* One free-response question inside a unit check, in the order 05 fixes: a booklet-shaped page to
    print, a photograph, the image check, the read-back to confirm or correct, then per-point
@@ -291,7 +292,7 @@ export function CaptureScreen({ sessionId, question, pollMilliseconds, readFile,
 
    return (
       <section className="card" data-testid="capture-screen">
-         <h1 className="screen-title">Free response</h1>
+         <PageHeader title="Free response" />
 
          <p>
             <MathText text={question.stem} />

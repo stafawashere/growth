@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import type { CheckpointPart, CheckpointQuestion, CheckpointSection, CheckpointView } from "../api/types";
 import { CheckpointResult } from "../progress/CheckpointHistory";
+import { PageHeader } from "../page/PageHeader";
 
 /* The six-week checkpoint (11 P7 scope item 5). The form is released College Board material used by
    reference only (app/checkpoint/forms.py): this screen names the year, the parts and the questions
@@ -28,7 +29,7 @@ export interface CheckpointScreenProps {
 export function CheckpointIntro({ refusal, onStart, onLeave }: CheckpointIntroProps) {
    return (
       <section className="card" data-testid="checkpoint-intro">
-         <h1 className="screen-title">Checkpoint</h1>
+         <PageHeader title="Checkpoint" />
 
          <p>
             A checkpoint is one released AP free-response form, worked on paper under the exam&apos;s part
@@ -199,7 +200,7 @@ export function CheckpointScreen({ checkpoint, onScore, onFinish, onLeave }: Che
    if (isFinished) {
       return (
          <section className="card" data-testid="checkpoint-finished">
-            <h1 className="screen-title">Checkpoint</h1>
+            <PageHeader title="Checkpoint" />
 
             <CheckpointResult checkpoint={checkpoint} />
 
@@ -214,9 +215,7 @@ export function CheckpointScreen({ checkpoint, onScore, onFinish, onLeave }: Che
 
    return (
       <section className="card" data-testid="checkpoint-screen">
-         <h1 className="eyebrow">Checkpoint</h1>
-
-         <h2 className="screen-title">{checkpoint.form_year} released free-response form</h2>
+         <PageHeader eyebrow="Checkpoint" title={<>{checkpoint.form_year} released free-response form</>} />
 
          <p>{MASTERY_NOTE}</p>
 

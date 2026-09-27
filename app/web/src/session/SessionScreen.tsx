@@ -28,6 +28,7 @@ import { ErrorNoteField } from "./ErrorNoteField";
 import { collectsConfidence, Item, servesChoice } from "./Item";
 import { SelfExplanationPrompt } from "./SelfExplanationPrompt";
 import { StepMarks } from "./StepMarks";
+import { PageHeader } from "../page/PageHeader";
 
 export const SET_FINISHED = "That is today's set finished.";
 
@@ -380,7 +381,7 @@ export function SessionScreen({ resumeSessionId }: SessionScreenProps) {
    if (finished) {
       return (
          <section className="card session-end" data-testid="session-end">
-            <h1 className="screen-title">{stopped ? SET_STOPPED : SET_FINISHED}</h1>
+            <PageHeader title={stopped ? SET_STOPPED : SET_FINISHED} />
 
             {worked.items > 0 ? <p>{workedSentence(worked.items)}</p> : null}
 

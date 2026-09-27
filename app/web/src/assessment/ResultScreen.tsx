@@ -1,6 +1,7 @@
 import type { AssessmentResult, PacingRatio, PartPacing, QuestionComparison } from "../api/types";
 import { formatFigure } from "../progress/figures";
 import { clockText } from "./format";
+import { PageHeader } from "../page/PageHeader";
 
 /* 05 "AP score estimate" and 08's mock score copy. A full mock shows a band with its assumptions
    on the same screen and never a single number or a centre. The statement is the server's own
@@ -99,7 +100,7 @@ export function ResultScreen({ result, onDone }: ResultScreenProps) {
 
    return (
       <section className="card result" data-testid="assessment-result">
-         <h1 className="screen-title">{result.mode === "mock" ? "Mock exam result" : "Part drill result"}</h1>
+         <PageHeader title={result.mode === "mock" ? "Mock exam result" : "Part drill result"} />
 
          {hasBand ? (
             <section data-testid="band-section">

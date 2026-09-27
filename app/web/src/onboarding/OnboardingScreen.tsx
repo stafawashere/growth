@@ -3,6 +3,7 @@ import { MathField } from "../input/MathField";
 import { FigureView } from "../figures/FigureView";
 import { MathText } from "../math/MathText";
 import { ANSWER_UNAVAILABLE, COMMIT_LABEL } from "../session/Item";
+import { PageHeader } from "../page/PageHeader";
 
 export type OnboardingReason = "first_login" | "long_gap";
 
@@ -54,7 +55,7 @@ export function DiagnosticIntro({ reason, onStart }: DiagnosticIntroProps) {
 
    return (
       <section className="card" data-testid="diagnostic-intro">
-         <h1 className="screen-title">{copy.title}</h1>
+         <PageHeader title={copy.title} />
 
          <p>{copy.purpose}</p>
 
@@ -137,7 +138,7 @@ export interface DiagnosticResultViewProps {
 export function DiagnosticResultView({ units, onFinished }: DiagnosticResultViewProps) {
    return (
       <section className="card" data-testid="diagnostic-result">
-         <h1 className="screen-title">Where you are starting</h1>
+         <PageHeader title="Where you are starting" />
 
          <p>There is no score. This is where each unit stands, and today&apos;s set starts from it.</p>
 

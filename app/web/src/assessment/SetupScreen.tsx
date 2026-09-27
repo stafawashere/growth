@@ -3,8 +3,9 @@ import { useId, useState } from "react";
 import { readAssessmentShape, readCheckUnits, readUnfinished, type CaptureMode } from "../api/client";
 import type { AssessmentShape, CheckUnitsPayload, PartKey, UnfinishedAssessment, UnfinishedPayload } from "../api/types";
 import { formatPlanDate } from "../home/dates";
-import { useLoad } from "../progress/load";
+import { useLoad } from "../status/load";
 import { Loading } from "../status/LoadState";
+import { PageHeader } from "../page/PageHeader";
 
 /* 08 "Information architecture", mock: setup chooses the form, the parts and paper or typed
    capture. Every count and every minute is read from /assessments/shape, which reads
@@ -167,7 +168,7 @@ export function SetupScreen({ problem, onStartMock, onStartDrill, onStartUnitChe
 
    return (
       <section className="card" data-testid="assessment-setup">
-         <h1 className="screen-title">Mock exam</h1>
+         <PageHeader title="Mock exam" />
 
          {problem !== null ? <p role="alert">{problem}</p> : null}
 

@@ -2,6 +2,7 @@ import type { ArmOutcomes, ExperimentComparison, LearningMetric, MetricValue, Me
 import { formatPlanDate } from "../home/dates";
 import { SCORED_BY_STUDENT } from "../progress/CheckpointHistory";
 import { formatFigure } from "../progress/figures";
+import { PageHeader } from "../page/PageHeader";
 
 /* The operator's evidence of whether the app teaches (11 P7, docs/plan/10 "Learning-outcome
    metrics"). It is reached from settings and never from the bar or home, because 08 rules out a
@@ -108,7 +109,7 @@ function MetricSection({ metric }: { metric: LearningMetric }) {
 export function MetricsView({ metrics }: MetricsViewProps) {
    return (
       <section className="card settings" data-testid="metrics-view">
-         <h1 className="screen-title">Evidence of learning</h1>
+         <PageHeader title="Evidence of learning" />
 
          <p className="muted">
             For the operator, as of {formatPlanDate(metrics.as_of)}. Each figure names what it is counted over.

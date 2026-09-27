@@ -13,11 +13,12 @@ import { CheckpointRoute } from "../evaluation/CheckpointRoute";
 import { ProbeRoute } from "../evaluation/ProbeRoute";
 import { CalibrationCurve } from "./CalibrationCurve";
 import { CheckpointHistory, ProbeHistory } from "./CheckpointHistory";
-import { useLoad } from "./load";
+import { useLoad } from "../status/load";
 import { MasteryMap } from "./MasteryMap";
 import { MockHistory } from "./MockHistory";
 import { RepresentationMatrix } from "./RepresentationMatrix";
 import { Loading } from "../status/LoadState";
+import { PageHeader } from "../page/PageHeader";
 
 /* Progress takes no input from the shell: it is reached from home and reads its own record. Each
    section loads separately, so one failing leaves the others drawn. The checkpoint and the concept
@@ -54,7 +55,7 @@ function ProgressOverview(props: {
 
    return (
       <section className="card">
-         <h1 className="screen-title">Progress</h1>
+         <PageHeader title="Progress" />
 
          {mastery.kind === "waiting" ? <Waiting testId="mastery-waiting" /> : null}
 

@@ -7,6 +7,7 @@ import {
    registerPasskeyWithRecoveryCode,
    signInWithPasskey
 } from "../api/client";
+import { PageHeader } from "../page/PageHeader";
 
 export interface AccountScreenProps {
    onSignedIn: () => void;
@@ -131,7 +132,7 @@ export function AccountScreen({ onSignedIn }: AccountScreenProps) {
    if (state.kind === "recoveryCode") {
       return (
          <section className="card">
-            <h1 className="screen-title">Recovery code</h1>
+            <PageHeader title="Recovery code" />
 
             <p className="muted">This recovery code is shown once.</p>
 
@@ -156,7 +157,7 @@ export function AccountScreen({ onSignedIn }: AccountScreenProps) {
    if (state.kind === "recoveryEntry") {
       return (
          <section className="card">
-            <h1 className="screen-title">Account</h1>
+            <PageHeader title="Account" />
 
             <form className="field" onSubmit={submitRecoveryCode}>
                <label htmlFor="recovery-code-input">Recovery code</label>
@@ -189,7 +190,7 @@ export function AccountScreen({ onSignedIn }: AccountScreenProps) {
 
    return (
       <section className="card">
-         <h1 className="screen-title">Account</h1>
+         <PageHeader title="Account" />
 
          {offersRegistration ? (
             <button type="button" className="button-primary" disabled={isWorking} onClick={register}>

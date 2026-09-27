@@ -1,46 +1,25 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { ApiError, openUnitCheck, readFrqUnits } from "../api/client";
-import type { FrqQuestion, FrqUnit, UnitCheckPayload } from "../api/types";
+import type { FrqQuestion, UnitCheckPayload } from "../api/types";
 import { CaptureScreen } from "./CaptureScreen";
+import { useLoad } from "../status/load";
 import { Loading } from "../status/LoadState";
+import { PageHeader } from "../page/PageHeader";
 
 /* The free-response part of a unit check, reached from home (08: home offers progress, review and
    the assessment modes, and none of them is the landing screen). The student picks a unit, the
    server picks its least-attempted questions, and each question runs through CaptureScreen. */
-
-type UnitsLoad = { kind: "waiting" } | { kind: "failed" } | { kind: "loaded"; units: FrqUnit[] };
 
 export interface FrqRouteProps {
    pollMilliseconds?: number;
 }
 
 export function FrqRoute({ pollMilliseconds }: FrqRouteProps) {
-   const [units, setUnits] = useState<UnitsLoad>({ kind: "waiting" });
+   const units = useLoad(readFrqUnits);
    const [check, setCheck] = useState<UnitCheckPayload | null>(null);
    const [question, setQuestion] = useState<FrqQuestion | null>(null);
    const [problem, setProblem] = useState<string | null>(null);
-
-   useEffect(() => {
-      let isCurrent = true;
-
-      readFrqUnits().then(
-         (payload) => {
-            if (isCurrent) {
-               setUnits({ kind: "loaded", units: payload.units });
-            }
-         },
-         () => {
-            if (isCurrent) {
-               setUnits({ kind: "failed" });
-            }
-         }
-      );
-
-      return () => {
-         isCurrent = false;
-      };
-   }, []);
 
    async function start(unitId: string) {
       setProblem(null);
@@ -69,7 +48,7 @@ export function FrqRoute({ pollMilliseconds }: FrqRouteProps) {
    if (check !== null) {
       return (
          <section className="card" data-testid="unit-check">
-            <h1 className="screen-title">Unit check, free response</h1>
+            <PageHeader title="Unit check, free response" />
 
             <p className="muted">
                Untimed. Each answer is graded point by point once you confirm what the app read from your page.
@@ -95,7 +74,7 @@ export function FrqRoute({ pollMilliseconds }: FrqRouteProps) {
    if (units.kind === "failed") {
       return (
          <section className="card">
-            <h1 className="screen-title">Free response</h1>
+            <PageHeader title="Free response" />
             <p className="muted">The free-response questions could not be loaded.</p>
          </section>
       );
@@ -103,14 +82,14 @@ export function FrqRoute({ pollMilliseconds }: FrqRouteProps) {
 
    return (
       <section className="card" data-testid="frq-units">
-         <h1 className="screen-title">Free response</h1>
+         <PageHeader title="Free response" />
 
          <p className="muted">Choose a unit. Its free-response questions are served as an untimed unit check.</p>
 
          {problem !== null ? <p role="alert">{problem}</p> : null}
 
          <ul className="review-list">
-            {units.units.map((unit) => (
+            {units.value.units.map((unit) => (
                <li key={unit.unit_id}>
                   <button type="button" className="text-button" onClick={() => start(unit.unit_id)}>
                      {unit.title}

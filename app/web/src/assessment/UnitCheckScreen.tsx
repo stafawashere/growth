@@ -20,6 +20,7 @@ import { MathValue } from "../math/MathValue";
 import { ConfidencePrompt } from "../session/ConfidencePrompt";
 import { refusalText } from "./format";
 import { Loading } from "../status/LoadState";
+import { PageHeader } from "../page/PageHeader";
 
 /* 05 "Unit check": untimed, one question at a time with a confidence rating, and no correctness
    anywhere until the whole check is submitted, so one question's feedback cannot answer the
@@ -93,7 +94,7 @@ function Breakdown(props: { result: CheckResult }) {
 
    return (
       <section className="card" data-testid="unit-check-breakdown">
-         <h1 className="screen-title">Unit check, what it showed</h1>
+         <PageHeader title="Unit check, what it showed" />
 
          <h2 className="section-heading">Each question</h2>
 
@@ -251,7 +252,7 @@ export function UnitCheckScreen({ sessionId, initial, unitTitle }: UnitCheckScre
 
    return (
       <section className="card" data-testid="unit-check">
-         <h1 className="screen-title">{unitTitle === undefined ? "Unit check" : `Unit check, ${unitTitle}`}</h1>
+         <PageHeader title={unitTitle === undefined ? "Unit check" : `Unit check, ${unitTitle}`} />
 
          <p className="muted">Untimed. Nothing is marked right or wrong until you submit the whole check.</p>
 

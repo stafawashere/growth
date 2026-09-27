@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import type { UpdateSettingsFields } from "../api/client";
 import type { BudgetsPayload, ProviderRole, RoleBudget, SettingsPayload } from "../api/types";
 import { daysBetween, formatPlanDate } from "../home/dates";
+import { PageHeader } from "../page/PageHeader";
 
 /* Each section takes the payload of the route that feeds it, or null while that request is in
    flight or after it failed, and a null section renders its heading and no figure. None of these
@@ -382,7 +383,7 @@ export const OPERATOR_PROVIDERS_SUMMARY = "For the operator: providers and budge
 export function SettingsScreen(props: SettingsScreenProps) {
    return (
       <section className="card settings">
-         <h1 className="screen-title">Settings</h1>
+         <PageHeader title="Settings" />
 
          <QueueSettingsSection queueSettings={props.queueSettings} onSettingsChange={props.onSettingsChange} />
 

@@ -29,6 +29,7 @@ import { MasteryMap } from "../progress/MasteryMap";
 import { RepresentationMatrix } from "../progress/RepresentationMatrix";
 import { ReviewScreen } from "../review/ReviewScreen";
 import { SessionScreen } from "../session/SessionScreen";
+import { AccessibilitySection } from "../settings/AccessibilitySection";
 import { OperatorSettings } from "../settings/ExperimentsSection";
 import { SettingsScreen } from "../settings/SettingsScreen";
 
@@ -592,6 +593,7 @@ export const SCREENS: Screen[] = [
                   onReauthenticate={vi.fn()}
                   onPurge={vi.fn()}
                />
+               <AccessibilitySection />
                <OperatorSettings onOpenEvidence={vi.fn()} />
             </>
          );

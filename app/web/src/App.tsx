@@ -14,6 +14,7 @@ import { ReviewRoute } from "./review/ReviewRoute";
 import { SessionScreen } from "./session/SessionScreen";
 import { OperatorSettings } from "./settings/ExperimentsSection";
 import type { SettingsScreenProps } from "./settings/SettingsScreen";
+import { AccessibilitySection } from "./settings/AccessibilitySection";
 import { SettingsRoute } from "./settings/SettingsRoute";
 
 export type Destination = "home" | "session" | "settings" | "progress" | "review" | "onboarding" | "frq" | "mock";
@@ -284,6 +285,7 @@ export function App() {
             {destination === "settings" && settingsPage === "settings" ? (
                <>
                   <SettingsRoute purgeConfirmationPhrase={PURGE_CONFIRMATION_PHRASE} saveFile={saveFile} />
+                  <AccessibilitySection />
                   <details className="operator-details" data-testid="operator-experiments-evidence">
                      <summary>{OPERATOR_EXPERIMENTS_SUMMARY}</summary>
 

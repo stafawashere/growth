@@ -178,8 +178,29 @@ export function isMatchable(rule: Rule) {
    return !isPseudoElement && !isHover;
 }
 
+/* While a read of a DOM that does not change is in progress, each element's matching rules are
+   worked out once per width rather than once per property asked about. */
+let matchCache: WeakMap<Element, Map<number, Rule[]>> | null = null;
+
+export function readingUnchangedDom<T>(read: () => T): T {
+   matchCache = new WeakMap();
+
+   try {
+      return read();
+   } finally {
+      matchCache = null;
+   }
+}
+
 export function matchingRules(element: Element): Rule[] {
-   return RULES.filter((rule) => {
+   const cachedByWidth = matchCache?.get(element);
+   const cached = cachedByWidth?.get(viewportWidth);
+
+   if (cached !== undefined) {
+      return cached;
+   }
+
+   const matched = RULES.filter((rule) => {
       const applies = isMatchable(rule) && appliesAtWidth(rule, viewportWidth);
 
       if (!applies) {
@@ -192,6 +213,15 @@ export function matchingRules(element: Element): Rule[] {
          throw new Error(`jsdom cannot match app.css selector ${rule.selector}`);
       }
    }).sort((first, second) => first.specificity - second.specificity || first.order - second.order);
+
+   if (matchCache !== null) {
+      const byWidth = cachedByWidth ?? new Map<number, Rule[]>();
+
+      byWidth.set(viewportWidth, matched);
+      matchCache.set(element, byWidth);
+   }
+
+   return matched;
 }
 
 /* The winning declaration for one property, inline style above every rule. */

@@ -3,7 +3,7 @@ import { resolve } from "node:path";
 
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
-import { THEMES, applyTheme, watchSystemTheme } from "./theme";
+import { THEMES, THEME_CHOICE_KEY, applyTheme, chooseTheme, followThemeChoice, readThemeChoice, watchSystemTheme } from "./theme";
 
 const REPO_ROOT = resolve(process.cwd(), "..", "..");
 
@@ -126,5 +126,92 @@ describe("watchSystemTheme", () => {
       stop();
 
       expect(listeners.length).toBe(0);
+   });
+});
+
+describe("the theme choice", () => {
+   let systemIsDark: boolean;
+   let systemListeners: Array<(event: MediaQueryListEvent) => void>;
+
+   beforeEach(() => {
+      systemIsDark = false;
+      systemListeners = [];
+      window.localStorage.clear();
+      window.matchMedia = ((query: string) =>
+         ({
+            get matches() {
+               return systemIsDark;
+            },
+            media: query,
+            addEventListener: (_type: string, listener: (event: MediaQueryListEvent) => void) => systemListeners.push(listener),
+            removeEventListener: (_type: string, listener: (event: MediaQueryListEvent) => void) => {
+               systemListeners = systemListeners.filter((candidate) => candidate !== listener);
+            }
+         }) as unknown as MediaQueryList) as typeof window.matchMedia;
+   });
+
+   afterEach(() => {
+      vi.restoreAllMocks();
+      followThemeChoice("system", document.createElement("html"));
+      window.localStorage.clear();
+   });
+
+   function systemTurns(dark: boolean) {
+      systemIsDark = dark;
+
+      for (const listener of [...systemListeners]) {
+         listener({ matches: dark } as MediaQueryListEvent);
+      }
+   }
+
+   it("is System until one is chosen, and System follows the operating system", () => {
+      const root = document.createElement("html");
+
+      expect(readThemeChoice()).toBe("system");
+
+      followThemeChoice(readThemeChoice(), root);
+      expect(root.getAttribute("data-theme")).toBe("light");
+
+      systemTurns(true);
+      expect(root.getAttribute("data-theme")).toBe("dark");
+   });
+
+   it("applies Light or Dark at once, keeps it over the system's changes, and remembers it", () => {
+      const root = document.createElement("html");
+
+      followThemeChoice("system", root);
+      chooseTheme("dark", root);
+
+      expect(root.getAttribute("data-theme")).toBe("dark");
+      expect(readThemeChoice()).toBe("dark");
+
+      systemTurns(false);
+      expect(root.getAttribute("data-theme")).toBe("dark");
+
+      chooseTheme("light", root);
+      systemTurns(true);
+      expect(root.getAttribute("data-theme")).toBe("light");
+
+      chooseTheme("system", root);
+      expect(root.getAttribute("data-theme")).toBe("dark");
+      expect(readThemeChoice()).toBe("system");
+   });
+
+   it("falls back to System when storage refuses a read or holds an unknown value, and still applies a choice it cannot save", () => {
+      const root = document.createElement("html");
+
+      window.localStorage.setItem(THEME_CHOICE_KEY, "sepia");
+      expect(readThemeChoice()).toBe("system");
+
+      vi.spyOn(Storage.prototype, "getItem").mockImplementation(() => {
+         throw new Error("storage refused");
+      });
+      vi.spyOn(Storage.prototype, "setItem").mockImplementation(() => {
+         throw new Error("storage refused");
+      });
+
+      expect(readThemeChoice()).toBe("system");
+      expect(() => chooseTheme("dark", root)).not.toThrow();
+      expect(root.getAttribute("data-theme")).toBe("dark");
    });
 });

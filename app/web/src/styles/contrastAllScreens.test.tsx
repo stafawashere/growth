@@ -23,6 +23,7 @@ import {
    matchingRules,
    ownBackground,
    paintOf,
+   readingUnchangedDom,
    resolvedColour,
    resolvedSvgPaint,
    rgbOf,
@@ -295,17 +296,19 @@ beforeAll(async () => {
       const container = await entry.mount();
       const ancestors = [document.documentElement, document.body];
 
-      for (const width of VIEWPORT_WIDTHS) {
-         setViewportWidth(width);
-         collected.pairs.push(...pairsIn(entry.name, width, container));
+      readingUnchangedDom(() => {
+         for (const width of VIEWPORT_WIDTHS) {
+            setViewportWidth(width);
+            collected.pairs.push(...pairsIn(entry.name, width, container));
 
-         for (const element of [...ancestors, ...Array.from(container.querySelectorAll("*"))]) {
-            for (const rule of matchingRules(element)) {
-               collected.matchedRules.add(rule);
-               collected.matchedAtWidth.get(width)!.add(rule);
+            for (const element of [...ancestors, ...Array.from(container.querySelectorAll("*"))]) {
+               for (const rule of matchingRules(element)) {
+                  collected.matchedRules.add(rule);
+                  collected.matchedAtWidth.get(width)!.add(rule);
+               }
             }
          }
-      }
+      });
 
       setViewportWidth(DESKTOP_WIDTH);
       collected.renderedMarkup += container.innerHTML;

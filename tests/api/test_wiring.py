@@ -1,7 +1,7 @@
 """app/main.py's composition root: the tutor role it wires onto Settings (docs/plan/11-phased-
 delivery.md P1 scope item 12, docs/plan/07-ai-provider-layer.md's one wired role), plus
-app/api/routes/auth.py's reauth_finish audit entry (docs/plan/09-security-and-privacy.md's Audit
-log section names "a session established from a new authenticator" as recorded).
+app/api/routes/auth.py's reauth audit entry (docs/plan/09-security-and-privacy.md's Audit log
+section names re-authentication as recorded).
 
 Every build_application test here builds a real application against the live data/ registries,
 exactly as the module-level `application` object does, with only the database pointed at a tmp
@@ -9,8 +9,8 @@ path. No test supplies a real Anthropic key and no test opens a socket; the tuto
 construction never calls a provider, so a fake key string is enough to prove the provider was
 wired without proving anything about the key's validity.
 
-The reauth test drives a full passkey ceremony through the `world` fixture tests/api/conftest.py
-already builds for the other route tests, over a FakeVerifier that never opens a socket either.
+The reauth test signs up and re-enters the password through the `world` fixture
+tests/api/conftest.py already builds for the other route tests, which opens no socket either.
 """
 import socket
 from pathlib import Path

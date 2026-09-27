@@ -17,8 +17,7 @@ passphrase and a raw provider response body, 06 keeps provider key material to p
 and the auth layer stores its tokens and recovery code only as hashes. So a column is left out when
 any underscore-separated word of its name is key (or ends in key, as apikey does), ciphertext,
 nonce, hash, passphrase, password, secret or token, or when the name carries response_body or
-raw_response. public_key is kept: a WebAuthn public key is public by construction and is part of
-the credential record 09 lists.
+raw_response. users.password_hash and users.recovery_code_hash are left out by that rule.
 
 The archive bytes are a file in an exports directory beside the SQLite database, and a jobs row of
 type export (06, API surface: POST /export triggers an export job) records the owner and the file.
@@ -48,7 +47,6 @@ ARCHIVE_FILE_MODE = 0o600
 ARCHIVE_DIRECTORY_MODE = 0o700
 SECRET_NAME_WORDS = ("key", "ciphertext", "nonce", "hash", "passphrase", "password", "secret", "token")
 SECRET_NAME_FRAGMENTS = ("response_body", "raw_response")
-PUBLIC_COLUMN_NAMES = ("public_key",)
 NON_USER_ACTORS = ("worker", "system", "operator")
 USERS_TABLE = models.User.__table__
 AUDIT_TABLE = models.AuditLog.__table__
@@ -66,11 +64,6 @@ def is_secret_word(word):
 
 
 def is_secret_column(column_name):
-   is_public = column_name in PUBLIC_COLUMN_NAMES
-
-   if is_public:
-      return False
-
    has_secret_word = any(is_secret_word(word) for word in column_name.lower().split("_"))
    has_secret_fragment = any(fragment in column_name.lower() for fragment in SECRET_NAME_FRAGMENTS)
 

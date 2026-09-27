@@ -2,6 +2,8 @@ import { act, fireEvent, render, screen, waitFor } from "@testing-library/react"
 import type { ReactElement } from "react";
 import { expect, vi } from "vitest";
 
+import { AccountScreen } from "../account/AccountScreen";
+import { ChangePasswordControl } from "../account/ChangePasswordControl";
 import { App } from "../App";
 import * as client from "../api/client";
 import type {
@@ -31,6 +33,7 @@ import { ReviewScreen } from "../review/ReviewScreen";
 import { SessionScreen } from "../session/SessionScreen";
 import { AccessibilitySection } from "../settings/AccessibilitySection";
 import { OperatorSettings } from "../settings/ExperimentsSection";
+import { ReauthPromptView } from "../account/ReauthPrompt";
 import { SettingsScreen } from "../settings/SettingsScreen";
 
 /* Test support: the screens and states the P8 evals render, each inside the app page App renders
@@ -356,6 +359,20 @@ export function workedQuestion() {
    };
 }
 
+function serverRefusal(detail: string) {
+   return Object.assign(Object.create(client.ApiError.prototype), { status: 401, detail });
+}
+
+async function accountScreen(status: client.AuthStatus, firstControl: string) {
+   mocked.readAuthStatus.mockResolvedValue(status);
+
+   const container = inPage(<AccountScreen onSignedIn={vi.fn()} />);
+
+   await screen.findByRole("button", { name: firstControl });
+
+   return container;
+}
+
 export const SCREENS: Screen[] = [
    {
       name: "app shell with the token notice",
@@ -374,6 +391,48 @@ export const SCREENS: Screen[] = [
       name: `home, ${status}`,
       mount: async () => homeScreen(status)
    })),
+   { name: "account, sign-up", mount: () => accountScreen({ user_exists: false }, "Create account") },
+   {
+      name: "account, sign-in refused",
+      mount: async () => {
+         mocked.signIn.mockRejectedValue(serverRefusal("username or password is incorrect"));
+
+         const container = await accountScreen({ user_exists: true }, "Sign in");
+
+         fireEvent.click(screen.getByRole("button", { name: "Sign in" }));
+         await screen.findByRole("alert");
+
+         return container;
+      }
+   },
+   {
+      name: "account, reset for an account with no password",
+      mount: () => accountScreen({ user_exists: true, needs_password: true }, "Reset password")
+   },
+   {
+      name: "account, recovery code shown once",
+      mount: async () => {
+         mocked.signUp.mockResolvedValue({
+            user: { id: "USR-1", display_name: "student", exam_date: "2027-05-10", purge_after: "2027-06-09" },
+            seeded_skill_states: 0,
+            recovery_code: "RC-shown-once"
+         });
+
+         const container = await accountScreen({ user_exists: false }, "Create account");
+
+         fireEvent.click(screen.getByRole("button", { name: "Create account" }));
+
+         const acknowledgeButton = await screen.findByRole("button", { name: "I have saved it" });
+
+         /* The screen focuses this button, and the contrast eval reads a focused element's offset
+            outline as a border on the button's own fill, which it never touches. The button is
+            drawn unfocused here, as every other catalogued primary button is. */
+         await waitFor(() => expect(document.activeElement).toBe(acknowledgeButton));
+         act(() => acknowledgeButton.blur());
+
+         return container;
+      }
+   },
    {
       name: "session item at completion, with a figure",
       mount: async () => {
@@ -628,7 +687,14 @@ export const SCREENS: Screen[] = [
                   onReauthenticate={vi.fn()}
                   onPurge={vi.fn()}
                />
+               <ReauthPromptView
+                  working={false}
+                  feedback={{ kind: "refused", detail: "the password is incorrect" }}
+                  onSubmit={vi.fn()}
+                  onCancel={vi.fn()}
+               />
                <AccessibilitySection />
+               <ChangePasswordControl />
                <OperatorSettings onOpenEvidence={vi.fn()} />
             </>
          );

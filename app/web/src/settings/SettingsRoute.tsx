@@ -4,7 +4,6 @@ import {
    readExport,
    readProviders,
    readSettings,
-   reauthenticate,
    requestExport,
    requestPurge,
    updateBudget,
@@ -12,6 +11,7 @@ import {
    type UpdateSettingsFields
 } from "../api/client";
 import type { BudgetsPayload, ProviderRole, SettingsPayload } from "../api/types";
+import { usePasswordReauth } from "../account/ReauthPrompt";
 import { SettingsScreen } from "./SettingsScreen";
 
 /* purgeConfirmationPhrase has no source a client route serves and no plan sentence, so the caller
@@ -35,6 +35,7 @@ export function SettingsRoute({ purgeConfirmationPhrase, saveFile }: SettingsRou
 
    const purgeToken = useRef<string | null>(null);
    const inFlight = useRef(false);
+   const passwordReauth = usePasswordReauth();
 
    useEffect(() => {
       let isCurrent = true;
@@ -58,7 +59,7 @@ export function SettingsRoute({ purgeConfirmationPhrase, saveFile }: SettingsRou
       };
    }, []);
 
-   /* Resolves whether the action happened. A declined passkey, a refused token and a failed
+   /* Resolves whether the action happened. A closed password prompt, a refused token and a failed
       request all resolve false, and the screen shows that by returning the control unchanged. */
    async function exclusively(action: () => Promise<void>) {
       const isBusy = inFlight.current;
@@ -82,7 +83,7 @@ export function SettingsRoute({ purgeConfirmationPhrase, saveFile }: SettingsRou
 
    function changeCap(role: string, capUsd: number | null, capTokens: number | null) {
       return exclusively(async () => {
-         const token = await reauthenticate();
+         const token = await passwordReauth.ask();
          const readBack = await updateBudget({ role, cap_usd: capUsd, cap_tokens: capTokens, reauth_token: token });
 
          setBudgets(readBack);
@@ -99,7 +100,7 @@ export function SettingsRoute({ purgeConfirmationPhrase, saveFile }: SettingsRou
 
    function exportEverything() {
       return exclusively(async () => {
-         const token = await reauthenticate();
+         const token = await passwordReauth.ask();
          const job = await requestExport({ reauth_token: token });
          const archive = await readExport(job.id);
 
@@ -111,7 +112,7 @@ export function SettingsRoute({ purgeConfirmationPhrase, saveFile }: SettingsRou
       purgeToken.current = null;
 
       try {
-         purgeToken.current = await reauthenticate();
+         purgeToken.current = await passwordReauth.ask();
       } catch {
          return false;
       }
@@ -135,16 +136,20 @@ export function SettingsRoute({ purgeConfirmationPhrase, saveFile }: SettingsRou
    }
 
    return (
-      <SettingsScreen
-         providers={providers}
-         budgets={budgets}
-         onCapChange={changeCap}
-         queueSettings={queueSettings}
-         onSettingsChange={changeSettings}
-         onExport={exportEverything}
-         purgeConfirmationPhrase={purgeConfirmationPhrase}
-         onReauthenticate={reauthenticateForPurge}
-         onPurge={purge}
-      />
+      <>
+         <SettingsScreen
+            providers={providers}
+            budgets={budgets}
+            onCapChange={changeCap}
+            queueSettings={queueSettings}
+            onSettingsChange={changeSettings}
+            onExport={exportEverything}
+            purgeConfirmationPhrase={purgeConfirmationPhrase}
+            onReauthenticate={reauthenticateForPurge}
+            onPurge={purge}
+         />
+
+         {passwordReauth.view}
+      </>
    );
 }

@@ -17,7 +17,7 @@ from app.auth.service import utc_now
 from app.db import models
 from app.main import DEFAULT_CONTENT_DIR, build_application
 from app.providers.router import FAILURES_BEFORE_COOLDOWN, SUBSCRIPTION_LINK
-from tests.e2e.conftest import FIRST_DAY, FakeVerifier, World
+from tests.e2e.conftest import FIRST_DAY, FAST_SCRYPT_ENVIRONMENT, World
 from tests.e2e.test_agent_drafts_served import key_answers
 from tests.e2e.test_session_login_to_feedback import collects_confidence, rate, submit
 from tests.providers.test_subscription import FakeCli
@@ -39,9 +39,9 @@ def offline_world(tmp_path, forbid_network):
       GROWTH_EXAM_DATE="2027-05-10",
       GROWTH_ITEMS_DIR=str(BANK),
       GROWTH_AUTO_DRAIN="off",
+      **FAST_SCRYPT_ENVIRONMENT,
    )
    application = build_application(environment)
-   application.state.settings.verifier = FakeVerifier(application.state.settings.rp_id)
    world = World(application, application.state.engine, key_answers(records))
    world.records = {record["id"]: record for record in records}
 

@@ -92,7 +92,7 @@ describe("SettingsScreen, section scope", () => {
 });
 
 describe("SettingsScreen, purge", () => {
-   it("cannot be triggered without the typed confirmation and a passkey reauthentication", async () => {
+   it("cannot be triggered without the typed confirmation and a password re-authentication", async () => {
       const props = baseProps();
 
       render(<SettingsScreen {...props} />);
@@ -128,7 +128,7 @@ describe("SettingsScreen, purge", () => {
       expect(props.onPurge).toHaveBeenCalledWith(props.purgeConfirmationPhrase);
    });
 
-   it("keeps purge disabled when the passkey reauthentication fails", async () => {
+   it("keeps purge disabled when the password re-authentication fails", async () => {
       const props = baseProps();
       props.onReauthenticate = vi.fn().mockResolvedValue(false);
 

@@ -7,7 +7,7 @@ from sqlalchemy.orm import Session as OrmSession
 
 from app.api.routes.purge import PURGE_CONFIRMATION
 from app.db import models
-from tests.api.conftest import KEY_MATHJSON, SNAPSHOT_ID, TODAY, WRONG_MATHJSON, item_row
+from tests.api.conftest import KEY_MATHJSON, NEW_PASSWORD, PASSWORD, SNAPSHOT_ID, TODAY, WRONG_MATHJSON, item_row
 
 
 def correct_answer_for(item):
@@ -385,24 +385,24 @@ def test_register_finish_returns_a_recovery_code_once(world):
    assert code not in stored
 
 
-def test_registration_with_a_valid_recovery_code_adds_a_credential(world):
-   """The ordinary ceremony stays closed after the first user, so recovery has its own path."""
+def test_a_valid_recovery_code_resets_the_password_once(world):
+   """Signup stays closed after the first user, so recovery has its own path."""
    client = world.client()
    code = world.register(client).json()["recovery_code"]
-   refused = world.recover(client, "WRONG-CODE-HERE-XXXXX", credential_id="aa" * 8)
+   refused = world.recover(client, "WRONG-CODE-HERE-XXXXX")
 
    assert refused.status_code == 401
 
-   recovered = world.recover(client, code, credential_id="aa" * 8)
+   recovered = world.recover(client, code, new_password=NEW_PASSWORD)
 
    assert recovered.status_code == 200
 
-   with OrmSession(world.engine) as db:
-      credentials = db.query(models.PasskeyCredential).count()
+   fresh = world.client()
 
-   assert credentials == 2
+   assert world.login(fresh, password=PASSWORD).status_code == 401
+   assert world.login(fresh, password=NEW_PASSWORD).status_code == 200
 
-   replayed = world.recover(client, code, credential_id="bb" * 8)
+   replayed = world.recover(client, code, new_password="a third long passphrase")
 
    assert replayed.status_code == 401
 

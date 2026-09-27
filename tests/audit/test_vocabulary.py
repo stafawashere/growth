@@ -115,7 +115,10 @@ def test_the_scanner_sees_the_writers_it_is_meant_to_see():
    """A scanner that finds nothing would make the test above pass by accident."""
    found = written_actions()
 
-   assert "passkey_registered" in found
+   assert "account_created" in found
+   assert "login_failed_lockout" in found
+   assert "password_changed" in found
+   assert "password_reset_via_recovery" in found
    assert "purge" in found
    assert "coverage_gap_fail_closed" in found
    assert "budget_hard_stop" in found

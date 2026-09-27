@@ -1,6 +1,13 @@
-"""The 14 P1 tables from docs/plan/06-architecture.md, "Data model", plus the two the passkey
-layer of docs/plan/09-security-and-privacy.md needs and 06 leaves unlisted: passkey_credentials
-and auth_sessions.
+"""The 14 P1 tables from docs/plan/06-architecture.md, "Data model", plus auth_sessions, which the
+sign-in layer of docs/plan/09-security-and-privacy.md needs and 06 leaves unlisted.
+
+The password that replaced passkeys (ruled 2026-09-27) lives on the users row as a scrypt hash that
+carries its own parameters, next to the lowercase username, the failed-login counter and the lock
+deadline. A users row whose password_hash is NULL is an account migrated from passkeys that has not
+reset its password yet; app/db/migrate.py dropped passkey_credentials under it. username carries
+no unique index: the installation holds one user, claimed by a single conditional INSERT in
+app/auth/service.py, and an indexed column is one tests/db/test_migrate.py could no longer drop to
+exercise the additive path.
 
 diagnoses is in use from P2 (docs/plan/11-phased-delivery.md P2 scope item 9), written by the
 rule of R12 and R26 until the diagnostician arrives in P3. gradings arrives with the grader in P3
@@ -34,6 +41,10 @@ class User(Base):
    exam_date: Mapped[str] = mapped_column(Text, nullable=False, default="2027-05-10")
    purge_after: Mapped[str | None] = mapped_column(Text, nullable=True)
    recovery_code_hash: Mapped[str | None] = mapped_column(Text, nullable=True)
+   username: Mapped[str | None] = mapped_column(Text, nullable=True)
+   password_hash: Mapped[str | None] = mapped_column(Text, nullable=True)
+   failed_login_count: Mapped[int] = mapped_column(Integer, nullable=False, default=0, server_default=text("0"))
+   locked_until: Mapped[str | None] = mapped_column(Text, nullable=True)
    created_at: Mapped[str] = mapped_column(Text, nullable=False)
    updated_at: Mapped[str] = mapped_column(Text, nullable=False)
 
@@ -355,21 +366,6 @@ class AuditLog(Base):
    updated_at: Mapped[str] = mapped_column(Text, nullable=False)
 
 
-class PasskeyCredential(Base):
-   """A registered authenticator, per docs/plan/09-security-and-privacy.md, "Registration"."""
-
-   __tablename__ = "passkey_credentials"
-
-   id: Mapped[str] = mapped_column(Text, primary_key=True)
-   user_id: Mapped[str] = mapped_column(Text, nullable=False)
-   credential_id: Mapped[bytes] = mapped_column(LargeBinary, nullable=False, unique=True)
-   public_key: Mapped[bytes] = mapped_column(LargeBinary, nullable=False)
-   sign_count: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
-   transports: Mapped[str | None] = mapped_column(Text, nullable=True)
-   created_at: Mapped[str] = mapped_column(Text, nullable=False)
-   updated_at: Mapped[str] = mapped_column(Text, nullable=False)
-
-
 class AuthSession(Base):
    """A cookie session and the short-lived re-authentication token it may carry.
 
@@ -562,7 +558,7 @@ SQLITE_BUSY_TIMEOUT_SECONDS = 30
 def make_engine(path):
    from sqlalchemy import create_engine
 
-   from app.db.migrate import apply_additive_migrations, repair_wrapped_stems
+   from app.db.migrate import apply_additive_migrations, repair_wrapped_stems, retire_tables
 
    engine = create_engine(f"sqlite:///{path}", connect_args={"timeout": SQLITE_BUSY_TIMEOUT_SECONDS})
 
@@ -575,6 +571,7 @@ def make_engine(path):
    Base.metadata.create_all(engine)
 
    apply_additive_migrations(engine)
+   retire_tables(engine)
    repair_wrapped_stems(engine)
 
    return engine

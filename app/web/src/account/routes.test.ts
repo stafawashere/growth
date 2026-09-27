@@ -4,15 +4,13 @@ import fs from "node:fs";
 import { afterEach, describe, expect, it, vi } from "vitest";
 
 import {
-   beginAddPasskey,
-   beginLogin,
-   beginRecoveryRegistration,
-   beginRegistration,
-   finishAddPasskey,
-   finishLogin,
-   finishRecoveryRegistration,
-   finishRegistration,
-   readAuthStatus
+   changePassword,
+   readAuthStatus,
+   reauthenticate,
+   resetWithRecoveryCode,
+   signIn,
+   signOut,
+   signUp
 } from "../api/client";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
@@ -138,24 +136,22 @@ afterEach(() => {
    vi.unstubAllGlobals();
 });
 
-describe("passkey paths", () => {
+describe("password auth paths", () => {
    const declared = declaredAuthRoutes();
 
    const calls = [
-      { name: "beginRegistration", invoke: () => beginRegistration() },
-      { name: "finishRegistration", invoke: () => finishRegistration({ challenge_id: "c", credential: {} }) },
-      { name: "beginLogin", invoke: () => beginLogin() },
-      { name: "finishLogin", invoke: () => finishLogin({ challenge_id: "c", credential: {} }) },
-      { name: "beginRecoveryRegistration", invoke: () => beginRecoveryRegistration() },
-      {
-         name: "finishRecoveryRegistration",
-         invoke: () => finishRecoveryRegistration({ challenge_id: "c", credential: {}, recovery_code: "r" })
-      },
+      { name: "signUp", invoke: () => signUp({ username: "student", password: "p" }) },
+      { name: "signIn", invoke: () => signIn({ username: "student", password: "p" }) },
+      { name: "signOut", invoke: () => signOut() },
       { name: "readAuthStatus", invoke: () => readAuthStatus() },
-      { name: "beginAddPasskey", invoke: () => beginAddPasskey() },
+      { name: "reauthenticate", invoke: () => reauthenticate({ password: "p" }) },
       {
-         name: "finishAddPasskey",
-         invoke: () => finishAddPasskey({ challenge_id: "c", credential: {}, reauth_token: "t" })
+         name: "changePassword",
+         invoke: () => changePassword({ current_password: "p", new_password: "q", reauth_token: "t" })
+      },
+      {
+         name: "resetWithRecoveryCode",
+         invoke: () => resetWithRecoveryCode({ recovery_code: "r", new_password: "q", username: "student" })
       }
    ];
 
@@ -173,59 +169,59 @@ describe("passkey paths", () => {
    });
 });
 
-describe("passkey payload vocabulary", () => {
+describe("password auth payload vocabulary", () => {
    const shapes = [
       {
-         typeName: "CeremonyBegin",
-         server: () => topLevelKeys(returnedLiteral("auth/service.py", "register_begin"))
+         typeName: "SignUpFields",
+         server: () => bodyFieldsRead("api/routes/auth.py", "signup")
       },
       {
-         typeName: "CeremonyBegin",
-         server: () => topLevelKeys(returnedLiteral("auth/service.py", "login_begin"))
-      },
-      {
-         typeName: "RegistrationFinish",
-         server: () => topLevelKeys(returnedLiteral("api/routes/auth.py", "register_finish"))
+         typeName: "SignUpResult",
+         server: () => topLevelKeys(returnedLiteral("api/routes/auth.py", "signup"))
       },
       {
          typeName: "RegisteredUser",
-         server: () => topLevelKeys(nestedLiteral(returnedLiteral("api/routes/auth.py", "register_finish"), "user"))
+         server: () => topLevelKeys(nestedLiteral(returnedLiteral("api/routes/auth.py", "signup"), "user"))
       },
       {
-         typeName: "LoginFinish",
-         server: () => topLevelKeys(returnedLiteral("api/routes/auth.py", "login_finish"))
+         typeName: "SignInFields",
+         server: () => bodyFieldsRead("api/routes/auth.py", "login")
       },
       {
-         typeName: "FinishRegistrationFields",
-         server: () => bodyFieldsRead("api/routes/auth.py", "register_finish")
+         typeName: "SignInResult",
+         server: () => topLevelKeys(returnedLiteral("api/routes/auth.py", "login"))
       },
       {
-         typeName: "FinishLoginFields",
-         server: () => bodyFieldsRead("api/routes/auth.py", "login_finish")
-      },
-      {
-         typeName: "FinishRecoveryRegistrationFields",
-         server: () => bodyFieldsRead("api/routes/auth.py", "recovery_register_finish")
-      },
-      {
-         typeName: "CeremonyBegin",
-         server: () => topLevelKeys(returnedLiteral("auth/service.py", "add_passkey_begin"))
+         typeName: "SignOutResult",
+         server: () => topLevelKeys(returnedLiteral("api/routes/auth.py", "logout"))
       },
       {
          typeName: "AuthStatus",
          server: () => topLevelKeys(returnedLiteral("api/routes/auth.py", "status"))
       },
       {
-         typeName: "FinishAddPasskeyFields",
-         server: () => bodyFieldsRead("api/routes/auth.py", "add_passkey_finish")
+         typeName: "ReauthFields",
+         server: () => bodyFieldsRead("api/routes/auth.py", "reauth")
       },
       {
-         typeName: "AddPasskeyFinish",
-         server: () => topLevelKeys(returnedLiteral("auth/service.py", "add_passkey_finish"))
+         typeName: "ReauthResult",
+         server: () => topLevelKeys(returnedLiteral("api/routes/auth.py", "reauth"))
       },
       {
-         typeName: "RecoveryRegistrationFinish",
-         server: () => topLevelKeys(returnedLiteral("api/routes/auth.py", "recovery_register_finish"))
+         typeName: "ChangePasswordFields",
+         server: () => bodyFieldsRead("api/routes/auth.py", "change_password")
+      },
+      {
+         typeName: "ChangePasswordResult",
+         server: () => topLevelKeys(returnedLiteral("api/routes/auth.py", "change_password"))
+      },
+      {
+         typeName: "RecoveryResetFields",
+         server: () => bodyFieldsRead("api/routes/auth.py", "recovery_reset")
+      },
+      {
+         typeName: "RecoveryResetResult",
+         server: () => topLevelKeys(returnedLiteral("api/routes/auth.py", "recovery_reset"))
       }
    ];
 

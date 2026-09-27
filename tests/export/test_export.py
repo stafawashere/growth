@@ -40,7 +40,6 @@ OTHER_USER_ID = "USR-other"
 NON_USER_ACTOR = "worker"
 INVENTORY_TABLES = {
    "users",
-   "passkey_credentials",
    "auth_sessions",
    "provider_configs",
    "skills_state",
@@ -60,6 +59,7 @@ SECRETS_NAMED_BY_09_AND_THE_AUTH_LAYER = {
    ("provider_configs", "key_ciphertext"),
    ("provider_configs", "key_nonce"),
    ("users", "recovery_code_hash"),
+   ("users", "password_hash"),
    ("auth_sessions", "token_hash"),
    ("auth_sessions", "reauth_token_hash"),
 }

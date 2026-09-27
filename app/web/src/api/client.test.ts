@@ -29,8 +29,6 @@ import {
    updateBudget,
    requestExport,
    readExport,
-   beginReauth,
-   finishReauth,
    reauthenticate,
    readMetrics,
    readRepresentations,
@@ -487,8 +485,7 @@ const serverShapes = {
    BudgetsPayload: () => returnedFields("settings/budgets.py", "budgets_view"),
    RoleBudget: () => roleBudgetFields(),
    ExportJob: () => returnedFields("api/routes/export.py", "create_export"),
-   ReauthBegin: () => returnedFields("auth/service.py", "reauth_begin"),
-   ReauthFinish: () => returnedFields("auth/service.py", "reauth_finish"),
+   ReauthResult: () => returnedFields("api/routes/auth.py", "reauth"),
    FrqUnitsPayload: () => returnedFields("api/routes/frq.py", "list_units"),
    FrqUnit: () => nestedDictFields("api/routes/frq.py", "\"units\": ["),
    UnitCheckPayload: () => returnedFields("api/routes/frq.py", "open_unit_check"),
@@ -570,7 +567,7 @@ const requestShapes = {
       ...unitsReadThrough("api/routes/settings.py", "change_budget", "budgets.requested_units", "CAP_UNITS")
    ],
    RequestExportFields: () => readRequestFields("api/routes/export.py", "create_export"),
-   FinishReauthFields: () => readRequestFields("api/routes/auth.py", "reauth_finish"),
+   ReauthFields: () => readRequestFields("api/routes/auth.py", "reauth"),
    RequestPurgeFields: () => readRequestFields("api/routes/purge.py", "purge"),
    SaveQuestionFields: () => readRequestFields("assessment/service.py", "save_response"),
    OpenDrillFields: () => payloadReads("api/routes/assessment.py", "open_drill"),
@@ -786,8 +783,7 @@ describe("client path vocabulary", () => {
       },
       { name: "requestExport", dynamic: [], invoke: () => requestExport({ reauth_token: "t" }) },
       { name: "readExport", dynamic: ["EXP-1"], invoke: () => readExport("EXP-1") },
-      { name: "beginReauth", dynamic: [], invoke: () => beginReauth() },
-      { name: "finishReauth", dynamic: [], invoke: () => finishReauth({ challenge_id: "c", credential: {} }) },
+      { name: "reauthenticate", dynamic: [], invoke: () => reauthenticate({ password: "p" }) },
       { name: "readFrqUnits", dynamic: [], invoke: () => readFrqUnits() },
       { name: "openUnitCheck", dynamic: [], invoke: () => openUnitCheck("BC-UNIT-05") },
       { name: "readUnitCheck", dynamic: ["SES-1"], invoke: () => readUnitCheck("SES-1") },
@@ -948,8 +944,7 @@ describe("response shape vocabulary", () => {
       { typeName: "RoleBudget", module: "types.ts" },
       { typeName: "SelfExplanationResult", module: "client.ts" },
       { typeName: "ExportJob", module: "client.ts" },
-      { typeName: "ReauthBegin", module: "client.ts" },
-      { typeName: "ReauthFinish", module: "client.ts" },
+      { typeName: "ReauthResult", module: "client.ts" },
       { typeName: "ServedOption", module: "types.ts" },
       { typeName: "AttemptResult", module: "types.ts" },
       { typeName: "StepMark", module: "types.ts" },
@@ -1032,7 +1027,6 @@ describe("response shape vocabulary", () => {
       { file: "api/routes/settings.py", route: "read_providers", callee: "providers.providers_view" },
       { file: "api/routes/settings.py", route: "read_budgets", callee: "budgets.budgets_view" },
       { file: "api/routes/settings.py", route: "change_budget", callee: "budgets.budgets_view" },
-      { file: "api/routes/auth.py", route: "reauth_begin", callee: "service.reauth_begin" },
       { file: "api/routes/sessions.py", route: "read_diagnostic", callee: "diagnostic_session.result_payload" },
       { file: "api/routes/assessment.py", route: "read_timed", callee: "assessment.session_payload" },
       { file: "api/routes/assessment.py", route: "start_timed_part", callee: "assessment.session_payload" },
@@ -1123,12 +1117,7 @@ describe("response parsing", () => {
          invoke: () => updateBudget({ role: "tutor", cap_usd: 1, cap_tokens: null, reauth_token: "t" })
       },
       { name: "requestExport", typeName: "ExportJob", invoke: () => requestExport({ reauth_token: "t" }) },
-      { name: "beginReauth", typeName: "ReauthBegin", invoke: () => beginReauth() },
-      {
-         name: "finishReauth",
-         typeName: "ReauthFinish",
-         invoke: () => finishReauth({ challenge_id: "c", credential: {} })
-      },
+      { name: "reauthenticate", typeName: "ReauthResult", invoke: () => reauthenticate({ password: "p" }) },
       { name: "readFrqUnits", typeName: "FrqUnitsPayload", invoke: () => readFrqUnits() },
       { name: "openUnitCheck", typeName: "UnitCheckPayload", invoke: () => openUnitCheck("BC-UNIT-05") },
       { name: "startFrqAttempt", typeName: "FrqAttempt", invoke: () => startFrqAttempt("SES-1", "FRQ-1", "typed") },
@@ -1169,74 +1158,35 @@ describe("response parsing", () => {
    });
 });
 
-function base64Url(bytes: number[]) {
-   return btoa(String.fromCharCode(...bytes)).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
-}
-
-describe("the re-authentication ceremony", () => {
+describe("password re-authentication", () => {
    beforeEach(() => {
       vi.unstubAllGlobals();
    });
 
-   it("hands the authenticator the decoded challenge and finishes with the assertion and a hex credential id", async () => {
-      const challengeBytes = [251, 255, 7, 0, 64];
-      const credentialBytes = [0, 171, 254, 16];
-      const assertion = {
-         id: base64Url(credentialBytes),
-         rawId: new Uint8Array(credentialBytes).buffer,
-         type: "public-key",
-         response: {
-            clientDataJSON: new Uint8Array([1, 2]).buffer,
-            authenticatorData: new Uint8Array([3]).buffer,
-            signature: new Uint8Array([4, 5]).buffer,
-            userHandle: null
-         },
-         getClientExtensionResults: () => ({})
-      };
-      const credentialsGet = vi.fn().mockResolvedValue(assertion);
-      const fetchMock = vi
-         .fn()
-         .mockResolvedValueOnce(
-            jsonResponse(200, {
-               challenge_id: "CH-1",
-               options: {
-                  challenge: base64Url(challengeBytes),
-                  allowCredentials: [{ id: base64Url(credentialBytes), type: "public-key" }],
-                  userVerification: "preferred"
-               }
-            })
-         )
-         .mockResolvedValueOnce(jsonResponse(200, { reauth_token: "token-1" }));
+   it("posts the password to /auth/reauth as JSON and hands back the single-use token", async () => {
+      const fetchMock = vi.fn().mockResolvedValue(jsonResponse(200, { reauth_token: "token-1" }));
 
       vi.stubGlobal("fetch", fetchMock);
-      vi.stubGlobal("navigator", { credentials: { get: credentialsGet } });
 
-      const token = await reauthenticate();
+      const accepted = await reauthenticate({ password: "correct horse battery" });
+      const [url, init] = fetchMock.mock.calls[0];
 
-      const publicKey = credentialsGet.mock.calls[0][0].publicKey;
-      const [finishUrl, finishInit] = fetchMock.mock.calls[1];
-      const finishBody = JSON.parse(finishInit.body);
-
-      expect(token).toBe("token-1");
-      expect(Array.from(publicKey.challenge)).toEqual(challengeBytes);
-      expect(Array.from(publicKey.allowCredentials[0].id)).toEqual(credentialBytes);
-      expect(new URL(String(finishUrl), "http://x").pathname).toBe("/auth/reauth/finish");
-      expect(finishBody.challenge_id).toBe("CH-1");
-      expect(finishBody.credential.credential_id).toBe("00abfe10");
-      expect(finishBody.credential.rawId).toBe(base64Url(credentialBytes));
-      expect(finishBody.credential.response.signature).toBe(base64Url([4, 5]));
+      expect(accepted.reauth_token).toBe("token-1");
+      expect(new URL(String(url), "http://x").pathname).toBe("/auth/reauth");
+      expect(init.method).toBe("POST");
+      expect(JSON.parse(init.body)).toEqual({ password: "correct horse battery" });
    });
 
-   it("finishes nothing when the authenticator returns no assertion", async () => {
-      const fetchMock = vi
-         .fn()
-         .mockResolvedValue(jsonResponse(200, { challenge_id: "CH-1", options: { challenge: base64Url([1]) } }));
+   it("rejects with the server's detail when the password is refused", async () => {
+      const detail = "the password is incorrect";
 
-      vi.stubGlobal("fetch", fetchMock);
-      vi.stubGlobal("navigator", { credentials: { get: vi.fn().mockResolvedValue(null) } });
+      vi.stubGlobal("fetch", vi.fn().mockResolvedValue(jsonResponse(401, { detail })));
 
-      await expect(reauthenticate()).rejects.toThrow(/no assertion/);
-      expect(fetchMock).toHaveBeenCalledTimes(1);
+      const refusal = await reauthenticate({ password: "wrong" }).catch((failure: unknown) => failure);
+
+      expect(refusal).toBeInstanceOf(ApiError);
+      expect((refusal as ApiError).status).toBe(401);
+      expect((refusal as ApiError).detail).toBe(detail);
    });
 });
 

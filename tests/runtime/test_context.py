@@ -114,7 +114,6 @@ def test_main_builds_an_application_without_touching_the_network(tmp_path, monke
    try:
       assert isinstance(main_module.application, FastAPI)
       assert main_module.application.state.settings.bind_host == "127.0.0.1"
-      assert main_module.application.state.settings.rp_id == "localhost"
       assert main_module.application.state.settings.session_context is not None
    finally:
       monkeypatch.setenv("GROWTH_DB_PATH", str(tmp_path / "growth-reset.db"))

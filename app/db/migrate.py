@@ -3,13 +3,26 @@
 Base.metadata.create_all creates a missing table and leaves an existing one untouched, so a
 column added to a model after a database file was created never reaches that file. The storage
 rules are in docs/plan/06-architecture.md, "Data model".
+
+One step here is not additive. A table named in RETIRED_TABLES is dropped once a model no longer
+declares it: passkey_credentials went when passwords replaced passkeys (ruled 2026-09-27). The drop
+runs only when inspection finds the table, after a named copy of the database is written to
+backups/ beside it, and every auth_sessions row goes in the same transaction, so nobody stays
+signed in on a credential that no longer exists. It inspects first, so a database with nothing to
+retire opens no write transaction.
 """
 import json
+import logging
 
 from sqlalchemy import inspect, text
 from sqlalchemy.dialects import sqlite
 
 from app.db.models import Base
+
+logger = logging.getLogger(__name__)
+
+RETIRED_TABLES = ("passkey_credentials",)
+RECOVERY_COMMAND = "python -m app.auth.issue_recovery_code --db <path>"
 
 
 class SchemaDriftError(RuntimeError):
@@ -219,3 +232,62 @@ def apply_additive_migrations(engine):
                backfill(connection)
 
    return tuple(name for name, _ in statements)
+
+
+def retired_tables_present(engine):
+   live_table_names = set(inspect(engine).get_table_names())
+
+   return tuple(name for name in RETIRED_TABLES if name in live_table_names)
+
+
+def is_file_backed(engine):
+   database_path = engine.url.database
+
+   return database_path not in (None, "", ":memory:")
+
+
+def warn_about_unrecoverable_users(connection):
+   stranded = connection.execute(
+      text(
+         "SELECT id FROM users "
+         "WHERE password_hash IS NULL AND recovery_code_hash IS NULL"
+      )
+   ).scalars().all()
+
+   for user_id in stranded:
+      logger.warning(
+         "user %s has no password and no recovery code after passkeys were retired; "
+         "the operator can issue a recovery code with %s",
+         user_id,
+         RECOVERY_COMMAND,
+      )
+
+
+def retire_tables(engine, backup_dir=None):
+   """Drops every table in RETIRED_TABLES the database still holds and deletes every auth_sessions
+   row, after writing a named backup. Returns the tuple of tables dropped, empty when there were
+   none, in which case nothing is written and no transaction is opened."""
+   from app.db.backup import back_up_before_retiring
+
+   present = retired_tables_present(engine)
+   has_work = len(present) > 0
+
+   if not has_work:
+      return ()
+
+   if is_file_backed(engine):
+      written = back_up_before_retiring(engine.url.database, present, backup_dir=backup_dir)
+      logger.warning("database copied to %s before dropping %s", written, ", ".join(present))
+
+   with engine.begin() as connection:
+      warn_about_unrecoverable_users(connection)
+
+      for table_name in present:
+         quoted_table = sqlite.dialect().identifier_preparer.quote(table_name)
+         connection.exec_driver_sql(f"DROP TABLE {quoted_table}")
+
+      connection.exec_driver_sql("DELETE FROM auth_sessions")
+
+   logger.warning("dropped %s and signed every session out", ", ".join(present))
+
+   return present

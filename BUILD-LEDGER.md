@@ -1987,6 +1987,62 @@ items) and items 3 and 6 (Slices 3 and 4). Every gate 11 names for P2 now exists
   passed (702)` in 58 files; `tsc --noEmit` exit 0; `qa/12_report.py` exit 0. The full pytest suite was not run to completion: the operator stopped
   it and asked for the merge without it.
 
+- 2026-09-27, passwords replace passkeys, on the operator's instruction (the ruling is in
+  `docs/plan/09-security-and-privacy.md`, "Authentication with a password"; decisions below,
+  "Decisions taken on the operator's instruction, 2026-09-27"). Removed: `app/auth/webauthn.py`,
+  the `PasskeyCredential` model and `passkey_credentials` table, the challenge store, every
+  `/auth/passkey/*`, `/auth/recovery/register/*` and `/auth/reauth/begin` and `/finish` route,
+  `Settings.verifier`, `rp_id` and `origin`, `GROWTH_RP_ID` and `GROWTH_ORIGIN`, and `webauthn`
+  from `pyproject.toml` (uninstalled from `.venv` with `uv pip uninstall webauthn`, "Uninstalled 1
+  package ... webauthn==3.0.0", because this `.venv` has no pip). New: `app/auth/passwords.py`
+  (scrypt through `hashlib.scrypt`, stored as `scrypt$n$r$p$salt$hash`, n=2^14, r=8, p=5 by
+  default and `GROWTH_SCRYPT_N`, `_R` and `_P`; username and password rules), `app/auth/guard.py`
+  (Host allowlist with `GROWTH_PUBLIC_HOST`, `Sec-Fetch-Site` and `Origin` check, plain-http
+  refusal, and the 429), `app/auth/limiter.py` (10 requests per peer address per 60 s,
+  `GROWTH_AUTH_RATE_LIMIT`) and `app/auth/issue_recovery_code.py` (the operator CLI). Routes in
+  `app/api/routes/auth.py`: `POST /auth/signup`, `/auth/login`, `/auth/logout`, `/auth/reauth`,
+  `/auth/password/change` and `/auth/recovery/reset`, and `GET /auth/status`, which adds
+  `needs_password` for a loopback caller only. `users` gains `username`, `password_hash`,
+  `failed_login_count` and `locked_until`; `app/db/migrate.py` `retire_tables` writes
+  `backups/growth-before-retiring-passkey_credentials-<stamp>.db` (`app/db/backup.py`
+  `back_up_before_retiring`), then drops `passkey_credentials` and deletes every `auth_sessions`
+  row in one transaction, and `current_session` refuses a user with no password. Audit actions:
+  `account_created`, `login_failed_lockout`, `password_changed`, `password_reset_via_recovery` and
+  `recovery_code_issued` in, the three `passkey_*` actions out, 30 names, still sorted.
+  `app/audit/detail.py` refuses a detail field named like "password". `app/export/archive.py`
+  `PUBLIC_COLUMN_NAMES` removed. `tools/frq_scenarios.py` registers through `/auth/signup` and
+  builds with n=1024, r=8, p=1. Export, purge and budget re-authentication details now say
+  "password". Plan text changed with dated notes: 09 (the ruling, the STRIDE row, the per-IP
+  paragraph narrowed to three routes, the retention and audit rows), 06 (py_webauthn, the users
+  table, the API surface), 08, 10, 11 (gates 23 and 24 keep their backticked names; the gate table
+  reads the same 96 gates before and after, compared with `tools/gate_status.py` `read_gates`
+  against the HEAD copy) and `docs/operator/ui-redesign.md`. Checks recorded by the backend stage:
+  `.venv/bin/python -c "import app.main"` ok; tests/db, tests/audit and
+  tests/runtime/test_context.py `3 failed, 75 passed` before the test stage, the 3 being the forced
+  edits listed in the decisions (`test_models` passkey_credentials, `test_vocabulary`
+  passkey_registered, `test_context` rp_id); a smoke script over every route at n=1024, p=1 (one
+  signup of 8 parallel won, 40 parallel wrong guesses checked 5 real hashes and locked once with
+  one audit row); one production hash measured 276 ms under `.venv`. Checks by the docs stage:
+  tests/tools/test_gate_status.py, test_p1_archetype_list.py and tests/review/test_audit.py `41
+  passed in 5.83s`; `qa/12_report.py` exit 0, all 14 checks PASS. Checks at integration: the 12
+  auth-affected test directories (api, auth, audit, db, export, session, providers, runtime,
+  tools, e2e, assessment, grading) `990 passed, 1 warning in 828.36s`; vitest `Test Files 58
+  passed (58)`, `Tests 708 passed (708)`; `npm run build` built; `tsc --noEmit` exit 0. The full
+  pytest suite was not run, on the operator's instruction (it takes about 25 minutes), so the
+  directories outside those 12 are unverified by this change. Break and restore: removing the
+  lock check from `reserve_attempt` turned tests/auth/test_lockout.py from `9 passed` to `6
+  failed, 3 passed`; skipping `consume_reauth` in `change_password` turned the reauth and
+  password-change files from `18 passed` to `4 failed, 14 passed`; skipping it in `POST /export`
+  failed `test_export_requires_a_fresh_reauthentication_and_burns_a_wrong_one`; each restored
+  green. Browser walk on a scratch database (port 8002): sign up with the show-once recovery code,
+  sign out, a wrong password answered "username or password is incorrect", sign in, and an export
+  behind the password prompt (`POST /auth/reauth` 200, `POST /export` 200, download 200). The
+  first sign-out of the walk answered 500 `database is locked`, because the first `GET /progress`
+  on a fresh database ingests the item bank inside one write transaction (`app/runtime/bank.py`
+  `_ingest_pending_source`); logout writes an audit row and waited past the busy timeout. That
+  was so before this change and is listed under Known defects. After the security and code
+  reviews, tests/auth, the route list, auth status, export and tests/db `215 passed in 13.79s`.
+
 ## In progress [inferred]
 
 Stage 1, items for Units 4 to 10, is complete in the worktree `../growth-content` on branch
@@ -3068,6 +3124,12 @@ From the eleventh session, 2026-09-21, found and not fixed.
   holds only between them, such as a `min-width: 700px` and `max-width: 800px` pair, is matched at
   neither; the coverage test then fails it if it carries a colour, which is the guard, but its
   non-colour declarations reach no greyscale state.
+- 2026-09-27, found in the password walk, open. On a fresh database the first `GET /progress`
+  ingests the pending item bank (`app/runtime/bank.py` `_ingest_pending_source`, with the numeric
+  checks of `app/items/verify.py` in child processes) inside one write transaction, for well over a
+  minute. Any write sent meanwhile waits past the SQLite busy timeout and answers 500 `database is
+  locked`; in the walk that was `POST /auth/logout` writing `session_closed`. Not caused by the
+  password change, which left the ingest path untouched.
 - 2026-09-27, stage 11, open. The theme choice lives in one browser's localStorage, so a second
   browser or a cleared profile starts at System; the server holds no copy.
 - 2026-09-27, stage 11, closed. `get_db` committed after the response was sent (FastAPI's default
@@ -3835,6 +3897,82 @@ the per-student share kept and reported. On this world the same policy against i
 to 58 percent of students and only controls that read the hidden student reach 88.5 to 91 percent,
 in single cells, so the two-term-against-random bar cannot be decided by a per-student share.
 The ruling changes no live setting today: five-term and `lambda` fail on the mean as well.
+
+Passwords replacing passkeys, on the operator's instruction of 2026-09-27 to remove passkeys
+entirely and sign in with a username and password. The operator delegated the plan's five open
+questions; they were decided by claude-opus-5-5, not by a person. The ruling and its reasoning are
+in `docs/plan/09-security-and-privacy.md`, "Authentication with a password", which reverses D10's
+passkey-only rule for this installation.
+
+- The per-IP limit is 10 requests per 60 s per peer address, on `Settings`
+  (`auth_rate_limit_count`, `GROWTH_AUTH_RATE_LIMIT`); tests set it high explicitly. It covers only
+  `POST /auth/signup`, `/auth/login` and `/auth/recovery/reset`, narrowing 09's per-IP paragraph,
+  which had put the tightest limit on all eleven unauthenticated routes. Reason: it keys on
+  `request.client.host`, which is one shared loopback key on the default bind, so a limit on
+  `GET /` or `/assets` would lock the client out of its own files. The cost, recorded in 09: on
+  loopback the limit is one global bucket, so any local caller can hold sign-in refused for up to
+  60 s at a time. Behind a local reverse proxy, uvicorn's default proxy headers key it on the
+  forwarded client address instead (corrected by the code review of 2026-09-27).
+- A locked account gets the same 401 "username or password is incorrect" as any other failure, not
+  a 429 with `Retry-After`. Reason: a distinct answer would tell a stranger the username exists.
+  Schedule: 4 free failures, the fifth locks for 30 s, doubling per further failure to at most 900
+  s, never permanent; an attempt during a lock counts nothing and does not extend it.
+- The operator CLI `python -m app.auth.issue_recovery_code --db <path>` is added, as the way back in
+  for a migrated user whose recovery code is missing or spent, resting on 09's statement that
+  filesystem access is already total access. It audits `recovery_code_issued` with the actor
+  "operator", a fifth new action beyond the plan's four.
+- The commit-latency residual is accepted and recorded in 09: a known username always commits the
+  attempt count and an unknown one writes nothing. Reason: one user, the per-IP limit bounds
+  attempts, and the design does not rely on the username being secret.
+- No unique index on `users.username`. It was declared, and 5 tests in `tests/db/test_migrate.py`
+  then failed with `sqlite3.OperationalError: error in index ux_users_username after drop column:
+  no such column: username`, because those tests drop every nullable column and SQLite refuses to
+  drop an indexed one. That test is not on the forced-edit list, so the code changed and the test
+  did not. Uniqueness rests on the single-user claim (`INSERT ... WHERE NOT EXISTS (SELECT 1 FROM
+  users)`) and the lowercase normalisation. The planned assertion that the index exists was dropped
+  from `test_migrate_passkey_retire`. Adding the index needs an operator-approved change to
+  test_migrate.py, and multi-user needs it.
+- `display_name` is kept and set to "student" at sign-up, as passkey registration did, so `GET /me`,
+  the client type and the prompt tests are unchanged. The username is a separate column.
+- The needs-password state is derived, a user row with a NULL `password_hash`, not a flag column.
+  `GET /auth/status` reports it as `needs_password` to a loopback caller only, the pattern
+  `/healthz` uses, so the migration window is not advertised.
+- Every route declares `Depends(get_db, scope="function")`, as every other route at HEAD does; with
+  plain `Depends(get_db)` the route got a different ORM session from `current_session` and logout
+  crashed.
+- A password change keeps the current session and signs out every other one; it does not rotate
+  the current token, and the recovery code is unchanged. A recovery reset signs out every session,
+  clears the lockout and issues a replacement code, keeping the known deviation recorded under
+  Known defects that recovery hands out a new code.
+- The key-derivation passphrase of 09 "Key handling" stays a separate secret from the login
+  password. `PUT /settings/providers/{provider}` is still unbuilt (09, ruled 2026-09-23); when it is
+  built it takes the passphrase and a password re-authentication.
+- Backups keep old hashes: a dated copy or the pre-retirement copy under `backups/` holds that day's
+  password hash and recovery code hash, so restoring it restores that password. Recorded in 09.
+- Test contract changes the requirement forces, and the only edits to existing tests this change
+  allows: `tests/runtime/test_context.py` loses the `rp_id` assertion (the field is removed);
+  `tests/api/test_auth_status.py` takes the new status contract (a remote caller still gets exactly
+  `{"user_exists": ...}`, a loopback case asserts `needs_password`), and the AuthStatus assertions
+  in `client.test.ts` and `routes.test.ts` follow it; `tests/api/test_unauthenticated_routes.py`
+  lists the eight routes; `tests/audit/test_vocabulary.py` asserts the new action names in place
+  of `passkey_registered`, with its sorted-order check unchanged; `tests/session/test_purge.py`,
+  `tests/export/test_export.py` and `tests/db/test_models.py` lose the dropped
+  `passkey_credentials` table, and `test_export.py` gains `("users", "password_hash")` in its
+  secrets list, which strengthens that gate, as does removing `PUBLIC_COLUMN_NAMES`;
+  `tests/api/test_routes.py` takes the new recovery behaviour, with `test_purge_requires_reauth`
+  kept at its name and node id; `tests/e2e/test_session_login_to_feedback.py` changes its
+  docstring only, keeping the name gate 23 reads. The three passkey test files
+  (`tests/auth/test_passkeys.py`, `test_add_authenticator.py`, `test_passkey_library_paths.py`)
+  are deleted with the code they tested. Any other existing-test change is outside this list and
+  is reported, not made.
+- Plan text corrected in place with a dated note: 09 (purpose, posture, assets, STRIDE spoofing,
+  the not-logged rule, the per-IP paragraph, the authentication section, retention rows, audit
+  recorded and not-recorded lists, traceability), 06 (the py_webauthn sentence, the users table
+  including the `recovery_code_hash` it was missing, the API surface rows and re-auth markings),
+  08 (onboarding account), 10 (the e2e login), 11 (goal, scope item 15, gates 23 and 24 with their
+  backticked names kept, the dependency diagram) and `docs/operator/ui-redesign.md` (the sign-in
+  row). The historical run records in docs/operator that mention the passkey verifier double are
+  left as history.
 
 ## Decisions taken on the operator's instruction, 2026-09-26 [inferred]
 

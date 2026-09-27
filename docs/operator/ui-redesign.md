@@ -120,7 +120,7 @@ at 4.90:1 and light `text-muted` on `surface-sunken` at 4.94:1.
 | Sample questions (`data.js`), curriculum copy (`curriculum.js`), seeded mastery, calibration and history, localStorage state | every screen reads the real API; `data.js` was not copied or quoted anywhere |
 | The "if-then study plan" in placement | no study plans or schedules anywhere |
 | Provider and model choice, non-Anthropic providers | ruled out for one student in P6; settings shows the chain read-only |
-| Simulated sign-in, named devices, the recovery flow | authentication stays passkey-only as built, with the app's own recovery code path |
+| Simulated sign-in, named devices, the recovery flow | authentication stayed passkey-only as built, with the app's own recovery code path. Changed 2026-09-27 on the operator's instruction: the app's own sign-in is now a username and password (docs/plan/09, "Authentication with a password"), and the recovery code resets the password. The prototype's simulated sign-in and named devices are still not taken |
 | A single predicted score | the result shows the band with its assumptions only |
 | "Reset preview", "Design preview", "All views", "illustrative" and sample-record labels | they describe the prototype, not the app |
 | Simulated OCR, grading and scheduling | the app does these for real |

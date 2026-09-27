@@ -90,7 +90,7 @@ Three choices in that picture are deliberate. The engine, grader and verifier si
 
 ## Stack decision with alternatives considered
 
-The choice is D7: Python 3.12 with FastAPI on the server holding engine, grader, verifier, content loader and provider layer; React 18 with TypeScript and Vite on the client with KaTeX for rendering and MathLive for typed math input; SQLite through SQLAlchemy; a single job worker over a SQLite job table; SSE for streaming. Passkey ceremonies are verified by py_webauthn (`webauthn` on PyPI), approved by the operator on 2026-09-19 and landed on 2026-09-23. `uvicorn` serves the ASGI application FastAPI builds; approved by the operator on 2026-09-20 to run the app locally and landed in `pyproject.toml`'s dependencies on 2026-09-23, having previously been installed in `.venv/` only.
+The choice is D7: Python 3.12 with FastAPI on the server holding engine, grader, verifier, content loader and provider layer; React 18 with TypeScript and Vite on the client with KaTeX for rendering and MathLive for typed math input; SQLite through SQLAlchemy; a single job worker over a SQLite job table; SSE for streaming. Passkey ceremonies were verified by py_webauthn (`webauthn` on PyPI), approved by the operator on 2026-09-19 and landed on 2026-09-23; removed 2026-09-27 on the operator's instruction, when passwords replaced passkeys (`09-security-and-privacy.md`, "Authentication with a password"). Passwords are hashed with `hashlib.scrypt` from the standard library, so no dependency took its place. `uvicorn` serves the ASGI application FastAPI builds; approved by the operator on 2026-09-20 to run the app locally and landed in `pyproject.toml`'s dependencies on 2026-09-23, having previously been installed in `.venv/` only.
 
 The ranking criterion is learning impact first, then cost, then convenience, and that ordering is what decides this table rather than developer taste.
 
@@ -129,8 +129,15 @@ Library IDs are stored as TEXT holding the literal BC-* string (`BC-SKL-06017`, 
 | exam_date | TEXT | ISO date. Default 2027-05-10, Monday 10 May 2027, from `research/exam/exam-structure.md` [single-source] (the stored value is whatever the exam registry says, not a constant in code) (R19) |
 | created_at | TEXT | |
 | purge_after | TEXT | ISO date, default exam_date plus 30 days, owned by `09-security-and-privacy.md` |
+| recovery_code_hash | TEXT | nullable; PBKDF2 hash of the one live recovery code, NULL once spent. Built with the recovery path on 2026-09-23 and missing from this table until 2026-09-27 |
+| username | TEXT | nullable; lowercase, 3 to 32 letters, digits or underscores. NULL only for a user migrated from passkeys who has not reset yet. No unique index, see the note below (added 2026-09-27) |
+| password_hash | TEXT | nullable; `scrypt$n$r$p$salt$hash` in hex. NULL is the "must set a password" state of a user migrated from passkeys (added 2026-09-27) |
+| failed_login_count | INTEGER | NOT NULL, default 0; failures counted toward the lockout (added 2026-09-27) |
+| locked_until | TEXT | nullable ISO 8601 moment the lockout ends (added 2026-09-27) |
 
 Semantics owned by `09-security-and-privacy.md`. The single-user invariant lives here: the claudebox adapter in `07-ai-provider-layer.md` refuses to start when this table holds more than one row.
+
+Changed 2026-09-27 on the operator's instruction, with passwords replacing passkeys: the four columns above were added through the additive migration, and `app/db/migrate.py` `retire_tables` drops the retired `passkey_credentials` table and deletes every `auth_sessions` row once, after writing a named backup. Sign-up claims the installation with `INSERT ... WHERE NOT EXISTS (SELECT 1 FROM users)`, and that single-user claim is what keeps `username` unique today. A unique index was declared and taken out again: SQLite refuses to drop an indexed column, and `tests/db/test_migrate.py` drops every nullable column, so the index needs a change to that test before it can land. Multi-user needs it.
 
 ### provider_configs
 
@@ -409,15 +416,17 @@ Semantics owned by `09-security-and-privacy.md`.
 
 ## API surface
 
-REST for everything with a request and a response. SSE for the two things that are genuinely progressive, namely tutor text and grading progress. Auth is a passkey-backed session cookie unless noted; `09-security-and-privacy.md` owns the auth mechanism. The role or job column says what the request causes behind the API.
+REST for everything with a request and a response. SSE for the two things that are genuinely progressive, namely tutor text and grading progress. Auth is a password-backed session cookie unless noted (passkey-backed until 2026-09-27); `09-security-and-privacy.md` owns the auth mechanism. "re-auth" means the body carries a single-use `reauth_token` from `POST /auth/reauth`, spent by the request. The role or job column says what the request causes behind the API.
 
 | Method | Path | Purpose | Auth | Triggers |
 | --- | --- | --- | --- | --- |
-| POST | /auth/passkey/register/begin | WebAuthn registration challenge | none (first user only) | none |
-| POST | /auth/passkey/register/finish | store the credential | none (first user only) | none |
-| POST | /auth/passkey/login/begin | WebAuthn assertion challenge | none | none |
-| POST | /auth/passkey/login/finish | establish the session | none | none |
-| POST | /auth/logout | end the session | session | none |
+| POST | /auth/signup | create the one user from a username and password, establish the session, return the recovery code once (replaced the passkey registration pair on 2026-09-27) | none (first user only), per-IP limit | seeds skills_state; audit_log write |
+| POST | /auth/login | establish the session from a username and password (replaced the passkey login pair on 2026-09-27) | none, per-IP limit | lockout count; audit_log write |
+| GET | /auth/status | whether the installation has its user; `needs_password` for a loopback caller only | none | none |
+| POST | /auth/reauth | check the password again and return a single-use `reauth_token` | session | lockout count; audit_log write |
+| POST | /auth/password/change | change the password; signs out every other session | session, re-auth | audit_log write |
+| POST | /auth/recovery/reset | set a new password with the recovery code; signs out every session and returns a replacement code | none, per-IP limit | audit_log write |
+| POST | /auth/logout | end the session | session | audit_log write |
 | GET | /me | user, exam date, purge date | session | none |
 | POST | /sessions | open a session in a mode; the response carries the four assembled blocks (due reviews, fringe learning, interleaved mixed review, calibration and error notes) and the minute forecast for each | session | engine: fringe computation and the Session assembly rule in `02-adaptive-engine.md` (R5) |
 | GET | /sessions/{id} | session state and remaining queue | session | none |
@@ -446,13 +455,13 @@ REST for everything with a request and a response. SSE for the two things that a
 | GET | /settings | app settings | session | none |
 | PUT | /settings | update app settings | session | none |
 | GET | /settings/providers | provider configs without key material | session | none |
-| PUT | /settings/providers/{provider} | set or rotate a key, enable or disable | session, passphrase re-entry | provider layer reload |
+| PUT | /settings/providers/{provider} | set or rotate a key, enable or disable | session, passphrase re-entry, re-auth | provider layer reload |
 | POST | /settings/providers/{provider}/test | one cheap call to confirm the key works | session | provider layer |
 | GET | /settings/budgets | per-role caps and today's usage | session | none |
-| PUT | /settings/budgets | change a cap | session | budget guard reload |
-| POST | /export | produce a full data export | session | export job |
+| PUT | /settings/budgets | change a cap | session, re-auth | budget guard reload |
+| POST | /export | produce a full data export | session, re-auth | export job |
 | GET | /export/{id} | download the export | session | none |
-| POST | /purge | delete everything after an export | session, typed confirmation | purge, audit_log write |
+| POST | /purge | delete everything after an export | session, typed confirmation, re-auth | purge, audit_log write |
 | GET | /content/snapshot | active snapshot id, digest and counts | session | none |
 | POST | /content/reload | reload the library into a new snapshot | session, operator | snapshot_reload job |
 | GET | /healthz | liveness | none, localhost only | none |

@@ -1,0 +1,228 @@
+{
+   "id": "FRQ-AGT-06003-01",
+   "archetype_id": "BC-QA-06003",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-02",
+   "stem": {
+      "text": "The continuous function \\( f \\) is defined on the closed interval \\( -5 \\le x \\le 6 \\) by \\[ f(x) = \\begin{cases} x + 2 & \\text{for } -5 \\le x \\le 0 \\\\ 2 - x & \\text{for } 0 < x \\le 2 \\\\ -\\sqrt{4 - (x - 4)^{2}} & \\text{for } 2 < x \\le 6 \\end{cases} \\] so the graph of \\( f \\) consists of two line segments and a semicircle below the \\( x \\)-axis. Let \\( g \\) be the function defined by \\( g(x) = \\displaystyle\\int_{0}^{x} f(t)\\,dt \\) for \\( -5 \\le x \\le 6 \\)."
+   },
+   "skills": [
+      "BC-SKL-06020",
+      "BC-SKL-06022",
+      "BC-SKL-06023",
+      "BC-SKL-06024",
+      "BC-SKL-06025",
+      "BC-SKL-06026",
+      "BC-SKL-06027",
+      "BC-SKL-06018"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find \\( g(-5) \\) and \\( g(6) \\).",
+         "setup_required": false,
+         "answer_latex": "g(-5) = \\frac{5}{2}, \\quad g(6) = 2 - 2\\pi",
+         "worked_solution": [
+            {
+               "text": "On [-5, -2] f is below the axis in a triangle of base 3 and height 3; on [-2, 0] it is above in a triangle of base 2 and height 2.",
+               "latex": "\\int_{-5}^{0} f(t)\\,dt = -\\frac{9}{2} + 2 = -\\frac{5}{2}"
+            },
+            {
+               "text": "Reversing the limits changes the sign.",
+               "latex": "g(-5) = \\int_{0}^{-5} f(t)\\,dt = -\\int_{-5}^{0} f(t)\\,dt = \\frac{5}{2}"
+            },
+            {
+               "text": "A triangle of base 2 and height 2 above the axis on [0, 2], then a semicircle of radius 2 below the axis on [2, 6].",
+               "latex": "g(6) = \\int_{0}^{2} f(t)\\,dt + \\int_{2}^{6} f(t)\\,dt = 2 - \\frac{1}{2}\\pi(2)^{2} = 2 - 2\\pi"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99069",
+               "skills": [
+                  "BC-SKL-06020"
+               ],
+               "criterion": "Gives g(-5) = 5/2, found from the two triangles on [-5, 0] with the sign reversed for the reversed limits. Any exact equivalent, or 2.5, is accepted.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99069",
+               "skills": [
+                  "BC-SKL-06020"
+               ],
+               "criterion": "Gives g(6) = 2 - 2pi, the triangle of area 2 plus the signed semicircle area -2pi. Any exact equivalent is accepted.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "2 - 2*pi",
+                  "up_to_constant": false,
+                  "variable": "x",
+                  "each_side": false
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find \\( g'(-3) \\). Find the open intervals on which \\( g \\) is decreasing. Give a reason for your answer.",
+         "setup_required": false,
+         "answer_latex": "g'(-3) = -1; \\ g \\text{ is decreasing on } (-5, -2) \\text{ and } (2, 6)",
+         "worked_solution": [
+            {
+               "text": "By the Fundamental Theorem of Calculus g' = f.",
+               "latex": "g'(x) = f(x)"
+            },
+            {
+               "text": "Evaluate at x = -3 with the first piece.",
+               "latex": "g'(-3) = f(-3) = -3 + 2 = -1"
+            },
+            {
+               "text": "g is decreasing where g' = f is negative.",
+               "latex": "f(x) < 0 \\text{ for } -5 < x < -2 \\text{ and for } 2 < x < 6"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99024",
+               "skills": [
+                  "BC-SKL-06018"
+               ],
+               "criterion": "Uses g'(x) = f(x), in general or at x = -3, and gives g'(-3) = f(-3) = -1. A value of -1 with no link to f does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99062",
+               "skills": [
+                  "BC-SKL-06022"
+               ],
+               "criterion": "Gives both intervals -5 < x < -2 and 2 < x < 6 (endpoints optional), with the reason that g'(x) = f(x) < 0 there. Only one of the two intervals, or no reason tied to the sign of f, does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Find the open intervals on which the graph of \\( g \\) is concave up and the open intervals on which it is concave down. Give a reason for your answer.",
+         "setup_required": false,
+         "answer_latex": "\\text{concave up on } (-5, 0) \\text{ and } (4, 6); \\text{ concave down on } (0, 4)",
+         "worked_solution": [
+            {
+               "text": "g'' = f', so the graph of g is concave up where f is increasing and concave down where f is decreasing.",
+               "latex": "g''(x) = f'(x)"
+            },
+            {
+               "text": "f increases on the first segment and on the right half of the semicircle.",
+               "latex": "f'(x) > 0 \\text{ for } -5 < x < 0 \\text{ and for } 4 < x < 6"
+            },
+            {
+               "text": "f decreases on the second segment and on the left half of the semicircle.",
+               "latex": "f'(x) < 0 \\text{ for } 0 < x < 4"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99062",
+               "skills": [
+                  "BC-SKL-06025",
+                  "BC-SKL-06027"
+               ],
+               "criterion": "Gives concave up on both -5 < x < 0 and 4 < x < 6 (endpoints optional), with the reason that g' = f is increasing there. One of the two intervals alone does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99062",
+               "skills": [
+                  "BC-SKL-06024",
+                  "BC-SKL-06025"
+               ],
+               "criterion": "Gives concave down on 0 < x < 4 (endpoints optional), with the reason that g' = f is decreasing there. Using the intervals where f is negative instead of where f is decreasing does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "Find the absolute maximum value of \\( g \\) on the closed interval \\( -5 \\le x \\le 6 \\). Justify your answer.",
+         "setup_required": false,
+         "answer_latex": "\\frac{5}{2}",
+         "worked_solution": [
+            {
+               "text": "Interior critical points of g are where g'(x) = f(x) = 0.",
+               "latex": "g'(x) = f(x) = 0 \\Rightarrow x = -2, \\ x = 2"
+            },
+            {
+               "text": "g at x = -2 reverses the triangle above the axis on [-2, 0].",
+               "latex": "g(-2) = -\\int_{-2}^{0} f(t)\\,dt = -2"
+            },
+            {
+               "text": "g at x = 2 is the triangle on [0, 2].",
+               "latex": "g(2) = \\int_{0}^{2} f(t)\\,dt = 2"
+            },
+            {
+               "text": "Compare the candidates with the endpoint values from part (a).",
+               "latex": "g(-5) = \\frac{5}{2}, \\quad g(-2) = -2, \\quad g(2) = 2, \\quad g(6) = 2 - 2\\pi"
+            },
+            {
+               "text": "The largest is at the left endpoint.",
+               "latex": "\\max_{-5 \\le x \\le 6} g(x) = g(-5) = \\frac{5}{2}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99013",
+               "skills": [
+                  "BC-SKL-06023"
+               ],
+               "criterion": "Sets g'(x) = f(x) = 0, or discusses where f changes sign, to identify the interior critical points x = -2 and x = 2.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "d2",
+               "point_type_id": "BC-PT-99011",
+               "skills": [
+                  "BC-SKL-06026"
+               ],
+               "criterion": "Evaluates g at both interior critical points and both endpoints, g(-5) = 5/2, g(-2) = -2, g(2) = 2 and g(6) = 2 - 2pi, and compares them. Missing the endpoint x = -5, a wrong evaluation, or a local argument alone does not earn the point.",
+               "eligible_only_if": [
+                  "d1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "d3",
+               "point_type_id": "BC-PT-99069",
+               "skills": [
+                  "BC-SKL-06020",
+                  "BC-SKL-06026"
+               ],
+               "criterion": "Gives the absolute maximum value 5/2, attained at x = -5. Any exact equivalent, or 2.5, is accepted.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "5/2",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 66 of 66 after two formulation misreadings were triaged, stems read for ambiguity by the blind solver)"
+}

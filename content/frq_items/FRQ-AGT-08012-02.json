@@ -1,0 +1,241 @@
+{
+   "id": "FRQ-AGT-08012-02",
+   "archetype_id": "BC-QA-08012",
+   "calculator_status": "calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "Let \\( f(x) = 2\\sqrt{x}\\,e^{-x/4} \\) for \\( x \\ge 0 \\). The equation \\( f(x) = 1 \\) has exactly two solutions, \\( x = p \\) and \\( x = q \\), where \\( 0 < p < q \\)."
+   },
+   "skills": [
+      "BC-SKL-08040",
+      "BC-SKL-08041",
+      "BC-SKL-08042",
+      "BC-SKL-08043",
+      "BC-SKL-08044",
+      "BC-SKL-08045",
+      "BC-SKL-08046",
+      "BC-SKL-08047"
+   ],
+   "functions": {
+      "f": {
+         "variable": "x",
+         "expression": "2*sqrt(x)*exp(-x/4)"
+      }
+   },
+   "roots": {
+      "p": {
+         "value": "0.2888427062750194583379347947859",
+         "equation": "2*sqrt(x)*exp(-x/4) - 1",
+         "variable": "x"
+      },
+      "q": {
+         "value": "6.5233713691529775538113247286175",
+         "equation": "2*sqrt(x)*exp(-x/4) - 1",
+         "variable": "x"
+      }
+   },
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Let \\( R \\) be the region bounded by the graph of \\( f \\) and the horizontal line \\( y = 1 \\). Find the volume of the solid generated when \\( R \\) is revolved about the line \\( y = 1 \\).",
+         "setup_required": true,
+         "answer_latex": "\\pi\\int_{p}^{q} \\left(f(x) - 1\\right)^{2}dx \\approx 4.769",
+         "worked_solution": [
+            {
+               "text": "Solve f(x) = 1 on the calculator.",
+               "latex": "p \\approx 0.289, \\quad q \\approx 6.523"
+            },
+            {
+               "text": "Each disc has radius f(x) - 1, the distance from the curve to the line y = 1.",
+               "latex": "\\pi\\int_{p}^{q} \\left(2e^{-x/4}\\sqrt{x} - 1\\right)^{2}dx"
+            },
+            {
+               "text": "Evaluate on the calculator.",
+               "latex": "\\pi\\int_{p}^{q} \\left(f(x) - 1\\right)^{2}dx \\approx 4.769"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99058",
+               "skills": [
+                  "BC-SKL-08040",
+                  "BC-SKL-08044",
+                  "BC-SKL-08046"
+               ],
+               "criterion": "Writes a disc integrand pi times (f(x) - 1)^2, in either order of subtraction, with pi inside or in front of the integral. The radius f(x) without the shift, or the radius unsquared, earns nothing.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-08047"
+               ],
+               "criterion": "Uses the limits p and q, written as names or as decimals accurate to three places, about 0.289 and 6.523.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "p",
+                  "upper": "q",
+                  "integrand": null,
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "a3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-08043"
+               ],
+               "criterion": "Gives the volume 4.769, accurate to three decimal places.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "pi*Integral((2*sqrt(x)*exp(-x/4) - 1)**2, (x, 0.2888427062750194583379347947859, 6.5233713691529775538113247286175))"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Let \\( U \\) be the unbounded region in the first quadrant between the graph of \\( f \\) and the \\( x \\)-axis. The solid generated when \\( U \\) is revolved about the \\( x \\)-axis has finite volume. Find the volume using an improper integral, showing the limit and the antiderivative that lead to your answer.",
+         "setup_required": true,
+         "answer_latex": "\\pi\\int_{0}^{\\infty} 4xe^{-x/2}\\,dx = 16\\pi",
+         "worked_solution": [
+            {
+               "text": "Disc radius f(x), so the integrand is pi times f(x) squared.",
+               "latex": "\\pi\\int_{0}^{\\infty} \\left(2e^{-x/4}\\sqrt{x}\\right)^{2}dx = \\pi\\int_{0}^{\\infty} 4xe^{-x/2}\\,dx"
+            },
+            {
+               "text": "Replace the infinite limit with b.",
+               "latex": "\\lim_{b \\to \\infty} \\pi\\int_{0}^{b} 4xe^{-x/2}\\,dx"
+            },
+            {
+               "text": "Antiderivative by parts.",
+               "latex": "\\int 4xe^{-x/2}\\,dx = -8(x + 2)e^{-x/2} + C"
+            },
+            {
+               "text": "Evaluate and take the limit.",
+               "latex": "\\lim_{b \\to \\infty} \\pi\\left(16 - 8(b + 2)e^{-b/2}\\right) = 16\\pi"
+            },
+            {
+               "text": "The volume.",
+               "latex": "16\\pi"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99058",
+               "skills": [
+                  "BC-SKL-08040",
+                  "BC-SKL-08041"
+               ],
+               "criterion": "Writes a disc integrand pi times (f(x))^2, that is 4 pi x e^(-x/2), on an interval from 0 to infinity or to a variable upper limit.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99053",
+               "skills": [
+                  "BC-SKL-08041"
+               ],
+               "criterion": "Replaces the infinite upper limit with a variable, such as b, and writes the limit as that variable approaches infinity, applied to the integral or to the antiderivative. Arithmetic with infinity earns nothing.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "b3",
+               "point_type_id": "BC-PT-99003",
+               "skills": [
+                  "BC-SKL-08043"
+               ],
+               "criterion": "Gives a correct antiderivative of 4x e^(-x/2), namely -8(x + 2)e^(-x/2), with or without the factor pi and the constant.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "b4",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-08043"
+               ],
+               "criterion": "Gives the volume 16 pi, or the decimal 50.265.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "16*pi"
+               }
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "For \\( k > 0 \\), the region between the graph of \\( f \\) and the \\( x \\)-axis for \\( 0 \\le x \\le k \\) is revolved about the \\( x \\)-axis. Find the value of \\( k \\) for which the solid generated has volume 20.",
+         "setup_required": true,
+         "answer_latex": "k \\approx 2.741",
+         "worked_solution": [
+            {
+               "text": "The disc volume from 0 to k equals 20.",
+               "latex": "\\pi\\int_{0}^{k} \\left(2e^{-x/4}\\sqrt{x}\\right)^{2}dx = 20"
+            },
+            {
+               "text": "Solve on the calculator.",
+               "latex": "k \\approx 2.741"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-08041"
+               ],
+               "criterion": "Writes the equation pi times the integral of (f(x))^2 from 0 to k equals 20, or an equivalent equation.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "equation_setup",
+                  "unknown": "k",
+                  "left": "pi*Integral((2*sqrt(x)*exp(-x/4))**2, (x, 0, k))",
+                  "right": "20",
+                  "interval": [
+                     "2",
+                     "4"
+                  ]
+               }
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-08043"
+               ],
+               "criterion": "Gives k = 2.741 (2.740 by truncation), accurate to three decimal places.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "2.7406943310824496653334367038611"
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 115 of 115, stems read for ambiguity by the blind solver)"
+}

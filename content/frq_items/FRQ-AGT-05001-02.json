@@ -1,0 +1,213 @@
+{
+   "id": "FRQ-AGT-05001-02",
+   "archetype_id": "BC-QA-05001",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "stem": {
+      "text": "A delivery drone flies over a park. Its altitude above the ground is \\( A(t) \\) meters, where \\( t \\) is measured in minutes, and \\( A \\) is differentiable for \\( 0 \\le t \\le 12 \\). Selected values of \\( A(t) \\) are given in the table. \\[ \\begin{array}{c|ccccc} t \\text{ (minutes)} & 0 & 3 & 5 & 9 & 12 \\\\ \\hline A(t) \\text{ (meters)} & 20 & 50 & 62 & 90 & 62 \\end{array} \\] A second drone has altitude \\( H(t) = 50 - 4\\left|t - 5\\right| \\) meters for \\( 0 \\le t \\le 10 \\)."
+   },
+   "skills": [
+      "BC-SKL-05001",
+      "BC-SKL-05002",
+      "BC-SKL-05003",
+      "BC-SKL-05004",
+      "BC-SKL-05006"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find the average rate of change of \\( A \\) over the interval \\( 0 \\le t \\le 12 \\). Show the computation that leads to your answer.",
+         "setup_required": false,
+         "answer_latex": "\\frac{7}{2}",
+         "worked_solution": [
+            {
+               "text": "Difference quotient over the interval.",
+               "latex": "\\frac{A(12) - A(0)}{12 - 0} = \\frac{62 - 20}{12} = \\frac{7}{2}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99021",
+               "skills": [
+                  "BC-SKL-05003"
+               ],
+               "criterion": "Writes (A(12) - A(0))/(12 - 0) with the table values, (62 - 20)/12, and gives 7/2. The unsimplified quotient 42/12 and the decimal 3.5 are accepted.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "7/2",
+                  "up_to_constant": false,
+                  "variable": "t"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Must there be a time \\( t \\), with \\( 3 < t < 5 \\), at which \\( A'(t) = 6 \\)? Must there be a time \\( t \\), with \\( 9 < t < 12 \\), at which \\( A'(t) = -\\frac{28}{3} \\)? Justify each answer.",
+         "setup_required": false,
+         "answer_latex": "\\text{yes, and yes}",
+         "worked_solution": [
+            {
+               "text": "Average rate of change over 3 <= t <= 5.",
+               "latex": "\\frac{A(5) - A(3)}{5 - 3} = \\frac{62 - 50}{2} = 6"
+            },
+            {
+               "text": "A is differentiable, so it is continuous on 3 <= t <= 5 and differentiable on 3 < t < 5. By the Mean Value Theorem there is such a time.",
+               "latex": "A'(t) = 6 \\text{ for some } 3 < t < 5"
+            },
+            {
+               "text": "Average rate of change over 9 <= t <= 12.",
+               "latex": "\\frac{A(12) - A(9)}{12 - 9} = \\frac{62 - 90}{3} = -\\frac{28}{3}"
+            },
+            {
+               "text": "The same hypotheses hold on 9 <= t <= 12, so the Mean Value Theorem gives such a time.",
+               "latex": "A'(t) = -\\frac{28}{3} \\text{ for some } 9 < t < 12"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99021",
+               "skills": [
+                  "BC-SKL-05003"
+               ],
+               "criterion": "Shows the average rate of change of A over 3 <= t <= 5 as a difference quotient with values, (62 - 50)/(5 - 3), equal to 6. The bare value 6 with no quotient does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99017",
+               "skills": [
+                  "BC-SKL-05001",
+                  "BC-SKL-05002",
+                  "BC-SKL-05004"
+               ],
+               "criterion": "Answers yes for 3 < t < 5, stating that A is differentiable (so continuous on 3 <= t <= 5 and differentiable on 3 < t < 5) and invoking the Mean Value Theorem. An appeal to the Intermediate Value Theorem does not earn the point.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "b3",
+               "point_type_id": "BC-PT-99021",
+               "skills": [
+                  "BC-SKL-05003"
+               ],
+               "criterion": "Shows the average rate of change of A over 9 <= t <= 12 as a difference quotient with values, (62 - 90)/(12 - 9), equal to -28/3. The bare value with no quotient does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b4",
+               "point_type_id": "BC-PT-99017",
+               "skills": [
+                  "BC-SKL-05001",
+                  "BC-SKL-05002",
+                  "BC-SKL-05004"
+               ],
+               "criterion": "Answers yes for 9 < t < 12, stating continuity on 9 <= t <= 12 and differentiability on 9 < t < 12 (or that A is differentiable) and invoking the Mean Value Theorem. An appeal to the Intermediate Value Theorem does not earn the point.",
+               "eligible_only_if": [
+                  "b3"
+               ],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Must there be a time \\( t \\), with \\( 5 < t < 12 \\), at which \\( A'(t) = 0 \\)? Justify your answer.",
+         "setup_required": false,
+         "answer_latex": "\\text{yes}",
+         "worked_solution": [
+            {
+               "text": "Average rate of change over 5 <= t <= 12. The endpoint altitudes are equal.",
+               "latex": "\\frac{A(12) - A(5)}{12 - 5} = \\frac{62 - 62}{7} = 0"
+            },
+            {
+               "text": "A is continuous on 5 <= t <= 12 and differentiable on 5 < t < 12, so the Mean Value Theorem (or Rolle's Theorem) gives such a time.",
+               "latex": "A'(t) = 0 \\text{ for some } 5 < t < 12"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99021",
+               "skills": [
+                  "BC-SKL-05003",
+                  "BC-SKL-05006"
+               ],
+               "criterion": "Shows (A(12) - A(5))/(12 - 5) = (62 - 62)/7 = 0, or states A(5) = A(12) = 62 as the equal endpoint values.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99017",
+               "skills": [
+                  "BC-SKL-05001",
+                  "BC-SKL-05002",
+                  "BC-SKL-05006"
+               ],
+               "criterion": "Answers yes, stating continuity on 5 <= t <= 12 and differentiability on 5 < t < 12 (or that A is differentiable) and invoking the Mean Value Theorem or Rolle's Theorem. An appeal to the Intermediate Value Theorem does not earn the point.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "Find the average rate of change of \\( H \\) over the interval \\( 0 \\le t \\le 10 \\). Must there be a time \\( t \\), with \\( 0 < t < 10 \\), at which \\( H'(t) \\) equals this average rate of change? Justify your answer.",
+         "setup_required": false,
+         "answer_latex": "0, \\; \\text{no}",
+         "worked_solution": [
+            {
+               "text": "Average rate of change of H over the interval.",
+               "latex": "\\frac{H(10) - H(0)}{10 - 0} = \\frac{30 - 30}{10} = 0"
+            },
+            {
+               "text": "H is linear on each side of t = 5.",
+               "latex": "H'(t) = 4 \\text{ for } 0 < t < 5, \\quad H'(t) = -4 \\text{ for } 5 < t < 10"
+            },
+            {
+               "text": "H' is never 0, and H is not differentiable at t = 5, so the Mean Value Theorem does not apply and there is no such time.",
+               "latex": "\\text{no}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99021",
+               "skills": [
+                  "BC-SKL-05003"
+               ],
+               "criterion": "Shows (H(10) - H(0))/(10 - 0) = (30 - 30)/10 = 0.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "d2",
+               "point_type_id": "BC-PT-99017",
+               "skills": [
+                  "BC-SKL-05001",
+                  "BC-SKL-05002"
+               ],
+               "criterion": "Answers no, with the reason that H'(t) is 4 on 0 < t < 5 and -4 on 5 < t < 10 (and does not exist at t = 5), so H' never equals 0. Stating that the Mean Value Theorem does not apply because H is not differentiable at t = 5 is part of a complete answer. A yes answer, or a no supported only by the failed hypothesis with no check that H' is never 0, does not earn the point.",
+               "eligible_only_if": [
+                  "d1"
+               ],
+               "check": null
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 115 of 115, stems read for ambiguity by the blind solver)"
+}

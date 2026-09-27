@@ -1,0 +1,218 @@
+{
+   "id": "FRQ-AGT-03008-02",
+   "archetype_id": "BC-QA-03008",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "Let \\( g \\) be the function defined by \\( g(x) = \\cos\\left(x^{2}\\right) \\). The curve \\( C \\) is defined by the equation \\( xy + y^{2} = 6 \\), and the point \\( (1, 2) \\) lies on \\( C \\)."
+   },
+   "skills": [
+      "BC-SKL-03030",
+      "BC-SKL-03031",
+      "BC-SKL-03032",
+      "BC-SKL-03033",
+      "BC-SKL-03034"
+   ],
+   "functions": {
+      "g": {
+         "variable": "x",
+         "expression": "cos(x**2)"
+      }
+   },
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find \\( g'(x) \\) and \\( g''(x) \\), and find the value of \\( g''\\left(\\sqrt{\\pi}\\right) \\).",
+         "setup_required": false,
+         "answer_latex": "g''\\left(\\sqrt{\\pi}\\right) = 4\\pi",
+         "worked_solution": [
+            {
+               "text": "Chain rule on the cosine of x^2.",
+               "latex": "g'(x) = -\\sin\\left(x^{2}\\right) \\cdot 2x = -2x\\sin\\left(x^{2}\\right)"
+            },
+            {
+               "text": "Product rule on -2x times sin(x^2), with the chain rule on sin(x^2).",
+               "latex": "g''(x) = -2\\sin\\left(x^{2}\\right) - 2x \\cdot 2x\\cos\\left(x^{2}\\right) = -2\\sin\\left(x^{2}\\right) - 4x^{2}\\cos\\left(x^{2}\\right)"
+            },
+            {
+               "text": "At x = sqrt(pi), x^2 = pi, sin(pi) = 0 and cos(pi) = -1.",
+               "latex": "g''\\left(\\sqrt{\\pi}\\right) = -2 \\cdot 0 - 4\\pi \\cdot (-1) = 4\\pi"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99023",
+               "skills": [
+                  "BC-SKL-03030"
+               ],
+               "criterion": "Writes g'(x) = -2x sin(x^2) or an equivalent expression; the factor 2x from x^2 must be present.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "-2*x*sin(x**2)",
+                  "up_to_constant": false,
+                  "each_side": false,
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99022",
+               "skills": [
+                  "BC-SKL-03030",
+                  "BC-SKL-03032"
+               ],
+               "criterion": "Applies the product rule to the two factors of g'(x), producing -2 sin(x^2) plus -2x times the derivative of sin(x^2). Treating -2x as a constant, or differentiating only one factor, does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a3",
+               "point_type_id": "BC-PT-99023",
+               "skills": [
+                  "BC-SKL-03030",
+                  "BC-SKL-03032"
+               ],
+               "criterion": "Differentiates sin(x^2) as 2x cos(x^2) within the second derivative, giving g''(x) = -2 sin(x^2) - 4x^2 cos(x^2) or an equivalent expression.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "-2*sin(x**2) - 4*x**2*cos(x**2)",
+                  "up_to_constant": false,
+                  "each_side": false,
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "a4",
+               "point_type_id": "BC-PT-99027",
+               "skills": [
+                  "BC-SKL-03034",
+                  "BC-SKL-03032"
+               ],
+               "criterion": "Gives g''(sqrt(pi)) = 4 pi; a decimal accurate to three places, 12.566, is also accepted.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "4*pi"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find \\( \\dfrac{dy}{dx} \\) for the curve \\( C \\) in terms of \\( x \\) and \\( y \\).",
+         "setup_required": false,
+         "answer_latex": "\\frac{dy}{dx} = -\\frac{y}{x + 2y}",
+         "worked_solution": [
+            {
+               "text": "Differentiate both sides with respect to x: product rule on xy, chain rule on y^2.",
+               "latex": "y + x\\frac{dy}{dx} + 2y\\frac{dy}{dx} = 0"
+            },
+            {
+               "text": "Collect the terms in dy/dx and solve.",
+               "latex": "\\frac{dy}{dx} = -\\frac{y}{x + 2y}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99022",
+               "skills": [
+                  "BC-SKL-03033"
+               ],
+               "criterion": "Differentiates xy with the product rule as y + x dy/dx (in any notation for the derivative, such as y'). Writing 1 times dy/dx, or dropping the term y, does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99023",
+               "skills": [
+                  "BC-SKL-03033"
+               ],
+               "criterion": "Differentiates y^2 as 2y dy/dx and solves for dy/dx = -y/(x + 2y) or an equivalent expression in x and y.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "-y/(x + 2*y)",
+                  "up_to_constant": false,
+                  "each_side": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Find the value of \\( \\dfrac{d^{2}y}{dx^{2}} \\) for the curve \\( C \\) at the point \\( (1, 2) \\). Show the work that leads to your answer.",
+         "setup_required": false,
+         "answer_latex": "\\frac{12}{125}",
+         "worked_solution": [
+            {
+               "text": "Slope at (1, 2) from part (b).",
+               "latex": "\\frac{dy}{dx}\\Big|_{(1,2)} = -\\frac{2}{1 + 4} = -\\frac{2}{5}"
+            },
+            {
+               "text": "Differentiate y + x dy/dx + 2y dy/dx = 0 again: the product rule on x dy/dx and on 2y dy/dx, and the chain rule on 2y.",
+               "latex": "2\\frac{dy}{dx} + x\\frac{d^{2}y}{dx^{2}} + 2\\left(\\frac{dy}{dx}\\right)^{2} + 2y\\frac{d^{2}y}{dx^{2}} = 0"
+            },
+            {
+               "text": "Substitute x = 1, y = 2 and dy/dx = -2/5, then solve.",
+               "latex": "2\\left(-\\frac{2}{5}\\right) + \\frac{d^{2}y}{dx^{2}} + 2 \\cdot \\frac{4}{25} + 4\\frac{d^{2}y}{dx^{2}} = 0"
+            },
+            {
+               "text": "Solve for the second derivative.",
+               "latex": "\\frac{d^{2}y}{dx^{2}}\\Big|_{(1,2)} = \\frac{12}{125}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99022",
+               "skills": [
+                  "BC-SKL-03030",
+                  "BC-SKL-03033"
+               ],
+               "criterion": "Applies the product rule to a product containing dy/dx: either x dy/dx differentiated as dy/dx + x d2y/dx2 when the implicit equation is differentiated again, or the quotient or product rule on -y/(x + 2y) with both factors differentiated.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99023",
+               "skills": [
+                  "BC-SKL-03033"
+               ],
+               "criterion": "Differentiates each y as y times dy/dx, so that 2y dy/dx yields 2(dy/dx)^2 + 2y d2y/dx2, or y in -y/(x + 2y) yields dy/dx terms. Treating y as a constant does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c3",
+               "point_type_id": "BC-PT-99027",
+               "skills": [
+                  "BC-SKL-03034",
+                  "BC-SKL-03032"
+               ],
+               "criterion": "Substitutes x = 1, y = 2 and dy/dx = -2/5 and gives d2y/dx2 = 12/125 (or 0.096) at (1, 2).",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "12/125",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 111 of 111, stems read for ambiguity by the blind solver)"
+}

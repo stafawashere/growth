@@ -1,0 +1,229 @@
+{
+   "id": "FRQ-AGT-06013-02",
+   "archetype_id": "BC-QA-06013",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "The functions \\( f \\) and \\( g \\) are continuous for all real \\( x \\), with \\( \\displaystyle\\int_{-2}^{3} f(x)\\,dx = 8 \\), \\( \\displaystyle\\int_{1}^{3} f(x)\\,dx = 5 \\), \\( \\displaystyle\\int_{-2}^{1} g(x)\\,dx = -4 \\) and \\( \\displaystyle\\int_{1}^{3} g(x)\\,dx = 6 \\)."
+   },
+   "skills": [
+      "BC-SKL-06029",
+      "BC-SKL-06030",
+      "BC-SKL-06031",
+      "BC-SKL-06032",
+      "BC-SKL-06033",
+      "BC-SKL-06035"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find \\( \\displaystyle\\int_{1}^{-2} f(x)\\,dx \\) and \\( \\displaystyle\\int_{-2}^{3} \\big(2f(x) - 3g(x) + 1\\big)\\,dx \\). Show the work that leads to your answers.",
+         "setup_required": false,
+         "answer_latex": "\\int_{1}^{-2} f(x)\\,dx = -3, \\quad \\int_{-2}^{3} \\big(2f(x) - 3g(x) + 1\\big)\\,dx = 15",
+         "worked_solution": [
+            {
+               "text": "Adjacent intervals give the integral of f on [-2, 1].",
+               "latex": "\\int_{-2}^{1} f(x)\\,dx = 8 - 5 = 3"
+            },
+            {
+               "text": "Reverse the limits.",
+               "latex": "\\int_{1}^{-2} f(x)\\,dx = -\\int_{-2}^{1} f(x)\\,dx = -3"
+            },
+            {
+               "text": "Adjacent intervals give the integral of g on [-2, 3].",
+               "latex": "\\int_{-2}^{3} g(x)\\,dx = -4 + 6 = 2"
+            },
+            {
+               "text": "Linearity, with the constant 1 integrated over an interval of length 5.",
+               "latex": "\\int_{-2}^{3} \\big(2f(x) - 3g(x) + 1\\big)\\,dx = 2(8) - 3(2) + 5 = 15"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-06030",
+                  "BC-SKL-06031"
+               ],
+               "criterion": "Gives -3.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-06029",
+                  "BC-SKL-06031"
+               ],
+               "criterion": "Gives 15, supported by 2(8) - 3(2) + 5 or an equivalent use of linearity, the integral of g on [-2, 3] and the integral of 1 over the interval of length 5. Treating the integral of 1 as 1 does not earn the point.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "15",
+                  "up_to_constant": false,
+                  "variable": "x",
+                  "each_side": false
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find \\( \\displaystyle\\int_{3}^{1} \\big(5 - 4g(x)\\big)\\,dx \\), the average value of \\( f \\) on the interval \\( -2 \\le x \\le 3 \\), and the average value of \\( g \\) on the interval \\( 1 \\le x \\le 3 \\). Show the work that leads to your answers.",
+         "setup_required": false,
+         "answer_latex": "14, \\quad \\frac{8}{5}, \\quad 3",
+         "worked_solution": [
+            {
+               "text": "Reverse the limits, then use linearity on [1, 3], an interval of length 2.",
+               "latex": "\\int_{3}^{1} \\big(5 - 4g(x)\\big)\\,dx = -\\left(5(2) - 4(6)\\right) = 14"
+            },
+            {
+               "text": "Average value of f on [-2, 3].",
+               "latex": "\\frac{1}{3 - (-2)}\\int_{-2}^{3} f(x)\\,dx = \\frac{8}{5}"
+            },
+            {
+               "text": "Average value of g on [1, 3].",
+               "latex": "\\frac{1}{3 - 1}\\int_{1}^{3} g(x)\\,dx = \\frac{6}{2} = 3"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-06029",
+                  "BC-SKL-06030"
+               ],
+               "criterion": "Gives 14, supported by -(5(2) - 4(6)) or an equivalent. Missing the sign change for reversed limits, which gives -14, does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-06035"
+               ],
+               "criterion": "Gives the average value 8/5, supported by (1/5) times the integral of f from -2 to 3. Any exact equivalent, or 1.6, is accepted.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-06035"
+               ],
+               "criterion": "Gives the average value 3.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Let \\( A(x) = \\displaystyle\\int_{1}^{x} \\big(f(t) + g(t)\\big)\\,dt \\). Find \\( A(-2) \\) and \\( A(3) \\).",
+         "setup_required": false,
+         "answer_latex": "A(-2) = 1, \\quad A(3) = 11",
+         "worked_solution": [
+            {
+               "text": "Reverse the limits and use the integrals on [-2, 1]; A(1) = 0 because the interval is degenerate.",
+               "latex": "A(-2) = -\\int_{-2}^{1} \\big(f(t) + g(t)\\big)\\,dt = -(3 + (-4)) = 1"
+            },
+            {
+               "text": "The integrals on [1, 3].",
+               "latex": "A(3) = \\int_{1}^{3} \\big(f(t) + g(t)\\big)\\,dt = 5 + 6 = 11"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99069",
+               "skills": [
+                  "BC-SKL-06030",
+                  "BC-SKL-06031"
+               ],
+               "criterion": "Gives A(-2) = 1, with the sign reversed for the reversed limits and the integral of f on [-2, 1] found as 3.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99069",
+               "skills": [
+                  "BC-SKL-06029"
+               ],
+               "criterion": "Gives A(3) = 11.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "11",
+                  "up_to_constant": false,
+                  "variable": "x",
+                  "each_side": false
+               }
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "Let \\( h(x) = g(x) \\) for \\( -2 \\le x < 1 \\) and \\( h(x) = 2f(x) - 1 \\) for \\( 1 \\le x \\le 3 \\). Find \\( \\displaystyle\\int_{-2}^{3} h(x)\\,dx \\). Then find the value of the constant \\( k \\) for which \\( \\displaystyle\\int_{-2}^{3} \\big(h(x) + k\\big)\\,dx = 0 \\). Show the work that leads to your answers.",
+         "setup_required": false,
+         "answer_latex": "\\int_{-2}^{3} h(x)\\,dx = 4, \\quad k = -\\frac{4}{5}",
+         "worked_solution": [
+            {
+               "text": "h has a jump at x = 1, so split the integral there.",
+               "latex": "\\int_{-2}^{3} h(x)\\,dx = \\int_{-2}^{1} g(x)\\,dx + \\int_{1}^{3} \\big(2f(x) - 1\\big)\\,dx = -4 + (10 - 2) = 4"
+            },
+            {
+               "text": "The constant k integrates to 5k over an interval of length 5.",
+               "latex": "4 + 5k = 0"
+            },
+            {
+               "text": "Solve.",
+               "latex": "k = -\\frac{4}{5}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-06031",
+                  "BC-SKL-06033"
+               ],
+               "criterion": "Gives 4, supported by splitting at x = 1 into -4 and 2(5) - 2.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "d2",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-06029"
+               ],
+               "criterion": "Gives k = -4/5, supported by the equation (answer from the first half of this part) + 5k = 0. Any exact equivalent, or -0.8, is accepted.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "-4/5",
+                  "up_to_constant": false,
+                  "variable": "x",
+                  "each_side": false
+               },
+               "follows_from": [
+                  "d1"
+               ]
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 66 of 66 after two formulation misreadings were triaged, stems read for ambiguity by the blind solver)"
+}

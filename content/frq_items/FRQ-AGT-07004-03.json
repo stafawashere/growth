@@ -1,0 +1,235 @@
+{
+   "id": "FRQ-AGT-07004-03",
+   "archetype_id": "BC-QA-07004",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "stem": {
+      "text": "The number of fish in a lake, in thousands, is modeled by \\( y = P(t) \\), where \\( t \\) is measured in years. The function \\( P \\) is the solution to the differential equation \\[ \\frac{dy}{dt} = \\frac{y(6 - y)}{8} \\] with the initial condition \\( P(0) = 2 \\)."
+   },
+   "skills": [
+      "BC-SKL-07019",
+      "BC-SKL-07020",
+      "BC-SKL-07021",
+      "BC-SKL-07022",
+      "BC-SKL-07023"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Use Euler's method, starting at \\( t = 0 \\) with two steps of equal size, to approximate \\( P(2) \\). Show the work that leads to your answer.",
+         "setup_required": false,
+         "answer_latex": "P(2) \\approx \\frac{33}{8}",
+         "worked_solution": [
+            {
+               "text": "The step size is 1. At (0, 2) the slope is 2(4)/8 = 1.",
+               "latex": "P(1) \\approx 2 + 1 \\cdot 1 = 3"
+            },
+            {
+               "text": "At (1, 3) the slope is 3(3)/8 = 9/8.",
+               "latex": "P(2) \\approx 3 + 1 \\cdot \\frac{9}{8} = \\frac{33}{8}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99034",
+               "skills": [
+                  "BC-SKL-07019",
+                  "BC-SKL-07020",
+                  "BC-SKL-07021",
+                  "BC-SKL-07022"
+               ],
+               "criterion": "Shows two Euler steps of size 1 from (0, 2): the first to P(1) about 3 using slope 1, the second from (1, 3) using slope 9/8.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-07021"
+               ],
+               "criterion": "Gives P(2) approximately 33/8, or 4.125.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "33/8"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find \\( \\dfrac{d^{2}y}{dt^{2}} \\) in terms of \\( y \\). Then find the value of \\( \\dfrac{d^{2}y}{dt^{2}} \\) at \\( t = 0 \\).",
+         "setup_required": false,
+         "answer_latex": "\\frac{d^{2}y}{dt^{2}} = \\frac{1}{4}",
+         "worked_solution": [
+            {
+               "text": "Differentiate the right side with respect to t, treating y as a function of t.",
+               "latex": "\\frac{d^{2}y}{dt^{2}} = \\frac{6 - 2y}{8}\\cdot\\frac{dy}{dt}"
+            },
+            {
+               "text": "Substitute the differential equation for dy/dt.",
+               "latex": "\\frac{d^{2}y}{dt^{2}} = \\frac{y(6 - y)(3 - y)}{32}"
+            },
+            {
+               "text": "At t = 0, y = 2.",
+               "latex": "\\frac{d^{2}y}{dt^{2}} = \\frac{2 \\cdot 4 \\cdot 1}{32} = \\frac{1}{4}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-07023"
+               ],
+               "criterion": "Differentiates with the chain rule and substitutes for dy/dt to give d^2y/dt^2 = ((6 - 2y)/8)(y(6 - y)/8), or any equivalent form in y only such as y(6 - y)(3 - y)/32. An expression still containing dy/dt does not earn the point.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "y*(6 - y)*(3 - y)/32",
+                  "up_to_constant": false,
+                  "variable": "y"
+               }
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-07023"
+               ],
+               "criterion": "Gives the value 1/4, or 0.25, at t = 0.",
+               "eligible_only_if": [],
+               "follows_from": [
+                  "b1"
+               ],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "1/4",
+                  "up_to_constant": false,
+                  "variable": "t"
+               }
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Use Euler's method, starting at \\( t = 0 \\) with two steps of size \\( 0.25 \\), to approximate \\( P(0.5) \\). Show the work that leads to your answer.",
+         "setup_required": false,
+         "answer_latex": "P(0.5) \\approx 2.514",
+         "worked_solution": [
+            {
+               "text": "At (0, 2) the slope is 1.",
+               "latex": "P(0.25) \\approx 2 + 0.25 \\cdot 1 = 2.25"
+            },
+            {
+               "text": "At (0.25, 2.25) the slope is 2.25(3.75)/8 = 135/128.",
+               "latex": "P(0.5) \\approx 2.25 + 0.25 \\cdot \\frac{135}{128} = \\frac{1287}{512}"
+            },
+            {
+               "text": "As a decimal.",
+               "latex": "P(0.5) \\approx 2.514"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99034",
+               "skills": [
+                  "BC-SKL-07019",
+                  "BC-SKL-07020",
+                  "BC-SKL-07021",
+                  "BC-SKL-07022"
+               ],
+               "criterion": "Shows two Euler steps of size 0.25 from (0, 2): the first to P(0.25) about 2.25 using slope 1, the second from (0.25, 2.25) using slope 135/128, or 1.0546875.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-07021"
+               ],
+               "criterion": "Gives P(0.5) approximately 1287/512, accepted as 2.514 or 2.513 or any exact equivalent.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "1287/512"
+               }
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "Use the line tangent to the graph of \\( P \\) at \\( t = 0 \\) to approximate \\( P(0.5) \\). It is known that \\( 2 \\le P(t) < 3 \\) for \\( 0 \\le t \\le 0.5 \\). Determine whether the tangent line approximation and the approximation from part (c) are overestimates or underestimates of \\( P(0.5) \\), and determine which of the two approximations is closer to \\( P(0.5) \\). Give reasons for your answers.",
+         "setup_required": false,
+         "answer_latex": "\\text{both are underestimates; the part (c) value is closer}",
+         "worked_solution": [
+            {
+               "text": "The tangent line at t = 0 has slope 1.",
+               "latex": "P(0.5) \\approx 2 + 0.5 \\cdot 1 = 2.5"
+            },
+            {
+               "text": "For 2 <= y < 3 every factor of y(6 - y)(3 - y) is positive, so solution curves in that region are concave up and lie above their tangent segments. Both approximations are underestimates.",
+               "latex": "\\frac{d^{2}y}{dt^{2}} = \\frac{y(6 - y)(3 - y)}{32} > 0 \\text{ for } 2 \\le y < 3"
+            },
+            {
+               "text": "Both values lie below P(0.5), and the Euler value is the larger one, so it is closer.",
+               "latex": "2.5 < 2.514 < P(0.5)"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-07020"
+               ],
+               "criterion": "Uses the tangent line y = 2 + 1(t - 0) to give P(0.5) approximately 2.5.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "d2",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-07023"
+               ],
+               "criterion": "States that both approximations are underestimates because d^2y/dt^2 > 0 for 2 <= y < 3 (all three factors of y(6 - y)(3 - y) positive), so the graph of P and the solution curves the Euler steps follow are concave up on 0 <= t <= 0.5 and lie above the tangent segments. An argument from the sign at t = 0 alone does not earn the point.",
+               "eligible_only_if": [],
+               "follows_from": [
+                  "b1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "d3",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-07023"
+               ],
+               "criterion": "Concludes that the part (c) Euler approximation is closer, because both approximations are below P(0.5) and the Euler value is the larger of the two.",
+               "eligible_only_if": [
+                  "d2"
+               ],
+               "follows_from": [
+                  "c2",
+                  "d1"
+               ],
+               "check": null
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 66 of 66 after two formulation misreadings were triaged, stems read for ambiguity by the blind solver)"
+}

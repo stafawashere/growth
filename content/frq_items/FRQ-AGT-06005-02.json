@@ -1,0 +1,227 @@
+{
+   "id": "FRQ-AGT-06005-02",
+   "archetype_id": "BC-QA-06005",
+   "calculator_status": "calculator",
+   "representation": "BC-REP-05",
+   "stem": {
+      "text": "The depth of water in a river at a measuring station is \\( D(t) \\) feet, where \\( t \\) is the number of hours after a storm ends and \\( 0 \\le t \\le 12 \\). The depth changes at a rate modeled by \\( r(t) = \\dfrac{2\\sin\\left(\\frac{t}{3}\\right)}{t + 1} \\) feet per hour. At time \\( t = 4 \\) the depth of the river is 7.2 feet."
+   },
+   "skills": [
+      "BC-SKL-06036",
+      "BC-SKL-06037",
+      "BC-SKL-06034",
+      "BC-SKL-08012",
+      "BC-SKL-08016",
+      "BC-SKL-08017",
+      "BC-SKL-08009"
+   ],
+   "functions": {
+      "r": {
+         "variable": "t",
+         "expression": "2*sin(t/3)/(t + 1)"
+      },
+      "D": {
+         "variable": "t",
+         "expression": "36/5 + Integral(2*sin(s/3)/(s + 1), (s, 4, t))"
+      }
+   },
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find the depth of the river at time \\( t = 12 \\).",
+         "setup_required": true,
+         "answer_latex": "D(12) \\approx 8.118",
+         "worked_solution": [
+            {
+               "text": "The depth at t = 12 is the known depth at t = 4 plus the change over 4 <= t <= 12.",
+               "latex": "D(12) = 7.2 + \\int_{4}^{12} r(t)\\,dt"
+            },
+            {
+               "text": "Evaluate the integral on the calculator.",
+               "latex": "\\int_{4}^{12} r(t)\\,dt \\approx 0.918"
+            },
+            {
+               "text": "Add.",
+               "latex": "D(12) \\approx 8.118"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-06036",
+                  "BC-SKL-08016"
+               ],
+               "criterion": "Writes the definite integral of r(t) from t = 4 to t = 12.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "4",
+                  "upper": "12",
+                  "integrand": "2*sin(t/3)/(t + 1)",
+                  "variable": "t"
+               }
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99033",
+               "skills": [
+                  "BC-SKL-08012",
+                  "BC-SKL-06037"
+               ],
+               "criterion": "Adds the known depth 7.2 to that integral.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "a3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-08017"
+               ],
+               "criterion": "Gives 8.118 feet.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "36/5 + Integral(2*sin(t/3)/(t + 1), (t, 4, 12))"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find the depth of the river at time \\( t = 0 \\).",
+         "setup_required": true,
+         "answer_latex": "D(0) \\approx 5.790",
+         "worked_solution": [
+            {
+               "text": "The depth at t = 4 is the depth at t = 0 plus the change over 0 <= t <= 4, so subtract that change from 7.2.",
+               "latex": "D(0) = 7.2 - \\int_{0}^{4} r(t)\\,dt"
+            },
+            {
+               "text": "Evaluate the integral on the calculator.",
+               "latex": "\\int_{0}^{4} r(t)\\,dt \\approx 1.410"
+            },
+            {
+               "text": "Subtract.",
+               "latex": "D(0) \\approx 5.790"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-06036",
+                  "BC-SKL-08016"
+               ],
+               "criterion": "Writes the definite integral of r(t) over 0 <= t <= 4, either as the integral from 0 to 4 or as the integral from 4 to 0.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99033",
+               "skills": [
+                  "BC-SKL-08012",
+                  "BC-SKL-06037"
+               ],
+               "criterion": "Uses the known depth 7.2 correctly: 7.2 minus the integral of r from 0 to 4, or 7.2 plus the integral of r from 4 to 0. Adding the integral from 0 to 4 to 7.2 does not earn the point.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "b3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-08017"
+               ],
+               "criterion": "Gives 5.790 feet.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "36/5 - Integral(2*sin(t/3)/(t + 1), (t, 0, 4))"
+               }
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Find the time \\( T \\), \\( 0 \\le T \\le 12 \\), at which the depth of the river is 8 feet.",
+         "setup_required": true,
+         "answer_latex": "T \\approx 6.598",
+         "worked_solution": [
+            {
+               "text": "The depth at time T is the known depth at t = 4 plus the change from 4 to T. Set it equal to 8.",
+               "latex": "7.2 + \\int_{4}^{T} r(t)\\,dt = 8"
+            },
+            {
+               "text": "Solve on the calculator.",
+               "latex": "T \\approx 6.598"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-06036",
+                  "BC-SKL-08016"
+               ],
+               "criterion": "Writes an equation that sets the depth at time T equal to 8 using the definite integral of r(t) from t = 4 to t = T, such as 7.2 + (integral of r from 4 to T) = 8 or (integral of r from 4 to T) = 0.8.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "equation_setup",
+                  "unknown": "T",
+                  "left": "36/5 + Integral(2*sin(t/3)/(t + 1), (t, 4, T))",
+                  "right": "8",
+                  "interval": [
+                     "0",
+                     "12"
+                  ]
+               }
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99033",
+               "skills": [
+                  "BC-SKL-08012",
+                  "BC-SKL-06037"
+               ],
+               "criterion": "The equation accounts for the known depth 7.2 at t = 4, either by adding 7.2 to the integral or by setting the integral equal to 8 - 7.2 = 0.8.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "c3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-08017"
+               ],
+               "criterion": "Gives T = 6.598 hours (6.597 by truncation is also accepted).",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "6.59779758765339154157013841421"
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 111 of 111, stems read for ambiguity by the blind solver)"
+}

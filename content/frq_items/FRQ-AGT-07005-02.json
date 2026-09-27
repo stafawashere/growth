@@ -1,0 +1,241 @@
+{
+   "id": "FRQ-AGT-07005-02",
+   "archetype_id": "BC-QA-07005",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "stem": {
+      "text": "Consider the differential equation \\( \\dfrac{dy}{dx} = (x + 1)(4 - y) \\). Let \\( y = f(x) \\) be the particular solution to the differential equation with the initial condition \\( f(0) = 2 \\). It is known that \\( f(x) < 4 \\) for all real \\( x \\)."
+   },
+   "skills": [
+      "BC-SKL-07018",
+      "BC-SKL-07023"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find \\( \\dfrac{d^{2}y}{dx^{2}} \\) in terms of \\( x \\) and \\( y \\). Then find the value of \\( f''(0) \\).",
+         "setup_required": false,
+         "answer_latex": "f''(0) = 0",
+         "worked_solution": [
+            {
+               "text": "Differentiate the right side with the product rule, treating y as a function of x.",
+               "latex": "\\frac{d^{2}y}{dx^{2}} = (4 - y) - (x + 1)\\frac{dy}{dx}"
+            },
+            {
+               "text": "Substitute the differential equation for dy/dx.",
+               "latex": "\\frac{d^{2}y}{dx^{2}} = (4 - y) - (x + 1)^{2}(4 - y)"
+            },
+            {
+               "text": "Factor.",
+               "latex": "\\frac{d^{2}y}{dx^{2}} = (4 - y)(1 - (x + 1)^{2})"
+            },
+            {
+               "text": "At the point (0, 2).",
+               "latex": "f''(0) = (4 - 2)(1 - 1) = 0"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99027",
+               "skills": [
+                  "BC-SKL-07018"
+               ],
+               "criterion": "Gives d^2y/dx^2 in terms of x and y only: (4 - y) - (x + 1)^2(4 - y), or any equivalent form such as (4 - y)(1 - (x + 1)^2) or -x(x + 2)(4 - y). An expression still containing dy/dx does not earn the point.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "(4 - y)*(1 - (x + 1)**2)",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99027",
+               "skills": [
+                  "BC-SKL-07018"
+               ],
+               "criterion": "Evaluates the second derivative at x = 0, y = 2 and gives f''(0) = 0.",
+               "eligible_only_if": [],
+               "follows_from": [
+                  "a1"
+               ],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "0",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "The line tangent to the graph of \\( f \\) at \\( x = 0 \\) is \\( y = 2 + 2x \\). It gives the approximations \\( f(0.3) \\approx 2.6 \\) and \\( f(-0.3) \\approx 1.4 \\). For each approximation, determine whether it is an overestimate or an underestimate of the value of \\( f \\). Give a reason for each answer.",
+         "setup_required": false,
+         "answer_latex": "f(0.3) \\approx 2.6 \\text{ is an overestimate}; \\quad f(-0.3) \\approx 1.4 \\text{ is an underestimate}",
+         "worked_solution": [
+            {
+               "text": "For 0 < x <= 0.3, (x + 1)^2 > 1 and 4 - y > 0, so the second derivative is negative and f is concave down there.",
+               "latex": "(4 - y)(1 - (x + 1)^{2}) < 0 \\text{ for } 0 < x \\le 0.3"
+            },
+            {
+               "text": "A concave down graph lies below its tangent line, so 2.6 is an overestimate.",
+               "latex": "f(0.3) < 2.6"
+            },
+            {
+               "text": "For -0.3 <= x < 0, 0 < (x + 1)^2 < 1 and 4 - y > 0, so the second derivative is positive and f is concave up there.",
+               "latex": "(4 - y)(1 - (x + 1)^{2}) > 0 \\text{ for } -0.3 \\le x < 0"
+            },
+            {
+               "text": "A concave up graph lies above its tangent line, so 1.4 is an underestimate.",
+               "latex": "f(-0.3) > 1.4"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99026",
+               "skills": [
+                  "BC-SKL-07018"
+               ],
+               "criterion": "States that f(0.3) is overestimated, because d^2y/dx^2 < 0 for all x with 0 < x <= 0.3 (since 4 - y > 0 and 1 - (x + 1)^2 < 0), so the graph of f is concave down on that interval and lies below the tangent line. Citing only f''(0) = 0, or the sign at a single point, does not earn the point.",
+               "eligible_only_if": [],
+               "follows_from": [
+                  "a1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99026",
+               "skills": [
+                  "BC-SKL-07018"
+               ],
+               "criterion": "States that f(-0.3) is underestimated, because d^2y/dx^2 > 0 for all x with -0.3 <= x < 0 (since 4 - y > 0 and 1 - (x + 1)^2 > 0), so the graph of f is concave up on that interval and lies above the tangent line. Citing the sign at a single point does not earn the point.",
+               "eligible_only_if": [],
+               "follows_from": [
+                  "a1"
+               ],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Let \\( y = g(x) \\) be the particular solution to the same differential equation with \\( g\\left(-\\tfrac{1}{2}\\right) = 8 \\), where \\( g(x) > 4 \\) for all \\( x \\), and let \\( y = h(x) \\) be the particular solution with \\( h\\left(-\\tfrac{1}{2}\\right) = 2 \\), where \\( h(x) < 4 \\) for all \\( x \\). Find \\( g''\\left(-\\tfrac{1}{2}\\right) \\) and \\( h''\\left(-\\tfrac{1}{2}\\right) \\). The lines tangent to the graphs of \\( g \\) and \\( h \\) at \\( x = -\\tfrac{1}{2} \\) give the approximations \\( g(-0.3) \\approx 7.6 \\) and \\( h(-0.2) \\approx 2.3 \\). For each approximation, determine whether it is an overestimate or an underestimate. Give a reason for each answer.",
+         "setup_required": false,
+         "answer_latex": "g(-0.3) \\approx 7.6 \\text{ is an overestimate}; \\quad h(-0.2) \\approx 2.3 \\text{ is an underestimate}",
+         "worked_solution": [
+            {
+               "text": "Evaluate the second derivative at (-1/2, 8).",
+               "latex": "g''\\left(-\\frac{1}{2}\\right) = (4 - 8)\\left(1 - \\frac{1}{4}\\right) = -3"
+            },
+            {
+               "text": "Evaluate the second derivative at (-1/2, 2).",
+               "latex": "h''\\left(-\\frac{1}{2}\\right) = (4 - 2)\\left(1 - \\frac{1}{4}\\right) = \\frac{3}{2}"
+            },
+            {
+               "text": "For -1/2 <= x <= -0.2, 0 < x + 1 < 1, so 1 - (x + 1)^2 > 0. Since 4 - g < 0, g is concave down on [-1/2, -0.3] and its graph lies below the tangent line.",
+               "latex": "g(-0.3) < 7.6 \\text{, an overestimate}"
+            },
+            {
+               "text": "Since 4 - h > 0, h is concave up on [-1/2, -0.2] and its graph lies above the tangent line.",
+               "latex": "h(-0.2) > 2.3 \\text{, an underestimate}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99027",
+               "skills": [
+                  "BC-SKL-07018"
+               ],
+               "criterion": "Evaluates the second derivative at x = -1/2, y = 8 and gives g''(-1/2) = -3.",
+               "eligible_only_if": [],
+               "follows_from": [
+                  "a1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99026",
+               "skills": [
+                  "BC-SKL-07018"
+               ],
+               "criterion": "States that g(-0.3) is overestimated, because d^2y/dx^2 < 0 for all x in -1/2 <= x <= -0.3 on the graph of g (4 - g < 0 and 1 - (x + 1)^2 > 0 there), so g is concave down and lies below its tangent line. Citing only g''(-1/2) < 0 does not earn the point.",
+               "eligible_only_if": [],
+               "follows_from": [
+                  "a1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "c3",
+               "point_type_id": "BC-PT-99027",
+               "skills": [
+                  "BC-SKL-07018"
+               ],
+               "criterion": "Evaluates the second derivative at x = -1/2, y = 2 and gives h''(-1/2) = 3/2, or 1.5.",
+               "eligible_only_if": [],
+               "follows_from": [
+                  "a1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "c4",
+               "point_type_id": "BC-PT-99026",
+               "skills": [
+                  "BC-SKL-07018"
+               ],
+               "criterion": "States that h(-0.2) is underestimated, because d^2y/dx^2 > 0 for all x in -1/2 <= x <= -0.2 on the graph of h (4 - h > 0 and 1 - (x + 1)^2 > 0 there), so h is concave up and lies above its tangent line. Citing only h''(-1/2) > 0 does not earn the point.",
+               "eligible_only_if": [],
+               "follows_from": [
+                  "a1"
+               ],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "Euler's method, starting at \\( x = 0 \\) with two steps of size \\( 0.2 \\), gives the approximation \\( f(0.4) \\approx 2.784 \\). Is this approximation an overestimate or an underestimate of \\( f(0.4) \\)? Give a reason for your answer.",
+         "setup_required": false,
+         "answer_latex": "\\text{overestimate}",
+         "worked_solution": [
+            {
+               "text": "For 0 < x <= 0.4 and y < 4, 1 - (x + 1)^2 < 0 and 4 - y > 0, so every solution curve in that region is concave down, and the Euler points stay in that region.",
+               "latex": "\\frac{d^{2}y}{dx^{2}} < 0 \\text{ for } 0 < x \\le 0.4, \\ y < 4"
+            },
+            {
+               "text": "Each Euler step follows a tangent segment that lies above a concave down solution curve, so the approximation is too large.",
+               "latex": "f(0.4) < 2.784 \\text{, an overestimate}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99026",
+               "skills": [
+                  "BC-SKL-07018",
+                  "BC-SKL-07023"
+               ],
+               "criterion": "States that 2.784 is an overestimate, because d^2y/dx^2 < 0 for 0 < x <= 0.4 wherever y < 4, so the solution curves there are concave down and the Euler tangent segments lie above them. An argument from the sign at x = 0 alone, or from f increasing, does not earn the point.",
+               "eligible_only_if": [],
+               "follows_from": [
+                  "a1"
+               ],
+               "check": null
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 66 of 66 after two formulation misreadings were triaged, stems read for ambiguity by the blind solver)"
+}

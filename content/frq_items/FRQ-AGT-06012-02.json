@@ -1,0 +1,217 @@
+{
+   "id": "FRQ-AGT-06012-02",
+   "archetype_id": "BC-QA-06012",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "stem": {
+      "text": "The function \\( f \\) is differentiable for all real \\( x \\), and \\( f' \\) is continuous. Selected values of \\( f \\) and \\( f' \\) are given in the table. \\[ \\begin{array}{c|ccccc} x & 0 & 1 & 2 & 3 & 4 \\\\ \\hline f(x) & 5 & 2 & -1 & 3 & 6 \\\\ f'(x) & 1 & -4 & 0 & 2 & 7 \\end{array} \\]"
+   },
+   "skills": [
+      "BC-SKL-06018",
+      "BC-SKL-06019",
+      "BC-SKL-06017",
+      "BC-SKL-06021"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Let \\( h(x) = \\displaystyle\\int_{2}^{x} f(t)\\,dt \\). Find \\( h'(3) \\).",
+         "setup_required": false,
+         "answer_latex": "h'(3) = 3",
+         "worked_solution": [
+            {
+               "text": "f is continuous, so by the Fundamental Theorem of Calculus h' = f.",
+               "latex": "h'(x) = f(x)"
+            },
+            {
+               "text": "Read f(3) from the table.",
+               "latex": "h'(3) = f(3) = 3"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99024",
+               "skills": [
+                  "BC-SKL-06018",
+                  "BC-SKL-06021"
+               ],
+               "criterion": "Writes h'(x) = f(x), or h'(3) = f(3).",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-06018"
+               ],
+               "criterion": "Gives h'(3) = 3.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "3",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Let \\( k(x) = \\displaystyle\\int_{0}^{x^{2}} f(t)\\,dt \\). Find \\( k'(2) \\).",
+         "setup_required": false,
+         "answer_latex": "k'(2) = 24",
+         "worked_solution": [
+            {
+               "text": "Fundamental Theorem with the chain rule for the upper limit x^2.",
+               "latex": "k'(x) = f\\left(x^{2}\\right) \\cdot 2x"
+            },
+            {
+               "text": "Substitute x = 2 and read f(4) from the table.",
+               "latex": "k'(2) = f(4) \\cdot 4 = 6 \\cdot 4 = 24"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99024",
+               "skills": [
+                  "BC-SKL-06019"
+               ],
+               "criterion": "Writes k'(x) = 2x f(x^2), or k'(2) = 4f(4), with the chain rule factor 2x present.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-06019"
+               ],
+               "criterion": "Gives k'(2) = 24.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "24",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Let \\( m(x) = \\displaystyle\\int_{2x}^{4} f(t)\\,dt \\). Find \\( m'(1) \\).",
+         "setup_required": false,
+         "answer_latex": "m'(1) = 2",
+         "worked_solution": [
+            {
+               "text": "Reverse the limits so the variable is on top, then apply the chain rule.",
+               "latex": "m(x) = -\\int_{4}^{2x} f(t)\\,dt \\Rightarrow m'(x) = -2f(2x)"
+            },
+            {
+               "text": "Substitute x = 1 and read f(2) from the table.",
+               "latex": "m'(1) = -2f(2) = -2(-1) = 2"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99024",
+               "skills": [
+                  "BC-SKL-06019"
+               ],
+               "criterion": "Writes m'(x) = -2f(2x), or m'(1) = -2f(2), with both the minus sign from the variable lower limit and the chain rule factor 2.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-06019"
+               ],
+               "criterion": "Gives m'(1) = 2.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "2",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "Let \\( w(x) = \\displaystyle\\int_{1}^{2x + 1} f(t)\\,dt \\). Find \\( w'(x) \\), the value of \\( w'(1) \\), and the value of \\( w''(1) \\).",
+         "setup_required": false,
+         "answer_latex": "w'(x) = 2f(2x + 1), \\quad w'(1) = 6, \\quad w''(1) = 8",
+         "worked_solution": [
+            {
+               "text": "Fundamental Theorem with the chain rule for the upper limit 2x + 1.",
+               "latex": "w'(x) = 2f(2x + 1)"
+            },
+            {
+               "text": "Substitute x = 1 and read f(3) from the table.",
+               "latex": "w'(1) = 2f(3) = 2(3) = 6"
+            },
+            {
+               "text": "Differentiate again with the chain rule.",
+               "latex": "w''(x) = 4f'(2x + 1)"
+            },
+            {
+               "text": "Substitute x = 1 and read f'(3) from the table.",
+               "latex": "w''(1) = 4f'(3) = 4(2) = 8"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99024",
+               "skills": [
+                  "BC-SKL-06017",
+                  "BC-SKL-06019"
+               ],
+               "criterion": "Writes w'(x) = 2f(2x + 1), with the chain rule factor 2.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "d2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-06019"
+               ],
+               "criterion": "Gives w'(1) = 6.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "d3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-06019"
+               ],
+               "criterion": "Gives w''(1) = 8, from w''(x) = 4f'(2x + 1). Using f(3) in place of f'(3) does not earn the point.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "8",
+                  "up_to_constant": false,
+                  "variable": "x",
+                  "each_side": false
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 66 of 66 after two formulation misreadings were triaged, stems read for ambiguity by the blind solver)"
+}

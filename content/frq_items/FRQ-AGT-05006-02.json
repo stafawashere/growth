@@ -1,0 +1,228 @@
+{
+   "id": "FRQ-AGT-05006-02",
+   "archetype_id": "BC-QA-05006",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "Let \\( f(x) = \\sin^{2} x + \\cos x \\)."
+   },
+   "skills": [
+      "BC-SKL-05010",
+      "BC-SKL-05024",
+      "BC-SKL-05025",
+      "BC-SKL-05026",
+      "BC-SKL-05027",
+      "BC-SKL-05028",
+      "BC-SKL-05029"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find \\( f'(x) \\). Find all values of \\( x \\) in the open interval \\( 0 < x < 2\\pi \\) at which \\( f \\) has a critical point.",
+         "setup_required": false,
+         "answer_latex": "x = \\frac{\\pi}{3}, \\ x = \\pi, \\ x = \\frac{5\\pi}{3}",
+         "worked_solution": [
+            {
+               "text": "Chain rule on sin^2 x.",
+               "latex": "f'(x) = 2\\sin x\\cos x - \\sin x = \\sin x\\,(2\\cos x - 1)"
+            },
+            {
+               "text": "Set the derivative equal to zero.",
+               "latex": "\\sin x\\,(2\\cos x - 1) = 0"
+            },
+            {
+               "text": "sin x = 0 gives x = pi, and cos x = 1/2 gives x = pi/3 and 5pi/3.",
+               "latex": "x = \\frac{\\pi}{3}, \\ x = \\pi, \\ x = \\frac{5\\pi}{3}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99013",
+               "skills": [
+                  "BC-SKL-05010"
+               ],
+               "criterion": "Sets f'(x) = 2 sin x cos x - sin x equal to zero, or an equivalent equation such as sin(2x) - sin x = 0 or sin x (2 cos x - 1) = 0.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-05010"
+               ],
+               "criterion": "Gives exactly x = pi/3, x = pi, and x = 5pi/3, supported by the factored equation or the two cases sin x = 0 and cos x = 1/2.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find the absolute maximum value of \\( f \\) on the closed interval \\( 0 \\le x \\le \\frac{3\\pi}{2} \\), and the value of \\( x \\) at which it occurs. Justify your answer.",
+         "setup_required": false,
+         "answer_latex": "f\\left(\\frac{\\pi}{3}\\right) = \\frac{5}{4}",
+         "worked_solution": [
+            {
+               "text": "The candidates are the endpoints and the critical points inside the interval.",
+               "latex": "x = 0, \\ \\frac{\\pi}{3}, \\ \\pi, \\ \\frac{3\\pi}{2}"
+            },
+            {
+               "text": "Evaluate f at each candidate.",
+               "latex": "f(0) = 1, \\ f\\left(\\frac{\\pi}{3}\\right) = \\frac{3}{4} + \\frac{1}{2} = \\frac{5}{4}, \\ f(\\pi) = -1, \\ f\\left(\\frac{3\\pi}{2}\\right) = 1"
+            },
+            {
+               "text": "The largest value is 5/4, at x = pi/3.",
+               "latex": "f\\left(\\frac{\\pi}{3}\\right) = \\frac{5}{4}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99011",
+               "skills": [
+                  "BC-SKL-05024",
+                  "BC-SKL-05025",
+                  "BC-SKL-05026",
+                  "BC-SKL-05028"
+               ],
+               "criterion": "Evaluates f at every candidate, the endpoints 0 and 3pi/2 and the critical points pi/3 and pi, getting 1, 5/4, -1 and 1, and compares them. Omitting an endpoint, an evaluation error, or listing 5pi/3 as a candidate does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-05026",
+                  "BC-SKL-05027"
+               ],
+               "criterion": "Gives the absolute maximum value 5/4 (or 1.25).",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "5/4",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "b3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-05026"
+               ],
+               "criterion": "Gives x = pi/3 as the location of the absolute maximum.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Find the absolute minimum value of \\( f \\) on the closed interval \\( 0 \\le x \\le \\frac{3\\pi}{2} \\). Justify your answer.",
+         "setup_required": false,
+         "answer_latex": "f(\\pi) = -1",
+         "worked_solution": [
+            {
+               "text": "Compare the candidate values from part (b).",
+               "latex": "f(0) = 1, \\ f\\left(\\frac{\\pi}{3}\\right) = \\frac{5}{4}, \\ f(\\pi) = -1, \\ f\\left(\\frac{3\\pi}{2}\\right) = 1"
+            },
+            {
+               "text": "The smallest value is -1, at x = pi.",
+               "latex": "f(\\pi) = -1"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99011",
+               "skills": [
+                  "BC-SKL-05024",
+                  "BC-SKL-05025",
+                  "BC-SKL-05026",
+                  "BC-SKL-05028"
+               ],
+               "criterion": "Compares the values of f at all four candidates 0, pi/3, pi and 3pi/2 (a table carried over from part (b) is accepted) and identifies the smallest.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-05026",
+                  "BC-SKL-05027"
+               ],
+               "criterion": "Gives the absolute minimum value -1. Giving only the location x = pi does not earn the point.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "-1",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "Find the value of \\( x \\) at which \\( f \\) attains its absolute maximum on the closed interval \\( \\frac{\\pi}{2} \\le x \\le 2\\pi \\). Justify your answer.",
+         "setup_required": false,
+         "answer_latex": "x = \\frac{5\\pi}{3}",
+         "worked_solution": [
+            {
+               "text": "The candidates are the endpoints and the critical points inside this interval.",
+               "latex": "x = \\frac{\\pi}{2}, \\ \\pi, \\ \\frac{5\\pi}{3}, \\ 2\\pi"
+            },
+            {
+               "text": "Evaluate f at each candidate.",
+               "latex": "f\\left(\\frac{\\pi}{2}\\right) = 1, \\ f(\\pi) = -1, \\ f\\left(\\frac{5\\pi}{3}\\right) = \\frac{5}{4}, \\ f(2\\pi) = 1"
+            },
+            {
+               "text": "The largest value occurs at x = 5pi/3.",
+               "latex": "x = \\frac{5\\pi}{3}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99011",
+               "skills": [
+                  "BC-SKL-05024",
+                  "BC-SKL-05025",
+                  "BC-SKL-05026",
+                  "BC-SKL-05028"
+               ],
+               "criterion": "Evaluates f at the endpoints pi/2 and 2pi and the critical points pi and 5pi/3, getting 1, -1, 5/4 and 1, and compares them. Including pi/3 as a candidate does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "d2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-05026"
+               ],
+               "criterion": "Gives x = 5pi/3. Giving only the value 5/4 does not earn the point.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "5*pi/3",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 111 of 111, stems read for ambiguity by the blind solver)"
+}

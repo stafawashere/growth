@@ -1,0 +1,239 @@
+{
+   "id": "FRQ-AGT-04003-01",
+   "archetype_id": "BC-QA-04003",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "A particle moves along the \\( x \\)-axis. Its position at time \\( t \\) is \\( s(t) = 2t^{3} - 15t^{2} + 36t - 10 \\) for \\( 0 \\le t \\le 5 \\), where \\( s(t) \\) is measured in meters and \\( t \\) in seconds."
+   },
+   "skills": [
+      "BC-SKL-04006",
+      "BC-SKL-04007",
+      "BC-SKL-04008",
+      "BC-SKL-04010"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find the average velocity of the particle over the time interval \\( 0 \\le t \\le 4 \\). Show the computation that leads to your answer.",
+         "setup_required": false,
+         "answer_latex": "\\frac{s(4) - s(0)}{4 - 0} = 8",
+         "worked_solution": [
+            {
+               "text": "Position at the two ends of the interval.",
+               "latex": "s(0) = -10, \\quad s(4) = 128 - 240 + 144 - 10 = 22"
+            },
+            {
+               "text": "Average velocity is the change in position over the elapsed time.",
+               "latex": "\\frac{s(4) - s(0)}{4 - 0} = \\frac{22 - (-10)}{4} = 8"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99021",
+               "skills": [
+                  "BC-SKL-04006"
+               ],
+               "criterion": "Writes (s(4) - s(0))/(4 - 0) with the values, (22 - (-10))/4, and gives 8. The unsimplified quotient 32/4 is accepted.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "8",
+                  "up_to_constant": false,
+                  "variable": "t",
+                  "each_side": false
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find the velocity and the acceleration of the particle at time \\( t = 1 \\). Is the speed of the particle increasing, decreasing, or neither at time \\( t = 1 \\)? Give a reason for your answer.",
+         "setup_required": false,
+         "answer_latex": "v(1) = 12, \\; a(1) = -18, \\; \\text{speed decreasing}",
+         "worked_solution": [
+            {
+               "text": "Differentiate the position.",
+               "latex": "v(t) = s'(t) = 6t^{2} - 30t + 36"
+            },
+            {
+               "text": "Velocity at t = 1.",
+               "latex": "v(1) = 6 - 30 + 36 = 12"
+            },
+            {
+               "text": "Differentiate the velocity.",
+               "latex": "a(t) = v'(t) = 12t - 30"
+            },
+            {
+               "text": "Acceleration at t = 1.",
+               "latex": "a(1) = 12 - 30 = -18"
+            },
+            {
+               "text": "Velocity is positive and acceleration is negative, so the speed is decreasing.",
+               "latex": "v(1) > 0, \\; a(1) < 0 \\Rightarrow \\text{speed decreasing}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-04006"
+               ],
+               "criterion": "Gives v(1) = 12 from v(t) = 6t^2 - 30t + 36.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99027",
+               "skills": [
+                  "BC-SKL-04007"
+               ],
+               "criterion": "Gives a(1) = s''(1) = -18 from a(t) = 12t - 30.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-04008",
+                  "BC-SKL-04010"
+               ],
+               "criterion": "Answers that the speed is decreasing at t = 1, with the reason that v(1) and a(1) have opposite signs (velocity positive, acceleration negative). A conclusion from the sign of the acceleration alone does not earn the point.",
+               "eligible_only_if": [],
+               "check": null,
+               "follows_from": [
+                  "b1",
+                  "b2"
+               ]
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Find the average acceleration of the particle over the time interval \\( 0 \\le t \\le 3 \\). Find the time \\( t \\), with \\( 0 < t < 3 \\), at which the acceleration of the particle equals this average acceleration.",
+         "setup_required": false,
+         "answer_latex": "t = \\frac{3}{2}",
+         "worked_solution": [
+            {
+               "text": "Velocity at the two ends of the interval.",
+               "latex": "v(0) = 36, \\quad v(3) = 54 - 90 + 36 = 0"
+            },
+            {
+               "text": "Average acceleration is the change in velocity over the elapsed time.",
+               "latex": "\\frac{v(3) - v(0)}{3 - 0} = \\frac{0 - 36}{3} = -12"
+            },
+            {
+               "text": "Set the acceleration equal to the average.",
+               "latex": "12t - 30 = -12"
+            },
+            {
+               "text": "Solve for t.",
+               "latex": "t = \\frac{3}{2}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99021",
+               "skills": [
+                  "BC-SKL-04006",
+                  "BC-SKL-04007"
+               ],
+               "criterion": "Writes (v(3) - v(0))/(3 - 0) with the values, (0 - 36)/3, and gives -12. The unsimplified quotient -36/3 is accepted.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-04007"
+               ],
+               "criterion": "Solves a(t) = 12t - 30 = -12 and gives t = 3/2 (or 1.5).",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "3/2",
+                  "up_to_constant": false,
+                  "variable": "t",
+                  "each_side": false
+               },
+               "follows_from": [
+                  "c1"
+               ]
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "Find the speed of the particle at time \\( t = \\frac{11}{4} \\). Is the speed of the particle increasing, decreasing, or neither at time \\( t = \\frac{11}{4} \\)? Give a reason for your answer.",
+         "setup_required": false,
+         "answer_latex": "|v(\\tfrac{11}{4})| = \\frac{9}{8}, \\; \\text{speed decreasing}",
+         "worked_solution": [
+            {
+               "text": "Velocity at t = 11/4.",
+               "latex": "v\\left(\\frac{11}{4}\\right) = 6\\left(\\frac{121}{16}\\right) - 30\\left(\\frac{11}{4}\\right) + 36 = -\\frac{9}{8}"
+            },
+            {
+               "text": "Speed is the absolute value of the velocity.",
+               "latex": "\\left|v\\left(\\frac{11}{4}\\right)\\right| = \\frac{9}{8}"
+            },
+            {
+               "text": "Acceleration at t = 11/4.",
+               "latex": "a\\left(\\frac{11}{4}\\right) = 33 - 30 = 3"
+            },
+            {
+               "text": "Velocity is negative and acceleration is positive, so the speed is decreasing.",
+               "latex": "v\\left(\\frac{11}{4}\\right) < 0, \\; a\\left(\\frac{11}{4}\\right) > 0 \\Rightarrow \\text{speed decreasing}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-04006",
+                  "BC-SKL-04008"
+               ],
+               "criterion": "Gives the speed 9/8 (or 1.125) as the absolute value of v(11/4) = -9/8. A negative speed does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "d2",
+               "point_type_id": "BC-PT-99027",
+               "skills": [
+                  "BC-SKL-04007"
+               ],
+               "criterion": "Gives a(11/4) = s''(11/4) = 3.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "d3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-04008",
+                  "BC-SKL-04010"
+               ],
+               "criterion": "Answers that the speed is decreasing at t = 11/4, with the reason that v(11/4) is negative and a(11/4) is positive, so they have opposite signs.",
+               "eligible_only_if": [],
+               "check": null,
+               "follows_from": [
+                  "d1",
+                  "d2"
+               ]
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 115 of 115, stems read for ambiguity by the blind solver)"
+}

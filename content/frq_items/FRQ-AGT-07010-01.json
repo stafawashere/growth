@@ -1,0 +1,230 @@
+{
+   "id": "FRQ-AGT-07010-01",
+   "archetype_id": "BC-QA-07010",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "stem": {
+      "text": "The amount of water in a reservoir is modeled by the function \\( W \\), where \\( W(t) \\) is measured in millions of gallons and \\( t \\) is measured in months for \\( 0 \\le t \\le 8 \\). The function \\( W \\) satisfies the differential equation \\[ \\frac{dW}{dt} = \\frac{1}{10}(W - 40)(t - 3). \\] It is known that \\( W(3) = 45 \\) and that \\( W(t) > 40 \\) for \\( 0 \\le t \\le 8 \\)."
+   },
+   "skills": [
+      "BC-SKL-07012",
+      "BC-SKL-07018"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find the value of \\( t \\), for \\( 0 < t < 8 \\), at which \\( W \\) has a critical point. Determine whether \\( W \\) has a relative minimum, a relative maximum, or neither at this value of \\( t \\). Justify your answer.",
+         "setup_required": false,
+         "answer_latex": "t = 3, \\text{ relative minimum}",
+         "worked_solution": [
+            {
+               "text": "Set the rate equal to zero. The factor W - 40 is never zero because W(t) > 40.",
+               "latex": "\\frac{1}{10}(W - 40)(t - 3) = 0"
+            },
+            {
+               "text": "So the only critical point is where the second factor vanishes.",
+               "latex": "t = 3"
+            },
+            {
+               "text": "For 0 < t < 3 the factor t - 3 is negative and W - 40 is positive, so dW/dt < 0. For 3 < t < 8 both factors are positive, so dW/dt > 0.",
+               "latex": "\\frac{dW}{dt} < 0 \\text{ on } (0, 3), \\quad \\frac{dW}{dt} > 0 \\text{ on } (3, 8)"
+            },
+            {
+               "text": "dW/dt changes from negative to positive at t = 3, so W has a relative minimum there.",
+               "latex": "\\text{relative minimum at } t = 3"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-07012"
+               ],
+               "criterion": "Sets dW/dt = (1/10)(W - 40)(t - 3) equal to zero, uses W(t) > 40 to rule out the factor W - 40, and gives t = 3.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99010",
+               "skills": [
+                  "BC-SKL-07018"
+               ],
+               "criterion": "Concludes that W has a relative minimum at t = 3 because dW/dt changes from negative to positive there, with the sign on each side tied to W - 40 > 0 and the sign of t - 3. A conclusion from W''(3) > 0 together with W'(3) = 0 is also accepted. A bare conclusion with no sign argument does not earn the point.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find \\( \\dfrac{d^{2}W}{dt^{2}} \\) in terms of \\( W \\) and \\( t \\). Then find the value of \\( \\dfrac{d^{2}W}{dt^{2}} \\) at \\( t = 3 \\).",
+         "setup_required": false,
+         "answer_latex": "\\frac{d^{2}W}{dt^{2}} = \\frac{1}{2}",
+         "worked_solution": [
+            {
+               "text": "Differentiate with the product rule; the derivative of W - 40 with respect to t is dW/dt.",
+               "latex": "\\frac{d^{2}W}{dt^{2}} = \\frac{1}{10}\\frac{dW}{dt}(t - 3) + \\frac{1}{10}(W - 40)"
+            },
+            {
+               "text": "Substitute the differential equation for dW/dt.",
+               "latex": "\\frac{d^{2}W}{dt^{2}} = \\frac{(W - 40)(t - 3)^{2}}{100} + \\frac{W - 40}{10}"
+            },
+            {
+               "text": "Collect the common factor.",
+               "latex": "\\frac{d^{2}W}{dt^{2}} = \\frac{(W - 40)((t - 3)^{2} + 10)}{100}"
+            },
+            {
+               "text": "At t = 3, W = 45.",
+               "latex": "\\frac{d^{2}W}{dt^{2}} = \\frac{(45 - 40)(0 + 10)}{100} = \\frac{1}{2}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99023",
+               "skills": [
+                  "BC-SKL-07018"
+               ],
+               "criterion": "Differentiates the right side with respect to t, treating W as a function of t, so that the derivative of (W - 40) contributes dW/dt: (1/10)(dW/dt)(t - 3) + (1/10)(W - 40), or an equivalent form.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99027",
+               "skills": [
+                  "BC-SKL-07018"
+               ],
+               "criterion": "Writes d^2W/dt^2 in terms of W and t only, (W - 40)(t - 3)^2/100 + (W - 40)/10 or any equivalent form such as (W - 40)((t - 3)^2 + 10)/100. An expression still containing dW/dt does not earn the point.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "(W - 40)*((t - 3)**2 + 10)/100",
+                  "up_to_constant": false,
+                  "variable": "t"
+               }
+            },
+            {
+               "point_id": "b3",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-07018"
+               ],
+               "criterion": "Substitutes t = 3 and W = 45 into the expression and gives 1/2, or 0.5.",
+               "eligible_only_if": [],
+               "follows_from": [
+                  "b2"
+               ],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "1/2",
+                  "up_to_constant": false,
+                  "variable": "t"
+               }
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Find the open interval, within \\( 0 < t < 8 \\), on which the graph of \\( W \\) is both increasing and concave up. Give a reason for your answer.",
+         "setup_required": false,
+         "answer_latex": "3 < t < 8",
+         "worked_solution": [
+            {
+               "text": "dW/dt > 0 exactly when t - 3 > 0, because W - 40 > 0.",
+               "latex": "\\frac{dW}{dt} > 0 \\text{ for } 3 < t < 8"
+            },
+            {
+               "text": "Both factors of the second derivative are positive for every t in the interval, so dW/dt is increasing everywhere.",
+               "latex": "\\frac{d^{2}W}{dt^{2}} = \\frac{(W - 40)((t - 3)^{2} + 10)}{100} > 0"
+            },
+            {
+               "text": "W is increasing and concave up where both hold.",
+               "latex": "3 < t < 8"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-07018"
+               ],
+               "criterion": "Gives the interval 3 < t < 8. Including one or both endpoints, as in 3 <= t <= 8, is also accepted.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99063",
+               "skills": [
+                  "BC-SKL-07018"
+               ],
+               "criterion": "Gives a reason covering both conditions: dW/dt > 0 on the interval because W - 40 > 0 and t - 3 > 0, and d^2W/dt^2 > 0 (so dW/dt is increasing) because W - 40 > 0 and (t - 3)^2 + 10 > 0. A reason that addresses only increasing or only concavity does not earn the point.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "Find the absolute minimum value of \\( W(t) \\) for \\( 0 \\le t \\le 8 \\). Justify your answer.",
+         "setup_required": false,
+         "answer_latex": "W(3) = 45",
+         "worked_solution": [
+            {
+               "text": "t = 3 is the only critical point in the interval, W is decreasing on 0 < t < 3 and increasing on 3 < t < 8.",
+               "latex": "\\frac{dW}{dt} < 0 \\text{ on } (0, 3), \\quad \\frac{dW}{dt} > 0 \\text{ on } (3, 8)"
+            },
+            {
+               "text": "So W(t) >= W(3) for every t in the interval, and the absolute minimum is at t = 3.",
+               "latex": "W(3) = 45"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99010",
+               "skills": [
+                  "BC-SKL-07012",
+                  "BC-SKL-07018"
+               ],
+               "criterion": "Justifies a global minimum at t = 3: W decreases on the whole of 0 < t < 3 and increases on the whole of 3 < t < 8, or t = 3 is the only critical point on the interval and it is a relative minimum. A relative-minimum argument with no statement about the whole interval does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "d2",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-07018"
+               ],
+               "criterion": "Gives the absolute minimum value 45 (millions of gallons).",
+               "eligible_only_if": [
+                  "d1"
+               ],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "45",
+                  "up_to_constant": false,
+                  "variable": "t"
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 66 of 66 after two formulation misreadings were triaged, stems read for ambiguity by the blind solver)"
+}

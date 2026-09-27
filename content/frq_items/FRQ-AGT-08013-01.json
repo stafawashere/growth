@@ -1,0 +1,235 @@
+{
+   "id": "FRQ-AGT-08013-01",
+   "archetype_id": "BC-QA-08013",
+   "calculator_status": "calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "Let \\( f(x) = 4 - x^{2} \\) and \\( g(x) = e^{x/2} \\). Let \\( R \\) be the region bounded by the graphs of \\( f \\) and \\( g \\)."
+   },
+   "skills": [
+      "BC-SKL-08048",
+      "BC-SKL-08049",
+      "BC-SKL-08050",
+      "BC-SKL-08051",
+      "BC-SKL-08052",
+      "BC-SKL-08053",
+      "BC-SKL-08054",
+      "BC-SKL-08055"
+   ],
+   "functions": {
+      "f": {
+         "variable": "x",
+         "expression": "4 - x**2"
+      },
+      "g": {
+         "variable": "x",
+         "expression": "exp(x/2)"
+      }
+   },
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Write, but do not evaluate, an integral expression that gives the volume of the solid generated when \\( R \\) is revolved about the horizontal line \\( y = -2 \\).",
+         "setup_required": true,
+         "answer_latex": "\\pi\\int_{-1.901}^{1.407} \\left(\\left(4 - x^{2} + 2\\right)^{2} - \\left(e^{x/2} + 2\\right)^{2}\\right)dx",
+         "worked_solution": [
+            {
+               "text": "The graphs of f and g cross where 4 - x^2 = e^{x/2}. Solve on the calculator.",
+               "latex": "x \\approx -1.901, \\quad x \\approx 1.407"
+            },
+            {
+               "text": "The outer radius is f(x) + 2 = 6 - x^2 and the inner radius is g(x) + 2 = e^(x/2) + 2.",
+               "latex": "r_{\\text{outer}} = 4 - x^{2} + 2, \\quad r_{\\text{inner}} = e^{x/2} + 2"
+            },
+            {
+               "text": "Pi times the difference of the squared radii, integrated between the intersections.",
+               "latex": "\\pi\\int_{-1.901}^{1.407} \\left(\\left(4 - x^{2} + 2\\right)^{2} - \\left(e^{x/2} + 2\\right)^{2}\\right)dx"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99058",
+               "skills": [
+                  "BC-SKL-08051",
+                  "BC-SKL-08052",
+                  "BC-SKL-08055"
+               ],
+               "criterion": "Writes an integrand of the washer form, a constant pi times the square of an outer radius minus the square of an inner radius, with pi inside or in front of the integral. The square of the difference of two radii, or an integrand without pi, earns nothing.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99058",
+               "skills": [
+                  "BC-SKL-08048",
+                  "BC-SKL-08054",
+                  "BC-SKL-08052",
+                  "BC-SKL-08055"
+               ],
+               "criterion": "Uses the outer radius f(x) + 2 = 6 - x^2 and the inner radius g(x) + 2 = e^(x/2) + 2, in any algebraically equivalent form, with the outer one squared first.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "a3",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-08052",
+                  "BC-SKL-08055"
+               ],
+               "criterion": "Uses the limits x = -1.901 and x = 1.407 (accurate to three decimal places, by rounding or truncation), the x-coordinates of the intersections of the two graphs, or names for them whose decimal values are stated.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "-1.9009033700393335655646545609075",
+                  "upper": "1.4068791423272789985576366697795",
+                  "integrand": null,
+                  "variable": "x"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Write, but do not evaluate, an integral expression that gives the volume of the solid generated when \\( R \\) is revolved about the horizontal line \\( y = 6 \\).",
+         "setup_required": true,
+         "answer_latex": "\\pi\\int_{-1.901}^{1.407} \\left(\\left(6 - e^{x/2}\\right)^{2} - \\left(6 - (4 - x^{2})\\right)^{2}\\right)dx",
+         "worked_solution": [
+            {
+               "text": "The graphs of f and g cross where 4 - x^2 = e^{x/2}. Solve on the calculator.",
+               "latex": "x \\approx -1.901, \\quad x \\approx 1.407"
+            },
+            {
+               "text": "The outer radius is 6 - g(x) = 6 - e^(x/2) and the inner radius is 6 - f(x) = 2 + x^2.",
+               "latex": "r_{\\text{outer}} = 6 - e^{x/2}, \\quad r_{\\text{inner}} = 6 - (4 - x^{2})"
+            },
+            {
+               "text": "Pi times the difference of the squared radii, integrated between the intersections.",
+               "latex": "\\pi\\int_{-1.901}^{1.407} \\left(\\left(6 - e^{x/2}\\right)^{2} - \\left(6 - (4 - x^{2})\\right)^{2}\\right)dx"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99058",
+               "skills": [
+                  "BC-SKL-08051",
+                  "BC-SKL-08052",
+                  "BC-SKL-08055"
+               ],
+               "criterion": "Writes an integrand of the washer form, a constant pi times the square of an outer radius minus the square of an inner radius, with pi inside or in front of the integral. The square of the difference of two radii, or an integrand without pi, earns nothing.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99058",
+               "skills": [
+                  "BC-SKL-08048",
+                  "BC-SKL-08054",
+                  "BC-SKL-08052",
+                  "BC-SKL-08055"
+               ],
+               "criterion": "Uses the outer radius 6 - g(x) = 6 - e^(x/2) and the inner radius 6 - f(x) = 2 + x^2, in any algebraically equivalent form, with the outer one squared first.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "b3",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-08052",
+                  "BC-SKL-08055"
+               ],
+               "criterion": "Uses the limits x = -1.901 and x = 1.407 (accurate to three decimal places, by rounding or truncation), the x-coordinates of the intersections of the two graphs, or names for them whose decimal values are stated.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "-1.9009033700393335655646545609075",
+                  "upper": "1.4068791423272789985576366697795",
+                  "integrand": null,
+                  "variable": "x"
+               }
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Write, but do not evaluate, an integral expression that gives the volume of the solid generated when \\( R \\) is revolved about the \\( x \\)-axis.",
+         "setup_required": true,
+         "answer_latex": "\\pi\\int_{-1.901}^{1.407} \\left(\\left(4 - x^{2}\\right)^{2} - \\left(e^{x/2}\\right)^{2}\\right)dx",
+         "worked_solution": [
+            {
+               "text": "The graphs of f and g cross where 4 - x^2 = e^{x/2}. Solve on the calculator.",
+               "latex": "x \\approx -1.901, \\quad x \\approx 1.407"
+            },
+            {
+               "text": "The outer radius is f(x) = 4 - x^2 and the inner radius is g(x) = e^(x/2).",
+               "latex": "r_{\\text{outer}} = 4 - x^{2}, \\quad r_{\\text{inner}} = e^{x/2}"
+            },
+            {
+               "text": "Pi times the difference of the squared radii, integrated between the intersections.",
+               "latex": "\\pi\\int_{-1.901}^{1.407} \\left(\\left(4 - x^{2}\\right)^{2} - \\left(e^{x/2}\\right)^{2}\\right)dx"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99058",
+               "skills": [
+                  "BC-SKL-08051",
+                  "BC-SKL-08049"
+               ],
+               "criterion": "Writes an integrand of the washer form, a constant pi times the square of an outer radius minus the square of an inner radius, with pi inside or in front of the integral. The square of the difference of two radii, or an integrand without pi, earns nothing.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99058",
+               "skills": [
+                  "BC-SKL-08048",
+                  "BC-SKL-08054",
+                  "BC-SKL-08049"
+               ],
+               "criterion": "Uses the outer radius f(x) = 4 - x^2 and the inner radius g(x) = e^(x/2), in any algebraically equivalent form, with the outer one squared first.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "c3",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-08049"
+               ],
+               "criterion": "Uses the limits x = -1.901 and x = 1.407 (accurate to three decimal places, by rounding or truncation), the x-coordinates of the intersections of the two graphs, or names for them whose decimal values are stated.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "-1.9009033700393335655646545609075",
+                  "upper": "1.4068791423272789985576366697795",
+                  "integrand": null,
+                  "variable": "x"
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 115 of 115, stems read for ambiguity by the blind solver)"
+}

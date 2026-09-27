@@ -1,0 +1,218 @@
+{
+   "id": "FRQ-AGT-06004-01",
+   "archetype_id": "BC-QA-06004",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-02",
+   "stem": {
+      "text": "A particle moves along the \\( x \\)-axis. Its velocity, in meters per second, is \\( v(t) \\) for \\( 0 \\le t \\le 12 \\) seconds, where \\[ v(t) = \\begin{cases} 2t & \\text{for } 0 \\le t \\le 2 \\\\ 4 & \\text{for } 2 < t \\le 4 \\\\ 12 - 2t & \\text{for } 4 < t \\le 6 \\\\ -\\sqrt{4 - (t - 8)^{2}} & \\text{for } 6 < t \\le 10 \\\\ t - 10 & \\text{for } 10 < t \\le 12 \\end{cases} \\] so the graph of \\( v \\) consists of four line segments and a semicircle below the \\( t \\)-axis. At time \\( t = 0 \\) the particle is at position \\( x = -5 \\)."
+   },
+   "skills": [
+      "BC-SKL-06028",
+      "BC-SKL-06004",
+      "BC-SKL-06020"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find \\( \\displaystyle\\int_{0}^{6} v(t)\\,dt \\) and \\( \\displaystyle\\int_{6}^{12} v(t)\\,dt \\).",
+         "setup_required": false,
+         "answer_latex": "\\int_{0}^{6} v(t)\\,dt = 16, \\quad \\int_{6}^{12} v(t)\\,dt = 2 - 2\\pi",
+         "worked_solution": [
+            {
+               "text": "A triangle on [0, 2], a rectangle on [2, 4] and a triangle on [4, 6], all above the axis.",
+               "latex": "\\int_{0}^{6} v(t)\\,dt = \\frac{1}{2}(2)(4) + 2(4) + \\frac{1}{2}(2)(4) = 16"
+            },
+            {
+               "text": "A semicircle of radius 2 below the axis on [6, 10] and a triangle above the axis on [10, 12].",
+               "latex": "\\int_{6}^{12} v(t)\\,dt = -\\frac{1}{2}\\pi(2)^{2} + \\frac{1}{2}(2)(2) = 2 - 2\\pi"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99069",
+               "skills": [
+                  "BC-SKL-06028"
+               ],
+               "criterion": "Gives 16 as the sum of the triangle, rectangle and triangle areas on [0, 6].",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99069",
+               "skills": [
+                  "BC-SKL-06028"
+               ],
+               "criterion": "Gives 2 - 2pi, the signed semicircle area -2pi plus the triangle area 2. Any exact equivalent is accepted; counting the semicircle as positive does not earn the point.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "2 - 2*pi",
+                  "up_to_constant": false,
+                  "variable": "t",
+                  "each_side": false
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find the position of the particle at time \\( t = 12 \\). Find the total distance the particle travels during the interval \\( 0 \\le t \\le 12 \\).",
+         "setup_required": false,
+         "answer_latex": "x(12) = 13 - 2\\pi; \\ \\text{distance} = 18 + 2\\pi",
+         "worked_solution": [
+            {
+               "text": "Initial position plus displacement over [0, 12], using part (a).",
+               "latex": "x(12) = -5 + \\int_{0}^{12} v(t)\\,dt = -5 + 16 + 2 - 2\\pi = 13 - 2\\pi"
+            },
+            {
+               "text": "Total distance adds the unsigned areas.",
+               "latex": "\\int_{0}^{12} |v(t)|\\,dt = 16 + 2\\pi + 2 = 18 + 2\\pi"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99069",
+               "skills": [
+                  "BC-SKL-06004",
+                  "BC-SKL-06020"
+               ],
+               "criterion": "Gives the position 13 - 2pi, the initial position -5 plus the displacement 18 - 2pi. Any exact equivalent is accepted.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99069",
+               "skills": [
+                  "BC-SKL-06004"
+               ],
+               "criterion": "Gives the total distance 18 + 2pi, with the semicircle area counted as positive. Any exact equivalent is accepted.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "18 + 2*pi",
+                  "up_to_constant": false,
+                  "variable": "t",
+                  "each_side": false
+               }
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Find \\( \\displaystyle\\int_{12}^{4} v(t)\\,dt \\) and \\( \\displaystyle\\int_{2}^{10} \\big(3v(t) - 1\\big)\\,dt \\).",
+         "setup_required": false,
+         "answer_latex": "\\int_{12}^{4} v(t)\\,dt = 2\\pi - 6, \\quad \\int_{2}^{10} \\big(3v(t) - 1\\big)\\,dt = 28 - 6\\pi",
+         "worked_solution": [
+            {
+               "text": "Over [4, 12] the signed areas are 4, -2pi and 2; reversing the limits changes the sign.",
+               "latex": "\\int_{12}^{4} v(t)\\,dt = -\\left(4 - 2\\pi + 2\\right) = 2\\pi - 6"
+            },
+            {
+               "text": "Over [2, 10] the signed areas are 8, 4 and -2pi.",
+               "latex": "\\int_{2}^{10} v(t)\\,dt = 8 + 4 - 2\\pi = 12 - 2\\pi"
+            },
+            {
+               "text": "Linearity, with the integral of the constant 1 over an interval of length 8.",
+               "latex": "\\int_{2}^{10} \\big(3v(t) - 1\\big)\\,dt = 3(12 - 2\\pi) - 8 = 28 - 6\\pi"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99069",
+               "skills": [
+                  "BC-SKL-06028"
+               ],
+               "criterion": "Gives 2pi - 6, the negative of the signed area on [4, 12]. Any exact equivalent is accepted; 6 - 2pi does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99069",
+               "skills": [
+                  "BC-SKL-06028"
+               ],
+               "criterion": "Gives 28 - 6pi, three times the signed area 12 - 2pi on [2, 10] minus 8. Any exact equivalent is accepted.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "28 - 6*pi",
+                  "up_to_constant": false,
+                  "variable": "t",
+                  "each_side": false
+               }
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "Let \\( A(x) = \\displaystyle\\int_{2}^{x} v(t)\\,dt \\) for \\( 0 \\le x \\le 12 \\). Find \\( A(0) \\) and \\( A(10) \\). Find the average value of \\( v(t) \\) on the interval \\( 0 \\le t \\le 10 \\).",
+         "setup_required": false,
+         "answer_latex": "A(0) = -4, \\quad A(10) = 12 - 2\\pi, \\quad \\text{average value} = \\frac{8 - \\pi}{5}",
+         "worked_solution": [
+            {
+               "text": "Reversed limits over the triangle on [0, 2].",
+               "latex": "A(0) = \\int_{2}^{0} v(t)\\,dt = -\\int_{0}^{2} v(t)\\,dt = -4"
+            },
+            {
+               "text": "The signed area on [2, 10] from part (c).",
+               "latex": "A(10) = \\int_{2}^{10} v(t)\\,dt = 8 + 4 - 2\\pi = 12 - 2\\pi"
+            },
+            {
+               "text": "The signed area on [0, 10] divided by the length 10.",
+               "latex": "\\frac{1}{10}\\int_{0}^{10} v(t)\\,dt = \\frac{16 - 2\\pi}{10} = \\frac{8 - \\pi}{5}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99069",
+               "skills": [
+                  "BC-SKL-06020"
+               ],
+               "criterion": "Gives A(0) = -4, with the sign reversed for the reversed limits.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "d2",
+               "point_type_id": "BC-PT-99069",
+               "skills": [
+                  "BC-SKL-06020"
+               ],
+               "criterion": "Gives A(10) = 12 - 2pi. Any exact equivalent is accepted.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "d3",
+               "point_type_id": "BC-PT-99069",
+               "skills": [
+                  "BC-SKL-06028"
+               ],
+               "criterion": "Gives the average value (8 - pi)/5, the signed area 16 - 2pi divided by 10. Any exact equivalent is accepted.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "(8 - pi)/5",
+                  "up_to_constant": false,
+                  "variable": "t",
+                  "each_side": false
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 66 of 66 after two formulation misreadings were triaged, stems read for ambiguity by the blind solver)"
+}

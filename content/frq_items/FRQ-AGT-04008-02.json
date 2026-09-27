@@ -1,0 +1,231 @@
+{
+   "id": "FRQ-AGT-04008-02",
+   "archetype_id": "BC-QA-04008",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "A cup of tea is poured and left to cool on a table. Its temperature is \\( T(t) \\) degrees Celsius, where \\( t \\) is measured in minutes after the tea is poured. The function \\( T \\) is twice differentiable for \\( t \\ge 0 \\), with \\( T(0) = 90 \\), \\( T(2) = 86 \\) and \\( T'(t) = \\dfrac{-16}{(t + 2)^{2}} \\)."
+   },
+   "skills": [
+      "BC-SKL-04028",
+      "BC-SKL-04029",
+      "BC-SKL-04030",
+      "BC-SKL-04031",
+      "BC-SKL-04032"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find \\( T'(0) \\). Write an equation for the line tangent to the graph of \\( T \\) at \\( t = 0 \\), and use it to approximate \\( T(0.5) \\).",
+         "setup_required": false,
+         "answer_latex": "T(0.5) \\approx 88",
+         "worked_solution": [
+            {
+               "text": "Slope at the point of tangency.",
+               "latex": "T'(0) = \\frac{-16}{4} = -4"
+            },
+            {
+               "text": "Tangent line through (0, 90).",
+               "latex": "y = 90 - 4t"
+            },
+            {
+               "text": "Evaluate at t = 0.5.",
+               "latex": "T(0.5) \\approx 90 - 4(0.5) = 88"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-04032"
+               ],
+               "criterion": "Gives T'(0) = -4.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-04028"
+               ],
+               "criterion": "Writes the tangent line through (0, 90) with slope -4, for example y = 90 - 4t, in any equivalent form.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a3",
+               "point_type_id": "BC-PT-99025",
+               "skills": [
+                  "BC-SKL-04029"
+               ],
+               "criterion": "Approximates T(0.5) by 88 from the tangent line.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "88"
+               },
+               "follows_from": [
+                  "a2"
+               ]
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Show that the approximation found in part (a) is less than \\( T(0.5) \\).",
+         "setup_required": false,
+         "answer_latex": "88 < T(0.5)",
+         "worked_solution": [
+            {
+               "text": "Differentiate T' with the chain rule.",
+               "latex": "T''(t) = \\frac{32}{(t + 2)^{3}}"
+            },
+            {
+               "text": "For t >= 0 the denominator is positive.",
+               "latex": "T''(t) > 0"
+            },
+            {
+               "text": "The graph of T is concave up, so it lies above its tangent line at t = 0.",
+               "latex": "88 < T(0.5)"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-04031"
+               ],
+               "criterion": "Finds T''(t) = 32/(t + 2)^3, in any equivalent form.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "32/(t + 2)**3",
+                  "up_to_constant": false,
+                  "variable": "t"
+               }
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99068",
+               "skills": [
+                  "BC-SKL-04030",
+                  "BC-SKL-04031"
+               ],
+               "criterion": "Argues that T''(t) > 0 for 0 <= t <= 0.5, so the graph of T is concave up there and lies above its tangent line, and closes with the conclusion that 88 is less than T(0.5). An argument from T being decreasing does not earn the point.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Use the line tangent to the graph of \\( T \\) at \\( t = 0 \\) to approximate the time at which the temperature of the tea is 87 degrees Celsius. Then show that the temperature of the tea at the time you found is greater than 87 degrees Celsius.",
+         "setup_required": false,
+         "answer_latex": "t \\approx \\frac{3}{4}",
+         "worked_solution": [
+            {
+               "text": "Set the tangent line equal to 87.",
+               "latex": "90 - 4t = 87"
+            },
+            {
+               "text": "Solve for t.",
+               "latex": "t \\approx \\frac{3}{4}"
+            },
+            {
+               "text": "T is concave up for t >= 0, so its graph lies above the tangent line at t = 0, and T(3/4) exceeds the tangent line value 87.",
+               "latex": "T\\left(\\frac{3}{4}\\right) > 90 - 4\\left(\\frac{3}{4}\\right) = 87"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99025",
+               "skills": [
+                  "BC-SKL-04029"
+               ],
+               "criterion": "Solves 90 - 4t = 87 from the tangent line and gives t = 3/4 (or 0.75) minutes.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "3/4",
+                  "up_to_constant": false,
+                  "variable": "t",
+                  "each_side": false
+               }
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99068",
+               "skills": [
+                  "BC-SKL-04030",
+                  "BC-SKL-04031"
+               ],
+               "criterion": "Argues that the graph of T lies above the tangent line for t >= 0 because T'' > 0 (carried from part (b) is accepted), so T(3/4) is greater than the tangent line value 87, and closes with T(3/4) > 87.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "Use the line tangent to the graph of \\( T \\) at \\( t = 2 \\) to approximate \\( T(2.4) \\).",
+         "setup_required": false,
+         "answer_latex": "T(2.4) \\approx 85.6",
+         "worked_solution": [
+            {
+               "text": "Slope at t = 2.",
+               "latex": "T'(2) = \\frac{-16}{16} = -1"
+            },
+            {
+               "text": "Tangent line through (2, 86).",
+               "latex": "y = 86 - (t - 2)"
+            },
+            {
+               "text": "Evaluate at t = 2.4.",
+               "latex": "T(2.4) \\approx 86 - 0.4 = 85.6"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-04032"
+               ],
+               "criterion": "Gives T'(2) = -1.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "d2",
+               "point_type_id": "BC-PT-99025",
+               "skills": [
+                  "BC-SKL-04028",
+                  "BC-SKL-04029"
+               ],
+               "criterion": "Approximates T(2.4) by 85.6 from the line through (2, 86) with slope T'(2).",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "428/5"
+               },
+               "follows_from": [
+                  "d1"
+               ]
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 115 of 115, stems read for ambiguity by the blind solver)"
+}

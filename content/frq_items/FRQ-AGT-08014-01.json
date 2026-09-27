@@ -1,0 +1,238 @@
+{
+   "id": "FRQ-AGT-08014-01",
+   "archetype_id": "BC-QA-08014",
+   "calculator_status": "calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "Let \\( f(x) = x\\cos\\left(\\frac{x}{2}\\right) \\) for \\( 0 \\le x \\le 8 \\). On this interval \\( f \\) has exactly one relative maximum, at \\( x = p \\), and exactly one relative minimum, at \\( x = q \\), where \\( 0 < p < q < 8 \\)."
+   },
+   "skills": [
+      "BC-SKL-08056",
+      "BC-SKL-08057",
+      "BC-SKL-08058",
+      "BC-SKL-08059"
+   ],
+   "functions": {
+      "f": {
+         "variable": "x",
+         "expression": "x*cos(x/2)"
+      }
+   },
+   "roots": {
+      "p": {
+         "value": "1.7206671780387595249677868482753",
+         "equation": "cos(x/2) - x*sin(x/2)/2",
+         "variable": "x"
+      },
+      "q": {
+         "value": "6.8512369189634562929554277243709",
+         "equation": "cos(x/2) - x*sin(x/2)/2",
+         "variable": "x"
+      }
+   },
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find \\( f'(x) \\). Then find the length of the graph of \\( f \\) from \\( x = 0 \\) to \\( x = 3 \\).",
+         "setup_required": true,
+         "answer_latex": "\\int_{0}^{3} \\sqrt{1 + \\left(f'(x)\\right)^{2}}\\,dx \\approx 3.736",
+         "worked_solution": [
+            {
+               "text": "Product rule.",
+               "latex": "f'(x) = \\cos\\left(\\frac{x}{2}\\right) - \\frac{x}{2}\\sin\\left(\\frac{x}{2}\\right)"
+            },
+            {
+               "text": "Arc length integral from 0 to 3.",
+               "latex": "\\int_{0}^{3} \\sqrt{1 + \\left(\\cos\\left(\\frac{x}{2}\\right) - \\frac{x}{2}\\sin\\left(\\frac{x}{2}\\right)\\right)^{2}}\\,dx"
+            },
+            {
+               "text": "Evaluate on the calculator.",
+               "latex": "\\int_{0}^{3} \\sqrt{1 + \\left(f'(x)\\right)^{2}}\\,dx \\approx 3.736"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99051",
+               "skills": [
+                  "BC-SKL-08056"
+               ],
+               "criterion": "Writes a definite integral whose integrand is the square root of 1 + (f'(x))^2, with f'(x) written by name or as an expression, whatever its limits. An integrand of sqrt(1 + f(x)^2) or of f(x) earns nothing.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99022",
+               "skills": [
+                  "BC-SKL-08056"
+               ],
+               "criterion": "Gives f'(x) = cos(x/2) - (x/2)sin(x/2), or an algebraically equivalent expression, on a line of its own.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "cos(x/2) - x*sin(x/2)/2",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "a3",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-08056"
+               ],
+               "criterion": "Uses the limits x = 0 and x = 3 on that integral.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "0",
+                  "upper": "3",
+                  "integrand": null,
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "a4",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-08059"
+               ],
+               "criterion": "Gives the length 3.736, accurate to three decimal places.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "Integral(sqrt(1 + (cos(x/2) - x*sin(x/2)/2)**2), (x, 0, 3))"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "There is a number \\( k \\), with \\( 0 < k < 8 \\), for which the length of the graph of \\( f \\) from \\( x = 0 \\) to \\( x = k \\) is 5. Write an equation involving an integral expression whose solution is \\( k \\), and find \\( k \\).",
+         "setup_required": true,
+         "answer_latex": "k \\approx 3.632",
+         "worked_solution": [
+            {
+               "text": "The length from 0 to k equals 5.",
+               "latex": "\\int_{0}^{k} \\sqrt{1 + \\left(\\cos\\left(\\frac{x}{2}\\right) - \\frac{x}{2}\\sin\\left(\\frac{x}{2}\\right)\\right)^{2}}\\,dx = 5"
+            },
+            {
+               "text": "Solve on the calculator.",
+               "latex": "k \\approx 3.632"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-08057"
+               ],
+               "criterion": "Writes the equation: the integral of sqrt(1 + (f'(x))^2) from x = 0 to x = k equals 5.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "equation_setup",
+                  "unknown": "k",
+                  "left": "Integral(sqrt(1 + (cos(x/2) - x*sin(x/2)/2)**2), (x, 0, k))",
+                  "right": "5",
+                  "interval": [
+                     "3",
+                     "4"
+                  ]
+               }
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-08059"
+               ],
+               "criterion": "Gives k = 3.632, accurate to three decimal places.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "3.631693556841824730282605138067"
+               }
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Find the length of the graph of \\( f \\) from its relative maximum to its relative minimum.",
+         "setup_required": true,
+         "answer_latex": "\\int_{p}^{q} \\sqrt{1 + \\left(f'(x)\\right)^{2}}\\,dx \\approx 9.590",
+         "worked_solution": [
+            {
+               "text": "The relative extrema are where f'(x) = 0. Solve on the calculator.",
+               "latex": "p \\approx 1.721, \\quad q \\approx 6.851"
+            },
+            {
+               "text": "Arc length integral from p to q.",
+               "latex": "\\int_{p}^{q} \\sqrt{1 + \\left(\\cos\\left(\\frac{x}{2}\\right) - \\frac{x}{2}\\sin\\left(\\frac{x}{2}\\right)\\right)^{2}}\\,dx"
+            },
+            {
+               "text": "Evaluate on the calculator.",
+               "latex": "\\int_{p}^{q} \\sqrt{1 + \\left(f'(x)\\right)^{2}}\\,dx \\approx 9.590"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99051",
+               "skills": [
+                  "BC-SKL-08057"
+               ],
+               "criterion": "Writes a definite integral whose integrand is the square root of 1 + (f'(x))^2, whatever its limits.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-08057"
+               ],
+               "criterion": "Uses the limits p and q, the zeros of f' at about 1.721 and 6.851, written as p and q or as decimals accurate to three places.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "p",
+                  "upper": "q",
+                  "integrand": null,
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "c3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-08059"
+               ],
+               "criterion": "Gives the length 9.590, accurate to three decimal places.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "Integral(sqrt(1 + (cos(x/2) - x*sin(x/2)/2)**2), (x, 1.7206671780387595249677868482753, 6.8512369189634562929554277243709))"
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 115 of 115, stems read for ambiguity by the blind solver)"
+}

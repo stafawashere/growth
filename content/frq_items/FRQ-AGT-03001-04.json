@@ -1,0 +1,239 @@
+{
+   "id": "FRQ-AGT-03001-04",
+   "archetype_id": "BC-QA-03001",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "Let \\( p(x) = \\dfrac{1}{1 + e^{-2x}} \\) and \\( r(x) = 3^{\\cos x} \\) for all real \\( x \\), and let \\( s(x) = \\ln\\left(\\sec x + \\tan x\\right) \\) for \\( -\\tfrac{\\pi}{2} < x < \\tfrac{\\pi}{2} \\)."
+   },
+   "skills": [
+      "BC-SKL-03002",
+      "BC-SKL-03003",
+      "BC-SKL-03006"
+   ],
+   "functions": {
+      "p": {
+         "variable": "x",
+         "expression": "1/(1 + exp(-2*x))"
+      },
+      "r": {
+         "variable": "x",
+         "expression": "3**cos(x)"
+      },
+      "s": {
+         "variable": "x",
+         "expression": "log(sec(x) + tan(x))"
+      },
+      "w": {
+         "variable": "x",
+         "expression": "log(sec(2*x) + tan(2*x))"
+      }
+   },
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find \\( p'(x) \\). Find the values of \\( p'(0) \\) and \\( p'(\\ln 2) \\).",
+         "setup_required": false,
+         "answer_latex": "p'(\\ln 2) = \\frac{8}{25}",
+         "worked_solution": [
+            {
+               "text": "Write p as a power of the sum and apply the chain rule twice.",
+               "latex": "p'(x) = -\\left(1 + e^{-2x}\\right)^{-2} \\cdot \\left(-2e^{-2x}\\right) = \\frac{2e^{-2x}}{\\left(1 + e^{-2x}\\right)^{2}}"
+            },
+            {
+               "text": "Substitute x = 0.",
+               "latex": "p'(0) = \\frac{2}{(1 + 1)^{2}} = \\frac{1}{2}"
+            },
+            {
+               "text": "At x = ln 2, e^(-2x) = 1/4.",
+               "latex": "p'(\\ln 2) = \\frac{2 \\cdot \\frac{1}{4}}{\\left(\\frac{5}{4}\\right)^{2}} = \\frac{8}{25}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99023",
+               "skills": [
+                  "BC-SKL-03003"
+               ],
+               "criterion": "Writes p'(x) = 2e^(-2x)/(1 + e^(-2x))^2 or an equivalent expression, such as 2e^(2x)/(e^(2x) + 1)^2; the factor -2 from the innermost layer must be present.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "2*exp(-2*x)/(1 + exp(-2*x))**2",
+                  "up_to_constant": false,
+                  "each_side": false,
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-03003"
+               ],
+               "criterion": "Gives p'(0) = 1/2 or 0.5.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-03003"
+               ],
+               "criterion": "Gives p'(ln 2) = 8/25 or 0.32.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "8/25",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find \\( r'(x) \\) and the value of \\( r'\\left(\\tfrac{\\pi}{2}\\right) \\). Then find every value of \\( x \\) in the interval \\( 0 < x < 2\\pi \\) at which \\( r'(x) = 0 \\).",
+         "setup_required": false,
+         "answer_latex": "x = \\pi",
+         "worked_solution": [
+            {
+               "text": "The derivative of 3^u is 3^u ln 3 times the derivative of u, here cos x.",
+               "latex": "r'(x) = 3^{\\cos x} \\ln 3 \\cdot (-\\sin x) = -3^{\\cos x}\\ln 3\\sin x"
+            },
+            {
+               "text": "Substitute x = pi/2, where cos x = 0 and sin x = 1.",
+               "latex": "r'\\left(\\tfrac{\\pi}{2}\\right) = -\\ln 3"
+            },
+            {
+               "text": "3^(cos x) and ln 3 are never zero, so r'(x) = 0 exactly when sin x = 0, and the only such x strictly between 0 and 2 pi is pi.",
+               "latex": "x = \\pi"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99023",
+               "skills": [
+                  "BC-SKL-03002"
+               ],
+               "criterion": "Writes r'(x) = -(ln 3) sin x 3^(cos x) or an equivalent expression; both the factor ln 3 and the inner derivative -sin x must be present.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "-log(3)*sin(x)*3**cos(x)",
+                  "up_to_constant": false,
+                  "each_side": false,
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-03002"
+               ],
+               "criterion": "Gives r'(pi/2) = -ln 3 or an equivalent exact form such as ln(1/3).",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-03002"
+               ],
+               "criterion": "Gives x = pi as the only value, with the reason that sin x = 0 there and the other factors of r'(x) are never zero. Listing 0 or 2 pi, which are outside the open interval, does not earn the point.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "pi",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Find \\( s'(x) \\) and simplify it. Then let \\( w(x) = s(2x) \\) for \\( -\\tfrac{\\pi}{4} < x < \\tfrac{\\pi}{4} \\), and find \\( w'(x) \\) and the value of \\( w'\\left(\\tfrac{\\pi}{6}\\right) \\).",
+         "setup_required": false,
+         "answer_latex": "w'\\left(\\tfrac{\\pi}{6}\\right) = 4",
+         "worked_solution": [
+            {
+               "text": "Derivative of the logarithm at sec x + tan x, times the derivative of sec x + tan x.",
+               "latex": "s'(x) = \\frac{\\sec x \\tan x + \\sec^{2} x}{\\sec x + \\tan x} = \\frac{\\sec x\\left(\\tan x + \\sec x\\right)}{\\sec x + \\tan x} = \\sec x"
+            },
+            {
+               "text": "Chain rule with s as the outer function and 2x as the inner function.",
+               "latex": "w'(x) = s'(2x) \\cdot 2 = 2\\sec(2x)"
+            },
+            {
+               "text": "Substitute x = pi/6.",
+               "latex": "w'\\left(\\tfrac{\\pi}{6}\\right) = 2\\sec\\left(\\tfrac{\\pi}{3}\\right) = 2 \\cdot 2 = 4"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99023",
+               "skills": [
+                  "BC-SKL-03002"
+               ],
+               "criterion": "Writes s'(x) as (sec x tan x + sec^2 x)/(sec x + tan x), or its simplification sec x, or any equivalent expression.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "sec(x)",
+                  "up_to_constant": false,
+                  "each_side": false,
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99023",
+               "skills": [
+                  "BC-SKL-03002"
+               ],
+               "criterion": "Writes w'(x) = 2 sec(2x), or 2 s'(2x) with s'(2x) written out, or any equivalent expression; the factor 2 from the inner function must be present.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "2*sec(2*x)",
+                  "up_to_constant": false,
+                  "each_side": false,
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "c3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-03002"
+               ],
+               "criterion": "Gives w'(pi/6) = 4.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "4",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 111 of 111, stems read for ambiguity by the blind solver)"
+}

@@ -1,0 +1,242 @@
+{
+   "id": "FRQ-AGT-10017-01",
+   "archetype_id": "BC-QA-10017",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "Let \\( f(x) = \\cos(3x) \\), \\( g(x) = e^{-x^{3}} \\) and \\( h(x) = \\dfrac{6}{3 + x^{2}} \\). Let \\( q \\) be the function defined by \\( q(x) = \\dfrac{1 - \\cos(3x)}{x^{2}} \\) for \\( x \\neq 0 \\) and \\( q(0) = \\dfrac{9}{2} \\)."
+   },
+   "skills": [
+      "BC-SKL-10061",
+      "BC-SKL-10062",
+      "BC-SKL-10063",
+      "BC-SKL-10064",
+      "BC-SKL-10065"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Write the first four nonzero terms of the Maclaurin series for \\( f \\). Then use your answer to write the first three nonzero terms of the Maclaurin series for \\( q \\).",
+         "setup_required": false,
+         "answer_latex": "f: \\; 1 - \\frac{9}{2}x^{2} + \\frac{27}{8}x^{4} - \\frac{81}{80}x^{6}, \\qquad q: \\; \\frac{9}{2} - \\frac{27}{8}x^{2} + \\frac{81}{80}x^{4}",
+         "worked_solution": [
+            {
+               "text": "Substitute 3x into the series for cos u.",
+               "latex": "\\cos(3x) = 1 - \\frac{(3x)^{2}}{2!} + \\frac{(3x)^{4}}{4!} - \\frac{(3x)^{6}}{6!} + \\cdots"
+            },
+            {
+               "text": "Simplify the first four terms.",
+               "latex": "f(x) \\approx 1 - \\frac{9}{2}x^{2} + \\frac{27}{8}x^{4} - \\frac{81}{80}x^{6}"
+            },
+            {
+               "text": "Subtract from 1 and divide by x^2.",
+               "latex": "\\frac{1 - \\cos(3x)}{x^{2}} = \\frac{\\frac{9}{2}x^{2} - \\frac{27}{8}x^{4} + \\frac{81}{80}x^{6} - \\cdots}{x^{2}}"
+            },
+            {
+               "text": "The first three nonzero terms for q.",
+               "latex": "q(x) \\approx \\frac{9}{2} - \\frac{27}{8}x^{2} + \\frac{81}{80}x^{4}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99035",
+               "skills": [
+                  "BC-SKL-10062",
+                  "BC-SKL-10064"
+               ],
+               "criterion": "Gives the first two terms 1 - (9/2)x^2 of the series for f, as a list or as the start of a polynomial or series.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99036",
+               "skills": [
+                  "BC-SKL-10062",
+                  "BC-SKL-10064"
+               ],
+               "criterion": "Gives all four terms 1 - (9/2)x^2 + (27/8)x^4 - (81/80)x^6, as a sum or a list; unsimplified forms such as (3x)^4/4! are accepted, and x^2 in place of (3x)^2 does not earn the point.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "1 - 9*x**2/2 + 27*x**4/8 - 81*x**6/80",
+                  "up_to_constant": false,
+                  "each_side": true,
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "a3",
+               "point_type_id": "BC-PT-99037",
+               "skills": [
+                  "BC-SKL-10062",
+                  "BC-SKL-10065"
+               ],
+               "criterion": "Gives the three terms 9/2 - (27/8)x^2 + (81/80)x^4 for q, obtained from the series for f by subtracting from 1 and dividing by x^2, as a sum or a list.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "9/2 - 27*x**2/8 + 81*x**4/80",
+                  "up_to_constant": false,
+                  "each_side": true,
+                  "variable": "x"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Write the first four nonzero terms of the Maclaurin series for \\( g \\).",
+         "setup_required": false,
+         "answer_latex": "1 - x^{3} + \\frac{x^{6}}{2} - \\frac{x^{9}}{6}",
+         "worked_solution": [
+            {
+               "text": "Substitute -x^3 into the series for e^u.",
+               "latex": "e^{-x^{3}} = 1 + (-x^{3}) + \\frac{(-x^{3})^{2}}{2!} + \\frac{(-x^{3})^{3}}{3!} + \\cdots"
+            },
+            {
+               "text": "Simplify the first four terms.",
+               "latex": "g(x) \\approx 1 - x^{3} + \\frac{x^{6}}{2} - \\frac{x^{9}}{6}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99035",
+               "skills": [
+                  "BC-SKL-10061",
+                  "BC-SKL-10064"
+               ],
+               "criterion": "Gives the first two terms 1 - x^3 of the series for g.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99036",
+               "skills": [
+                  "BC-SKL-10061",
+                  "BC-SKL-10064"
+               ],
+               "criterion": "Gives all four terms 1 - x^3 + x^6/2 - x^9/6, as a sum or a list; unsimplified forms such as (-x^3)^2/2! are accepted.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "1 - x**3 + x**6/2 - x**9/6",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Write the first four nonzero terms of the Maclaurin series for \\( h \\). Then write the first three nonzero terms of the Maclaurin series for \\( x\\,h(x) \\).",
+         "setup_required": false,
+         "answer_latex": "h: \\; 2 - \\frac{2}{3}x^{2} + \\frac{2}{9}x^{4} - \\frac{2}{27}x^{6}, \\qquad x\\,h(x): \\; 2x - \\frac{2}{3}x^{3} + \\frac{2}{9}x^{5}",
+         "worked_solution": [
+            {
+               "text": "Write h as a multiple of 1/(1 - u) with u = -x^2/3.",
+               "latex": "h(x) = \\frac{6}{3\\left(1 + \\frac{x^{2}}{3}\\right)} = 2 \\cdot \\frac{1}{1 - \\left(-\\frac{x^{2}}{3}\\right)}"
+            },
+            {
+               "text": "Substitute into the geometric series and simplify.",
+               "latex": "h(x) \\approx 2 - \\frac{2}{3}x^{2} + \\frac{2}{9}x^{4} - \\frac{2}{27}x^{6}"
+            },
+            {
+               "text": "Multiply by x.",
+               "latex": "x\\,h(x) \\approx 2x - \\frac{2}{3}x^{3} + \\frac{2}{9}x^{5}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99035",
+               "skills": [
+                  "BC-SKL-10063",
+                  "BC-SKL-10064"
+               ],
+               "criterion": "Gives the first two terms 2 - (2/3)x^2 of the series for h.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99036",
+               "skills": [
+                  "BC-SKL-10063",
+                  "BC-SKL-10064"
+               ],
+               "criterion": "Gives all four terms 2 - (2/3)x^2 + (2/9)x^4 - (2/27)x^6 for h, as a sum or a list.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "2 - 2*x**2/3 + 2*x**4/9 - 2*x**6/27",
+                  "up_to_constant": false,
+                  "each_side": true,
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "c3",
+               "point_type_id": "BC-PT-99037",
+               "skills": [
+                  "BC-SKL-10065"
+               ],
+               "criterion": "Gives the three terms 2x - (2/3)x^3 + (2/9)x^5 for x h(x), as a sum or a list.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "2*x - 2*x**3/3 + 2*x**5/9",
+                  "up_to_constant": false,
+                  "each_side": true,
+                  "variable": "x"
+               }
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "Write the first three nonzero terms of the Maclaurin series for the product \\( f(x)\\,g(x) \\).",
+         "setup_required": false,
+         "answer_latex": "1 - \\frac{9}{2}x^{2} - x^{3}",
+         "worked_solution": [
+            {
+               "text": "Multiply the two series and collect terms up to degree three.",
+               "latex": "\\left(1 - \\frac{9}{2}x^{2} + \\cdots\\right)\\left(1 - x^{3} + \\cdots\\right) = 1 - \\frac{9}{2}x^{2} - x^{3} + \\frac{27}{8}x^{4} + \\cdots"
+            },
+            {
+               "text": "The first three nonzero terms.",
+               "latex": "f(x)g(x) \\approx 1 - \\frac{9}{2}x^{2} - x^{3}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99037",
+               "skills": [
+                  "BC-SKL-10065"
+               ],
+               "criterion": "Gives the three terms 1 - (9/2)x^2 - x^3 for f(x)g(x), from multiplying the two series, as a sum or a list; a response that omits the -x^3 term or includes the x^4 term as part of the answer does not earn the point.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "1 - 9*x**2/2 - x**3",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 66 of 66 after two formulation misreadings were triaged, stems read for ambiguity by the blind solver)"
+}

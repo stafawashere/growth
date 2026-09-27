@@ -1,0 +1,228 @@
+{
+   "id": "FRQ-AGT-06008-02",
+   "archetype_id": "BC-QA-06008",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "Answer each part without a calculator. Show the work that leads to each answer."
+   },
+   "skills": [
+      "BC-SKL-06047",
+      "BC-SKL-06048",
+      "BC-SKL-06049",
+      "BC-SKL-06050",
+      "BC-SKL-06051",
+      "BC-SKL-06052",
+      "BC-SKL-06034"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find \\( \\displaystyle\\int \\frac{\\sin x}{\\cos^{3} x}\\,dx \\).",
+         "setup_required": false,
+         "answer_latex": "\\frac{1}{2\\cos^{2} x} + C",
+         "worked_solution": [
+            {
+               "text": "Let u = cos x, so du = -sin x dx.",
+               "latex": "\\int \\frac{\\sin x}{\\cos^{3} x}\\,dx = -\\int u^{-3}\\,du"
+            },
+            {
+               "text": "Antidifferentiate and back-substitute.",
+               "latex": "-\\frac{u^{-2}}{-2} + C = \\frac{1}{2\\cos^{2} x} + C"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99002",
+               "skills": [
+                  "BC-SKL-06047",
+                  "BC-SKL-06048"
+               ],
+               "criterion": "Rewrites the integral entirely in a new variable with the constant adjusted, such as -(integral of u^(-3) du) with u = cos x. An integral in u that still contains x or drops the minus sign does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99003",
+               "skills": [
+                  "BC-SKL-06049"
+               ],
+               "criterion": "Gives an antiderivative in x equivalent to 1/(2cos^2 x), such as (1/2)sec^2 x or (1/2)tan^2 x, which differ by a constant; the constant of integration may be omitted.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "1/(2*cos(x)**2)",
+                  "up_to_constant": true,
+                  "variable": "x"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Evaluate \\( \\displaystyle\\int_{0}^{\\sqrt{5}} x\\sqrt{x^{2} + 4}\\,dx \\).",
+         "setup_required": false,
+         "answer_latex": "\\frac{19}{3}",
+         "worked_solution": [
+            {
+               "text": "Let u = x^2 + 4, so du = 2x dx; the limits x = 0 and x = sqrt(5) become u = 4 and u = 9.",
+               "latex": "\\int_{0}^{\\sqrt{5}} x\\sqrt{x^{2} + 4}\\,dx = \\frac{1}{2}\\int_{4}^{9} \\sqrt{u}\\,du"
+            },
+            {
+               "text": "Antidifferentiate.",
+               "latex": "\\frac{1}{2}\\int \\sqrt{u}\\,du = \\frac{1}{3}u^{3/2} + C"
+            },
+            {
+               "text": "Evaluate at the new limits.",
+               "latex": "\\frac{1}{3}\\left(9^{3/2} - 4^{3/2}\\right) = \\frac{1}{3}(27 - 8) = \\frac{19}{3}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99002",
+               "skills": [
+                  "BC-SKL-06047",
+                  "BC-SKL-06048",
+                  "BC-SKL-06050"
+               ],
+               "criterion": "Rewrites the integral in u with the factor 1/2, as (1/2) times the integral of sqrt(u) du with limits 4 and 9, or as an indefinite integral in u that is back-substituted before the limits 0 and sqrt(5) are used. An integral in u that keeps the limits 0 and sqrt(5) does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99003",
+               "skills": [
+                  "BC-SKL-06049",
+                  "BC-SKL-06051"
+               ],
+               "criterion": "Gives the antiderivative (1/3)u^(3/2) or (1/3)(x^2 + 4)^(3/2), with or without a constant.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-06034",
+                  "BC-SKL-06050"
+               ],
+               "criterion": "Gives the value 19/3. Any exact equivalent is accepted.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "19/3",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Evaluate \\( \\displaystyle\\int_{0}^{1} \\frac{e^{x}}{\\left(1 + e^{x}\\right)^{2}}\\,dx \\).",
+         "setup_required": false,
+         "answer_latex": "\\frac{1}{2} - \\frac{1}{1 + e}",
+         "worked_solution": [
+            {
+               "text": "Let u = 1 + e^x, so du = e^x dx; the limits become u = 2 and u = 1 + e.",
+               "latex": "\\int_{0}^{1} \\frac{e^{x}}{\\left(1 + e^{x}\\right)^{2}}\\,dx = \\int_{2}^{1 + e} u^{-2}\\,du"
+            },
+            {
+               "text": "Antidifferentiate.",
+               "latex": "\\int u^{-2}\\,du = -\\frac{1}{u} + C"
+            },
+            {
+               "text": "Evaluate at the new limits.",
+               "latex": "-\\frac{1}{1 + e} + \\frac{1}{2} = \\frac{1}{2} - \\frac{1}{1 + e}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99002",
+               "skills": [
+                  "BC-SKL-06047",
+                  "BC-SKL-06048",
+                  "BC-SKL-06050"
+               ],
+               "criterion": "Rewrites the integral as the integral of u^(-2) du with u = 1 + e^x. Converted limits 2 to 1 + e, or a back-substitution before the original limits are used, are both accepted.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99003",
+               "skills": [
+                  "BC-SKL-06049",
+                  "BC-SKL-06051"
+               ],
+               "criterion": "Gives the antiderivative -1/u or -1/(1 + e^x), with or without a constant.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-06034",
+                  "BC-SKL-06050"
+               ],
+               "criterion": "Gives the value 1/2 - 1/(1 + e). Any exact equivalent, such as (e - 1)/(2(e + 1)), is accepted.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "1/2 - 1/(1 + E)",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "Find \\( \\displaystyle\\int \\frac{\\cos\\left(\\sqrt{x}\\right)}{\\sqrt{x}}\\,dx \\).",
+         "setup_required": false,
+         "answer_latex": "2\\sin\\left(\\sqrt{x}\\right) + C",
+         "worked_solution": [
+            {
+               "text": "Let u = sqrt(x), so du = dx/(2sqrt(x)).",
+               "latex": "\\int \\frac{\\cos\\left(\\sqrt{x}\\right)}{\\sqrt{x}}\\,dx = 2\\int \\cos u\\,du"
+            },
+            {
+               "text": "Antidifferentiate and back-substitute.",
+               "latex": "2\\sin u + C = 2\\sin\\left(\\sqrt{x}\\right) + C"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99003",
+               "skills": [
+                  "BC-SKL-06047",
+                  "BC-SKL-06048",
+                  "BC-SKL-06049"
+               ],
+               "criterion": "Gives the antiderivative 2sin(sqrt(x)) in terms of x; the constant of integration may be omitted. Missing the factor 2 does not earn the point.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "2*sin(sqrt(x))",
+                  "up_to_constant": true,
+                  "variable": "x"
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 66 of 66 after two formulation misreadings were triaged, stems read for ambiguity by the blind solver)"
+}

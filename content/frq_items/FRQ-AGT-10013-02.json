@@ -1,0 +1,223 @@
+{
+   "id": "FRQ-AGT-10013-02",
+   "archetype_id": "BC-QA-10013",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "stem": {
+      "text": "The function \\( f \\) is defined by the power series \\[ f(x) = \\sum_{n=1}^{\\infty} \\frac{(x + 2)^{n}}{3^{n}\\sqrt{n}} \\] for all real \\( x \\) for which the series converges."
+   },
+   "skills": [
+      "BC-SKL-10031",
+      "BC-SKL-10032",
+      "BC-SKL-10053",
+      "BC-SKL-10054",
+      "BC-SKL-10055",
+      "BC-SKL-10057",
+      "BC-SKL-10059"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Use the ratio test to find the values of \\( x \\) for which the series for \\( f(x) \\) converges absolutely. Give your answer as an open interval.",
+         "setup_required": false,
+         "answer_latex": "-5 < x < 1",
+         "worked_solution": [
+            {
+               "text": "Form the ratio of consecutive terms in absolute value.",
+               "latex": "\\left| \\frac{(x + 2)^{n+1}}{3^{n+1}\\sqrt{n+1}} \\cdot \\frac{3^{n}\\sqrt{n}}{(x + 2)^{n}} \\right| = \\frac{|x + 2|}{3}\\sqrt{\\frac{n}{n+1}}"
+            },
+            {
+               "text": "Take the limit as n grows.",
+               "latex": "\\lim_{n \\to \\infty} \\frac{|x + 2|}{3}\\sqrt{\\frac{n}{n+1}} = \\frac{|x + 2|}{3}"
+            },
+            {
+               "text": "Set the limit less than 1 and solve.",
+               "latex": "\\frac{|x + 2|}{3} < 1 \\iff -3 < x + 2 < 3 \\iff -5 < x < 1"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99042",
+               "skills": [
+                  "BC-SKL-10031",
+                  "BC-SKL-10053"
+               ],
+               "criterion": "Writes the ratio of the (n+1)st term to the nth term, (x + 2)^(n+1)/(3^(n+1) sqrt(n+1)) divided by (x + 2)^n/(3^n sqrt(n)), or a simplified form such as (|x + 2|/3) sqrt(n/(n+1)), with or without absolute values.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99043",
+               "skills": [
+                  "BC-SKL-10032",
+                  "BC-SKL-10054"
+               ],
+               "criterion": "Evaluates the limit of the ratio as |x + 2|/3 with correct limit notation; any error in simplifying or evaluating the limit loses this point.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "a3",
+               "point_type_id": "BC-PT-99044",
+               "skills": [
+                  "BC-SKL-10055"
+               ],
+               "criterion": "Resolves |x + 2|/3 < 1 to the two-sided inequality -5 < x < 1 or the interval (-5, 1); |x + 2| < 3 left unresolved does not earn the point.",
+               "eligible_only_if": [
+                  "a2"
+               ],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Determine whether the series for \\( f(x) \\) converges at each endpoint of the interval from part (a), and state the interval of convergence of the series. Justify your answers.",
+         "setup_required": false,
+         "answer_latex": "-5 \\le x < 1",
+         "worked_solution": [
+            {
+               "text": "At x = 1 the series is a p-series with p = 1/2.",
+               "latex": "\\sum_{n=1}^{\\infty} \\frac{3^{n}}{3^{n}\\sqrt{n}} = \\sum_{n=1}^{\\infty} \\frac{1}{\\sqrt{n}}"
+            },
+            {
+               "text": "Since p = 1/2 is at most 1, this series diverges.",
+               "latex": "p = \\frac{1}{2} \\le 1"
+            },
+            {
+               "text": "At x = -5 the series alternates.",
+               "latex": "\\sum_{n=1}^{\\infty} \\frac{(-3)^{n}}{3^{n}\\sqrt{n}} = \\sum_{n=1}^{\\infty} \\frac{(-1)^{n}}{\\sqrt{n}}"
+            },
+            {
+               "text": "Its terms 1/sqrt(n) decrease to 0, so it converges by the alternating series test.",
+               "latex": "\\frac{1}{\\sqrt{n+1}} < \\frac{1}{\\sqrt{n}}, \\quad \\lim_{n \\to \\infty} \\frac{1}{\\sqrt{n}} = 0"
+            },
+            {
+               "text": "State the interval.",
+               "latex": "-5 \\le x < 1"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99045",
+               "skills": [
+                  "BC-SKL-10057"
+               ],
+               "criterion": "Substitutes both x = 1 and x = -5 and writes the two resulting numerical series, the sum of 1/sqrt(n) and the sum of (-1)^n/sqrt(n).",
+               "eligible_only_if": [],
+               "check": null,
+               "follows_from": [
+                  "a3"
+               ]
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99046",
+               "skills": [
+                  "BC-SKL-10057",
+                  "BC-SKL-10059"
+               ],
+               "criterion": "Concludes that the series at x = 1 diverges as a p-series with p = 1/2 (or by comparison with the harmonic series) and that the series at x = -5 converges by the alternating series test, and states the interval of convergence -5 <= x < 1 or [-5, 1).",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": null,
+               "follows_from": [
+                  "a3"
+               ]
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Let \\( h \\) be the function defined by \\[ h(x) = \\sum_{n=1}^{\\infty} \\frac{(x + 2)^{n+1}}{(n + 1)\\,3^{n}\\sqrt{n}} \\] for all real \\( x \\) for which the series converges. Find the interval of convergence of the series for \\( h(x) \\). Justify your answer.",
+         "setup_required": false,
+         "answer_latex": "-5 \\le x \\le 1",
+         "worked_solution": [
+            {
+               "text": "Ratio of consecutive terms in absolute value.",
+               "latex": "\\left| \\frac{(x + 2)^{n+2}}{(n + 2)3^{n+1}\\sqrt{n+1}} \\cdot \\frac{(n + 1)3^{n}\\sqrt{n}}{(x + 2)^{n+1}} \\right| = \\frac{|x + 2|}{3} \\cdot \\frac{n + 1}{n + 2}\\sqrt{\\frac{n}{n+1}}"
+            },
+            {
+               "text": "Its limit, which is less than 1 exactly when -5 < x < 1.",
+               "latex": "\\lim_{n \\to \\infty} \\frac{|x + 2|}{3} \\cdot \\frac{n + 1}{n + 2}\\sqrt{\\frac{n}{n+1}} = \\frac{|x + 2|}{3}"
+            },
+            {
+               "text": "At x = 1 the terms are positive and bounded by a convergent p-series with p = 3/2.",
+               "latex": "\\sum_{n=1}^{\\infty} \\frac{3}{(n + 1)\\sqrt{n}}, \\quad \\frac{3}{(n + 1)\\sqrt{n}} < \\frac{3}{n^{3/2}}"
+            },
+            {
+               "text": "At x = -5 the absolute values of the terms are the same, so the series converges absolutely.",
+               "latex": "\\sum_{n=1}^{\\infty} \\frac{3(-1)^{n+1}}{(n + 1)\\sqrt{n}}"
+            },
+            {
+               "text": "Both endpoints are included.",
+               "latex": "-5 \\le x \\le 1"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99042",
+               "skills": [
+                  "BC-SKL-10031",
+                  "BC-SKL-10053"
+               ],
+               "criterion": "Writes the ratio of consecutive terms of the series for h, (x + 2)^(n+2)/((n + 2)3^(n+1) sqrt(n+1)) divided by (x + 2)^(n+1)/((n + 1)3^n sqrt(n)), or a simplified form, with or without absolute values.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99043",
+               "skills": [
+                  "BC-SKL-10032",
+                  "BC-SKL-10054"
+               ],
+               "criterion": "Evaluates the limit of that ratio as |x + 2|/3 with correct limit notation and concludes the series converges for -5 < x < 1; an error in the limit loses this point.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "c3",
+               "point_type_id": "BC-PT-99045",
+               "skills": [
+                  "BC-SKL-10057"
+               ],
+               "criterion": "Substitutes both x = 1 and x = -5 into the series for h and writes the two resulting series, the sum of 3/((n + 1)sqrt(n)) and the sum of 3(-1)^(n+1)/((n + 1)sqrt(n)).",
+               "eligible_only_if": [],
+               "check": null,
+               "follows_from": [
+                  "c2"
+               ]
+            },
+            {
+               "point_id": "c4",
+               "point_type_id": "BC-PT-99046",
+               "skills": [
+                  "BC-SKL-10057",
+                  "BC-SKL-10059"
+               ],
+               "criterion": "Concludes both endpoint series converge, at x = 1 by comparison or limit comparison with the convergent p-series of 1/n^(3/2), and at x = -5 by absolute convergence through the same comparison or by the alternating series test, and states the interval of convergence -5 <= x <= 1 or [-5, 1].",
+               "eligible_only_if": [
+                  "c3"
+               ],
+               "check": null,
+               "follows_from": [
+                  "c2"
+               ]
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 66 of 66 after two formulation misreadings were triaged, stems read for ambiguity by the blind solver)"
+}

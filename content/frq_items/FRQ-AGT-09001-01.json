@@ -1,0 +1,243 @@
+{
+   "id": "FRQ-AGT-09001-01",
+   "archetype_id": "BC-QA-09001",
+   "calculator_status": "calculator",
+   "representation": "BC-REP-12",
+   "stem": {
+      "text": "A drone moves in the xy-plane so that its position at time \\( t \\) seconds is \\( \\left(x(t), y(t)\\right) \\) for \\( 0 \\le t \\le 4 \\). The x-coordinate satisfies \\( x'(t) = 2 + \\sin\\left(t^{2}\\right) \\) with \\( x(0) = 1 \\), and the y-coordinate is \\( y(t) = 3\\sin\\left(\\frac{t}{2}\\right) + \\ln\\left(1 + t^{2}\\right) \\). Both coordinates are measured in meters."
+   },
+   "skills": [
+      "BC-SKL-09001",
+      "BC-SKL-09002",
+      "BC-SKL-09004",
+      "BC-SKL-09005",
+      "BC-SKL-09003",
+      "BC-SKL-09006"
+   ],
+   "functions": {
+      "x": {
+         "variable": "t",
+         "expression": "1 + Integral(2 + sin(s**2), (s, 0, t))"
+      },
+      "y": {
+         "variable": "t",
+         "expression": "3*sin(t/2) + log(1 + t**2)"
+      }
+   },
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find the x-coordinate of the drone at time \\( t = 2 \\).",
+         "setup_required": true,
+         "answer_latex": "x(2) = 1 + \\int_{0}^{2} \\left(2 + \\sin\\left(t^{2}\\right)\\right)dt \\approx 5.805",
+         "worked_solution": [
+            {
+               "text": "The x-coordinate at t = 2 is the starting value plus the accumulated change in x.",
+               "latex": "x(2) = 1 + \\int_{0}^{2} \\left(2 + \\sin\\left(t^{2}\\right)\\right)dt"
+            },
+            {
+               "text": "Evaluate the integral on the calculator.",
+               "latex": "x(2) \\approx 1 + 4.805 = 5.805"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-09001"
+               ],
+               "criterion": "Writes the definite integral of x'(t) = 2 + sin(t^2) from t = 0 to t = 2, added to x(0) = 1 or ready to be added to it.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "0",
+                  "upper": "2",
+                  "integrand": "2 + sin(t**2)",
+                  "variable": "t"
+               }
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-09001"
+               ],
+               "criterion": "Gives x(2) = 5.805 meters (accurate to three decimal places by rounding or truncation).",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "1 + Integral(2 + sin(t**2), (t, 0, 2))"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "There is exactly one time \\( T \\), with \\( 0 < T < 4 \\), at which the x-coordinate of the drone is 8. Write an equation involving an integral that \\( T \\) satisfies, find \\( T \\), and find the slope of the line tangent to the path of the drone at time \\( T \\).",
+         "setup_required": true,
+         "answer_latex": "\\frac{dy}{dx} = \\frac{y'(T)}{x'(T)} \\approx 0.344",
+         "worked_solution": [
+            {
+               "text": "The x-coordinate at time T is 1 plus the integral of x'(t) from 0 to T.",
+               "latex": "1 + \\int_{0}^{T} \\left(2 + \\sin\\left(t^{2}\\right)\\right)dt = 8"
+            },
+            {
+               "text": "Solve on the calculator.",
+               "latex": "T \\approx 3.108"
+            },
+            {
+               "text": "Differentiate y(t) by the chain rule.",
+               "latex": "y'(t) = \\frac{3}{2}\\cos\\left(\\frac{t}{2}\\right) + \\frac{2t}{1 + t^{2}}"
+            },
+            {
+               "text": "The slope of the tangent line is dy/dt divided by dx/dt, evaluated at the stored value of T.",
+               "latex": "\\frac{dy}{dx} = \\frac{y'(T)}{x'(T)} \\approx \\frac{0.608}{1.767}"
+            },
+            {
+               "text": "Evaluate with the stored values.",
+               "latex": "\\frac{dy}{dx} \\approx 0.344"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-09001"
+               ],
+               "criterion": "Writes an equation equivalent to 1 + (integral of 2 + sin(t^2) from 0 to T) = 8, such as the integral from 0 to T equal to 7.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "equation_setup",
+                  "unknown": "T",
+                  "left": "1 + Integral(2 + sin(t**2), (t, 0, T))",
+                  "right": "8",
+                  "interval": [
+                     "2",
+                     "4"
+                  ]
+               }
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-09001"
+               ],
+               "criterion": "Gives T = 3.108 (accurate to three decimal places).",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "b3",
+               "point_type_id": "BC-PT-99049",
+               "skills": [
+                  "BC-SKL-09001",
+                  "BC-SKL-09002"
+               ],
+               "criterion": "Shows the slope as y'(T) divided by x'(T), symbolically or with the two numerical values, where y'(t) = (3/2)cos(t/2) + 2t/(1 + t^2) and x'(t) = 2 + sin(t^2). A general expression for dy/dx set equal to a single number does not earn this point.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "b4",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-09002",
+                  "BC-SKL-09004"
+               ],
+               "criterion": "Gives the slope 0.344, supported by the quotient of the point above.",
+               "eligible_only_if": [
+                  "b1",
+                  "b3"
+               ],
+               "follows_from": [
+                  "b2"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "(3*cos((3.108099961106907679857422175253)/2)/2 + 2*(3.108099961106907679857422175253)/(1 + (3.108099961106907679857422175253)**2))/(2 + sin((3.108099961106907679857422175253)**2))"
+               }
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Write an equation for the line tangent to the path of the drone at time \\( t = 1.5 \\).",
+         "setup_required": true,
+         "answer_latex": "y - 3.224 = 0.727\\left(x - 4.778\\right)",
+         "worked_solution": [
+            {
+               "text": "The x-coordinate at t = 1.5 comes from the integral of x'(t).",
+               "latex": "x(1.5) = 1 + \\int_{0}^{1.5} \\left(2 + \\sin\\left(t^{2}\\right)\\right)dt \\approx 4.778"
+            },
+            {
+               "text": "The y-coordinate is read from the formula for y(t).",
+               "latex": "y(1.5) = 3\\sin(0.75) + \\ln(3.25) \\approx 3.224"
+            },
+            {
+               "text": "The slope is the quotient of the two rates at t = 1.5.",
+               "latex": "\\frac{dy}{dx} = \\frac{y'(1.5)}{x'(1.5)} \\approx \\frac{2.021}{2.778} \\approx 0.727"
+            },
+            {
+               "text": "Point-slope form of the tangent line.",
+               "latex": "y - 3.224 = 0.727\\left(x - 4.778\\right)"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-09001"
+               ],
+               "criterion": "Writes the definite integral of 2 + sin(t^2) from t = 0 to t = 1.5 as the change in x, used with x(0) = 1 to locate the point of tangency.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "0",
+                  "upper": "1.5",
+                  "integrand": "2 + sin(t**2)",
+                  "variable": "t"
+               }
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99049",
+               "skills": [
+                  "BC-SKL-09002",
+                  "BC-SKL-09004"
+               ],
+               "criterion": "Shows the slope at t = 1.5 as y'(1.5) divided by x'(1.5), symbolically or numerically, with the value 0.727.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "c3",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-09005"
+               ],
+               "criterion": "Writes a tangent line through (4.778, 3.224) with slope 0.727, in point-slope or any equivalent form, with each decimal accurate to three places.",
+               "eligible_only_if": [
+                  "c1",
+                  "c2"
+               ],
+               "check": null
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 115 of 115, stems read for ambiguity by the blind solver)"
+}

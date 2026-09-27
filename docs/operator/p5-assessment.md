@@ -72,3 +72,19 @@ the operator's delegation; this is a model review, not the operator's.
 
 See docs/operator/p5-timed-runs.md (20 timed runs, 0 skills_state rows changed) and
 docs/operator/p5-full-mock.md (the full mock driven through the running app in the browser).
+
+## Free-response bank, stage 13, 2026-09-27 [verified]
+
+Stage 13 added 79 original nine-point questions, 24 calculator and 55 no-calculator, so the bank
+holds 30 and 65 against a target of 30 and 60: 10 full mocks and 5 drills of each Section II part
+to 10 May 2027 at the frequent end of 05's cadence, with the arithmetic in BUILD-LEDGER.md,
+Decisions, 2026-09-27. Twelve authoring agents wrote them from the archetypes' records and point
+types; calculator questions went only to the 15 archetypes that list a setup point type, since
+`tools/check_frq_items.py` requires a setup point in every calculator part. Per unit the new
+questions are 5, 5, 5, 5, 9, 14, 5, 10, 8 and 13 for Units 1 to 10. Audit rulings nulled or
+narrowed 84 checks (constant values matched on any line, constant-multiple antiderivatives, and
+remaining-terms points centred away from 0). Three separate agents given only the stems wrote
+blind formulations: 111 of 111, 66 of 66 after two formulation misreadings were triaged, and 115
+of 115, each with the control holding; the whole bank reads 439 of 439. The longest run shared
+with cached official text is 18 words against the 25-word cap. Each record is signed off by
+claude-opus-5-5 on the operator's delegation; this is a model review, not the operator's.

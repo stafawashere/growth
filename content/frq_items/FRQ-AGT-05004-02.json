@@ -1,0 +1,187 @@
+{
+   "id": "FRQ-AGT-05004-02",
+   "archetype_id": "BC-QA-05004",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "The function \\( f \\) is twice differentiable for all real \\( x \\), and its derivative is \\( f'(x) = \\dfrac{x}{x^{2} + 3} \\)."
+   },
+   "skills": [
+      "BC-SKL-05030",
+      "BC-SKL-05031",
+      "BC-SKL-05035"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find all open intervals on which the graph of \\( f \\) is concave up. Give a reason for your answer.",
+         "setup_required": false,
+         "answer_latex": "-\\sqrt{3} < x < \\sqrt{3}",
+         "worked_solution": [
+            {
+               "text": "Quotient rule on f'.",
+               "latex": "f''(x) = \\frac{(x^{2} + 3) - 2x^{2}}{(x^{2} + 3)^{2}} = \\frac{3 - x^{2}}{(x^{2} + 3)^{2}}"
+            },
+            {
+               "text": "The denominator is positive, so f'' has the sign of 3 - x^2.",
+               "latex": "f''(x) > 0 \\iff -\\sqrt{3} < x < \\sqrt{3}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99062",
+               "skills": [
+                  "BC-SKL-05030"
+               ],
+               "criterion": "Gives the open interval -sqrt(3) < x < sqrt(3), written with or without its endpoints.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99063",
+               "skills": [
+                  "BC-SKL-05030",
+                  "BC-SKL-05031",
+                  "BC-SKL-05035"
+               ],
+               "criterion": "States that f' is increasing on that interval, or that f''(x) = (3 - x^2)/(x^2 + 3)^2 > 0 there.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find all open intervals on which the graph of \\( f \\) is concave down. Give a reason for your answer.",
+         "setup_required": false,
+         "answer_latex": "x < -\\sqrt{3} \\text{ and } x > \\sqrt{3}",
+         "worked_solution": [
+            {
+               "text": "f'' has the sign of 3 - x^2, which is negative when |x| > sqrt(3).",
+               "latex": "f''(x) < 0 \\iff x < -\\sqrt{3} \\text{ or } x > \\sqrt{3}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99062",
+               "skills": [
+                  "BC-SKL-05030"
+               ],
+               "criterion": "Gives the interval x < -sqrt(3), that is (-infinity, -sqrt(3)), with or without its endpoint.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99062",
+               "skills": [
+                  "BC-SKL-05030"
+               ],
+               "criterion": "Gives the interval x > sqrt(3), that is (sqrt(3), infinity), with or without its endpoint. Joining the two intervals into one does not earn this point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b3",
+               "point_type_id": "BC-PT-99063",
+               "skills": [
+                  "BC-SKL-05030",
+                  "BC-SKL-05031",
+                  "BC-SKL-05035"
+               ],
+               "criterion": "States that f' is decreasing on these intervals, or that f''(x) < 0 there.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Find all open intervals on which \\( f \\) is decreasing and the graph of \\( f \\) is concave down. Give a reason for your answer.",
+         "setup_required": false,
+         "answer_latex": "x < -\\sqrt{3}",
+         "worked_solution": [
+            {
+               "text": "f' < 0 exactly when x < 0, since the denominator is positive.",
+               "latex": "f'(x) < 0 \\iff x < 0"
+            },
+            {
+               "text": "Intersect with the concave down intervals from part (b).",
+               "latex": "x < -\\sqrt{3}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99062",
+               "skills": [
+                  "BC-SKL-05030",
+                  "BC-SKL-05031"
+               ],
+               "criterion": "Gives the interval x < -sqrt(3), that is (-infinity, -sqrt(3)), with or without its endpoint, and no other interval.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99063",
+               "skills": [
+                  "BC-SKL-05030",
+                  "BC-SKL-05031",
+                  "BC-SKL-05035"
+               ],
+               "criterion": "States both that f' < 0 there (so f is decreasing) and that f' is decreasing there, or f'' < 0 (so the graph is concave down). A reason covering only one of the two conditions does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "Find all open intervals on which \\( f \\) is increasing and the graph of \\( f \\) is concave up. Give a reason for your answer.",
+         "setup_required": false,
+         "answer_latex": "0 < x < \\sqrt{3}",
+         "worked_solution": [
+            {
+               "text": "f' > 0 exactly when x > 0.",
+               "latex": "f'(x) > 0 \\iff x > 0"
+            },
+            {
+               "text": "Intersect with the concave up interval from part (a).",
+               "latex": "0 < x < \\sqrt{3}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99062",
+               "skills": [
+                  "BC-SKL-05030",
+                  "BC-SKL-05031"
+               ],
+               "criterion": "Gives the interval 0 < x < sqrt(3), with or without its endpoints, and no other interval.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "d2",
+               "point_type_id": "BC-PT-99063",
+               "skills": [
+                  "BC-SKL-05030",
+                  "BC-SKL-05031",
+                  "BC-SKL-05035"
+               ],
+               "criterion": "States both that f' > 0 there (so f is increasing) and that f' is increasing there, or f'' > 0 (so the graph is concave up). A reason covering only one of the two conditions does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 111 of 111, stems read for ambiguity by the blind solver)"
+}

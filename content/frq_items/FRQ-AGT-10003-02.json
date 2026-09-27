@@ -1,0 +1,232 @@
+{
+   "id": "FRQ-AGT-10003-02",
+   "archetype_id": "BC-QA-10003",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "stem": {
+      "text": "Let \\( h \\) be the function defined by \\( h(x) = \\displaystyle\\sum_{n=1}^{\\infty} \\frac{(x + 2)^{n}}{3^{n+1}} \\) for all real \\( x \\) for which the series converges."
+   },
+   "skills": [
+      "BC-SKL-10006",
+      "BC-SKL-10007",
+      "BC-SKL-10008",
+      "BC-SKL-10009",
+      "BC-SKL-10010",
+      "BC-SKL-10063",
+      "BC-SKL-10072"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find the common ratio of the series for \\( h(x) \\).",
+         "setup_required": false,
+         "answer_latex": "r = \\frac{x + 2}{3}",
+         "worked_solution": [
+            {
+               "text": "Divide the (n+1)st term by the nth term.",
+               "latex": "\\frac{(x + 2)^{n+1}}{3^{n+2}} \\cdot \\frac{3^{n+1}}{(x + 2)^{n}} = \\frac{x + 2}{3}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-10006"
+               ],
+               "criterion": "Gives the common ratio (x + 2)/3, or an equivalent expression such as x/3 + 2/3.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "(x + 2)/3",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Show that the series for \\( h(x) \\) converges if and only if \\( -5 < x < 1 \\).",
+         "setup_required": false,
+         "answer_latex": "-5 < x < 1",
+         "worked_solution": [
+            {
+               "text": "A geometric series converges exactly when its ratio has absolute value less than 1.",
+               "latex": "\\left| \\frac{x + 2}{3} \\right| < 1"
+            },
+            {
+               "text": "Resolve the absolute value inequality.",
+               "latex": "-3 < x + 2 < 3 \\iff -5 < x < 1"
+            },
+            {
+               "text": "When the ratio has absolute value at least 1 the terms do not approach 0, so the series diverges.",
+               "latex": "\\left| \\frac{x + 2}{3} \\right| \\ge 1 \\Rightarrow \\text{diverges}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99068",
+               "skills": [
+                  "BC-SKL-10007"
+               ],
+               "criterion": "States that a geometric series converges exactly when the absolute value of its ratio is less than 1 and writes |(x + 2)/3| < 1, or the equivalent -3 < x + 2 < 3.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99068",
+               "skills": [
+                  "BC-SKL-10007"
+               ],
+               "criterion": "Resolves the condition to -5 < x < 1, closing with that interval, and gives a reason the series diverges when |(x + 2)/3| >= 1 (the terms do not approach 0, or the geometric series criterion applied in both directions).",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Show that \\( h(x) = \\dfrac{x + 2}{3(1 - x)} \\) for \\( -5 < x < 1 \\). Then use this result to find the sum of the series \\( \\displaystyle\\sum_{n=1}^{\\infty} \\frac{(-1)^{n}}{3^{n+1}} \\).",
+         "setup_required": false,
+         "answer_latex": "\\sum_{n=1}^{\\infty} \\frac{(-1)^{n}}{3^{n+1}} = -\\frac{1}{12}",
+         "worked_solution": [
+            {
+               "text": "The series starts at n = 1, so its first term is the n = 1 term.",
+               "latex": "a = \\frac{x + 2}{9}"
+            },
+            {
+               "text": "First term over one minus the ratio.",
+               "latex": "h(x) = \\frac{\\frac{x + 2}{9}}{1 - \\frac{x + 2}{3}}"
+            },
+            {
+               "text": "Multiply numerator and denominator by 9.",
+               "latex": "h(x) = \\frac{x + 2}{9 - 3(x + 2)} = \\frac{x + 2}{3 - 3x} = \\frac{x + 2}{3(1 - x)}"
+            },
+            {
+               "text": "The numerical series is h(-3), since (-3 + 2)^n = (-1)^n and -3 lies in -5 < x < 1.",
+               "latex": "h(-3) = \\frac{-3 + 2}{3(1 + 3)} = -\\frac{1}{12}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-10006",
+                  "BC-SKL-10009"
+               ],
+               "criterion": "Identifies the first term as (x + 2)/9, the n = 1 term, rather than the n = 0 value 1/3.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99067",
+               "skills": [
+                  "BC-SKL-10008",
+                  "BC-SKL-10009",
+                  "BC-SKL-10010",
+                  "BC-SKL-10072"
+               ],
+               "criterion": "Writes the first term over one minus the ratio, ((x + 2)/9)/(1 - (x + 2)/3), or an equivalent quotient, using the ratio from part (a) on the interval from part (b).",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c3",
+               "point_type_id": "BC-PT-99068",
+               "skills": [
+                  "BC-SKL-10010",
+                  "BC-SKL-10072"
+               ],
+               "criterion": "Simplifies the quotient in an algebraic chain that ends with the stated expression (x + 2)/(3(1 - x)); a chain that stops short of it, or that starts from the target, does not earn the point.",
+               "eligible_only_if": [
+                  "c2"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "c4",
+               "point_type_id": "BC-PT-99067",
+               "skills": [
+                  "BC-SKL-10008",
+                  "BC-SKL-10009"
+               ],
+               "criterion": "Gives the sum -1/12, either as h(-3) from the closed form or directly as (-1/9)/(1 + 1/3); the decimal -0.083 alone is not accepted as the exact sum.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "-1/12",
+                  "up_to_constant": false,
+                  "each_side": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "Find the value of \\( x \\) for which \\( h(x) = 2 \\). Is there a value of \\( x \\) for which \\( h(x) = -\\dfrac{1}{2} \\)? Give a reason for your answer.",
+         "setup_required": false,
+         "answer_latex": "x = \\frac{4}{7}",
+         "worked_solution": [
+            {
+               "text": "Set the closed form equal to 2.",
+               "latex": "x + 2 = 6(1 - x) \\Rightarrow 7x = 4 \\Rightarrow x = \\frac{4}{7}"
+            },
+            {
+               "text": "The value 4/7 lies in -5 < x < 1.",
+               "latex": "x = \\frac{4}{7}"
+            },
+            {
+               "text": "Set the closed form equal to -1/2.",
+               "latex": "2(x + 2) = -3(1 - x) \\Rightarrow x = 7"
+            },
+            {
+               "text": "The only solution, 7, is outside -5 < x < 1, where h is defined, so no such x exists.",
+               "latex": "7 \\notin (-5, 1)"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-10010"
+               ],
+               "criterion": "Gives x = 4/7.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "4/7",
+                  "up_to_constant": false,
+                  "each_side": false,
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "d2",
+               "point_type_id": "BC-PT-99068",
+               "skills": [
+                  "BC-SKL-10007",
+                  "BC-SKL-10010"
+               ],
+               "criterion": "Answers no, with a reason: solving (x + 2)/(3(1 - x)) = -1/2 gives only x = 7, which lies outside -5 < x < 1 where the series converges; an equivalent argument that h(x) > -1/6 on the interval also earns the point. Answering yes with x = 7 does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 66 of 66 after two formulation misreadings were triaged, stems read for ambiguity by the blind solver)"
+}

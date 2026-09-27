@@ -1,0 +1,190 @@
+{
+   "id": "FRQ-AGT-10011-01",
+   "archetype_id": "BC-QA-10011",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "stem": {
+      "text": "The function \\( f \\) has derivatives of all orders for all real \\( x \\). Selected values of \\( f \\) and its first four derivatives at \\( x = 2 \\) are given in the table. \\[ \\begin{array}{c|ccccc} x & f(x) & f'(x) & f''(x) & f'''(x) & f^{(4)}(x) \\\\ \\hline 2 & 3 & -4 & 6 & -18 & 48 \\end{array} \\]"
+   },
+   "skills": [
+      "BC-SKL-10044",
+      "BC-SKL-10045"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Write the third-degree Taylor polynomial for \\( f \\) about \\( x = 2 \\).",
+         "setup_required": false,
+         "answer_latex": "3 - 4(x - 2) + 3(x - 2)^{2} - 3(x - 2)^{3}",
+         "worked_solution": [
+            {
+               "text": "Divide each derivative by the matching factorial.",
+               "latex": "3 - 4(x - 2) + \\frac{6}{2!}(x - 2)^{2} + \\frac{-18}{3!}(x - 2)^{3}"
+            },
+            {
+               "text": "Simplify.",
+               "latex": "3 - 4(x - 2) + 3(x - 2)^{2} - 3(x - 2)^{3}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99035",
+               "skills": [
+                  "BC-SKL-10045"
+               ],
+               "criterion": "Writes the first two nonzero terms, 3 and -4(x - 2), in a list or as part of a polynomial.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99036",
+               "skills": [
+                  "BC-SKL-10044",
+                  "BC-SKL-10045"
+               ],
+               "criterion": "Completes the polynomial 3 - 4(x - 2) + 3(x - 2)^2 - 3(x - 2)^3, with 6/2! = 3 and -18/3! = -3, with no term of degree above 3; any algebraically equivalent polynomial is accepted.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Write the third-degree Taylor polynomial for \\( f' \\) about \\( x = 2 \\).",
+         "setup_required": false,
+         "answer_latex": "-4 + 6(x - 2) - 9(x - 2)^{2} + 8(x - 2)^{3}",
+         "worked_solution": [
+            {
+               "text": "The derivatives of f' at 2 are f'(2), f''(2), f'''(2) and f^(4)(2).",
+               "latex": "-4 + 6(x - 2) + \\frac{-18}{2!}(x - 2)^{2} + \\frac{48}{3!}(x - 2)^{3}"
+            },
+            {
+               "text": "Simplify.",
+               "latex": "-4 + 6(x - 2) - 9(x - 2)^{2} + 8(x - 2)^{3}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99035",
+               "skills": [
+                  "BC-SKL-10045"
+               ],
+               "criterion": "Writes the first two nonzero terms, -4 and 6(x - 2), in a list or as part of a polynomial.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99036",
+               "skills": [
+                  "BC-SKL-10044",
+                  "BC-SKL-10045"
+               ],
+               "criterion": "Completes the polynomial -4 + 6(x - 2) - 9(x - 2)^2 + 8(x - 2)^3, with no term of degree above 3; any algebraically equivalent polynomial is accepted.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Let \\( h(x) = \\displaystyle\\int_{2}^{x} f(t)\\,dt \\). Write the fourth-degree Taylor polynomial for \\( h \\) about \\( x = 2 \\).",
+         "setup_required": false,
+         "answer_latex": "3(x - 2) - 2(x - 2)^{2} + (x - 2)^{3} - \\frac{3}{4}(x - 2)^{4}",
+         "worked_solution": [
+            {
+               "text": "h(2) = 0 and h' = f, so the derivatives of h at 2 are 0, 3, -4, 6 and -18.",
+               "latex": "0 + 3(x - 2) + \\frac{-4}{2!}(x - 2)^{2} + \\frac{6}{3!}(x - 2)^{3} + \\frac{-18}{4!}(x - 2)^{4}"
+            },
+            {
+               "text": "Simplify.",
+               "latex": "3(x - 2) - 2(x - 2)^{2} + (x - 2)^{3} - \\frac{3}{4}(x - 2)^{4}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99035",
+               "skills": [
+                  "BC-SKL-10045"
+               ],
+               "criterion": "Writes the first two nonzero terms, 3(x - 2) and -2(x - 2)^2, in a list or as part of a polynomial; a nonzero constant term does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99036",
+               "skills": [
+                  "BC-SKL-10044",
+                  "BC-SKL-10045"
+               ],
+               "criterion": "Writes the third-degree term (x - 2)^3, from f''(2)/3! = 6/6.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c3",
+               "point_type_id": "BC-PT-99036",
+               "skills": [
+                  "BC-SKL-10044",
+                  "BC-SKL-10045"
+               ],
+               "criterion": "Completes the polynomial 3(x - 2) - 2(x - 2)^2 + (x - 2)^3 - (3/4)(x - 2)^4, with no term of degree above 4; any algebraically equivalent polynomial is accepted.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "Let \\( k(x) = f(2 + x^{2}) \\). Write the sixth-degree Taylor polynomial for \\( k \\) about \\( x = 0 \\).",
+         "setup_required": false,
+         "answer_latex": "3 - 4x^{2} + 3x^{4} - 3x^{6}",
+         "worked_solution": [
+            {
+               "text": "Replace x - 2 by x^2 in the third-degree polynomial from part (a); higher terms of f have degree above 6.",
+               "latex": "3 - 4(x^{2}) + 3(x^{2})^{2} - 3(x^{2})^{3}"
+            },
+            {
+               "text": "Simplify.",
+               "latex": "3 - 4x^{2} + 3x^{4} - 3x^{6}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99035",
+               "skills": [
+                  "BC-SKL-10044"
+               ],
+               "criterion": "Writes the first two nonzero terms, 3 and -4x^2, in a list or as part of a polynomial.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "d2",
+               "point_type_id": "BC-PT-99036",
+               "skills": [
+                  "BC-SKL-10044"
+               ],
+               "criterion": "Completes the polynomial 3 - 4x^2 + 3x^4 - 3x^6, with no term of degree above 6 (in particular no 2x^8 term); any algebraically equivalent polynomial is accepted.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "3 - 4*x**2 + 3*x**4 - 3*x**6",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 66 of 66 after two formulation misreadings were triaged, stems read for ambiguity by the blind solver)"
+}

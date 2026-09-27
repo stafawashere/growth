@@ -1,0 +1,241 @@
+{
+   "id": "FRQ-AGT-09012-02",
+   "archetype_id": "BC-QA-09012",
+   "calculator_status": "calculator",
+   "representation": "BC-REP-13",
+   "stem": {
+      "text": "Consider the polar curve \\( r(\\theta) = 3 - e^{\\sin\\theta} \\) for \\( 0 \\le \\theta \\le 2\\pi \\). The curve and the circle \\( r = \\frac{5}{2} \\) intersect at the angles \\( \\theta = \\alpha \\) and \\( \\theta = \\beta \\), where \\( \\pi < \\alpha < \\beta < 2\\pi \\)."
+   },
+   "skills": [
+      "BC-SKL-09035",
+      "BC-SKL-09036",
+      "BC-SKL-09037",
+      "BC-SKL-09038"
+   ],
+   "functions": {
+      "r": {
+         "variable": "theta",
+         "expression": "3 - exp(sin(theta))"
+      }
+   },
+   "roots": {
+      "alpha": {
+         "value": "3.90743884840887345390703810043",
+         "equation": "3 - exp(sin(theta)) - 5/2",
+         "variable": "theta"
+      },
+      "beta": {
+         "value": "5.51733911236050626148089204941",
+         "equation": "3 - exp(sin(theta)) - 5/2",
+         "variable": "theta"
+      }
+   },
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find the area of the region in the first quadrant that is bounded by the curve, the positive x-axis, and the positive y-axis.",
+         "setup_required": true,
+         "answer_latex": "\\frac{1}{2}\\int_{0}^{\\pi/2} \\left(3 - e^{\\sin\\theta}\\right)^{2}\\,d\\theta \\approx 1.067",
+         "worked_solution": [
+            {
+               "text": "The region is swept from the ray theta = 0 to the ray theta = pi/2, and polar area is one half the integral of r squared.",
+               "latex": "\\frac{1}{2}\\int_{0}^{\\pi/2} \\left(3 - e^{\\sin\\theta}\\right)^{2}\\,d\\theta"
+            },
+            {
+               "text": "Evaluate on the calculator.",
+               "latex": "\\frac{1}{2}\\int_{0}^{\\pi/2} \\left(3 - e^{\\sin\\theta}\\right)^{2}\\,d\\theta \\approx 1.067"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99048",
+               "skills": [
+                  "BC-SKL-09035"
+               ],
+               "criterion": "Writes a definite integral whose integrand contains (3 - e^(sin theta))^2, the square of r, with or without the one half and the differential.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-09035",
+                  "BC-SKL-09036"
+               ],
+               "criterion": "Uses the limits 0 and pi/2 on one half the integral of (3 - e^(sin theta))^2.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "0",
+                  "upper": "pi/2",
+                  "integrand": null,
+                  "variable": "theta"
+               }
+            },
+            {
+               "point_id": "a3",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-09038"
+               ],
+               "criterion": "Gives the area 1.067, supported by the integral.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "Integral((3 - exp(sin(theta)))**2/2, (theta, 0, pi/2))"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find the values of \\( \\alpha \\) and \\( \\beta \\), and find the area of the region that is inside the curve \\( r(\\theta) = 3 - e^{\\sin\\theta} \\) and outside the circle \\( r = \\frac{5}{2} \\).",
+         "setup_required": true,
+         "answer_latex": "\\alpha \\approx 3.907, \\ \\beta \\approx 5.517; \\quad \\frac{1}{2}\\int_{\\alpha}^{\\beta} \\left(\\left(3 - e^{\\sin\\theta}\\right)^{2} - \\frac{25}{4}\\right)d\\theta \\approx 0.369",
+         "worked_solution": [
+            {
+               "text": "Set the two curves equal, so e^(sin theta) = 1/2.",
+               "latex": "3 - e^{\\sin\\theta} = \\frac{5}{2} \\implies \\sin\\theta = -\\ln 2"
+            },
+            {
+               "text": "Solve on the calculator for the two angles between pi and 2pi.",
+               "latex": "\\alpha \\approx 3.907, \\quad \\beta \\approx 5.517"
+            },
+            {
+               "text": "Between alpha and beta, sin theta <= -ln 2, so the curve is outside the circle.",
+               "latex": "3 - e^{\\sin\\theta} \\ge \\frac{5}{2} \\text{ for } \\alpha \\le \\theta \\le \\beta"
+            },
+            {
+               "text": "Integrate one half the difference of the squares and evaluate on the calculator.",
+               "latex": "\\frac{1}{2}\\int_{\\alpha}^{\\beta} \\left(\\left(3 - e^{\\sin\\theta}\\right)^{2} - \\frac{25}{4}\\right)d\\theta \\approx 0.369"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99048",
+               "skills": [
+                  "BC-SKL-09035"
+               ],
+               "criterion": "Writes an integral whose integrand contains (3 - e^(sin theta))^2 minus (5/2)^2, or the difference of an integral of (3 - e^(sin theta))^2 and one of 25/4 over the same limits, with or without the one half.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-09036",
+                  "BC-SKL-09037"
+               ],
+               "criterion": "Uses the limits alpha and beta, 3.907 and 5.517 to three places (exact forms pi + arcsin(ln 2) and 2pi - arcsin(ln 2) accepted), found from 3 - e^(sin theta) = 5/2.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "alpha",
+                  "upper": "beta",
+                  "integrand": null,
+                  "variable": "theta"
+               }
+            },
+            {
+               "point_id": "b3",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-09038"
+               ],
+               "criterion": "Gives the area 0.369, supported by the integral.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "Integral(((3 - exp(sin(theta)))**2 - 25/4)/2, (theta, pi + asin(log(2)), 2*pi - asin(log(2))))"
+               }
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "For some angle \\( k \\) with \\( 0 < k < \\frac{\\pi}{2} \\), the ray \\( \\theta = k \\) divides the region described in part (a) into two regions of equal area. Write an equation involving an integral that \\( k \\) satisfies, and find the value of \\( k \\).",
+         "setup_required": true,
+         "answer_latex": "\\frac{1}{2}\\int_{0}^{k} \\left(3 - e^{\\sin\\theta}\\right)^{2}\\,d\\theta = \\frac{1}{4}\\int_{0}^{\\pi/2} \\left(3 - e^{\\sin\\theta}\\right)^{2}\\,d\\theta, \\quad k \\approx 0.320",
+         "worked_solution": [
+            {
+               "text": "The area swept from theta = 0 to theta = k is half the area from part (a).",
+               "latex": "\\frac{1}{2}\\int_{0}^{k} \\left(3 - e^{\\sin\\theta}\\right)^{2}\\,d\\theta = \\frac{1}{4}\\int_{0}^{\\pi/2} \\left(3 - e^{\\sin\\theta}\\right)^{2}\\,d\\theta"
+            },
+            {
+               "text": "Solve on the calculator.",
+               "latex": "k \\approx 0.320"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99048",
+               "skills": [
+                  "BC-SKL-09035"
+               ],
+               "criterion": "Writes an integral from 0 to k (or from k to pi/2) whose integrand contains (3 - e^(sin theta))^2, with or without the one half.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-09035",
+                  "BC-SKL-09036"
+               ],
+               "criterion": "Writes an equation setting one half the integral of (3 - e^(sin theta))^2 from 0 to k (or from k to pi/2) equal to half the area of part (a), with that area as an integral or as its value.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": {
+                  "kind": "equation_setup",
+                  "unknown": "k",
+                  "left": "Integral((3 - exp(sin(theta)))**2/2, (theta, 0, k))",
+                  "right": "Integral((3 - exp(sin(theta)))**2/2, (theta, 0, pi/2))/2",
+                  "interval": [
+                     "0",
+                     "pi/2"
+                  ]
+               },
+               "follows_from": [
+                  "a3"
+               ]
+            },
+            {
+               "point_id": "c3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-09038"
+               ],
+               "criterion": "Gives k = 0.320.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "0.320035282912950080102984316937"
+               },
+               "follows_from": [
+                  "a3"
+               ]
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 115 of 115, stems read for ambiguity by the blind solver)"
+}

@@ -1,0 +1,221 @@
+{
+   "id": "FRQ-AGT-06010-02",
+   "archetype_id": "BC-QA-06010",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "Answer each part without a calculator. Let \\( r(x) = \\dfrac{x + 9}{2x^{2} + x - 3} \\), \\( q(x) = \\dfrac{x^{2} + 3x}{x^{2} - 1} \\) and \\( p(x) = \\dfrac{6}{x^{2} + 5x + 6} \\)."
+   },
+   "skills": [
+      "BC-SKL-06062",
+      "BC-SKL-06063",
+      "BC-SKL-06064",
+      "BC-SKL-06065"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Evaluate \\( \\displaystyle\\int_{2}^{4} r(x)\\,dx \\). Show the work that leads to your answer.",
+         "setup_required": false,
+         "answer_latex": "2\\ln 3 - \\frac{3}{2}\\ln\\frac{11}{7}",
+         "worked_solution": [
+            {
+               "text": "Factor the denominator and write the decomposition.",
+               "latex": "\\frac{x + 9}{(2x + 3)(x - 1)} = \\frac{A}{2x + 3} + \\frac{B}{x - 1}"
+            },
+            {
+               "text": "Clear denominators: x + 9 = A(x - 1) + B(2x + 3). At x = 1, 10 = 5B; at x = -3/2, 15/2 = -5A/2.",
+               "latex": "A = -3, \\quad B = 2"
+            },
+            {
+               "text": "The decomposition.",
+               "latex": "r(x) = -\\frac{3}{2x + 3} + \\frac{2}{x - 1}"
+            },
+            {
+               "text": "Antidifferentiate each term, dividing by the leading coefficient 2 in the first.",
+               "latex": "\\int r(x)\\,dx = -\\frac{3}{2}\\ln|2x + 3| + 2\\ln|x - 1| + C"
+            },
+            {
+               "text": "Evaluate from 2 to 4.",
+               "latex": "\\left(-\\frac{3}{2}\\ln 11 + 2\\ln 3\\right) - \\left(-\\frac{3}{2}\\ln 7 + 2\\ln 1\\right) = 2\\ln 3 - \\frac{3}{2}\\ln\\frac{11}{7}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99081",
+               "skills": [
+                  "BC-SKL-06062",
+                  "BC-SKL-06063"
+               ],
+               "criterion": "Writes r(x) = -3/(2x + 3) + 2/(x - 1), with both numerators found. Factoring the denominator without solving for the numerators does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99003",
+               "skills": [
+                  "BC-SKL-06064"
+               ],
+               "criterion": "Gives the antiderivative -(3/2)ln|2x + 3| + 2ln|x - 1|, with or without a constant; absolute values may be omitted because 2x + 3 and x - 1 are positive on [2, 4]. Missing the factor 1/2 from the 2x in the first term does not earn the point.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "a3",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-06065"
+               ],
+               "criterion": "Gives the value 2ln 3 - (3/2)ln(11/7), supported by the antiderivative evaluated at 4 and 2. Any exact equivalent, such as ln 9 - (3/2)(ln 11 - ln 7), is accepted.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "2*log(3) - 3*log(11/7)/2",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find \\( \\displaystyle\\int q(x)\\,dx \\). Use your result to evaluate \\( \\displaystyle\\int_{2}^{3} q(x)\\,dx \\).",
+         "setup_required": false,
+         "answer_latex": "1 + 4\\ln 2 - \\ln 3",
+         "worked_solution": [
+            {
+               "text": "The degrees are equal, so divide first.",
+               "latex": "\\frac{x^{2} + 3x}{x^{2} - 1} = 1 + \\frac{3x + 1}{(x - 1)(x + 1)}"
+            },
+            {
+               "text": "Clear denominators: 3x + 1 = A(x + 1) + B(x - 1). At x = 1, 4 = 2A; at x = -1, -2 = -2B.",
+               "latex": "q(x) = 1 + \\frac{2}{x - 1} + \\frac{1}{x + 1}"
+            },
+            {
+               "text": "Antidifferentiate.",
+               "latex": "\\int q(x)\\,dx = x + 2\\ln|x - 1| + \\ln|x + 1| + C"
+            },
+            {
+               "text": "Evaluate from 2 to 3.",
+               "latex": "\\left(3 + 2\\ln 2 + \\ln 4\\right) - \\left(2 + 2\\ln 1 + \\ln 3\\right) = 1 + 4\\ln 2 - \\ln 3"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99081",
+               "skills": [
+                  "BC-SKL-06062",
+                  "BC-SKL-06063"
+               ],
+               "criterion": "Divides first and writes q(x) = 1 + 2/(x - 1) + 1/(x + 1), with both numerators found. A decomposition of q without the quotient 1 does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99003",
+               "skills": [
+                  "BC-SKL-06064"
+               ],
+               "criterion": "Gives the antiderivative x + 2ln|x - 1| + ln|x + 1|, with or without a constant, with absolute values inside both logarithms. An equivalent combination such as x + ln|x - 1| + ln|x^2 - 1| is accepted.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "x + 2*log(Abs(x - 1)) + log(Abs(x + 1))",
+                  "up_to_constant": true,
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "b3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-06065"
+               ],
+               "criterion": "Gives the value 1 + 4ln 2 - ln 3. Any exact equivalent, such as 1 + ln(16/3), is accepted.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "1 + 4*log(2) - log(3)",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Evaluate \\( \\displaystyle\\int_{0}^{1} p(x)\\,dx \\). Show the work that leads to your answer.",
+         "setup_required": false,
+         "answer_latex": "6\\ln\\frac{9}{8}",
+         "worked_solution": [
+            {
+               "text": "Factor and decompose: 6 = A(x + 3) + B(x + 2). At x = -2, A = 6; at x = -3, B = -6.",
+               "latex": "p(x) = \\frac{6}{(x + 2)(x + 3)} = \\frac{6}{x + 2} - \\frac{6}{x + 3}"
+            },
+            {
+               "text": "Antidifferentiate.",
+               "latex": "\\int p(x)\\,dx = 6\\ln|x + 2| - 6\\ln|x + 3| + C"
+            },
+            {
+               "text": "Evaluate from 0 to 1.",
+               "latex": "6\\left(\\ln 3 - \\ln 4\\right) - 6\\left(\\ln 2 - \\ln 3\\right) = 6\\ln\\frac{9}{8}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99081",
+               "skills": [
+                  "BC-SKL-06062",
+                  "BC-SKL-06063"
+               ],
+               "criterion": "Writes p(x) = 6/(x + 2) - 6/(x + 3), with both numerators found.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99003",
+               "skills": [
+                  "BC-SKL-06064"
+               ],
+               "criterion": "Gives the antiderivative 6ln|x + 2| - 6ln|x + 3|, with or without a constant; absolute values may be omitted because both factors are positive on [0, 1].",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "c3",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-06065"
+               ],
+               "criterion": "Gives the value 6ln(9/8), supported by the antiderivative evaluated at 1 and 0. Any exact equivalent, such as 12ln 3 - 18ln 2, is accepted.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "6*log(9/8)",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 66 of 66 after two formulation misreadings were triaged, stems read for ambiguity by the blind solver)"
+}

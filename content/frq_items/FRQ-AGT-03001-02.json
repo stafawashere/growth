@@ -1,0 +1,247 @@
+{
+   "id": "FRQ-AGT-03001-02",
+   "archetype_id": "BC-QA-03001",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "Let \\( f(x) = \\left(x^{3} - 3x + 1\\right)^{4} \\), let \\( g(x) = e^{\\sin(\\pi x)} \\), and let \\( h(x) = \\cos^{2}(3x) \\)."
+   },
+   "skills": [
+      "BC-SKL-03002",
+      "BC-SKL-03003",
+      "BC-SKL-03006"
+   ],
+   "functions": {
+      "f": {
+         "variable": "x",
+         "expression": "(x**3 - 3*x + 1)**4"
+      },
+      "g": {
+         "variable": "x",
+         "expression": "exp(sin(pi*x))"
+      },
+      "h": {
+         "variable": "x",
+         "expression": "cos(3*x)**2"
+      },
+      "q": {
+         "variable": "x",
+         "expression": "((x**2 - 1)**3 - 3*(x**2 - 1) + 1)**4"
+      }
+   },
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find \\( f'(x) \\), and find the value of \\( f'(2) \\).",
+         "setup_required": false,
+         "answer_latex": "f'(2) = 972",
+         "worked_solution": [
+            {
+               "text": "Power rule on the outer layer, times the derivative of the inner cubic.",
+               "latex": "f'(x) = 4\\left(x^{3} - 3x + 1\\right)^{3}\\left(3x^{2} - 3\\right)"
+            },
+            {
+               "text": "Substitute x = 2, where the inner cubic equals 3.",
+               "latex": "f'(2) = 4 \\cdot 3^{3} \\cdot 9 = 972"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99023",
+               "skills": [
+                  "BC-SKL-03002"
+               ],
+               "criterion": "Writes f'(x) = 4(x^3 - 3x + 1)^3 (3x^2 - 3) or any equivalent expression, such as 12(x^2 - 1)(x^3 - 3x + 1)^3; the factor 3x^2 - 3 from the inner function must be present.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "4*(x**3 - 3*x + 1)**3*(3*x**2 - 3)",
+                  "up_to_constant": false,
+                  "each_side": false,
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-03002"
+               ],
+               "criterion": "Gives f'(2) = 972.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "972",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find \\( g'(x) \\), and find the value of \\( g'(1) \\).",
+         "setup_required": false,
+         "answer_latex": "g'(1) = -\\pi",
+         "worked_solution": [
+            {
+               "text": "The derivative of sin(pi x), which carries its own factor pi, times the exponential evaluated at sin(pi x).",
+               "latex": "g'(x) = \\pi\\cos(\\pi x) \\cdot e^{\\sin(\\pi x)}"
+            },
+            {
+               "text": "Substitute x = 1, where sin(pi) = 0 and cos(pi) = -1.",
+               "latex": "g'(1) = e^{0} \\cdot (-1) \\cdot \\pi = -\\pi"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99023",
+               "skills": [
+                  "BC-SKL-03003"
+               ],
+               "criterion": "Writes g'(x) = pi cos(pi x) e^(sin(pi x)) or an equivalent expression carrying both inner factors, cos(pi x) and pi.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "pi*cos(pi*x)*exp(sin(pi*x))",
+                  "up_to_constant": false,
+                  "each_side": false,
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-03003"
+               ],
+               "criterion": "Gives g'(1) = -pi; a decimal accurate to three places, -3.141 or -3.142, is also accepted.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "-pi"
+               }
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Find \\( h'(x) \\), and find the value of \\( h'\\left(\\tfrac{\\pi}{18}\\right) \\).",
+         "setup_required": false,
+         "answer_latex": "h'\\left(\\tfrac{\\pi}{18}\\right) = -\\frac{3\\sqrt{3}}{2}",
+         "worked_solution": [
+            {
+               "text": "Three layers: the square, the cosine, and 3x.",
+               "latex": "h'(x) = 2\\cos(3x) \\cdot \\left(-\\sin(3x)\\right) \\cdot 3 = -6\\cos(3x)\\sin(3x)"
+            },
+            {
+               "text": "The double angle identity gives a shorter form.",
+               "latex": "h'(x) = -3\\sin(6x)"
+            },
+            {
+               "text": "Substitute x = pi/18.",
+               "latex": "h'\\left(\\tfrac{\\pi}{18}\\right) = -3\\sin\\left(\\tfrac{\\pi}{3}\\right) = -\\frac{3\\sqrt{3}}{2}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99023",
+               "skills": [
+                  "BC-SKL-03003"
+               ],
+               "criterion": "Writes h'(x) = -6 cos(3x) sin(3x) or an equivalent expression such as -3 sin(6x); all three layers must be differentiated, so the factors -sin(3x) and 3 are both required.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "-6*cos(3*x)*sin(3*x)",
+                  "up_to_constant": false,
+                  "each_side": false,
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-03003"
+               ],
+               "criterion": "Gives h'(pi/18) = -3 sqrt(3)/2; a decimal accurate to three places, -2.598, is also accepted.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "-3*sqrt(3)/2"
+               }
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "Let \\( q(x) = f\\left(x^{2} - 1\\right) \\). Find \\( q'(x) \\), and find the value of \\( q'\\left(\\sqrt{3}\\right) \\).",
+         "setup_required": false,
+         "answer_latex": "q'\\left(\\sqrt{3}\\right) = 1944\\sqrt{3}",
+         "worked_solution": [
+            {
+               "text": "Chain rule with f as the outer function and x^2 - 1 as the inner function.",
+               "latex": "q'(x) = f'\\left(x^{2} - 1\\right) \\cdot (2x)"
+            },
+            {
+               "text": "At x = sqrt(3) the inner value is 2, and f'(2) = 972 from part (a).",
+               "latex": "q'\\left(\\sqrt{3}\\right) = f'(2) \\cdot 2\\sqrt{3} = 972 \\cdot 2\\sqrt{3} = 1944\\sqrt{3}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99023",
+               "skills": [
+                  "BC-SKL-03002",
+                  "BC-SKL-03003"
+               ],
+               "criterion": "Evaluates the outer derivative at the inner function, writing f'(x^2 - 1), or its expanded form 4((x^2 - 1)^3 - 3(x^2 - 1) + 1)^3 (3(x^2 - 1)^2 - 3), as a factor of q'(x). Writing f'(x) or f'(2x) in its place does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "d2",
+               "point_type_id": "BC-PT-99023",
+               "skills": [
+                  "BC-SKL-03002"
+               ],
+               "criterion": "Multiplies by the derivative of the inner function, 2x, giving q'(x) = 2x f'(x^2 - 1) or an equivalent expanded expression.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "2*x*4*((x**2 - 1)**3 - 3*(x**2 - 1) + 1)**3*(3*(x**2 - 1)**2 - 3)",
+                  "up_to_constant": false,
+                  "each_side": false,
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "d3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-03002"
+               ],
+               "criterion": "Gives q'(sqrt(3)) = 1944 sqrt(3); a decimal accurate to three places, 3367.032, is also accepted.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "1944*sqrt(3)"
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 111 of 111, stems read for ambiguity by the blind solver)"
+}

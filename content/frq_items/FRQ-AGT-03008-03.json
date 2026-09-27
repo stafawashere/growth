@@ -1,0 +1,218 @@
+{
+   "id": "FRQ-AGT-03008-03",
+   "archetype_id": "BC-QA-03008",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "stem": {
+      "text": "Let \\( y = f(x) \\) be the particular solution to the differential equation \\( \\dfrac{dy}{dx} = e^{y}\\cos x \\) with initial condition \\( f(0) = 0 \\). The function \\( f \\) is defined for \\( -\\tfrac{\\pi}{2} < x < \\tfrac{\\pi}{2} \\) and has derivatives of all orders there."
+   },
+   "skills": [
+      "BC-SKL-03030",
+      "BC-SKL-03031",
+      "BC-SKL-03032",
+      "BC-SKL-03033",
+      "BC-SKL-03034"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find \\( \\dfrac{d^{2}y}{dx^{2}} \\) in terms of \\( x \\) and \\( y \\).",
+         "setup_required": false,
+         "answer_latex": "\\frac{d^{2}y}{dx^{2}} = e^{2y}\\cos^{2}x - e^{y}\\sin x",
+         "worked_solution": [
+            {
+               "text": "Product rule on e^y cos x, with the chain rule on e^y.",
+               "latex": "\\frac{d^{2}y}{dx^{2}} = e^{y}\\frac{dy}{dx}\\cos x - e^{y}\\sin x"
+            },
+            {
+               "text": "Replace dy/dx with e^y cos x.",
+               "latex": "\\frac{d^{2}y}{dx^{2}} = e^{y}\\left(e^{y}\\cos x\\right)\\cos x - e^{y}\\sin x = e^{2y}\\cos^{2}(x) - e^{y}\\sin(x)"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99022",
+               "skills": [
+                  "BC-SKL-03030",
+                  "BC-SKL-03033"
+               ],
+               "criterion": "Applies the product rule to e^y cos x, producing a term with the derivative of e^y times cos x and the term -e^y sin x. Treating e^y as a constant does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99023",
+               "skills": [
+                  "BC-SKL-03033",
+                  "BC-SKL-03032"
+               ],
+               "criterion": "Differentiates e^y as e^y dy/dx and replaces dy/dx with e^y cos x, giving e^(2y) cos^2 x - e^y sin x or an equivalent expression in x and y.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "exp(2*y)*cos(x)**2 - exp(y)*sin(x)",
+                  "up_to_constant": false,
+                  "each_side": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find the value of \\( f''(0) \\).",
+         "setup_required": false,
+         "answer_latex": "f''(0) = 1",
+         "worked_solution": [
+            {
+               "text": "At (0, 0) the slope is e^0 cos 0.",
+               "latex": "f'(0) = e^{0}\\cos 0 = 1"
+            },
+            {
+               "text": "Substitute x = 0, y = 0 into the second derivative.",
+               "latex": "f''(0) = e^{0} \\cdot 1 - e^{0} \\cdot 0 = 1"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99027",
+               "skills": [
+                  "BC-SKL-03034"
+               ],
+               "criterion": "Evaluates the second derivative at (0, 0), using f'(0) = 1 there, and gives f''(0) = 1.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "1",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Find the value of \\( f'''(0) \\). Show the work that leads to your answer.",
+         "setup_required": false,
+         "answer_latex": "f'''(0) = 1",
+         "worked_solution": [
+            {
+               "text": "Differentiate e^(2y) cos^2 x - e^y sin x: the product rule on each term, the chain rule on e^(2y), e^y and cos^2 x.",
+               "latex": "\\frac{d^{3}y}{dx^{3}} = 2e^{2y}\\frac{dy}{dx}\\cos^{2}x - 2e^{2y}\\cos x\\sin x - e^{y}\\frac{dy}{dx}\\sin x - e^{y}\\cos x"
+            },
+            {
+               "text": "Substitute x = 0, y = 0 and dy/dx = 1.",
+               "latex": "f'''(0) = 2 \\cdot 1 \\cdot 1 \\cdot 1 - 0 - 0 - 1 = 1"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99022",
+               "skills": [
+                  "BC-SKL-03031",
+                  "BC-SKL-03033"
+               ],
+               "criterion": "Applies the product rule to both terms of the second derivative, e^(2y) cos^2 x and e^y sin x (or to e^y (dy/dx) cos x if that form is differentiated), with every factor differentiated.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99023",
+               "skills": [
+                  "BC-SKL-03031",
+                  "BC-SKL-03033"
+               ],
+               "criterion": "Differentiates e^(2y) as 2e^(2y) dy/dx, e^y as e^y dy/dx, and cos^2 x as -2 cos x sin x (or the equivalent chain rule steps in the other form).",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c3",
+               "point_type_id": "BC-PT-99027",
+               "skills": [
+                  "BC-SKL-03031",
+                  "BC-SKL-03034"
+               ],
+               "criterion": "Substitutes x = 0, y = 0 and dy/dx = 1 and gives f'''(0) = 1.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "1",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "Let \\( k(x) = x f(2x) \\) for \\( -\\tfrac{\\pi}{4} < x < \\tfrac{\\pi}{4} \\). Find \\( k''(x) \\) in terms of \\( f' \\) and \\( f'' \\), and find the value of \\( k''(0) \\).",
+         "setup_required": false,
+         "answer_latex": "k''(0) = 4",
+         "worked_solution": [
+            {
+               "text": "Product rule, with the chain rule on f(2x).",
+               "latex": "k'(x) = f(2x) + 2x f'(2x)"
+            },
+            {
+               "text": "Differentiate again: the chain rule on f(2x), and the product rule with the chain rule on 2x f'(2x).",
+               "latex": "k''(x) = 2f'(2x) + 2f'(2x) + 4x f''(2x) = 4f'(2x) + 4x f''(2x)"
+            },
+            {
+               "text": "Substitute x = 0 and f'(0) = 1.",
+               "latex": "k''(0) = 4f'(0) + 0 = 4"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99022",
+               "skills": [
+                  "BC-SKL-03030"
+               ],
+               "criterion": "Applies the product rule to x f(2x), and again to 2x f'(2x), with both factors differentiated each time.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "d2",
+               "point_type_id": "BC-PT-99023",
+               "skills": [
+                  "BC-SKL-03030",
+                  "BC-SKL-03032"
+               ],
+               "criterion": "Carries the factor 2 from the inner function 2x on every derivative of f, giving k''(x) = 4f'(2x) + 4x f''(2x) or an equivalent expression. Writing f'(x) or f''(x) in place of f'(2x) or f''(2x) does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "d3",
+               "point_type_id": "BC-PT-99027",
+               "skills": [
+                  "BC-SKL-03034"
+               ],
+               "criterion": "Substitutes x = 0 and f'(0) = 1 and gives k''(0) = 4.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "4",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 111 of 111, stems read for ambiguity by the blind solver)"
+}

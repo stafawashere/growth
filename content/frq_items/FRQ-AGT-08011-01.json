@@ -1,0 +1,248 @@
+{
+   "id": "FRQ-AGT-08011-01",
+   "archetype_id": "BC-QA-08011",
+   "calculator_status": "calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "Let \\( f(x) = xe^{-x/2} \\) and \\( g(x) = \\frac{1}{2}(x - 1.5)^{2} \\). The graphs of \\( f \\) and \\( g \\) intersect at exactly two points, where \\( x = p \\) and \\( x = q \\) with \\( 0 < p < q \\). Let \\( R \\) be the region bounded by the graphs of \\( f \\) and \\( g \\)."
+   },
+   "skills": [
+      "BC-SKL-08031",
+      "BC-SKL-08032",
+      "BC-SKL-08033",
+      "BC-SKL-08034",
+      "BC-SKL-08035",
+      "BC-SKL-08036",
+      "BC-SKL-08037",
+      "BC-SKL-08038",
+      "BC-SKL-08039"
+   ],
+   "functions": {
+      "f": {
+         "variable": "x",
+         "expression": "x*exp(-x/2)"
+      },
+      "g": {
+         "variable": "x",
+         "expression": "(x - 3/2)**2/2"
+      }
+   },
+   "roots": {
+      "p": {
+         "value": "0.5725941497627221737011919051011",
+         "equation": "x*exp(-x/2) - ((x - 3/2)**2/2)",
+         "variable": "x"
+      },
+      "q": {
+         "value": "2.6843624393636678859554389475895",
+         "equation": "x*exp(-x/2) - ((x - 3/2)**2/2)",
+         "variable": "x"
+      }
+   },
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Region \\( R \\) is the base of a solid whose cross sections perpendicular to the \\( x \\)-axis are squares. Find the volume of the solid.",
+         "setup_required": true,
+         "answer_latex": "\\int_{p}^{q} \\left(f(x) - g(x)\\right)^{2}dx \\approx 0.575",
+         "worked_solution": [
+            {
+               "text": "Solve f(x) = g(x) on the calculator for the limits.",
+               "latex": "p \\approx 0.573, \\quad q \\approx 2.684"
+            },
+            {
+               "text": "Each square has side f(x) - g(x), the vertical distance across R, so its area is the square of that distance.",
+               "latex": "\\int_{p}^{q} \\left(xe^{-x/2} - \\frac{1}{2}(x - 1.5)^{2}\\right)^{2}dx"
+            },
+            {
+               "text": "Evaluate on the calculator.",
+               "latex": "\\int_{p}^{q} \\left(f(x) - g(x)\\right)^{2}dx \\approx 0.575"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-08031",
+                  "BC-SKL-08032",
+                  "BC-SKL-08034"
+               ],
+               "criterion": "Writes the definite integral of (f(x) - g(x))^2, in either order of subtraction, from x = p to x = q, with the limits written as p and q or as decimals about 0.573 and 2.684. An integrand with a factor of pi, or the area f(x) - g(x) unsquared, earns nothing.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "p",
+                  "upper": "q",
+                  "integrand": "(x*exp(-x/2) - (x - 3/2)**2/2)**2",
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-08035",
+                  "BC-SKL-08039"
+               ],
+               "criterion": "Gives the volume 0.575, accurate to three decimal places.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "Integral((x*exp(-x/2) - (x - 3/2)**2/2)**2, (x, 0.5725941497627221737011919051011, 2.6843624393636678859554389475895))"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Region \\( R \\) is the base of a second solid whose cross sections perpendicular to the \\( x \\)-axis are semicircles with diameters lying in \\( R \\). Find the volume of this solid.",
+         "setup_required": true,
+         "answer_latex": "\\frac{\\pi}{8}\\int_{p}^{q} \\left(f(x) - g(x)\\right)^{2}dx \\approx 0.226",
+         "worked_solution": [
+            {
+               "text": "The diameter is f(x) - g(x), so the radius is half of it and the semicircle's area is one half pi times the radius squared.",
+               "latex": "\\frac{1}{2}\\pi\\left(\\frac{f(x) - g(x)}{2}\\right)^{2} = \\frac{\\pi}{8}\\left(f(x) - g(x)\\right)^{2}"
+            },
+            {
+               "text": "Integrate from p to q and evaluate on the calculator.",
+               "latex": "\\frac{\\pi}{8}\\int_{p}^{q} \\left(f(x) - g(x)\\right)^{2}dx \\approx 0.226"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-08031",
+                  "BC-SKL-08034",
+                  "BC-SKL-08038"
+               ],
+               "criterion": "Writes a definite integral from x = p to x = q (or the decimal limits) of the semicircle area (pi/8)(f(x) - g(x))^2, with the constant inside or in front of the integral, or in the form (pi/2)((f(x) - g(x))/2)^2. Using f(x) - g(x) as the radius, giving (pi/2)(f(x) - g(x))^2, earns nothing.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-08035",
+                  "BC-SKL-08039"
+               ],
+               "criterion": "Gives the volume 0.226, accurate to three decimal places.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "pi/8*Integral((x*exp(-x/2) - (x - 3/2)**2/2)**2, (x, 0.5725941497627221737011919051011, 2.6843624393636678859554389475895))"
+               }
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Let \\( S \\) be the region bounded by the graph of \\( f \\), the \\( x \\)-axis, and the vertical line \\( x = 2 \\). Region \\( S \\) is the base of a solid whose cross sections perpendicular to the \\( x \\)-axis are squares. Write an integral expression for the volume of this solid, and use integration by parts to find the volume. Show the work that leads to your answer.",
+         "setup_required": true,
+         "answer_latex": "\\int_{0}^{2} x^{2}e^{-x}\\,dx = 2 - 10e^{-2}",
+         "worked_solution": [
+            {
+               "text": "Each square has side f(x), so its area is f(x) squared.",
+               "latex": "\\int_{0}^{2} \\left(xe^{-x/2}\\right)^{2}dx = \\int_{0}^{2} x^{2}e^{-x}\\,dx"
+            },
+            {
+               "text": "Parts with u = x^2 and dv = e^{-x} dx, so du = 2x dx and v = -e^{-x}.",
+               "latex": "\\int x^{2}e^{-x}\\,dx = -x^{2}e^{-x} + \\int 2xe^{-x}\\,dx"
+            },
+            {
+               "text": "Parts again with u = 2x and dv = e^{-x} dx, so du = 2 dx and v = -e^{-x}.",
+               "latex": "\\int 2xe^{-x}\\,dx = -2xe^{-x} + \\int 2e^{-x}\\,dx = -2xe^{-x} - 2e^{-x} + C"
+            },
+            {
+               "text": "Evaluate the antiderivative from 0 to 2.",
+               "latex": "\\left[-(x^{2} + 2x + 2)e^{-x}\\right]_{0}^{2} = -10e^{-2} + 2"
+            },
+            {
+               "text": "The volume.",
+               "latex": "2 - 10e^{-2}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-08032",
+                  "BC-SKL-08034"
+               ],
+               "criterion": "Writes the definite integral of (f(x))^2, that is x^2 e^(-x), from x = 0 to x = 2.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "0",
+                  "upper": "2",
+                  "integrand": "x**2*exp(-x)",
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99056",
+               "skills": [
+                  "BC-SKL-08035"
+               ],
+               "criterion": "Chooses u = x^2 and dv = e^(-x) dx with du = 2x dx and v = -e^(-x), stated or visible in the resulting expression. The choice u = e^(-x) with dv = x^2 dx earns nothing.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "c3",
+               "point_type_id": "BC-PT-99057",
+               "skills": [
+                  "BC-SKL-08035"
+               ],
+               "criterion": "Writes the first parts expression -x^2 e^(-x) minus the integral of -2x e^(-x) dx, or an equivalent arrangement with the remaining integral present, with or without limits.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "c4",
+               "point_type_id": "BC-PT-99057",
+               "skills": [
+                  "BC-SKL-08035"
+               ],
+               "criterion": "Applies parts a second time to the integral of 2x e^(-x) dx, writing -2x e^(-x) plus the integral of 2e^(-x) dx or an equivalent arrangement, and reaches an antiderivative equivalent to -(x^2 + 2x + 2)e^(-x). A tabular method that shows the same terms earns this point.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "c5",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-08035",
+                  "BC-SKL-08039"
+               ],
+               "criterion": "Gives the volume 2 - 10e^(-2), or an equivalent exact form, or the decimal 0.646 or 0.647.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "2 - 10*exp(-2)"
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 115 of 115, stems read for ambiguity by the blind solver)"
+}

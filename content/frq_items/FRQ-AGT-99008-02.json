@@ -1,0 +1,241 @@
+{
+   "id": "FRQ-AGT-99008-02",
+   "archetype_id": "BC-QA-99008",
+   "calculator_status": "calculator",
+   "representation": "BC-REP-05",
+   "stem": {
+      "text": "People arrive at an outdoor festival at a rate modeled by \\( A(t) = 400\\sqrt{t}\\,e^{-t/3} \\) people per hour, where \\( t \\) is the number of hours after the gates open and \\( 0 \\le t \\le 10 \\). The festival closes at time \\( t = 10 \\)."
+   },
+   "skills": [
+      "BC-SKL-06036",
+      "BC-SKL-06037",
+      "BC-SKL-08012"
+   ],
+   "functions": {
+      "A": {
+         "variable": "t",
+         "expression": "400*sqrt(t)*exp(-t/3)"
+      }
+   },
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "How many people arrive at the festival during the first 3 hours after the gates open?",
+         "setup_required": true,
+         "answer_latex": "\\int_{0}^{3} A(t)\\,dt \\approx 787.622",
+         "worked_solution": [
+            {
+               "text": "The number of arrivals is the integral of the arrival rate over the first 3 hours.",
+               "latex": "\\int_{0}^{3} 400\\sqrt{t}\\,e^{-t/3}\\,dt"
+            },
+            {
+               "text": "Evaluate on the calculator.",
+               "latex": "\\int_{0}^{3} A(t)\\,dt \\approx 787.622"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-06036"
+               ],
+               "criterion": "Writes the definite integral of A(t) from t = 0 to t = 3.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "0",
+                  "upper": "3",
+                  "integrand": "400*sqrt(t)*exp(-t/3)",
+                  "variable": "t"
+               }
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-06036"
+               ],
+               "criterion": "Gives 787.622 people (787.621 by truncation is also accepted).",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "Integral(400*sqrt(t)*exp(-t/3), (t, 0, 3))"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Extra ticket takers are on duty whenever the arrival rate is at least 200 people per hour. How many people arrive while the extra ticket takers are on duty?",
+         "setup_required": true,
+         "answer_latex": "\\int_{0.307}^{4.250} A(t)\\,dt \\approx 1029.285",
+         "worked_solution": [
+            {
+               "text": "Solve A(t) = 200 on the calculator. The rate is at least 200 people per hour between the two solutions a and b.",
+               "latex": "a \\approx 0.307, \\quad b \\approx 4.250"
+            },
+            {
+               "text": "Integrate the rate between those times, using the stored values of a and b.",
+               "latex": "\\int_{0.307}^{4.250} A(t)\\,dt"
+            },
+            {
+               "text": "Evaluate on the calculator.",
+               "latex": "\\int_{0.307}^{4.250} A(t)\\,dt \\approx 1029.285"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-06036"
+               ],
+               "criterion": "Writes the definite integral of A(t) between the two times at which A(t) = 200, t = 0.307 and t = 4.250 (named letters set to those values, or more decimal places, are also accepted).",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "0.306722174009873300426636631766",
+                  "upper": "4.24972183807401321391751196351",
+                  "integrand": "400*sqrt(t)*exp(-t/3)",
+                  "variable": "t"
+               }
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-06036"
+               ],
+               "criterion": "Gives 1029.285 people, computed with the unrounded times.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "Integral(400*sqrt(t)*exp(-t/3), (t, 0.306722174009873300426636631766, 4.24972183807401321391751196351))"
+               }
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Find the time \\( T \\) at which a total of 1200 people have arrived at the festival since the gates opened.",
+         "setup_required": true,
+         "answer_latex": "T \\approx 4.940",
+         "worked_solution": [
+            {
+               "text": "The number of arrivals by time T is the integral of the rate from 0 to T.",
+               "latex": "\\int_{0}^{T} A(t)\\,dt = 1200"
+            },
+            {
+               "text": "Solve on the calculator.",
+               "latex": "T \\approx 4.940"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-06036",
+                  "BC-SKL-08012"
+               ],
+               "criterion": "Writes the equation that the definite integral of A(t) from t = 0 to t = T equals 1200.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "equation_setup",
+                  "unknown": "T",
+                  "left": "Integral(400*sqrt(t)*exp(-t/3), (t, 0, T))",
+                  "right": "1200",
+                  "interval": [
+                     "0",
+                     "10"
+                  ]
+               }
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-06036"
+               ],
+               "criterion": "Gives T = 4.940 hours.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "4.94044747859219503757392767718"
+               }
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "Each person who arrives at time \\( t \\) stays at the festival until it closes at \\( t = 10 \\). Find the total number of person-hours spent at the festival by the people who arrive during \\( 0 \\le t \\le 10 \\).",
+         "setup_required": true,
+         "answer_latex": "\\int_{0}^{10} (10 - t)\\,A(t)\\,dt \\approx 10640.595",
+         "worked_solution": [
+            {
+               "text": "People arriving at time t each stay 10 - t hours, so person-hours accumulate at the rate (10 - t)A(t) per hour of arrivals.",
+               "latex": "(10 - t)\\,A(t) = (10 - t) \\cdot 400\\sqrt{t}\\,e^{-t/3}"
+            },
+            {
+               "text": "Integrate over the whole interval and evaluate on the calculator.",
+               "latex": "\\int_{0}^{10} (10 - t)\\,A(t)\\,dt \\approx 10640.595"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99002",
+               "skills": [
+                  "BC-SKL-06036"
+               ],
+               "criterion": "Writes an integral whose integrand is the time remaining until closing times the arrival rate, (10 - t) times A(t), whatever its limits.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "d2",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-06036"
+               ],
+               "criterion": "Uses the limits t = 0 and t = 10 for that integral.",
+               "eligible_only_if": [
+                  "d1"
+               ],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "0",
+                  "upper": "10",
+                  "integrand": null,
+                  "variable": "t"
+               }
+            },
+            {
+               "point_id": "d3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-06036"
+               ],
+               "criterion": "Gives 10640.595 person-hours.",
+               "eligible_only_if": [
+                  "d1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "Integral((10 - t)*400*sqrt(t)*exp(-t/3), (t, 0, 10))"
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 111 of 111, stems read for ambiguity by the blind solver)"
+}

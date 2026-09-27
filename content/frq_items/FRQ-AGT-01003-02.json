@@ -1,0 +1,205 @@
+{
+   "id": "FRQ-AGT-01003-02",
+   "archetype_id": "BC-QA-01003",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "stem": {
+      "text": "The functions \\( f \\) and \\( g \\) are defined for all real numbers. The table gives the one-sided limits of each function as \\( x \\) approaches 1 and the value of each function at \\( x = 1 \\). \\[ \\begin{array}{c|ccc} & \\displaystyle \\lim_{x \\to 1^{-}} & \\displaystyle \\lim_{x \\to 1^{+}} & \\text{value at } x = 1 \\\\ \\hline f & 4 & 4 & 2 \\\\ g & -2 & 3 & 3 \\end{array} \\]"
+   },
+   "skills": [
+      "BC-SKL-01018",
+      "BC-SKL-01019",
+      "BC-SKL-01020",
+      "BC-SKL-01022"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find \\( \\displaystyle \\lim_{x \\to 1^{-}} \\left[ f(x) + 2g(x) \\right] \\) and \\( \\displaystyle \\lim_{x \\to 1^{+}} \\left[ f(x) + 2g(x) \\right] \\). Does \\( \\displaystyle \\lim_{x \\to 1} \\left[ f(x) + 2g(x) \\right] \\) exist? Give a reason for your answer.",
+         "setup_required": false,
+         "answer_latex": "0, \\quad 10, \\quad \\text{does not exist}",
+         "worked_solution": [
+            {
+               "text": "Left-hand limit by the sum and constant multiple theorems.",
+               "latex": "\\lim_{x \\to 1^{-}} \\left[ f(x) + 2g(x) \\right] = 4 + 2(-2) = 0"
+            },
+            {
+               "text": "Right-hand limit.",
+               "latex": "\\lim_{x \\to 1^{+}} \\left[ f(x) + 2g(x) \\right] = 4 + 2(3) = 10"
+            },
+            {
+               "text": "The one-sided limits differ, so the two-sided limit does not exist.",
+               "latex": "0 \\neq 10"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-01018",
+                  "BC-SKL-01019"
+               ],
+               "criterion": "Gives 0 as the left-hand limit of f(x) + 2g(x).",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-01018",
+                  "BC-SKL-01019"
+               ],
+               "criterion": "Gives 10 as the right-hand limit of f(x) + 2g(x).",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-01018"
+               ],
+               "criterion": "States that the two-sided limit does not exist because the one-sided limits are not equal. A response that uses the function values at x = 1 to give a limit of 8 does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find \\( \\displaystyle \\lim_{x \\to 1^{-}} \\left( \\left[ g(x) \\right]^{2} - g(x) \\right) \\) and \\( \\displaystyle \\lim_{x \\to 1^{+}} \\left( \\left[ g(x) \\right]^{2} - g(x) \\right) \\). Does \\( \\displaystyle \\lim_{x \\to 1} \\left( \\left[ g(x) \\right]^{2} - g(x) \\right) \\) exist? If it exists, give its value.",
+         "setup_required": false,
+         "answer_latex": "\\lim_{x \\to 1} \\left( \\left[ g(x) \\right]^{2} - g(x) \\right) = 6",
+         "worked_solution": [
+            {
+               "text": "Left-hand limit.",
+               "latex": "\\lim_{x \\to 1^{-}} \\left( \\left[ g(x) \\right]^{2} - g(x) \\right) = (-2)^{2} - (-2) = 6"
+            },
+            {
+               "text": "Right-hand limit.",
+               "latex": "\\lim_{x \\to 1^{+}} \\left( \\left[ g(x) \\right]^{2} - g(x) \\right) = 3^{2} - 3 = 6"
+            },
+            {
+               "text": "The one-sided limits agree, so the limit exists.",
+               "latex": "\\lim_{x \\to 1} \\left( \\left[ g(x) \\right]^{2} - g(x) \\right) = 6"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-01018",
+                  "BC-SKL-01019"
+               ],
+               "criterion": "Gives 6 as the left-hand limit, from (-2)^2 - (-2).",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-01018",
+                  "BC-SKL-01019"
+               ],
+               "criterion": "Gives 6 as the right-hand limit, from 3^2 - 3.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-01018",
+                  "BC-SKL-01019"
+               ],
+               "criterion": "States that the two-sided limit exists and equals 6 because the one-sided limits are equal. A response that says the limit does not exist because g has no two-sided limit at 1 does not earn the point.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "6",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Find \\( \\displaystyle \\lim_{x \\to 1} \\frac{f(x) + x}{x^{2} + 1} \\) and \\( \\displaystyle \\lim_{x \\to 1^{-}} \\sqrt{f(x)\\left( 1 - g(x) \\right)} \\).",
+         "setup_required": false,
+         "answer_latex": "\\frac{5}{2}, \\quad 2\\sqrt{3}",
+         "worked_solution": [
+            {
+               "text": "f has limit 4 from both sides, and the denominator tends to 2, which is not 0.",
+               "latex": "\\lim_{x \\to 1} \\frac{f(x) + x}{x^{2} + 1} = \\frac{4 + 1}{1 + 1} = \\frac{5}{2}"
+            },
+            {
+               "text": "The square root is continuous at 12.",
+               "latex": "\\lim_{x \\to 1^{-}} \\sqrt{f(x)\\left( 1 - g(x) \\right)} = \\sqrt{4(1 - (-2))} = \\sqrt{12} = 2\\sqrt{3}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-01018",
+                  "BC-SKL-01020"
+               ],
+               "criterion": "Gives 5/2, or an equivalent value such as 2.5, as the limit of (f(x) + x)/(x^2 + 1). A value of 3/2 from using f(1) = 2 does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-01019",
+                  "BC-SKL-01022"
+               ],
+               "criterion": "Gives 2 sqrt(3), or sqrt(12), as the left-hand limit of sqrt(f(x)(1 - g(x))).",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "Find \\( \\displaystyle \\lim_{x \\to 1} \\left[ f(x) - f(1) \\right] \\).",
+         "setup_required": false,
+         "answer_latex": "2",
+         "worked_solution": [
+            {
+               "text": "f(1) = 2 is a constant, and f has limit 4 at x = 1.",
+               "latex": "\\lim_{x \\to 1} \\left[ f(x) - f(1) \\right] = 4 - 2 = 2"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-01018"
+               ],
+               "criterion": "Gives 2. A response of 0, from treating the limit of f at 1 as f(1), does not earn the point.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "2",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 111 of 111, stems read for ambiguity by the blind solver)"
+}

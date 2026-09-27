@@ -1,0 +1,238 @@
+{
+   "id": "FRQ-AGT-08002-02",
+   "archetype_id": "BC-QA-08002",
+   "calculator_status": "calculator",
+   "representation": "BC-REP-05",
+   "stem": {
+      "text": "The volume of water in a pond changes at a rate modeled by \\( v(t) = 25\\sin\\left(\\frac{t^{2}}{18}\\right) - 6 \\) cubic meters per day, where \\( t \\) is measured in days and \\( 0 \\le t \\le 10 \\). Let \\( V(t) \\) be the volume of water, in cubic meters, in the pond at time \\( t \\). At time \\( t = 0 \\) the pond holds 800 cubic meters of water."
+   },
+   "skills": [
+      "BC-SKL-08004",
+      "BC-SKL-08003"
+   ],
+   "functions": {
+      "v": {
+         "variable": "t",
+         "expression": "25*sin(t**2/18) - 6"
+      },
+      "V": {
+         "variable": "t",
+         "expression": "800 + Integral(25*sin(s**2/18) - 6, (s, 0, t))"
+      }
+   },
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find the average rate of change of \\( V \\) over the interval \\( 0 \\le t \\le 6 \\).",
+         "setup_required": true,
+         "answer_latex": "\\frac{1}{6}\\int_{0}^{6} v(t)\\,dt \\approx 6.470",
+         "worked_solution": [
+            {
+               "text": "V(6) - V(0) is the integral of v over [0, 6]; divide by the length 6.",
+               "latex": "\\frac{V(6) - V(0)}{6 - 0} = \\frac{1}{6}\\int_{0}^{6} \\left(25\\sin\\left(\\frac{t^{2}}{18}\\right) - 6\\right)dt"
+            },
+            {
+               "text": "Evaluate on the calculator.",
+               "latex": "\\frac{1}{6}\\int_{0}^{6} v(t)\\,dt \\approx 6.470"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99020",
+               "skills": [
+                  "BC-SKL-08004",
+                  "BC-SKL-08003"
+               ],
+               "criterion": "Writes the definite integral of v(t) from t = 0 to t = 6 divided by 6, in any equivalent form such as (V(6) - V(0))/6 with V(6) - V(0) written as that integral. An average value of V itself, or (v(6) - v(0))/6, earns nothing.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-08003"
+               ],
+               "criterion": "Gives 6.470 cubic meters per day, accurate to three decimal places.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "Integral(25*sin(t**2/18) - 6, (t, 0, 6))/6"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find the time \\( t \\), with \\( 0 < t < 6 \\), at which the instantaneous rate of change of \\( V \\) equals the average rate of change of \\( V \\) over the interval \\( 0 \\le t \\le 6 \\).",
+         "setup_required": true,
+         "answer_latex": "t \\approx 3.066",
+         "worked_solution": [
+            {
+               "text": "The instantaneous rate of change of V is v(t). Set it equal to the average rate of change.",
+               "latex": "25\\sin\\left(\\frac{t^{2}}{18}\\right) - 6 = \\frac{1}{6}\\int_{0}^{6} v(t)\\,dt"
+            },
+            {
+               "text": "Solve on the calculator.",
+               "latex": "t \\approx 3.066"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99020",
+               "skills": [
+                  "BC-SKL-08004",
+                  "BC-SKL-08003"
+               ],
+               "criterion": "Writes the equation v(t) = (1/6) times the integral of v from 0 to 6, with the right side as that expression or as its value from part (a), about 6.470.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "equation_setup",
+                  "unknown": "T",
+                  "left": "25*sin(T**2/18) - 6",
+                  "right": "Integral(25*sin(t**2/18) - 6, (t, 0, 6))/6",
+                  "interval": [
+                     "1",
+                     "5"
+                  ]
+               }
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-08004"
+               ],
+               "criterion": "Gives t = 3.066 days, accurate to three decimal places.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "3.0659570462490131383494423870992"
+               }
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "There is exactly one number \\( k \\), with \\( 6 < k \\le 10 \\), for which the average rate of change of \\( V \\) over the interval \\( 0 \\le t \\le k \\) is 0. Find \\( k \\).",
+         "setup_required": true,
+         "answer_latex": "k \\approx 9.659",
+         "worked_solution": [
+            {
+               "text": "The average rate of change over [0, k] is the integral of v from 0 to k divided by k. Set it equal to 0.",
+               "latex": "\\frac{1}{k}\\int_{0}^{k} \\left(25\\sin\\left(\\frac{t^{2}}{18}\\right) - 6\\right)dt = 0"
+            },
+            {
+               "text": "Solve on the calculator for k between 6 and 10.",
+               "latex": "k \\approx 9.659"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99020",
+               "skills": [
+                  "BC-SKL-08004",
+                  "BC-SKL-08003"
+               ],
+               "criterion": "Writes the equation (1/k) times the integral of v(t) from 0 to k equals 0, or the equivalent equation that the integral of v(t) from 0 to k equals 0, or V(k) = V(0) with V(k) written as 800 plus that integral.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "equation_setup",
+                  "unknown": "k",
+                  "left": "Integral(25*sin(t**2/18) - 6, (t, 0, k))/k",
+                  "right": "0",
+                  "interval": [
+                     "9",
+                     "10"
+                  ]
+               }
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-08003"
+               ],
+               "criterion": "Gives k = 9.659, accurate to three decimal places.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "9.6587235297014236608989246940783"
+               }
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "Find the average rate of change of \\( V \\) over the interval \\( 6 \\le t \\le 10 \\). Then find the time \\( t \\), with \\( 6 < t < 10 \\), at which the instantaneous rate of change of \\( V \\) equals this average rate of change.",
+         "setup_required": true,
+         "answer_latex": "t \\approx 7.800",
+         "worked_solution": [
+            {
+               "text": "Average rate of change over [6, 10].",
+               "latex": "\\frac{1}{10 - 6}\\int_{6}^{10} \\left(25\\sin\\left(\\frac{t^{2}}{18}\\right) - 6\\right)dt \\approx -11.898"
+            },
+            {
+               "text": "Set v(t) equal to that value.",
+               "latex": "25\\sin\\left(\\frac{t^{2}}{18}\\right) - 6 = -11.898"
+            },
+            {
+               "text": "Solve on the calculator for t between 6 and 10.",
+               "latex": "t \\approx 7.800"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99020",
+               "skills": [
+                  "BC-SKL-08004",
+                  "BC-SKL-08003"
+               ],
+               "criterion": "Writes the definite integral of v(t) from t = 6 to t = 10 divided by 4, the length of the interval.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "d2",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-08003"
+               ],
+               "criterion": "Gives the average rate of change -11.898 cubic meters per day, accurate to three decimal places, supported by the setup from d1. A positive value earns nothing.",
+               "eligible_only_if": [
+                  "d1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "d3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-08004"
+               ],
+               "criterion": "Gives t = 7.800 days (7.799 by truncation), as the solution of v(t) equal to the average rate of change over [6, 10].",
+               "eligible_only_if": [
+                  "d1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "7.7997302640836009272039393848979"
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 115 of 115, stems read for ambiguity by the blind solver)"
+}

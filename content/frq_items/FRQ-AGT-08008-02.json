@@ -1,0 +1,239 @@
+{
+   "id": "FRQ-AGT-08008-02",
+   "archetype_id": "BC-QA-08008",
+   "calculator_status": "calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "Let \\( f(x) = 5e^{-x^{2}/4} \\) and \\( g(x) = x^{2} - 2x \\). The graphs of \\( f \\) and \\( g \\) intersect at exactly two points, where \\( x = p \\) and \\( x = q \\) with \\( p < 0 < q \\). Let \\( R \\) be the region bounded by the graphs of \\( f \\) and \\( g \\)."
+   },
+   "skills": [
+      "BC-SKL-08018",
+      "BC-SKL-08019",
+      "BC-SKL-08020",
+      "BC-SKL-08021",
+      "BC-SKL-08022"
+   ],
+   "functions": {
+      "f": {
+         "variable": "x",
+         "expression": "5*exp(-x**2/4)"
+      },
+      "g": {
+         "variable": "x",
+         "expression": "x**2 - 2*x"
+      }
+   },
+   "roots": {
+      "p": {
+         "value": "-1.1452625811329871327470885647665",
+         "equation": "5*exp(-x**2/4) - (x**2 - 2*x)",
+         "variable": "x"
+      },
+      "q": {
+         "value": "2.4529185421148659759445706256988",
+         "equation": "5*exp(-x**2/4) - (x**2 - 2*x)",
+         "variable": "x"
+      }
+   },
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find the area of \\( R \\).",
+         "setup_required": true,
+         "answer_latex": "\\int_{p}^{q} \\left(f(x) - g(x)\\right)dx \\approx 12.571",
+         "worked_solution": [
+            {
+               "text": "Solve f(x) = g(x) on the calculator.",
+               "latex": "p \\approx -1.145, \\quad q \\approx 2.453"
+            },
+            {
+               "text": "On [p, q] the graph of f is above the graph of g.",
+               "latex": "\\int_{p}^{q} \\left(5e^{-x^{2}/4} - (x^{2} - 2x)\\right)dx"
+            },
+            {
+               "text": "Evaluate on the calculator.",
+               "latex": "\\int_{p}^{q} \\left(f(x) - g(x)\\right)dx \\approx 12.571"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99059",
+               "skills": [
+                  "BC-SKL-08018",
+                  "BC-SKL-08019"
+               ],
+               "criterion": "Writes a definite integral whose integrand is the difference f(x) - g(x), in either order or inside an absolute value. The integral of f alone or of g alone earns nothing.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-08021"
+               ],
+               "criterion": "Uses the limits p and q, written as p and q or as decimals accurate to three places, about -1.145 and 2.453.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "p",
+                  "upper": "q",
+                  "integrand": null,
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "a3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-08022"
+               ],
+               "criterion": "Gives the area 12.571, accurate to three decimal places. A negative value from the reversed difference earns nothing.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "Integral(5*exp(-x**2/4) - (x**2 - 2*x), (x, -1.1452625811329871327470885647665, 2.4529185421148659759445706256988))"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "The vertical line \\( x = k \\) divides \\( R \\) into two regions of equal area. Write an equation involving one or more integral expressions whose solution is \\( k \\), and find \\( k \\).",
+         "setup_required": true,
+         "answer_latex": "k \\approx 0.552",
+         "worked_solution": [
+            {
+               "text": "The area of R to the left of x = k is half the area of R.",
+               "latex": "\\int_{p}^{k} \\left(f(x) - g(x)\\right)dx = \\frac{1}{2}\\int_{p}^{q} \\left(f(x) - g(x)\\right)dx"
+            },
+            {
+               "text": "Solve on the calculator.",
+               "latex": "k \\approx 0.552"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-08019"
+               ],
+               "criterion": "Writes an equation such as the integral of f(x) - g(x) from p to k equals half the area of R (about 6.285), or the integral from p to k equals the integral from k to q.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "equation_setup",
+                  "unknown": "k",
+                  "left": "Integral(5*exp(-x**2/4) - (x**2 - 2*x), (x, p, k))",
+                  "right": "Integral(5*exp(-x**2/4) - (x**2 - 2*x), (x, p, q))/2",
+                  "interval": [
+                     "0",
+                     "3/2"
+                  ]
+               }
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-08022"
+               ],
+               "criterion": "Gives k = 0.552, accurate to three decimal places.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "0.55200180445059247093894890198596"
+               }
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Let \\( T \\) be the region bounded by the graph of \\( g \\) and the \\( x \\)-axis. Using an antiderivative, find the area of \\( T \\). Show the work that leads to your answer.",
+         "setup_required": true,
+         "answer_latex": "\\frac{4}{3}",
+         "worked_solution": [
+            {
+               "text": "g(x) = x(x - 2) is below the x-axis between its zeros 0 and 2.",
+               "latex": "\\int_{0}^{2} \\left(0 - (x^{2} - 2x)\\right)dx = \\int_{0}^{2} \\left(2x - x^{2}\\right)dx"
+            },
+            {
+               "text": "Antiderivative.",
+               "latex": "x^{2} - \\frac{x^{3}}{3}"
+            },
+            {
+               "text": "Evaluate from 0 to 2.",
+               "latex": "4 - \\frac{8}{3} = \\frac{4}{3}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99059",
+               "skills": [
+                  "BC-SKL-08018",
+                  "BC-SKL-08019"
+               ],
+               "criterion": "Writes a definite integral of 0 - g(x) = 2x - x^2, or of g(x) with the result's sign reversed, or of |g(x)|.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-08020"
+               ],
+               "criterion": "Uses the limits x = 0 and x = 2, the zeros of g.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "0",
+                  "upper": "2",
+                  "integrand": null,
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "c3",
+               "point_type_id": "BC-PT-99003",
+               "skills": [
+                  "BC-SKL-08022"
+               ],
+               "criterion": "Writes the antiderivative x^2 - x^3/3 of 2x - x^2, or x^3/3 - x^2 for g, with or without a constant.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "c4",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-08022"
+               ],
+               "criterion": "Gives the area 4/3, or the decimal 1.333. A negative value earns nothing.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "4/3"
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 115 of 115, stems read for ambiguity by the blind solver)"
+}

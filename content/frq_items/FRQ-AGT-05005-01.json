@@ -1,0 +1,202 @@
+{
+   "id": "FRQ-AGT-05005-01",
+   "archetype_id": "BC-QA-05005",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-04",
+   "stem": {
+      "text": "The function \\( f \\) is twice differentiable on the open interval \\( -4 < x < 7 \\). Its derivative \\( f' \\) is increasing on \\( -4 < x < -2 \\), decreasing on \\( -2 < x < 1 \\), and increasing on \\( 1 < x < 7 \\). On this interval the only zeros of \\( f' \\) are at \\( x = -3 \\), \\( x = 0 \\), and \\( x = 3 \\). The graph of \\( f' \\) has a horizontal tangent line at \\( x = 5 \\), where \\( f'(5) = 2 \\)."
+   },
+   "skills": [
+      "BC-SKL-05032",
+      "BC-SKL-05033",
+      "BC-SKL-05034",
+      "BC-SKL-05035"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find all values of \\( x \\) in the open interval \\( -4 < x < 7 \\) at which the graph of \\( f \\) has a point of inflection. Give a reason for your answer.",
+         "setup_required": false,
+         "answer_latex": "x = -2 \\text{ and } x = 1",
+         "worked_solution": [
+            {
+               "text": "f' changes from increasing to decreasing at x = -2.",
+               "latex": "x = -2"
+            },
+            {
+               "text": "f' changes from decreasing to increasing at x = 1.",
+               "latex": "x = 1"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99060",
+               "skills": [
+                  "BC-SKL-05032",
+                  "BC-SKL-05033"
+               ],
+               "criterion": "Gives exactly x = -2 and x = 1. Listing any other value, such as a zero of f' (-3, 0, 3) or x = 5, does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99061",
+               "skills": [
+                  "BC-SKL-05033",
+                  "BC-SKL-05035"
+               ],
+               "criterion": "States that f' changes from increasing to decreasing at x = -2 and from decreasing to increasing at x = 1, or that f' has a relative maximum at x = -2 and a relative minimum at x = 1. A reason given only as f changing concavity or f'' changing sign does not earn the point, and a response that declares an extra value does not earn it.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Does the graph of \\( f \\) have a point of inflection at \\( x = 5 \\)? Give a reason for your answer.",
+         "setup_required": false,
+         "answer_latex": "\\text{no}",
+         "worked_solution": [
+            {
+               "text": "f' is increasing on 1 < x < 7, so it is increasing on both sides of x = 5 even though its graph is flat there.",
+               "latex": "\\text{no point of inflection at } x = 5"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99060",
+               "skills": [
+                  "BC-SKL-05034"
+               ],
+               "criterion": "Answers no: the graph of f does not have a point of inflection at x = 5.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99061",
+               "skills": [
+                  "BC-SKL-05034",
+                  "BC-SKL-05035"
+               ],
+               "criterion": "States that f' is increasing on both sides of x = 5 (it is increasing on all of 1 < x < 7), so f' does not change from increasing to decreasing or the reverse there; a horizontal tangent of f' alone is not enough. Saying only that f''(5) = 0 does not earn the point.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Let \\( g(x) = \\displaystyle\\int_{0}^{x} f(t)\\,dt \\) for \\( -4 < x < 7 \\). Find all values of \\( x \\) in \\( -4 < x < 7 \\) at which the graph of \\( g \\) has a point of inflection, and determine whether the graph of \\( g \\) has a point of inflection at \\( x = -2 \\). Give reasons for your answers.",
+         "setup_required": false,
+         "answer_latex": "x = -3, \\ x = 0, \\ x = 3; \\ \\text{no inflection at } x = -2",
+         "worked_solution": [
+            {
+               "text": "By the Fundamental Theorem of Calculus g' = f, so g'' = f'.",
+               "latex": "g''(x) = f'(x)"
+            },
+            {
+               "text": "f' is increasing through its zero at -3, decreasing through its zero at 0, and increasing through its zero at 3, so it changes sign at each.",
+               "latex": "x = -3, \\quad x = 0, \\quad x = 3"
+            },
+            {
+               "text": "f' is increasing to its zero at -3 and decreasing to its zero at 0, so it is positive on both sides of x = -2.",
+               "latex": "f'(x) > 0 \\text{ for } -3 < x < 0"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99060",
+               "skills": [
+                  "BC-SKL-05032",
+                  "BC-SKL-05033"
+               ],
+               "criterion": "Gives exactly x = -3, x = 0, and x = 3. Including x = -2, x = 1, or x = 5 does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99061",
+               "skills": [
+                  "BC-SKL-05033",
+                  "BC-SKL-05035"
+               ],
+               "criterion": "States that g'' = f' (or that the slope of g', which is f, changes sign) and that f' changes sign at x = -3, x = 0, and x = 3. A reason in terms of g changing concavity alone does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c3",
+               "point_type_id": "BC-PT-99061",
+               "skills": [
+                  "BC-SKL-05034",
+                  "BC-SKL-05035"
+               ],
+               "criterion": "States that the graph of g has no point of inflection at x = -2 because g'' = f' is positive on both sides of x = -2 (f' > 0 on -3 < x < 0), so it does not change sign there.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "Let \\( k(x) = f(2x) \\) for \\( 0 < x < \\frac{7}{2} \\). Find the \\( x \\)-coordinate of each point of inflection of the graph of \\( k \\). Give a reason for your answer.",
+         "setup_required": false,
+         "answer_latex": "x = \\frac{1}{2}",
+         "worked_solution": [
+            {
+               "text": "By the chain rule k' is 2 f'(2x), so k' increases or decreases exactly as f' does at 2x.",
+               "latex": "k'(x) = 2f'(2x)"
+            },
+            {
+               "text": "On 0 < x < 7/2 the input 2x runs over 0 < 2x < 7, where f' changes from decreasing to increasing only at 2x = 1.",
+               "latex": "2x = 1 \\Rightarrow x = \\frac{1}{2}"
+            },
+            {
+               "text": "State the answer.",
+               "latex": "x = \\frac{1}{2}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99060",
+               "skills": [
+                  "BC-SKL-05032",
+                  "BC-SKL-05033"
+               ],
+               "criterion": "Gives x = 1/2 (or 0.5) as the only point of inflection of k. Listing x = -1, x = 1, or x = 5/2 as well does not earn the point.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "1/2",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "d2",
+               "point_type_id": "BC-PT-99061",
+               "skills": [
+                  "BC-SKL-05033",
+                  "BC-SKL-05035"
+               ],
+               "criterion": "States that k'(x) = 2f'(2x) changes from decreasing to increasing at x = 1/2 because f' changes from decreasing to increasing at 2x = 1, or equivalently that f' has a relative minimum at 1 so k' has one at 1/2.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 111 of 111, stems read for ambiguity by the blind solver)"
+}

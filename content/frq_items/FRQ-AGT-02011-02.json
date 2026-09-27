@@ -1,0 +1,234 @@
+{
+   "id": "FRQ-AGT-02011-02",
+   "archetype_id": "BC-QA-02011",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "Let \\( f(x) = \\ln(3x - 2) + x^{2} \\) for \\( x > \\tfrac{2}{3} \\). Note that \\( f(1) = 1 \\)."
+   },
+   "skills": [
+      "BC-SKL-02012",
+      "BC-SKL-02013"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find \\( f'(x) \\), and find the slope of the line tangent to the graph of \\( f \\) at \\( x = 1 \\).",
+         "setup_required": false,
+         "answer_latex": "f'(1) = 5",
+         "worked_solution": [
+            {
+               "text": "Chain rule on the logarithm.",
+               "latex": "f'(x) = \\frac{3}{3x - 2} + 2x"
+            },
+            {
+               "text": "Slope at x = 1.",
+               "latex": "f'(1) = \\frac{3}{1} + 2 = 5"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-02012"
+               ],
+               "criterion": "Gives f'(x) = 3/(3x - 2) + 2x, or an equivalent expression. The derivative 1/(3x - 2) + 2x, missing the factor 3, does not earn the point.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "3/(3*x - 2) + 2*x",
+                  "up_to_constant": false,
+                  "variable": "x",
+                  "each_side": false
+               }
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99082",
+               "skills": [
+                  "BC-SKL-02012"
+               ],
+               "criterion": "Gives the slope f'(1) = 5.",
+               "eligible_only_if": [],
+               "check": null,
+               "follows_from": [
+                  "a1"
+               ]
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find an equation of the tangent line to the graph of \\( f \\) at the point where \\( x = 1 \\), and use it to estimate \\( f(1.1) \\).",
+         "setup_required": false,
+         "answer_latex": "f(1.1) \\approx 1.5",
+         "worked_solution": [
+            {
+               "text": "Point-slope form through (1, 1) with slope 5.",
+               "latex": "y = 1 + 5(x - 1)"
+            },
+            {
+               "text": "Evaluate the line at x = 1.1.",
+               "latex": "y(1.1) = 1 + 5(0.1) = 1.5"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99082",
+               "skills": [
+                  "BC-SKL-02013"
+               ],
+               "criterion": "Writes an equation of the line through (1, 1) with the slope found in part (a), in any form, such as y = 1 + 5(x - 1) or y = 5x - 4. A line with slope f(1) = 1, or through (1, 5), does not earn the point.",
+               "eligible_only_if": [],
+               "check": null,
+               "follows_from": [
+                  "a2"
+               ]
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-02013"
+               ],
+               "criterion": "Evaluates the tangent line at x = 1.1 to get 1.5, or 3/2.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "3/2",
+                  "up_to_constant": false,
+                  "variable": "x",
+                  "each_side": false
+               },
+               "follows_from": [
+                  "b1"
+               ]
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "There is a value \\( x = a \\), with \\( a \\neq 1 \\), at which the line tangent to the graph of \\( f \\) is parallel to the line found in part (b). Find \\( a \\) and \\( f(a) \\), and write an equation for the line tangent to the graph of \\( f \\) at \\( x = a \\).",
+         "setup_required": false,
+         "answer_latex": "y = \\ln\\frac{9}{2} + \\frac{169}{36} + 5\\left( x - \\frac{13}{6} \\right)",
+         "worked_solution": [
+            {
+               "text": "Parallel means equal slopes, so solve f'(x) = 5.",
+               "latex": "\\frac{3}{3x - 2} + 2x = 5"
+            },
+            {
+               "text": "Multiply by 3x - 2 and collect terms.",
+               "latex": "6x^{2} - 19x + 13 = 0 \\Rightarrow (x - 1)(6x - 13) = 0"
+            },
+            {
+               "text": "Discard x = 1.",
+               "latex": "a = \\frac{13}{6}"
+            },
+            {
+               "text": "Evaluate f there, where 3a - 2 = 9/2.",
+               "latex": "f\\left( \\frac{13}{6} \\right) = \\ln\\frac{9}{2} + \\frac{169}{36}"
+            },
+            {
+               "text": "Tangent line with slope 5.",
+               "latex": "y = \\ln\\frac{9}{2} + \\frac{169}{36} + 5\\left( x - \\frac{13}{6} \\right)"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-02012"
+               ],
+               "criterion": "Sets f'(x) = 5, or the expression from part (a) equal to the slope from part (a), and solves to a = 13/6.",
+               "eligible_only_if": [],
+               "check": null,
+               "follows_from": [
+                  "a1"
+               ]
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-02013"
+               ],
+               "criterion": "Gives f(13/6) = ln(9/2) + 169/36, or an equivalent exact form such as ln 9 - ln 2 + 169/36.",
+               "eligible_only_if": [],
+               "check": null,
+               "follows_from": [
+                  "c1"
+               ]
+            },
+            {
+               "point_id": "c3",
+               "point_type_id": "BC-PT-99082",
+               "skills": [
+                  "BC-SKL-02013"
+               ],
+               "criterion": "Writes an equation of the line through (13/6, ln(9/2) + 169/36) with slope 5, in any form.",
+               "eligible_only_if": [],
+               "check": null,
+               "follows_from": [
+                  "c1"
+               ]
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "The function \\( f \\) is one-to-one on its domain. Let \\( h \\) be the inverse function of \\( f \\). Find \\( h'(1) \\), and write an equation for the line tangent to the graph of \\( h \\) at \\( x = 1 \\).",
+         "setup_required": false,
+         "answer_latex": "y = 1 + \\frac{1}{5}(x - 1)",
+         "worked_solution": [
+            {
+               "text": "Since f(1) = 1, h(1) = 1.",
+               "latex": "h(1) = 1"
+            },
+            {
+               "text": "Derivative of an inverse.",
+               "latex": "h'(1) = \\frac{1}{f'(h(1))} = \\frac{1}{f'(1)} = \\frac{1}{5}"
+            },
+            {
+               "text": "Tangent line through (1, 1).",
+               "latex": "y = 1 + \\frac{1}{5}(x - 1)"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99082",
+               "skills": [
+                  "BC-SKL-02012"
+               ],
+               "criterion": "Gives the slope h'(1) = 1/5, or 0.2, as the reciprocal of f'(1).",
+               "eligible_only_if": [],
+               "check": null,
+               "follows_from": [
+                  "a2"
+               ]
+            },
+            {
+               "point_id": "d2",
+               "point_type_id": "BC-PT-99082",
+               "skills": [
+                  "BC-SKL-02013"
+               ],
+               "criterion": "Writes an equation of the line through (1, 1) with the slope found for h'(1), in any form, such as y = 1 + (x - 1)/5.",
+               "eligible_only_if": [],
+               "check": null,
+               "follows_from": [
+                  "d1"
+               ]
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 111 of 111, stems read for ambiguity by the blind solver)"
+}

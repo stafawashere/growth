@@ -1,0 +1,206 @@
+{
+   "id": "FRQ-AGT-06011-01",
+   "archetype_id": "BC-QA-06011",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "Answer each part without a calculator. For each improper integral, find its value if it converges, or show that it diverges."
+   },
+   "skills": [
+      "BC-SKL-06066",
+      "BC-SKL-06067",
+      "BC-SKL-06068",
+      "BC-SKL-06069",
+      "BC-SKL-06070"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Evaluate \\( \\displaystyle\\int_{0}^{\\infty} x e^{-x^{2}}\\,dx \\) or show that it diverges. Show the work that leads to your answer.",
+         "setup_required": false,
+         "answer_latex": "\\frac{1}{2}",
+         "worked_solution": [
+            {
+               "text": "The upper limit is infinite, so write the integral as a limit.",
+               "latex": "\\int_{0}^{\\infty} x e^{-x^{2}}\\,dx = \\lim_{b \\to \\infty} \\int_{0}^{b} x e^{-x^{2}}\\,dx"
+            },
+            {
+               "text": "Antidifferentiate with u = x^2.",
+               "latex": "\\int x e^{-x^{2}}\\,dx = -\\frac{1}{2} e^{-x^{2}} + C"
+            },
+            {
+               "text": "Apply the limits and let b grow without bound.",
+               "latex": "\\lim_{b \\to \\infty} \\left(\\frac{1}{2} - \\frac{1}{2} e^{-b^{2}}\\right) = \\frac{1}{2}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99053",
+               "skills": [
+                  "BC-SKL-06066",
+                  "BC-SKL-06067"
+               ],
+               "criterion": "Replaces the infinite upper limit with a variable such as b and writes the limit as b goes to infinity, on the integral or on the antiderivative. Writing e to the power of minus infinity squared, or any arithmetic with infinity, does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99003",
+               "skills": [
+                  "BC-SKL-06068"
+               ],
+               "criterion": "Gives the antiderivative -(1/2)e^(-x^2), with or without a constant, or the equivalent -(1/2)e^(-u) with u = x^2 stated.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-06068"
+               ],
+               "criterion": "Gives the value 1/2. Any exact equivalent, or 0.5, is accepted.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "1/2",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Evaluate \\( \\displaystyle\\int_{0}^{3} \\frac{1}{\\sqrt{3 - x}}\\,dx \\) or show that it diverges. Show the work that leads to your answer.",
+         "setup_required": false,
+         "answer_latex": "2\\sqrt{3}",
+         "worked_solution": [
+            {
+               "text": "The integrand is unbounded as x approaches 3 from the left, so write a one-sided limit.",
+               "latex": "\\int_{0}^{3} \\frac{1}{\\sqrt{3 - x}}\\,dx = \\lim_{b \\to 3^{-}} \\int_{0}^{b} \\frac{1}{\\sqrt{3 - x}}\\,dx"
+            },
+            {
+               "text": "Antidifferentiate.",
+               "latex": "\\int \\frac{1}{\\sqrt{3 - x}}\\,dx = -2\\sqrt{3 - x} + C"
+            },
+            {
+               "text": "Apply the limits and take the limit.",
+               "latex": "\\lim_{b \\to 3^{-}} \\left(-2\\sqrt{3 - b} + 2\\sqrt{3}\\right) = 2\\sqrt{3}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99053",
+               "skills": [
+                  "BC-SKL-06066",
+                  "BC-SKL-06067"
+               ],
+               "criterion": "Names x = 3 as where the integrand is unbounded, replaces that limit with a variable and writes the one-sided limit as the variable approaches 3 from the left (a two-sided limit to 3 is also accepted). Substituting 3 directly into the antiderivative with no limit does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99003",
+               "skills": [
+                  "BC-SKL-06068"
+               ],
+               "criterion": "Gives the antiderivative -2sqrt(3 - x), with or without a constant, or an equivalent in a stated substitution variable. The sign from the chain rule must be correct.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-06068"
+               ],
+               "criterion": "Gives the value 2sqrt(3), or sqrt(12). Any exact equivalent is accepted.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "2*sqrt(3)",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Evaluate \\( \\displaystyle\\int_{-1}^{2} \\frac{1}{x^{2}}\\,dx \\) or show that it diverges. Show the work that leads to your answer.",
+         "setup_required": false,
+         "answer_latex": "\\text{The integral diverges.}",
+         "worked_solution": [
+            {
+               "text": "The integrand is unbounded at x = 0, inside the interval, so split there and write each piece as a limit.",
+               "latex": "\\int_{-1}^{2} \\frac{1}{x^{2}}\\,dx = \\lim_{a \\to 0^{-}} \\int_{-1}^{a} \\frac{1}{x^{2}}\\,dx + \\lim_{b \\to 0^{+}} \\int_{b}^{2} \\frac{1}{x^{2}}\\,dx"
+            },
+            {
+               "text": "Antidifferentiate.",
+               "latex": "\\int \\frac{1}{x^{2}}\\,dx = -\\frac{1}{x} + C"
+            },
+            {
+               "text": "The second limit is infinite.",
+               "latex": "\\lim_{b \\to 0^{+}} \\left(-\\frac{1}{2} + \\frac{1}{b}\\right) = \\infty"
+            },
+            {
+               "text": "One piece diverges, so the whole integral diverges.",
+               "latex": "\\text{The integral diverges.}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99053",
+               "skills": [
+                  "BC-SKL-06066",
+                  "BC-SKL-06067",
+                  "BC-SKL-06070"
+               ],
+               "criterion": "Identifies x = 0 as where the integrand is unbounded, splits the integral at 0, and writes at least the piece used for the conclusion as a one-sided limit. Evaluating -1/x from -1 to 2 straight through the discontinuity does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99003",
+               "skills": [
+                  "BC-SKL-06068"
+               ],
+               "criterion": "Gives the antiderivative -1/x, with or without a constant.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "-1/x",
+                  "up_to_constant": true,
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "c3",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-06069",
+                  "BC-SKL-06070"
+               ],
+               "criterion": "Concludes that the integral diverges, supported by a limit of one piece that is infinite. The value -3/2 from ignoring the discontinuity, or a conclusion with no supporting limit, does not earn the point.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": null
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 66 of 66 after two formulation misreadings were triaged, stems read for ambiguity by the blind solver)"
+}

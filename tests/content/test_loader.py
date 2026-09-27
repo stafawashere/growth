@@ -54,7 +54,7 @@ def test_loader_against_real_data():
    assert snapshot.counts["BC-QA_families"] == 77
    assert snapshot.counts["BC-QV"] == 395
    assert snapshot.counts["BC-PT"] == 76
-   assert snapshot.counts["BC-ERR_active"] == 390
+   assert snapshot.counts["BC-ERR_active"] == 391
    assert snapshot.counts["BC-MIS_active"] == 213
    assert snapshot.counts["BC-SIG"] == 711
    assert snapshot.counts["BC-REP"] == 14

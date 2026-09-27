@@ -1,0 +1,237 @@
+{
+   "id": "FRQ-AGT-06006-02",
+   "archetype_id": "BC-QA-06006",
+   "calculator_status": "calculator",
+   "representation": "BC-REP-05",
+   "stem": {
+      "text": "Grain is loaded into a storage silo at a rate modeled by \\( G(t) = 26 + 10e^{-(t - 5)^{2}/8} \\) tons per hour, and grain is unloaded from the silo at a rate modeled by \\( U(t) = 20 + 4\\sqrt{t}\\,\\sin\\left(\\frac{t}{2}\\right) \\) tons per hour, where \\( t \\) is measured in hours and \\( 0 \\le t \\le 9 \\). At time \\( t = 0 \\) the silo holds 400 tons of grain."
+   },
+   "skills": [
+      "BC-SKL-06039",
+      "BC-SKL-06037",
+      "BC-SKL-06036",
+      "BC-SKL-08013",
+      "BC-SKL-08016",
+      "BC-SKL-08012"
+   ],
+   "functions": {
+      "G": {
+         "variable": "t",
+         "expression": "26 + 10*exp(-(t - 5)**2/8)"
+      },
+      "U": {
+         "variable": "t",
+         "expression": "20 + 4*sqrt(t)*sin(t/2)"
+      }
+   },
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Show that the average rate at which grain is unloaded from the silo over the interval \\( 0 \\le t \\le 9 \\) is less than 22 tons per hour.",
+         "setup_required": true,
+         "answer_latex": "\\frac{1}{9}\\int_{0}^{9} U(t)\\,dt \\approx 21.075 < 22",
+         "worked_solution": [
+            {
+               "text": "The average unloading rate is the integral of U over the interval divided by its length.",
+               "latex": "\\frac{1}{9}\\int_{0}^{9} U(t)\\,dt"
+            },
+            {
+               "text": "Evaluate on the calculator and compare with 22.",
+               "latex": "\\frac{1}{9}\\int_{0}^{9} U(t)\\,dt \\approx 21.075 < 22"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-06036",
+                  "BC-SKL-08016"
+               ],
+               "criterion": "Writes the average unloading rate as 1/9 times the definite integral of U(t) from t = 0 to t = 9.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "0",
+                  "upper": "9",
+                  "integrand": "20 + 4*sqrt(t)*sin(t/2)",
+                  "variable": "t"
+               }
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99068",
+               "skills": [
+                  "BC-SKL-06036"
+               ],
+               "criterion": "Evaluates the average as about 21.075 tons per hour (or the integral as about 189.671 tons and compares it with 9 times 22 = 198) and concludes that the average is less than 22 tons per hour.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Show that the silo holds more than 490 tons of grain at time \\( t = 9 \\).",
+         "setup_required": true,
+         "answer_latex": "400 + \\int_{0}^{9} \\left(G(t) - U(t)\\right)dt \\approx 493.010 > 490",
+         "worked_solution": [
+            {
+               "text": "The amount at t = 9 is the initial amount plus the integral of the net rate.",
+               "latex": "400 + \\int_{0}^{9} \\left(G(t) - U(t)\\right)dt"
+            },
+            {
+               "text": "Evaluate on the calculator and compare with 490.",
+               "latex": "400 + \\int_{0}^{9} \\left(G(t) - U(t)\\right)dt \\approx 493.010 > 490"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-06039",
+                  "BC-SKL-08013",
+                  "BC-SKL-08012"
+               ],
+               "criterion": "Writes the amount at t = 9 as 400 plus the definite integral of G(t) - U(t) from t = 0 to t = 9, or as 400 plus the integral of G minus the integral of U over that interval.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "0",
+                  "upper": "9",
+                  "integrand": null,
+                  "variable": "t"
+               }
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99068",
+               "skills": [
+                  "BC-SKL-06037"
+               ],
+               "criterion": "Evaluates the amount as about 493.010 tons, including the initial 400 tons, and concludes that it is more than 490 tons.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Show that there is a time \\( t \\), with \\( 0 < t < 4 \\), at which the silo holds exactly 420 tons of grain.",
+         "setup_required": true,
+         "answer_latex": "400 < 420 < 400 + \\int_{0}^{4} \\left(G(t) - U(t)\\right)dt \\approx 421.817",
+         "worked_solution": [
+            {
+               "text": "Let W(t) be the amount of grain in the silo at time t. The amount at t = 4 is the initial amount plus the integral of the net rate.",
+               "latex": "400 + \\int_{0}^{4} \\left(G(t) - U(t)\\right)dt \\approx 421.817"
+            },
+            {
+               "text": "W is differentiable, with W'(t) = G(t) - U(t), so W is continuous on 0 <= t <= 4. Since W(0) = 400 < 420 < 421.817, the Intermediate Value Theorem gives a time t with 0 < t < 4 at which W(t) = 420.",
+               "latex": "400 < 420 < 421.817"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-06039",
+                  "BC-SKL-08012"
+               ],
+               "criterion": "Writes the amount at t = 4 as 400 plus the definite integral of G(t) - U(t) from t = 0 to t = 4 (or the integrals of G and U separately over that interval).",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "0",
+                  "upper": "4",
+                  "integrand": null,
+                  "variable": "t"
+               }
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99068",
+               "skills": [
+                  "BC-SKL-06037"
+               ],
+               "criterion": "Evaluates the amount at t = 4 as about 421.817 tons.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "c3",
+               "point_type_id": "BC-PT-99068",
+               "skills": [
+                  "BC-SKL-06037"
+               ],
+               "criterion": "States that the amount of grain is a continuous function of t (because it is differentiable, or because the rates are continuous), notes that 400 < 420 < 421.817, and concludes by the Intermediate Value Theorem that the silo holds exactly 420 tons at some time in 0 < t < 4. Without the continuity statement the point is not earned.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "At time \\( t = 9 \\) loading stops. For \\( 9 \\le t \\le 12 \\), no grain is loaded into the silo, and grain continues to be unloaded at the rate \\( U(t) \\) given above. Show that the silo holds more than 450 tons of grain at time \\( t = 12 \\).",
+         "setup_required": true,
+         "answer_latex": "493.010 - \\int_{9}^{12} U(t)\\,dt \\approx 463.004 > 450",
+         "worked_solution": [
+            {
+               "text": "From t = 9 to t = 12 only unloading happens, so subtract the integral of U from the amount at t = 9.",
+               "latex": "400 + \\int_{0}^{9} \\left(G(t) - U(t)\\right)dt - \\int_{9}^{12} U(t)\\,dt"
+            },
+            {
+               "text": "Evaluate on the calculator, using the stored amount from part (b).",
+               "latex": "\\int_{9}^{12} U(t)\\,dt \\approx 30.005"
+            },
+            {
+               "text": "Compare with 450.",
+               "latex": "493.010 - 30.005 \\approx 463.004 > 450"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-06036",
+                  "BC-SKL-08012"
+               ],
+               "criterion": "Writes the amount at t = 12 as the amount at t = 9 (from part (b), or its integral expression) minus the definite integral of U(t) from t = 9 to t = 12.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "9",
+                  "upper": "12",
+                  "integrand": "20 + 4*sqrt(t)*sin(t/2)",
+                  "variable": "t"
+               }
+            },
+            {
+               "point_id": "d2",
+               "point_type_id": "BC-PT-99068",
+               "skills": [
+                  "BC-SKL-06037"
+               ],
+               "criterion": "Evaluates the amount at t = 12 as about 463.004 tons (463.005 from the rounded values 493.010 and 30.005 is also accepted) and concludes that it is more than 450 tons.",
+               "eligible_only_if": [
+                  "d1"
+               ],
+               "check": null
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 111 of 111, stems read for ambiguity by the blind solver)"
+}

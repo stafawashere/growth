@@ -1,0 +1,246 @@
+{
+   "id": "FRQ-AGT-03001-03",
+   "archetype_id": "BC-QA-03001",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "Let \\( F(x) = \\ln\\left(x^{2} + 4x + 5\\right) \\) and \\( G(x) = \\arctan\\left(e^{x}\\right) \\) for all real \\( x \\), and let \\( H(x) = x^{2}\\sqrt{9 - x^{2}} \\) for \\( -3 < x < 3 \\)."
+   },
+   "skills": [
+      "BC-SKL-03002",
+      "BC-SKL-03003",
+      "BC-SKL-03006"
+   ],
+   "functions": {
+      "F": {
+         "variable": "x",
+         "expression": "log(x**2 + 4*x + 5)"
+      },
+      "G": {
+         "variable": "x",
+         "expression": "atan(exp(x))"
+      },
+      "H": {
+         "variable": "x",
+         "expression": "x**2*sqrt(9 - x**2)"
+      },
+      "K": {
+         "variable": "x",
+         "expression": "atan(exp(x))**3"
+      }
+   },
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find \\( F'(x) \\), and find the value of \\( F'(0) \\).",
+         "setup_required": false,
+         "answer_latex": "F'(0) = \\frac{4}{5}",
+         "worked_solution": [
+            {
+               "text": "Derivative of the logarithm at the quadratic, times the derivative of the quadratic.",
+               "latex": "F'(x) = \\frac{1}{x^{2} + 4x + 5} \\cdot (2x + 4) = \\frac{2x + 4}{x^{2} + 4x + 5}"
+            },
+            {
+               "text": "Substitute x = 0.",
+               "latex": "F'(0) = \\frac{4}{5}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99023",
+               "skills": [
+                  "BC-SKL-03002"
+               ],
+               "criterion": "Writes F'(x) = (2x + 4)/(x^2 + 4x + 5) or an equivalent expression; the numerator 2x + 4 from the inner function must be present.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "(2*x + 4)/(x**2 + 4*x + 5)",
+                  "up_to_constant": false,
+                  "each_side": false,
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-03002"
+               ],
+               "criterion": "Gives F'(0) = 4/5 or 0.8.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "4/5",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find \\( G'(x) \\), and find the value of \\( G'(0) \\).",
+         "setup_required": false,
+         "answer_latex": "G'(0) = \\frac{1}{2}",
+         "worked_solution": [
+            {
+               "text": "Derivative of arctangent at e^x, times the derivative of e^x.",
+               "latex": "G'(x) = \\frac{1}{1 + \\left(e^{x}\\right)^{2}} \\cdot e^{x} = \\frac{e^{x}}{1 + e^{2x}}"
+            },
+            {
+               "text": "Substitute x = 0.",
+               "latex": "G'(0) = \\frac{1}{1 + 1} = \\frac{1}{2}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99023",
+               "skills": [
+                  "BC-SKL-03002"
+               ],
+               "criterion": "Writes G'(x) = e^x/(1 + e^(2x)) or an equivalent expression; the factor e^x from the inner function must be present and the denominator must square e^x, not x.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "exp(x)/(1 + exp(2*x))",
+                  "up_to_constant": false,
+                  "each_side": false,
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-03002"
+               ],
+               "criterion": "Gives G'(0) = 1/2 or 0.5.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "1/2",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Find \\( H'(x) \\), and find the value of \\( H'\\left(\\sqrt{5}\\right) \\).",
+         "setup_required": false,
+         "answer_latex": "H'\\left(\\sqrt{5}\\right) = \\frac{3\\sqrt{5}}{2}",
+         "worked_solution": [
+            {
+               "text": "Product rule, with the chain rule on the square root.",
+               "latex": "H'(x) = 2x\\sqrt{9 - x^{2}} + x^{2} \\cdot \\frac{-2x}{2\\sqrt{9 - x^{2}}} = 2x\\sqrt{9 - x^{2}} - \\frac{x^{3}}{\\sqrt{9 - x^{2}}}"
+            },
+            {
+               "text": "At x = sqrt(5) the root is 2.",
+               "latex": "H'\\left(\\sqrt{5}\\right) = 2\\sqrt{5} \\cdot 2 - \\frac{5\\sqrt{5}}{2} = \\frac{3\\sqrt{5}}{2}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99023",
+               "skills": [
+                  "BC-SKL-03002",
+                  "BC-SKL-03006"
+               ],
+               "criterion": "Differentiates the square root as -2x/(2 sqrt(9 - x^2)) inside a correct product rule, giving H'(x) equivalent to 2x sqrt(9 - x^2) - x^3/sqrt(9 - x^2), such as (18x - 3x^3)/sqrt(9 - x^2).",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "2*x*sqrt(9 - x**2) - x**3/sqrt(9 - x**2)",
+                  "up_to_constant": false,
+                  "each_side": false,
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-03006"
+               ],
+               "criterion": "Gives H'(sqrt(5)) = 3 sqrt(5)/2; a decimal accurate to three places, 3.354, is also accepted.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "3*sqrt(5)/2"
+               }
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "Let \\( K(x) = \\big(G(x)\\big)^{3} \\). Find \\( K'(x) \\), and find the value of \\( K'(0) \\).",
+         "setup_required": false,
+         "answer_latex": "K'(0) = \\frac{3\\pi^{2}}{32}",
+         "worked_solution": [
+            {
+               "text": "The cube is the outer layer and G is the inner layer.",
+               "latex": "K'(x) = 3\\left(G(x)\\right)^{2} \\cdot G'(x) = 3\\left(\\arctan\\left(e^{x}\\right)\\right)^{2} \\cdot \\frac{e^{x}}{1 + e^{2x}}"
+            },
+            {
+               "text": "G(0) = arctan(1) = pi/4 and G'(0) = 1/2 from part (b).",
+               "latex": "K'(0) = 3\\left(\\frac{\\pi}{4}\\right)^{2} \\cdot \\frac{1}{2} = \\frac{3\\pi^{2}}{32}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99023",
+               "skills": [
+                  "BC-SKL-03003"
+               ],
+               "criterion": "Differentiates the outer cube as 3(G(x))^2, equivalently 3 arctan^2(e^x), evaluated at G(x) rather than at x, as a factor of K'(x).",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "d2",
+               "point_type_id": "BC-PT-99023",
+               "skills": [
+                  "BC-SKL-03003"
+               ],
+               "criterion": "Multiplies by G'(x), giving K'(x) = 3(G(x))^2 G'(x) or the equivalent explicit expression 3 arctan^2(e^x) e^x/(1 + e^(2x)).",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "3*atan(exp(x))**2*exp(x)/(1 + exp(2*x))",
+                  "up_to_constant": false,
+                  "each_side": false,
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "d3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-03003"
+               ],
+               "criterion": "Gives K'(0) = 3 pi^2/32; a decimal accurate to three places, 0.925, is also accepted.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "3*pi**2/32"
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 111 of 111, stems read for ambiguity by the blind solver)"
+}

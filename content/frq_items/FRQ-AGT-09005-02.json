@@ -1,0 +1,212 @@
+{
+   "id": "FRQ-AGT-09005-02",
+   "archetype_id": "BC-QA-09005",
+   "calculator_status": "calculator",
+   "representation": "BC-REP-14",
+   "stem": {
+      "text": "A robot moves on a warehouse floor, which is modeled as the xy-plane with distances in meters. At time \\( t \\) seconds, the robot's velocity vector is \\( \\langle x'(t), y'(t) \\rangle = \\left\\langle 2\\cos\\left(\\frac{t^{2}}{5}\\right), \\ \\ln\\left(1 + t^{2}\\right) - 1 \\right\\rangle \\) meters per second, for \\( 0 \\le t \\le 5 \\). At time \\( t = 1 \\) the robot is at the point \\( (4, 2) \\)."
+   },
+   "skills": [
+      "BC-SKL-09019",
+      "BC-SKL-09020",
+      "BC-SKL-09021",
+      "BC-SKL-09022",
+      "BC-SKL-09026",
+      "BC-SKL-09018"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find the x-coordinate of the position of the robot at time \\( t = 5 \\).",
+         "setup_required": true,
+         "answer_latex": "x(5) = 4 + \\int_{1}^{5} 2\\cos\\left(\\frac{t^{2}}{5}\\right)dt \\approx 3.849",
+         "worked_solution": [
+            {
+               "text": "The x-coordinate at t = 5 is the known x-coordinate at t = 1 plus the accumulated change in x.",
+               "latex": "x(5) = x(1) + \\int_{1}^{5} x'(t)\\,dt"
+            },
+            {
+               "text": "Substitute and evaluate on the calculator.",
+               "latex": "x(5) = 4 + \\int_{1}^{5} 2\\cos\\left(\\frac{t^{2}}{5}\\right)dt \\approx 3.849"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-09020",
+                  "BC-SKL-09021"
+               ],
+               "criterion": "Writes the definite integral of 2 cos(t^2/5) (or of x'(t)) with t = 1 and t = 5 as its limits.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "1",
+                  "upper": "5",
+                  "integrand": "2*cos(t**2/5)",
+                  "variable": "t"
+               }
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99033",
+               "skills": [
+                  "BC-SKL-09021",
+                  "BC-SKL-09026"
+               ],
+               "criterion": "Adds the known x-coordinate 4 at t = 1 to that integral.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "a3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-09026"
+               ],
+               "criterion": "Gives x(5) = 3.849 (3.848 accepted as truncation). The value of the integral alone, about -0.151, does not earn this point.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "4 + Integral(2*cos(t**2/5), (t, 1, 5))"
+               },
+               "follows_from": [
+                  "a2"
+               ]
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find the least y-coordinate of the position of the robot for \\( 0 \\le t \\le 5 \\). Justify your answer.",
+         "setup_required": true,
+         "answer_latex": "y\\left(\\sqrt{e - 1}\\right) = 2 + \\int_{1}^{\\sqrt{e - 1}} \\left(\\ln\\left(1 + t^{2}\\right) - 1\\right)dt \\approx 1.953",
+         "worked_solution": [
+            {
+               "text": "Set y'(t) = 0.",
+               "latex": "\\ln\\left(1 + t^{2}\\right) - 1 = 0 \\implies t = \\sqrt{e - 1} \\approx 1.311"
+            },
+            {
+               "text": "y'(t) < 0 for 0 <= t < 1.311 and y'(t) > 0 for 1.311 < t <= 5, so y decreases and then increases on the whole interval, and its least value is at t = sqrt(e - 1).",
+               "latex": "y'(1) = \\ln 2 - 1 < 0, \\quad y'(2) = \\ln 5 - 1 > 0"
+            },
+            {
+               "text": "Accumulate from the known y-coordinate at t = 1 and evaluate on the calculator.",
+               "latex": "y\\left(\\sqrt{e - 1}\\right) = 2 + \\int_{1}^{\\sqrt{e - 1}} \\left(\\ln\\left(1 + t^{2}\\right) - 1\\right)dt \\approx 1.953"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-09020",
+                  "BC-SKL-09026"
+               ],
+               "criterion": "Writes the definite integral of ln(1 + t^2) - 1 (or of y'(t)) with t = 1 and t = sqrt(e - 1) as its limits (the upper limit as 1.311 to three places accepted).",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "1",
+                  "upper": "sqrt(E - 1)",
+                  "integrand": "log(1 + t**2) - 1",
+                  "variable": "t"
+               }
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99013",
+               "skills": [
+                  "BC-SKL-09026"
+               ],
+               "criterion": "Sets y'(t) = 0, or discusses the sign change of y'(t), and finds t = sqrt(e - 1), about 1.311.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "b3",
+               "point_type_id": "BC-PT-99010",
+               "skills": [
+                  "BC-SKL-09026"
+               ],
+               "criterion": "Justifies globally: y'(t) < 0 for t < sqrt(e - 1) and y'(t) > 0 for t > sqrt(e - 1) on the whole interval 0 <= t <= 5, or that t = sqrt(e - 1) is the only critical point and y' changes from negative to positive there. A candidates comparison of y(0), about 2.736, y(sqrt(e - 1)) and y(5), about 6.773, is also accepted.",
+               "eligible_only_if": [
+                  "b1",
+                  "b2"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "b4",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-09021",
+                  "BC-SKL-09026"
+               ],
+               "criterion": "Gives the least y-coordinate 1.953. The time 1.311 in place of the coordinate does not earn this point.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "2 + Integral(log(1 + t**2) - 1, (t, 1, sqrt(E - 1)))"
+               }
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Find the x-coordinate of the position of the robot at time \\( t = 0 \\).",
+         "setup_required": true,
+         "answer_latex": "x(0) = 4 - \\int_{0}^{1} 2\\cos\\left(\\frac{t^{2}}{5}\\right)dt \\approx 2.008",
+         "worked_solution": [
+            {
+               "text": "Accumulate backwards from the known x-coordinate at t = 1.",
+               "latex": "x(0) = x(1) - \\int_{0}^{1} x'(t)\\,dt"
+            },
+            {
+               "text": "Substitute and evaluate on the calculator.",
+               "latex": "x(0) = 4 - \\int_{0}^{1} 2\\cos\\left(\\frac{t^{2}}{5}\\right)dt \\approx 2.008"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-09020",
+                  "BC-SKL-09022"
+               ],
+               "criterion": "Writes the definite integral of 2 cos(t^2/5) (or of x'(t)) between t = 0 and t = 1 and subtracts it from 4, or equivalently adds the integral from 1 to 0 to 4. Adding the integral from 0 to 1 to 4 does not earn this point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-09022"
+               ],
+               "criterion": "Gives x(0) = 2.008 (2.007 accepted as truncation). The value 5.992 from adding the integral does not earn this point.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "4 - Integral(2*cos(t**2/5), (t, 0, 1))"
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 115 of 115, stems read for ambiguity by the blind solver)"
+}

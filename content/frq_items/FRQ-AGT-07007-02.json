@@ -1,0 +1,222 @@
+{
+   "id": "FRQ-AGT-07007-02",
+   "archetype_id": "BC-QA-07007",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "stem": {
+      "text": "Consider the differential equation \\( \\dfrac{dy}{dx} = \\dfrac{y}{x} + x^{2} \\) for \\( x > 0 \\)."
+   },
+   "skills": [
+      "BC-SKL-07006",
+      "BC-SKL-07007",
+      "BC-SKL-07008",
+      "BC-SKL-07009",
+      "BC-SKL-07033"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Show that \\( y = \\dfrac{x^{3}}{2} + 4x \\) is a solution to the differential equation for \\( x > 0 \\).",
+         "setup_required": false,
+         "answer_latex": "\\frac{dy}{dx} = \\frac{y}{x} + x^{2}",
+         "worked_solution": [
+            {
+               "text": "Differentiate the candidate.",
+               "latex": "\\frac{dy}{dx} = \\frac{3x^{2}}{2} + 4"
+            },
+            {
+               "text": "Substitute the candidate into the right side.",
+               "latex": "\\frac{y}{x} + x^{2} = \\frac{x^{2}}{2} + 4 + x^{2} = \\frac{3x^{2}}{2} + 4"
+            },
+            {
+               "text": "The two sides agree for every x > 0, so the function is a solution.",
+               "latex": "\\frac{dy}{dx} = \\frac{y}{x} + x^{2}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-07006"
+               ],
+               "criterion": "Differentiates the candidate correctly, dy/dx = 3x^2/2 + 4, and substitutes the candidate into the right side, y/x + x^2 = x^2/2 + 4 + x^2.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99068",
+               "skills": [
+                  "BC-SKL-07006"
+               ],
+               "criterion": "Simplifies both sides to 3x^2/2 + 4 and closes by stating that dy/dx equals y/x + x^2, so the function is a solution. A chain that stops before showing the two sides agree does not earn the point.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "For each constant \\( k \\), the function \\( y = \\dfrac{x^{3}}{2} + kx \\) is a solution to the differential equation. Find the value of \\( k \\) for which this function satisfies the initial condition \\( y(2) = 10 \\). Then use the differential equation to find the slope of the graph of this solution at \\( x = 2 \\).",
+         "setup_required": false,
+         "answer_latex": "k = 3, \\quad \\frac{dy}{dx} = 9 \\text{ at } x = 2",
+         "worked_solution": [
+            {
+               "text": "Substitute x = 2 and y = 10.",
+               "latex": "\\frac{2^{3}}{2} + 2k = 10"
+            },
+            {
+               "text": "Solve for k.",
+               "latex": "k = 3"
+            },
+            {
+               "text": "At the point (2, 10) the differential equation gives the slope.",
+               "latex": "\\frac{dy}{dx} = \\frac{10}{2} + 2^{2} = 9"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-07007",
+                  "BC-SKL-07009",
+                  "BC-SKL-07033"
+               ],
+               "criterion": "Gives k = 3.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-07006",
+                  "BC-SKL-07007"
+               ],
+               "criterion": "Finds the slope at x = 2 as 9, either from the differential equation at (2, 10), 10/2 + 2^2, or by differentiating y = x^3/2 + 3x and evaluating at x = 2, 3(2)^2/2 + 3.",
+               "eligible_only_if": [],
+               "follows_from": [
+                  "b1"
+               ],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Differentiate the differential equation to find \\( \\dfrac{d^{2}y}{dx^{2}} \\) in terms of \\( x \\), \\( y \\), and \\( \\dfrac{dy}{dx} \\). Show that every solution of the differential equation satisfies \\( \\dfrac{d^{2}y}{dx^{2}} = 3x \\). Then show that \\( y = x^{3} + x \\) is not a solution to the differential equation.",
+         "setup_required": false,
+         "answer_latex": "y = x^{3} + x \\text{ is not a solution}",
+         "worked_solution": [
+            {
+               "text": "Differentiate y/x + x^2 with the quotient rule, treating y as a function of x.",
+               "latex": "\\frac{d^{2}y}{dx^{2}} = \\frac{x\\frac{dy}{dx} - y}{x^{2}} + 2x"
+            },
+            {
+               "text": "Substitute the differential equation for dy/dx.",
+               "latex": "\\frac{d^{2}y}{dx^{2}} = \\frac{y + x^{3} - y}{x^{2}} + 2x = x + 2x = 3x"
+            },
+            {
+               "text": "For y = x^3 + x the second derivative is 6x, which is not 3x for any x > 0.",
+               "latex": "\\frac{d^{2}}{dx^{2}}(x^{3} + x) = 6x \\ne 3x"
+            },
+            {
+               "text": "Directly, dy/dx = 3x^2 + 1 while y/x + x^2 = 2x^2 + 1, and these differ for x > 0.",
+               "latex": "3x^{2} + 1 \\ne 2x^{2} + 1"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-07006"
+               ],
+               "criterion": "Differentiates the right side implicitly: d^2y/dx^2 = (x dy/dx - y)/x^2 + 2x, or an equivalent form such as (1/x)(dy/dx) - y/x^2 + 2x.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99068",
+               "skills": [
+                  "BC-SKL-07006",
+                  "BC-SKL-07009"
+               ],
+               "criterion": "Substitutes dy/dx = y/x + x^2 into the second derivative and simplifies to 3x, closing on d^2y/dx^2 = 3x. A chain that stops before 3x does not earn the point.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "c3",
+               "point_type_id": "BC-PT-99068",
+               "skills": [
+                  "BC-SKL-07008"
+               ],
+               "criterion": "Shows that y = x^3 + x is not a solution, either by noting its second derivative 6x is not 3x for x > 0, or by showing dy/dx = 3x^2 + 1 differs from y/x + x^2 = 2x^2 + 1 for x > 0. Stating the verdict without the comparison does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "Find the value of the constant \\( a \\) for which \\( y = ax^{3} \\) is a solution to the differential equation.",
+         "setup_required": false,
+         "answer_latex": "a = \\frac{1}{2}",
+         "worked_solution": [
+            {
+               "text": "Substitute y = ax^3 and dy/dx = 3ax^2.",
+               "latex": "3ax^{2} = \\frac{ax^{3}}{x} + x^{2} = ax^{2} + x^{2}"
+            },
+            {
+               "text": "Divide by x^2, which is not zero for x > 0.",
+               "latex": "3a = a + 1"
+            },
+            {
+               "text": "Solve.",
+               "latex": "a = \\frac{1}{2}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-07006"
+               ],
+               "criterion": "Substitutes y = ax^3 and its derivative 3ax^2 into the differential equation to get 3ax^2 = ax^2 + x^2, or an equivalent equation such as 3a = a + 1.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "d2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-07006"
+               ],
+               "criterion": "Gives a = 1/2, or 0.5.",
+               "eligible_only_if": [
+                  "d1"
+               ],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "1/2",
+                  "up_to_constant": false,
+                  "variable": "a"
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 66 of 66 after two formulation misreadings were triaged, stems read for ambiguity by the blind solver)"
+}

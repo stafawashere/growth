@@ -1,0 +1,221 @@
+{
+   "id": "FRQ-AGT-01011-02",
+   "archetype_id": "BC-QA-01011",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "stem": {
+      "text": "The function \\( g \\) is twice differentiable on the closed interval \\( [0, 6] \\). The table gives selected values of \\( g \\) and its derivative \\( g' \\). \\[ \\begin{array}{c|cccc} x & 0 & 1 & 4 & 6 \\\\ \\hline g(x) & 3 & -1 & 2 & 7 \\\\ g'(x) & 2 & -3 & 5 & 1 \\end{array} \\]"
+   },
+   "skills": [
+      "BC-SKL-01064",
+      "BC-SKL-01065",
+      "BC-SKL-01066",
+      "BC-SKL-01067",
+      "BC-SKL-01068"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Must there be a value \\( c \\), with \\( 1 < c < 4 \\), for which \\( g(c) = 0 \\)? Justify your answer.",
+         "setup_required": false,
+         "answer_latex": "\\text{Yes}",
+         "worked_solution": [
+            {
+               "text": "g is differentiable on [0, 6], so it is continuous on [1, 4].",
+               "latex": "g \\text{ continuous on } [1, 4]"
+            },
+            {
+               "text": "0 lies strictly between g(1) and g(4).",
+               "latex": "g(1) = -1 < 0 < 2 = g(4)"
+            },
+            {
+               "text": "By the Intermediate Value Theorem such a c exists.",
+               "latex": "\\text{Yes}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99015",
+               "skills": [
+                  "BC-SKL-01064",
+                  "BC-SKL-01065"
+               ],
+               "criterion": "States that g is continuous on [1, 4] because g is differentiable (or twice differentiable). A bare claim of continuity does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99016",
+               "skills": [
+                  "BC-SKL-01066",
+                  "BC-SKL-01067",
+                  "BC-SKL-01068"
+               ],
+               "criterion": "Shows g(1) = -1 < 0 < 2 = g(4), or equivalent wording that 0 is between g(1) and g(4), and answers yes with continuity cited.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Must there be a value \\( c \\), with \\( 1 < c < 4 \\), for which \\( g'(c) = 0 \\)? Justify your answer.",
+         "setup_required": false,
+         "answer_latex": "\\text{Yes}",
+         "worked_solution": [
+            {
+               "text": "g is twice differentiable, so g' is differentiable and therefore continuous on [1, 4].",
+               "latex": "g' \\text{ continuous on } [1, 4]"
+            },
+            {
+               "text": "0 lies strictly between g'(1) and g'(4).",
+               "latex": "g'(1) = -3 < 0 < 5 = g'(4)"
+            },
+            {
+               "text": "By the Intermediate Value Theorem applied to g', such a c exists.",
+               "latex": "\\text{Yes}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99015",
+               "skills": [
+                  "BC-SKL-01064",
+                  "BC-SKL-01065"
+               ],
+               "criterion": "States that g' is continuous on [1, 4] because g is twice differentiable, so g' is differentiable. Citing only that g is continuous does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99016",
+               "skills": [
+                  "BC-SKL-01066",
+                  "BC-SKL-01067",
+                  "BC-SKL-01068"
+               ],
+               "criterion": "Shows g'(1) = -3 < 0 < 5 = g'(4) and answers yes with the continuity of g' cited. An argument from g(1) and g(4), or one that names the Mean Value Theorem with values of g, does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Let \\( h \\) be the function defined by \\( h(x) = x\\,g(x) \\). Must there be a value \\( c \\), with \\( 4 < c < 6 \\), for which \\( h(c) = 30 \\)? Justify your answer.",
+         "setup_required": false,
+         "answer_latex": "\\text{Yes}",
+         "worked_solution": [
+            {
+               "text": "h is a product of x and g, both differentiable, so h is continuous on [4, 6].",
+               "latex": "h \\text{ continuous on } [4, 6]"
+            },
+            {
+               "text": "Evaluate h at the endpoints.",
+               "latex": "h(4) = 4 \\cdot 2 = 8, \\quad h(6) = 6 \\cdot 7 = 42"
+            },
+            {
+               "text": "30 lies strictly between the endpoint values, so such a c exists.",
+               "latex": "8 < 30 < 42 \\Rightarrow \\text{Yes}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99015",
+               "skills": [
+                  "BC-SKL-01064",
+                  "BC-SKL-01065"
+               ],
+               "criterion": "States that h is continuous on [4, 6] because g is differentiable (hence continuous) and x is continuous, or because h is a product of differentiable functions.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99016",
+               "skills": [
+                  "BC-SKL-01066",
+                  "BC-SKL-01067",
+                  "BC-SKL-01068"
+               ],
+               "criterion": "Computes h(4) = 8 and h(6) = 42, shows 30 is strictly between them, and answers yes.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "Explain why the equation \\( g(x) = x \\) must have at least two solutions in the open interval \\( (0, 6) \\).",
+         "setup_required": false,
+         "answer_latex": "\\text{at least one solution in } (0, 1) \\text{ and one in } (4, 6)",
+         "worked_solution": [
+            {
+               "text": "Let r(x) = g(x) - x, which is continuous on [0, 6] because g is differentiable.",
+               "latex": "r(x) = g(x) - x"
+            },
+            {
+               "text": "Evaluate r at the table values.",
+               "latex": "r(0) = 3, \\quad r(1) = -2, \\quad r(4) = -2, \\quad r(6) = 1"
+            },
+            {
+               "text": "r changes sign on [0, 1].",
+               "latex": "r(1) = -2 < 0 < 3 = r(0)"
+            },
+            {
+               "text": "r changes sign on [4, 6].",
+               "latex": "r(4) = -2 < 0 < 1 = r(6)"
+            },
+            {
+               "text": "The Intermediate Value Theorem gives a zero of r, a solution of g(x) = x, in each of the two disjoint intervals.",
+               "latex": "x_{1} \\in (0, 1), \\quad x_{2} \\in (4, 6)"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99015",
+               "skills": [
+                  "BC-SKL-01064",
+                  "BC-SKL-01065"
+               ],
+               "criterion": "States that g(x) - x (or g on the intervals used) is continuous because g is differentiable.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "d2",
+               "point_type_id": "BC-PT-99016",
+               "skills": [
+                  "BC-SKL-01066",
+                  "BC-SKL-01067",
+                  "BC-SKL-01068"
+               ],
+               "criterion": "Shows a sign change of g(x) - x on [0, 1], from 3 to -2, or equivalently g(0) = 3 > 0 and g(1) = -1 < 1, and concludes a solution lies in (0, 1). Any correct pair of table values giving a solution interval disjoint from the one in d3 is accepted.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "d3",
+               "point_type_id": "BC-PT-99016",
+               "skills": [
+                  "BC-SKL-01066",
+                  "BC-SKL-01067",
+                  "BC-SKL-01068"
+               ],
+               "criterion": "Shows a sign change of g(x) - x on [4, 6], from -2 to 1, or equivalently g(4) = 2 < 4 and g(6) = 7 > 6, and concludes a second solution lies in (4, 6), an interval disjoint from the first.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 111 of 111, stems read for ambiguity by the blind solver)"
+}

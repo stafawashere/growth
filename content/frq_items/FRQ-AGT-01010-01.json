@@ -1,0 +1,214 @@
+{
+   "id": "FRQ-AGT-01010-01",
+   "archetype_id": "BC-QA-01010",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-05",
+   "stem": {
+      "text": "A tank initially holds 50 liters of pure water. Starting at time \\( t = 0 \\), brine is pumped into the tank and nothing flows out. For \\( t \\ge 0 \\) minutes, the volume of liquid in the tank is \\( V(t) = 50 + 4t \\) liters and the amount of salt in the tank is \\( A(t) = 3t \\) grams. The concentration of salt in the tank is \\( C(t) = \\dfrac{A(t)}{V(t)} \\) grams per liter. A second tank contains \\( B(t) = 3t - 20 + 20e^{-t/10} \\) grams of salt at time \\( t \\) minutes."
+   },
+   "skills": [
+      "BC-SKL-01058",
+      "BC-SKL-01059",
+      "BC-SKL-01060",
+      "BC-SKL-01061",
+      "BC-SKL-01063",
+      "BC-SKL-01062"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Write a limit expression that describes the concentration of salt in the first tank in the long run, and evaluate it.",
+         "setup_required": false,
+         "answer_latex": "\\lim_{t \\to \\infty} \\frac{3t}{50 + 4t} = \\frac{3}{4}",
+         "worked_solution": [
+            {
+               "text": "Long run means t increasing without bound.",
+               "latex": "\\lim_{t \\to \\infty} C(t) = \\lim_{t \\to \\infty} \\frac{3t}{50 + 4t}"
+            },
+            {
+               "text": "Divide numerator and denominator by t.",
+               "latex": "\\lim_{t \\to \\infty} \\frac{3}{\\frac{50}{t} + 4} = \\frac{3}{4}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99054",
+               "skills": [
+                  "BC-SKL-01060"
+               ],
+               "criterion": "Writes the limit of C(t), or of 3t/(50 + 4t), as t tends to infinity in limit notation. A limit as t tends to 0, or arithmetic with infinity substituted, does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-01058",
+                  "BC-SKL-01059"
+               ],
+               "criterion": "Gives 3/4, or 0.75, grams per liter as the value.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "3/4",
+                  "up_to_constant": false,
+                  "variable": "t"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find \\( C'(t) \\). Write a limit expression that describes the rate of change of the concentration of salt in the first tank in the long run, and evaluate it.",
+         "setup_required": false,
+         "answer_latex": "\\lim_{t \\to \\infty} C'(t) = 0",
+         "worked_solution": [
+            {
+               "text": "Quotient rule.",
+               "latex": "C'(t) = \\frac{3(50 + 4t) - 3t \\cdot 4}{(50 + 4t)^{2}} = \\frac{150}{(50 + 4t)^{2}}"
+            },
+            {
+               "text": "The numerator is constant and the denominator grows without bound.",
+               "latex": "\\lim_{t \\to \\infty} C'(t) = \\lim_{t \\to \\infty} \\frac{150}{(50 + 4t)^{2}} = 0"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-01060"
+               ],
+               "criterion": "Gives C'(t) = 150/(50 + 4t)^2 or any equivalent expression, simplified or not.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "150/(50 + 4*t)**2",
+                  "up_to_constant": false,
+                  "variable": "t",
+                  "each_side": false
+               }
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99054",
+               "skills": [
+                  "BC-SKL-01060"
+               ],
+               "criterion": "Writes the limit of C'(t), or of the expression found for it, as t tends to infinity. Writing the limit of C(t) instead does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-01058"
+               ],
+               "criterion": "Gives 0 as the value of the limit of C'(t).",
+               "eligible_only_if": [],
+               "check": null,
+               "follows_from": [
+                  "b1"
+               ]
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Write a limit expression that describes the difference \\( A(t) - B(t) \\) between the amounts of salt in the two tanks in the long run, and evaluate it.",
+         "setup_required": false,
+         "answer_latex": "\\lim_{t \\to \\infty} \\left( 20 - 20e^{-t/10} \\right) = 20",
+         "worked_solution": [
+            {
+               "text": "Simplify the difference.",
+               "latex": "A(t) - B(t) = 3t - \\left( 3t - 20 + 20e^{-t/10} \\right) = 20 - 20e^{-t/10}"
+            },
+            {
+               "text": "The exponential term tends to 0.",
+               "latex": "\\lim_{t \\to \\infty} \\left( A(t) - B(t) \\right) = \\lim_{t \\to \\infty} \\left( 20 - 20e^{-t/10} \\right) = 20"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99054",
+               "skills": [
+                  "BC-SKL-01060"
+               ],
+               "criterion": "Writes the limit of A(t) - B(t), or of 20 - 20e^(-t/10), as t tends to infinity. Writing infinity minus infinity as the value does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-01062"
+               ],
+               "criterion": "Gives 20 grams as the value.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "20",
+                  "up_to_constant": false,
+                  "variable": "t"
+               }
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "Write a limit expression that describes the rate at which the amount of salt in the second tank changes in the long run, and evaluate it.",
+         "setup_required": false,
+         "answer_latex": "\\lim_{t \\to \\infty} B'(t) = 3",
+         "worked_solution": [
+            {
+               "text": "Differentiate B.",
+               "latex": "B'(t) = 3 - 2e^{-t/10}"
+            },
+            {
+               "text": "The exponential term tends to 0.",
+               "latex": "\\lim_{t \\to \\infty} B'(t) = \\lim_{t \\to \\infty} \\left( 3 - 2e^{-t/10} \\right) = 3"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99054",
+               "skills": [
+                  "BC-SKL-01060"
+               ],
+               "criterion": "Writes the limit of B'(t), or of 3 - 2e^(-t/10), as t tends to infinity. Writing the limit of B(t), the amount rather than its rate, does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "d2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-01060",
+                  "BC-SKL-01062"
+               ],
+               "criterion": "Gives 3 grams per minute as the value.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "3",
+                  "up_to_constant": false,
+                  "variable": "t"
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 111 of 111, stems read for ambiguity by the blind solver)"
+}

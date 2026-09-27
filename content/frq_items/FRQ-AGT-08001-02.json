@@ -1,0 +1,243 @@
+{
+   "id": "FRQ-AGT-08001-02",
+   "archetype_id": "BC-QA-08001",
+   "calculator_status": "calculator",
+   "representation": "BC-REP-05",
+   "stem": {
+      "text": "The wind speed at a weather station is modeled by \\( W(t) = 14 + 8\\sin\\left(\\frac{t^{2}}{50}\\right) \\) kilometers per hour, where \\( t \\) is the number of hours after 6 a.m. and \\( 0 \\le t \\le 12 \\)."
+   },
+   "skills": [
+      "BC-SKL-08001",
+      "BC-SKL-08002",
+      "BC-SKL-08003",
+      "BC-SKL-08005",
+      "BC-SKL-06038",
+      "BC-SKL-06036"
+   ],
+   "functions": {
+      "W": {
+         "variable": "t",
+         "expression": "14 + 8*sin(t**2/50)"
+      },
+      "U": {
+         "variable": "t",
+         "expression": "10 + 3*t - t**2/4"
+      }
+   },
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find the average wind speed at the station over the interval \\( 0 \\le t \\le 12 \\).",
+         "setup_required": true,
+         "answer_latex": "\\frac{1}{12}\\int_{0}^{12} W(t)\\,dt \\approx 18.172",
+         "worked_solution": [
+            {
+               "text": "Average value: the integral over the interval divided by its length 12.",
+               "latex": "\\frac{1}{12}\\int_{0}^{12} \\left(14 + 8\\sin\\left(\\frac{t^{2}}{50}\\right)\\right)dt"
+            },
+            {
+               "text": "Evaluate on the calculator.",
+               "latex": "\\frac{1}{12}\\int_{0}^{12} W(t)\\,dt \\approx 18.172"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99020",
+               "skills": [
+                  "BC-SKL-08001",
+                  "BC-SKL-06038"
+               ],
+               "criterion": "Writes the definite integral of W(t) from t = 0 to t = 12 divided by 12. The average of W(0) and W(12), or (W(12) - W(0))/12, earns nothing.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-08003"
+               ],
+               "criterion": "Gives 18.172 kilometers per hour, accurate to three decimal places by rounding or truncation.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "Integral(14 + 8*sin(t**2/50), (t, 0, 12))/12"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "There is exactly one number \\( x \\), with \\( 0 < x \\le 12 \\), for which the average wind speed over the interval \\( 0 \\le t \\le x \\) is 17.5 kilometers per hour. Find \\( x \\).",
+         "setup_required": true,
+         "answer_latex": "x \\approx 8.850",
+         "worked_solution": [
+            {
+               "text": "Average over [0, x] set equal to 17.5.",
+               "latex": "\\frac{1}{x}\\int_{0}^{x} \\left(14 + 8\\sin\\left(\\frac{t^{2}}{50}\\right)\\right)dt = 17.5"
+            },
+            {
+               "text": "Solve on the calculator.",
+               "latex": "x \\approx 8.850"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99020",
+               "skills": [
+                  "BC-SKL-08001",
+                  "BC-SKL-06038"
+               ],
+               "criterion": "Writes the equation (1/x) times the integral of W(t) from 0 to x equals 17.5, or the equivalent equation that the integral of W(t) from 0 to x equals 17.5x.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "equation_setup",
+                  "unknown": "X",
+                  "left": "Integral(14 + 8*sin(t**2/50), (t, 0, X))/X",
+                  "right": "35/2",
+                  "interval": [
+                     "8",
+                     "10"
+                  ]
+               }
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-08003"
+               ],
+               "criterion": "Gives x = 8.850, accurate to three decimal places.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "8.8503087134143260572085850698528"
+               }
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "At a second station the wind speed is modeled by \\( U(t) = 10 + 3t - \\frac{t^{2}}{4} \\) kilometers per hour for \\( 0 \\le t \\le 12 \\). Using an antiderivative, find the average wind speed at the second station over \\( 0 \\le t \\le 12 \\). Show the work that leads to your answer.",
+         "setup_required": true,
+         "answer_latex": "16",
+         "worked_solution": [
+            {
+               "text": "Average value of U over [0, 12].",
+               "latex": "\\frac{1}{12}\\int_{0}^{12} \\left(10 + 3t - \\frac{t^{2}}{4}\\right)dt"
+            },
+            {
+               "text": "Antiderivative.",
+               "latex": "10t + \\frac{3t^{2}}{2} - \\frac{t^{3}}{12}"
+            },
+            {
+               "text": "Evaluate from 0 to 12 and divide by 12.",
+               "latex": "\\frac{1}{12}\\left(120 + 216 - 144\\right) = \\frac{192}{12} = 16"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99020",
+               "skills": [
+                  "BC-SKL-08001",
+                  "BC-SKL-06038"
+               ],
+               "criterion": "Writes the definite integral of U(t) from t = 0 to t = 12 divided by 12.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99003",
+               "skills": [
+                  "BC-SKL-08001"
+               ],
+               "criterion": "Writes the antiderivative 10t + 3t^2/2 - t^3/12 of U, or an equivalent expression, with or without a constant or the factor 1/12.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "c3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-08001",
+                  "BC-SKL-08005"
+               ],
+               "criterion": "Gives the average speed 16 kilometers per hour.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "16"
+               }
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "Find the time \\( t \\), with \\( 0 < t < 8 \\), at which the wind speed at the first station equals its average wind speed over the interval \\( 0 \\le t \\le 12 \\).",
+         "setup_required": true,
+         "answer_latex": "t \\approx 5.237",
+         "worked_solution": [
+            {
+               "text": "Set W(t) equal to the average value from part (a).",
+               "latex": "14 + 8\\sin\\left(\\frac{t^{2}}{50}\\right) = \\frac{1}{12}\\int_{0}^{12} W(t)\\,dt"
+            },
+            {
+               "text": "Solve on the calculator for t between 0 and 8.",
+               "latex": "t \\approx 5.237"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99020",
+               "skills": [
+                  "BC-SKL-08001",
+                  "BC-SKL-06038"
+               ],
+               "criterion": "Writes the equation W(t) = (1/12) times the integral of W from 0 to 12, with the right side as that expression or as its value from part (a), about 18.172.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "equation_setup",
+                  "unknown": "T",
+                  "left": "14 + 8*sin(T**2/50)",
+                  "right": "Integral(14 + 8*sin(t**2/50), (t, 0, 12))/12",
+                  "interval": [
+                     "2",
+                     "8"
+                  ]
+               }
+            },
+            {
+               "point_id": "d2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-08003"
+               ],
+               "criterion": "Gives t = 5.237 hours, accurate to three decimal places.",
+               "eligible_only_if": [
+                  "d1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "5.2372071034630182166378967281288"
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 115 of 115, stems read for ambiguity by the blind solver)"
+}

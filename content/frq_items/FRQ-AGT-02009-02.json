@@ -1,0 +1,218 @@
+{
+   "id": "FRQ-AGT-02009-02",
+   "archetype_id": "BC-QA-02009",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "stem": {
+      "text": "The length \\( L(t) \\) and the width \\( W(t) \\) of a rectangle, both measured in centimeters, are differentiable functions of time \\( t \\), measured in seconds. The table gives values of \\( L \\), \\( W \\), and their derivatives at selected times. \\[ \\begin{array}{c|cccc} t & 0 & 1 & 2 & 3 \\\\ \\hline L(t) & 10 & 12 & 15 & 16 \\\\ L'(t) & 3 & 2 & 4 & 1 \\\\ W(t) & 6 & 5 & 4 & 3 \\\\ W'(t) & -1 & -1 & -2 & -1 \\end{array} \\]"
+   },
+   "skills": [
+      "BC-SKL-02037",
+      "BC-SKL-02041",
+      "BC-SKL-02017"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "The area of the rectangle is \\( A(t) = L(t)\\,W(t) \\). Find \\( A'(2) \\). Show the work that leads to your answer.",
+         "setup_required": false,
+         "answer_latex": "A'(2) = -14",
+         "worked_solution": [
+            {
+               "text": "Product rule.",
+               "latex": "A'(t) = L'(t)\\,W(t) + L(t)\\,W'(t)"
+            },
+            {
+               "text": "Substitute the values at t = 2.",
+               "latex": "A'(2) = 4 \\cdot 4 + 15 \\cdot (-2) = -14"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99022",
+               "skills": [
+                  "BC-SKL-02037"
+               ],
+               "criterion": "Writes A'(t) = L'(t)W(t) + L(t)W'(t), or the same with the values at t = 2 substituted.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-02037"
+               ],
+               "criterion": "Gives A'(2) = -14 square centimeters per second.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "-14",
+                  "up_to_constant": false,
+                  "variable": "t"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Let \\( r(t) = \\dfrac{L(t)}{W(t)} \\) and \\( s(t) = \\dfrac{W(t)}{L(t)} \\). Find \\( r'(1) \\) and \\( s'(1) \\).",
+         "setup_required": false,
+         "answer_latex": "r'(1) = \\frac{22}{25}, \\quad s'(1) = -\\frac{11}{72}",
+         "worked_solution": [
+            {
+               "text": "Quotient rule for r at t = 1.",
+               "latex": "r'(1) = \\frac{L'(1)\\,W(1) - L(1)\\,W'(1)}{\\left[ W(1) \\right]^{2}} = \\frac{2 \\cdot 5 - 12 \\cdot (-1)}{25} = \\frac{22}{25}"
+            },
+            {
+               "text": "Quotient rule for s at t = 1.",
+               "latex": "s'(1) = \\frac{W'(1)\\,L(1) - W(1)\\,L'(1)}{\\left[ L(1) \\right]^{2}} = \\frac{(-1) \\cdot 12 - 5 \\cdot 2}{144} = -\\frac{11}{72}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-02041"
+               ],
+               "criterion": "Gives r'(1) = 22/25, or 0.88.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-02041"
+               ],
+               "criterion": "Gives s'(1) = -11/72, or the unreduced -22/144. A value with the numerator terms in reversed order, 11/72, does not earn the point.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "-11/72",
+                  "up_to_constant": false,
+                  "variable": "t",
+                  "each_side": false
+               }
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "The rectangle is the base of a box whose height at time \\( t \\) is \\( H(t) = 2t + 1 \\) centimeters. The volume of the box is \\( V(t) = L(t)\\,W(t)\\,H(t) \\). Find \\( V'(3) \\). Show the work that leads to your answer.",
+         "setup_required": false,
+         "answer_latex": "V'(3) = 5",
+         "worked_solution": [
+            {
+               "text": "Product rule for three factors, with H'(t) = 2.",
+               "latex": "V'(t) = L'(t)\\,W(t)\\,H(t) + L(t)\\,W'(t)\\,H(t) + L(t)\\,W(t)\\,H'(t)"
+            },
+            {
+               "text": "Substitute the values at t = 3, where H(3) = 7.",
+               "latex": "V'(3) = 1 \\cdot 3 \\cdot 7 + 16 \\cdot (-1) \\cdot 7 + 16 \\cdot 3 \\cdot 2 = 5"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99022",
+               "skills": [
+                  "BC-SKL-02037"
+               ],
+               "criterion": "Writes a correct product rule for the three factors, either as the three-term sum or by grouping two factors and applying the two-factor rule twice.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-02037"
+               ],
+               "criterion": "Gives V'(3) = 5 cubic centimeters per second.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "5",
+                  "up_to_constant": false,
+                  "variable": "t"
+               }
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "The perimeter of the rectangle is \\( P(t) = 2L(t) + 2W(t) \\). Let \\( Q(t) = \\dfrac{A(t)}{P(t)} \\). Find \\( P'(2) \\) and \\( Q'(2) \\).",
+         "setup_required": false,
+         "answer_latex": "P'(2) = 4, \\quad Q'(2) = -\\frac{193}{361}",
+         "worked_solution": [
+            {
+               "text": "Differentiate the perimeter.",
+               "latex": "P'(2) = 2L'(2) + 2W'(2) = 2 \\cdot 4 + 2 \\cdot (-2) = 4"
+            },
+            {
+               "text": "Values at t = 2, with A'(2) from part (a).",
+               "latex": "A(2) = 60, \\quad A'(2) = -14, \\quad P(2) = 38"
+            },
+            {
+               "text": "Quotient rule.",
+               "latex": "Q'(2) = \\frac{A'(2)\\,P(2) - A(2)\\,P'(2)}{\\left[ P(2) \\right]^{2}} = \\frac{(-14)(38) - 60 \\cdot 4}{38^{2}} = -\\frac{193}{361}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-02037"
+               ],
+               "criterion": "Gives P'(2) = 4 centimeters per second.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "d2",
+               "point_type_id": "BC-PT-99022",
+               "skills": [
+                  "BC-SKL-02037"
+               ],
+               "criterion": "Uses the product rule value A'(2) = -14, carried from part (a) or recomputed, together with A(2) = 60 in the quotient rule for Q'(2). Using A'(2) = L'(2)W'(2) does not earn the point.",
+               "eligible_only_if": [],
+               "check": null,
+               "follows_from": [
+                  "a1"
+               ]
+            },
+            {
+               "point_id": "d3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-02041"
+               ],
+               "criterion": "Gives Q'(2) = -193/361, or the unreduced -772/1444.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "-193/361",
+                  "up_to_constant": false,
+                  "variable": "t",
+                  "each_side": false
+               },
+               "follows_from": [
+                  "a2",
+                  "d1"
+               ]
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 111 of 111, stems read for ambiguity by the blind solver)"
+}

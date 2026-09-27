@@ -1,0 +1,200 @@
+{
+   "id": "FRQ-AGT-01003-01",
+   "archetype_id": "BC-QA-01003",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "The functions \\( f \\), \\( g \\), and \\( h \\) are defined for all real numbers, and \\( h(x) \\neq 0 \\) for all \\( x \\neq 2 \\). It is known that \\[ \\lim_{x \\to 2} f(x) = 3, \\quad \\lim_{x \\to 2} g(x) = -1, \\quad \\lim_{x \\to 2} h(x) = 0, \\quad \\lim_{x \\to 2} \\frac{h(x)}{x - 2} = 4. \\]"
+   },
+   "skills": [
+      "BC-SKL-01018",
+      "BC-SKL-01019",
+      "BC-SKL-01020",
+      "BC-SKL-01022"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find each of the following limits: \\( \\displaystyle \\lim_{x \\to 2} \\left[ 2f(x) - 5g(x) \\right] \\), \\( \\displaystyle \\lim_{x \\to 2} f(x)\\left[ g(x) \\right]^{2} \\), and \\( \\displaystyle \\lim_{x \\to 2} \\frac{f(x) + g(x)}{x + 1} \\).",
+         "setup_required": false,
+         "answer_latex": "11, \\quad 3, \\quad \\frac{2}{3}",
+         "worked_solution": [
+            {
+               "text": "Sum and constant multiple theorems.",
+               "latex": "\\lim_{x \\to 2} \\left[ 2f(x) - 5g(x) \\right] = 2(3) - 5(-1) = 11"
+            },
+            {
+               "text": "Product theorem.",
+               "latex": "\\lim_{x \\to 2} f(x)\\left[ g(x) \\right]^{2} = 3(-1)^{2} = 3"
+            },
+            {
+               "text": "Quotient theorem; the denominator tends to 3, which is not 0.",
+               "latex": "\\lim_{x \\to 2} \\frac{f(x) + g(x)}{x + 1} = \\frac{3 + (-1)}{2 + 1} = \\frac{2}{3}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-01018",
+                  "BC-SKL-01019"
+               ],
+               "criterion": "Gives 11 as the limit of 2f(x) - 5g(x).",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-01019"
+               ],
+               "criterion": "Gives 3 as the limit of f(x)[g(x)]^2; a response that squares only the sign, giving -3, does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-01018",
+                  "BC-SKL-01020"
+               ],
+               "criterion": "Gives 2/3 as the limit of (f(x) + g(x))/(x + 1), or an equivalent exact value.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find \\( \\displaystyle \\lim_{x \\to 2} \\sqrt{f(x) + 6} \\) and \\( \\displaystyle \\lim_{x \\to 2} \\cos\\left( \\pi g(x) \\right) \\).",
+         "setup_required": false,
+         "answer_latex": "3, \\quad -1",
+         "worked_solution": [
+            {
+               "text": "The square root is continuous at 9, so the limit passes inside.",
+               "latex": "\\lim_{x \\to 2} \\sqrt{f(x) + 6} = \\sqrt{3 + 6} = 3"
+            },
+            {
+               "text": "Cosine is continuous everywhere.",
+               "latex": "\\lim_{x \\to 2} \\cos\\left( \\pi g(x) \\right) = \\cos(-\\pi) = -1"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-01022"
+               ],
+               "criterion": "Gives 3 as the limit of the square root of f(x) + 6.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-01022"
+               ],
+               "criterion": "Gives -1 as the limit of cos(pi g(x)); cos(-pi) left unevaluated is accepted.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Find \\( \\displaystyle \\lim_{x \\to 2} \\frac{f(x)\\,h(x)}{x^{2} - 4} \\) and \\( \\displaystyle \\lim_{x \\to 2} \\frac{x^{2} - 4}{h(x)} \\). Show the work that leads to your answers.",
+         "setup_required": false,
+         "answer_latex": "3, \\quad 1",
+         "worked_solution": [
+            {
+               "text": "The denominator tends to 0, so the quotient theorem cannot be applied directly. Factor x^2 - 4.",
+               "latex": "\\frac{f(x)\\,h(x)}{x^{2} - 4} = \\frac{h(x)}{x - 2} \\cdot \\frac{f(x)}{x + 2}"
+            },
+            {
+               "text": "Each factor has a limit.",
+               "latex": "\\lim_{x \\to 2} \\frac{f(x)\\,h(x)}{x^{2} - 4} = 4 \\cdot \\frac{3}{4} = 3"
+            },
+            {
+               "text": "Invert the given quotient, whose limit 4 is not 0.",
+               "latex": "\\frac{x^{2} - 4}{h(x)} = (x + 2) \\cdot \\frac{x - 2}{h(x)}"
+            },
+            {
+               "text": "Evaluate.",
+               "latex": "\\lim_{x \\to 2} \\frac{x^{2} - 4}{h(x)} = 4 \\cdot \\frac{1}{4} = 1"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-01019",
+                  "BC-SKL-01020"
+               ],
+               "criterion": "Gives 3 as the limit of f(x)h(x)/(x^2 - 4). A response that applies the quotient theorem with denominator limit 0, or reports the limit as undefined or 0/0, does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-01019",
+                  "BC-SKL-01020"
+               ],
+               "criterion": "Gives 1 as the limit of (x^2 - 4)/h(x). A response that reports the limit as undefined or 0/0 does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "Find \\( \\displaystyle \\lim_{x \\to 2} \\frac{h(x) + x - 2}{x - 2} \\) and \\( \\displaystyle \\lim_{x \\to 2} \\frac{(x - 2)\\,g(x)}{h(x)} \\).",
+         "setup_required": false,
+         "answer_latex": "5, \\quad -\\frac{1}{4}",
+         "worked_solution": [
+            {
+               "text": "Split the fraction into the given quotient plus 1.",
+               "latex": "\\lim_{x \\to 2} \\frac{h(x) + x - 2}{x - 2} = \\lim_{x \\to 2} \\left[ \\frac{h(x)}{x - 2} + 1 \\right] = 4 + 1 = 5"
+            },
+            {
+               "text": "Write the second limit as a product of the reciprocal quotient and g.",
+               "latex": "\\lim_{x \\to 2} \\frac{(x - 2)\\,g(x)}{h(x)} = \\frac{1}{4} \\cdot (-1) = -\\frac{1}{4}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-01018",
+                  "BC-SKL-01020"
+               ],
+               "criterion": "Gives 5 as the limit of (h(x) + x - 2)/(x - 2).",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "d2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-01019",
+                  "BC-SKL-01020"
+               ],
+               "criterion": "Gives -1/4 as the limit of (x - 2)g(x)/h(x), or an equivalent exact value such as -0.25.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 111 of 111, stems read for ambiguity by the blind solver)"
+}

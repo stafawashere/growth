@@ -129,7 +129,9 @@ def stage_thirteen_formulations():
 
    formulations = {}
 
-   for name in ("key_formulations_stage13.py", "key_formulations_stage13_bank.py"):
+   names = ("key_formulations_stage13.py", "key_formulations_stage13_bank1.py", "key_formulations_stage13_bank2.py", "key_formulations_stage13_bank3.py")
+
+   for name in names:
       path = Path(__file__).with_name(name)
 
       if not path.exists():

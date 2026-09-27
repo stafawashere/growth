@@ -1,0 +1,266 @@
+{
+   "id": "FRQ-AGT-09007-01",
+   "archetype_id": "BC-QA-09007",
+   "calculator_status": "calculator",
+   "representation": "BC-REP-14",
+   "stem": {
+      "text": "A beetle crawls in the xy-plane for \\( 0 \\le t \\le 5 \\), with \\( t \\) in minutes and distances in centimeters. Its velocity vector is \\( \\langle x'(t), y'(t) \\rangle = \\left\\langle \\cos t + \\frac{t}{4},\\; \\ln\\left(1 + t^{2}\\right) - 1 \\right\\rangle \\), and at time \\( t = 0 \\) the beetle is at the point \\( (1, 2) \\). The x-component of velocity is negative exactly for \\( p < t < q \\), where \\( 0 < p < q < 5 \\)."
+   },
+   "skills": [
+      "BC-SKL-09025",
+      "BC-SKL-09013"
+   ],
+   "functions": {
+      "x": {
+         "variable": "t",
+         "expression": "1 + sin(t) + t**2/8"
+      },
+      "y": {
+         "variable": "t",
+         "expression": "2 + Integral(log(1 + s**2) - 1, (s, 0, t))"
+      }
+   },
+   "roots": {
+      "p": {
+         "value": "2.133332251659333741628192942743",
+         "equation": "cos(t) + t/4",
+         "variable": "t"
+      },
+      "q": {
+         "value": "3.595304867161547991877606935083",
+         "equation": "cos(t) + t/4",
+         "variable": "t"
+      }
+   },
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find the total distance the beetle travels during the time interval \\( 0 \\le t \\le 2 \\).",
+         "setup_required": true,
+         "answer_latex": "\\int_{0}^{2} \\sqrt{\\left(x'(t)\\right)^{2} + \\left(y'(t)\\right)^{2}}\\,dt \\approx 1.794",
+         "worked_solution": [
+            {
+               "text": "Distance travelled is the integral of speed over the interval.",
+               "latex": "\\int_{0}^{2} \\sqrt{\\left(\\cos t + \\frac{t}{4}\\right)^{2} + \\left(\\ln\\left(1 + t^{2}\\right) - 1\\right)^{2}}\\,dt"
+            },
+            {
+               "text": "Evaluate on the calculator.",
+               "latex": "\\int_{0}^{2} \\sqrt{\\left(x'(t)\\right)^{2} + \\left(y'(t)\\right)^{2}}\\,dt \\approx 1.794"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99051",
+               "skills": [
+                  "BC-SKL-09025",
+                  "BC-SKL-09013"
+               ],
+               "criterion": "Writes a single definite integral from t = 0 to t = 2 whose integrand is the square root of (cos t + t/4)^2 + (ln(1 + t^2) - 1)^2, or the same written as the square root of (x'(t))^2 + (y'(t))^2.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "0",
+                  "upper": "2",
+                  "integrand": "sqrt((cos(t) + t/4)**2 + (log(1 + t**2) - 1)**2)",
+                  "variable": "t"
+               }
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-09025"
+               ],
+               "criterion": "Gives 1.794 centimeters.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "Integral(sqrt((cos(t) + t/4)**2 + (log(1 + t**2) - 1)**2), (t, 0, 2))"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "At time \\( t = T \\) the beetle has travelled a total distance of 5 centimeters since \\( t = 0 \\). Write an equation involving an integral that \\( T \\) satisfies, find \\( T \\), and find the x-coordinate of the beetle at time \\( T \\).",
+         "setup_required": true,
+         "answer_latex": "x(T) = 1 + \\int_{0}^{T} \\left(\\cos t + \\frac{t}{4}\\right)dt \\approx 2.408",
+         "worked_solution": [
+            {
+               "text": "The distance travelled from 0 to T is the integral of speed, set equal to 5.",
+               "latex": "\\int_{0}^{T} \\sqrt{\\left(\\cos t + \\frac{t}{4}\\right)^{2} + \\left(\\ln\\left(1 + t^{2}\\right) - 1\\right)^{2}}\\,dt = 5"
+            },
+            {
+               "text": "Solve on the calculator.",
+               "latex": "T \\approx 4.319"
+            },
+            {
+               "text": "The x-coordinate at T is the starting value plus the change in x, using the stored value of T.",
+               "latex": "x(T) = 1 + \\int_{0}^{T} \\left(\\cos t + \\frac{t}{4}\\right)dt \\approx 2.408"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99051",
+               "skills": [
+                  "BC-SKL-09025",
+                  "BC-SKL-09013"
+               ],
+               "criterion": "Writes an equation setting the definite integral of the speed, the square root of (cos t + t/4)^2 + (ln(1 + t^2) - 1)^2, from t = 0 to t = T equal to 5.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "equation_setup",
+                  "unknown": "T",
+                  "left": "Integral(sqrt((cos(t) + t/4)**2 + (log(1 + t**2) - 1)**2), (t, 0, T))",
+                  "right": "5",
+                  "interval": [
+                     "3",
+                     "5"
+                  ]
+               }
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-09025"
+               ],
+               "criterion": "Gives T = 4.319 minutes.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "b3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-09025"
+               ],
+               "criterion": "Gives x(T) = 2.408, from 1 plus the integral of x'(t) from 0 to T (or from x(t) = 1 + sin t + t^2/8).",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "follows_from": [
+                  "b2"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "1 + sin(4.319042171802275231648803220616) + (4.319042171802275231648803220616)**2/8"
+               }
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Find the average speed of the beetle over the time interval \\( 0 \\le t \\le 5 \\).",
+         "setup_required": true,
+         "answer_latex": "\\frac{1}{5}\\int_{0}^{5} \\sqrt{\\left(x'(t)\\right)^{2} + \\left(y'(t)\\right)^{2}}\\,dt \\approx 1.327",
+         "worked_solution": [
+            {
+               "text": "Average speed is the distance travelled divided by the elapsed time.",
+               "latex": "\\frac{1}{5}\\int_{0}^{5} \\sqrt{\\left(\\cos t + \\frac{t}{4}\\right)^{2} + \\left(\\ln\\left(1 + t^{2}\\right) - 1\\right)^{2}}\\,dt"
+            },
+            {
+               "text": "Evaluate on the calculator.",
+               "latex": "\\frac{1}{5}\\int_{0}^{5} \\sqrt{\\left(x'(t)\\right)^{2} + \\left(y'(t)\\right)^{2}}\\,dt \\approx 1.327"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99051",
+               "skills": [
+                  "BC-SKL-09025",
+                  "BC-SKL-09013"
+               ],
+               "criterion": "Writes the definite integral of the speed from t = 0 to t = 5, divided by 5 (or multiplied by 1/5).",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "0",
+                  "upper": "5",
+                  "integrand": "sqrt((cos(t) + t/4)**2 + (log(1 + t**2) - 1)**2)",
+                  "variable": "t"
+               }
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-09025"
+               ],
+               "criterion": "Gives the average speed 1.327 centimeters per minute.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "Integral(sqrt((cos(t) + t/4)**2 + (log(1 + t**2) - 1)**2), (t, 0, 5))/5"
+               }
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "Find the total distance the beetle travels while it is moving to the left.",
+         "setup_required": true,
+         "answer_latex": "\\int_{p}^{q} \\sqrt{\\left(x'(t)\\right)^{2} + \\left(y'(t)\\right)^{2}}\\,dt \\approx 1.780",
+         "worked_solution": [
+            {
+               "text": "The beetle moves left while x'(t) < 0. Solve x'(t) = 0 on the calculator.",
+               "latex": "p \\approx 2.133, \\quad q \\approx 3.595"
+            },
+            {
+               "text": "Integrate the speed from p to q.",
+               "latex": "\\int_{p}^{q} \\sqrt{\\left(\\cos t + \\frac{t}{4}\\right)^{2} + \\left(\\ln\\left(1 + t^{2}\\right) - 1\\right)^{2}}\\,dt"
+            },
+            {
+               "text": "Evaluate on the calculator with the stored values of p and q.",
+               "latex": "\\int_{p}^{q} \\sqrt{\\left(x'(t)\\right)^{2} + \\left(y'(t)\\right)^{2}}\\,dt \\approx 1.780"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99051",
+               "skills": [
+                  "BC-SKL-09025",
+                  "BC-SKL-09013"
+               ],
+               "criterion": "Writes the definite integral of the speed from t = p to t = q, with p = 2.133 and q = 3.595 found from cos t + t/4 = 0 (the limits may be written as p and q or as these decimals).",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "p",
+                  "upper": "q",
+                  "integrand": "sqrt((cos(t) + t/4)**2 + (log(1 + t**2) - 1)**2)",
+                  "variable": "t"
+               }
+            },
+            {
+               "point_id": "d2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-09025"
+               ],
+               "criterion": "Gives 1.780 centimeters.",
+               "eligible_only_if": [
+                  "d1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "Integral(sqrt((cos(t) + t/4)**2 + (log(1 + t**2) - 1)**2), (t, 2.133332251659333741628192942743, 3.595304867161547991877606935083))"
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 115 of 115, stems read for ambiguity by the blind solver)"
+}

@@ -1,0 +1,240 @@
+{
+   "id": "FRQ-AGT-09001-02",
+   "archetype_id": "BC-QA-09001",
+   "calculator_status": "calculator",
+   "representation": "BC-REP-12",
+   "stem": {
+      "text": "A sailboat moves on a lake so that its position at time \\( t \\) minutes is \\( \\left(x(t), y(t)\\right) \\) for \\( 0 \\le t \\le 4 \\), with distances in hundreds of meters. The x-coordinate is \\( x(t) = 3t + 2\\cos t \\). The y-coordinate satisfies \\( y'(t) = e^{\\cos t} - \\frac{5}{4} \\) with \\( y(0) = 1 \\)."
+   },
+   "skills": [
+      "BC-SKL-09001",
+      "BC-SKL-09002",
+      "BC-SKL-09004",
+      "BC-SKL-09005",
+      "BC-SKL-09003",
+      "BC-SKL-09006"
+   ],
+   "functions": {
+      "x": {
+         "variable": "t",
+         "expression": "3*t + 2*cos(t)"
+      },
+      "y": {
+         "variable": "t",
+         "expression": "1 + Integral(exp(cos(s)) - 5/4, (s, 0, t))"
+      }
+   },
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find the y-coordinate of the sailboat at time \\( t = 1 \\).",
+         "setup_required": true,
+         "answer_latex": "y(1) = 1 + \\int_{0}^{1} \\left(e^{\\cos t} - \\frac{5}{4}\\right)dt \\approx 2.092",
+         "worked_solution": [
+            {
+               "text": "The y-coordinate at t = 1 is the starting value plus the accumulated change in y.",
+               "latex": "y(1) = 1 + \\int_{0}^{1} \\left(e^{\\cos t} - \\frac{5}{4}\\right)dt"
+            },
+            {
+               "text": "Evaluate on the calculator.",
+               "latex": "y(1) = 1 + \\int_{0}^{1} \\left(e^{\\cos t} - \\frac{5}{4}\\right)dt \\approx 2.092"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-09001"
+               ],
+               "criterion": "Writes the definite integral of y'(t) = e^(cos t) - 5/4 from t = 0 to t = 1, added to y(0) = 1 or ready to be added to it.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "0",
+                  "upper": "1",
+                  "integrand": "exp(cos(t)) - 5/4",
+                  "variable": "t"
+               }
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-09001"
+               ],
+               "criterion": "Gives y(1) = 2.092 hundred meters.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "1 + Integral(exp(cos(t)) - 5/4, (t, 0, 1))"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Write an equation for the line tangent to the path of the sailboat at time \\( t = 2.5 \\).",
+         "setup_required": true,
+         "answer_latex": "y - 1.600 = -0.444\\left(x - 5.898\\right)",
+         "worked_solution": [
+            {
+               "text": "The y-coordinate at t = 2.5 comes from the integral of y'(t).",
+               "latex": "y(2.5) = 1 + \\int_{0}^{2.5} \\left(e^{\\cos t} - \\frac{5}{4}\\right)dt \\approx 1.600"
+            },
+            {
+               "text": "The x-coordinate is read from the formula.",
+               "latex": "x(2.5) = 7.5 + 2\\cos(2.5) \\approx 5.898"
+            },
+            {
+               "text": "The slope is dy/dt divided by dx/dt at t = 2.5, with x'(t) = 3 - 2 sin t.",
+               "latex": "\\frac{dy}{dx} = \\frac{y'(2.5)}{x'(2.5)} = \\frac{e^{\\cos 2.5} - 1.25}{3 - 2\\sin 2.5} \\approx -0.444"
+            },
+            {
+               "text": "Point-slope form of the tangent line.",
+               "latex": "y - 1.600 = -0.444\\left(x - 5.898\\right)"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-09001"
+               ],
+               "criterion": "Writes the definite integral of e^(cos t) - 5/4 from t = 0 to t = 2.5 as the change in y, used with y(0) = 1 to locate the point of tangency.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "0",
+                  "upper": "2.5",
+                  "integrand": "exp(cos(t)) - 5/4",
+                  "variable": "t"
+               }
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99049",
+               "skills": [
+                  "BC-SKL-09001",
+                  "BC-SKL-09002",
+                  "BC-SKL-09004"
+               ],
+               "criterion": "Shows the slope at t = 2.5 as y'(2.5) divided by x'(2.5), where x'(t) = 3 - 2sin t, symbolically or numerically, with the value -0.444.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "b3",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-09005"
+               ],
+               "criterion": "Writes a tangent line through (5.898, 1.600) with slope -0.444, in point-slope or any equivalent form, with each decimal accurate to three places.",
+               "eligible_only_if": [
+                  "b1",
+                  "b2"
+               ],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "There is exactly one time \\( T \\), with \\( 2 < T < 4 \\), at which the sailboat is back at its starting y-coordinate, so that \\( y(T) = 1 \\). Write an equation involving an integral that \\( T \\) satisfies, find \\( T \\), and find the slope of the line tangent to the path of the sailboat at time \\( T \\).",
+         "setup_required": true,
+         "answer_latex": "\\frac{dy}{dx} = \\frac{y'(T)}{x'(T)} \\approx -0.283",
+         "worked_solution": [
+            {
+               "text": "The change in y from 0 to T must be zero.",
+               "latex": "\\int_{0}^{T} \\left(e^{\\cos t} - \\frac{5}{4}\\right)dt = 0"
+            },
+            {
+               "text": "Solve on the calculator for the root between 2 and 4.",
+               "latex": "T \\approx 3.199"
+            },
+            {
+               "text": "The slope is dy/dt divided by dx/dt at the stored value of T.",
+               "latex": "\\frac{dy}{dx} = \\frac{e^{\\cos T} - 1.25}{3 - 2\\sin T} \\approx \\frac{-0.882}{3.114}"
+            },
+            {
+               "text": "Evaluate with the stored values.",
+               "latex": "\\frac{dy}{dx} = \\frac{y'(T)}{x'(T)} \\approx -0.283"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-09001"
+               ],
+               "criterion": "Writes an equation equivalent to 1 + (integral of e^(cos t) - 5/4 from 0 to T) = 1, such as that integral from 0 to T equal to 0.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "equation_setup",
+                  "unknown": "T",
+                  "left": "Integral(exp(cos(t)) - 5/4, (t, 0, T))",
+                  "right": "0",
+                  "interval": [
+                     "2",
+                     "4"
+                  ]
+               }
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-09001"
+               ],
+               "criterion": "Gives T = 3.199 minutes.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "c3",
+               "point_type_id": "BC-PT-99049",
+               "skills": [
+                  "BC-SKL-09001",
+                  "BC-SKL-09002"
+               ],
+               "criterion": "Shows the slope as y'(T) divided by x'(T), symbolically or with the two numerical values, where x'(t) = 3 - 2sin t. A general expression for dy/dx set equal to a single number does not earn this point.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "c4",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-09002",
+                  "BC-SKL-09004"
+               ],
+               "criterion": "Gives the slope -0.283, supported by the quotient of the point above.",
+               "eligible_only_if": [
+                  "c1",
+                  "c3"
+               ],
+               "follows_from": [
+                  "c2"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "(exp(cos(3.198822858341963769960268166411)) - 5/4)/(3 - 2*sin(3.198822858341963769960268166411))"
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 115 of 115, stems read for ambiguity by the blind solver)"
+}

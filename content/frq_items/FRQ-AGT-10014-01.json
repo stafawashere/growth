@@ -1,0 +1,211 @@
+{
+   "id": "FRQ-AGT-10014-01",
+   "archetype_id": "BC-QA-10014",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "stem": {
+      "text": "The functions \\( f \\), \\( g \\) and \\( h \\) are defined by the power series \\[ f(x) = \\sum_{n=1}^{\\infty} \\frac{n\\,x^{n}}{4^{n}}, \\qquad g(x) = \\sum_{n=0}^{\\infty} \\frac{(x - 1)^{2n}}{(2n + 1)\\,9^{n}}, \\qquad h(x) = \\sum_{n=1}^{\\infty} \\frac{n\\,(2x - 1)^{n}}{5^{n}} \\] for all real \\( x \\) for which each series converges."
+   },
+   "skills": [
+      "BC-SKL-10031",
+      "BC-SKL-10032",
+      "BC-SKL-10053",
+      "BC-SKL-10054",
+      "BC-SKL-10056"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Use the ratio test to find the radius of convergence of the series for \\( f(x) \\).",
+         "setup_required": false,
+         "answer_latex": "R = 4",
+         "worked_solution": [
+            {
+               "text": "Ratio of consecutive terms in absolute value.",
+               "latex": "\\left| \\frac{(n + 1)x^{n+1}}{4^{n+1}} \\cdot \\frac{4^{n}}{n\\,x^{n}} \\right| = \\frac{n + 1}{n} \\cdot \\frac{|x|}{4}"
+            },
+            {
+               "text": "Its limit.",
+               "latex": "\\lim_{n \\to \\infty} \\frac{n + 1}{n} \\cdot \\frac{|x|}{4} = \\frac{|x|}{4}"
+            },
+            {
+               "text": "The series converges when |x|/4 < 1, that is |x| < 4.",
+               "latex": "R = 4"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99042",
+               "skills": [
+                  "BC-SKL-10031",
+                  "BC-SKL-10053"
+               ],
+               "criterion": "Writes the ratio (n + 1)x^(n+1)/4^(n+1) divided by n x^n/4^n, or a simplified form such as ((n + 1)/n)(|x|/4), with or without absolute values.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99043",
+               "skills": [
+                  "BC-SKL-10032",
+                  "BC-SKL-10054"
+               ],
+               "criterion": "Evaluates the limit of the ratio as |x|/4 with correct limit notation; an error in the limit loses this point.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "a3",
+               "point_type_id": "BC-PT-99047",
+               "skills": [
+                  "BC-SKL-10056"
+               ],
+               "criterion": "States the radius of convergence explicitly as 4 (R = 4 or \"the radius is 4\"); the interval -4 < x < 4 given without naming 4 as the radius does not earn the point.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "4",
+                  "up_to_constant": false,
+                  "variable": "R"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Use the ratio test to find the radius of convergence of the series for \\( g(x) \\).",
+         "setup_required": false,
+         "answer_latex": "R = 3",
+         "worked_solution": [
+            {
+               "text": "Ratio of consecutive terms; the power of x - 1 rises by 2.",
+               "latex": "\\left| \\frac{(x - 1)^{2n+2}}{(2n + 3)9^{n+1}} \\cdot \\frac{(2n + 1)9^{n}}{(x - 1)^{2n}} \\right| = \\frac{2n + 1}{2n + 3} \\cdot \\frac{(x - 1)^{2}}{9}"
+            },
+            {
+               "text": "Its limit.",
+               "latex": "\\lim_{n \\to \\infty} \\frac{2n + 1}{2n + 3} \\cdot \\frac{(x - 1)^{2}}{9} = \\frac{(x - 1)^{2}}{9}"
+            },
+            {
+               "text": "The series converges when (x - 1)^2 < 9, that is |x - 1| < 3.",
+               "latex": "R = 3"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99042",
+               "skills": [
+                  "BC-SKL-10031",
+                  "BC-SKL-10053"
+               ],
+               "criterion": "Writes the ratio (x - 1)^(2n+2)/((2n + 3)9^(n+1)) divided by (x - 1)^(2n)/((2n + 1)9^n), or a simplified form such as ((2n + 1)/(2n + 3))((x - 1)^2/9), with or without absolute values.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99043",
+               "skills": [
+                  "BC-SKL-10032",
+                  "BC-SKL-10054"
+               ],
+               "criterion": "Evaluates the limit of the ratio as (x - 1)^2/9 (or |x - 1|^2/9) with correct limit notation; an error in the limit loses this point.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "b3",
+               "point_type_id": "BC-PT-99047",
+               "skills": [
+                  "BC-SKL-10056"
+               ],
+               "criterion": "States the radius of convergence explicitly as 3, from (x - 1)^2 < 9; giving 9 as the radius, or an interval -2 < x < 4 without naming 3 as the radius, does not earn the point.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "3",
+                  "up_to_constant": false,
+                  "variable": "R"
+               }
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Use the ratio test to find the radius of convergence of the series for \\( h(x) \\).",
+         "setup_required": false,
+         "answer_latex": "R = \\frac{5}{2}",
+         "worked_solution": [
+            {
+               "text": "Ratio of consecutive terms in absolute value.",
+               "latex": "\\left| \\frac{(n + 1)(2x - 1)^{n+1}}{5^{n+1}} \\cdot \\frac{5^{n}}{n(2x - 1)^{n}} \\right| = \\frac{n + 1}{n} \\cdot \\frac{|2x - 1|}{5}"
+            },
+            {
+               "text": "Its limit.",
+               "latex": "\\lim_{n \\to \\infty} \\frac{n + 1}{n} \\cdot \\frac{|2x - 1|}{5} = \\frac{|2x - 1|}{5}"
+            },
+            {
+               "text": "Solve for the distance from the centre 1/2.",
+               "latex": "|2x - 1| < 5 \\iff \\left| x - \\frac{1}{2} \\right| < \\frac{5}{2}"
+            },
+            {
+               "text": "State the radius.",
+               "latex": "R = \\frac{5}{2}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99042",
+               "skills": [
+                  "BC-SKL-10031",
+                  "BC-SKL-10053"
+               ],
+               "criterion": "Writes the ratio (n + 1)(2x - 1)^(n+1)/5^(n+1) divided by n(2x - 1)^n/5^n, or a simplified form such as ((n + 1)/n)(|2x - 1|/5), with or without absolute values.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99043",
+               "skills": [
+                  "BC-SKL-10032",
+                  "BC-SKL-10054"
+               ],
+               "criterion": "Evaluates the limit of the ratio as |2x - 1|/5 (or an equivalent such as 2|x - 1/2|/5) with correct limit notation; an error in the limit loses this point.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "c3",
+               "point_type_id": "BC-PT-99047",
+               "skills": [
+                  "BC-SKL-10056"
+               ],
+               "criterion": "States the radius of convergence explicitly as 5/2 (or 2.5), from |x - 1/2| < 5/2; giving 5 as the radius, or an interval -2 < x < 3 without naming 5/2 as the radius, does not earn the point.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "5/2",
+                  "up_to_constant": false,
+                  "variable": "R"
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 66 of 66 after two formulation misreadings were triaged, stems read for ambiguity by the blind solver)"
+}

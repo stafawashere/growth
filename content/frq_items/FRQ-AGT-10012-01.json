@@ -1,0 +1,242 @@
+{
+   "id": "FRQ-AGT-10012-01",
+   "archetype_id": "BC-QA-10012",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "Let \\( f \\) be the function given by \\( f(x) = e^{-2x} \\). Let \\( g \\) be the function given by \\( g(x) = x f(x) \\), and let \\( h \\) be the function given by \\( h(x) = \\displaystyle\\int_{0}^{x} f(t)\\,dt \\)."
+   },
+   "skills": [
+      "BC-SKL-10046",
+      "BC-SKL-10047",
+      "BC-SKL-10048",
+      "BC-SKL-10061",
+      "BC-SKL-10065"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Write the first four nonzero terms of the Maclaurin series for \\( f \\). Then write the first three nonzero terms of the Maclaurin series for \\( f'(x) \\).",
+         "setup_required": false,
+         "answer_latex": "f: \\; 1 - 2x + 2x^{2} - \\frac{4}{3}x^{3}, \\qquad f': \\; -2 + 4x - 4x^{2}",
+         "worked_solution": [
+            {
+               "text": "Substitute -2x for u in the series for e^u.",
+               "latex": "e^{-2x} = 1 + (-2x) + \\frac{(-2x)^{2}}{2!} + \\frac{(-2x)^{3}}{3!} + \\cdots"
+            },
+            {
+               "text": "Simplify the first four terms.",
+               "latex": "f(x) \\approx 1 - 2x + 2x^{2} - \\frac{4}{3}x^{3}"
+            },
+            {
+               "text": "Differentiate term by term.",
+               "latex": "f'(x) \\approx -2 + 4x - 4x^{2}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99035",
+               "skills": [
+                  "BC-SKL-10046",
+                  "BC-SKL-10061"
+               ],
+               "criterion": "Gives the first two terms 1 - 2x of the Maclaurin series for f, as a list or as the start of a polynomial or series.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99036",
+               "skills": [
+                  "BC-SKL-10046",
+                  "BC-SKL-10061"
+               ],
+               "criterion": "Gives all four terms 1 - 2x + 2x^2 - (4/3)x^3, as a sum or a list; unsimplified coefficients such as (-2)^2/2! are accepted, and a response carrying a fifth term as part of the answer does not earn the point.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "1 - 2*x + 2*x**2 - 4*x**3/3",
+                  "up_to_constant": false,
+                  "each_side": true,
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "a3",
+               "point_type_id": "BC-PT-99037",
+               "skills": [
+                  "BC-SKL-10047",
+                  "BC-SKL-10061"
+               ],
+               "criterion": "Gives the three terms -2 + 4x - 4x^2 for f'(x), found by differentiating the series for f term by term or by writing the series for -2e^(-2x).",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "-2 + 4*x - 4*x**2",
+                  "up_to_constant": false,
+                  "each_side": true,
+                  "variable": "x"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find \\( g''(0) \\) and \\( g'''(0) \\). Show the work that leads to your answers.",
+         "setup_required": false,
+         "answer_latex": "g''(0) = -4, \\quad g'''(0) = 12",
+         "worked_solution": [
+            {
+               "text": "Differentiate the product twice.",
+               "latex": "g''(x) = -4e^{-2x} + 4xe^{-2x}"
+            },
+            {
+               "text": "Evaluate at 0.",
+               "latex": "g''(0) = -4"
+            },
+            {
+               "text": "Differentiate once more.",
+               "latex": "g'''(x) = 12e^{-2x} - 8xe^{-2x}"
+            },
+            {
+               "text": "Evaluate at 0.",
+               "latex": "g'''(0) = 12"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99027",
+               "skills": [
+                  "BC-SKL-10047",
+                  "BC-SKL-10065"
+               ],
+               "criterion": "Finds g''(0) = -4, either from the product rule applied twice to x e^(-2x) or as 2! times the x^2 coefficient -2 of the series for x f(x).",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99027",
+               "skills": [
+                  "BC-SKL-10047",
+                  "BC-SKL-10065"
+               ],
+               "criterion": "Finds g'''(0) = 12, from a third derivative of x e^(-2x) or as 3! times the x^3 coefficient 2 of the series for x f(x).",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "12",
+                  "up_to_constant": false,
+                  "each_side": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Write the third-degree Taylor polynomial for \\( g \\) about \\( x = 0 \\).",
+         "setup_required": false,
+         "answer_latex": "P_{3}(x) = x - 2x^{2} + 2x^{3}",
+         "worked_solution": [
+            {
+               "text": "Multiply the series for f by x.",
+               "latex": "x f(x) = x - 2x^{2} + 2x^{3} - \\frac{4}{3}x^{4} + \\cdots"
+            },
+            {
+               "text": "Keep the terms up to degree three, which agree with g'(0) = 1, g''(0)/2! and g'''(0)/3!.",
+               "latex": "P_{3}(x) = x - 2x^{2} + 2x^{3}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99035",
+               "skills": [
+                  "BC-SKL-10047",
+                  "BC-SKL-10065"
+               ],
+               "criterion": "Gives the first two terms x - 2x^2 of the polynomial for g.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99036",
+               "skills": [
+                  "BC-SKL-10046",
+                  "BC-SKL-10047",
+                  "BC-SKL-10065"
+               ],
+               "criterion": "Gives the complete polynomial x - 2x^2 + 2x^3 with no term of degree four or higher and no ellipsis; coefficients left as g''(0)/2! and g'''(0)/3! with the values from part (b) substituted are accepted.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "x - 2*x**2 + 2*x**3",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "Write the first four nonzero terms of the Maclaurin series for \\( h \\). Then find the value of \\( h^{(5)}(0) \\).",
+         "setup_required": false,
+         "answer_latex": "h: \\; x - x^{2} + \\frac{2}{3}x^{3} - \\frac{1}{3}x^{4}, \\qquad h^{(5)}(0) = 16",
+         "worked_solution": [
+            {
+               "text": "Integrate the series for f term by term from 0 to x.",
+               "latex": "h(x) = \\int_{0}^{x} \\left(1 - 2t + 2t^{2} - \\frac{4}{3}t^{3} + \\frac{2}{3}t^{4} - \\cdots\\right) dt"
+            },
+            {
+               "text": "The first four nonzero terms.",
+               "latex": "h(x) \\approx x - x^{2} + \\frac{2}{3}x^{3} - \\frac{1}{3}x^{4}"
+            },
+            {
+               "text": "The x^5 coefficient of h is (2/3)/5 = 2/15, so h^(5)(0) = 5! times 2/15, which also equals f^(4)(0).",
+               "latex": "h^{(5)}(0) = 120 \\cdot \\frac{2}{15} = 16"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99037",
+               "skills": [
+                  "BC-SKL-10047",
+                  "BC-SKL-10061"
+               ],
+               "criterion": "Gives the four terms x - x^2 + (2/3)x^3 - (1/3)x^4 for h, as a sum or a list, obtained by integrating the series for f term by term.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "x - x**2 + 2*x**3/3 - x**4/3",
+                  "up_to_constant": false,
+                  "each_side": true,
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "d2",
+               "point_type_id": "BC-PT-99027",
+               "skills": [
+                  "BC-SKL-10047"
+               ],
+               "criterion": "Finds h^(5)(0) = 16, either as 5! times the x^5 coefficient 2/15 of the series for h or as f^(4)(0) = 16 e^0 from h' = f.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 66 of 66 after two formulation misreadings were triaged, stems read for ambiguity by the blind solver)"
+}

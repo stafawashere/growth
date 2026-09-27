@@ -1,0 +1,374 @@
+{
+   "id": "FRQ-AGT-04006-01",
+   "archetype_id": "BC-QA-04006",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-05",
+   "stem": {
+      "text": "A potter rolls a piece of clay into a right circular cylinder. As the clay is rolled, the radius \\( r \\) of the cylinder decreases and its length \\( L \\) increases, while its volume stays constant at \\( 72\\pi \\) cubic centimeters. At a certain instant the radius is 2 centimeters and is decreasing at a rate of 0.1 centimeter per second. The volume of the cylinder is \\( V = \\pi r^{2} L \\), and the area of its curved side is \\( S = 2\\pi r L \\)."
+   },
+   "skills": [
+      "BC-SKL-04017",
+      "BC-SKL-04018",
+      "BC-SKL-04019",
+      "BC-SKL-04021",
+      "BC-SKL-04023",
+      "BC-SKL-04024",
+      "BC-SKL-04025",
+      "BC-SKL-04026",
+      "BC-SKL-04027"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find the length of the cylinder at the instant the radius is 2 centimeters.",
+         "setup_required": false,
+         "answer_latex": "L = 18",
+         "worked_solution": [
+            {
+               "text": "Substitute r = 2 into the volume relation.",
+               "latex": "\\pi (2)^{2} L = 72\\pi"
+            },
+            {
+               "text": "Solve for L.",
+               "latex": "L = 18"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-04018",
+                  "BC-SKL-04026"
+               ],
+               "criterion": "Gives L = 18 centimeters from pi(2^2)L = 72 pi.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "18",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find the rate at which the length of the cylinder is changing at that instant. Indicate units of measure.",
+         "setup_required": false,
+         "answer_latex": "\\frac{dL}{dt} = \\frac{9}{5}",
+         "worked_solution": [
+            {
+               "text": "Differentiate the constant volume with respect to t, with the product rule and the chain rule.",
+               "latex": "0 = \\pi\\left(2r\\frac{dr}{dt}L + r^{2}\\frac{dL}{dt}\\right)"
+            },
+            {
+               "text": "Substitute r = 2, L = 18 and dr/dt = -0.1 after differentiating.",
+               "latex": "0 = 2(2)(-0.1)(18) + 4\\frac{dL}{dt}"
+            },
+            {
+               "text": "Solve for the rate of change of the length.",
+               "latex": "\\frac{dL}{dt} = \\frac{9}{5}"
+            },
+            {
+               "text": "Units.",
+               "latex": "\\frac{dL}{dt} = 1.8 \\text{ cm/s}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99022",
+               "skills": [
+                  "BC-SKL-04017",
+                  "BC-SKL-04019",
+                  "BC-SKL-04027"
+               ],
+               "criterion": "Differentiates r^2 L (or pi r^2 L) with respect to t by the product rule, treating both r and L as varying. A student who first writes L = 72/r^2 and differentiates that correctly also earns the point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99023",
+               "skills": [
+                  "BC-SKL-04019"
+               ],
+               "criterion": "Includes the chain rule factors, giving 2r(dr/dt)L + r^2(dL/dt) = 0 or an equivalent equation (for example dL/dt = -144/r^3 dr/dt from L = 72/r^2).",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-04023",
+                  "BC-SKL-04024"
+               ],
+               "criterion": "Substitutes r = 2, L = 18, dr/dt = -0.1 after differentiating and gives dL/dt = 1.8 (or 9/5).",
+               "eligible_only_if": [
+                  "b2"
+               ],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "9/5",
+                  "up_to_constant": false,
+                  "variable": "t",
+                  "each_side": false
+               }
+            },
+            {
+               "point_id": "b4",
+               "point_type_id": "BC-PT-99006",
+               "skills": [
+                  "BC-SKL-04025"
+               ],
+               "criterion": "Gives the units centimeters per second (cm/s, cm/sec or cm per second).",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "units_present",
+                  "units": [
+                     "cm/s",
+                     "cm/sec",
+                     "cm/second",
+                     "cm / s",
+                     "cm / sec",
+                     "cm / second",
+                     "cm/ s",
+                     "cm/ sec",
+                     "cm/ second",
+                     "cm /s",
+                     "cm /sec",
+                     "cm /second",
+                     "frac cm s",
+                     "frac cm sec",
+                     "frac cm second",
+                     "cm per second",
+                     "cm per sec",
+                     "cm per s",
+                     "centimeters per second",
+                     "centimeter per second",
+                     "centimeters/second",
+                     "centimeters / second"
+                  ]
+               }
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Find the rate at which the area of the curved side of the cylinder is changing at that instant. Indicate units of measure.",
+         "setup_required": false,
+         "answer_latex": "\\frac{dS}{dt} = \\frac{18\\pi}{5}",
+         "worked_solution": [
+            {
+               "text": "Differentiate S = 2 pi r L with respect to t.",
+               "latex": "\\frac{dS}{dt} = 2\\pi\\left(\\frac{dr}{dt}L + r\\frac{dL}{dt}\\right)"
+            },
+            {
+               "text": "Substitute the values at that instant, using dL/dt from part (b).",
+               "latex": "\\frac{dS}{dt} = 2\\pi\\left((-0.1)(18) + 2(1.8)\\right) = 2\\pi(1.8)"
+            },
+            {
+               "text": "Simplify.",
+               "latex": "\\frac{dS}{dt} = \\frac{18\\pi}{5}"
+            },
+            {
+               "text": "Units.",
+               "latex": "\\frac{dS}{dt} = 3.6\\pi \\text{ cm}^{2}\\text{/s}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99023",
+               "skills": [
+                  "BC-SKL-04019",
+                  "BC-SKL-04021"
+               ],
+               "criterion": "Differentiates the curved area with respect to t with the chain rule factors: dS/dt = 2 pi ((dr/dt)L + r(dL/dt)), or, after eliminating L with L = 72/r^2 so that S = 144 pi / r, dS/dt = -(144 pi / r^2)(dr/dt).",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-04023",
+                  "BC-SKL-04024"
+               ],
+               "criterion": "Gives dS/dt = 18 pi / 5 (or 3.6 pi) at that instant, carrying dL/dt from part (b) where used.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "18*pi/5",
+                  "up_to_constant": false,
+                  "variable": "t",
+                  "each_side": false
+               },
+               "follows_from": [
+                  "b3"
+               ]
+            },
+            {
+               "point_id": "c3",
+               "point_type_id": "BC-PT-99006",
+               "skills": [
+                  "BC-SKL-04025"
+               ],
+               "criterion": "Gives the units square centimeters per second (cm^2/s, cm^2/sec or square centimeters per second).",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "units_present",
+                  "units": [
+                     "cm^2/s",
+                     "cm^2/sec",
+                     "cm^2/second",
+                     "cm^2 / s",
+                     "cm^2 / sec",
+                     "cm^2 / second",
+                     "cm^2/ s",
+                     "cm^2/ sec",
+                     "cm^2/ second",
+                     "cm^2 /s",
+                     "cm^2 /sec",
+                     "cm^2 /second",
+                     "cm ^ 2/s",
+                     "cm ^ 2/sec",
+                     "cm ^ 2/second",
+                     "cm ^ 2 / s",
+                     "cm ^ 2 / sec",
+                     "cm ^ 2 / second",
+                     "cm ^ 2/ s",
+                     "cm ^ 2/ sec",
+                     "cm ^ 2/ second",
+                     "cm ^ 2 /s",
+                     "cm ^ 2 /sec",
+                     "cm ^ 2 /second",
+                     "cm ^2/s",
+                     "cm ^2/sec",
+                     "cm ^2/second",
+                     "cm ^2 / s",
+                     "cm ^2 / sec",
+                     "cm ^2 / second",
+                     "cm ^2/ s",
+                     "cm ^2/ sec",
+                     "cm ^2/ second",
+                     "cm ^2 /s",
+                     "cm ^2 /sec",
+                     "cm ^2 /second",
+                     "cm^ 2/s",
+                     "cm^ 2/sec",
+                     "cm^ 2/second",
+                     "cm^ 2 / s",
+                     "cm^ 2 / sec",
+                     "cm^ 2 / second",
+                     "cm^ 2/ s",
+                     "cm^ 2/ sec",
+                     "cm^ 2/ second",
+                     "cm^ 2 /s",
+                     "cm^ 2 /sec",
+                     "cm^ 2 /second",
+                     "cm2/s",
+                     "cm2/sec",
+                     "cm2/second",
+                     "cm2 / s",
+                     "cm2 / sec",
+                     "cm2 / second",
+                     "cm2/ s",
+                     "cm2/ sec",
+                     "cm2/ second",
+                     "cm2 /s",
+                     "cm2 /sec",
+                     "cm2 /second",
+                     "frac cm^2 s",
+                     "frac cm^2 sec",
+                     "frac cm^2 second",
+                     "frac cm ^ 2 s",
+                     "frac cm ^ 2 sec",
+                     "frac cm ^ 2 second",
+                     "frac cm ^2 s",
+                     "frac cm ^2 sec",
+                     "frac cm ^2 second",
+                     "frac cm^ 2 s",
+                     "frac cm^ 2 sec",
+                     "frac cm^ 2 second",
+                     "frac cm2 s",
+                     "frac cm2 sec",
+                     "frac cm2 second",
+                     "cm^2 per second",
+                     "cm^2 per sec",
+                     "cm^2 per s",
+                     "cm ^ 2 per second",
+                     "cm ^ 2 per sec",
+                     "cm ^ 2 per s",
+                     "cm ^2 per second",
+                     "cm ^2 per sec",
+                     "cm ^2 per s",
+                     "cm^ 2 per second",
+                     "cm^ 2 per sec",
+                     "cm^ 2 per s",
+                     "cm2 per second",
+                     "cm2 per sec",
+                     "cm2 per s",
+                     "square centimeters per second",
+                     "square centimeter per second",
+                     "square cm per second",
+                     "sq cm per second",
+                     "centimeters squared per second",
+                     "cm squared per second"
+                  ]
+               }
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "At that instant, is the total surface area of the cylinder, including its two circular ends, increasing or decreasing? Justify your answer.",
+         "setup_required": false,
+         "answer_latex": "\\frac{dT}{dt} = \\frac{14\\pi}{5} > 0, \\; \\text{increasing}",
+         "worked_solution": [
+            {
+               "text": "Total surface area is the curved side plus the two ends.",
+               "latex": "T = 2\\pi r L + 2\\pi r^{2}"
+            },
+            {
+               "text": "Differentiate with respect to t.",
+               "latex": "\\frac{dT}{dt} = \\frac{dS}{dt} + 4\\pi r\\frac{dr}{dt}"
+            },
+            {
+               "text": "Substitute the values at that instant.",
+               "latex": "\\frac{dT}{dt} = \\frac{18\\pi}{5} + 4\\pi(2)(-0.1) = \\frac{14\\pi}{5}"
+            },
+            {
+               "text": "The rate is positive, so the total surface area is increasing.",
+               "latex": "\\frac{dT}{dt} > 0"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-04024",
+                  "BC-SKL-04025"
+               ],
+               "criterion": "Finds dT/dt = 18 pi / 5 + 4 pi r (dr/dt) = 14 pi / 5 (or 2.8 pi) and concludes that the total surface area is increasing because this rate is positive. Follow-through from the value of dS/dt in part (c) is accepted.",
+               "eligible_only_if": [],
+               "check": null,
+               "follows_from": [
+                  "c2"
+               ]
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 115 of 115, stems read for ambiguity by the blind solver)"
+}

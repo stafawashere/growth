@@ -1,0 +1,218 @@
+{
+   "id": "FRQ-AGT-01010-02",
+   "archetype_id": "BC-QA-01010",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-05",
+   "stem": {
+      "text": "Three particles move along the \\( x \\)-axis. For \\( t \\ge 0 \\) seconds, the positions of particles \\( P \\), \\( Q \\), and \\( R \\) are \\[ x_{P}(t) = \\sqrt{t^{2} + 8t + 1}, \\quad x_{Q}(t) = t + 1, \\quad x_{R}(t) = \\frac{8t + 3e^{-t}}{2t + 1}, \\] measured in meters."
+   },
+   "skills": [
+      "BC-SKL-01058",
+      "BC-SKL-01059",
+      "BC-SKL-01060",
+      "BC-SKL-01061",
+      "BC-SKL-01063",
+      "BC-SKL-01062"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Write a limit expression that describes the distance \\( x_{P}(t) - x_{Q}(t) \\) between particles \\( P \\) and \\( Q \\) in the long run, and evaluate it. Show the work that leads to your answer.",
+         "setup_required": false,
+         "answer_latex": "\\lim_{t \\to \\infty} \\left( \\sqrt{t^{2} + 8t + 1} - (t + 1) \\right) = 3",
+         "worked_solution": [
+            {
+               "text": "Long run means t increasing without bound.",
+               "latex": "\\lim_{t \\to \\infty} \\left( \\sqrt{t^{2} + 8t + 1} - (t + 1) \\right)"
+            },
+            {
+               "text": "Multiply by the conjugate over itself.",
+               "latex": "\\sqrt{t^{2} + 8t + 1} - (t + 1) = \\frac{(t^{2} + 8t + 1) - (t + 1)^{2}}{\\sqrt{t^{2} + 8t + 1} + t + 1} = \\frac{6t}{\\sqrt{t^{2} + 8t + 1} + t + 1}"
+            },
+            {
+               "text": "Divide numerator and denominator by t, which is positive.",
+               "latex": "\\lim_{t \\to \\infty} \\frac{6}{\\sqrt{1 + \\frac{8}{t} + \\frac{1}{t^{2}}} + 1 + \\frac{1}{t}} = \\frac{6}{2} = 3"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99054",
+               "skills": [
+                  "BC-SKL-01060"
+               ],
+               "criterion": "Writes the limit of x_P(t) - x_Q(t), or of sqrt(t^2 + 8t + 1) - (t + 1), as t tends to infinity. Writing infinity minus infinity as a value does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-01061"
+               ],
+               "criterion": "Gives 3 meters as the value, supported by algebra such as the conjugate. A value of 0 from treating the two terms as equal in the long run does not earn the point.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "3",
+                  "up_to_constant": false,
+                  "variable": "t"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find the velocity \\( v_{P}(t) \\) of particle \\( P \\). Write a limit expression that describes the velocity of particle \\( P \\) in the long run, and evaluate it.",
+         "setup_required": false,
+         "answer_latex": "\\lim_{t \\to \\infty} v_{P}(t) = 1",
+         "worked_solution": [
+            {
+               "text": "Chain rule.",
+               "latex": "v_{P}(t) = \\frac{2t + 8}{2\\sqrt{t^{2} + 8t + 1}} = \\frac{t + 4}{\\sqrt{t^{2} + 8t + 1}}"
+            },
+            {
+               "text": "Divide numerator and denominator by t.",
+               "latex": "\\lim_{t \\to \\infty} v_{P}(t) = \\lim_{t \\to \\infty} \\frac{1 + \\frac{4}{t}}{\\sqrt{1 + \\frac{8}{t} + \\frac{1}{t^{2}}}} = 1"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-01061"
+               ],
+               "criterion": "Gives v_P(t) = (t + 4)/sqrt(t^2 + 8t + 1), or (2t + 8)/(2 sqrt(t^2 + 8t + 1)), or any equivalent expression.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "(t + 4)/sqrt(t**2 + 8*t + 1)",
+                  "up_to_constant": false,
+                  "variable": "t",
+                  "each_side": false
+               }
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99054",
+               "skills": [
+                  "BC-SKL-01060"
+               ],
+               "criterion": "Writes the limit of v_P(t), or of the expression found for it, as t tends to infinity. Writing the limit of x_P(t) instead does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-01061"
+               ],
+               "criterion": "Gives 1 meter per second as the value.",
+               "eligible_only_if": [],
+               "check": null,
+               "follows_from": [
+                  "b1"
+               ]
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Write a limit expression that describes the position of particle \\( R \\) in the long run, and evaluate it.",
+         "setup_required": false,
+         "answer_latex": "\\lim_{t \\to \\infty} \\frac{8t + 3e^{-t}}{2t + 1} = 4",
+         "worked_solution": [
+            {
+               "text": "Long run means t increasing without bound.",
+               "latex": "\\lim_{t \\to \\infty} x_{R}(t) = \\lim_{t \\to \\infty} \\frac{8t + 3e^{-t}}{2t + 1}"
+            },
+            {
+               "text": "Divide numerator and denominator by t; the exponential term tends to 0.",
+               "latex": "\\lim_{t \\to \\infty} \\frac{8 + \\frac{3e^{-t}}{t}}{2 + \\frac{1}{t}} = \\frac{8}{2} = 4"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99054",
+               "skills": [
+                  "BC-SKL-01060"
+               ],
+               "criterion": "Writes the limit of x_R(t), or of (8t + 3e^(-t))/(2t + 1), as t tends to infinity.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-01058",
+                  "BC-SKL-01059"
+               ],
+               "criterion": "Gives 4 meters as the value.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "4",
+                  "up_to_constant": false,
+                  "variable": "t"
+               }
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "The velocity of particle \\( R \\) is \\( v_{R}(t) = \\dfrac{8 - 6te^{-t} - 9e^{-t}}{(2t + 1)^{2}} \\). Write a limit expression that describes the velocity of particle \\( R \\) in the long run, and evaluate it.",
+         "setup_required": false,
+         "answer_latex": "\\lim_{t \\to \\infty} v_{R}(t) = 0",
+         "worked_solution": [
+            {
+               "text": "Long run means t increasing without bound.",
+               "latex": "\\lim_{t \\to \\infty} v_{R}(t) = \\lim_{t \\to \\infty} \\frac{8 - 6te^{-t} - 9e^{-t}}{(2t + 1)^{2}}"
+            },
+            {
+               "text": "The numerator tends to 8 while the denominator grows without bound.",
+               "latex": "\\lim_{t \\to \\infty} v_{R}(t) = 0"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99054",
+               "skills": [
+                  "BC-SKL-01060"
+               ],
+               "criterion": "Writes the limit of v_R(t), or of the given expression, as t tends to infinity. Writing the limit of x_R(t) instead does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "d2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-01058",
+                  "BC-SKL-01062"
+               ],
+               "criterion": "Gives 0 meters per second as the value.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "0",
+                  "up_to_constant": false,
+                  "variable": "t"
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 111 of 111, stems read for ambiguity by the blind solver)"
+}

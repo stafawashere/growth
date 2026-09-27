@@ -1,0 +1,305 @@
+{
+   "id": "FRQ-AGT-04002-01",
+   "archetype_id": "BC-QA-04002",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "stem": {
+      "text": "A hot air balloon rises from a field. Its height above the ground is \\( B(t) \\) feet and the amount of propane left in its tank is \\( P(t) \\) gallons, where \\( t \\) is measured in minutes after launch. Both \\( B \\) and \\( P \\) are differentiable, and \\( P \\) is strictly decreasing. Selected values are given in the table. \\[ \\begin{array}{c|cccccc} t \\text{ (minutes)} & 0 & 4 & 10 & 15 & 20 & 24 \\\\ \\hline B(t) \\text{ (feet)} & 120 & 180 & 330 & 420 & 460 & 450 \\\\ \\hline P(t) \\text{ (gallons)} & 40.0 & 37.6 & 34.0 & 31.5 & 29.5 & 28.0 \\end{array} \\]"
+   },
+   "skills": [
+      "BC-SKL-04004",
+      "BC-SKL-04001",
+      "BC-SKL-02014",
+      "BC-SKL-02015",
+      "BC-SKL-02016",
+      "BC-SKL-02002",
+      "BC-SKL-02003"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Use the data in the table to approximate \\( B'(7) \\). Show the computations that lead to your answer, and indicate units of measure.",
+         "setup_required": false,
+         "answer_latex": "25 \\text{ feet per minute}",
+         "worked_solution": [
+            {
+               "text": "The table values that bracket t = 7 are at t = 4 and t = 10.",
+               "latex": "B'(7) \\approx \\frac{B(10) - B(4)}{10 - 4} = \\frac{330 - 180}{6} = 25"
+            },
+            {
+               "text": "Units are feet of height per minute of time.",
+               "latex": "\\text{feet per minute}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-02014",
+                  "BC-SKL-02016",
+                  "BC-SKL-04004"
+               ],
+               "criterion": "Gives 25 supported by the difference quotient (330 - 180)/(10 - 4), using the rows t = 4 and t = 10 that bracket t = 7. A value with no difference and quotient shown does not earn the point.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "25",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99006",
+               "skills": [
+                  "BC-SKL-04001",
+                  "BC-SKL-02015"
+               ],
+               "criterion": "Gives the units feet per minute, in words or as ft/min, whether or not they are attached to a value.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "units_present",
+                  "units": [
+                     "feet per minute",
+                     "foot per minute",
+                     "ft per minute",
+                     "feet per min",
+                     "ft per min",
+                     "ft/min",
+                     "feet/min",
+                     "ft/minute",
+                     "feet/minute",
+                     "ft / min",
+                     "feet / minute",
+                     "feet / min",
+                     "ft / minute",
+                     "frac ft min",
+                     "frac feet minute",
+                     "frac feet min",
+                     "frac ft minute"
+                  ]
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Use the average rate of change of \\( B \\) over the interval \\( 20 \\le t \\le 24 \\) to approximate \\( B'(22) \\), indicating units of measure. Using correct units, interpret the meaning of your approximation in the context of the problem.",
+         "setup_required": false,
+         "answer_latex": "-2.5 \\text{ feet per minute}",
+         "worked_solution": [
+            {
+               "text": "Difference quotient over the named interval.",
+               "latex": "B'(22) \\approx \\frac{B(24) - B(20)}{24 - 20} = \\frac{450 - 460}{4} = -2.5"
+            },
+            {
+               "text": "Units, and the meaning of a negative rate.",
+               "latex": "\\text{feet per minute: at } t = 22 \\text{ the balloon's height is decreasing at about 2.5 feet per minute}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-02014",
+                  "BC-SKL-02002",
+                  "BC-SKL-04004"
+               ],
+               "criterion": "Gives -2.5 (or -5/2) supported by the difference quotient (450 - 460)/(24 - 20). The positive value 2.5 does not earn the point.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "-5/2",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99006",
+               "skills": [
+                  "BC-SKL-04001",
+                  "BC-SKL-02015"
+               ],
+               "criterion": "Gives the units feet per minute, in words or as ft/min.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "units_present",
+                  "units": [
+                     "feet per minute",
+                     "foot per minute",
+                     "ft per minute",
+                     "feet per min",
+                     "ft per min",
+                     "ft/min",
+                     "feet/min",
+                     "ft/minute",
+                     "feet/minute",
+                     "ft / min",
+                     "feet / minute",
+                     "feet / min",
+                     "ft / minute",
+                     "frac ft min",
+                     "frac feet minute",
+                     "frac feet min",
+                     "frac ft minute"
+                  ]
+               }
+            },
+            {
+               "point_id": "b3",
+               "point_type_id": "BC-PT-99008",
+               "skills": [
+                  "BC-SKL-02003",
+                  "BC-SKL-04001"
+               ],
+               "criterion": "States that at time t = 22 minutes the balloon's height above the ground is decreasing at a rate of about 2.5 feet per minute, or equivalently that it is changing at a rate of about -2.5 feet per minute. The sentence must name the height, the instant t = 22, the rate and its units. Saying the height is decreasing at a rate of -2.5 feet per minute does not earn the point, and neither does describing the rate as an average over the interval rather than a rate at t = 22.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Use the data in the table to approximate \\( P'(12.5) \\). Show the computations that lead to your answer, and indicate units of measure.",
+         "setup_required": false,
+         "answer_latex": "-0.5 \\text{ gallons per minute}",
+         "worked_solution": [
+            {
+               "text": "The table values that bracket t = 12.5 are at t = 10 and t = 15.",
+               "latex": "P'(12.5) \\approx \\frac{P(15) - P(10)}{15 - 10} = \\frac{31.5 - 34.0}{5} = -0.5"
+            },
+            {
+               "text": "Units are gallons of propane per minute of time.",
+               "latex": "\\text{gallons per minute}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-02014",
+                  "BC-SKL-02016",
+                  "BC-SKL-04004"
+               ],
+               "criterion": "Gives -0.5 (or -1/2) supported by the difference quotient (31.5 - 34.0)/(15 - 10).",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "-1/2",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99006",
+               "skills": [
+                  "BC-SKL-04001",
+                  "BC-SKL-02015"
+               ],
+               "criterion": "Gives the units gallons per minute, in words or as gal/min.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "units_present",
+                  "units": [
+                     "gallons per minute",
+                     "gallon per minute",
+                     "gal per minute",
+                     "gallons per min",
+                     "gal per min",
+                     "gal/min",
+                     "gallons/min",
+                     "gal/minute",
+                     "gallons/minute",
+                     "gal / min",
+                     "gallons / minute",
+                     "gallons / min",
+                     "gal / minute",
+                     "frac gal min",
+                     "frac gallons minute",
+                     "frac gallons min",
+                     "frac gal minute"
+                  ]
+               }
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "Use the values in the table at \\( t = 10 \\) and \\( t = 15 \\) to approximate the rate of change of the balloon's height with respect to the amount of propane in its tank at time \\( t = 12.5 \\). Show the computations that lead to your answer, and indicate units of measure.",
+         "setup_required": false,
+         "answer_latex": "-36 \\text{ feet per gallon}",
+         "worked_solution": [
+            {
+               "text": "The rate of change of height with respect to propane is the change in B divided by the change in P over the same interval of time.",
+               "latex": "\\frac{dB}{dP} \\approx \\frac{B(15) - B(10)}{P(15) - P(10)} = \\frac{420 - 330}{31.5 - 34.0} = \\frac{90}{-2.5} = -36"
+            },
+            {
+               "text": "Units are feet of height per gallon of propane.",
+               "latex": "\\text{feet per gallon}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-02002",
+                  "BC-SKL-04004"
+               ],
+               "criterion": "Gives -36 supported by the quotient (420 - 330)/(31.5 - 34.0), or by dividing an estimate of B'(12.5), 18 feet per minute, by the estimate of P'(12.5) from part (c). The value 36 with the sign lost, or the inverted quotient -1/36, does not earn the point.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "-36",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "d2",
+               "point_type_id": "BC-PT-99006",
+               "skills": [
+                  "BC-SKL-04001",
+                  "BC-SKL-02015"
+               ],
+               "criterion": "Gives the units feet per gallon, in words or as ft/gal.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "units_present",
+                  "units": [
+                     "feet per gallon",
+                     "foot per gallon",
+                     "ft per gallon",
+                     "feet per gal",
+                     "ft per gal",
+                     "ft/gal",
+                     "feet/gal",
+                     "ft/gallon",
+                     "feet/gallon",
+                     "ft / gal",
+                     "feet / gallon",
+                     "feet / gal",
+                     "ft / gallon",
+                     "frac ft gal",
+                     "frac feet gallon",
+                     "frac feet gal",
+                     "frac ft gallon"
+                  ]
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 111 of 111, stems read for ambiguity by the blind solver)"
+}

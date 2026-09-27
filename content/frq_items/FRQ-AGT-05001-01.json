@@ -1,0 +1,215 @@
+{
+   "id": "FRQ-AGT-05001-01",
+   "archetype_id": "BC-QA-05001",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "stem": {
+      "text": "The function \\( h \\) is twice differentiable for all real \\( x \\). Selected values of \\( h \\) and of its derivative \\( h' \\) are given in the table. \\[ \\begin{array}{c|ccccc} x & 0 & 2 & 3 & 5 & 8 \\\\ \\hline h(x) & 4 & -2 & 1 & 7 & 1 \\\\ h'(x) & -5 & -1 & 3 & 2 & -4 \\end{array} \\]"
+   },
+   "skills": [
+      "BC-SKL-05001",
+      "BC-SKL-05002",
+      "BC-SKL-05003",
+      "BC-SKL-05004",
+      "BC-SKL-05006"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find the average rate of change of \\( h \\) over the interval \\( 0 \\le x \\le 8 \\). Show the computation that leads to your answer.",
+         "setup_required": false,
+         "answer_latex": "-\\frac{3}{8}",
+         "worked_solution": [
+            {
+               "text": "Difference of the endpoint values of h divided by the length of the interval.",
+               "latex": "\\frac{h(8) - h(0)}{8 - 0} = \\frac{1 - 4}{8}"
+            },
+            {
+               "text": "Simplify.",
+               "latex": "-\\frac{3}{8}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99021",
+               "skills": [
+                  "BC-SKL-05003"
+               ],
+               "criterion": "Writes (h(8) - h(0))/(8 - 0) with the table values, (1 - 4)/8, and gives -3/8. The unsimplified quotient (1 - 4)/8 and the decimal -0.375 are accepted.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "-3/8",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Must there be a value \\( c \\), with \\( 0 < c < 2 \\), at which \\( h'(c) = -3 \\)? Must there be a value \\( r \\), with \\( 3 < r < 5 \\), at which \\( h'(r) = 3 \\)? Justify each answer.",
+         "setup_required": false,
+         "answer_latex": "\\text{yes, and yes}",
+         "worked_solution": [
+            {
+               "text": "Average rate of change of h over 0 to 2.",
+               "latex": "\\frac{h(2) - h(0)}{2 - 0} = \\frac{-2 - 4}{2} = -3"
+            },
+            {
+               "text": "h is differentiable, so it is continuous on the closed interval and differentiable on the open one; the Mean Value Theorem gives c.",
+               "latex": "\\exists\\, c \\in (0, 2): h'(c) = -3"
+            },
+            {
+               "text": "Average rate of change of h over 3 to 5.",
+               "latex": "\\frac{h(5) - h(3)}{5 - 3} = \\frac{7 - 1}{2} = 3"
+            },
+            {
+               "text": "The same hypotheses hold on this interval, so the Mean Value Theorem gives r.",
+               "latex": "\\exists\\, r \\in (3, 5): h'(r) = 3"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99021",
+               "skills": [
+                  "BC-SKL-05003"
+               ],
+               "criterion": "Shows the average rate of change of h over 0 <= x <= 2 as a difference quotient with values, (-2 - 4)/(2 - 0), equal to -3. The bare value -3 with no quotient shown does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99017",
+               "skills": [
+                  "BC-SKL-05001",
+                  "BC-SKL-05002",
+                  "BC-SKL-05004"
+               ],
+               "criterion": "Answers yes for c, stating that h is differentiable (so continuous on 0 <= x <= 2 and differentiable on 0 < x < 2) and that the Mean Value Theorem therefore guarantees c with h'(c) = -3. An appeal to the Intermediate Value Theorem does not earn the point.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "b3",
+               "point_type_id": "BC-PT-99021",
+               "skills": [
+                  "BC-SKL-05003"
+               ],
+               "criterion": "Shows the average rate of change of h over 3 <= x <= 5 as a difference quotient with values, (7 - 1)/(5 - 3), equal to 3. Citing h'(3) = 3 from the table instead does not earn the point, since x = 3 is not in the open interval.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b4",
+               "point_type_id": "BC-PT-99017",
+               "skills": [
+                  "BC-SKL-05001",
+                  "BC-SKL-05002",
+                  "BC-SKL-05004"
+               ],
+               "criterion": "Answers yes for r, stating continuity of h on 3 <= x <= 5 and differentiability on 3 < x < 5 (or that h is differentiable) and invoking the Mean Value Theorem. Reporting r = 3 from the table does not earn the point.",
+               "eligible_only_if": [
+                  "b3"
+               ],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Must there be a value \\( w \\), with \\( 3 < w < 8 \\), at which \\( h'(w) = 0 \\)? Justify your answer.",
+         "setup_required": false,
+         "answer_latex": "\\text{yes}",
+         "worked_solution": [
+            {
+               "text": "The endpoint values are equal, so the average rate of change is zero.",
+               "latex": "\\frac{h(8) - h(3)}{8 - 3} = \\frac{1 - 1}{5} = 0"
+            },
+            {
+               "text": "h is continuous on the closed interval and differentiable on the open one, so the Mean Value Theorem (or Rolle's Theorem) gives w.",
+               "latex": "\\exists\\, w \\in (3, 8): h'(w) = 0"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99021",
+               "skills": [
+                  "BC-SKL-05003",
+                  "BC-SKL-05006"
+               ],
+               "criterion": "Shows (h(8) - h(3))/(8 - 3) = (1 - 1)/5 = 0, or states h(3) = h(8) = 1 as the equal endpoint values.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99017",
+               "skills": [
+                  "BC-SKL-05001",
+                  "BC-SKL-05002",
+                  "BC-SKL-05004",
+                  "BC-SKL-05006"
+               ],
+               "criterion": "Answers yes, stating continuity on 3 <= x <= 8 and differentiability on 3 < x < 8 (or that h is differentiable) and invoking the Mean Value Theorem or Rolle's Theorem.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "Must there be a value \\( v \\), with \\( 2 < v < 5 \\), at which \\( h''(v) = 1 \\)? Justify your answer.",
+         "setup_required": false,
+         "answer_latex": "\\text{yes}",
+         "worked_solution": [
+            {
+               "text": "Apply the average rate of change to h' this time.",
+               "latex": "\\frac{h'(5) - h'(2)}{5 - 2} = \\frac{2 - (-1)}{3} = 1"
+            },
+            {
+               "text": "h is twice differentiable, so h' is differentiable and hence continuous on the closed interval; the Mean Value Theorem applied to h' gives v.",
+               "latex": "\\exists\\, v \\in (2, 5): h''(v) = 1"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99021",
+               "skills": [
+                  "BC-SKL-05003"
+               ],
+               "criterion": "Shows the average rate of change of h' over 2 <= x <= 5, (h'(5) - h'(2))/(5 - 2) = (2 - (-1))/3, equal to 1. A quotient built from values of h instead of h' does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "d2",
+               "point_type_id": "BC-PT-99017",
+               "skills": [
+                  "BC-SKL-05001",
+                  "BC-SKL-05002",
+                  "BC-SKL-05004"
+               ],
+               "criterion": "Answers yes, stating that h' is differentiable (because h is twice differentiable), hence continuous on 2 <= x <= 5 and differentiable on 2 < x < 5, and applying the Mean Value Theorem to h'.",
+               "eligible_only_if": [
+                  "d1"
+               ],
+               "check": null
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 111 of 111, stems read for ambiguity by the blind solver)"
+}

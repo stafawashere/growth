@@ -1,0 +1,241 @@
+{
+   "id": "FRQ-AGT-99008-03",
+   "archetype_id": "BC-QA-99008",
+   "calculator_status": "calculator",
+   "representation": "BC-REP-05",
+   "stem": {
+      "text": "A field of solar panels produces electrical energy at a rate modeled by \\( S(t) = 45e^{-(t - 6)^{2}/10} \\) kilowatts, where \\( t \\) is the number of hours after 6 a.m. and \\( 0 \\le t \\le 12 \\). A rate of 1 kilowatt sustained for 1 hour produces 1 kilowatt-hour of energy."
+   },
+   "skills": [
+      "BC-SKL-06036",
+      "BC-SKL-06037",
+      "BC-SKL-08012"
+   ],
+   "functions": {
+      "S": {
+         "variable": "t",
+         "expression": "45*exp(-(t - 6)**2/10)"
+      },
+      "q": {
+         "variable": "t",
+         "expression": "3/25 + t/100"
+      }
+   },
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "How many kilowatt-hours of energy do the panels produce between 6 a.m. and 10 a.m.?",
+         "setup_required": true,
+         "answer_latex": "\\int_{0}^{4} S(t)\\,dt \\approx 45.880",
+         "worked_solution": [
+            {
+               "text": "6 a.m. to 10 a.m. is 0 <= t <= 4, and the energy is the integral of the rate over that interval.",
+               "latex": "\\int_{0}^{4} 45e^{-(t - 6)^{2}/10}\\,dt"
+            },
+            {
+               "text": "Evaluate on the calculator.",
+               "latex": "\\int_{0}^{4} S(t)\\,dt \\approx 45.880"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-06036"
+               ],
+               "criterion": "Writes the definite integral of S(t) from t = 0 to t = 4.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "0",
+                  "upper": "4",
+                  "integrand": "45*exp(-(t - 6)**2/10)",
+                  "variable": "t"
+               }
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-06036"
+               ],
+               "criterion": "Gives 45.880 kilowatt-hours.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "Integral(45*exp(-(t - 6)**2/10), (t, 0, 4))"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find the average rate, in kilowatts, at which the panels produce energy over the interval \\( 0 \\le t \\le 12 \\).",
+         "setup_required": true,
+         "answer_latex": "\\frac{1}{12}\\int_{0}^{12} S(t)\\,dt \\approx 20.865",
+         "worked_solution": [
+            {
+               "text": "The average rate is the integral of the rate divided by the length of the interval.",
+               "latex": "\\frac{1}{12}\\int_{0}^{12} 45e^{-(t - 6)^{2}/10}\\,dt"
+            },
+            {
+               "text": "Evaluate on the calculator.",
+               "latex": "\\frac{1}{12}\\int_{0}^{12} S(t)\\,dt \\approx 20.865"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-06036"
+               ],
+               "criterion": "Writes the average rate as 1/12 times the definite integral of S(t) from t = 0 to t = 12.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "0",
+                  "upper": "12",
+                  "integrand": "45*exp(-(t - 6)**2/10)",
+                  "variable": "t"
+               }
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-06036"
+               ],
+               "criterion": "Gives 20.865 kilowatts.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "Integral(45*exp(-(t - 6)**2/10), (t, 0, 12))/12"
+               }
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Find the time \\( T \\) at which the panels have produced a total of 200 kilowatt-hours of energy since 6 a.m.",
+         "setup_required": true,
+         "answer_latex": "T \\approx 7.855",
+         "worked_solution": [
+            {
+               "text": "The energy produced by time T is the integral of the rate from 0 to T.",
+               "latex": "\\int_{0}^{T} S(t)\\,dt = 200"
+            },
+            {
+               "text": "Solve on the calculator.",
+               "latex": "T \\approx 7.855"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-06036",
+                  "BC-SKL-08012"
+               ],
+               "criterion": "Writes the equation that the definite integral of S(t) from t = 0 to t = T equals 200.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "equation_setup",
+                  "unknown": "T",
+                  "left": "Integral(45*exp(-(t - 6)**2/10), (t, 0, T))",
+                  "right": "200",
+                  "interval": [
+                     "0",
+                     "12"
+                  ]
+               }
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-06036"
+               ],
+               "criterion": "Gives T = 7.855 hours after 6 a.m. (7.854 by truncation is also accepted).",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "7.85481837995163631344894213602"
+               }
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "The utility buys the energy at a price that changes during the day. Energy produced at time \\( t \\) is bought for \\( q(t) = 0.12 + 0.01t \\) dollars per kilowatt-hour. Find the total amount the utility pays for the energy produced during \\( 0 \\le t \\le 12 \\).",
+         "setup_required": true,
+         "answer_latex": "\\int_{0}^{12} q(t)\\,S(t)\\,dt \\approx 45.069",
+         "worked_solution": [
+            {
+               "text": "Payment accumulates at the rate q(t)S(t) dollars per hour.",
+               "latex": "q(t)\\,S(t) = \\left(0.12 + 0.01t\\right) \\cdot 45e^{-(t - 6)^{2}/10}"
+            },
+            {
+               "text": "Integrate over the whole interval and evaluate on the calculator.",
+               "latex": "\\int_{0}^{12} q(t)\\,S(t)\\,dt \\approx 45.069"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99002",
+               "skills": [
+                  "BC-SKL-06036"
+               ],
+               "criterion": "Writes an integral whose integrand is the product of the price and the production rate, (0.12 + 0.01t) times S(t), whatever its limits.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "d2",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-06036"
+               ],
+               "criterion": "Uses the limits t = 0 and t = 12 for that integral.",
+               "eligible_only_if": [
+                  "d1"
+               ],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "0",
+                  "upper": "12",
+                  "integrand": null,
+                  "variable": "t"
+               }
+            },
+            {
+               "point_id": "d3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-06036"
+               ],
+               "criterion": "Gives 45.069 dollars.",
+               "eligible_only_if": [
+                  "d1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "Integral((3/25 + t/100)*45*exp(-(t - 6)**2/10), (t, 0, 12))"
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 111 of 111, stems read for ambiguity by the blind solver)"
+}

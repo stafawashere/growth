@@ -1,0 +1,243 @@
+{
+   "id": "FRQ-AGT-08011-02",
+   "archetype_id": "BC-QA-08011",
+   "calculator_status": "calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "Let \\( f(x) = \\ln x \\) and \\( g(x) = \\frac{(x - 1)^{2}}{3} \\). The graphs of \\( f \\) and \\( g \\) intersect at \\( x = 1 \\) and at \\( x = q \\), where \\( q > 1 \\). Let \\( R \\) be the region bounded by the graphs of \\( f \\) and \\( g \\) for \\( 1 \\le x \\le q \\)."
+   },
+   "skills": [
+      "BC-SKL-08031",
+      "BC-SKL-08032",
+      "BC-SKL-08033",
+      "BC-SKL-08034",
+      "BC-SKL-08035",
+      "BC-SKL-08036",
+      "BC-SKL-08037",
+      "BC-SKL-08038",
+      "BC-SKL-08039"
+   ],
+   "functions": {
+      "f": {
+         "variable": "x",
+         "expression": "log(x)"
+      },
+      "g": {
+         "variable": "x",
+         "expression": "(x - 1)**2/3"
+      }
+   },
+   "roots": {
+      "q": {
+         "value": "2.7384364776414965319319904918507",
+         "equation": "log(x) - (x - 1)**2/3",
+         "variable": "x"
+      }
+   },
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Region \\( R \\) is the base of a solid whose cross sections perpendicular to the \\( x \\)-axis are equilateral triangles. Find the volume of the solid.",
+         "setup_required": true,
+         "answer_latex": "\\frac{\\sqrt{3}}{4}\\int_{1}^{q} \\left(f(x) - g(x)\\right)^{2}dx \\approx 0.057",
+         "worked_solution": [
+            {
+               "text": "Solve f(x) = g(x) on the calculator for the second intersection.",
+               "latex": "q \\approx 2.738"
+            },
+            {
+               "text": "Each triangle has side f(x) - g(x), so its area is the square root of 3 over 4 times the side squared.",
+               "latex": "\\frac{\\sqrt{3}}{4}\\int_{1}^{q} \\left(\\ln x - \\frac{(x - 1)^{2}}{3}\\right)^{2}dx"
+            },
+            {
+               "text": "Evaluate on the calculator.",
+               "latex": "\\frac{\\sqrt{3}}{4}\\int_{1}^{q} \\left(f(x) - g(x)\\right)^{2}dx \\approx 0.057"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-08031",
+                  "BC-SKL-08034",
+                  "BC-SKL-08036"
+               ],
+               "criterion": "Writes a definite integral from x = 1 to x = q (q as a name or a decimal accurate to three places, about 2.738) of the triangle area (sqrt(3)/4)(f(x) - g(x))^2, with the constant inside or in front of the integral. A constant other than sqrt(3)/4 earns nothing.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-08035",
+                  "BC-SKL-08039"
+               ],
+               "criterion": "Gives the volume 0.057 (0.056 by truncation), accurate to three decimal places.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "sqrt(3)/4*Integral((log(x) - (x - 1)**2/3)**2, (x, 1, 2.7384364776414965319319904918507))"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Region \\( R \\) is the base of a second solid whose cross sections perpendicular to the \\( x \\)-axis are squares. Find the volume of this solid.",
+         "setup_required": true,
+         "answer_latex": "\\int_{1}^{q} \\left(f(x) - g(x)\\right)^{2}dx \\approx 0.131",
+         "worked_solution": [
+            {
+               "text": "Each square has side f(x) - g(x).",
+               "latex": "\\int_{1}^{q} \\left(\\ln x - \\frac{(x - 1)^{2}}{3}\\right)^{2}dx"
+            },
+            {
+               "text": "Evaluate on the calculator.",
+               "latex": "\\int_{1}^{q} \\left(f(x) - g(x)\\right)^{2}dx \\approx 0.131"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-08031",
+                  "BC-SKL-08032",
+                  "BC-SKL-08034"
+               ],
+               "criterion": "Writes the definite integral of (f(x) - g(x))^2, in either order of subtraction, from x = 1 to x = q.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "1",
+                  "upper": "q",
+                  "integrand": "(log(x) - (x - 1)**2/3)**2",
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-08035",
+                  "BC-SKL-08039"
+               ],
+               "criterion": "Gives the volume 0.131, accurate to three decimal places.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "Integral((log(x) - (x - 1)**2/3)**2, (x, 1, 2.7384364776414965319319904918507))"
+               }
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Let \\( S \\) be the region bounded by the graph of \\( f \\), the \\( x \\)-axis, and the vertical line \\( x = e \\). Region \\( S \\) is the base of a solid whose cross sections perpendicular to the \\( x \\)-axis are squares. Write an integral expression for the volume of this solid, and use integration by parts to find the volume. Show the work that leads to your answer.",
+         "setup_required": true,
+         "answer_latex": "\\int_{1}^{e} (\\ln x)^{2}\\,dx = e - 2",
+         "worked_solution": [
+            {
+               "text": "The graph of f meets the x-axis at x = 1, and each square has side ln x.",
+               "latex": "\\int_{1}^{e} (\\ln x)^{2}\\,dx"
+            },
+            {
+               "text": "Parts with u = (ln x)^2 and dv = dx, so du = 2 ln x / x dx and v = x.",
+               "latex": "\\int (\\ln x)^{2}\\,dx = x(\\ln x)^{2} - \\int 2\\ln x\\,dx"
+            },
+            {
+               "text": "Parts again with u = ln x and dv = 2 dx, so du = dx / x and v = 2x.",
+               "latex": "\\int 2\\ln x\\,dx = 2x\\ln x - \\int 2\\,dx = 2x\\ln x - 2x + C"
+            },
+            {
+               "text": "Evaluate from 1 to e.",
+               "latex": "\\left[x(\\ln x)^{2} - 2x\\ln x + 2x\\right]_{1}^{e} = (e - 2e + 2e) - 2 = e - 2"
+            },
+            {
+               "text": "The volume.",
+               "latex": "e - 2"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-08032",
+                  "BC-SKL-08034"
+               ],
+               "criterion": "Writes the definite integral of (ln x)^2 from x = 1 to x = e.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "1",
+                  "upper": "E",
+                  "integrand": "log(x)**2",
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99056",
+               "skills": [
+                  "BC-SKL-08035"
+               ],
+               "criterion": "Chooses u = (ln x)^2 and dv = dx with du = (2 ln x / x) dx and v = x, stated or visible in the resulting expression.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "c3",
+               "point_type_id": "BC-PT-99057",
+               "skills": [
+                  "BC-SKL-08035"
+               ],
+               "criterion": "Writes the first parts expression x(ln x)^2 minus the integral of 2 ln x dx, or an equivalent arrangement with the remaining integral present, with or without limits.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "c4",
+               "point_type_id": "BC-PT-99057",
+               "skills": [
+                  "BC-SKL-08035"
+               ],
+               "criterion": "Applies parts to the integral of 2 ln x dx, writing 2x ln x minus the integral of 2 dx or an equivalent arrangement, and reaches an antiderivative equivalent to x(ln x)^2 - 2x ln x + 2x.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "c5",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-08035",
+                  "BC-SKL-08039"
+               ],
+               "criterion": "Gives the volume e - 2, or an equivalent exact form, or the decimal 0.718.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "E - 2"
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 115 of 115, stems read for ambiguity by the blind solver)"
+}

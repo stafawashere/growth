@@ -1,0 +1,241 @@
+{
+   "id": "FRQ-AGT-06005-03",
+   "archetype_id": "BC-QA-06005",
+   "calculator_status": "calculator",
+   "representation": "BC-REP-05",
+   "stem": {
+      "text": "A phone is plugged in to charge. Its battery level is \\( B(t) \\) percent, where \\( t \\) is the number of minutes since the phone was plugged in. For \\( 0 \\le t \\le 60 \\), the battery level increases at a rate modeled by \\( c(t) = 2.2e^{-t^{2}/1600} \\) percent per minute. At time \\( t = 0 \\) the battery level is 18 percent."
+   },
+   "skills": [
+      "BC-SKL-06036",
+      "BC-SKL-06037",
+      "BC-SKL-06034",
+      "BC-SKL-08012",
+      "BC-SKL-08016",
+      "BC-SKL-08017",
+      "BC-SKL-08009"
+   ],
+   "functions": {
+      "c": {
+         "variable": "t",
+         "expression": "11/5*exp(-t**2/1600)"
+      },
+      "B": {
+         "variable": "t",
+         "expression": "Piecewise((18 + Integral(11/5*exp(-s**2/1600), (s, 0, t)), t <= 60), (18 + Integral(11/5*exp(-s**2/1600), (s, 0, 60)) - Integral(3/5 + sin(s/8)/4, (s, 60, t)), True))"
+      },
+      "u": {
+         "variable": "t",
+         "expression": "3/5 + sin(t/8)/4"
+      }
+   },
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find the battery level at time \\( t = 20 \\).",
+         "setup_required": true,
+         "answer_latex": "B(20) \\approx 58.593",
+         "worked_solution": [
+            {
+               "text": "The level at t = 20 is the starting level plus the charge gained over 0 <= t <= 20.",
+               "latex": "B(20) = 18 + \\int_{0}^{20} c(t)\\,dt"
+            },
+            {
+               "text": "Evaluate the integral on the calculator.",
+               "latex": "\\int_{0}^{20} c(t)\\,dt \\approx 40.593"
+            },
+            {
+               "text": "Add.",
+               "latex": "B(20) \\approx 58.593"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-06036",
+                  "BC-SKL-08016"
+               ],
+               "criterion": "Writes the definite integral of c(t) from t = 0 to t = 20.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "0",
+                  "upper": "20",
+                  "integrand": "11/5*exp(-t**2/1600)",
+                  "variable": "t"
+               }
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99033",
+               "skills": [
+                  "BC-SKL-08012",
+                  "BC-SKL-06037"
+               ],
+               "criterion": "Adds the starting level 18 to that integral.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "a3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-08017"
+               ],
+               "criterion": "Gives 58.593 percent (58.592 by truncation is also accepted).",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "18 + Integral(11/5*exp(-t**2/1600), (t, 0, 20))"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find the time \\( T \\), \\( 0 \\le T \\le 60 \\), at which the battery level reaches 80 percent.",
+         "setup_required": true,
+         "answer_latex": "T \\approx 35.848",
+         "worked_solution": [
+            {
+               "text": "The level at time T is the starting level plus the charge gained from 0 to T. Set it equal to 80.",
+               "latex": "18 + \\int_{0}^{T} c(t)\\,dt = 80"
+            },
+            {
+               "text": "Solve on the calculator.",
+               "latex": "T \\approx 35.848"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-06036",
+                  "BC-SKL-08016"
+               ],
+               "criterion": "Writes an equation that sets the level at time T equal to 80 using the definite integral of c(t) from t = 0 to t = T, such as 18 + (integral of c from 0 to T) = 80 or (integral of c from 0 to T) = 62.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "equation_setup",
+                  "unknown": "T",
+                  "left": "18 + Integral(11/5*exp(-t**2/1600), (t, 0, T))",
+                  "right": "80",
+                  "interval": [
+                     "0",
+                     "60"
+                  ]
+               }
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99033",
+               "skills": [
+                  "BC-SKL-08012",
+                  "BC-SKL-06037"
+               ],
+               "criterion": "The equation accounts for the starting level 18, either by adding 18 to the integral or by setting the integral equal to 80 - 18 = 62.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "b3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-08017"
+               ],
+               "criterion": "Gives T = 35.848 minutes.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "35.8480166673428962283623465732"
+               }
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "At time \\( t = 60 \\) the phone is unplugged and used. For \\( 60 \\le t \\le 120 \\), the battery level decreases at a rate modeled by \\( u(t) = 0.6 + 0.25\\sin\\left(\\frac{t}{8}\\right) \\) percent per minute. Find the battery level at time \\( t = 120 \\).",
+         "setup_required": true,
+         "answer_latex": "B(120) \\approx 55.132",
+         "worked_solution": [
+            {
+               "text": "The level at t = 60 is the starting level plus the charge gained while plugged in.",
+               "latex": "B(60) = 18 + \\int_{0}^{60} c(t)\\,dt \\approx 93.345"
+            },
+            {
+               "text": "From t = 60 to t = 120 the level falls by the integral of u.",
+               "latex": "B(120) = B(60) - \\int_{60}^{120} u(t)\\,dt"
+            },
+            {
+               "text": "Evaluate on the calculator, using the stored value of B(60).",
+               "latex": "\\int_{60}^{120} u(t)\\,dt \\approx 38.213"
+            },
+            {
+               "text": "Subtract.",
+               "latex": "B(120) \\approx 55.132"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-06036",
+                  "BC-SKL-08016"
+               ],
+               "criterion": "Writes the definite integral of u(t) from t = 60 to t = 120 as the charge used.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "60",
+                  "upper": "120",
+                  "integrand": "3/5 + sin(t/8)/4",
+                  "variable": "t"
+               }
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99033",
+               "skills": [
+                  "BC-SKL-08012",
+                  "BC-SKL-06037"
+               ],
+               "criterion": "Starts from the level at t = 60, written as 18 plus the integral of c from 0 to 60 or as its value 93.345, and subtracts the integral of u from 60 to 120. Adding the integral of u, or starting from 18, does not earn the point.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "c3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-08017"
+               ],
+               "criterion": "Gives 55.132 percent (55.131 by truncation is also accepted).",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "18 + Integral(11/5*exp(-t**2/1600), (t, 0, 60)) - Integral(3/5 + sin(t/8)/4, (t, 60, 120))"
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 111 of 111, stems read for ambiguity by the blind solver)"
+}

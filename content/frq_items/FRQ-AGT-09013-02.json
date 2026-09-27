@@ -1,0 +1,229 @@
+{
+   "id": "FRQ-AGT-09013-02",
+   "archetype_id": "BC-QA-09013",
+   "calculator_status": "calculator",
+   "representation": "BC-REP-13",
+   "stem": {
+      "text": "The curves \\( r = 3\\sin(2\\theta) \\) and \\( r = 2 - \\cos\\theta \\) are drawn in the xy-plane for \\( 0 \\le \\theta \\le \\frac{\\pi}{2} \\). They intersect at the two angles \\( \\theta = \\alpha \\) and \\( \\theta = \\beta \\), where \\( 0 < \\alpha < \\beta < \\frac{\\pi}{2} \\)."
+   },
+   "skills": [
+      "BC-SKL-09039",
+      "BC-SKL-09040",
+      "BC-SKL-09041",
+      "BC-SKL-09042",
+      "BC-SKL-09043"
+   ],
+   "roots": {
+      "alpha": {
+         "value": "0.172545890575491492517800667133",
+         "equation": "3*sin(2*theta) - 2 + cos(theta)",
+         "variable": "theta"
+      },
+      "beta": {
+         "value": "1.26900809710163878777903220774",
+         "equation": "3*sin(2*theta) - 2 + cos(theta)",
+         "variable": "theta"
+      }
+   },
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find the values of \\( \\alpha \\) and \\( \\beta \\), and find the area of the region that is inside the curve \\( r = 3\\sin(2\\theta) \\) and outside the curve \\( r = 2 - \\cos\\theta \\).",
+         "setup_required": true,
+         "answer_latex": "\\alpha \\approx 0.173, \\ \\beta \\approx 1.269; \\quad \\frac{1}{2}\\int_{\\alpha}^{\\beta} \\left((3\\sin(2\\theta))^{2} - (2 - \\cos\\theta)^{2}\\right)d\\theta \\approx 2.421",
+         "worked_solution": [
+            {
+               "text": "Solve 3 sin(2 theta) = 2 - cos(theta) on the calculator.",
+               "latex": "\\alpha \\approx 0.173, \\quad \\beta \\approx 1.269"
+            },
+            {
+               "text": "Between the angles the petal is the outer curve.",
+               "latex": "3\\sin(2\\theta) > 2 - \\cos\\theta \\text{ for } \\alpha < \\theta < \\beta"
+            },
+            {
+               "text": "Integrate one half the difference of the squares.",
+               "latex": "\\frac{1}{2}\\int_{\\alpha}^{\\beta} \\left((3\\sin(2\\theta))^{2} - (2 - \\cos\\theta)^{2}\\right)d\\theta \\approx 2.421"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99002",
+               "skills": [
+                  "BC-SKL-09040",
+                  "BC-SKL-09041"
+               ],
+               "criterion": "Writes an integral whose integrand is (3 sin(2 theta))^2 minus (2 - cos theta)^2, with the petal as the outer curve, with or without the one half and whatever its limits. The square of the difference of the radii does not earn this point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-09039"
+               ],
+               "criterion": "Uses the intersection angles as limits, alpha = 0.173 and beta = 1.269 to three places, found from 3 sin(2 theta) = 2 - cos theta.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "alpha",
+                  "upper": "beta",
+                  "integrand": null,
+                  "variable": "theta"
+               }
+            },
+            {
+               "point_id": "a3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-09042"
+               ],
+               "criterion": "Gives the area 2.421.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "Integral((9*sin(2*theta)**2 - (2 - cos(theta))**2)/2, (theta, 0.1725458905754914925178006671332791930262, 1.269008097101638787779032207736311435799))"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find the area of the region in the first quadrant that is inside both curves.",
+         "setup_required": true,
+         "answer_latex": "\\frac{1}{2}\\int_{0}^{\\alpha} (3\\sin(2\\theta))^{2}\\,d\\theta + \\frac{1}{2}\\int_{\\alpha}^{\\beta} (2 - \\cos\\theta)^{2}\\,d\\theta + \\frac{1}{2}\\int_{\\beta}^{\\pi/2} (3\\sin(2\\theta))^{2}\\,d\\theta \\approx 1.113",
+         "worked_solution": [
+            {
+               "text": "For 0 <= theta <= alpha and beta <= theta <= pi/2 the petal is the inner curve, and for alpha <= theta <= beta the curve r = 2 - cos theta is the inner curve.",
+               "latex": "\\min\\left(3\\sin(2\\theta), \\ 2 - \\cos\\theta\\right)"
+            },
+            {
+               "text": "Add the three pieces, each one half the integral of the inner radius squared.",
+               "latex": "\\frac{1}{2}\\int_{0}^{\\alpha} (3\\sin(2\\theta))^{2}\\,d\\theta + \\frac{1}{2}\\int_{\\alpha}^{\\beta} (2 - \\cos\\theta)^{2}\\,d\\theta + \\frac{1}{2}\\int_{\\beta}^{\\pi/2} (3\\sin(2\\theta))^{2}\\,d\\theta"
+            },
+            {
+               "text": "Evaluate on the calculator.",
+               "latex": "\\frac{1}{2}\\int_{0}^{\\alpha} (3\\sin(2\\theta))^{2}\\,d\\theta + \\frac{1}{2}\\int_{\\alpha}^{\\beta} (2 - \\cos\\theta)^{2}\\,d\\theta + \\frac{1}{2}\\int_{\\beta}^{\\pi/2} (3\\sin(2\\theta))^{2}\\,d\\theta \\approx 1.113"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99048",
+               "skills": [
+                  "BC-SKL-09041",
+                  "BC-SKL-09043"
+               ],
+               "criterion": "Writes integrals whose integrands contain (3 sin(2 theta))^2 and (2 - cos theta)^2, the squares of the radii, with or without the one half. The area of the whole petal minus the area from part (a) is also accepted, with the petal as one half the integral of (3 sin(2 theta))^2 from 0 to pi/2.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-09040",
+                  "BC-SKL-09043"
+               ],
+               "criterion": "Uses the limits 0 to alpha and beta to pi/2 with the petal and alpha to beta with r = 2 - cos theta, each curve taken where it is the inner curve; or the limits 0 to pi/2 on the petal when the part (a) area is subtracted.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": null,
+               "follows_from": [
+                  "a2"
+               ]
+            },
+            {
+               "point_id": "b3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-09042"
+               ],
+               "criterion": "Gives the area 1.113.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "Integral(9*sin(2*theta)**2/2, (theta, 0, 0.1725458905754914925178006671332791930262)) + Integral((2 - cos(theta))**2/2, (theta, 0.1725458905754914925178006671332791930262, 1.269008097101638787779032207736311435799)) + Integral(9*sin(2*theta)**2/2, (theta, 1.269008097101638787779032207736311435799, pi/2))"
+               }
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Let \\( S \\) be the region bounded by the curve \\( r = 2 - \\cos\\theta \\), the curve \\( r = 3\\sin(2\\theta) \\), and the positive x-axis. Find the area of \\( S \\).",
+         "setup_required": true,
+         "answer_latex": "\\frac{1}{2}\\int_{0}^{\\alpha} \\left((2 - \\cos\\theta)^{2} - (3\\sin(2\\theta))^{2}\\right)d\\theta \\approx 0.057",
+         "worked_solution": [
+            {
+               "text": "S is swept from theta = 0, where the petal is at the origin and r = 2 - cos theta is 1, to theta = alpha. There r = 2 - cos theta is the outer curve.",
+               "latex": "2 - \\cos\\theta > 3\\sin(2\\theta) \\text{ for } 0 \\le \\theta < \\alpha"
+            },
+            {
+               "text": "Integrate one half the difference of the squares and evaluate on the calculator.",
+               "latex": "\\frac{1}{2}\\int_{0}^{\\alpha} \\left((2 - \\cos\\theta)^{2} - (3\\sin(2\\theta))^{2}\\right)d\\theta \\approx 0.057"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99002",
+               "skills": [
+                  "BC-SKL-09040",
+                  "BC-SKL-09041"
+               ],
+               "criterion": "Writes an integral whose integrand is (2 - cos theta)^2 minus (3 sin(2 theta))^2, with r = 2 - cos theta as the outer curve, with or without the one half and whatever its limits; or the difference of the two separate integrals with that curve first.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-09039",
+                  "BC-SKL-09043"
+               ],
+               "criterion": "Uses the limits 0 and alpha (0.173 to three places).",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "0",
+                  "upper": "alpha",
+                  "integrand": null,
+                  "variable": "theta"
+               },
+               "follows_from": [
+                  "a2"
+               ]
+            },
+            {
+               "point_id": "c3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-09042"
+               ],
+               "criterion": "Gives the area 0.057. A negative value does not earn this point.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "Integral(((2 - cos(theta))**2 - 9*sin(2*theta)**2)/2, (theta, 0, 0.1725458905754914925178006671332791930262))"
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 115 of 115, stems read for ambiguity by the blind solver)"
+}

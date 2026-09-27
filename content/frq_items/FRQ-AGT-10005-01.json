@@ -1,0 +1,206 @@
+{
+   "id": "FRQ-AGT-10005-01",
+   "archetype_id": "BC-QA-10005",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "stem": {
+      "text": "Consider the series \\( S = \\displaystyle\\sum_{n=1}^{\\infty} \\frac{n}{(n^{2} + 3)^{2}} \\), and let \\( f \\) be the function defined by \\( f(x) = \\dfrac{x}{(x^{2} + 3)^{2}} \\)."
+   },
+   "skills": [
+      "BC-SKL-10014",
+      "BC-SKL-10015",
+      "BC-SKL-10016",
+      "BC-SKL-10017"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find \\( f'(x) \\). Use it, together with the other conditions the integral test requires, to explain why the integral test can be applied to \\( S \\).",
+         "setup_required": false,
+         "answer_latex": "f'(x) = \\frac{3(1 - x^{2})}{(x^{2} + 3)^{3}}",
+         "worked_solution": [
+            {
+               "text": "Quotient rule.",
+               "latex": "f'(x) = \\frac{(x^{2} + 3)^{2} - 4x^{2}(x^{2} + 3)}{(x^{2} + 3)^{4}} = \\frac{3(1 - x^{2})}{(x^{2} + 3)^{3}}"
+            },
+            {
+               "text": "For x >= 1 the numerator is at most 0, so f is decreasing there.",
+               "latex": "f'(x) \\le 0 \\text{ for } x \\ge 1"
+            },
+            {
+               "text": "f is a quotient of polynomials whose denominator is never 0, so it is continuous, and it is positive for x > 0.",
+               "latex": "f(x) > 0 \\text{ for } x \\ge 1"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-10014"
+               ],
+               "criterion": "Finds f'(x) = 3(1 - x^2)/(x^2 + 3)^3, or any equivalent form such as the unsimplified quotient rule result.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "3*(1 - x**2)/(x**2 + 3)**3",
+                  "up_to_constant": false,
+                  "each_side": false,
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-10014"
+               ],
+               "criterion": "States that f is positive and continuous for x >= 1, with a reason (x > 0 and the denominator is never 0).",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a3",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-10014"
+               ],
+               "criterion": "States that f is decreasing for x >= 1 because f'(x) <= 0 there (f'(1) = 0 and f'(x) < 0 for x > 1).",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Evaluate \\( \\displaystyle\\int_{1}^{\\infty} f(x)\\,dx \\), using limit notation.",
+         "setup_required": false,
+         "answer_latex": "\\frac{1}{8}",
+         "worked_solution": [
+            {
+               "text": "Write the improper integral as a limit.",
+               "latex": "\\int_{1}^{\\infty} \\frac{x}{(x^{2} + 3)^{2}}\\,dx = \\lim_{b \\to \\infty} \\int_{1}^{b} \\frac{x}{(x^{2} + 3)^{2}}\\,dx"
+            },
+            {
+               "text": "Antiderivative by the substitution u = x^2 + 3.",
+               "latex": "\\int \\frac{x}{(x^{2} + 3)^{2}}\\,dx = -\\frac{1}{2(x^{2} + 3)} + C"
+            },
+            {
+               "text": "Evaluate and take the limit.",
+               "latex": "\\lim_{b \\to \\infty} \\left( -\\frac{1}{2(b^{2} + 3)} + \\frac{1}{8} \\right) = \\frac{1}{8}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99053",
+               "skills": [
+                  "BC-SKL-10015",
+                  "BC-SKL-10016"
+               ],
+               "criterion": "Replaces the infinite limit with a variable and writes the limit as that variable approaches infinity, applied to the integral from 1 to b or to the antiderivative evaluated from 1 to b; substituting infinity into the antiderivative loses the point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99003",
+               "skills": [
+                  "BC-SKL-10016"
+               ],
+               "criterion": "Gives an antiderivative of x/(x^2 + 3)^2 equivalent to -1/(2(x^2 + 3)), or -1/(2u) with u = x^2 + 3 and matching bounds, with or without a constant.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b3",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-10016"
+               ],
+               "criterion": "Evaluates the improper integral as 1/8 (or 0.125).",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "1/8",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Does \\( S \\) converge or diverge? Give a reason for your answer.",
+         "setup_required": false,
+         "answer_latex": "\\text{converges}",
+         "worked_solution": [
+            {
+               "text": "The conditions of part (a) hold and the improper integral in part (b) converges, so S converges by the integral test.",
+               "latex": "\\int_{1}^{\\infty} f(x)\\,dx = \\frac{1}{8} \\Rightarrow S \\text{ converges}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-10017"
+               ],
+               "criterion": "Concludes that S converges by the integral test because the improper integral from part (b) converges to a finite value; stating that S equals 1/8 does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "Show that \\( \\dfrac{1}{8} < S < \\dfrac{3}{16} \\).",
+         "setup_required": false,
+         "answer_latex": "\\frac{1}{8} < S < \\frac{3}{16}",
+         "worked_solution": [
+            {
+               "text": "f is decreasing on [n, n + 1], so each term is larger than the integral over the interval to its right.",
+               "latex": "f(n) > \\int_{n}^{n+1} f(x)\\,dx \\Rightarrow S > \\int_{1}^{\\infty} f(x)\\,dx = \\frac{1}{8}"
+            },
+            {
+               "text": "Each term from n = 2 on is smaller than the integral over the interval to its left.",
+               "latex": "f(n) < \\int_{n-1}^{n} f(x)\\,dx \\Rightarrow \\sum_{n=2}^{\\infty} f(n) < \\frac{1}{8}"
+            },
+            {
+               "text": "Add the first term f(1) = 1/16.",
+               "latex": "S < \\frac{1}{16} + \\frac{1}{8} = \\frac{3}{16}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-10017"
+               ],
+               "criterion": "Justifies S > 1/8: because f is decreasing, f(n) > the integral of f from n to n + 1 (left-endpoint rectangles lie above the curve), so S exceeds the integral from 1 to infinity, which is 1/8.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "d2",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-10017"
+               ],
+               "criterion": "Justifies S < 3/16: the terms from n = 2 on sum to less than the integral from 1 to infinity (right-endpoint rectangles lie below the curve), so S < f(1) + 1/8 = 1/16 + 1/8 = 3/16.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 66 of 66 after two formulation misreadings were triaged, stems read for ambiguity by the blind solver)"
+}

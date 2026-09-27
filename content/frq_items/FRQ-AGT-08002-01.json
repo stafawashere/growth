@@ -1,0 +1,238 @@
+{
+   "id": "FRQ-AGT-08002-01",
+   "archetype_id": "BC-QA-08002",
+   "calculator_status": "calculator",
+   "representation": "BC-REP-05",
+   "stem": {
+      "text": "Gravel is loaded onto a barge at a rate modeled by \\( r(t) = 30 - 12e^{-t^{2}/20} \\) tons per hour, where \\( t \\) is the number of hours after loading begins and \\( 0 \\le t \\le 10 \\). Let \\( G(t) \\) be the amount of gravel, in tons, on the barge at time \\( t \\). At time \\( t = 0 \\) the barge holds 40 tons of gravel."
+   },
+   "skills": [
+      "BC-SKL-08004",
+      "BC-SKL-08003"
+   ],
+   "functions": {
+      "r": {
+         "variable": "t",
+         "expression": "30 - 12*exp(-t**2/20)"
+      },
+      "G": {
+         "variable": "t",
+         "expression": "40 + Integral(30 - 12*exp(-s**2/20), (s, 0, t))"
+      }
+   },
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find the average rate of change of \\( G \\) over the interval \\( 0 \\le t \\le 8 \\).",
+         "setup_required": true,
+         "answer_latex": "\\frac{1}{8}\\int_{0}^{8} r(t)\\,dt \\approx 24.123",
+         "worked_solution": [
+            {
+               "text": "The change in G over the interval is the integral of its rate, so the average rate of change is that integral divided by the length 8.",
+               "latex": "\\frac{G(8) - G(0)}{8 - 0} = \\frac{1}{8}\\int_{0}^{8} \\left(30 - 12e^{-t^{2}/20}\\right)dt"
+            },
+            {
+               "text": "Evaluate on the calculator.",
+               "latex": "\\frac{1}{8}\\int_{0}^{8} r(t)\\,dt \\approx 24.123"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99020",
+               "skills": [
+                  "BC-SKL-08004",
+                  "BC-SKL-08003"
+               ],
+               "criterion": "Writes the definite integral of r(t) from t = 0 to t = 8 divided by 8, in any equivalent form such as (G(8) - G(0))/8 with G(8) - G(0) written as that integral. An average value of G itself, an integral of G divided by 8, earns nothing.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-08003"
+               ],
+               "criterion": "Gives 24.123 tons per hour, accurate to three decimal places by rounding or truncation.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "Integral(30 - 12*exp(-t**2/20), (t, 0, 8))/8"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find the time \\( t \\), with \\( 0 < t < 8 \\), at which the instantaneous rate of change of \\( G \\) equals the average rate of change of \\( G \\) over the interval \\( 0 \\le t \\le 8 \\).",
+         "setup_required": true,
+         "answer_latex": "t \\approx 3.778",
+         "worked_solution": [
+            {
+               "text": "The instantaneous rate of change of G is r(t). Set it equal to the average rate of change.",
+               "latex": "30 - 12e^{-t^{2}/20} = \\frac{1}{8}\\int_{0}^{8} r(t)\\,dt"
+            },
+            {
+               "text": "Solve on the calculator.",
+               "latex": "t \\approx 3.778"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99020",
+               "skills": [
+                  "BC-SKL-08004",
+                  "BC-SKL-08003"
+               ],
+               "criterion": "Writes the equation r(t) = (1/8) times the integral of r from 0 to 8, with the right side written as that integral expression or as its value from part (a), about 24.123. Setting r(t) equal to the average value of G, or setting G(t) equal to anything, earns nothing.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "equation_setup",
+                  "unknown": "T",
+                  "left": "30 - 12*exp(-T**2/20)",
+                  "right": "Integral(30 - 12*exp(-t**2/20), (t, 0, 8))/8",
+                  "interval": [
+                     "1",
+                     "7"
+                  ]
+               }
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-08004"
+               ],
+               "criterion": "Gives t = 3.778 hours, accurate to three decimal places.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "3.7784528471441079930958930987193"
+               }
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "There is exactly one number \\( k \\), with \\( 0 < k \\le 10 \\), for which the average rate of change of \\( G \\) over the interval \\( 0 \\le t \\le k \\) is 22 tons per hour. Find \\( k \\).",
+         "setup_required": true,
+         "answer_latex": "k \\approx 5.436",
+         "worked_solution": [
+            {
+               "text": "The average rate of change of G over [0, k] is the integral of r from 0 to k divided by k. Set it equal to 22.",
+               "latex": "\\frac{1}{k}\\int_{0}^{k} \\left(30 - 12e^{-t^{2}/20}\\right)dt = 22"
+            },
+            {
+               "text": "Solve on the calculator.",
+               "latex": "k \\approx 5.436"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99020",
+               "skills": [
+                  "BC-SKL-08004",
+                  "BC-SKL-08003"
+               ],
+               "criterion": "Writes the equation (1/k) times the integral of r(t) from 0 to k equals 22, or the equivalent equation that the integral of r(t) from 0 to k equals 22k.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "equation_setup",
+                  "unknown": "k",
+                  "left": "Integral(30 - 12*exp(-t**2/20), (t, 0, k))/k",
+                  "right": "22",
+                  "interval": [
+                     "3",
+                     "8"
+                  ]
+               }
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-08003"
+               ],
+               "criterion": "Gives k = 5.436, accurate to three decimal places.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "5.4360449792309326099954305848828"
+               }
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "Find the average rate of change of \\( G \\) over the interval \\( 4 \\le t \\le 10 \\). Then find the time \\( t \\), with \\( 4 < t < 10 \\), at which the instantaneous rate of change of \\( G \\) equals this average rate of change.",
+         "setup_required": true,
+         "answer_latex": "t \\approx 6.329",
+         "worked_solution": [
+            {
+               "text": "The average rate of change over [4, 10] is the integral of r over that interval divided by its length 6.",
+               "latex": "\\frac{1}{10 - 4}\\int_{4}^{10} \\left(30 - 12e^{-t^{2}/20}\\right)dt \\approx 28.380"
+            },
+            {
+               "text": "Set the instantaneous rate r(t) equal to that value.",
+               "latex": "30 - 12e^{-t^{2}/20} = 28.380"
+            },
+            {
+               "text": "Solve on the calculator for t between 4 and 10.",
+               "latex": "t \\approx 6.329"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99020",
+               "skills": [
+                  "BC-SKL-08004",
+                  "BC-SKL-08003"
+               ],
+               "criterion": "Writes the definite integral of r(t) from t = 4 to t = 10 divided by 6, the length of the interval. Dividing by 10 or by 4 earns nothing.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "d2",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-08003"
+               ],
+               "criterion": "Gives the average rate of change 28.380 tons per hour, accurate to three decimal places, supported by the setup from d1.",
+               "eligible_only_if": [
+                  "d1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "d3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-08004"
+               ],
+               "criterion": "Gives t = 6.329 hours, accurate to three decimal places, as the solution of r(t) equal to the average rate of change over [4, 10].",
+               "eligible_only_if": [
+                  "d1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "6.3287539071479648080701597419412"
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 115 of 115, stems read for ambiguity by the blind solver)"
+}

@@ -1,0 +1,229 @@
+{
+   "id": "FRQ-AGT-09012-03",
+   "archetype_id": "BC-QA-09012",
+   "calculator_status": "calculator",
+   "representation": "BC-REP-13",
+   "stem": {
+      "text": "Consider the polar curve \\( r(\\theta) = 1 + \\theta\\cos\\theta \\) for \\( 0 \\le \\theta \\le \\pi \\). In the interval \\( 0 < \\theta < \\pi \\), \\( r(\\theta) = 0 \\) at exactly one angle, \\( \\theta = p \\). For \\( 0 \\le \\theta < p \\) the curve lies in the first and second quadrants, and for \\( p < \\theta \\le \\pi \\) it lies in the fourth quadrant, ending at the point \\( (\\pi - 1, 0) \\)."
+   },
+   "skills": [
+      "BC-SKL-09035",
+      "BC-SKL-09036",
+      "BC-SKL-09037",
+      "BC-SKL-09038"
+   ],
+   "functions": {
+      "r": {
+         "variable": "theta",
+         "expression": "1 + theta*cos(theta)"
+      }
+   },
+   "roots": {
+      "p": {
+         "value": "2.07393280909121490116777629780",
+         "equation": "1 + theta*cos(theta)",
+         "variable": "theta"
+      }
+   },
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find the value of \\( p \\), and find the area of the region bounded by the curve for \\( 0 \\le \\theta \\le p \\) and the x-axis.",
+         "setup_required": true,
+         "answer_latex": "p \\approx 2.074; \\quad \\frac{1}{2}\\int_{0}^{p} \\left(1 + \\theta\\cos\\theta\\right)^{2}d\\theta \\approx 1.575",
+         "worked_solution": [
+            {
+               "text": "Solve r(theta) = 0 on the calculator.",
+               "latex": "1 + \\theta\\cos\\theta = 0 \\implies p \\approx 2.074"
+            },
+            {
+               "text": "The region is swept once as theta runs from 0, where r = 1 on the positive x-axis, to p, where the curve reaches the origin.",
+               "latex": "\\frac{1}{2}\\int_{0}^{p} \\left(1 + \\theta\\cos\\theta\\right)^{2}d\\theta"
+            },
+            {
+               "text": "Evaluate on the calculator.",
+               "latex": "\\frac{1}{2}\\int_{0}^{p} \\left(1 + \\theta\\cos\\theta\\right)^{2}d\\theta \\approx 1.575"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99048",
+               "skills": [
+                  "BC-SKL-09035"
+               ],
+               "criterion": "Writes a definite integral whose integrand contains (1 + theta cos theta)^2, the square of r, with or without the one half and the differential.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-09036",
+                  "BC-SKL-09037"
+               ],
+               "criterion": "Uses the limits 0 and p, with p = 2.074 to three places (2.073 accepted as truncation) found from 1 + theta cos theta = 0, on one half the integral of (1 + theta cos theta)^2.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "0",
+                  "upper": "p",
+                  "integrand": null,
+                  "variable": "theta"
+               }
+            },
+            {
+               "point_id": "a3",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-09038"
+               ],
+               "criterion": "Gives the area 1.575, supported by the integral.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "Integral((1 + theta*cos(theta))**2/2, (theta, 0, 2.073932809091214901167776297799360067946))"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find the area of the region in the fourth quadrant bounded by the curve for \\( p \\le \\theta \\le \\pi \\) and the x-axis.",
+         "setup_required": true,
+         "answer_latex": "\\frac{1}{2}\\int_{p}^{\\pi} \\left(1 + \\theta\\cos\\theta\\right)^{2}d\\theta \\approx 0.972",
+         "worked_solution": [
+            {
+               "text": "For p < theta <= pi, r < 0, so these angles trace the part of the curve in the fourth quadrant, from the origin to (pi - 1, 0). The area swept is still one half the integral of r squared.",
+               "latex": "\\frac{1}{2}\\int_{p}^{\\pi} \\left(1 + \\theta\\cos\\theta\\right)^{2}d\\theta"
+            },
+            {
+               "text": "Evaluate on the calculator.",
+               "latex": "\\frac{1}{2}\\int_{p}^{\\pi} \\left(1 + \\theta\\cos\\theta\\right)^{2}d\\theta \\approx 0.972"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99048",
+               "skills": [
+                  "BC-SKL-09035"
+               ],
+               "criterion": "Writes a definite integral whose integrand contains (1 + theta cos theta)^2, with or without the one half and the differential. An integrand of r unsquared, or of |r| unsquared, does not earn this point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-09036",
+                  "BC-SKL-09037"
+               ],
+               "criterion": "Uses the limits p (2.074 to three places) and pi on one half the integral of (1 + theta cos theta)^2.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "p",
+                  "upper": "pi",
+                  "integrand": null,
+                  "variable": "theta"
+               },
+               "follows_from": [
+                  "a2"
+               ]
+            },
+            {
+               "point_id": "b3",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-09038"
+               ],
+               "criterion": "Gives the area 0.972, supported by the integral. A negative area does not earn this point.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "Integral((1 + theta*cos(theta))**2/2, (theta, 2.073932809091214901167776297799360067946, pi))"
+               }
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "For some angle \\( k \\) with \\( 0 < k < p \\), the region bounded by the curve for \\( 0 \\le \\theta \\le k \\), the positive x-axis, and the ray \\( \\theta = k \\) has area 1. Write an equation involving an integral that \\( k \\) satisfies, and find the value of \\( k \\).",
+         "setup_required": true,
+         "answer_latex": "\\frac{1}{2}\\int_{0}^{k} \\left(1 + \\theta\\cos\\theta\\right)^{2}d\\theta = 1, \\quad k \\approx 1.025",
+         "worked_solution": [
+            {
+               "text": "The area swept from theta = 0 to theta = k is one half the integral of r squared.",
+               "latex": "\\frac{1}{2}\\int_{0}^{k} \\left(1 + \\theta\\cos\\theta\\right)^{2}d\\theta = 1"
+            },
+            {
+               "text": "Solve on the calculator.",
+               "latex": "k \\approx 1.025"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99048",
+               "skills": [
+                  "BC-SKL-09035"
+               ],
+               "criterion": "Writes an integral from 0 to k whose integrand contains (1 + theta cos theta)^2, with or without the one half.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-09035",
+                  "BC-SKL-09036"
+               ],
+               "criterion": "Writes the equation one half the integral of (1 + theta cos theta)^2 from 0 to k equals 1, or an equivalent equation such as the integral from 0 to k equals 2.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": {
+                  "kind": "equation_setup",
+                  "unknown": "k",
+                  "left": "Integral((1 + theta*cos(theta))**2/2, (theta, 0, k))",
+                  "right": "1",
+                  "interval": [
+                     "0",
+                     "2"
+                  ]
+               }
+            },
+            {
+               "point_id": "c3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-09038"
+               ],
+               "criterion": "Gives k = 1.025.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "1.02549223427911020564209084923"
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 115 of 115, stems read for ambiguity by the blind solver)"
+}

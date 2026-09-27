@@ -1,0 +1,228 @@
+{
+   "id": "FRQ-AGT-10019-01",
+   "archetype_id": "BC-QA-10019",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "stem": {
+      "text": "The function \\( f \\) is defined by the power series \\[ f(x) = \\sum_{n=0}^{\\infty} \\frac{x^{n}}{4^{n}} \\] for \\( -4 < x < 4 \\). The function \\( F \\) satisfies \\( F'(x) = f(x) \\) for \\( -4 < x < 4 \\) and \\( F(0) = 2 \\)."
+   },
+   "skills": [
+      "BC-SKL-10069"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Write \\( f(x) \\) as a rational function of \\( x \\) for \\( -4 < x < 4 \\). Then find the value of \\( \\displaystyle\\sum_{n=0}^{\\infty} \\frac{(-3)^{n}}{4^{n}} \\).",
+         "setup_required": false,
+         "answer_latex": "f(x) = \\frac{4}{4 - x}, \\qquad \\sum_{n=0}^{\\infty} \\frac{(-3)^{n}}{4^{n}} = \\frac{4}{7}",
+         "worked_solution": [
+            {
+               "text": "The series is geometric with first term 1 and ratio x/4.",
+               "latex": "f(x) = \\frac{1}{1 - \\frac{x}{4}} = \\frac{4}{4 - x}"
+            },
+            {
+               "text": "The numerical series is geometric with first term 1 and ratio -3/4.",
+               "latex": "\\sum_{n=0}^{\\infty} \\left(-\\frac{3}{4}\\right)^{n} = \\frac{1}{1 + \\frac{3}{4}} = \\frac{4}{7}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99067",
+               "skills": [
+                  "BC-SKL-10069"
+               ],
+               "criterion": "Writes f(x) as first term over one minus ratio, 1/(1 - x/4), or an equivalent form such as 4/(4 - x).",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "4/(4 - x)",
+                  "up_to_constant": false,
+                  "each_side": true,
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99067",
+               "skills": [
+                  "BC-SKL-10069"
+               ],
+               "criterion": "Finds the sum 4/7 from first term 1 and ratio -3/4, or as f(-3) = 4/7.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Write the first four nonzero terms and the general term of the Maclaurin series for \\( F(x) \\).",
+         "setup_required": false,
+         "answer_latex": "F(x) = 2 + x + \\frac{x^{2}}{8} + \\frac{x^{3}}{48} + \\cdots + \\frac{x^{n+1}}{(n + 1)4^{n}} + \\cdots",
+         "worked_solution": [
+            {
+               "text": "Integrate the series for f term by term.",
+               "latex": "\\int_{0}^{x} \\sum_{n=0}^{\\infty} \\frac{t^{n}}{4^{n}}\\,dt = \\sum_{n=0}^{\\infty} \\frac{x^{n+1}}{(n + 1)4^{n}}"
+            },
+            {
+               "text": "Add the constant fixed by F(0) = 2.",
+               "latex": "F(x) = 2 + \\sum_{n=0}^{\\infty} \\frac{x^{n+1}}{(n + 1)4^{n}}"
+            },
+            {
+               "text": "The first four nonzero terms.",
+               "latex": "F(x) \\approx 2 + x + \\frac{x^{2}}{8} + \\frac{x^{3}}{48}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99003",
+               "skills": [
+                  "BC-SKL-10069"
+               ],
+               "criterion": "Antidifferentiates the terms of the series for f term by term, giving x + x^2/8 + x^3/48 or the corresponding terms of an antiderivative series, with or without a constant.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-10069"
+               ],
+               "criterion": "Gives the four nonzero terms 2 + x + x^2/8 + x^3/48, with the constant term 2 fixed by F(0) = 2, as a sum or a list.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "2 + x + x**2/8 + x**3/48",
+                  "up_to_constant": false,
+                  "each_side": true,
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "b3",
+               "point_type_id": "BC-PT-99003",
+               "skills": [
+                  "BC-SKL-10069"
+               ],
+               "criterion": "Gives the general term x^(n+1)/((n + 1)4^n) for n >= 0, or an equivalent indexing such as x^n/(n 4^(n-1)) for n >= 1, or 4(x/4)^(n+1)/(n + 1).",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Find an expression for \\( F(x) \\) in closed form for \\( -4 < x < 4 \\).",
+         "setup_required": false,
+         "answer_latex": "F(x) = 2 - 4\\ln\\left(1 - \\frac{x}{4}\\right)",
+         "worked_solution": [
+            {
+               "text": "Antidifferentiate the rational form from part (a).",
+               "latex": "\\int \\frac{4}{4 - x}\\,dx = -4\\ln(4 - x) + C"
+            },
+            {
+               "text": "Use F(0) = 2 to find C.",
+               "latex": "2 = -4\\ln 4 + C \\Rightarrow C = 2 + 4\\ln 4"
+            },
+            {
+               "text": "Combine the logarithms.",
+               "latex": "F(x) = 2 - 4\\ln\\left(1 - \\frac{x}{4}\\right)"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99003",
+               "skills": [
+                  "BC-SKL-10069"
+               ],
+               "criterion": "Gives an antiderivative of 4/(4 - x), namely -4 ln(4 - x) or -4 ln|4 - x| or -4 ln(1 - x/4), with or without a constant.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-10069"
+               ],
+               "criterion": "Gives F(x) = 2 - 4 ln(1 - x/4), or an equivalent form such as 2 + 4 ln 4 - 4 ln(4 - x) or 2 + 4 ln(4/(4 - x)), with the constant determined from F(0) = 2.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "2 - 4*log(1 - x/4)",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "Find the value of \\( F(2) \\). Then use the series from part (b) to find the exact value of \\( \\displaystyle\\sum_{n=0}^{\\infty} \\frac{1}{(n + 1)\\,2^{n}} \\).",
+         "setup_required": false,
+         "answer_latex": "F(2) = 2 + 4\\ln 2, \\qquad \\sum_{n=0}^{\\infty} \\frac{1}{(n + 1)2^{n}} = 2\\ln 2",
+         "worked_solution": [
+            {
+               "text": "Evaluate the closed form at x = 2.",
+               "latex": "F(2) = 2 - 4\\ln\\frac{1}{2} = 2 + 4\\ln 2"
+            },
+            {
+               "text": "Evaluate the series at x = 2.",
+               "latex": "F(2) = 2 + \\sum_{n=0}^{\\infty} \\frac{2^{n+1}}{(n + 1)4^{n}} = 2 + 2\\sum_{n=0}^{\\infty} \\frac{1}{(n + 1)2^{n}}"
+            },
+            {
+               "text": "Equate the two and solve.",
+               "latex": "2\\sum_{n=0}^{\\infty} \\frac{1}{(n + 1)2^{n}} = 4\\ln 2"
+            },
+            {
+               "text": "The value of the sum.",
+               "latex": "\\sum_{n=0}^{\\infty} \\frac{1}{(n + 1)2^{n}} = 2\\ln 2"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-10069"
+               ],
+               "criterion": "Gives F(2) = 2 + 4 ln 2, or an equivalent such as 2 - 4 ln(1/2) or 2 + ln 16.",
+               "eligible_only_if": [],
+               "check": null,
+               "follows_from": [
+                  "c2"
+               ]
+            },
+            {
+               "point_id": "d2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-10069"
+               ],
+               "criterion": "Gives the sum 2 ln 2 (or ln 4), from setting the series for F at x = 2 equal to F(2).",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "2*log(2)",
+                  "up_to_constant": false,
+                  "each_side": false,
+                  "variable": "x"
+               },
+               "follows_from": [
+                  "d1"
+               ]
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 66 of 66 after two formulation misreadings were triaged, stems read for ambiguity by the blind solver)"
+}

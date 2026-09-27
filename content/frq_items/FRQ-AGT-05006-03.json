@@ -1,0 +1,233 @@
+{
+   "id": "FRQ-AGT-05006-03",
+   "archetype_id": "BC-QA-05006",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "Let \\( f(x) = \\left(x^{2} - 3\\right)e^{-x} \\) for all real \\( x \\)."
+   },
+   "skills": [
+      "BC-SKL-05010",
+      "BC-SKL-05024",
+      "BC-SKL-05025",
+      "BC-SKL-05026",
+      "BC-SKL-05027",
+      "BC-SKL-05028",
+      "BC-SKL-05029"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find \\( f'(x) \\). Find the \\( x \\)-coordinates of all critical points of \\( f \\).",
+         "setup_required": false,
+         "answer_latex": "x = -1, \\; x = 3",
+         "worked_solution": [
+            {
+               "text": "Product rule.",
+               "latex": "f'(x) = 2xe^{-x} - \\left(x^{2} - 3\\right)e^{-x} = -(x - 3)(x + 1)e^{-x}"
+            },
+            {
+               "text": "Set the derivative equal to zero. The exponential factor is never zero.",
+               "latex": "-(x - 3)(x + 1)e^{-x} = 0"
+            },
+            {
+               "text": "Critical points.",
+               "latex": "x = -1, \\; x = 3"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-05010"
+               ],
+               "criterion": "Finds f'(x) = (2x - x^2 + 3)e^(-x), in any equivalent form such as -(x - 3)(x + 1)e^(-x).",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "-(x - 3)*(x + 1)*exp(-x)",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99013",
+               "skills": [
+                  "BC-SKL-05010"
+               ],
+               "criterion": "Sets f'(x) equal to zero, or an equivalent equation such as x^2 - 2x - 3 = 0, or refers to the critical points as the zeros of f'.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-05010"
+               ],
+               "criterion": "Gives both critical points, x = -1 and x = 3, and no others.",
+               "eligible_only_if": [
+                  "a2"
+               ],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find the absolute minimum value of \\( f \\) on the closed interval \\( -2 \\le x \\le 4 \\). Justify your answer.",
+         "setup_required": false,
+         "answer_latex": "f(-1) = -2e",
+         "worked_solution": [
+            {
+               "text": "Candidates are the critical points and the endpoints.",
+               "latex": "x = -2, \\; -1, \\; 3, \\; 4"
+            },
+            {
+               "text": "Evaluate f at each candidate.",
+               "latex": "f(-2) = e^{2}, \\; f(-1) = -2e, \\; f(3) = 6e^{-3}, \\; f(4) = 13e^{-4}"
+            },
+            {
+               "text": "Only f(-1) is negative, so it is the smallest.",
+               "latex": "f(-1) = -2e"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99011",
+               "skills": [
+                  "BC-SKL-05024",
+                  "BC-SKL-05025",
+                  "BC-SKL-05028"
+               ],
+               "criterion": "Justifies with a candidates test that evaluates f at x = -2, -1, 3 and 4 (e^2, -2e, 6e^(-3) and 13e^(-4)), with no endpoint missing and no extra candidates.",
+               "eligible_only_if": [],
+               "check": null,
+               "follows_from": [
+                  "a3"
+               ]
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-05026",
+                  "BC-SKL-05027"
+               ],
+               "criterion": "Gives the absolute minimum value -2e (any exact equivalent form). Giving only the location x = -1 does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Find the absolute maximum value of \\( f \\) on the closed interval \\( -2 \\le x \\le 4 \\). Justify your answer.",
+         "setup_required": false,
+         "answer_latex": "f(-2) = e^{2}",
+         "worked_solution": [
+            {
+               "text": "Same candidates and values as in part (b).",
+               "latex": "f(-2) = e^{2}, \\; f(-1) = -2e, \\; f(3) = 6e^{-3}, \\; f(4) = 13e^{-4}"
+            },
+            {
+               "text": "e^2 > 1, while 6e^(-3) < 6/8 < 1 and 13e^(-4) < 13/16 < 1.",
+               "latex": "e^{2} > 1 > 6e^{-3}, \\; e^{2} > 1 > 13e^{-4}"
+            },
+            {
+               "text": "The largest value is at the left endpoint.",
+               "latex": "f(-2) = e^{2}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99011",
+               "skills": [
+                  "BC-SKL-05024",
+                  "BC-SKL-05025",
+                  "BC-SKL-05026",
+                  "BC-SKL-05028"
+               ],
+               "criterion": "Justifies with a candidates test that evaluates f at x = -2, -1, 3 and 4, whether recomputed or carried from part (b), and compares them to show e^2 is the largest.",
+               "eligible_only_if": [],
+               "check": null,
+               "follows_from": [
+                  "b1"
+               ]
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-05026",
+                  "BC-SKL-05027"
+               ],
+               "criterion": "Gives the absolute maximum value e^2, attained at the endpoint x = -2. Giving only the location does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "Find the value of \\( x \\) at which \\( f \\) attains its absolute maximum on the closed interval \\( 0 \\le x \\le 4 \\). Justify your answer.",
+         "setup_required": false,
+         "answer_latex": "x = 3",
+         "worked_solution": [
+            {
+               "text": "The only critical point in the interval is x = 3, so the candidates are the endpoints and x = 3.",
+               "latex": "f(0) = -3, \\; f(3) = 6e^{-3}, \\; f(4) = 13e^{-4}"
+            },
+            {
+               "text": "Compare the two positive values, using e > 13/6.",
+               "latex": "6e^{-3} - 13e^{-4} = e^{-4}(6e - 13) > 0"
+            },
+            {
+               "text": "The largest value is at x = 3.",
+               "latex": "x = 3"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99011",
+               "skills": [
+                  "BC-SKL-05024",
+                  "BC-SKL-05025",
+                  "BC-SKL-05028",
+                  "BC-SKL-05029"
+               ],
+               "criterion": "Justifies with a candidates test on x = 0, 3 and 4 (-3, 6e^(-3) and 13e^(-4)) that shows 6e^(-3) > 13e^(-4), for example because 6e > 13. Also accepted: f' > 0 on 0 < x < 3 and f' < 0 on 3 < x < 4, so x = 3 is the only critical point in the interval and f increases to it and decreases after it.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "d2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-05026"
+               ],
+               "criterion": "Gives x = 3.",
+               "eligible_only_if": [
+                  "d1"
+               ],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "3",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 115 of 115, stems read for ambiguity by the blind solver)"
+}

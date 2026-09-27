@@ -1,0 +1,195 @@
+{
+   "id": "FRQ-AGT-05008-02",
+   "archetype_id": "BC-QA-05008",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "Let \\( f(x) = \\dfrac{x^{2}}{x - 1} \\) for all \\( x \\ne 1 \\)."
+   },
+   "skills": [
+      "BC-SKL-05014",
+      "BC-SKL-05015",
+      "BC-SKL-05016",
+      "BC-SKL-05017",
+      "BC-SKL-05018"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find \\( f'(x) \\). Find all values of \\( x \\) at which \\( f'(x) = 0 \\) or \\( f'(x) \\) is undefined.",
+         "setup_required": false,
+         "answer_latex": "f'(x) = 0 \\text{ at } x = 0, \\ x = 2; \\ \\text{undefined at } x = 1",
+         "worked_solution": [
+            {
+               "text": "Quotient rule.",
+               "latex": "f'(x) = \\frac{2x(x - 1) - x^{2}}{(x - 1)^{2}} = \\frac{x^{2} - 2x}{(x - 1)^{2}}"
+            },
+            {
+               "text": "The numerator factors as x times (x - 2); the denominator is zero at x = 1.",
+               "latex": "x^{2} - 2x = 0 \\Rightarrow x = 0, \\ x = 2"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-05014"
+               ],
+               "criterion": "Applies the quotient rule and gives f'(x) = (x^2 - 2x)/(x - 1)^2 or an equivalent form, such as 1 - 1/(x - 1)^2.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "(x**2 - 2*x)/(x - 1)**2",
+                  "up_to_constant": false,
+                  "each_side": true,
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-05016"
+               ],
+               "criterion": "Gives f'(x) = 0 at x = 0 and x = 2, and f'(x) undefined at x = 1, from the factored numerator and the denominator.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find all open intervals on which \\( f \\) is increasing. Give a reason for your answer.",
+         "setup_required": false,
+         "answer_latex": "x < 0 \\text{ and } x > 2",
+         "worked_solution": [
+            {
+               "text": "The denominator is positive for x not 1, so f' has the sign of x(x - 2).",
+               "latex": "f'(x) > 0 \\iff x < 0 \\text{ or } x > 2"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-05016",
+                  "BC-SKL-05018"
+               ],
+               "criterion": "Gives the interval x < 0, that is (-infinity, 0), with or without its endpoint.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-05016",
+                  "BC-SKL-05018"
+               ],
+               "criterion": "Gives the interval x > 2, that is (2, infinity), with or without its endpoint.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b3",
+               "point_type_id": "BC-PT-99063",
+               "skills": [
+                  "BC-SKL-05014",
+                  "BC-SKL-05017"
+               ],
+               "criterion": "States that f'(x) > 0 on these intervals. A bare sign chart with no statement naming f' does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Find all open intervals on which \\( f \\) is decreasing. Give a reason for your answer.",
+         "setup_required": false,
+         "answer_latex": "0 < x < 1 \\text{ and } 1 < x < 2",
+         "worked_solution": [
+            {
+               "text": "For 0 < x < 2 the numerator x(x - 2) is negative; x = 1 is not in the domain, so the interval splits there.",
+               "latex": "f'(x) < 0 \\text{ on } 0 < x < 1 \\text{ and on } 1 < x < 2"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-05016",
+                  "BC-SKL-05018"
+               ],
+               "criterion": "Gives the two intervals 0 < x < 1 and 1 < x < 2, with or without the endpoints 0 and 2. The single interval 0 < x < 2, which crosses x = 1 where f is undefined, does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99063",
+               "skills": [
+                  "BC-SKL-05014",
+                  "BC-SKL-05017"
+               ],
+               "criterion": "States that f'(x) < 0 on these intervals.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "Find the absolute minimum value of \\( f \\) on the interval \\( x > 1 \\). Justify your answer.",
+         "setup_required": false,
+         "answer_latex": "f(2) = 4",
+         "worked_solution": [
+            {
+               "text": "On x > 1 the only critical point is x = 2, where f' changes from negative to positive.",
+               "latex": "f'(x) < 0 \\text{ on } 1 < x < 2, \\quad f'(x) > 0 \\text{ on } x > 2"
+            },
+            {
+               "text": "So f decreases to x = 2 and increases after it, and f(2) is the least value on the whole interval.",
+               "latex": "f(2) = \\frac{4}{2 - 1} = 4"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99010",
+               "skills": [
+                  "BC-SKL-05014",
+                  "BC-SKL-05017",
+                  "BC-SKL-05018"
+               ],
+               "criterion": "States that f' < 0 on 1 < x < 2 and f' > 0 for x > 2, and that x = 2 is the only critical point on x > 1, so f has its absolute minimum on that interval at x = 2. A local first or second derivative test with no statement that x = 2 is the only critical point on the interval does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "d2",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-05014"
+               ],
+               "criterion": "Gives the value f(2) = 4, found by substituting x = 2 into f.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "4",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 111 of 111, stems read for ambiguity by the blind solver)"
+}

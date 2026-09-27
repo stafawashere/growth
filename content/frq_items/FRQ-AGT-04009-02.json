@@ -1,0 +1,228 @@
+{
+   "id": "FRQ-AGT-04009-02",
+   "archetype_id": "BC-QA-04009",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "The function \\( f \\) is twice differentiable for all real numbers, and \\( f'' \\) is continuous. It satisfies \\( f(0) = 0 \\), \\( f'(0) = 3 \\) and \\( f''(0) = -4 \\)."
+   },
+   "skills": [
+      "BC-SKL-04033",
+      "BC-SKL-04034",
+      "BC-SKL-04035",
+      "BC-SKL-04036",
+      "BC-SKL-04037",
+      "BC-SKL-04038"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find \\( \\displaystyle\\lim_{x \\to 0} \\frac{f(x) - \\sin(3x)}{x^{2}} \\). Show the work that leads to your answer.",
+         "setup_required": false,
+         "answer_latex": "-2",
+         "worked_solution": [
+            {
+               "text": "f is continuous at 0 because it is differentiable, so the numerator and the denominator both tend to 0.",
+               "latex": "\\lim_{x\\to 0}\\left(f(x) - \\sin(3x)\\right) = 0, \\quad \\lim_{x\\to 0}x^{2} = 0"
+            },
+            {
+               "text": "Apply L'Hospital's Rule.",
+               "latex": "\\lim_{x\\to 0}\\frac{f'(x) - 3\\cos(3x)}{2x}"
+            },
+            {
+               "text": "The new numerator tends to f'(0) - 3 = 0 and the new denominator to 0, so apply the rule again.",
+               "latex": "\\lim_{x\\to 0}\\left(f'(x) - 3\\cos(3x)\\right) = 0, \\quad \\lim_{x\\to 0}2x = 0"
+            },
+            {
+               "text": "Second application; f'' is continuous at 0.",
+               "latex": "\\lim_{x\\to 0}\\frac{f''(x) + 9\\sin(3x)}{2} = \\frac{-4 + 0}{2} = -2"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99055",
+               "skills": [
+                  "BC-SKL-04033",
+                  "BC-SKL-04035",
+                  "BC-SKL-04038"
+               ],
+               "criterion": "Presents the limit of f(x) - sin(3x) and the limit of x^2 as two separate statements, each equal to 0, and writes the quotient of derivatives (f'(x) - 3cos(3x))/(2x) with at least one of the two derivatives correct. Writing the original limit as 0/0 does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99055",
+               "skills": [
+                  "BC-SKL-04037",
+                  "BC-SKL-04035"
+               ],
+               "criterion": "Shows that f'(x) - 3cos(3x) and 2x both tend to 0, using f'(0) = 3, and applies the rule a second time, writing (f''(x) + 9 sin(3x))/2 with at least one derivative correct.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "a3",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-04036"
+               ],
+               "criterion": "Gives the value -2, supported by the two applications of the rule.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "-2",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Let \\( h(x) = \\left(1 + \\dfrac{2}{x}\\right)^{x} \\) for \\( x > 0 \\). Write a limit expression that describes the behavior of \\( \\ln h(x) \\) as \\( x \\) increases without bound, evaluate it using L'Hospital's Rule, and use the result to find \\( \\displaystyle\\lim_{x \\to \\infty} h(x) \\).",
+         "setup_required": false,
+         "answer_latex": "\\lim_{x\\to\\infty} h(x) = e^{2}",
+         "worked_solution": [
+            {
+               "text": "Take the logarithm and write it as a quotient.",
+               "latex": "\\lim_{x\\to\\infty}\\ln h(x) = \\lim_{x\\to\\infty}x\\ln\\left(1 + \\frac{2}{x}\\right) = \\lim_{x\\to\\infty}\\frac{\\ln\\left(1 + \\frac{2}{x}\\right)}{\\frac{1}{x}}"
+            },
+            {
+               "text": "The numerator and the denominator both tend to 0.",
+               "latex": "\\lim_{x\\to\\infty}\\ln\\left(1 + \\frac{2}{x}\\right) = 0, \\quad \\lim_{x\\to\\infty}\\frac{1}{x} = 0"
+            },
+            {
+               "text": "Apply L'Hospital's Rule.",
+               "latex": "\\lim_{x\\to\\infty}\\frac{\\frac{-2/x^{2}}{1 + 2/x}}{-1/x^{2}} = \\lim_{x\\to\\infty}\\frac{2}{1 + \\frac{2}{x}} = 2"
+            },
+            {
+               "text": "The exponential is continuous, so h(x) = e^(ln h(x)) tends to e^2.",
+               "latex": "\\lim_{x\\to\\infty} h(x) = e^{2}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99054",
+               "skills": [
+                  "BC-SKL-04033"
+               ],
+               "criterion": "Writes the limit of ln h(x) as x tends to infinity in correct notation, as the limit of x ln(1 + 2/x) or of ln(1 + 2/x)/(1/x) or an equivalent quotient. Substituting infinity into the expression does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99055",
+               "skills": [
+                  "BC-SKL-04033",
+                  "BC-SKL-04035"
+               ],
+               "criterion": "Rewrites the product as a quotient, presents the limits of its numerator and denominator separately (both 0, or both infinite for an equivalent quotient), and writes the quotient of their derivatives with at least one derivative correct.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "b3",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-04036"
+               ],
+               "criterion": "Finds the limit of ln h(x) to be 2 and concludes that the limit of h(x) is e^2. Giving 2 as the limit of h(x) does not earn the point.",
+               "eligible_only_if": [
+                  "b2"
+               ],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "exp(2)",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "There is exactly one constant \\( k \\) for which \\( \\displaystyle\\lim_{x \\to 0} \\frac{f(x) - kx}{1 - \\cos x} \\) exists. Find \\( k \\), and find the value of the limit for that \\( k \\). Justify your answers.",
+         "setup_required": false,
+         "answer_latex": "k = 3, \\quad \\lim_{x\\to 0}\\frac{f(x) - 3x}{1 - \\cos x} = -4",
+         "worked_solution": [
+            {
+               "text": "For every k the numerator and the denominator both tend to 0, because f is continuous and f(0) = 0.",
+               "latex": "\\lim_{x\\to 0}\\left(f(x) - kx\\right) = 0, \\quad \\lim_{x\\to 0}\\left(1 - \\cos x\\right) = 0"
+            },
+            {
+               "text": "Apply L'Hospital's Rule.",
+               "latex": "\\lim_{x\\to 0}\\frac{f'(x) - k}{\\sin x}"
+            },
+            {
+               "text": "The denominator tends to 0 and the numerator tends to 3 - k, so the quotient is unbounded near 0 unless 3 - k = 0.",
+               "latex": "k = 3"
+            },
+            {
+               "text": "With k = 3 the quotient is again 0 over 0; apply the rule a second time, using the continuity of f''.",
+               "latex": "\\lim_{x\\to 0}\\frac{f''(x)}{\\cos x} = \\frac{-4}{1} = -4"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99055",
+               "skills": [
+                  "BC-SKL-04033",
+                  "BC-SKL-04035",
+                  "BC-SKL-04038"
+               ],
+               "criterion": "Presents the limit of f(x) - kx and the limit of 1 - cos x as separate statements, each equal to 0, and writes (f'(x) - k)/sin x with at least one derivative correct.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-04036",
+                  "BC-SKL-04038"
+               ],
+               "criterion": "Gives k = 3 with the reason that the denominator sin x tends to 0 while the numerator tends to f'(0) - k = 3 - k, so the limit can exist only if 3 - k = 0.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": null
+            },
+            {
+               "point_id": "c3",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-04037",
+                  "BC-SKL-04036"
+               ],
+               "criterion": "Applies the rule a second time with k = 3 and gives the value -4 for the limit, from f''(0)/cos 0.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "-4",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 111 of 111, stems read for ambiguity by the blind solver)"
+}

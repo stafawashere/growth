@@ -1,0 +1,212 @@
+{
+   "id": "FRQ-AGT-05007-04",
+   "archetype_id": "BC-QA-05007",
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "For \\( x > 0 \\), the function \\( g \\) is defined by \\( g(x) = \\displaystyle\\int_{1}^{x} (t - 3)\\ln t\\,dt \\)."
+   },
+   "skills": [
+      "BC-SKL-05010",
+      "BC-SKL-05020",
+      "BC-SKL-05039"
+   ],
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find \\( g'(x) \\). Find all values of \\( x \\) with \\( x > 0 \\) at which \\( g \\) has a critical point.",
+         "setup_required": false,
+         "answer_latex": "x = 1 \\text{ and } x = 3",
+         "worked_solution": [
+            {
+               "text": "Fundamental Theorem of Calculus.",
+               "latex": "g'(x) = (x - 3)\\ln x"
+            },
+            {
+               "text": "Set the derivative equal to zero; ln x is zero only at x = 1.",
+               "latex": "(x - 3)\\ln x = 0"
+            },
+            {
+               "text": "Both factors give critical points in x > 0.",
+               "latex": "x = 1 \\text{ and } x = 3"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-05010"
+               ],
+               "criterion": "Gives g'(x) = (x - 3) ln x, or any equivalent expression such as x ln x - 3 ln x.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "(x - 3)*log(x)",
+                  "up_to_constant": false,
+                  "each_side": true,
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99013",
+               "skills": [
+                  "BC-SKL-05010"
+               ],
+               "criterion": "Sets g'(x) = (x - 3) ln x equal to zero, or an equivalent equation, to locate the critical points.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-05010"
+               ],
+               "criterion": "Gives both x = 1 and x = 3 and no other value. Missing x = 1 (from ln x = 0) does not earn the point.",
+               "eligible_only_if": [],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find \\( g''(x) \\) and the value of \\( g''(3) \\).",
+         "setup_required": false,
+         "answer_latex": "g''(3) = \\ln 3",
+         "worked_solution": [
+            {
+               "text": "Product rule on (x - 3) ln x.",
+               "latex": "g''(x) = \\ln x + \\frac{x - 3}{x}"
+            },
+            {
+               "text": "Substitute x = 3; the second term vanishes.",
+               "latex": "g''(3) = \\ln 3 + 0 = \\ln 3"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99005",
+               "skills": [
+                  "BC-SKL-05039"
+               ],
+               "criterion": "Differentiates g' by the product rule to get g''(x) = ln x + (x - 3)/x, or an equivalent form such as ln x + 1 - 3/x.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "any_line",
+                  "expected": "log(x) + (x - 3)/x",
+                  "up_to_constant": false,
+                  "each_side": true,
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-05039"
+               ],
+               "criterion": "Gives g''(3) = ln 3. The decimal 1.098 or 1.099 is accepted.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "sympy_equivalence",
+                  "target": "answer",
+                  "expected": "log(3)",
+                  "up_to_constant": false,
+                  "variable": "x"
+               }
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "Determine whether \\( g \\) has a relative minimum, a relative maximum, or neither at \\( x = 3 \\). Justify your answer.",
+         "setup_required": false,
+         "answer_latex": "\\text{relative minimum at } x = 3",
+         "worked_solution": [
+            {
+               "text": "g'(3) = 0 and g''(3) = ln 3 > 0 because 3 > 1.",
+               "latex": "g'(3) = 0, \\quad g''(3) = \\ln 3 > 0"
+            },
+            {
+               "text": "By the second derivative test g has a relative minimum at x = 3.",
+               "latex": "\\text{relative minimum at } x = 3"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99014",
+               "skills": [
+                  "BC-SKL-05039"
+               ],
+               "criterion": "States g''(3) = ln 3 > 0 together with g'(3) = 0, or states that g' changes from negative to positive at x = 3.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99012",
+               "skills": [
+                  "BC-SKL-05020",
+                  "BC-SKL-05039"
+               ],
+               "criterion": "Concludes that g has a relative minimum at x = 3, tied to the sign statement from the derivative test.",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": null
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "Determine whether \\( g \\) has a relative minimum, a relative maximum, or neither at \\( x = 1 \\). Justify your answer.",
+         "setup_required": false,
+         "answer_latex": "\\text{relative maximum at } x = 1",
+         "worked_solution": [
+            {
+               "text": "For 0 < x < 1 both x - 3 and ln x are negative; for 1 < x < 3, x - 3 is negative and ln x is positive.",
+               "latex": "g'(x) > 0 \\text{ on } 0 < x < 1, \\quad g'(x) < 0 \\text{ on } 1 < x < 3"
+            },
+            {
+               "text": "g' changes from positive to negative at x = 1, so g has a relative maximum there. The second derivative test agrees.",
+               "latex": "g''(1) = 0 + \\frac{1 - 3}{1} = -2 < 0"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99014",
+               "skills": [
+                  "BC-SKL-05020",
+                  "BC-SKL-05039"
+               ],
+               "criterion": "States that g' > 0 for 0 < x < 1 and g' < 0 for 1 < x < 3 (g' changes from positive to negative at x = 1), or states g'(1) = 0 with g''(1) = -2 < 0.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "d2",
+               "point_type_id": "BC-PT-99012",
+               "skills": [
+                  "BC-SKL-05020",
+                  "BC-SKL-05039"
+               ],
+               "criterion": "Concludes that g has a relative maximum at x = 1, tied to the sign statement from the derivative test.",
+               "eligible_only_if": [
+                  "d1"
+               ],
+               "check": null
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 111 of 111, stems read for ambiguity by the blind solver)"
+}

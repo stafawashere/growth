@@ -1,0 +1,248 @@
+{
+   "id": "FRQ-AGT-08008-03",
+   "archetype_id": "BC-QA-08008",
+   "calculator_status": "calculator",
+   "representation": "BC-REP-01",
+   "stem": {
+      "text": "Let \\( f(x) = 3\\ln(x + 1) \\) and \\( g(x) = \\frac{x^{2} - x}{2} \\) for \\( x \\ge 0 \\). The graphs of \\( f \\) and \\( g \\) intersect at \\( x = 0 \\) and at \\( x = q \\), where \\( q > 0 \\). Let \\( R \\) be the region bounded by the graphs of \\( f \\) and \\( g \\) for \\( 0 \\le x \\le q \\)."
+   },
+   "skills": [
+      "BC-SKL-08018",
+      "BC-SKL-08019",
+      "BC-SKL-08020",
+      "BC-SKL-08021",
+      "BC-SKL-08022"
+   ],
+   "functions": {
+      "f": {
+         "variable": "x",
+         "expression": "3*log(x + 1)"
+      },
+      "g": {
+         "variable": "x",
+         "expression": "(x**2 - x)/2"
+      }
+   },
+   "roots": {
+      "q": {
+         "value": "3.5579874125296249970260184099817",
+         "equation": "3*log(x + 1) - ((x**2 - x)/2)",
+         "variable": "x"
+      }
+   },
+   "parts": [
+      {
+         "id": "a",
+         "prompt": "Find the area of \\( R \\).",
+         "setup_required": true,
+         "answer_latex": "\\int_{0}^{q} \\left(f(x) - g(x)\\right)dx \\approx 5.726",
+         "worked_solution": [
+            {
+               "text": "Solve f(x) = g(x) on the calculator for the positive intersection.",
+               "latex": "q \\approx 3.558"
+            },
+            {
+               "text": "On [0, q] the graph of f is above the graph of g.",
+               "latex": "\\int_{0}^{q} \\left(3\\ln(x + 1) - \\frac{x^{2} - x}{2}\\right)dx"
+            },
+            {
+               "text": "Evaluate on the calculator.",
+               "latex": "\\int_{0}^{q} \\left(f(x) - g(x)\\right)dx \\approx 5.726"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "a1",
+               "point_type_id": "BC-PT-99059",
+               "skills": [
+                  "BC-SKL-08018",
+                  "BC-SKL-08019"
+               ],
+               "criterion": "Writes a definite integral whose integrand is the difference f(x) - g(x), in either order or inside an absolute value.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "a2",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-08021"
+               ],
+               "criterion": "Uses the limits 0 and q, with q written as q or as a decimal accurate to three places, about 3.558.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": {
+                  "kind": "bounds_match",
+                  "lower": "0",
+                  "upper": "q",
+                  "integrand": null,
+                  "variable": "x"
+               }
+            },
+            {
+               "point_id": "a3",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-08022"
+               ],
+               "criterion": "Gives the area 5.726, accurate to three decimal places.",
+               "eligible_only_if": [
+                  "a1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "Integral(3*log(x + 1) - ((x**2 - x)/2), (x, 0, 3.5579874125296249970260184099817))"
+               }
+            }
+         ]
+      },
+      {
+         "id": "b",
+         "prompt": "Find the area of the region bounded by the graphs of \\( f \\) and \\( g \\) and the vertical line \\( x = 5 \\).",
+         "setup_required": true,
+         "answer_latex": "\\int_{q}^{5} \\left(g(x) - f(x)\\right)dx \\approx 3.057",
+         "worked_solution": [
+            {
+               "text": "To the right of q the graph of g is above the graph of f.",
+               "latex": "\\int_{q}^{5} \\left(\\frac{x^{2} - x}{2} - 3\\ln(x + 1)\\right)dx"
+            },
+            {
+               "text": "Evaluate on the calculator.",
+               "latex": "\\int_{q}^{5} \\left(g(x) - f(x)\\right)dx \\approx 3.057"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "b1",
+               "point_type_id": "BC-PT-99059",
+               "skills": [
+                  "BC-SKL-08018",
+                  "BC-SKL-08019"
+               ],
+               "criterion": "Writes a definite integral from q to 5 whose integrand is g(x) - f(x), or f(x) - g(x) inside an absolute value, or f(x) - g(x) with the negative result's sign reversed.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "b2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-08022"
+               ],
+               "criterion": "Gives the area 3.057, accurate to three decimal places. A negative value earns nothing.",
+               "eligible_only_if": [
+                  "b1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "Integral((x**2 - x)/2 - 3*log(x + 1), (x, 3.5579874125296249970260184099817, 5))"
+               }
+            }
+         ]
+      },
+      {
+         "id": "c",
+         "prompt": "For \\( 0 < k < q \\), the portion of \\( R \\) to the left of the vertical line \\( x = k \\) has area 2 for exactly one value of \\( k \\). Write an equation involving an integral expression whose solution is \\( k \\), and find \\( k \\).",
+         "setup_required": true,
+         "answer_latex": "k \\approx 1.342",
+         "worked_solution": [
+            {
+               "text": "The area of R between x = 0 and x = k equals 2.",
+               "latex": "\\int_{0}^{k} \\left(3\\ln(x + 1) - \\frac{x^{2} - x}{2}\\right)dx = 2"
+            },
+            {
+               "text": "Solve on the calculator.",
+               "latex": "k \\approx 1.342"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "c1",
+               "point_type_id": "BC-PT-99001",
+               "skills": [
+                  "BC-SKL-08019"
+               ],
+               "criterion": "Writes the equation: the integral of f(x) - g(x) from 0 to k equals 2.",
+               "eligible_only_if": [],
+               "check": {
+                  "kind": "equation_setup",
+                  "unknown": "k",
+                  "left": "Integral(3*log(x + 1) - ((x**2 - x)/2), (x, 0, k))",
+                  "right": "2",
+                  "interval": [
+                     "1",
+                     "2"
+                  ]
+               }
+            },
+            {
+               "point_id": "c2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-08022"
+               ],
+               "criterion": "Gives k = 1.342, accurate to three decimal places (1.341 by truncation).",
+               "eligible_only_if": [
+                  "c1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "1.3417467682474742674078916144079"
+               }
+            }
+         ]
+      },
+      {
+         "id": "d",
+         "prompt": "Find the area of the region bounded by the graph of \\( g \\) and the \\( x \\)-axis for \\( 0 \\le x \\le 1 \\).",
+         "setup_required": true,
+         "answer_latex": "\\frac{1}{12}",
+         "worked_solution": [
+            {
+               "text": "On [0, 1] the graph of g is on or below the x-axis.",
+               "latex": "\\int_{0}^{1} \\left(0 - \\frac{x^{2} - x}{2}\\right)dx"
+            },
+            {
+               "text": "Evaluate.",
+               "latex": "\\left[\\frac{x^{2}}{4} - \\frac{x^{3}}{6}\\right]_{0}^{1} = \\frac{1}{4} - \\frac{1}{6} = \\frac{1}{12}"
+            },
+            {
+               "text": "The area.",
+               "latex": "\\frac{1}{12}"
+            }
+         ],
+         "points": [
+            {
+               "point_id": "d1",
+               "point_type_id": "BC-PT-99059",
+               "skills": [
+                  "BC-SKL-08018",
+                  "BC-SKL-08019"
+               ],
+               "criterion": "Writes a definite integral from 0 to 1 of 0 - g(x), or of |g(x)|, or of g(x) with the result's sign reversed.",
+               "eligible_only_if": [],
+               "check": null
+            },
+            {
+               "point_id": "d2",
+               "point_type_id": "BC-PT-99004",
+               "skills": [
+                  "BC-SKL-08022"
+               ],
+               "criterion": "Gives the area 1/12, or the decimal 0.083. A negative value earns nothing.",
+               "eligible_only_if": [
+                  "d1"
+               ],
+               "check": {
+                  "kind": "numeric_three_decimals",
+                  "expected": "1/12"
+               }
+            }
+         ]
+      }
+   ],
+   "authored_on": "2026-09-27",
+   "drafted_by": "claude-opus-5-5 agent draft, stage 13 (content2), 2026-09-27",
+   "signed_off_by": "claude-opus-5-5 on the operator's delegation of 2026-09-27 (stage 13 review: audit rulings applied, blind SymPy recheck 115 of 115, stems read for ambiguity by the blind solver)"
+}

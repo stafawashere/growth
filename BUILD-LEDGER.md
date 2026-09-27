@@ -1929,6 +1929,21 @@ items) and items 3 and 6 (Slices 3 and 4). Every gate 11 names for P2 now exists
   were read back. Checks: pytest `1359 passed in 1488.08s (0:24:48)`; vitest
   `Tests  669 passed (669)` in 53 files; `tsc --noEmit` exit 0; `qa/12_report.py` exit 0.
 
+- 2026-09-27, stage 11 (ux2), slices 1 to 6: the contrast and greyscale evals read app.css media-aware
+  at 1280 and 375 px, and the 946 pairs the old eval checked are all still checked; one
+  `PageHeader` for every screen's ruled title, and home, review and free response load through one
+  `useLoad` with a retry beside `LoadState.tsx`; 08's raw LaTeX inspector under every math answer
+  field; a System, Light and Dark theme setting under Accessibility on the settings page; compact
+  question-menu tiles that read without colour; and an open graphing panel beside the question from
+  1100 px on calculator parts. Every new test was run red against a deliberate break and green once
+  restored (listed in the stage 11 decisions). Checks at 1c8fc4e: pytest `1365 passed in
+  2731.83s (0:45:31)`; vitest `Tests  697 passed (697)` in 56 files; `tsc --noEmit` exit 0;
+  `qa/12_report.py` exit 0. bb9e17f, which keeps `useLoad`'s value stable between renders, was
+  added after that run and touches only the client: vitest `Tests  698 passed (698)` in 57 files
+  and `tsc --noEmit` exit 0 were run on it. The real app was walked for all seven items by
+  claude-opus-5-5 in headless Brave, not by a person; see the stage 11 section of
+  `docs/operator/ui-redesign.md`.
+
 ## In progress [inferred]
 
 Stage 1, items for Units 4 to 10, is complete in the worktree `../growth-content` on branch
@@ -1963,6 +1978,11 @@ remains in progress for it. The next stage is 08, the P7 rerun, once 8 weeks of 
 
 Stage 10, the experience pass, 2026-09-26: complete and merged (Done, "stage 10 (ux)"). The
 candidates it did not build are listed in its decisions paragraph.
+
+Stage 11, the seven UI items stage 10 left, 2026-09-27, worktree `../growth-ux2` on branch `ux2`:
+slices 1 to 6 are merged (Done, "stage 11 (ux2), slices 1 to 6"). Slice 7, the diagnostic skip, and
+the commit-before-reply fix to `get_db` are committed on `ux2` and are being checked and merged;
+the stage 11 section of `docs/operator/ui-redesign.md` comes with them.
 
 ## Live API spend log [verified]
 
@@ -2975,6 +2995,19 @@ From the eleventh session, 2026-09-21, found and not fixed.
 - 2026-09-26, stage 10, closed. The representation matrix labelled every row and column with its
   bare BC-REP id in the running app, because `settings.snapshot` is empty until first use.
 
+- 2026-09-27, stage 11, closed. `app/web/src/testing/cascade.ts` read every rule inside @media as
+  always applying, so a base colour overridden only inside a `max-width` block was never checked at
+  desktop width. Shown on the old code: with `.home-lead` in `accent-tint-2` in the base rules and
+  in `text-primary` inside `@media (max-width: 600px)`, the old eval passed with 1.16:1 body text;
+  the media-aware eval fails it as "light: home, ready at 1280 px: p.home-lead ... is 1.16:1, floor
+  4.5:1". The same rule inside the 600 px block alone fails only "at 375 px".
+- 2026-09-27, stage 11, open. The evals read two widths, 1280 and 375 px. A rule whose condition
+  holds only between them, such as a `min-width: 700px` and `max-width: 800px` pair, is matched at
+  neither; the coverage test then fails it if it carries a colour, which is the guard, but its
+  non-colour declarations reach no greyscale state.
+- 2026-09-27, stage 11, open. The theme choice lives in one browser's localStorage, so a second
+  browser or a cleared profile starts at System; the server holds no copy.
+
 ## Plan corrections applied [verified]
 
 Session 2026-09-23 (fourteenth). No plan file was edited. Readings applied in code:
@@ -3551,6 +3584,78 @@ Session 2026-09-20 (seventh).
   formula. The App and settings route fixtures gained the two new providers fields.
 - 2026-09-26, stage 7, 11 P8 risk: MathLive's licence read out of the installed package is MIT
   (0.101.2, `LICENSE.txt`), as are KaTeX 0.16.47 and the compute engine 0.24.1.
+
+## Decisions taken on the operator's instruction, 2026-09-27 [inferred]
+
+Stage 11, the seven UI items stage 10 left unbuilt, decided on the operator's delegation (the stage
+brief delegates every decision) by claude-opus-5-5, not by a person.
+
+- The contrast and greyscale evals read app.css at 1280 and 375 px. `testing/cascade.ts` keeps each
+  rule's @media conditions and matches a rule only at a width they hold for; it evaluates `min-width`
+  and `max-width` in px and refuses any other media feature or block at-rule rather than guess, so a
+  `prefers-reduced-motion` or `@supports` block added to app.css fails the evals until the cascade is
+  taught it. At 375 px every current media rule holds, so the 375 px read is exactly the old read:
+  the 946 distinct pairs the old eval checked are all still checked (compared pair by pair), and
+  the 1280 px read adds a second pass. The greyscale eval runs each of its states at both widths.
+- Rule matching is cached per element and width while one catalogued screen is read, and dropped
+  before the DOM changes. The eval's render with two widths ran past its 60 s setup budget beside
+  other suites; the budget was not raised, and the cached read takes 2.7 s where the old one took
+  24.5 s.
+- `PageHeader` (`app/web/src/page/PageHeader.tsx`) returns the ruled title, or an eyebrow as the page
+  heading with the title one level below it, as the checkpoint drew it. It adds no wrapper, because
+  `.card > .screen-title + *` spaces a card's first block from the title as its direct sibling.
+  Twenty-eight title sites moved onto it. The item eyebrows ("Question 7 of at most 30", "Concept
+  probe" on a probe item, "Worked so far") are not page titles and stay as they were.
+- `useLoad` moved from `progress/load.ts` to `status/load.ts` beside `LoadState.tsx` and gained a
+  retry. Home, review and free response moved onto it from their own copies of the same effect.
+  Not moved, each for its reason: the app shell's sign-in probe (it tells a signed-out 401 from a
+  failure), the account screen (it shows the server's refusal text), settings and the experiment
+  switches (a failed read keeps the section's heading and last value, and each write replaces the
+  value), the checkpoint (its read runs only when resuming and shares its state with start and
+  score), and the free-response capture poll (a timer, not a load). No test changed.
+- The raw LaTeX inspector is `MathAnswerField`, MathField plus the inspector, fed by MathField's
+  `onLatexChange`, and every math answer field uses it: the session item, the diagnostic, the unit
+  check, the timed part, the concept probe and typed free response. MathField itself is unchanged,
+  so its tests, whose stand-in element serves MathJSON only, are unchanged. The inspector is a
+  paragraph whose visible label "raw LaTeX:" is read before the LaTeX, with no tabindex, so it adds
+  no tab stop and takes no key; it is dropped when the math keyboard did not load.
+- The theme setting sits in its own "Accessibility" card on the settings page, below the student's
+  settings and above the operator's disclosures, not inside `SettingsScreen`, because
+  `SettingsScreen.test.tsx` holds `SettingsScreen` to exactly 11's scope 17 sections. That is how
+  stage 8 placed the experiment switches, and the scope test is unchanged. The choice is kept under
+  `growth-theme` in localStorage, every read and write guarded, and a value that cannot be read or is
+  unknown means System.
+- Question-menu tiles show the number and a `*` when marked for review; the full sentence is the
+  button's `aria-label`. Answered tiles are filled with a solid border and unanswered ones keep a
+  dashed border, because the greyscale eval strips every colour, a fill included, and the brief's
+  "answered filled" alone would read by colour only. The question on screen has a 2 px border. A
+  one-line key under the tiles says what each mark means and is hidden from screen readers, which
+  hear each tile's sentence. `.text-button[aria-current="true"]` was dropped from app.css, because
+  the menu entries were its only users and the coverage eval fails a colour rule no screen draws.
+- The graphing panel takes the left column, as Bluebook's calculator does, so the reading and focus
+  order stays the order on screen; the part widens to 1152 px while the panel is open at 1100 px
+  and above. The columns are flex items with a zero basis, because `1fr` is a literal the
+  literal-value gate refuses.
+- Tests changed, as the brief allows: `app/web/src/assessment/PartRunner.test.tsx`, "lists answered,
+  unanswered and marked questions" and "shows each question's exam number". Old assertion: each
+  tile's `textContent` equals the sentence, such as "Question 2, unanswered, marked for review".
+  New assertion: the tile at each position is the button `getByRole` finds by that exact sentence
+  as its accessible name, the tile count equals the sentence count, and in the first test the
+  visible text is `["1", "2*", "3"]`. It went red when the name dropped ", marked for review".
+- New tests, each shown red under its break and green once restored: the contrast eval's two-width
+  read and media refusal (a colour failing only inside `max-width: 600px` failed "at 375 px"; a
+  failing base colour overridden only on phones failed "at 1280 px" and passed the old cascade);
+  the greyscale eval at 375 px (a `.crossed-out` rule dropping its line-through inside the 600 px
+  block failed at 375 px only); `input/MathAnswerField.test.tsx` (inspector not updated, a
+  `tabIndex={0}`, a bare `MathField` in `Item.tsx`); `theme.test.ts` and
+  `settings/AccessibilitySection.test.tsx` (the previous choice left following the system, an
+  unguarded read, an unknown stored value trusted, a tile that does not apply); the greyscale
+  tile test (answered by fill alone, no `*`); `assessment/graphingBeside.test.tsx` (the part never
+  told the panel opened, the breakpoint at 900 px, the layout at every width); and
+  `status/load.test.tsx` (the value rebuilt on every render).
+- Merges: slices 1 to 6 touch only the client, so they merged together after one full run of the
+  checks at their tip, and slice 7, which touches the server, merged on its own after another. Each
+  slice is its own commit, and each new test was shown red under its break and green restored.
 
 ## Decisions taken on the operator's instruction, 2026-09-26 [inferred]
 

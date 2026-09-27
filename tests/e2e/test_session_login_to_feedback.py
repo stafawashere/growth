@@ -1,6 +1,6 @@
 """Gate 23 of docs/plan/11-phased-delivery.md, end to end over the real HTTP application.
 
-The property: a passkey login, a full session over the P1 subset, a confidence rating, an
+The property: a password login, a full session over the P1 subset, a confidence rating, an
 elaborated feedback screen, a written error note, and a persisted skills_state change, with no
 network calls outside the recorded cassettes.
 

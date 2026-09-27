@@ -2,9 +2,9 @@
 
 The application is built through app/main.py, the composition root a deployment uses, over a
 temporary SQLite file and the live data/ registries, so the loader, the seeding hook, the engine
-and the item bank are the ones that ship. The single substitution is the passkey verifier: a
-WebAuthn assertion is signed by an authenticator holding a private key, which a test process does
-not have, so the ceremony is answered by a double and the account lifecycle behind it stays real.
+and the item bank are the ones that ship. Sign-in is the real username and password path with no
+double; the environment only lowers the scrypt cost to about a millisecond per hash and raises the
+per-IP limit out of reach, both through the variables a deployment would set.
 
 The tutor is app/providers/replay.ReplayProvider over the hand-written cassette in
 tests/fixtures/provider_cassettes/, and the socket ban below is what proves nothing else dialled
@@ -29,7 +29,14 @@ CASSETTE_PATH = (
 )
 FIRST_DAY = date(2026, 9, 1)
 INGESTED_AT = "2026-09-01T09:00:00+00:00"
-CREDENTIAL_ID = b"gate-23-credential"
+USERNAME = "gate_student"
+PASSWORD = "gate twenty three password"
+FAST_SCRYPT_ENVIRONMENT = {
+   "GROWTH_SCRYPT_N": str(2 ** 10),
+   "GROWTH_SCRYPT_R": "8",
+   "GROWTH_SCRYPT_P": "1",
+   "GROWTH_AUTH_RATE_LIMIT": "100000",
+}
 
 
 class NetworkCallInTest(AssertionError):
@@ -66,36 +73,6 @@ def forbid_network(monkeypatch):
    monkeypatch.setattr(socket, "create_connection", refuse_connection)
 
    return refuse_network_socket
-
-
-class FakeVerifier:
-   """The one double: a real assertion needs an authenticator this process cannot hold."""
-
-   def __init__(self, rp_id="localhost"):
-      self.rp_id = rp_id
-
-   def begin_registration(self, user_id, user_name):
-      return {
-         "challenge": "registration-challenge",
-         "options": {"rp": {"id": self.rp_id}, "user": {"id": user_id, "name": user_name}},
-      }
-
-   def finish_registration(self, challenge, credential):
-      offered = credential.get("credential_id")
-      names_a_credential = isinstance(offered, str) and offered != ""
-
-      return {
-         "credential_id": bytes.fromhex(offered) if names_a_credential else CREDENTIAL_ID,
-         "public_key": b"gate-23-public-key",
-         "sign_count": int(credential.get("sign_count", 0)),
-         "transports": credential.get("transports"),
-      }
-
-   def begin_login(self, credential_ids=None):
-      return {"challenge": "login-challenge", "options": {"rpId": self.rp_id}}
-
-   def finish_login(self, challenge, credential, public_key, stored_sign_count):
-      return {"sign_count": int(credential.get("sign_count", 0))}
 
 
 def fixture_records():
@@ -137,42 +114,16 @@ class World:
 
       return TestClient(self.application, client=("127.0.0.1", 40000), base_url="http://127.0.0.1")
 
-   def register(self, client, sign_count=1):
-      begun = client.post("/auth/passkey/register/begin", json={"display_name": "Student"})
-
-      assert begun.status_code == 200, begun.text
-
-      finished = client.post(
-         "/auth/passkey/register/finish",
-         json={
-            "challenge_id": begun.json()["challenge_id"],
-            "credential": {
-               "credential_id": CREDENTIAL_ID.hex(),
-               "sign_count": sign_count,
-            },
-         },
-      )
+   def register(self, client, username=USERNAME, password=PASSWORD):
+      finished = client.post("/auth/signup", json={"username": username, "password": password})
 
       if finished.status_code == 200:
          self.user_id = finished.json()["user"]["id"]
 
       return finished
 
-   def login(self, client, sign_count=2):
-      begun = client.post("/auth/passkey/login/begin", json={})
-
-      assert begun.status_code == 200, begun.text
-
-      return client.post(
-         "/auth/passkey/login/finish",
-         json={
-            "challenge_id": begun.json()["challenge_id"],
-            "credential": {
-               "credential_id": CREDENTIAL_ID.hex(),
-               "sign_count": sign_count,
-            },
-         },
-      )
+   def login(self, client, username=USERNAME, password=PASSWORD):
+      return client.post("/auth/login", json={"username": username, "password": password})
 
    def attempt_error_note(self, attempt_id):
       """Read out of SQLite, because the POST's own echo says nothing about the column."""
@@ -231,9 +182,9 @@ def world(tmp_path, forbid_network):
       "GROWTH_RNG_SEED": "7",
       "GROWTH_EXAM_DATE": "2027-05-10",
       "GROWTH_ITEMS_DIR": "none",
+      **FAST_SCRYPT_ENVIRONMENT,
    }
    application = build_application(environment)
-   application.state.settings.verifier = FakeVerifier(application.state.settings.rp_id)
    built = World(application, application.state.engine, answers_by_item(fixture_records()))
    publish_fixture_items(built)
 

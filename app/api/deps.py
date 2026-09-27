@@ -1,7 +1,9 @@
 """Request-scoped dependencies: the database session, the settings, and the authenticated user.
 
 Every session-scoped route depends on current_session, so a request without a live cookie never
-reaches a query, and every query is scoped by the user id the cookie resolved to.
+reaches a query, and every query is scoped by the user id the cookie resolved to. A session whose
+user has no password is refused as well: that user was migrated from passkeys and must reset first,
+and app/db/migrate.py already signed such sessions out, so this is the second line.
 """
 from fastapi import Depends, HTTPException, Request
 from sqlalchemy.orm import Session as OrmSession
@@ -15,8 +17,8 @@ def get_settings(request: Request):
    return request.app.state.settings
 
 
-def get_challenges(request: Request):
-   return request.app.state.challenges
+def get_dummy_hash(request: Request):
+   return request.app.state.dummy_hashes.for_settings(request.app.state.settings)
 
 
 def get_db(request: Request):
@@ -41,7 +43,13 @@ def current_session(request: Request, db=Depends(get_db, scope="function")):
    is_anonymous = auth_session is None
 
    if is_anonymous:
-      raise HTTPException(status_code=401, detail="a passkey session is required")
+      raise HTTPException(status_code=401, detail="a session is required")
+
+   user = db.get(models.User, auth_session.user_id)
+   needs_password = user is not None and user.password_hash is None
+
+   if needs_password:
+      raise HTTPException(status_code=401, detail="a session is required")
 
    return auth_session
 

@@ -7,8 +7,9 @@ means recording again, and a replay that misses the book fails with CassetteMiss
 passing on a different answer.
 
 The application is built by app/main.py build_application over a temporary database and the live
-data/ registries; the only double is the passkey verifier, because a test process holds no
-authenticator. Nothing here reads CLAUDE_CODE_OAUTH_TOKEN.
+data/ registries, with no double in the sign-in path: the student signs up with a username and
+password, hashed under scrypt parameters low enough to cost a few milliseconds. Nothing here reads
+CLAUDE_CODE_OAUTH_TOKEN.
 """
 import base64
 import json
@@ -23,7 +24,11 @@ from app.main import build_application
 
 PAGES_DIR = REPO_ROOT / "tests" / "fixtures" / "frq_pages"
 CASSETTE_DIR = REPO_ROOT / "tests" / "fixtures" / "grading_cassettes"
-CREDENTIAL_ID = b"frq-credential"
+STUDENT_USERNAME = "frq_student"
+STUDENT_PASSWORD = "frq-scenario-password"
+FAST_SCRYPT_N = 2 ** 10
+FAST_SCRYPT_R = 8
+FAST_SCRYPT_P = 1
 PAPER_TO_GRADE_BOOK = CASSETTE_DIR / "paper_to_grade.json"
 PAPER_TO_GRADE_PAGE = PAGES_DIR / "critical_point_sign_change__clean.jpg"
 PAPER_TO_GRADE_ITEM = "FRQ-AGT-05007-01"
@@ -37,23 +42,6 @@ PAPER_TO_GRADE_PART_B = [
 ]
 
 
-class PasskeyDouble:
-   def __init__(self, rp_id="localhost"):
-      self.rp_id = rp_id
-
-   def begin_registration(self, user_id, user_name, exclude_credential_ids=()):
-      return {"challenge": "frq-registration", "options": {"rp": {"id": self.rp_id}, "user": {"id": user_id, "name": user_name}}}
-
-   def finish_registration(self, challenge, credential):
-      return {"credential_id": CREDENTIAL_ID, "public_key": b"frq-public-key", "sign_count": 1, "transports": None}
-
-   def begin_login(self, credential_ids=None):
-      return {"challenge": "frq-login", "options": {"rpId": self.rp_id}}
-
-   def finish_login(self, challenge, credential, public_key, stored_sign_count):
-      return {"sign_count": int(credential.get("sign_count", 0))}
-
-
 def build(database_path, provider, extra_environment=None):
    environment = {
       "GROWTH_DB_PATH": str(database_path),
@@ -63,9 +51,11 @@ def build(database_path, provider, extra_environment=None):
       "GROWTH_RNG_SEED": "7",
    }
    environment.update(extra_environment or {})
+   environment.setdefault("GROWTH_SCRYPT_N", str(FAST_SCRYPT_N))
+   environment.setdefault("GROWTH_SCRYPT_R", str(FAST_SCRYPT_R))
+   environment.setdefault("GROWTH_SCRYPT_P", str(FAST_SCRYPT_P))
    application = build_application(environment)
    settings = application.state.settings
-   settings.verifier = PasskeyDouble(settings.rp_id)
    settings.ai_provider = provider
    settings.grading_sleep = lambda seconds: None
 
@@ -79,11 +69,7 @@ def client_for(application):
 
 
 def register(client):
-   begun = client.post("/auth/passkey/register/begin", json={"display_name": "Student"})
-   finished = client.post(
-      "/auth/passkey/register/finish",
-      json={"challenge_id": begun.json()["challenge_id"], "credential": {"credential_id": CREDENTIAL_ID.hex(), "sign_count": 1}},
-   )
+   finished = client.post("/auth/signup", json={"username": STUDENT_USERNAME, "password": STUDENT_PASSWORD})
 
    if finished.status_code != 200:
       raise RuntimeError(f"registration failed: {finished.status_code} {finished.text}")

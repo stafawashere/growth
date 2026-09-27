@@ -3,7 +3,7 @@
 docs/plan/11-phased-delivery.md P1 scope items 1, 12 and 14: this is the composition root that
 builds a real Settings and SessionContext from the live library, rather than the fixture double
 tests/api/conftest.py wires. Building it makes no network call: the database is a local SQLite
-file, the content root is read off local disk, the passkey verifier only binds a library, and the
+file, the content root is read off local disk, and the
 tutor provider (P1 scope item 12, docs/plan/07-ai-provider-layer.md's one wired role) is only
 constructed, never called, so building it never dials out either way.
 
@@ -11,10 +11,15 @@ Environment variables, every one optional with a loopback-safe default:
 
 GROWTH_DB_PATH        path to the SQLite database file. Default var/growth.db under the repo root.
 GROWTH_CONTENT_ROOT   path to the data/ registries. Default data/ under the repo root.
-GROWTH_RP_ID          the WebAuthn relying party id. Default localhost.
-GROWTH_ORIGIN         the deployment origin passkey ceremonies are verified against.
-                      Default http://127.0.0.1:8000.
 GROWTH_BIND_HOST      the host uvicorn binds to. Default 127.0.0.1.
+GROWTH_PUBLIC_HOST    one host name, besides 127.0.0.1, localhost and ::1, that the sign-in routes
+                      accept in the Host header, for an installation reached through a reverse
+                      proxy. Unset, only the loopback names are served (app/auth/guard.py).
+GROWTH_SCRYPT_N       the scrypt cost parameters for new password hashes (app/auth/passwords.py).
+GROWTH_SCRYPT_R       Defaults 16384, 8 and 5. N must be a power of two. A hash made under lower
+GROWTH_SCRYPT_P       parameters is rehashed at the next sign-in.
+GROWTH_AUTH_RATE_LIMIT how many sign-up, login and recovery requests one peer address may make in
+                      each 60 second window (app/auth/limiter.py). Default 10.
 GROWTH_EXAM_DATE      the ISO exam date new users are seeded with. Default 2027-05-10.
 GROWTH_RNG_SEED       the seed for the process-wide selection rng. Default 7.
 GROWTH_AI_BACKEND     the primary switch for what backs the AI roles, the tutor included:
@@ -123,6 +128,17 @@ from fastapi.staticfiles import StaticFiles
 from starlette.responses import FileResponse, PlainTextResponse
 
 from app.api.app import Settings, create_app
+from app.auth.guard import DEFAULT_ALLOWED_HOSTS
+from app.auth.limiter import DEFAULT_LIMIT_COUNT
+from app.auth.passwords import (
+   DEFAULT_SCRYPT_N,
+   DEFAULT_SCRYPT_P,
+   DEFAULT_SCRYPT_R,
+   LARGEST_STORED_SCRYPT_N,
+   LARGEST_STORED_SCRYPT_P,
+   LARGEST_STORED_SCRYPT_R,
+   is_power_of_two,
+)
 from app.db.backup import back_up_database
 from app.experiments import switches
 from app.feedback.autodrain import AutoDrain, auto_drain_enabled
@@ -444,6 +460,58 @@ def experiment_default_state(env):
    return configured
 
 
+def allowed_hosts(env):
+   configured = env.get("GROWTH_PUBLIC_HOST", "").strip()
+
+   if configured == "":
+      return DEFAULT_ALLOWED_HOSTS
+
+   return (*DEFAULT_ALLOWED_HOSTS, configured)
+
+
+def positive_count(env, variable, default):
+   configured = env.get(variable)
+
+   if configured is None:
+      return default
+
+   try:
+      value = int(configured)
+   except ValueError as malformed:
+      raise ValueError(f"{variable} must be a positive whole number, got {configured!r}") from malformed
+
+   if value < 1:
+      raise ValueError(f"{variable} must be a positive whole number, got {configured!r}")
+
+   return value
+
+
+SCRYPT_COST_CEILINGS = {
+   "GROWTH_SCRYPT_N": LARGEST_STORED_SCRYPT_N,
+   "GROWTH_SCRYPT_R": LARGEST_STORED_SCRYPT_R,
+   "GROWTH_SCRYPT_P": LARGEST_STORED_SCRYPT_P,
+}
+
+
+def scrypt_cost(env, variable, default):
+   """A cost above what app/auth/passwords.py parse_hash accepts would write hashes that never
+   verify, so it is refused at startup rather than on the first sign-in after signup."""
+   value = positive_count(env, variable, default)
+   names_n = variable == "GROWTH_SCRYPT_N"
+   is_bad_n = names_n and not is_power_of_two(value)
+
+   if is_bad_n:
+      raise ValueError(f"{variable} must be a power of two, got {value}")
+
+   ceiling = SCRYPT_COST_CEILINGS[variable]
+   is_too_large = value > ceiling
+
+   if is_too_large:
+      raise ValueError(f"{variable} must be at most {ceiling}, got {value}")
+
+   return value
+
+
 def settings_from_environment(env=None):
    env = env if env is not None else os.environ
 
@@ -453,9 +521,12 @@ def settings_from_environment(env=None):
    return Settings(
       db_path=Path(env.get("GROWTH_DB_PATH", str(DEFAULT_DB_PATH))),
       content_root=Path(env.get("GROWTH_CONTENT_ROOT", str(DEFAULT_CONTENT_ROOT))),
-      rp_id=env.get("GROWTH_RP_ID", "localhost"),
-      origin=env.get("GROWTH_ORIGIN", "http://127.0.0.1:8000"),
       bind_host=env.get("GROWTH_BIND_HOST", "127.0.0.1"),
+      allowed_hosts=allowed_hosts(env),
+      password_scrypt_n=scrypt_cost(env, "GROWTH_SCRYPT_N", DEFAULT_SCRYPT_N),
+      password_scrypt_r=scrypt_cost(env, "GROWTH_SCRYPT_R", DEFAULT_SCRYPT_R),
+      password_scrypt_p=scrypt_cost(env, "GROWTH_SCRYPT_P", DEFAULT_SCRYPT_P),
+      auth_rate_limit_count=positive_count(env, "GROWTH_AUTH_RATE_LIMIT", DEFAULT_LIMIT_COUNT),
       exam_date=env.get("GROWTH_EXAM_DATE", "2027-05-10"),
       rng_seed=int(env.get("GROWTH_RNG_SEED", "7")),
       tutor=tutor,

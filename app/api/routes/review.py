@@ -1,7 +1,7 @@
 """GET /review-queue and POST /review-queue/{id}/resolve, the operator's queue per 06's API surface.
 
 This installation is single user, so the operator is the session's own user, the same one
-app/auth/service.require_sole_user names, and there is no second notion of an operator role. P1
+app/auth/service.sole_user names, and there is no second notion of an operator role. P1
 re-runs no grading and retires no item, so the "may re-run a grading or retire an item" trigger
 named for this route in 06-architecture.md has no P1 effect and nothing is implemented for it here.
 

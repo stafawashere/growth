@@ -1,6 +1,6 @@
 """A real session serves a Unit 6 item from content/items_unit06_agent end to end.
 
-Stage 1 exit criterion: the application built by app/main.py, with the test passkey verifier and
+Stage 1 exit criterion: the application built by app/main.py, with test scrypt parameters and
 the replayed tutor, serves an item from a unit P1 never reached, takes the answer, grades it and
 shows its feedback. A new account starts at the Unit 1 fringe, so the student's state is seeded:
 every skill outside Unit 6 is marked mastered, which puts the Unit 6 skills whose parents lie
@@ -14,7 +14,7 @@ from sqlalchemy.orm import Session as OrmSession
 
 from app.db import models
 from app.main import DEFAULT_CONTENT_DIR, build_application
-from tests.e2e.conftest import CASSETTE_PATH, FIRST_DAY, FakeVerifier, World
+from tests.e2e.conftest import CASSETTE_PATH, FIRST_DAY, FAST_SCRYPT_ENVIRONMENT, World
 from tests.e2e.test_agent_drafts_served import answer_and_read_feedback, key_answers, stored_provenance
 
 UNIT_6_BANK_NAME = "items_unit06_agent"
@@ -33,9 +33,9 @@ def unit_6_world(tmp_path, forbid_network):
       "GROWTH_RNG_SEED": "7",
       "GROWTH_EXAM_DATE": "2027-05-10",
       "GROWTH_ITEMS_DIR": str(bank),
+      **FAST_SCRYPT_ENVIRONMENT,
    }
    application = build_application(environment)
-   application.state.settings.verifier = FakeVerifier(application.state.settings.rp_id)
 
    return World(application, application.state.engine, key_answers(records))
 

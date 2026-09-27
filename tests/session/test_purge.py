@@ -161,16 +161,6 @@ def test_purge_deletes_credentials_and_auth_sessions(tmp_path):
    with OrmSession(engine) as db:
       seed_user_rows(db)
       timestamp = NOW.isoformat()
-      db.add(models.PasskeyCredential(
-         id="PKC-0001",
-         user_id=USER_ID,
-         credential_id=b"cred",
-         public_key=b"key",
-         sign_count=1,
-         transports=None,
-         created_at=timestamp,
-         updated_at=timestamp,
-      ))
       db.add(models.AuthSession(
          id="AUS-0001",
          user_id=USER_ID,
@@ -183,9 +173,7 @@ def test_purge_deletes_credentials_and_auth_sessions(tmp_path):
       counts = purge.purge_user(db, USER_ID, NOW)
       db.commit()
 
-      assert counts["passkey_credentials"] == 1
       assert counts["auth_sessions"] == 1
-      assert db.query(models.PasskeyCredential).count() == 0
       assert db.query(models.AuthSession).count() == 0
 
 

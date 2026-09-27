@@ -159,7 +159,7 @@ Six screens plus settings. The tree below lists each screen and its states.
 ```
 app
 ├── onboarding
-│   ├── account (passkey registration)
+│   ├── account (username and password sign-up; passkey registration until 2026-09-27)
 │   ├── implementation intention (one if-then plan, fixed time and place)
 │   ├── diagnostic intro (what it is, why it stops early, no score at the end)
 │   ├── diagnostic item (states: unanswered, answered, submitted)

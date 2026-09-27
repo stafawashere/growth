@@ -39,7 +39,7 @@ The diagnostician is tested against a fixture set built from BC-SIG records: giv
 
 ### End-to-end tests
 
-One e2e path per phase, driven through the real frontend: passkey login, a session served from the real content snapshot with a recorded provider, an item answered, feedback shown, mastery state visibly changed on the progress screen. The e2e suite is deliberately thin. It exists to catch wiring failures, not logic failures, and every logic assertion belongs one layer down where it is cheap.
+One e2e path per phase, driven through the real frontend: a login (a password login since 2026-09-27, when passwords replaced passkeys on the operator's instruction; a passkey login before), a session served from the real content snapshot with a recorded provider, an item answered, feedback shown, mastery state visibly changed on the progress screen. The e2e suite is deliberately thin. It exists to catch wiring failures, not logic failures, and every logic assertion belongs one layer down where it is cheap.
 
 ### Contract tests for the content loader
 

@@ -2,9 +2,10 @@
 
 The engine graph, the archetypes and the item bank come from tests/fixtures/graph_p1.json through
 the same helpers the selection and session-service tests use, so nothing here rebuilds a fixture.
-The passkey verifier and the two hooks the other P1 modules own (skills_state seeding and the
-purge) are supplied as test doubles through settings, which is what keeps the HTTP tests off the
-live library loader.
+The two hooks the other P1 modules own (skills_state seeding and the purge) are supplied as test
+doubles through settings, which is what keeps the HTTP tests off the live library loader. Sign-in is
+the real username and password path, hashed under scrypt parameters cheap enough to cost about a
+millisecond, with a per-IP limit high enough that no test trips it by accident.
 """
 import json
 from datetime import date, datetime, timezone
@@ -13,6 +14,7 @@ import pytest
 from sqlalchemy.orm import Session as OrmSession
 
 from app.api.app import SessionContext, Settings, create_app
+from app.auth.guard import DEFAULT_ALLOWED_HOSTS
 from app.db import models
 from app.engine.state import FadingStage
 from app.providers.guard import BudgetCaps
@@ -24,7 +26,14 @@ SNAPSHOT_ID = "SNAP-0001"
 TUTOR_CAP_USD = 1.00
 TODAY = date(2026, 3, 1)
 ACCOUNT_CREATED_AT = datetime(2026, 1, 1, 9, 0, 0, tzinfo=timezone.utc)
-CREDENTIAL_ID = b"cred-1"
+USERNAME = "student_one"
+PASSWORD = "correct horse battery"
+NEW_PASSWORD = "another long passphrase"
+FAST_SCRYPT_N = 2 ** 10
+FAST_SCRYPT_R = 8
+FAST_SCRYPT_P = 1
+UNREACHABLE_RATE_LIMIT = 100_000
+TEST_ALLOWED_HOSTS = DEFAULT_ALLOWED_HOSTS + ("testserver",)
 ERROR_RECORDS = {
    "BC-ERR-02001": {
       "id": "BC-ERR-02001",
@@ -32,7 +41,6 @@ ERROR_RECORDS = {
       "scoring_consequence": "the answer point is lost",
    },
 }
-PUBLIC_KEY = b"public-key-1"
 KEY_MATHJSON = ["Add", ["Multiply", 2, "x"], 1]
 WRONG_MATHJSON = ["Add", ["Multiply", 2, "x"], 2]
 ITEM_OPTIONS = [
@@ -77,46 +85,6 @@ def publish_bank_items(engine, fixture, items_per_archetype=3):
             db.add(item_row(f"{archetype_id}-V{index:02d}", archetype_id, record["skills"]))
 
       db.commit()
-
-
-class FakeVerifier:
-   """A PasskeyVerifier that trusts the payload, so the tests exercise the service, not a library."""
-
-   def __init__(self):
-      self.rp_id = "localhost"
-
-   def begin_registration(self, user_id, user_name, exclude_credential_ids=()):
-      options = {
-         "rp": {"id": self.rp_id},
-         "user": {"id": user_id, "name": user_name},
-         "excludeCredentials": [credential_id.hex() for credential_id in exclude_credential_ids],
-      }
-
-      return {"challenge": "reg-challenge", "options": options}
-
-   def finish_registration(self, challenge, credential):
-      offered = credential.get("credential_id")
-      names_a_credential = isinstance(offered, str) and offered != ""
-
-      return {
-         "credential_id": bytes.fromhex(offered) if names_a_credential else CREDENTIAL_ID,
-         "public_key": PUBLIC_KEY,
-         "sign_count": int(credential.get("sign_count", 0)),
-         "transports": credential.get("transports"),
-      }
-
-   def begin_login(self, credential_ids=None):
-      allow_credentials = [
-         {"id": credential_id.hex(), "type": "public-key"} for credential_id in (credential_ids or [])
-      ]
-
-      return {
-         "challenge": "login-challenge",
-         "options": {"rpId": self.rp_id, "allowCredentials": allow_credentials},
-      }
-
-   def finish_login(self, challenge, credential, public_key, stored_sign_count):
-      return {"sign_count": int(credential.get("sign_count", 0))}
 
 
 def unsupported_states(fixture):
@@ -179,7 +147,11 @@ def build_world(tmp_path):
       engine=engine,
       snapshot=fixture,
       session_context=context,
-      verifier=FakeVerifier(),
+      allowed_hosts=TEST_ALLOWED_HOSTS,
+      password_scrypt_n=FAST_SCRYPT_N,
+      password_scrypt_r=FAST_SCRYPT_R,
+      password_scrypt_p=FAST_SCRYPT_P,
+      auth_rate_limit_count=UNREACHABLE_RATE_LIMIT,
       seed_hook=seed_hook,
       purge_hook=purge_hook,
       tutor_caps={"tutor": BudgetCaps(cap_usd=TUTOR_CAP_USD)},
@@ -213,7 +185,6 @@ class World:
       self.engine = engine
       self.seeds = seeds
       self.purges = purges
-      self.sign_count = 5
 
    def client(self, host="127.0.0.1"):
       """Starlette's TestClient parses its own base_url netloc by splitting on the first colon,
@@ -229,70 +200,23 @@ class World:
 
       return TestClient(self.app, client=(host, 40000), base_url=base_url, headers=headers)
 
-   def register(self, client, sign_count=5, credential_id=None, recovery_code=None):
-      begun = client.post("/auth/passkey/register/begin", json={"display_name": "Student"})
-      assert begun.status_code == 200
-      credential = {"sign_count": sign_count}
-      names_a_credential = credential_id is not None
+   def register(self, client, username=USERNAME, password=PASSWORD):
+      return client.post("/auth/signup", json={"username": username, "password": password})
 
-      if names_a_credential:
-         credential["credential_id"] = credential_id
+   def recover(self, client, code, new_password=NEW_PASSWORD, username=None):
+      payload = {"recovery_code": code, "new_password": new_password}
+      names_a_username = username is not None
 
-      payload = {
-         "challenge_id": begun.json()["challenge_id"],
-         "credential": credential,
-      }
-      offers_a_code = recovery_code is not None
+      if names_a_username:
+         payload["username"] = username
 
-      if offers_a_code:
-         payload["recovery_code"] = recovery_code
+      return client.post("/auth/recovery/reset", json=payload)
 
-      return client.post("/auth/passkey/register/finish", json=payload)
+   def login(self, client, username=USERNAME, password=PASSWORD):
+      return client.post("/auth/login", json={"username": username, "password": password})
 
-   def recover(self, client, code, credential_id=None, sign_count=1):
-      begun = client.post("/auth/recovery/register/begin", json={})
-      assert begun.status_code == 200
-      credential = {"sign_count": sign_count}
-      names_a_credential = credential_id is not None
-
-      if names_a_credential:
-         credential["credential_id"] = credential_id
-
-      payload = {
-         "challenge_id": begun.json()["challenge_id"],
-         "credential": credential,
-         "recovery_code": code,
-      }
-
-      return client.post("/auth/recovery/register/finish", json=payload)
-
-   def login(self, client, sign_count=6):
-      begun = client.post("/auth/passkey/login/begin", json={})
-      assert begun.status_code == 200
-      payload = {
-         "challenge_id": begun.json()["challenge_id"],
-         "credential": {
-            "credential_id": CREDENTIAL_ID.hex(),
-            "sign_count": sign_count,
-         },
-      }
-
-      return client.post("/auth/passkey/login/finish", json=payload)
-
-   def reauth(self, client, sign_count=None):
-      """The counter advances on every ceremony, because a stalled counter is refused as a clone."""
-      begun = client.post("/auth/reauth/begin", json={})
-      assert begun.status_code == 200
-      self.sign_count = (sign_count or self.sign_count) + 1
-      payload = {
-         "challenge_id": begun.json()["challenge_id"],
-         "credential": {
-            "credential_id": CREDENTIAL_ID.hex(),
-            "sign_count": self.sign_count,
-         },
-      }
-
-      return client.post("/auth/reauth/finish", json=payload)
+   def reauth(self, client, password=PASSWORD):
+      return client.post("/auth/reauth", json={"password": password})
 
    def states(self, user_id):
       with OrmSession(self.engine) as db:

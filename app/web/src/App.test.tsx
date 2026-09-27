@@ -705,17 +705,17 @@ describe("the client shell", () => {
       expect(await screen.findByText(/delete my data/i)).toBeTruthy();
    });
 
-   it("offers a signed-in student a second passkey on settings and nowhere else", async () => {
+   it("offers a signed-in student the password change on settings and nowhere else", async () => {
       mockServer(readyProgress);
       render(<App />);
 
       await screen.findByText(/Start today's set/);
 
-      expect(screen.queryByRole("button", { name: "Add a passkey" })).toBeNull();
+      expect(screen.queryByRole("button", { name: "Change password" })).toBeNull();
 
       visit("settings");
 
-      expect(await screen.findByRole("button", { name: "Add a passkey" })).toBeTruthy();
+      expect(await screen.findByRole("button", { name: "Change password" })).toBeTruthy();
    });
 
    it("says so when the generated design-token stylesheet is absent", () => {
@@ -977,7 +977,7 @@ describe("signed out over GET /me", () => {
    function signedOutFailure() {
       return Object.assign(Object.create(client.ApiError.prototype), {
          status: 401,
-         detail: "a passkey session is required"
+         detail: "a session is required"
       });
    }
 
@@ -995,8 +995,8 @@ describe("signed out over GET /me", () => {
       mocked.readMe.mockRejectedValue(signedOutFailure());
       render(<App />);
 
-      expect(await screen.findByRole("button", { name: "Register a passkey" })).toBeTruthy();
-      expect(screen.queryByRole("button", { name: "Sign in with a passkey" })).toBeNull();
+      expect(await screen.findByRole("button", { name: "Create account" })).toBeTruthy();
+      expect(screen.queryByRole("button", { name: "Sign in" })).toBeNull();
       expect(screen.queryByRole("navigation")).toBeNull();
       expect(screen.queryByText("Start today's set")).toBeNull();
    });
@@ -1006,8 +1006,8 @@ describe("signed out over GET /me", () => {
       mocked.readMe.mockRejectedValue(signedOutFailure());
       render(<App />);
 
-      expect(await screen.findByRole("button", { name: "Sign in with a passkey" })).toBeTruthy();
-      expect(screen.queryByRole("button", { name: "Register a passkey" })).toBeNull();
+      expect(await screen.findByRole("button", { name: "Sign in" })).toBeTruthy();
+      expect(screen.queryByRole("button", { name: "Create account" })).toBeNull();
       expect(screen.queryByRole("navigation")).toBeNull();
    });
 
@@ -1017,7 +1017,7 @@ describe("signed out over GET /me", () => {
       mocked.readMe.mockRejectedValue(signedOutFailure());
       render(<App />);
 
-      await screen.findByRole("button", { name: "Register a passkey" });
+      await screen.findByRole("button", { name: "Create account" });
 
       expect(screen.getAllByRole("main")).toHaveLength(1);
    });
@@ -1027,7 +1027,7 @@ describe("signed out over GET /me", () => {
       render(<App />);
 
       expect(await screen.findByText(/Start today's set/)).toBeTruthy();
-      expect(screen.queryByRole("button", { name: "Register a passkey" })).toBeNull();
+      expect(screen.queryByRole("button", { name: "Create account" })).toBeNull();
    });
 
    it("keeps the shell when /me fails for a reason other than a missing session", async () => {
@@ -1037,34 +1037,34 @@ describe("signed out over GET /me", () => {
 
       expect(await screen.findByTestId("home-failed")).toBeTruthy();
       expect(screen.getByRole("navigation")).toBeTruthy();
-      expect(screen.queryByRole("button", { name: "Register a passkey" })).toBeNull();
+      expect(screen.queryByRole("button", { name: "Create account" })).toBeNull();
    });
 
    it("re-reads /me after sign-in and lands on home", async () => {
       mockServer(readyProgress);
       mocked.readMe.mockRejectedValueOnce(signedOutFailure()).mockRejectedValueOnce(signedOutFailure());
-      mocked.signInWithPasskey.mockResolvedValue({ user_id: me.id });
+      mocked.signIn.mockResolvedValue({ user_id: me.id });
       render(<App />);
 
-      fireEvent.click(await screen.findByRole("button", { name: "Sign in with a passkey" }));
+      fireEvent.click(await screen.findByRole("button", { name: "Sign in" }));
 
       expect(await screen.findByText(/Start today's set/)).toBeTruthy();
       expect(screen.getByRole("navigation")).toBeTruthy();
-      expect(mocked.signInWithPasskey).toHaveBeenCalledTimes(1);
+      expect(mocked.signIn).toHaveBeenCalledTimes(1);
       expect(mocked.readMe.mock.calls.length).toBeGreaterThanOrEqual(3);
    });
 
    it("stays on the account screen when the re-read of /me after sign-in still answers 401", async () => {
       mockServer(readyProgress);
       mocked.readMe.mockRejectedValue(signedOutFailure());
-      mocked.signInWithPasskey.mockResolvedValue({ user_id: me.id });
+      mocked.signIn.mockResolvedValue({ user_id: me.id });
       render(<App />);
 
-      fireEvent.click(await screen.findByRole("button", { name: "Sign in with a passkey" }));
+      fireEvent.click(await screen.findByRole("button", { name: "Sign in" }));
 
       await waitFor(() => expect(mocked.readMe.mock.calls.length).toBeGreaterThanOrEqual(3));
 
-      expect(screen.getByRole("button", { name: "Sign in with a passkey" })).toBeTruthy();
+      expect(screen.getByRole("button", { name: "Sign in" })).toBeTruthy();
       expect(screen.queryByRole("navigation")).toBeNull();
    });
 
@@ -1072,10 +1072,10 @@ describe("signed out over GET /me", () => {
       mockServer(readyProgress);
       mocked.readAuthStatus.mockResolvedValue({ user_exists: false });
       mocked.readMe.mockRejectedValueOnce(signedOutFailure()).mockRejectedValueOnce(signedOutFailure());
-      mocked.registerPasskey.mockResolvedValue(registered());
+      mocked.signUp.mockResolvedValue(registered());
       render(<App />);
 
-      fireEvent.click(await screen.findByRole("button", { name: "Register a passkey" }));
+      fireEvent.click(await screen.findByRole("button", { name: "Create account" }));
 
       expect(await screen.findByText("RC-from-the-finish-response")).toBeTruthy();
       expect(screen.queryByRole("navigation")).toBeNull();
@@ -1084,6 +1084,87 @@ describe("signed out over GET /me", () => {
 
       expect(await screen.findByText(/Start today's set/)).toBeTruthy();
       expect(document.body.textContent ?? "").not.toContain("RC-from-the-finish-response");
+   });
+
+   it("shows the reset form rather than sign-in when the status says the account needs a password", async () => {
+      mockServer(readyProgress);
+      mocked.readAuthStatus.mockResolvedValue({ user_exists: true, needs_password: true });
+      mocked.readMe.mockRejectedValue(signedOutFailure());
+      render(<App />);
+
+      expect(await screen.findByRole("button", { name: "Reset password" })).toBeTruthy();
+      expect(screen.queryByRole("button", { name: "Sign in" })).toBeNull();
+   });
+
+   it("reads the status before trusting readMe, so a needs_password account reaches the reset form even with a live session", async () => {
+      mockServer(readyProgress);
+      mocked.readAuthStatus.mockResolvedValue({ user_exists: true, needs_password: true });
+      render(<App />);
+
+      expect(await screen.findByRole("button", { name: "Reset password" })).toBeTruthy();
+      expect(screen.queryByRole("navigation")).toBeNull();
+   });
+
+   it("falls back to readMe when the status cannot be read", async () => {
+      mockServer(readyProgress);
+      mocked.readAuthStatus.mockRejectedValueOnce(new Error("offline"));
+      render(<App />);
+
+      expect(await screen.findByText(/Start today's set/)).toBeTruthy();
+   });
+});
+
+describe("signing out", () => {
+   it("keeps sign-out out of the main navigation and offers it in the header", async () => {
+      mockServer(readyProgress);
+      render(<App />);
+
+      await screen.findByText(/Start today's set/);
+
+      const header = screen.getByRole("banner");
+
+      expect(within(header).getByRole("button", { name: "Sign out" })).toBeTruthy();
+      expect(within(screen.getByRole("navigation")).queryByRole("button", { name: "Sign out" })).toBeNull();
+   });
+
+   it("ends the session over POST /auth/logout and lands on the account screen", async () => {
+      mockServer(readyProgress);
+      mocked.signOut.mockResolvedValue({ logged_out: true });
+      render(<App />);
+
+      await screen.findByText(/Start today's set/);
+      fireEvent.click(screen.getByRole("button", { name: "Sign out" }));
+
+      expect(await screen.findByRole("button", { name: "Sign in" })).toBeTruthy();
+      expect(mocked.signOut).toHaveBeenCalledTimes(1);
+      expect(screen.queryByRole("navigation")).toBeNull();
+      expect(screen.queryByText(/Start today's set/)).toBeNull();
+   });
+
+   it("treats a 401 from the logout as already signed out", async () => {
+      mockServer(readyProgress);
+      mocked.signOut.mockRejectedValue(
+         Object.assign(Object.create(client.ApiError.prototype), { status: 401, detail: "a session is required" })
+      );
+      render(<App />);
+
+      await screen.findByText(/Start today's set/);
+      fireEvent.click(screen.getByRole("button", { name: "Sign out" }));
+
+      expect(await screen.findByRole("button", { name: "Sign in" })).toBeTruthy();
+   });
+
+   it("stays signed in and says the action did not go through when the logout fails otherwise", async () => {
+      mockServer(readyProgress);
+      mocked.signOut.mockRejectedValue(new Error("the connection dropped"));
+      render(<App />);
+
+      await screen.findByText(/Start today's set/);
+      fireEvent.click(screen.getByRole("button", { name: "Sign out" }));
+
+      expect(await screen.findByTestId("action-failed")).toBeTruthy();
+      expect(screen.getByRole("navigation")).toBeTruthy();
+      expect((screen.getByRole("button", { name: "Sign out" }) as HTMLButtonElement).disabled).toBe(false);
    });
 });
 

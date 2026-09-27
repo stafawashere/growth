@@ -22,8 +22,9 @@ the api_key local that carries it), a name that is or ends in "key" (07:337 and 
 the stored secret a "key"), a name that is or ends in "token" but not "tokens" (the session
 token app/auth/service.py returns under "token", the bearer token of 07:357 and 09:70, the
 OAuth token of 07:357; "tokens" is left alone because budget details carry cap_tokens),
-"secret" (07:347, 09:70), "passphrase" (07:337, 09:194), "bearer" (07:232, 07:357) and
-"oauth" (07:357, 07:365).
+"secret" (07:347, 09:70), "passphrase" (07:337, 09:194), "password" (the sign-in secret
+that replaced passkeys, ruled 2026-09-27), "bearer" (07:232, 07:357) and "oauth" (07:357,
+07:365).
 
 Key shape, by value. Neither document states a value pattern a provider key follows, so this
 cannot match on a vendor prefix recalled from memory. Two things are mechanically knowable
@@ -67,7 +68,7 @@ PROVIDER_KEY_ENV_VARS = ("ANTHROPIC_API_KEY", "CLAUDEBOX_API_KEY", "OLLAMA_API_K
 
 CREDENTIAL_VALUE_FORMS = ("x-api-key", "bearer")
 
-_SECRET_NAME_FRAGMENTS = ("apikey", "secret", "passphrase", "bearer", "oauth")
+_SECRET_NAME_FRAGMENTS = ("apikey", "secret", "passphrase", "password", "bearer", "oauth")
 _SECRET_NAME_SUFFIXES = ("key", "token")
 
 _NON_ALPHANUMERIC = re.compile(r"[^a-z0-9]")

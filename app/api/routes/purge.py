@@ -44,7 +44,7 @@ def purge(
    if not is_reauthenticated:
       return JSONResponse(
          status_code=401,
-         content={"detail": "the purge needs a fresh passkey re-authentication"},
+         content={"detail": "the purge needs a fresh password re-authentication"},
       )
 
    deleted = settings.resolve_purge_hook()(db, user.id, now)

@@ -75,7 +75,7 @@ def change_budget(
    is_reauthenticated = auth_service.consume_reauth(db, auth_session, fields.get("reauth_token"), now)
 
    if not is_reauthenticated:
-      raise HTTPException(status_code=401, detail="changing a budget cap needs a fresh passkey re-authentication")
+      raise HTTPException(status_code=401, detail="changing a budget cap needs a fresh password re-authentication")
 
    budgets.change_cap(db, user.id, role, fields, configured=settings.tutor_caps, now=now)
 

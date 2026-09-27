@@ -21,13 +21,10 @@ from app.api.deps import current_session, current_user
 from app.main import build_application
 
 DOC_UNAUTHENTICATED_ROUTES = {
-   ("POST", "/auth/passkey/register/begin"),
-   ("POST", "/auth/passkey/register/finish"),
+   ("POST", "/auth/signup"),
+   ("POST", "/auth/login"),
+   ("POST", "/auth/recovery/reset"),
    ("GET", "/auth/status"),
-   ("POST", "/auth/recovery/register/begin"),
-   ("POST", "/auth/recovery/register/finish"),
-   ("POST", "/auth/passkey/login/begin"),
-   ("POST", "/auth/passkey/login/finish"),
    ("GET", "/healthz"),
    ("GET", "/growth-tokens.css"),
    ("GET", "/"),

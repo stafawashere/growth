@@ -1,36 +1,35 @@
-"""The passkey ceremonies of docs/plan/09-security-and-privacy.md over the paths 06 names.
+"""Sign-up, login, logout, re-authentication, password change and recovery over a username and
+password.
 
-06's API surface has no row for re-authentication, although 09 requires it for the consequential
-actions. It is an assertion ceremony against an already-registered credential, so it is served at
-/auth/reauth/begin and /auth/reauth/finish, which is a plan addition recorded in BUILD-LEDGER.md.
+Ruled 2026-09-27 on the operator's instruction, reversing docs/plan/09-security-and-privacy.md's
+passkey-only rule for this installation. 06's API surface lists these paths, and BUILD-LEDGER.md
+records the ruling: POST /auth/signup, /auth/login, /auth/logout, /auth/reauth,
+/auth/password/change and /auth/recovery/reset, and GET /auth/status.
 
-06 has no row for the recovery code either, and the ordinary registration ceremony stays closed
-once the installation has a user, so recovery runs at /auth/recovery/register/begin and
-/auth/recovery/register/finish. Both additions are recorded in BUILD-LEDGER.md.
+Every route that takes a credential first runs app/auth/guard.py refuse_untrusted_auth_request,
+which stands in for the origin binding a passkey ceremony carried: the Host must be one this
+installation serves, a cross-site or foreign-Origin request is refused, and plain http on a
+non-loopback origin is refused before any password is read. The three routes a stranger can reach,
+signup, login and recovery/reset, then pass the per-IP limit of app/auth/limiter.py, checked after
+the body has parsed and before any scrypt work or database write.
 
-09's audit-log vocabulary lists "a session established from a new authenticator" among what
-audit_log records. login_finish already writes that as action "session_established", and reauth is
-its own ceremony, an authenticator asserted again against a session already open, so reauth_finish
-writes "reauth_established" rather than reusing the login action name, through the same write_audit
-helper login_finish and logout already call.
+Every refusal is returned as a JSONResponse, never raised, because app/api/deps.py get_db rolls
+back on an exception and would take the failed-login count with it. Login answers every failure,
+an unknown username included, with the same 401 and the same detail.
 
-Two more paths have no 06 row. 09's Recovery makes a second authenticator the primary recovery
-answer, but register/finish closes once users is non-empty, so a signed-in student adds one at
-/auth/passkey/add/begin and /auth/passkey/add/finish. Ruled 2026-09-23: adding a passkey now joins
-09's re-authentication list next to setting or rotating a provider key, changing a budget cap,
-enabling claudebox, exporting and purging, because a credential it mints outlives the session that
-requested it and a stolen cookie should not be able to mint one. add_passkey_finish consumes the
-same single-use reauth_token the other consequential actions do, checked after the ceremony
-verifies the new credential and before it is stored, so a finished-but-unauthenticated attempt adds
-nothing. /auth/status answers whether the installation has its user, which register/begin already
-reveals by refusing.
+/auth/status answers whether the installation has its user, which signup already reveals by
+refusing. It adds needs_password, true while a user migrated from passkeys has not set a password,
+only for a caller whose peer and Host are both loopback, so the migration window is not advertised
+to the network, to a DNS-rebound page or through a reverse proxy.
 """
 from fastapi import APIRouter, Body, Depends, Request, Response
+from fastapi.responses import JSONResponse
 
-from app.api.deps import current_session, get_challenges, get_db, get_settings
+from app.api.deps import current_session, get_db, get_dummy_hash, get_settings
 from app.auth import service
-from app.auth.cookies import clear_session_cookie, set_session_cookie
-from app.auth.service import write_audit
+from app.auth.cookies import clear_session_cookie, is_loopback, request_host_is_loopback, set_session_cookie
+from app.auth.guard import refuse_rate_limited, refuse_untrusted_auth_request
+from app.auth.recovery import reset_password_via_recovery
 
 router = APIRouter(prefix="/auth", tags=["auth"])
 
@@ -43,36 +42,49 @@ def issue_session_cookie(response, request, settings, token):
    set_session_cookie(response, settings.bind_host, request, token, settings.session_ttl_seconds)
 
 
-@router.post("/passkey/register/begin")
-def register_begin(
-   payload: dict = Body(default=None),
-   db=Depends(get_db, scope="function"),
-   settings=Depends(get_settings),
-   challenges=Depends(get_challenges),
-):
-   fields = body_of(payload)
-
-   return service.register_begin(db, settings, challenges, fields.get("display_name"))
+def refusal_response(refusal):
+   return JSONResponse(status_code=refusal.status_code, content={"detail": refusal.detail})
 
 
-@router.post("/passkey/register/finish")
-def register_finish(
+def is_refusal(outcome):
+   return isinstance(outcome, service.AuthRefusal)
+
+
+def caller_is_loopback(request):
+   """Both the peer and the Host must be loopback. A DNS-rebound page arrives from 127.0.0.1 under a
+   foreign Host, and a reverse proxy makes every caller's peer loopback while the Host stays public."""
+   client = request.client
+   peer = client.host if client is not None else ""
+   peer_is_loopback = is_loopback(peer)
+   host_is_loopback = request_host_is_loopback(request)
+
+   return peer_is_loopback and host_is_loopback
+
+
+@router.post("/signup")
+def signup(
    request: Request,
    response: Response,
    payload: dict = Body(default=None),
    db=Depends(get_db, scope="function"),
    settings=Depends(get_settings),
-   challenges=Depends(get_challenges),
 ):
+   untrusted = refuse_untrusted_auth_request(request, settings)
+
+   if untrusted is not None:
+      return untrusted
+
+   limited = refuse_rate_limited(request, settings)
+
+   if limited is not None:
+      return limited
+
    fields = body_of(payload)
-   finished = service.register_finish(
-      db,
-      settings,
-      challenges,
-      fields.get("challenge_id"),
-      fields.get("credential") or {},
-      display_name=fields.get("display_name"),
-   )
+   finished = service.signup(db, settings, fields.get("username"), fields.get("password"))
+
+   if is_refusal(finished):
+      return refusal_response(finished)
+
    issue_session_cookie(response, request, settings, finished["token"])
    user = finished["user"]
 
@@ -88,110 +100,44 @@ def register_finish(
    }
 
 
-@router.get("/status")
-def status(db=Depends(get_db, scope="function")):
-   return {"user_exists": service.user_exists(db)}
-
-
-@router.post("/passkey/add/begin")
-def add_passkey_begin(
-   payload: dict = Body(default=None),
-   db=Depends(get_db, scope="function"),
-   settings=Depends(get_settings),
-   challenges=Depends(get_challenges),
-   auth_session=Depends(current_session),
-):
-   return service.add_passkey_begin(db, settings, challenges, auth_session)
-
-
-@router.post("/passkey/add/finish")
-def add_passkey_finish(
-   payload: dict = Body(default=None),
-   db=Depends(get_db, scope="function"),
-   settings=Depends(get_settings),
-   challenges=Depends(get_challenges),
-   auth_session=Depends(current_session),
-):
-   fields = body_of(payload)
-
-   return service.add_passkey_finish(
-      db,
-      settings,
-      challenges,
-      auth_session,
-      fields.get("challenge_id"),
-      fields.get("credential") or {},
-      reauth_token=fields.get("reauth_token"),
-   )
-
-
-@router.post("/recovery/register/begin")
-def recovery_register_begin(
-   payload: dict = Body(default=None),
-   db=Depends(get_db, scope="function"),
-   settings=Depends(get_settings),
-   challenges=Depends(get_challenges),
-):
-   return service.recovery_register_begin(db, settings, challenges)
-
-
-@router.post("/recovery/register/finish")
-def recovery_register_finish(
+@router.post("/login")
+def login(
    request: Request,
    response: Response,
    payload: dict = Body(default=None),
    db=Depends(get_db, scope="function"),
    settings=Depends(get_settings),
-   challenges=Depends(get_challenges),
+   dummy_hash=Depends(get_dummy_hash),
 ):
+   untrusted = refuse_untrusted_auth_request(request, settings)
+
+   if untrusted is not None:
+      return untrusted
+
+   limited = refuse_rate_limited(request, settings)
+
+   if limited is not None:
+      return limited
+
    fields = body_of(payload)
-   finished = service.recovery_register_finish(
-      db,
-      settings,
-      challenges,
-      fields.get("challenge_id"),
-      fields.get("credential") or {},
-      fields.get("recovery_code"),
-   )
-   issue_session_cookie(response, request, settings, finished["token"])
+   finished = service.login(db, settings, fields.get("username"), fields.get("password"), dummy_hash)
 
-   return {
-      "user_id": finished["user"].id,
-      "credential_id": finished["credential_id"],
-      "recovery_code": finished["recovery_code"],
-   }
+   if is_refusal(finished):
+      return refusal_response(finished)
 
-
-@router.post("/passkey/login/begin")
-def login_begin(
-   payload: dict = Body(default=None),
-   db=Depends(get_db, scope="function"),
-   settings=Depends(get_settings),
-   challenges=Depends(get_challenges),
-):
-   return service.login_begin(db, settings, challenges)
-
-
-@router.post("/passkey/login/finish")
-def login_finish(
-   request: Request,
-   response: Response,
-   payload: dict = Body(default=None),
-   db=Depends(get_db, scope="function"),
-   settings=Depends(get_settings),
-   challenges=Depends(get_challenges),
-):
-   fields = body_of(payload)
-   finished = service.login_finish(
-      db,
-      settings,
-      challenges,
-      fields.get("challenge_id"),
-      fields.get("credential") or {},
-   )
    issue_session_cookie(response, request, settings, finished["token"])
 
    return {"user_id": finished["user_id"]}
+
+
+@router.get("/status")
+def status(request: Request, db=Depends(get_db, scope="function")):
+   user_exists = service.user_exists(db)
+
+   if not caller_is_loopback(request):
+      return {"user_exists": user_exists}
+
+   return {"user_exists": user_exists, "needs_password": service.user_needs_password(db)}
 
 
 @router.post("/logout")
@@ -203,46 +149,104 @@ def logout(
    settings=Depends(get_settings),
    auth_session=Depends(current_session),
 ):
+   untrusted = refuse_untrusted_auth_request(request, settings)
+
+   if untrusted is not None:
+      return untrusted
+
    service.logout(db, auth_session)
    clear_session_cookie(response, settings.bind_host, request)
 
    return {"logged_out": True}
 
 
-@router.post("/reauth/begin")
-def reauth_begin(
+@router.post("/reauth")
+def reauth(
+   request: Request,
    payload: dict = Body(default=None),
    db=Depends(get_db, scope="function"),
    settings=Depends(get_settings),
-   challenges=Depends(get_challenges),
+   dummy_hash=Depends(get_dummy_hash),
    auth_session=Depends(current_session),
 ):
-   return service.reauth_begin(db, settings, challenges, auth_session)
+   untrusted = refuse_untrusted_auth_request(request, settings)
 
+   if untrusted is not None:
+      return untrusted
 
-@router.post("/reauth/finish")
-def reauth_finish(
-   payload: dict = Body(default=None),
-   db=Depends(get_db, scope="function"),
-   settings=Depends(get_settings),
-   challenges=Depends(get_challenges),
-   auth_session=Depends(current_session),
-):
    fields = body_of(payload)
-   finished = service.reauth_finish(
+   finished = service.reauth_with_password(db, settings, auth_session, fields.get("password"), dummy_hash)
+
+   if is_refusal(finished):
+      return refusal_response(finished)
+
+   return {"reauth_token": finished["reauth_token"]}
+
+
+@router.post("/password/change")
+def change_password(
+   request: Request,
+   payload: dict = Body(default=None),
+   db=Depends(get_db, scope="function"),
+   settings=Depends(get_settings),
+   dummy_hash=Depends(get_dummy_hash),
+   auth_session=Depends(current_session),
+):
+   untrusted = refuse_untrusted_auth_request(request, settings)
+
+   if untrusted is not None:
+      return untrusted
+
+   fields = body_of(payload)
+   finished = service.change_password(
       db,
       settings,
-      challenges,
       auth_session,
-      fields.get("challenge_id"),
-      fields.get("credential") or {},
-   )
-   write_audit(
-      db,
-      auth_session.user_id,
-      "reauth_established",
-      f"auth_sessions:{auth_session.id}",
-      None,
+      fields.get("current_password"),
+      fields.get("new_password"),
+      fields.get("reauth_token"),
+      dummy_hash,
    )
 
-   return finished
+   if is_refusal(finished):
+      return refusal_response(finished)
+
+   return {"password_changed": finished["password_changed"]}
+
+
+@router.post("/recovery/reset")
+def recovery_reset(
+   request: Request,
+   response: Response,
+   payload: dict = Body(default=None),
+   db=Depends(get_db, scope="function"),
+   settings=Depends(get_settings),
+):
+   untrusted = refuse_untrusted_auth_request(request, settings)
+
+   if untrusted is not None:
+      return untrusted
+
+   limited = refuse_rate_limited(request, settings)
+
+   if limited is not None:
+      return limited
+
+   fields = body_of(payload)
+   finished = reset_password_via_recovery(
+      db,
+      settings,
+      fields.get("recovery_code"),
+      fields.get("new_password"),
+      username=fields.get("username"),
+   )
+
+   if is_refusal(finished):
+      return refusal_response(finished)
+
+   issue_session_cookie(response, request, settings, finished["token"])
+
+   return {
+      "user_id": finished["user"].id,
+      "recovery_code": finished["recovery_code"],
+   }

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
 import { AccountScreen } from "./account/AccountScreen";
-import { AddPasskeyControl } from "./account/AddPasskeyControl";
-import { ApiError, readMe } from "./api/client";
+import { ChangePasswordControl } from "./account/ChangePasswordControl";
+import { ApiError, readAuthStatus, readMe, signOut } from "./api/client";
 import { AssessmentRoute } from "./assessment/AssessmentRoute";
 import { MetricsRoute } from "./evaluation/MetricsRoute";
 import { FrqRoute } from "./frq/FrqRoute";
@@ -16,6 +16,7 @@ import { OperatorSettings } from "./settings/ExperimentsSection";
 import type { SettingsScreenProps } from "./settings/SettingsScreen";
 import { AccessibilitySection } from "./settings/AccessibilitySection";
 import { SettingsRoute } from "./settings/SettingsRoute";
+import { ActionFailed } from "./status/LoadState";
 
 export type Destination = "home" | "session" | "settings" | "progress" | "review" | "onboarding" | "frq" | "mock";
 
@@ -69,6 +70,8 @@ type SessionTarget = { resumeSessionId: string | null };
 type OnboardingTarget = { reason: OnboardingReason; resumeSessionId: string | null };
 
 type Access = "unknown" | "signedIn" | "signedOut";
+
+type SignOutState = "idle" | "working" | "failed";
 
 /* The operator's evidence of learning opens from settings and returns there. It is a page of
    settings rather than a destination, so it is never on the bar and home cannot reach it. */
@@ -151,26 +154,45 @@ export function App() {
 
    const [access, setAccess] = useState<Access>("unknown");
    const [settingsPage, setSettingsPage] = useState<SettingsPage>("settings");
+   const [signOutState, setSignOutState] = useState<SignOutState>("idle");
 
    const tokensAreLoaded = tokenStylesheetIsLoaded();
 
    useEffect(() => {
       let isCurrent = true;
 
-      readMe().then(
-         () => {
+      /* A status that cannot be read says nothing, so readMe still decides. An account migrated
+         from passkeys goes to the reset form whatever readMe would have said. */
+      async function decideAccess() {
+         const needsPassword = await Promise.resolve()
+            .then(() => readAuthStatus())
+            .then((status) => status?.needs_password === true)
+            .catch(() => false);
+
+         if (needsPassword) {
+            if (isCurrent) {
+               setAccess("signedOut");
+            }
+
+            return;
+         }
+
+         try {
+            await readMe();
+
             if (isCurrent) {
                setAccess("signedIn");
             }
-         },
-         (failure) => {
+         } catch (failure) {
             const shouldSignIn = isCurrent && isSignedOut(failure);
 
             if (shouldSignIn) {
                setAccess("signedOut");
             }
          }
-      );
+      }
+
+      void decideAccess();
 
       return () => {
          isCurrent = false;
@@ -185,6 +207,29 @@ export function App() {
          },
          () => undefined
       );
+   }
+
+   /* A 401 means the session had already ended, which is the state signing out asks for. Any other
+      failure leaves the student signed in and says so. */
+   async function leave() {
+      setSignOutState("working");
+
+      try {
+         await signOut();
+      } catch (failure) {
+         const isAlreadySignedOut = isSignedOut(failure);
+
+         if (!isAlreadySignedOut) {
+            setSignOutState("failed");
+
+            return;
+         }
+      }
+
+      setSignOutState("idle");
+      setSettingsPage("settings");
+      setDestination("home");
+      setAccess("signedOut");
    }
 
    function visit(destination: Destination) {
@@ -227,29 +272,39 @@ export function App() {
       );
    }
 
+   const isSigningOut = signOutState === "working";
+
    return (
       <>
          <header className="app-header">
-            <nav className="app-bar" aria-label="Main">
-               <span className="app-brand">Calculus BC</span>
+            <div className="app-bar">
+               <nav className="app-nav" aria-label="Main">
+                  <span className="app-brand">Calculus BC</span>
 
-               {DESTINATIONS.map((entry) => (
-                  <span key={entry.id} className={entry.id === "settings" ? "app-bar-end" : undefined}>
-                     <button
-                        type="button"
-                        className="text-button"
-                        aria-current={destination === entry.id ? "page" : undefined}
-                        onClick={() => visit(entry.id)}
-                     >
-                        {entry.label}
-                     </button>
-                  </span>
-               ))}
-            </nav>
+                  {DESTINATIONS.map((entry) => (
+                     <span key={entry.id} className={entry.id === "settings" ? "app-bar-end" : undefined}>
+                        <button
+                           type="button"
+                           className="text-button"
+                           aria-current={destination === entry.id ? "page" : undefined}
+                           onClick={() => visit(entry.id)}
+                        >
+                           {entry.label}
+                        </button>
+                     </span>
+                  ))}
+               </nav>
+
+               <button type="button" className="text-button" disabled={isSigningOut} onClick={leave}>
+                  Sign out
+               </button>
+            </div>
          </header>
 
          <main className="app-page">
             {tokensAreLoaded ? null : <TokenNotice />}
+
+            {signOutState === "failed" ? <ActionFailed /> : null}
 
             {destination === "home" ? (
                <HomeRoute
@@ -286,12 +341,12 @@ export function App() {
                <>
                   <SettingsRoute purgeConfirmationPhrase={PURGE_CONFIRMATION_PHRASE} saveFile={saveFile} />
                   <AccessibilitySection />
+                  <ChangePasswordControl />
                   <details className="operator-details" data-testid="operator-experiments-evidence">
                      <summary>{OPERATOR_EXPERIMENTS_SUMMARY}</summary>
 
                      <OperatorSettings onOpenEvidence={() => setSettingsPage("evidence")} />
                   </details>
-                  <AddPasskeyControl />
                </>
             ) : null}
 

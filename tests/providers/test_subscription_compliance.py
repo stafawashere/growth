@@ -24,7 +24,6 @@ from app.providers.subscription import (
    SubscriptionProvider,
    SubscriptionSingleUserError,
 )
-from tests.api.conftest import FakeVerifier
 from tests.providers.test_subscription import FakeCli, option_value, tutor_request
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -159,25 +158,26 @@ def test_registration_refuses_a_second_account_on_the_subscription_backend(tmp_p
    from starlette.testclient import TestClient
 
    application = build_application(
-      {"GROWTH_DB_PATH": str(tmp_path / "growth.db"), "GROWTH_AI_BACKEND": "subscription", "GROWTH_ITEMS_DIR": "none"}
+      {
+         "GROWTH_DB_PATH": str(tmp_path / "growth.db"),
+         "GROWTH_AI_BACKEND": "subscription",
+         "GROWTH_ITEMS_DIR": "none",
+         "GROWTH_SCRYPT_N": "1024",
+         "GROWTH_SCRYPT_P": "1",
+      }
    )
-   application.state.settings.verifier = FakeVerifier()
    client = TestClient(application, client=("127.0.0.1", 40000), base_url="http://127.0.0.1")
 
    assert isinstance(application.state.settings.tutor, SubscriptionProvider)
 
-   first_begin = client.post("/auth/passkey/register/begin", json={"display_name": "Operator"})
-   first = client.post(
-      "/auth/passkey/register/finish",
-      json={"challenge_id": first_begin.json()["challenge_id"], "credential": {"sign_count": 1}},
-   )
+   first = client.post("/auth/signup", json={"username": "operator", "password": "operator password one"})
 
    assert first.status_code == 200
 
    second_client = TestClient(application, client=("127.0.0.1", 40001), base_url="http://127.0.0.1")
-   second_begin = second_client.post("/auth/passkey/register/begin", json={"display_name": "Someone else"})
+   second = second_client.post("/auth/signup", json={"username": "someone_else", "password": "someone else password"})
 
-   assert second_begin.status_code == 403
+   assert second.status_code == 403
 
    with OrmSession(application.state.engine) as db:
       assert db.query(models.User).count() == 1

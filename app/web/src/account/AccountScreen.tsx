@@ -1,131 +1,199 @@
-import { useEffect, useRef, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent, type Ref } from "react";
 
-import {
-   ApiError,
-   readAuthStatus,
-   registerPasskey,
-   registerPasskeyWithRecoveryCode,
-   signInWithPasskey
-} from "../api/client";
+import { ApiError, readAuthStatus, resetWithRecoveryCode, signIn, signUp } from "../api/client";
 import { PageHeader } from "../page/PageHeader";
+import { useLoad } from "../status/load";
+import { ActionFailed, LoadFailed, Loading } from "../status/LoadState";
 
 export interface AccountScreenProps {
    onSignedIn: () => void;
 }
 
+/* A server refusal is shown in the server's own words. A request that never reached the server
+   is shown as the app's action failure, since there is no refusal to quote. */
+export type Feedback = { kind: "none" } | { kind: "refused"; detail: string } | { kind: "failed" };
+
 type AccountState =
-   | { kind: "idle"; refusal: string | null }
-   | { kind: "working" }
-   | { kind: "recoveryEntry"; refusal: string | null }
+   | { kind: "credentials"; working: boolean; feedback: Feedback }
+   | { kind: "recovery"; working: boolean; feedback: Feedback }
    | { kind: "recoveryCode"; code: string };
 
-type InstallationStatus =
-   | { kind: "unanswered" }
-   | { kind: "answered"; userExists: boolean }
-   | { kind: "unreadable"; refusal: string | null };
+export const NO_FEEDBACK: Feedback = { kind: "none" };
 
-/* Only the server's own refusal is shown. An authenticator the student dismissed is not an error
-   to report, so it returns the screen to where it was. */
-function refusalFrom(failure: unknown) {
+export function feedbackFrom(failure: unknown): Feedback {
    const isServerRefusal = failure instanceof ApiError;
 
-   return isServerRefusal ? failure.detail : null;
+   return isServerRefusal ? { kind: "refused", detail: failure.detail } : { kind: "failed" };
+}
+
+export function FeedbackLine(props: { feedback: Feedback }) {
+   const { feedback } = props;
+
+   if (feedback.kind === "refused") {
+      return <p role="alert">{feedback.detail}</p>;
+   }
+
+   if (feedback.kind === "failed") {
+      return <ActionFailed />;
+   }
+
+   return null;
+}
+
+function PasswordField(props: {
+   id: string;
+   inputRef?: Ref<HTMLInputElement>;
+   label: string;
+   autoComplete: "new-password" | "current-password";
+   value: string;
+   disabled: boolean;
+   onChange: (value: string) => void;
+}) {
+   return (
+      <>
+         <label htmlFor={props.id}>{props.label}</label>
+
+         <input
+            id={props.id}
+            type="password"
+            autoComplete={props.autoComplete}
+            ref={props.inputRef}
+            value={props.value}
+            disabled={props.disabled}
+            onChange={(event) => props.onChange(event.target.value)}
+         />
+      </>
+   );
+}
+
+function UsernameField(props: {
+   value: string;
+   disabled: boolean;
+   inputRef?: Ref<HTMLInputElement>;
+   onChange: (value: string) => void;
+}) {
+   return (
+      <>
+         <label htmlFor="account-username">Username</label>
+
+         <input
+            id="account-username"
+            type="text"
+            autoComplete="username"
+            autoCapitalize="none"
+            spellCheck={false}
+            ref={props.inputRef}
+            value={props.value}
+            disabled={props.disabled}
+            onChange={(event) => props.onChange(event.target.value)}
+         />
+      </>
+   );
 }
 
 export function AccountScreen({ onSignedIn }: AccountScreenProps) {
-   const [state, setState] = useState<AccountState>({ kind: "idle", refusal: null });
-   const [installation, setInstallation] = useState<InstallationStatus>({ kind: "unanswered" });
-   const [recoveryCodeInput, setRecoveryCodeInput] = useState("");
+   const status = useLoad(readAuthStatus);
+   const [state, setState] = useState<AccountState>({ kind: "credentials", working: false, feedback: NO_FEEDBACK });
+   const [username, setUsername] = useState("");
+   const [password, setPassword] = useState("");
+   const [recoveryCode, setRecoveryCode] = useState("");
    const recoveryCodeInputRef = useRef<HTMLInputElement | null>(null);
+   const passwordInputRef = useRef<HTMLInputElement | null>(null);
    const acknowledgeButtonRef = useRef<HTMLButtonElement | null>(null);
 
-   useEffect(() => {
-      let isCurrent = true;
+   const needsPassword = status.kind === "loaded" && status.value.needs_password === true;
+   const showsRecovery = state.kind === "recovery" || (state.kind === "credentials" && needsPassword);
+   const recoveryFeedback = state.kind === "recovery" ? state.feedback : NO_FEEDBACK;
+   const recoveryIsWorking = state.kind === "recovery" && state.working;
 
-      readAuthStatus().then(
-         (status) => {
-            if (isCurrent) {
-               setInstallation({ kind: "answered", userExists: status.user_exists });
-            }
-         },
-         (failure) => {
-            if (isCurrent) {
-               setInstallation({ kind: "unreadable", refusal: refusalFrom(failure) });
-            }
-         }
-      );
-
-      return () => {
-         isCurrent = false;
-      };
-   }, []);
-
-   /* The working state renders neither the recovery form nor the recovery-code screen, so
-      whichever of those two the ceremony lands back on has just been mounted fresh and keyboard
-      focus is still on body. Move it to the control the student needs next. */
+   /* A form that lands back after a request keeps the student's place, so focus goes to the
+      control they need next rather than staying on a button that was disabled. */
    useEffect(() => {
       if (state.kind === "recoveryCode") {
          acknowledgeButtonRef.current?.focus();
       }
-
-      if (state.kind === "recoveryEntry") {
-         recoveryCodeInputRef.current?.focus();
-      }
    }, [state.kind]);
 
-   async function runCeremony(ceremony: () => Promise<void>, onFailure: (refusal: string | null) => AccountState) {
-      setState({ kind: "working" });
+   useEffect(() => {
+      const shouldFocusCode = state.kind === "recovery" && !state.working;
+
+      if (shouldFocusCode) {
+         recoveryCodeInputRef.current?.focus();
+      }
+   }, [state.kind, recoveryIsWorking, recoveryFeedback]);
+
+   const credentialsFeedback = state.kind === "credentials" ? state.feedback : NO_FEEDBACK;
+
+   useEffect(() => {
+      const wasRefused = credentialsFeedback.kind !== "none";
+
+      if (wasRefused) {
+         passwordInputRef.current?.focus();
+      }
+   }, [credentialsFeedback]);
+
+   async function submitCredentials(event: FormEvent, userExists: boolean) {
+      event.preventDefault();
+      setState({ kind: "credentials", working: true, feedback: NO_FEEDBACK });
+
+      const fields = { username, password };
 
       try {
-         await ceremony();
+         if (userExists) {
+            await signIn(fields);
+
+            setPassword("");
+            setState({ kind: "credentials", working: false, feedback: NO_FEEDBACK });
+            onSignedIn();
+
+            return;
+         }
+
+         const finished = await signUp(fields);
+
+         setPassword("");
+         setState({ kind: "recoveryCode", code: finished.recovery_code });
       } catch (failure) {
-         setState(onFailure(refusalFrom(failure)));
+         setPassword("");
+         setState({ kind: "credentials", working: false, feedback: feedbackFrom(failure) });
       }
    }
 
-   function register() {
-      return runCeremony(
-         async () => {
-            const finished = await registerPasskey();
-
-            setState({ kind: "recoveryCode", code: finished.recovery_code });
-         },
-         (refusal) => ({ kind: "idle", refusal })
-      );
-   }
-
-   function signIn() {
-      return runCeremony(
-         async () => {
-            await signInWithPasskey();
-
-            setState({ kind: "idle", refusal: null });
-            onSignedIn();
-         },
-         (refusal) => ({ kind: "idle", refusal })
-      );
-   }
-
-   function openRecoveryEntry() {
-      setState({ kind: "recoveryEntry", refusal: null });
-   }
-
-   function submitRecoveryCode(event: FormEvent) {
+   async function submitRecovery(event: FormEvent) {
       event.preventDefault();
+      setState({ kind: "recovery", working: true, feedback: NO_FEEDBACK });
 
-      return runCeremony(
-         async () => {
-            const finished = await registerPasskeyWithRecoveryCode(recoveryCodeInput);
+      const hasUsername = username.trim() !== "";
+      const sendsUsername = needsPassword && hasUsername;
+      const fields = sendsUsername
+         ? { recovery_code: recoveryCode, new_password: password, username }
+         : { recovery_code: recoveryCode, new_password: password };
 
-            setRecoveryCodeInput("");
-            setState({ kind: "recoveryCode", code: finished.recovery_code });
-         },
-         (refusal) => ({ kind: "recoveryEntry", refusal })
-      );
+      try {
+         const finished = await resetWithRecoveryCode(fields);
+
+         setRecoveryCode("");
+         setPassword("");
+         setState({ kind: "recoveryCode", code: finished.recovery_code });
+      } catch (failure) {
+         setPassword("");
+         setState({ kind: "recovery", working: false, feedback: feedbackFrom(failure) });
+      }
+   }
+
+   function openRecovery() {
+      setPassword("");
+      setState({ kind: "recovery", working: false, feedback: NO_FEEDBACK });
+   }
+
+   function closeRecovery() {
+      setPassword("");
+      setRecoveryCode("");
+      setState({ kind: "credentials", working: false, feedback: NO_FEEDBACK });
    }
 
    function acknowledgeRecoveryCode() {
-      setState({ kind: "idle", refusal: null });
+      setState({ kind: "credentials", working: false, feedback: NO_FEEDBACK });
       onSignedIn();
    }
 
@@ -152,67 +220,105 @@ export function AccountScreen({ onSignedIn }: AccountScreenProps) {
       );
    }
 
-   const isWorking = state.kind === "working";
+   if (status.kind === "waiting") {
+      return <Loading testId="account-waiting" />;
+   }
 
-   if (state.kind === "recoveryEntry") {
+   if (status.kind === "failed") {
+      return <LoadFailed testId="account-failed" onRetry={status.retry} />;
+   }
+
+   if (showsRecovery) {
       return (
          <section className="card">
             <PageHeader title="Account" />
 
-            <form className="field" onSubmit={submitRecoveryCode}>
+            {needsPassword ? (
+               <p className="muted">
+                  This account has no password yet. Enter your recovery code and choose a username and
+                  a password.
+               </p>
+            ) : null}
+
+            <form className="field" onSubmit={submitRecovery}>
                <label htmlFor="recovery-code-input">Recovery code</label>
 
                <input
                   id="recovery-code-input"
                   type="text"
                   autoComplete="off"
+                  autoCapitalize="none"
+                  spellCheck={false}
                   ref={recoveryCodeInputRef}
-                  value={recoveryCodeInput}
-                  disabled={isWorking}
-                  onChange={(event) => setRecoveryCodeInput(event.target.value)}
+                  value={recoveryCode}
+                  disabled={recoveryIsWorking}
+                  onChange={(event) => setRecoveryCode(event.target.value)}
                />
 
-               <button type="submit" className="button-primary" disabled={isWorking}>
-                  Use recovery code
+               {needsPassword ? (
+                  <UsernameField value={username} disabled={recoveryIsWorking} onChange={setUsername} />
+               ) : null}
+
+               <PasswordField
+                  id="recovery-new-password"
+                  label="New password"
+                  autoComplete="new-password"
+                  value={password}
+                  disabled={recoveryIsWorking}
+                  onChange={setPassword}
+               />
+
+               <button type="submit" className="button-primary" disabled={recoveryIsWorking}>
+                  Reset password
                </button>
             </form>
 
-            {state.refusal === null ? null : <p role="alert">{state.refusal}</p>}
+            {needsPassword ? null : (
+               <button type="button" className="text-button" disabled={recoveryIsWorking} onClick={closeRecovery}>
+                  Back to sign in
+               </button>
+            )}
+
+            <FeedbackLine feedback={recoveryFeedback} />
          </section>
       );
    }
 
-   const refusal = state.kind === "idle" ? state.refusal : null;
-   const statusRefusal = installation.kind === "unreadable" ? installation.refusal : null;
-   const isAnswered = installation.kind === "answered";
-   const offersRegistration = isAnswered && !installation.userExists;
-   const offersSignIn = isAnswered && installation.userExists;
+   const userExists = status.value.user_exists;
+   const isWorking = state.working;
+   const submitLabel = userExists ? "Sign in" : "Create account";
 
    return (
       <section className="card">
          <PageHeader title="Account" />
 
-         {offersRegistration ? (
-            <button type="button" className="button-primary" disabled={isWorking} onClick={register}>
-               Register a passkey
+         {userExists ? null : <p className="muted">Choose a username and a password for this installation.</p>}
+
+         <form className="field" onSubmit={(event) => submitCredentials(event, userExists)}>
+            <UsernameField value={username} disabled={isWorking} onChange={setUsername} />
+
+            <PasswordField
+               id="account-password"
+               label="Password"
+               inputRef={passwordInputRef}
+               autoComplete={userExists ? "current-password" : "new-password"}
+               value={password}
+               disabled={isWorking}
+               onChange={setPassword}
+            />
+
+            <button type="submit" className="button-primary" disabled={isWorking}>
+               {submitLabel}
+            </button>
+         </form>
+
+         {userExists ? (
+            <button type="button" className="text-button" disabled={isWorking} onClick={openRecovery}>
+               Use recovery code
             </button>
          ) : null}
 
-         {offersSignIn ? (
-            <button type="button" className="button-primary" disabled={isWorking} onClick={signIn}>
-               Sign in with a passkey
-            </button>
-         ) : null}
-
-         {offersSignIn ? (
-            <button type="button" className="text-button" disabled={isWorking} onClick={openRecoveryEntry}>
-               Register a passkey with a recovery code
-            </button>
-         ) : null}
-
-         {statusRefusal === null ? null : <p role="alert">{statusRefusal}</p>}
-
-         {refusal === null ? null : <p role="alert">{refusal}</p>}
+         <FeedbackLine feedback={state.feedback} />
       </section>
    );
 }

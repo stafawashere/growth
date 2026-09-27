@@ -162,20 +162,6 @@ export interface ExportJob {
    created_at: string;
 }
 
-export interface ReauthBegin {
-   challenge_id: string;
-   options: unknown;
-}
-
-export interface FinishReauthFields {
-   challenge_id: string;
-   credential: unknown;
-}
-
-export interface ReauthFinish {
-   reauth_token: string;
-}
-
 /* The evaluation routes of app/api/routes/evaluation.py read today from the body on a write and
    from the query on a read, and fall back to the server's own date without it. */
 export interface DayFields {
@@ -427,121 +413,23 @@ export async function readExport(exportId: string) {
    return response.blob();
 }
 
-export function beginReauth() {
-   return requestJson<ReauthBegin>("/auth/reauth/begin", jsonInit("POST", {}));
+export interface ReauthFields {
+   password: string;
 }
 
-export function finishReauth(fields: FinishReauthFields) {
-   return requestJson<ReauthFinish>("/auth/reauth/finish", jsonInit("POST", fields));
+export interface ReauthResult {
+   reauth_token: string;
 }
 
-interface CredentialDescriptorJson {
-   id: string;
-   type: string;
-   transports?: string[];
+/* A re-authentication token is single use, so each consequential action asks for the password
+   again and spends the token it gets back. */
+export function reauthenticate(fields: ReauthFields) {
+   return requestJson<ReauthResult>("/auth/reauth", jsonInit("POST", fields));
 }
 
-interface RequestOptionsJson {
-   challenge: string;
-   timeout?: number;
-   rpId?: string;
-   allowCredentials?: CredentialDescriptorJson[];
-   userVerification?: UserVerificationRequirement;
-}
-
-function bytesFromBase64Url(encoded: string) {
-   const base64 = encoded.replace(/-/g, "+").replace(/_/g, "/");
-   const padding = "=".repeat((4 - (base64.length % 4)) % 4);
-   const binary = atob(base64 + padding);
-
-   return Uint8Array.from(binary, (character) => character.charCodeAt(0));
-}
-
-function base64UrlFromBuffer(buffer: ArrayBuffer) {
-   const binary = String.fromCharCode(...new Uint8Array(buffer));
-
-   return btoa(binary).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
-}
-
-function hexFromBuffer(buffer: ArrayBuffer) {
-   return Array.from(new Uint8Array(buffer), (byte) => byte.toString(16).padStart(2, "0")).join("");
-}
-
-function publicKeyRequestFrom(options: RequestOptionsJson): PublicKeyCredentialRequestOptions {
-   const allowed = options.allowCredentials ?? [];
-
-   return {
-      challenge: bytesFromBase64Url(options.challenge),
-      timeout: options.timeout,
-      rpId: options.rpId,
-      userVerification: options.userVerification,
-      allowCredentials: allowed.map((descriptor) => ({
-         id: bytesFromBase64Url(descriptor.id),
-         type: "public-key",
-         transports: descriptor.transports as AuthenticatorTransport[] | undefined
-      }))
-   };
-}
-
-/* The assertion in the JSON form app/auth/webauthn.py LibraryVerifier hands to
-   verify_authentication_response, plus credential_id in hex, which app/auth/service.py
-   credential_for reads to find the stored passkey. */
-function assertionJson(credential: PublicKeyCredential) {
-   const response = credential.response as AuthenticatorAssertionResponse;
-   const userHandle = response.userHandle;
-
-   return {
-      credential_id: hexFromBuffer(credential.rawId),
-      id: credential.id,
-      rawId: base64UrlFromBuffer(credential.rawId),
-      type: credential.type,
-      response: {
-         clientDataJSON: base64UrlFromBuffer(response.clientDataJSON),
-         authenticatorData: base64UrlFromBuffer(response.authenticatorData),
-         signature: base64UrlFromBuffer(response.signature),
-         userHandle: userHandle === null ? null : base64UrlFromBuffer(userHandle)
-      },
-      clientExtensionResults: credential.getClientExtensionResults()
-   };
-}
-
-export class ReauthDeclined extends Error {
-   constructor() {
-      super("the authenticator returned no assertion");
-
-      this.name = "ReauthDeclined";
-   }
-}
-
-/* The re-authentication ceremony of app/api/routes/auth.py, end to end: the returned token is
-   single use, so each consequential action runs this again. */
-export async function reauthenticate() {
-   const begun = await beginReauth();
-   const publicKey = publicKeyRequestFrom(begun.options as RequestOptionsJson);
-   const credential = await navigator.credentials.get({ publicKey });
-   const hasAssertion = credential !== null;
-
-   if (!hasAssertion) {
-      throw new ReauthDeclined();
-   }
-
-   const finished = await finishReauth({
-      challenge_id: begun.challenge_id,
-      credential: assertionJson(credential as PublicKeyCredential)
-   });
-
-   return finished.reauth_token;
-}
-
-export interface CeremonyBegin {
-   challenge_id: string;
-   options: unknown;
-}
-
-export interface FinishRegistrationFields {
-   challenge_id: string;
-   credential: unknown;
-   display_name?: string;
+export interface SignUpFields {
+   username: string;
+   password: string;
 }
 
 export interface RegisteredUser {
@@ -551,214 +439,77 @@ export interface RegisteredUser {
    purge_after: string | null;
 }
 
-export interface RegistrationFinish {
+export interface SignUpResult {
    user: RegisteredUser;
    seeded_skill_states: number;
    recovery_code: string;
 }
 
-export interface FinishLoginFields {
-   challenge_id: string;
-   credential: unknown;
+export function signUp(fields: SignUpFields) {
+   return requestJson<SignUpResult>("/auth/signup", jsonInit("POST", fields));
 }
 
-export interface LoginFinish {
+export interface SignInFields {
+   username: string;
+   password: string;
+}
+
+export interface SignInResult {
    user_id: string;
 }
 
-export function beginRegistration() {
-   return requestJson<CeremonyBegin>("/auth/passkey/register/begin", jsonInit("POST", {}));
+export function signIn(fields: SignInFields) {
+   return requestJson<SignInResult>("/auth/login", jsonInit("POST", fields));
 }
 
-export function finishRegistration(fields: FinishRegistrationFields) {
-   return requestJson<RegistrationFinish>("/auth/passkey/register/finish", jsonInit("POST", fields));
+export interface SignOutResult {
+   logged_out: boolean;
 }
 
-export function beginLogin() {
-   return requestJson<CeremonyBegin>("/auth/passkey/login/begin", jsonInit("POST", {}));
+export function signOut() {
+   return requestJson<SignOutResult>("/auth/logout", jsonInit("POST", {}));
 }
 
-export function finishLogin(fields: FinishLoginFields) {
-   return requestJson<LoginFinish>("/auth/passkey/login/finish", jsonInit("POST", fields));
+export interface ChangePasswordFields {
+   current_password: string;
+   new_password: string;
+   reauth_token: string;
 }
 
-interface CreationOptionsJson {
-   rp: PublicKeyCredentialRpEntity;
-   user: { id: string; name: string; displayName: string };
-   challenge: string;
-   pubKeyCredParams: PublicKeyCredentialParameters[];
-   timeout?: number;
-   excludeCredentials?: CredentialDescriptorJson[];
-   authenticatorSelection?: AuthenticatorSelectionCriteria;
-   attestation?: AttestationConveyancePreference;
+export interface ChangePasswordResult {
+   password_changed: boolean;
 }
 
-function publicKeyCreationFrom(options: CreationOptionsJson): PublicKeyCredentialCreationOptions {
-   const excluded = options.excludeCredentials ?? [];
-
-   return {
-      rp: options.rp,
-      user: {
-         id: bytesFromBase64Url(options.user.id),
-         name: options.user.name,
-         displayName: options.user.displayName
-      },
-      challenge: bytesFromBase64Url(options.challenge),
-      pubKeyCredParams: options.pubKeyCredParams,
-      timeout: options.timeout,
-      authenticatorSelection: options.authenticatorSelection,
-      attestation: options.attestation,
-      excludeCredentials: excluded.map((descriptor) => ({
-         id: bytesFromBase64Url(descriptor.id),
-         type: "public-key",
-         transports: descriptor.transports as AuthenticatorTransport[] | undefined
-      }))
-   };
+export function changePassword(fields: ChangePasswordFields) {
+   return requestJson<ChangePasswordResult>("/auth/password/change", jsonInit("POST", fields));
 }
 
-/* The attestation in the JSON form parse_registration_credential_json reads, which
-   app/auth/webauthn.py LibraryVerifier hands the credential to unchanged. */
-function attestationJson(credential: PublicKeyCredential) {
-   const response = credential.response as AuthenticatorAttestationResponse;
-   const canListTransports = typeof response.getTransports === "function";
-
-   return {
-      id: credential.id,
-      rawId: base64UrlFromBuffer(credential.rawId),
-      type: credential.type,
-      authenticatorAttachment: credential.authenticatorAttachment ?? null,
-      response: {
-         clientDataJSON: base64UrlFromBuffer(response.clientDataJSON),
-         attestationObject: base64UrlFromBuffer(response.attestationObject),
-         transports: canListTransports ? response.getTransports() : []
-      },
-      clientExtensionResults: credential.getClientExtensionResults()
-   };
-}
-
-export class PasskeyDeclined extends Error {
-   constructor() {
-      super("the authenticator returned no credential");
-
-      this.name = "PasskeyDeclined";
-   }
-}
-
-export async function registerPasskey() {
-   const begun = await beginRegistration();
-   const publicKey = publicKeyCreationFrom(begun.options as CreationOptionsJson);
-   const credential = await navigator.credentials.create({ publicKey });
-   const hasCredential = credential !== null;
-
-   if (!hasCredential) {
-      throw new PasskeyDeclined();
-   }
-
-   return finishRegistration({
-      challenge_id: begun.challenge_id,
-      credential: attestationJson(credential as PublicKeyCredential)
-   });
-}
-
-export interface FinishRecoveryRegistrationFields {
-   challenge_id: string;
-   credential: unknown;
+/* username is read only while the account has none, which is the state an account carried over
+   from passkeys starts in. */
+export interface RecoveryResetFields {
    recovery_code: string;
+   new_password: string;
+   username?: string;
 }
 
-export interface RecoveryRegistrationFinish {
+export interface RecoveryResetResult {
    user_id: string;
-   credential_id: string;
    recovery_code: string;
 }
 
-export function beginRecoveryRegistration() {
-   return requestJson<CeremonyBegin>("/auth/recovery/register/begin", jsonInit("POST", {}));
+export function resetWithRecoveryCode(fields: RecoveryResetFields) {
+   return requestJson<RecoveryResetResult>("/auth/recovery/reset", jsonInit("POST", fields));
 }
 
-export function finishRecoveryRegistration(fields: FinishRecoveryRegistrationFields) {
-   return requestJson<RecoveryRegistrationFinish>("/auth/recovery/register/finish", jsonInit("POST", fields));
-}
-
-export async function registerPasskeyWithRecoveryCode(recoveryCode: string) {
-   const begun = await beginRecoveryRegistration();
-   const publicKey = publicKeyCreationFrom(begun.options as CreationOptionsJson);
-   const credential = await navigator.credentials.create({ publicKey });
-   const hasCredential = credential !== null;
-
-   if (!hasCredential) {
-      throw new PasskeyDeclined();
-   }
-
-   return finishRecoveryRegistration({
-      challenge_id: begun.challenge_id,
-      credential: attestationJson(credential as PublicKeyCredential),
-      recovery_code: recoveryCode
-   });
-}
-
+/* needs_password is served only to a caller on this machine, so its absence means no more than
+   that the server did not say. */
 export interface AuthStatus {
    user_exists: boolean;
+   needs_password?: boolean;
 }
 
 export function readAuthStatus() {
    return requestJson<AuthStatus>("/auth/status");
-}
-
-export interface FinishAddPasskeyFields {
-   challenge_id: string;
-   credential: unknown;
-   reauth_token: string;
-}
-
-export interface AddPasskeyFinish {
-   credential_id: string;
-}
-
-export function beginAddPasskey() {
-   return requestJson<CeremonyBegin>("/auth/passkey/add/begin", jsonInit("POST", {}));
-}
-
-export function finishAddPasskey(fields: FinishAddPasskeyFields) {
-   return requestJson<AddPasskeyFinish>("/auth/passkey/add/finish", jsonInit("POST", fields));
-}
-
-export async function addPasskey() {
-   /* Ruled 2026-09-23: adding a passkey now needs a fresh re-authentication, the same proof
-      the other consequential actions require, because a credential it mints outlives the
-      session that requested it. */
-   const begun = await beginAddPasskey();
-   const publicKey = publicKeyCreationFrom(begun.options as CreationOptionsJson);
-   const credential = await navigator.credentials.create({ publicKey });
-   const hasCredential = credential !== null;
-
-   if (!hasCredential) {
-      throw new PasskeyDeclined();
-   }
-
-   const reauthToken = await reauthenticate();
-
-   return finishAddPasskey({
-      challenge_id: begun.challenge_id,
-      credential: attestationJson(credential as PublicKeyCredential),
-      reauth_token: reauthToken
-   });
-}
-
-export async function signInWithPasskey() {
-   const begun = await beginLogin();
-   const publicKey = publicKeyRequestFrom(begun.options as RequestOptionsJson);
-   const credential = await navigator.credentials.get({ publicKey });
-   const hasAssertion = credential !== null;
-
-   if (!hasAssertion) {
-      throw new PasskeyDeclined();
-   }
-
-   return finishLogin({
-      challenge_id: begun.challenge_id,
-      credential: assertionJson(credential as PublicKeyCredential)
-   });
 }
 
 export type CaptureMode = "photo" | "typed";

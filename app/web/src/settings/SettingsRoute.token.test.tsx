@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { cleanup, render } from "@testing-library/react";
+import { act, cleanup, fireEvent, render, screen } from "@testing-library/react";
 import * as client from "../api/client";
 import type { SettingsScreenProps } from "./SettingsScreen";
 import { SettingsRoute } from "./SettingsRoute";
@@ -32,14 +32,23 @@ afterEach(() => {
 
 describe("SettingsRoute, the purge token", () => {
    it("spends one verification on one purge request, however often the screen asks", async () => {
-      mocked.reauthenticate.mockResolvedValue("token-once");
+      mocked.reauthenticate.mockResolvedValue({ reauth_token: "token-once" });
       mocked.requestPurge.mockRejectedValue(Object.assign(new Error("refused"), { status: 500 }));
 
       render(<SettingsRoute purgeConfirmationPhrase="PHRASE UNDER TEST" saveFile={vi.fn()} />);
 
       const props = handed.props as SettingsScreenProps;
 
-      expect(await props.onReauthenticate()).toBe(true);
+      let verified: Promise<boolean> = Promise.resolve(false);
+
+      act(() => {
+         verified = props.onReauthenticate();
+      });
+
+      fireEvent.change(await screen.findByLabelText("Password"), { target: { value: "the password" } });
+      fireEvent.click(screen.getByRole("button", { name: "Confirm" }));
+
+      expect(await verified).toBe(true);
       expect(await props.onPurge("PHRASE UNDER TEST")).toBe(false);
       expect(await props.onPurge("PHRASE UNDER TEST")).toBe(false);
 

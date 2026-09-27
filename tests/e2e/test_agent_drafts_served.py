@@ -14,7 +14,7 @@ from sqlalchemy.orm import Session as OrmSession
 
 from app.db import models
 from app.main import DEFAULT_ITEMS_DIR, build_application, default_item_directories
-from tests.e2e.conftest import CASSETTE_PATH, FIRST_DAY, FakeVerifier, World
+from tests.e2e.conftest import CASSETTE_PATH, FIRST_DAY, FAST_SCRYPT_ENVIRONMENT, World
 from tests.e2e.test_session_login_to_feedback import answer_for, collects_confidence, rate, submit
 
 AGENT_AUTHORS = {
@@ -58,9 +58,9 @@ def agent_world(tmp_path, forbid_network):
       "GROWTH_TUTOR_CASSETTE": str(CASSETTE_PATH),
       "GROWTH_RNG_SEED": "7",
       "GROWTH_EXAM_DATE": "2027-05-10",
+      **FAST_SCRYPT_ENVIRONMENT,
    }
    application = build_application(environment)
-   application.state.settings.verifier = FakeVerifier(application.state.settings.rp_id)
 
    return World(application, application.state.engine, key_answers(agent_records()))
 

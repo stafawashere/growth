@@ -10,22 +10,21 @@ from sqlalchemy.orm import Session as OrmSession
 
 from app.auth.cookies import SESSION_COOKIE
 from app.db import models
-from tests.api.conftest import world  # noqa: F401
+from tests.api.conftest import PASSWORD, USERNAME, world  # noqa: F401
+
+LAN_HOST = "lan-box.local"
 
 
 def token_hash_of(raw_token):
    return hashlib.sha256(raw_token.encode()).hexdigest()
 
 
-def register_at(client, url):
-   begun = client.post("/auth/passkey/register/begin", json={"display_name": "Student"})
-   assert begun.status_code == 200
-   payload = {
-      "challenge_id": begun.json()["challenge_id"],
-      "credential": {"sign_count": 5},
-   }
+def register_at(world, client, url):  # noqa: F811
+   """lan-box.local is added to the served hosts, so the Host allowlist lets the request reach the
+   transport rule these tests are about."""
+   world.settings.allowed_hosts = world.settings.allowed_hosts + (LAN_HOST,)
 
-   return client.post(url, json=payload)
+   return client.post(url, json={"username": USERNAME, "password": PASSWORD})
 
 
 def auth_session_for(engine, token):
@@ -42,11 +41,6 @@ def all_users(engine):
       return db.query(models.User).all()
 
 
-def all_passkey_credentials(engine):
-   with OrmSession(engine) as db:
-      return db.query(models.PasskeyCredential).all()
-
-
 def all_auth_sessions(engine):
    with OrmSession(engine) as db:
       return db.query(models.AuthSession).all()
@@ -55,7 +49,7 @@ def all_auth_sessions(engine):
 def test_loopback_bind_and_loopback_request_keep_current_behaviour(world):  # noqa: F811
    client = world.client()
 
-   finished = register_at(client, "http://127.0.0.1/auth/passkey/register/finish")
+   finished = register_at(world, client, "http://127.0.0.1/auth/signup")
 
    assert finished.status_code == 200
 
@@ -73,7 +67,7 @@ def test_loopback_bind_and_loopback_request_keep_current_behaviour(world):  # no
 def test_non_loopback_request_over_https_gets_secure_cookie(world):  # noqa: F811
    client = world.client()
 
-   finished = register_at(client, "https://lan-box.local/auth/passkey/register/finish")
+   finished = register_at(world, client, f"https://{LAN_HOST}/auth/signup")
 
    assert finished.status_code == 200
 
@@ -91,7 +85,7 @@ def test_non_loopback_request_over_https_gets_secure_cookie(world):  # noqa: F81
 def test_non_loopback_request_over_plain_http_is_refused(world):  # noqa: F811
    client = world.client()
 
-   finished = register_at(client, "http://lan-box.local/auth/passkey/register/finish")
+   finished = register_at(world, client, f"http://{LAN_HOST}/auth/signup")
 
    assert finished.status_code == 400
    assert "set-cookie" not in finished.headers
@@ -101,7 +95,6 @@ def test_non_loopback_request_over_plain_http_is_refused(world):  # noqa: F811
 
    assert unauthenticated.status_code == 401
    assert all_users(world.engine) == []
-   assert all_passkey_credentials(world.engine) == []
    assert all_auth_sessions(world.engine) == []
 
 

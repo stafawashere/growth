@@ -29,8 +29,16 @@ provider result read fine and the per-role budget row already settled against it
 the second store, the dev-spend ledger file, that failed on its own true-up read. Folding it into
 provider_result_unreadable would misreport a working call as an unreadable one, so it gets its own
 name, bounded the same way, one row per day.
+
+Ruled 2026-09-27, when passwords replaced passkeys: the three passkey actions went, and five names
+came in. account_created is the sign-up, the old passkey_registered with the credential gone.
+login_failed_lockout is written once each time wrong passwords lock the account, with the count and
+the lock deadline and nothing of the password. password_changed and password_reset_via_recovery are
+09's recovery-code-used entry split by how the password was set. recovery_code_issued is the
+operator's command line in app/auth/issue_recovery_code.py handing out a fresh code.
 """
 AUDIT_ACTIONS = (
+   "account_created",
    "budget_call_refused",
    "budget_cap_changed",
    "budget_hard_stop",
@@ -43,15 +51,16 @@ AUDIT_ACTIONS = (
    "export_produced",
    "frq_image_deleted",
    "grading_rerun",
-   "passkey_recovery_used",
-   "passkey_registered",
-   "passkey_removed",
+   "login_failed_lockout",
+   "password_changed",
+   "password_reset_via_recovery",
    "provider_key_removed",
    "provider_key_rotated",
    "provider_key_set",
    "provider_result_unreadable",
    "purge",
    "reauth_established",
+   "recovery_code_issued",
    "review_queue_item_resolved",
    "session_closed",
    "session_established",

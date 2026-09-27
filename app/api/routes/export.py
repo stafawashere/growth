@@ -37,7 +37,7 @@ def create_export(
    if not is_reauthenticated:
       return JSONResponse(
          status_code=401,
-         content={"detail": "an export needs a fresh passkey re-authentication"},
+         content={"detail": "an export needs a fresh password re-authentication"},
       )
 
    job = produce_export(db, archive_directory, user.id, now)

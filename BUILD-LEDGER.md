@@ -1982,9 +1982,9 @@ items) and items 3 and 6 (Slices 3 and 4). Every gate 11 names for P2 now exists
   world. No live setting changed: two-term stays, `LAMBDA` 0, five-term off. New tests, each red
   under a break and green on restore: the decay arm diverging (red with retrievability dropped from
   `serve_stage`), keyed draws (red with a shared stream), daily growth, consolidated prior and the
-  controls' ordering. Checks: the touched files `138 passed in 54.95s` (tests/engine, tests/session
-  and the three simulation eval files); vitest `Tests  669 passed (669)`; `tsc --noEmit` exit 0;
-  `qa/12_report.py` exit 0. The full pytest suite was not run to completion: the operator stopped
+  controls' ordering. Checks on the tree rebased onto `1f74c96`: the touched files `138 passed in
+  57.18s` (tests/engine, tests/session and the three simulation eval files); vitest `Tests  702
+  passed (702)` in 58 files; `tsc --noEmit` exit 0; `qa/12_report.py` exit 0. The full pytest suite was not run to completion: the operator stopped
   it and asked for the merge without it.
 
 ## In progress [inferred]

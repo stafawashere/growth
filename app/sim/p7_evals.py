@@ -35,8 +35,6 @@ class ArmSummary:
    declared_not_known: int
    placed_mastered: int
    placed_not_known: int
-   seeded_mastered: int
-   seeded_not_known: int
 
    @property
    def false_mastery_share(self):
@@ -45,9 +43,9 @@ class ArmSummary:
    @property
    def practice_false_mastery_share(self):
       """False declarations among skills declared from practice, with the diagnostic's placement
-      and the seeded parents of app/session/seed.py set aside."""
-      practised = self.declared_mastered - self.placed_mastered - self.seeded_mastered
-      wrong = self.declared_not_known - self.placed_not_known - self.seeded_not_known
+      set aside."""
+      practised = self.declared_mastered - self.placed_mastered
+      wrong = self.declared_not_known - self.placed_not_known
 
       return wrong / practised if practised else 0.0
 
@@ -98,8 +96,6 @@ def summarise(runs):
       declared_not_known=sum(run.declared_not_known for run in runs),
       placed_mastered=sum(run.placed_mastered for run in runs),
       placed_not_known=sum(run.placed_not_known for run in runs),
-      seeded_mastered=sum(run.seeded_mastered for run in runs),
-      seeded_not_known=sum(run.seeded_not_known for run in runs),
    )
 
 

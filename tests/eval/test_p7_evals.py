@@ -134,3 +134,19 @@ def test_the_live_decay_term_matches_the_recorded_decision():
 
    assert returns != stays
    assert constants.LAMBDA == (2.0 if returns else 0.0)
+
+
+def eval_false_mastery_within_ceiling():
+   """10's ceiling on declared mastery the student does not have, over every source of a
+   declaration: the account's seeded rows, the diagnostic's placement and practice."""
+   by_arm = p7_evals.run_arms(["two_term", "random_control"], 20, 20, seed_base=p7_evals.SEED_BASE)
+
+   for arm_name, runs in by_arm.items():
+      summary = p7_evals.summarise(runs)
+
+      assert summary.declared_mastered >= 20, arm_name
+      assert summary.false_mastery_share <= p7_evals.FALSE_MASTERY_CEILING, (
+         arm_name,
+         summary.declared_not_known,
+         summary.declared_mastered,
+      )

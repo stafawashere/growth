@@ -30,7 +30,6 @@ from app.engine.state import Confidence, FadingStage
 from app.engine.strength import probability
 from app.engine.update import Observation, apply_observation, rule_based_mastery_states
 from app.session.build import assemble_session
-from app.session.seed import SEEDED_PARENT_IDS
 from app.sim import five_term, whole_graph
 from app.sim.runner import HALF_LIFE_CAP_DAYS, HALF_LIFE_GROWTH, INITIAL_HALF_LIFE_DAYS
 
@@ -244,8 +243,6 @@ class StudentRun:
    declared_not_known: int
    placed_mastered: int
    placed_not_known: int
-   seeded_mastered: int
-   seeded_not_known: int
    retention_day_7: float
    retention_day_30: float
    measurement_bias: float
@@ -363,8 +360,6 @@ def run_student(arm, seed, days, curve=EXPONENTIAL, keep_trace=False):
    declared_not_known = [skill_id for skill_id in declared if not world.knows(skill_id)]
    placed = [skill_id for skill_id in declared if skill_id in placed_ids]
    placed_not_known = [skill_id for skill_id in placed if not world.knows(skill_id)]
-   seeded = [skill_id for skill_id in declared if skill_id in SEEDED_PARENT_IDS]
-   seeded_not_known = [skill_id for skill_id in seeded if not world.knows(skill_id)]
    known_now = sorted(skill_id for skill_id in graph.skills if world.knows(skill_id))
 
    return StudentRun(
@@ -380,8 +375,6 @@ def run_student(arm, seed, days, curve=EXPONENTIAL, keep_trace=False):
       declared_not_known=len(declared_not_known),
       placed_mastered=len(placed),
       placed_not_known=len(placed_not_known),
-      seeded_mastered=len(seeded),
-      seeded_not_known=len(seeded_not_known),
       retention_day_7=mean_retention(world, known_now, end_day + timedelta(days=RETENTION_PROBE_DAYS[0])),
       retention_day_30=mean_retention(world, known_now, end_day + timedelta(days=RETENTION_PROBE_DAYS[1])),
       measurement_bias=measurement_bias(states, world, end_day),

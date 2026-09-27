@@ -21,8 +21,8 @@ DAYS = 60
 
 ARM_HEADER = (
    "| Arm | Items | Skills learned | True mastery per item | Retention day 7 | Retention day 30 | "
-   "Bias | Declared | Declared, not known | Placed, not known | Seeded, not known |\n"
-   "|---|---|---|---|---|---|---|---|---|---|---|"
+   "Bias | Declared | Declared, not known | Placed, not known |\n"
+   "|---|---|---|---|---|---|---|---|---|---|"
 )
 
 
@@ -32,8 +32,7 @@ def arm_row(summary):
       f"{summary.mean_true_mastery_per_item:.5f} | {summary.mean_retention_day_7:.4f} | "
       f"{summary.mean_retention_day_30:.4f} | {summary.mean_measurement_bias:+.4f} | "
       f"{summary.declared_mastered} | {summary.declared_not_known} | "
-      f"{summary.placed_not_known} of {summary.placed_mastered} | "
-      f"{summary.seeded_not_known} of {summary.seeded_mastered} |"
+      f"{summary.placed_not_known} of {summary.placed_mastered} |"
    )
 
 
@@ -50,7 +49,7 @@ def decision_lines(decisions, students):
       f"- Decay term, arm 6 against arm 1: lambda 2.0 beat lambda 0 on true mastery per item for {decisions.lambda_mastery_share:.1%} and on retention at day 30 for {decisions.lambda_retention_share:.1%} of {students} students. Bar {bar} on either. lambda returns to 2.0: {yes_no(decisions.lambda_returns)}.",
       f"- Interleaving removed: mean retention at day 30 moved by {decisions.interleaving_removal_retention_gain:+.4f} against two-term, and was higher without interleaving for {decisions.interleaving_removal_retention_share:.1%} of {students} students. Bar {bar}. The constraint costs retention: {yes_no(decisions.interleaving_costs_retention)}.",
       f"- Measurement bias: two-term {decisions.policy_bias:+.4f}, control {decisions.control_bias:+.4f}. Within {p7_evals.BIAS_MARGIN} in absolute value: {yes_no(decisions.bias_within_margin)}.",
-      f"- False mastery: the worst arm, {decisions.worst_false_mastery_arm}, declared {decisions.worst_false_mastery_share:.1%} of its masteries on skills the student did not know. Ceiling {p7_evals.FALSE_MASTERY_CEILING:.0%}. Within: {yes_no(decisions.false_mastery_within_ceiling)}. Set apart the diagnostic's placements and the seeded parents of `app/session/seed.py`, the worst arm's share among masteries declared from practice is {decisions.worst_practice_false_mastery_share:.1%}.",
+      f"- False mastery: the worst arm, {decisions.worst_false_mastery_arm}, declared {decisions.worst_false_mastery_share:.1%} of its masteries on skills the student did not know. Ceiling {p7_evals.FALSE_MASTERY_CEILING:.0%}. Within: {yes_no(decisions.false_mastery_within_ceiling)}. Set apart the diagnostic's placements, the worst arm's share among masteries declared from practice is {decisions.worst_practice_false_mastery_share:.1%}.",
    ]
 
 
@@ -58,7 +57,7 @@ def render(results):
    lines = [
       "---",
       "title: P7 simulation record",
-      "research_date: 2026-09-24",
+      "research_date: 2026-09-26",
       "status: recorded",
       "purpose: The P7 policy comparison on a synthetic world that learns, and the decisions it makes on the five-term score, the decay term and the other acceptance thresholds of docs/plan/10.",
       "---",

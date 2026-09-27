@@ -2807,6 +2807,7 @@ From the eleventh session, 2026-09-21, found and not fixed.
   mastered. They were P1 out-of-subgraph parents (R15, Q8); with the whole graph loaded they are
   ordinary skills. A credited failure flips them, but the diagnostic never places them, because
   placement only adds.
+  Resolved 2026-09-26: no BC-SKL row is seeded mastered (Decisions, 2026-09-26, false mastery).
 - 2026-09-24, stage 2, a queued discriminating probe bypasses the interleaving window, as in P1.
   Nothing writes probes until P3's diagnostician, which should route a probe through
   `window_filter` so it is logged like every other serve.
@@ -2841,6 +2842,8 @@ From the eleventh session, 2026-09-21, found and not fixed.
   practice). It is the six seeded parents of `app/session/seed.py` (about half not known by a
   synthetic student) and the diagnostic's placement (about 13 percent). The seeded-parent defect of
   stage 2 is the larger share.
+  Resolved 2026-09-26 on the simulation: 2.2 and 2.6 percent at worst (Decisions, 2026-09-26,
+  false mastery). About 9 percent of placed skills are still not known by the student.
 - 2026-09-24, stage 8, open. The deterministic item checks miss a wrong intermediate
   worked-solution step (0 of 6 in the verifier golden set) and a no_calculator stem that is not
   closed-form (0 of 6). Only P4's independent re-solve and model verifier can catch them.
@@ -3550,6 +3553,41 @@ Session 2026-09-20 (seventh).
   (0.101.2, `LICENSE.txt`), as are KaTeX 0.16.47 and the compute engine 0.24.1.
 
 ## Decisions taken on the operator's instruction, 2026-09-26 [inferred]
+
+False mastery, on the operator's instruction to fix the 22 to 23 percent simulated false-mastery
+rate against 10's 5 percent ceiling as an engine fix:
+
+- `app/session/seed.py` no longer seeds the six BC-SKL parents of Q8 (BC-SKL-01018, 01039, 01044,
+  02001, 02002, 03001) mastered. Every BC-SKL row starts unmastered with its prior beta, and only
+  the 77 BC-PRQ rows start mastered, so an account holds 77 mastered rows, not 83. `var/growth.db`
+  held 0 users, so no stored row needed changing.
+- BC-SKL-02001 and BC-SKL-03001 have no archetype, so unseeded they would have shut BC-SKL-02006
+  and BC-SKL-03002 for good. `Graph.blocking_parents` in `app/engine/fringe.py` leaves out a BC-SKL
+  parent no archetype loads, and `parents_mastered` and the placement's `gating_closed` read it.
+  BC-PRQ and other parents outside the skill map still gate. This also opens the children of the
+  8 other archetype-less gating skills (BC-SKL-05011, 06040, 06042, 06043, 06044, 06046, 06053,
+  06054), which were shut unless the diagnostic placed their parent. `gating_parents` is unchanged,
+  so due coverage still reaches those parents.
+- The diagnostic places a skill mastered at 0.90 (`DIAG_PLACE_MASTERED`, set to
+  `MASTERY_THRESHOLD`), not 0.80. With the parents unseeded, 0.80 alone gave 6.5 percent on 40
+  students, and about 1 in 10 placed skills was not known and never served in 60 days. 0.80 still
+  decides the unit states on the result screen. A sweep on 40 students gave 0.85 at 2.9 percent and
+  0.90 at 0.3 percent; 0.90 was taken because it is the bar practice already uses, not from the
+  sweep.
+- Recorded run (`tools/p7_evals.py`, 200 students, 60 days, `docs/operator/p7-evals.md`): worst arm
+  2.2 percent exponential and 2.6 percent power law, from 22.1 and 23.3. Declarations fell from
+  3681 to 1327 on two-term exponential, so a student re-proves more of what they know. True mastery
+  per item on two-term moved from 0.01092 to 0.01021 (exponential) and 0.02306 to 0.02342 (power
+  law). Two-term against the control moved to 73.0 and 78.0 percent, still under the 90 percent bar.
+  Placement is still the only source of false mastery (29 of 329 placed on two-term exponential).
+- Plan text corrected in place with a dated note: 02 (fringe rule, R15 paragraph, what is left
+  not_attempted), 06 (skills_state seeding), 11 (Q8).
+- Tests: `tests/session/test_seed.py` asserted the old Q8 seeding (83 mastered, BC-SKL-01018
+  seeded) and now asserts 77 mastered, all BC-PRQ, and every BC-SKL unmastered with its prior beta.
+  New `eval_false_mastery_within_ceiling` (20 students, 20 days, two-term and control) was green
+  at 0 of 66 and 0 of 71, red at 18 of 206 with placement back at 0.80 and at 66 of 235 with the
+  six parents seeded again. New `test_a_parent_no_archetype_teaches_does_not_gate` was red with
+  `parents_mastered` back on `gating_parents` and red with BC-PRQ parents dropped from blocking.
 
 Pre-practice session, on the instruction to do everything needed before the operator starts
 practicing:

@@ -106,6 +106,17 @@ class Graph:
    def has_archetype(self, skill_id):
       return skill_id in self._skills_with_archetype
 
+   def blocking_parents(self, skill_id):
+      """The gating parents that keep a skill off the fringe until mastered. A BC-SKL parent with
+      no archetype is left out: nothing can serve it, so it could only ever be opened by the
+      diagnostic's placement, and every skill under it would stay shut for any student the
+      placement did not reach."""
+      return [
+         parent
+         for parent in self.gating_parents(skill_id)
+         if parent not in self.skills or self.has_archetype(parent)
+      ]
+
    def primary_unit(self, archetype_id):
       return self.archetypes[archetype_id]["primary_unit"]
 
@@ -142,10 +153,10 @@ def outer_fringe(states, graph):
 
 
 def parents_mastered(skill_id, states, graph):
-   """Invariant 3: a row is servable only once every gating parent of its primary skill is mastered."""
+   """Invariant 3: a row is servable only once every blocking parent of its primary skill is mastered."""
    return all(
       is_mastered(parent, states)
-      for parent in graph.gating_parents(skill_id)
+      for parent in graph.blocking_parents(skill_id)
    )
 
 

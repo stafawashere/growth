@@ -1,5 +1,7 @@
 """Tests for app/session/seed.py against the live data/ content, per docs/plan/06-architecture.md
-skills_state and Q8/Q2 in docs/plan/11-phased-delivery.md.
+skills_state and Q2 in docs/plan/11-phased-delivery.md. Q8's six seeded BC-SKL parents were
+withdrawn on 2026-09-26 (BUILD-LEDGER.md, Plan corrections applied), so only BC-PRQ rows start
+mastered.
 """
 from datetime import datetime, timezone
 from pathlib import Path
@@ -23,7 +25,7 @@ def snapshot():
    return load_snapshot(DATA_ROOT)
 
 
-def test_seed_writes_618_rows_with_83_mastered(tmp_path, snapshot):
+def test_seed_writes_618_rows_with_only_the_77_prerequisites_mastered(tmp_path, snapshot):
    engine = models.make_engine(tmp_path / "growth.db")
 
    with OrmSession(engine) as db:
@@ -36,7 +38,8 @@ def test_seed_writes_618_rows_with_83_mastered(tmp_path, snapshot):
 
       assert written == 618
       assert len(rows) == 618
-      assert len(mastered_rows) == 83
+      assert len(mastered_rows) == 77
+      assert all(row.skill_id.startswith("BC-PRQ") for row in mastered_rows)
       assert not any(skill_id.startswith("BC-TOP") for skill_id in skill_ids)
 
 
@@ -49,19 +52,15 @@ def test_seed_beta_matches_prior(tmp_path, snapshot):
 
       states = repository.load_states(db, USER_ID)
 
-   external_parent = "BC-SKL-01018"
+   skill_ids = [skill_id for skill_id in states if skill_id.startswith("BC-SKL")]
 
-   assert states[external_parent].mastered is True
-   assert states[external_parent].beta == 0.0
+   assert len(skill_ids) == 541
 
-   unmastered_skill_id = next(
-      skill_id
-      for skill_id, state in states.items()
-      if skill_id.startswith("BC-SKL") and not state.mastered
-   )
-   expected_beta = beta_for_skill(unmastered_skill_id, snapshot.archetypes)
+   for skill_id in skill_ids:
+      expected_beta = beta_for_skill(skill_id, snapshot.archetypes)
 
-   assert states[unmastered_skill_id].beta == pytest.approx(expected_beta)
+      assert states[skill_id].mastered is False
+      assert states[skill_id].beta == pytest.approx(expected_beta)
 
 
 def test_seed_refuses_second_run(tmp_path, snapshot):

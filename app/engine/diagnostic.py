@@ -19,11 +19,14 @@ drawn uniformly from every published archetype, is the held-out extra problem: i
 logged but never enters the posterior.
 
 placement() turns the posterior into skill-level state. A skill is in state when its chance of
-being known under its unit's posterior reaches 0.80 and out of state below 0.20 (the ALEKS
-thresholds). In-state skills whose gating parents are mastered or also in state are marked
-mastered with a first-review memory, so FSRS brings them back for a retrieval check within days
-and a credited failure un-masters them as it would any skill. Everything else is left as it was:
-an unresolved skill keeps mastered false and sits in the fringe once its parents are mastered.
+being known under its unit's posterior reaches 0.90, the same bar sigmoid(m_k) must clear before
+practice declares mastery, and out of state below 0.20. The ALEKS 0.80 used to place skills too,
+and on the P7 simulation about one in ten of those was not known by the student and never served
+again, which alone broke 10's 5 percent false-mastery ceiling. 0.80 still decides the unit states
+the result screen shows. In-state skills whose blocking parents are mastered or also in state are
+marked mastered with a first-review memory, so FSRS brings them back for a retrieval check and a
+credited failure un-masters them as it would any skill. Everything else is left as it was: an
+unresolved skill keeps mastered false and sits in the fringe once its parents are mastered.
 A re-diagnostic after a long gap runs the same code over the stored state and only ever adds.
 """
 import math
@@ -441,7 +444,7 @@ def classify_skills(run, states, graph):
          for weight, unit_state in zip(run.posterior[unit], UNIT_STATES)
       )
 
-      if known >= constants.DIAG_IN_STATE:
+      if known >= constants.DIAG_PLACE_MASTERED:
          classes[skill_id] = PLACED_IN
       elif known <= constants.DIAG_OUT_OF_STATE:
          classes[skill_id] = PLACED_OUT
@@ -474,7 +477,7 @@ def gating_closed(candidates, states, graph):
       for skill_id in sorted(kept):
          parents_ready = all(
             parent in kept or (states.get(parent) is not None and states[parent].mastered)
-            for parent in graph.gating_parents(skill_id)
+            for parent in graph.blocking_parents(skill_id)
          )
 
          if not parents_ready:

@@ -9,6 +9,7 @@ from datetime import date, datetime, time, timedelta
 
 from app.engine import constants
 from app.engine.fringe import (
+   Graph,
    candidates,
    count_unsupported_successes,
    drain_probe_queue,
@@ -83,6 +84,40 @@ def test_fringe_membership():
    assert graph.inert_top.isdisjoint(set(graph.skills))
    assert all(skill not in graph.inert_top for skill in outer_fringe(build_states(fixture), graph))
 
+
+
+def test_a_parent_no_archetype_teaches_does_not_gate():
+   graph = Graph.from_records(
+      archetypes=[
+         {"id": "BC-QA-TAUGHT", "skills": ["BC-SKL-TAUGHT"]},
+         {"id": "BC-QA-CHILD", "skills": ["BC-SKL-CHILD"]},
+      ],
+      skills=[
+         {"id": "BC-SKL-TAUGHT", "unit": "BC-UNIT-01"},
+         {"id": "BC-SKL-UNTAUGHT", "unit": "BC-UNIT-01"},
+         {"id": "BC-SKL-CHILD", "unit": "BC-UNIT-01"},
+      ],
+      edges=[
+         {"from": parent, "to": "BC-SKL-CHILD", "type": "hard_prerequisite"}
+         for parent in ("BC-SKL-TAUGHT", "BC-SKL-UNTAUGHT", "BC-PRQ-OUTSIDE")
+      ],
+      inert_top=(),
+   )
+
+   def states_with(mastered):
+      return {
+         skill_id: SkillState(skill_id=skill_id, mastered=skill_id in mastered)
+         for skill_id in ("BC-SKL-TAUGHT", "BC-SKL-UNTAUGHT", "BC-SKL-CHILD", "BC-PRQ-OUTSIDE")
+      }
+
+   opened = outer_fringe(states_with({"BC-SKL-TAUGHT", "BC-PRQ-OUTSIDE"}), graph)
+   shut_by_taught = outer_fringe(states_with({"BC-PRQ-OUTSIDE"}), graph)
+   shut_by_prerequisite = outer_fringe(states_with({"BC-SKL-TAUGHT"}), graph)
+
+   assert "BC-SKL-CHILD" in opened
+   assert "BC-SKL-UNTAUGHT" not in opened
+   assert "BC-SKL-CHILD" not in shut_by_taught
+   assert "BC-SKL-CHILD" not in shut_by_prerequisite
 
 def test_retrieval_entry():
    fixture = load_fixture()

@@ -86,6 +86,9 @@ GROWTH_EXPERIMENTS_DEFAULT the state both A/B switches of app/experiments/switch
                       A switch the student has already set keeps its state.
 GROWTH_AUTO_DRAIN     on (the default) or off. on drains tutor calls queued behind a usage limit from
                       inside the running server, paced and capped (app/feedback/autodrain.py).
+GROWTH_BACKUP_DIR     where app/db/backup.py writes a dated copy of the database each time the server
+                      starts, keeping the last 14 days. Default backups/ beside the database file.
+                      none turns it off.
 GROWTH_TIMED_ASSESSMENTS on (the default) or off. off switches the full mock and the timed part
                       drills off, 11 P5's rollback; the unit check stays on. Any other value
                       stops the process at startup.
@@ -120,6 +123,7 @@ from fastapi.staticfiles import StaticFiles
 from starlette.responses import FileResponse, PlainTextResponse
 
 from app.api.app import Settings, create_app
+from app.db.backup import back_up_database
 from app.experiments import switches
 from app.feedback.autodrain import AutoDrain, auto_drain_enabled
 from app.frq.bank import DEFAULT_FRQ_DIR, build_frq_context
@@ -152,6 +156,7 @@ DEFAULT_TOKENS_PATH = REPO_ROOT / "app" / "design" / "growth-tokens.json"
 DEFAULT_CONTENT_DIR = REPO_ROOT / "content"
 DEFAULT_ITEMS_DIR = DEFAULT_CONTENT_DIR / "items_p1_agent"
 ITEM_BANK_PATTERN = "items_*"
+NO_BACKUP_DIR = "none"
 NO_ITEMS_DIR = "none"
 WEB_BUILD_COMMAND = "npm run build --prefix app/web"
 
@@ -544,6 +549,7 @@ def build_application(env=None):
    env = env if env is not None else os.environ
    settings = settings_from_environment(env)
    settings.db_path.parent.mkdir(parents=True, exist_ok=True)
+   back_up_before_opening(settings.db_path, env)
    engine = settings.resolve_engine()
    settings.session_context = build_session_context(
       engine,
@@ -562,6 +568,20 @@ def build_application(env=None):
    start_the_auto_drain(application, settings, engine, env)
 
    return application
+
+
+def back_up_before_opening(db_path, env):
+   configured = env.get("GROWTH_BACKUP_DIR")
+   is_disabled = configured == NO_BACKUP_DIR
+
+   if is_disabled:
+      return
+
+   backup_dir = Path(configured) if configured else db_path.parent / "backups"
+   written = back_up_database(db_path, backup_dir)
+
+   if written is not None:
+      logger.info("database backed up to %s", written)
 
 
 def start_the_auto_drain(application, settings, engine, env):

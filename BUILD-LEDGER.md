@@ -2381,7 +2381,7 @@ From the twelfth session, 2026-09-22, found and not fixed.
   (`"delete my data"`) and wired into `App.tsx`; purge is reachable from settings. Purge is unreachable from the served app. 08 gives no purge confirmation phrase, so `App.tsx`
   passes `null` and the purge controls stay disabled with the gap named on screen. Failure
   scenario: 30 days after the exam the student cannot purge from settings.
-- No plan copy exists for a failed request anywhere in the client. Screens stay silent on a 500
+- Closed 2026-09-26 by stage 10 (`app/web/src/status/LoadState.tsx`). No plan copy exists for a failed request anywhere in the client. Screens stay silent on a 500
   or a dropped connection; a refused next-item request leaves feedback on screen to retry.
 - The empty-queue action "Add a 15 minute practice set" opens an ordinary session. No route
   assembles a 15-minute set, so on an empty queue the button opens an empty session.
@@ -2850,6 +2850,10 @@ From the eleventh session, 2026-09-21, found and not fixed.
 - 2026-09-24, stage 8, open, bank. ITM-AGT-10005-02 option B (1/(e - 1), the series sum) is tagged
   BC-ERR-10013, which describes a different substitution. The key is right; the error tag is not.
   Found by the golden-set agent, not changed.
+  Rechecked 2026-09-26: all 9 BC-QA-10005 items tag their series-sum distractor BC-ERR-10013,
+  whose observed behaviour is the reverse direction (integral value reported as the series sum).
+  The linked misconception, BC-MIS-10008, fits both. A fix needs a new error record through
+  staging, not an item edit; left open.
 - 2026-09-24, stage 8, open. Transcriber golden set 3 has page specifications and reference
   transcripts but no images: each page must be written by hand and photographed, which no session
   can do. Golden set 2 covers 17 point types, not 30, because only 17 reach a model.
@@ -3546,6 +3550,18 @@ Session 2026-09-20 (seventh).
   (0.101.2, `LICENSE.txt`), as are KaTeX 0.16.47 and the compute engine 0.24.1.
 
 ## Decisions taken on the operator's instruction, 2026-09-26 [inferred]
+
+Pre-practice session, on the instruction to do everything needed before the operator starts
+practicing:
+
+- `app/db/backup.py`: every server start copies the database to `backups/` beside it
+  (`GROWTH_BACKUP_DIR` overrides, `none` disables), the first copy of each day only, the last 14
+  days kept. The copy sits on the same disk as the database, so it guards against a bad write or
+  a purge, not against losing the machine.
+- `app/web/dist` was rebuilt; it had been built on 2026-09-24, before P5, P6/P8 and the UI
+  redesign, and `dist/` is gitignored, so a rebuild is needed after every client change.
+- The empty-queue defect was left: home shows the empty state only with no due, frontier or
+  returning items, which a student with 139 archetypes will not reach for months.
 
 Stage 7, P6 and P8, decided on the operator's delegation (the stage brief delegates every decision).
 

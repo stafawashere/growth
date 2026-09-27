@@ -140,6 +140,10 @@ class Recorder:
 
 @pytest.fixture
 def world(tmp_path):
+   return build_world(tmp_path)
+
+
+def build_world(tmp_path):
    fixture = load_fixture()
    engine = models.make_engine(tmp_path / "growth.db")
    seeds = Recorder()

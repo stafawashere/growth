@@ -13,6 +13,11 @@ with the rating recorded as unsure and its source as "diagnostic", which the cal
 does not count. "I have not learned this yet" is an answer: no grading, no credit to any skill,
 and strong evidence in the posterior that the unit has not been started.
 
+"Skip this unit" is the same answer given to every remaining item of the unit being asked: the
+unit is recorded as skipped, and each of its items, the one on screen and any the run chooses
+later, is answered "I have not learned this yet" through the ordinary answer path as it is served.
+Nothing else about the run or the placement changes.
+
 The run finishes when the engine stops it. The placement is then written to skills_state and the
 session is closed, so a first login and a long-gap return both land on home with the queue the
 placed state implies.
@@ -38,6 +43,10 @@ RUN_KEY = "diagnostic"
 
 ITEMS_KEY = "diagnostic_items"
 
+SKIPPED_UNITS_KEY = "diagnostic_skipped_units"
+
+NOT_LEARNED_ANSWER = {"not_learned": True}
+
 
 def is_diagnostic(session_row):
    return session_row.mode == MODE
@@ -56,6 +65,35 @@ def save_run(db, session_row, run, served_items=None):
 
    session_row.queue = json.dumps(queue)
    db.flush()
+
+
+def skipped_units(session_row):
+   return list(json.loads(session_row.queue).get(SKIPPED_UNITS_KEY, []))
+
+
+def waiting_unit(session_row):
+   """The unit of the item waiting for an answer, or None when nothing is waiting."""
+   entry = load_run(session_row).pending
+
+   return None if entry is None else entry["unit"]
+
+
+def mark_unit_skipped(db, session_row, unit):
+   queue = json.loads(session_row.queue)
+   skipped = list(queue.get(SKIPPED_UNITS_KEY, []))
+
+   if unit not in skipped:
+      skipped.append(unit)
+
+   queue[SKIPPED_UNITS_KEY] = skipped
+   session_row.queue = json.dumps(queue)
+   db.flush()
+
+
+def waits_in_skipped_unit(session_row):
+   unit = waiting_unit(session_row)
+
+   return unit is not None and unit in skipped_units(session_row)
 
 
 def empty_queue(run):
@@ -178,7 +216,7 @@ def advance(db, session_row, graph, engine_graph, bank, today, process_seed, fin
    served = dress_item(record, chosen, states, graph, history)
    served["stage"] = FadingStage.UNSUPPORTED
    served["format"] = ResponseFormat(run.response_format)
-   served["diagnostic_position"] = len(run.asked)
+   served["diagnostic_position"] = len(run.asked) - 1
    served["diagnostic_cap"] = constants.DIAG_CAP
    run.pending["item_id"] = chosen["id"]
    served_items.append(json.loads(json.dumps(served, default=enum_value)))

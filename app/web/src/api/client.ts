@@ -282,6 +282,12 @@ export function readDiagnostic(sessionId: string) {
    return requestJson<DiagnosticResult>(`/sessions/${sessionId}/diagnostic`);
 }
 
+/* app/api/routes/sessions.py skip_diagnostic_unit: "I have not learned this yet" for the item on
+   screen and every later item of its unit, answered as it is served. Replies as readNextItem does. */
+export function skipDiagnosticUnit(sessionId: string, fields: { item_id: string; elapsed_ms?: number; today?: string }) {
+   return requestJson<DiagnosticNextItemResponse>(`/sessions/${sessionId}/diagnostic/skip-unit`, jsonInit("POST", fields));
+}
+
 export function submitAttempt(sessionId: string, fields: SubmitAttemptFields) {
    return requestJson<AttemptResult>(`/sessions/${sessionId}/attempts`, jsonInit("POST", fields));
 }

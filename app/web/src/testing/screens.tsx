@@ -417,8 +417,30 @@ export const SCREENS: Screen[] = [
                onAnswerUnavailable={vi.fn()}
                onCheck={vi.fn()}
                onNotLearned={vi.fn()}
+               onSkipUnit={vi.fn()}
             />
          )
+   },
+   {
+      name: "onboarding, diagnostic question, confirming a unit skip",
+      mount: async () => {
+         const container = inPage(
+            <DiagnosticItem
+               item={{ ...servedItem({ figure_spec: null, served_steps: null, stage: "unsupported" }), diagnostic_position: 6, diagnostic_cap: 30 }}
+               state="unanswered"
+               answerUnavailable={false}
+               onAnswerChange={vi.fn()}
+               onAnswerUnavailable={vi.fn()}
+               onCheck={vi.fn()}
+               onNotLearned={vi.fn()}
+               onSkipUnit={vi.fn()}
+            />
+         );
+
+         fireEvent.click(screen.getByRole("button", { name: "Skip this unit" }));
+
+         return container;
+      }
    },
    {
       name: "onboarding, diagnostic result",

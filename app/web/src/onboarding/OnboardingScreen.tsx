@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import type { DiagnosticServedItem, DiagnosticUnit, DiagnosticUnitState } from "../api/types";
 import { MathAnswerField } from "../input/MathAnswerField";
 import { FigureView } from "../figures/FigureView";
@@ -10,6 +12,12 @@ export type OnboardingReason = "first_login" | "long_gap";
 export type DiagnosticItemState = "unanswered" | "answered" | "submitted";
 
 export const NOT_LEARNED_LABEL = "I have not learned this yet";
+
+export const SKIP_UNIT_LABEL = "Skip this unit";
+
+export const SKIP_UNIT_CONFIRM_LABEL = "Skip the rest of this unit";
+
+export const KEEP_ANSWERING_LABEL = "Keep answering";
 
 export const FINISHED_LABEL = "Go to today's set";
 
@@ -81,16 +89,24 @@ export interface DiagnosticItemProps {
    onAnswerUnavailable: (reason: unknown) => void;
    onCheck: () => void;
    onNotLearned: () => void;
+   onSkipUnit?: () => void;
 }
 
 export function DiagnosticItem(props: DiagnosticItemProps) {
-   const { item, state, answerUnavailable, onAnswerChange, onAnswerUnavailable, onCheck, onNotLearned } = props;
+   const { item, state, answerUnavailable, onAnswerChange, onAnswerUnavailable, onCheck, onNotLearned, onSkipUnit } = props;
+   const [isConfirmingSkip, setIsConfirmingSkip] = useState(false);
 
    const questionNumber = item.diagnostic_position + 1;
    const isSubmitted = state === "submitted";
    const isUnanswered = state === "unanswered";
    const canCheck = !isSubmitted && !isUnanswered && !answerUnavailable;
    const offersCheck = !answerUnavailable;
+   const offersSkip = onSkipUnit !== undefined;
+
+   function skipUnit() {
+      setIsConfirmingSkip(false);
+      onSkipUnit?.();
+   }
 
    return (
       <article className="card item" data-testid="diagnostic-item" data-state={state}>
@@ -113,6 +129,12 @@ export function DiagnosticItem(props: DiagnosticItemProps) {
                {NOT_LEARNED_LABEL}
             </button>
 
+            {offersSkip && !isConfirmingSkip ? (
+               <button type="button" className="text-button" disabled={isSubmitted} onClick={() => setIsConfirmingSkip(true)}>
+                  {SKIP_UNIT_LABEL}
+               </button>
+            ) : null}
+
             {offersCheck ? (
                <button
                   type="button"
@@ -124,6 +146,22 @@ export function DiagnosticItem(props: DiagnosticItemProps) {
                </button>
             ) : null}
          </div>
+
+         {offersSkip && isConfirmingSkip ? (
+            <div role="alertdialog" aria-label="Skip this unit" className="notice notice-framed" data-testid="skip-unit-confirmation">
+               <p>Every question still to come from this unit is answered &quot;{NOT_LEARNED_LABEL}&quot;, this one included.</p>
+
+               <div className="choice-row">
+                  <button type="button" className="text-button" disabled={isSubmitted} onClick={skipUnit}>
+                     {SKIP_UNIT_CONFIRM_LABEL}
+                  </button>
+
+                  <button type="button" className="text-button" onClick={() => setIsConfirmingSkip(false)}>
+                     {KEEP_ANSWERING_LABEL}
+                  </button>
+               </div>
+            </div>
+         ) : null}
 
          <p className="caption">{EARLY_STOP_NOTE}</p>
       </article>

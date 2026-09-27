@@ -413,6 +413,48 @@ def apply_attempt(db, session_row, attempt, archetype, confidence, today, engine
    repository.save_states(db, session_row.user_id, states, session_row.snapshot_id, now)
 
 
+def answer_skipped_units(db, session_row, item, today, archetypes, engine_graph, advance):
+   """Answer "I have not learned this yet" to each served diagnostic item whose unit the student
+   skipped, through the same record_attempt path as the button, until an item of another unit is
+   waiting or the run finishes. advance serves the waiting or next item, or None once finished."""
+   while item is not None and diagnostic_session.waits_in_skipped_unit(session_row):
+      record_attempt(
+         db,
+         session_row.id,
+         item["id"],
+         dict(diagnostic_session.NOT_LEARNED_ANSWER),
+         None,
+         today,
+         archetypes=archetypes,
+         engine_graph=engine_graph,
+      )
+      item = advance()
+
+   return item
+
+
+def skip_diagnostic_unit(db, session_row, item_id, elapsed_ms, today, archetypes, engine_graph, advance):
+   """Skip the unit of the diagnostic item on screen: record the unit as skipped and answer the item
+   not learned. answer_skipped_units then answers each later item of the unit as it is served."""
+   waiting = advance()
+   is_on_screen = waiting is not None and waiting["id"] == item_id
+
+   if not is_on_screen:
+      raise ValueError(f"item {item_id} is not the diagnostic item waiting for an answer")
+
+   diagnostic_session.mark_unit_skipped(db, session_row, diagnostic_session.waiting_unit(session_row))
+   record_attempt(
+      db,
+      session_row.id,
+      item_id,
+      dict(diagnostic_session.NOT_LEARNED_ANSWER),
+      elapsed_ms,
+      today,
+      archetypes=archetypes,
+      engine_graph=engine_graph,
+   )
+
+
 def record_attempt(
    db,
    session_id,

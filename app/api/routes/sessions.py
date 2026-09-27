@@ -180,24 +180,72 @@ def read_next_item(
    return {"item": dict(item, self_explanation_prompt=prompt)}
 
 
+def diagnostic_advancer(db, settings, row, today):
+   context = settings.session_context
+
+   def advance():
+      return diagnostic_session.advance(
+         db,
+         row,
+         context.graph,
+         context.engine_graph,
+         context.bank,
+         today,
+         settings.rng_seed,
+         service.utc_now(),
+      )
+
+   return advance
+
+
 def next_diagnostic_item(db, settings, row, today):
    context = settings.session_context
-   item = diagnostic_session.advance(
-      db,
-      row,
-      context.graph,
-      context.engine_graph,
-      context.bank,
-      today,
-      settings.rng_seed,
-      service.utc_now(),
-   )
+   advance = diagnostic_advancer(db, settings, row, today)
+   item = service.answer_skipped_units(db, row, advance(), today, context.archetypes, context.engine_graph, advance)
    is_finished = item is None
 
    if is_finished:
       return {"item": None, "diagnostic_finished": True}
 
    return {"item": dict(item, served_steps=None, self_explanation_prompt=None), "diagnostic_finished": False}
+
+
+@router.post("/{session_id}/diagnostic/skip-unit")
+def skip_diagnostic_unit(
+   session_id: str,
+   payload: dict = Body(default=None),
+   db=Depends(get_db),
+   settings=Depends(get_settings),
+   user=Depends(current_user),
+):
+   """The operator's ruling in the stage 11 brief: "I have not learned this yet" for every
+   remaining item of the unit being asked, recorded as that answer is, and nothing else. Replies
+   as GET next does."""
+   fields = body_of(payload)
+   row = owned_session(db, session_id, user)
+
+   if not diagnostic_session.is_diagnostic(row):
+      raise HTTPException(status_code=404, detail="this session is not a diagnostic")
+
+   context = settings.session_context
+   today = today_of(fields)
+   advance = diagnostic_advancer(db, settings, row, today)
+
+   try:
+      service.skip_diagnostic_unit(
+         db,
+         row,
+         fields.get("item_id"),
+         fields.get("elapsed_ms"),
+         today,
+         context.archetypes,
+         context.engine_graph,
+         advance,
+      )
+   except ValueError as refused:
+      raise HTTPException(status_code=409, detail=str(refused)) from refused
+
+   return next_diagnostic_item(db, settings, row, today)
 
 
 @router.get("/{session_id}/diagnostic")

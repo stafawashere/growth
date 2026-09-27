@@ -183,3 +183,35 @@ describe("the onboarding diagnostic", () => {
       expect(screen.queryByTestId("diagnostic-intro")).toBeNull();
    });
 });
+
+describe("skipping a unit in the diagnostic", () => {
+   it("asks once more, then skips the unit of the item on screen and moves to the next item", async () => {
+      mocked.readNextItem
+         .mockResolvedValueOnce({ item: item("ITM-A", 0), diagnostic_finished: false })
+         .mockResolvedValue({ item: item("ITM-C", 3), diagnostic_finished: false });
+      mocked.skipDiagnosticUnit.mockResolvedValue({ item: item("ITM-C", 3), diagnostic_finished: false });
+      render(<OnboardingRoute reason="first_login" resumeSessionId="SES-D" onFinished={vi.fn()} />);
+
+      await screen.findByText("Evaluate item ITM-A");
+
+      fireEvent.click(screen.getByRole("button", { name: "Skip this unit" }));
+
+      expect(mocked.skipDiagnosticUnit).not.toHaveBeenCalled();
+
+      fireEvent.click(screen.getByRole("button", { name: "Keep answering" }));
+
+      expect(screen.queryByTestId("skip-unit-confirmation")).toBeNull();
+      expect(mocked.skipDiagnosticUnit).not.toHaveBeenCalled();
+
+      fireEvent.click(screen.getByRole("button", { name: "Skip this unit" }));
+      fireEvent.click(screen.getByRole("button", { name: "Skip the rest of this unit" }));
+
+      await screen.findByText("Evaluate item ITM-C");
+
+      expect(mocked.skipDiagnosticUnit).toHaveBeenCalledTimes(1);
+      expect(mocked.skipDiagnosticUnit.mock.calls[0][0]).toBe("SES-D");
+      expect(mocked.skipDiagnosticUnit.mock.calls[0][1]).toMatchObject({ item_id: "ITM-A" });
+      expect(mocked.submitAttempt).not.toHaveBeenCalled();
+      expect(screen.queryByTestId("skip-unit-confirmation")).toBeNull();
+   });
+});

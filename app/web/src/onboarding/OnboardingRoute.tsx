@@ -4,6 +4,7 @@ import {
    openDiagnostic,
    readDiagnostic,
    readNextItem,
+   skipDiagnosticUnit,
    submitAttempt,
    type AttemptAnswer,
    type DiagnosticNextItemResponse
@@ -91,6 +92,16 @@ export function OnboardingRoute({ reason, resumeSessionId, onFinished }: Onboard
    }, []);
 
    async function send(answer: AttemptAnswer) {
+      await exclusively((sessionId, itemId, elapsedMs) =>
+         submitAttempt(sessionId, { item_id: itemId, answer, elapsed_ms: elapsedMs })
+      );
+   }
+
+   async function skipUnit() {
+      await exclusively((sessionId, itemId, elapsedMs) => skipDiagnosticUnit(sessionId, { item_id: itemId, elapsed_ms: elapsedMs }));
+   }
+
+   async function exclusively(action: (sessionId: string, itemId: string, elapsedMs: number) => Promise<unknown>) {
       const isOnItem = stage.kind === "item";
       const canSend = isOnItem && !inFlight.current;
 
@@ -102,11 +113,7 @@ export function OnboardingRoute({ reason, resumeSessionId, onFinished }: Onboard
       setSubmitted(true);
 
       try {
-         await submitAttempt(stage.sessionId, {
-            item_id: stage.item.id,
-            answer,
-            elapsed_ms: Date.now() - shownAt.current
-         });
+         await action(stage.sessionId, stage.item.id, Date.now() - shownAt.current);
 
          await advance(stage.sessionId);
       } catch {
@@ -148,6 +155,7 @@ export function OnboardingRoute({ reason, resumeSessionId, onFinished }: Onboard
 
    return (
       <DiagnosticItem
+         key={stage.item.id}
          item={stage.item}
          state={itemState}
          answerUnavailable={answerUnavailable}
@@ -155,6 +163,7 @@ export function OnboardingRoute({ reason, resumeSessionId, onFinished }: Onboard
          onAnswerUnavailable={noteAnswerUnavailable}
          onCheck={() => send({ mathjson: answerMathJson })}
          onNotLearned={() => send({ not_learned: true })}
+         onSkipUnit={skipUnit}
       />
    );
 }

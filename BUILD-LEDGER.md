@@ -1986,6 +1986,13 @@ items) and items 3 and 6 (Slices 3 and 4). Every gate 11 names for P2 now exists
   57.18s` (tests/engine, tests/session and the three simulation eval files); vitest `Tests  702
   passed (702)` in 58 files; `tsc --noEmit` exit 0; `qa/12_report.py` exit 0. The full pytest suite was not run to completion: the operator stopped
   it and asked for the merge without it.
+- 2026-09-27, stage 12 (select), the bar ruling: `app/sim/p7_evals.py` decides 10's paired bars
+  from the mean difference and its interval, the record (`docs/operator/p7-evals.md`) rerun on it,
+  10, 12 and the study updated. New test `test_the_bars_are_decided_by_the_mean_interval_not_the_share`
+  was red with decide() put back on the share and green restored. Checks: tests/eval/test_p7_evals.py
+  and test_selection_study.py `14 passed in 28.88s`; vitest `Tests  702 passed (702)`; `tsc
+  --noEmit` exit 0; `qa/12_report.py` exit 0. The full pytest suite was not run, on the
+  operator's earlier instruction.
 
 ## In progress [inferred]
 
@@ -2027,10 +2034,9 @@ complete and merged (Done, "stage 11 (ux2)", slices 1 to 6 and slice 7). Nothing
 progress for it; its open defects are under Known defects, 2026-09-27.
 
 Stage 12, item selection, 2026-09-27, worktree `../growth-select` on branch `select`: complete
-(Done, "stage 12 (select)"), being merged to origin/main. What remains needs the operator's ruling
-on the form of 10's selection bars (Decisions, 2026-09-27) and, for the decay and spacing
-questions, a world whose retrieval gain grows with the lag, or the student's delayed checkpoint
-accuracy.
+(Done, "stage 12 (select)"), merged, and the bar ruling merged after it. What remains, for the
+decay and spacing questions, is a world whose retrieval gain grows with the lag, or the student's
+delayed checkpoint accuracy.
 
 ## Live API spend log [verified]
 
@@ -2910,6 +2916,10 @@ From the eleventh session, 2026-09-21, found and not fixed.
   percent interval across 0 at every horizon and curve. On the corrected world the bar reads 69.0
   and 68.5 percent at 60 days and 50.0 and 55.0 at 226. Deciding it needs the operator's ruling on
   the bar's form (Decisions, 2026-09-27). Simulation only.
+  Closed 2026-09-27 by the ruling on the bar's form (Decisions, 2026-09-27): read from the paired
+  mean difference, two-term against the control is -0.00016 [-0.00057, +0.00025] and -0.00029
+  [-0.00071, +0.00013] in true mastery per item, not wholly below 0, so the floor passes. Two-term
+  is not shown to teach better than random either; that is recorded, not a defect. Simulation only.
 - 2026-09-24, stage 8, open. Arm 6 (`lambda` 2.0) and the compensatory arm served every student
   exactly what two-term served. Under two-term selection `LAMBDA` reaches only `sigmoid(m_k)` with
   a retrievability argument, which nothing that chooses items reads, so the decay gate in 10 cannot
@@ -3682,6 +3692,12 @@ Session 2026-09-20 (seventh).
   P7 record (`docs/operator/p7-evals.md`) was rerun on the corrected world and gained 10's day-30
   delay as delayed mastery per item beside the existing measure.
 
+- 2026-09-27, stage 12, 10 "Acceptance thresholds": "on at least 90 percent of simulated
+  students" is now decided by the paired mean difference and its 95 percent interval, the share
+  kept and reported. A challenger clears only with the interval wholly above 0 under both curves;
+  the two-term floor fails only with it wholly below 0. Ruled by the model on the operator's
+  explicit delegation of that ruling ("decide for me"), and written into 10.
+
 ## Decisions taken on the operator's instruction, 2026-09-27 [inferred]
 
 Stage 11, the seven UI items stage 10 left unbuilt, decided on the operator's delegation (the stage
@@ -3835,6 +3851,15 @@ the per-student share kept and reported. On this world the same policy against i
 to 58 percent of students and only controls that read the hidden student reach 88.5 to 91 percent,
 in single cells, so the two-term-against-random bar cannot be decided by a per-student share.
 The ruling changes no live setting today: five-term and `lambda` fail on the mean as well.
+
+The ruling, made by the model after the operator answered "decide for me": the bars are read from
+the paired mean difference and its 95 percent interval, a challenger clearing only when the
+interval lies wholly above 0 under both curves and the two-term floor failing only when it lies
+wholly below 0, the per-student share kept and reported. Reasons: the share cannot separate
+policies that differ on this world, even oracles; the interval narrows with students where the
+share does not; and the asymmetry keeps the burden on anything that would change the live policy.
+On the rerun P7 record the two-term floor passes, and five-term, `lambda` and removing
+interleaving stay off. `app/sim/p7_evals.py` decide() and 10 carry the ruling.
 
 ## Decisions taken on the operator's instruction, 2026-09-26 [inferred]
 

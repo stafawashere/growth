@@ -26,10 +26,10 @@ The world learns. Each student starts from the P2 knowledge state, closed under 
 | stage_high_0_7 | 127280 | 15160 | 0.01209 | 0.00227 | 0.5752 | 0.5388 | +0.2039 | 3122 | 29 | 29 of 334 |
 | stage_high_0_8 | 127086 | 15116 | 0.01215 | 0.00227 | 0.5759 | 0.5394 | +0.2038 | 3074 | 29 | 29 of 334 |
 
-- Two-term against the random-within-fringe control: two-term matched or beat the control on true mastery per item for 69.0% of 200 students. Bar 90%. Passes: no.
-- Five-term against two-term: five-term beat two-term on true mastery per item for 39.0% of 200 students. Bar 90%. Five-term turned on: no.
-- Decay term, arm 6 against arm 1: lambda 2.0 beat lambda 0 on true mastery per item for 3.5% and on retention at day 30 for 0.0% of 200 students. Bar 90% on either. lambda returns to 2.0: no.
-- Interleaving removed: mean retention at day 30 moved by -0.0005 against two-term, and was higher without interleaving for 34.5% of 200 students. Bar 90%. The constraint costs retention: no.
+- Two-term against the random-within-fringe control, mean paired difference in true mastery per item -0.00016 [-0.00057, +0.00025]. Bar: the interval not wholly below 0. Passes: yes. Two-term matched or beat the control for 69.0% of 200 students; the 90% share 10 first stated is kept for reference.
+- Five-term against two-term, mean paired difference in true mastery per item -0.00163 [-0.00232, -0.00093]. Bar: the 95% interval of the paired mean difference wholly above 0. Five-term turned on: no. Five-term beat two-term for 39.0% of 200 students.
+- Decay term, arm 6 against arm 1, mean paired difference +0.00000 [-0.00000, +0.00001] in true mastery per item and -0.00016 [-0.00031, -0.00000] in retention at day 30. Bar: the 95% interval of the paired mean difference wholly above 0 on either. lambda returns to 2.0: no. lambda 2.0 beat lambda 0 for 3.5% and 0.0% of 200 students.
+- Interleaving removed, mean paired difference in retention at day 30 -0.00054 [-0.00328, +0.00219]. Bar: the 95% interval of the paired mean difference wholly above 0 means the constraint costs retention. It costs retention: no. Retention was higher without interleaving for 34.5% of 200 students.
 - Measurement bias: two-term +0.2039, control +0.2038. Within 0.05 in absolute value: yes.
 - False mastery: the worst arm, random_control, declared 1.0% of its masteries on skills the student did not know. Ceiling 5%. Within: yes. Set apart the diagnostic's placements, the worst arm's share among masteries declared from practice is 0.0%.
 
@@ -48,10 +48,10 @@ The world learns. Each student starts from the P2 knowledge state, closed under 
 | stage_high_0_7 | 126896 | 15129 | 0.02441 | 0.01166 | 0.5987 | 0.5480 | +0.1881 | 2994 | 29 | 29 of 334 |
 | stage_high_0_8 | 126673 | 15076 | 0.02437 | 0.01164 | 0.5992 | 0.5485 | +0.1881 | 2948 | 29 | 29 of 334 |
 
-- Two-term against the random-within-fringe control: two-term matched or beat the control on true mastery per item for 68.5% of 200 students. Bar 90%. Passes: no.
-- Five-term against two-term: five-term beat two-term on true mastery per item for 19.0% of 200 students. Bar 90%. Five-term turned on: no.
-- Decay term, arm 6 against arm 1: lambda 2.0 beat lambda 0 on true mastery per item for 3.5% and on retention at day 30 for 0.0% of 200 students. Bar 90% on either. lambda returns to 2.0: no.
-- Interleaving removed: mean retention at day 30 moved by -0.0006 against two-term, and was higher without interleaving for 35.0% of 200 students. Bar 90%. The constraint costs retention: no.
+- Two-term against the random-within-fringe control, mean paired difference in true mastery per item -0.00029 [-0.00071, +0.00013]. Bar: the interval not wholly below 0. Passes: yes. Two-term matched or beat the control for 68.5% of 200 students; the 90% share 10 first stated is kept for reference.
+- Five-term against two-term, mean paired difference in true mastery per item -0.00365 [-0.00430, -0.00300]. Bar: the 95% interval of the paired mean difference wholly above 0. Five-term turned on: no. Five-term beat two-term for 19.0% of 200 students.
+- Decay term, arm 6 against arm 1, mean paired difference +0.00001 [-0.00000, +0.00003] in true mastery per item and -0.00014 [-0.00028, -0.00000] in retention at day 30. Bar: the 95% interval of the paired mean difference wholly above 0 on either. lambda returns to 2.0: no. lambda 2.0 beat lambda 0 for 3.5% and 0.0% of 200 students.
+- Interleaving removed, mean paired difference in retention at day 30 -0.00063 [-0.00281, +0.00155]. Bar: the 95% interval of the paired mean difference wholly above 0 means the constraint costs retention. It costs retention: no. Retention was higher without interleaving for 35.0% of 200 students.
 - Measurement bias: two-term +0.1881, control +0.1878. Within 0.05 in absolute value: yes.
 - False mastery: the worst arm, random_control, declared 1.0% of its masteries on skills the student did not know. Ceiling 5%. Within: yes. Set apart the diagnostic's placements, the worst arm's share among masteries declared from practice is 0.0%.
 
@@ -63,7 +63,7 @@ Retention at day 7 and day 30 averages over every known skill, including skills 
 
 ## Decisions
 
-A setting changes only when it clears its bar under both forgetting curves, so no decision rests on a curve shape the world model invented.
+A setting changes only when it clears its bar under both forgetting curves, so no decision rests on a curve shape the world model invented. Since the operator's ruling of 2026-09-27 (BUILD-LEDGER.md), 10's "on at least 90 percent of simulated students" is decided by the paired mean difference and its 95 percent interval (normal approximation), because on this world the same policy against itself wins on 47 to 58 percent of students and even controls that read the hidden student reach 90 percent in one setting of eight (`docs/operator/selection-study.md`). The share is kept and reported.
 
 - The five-term score, `W_LEARN`, `W_COV`, `W_WEIGHT`, `W_REP` and `EXPLORE_SHARE`: stays off.
 - `lambda`: stays 0.

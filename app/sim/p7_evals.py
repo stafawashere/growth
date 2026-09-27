@@ -4,7 +4,10 @@ thresholds make.
 
 Every arm runs on the same students from the same seeds, so a comparison between two arms is
 paired student by student. A threshold that 10 states "on at least 90 percent of simulated
-students" is read off those pairs. The numbers are a simulation's measurement on synthetic
+students" is decided, on the operator's ruling of 2026-09-27, by the paired mean difference and
+its 95 percent interval: a challenger is turned on only when the interval lies wholly above 0, and
+the two-term floor fails only when it lies wholly below 0. The per-student share is still computed
+and reported beside it. The numbers are a simulation's measurement on synthetic
 students whose world model is invented: they can falsify a policy choice and cannot validate one.
 tools/p7_evals.py runs this at the recorded size and writes docs/operator/p7-evals.md.
 """
@@ -13,6 +16,7 @@ from concurrent.futures import ProcessPoolExecutor
 from dataclasses import dataclass
 
 from app.sim import learning
+from app.sim.selection_study import mean_interval, paired_differences
 
 SEED_BASE = 20270510
 PAIRED_BAR = 0.90
@@ -143,6 +147,11 @@ class GateDecisions:
    interleaving_removal_retention_gain: float
    interleaving_removal_retention_share: float
    interleaving_costs_retention: bool
+   policy_difference: tuple
+   five_term_difference: tuple
+   lambda_mastery_difference: tuple
+   lambda_retention_difference: tuple
+   interleaving_difference: tuple
    policy_bias: float
    control_bias: float
    bias_within_margin: bool
@@ -150,6 +159,18 @@ class GateDecisions:
    worst_false_mastery_arm: str
    false_mastery_within_ceiling: bool
    worst_practice_false_mastery_share: float
+
+
+def shown_above_zero(difference):
+   _, (low, _) = difference
+
+   return low > 0
+
+
+def shown_below_zero(difference):
+   _, (_, high) = difference
+
+   return high < 0
 
 
 def decide(by_arm):
@@ -166,6 +187,14 @@ def decide(by_arm):
    lambda_retention = paired_share(decay, two_term, retention_day_30)
    interleaving_share = paired_share(no_interleaving, two_term, retention_day_30)
 
+   policy_difference = mean_interval(paired_differences(two_term, control, mastery_per_item))
+   five_difference = mean_interval(paired_differences(five, two_term, mastery_per_item))
+   lambda_mastery_difference = mean_interval(paired_differences(decay, two_term, mastery_per_item))
+   lambda_retention_difference = mean_interval(paired_differences(decay, two_term, retention_day_30))
+   interleaving_difference = mean_interval(
+      paired_differences(no_interleaving, two_term, retention_day_30)
+   )
+
    retention_gain = (
       statistics.mean(run.retention_day_30 for run in no_interleaving)
       - statistics.mean(run.retention_day_30 for run in two_term)
@@ -178,18 +207,26 @@ def decide(by_arm):
    false_shares = {arm_name: summarise(runs).false_mastery_share for arm_name, runs in by_arm.items()}
    worst_arm = max(sorted(false_shares), key=lambda arm_name: false_shares[arm_name])
    practice_shares = [summarise(runs).practice_false_mastery_share for runs in by_arm.values()]
+   lambda_helps_mastery = shown_above_zero(lambda_mastery_difference)
+   lambda_helps_retention = shown_above_zero(lambda_retention_difference)
+   lambda_returns = lambda_helps_mastery or lambda_helps_retention
 
    return GateDecisions(
       policy_at_least_random_share=policy_share,
-      policy_beats_random=policy_share >= PAIRED_BAR,
+      policy_beats_random=not shown_below_zero(policy_difference),
       five_term_beats_two_term_share=five_share,
-      five_term_on=five_share >= PAIRED_BAR,
+      five_term_on=shown_above_zero(five_difference),
       lambda_mastery_share=lambda_mastery,
       lambda_retention_share=lambda_retention,
-      lambda_returns=lambda_mastery >= PAIRED_BAR or lambda_retention >= PAIRED_BAR,
+      lambda_returns=lambda_returns,
       interleaving_removal_retention_gain=retention_gain,
       interleaving_removal_retention_share=interleaving_share,
-      interleaving_costs_retention=interleaving_share >= PAIRED_BAR,
+      interleaving_costs_retention=shown_above_zero(interleaving_difference),
+      policy_difference=policy_difference,
+      five_term_difference=five_difference,
+      lambda_mastery_difference=lambda_mastery_difference,
+      lambda_retention_difference=lambda_retention_difference,
+      interleaving_difference=interleaving_difference,
       policy_bias=policy_bias,
       control_bias=control_bias,
       bias_within_margin=bias_gap <= BIAS_MARGIN,

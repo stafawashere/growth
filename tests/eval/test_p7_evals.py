@@ -150,3 +150,50 @@ def eval_false_mastery_within_ceiling():
          summary.declared_not_known,
          summary.declared_mastered,
       )
+
+
+def a_run(arm, seed, mastery):
+   return learning.StudentRun(
+      student=f"s{seed}",
+      seed=seed,
+      arm=arm,
+      curve=learning.EXPONENTIAL,
+      items=100,
+      known_at_start=0,
+      learned=10,
+      taught_retained=mastery * 100,
+      taught_retained_day_30=mastery * 50,
+      declared_mastered=10,
+      declared_not_known=0,
+      placed_mastered=0,
+      placed_not_known=0,
+      retention_day_7=0.5,
+      retention_day_30=0.5,
+      measurement_bias=0.0,
+   )
+
+
+def test_the_bars_are_decided_by_the_mean_interval_not_the_share():
+   """The operator's ruling of 2026-09-27: a challenger ahead on the mean with an interval above 0
+   is turned on even when it wins on fewer than 90 percent of students, and two-term behind the
+   control on most students but ahead on the mean still clears the floor."""
+   seeds = range(200)
+   baseline = [a_run("two_term", seed, 0.010) for seed in seeds]
+   five = [a_run("five_term", seed, 0.012 if seed % 5 < 3 else 0.0095) for seed in seeds]
+   control = [a_run("random_control", seed, 0.009 if seed % 5 < 2 else 0.0102) for seed in seeds]
+   same = [a_run(arm, seed, 0.010) for seed in seeds for arm in ("decay_lambda_2",)]
+   no_interleaving = [a_run("no_interleaving", seed, 0.010) for seed in seeds]
+   decisions = p7_evals.decide({
+      "two_term": baseline,
+      "random_control": control,
+      "five_term": five,
+      "decay_lambda_2": same,
+      "no_interleaving": no_interleaving,
+   })
+
+   assert decisions.five_term_beats_two_term_share < p7_evals.PAIRED_BAR
+   assert decisions.five_term_on
+   assert decisions.policy_at_least_random_share < p7_evals.PAIRED_BAR
+   assert decisions.policy_beats_random
+   assert not decisions.lambda_returns
+   assert not decisions.interleaving_costs_retention

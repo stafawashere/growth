@@ -41,14 +41,21 @@ def yes_no(flag):
    return "yes" if flag else "no"
 
 
+def difference_text(difference):
+   mean, (low, high) = difference
+
+   return f"{mean:+.5f} [{low:+.5f}, {high:+.5f}]"
+
+
 def decision_lines(decisions, students):
    bar = f"{p7_evals.PAIRED_BAR:.0%}"
+   above = "the 95% interval of the paired mean difference wholly above 0"
 
    return [
-      f"- Two-term against the random-within-fringe control: two-term matched or beat the control on true mastery per item for {decisions.policy_at_least_random_share:.1%} of {students} students. Bar {bar}. Passes: {yes_no(decisions.policy_beats_random)}.",
-      f"- Five-term against two-term: five-term beat two-term on true mastery per item for {decisions.five_term_beats_two_term_share:.1%} of {students} students. Bar {bar}. Five-term turned on: {yes_no(decisions.five_term_on)}.",
-      f"- Decay term, arm 6 against arm 1: lambda 2.0 beat lambda 0 on true mastery per item for {decisions.lambda_mastery_share:.1%} and on retention at day 30 for {decisions.lambda_retention_share:.1%} of {students} students. Bar {bar} on either. lambda returns to 2.0: {yes_no(decisions.lambda_returns)}.",
-      f"- Interleaving removed: mean retention at day 30 moved by {decisions.interleaving_removal_retention_gain:+.4f} against two-term, and was higher without interleaving for {decisions.interleaving_removal_retention_share:.1%} of {students} students. Bar {bar}. The constraint costs retention: {yes_no(decisions.interleaving_costs_retention)}.",
+      f"- Two-term against the random-within-fringe control, mean paired difference in true mastery per item {difference_text(decisions.policy_difference)}. Bar: the interval not wholly below 0. Passes: {yes_no(decisions.policy_beats_random)}. Two-term matched or beat the control for {decisions.policy_at_least_random_share:.1%} of {students} students; the {bar} share 10 first stated is kept for reference.",
+      f"- Five-term against two-term, mean paired difference in true mastery per item {difference_text(decisions.five_term_difference)}. Bar: {above}. Five-term turned on: {yes_no(decisions.five_term_on)}. Five-term beat two-term for {decisions.five_term_beats_two_term_share:.1%} of {students} students.",
+      f"- Decay term, arm 6 against arm 1, mean paired difference {difference_text(decisions.lambda_mastery_difference)} in true mastery per item and {difference_text(decisions.lambda_retention_difference)} in retention at day 30. Bar: {above} on either. lambda returns to 2.0: {yes_no(decisions.lambda_returns)}. lambda 2.0 beat lambda 0 for {decisions.lambda_mastery_share:.1%} and {decisions.lambda_retention_share:.1%} of {students} students.",
+      f"- Interleaving removed, mean paired difference in retention at day 30 {difference_text(decisions.interleaving_difference)}. Bar: {above} means the constraint costs retention. It costs retention: {yes_no(decisions.interleaving_costs_retention)}. Retention was higher without interleaving for {decisions.interleaving_removal_retention_share:.1%} of {students} students.",
       f"- Measurement bias: two-term {decisions.policy_bias:+.4f}, control {decisions.control_bias:+.4f}. Within {p7_evals.BIAS_MARGIN} in absolute value: {yes_no(decisions.bias_within_margin)}.",
       f"- False mastery: the worst arm, {decisions.worst_false_mastery_arm}, declared {decisions.worst_false_mastery_share:.1%} of its masteries on skills the student did not know. Ceiling {p7_evals.FALSE_MASTERY_CEILING:.0%}. Within: {yes_no(decisions.false_mastery_within_ceiling)}. Set apart the diagnostic's placements, the worst arm's share among masteries declared from practice is {decisions.worst_practice_false_mastery_share:.1%}.",
    ]
@@ -107,7 +114,7 @@ def render(results):
    lines.extend([
       "## Decisions",
       "",
-      "A setting changes only when it clears its bar under both forgetting curves, so no decision rests on a curve shape the world model invented.",
+      "A setting changes only when it clears its bar under both forgetting curves, so no decision rests on a curve shape the world model invented. Since the operator's ruling of 2026-09-27 (BUILD-LEDGER.md), 10's \"on at least 90 percent of simulated students\" is decided by the paired mean difference and its 95 percent interval (normal approximation), because on this world the same policy against itself wins on 47 to 58 percent of students and even controls that read the hidden student reach 90 percent in one setting of eight (`docs/operator/selection-study.md`). The share is kept and reported.",
       "",
       f"- The five-term score, `W_LEARN`, `W_COV`, `W_WEIGHT`, `W_REP` and `EXPLORE_SHARE`: {'turned on' if five_on else 'stays off'}.",
       f"- `lambda`: {'returns to 2.0' if lambda_on else 'stays 0'}.",
